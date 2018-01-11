@@ -95,7 +95,7 @@ object Form_Main: TForm_Main
   object Splitter1: TSplitter
     Left = 1
     Top = 41
-    Height = 625
+    Height = 624
     Beveled = True
   end
   object ToolBar1: TToolBar
@@ -267,7 +267,7 @@ object Form_Main: TForm_Main
     Left = 0
     Top = 41
     Width = 1
-    Height = 625
+    Height = 624
     Align = alLeft
     DockSite = True
     TabOrder = 1
@@ -11379,7 +11379,7 @@ object Form_Main: TForm_Main
     BtnOKCaption = '&OK'
     BtnCancelCaption = #1054#1090#1084#1077#1085#1072
     CheckBoxInGridStyle = cbStyleAuto
-    VersionInfoPower = '4000.0.9.1'
+    VersionInfoPower = '4000.0.2 Trial'
     FilterMemoSize = 65536
     DialogFontStyle = []
     DefaultEpochYear = 2001
@@ -11886,6 +11886,7 @@ object Form_Main: TForm_Main
     Outline = False
     Background = False
     HTMLTags = True
+    Quality = 95
     Author = 'FastReport'
     Subject = 'FastReport PDF export'
     ProtectionFlags = [ePrint, eModify, eCopy, eAnnot]
@@ -11905,6 +11906,7 @@ object Form_Main: TForm_Main
     DataOnly = False
     Separator = ';'
     OEMCodepage = False
+    UTF8 = False
     NoSysSymbols = True
     ForcedQuotes = False
     Left = 240

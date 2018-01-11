@@ -1731,7 +1731,7 @@ object Form_print_bills: TForm_print_bills
     Optimize = False
     Variables.Data = {0300000001000000040000003A4F5247030000000000000000000000}
     QBEDefinition.QBEFieldDefs = {
-      040000002F000000020000004944010000000000020000004344010000000000
+      0400000030000000020000004944010000000000020000004344010000000000
       08000000464B5F4F52475450010000000000040000004E414D45010000000000
       030000004E505001000000000001000000560100000000000900000050415245
       4E545F4944010000000000030000005245550100000000000500000054524553
@@ -1756,7 +1756,7 @@ object Form_print_bills: TForm_print_bills
       42494C4C5F56415201000000000006000000414F475549440100000000000500
       00004F4B544D4F01000000000008000000434F44455F44454201000000000009
       000000444F4C475F4E414D450100000000000A00000042414E4B5F464E414D45
-      010000000000}
+      01000000000003000000475250010000000000}
     Master = OD_data
     MasterFields = 'org'
     DetailFields = 'org'
@@ -1905,7 +1905,9 @@ object Form_print_bills: TForm_print_bills
       '  c3.dt1, c3.dt2'
       '  from scott.usl u, '
       '(select a.* from scott.a_vvod a where a.mg=:mg and exists'
-      '(select * from scott.a_nabor2 n where n.fk_vvod=a.id'
+      
+        '(select /*+ INDEX (n A_NABOR2_I)*/* from scott.a_nabor2 n where ' +
+        'n.fk_vvod=a.id'
       ' and n.lsk=:lsk and :mg between mgFrom and mgTo)'
       ')t, '
       ''
