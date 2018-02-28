@@ -11379,7 +11379,7 @@ object Form_Main: TForm_Main
     BtnOKCaption = '&OK'
     BtnCancelCaption = #1054#1090#1084#1077#1085#1072
     CheckBoxInGridStyle = cbStyleAuto
-    VersionInfoPower = '4000.0.2 Trial'
+    VersionInfoPower = '4000.0.9.1'
     FilterMemoSize = 65536
     DialogFontStyle = []
     DefaultEpochYear = 2001

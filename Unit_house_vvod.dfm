@@ -1,6 +1,6 @@
 object Form_house_vvod: TForm_house_vvod
-  Left = 235
-  Top = 414
+  Left = 253
+  Top = 437
   Width = 1145
   Height = 512
   Caption = #1042#1074#1086#1076' '#1086#1073#1098#1105#1084#1086#1074' '#1087#1086' '#1076#1086#1084#1072#1084
@@ -92,7 +92,7 @@ object Form_house_vvod: TForm_house_vvod
   TextHeight = 13
   object GroupBox1: TGroupBox
     Left = 0
-    Top = 425
+    Top = 424
     Width = 1129
     Height = 49
     Align = alBottom
@@ -306,14 +306,14 @@ object Form_house_vvod: TForm_house_vvod
     Left = 0
     Top = 0
     Width = 1129
-    Height = 425
+    Height = 424
     Align = alClient
     TabOrder = 0
     object cxGrid1: TcxGrid
       Left = 2
       Top = 15
       Width = 1125
-      Height = 408
+      Height = 407
       Align = alClient
       TabOrder = 0
       object cxGrid1DBTableView1: TcxGridDBTableView
@@ -509,6 +509,28 @@ object Form_house_vvod: TForm_house_vvod
           Properties.ValueGrayed = 'null'
           Properties.ValueUnchecked = 0.000000000000000000
         end
+        object cxGrid1DBTableView1ISHOTPIPEINSULATED: TcxGridDBColumn
+          Caption = #1043#1042' '#1089#1090#1086#1103#1082' '#1080#1079#1086#1083#1080#1088#1086#1074#1072#1085
+          DataBinding.FieldName = 'ISHOTPIPEINSULATED'
+          PropertiesClassName = 'TcxCheckBoxProperties'
+          Properties.DisplayChecked = '1'
+          Properties.DisplayUnchecked = '0'
+          Properties.DisplayGrayed = 'null'
+          Properties.NullStyle = nssUnchecked
+          Properties.ValueChecked = 1
+          Properties.ValueUnchecked = 0
+        end
+        object cxGrid1DBTableView1ISTOWELHEATEXIST: TcxGridDBColumn
+          Caption = #1055#1086#1083#1086#1090#1085#1077#1094#1077'-'#1089#1091#1096#1080#1090#1077#1083#1100
+          DataBinding.FieldName = 'ISTOWELHEATEXIST'
+          PropertiesClassName = 'TcxCheckBoxProperties'
+          Properties.DisplayChecked = '1'
+          Properties.DisplayUnchecked = '0'
+          Properties.DisplayGrayed = 'null'
+          Properties.NullStyle = nssUnchecked
+          Properties.ValueChecked = 1
+          Properties.ValueUnchecked = 0
+        end
       end
       object cxGrid1Level1: TcxGridLevel
         GridView = cxGrid1DBTableView1
@@ -547,7 +569,9 @@ object Form_house_vvod: TForm_house_vvod
         '       r.kub_norm + r.kub_sch + r.kub_ar as all_vl, r.opl_ar, r.' +
         'kub_ar,'
       '       r.kub_ar_fact, r.limit_proc, r.wo_limit, '
-      '       r.kub_fact_upnorm,'
+      '       r.kub_fact_upnorm, '
+      '       r.ishotpipeinsulated, '
+      '       r.istowelheatexist,'
       '       r.rowid'
       '  from (select c.*, nvl(u.nm, '#39#1055#1086#1076#1098#1077#1079#1076#39') as nm, u.npp'
       '           from scott.c_vvod c'
@@ -594,7 +618,7 @@ object Form_house_vvod: TForm_house_vvod
       4F5553455F030000000000000000000000090000003A464C545F4B554C5F0500
       00000000000000000000}
     QBEDefinition.QBEFieldDefs = {
-      040000002900000003000000524555010000000000040000004E414D45010000
+      040000002B00000003000000524555010000000000040000004E414D45010000
       000000020000004E440100000000000400000056564F44010000000000030000
       004B554C010000000000030000004B5542010000000000070000004B55425F4D
       414E010000000000030000004B5052010000000000070000004B55425F534348
@@ -615,7 +639,9 @@ object Form_house_vvod: TForm_house_vvod
       004B55425F41525F464143540100000000000A0000004C494D49545F50524F43
       010000000000080000004B55425F4449535401000000000008000000574F5F4C
       494D4954010000000000080000004544545F4E4F524D0100000000000F000000
-      4B55425F464143545F55504E4F524D010000000000}
+      4B55425F464143545F55504E4F524D010000000000120000004953484F545049
+      5045494E53554C41544544010000000000100000004953544F57454C48454154
+      4558495354010000000000}
     RefreshOptions = [roAfterUpdate, roAllFields]
     UpdatingTable = 'scott.c_vvod'
     Session = DataModule1.OracleSession1
@@ -838,6 +864,12 @@ object Form_house_vvod: TForm_house_vvod
     object OD_vvodKUB_FACT_UPNORM: TFloatField
       FieldName = 'KUB_FACT_UPNORM'
     end
+    object OD_vvodISHOTPIPEINSULATED: TFloatField
+      FieldName = 'ISHOTPIPEINSULATED'
+    end
+    object OD_vvodISTOWELHEATEXIST: TFloatField
+      FieldName = 'ISTOWELHEATEXIST'
+    end
   end
   object DS_vvod: TDataSource
     DataSet = OD_vvod
@@ -853,7 +885,7 @@ object Form_house_vvod: TForm_house_vvod
     Top = 400
   end
   object frxReport1: TfrxReport
-    Version = '0.0'
+    Version = '5.1.9'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -879,34 +911,33 @@ object Form_house_vvod: TForm_house_vvod
     Style = <
       item
         Name = 'Title'
-        Color = 14211288
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -16
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Fill.BackColor = 14211288
       end
       item
         Name = 'Header'
-        Color = 15790320
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Fill.BackColor = 15790320
       end
       item
         Name = 'Group header'
-        Color = 15790320
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Fill.BackColor = 15790320
       end
       item
         Name = 'Data'
-        Color = clNone
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
@@ -915,7 +946,6 @@ object Form_house_vvod: TForm_house_vvod
       end
       item
         Name = 'Group footer'
-        Color = clNone
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
@@ -925,7 +955,6 @@ object Form_house_vvod: TForm_house_vvod
       end
       item
         Name = 'Header line'
-        Color = clNone
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
@@ -951,6 +980,7 @@ object Form_house_vvod: TForm_house_vvod
       VGuides.Strings = (
         '873,07143')
       object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
         Height = 181.417440000000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
@@ -958,13 +988,12 @@ object Form_house_vvod: TForm_house_vvod
           Align = baWidth
           Width = 1046.929810000000000000
           Height = 22.677180000000000000
-          ShowHint = False
-          Color = 14211288
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Fill.BackColor = 14211288
           HAlign = haCenter
           Memo.UTF8 = (
             
@@ -974,28 +1003,15 @@ object Form_house_vvod: TForm_house_vvod
           Style = 'Title'
           VAlign = vaCenter
         end
-        object QRcode1: TfrxQRcode
-          Description = 'QR code'
-          Left = 18.897650000000000000
-          Top = 45.354360000000000000
-          Width = 99.000000000000000000
-          Height = 99.000000000000000000
-          ShowHint = False
-          Text = 'http://yushinin.ru'
-          CodeParams.Margin = 4
-          CodeParams.PixelSize = 3
-          DataField = 'QR'
-          DataSet = frxDBDataset1
-        end
       end
       object PageHeader1: TfrxPageHeader
+        FillType = ftBrush
         Height = 45.354360000000000000
         Top = 222.992270000000000000
         Width = 1046.929810000000000000
         object Memo22: TfrxMemoView
           Width = 54.944998600000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1011,7 +1027,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 75.590600000000000000
           Width = 51.165468600000000000
           Height = 34.015770000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1028,7 +1043,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 176.541565570000000000
           Width = 70.063118600000000000
           Height = 34.015770000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1045,7 +1059,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 246.573105570000000000
           Width = 66.283588600000000000
           Height = 34.015770000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1062,7 +1075,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 314.604645570000000000
           Width = 70.063118600000000000
           Height = 34.015770000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1079,7 +1091,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 453.543600000000000000
           Width = 62.504058600000000000
           Height = 45.354360000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1096,7 +1107,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 521.575140000000000000
           Width = 60.504058600000000000
           Height = 45.354360000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1113,7 +1123,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 582.047620000000000000
           Width = 60.472480000000000000
           Height = 45.354360000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1130,7 +1139,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 642.520100000000000000
           Width = 68.031540000000000000
           Height = 34.015770000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1147,7 +1155,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 714.331170000000000000
           Width = 47.385938600000000000
           Height = 34.015770000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1164,7 +1171,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 763.465060000000000000
           Width = 47.385938600000000000
           Height = 34.015770000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1181,7 +1187,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 812.598950000000000000
           Width = 56.692950000000000000
           Height = 34.015770000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1197,7 +1202,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 873.071430000000000000
           Width = 58.724528600000000000
           Height = 34.015770000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1214,7 +1218,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 933.543910000000000000
           Width = 58.724528600000000000
           Height = 34.015770000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1231,7 +1234,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 386.415715570000000000
           Width = 66.283588600000000000
           Height = 34.015770000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1248,7 +1250,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 993.345847460000000000
           Width = 55.615541140000000000
           Height = 45.354360000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1265,7 +1266,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 126.472441400000000000
           Width = 51.165468600000000000
           Height = 34.015770000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1280,6 +1280,7 @@ object Form_house_vvod: TForm_house_vvod
         end
       end
       object GroupHeader2: TfrxGroupHeader
+        FillType = ftBrush
         Height = 18.897650000000000000
         Top = 370.393940000000000000
         Width = 1046.929810000000000000
@@ -1288,7 +1289,6 @@ object Form_house_vvod: TForm_house_vvod
           Align = baLeft
           Width = 400.630180000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1303,6 +1303,7 @@ object Form_house_vvod: TForm_house_vvod
         end
       end
       object MasterData1: TfrxMasterData
+        FillType = ftBrush
         Height = 18.897650000000000000
         Top = 453.543600000000000000
         Width = 1046.929810000000000000
@@ -1313,7 +1314,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 0.903655570000000000
           Width = 54.944998600000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1330,7 +1330,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 74.746304170000000000
           Width = 50.916798670000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'KUB'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -1348,7 +1347,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 178.541565570000000000
           Width = 69.776053130000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1364,7 +1362,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 248.286169480000000000
           Width = 66.012008770000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1380,7 +1377,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 316.038967880000000000
           Width = 69.776053130000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1396,7 +1392,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 453.543600000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1412,7 +1407,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 521.575140000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1428,7 +1422,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 582.047620000000000000
           Width = 62.350521290000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1444,7 +1437,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 643.538776040000000000
           Width = 67.012863960000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1460,7 +1452,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 713.922700600000000000
           Width = 47.191787000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1476,7 +1467,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 762.855277220000000000
           Width = 47.191787000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1492,7 +1482,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 811.787853840000000000
           Width = 57.504046160000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1508,7 +1497,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 872.105477390000000000
           Width = 58.483920060000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1524,7 +1512,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 932.330187070000000000
           Width = 58.483920060000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1540,7 +1527,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 387.555810630000000000
           Width = 66.012008770000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1558,7 +1544,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 992.298701680000000000
           Width = 55.387670870000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1574,7 +1559,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 125.628145570000000000
           Width = 50.916798670000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1589,6 +1573,7 @@ object Form_house_vvod: TForm_house_vvod
         end
       end
       object GroupFooter2: TfrxGroupFooter
+        FillType = ftBrush
         Height = 18.897650000000000000
         Top = 495.118430000000000000
         Width = 1046.929810000000000000
@@ -1597,7 +1582,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 73.842648600000000000
           Width = 50.916798670000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1614,7 +1598,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 177.637910000000000000
           Width = 69.776053130000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1630,7 +1613,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 247.382513910000000000
           Width = 66.012008770000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1646,7 +1628,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 315.135312310000000000
           Width = 69.776053130000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1662,7 +1643,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 453.543600000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1678,7 +1658,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 521.575140000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1694,7 +1673,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 582.047620000000000000
           Width = 61.446865720000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1710,7 +1688,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 642.520100000000000000
           Width = 68.031540000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1726,7 +1703,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 713.019045030000000000
           Width = 47.191787000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1742,7 +1718,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 761.951621650000000000
           Width = 47.191787000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1758,7 +1733,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 810.884198270000000000
           Width = 58.407701730000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1774,7 +1748,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 871.201821820000000000
           Width = 58.483920060000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1790,7 +1763,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 931.426531500000000000
           Width = 58.483920060000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1806,7 +1778,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 386.652155060000000000
           Width = 66.012008770000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1824,7 +1795,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 991.651241190000000000
           Width = 55.387670870000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1839,13 +1809,12 @@ object Form_house_vvod: TForm_house_vvod
         object Memo71: TfrxMemoView
           Width = 72.623701440000000000
           Height = 18.897650000000000000
-          ShowHint = False
-          Color = 15790320
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Fill.BackColor = 15790320
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#152#1057#8218#1056#1109#1056#1110' '#1056#1111#1056#1109' '#1057#1107#1057#1027#1056#187'.')
@@ -1855,7 +1824,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 124.724490000000000000
           Width = 50.916798670000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1870,13 +1838,13 @@ object Form_house_vvod: TForm_house_vvod
         end
       end
       object PageFooter1: TfrxPageFooter
+        FillType = ftBrush
         Height = 27.188930000000000000
         Top = 574.488560000000000000
         Width = 1046.929810000000000000
         object Memo39: TfrxMemoView
           Align = baWidth
           Width = 1046.929810000000000000
-          ShowHint = False
           Frame.Typ = [ftTop]
           Frame.Width = 2.000000000000000000
         end
@@ -1885,7 +1853,6 @@ object Form_house_vvod: TForm_house_vvod
           Top = 3.779530000000000000
           Width = 229.858380000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1902,7 +1869,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 971.339210000000000000
           Width = 75.590600000000000000
           Height = 22.677180000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -1915,6 +1881,7 @@ object Form_house_vvod: TForm_house_vvod
         end
       end
       object GroupHeader3: TfrxGroupHeader
+        FillType = ftBrush
         Height = 18.897650000000000000
         Top = 411.968770000000000000
         Width = 1046.929810000000000000
@@ -1923,19 +1890,19 @@ object Form_house_vvod: TForm_house_vvod
           Left = 7.559060000000000000
           Width = 401.442811440000000000
           Height = 18.897650000000000000
-          ShowHint = False
-          Color = 15790320
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Fill.BackColor = 15790320
           Memo.UTF8 = (
             '[frxDBDataset1."ADR"]')
           ParentFont = False
         end
       end
       object GroupHeader1: TfrxGroupHeader
+        FillType = ftBrush
         Height = 18.897650000000000000
         Top = 328.819110000000000000
         Width = 1046.929810000000000000
@@ -1943,13 +1910,12 @@ object Form_house_vvod: TForm_house_vvod
         object Memo3: TfrxMemoView
           Width = 401.442811440000000000
           Height = 18.897650000000000000
-          ShowHint = False
-          Color = 15790320
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Fill.BackColor = 15790320
           Memo.UTF8 = (
             #1056#8211#1056#173#1056#1115': [frxDBDataset1."NAME_REU"]')
           ParentFont = False
@@ -1966,6 +1932,7 @@ object Form_house_vvod: TForm_house_vvod
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
       object GroupFooter4: TfrxGroupFooter
+        FillType = ftBrush
         Height = 18.897650000000000000
         Top = 170.078850000000000000
         Width = 1046.929810000000000000
@@ -1973,7 +1940,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 73.842648600000000000
           Width = 50.916798670000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1990,7 +1956,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 127.600364430000000000
           Width = 69.776053130000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -2006,7 +1971,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 197.344968340000000000
           Width = 66.012008770000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -2022,7 +1986,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 265.097766740000000000
           Width = 69.776053130000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -2038,7 +2001,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 404.367407890000000000
           Width = 81.068186200000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -2054,7 +2016,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 485.184578190000000000
           Width = 81.068186200000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -2070,7 +2031,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 566.221315170000000000
           Width = 84.832230550000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -2086,7 +2046,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 652.794335340000000000
           Width = 58.483920060000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -2102,7 +2061,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 713.019045030000000000
           Width = 47.191787000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -2118,7 +2076,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 761.951621650000000000
           Width = 47.191787000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -2134,7 +2091,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 810.884198270000000000
           Width = 35.899653930000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -2150,7 +2106,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 848.524641820000000000
           Width = 58.483920060000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -2166,7 +2121,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 908.749351500000000000
           Width = 58.483920060000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -2182,7 +2136,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 336.614609490000000000
           Width = 66.012008770000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -2200,7 +2153,6 @@ object Form_house_vvod: TForm_house_vvod
           Left = 968.974061190000000000
           Width = 77.304141840000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -2215,13 +2167,12 @@ object Form_house_vvod: TForm_house_vvod
         object Memo105: TfrxMemoView
           Width = 72.623701440000000000
           Height = 18.897650000000000000
-          ShowHint = False
-          Color = 15790320
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Fill.BackColor = 15790320
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#152#1057#8218#1056#1109#1056#1110' '#1056#1111#1056#1109' '#1057#1107#1057#1027#1056#187'.')
@@ -2229,6 +2180,7 @@ object Form_house_vvod: TForm_house_vvod
         end
       end
       object GroupHeader6: TfrxGroupHeader
+        FillType = ftBrush
         Height = 18.897650000000000000
         Top = 64.252010000000000000
         Width = 1046.929810000000000000
@@ -2236,19 +2188,19 @@ object Form_house_vvod: TForm_house_vvod
         object Memo106: TfrxMemoView
           Width = 401.442811440000000000
           Height = 18.897650000000000000
-          ShowHint = False
-          Color = 15790320
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Fill.BackColor = 15790320
           Memo.UTF8 = (
             #1056#8211#1056#173#1056#1115': [frxDBDataset1."NAME_REU"]')
           ParentFont = False
         end
       end
       object MasterData2: TfrxMasterData
+        FillType = ftBrush
         Top = 147.401670000000000000
         Width = 1046.929810000000000000
         DataSet = frxDBDataset1
@@ -2256,6 +2208,7 @@ object Form_house_vvod: TForm_house_vvod
         RowCount = 0
       end
       object Header1: TfrxHeader
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
@@ -2263,13 +2216,12 @@ object Form_house_vvod: TForm_house_vvod
           Align = baWidth
           Width = 1046.929810000000000000
           Height = 22.677180000000000000
-          ShowHint = False
-          Color = 14211288
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Fill.BackColor = 14211288
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#152#1057#8218#1056#1109#1056#1110#1056#1105' '#1056#1111#1056#1109' '#1056#8211#1056#173#1056#1115)
@@ -2279,6 +2231,7 @@ object Form_house_vvod: TForm_house_vvod
         end
       end
       object GroupHeader4: TfrxGroupHeader
+        FillType = ftBrush
         Height = 18.897650000000000000
         Top = 105.826840000000000000
         Width = 1046.929810000000000000
@@ -2287,7 +2240,6 @@ object Form_house_vvod: TForm_house_vvod
           Align = baLeft
           Width = 400.630180000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET

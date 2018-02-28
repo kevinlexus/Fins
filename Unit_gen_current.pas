@@ -87,17 +87,6 @@ begin
       //Рассчет корректировок
       DataModule1.OraclePackage1.CallProcedure
          ('scott.c_gen_pay.dist_sal_corr', [parNone]);
-      //добавление корректировок ПОСЛЕ формирования
-       DataModule1.OraclePackage1.CallProcedure
-           ('scott.c_gen_pay.dist_pay_add_corr', [1]);
-      //Сальдо -здесь сальдо не нужно
-    end
-    else
-    begin
-      //добавление корректировок ПОСЛЕ формирования
-       DataModule1.OraclePackage1.CallProcedure
-           ('scott.c_gen_pay.dist_pay_add_corr', [1]);
-      //Сальдо -здесь сальдо не нужно
     end;
     Form_status.incpos(1);
     DataModule1.OraclePackage1.CallProcedure
@@ -154,18 +143,12 @@ begin
         //Сальдо
         DataModule1.OraclePackage1.CallProcedure
            ('scott.gen.gen_saldo', [null]);
-        //добавление корректировок ПОСЛЕ формирования
-         DataModule1.OraclePackage1.CallProcedure
-             ('scott.c_gen_pay.dist_pay_add_corr', [1]);
         //Сальдо повторное
         DataModule1.OraclePackage1.CallProcedure
            ('scott.gen.gen_saldo', [null]);
       end
       else
       begin
-        //добавление корректировок ПОСЛЕ формирования
-         DataModule1.OraclePackage1.CallProcedure
-             ('scott.c_gen_pay.dist_pay_add_corr', [1]);
         //Сальдо
         DataModule1.OraclePackage1.CallProcedure
            ('scott.gen.gen_saldo', [null]);

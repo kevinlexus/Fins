@@ -619,7 +619,7 @@ end;
 
 procedure TForm_Main.FormCreate(Sender: TObject);
 begin
-  Versia := 184;
+  Versia := 186;
 //нельзя использовать versia в params - используется updater-ом
   CoolTrayIcon1.IconIndex := 22;
   DisableGhosting;

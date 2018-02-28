@@ -128,6 +128,10 @@ type
     pnl1: TPanel;
     OD_vvodKUB_FACT_UPNORM: TFloatField;
     cxGrid1DBTableView1KUB_FACT_UPNORM: TcxGridDBColumn;
+    OD_vvodISHOTPIPEINSULATED: TFloatField;
+    OD_vvodISTOWELHEATEXIST: TFloatField;
+    cxGrid1DBTableView1ISHOTPIPEINSULATED: TcxGridDBColumn;
+    cxGrid1DBTableView1ISTOWELHEATEXIST: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
