@@ -1,6 +1,6 @@
 object Form_kart: TForm_kart
-  Left = 448
-  Top = 291
+  Left = 484
+  Top = 222
   Width = 903
   Height = 675
   BorderIcons = [biSystemMenu, biMinimize]
@@ -90,6 +90,20 @@ object Form_kart: TForm_kart
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
+  object Label24: TLabel
+    Left = 12
+    Top = 13
+    Width = 75
+    Height = 13
+    Caption = 'K_ID '#1055#1086#1084#1077#1097
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+    WordWrap = True
+  end
   object Panel2: TPanel
     Left = 0
     Top = 81
@@ -1336,26 +1350,12 @@ object Form_kart: TForm_kart
       object TabSheet10: TTabSheet
         Caption = #1040#1076#1084#1080#1085'.'
         ImageIndex = 4
-        object Label24: TLabel
-          Left = 116
-          Top = 16
-          Width = 29
-          Height = 13
-          Caption = 'C_ID'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -11
-          Font.Name = 'MS Sans Serif'
-          Font.Style = [fsBold]
-          ParentFont = False
-          WordWrap = True
-        end
         object Label25: TLabel
           Left = 11
           Top = 48
-          Width = 30
+          Width = 57
           Height = 13
-          Caption = 'H_ID'
+          Caption = 'House_ID'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
@@ -1366,10 +1366,10 @@ object Form_kart: TForm_kart
         end
         object Label27: TLabel
           Left = 12
-          Top = 16
-          Width = 29
-          Height = 13
-          Caption = 'K_ID'
+          Top = 13
+          Width = 77
+          Height = 17
+          Caption = 'K_ID '#1055#1086#1084#1077#1097
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
@@ -1379,8 +1379,8 @@ object Form_kart: TForm_kart
           WordWrap = True
         end
         object Label46: TLabel
-          Left = 116
-          Top = 48
+          Left = 140
+          Top = 47
           Width = 27
           Height = 13
           Caption = 'REU'
@@ -1406,28 +1406,32 @@ object Form_kart: TForm_kart
           ParentFont = False
           WordWrap = True
         end
-        object DBEdit8: TDBEdit
-          Left = 152
-          Top = 8
-          Width = 57
-          Height = 21
-          DataField = 'C_LSK_ID'
-          DataSource = Form_list_kart.DS_list_kart
-          ReadOnly = True
-          TabOrder = 1
+        object Label56: TLabel
+          Left = 172
+          Top = 13
+          Width = 61
+          Height = 20
+          Caption = 'K_ID '#1051#1057
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          WordWrap = True
         end
         object DBEdit1: TDBEdit
-          Left = 48
+          Left = 72
           Top = 40
           Width = 57
           Height = 21
           DataField = 'HOUSE_ID'
           DataSource = Form_list_kart.DS_list_kart
           ReadOnly = True
-          TabOrder = 2
+          TabOrder = 1
         end
         object DBEdit13: TDBEdit
-          Left = 48
+          Left = 96
           Top = 8
           Width = 65
           Height = 21
@@ -1437,14 +1441,14 @@ object Form_kart: TForm_kart
           TabOrder = 0
         end
         object DBEdit17: TDBEdit
-          Left = 152
-          Top = 40
+          Left = 176
+          Top = 39
           Width = 57
           Height = 21
           DataField = 'REU'
           DataSource = Form_list_kart.DS_list_kart
           ReadOnly = True
-          TabOrder = 3
+          TabOrder = 2
         end
         object CheckBox1: TCheckBox
           Left = 8
@@ -1461,7 +1465,7 @@ object Form_kart: TForm_kart
           ParentFont = False
           ParentShowHint = False
           ShowHint = True
-          TabOrder = 4
+          TabOrder = 3
           Visible = False
           OnClick = CheckBox1Click
         end
@@ -1480,7 +1484,7 @@ object Form_kart: TForm_kart
           ParentFont = False
           ParentShowHint = False
           ShowHint = True
-          TabOrder = 5
+          TabOrder = 4
           Visible = False
           OnClick = CheckBox4Click
         end
@@ -1493,15 +1497,25 @@ object Form_kart: TForm_kart
           DataSource = Form_list_kart.DS_list_kart
           EditButtons = <>
           Kind = dtkDateEh
-          TabOrder = 6
+          TabOrder = 5
           Visible = True
+        end
+        object DBEdit8: TDBEdit
+          Left = 240
+          Top = 8
+          Width = 65
+          Height = 21
+          DataField = 'FK_KLSK_OBJ'
+          DataSource = Form_list_kart.DS_list_kart
+          ReadOnly = True
+          TabOrder = 6
         end
       end
     end
   end
   object Panel4: TPanel
     Left = 0
-    Top = 590
+    Top = 589
     Width = 887
     Height = 27
     Align = alBottom
@@ -2718,7 +2732,7 @@ object Form_kart: TForm_kart
     Left = 0
     Top = 305
     Width = 887
-    Height = 285
+    Height = 284
     ActivePage = TabSheet8
     Align = alClient
     TabHeight = 17
@@ -2729,7 +2743,7 @@ object Form_kart: TForm_kart
         Left = 0
         Top = 0
         Width = 879
-        Height = 258
+        Height = 257
         ControlType.Strings = (
           'org_name;CustomEdit;wwDBLookupCombo1;F'
           'ORG_NAME;CustomEdit;wwDBLookupCombo1;F'
@@ -2979,7 +2993,7 @@ object Form_kart: TForm_kart
   end
   object dxStatusBar1: TdxStatusBar
     Left = 0
-    Top = 617
+    Top = 616
     Width = 887
     Height = 20
     Panels = <
@@ -2992,6 +3006,16 @@ object Form_kart: TForm_kart
     Font.Height = -11
     Font.Name = 'Tahoma'
     Font.Style = []
+  end
+  object DBEdit3: TDBEdit
+    Left = 96
+    Top = 8
+    Width = 65
+    Height = 21
+    DataField = 'K_LSK_ID'
+    DataSource = Form_list_kart.DS_list_kart
+    ReadOnly = True
+    TabOrder = 5
   end
   object OD_spul: TOracleDataSet
     SQL.Strings = (

@@ -6,7 +6,22 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Grids, Wwdbigrd, Wwdbgrid, DB, Wwdatsrc, OracleData,
   wwSpeedButton, wwDBNavigator, ExtCtrls, wwclearpanel, Mask, wwdbedit,
-  Wwdotdot, Wwdbcomb, Oracle, wwDialog, wwrcdvw, ComCtrls, wwriched;
+  Wwdotdot, Wwdbcomb, Oracle, wwDialog, wwrcdvw, ComCtrls, wwriched,
+  cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
+  cxContainer, cxEdit, dxSkinsCore, dxSkinBlack, dxSkinBlue,
+  dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom,
+  dxSkinDarkSide, dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle,
+  dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary,
+  dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin,
+  dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinPumpkin,
+  dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
+  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
+  dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue, cxCheckBox, cxDBEdit;
 
 type
   TForm_spr_params = class(TForm)
@@ -44,6 +59,10 @@ type
     Label2: TLabel;
     Edit1: TEdit;
     Timer2: TTimer;
+    chk1: TCheckBox;
+    cxDBCheckBox1: TcxDBCheckBox;
+    OD_params: TOracleDataSet;
+    DS_params: TDataSource;
     procedure Button1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -52,6 +71,7 @@ type
     procedure wwDBGrid1MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure Timer2Timer(Sender: TObject);
+    procedure chk1Click(Sender: TObject);
   private
     state_base_:Integer;
     flt_:string;
@@ -73,6 +93,8 @@ procedure TForm_spr_params.Button1Click(Sender: TObject);
 begin
   if not (OD_spr.State in [dsBrowse]) then
     OD_spr.Post;
+  if not (OD_params.State in [dsBrowse]) then
+    OD_params.Post;
   Close;
 end;
 
@@ -113,6 +135,7 @@ end;
 procedure TForm_spr_params.FormCreate(Sender: TObject);
 begin
   get_base_state;
+  OD_params.Active:=True;
 end;
 
 procedure TForm_spr_params.Button2Click(Sender: TObject);
@@ -185,6 +208,15 @@ begin
     OD_spr.Active:=true;
   end;
   Timer2.Enabled:=True;
+end;
+
+procedure TForm_spr_params.chk1Click(Sender: TObject);
+begin
+  if chk1.Checked then
+     OD_spr.ReadOnly := False
+  else
+     OD_spr.ReadOnly := True;
+
 end;
 
 end.

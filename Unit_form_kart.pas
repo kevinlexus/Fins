@@ -307,10 +307,8 @@ type
     wwNavButton6: TwwNavButton;
     wwDBLookupCombo4: TwwDBLookupCombo;
     TabSheet10: TTabSheet;
-    Label24: TLabel;
     Label25: TLabel;
     Label27: TLabel;
-    DBEdit8: TDBEdit;
     DBEdit1: TDBEdit;
     DBEdit13: TDBEdit;
     Label45: TLabel;
@@ -398,6 +396,10 @@ type
     Label54: TLabel;
     cxDBTextEdit2: TcxDBTextEdit;
     Label55: TLabel;
+    Label24: TLabel;
+    DBEdit3: TDBEdit;
+    DBEdit8: TDBEdit;
+    Label56: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure DBGridEh1DblClick(Sender: TObject);
     procedure OD_kartAfterPost(DataSet: TDataSet);

@@ -1,8 +1,8 @@
 object Form_kart_pr: TForm_kart_pr
   Left = 1053
   Top = 382
-  Width = 674
-  Height = 445
+  Width = 667
+  Height = 448
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #1050#1072#1088#1090#1086#1095#1082#1072' '#1087#1088#1086#1078#1080#1074#1072#1102#1097#1077#1075#1086
   Color = clBtnFace
@@ -2575,10 +2575,11 @@ object Form_kart_pr: TForm_kart_pr
       'and tp.cd='#39#1055#1088#1080#1095#1080#1085#1072' '#1074#1099#1087#1080#1089#1082#1080#39)
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000008000000020000004944010000000000040000004E414D4501000000
+      0400000009000000020000004944010000000000040000004E414D4501000000
       000002000000434401000000000009000000464B5F4C49535454500100000000
       00020000004E4D010000000000030000004E5050010000000000060000005641
-      4C5F545001000000000007000000464B5F554E4954010000000000}
+      4C5F545001000000000007000000464B5F554E49540100000000000700000053
+      514C54455854010000000000}
     Session = DataModule1.OracleSession1
     Active = True
     Left = 128
@@ -2743,7 +2744,7 @@ object Form_kart_pr: TForm_kart_pr
     Top = 410
   end
   object frxReport1: TfrxReport
-    Version = '0.0'
+    Version = '5.1.9'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -2783,6 +2784,7 @@ object Form_kart_pr: TForm_kart_pr
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
       object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
         Height = 619.842920000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
@@ -2791,7 +2793,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 3.779530000000001000
           Width = 200.315090000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -16
@@ -2806,7 +2807,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 3.779530000000001000
           Width = 102.047310000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -2822,7 +2822,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 3.779530000000001000
           Width = 173.858380000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -2838,7 +2837,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 26.456710000000000000
           Width = 86.929190000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -2853,7 +2851,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 26.456710000000000000
           Width = 147.401670000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -2868,7 +2865,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 51.653576670000010000
           Width = 86.929190000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -2883,7 +2879,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 51.913420000000000000
           Width = 147.401670000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -2898,7 +2893,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 76.850443330000000000
           Width = 86.929190000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -2913,7 +2907,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 77.590600000000000000
           Width = 147.401670000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -2928,7 +2921,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 102.047310000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -2943,7 +2935,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 102.047310000000000000
           Width = 162.519790000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -2958,7 +2949,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 136.063080000000000000
           Width = 124.724490000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -2973,7 +2963,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 158.740260000000000000
           Width = 147.401670000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -2988,7 +2977,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 132.283550000000000000
           Width = 159.370181670000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3003,7 +2991,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 151.181200000000000000
           Width = 521.575140000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3017,7 +3004,7 @@ object Form_kart_pr: TForm_kart_pr
           Left = 3.779530000000000000
           Top = 132.283550000000000000
           Width = 710.551640000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Memo52: TfrxMemoView
@@ -3025,7 +3012,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 26.456710000000000000
           Width = 124.724490000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3040,7 +3026,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 26.456710000000000000
           Width = 147.401670000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3055,7 +3040,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 52.913420000000000000
           Width = 124.724490000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3070,7 +3054,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 52.913420000000000000
           Width = 147.401670000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3084,46 +3067,46 @@ object Form_kart_pr: TForm_kart_pr
           Left = 3.779530000000000000
           Top = 181.417440000000000000
           Width = 710.551640000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Line6: TfrxLineView
           Left = 173.858380000000000000
           Top = 132.283550000000000000
           Height = 49.133890000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Line7: TfrxLineView
           Left = 3.779530000000000000
           Height = 132.283550000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Line8: TfrxLineView
           Left = 3.779530000000000000
           Width = 710.551640000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Line9: TfrxLineView
           Left = 714.331170000000000000
           Height = 132.283550000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Line10: TfrxLineView
           Left = 714.331170000000000000
           Top = 132.283550000000000000
           Height = 309.921460000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Line11: TfrxLineView
           Left = 3.779530000000000000
           Top = 132.283550000000000000
           Height = 49.133890000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Memo56: TfrxMemoView
@@ -3131,7 +3114,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 188.976500000000000000
           Width = 185.196970000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3146,7 +3128,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 215.433210000000000000
           Width = 64.252010000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3161,7 +3142,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 215.433210000000000000
           Width = 260.787570000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3176,7 +3156,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 238.110390000000000000
           Width = 64.252010000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3191,7 +3170,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 238.110390000000000000
           Width = 260.787570000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3206,7 +3184,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 260.787570000000000000
           Width = 64.252010000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3221,7 +3198,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 260.787570000000000000
           Width = 260.787570000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3236,7 +3212,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 287.244280000000000000
           Width = 64.252010000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3251,7 +3226,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 287.244280000000000000
           Width = 260.787570000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3266,7 +3240,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 215.433210000000000000
           Width = 26.456710000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3281,7 +3254,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 215.433210000000000000
           Width = 260.787570000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3296,7 +3268,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 238.110390000000000000
           Width = 34.015770000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3311,7 +3282,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 238.110390000000000000
           Width = 260.787570000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3326,7 +3296,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 264.567100000000000000
           Width = 34.015770000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3341,7 +3310,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 264.567100000000000000
           Width = 260.787570000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3355,21 +3323,21 @@ object Form_kart_pr: TForm_kart_pr
           Left = 3.779530000000000000
           Top = 181.417440000000000000
           Height = 260.787570000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Line2: TfrxLineView
           Left = 3.779530000000000000
           Top = 309.921460000000000000
           Width = 710.551640000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Line15: TfrxLineView
           Left = 3.779530000000000000
           Top = 343.937230000000000000
           Width = 710.551640000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Memo9: TfrxMemoView
@@ -3377,7 +3345,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 321.260050000000000000
           Width = 117.165430000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3392,7 +3359,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 321.260050000000000000
           Width = 49.133890000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3408,7 +3374,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 321.260050000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3424,7 +3389,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 347.716760000000000000
           Width = 120.944960000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3439,7 +3403,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 347.716760000000000000
           Width = 49.133890000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3454,7 +3417,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 347.716760000000000000
           Width = 68.031540000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3469,7 +3431,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 321.260050000000000000
           Width = 445.984540000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3485,7 +3446,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 347.716760000000000000
           Width = 445.984540000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3499,35 +3459,35 @@ object Form_kart_pr: TForm_kart_pr
           Left = 132.283550000000000000
           Top = 309.921460000000000000
           Height = 34.015770000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Line12: TfrxLineView
           Left = 188.976500000000000000
           Top = 309.921460000000000000
           Height = 34.015770000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Line13: TfrxLineView
           Left = 264.567100000000000000
           Top = 309.921460000000000000
           Height = 34.015770000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Line14: TfrxLineView
           Left = 377.953000000000000000
           Top = 181.417440000000000000
           Height = 128.504020000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Line16: TfrxLineView
           Left = 3.779530000000000000
           Top = 377.953000000000000000
           Width = 710.551640000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Memo17: TfrxMemoView
@@ -3535,7 +3495,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 385.512060000000000000
           Width = 188.976500000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3550,7 +3509,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 385.512060000000000000
           Width = 506.457020000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3567,7 +3525,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 419.527830000000000000
           Width = 207.874150000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3582,7 +3539,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 419.527830000000000000
           Width = 506.457020000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3596,7 +3552,7 @@ object Form_kart_pr: TForm_kart_pr
           Left = 3.779530000000000000
           Top = 442.205010000000000000
           Width = 710.551640000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
       end
@@ -3610,6 +3566,7 @@ object Form_kart_pr: TForm_kart_pr
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
       object ReportTitle2: TfrxReportTitle
+        FillType = ftBrush
         Height = 676.535870000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
@@ -3618,7 +3575,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 3.779530000000001000
           Width = 238.110390000000000000
           Height = 56.692950000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3635,53 +3591,53 @@ object Form_kart_pr: TForm_kart_pr
           Left = 264.567100000000000000
           Top = 22.677180000000000000
           Width = 434.645950000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Line19: TfrxLineView
           Left = 264.567100000000000000
           Top = 49.133889999999990000
           Width = 434.645950000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Line20: TfrxLineView
           Left = 264.567100000000000000
           Top = 75.590599999999990000
           Width = 434.645950000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Line21: TfrxLineView
           Left = 264.567100000000000000
           Top = 102.047310000000000000
           Width = 434.645950000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Line22: TfrxLineView
           Left = 3.779530000000000000
           Top = 132.283550000000000000
           Width = 710.551640000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Line23: TfrxLineView
           Left = 3.779530000000000000
           Width = 710.551640000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Line24: TfrxLineView
           Left = 3.779530000000000000
           Height = 449.764070000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Line25: TfrxLineView
           Left = 714.331170000000000000
           Height = 449.764070000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Memo22: TfrxMemoView
@@ -3689,7 +3645,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 139.842610000000000000
           Width = 238.110390000000000000
           Height = 56.692950000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3706,14 +3661,14 @@ object Form_kart_pr: TForm_kart_pr
           Left = 3.779530000000000000
           Top = 226.771800000000000000
           Width = 710.551640000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Line27: TfrxLineView
           Left = 3.779530000000000000
           Top = 449.764070000000000000
           Width = 710.551640000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Memo23: TfrxMemoView
@@ -3721,7 +3676,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 230.551330000000000000
           Width = 238.110390000000000000
           Height = 22.677180000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3735,7 +3689,7 @@ object Form_kart_pr: TForm_kart_pr
           Left = 309.921460000000000000
           Top = 226.771800000000000000
           Height = 222.992270000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Memo24: TfrxMemoView
@@ -3743,7 +3697,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 139.842610000000000000
           Width = 457.323130000000000000
           Height = 56.692950000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3758,7 +3711,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 257.008040000000000000
           Width = 147.401670000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3773,7 +3725,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 257.008040000000000000
           Width = 68.031540000000000000
           Height = 22.677180000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3788,7 +3739,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 283.464750000000000000
           Width = 117.165430000000000000
           Height = 22.677180000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3803,7 +3753,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 283.464750000000000000
           Width = 177.637910000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3818,7 +3767,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 230.551330000000000000
           Width = 362.834880000000000000
           Height = 45.354360000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3837,7 +3785,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 404.409710000000000000
           Width = 120.944960000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3852,7 +3799,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 404.409710000000000000
           Width = 102.047310000000000000
           Height = 22.677180000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3867,7 +3813,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 279.685220000000000000
           Width = 64.252010000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3882,7 +3827,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 279.685220000000000000
           Width = 260.787570000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3897,7 +3841,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 302.362400000000000000
           Width = 64.252010000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3912,7 +3855,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 302.362400000000000000
           Width = 260.787570000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3927,7 +3869,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 325.039580000000000000
           Width = 64.252010000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3942,7 +3883,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 325.039580000000000000
           Width = 260.787570000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3957,7 +3897,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 351.496290000000000000
           Width = 64.252010000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3972,7 +3911,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 351.496290000000000000
           Width = 260.787570000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3987,7 +3925,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 377.953000000000000000
           Width = 23.743201282051300000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -4002,7 +3939,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 377.953000000000000000
           Width = 131.992816920000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -4017,7 +3953,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 377.953000000000000000
           Width = 34.015770000000010000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -4032,7 +3967,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 377.953000000000000000
           Width = 41.574830000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -4047,7 +3981,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 377.953000000000000000
           Width = 26.456710000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -4062,7 +3995,6 @@ object Form_kart_pr: TForm_kart_pr
           Top = 377.953000000000000000
           Width = 37.795300000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -4083,10 +4015,11 @@ object Form_kart_pr: TForm_kart_pr
       'and tp.cd='#39#1043#1088#1072#1078#1076#1072#1085#1089#1090#1074#1086#39)
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000008000000020000004944010000000000040000004E414D4501000000
+      0400000009000000020000004944010000000000040000004E414D4501000000
       000002000000434401000000000009000000464B5F4C49535454500100000000
       00020000004E4D010000000000030000004E5050010000000000060000005641
-      4C5F545001000000000007000000464B5F554E4954010000000000}
+      4C5F545001000000000007000000464B5F554E49540100000000000700000053
+      514C54455854010000000000}
     Session = DataModule1.OracleSession1
     Active = True
     Left = 200
@@ -4133,10 +4066,11 @@ object Form_kart_pr: TForm_kart_pr
       'and tp.cd='#39#1042#1086#1077#1085#1085#1086#1086#1073#1103#1079#1072#1085#1085#1086#1089#1090#1100#39)
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000008000000020000004944010000000000040000004E414D4501000000
+      0400000009000000020000004944010000000000040000004E414D4501000000
       000002000000434401000000000009000000464B5F4C49535454500100000000
       00020000004E4D010000000000030000004E5050010000000000060000005641
-      4C5F545001000000000007000000464B5F554E4954010000000000}
+      4C5F545001000000000007000000464B5F554E49540100000000000700000053
+      514C54455854010000000000}
     Session = DataModule1.OracleSession1
     Active = True
     Left = 200
@@ -4173,10 +4107,11 @@ object Form_kart_pr: TForm_kart_pr
       'and tp.cd='#39#1042#1086#1077#1085#1082#1086#1084#1072#1090#39)
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000008000000020000004944010000000000040000004E414D4501000000
+      0400000009000000020000004944010000000000040000004E414D4501000000
       000002000000434401000000000009000000464B5F4C49535454500100000000
       00020000004E4D010000000000030000004E5050010000000000060000005641
-      4C5F545001000000000007000000464B5F554E4954010000000000}
+      4C5F545001000000000007000000464B5F554E49540100000000000700000053
+      514C54455854010000000000}
     Session = DataModule1.OracleSession1
     Active = True
     Left = 200
@@ -4211,7 +4146,7 @@ object Form_kart_pr: TForm_kart_pr
     Top = 528
   end
   object frxReport_base: TfrxReport
-    Version = '0.0'
+    Version = '5.1.9'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

@@ -301,12 +301,19 @@ begin
     OD_t_objxpar.Last;
 
   end
+  else if ret = 3 then
+  begin
+    DataModule1.OraclePackage1.Session.Rollback;
+    msg2('Попытка передать пустые показания!','Внимание!', MB_OK+MB_ICONERROR);
+    exit;
+  end
   else
   begin
+    DataModule1.OraclePackage1.Session.Rollback;
     msg2('Попытка передать объем по закрытому счетчику!','Внимание!', MB_OK+MB_ICONERROR);
     exit;
   end;
-  
+
     if OD_meter.RecNo = OD_meter.RecordCount then
     begin
       Button3.SetFocus;

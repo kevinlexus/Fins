@@ -43,21 +43,12 @@ uses DM_module1, Unit_status, Utils, Unit_status_gen, Unit_Mainform;
 {$R *.dfm}
 procedure Generate;
 var
-  l_state, valid_,valid1_, err_ : Integer;
+  valid_,valid1_, err_ : Integer;
   err_str_: String;
 begin
 with Form_gen_current do
 begin
   DataModule1.OraclePackage2.Session.Connected:=true;
-  l_state:=DataModule1.OraclePackage2.CallIntegerFunction
-     ('scott.Utils.set_base_state_gen', [1]);
-
-  if l_state = 1 then
-  begin
-    msg4('Формирование уже запущено, отмена!', 'Внимание!' , MB_ICONEXCLAMATION);
-    Exit;
-  end;
-
   if CheckBox1.Checked=true then
   begin
   valid_:=DataModule1.OraclePackage1.CallIntegerFunction
@@ -171,8 +162,6 @@ begin
       Form_status.Close;
      end;
   end;
-  l_state:=DataModule1.OraclePackage2.CallIntegerFunction
-     ('scott.Utils.set_base_state_gen', [0]);
   DataModule1.OraclePackage2.Session.Connected:=false;
 
   msg4('Формирование закончено', 'Внимание!' , MB_OK+MB_ICONINFORMATION);

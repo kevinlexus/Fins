@@ -1483,7 +1483,9 @@ begin
     if DataModule1.OraclePackage1.CallIntegerFunction
          ('scott.Utils.get_int_param', ['REP_OLAP_SIGN_DIR']) = 1 then
     begin
-      Excel.WorkBooks[1].WorkSheets[1].Cells[i+3, 3]:=DataModule1.OD_rkc.FieldByName('head_name').AsString+ ' _________________/'+DataModule1.OD_rkc.FieldByName('manager').AsString;
+      Excel.WorkBooks[1].WorkSheets[1].Cells[i+3, 3]:=
+        DataModule1.OD_rkc.FieldByName('head_name').AsString+ ' _________________/'+
+        DataModule1.OD_rkc.FieldByName('manager').AsString;
     end;
     Excel.Visible:=true;
   end
@@ -1952,6 +1954,8 @@ begin
         houseXL.WorkBooks[1].WorkSheets[5].Cells[e, 4]:= d.FieldByName('opl').AsString;
         // НЕ выгружать кадастровый номер пока, система пишет: INT004072 Сведения в ГКН не найдены.
         houseXL.WorkBooks[1].WorkSheets[5].Cells[e, 5]:= 'Нет';
+        // инф. подтверждена поставщиком
+        houseXL.WorkBooks[1].WorkSheets[5].Cells[e, 6]:= 'Да';
         e:=e+1;
       end;
     end;
@@ -1988,6 +1992,14 @@ begin
         Form_olap.cxm1.Lines.Add('3.'+intToStr(f)+'.4');
         Form_olap.cxm1.Lines.Add('Дата постройки: '+d.FieldByName('ent_date').AsString);
       end;
+      // инф. подтверждена поставщиком
+      houseXL.WorkBooks[1].WorkSheets[7].Cells[e, 5]:= 'Да';
+      if debug then
+      begin
+        Form_olap.cxm1.Lines.Add('3.'+intToStr(f)+'.5');
+        Form_olap.cxm1.Lines.Add('Инф подтверждена: Да');
+      end;
+
       f:=f+1;
     end;
 
@@ -2005,6 +2017,8 @@ begin
       houseXL.WorkBooks[1].WorkSheets[10].Cells[a, 6]:= Trim(d.FieldByName('opl').AsString);
       // НЕ выгружать кадастровый номер пока, система пишет: INT004072 Сведения в ГКН не найдены.
       houseXL.WorkBooks[1].WorkSheets[10].Cells[a, 7]:= 'Нет';
+      // инф. подтверждена поставщиком
+      houseXL.WorkBooks[1].WorkSheets[10].Cells[e, 8]:= 'Да';
     end;
 
     //Лицевой счет

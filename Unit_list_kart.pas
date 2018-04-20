@@ -201,6 +201,7 @@ type
     wwDBEdit6: TwwDBEdit;
     cxLabel6: TcxLabel;
     BitBtn2: TBitBtn;
+    OD_list_kartFK_KLSK_OBJ: TFloatField;
     procedure wwDBGrid1DblClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure wwDBGrid1KeyDown(Sender: TObject; var Key: Word;

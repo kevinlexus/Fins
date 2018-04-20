@@ -1,6 +1,6 @@
 object Form_sch_history: TForm_sch_history
-  Left = 351
-  Top = 595
+  Left = 521
+  Top = 401
   Width = 723
   Height = 380
   Caption = #1048#1089#1090#1086#1088#1080#1103' '#1074#1074#1086#1076#1072' '#1087#1086#1082#1072#1079#1072#1085#1080#1081' '#1089#1095#1077#1090#1095#1080#1082#1086#1074
@@ -93,7 +93,7 @@ object Form_sch_history: TForm_sch_history
     Left = 0
     Top = 0
     Width = 707
-    Height = 342
+    Height = 341
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
@@ -104,7 +104,7 @@ object Form_sch_history: TForm_sch_history
         Left = 0
         Top = 0
         Width = 473
-        Height = 210
+        Height = 209
         Align = alLeft
         Caption = 'Panel1'
         TabOrder = 0
@@ -112,7 +112,7 @@ object Form_sch_history: TForm_sch_history
           Left = 1
           Top = 1
           Width = 471
-          Height = 208
+          Height = 207
           Align = alClient
           TabOrder = 0
           object cxGrid2DBTableView1: TcxGridDBTableView
@@ -203,7 +203,7 @@ object Form_sch_history: TForm_sch_history
         Left = 481
         Top = 0
         Width = 218
-        Height = 210
+        Height = 209
         Align = alClient
         Caption = 'Panel2'
         TabOrder = 1
@@ -211,7 +211,7 @@ object Form_sch_history: TForm_sch_history
           Left = 1
           Top = 1
           Width = 216
-          Height = 208
+          Height = 207
           Align = alClient
           TabOrder = 0
           object cxGridDBTableView2: TcxGridDBTableView
@@ -273,7 +273,7 @@ object Form_sch_history: TForm_sch_history
       end
       object Panel3: TPanel
         Left = 0
-        Top = 210
+        Top = 209
         Width = 699
         Height = 104
         Align = alBottom
@@ -596,7 +596,7 @@ object Form_sch_history: TForm_sch_history
         Left = 473
         Top = 0
         Width = 8
-        Height = 210
+        Height = 209
         Control = Panel1
       end
     end

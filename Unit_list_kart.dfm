@@ -95,7 +95,7 @@ object Form_list_kart: TForm_list_kart
     Left = 0
     Top = 0
     Width = 1120
-    Height = 528
+    Height = 527
     ControlType.Strings = (
       'KRAN1;CheckBox;1;0'
       'SUBS_CUR;CheckBox;1;0'
@@ -217,7 +217,7 @@ object Form_list_kart: TForm_list_kart
   end
   object Panel1: TPanel
     Left = 0
-    Top = 528
+    Top = 527
     Width = 1551
     Height = 41
     Align = alBottom
@@ -320,7 +320,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 24
           Height = 37
-          Hint = #1050' '#1087#1077#1088#1074#1086#1081' '#1079#1072#1087#1080#1089#1080
+          Hint = 'Move to first record'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -337,7 +337,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 24
           Height = 37
-          Hint = #1053#1072#1079#1072#1076' '#1085#1072' 10 '#1079#1072#1087#1080#1089#1077#1081
+          Hint = 'Move backward 10 records'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -354,7 +354,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 24
           Height = 37
-          Hint = #1055#1088#1077#1076#1099#1076#1091#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
+          Hint = 'Move to prior record'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -371,7 +371,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 24
           Height = 37
-          Hint = #1057#1083#1077#1076#1091#1102#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
+          Hint = 'Move to next record'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -388,7 +388,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 24
           Height = 37
-          Hint = #1042#1087#1077#1088#1077#1076' '#1085#1072' 10 '#1079#1072#1087#1080#1089#1077#1081
+          Hint = 'Move forward 10 records'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -405,7 +405,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 24
           Height = 37
-          Hint = #1055#1077#1088#1077#1081#1090#1080' '#1082' '#1087#1086#1089#1083#1077#1076#1085#1077#1081' '#1079#1072#1087#1080#1089#1080
+          Hint = 'Move to last record'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -422,7 +422,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 23
           Height = 37
-          Hint = #1044#1086#1073#1072#1074#1080#1090#1100' '#1085#1086#1074#1091#1102' '#1079#1072#1087#1080#1089#1100
+          Hint = 'Insert new record'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -439,7 +439,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 23
           Height = 37
-          Hint = #1059#1076#1072#1083#1080#1090#1100' '#1090#1077#1082#1091#1097#1091#1102' '#1079#1072#1087#1080#1089#1100
+          Hint = 'Delete current record'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -457,7 +457,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 23
           Height = 37
-          Hint = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1090#1077#1082#1091#1097#1091#1102' '#1079#1072#1087#1080#1089#1100
+          Hint = 'Edit current record'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -474,7 +474,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 23
           Height = 37
-          Hint = #1054#1090#1087#1088#1072#1074#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103' '#1074' '#1073#1072#1079#1091
+          Hint = 'Post changes of current record'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -492,7 +492,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 23
           Height = 37
-          Hint = #1054#1090#1084#1077#1085#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103' '#1090#1077#1082#1091#1097#1077#1081' '#1079#1072#1087#1080#1089#1080
+          Hint = 'Cancel changes made to current record'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -510,7 +510,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 23
           Height = 37
-          Hint = #1054#1073#1085#1086#1074#1080#1090#1100' '#1079#1072#1087#1080#1089#1080
+          Hint = 'Refresh the contents of the dataset'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -527,7 +527,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 23
           Height = 37
-          Hint = #1055#1086#1089#1090#1072#1074#1080#1090#1100' '#1079#1072#1082#1083#1072#1076#1082#1091' '#1085#1072' '#1090#1077#1082#1091#1097#1077#1081' '#1079#1072#1087#1080#1089#1080
+          Hint = 'Bookmark current record'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -543,7 +543,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 23
           Height = 37
-          Hint = #1055#1077#1088#1077#1081#1090#1080' '#1082' '#1089#1086#1093#1088#1072#1085#1105#1085#1085#1086#1081' '#1079#1072#1082#1083#1072#1076#1082#1077
+          Hint = 'Go back to saved bookmark'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -974,7 +974,7 @@ object Form_list_kart: TForm_list_kart
     Left = 1120
     Top = 0
     Width = 431
-    Height = 528
+    Height = 527
     Align = alRight
     TabOrder = 6
     Visible = False
@@ -1242,7 +1242,7 @@ object Form_list_kart: TForm_list_kart
         's.name || '#39', '#39' || nvl(ltrim(k.nd, '#39'0'#39'), '#39'0'#39') || '#39'-'#39' ||nvl(ltrim(' +
         'k.kw, '#39'0'#39'), '#39'0'#39') as adr, u.name as lsk_tp, u.cd as lsk_tp_cd, k.' +
         'sel1, k.entr,'
-      'k.parent_lsk'
+      'k.parent_lsk, k.fk_klsk_obj'
       
         'from scott.kart k, scott.spul s, scott.status t, scott.s_reu_tre' +
         'st r, scott.u_list u'
@@ -1292,7 +1292,7 @@ object Form_list_kart: TForm_list_kart
     OracleDictionary.UseMessageTable = True
     QBEDefinition.AllowOperators = True
     QBEDefinition.QBEFieldDefs = {
-      040000004F000000030000004C534B010100000000030000004B554C00000000
+      0400000050000000030000004C534B010100000000030000004B554C00000000
       0000020000004E44000000000000020000004B57000000000000030000004649
       4F010100000000030000004B5052010000000000060000004B50525F57520100
       00000000060000004B50525F4F54010000000000030000004F504C0100000000
@@ -1329,7 +1329,8 @@ object Form_list_kart: TForm_list_kart
       00090000004C534B5F54505F4344010000000000080000004E414D455F524555
       0100000000000400000053454C3101000000000004000000454E545201000000
       000003000000504F54010000000000030000004D4F5401000000000004000000
-      454C534B0100000000000A000000504152454E545F4C534B010000000000}
+      454C534B0100000000000A000000504152454E545F4C534B0100000000000B00
+      0000464B5F4B4C534B5F4F424A010000000000}
     QueryAllRecords = False
     RefreshOptions = [roAfterInsert, roAfterUpdate, roAllFields]
     AfterRefreshRecord = OD_list_kartAfterRefreshRecord
@@ -1794,6 +1795,9 @@ object Form_list_kart: TForm_list_kart
       FieldName = 'MOT'
       Visible = False
     end
+    object OD_list_kartFK_KLSK_OBJ: TFloatField
+      FieldName = 'FK_KLSK_OBJ'
+    end
   end
   object DS_list_kart: TDataSource
     DataSet = OD_list_kart
@@ -1805,7 +1809,7 @@ object Form_list_kart: TForm_list_kart
       'select * from scott.t_org t')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      040000002E000000020000004944010000000000020000004344010000000000
+      0400000030000000020000004944010000000000020000004344010000000000
       08000000464B5F4F52475450010000000000040000004E414D45010000000000
       030000004E505001000000000001000000560100000000000900000050415245
       4E545F4944010000000000030000005245550100000000000500000054524553
@@ -1829,7 +1833,8 @@ object Form_list_kart: TForm_list_kart
       000000000B000000525F5343485F41444449540100000000000B000000464B5F
       42494C4C5F56415201000000000006000000414F475549440100000000000500
       00004F4B544D4F01000000000008000000434F44455F44454201000000000009
-      000000444F4C475F4E414D45010000000000}
+      000000444F4C475F4E414D450100000000000A00000042414E4B5F464E414D45
+      01000000000003000000475250010000000000}
     Session = DataModule1.OracleSession1
     Active = True
     Left = 240
@@ -2041,7 +2046,7 @@ object Form_list_kart: TForm_list_kart
     Top = 162
   end
   object frxReport_base: TfrxReport
-    Version = '0.0'
+    Version = '5.1.9'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
