@@ -1,6 +1,6 @@
 object Form_find_adr: TForm_find_adr
-  Left = 499
-  Top = 513
+  Left = 269
+  Top = 687
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = #1055#1086#1080#1089#1082' '#1087#1086' '#1072#1076#1088#1077#1089#1091
@@ -321,7 +321,9 @@ object Form_find_adr: TForm_find_adr
       '  from scott.c_houses k, scott.kart a, scott.s_reu_trest s'
       ' where a.house_id = k.id'
       '   and k.kul = :id'
-      '   and a.reu = s.reu'
+      
+        '   and trim(a.reu) = trim(s.reu) --'#1084#1086#1078#1085#1086' '#1091#1073#1088#1072#1090#1100' trim, '#1087#1086#1089#1083#1077' '#1087#1077#1088#1077 +
+        #1093#1086#1076#1072' '#1085#1072' 3 '#1088#1072#1079#1088#1103#1076#1072
       '   and (nvl(:p_var2,0)=0 or a.psch not in (8,9))'
       
         '   and (:flt_reu_ is not null and a.reu = :flt_reu_ or :flt_reu_' +

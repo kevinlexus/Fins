@@ -1,6 +1,6 @@
 object Form_tree_objects: TForm_tree_objects
-  Left = 258
-  Top = 183
+  Left = 234
+  Top = 177
   Width = 353
   Height = 740
   Align = alLeft
@@ -106,7 +106,7 @@ object Form_tree_objects: TForm_tree_objects
     Left = 0
     Top = 459
     Width = 337
-    Height = 214
+    Height = 213
     Align = alClient
     AutoFitColWidths = True
     Color = clInfoBk
@@ -590,7 +590,7 @@ object Form_tree_objects: TForm_tree_objects
   end
   object ToolBar1: TToolBar
     Left = 0
-    Top = 673
+    Top = 672
     Width = 337
     Height = 29
     Align = alBottom
@@ -976,8 +976,9 @@ object Form_tree_objects: TForm_tree_objects
       Size = 40
     end
     object OD_tree_objectsREU: TStringField
+      DisplayWidth = 3
       FieldName = 'REU'
-      Size = 2
+      Size = 3
     end
     object OD_tree_objectsKUL: TStringField
       FieldName = 'KUL'

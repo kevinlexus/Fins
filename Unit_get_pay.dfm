@@ -1,6 +1,6 @@
 object Form_get_pay: TForm_get_pay
-  Left = 700
-  Top = 180
+  Left = 394
+  Top = 378
   Width = 903
   Height = 543
   Caption = #1042#1074#1086#1076' '#1086#1087#1083#1072#1090#1099
@@ -172,7 +172,7 @@ object Form_get_pay: TForm_get_pay
   end
   object GroupBox1: TGroupBox
     Left = 0
-    Top = 348
+    Top = 347
     Width = 887
     Height = 157
     Align = alBottom
@@ -279,7 +279,7 @@ object Form_get_pay: TForm_get_pay
         Left = 39
         Top = 16
         Width = 110
-        Height = 32
+        Height = 33
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -20
@@ -299,7 +299,7 @@ object Form_get_pay: TForm_get_pay
         Left = 207
         Top = 16
         Width = 109
-        Height = 32
+        Height = 33
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -20
@@ -317,7 +317,7 @@ object Form_get_pay: TForm_get_pay
         Left = 364
         Top = 16
         Width = 110
-        Height = 32
+        Height = 33
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -20
@@ -335,7 +335,7 @@ object Form_get_pay: TForm_get_pay
         Left = 532
         Top = 16
         Width = 109
-        Height = 32
+        Height = 33
         Enabled = False
         EditButtons = <>
         Font.Charset = DEFAULT_CHARSET
@@ -375,7 +375,7 @@ object Form_get_pay: TForm_get_pay
         Left = 335
         Top = 55
         Width = 139
-        Height = 32
+        Height = 33
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -20
@@ -392,7 +392,7 @@ object Form_get_pay: TForm_get_pay
         Left = 548
         Top = 55
         Width = 149
-        Height = 32
+        Height = 33
         AutoFillDateAndTime = True
         CalendarAttributes.Font.Charset = DEFAULT_CHARSET
         CalendarAttributes.Font.Color = clWindowText
@@ -413,7 +413,7 @@ object Form_get_pay: TForm_get_pay
         Left = -3
         Top = 98
         Width = 700
-        Height = 32
+        Height = 33
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -20
@@ -450,7 +450,7 @@ object Form_get_pay: TForm_get_pay
     Left = 0
     Top = 60
     Width = 887
-    Height = 288
+    Height = 287
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText

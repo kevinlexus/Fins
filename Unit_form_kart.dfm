@@ -427,7 +427,7 @@ object Form_kart: TForm_kart
       Top = 1
       Width = 337
       Height = 222
-      ActivePage = TabSheet3
+      ActivePage = TabSheet10
       Align = alLeft
       TabOrder = 1
       object TabSheet2: TTabSheet
@@ -1367,8 +1367,8 @@ object Form_kart: TForm_kart
         object Label27: TLabel
           Left = 12
           Top = 13
-          Width = 77
-          Height = 17
+          Width = 75
+          Height = 13
           Caption = 'K_ID '#1055#1086#1084#1077#1097
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1409,8 +1409,8 @@ object Form_kart: TForm_kart
         object Label56: TLabel
           Left = 172
           Top = 13
-          Width = 61
-          Height = 20
+          Width = 50
+          Height = 13
           Caption = 'K_ID '#1051#1057
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -3006,16 +3006,6 @@ object Form_kart: TForm_kart
     Font.Height = -11
     Font.Name = 'Tahoma'
     Font.Style = []
-  end
-  object DBEdit3: TDBEdit
-    Left = 96
-    Top = 8
-    Width = 65
-    Height = 21
-    DataField = 'K_LSK_ID'
-    DataSource = Form_list_kart.DS_list_kart
-    ReadOnly = True
-    TabOrder = 5
   end
   object OD_spul: TOracleDataSet
     SQL.Strings = (

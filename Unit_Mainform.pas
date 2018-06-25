@@ -223,6 +223,7 @@ type
     N138: TMenuItem;
     N139: TMenuItem;
     ImageListTiny: TImageList;
+    N140: TMenuItem;
     procedure N5Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure N7Click(Sender: TObject);
@@ -374,6 +375,7 @@ type
     procedure N137Click(Sender: TObject);
     procedure N138Click(Sender: TObject);
     procedure N139Click(Sender: TObject);
+    procedure N140Click(Sender: TObject);
   private
   public
     exepath_: string;
@@ -445,7 +447,7 @@ uses
   Unit_spr_street, Unit_spr_usl, Unit_spr_rep, Unit_list_set, Unit_prep_doc,
   Unit_corr_sal, Unit_spr_comps, Unit_spr_props, Unit_lk_acc, Unit_auto_chrg,
   Unit_service_cash, u_frmLoadPrivs, u_frmPenCorr, u_frmLoadFias,
-  ObjPar, u_frmProject;
+  ObjPar, u_frmProject, Unit_spr_proc_pay;
 
 {$R *.dfm}
 
@@ -2221,6 +2223,12 @@ end;
 procedure TForm_Main.N139Click(Sender: TObject);
 begin
   Application.CreateForm(TfrmProject, frmProject);
+end;
+
+procedure TForm_Main.N140Click(Sender: TObject);
+begin
+  Application.CreateForm(TForm_spr_proc_pay, Form_spr_proc_pay);
+
 end;
 
 end.

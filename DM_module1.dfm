@@ -76,6 +76,7 @@ object DataModule1: TDataModule1
       000000}
     Session = OracleSession1
     DesignActivation = True
+    Active = True
     Left = 32
     Top = 200
   end

@@ -132,6 +132,8 @@ type
     OD_vvodISTOWELHEATEXIST: TFloatField;
     cxGrid1DBTableView1ISHOTPIPEINSULATED: TcxGridDBColumn;
     cxGrid1DBTableView1ISTOWELHEATEXIST: TcxGridDBColumn;
+    OD_vvodNON_HEAT_PER: TFloatField;
+    cxGrid1DBTableView1NONHEATPERIOD: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);

@@ -397,7 +397,6 @@ type
     cxDBTextEdit2: TcxDBTextEdit;
     Label55: TLabel;
     Label24: TLabel;
-    DBEdit3: TDBEdit;
     DBEdit8: TDBEdit;
     Label56: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

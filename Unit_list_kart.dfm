@@ -1,6 +1,6 @@
 object Form_list_kart: TForm_list_kart
-  Left = 264
-  Top = 182
+  Left = 533
+  Top = 122
   Width = 1567
   Height = 607
   Caption = #1050#1072#1088#1090#1086#1095#1082#1080
@@ -1247,8 +1247,9 @@ object Form_list_kart: TForm_list_kart
         'from scott.kart k, scott.spul s, scott.status t, scott.s_reu_tre' +
         'st r, scott.u_list u'
       
-        'where k.kul=s.id and k.status=t.id and k.reu=r.reu and k.fk_tp=u' +
-        '.id(+)'
+        'where k.kul=s.id and k.status=t.id and trim(k.reu)=trim(r.reu) -' +
+        '- '#1091#1073#1088#1072#1090#1100' Trim '#1082#1086#1075#1076#1072' '#1087#1077#1088#1077#1081#1076#1105#1084' '#1085#1072' 3 '#1079#1085#1072#1095#1082#1091
+      ' and k.fk_tp=u.id(+)'
       ''
       'and nvl(:flt_reu_,k.reu)=k.reu'
       'and nvl(:flt_kul_,k.kul)=k.kul'
@@ -1797,6 +1798,7 @@ object Form_list_kart: TForm_list_kart
     end
     object OD_list_kartFK_KLSK_OBJ: TFloatField
       FieldName = 'FK_KLSK_OBJ'
+      Visible = False
     end
   end
   object DS_list_kart: TDataSource
@@ -1888,7 +1890,7 @@ object Form_list_kart: TForm_list_kart
       0300000001000000040000003A4C534B05000000090000002020202020202020
       0000000000}
     QBEDefinition.QBEFieldDefs = {
-      040000005F000000030000004C534B010000000000030000004B554C01000000
+      0400000060000000030000004C534B010000000000030000004B554C01000000
       0000020000004E44010000000000020000004B57010000000000030000004649
       4F010000000000030000004B5052010000000000060000004B50525F57520100
       00000000060000004B50525F4F54010000000000070000004B50525F43454D01
@@ -1934,7 +1936,7 @@ object Form_list_kart: TForm_list_kart
       0400000053454C310100000000000700000056564F445F4F5401000000000004
       000000454E545201000000000003000000504F54010000000000030000004D4F
       5401000000000004000000454C534B0100000000000A000000504152454E545F
-      4C534B010000000000}
+      4C534B0100000000000B000000464B5F4B4C534B5F4F424A010000000000}
     Master = OD_list_kart
     MasterFields = 'lsk'
     Session = DataModule1.OracleSession1

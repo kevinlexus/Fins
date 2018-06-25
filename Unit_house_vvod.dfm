@@ -531,6 +531,14 @@ object Form_house_vvod: TForm_house_vvod
           Properties.ValueChecked = 1
           Properties.ValueUnchecked = 0
         end
+        object cxGrid1DBTableView1NONHEATPERIOD: TcxGridDBColumn
+          Caption = #1053#1072#1095#1080#1089#1083'.'#1074' '#1053#1077#1086#1090#1086#1087'.'#1087#1077#1088#1080#1086#1076'?'
+          DataBinding.FieldName = 'NON_HEAT_PER'
+          PropertiesClassName = 'TcxCheckBoxProperties'
+          Properties.ValueChecked = 1
+          Properties.ValueGrayed = 0
+          Properties.ValueUnchecked = '0'
+        end
       end
       object cxGrid1Level1: TcxGridLevel
         GridView = cxGrid1DBTableView1
@@ -572,6 +580,7 @@ object Form_house_vvod: TForm_house_vvod
       '       r.kub_fact_upnorm, '
       '       r.ishotpipeinsulated, '
       '       r.istowelheatexist,'
+      '       r.non_heat_per,'
       '       r.rowid'
       '  from (select c.*, nvl(u.nm, '#39#1055#1086#1076#1098#1077#1079#1076#39') as nm, u.npp'
       '           from scott.c_vvod c'
@@ -618,7 +627,7 @@ object Form_house_vvod: TForm_house_vvod
       4F5553455F030000000000000000000000090000003A464C545F4B554C5F0500
       00000000000000000000}
     QBEDefinition.QBEFieldDefs = {
-      040000002B00000003000000524555010000000000040000004E414D45010000
+      040000002C00000003000000524555010000000000040000004E414D45010000
       000000020000004E440100000000000400000056564F44010000000000030000
       004B554C010000000000030000004B5542010000000000070000004B55425F4D
       414E010000000000030000004B5052010000000000070000004B55425F534348
@@ -641,7 +650,8 @@ object Form_house_vvod: TForm_house_vvod
       494D4954010000000000080000004544545F4E4F524D0100000000000F000000
       4B55425F464143545F55504E4F524D010000000000120000004953484F545049
       5045494E53554C41544544010000000000100000004953544F57454C48454154
-      4558495354010000000000}
+      45584953540100000000000C0000004E4F4E5F484541545F5045520100000000
+      00}
     RefreshOptions = [roAfterUpdate, roAllFields]
     UpdatingTable = 'scott.c_vvod'
     Session = DataModule1.OracleSession1
@@ -869,6 +879,9 @@ object Form_house_vvod: TForm_house_vvod
     end
     object OD_vvodISTOWELHEATEXIST: TFloatField
       FieldName = 'ISTOWELHEATEXIST'
+    end
+    object OD_vvodNON_HEAT_PER: TFloatField
+      FieldName = 'NON_HEAT_PER'
     end
   end
   object DS_vvod: TDataSource

@@ -1,6 +1,6 @@
 object Form_Main: TForm_Main
-  Left = 689
-  Top = 240
+  Left = 494
+  Top = 237
   Width = 880
   Height = 724
   Caption = #1044#1080#1088#1077#1082#1090
@@ -1004,6 +1004,11 @@ object Form_Main: TForm_Main
         Caption = #1058#1072#1088#1080#1092#1099' '#1087#1086' '#1091#1089#1083#1091#1075#1072#1084
         ImageIndex = 60
         OnClick = N122Click
+      end
+      object N140: TMenuItem
+        Caption = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082' '#1086#1073#1088#1072#1073#1086#1090#1082#1080' '#1086#1087#1083#1072#1090#1099
+        ImageIndex = 60
+        OnClick = N140Click
       end
     end
     object N73: TMenuItem
