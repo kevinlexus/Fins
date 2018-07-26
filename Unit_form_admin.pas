@@ -67,6 +67,8 @@ type
     pm2: TPopupMenu;
     N1: TMenuItem;
     N2: TMenuItem;
+    Edit1: TEdit;
+    Label1: TLabel;
     procedure btn1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -103,6 +105,9 @@ begin
 end;
 
 procedure TForm_admin.btn1Click(Sender: TObject);
+Var
+  s, decr: string;
+  I,I1: Integer;
 begin
   mmo1.Clear;
   mmo1.Lines.Add('[Application]');
@@ -111,6 +116,19 @@ begin
   mmo1.Lines.Add('SID='+crypt(edt2.Text));
   mmo1.Lines.Add('');
 
+  s:=Edit1.Text;
+  I := 1;
+  I1 := Length(s);
+  while I < I1 do
+  begin
+    decr := decr + CHR(StrToInt('$' + copy(s, I, 3)));
+    I := I + 3;
+  end;
+
+  mmo1.Lines.Add('Decript='+decr);
+
+
+//  SID := SID + CHR(StrToInt('$' + copy(s, I, 3)));
 {    User2:='';
     P := PChar(Edit4.Text);
     I:=0;

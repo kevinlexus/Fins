@@ -1,6 +1,6 @@
 object Form_kart: TForm_kart
-  Left = 484
-  Top = 222
+  Left = 292
+  Top = 225
   Width = 903
   Height = 675
   BorderIcons = [biSystemMenu, biMinimize]
@@ -427,7 +427,7 @@ object Form_kart: TForm_kart
       Top = 1
       Width = 337
       Height = 222
-      ActivePage = TabSheet10
+      ActivePage = TabSheet3
       Align = alLeft
       TabOrder = 1
       object TabSheet2: TTabSheet
@@ -3991,9 +3991,10 @@ object Form_kart: TForm_kart
     Left = 560
     Top = 544
     object OD_s_reu_trestREU: TStringField
+      DisplayWidth = 3
       FieldName = 'REU'
       Required = True
-      Size = 2
+      Size = 3
     end
     object OD_s_reu_trestNAME_TR: TStringField
       FieldName = 'NAME_TR'

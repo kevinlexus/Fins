@@ -1,6 +1,6 @@
 object Form_admin: TForm_admin
-  Left = 541
-  Top = 259
+  Left = 655
+  Top = 174
   Width = 653
   Height = 501
   Caption = #1040#1076#1084#1080#1085
@@ -102,12 +102,12 @@ object Form_admin: TForm_admin
     Left = 0
     Top = 0
     Width = 637
-    Height = 463
+    Height = 462
     Align = alClient
     TabOrder = 1
-    Properties.ActivePage = cxTabSheet2
+    Properties.ActivePage = cxTabSheet1
     Properties.CustomButtons.Buttons = <>
-    ClientRectBottom = 459
+    ClientRectBottom = 458
     ClientRectLeft = 4
     ClientRectRight = 633
     ClientRectTop = 24
@@ -153,6 +153,19 @@ object Form_admin: TForm_admin
         Font.Style = [fsBold]
         ParentFont = False
       end
+      object Label1: TLabel
+        Left = 176
+        Top = 72
+        Width = 42
+        Height = 13
+        Caption = 'Decript'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
       object mmo1: TMemo
         Left = 8
         Top = 96
@@ -183,7 +196,7 @@ object Form_admin: TForm_admin
       end
       object pnl2: TPanel
         Left = 0
-        Top = 394
+        Top = 393
         Width = 629
         Height = 41
         Align = alBottom
@@ -202,13 +215,20 @@ object Form_admin: TForm_admin
           OnClick = btn1Click
         end
       end
+      object Edit1: TEdit
+        Left = 224
+        Top = 65
+        Width = 121
+        Height = 21
+        TabOrder = 5
+      end
     end
     object cxTabSheet2: TcxTabSheet
       Caption = #1057#1077#1089#1089#1080#1080
       ImageIndex = 1
       object grp1: TGroupBox
         Left = 0
-        Top = 233
+        Top = 232
         Width = 629
         Height = 202
         Align = alBottom
@@ -256,7 +276,7 @@ object Form_admin: TForm_admin
         Left = 0
         Top = 0
         Width = 629
-        Height = 233
+        Height = 232
         Align = alClient
         Caption = #1042#1089#1077' '#1089#1077#1089#1089#1080#1080':'
         TabOrder = 1
@@ -264,7 +284,7 @@ object Form_admin: TForm_admin
           Left = 2
           Top = 15
           Width = 625
-          Height = 216
+          Height = 215
           Align = alClient
           PopupMenu = pm1
           TabOrder = 0
@@ -413,8 +433,8 @@ object Form_admin: TForm_admin
       0000004E414D45010000000000}
     Session = DataModule1.OracleSession1
     Active = True
-    Left = 28
-    Top = 96
+    Left = 36
+    Top = 152
   end
   object DS_sess2: TDataSource
     DataSet = OD_sess2

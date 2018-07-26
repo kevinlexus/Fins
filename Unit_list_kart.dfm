@@ -1,6 +1,6 @@
 object Form_list_kart: TForm_list_kart
-  Left = 533
-  Top = 122
+  Left = 231
+  Top = 359
   Width = 1567
   Height = 607
   Caption = #1050#1072#1088#1090#1086#1095#1082#1080
@@ -105,41 +105,41 @@ object Form_list_kart: TForm_list_kart
       'USL_VOL;CustomEdit;wwExpandButton1;F'
       'BTN;CustomEdit;wwExpandButton1;F')
     Selected.Strings = (
-      'LSK_TP'#9'15'#9#1058#1080#1087#9#9
-      'BTN'#9'2'#9' '#9#9
-      'NAME_REU'#9'8'#9#1054#1088#1075'.'#9#9
-      'LSK'#9'8'#9#1051'/C'#9#9
-      'DOG_NUM'#9'10'#9#8470' '#1076#1086#1075#1086#1074#1086#1088#1072#9#9
-      'KUL'#9'6'#9#1050#1086#1076' '#1091#1083'.'#9#9
-      'NAME'#9'19'#9#1059#1083#1080#1094#1072#9#9
-      'N_ND'#9'6'#9#1044#1086#1084#9#9
-      'N_KW'#9'7'#9#1050#1074'.'#9#9
-      'ENTR'#9'8'#9#1055#1086#1076#1098#1077#1079#1076#9#9
-      'N_STATUS'#9'8'#9#1057#1090#1072#1090#1091#1089#9#9
-      'FIO'#9'16'#9#1060'.'#1048'.'#1054'.'#9#9
-      'ET'#9'5'#9#1069#1090#1072#1078#9#9
-      'KPR'#9'7'#9#1055#1088#1086#1078#1080#1074'.'#9#9
-      'KPR_OT'#9'6'#9#1054#1090#1089#1091#1090'.'#9#9
-      'KPR_WR'#9'8'#9#1042#1088'.'#1079#1072#1088#1077#1075'.'#9#9
-      'KPR_WRP'#9'8'#9#1042#1088'.'#1087#1088#1086#1078'.'#9#9
-      'OPL'#9'7'#9#1054#1073#1097'.'#1087#1083'.'#9#9
-      'MHW'#9'8'#9#1050#1091#1073'.'#1061'.'#1042'.'#9#9
-      'MGW'#9'8'#9#1050#1091#1073'.'#1043'.'#1042'.'#9#9
-      'MEL'#9'11'#9#1050#1074#1090'.'#1069#1083'.'#1101#1085'.'#9#9
-      'DEB_ORG'#9'13'#9#1054#1088#1075'.'#1079#1072#1076#1086#1083#1078#1085'.'#9#9
-      'SUB_DATA'#9'10'#9#1054#1082#1086#1085#1095'.'#1089#1091#1073#9#9
-      'EL1'#9'9'#9#1069#1083'.'#1101#1085'.'#9#9
-      'KI'#9'10'#9#1051#1100#1075#1086#1090#1085#1080#1082#1086#1074#9#9
-      'PSCH_NAME'#9'9'#9#1057#1095#1077#1090#1095#1080#1082#9#9
-      'MG1'#9'7'#9#1057#9#9
-      'MG2'#9'7'#9#1087#1086#9#9
-      'KRAN1'#9'8'#9#1057#1080#1089#1090'.'#1086#1090#1086#1087'.'#9#9
-      'TEXT'#9'35'#9#1055#1088#1080#1084#1077#1095#1072#1085#1080#1077#9#9
-      'LSK_EXT'#9'8'#9'LSK_EXT'#9#9
-      'LSK_TP_CD'#9'32'#9'LSK_TP_CD'#9#9
-      'SEL1'#9'10'#9'SEL1'#9#9
-      'PARENT_LSK'#9'12'#9#1056#1086#1076#1080#1090'.'#1083#1080#1094'.'#1089#1095#1077#1090#9#9
-      'ELSK'#9'10'#9'ELSK'#9#9)
+      'LSK_TP'#9'15'#9#1058#1080#1087
+      'BTN'#9'2'#9' '
+      'NAME_REU'#9'8'#9#1054#1088#1075'.'
+      'LSK'#9'8'#9#1051'/C'
+      'DOG_NUM'#9'10'#9#8470' '#1076#1086#1075#1086#1074#1086#1088#1072
+      'KUL'#9'6'#9#1050#1086#1076' '#1091#1083'.'
+      'NAME'#9'19'#9#1059#1083#1080#1094#1072
+      'N_ND'#9'6'#9#1044#1086#1084
+      'N_KW'#9'7'#9#1050#1074'.'
+      'ENTR'#9'8'#9#1055#1086#1076#1098#1077#1079#1076
+      'N_STATUS'#9'8'#9#1057#1090#1072#1090#1091#1089
+      'FIO'#9'16'#9#1060'.'#1048'.'#1054'.'
+      'ET'#9'5'#9#1069#1090#1072#1078
+      'KPR'#9'7'#9#1055#1088#1086#1078#1080#1074'.'
+      'KPR_OT'#9'6'#9#1054#1090#1089#1091#1090'.'
+      'KPR_WR'#9'8'#9#1042#1088'.'#1079#1072#1088#1077#1075'.'
+      'KPR_WRP'#9'8'#9#1042#1088'.'#1087#1088#1086#1078'.'
+      'OPL'#9'7'#9#1054#1073#1097'.'#1087#1083'.'
+      'MHW'#9'8'#9#1050#1091#1073'.'#1061'.'#1042'.'
+      'MGW'#9'8'#9#1050#1091#1073'.'#1043'.'#1042'.'
+      'MEL'#9'11'#9#1050#1074#1090'.'#1069#1083'.'#1101#1085'.'
+      'DEB_ORG'#9'13'#9#1054#1088#1075'.'#1079#1072#1076#1086#1083#1078#1085'.'
+      'SUB_DATA'#9'10'#9#1054#1082#1086#1085#1095'.'#1089#1091#1073
+      'EL1'#9'9'#9#1069#1083'.'#1101#1085'.'
+      'KI'#9'10'#9#1051#1100#1075#1086#1090#1085#1080#1082#1086#1074
+      'PSCH_NAME'#9'9'#9#1057#1095#1077#1090#1095#1080#1082
+      'MG1'#9'7'#9#1057
+      'MG2'#9'7'#9#1087#1086
+      'KRAN1'#9'8'#9#1057#1080#1089#1090'.'#1086#1090#1086#1087'.'
+      'TEXT'#9'35'#9#1055#1088#1080#1084#1077#1095#1072#1085#1080#1077
+      'LSK_EXT'#9'8'#9'LSK_EXT'
+      'LSK_TP_CD'#9'32'#9'LSK_TP_CD'
+      'SEL1'#9'10'#9'SEL1'
+      'PARENT_LSK'#9'12'#9#1056#1086#1076#1080#1090'.'#1083#1080#1094'.'#1089#1095#1077#1090
+      'ELSK'#9'10'#9'ELSK')
     IniAttributes.Delimiter = ';;'
     TitleColor = clBtnFace
     FixedCols = 0
@@ -320,7 +320,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 24
           Height = 37
-          Hint = 'Move to first record'
+          Hint = #1050' '#1087#1077#1088#1074#1086#1081' '#1079#1072#1087#1080#1089#1080
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -337,7 +337,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 24
           Height = 37
-          Hint = 'Move backward 10 records'
+          Hint = #1053#1072#1079#1072#1076' '#1085#1072' 10 '#1079#1072#1087#1080#1089#1077#1081
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -354,7 +354,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 24
           Height = 37
-          Hint = 'Move to prior record'
+          Hint = #1055#1088#1077#1076#1099#1076#1091#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -371,7 +371,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 24
           Height = 37
-          Hint = 'Move to next record'
+          Hint = #1057#1083#1077#1076#1091#1102#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -388,7 +388,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 24
           Height = 37
-          Hint = 'Move forward 10 records'
+          Hint = #1042#1087#1077#1088#1077#1076' '#1085#1072' 10 '#1079#1072#1087#1080#1089#1077#1081
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -405,7 +405,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 24
           Height = 37
-          Hint = 'Move to last record'
+          Hint = #1055#1077#1088#1077#1081#1090#1080' '#1082' '#1087#1086#1089#1083#1077#1076#1085#1077#1081' '#1079#1072#1087#1080#1089#1080
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -422,12 +422,13 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 23
           Height = 37
-          Hint = 'Insert new record'
+          Hint = #1044#1086#1073#1072#1074#1080#1090#1100' '#1085#1086#1074#1091#1102' '#1079#1072#1087#1080#1089#1100
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
           Transparent = False
           Caption = 'wwDBNavigator1Insert'
+          Enabled = False
           DisabledTextColors.ShadeColor = clGray
           DisabledTextColors.HighlightColor = clBtnHighlight
           Index = 6
@@ -439,7 +440,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 23
           Height = 37
-          Hint = 'Delete current record'
+          Hint = #1059#1076#1072#1083#1080#1090#1100' '#1090#1077#1082#1091#1097#1091#1102' '#1079#1072#1087#1080#1089#1100
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -457,12 +458,13 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 23
           Height = 37
-          Hint = 'Edit current record'
+          Hint = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1090#1077#1082#1091#1097#1091#1102' '#1079#1072#1087#1080#1089#1100
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
           Transparent = False
           Caption = 'wwDBNavigator1Edit'
+          Enabled = False
           DisabledTextColors.ShadeColor = clGray
           DisabledTextColors.HighlightColor = clBtnHighlight
           Index = 8
@@ -474,7 +476,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 23
           Height = 37
-          Hint = 'Post changes of current record'
+          Hint = #1054#1090#1087#1088#1072#1074#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103' '#1074' '#1073#1072#1079#1091
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -492,7 +494,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 23
           Height = 37
-          Hint = 'Cancel changes made to current record'
+          Hint = #1054#1090#1084#1077#1085#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103' '#1090#1077#1082#1091#1097#1077#1081' '#1079#1072#1087#1080#1089#1080
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -510,12 +512,13 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 23
           Height = 37
-          Hint = 'Refresh the contents of the dataset'
+          Hint = #1054#1073#1085#1086#1074#1080#1090#1100' '#1079#1072#1087#1080#1089#1080
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
           Transparent = False
           Caption = 'wwDBNavigator1Refresh'
+          Enabled = False
           DisabledTextColors.ShadeColor = clGray
           DisabledTextColors.HighlightColor = clBtnHighlight
           Index = 11
@@ -527,12 +530,13 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 23
           Height = 37
-          Hint = 'Bookmark current record'
+          Hint = #1055#1086#1089#1090#1072#1074#1080#1090#1100' '#1079#1072#1082#1083#1072#1076#1082#1091' '#1085#1072' '#1090#1077#1082#1091#1097#1077#1081' '#1079#1072#1087#1080#1089#1080
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
           Transparent = False
           Caption = 'wwDBNavigator1SaveBookmark'
+          Enabled = False
           DisabledTextColors.ShadeColor = clGray
           DisabledTextColors.HighlightColor = clBtnHighlight
           Index = 12
@@ -543,7 +547,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 23
           Height = 37
-          Hint = 'Go back to saved bookmark'
+          Hint = #1055#1077#1088#1077#1081#1090#1080' '#1082' '#1089#1086#1093#1088#1072#1085#1105#1085#1085#1086#1081' '#1079#1072#1082#1083#1072#1076#1082#1077
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -1277,9 +1281,9 @@ object Form_list_kart: TForm_list_kart
       ')'
       
         'order by s.name, scott.utils.f_order(k.nd,6), scott.utils.f_orde' +
-        'r(k.kw,7), decode(k.psch,8,1,9,1,0) --'#1074#1085#1080#1084#1072#1085#1080#1077'! '#1101#1090#1086' '#1089#1095#1080#1090#1072#1077#1090#1089#1103' '#1087#1086 +
-        #1089#1083#1077#1076#1085#1077#1081' '#1089#1090#1088#1086#1095#1082#1086#1081', '#1080' '#1101#1090#1072' '#1089#1090#1088#1086#1082#1072' '#1091#1076#1072#1083#1103#1077#1090#1089#1103' '#1080' '#1076#1086#1073#1072#1074#1083#1103#1077#1090#1089#1103' '#1087#1088#1086#1075#1088#1072#1084#1084#1085 +
-        #1086' '#1080#1079' '#1092#1086#1088#1084#1099'!!!')
+        'r(k.kw,7), decode(k.psch,8,1,9,1,0), decode(u.cd,'#39'LSK_TP_MAIN'#39',0' +
+        ',1) --'#1074#1085#1080#1084#1072#1085#1080#1077'! '#1101#1090#1086' '#1089#1095#1080#1090#1072#1077#1090#1089#1103' '#1087#1086#1089#1083#1077#1076#1085#1077#1081' '#1089#1090#1088#1086#1095#1082#1086#1081', '#1080' '#1101#1090#1072' '#1089#1090#1088#1086#1082#1072' '#1091 +
+        #1076#1072#1083#1103#1077#1090#1089#1103' '#1080' '#1076#1086#1073#1072#1074#1083#1103#1077#1090#1089#1103' '#1087#1088#1086#1075#1088#1072#1084#1084#1085#1086' '#1080#1079' '#1092#1086#1088#1084#1099'!!!')
     Optimize = False
     Variables.Data = {
       0300000009000000050000003A5641525F030000000400000000000000000000
@@ -1339,7 +1343,6 @@ object Form_list_kart: TForm_list_kart
     CommitOnPost = False
     CachedUpdates = True
     Session = DataModule1.OracleSession1
-    Active = True
     AfterOpen = OD_list_kartAfterOpen
     BeforeInsert = OD_list_kartBeforeInsert
     BeforeScroll = OD_list_kartBeforeScroll
@@ -1715,9 +1718,10 @@ object Form_list_kart: TForm_list_kart
       Visible = False
     end
     object OD_list_kartREU: TStringField
+      DisplayWidth = 3
       FieldName = 'REU'
       Visible = False
-      Size = 2
+      Size = 3
     end
     object OD_list_kartKFG: TIntegerField
       FieldName = 'KFG'
@@ -1811,7 +1815,7 @@ object Form_list_kart: TForm_list_kart
       'select * from scott.t_org t')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000030000000020000004944010000000000020000004344010000000000
+      0400000031000000020000004944010000000000020000004344010000000000
       08000000464B5F4F52475450010000000000040000004E414D45010000000000
       030000004E505001000000000001000000560100000000000900000050415245
       4E545F4944010000000000030000005245550100000000000500000054524553
@@ -1836,7 +1840,8 @@ object Form_list_kart: TForm_list_kart
       42494C4C5F56415201000000000006000000414F475549440100000000000500
       00004F4B544D4F01000000000008000000434F44455F44454201000000000009
       000000444F4C475F4E414D450100000000000A00000042414E4B5F464E414D45
-      01000000000003000000475250010000000000}
+      0100000000000300000047525001000000000009000000525F5343485F474953
+      010000000000}
     Session = DataModule1.OracleSession1
     Active = True
     Left = 240

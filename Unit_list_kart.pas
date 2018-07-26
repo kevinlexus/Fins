@@ -607,7 +607,7 @@ begin
        //удаляем последнюю строчку
        SQL.Delete(OD_list_kart.SQL.Count-1);
        //устанавливаем порядок
-       SQL.Add('order by s.name, k.nd, k.kw, u.npp, decode(k.psch,8,1,9,1,0)');
+       SQL.Add('order by s.name, k.nd, k.kw, u.npp, decode(k.psch,8,1,9,1,0), decode(u.cd,''LSK_TP_MAIN'',0,1)');
     end;
     Active:=true;
  end;
@@ -752,7 +752,7 @@ begin
       //удаляем последнюю строчку
       OD_list_kart.SQL.Delete(OD_list_kart.SQL.Count-1);
       //устанавливаем порядок
-      OD_list_kart.SQL.Add('order by s.name, k.nd, k.kw, u.npp, decode(k.psch,8,1,9,1,0)');
+      OD_list_kart.SQL.Add('order by s.name, k.nd, k.kw, u.npp, decode(k.psch,8,1,9,1,0), decode(u.cd,''LSK_TP_MAIN'',0,1)');
       OD_list_kart.Active:=true;
       OD_list_kart.SearchRecord('lsk', Form_Main.Lsk_, [srFromBeginning]);
     end;
@@ -770,7 +770,7 @@ begin
       //удаляем последнюю строчку
       OD_list_kart.SQL.Delete(OD_list_kart.SQL.Count-1);
       //устанавливаем порядок
-      OD_list_kart.SQL.Add('order by s.name, k.nd, k.kw, u.npp, decode(k.psch,8,1,9,1,0)');
+      OD_list_kart.SQL.Add('order by s.name, k.nd, k.kw, u.npp, decode(k.psch,8,1,9,1,0), decode(u.cd,''LSK_TP_MAIN'',0,1)');
       OD_list_kart.Active:=true;
       OD_list_kart.SearchRecord('lsk', Form_Main.Lsk_, [srFromBeginning]);
     end;
@@ -1153,15 +1153,30 @@ begin
 end;
 
 procedure TForm_list_kart.cxmskdt1KeyPress(Sender: TObject; var Key: Char);
+ var
+   lsk: String;
+   isFound: Boolean;
 begin
   if Key=#13 then
   begin
+    lsk:=RightStr('00000000'+Trim(cxmskdt1.Text), 8);
     Form_Main.cl_flt;
     Form_Main.flt_k_lsk_id_:=DataModule1.OraclePackage1.CallIntegerFunction(
      'scott.utils.get_k_lsk_id_by_lsk',
-      [RightStr('00000000'+Trim(cxmskdt1.Text), 8)]);
+      [lsk]);
     SetFilter;
-    cxmskdt1.Text:=RightStr('00000000'+Trim(cxmskdt1.Text), 8);
+    isfound := OD_list_kart.SearchRecord('LSK', lsk, [srFromBeginning]);
+
+    if not isfound then
+    begin
+      // не найдены записи, отключить фильтр по основным
+      OD_list_kart.active:=false;
+      OD_list_kart.SetVariable('var3_', 0);
+      OD_list_kart.active:=true;
+      chk1.Checked:=false;
+    end;
+
+    cxmskdt1.Text:=lsk;
   end;
 
 end;

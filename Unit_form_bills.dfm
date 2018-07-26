@@ -1272,7 +1272,7 @@ object Form_print_bills: TForm_print_bills
   object OD_t_org: TOracleDataSet
     SQL.Strings = (
       'begin'
-      '  scott.rep_bills.org('
+      '  scott.rep_bills2.org('
       '                    p_mg => :mg_,'
       '                    p_var => :var_,'
       '                    p_rfcur => :p_rfcur);'
@@ -1738,7 +1738,7 @@ object Form_print_bills: TForm_print_bills
     Optimize = False
     Variables.Data = {0300000001000000040000003A4F5247030000000000000000000000}
     QBEDefinition.QBEFieldDefs = {
-      0400000030000000020000004944010000000000020000004344010000000000
+      0400000031000000020000004944010000000000020000004344010000000000
       08000000464B5F4F52475450010000000000040000004E414D45010000000000
       030000004E505001000000000001000000560100000000000900000050415245
       4E545F4944010000000000030000005245550100000000000500000054524553
@@ -1763,7 +1763,8 @@ object Form_print_bills: TForm_print_bills
       42494C4C5F56415201000000000006000000414F475549440100000000000500
       00004F4B544D4F01000000000008000000434F44455F44454201000000000009
       000000444F4C475F4E414D450100000000000A00000042414E4B5F464E414D45
-      01000000000003000000475250010000000000}
+      0100000000000300000047525001000000000009000000525F5343485F474953
+      010000000000}
     Master = OD_data
     MasterFields = 'org'
     DetailFields = 'org'
@@ -2205,5 +2206,56 @@ object Form_print_bills: TForm_print_bills
     BCDToCurrency = False
     Left = 416
     Top = 456
+  end
+  object OD_detail_ext: TOracleDataSet
+    SQL.Strings = (
+      'begin'
+      '  scott.rep_bills_ext.detail(p_lsk => :p_lsk,'
+      '                    p_mg => :p_mg,'
+      '                    p_rfcur => :p_rfcur);'
+      'end;')
+    Optimize = False
+    Variables.Data = {
+      0300000003000000060000003A505F4C534B0500000009000000303030303032
+      30330000000000080000003A505F524643555274000000000000000000000005
+      0000003A505F4D4705000000070000003230313430340000000000}
+    QBEDefinition.QBEFieldDefs = {
+      040000000C00000003000000564F4C010000000000030000004E505001000000
+      0000040000004E414D4501000000000005000000505249434501000000000006
+      000000434841524745010000000000070000004348414E474531010000000000
+      0C0000004348414E47455F50524F4331010000000000070000004348414E4745
+      3201000000000004000000414D4E540100000000000300000044454201000000
+      00000300000055534C0100000000000B00000049535F414D4E545F53554D0100
+      00000000}
+    Master = OD_main
+    MasterFields = 'lsk'
+    DetailFields = 'p_lsk'
+    Session = DataModule1.OracleSession1
+    DesignActivation = True
+    Active = True
+    Left = 384
+    Top = 504
+  end
+  object frxDBDataset13: TfrxDBDataset
+    UserName = 'frxDBDetail_ext'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'IS_AMNT_SUM=IS_AMNT_SUM'
+      'USL=USL'
+      'NPP=NPP'
+      'NAME=NAME'
+      'PRICE=PRICE'
+      'VOL=VOL'
+      'CHARGE=CHARGE'
+      'CHANGE1=CHANGE1'
+      'CHANGE_PROC1=CHANGE_PROC1'
+      'CHANGE2=CHANGE2'
+      'AMNT=AMNT'
+      'DEB=DEB')
+    OpenDataSource = False
+    DataSet = OD_detail_ext
+    BCDToCurrency = False
+    Left = 416
+    Top = 504
   end
 end

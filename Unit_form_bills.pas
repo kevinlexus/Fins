@@ -181,6 +181,8 @@ type
     OD_detail2: TOracleDataSet;
     frxDBDataset12: TfrxDBDataset;
     CheckBox5: TCheckBox;
+    OD_detail_ext: TOracleDataSet;
+    frxDBDataset13: TfrxDBDataset;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -330,9 +332,11 @@ begin
     OD_data.SetVariable('mg1_', DBLookupComboboxEh1.KeyValue);
     OD_data.SetVariable('mg2_', DBLookupComboboxEh1.KeyValue);
 
-    if (OD_t_org.FieldByName('BILL_TP').asInteger = 1) then
+    if (OD_t_org.FieldByName('BILL_TP').asInteger = 1) or
+       (OD_t_org.FieldByName('BILL_TP').asInteger = 2) then
     begin
       OD_detail.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
+      OD_detail_ext.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
     end;
   end
   else if (ComboBox1.ItemIndex = 4) then //ñ÷¸ò äëÿ ÓÑÇÍ
@@ -500,6 +504,10 @@ begin
     begin
       OD_detail.Active := true;
       OD_detail2.Active := true;
+    end
+    else if (OD_t_org.FieldByName('BILL_TP').asInteger = 2) then
+    begin
+      OD_detail_ext.Active := true;
     end
     else
     begin

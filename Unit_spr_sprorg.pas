@@ -25,7 +25,8 @@ uses
   dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter,
   cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
   cxDBData, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
-  cxGridLevel, cxClasses, cxGridCustomView, cxGrid, cxSplitter, cxTextEdit;
+  cxGridLevel, cxClasses, cxGridCustomView, cxGrid, cxSplitter, cxTextEdit,
+  ComCtrls, cxDBLookupComboBox;
 
 type
   TForm_spr_sprorg = class(TForm)
@@ -144,9 +145,17 @@ type
     cxGrid1DBTableView1POST_INDX: TcxGridDBColumn;
     OD_usl_bills: TOracleDataSet;
     DS_usl_bills: TDataSource;
+    cxSplitter1: TcxSplitter;
+    OD_sprorgFK_BILL_VAR: TFloatField;
+    cxGrid1DBTableView1FK_BILL_VAR: TcxGridDBColumn;
+    OD_sprorgBANK_FNAME: TStringField;
+    cxGrid1DBTableView1BANK_FNAME: TcxGridDBColumn;
+    cxGrid1DBTableView1GRP: TcxGridDBColumn;
+    OD_sprorgGRP: TFloatField;
+    PageControl1: TPageControl;
+    TabSheet1: TTabSheet;
     cxGrid2: TcxGrid;
     cxGridDBTableView1: TcxGridDBTableView;
-    cxGridLevel1: TcxGridLevel;
     cxGridDBTableView1ID: TcxGridDBColumn;
     cxGridDBTableView1USL_ID: TcxGridDBColumn;
     cxGridDBTableView1MG1: TcxGridDBColumn;
@@ -156,14 +165,36 @@ type
     cxGridDBTableView1FK_BILL_VAR: TcxGridDBColumn;
     cxGridDBTableView1FRC_GET_PRICE: TcxGridDBColumn;
     cxGridDBTableView1BILL_AGG: TcxGridDBColumn;
-    cxSplitter1: TcxSplitter;
-    OD_sprorgFK_BILL_VAR: TFloatField;
-    cxGrid1DBTableView1FK_BILL_VAR: TcxGridDBColumn;
-    cxGrid1DBTableView1CD: TcxGridDBColumn;
-    OD_sprorgBANK_FNAME: TStringField;
-    cxGrid1DBTableView1BANK_FNAME: TcxGridDBColumn;
-    cxGrid1DBTableView1GRP: TcxGridDBColumn;
-    OD_sprorgGRP: TFloatField;
+    cxGridLevel1: TcxGridLevel;
+    TabSheet2: TTabSheet;
+    OD_usl_round: TOracleDataSet;
+    DS_usl_round: TDataSource;
+    cxGrid3: TcxGrid;
+    cxGridDBTableView2: TcxGridDBTableView;
+    cxGridLevel2: TcxGridLevel;
+    cxGridDBTableView2USL: TcxGridDBColumn;
+    OD_usl: TOracleDataSet;
+    cxGridDBTableView2Column1: TcxGridDBColumn;
+    DS_usl: TDataSource;
+    Memo2: TMemo;
+    OD_sprorgR_SCH_GIS: TStringField;
+    cxGrid1DBTableView1R_SCH_GIS: TcxGridDBColumn;
+    TabSheet3: TTabSheet;
+    Memo3: TMemo;
+    cxGrid4: TcxGrid;
+    cxGridDBTableView3: TcxGridDBTableView;
+    cxGridLevel3: TcxGridLevel;
+    OD_usl_tree: TOracleDataSet;
+    DS_usl_tree: TDataSource;
+    cxGridDBTableView3USL: TcxGridDBColumn;
+    cxGridDBTableView3PARENT_USL: TcxGridDBColumn;
+    cxGridDBTableView3TP: TcxGridDBColumn;
+    cxGridDBTableView3FK_BILL_VAR: TcxGridDBColumn;
+    cxGridDBTableView3FK_HOUSE: TcxGridDBColumn;
+    cxGridDBTableView3NPP: TcxGridDBColumn;
+    cxGridDBTableView3HIDE_PRICE: TcxGridDBColumn;
+    cxGridDBTableView3HIDE_VOL: TcxGridDBColumn;
+    cxGridDBTableView3HIDE_ROW: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure OD_sprorgAfterScroll(DataSet: TDataSet);
@@ -190,6 +221,9 @@ begin
   OD_org_tp.First;
   OD_org_tp2.Active:=True;
   OD_usl_bills.Active:=True;
+  OD_usl.Active:=True;
+  OD_usl_tree.Active:=True;
+  OD_usl_round.Active:=True;
 end;
 
 procedure TForm_spr_sprorg.FormClose(Sender: TObject;
@@ -205,6 +239,10 @@ begin
     OD_sprorg.FieldByName('fk_bill_var').AsInteger);
   OD_usl_bills.Active:=false;
   OD_usl_bills.Active:=true;
+  OD_usl_tree.SetVariable('fk_bill_var',
+    OD_sprorg.FieldByName('fk_bill_var').AsInteger);
+  OD_usl_tree.Active:=false;
+  OD_usl_tree.Active:=true;
 end;
 
 end.
