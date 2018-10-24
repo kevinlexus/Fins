@@ -1,8 +1,9 @@
 object Form_new_lsk: TForm_new_lsk
-  Left = 452
-  Top = 201
-  Width = 313
-  Height = 157
+  Left = 225
+  Top = 195
+  Width = 330
+  Height = 193
+  VertScrollBar.Visible = False
   AutoSize = True
   Caption = #1057#1086#1079#1076#1072#1085#1080#1077' '#1085#1086#1074#1086#1075#1086' '#1083#1080#1094'.'#1089#1095#1077#1090#1072
   Color = clBtnFace
@@ -92,10 +93,37 @@ object Form_new_lsk: TForm_new_lsk
   object GroupBox1: TGroupBox
     Left = 0
     Top = 0
-    Width = 297
-    Height = 65
+    Width = 314
+    Height = 105
+    Align = alTop
     Caption = #1050#1086#1087#1080#1088#1086#1074#1072#1090#1100' '#1083#1080#1094#1077#1074#1086#1081' '#1089#1095#1077#1090' '#1085#1072' '#1085#1086#1074#1099#1081':'
     TabOrder = 0
+    object Label1: TLabel
+      Left = 128
+      Top = 32
+      Width = 23
+      Height = 13
+      Caption = #1058#1080#1087
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 24
+      Top = 64
+      Width = 18
+      Height = 13
+      Caption = #1059#1050
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
     object wwDBEdit3: TwwDBEdit
       Left = 24
       Top = 21
@@ -114,7 +142,7 @@ object Form_new_lsk: TForm_new_lsk
       WordWrap = False
     end
     object cbb2: TcxLookupComboBox
-      Left = 128
+      Left = 160
       Top = 26
       Properties.KeyFieldNames = 'CD'
       Properties.ListColumns = <
@@ -123,15 +151,30 @@ object Form_new_lsk: TForm_new_lsk
         end>
       Properties.ListOptions.ShowHeader = False
       Properties.ListSource = DS_lsk_tp
+      Properties.OnCloseUp = cbb2PropertiesCloseUp
       TabOrder = 1
-      Width = 153
+      Width = 121
+    end
+    object cxLookupComboBox1: TcxLookupComboBox
+      Left = 48
+      Top = 58
+      Properties.KeyFieldNames = 'REU'
+      Properties.ListColumns = <
+        item
+          FieldName = 'NAME'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = DS_reu
+      TabOrder = 2
+      Width = 233
     end
   end
   object GroupBox2: TGroupBox
     Left = 0
-    Top = 70
-    Width = 297
+    Top = 105
+    Width = 314
     Height = 49
+    Align = alBottom
     TabOrder = 1
     object Button2: TButton
       Left = 128
@@ -172,12 +215,32 @@ object Form_new_lsk: TForm_new_lsk
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True
-    Left = 88
-    Top = 24
+    Left = 24
+    Top = 96
   end
   object DS_lsk_tp: TDataSource
     DataSet = OD_lsk_tp
-    Left = 136
-    Top = 24
+    Left = 64
+    Top = 96
+  end
+  object OD_reu: TOracleDataSet
+    SQL.Strings = (
+      ''
+      'select t.reu, t.reu||'#39' '#39'||t.name as name'
+      ' from scott.t_org t where t.reu is not null'
+      'order by t.name')
+    Optimize = False
+    QBEDefinition.QBEFieldDefs = {
+      0400000002000000040000004E414D4501000000000003000000524555010000
+      000000}
+    Session = DataModule1.OracleSession1
+    Active = True
+    Left = 96
+    Top = 96
+  end
+  object DS_reu: TDataSource
+    DataSet = OD_reu
+    Left = 128
+    Top = 96
   end
 end

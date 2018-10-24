@@ -1,6 +1,6 @@
 object Form_kart: TForm_kart
-  Left = 292
-  Top = 225
+  Left = 294
+  Top = 226
   Width = 903
   Height = 675
   BorderIcons = [biSystemMenu, biMinimize]
@@ -1732,6 +1732,7 @@ object Form_kart: TForm_kart
           Spacing = 4
           Transparent = False
           Caption = 'wwDBNavigator1Insert'
+          Enabled = False
           DisabledTextColors.ShadeColor = clGray
           DisabledTextColors.HighlightColor = clBtnHighlight
           Index = 6
@@ -1767,6 +1768,7 @@ object Form_kart: TForm_kart
           Spacing = 4
           Transparent = False
           Caption = 'wwDBNavigator1Edit'
+          Enabled = False
           DisabledTextColors.ShadeColor = clGray
           DisabledTextColors.HighlightColor = clBtnHighlight
           Index = 8
@@ -1820,6 +1822,7 @@ object Form_kart: TForm_kart
           Spacing = 4
           Transparent = False
           Caption = 'wwDBNavigator1Refresh'
+          Enabled = False
           DisabledTextColors.ShadeColor = clGray
           DisabledTextColors.HighlightColor = clBtnHighlight
           Index = 11
@@ -1837,6 +1840,7 @@ object Form_kart: TForm_kart
           Spacing = 4
           Transparent = False
           Caption = 'wwDBNavigator1SaveBookmark'
+          Enabled = False
           DisabledTextColors.ShadeColor = clGray
           DisabledTextColors.HighlightColor = clBtnHighlight
           Index = 12
@@ -2887,17 +2891,17 @@ object Form_kart: TForm_kart
       Caption = #1055#1088#1086#1075#1088#1072#1084#1084#1099
       ImageIndex = 1
       object Splitter1: TSplitter
-        Left = 537
+        Left = 541
         Top = 0
         Width = 8
-        Height = 262
+        Height = 257
         Align = alRight
       end
       object DBGridEh2: TDBGridEh
         Left = 0
         Top = 0
-        Width = 537
-        Height = 262
+        Width = 541
+        Height = 257
         Align = alClient
         DataSource = DS_nabor_p
         Flat = False
@@ -2949,10 +2953,10 @@ object Form_kart: TForm_kart
           end>
       end
       object DBGridEh3: TDBGridEh
-        Left = 545
+        Left = 549
         Top = 0
         Width = 330
-        Height = 262
+        Height = 257
         Align = alRight
         DataSource = DS_spr_tarif
         Flat = False

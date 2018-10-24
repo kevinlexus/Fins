@@ -183,6 +183,16 @@ type
     CheckBox5: TCheckBox;
     OD_detail_ext: TOracleDataSet;
     frxDBDataset13: TfrxDBDataset;
+    OD_cmp_main: TOracleDataSet;
+    OD_cmp_detail_primary: TOracleDataSet;
+    OD_cmp_detail_cap: TOracleDataSet;
+    OD_cmp_funds_primary: TOracleDataSet;
+    OD_cmp_funds_cap: TOracleDataSet;
+    frxDB_cmp_main: TfrxDBDataset;
+    frxDBD_cmp_detail_primary: TfrxDBDataset;
+    frxDB_cmp_detail_cap: TfrxDBDataset;
+    frxDB_cmp_funds_primary: TfrxDBDataset;
+    frxDB_cmp_funds_cap: TfrxDBDataset;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -211,6 +221,8 @@ type
     procedure DBLookupComboboxEh1CloseUp(Sender: TObject; Accept: Boolean);
     procedure OD_ls_cntBeforeOpen(DataSet: TDataSet);
     procedure OD_ls_cntAfterOpen(DataSet: TDataSet);
+    procedure compound_report;
+    procedure old_report(tp_, pen_last_month_:Integer; repVar:String);
   private
     sel_obj_: Integer;
     cnt_sch_: Integer;
@@ -267,6 +279,126 @@ begin
   Application.CreateForm(TForm_status, Form_status);
   Form_status.Update;
 
+  // датасет основных параметров. (наим.орг, файл счета)
+  OD_t_org.Active := false;
+  OD_t_org.SetVariable('var_', ComboBox1.ItemIndex);
+  OD_t_org.SetVariable('mg_', DBLookupComboboxEh1.KeyValue);
+  OD_t_org.Active := true;
+
+  if (OD_t_org.FieldByName('BILL_TP').asInteger = 1) or
+     (OD_t_org.FieldByName('BILL_TP').asInteger = 2) then
+    // старый вариант отчетности
+    old_report(tp_, pen_last_month_, repVar)
+  else if (OD_t_org.FieldByName('BILL_TP').asInteger = 3) then
+    // составной счет
+    compound_report
+  else
+     Application.MessageBox('Некорректный BILL_TP в таблице spr_services!',
+       'Внимание!', MB_OK + MB_ICONSTOP + MB_DEFBUTTON2);
+
+
+  if FF('Form_status', 0) = 1 then
+    Form_status.Close;
+end;
+
+// составной счет
+procedure TForm_print_bills.compound_report;
+begin
+  // главный датасет
+  OD_cmp_main.Active:=false;
+  // данные основных и РСО счетов
+  OD_cmp_detail_primary.Active:=false;
+  // данные счетов по капремонту
+  OD_cmp_detail_cap.Active:=false;
+  // данные начисления по основным счетам и РСО
+  OD_cmp_funds_primary.Active:=false;
+  // данные начисления по капремонту
+  OD_cmp_funds_cap.Active:=false;
+
+  if sel_obj_ = 2 then
+  begin
+    //только для УК
+    //ограничивать диапазон записи для печати счетов
+    OD_cmp_main.SetVariable('p_firstNum',
+      OD_ls_cnt.FieldByName('first_rec').AsInteger);
+    OD_cmp_main.SetVariable('p_lastNum',
+      OD_ls_cnt.FieldByName('last_rec').AsInteger);
+  end
+  else
+  begin
+    //не ограничивать диапазон записи для печати счетов
+    OD_cmp_main.SetVariable('p_firstNum', 0);
+    OD_cmp_main.SetVariable('p_lastNum', 1000000000);
+  end;
+
+  // установить параметры
+  OD_cmp_main.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
+
+  OD_cmp_detail_primary.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
+  OD_cmp_detail_cap.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
+  OD_cmp_funds_primary.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
+  OD_cmp_funds_cap.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
+
+  // установить тип лиц.счета
+  OD_cmp_detail_primary.SetVariable('p_sel_tp', 0);
+  OD_cmp_detail_cap.SetVariable('p_sel_tp', 1);
+  OD_cmp_funds_primary.SetVariable('p_sel_tp', 0);
+  OD_cmp_funds_cap.SetVariable('p_sel_tp', 1);
+
+  OD_cmp_main.SetVariable('p_sel_obj', sel_obj_);
+  OD_cmp_main.SetVariable('p_reu', cbb1.EditValue);
+  OD_cmp_main.SetVariable('p_lsk', wwDBEdit1.Text);
+  OD_cmp_main.SetVariable('p_lsk1', wwDBEdit2.Text);
+
+  OD_cmp_main.SetVariable('p_kul', DBLookupComboboxEh2.KeyValue);
+  if DBLookupComboboxEh3.KeyValue <> null then
+    OD_cmp_main.SetVariable('p_nd', OD_houses.FieldByName('nd_id').AsString)
+  else
+    OD_cmp_main.SetVariable('p_nd', null);
+
+  if DBLookupComboboxEh4.KeyValue <> null then
+    OD_cmp_main.SetVariable('p_kw', OD_kw.FieldByName('kw_id').AsString)
+  else
+    OD_cmp_main.SetVariable('p_kw', null);
+
+  // печатать ли закрытые счета
+  if CheckBox2.Checked = true then
+  begin
+    OD_cmp_main.SetVariable('p_is_closed', 1);
+    OD_cmp_detail_primary.SetVariable('p_is_closed', 1);
+    OD_cmp_detail_cap.SetVariable('p_is_closed', 1);
+  end
+  else
+  begin
+    OD_cmp_main.SetVariable('p_is_closed', 0);
+    OD_cmp_detail_primary.SetVariable('p_is_closed', 0);
+    OD_cmp_detail_cap.SetVariable('p_is_closed', 0);
+  end;
+
+  // активировать датасеты
+  OD_cmp_main.Active:=true;
+  OD_cmp_detail_primary.Active:=true;
+  OD_cmp_detail_cap.Active:=true;
+  OD_cmp_funds_primary.Active:=true;
+  OD_cmp_funds_cap.Active:=true;
+
+  frxReport1.LoadFromFile(Form_main.exepath_ +
+    OD_t_org.FieldByName('FNAME_SCH').asString , True);
+  Edit2.Text := 'Путь к файлу счета:' + Form_main.exepath_ +
+    OD_t_org.FieldByName('FNAME_SCH').asString;
+  Edit2.Visible := true;
+
+  // открыть отчет
+  frxReport1.PrepareReport(true);
+  Form_status.Close;
+  frxReport1.ShowPreparedReport;
+
+end;
+
+
+// старый вариант отчетности
+procedure TForm_print_bills.old_report(tp_, pen_last_month_: Integer; repVar: String);
+begin
   OD_main.Active := false;
   OD_data.Active := false;
   OD_detail.Active := false;
@@ -318,12 +450,6 @@ begin
     //не ограничивать диапазон записи для печати счетов
     OD_main.SetVariable('cnt_rec_', 0);
   end;
-
-  //OD_t_org выступает в роли датасета основных параметров. (наим.орг, файл счета)
-  OD_t_org.Active := false;
-  OD_t_org.SetVariable('var_', ComboBox1.ItemIndex);
-  OD_t_org.SetVariable('mg_', DBLookupComboboxEh1.KeyValue);
-  OD_t_org.Active := true;
 
   if (ComboBox1.ItemIndex = 0) then //счёт
   begin
@@ -457,23 +583,9 @@ begin
       else
         OD_data2.SetVariable('kw_', null);
     end;
-{    else if (tp_ = 1) then // справочник квартиросъемщиков
-    begin
-      OD_data.SetVariable('kul_', DBLookupComboboxEh2.KeyValue);
-      if DBLookupComboboxEh3.KeyValue <> null then
-        OD_data.SetVariable('nd_', OD_houses.FieldByName('nd_id').AsString)
-      else
-        OD_data.SetVariable('nd_', null);
-      if DBLookupComboboxEh4.KeyValue <> null then
-        OD_data.SetVariable('kw_', OD_kw.FieldByName('kw_id').AsString)
-      else
-        OD_data.SetVariable('kw_', null);
-    end;}
   end;
 
-
-
-    //печатать ли по старому фонду счета
+  //печатать ли по старому фонду счета
   if CheckBox2.Checked = true then
   begin
     OD_main.SetVariable('var2_', 1);
@@ -646,8 +758,6 @@ begin
     Form_status.Close;
     frxReport1.ShowPreparedReport;
   end;
-  if FF('Form_status', 0) = 1 then
-    Form_status.Close;
 end;
 
 procedure TForm_print_bills.Button2Click(Sender: TObject);

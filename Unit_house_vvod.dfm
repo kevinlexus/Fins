@@ -665,7 +665,7 @@ object Form_house_vvod: TForm_house_vvod
       FieldName = 'REU'
       ReadOnly = True
       Required = True
-      Size = 2
+      Size = 3
     end
     object OD_vvodNAME_REU: TStringField
       DisplayLabel = #1046#1069#1054

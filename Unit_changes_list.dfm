@@ -508,7 +508,7 @@ object Form_changes_list: TForm_changes_list
       DisplayLabel = #1056#1101#1091
       DisplayWidth = 3
       FieldName = 'REU'
-      Size = 2
+      Size = 3
     end
     object OD_changesSTREET: TStringField
       DisplayLabel = #1059#1083#1080#1094#1072

@@ -1,6 +1,6 @@
 object Form_spr_users: TForm_spr_users
-  Left = 251
-  Top = 340
+  Left = 317
+  Top = 411
   Width = 800
   Height = 499
   BorderIcons = [biSystemMenu, biMinimize]
@@ -95,11 +95,11 @@ object Form_spr_users: TForm_spr_users
     Left = 217
     Top = 49
     Width = 8
-    Height = 363
+    Height = 362
   end
   object GroupBox1: TGroupBox
     Left = 0
-    Top = 412
+    Top = 411
     Width = 784
     Height = 49
     Align = alBottom
@@ -118,7 +118,7 @@ object Form_spr_users: TForm_spr_users
     Left = 0
     Top = 49
     Width = 217
-    Height = 363
+    Height = 362
     Align = alLeft
     Caption = #1055#1086#1083#1100#1079#1086#1074#1072#1090#1077#1083#1080
     TabOrder = 1
@@ -126,7 +126,7 @@ object Form_spr_users: TForm_spr_users
       Left = 2
       Top = 15
       Width = 213
-      Height = 346
+      Height = 345
       Align = alClient
       TabOrder = 0
       object cxGrid1DBTableView1: TcxGridDBTableView
@@ -161,7 +161,7 @@ object Form_spr_users: TForm_spr_users
     Left = 225
     Top = 49
     Width = 301
-    Height = 363
+    Height = 362
     Align = alClient
     Caption = #1055#1088#1080#1074#1080#1083#1077#1075#1080#1080
     TabOrder = 2
@@ -169,7 +169,7 @@ object Form_spr_users: TForm_spr_users
       Left = 2
       Top = 15
       Width = 297
-      Height = 346
+      Height = 345
       Selected.Strings = (
         'NAME_REU'#9'14'#9#1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103#9'F'
         'NAME_ORG'#9'16'#9#1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103#9'F'
@@ -200,7 +200,7 @@ object Form_spr_users: TForm_spr_users
     Left = 526
     Top = 49
     Width = 258
-    Height = 363
+    Height = 362
     Align = alRight
     Caption = #1054#1073#1098#1077#1082#1090#1099
     TabOrder = 3
@@ -208,7 +208,7 @@ object Form_spr_users: TForm_spr_users
       Left = 2
       Top = 15
       Width = 254
-      Height = 346
+      Height = 345
       Selected.Strings = (
         'NAME_ORG'#9'35'#9#1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077#9'F')
       IniAttributes.Delimiter = ';;'
@@ -295,11 +295,11 @@ object Form_spr_users: TForm_spr_users
       Size = 1
     end
     object OD_s_reu_trestREU: TStringField
-      DisplayWidth = 2
+      DisplayWidth = 3
       FieldName = 'REU'
       Required = True
       Visible = False
-      Size = 2
+      Size = 3
     end
   end
   object DS_s_reu_trest: TwwDataSource
@@ -329,7 +329,6 @@ object Form_spr_users: TForm_spr_users
     RefreshOptions = [roAfterInsert]
     CommitOnPost = False
     Session = DataModule1.OracleSession1
-    Active = True
     Left = 240
     Top = 128
     object OD_user_permNAME_REU: TStringField
@@ -353,7 +352,7 @@ object Form_spr_users: TForm_spr_users
     object OD_user_permFK_REU: TStringField
       FieldName = 'FK_REU'
       Visible = False
-      Size = 2
+      Size = 3
     end
     object OD_user_permFK_PASP_ORG: TFloatField
       FieldName = 'FK_PASP_ORG'
@@ -388,7 +387,7 @@ object Form_spr_users: TForm_spr_users
     end
     object OD_t_orgREU: TStringField
       FieldName = 'REU'
-      Size = 1
+      Size = 3
     end
     object OD_t_orgNAME_ORG: TStringField
       FieldName = 'NAME_ORG'
@@ -468,7 +467,7 @@ object Form_spr_users: TForm_spr_users
     end
     object StringField1: TStringField
       FieldName = 'REU'
-      Size = 1
+      Size = 3
     end
     object StringField2: TStringField
       FieldName = 'NAME_ORG'

@@ -1,8 +1,8 @@
 object frmLoadFias: TfrmLoadFias
-  Left = 314
-  Top = 323
-  Width = 700
-  Height = 581
+  Left = 340
+  Top = 109
+  Width = 781
+  Height = 603
   Caption = #1052#1072#1089#1090#1077#1088' '#1079#1072#1075#1088#1091#1079#1082#1080' '#1089#1087#1088#1072#1074#1086#1095#1085#1080#1082#1072' '#1060#1048#1040#1057
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -92,8 +92,8 @@ object frmLoadFias: TfrmLoadFias
   object dxwzrdcntrl1: TdxWizardControl
     Left = 0
     Top = 0
-    Width = 684
-    Height = 543
+    Width = 765
+    Height = 564
     Buttons.Back.Caption = #1053#1072#1079#1072#1076
     Buttons.Cancel.Caption = #1054#1090#1084#1077#1085#1072
     Buttons.CustomButtons.Buttons = <>
@@ -119,8 +119,8 @@ object frmLoadFias: TfrmLoadFias
       object pnl1: TPanel
         Left = 0
         Top = 0
-        Width = 662
-        Height = 407
+        Width = 743
+        Height = 428
         Align = alClient
         TabOrder = 0
         object chk2: TCheckBox
@@ -174,8 +174,8 @@ object frmLoadFias: TfrmLoadFias
       object cxGrid1: TcxGrid
         Left = 0
         Top = 0
-        Width = 662
-        Height = 407
+        Width = 743
+        Height = 428
         Align = alClient
         TabOrder = 0
         object cxGrid1DBTableView1: TcxGridDBTableView
@@ -229,16 +229,26 @@ object frmLoadFias: TfrmLoadFias
     end
     object dxwzrdcntrlpg4: TdxWizardControlPage
       DoubleBuffered = False
+      Header.AssignedValues = [wchvDescriptionFont, wchvDescriptionVisibility]
+      Header.DescriptionFont.Charset = DEFAULT_CHARSET
+      Header.DescriptionFont.Color = clDefault
+      Header.DescriptionFont.Height = -11
+      Header.DescriptionFont.Name = 'Tahoma'
+      Header.DescriptionFont.Style = []
+      Header.DescriptionVisibility = wcevDefault
       Header.Description = 
         #1053#1077#1086#1073#1093#1086#1076#1080#1084#1086' '#1085#1072#1081#1090#1080' '#1089#1086#1086#1090#1074#1077#1090#1089#1090#1074#1080#1077' '#1076#1086#1084#1086#1074', '#1077#1089#1083#1080' '#1076#1086#1084' '#1074' '#1089#1087#1088#1072#1074#1086#1095#1085#1080#1082#1077' '#1060#1048#1040#1057 +
         ' '#1087#1086#1074#1090#1086#1088#1103#1077#1090#1089#1103', '#1077#1075#1086' '#1085#1077#1086#1073#1093#1086#1076#1080#1084#1086' '#1085#1072#1081#1090#1080' '#1085#1072' '#1089#1072#1081#1090#1077' fias.nalog.ru'#13#10#1080' '#1091#1089#1090 +
-        #1072#1085#1086#1074#1080#1090#1100' '#1087#1086' '#1082#1086#1076#1091' '#1089#1086#1086#1090#1074#1077#1090#1089#1090#1074#1080#1103' "'#1059#1085#1080#1082#1072#1083#1100#1085#1099#1081' '#1080#1076#1077#1085#1090#1080#1092#1080#1082#1072#1090#1086#1088'"'
+        #1072#1085#1086#1074#1080#1090#1100' '#1087#1086' '#1082#1086#1076#1091' '#1089#1086#1086#1090#1074#1077#1090#1089#1090#1074#1080#1103' "'#1059#1085#1080#1082#1072#1083#1100#1085#1099#1081' '#1080#1076#1077#1085#1090#1080#1092#1080#1082#1072#1090#1086#1088'". '#13#10#1045#1089#1083#1080' ' +
+        #1085#1077#1086#1073#1093#1086#1076#1080#1084#1086#1075#1086' '#1076#1086#1084#1072' '#1085#1077' '#1085#1072#1081#1076#1077#1085#1086', '#1040#1076#1084#1080#1085#1080#1089#1090#1088#1072#1090#1086#1088#1091' '#1085#1077#1086#1073#1093#1086#1076#1080#1084#1086' '#1076#1086#1073#1072#1074#1080#1090#1100 +
+        ' '#1089#1090#1088#1086#1082#1091' '#1074' '#13#10#1090#1072#1073#1083#1080#1094#1091' scott.fias_house '#1089' '#1087#1086#1083#1091#1095#1077#1085#1085#1099#1084' HOUSEGUID '#1089' fi' +
+        'as.nalog.ru, '#1089' '#1089#1086#1086#1090#1074#1077#1090#1089#1090#1074#1091#1102#1097#1080#1084' AOGUID '#1091#1083#1080#1094#1099'.'
       Header.Title = #1055#1088#1086#1074#1077#1088#1082#1072' '#1089#1087#1088#1072#1074#1086#1095#1085#1080#1082#1072' '#1076#1086#1084#1086#1074
       object cxGrid2: TcxGrid
         Left = 0
         Top = 0
-        Width = 662
-        Height = 407
+        Width = 743
+        Height = 428
         Align = alClient
         TabOrder = 0
         object cxGridDBTableView1: TcxGridDBTableView
@@ -298,8 +308,8 @@ object frmLoadFias: TfrmLoadFias
       object mmo2: TMemo
         Left = 0
         Top = 0
-        Width = 662
-        Height = 407
+        Width = 743
+        Height = 428
         Align = alClient
         TabOrder = 0
       end

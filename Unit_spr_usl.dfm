@@ -1,6 +1,6 @@
 object Form_spr_usl: TForm_spr_usl
-  Left = 913
-  Top = 215
+  Left = 703
+  Top = 305
   Width = 931
   Height = 556
   Caption = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082' '#1091#1089#1083#1091#1075
@@ -93,7 +93,7 @@ object Form_spr_usl: TForm_spr_usl
     Left = 0
     Top = 0
     Width = 915
-    Height = 469
+    Height = 468
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
@@ -104,7 +104,7 @@ object Form_spr_usl: TForm_spr_usl
         Left = 0
         Top = 0
         Width = 907
-        Height = 415
+        Height = 414
         Selected.Strings = (
           'USLM'#9'5'#9#1050#1086#1076' USLM'#9'F'
           'TYPE'#9'7'#9'TYPE'
@@ -130,7 +130,7 @@ object Form_spr_usl: TForm_spr_usl
       end
       object Panel3: TPanel
         Left = 0
-        Top = 415
+        Top = 414
         Width = 907
         Height = 26
         Align = alBottom
@@ -384,7 +384,7 @@ object Form_spr_usl: TForm_spr_usl
         Left = 0
         Top = 26
         Width = 907
-        Height = 389
+        Height = 388
         ControlType.Strings = (
           'TYP_USL;CheckBox;0;1'
           'CAN_VV;CheckBox;1;0'
@@ -427,6 +427,7 @@ object Form_spr_usl: TForm_spr_usl
           'USL_PLR'#9'8'#9'USL_PLR'
           'USL_SUBS'#9'10'#9#1056#1072#1089#1087#1088#1086#1089#1090#1088'.~'#1089#1091#1073#1089'.'#9'F'
           'USL_EMPT'#9'10'#9#1050#1086#1076' '#1091#1089#1083'~'#1073#1077#1079' '#1087#1088#1086#1078'.'#9'F'
+          'USL_VOL'#9'3'#9#1050#1086#1076' '#1091#1089#1083'~'#1086#1087#1088#1077#1076'.'#1086#1073#1098#1077#1084#9'F'
           'PARENT_USL'#9'3'#9#1056#1086#1076#1080#1090'.~'#1091#1089#1083#1091#1075#1072#9'F'
           'BILL_BRAKE'#9'10'#9#1056#1072#1079#1088#1099#1074'~'#1074' '#1089#1095#1077#1090#1077#9'F')
         IniAttributes.Delimiter = ';;'
@@ -450,7 +451,7 @@ object Form_spr_usl: TForm_spr_usl
       end
       object Panel1: TPanel
         Left = 0
-        Top = 415
+        Top = 414
         Width = 907
         Height = 26
         Align = alBottom
@@ -753,7 +754,7 @@ object Form_spr_usl: TForm_spr_usl
       ImageIndex = 1
       object Panel2: TPanel
         Left = 0
-        Top = 415
+        Top = 414
         Width = 907
         Height = 26
         Align = alBottom
@@ -1009,7 +1010,7 @@ object Form_spr_usl: TForm_spr_usl
         Left = 0
         Top = 0
         Width = 907
-        Height = 415
+        Height = 414
         Selected.Strings = (
           'ID'#9'3'#9'ID'
           'USL_ID'#9'6'#9'USL_ID'
@@ -1037,7 +1038,7 @@ object Form_spr_usl: TForm_spr_usl
   end
   object GroupBox1: TGroupBox
     Left = 0
-    Top = 469
+    Top = 468
     Width = 915
     Height = 49
     Align = alBottom
@@ -1067,7 +1068,7 @@ object Form_spr_usl: TForm_spr_usl
       050000003A464C545F050000000000000000000000}
     OracleDictionary.UseMessageTable = True
     QBEDefinition.QBEFieldDefs = {
-      04000000260000000400000055534C4D0100000000000300000055534C010000
+      040000002B0000000400000055534C4D0100000000000300000055534C010000
       000000050000004B41525457010000000000040000004B574E49010000000000
       030000004C50570100000000000600000045445F495A4D010000000000020000
       004E4D010000000000030000004E4D310100000000000500000055534C5F5001
@@ -1087,7 +1088,9 @@ object Form_spr_usl: TForm_spr_usl
       000A000000504152454E545F55534C0100000000000A000000434852475F524F
       554E440100000000000A00000042494C4C5F4252414B450100000000000E0000
       0049535F5357505F50454E5F4F524701000000000008000000464F525F415243
-      48010000000000}
+      480100000000000A0000004C494E4B45445F55534C0100000000000300000049
+      44530100000000000900000054505F50454E5F44540100000000000A00000054
+      505F50454E5F5245460100000000000700000055534C5F564F4C010000000000}
     CommitOnPost = False
     CachedUpdates = True
     Session = DataModule1.OracleSession1

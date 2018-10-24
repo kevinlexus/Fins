@@ -295,7 +295,7 @@ object Form_sel_reu: TForm_sel_reu
       DisplayLabel = #1050#1086#1076' '#1046#1069#1054
       FieldName = 'REU'
       Required = True
-      Size = 2
+      Size = 3
     end
   end
   object DS_list_choice: TDataSource

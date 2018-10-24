@@ -1757,7 +1757,6 @@ begin
       end;
 
       //найти на другом листе помещения этого дома, обновить по ним информацию
-
       a:=3;
       flag:=false;
       while true do
@@ -1924,16 +1923,17 @@ begin
         Form_olap.cxm1.Lines.Add('1. дом='+IntToStr(houseId));
       houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 1]:= d.FieldByName('adr').AsString;
       houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 2]:= d.FieldByName('houseguid').AsString;
-      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 3]:= d.FieldByName('oktmo').AsString;
-      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 4]:= d.FieldByName('cond').AsString;
-      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 5]:= d.FieldByName('house_opl').AsString;
-      //houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 6]:= d.FieldByName('house_opl_pasp').AsString;
-      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 6]:= d.FieldByName('house_year').AsFloat;
-      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 7]:= d.FieldByName('house_et').AsFloat;
-      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 8]:= d.FieldByName('house_unet').AsFloat;
-      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 10]:= d.FieldByName('clk_zone').AsString;
+      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 3]:= 'Нет';
+      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 4]:= 'Нет';
+      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 5]:= d.FieldByName('oktmo').AsString;
+      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 6]:= d.FieldByName('cond').AsString;
+      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 8]:= d.FieldByName('house_opl').AsString;
+      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 9]:= d.FieldByName('house_year').AsFloat;
+      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 10]:= d.FieldByName('house_et').AsFloat;
+      //houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 11]:= d.FieldByName('house_unet').AsFloat;
       houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 11]:= d.FieldByName('house_cult').AsString;
-      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 12]:= d.FieldByName('house_cad_no').AsString;
+      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 12]:= d.FieldByName('clk_zone').AsString;
+      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 13]:= d.FieldByName('house_cad_no').AsString;
       b:=b+1;
     end;
 
@@ -2021,24 +2021,21 @@ begin
       houseXL.WorkBooks[1].WorkSheets[10].Cells[e, 8]:= 'Да';
     end;
 
-    //Лицевой счет
-    //Основные сведения
-    //проставить два лиц.счета - основной и капремонт
+    // Лицевой счет
+    // Основные сведения
+    // Выгрузить все лиц.счета, новые - без GUID, старые (для обновления) - c GUID
     i:=1;
     while i<=2 do
     begin
       if i=1 then
       begin
         //основной
-        //только если пусто в ELSK!!!
-        if (d.FieldByName('elsk').AsString = '') then
-        begin
           if debug then
             Form_olap.cxm1.Lines.Add('5.'+intToStr(i));
-
           // вкладка "Основные сведения"
-          lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 1]:= IntToStr(g);  //номер помещения
+          lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 1]:= IntToStr(g);  // номер лс
           lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 2]:= d.FieldByName('lsk').AsString;
+          lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 3]:= d.FieldByName('serviceid').AsString;
           lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 4]:= d.FieldByName('tp').AsString;
           lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 5]:= d.FieldByName('status').AsString;
 
@@ -2057,13 +2054,6 @@ begin
           //lskXL.WorkBooks[1].WorkSheets[3].Cells[c, 2]:= '';
 
           c:=c+1;
-        end
-        else
-        begin
-          if debug then
-            Form_olap.cxm1.Lines.Add('5.0'+' уже создан ЕЛСК, не выгружен!');
-        end;
-
       end
       else
       begin
@@ -2097,24 +2087,33 @@ begin
     end;
 
     //Помещение
-        //только если пусто в ELSK!!!
-    if (d.FieldByName('elsk').AsString = '') then
-    begin
-      if debug then
-       Form_olap.cxm1.Lines.Add('6');
-      // вкладка "Помещение"
-      lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 1]:= IntToStr(g);  //номер помещения
-      lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 2]:= d.FieldByName('adr').AsString;
-      lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 3]:= d.FieldByName('houseguid').AsString;
-      lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 5]:= d.FieldByName('kw').AsString;
-      lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 8]:= d.FieldByName('part').AsFloat;
-    end;
+    //только если пусто в ELSK!!!
+    //if (d.FieldByName('elsk').AsString = '') then
+    //begin
+    if debug then
+     Form_olap.cxm1.Lines.Add('6');
+    // вкладка "Помещение"
+    lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 1]:= IntToStr(g);  //номер помещения
+    lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 2]:= d.FieldByName('adr').AsString;
+    lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 3]:= d.FieldByName('houseguid').AsString;
+
+    //lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 7]:= d.FieldByName('premiseGUID').AsString;
     
-    if (d.FieldByName('elsk').AsString = '') then
-    begin
+    // тип помещения
+    if (d.FieldByName('stat_cd').AsString = 'NLIV') then
+      lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 4]:= 'Нежилое помещение'
+    else
+      lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 4]:= 'Жилое помещение';
+
+    lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 5]:= d.FieldByName('kw').AsString;
+    lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 8]:= d.FieldByName('part').AsFloat;
+    //end;
+
+    //if (d.FieldByName('elsk').AsString = '') then
+    //begin
      a:=a+1;
      g:=g+1;
-    end;
+    //end;
 
 
     d.Next;

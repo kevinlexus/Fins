@@ -147,7 +147,7 @@ object Form_spr_deb_org: TForm_spr_deb_org
     end
     object OD_sprorgREU: TStringField
       FieldName = 'REU'
-      Size = 2
+      Size = 3
     end
     object OD_sprorgTREST: TStringField
       FieldName = 'TREST'

@@ -248,7 +248,7 @@ object frmPenCorr: TfrmPenCorr
     end
     object OD_dataREU: TStringField
       FieldName = 'REU'
-      Size = 2
+      Size = 3
     end
     object OD_dataSTREET_NAME: TStringField
       FieldName = 'STREET_NAME'

@@ -1,6 +1,6 @@
 object Form_chargepay: TForm_chargepay
-  Left = 246
-  Top = 212
+  Left = 489
+  Top = 370
   Width = 835
   Height = 482
   BorderIcons = [biSystemMenu, biMinimize]
@@ -95,7 +95,7 @@ object Form_chargepay: TForm_chargepay
     Left = 0
     Top = 0
     Width = 819
-    Height = 384
+    Height = 383
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
@@ -106,7 +106,7 @@ object Form_chargepay: TForm_chargepay
         Left = 0
         Top = 0
         Width = 811
-        Height = 353
+        Height = 352
         Align = alClient
         TabOrder = 0
         object cxGrid1DBTableView1: TcxGridDBTableView
@@ -442,7 +442,7 @@ object Form_chargepay: TForm_chargepay
   end
   object GroupBox1: TGroupBox
     Left = 0
-    Top = 384
+    Top = 383
     Width = 819
     Height = 60
     Align = alBottom
@@ -1043,7 +1043,7 @@ object Form_chargepay: TForm_chargepay
     Top = 184
   end
   object frxrprt_e: TfrxReport
-    Version = '0.0'
+    Version = '5.1.9'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1069,34 +1069,33 @@ object Form_chargepay: TForm_chargepay
     Style = <
       item
         Name = 'Title'
-        Color = 14211288
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -16
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Fill.BackColor = 14211288
       end
       item
         Name = 'Header'
-        Color = 15790320
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Fill.BackColor = 15790320
       end
       item
         Name = 'Group header'
-        Color = 15790320
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Fill.BackColor = 15790320
       end
       item
         Name = 'Data'
-        Color = clNone
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
@@ -1105,7 +1104,6 @@ object Form_chargepay: TForm_chargepay
       end
       item
         Name = 'Group footer'
-        Color = clNone
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
@@ -1115,7 +1113,6 @@ object Form_chargepay: TForm_chargepay
       end
       item
         Name = 'Header line'
-        Color = clNone
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
@@ -1136,20 +1133,20 @@ object Form_chargepay: TForm_chargepay
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
       object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
         Height = 45.354360000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo20: TfrxMemoView
           Width = 457.323130000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           AutoWidth = True
-          Color = 15000804
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -15
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Fill.BackColor = 15000804
           HAlign = haCenter
           Memo.UTF8 = (
             
@@ -1159,6 +1156,7 @@ object Form_chargepay: TForm_chargepay
         end
       end
       object PageHeader1: TfrxPageHeader
+        FillType = ftBrush
         Height = 41.574830000000000000
         Top = 86.929190000000000000
         Width = 718.110700000000000000
@@ -1166,7 +1164,6 @@ object Form_chargepay: TForm_chargepay
           Left = 64.252010000000000000
           Width = 718.110236220000000000
           Height = 22.677180000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
@@ -1180,13 +1177,12 @@ object Form_chargepay: TForm_chargepay
           Left = 64.252010000000000000
           Width = 78.000000000000000000
           Height = 41.574830000000000000
-          ShowHint = False
-          Color = 15790320
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Fill.BackColor = 15790320
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#1116#1056#176#1057#8225#1056#1105#1057#1027#1056#187#1056#181#1056#1029#1056#1109
@@ -1197,13 +1193,12 @@ object Form_chargepay: TForm_chargepay
           Left = 142.252010000000000000
           Width = 78.000000000000000000
           Height = 22.677180000000000000
-          ShowHint = False
-          Color = 15790320
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Fill.BackColor = 15790320
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#1115#1056#1111#1056#187#1056#176#1057#8225#1056#181#1056#1029#1056#1109)
@@ -1213,13 +1208,12 @@ object Form_chargepay: TForm_chargepay
           Left = 220.252010000000000000
           Width = 78.000000000000000000
           Height = 22.677180000000000000
-          ShowHint = False
-          Color = 15790320
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Fill.BackColor = 15790320
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#8221#1056#1109#1056#187#1056#1110)
@@ -1229,13 +1223,12 @@ object Form_chargepay: TForm_chargepay
           Left = 5.858070000000000000
           Width = 56.000000000000000000
           Height = 22.677180000000000000
-          ShowHint = False
-          Color = 15790320
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Fill.BackColor = 15790320
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#1119#1056#181#1057#1026#1056#1105#1056#1109#1056#1169)
@@ -1243,6 +1236,7 @@ object Form_chargepay: TForm_chargepay
         end
       end
       object MasterData1: TfrxMasterData
+        FillType = ftBrush
         Height = 23.677180000000000000
         Top = 188.976500000000000000
         Width = 718.110700000000000000
@@ -1253,7 +1247,6 @@ object Form_chargepay: TForm_chargepay
           Left = 64.252010000000000000
           Width = 78.000000000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'CHARGE'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -1273,7 +1266,6 @@ object Form_chargepay: TForm_chargepay
           Left = 138.472480000000000000
           Width = 78.000000000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'PAYMENT'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -1293,7 +1285,6 @@ object Form_chargepay: TForm_chargepay
           Left = 216.472480000000000000
           Width = 78.000000000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'DOLG'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -1313,7 +1304,6 @@ object Form_chargepay: TForm_chargepay
           Left = 5.858070000000000000
           Width = 56.000000000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'MG'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -1329,6 +1319,7 @@ object Form_chargepay: TForm_chargepay
         end
       end
       object Footer1: TfrxFooter
+        FillType = ftBrush
         Height = 52.913420000000000000
         Top = 234.330860000000000000
         Width = 718.110700000000000000
@@ -1336,8 +1327,6 @@ object Form_chargepay: TForm_chargepay
           Left = 64.252010000000000000
           Width = 74.220470000000000000
           Height = 18.897650000000000000
-          ShowHint = False
-          Color = 15790320
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           DisplayFormat.FormatStr = '%2.2f'
@@ -1347,6 +1336,7 @@ object Form_chargepay: TForm_chargepay
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Fill.BackColor = 15790320
           HAlign = haRight
           Memo.UTF8 = (
             '[SUM(<frxDBDataset1."CHARGE">,MasterData1)]')
@@ -1356,8 +1346,6 @@ object Form_chargepay: TForm_chargepay
           Left = 138.472480000000000000
           Width = 78.000000000000000000
           Height = 18.897650000000000000
-          ShowHint = False
-          Color = 15790320
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           DisplayFormat.FormatStr = '%2.2f'
@@ -1367,6 +1355,7 @@ object Form_chargepay: TForm_chargepay
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Fill.BackColor = 15790320
           HAlign = haRight
           Memo.UTF8 = (
             '[SUM(<frxDBDataset1."PAYMENT">,MasterData1)]')
@@ -1376,8 +1365,6 @@ object Form_chargepay: TForm_chargepay
           Left = 216.472480000000000000
           Width = 78.000000000000000000
           Height = 18.897650000000000000
-          ShowHint = False
-          Color = 15790320
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           DisplayFormat.FormatStr = '%2.2f'
@@ -1387,6 +1374,7 @@ object Form_chargepay: TForm_chargepay
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Fill.BackColor = 15790320
           HAlign = haRight
           Memo.UTF8 = (
             '[SUM(<frxDBDataset1."DOLG">,MasterData1)]')
@@ -1396,8 +1384,6 @@ object Form_chargepay: TForm_chargepay
           Left = 3.779530000000000000
           Width = 56.000000000000000000
           Height = 18.897650000000000000
-          ShowHint = False
-          Color = 15790320
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1405,6 +1391,7 @@ object Form_chargepay: TForm_chargepay
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Fill.BackColor = 15790320
           Memo.UTF8 = (
             #1056#152#1057#8218#1056#1109#1056#1110#1056#1109':')
           ParentFont = False
@@ -1414,7 +1401,6 @@ object Form_chargepay: TForm_chargepay
           Top = 30.236240000000000000
           Width = 229.858380000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1621,7 +1607,7 @@ object Form_chargepay: TForm_chargepay
     Top = 320
   end
   object frxReport1: TfrxReport
-    Version = '0.0'
+    Version = '5.1.9'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

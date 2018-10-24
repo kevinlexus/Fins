@@ -318,16 +318,14 @@ object Form_find_adr: TForm_find_adr
         '                ltrim(k.nd, '#39'0'#39') as nd2, k.nd as nd_id, k.id as ' +
         'house_id,'
       '                decode(a.psch,8,1, 9,1, 0) as psch'
-      '  from scott.c_houses k, scott.kart a, scott.s_reu_trest s'
-      ' where a.house_id = k.id'
-      '   and k.kul = :id'
+      '  from scott.c_houses k'
+      '   left join scott.kart a on a.house_id = k.id'
+      '   left join scott.s_reu_trest s on a.reu = s.reu'
+      ' where '
+      '  k.kul = :id and (nvl(:p_var2,0)=0 or a.psch not in (8,9))'
       
-        '   and trim(a.reu) = trim(s.reu) --'#1084#1086#1078#1085#1086' '#1091#1073#1088#1072#1090#1100' trim, '#1087#1086#1089#1083#1077' '#1087#1077#1088#1077 +
-        #1093#1086#1076#1072' '#1085#1072' 3 '#1088#1072#1079#1088#1103#1076#1072
-      '   and (nvl(:p_var2,0)=0 or a.psch not in (8,9))'
-      
-        '   and (:flt_reu_ is not null and a.reu = :flt_reu_ or :flt_reu_' +
-        ' is null)'
+        '  and (:flt_reu_ is not null and a.reu = :flt_reu_ or :flt_reu_ ' +
+        'is null)'
       
         ' order by scott.utils.f_ord_digit(k.nd), scott.utils.f_ord3(k.nd' +
         ') desc,'
@@ -346,7 +344,6 @@ object Form_find_adr: TForm_find_adr
     DetailFields = 'ID'
     Session = DataModule1.OracleSession1
     Detachable = True
-    Active = True
     Left = 96
     Top = 64
     object OD_housesND: TStringField
@@ -359,11 +356,11 @@ object Form_find_adr: TForm_find_adr
       FieldName = 'PSCH'
     end
     object OD_housesREU: TStringField
-      DisplayWidth = 2
+      DisplayWidth = 3
       FieldName = 'REU'
       Required = True
       Visible = False
-      Size = 2
+      Size = 3
     end
     object OD_housesND2: TStringField
       DisplayWidth = 6

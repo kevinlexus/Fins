@@ -166,7 +166,7 @@ object Form_add_lsk: TForm_add_lsk
     object OD_reuREU: TStringField
       FieldName = 'REU'
       Required = True
-      Size = 2
+      Size = 3
     end
     object OD_reuNAME_REU: TStringField
       FieldName = 'NAME_REU'

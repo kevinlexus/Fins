@@ -261,7 +261,7 @@ object Form_spr_works: TForm_spr_works
     Top = 232
     object OD_reuREU: TStringField
       FieldName = 'REU'
-      Size = 2
+      Size = 3
     end
     object OD_reuNAME_REU: TStringField
       FieldName = 'NAME_REU'

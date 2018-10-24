@@ -921,6 +921,13 @@ begin
         Label47.Caption := 'Доп.закрыт';
         Label47.Font.Color := clRed;
       end
+      else if ((OD_list_kart.FieldByName('psch').AsInteger = 8)
+          or (OD_list_kart.FieldByName('psch').AsInteger = 9))
+          and (OD_list_kart.FieldByName('lsk_tp_cd').AsString = 'LSK_TP_RSO') then
+      begin
+        Label47.Caption := 'РСО.закрыт';
+        Label47.Font.Color := clRed;
+      end
       else if (OD_list_kart.FieldByName('lsk_tp_cd').AsString = 'LSK_TP_MAIN') then
       begin
         Label47.Caption := 'Основной';
@@ -929,6 +936,11 @@ begin
       else if (OD_list_kart.FieldByName('lsk_tp_cd').AsString = 'LSK_TP_ADDIT') then
       begin
         Label47.Caption := 'Дополнит.';
+        Label47.Font.Color := clGreen;
+      end
+      else if (OD_list_kart.FieldByName('lsk_tp_cd').AsString = 'LSK_TP_RSO') then
+      begin
+        Label47.Caption := 'РСО';
         Label47.Font.Color := clGreen;
       end;
     end;
