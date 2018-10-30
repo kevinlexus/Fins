@@ -193,6 +193,8 @@ type
     frxDB_cmp_detail_cap: TfrxDBDataset;
     frxDB_cmp_funds_primary: TfrxDBDataset;
     frxDB_cmp_funds_cap: TfrxDBDataset;
+    OD_cmp_contractors: TOracleDataSet;
+    frxDB_cmp_contractors: TfrxDBDataset;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -285,6 +287,25 @@ begin
   OD_t_org.SetVariable('mg_', DBLookupComboboxEh1.KeyValue);
   OD_t_org.Active := true;
 
+  // подготовку делаем в случае выбора либо 1 л.с. либо 1 квартиры
+  // и только не по арх спр.
+  if (tp_ <> 2) and (tp_ <> 5) and (sel_obj_ = 0)
+     and (wwDBEdit1.Text = wwDBEdit2.Text)
+     and (CheckBox3.Checked = True) then
+  begin
+      //по 1 лс.
+    DataModule1.OraclePackage1.CallProcedure('scott.GEN.prepare_arch_k_lsk',
+      [Form_main.k_lsk_id_, pen_last_month_, 0]);
+  end
+  else if (tp_ <> 2) and (tp_ <> 5) and (sel_obj_ = 1)
+     and (DBLookupComboboxEh4.KeyValue <> null)
+     and (CheckBox3.Checked = True) then
+  begin
+     //по 1 квартире
+    DataModule1.OraclePackage1.CallProcedure('scott.GEN.prepare_arch_k_lsk',
+      [Form_main.k_lsk_id_, pen_last_month_, 0]);  
+  end;
+
   if (OD_t_org.FieldByName('BILL_TP').asInteger = 1) or
      (OD_t_org.FieldByName('BILL_TP').asInteger = 2) then
     // старый вариант отчетности
@@ -306,6 +327,8 @@ procedure TForm_print_bills.compound_report;
 begin
   // главный датасет
   OD_cmp_main.Active:=false;
+  // реквизиты исполнителей
+  OD_cmp_contractors.Active:=false;
   // данные основных и РСО счетов
   OD_cmp_detail_primary.Active:=false;
   // данные счетов по капремонту
@@ -334,6 +357,7 @@ begin
   // установить параметры
   OD_cmp_main.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
 
+  OD_cmp_contractors.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
   OD_cmp_detail_primary.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
   OD_cmp_detail_cap.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
   OD_cmp_funds_primary.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
@@ -367,16 +391,19 @@ begin
     OD_cmp_main.SetVariable('p_is_closed', 1);
     OD_cmp_detail_primary.SetVariable('p_is_closed', 1);
     OD_cmp_detail_cap.SetVariable('p_is_closed', 1);
+    OD_cmp_contractors.SetVariable('p_is_closed', 1);
   end
   else
   begin
     OD_cmp_main.SetVariable('p_is_closed', 0);
     OD_cmp_detail_primary.SetVariable('p_is_closed', 0);
     OD_cmp_detail_cap.SetVariable('p_is_closed', 0);
+    OD_cmp_contractors.SetVariable('p_is_closed', 0);
   end;
 
   // активировать датасеты
   OD_cmp_main.Active:=true;
+  OD_cmp_contractors.Active:=true;
   OD_cmp_detail_primary.Active:=true;
   OD_cmp_detail_cap.Active:=true;
   OD_cmp_funds_primary.Active:=true;

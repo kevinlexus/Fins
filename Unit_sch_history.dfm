@@ -286,7 +286,7 @@ object Form_sch_history: TForm_sch_history
           Height = 102
           Align = alClient
           TabOrder = 0
-          Properties.ActivePage = cxTabSheet1
+          Properties.ActivePage = cxTabSheet2
           Properties.CustomButtons.Buttons = <>
           ClientRectBottom = 98
           ClientRectLeft = 4
