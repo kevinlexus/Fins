@@ -1,10 +1,10 @@
 object Form_spr_tarif: TForm_spr_tarif
-  Left = 552
-  Top = 311
+  Left = 1093
+  Top = 188
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082' '#1090#1072#1088#1080#1092#1086#1074
-  ClientHeight = 426
+  ClientHeight = 422
   ClientWidth = 625
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -111,6 +111,7 @@ object Form_spr_tarif: TForm_spr_tarif
       Spacing = 4
       Transparent = False
       Caption = 'wwDBNavigator1First'
+      Enabled = False
       DisabledTextColors.ShadeColor = clGray
       DisabledTextColors.HighlightColor = clBtnHighlight
       Index = 0
@@ -127,6 +128,7 @@ object Form_spr_tarif: TForm_spr_tarif
       Spacing = 4
       Transparent = False
       Caption = 'wwDBNavigator1PriorPage'
+      Enabled = False
       DisabledTextColors.ShadeColor = clGray
       DisabledTextColors.HighlightColor = clBtnHighlight
       Index = 1
@@ -143,6 +145,7 @@ object Form_spr_tarif: TForm_spr_tarif
       Spacing = 4
       Transparent = False
       Caption = 'wwDBNavigator1Prior'
+      Enabled = False
       DisabledTextColors.ShadeColor = clGray
       DisabledTextColors.HighlightColor = clBtnHighlight
       Index = 2
@@ -159,6 +162,7 @@ object Form_spr_tarif: TForm_spr_tarif
       Spacing = 4
       Transparent = False
       Caption = 'wwDBNavigator1Next'
+      Enabled = False
       DisabledTextColors.ShadeColor = clGray
       DisabledTextColors.HighlightColor = clBtnHighlight
       Index = 3
@@ -175,6 +179,7 @@ object Form_spr_tarif: TForm_spr_tarif
       Spacing = 4
       Transparent = False
       Caption = 'wwDBNavigator1NextPage'
+      Enabled = False
       DisabledTextColors.ShadeColor = clGray
       DisabledTextColors.HighlightColor = clBtnHighlight
       Index = 4
@@ -185,7 +190,7 @@ object Form_spr_tarif: TForm_spr_tarif
       Top = 0
       Width = 25
       Height = 25
-      Hint = 'Edit current record'
+      Hint = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1090#1077#1082#1091#1097#1091#1102' '#1079#1072#1087#1080#1089#1100
       ImageIndex = -1
       NumGlyphs = 2
       Spacing = 4
@@ -202,7 +207,7 @@ object Form_spr_tarif: TForm_spr_tarif
       Top = 0
       Width = 25
       Height = 25
-      Hint = 'Cancel changes made to current record'
+      Hint = #1054#1090#1084#1077#1085#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103' '#1090#1077#1082#1091#1097#1077#1081' '#1079#1072#1087#1080#1089#1080
       ImageIndex = -1
       NumGlyphs = 2
       Spacing = 4
@@ -220,7 +225,7 @@ object Form_spr_tarif: TForm_spr_tarif
       Top = 0
       Width = 25
       Height = 25
-      Hint = 'Refresh the contents of the dataset'
+      Hint = #1054#1073#1085#1086#1074#1080#1090#1100' '#1079#1072#1087#1080#1089#1080
       ImageIndex = -1
       NumGlyphs = 2
       Spacing = 4
@@ -272,7 +277,7 @@ object Form_spr_tarif: TForm_spr_tarif
       Top = 0
       Width = 25
       Height = 25
-      Hint = 'Post changes of current record'
+      Hint = #1054#1090#1087#1088#1072#1074#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103' '#1074' '#1073#1072#1079#1091
       ImageIndex = -1
       NumGlyphs = 2
       Spacing = 4
@@ -296,6 +301,7 @@ object Form_spr_tarif: TForm_spr_tarif
       Spacing = 4
       Transparent = False
       Caption = 'wwDBNavigator1Last'
+      Enabled = False
       DisabledTextColors.ShadeColor = clGray
       DisabledTextColors.HighlightColor = clBtnHighlight
       Index = 11
@@ -312,6 +318,7 @@ object Form_spr_tarif: TForm_spr_tarif
       Spacing = 4
       Transparent = False
       Caption = 'wwDBNavigator1Delete'
+      Enabled = False
       DisabledTextColors.ShadeColor = clGray
       DisabledTextColors.HighlightColor = clBtnHighlight
       OnClick = wwDBNavigator1DeleteClick
@@ -338,7 +345,7 @@ object Form_spr_tarif: TForm_spr_tarif
   end
   object GroupBox1: TGroupBox
     Left = 0
-    Top = 377
+    Top = 373
     Width = 625
     Height = 49
     Align = alBottom
@@ -609,7 +616,7 @@ object Form_spr_tarif: TForm_spr_tarif
       Top = 0
       Width = 25
       Height = 25
-      Hint = 'Edit current record'
+      Hint = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1090#1077#1082#1091#1097#1091#1102' '#1079#1072#1087#1080#1089#1100
       ImageIndex = -1
       NumGlyphs = 2
       Spacing = 4
@@ -626,7 +633,7 @@ object Form_spr_tarif: TForm_spr_tarif
       Top = 0
       Width = 25
       Height = 25
-      Hint = 'Cancel changes made to current record'
+      Hint = #1054#1090#1084#1077#1085#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103' '#1090#1077#1082#1091#1097#1077#1081' '#1079#1072#1087#1080#1089#1080
       ImageIndex = -1
       NumGlyphs = 2
       Spacing = 4
@@ -644,7 +651,7 @@ object Form_spr_tarif: TForm_spr_tarif
       Top = 0
       Width = 25
       Height = 25
-      Hint = 'Refresh the contents of the dataset'
+      Hint = #1054#1073#1085#1086#1074#1080#1090#1100' '#1079#1072#1087#1080#1089#1080
       ImageIndex = -1
       NumGlyphs = 2
       Spacing = 4
@@ -696,7 +703,7 @@ object Form_spr_tarif: TForm_spr_tarif
       Top = 25
       Width = 25
       Height = 25
-      Hint = 'Post changes of current record'
+      Hint = #1054#1090#1087#1088#1072#1074#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103' '#1074' '#1073#1072#1079#1091
       ImageIndex = -1
       NumGlyphs = 2
       Spacing = 4
@@ -796,7 +803,7 @@ object Form_spr_tarif: TForm_spr_tarif
       '  and k.fk_tarif=x.id and x.cd<>'#39'000'#39')')
     Optimize = False
     Variables.Data = {
-      0300000001000000040000003A55534C05000000040000003035360000000000}
+      0300000001000000040000003A55534C05000000040000003030330000000000}
     OracleDictionary.UseMessageTable = True
     QBEDefinition.QBEFieldDefs = {
       0400000008000000020000004944010000000000040000004E414D4501000000

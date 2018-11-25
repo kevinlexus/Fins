@@ -1,6 +1,6 @@
 object Form_inkass_print: TForm_inkass_print
-  Left = 619
-  Top = 362
+  Left = 645
+  Top = 245
   Width = 380
   Height = 395
   BorderIcons = [biSystemMenu, biMinimize]
@@ -92,7 +92,7 @@ object Form_inkass_print: TForm_inkass_print
   TextHeight = 13
   object Panel1: TPanel
     Left = 0
-    Top = 316
+    Top = 315
     Width = 364
     Height = 41
     Align = alBottom
@@ -134,11 +134,11 @@ object Form_inkass_print: TForm_inkass_print
     Left = 0
     Top = 0
     Width = 364
-    Height = 316
+    Height = 315
     Align = alClient
     TabOrder = 1
     object cxGrid1DBTableView1: TcxGridDBTableView
-      NavigatorButtons.ConfirmDelete = False
+      Navigator.Buttons.CustomButtons = <>
       DataController.DataSource = DS_ink
       DataController.Summary.DefaultGroupSummaryItems = <>
       DataController.Summary.FooterSummaryItems = <
@@ -294,7 +294,7 @@ object Form_inkass_print: TForm_inkass_print
     Top = 88
   end
   object frxReport1: TfrxReport
-    Version = '0.0'
+    Version = '5.1.9'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -335,6 +335,7 @@ object Form_inkass_print: TForm_inkass_print
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
       object MasterData1: TfrxMasterData
+        FillType = ftBrush
         Height = 17.677180000000000000
         Top = 173.858380000000000000
         Width = 718.110700000000000000
@@ -346,7 +347,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 0.779530000000000000
           Width = 68.031540000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'DTEK'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -364,7 +364,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 0.779530000000000000
           Width = 75.590600000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'LSK'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -382,7 +381,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 0.779529999999994100
           Width = 60.472480000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'SUMMA'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -404,7 +402,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 0.779529999999994100
           Width = 56.692950000000010000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'PENYA'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -426,7 +423,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 0.779529999999994100
           Width = 71.811070000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'DOPL'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -445,7 +441,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 0.779529999999994100
           Width = 64.252010000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'NKVIT'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -464,7 +459,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 0.779529999999994100
           Width = 64.252010000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'WR'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -483,7 +477,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 0.779529999999994100
           Width = 49.133890000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'OPER'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -502,7 +495,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 0.779530000000000000
           Width = 147.401670000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'ADR'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -519,7 +511,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 0.779530000000000000
           Width = 30.236240000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'DEP'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -534,6 +525,7 @@ object Form_inkass_print: TForm_inkass_print
         end
       end
       object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
         Height = 34.015770000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
@@ -541,7 +533,6 @@ object Form_inkass_print: TForm_inkass_print
           Left = 75.590600000000000000
           Width = 544.252320000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -557,12 +548,13 @@ object Form_inkass_print: TForm_inkass_print
         object Line2: TfrxLineView
           Top = 18.897650000000000000
           Width = 714.331170000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
           Diagonal = True
         end
       end
       object PageHeader1: TfrxPageHeader
+        FillType = ftBrush
         Height = 37.795300000000000000
         Top = 75.590600000000000000
         Width = 718.110700000000000000
@@ -571,7 +563,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 3.779530000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -589,7 +580,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 3.779530000000000000
           Width = 75.590600000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -607,7 +597,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 3.779529999999994000
           Width = 68.031540000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -625,7 +614,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 3.779529999999994000
           Width = 68.031540000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -643,7 +631,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 2.779529999999994000
           Width = 71.811070000000000000
           Height = 26.456710000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -662,7 +649,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 3.779529999999994000
           Width = 64.252010000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -680,7 +666,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 3.779529999999994000
           Width = 64.252010000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -697,7 +682,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 3.779529999999994000
           Width = 49.133890000000000000
           Height = 22.677180000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -715,7 +699,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 3.779530000000000000
           Width = 128.504020000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -731,7 +714,7 @@ object Form_inkass_print: TForm_inkass_print
         object Line3: TfrxLineView
           Top = 37.795299999999980000
           Width = 714.331170000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
           Diagonal = True
         end
@@ -739,7 +722,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 3.779530000000000000
           Width = 37.795300000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -754,6 +736,7 @@ object Form_inkass_print: TForm_inkass_print
         end
       end
       object ReportSummary1: TfrxReportSummary
+        FillType = ftBrush
         Height = 18.897650000000000000
         Top = 253.228510000000000000
         Width = 718.110700000000000000
@@ -762,7 +745,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 3.779529999999994000
           Width = 68.031540000000010000
           Height = 15.118120000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           DisplayFormat.DecimalSeparator = ','
@@ -783,7 +765,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 3.779529999999994000
           Width = 56.692950000000010000
           Height = 15.118120000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           DisplayFormat.DecimalSeparator = ','
@@ -804,7 +785,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 3.779529999999994000
           Width = 68.031540000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -821,7 +801,7 @@ object Form_inkass_print: TForm_inkass_print
           Left = 3.779530000000000000
           Top = 3.779529999999994000
           Width = 714.331170000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Memo22: TfrxMemoView
@@ -829,7 +809,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 3.779529999999994000
           Width = 68.031540000000010000
           Height = 15.118120000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           DisplayFormat.DecimalSeparator = ','
@@ -852,7 +831,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 3.779529999999994000
           Width = 102.047310000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -867,6 +845,7 @@ object Form_inkass_print: TForm_inkass_print
         end
       end
       object PageFooter1: TfrxPageFooter
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 294.803340000000000000
         Width = 718.110700000000000000
@@ -874,7 +853,6 @@ object Form_inkass_print: TForm_inkass_print
           Left = 653.858690000000000000
           Width = 56.692950000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -916,7 +894,7 @@ object Form_inkass_print: TForm_inkass_print
     Top = 120
   end
   object frxReport2: TfrxReport
-    Version = '0.0'
+    Version = '5.1.9'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -952,6 +930,7 @@ object Form_inkass_print: TForm_inkass_print
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
       object MasterData1: TfrxMasterData
+        FillType = ftBrush
         Height = 21.456710000000000000
         Top = 162.519790000000000000
         Width = 718.110700000000000000
@@ -963,7 +942,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 1.779530000000000000
           Width = 68.031540000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset2
           DataSetName = 'frxDBDataset2'
           Font.Charset = DEFAULT_CHARSET
@@ -981,7 +959,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 1.779530000000000000
           Width = 226.771800000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'NAIM'
           DataSet = frxDBDataset2
           DataSetName = 'frxDBDataset2'
@@ -999,7 +976,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 1.779529999999994000
           Width = 75.590600000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           DisplayFormat.DecimalSeparator = ','
@@ -1020,7 +996,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 1.779529999999994000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           DisplayFormat.DecimalSeparator = ','
@@ -1041,7 +1016,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 1.779529999999994000
           Width = 75.590600000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           DisplayFormat.DecimalSeparator = ','
@@ -1062,7 +1036,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 1.559060000000000000
           Width = 30.236240000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'DEP'
           DataSet = frxDBDataset2
           DataSetName = 'frxDBDataset2'
@@ -1077,6 +1050,7 @@ object Form_inkass_print: TForm_inkass_print
         end
       end
       object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
         Height = 34.015770000000010000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
@@ -1084,7 +1058,6 @@ object Form_inkass_print: TForm_inkass_print
           Left = 75.590600000000000000
           Width = 544.252320000000100000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -1101,12 +1074,13 @@ object Form_inkass_print: TForm_inkass_print
         object Line2: TfrxLineView
           Top = 18.897650000000000000
           Width = 714.331170000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
           Diagonal = True
         end
       end
       object PageHeader1: TfrxPageHeader
+        FillType = ftBrush
         Height = 26.456710000000000000
         Top = 75.590600000000000000
         Width = 718.110700000000000000
@@ -1115,7 +1089,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 3.779530000000000000
           Width = 215.433210000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1133,7 +1106,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 3.779529999999994000
           Width = 68.031540000000010000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1151,7 +1123,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 3.779530000000000000
           Width = 64.252010000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1169,7 +1140,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 3.779529999999994000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1185,7 +1155,7 @@ object Form_inkass_print: TForm_inkass_print
         object Line3: TfrxLineView
           Top = 22.677179999999990000
           Width = 714.331170000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
           Diagonal = True
         end
@@ -1194,7 +1164,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 3.779529999999994000
           Width = 86.929190000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1211,7 +1180,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 3.779530000000000000
           Width = 41.574830000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1226,6 +1194,7 @@ object Form_inkass_print: TForm_inkass_print
         end
       end
       object ReportSummary1: TfrxReportSummary
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 245.669450000000000000
         Width = 718.110700000000000000
@@ -1234,7 +1203,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 3.779529999999994000
           Width = 75.590600000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           DisplayFormat.DecimalSeparator = ','
@@ -1258,7 +1226,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 3.779529999999994000
           Width = 75.590600000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           DisplayFormat.DecimalSeparator = ','
@@ -1279,7 +1246,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 3.779529999999994000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           DisplayFormat.DecimalSeparator = ','
@@ -1300,7 +1266,6 @@ object Form_inkass_print: TForm_inkass_print
           Top = 3.779529999999994000
           Width = 68.031540000000010000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           Font.Charset = DEFAULT_CHARSET
@@ -1317,11 +1282,12 @@ object Form_inkass_print: TForm_inkass_print
           Left = 3.779530000000000000
           Top = 2.779530000000000000
           Width = 714.331170000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
       end
       object PageFooter1: TfrxPageFooter
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 291.023810000000000000
         Width = 718.110700000000000000
@@ -1329,7 +1295,6 @@ object Form_inkass_print: TForm_inkass_print
           Left = 653.858690000000000000
           Width = 56.692950000000010000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -12

@@ -1,6 +1,6 @@
 object Form_house_vvod: TForm_house_vvod
-  Left = 253
-  Top = 437
+  Left = 337
+  Top = 229
   Width = 1145
   Height = 512
   Caption = #1042#1074#1086#1076' '#1086#1073#1098#1105#1084#1086#1074' '#1087#1086' '#1076#1086#1084#1072#1084
@@ -596,8 +596,10 @@ object Form_house_vvod: TForm_house_vvod
       '            and tp.cd = '#39'LSK_TP_MAIN'#39
       '          group by k.house_id) k,'
       
-        '       (select max(t.reu) as reu, t.house_id from scott.kart t w' +
-        'here t.psch not in (8,9) group by t.house_id) a'
+        '       (select max(t.reu) as reu, t.house_id from scott.kart t j' +
+        'oin scott.v_lsk_tp tp on t.fk_tp=tp.id and tp.cd='#39'LSK_TP_MAIN'#39
+      '        where t.psch not in (8,9) '
+      '        group by t.house_id) a'
       ' where a.reu = t.reu'
       '   and h.id = a.house_id'
       '   and h.id = r.house_id(+)'

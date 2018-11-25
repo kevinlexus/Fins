@@ -93,11 +93,11 @@ object Form_houses_nabor: TForm_houses_nabor
     Left = 569
     Top = 0
     Width = 9
-    Height = 534
+    Height = 533
   end
   object GroupBox1: TGroupBox
     Left = 0
-    Top = 534
+    Top = 533
     Width = 1069
     Height = 49
     Align = alBottom
@@ -133,7 +133,7 @@ object Form_houses_nabor: TForm_houses_nabor
     Left = 578
     Top = 0
     Width = 491
-    Height = 534
+    Height = 533
     ActivePage = TabSheet5
     Align = alClient
     TabOrder = 1
@@ -190,7 +190,7 @@ object Form_houses_nabor: TForm_houses_nabor
         Left = 0
         Top = 0
         Width = 483
-        Height = 454
+        Height = 453
         ControlType.Strings = (
           'ISCHARGED;CheckBox;1;0'
           'RN;CustomEdit;wwExpandButton2;F'
@@ -291,7 +291,7 @@ object Form_houses_nabor: TForm_houses_nabor
       end
       object GroupBox3: TGroupBox
         Left = 0
-        Top = 454
+        Top = 453
         Width = 483
         Height = 52
         Align = alBottom
@@ -559,7 +559,7 @@ object Form_houses_nabor: TForm_houses_nabor
         Left = 0
         Top = 0
         Width = 483
-        Height = 506
+        Height = 505
         ControlType.Strings = (
           'RN;CustomEdit;wwExpandButton3;F')
         Selected.Strings = (
@@ -679,7 +679,7 @@ object Form_houses_nabor: TForm_houses_nabor
         Left = 0
         Top = 0
         Width = 483
-        Height = 506
+        Height = 505
         Align = alClient
         TabOrder = 0
         object cxGridDBTableView2: TcxGridDBTableView
@@ -727,13 +727,13 @@ object Form_houses_nabor: TForm_houses_nabor
     Left = 0
     Top = 0
     Width = 569
-    Height = 534
+    Height = 533
     Align = alLeft
     Caption = 'Panel2'
     TabOrder = 0
     object Panel1: TPanel
       Left = 1
-      Top = 480
+      Top = 479
       Width = 567
       Height = 53
       Align = alBottom
@@ -908,7 +908,7 @@ object Form_houses_nabor: TForm_houses_nabor
       Left = 1
       Top = 1
       Width = 567
-      Height = 479
+      Height = 478
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -1077,6 +1077,10 @@ object Form_houses_nabor: TForm_houses_nabor
           DataBinding.FieldName = 'PSCH'
           Visible = False
         end
+        object cxGridDBTableView1POSTCODE: TcxGridDBColumn
+          Caption = #1048#1085#1076#1077#1082#1089
+          DataBinding.FieldName = 'POSTCODE'
+        end
       end
       object cxGrid1DBTableView2: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
@@ -1114,7 +1118,7 @@ object Form_houses_nabor: TForm_houses_nabor
       
         ' t.fk_pasp_org, o.name as pasp_name, t.fk_other_org, o2.name as ' +
         'other_name, t.kran1, t.k_lsk_id,'
-      ' t.FK_TYPESPAY'
+      ' t.FK_TYPESPAY, t.postcode'
       
         ' from scott.c_houses t, scott.spul s, scott.t_org o, scott.t_org' +
         ' o2'
@@ -1141,7 +1145,7 @@ object Form_houses_nabor: TForm_houses_nabor
       00000000000000000B0000003A464C545F484F5553455F030000000000000000
       000000}
     QBEDefinition.QBEFieldDefs = {
-      0400000011000000020000004944010000000000040000004E414D4501000000
+      0400000012000000020000004944010000000000040000004E414D4501000000
       0000020000004E44010000000000040000004E5F4E4401000000000006000000
       4D494E4C534B010000000000060000004D41584C534B0100000000000A000000
       484F5553455F5459504501000000000003000000554348010000000000030000
@@ -1149,10 +1153,10 @@ object Form_houses_nabor: TForm_houses_nabor
       4153505F4F524701000000000009000000504153505F4E414D45010000000000
       050000004B52414E31010000000000080000004B5F4C534B5F49440100000000
       000A0000004F544845525F4E414D450100000000000C000000464B5F4F544845
-      525F4F52470100000000000B000000464B5F5459504553504159010000000000}
+      525F4F52470100000000000B000000464B5F5459504553504159010000000000
+      08000000504F5354434F4445010000000000}
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Active = True
     BeforeEdit = OD_housesBeforeEdit
     BeforePost = OD_housesBeforePost
     AfterPost = OD_housesAfterPost
@@ -1261,6 +1265,10 @@ object Form_houses_nabor: TForm_houses_nabor
     end
     object OD_housesFK_TYPESPAY: TFloatField
       FieldName = 'FK_TYPESPAY'
+    end
+    object OD_housesPOSTCODE: TStringField
+      FieldName = 'POSTCODE'
+      Size = 6
     end
   end
   object DS_houses: TwwDataSource
@@ -1490,7 +1498,7 @@ object Form_houses_nabor: TForm_houses_nabor
       'order by t.name')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      040000002E000000020000004944010000000000040000004E414D4501000000
+      0400000031000000020000004944010000000000040000004E414D4501000000
       0000020000004344010000000000030000004E50500100000000000800000046
       4B5F4F5247545001000000000001000000560100000000000900000050415245
       4E545F4944010000000000030000005245550100000000000500000054524553
@@ -1514,7 +1522,9 @@ object Form_houses_nabor: TForm_houses_nabor
       000000000B000000525F5343485F41444449540100000000000B000000464B5F
       42494C4C5F56415201000000000006000000414F475549440100000000000500
       00004F4B544D4F01000000000008000000434F44455F44454201000000000009
-      000000444F4C475F4E414D45010000000000}
+      000000444F4C475F4E414D450100000000000A00000042414E4B5F464E414D45
+      0100000000000300000047525001000000000009000000525F5343485F474953
+      010000000000}
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True
@@ -1779,7 +1789,7 @@ object Form_houses_nabor: TForm_houses_nabor
       'order by t.name')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      040000002E000000020000004944010000000000040000004E414D4501000000
+      0400000031000000020000004944010000000000040000004E414D4501000000
       0000020000004344010000000000030000004E50500100000000000800000046
       4B5F4F5247545001000000000001000000560100000000000900000050415245
       4E545F4944010000000000030000005245550100000000000500000054524553
@@ -1803,7 +1813,9 @@ object Form_houses_nabor: TForm_houses_nabor
       000000000B000000525F5343485F41444449540100000000000B000000464B5F
       42494C4C5F56415201000000000006000000414F475549440100000000000500
       00004F4B544D4F01000000000008000000434F44455F44454201000000000009
-      000000444F4C475F4E414D45010000000000}
+      000000444F4C475F4E414D450100000000000A00000042414E4B5F464E414D45
+      0100000000000300000047525001000000000009000000525F5343485F474953
+      010000000000}
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True

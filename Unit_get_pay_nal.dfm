@@ -162,7 +162,7 @@ object Form_get_pay_nal: TForm_get_pay_nal
   end
   object GroupBox2: TGroupBox
     Left = 0
-    Top = 334
+    Top = 333
     Width = 636
     Height = 42
     Align = alBottom
@@ -285,7 +285,7 @@ object Form_get_pay_nal: TForm_get_pay_nal
     Left = 0
     Top = 41
     Width = 636
-    Height = 293
+    Height = 292
     Align = alClient
     ColumnDefValues.AlwaysShowEditButton = True
     ColumnDefValues.AutoDropDown = True
@@ -413,7 +413,7 @@ object Form_get_pay_nal: TForm_get_pay_nal
       DisplayWidth = 7
       FieldName = 'OPER'
       Visible = False
-      Size = 2
+      Size = 3
     end
     object OD_c_kwtp_tempPENYA: TFloatField
       FieldName = 'PENYA'
@@ -516,11 +516,11 @@ object Form_get_pay_nal: TForm_get_pay_nal
       Size = 25
     end
     object OD_operOPER: TStringField
-      DisplayWidth = 2
+      DisplayWidth = 3
       FieldName = 'OPER'
       Required = True
       Visible = False
-      Size = 2
+      Size = 3
     end
     object OD_operFK_USL_CHK: TStringField
       FieldName = 'FK_USL_CHK'
@@ -678,9 +678,10 @@ object Form_get_pay_nal: TForm_get_pay_nal
       FieldName = 'SUMMA'
     end
     object OD_c_kwtpOPER: TStringField
+      DisplayWidth = 3
       FieldName = 'OPER'
       Required = True
-      Size = 2
+      Size = 3
     end
     object OD_c_kwtpFIO_KASS: TStringField
       FieldName = 'FIO_KASS'
@@ -804,7 +805,6 @@ object Form_get_pay_nal: TForm_get_pay_nal
     MasterFields = 'ID'
     DetailFields = 'C_KWTP_ID'
     Session = DataModule1.OracleSession1
-    Active = True
     Left = 280
     Top = 152
     object OD_c_kwtp_mgLSK: TStringField
@@ -829,7 +829,7 @@ object Form_get_pay_nal: TForm_get_pay_nal
       DisplayWidth = 8
       FieldName = 'OPER'
       Required = True
-      Size = 2
+      Size = 3
     end
     object OD_c_kwtp_mgDOPL: TStringField
       DisplayLabel = #1055#1077#1088#1080#1086#1076
@@ -901,9 +901,10 @@ object Form_get_pay_nal: TForm_get_pay_nal
     Left = 112
     Top = 184
     object OD_usl_chkOPER: TStringField
+      DisplayWidth = 3
       FieldName = 'OPER'
       Required = True
-      Size = 2
+      Size = 3
     end
     object OD_usl_chkFK_USL_CHK: TStringField
       FieldName = 'FK_USL_CHK'

@@ -1,10 +1,9 @@
 object Form_new_lsk: TForm_new_lsk
-  Left = 225
-  Top = 195
-  Width = 330
-  Height = 193
+  Left = 346
+  Top = 178
+  Width = 327
+  Height = 209
   VertScrollBar.Visible = False
-  AutoSize = True
   Caption = #1057#1086#1079#1076#1072#1085#1080#1077' '#1085#1086#1074#1086#1075#1086' '#1083#1080#1094'.'#1089#1095#1077#1090#1072
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -93,8 +92,8 @@ object Form_new_lsk: TForm_new_lsk
   object GroupBox1: TGroupBox
     Left = 0
     Top = 0
-    Width = 314
-    Height = 105
+    Width = 311
+    Height = 121
     Align = alTop
     Caption = #1050#1086#1087#1080#1088#1086#1074#1072#1090#1100' '#1083#1080#1094#1077#1074#1086#1081' '#1089#1095#1077#1090' '#1085#1072' '#1085#1086#1074#1099#1081':'
     TabOrder = 0
@@ -168,11 +167,27 @@ object Form_new_lsk: TForm_new_lsk
       TabOrder = 2
       Width = 233
     end
+    object CheckBox1: TCheckBox
+      Left = 24
+      Top = 88
+      Width = 249
+      Height = 17
+      Caption = #1055#1088#1080#1089#1086#1077#1076#1080#1085#1080#1090#1100' '#1082' '#1085#1086#1074#1086#1084#1091' '#1087#1086#1084#1077#1097#1077#1085#1080#1102
+      Checked = True
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+      State = cbChecked
+      TabOrder = 3
+    end
   end
   object GroupBox2: TGroupBox
     Left = 0
-    Top = 105
-    Width = 314
+    Top = 121
+    Width = 311
     Height = 49
     Align = alBottom
     TabOrder = 1
@@ -215,13 +230,13 @@ object Form_new_lsk: TForm_new_lsk
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True
-    Left = 24
-    Top = 96
+    Left = 8
+    Top = 144
   end
   object DS_lsk_tp: TDataSource
     DataSet = OD_lsk_tp
-    Left = 64
-    Top = 96
+    Left = 48
+    Top = 144
   end
   object OD_reu: TOracleDataSet
     SQL.Strings = (
@@ -235,12 +250,12 @@ object Form_new_lsk: TForm_new_lsk
       000000}
     Session = DataModule1.OracleSession1
     Active = True
-    Left = 96
-    Top = 96
+    Left = 80
+    Top = 144
   end
   object DS_reu: TDataSource
     DataSet = OD_reu
-    Left = 128
-    Top = 96
+    Left = 112
+    Top = 144
   end
 end

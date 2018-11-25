@@ -38,6 +38,7 @@ type
     cxLookupComboBox1: TcxLookupComboBox;
     Label1: TLabel;
     Label2: TLabel;
+    CheckBox1: TCheckBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -73,7 +74,7 @@ begin
   str_:=Form_list_kart.OD_list_kart.FieldByName('lsk').asString;
   wwDBEdit3.Text:=DataModule1.OraclePackage1.CallStringFunction(
     'scott.UTILS.get_new_lsk', [str_, null]);
-  cxLookupComboBox1.Enabled:=False;
+  //cxLookupComboBox1.Enabled:=False;
 end;
 
 procedure TForm_new_lsk.Button1Click(Sender: TObject);
@@ -94,16 +95,30 @@ begin
     end
   else
     begin
-
-    if cbb2.EditValue='LSK_TP_MAIN' then
+    if not CheckBox1.Checked then
     begin
-    cnt_:=DataModule1.OraclePackage1.CallIntegerFunction(
-      'scott.UTILS.create_lsk',
-      [Form_list_kart.OD_list_kart.FieldByName('lsk').asString,
-       wwDBEdit3.Text, null, null]);
+      // присоединить к существующему лс РСО или капремонт
+      cnt_:=DataModule1.OraclePackage1.CallIntegerFunction(
+        'scott.P_HOUSES.kart_lsk_special_add',
+        [Form_list_kart.OD_list_kart.FieldByName('lsk').asString,
+         cbb2.EditValue, wwDBEdit3.Text, 0, 0, cxLookupComboBox1.EditValue
+         ]);
+    end
+    else
+    begin
+      // создать новый лс
+      cnt_:=DataModule1.OraclePackage1.CallIntegerFunction(
+        'scott.P_HOUSES.create_lsk',
+        [Form_list_kart.OD_list_kart.FieldByName('lsk').asString,
+         wwDBEdit3.Text, null, null, cbb2.EditValue, cxLookupComboBox1.EditValue]);
+    end;
+
+    {if cbb2.EditValue='LSK_TP_MAIN' then
+    begin
     end
     else if cbb2.EditValue='LSK_TP_ADDIT' then
     begin
+    // присоединить к существующему лс по капремонту
     cnt_:=DataModule1.OraclePackage1.CallIntegerFunction(
       'scott.P_HOUSES.kart_lsk_ext_add',
       [Form_list_kart.OD_list_kart.FieldByName('lsk').asString,
@@ -111,12 +126,7 @@ begin
     end
     else if cbb2.EditValue='LSK_TP_RSO' then
     begin
-    cnt_:=DataModule1.OraclePackage1.CallIntegerFunction(
-      'scott.P_HOUSES.kart_lsk_special_add',
-      [Form_list_kart.OD_list_kart.FieldByName('lsk').asString,
-       cbb2.EditValue, wwDBEdit3.Text, 0, 0, cxLookupComboBox1.EditValue
-       ]);
-    end;
+    end;}
 
     if cnt_ =0 then
     begin
@@ -163,11 +173,11 @@ end;
 
 procedure TForm_new_lsk.cbb2PropertiesCloseUp(Sender: TObject);
 begin
-  if cbb2.EditValue ='LSK_TP_RSO' then
+{  if (cbb2.EditValue ='LSK_TP_RSO') or (cbb2.EditValue ='LSK_TP_ADDIT') then
      cxLookupComboBox1.Enabled:=True
   else
      cxLookupComboBox1.Enabled:=False;
-
+ }
 end;
 
 end.

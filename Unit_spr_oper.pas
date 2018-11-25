@@ -45,6 +45,7 @@ type
     procedure Button2Click(Sender: TObject);
     procedure DBNavigator2BeforeAction(Sender: TObject;
       Button: TNavigateBtn);
+    procedure FormCreate(Sender: TObject);
   private
     exit_: Integer;
   public
@@ -107,6 +108,11 @@ begin
   begin
    Abort();
   end;
+end;
+
+procedure TForm_spr_oper.FormCreate(Sender: TObject);
+begin
+  OD_oper.Active:=True;
 end;
 
 end.

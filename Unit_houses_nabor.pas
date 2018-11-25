@@ -182,6 +182,8 @@ type
     cxGridDBTableView2MG1: TcxGridDBColumn;
     cxGridDBTableView2MG2: TcxGridDBColumn;
     cxGridDBTableView2ISVOL: TcxGridDBColumn;
+    OD_housesPOSTCODE: TStringField;
+    cxGridDBTableView1POSTCODE: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);

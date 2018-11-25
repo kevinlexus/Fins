@@ -306,9 +306,12 @@ begin
       [Form_main.k_lsk_id_, pen_last_month_, 0]);  
   end;
 
-  if (OD_t_org.FieldByName('BILL_TP').asInteger = 1) or
-     (OD_t_org.FieldByName('BILL_TP').asInteger = 2) then
-    // старый вариант отчетности
+  if (OD_t_org.FieldByName('BILL_TP').asInteger = 0) or
+     (OD_t_org.FieldByName('BILL_TP').asInteger = 1) or
+     (OD_t_org.FieldByName('BILL_TP').asInteger = 2) or
+     (ComboBox1.ItemIndex = 2) or
+     (ComboBox1.ItemIndex = 5) or (ComboBox1.ItemIndex = 1) then
+    // старый вариант отчетности или арх.справ или арх.справ-2
     old_report(tp_, pen_last_month_, repVar)
   else if (OD_t_org.FieldByName('BILL_TP').asInteger = 3) then
     // составной счет
@@ -392,6 +395,8 @@ begin
     OD_cmp_detail_primary.SetVariable('p_is_closed', 1);
     OD_cmp_detail_cap.SetVariable('p_is_closed', 1);
     OD_cmp_contractors.SetVariable('p_is_closed', 1);
+    OD_cmp_funds_primary.SetVariable('p_is_closed', 1);
+    OD_cmp_funds_cap.SetVariable('p_is_closed', 1);
   end
   else
   begin
@@ -399,6 +404,8 @@ begin
     OD_cmp_detail_primary.SetVariable('p_is_closed', 0);
     OD_cmp_detail_cap.SetVariable('p_is_closed', 0);
     OD_cmp_contractors.SetVariable('p_is_closed', 0);
+    OD_cmp_funds_primary.SetVariable('p_is_closed', 0);
+    OD_cmp_funds_cap.SetVariable('p_is_closed', 0);
   end;
 
   // активировать датасеты

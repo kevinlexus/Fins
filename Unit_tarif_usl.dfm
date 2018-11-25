@@ -1,6 +1,6 @@
 object Form_tarif_usl: TForm_tarif_usl
-  Left = 930
-  Top = 218
+  Left = 909
+  Top = 226
   Width = 813
   Height = 768
   Caption = #1058#1072#1088#1080#1092#1099' '#1087#1086' '#1091#1089#1083#1091#1075#1072#1084
@@ -93,7 +93,7 @@ object Form_tarif_usl: TForm_tarif_usl
     Left = 0
     Top = 0
     Width = 797
-    Height = 690
+    Height = 689
     ControlType.Strings = (
       'ISCHARGED;CheckBox;1;0'
       'RN;CustomEdit;wwExpandButton1;F'
@@ -435,7 +435,7 @@ object Form_tarif_usl: TForm_tarif_usl
   end
   object Panel2: TPanel
     Left = 0
-    Top = 690
+    Top = 689
     Width = 797
     Height = 40
     Align = alBottom
