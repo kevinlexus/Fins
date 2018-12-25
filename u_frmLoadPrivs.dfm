@@ -1,6 +1,6 @@
 object frmLoadPrivs: TfrmLoadPrivs
-  Left = 691
-  Top = 230
+  Left = 1159
+  Top = 159
   Width = 680
   Height = 581
   Caption = #1052#1072#1089#1090#1077#1088' '#1079#1072#1075#1088#1091#1079#1082#1080' '#1083#1100#1075#1086#1090#1085#1080#1082#1086#1074
@@ -93,7 +93,7 @@ object frmLoadPrivs: TfrmLoadPrivs
     Left = 0
     Top = 0
     Width = 664
-    Height = 543
+    Height = 542
     Buttons.Back.Caption = #1053#1072#1079#1072#1076
     Buttons.Cancel.Caption = #1054#1090#1084#1077#1085#1072
     Buttons.CustomButtons.Buttons = <>
@@ -123,7 +123,7 @@ object frmLoadPrivs: TfrmLoadPrivs
         Left = 0
         Top = 0
         Width = 481
-        Height = 407
+        Height = 406
         Align = alLeft
         DragDropSettings.AllowDragObjects = False
         MultiSelect = True
@@ -139,7 +139,7 @@ object frmLoadPrivs: TfrmLoadPrivs
         Left = 481
         Top = 0
         Width = 161
-        Height = 407
+        Height = 406
         Align = alClient
         TabOrder = 1
         object chk2: TCheckBox
@@ -167,7 +167,7 @@ object frmLoadPrivs: TfrmLoadPrivs
         Left = 0
         Top = 0
         Width = 642
-        Height = 407
+        Height = 406
         Align = alClient
         TabOrder = 0
       end
@@ -180,7 +180,7 @@ object frmLoadPrivs: TfrmLoadPrivs
         Left = 0
         Top = 0
         Width = 642
-        Height = 407
+        Height = 406
         Align = alClient
         TabOrder = 0
         object cxGrid1DBTableView1: TcxGridDBTableView
@@ -232,7 +232,7 @@ object frmLoadPrivs: TfrmLoadPrivs
         Left = 0
         Top = 0
         Width = 491
-        Height = 407
+        Height = 406
         Align = alClient
         TabOrder = 0
         object cxGridDBTableView1: TcxGridDBTableView
@@ -286,7 +286,7 @@ object frmLoadPrivs: TfrmLoadPrivs
         Left = 491
         Top = 0
         Width = 151
-        Height = 407
+        Height = 406
         Align = alRight
         TabOrder = 1
         object chk3: TCheckBox
@@ -309,7 +309,7 @@ object frmLoadPrivs: TfrmLoadPrivs
         Left = 464
         Top = 0
         Width = 178
-        Height = 407
+        Height = 406
         Align = alRight
         TabOrder = 0
         object lbl1: TLabel
@@ -348,7 +348,7 @@ object frmLoadPrivs: TfrmLoadPrivs
         Left = 0
         Top = 0
         Width = 642
-        Height = 407
+        Height = 406
         Align = alClient
         TabOrder = 0
       end

@@ -1,7 +1,7 @@
 object Form_sch_history: TForm_sch_history
-  Left = 521
-  Top = 401
-  Width = 723
+  Left = 447
+  Top = 381
+  Width = 963
   Height = 380
   Caption = #1048#1089#1090#1086#1088#1080#1103' '#1074#1074#1086#1076#1072' '#1087#1086#1082#1072#1079#1072#1085#1080#1081' '#1089#1095#1077#1090#1095#1080#1082#1086#1074
   Color = clBtnFace
@@ -92,7 +92,7 @@ object Form_sch_history: TForm_sch_history
   object pgc1: TPageControl
     Left = 0
     Top = 0
-    Width = 707
+    Width = 947
     Height = 341
     ActivePage = TabSheet1
     Align = alClient
@@ -103,7 +103,7 @@ object Form_sch_history: TForm_sch_history
       object Panel1: TPanel
         Left = 0
         Top = 0
-        Width = 473
+        Width = 577
         Height = 209
         Align = alLeft
         Caption = 'Panel1'
@@ -111,7 +111,7 @@ object Form_sch_history: TForm_sch_history
         object cxGrid2: TcxGrid
           Left = 1
           Top = 1
-          Width = 471
+          Width = 575
           Height = 207
           Align = alClient
           TabOrder = 0
@@ -154,7 +154,7 @@ object Form_sch_history: TForm_sch_history
               Caption = #1059#1089#1083#1091#1075#1072
               DataBinding.FieldName = 'NM'
               Options.Editing = False
-              Width = 94
+              Width = 71
             end
             object cxGrid2DBTableView1N1: TcxGridDBColumn
               Caption = #1055#1086#1082#1072#1079#1072#1085#1080#1077
@@ -179,19 +179,39 @@ object Form_sch_history: TForm_sch_history
             object cxGrid2DBTableView1DT1: TcxGridDBColumn
               Caption = #1053#1072#1095#1072#1083#1086' '#1088#1072#1073'.'
               DataBinding.FieldName = 'DT1'
-              Width = 105
+              Width = 44
             end
             object cxGrid2DBTableView1DT2: TcxGridDBColumn
               Caption = #1054#1082#1086#1085#1095#1072#1085#1080#1077' '#1088#1072#1073'.'
               DataBinding.FieldName = 'DT2'
-              Width = 107
+              Width = 62
+            end
+            object cxGrid2DBTableView1GIS_CONN_TP: TcxGridDBColumn
+              Caption = #1043#1048#1057
+              DataBinding.FieldName = 'GIS_CONN_TP'
+              PropertiesClassName = 'TcxImageComboBoxProperties'
+              Properties.ClearKey = 16449
+              Properties.DefaultImageIndex = 0
+              Properties.Items = <
+                item
+                  Description = #1055#1088#1080#1085#1080#1084#1072#1090#1100' '#1087#1086#1082#1072#1079#1072#1085#1080#1103' '#1086#1090' '#1043#1048#1057
+                  ImageIndex = 0
+                  Value = 1
+                end
+                item
+                  Description = #1053#1077#1090' '#1086#1073#1084#1077#1085#1072
+                  Value = 0
+                end>
+              MinWidth = 5
+              Width = 50
             end
             object cxGrid2DBTableView1ID: TcxGridDBColumn
               DataBinding.FieldName = 'ID'
+              Width = 54
             end
             object cxGrid2DBTableView1KLSK: TcxGridDBColumn
               DataBinding.FieldName = 'K_LSK_ID'
-              Options.Editing = False
+              Width = 51
             end
           end
           object cxGrid2Level1: TcxGridLevel
@@ -200,9 +220,9 @@ object Form_sch_history: TForm_sch_history
         end
       end
       object Panel2: TPanel
-        Left = 481
+        Left = 594
         Top = 0
-        Width = 218
+        Width = 345
         Height = 209
         Align = alClient
         Caption = 'Panel2'
@@ -210,7 +230,7 @@ object Form_sch_history: TForm_sch_history
         object cxGrid3: TcxGrid
           Left = 1
           Top = 1
-          Width = 216
+          Width = 343
           Height = 207
           Align = alClient
           TabOrder = 0
@@ -274,7 +294,7 @@ object Form_sch_history: TForm_sch_history
       object Panel3: TPanel
         Left = 0
         Top = 209
-        Width = 699
+        Width = 939
         Height = 104
         Align = alBottom
         Caption = 'Panel3'
@@ -282,7 +302,7 @@ object Form_sch_history: TForm_sch_history
         object cxPageControl1: TcxPageControl
           Left = 1
           Top = 1
-          Width = 697
+          Width = 937
           Height = 102
           Align = alClient
           TabOrder = 0
@@ -290,13 +310,13 @@ object Form_sch_history: TForm_sch_history
           Properties.CustomButtons.Buttons = <>
           ClientRectBottom = 98
           ClientRectLeft = 4
-          ClientRectRight = 693
+          ClientRectRight = 933
           ClientRectTop = 24
           object cxTabSheet1: TcxTabSheet
             Caption = #1042#1085#1077#1089#1090#1080' '#1087#1086#1082#1072#1079#1072#1085#1080#1077
             ImageIndex = 0
             object Panel4: TPanel
-              Left = 598
+              Left = 838
               Top = 0
               Width = 91
               Height = 74
@@ -465,7 +485,7 @@ object Form_sch_history: TForm_sch_history
             Caption = #1044#1086#1073#1072#1074#1080#1090#1100' '#1048#1055#1059
             ImageIndex = 1
             DesignSize = (
-              689
+              929
               74)
             object cxTextEdit1: TcxTextEdit
               Left = 104
@@ -523,7 +543,7 @@ object Form_sch_history: TForm_sch_history
               Style.IsFontAssigned = True
             end
             object Button2: TButton
-              Left = 607
+              Left = 847
               Top = 24
               Width = 75
               Height = 25
@@ -593,9 +613,9 @@ object Form_sch_history: TForm_sch_history
         end
       end
       object cxSplitter1: TcxSplitter
-        Left = 473
+        Left = 577
         Top = 0
-        Width = 8
+        Width = 17
         Height = 209
         Control = Panel1
       end
@@ -726,48 +746,19 @@ object Form_sch_history: TForm_sch_history
       'where t.fk_klsk_obj=:k_lsk_id'
       'and (:flt1=0 '
       'or t.dt2 >= to_date(p.period||'#39'01'#39', '#39'YYYYMMDD'#39'))'
-      'order by u.npp, t.dt1, t.dt2'
-      ''
-      
-        '/*select u.nm, t.*, case when t.dt1 <=last_day(to_date(p.period|' +
-        '|'#39'01'#39', '#39'YYYYMMDD'#39')) '
-      'and t.dt2 > last_day(to_date(p.period||'#39'01'#39', '#39'YYYYMMDD'#39')) '
-      'then 1 else 0 end act,u3.name as state, u3.cd as state_cd,'
-      ' t.rowid from scott.meter t join scott.usl u on t.fk_usl=u.usl '
-      'join scott.params p on 1=1'
-      'join scott.u_list u2 on u2.cd='#39#1055#1086#1074#1077#1088#1082#1072' '#1055#1059#39
-      
-        'left join scott.c_reg_sch s on t.id=s.fk_meter and s.fk_tp=u2.id' +
-        ' and s.dt1 >= last_day(to_date(p.period||'#39'01'#39', '#39'YYYYMMDD'#39')) '
-      'left join scott.u_list u3 on s.fk_state=u3.id'
-      'where t.fk_klsk_obj=:k_lsk_id'
-      'and (:flt1=0 or t.dt2 >= to_date(p.period||'#39'01'#39', '#39'YYYYMMDD'#39'))'
-      'order by u.npp, t.dt1, t.dt2'
-      '*/'
-      '/*'
-      
-        'select u.nm, t.*, case when t.dt1 <=last_day(to_date(p.period||'#39 +
-        '01'#39', '#39'YYYYMMDD'#39')) '
-      'and t.dt2 > last_day(to_date(p.period||'#39'01'#39', '#39'YYYYMMDD'#39')) '
-      'then 1 else 0 end act,'
-      ' t.rowid from scott.meter t join scott.usl u on t.fk_usl=u.usl '
-      'join scott.params p on 1=1'
-      'where t.fk_klsk_obj=:k_lsk_id'
-      'and (:flt1=0 or t.dt2 >= to_date(p.period||'#39'01'#39', '#39'YYYYMMDD'#39'))'
-      'order by u.npp, t.dt1, t.dt2'
-      '*/')
+      'order by u.npp, t.dt1, t.dt2')
     Optimize = False
     Variables.Data = {
       0300000002000000090000003A4B5F4C534B5F49440300000000000000000000
       00050000003A464C5431030000000000000000000000}
     QBEDefinition.QBEFieldDefs = {
-      040000000D000000020000004E4D010000000000020000004944010000000000
+      040000000E000000020000004E4D010000000000020000004944010000000000
       06000000464B5F55534C010000000000080000004B5F4C534B5F494401000000
       000003000000445431010000000000030000004454320100000000000B000000
       464B5F4B4C534B5F4F424A010000000000020000004E31010000000000030000
       00414354010000000000030000004E5050010000000000050000005354415445
       0100000000000800000053544154455F434401000000000007000000434F554E
-      544552010000000000}
+      5445520100000000000B0000004749535F434F4E4E5F5450010000000000}
     MasterFields = 'k_lsk_id'
     RefreshOptions = [roAfterUpdate, roAllFields]
     Session = DataModule1.OracleSession1
@@ -775,6 +766,59 @@ object Form_sch_history: TForm_sch_history
     AfterScroll = OD_meterAfterScroll
     Left = 88
     Top = 80
+    object OD_meterNM: TStringField
+      FieldName = 'NM'
+      Size = 35
+    end
+    object OD_meterID: TFloatField
+      FieldName = 'ID'
+      ReadOnly = True
+    end
+    object OD_meterNPP: TFloatField
+      FieldName = 'NPP'
+    end
+    object OD_meterFK_USL: TStringField
+      FieldName = 'FK_USL'
+      Required = True
+      Size = 3
+    end
+    object OD_meterK_LSK_ID: TFloatField
+      FieldName = 'K_LSK_ID'
+      ReadOnly = True
+    end
+    object OD_meterDT1: TDateTimeField
+      FieldName = 'DT1'
+      Required = True
+    end
+    object OD_meterDT2: TDateTimeField
+      FieldName = 'DT2'
+      Required = True
+    end
+    object OD_meterFK_KLSK_OBJ: TFloatField
+      FieldName = 'FK_KLSK_OBJ'
+      Required = True
+    end
+    object OD_meterN1: TFloatField
+      FieldName = 'N1'
+    end
+    object OD_meterGIS_CONN_TP: TFloatField
+      FieldName = 'GIS_CONN_TP'
+    end
+    object OD_meterACT: TFloatField
+      FieldName = 'ACT'
+    end
+    object OD_meterSTATE: TStringField
+      FieldName = 'STATE'
+      Size = 96
+    end
+    object OD_meterSTATE_CD: TStringField
+      FieldName = 'STATE_CD'
+      Size = 32
+    end
+    object OD_meterCOUNTER: TStringField
+      FieldName = 'COUNTER'
+      Size = 15
+    end
   end
   object DS_meter: TDataSource
     DataSet = OD_meter

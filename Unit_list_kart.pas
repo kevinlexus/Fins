@@ -202,6 +202,7 @@ type
     cxLabel6: TcxLabel;
     BitBtn2: TBitBtn;
     OD_list_kartFK_KLSK_OBJ: TFloatField;
+    OD_check_conn_gis: TOracleDataSet;
     procedure wwDBGrid1DblClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure wwDBGrid1KeyDown(Sender: TObject; var Key: Word;
@@ -285,7 +286,7 @@ uses Unit_form_kart, Unit_Mainform, DM_module1, Unit_find_adr,
   Unit_form_subsidii, Unit_chargepay, Unit_find_fio,
   Unit_find_contr, Unit_det_chrg, Unit_log_actions, Unit_houses_nabor,
   Unit_house_vvod, Unit_list_set, Unit_form_bills, Unit_sch_history,
-  Unit_lk_acc, u_frmPenCorr;
+  Unit_lk_acc, u_frmPenCorr, u_frmAccFlow;
 
 {$R *.dfm}
 
@@ -574,6 +575,7 @@ begin
   Form_main.ToolButton26.Visible:=true;
   Form_main.ToolButton10.Visible:=true;
   Form_main.ToolButton21.Visible:=true;
+  Form_main.ToolButton3.Visible:=true;
   try
     DataModule1.OraclePackage1.CallProcedure
         ('scott.drn59_Просмотр_перерасчетов', [parNone]);
@@ -643,7 +645,7 @@ begin
   Form_main.ToolButton26.Visible:=false;
   Form_main.ToolButton21.Visible:=false;
   Form_main.ToolButton10.Visible:=false;
-
+  Form_main.ToolButton3.Visible:=false;
 
  if (FF('Form_month_payments',0) = 1)
   and (Form_month_payments.OD_c_kwtp.MasterFields <> '') then
@@ -689,6 +691,9 @@ begin
 
   if FF('Form_log_actions', 0) =1 then
     Form_log_actions.Close;
+
+  if FF('frmAccFlow', 0) =1 then
+    frmAccFlow.Close;
 
  Form_main.ToolButton23.Visible:=false;
  Form_main.ToolButton24.Visible:=false;

@@ -93,7 +93,7 @@ object frmPenCorr: TfrmPenCorr
     Left = 0
     Top = 0
     Width = 638
-    Height = 490
+    Height = 489
     Align = alClient
     TabOrder = 0
     object cxGrid1DBTableView1: TcxGridDBTableView
@@ -119,21 +119,25 @@ object frmPenCorr: TfrmPenCorr
         Caption = #1059#1050
         DataBinding.FieldName = 'REU'
         Options.Editing = False
+        Width = 20
       end
       object cxGrid1DBTableView1STREET_NAME: TcxGridDBColumn
         Caption = #1059#1083#1080#1094#1072
         DataBinding.FieldName = 'STREET_NAME'
         Options.Editing = False
+        Width = 85
       end
       object cxGrid1DBTableView1ND: TcxGridDBColumn
         Caption = #1044#1086#1084
         DataBinding.FieldName = 'ND'
         Options.Editing = False
+        Width = 22
       end
       object cxGrid1DBTableView1KW: TcxGridDBColumn
         Caption = #1050#1074'.'
         DataBinding.FieldName = 'KW'
         Options.Editing = False
+        Width = 26
       end
       object cxGrid1DBTableView1LSK: TcxGridDBColumn
         DataBinding.FieldName = 'LSK'
@@ -143,11 +147,11 @@ object frmPenCorr: TfrmPenCorr
         Properties.ValidationOptions = [evoRaiseException, evoShowErrorIcon]
         Properties.OnValidate = cxGrid1DBTableView1LSKPropertiesValidate
         MinWidth = 60
-        Width = 80
+        Width = 60
       end
       object cxGrid1DBTableView1PENYA: TcxGridDBColumn
         DataBinding.FieldName = 'PENYA'
-        Width = 89
+        Width = 49
       end
       object cxGrid1DBTableView1DOPL: TcxGridDBColumn
         DataBinding.FieldName = 'DOPL'
@@ -155,28 +159,33 @@ object frmPenCorr: TfrmPenCorr
         Properties.EditMask = '0000-00;0;_'
         Properties.OnValidate = cxGrid1DBTableView1DOPLPropertiesValidate
         MinWidth = 50
-        Width = 56
+        Width = 50
+      end
+      object cxGrid1DBTableView1USL: TcxGridDBColumn
+        Caption = #1050#1086#1076' '#1091#1089#1083'.'
+        DataBinding.FieldName = 'USL'
+        Width = 48
       end
       object cxGrid1DBTableView1DTEK: TcxGridDBColumn
         DataBinding.FieldName = 'DTEK'
-        Width = 132
+        Width = 67
       end
       object cxGrid1DBTableView1TS: TcxGridDBColumn
         Caption = #1044#1072#1090#1072' '#1076#1086#1073#1072#1074#1083#1077#1085#1080#1103
         DataBinding.FieldName = 'TS'
         Options.Editing = False
-        Width = 131
+        Width = 64
       end
       object cxGrid1DBTableView1USER_NAME: TcxGridDBColumn
         Caption = #1055#1086#1083#1100#1079#1086#1074#1072#1090#1077#1083#1100
         DataBinding.FieldName = 'USER_NAME'
         Options.Editing = False
-        Width = 229
+        Width = 116
       end
       object cxGrid1DBTableView1ID: TcxGridDBColumn
         DataBinding.FieldName = 'ID'
         Options.Editing = False
-        Width = 58
+        Width = 29
       end
     end
     object cxGrid1Level1: TcxGridLevel
@@ -199,13 +208,13 @@ object frmPenCorr: TfrmPenCorr
       00}
     OracleDictionary.UseMessageTable = True
     QBEDefinition.QBEFieldDefs = {
-      040000000D000000020000004944010000000000030000004C534B0100000000
+      040000000F000000020000004944010000000000030000004C534B0100000000
       000500000050454E594101000000000004000000444F504C0100000000000400
       00004454454B01000000000002000000545301000000000007000000464B5F55
       53455201000000000009000000555345525F4E414D4501000000000003000000
       5245550100000000000B0000005354524545545F4E414D450100000000000200
       00004E44010000000000020000004B5701000000000006000000464B5F444F43
-      010000000000}
+      0100000000000300000055534C010000000000030000004F5247010000000000}
     RefreshOptions = [roAfterInsert, roAfterUpdate, roAllFields]
     Session = DataModule1.OracleSession1
     Active = True
@@ -261,6 +270,10 @@ object frmPenCorr: TfrmPenCorr
     object OD_dataKW: TStringField
       FieldName = 'KW'
       Size = 7
+    end
+    object OD_dataUSL: TStringField
+      FieldName = 'USL'
+      Size = 3
     end
   end
   object DS_data: TDataSource

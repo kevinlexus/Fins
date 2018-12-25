@@ -327,7 +327,8 @@ object Form_spr_comps: TForm_spr_comps
   end
   object OD_c_comps: TOracleDataSet
     SQL.Strings = (
-      'select t.*, t.rowid from scott.c_comps t')
+      'select t.*, t.rowid from scott.c_comps t'
+      'order by t.nkom')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
       0400000007000000040000004E4B4F4D010000000000040000004E494E4B0100
@@ -359,7 +360,7 @@ object Form_spr_comps: TForm_spr_comps
     object OD_c_compsFK_OPER: TStringField
       DisplayWidth = 3
       FieldName = 'FK_OPER'
-      Size = 2
+      Size = 3
     end
     object OD_c_compsFK_ORG: TFloatField
       FieldName = 'FK_ORG'

@@ -91,7 +91,7 @@ object Form_smpl_chk: TForm_smpl_chk
     Left = 0
     Top = 0
     Width = 613
-    Height = 312
+    Height = 311
     Align = alClient
     PopupMenu = pm1
     TabOrder = 0
@@ -119,7 +119,7 @@ object Form_smpl_chk: TForm_smpl_chk
   end
   object pnl1: TPanel
     Left = 0
-    Top = 312
+    Top = 311
     Width = 613
     Height = 41
     Align = alBottom

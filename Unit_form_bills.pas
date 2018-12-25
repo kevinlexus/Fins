@@ -195,6 +195,8 @@ type
     frxDB_cmp_funds_cap: TfrxDBDataset;
     OD_cmp_contractors: TOracleDataSet;
     frxDB_cmp_contractors: TfrxDBDataset;
+    OD_cmp_detail: TOracleDataSet;
+    frxDB_cmp_detail: TfrxDBDataset;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);

@@ -109,6 +109,8 @@ object Form_list_kart: TForm_list_kart
       'BTN'#9'2'#9' '
       'NAME_REU'#9'8'#9#1054#1088#1075'.'
       'LSK'#9'8'#9#1051'/C'
+      'K_LSK_ID'#9'5'#9'KLSK '#1050#1074#1072#1088#1090#1080#1088#1099
+      'HOUSE_ID'#9'14'#9'HOUSE_ID '#1044#1086#1084#1072
       'DOG_NUM'#9'10'#9#8470' '#1076#1086#1075#1086#1074#1086#1088#1072
       'KUL'#9'6'#9#1050#1086#1076' '#1091#1083'.'
       'NAME'#9'19'#9#1059#1083#1080#1094#1072
@@ -139,7 +141,8 @@ object Form_list_kart: TForm_list_kart
       'LSK_TP_CD'#9'32'#9'LSK_TP_CD'
       'SEL1'#9'10'#9'SEL1'
       'PARENT_LSK'#9'12'#9#1056#1086#1076#1080#1090'.'#1083#1080#1094'.'#1089#1095#1077#1090
-      'ELSK'#9'10'#9'ELSK')
+      'ELSK'#9'10'#9'ELSK'
+      'FK_KLSK_OBJ'#9'11'#9'KLSK '#1051#1080#1094'.'#1089#1095'.')
     IniAttributes.Delimiter = ';;'
     TitleColor = clBtnFace
     FixedCols = 0
@@ -320,7 +323,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 24
           Height = 37
-          Hint = #1050' '#1087#1077#1088#1074#1086#1081' '#1079#1072#1087#1080#1089#1080
+          Hint = 'Move to first record'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -337,7 +340,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 24
           Height = 37
-          Hint = #1053#1072#1079#1072#1076' '#1085#1072' 10 '#1079#1072#1087#1080#1089#1077#1081
+          Hint = 'Move backward 10 records'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -354,7 +357,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 24
           Height = 37
-          Hint = #1055#1088#1077#1076#1099#1076#1091#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
+          Hint = 'Move to prior record'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -371,7 +374,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 24
           Height = 37
-          Hint = #1057#1083#1077#1076#1091#1102#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
+          Hint = 'Move to next record'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -388,7 +391,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 24
           Height = 37
-          Hint = #1042#1087#1077#1088#1077#1076' '#1085#1072' 10 '#1079#1072#1087#1080#1089#1077#1081
+          Hint = 'Move forward 10 records'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -405,7 +408,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 24
           Height = 37
-          Hint = #1055#1077#1088#1077#1081#1090#1080' '#1082' '#1087#1086#1089#1083#1077#1076#1085#1077#1081' '#1079#1072#1087#1080#1089#1080
+          Hint = 'Move to last record'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -422,13 +425,12 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 23
           Height = 37
-          Hint = #1044#1086#1073#1072#1074#1080#1090#1100' '#1085#1086#1074#1091#1102' '#1079#1072#1087#1080#1089#1100
+          Hint = 'Insert new record'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
           Transparent = False
           Caption = 'wwDBNavigator1Insert'
-          Enabled = False
           DisabledTextColors.ShadeColor = clGray
           DisabledTextColors.HighlightColor = clBtnHighlight
           Index = 6
@@ -440,7 +442,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 23
           Height = 37
-          Hint = #1059#1076#1072#1083#1080#1090#1100' '#1090#1077#1082#1091#1097#1091#1102' '#1079#1072#1087#1080#1089#1100
+          Hint = 'Delete current record'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -458,13 +460,12 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 23
           Height = 37
-          Hint = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1090#1077#1082#1091#1097#1091#1102' '#1079#1072#1087#1080#1089#1100
+          Hint = 'Edit current record'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
           Transparent = False
           Caption = 'wwDBNavigator1Edit'
-          Enabled = False
           DisabledTextColors.ShadeColor = clGray
           DisabledTextColors.HighlightColor = clBtnHighlight
           Index = 8
@@ -476,7 +477,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 23
           Height = 37
-          Hint = #1054#1090#1087#1088#1072#1074#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103' '#1074' '#1073#1072#1079#1091
+          Hint = 'Post changes of current record'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -494,7 +495,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 23
           Height = 37
-          Hint = #1054#1090#1084#1077#1085#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103' '#1090#1077#1082#1091#1097#1077#1081' '#1079#1072#1087#1080#1089#1080
+          Hint = 'Cancel changes made to current record'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -512,13 +513,12 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 23
           Height = 37
-          Hint = #1054#1073#1085#1086#1074#1080#1090#1100' '#1079#1072#1087#1080#1089#1080
+          Hint = 'Refresh the contents of the dataset'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
           Transparent = False
           Caption = 'wwDBNavigator1Refresh'
-          Enabled = False
           DisabledTextColors.ShadeColor = clGray
           DisabledTextColors.HighlightColor = clBtnHighlight
           Index = 11
@@ -530,13 +530,12 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 23
           Height = 37
-          Hint = #1055#1086#1089#1090#1072#1074#1080#1090#1100' '#1079#1072#1082#1083#1072#1076#1082#1091' '#1085#1072' '#1090#1077#1082#1091#1097#1077#1081' '#1079#1072#1087#1080#1089#1080
+          Hint = 'Bookmark current record'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
           Transparent = False
           Caption = 'wwDBNavigator1SaveBookmark'
-          Enabled = False
           DisabledTextColors.ShadeColor = clGray
           DisabledTextColors.HighlightColor = clBtnHighlight
           Index = 12
@@ -547,7 +546,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 23
           Height = 37
-          Hint = #1055#1077#1088#1077#1081#1090#1080' '#1082' '#1089#1086#1093#1088#1072#1085#1105#1085#1085#1086#1081' '#1079#1072#1082#1083#1072#1076#1082#1077
+          Hint = 'Go back to saved bookmark'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -1343,6 +1342,7 @@ object Form_list_kart: TForm_list_kart
     CommitOnPost = False
     CachedUpdates = True
     Session = DataModule1.OracleSession1
+    Active = True
     AfterOpen = OD_list_kartAfterOpen
     BeforeInsert = OD_list_kartBeforeInsert
     BeforeScroll = OD_list_kartBeforeScroll
@@ -1378,6 +1378,17 @@ object Form_list_kart: TForm_list_kart
       ReadOnly = True
       Required = True
       Size = 8
+    end
+    object OD_list_kartK_LSK_ID: TFloatField
+      DisplayLabel = 'KLSK '#1050#1074#1072#1088#1090#1080#1088#1099
+      DisplayWidth = 5
+      FieldName = 'K_LSK_ID'
+    end
+    object OD_list_kartHOUSE_ID: TFloatField
+      DisplayLabel = 'HOUSE_ID '#1044#1086#1084#1072
+      DisplayWidth = 14
+      FieldName = 'HOUSE_ID'
+      Required = True
     end
     object LK: TStringField
       DisplayLabel = #8470' '#1076#1086#1075#1086#1074#1086#1088#1072
@@ -1570,6 +1581,11 @@ object Form_list_kart: TForm_list_kart
       FieldName = 'ELSK'
       Size = 255
     end
+    object OD_list_kartFK_KLSK_OBJ: TFloatField
+      DisplayLabel = 'KLSK '#1051#1080#1094'.'#1089#1095'.'
+      DisplayWidth = 11
+      FieldName = 'FK_KLSK_OBJ'
+    end
     object OD_list_kartSUBS_COR: TFloatField
       DisplayLabel = #1057#1091#1073#1089'.'#1082#1086#1088#1088'.'
       DisplayWidth = 9
@@ -1635,12 +1651,6 @@ object Form_list_kart: TForm_list_kart
       FieldName = 'FK_DEB_ORG'
       Visible = False
     end
-    object OD_list_kartHOUSE_ID: TFloatField
-      DisplayWidth = 10
-      FieldName = 'HOUSE_ID'
-      Required = True
-      Visible = False
-    end
     object OD_list_kartPSCH: TIntegerField
       DisplayLabel = #1057#1095#1077#1090#1095#1080#1082
       DisplayWidth = 10
@@ -1691,10 +1701,6 @@ object Form_list_kart: TForm_list_kart
     end
     object OD_list_kartC_LSK_ID: TFloatField
       FieldName = 'C_LSK_ID'
-      Visible = False
-    end
-    object OD_list_kartK_LSK_ID: TFloatField
-      FieldName = 'K_LSK_ID'
       Visible = False
     end
     object OD_list_kartPGW: TFloatField
@@ -1798,10 +1804,6 @@ object Form_list_kart: TForm_list_kart
     end
     object OD_list_kartMOT: TFloatField
       FieldName = 'MOT'
-      Visible = False
-    end
-    object OD_list_kartFK_KLSK_OBJ: TFloatField
-      FieldName = 'FK_KLSK_OBJ'
       Visible = False
     end
   end
@@ -2349,5 +2351,11 @@ object Form_list_kart: TForm_list_kart
     BCDToCurrency = False
     Left = 376
     Top = 106
+  end
+  object OD_check_conn_gis: TOracleDataSet
+    Optimize = False
+    Session = DataModule1.OracleSession1
+    Left = 849
+    Top = 152
   end
 end

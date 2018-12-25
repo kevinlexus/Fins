@@ -224,7 +224,7 @@ procedure TfrmLoadFias.cxGrid1DBTableView1MouseWheel(Sender: TObject;
   Shift: TShiftState; WheelDelta: Integer; MousePos: TPoint;
   var Handled: Boolean);
 begin
-  //Запретить колесо мышки в lookupcombobox
+  //Запретить колесо мышки в lookupcombobox      - не работает это! 
   with cxGrid1DBTableView1.Controller.EditingController do
     if Edit <> nil then
     begin
