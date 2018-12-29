@@ -166,6 +166,10 @@ object frmPenCorr: TfrmPenCorr
         DataBinding.FieldName = 'USL'
         Width = 48
       end
+      object cxGrid1DBTableView1ORG: TcxGridDBColumn
+        Caption = #1050#1086#1076' '#1086#1088#1075'.'
+        DataBinding.FieldName = 'ORG'
+      end
       object cxGrid1DBTableView1DTEK: TcxGridDBColumn
         DataBinding.FieldName = 'DTEK'
         Width = 67
@@ -274,6 +278,9 @@ object frmPenCorr: TfrmPenCorr
     object OD_dataUSL: TStringField
       FieldName = 'USL'
       Size = 3
+    end
+    object OD_dataORG: TFloatField
+      FieldName = 'ORG'
     end
   end
   object DS_data: TDataSource

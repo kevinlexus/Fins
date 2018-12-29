@@ -57,6 +57,8 @@ type
     cxGrid1DBTableView1KW: TcxGridDBColumn;
     OD_dataUSL: TStringField;
     cxGrid1DBTableView1USL: TcxGridDBColumn;
+    OD_dataORG: TFloatField;
+    cxGrid1DBTableView1ORG: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure cxGrid1DBTableView1LSKPropertiesValidate(Sender: TObject;

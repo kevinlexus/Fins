@@ -22,7 +22,7 @@ uses
   dxSkinDevExpressStyle, dxSkinHighContrast, dxSkinMetropolis,
   dxSkinMetropolisDark, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
   dxSkinOffice2013White, dxSkinSevenClassic, dxSkinSharpPlus,
-  dxSkinTheAsphaltWorld, dxSkinVS2010, dxSkinWhiteprint;
+  dxSkinTheAsphaltWorld, dxSkinVS2010, dxSkinWhiteprint, cxImageComboBox;
 
 type
   TForm_print_bills = class(TForm)
@@ -195,8 +195,16 @@ type
     frxDB_cmp_funds_cap: TfrxDBDataset;
     OD_cmp_contractors: TOracleDataSet;
     frxDB_cmp_contractors: TfrxDBDataset;
-    OD_cmp_detail: TOracleDataSet;
-    frxDB_cmp_detail: TfrxDBDataset;
+    Label13: TLabel;
+    cxImageComboBox1: TcxImageComboBox;
+    OD_cmp_detail_main: TOracleDataSet;
+    frxDBD_cmp_detail_main: TfrxDBDataset;
+    OD_cmp_funds_main: TOracleDataSet;
+    frxDB_cmp_funds_main: TfrxDBDataset;
+    OD_cmp_funds_lsk: TOracleDataSet;
+    frxDB_cmp_funds_lsk: TfrxDBDataset;
+    OD_cmp_qr: TOracleDataSet;
+    frxDB_cmp_qr: TfrxDBDataset;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -225,7 +233,7 @@ type
     procedure DBLookupComboboxEh1CloseUp(Sender: TObject; Accept: Boolean);
     procedure OD_ls_cntBeforeOpen(DataSet: TDataSet);
     procedure OD_ls_cntAfterOpen(DataSet: TDataSet);
-    procedure compound_report;
+    procedure compound_report(p_var: Integer);
     procedure old_report(tp_, pen_last_month_:Integer; repVar:String);
   private
     sel_obj_: Integer;
@@ -315,9 +323,10 @@ begin
      (ComboBox1.ItemIndex = 5) or (ComboBox1.ItemIndex = 1) then
     // старый вариант отчетности или арх.справ или арх.справ-2
     old_report(tp_, pen_last_month_, repVar)
-  else if (OD_t_org.FieldByName('BILL_TP').asInteger = 3) then
+  else if (OD_t_org.FieldByName('BILL_TP').asInteger = 3) or
+          (OD_t_org.FieldByName('BILL_TP').asInteger = 4) then
     // составной счет
-    compound_report
+    compound_report(OD_t_org.FieldByName('BILL_TP').asInteger)
   else
      Application.MessageBox('Некорректный BILL_TP в таблице spr_services!',
        'Внимание!', MB_OK + MB_ICONSTOP + MB_DEFBUTTON2);
@@ -328,7 +337,7 @@ begin
 end;
 
 // составной счет
-procedure TForm_print_bills.compound_report;
+procedure TForm_print_bills.compound_report(p_var: Integer);
 begin
   // главный датасет
   OD_cmp_main.Active:=false;
@@ -338,10 +347,18 @@ begin
   OD_cmp_detail_primary.Active:=false;
   // данные счетов по капремонту
   OD_cmp_detail_cap.Active:=false;
+  // данные по основному типу счета
+  OD_cmp_detail_main.Active:=false;
   // данные начисления по основным счетам и РСО
   OD_cmp_funds_primary.Active:=false;
   // данные начисления по капремонту
   OD_cmp_funds_cap.Active:=false;
+// данные начисления по основному типу счета
+  OD_cmp_funds_main.Active:=false;
+  // данные начисления по конкретному лиц.счету
+  OD_cmp_funds_lsk.Active:=false;
+  // QR код
+  OD_cmp_qr.Active:=false;
 
   if sel_obj_ = 2 then
   begin
@@ -365,14 +382,21 @@ begin
   OD_cmp_contractors.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
   OD_cmp_detail_primary.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
   OD_cmp_detail_cap.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
+  OD_cmp_detail_main.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
   OD_cmp_funds_primary.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
   OD_cmp_funds_cap.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
+  OD_cmp_funds_main.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
+  OD_cmp_funds_lsk.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
+  OD_cmp_qr.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
 
   // установить тип лиц.счета
   OD_cmp_detail_primary.SetVariable('p_sel_tp', 0);
   OD_cmp_detail_cap.SetVariable('p_sel_tp', 1);
+  OD_cmp_detail_main.SetVariable('p_sel_tp', 3);
   OD_cmp_funds_primary.SetVariable('p_sel_tp', 0);
   OD_cmp_funds_cap.SetVariable('p_sel_tp', 1);
+  OD_cmp_funds_main.SetVariable('p_sel_tp', 3);
+  OD_cmp_qr.SetVariable('p_sel_tp', 4);
 
   OD_cmp_main.SetVariable('p_sel_obj', sel_obj_);
   OD_cmp_main.SetVariable('p_reu', cbb1.EditValue);
@@ -395,28 +419,42 @@ begin
   begin
     OD_cmp_main.SetVariable('p_is_closed', 1);
     OD_cmp_detail_primary.SetVariable('p_is_closed', 1);
+    OD_cmp_detail_main.SetVariable('p_is_closed', 1);
     OD_cmp_detail_cap.SetVariable('p_is_closed', 1);
     OD_cmp_contractors.SetVariable('p_is_closed', 1);
     OD_cmp_funds_primary.SetVariable('p_is_closed', 1);
     OD_cmp_funds_cap.SetVariable('p_is_closed', 1);
+    OD_cmp_funds_main.SetVariable('p_is_closed', 1);
+    OD_cmp_qr.SetVariable('p_is_closed', 1);
   end
   else
   begin
     OD_cmp_main.SetVariable('p_is_closed', 0);
     OD_cmp_detail_primary.SetVariable('p_is_closed', 0);
+    OD_cmp_detail_main.SetVariable('p_is_closed', 0);
     OD_cmp_detail_cap.SetVariable('p_is_closed', 0);
     OD_cmp_contractors.SetVariable('p_is_closed', 0);
     OD_cmp_funds_primary.SetVariable('p_is_closed', 0);
     OD_cmp_funds_cap.SetVariable('p_is_closed', 0);
+    OD_cmp_funds_main.SetVariable('p_is_closed', 0);
+    OD_cmp_qr.SetVariable('p_is_closed', 0);
   end;
+
+  OD_cmp_funds_lsk.SetVariable('P_INCLUDESALDO', 1);
 
   // активировать датасеты
   OD_cmp_main.Active:=true;
   OD_cmp_contractors.Active:=true;
+
   OD_cmp_detail_primary.Active:=true;
   OD_cmp_detail_cap.Active:=true;
+  OD_cmp_detail_main.Active:=true;
+
   OD_cmp_funds_primary.Active:=true;
   OD_cmp_funds_cap.Active:=true;
+  OD_cmp_funds_main.Active:=true;
+  OD_cmp_funds_lsk.Active:=true;
+  OD_cmp_qr.Active:=true;
 
   frxReport1.LoadFromFile(Form_main.exepath_ +
     OD_t_org.FieldByName('FNAME_SCH').asString , True);
@@ -847,6 +885,9 @@ begin
     CheckBox2.Visible := true;
     CheckBox4.Visible := true;
     CheckBox5.Visible := true;
+
+    Label13.Enabled:=True;
+    cxImageComboBox1.Enabled:=True;
   end
   else if (ComboBox1.ItemIndex = 2) or (ComboBox1.ItemIndex = 5) then // Справка из архива
   begin
@@ -857,6 +898,8 @@ begin
     CheckBox2.Visible := false;
     CheckBox4.Visible := false;
     CheckBox5.Visible := false;
+    Label13.Enabled:=false;
+    cxImageComboBox1.Enabled:=false;
   end
   else if ComboBox1.ItemIndex = 3 then // Справка о задолженности
   begin
@@ -867,6 +910,8 @@ begin
     CheckBox2.Visible := true;
     CheckBox4.Visible := true;
     CheckBox5.Visible := false;
+    Label13.Enabled:=false;
+    cxImageComboBox1.Enabled:=false;
   end
   else
   begin
@@ -877,6 +922,8 @@ begin
     CheckBox2.Visible := true;
     CheckBox4.Visible := true;
     CheckBox5.Visible := false;
+    Label13.Enabled:=false;
+    cxImageComboBox1.Enabled:=false;
   end
 end;
 
@@ -935,7 +982,7 @@ begin
   end
   else
   begin
-    //Не возможность видеть дома старого фонда
+    // не возможность видеть дома старого фонда
     OD_houses.Active := false;
     OD_houses.SetVariable('var', 1);
     OD_houses.Active := true;
@@ -943,15 +990,18 @@ begin
 
   OD_kw.Active := true;
   sel_lsk;
-  //по умолчанию - выбор печать по адресу
+  // по умолчанию - выбор печать по адресу
   sel_obj_ := 1;
   OD_sel_obj.Active := false;
   OD_sel_obj.SetVariable(':var_', ComboBox1.ItemIndex);
   OD_sel_obj.Active := True;
   wwDBLookupCombo1.LookupValue := '0';
-  //кол-во счетов по умолчанию
+  // кол-во счетов по умолчанию
   cnt_sch_ := 1000;
-  Edit1.Text := IntToStr(cnt_sch_)
+  Edit1.Text := IntToStr(cnt_sch_);
+  // фильтр по умолчанию
+  cxImageComboBox1.ItemIndex:=0;
+
 end;
 
 procedure TForm_print_bills.sel_lsk;
