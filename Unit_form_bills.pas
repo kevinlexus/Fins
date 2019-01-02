@@ -390,13 +390,36 @@ begin
   OD_cmp_qr.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
 
   // установить тип лиц.счета
+  // все, кроме капремонта
   OD_cmp_detail_primary.SetVariable('p_sel_tp', 0);
+
+  // капремонт
   OD_cmp_detail_cap.SetVariable('p_sel_tp', 1);
+
+  // основные, кроме закрытых (для отрывного)
   OD_cmp_detail_main.SetVariable('p_sel_tp', 3);
+
+  // все, кроме капремонта
   OD_cmp_funds_primary.SetVariable('p_sel_tp', 0);
+
+  // капремонт
   OD_cmp_funds_cap.SetVariable('p_sel_tp', 1);
+
+  // основные
   OD_cmp_funds_main.SetVariable('p_sel_tp', 3);
+
+  // все
   OD_cmp_qr.SetVariable('p_sel_tp', 4);
+
+  // установить дополнительный фильтр
+  OD_cmp_contractors.SetVariable('p_sel_flt_tp', cxImageComboBox1.ItemIndex);
+  OD_cmp_detail_primary.SetVariable('p_sel_flt_tp', cxImageComboBox1.ItemIndex);
+  OD_cmp_detail_cap.SetVariable('p_sel_flt_tp', cxImageComboBox1.ItemIndex);
+  OD_cmp_detail_main.SetVariable('p_sel_flt_tp', cxImageComboBox1.ItemIndex);
+  OD_cmp_funds_primary.SetVariable('p_sel_flt_tp', cxImageComboBox1.ItemIndex);
+  OD_cmp_funds_cap.SetVariable('p_sel_flt_tp', cxImageComboBox1.ItemIndex);
+  OD_cmp_funds_main.SetVariable('p_sel_flt_tp', cxImageComboBox1.ItemIndex);
+  OD_cmp_qr.SetVariable('p_sel_flt_tp', cxImageComboBox1.ItemIndex);
 
   OD_cmp_main.SetVariable('p_sel_obj', sel_obj_);
   OD_cmp_main.SetVariable('p_reu', cbb1.EditValue);

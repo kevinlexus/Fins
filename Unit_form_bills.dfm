@@ -1,6 +1,6 @@
 object Form_print_bills: TForm_print_bills
-  Left = 315
-  Top = 223
+  Left = 260
+  Top = 199
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1057#1095#1077#1090#1072' '#1085#1072' '#1086#1087#1083#1072#1090#1091' '#1091#1089#1083#1091#1075' '#1046#1050#1061
@@ -470,15 +470,15 @@ object Form_print_bills: TForm_print_bills
         item
           Description = '1. '#1042#1089#1077
           ImageIndex = 0
-          Value = 1
+          Value = 0
         end
         item
           Description = '2. '#1054#1089#1085#1086#1074#1085#1099#1077' + '#1082#1072#1087#1088#1077#1084#1086#1085#1090
-          Value = 2
+          Value = 1
         end
         item
           Description = '3. '#1056#1057#1054
-          Value = 3
+          Value = 2
         end>
       TabOrder = 10
       Width = 169
@@ -2347,15 +2347,16 @@ object Form_print_bills: TForm_print_bills
       '                            p_is_closed => :p_is_closed,'
       '                            p_mg => :p_mg,'
       '                            p_sel_tp => :p_sel_tp,'
+      '                            p_sel_flt_tp => :p_sel_flt_tp,'
       '                            p_rfcur => :p_rfcur);'
       'end;')
     Optimize = False
     Variables.Data = {
-      0300000005000000070000003A505F4B4C534B0300000000000000000000000C
+      0300000006000000070000003A505F4B4C534B0300000000000000000000000C
       0000003A505F49535F434C4F534544030000000000000000000000050000003A
       505F4D47050000000000000000000000090000003A505F53454C5F5450030000
       000000000000000000080000003A505F52464355527400000000000000000000
-      00}
+      000D0000003A505F53454C5F464C545F5450030000000000000000000000}
     QBEDefinition.QBEFieldDefs = {
       040000002A000000030000004C534B010000000000080000004B5F4C534B5F49
       44010000000000030000004F504C0100000000000700000053545F4E414D4501
@@ -2384,7 +2385,6 @@ object Form_print_bills: TForm_print_bills
     DetailFields = 'p_klsk'
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Active = True
     Left = 400
     Top = 168
   end
@@ -2396,15 +2396,16 @@ object Form_print_bills: TForm_print_bills
       '                            p_is_closed => :p_is_closed,'
       '                            p_mg => :p_mg,'
       '                            p_sel_tp => :p_sel_tp,'
+      '                            p_sel_flt_tp => :p_sel_flt_tp,'
       '                            p_rfcur => :p_rfcur);'
       'end;')
     Optimize = False
     Variables.Data = {
-      0300000005000000070000003A505F4B4C534B0300000000000000000000000C
+      0300000006000000070000003A505F4B4C534B0300000000000000000000000C
       0000003A505F49535F434C4F534544030000000000000000000000050000003A
       505F4D47050000000000000000000000090000003A505F53454C5F5450030000
       000000000000000000080000003A505F52464355527400000000000000000000
-      00}
+      000D0000003A505F53454C5F464C545F5450030000000000000000000000}
     QBEDefinition.QBEFieldDefs = {
       040000002A000000030000004C534B010000000000080000004B5F4C534B5F49
       44010000000000030000004F504C0100000000000700000053545F4E414D4501
@@ -2433,7 +2434,6 @@ object Form_print_bills: TForm_print_bills
     DetailFields = 'p_klsk'
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Active = True
     Left = 400
     Top = 200
   end
@@ -2445,16 +2445,17 @@ object Form_print_bills: TForm_print_bills
       '                                        p_sel_tp => :p_sel_tp,'
       '                            p_is_closed => :p_is_closed,'
       '                                        p_mg => :p_mg,'
+      '                            p_sel_flt_tp => :p_sel_flt_tp,'
       '                                        p_rfcur => :p_rfcur);'
       ''
       'end;')
     Optimize = False
     Variables.Data = {
-      0300000005000000070000003A505F4B4C534B03000000000000000000000005
+      0300000006000000070000003A505F4B4C534B03000000000000000000000005
       0000003A505F4D47050000000000000000000000090000003A505F53454C5F54
       50030000000000000000000000080000003A505F524643555274000000000000
       00000000000C0000003A505F49535F434C4F5345440300000000000000000000
-      00}
+      000D0000003A505F53454C5F464C545F5450030000000000000000000000}
     QBEDefinition.QBEFieldDefs = {
       040000000F0000000B00000049535F414D4E545F53554D010000000000030000
       0055534C010000000000030000004E5050010000000000040000004E414D4501
@@ -2480,16 +2481,17 @@ object Form_print_bills: TForm_print_bills
       '                                        p_sel_tp => :p_sel_tp,'
       '                            p_is_closed => :p_is_closed,'
       '                                        p_mg => :p_mg,'
+      '                            p_sel_flt_tp => :p_sel_flt_tp,'
       '                                        p_rfcur => :p_rfcur);'
       ''
       'end;')
     Optimize = False
     Variables.Data = {
-      0300000005000000070000003A505F4B4C534B03000000000000000000000005
+      0300000006000000070000003A505F4B4C534B03000000000000000000000005
       0000003A505F4D47050000000000000000000000090000003A505F53454C5F54
       50030000000000000000000000080000003A505F524643555274000000000000
       00000000000C0000003A505F49535F434C4F5345440300000000000000000000
-      00}
+      000D0000003A505F53454C5F464C545F5450030000000000000000000000}
     QBEDefinition.QBEFieldDefs = {
       040000000F0000000B00000049535F414D4E545F53554D010000000000030000
       0055534C010000000000030000004E5050010000000000040000004E414D4501
@@ -2554,14 +2556,16 @@ object Form_print_bills: TForm_print_bills
       ' scott.rep_bills_compound.contractors(p_klsk => :p_klsk,'
       '                            p_is_closed => :p_is_closed,'
       '                            p_mg => :p_mg,'
+      '                            p_sel_flt_tp => :p_sel_flt_tp,'
       '                            p_rfcur => :p_rfcur);'
       'end;')
     Optimize = False
     Variables.Data = {
-      0300000004000000070000003A505F4B4C534B0300000000000000000000000C
+      0300000005000000070000003A505F4B4C534B0300000000000000000000000C
       0000003A505F49535F434C4F534544030000000000000000000000050000003A
       505F4D47050000000000000000000000080000003A505F524643555274000000
-      0000000000000000}
+      00000000000000000D0000003A505F53454C5F464C545F545003000000000000
+      0000000000}
     QBEDefinition.QBEFieldDefs = {
       040000001D000000030000004C534B010000000000080000004B5F4C534B5F49
       44010000000000030000004F504C0100000000000700000053545F4E414D4501
@@ -2602,15 +2606,16 @@ object Form_print_bills: TForm_print_bills
       '                            p_is_closed => :p_is_closed,'
       '                            p_mg => :p_mg,'
       '                            p_sel_tp => :p_sel_tp,'
+      '                            p_sel_flt_tp => :p_sel_flt_tp,'
       '                            p_rfcur => :p_rfcur);'
       'end;')
     Optimize = False
     Variables.Data = {
-      0300000005000000070000003A505F4B4C534B0300000000000000000000000C
+      0300000006000000070000003A505F4B4C534B0300000000000000000000000C
       0000003A505F49535F434C4F534544030000000000000000000000050000003A
       505F4D47050000000000000000000000090000003A505F53454C5F5450030000
       000000000000000000080000003A505F52464355527400000000000000000000
-      00}
+      000D0000003A505F53454C5F464C545F5450030000000000000000000000}
     QBEDefinition.QBEFieldDefs = {
       0400000028000000030000004C534B010000000000080000004B5F4C534B5F49
       44010000000000030000004F504C0100000000000700000053545F4E414D4501
@@ -2698,16 +2703,17 @@ object Form_print_bills: TForm_print_bills
       '                                        p_sel_tp => :p_sel_tp,'
       '                            p_is_closed => :p_is_closed,'
       '                                        p_mg => :p_mg,'
+      '                            p_sel_flt_tp => :p_sel_flt_tp,'
       '                                        p_rfcur => :p_rfcur);'
       ''
       'end;')
     Optimize = False
     Variables.Data = {
-      0300000005000000070000003A505F4B4C534B03000000000000000000000005
+      0300000006000000070000003A505F4B4C534B03000000000000000000000005
       0000003A505F4D47050000000000000000000000090000003A505F53454C5F54
       50030000000000000000000000080000003A505F524643555274000000000000
       00000000000C0000003A505F49535F434C4F5345440300000000000000000000
-      00}
+      000D0000003A505F53454C5F464C545F5450030000000000000000000000}
     QBEDefinition.QBEFieldDefs = {
       04000000100000000B00000049535F414D4E545F53554D010000000000030000
       0055534C010000000000030000004E5050010000000000040000004E414D4501
@@ -2780,7 +2786,6 @@ object Form_print_bills: TForm_print_bills
     DetailFields = 'p_lsk'
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Active = True
     Left = 464
     Top = 264
   end
@@ -2818,15 +2823,16 @@ object Form_print_bills: TForm_print_bills
       '                            p_is_closed => :p_is_closed,'
       '                            p_mg => :p_mg,'
       '                            p_sel_tp => :p_sel_tp,'
+      '                            p_sel_flt_tp => :p_sel_flt_tp,'
       '                            p_rfcur => :p_rfcur);'
       'end;')
     Optimize = False
     Variables.Data = {
-      0300000005000000070000003A505F4B4C534B0300000000000000000000000C
+      0300000006000000070000003A505F4B4C534B0300000000000000000000000C
       0000003A505F49535F434C4F534544030000000000000000000000050000003A
       505F4D47050000000000000000000000090000003A505F53454C5F5450030000
       000000000000000000080000003A505F52464355527400000000000000000000
-      00}
+      000D0000003A505F53454C5F464C545F5450030000000000000000000000}
     QBEDefinition.QBEFieldDefs = {0400000001000000020000005152010000000000}
     Master = OD_cmp_main
     MasterFields = 'k_lsk_id'
