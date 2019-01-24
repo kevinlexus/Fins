@@ -516,6 +516,23 @@ procedure TForm_kart.setAllowEdit(admin_: Integer);
 var
   a: Integer;
 begin
+  // возможность корректировать показание и расход счетчиков отопления
+  // (потом закрыть, когда будут счетчики в scott.meter
+  if admin_ =1 then
+  begin
+    dbedtPOT.Enabled := true;
+    dbedtMOT.Enabled := true;
+    dbedtPOT.ReadOnly := false;
+    dbedtMOT.ReadOnly := false;
+  end
+  else
+  begin
+    dbedtPOT.Enabled := false;
+    dbedtMOT.Enabled := false;
+    dbedtPOT.ReadOnly := True;
+    dbedtMOT.ReadOnly := True;
+  end;
+
 
   //разрешить ли редактирование лицевого счета
   OD_kart_pr.Active := false;

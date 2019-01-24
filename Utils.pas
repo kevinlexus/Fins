@@ -618,32 +618,13 @@ begin
 end;
 
 procedure change_alias(dset: TOracleDataset; str1: String; str2: String);
-//var
-// a: Integer;
-// str_: TStrings;
-// i: Integer;
 begin
-// str1 - строка для поиска
-// str2 - новая строка
-
-// i - кол-во найденных вхождений
-{i:=0;
- str_:= dset.SQL;
-  for a:=0 to str_.Count -1 do
-  begin
-    if Pos(str1, str_.Strings[a]) > 0 then
+  change_alias(dset, str1, str2, True);
+  if dset.Active then
     begin
-      str_.Strings[a]:=StringReplace(str_.Strings[a], str1, str2,
-        [rfReplaceAll, rfIgnoreCase]);
-      i:=i+1;
-    end
-  end;
-  dset.SQL.Text:=str_.Text;
-  if i = 0 then
-   ShowMessage('Change_alias: '+str1); }
-  change_alias(dset, str1, str2, True); 
-  dset.Active:=false;
-  dset.Active:=true;
+      dset.Active:=false; // эксперементально. ред 15.01.2019
+      dset.Active:=true;
+    end;
 end;
 
 procedure change_alias(dset: TOracleDataset; str1: String; str2: String; reopenDS: Boolean);

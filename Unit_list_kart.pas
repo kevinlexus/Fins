@@ -372,18 +372,19 @@ begin
   end;
 
     // отключить возможность корректировки счетчиков в новой версии
+    // кроме отопления, пока не перенес в scott.meter!
   if DataModule1.OraclePackage1.CallIntegerFunction
                ('scott.Utils.get_int_param', ['VER_METER1']) <> 0 then
   begin
      OD_list_kart.FieldByName('mhw').ReadOnly:=true;
      OD_list_kart.FieldByName('mgw').ReadOnly:=true;
      OD_list_kart.FieldByName('mel').ReadOnly:=true;
-     OD_list_kart.FieldByName('mot').ReadOnly:=true;
+     //OD_list_kart.FieldByName('mot').ReadOnly:=true;
 
      OD_list_kart.FieldByName('phw').ReadOnly:=true;
      OD_list_kart.FieldByName('pgw').ReadOnly:=true;
      OD_list_kart.FieldByName('pel').ReadOnly:=true;
-     OD_list_kart.FieldByName('pot').ReadOnly:=true;
+     //OD_list_kart.FieldByName('pot').ReadOnly:=true;
   end;
 
 end;

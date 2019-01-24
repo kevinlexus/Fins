@@ -177,23 +177,6 @@ procedure TForm_house_vvod.FormCreate(Sender: TObject);
 begin
   SetMenuItem(3, N3, 'drn62_”слуги_по_домам');
 
-  with OD_rep do
-  begin
-    Active:=false;
-    SetVariable('var_',0);
-    SetVariable('flt_reu_', null);
-    SetVariable('flt_house_', -1);
-    Active:=True;
-  end;
-  with OD_vvod do
-  begin
-    Active:=false;
-    SetVariable('var_',0);
-    SetVariable('flt_reu_', null);
-    SetVariable('flt_house_', -1);
-    Active:=True;
-  end;
-
   state_arch2('');
 
   if FF('Form_list_kart',0) =1 then
@@ -201,6 +184,18 @@ begin
    //если открыта форма карточек, то сразу профильтровать
    Form_Main.flt_house_:=Form_list_kart.OD_list_kart.FieldByName('HOUSE_ID').AsInteger;
    SetFilter;
+  end
+  else
+  begin
+    // вывести все вводы
+    with OD_vvod do
+    begin
+      Active:=false;
+      SetVariable('var_',0);
+      SetVariable('flt_reu_', null);
+      SetVariable('flt_house_', -1);
+      Active:=True;
+    end;
   end;
 
 end;
@@ -240,18 +235,18 @@ begin
   begin  // из текущего в архив
     Caption:='¬вод объемов по домам - јрхив';
     change_alias(OD_vvod,'scott.c_vvod',
-      '(select * from scott.a_vvod where mg='''+Form_main.arch_mg_+''')');
+      '(select * from scott.a_vvod where mg='''+Form_main.arch_mg_+''')', true);
     change_alias(OD_vvod,'scott.c_houses',
-      '(select * from scott.a_houses where mg='''+Form_main.arch_mg_+''')');
+      '(select * from scott.a_houses where mg='''+Form_main.arch_mg_+''')', true);
     change_alias(OD_vvod,'scott.kart',
-      '(select * from scott.arch_kart where mg='''+Form_main.arch_mg_+''')');
+      '(select * from scott.arch_kart where mg='''+Form_main.arch_mg_+''')', true);
 
     change_alias(OD_rep,'scott.c_vvod',
-      '(select * from scott.a_vvod where mg='''+Form_main.arch_mg_+''')');
+      '(select * from scott.a_vvod where mg='''+Form_main.arch_mg_+''')', false);
     change_alias(OD_rep,'scott.c_houses',
-      '(select * from scott.a_houses where mg='''+Form_main.arch_mg_+''')');
+      '(select * from scott.a_houses where mg='''+Form_main.arch_mg_+''')', false);
     change_alias(OD_rep,'scott.kart',
-      '(select * from scott.arch_kart where mg='''+Form_main.arch_mg_+''')');
+      '(select * from scott.arch_kart where mg='''+Form_main.arch_mg_+''')', false);
 
     OD_vvod.ReadOnly:=True;
     Button4.Enabled:=false;
@@ -360,11 +355,11 @@ procedure TForm_house_vvod.SetFilter;
 begin
     with OD_rep do
     begin
-      Active:=false;
+      //Active:=false;
       SetVariable('flt_reu_', Form_Main.flt_reu_);
       SetVariable('flt_house_', Form_Main.flt_house_);
       SetVariable('flt_kul_', Form_Main.flt_kul_);
-      Active:=true;
+      //Active:=true;
     end;
     with OD_vvod do
     begin
@@ -372,6 +367,7 @@ begin
       SetVariable('flt_reu_', Form_Main.flt_reu_);
       SetVariable('flt_house_', Form_Main.flt_house_);
       SetVariable('flt_kul_', Form_Main.flt_kul_);
+      SetVariable('var_',0);
       Active:=true;
     end;
 end;
@@ -453,6 +449,13 @@ end;
 procedure TForm_house_vvod.Button6Click(Sender: TObject);
 begin
   OD_rep.Active:=False;
+  with OD_rep do
+  begin
+    SetVariable('var_',0);
+    SetVariable('flt_reu_', null);
+    SetVariable('flt_house_', -1);
+  end;
+
   if Form_main.arch_mg_ <> '' then
    OD_rep.SetVariable('mg', Form_main.arch_mg_)
    else
