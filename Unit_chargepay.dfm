@@ -1,6 +1,6 @@
 object Form_chargepay: TForm_chargepay
-  Left = 489
-  Top = 370
+  Left = 281
+  Top = 197
   Width = 835
   Height = 482
   BorderIcons = [biSystemMenu, biMinimize]
@@ -574,28 +574,29 @@ object Form_chargepay: TForm_chargepay
       '              lsk = :lsk'
       '              group by mg) e'
       '    on a.mg = e.mg'
-      '  left join (select summa as dolg_pen, penya, days, mg1'
-      '               from scott.c_penya c --'#1080#1089#1093'.'#1089#1072#1083#1100#1076#1086' '#1087#1086' '#1087#1077#1085#1077
+      
+        '  left join (select summa as dolg_pen, penya, days, mg1 from sco' +
+        'tt.c_penya  --'#1080#1089#1093'.'#1089#1072#1083#1100#1076#1086' '#1087#1086' '#1087#1077#1085#1077
       '              where lsk = :lsk) d'
       '    on a.mg = d.mg1'
       '  left join (select penya, mg1'
-      '               from scott.a_penya c  --'#1074#1093'.'#1089#1072#1083#1100#1076#1086' '#1087#1086' '#1087#1077#1085#1077
       
-        '              where lsk = :lsk and c.mg=(select m.period3 from s' +
-        'cott.v_params m)'
+        '               from scott.a_penya c where lsk = :lsk and c.mg=(s' +
+        'elect scott.utils.add_months_pr(m.period,-1) from scott.v_params' +
+        ' m)  --'#1074#1093'.'#1089#1072#1083#1100#1076#1086' '#1087#1086' '#1087#1077#1085#1077
       '              ) d2'
       '    on a.mg = d2.mg1'
       
         '  left join (select round(sum(penya),2) as penya,sum(c.curdays) ' +
-        'as days, mg1'
-      '               from scott.c_pen_cur c  --'#1090#1077#1082#1091#1097#1072#1103' '#1087#1077#1085#1103
+        'as days, mg1 from scott.c_pen_cur c  --'#1090#1077#1082#1091#1097#1072#1103' '#1087#1077#1085#1103
       '              where lsk = :lsk'
       '              and c.penya > 0'
       '              group by mg1'
       '              ) d3'
       '    on a.mg = d3.mg1'
-      '  left join (select round(sum(c.penya),2) as penya, c.dopl'
-      '               from scott.c_kwtp_mg c  --'#1086#1087#1083#1072#1090#1072' '#1087#1077#1085#1080
+      
+        '  left join (select round(sum(c.penya),2) as penya, c.dopl from ' +
+        'scott.c_kwtp_mg c  --'#1086#1087#1083#1072#1090#1072' '#1087#1077#1085#1080
       
         '              where lsk = :lsk and c.dtek <= scott.init.get_date' +
         ' --'#1074#1072#1078#1085#1086' '#1090#1072#1082' '#1076#1072#1090#1099' '#1073#1088#1072#1090#1100'!'
@@ -603,8 +604,9 @@ object Form_chargepay: TForm_chargepay
       '              group by c.dopl'
       '              ) d4'
       '    on a.mg = d4.dopl'
-      '  left join (select sum(c.penya) as penya_corr, c.dopl'
-      '               from scott.c_pen_corr c  --'#1082#1086#1088#1088#1077#1082#1090#1080#1088#1086#1074#1082#1080' '#1087#1077#1085#1080
+      
+        '  left join (select sum(c.penya) as penya_corr, c.dopl from scot' +
+        't.c_pen_corr c  --'#1082#1086#1088#1088#1077#1082#1090#1080#1088#1086#1074#1082#1080' '#1087#1077#1085#1080
       '              where c.lsk = :lsk'
       
         '              and c.penya <> 0 --'#1087#1086#1095#1077#1084#1091' '#1090#1086' '#1073#1099#1083#1086' >0 - '#1080#1089#1087#1088#1072#1074#1080#1083' '#1088#1077 +
@@ -630,7 +632,7 @@ object Form_chargepay: TForm_chargepay
       0000000000040000003A4D4731050000000000000000000000040000003A4D47
       32050000000000000000000000}
     QBEDefinition.QBEFieldDefs = {
-      040000000F00000006000000434841524745010000000000070000005041594D
+      040000001000000006000000434841524745010000000000070000005041594D
       454E5401000000000004000000444F4C470100000000000500000050454E5941
       010000000000020000004D470100000000000400000044415953010000000000
       08000000505245565F53554D01000000000008000000444F4C475F50454E0100
@@ -638,7 +640,7 @@ object Form_chargepay: TForm_chargepay
       00000050454E59415F494E0100000000000A00000050454E59415F4355525201
       00000000000900000050454E59415F5041590100000000000F00000050454E59
       415F435552525F444159530100000000000A00000050454E59415F434F525201
-      0000000000}
+      0000000000030000004D4732010000000000}
     Master = Form_list_kart.OD_list_kart
     MasterFields = 'lsk'
     Session = DataModule1.OracleSession1

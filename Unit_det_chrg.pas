@@ -53,6 +53,8 @@ begin
     Form_det_chrg.Caption:='Детализация расчёта по Л/C - Архив';
     change_alias(OD_c_charge, 'scott.c_charge',
       '(select * from scott.a_charge2 where '''+Form_main.arch_mg_+''' between mgFrom and mgTo)');
+    change_alias(OD_c_charge, 'scott.c_penya',
+      '(select * from scott.a_penya where mg='''+Form_main.arch_mg_+''')');
   end
   else if (Form_main.arch_mg_ = '') and (mgold_ <> '') then
   begin  // из архива в текущее
@@ -60,6 +62,8 @@ begin
     change_alias(OD_c_charge,
       '(select * from scott.a_charge2 where '''+mgold_+''' between mgFrom and mgTo)',
       'scott.c_charge');
+    change_alias(OD_c_charge, '(select * from scott.a_penya where mg='''+mgold_ +''')',
+      'scott.c_penya');
   end
   else if (Form_main.arch_mg_ <> '') and (mgold_ <> '') then
   begin  // из архива в архив
@@ -67,6 +71,8 @@ begin
     change_alias(OD_c_charge,
       '(select * from scott.a_charge2 where '''+mgold_+''' between mgFrom and mgTo)',
       '(select * from scott.a_charge2 where '''+Form_main.arch_mg_+''' between mgFrom and mgTo)');
+    change_alias(OD_c_charge, '(select * from scott.a_penya where mg='''+mgold_ +''')',
+      '(select * from scott.a_penya where mg='''+Form_main.arch_mg_ +''')');
   end;
 end;
 end;

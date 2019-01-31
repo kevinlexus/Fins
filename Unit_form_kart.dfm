@@ -3486,7 +3486,7 @@ object Form_kart: TForm_kart
       
         '       decode(t.cena, null, null, t.name || '#39',  '#39' || t.cena || '#39 +
         ' '#1088#1091#1073'.'#39') as tarif_cena,'
-      '       g.kod || '#39' '#39' || g.name as org_name,'
+      '       g.kod || '#39'  '#39' || g.name as org_name,'
       '       nvl(b.summa, 0) as privs,'
       '       nvl(c.summa, 0) as subsid,'
       '       nvl(d.summa, 0) as changes,'
@@ -3816,10 +3816,12 @@ object Form_kart: TForm_kart
   end
   object OD_sprorg: TOracleDataSet
     SQL.Strings = (
-      'select t.id as kod, t.name as name, tp.name as tp_org '
+      
+        'select t.id as kod, t.id||'#39'  '#39'||t.name as name, tp.name as tp_or' +
+        'g '
       'from scott.t_org t, scott.t_org_tp tp'
       'where tp.id=t.fk_orgtp'
-      'order by tp.name, t.name')
+      'order by t.id')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
       0400000003000000030000004B4F44010000000000040000004E414D45010000
@@ -3912,7 +3914,7 @@ object Form_kart: TForm_kart
   end
   object OD_usl: TOracleDataSet
     SQL.Strings = (
-      'select t.usl, t.usl||'#39' '#39'||nm as nm'
+      'select t.usl, t.usl||'#39'-'#39'||nm as nm'
       'from scott.usl t')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {

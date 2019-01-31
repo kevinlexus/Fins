@@ -93,7 +93,7 @@ object Form_det_chrg: TForm_det_chrg
     Left = 0
     Top = 0
     Width = 763
-    Height = 447
+    Height = 446
     Selected.Strings = (
       'RN'#9'5'#9#8470' ~'#1087#1086#1088#1103#1076#1082'.'#9'F'
       'NM'#9'14'#9#1059#1089#1083#1091#1075#1072#9'F'
@@ -130,7 +130,7 @@ object Form_det_chrg: TForm_det_chrg
   end
   object GroupBox1: TGroupBox
     Left = 0
-    Top = 447
+    Top = 446
     Width = 763
     Height = 49
     Align = alBottom
@@ -223,7 +223,7 @@ object Form_det_chrg: TForm_det_chrg
     Top = 96
   end
   object frxReport1: TfrxReport
-    Version = '0.0'
+    Version = '5.1.9'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -249,34 +249,33 @@ object Form_det_chrg: TForm_det_chrg
     Style = <
       item
         Name = 'Title'
-        Color = 14211288
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -16
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Fill.BackColor = 14211288
       end
       item
         Name = 'Header'
-        Color = 15790320
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Fill.BackColor = 15790320
       end
       item
         Name = 'Group header'
-        Color = 15790320
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Fill.BackColor = 15790320
       end
       item
         Name = 'Data'
-        Color = clNone
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
@@ -285,7 +284,6 @@ object Form_det_chrg: TForm_det_chrg
       end
       item
         Name = 'Group footer'
-        Color = clNone
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
@@ -295,7 +293,6 @@ object Form_det_chrg: TForm_det_chrg
       end
       item
         Name = 'Header line'
-        Color = clNone
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
@@ -316,6 +313,7 @@ object Form_det_chrg: TForm_det_chrg
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
       object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
         Height = 26.456710000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
@@ -323,13 +321,12 @@ object Form_det_chrg: TForm_det_chrg
           Align = baWidth
           Width = 718.110700000000000000
           Height = 22.677180000000000000
-          ShowHint = False
-          Color = 14211288
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Fill.BackColor = 14211288
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#8221#1056#181#1057#8218#1056#176#1056#187#1056#1105#1056#183#1056#176#1057#8224#1056#1105#1057#1039' '#1057#1026#1056#176#1057#1027#1057#8225#1056#181#1057#8218#1056#176)
@@ -339,19 +336,19 @@ object Form_det_chrg: TForm_det_chrg
         end
       end
       object PageHeader1: TfrxPageHeader
+        FillType = ftBrush
         Height = 34.015770000000000000
         Top = 68.031540000000010000
         Width = 718.110700000000000000
         object Memo3: TfrxMemoView
           Width = 26.951523800000000000
           Height = 30.236240000000000000
-          ShowHint = False
-          Color = 15790320
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Fill.BackColor = 15790320
           HAlign = haCenter
           Memo.UTF8 = (
             #1074#8222#8211' '#1056#1111'/'#1056#1111)
@@ -361,13 +358,12 @@ object Form_det_chrg: TForm_det_chrg
           Left = 147.896483800000000000
           Width = 43.466583070000000000
           Height = 30.236240000000000000
-          ShowHint = False
-          Color = 15790320
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Fill.BackColor = 15790320
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#1115#1056#177#1057#1033#1057#8216#1056#1112)
@@ -377,13 +373,12 @@ object Form_det_chrg: TForm_det_chrg
           Left = 187.583536870000000000
           Width = 26.543290000000000000
           Height = 30.236240000000000000
-          ShowHint = False
-          Color = 15790320
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Fill.BackColor = 15790320
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#8226#1056#1169'.'#1056#1105#1056#183#1056#1112'.')
@@ -393,13 +388,12 @@ object Form_det_chrg: TForm_det_chrg
           Left = 214.126826870000000000
           Width = 52.434467457575590000
           Height = 30.236240000000000000
-          ShowHint = False
-          Color = 15790320
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Fill.BackColor = 15790320
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#1038#1057#1107#1056#1112#1056#1112#1056#176' '#1057#8218#1056#176#1057#1026'.')
@@ -409,13 +403,12 @@ object Form_det_chrg: TForm_det_chrg
           Left = 266.561294327575600000
           Width = 52.434467457575590000
           Height = 30.236240000000000000
-          ShowHint = False
-          Color = 15790320
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Fill.BackColor = 15790320
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#1038#1057#1107#1056#1112#1056#1112#1056#176' '#1056#187#1057#1034#1056#1110#1056#1109#1057#8218)
@@ -425,13 +418,12 @@ object Form_det_chrg: TForm_det_chrg
           Left = 318.995761775781200000
           Width = 64.232222631782120000
           Height = 30.236240000000000000
-          ShowHint = False
-          Color = 15790320
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Fill.BackColor = 15790320
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#1038#1057#1107#1056#1112#1056#1112#1056#176' '#1057#1027#1057#1107#1056#177#1057#1027'.')
@@ -441,13 +433,12 @@ object Form_det_chrg: TForm_det_chrg
           Left = 383.227984416933300000
           Width = 55.733412453066620000
           Height = 30.236240000000000000
-          ShowHint = False
-          Color = 15790320
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Fill.BackColor = 15790320
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#152#1057#8218#1056#1109#1056#1110#1056#1109)
@@ -457,13 +448,12 @@ object Form_det_chrg: TForm_det_chrg
           Left = 26.992626870000000000
           Width = 118.786293630000000000
           Height = 30.236240000000000000
-          ShowHint = False
-          Color = 15790320
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Fill.BackColor = 15790320
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#1032#1057#1027#1056#187#1057#1107#1056#1110#1056#176)
@@ -473,13 +463,12 @@ object Form_det_chrg: TForm_det_chrg
           Left = 440.582260500000000000
           Width = 135.107836600000000000
           Height = 30.236240000000000000
-          ShowHint = False
-          Color = 15790320
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Fill.BackColor = 15790320
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#164'.'#1056#152'.'#1056#1115'.')
@@ -489,13 +478,12 @@ object Form_det_chrg: TForm_det_chrg
           Left = 575.690097100000000000
           Width = 138.640609120000000000
           Height = 30.236240000000000000
-          ShowHint = False
-          Color = 15790320
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Fill.BackColor = 15790320
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#1113#1056#176#1057#8218#1056#181#1056#1110#1056#1109#1057#1026#1056#1105#1057#1039' '#1056#187#1057#1034#1056#1110#1056#1109#1057#8218)
@@ -503,6 +491,7 @@ object Form_det_chrg: TForm_det_chrg
         end
       end
       object MasterData1: TfrxMasterData
+        FillType = ftBrush
         Height = 18.897650000000000000
         Top = 162.519790000000000000
         Width = 718.110700000000000000
@@ -513,7 +502,6 @@ object Form_det_chrg: TForm_det_chrg
         object Memo13: TfrxMemoView
           Width = 26.951523800000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'RN'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBData_charge'
@@ -530,7 +518,6 @@ object Form_det_chrg: TForm_det_chrg
           Left = 144.116953800000000000
           Width = 43.466583070000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'TEST_OPL'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBData_charge'
@@ -548,7 +535,6 @@ object Form_det_chrg: TForm_det_chrg
           Left = 187.583536870000000000
           Width = 30.322820000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'ED_IZM'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBData_charge'
@@ -566,7 +552,6 @@ object Form_det_chrg: TForm_det_chrg
           Left = 217.906356870000000000
           Width = 52.180687840000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'SUMMA_TR'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBData_charge'
@@ -584,7 +569,6 @@ object Form_det_chrg: TForm_det_chrg
           Left = 270.087044710000000000
           Width = 55.960217840000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'SUMMA_LG'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBData_charge'
@@ -602,7 +586,6 @@ object Form_det_chrg: TForm_det_chrg
           Left = 326.047262540000000000
           Width = 55.960217840000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'SUMMA_SUBS'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBData_charge'
@@ -620,7 +603,6 @@ object Form_det_chrg: TForm_det_chrg
           Left = 383.259939400000000000
           Width = 55.960217840000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'SUMMA_ITG'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBData_charge'
@@ -637,7 +619,6 @@ object Form_det_chrg: TForm_det_chrg
           Left = 26.992626870000000000
           Width = 115.006763630000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'NM'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBData_charge'
@@ -654,7 +635,6 @@ object Form_det_chrg: TForm_det_chrg
           Left = 440.582260500000000000
           Width = 135.107836600000000000
           Height = 18.897650000000000000
-          ShowHint = False
           StretchMode = smActualHeight
           DataField = 'FIO'
           DataSet = frxDBDataset1
@@ -672,7 +652,6 @@ object Form_det_chrg: TForm_det_chrg
           Left = 575.690097100000000000
           Width = 138.640609120000000000
           Height = 18.897650000000000000
-          ShowHint = False
           StretchMode = smActualHeight
           DataField = 'LG_NAME'
           DataSet = frxDBDataset1
@@ -688,20 +667,19 @@ object Form_det_chrg: TForm_det_chrg
         end
       end
       object PageFooter1: TfrxPageFooter
+        FillType = ftBrush
         Height = 26.456710000000000000
         Top = 287.244280000000000000
         Width = 718.110700000000000000
         object Memo23: TfrxMemoView
           Align = baWidth
           Width = 718.110700000000000000
-          ShowHint = False
           Frame.Typ = [ftTop]
           Frame.Width = 2.000000000000000000
         end
         object Memo24: TfrxMemoView
           Top = 1.000000000000000000
           Height = 22.677180000000000000
-          ShowHint = False
           AutoWidth = True
           Memo.UTF8 = (
             '[Date] [Time]')
@@ -712,13 +690,13 @@ object Form_det_chrg: TForm_det_chrg
           Top = 1.000000000000000000
           Width = 75.590600000000000000
           Height = 22.677180000000000000
-          ShowHint = False
           HAlign = haRight
           Memo.UTF8 = (
             #1056#1038#1057#8218#1057#1026'. [Page#]')
         end
       end
       object Footer1: TfrxFooter
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 204.094620000000000000
         Width = 718.110700000000000000
@@ -727,7 +705,6 @@ object Form_det_chrg: TForm_det_chrg
           Top = 3.779529999999994000
           Width = 60.417881230000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBData_charge'
           Font.Charset = DEFAULT_CHARSET
@@ -745,7 +722,6 @@ object Form_det_chrg: TForm_det_chrg
           Top = 3.779529999999994000
           Width = 52.858821229999990000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBData_charge'
           Font.Charset = DEFAULT_CHARSET
@@ -763,7 +739,6 @@ object Form_det_chrg: TForm_det_chrg
           Top = 3.779529999999994000
           Width = 56.638351230000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBData_charge'
           Font.Charset = DEFAULT_CHARSET
@@ -781,7 +756,6 @@ object Form_det_chrg: TForm_det_chrg
           Top = 3.779529999999994000
           Width = 56.638351230000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBData_charge'
           Font.Charset = DEFAULT_CHARSET
@@ -798,7 +772,6 @@ object Form_det_chrg: TForm_det_chrg
           Top = 3.779529999999994000
           Width = 197.311923410000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBData_charge'
           Font.Charset = DEFAULT_CHARSET
@@ -812,7 +785,7 @@ object Form_det_chrg: TForm_det_chrg
         end
         object Line1: TfrxLineView
           Width = 714.331170000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
       end

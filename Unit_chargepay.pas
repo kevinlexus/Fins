@@ -150,40 +150,65 @@ begin
     Form_chargepay.Caption:='Движение по Л/C - Архив';
     change_alias(OD_chargepay,
     'select mg, sum(summa) as summa from scott.c_chargepay where period=(select period from scott.params)',
-      'select mg, sum(summa) as summa from scott.c_chargepay where period=('''+Form_main.arch_mg_+''')');
+      'select mg, sum(summa) as summa from scott.c_chargepay where period=('''+Form_main.arch_mg_+''')', false);
     change_alias(OD_chargepay,'scott.c_penya',
-      '(select * from scott.a_penya where mg='''+Form_main.arch_mg_+''')');
+      '(select * from scott.a_penya where mg='''+Form_main.arch_mg_+''')', false);
     change_alias(OD_chargepay,'scott.c_pen_cur',
-      '(select * from scott.a_pen_cur where mg='''+Form_main.arch_mg_+''')');
+      '(select * from scott.a_pen_cur where mg='''+Form_main.arch_mg_+''')', false);
+    change_alias(OD_chargepay,'scott.c_pen_corr',
+      '(select * from scott.a_pen_corr where mg='''+Form_main.arch_mg_+''')', false);
+    change_alias(OD_chargepay,'scott.c_kwtp_mg',
+      '(select * from scott.a_kwtp_mg where mg='''+Form_main.arch_mg_+''')', false);
+    change_alias(OD_chargepay,'(select scott.utils.add_months_pr(m.period,-1) from scott.v_params m)',
+      '(select scott.utils.add_months_pr('''+Form_main.arch_mg_+''',-1) from scott.v_params m)', true);
+
   end
   else if (Form_main.arch_mg_ = '') and (mgold_ <> '') then
   begin  // из архива в текущее
     Form_chargepay.Caption:='Движение по Л/C';
     change_alias(OD_chargepay,
       'select mg, sum(summa) as summa from scott.c_chargepay where period=('''+mgold_+''')',
-      'select mg, sum(summa) as summa from scott.c_chargepay where period=(select period from scott.params)');
+      'select mg, sum(summa) as summa from scott.c_chargepay where period=(select period from scott.params)', false);
     change_alias(OD_chargepay,
       '(select * from scott.a_penya where mg='''+mgold_+''')',
-      'scott.c_penya');
+      'scott.c_penya', false);
     change_alias(OD_chargepay,
       '(select * from scott.a_pen_cur where mg='''+mgold_+''')',
-      'scott.c_pen_cur');
+      'scott.c_pen_cur', false);
+    change_alias(OD_chargepay,
+      '(select * from scott.a_pen_corr where mg='''+mgold_+''')',
+      'scott.c_pen_corr', false);
+    change_alias(OD_chargepay,
+      '(select * from scott.a_kwtp_mg where mg='''+mgold_+''')',
+      'scott.c_kwtp_mg', false);
+    change_alias(OD_chargepay,'(select scott.utils.add_months_pr('''+mgold_+''',-1) from scott.v_params m)',
+      '(select scott.utils.add_months_pr(m.period,-1) from scott.v_params m)', true);
   end
   else if (Form_main.arch_mg_ <> '') and (mgold_ <> '') then
   begin  // из архива в архив
     Form_chargepay.Caption:='Движение по Л/C - Архив';
     change_alias(OD_chargepay,
       'select mg, sum(summa) as summa from scott.c_chargepay where period=('''+mgold_+''')',
-      'select mg, sum(summa) as summa from scott.c_chargepay where period=('''+Form_main.arch_mg_+''')'
+      'select mg, sum(summa) as summa from scott.c_chargepay where period=('''+Form_main.arch_mg_+''')', false
       );
     change_alias(OD_chargepay,
       '(select * from scott.a_penya where mg='''+mgold_+''')',
-      '(select * from scott.a_penya where mg='''+Form_main.arch_mg_+''')'
+      '(select * from scott.a_penya where mg='''+Form_main.arch_mg_+''')', false
       );
     change_alias(OD_chargepay,
       '(select * from scott.a_pen_cur where mg='''+mgold_+''')',
-      '(select * from scott.a_pen_cur where mg='''+Form_main.arch_mg_+''')'
+      '(select * from scott.a_pen_cur where mg='''+Form_main.arch_mg_+''')', false
       );
+    change_alias(OD_chargepay,
+      '(select * from scott.a_pen_corr where mg='''+mgold_+''')',
+      '(select * from scott.a_pen_corr where mg='''+Form_main.arch_mg_+''')', false
+      );
+    change_alias(OD_chargepay,
+      '(select * from scott.a_kwtp_mg where mg='''+mgold_+''')',
+      '(select * from scott.a_kwtp_mg where mg='''+Form_main.arch_mg_+''')', false
+      );
+    change_alias(OD_chargepay,'(select scott.utils.add_months_pr('''+mgold_+''',-1) from scott.v_params m)',
+      '(select scott.utils.add_months_pr('''+Form_main.arch_mg_+''',-1) from scott.v_params m)', true);
   end;
 end;
 end;

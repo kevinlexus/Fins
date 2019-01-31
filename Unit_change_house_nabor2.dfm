@@ -1,6 +1,6 @@
 object Form_change_house_nabor2: TForm_change_house_nabor2
-  Left = 917
-  Top = 217
+  Left = 923
+  Top = 227
   Align = alCustom
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
@@ -283,8 +283,8 @@ object Form_change_house_nabor2: TForm_change_house_nabor2
   end
   object OD_usl: TOracleDataSet
     SQL.Strings = (
-      'select u.usl, u.nm as nm, u.sptarn from scott.usl u'
-      'order by npp')
+      'select u.usl, u.usl||'#39'  '#39'||u.nm as nm, u.sptarn from scott.usl u'
+      'order by u.usl')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
       0400000003000000020000004E4D0100000000000300000055534C0100000000
@@ -301,11 +301,13 @@ object Form_change_house_nabor2: TForm_change_house_nabor2
   end
   object OD_sprorg: TOracleDataSet
     SQL.Strings = (
-      'select t.id as kod, t.name as name, tp.name as tp_org '
+      
+        'select t.id as kod, t.id||'#39'  '#39'||t.name as name, tp.name as tp_or' +
+        'g '
       'from scott.t_org t, scott.t_org_tp tp'
       'where tp.id=t.fk_orgtp and '
       '(tp.cd='#39#1055#1086#1089#1090#1072#1074#1097#1080#1082#39' and :var_=0 or :var_=1)'
-      'order by tp.name, t.name')
+      'order by t.id')
     Optimize = False
     Variables.Data = {
       0300000001000000050000003A5641525F030000000400000000000000000000
