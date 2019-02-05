@@ -1,6 +1,6 @@
 object Form_spr_sprorg: TForm_spr_sprorg
-  Left = 304
-  Top = 245
+  Left = 286
+  Top = 202
   Width = 1311
   Height = 720
   BorderIcons = [biSystemMenu, biMinimize]
@@ -716,9 +716,9 @@ object Form_spr_sprorg: TForm_spr_sprorg
   end
   object OD_t_orgp: TOracleDataSet
     SQL.Strings = (
-      'select s.id, s.name'
+      'select s.id, s.id||'#39'  '#39'||s.name as name'
       '  from scott.t_org s'
-      'order by s.name')
+      'order by s.id')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
       0400000002000000020000004944010000000000040000004E414D4501000000
@@ -1081,9 +1081,9 @@ object Form_spr_sprorg: TForm_spr_sprorg
   end
   object OD_t_orgp2: TOracleDataSet
     SQL.Strings = (
-      'select s.id, s.name'
+      'select s.id, s.id||'#39'  '#39'||s.name as name'
       '  from scott.t_org s'
-      'order by s.name')
+      'order by s.id')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
       0400000002000000020000004944010000000000040000004E414D4501000000

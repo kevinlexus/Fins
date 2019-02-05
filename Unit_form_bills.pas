@@ -22,7 +22,11 @@ uses
   dxSkinDevExpressStyle, dxSkinHighContrast, dxSkinMetropolis,
   dxSkinMetropolisDark, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
   dxSkinOffice2013White, dxSkinSevenClassic, dxSkinSharpPlus,
-  dxSkinTheAsphaltWorld, dxSkinVS2010, dxSkinWhiteprint, cxImageComboBox;
+  dxSkinTheAsphaltWorld, dxSkinVS2010, dxSkinWhiteprint, cxImageComboBox,
+  cxCheckComboBox, cxDBCheckComboBox, cxStyles, cxCustomData, cxFilter,
+  cxData, cxDataStorage, cxNavigator, cxDBData, cxGridCustomTableView,
+  cxGridTableView, cxGridDBTableView, cxClasses, cxGridCustomView, cxGrid,
+  cxDBExtLookupComboBox, cxCheckBox;
 
 type
   TForm_print_bills = class(TForm)
@@ -205,6 +209,9 @@ type
     frxDB_cmp_funds_lsk: TfrxDBDataset;
     OD_cmp_qr: TOracleDataSet;
     frxDB_cmp_qr: TfrxDBDataset;
+    OD_uk: TOracleDataSet;
+    DS_uk: TDataSource;
+    cxCheckComboBox1: TcxCheckComboBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -235,6 +242,8 @@ type
     procedure OD_ls_cntAfterOpen(DataSet: TDataSet);
     procedure compound_report(p_var: Integer);
     procedure old_report(tp_, pen_last_month_:Integer; repVar:String);
+    procedure fillUk();
+    function getStrUk(): String;
   private
     sel_obj_: Integer;
     cnt_sch_: Integer;
@@ -249,7 +258,6 @@ implementation
 
 uses
   Unit_status, Unit_Mainform, DM_module1, Unit_list_kart, Utils;
-
 {$R *.dfm}
 
 procedure TForm_print_bills.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -375,19 +383,37 @@ begin
     OD_cmp_main.SetVariable('p_firstNum', 0);
     OD_cmp_main.SetVariable('p_lastNum', 1000000000);
   end;
-
   // установить параметры
   OD_cmp_main.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
+  // список УК для фильтра
+  OD_cmp_main.SetVariable('p_sel_uk', getStrUk());
 
   OD_cmp_contractors.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
+  OD_cmp_contractors.SetVariable('p_sel_uk', getStrUk());
+
   OD_cmp_detail_primary.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
+  OD_cmp_detail_primary.SetVariable('p_sel_uk', getStrUk());
+
   OD_cmp_detail_cap.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
+  OD_cmp_detail_cap.SetVariable('p_sel_uk', getStrUk());
+
   OD_cmp_detail_main.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
+  OD_cmp_detail_main.SetVariable('p_sel_uk', getStrUk());
+
   OD_cmp_funds_primary.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
+  OD_cmp_funds_primary.SetVariable('p_sel_uk', getStrUk());
+
   OD_cmp_funds_cap.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
+  OD_cmp_funds_cap.SetVariable('p_sel_uk', getStrUk());
+
   OD_cmp_funds_main.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
+  OD_cmp_funds_main.SetVariable('p_sel_uk', getStrUk());
+
+  // здесь не нужен фильтр p_sel_uk, так как выборка по p_lsk
   OD_cmp_funds_lsk.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
+
   OD_cmp_qr.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
+  OD_cmp_qr.SetVariable('p_sel_uk', getStrUk());
 
   // установить тип лиц.счета
   // все, кроме капремонта
@@ -1024,7 +1050,8 @@ begin
   Edit1.Text := IntToStr(cnt_sch_);
   // фильтр по умолчанию
   cxImageComboBox1.ItemIndex:=0;
-
+  // наполнить списком УК
+  fillUk();
 end;
 
 procedure TForm_print_bills.sel_lsk;
@@ -1233,6 +1260,46 @@ end;
 procedure TForm_print_bills.OD_ls_cntAfterOpen(DataSet: TDataSet);
 begin
   pnl1.Visible := false;
+end;
+
+// наполнить checkComboBox значениями УК
+procedure TForm_print_bills.fillUk();
+ var i: Integer;
+begin
+  OD_uk.Active := True;
+  while not OD_uk.Eof do
+  begin
+     with cxCheckComboBox1.Properties.Items.Add do
+    begin
+      Description := OD_uk.FieldByName('reu').AsString+' '
+        +OD_uk.FieldByName('name').AsString;
+    end;
+    OD_uk.Next;
+  end;
+
+end;
+
+// получить список УК
+function TForm_print_bills.getStrUk(): String;
+var
+  APCheckStates: ^TcxCheckStates;
+  I: Integer;
+  AEditProp: TcxCheckComboBoxProperties;
+  str: string;
+begin
+  New(APCheckStates);
+  AEditProp := cxCheckComboBox1.Properties;
+  str:='0';
+  try
+     CalculateCheckStates(cxCheckComboBox1.Value,
+      AEditProp.Items, AEditProp.EditValueFormat , APCheckStates^);
+     for i := 0 to AEditProp.Items.Count - 1 do
+       if APCheckStates^[I] = cbsChecked then
+         str:=str+''''+copy(AEditProp.Items[I].Description, 1,3)+''';';
+  finally
+    Dispose(APCheckStates)
+  end;
+  Result := str;
 end;
 
 end.
