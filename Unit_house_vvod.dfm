@@ -1,6 +1,6 @@
 object Form_house_vvod: TForm_house_vvod
-  Left = 685
-  Top = 218
+  Left = 463
+  Top = 309
   Width = 1145
   Height = 512
   Caption = #1042#1074#1086#1076' '#1086#1073#1098#1105#1084#1086#1074' '#1087#1086' '#1076#1086#1084#1072#1084
@@ -581,6 +581,7 @@ object Form_house_vvod: TForm_house_vvod
       '       r.ishotpipeinsulated, '
       '       r.istowelheatexist,'
       '       r.non_heat_per,'
+      '      :sel_period as mg,'
       '       r.rowid'
       '  from (select c.*, nvl(u.nm, '#39#1055#1086#1076#1098#1077#1079#1076#39') as nm, u.npp'
       '           from scott.c_vvod c'
@@ -624,12 +625,13 @@ object Form_house_vvod: TForm_house_vvod
         'd_num, 0)')
     Optimize = False
     Variables.Data = {
-      0300000004000000050000003A5641525F030000000000000000000000090000
+      0300000005000000050000003A5641525F030000000000000000000000090000
       003A464C545F5245555F0500000000000000000000000B0000003A464C545F48
       4F5553455F030000000000000000000000090000003A464C545F4B554C5F0500
-      00000000000000000000}
+      000000000000000000000B0000003A53454C5F504552494F4405000000000000
+      0000000000}
     QBEDefinition.QBEFieldDefs = {
-      040000002C00000003000000524555010000000000040000004E414D45010000
+      040000002D00000003000000524555010000000000040000004E414D45010000
       000000020000004E440100000000000400000056564F44010000000000030000
       004B554C010000000000030000004B5542010000000000070000004B55425F4D
       414E010000000000030000004B5052010000000000070000004B55425F534348
@@ -653,7 +655,7 @@ object Form_house_vvod: TForm_house_vvod
       4B55425F464143545F55504E4F524D010000000000120000004953484F545049
       5045494E53554C41544544010000000000100000004953544F57454C48454154
       45584953540100000000000C0000004E4F4E5F484541545F5045520100000000
-      00}
+      00020000004D47010000000000}
     RefreshOptions = [roAfterUpdate, roAllFields]
     UpdatingTable = 'scott.c_vvod'
     Session = DataModule1.OracleSession1
@@ -885,6 +887,10 @@ object Form_house_vvod: TForm_house_vvod
     object OD_vvodNON_HEAT_PER: TFloatField
       FieldName = 'NON_HEAT_PER'
     end
+    object OD_vvodMG: TStringField
+      FieldName = 'MG'
+      Size = 4000
+    end
   end
   object DS_vvod: TDataSource
     DataSet = OD_vvod
@@ -894,7 +900,7 @@ object Form_house_vvod: TForm_house_vvod
   object frxDBDataset1: TfrxDBDataset
     UserName = 'frxDBDataset1'
     CloseDataSource = False
-    DataSource = DS_rep
+    DataSource = DS_vvod
     BCDToCurrency = False
     Left = 360
     Top = 400
@@ -2269,100 +2275,6 @@ object Form_house_vvod: TForm_house_vvod
         end
       end
     end
-  end
-  object OD_rep: TOracleDataSet
-    SQL.Strings = (
-      'select h.kul, k.reu, t.name_reu, s.name, ltrim(h.nd, '#39'0'#39') as nd,'
-      
-        '       s.name || '#39' '#39' || ltrim(h.nd, '#39'0'#39') as adr, h.nd as nd_id, ' +
-        'r.id,'
-      
-        '       h.id as house_id, r.nm as vvod, r.usl, r.kub, r.kub_dist,' +
-        ' r.vvod_num,'
-      
-        '       r.kub_man, r.kpr, r.kub_sch, r.sch_cnt, r.sch_kpr, r.cnt_' +
-        'lsk, k.opl,'
-      
-        '       r.rowid, r.vol_add, r.sch_add, r.kub_fact, r.vol_add_fact' +
-        ','
-      
-        '       r.kub_nrm_fact, r.kub_sch_fact, r.itg_fact, r.opl_add, r.' +
-        'kub_norm,'
-      
-        '       r.use_sch, r.dist_tp, r.kub_norm + r.kub_sch + r.kub_ar a' +
-        's all_vl,'
-      '       r.opl_ar, r.kub_ar, r.kub_ar_fact,'
-      '       scott.utils.month_name(substr(:mg, 5, 2)) || '#39' '#39' ||'
-      '        substr(:mg, 1, 4) || '#39#1075'.'#39' as mg'
-      ''
-      '  from (select c.*, u.npp, u.nm'
-      '           from scott.c_vvod c, scott.usl u'
-      '          where c.usl = u.usl'
-      '            and (:var_ = 0 or'
-      
-        '                :var_ = 1 and (nvl(c.kub, 0) <> 0 or nvl(c.vol_a' +
-        'dd, 0) <> 0))) r,'
-      '       scott.c_houses h, scott.spul s, scott.s_reu_trest t,'
-      '       (select k.reu, sum(opl) as opl, house_id'
-      '           from scott.kart k'
-      '          where k.psch <> 9'
-      '          group by k.reu, k.house_id) k'
-      ' where k.reu = t.reu'
-      '   and h.id = r.house_id'
-      '   and h.id = k.house_id --(+)'
-      '   and h.kul = s.id(+)'
-      '   and nvl(h.psch, 0) <> 1'
-      '      '
-      
-        '   and (:flt_reu_ is not null and k.reu = :flt_reu_ or :flt_reu_' +
-        ' is null)'
-      
-        '   and (:flt_house_ <> -1 and h.id = :flt_house_ or :flt_house_ ' +
-        '= -1)'
-      
-        '   and (:flt_kul_ is not null and t.reu = :flt_kul_ or :flt_kul_' +
-        ' is null)'
-      
-        ' order by t.name_reu, r.npp, s.name, scott.utils.f_order(h.nd, 6' +
-        '),'
-      '          r.vvod_num')
-    Optimize = False
-    Variables.Data = {
-      0300000005000000030000003A4D47050000000000000000000000050000003A
-      5641525F030000000000000000000000090000003A464C545F5245555F050000
-      0000000000000000000B0000003A464C545F484F5553455F0300000000000000
-      00000000090000003A464C545F4B554C5F050000000000000000000000}
-    QBEDefinition.QBEFieldDefs = {
-      040000002500000003000000524555010000000000040000004E414D45010000
-      000000020000004E440100000000000400000056564F44010000000000030000
-      004B554C010000000000030000004B5542010000000000070000004B55425F4D
-      414E010000000000030000004B5052010000000000070000004B55425F534348
-      010000000000070000005343485F434E54010000000000070000005343485F4B
-      505201000000000007000000434E545F4C534B010000000000050000004E445F
-      494401000000000008000000484F5553455F4944010000000000080000005656
-      4F445F4E554D010000000000030000004F504C01000000000002000000494401
-      000000000007000000564F4C5F414444010000000000070000005343485F4144
-      44010000000000080000004B55425F464143540100000000000C000000564F4C
-      5F4144445F46414354010000000000080000004954475F464143540100000000
-      00070000004F504C5F414444010000000000080000004E414D455F5245550100
-      0000000003000000414452010000000000020000004D47010000000000080000
-      004B55425F4E4F524D0100000000000300000055534C0100000000000C000000
-      4B55425F4E524D5F464143540100000000000C0000004B55425F5343485F4641
-      4354010000000000070000005553455F53434801000000000007000000444953
-      545F545001000000000006000000414C4C5F564C010000000000060000004F50
-      4C5F4152010000000000060000004B55425F41520100000000000B0000004B55
-      425F41525F46414354010000000000080000004B55425F444953540100000000
-      00}
-    RefreshOptions = [roAfterUpdate]
-    Session = DataModule1.OracleSession1
-    DesignActivation = True
-    Left = 88
-    Top = 256
-  end
-  object DS_rep: TDataSource
-    DataSet = OD_rep
-    Left = 120
-    Top = 256
   end
   object PopupMenu1: TPopupMenu
     Left = 272

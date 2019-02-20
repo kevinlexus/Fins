@@ -26,7 +26,7 @@ uses
   cxCheckComboBox, cxDBCheckComboBox, cxStyles, cxCustomData, cxFilter,
   cxData, cxDataStorage, cxNavigator, cxDBData, cxGridCustomTableView,
   cxGridTableView, cxGridDBTableView, cxClasses, cxGridCustomView, cxGrid,
-  cxDBExtLookupComboBox, cxCheckBox;
+  cxDBExtLookupComboBox, cxCheckBox, DBCtrls;
 
 type
   TForm_print_bills = class(TForm)
@@ -212,6 +212,10 @@ type
     OD_uk: TOracleDataSet;
     DS_uk: TDataSource;
     cxCheckComboBox1: TcxCheckComboBox;
+    Label14: TLabel;
+    OD_spr_services: TOracleDataSet;
+    DS_spr_services: TDataSource;
+    cxLookupComboBox1: TcxLookupComboBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -505,10 +509,14 @@ begin
   OD_cmp_funds_lsk.Active:=true;
   OD_cmp_qr.Active:=true;
 
+  Edit2.Text := 'Путь к файлу счета:' + Form_main.exepath_ +
+    VarToStr(cxLookupComboBox1.EditValue);
   frxReport1.LoadFromFile(Form_main.exepath_ +
+    VarToStr(cxLookupComboBox1.EditValue) , True);
+{  frxReport1.LoadFromFile(Form_main.exepath_ +
     OD_t_org.FieldByName('FNAME_SCH').asString , True);
   Edit2.Text := 'Путь к файлу счета:' + Form_main.exepath_ +
-    OD_t_org.FieldByName('FNAME_SCH').asString;
+    OD_t_org.FieldByName('FNAME_SCH').asString;}
   Edit2.Visible := true;
 
   // открыть отчет
@@ -1001,7 +1009,8 @@ end;
 
 procedure TForm_print_bills.FormCreate(Sender: TObject);
 begin
-  Autosize := true;
+  Height:=422;
+  Width:=417;
   //по умолчанию для арх справки - не показывать старый фонд
   //OD_kart.SetVariable('var_', 0);
   //Выбран поиск по адресу (по умолчанию)
@@ -1021,6 +1030,7 @@ begin
   OD_mg.Active := True;
   OD_mg1.Active := True;
   OD_reu.Active := True;
+  OD_spr_services.Active := True;
 
   if (FF('Form_list_kart', 0) = 1) or ((wwDBEdit1.Text = wwDBEdit2.Text) and (wwDBEdit1.Text <> '') and (wwDBEdit2.Text <> '')) or (DBLookupComboboxEh4.KeyValue <> null) then
   begin
@@ -1062,16 +1072,17 @@ begin
     wwDBEdit1.Text := Form_list_kart.OD_list_kart.FieldByName('lsk').AsString;
     wwDBEdit2.Text := Form_list_kart.OD_list_kart.FieldByName('lsk').AsString;
     OD_mg.First;
+    cbb1.EditValue := Form_list_kart.OD_list_kart.FieldByName('reu').AsString;
     DBLookupComboboxEh2.KeyValue := Form_list_kart.OD_list_kart.FieldByName('kul').AsString;
     DBLookupComboboxEh3.KeyValue := Form_list_kart.OD_list_kart.FieldByName('house_id').AsString;
-{    DBLookupComboboxEh4.KeyValue:=
-      Form_list_kart.OD_list_kart.FieldByName('kw').AsString;
-    OD_kw.Locate('kw_id', Form_list_kart.OD_list_kart.FieldByName('kw').AsString,
-       []);
- }
     DBLookupComboboxEh4.KeyValue := Form_list_kart.OD_list_kart.FieldByName('lsk').AsString;
 
+    // по умолчанию период
     DBLookupComboboxEh1.KeyValue := Form_print_bills.OD_mg.FieldByName('mg').AsString;
+    OD_spr_services.SetVariable('p_mg', Form_print_bills.OD_mg.FieldByName('mg').AsString);
+    OD_spr_services.Active:=False;
+    OD_spr_services.Active:=True;
+    cxLookupComboBox1.EditValue:=OD_spr_services.FieldByName('FNAME_SCH').AsString;
 
     Form_main.c_lsk_id_ := Form_list_kart.OD_list_kart.FieldByName('c_lsk_id').AsInteger;
     Form_main.k_lsk_id_ := Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger;
@@ -1119,8 +1130,7 @@ begin
     DBLookupComboboxEh2.Enabled := true;
 
     Label8.Enabled := false;
-    cbb1.Enabled := false;
-//    DBLookupComboboxEh7.Enabled:=false;
+    cbb1.Enabled := true;
     set_lsk(1, '');
     sel_obj_ := 1;
   end
@@ -1146,7 +1156,7 @@ begin
     DBLookupComboboxEh4.Enabled := false;
 
     Label8.Enabled := false;
-    cbb1.Enabled := false;
+    cbb1.Enabled := true;
 //    DBLookupComboboxEh7.Enabled:=false;
     set_lsk(0, wwDBEdit1.Text);
     sel_obj_ := 0;
@@ -1249,6 +1259,10 @@ procedure TForm_print_bills.DBLookupComboboxEh1CloseUp(Sender: TObject; Accept: 
 begin
   if sel_obj_ = 2 then
     sel_ls_cnt;
+  OD_spr_services.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
+  OD_spr_services.Active:=False;
+  OD_spr_services.Active:=True;
+  cxLookupComboBox1.EditValue:=OD_spr_services.FieldByName('RN').AsString;
 end;
 
 procedure TForm_print_bills.OD_ls_cntBeforeOpen(DataSet: TDataSet);

@@ -67,8 +67,6 @@ type
     frxReport1: TfrxReport;
     OD_vvodNAME_REU: TStringField;
     OD_vvodADR: TStringField;
-    OD_rep: TOracleDataSet;
-    DS_rep: TDataSource;
     OD_vvodUSL: TStringField;
     OD_vvodKUB_NORM: TFloatField;
     CheckBox1: TCheckBox;
@@ -134,6 +132,7 @@ type
     cxGrid1DBTableView1ISTOWELHEATEXIST: TcxGridDBColumn;
     OD_vvodNON_HEAT_PER: TFloatField;
     cxGrid1DBTableView1NONHEATPERIOD: TcxGridDBColumn;
+    OD_vvodMG: TStringField;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
@@ -231,6 +230,8 @@ procedure TForm_house_vvod.state_arch2(mgold_: String);
 begin // смена состо€ний формы
 with Form_house_vvod do
 begin
+  OD_vvod.SetVariable('sel_period', Form_Main.sel_period);
+
   if (Form_main.arch_mg_ <> '') and (mgold_='') then
   begin  // из текущего в архив
     Caption:='¬вод объемов по домам - јрхив';
@@ -241,13 +242,13 @@ begin
     change_alias(OD_vvod,'scott.kart',
       '(select * from scott.arch_kart where mg='''+Form_main.arch_mg_+''')', true);
 
-    change_alias(OD_rep,'scott.c_vvod',
+{    change_alias(OD_rep,'scott.c_vvod',
       '(select * from scott.a_vvod where mg='''+Form_main.arch_mg_+''')', false);
     change_alias(OD_rep,'scott.c_houses',
       '(select * from scott.a_houses where mg='''+Form_main.arch_mg_+''')', false);
     change_alias(OD_rep,'scott.kart',
       '(select * from scott.arch_kart where mg='''+Form_main.arch_mg_+''')', false);
-
+ }
     OD_vvod.ReadOnly:=True;
     Button4.Enabled:=false;
     Button5.Enabled:=false;
@@ -267,7 +268,7 @@ begin
       '(select * from scott.arch_kart where mg='''+mgold_+''')',
       'scott.kart');
 
-    change_alias(OD_rep,
+{    change_alias(OD_rep,
       '(select * from scott.a_vvod where mg='''+mgold_+''')',
       'scott.c_vvod');
     change_alias(OD_rep,
@@ -276,7 +277,7 @@ begin
     change_alias(OD_rep,
       '(select * from scott.arch_kart where mg='''+mgold_+''')',
       'scott.kart');
-
+ }
     OD_vvod.ReadOnly:=False;
     Button4.Enabled:=true;
     Button5.Enabled:=true;
@@ -295,7 +296,7 @@ begin
       '(select * from scott.arch_kart where mg='''+mgold_+''')',
       '(select * from scott.arch_kart where mg='''+Form_main.arch_mg_+''')');
 
-    change_alias(OD_rep,
+{    change_alias(OD_rep,
       '(select * from scott.a_vvod where mg='''+mgold_+''')',
       '(select * from scott.a_vvod where mg='''+Form_main.arch_mg_+''')');
     change_alias(OD_rep,
@@ -304,7 +305,7 @@ begin
     change_alias(OD_rep,
       '(select * from scott.arch_kart where mg='''+mgold_+''')',
       '(select * from scott.arch_kart where mg='''+Form_main.arch_mg_+''')');
-
+ }
     OD_vvod.ReadOnly:=True;
     Button4.Enabled:=false;
     Button5.Enabled:=false;
@@ -353,14 +354,6 @@ end;
 
 procedure TForm_house_vvod.SetFilter;
 begin
-    with OD_rep do
-    begin
-      //Active:=false;
-      SetVariable('flt_reu_', Form_Main.flt_reu_);
-      SetVariable('flt_house_', Form_Main.flt_house_);
-      SetVariable('flt_kul_', Form_Main.flt_kul_);
-      //Active:=true;
-    end;
     with OD_vvod do
     begin
       Active:=false;
@@ -448,21 +441,6 @@ end;
 
 procedure TForm_house_vvod.Button6Click(Sender: TObject);
 begin
-  OD_rep.Active:=False;
-  with OD_rep do
-  begin
-    SetVariable('var_',0);
-    SetVariable('flt_reu_', null);
-    SetVariable('flt_house_', -1);
-  end;
-
-  if Form_main.arch_mg_ <> '' then
-   OD_rep.SetVariable('mg', Form_main.arch_mg_)
-   else
-   OD_rep.SetVariable('mg', Form_main.OD_params.FieldByName('period').AsString);
-
-  OD_rep.Active:=True;
-//  frxReport1.PrepareReport(true);
   frxReport1.LoadFromFile(Form_main.exepath_+'\rep_vvod.fr3', True);
   frxReport1.PrepareReport(true);
   frxReport1.ShowPreparedReport;
@@ -471,16 +449,13 @@ end;
 procedure TForm_house_vvod.CheckBox1Click(Sender: TObject);
 begin
   OD_vvod.Active:=false;
-  OD_rep.Active:=false;
   if CheckBox1.Checked=True then
   begin
     OD_vvod.SetVariable('var_',1);
-    OD_rep.SetVariable('var_',1);
   end
   else
   begin
     OD_vvod.SetVariable('var_',0);
-    OD_rep.SetVariable('var_',0);
   end;
   OD_vvod.Active:=True;
 end;

@@ -27,7 +27,8 @@ uses
   cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
   cxDBData, cxGridLevel, cxClasses, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid, ComObj, ComCtrls,
-  cxContainer, cxTextEdit, cxMemo;
+  cxContainer, cxTextEdit, cxMemo, cxCheckBox, cxMaskEdit, cxDropDownEdit,
+  cxCheckComboBox, cxImageComboBox;
 
 type
   TForm_olap = class(TForm)
@@ -81,6 +82,8 @@ type
     btn2: TButton;
     btn3: TButton;
     btn4: TButton;
+    chk2: TCheckBox;
+    cxComboBox1: TcxComboBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);

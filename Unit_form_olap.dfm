@@ -1,10 +1,10 @@
 object Form_olap: TForm_olap
-  Left = 387
-  Top = 232
+  Left = 586
+  Top = 225
   AutoScroll = False
   Caption = 'OLAP'
-  ClientHeight = 739
-  ClientWidth = 951
+  ClientHeight = 743
+  ClientWidth = 1085
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -115,7 +115,7 @@ object Form_olap: TForm_olap
     Left = 0
     Top = 123
     Width = 101
-    Height = 526
+    Height = 530
     CheckOrder = True
     ItemWidth = 80
     ItemHeight = 21
@@ -163,7 +163,7 @@ object Form_olap: TForm_olap
   object PVColToolBar1: TPVColToolBar
     Left = 0
     Top = 81
-    Width = 951
+    Width = 1085
     Height = 42
     CheckOrder = True
     ItemWidth = 80
@@ -211,18 +211,18 @@ object Form_olap: TForm_olap
   end
   object GroupBox1: TGroupBox
     Left = 0
-    Top = 691
-    Width = 951
+    Top = 695
+    Width = 1085
     Height = 48
     Align = alBottom
     Anchors = []
     DockSite = True
     TabOrder = 5
     DesignSize = (
-      951
+      1085
       48)
     object Button3: TButton
-      Left = 756
+      Left = 890
       Top = 16
       Width = 75
       Height = 25
@@ -235,7 +235,7 @@ object Form_olap: TForm_olap
       OnClick = Button3Click
     end
     object Button1: TButton
-      Left = 868
+      Left = 1002
       Top = 16
       Width = 75
       Height = 25
@@ -286,7 +286,7 @@ object Form_olap: TForm_olap
       Visible = False
     end
     object btn2: TButton
-      Left = 432
+      Left = 566
       Top = 15
       Width = 113
       Height = 25
@@ -299,7 +299,7 @@ object Form_olap: TForm_olap
       OnClick = btn2Click
     end
     object btn3: TButton
-      Left = 304
+      Left = 438
       Top = 15
       Width = 121
       Height = 25
@@ -312,7 +312,7 @@ object Form_olap: TForm_olap
       OnClick = btn3Click
     end
     object btn4: TButton
-      Left = 552
+      Left = 686
       Top = 15
       Width = 113
       Height = 25
@@ -324,12 +324,32 @@ object Form_olap: TForm_olap
       Visible = False
       OnClick = btn4Click
     end
+    object chk2: TCheckBox
+      Left = 312
+      Top = 16
+      Width = 121
+      Height = 17
+      Caption = #1042' '#1090'.'#1095'. '#1087#1091#1089#1090#1099#1077' '#1045#1051#1057
+      TabOrder = 7
+      Visible = False
+    end
+    object cxComboBox1: TcxComboBox
+      Left = 184
+      Top = 16
+      Properties.Items.Strings = (
+        #1054#1089#1085#1086#1074#1085#1099#1077
+        #1056#1057#1054
+        #1050#1072#1087#1088#1077#1084#1086#1085#1090)
+      TabOrder = 8
+      Text = #1054#1089#1085#1086#1074#1085#1099#1077
+      Width = 121
+    end
   end
   object PivotGrid1: TPivotGrid
     Left = 101
     Top = 123
-    Width = 850
-    Height = 526
+    Width = 984
+    Height = 530
     MinColWidth = 40
     MaxColWidth = 300
     MinRowHeight = 18
@@ -508,7 +528,7 @@ object Form_olap: TForm_olap
   object PVDimToolBar1: TPVDimToolBar
     Left = 0
     Top = 0
-    Width = 951
+    Width = 1085
     Height = 81
     CheckOrder = False
     ItemWidth = 100
@@ -556,8 +576,8 @@ object Form_olap: TForm_olap
   end
   object PVMeasureToolBar1: TPVMeasureToolBar
     Left = 0
-    Top = 649
-    Width = 951
+    Top = 653
+    Width = 1085
     Height = 42
     CheckOrder = True
     ItemWidth = 80
@@ -619,8 +639,8 @@ object Form_olap: TForm_olap
     Properties.ScrollBars = ssBoth
     TabOrder = 8
     Visible = False
-    Height = 526
-    Width = 850
+    Height = 530
+    Width = 984
   end
   object PivotMap13: TPivotMap
     Cube = PivotCube13

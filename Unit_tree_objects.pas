@@ -1056,6 +1056,8 @@ begin
      Form_olap.btn2.Visible:=true;
      Form_olap.btn3.Visible:=true;
      Form_olap.chk1.Visible:=true;
+     Form_olap.chk2.Visible:=true;
+     Form_olap.cxComboBox1.Visible:=true;
     end
    else
     begin
@@ -1063,6 +1065,8 @@ begin
      Form_olap.btn2.Visible:=false;
      Form_olap.btn3.Visible:=false;
      Form_olap.chk1.Visible:=false;
+     Form_olap.chk2.Visible:=false;
+     Form_olap.cxComboBox1.Visible:=false;
     end;
 
   end;
@@ -1815,12 +1819,11 @@ type
   end;
 var
  lskXL, houseXL: variant;
- reu, path, lskFname, houseFname, entr: String;
+ suffix, reu, path, lskFname, houseFname, entr: String;
  a, b, c, e, f, g, i, houseId: Integer;
  d: TOracleDataSet;
- debug: Boolean;
+ acceptLsk, debug: Boolean;
 begin
-
   debug:=Form_olap.chk1.Checked;
   if debug then
   begin
@@ -1851,7 +1854,15 @@ begin
   end;
   Form_olap.cxm1.Lines.Add('Start log!');
 
+  if (Form_olap.cxComboBox1.ItemIndex=0) then
+   suffix:='_MAIN'
+  else if (Form_olap.cxComboBox1.ItemIndex=1) then
+   suffix:='_RSO'
+  else if (Form_olap.cxComboBox1.ItemIndex=2) then
+   suffix:='_CAP';
   lskFname:=ExtractFileName(dlgOpen1.FileName);
+
+
   path:=ExtractFilePath(dlgOpen1.FileName);
 
   //найти файл шаблона импорта МКД
@@ -1889,15 +1900,36 @@ begin
       Form_olap.cxm1.Lines.Add('Текущая строка: '+IntToStr(a));
     end;
 
+    // фильтровать лицевые счета
+    if ((Form_olap.chk2.checked=true) or (d.FieldByName('elsk').AsString <> '')) and
+       ((Form_olap.cxComboBox1.ItemIndex=0) and (d.FieldByName('tp').AsString = 'LSK_TP_MAIN') or
+        (Form_olap.cxComboBox1.ItemIndex=1) and (d.FieldByName('tp').AsString = 'LSK_TP_RSO')  or
+        (Form_olap.cxComboBox1.ItemIndex=2) and (d.FieldByName('tp').AsString = 'LSK_TP_ADDIT'))
+        then
+      acceptLsk := true
+    else
+      acceptLsk := false;
+
+    if debug then
+    begin
+      Form_olap.cxm1.Lines.Add('Выбрано cxComboBox1.ItemIndex='
+        +IntToStr(Form_olap.cxComboBox1.ItemIndex));
+      Form_olap.cxm1.Lines.Add('Лиц тип: '+d.FieldByName('tp').AsString);
+      if acceptLsk then
+        Form_olap.cxm1.Lines.Add('выгружается')
+      else
+        Form_olap.cxm1.Lines.Add('не выгружается')
+    end;
+
     if (d.FieldByName('reu').AsString <> reu) then
     begin
       //закрыть предыдущий файл
       if reu<>'xx' then
       begin
-        lskXL.ActiveWorkBook.SaveAs(path+reu+'_'+lskFname);
+        lskXL.ActiveWorkBook.SaveAs(path+reu+suffix+'_'+lskFname);
         lskXL.ActiveWorkBook.Close;
 
-        houseXL.ActiveWorkBook.SaveAs(path+reu+'_'+houseFname);
+        houseXL.ActiveWorkBook.SaveAs(path+reu+suffix+'_'+houseFname);
         houseXL.ActiveWorkBook.Close;
         a:=3;
         b:=3;
@@ -1937,12 +1969,12 @@ begin
       b:=b+1;
     end;
 
-    Form_olap.cxm1.Lines.Add('1. лс='+d.FieldByName('lsk').AsString);
+    if debug then
+      Form_olap.cxm1.Lines.Add('1. лс='+d.FieldByName('lsk').AsString);
 
     //МКД
     //Нежилые помещения
-    //только если пусто в ELSK!!!
-    if (d.FieldByName('elsk').AsString = '') then
+    if acceptLsk then
     begin
       if (d.FieldByName('stat_cd').AsString = 'NLIV') then
       begin
@@ -2004,8 +2036,7 @@ begin
     end;
 
     //Жилые помещения
-    //только если пусто в ELSK!!!
-    if (d.FieldByName('elsk').AsString = '') then
+    if acceptLsk then
     begin
       if debug then
         Form_olap.cxm1.Lines.Add('4');
@@ -2019,112 +2050,58 @@ begin
       houseXL.WorkBooks[1].WorkSheets[10].Cells[a, 7]:= 'Нет';
       // инф. подтверждена поставщиком
       houseXL.WorkBooks[1].WorkSheets[10].Cells[e, 8]:= 'Да';
-    end;
 
     // Лицевой счет
     // Основные сведения
-    // Выгрузить все лиц.счета, новые - без GUID, старые (для обновления) - c GUID
-    i:=1;
-    while i<=2 do
-    begin
-      if i=1 then
-      begin
-        //основной
-          if debug then
-            Form_olap.cxm1.Lines.Add('5.'+intToStr(i));
-          // вкладка "Основные сведения"
-          lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 1]:= IntToStr(g);  // номер лс
-          lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 2]:= d.FieldByName('lsk').AsString;
-          lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 3]:= d.FieldByName('serviceid').AsString;
-          lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 4]:= d.FieldByName('tp').AsString;
-          lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 5]:= d.FieldByName('status').AsString;
-
-          lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 7]:= d.FieldByName('k_fam').AsString;
-          lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 8]:= d.FieldByName('k_im').AsString;
-          lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 9]:= d.FieldByName('k_ot').AsString;
-
-          lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 18]:= d.FieldByName('opl').AsString;
-          lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 19]:= d.FieldByName('opl').AsString;
-          lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 20]:= d.FieldByName('opl').AsString;
-
-          lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 21]:= d.FieldByName('kpr').AsFloat;
-
-          // вкладка "Основания"  - пока не стал заполнять, не понятно что писать сюда, возможен баг в шаблоне
-          //lskXL.WorkBooks[1].WorkSheets[3].Cells[c, 1]:= IntToStr(g);  //номер помещения
-          //lskXL.WorkBooks[1].WorkSheets[3].Cells[c, 2]:= '';
-
-          c:=c+1;
-      end
-      else
-      begin
-        //дополнительный
-        //только если пусто в ELSK!!!
-        if (d.FieldByName('elsk2').AsString = '') then
-        begin
-          if debug then
-            Form_olap.cxm1.Lines.Add('5.'+intToStr(i));
-          {    ПОКА не выгружать счета капремонта - система пишет: INT008045 Отсутствует основание для создания лицевого счета для оплаты взноса на капитальный ремонт.
-
-          lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 1]:= IntToStr(g);  //номер помещения
-          lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 2]:= d.FieldByName('lsk2').AsString;
-          lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 4]:= d.FieldByName('tp2').AsString;
-          lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 5]:= d.FieldByName('status').AsString;
-
-          lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 6]:= d.FieldByName('k_fam').AsString;
-          lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 7]:= d.FieldByName('k_im').AsString;
-          lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 8]:= d.FieldByName('k_ot').AsString;
-
-          lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 16]:= d.FieldByName('opl').AsString;
-          lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 17]:= d.FieldByName('opl').AsString;
-          lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 18]:= d.FieldByName('opl').AsString;
-
-          lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 19]:= d.FieldByName('kpr').AsFloat;}
-          //c:=c+1;
-        end;
-      end;
-
-      i:=i+1;
-    end;
-
-    //Помещение
-    //только если пусто в ELSK!!!
-    //if (d.FieldByName('elsk').AsString = '') then
-    //begin
     if debug then
-     Form_olap.cxm1.Lines.Add('6');
-    // вкладка "Помещение"
-    lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 1]:= IntToStr(g);  //номер помещения
-    lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 2]:= d.FieldByName('adr').AsString;
-    lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 3]:= d.FieldByName('houseguid').AsString;
+      Form_olap.cxm1.Lines.Add('5.'+intToStr(i));
+      // вкладка "Основные сведения"
+      lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 1]:= IntToStr(g);  // номер лс
+      lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 2]:= d.FieldByName('lsk').AsString;
+      lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 3]:= d.FieldByName('serviceid').AsString;
+      lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 4]:= d.FieldByName('tp').AsString;
+      lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 5]:= d.FieldByName('status').AsString;
 
-    //lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 7]:= d.FieldByName('premiseGUID').AsString;
-    
-    // тип помещения
-    if (d.FieldByName('stat_cd').AsString = 'NLIV') then
-      lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 4]:= 'Нежилое помещение'
-    else
-      lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 4]:= 'Жилое помещение';
+      lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 7]:= d.FieldByName('k_fam').AsString;
+      lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 8]:= d.FieldByName('k_im').AsString;
+      lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 9]:= d.FieldByName('k_ot').AsString;
 
-    lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 5]:= d.FieldByName('kw').AsString;
-    lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 8]:= d.FieldByName('part').AsFloat;
-    //end;
+      lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 18]:= d.FieldByName('opl').AsString;
+      lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 19]:= d.FieldByName('opl').AsString;
+      lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 20]:= d.FieldByName('opl').AsString;
 
-    //if (d.FieldByName('elsk').AsString = '') then
-    //begin
-     a:=a+1;
-     g:=g+1;
-    //end;
+      lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 21]:= d.FieldByName('kpr').AsFloat;
 
+      if debug then
+       Form_olap.cxm1.Lines.Add('6');
+      // вкладка "Помещение"
+      lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 1]:= IntToStr(g);  //номер помещения
+      lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 2]:= d.FieldByName('adr').AsString;
+      lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 3]:= d.FieldByName('houseguid').AsString;
+
+      // тип помещения
+      if (d.FieldByName('stat_cd').AsString = 'NLIV') then
+        lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 4]:= 'Нежилое помещение'
+      else
+        lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 4]:= 'Жилое помещение';
+
+      lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 5]:= d.FieldByName('kw').AsString;
+      lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 8]:= d.FieldByName('part').AsFloat;
+
+      a:=a+1;
+      g:=g+1;
+      c:=c+1;
+    end;
 
     d.Next;
   end;
   d.EnableControls;
 
   //сохранить и закрыть обработанные файлы
-  lskXL.ActiveWorkBook.SaveAs(path+reu+'_'+lskFname);
+  lskXL.ActiveWorkBook.SaveAs(path+reu+suffix+'_'+lskFname);
   lskXL.ActiveWorkBook.Close;
 
-  houseXL.ActiveWorkBook.SaveAs(path+reu+'_'+houseFname);
+  houseXL.ActiveWorkBook.SaveAs(path+reu+suffix+'_'+houseFname);
   houseXL.ActiveWorkBook.Close;
 
   Form_olap.Button4.Visible:=False;

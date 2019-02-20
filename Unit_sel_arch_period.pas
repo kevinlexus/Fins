@@ -62,11 +62,13 @@ begin
   if mg_ ='999999' then
   begin
     Form_main.arch_mg_:='';  //текущий период
+    Form_main.sel_period:=Form_main.cur_mg_;
     Form_main.Panel1.Visible:=false;
   end
   else
   begin
     Form_main.arch_mg_:=mg_; //архивный период
+    Form_main.sel_period:=mg_;
     Form_main.Label1.Caption:='Архив, период: '+OD_mg.FieldByName('mg1').AsString;
     Form_main.Panel1.Visible:=true;
   end;

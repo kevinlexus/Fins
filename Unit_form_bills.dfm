@@ -1,11 +1,11 @@
 object Form_print_bills: TForm_print_bills
-  Left = 332
-  Top = 175
+  Left = 225
+  Top = 195
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1057#1095#1077#1090#1072' '#1085#1072' '#1086#1087#1083#1072#1090#1091' '#1091#1089#1083#1091#1075' '#1046#1050#1061
-  ClientHeight = 604
-  ClientWidth = 607
+  ClientHeight = 566
+  ClientWidth = 621
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -93,9 +93,10 @@ object Form_print_bills: TForm_print_bills
   TextHeight = 13
   object GroupBox1: TGroupBox
     Left = 0
-    Top = 300
-    Width = 393
+    Top = 318
+    Width = 621
     Height = 61
+    Align = alTop
     TabOrder = 3
     object Button1: TButton
       Left = 232
@@ -138,8 +139,9 @@ object Form_print_bills: TForm_print_bills
   object GroupBox2: TGroupBox
     Left = 0
     Top = 0
-    Width = 393
+    Width = 621
     Height = 105
+    Align = alTop
     TabOrder = 0
     object Label3: TLabel
       Left = 8
@@ -272,9 +274,10 @@ object Form_print_bills: TForm_print_bills
   end
   object GroupBox3: TGroupBox
     Left = 0
-    Top = 107
-    Width = 393
-    Height = 150
+    Top = 105
+    Width = 621
+    Height = 176
+    Align = alTop
     TabOrder = 2
     object Label5: TLabel
       Left = 8
@@ -328,6 +331,19 @@ object Form_print_bills: TForm_print_bills
       Width = 99
       Height = 13
       Caption = #1055#1086#1082#1072#1079#1072#1090#1100' '#1089#1095#1077#1090#1072':'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label14: TLabel
+      Left = 56
+      Top = 152
+      Width = 50
+      Height = 13
+      Caption = #1064#1072#1073#1083#1086#1085':'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -451,7 +467,6 @@ object Form_print_bills: TForm_print_bills
     object cbb1: TcxLookupComboBox
       Left = 24
       Top = 56
-      Enabled = False
       Properties.KeyFieldNames = 'REU'
       Properties.ListColumns = <
         item
@@ -491,6 +506,19 @@ object Form_print_bills: TForm_print_bills
       TabOrder = 11
       Width = 161
     end
+    object cxLookupComboBox1: TcxLookupComboBox
+      Left = 112
+      Top = 147
+      Properties.KeyFieldNames = 'FNAME_SCH'
+      Properties.ListColumns = <
+        item
+          FieldName = 'FNAME_SCH'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = DS_spr_services
+      TabOrder = 12
+      Width = 265
+    end
   end
   object DBLookupComboboxEh5: TDBLookupComboboxEh
     Left = 96
@@ -507,9 +535,10 @@ object Form_print_bills: TForm_print_bills
   end
   object GroupBox4: TGroupBox
     Left = 0
-    Top = 260
-    Width = 393
+    Top = 281
+    Width = 621
     Height = 37
+    Align = alTop
     TabOrder = 4
     object Edit2: TEdit
       Left = 8
@@ -1312,14 +1341,7 @@ object Form_print_bills: TForm_print_bills
       '                    p_mg => :mg_,'
       '                    p_var => :var_,'
       '                    p_rfcur => :p_rfcur);'
-      'end;'
-      ''
-      
-        '/*select t.*, sv.fname_sch from scott.t_org t, scott.t_org_tp tp' +
-        ', scott.spr_services sv'
-      'where tp.id=t.fk_orgtp and tp.cd='#39#1056#1050#1062#39' '
-      'and :mg_ between sv.mg and sv.mg1 and sv.fk_sch_type=:var_'
-      '*/')
+      'end;')
     Optimize = False
     Variables.Data = {
       0300000003000000040000003A4D475F05000000000000000000000005000000
@@ -2307,7 +2329,7 @@ object Form_print_bills: TForm_print_bills
     SQL.Strings = (
       'begin'
       '  -- Call the procedure'
-      '  scott.rep_bills_compound.main(p_sel_obj => :p_sel_obj,'
+      '  scott.rep_bills_compound2.main(p_sel_obj => :p_sel_obj,'
       '                          p_reu => :p_reu,'
       '                          p_kul => :p_kul,'
       '                          p_nd => :p_nd,'
@@ -2904,5 +2926,25 @@ object Form_print_bills: TForm_print_bills
     DataSet = OD_uk
     Left = 432
     Top = 344
+  end
+  object OD_spr_services: TOracleDataSet
+    SQL.Strings = (
+      'select t.* from scott.spr_services t '
+      'where :p_mg between t.mg and t.mg1'
+      'order by t.mg')
+    Optimize = False
+    Variables.Data = {0300000001000000050000003A505F4D47050000000000000000000000}
+    QBEDefinition.QBEFieldDefs = {
+      040000000500000009000000464E414D455F534348010000000000020000004D
+      47010000000000030000004D47310100000000000B000000464B5F5343485F54
+      595045010000000000020000005450010000000000}
+    Session = DataModule1.OracleSession1
+    Left = 400
+    Top = 384
+  end
+  object DS_spr_services: TDataSource
+    DataSet = OD_spr_services
+    Left = 432
+    Top = 384
   end
 end

@@ -380,11 +380,18 @@ type
     procedure ToolButton3Click(Sender: TObject);
   private
   public
+    // выбранный период при переключении в архив
+    sel_period: string;
+    // выбранный период архива
+    arch_mg_: string;
+    // текущий период
+    cur_mg_: string;
+
     exepath_: string;
     default_reu_: string;
     strSearch_: string;
-    arch_mg_: string;
-    cur_mg_: string;
+
+
     User: string;
     Pass: string;
     isloadedspr_: Integer;
@@ -1292,7 +1299,6 @@ end;
 
 procedure TForm_Main.N83Click(Sender: TObject);
 begin
-  
   StartTreeObj;
   if FF('Form_olap', 0) = 0 then
     Application.CreateForm(TForm_olap, Form_olap);
