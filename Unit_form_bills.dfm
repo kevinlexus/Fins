@@ -2929,8 +2929,8 @@ object Form_print_bills: TForm_print_bills
   end
   object OD_spr_services: TOracleDataSet
     SQL.Strings = (
-      'select t.* from scott.spr_services t '
-      'where :p_mg between t.mg and t.mg1'
+      'select t.* from scott.spr_services_kmp t '
+      'where :p_mg between t.mg and t.mg1 and t.fk_sch_type=0'
       'order by t.mg')
     Optimize = False
     Variables.Data = {0300000001000000050000003A505F4D47050000000000000000000000}

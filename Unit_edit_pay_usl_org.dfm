@@ -1,6 +1,6 @@
 object Form_edit_pay_usl_org: TForm_edit_pay_usl_org
-  Left = 456
-  Top = 476
+  Left = 435
+  Top = 154
   Width = 496
   Height = 451
   Caption = #1056#1072#1089#1087#1088#1077#1076#1077#1083#1077#1085#1080#1077' '#1086#1087#1083#1072#1090#1099
@@ -89,7 +89,7 @@ object Form_edit_pay_usl_org: TForm_edit_pay_usl_org
   TextHeight = 13
   object GroupBox1: TGroupBox
     Left = 0
-    Top = 364
+    Top = 363
     Width = 480
     Height = 49
     Align = alBottom
@@ -118,17 +118,17 @@ object Form_edit_pay_usl_org: TForm_edit_pay_usl_org
     Left = 0
     Top = 0
     Width = 480
-    Height = 340
+    Height = 339
     ControlType.Strings = (
       'name_org;CustomEdit;wwDBLookupCombo1;F'
       'name_usl;CustomEdit;wwDBLookupCombo2;F'
       'PRIZNAK;CheckBox;1;0')
     Selected.Strings = (
-      'FK_DISTR'#9'8'#9#1058#1080#1087#9'T'
-      'PRIZNAK'#9'10'#9#1054#1087#1083#1072#1090#1072'('#1074#1082#1083'.)~-'#1055#1077#1085#1103' ('#1074#1099#1082#1083'.)'#9'F'
-      'SUMMA'#9'13'#9#1057#1091#1084#1084#1072#9'F'
-      'name_org'#9'19'#9#1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103#9'F'
-      'name_usl'#9'20'#9#1059#1089#1083#1091#1075#1072#9'F')
+      'FK_DISTR'#9'6'#9#1058#1080#1087#9'T'
+      'PRIZNAK'#9'9'#9#1054#1087#1083#1072#1090#1072'('#1074#1082#1083'.)~-'#1055#1077#1085#1103' ('#1074#1099#1082#1083'.)'#9'F'
+      'SUMMA'#9'12'#9#1057#1091#1084#1084#1072#9'F'
+      'name_org'#9'20'#9#1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103#9'F'
+      'name_usl'#9'23'#9#1059#1089#1083#1091#1075#1072#9'F')
     IniAttributes.Delimiter = ';;'
     TitleColor = clBtnFace
     FixedCols = 0
@@ -187,7 +187,7 @@ object Form_edit_pay_usl_org: TForm_edit_pay_usl_org
   end
   object Panel1: TPanel
     Left = 0
-    Top = 340
+    Top = 339
     Width = 480
     Height = 24
     Align = alBottom
@@ -380,8 +380,9 @@ object Form_edit_pay_usl_org: TForm_edit_pay_usl_org
       Size = 8
     end
     object OD_kwtp_dayOPER: TStringField
+      DisplayWidth = 3
       FieldName = 'OPER'
-      Size = 2
+      Size = 3
     end
     object OD_kwtp_dayDOPL: TStringField
       FieldName = 'DOPL'

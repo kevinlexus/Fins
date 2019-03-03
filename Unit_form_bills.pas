@@ -1262,7 +1262,7 @@ begin
   OD_spr_services.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
   OD_spr_services.Active:=False;
   OD_spr_services.Active:=True;
-  cxLookupComboBox1.EditValue:=OD_spr_services.FieldByName('RN').AsString;
+  cxLookupComboBox1.EditValue:=OD_spr_services.FieldByName('FNAME_SCH').AsString;
 end;
 
 procedure TForm_print_bills.OD_ls_cntBeforeOpen(DataSet: TDataSet);
