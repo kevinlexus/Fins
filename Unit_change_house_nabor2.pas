@@ -313,7 +313,7 @@ begin
     wwDBEdit1.Visible:=true;
     Label1.Visible:=true;
   end
-  else if (st_ = 2) or (st_ = 3) then
+  else if (st_ = 2) or (st_ = 3) or (st_ = 4) then
   begin
     //норматив и коэфф
     wwDBEdit3.Visible:=true;

@@ -255,8 +255,6 @@ type
     DS_c_status_pr2: TDataSource;
     wwDBLookupCombo2: TwwDBLookupCombo;
     wwDBLookupCombo3: TwwDBLookupCombo;
-    OD_c_statesFK_TP: TFloatField;
-    OD_c_states2FK_TP: TFloatField;
     Label41: TLabel;
     DBEdit14: TDBEdit;
     OD_c_statesLK_NAME: TStringField;

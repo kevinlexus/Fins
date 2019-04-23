@@ -1,6 +1,6 @@
 object Form_kart_pr: TForm_kart_pr
-  Left = 1053
-  Top = 382
+  Left = 1114
+  Top = 262
   Width = 667
   Height = 448
   BorderIcons = [biSystemMenu, biMinimize]
@@ -4162,13 +4162,11 @@ object Form_kart_pr: TForm_kart_pr
   end
   object OD_c_states: TOracleDataSet
     SQL.Strings = (
-      
-        'select t.fk_tp, t.fk_kart_pr, t.fk_status, t.dt1, t.dt2, t.rowid' +
-        ' from '
-      'scott.c_states_pr t, scott.u_list u'
-      'where  t.fk_tp=u.id and '
+      'select t.fk_kart_pr, t.fk_status, t.dt1, t.dt2, t.rowid from '
+      'scott.c_states_pr t, scott.u_list u, scott.c_status_pr p'
+      'where  p.fk_tp=u.id and '
       't.fk_kart_pr = :fk_kart_pr'
-      'and u.cd='#39'PROP'#39
+      'and u.cd='#39'PROP'#39' and t.fk_status=p.id'
       'order by nvl(t.dt1, to_date('#39'01011900'#39','#39'DDMMYYYY'#39'))'
       ''
       
@@ -4216,10 +4214,6 @@ object Form_kart_pr: TForm_kart_pr
     object OD_c_statesFK_KART_PR: TFloatField
       FieldName = 'FK_KART_PR'
     end
-    object OD_c_statesFK_TP: TFloatField
-      DefaultExpression = '(select u.id from scott.u_list u where u.cd='#39'PROP'#39')'
-      FieldName = 'FK_TP'
-    end
     object OD_c_statesLK_NAME: TStringField
       FieldKind = fkLookup
       FieldName = 'LK_NAME'
@@ -4238,11 +4232,11 @@ object Form_kart_pr: TForm_kart_pr
   object OD_c_states2: TOracleDataSet
     SQL.Strings = (
       
-        'select t.fk_tp, t.fk_kart_pr, t.fk_status, t.dt1, t.dt2, t.rowid' +
-        ' from scott.c_states_pr t, scott.u_list u'
-      'where t.fk_tp=u.id and '
+        'select t.fk_kart_pr, t.fk_status, t.dt1, t.dt2, t.rowid from sco' +
+        'tt.c_states_pr t, scott.u_list u, scott.c_status_pr p'
+      'where p.fk_tp=u.id and '
       't.fk_kart_pr = :fk_kart_pr'
-      'and u.cd='#39'PROP_REG'#39
+      'and u.cd='#39'PROP_REG'#39' and t.fk_status=p.id'
       'order by nvl(t.dt1, to_date('#39'01011900'#39','#39'DDMMYYYY'#39'))'
       ''
       
@@ -4289,10 +4283,6 @@ object Form_kart_pr: TForm_kart_pr
     end
     object OD_c_states2FK_KART_PR: TFloatField
       FieldName = 'FK_KART_PR'
-    end
-    object OD_c_states2FK_TP: TFloatField
-      DefaultExpression = '(select u.id from scott.u_list u where u.cd='#39'PROP_REG'#39')'
-      FieldName = 'FK_TP'
     end
     object OD_c_states2LK_NAME: TStringField
       FieldKind = fkLookup
@@ -4377,17 +4367,17 @@ object Form_kart_pr: TForm_kart_pr
       'from scott.c_kart_pr c, scott.relations r, '
       
         '(select t.fk_kart_pr, t.dt1, t.dt2 from  scott.c_states_pr t, sc' +
-        'ott.u_list u, scott.params p'
+        'ott.c_status_pr s, scott.u_list u, scott.params p'
       
         'where u.cd='#39'PROP_REG'#39' and last_day(to_date(p.period||'#39'01'#39','#39'YYYYM' +
         'MDD'#39')) --'#1077#1089#1083#1080' '#1074#1088#1077#1084#1077#1085#1085#1086' '#1079#1072#1088#1077#1075', '#1090#1086' '#1087#1086#1089#1090#1072#1074#1080#1090#1100' '#1076#1072#1090#1099' '#1074#1084#1077#1089#1090#1086' '#1087#1088#1086#1087#1080#1089#1082#1080' ' +
         #1080' '#1074#1099#1087#1080#1089#1082#1080' - '#1088#1077#1075#1080#1089#1090#1088#1072#1094#1080#1080' '#1080' '#1089#1085#1103#1090#1080#1103
       ' between nvl(t.dt1(+), to_date('#39'01011900'#39','#39'DDMMYYYY'#39'))'
       ' and nvl(t.dt2(+), to_date('#39'01012900'#39','#39'DDMMYYYY'#39'))'
-      ' and t.fk_tp=u.id'
+      ' and t.fk_status=s.id and s.fk_tp=u.id'
       ') a'
       'where '
-      'c.id=a.fk_kart_pr(+) and '
+      'c.id=a.fk_kart_pr(+) and'
       '(:var_=0 or :var_=1 and c.id=:id or :var_=2 and c.id<>:id) and '
       'c.relat_id=r.id(+) and '
       'c.status <> 4 --'#1082#1088#1086#1084#1077' '#1074#1099#1073#1099#1074#1096#1080#1093

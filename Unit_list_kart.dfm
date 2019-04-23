@@ -1,6 +1,6 @@
 object Form_list_kart: TForm_list_kart
-  Left = 340
-  Top = 327
+  Left = 670
+  Top = 218
   Width = 1280
   Height = 607
   Caption = #1050#1072#1088#1090#1086#1095#1082#1080
@@ -109,8 +109,6 @@ object Form_list_kart: TForm_list_kart
       'BTN'#9'2'#9' '
       'NAME_REU'#9'8'#9#1054#1088#1075'.'
       'LSK'#9'8'#9#1051'/C'
-      'K_LSK_ID'#9'5'#9'KLSK '#1050#1074#1072#1088#1090#1080#1088#1099
-      'HOUSE_ID'#9'14'#9'HOUSE_ID '#1044#1086#1084#1072
       'DOG_NUM'#9'10'#9#8470' '#1076#1086#1075#1086#1074#1086#1088#1072
       'KUL'#9'6'#9#1050#1086#1076' '#1091#1083'.'
       'NAME'#9'19'#9#1059#1083#1080#1094#1072
@@ -125,6 +123,8 @@ object Form_list_kart: TForm_list_kart
       'KPR_WR'#9'8'#9#1042#1088'.'#1079#1072#1088#1077#1075'.'
       'KPR_WRP'#9'8'#9#1042#1088'.'#1087#1088#1086#1078'.'
       'OPL'#9'7'#9#1054#1073#1097'.'#1087#1083'.'
+      'K_LSK_ID'#9'5'#9'KLSK '#1050#1074#1072#1088#1090#1080#1088#1099
+      'HOUSE_ID'#9'14'#9'HOUSE_ID '#1044#1086#1084#1072
       'MHW'#9'8'#9#1050#1091#1073'.'#1061'.'#1042'.'
       'MGW'#9'8'#9#1050#1091#1073'.'#1043'.'#1042'.'
       'MEL'#9'11'#9#1050#1074#1090'.'#1069#1083'.'#1101#1085'.'
@@ -323,7 +323,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 24
           Height = 37
-          Hint = 'Move to first record'
+          Hint = #1050' '#1087#1077#1088#1074#1086#1081' '#1079#1072#1087#1080#1089#1080
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -340,7 +340,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 24
           Height = 37
-          Hint = 'Move backward 10 records'
+          Hint = #1053#1072#1079#1072#1076' '#1085#1072' 10 '#1079#1072#1087#1080#1089#1077#1081
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -357,7 +357,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 24
           Height = 37
-          Hint = 'Move to prior record'
+          Hint = #1055#1088#1077#1076#1099#1076#1091#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -374,7 +374,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 24
           Height = 37
-          Hint = 'Move to next record'
+          Hint = #1057#1083#1077#1076#1091#1102#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -391,7 +391,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 24
           Height = 37
-          Hint = 'Move forward 10 records'
+          Hint = #1042#1087#1077#1088#1077#1076' '#1085#1072' 10 '#1079#1072#1087#1080#1089#1077#1081
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -408,7 +408,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 24
           Height = 37
-          Hint = 'Move to last record'
+          Hint = #1055#1077#1088#1077#1081#1090#1080' '#1082' '#1087#1086#1089#1083#1077#1076#1085#1077#1081' '#1079#1072#1087#1080#1089#1080
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -425,7 +425,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 23
           Height = 37
-          Hint = 'Insert new record'
+          Hint = #1044#1086#1073#1072#1074#1080#1090#1100' '#1085#1086#1074#1091#1102' '#1079#1072#1087#1080#1089#1100
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -442,7 +442,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 23
           Height = 37
-          Hint = 'Delete current record'
+          Hint = #1059#1076#1072#1083#1080#1090#1100' '#1090#1077#1082#1091#1097#1091#1102' '#1079#1072#1087#1080#1089#1100
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -460,7 +460,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 23
           Height = 37
-          Hint = 'Edit current record'
+          Hint = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1090#1077#1082#1091#1097#1091#1102' '#1079#1072#1087#1080#1089#1100
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -477,7 +477,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 23
           Height = 37
-          Hint = 'Post changes of current record'
+          Hint = #1054#1090#1087#1088#1072#1074#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103' '#1074' '#1073#1072#1079#1091
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -495,7 +495,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 23
           Height = 37
-          Hint = 'Cancel changes made to current record'
+          Hint = #1054#1090#1084#1077#1085#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103' '#1090#1077#1082#1091#1097#1077#1081' '#1079#1072#1087#1080#1089#1080
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -513,7 +513,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 23
           Height = 37
-          Hint = 'Refresh the contents of the dataset'
+          Hint = #1054#1073#1085#1086#1074#1080#1090#1100' '#1079#1072#1087#1080#1089#1080
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -530,7 +530,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 23
           Height = 37
-          Hint = 'Bookmark current record'
+          Hint = #1055#1086#1089#1090#1072#1074#1080#1090#1100' '#1079#1072#1082#1083#1072#1076#1082#1091' '#1085#1072' '#1090#1077#1082#1091#1097#1077#1081' '#1079#1072#1087#1080#1089#1080
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -546,7 +546,7 @@ object Form_list_kart: TForm_list_kart
           Top = 0
           Width = 23
           Height = 37
-          Hint = 'Go back to saved bookmark'
+          Hint = #1055#1077#1088#1077#1081#1090#1080' '#1082' '#1089#1086#1093#1088#1072#1085#1105#1085#1085#1086#1081' '#1079#1072#1082#1083#1072#1076#1082#1077
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -1379,17 +1379,6 @@ object Form_list_kart: TForm_list_kart
       Required = True
       Size = 8
     end
-    object OD_list_kartK_LSK_ID: TFloatField
-      DisplayLabel = 'KLSK '#1050#1074#1072#1088#1090#1080#1088#1099
-      DisplayWidth = 5
-      FieldName = 'K_LSK_ID'
-    end
-    object OD_list_kartHOUSE_ID: TFloatField
-      DisplayLabel = 'HOUSE_ID '#1044#1086#1084#1072
-      DisplayWidth = 14
-      FieldName = 'HOUSE_ID'
-      Required = True
-    end
     object LK: TStringField
       DisplayLabel = #8470' '#1076#1086#1075#1086#1074#1086#1088#1072
       DisplayWidth = 10
@@ -1479,6 +1468,17 @@ object Form_list_kart: TForm_list_kart
       DisplayLabel = #1054#1073#1097'.'#1087#1083'.'
       DisplayWidth = 7
       FieldName = 'OPL'
+    end
+    object OD_list_kartK_LSK_ID: TFloatField
+      DisplayLabel = 'KLSK '#1050#1074#1072#1088#1090#1080#1088#1099
+      DisplayWidth = 5
+      FieldName = 'K_LSK_ID'
+    end
+    object OD_list_kartHOUSE_ID: TFloatField
+      DisplayLabel = 'HOUSE_ID '#1044#1086#1084#1072
+      DisplayWidth = 14
+      FieldName = 'HOUSE_ID'
+      Required = True
     end
     object OD_list_kartMHW: TFloatField
       DisplayLabel = #1050#1091#1073'.'#1061'.'#1042'.'
@@ -1897,7 +1897,7 @@ object Form_list_kart: TForm_list_kart
       0300000001000000040000003A4C534B05000000090000002020202020202020
       0000000000}
     QBEDefinition.QBEFieldDefs = {
-      0400000061000000030000004C534B010000000000030000004B554C01000000
+      0400000062000000030000004C534B010000000000030000004B554C01000000
       0000020000004E44010000000000020000004B57010000000000030000004649
       4F010000000000030000004B5052010000000000060000004B50525F57520100
       00000000060000004B50525F4F54010000000000070000004B50525F43454D01
@@ -1944,7 +1944,7 @@ object Form_list_kart: TForm_list_kart
       000000454E545201000000000003000000504F54010000000000030000004D4F
       5401000000000004000000454C534B0100000000000A000000504152454E545F
       4C534B0100000000000B000000464B5F4B4C534B5F4F424A0100000000000500
-      000044545F4352010000000000}
+      000044545F43520100000000000400000041435054010000000000}
     Master = OD_list_kart
     MasterFields = 'lsk'
     Session = DataModule1.OracleSession1
@@ -2156,7 +2156,7 @@ object Form_list_kart: TForm_list_kart
     Optimize = False
     Variables.Data = {0300000001000000040000003A4C534B610000000000000000000000}
     QBEDefinition.QBEFieldDefs = {
-      0400000034000000020000004944010000000000030000004C534B0100000000
+      0400000035000000020000004944010000000000030000004C534B0100000000
       000300000046494F010000000000060000005354415455530100000000000700
       00004441545F524F4701000000000003000000504F4C01000000000003000000
       444F4B01000000000005000000444F4B5F4301000000000005000000444F4B5F
@@ -2183,7 +2183,8 @@ object Form_list_kart: TForm_list_kart
       000000464B5F4D494C49540100000000000D000000464B5F4D494C49545F5245
       474E0100000000000B0000005354415455535F44415442010000000000030000
       00445431010000000000030000004454320100000000000A000000464B5F4445
-      425F4F524701000000000009000000505249565F50524F43010000000000}
+      425F4F524701000000000009000000505249565F50524F430100000000000400
+      000041435054010000000000}
     Master = OD_list_kart
     MasterFields = 'LSK'
     DetailFields = 'LSK'

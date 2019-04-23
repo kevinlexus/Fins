@@ -1,6 +1,6 @@
 object Form_changes_houses: TForm_changes_houses
-  Left = 485
-  Top = 140
+  Left = 442
+  Top = 227
   Width = 863
   Height = 508
   Caption = #1055#1077#1088#1077#1088#1072#1089#1095#1077#1090#1099' '#1087#1086' '#1076#1086#1084#1072#1084' - '#1083#1080#1094#1077#1074#1099#1084
@@ -93,12 +93,12 @@ object Form_changes_houses: TForm_changes_houses
     Left = 0
     Top = 0
     Width = 847
-    Height = 470
+    Height = 469
     Align = alClient
     TabOrder = 0
     Properties.ActivePage = cxTabSheet
     Properties.CustomButtons.Buttons = <>
-    ClientRectBottom = 466
+    ClientRectBottom = 465
     ClientRectLeft = 4
     ClientRectRight = 843
     ClientRectTop = 24
@@ -107,7 +107,7 @@ object Form_changes_houses: TForm_changes_houses
       ImageIndex = 0
       object GroupBox1: TGroupBox
         Left = 0
-        Top = 313
+        Top = 312
         Width = 839
         Height = 129
         Align = alBottom
@@ -481,14 +481,14 @@ object Form_changes_houses: TForm_changes_houses
         Left = 0
         Top = 0
         Width = 839
-        Height = 313
+        Height = 312
         Align = alClient
         TabOrder = 1
         object DBGridEh1: TDBGridEh
           Left = 1
           Top = 1
           Width = 837
-          Height = 286
+          Height = 285
           Align = alClient
           DataSource = DS_list_choices_changes
           Flat = False
@@ -574,7 +574,7 @@ object Form_changes_houses: TForm_changes_houses
         end
         object wdbnvgtr1: TwwDBNavigator
           Left = 1
-          Top = 287
+          Top = 286
           Width = 837
           Height = 25
           DataSource = DS_list_choices_changes
@@ -1207,7 +1207,7 @@ object Form_changes_houses: TForm_changes_houses
     Top = 56
   end
   object frxReport1: TfrxReport
-    Version = '0.0'
+    Version = '5.1.9'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1243,6 +1243,7 @@ object Form_changes_houses: TForm_changes_houses
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
       object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
         Height = 68.031540000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
@@ -1250,7 +1251,6 @@ object Form_changes_houses: TForm_changes_houses
           Left = 3.779530000000000000
           Width = 449.764070000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -1267,7 +1267,6 @@ object Form_changes_houses: TForm_changes_houses
           Top = 18.897650000000000000
           Width = 634.961040000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
@@ -1282,7 +1281,6 @@ object Form_changes_houses: TForm_changes_houses
           Top = 45.354360000000000000
           Width = 207.874150000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
@@ -1294,6 +1292,7 @@ object Form_changes_houses: TForm_changes_houses
         end
       end
       object MasterData1: TfrxMasterData
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 219.212740000000000000
         Width = 718.110700000000000000
@@ -1304,7 +1303,6 @@ object Form_changes_houses: TForm_changes_houses
           Left = 3.779530000000000000
           Width = 64.252010000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
@@ -1318,7 +1316,6 @@ object Form_changes_houses: TForm_changes_houses
           Left = 71.811070000000000000
           Width = 68.031540000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
@@ -1332,7 +1329,6 @@ object Form_changes_houses: TForm_changes_houses
           Left = 143.622140000000000000
           Width = 162.519790000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
@@ -1346,7 +1342,6 @@ object Form_changes_houses: TForm_changes_houses
           Left = 309.921460000000000000
           Width = 120.944960000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
@@ -1360,7 +1355,6 @@ object Form_changes_houses: TForm_changes_houses
           Left = 434.645950000000000000
           Width = 56.692950000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -1377,7 +1371,6 @@ object Form_changes_houses: TForm_changes_houses
           Left = 495.118430000000000000
           Width = 56.692950000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
@@ -1392,7 +1385,6 @@ object Form_changes_houses: TForm_changes_houses
           Left = 555.590910000000000000
           Width = 75.590600000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -1407,20 +1399,19 @@ object Form_changes_houses: TForm_changes_houses
         end
       end
       object Header1: TfrxHeader
+        FillType = ftBrush
         Height = 49.133890000000000000
         Top = 147.401670000000000000
         Width = 718.110700000000000000
         object Shape1: TfrxShapeView
           Width = 638.740570000000000000
           Height = 41.574830000000000000
-          ShowHint = False
         end
         object Memo12: TfrxMemoView
           Left = 3.779530000000000000
           Top = 3.779529999999994000
           Width = 64.252010000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
@@ -1435,7 +1426,6 @@ object Form_changes_houses: TForm_changes_houses
           Top = 3.779529999999994000
           Width = 68.031540000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
@@ -1450,7 +1440,6 @@ object Form_changes_houses: TForm_changes_houses
           Top = 3.779529999999994000
           Width = 162.519790000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
@@ -1466,7 +1455,6 @@ object Form_changes_houses: TForm_changes_houses
           Top = 3.779529999999994000
           Width = 120.944960000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
@@ -1482,7 +1470,6 @@ object Form_changes_houses: TForm_changes_houses
           Top = 3.779529999999994000
           Width = 56.692950000000000000
           Height = 34.015770000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
@@ -1499,7 +1486,6 @@ object Form_changes_houses: TForm_changes_houses
           Top = 3.779529999999994000
           Width = 56.692950000000000000
           Height = 34.015770000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
@@ -1516,7 +1502,6 @@ object Form_changes_houses: TForm_changes_houses
           Top = 3.779529999999994000
           Width = 75.590600000000000000
           Height = 34.015770000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
@@ -1529,6 +1514,7 @@ object Form_changes_houses: TForm_changes_houses
         end
       end
       object Footer1: TfrxFooter
+        FillType = ftBrush
         Height = 30.236240000000000000
         Top = 264.567100000000000000
         Width = 718.110700000000000000
@@ -1537,7 +1523,6 @@ object Form_changes_houses: TForm_changes_houses
           Top = 7.559059999999988000
           Width = 56.692950000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
@@ -1552,7 +1537,6 @@ object Form_changes_houses: TForm_changes_houses
           Top = 7.559059999999988000
           Width = 75.590600000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.FormatStr = '%2.2n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
@@ -1567,7 +1551,7 @@ object Form_changes_houses: TForm_changes_houses
         end
         object Line2: TfrxLineView
           Width = 638.740570000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
       end

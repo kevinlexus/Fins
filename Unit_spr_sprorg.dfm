@@ -1,6 +1,6 @@
 object Form_spr_sprorg: TForm_spr_sprorg
-  Left = 286
-  Top = 202
+  Left = 430
+  Top = 299
   Width = 1311
   Height = 720
   BorderIcons = [biSystemMenu, biMinimize]
@@ -203,7 +203,6 @@ object Form_spr_sprorg: TForm_spr_sprorg
       end
       object cxGrid1DBTableView1REU: TcxGridDBColumn
         DataBinding.FieldName = 'REU'
-        Options.Editing = False
         Width = 33
       end
       object cxGrid1DBTableView1NAME: TcxGridDBColumn
@@ -646,8 +645,8 @@ object Form_spr_sprorg: TForm_spr_sprorg
   end
   object DS_sprorg: TwwDataSource
     DataSet = OD_sprorg
-    Left = 488
-    Top = 152
+    Left = 56
+    Top = 56
   end
   object OD_org_tp: TOracleDataSet
     SQL.Strings = (
@@ -663,13 +662,13 @@ object Form_spr_sprorg: TForm_spr_sprorg
       0000}
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Left = 328
-    Top = 96
+    Left = 272
+    Top = 144
   end
   object DS_org_tp: TwwDataSource
     DataSet = OD_org_tp
-    Left = 360
-    Top = 96
+    Left = 304
+    Top = 144
   end
   object OD_org_tp2: TOracleDataSet
     SQL.Strings = (
@@ -784,9 +783,11 @@ object Form_spr_sprorg: TForm_spr_sprorg
     RefreshOptions = [roAfterInsert, roAfterUpdate]
     Session = DataModule1.OracleSession1
     Active = True
+    BeforePost = OD_sprorgBeforePost
+    AfterPost = OD_sprorgAfterPost
     AfterScroll = OD_sprorgAfterScroll
-    Left = 456
-    Top = 152
+    Left = 24
+    Top = 56
     object OD_sprorgLVL: TStringField
       DisplayLabel = #1059#1088#1086#1074#1077#1085#1100
       DisplayWidth = 7
@@ -1114,14 +1115,16 @@ object Form_spr_sprorg: TForm_spr_sprorg
       000049535F564F4C01000000000005000000464B5F54500100000000000B0000
       00464B5F42494C4C5F5641520100000000000D0000004652435F4745545F5052
       4943450100000000000800000042494C4C5F414747010000000000}
+    Master = OD_sprorg
+    MasterFields = 'FK_BILL_VAR'
     Session = DataModule1.OracleSession1
-    Left = 456
-    Top = 96
+    Left = 272
+    Top = 280
   end
   object DS_usl_bills: TDataSource
     DataSet = OD_usl_bills
-    Left = 488
-    Top = 96
+    Left = 304
+    Top = 280
   end
   object OD_usl_round: TOracleDataSet
     SQL.Strings = (
@@ -1186,8 +1189,9 @@ object Form_spr_sprorg: TForm_spr_sprorg
       4E50500100000000000A000000484944455F5052494345010000000000080000
       00484944455F564F4C01000000000008000000484944455F524F570100000000
       00}
+    Master = OD_sprorg
+    MasterFields = 'FK_BILL_VAR'
     Session = DataModule1.OracleSession1
-    Active = True
     Left = 856
     Top = 560
   end

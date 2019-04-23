@@ -10,6 +10,7 @@ object Form_edit_pay_usl_org: TForm_edit_pay_usl_org
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  FormStyle = fsMDIChild
   Icon.Data = {
     0000010001002020080000000000A80800001600000028000000200000004000
     0000010008000000000000040000000000000000000000000000000000000000
@@ -83,6 +84,7 @@ object Form_edit_pay_usl_org: TForm_edit_pay_usl_org
     000000000000000000000000000000000000000000000000000080000001}
   OldCreateOrder = False
   Position = poMainFormCenter
+  Visible = True
   OnClose = FormClose
   OnCreate = FormCreate
   PixelsPerInch = 96

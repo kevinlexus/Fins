@@ -1,6 +1,6 @@
 object Form_spr_redirect: TForm_spr_redirect
-  Left = 427
-  Top = 207
+  Left = 850
+  Top = 312
   Width = 784
   Height = 657
   Caption = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082' '#1087#1088#1072#1074#1086#1087#1088#1080#1077#1084#1085#1080#1082#1086#1074
@@ -91,7 +91,7 @@ object Form_spr_redirect: TForm_spr_redirect
   TextHeight = 13
   object grp1: TGroupBox
     Left = 0
-    Top = 570
+    Top = 569
     Width = 768
     Height = 49
     Align = alBottom
@@ -110,13 +110,13 @@ object Form_spr_redirect: TForm_spr_redirect
     Left = 0
     Top = 0
     Width = 768
-    Height = 570
+    Height = 569
     Align = alClient
     TabOrder = 1
-    Properties.ActivePage = cxTabSheet2
+    Properties.ActivePage = cxTabSheet1
     Properties.CustomButtons.Buttons = <>
     OnPageChanging = cxpgcntrl1PageChanging
-    ClientRectBottom = 566
+    ClientRectBottom = 565
     ClientRectLeft = 4
     ClientRectRight = 764
     ClientRectTop = 24
@@ -127,7 +127,7 @@ object Form_spr_redirect: TForm_spr_redirect
         Left = 0
         Top = 105
         Width = 760
-        Height = 437
+        Height = 436
         Align = alClient
         TabOrder = 0
         object cxGrid1DBTableView1: TcxGridDBTableView
@@ -258,7 +258,7 @@ object Form_spr_redirect: TForm_spr_redirect
         Left = 0
         Top = 105
         Width = 760
-        Height = 437
+        Height = 436
         Align = alClient
         TabOrder = 0
         object cxGridDBTableView1: TcxGridDBTableView
@@ -347,11 +347,11 @@ object Form_spr_redirect: TForm_spr_redirect
     Variables.Data = {0300000001000000070000003A505F50414745030000000000000000000000}
     OracleDictionary.UseMessageTable = True
     QBEDefinition.QBEFieldDefs = {
-      0400000008000000030000005245550100000000000A000000464B5F55534C5F
+      0400000009000000030000005245550100000000000A000000464B5F55534C5F
       5352430100000000000A000000464B5F55534C5F4453540100000000000A0000
       00464B5F4F52475F5352430100000000000A000000464B5F4F52475F44535401
       0000000000020000005450010000000000030000004D47310100000000000300
-      00004D4732010000000000}
+      00004D4732010000000000020000004944010000000000}
     UpdatingTable = 'scott.REDIR_PAY'
     CommitOnPost = False
     Session = DataModule1.OracleSession1

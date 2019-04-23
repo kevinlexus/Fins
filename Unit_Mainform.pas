@@ -1718,7 +1718,8 @@ begin
         OD_rep5.SetVariable('var_', 0);
         OD_rep5.Active := True;
         frxReport_base.LoadFromFile(Form_main.exepath_ + '\спр_пасп_уголь.fr3', True);
-        frxReport_base.Variables['vc1_'] := DataModule1.OraclePackage1.CallStringFunction('scott.UTILS.getS_str_param', ['REP_PREP_VC']);
+        frxReport_base.Variables['vc1_'] :=
+          DataModule1.OraclePackage1.CallStringFunction('scott.UTILS.getS_str_param', ['REP_PREP_VC']);
         frxReport_base.PrepareReport(true);
         frxReport_base.ShowPreparedReport;
         OD_rep2.Active := false;

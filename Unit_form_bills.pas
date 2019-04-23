@@ -248,7 +248,8 @@ type
     procedure old_report(tp_, pen_last_month_:Integer; repVar:String);
     procedure fillUk();
     function getStrUk(): String;
-  private
+    procedure selAllUk();
+private
     sel_obj_: Integer;
     cnt_sch_: Integer;
   public
@@ -664,7 +665,7 @@ begin
 
    //подготовку делаем в случае выбора либо 1 л.с. либо 1 квартиры
    //и только не по арх спр.
-  if (tp_ <> 2) and (tp_ <> 5) and (sel_obj_ = 0) and (wwDBEdit1.Text = wwDBEdit2.Text) and (CheckBox3.Checked = True) then
+{  if (tp_ <> 2) and (tp_ <> 5) and (sel_obj_ = 0) and (wwDBEdit1.Text = wwDBEdit2.Text) and (CheckBox3.Checked = True) then
   begin
       //по 1 лс.
     DataModule1.OraclePackage1.CallProcedure('scott.GEN.prepare_arch_k_lsk', [Form_main.k_lsk_id_, pen_last_month_, 0]);
@@ -673,20 +674,20 @@ begin
   begin
      //по 1 квартире
     DataModule1.OraclePackage1.CallProcedure('scott.GEN.prepare_arch_k_lsk', [Form_main.k_lsk_id_, pen_last_month_, 0]);
-  end;
+  end;}
 
   //Справка о задолженности
-  OD_data3.SetVariable('k_lsk_id_', Form_main.k_lsk_id_);
 
   if sel_obj_ = 0 then
   begin
     //по л.с.
     OD_data3.SetVariable('p_lsk', wwDBEdit1.Text);
+    OD_data3.SetVariable('k_lsk_id_', 0);
   end
   else
   begin
     //по адресу
-    OD_data3.SetVariable('p_lsk', OD_kw.FieldByName('lsk').AsString);
+    OD_data3.SetVariable('k_lsk_id_', Form_main.k_lsk_id_);
   end;
 
   if sel_obj_ = 0 then
@@ -1290,7 +1291,7 @@ begin
     end;
     OD_uk.Next;
   end;
-
+  selAllUk;
 end;
 
 // получить список УК
@@ -1314,6 +1315,17 @@ begin
     Dispose(APCheckStates)
   end;
   Result := str;
+end;
+
+// отметить все элементы cxCheckComboBox
+procedure TForm_print_bills.selAllUk();
+var
+  i: Integer;
+  ComboProp: TcxCheckComboBoxProperties;
+begin
+  ComboProp:=cxCheckComboBox1.Properties;
+  for i := 0 to ComboProp.Items.Count - 1 do
+   cxCheckComboBox1.States[i] := cbsChecked;
 end;
 
 end.

@@ -1,6 +1,6 @@
 object Form_house_vvod: TForm_house_vvod
-  Left = 463
-  Top = 309
+  Left = 246
+  Top = 169
   Width = 1145
   Height = 512
   Caption = #1042#1074#1086#1076' '#1086#1073#1098#1105#1084#1086#1074' '#1087#1086' '#1076#1086#1084#1072#1084
@@ -299,7 +299,6 @@ object Form_house_vvod: TForm_house_vvod
       ShowHint = True
       State = cbChecked
       TabOrder = 6
-      OnClick = CheckBox1Click
     end
   end
   object GroupBox2: TGroupBox

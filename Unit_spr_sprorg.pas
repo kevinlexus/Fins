@@ -198,6 +198,8 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure OD_sprorgAfterScroll(DataSet: TDataSet);
+    procedure OD_sprorgBeforePost(DataSet: TDataSet);
+    procedure OD_sprorgAfterPost(DataSet: TDataSet);
   private
     flt_:string;
   public
@@ -235,14 +237,32 @@ end;
 
 procedure TForm_spr_sprorg.OD_sprorgAfterScroll(DataSet: TDataSet);
 begin
-  OD_usl_bills.SetVariable('fk_bill_var',
-    OD_sprorg.FieldByName('fk_bill_var').AsInteger);
-  OD_usl_bills.Active:=false;
-  OD_usl_bills.Active:=true;
-  OD_usl_tree.SetVariable('fk_bill_var',
-    OD_sprorg.FieldByName('fk_bill_var').AsInteger);
-  OD_usl_tree.Active:=false;
-  OD_usl_tree.Active:=true;
+    {  if OD_usl_tree.Active=True then
+  begin
+    // если не в режиме добавления организации
+    OD_usl_bills.SetVariable('fk_bill_var',
+      OD_sprorg.FieldByName('fk_bill_var').AsInteger);
+    OD_usl_bills.Active:=false;
+    OD_usl_bills.Active:=true;
+    OD_usl_tree.SetVariable('fk_bill_var',
+      OD_sprorg.FieldByName('fk_bill_var').AsInteger);
+    OD_usl_tree.Active:=false;
+    OD_usl_tree.Active:=true;
+  end;                       }
+end;
+
+procedure TForm_spr_sprorg.OD_sprorgBeforePost(DataSet: TDataSet);
+begin
+  {OD_usl_tree.Active:=False;
+  OD_usl_round.Active:=False;
+  OD_usl_bills.Active:=False;}
+end;
+
+procedure TForm_spr_sprorg.OD_sprorgAfterPost(DataSet: TDataSet);
+begin
+{  OD_usl_tree.Active:=True;
+  OD_usl_round.Active:=True;
+  OD_usl_bills.Active:=True;  }
 end;
 
 end.

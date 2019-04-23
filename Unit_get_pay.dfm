@@ -913,7 +913,7 @@ object Form_get_pay: TForm_get_pay
     Top = 96
   end
   object tmr1: TTimer
-    Interval = 3000
+    Interval = 1500
     OnTimer = tmr1Timer
     Left = 824
     Top = 16

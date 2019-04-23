@@ -755,7 +755,9 @@ begin
   if not (Form_list_kart.OD_list_kart.State in [dsBrowse]) then
     Form_list_kart.OD_list_kart.Post;
 
-  if (Form_list_kart.OD_list_kart.UpdateStatus in [usInserted, usModified, usDeleted]) or (Form_kart.OD_charge.UpdatesPending = true) or (Form_kart.OD_nabor_p.UpdatesPending = true) or (Form_kart.OD_states_sch.UpdatesPending = true) or (updates_ = 1) then
+  if (Form_list_kart.OD_list_kart.UpdateStatus in [usInserted, usModified, usDeleted])
+  or (Form_kart.OD_charge.UpdatesPending = true) or (Form_kart.OD_nabor_p.UpdatesPending = true)
+  or (Form_kart.OD_states_sch.UpdatesPending = true) or (updates_ = 1) then
   begin
 
     if ask_ = 0 then //записываем без вопросов
@@ -767,7 +769,8 @@ begin
 
     //Проверка корректности статусов счетчиков, статусов проживающих
     //С установкой признака валидности карточки
-      err_ := DataModule1.OraclePackage1.CallStringFunction('scott.UTILS.tst_krt', [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, 1]);
+      err_ := DataModule1.OraclePackage1.CallStringFunction('scott.UTILS.tst_krt',
+        [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, 1]);
 
     //для подтверждения изменений, сделанных в пакетах
       DataModule1.OracleSession1.Commit;
@@ -798,7 +801,8 @@ begin
 
       //Проверка корректности статусов счетчиков, статусов проживающих
       //С установкой признака валидности карточки
-        err_ := DataModule1.OraclePackage1.CallStringFunction('scott.UTILS.tst_krt', [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, 1]);
+        err_ := DataModule1.OraclePackage1.CallStringFunction('scott.UTILS.tst_krt',
+          [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, 1]);
 
         recalc_kart;
       end
@@ -821,7 +825,8 @@ begin
     begin
     //Проверка корректности статусов счетчиков, статусов проживающих
     //С установкой признака валидности карточки
-      err_ := DataModule1.OraclePackage1.CallStringFunction('scott.UTILS.tst_krt', [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, 1]);
+      err_ := DataModule1.OraclePackage1.CallStringFunction('scott.UTILS.tst_krt',
+        [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, 1]);
       recalc_kart;
     end;
   end;
@@ -1083,9 +1088,12 @@ begin
      //пересчитать начисление
 //    if (Form_list_kart.isAllowEdit_ <> 0) or (Form_main.arch_mg_ <> '') then
 //    begin
-    cnt_ := DataModule1.OraclePackage1.CallIntegerFunction('scott.C_CHARGES.gen_charges', [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, null, null, null, 1, 0]);
-    DataModule1.OraclePackage1.CallProcedure('scott.C_CPENYA.gen_charge_pay', [Form_list_kart.OD_list_kart.FieldByName('lsk').asString, 1]);
-    DataModule1.OraclePackage1.CallProcedure('scott.C_CPENYA.gen_penya', [Form_list_kart.OD_list_kart.FieldByName('lsk').asString, 0, 1]);
+    cnt_ := DataModule1.OraclePackage1.CallIntegerFunction('scott.C_CHARGES.gen_charges',
+      [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, null, null, null, 1, 0]);
+    DataModule1.OraclePackage1.CallProcedure('scott.C_CPENYA.gen_charge_pay',
+      [Form_list_kart.OD_list_kart.FieldByName('lsk').asString, 1]);
+    DataModule1.OraclePackage1.CallProcedure('scott.C_CPENYA.gen_penya',
+      [Form_list_kart.OD_list_kart.FieldByName('lsk').asString, 0, 1]);
     Form_list_kart.OD_list_kart.RefreshRecord;
     OD_charge.Refresh;
     calcFooter;
@@ -2163,9 +2171,13 @@ end;
 
 procedure TForm_kart.mnu2Click(Sender: TObject);
 begin
-  if (msg3('Удалить в данном л/с услугу: ' + OD_charge.FieldByName('NM').AsString + ' по орг: ' + OD_charge.FieldByName('ORG_NAME').AsString + ' с коэфф:' + OD_charge.FieldByName('KOEFF').AsString + ' и норм:' + OD_charge.FieldByName('NORM').AsString + '?', 'Подверждение', MB_YESNO + MB_ICONQUESTION) = IDYES) then
+  if (msg3('Удалить в данном л/с услугу: ' + OD_charge.FieldByName('NM').AsString + ' по орг: ' +
+  OD_charge.FieldByName('ORG_NAME').AsString + ' с коэфф:' + OD_charge.FieldByName('KOEFF').AsString + ' и норм:' + OD_charge.FieldByName('NORM').AsString + '?', 'Подверждение', MB_YESNO + MB_ICONQUESTION) = IDYES) then
   begin
-    DataModule1.OraclePackage1.CallProcedure('scott.p_houses.house_del_usl', [4, Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, null, null, null, OD_charge.FieldByName('usl').AsString, OD_charge.FieldByName('org').AsInteger, OD_charge.FieldByName('koeff').AsFloat, OD_charge.FieldByName('norm').AsFloat, 1]);
+    DataModule1.OraclePackage1.CallProcedure('scott.p_houses.house_del_usl',
+    [4, Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, null, null, null,
+    OD_charge.FieldByName('usl').AsString, OD_charge.FieldByName('org').AsInteger,
+    OD_charge.FieldByName('koeff').AsFloat, OD_charge.FieldByName('norm').AsFloat, 1]);
     Form_kart.updates_ := 1;
     OD_charge.Refresh;
   end;

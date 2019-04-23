@@ -1,6 +1,6 @@
 object Form_kart: TForm_kart
-  Left = 519
-  Top = 148
+  Left = 628
+  Top = 259
   Width = 903
   Height = 675
   BorderIcons = [biSystemMenu, biMinimize]
@@ -1229,7 +1229,7 @@ object Form_kart: TForm_kart
             Top = 0
             Width = 25
             Height = 25
-            Hint = #1050' '#1087#1077#1088#1074#1086#1081' '#1079#1072#1087#1080#1089#1080
+            Hint = 'Move to first record'
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -1246,7 +1246,7 @@ object Form_kart: TForm_kart
             Top = 0
             Width = 25
             Height = 25
-            Hint = #1055#1088#1077#1076#1099#1076#1091#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
+            Hint = 'Move to prior record'
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -1263,7 +1263,7 @@ object Form_kart: TForm_kart
             Top = 0
             Width = 25
             Height = 25
-            Hint = #1057#1083#1077#1076#1091#1102#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
+            Hint = 'Move to next record'
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -1280,7 +1280,7 @@ object Form_kart: TForm_kart
             Top = 0
             Width = 25
             Height = 25
-            Hint = #1055#1077#1088#1077#1081#1090#1080' '#1082' '#1087#1086#1089#1083#1077#1076#1085#1077#1081' '#1079#1072#1087#1080#1089#1080
+            Hint = 'Move to last record'
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -1297,7 +1297,7 @@ object Form_kart: TForm_kart
             Top = 0
             Width = 25
             Height = 25
-            Hint = #1044#1086#1073#1072#1074#1080#1090#1100' '#1085#1086#1074#1091#1102' '#1079#1072#1087#1080#1089#1100
+            Hint = 'Insert new record'
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -1314,7 +1314,7 @@ object Form_kart: TForm_kart
             Top = 0
             Width = 25
             Height = 25
-            Hint = #1059#1076#1072#1083#1080#1090#1100' '#1090#1077#1082#1091#1097#1091#1102' '#1079#1072#1087#1080#1089#1100
+            Hint = 'Delete current record'
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -1624,7 +1624,7 @@ object Form_kart: TForm_kart
           Top = 0
           Width = 31
           Height = 23
-          Hint = #1050' '#1087#1077#1088#1074#1086#1081' '#1079#1072#1087#1080#1089#1080
+          Hint = 'Move to first record'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -1641,7 +1641,7 @@ object Form_kart: TForm_kart
           Top = 0
           Width = 31
           Height = 23
-          Hint = #1053#1072#1079#1072#1076' '#1085#1072' 10 '#1079#1072#1087#1080#1089#1077#1081
+          Hint = 'Move backward 10 records'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -1658,7 +1658,7 @@ object Form_kart: TForm_kart
           Top = 0
           Width = 30
           Height = 23
-          Hint = #1055#1088#1077#1076#1099#1076#1091#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
+          Hint = 'Move to prior record'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -1675,7 +1675,7 @@ object Form_kart: TForm_kart
           Top = 0
           Width = 30
           Height = 23
-          Hint = #1057#1083#1077#1076#1091#1102#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
+          Hint = 'Move to next record'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -1692,7 +1692,7 @@ object Form_kart: TForm_kart
           Top = 0
           Width = 30
           Height = 23
-          Hint = #1042#1087#1077#1088#1077#1076' '#1085#1072' 10 '#1079#1072#1087#1080#1089#1077#1081
+          Hint = 'Move forward 10 records'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -1709,7 +1709,7 @@ object Form_kart: TForm_kart
           Top = 0
           Width = 30
           Height = 23
-          Hint = #1055#1077#1088#1077#1081#1090#1080' '#1082' '#1087#1086#1089#1083#1077#1076#1085#1077#1081' '#1079#1072#1087#1080#1089#1080
+          Hint = 'Move to last record'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -1726,7 +1726,7 @@ object Form_kart: TForm_kart
           Top = 0
           Width = 30
           Height = 23
-          Hint = #1044#1086#1073#1072#1074#1080#1090#1100' '#1085#1086#1074#1091#1102' '#1079#1072#1087#1080#1089#1100
+          Hint = 'Insert new record'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -1743,7 +1743,7 @@ object Form_kart: TForm_kart
           Top = 0
           Width = 30
           Height = 23
-          Hint = #1059#1076#1072#1083#1080#1090#1100' '#1090#1077#1082#1091#1097#1091#1102' '#1079#1072#1087#1080#1089#1100
+          Hint = 'Delete current record'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -1761,7 +1761,7 @@ object Form_kart: TForm_kart
           Top = 0
           Width = 30
           Height = 23
-          Hint = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1090#1077#1082#1091#1097#1091#1102' '#1079#1072#1087#1080#1089#1100
+          Hint = 'Edit current record'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -1778,7 +1778,7 @@ object Form_kart: TForm_kart
           Top = 0
           Width = 30
           Height = 23
-          Hint = #1054#1090#1087#1088#1072#1074#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103' '#1074' '#1073#1072#1079#1091
+          Hint = 'Post changes of current record'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -1796,7 +1796,7 @@ object Form_kart: TForm_kart
           Top = 0
           Width = 30
           Height = 23
-          Hint = #1054#1090#1084#1077#1085#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103' '#1090#1077#1082#1091#1097#1077#1081' '#1079#1072#1087#1080#1089#1080
+          Hint = 'Cancel changes made to current record'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -1814,7 +1814,7 @@ object Form_kart: TForm_kart
           Top = 0
           Width = 30
           Height = 23
-          Hint = #1054#1073#1085#1086#1074#1080#1090#1100' '#1079#1072#1087#1080#1089#1080
+          Hint = 'Refresh the contents of the dataset'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -1831,7 +1831,7 @@ object Form_kart: TForm_kart
           Top = 0
           Width = 30
           Height = 23
-          Hint = #1055#1086#1089#1090#1072#1074#1080#1090#1100' '#1079#1072#1082#1083#1072#1076#1082#1091' '#1085#1072' '#1090#1077#1082#1091#1097#1077#1081' '#1079#1072#1087#1080#1089#1080
+          Hint = 'Bookmark current record'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -1847,7 +1847,7 @@ object Form_kart: TForm_kart
           Top = 0
           Width = 30
           Height = 23
-          Hint = #1055#1077#1088#1077#1081#1090#1080' '#1082' '#1089#1086#1093#1088#1072#1085#1105#1085#1085#1086#1081' '#1079#1072#1082#1083#1072#1076#1082#1077
+          Hint = 'Go back to saved bookmark'
           ImageIndex = -1
           NumGlyphs = 2
           Spacing = 4
@@ -2999,10 +2999,10 @@ object Form_kart: TForm_kart
     Panels = <
       item
         PanelStyleClassName = 'TdxStatusBarTextPanelStyle'
-        PanelStyle.Alignment = taRightJustify
       end>
+    SimplePanelStyle.AutoHint = True
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
+    Font.Color = clRed
     Font.Height = -11
     Font.Name = 'Tahoma'
     Font.Style = []

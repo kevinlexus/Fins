@@ -160,6 +160,7 @@ type
     cxGrid1DBTableView2Column1: TcxGridDBColumn;
     OD_paycheck: TOracleDataSet;
     cxGrid1DBTableView2Column2: TcxGridDBColumn;
+    N5: TMenuItem;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure state_arch2(mgold_: String);
@@ -172,6 +173,7 @@ type
     procedure OD_c_kwtpAfterRefresh(DataSet: TDataSet);
     procedure N2Click(Sender: TObject);
     procedure N3Click(Sender: TObject);
+    procedure N5Click(Sender: TObject);
   private
     sql_, sql2_: String;
   public
@@ -184,7 +186,8 @@ var
 
 implementation
 
-uses Unit_Mainform, Unit_plat_doc, DM_module1, Unit_edit_pay_usl_org;
+uses Unit_Mainform, Unit_plat_doc, DM_module1, Unit_edit_pay_usl_org,
+  u_frmDistPayLog;
 
 {$R *.dfm}
 
@@ -575,7 +578,7 @@ begin
   if FF('Form_edit_pay_usl_org', 1) = 0 then
     Application.CreateForm(TForm_edit_pay_usl_org,
       Form_edit_pay_usl_org);
-    Form_edit_pay_usl_org.ShowModal;
+    Form_edit_pay_usl_org.Show;
 end;
 
 procedure TForm_month_payments.N3Click(Sender: TObject);
@@ -699,6 +702,14 @@ if msg3('Выполнить обратный платёж оплаты с суммой '+OD_c_kwtp.FieldByName('summ
    end;
    end;
 
+end;
+
+procedure TForm_month_payments.N5Click(Sender: TObject);
+begin
+  if FF('frmDistPayLog', 1) = 0 then
+    Application.CreateForm(TfrmDistPayLog,
+      frmDistPayLog);
+    frmDistPayLog.Show;
 end;
 
 end.

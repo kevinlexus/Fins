@@ -2,7 +2,7 @@ unit Unit_house_vvod;
 
 interface
 
-uses
+uses                         
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, OracleData, Grids, Wwdbigrd, Wwdbgrid, wwSpeedButton,
   wwDBNavigator, ExtCtrls, wwclearpanel, StdCtrls, Utils, Buttons, Oracle,

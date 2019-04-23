@@ -1,17 +1,16 @@
-object Form_new_lsk: TForm_new_lsk
-  Left = 900
-  Top = 195
-  Width = 327
-  Height = 209
-  VertScrollBar.Visible = False
-  Caption = #1057#1086#1079#1076#1072#1085#1080#1077' '#1085#1086#1074#1086#1075#1086' '#1083#1080#1094'.'#1089#1095#1077#1090#1072
+object frmDistPayLog: TfrmDistPayLog
+  Left = 706
+  Top = 338
+  Width = 630
+  Height = 589
+  Caption = #1054#1087#1080#1089#1072#1085#1080#1077' '#1088#1072#1089#1087#1088#1077#1076#1077#1083#1077#1085#1080#1103' '#1086#1087#1083#1072#1090#1099
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
-  Font.Name = 'MS Sans Serif'
+  Font.Name = 'Tahoma'
   Font.Style = []
-  FormStyle = fsStayOnTop
+  FormStyle = fsMDIChild
   Icon.Data = {
     0000010001002020080000000000A80800001600000028000000200000004000
     0000010008000000000000040000000000000000000000000000000000000000
@@ -85,177 +84,68 @@ object Form_new_lsk: TForm_new_lsk
     000000000000000000000000000000000000000000000000000080000001}
   OldCreateOrder = False
   Position = poMainFormCenter
+  Visible = True
   OnClose = FormClose
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object GroupBox1: TGroupBox
+  object cxGrid1: TcxGrid
     Left = 0
     Top = 0
-    Width = 311
-    Height = 121
-    Align = alTop
-    Caption = #1050#1086#1087#1080#1088#1086#1074#1072#1090#1100' '#1083#1080#1094#1077#1074#1086#1081' '#1089#1095#1077#1090' '#1085#1072' '#1085#1086#1074#1099#1081':'
+    Width = 614
+    Height = 550
+    Align = alClient
     TabOrder = 0
-    object Label1: TLabel
-      Left = 128
-      Top = 32
-      Width = 23
-      Height = 13
-      Caption = #1058#1080#1087
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
+    object cxGrid1DBTableView1: TcxGridDBTableView
+      Navigator.Buttons.CustomButtons = <>
+      Navigator.Visible = True
+      DataController.DataSource = DS_kwtp_day_log
+      DataController.DetailKeyFieldNames = 'ID'
+      DataController.Summary.DefaultGroupSummaryItems = <>
+      DataController.Summary.FooterSummaryItems = <>
+      DataController.Summary.SummaryGroups = <>
+      OptionsView.ColumnAutoWidth = True
+      OptionsView.GroupByBox = False
+      object cxGrid1DBTableView1NPP: TcxGridDBColumn
+        Caption = #8470' '#1087'.'#1087'.'
+        DataBinding.FieldName = 'NPP'
+        Width = 44
+      end
+      object cxGrid1DBTableView1TEXT: TcxGridDBColumn
+        DataBinding.FieldName = 'TEXT'
+        IsCaptionAssigned = True
+      end
     end
-    object Label2: TLabel
-      Left = 24
-      Top = 64
-      Width = 18
-      Height = 13
-      Caption = #1059#1050
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object wwDBEdit3: TwwDBEdit
-      Left = 24
-      Top = 21
-      Width = 89
-      Height = 28
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -17
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-      Picture.PictureMask = '[#][#][#][#][#][#][#][#]'
-      TabOrder = 0
-      UnboundDataType = wwDefault
-      WantReturns = False
-      WordWrap = False
-    end
-    object cbb2: TcxLookupComboBox
-      Left = 160
-      Top = 26
-      Properties.KeyFieldNames = 'CD'
-      Properties.ListColumns = <
-        item
-          FieldName = 'NAME'
-        end>
-      Properties.ListOptions.ShowHeader = False
-      Properties.ListSource = DS_lsk_tp
-      Properties.OnCloseUp = cbb2PropertiesCloseUp
-      TabOrder = 1
-      Width = 121
-    end
-    object cxLookupComboBox1: TcxLookupComboBox
-      Left = 48
-      Top = 58
-      Properties.KeyFieldNames = 'REU'
-      Properties.ListColumns = <
-        item
-          FieldName = 'NAME'
-        end>
-      Properties.ListOptions.ShowHeader = False
-      Properties.ListSource = DS_reu
-      TabOrder = 2
-      Width = 233
-    end
-    object CheckBox1: TCheckBox
-      Left = 24
-      Top = 88
-      Width = 249
-      Height = 17
-      Caption = #1055#1088#1080#1089#1086#1077#1076#1080#1085#1080#1090#1100' '#1082' '#1085#1086#1074#1086#1084#1091' '#1087#1086#1084#1077#1097#1077#1085#1080#1102
-      Checked = True
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-      State = cbChecked
-      TabOrder = 3
+    object cxGrid1Level1: TcxGridLevel
+      GridView = cxGrid1DBTableView1
     end
   end
-  object GroupBox2: TGroupBox
-    Left = 0
-    Top = 121
-    Width = 311
-    Height = 49
-    Align = alBottom
-    TabOrder = 1
-    object Button2: TButton
-      Left = 128
-      Top = 16
-      Width = 75
-      Height = 25
-      Caption = #1054#1082
-      TabOrder = 0
-      OnClick = Button2Click
-    end
-    object Button1: TButton
-      Left = 214
-      Top = 16
-      Width = 75
-      Height = 25
-      Cancel = True
-      Caption = #1054#1090#1084#1077#1085#1072
-      TabOrder = 1
-      OnClick = Button1Click
-    end
-    object Button3: TButton
-      Left = 8
-      Top = 16
-      Width = 75
-      Height = 25
-      Caption = #1053#1072#1081#1090#1080
-      TabOrder = 2
-      OnClick = Button3Click
-    end
-  end
-  object OD_lsk_tp: TOracleDataSet
+  object OD_kwtp_day_log: TOracleDataSet
     SQL.Strings = (
-      'select * from scott.v_lsk_tp')
+      
+        'select t.* from scott.kwtp_day_log t where t.fk_c_kwtp_mg=:fk_c_' +
+        'kwtp_mg'
+      'order by t.id')
     Optimize = False
+    Variables.Data = {
+      03000000010000000D0000003A464B5F435F4B5754505F4D4703000000000000
+      0000000000}
     QBEDefinition.QBEFieldDefs = {
-      0400000004000000020000004944010000000000020000004344010000000000
-      040000004E414D45010000000000030000004E5050010000000000}
+      04000000040000000200000049440100000000000C000000464B5F435F4B5754
+      505F4D470100000000000400000054455854010000000000030000004E505001
+      0000000000}
+    Master = Form_month_payments.OD_c_kwtp_mg
+    MasterFields = 'id'
+    DetailFields = 'fk_c_kwtp_mg'
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True
-    Left = 8
-    Top = 144
+    Left = 24
+    Top = 40
   end
-  object DS_lsk_tp: TDataSource
-    DataSet = OD_lsk_tp
+  object DS_kwtp_day_log: TDataSource
+    DataSet = OD_kwtp_day_log
     Left = 48
-    Top = 144
-  end
-  object OD_reu: TOracleDataSet
-    SQL.Strings = (
-      ''
-      'select t.reu, t.reu||'#39' '#39'||t.name as name'
-      ' from scott.t_org t where t.reu is not null'
-      'order by t.name')
-    Optimize = False
-    QBEDefinition.QBEFieldDefs = {
-      0400000002000000040000004E414D4501000000000003000000524555010000
-      000000}
-    Session = DataModule1.OracleSession1
-    Active = True
-    Left = 80
-    Top = 144
-  end
-  object DS_reu: TDataSource
-    DataSet = OD_reu
-    Left = 112
-    Top = 144
+    Top = 40
   end
 end

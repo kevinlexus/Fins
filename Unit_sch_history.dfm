@@ -1,6 +1,6 @@
 object Form_sch_history: TForm_sch_history
-  Left = 447
-  Top = 381
+  Left = 351
+  Top = 397
   Width = 963
   Height = 380
   Caption = #1048#1089#1090#1086#1088#1080#1103' '#1074#1074#1086#1076#1072' '#1087#1086#1082#1072#1079#1072#1085#1080#1081' '#1089#1095#1077#1090#1095#1080#1082#1086#1074
@@ -177,14 +177,14 @@ object Form_sch_history: TForm_sch_history
               Width = 58
             end
             object cxGrid2DBTableView1DT1: TcxGridDBColumn
-              Caption = #1053#1072#1095#1072#1083#1086' '#1088#1072#1073'.'
+              Caption = #1053#1072#1095#1072#1083#1086
               DataBinding.FieldName = 'DT1'
-              Width = 44
+              Width = 65
             end
             object cxGrid2DBTableView1DT2: TcxGridDBColumn
-              Caption = #1054#1082#1086#1085#1095#1072#1085#1080#1077' '#1088#1072#1073'.'
+              Caption = #1054#1082#1086#1085#1095#1072#1085#1080#1077
               DataBinding.FieldName = 'DT2'
-              Width = 62
+              Width = 65
             end
             object cxGrid2DBTableView1GIS_CONN_TP: TcxGridDBColumn
               Caption = #1043#1048#1057
@@ -203,7 +203,7 @@ object Form_sch_history: TForm_sch_history
                   Value = 0
                 end>
               MinWidth = 5
-              Width = 50
+              Width = 44
             end
             object cxGrid2DBTableView1ID: TcxGridDBColumn
               DataBinding.FieldName = 'ID'
