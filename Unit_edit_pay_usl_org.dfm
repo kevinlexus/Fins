@@ -1,6 +1,6 @@
 object Form_edit_pay_usl_org: TForm_edit_pay_usl_org
-  Left = 435
-  Top = 154
+  Left = 1256
+  Top = 185
   Width = 496
   Height = 451
   Caption = #1056#1072#1089#1087#1088#1077#1076#1077#1083#1077#1085#1080#1077' '#1086#1087#1083#1072#1090#1099
@@ -373,50 +373,61 @@ object Form_edit_pay_usl_org: TForm_edit_pay_usl_org
     Top = 128
     object OD_kwtp_dayKWTP_ID: TFloatField
       FieldName = 'KWTP_ID'
+      Required = True
     end
     object OD_kwtp_daySUMMA: TFloatField
+      DisplayLabel = #1057#1091#1084#1084#1072
       FieldName = 'SUMMA'
+      Required = True
     end
     object OD_kwtp_dayLSK: TStringField
       FieldName = 'LSK'
+      Required = True
       Size = 8
     end
     object OD_kwtp_dayOPER: TStringField
       DisplayWidth = 3
       FieldName = 'OPER'
+      Required = True
       Size = 3
     end
     object OD_kwtp_dayDOPL: TStringField
       FieldName = 'DOPL'
+      Required = True
       Size = 6
     end
     object OD_kwtp_dayNKOM: TStringField
       FieldName = 'NKOM'
+      Required = True
       Size = 3
     end
     object OD_kwtp_dayNINK: TFloatField
       FieldName = 'NINK'
+      Required = True
     end
     object OD_kwtp_dayDAT_INK: TDateTimeField
       FieldName = 'DAT_INK'
+      Required = True
     end
     object OD_kwtp_dayPRIZNAK: TIntegerField
       DefaultExpression = '0'
       FieldName = 'PRIZNAK'
     end
     object OD_kwtp_dayUSL: TStringField
+      DisplayLabel = #1059#1089#1083#1091#1075#1072
       FieldName = 'USL'
+      Required = True
       Size = 3
     end
     object OD_kwtp_dayORG: TFloatField
+      DisplayLabel = #1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103
       FieldName = 'ORG'
+      Required = True
     end
     object OD_kwtp_dayFK_DISTR: TFloatField
       FieldName = 'FK_DISTR'
       ReadOnly = True
-    end
-    object OD_kwtp_daySUM_DISTR: TFloatField
-      FieldName = 'SUM_DISTR'
+      Required = True
     end
     object OD_kwtp_dayname_org: TStringField
       DisplayWidth = 20
@@ -426,6 +437,7 @@ object Form_edit_pay_usl_org: TForm_edit_pay_usl_org
       LookupKeyFields = 'ID'
       LookupResultField = 'NAME'
       KeyFields = 'ORG'
+      Required = True
       Lookup = True
     end
     object OD_kwtp_dayname_usl: TStringField
@@ -435,6 +447,7 @@ object Form_edit_pay_usl_org: TForm_edit_pay_usl_org
       LookupKeyFields = 'USL'
       LookupResultField = 'NM'
       KeyFields = 'USL'
+      Required = True
       Lookup = True
     end
     object OD_kwtp_dayDTEK: TDateTimeField

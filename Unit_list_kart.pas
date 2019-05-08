@@ -851,15 +851,26 @@ procedure TForm_list_kart.wwDBGrid1CalcCellColors(Sender: TObject;
   Field: TField; State: TGridDrawState; Highlight: Boolean; AFont: TFont;
   ABrush: TBrush);
 begin
-  if (OD_list_kart.FieldByName('psch').AsInteger = 8) and
-     (OD_list_kart.FieldByName('lsk_tp_cd').AsString = 'LSK_TP_MAIN')
+  if (OD_list_kart.FieldByName('psch').AsInteger = 8)
+      or (OD_list_kart.FieldByName('psch').AsInteger = 9)
+  // and
+  //   (OD_list_kart.FieldByName('lsk_tp_cd').AsString = 'LSK_TP_MAIN')
     then
   begin
     ABrush.Color := clSilver;
     AFont.Color := clBlack;
   end
-  else if (OD_list_kart.FieldByName('psch').AsInteger = 9) and
-     (OD_list_kart.FieldByName('lsk_tp_cd').AsString = 'LSK_TP_MAIN')
+  else if (OD_list_kart.FieldByName('lsk_tp_cd').AsString = 'LSK_TP_ADDIT') or
+           (OD_list_kart.FieldByName('lsk_tp_cd').AsString = 'LSK_TP_RSO')
+    then
+  begin
+    ABrush.Color := clMoneyGreen;
+    AFont.Color := clBlack;
+  end;
+
+{  else if (OD_list_kart.FieldByName('psch').AsInteger = 9)
+  //and
+  //   (OD_list_kart.FieldByName('lsk_tp_cd').AsString = 'LSK_TP_MAIN')
     then
   begin
     ABrush.Color := clGray;
@@ -884,7 +895,7 @@ begin
   begin
     ABrush.Color := clMoneyGreen;
     AFont.Color := clBlack;
-  end;
+  end;}
 end;
 
 procedure TForm_list_kart.OD_list_kartBeforeInsert(DataSet: TDataSet);

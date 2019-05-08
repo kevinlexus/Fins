@@ -1,6 +1,6 @@
 object Form_month_payments: TForm_month_payments
-  Left = 210
-  Top = 183
+  Left = 567
+  Top = 202
   Width = 852
   Height = 607
   Caption = #1055#1086#1089#1090#1091#1087#1083#1077#1085#1080#1103' '#1079#1072' '#1084#1077#1089#1103#1094

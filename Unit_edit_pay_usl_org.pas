@@ -31,7 +31,6 @@ type
     OD_kwtp_dayUSL: TStringField;
     OD_kwtp_dayORG: TFloatField;
     OD_kwtp_dayFK_DISTR: TFloatField;
-    OD_kwtp_daySUM_DISTR: TFloatField;
     OD_kwtp_dayname_org: TStringField;
     OD_kwtp_dayname_usl: TStringField;
     Panel1: TPanel;

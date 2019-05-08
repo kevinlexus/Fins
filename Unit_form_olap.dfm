@@ -1,6 +1,6 @@
 object Form_olap: TForm_olap
-  Left = 586
-  Top = 225
+  Left = 639
+  Top = 205
   AutoScroll = False
   Caption = 'OLAP'
   ClientHeight = 743

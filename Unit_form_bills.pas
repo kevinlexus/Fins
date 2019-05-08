@@ -140,7 +140,7 @@ type
     OD_data6LSK: TStringField;
     OD_data6SUMMA: TFloatField;
     OD_dataK_LSK_ID: TFloatField;
-    OD_kart: TOracleDataSet;
+    OD_arch_supp: TOracleDataSet;
     DS_kart: TDataSource;
     frxDBData_kart: TfrxDBDataset;
     OD_dataPHONE2: TStringField;
@@ -216,6 +216,12 @@ type
     OD_spr_services: TOracleDataSet;
     DS_spr_services: TDataSource;
     cxLookupComboBox1: TcxLookupComboBox;
+    OD_rep1: TOracleDataSet;
+    DS_rep1: TDataSource;
+    frxDBDataset14: TfrxDBDataset;
+    OD_rep2: TOracleDataSet;
+    DS_rep2: TDataSource;
+    frxDBDataset15: TfrxDBDataset;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -249,6 +255,7 @@ type
     procedure fillUk();
     function getStrUk(): String;
     procedure selAllUk();
+    procedure kart_pr_report;
 private
     sel_obj_: Integer;
     cnt_sch_: Integer;
@@ -320,7 +327,7 @@ begin
     DataModule1.OraclePackage1.CallProcedure('scott.GEN.prepare_arch_k_lsk',
       [Form_main.k_lsk_id_, pen_last_month_, 0]);
   end
-  else if (tp_ <> 2) and (tp_ <> 5) and (sel_obj_ = 1)
+  else if (tp_ <> 2) and (tp_ <> 5) and (tp_ <> 6) and (sel_obj_ = 1)
      and (DBLookupComboboxEh4.KeyValue <> null)
      and (CheckBox3.Checked = True) then
   begin
@@ -329,11 +336,16 @@ begin
       [Form_main.k_lsk_id_, pen_last_month_, 0]);  
   end;
 
-  if (OD_t_org.FieldByName('BILL_TP').asInteger = 0) or
+  // тип отчета
+  tp_ := ComboBox1.ItemIndex;
+
+  if (tp_ = 6) then
+    // поквартирная карточка
+    kart_pr_report()                
+  else if (OD_t_org.FieldByName('BILL_TP').asInteger = 0) or
      (OD_t_org.FieldByName('BILL_TP').asInteger = 1) or
      (OD_t_org.FieldByName('BILL_TP').asInteger = 2) or
-     (ComboBox1.ItemIndex = 2) or
-     (ComboBox1.ItemIndex = 5) or (ComboBox1.ItemIndex = 1) then
+     (tp_ = 2) or (tp_ = 5) or (tp_ = 1) then
     // старый вариант отчетности или арх.справ или арх.справ-2
     old_report(tp_, pen_last_month_, repVar)
   else if (OD_t_org.FieldByName('BILL_TP').asInteger = 3) or
@@ -348,6 +360,71 @@ begin
   if FF('Form_status', 0) = 1 then
     Form_status.Close;
 end;
+
+// поквартирная карточка
+procedure TForm_print_bills.kart_pr_report;
+begin
+  // главный датасет
+  OD_cmp_main.Active:=false;
+  OD_rep1.Active:=false;
+  OD_rep2.Active:=false;
+
+  if sel_obj_ = 2 then
+  begin
+    //только для УК
+    //ограничивать диапазон записи для печати счетов
+    OD_cmp_main.SetVariable('p_firstNum',
+      OD_ls_cnt.FieldByName('first_rec').AsInteger);
+    OD_cmp_main.SetVariable('p_lastNum',
+      OD_ls_cnt.FieldByName('last_rec').AsInteger);
+  end
+  else
+  begin
+    //не ограничивать диапазон записи для печати счетов
+    OD_cmp_main.SetVariable('p_firstNum', 0);
+    OD_cmp_main.SetVariable('p_lastNum', 1000000000);
+  end;
+
+  // установить параметры
+  OD_cmp_main.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
+  // список УК для фильтра
+  OD_cmp_main.SetVariable('p_sel_uk', getStrUk());
+
+  OD_cmp_main.SetVariable('p_sel_obj', sel_obj_);
+  OD_cmp_main.SetVariable('p_reu', cbb1.EditValue);
+  OD_cmp_main.SetVariable('p_lsk', wwDBEdit1.Text);
+  OD_cmp_main.SetVariable('p_lsk1', wwDBEdit2.Text);
+
+  OD_cmp_main.SetVariable('p_kul', DBLookupComboboxEh2.KeyValue);
+  if DBLookupComboboxEh3.KeyValue <> null then
+    OD_cmp_main.SetVariable('p_nd', OD_houses.FieldByName('nd_id').AsString)
+  else
+    OD_cmp_main.SetVariable('p_nd', null);
+
+  if DBLookupComboboxEh4.KeyValue <> null then
+    OD_cmp_main.SetVariable('p_kw', OD_kw.FieldByName('kw_id').AsString)
+  else
+    OD_cmp_main.SetVariable('p_kw', null);
+
+  // печатать ли закрытые счета
+  if CheckBox2.Checked = true then
+  begin
+    OD_cmp_main.SetVariable('p_is_closed', 1);
+  end
+  else
+  begin
+    OD_cmp_main.SetVariable('p_is_closed', 0);
+  end;
+
+  // активировать датасеты
+  OD_cmp_main.Active:=true;
+  OD_rep1.Active:=true;
+  OD_rep2.Active:=true;
+  frxReport1.LoadFromFile(Form_main.exepath_ + '\справка_пасп3.fr3', True);
+  frxReport1.PrepareReport(true);
+  frxReport1.ShowPreparedReport;
+end;
+
 
 // составной счет
 procedure TForm_print_bills.compound_report(p_var: Integer);
@@ -531,6 +608,9 @@ end;
 // старый вариант отчетности
 procedure TForm_print_bills.old_report(tp_, pen_last_month_: Integer; repVar: String);
 begin
+  // главный датасет для справки арх-2
+  OD_cmp_main.Active:=false;
+  // главный датасет
   OD_main.Active := false;
   OD_data.Active := false;
   OD_detail.Active := false;
@@ -543,7 +623,7 @@ begin
   OD_data3.Active := false;
   OD_data6.Active := false;
   OD_vvod.Active := false;
-  OD_kart.Active := false;
+  OD_arch_supp.Active := false;
 
   OD_main.SetVariable('mg_', DBLookupComboboxEh1.KeyValue);
   OD_main.SetVariable('sel_obj_', sel_obj_);
@@ -561,6 +641,61 @@ begin
     OD_main.SetVariable('kw_', OD_kw.FieldByName('kw_id').AsString)
   else
     OD_main.SetVariable('kw_', null);
+
+  if (tp_ = 5) then //справка арх-2
+  begin
+    if sel_obj_ = 2 then
+    begin
+      //только для УК
+      //ограничивать диапазон записи для печати счетов
+      OD_cmp_main.SetVariable('p_firstNum',
+        OD_ls_cnt.FieldByName('first_rec').AsInteger);
+      OD_cmp_main.SetVariable('p_lastNum',
+        OD_ls_cnt.FieldByName('last_rec').AsInteger);
+    end
+    else
+    begin
+      //не ограничивать диапазон записи для печати счетов
+      OD_cmp_main.SetVariable('p_firstNum', 0);
+      OD_cmp_main.SetVariable('p_lastNum', 1000000000);
+    end;
+
+    // установить параметры
+    OD_cmp_main.SetVariable('p_mg', DBLookupComboboxEh5.KeyValue);
+    // список УК для фильтра
+    OD_cmp_main.SetVariable('p_sel_uk', getStrUk());
+
+    OD_cmp_main.SetVariable('p_sel_obj', sel_obj_);
+    OD_cmp_main.SetVariable('p_reu', cbb1.EditValue);
+    OD_cmp_main.SetVariable('p_lsk', wwDBEdit1.Text);
+    OD_cmp_main.SetVariable('p_lsk1', wwDBEdit2.Text);
+
+    OD_cmp_main.SetVariable('p_kul', DBLookupComboboxEh2.KeyValue);
+    if DBLookupComboboxEh3.KeyValue <> null then
+      OD_cmp_main.SetVariable('p_nd', OD_houses.FieldByName('nd_id').AsString)
+    else
+      OD_cmp_main.SetVariable('p_nd', null);
+
+    if DBLookupComboboxEh4.KeyValue <> null then
+      OD_cmp_main.SetVariable('p_kw', OD_kw.FieldByName('kw_id').AsString)
+    else
+      OD_cmp_main.SetVariable('p_kw', null);
+
+    // печатать ли закрытые счета
+    if CheckBox2.Checked = true then
+    begin
+      OD_cmp_main.SetVariable('p_is_closed', 1);
+    end
+    else
+    begin
+      OD_cmp_main.SetVariable('p_is_closed', 0);
+    end;
+
+    // активировать датасеты
+    OD_cmp_main.Active:=true;
+
+  end;
+
 
   if sel_obj_ = 2 then
   begin
@@ -583,10 +718,9 @@ begin
     OD_main.SetVariable('cnt_rec_', 0);
   end;
 
-  if (ComboBox1.ItemIndex = 0) then //счёт
+  if (tp_ = 0) then //счёт
   begin
-    tp_ := 0;
-    OD_data.SetVariable('var_', ComboBox1.ItemIndex);
+    OD_data.SetVariable('var_', tp_);
     OD_data.SetVariable('mg1_', DBLookupComboboxEh1.KeyValue);
     OD_data.SetVariable('mg2_', DBLookupComboboxEh1.KeyValue);
 
@@ -597,87 +731,68 @@ begin
       OD_detail_ext.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
     end;
   end
-  else if (ComboBox1.ItemIndex = 4) then //счёт для УСЗН
+  else if (tp_ = 4) then //счёт для УСЗН
   begin
-    tp_ := 4;
-    OD_data.SetVariable('var_', ComboBox1.ItemIndex);
+    OD_data.SetVariable('var_', tp_);
     OD_data.SetVariable('mg1_', DBLookupComboboxEh1.KeyValue);
     OD_data.SetVariable('mg2_', DBLookupComboboxEh1.KeyValue);
   end
-  else if ComboBox1.ItemIndex = 1 then //справочник квартиросъемщиков
+  else if tp_ = 1 then //справочник квартиросъемщиков
   begin
-    tp_ := 1;
     OD_data.SetVariable('var_', 0);
     OD_data.SetVariable('mg1_', DBLookupComboboxEh1.KeyValue);
     OD_data.SetVariable('mg2_', DBLookupComboboxEh1.KeyValue);
   end
-  else if (ComboBox1.ItemIndex = 2) then //справка арх
+  else if (tp_ = 2) then //справка арх
   begin
-    tp_ := 2;
     wwDBEdit2.Text := wwDBEdit1.Text;
     OD_arch.SetVariable('p_mg1', DBLookupComboboxEh1.KeyValue);
     OD_arch.SetVariable('p_mg2', DBLookupComboboxEh5.KeyValue);
-    OD_kart.SetVariable('p_mg1', DBLookupComboboxEh1.KeyValue);
-    OD_kart.SetVariable('p_mg2', DBLookupComboboxEh5.KeyValue);
+    OD_arch_supp.SetVariable('p_mg1', DBLookupComboboxEh1.KeyValue);
+    OD_arch_supp.SetVariable('p_mg2', DBLookupComboboxEh5.KeyValue);
 
     if sel_obj_ = 0 then
     begin
      //по л.с.
-      OD_kart.SetVariable('p_lsk', wwDBEdit1.Text);
-      OD_kart.SetVariable('p_adr', 0);
+      //OD_arch_supp.SetVariable('p_lsk', wwDBEdit1.Text);
+      OD_arch_supp.SetVariable('p_adr', 0);
     end
     else
     begin
      //по адресу
-      OD_kart.SetVariable('p_lsk', OD_kw.FieldByName('lsk').AsString);
-      OD_kart.SetVariable('p_adr', 1);
+      //OD_arch_supp.SetVariable('p_lsk', OD_kw.FieldByName('lsk').AsString);
+      OD_arch_supp.SetVariable('p_adr', 1);
     end;
-    OD_kart.Active := true;
+    OD_arch_supp.Active := true;
   end
-  else if (ComboBox1.ItemIndex = 5) then //справка арх-2
+  else if (tp_ = 5) then //справка арх-2
   begin
-    tp_ := 5;
     wwDBEdit2.Text := wwDBEdit1.Text;
     OD_arch.SetVariable('p_mg1', DBLookupComboboxEh1.KeyValue);
     OD_arch.SetVariable('p_mg2', DBLookupComboboxEh5.KeyValue);
-    OD_kart.SetVariable('p_mg1', DBLookupComboboxEh1.KeyValue);
-    OD_kart.SetVariable('p_mg2', DBLookupComboboxEh5.KeyValue);
+    OD_arch_supp.SetVariable('p_mg1', DBLookupComboboxEh1.KeyValue);
+    OD_arch_supp.SetVariable('p_mg2', DBLookupComboboxEh5.KeyValue);
 
     if sel_obj_ = 0 then
     begin
      //по л.с.
-      OD_kart.SetVariable('p_lsk', wwDBEdit1.Text);
-      OD_kart.SetVariable('p_adr', 0);
+      //OD_arch_supp.SetVariable('p_lsk', wwDBEdit1.Text);
+      OD_arch_supp.SetVariable('p_adr', 0);
     end
     else
     begin
      //по адресу
-      OD_kart.SetVariable('p_lsk', OD_kw.FieldByName('lsk').AsString);
-      OD_kart.SetVariable('p_adr', 1);
+      //OD_arch_supp.SetVariable('p_lsk', OD_kw.FieldByName('lsk').AsString);
+      OD_arch_supp.SetVariable('p_adr', 1);
     end;
-    OD_kart.Active := true;
+    OD_arch_supp.Active := true;
   end
-  else if ComboBox1.ItemIndex = 3 then //справка о задолжности
+  else if (tp_ = 3) then //справка о задолжности
   begin
-    tp_ := 3;
     wwDBEdit2.Text := wwDBEdit1.Text;
   end;
 
-   //подготовку делаем в случае выбора либо 1 л.с. либо 1 квартиры
-   //и только не по арх спр.
-{  if (tp_ <> 2) and (tp_ <> 5) and (sel_obj_ = 0) and (wwDBEdit1.Text = wwDBEdit2.Text) and (CheckBox3.Checked = True) then
-  begin
-      //по 1 лс.
-    DataModule1.OraclePackage1.CallProcedure('scott.GEN.prepare_arch_k_lsk', [Form_main.k_lsk_id_, pen_last_month_, 0]);
-  end
-  else if (tp_ <> 2) and (tp_ <> 5) and (sel_obj_ = 1) and (DBLookupComboboxEh4.KeyValue <> null) and (CheckBox3.Checked = True) then
-  begin
-     //по 1 квартире
-    DataModule1.OraclePackage1.CallProcedure('scott.GEN.prepare_arch_k_lsk', [Form_main.k_lsk_id_, pen_last_month_, 0]);
-  end;}
-
   //Справка о задолженности
-
   if sel_obj_ = 0 then
   begin
     //по л.с.
@@ -690,14 +805,18 @@ begin
     OD_data3.SetVariable('k_lsk_id_', Form_main.k_lsk_id_);
   end;
 
-  if sel_obj_ = 0 then
+  if (sel_obj_ = 0) or (sel_obj_ = 2) then
   begin
-  //По лицевому счету
+  //По лицевому счету или УК
     if (tp_ = 2) or (tp_ = 5) then //справка арх
     begin
-      OD_arch.SetVariable('p_lsk', wwDBEdit1.Text);
+      //OD_arch.SetVariable('p_lsk', wwDBEdit1.Text);
+      OD_arch.Master:=OD_cmp_main;
+      OD_arch.MasterFields:='LSK';
+      OD_arch.DetailFields:='P_LSK';
       OD_arch.SetVariable('p_adr', 0);
-      OD_data2.SetVariable('lsk_', wwDBEdit1.Text);
+      { ред. 07.05.2019 - пока убрал
+      OD_data2.SetVariable('lsk_', wwDBEdit1.Text);        }
     end;
   end
   else if sel_obj_ = 1 then
@@ -705,15 +824,20 @@ begin
    //По адресу
     if (tp_ = 2) or (tp_ = 5) then //справка арх
     begin
-      OD_arch.SetVariable('p_k_lsk', Form_main.k_lsk_id_);
+      OD_arch.Master:=OD_cmp_main;
+      OD_arch.MasterFields:='K_LSK_ID';
+      OD_arch.DetailFields:='P_K_LSK';
+      //OD_arch.SetVariable('p_k_lsk', Form_main.k_lsk_id_);
       OD_arch.SetVariable('p_adr', 1);
+
+      { ред. 07.05.2019 - пока убрал
       OD_data2.SetVariable('lsk_', null);
       OD_data2.SetVariable('kul_', DBLookupComboboxEh2.KeyValue);
-      OD_data2.SetVariable('nd_', OD_houses.FieldByName('nd_id').AsString{DBLookupComboboxEh3.KeyValue});
+      OD_data2.SetVariable('nd_', OD_houses.FieldByName('nd_id').AsString);
       if DBLookupComboboxEh4.KeyValue <> null then
         OD_data2.SetVariable('kw_', OD_kw.FieldByName('kw_id').AsString)
       else
-        OD_data2.SetVariable('kw_', null);
+        OD_data2.SetVariable('kw_', null);}
     end;
   end;
 
@@ -765,24 +889,16 @@ begin
   else if (tp_ = 2) then
   begin
       //Арх.спр.
+    OD_cmp_main.Active := true;
     OD_arch.Active := true;
-    OD_data2.Active := true;
+  { ред. 07.05.2019 - пока убрал
+    OD_data2.Active := true;}
   end
   else if (tp_ = 5) then
   begin
     // Арх.спр.-2
+    OD_cmp_main.Active := true;
     OD_arch.Active := true;
-    // подсчет итогов для арх справки
-  {  OD_arch.First;
-    dolg:=0;
-    pen:=0;
-    while not OD_arch.Eof do
-    begin
-       dolg:=dolg+OD_arch.FieldByName('SAL').asFloat;
-       pen:=pen+OD_arch.FieldByName('PEN').asFloat;
-       OD_arch.Next;
-    end;}
-
   end
   else if tp_ = 3 then
   begin
@@ -800,7 +916,9 @@ begin
   OD_vvod.Active := true;
 
     // ЗАГРУЗКА отчёта
-  if (((tp_ = 0) or (tp_ = 4)) and (OD_main.RecordCount = 0) or (tp_ = 1) and (OD_main.RecordCount = 0) or (tp_ = 2) and (OD_arch.RecordCount = 0) or (tp_ = 5) and (OD_arch.RecordCount = 0)) then
+  if (((tp_ = 0) or (tp_ = 4)) and (OD_main.RecordCount = 0) or (tp_ = 1)
+  and (OD_main.RecordCount = 0) or (tp_ = 2) and (OD_arch.RecordCount = 0)
+  or (tp_ = 5) and (OD_cmp_main.RecordCount = 0)) then
   begin
     Application.MessageBox('Нет информации за указанный период', 'Внимание!', 16 + MB_APPLMODAL);
     Form_status.Close;
@@ -870,9 +988,6 @@ begin
     begin
        //Справка из архива-2
       frxReport1.LoadFromFile(Form_main.exepath_ + 'арх_спр2.fr3', True);
-      //frxReport1.Variables['itgDolg']:=FloatToStr(dolg);
-      //frxReport1.Variables['itgPen']:=FloatToStr(pen);
-
       frxReport1.PrepareReport(true);
     end
     else if tp_ = 3 then
@@ -935,7 +1050,6 @@ begin
   set_obj;
   if ComboBox1.ItemIndex = 0 then // Счета
   begin
-
     Label3.Caption := 'Период отчета';
     Label9.Visible := false;
     DBLookupComboboxEh5.Visible := false;
@@ -943,7 +1057,6 @@ begin
     CheckBox2.Visible := true;
     CheckBox4.Visible := true;
     CheckBox5.Visible := true;
-
     Label13.Enabled:=True;
     cxImageComboBox1.Enabled:=True;
   end
@@ -1012,8 +1125,6 @@ procedure TForm_print_bills.FormCreate(Sender: TObject);
 begin
   Height:=422;
   Width:=417;
-  //по умолчанию для арх справки - не показывать старый фонд
-  //OD_kart.SetVariable('var_', 0);
   //Выбран поиск по адресу (по умолчанию)
   if DataModule1.OraclePackage1.CallIntegerFunction('scott.Utils.get_int_param', ['RECHARGE_BILL']) = 1 then
     CheckBox3.Checked := True;
