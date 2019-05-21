@@ -203,6 +203,7 @@ type
     BitBtn2: TBitBtn;
     OD_list_kartFK_KLSK_OBJ: TFloatField;
     OD_check_conn_gis: TOracleDataSet;
+    OD_list_kartDT_CR: TDateTimeField;
     procedure wwDBGrid1DblClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure wwDBGrid1KeyDown(Sender: TObject; var Key: Word;
@@ -273,7 +274,8 @@ type
     isAllowEdit_k_: Integer;
     isAllowEdit_k2_: Integer;
     isAllowEdit_k3_: Integer;
-    isAllowEdit_l_: Integer;
+// ред.21.05.2019 - льготы не нужны
+//    isAllowEdit_l_: Integer;
   end;
 
 var
@@ -293,23 +295,37 @@ uses Unit_form_kart, Unit_Mainform, DM_module1, Unit_find_adr,
 
 procedure TForm_list_kart.setAllowEdit_kart;
 begin
-  //проверка прав на доступ к объекту в Form_kart
-  isAllowEdit_k_:=DataModule1.OraclePackage1.CallIntegerFunction(
+  // проверка прав на доступ к объекту в Form_kart
+   if (Utils.checkAccessRigths(Form_Main.accessList, OD_list_kart.FieldByName('reu').AsString,
+      0, 'доступ к карт.площадь')) then isAllowEdit_k2_:=1
+      else isAllowEdit_k2_:=0;
+   if (Utils.checkAccessRigths(Form_Main.accessList, null,
+      OD_list_kart.FieldByName('fk_pasp_org').AsInteger,
+      'доступ к пасп.столу')) then isAllowEdit_k_:=1
+      else isAllowEdit_k_:=0;
+
+{  isAllowEdit_k_:=DataModule1.OraclePackage1.CallIntegerFunction(
       'scott.UTILS.allow_edit_lsk', [OD_list_kart.FieldByName('lsk').AsString, 'доступ к пасп.столу']);
   isAllowEdit_k2_:=DataModule1.OraclePackage1.CallIntegerFunction(
       'scott.UTILS.allow_edit_lsk', [OD_list_kart.FieldByName('lsk').AsString, 'доступ к карт.площадь']);
   isAllowEdit_k3_:=DataModule1.OraclePackage1.CallIntegerFunction(
       'scott.UTILS.allow_edit_lsk', [OD_list_kart.FieldByName('lsk').AsString, 'доступ к карт.статус']);
-  isAllowEdit_l_:=DataModule1.OraclePackage1.CallIntegerFunction(
-      'scott.UTILS.allow_edit_lsk', [OD_list_kart.FieldByName('lsk').AsString, 'доступ к льготам']);
+      }
+// ред.21.05.2019 - льготы не нужны
+//  isAllowEdit_l_:=DataModule1.OraclePackage1.CallIntegerFunction(
+//      'scott.UTILS.allow_edit_lsk', [OD_list_kart.FieldByName('lsk').AsString, 'доступ к льготам']);
 
 end;
 
 procedure TForm_list_kart.setAllowEdit_list;
 begin
   //проверка прав на доступ к объекту в Form_list_kart
-  isAllowEdit_:=DataModule1.OraclePackage1.CallIntegerFunction(
-      'scott.UTILS.allow_edit_lsk', [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, 'доступ к карт.рэу']);
+   if (Utils.checkAccessRigths(Form_Main.accessList, OD_list_kart.FieldByName('reu').AsString,
+    0, 'доступ к карт.рэу')) then isAllowEdit_:=1
+    else isAllowEdit_:=0;
+
+//  isAllowEdit_:=DataModule1.OraclePackage1.CallIntegerFunction(
+//      'scott.UTILS.allow_edit_lsk', [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, 'доступ к карт.рэу']);
 
   if (Form_main.arch_mg_ = '') then
     begin
@@ -436,7 +452,10 @@ begin
         '(select * from scott.arch_kart where mg='''+Form_main.arch_mg_+''')', False);
       //поменять алиас ELSK
       change_alias(OD_list_kart,'k.elsk',
-        'null as elsk');
+        'null as elsk', False);
+      //поменять алиас DT_CR
+      change_alias(OD_list_kart,'k.dt_cr',
+        'to_date(null) as dt_cr');
   end
   else if (Form_main.arch_mg_ = '') and (mgold_ <> '') then
   begin  // из архива в текущее
@@ -445,7 +464,10 @@ begin
         'scott.kart', False);
       //поменять алиас ELSK
       change_alias(OD_list_kart, 'null as elsk',
-        'k.elsk');
+        'k.elsk', False);
+      //поменять алиас DT_CR
+      change_alias(OD_list_kart,'to_date(null) as dt_cr',
+        'k.dt_cr');
   end
   else if (Form_main.arch_mg_ <> '') and (mgold_ <> '') then
   begin  // из архива в архив

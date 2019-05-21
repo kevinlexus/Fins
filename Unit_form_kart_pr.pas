@@ -477,7 +477,9 @@ begin
     end;
 
   //разрешить ли редактирование льгот
-  if (Form_list_kart.isAllowEdit_l_ = 0) and (Form_main.arch_mg_ = '') then
+{  ред.21.05.2019 - льготы не нужны
+
+if (Form_list_kart.isAllowEdit_l_ = 0) and (Form_main.arch_mg_ = '') then
     begin
       //Caption:='Проживающий - Редактирование запрещено';
       Button1.Enabled:=false;
@@ -501,7 +503,7 @@ begin
       OD_lg_docs.ReadOnly:=false;
       OD_lg_pr.ReadOnly:=false;
       Button2.Enabled:=true;
-    end;
+    end;}
 end;
 
 procedure TForm_kart_pr.state_arch2(mgold_: String);

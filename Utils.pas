@@ -5,6 +5,17 @@ interface
    Wwdbgrid, DM_module1, oracle, Math, ShellAPI, ShlObj, Controls, Messages,
    ComCtrls, Menus, Unit_smpl_chk;
 
+  // тип запись о правах редактирования пользователя
+  type
+  TAccessRec = record
+   reu:string;
+   paspOrg:Integer;
+   cd:string;
+   isAccessGranted: Boolean;
+   end;
+type
+  TAccessRecArray = array of TAccessRec ;
+
  function FF(form_str_: String; show_: Integer): Integer; //FindForm
  function exp_to_dbf(dset: TOracleDataset; dbfname_: String ) :Integer;
  function exp_to_dbf_prec(dset: TOracleDataset; aTable, aSchema, aDbfname: String ): Integer;
@@ -29,7 +40,6 @@ interface
  procedure change_alias(dset: TOracleDataset; str1: String; str2: String); overload;
  procedure change_alias(AODset: array of TOracleDataset; str1: String; str2: String); overload;
  procedure change_alias(dset: TOracleDataset; str1: String; str2: String; reopenDS: Boolean); overload;
- 
  function exp_to_txt(dset: TOracleDataset; path_: string; fname_: String;
    fldsum_: String; issum_:Integer; iscnt_:Integer; ishead_:Integer; oem_: integer; bank_cd_:String) :Integer;
  procedure SetMenu(acc_: Integer);
@@ -39,6 +49,8 @@ interface
  procedure DisableGhosting;
  function simplBitInvrt(l_str: string): string;
  function smpl_chk(p_var: Integer): Integer;
+ function checkAccessRigths(var al: TAccessRecArray; pReu: string;
+    pPaspOrg: Integer; pCd: String): Boolean;
 
 implementation
   uses Unit_Mainform;
@@ -663,7 +675,7 @@ procedure change_alias(AODset: array of TOracleDataset; str1: String; str2: Stri
 var
   a: Integer;
 begin
-  //Смена строки в массиве датосетов (очень удобно!)
+  //Смена строки в массиве датасетов (очень удобно!)
   for a:=0 to High(AODset)  do
   begin
     change_alias(AODset[a], str1, str2);
@@ -1085,6 +1097,69 @@ begin
       if l_ignore=1 then
         Result:=0;
     end;
+end;
+
+
+// проверка прав пользователя, с кэшем
+function checkAccessRigths(var al: TAccessRecArray; pReu: string;
+    pPaspOrg: Integer; pCd: String): Boolean;
+var
+size, cnt, i : Integer;
+
+begin
+  size := Length(al);
+  // поискать права в массиве
+  for i := 0 to size-1 do
+  begin
+    with al[i] do
+    begin
+      if (reu = pReu) and (paspOrg = pPaspOrg) and (cd = pCd) then
+      begin
+        // найдена запись о правах доступа пользователя
+        Result:=isAccessGranted;
+        Exit;
+      end;
+    end;
+  end;
+
+{  SetLength(al, 2);
+  with al[1] do
+  begin
+    reu:='Чушь';
+    paspOrg:=2223;
+    cd:='Delphi govno!';
+    isAccessGranted:=True;
+  end;
+ }
+  //size := Length(al);
+
+  // не нашли в массиве, спросить у БД
+  cnt:=DataModule1.OraclePackage1.CallIntegerFunction(
+      'scott.UTILS.allow_edit_lsk_by_reu', [pReu, pPaspOrg, pCd]);
+  if (cnt >=1) then
+    Result:=True
+  else
+    Result:=False;
+
+  size := size+1;
+  SetLength(al, size);
+
+{  with al[0] do
+  begin
+    reu:=pReu;
+    paspOrg:=pPaspOrg;
+    cd:=pCd;
+    isAccessGranted:=Result;
+  end;
+ }
+  with al[size-1] do
+  begin
+    reu:=pReu;
+    paspOrg:=pPaspOrg;
+    cd:=pCd;
+    isAccessGranted:=Result;
+  end;
+
 end;
 
 end.

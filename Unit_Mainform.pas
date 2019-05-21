@@ -31,7 +31,6 @@ uses
   Unit_spr_redirect, u_frmTwoPeriods;
 type
   TShowForm = function(App, Scr, Sess_: integer): integer; stdcall;
-
   TForm_Main = class(TForm)
     MainMenu1: TMainMenu;
     N1: TMenuItem;
@@ -387,6 +386,8 @@ type
     // текущий период
     cur_mg_: string;
 
+    // текущая дата, выбранная при входе в приложение
+    cur_dt: TDateTime;
     exepath_: string;
     default_reu_: string;
     strSearch_: string;
@@ -426,6 +427,8 @@ type
     ECR: OleVariant;
     //наличие ККМ
     have_cash: Integer;
+    // массив записей о правах пользователя
+    accessList:TAccessRecArray;
   end;
 
 var
