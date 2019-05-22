@@ -299,7 +299,7 @@ begin
    if (Utils.checkAccessRigths(Form_Main.accessList, OD_list_kart.FieldByName('reu').AsString,
       0, 'доступ к карт.площадь')) then isAllowEdit_k2_:=1
       else isAllowEdit_k2_:=0;
-   if (Utils.checkAccessRigths(Form_Main.accessList, null,
+   if (Utils.checkAccessRigths(Form_Main.accessList, '',
       OD_list_kart.FieldByName('fk_pasp_org').AsInteger,
       'доступ к пасп.столу')) then isAllowEdit_k_:=1
       else isAllowEdit_k_:=0;
@@ -389,8 +389,9 @@ begin
 
     // отключить возможность корректировки счетчиков в новой версии
     // кроме отопления, пока не перенес в scott.meter!
-  if DataModule1.OraclePackage1.CallIntegerFunction
-               ('scott.Utils.get_int_param', ['VER_METER1']) <> 0 then
+//  if DataModule1.OraclePackage1.CallIntegerFunction
+//               ('scott.Utils.get_int_param', ['VER_METER1']) <> 0 then
+  if getDoublePar(Form_main.paramList, 'VER_METER1') <> 0 then
   begin
      OD_list_kart.FieldByName('mhw').ReadOnly:=true;
      OD_list_kart.FieldByName('mgw').ReadOnly:=true;

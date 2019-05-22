@@ -1,0 +1,203 @@
+unit Unit_form_pay_dolg;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, GridsEh, DBGridEh, DB, OracleData, StdCtrls;
+
+type
+  TForm_get_pay_dolg = class(TForm)
+    DBGridEh1: TDBGridEh;
+    GroupBox1: TGroupBox;
+    Button1: TButton;
+    Button2: TButton;
+    CheckBox1: TCheckBox;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormCreate(Sender: TObject);
+    procedure OD_chargepayBeforeInsert(DataSet: TDataSet);
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure DBGridEh1KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure exit_ok;
+    procedure DBGridEh1KeyPress(Sender: TObject; var Key: Char);
+    procedure CheckBox1Click(Sender: TObject);
+    procedure DBGridEh1ColExit(Sender: TObject);
+    procedure DBGridEh1ColEnter(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    procedure recalc;
+    { Public declarations }
+  end;
+
+var
+  Form_get_pay_dolg: TForm_get_pay_dolg;
+
+implementation
+
+uses Unit_get_pay_nal, Utils, Math;
+
+{$R *.dfm}
+
+procedure TForm_get_pay_dolg.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  Action:=caFree;
+end;
+
+procedure TForm_get_pay_dolg.FormCreate(Sender: TObject);
+begin
+  Form_get_pay_nal.OD_chargepay.Filter:='(summa > 0) and (sal > 0)';
+  Form_get_pay_nal.OD_chargepay.Filtered:=true;
+  DBGridEh1.SumList.RecalcAll;
+  DBGridEh1.SelectedIndex:=5;
+end;
+
+procedure TForm_get_pay_dolg.OD_chargepayBeforeInsert(DataSet: TDataSet);
+begin
+  Abort;
+end;
+
+procedure TForm_get_pay_dolg.Button1Click(Sender: TObject);
+begin
+  exit_ok;
+  Close;
+end;
+
+procedure TForm_get_pay_dolg.Button2Click(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TForm_get_pay_dolg.exit_ok;
+begin
+  with Form_get_pay_nal do
+  begin
+  if not (OD_chargepay.State in [dsBrowse]) then
+    OD_chargepay.Post;
+  end;
+
+  with Form_get_pay_nal.OD_c_kwtp_temp do
+  begin
+    Edit;
+    FieldByName('summa').AsFloat:=
+      DBGridEh1.SumList.SumCollection.Items[2].SumValue;
+    FieldByName('penya').AsFloat:=
+      DBGridEh1.SumList.SumCollection.Items[3].SumValue;
+    FieldByName('itog').AsFloat:=
+      DBGridEh1.SumList.SumCollection.Items[2].SumValue+
+      DBGridEh1.SumList.SumCollection.Items[3].SumValue;
+    Post;
+  end;
+end;
+
+
+procedure TForm_get_pay_dolg.DBGridEh1KeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+{  if (key = VK_Return)
+    and (Form_get_pay_nal.OD_chargepay.State<>dsEdit)
+    and (DBGridEh1.SelectedField.FieldName='ITOG') then
+  begin
+    exit_ok;
+    Close;
+  end
+  else}
+  if (key = VK_Return) and
+    (DBGridEh1.DataSource.DataSet.Eof = True)
+    and (DBGridEh1.SelectedField.FieldName='ITOG') then
+  begin
+    exit_ok;
+    Close;
+  end
+  else if (key = VK_Return) and
+    (DBGridEh1.DataSource.DataSet.Eof <> True)
+    and (DBGridEh1.SelectedField.FieldName='ITOG') then
+  begin
+    key:=VK_DOWN;
+  end;
+
+end;
+
+procedure TForm_get_pay_dolg.DBGridEh1KeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  if RetKey(Key) then
+    Key:= '.';
+
+end;
+
+procedure TForm_get_pay_dolg.CheckBox1Click(Sender: TObject);
+begin
+  if CheckBox1.Checked = true then
+  begin
+    Form_get_pay_nal.OD_chargepay.Filtered:=false;
+  end
+  else
+  begin
+    Form_get_pay_nal.OD_chargepay.Filter:='(summa > 0) and (sal > 0)';
+    Form_get_pay_nal.OD_chargepay.Filtered:=true;
+  end;
+  DBGridEh1.SumList.RecalcAll;
+end;
+
+procedure TForm_get_pay_dolg.recalc;
+var
+  penya_, summa_, itog_, itogD_, proc1_, penya2_, tt2 : Double;
+begin
+  penya_:=DBGridEh1.DataSource.DataSet.FieldByName('PENYA').AsFloat;
+  summa_:=DBGridEh1.DataSource.DataSet.FieldByName('SUMMA').AsFloat;
+  itogD_:=summa_+penya_;
+  if itogD_ <> 0 then
+  begin
+  itog_:=DBGridEh1.DataSource.DataSet.FieldByName('ITOG').AsFloat;
+
+  proc1_:=RoundTo((summa_/itogD_),-4); // % суммы долга
+
+  DBGridEh1.DataSource.DataSet.FieldByName('SUMMA').AsFloat:=
+    RoundTo((itog_ * proc1_),-2);
+  tt2:=RoundTo((itog_ * proc1_),-2);
+  //Ебатень какая то почему здесь надо округлять не пойму?????
+  penya2_:=RoundTo(itog_- tt2, -2);
+  DBGridEh1.DataSource.DataSet.FieldByName('PENYA').AsFloat:=
+    penya2_;
+  end
+  else
+  begin
+    //зануляем ошибочно введенную итоговую сумму 
+    DBGridEh1.DataSource.DataSet.FieldByName('ITOG').AsFloat:=0;
+  end;
+end;
+
+procedure TForm_get_pay_dolg.DBGridEh1ColExit(Sender: TObject);
+var
+  penya_, summa_, itog_, itogD_, proc1_, penya2_ : Double;
+begin
+  if (DBGridEh1.SelectedField.FieldName='SUMMA') or
+  (DBGridEh1.SelectedField.FieldName='PENYA') then
+  begin
+//    recalc;
+  end
+  else if
+   (DBGridEh1.SelectedField.FieldName='ITOG') then
+  begin
+
+  end;
+end;
+
+procedure TForm_get_pay_dolg.DBGridEh1ColEnter(Sender: TObject);
+var
+  penya_, summa_: Double;
+begin
+  if (DBGridEh1.SelectedField.FieldName='ITOG') then
+  begin
+  penya_:=DBGridEh1.DataSource.DataSet.FieldByName('PENYA').AsFloat;
+  summa_:=DBGridEh1.DataSource.DataSet.FieldByName('SUMMA').AsFloat;
+  DBGridEh1.DataSource.DataSet.FieldByName('ITOG').AsFloat:=penya_+summa_;
+  end;
+
+end;
+
+end.

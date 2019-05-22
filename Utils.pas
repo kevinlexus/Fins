@@ -5,7 +5,7 @@ interface
    Wwdbgrid, DM_module1, oracle, Math, ShellAPI, ShlObj, Controls, Messages,
    ComCtrls, Menus, Unit_smpl_chk;
 
-  // тип запись о правах редактировани€ пользовател€
+  // тип - запись о правах редактировани€ пользовател€
   type
   TAccessRec = record
    reu:string;
@@ -15,6 +15,18 @@ interface
    end;
 type
   TAccessRecArray = array of TAccessRec ;
+
+  // тип - запись о параметре
+  type
+  TParamRec = record
+   tp:Integer; // тип 0-Integer, 1-String, 2-Date
+   cd:String; // CD параметра
+   n1:Double; // значение типа Number
+   s1:String; // значение типа Varchar2
+   d1:TDateTime;   // значение типа Date
+   end;
+type
+  TParamRecArray = array of TParamRec ;
 
  function FF(form_str_: String; show_: Integer): Integer; //FindForm
  function exp_to_dbf(dset: TOracleDataset; dbfname_: String ) :Integer;
@@ -49,8 +61,9 @@ type
  procedure DisableGhosting;
  function simplBitInvrt(l_str: string): string;
  function smpl_chk(p_var: Integer): Integer;
- function checkAccessRigths(var al: TAccessRecArray; pReu: string;
+ function checkAccessRigths(var al: TAccessRecArray; pReu: String;
     pPaspOrg: Integer; pCd: String): Boolean;
+ function getDoublePar(var al: TParamRecArray; pCd: String): Double;
 
 implementation
   uses Unit_Mainform;
@@ -1101,7 +1114,7 @@ end;
 
 
 // проверка прав пользовател€, с кэшем
-function checkAccessRigths(var al: TAccessRecArray; pReu: string;
+function checkAccessRigths(var al: TAccessRecArray; pReu: String;
     pPaspOrg: Integer; pCd: String): Boolean;
 var
 size, cnt, i : Integer;
@@ -1113,26 +1126,27 @@ begin
   begin
     with al[i] do
     begin
-      if (reu = pReu) and (paspOrg = pPaspOrg) and (cd = pCd) then
+      if pReu <> '' then
       begin
-        // найдена запись о правах доступа пользовател€
-        Result:=isAccessGranted;
-        Exit;
+        if (reu = pReu) and (paspOrg = 0) and (cd = pCd) then
+        begin
+          // найдена запись о правах доступа пользовател€ по уровню ” 
+          Result:=isAccessGranted;
+          Exit;
+        end;
+      end
+      else if pPaspOrg <> 0 then
+      begin
+        if (reu = '') and (paspOrg = pPaspOrg) and (cd = pCd) then
+        begin
+          // найдена запись о правах доступа пользовател€ по уровню пасп стола
+          Result:=isAccessGranted;
+          Exit;
+        end;
       end;
+
     end;
   end;
-
-{  SetLength(al, 2);
-  with al[1] do
-  begin
-    reu:='„ушь';
-    paspOrg:=2223;
-    cd:='Delphi govno!';
-    isAccessGranted:=True;
-  end;
- }
-  //size := Length(al);
-
   // не нашли в массиве, спросить у Ѕƒ
   cnt:=DataModule1.OraclePackage1.CallIntegerFunction(
       'scott.UTILS.allow_edit_lsk_by_reu', [pReu, pPaspOrg, pCd]);
@@ -1143,21 +1157,50 @@ begin
 
   size := size+1;
   SetLength(al, size);
-
-{  with al[0] do
-  begin
-    reu:=pReu;
-    paspOrg:=pPaspOrg;
-    cd:=pCd;
-    isAccessGranted:=Result;
-  end;
- }
   with al[size-1] do
   begin
     reu:=pReu;
     paspOrg:=pPaspOrg;
     cd:=pCd;
     isAccessGranted:=Result;
+  end;
+
+end;
+
+
+
+// получение параметра, с кэшем
+function getDoublePar(var al: TParamRecArray; pCd: String): Double;
+var
+size, i : Integer;
+val: Double;
+begin
+  size := Length(al);
+  // поискать права в массиве
+  for i := 0 to size-1 do
+  begin
+    with al[i] do
+    begin
+        if cd = pCd  then
+        begin
+          if tp<>0 then
+            Raise Exception.CreateFmt(
+              '«апрашиваемый параметр другого типа! : cd=''%s''', [pCd]);
+          // найден параметр
+          Result:=n1;
+          Exit;
+        end;
+    end;
+  end;
+  // не нашли в массиве, спросить у Ѕƒ
+  val:=DataModule1.OraclePackage1.CallFloatFunction
+               ('scott.Utils.get_int_param', [pCd]);
+  size := size+1;
+  SetLength(al, size);
+  with al[size-1] do
+  begin
+    n1:=val;
+    cd:=pCd;
   end;
 
 end;

@@ -1,0 +1,43 @@
+unit Unit_log_actions;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, OracleData, StdCtrls, ComCtrls, wwriched, Grids, Wwdbigrd,
+  Wwdbgrid;
+
+type
+  TForm_log_actions = class(TForm)
+    OD_data: TOracleDataSet;
+    DS_data: TDataSource;
+    wwDBGrid1: TwwDBGrid;
+    wwDBRichEdit1: TwwDBRichEdit;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form_log_actions: TForm_log_actions;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm_log_actions.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  Action:=caFree;
+end;
+
+procedure TForm_log_actions.FormCreate(Sender: TObject);
+begin
+  OD_data.Active:=False;
+  OD_data.Active:=True;
+end;
+
+end.

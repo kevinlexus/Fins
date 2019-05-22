@@ -1,0 +1,83 @@
+unit Unit_form_saldo;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, DB, OracleData, DBGridEh, Grids, Wwdbigrd,
+  Wwdbgrid;
+
+type
+  TForm_saldo = class(TForm)
+    OD_saldo: TOracleDataSet;
+    GroupBox1: TGroupBox;
+    Button3: TButton;
+    DS_saldo: TDataSource;
+    OD_saldoLSK: TStringField;
+    OD_saldoNM: TStringField;
+    OD_saldoSUMMA: TFloatField;
+    OD_saldoNAME: TStringField;
+    wwDBGrid1: TwwDBGrid;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure Button3Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure state_arch2(mgold_: String);
+  private
+  public
+    { Public declarations }
+  end;
+
+var
+  Form_saldo: TForm_saldo;
+
+implementation
+
+uses Unit_Mainform;
+
+{$R *.dfm}
+
+procedure TForm_saldo.state_arch2(mgold_: String);
+begin // смена состояний формы
+with Form_saldo do
+begin
+  OD_saldo.Active:=false;
+  if (Form_main.arch_mg_ <> '') and (mgold_='') then
+  begin  // из текущего в архив
+    Caption:='Сальдо по Л/С - Архив';
+    OD_saldo.SetVariable('mg', Form_main.arch_mg_);
+  end
+  else if (Form_main.arch_mg_ = '') and (mgold_ <> '') then
+  begin  // из архива в текущее
+    Caption:='Сальдо по Л/С';
+    OD_saldo.SetVariable('mg', mgold_);
+  end
+  else if (Form_main.arch_mg_ <> '') and (mgold_ <> '') then
+  begin  // из архива в архив
+    Caption:='Сальдо по Л/С - Архив';
+    OD_saldo.SetVariable('mg', Form_main.arch_mg_);
+  end
+  else  // по умолчанию
+  begin
+    Caption:='Сальдо по Л/С';
+    OD_saldo.SetVariable('mg', Form_main.cur_mg_);
+  end;
+  OD_saldo.Active:=true;
+end;
+end;
+
+procedure TForm_saldo.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Action:=caFree;
+end;
+
+procedure TForm_saldo.Button3Click(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TForm_saldo.FormCreate(Sender: TObject);
+begin
+  state_arch2('');
+end;
+
+end.

@@ -429,6 +429,8 @@ type
     have_cash: Integer;
     // массив записей о правах пользователя
     accessList:TAccessRecArray;
+    // массив параметров
+    paramList:TParamRecArray;
   end;
 
 var

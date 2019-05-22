@@ -889,7 +889,8 @@ begin
   LockWindowUpdate(handle);
   //Проверка корректности статусов счетчиков, статусов проживающих
   //Без установки признака валидности карточки
-  if DataModule1.OraclePackage1.CallIntegerFunction('scott.Utils.get_int_param', ['SHOW_ALERT1']) = 1 then
+//  if DataModule1.OraclePackage1.CallIntegerFunction('scott.Utils.get_int_param', ['SHOW_ALERT1']) = 1 then
+  if getDoublePar(Form_main.paramList, 'SHOW_ALERT1') = 1 then
   begin
     err_ := DataModule1.OraclePackage1.CallStringFunction('scott.UTILS.tst_krt', [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, 0]);
     if err_ <> '' then
@@ -972,8 +973,9 @@ begin
 
 
     // отключить возможность корректировки счетчиков в новой версии
-    if DataModule1.OraclePackage1.CallIntegerFunction
-                 ('scott.Utils.get_int_param', ['VER_METER1']) <> 0 then
+//    if DataModule1.OraclePackage1.CallIntegerFunction
+//                 ('scott.Utils.get_int_param', ['VER_METER1']) <> 0 then
+    if getDoublePar(Form_main.paramList, 'VER_METER1') <> 0 then
     begin
         DBLookupComboboxEh3.Enabled := false;
         DBLookupComboboxEh13.Enabled := false;
@@ -1237,10 +1239,11 @@ end;
 
 procedure TForm_kart.FormCreate(Sender: TObject);
 begin
-  // отключить возможность корректировки счетчиков в новой версии
-  if DataModule1.OraclePackage1.CallIntegerFunction
-               ('scott.Utils.get_int_param', ['VER_METER1']) <> 0 then
+// отключить возможность корректировки счетчиков в новой версии
+  if getDoublePar(Form_main.paramList, 'VER_METER1') <> 0 then
      wwCheckBox3.Enabled:=False;
+//  if DataModule1.OraclePackage1.CallIntegerFunction
+//               ('scott.Utils.get_int_param', ['VER_METER1']) <> 0 then
 
   //Настройки расположения формы
   cxprprtstr1.Active:=True;

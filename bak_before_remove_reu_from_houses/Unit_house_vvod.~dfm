@@ -1,0 +1,2087 @@
+object Form_house_vvod: TForm_house_vvod
+  Left = 194
+  Top = 323
+  Width = 1145
+  Height = 512
+  Caption = #1042#1074#1086#1076' '#1086#1073#1098#1105#1084#1086#1074' '#1087#1086' '#1076#1086#1084#1072#1084
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  FormStyle = fsMDIChild
+  Icon.Data = {
+    0000010001002020080000000000A80800001600000028000000200000004000
+    0000010008000000000000040000000000000000000000000000000000000000
+    00004000000080000000FF000000002000004020000080200000FF2000000040
+    00004040000080400000FF400000006000004060000080600000FF6000000080
+    00004080000080800000FF80000000A0000040A0000080A00000FFA0000000C0
+    000040C0000080C00000FFC0000000FF000040FF000080FF0000FFFF00000000
+    20004000200080002000FF002000002020004020200080202000FF2020000040
+    20004040200080402000FF402000006020004060200080602000FF6020000080
+    20004080200080802000FF80200000A0200040A0200080A02000FFA0200000C0
+    200040C0200080C02000FFC0200000FF200040FF200080FF2000FFFF20000000
+    40004000400080004000FF004000002040004020400080204000FF2040000040
+    40004040400080404000FF404000006040004060400080604000FF6040000080
+    40004080400080804000FF80400000A0400040A0400080A04000FFA0400000C0
+    400040C0400080C04000FFC0400000FF400040FF400080FF4000FFFF40000000
+    60004000600080006000FF006000002060004020600080206000FF2060000040
+    60004040600080406000FF406000006060004060600080606000FF6060000080
+    60004080600080806000FF80600000A0600040A0600080A06000FFA0600000C0
+    600040C0600080C06000FFC0600000FF600040FF600080FF6000FFFF60000000
+    80004000800080008000FF008000002080004020800080208000FF2080000040
+    80004040800080408000FF408000006080004060800080608000FF6080000080
+    80004080800080808000FF80800000A0800040A0800080A08000FFA0800000C0
+    800040C0800080C08000FFC0800000FF800040FF800080FF8000FFFF80000000
+    A0004000A0008000A000FF00A0000020A0004020A0008020A000FF20A0000040
+    A0004040A0008040A000FF40A0000060A0004060A0008060A000FF60A0000080
+    A0004080A0008080A000FF80A00000A0A00040A0A00080A0A000FFA0A00000C0
+    A00040C0A00080C0A000FFC0A00000FFA00040FFA00080FFA000FFFFA0000000
+    C0004000C0008000C000FF00C0000020C0004020C0008020C000FF20C0000040
+    C0004040C0008040C000FF40C0000060C0004060C0008060C000FF60C0000080
+    C0004080C0008080C000FF80C00000A0C00040A0C00080A0C000FFA0C00000C0
+    C00040C0C00080C0C000FFC0C00000FFC00040FFC00080FFC000FFFFC0000000
+    FF004000FF008000FF00FF00FF000020FF004020FF008020FF00FF20FF000040
+    FF004040FF008040FF00FF40FF000060FF004060FF008060FF00FF60FF000080
+    FF004080FF008080FF00FF80FF0000A0FF0040A0FF0080A0FF00FFA0FF0000C0
+    FF0040C0FF0080C0FF00FFC0FF0000FFFF0040FFFF0080FFFF00FFFFFF000000
+    0000000000000000000000000000000000000000000000000000000000000092
+    92929292929292929292929292929292929292929292929292929292920000FF
+    92929292929292929292929292929292929292929292929292929292920000FF
+    FFDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDB92920000FF
+    FFDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDB92920000FF
+    FFDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDB92920000FF
+    FFDBDBFFFFDBDBFFFFDBDBFFFFDBDBFFFFDBDBFFFFDBDBFFFFDBDB92920000FF
+    FFDBDB00FFDBDB00FFDBDB00FFDBDB00FFDBDB00FFDBDB00FFDBDB92920000FF
+    FFDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDB92920000FF
+    FFDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDB92920000FF
+    FFDBDBFFFFDBDBFFFFDBDBDBDBDBDBFFFFDBDBDBDBDBDBDBDBDBDB92920000FF
+    FFDBDB00FFDBDB0000FFDBDBDBDBDB0000FFDBDBDBDBDBDBDBDBDB92920000FF
+    FFDBDBDBDBDBDB0000FFDBDBDBDBDB0000FFDBDBDBDBDBDBDBDBDB92920000FF
+    FFDBDBDBDBDBDBDBDB00FFDBDBDB00DBDB00FFDBDBDBDBDBDBDBDB92920000FF
+    FFDBDBFFFFDBDBDBDBDB00FFFF00DBDBDBDB00FFFFDBDBDBDBDBDB92920000FF
+    FFDBDB00FFDBDBDBDBDBDB0000FFDBDBDBDBDB0000FFDBDBDBDBDB92920000FF
+    FFDBDBDBDBDBDBDBDBDBDB0000FFDBDBDBDBDB0000FFDBDBDBDBDB92920000FF
+    FFDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDB00FFDBDBDBDB92920000FF
+    FFDBDBFFFFDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDB00FFFFDBDB92920000FF
+    FFDBDB00FFDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDB0000FFDB92920000FF
+    FFDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDB0000FFDB92920000FF
+    FFDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDB92920000FF
+    FFDBDBFFFFDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDB92920000FF
+    FFDBDB00FFDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDB92920000FF
+    FFDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDB92920000FF
+    FFDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDB92920000FF
+    FFDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDB92920000FF
+    FFDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDB92920000FF
+    FFDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDB92920000FF
+    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF92920000FF
+    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF92000000
+    0000000000000000000000000000000000000000000000000000000000008000
+    0001000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    000000000000000000000000000000000000000000000000000080000001}
+  OldCreateOrder = False
+  Position = poMainFormCenter
+  Visible = True
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnPaint = FormPaint
+  PixelsPerInch = 96
+  TextHeight = 13
+  object wwDBNavigator1: TwwDBNavigator
+    Left = 8
+    Top = 408
+    Width = 350
+    Height = 25
+    DataSource = DS_vvod
+    Options = [noConfirmDelete, noUseInternationalText]
+    ShowHint = True
+    RepeatInterval.InitialDelay = 500
+    RepeatInterval.Interval = 100
+    ParentShowHint = False
+    object wwDBNavigator1First: TwwNavButton
+      Left = 0
+      Top = 0
+      Width = 25
+      Height = 25
+      Hint = #1050' '#1087#1077#1088#1074#1086#1081' '#1079#1072#1087#1080#1089#1080
+      ImageIndex = -1
+      NumGlyphs = 2
+      Spacing = 4
+      Transparent = False
+      Caption = 'wwDBNavigator1First'
+      Enabled = False
+      DisabledTextColors.ShadeColor = clGray
+      DisabledTextColors.HighlightColor = clBtnHighlight
+      Index = 0
+      Style = nbsFirst
+    end
+    object wwDBNavigator1PriorPage: TwwNavButton
+      Left = 25
+      Top = 0
+      Width = 25
+      Height = 25
+      Hint = #1053#1072#1079#1072#1076' '#1085#1072' 10 '#1079#1072#1087#1080#1089#1077#1081
+      ImageIndex = -1
+      NumGlyphs = 2
+      Spacing = 4
+      Transparent = False
+      Caption = 'wwDBNavigator1PriorPage'
+      Enabled = False
+      DisabledTextColors.ShadeColor = clGray
+      DisabledTextColors.HighlightColor = clBtnHighlight
+      Index = 1
+      Style = nbsPriorPage
+    end
+    object wwDBNavigator1Prior: TwwNavButton
+      Left = 50
+      Top = 0
+      Width = 25
+      Height = 25
+      Hint = #1055#1088#1077#1076#1099#1076#1091#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
+      ImageIndex = -1
+      NumGlyphs = 2
+      Spacing = 4
+      Transparent = False
+      Caption = 'wwDBNavigator1Prior'
+      Enabled = False
+      DisabledTextColors.ShadeColor = clGray
+      DisabledTextColors.HighlightColor = clBtnHighlight
+      Index = 2
+      Style = nbsPrior
+    end
+    object wwDBNavigator1Next: TwwNavButton
+      Left = 75
+      Top = 0
+      Width = 25
+      Height = 25
+      Hint = #1057#1083#1077#1076#1091#1102#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
+      ImageIndex = -1
+      NumGlyphs = 2
+      Spacing = 4
+      Transparent = False
+      Caption = 'wwDBNavigator1Next'
+      Enabled = False
+      DisabledTextColors.ShadeColor = clGray
+      DisabledTextColors.HighlightColor = clBtnHighlight
+      Index = 3
+      Style = nbsNext
+    end
+    object wwDBNavigator1NextPage: TwwNavButton
+      Left = 100
+      Top = 0
+      Width = 25
+      Height = 25
+      Hint = #1042#1087#1077#1088#1077#1076' '#1085#1072' 10 '#1079#1072#1087#1080#1089#1077#1081
+      ImageIndex = -1
+      NumGlyphs = 2
+      Spacing = 4
+      Transparent = False
+      Caption = 'wwDBNavigator1NextPage'
+      Enabled = False
+      DisabledTextColors.ShadeColor = clGray
+      DisabledTextColors.HighlightColor = clBtnHighlight
+      Index = 4
+      Style = nbsNextPage
+    end
+    object wwDBNavigator1Last: TwwNavButton
+      Left = 125
+      Top = 0
+      Width = 25
+      Height = 25
+      Hint = #1055#1077#1088#1077#1081#1090#1080' '#1082' '#1087#1086#1089#1083#1077#1076#1085#1077#1081' '#1079#1072#1087#1080#1089#1080
+      ImageIndex = -1
+      NumGlyphs = 2
+      Spacing = 4
+      Transparent = False
+      Caption = 'wwDBNavigator1Last'
+      Enabled = False
+      DisabledTextColors.ShadeColor = clGray
+      DisabledTextColors.HighlightColor = clBtnHighlight
+      Index = 5
+      Style = nbsLast
+    end
+    object wwDBNavigator1Insert: TwwNavButton
+      Left = 150
+      Top = 0
+      Width = 25
+      Height = 25
+      Hint = #1044#1086#1073#1072#1074#1080#1090#1100' '#1085#1086#1074#1091#1102' '#1079#1072#1087#1080#1089#1100
+      ImageIndex = -1
+      NumGlyphs = 2
+      Spacing = 4
+      Transparent = False
+      Caption = 'wwDBNavigator1Insert'
+      DisabledTextColors.ShadeColor = clGray
+      DisabledTextColors.HighlightColor = clBtnHighlight
+      Index = 6
+      Style = nbsInsert
+      Visible = False
+    end
+    object wwDBNavigator1Delete: TwwNavButton
+      Left = 175
+      Top = 0
+      Width = 25
+      Height = 25
+      Hint = #1059#1076#1072#1083#1080#1090#1100' '#1090#1077#1082#1091#1097#1091#1102' '#1079#1072#1087#1080#1089#1100
+      ImageIndex = -1
+      NumGlyphs = 2
+      Spacing = 4
+      Transparent = False
+      Caption = 'wwDBNavigator1Delete'
+      Enabled = False
+      DisabledTextColors.ShadeColor = clGray
+      DisabledTextColors.HighlightColor = clBtnHighlight
+      Index = 7
+      Style = nbsDelete
+      Visible = False
+    end
+    object wwDBNavigator1Edit: TwwNavButton
+      Left = 200
+      Top = 0
+      Width = 25
+      Height = 25
+      Hint = 'Edit current record'
+      ImageIndex = -1
+      NumGlyphs = 2
+      Spacing = 4
+      Transparent = False
+      Caption = 'wwDBNavigator1Edit'
+      DisabledTextColors.ShadeColor = clGray
+      DisabledTextColors.HighlightColor = clBtnHighlight
+      Index = 8
+      Style = nbsEdit
+    end
+    object wwDBNavigator1Post: TwwNavButton
+      Left = 225
+      Top = 0
+      Width = 25
+      Height = 25
+      Hint = 'Post changes of current record'
+      ImageIndex = -1
+      NumGlyphs = 2
+      Spacing = 4
+      Transparent = False
+      Caption = 'wwDBNavigator1Post'
+      Enabled = False
+      DisabledTextColors.ShadeColor = clGray
+      DisabledTextColors.HighlightColor = clBtnHighlight
+      Index = 9
+      Style = nbsPost
+      Visible = False
+    end
+    object wwDBNavigator1Cancel: TwwNavButton
+      Left = 250
+      Top = 0
+      Width = 25
+      Height = 25
+      Hint = 'Cancel changes made to current record'
+      ImageIndex = -1
+      NumGlyphs = 2
+      Spacing = 4
+      Transparent = False
+      Caption = 'wwDBNavigator1Cancel'
+      Enabled = False
+      DisabledTextColors.ShadeColor = clGray
+      DisabledTextColors.HighlightColor = clBtnHighlight
+      Index = 10
+      Style = nbsCancel
+      Visible = False
+    end
+    object wwDBNavigator1Refresh: TwwNavButton
+      Left = 275
+      Top = 0
+      Width = 25
+      Height = 25
+      Hint = 'Refresh the contents of the dataset'
+      ImageIndex = -1
+      NumGlyphs = 2
+      Spacing = 4
+      Transparent = False
+      Caption = 'wwDBNavigator1Refresh'
+      DisabledTextColors.ShadeColor = clGray
+      DisabledTextColors.HighlightColor = clBtnHighlight
+      Index = 11
+      Style = nbsRefresh
+      Visible = False
+    end
+    object wwDBNavigator1SaveBookmark: TwwNavButton
+      Left = 300
+      Top = 0
+      Width = 25
+      Height = 25
+      Hint = #1055#1086#1089#1090#1072#1074#1080#1090#1100' '#1079#1072#1082#1083#1072#1076#1082#1091' '#1085#1072' '#1090#1077#1082#1091#1097#1077#1081' '#1079#1072#1087#1080#1089#1080
+      ImageIndex = -1
+      NumGlyphs = 2
+      Spacing = 4
+      Transparent = False
+      Caption = 'wwDBNavigator1SaveBookmark'
+      DisabledTextColors.ShadeColor = clGray
+      DisabledTextColors.HighlightColor = clBtnHighlight
+      Index = 12
+      Style = nbsSaveBookmark
+      Visible = False
+    end
+    object wwDBNavigator1RestoreBookmark: TwwNavButton
+      Left = 325
+      Top = 0
+      Width = 25
+      Height = 25
+      Hint = #1055#1077#1088#1077#1081#1090#1080' '#1082' '#1089#1086#1093#1088#1072#1085#1105#1085#1085#1086#1081' '#1079#1072#1082#1083#1072#1076#1082#1077
+      ImageIndex = -1
+      NumGlyphs = 2
+      Spacing = 4
+      Transparent = False
+      Caption = 'wwDBNavigator1RestoreBookmark'
+      Enabled = False
+      DisabledTextColors.ShadeColor = clGray
+      DisabledTextColors.HighlightColor = clBtnHighlight
+      Index = 13
+      Style = nbsRestoreBookmark
+      Visible = False
+    end
+  end
+  object GroupBox1: TGroupBox
+    Left = 0
+    Top = 433
+    Width = 1120
+    Height = 49
+    Align = alBottom
+    TabOrder = 2
+    object SpeedButton1: TSpeedButton
+      Left = 8
+      Top = 16
+      Width = 25
+      Height = 25
+      Hint = #1059#1089#1090#1072#1085#1086#1074#1080#1090#1100' '#1092#1080#1083#1100#1090#1088
+      Glyph.Data = {
+        0E060000424D0E06000000000000360000002800000016000000160000000100
+        180000000000D8050000120B0000120B00000000000000000000FFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDEDEDEB7B7B7B7B7B7FFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5D5D5D6F6F6F4A
+        4A4AC4C4C4FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5D5D5D
+        686868494949C6C6C6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FF535353464646383838CCCCCCFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFF5A5A5A555555424242CACACAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFF5C5C5C545454434343C8C8C8FFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFF5555555252523F3F3FCCCCCCFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5555556D6D6D434444C7C7C7FFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8D8D8D7A7A7A7E7D7DE3E3
+        E3FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC8C8C6878684B9
+        B7B6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBBBABA979295
+        938A8D928E8F989597BDBDBEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE5E4E5ADA9AC9493
+        8F7485746F8B707C917BA1A29F999497A8A7A6FFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFAEA9A981
+        887E427643267E271C821F247F26417A428E9B8C948E8FC1BFC0FFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD1CDCE
+        918E8A447C442B8F2A409C4171AA72439D422891293477359599929D999BFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFB0ACAD76847138913A2A952C58A559F0EDF163A9632B952C3290325E7A5D9B
+        9497D9D9D8FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFF9C96996781621F8B2180B683CDD9CFE6ECE7CCDACE8CBA8C2A922A
+        446F41968E91DBDBD9FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFA39EA26A7F652A9B2F6CBC71ADD1B0ECEDEBB0D3B374BC
+        7830A5354C75499B9195E3E4E1FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFC3C0C282877D579F5B51C45C50B659D7E3D957
+        B85D4DC2575AAE5F698066B0AAADFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE2E3E3A4A1A1687B678AB68FA0D5A3
+        A1D1A69ED4A296C6996D916D8E8D8CD3D3D4FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFCCCAC9A5A1A28484
+        819A9C98ACB2AAA4A9A38B9286908E8DB6B4B6FFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD7
+        D7D7B7B6B49C9B989D9A9A9693939E9C9AC1BFC0FFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFE3E3E3C6C5C5BBBCBCB4B3B3D5D4D4FFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000}
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = SpeedButton1Click
+    end
+    object SpeedButton2: TSpeedButton
+      Left = 40
+      Top = 16
+      Width = 25
+      Height = 25
+      Hint = #1057#1085#1103#1090#1100' '#1092#1080#1083#1100#1090#1088
+      Glyph.Data = {
+        0E060000424D0E06000000000000360000002800000016000000160000000100
+        180000000000D8050000120B0000120B00000000000000000000FFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC0C0C0AFAFAFCECE
+        CEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA1A1A15050505C
+        5C5C737373FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA2A2A2
+        4D4D4D585858707070FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFA0A0A03636363B3B3B707070FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFA3A3A3414141494949747474FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFA4A4A4424242494949737373FFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFA0A0A03D3D3D454545707070FFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF9A9B9B4C4C4C5858586C6C6CFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFCCCCCD707071757273AEAD
+        AEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF99979691
+        8F8EE1E0E1FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD6D6D69A9897
+        83807D82807E898889A4A4A4FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBFBDBD9490
+        908F8B8BA6A2A2AEABABA4A2A29796968A8888E3E3E3FFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD4D2D18D
+        8B89A29F9FD2D2D2E9EAEAEBEAEADADAD9BCBBBB98969591918FFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        9A97969F9D9BE7E7E6F3F3F3EDECECEDEDEDF1F1F1EAE9E9B1B0B08A8888C7C6
+        C5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFD9D9D9848281C6C5C4F1F1F1E8E7E7EAEAEAEBEBEBE8E8E8F2F2F2CAC8C889
+        8686AFABABFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFB9B9BA828180CFCECDF2F2F2EDEDEDEFEFEFEFEFEFEDEDEDF1F1F1
+        DAD9D9858282B0ACABFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFC8C8C881807FC1C0BFF1F2F2EAEAEAEDEDEDEDEDEDEBEB
+        EBF0F1F0D2D2D1807D7DBBB7B6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF9392919F9E9EEAEBEBEEEDEEE9E9E9EA
+        EAEAEBEBEBF0F0F0B0AFAE868382DCDBDBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBBBAB9878685A7A7A7E6E7E7
+        EFF0F0EEEFEFE8E8E8C3C5C48E8B8BA8A5A5FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFAEABAB8B88
+        88888988A9AAA8B0AEAD9D9B9B8C8B89919090E0DFDFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFC6C3C3A19D9C989493969291908D8CACA9A9E0E0E0FFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFCCCCCBBCBCBBB0B1B0BABAB9FFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000}
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = SpeedButton2Click
+    end
+    object Button1: TButton
+      Left = 689
+      Top = 16
+      Width = 75
+      Height = 25
+      Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100
+      TabOrder = 4
+      OnClick = Button1Click
+    end
+    object Button2: TButton
+      Left = 774
+      Top = 16
+      Width = 75
+      Height = 25
+      Cancel = True
+      Caption = #1047#1072#1082#1088#1099#1090#1100
+      TabOrder = 5
+      OnClick = Button2Click
+    end
+    object Button3: TButton
+      Left = 576
+      Top = 16
+      Width = 100
+      Height = 25
+      Caption = #1056#1072#1089#1087#1088'. '#1074#1089#1077' '#1076#1086#1084#1072
+      TabOrder = 3
+      OnClick = Button3Click
+    end
+    object Button4: TButton
+      Left = 72
+      Top = 16
+      Width = 100
+      Height = 25
+      Caption = #1044#1086#1073#1072#1074#1080#1090#1100' '#1074#1074#1086#1076
+      TabOrder = 0
+      OnClick = Button4Click
+    end
+    object Button5: TButton
+      Left = 176
+      Top = 16
+      Width = 100
+      Height = 25
+      Caption = #1059#1076#1072#1083#1080#1090#1100' '#1074#1074#1086#1076
+      TabOrder = 1
+      OnClick = Button5Click
+    end
+    object Button6: TButton
+      Left = 489
+      Top = 16
+      Width = 75
+      Height = 25
+      Caption = #1054#1090#1095#1077#1090
+      TabOrder = 2
+      OnClick = Button6Click
+    end
+    object CheckBox1: TCheckBox
+      Left = 288
+      Top = 24
+      Width = 105
+      Height = 17
+      Hint = #1054#1089#1090#1072#1074#1080#1090#1100' '#1076#1086#1084#1072', '#1074' '#1082#1086#1090#1086#1088#1099#1077' '#1074#1085#1077#1089#1077#1085#1099' '#1086#1073#1098#1105#1084#1099
+      Caption = #1058#1086#1083#1100#1082#1086' '#1086#1073#1098#1105#1084#1099
+      TabOrder = 6
+      OnClick = CheckBox1Click
+    end
+  end
+  object GroupBox2: TGroupBox
+    Left = 0
+    Top = 0
+    Width = 1120
+    Height = 401
+    Align = alTop
+    TabOrder = 0
+    object wwDBGrid1: TwwDBGrid
+      Left = 2
+      Top = 15
+      Width = 1116
+      Height = 384
+      ControlType.Strings = (
+        'SCH_ADD;CheckBox;1;0'
+        'USE_SCH;CheckBox;1;0')
+      Selected.Strings = (
+        'REU'#9'3'#9#1082#1086#1076' '#1056#1069#1059#9'T'
+        'NAME_REU'#9'13'#9#1046#1069#1054#9'T'
+        'KUL'#9'6'#9#1050#1086#1076' '#1091#1083'.'#9'T'
+        'NAME'#9'13'#9#1059#1083#1080#1094#1072#9'T'
+        'ND'#9'4'#9#1044#1086#1084#9'T'
+        'USL'#9'3'#9#1050#1086#1076'~ '#1091#1089#1083#1091#1075#1080#9'T'
+        'VVOD'#9'13'#9#1059#1089#1083#1091#1075#1072#9'T'
+        'VVOD_NUM'#9'7'#9#8470' '#1074#1074#1086#1076#1072#9'T'
+        'KUB'#9'8'#9#1054#1073#1098#1105#1084'~ '#1085#1072' '#1074#1074#1086#1076#9#9
+        'KUB_FACT'#9'10'#9#1056#1072#1089#1087#1088#1077#1076#1077#1083#1077#1085#1086'~'#1092#1072#1082#1090#1080#1095#1077#1089#1082#1080#9'T'
+        'KUB_NORM'#9'10'#9#1054#1073#1098#1077#1084'~'#1087#1086' '#1085#1086#1088#1084#1072#1090#1080#1074#1091#9'T'
+        'KUB_NRM_FACT'#9'10'#9#1056#1072#1089#1087#1088'.'#1092#1072#1082#1090'~'#1085#1072' '#1085#1086#1088#1084#1072#1090#1080#1074#9'T'
+        'CNT_LSK'#9'8'#9#1051'/'#1057'~'#1087#1086' '#1085#1086#1088#1084#1072#1090#1080#1074#1091#9'T'
+        'KUB_SCH'#9'9'#9#1054#1073#1098#1077#1084'~'#1087#1086' '#1089#1095#1077#1090#1095#1080#1082#1072#1084#9'T'
+        'KUB_SCH_FACT'#9'10'#9#1056#1072#1089#1087#1088'.'#1092#1072#1082#1090'~'#1085#1072' '#1089#1095#1077#1090#1095#1080#1082#1080#9'T'
+        'SCH_CNT'#9'7'#9#1051'/C~'#1087#1086' '#1089#1095#1077#1090#1095#1080#1082#1072#1084#9'T'
+        'KPR'#9'9'#9#1063#1077#1083', '#1085#1086#1088#1084#9'T'
+        'SCH_KPR'#9'7'#9#1063#1077#1083'/'#1089#1095'.'#9'T'
+        'OPL'#9'7'#9#1054#1073#1097'.'#1087#1083'.'#9'T'
+        'ID'#9'10'#9#1050#1086#1076' (ID)~ '#1074#1074#1086#1076#1072#9'T'
+        'DIST_TP'#9'10'#9#1042#1072#1088#1080#1072#1085#1090'~'#1088#1072#1089#1095#1077#1090#1072#9'T'
+        'USE_SCH'#9'10'#9#1048#1089#1087'.'#1089#1095#1077#1090#1095#1080#1082#1080#9'F')
+      IniAttributes.Delimiter = ';;'
+      TitleColor = clBtnFace
+      FixedCols = 5
+      ShowHorzScrollBar = True
+      Align = alClient
+      DataSource = DS_vvod
+      Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap, dgPerfectRowFit, dgShowCellHint]
+      PopupMenu = PopupMenu1
+      TabOrder = 0
+      TitleAlignment = taLeftJustify
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -11
+      TitleFont.Name = 'MS Sans Serif'
+      TitleFont.Style = []
+      TitleLines = 2
+      TitleButtons = False
+      UseTFields = False
+      LineColors.DataColor = clBlack
+      OnCalcCellColors = wwDBGrid1CalcCellColors
+      OnKeyPress = wwDBGrid1KeyPress
+    end
+  end
+  object OD_vvod: TOracleDataSet
+    SQL.Strings = (
+      
+        'select h.kul, h.reu, t.name_reu, s.name, ltrim(h.nd,'#39'0'#39') as nd, ' +
+        's.name||'#39' '#39'||ltrim(h.nd,'#39'0'#39') as adr, h.nd as nd_id, r.id, h.id a' +
+        's house_id, '
+      
+        '  r.nm as vvod, r.usl, r.kub, r.vvod_num, r.kub_man, r.kpr, r.ku' +
+        'b_sch, r.sch_cnt,'
+      
+        '  r.sch_kpr, r.cnt_lsk, k.opl, r.rowid, r.vol_add, r.sch_add, r.' +
+        'kub_fact, r.vol_add_fact, r.kub_nrm_fact, r.kub_sch_fact,r.itg_f' +
+        'act, r.opl_add,'
+      '  r.kub_norm, r.use_sch, r.dist_tp, r.rowid'
+      
+        'from (select c.*, u.nm, u.npp from scott.c_vvod c, scott.usl u w' +
+        'here c.usl=u.usl) r, scott.c_houses h, scott.spul s, scott.s_reu' +
+        '_trest t,'
+      ' (select sum(opl) as opl, house_id from scott.kart k '
+      '  where k.psch <> 9 group by k.house_id) k '
+      
+        'where h.reu=t.reu and h.id=r.house_id(+) and h.id = k.house_id(+' +
+        ') and h.kul=s.id(+) and nvl(h.psch,0) <> 1'
+      
+        'and (:var_=0 or :var_=1 and (nvl(r.kub,0)<>0 or nvl(r.vol_add,0)' +
+        '<>0))'
+      
+        'and (:flt_reu_ is not null and h.reu=:flt_reu_ or :flt_reu_ is  ' +
+        'null)'
+      'and (:flt_house_ <> -1 and h.id=:flt_house_ or :flt_house_ = -1)'
+      
+        'and (:flt_kul_ is not null and h.kul=:flt_kul_ or :flt_kul_ is  ' +
+        'null)'
+      
+        'order by s.name, scott.utils.f_order(h.nd, 6), r.npp, nvl(r.vvod' +
+        '_num,0)')
+    Optimize = False
+    Variables.Data = {
+      0300000004000000050000003A5641525F030000000000000000000000090000
+      003A464C545F5245555F0500000000000000000000000B0000003A464C545F48
+      4F5553455F030000000000000000000000090000003A464C545F4B554C5F0500
+      00000000000000000000}
+    QBEDefinition.QBEFieldDefs = {
+      040000002000000003000000524555010000000000040000004E414D45010000
+      000000020000004E440100000000000400000056564F44010000000000030000
+      004B554C010000000000030000004B5542010000000000070000004B55425F4D
+      414E010000000000030000004B5052010000000000070000004B55425F534348
+      010000000000070000005343485F434E54010000000000070000005343485F4B
+      505201000000000007000000434E545F4C534B010000000000050000004E445F
+      494401000000000008000000484F5553455F4944010000000000080000005656
+      4F445F4E554D010000000000030000004F504C01000000000002000000494401
+      000000000007000000564F4C5F414444010000000000070000005343485F4144
+      44010000000000080000004B55425F464143540100000000000C000000564F4C
+      5F4144445F46414354010000000000080000004954475F464143540100000000
+      00070000004F504C5F414444010000000000080000004E414D455F5245550100
+      00000000030000004144520100000000000300000055534C0100000000000800
+      00004B55425F4E4F524D010000000000070000005553455F5343480100000000
+      0005000000524F5749440100000000000C0000004B55425F4E524D5F46414354
+      0100000000000C0000004B55425F5343485F4641435401000000000007000000
+      444953545F5450010000000000}
+    RefreshOptions = [roAfterUpdate]
+    UpdatingTable = 'scott.c_vvod'
+    CommitOnPost = False
+    CachedUpdates = True
+    Session = DataModule1.OracleSession1
+    Active = True
+    Left = 8
+    Top = 256
+    object OD_vvodREU: TStringField
+      DisplayLabel = #1082#1086#1076' '#1056#1069#1059
+      DisplayWidth = 3
+      FieldKind = fkInternalCalc
+      FieldName = 'REU'
+      ReadOnly = True
+      Required = True
+      Size = 2
+    end
+    object OD_vvodNAME_REU: TStringField
+      DisplayLabel = #1046#1069#1054
+      DisplayWidth = 13
+      FieldName = 'NAME_REU'
+      Size = 35
+    end
+    object OD_vvodKUL: TStringField
+      DisplayLabel = #1050#1086#1076' '#1091#1083'.'
+      DisplayWidth = 6
+      FieldKind = fkInternalCalc
+      FieldName = 'KUL'
+      ReadOnly = True
+      Required = True
+      Size = 4
+    end
+    object OD_vvodNAME: TStringField
+      DisplayLabel = #1059#1083#1080#1094#1072
+      DisplayWidth = 13
+      FieldKind = fkInternalCalc
+      FieldName = 'NAME'
+      ReadOnly = True
+      Size = 25
+    end
+    object OD_vvodND: TStringField
+      DisplayLabel = #1044#1086#1084
+      DisplayWidth = 4
+      FieldKind = fkInternalCalc
+      FieldName = 'ND'
+      ReadOnly = True
+      Size = 6
+    end
+    object OD_vvodUSL: TStringField
+      DisplayLabel = #1050#1086#1076'~ '#1091#1089#1083#1091#1075#1080
+      DisplayWidth = 3
+      FieldName = 'USL'
+      Size = 3
+    end
+    object OD_vvodVVOD: TStringField
+      DisplayLabel = #1059#1089#1083#1091#1075#1072
+      DisplayWidth = 13
+      FieldKind = fkInternalCalc
+      FieldName = 'VVOD'
+      ReadOnly = True
+      Size = 15
+    end
+    object OD_vvodVVOD_NUM: TFloatField
+      DisplayLabel = #8470' '#1074#1074#1086#1076#1072
+      DisplayWidth = 7
+      FieldName = 'VVOD_NUM'
+    end
+    object OD_vvodKUB: TFloatField
+      DisplayLabel = #1054#1073#1098#1105#1084'~ '#1085#1072' '#1074#1074#1086#1076
+      DisplayWidth = 8
+      FieldName = 'KUB'
+    end
+    object OD_vvodKUB_FACT: TFloatField
+      DisplayLabel = #1056#1072#1089#1087#1088#1077#1076#1077#1083#1077#1085#1086'~'#1092#1072#1082#1090#1080#1095#1077#1089#1082#1080
+      DisplayWidth = 10
+      FieldName = 'KUB_FACT'
+    end
+    object OD_vvodKUB_NORM: TFloatField
+      DisplayLabel = #1054#1073#1098#1077#1084'~'#1087#1086' '#1085#1086#1088#1084#1072#1090#1080#1074#1091
+      DisplayWidth = 10
+      FieldName = 'KUB_NORM'
+    end
+    object OD_vvodKUB_NRM_FACT: TFloatField
+      DisplayLabel = #1056#1072#1089#1087#1088'.'#1092#1072#1082#1090'~'#1085#1072' '#1085#1086#1088#1084#1072#1090#1080#1074
+      DisplayWidth = 10
+      FieldName = 'KUB_NRM_FACT'
+    end
+    object OD_vvodCNT_LSK: TFloatField
+      DisplayLabel = #1051'/'#1057'~'#1087#1086' '#1085#1086#1088#1084#1072#1090#1080#1074#1091
+      DisplayWidth = 8
+      FieldName = 'CNT_LSK'
+    end
+    object OD_vvodKUB_SCH: TFloatField
+      DisplayLabel = #1054#1073#1098#1077#1084'~'#1087#1086' '#1089#1095#1077#1090#1095#1080#1082#1072#1084
+      DisplayWidth = 9
+      FieldKind = fkInternalCalc
+      FieldName = 'KUB_SCH'
+      ReadOnly = True
+    end
+    object OD_vvodKUB_SCH_FACT: TFloatField
+      DisplayLabel = #1056#1072#1089#1087#1088'.'#1092#1072#1082#1090'~'#1085#1072' '#1089#1095#1077#1090#1095#1080#1082#1080
+      DisplayWidth = 10
+      FieldName = 'KUB_SCH_FACT'
+    end
+    object OD_vvodSCH_CNT: TFloatField
+      DisplayLabel = #1051'/C~'#1087#1086' '#1089#1095#1077#1090#1095#1080#1082#1072#1084
+      DisplayWidth = 7
+      FieldKind = fkInternalCalc
+      FieldName = 'SCH_CNT'
+      ReadOnly = True
+    end
+    object OD_vvodKPR: TFloatField
+      DisplayLabel = #1063#1077#1083', '#1085#1086#1088#1084
+      DisplayWidth = 9
+      FieldKind = fkInternalCalc
+      FieldName = 'KPR'
+      ReadOnly = True
+    end
+    object OD_vvodSCH_KPR: TFloatField
+      DisplayLabel = #1063#1077#1083'/'#1089#1095'.'
+      DisplayWidth = 7
+      FieldKind = fkInternalCalc
+      FieldName = 'SCH_KPR'
+      ReadOnly = True
+    end
+    object OD_vvodOPL: TFloatField
+      DisplayLabel = #1054#1073#1097'.'#1087#1083'.'
+      DisplayWidth = 7
+      FieldName = 'OPL'
+      ReadOnly = True
+    end
+    object OD_vvodVOL_ADD: TFloatField
+      DisplayLabel = #1044#1086#1087'.'#1054#1073#1098#1105#1084'~ (307)'
+      DisplayWidth = 10
+      FieldName = 'VOL_ADD'
+    end
+    object OD_vvodVOL_ADD_FACT: TFloatField
+      DisplayLabel = #1056#1072#1089#1087#1088'.(307)~'#1092#1072#1082#1090'.'#1086#1073#1098#1105#1084
+      DisplayWidth = 10
+      FieldName = 'VOL_ADD_FACT'
+    end
+    object OD_vvodOPL_ADD: TFloatField
+      DisplayLabel = #1056#1072#1089#1087#1088'.(307)~'#1085#1072' '#1087#1083#1086#1097#1072#1076#1100
+      DisplayWidth = 10
+      FieldName = 'OPL_ADD'
+    end
+    object OD_vvodITG_FACT: TFloatField
+      DisplayLabel = #1056#1072#1089#1087#1088'.'#1048#1090#1086#1075#1086'~'#1092#1072#1082#1090'.'#1086#1073#1098#1105#1084
+      DisplayWidth = 10
+      FieldName = 'ITG_FACT'
+    end
+    object OD_vvodSCH_ADD: TFloatField
+      DisplayLabel = #1044#1086#1087'.'#1054#1073#1098#1105#1084'~'#1080#1089#1087'.'#1089#1095#1105#1090#1095#1080#1082#1080
+      DisplayWidth = 11
+      FieldName = 'SCH_ADD'
+    end
+    object OD_vvodUSE_SCH: TFloatField
+      DisplayLabel = #1048#1089#1087'.'#1089#1095#1077#1090#1095#1080#1082#1080
+      DisplayWidth = 10
+      FieldName = 'USE_SCH'
+    end
+    object OD_vvodID: TFloatField
+      DisplayLabel = #1050#1086#1076' (ID)~ '#1074#1074#1086#1076#1072
+      DisplayWidth = 10
+      FieldName = 'ID'
+      ReadOnly = True
+    end
+    object OD_vvodKUB_MAN: TFloatField
+      DisplayLabel = #1054#1073#1098#1105#1084'/'#1095#1077#1083',~'#1085#1086#1088#1084
+      DisplayWidth = 11
+      FieldKind = fkInternalCalc
+      FieldName = 'KUB_MAN'
+      ReadOnly = True
+      Visible = False
+    end
+    object OD_vvodND_ID: TStringField
+      DisplayWidth = 6
+      FieldName = 'ND_ID'
+      Required = True
+      Visible = False
+      Size = 6
+    end
+    object OD_vvodHOUSE_ID: TFloatField
+      FieldName = 'HOUSE_ID'
+      Visible = False
+    end
+    object OD_vvodADR: TStringField
+      FieldName = 'ADR'
+      Visible = False
+      Size = 32
+    end
+    object OD_vvodDIST_TP: TFloatField
+      FieldName = 'DIST_TP'
+      Visible = False
+    end
+  end
+  object DS_vvod: TDataSource
+    DataSet = OD_vvod
+    Left = 40
+    Top = 256
+  end
+  object frxDBDataset1: TfrxDBDataset
+    UserName = 'frxDBDataset1'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'KUL=KUL'
+      'REU=REU'
+      'NAME_REU=NAME_REU'
+      'NAME=NAME'
+      'ND=ND'
+      'ADR=ADR'
+      'ND_ID=ND_ID'
+      'ID=ID'
+      'HOUSE_ID=HOUSE_ID'
+      'VVOD=VVOD'
+      'KUB=KUB'
+      'VVOD_NUM=VVOD_NUM'
+      'KUB_MAN=KUB_MAN'
+      'KUB_NORM=KUB_NORM'
+      'KPR=KPR'
+      'KUB_SCH=KUB_SCH'
+      'SCH_CNT=SCH_CNT'
+      'SCH_KPR=SCH_KPR'
+      'CNT_LSK=CNT_LSK'
+      'OPL=OPL'
+      'VOL_ADD=VOL_ADD'
+      'SCH_ADD=SCH_ADD'
+      'KUB_FACT=KUB_FACT'
+      'VOL_ADD_FACT=VOL_ADD_FACT'
+      'ITG_FACT=ITG_FACT'
+      'OPL_ADD=OPL_ADD'
+      'MG=MG')
+    DataSource = DS_rep
+    BCDToCurrency = False
+    Left = 360
+    Top = 400
+  end
+  object frxReport1: TfrxReport
+    Version = '0.0'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = #1055#1086' '#1091#1084#1086#1083#1095#1072#1085#1080#1102
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 40513.369833310200000000
+    ReportOptions.LastChange = 40513.369833310200000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      ''
+      'begin'
+      ''
+      'end.')
+    Left = 392
+    Top = 400
+    Datasets = <
+      item
+        DataSet = frxDBDataset1
+        DataSetName = 'frxDBDataset1'
+      end>
+    Variables = <>
+    Style = <
+      item
+        Name = 'Title'
+        Color = 14211288
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+      end
+      item
+        Name = 'Header'
+        Color = 15790320
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+      end
+      item
+        Name = 'Group header'
+        Color = 15790320
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+      end
+      item
+        Name = 'Data'
+        Color = clNone
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = []
+      end
+      item
+        Name = 'Group footer'
+        Color = clNone
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = []
+        Frame.Typ = [ftTop]
+      end
+      item
+        Name = 'Header line'
+        Color = clNone
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = []
+        Frame.Width = 2.000000000000000000
+      end>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      Orientation = poLandscape
+      PaperWidth = 297.000000000000000000
+      PaperHeight = 210.000000000000000000
+      PaperSize = 9
+      LeftMargin = 10.000000000000000000
+      RightMargin = 10.000000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
+      object ReportTitle1: TfrxReportTitle
+        Height = 26.456710000000000000
+        Top = 18.897650000000000000
+        Width = 1046.929810000000000000
+        object Memo1: TfrxMemoView
+          Align = baWidth
+          Width = 1046.929810000000000000
+          Height = 22.677180000000000000
+          ShowHint = False
+          Color = 14211288
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          HAlign = haCenter
+          Memo.UTF8 = (
+            
+              #1056#1115#1057#8218#1057#8225#1056#181#1057#8218' '#1056#1109' '#1057#1026#1056#176#1057#1027#1056#1111#1057#1026#1056#181#1056#1169#1056#181#1056#187#1056#181#1056#1029#1056#1105#1056#1105' '#1056#1109#1056#177#1057#1033#1056#181#1056#1112#1056#1029#1057#8249#1057#8230' '#1056#1111#1056#1109#1056#1108 +
+              #1056#176#1056#183#1056#176#1057#8218#1056#181#1056#187#1056#181#1056#8470' '#1056#1111#1056#1109' '#1057#1107#1057#1027#1056#187#1057#1107#1056#1110#1056#176#1056#1112' '#1056#183#1056#176' [frxDBDataset1."MG"]')
+          ParentFont = False
+          Style = 'Title'
+          VAlign = vaCenter
+        end
+      end
+      object PageHeader1: TfrxPageHeader
+        Height = 37.795300000000000000
+        Top = 68.031540000000010000
+        Width = 1046.929810000000000000
+        object Memo22: TfrxMemoView
+          Width = 54.944998600000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8 = (
+            #1074#8222#8211' '#1056#1030#1056#1030#1056#1109#1056#1169#1056#176)
+          ParentFont = False
+        end
+        object Memo23: TfrxMemoView
+          Left = 60.472480000000000000
+          Width = 47.385938600000000000
+          Height = 34.015770000000000000
+          ShowHint = False
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8 = (
+            #1056#1115#1056#177#1057#1033#1057#8216#1056#1112
+            #1056#1029#1056#176' '#1056#1030#1056#1030#1056#1109#1056#1169)
+          ParentFont = False
+        end
+        object Memo42: TfrxMemoView
+          Left = 113.385900000000000000
+          Width = 70.063118600000000000
+          Height = 34.015770000000000000
+          ShowHint = False
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8 = (
+            #1056#160#1056#176#1057#1027#1056#1111#1057#1026'.'
+            #1057#8222#1056#176#1056#1108#1057#8218'.'#1056#1109#1056#177#1057#1033#1057#8216#1056#1112)
+          ParentFont = False
+        end
+        object Memo43: TfrxMemoView
+          Left = 188.976500000000000000
+          Width = 54.944998600000000000
+          Height = 34.015770000000000000
+          ShowHint = False
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8 = (
+            #1056#8250'/'#1056#1038' '#1056#1029#1056#1109#1057#1026#1056#1112)
+          ParentFont = False
+        end
+        object Memo44: TfrxMemoView
+          Left = 249.448980000000000000
+          Width = 70.063118600000000000
+          Height = 34.015770000000010000
+          ShowHint = False
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8 = (
+            #1056#1115#1056#177#1057#1033#1057#8216#1056#1112'/'#1057#8225#1056#181#1056#187','
+            #1056#1029#1056#1109#1057#1026#1056#1112)
+          ParentFont = False
+        end
+        object Memo45: TfrxMemoView
+          Left = 389.291590000000000000
+          Width = 36.047348600000000000
+          Height = 34.015770000000010000
+          ShowHint = False
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8 = (
+            #1056#167#1056#181#1056#187','
+            #1056#1029#1056#1109#1057#1026#1056#1112)
+          ParentFont = False
+        end
+        object Memo46: TfrxMemoView
+          Left = 427.086890000000000000
+          Width = 70.063118600000000000
+          Height = 34.015770000000010000
+          ShowHint = False
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8 = (
+            #1056#1115#1056#177#1057#1033#1057#8216#1056#1112'/'#1057#1027#1057#8225'.')
+          ParentFont = False
+        end
+        object Memo47: TfrxMemoView
+          Left = 498.897960000000000000
+          Width = 51.165468600000000000
+          Height = 34.015770000000010000
+          ShowHint = False
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8 = (
+            #1056#8250'/C '#1057#1027#1057#8225'.')
+          ParentFont = False
+        end
+        object Memo48: TfrxMemoView
+          Left = 551.811380000000000000
+          Width = 51.165468600000000000
+          Height = 34.015770000000010000
+          ShowHint = False
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8 = (
+            #1056#167#1056#181#1056#187'/'#1057#1027#1057#8225'.')
+          ParentFont = False
+        end
+        object Memo49: TfrxMemoView
+          Left = 608.504330000000000000
+          Width = 51.165468600000000000
+          Height = 34.015770000000010000
+          ShowHint = False
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8 = (
+            #1056#1115#1056#177#1057#8240'.'#1056#1111#1056#187'.')
+          ParentFont = False
+        end
+        object Memo50: TfrxMemoView
+          Left = 661.417750000000000000
+          Width = 70.063118600000000000
+          Height = 34.015770000000010000
+          ShowHint = False
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8 = (
+            #1056#8221#1056#1109#1056#1111'.'#1056#1115#1056#177#1057#1033#1057#8216#1056#1112
+            ' (307)')
+          ParentFont = False
+        end
+        object Memo51: TfrxMemoView
+          Left = 733.228820000000000000
+          Width = 70.063118600000000000
+          Height = 34.015770000000010000
+          ShowHint = False
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8 = (
+            #1056#160#1056#176#1057#1027#1056#1111#1057#1026'.(307)'
+            #1057#8222#1056#176#1056#1108#1057#8218'.'#1056#1109#1056#177#1057#1033#1057#8216#1056#1112)
+          ParentFont = False
+        end
+        object Memo52: TfrxMemoView
+          Left = 805.039890000000000000
+          Width = 73.842648600000000000
+          Height = 34.015770000000010000
+          ShowHint = False
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8 = (
+            #1056#160#1056#176#1057#1027#1056#1111#1057#1026'.(307)'
+            #1056#1029#1056#176' '#1056#1111#1056#187#1056#1109#1057#8240#1056#176#1056#1169#1057#1034)
+          ParentFont = False
+        end
+        object Memo53: TfrxMemoView
+          Left = 880.630490000000000000
+          Width = 81.401708600000000000
+          Height = 34.015770000000010000
+          ShowHint = False
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8 = (
+            #1056#160#1056#176#1057#1027#1056#1111#1057#1026'.'#1056#152#1057#8218#1056#1109#1056#1110#1056#1109','
+            #1057#8222#1056#176#1056#1108#1057#8218'.'#1056#1109#1056#177#1057#1033#1057#8216#1056#1112)
+          ParentFont = False
+        end
+        object Memo54: TfrxMemoView
+          Left = 963.780150000000000000
+          Width = 81.401708600000000000
+          Height = 34.015770000000010000
+          ShowHint = False
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8 = (
+            #1056#8221#1056#1109#1056#1111'.'#1056#1115#1056#177#1057#1033#1057#8216#1056#1112
+            #1056#1105#1057#1027#1056#1111'.'#1057#1027#1057#8225#1057#8216#1057#8218#1057#8225#1056#1105#1056#1108)
+          ParentFont = False
+        end
+        object Memo40: TfrxMemoView
+          Left = 321.260050000000000000
+          Width = 66.283588600000000000
+          Height = 34.015770000000010000
+          ShowHint = False
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8 = (
+            #1056#1115#1056#177#1057#1033#1057#8216#1056#1112'/'
+            #1056#1029#1056#1109#1057#1026#1056#1112'.')
+          ParentFont = False
+        end
+      end
+      object GroupHeader1: TfrxGroupHeader
+        Height = 26.456710000000000000
+        Top = 211.653680000000000000
+        Width = 1046.929810000000000000
+        Condition = 'frxDBDataset1."ADR"'
+        object Memo20: TfrxMemoView
+          Align = baLeft
+          Width = 415.748300000000000000
+          Height = 22.677180000000000000
+          ShowHint = False
+          Color = 15790320
+          DataField = 'ADR'
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8 = (
+            '[frxDBDataset1."ADR"]')
+          ParentFont = False
+          Style = 'Group header'
+          VAlign = vaCenter
+        end
+      end
+      object GroupHeader2: TfrxGroupHeader
+        Height = 22.677180000000000000
+        Top = 260.787570000000000000
+        Width = 1046.929810000000000000
+        Condition = 'frxDBDataset1."VVOD"'
+        object Memo21: TfrxMemoView
+          Align = baLeft
+          Width = 415.748300000000000000
+          Height = 22.677180000000000000
+          ShowHint = False
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8 = (
+            '[frxDBDataset1."VVOD"]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+      end
+      object MasterData1: TfrxMasterData
+        Height = 18.897650000000000000
+        Top = 306.141930000000000000
+        Width = 1046.929810000000000000
+        DataSet = frxDBDataset1
+        DataSetName = 'frxDBDataset1'
+        RowCount = 0
+        object Memo24: TfrxMemoView
+          Left = 0.903655570000000000
+          Width = 54.944998600000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'VVOD_NUM'
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8 = (
+            '[frxDBDataset1."VVOD_NUM"]')
+          ParentFont = False
+        end
+        object Memo25: TfrxMemoView
+          Left = 59.628184170000000000
+          Width = 50.916798670000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'KUB'
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8 = (
+            '[frxDBDataset1."KUB"]')
+          ParentFont = False
+        end
+        object Memo26: TfrxMemoView
+          Left = 114.324512850000000000
+          Width = 68.991262440000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'KUB_FACT'
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8 = (
+            '[frxDBDataset1."KUB_FACT"]')
+          ParentFont = False
+        end
+        object Memo27: TfrxMemoView
+          Left = 187.095305280000000000
+          Width = 59.288490110000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'CNT_LSK'
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8 = (
+            '[frxDBDataset1."CNT_LSK"]')
+          ParentFont = False
+        end
+        object Memo28: TfrxMemoView
+          Left = 250.163325390000000000
+          Width = 71.698936270000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'KUB_MAN'
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8 = (
+            '[frxDBDataset1."KUB_MAN"]')
+          ParentFont = False
+        end
+        object Memo29: TfrxMemoView
+          Left = 389.893801670000000000
+          Width = 34.828401440000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'KPR'
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8 = (
+            '[frxDBDataset1."KPR"]')
+          ParentFont = False
+        end
+        object Memo30: TfrxMemoView
+          Left = 428.501733110000000000
+          Width = 65.978851810000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'KUB_SCH'
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8 = (
+            '[frxDBDataset1."KUB_SCH"]')
+          ParentFont = False
+        end
+        object Memo31: TfrxMemoView
+          Left = 498.260114920000000000
+          Width = 53.669984580000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'SCH_CNT'
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8 = (
+            '[frxDBDataset1."SCH_CNT"]')
+          ParentFont = False
+        end
+        object Memo32: TfrxMemoView
+          Left = 555.709629490000000000
+          Width = 49.890454579999990000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'SCH_KPR'
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8 = (
+            '[frxDBDataset1."SCH_KPR"]')
+          ParentFont = False
+        end
+        object Memo33: TfrxMemoView
+          Left = 609.379614070000000000
+          Width = 48.976244210000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'OPL'
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8 = (
+            '[frxDBDataset1."OPL"]')
+          ParentFont = False
+        end
+        object Memo34: TfrxMemoView
+          Left = 658.355858280000000000
+          Width = 68.788104580000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'VOL_ADD'
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8 = (
+            '[frxDBDataset1."VOL_ADD"]')
+          ParentFont = False
+        end
+        object Memo35: TfrxMemoView
+          Left = 730.923492860000000000
+          Width = 72.714725570000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'VOL_ADD_FACT'
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8 = (
+            '[frxDBDataset1."VOL_ADD_FACT"]')
+          ParentFont = False
+        end
+        object Memo36: TfrxMemoView
+          Left = 807.417748430000000000
+          Width = 65.008574580000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'OPL_ADD'
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8 = (
+            '[frxDBDataset1."OPL_ADD"]')
+          ParentFont = False
+        end
+        object Memo37: TfrxMemoView
+          Left = 879.985383010000000000
+          Width = 82.067249039999990000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'ITG_FACT'
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8 = (
+            '[frxDBDataset1."ITG_FACT"]')
+          ParentFont = False
+        end
+        object Memo38: TfrxMemoView
+          Left = 965.832162050000000000
+          Width = 81.096971810000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'SCH_ADD'
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8 = (
+            '[frxDBDataset1."SCH_ADD"]')
+          ParentFont = False
+        end
+        object Memo41: TfrxMemoView
+          Left = 321.974395390000000000
+          Width = 67.919406270000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8 = (
+            '[frxDBDataset1."KUB_NORM"]')
+          ParentFont = False
+        end
+      end
+      object GroupFooter1: TfrxGroupFooter
+        Top = 370.393940000000000000
+        Width = 1046.929810000000000000
+      end
+      object GroupFooter2: TfrxGroupFooter
+        Top = 347.716760000000000000
+        Width = 1046.929810000000000000
+      end
+      object PageFooter1: TfrxPageFooter
+        Height = 26.456710000000000000
+        Top = 525.354670000000100000
+        Width = 1046.929810000000000000
+        object Memo39: TfrxMemoView
+          Align = baWidth
+          Width = 1046.929810000000000000
+          ShowHint = False
+          Frame.Typ = [ftTop]
+          Frame.Width = 2.000000000000000000
+        end
+        object Memo2: TfrxMemoView
+          Left = 3.779530000000000000
+          Top = 3.779530000000136000
+          Width = 229.858380000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8 = (
+            #1056#160#1056#176#1057#1027#1056#1111#1056#181#1057#8225#1056#176#1057#8218#1056#176#1056#1029#1056#1109': [Now]')
+          ParentFont = False
+        end
+        object Memo18: TfrxMemoView
+          Align = baRight
+          Left = 971.339210000000100000
+          Width = 75.590600000000000000
+          Height = 22.677180000000000000
+          ShowHint = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          HAlign = haRight
+          Memo.UTF8 = (
+            #1056#1038#1057#8218#1057#1026'. [Page#]')
+          ParentFont = False
+        end
+      end
+      object GroupHeader3: TfrxGroupHeader
+        Height = 22.677180000000000000
+        Top = 166.299320000000000000
+        Width = 1046.929810000000000000
+        Condition = 'frxDBDataset1."NAME_REU"'
+        object Memo3: TfrxMemoView
+          Width = 242.702551440000000000
+          Height = 22.677180000000000000
+          ShowHint = False
+          Color = 15790320
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8 = (
+            #1056#8211#1056#173#1056#1115': [frxDBDataset1."NAME_REU"]')
+          ParentFont = False
+          Style = 'Header'
+        end
+      end
+      object ReportSummary1: TfrxReportSummary
+        Height = 71.811070000000000000
+        Top = 430.866420000000000000
+        Visible = False
+        Width = 1046.929810000000000000
+        object Memo4: TfrxMemoView
+          Left = 188.976500000000000000
+          Top = 18.897650000000000000
+          Width = 55.508960110000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8 = (
+            '[SUM(<frxDBDataset1."CNT_LSK">)]')
+          ParentFont = False
+        end
+        object Memo5: TfrxMemoView
+          Left = 56.692950000000000000
+          Top = 18.897650000000000000
+          Width = 51.729430110000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8 = (
+            '[SUM(<frxDBDataset1."KUB">)]')
+          ParentFont = False
+        end
+        object Memo6: TfrxMemoView
+          Top = 18.897650000000000000
+          Width = 49.946521440000000000
+          Height = 52.913420000000000000
+          ShowHint = False
+          Color = 15790320
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          HAlign = haCenter
+          Memo.UTF8 = (
+            #1056#152#1057#8218#1056#1109#1056#1110#1056#1109' '#1056#1111#1056#1109' '#1056#1109#1057#8218#1057#8225#1056#181#1057#8218#1057#1107':')
+          ParentFont = False
+          Style = 'Header'
+        end
+        object Memo7: TfrxMemoView
+          Left = 113.385900000000000000
+          Top = 18.897650000000000000
+          Width = 70.627080110000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8 = (
+            '[SUM(<frxDBDataset1."KUB_FACT">)]')
+          ParentFont = False
+        end
+        object Memo8: TfrxMemoView
+          Left = 249.448980000000000000
+          Top = 18.897650000000000000
+          Width = 70.627080110000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8 = (
+            '[SUM(<frxDBDataset1."KUB_MAN">)]')
+          ParentFont = False
+        end
+        object Memo9: TfrxMemoView
+          Left = 385.512060000000000000
+          Top = 18.897650000000000000
+          Width = 40.390840110000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8 = (
+            '[SUM(<frxDBDataset1."KPR">)]')
+          ParentFont = False
+        end
+        object Memo10: TfrxMemoView
+          Left = 427.086890000000000000
+          Top = 18.897650000000000000
+          Width = 70.627080110000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8 = (
+            '[SUM(<frxDBDataset1."KUB_SCH">)]')
+          ParentFont = False
+        end
+        object Memo11: TfrxMemoView
+          Left = 498.897960000000000000
+          Top = 18.897650000000000000
+          Width = 55.508960109999990000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8 = (
+            '[SUM(<frxDBDataset1."SCH_CNT">)]')
+          ParentFont = False
+        end
+        object Memo12: TfrxMemoView
+          Left = 555.590910000000000000
+          Top = 18.897650000000000000
+          Width = 51.729430110000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8 = (
+            '[SUM(<frxDBDataset1."SCH_KPR">)]')
+          ParentFont = False
+        end
+        object Memo13: TfrxMemoView
+          Left = 608.504330000000000000
+          Top = 18.897650000000000000
+          Width = 51.729430110000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8 = (
+            '[SUM(<frxDBDataset1."OPL">)]')
+          ParentFont = False
+        end
+        object Memo14: TfrxMemoView
+          Left = 661.417750000000000000
+          Top = 18.897650000000000000
+          Width = 63.068020110000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8 = (
+            '[SUM(<frxDBDataset1."VOL_ADD">)]')
+          ParentFont = False
+        end
+        object Memo15: TfrxMemoView
+          Left = 729.449290000000000000
+          Top = 18.897650000000000000
+          Width = 74.406610110000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8 = (
+            '[SUM(<frxDBDataset1."VOL_ADD_FACT">)]')
+          ParentFont = False
+        end
+        object Memo16: TfrxMemoView
+          Left = 805.039890000000000000
+          Top = 18.897650000000000000
+          Width = 66.847550110000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8 = (
+            '[SUM(<frxDBDataset1."OPL_ADD">)]')
+          ParentFont = False
+        end
+        object Memo17: TfrxMemoView
+          Left = 880.630490000000000000
+          Top = 18.897650000000000000
+          Width = 78.186140110000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8 = (
+            '[SUM(<frxDBDataset1."ITG_FACT">)]')
+          ParentFont = False
+        end
+        object Memo19: TfrxMemoView
+          Left = 963.780150000000000000
+          Top = 18.897650000000000000
+          Width = 81.965670110000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8 = (
+            '[SUM(<frxDBDataset1."SCH_ADD">)]')
+          ParentFont = False
+        end
+        object Memo55: TfrxMemoView
+          Left = 321.260050000000000000
+          Top = 18.897650000000000000
+          Width = 63.068020110000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8 = (
+            '[SUM(<frxDBDataset1."KUB_NORM">)]')
+          ParentFont = False
+        end
+      end
+    end
+  end
+  object OD_rep: TOracleDataSet
+    SQL.Strings = (
+      'select h.kul, h.reu, t.name_reu, s.name, ltrim(h.nd,'#39'0'#39') as nd, '
+      
+        's.name||'#39' '#39'||ltrim(h.nd,'#39'0'#39') as adr, h.nd as nd_id, v.id, h.id a' +
+        's house_id, '
+      
+        '  v.nm as vvod, v.kub, v.vvod_num, v.kub_man, v.kub_norm, v.kpr,' +
+        ' v.kub_sch, v.sch_cnt,'
+      
+        '  v.sch_kpr, v.cnt_lsk, k.opl, v.rowid, v.vol_add, v.sch_add, v.' +
+        'kub_fact, v.vol_add_fact, v.itg_fact, v.opl_add,'
+      
+        '  scott.utils.month_name(substr(:mg, 5, 2))||'#39' '#39'||substr(:mg,1,4' +
+        ')||'#39#1075'.'#39' as mg'
+      
+        'from (select c.*, u.nm from scott.c_vvod c, scott.usl u where c.' +
+        'usl=u.usl'
+      
+        'and (:var_=0 or :var_=1 and (nvl(c.kub,0)<>0 or nvl(c.vol_add,0)' +
+        '<>0))'
+      ') v, scott.c_houses h, scott.spul s, scott.s_reu_trest t,'
+      ' (select sum(opl) as opl, house_id from scott.kart k '
+      '  where k.psch <> 9 group by k.house_id) k'
+      
+        'where h.reu=t.reu and h.id=v.house_id and h.id = k.house_id(+) a' +
+        'nd h.kul=s.id(+) and nvl(h.psch,0) <> 1'
+      ''
+      
+        'and (:flt_reu_ is not null and h.reu=:flt_reu_ or :flt_reu_ is  ' +
+        'null)'
+      'and (:flt_house_ <> -1 and h.id=:flt_house_ or :flt_house_ = -1)'
+      
+        'and (:flt_kul_ is not null and t.reu=:flt_kul_ or :flt_kul_ is  ' +
+        'null)'
+      
+        'order by t.name_reu, s.name||'#39' '#39'||ltrim(h.nd,'#39'0'#39'), v.nm, v.vvod_' +
+        'num'
+      '')
+    Optimize = False
+    Variables.Data = {
+      0300000005000000030000003A4D47050000000000000000000000050000003A
+      5641525F030000000000000000000000090000003A464C545F5245555F050000
+      0000000000000000000B0000003A464C545F484F5553455F0300000000000000
+      00000000090000003A464C545F4B554C5F050000000000000000000000}
+    QBEDefinition.QBEFieldDefs = {
+      040000001B00000003000000524555010000000000040000004E414D45010000
+      000000020000004E440100000000000400000056564F44010000000000030000
+      004B554C010000000000030000004B5542010000000000070000004B55425F4D
+      414E010000000000030000004B5052010000000000070000004B55425F534348
+      010000000000070000005343485F434E54010000000000070000005343485F4B
+      505201000000000007000000434E545F4C534B010000000000050000004E445F
+      494401000000000008000000484F5553455F4944010000000000080000005656
+      4F445F4E554D010000000000030000004F504C01000000000002000000494401
+      000000000007000000564F4C5F414444010000000000070000005343485F4144
+      44010000000000080000004B55425F464143540100000000000C000000564F4C
+      5F4144445F46414354010000000000080000004954475F464143540100000000
+      00070000004F504C5F414444010000000000080000004E414D455F5245550100
+      0000000003000000414452010000000000020000004D47010000000000080000
+      004B55425F4E4F524D010000000000}
+    RefreshOptions = [roAfterUpdate]
+    CommitOnPost = False
+    CachedUpdates = True
+    Session = DataModule1.OracleSession1
+    Left = 88
+    Top = 256
+  end
+  object DS_rep: TDataSource
+    DataSet = OD_rep
+    Left = 120
+    Top = 256
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 272
+    Top = 128
+    object N1: TMenuItem
+      Caption = #1044#1086#1073#1072#1074#1080#1090#1100' '#1074#1074#1086#1076
+      OnClick = Button4Click
+    end
+    object N2: TMenuItem
+      Caption = #1059#1076#1072#1083#1080#1090#1100' '#1074#1074#1086#1076
+      OnClick = Button5Click
+    end
+    object N3: TMenuItem
+      Caption = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082' '#1076#1086#1084#1072
+      OnClick = N3Click
+    end
+  end
+end
