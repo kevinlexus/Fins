@@ -80,7 +80,7 @@ var
 implementation
 
 uses DM_module1, Unit_Mainform, Unit_status, Utils,
-  Unit_tree_objects, Unit_list_kart, Unit_tarif_usl;
+  Unit_tree_objects, Unit_list_kart, Unit_tarif_usl, ufDataModuleOlap;
 
 {$R *.dfm}
 
@@ -145,16 +145,16 @@ begin
   end
   else if (state_ = 2) then
   begin
-    old_org_:=Form_tree_objects.OD_data.FieldByName('org').AsInteger;
-    old_koeff_:=Form_tree_objects.OD_data.FieldByName('koeff').AsFloat;
-    old_norm_:=Form_tree_objects.OD_data.FieldByName('norm').AsFloat;
+    old_org_:=DM_OLap.OD_data.FieldByName('org').AsInteger;
+    old_koeff_:=DM_OLap.OD_data.FieldByName('koeff').AsFloat;
+    old_norm_:=DM_OLap.OD_data.FieldByName('norm').AsFloat;
     wwDBLookupCombo1.Enabled:=False;
     wwDBLookupCombo1.Value:=
-      Form_tree_objects.OD_data.FieldByName('usl').AsString;
+      DM_OLap.OD_data.FieldByName('usl').AsString;
     wwDBLookupCombo2.Value:=
-      Form_tree_objects.OD_data.FieldByName('org').AsString;
-    wwDBEdit3.Text:=Form_tree_objects.OD_data.FieldByName('koeff').AsString;
-    wwDBEdit1.Text:=Form_tree_objects.OD_data.FieldByName('norm').AsString;
+      DM_OLap.OD_data.FieldByName('org').AsString;
+    wwDBEdit3.Text:=DM_OLap.OD_data.FieldByName('koeff').AsString;
+    wwDBEdit1.Text:=DM_OLap.OD_data.FieldByName('norm').AsString;
   end;
 
   end;
@@ -220,9 +220,9 @@ begin
              ('scott.p_houses.house_add_usl',
              [l_lvl,
              null,
-             Form_tree_objects.MemTableEh2.FieldByName('fk_house').AsInteger,
-             Form_tree_objects.MemTableEh2.FieldByName('reu').AsString,
-             Form_tree_objects.MemTableEh2.FieldByName('trest').AsString,
+             DM_Olap.MemTableEh2.FieldByName('fk_house').AsInteger,
+             DM_Olap.MemTableEh2.FieldByName('reu').AsString,
+             DM_Olap.MemTableEh2.FieldByName('trest').AsString,
              OD_usl.FieldByName('usl').AsString,
              OD_sprorg.FieldByName('kod').AsInteger,
              StrToFloat(NvlStr(wwDBEdit3.Text, '0')),
@@ -245,9 +245,9 @@ begin
       DataModule1.OraclePackage1.CallProcedure
            ('scott.p_houses.house_chng_usl',
            [l_lvl,
-           Form_tree_objects.MemTableEh2.FieldByName('fk_house').AsInteger,
-           Form_tree_objects.MemTableEh2.FieldByName('reu').AsString,
-           Form_tree_objects.MemTableEh2.FieldByName('trest').AsString,
+           DM_Olap.MemTableEh2.FieldByName('fk_house').AsInteger,
+           DM_Olap.MemTableEh2.FieldByName('reu').AsString,
+           DM_Olap.MemTableEh2.FieldByName('trest').AsString,
            OD_usl.FieldByName('usl').AsString,
            old_org_,
            OD_sprorg.FieldByName('kod').AsInteger,

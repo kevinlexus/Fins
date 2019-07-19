@@ -1,6 +1,6 @@
 object Form_Main: TForm_Main
-  Left = 469
-  Top = 245
+  Left = 649
+  Top = 152
   Width = 880
   Height = 724
   Caption = #1044#1080#1088#1077#1082#1090
@@ -1052,7 +1052,7 @@ object Form_Main: TForm_Main
       end
     end
     object ver2011: TMenuItem
-      Caption = 'ver 2.079'
+      Caption = 'ver 2.08'
     end
   end
   object ImageList1: TImageList

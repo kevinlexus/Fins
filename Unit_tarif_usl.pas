@@ -55,7 +55,7 @@ var
 implementation
 
 uses Unit_tree_objects, Unit_change_house_nabor2, Unit_status,
-  Unit_Mainform, DM_module1;
+  Unit_Mainform, DM_module1, ufDataModuleOlap;
 
 {$R *.dfm}
 
@@ -75,23 +75,23 @@ procedure TForm_tarif_usl.wwDBGrid2DblClick(Sender: TObject);
 var
   bm_: TBookmark;
 begin
-if Form_tree_objects.OD_mg1.FieldByName('mg').AsString=Form_main.cur_mg_ then
+if DM_Olap.OD_mg1.FieldByName('mg').AsString=Form_main.cur_mg_ then
 begin
   //Выбран текущий период
-  bm_:=Form_tree_objects.OD_data.GetBookmark;
+  bm_:=DM_Olap.OD_data.GetBookmark;
   if FF('Form_change_house_nabor2', 1) = 0 then
     Application.CreateForm(TForm_change_house_nabor2,
       Form_change_house_nabor2);
   Application.CreateForm(TForm_status, Form_status);
   Form_status.Update;
   Form_change_house_nabor2.setState(
-    Form_tree_objects.MemTableEh2.FieldByName('obj_level').AsInteger, '', 2,
-    Form_tree_objects.OD_data.FieldByName('sptarn').AsInteger);
+    DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger, '', 2,
+    DM_Olap.OD_data.FieldByName('sptarn').AsInteger);
   Form_status.Close;
   if Form_change_house_nabor2.ShowModal = mrOk then
   begin
     Form_tree_objects.prepData;
-    Form_tree_objects.OD_data.GotoBookmark(bm_);
+    DM_Olap.OD_data.GotoBookmark(bm_);
   end;
 end;
 end;
@@ -100,17 +100,17 @@ procedure TForm_tarif_usl.mnu1Click(Sender: TObject);
 var
   bm_: TBookmark;
 begin
-  bm_:=Form_tree_objects.OD_data.GetBookmark;
+  bm_:=DM_Olap.OD_data.GetBookmark;
     if FF('Form_change_house_nabor2', 1) = 0 then
       Application.CreateForm(TForm_change_house_nabor2,
         Form_change_house_nabor2);
     Form_change_house_nabor2.setState(
-      Form_tree_objects.MemTableEh2.FieldByName('OBJ_LEVEL').AsInteger,
+      DM_Olap.MemTableEh2.FieldByName('OBJ_LEVEL').AsInteger,
       '', 1, 0);
   if Form_change_house_nabor2.ShowModal = mrOk then
   begin
     Form_tree_objects.prepData;
-    Form_tree_objects.OD_data.GotoBookmark(bm_);
+    DM_Olap.OD_data.GotoBookmark(bm_);
   end;
 end;
 
@@ -124,13 +124,13 @@ begin
    l_chrg:=1
    else
    l_chrg:=0;
-  bm_:=Form_tree_objects.OD_data.GetBookmark;
-  l_lvl:=Form_tree_objects.MemTableEh2.FieldByName('OBJ_LEVEL').AsInteger;
+  bm_:=DM_Olap.OD_data.GetBookmark;
+  l_lvl:=DM_Olap.MemTableEh2.FieldByName('OBJ_LEVEL').AsInteger;
   if (msg3('Удалить услугу: '+
-      Form_tree_objects.OD_data.FieldByName('NM').AsString+' по орг: '+
-      Form_tree_objects.OD_data.FieldByName('NAME').AsString+' с коэфф:'+
-      Form_tree_objects.OD_data.FieldByName('KOEFF').AsString+' и норм:'+
-      Form_tree_objects.OD_data.FieldByName('NORM').AsString+
+      DM_Olap.OD_data.FieldByName('NM').AsString+' по орг: '+
+      DM_Olap.OD_data.FieldByName('NAME').AsString+' с коэфф:'+
+      DM_Olap.OD_data.FieldByName('KOEFF').AsString+' и норм:'+
+      DM_Olap.OD_data.FieldByName('NORM').AsString+
       '?',
      'Подверждение', MB_YESNO+MB_ICONQUESTION) = IDYES) then
   begin
@@ -142,30 +142,30 @@ begin
       Form_status.Update;
       DataModule1.OraclePackage1.CallProcedure
            ('scott.p_houses.house_del_usl',
-           [Form_tree_objects.MemTableEh2.FieldByName('OBJ_LEVEL').AsInteger,
+           [DM_Olap.MemTableEh2.FieldByName('OBJ_LEVEL').AsInteger,
            null,
-           Form_tree_objects.MemTableEh2.FieldByName('fk_house').AsInteger,
-           Form_tree_objects.MemTableEh2.FieldByName('reu').AsString,
-           Form_tree_objects.MemTableEh2.FieldByName('trest').AsString,
-           Form_tree_objects.OD_data.FieldByName('usl').AsString,
-           Form_tree_objects.OD_data.FieldByName('org').AsInteger,
-           Form_tree_objects.OD_data.FieldByName('koeff').AsFloat,
-           Form_tree_objects.OD_data.FieldByName('norm').AsFloat,
+           DM_Olap.MemTableEh2.FieldByName('fk_house').AsInteger,
+           DM_Olap.MemTableEh2.FieldByName('reu').AsString,
+           DM_Olap.MemTableEh2.FieldByName('trest').AsString,
+           DM_Olap.OD_data.FieldByName('usl').AsString,
+           DM_Olap.OD_data.FieldByName('org').AsInteger,
+           DM_Olap.OD_data.FieldByName('koeff').AsFloat,
+           DM_Olap.OD_data.FieldByName('norm').AsFloat,
            l_chrg]);
-      Form_tree_objects.OD_data.Refresh;
+      DM_Olap.OD_data.Refresh;
       //начисление
       //ред.23.10.12-зачем здесь делать начисление, если оно будет сделано выше, в процедуре oracle??
 
       {      DataModule1.OraclePackage1.CallProcedure
            ('scott.c_charges.gen_chrg_all',
             [l_lvl,
-             Form_tree_objects.MemTableEh2.FieldByName('fk_house').AsInteger,
-             Form_tree_objects.MemTableEh2.FieldByName('reu').AsString,
-             Form_tree_objects.MemTableEh2.FieldByName('trest').AsString]);}
+             DM_Olap.MemTableEh2.FieldByName('fk_house').AsInteger,
+             DM_Olap.MemTableEh2.FieldByName('reu').AsString,
+             DM_Olap.MemTableEh2.FieldByName('trest').AsString]);}
       Form_status.Close;
       Form_tree_objects.prepData;
       try
-        Form_tree_objects.OD_data.GotoBookmark(bm_);
+        DM_Olap.OD_data.GotoBookmark(bm_);
       except
       end;
       msg2('Услуга удалена', 'Внимание!', MB_OK+MB_ICONINFORMATION);

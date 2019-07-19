@@ -1,6 +1,6 @@
 object Form_tarif_usl: TForm_tarif_usl
-  Left = 909
-  Top = 226
+  Left = 926
+  Top = 241
   Width = 813
   Height = 768
   Caption = #1058#1072#1088#1080#1092#1099' '#1087#1086' '#1091#1089#1083#1091#1075#1072#1084
@@ -112,7 +112,7 @@ object Form_tarif_usl: TForm_tarif_usl
     FixedCols = 0
     ShowHorzScrollBar = True
     Align = alClient
-    DataSource = Form_tree_objects.DS_data
+    DataSource = DM_Olap.DS_data
     EditCalculated = True
     KeyOptions = []
     Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgWordWrap, dgShowCellHint, dgProportionalColResize]
@@ -144,7 +144,7 @@ object Form_tarif_usl: TForm_tarif_usl
     FixedCols = 0
     ShowHorzScrollBar = True
     Ctl3D = False
-    DataSource = Form_tree_objects.DS_nabor_lsk
+    DataSource = DM_Olap.DS_nabor_lsk
     ParentCtl3D = False
     TabOrder = 1
     TitleAlignment = taLeftJustify
@@ -176,7 +176,6 @@ object Form_tarif_usl: TForm_tarif_usl
     OnAfterCollapse = wwExpandButton4AfterCollapse
     Caption = 'wwExpandButton4'
     DataField = 'BTN'
-    DataSource = Form_tree_objects.DS_data
     TabOrder = 2
   end
   object wwDBNavigator1: TwwDBNavigator
@@ -184,7 +183,6 @@ object Form_tarif_usl: TForm_tarif_usl
     Top = 424
     Width = 350
     Height = 25
-    DataSource = Form_tree_objects.DS_nabor_lsk
     RepeatInterval.InitialDelay = 500
     RepeatInterval.Interval = 100
     Visible = False

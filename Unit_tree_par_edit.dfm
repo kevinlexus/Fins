@@ -1,8 +1,8 @@
 object Form_tree_par_edit: TForm_tree_par_edit
-  Left = 717
-  Top = 150
-  Width = 316
-  Height = 471
+  Left = 880
+  Top = 136
+  Width = 451
+  Height = 333
   BorderIcons = [biSystemMenu]
   Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077' '#1087#1072#1088#1072#1084#1077#1090#1088#1072
   Color = clBtnFace
@@ -90,8 +90,8 @@ object Form_tree_par_edit: TForm_tree_par_edit
   object PageControl1: TPageControl
     Left = 0
     Top = 0
-    Width = 300
-    Height = 391
+    Width = 435
+    Height = 253
     ActivePage = TabSheet7
     Align = alClient
     TabOrder = 0
@@ -187,8 +187,8 @@ object Form_tree_par_edit: TForm_tree_par_edit
       object wwDBGrid1: TwwDBGrid
         Left = 0
         Top = 0
-        Width = 307
-        Height = 547
+        Width = 427
+        Height = 200
         Selected.Strings = (
           'NAME'#9'255'#9#1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077#9'F')
         IniAttributes.Delimiter = ';;'
@@ -212,7 +212,7 @@ object Form_tree_par_edit: TForm_tree_par_edit
       end
       object wwDBNavigator1: TwwDBNavigator
         Left = 0
-        Top = 547
+        Top = 200
         Width = 200
         Height = 25
         DataSource = DS_list
@@ -363,8 +363,8 @@ object Form_tree_par_edit: TForm_tree_par_edit
       object cxGrid1: TcxGrid
         Left = 0
         Top = 0
-        Width = 292
-        Height = 363
+        Width = 427
+        Height = 225
         Align = alClient
         PopupMenu = PopupMenu1
         TabOrder = 0
@@ -410,6 +410,9 @@ object Form_tree_par_edit: TForm_tree_par_edit
             Properties.ValueUnchecked = 0
             Width = 51
           end
+          object cxGrid1DBTableView1ID: TcxGridDBColumn
+            DataBinding.FieldName = 'ID'
+          end
         end
         object cxGrid1Level1: TcxGridLevel
           GridView = cxGrid1DBTableView1
@@ -419,8 +422,8 @@ object Form_tree_par_edit: TForm_tree_par_edit
   end
   object Panel1: TPanel
     Left = 0
-    Top = 391
-    Width = 300
+    Top = 253
+    Width = 435
     Height = 41
     Align = alBottom
     TabOrder = 1
@@ -460,22 +463,20 @@ object Form_tree_par_edit: TForm_tree_par_edit
     MasterFields = 'ID'
     DetailFields = 'FK_PAR'
     LockingMode = lmNone
-    CommitOnPost = False
-    CachedUpdates = True
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True
     Left = 12
-    Top = 184
+    Top = 72
   end
   object DS_list: TDataSource
     DataSet = OD_list
     Left = 44
-    Top = 184
+    Top = 72
   end
   object DS_par: TDataSource
     Left = 12
-    Top = 152
+    Top = 40
   end
   object PopupMenu1: TPopupMenu
     Left = 132

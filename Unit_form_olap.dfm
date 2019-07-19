@@ -1,6 +1,6 @@
 object Form_olap: TForm_olap
-  Left = 617
-  Top = 194
+  Left = 642
+  Top = 260
   AutoScroll = False
   Caption = 'OLAP'
   ClientHeight = 743
@@ -93,16 +93,16 @@ object Form_olap: TForm_olap
   PixelsPerInch = 96
   TextHeight = 13
   object cxGrid1: TcxGrid
-    Left = 200
-    Top = 240
-    Width = 488
-    Height = 313
-    Align = alCustom
+    Left = 101
+    Top = 123
+    Width = 984
+    Height = 530
+    Align = alClient
     TabOrder = 6
     Visible = False
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
-      DataController.DataSource = Form_tree_objects.DS_data
+      DataController.DataSource = DM_Olap.DS_data
       DataController.Summary.DefaultGroupSummaryItems = <>
       DataController.Summary.FooterSummaryItems = <>
       DataController.Summary.SummaryGroups = <>
@@ -674,13 +674,13 @@ object Form_olap: TForm_olap
     Top = 136
   end
   object PivotCube13: TPivotCube
-    FactTableDataSet = Form_tree_objects.OD_data
+    FactTableDataSet = DM_Olap.OD_data
     Dimensions = <
       item
         Enabled = True
         AliasName = 'LSK'
         FieldName = 'LSK'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -696,7 +696,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'PREDPR'
         FieldName = 'TREST'
-        DataSet = Form_tree_objects.OD_trest_olap
+        DataSet = DM_Olap.OD_trest_olap
         KeyField = 'TREST'
         LookupField = 'NAME_TR'
         WrapTo = wt_None
@@ -714,7 +714,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'REU'
         FieldName = 'REU'
-        DataSet = Form_tree_objects.OD_reu_olap
+        DataSet = DM_Olap.OD_reu_olap
         KeyField = 'REU'
         LookupField = 'NAME_REU'
         WrapTo = wt_None
@@ -732,7 +732,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'PREDPR_DET'
         FieldName = 'PREDPR_DET'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         KeyField = 'PREDPR_DET'
         LookupField = 'PREDPR_DET'
         WrapTo = wt_None
@@ -750,7 +750,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'ORGNAME'
         FieldName = 'ORG'
-        DataSet = Form_tree_objects.OD_org_olap
+        DataSet = DM_Olap.OD_org_olap
         KeyField = 'ID'
         LookupField = 'NAME'
         WrapTo = wt_None
@@ -768,7 +768,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'ORGMAIN'
         FieldName = 'FK_ORG2'
-        DataSet = Form_tree_objects.OD_org2_olap
+        DataSet = DM_Olap.OD_org2_olap
         KeyField = 'ID'
         LookupField = 'NAME'
         WrapTo = wt_None
@@ -786,7 +786,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NM'
         FieldName = 'USL'
-        DataSet = Form_tree_objects.OD_usl_olap
+        DataSet = DM_Olap.OD_usl_olap
         KeyField = 'USL'
         LookupField = 'NM'
         WrapTo = wt_None
@@ -804,7 +804,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NM1'
         FieldName = 'USLM'
-        DataSet = Form_tree_objects.OD_uslm_olap
+        DataSet = DM_Olap.OD_uslm_olap
         KeyField = 'USLM'
         LookupField = 'NM1'
         WrapTo = wt_None
@@ -822,7 +822,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'STATUS'
         FieldName = 'STATUS'
-        DataSet = Form_tree_objects.OD_status_olap
+        DataSet = DM_Olap.OD_status_olap
         KeyField = 'ID'
         LookupField = 'NAME'
         WrapTo = wt_None
@@ -840,7 +840,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'PSCH'
         FieldName = 'PSCH'
-        DataSet = Form_tree_objects.OD_psch_olap
+        DataSet = DM_Olap.OD_psch_olap
         KeyField = 'ID'
         LookupField = 'NAME'
         WrapTo = wt_None
@@ -858,7 +858,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'IS_EMPT'
         FieldName = 'IS_EMPT'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -874,7 +874,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'SCH'
         FieldName = 'SCH'
-        DataSet = Form_tree_objects.OD_sch_olap
+        DataSet = DM_Olap.OD_data
         KeyField = 'ID'
         LookupField = 'NAME'
         WrapTo = wt_None
@@ -892,7 +892,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'VAL_GROUP'
         FieldName = 'VAL_GROUP'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         KeyField = 'VAL_GROUP'
         LookupField = 'VAL_GROUP'
         WrapTo = wt_None
@@ -910,7 +910,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'VAL_GROUP2'
         FieldName = 'VAL_GROUP2'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         KeyField = 'VAL_GROUP2'
         LookupField = 'VAL_GROUP2'
         WrapTo = wt_None
@@ -928,7 +928,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'UCH'
         FieldName = 'UCH'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -944,7 +944,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'MG1'
         FieldName = 'MG1'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -960,7 +960,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'FIO'
         FieldName = 'FIO'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -976,7 +976,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NAME_GR'
         FieldName = 'NAME_GR'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -992,7 +992,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'ODPU_EX'
         FieldName = 'ODPU_EX'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1008,7 +1008,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'LSK_TP'
         FieldName = 'LSK_TP'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1024,7 +1024,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'IS_VOL'
         FieldName = 'IS_VOL'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1040,7 +1040,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'IsHotPipe'
         FieldName = 'IsHotPipe'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1056,7 +1056,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'isTowel'
         FieldName = 'isTowel'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1481,13 +1481,13 @@ object Form_olap: TForm_olap
     Top = 168
   end
   object PivotCube14: TPivotCube
-    FactTableDataSet = Form_tree_objects.OD_data
+    FactTableDataSet = DM_Olap.OD_data
     Dimensions = <
       item
         Enabled = True
         AliasName = 'MG1'
         FieldName = 'MG1'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1503,7 +1503,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'PREDPR'
         FieldName = 'PREDPR'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1519,7 +1519,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'REU'
         FieldName = 'REU'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1535,7 +1535,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'PREDPR_DET'
         FieldName = 'PREDPR_DET'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1551,7 +1551,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'TYPE'
         FieldName = 'TYPE'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1568,7 +1568,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'STATUS'
         FieldName = 'STATUS'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1585,7 +1585,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'ORG'
         FieldName = 'ORG'
-        DataSet = Form_tree_objects.OD_org_olap
+        DataSet = DM_Olap.OD_data
         KeyField = 'ID'
         LookupField = 'NAME'
         WrapTo = wt_None
@@ -1604,7 +1604,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NAME_GR'
         FieldName = 'NAME_GR'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         KeyField = 'NAME_GR'
         LookupField = 'NAME_GR'
         WrapTo = wt_None
@@ -1622,7 +1622,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'LSK'
         FieldName = 'LSK'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1638,7 +1638,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'ODPU_EX'
         FieldName = 'ODPU_EX'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1654,7 +1654,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'OTHER_NAME'
         FieldName = 'OTHER_NAME'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1670,7 +1670,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'VAL_GROUP2'
         FieldName = 'VAL_GROUP2'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1686,7 +1686,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'USL'
         FieldName = 'USL'
-        DataSet = Form_tree_objects.OD_usl_olap
+        DataSet = DM_Olap.OD_usl_olap
         KeyField = 'USL'
         LookupField = 'NM'
         WrapTo = wt_None
@@ -1704,7 +1704,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'USLM'
         FieldName = 'USLM'
-        DataSet = Form_tree_objects.OD_uslm_olap
+        DataSet = DM_Olap.OD_uslm_olap
         KeyField = 'USLM'
         LookupField = 'NM1'
         WrapTo = wt_None
@@ -1722,7 +1722,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'FK_LSK_TP'
         FieldName = 'FK_LSK_TP'
-        DataSet = Form_tree_objects.OD_lsk_tp_olap
+        DataSet = DM_Olap.OD_data
         KeyField = 'ID'
         LookupField = 'NAME'
         WrapTo = wt_None
@@ -1740,7 +1740,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'PSCH'
         FieldName = 'PSCH'
-        DataSet = Form_tree_objects.OD_psch_olap
+        DataSet = DM_Olap.OD_data
         KeyField = 'ID'
         LookupField = 'NAME'
         WrapTo = wt_None
@@ -1758,7 +1758,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'GRP'
         FieldName = 'GRP'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1775,7 +1775,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'IsHotPipe'
         FieldName = 'IsHotPipe'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1791,7 +1791,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'isTowel'
         FieldName = 'isTowel'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2192,13 +2192,13 @@ object Form_olap: TForm_olap
     Top = 168
   end
   object PivotCube54: TPivotCube
-    FactTableDataSet = Form_tree_objects.OD_data
+    FactTableDataSet = DM_Olap.OD_data
     Dimensions = <
       item
         Enabled = True
         AliasName = 'LSK'
         FieldName = 'LSK'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         KeyField = 'LSK'
         LookupField = 'LSK'
         WrapTo = wt_None
@@ -2216,7 +2216,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NAME_TR'
         FieldName = 'NAME_TR'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2232,7 +2232,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NAME_REU'
         FieldName = 'NAME_REU'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2248,7 +2248,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'ADR'
         FieldName = 'ADR'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         KeyField = 'ADR'
         LookupField = 'ADR'
         WrapTo = wt_None
@@ -2266,7 +2266,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'FIO'
         FieldName = 'FIO'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2282,7 +2282,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'CNT_MONTH'
         FieldName = 'CNT_MONTH'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         KeyField = 'CNT_MONTH'
         LookupField = 'CNT_MONTH'
         WrapTo = wt_None
@@ -2300,7 +2300,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'DAT'
         FieldName = 'DAT'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2316,7 +2316,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'DEB_ORG'
         FieldName = 'DEB_ORG'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2332,7 +2332,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'ST_NAME'
         FieldName = 'ST_NAME'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2348,7 +2348,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'PSCH'
         FieldName = 'PSCH'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2364,7 +2364,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = #1059#1083#1080#1094#1072
         FieldName = 'STREET'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         KeyField = 'STREET'
         WrapTo = wt_None
         Sorting = dmtKeySort
@@ -2381,7 +2381,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = #1044#1086#1084
         FieldName = 'ND'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         KeyField = 'ND'
         WrapTo = wt_None
         Sorting = dmtKeySort
@@ -2398,7 +2398,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = #1050#1074
         FieldName = 'KW'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         KeyField = 'KW'
         WrapTo = wt_None
         Sorting = dmtKeySort
@@ -2729,13 +2729,13 @@ object Form_olap: TForm_olap
     Top = 232
   end
   object PivotCube35: TPivotCube
-    FactTableDataSet = Form_tree_objects.OD_data
+    FactTableDataSet = DM_Olap.OD_data
     Dimensions = <
       item
         Enabled = True
         AliasName = 'PREDPR'
         FieldName = 'PREDP'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         KeyField = 'PREDPR'
         WrapTo = wt_None
         Sorting = dmtNoSort
@@ -2752,7 +2752,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'REU'
         FieldName = 'REU'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2768,7 +2768,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'PREDPR_DET'
         FieldName = 'PREDPR_DET'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2784,7 +2784,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'MG_NAME'
         FieldName = 'MG_NAME'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2800,7 +2800,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'ORG_NAME'
         FieldName = 'ORG_NAME'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2816,7 +2816,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'DAT'
         FieldName = 'DAT'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2832,7 +2832,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'VAR_NAME'
         FieldName = 'VAR_NAME'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2848,7 +2848,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'DOPL_NAME'
         FieldName = 'DOPL_NAME'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2864,7 +2864,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NM'
         FieldName = 'NM'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2880,7 +2880,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NM1'
         FieldName = 'NM1'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2896,7 +2896,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'OPERNAME'
         FieldName = 'OPERNAME'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2912,7 +2912,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'CD_TP'
         FieldName = 'CD_TP'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -3921,7 +3921,6 @@ object Form_olap: TForm_olap
       'USL_NAME='#1059#1089#1083#1091#1075#1072
       'SUMMA='#1057#1091#1084#1084#1072
       'DOC='#1044#1086#1082#1091#1084#1077#1085#1090)
-    DataSet = Form_tree_objects.OD_data
     BCDToCurrency = False
     Left = 120
     Top = 136
@@ -3939,13 +3938,13 @@ object Form_olap: TForm_olap
     Top = 168
   end
   object PivotCube57: TPivotCube
-    FactTableDataSet = Form_tree_objects.OD_data
+    FactTableDataSet = DM_Olap.OD_data
     Dimensions = <
       item
         Enabled = True
         AliasName = 'PREDPR'
         FieldName = 'PREDP'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         KeyField = 'PREDP'
         LookupField = 'PREDP'
         WrapTo = wt_None
@@ -3963,7 +3962,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'PREDPR_DET'
         FieldName = 'PREDPR_DET'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         KeyField = 'PREDPR_DET'
         LookupField = 'PREDPR_DET'
         WrapTo = wt_None
@@ -3981,7 +3980,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'KW'
         FieldName = 'KW'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -3997,7 +3996,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'ORGNAME'
         FieldName = 'ORGNAME'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         KeyField = 'ORGNAME'
         LookupField = 'ORGNAME'
         WrapTo = wt_None
@@ -4015,7 +4014,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NM'
         FieldName = 'NM'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         KeyField = 'NM'
         LookupField = 'NM'
         WrapTo = wt_None
@@ -4033,7 +4032,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NM1'
         FieldName = 'NM1'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -4049,7 +4048,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'STATUS'
         FieldName = 'STATUS'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         KeyField = 'STATUS'
         LookupField = 'STATUS'
         WrapTo = wt_None
@@ -4067,7 +4066,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'SCH'
         FieldName = 'SCH'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         KeyField = 'SCH'
         LookupField = 'SCH'
         WrapTo = wt_None
@@ -4085,7 +4084,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'VAL_GROUP'
         FieldName = 'VAL_GROUP'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         KeyField = 'VAL_GROUP'
         LookupField = 'VAL_GROUP'
         WrapTo = wt_None
@@ -4103,7 +4102,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'MG1'
         FieldName = 'MG1'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -4433,13 +4432,13 @@ object Form_olap: TForm_olap
     Top = 264
   end
   object PivotCube58: TPivotCube
-    FactTableDataSet = Form_tree_objects.OD_data
+    FactTableDataSet = DM_Olap.OD_data
     Dimensions = <
       item
         Enabled = True
         AliasName = 'PREDPR'
         FieldName = 'PREDP'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -4455,7 +4454,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'PREDPR_DET'
         FieldName = 'PREDPR_DET'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -4471,7 +4470,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'KW'
         FieldName = 'KW'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -4487,7 +4486,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'TYPE_PSCH'
         FieldName = 'TYPE_PSCH'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -4818,13 +4817,13 @@ object Form_olap: TForm_olap
     Top = 168
   end
   object PivotCube60: TPivotCube
-    FactTableDataSet = Form_tree_objects.OD_data
+    FactTableDataSet = DM_Olap.OD_data
     Dimensions = <
       item
         Enabled = True
         AliasName = 'PREDPR'
         FieldName = 'PREDP'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -4840,7 +4839,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'PREDPR_DET'
         FieldName = 'PREDPR_DET'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -4856,7 +4855,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'TARIF_NAME'
         FieldName = 'TARIF_NAME'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -4872,7 +4871,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NM'
         FieldName = 'NM'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -4888,7 +4887,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'MG'
         FieldName = 'MG'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -5188,7 +5187,6 @@ object Form_olap: TForm_olap
   object frxDBDS_base: TfrxDBDataset
     UserName = 'frxDBDS_base'
     CloseDataSource = False
-    DataSet = Form_tree_objects.OD_data
     BCDToCurrency = False
     Left = 120
     Top = 384
@@ -5225,7 +5223,6 @@ object Form_olap: TForm_olap
       'DEB_PROC=DEB_PROC'
       'SUM_DISTR=SUM_DISTR'
       'PAY_PROC=PAY_PROC')
-    DataSet = Form_tree_objects.OD_data
     BCDToCurrency = False
     Left = 120
     Top = 208
@@ -5867,13 +5864,13 @@ object Form_olap: TForm_olap
     end
   end
   object PivotCube36: TPivotCube
-    FactTableDataSet = Form_tree_objects.OD_data
+    FactTableDataSet = DM_Olap.OD_data
     Dimensions = <
       item
         Enabled = True
         AliasName = 'NKOM'
         FieldName = 'NKOM'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -5889,7 +5886,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NINK'
         FieldName = 'NINK'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -5905,7 +5902,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'DAT_INK'
         FieldName = 'DAT_INK'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -5921,7 +5918,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'OPERNAME'
         FieldName = 'OPERNAME'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -6286,19 +6283,18 @@ object Form_olap: TForm_olap
       'PRIV_PROC=PRIV_PROC'
       'REL_NAME=REL_NAME'
       'SHORT_NAME=SHORT_NAME')
-    DataSet = Form_tree_objects.OD_c_kart_pr
     BCDToCurrency = False
     Left = 120
     Top = 304
   end
   object PivotCube80: TPivotCube
-    FactTableDataSet = Form_tree_objects.OD_data
+    FactTableDataSet = DM_Olap.OD_data
     Dimensions = <
       item
         Enabled = True
         AliasName = 'NAME_TR'
         FieldName = 'NAME_TR'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -6314,7 +6310,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NAME_REU'
         FieldName = 'NAME_REU'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -6330,7 +6326,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'ADR'
         FieldName = 'ADR'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -6346,7 +6342,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'LSK'
         FieldName = 'LSK'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -6362,7 +6358,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NAME_ORG'
         FieldName = 'NAME_ORG'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -6378,7 +6374,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NM'
         FieldName = 'NM'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -6394,7 +6390,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'CNT'
         FieldName = 'CNT'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -6410,7 +6406,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NM1'
         FieldName = 'NM1'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -6426,7 +6422,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'MG'
         FieldName = 'MG'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.OD_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -6768,7 +6764,6 @@ object Form_olap: TForm_olap
   object frxDBDetail: TfrxDBDataset
     UserName = 'frxDBDS_detail'
     CloseDataSource = False
-    DataSet = Form_tree_objects.OD_detail
     BCDToCurrency = False
     Left = 176
     Top = 384
