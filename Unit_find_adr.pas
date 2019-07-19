@@ -167,11 +167,10 @@ begin
  begin
    Form_Main.Lsk_:=OD_kw.FieldByName('lsk').asString;
    Form_Main.flt_kw_:=OD_kw.FieldByName('kw_id').asString;
-   //для заявок поиск c_lsk_id_
    Form_Main.k_lsk_id_:=DataModule1.OraclePackage1.CallStringFunction(
         'scott.UTILS.GET_K_LSK_ID_BY_LSK', [OD_kw.FieldByName('lsk').asString]);
-   Form_Main.c_lsk_id_:=DataModule1.OraclePackage1.CallStringFunction(
-        'scott.UTILS.GET_C_LSK_ID_BY_LSK', [OD_kw.FieldByName('lsk').asString]);
+   //Form_Main.c_lsk_id_:=DataModule1.OraclePackage1.CallStringFunction(
+     //   'scott.UTILS.GET_C_LSK_ID_BY_LSK', [OD_kw.FieldByName('lsk').asString]);
    Form_Main.fio_:=OD_kw.FieldByName('fio').asString;
    Form_Main.str_adr_:=OD_streets.FieldByName('street').asString+', '+
      OD_houses.FieldByName('nd2').asString+'-'+
@@ -188,7 +187,6 @@ begin
  begin
    //не выбрана квартира
    Form_Main.Lsk_:='';
-   //для заявок поиск c_lsk_id_
    Form_Main.k_lsk_id_:=-1;
    Form_Main.fio_:='';
    Form_Main.str_adr_:=OD_streets.FieldByName('street').asString+', '+
@@ -203,8 +201,10 @@ begin
   if Key = #13 then
   begin
     if wwDBLookupCombo4.Enabled = True then
-      wwDBLookupCombo4.SetFocus else
-     Button1.SetFocus;
+//      wwDBLookupCombo4.SetFocus else
+Windows.SetFocus(wwDBLookupCombo4.Handle) else
+//     Button1.SetFocus;
+Windows.SetFocus(Button1.Handle);
   end;
   except
   end;
@@ -216,7 +216,8 @@ procedure TForm_find_adr.wwDBLookupCombo4KeyPress(Sender: TObject;
 begin
  try
   if Key = #13 then
-    Button1.SetFocus;
+//    Button1.SetFocus;
+Windows.SetFocus(Button1.Handle);
   except
   end;
 
@@ -225,11 +226,12 @@ end;
 procedure TForm_find_adr.wwDBLookupCombo1KeyPress(Sender: TObject;
   var Key: Char);
 begin
- try
+// try
   if Key = #13 then
-    wwDBLookupCombo3.SetFocus;
-  except
-  end;
+//    wwDBLookupCombo3.SetFocus;
+Windows.SetFocus(wwDBLookupCombo3.Handle);
+//  except
+//  end;
 end;
 
 procedure TForm_find_adr.FormCreate(Sender: TObject);
@@ -298,7 +300,8 @@ procedure TForm_find_adr.wwDBLookupCombo2KeyPress(Sender: TObject;
 begin
 try
   if Key = #13 then
-    wwDBLookupCombo1.SetFocus;
+//    wwDBLookupCombo1.SetFocus;
+Windows.SetFocus(wwDBLookupCombo1.Handle);
   except
   end;
 end;

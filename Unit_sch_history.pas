@@ -4,30 +4,45 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, OracleData, ExtCtrls, Grids, Wwdbigrd, Wwdbgrid,
-  wwSpeedButton, wwDBNavigator, wwclearpanel, StdCtrls, wwdblook, ComCtrls,
-  cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxStyles,
-  dxSkinsCore, dxSkinsDefaultPainters, dxSkinscxPCPainter, cxCustomData,
-  cxFilter, cxData, cxDataStorage, cxEdit, cxDBData, cxGridLevel,
+  Dialogs, DB, OracleData, ExtCtrls, 
+  wwSpeedButton, wwDBNavigator, StdCtrls, wwdblook, ComCtrls,
+  cxControls, 
+  
+  cxEdit, cxGridLevel,
   cxClasses, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, cxGrid, cxContainer, cxTextEdit, cxMaskEdit,
   cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
-  cxCheckBox, dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel,
-  dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
-  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans,
-  dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky,
-  dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
-  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
-  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
-  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
-  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  cxNavigator, cxSplitter, cxPC,
+  cxLabel, Mask, wwdbedit, Math, cxCalendar, cxGraphics, cxLookAndFeels,
+  cxLookAndFeelPainters, cxStyles, dxSkinsCore, dxSkinBlack, dxSkinBlue,
+  dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom,
+  dxSkinDarkSide, dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle,
+  dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary,
+  dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin,
+  dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
   dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinPumpkin,
   dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
   dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
-  dxSkinTheAsphaltWorld, dxSkinValentine, dxSkinVS2010, dxSkinWhiteprint,
-  dxSkinXmas2008Blue, cxNavigator, cxSplitter, dxBarBuiltInMenu, cxPC,
-  cxLabel, cxDBEdit, Mask, wwdbedit, Math, cxCalendar, dxCore, cxDateUtils,
-  cxPropertiesStore, cxImageComboBox;
+  dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter,
+  cxCustomData, cxFilter, cxData, cxDataStorage, cxDBData, cxCheckBox,
+  cxImageComboBox, dxBarBuiltInMenu, dxCore, cxDateUtils;
 
 type
   TForm_sch_history = class(TForm)
@@ -194,7 +209,8 @@ begin
   curLsk:=lsk;
   if (Self.Visible) and (cxPageControl1.ActivePageIndex=0) then
   begin
-    wwDBEdit2.SetFocus;
+//    wwDBEdit2.SetFocus;
+Windows.SetFocus(wwDBEdit2.Handle);
     wwDBEdit2.SelectAll;
   end;
 end;
@@ -303,8 +319,12 @@ begin
   begin
     DataModule1.OraclePackage1.Session.Commit;
     // сохранить/обновить форму карточки, чтобы обновить поле расхода по счетчику
+
     if FF('Form_kart', 0) = 1 then
+    begin
       Form_kart.save_changes(0);
+      Form_kart.recalc_kart;
+    end;
 
     wwDBEdit3.Text:='0';
     OD_meter.Active:=false;
@@ -331,12 +351,14 @@ begin
 
     if OD_meter.RecNo = OD_meter.RecordCount then
     begin
-      Button3.SetFocus;
+//      Button3.SetFocus;
+Windows.SetFocus(Button3.Handle);
     end
     else
     begin
       OD_meter.Next;
-      wwDBEdit2.SetFocus;
+//      wwDBEdit2.SetFocus;
+Windows.SetFocus(wwDBEdit2.Handle);
       wwDBEdit2.SelectAll;
     end;
 end;
@@ -541,7 +563,9 @@ procedure TForm_sch_history.wwDBEdit2KeyPress(Sender: TObject;
 begin
   if RetKey(Key) then
     Key:= '.';
-  if Key = #13 then wwDBEdit3.SetFocus;
+//  if Key = #13 then wwDBEdit3.SetFocus;
+if Key = #13 then
+Windows.SetFocus(wwDBEdit3.Handle);
 
 end;
 
@@ -550,7 +574,9 @@ procedure TForm_sch_history.wwDBEdit3KeyPress(Sender: TObject;
 begin
   if RetKey(Key) then
     Key:= '.';
-  if Key = #13 then Button1.SetFocus;
+//  if Key = #13 then Button1.SetFocus;
+if Key = #13 then 
+Windows.SetFocus(Button1.Handle);
 
 end;
 
@@ -613,7 +639,8 @@ procedure TForm_sch_history.wwDBEdit1KeyPress(Sender: TObject;
 begin
   if Key = #13 then
   begin
-      wwDBEdit2.SetFocus;
+//      wwDBEdit2.SetFocus;
+ Windows.SetFocus(wwDBEdit2.Handle);
       wwDBEdit2.SelectAll;
   end;
 

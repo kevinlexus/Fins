@@ -1,8 +1,8 @@
 object Form_get_pay_dolg: TForm_get_pay_dolg
-  Left = 876
-  Top = 399
-  Width = 588
-  Height = 377
+  Left = 772
+  Top = 157
+  Width = 634
+  Height = 409
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #1044#1086#1083#1075#1080' '#1087#1086' '#1084#1077#1089#1103#1094#1072#1084
   Color = clBtnFace
@@ -91,10 +91,10 @@ object Form_get_pay_dolg: TForm_get_pay_dolg
   TextHeight = 13
   object DBGridEh1: TDBGridEh
     Left = 0
-    Top = 0
-    Width = 572
-    Height = 289
-    Align = alTop
+    Top = 33
+    Width = 618
+    Height = 288
+    Align = alClient
     DataSource = Form_get_pay_nal.DS_chargepay
     Flat = False
     Font.Charset = DEFAULT_CHARSET
@@ -120,10 +120,35 @@ object Form_get_pay_dolg: TForm_get_pay_dolg
     TitleFont.Name = 'MS Sans Serif'
     TitleFont.Style = []
     OnColEnter = DBGridEh1ColEnter
-    OnColExit = DBGridEh1ColExit
     OnKeyDown = DBGridEh1KeyDown
     OnKeyPress = DBGridEh1KeyPress
     Columns = <
+      item
+        EditButtons = <>
+        FieldName = 'LSK'
+        Footers = <>
+        ReadOnly = True
+        Title.Caption = #1051#1080#1094'.'#1089#1095'.'
+        Width = 58
+      end
+      item
+        EditButtons = <>
+        FieldName = 'LSK_TP'
+        Footers = <>
+        ReadOnly = True
+        Title.Caption = #1058#1080#1087'.'
+        Visible = False
+        Width = 27
+      end
+      item
+        Checkboxes = False
+        EditButtons = <>
+        FieldName = 'USL_NAME_SHORT'
+        Footers = <>
+        ReadOnly = True
+        Title.Caption = #1059#1089#1083#1091#1075#1080
+        Width = 106
+      end
       item
         EditButtons = <>
         FieldName = 'MG'
@@ -131,7 +156,6 @@ object Form_get_pay_dolg: TForm_get_pay_dolg
         Footer.ValueType = fvtStaticText
         Footers = <>
         Title.Caption = #1055#1077#1088#1080#1086#1076
-        Width = 83
       end
       item
         EditButtons = <>
@@ -140,7 +164,7 @@ object Form_get_pay_dolg: TForm_get_pay_dolg
         Footer.ValueType = fvtSum
         Footers = <>
         Title.Caption = #1053#1072#1095#1080#1089#1083#1077#1085#1086
-        Width = 88
+        Width = 76
       end
       item
         EditButtons = <>
@@ -149,6 +173,7 @@ object Form_get_pay_dolg: TForm_get_pay_dolg
         Footer.ValueType = fvtSum
         Footers = <>
         Title.Caption = #1054#1087#1083#1072#1095#1077#1085#1086
+        Width = 68
       end
       item
         EditButtons = <>
@@ -157,7 +182,7 @@ object Form_get_pay_dolg: TForm_get_pay_dolg
         Footer.ValueType = fvtSum
         Footers = <>
         Title.Caption = #1057#1091#1084#1084#1072
-        Width = 84
+        Width = 75
       end
       item
         EditButtons = <>
@@ -165,7 +190,7 @@ object Form_get_pay_dolg: TForm_get_pay_dolg
         Footer.ValueType = fvtSum
         Footers = <>
         Title.Caption = #1055#1077#1085#1103
-        Width = 71
+        Width = 63
       end
       item
         EditButtons = <>
@@ -173,15 +198,19 @@ object Form_get_pay_dolg: TForm_get_pay_dolg
         Footer.ValueType = fvtSum
         Footers = <>
         Title.Caption = #1048#1090#1086#1075#1086
+        Width = 60
       end>
   end
   object GroupBox1: TGroupBox
     Left = 0
-    Top = 290
-    Width = 572
+    Top = 321
+    Width = 618
     Height = 49
     Align = alBottom
     TabOrder = 1
+    DesignSize = (
+      618
+      49)
     object Label1: TLabel
       Left = 110
       Top = 21
@@ -196,10 +225,11 @@ object Form_get_pay_dolg: TForm_get_pay_dolg
       ParentFont = False
     end
     object Button1: TButton
-      Left = 391
+      Left = 481
       Top = 16
       Width = 63
       Height = 25
+      Anchors = [akTop, akRight]
       Caption = #1054#1082
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -230,6 +260,7 @@ object Form_get_pay_dolg: TForm_get_pay_dolg
       Top = 16
       Width = 79
       Height = 25
+      Hint = #1054#1095#1080#1089#1090#1080#1090#1100' '#1088#1072#1089#1087#1088#1077#1076#1077#1083#1077#1085#1080#1077' '#1086#1087#1083#1072#1090#1099
       Caption = #1054#1095#1080#1089#1090#1080#1090#1100
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -237,14 +268,17 @@ object Form_get_pay_dolg: TForm_get_pay_dolg
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 2
       OnClick = btn1Click
     end
     object Button2: TButton
-      Left = 467
+      Left = 549
       Top = 16
       Width = 63
       Height = 25
+      Anchors = [akTop, akRight]
       Cancel = True
       Caption = #1054#1090#1084#1077#1085#1072
       Font.Charset = DEFAULT_CHARSET
@@ -277,6 +311,31 @@ object Form_get_pay_dolg: TForm_get_pay_dolg
       WordWrap = False
       OnKeyPress = wwDBEdit1KeyPress
     end
+    object Button3: TButton
+      Left = 371
+      Top = 16
+      Width = 79
+      Height = 25
+      Hint = #1042#1086#1089#1089#1090#1072#1085#1086#1074#1080#1090#1100' '#1088#1072#1089#1087#1088#1077#1076#1077#1083#1077#1085#1080#1077' '#1086#1087#1083#1072#1090#1099
+      Caption = #1042#1086#1089#1089#1090'.'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 5
+      OnClick = Button3Click
+    end
+  end
+  object HeaderControl1: THeaderControl
+    Left = 0
+    Top = 0
+    Width = 618
+    Height = 33
+    Sections = <>
   end
   object pm1: TPopupMenu
     Left = 132
@@ -285,5 +344,20 @@ object Form_get_pay_dolg: TForm_get_pay_dolg
       Caption = #1059#1073#1088#1072#1090#1100' '#1074#1093#1086#1076#1103#1097#1077#1077' '#1089#1072#1083#1100#1076#1086' '#1087#1086' '#1087#1077#1085#1077
       OnClick = N1Click
     end
+  end
+  object cxprprtstr1: TcxPropertiesStore
+    Components = <
+      item
+        Component = Owner
+        Properties.Strings = (
+          'Height'
+          'Left'
+          'Top'
+          'Width')
+      end>
+    StorageName = 'cxPropertiesStore1'
+    StorageType = stRegistry
+    Left = 24
+    Top = 48
   end
 end

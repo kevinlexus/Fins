@@ -91,7 +91,6 @@ object Form_print_strah: TForm_print_strah
       52010000000000020000004D470100000000000500000053554D4D4101000000
       0000060000004441545F4D47010000000000}
     Session = DataModule1.OracleSession1
-    Active = True
   end
   object OracleDataSet2: TOracleDataSet
     SQL.Strings = (
@@ -114,7 +113,7 @@ object Form_print_strah: TForm_print_strah
     Top = 64
   end
   object frxReport1: TfrxReport
-    Version = '4.7.71'
+    Version = '5.1.9'
     DotMatrixReport = False
     EngineOptions.MaxMemSize = 10000000
     IniFile = '\Software\Fast Reports'
@@ -148,6 +147,7 @@ object Form_print_strah: TForm_print_strah
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
       object MasterData1: TfrxMasterData
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 249.448980000000000000
         Width = 718.110700000000000000
@@ -158,7 +158,6 @@ object Form_print_strah: TForm_print_strah
           Left = 192.756030000000000000
           Width = 34.015770000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'REU'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -175,7 +174,6 @@ object Form_print_strah: TForm_print_strah
           Left = 238.110390000000000000
           Width = 75.590600000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'SUMMA'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -194,6 +192,7 @@ object Form_print_strah: TForm_print_strah
         end
       end
       object GroupHeader1: TfrxGroupHeader
+        FillType = ftBrush
         Height = 79.370130000000000000
         Top = 147.401670000000000000
         Width = 718.110700000000000000
@@ -205,7 +204,6 @@ object Form_print_strah: TForm_print_strah
           Top = 15.118120000000010000
           Width = 657.638220000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -16
@@ -223,7 +221,6 @@ object Form_print_strah: TForm_print_strah
           Top = 49.133890000000010000
           Width = 64.252010000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -239,7 +236,6 @@ object Form_print_strah: TForm_print_strah
           Top = 49.133890000000010000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -253,32 +249,33 @@ object Form_print_strah: TForm_print_strah
           Left = 7.559060000000000000
           Top = 71.811070000000000000
           Width = 699.212598430000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Line2: TfrxLineView
           Left = 7.559060000000000000
           Top = 41.574829999999990000
           Width = 699.213050000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Line4: TfrxLineView
           Left = 7.559060000000000000
           Top = 7.559060000000017000
           Width = 699.213050000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Line5: TfrxLineView
           Left = 7.559060000000000000
           Top = 3.779529999999994000
           Width = 699.213050000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
       end
       object GroupFooter1: TfrxGroupFooter
+        FillType = ftBrush
         Height = 139.842610000000000000
         Top = 294.803340000000000000
         Width = 718.110700000000000000
@@ -286,7 +283,7 @@ object Form_print_strah: TForm_print_strah
           Left = 7.559060000000000000
           Top = 3.779529999999965000
           Width = 699.213050000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Memo7: TfrxMemoView
@@ -294,7 +291,6 @@ object Form_print_strah: TForm_print_strah
           Top = 11.338590000000010000
           Width = 124.724490000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -310,7 +306,6 @@ object Form_print_strah: TForm_print_strah
           Top = 11.338590000000010000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           DisplayFormat.DecimalSeparator = ','
@@ -331,7 +326,6 @@ object Form_print_strah: TForm_print_strah
           Top = 41.574830000000020000
           Width = 219.212740000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -347,7 +341,6 @@ object Form_print_strah: TForm_print_strah
           Top = 41.574830000000020000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           DisplayFormat.DecimalSeparator = ','
@@ -368,7 +361,6 @@ object Form_print_strah: TForm_print_strah
           Top = 75.590600000000000000
           Width = 219.212740000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -384,7 +376,6 @@ object Form_print_strah: TForm_print_strah
           Top = 75.590600000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           DisplayFormat.DecimalSeparator = ','
@@ -403,6 +394,7 @@ object Form_print_strah: TForm_print_strah
         end
       end
       object ReportSummary1: TfrxReportSummary
+        FillType = ftBrush
         Height = 30.236240000000000000
         Top = 495.118430000000000000
         Width = 718.110700000000000000
@@ -411,7 +403,6 @@ object Form_print_strah: TForm_print_strah
           Top = 7.559059999999988000
           Width = 219.212740000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -427,7 +418,6 @@ object Form_print_strah: TForm_print_strah
           Top = 7.559059999999988000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           DisplayFormat.DecimalSeparator = ','
@@ -447,11 +437,12 @@ object Form_print_strah: TForm_print_strah
           Left = 7.559060000000000000
           Top = 3.779530000000022000
           Width = 699.212598425197100000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
       end
       object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
@@ -460,7 +451,6 @@ object Form_print_strah: TForm_print_strah
           Top = 1.000000000000000000
           Width = 171.708720000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -472,11 +462,13 @@ object Form_print_strah: TForm_print_strah
         end
       end
       object PageHeader1: TfrxPageHeader
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 64.252010000000000000
         Width = 718.110700000000000000
       end
       object PageFooter1: TfrxPageFooter
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 548.031849999999900000
         Width = 718.110700000000000000
@@ -485,7 +477,6 @@ object Form_print_strah: TForm_print_strah
           Top = 2.220159999999964000
           Width = 170.519790000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11

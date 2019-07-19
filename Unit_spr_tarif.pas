@@ -5,10 +5,10 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, wwSpeedButton, wwDBNavigator, ExtCtrls, wwclearpanel,
-  Grids, Wwdbigrd, Wwdbgrid, DB, Wwdatsrc, OracleData, wwdblook, Wwintl,
+  DB, Wwdatsrc, OracleData, wwdblook, Wwintl,
   wwcheckbox, wwrcdpnl, wwDialog, wwrcdvw, MemTableDataEh, MemTableEh,
-  DataDriverEh, GridsEh, DBGridEh, Mask, DBCtrlsEh, DBLookupEh, Menus,
-  ComCtrls, wwriched, wwdbedit, DBCtrls;
+  DataDriverEh, GridsEh, DBGridEh, DBCtrlsEh, Menus,
+  wwriched, wwdbedit, DBCtrls;
 
 type
   TForm_spr_tarif = class(TForm)
@@ -338,7 +338,8 @@ Var
   AGrd:TGridCoord;
 begin
   Accept:=True;
-  TDBGridEh(Sender).SetFocus;
+//  TDBGridEh(Sender).SetFocus;
+Windows.SetFocus(TDBGridEh(Sender).Handle);
   AGrd:=TDBGridEh(Sender).MouseCoord(X,Y);
   if AGrd.Y-1 >= TDBGridEh(Sender).Row then
   begin

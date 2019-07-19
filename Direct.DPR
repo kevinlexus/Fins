@@ -17,8 +17,10 @@ uses
   DM_module1 in 'DM_module1.pas' {DataModule1: TDataModule},
   Unit_status_gen in 'Unit_status_gen.pas' {Form_status_gen},
   Unit_form_alert_exit in 'Unit_form_alert_exit.pas' {Form_alert_exit},
-  Unit_print_saldo_houses in 'Unit_print_saldo_houses.pas' {Form_print_saldo_houses},
-  Unit_print_saldo_org_usl in 'Unit_print_saldo_org_usl.pas' {Form_print_saldo_org_usl},
+  Unit_print_saldo_houses in 'Unit_print_saldo_houses.pas'
+  {Form_print_saldo_houses},
+  Unit_print_saldo_org_usl in 'Unit_print_saldo_org_usl.pas'
+  {Form_print_saldo_org_usl},
   Unit_sel_reu in 'Unit_sel_reu.pas' {Form_sel_reu},
   Unit_form_saldo_check in 'Unit_form_saldo_check.pas' {Form_saldo_check},
   Unit_generate in 'Unit_generate.pas' {Form_generate},
@@ -27,7 +29,8 @@ uses
   Unit_form_plan in 'Unit_form_plan.pas' {Form_plan},
   Unit_print_plan in 'Unit_print_plan.pas' {Form_print_plan},
   Unit_print_xito5 in 'Unit_print_xito5.pas' {Form_print_xito5},
-  Unit_print_opl_xito10_3 in 'Unit_print_opl_xito10_3.pas' {Form_print_opl_xito10_3},
+  Unit_print_opl_xito10_3 in 'Unit_print_opl_xito10_3.pas'
+  {Form_print_opl_xito10_3},
   Unit_print_saldo_usl in 'Unit_print_saldo_usl.pas' {Form_print_saldo_usl},
   Unit_print_lg_usl in 'Unit_print_lg_usl.pas' {Form_print_lg_usl},
   Unit_sel_uch in 'Unit_sel_uch.pas' {Form_sel_uch},
@@ -70,7 +73,8 @@ uses
   Unit_sel_arch_period in 'Unit_sel_arch_period.pas' {Form_sel_arch_period},
   Unit_changes_list in 'Unit_changes_list.pas' {Form_changes_list},
   Unit_houses_nabor in 'Unit_houses_nabor.pas' {Form_houses_nabor},
-  Unit_change_house_nabor2 in 'Unit_change_house_nabor2.pas' {Form_change_house_nabor},
+  Unit_change_house_nabor2 in 'Unit_change_house_nabor2.pas'
+  {Form_change_house_nabor},
   Unit_spr_spk in 'Unit_spr_spk.pas' {Form_spr_spk},
   Unit_gen_current in 'Unit_gen_current.pas' {Form_gen_current},
   Unit_print_lists in 'Unit_print_lists.pas' {Form_print_lists},
@@ -114,8 +118,10 @@ uses
   Unit_spr_params in 'Unit_spr_params.pas' {Form_spr_params},
   Unit_edit_bitmask in 'Unit_edit_bitmask.pas' {Form_edit_bitmask},
   Unit_spr_street in 'Unit_spr_street.pas' {Form_spr_street},
-  Unit_change_house_status in 'Unit_change_house_status.pas' {Form_change_house_status},
-  Unit_change_house_vvod in 'Unit_change_house_vvod.pas' {Form_change_house_vvod},
+  Unit_change_house_status in 'Unit_change_house_status.pas'
+  {Form_change_house_status},
+  Unit_change_house_vvod in 'Unit_change_house_vvod.pas'
+  {Form_change_house_vvod},
   Unit_spr_usl in 'Unit_spr_usl.pas' {Form_spr_usl},
   Unit_add_usl in 'Unit_add_usl.pas' {Form_add_usl},
   Unit_price_copy in 'Unit_price_copy.pas' {Form_price_copy},
@@ -154,7 +160,8 @@ uses
   Unit_spr_proc_pay in 'Unit_spr_proc_pay.pas' {Form_spr_proc_pay},
   u_frmAccFlow in 'u_frmAccFlow.pas' {frmAccFlow},
   u_frmDistPayLog in 'u_frmDistPayLog.pas' {frmDistPayLog},
-  Unit_edit_pay_usl_org in 'Unit_edit_pay_usl_org.pas' {Form_edit_pay_usl_org};
+  Unit_edit_pay_usl_org in 'Unit_edit_pay_usl_org.pas' {Form_edit_pay_usl_org},
+  Unit_find_adr2 in 'Unit_find_adr2.pas' {Form_find_adr2};
 
 //,
   //CnDebug;
@@ -177,14 +184,15 @@ procedure EOracleErr(Error: EOracleError);
 begin
   //Проверяем ошибку возможно вызванную потерей связи
   DataModule1.OraclePackage2.Session.Connected := true;
-  DataModule1.OraclePackage2.CallProcedure('scott.logger.log_', [parDate, 'User:' + Form_main.User + ' ' + Error.Message]);
+  DataModule1.OraclePackage2.CallProcedure('scott.logger.log_', [parDate, 'User:'
+    + Form_main.User + ' ' + Error.Message]);
   DataModule1.OraclePackage2.Session.Connected := false;
 end;
 
 begin
-//   StartTimeMark(1);
-//   OutputDebugString('bbbb');
-  ////Application.MessageBox('1', 'Check', 16);
+  //   StartTimeMark(1);
+  //   OutputDebugString('bbbb');
+    ////Application.MessageBox('1', 'Check', 16);
   s := ParamStr(1);
   GetDir(0, s);
   Ini := TIniFile.Create(s + '\licenses.ini');
@@ -237,55 +245,74 @@ begin
     SID := SID + CHR(StrToInt('$' + copy(s, I, 3)));
     I := I + 3;
   end;
-  try                           
-  //Application.MessageBox('4.1', 'Check', 16);
+  try
+    //Application.MessageBox('4.1', 'Check', 16);
     DataModule1.OracleSession1.Connected := false;
-  //Application.MessageBox('4.2', 'Check', 16);
+    //Application.MessageBox('4.2', 'Check', 16);
     DataModule1.OracleSession1.LogonUsername := User;
-  //Application.MessageBox('4.3', 'Check', 16);
+    //Application.MessageBox('4.3', 'Check', 16);
     DataModule1.OracleSession1.LogonPassword := Pass;
-  //Application.MessageBox('4.4', 'Check', 16);
+    //Application.MessageBox('4.4', 'Check', 16);
     DataModule1.OracleSession1.LogonDatabase := SID;
-  //Application.MessageBox('4.5', 'Check', 16);
+    //Application.MessageBox('4.5', 'Check', 16);
     DataModule1.OracleSession1.Connected := true;
-  //Application.MessageBox('4.6', 'Check', 16);
+    //Application.MessageBox('4.6', 'Check', 16);
     if DataModule1.OracleSession1.StatementCache = True then
     begin
       Application.MessageBox('Недопустимо использование StatementCache в OracleSession, приводит к ошибке ORA-01410: Invalid Rowid!', 'Внимание!', 16)
     end;
-  //Application.MessageBox('5', 'Check', 16);
+    //Application.MessageBox('5', 'Check', 16);
     DataModule1.OracleSession1.Connected := false;
-  //Application.MessageBox('5.1', 'Check', 16);
+    //Application.MessageBox('5.1', 'Check', 16);
     DataModule1.OracleSession1.Connected := true;
-  //Application.MessageBox('5.2', 'Check', 16);
+    //Application.MessageBox('5.2', 'Check', 16);
     DataModule1.OracleSession1.Connected := false;
-  //Application.MessageBox('5.3', 'Check', 16);
+    //Application.MessageBox('5.3', 'Check', 16);
     DataModule1.OracleSession1.Connected := true;
-  //Application.MessageBox('5.4', 'Check', 16);
+    //Application.MessageBox('5.4', 'Check', 16);
 
     DataModule1.OracleSession2.LogonUsername := User;
     DataModule1.OracleSession2.LogonPassword := Pass;
     DataModule1.OracleSession2.LogonDatabase := SID;
 
-
-    if DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc', ['drx5_админ_доступ_к_базе']) = 1 then
+    if DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
+      ['drx5_админ_доступ_к_базе']) = 1 then
       Form_Main.g_admin := 1
     else
       Form_Main.g_admin := 0;
 
-  //проверить наличие ККМ
+    // режим тестирования ККМ
+    s := Ini.ReadString('Application', 'cash_test', '');
+    if s = '1' then
+      Form_Main.cash_test := 1
+    else
+      Form_Main.cash_test := 0;
+
+    // проверить наличие ККМ
     s := Ini.ReadString('Application', 'have_cash', '');
     if s <> '' then
     begin
+      // наличие ККМ
       Form_Main.have_cash := StrToInt(s);
-      Form_Main.create_OLE_KKM;
+
+      if Form_Main.cash_test = 0 then
+      begin
+        // создать 1 ККМ
+        Form_Main.create_OLE_KKM(1);
+
+        s := Ini.ReadString('Application', 'cash2_Ip', '');
+        if s <> '' then
+        begin
+          // создать 2 ККМ, если указан его IP
+          Form_Main.create_OLE_KKM(2);
+        end
+      end;
     end
     else
+      // нет ККМ
       Form_Main.have_cash := 0;
-  //Application.MessageBox('6', 'Check', 16);
 
     Form_Main.OracleEvent1.Start;
-  //Application.MessageBox('7', 'Check', 16);
     Form_Main.User := User;
     Ini.Free;
   except
@@ -293,11 +320,14 @@ begin
     begin
       Ini.Free;
       if pos('01017', E.Message) > 1 then
-        Application.MessageBox('Не корректны логин или пароль пользователя!', 'Внимание!', 16)
+        Application.MessageBox('Не корректны логин или пароль пользователя!',
+          'Внимание!', 16)
       else if pos('28000', E.Message) > 1 then
-        Application.MessageBox(Pchar('Учетная запись пользователя "' + User + '" заблокирована!'), 'Внимание!', 16)
+        Application.MessageBox(Pchar('Учетная запись пользователя "' + User +
+          '" заблокирована!'), 'Внимание!', 16)
       else if pos('12543', E.Message) > 1 then
-        Application.MessageBox(Pchar('Сервер "' + SID + '", указанный в tnsnames.ora не доступен!'), 'Внимание!', 16)
+        Application.MessageBox(Pchar('Сервер "' + SID +
+          '", указанный в tnsnames.ora не доступен!'), 'Внимание!', 16)
       else
         Application.MessageBox(PCHar(E.Message), 'Внимание!', 16);
       Application.Terminate;
@@ -312,13 +342,15 @@ begin
   begin
     Form_Main.OD_params.Active := false;
     Form_Main.OD_params.Active := true;
-  //Вариант работы приложения
-  ////Application.MessageBox('10', 'Check', 16);
-    Form_main.org_var_ := DataModule1.OraclePackage1.CallIntegerFunction('scott.INIT.get_org_var', [parNone]);
+    //Вариант работы приложения
+    ////Application.MessageBox('10', 'Check', 16);
+    Form_main.org_var_ :=
+      DataModule1.OraclePackage1.CallIntegerFunction('scott.INIT.get_org_var',
+      [parNone]);
 
-//нельзя использовать versia в params - используется updater-ом
+    //нельзя использовать versia в params - используется updater-ом
     Form_Main.CoolTrayIcon1.ShowTaskbarIcon;
-  ////Application.MessageBox('11', 'Check', 16);
+    ////Application.MessageBox('11', 'Check', 16);
   end;
 
   Form_main.OD_params.Active := true;
@@ -334,16 +366,22 @@ begin
     Form_Main.N25.Enabled := false;
   end;
 
-  if (User <> 'scott') and (User <> 'lev') and (Form_Main.OD_params.FieldByName('param').AsInteger = 1) then
+  if (User <> 'scott') and (User <> 'lev') and
+    (Form_Main.OD_params.FieldByName('param').AsInteger = 1) then
   begin
     Application.CreateForm(TForm_alert_exit, Form_alert_exit);
-    Form_alert_exit.Memo1.Text := Form_Main.OD_params.FieldByName('message').AsString;
+    Form_alert_exit.Memo1.Text :=
+      Form_Main.OD_params.FieldByName('message').AsString;
     Form_alert_exit.Timer1.Enabled := true;
     Form_alert_exit.ShowModal;
   end;
   ////Application.MessageBox('13', 'Check', 16);
 
-  if ((DataModule1.OraclePackage1.CallIntegerFunction('scott.INIT.get_have_splash', [parNone]) = 1) or (Length(DataModule1.OraclePackage1.CallStringFunction('scott.INIT.get_errors', [parNone])) > 0)) then
+  if
+    ((DataModule1.OraclePackage1.CallIntegerFunction('scott.INIT.get_have_splash',
+    [parNone]) = 1) or
+    (Length(DataModule1.OraclePackage1.CallStringFunction('scott.INIT.get_errors',
+    [parNone])) > 0)) then
   begin
     Application.Title := 'Директ';
     Form_Main.CoolTrayIcon1.Hint := 'Директ';
@@ -369,10 +407,11 @@ begin
   Form_main.exepath_ := ExtractFilePath(Application.ExeName);
 
   //загружаем параметры для сессии
-  DataModule1.OraclePackage1.CallProcedure('scott.utils.prep_users_par', [parNone]);
+  DataModule1.OraclePackage1.CallProcedure('scott.utils.prep_users_par',
+    [parNone]);
   //включить таблицы параметров
   //параметры текущего РКЦ
-  DataModule1.OD_rkc.Active:=true;
+  DataModule1.OD_rkc.Active := true;
   ////Application.MessageBox('17', 'Check', 16);
   Application.Run;
 

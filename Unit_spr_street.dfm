@@ -92,7 +92,7 @@ object Form_spr_street: TForm_spr_street
   object DBGridEh1: TDBGridEh
     Left = 0
     Top = 0
-    Width = 369
+    Width = 361
     Height = 337
     Align = alTop
     DataSource = DS_oper
@@ -128,8 +128,8 @@ object Form_spr_street: TForm_spr_street
   end
   object GroupBox1: TGroupBox
     Left = 0
-    Top = 374
-    Width = 369
+    Top = 369
+    Width = 361
     Height = 49
     Align = alBottom
     TabOrder = 2
@@ -184,8 +184,9 @@ object Form_spr_street: TForm_spr_street
     Optimize = False
     OracleDictionary.UseMessageTable = True
     QBEDefinition.QBEFieldDefs = {
-      0400000002000000020000004944010000000000040000004E414D4501000000
-      0000}
+      0400000004000000020000004944010000000000040000004E414D4501000000
+      00000800000043445F4B4C4144520100000000000700000043445F55535A4E01
+      0000000000}
     RefreshOptions = [roAfterInsert, roAfterUpdate]
     CommitOnPost = False
     Session = DataModule1.OracleSession1

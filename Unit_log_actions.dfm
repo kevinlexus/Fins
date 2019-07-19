@@ -93,11 +93,11 @@ object Form_log_actions: TForm_log_actions
     Left = 0
     Top = 0
     Width = 661
-    Height = 528
+    Height = 527
     Align = alClient
     TabOrder = 0
     object cxGrid1DBTableView1: TcxGridDBTableView
-      NavigatorButtons.ConfirmDelete = False
+      Navigator.Buttons.CustomButtons = <>
       DataController.DataSource = DS_data
       DataController.DetailKeyFieldNames = 'ID'
       DataController.KeyFieldNames = 'ID'
@@ -144,10 +144,10 @@ object Form_log_actions: TForm_log_actions
       0300000001000000040000003A4C534B05000000090000002020202020202020
       0000000000}
     QBEDefinition.QBEFieldDefs = {
-      0400000007000000040000005445585401000000000002000000545301000000
+      0400000008000000040000005445585401000000000002000000545301000000
       00000A000000464B5F555345525F4944010000000000030000004C534B010000
       0000000B000000464B5F545950455F414354010000000000040000004E414D45
-      010000000000020000004944010000000000}
+      010000000000020000004944010000000000020000004D47010000000000}
     Master = Form_list_kart.OD_list_kart
     MasterFields = 'lsk'
     DetailFields = 'lsk'

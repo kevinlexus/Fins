@@ -5,10 +5,26 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ComCtrls, StdCtrls, wwdbdatetimepicker, Mask,
-  DBCtrls, ExtCtrls, DB, OracleData, Utils, cxGraphics, cxControls,
-  cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore,
-  dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee,
-  dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  DBCtrls, ExtCtrls, DB, OracleData, cxControls,
+  cxContainer, cxEdit, 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  cxTextEdit,
+  cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit,
+  cxDBLookupComboBox, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters,
+  dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel,
+  dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
   dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans,
   dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky,
   dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
@@ -20,9 +36,7 @@ uses
   dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
   dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
-  dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue, cxTextEdit,
-  cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit,
-  cxDBLookupComboBox;
+  dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue;
 
 type
   TForm_par_edit = class(TForm)
@@ -64,7 +78,7 @@ var
   Form_par_edit: TForm_par_edit;
 
 implementation
- uses ObjPar;
+ 
 {$R *.dfm}
 
 procedure TForm_par_edit.FormClose(Sender: TObject;
@@ -162,12 +176,14 @@ end;
 
 procedure TForm_par_edit.TabSheet1Show(Sender: TObject);
 begin
-  wwDBDateTimePicker1.SetFocus;
+//  wwDBDateTimePicker1.SetFocus;
+Windows.SetFocus(wwDBDateTimePicker1.Handle);
 end;
 
 procedure TForm_par_edit.TabSheet2Show(Sender: TObject);
 begin
-  DBEdit1.SetFocus;
+//  DBEdit1.SetFocus;
+Windows.SetFocus(DBEdit1.Handle);
   if g_key <> Chr(13) then
   begin
   DBEdit1.SelStart := Length( DBEdit1.Text );
@@ -177,7 +193,8 @@ end;
 
 procedure TForm_par_edit.TabSheet3Show(Sender: TObject);
 begin
-  DBEdit2.SetFocus;
+//  DBEdit2.SetFocus;
+Windows.SetFocus(DBEdit2.Handle);
   if g_key <> Chr(13) then
   begin
   DBEdit2.SelStart := Length( DBEdit2.Text );
@@ -212,7 +229,8 @@ end;
 
 procedure TForm_par_edit.TabSheet4Show(Sender: TObject);
 begin
-  cbb2.SetFocus;
+//  cbb2.SetFocus;
+Windows.SetFocus(cbb2.Handle);
 end;
 
 procedure TForm_par_edit.cbb1PropertiesCloseUp(Sender: TObject);

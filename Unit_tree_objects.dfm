@@ -1,6 +1,6 @@
 object Form_tree_objects: TForm_tree_objects
-  Left = 262
-  Top = 191
+  Left = 215
+  Top = 232
   Width = 353
   Height = 740
   Align = alLeft
@@ -324,7 +324,6 @@ object Form_tree_objects: TForm_tree_objects
         Font.Style = []
         ParentFont = False
         TabOrder = 1
-        OnChange = Edit2Change
       end
       object Edit2: TEdit
         Left = 25
@@ -338,7 +337,6 @@ object Form_tree_objects: TForm_tree_objects
         Font.Style = []
         ParentFont = False
         TabOrder = 2
-        OnChange = Edit2Change
       end
       object Edit3: TEdit
         Left = 178
@@ -352,7 +350,6 @@ object Form_tree_objects: TForm_tree_objects
         Font.Style = []
         ParentFont = False
         TabOrder = 3
-        OnChange = Edit2Change
       end
       object CheckBox1: TCheckBox
         Left = 118
@@ -1523,5 +1520,10 @@ object Form_tree_objects: TForm_tree_objects
     Active = True
     Left = 232
     Top = 512
+  end
+  object Timer2: TTimer
+    OnTimer = Timer2Timer
+    Left = 265
+    Top = 100
   end
 end

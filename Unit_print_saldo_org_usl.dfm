@@ -664,7 +664,7 @@ object Form_print_saldo_org_usl: TForm_print_saldo_org_usl
     Top = 104
   end
   object frxReport1: TfrxReport
-    Version = '0.0'
+    Version = '5.1.9'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator]

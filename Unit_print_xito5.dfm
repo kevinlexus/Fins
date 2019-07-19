@@ -366,7 +366,7 @@ object Form_print_xito5: TForm_print_xito5
     Top = 32
   end
   object frxReport1: TfrxReport
-    Version = '0.0'
+    Version = '5.1.9'
     DotMatrixReport = True
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator]
@@ -404,6 +404,7 @@ object Form_print_xito5: TForm_print_xito5
       BottomMargin = 4.497913761764029000
       FontStyle = []
       object MasterData1: TfrxMasterData
+        FillType = ftBrush
         Height = 17.000000000000000000
         Top = 306.000000000000000000
         Width = 777.600000000000000000
@@ -414,7 +415,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 393.600000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DataField = 'SKA'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -430,7 +430,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 528.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           DisplayFormat.DecimalSeparator = ','
@@ -445,7 +444,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 57.600000000000000000
           Width = 336.000000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DataField = 'NAIM'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -459,7 +457,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 652.800000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           DisplayFormat.DecimalSeparator = ','
@@ -472,6 +469,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupHeader1: TfrxGroupHeader
+        FillType = ftBrush
         Height = 17.000000000000000000
         Top = 272.000000000000000000
         Width = 777.600000000000000000
@@ -480,7 +478,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 48.000000000000000000
           Width = 345.600000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           FontStyle = []
@@ -493,6 +490,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupHeader2: TfrxGroupHeader
+        FillType = ftBrush
         Height = 17.000000000000000000
         Top = 238.000000000000000000
         Width = 777.600000000000000000
@@ -501,7 +499,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 38.400000000000000000
           Width = 355.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           FontStyle = []
@@ -514,6 +511,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupHeader3: TfrxGroupHeader
+        FillType = ftBrush
         Height = 17.000000000000000000
         Top = 204.000000000000000000
         Width = 777.600000000000000000
@@ -522,7 +520,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 9.600000000000000000
           Width = 384.000000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           FontStyle = []
@@ -535,6 +532,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupHeader4: TfrxGroupHeader
+        FillType = ftBrush
         Height = 51.000000000000000000
         Top = 136.000000000000000000
         Width = 777.600000000000000000
@@ -544,7 +542,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 17.000000000000000000
           Width = 384.000000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           FontStyle = [fsxBold]
@@ -558,7 +555,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 17.000000000000000000
           Width = 105.600000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           FontStyle = [fsxBold]
           HAlign = haRight
           Memo.UTF8 = (
@@ -571,7 +567,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 17.000000000000000000
           Width = 105.600000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           FontStyle = [fsxBold]
           HAlign = haRight
           Memo.UTF8 = (
@@ -584,7 +579,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 34.000000000000000000
           Width = 768.000000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           Memo.UTF8 = (
             
               '----------------------------------------------------------------' +
@@ -596,7 +590,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 17.000000000000000000
           Width = 105.600000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           FontStyle = [fsxBold]
           HAlign = haRight
           Memo.UTF8 = (
@@ -606,6 +599,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupFooter1: TfrxGroupFooter
+        FillType = ftBrush
         Height = 17.000000000000000000
         Top = 340.000000000000000000
         Width = 777.600000000000000000
@@ -613,7 +607,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 48.000000000000000000
           Width = 345.600000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           FontStyle = [fsxBold]
           Frame.Color = clRed
           Frame.ShadowWidth = 1.000000000000000000
@@ -628,7 +621,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 393.600000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -643,7 +635,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 528.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -658,7 +649,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 652.800000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -671,6 +661,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupFooter2: TfrxGroupFooter
+        FillType = ftBrush
         Height = 34.000000000000000000
         Top = 374.000000000000000000
         Width = 777.600000000000000000
@@ -678,7 +669,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 38.400000000000000000
           Width = 355.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           FontStyle = [fsxBold]
           Memo.UTF8 = (
             
@@ -691,7 +681,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 393.600000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -706,7 +695,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 528.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -722,7 +710,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 17.000000000000000000
           Width = 768.000000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           Memo.UTF8 = (
             
               '----------------------------------------------------------------' +
@@ -734,7 +721,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 652.800000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -747,6 +733,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupFooter3: TfrxGroupFooter
+        FillType = ftBrush
         Height = 17.000000000000000000
         Top = 425.000000000000000000
         Width = 777.600000000000000000
@@ -754,7 +741,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 9.600000000000000000
           Width = 384.000000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           FontStyle = [fsxBold]
           Memo.UTF8 = (
             
@@ -768,7 +754,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 393.600000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -783,7 +768,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 528.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -798,7 +782,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 652.800000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -811,6 +794,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupFooter4: TfrxGroupFooter
+        FillType = ftBrush
         Height = 34.000000000000000000
         Top = 459.000000000000000000
         Width = 777.600000000000000000
@@ -818,7 +802,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 9.600000000000000000
           Width = 384.000000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           FontStyle = [fsxBold]
           Frame.Color = clRed
           Memo.UTF8 = (
@@ -830,7 +813,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 393.600000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -845,7 +827,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 528.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -861,7 +842,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 17.000000000000000000
           Width = 384.000000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           FontStyle = [fsxBold]
           Frame.Color = clRed
           Memo.UTF8 = (
@@ -874,7 +854,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 17.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -892,7 +871,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 17.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -909,7 +887,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 652.800000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -925,7 +902,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 17.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -940,6 +916,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object PageHeader1: TfrxPageHeader
+        FillType = ftBrush
         Height = 85.000000000000000000
         Top = 17.000000000000000000
         Width = 777.600000000000000000
@@ -948,7 +925,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 17.000000000000000000
           Width = 624.000000000000000000
           Height = 68.000000000000000000
-          ShowHint = False
           FontStyle = [fsxBold]
           HAlign = haCenter
           Memo.UTF8 = (
@@ -966,13 +942,13 @@ object Form_print_xito5: TForm_print_xito5
           Left = 9.600000000000000000
           Width = 96.000000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           Memo.UTF8 = (
             '[Chr(15)]')
           TruncOutboundText = False
         end
       end
       object PageFooter1: TfrxPageFooter
+        FillType = ftBrush
         Height = 34.000000000000000000
         Top = 527.000000000000000000
         Width = 777.600000000000000000
@@ -980,7 +956,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 9.600000000000000000
           Width = 633.600000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           FontStyle = [fsxCondensed]
           Memo.UTF8 = (
             
@@ -994,7 +969,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 17.000000000000000000
           Width = 768.000000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           Memo.UTF8 = (
             
               #1056#187#1056#1105#1056#1029#1056#1105#1057#1039' '#1056#1109#1057#8218#1057#1026#1057#8249#1056#1030#1056#176'-----------------------------------------' +
@@ -1054,7 +1028,7 @@ object Form_print_xito5: TForm_print_xito5
     Top = 64
   end
   object frxReport2: TfrxReport
-    Version = '0.0'
+    Version = '5.1.9'
     DotMatrixReport = True
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator]
@@ -1096,6 +1070,7 @@ object Form_print_xito5: TForm_print_xito5
       BottomMargin = 4.497913761764029000
       FontStyle = [fsxBold]
       object MasterData1: TfrxMasterData
+        FillType = ftBrush
         Height = 17.000000000000000000
         Top = 306.000000000000000000
         Width = 777.600000000000000000
@@ -1106,7 +1081,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 393.600000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DataField = 'SKA'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -1124,7 +1098,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 528.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DataField = 'PN'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -1142,7 +1115,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 57.600000000000000000
           Width = 336.000000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DataField = 'NAIM'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
@@ -1156,7 +1128,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 652.800000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           DisplayFormat.DecimalSeparator = ','
@@ -1171,6 +1142,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupHeader1: TfrxGroupHeader
+        FillType = ftBrush
         Height = 17.000000000000000000
         Top = 272.000000000000000000
         Width = 777.600000000000000000
@@ -1179,7 +1151,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 48.000000000000000000
           Width = 345.600000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           FontStyle = [fsxBold]
@@ -1192,6 +1163,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupHeader2: TfrxGroupHeader
+        FillType = ftBrush
         Height = 17.000000000000000000
         Top = 238.000000000000000000
         Width = 777.600000000000000000
@@ -1200,7 +1172,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 38.400000000000000000
           Width = 355.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           FontStyle = [fsxBold]
@@ -1213,6 +1184,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupHeader3: TfrxGroupHeader
+        FillType = ftBrush
         Height = 17.000000000000000000
         Top = 204.000000000000000000
         Width = 777.600000000000000000
@@ -1221,7 +1193,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 9.600000000000000000
           Width = 384.000000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           FontStyle = [fsxBold]
@@ -1234,6 +1205,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupHeader4: TfrxGroupHeader
+        FillType = ftBrush
         Height = 51.000000000000000000
         Top = 136.000000000000000000
         Width = 777.600000000000000000
@@ -1245,7 +1217,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 17.000000000000000000
           Width = 384.000000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           FontStyle = [fsxBold]
@@ -1259,7 +1230,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 17.000000000000000000
           Width = 105.600000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           FontStyle = [fsxBold]
           HAlign = haRight
           Memo.UTF8 = (
@@ -1272,7 +1242,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 17.000000000000000000
           Width = 105.600000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           FontStyle = [fsxBold]
           HAlign = haRight
           Memo.UTF8 = (
@@ -1285,7 +1254,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 34.000000000000000000
           Width = 768.000000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           Memo.UTF8 = (
             
               '----------------------------------------------------------------' +
@@ -1297,7 +1265,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 17.000000000000000000
           Width = 105.600000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           FontStyle = [fsxBold]
           HAlign = haRight
           Memo.UTF8 = (
@@ -1307,6 +1274,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupFooter1: TfrxGroupFooter
+        FillType = ftBrush
         Height = 17.000000000000000000
         Top = 340.000000000000000000
         Width = 777.600000000000000000
@@ -1314,7 +1282,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 48.000000000000000000
           Width = 345.600000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           FontStyle = [fsxBold]
           Frame.Color = clRed
           Frame.ShadowWidth = 1.000000000000000000
@@ -1329,7 +1296,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 393.600000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -1344,7 +1310,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 528.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -1359,7 +1324,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 652.800000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -1372,6 +1336,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupFooter2: TfrxGroupFooter
+        FillType = ftBrush
         Height = 34.000000000000000000
         Top = 374.000000000000000000
         Width = 777.600000000000000000
@@ -1379,7 +1344,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 38.400000000000000000
           Width = 355.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           FontStyle = [fsxBold]
           Memo.UTF8 = (
             
@@ -1392,7 +1356,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 393.600000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -1407,7 +1370,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 528.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -1423,7 +1385,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 17.000000000000000000
           Width = 768.000000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           Memo.UTF8 = (
             
               '----------------------------------------------------------------' +
@@ -1434,7 +1395,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 652.800000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -1447,6 +1407,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupFooter3: TfrxGroupFooter
+        FillType = ftBrush
         Height = 17.000000000000000000
         Top = 425.000000000000000000
         Width = 777.600000000000000000
@@ -1454,7 +1415,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 9.600000000000000000
           Width = 384.000000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           FontStyle = [fsxBold]
           Memo.UTF8 = (
             
@@ -1468,7 +1428,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 393.600000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -1483,7 +1442,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 528.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -1498,7 +1456,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 652.800000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -1511,6 +1468,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupFooter4: TfrxGroupFooter
+        FillType = ftBrush
         Height = 51.000000000000000000
         Top = 459.000000000000000000
         Width = 777.600000000000000000
@@ -1518,7 +1476,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 9.600000000000000000
           Width = 384.000000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           FontStyle = [fsxBold]
           Frame.Color = clRed
           Memo.UTF8 = (
@@ -1530,7 +1487,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 393.600000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -1545,7 +1501,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 528.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -1561,7 +1516,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 17.000000000000000000
           Width = 384.000000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           FontStyle = [fsxBold]
           Frame.Color = clRed
           Memo.UTF8 = (
@@ -1574,7 +1528,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 17.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -1592,7 +1545,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 17.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -1609,7 +1561,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 652.800000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -1625,7 +1576,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 17.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -1640,6 +1590,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object PageHeader1: TfrxPageHeader
+        FillType = ftBrush
         Height = 85.000000000000000000
         Top = 17.000000000000000000
         Width = 777.600000000000000000
@@ -1648,7 +1599,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 17.000000000000000000
           Width = 624.000000000000000000
           Height = 68.000000000000000000
-          ShowHint = False
           HAlign = haCenter
           Memo.UTF8 = (
             
@@ -1664,13 +1614,13 @@ object Form_print_xito5: TForm_print_xito5
           Left = 9.600000000000000000
           Width = 96.000000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           Memo.UTF8 = (
             '[Chr(15)]')
           TruncOutboundText = False
         end
       end
       object PageFooter1: TfrxPageFooter
+        FillType = ftBrush
         Height = 51.000000000000000000
         Top = 748.000000000000000000
         Width = 777.600000000000000000
@@ -1679,7 +1629,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 17.000000000000000000
           Width = 633.600000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           FontStyle = [fsxCondensed]
           Memo.UTF8 = (
             
@@ -1693,7 +1642,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 34.000000000000000000
           Width = 768.000000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           FontStyle = []
           Memo.UTF8 = (
             
@@ -1704,6 +1652,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object ReportSummary1: TfrxReportSummary
+        FillType = ftBrush
         Height = 187.000000000000000000
         Top = 544.000000000000000000
         Width = 777.600000000000000000
@@ -1713,7 +1662,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 51.000000000000000000
           Width = 384.000000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           FontStyle = [fsxBold]
           Frame.Color = clRed
           Frame.ShadowWidth = 1.000000000000000000
@@ -1727,7 +1675,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 51.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -1745,7 +1692,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 51.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -1762,7 +1708,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 9.600000000000000000
           Width = 768.000000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           Memo.UTF8 = (
             
               '----------------------------------------------------------------' +
@@ -1774,7 +1719,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 17.000000000000000000
           Width = 345.600000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           FontStyle = [fsxBold]
           Frame.Color = clRed
           Frame.ShadowWidth = 1.000000000000000000
@@ -1788,7 +1732,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 68.000000000000000000
           Width = 384.000000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           FontStyle = [fsxBold]
           Frame.Color = clRed
           Frame.ShadowWidth = 1.000000000000000000
@@ -1804,7 +1747,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 68.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -1822,7 +1764,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 68.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -1840,7 +1781,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 85.000000000000000000
           Width = 384.000000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           FontStyle = [fsxBold]
           Frame.Color = clRed
           Frame.ShadowWidth = 1.000000000000000000
@@ -1854,7 +1794,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 85.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -1872,7 +1811,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 85.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -1890,7 +1828,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 102.000000000000000000
           Width = 384.000000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           FontStyle = [fsxBold]
           Frame.Color = clRed
           Frame.ShadowWidth = 1.000000000000000000
@@ -1904,7 +1841,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 102.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -1922,7 +1858,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 102.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -1940,7 +1875,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 119.000000000000000000
           Width = 384.000000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           FontStyle = [fsxBold]
           Frame.Color = clRed
           Frame.ShadowWidth = 1.000000000000000000
@@ -1954,7 +1888,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 119.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -1972,7 +1905,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 119.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -1990,7 +1922,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 136.000000000000000000
           Width = 384.000000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           FontStyle = [fsxBold]
           Frame.Color = clRed
           Frame.ShadowWidth = 1.000000000000000000
@@ -2004,7 +1935,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 136.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -2022,7 +1952,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 136.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -2040,7 +1969,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 51.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -2058,7 +1986,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 68.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -2076,7 +2003,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 85.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -2094,7 +2020,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 102.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -2112,7 +2037,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 119.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -2130,7 +2054,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 136.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -2155,6 +2078,7 @@ object Form_print_xito5: TForm_print_xito5
       BottomMargin = 4.497913761764029000
       FontStyle = []
       object MasterData2: TfrxMasterData
+        FillType = ftBrush
         Height = 17.000000000000000000
         Top = 289.000000000000000000
         Width = 777.600000000000000000
@@ -2165,7 +2089,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 393.600000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           DisplayFormat.DecimalSeparator = ','
@@ -2182,7 +2105,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 528.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           DisplayFormat.DecimalSeparator = ','
@@ -2199,7 +2121,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 57.600000000000000000
           Width = 336.000000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           FontStyle = []
@@ -2212,7 +2133,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 652.800000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           DisplayFormat.DecimalSeparator = ','
@@ -2227,6 +2147,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupHeader5: TfrxGroupHeader
+        FillType = ftBrush
         Height = 17.000000000000000000
         Top = 255.000000000000000000
         Width = 777.600000000000000000
@@ -2235,7 +2156,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 48.000000000000000000
           Width = 345.600000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           FontStyle = [fsxBold]
@@ -2248,6 +2168,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupHeader6: TfrxGroupHeader
+        FillType = ftBrush
         Height = 17.000000000000000000
         Top = 221.000000000000000000
         Width = 777.600000000000000000
@@ -2256,7 +2177,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 38.400000000000000000
           Width = 355.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           FontStyle = [fsxBold]
@@ -2269,6 +2189,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupHeader7: TfrxGroupHeader
+        FillType = ftBrush
         Height = 51.000000000000000000
         Top = 153.000000000000000000
         Width = 777.600000000000000000
@@ -2278,7 +2199,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 34.000000000000000000
           Width = 384.000000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
           FontStyle = [fsxBold]
@@ -2294,7 +2214,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 17.000000000000000000
           Width = 768.000000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           Memo.UTF8 = (
             
               '----------------------------------------------------------------' +
@@ -2303,6 +2222,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupFooter5: TfrxGroupFooter
+        FillType = ftBrush
         Height = 17.000000000000000000
         Top = 323.000000000000000000
         Width = 777.600000000000000000
@@ -2310,7 +2230,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 48.000000000000000000
           Width = 345.600000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           FontStyle = [fsxBold]
           Frame.Color = clRed
           Frame.ShadowWidth = 1.000000000000000000
@@ -2325,7 +2244,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 393.600000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -2340,7 +2258,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 528.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -2355,7 +2272,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 652.800000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -2368,6 +2284,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupFooter6: TfrxGroupFooter
+        FillType = ftBrush
         Height = 34.000000000000000000
         Top = 357.000000000000000000
         Width = 777.600000000000000000
@@ -2375,7 +2292,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 38.400000000000000000
           Width = 355.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           FontStyle = [fsxBold]
           Memo.UTF8 = (
             
@@ -2388,7 +2304,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 393.600000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -2403,7 +2318,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 528.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -2419,7 +2333,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 17.000000000000000000
           Width = 768.000000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           Memo.UTF8 = (
             
               '----------------------------------------------------------------' +
@@ -2430,7 +2343,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 652.800000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -2443,6 +2355,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupFooter7: TfrxGroupFooter
+        FillType = ftBrush
         Height = 17.000000000000000000
         Top = 408.000000000000000000
         Width = 777.600000000000000000
@@ -2450,7 +2363,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 9.600000000000000000
           Width = 384.000000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           FontStyle = [fsxBold]
           Memo.UTF8 = (
             
@@ -2464,7 +2376,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 393.600000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -2479,7 +2390,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 528.000000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -2494,7 +2404,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 652.800000000000000000
           Width = 115.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -2507,6 +2416,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object PageHeader2: TfrxPageHeader
+        FillType = ftBrush
         Height = 102.000000000000000000
         Top = 17.000000000000000000
         Width = 777.600000000000000000
@@ -2515,7 +2425,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 17.000000000000000000
           Width = 624.000000000000000000
           Height = 51.000000000000000000
-          ShowHint = False
           FontStyle = [fsxBold]
           HAlign = haCenter
           Memo.UTF8 = (
@@ -2530,7 +2439,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 85.000000000000000000
           Width = 105.600000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           FontStyle = [fsxBold]
           HAlign = haRight
           Memo.UTF8 = (
@@ -2543,7 +2451,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 85.000000000000000000
           Width = 105.600000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           FontStyle = [fsxBold]
           HAlign = haRight
           Memo.UTF8 = (
@@ -2555,7 +2462,6 @@ object Form_print_xito5: TForm_print_xito5
           Left = 9.600000000000000000
           Width = 96.000000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           Memo.UTF8 = (
             '[Chr(15)]')
           TruncOutboundText = False
@@ -2565,7 +2471,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 85.000000000000000000
           Width = 105.600000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           FontStyle = [fsxBold]
           HAlign = haRight
           Memo.UTF8 = (
@@ -2575,6 +2480,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object PageFooter2: TfrxPageFooter
+        FillType = ftBrush
         Height = 51.000000000000000000
         Top = 459.000000000000000000
         Width = 777.600000000000000000
@@ -2583,7 +2489,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 17.000000000000000000
           Width = 633.600000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           FontStyle = [fsxCondensed]
           Memo.UTF8 = (
             
@@ -2597,7 +2502,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 34.000000000000000000
           Width = 768.000000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           FontStyle = []
           Memo.UTF8 = (
             
@@ -2656,7 +2560,7 @@ object Form_print_xito5: TForm_print_xito5
     Top = 32
   end
   object frxReport3: TfrxReport
-    Version = '0.0'
+    Version = '5.1.9'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator]
@@ -2697,11 +2601,13 @@ object Form_print_xito5: TForm_print_xito5
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
       object PageHeader1: TfrxPageHeader
+        FillType = ftBrush
         Height = 57.456710000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
       end
       object GroupHeader1: TfrxGroupHeader
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 279.685220000000000000
         Width = 718.110700000000000000
@@ -2711,7 +2617,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 2.094310000000007000
           Width = 309.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -2725,6 +2630,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupHeader2: TfrxGroupHeader
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 234.330860000000000000
         Width = 718.110700000000000000
@@ -2734,7 +2640,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 1.448669999999993000
           Width = 309.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -2748,6 +2653,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupHeader3: TfrxGroupHeader
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 188.976500000000000000
         Width = 718.110700000000000000
@@ -2757,7 +2663,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 2.803030000000007000
           Width = 309.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -2771,6 +2676,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object MasterData1: TfrxMasterData
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 325.039580000000000000
         Width = 718.110700000000000000
@@ -2782,7 +2688,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 0.889610000000004700
           Width = 328.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Memo.UTF8 = (
             '[frxDBDataset1."NAIM"]')
         end
@@ -2791,7 +2696,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 0.889610000000004700
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -2804,7 +2708,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 0.889610000000004700
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -2817,7 +2720,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 0.889610000000004700
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -2827,6 +2729,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupFooter1: TfrxGroupFooter
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 370.393940000000000000
         Width = 718.110700000000000000
@@ -2835,7 +2738,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 1.385589999999979000
           Width = 357.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           StretchMode = smActualHeight
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -2853,7 +2755,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 1.385589999999979000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -2872,7 +2773,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 1.385589999999979000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -2891,7 +2791,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 1.385589999999979000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -2907,6 +2806,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupFooter2: TfrxGroupFooter
+        FillType = ftBrush
         Height = 27.677180000000000000
         Top = 415.748300000000000000
         Width = 718.110700000000000000
@@ -2915,7 +2815,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 1.031229999999994000
           Width = 359.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -2932,7 +2831,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 1.031229999999994000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -2951,7 +2849,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 1.031229999999994000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -2969,7 +2866,7 @@ object Form_print_xito5: TForm_print_xito5
           Left = 5.000000000000000000
           Top = 24.031229999999940000
           Width = 705.000000000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Memo29: TfrxMemoView
@@ -2977,7 +2874,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 1.031229999999994000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -2993,6 +2889,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupFooter3: TfrxGroupFooter
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 464.882190000000000000
         Width = 718.110700000000000000
@@ -3001,7 +2898,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 1.897339999999986000
           Width = 420.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3019,7 +2915,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 1.897339999999986000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -3038,7 +2933,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 1.897339999999986000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -3057,7 +2951,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 1.897339999999986000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -3073,6 +2966,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupFooter4: TfrxGroupFooter
+        FillType = ftBrush
         Height = 50.677180000000000000
         Top = 510.236550000000000000
         Width = 718.110700000000000000
@@ -3081,7 +2975,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 2.542980000000000000
           Width = 420.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3096,7 +2989,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 2.542980000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -3115,7 +3007,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 2.542980000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -3134,7 +3025,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 27.542980000000000000
           Width = 420.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3149,7 +3039,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 27.542980000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -3170,7 +3059,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 27.542980000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -3191,7 +3079,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 2.542980000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -3210,7 +3097,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 27.542980000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -3228,6 +3114,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object PageFooter1: TfrxPageFooter
+        FillType = ftBrush
         Height = 23.834260000000000000
         Top = 619.842920000000000000
         Width = 718.110700000000000000
@@ -3236,7 +3123,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 0.936609999999973200
           Width = 306.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -9
@@ -3250,6 +3136,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupHeader4: TfrxGroupHeader
+        FillType = ftBrush
         Height = 29.677180000000000000
         Top = 136.063080000000000000
         Width = 718.110700000000000000
@@ -3260,7 +3147,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 2.716450000000009000
           Width = 283.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3275,7 +3161,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 2.716450000000009000
           Width = 61.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3291,7 +3176,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 2.716450000000009000
           Width = 79.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3306,7 +3190,7 @@ object Form_print_xito5: TForm_print_xito5
           Left = 4.000000000000000000
           Top = 25.716450000000010000
           Width = 709.000000000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Memo33: TfrxMemoView
@@ -3314,7 +3198,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 2.716450000000009000
           Width = 79.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3331,7 +3214,6 @@ object Form_print_xito5: TForm_print_xito5
         Top = 16.440940000000000000
         Width = 691.488250000000000000
         Height = 54.015770000000000000
-        ShowHint = False
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -16
@@ -3351,7 +3233,7 @@ object Form_print_xito5: TForm_print_xito5
     end
   end
   object frxReport4: TfrxReport
-    Version = '0.0'
+    Version = '5.1.9'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator]
@@ -3396,6 +3278,7 @@ object Form_print_xito5: TForm_print_xito5
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
       object PageHeader1: TfrxPageHeader
+        FillType = ftBrush
         Height = 65.015770000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
@@ -3404,7 +3287,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 5.102350000000001000
           Width = 691.488250000000000000
           Height = 54.015770000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -16
@@ -3423,6 +3305,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupHeader1: TfrxGroupHeader
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 287.244280000000000000
         Width = 718.110700000000000000
@@ -3432,7 +3315,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 2.094310000000007000
           Width = 309.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3446,6 +3328,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupHeader2: TfrxGroupHeader
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 241.889920000000000000
         Width = 718.110700000000000000
@@ -3455,7 +3338,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 0.448669999999992800
           Width = 309.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3469,6 +3351,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupHeader3: TfrxGroupHeader
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 196.535560000000000000
         Width = 718.110700000000000000
@@ -3478,7 +3361,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 2.803030000000007000
           Width = 309.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3492,6 +3374,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object MasterData1: TfrxMasterData
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 332.598640000000000000
         Width = 718.110700000000000000
@@ -3503,7 +3386,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 0.889610000000004700
           Width = 317.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Memo.UTF8 = (
             '[frxDBDataset1."NAIM"]')
         end
@@ -3512,7 +3394,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 1.889610000000005000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -3525,7 +3406,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 1.889610000000005000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -3538,7 +3418,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 1.889610000000005000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -3548,6 +3427,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupFooter1: TfrxGroupFooter
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 377.953000000000000000
         Width = 718.110700000000000000
@@ -3556,7 +3436,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 0.385589999999979200
           Width = 340.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3573,7 +3452,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 2.385589999999979000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -3592,7 +3470,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 2.385589999999979000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -3611,7 +3488,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 2.385589999999979000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -3627,6 +3503,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupFooter2: TfrxGroupFooter
+        FillType = ftBrush
         Height = 27.677180000000000000
         Top = 423.307360000000000000
         Width = 718.110700000000000000
@@ -3635,7 +3512,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 1.031229999999994000
           Width = 386.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           StretchMode = smActualHeight
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -3653,7 +3529,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 2.031229999999994000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -3672,7 +3547,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 2.031229999999994000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -3690,7 +3564,7 @@ object Form_print_xito5: TForm_print_xito5
           Left = 24.199052130000000000
           Top = 24.031229999999990000
           Width = 690.502369670000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Memo66: TfrxMemoView
@@ -3698,7 +3572,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 2.031229999999994000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -3714,6 +3587,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupFooter3: TfrxGroupFooter
+        FillType = ftBrush
         Height = 24.677180000000000000
         Top = 472.441250000000000000
         Width = 718.110700000000000000
@@ -3722,7 +3596,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 0.897339999999985600
           Width = 373.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3740,7 +3613,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 2.897339999999986000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -3759,7 +3631,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 2.897339999999986000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -3777,7 +3648,7 @@ object Form_print_xito5: TForm_print_xito5
           Left = 19.000000000000000000
           Top = 23.130483250000000000
           Width = 693.800947870000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Memo67: TfrxMemoView
@@ -3785,7 +3656,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 2.897339999999986000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -3801,6 +3671,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupFooter4: TfrxGroupFooter
+        FillType = ftBrush
         Height = 50.677180000000000000
         Top = 521.575140000000000000
         Width = 718.110700000000000000
@@ -3809,7 +3680,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 1.542980000000057000
           Width = 371.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3824,7 +3694,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 3.542980000000057000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -3843,7 +3712,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 3.542980000000057000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -3862,7 +3730,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 26.542980000000060000
           Width = 371.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -3877,7 +3744,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 28.542980000000060000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -3898,7 +3764,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 28.542980000000060000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -3919,7 +3784,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 3.542980000000057000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -3938,7 +3802,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 28.542980000000060000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -3956,6 +3819,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object PageFooter1: TfrxPageFooter
+        FillType = ftBrush
         Height = 23.834260000000000000
         Top = 835.276130000000000000
         Width = 718.110700000000000000
@@ -3964,7 +3828,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 0.936609999999973300
           Width = 306.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -9
@@ -3978,6 +3841,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupHeader4: TfrxGroupHeader
+        FillType = ftBrush
         Height = 29.677180000000000000
         Top = 143.622140000000000000
         Width = 718.110700000000000000
@@ -3988,7 +3852,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 3.716450000000009000
           Width = 283.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -4003,7 +3866,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 3.716450000000009000
           Width = 61.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -4019,7 +3881,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 3.716450000000009000
           Width = 79.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -4034,7 +3895,7 @@ object Form_print_xito5: TForm_print_xito5
           Left = 21.000000000000000000
           Top = 26.716450000000010000
           Width = 688.000000000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Memo70: TfrxMemoView
@@ -4042,7 +3903,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 3.716450000000009000
           Width = 79.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -4055,6 +3915,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object ReportSummary1: TfrxReportSummary
+        FillType = ftBrush
         Height = 182.677180000000000000
         Top = 631.181510000000000000
         Width = 718.110700000000000000
@@ -4063,7 +3924,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 7.936609999999973000
           Width = 368.611622359727700000
           Height = 18.457908095442260000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -4078,7 +3938,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 44.075632552082540000
           Width = 368.611622359727700000
           Height = 18.457908095442260000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -4093,7 +3952,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 45.936609999999970000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -4114,7 +3972,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 45.936609999999970000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -4135,7 +3992,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 66.540430354728530000
           Width = 368.611622359727700000
           Height = 18.457908095442260000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -4152,7 +4008,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 68.936609999999970000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -4173,7 +4028,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 68.936609999999970000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -4194,7 +4048,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 89.981958496619880000
           Width = 368.611622359727700000
           Height = 18.457908095442260000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -4209,7 +4062,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 92.936609999999970000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -4230,7 +4082,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 92.936609999999970000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -4251,7 +4102,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 112.446756299265900000
           Width = 368.611622359727700000
           Height = 18.457908095442260000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -4266,7 +4116,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 115.936610000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -4287,7 +4136,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 115.936610000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -4308,7 +4156,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 134.911554101911700000
           Width = 368.611622359727700000
           Height = 18.457908095442260000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -4323,7 +4170,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 138.936610000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -4344,7 +4190,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 138.936610000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -4365,7 +4210,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 157.376351904557700000
           Width = 368.611622359727700000
           Height = 18.457908095442260000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -4380,7 +4224,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 161.936610000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -4401,7 +4244,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 161.936610000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -4422,7 +4264,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 45.936609999999970000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -4443,7 +4284,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 68.936609999999970000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -4464,7 +4304,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 92.936609999999970000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -4485,7 +4324,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 115.936610000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -4506,7 +4344,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 138.936610000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -4527,7 +4364,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 161.936610000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -4547,7 +4383,7 @@ object Form_print_xito5: TForm_print_xito5
           Left = 21.497630330000000000
           Top = 3.936609999999973000
           Width = 690.502369670000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
       end
@@ -4566,6 +4402,7 @@ object Form_print_xito5: TForm_print_xito5
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
       object PageHeader2: TfrxPageHeader
+        FillType = ftBrush
         Height = 89.677180000000010000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
@@ -4574,7 +4411,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 68.102350000000000000
           Width = 61.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -4590,7 +4426,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 68.102350000000000000
           Width = 79.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -4606,7 +4441,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 11.102350000000000000
           Width = 623.488250000000000000
           Height = 45.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -16
@@ -4624,7 +4458,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 68.102350000000000000
           Width = 79.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -4637,6 +4470,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupHeader5: TfrxGroupHeader
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 275.905690000000000000
         Width = 718.110700000000000000
@@ -4646,7 +4480,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 1.243969999999990000
           Width = 393.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -4660,6 +4493,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupHeader6: TfrxGroupHeader
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 230.551330000000000000
         Width = 718.110700000000000000
@@ -4669,7 +4503,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 1.598330000000004000
           Width = 397.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -4683,6 +4516,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupHeader7: TfrxGroupHeader
+        FillType = ftBrush
         Height = 37.677180000000000000
         Top = 170.078850000000000000
         Width = 718.110700000000000000
@@ -4692,7 +4526,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 13.952690000000020000
           Width = 405.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -4708,11 +4541,12 @@ object Form_print_xito5: TForm_print_xito5
           Left = 20.000000000000000000
           Top = 3.952689999999990000
           Width = 697.000000000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
       end
       object MasterData2: TfrxMasterData
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 321.260050000000000000
         Width = 718.110700000000000000
@@ -4724,7 +4558,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 0.889610000000004700
           Width = 328.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Memo.UTF8 = (
             '[frxDBDataset2."NAIM"]')
         end
@@ -4733,7 +4566,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 0.889610000000004700
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -4746,7 +4578,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 0.889610000000004700
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -4759,7 +4590,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 0.889610000000004700
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -4769,6 +4599,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupFooter5: TfrxGroupFooter
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 366.614410000000000000
         Width = 718.110700000000000000
@@ -4777,7 +4608,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 0.535250000000019100
           Width = 328.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -4794,7 +4624,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 0.535250000000019100
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -4813,7 +4642,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 0.535250000000019100
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -4832,7 +4660,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 0.535250000000019100
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -4848,6 +4675,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupFooter6: TfrxGroupFooter
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 411.968770000000000000
         Width = 718.110700000000000000
@@ -4856,7 +4684,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 2.180889999999977000
           Width = 328.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -4873,7 +4700,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 2.180889999999977000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -4892,7 +4718,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 2.180889999999977000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -4910,7 +4735,7 @@ object Form_print_xito5: TForm_print_xito5
           Left = 3.000000000000000000
           Top = 21.031229999999990000
           Width = 716.000000000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Memo80: TfrxMemoView
@@ -4918,7 +4743,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 2.180889999999977000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -4934,6 +4758,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object GroupFooter7: TfrxGroupFooter
+        FillType = ftBrush
         Height = 25.677180000000000000
         Top = 457.323130000000000000
         Width = 718.110700000000000000
@@ -4942,7 +4767,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 2.826529999999991000
           Width = 328.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -4960,7 +4784,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 0.826529999999991200
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -4979,7 +4802,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 0.826529999999991200
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -4998,7 +4820,6 @@ object Form_print_xito5: TForm_print_xito5
           Top = 0.826529999999991200
           Width = 94.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -5014,6 +4835,7 @@ object Form_print_xito5: TForm_print_xito5
         end
       end
       object PageFooter2: TfrxPageFooter
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 544.252320000000100000
         Width = 718.110700000000000000

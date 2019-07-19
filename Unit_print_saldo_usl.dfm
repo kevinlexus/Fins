@@ -677,7 +677,7 @@ object Form_print_saldo_usl: TForm_print_saldo_usl
     Top = 168
   end
   object frxReport1: TfrxReport
-    Version = '4.7.71'
+    Version = '5.1.9'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator]
@@ -687,11 +687,6 @@ object Form_print_saldo_usl: TForm_print_saldo_usl
     ReportOptions.CreateDate = 38547.570682638900000000
     ReportOptions.LastChange = 40128.377327361110000000
     ScriptLanguage = 'PascalScript'
-    ScriptText.Strings = (
-      'begin'
-      'if showfooter_=0 then'
-      '       GroupFooter2.visible:=false;'
-      'end.')
     ShowProgress = False
     StoreInDFM = False
     Left = 224
@@ -701,6 +696,7 @@ object Form_print_saldo_usl: TForm_print_saldo_usl
     UseFileCache = True
     ShowProgress = True
     OverwritePrompt = False
+    DataOnly = False
     ExportEMF = True
     AsText = False
     Background = True
@@ -715,6 +711,7 @@ object Form_print_saldo_usl: TForm_print_saldo_usl
     UseFileCache = True
     ShowProgress = True
     OverwritePrompt = False
+    DataOnly = False
     EscModel = 0
     GraphicFrames = False
     SaveToFile = False

@@ -92,7 +92,7 @@ object Form_lk_acc: TForm_lk_acc
   TextHeight = 13
   object Panel1: TPanel
     Left = 0
-    Top = 258
+    Top = 257
     Width = 437
     Height = 39
     Align = alBottom
@@ -143,7 +143,7 @@ object Form_lk_acc: TForm_lk_acc
     Left = 0
     Top = 0
     Width = 437
-    Height = 258
+    Height = 257
     Align = alClient
     Caption = #1056#1077#1082#1074#1080#1079#1080#1090#1099' '#1083#1080#1095#1085#1086#1075#1086' '#1082#1072#1073#1080#1085#1077#1090#1072
     TabOrder = 1
@@ -162,7 +162,7 @@ object Form_lk_acc: TForm_lk_acc
     end
     object wwDBGrid1: TwwDBGrid
       Left = 2
-      Top = 48
+      Top = 47
       Width = 433
       Height = 208
       Selected.Strings = (
@@ -189,7 +189,7 @@ object Form_lk_acc: TForm_lk_acc
     end
   end
   object frxReport1: TfrxReport
-    Version = '0.0'
+    Version = '5.1.9'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

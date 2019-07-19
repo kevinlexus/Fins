@@ -1,6 +1,6 @@
 object Form_kart: TForm_kart
-  Left = 270
-  Top = 214
+  Left = 687
+  Top = 169
   Width = 903
   Height = 675
   BorderIcons = [biSystemMenu, biMinimize]
@@ -722,7 +722,6 @@ object Form_kart: TForm_kart
           Height = 165
           Caption = #1055#1088#1080#1073#1086#1088#1099' '#1091#1095#1105#1090#1072
           TabOrder = 0
-          OnExit = GroupBox7Exit
           object Label26: TLabel
             Left = 197
             Top = 36
@@ -1229,7 +1228,7 @@ object Form_kart: TForm_kart
             Top = 0
             Width = 25
             Height = 25
-            Hint = #1050' '#1087#1077#1088#1074#1086#1081' '#1079#1072#1087#1080#1089#1080
+            Hint = 'Move to first record'
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -1246,7 +1245,7 @@ object Form_kart: TForm_kart
             Top = 0
             Width = 25
             Height = 25
-            Hint = #1055#1088#1077#1076#1099#1076#1091#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
+            Hint = 'Move to prior record'
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -1263,7 +1262,7 @@ object Form_kart: TForm_kart
             Top = 0
             Width = 25
             Height = 25
-            Hint = #1057#1083#1077#1076#1091#1102#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
+            Hint = 'Move to next record'
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -1280,7 +1279,7 @@ object Form_kart: TForm_kart
             Top = 0
             Width = 25
             Height = 25
-            Hint = #1055#1077#1088#1077#1081#1090#1080' '#1082' '#1087#1086#1089#1083#1077#1076#1085#1077#1081' '#1079#1072#1087#1080#1089#1080
+            Hint = 'Move to last record'
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -1297,7 +1296,7 @@ object Form_kart: TForm_kart
             Top = 0
             Width = 25
             Height = 25
-            Hint = #1044#1086#1073#1072#1074#1080#1090#1100' '#1085#1086#1074#1091#1102' '#1079#1072#1087#1080#1089#1100
+            Hint = 'Insert new record'
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -1314,7 +1313,7 @@ object Form_kart: TForm_kart
             Top = 0
             Width = 25
             Height = 25
-            Hint = #1059#1076#1072#1083#1080#1090#1100' '#1090#1077#1082#1091#1097#1091#1102' '#1079#1072#1087#1080#1089#1100
+            Hint = 'Delete current record'
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -1515,64 +1514,37 @@ object Form_kart: TForm_kart
   end
   object Panel4: TPanel
     Left = 0
-    Top = 589
+    Top = 592
     Width = 887
-    Height = 27
+    Height = 24
     Align = alBottom
-    TabOrder = 3
-    object BitBtn1: TBitBtn
-      Left = 560
-      Top = 0
-      Width = 25
-      Height = 25
-      Hint = #1055#1086#1082#1072#1079#1072#1090#1100' '#1088#1072#1089#1095#1105#1090
-      ParentShowHint = False
-      ShowHint = True
+    TabOrder = 2
+    object cxDBNavigator1: TcxDBNavigator
+      Left = 1
+      Top = 1
+      Width = 224
+      Height = 22
+      Buttons.CustomButtons = <>
+      Buttons.Insert.Visible = False
+      Buttons.Append.Visible = False
+      Buttons.Delete.Visible = False
+      Buttons.Edit.Visible = False
+      Buttons.Post.Visible = False
+      Buttons.Cancel.Visible = False
+      Buttons.SaveBookmark.Visible = False
+      Buttons.GotoBookmark.Visible = False
+      Buttons.Filter.Visible = False
+      DataSource = Form_list_kart.DS_list_kart
+      Align = alLeft
       TabOrder = 0
-      OnClick = BitBtn1Click
-      Glyph.Data = {
-        36040000424D3604000000000000360000002800000010000000100000000100
-        2000000000000004000000000000000000000000000000000000FF00FF00FF00
-        FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF0042424A0031393900FF00
-        FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
-        FF00FF00FF00FF00FF00FF00FF00FF00FF0029394A0000081000000810001018
-        3100FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
-        FF00FF00FF00FF00FF00FF00FF00FF00FF001018310008081800080818001021
-        3100FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
-        FF00FF00FF00FF00FF00FF00FF00FF00FF0018395200215A840018395A001031
-        5200FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
-        FF00FF00FF00FF00FF00FF00FF00FF00FF00317BB500319CBD00296B8C003184
-        C600FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
-        FF00FF00FF00FF00FF00FF00FF00FF00FF0042ADEF0039A5D60039B5E70042C6
-        F700FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
-        FF00FF00FF00FF00FF00FF00FF00527B9C0042ADEF004AB5E7004ACEEF0042C6
-        F700527B9C00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
-        FF00FF00FF00FF00FF00FF00FF004AADE70063CEF7006BD6F7006BCEEF0063D6
-        F70052BDEF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
-        FF00FF00FF00FF00FF00949C9C0063D6F7007BE7FF009CEFFF009CEFFF007BE7
-        FF006BD6F700949C9C00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
-        FF00FF00FF0063B5DE0052ADE700A5F7FF00C6F7FF00B5F7FF00C6F7FF00B5F7
-        FF0094F7FF005AC6EF009C9C9C00FF00FF00FF00FF00FF00FF00FF00FF00FF00
-        FF00FF00FF0094B5D60063CEF700B5F7FF00C6F7FF00BDF7FF00ADF7FF00B5F7
-        FF009CF7FF0063E7FF0084949C00FF00FF00FF00FF00FF00FF00FF00FF00FF00
-        FF00FF00FF007BB5D60063DEFF00A5F7FF00B5F7FF00DEFFFF00DEFFFF00B5F7
-        FF009CF7FF0063E7FF0084A5BD00FF00FF00FF00FF00FF00FF00FF00FF00FF00
-        FF00FF00FF008CBDDE005AD6F7008CF7FF00ADF7FF00B5F7FF00B5F7FF00ADF7
-        FF008CF7FF005AD6F700A5A5AD00FF00FF00FF00FF00FF00FF00FF00FF00FF00
-        FF00FF00FF00FF00FF0063B5DE0063EFFF0073F7FF0084F7FF0084F7FF0073F7
-        FF0063EFFF0094B5BD00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
-        FF00FF00FF00FF00FF00FF00FF0052CEF70063E7FF006BF7FF006BF7FF0063E7
-        FF0052CEF700FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
-        FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF0084B5DE008CBDDE0094B5
-        BD00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00}
     end
-    object BitBtn2: TBitBtn
-      Left = 592
-      Top = 0
-      Width = 25
-      Height = 25
-      Hint = #1046#1091#1088#1085#1072#1083' '#1076#1077#1081#1089#1090#1074#1080#1081' '#1087#1086#1083#1100#1079#1086#1074#1072#1090#1077#1083#1077#1081' '#1087#1086' '#1082#1072#1088#1090#1086#1095#1082#1077
-      Caption = 'A'
+    object chk1: TCheckBox
+      Left = 256
+      Top = 5
+      Width = 145
+      Height = 17
+      Hint = #1054#1090#1086#1073#1088#1072#1079#1080#1090#1100' '#1091#1089#1083#1091#1075#1080' '#1087#1086' '#1079#1072#1082#1088#1099#1090#1099#1084' '#1083#1080#1094'.'#1089#1095#1077#1090#1072#1084
+      Caption = #1055#1086#1082#1072#1079#1072#1090#1100' '#1079#1072#1082#1088#1099#1090#1099#1077
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -1582,316 +1554,16 @@ object Form_kart: TForm_kart
       ParentShowHint = False
       ShowHint = True
       TabOrder = 1
-      OnClick = BitBtn2Click
+      OnClick = chk1Click
     end
-    object CheckBox3: TCheckBox
-      Left = 444
-      Top = 3
-      Width = 101
-      Height = 17
-      Caption = #1042#1089#1077' '#1082#1086#1083#1086#1085#1082#1080
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
+    object btn1: TButton
+      Left = 676
+      Top = 0
+      Width = 75
+      Height = 25
+      Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100
       TabOrder = 2
-      OnClick = CheckBox3Click
-    end
-    object Panel5: TPanel
-      Left = 1
-      Top = 1
-      Width = 424
-      Height = 25
-      Align = alLeft
-      TabOrder = 3
-      object wwDBNavigator1: TwwDBNavigator
-        Left = 1
-        Top = 1
-        Width = 422
-        Height = 23
-        AutosizeStyle = asSizeNavButtons
-        DataSource = Form_list_kart.DS_list_kart
-        Options = [noConfirmDelete, noUseInternationalText]
-        ShowHint = True
-        RepeatInterval.InitialDelay = 500
-        RepeatInterval.Interval = 100
-        Align = alClient
-        ParentShowHint = False
-        object wwDBNavigator1First: TwwNavButton
-          Left = 0
-          Top = 0
-          Width = 31
-          Height = 23
-          Hint = #1050' '#1087#1077#1088#1074#1086#1081' '#1079#1072#1087#1080#1089#1080
-          ImageIndex = -1
-          NumGlyphs = 2
-          Spacing = 4
-          Transparent = False
-          Caption = 'wwDBNavigator1First'
-          Enabled = False
-          DisabledTextColors.ShadeColor = clGray
-          DisabledTextColors.HighlightColor = clBtnHighlight
-          Index = 0
-          Style = nbsFirst
-        end
-        object wwDBNavigator1PriorPage: TwwNavButton
-          Left = 31
-          Top = 0
-          Width = 31
-          Height = 23
-          Hint = #1053#1072#1079#1072#1076' '#1085#1072' 10 '#1079#1072#1087#1080#1089#1077#1081
-          ImageIndex = -1
-          NumGlyphs = 2
-          Spacing = 4
-          Transparent = False
-          Caption = 'wwDBNavigator1PriorPage'
-          Enabled = False
-          DisabledTextColors.ShadeColor = clGray
-          DisabledTextColors.HighlightColor = clBtnHighlight
-          Index = 1
-          Style = nbsPriorPage
-        end
-        object wwDBNavigator1Prior: TwwNavButton
-          Left = 62
-          Top = 0
-          Width = 30
-          Height = 23
-          Hint = #1055#1088#1077#1076#1099#1076#1091#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
-          ImageIndex = -1
-          NumGlyphs = 2
-          Spacing = 4
-          Transparent = False
-          Caption = 'wwDBNavigator1Prior'
-          Enabled = False
-          DisabledTextColors.ShadeColor = clGray
-          DisabledTextColors.HighlightColor = clBtnHighlight
-          Index = 2
-          Style = nbsPrior
-        end
-        object wwDBNavigator1Next: TwwNavButton
-          Left = 92
-          Top = 0
-          Width = 30
-          Height = 23
-          Hint = #1057#1083#1077#1076#1091#1102#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
-          ImageIndex = -1
-          NumGlyphs = 2
-          Spacing = 4
-          Transparent = False
-          Caption = 'wwDBNavigator1Next'
-          Enabled = False
-          DisabledTextColors.ShadeColor = clGray
-          DisabledTextColors.HighlightColor = clBtnHighlight
-          Index = 3
-          Style = nbsNext
-        end
-        object wwDBNavigator1NextPage: TwwNavButton
-          Left = 122
-          Top = 0
-          Width = 30
-          Height = 23
-          Hint = #1042#1087#1077#1088#1077#1076' '#1085#1072' 10 '#1079#1072#1087#1080#1089#1077#1081
-          ImageIndex = -1
-          NumGlyphs = 2
-          Spacing = 4
-          Transparent = False
-          Caption = 'wwDBNavigator1NextPage'
-          Enabled = False
-          DisabledTextColors.ShadeColor = clGray
-          DisabledTextColors.HighlightColor = clBtnHighlight
-          Index = 4
-          Style = nbsNextPage
-        end
-        object wwDBNavigator1Last: TwwNavButton
-          Left = 152
-          Top = 0
-          Width = 30
-          Height = 23
-          Hint = #1055#1077#1088#1077#1081#1090#1080' '#1082' '#1087#1086#1089#1083#1077#1076#1085#1077#1081' '#1079#1072#1087#1080#1089#1080
-          ImageIndex = -1
-          NumGlyphs = 2
-          Spacing = 4
-          Transparent = False
-          Caption = 'wwDBNavigator1Last'
-          Enabled = False
-          DisabledTextColors.ShadeColor = clGray
-          DisabledTextColors.HighlightColor = clBtnHighlight
-          Index = 5
-          Style = nbsLast
-        end
-        object wwDBNavigator1Insert: TwwNavButton
-          Left = 182
-          Top = 0
-          Width = 30
-          Height = 23
-          Hint = #1044#1086#1073#1072#1074#1080#1090#1100' '#1085#1086#1074#1091#1102' '#1079#1072#1087#1080#1089#1100
-          ImageIndex = -1
-          NumGlyphs = 2
-          Spacing = 4
-          Transparent = False
-          Caption = 'wwDBNavigator1Insert'
-          DisabledTextColors.ShadeColor = clGray
-          DisabledTextColors.HighlightColor = clBtnHighlight
-          Index = 6
-          Style = nbsInsert
-          Visible = False
-        end
-        object wwDBNavigator1Delete: TwwNavButton
-          Left = 212
-          Top = 0
-          Width = 30
-          Height = 23
-          Hint = #1059#1076#1072#1083#1080#1090#1100' '#1090#1077#1082#1091#1097#1091#1102' '#1079#1072#1087#1080#1089#1100
-          ImageIndex = -1
-          NumGlyphs = 2
-          Spacing = 4
-          Transparent = False
-          Caption = 'wwDBNavigator1Delete'
-          Enabled = False
-          DisabledTextColors.ShadeColor = clGray
-          DisabledTextColors.HighlightColor = clBtnHighlight
-          Index = 7
-          Style = nbsDelete
-          Visible = False
-        end
-        object wwDBNavigator1Edit: TwwNavButton
-          Left = 242
-          Top = 0
-          Width = 30
-          Height = 23
-          Hint = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1090#1077#1082#1091#1097#1091#1102' '#1079#1072#1087#1080#1089#1100
-          ImageIndex = -1
-          NumGlyphs = 2
-          Spacing = 4
-          Transparent = False
-          Caption = 'wwDBNavigator1Edit'
-          DisabledTextColors.ShadeColor = clGray
-          DisabledTextColors.HighlightColor = clBtnHighlight
-          Index = 8
-          Style = nbsEdit
-          Visible = False
-        end
-        object wwDBNavigator1Post: TwwNavButton
-          Left = 272
-          Top = 0
-          Width = 30
-          Height = 23
-          Hint = #1054#1090#1087#1088#1072#1074#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103' '#1074' '#1073#1072#1079#1091
-          ImageIndex = -1
-          NumGlyphs = 2
-          Spacing = 4
-          Transparent = False
-          Caption = 'wwDBNavigator1Post'
-          Enabled = False
-          DisabledTextColors.ShadeColor = clGray
-          DisabledTextColors.HighlightColor = clBtnHighlight
-          Index = 9
-          Style = nbsPost
-          Visible = False
-        end
-        object wwDBNavigator1Cancel: TwwNavButton
-          Left = 302
-          Top = 0
-          Width = 30
-          Height = 23
-          Hint = #1054#1090#1084#1077#1085#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103' '#1090#1077#1082#1091#1097#1077#1081' '#1079#1072#1087#1080#1089#1080
-          ImageIndex = -1
-          NumGlyphs = 2
-          Spacing = 4
-          Transparent = False
-          Caption = 'wwDBNavigator1Cancel'
-          Enabled = False
-          DisabledTextColors.ShadeColor = clGray
-          DisabledTextColors.HighlightColor = clBtnHighlight
-          Index = 10
-          Style = nbsCancel
-          Visible = False
-        end
-        object wwDBNavigator1Refresh: TwwNavButton
-          Left = 332
-          Top = 0
-          Width = 30
-          Height = 23
-          Hint = #1054#1073#1085#1086#1074#1080#1090#1100' '#1079#1072#1087#1080#1089#1080
-          ImageIndex = -1
-          NumGlyphs = 2
-          Spacing = 4
-          Transparent = False
-          Caption = 'wwDBNavigator1Refresh'
-          DisabledTextColors.ShadeColor = clGray
-          DisabledTextColors.HighlightColor = clBtnHighlight
-          Index = 11
-          Style = nbsRefresh
-          Visible = False
-        end
-        object wwDBNavigator1SaveBookmark: TwwNavButton
-          Left = 362
-          Top = 0
-          Width = 30
-          Height = 23
-          Hint = #1055#1086#1089#1090#1072#1074#1080#1090#1100' '#1079#1072#1082#1083#1072#1076#1082#1091' '#1085#1072' '#1090#1077#1082#1091#1097#1077#1081' '#1079#1072#1087#1080#1089#1080
-          ImageIndex = -1
-          NumGlyphs = 2
-          Spacing = 4
-          Transparent = False
-          Caption = 'wwDBNavigator1SaveBookmark'
-          DisabledTextColors.ShadeColor = clGray
-          DisabledTextColors.HighlightColor = clBtnHighlight
-          Index = 12
-          Style = nbsSaveBookmark
-        end
-        object wwDBNavigator1RestoreBookmark: TwwNavButton
-          Left = 392
-          Top = 0
-          Width = 30
-          Height = 23
-          Hint = #1055#1077#1088#1077#1081#1090#1080' '#1082' '#1089#1086#1093#1088#1072#1085#1105#1085#1085#1086#1081' '#1079#1072#1082#1083#1072#1076#1082#1077
-          ImageIndex = -1
-          NumGlyphs = 2
-          Spacing = 4
-          Transparent = False
-          Caption = 'wwDBNavigator1RestoreBookmark'
-          Enabled = False
-          DisabledTextColors.ShadeColor = clGray
-          DisabledTextColors.HighlightColor = clBtnHighlight
-          Index = 13
-          Style = nbsRestoreBookmark
-        end
-      end
-    end
-    object pnl1: TPanel
-      Left = 651
-      Top = 1
-      Width = 235
-      Height = 25
-      Align = alRight
-      TabOrder = 4
-      DesignSize = (
-        235
-        25)
-      object Button2: TButton
-        Left = 72
-        Top = 0
-        Width = 75
-        Height = 25
-        Anchors = [akRight, akBottom]
-        Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100
-        TabOrder = 0
-        OnClick = Button2Click
-      end
-      object Button3: TButton
-        Left = 160
-        Top = 0
-        Width = 75
-        Height = 25
-        Anchors = [akRight, akBottom]
-        Cancel = True
-        Caption = #1047#1072#1082#1088#1099#1090#1100
-        TabOrder = 1
-        OnClick = Button3Click
-      end
+      OnClick = btn1Click
     end
   end
   object PageControl2: TPageControl
@@ -1970,11 +1642,11 @@ object Form_kart: TForm_kart
         ParentFont = False
       end
       object Label1: TLabel
-        Left = 128
+        Left = 131
         Top = 6
-        Width = 24
+        Width = 18
         Height = 13
-        Caption = #1051'/C'
+        Caption = #1051#1057
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -1983,9 +1655,9 @@ object Form_kart: TForm_kart
         ParentFont = False
       end
       object DBText1: TDBText
-        Left = 247
+        Left = 398
         Top = 5
-        Width = 49
+        Width = 52
         Height = 17
         DataField = 'MG1'
         DataSource = Form_list_kart.DS_list_kart
@@ -1997,7 +1669,7 @@ object Form_kart: TForm_kart
         ParentFont = False
       end
       object Label20: TLabel
-        Left = 235
+        Left = 386
         Top = 4
         Width = 8
         Height = 13
@@ -2010,7 +1682,7 @@ object Form_kart: TForm_kart
         ParentFont = False
       end
       object Label21: TLabel
-        Left = 300
+        Left = 451
         Top = 4
         Width = 15
         Height = 13
@@ -2023,9 +1695,9 @@ object Form_kart: TForm_kart
         ParentFont = False
       end
       object DBText2: TDBText
-        Left = 320
+        Left = 471
         Top = 5
-        Width = 49
+        Width = 52
         Height = 17
         DataField = 'MG2'
         DataSource = Form_list_kart.DS_list_kart
@@ -2037,12 +1709,12 @@ object Form_kart: TForm_kart
         ParentFont = False
       end
       object Label2: TLabel
-        Left = 491
+        Left = 522
         Top = 7
-        Width = 78
+        Width = 47
         Height = 13
         Alignment = taRightJustify
-        Caption = #1057#1086#1073#1089#1090#1074#1077#1085#1085#1080#1082
+        Caption = #1057#1086#1073#1089#1090#1074'.'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -2066,19 +1738,6 @@ object Form_kart: TForm_kart
         ParentShowHint = False
         ShowHint = True
       end
-      object Label53: TLabel
-        Left = 376
-        Top = 6
-        Width = 31
-        Height = 13
-        Caption = #1051'/C2'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'MS Sans Serif'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
       object Label55: TLabel
         Left = 798
         Top = 39
@@ -2094,6 +1753,22 @@ object Form_kart: TForm_kart
         ParentFont = False
         ParentShowHint = False
         ShowHint = False
+      end
+      object lbl4: TLabel
+        Left = 240
+        Top = 6
+        Width = 54
+        Height = 13
+        Hint = #1045#1076#1080#1085#1099#1081' '#1083#1080#1094#1077#1074#1086#1081' '#1089#1095#1077#1090' '#1074' '#1089#1080#1089#1090#1077#1084#1077' "'#1044#1080#1088#1077#1082#1090'"'
+        Caption = #1045#1051#1057' '#1043#1048#1057
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
       end
       object DBEdit12: TDBEdit
         Left = 504
@@ -2234,21 +1909,16 @@ object Form_kart: TForm_kart
         Visible = True
         OnDropDown = DBLookupComboboxEh12DropDown
       end
-      object wwDBEdit1: TwwDBEdit
-        Left = 410
-        Top = 1
-        Width = 74
-        Height = 21
-        Hint = #1051#1080#1094#1077#1074#1086#1081' '#1089#1095#1077#1090' '#1074#1086' '#1074#1085#1077#1096#1085#1077#1081' '#1089#1080#1089#1090#1077#1084#1077
-        DataField = 'LSK_EXT'
-        DataSource = Form_list_kart.DS_list_kart
+      object cxDBTextEdit5: TcxDBTextEdit
+        Left = 297
+        Top = 0
+        Hint = #1045#1076#1080#1085#1099#1081' '#1083#1080#1094#1077#1074#1086#1081' '#1089#1095#1077#1090' '#1074' '#1089#1080#1089#1090#1077#1084#1077' "'#1044#1080#1088#1077#1082#1090'"'
+        DataBinding.DataField = 'UNIQNUM'
+        DataBinding.DataSource = DS_eolink
         ParentShowHint = False
         ShowHint = True
         TabOrder = 11
-        UnboundDataType = wwDefault
-        WantReturns = False
-        WordWrap = False
-        OnExit = wwDBEdit2Exit
+        Width = 88
       end
     end
     object TabSheet6: TTabSheet
@@ -2667,12 +2337,12 @@ object Form_kart: TForm_kart
       Caption = #1055#1072#1088#1072#1084#1077#1090#1088#1099
       ImageIndex = 3
       object lbl2: TLabel
-        Left = 8
-        Top = 32
-        Width = 34
+        Left = 116
+        Top = 5
+        Width = 113
         Height = 13
         Hint = #1045#1076#1080#1085#1099#1081' '#1083#1080#1094#1077#1074#1086#1081' '#1089#1095#1077#1090' ('#1043#1048#1057' '#1046#1050#1061')'
-        Caption = #1045#1051#1057#1050
+        Caption = #1045#1051#1057#1050' ('#1091#1089#1090#1072#1088#1077#1074#1072#1077#1090')'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -2683,8 +2353,8 @@ object Form_kart: TForm_kart
         ShowHint = True
       end
       object Label54: TLabel
-        Left = 216
-        Top = 32
+        Left = 0
+        Top = 34
         Width = 58
         Height = 13
         Hint = #1056#1086#1076#1080#1090#1077#1083#1100#1089#1082#1080#1081' '#1083#1080#1094#1077#1074#1086#1081' '#1089#1095#1077#1090
@@ -2699,8 +2369,8 @@ object Form_kart: TForm_kart
         ShowHint = True
       end
       object Label60: TLabel
-        Left = 352
-        Top = 32
+        Left = 136
+        Top = 34
         Width = 44
         Height = 13
         Hint = #1044#1072#1090#1072' '#1089#1086#1079#1076#1072#1085#1080#1103' '#1083#1080#1094#1077#1074#1086#1075#1086' '#1089#1095#1077#1090#1072
@@ -2728,8 +2398,8 @@ object Form_kart: TForm_kart
         Width = 105
       end
       object cxDBTextEdit1: TcxDBTextEdit
-        Left = 48
-        Top = 24
+        Left = 232
+        Top = 0
         Hint = #1045#1076#1080#1085#1099#1081' '#1083#1080#1094#1077#1074#1086#1081' '#1089#1095#1077#1090' ('#1043#1048#1057' '#1046#1050#1061')'
         DataBinding.DataField = 'ELSK'
         DataBinding.DataSource = Form_list_kart.DS_list_kart
@@ -2740,8 +2410,8 @@ object Form_kart: TForm_kart
         Width = 161
       end
       object cxDBTextEdit2: TcxDBTextEdit
-        Left = 276
-        Top = 24
+        Left = 60
+        Top = 26
         Hint = #1056#1086#1076#1080#1090#1077#1083#1100#1089#1082#1080#1081' '#1083#1080#1094#1077#1074#1086#1081' '#1089#1095#1077#1090
         DataBinding.DataField = 'PARENT_LSK'
         DataBinding.DataSource = Form_list_kart.DS_list_kart
@@ -2752,8 +2422,8 @@ object Form_kart: TForm_kart
         Width = 69
       end
       object cxDBTextEdit3: TcxDBTextEdit
-        Left = 400
-        Top = 24
+        Left = 184
+        Top = 26
         Hint = #1044#1072#1090#1072' '#1089#1086#1079#1076#1072#1085#1080#1103' '#1083#1080#1094#1077#1074#1086#1075#1086' '#1089#1095#1077#1090#1072
         DataBinding.DataField = 'DT_CR'
         DataBinding.DataSource = Form_list_kart.DS_list_kart
@@ -2763,268 +2433,69 @@ object Form_kart: TForm_kart
         TabOrder = 3
         Width = 105
       end
-    end
-  end
-  object PageControl3: TPageControl
-    Left = 0
-    Top = 305
-    Width = 887
-    Height = 284
-    ActivePage = TabSheet8
-    Align = alClient
-    TabHeight = 17
-    TabOrder = 2
-    object TabSheet8: TTabSheet
-      Caption = #1059#1089#1083#1091#1075#1080
-      object wwDBGrid2: TwwDBGrid
-        Left = 0
-        Top = 0
-        Width = 879
-        Height = 257
-        ControlType.Strings = (
-          'org_name;CustomEdit;wwDBLookupCombo1;F'
-          'ORG_NAME;CustomEdit;wwDBLookupCombo1;F'
-          'TARIF_CENA;CustomEdit;wwDBLookupCombo2;F'
-          'VVOD_NUM;CustomEdit;wwDBLookupCombo3;F'
-          'FK_DVB;CustomEdit;wwDBComboBox1;F'
-          'SCH_AUTO;CheckBox;1;0')
-        Selected.Strings = (
-          'USL'#9'2'#9#1050#1086#1076#9'F'
-          'NM'#9'2'#9#1059#1089#1083#1091#1075#1072#9'F'
-          'VOLUME'#9'4'#9#1054#1073#1098#1077#1084#9'F'
-          'CENA'#9'4'#9#1056#1072#1089#1094#1077#1085#1082#1072#9'F'
-          'TARIF'#9'4'#9#1058#1072#1088#1080#1092#9'F'
-          'PRIVS'#9'5'#9#1051#1100#1075#1086#1090#1099#9'F'
-          'SUBSID'#9'2'#9#1057#1091#1073#1089#1080#1076#1080#1103#9'F'
-          'CHANGES'#9'5'#9#1048#1079#1084#1077#1085#1077#1085#1080#1103#9'F'
-          'ITOGN'#9'2'#9#1048#1090#1086#1075#1086#9'F'
-          'KOEFF'#9'4'#9#1050#1086#1101#1092#1092#9'F'
-          'NORM'#9'4'#9#1053#1086#1088#1084#1072#9'F'
-          'ORG_NAME'#9'5'#9#1055#1086#1089#1090#1072#1074#1097#1080#1082#9'F'
-          'TARIF_CENA'#9'13'#9#1058#1072#1088#1080#1092#9'F'
-          'VVOD_NUM'#9'9'#9#8470' '#1042#1074#1086#1076#1072#9'F'
-          'FK_DVB'#9'6'#9#1044#1077#1082#1086#1076#1077#1088#1099#9'F'
-          'VOL'#9'8'#9#1056#1072#1089#1087#1088'.~'#1085#1086#1088#1084'.'#9'F'
-          'VOL_ADD'#9'8'#9#1056#1072#1089#1087#1088'.~'#1089#1095#1077#1090#1095'.'#9'F'
-          'KF_KPR'#9'8'#9#1050#1086#1101#1092#1092'.~'#1087#1088#1086#1078#1080#1074'.'#9'F'
-          'NRM_KPR'#9'9'#9#1055#1088#1086#1078#1080#1074'.~'#1076#1083#1103' '#1088#1072#1089#1095#1077#1090#1072#9'F'
-          'NRM_KPR2'#9'9'#9#1055#1088#1086#1078#1080#1074'.~'#1087#1086' '#1088#1072#1089#1094'.'#9'F'
-          'SCH_AUTO'#9'10'#9#1040#1074#1090#1086'~'#1085#1072#1095#1080#1089#1083'.'#9'F')
-        IniAttributes.Delimiter = ';;'
-        TitleColor = clBtnFace
-        FixedCols = 0
-        ShowHorzScrollBar = True
-        Align = alClient
-        DataSource = DS_charge
-        EditCalculated = True
-        KeyOptions = [dgEnterToTab]
-        Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap, dgPerfectRowFit, dgShowFooter, dgNoLimitColSize, dgShowCellHint, dgTabExitsOnLastCol, dgProportionalColResize, dgHideBottomDataLine, dgDblClickColSizing]
-        PopupMenu = PopupMenu3
-        TabOrder = 0
-        TitleAlignment = taLeftJustify
-        TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -11
-        TitleFont.Name = 'MS Sans Serif'
-        TitleFont.Style = []
-        TitleLines = 2
-        TitleButtons = False
-        UseTFields = False
-        OnCalcCellColors = wwDBGrid2CalcCellColors
-        OnKeyPress = wwDBGrid2KeyPress
-        FooterColor = clSkyBlue
-        FooterCellColor = clSkyBlue
-        FooterHeight = 12
-      end
-      object wwDBComboBox1: TwwDBComboBox
-        Left = 720
-        Top = 160
-        Width = 121
-        Height = 21
-        ShowButton = True
-        Style = csDropDown
-        MapList = False
-        AllowClearKey = False
-        ButtonStyle = cbsEllipsis
-        DropDownCount = 0
-        DropDownWidth = 1
-        ItemHeight = 0
-        ReadOnly = True
-        Sorted = False
+      object BitBtn1: TBitBtn
+        Left = 816
+        Top = 16
+        Width = 25
+        Height = 25
+        Hint = #1055#1086#1082#1072#1079#1072#1090#1100' '#1088#1072#1089#1095#1105#1090
+        ParentShowHint = False
+        ShowHint = True
         TabOrder = 4
-        UnboundDataType = wwDefault
-        OnDropDown = wwDBComboBox1DropDown
+        OnClick = BitBtn1Click
+        Glyph.Data = {
+          36040000424D3604000000000000360000002800000010000000100000000100
+          2000000000000004000000000000000000000000000000000000FF00FF00FF00
+          FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF0042424A0031393900FF00
+          FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
+          FF00FF00FF00FF00FF00FF00FF00FF00FF0029394A0000081000000810001018
+          3100FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
+          FF00FF00FF00FF00FF00FF00FF00FF00FF001018310008081800080818001021
+          3100FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
+          FF00FF00FF00FF00FF00FF00FF00FF00FF0018395200215A840018395A001031
+          5200FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
+          FF00FF00FF00FF00FF00FF00FF00FF00FF00317BB500319CBD00296B8C003184
+          C600FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
+          FF00FF00FF00FF00FF00FF00FF00FF00FF0042ADEF0039A5D60039B5E70042C6
+          F700FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
+          FF00FF00FF00FF00FF00FF00FF00527B9C0042ADEF004AB5E7004ACEEF0042C6
+          F700527B9C00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
+          FF00FF00FF00FF00FF00FF00FF004AADE70063CEF7006BD6F7006BCEEF0063D6
+          F70052BDEF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
+          FF00FF00FF00FF00FF00949C9C0063D6F7007BE7FF009CEFFF009CEFFF007BE7
+          FF006BD6F700949C9C00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
+          FF00FF00FF0063B5DE0052ADE700A5F7FF00C6F7FF00B5F7FF00C6F7FF00B5F7
+          FF0094F7FF005AC6EF009C9C9C00FF00FF00FF00FF00FF00FF00FF00FF00FF00
+          FF00FF00FF0094B5D60063CEF700B5F7FF00C6F7FF00BDF7FF00ADF7FF00B5F7
+          FF009CF7FF0063E7FF0084949C00FF00FF00FF00FF00FF00FF00FF00FF00FF00
+          FF00FF00FF007BB5D60063DEFF00A5F7FF00B5F7FF00DEFFFF00DEFFFF00B5F7
+          FF009CF7FF0063E7FF0084A5BD00FF00FF00FF00FF00FF00FF00FF00FF00FF00
+          FF00FF00FF008CBDDE005AD6F7008CF7FF00ADF7FF00B5F7FF00B5F7FF00ADF7
+          FF008CF7FF005AD6F700A5A5AD00FF00FF00FF00FF00FF00FF00FF00FF00FF00
+          FF00FF00FF00FF00FF0063B5DE0063EFFF0073F7FF0084F7FF0084F7FF0073F7
+          FF0063EFFF0094B5BD00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
+          FF00FF00FF00FF00FF00FF00FF0052CEF70063E7FF006BF7FF006BF7FF0063E7
+          FF0052CEF700FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
+          FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF0084B5DE008CBDDE0094B5
+          BD00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00FF00}
       end
-      object wwDBLookupCombo3: TwwDBLookupCombo
-        Left = 288
-        Top = 88
-        Width = 121
-        Height = 21
-        DropDownAlignment = taLeftJustify
-        Selected.Strings = (
-          'VVOD_NUM'#9'10'#9'VVOD_NUM'#9'F'#9)
-        DataField = 'FK_VVOD'
-        DataSource = DS_charge
-        LookupTable = OD_vvod
-        LookupField = 'VVOD_NUM'
-        DropDownWidth = 50
-        TabOrder = 3
-        AutoDropDown = False
-        ShowButton = True
-        PreciseEditRegion = False
-        AllowClearKey = False
-        ShowMatchText = True
-        OnBeforeDropDown = wwDBLookupCombo3BeforeDropDown
-        OnCloseUp = wwDBLookupCombo3CloseUp
-        OnExit = wwDBLookupCombo3Exit
-        OnNotInList = wwDBLookupCombo3NotInList
-      end
-      object wwDBLookupCombo2: TwwDBLookupCombo
-        Left = 288
-        Top = 64
-        Width = 121
-        Height = 21
-        DropDownAlignment = taLeftJustify
-        Selected.Strings = (
-          'TARIF_NAME'#9'114'#9'TARIF_NAME'#9'F'#9)
-        DataField = 'FK_TARIF'
-        DataSource = DS_charge
-        LookupTable = OD_tarif
-        LookupField = 'TARIF_NAME'
-        DropDownWidth = 50
-        TabOrder = 2
-        AutoDropDown = False
-        ShowButton = True
-        PreciseEditRegion = False
-        AllowClearKey = False
-        OnCloseUp = wwDBLookupCombo2CloseUp
-      end
-      object wwDBLookupCombo1: TwwDBLookupCombo
-        Left = 288
-        Top = 40
-        Width = 121
-        Height = 21
-        DropDownAlignment = taLeftJustify
-        Selected.Strings = (
-          'NAME'#9'32'#9'NAME'#9'F'
-          'TP_ORG'#9'32'#9'TP_ORG'#9'F'#9)
-        DataField = 'ORG'
-        DataSource = DS_charge
-        LookupTable = OD_sprorg
-        LookupField = 'NAME'
-        TabOrder = 1
-        AutoDropDown = False
-        ShowButton = True
-        PreciseEditRegion = False
-        AllowClearKey = False
-        OnCloseUp = wwDBLookupCombo1CloseUp
-      end
-    end
-    object TabSheet9: TTabSheet
-      Caption = #1055#1088#1086#1075#1088#1072#1084#1084#1099
-      ImageIndex = 1
-      object Splitter1: TSplitter
-        Left = 541
-        Top = 0
-        Width = 8
-        Height = 257
-        Align = alRight
-      end
-      object DBGridEh2: TDBGridEh
-        Left = 0
-        Top = 0
-        Width = 541
-        Height = 257
-        Align = alClient
-        DataSource = DS_nabor_p
-        Flat = False
-        FooterColor = clWindow
-        FooterFont.Charset = DEFAULT_CHARSET
-        FooterFont.Color = clWindowText
-        FooterFont.Height = -11
-        FooterFont.Name = 'MS Sans Serif'
-        FooterFont.Style = []
-        FooterRowCount = 1
-        PopupMenu = PopupMenu1
-        SumList.Active = True
-        TabOrder = 0
-        TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -11
-        TitleFont.Name = 'MS Sans Serif'
-        TitleFont.Style = []
-        TitleHeight = 5
-        TitleLines = 1
-        OnDragDrop = DBGridEh2DragDrop
-        OnDragOver = DBGridEh2DragOver
-        OnMouseDown = DBGridEh2MouseDown
-        Columns = <
-          item
-            EditButtons = <>
-            FieldName = 'ID_DVB'
-            Footers = <>
-            Title.Caption = #8470' '#1044#1077#1082#1086#1076#1077#1088#1072
-            Width = 69
-          end
-          item
-            EditButtons = <>
-            FieldName = 'NAME'
-            Footer.Value = #1048#1090#1086#1075#1086', '#1088#1091#1073'.:'
-            Footer.ValueType = fvtStaticText
-            Footers = <>
-            ReadOnly = True
-            Title.Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077' '#1087#1088#1086#1075#1088#1072#1084#1084#1099' / '#1087#1072#1082#1077#1090#1072
-            Width = 232
-          end
-          item
-            EditButtons = <>
-            FieldName = 'CENA'
-            Footer.ValueType = fvtSum
-            Footers = <>
-            ReadOnly = True
-            Title.Caption = #1062#1077#1085#1072', '#1088#1091#1073'.'
-          end>
-      end
-      object DBGridEh3: TDBGridEh
-        Left = 549
-        Top = 0
-        Width = 330
-        Height = 257
-        Align = alRight
-        DataSource = DS_spr_tarif
-        Flat = False
-        FooterColor = clWindow
-        FooterFont.Charset = DEFAULT_CHARSET
-        FooterFont.Color = clWindowText
-        FooterFont.Height = -11
-        FooterFont.Name = 'MS Sans Serif'
-        FooterFont.Style = []
-        Options = [dgTitles, dgColumnResize, dgTabs, dgConfirmDelete, dgCancelOnExit]
-        TabOrder = 1
-        TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -11
-        TitleFont.Name = 'MS Sans Serif'
-        TitleFont.Style = []
-        TitleHeight = 5
-        TitleLines = 1
-        OnDragDrop = DBGridEh3DragDrop
-        OnDragOver = DBGridEh3DragOver
-        OnMouseDown = DBGridEh3MouseDown
-        Columns = <
-          item
-            EditButtons = <>
-            FieldName = 'NAME'
-            Footers = <>
-            Title.Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077' '#1087#1088#1086#1075#1088#1072#1084#1084#1099' / '#1087#1072#1082#1077#1090#1072
-            Width = 250
-          end
-          item
-            EditButtons = <>
-            FieldName = 'CENA'
-            Footers = <>
-            Title.Caption = #1062#1077#1085#1072', '#1088#1091#1073'.'
-          end>
+      object BitBtn2: TBitBtn
+        Left = 848
+        Top = 16
+        Width = 25
+        Height = 25
+        Hint = #1046#1091#1088#1085#1072#1083' '#1076#1077#1081#1089#1090#1074#1080#1081' '#1087#1086#1083#1100#1079#1086#1074#1072#1090#1077#1083#1077#1081' '#1087#1086' '#1082#1072#1088#1090#1086#1095#1082#1077
+        Caption = 'A'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 5
+        OnClick = BitBtn2Click
       end
     end
   end
@@ -3043,6 +2514,142 @@ object Form_kart: TForm_kart
     Font.Height = -11
     Font.Name = 'Tahoma'
     Font.Style = []
+  end
+  object cxGrid1: TcxGrid
+    Left = 0
+    Top = 305
+    Width = 887
+    Height = 287
+    Align = alClient
+    TabOrder = 4
+    object cxGrid1DBTableView1: TcxGridDBTableView
+      PopupMenu = PopupMenu3
+      Navigator.Buttons.CustomButtons = <>
+      OnCustomDrawCell = cxGrid1DBTableView1CustomDrawCell
+      DataController.DataSource = DS_charge
+      DataController.Summary.DefaultGroupSummaryItems = <>
+      DataController.Summary.FooterSummaryItems = <
+        item
+          Kind = skSum
+          Column = cxGrid1DBTableView1TARIF
+        end
+        item
+          Kind = skSum
+          Column = cxGrid1DBTableView1CHANGES
+        end
+        item
+          Kind = skSum
+          Column = cxGrid1DBTableView1ITOGN
+        end>
+      DataController.Summary.SummaryGroups = <>
+      OptionsBehavior.CellHints = True
+      OptionsView.ColumnAutoWidth = True
+      OptionsView.Footer = True
+      OptionsView.FooterMultiSummaries = True
+      OptionsView.GroupByBox = False
+      OptionsView.GroupFooterMultiSummaries = True
+      OptionsView.HeaderAutoHeight = True
+      object cxGrid1DBTableView1REU: TcxGridDBColumn
+        Caption = #1059#1050
+        DataBinding.FieldName = 'REU'
+      end
+      object cxGrid1DBTableView1LSK: TcxGridDBColumn
+        Caption = #1051#1057
+        DataBinding.FieldName = 'LSK'
+        Options.Editing = False
+        Width = 57
+      end
+      object cxGrid1DBTableView1USL: TcxGridDBColumn
+        DataBinding.FieldName = 'USL'
+        Options.Editing = False
+        Width = 32
+      end
+      object cxGrid1DBTableView1NM: TcxGridDBColumn
+        DataBinding.FieldName = 'NM'
+        Options.Editing = False
+        Width = 114
+      end
+      object cxGrid1DBTableView1VOLUME: TcxGridDBColumn
+        DataBinding.FieldName = 'VOLUME'
+        Options.Editing = False
+        Width = 49
+      end
+      object cxGrid1DBTableView1CENA: TcxGridDBColumn
+        DataBinding.FieldName = 'CENA'
+        Options.Editing = False
+        Width = 63
+      end
+      object cxGrid1DBTableView1TARIF: TcxGridDBColumn
+        DataBinding.FieldName = 'TARIF'
+        Options.Editing = False
+        Width = 56
+      end
+      object cxGrid1DBTableView1CHANGES: TcxGridDBColumn
+        DataBinding.FieldName = 'CHANGES'
+        Options.Editing = False
+        Width = 68
+      end
+      object cxGrid1DBTableView1ITOGN: TcxGridDBColumn
+        DataBinding.FieldName = 'ITOGN'
+        Options.Editing = False
+        Width = 70
+      end
+      object cxGrid1DBTableView1KOEFF: TcxGridDBColumn
+        DataBinding.FieldName = 'KOEFF'
+        Width = 49
+      end
+      object cxGrid1DBTableView1NORM: TcxGridDBColumn
+        DataBinding.FieldName = 'NORM'
+        Width = 43
+      end
+      object cxGrid1DBTableView1ORG_NAME: TcxGridDBColumn
+        Caption = #1055#1086#1089#1090#1072#1074#1097#1080#1082
+        DataBinding.FieldName = 'ORG'
+        PropertiesClassName = 'TcxLookupComboBoxProperties'
+        Properties.KeyFieldNames = 'KOD'
+        Properties.ListColumns = <
+          item
+            FieldName = 'NAME'
+          end>
+        Properties.ListSource = DS_sprorg
+        Width = 69
+      end
+      object cxGrid1DBTableView1FK_VVOD: TcxGridDBColumn
+        Caption = #8470' '#1042#1074#1086#1076#1072
+        DataBinding.FieldName = 'FK_VVOD'
+        PropertiesClassName = 'TcxLookupComboBoxProperties'
+        Properties.KeyFieldNames = 'ID'
+        Properties.ListColumns = <
+          item
+            FieldName = 'VVOD_NUM'
+          end>
+        Properties.ListSource = DS_vvod
+        Width = 53
+      end
+      object cxGrid1DBTableView1VOL: TcxGridDBColumn
+        Caption = #1056#1072#1089#1087#1088'.'#1085#1086#1088#1084'.'
+        DataBinding.FieldName = 'VOL'
+        Options.Editing = False
+        Width = 76
+      end
+      object cxGrid1DBTableView1VOL_ADD: TcxGridDBColumn
+        Caption = #1056#1072#1089#1087#1088'.'#1089#1095#1077#1090#1095'.'
+        DataBinding.FieldName = 'VOL_ADD'
+        Options.Editing = False
+        Width = 78
+      end
+      object cxGrid1DBTableView1CD_TP: TcxGridDBColumn
+        DataBinding.FieldName = 'CD_TP'
+        Visible = False
+      end
+      object cxGrid1DBTableView1PSCH: TcxGridDBColumn
+        DataBinding.FieldName = 'PSCH'
+        Visible = False
+      end
+    end
+    object cxGrid1Level1: TcxGridLevel
+      GridView = cxGrid1DBTableView1
+    end
   end
   object OD_spul: TOracleDataSet
     SQL.Strings = (
@@ -3497,16 +3104,19 @@ object Form_kart: TForm_kart
     SQL.Strings = (
       'select 0 as tp, n.rowid,'
       '       m.npp,'
+      '       k.k_lsk_id,'
       '       n.lsk,'
+      '       k.psch,'
+      '       k.reu,'
+      '       tp.cd as cd_tp,'
       '       m.usl,'
       '       m.nm,'
       '       n.koeff,'
-      '       s.cnt as fk_dvb,'
       
-        '       to_char(f.volume,'#39'9999990'#39'||rpad('#39'.'#39',nvl(m.chrg_round,3)+' +
+        '       to_char(a.volume,'#39'9999990'#39'||rpad('#39'.'#39',nvl(m.chrg_round,3)+' +
         '1,'#39'9'#39'))|| '#39' '#39' || m.ed_izm as volume, --'#1087#1086' '#1091#1084#1086#1083#1095#1072#1085#1080#1102' '#1086#1082#1088#1091#1075#1083#1077#1085#1080#1077' 3' +
         ' '#1079#1085#1072#1082#1072', '#1074' '#1087#1088#1086#1090#1080#1074#1085#1086#1084' '#1089#1083#1091#1095#1072#1077' '#1073#1077#1088#1077#1090#1089#1103' '#1080#1079' '#1089#1087#1088#1072#1074#1086#1095#1085#1080#1082#1072' usl'
-      '       nvl(t.cena, e.summa) as cena,'
+      '       a.cena,'
       '       n.norm,'
       '       n.org,'
       '       nvl(a.summa, 0) as tarif,'
@@ -3520,91 +3130,55 @@ object Form_kart: TForm_kart
       '       n.nrm_kpr,'
       '       n.nrm_kpr2,'
       '       n.sch_auto,'
-      
-        '       decode(t.cena, null, null, t.name || '#39',  '#39' || t.cena || '#39 +
-        ' '#1088#1091#1073'.'#39') as tarif_cena,'
       '       g.kod || '#39'  '#39' || g.name as org_name,'
-      '       nvl(b.summa, 0) as privs,'
-      '       nvl(c.summa, 0) as subsid,'
+      '       nvl(a.summa_b, 0) as privs,'
+      '       nvl(a.summa_c, 0) as subsid,'
       '       nvl(d.summa, 0) as changes,'
-      '       nvl(a.summa, 0) - nvl(b.summa, 0) - nvl(c.summa, 0) +'
+      '       nvl(a.summa, 0) - nvl(a.summa_b, 0) - nvl(a.summa_c, 0) +'
       '       nvl(d.summa, 0) as itogn,'
       '       m.sptarn'
-      '  from scott.nabor n,'
-      '       scott.c_vvod v,'
-      '       (select lsk, usl, count(*) as cnt'
-      '          from scott.nabor_progs'
-      '         group by lsk, usl) s,'
-      '       (select x.*, x1.cena'
       
-        '          from scott.spr_tarif x, scott.spr_tarif_prices x1, sco' +
-        'tt.params p'
-      '         where x.id = x1.fk_tarif'
-      '           and p.period between x1.mg1 and x1.mg2) t,'
-      '       scott.sprorg g,'
-      '       (select lsk, usl, sum(summa) as summa'
-      '          from scott.c_charge'
-      '         where lsk = :lsk'
-      '           and type = 1'
-      '         group by lsk, usl) a,'
-      '       (select lsk, usl, sum(summa) as summa'
-      '          from scott.c_charge'
-      '         where lsk = :lsk'
-      '           and type = 4'
-      '         group by lsk, usl) b,'
-      '       (select lsk, usl, sum(summa) as summa'
-      '          from scott.c_charge'
-      '         where lsk = :lsk'
-      '           and type = 2'
-      '         group by lsk, usl) c,'
-      '       (select lsk, usl, sum(test_opl) as volume'
-      '          from scott.c_charge'
-      '         where lsk = :lsk'
-      '           and type = 0'
-      '         group by lsk, usl) f,'
+        '  from  scott.nabor n join scott.kart k on k.lsk=n.lsk and decod' +
+        'e(k.psch, 8, :p_closed, 9, :p_closed,1)=1'
       
-        '       (select cc.lsk, cc.usl, round(max(cc.test_cena), 2) as su' +
-        'mma'
-      '          from scott.c_charge cc, scott.usl u'
-      '         where cc.lsk = :lsk'
-      '           and cc.type = 1'
-      '           and cc.usl = u.usl'
-      '         group by cc.lsk, cc.usl) e,'
-      '       (select cc.lsk, cc.usl, sum(cc.summa) as summa'
+        '                     left join scott.c_vvod v on n.fk_vvod = v.i' +
+        'd'
+      '                     join scott.sprorg g on n.org = g.kod'
+      '                     join scott.v_lsk_tp tp on k.fk_tp=tp.id'
+      
+        '                     left join (select lsk, usl, sum(decode(t.ty' +
+        'pe,1,summa,0)) as summa, '
+      '           sum(decode(t.type,4,summa,0)) as summa_b, '
+      '           sum(decode(t.type,2,summa,0)) as summa_c,'
+      '           sum(decode(t.type,0,test_opl,0)) as volume,'
+      '           max(decode(t.type,1,test_cena,0)) as cena'
+      '          from scott.c_charge t'
+      '         --where lsk = :lsk'
+      '         group by lsk, usl) a on n.lsk = a.lsk and n.usl = a.usl'
+      
+        '                    left join (select cc.lsk, cc.usl, sum(cc.sum' +
+        'ma) as summa'
       '          from scott.c_change cc'
-      '         where cc.lsk = :lsk'
-      '         group by cc.lsk, cc.usl) d,'
-      '       scott.usl m'
-      ' where n.lsk = :lsk'
-      '   and n.lsk = s.lsk(+)'
-      '   and n.usl = s.usl(+)'
-      '   and n.fk_vvod = v.id(+)'
-      '   and n.usl = m.usl'
-      '   and n.org = g.kod'
-      '   and n.fk_tarif = t.id(+)'
-      '   and n.lsk = a.lsk(+)'
-      '   and n.usl = a.usl(+)'
-      '   and n.lsk = b.lsk(+)'
-      '   and n.usl = b.usl(+)'
-      '   and n.lsk = c.lsk(+)'
-      '   and n.usl = c.usl(+)'
-      '   and n.lsk = e.lsk(+)'
-      '   and n.usl = e.usl(+)'
-      '   and n.lsk = f.lsk(+)'
-      '   and n.usl = f.usl(+)'
-      '   and n.lsk = d.lsk(+)'
-      '   and n.usl = d.usl(+)'
+      '         --where cc.lsk = :lsk'
+      
+        '         group by cc.lsk, cc.usl) d on n.lsk = d.lsk and n.usl =' +
+        ' d.usl'
+      '               join scott.usl m on n.usl = m.usl'
+      ' where k.k_lsk_id = :k_lsk_id'
       '   union all'
       '   select 1 as tp,'
       
         '       null, --'#1088#1072#1079' '#1080#1079#1084'. '#1085#1077' '#1087#1088#1080#1089#1091#1090#1089#1090#1074#1091#1102#1097#1080#1077' '#1074' '#1089#1087#1088#1072#1074#1086#1095#1085#1080#1082#1077' '#1091#1089#1083#1091#1075' '#1072#1073 +
         #1086#1085#1077#1085#1090#1072
       '       u.npp,'
-      '       cc.lsk,'
-      '       cc.usl,'
+      '       k.k_lsk_id,'
+      '       t.lsk,'
+      '       k.psch,'
+      '       k.reu,'
+      '       tp.cd as cd_tp,'
+      '       t.usl,'
       '       u.nm,'
       '       null as koeff,'
-      '       null as fk_dvb,'
       '       null as volume,'
       '       null as cena,'
       '       null as norm,'
@@ -3620,31 +3194,40 @@ object Form_kart: TForm_kart
       '       null as nrm_kpr,'
       '       null as nrm_kpr2,'
       '       null as sch_auto,'
-      '       null as tarif_cena,'
       '       null as org_name,'
       '       null as privs,'
       '       null as subsid,'
-      '       nvl(sum(cc.summa), 0) as changes,'
-      '       nvl(sum(cc.summa), 0) as  itogn,'
+      '       nvl(sum(t.summa), 0) as changes,'
+      '       nvl(sum(t.summa), 0) as  itogn,'
       '       0 as sptarn'
-      '      from scott.c_change cc, scott.usl u '
-      '     where cc.lsk = :lsk and cc.usl=u.usl'
+      '      from scott.kart k '
+      '      join scott.c_change t on k.lsk=t.lsk'
       
-        '     and not exists (select * from scott.nabor n where n.lsk=:ls' +
-        'k and n.usl=cc.usl)'
-      '     group by u.npp, u.nm, cc.lsk, cc.usl'
+        '      join scott.usl u  on k.k_lsk_id = :k_lsk_id and t.usl=u.us' +
+        'l'
+      '      join scott.v_lsk_tp tp on k.fk_tp=tp.id'
+      
+        '     where not exists (select * from scott.nabor n where n.lsk=k' +
+        '.lsk and n.usl=t.usl)'
+      '     and decode(k.psch, 8, :p_closed, 9, :p_closed,1)=1'
+      
+        '     group by k.k_lsk_id, u.npp, u.nm, t.lsk, k.reu, tp.cd, t.us' +
+        'l,k.psch'
       '   union all'
       '   select 2 as tp,'
       '       null, --'#1054#1044#1053', ('#1076#1083#1103' '#1080#1085#1092#1086#1088#1084#1072#1094#1080#1080', '#1085#1077' '#1091#1095#1072#1089#1090#1074#1091#1077#1090' '#1074' '#1088#1072#1089#1095#1077#1090#1077')'
       '       u.npp,'
-      '       cc.lsk,'
-      '       cc.usl,'
+      '       k.k_lsk_id,'
+      '       t.lsk,'
+      '       k.psch,'
+      '       k.reu,'
+      '       tp.cd as cd_tp,'
+      '       t.usl,'
       '       u.nm,'
       '       null as koeff,'
-      '       null as fk_dvb,'
       
-        '       to_char(cc.test_opl,'#39'9999990.999'#39')|| '#39' '#39' || u.ed_izm as v' +
-        'olume,'
+        '       to_char(t.test_opl,'#39'9999990.999'#39')|| '#39' '#39' || u.ed_izm as vo' +
+        'lume,'
       '       null as cena,'
       '       null as norm,'
       '       0 as org,'
@@ -3659,39 +3242,41 @@ object Form_kart: TForm_kart
       '       null as nrm_kpr,'
       '       null as nrm_kpr2,'
       '       null as sch_auto,'
-      '       null as tarif_cena,'
       '       null as org_name,'
       '       null as privs,'
       '       null as subsid,'
       '       null as changes,'
       '       null as  itogn,'
       '       0 as sptarn'
-      '      from scott.c_charge cc, scott.usl u '
-      '     where cc.lsk = :lsk and cc.usl=u.usl and cc.type=5'
-      ' order by tp, npp')
+      
+        '      from scott.kart k join scott.c_charge t on k.lsk=t.lsk and' +
+        ' k.k_lsk_id=:k_lsk_id and decode(k.psch, 8, :p_closed, 9, :p_clo' +
+        'sed,1)=1'
+      '      join scott.usl u on t.usl=u.usl and t.type=5'
+      '      join scott.v_lsk_tp tp on k.fk_tp=tp.id'
+      ' order by tp, npp'
+      '')
     Optimize = False
     Variables.Data = {
-      0300000001000000040000003A4C534B05000000090000002020202020202020
-      0000000000}
+      0300000002000000090000003A4B5F4C534B5F49440300000000000000000000
+      00090000003A505F434C4F534544030000000000000000000000}
     QBEDefinition.QBEFieldDefs = {
-      040000001D000000050000005441524946010000000000050000005052495653
+      040000001F000000050000005441524946010000000000050000005052495653
       0100000000000300000055534C01000000000006000000535542534944010000
       000000070000004348414E4745530100000000000500000049544F474E010000
       000000030000004C534B010000000000050000004B4F45464601000000000004
       0000004E4F524D010000000000030000004F5247010000000000040000004345
       4E41010000000000020000004E4D01000000000006000000564F4C554D450100
-      0000000008000000464B5F54415249460100000000000A00000054415249465F
-      43454E41010000000000080000004F52475F4E414D4501000000000007000000
-      464B5F56564F440100000000000800000056564F445F4E554D01000000000006
-      000000464B5F44564201000000000007000000564F4C5F414444010000000000
-      060000004B465F4B5052010000000000080000005343485F4155544F01000000
-      000003000000564F4C010000000000070000004E524D5F4B5052010000000000
-      030000004E505001000000000002000000545001000000000006000000535054
-      41524E0100000000000A0000004B465F4B50525F534348010000000000080000
-      004E524D5F4B505232010000000000}
-    Master = Form_list_kart.OD_list_kart
-    MasterFields = 'LSK'
-    DetailFields = 'LSK'
+      0000000008000000464B5F5441524946010000000000080000004F52475F4E41
+      4D4501000000000007000000464B5F56564F440100000000000800000056564F
+      445F4E554D01000000000007000000564F4C5F41444401000000000006000000
+      4B465F4B5052010000000000080000005343485F4155544F0100000000000300
+      0000564F4C010000000000070000004E524D5F4B505201000000000003000000
+      4E50500100000000000200000054500100000000000600000053505441524E01
+      00000000000A0000004B465F4B50525F534348010000000000080000004E524D
+      5F4B505232010000000000080000004B5F4C534B5F4944010000000000030000
+      005245550100000000000500000043445F545001000000000004000000505343
+      48010000000000}
     UpdatingTable = 'scott.nabor'
     CommitOnPost = False
     CachedUpdates = True
@@ -3780,13 +3365,6 @@ object Form_kart: TForm_kart
       FieldName = 'ORG_NAME'
       Size = 25
     end
-    object OD_chargeTARIF_CENA: TStringField
-      DisplayLabel = #1058#1072#1088#1080#1092
-      DisplayWidth = 80
-      FieldKind = fkInternalCalc
-      FieldName = 'TARIF_CENA'
-      Size = 80
-    end
     object OD_chargeFK_TARIF: TFloatField
       DisplayWidth = 10
       FieldName = 'FK_TARIF'
@@ -3806,9 +3384,6 @@ object Form_kart: TForm_kart
     object OD_chargeVVOD_NUM: TFloatField
       FieldKind = fkInternalCalc
       FieldName = 'VVOD_NUM'
-    end
-    object OD_chargeFK_DVB: TFloatField
-      FieldName = 'FK_DVB'
     end
     object OD_chargeVOL_ADD: TFloatField
       FieldName = 'VOL_ADD'
@@ -3844,6 +3419,17 @@ object Form_kart: TForm_kart
     end
     object OD_chargeNRM_KPR2: TFloatField
       FieldName = 'NRM_KPR2'
+    end
+    object OD_chargeREU: TStringField
+      FieldName = 'REU'
+      Size = 3
+    end
+    object OD_chargeCD_TP: TStringField
+      FieldName = 'CD_TP'
+      Size = 32
+    end
+    object OD_chargePSCH: TIntegerField
+      FieldName = 'PSCH'
     end
   end
   object DS_charge: TDataSource
@@ -4155,33 +3741,20 @@ object Form_kart: TForm_kart
   end
   object OD_vvod: TOracleDataSet
     SQL.Strings = (
-      'select v.id, v.vvod_num'
-      'from scott.c_vvod v'
-      'where v.usl=:usl and v.house_id=:house_id')
+      'select t.id, t.vvod_num||'#39'-'#39'||u.nm as vvod_num'
+      'from scott.c_vvod t join scott.usl u on t.usl=u.usl'
+      'where t.house_id=:house_id')
     Optimize = False
     Variables.Data = {
-      0300000002000000090000003A484F5553455F49440300000000000000000000
-      00040000003A55534C050000000000000000000000}
+      0300000001000000090000003A484F5553455F49440300000000000000000000
+      00}
     QBEDefinition.QBEFieldDefs = {
       04000000020000000200000049440100000000000800000056564F445F4E554D
       010000000000}
-    Master = OD_charge
-    MasterFields = 'usl'
-    DetailFields = 'usl'
     QueryAllRecords = False
     Session = DataModule1.OracleSession1
     Left = 624
     Top = 544
-    object OD_vvodVVOD_NUM: TFloatField
-      DisplayWidth = 10
-      FieldName = 'VVOD_NUM'
-    end
-    object OD_vvodID: TFloatField
-      DisplayWidth = 10
-      FieldName = 'ID'
-      Required = True
-      Visible = False
-    end
   end
   object DS_vvod: TDataSource
     DataSet = OD_vvod
@@ -4580,5 +4153,40 @@ object Form_kart: TForm_kart
       FieldName = 'ID'
       Visible = False
     end
+  end
+  object OD_eolink: TOracleDataSet
+    SQL.Strings = (
+      'select t.* from exs.eolink t where t.lsk=:lsk')
+    Optimize = False
+    Variables.Data = {
+      0300000001000000040000003A4C534B05000000090000003031303030303032
+      0000000000}
+    QBEDefinition.QBEFieldDefs = {
+      040000001B000000030000004C534B0100000000000200000049440100000000
+      0003000000524555010000000000030000004B554C010000000000020000004E
+      44010000000000020000004B5701000000000005000000454E54525901000000
+      00000300000055534C0100000000000600000049445F434E5401000000000004
+      0000004755494401000000000002000000434401000000000008000000464B5F
+      4F424A545001000000000007000000554E49514E554D01000000000009000000
+      464B5F4F424A545058010000000000060000004150505F54500100000000000B
+      000000464B5F4B4C534B5F4F424A01000000000009000000504152454E545F49
+      44010000000000040000004F47524E0100000000000600000044545F43525401
+      000000000007000000464B5F5553455201000000000006000000535441545553
+      0100000000000600000049445F47525001000000000008000000435F4C534B5F
+      494401000000000004000000434F4D4D0100000000000600000044545F555044
+      0100000000000900000053455256494345494401000000000003000000455252
+      010000000000}
+    Master = Form_list_kart.OD_list_kart
+    MasterFields = 'LSK'
+    DetailFields = 'LSK'
+    ReadOnly = True
+    Session = DataModule1.OracleSession1
+    Left = 156
+    Top = 368
+  end
+  object DS_eolink: TDataSource
+    DataSet = OD_eolink
+    Left = 192
+    Top = 368
   end
 end

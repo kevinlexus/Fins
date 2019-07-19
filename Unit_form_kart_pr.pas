@@ -282,7 +282,7 @@ type
     procedure DBNavigator2BeforeAction(Sender: TObject;
       Button: TNavigateBtn);
     procedure setAllowEdit;
-    procedure state_arch2(mgold_: String);
+    procedure state_arch2(mgold_: string);
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
@@ -294,7 +294,7 @@ type
     procedure OD_lg_docsBeforeInsert(DataSet: TDataSet);
     procedure OD_lg_docsAfterScroll(DataSet: TDataSet);
     procedure save_changes(ask_: Integer);
-    procedure CMDialogKey(Var Msg:TWMKey); message CM_DIALOGKEY;
+    procedure CMDialogKey(var Msg: TWMKey); message CM_DIALOGKEY;
     procedure wwDBLookupCombo2CloseUp(Sender: TObject; LookupTable,
       FillTable: TDataSet; modified: Boolean);
     procedure wwDBLookupCombo2Exit(Sender: TObject);
@@ -311,7 +311,7 @@ type
     procedure save_krt_pr;
     procedure save_all;
     procedure cancel_all;
-    function check_upd:Integer;
+    function check_upd: Integer;
     procedure OD_c_statesBeforeEdit(DataSet: TDataSet);
     procedure OD_c_states2BeforeEdit(DataSet: TDataSet);
     procedure OD_c_states2BeforeInsert(DataSet: TDataSet);
@@ -345,10 +345,10 @@ type
     procedure DBLookupComboboxEh13EditButtons0Click(Sender: TObject;
       var Handled: Boolean);
   private
-    id2_:Integer;
-    procedure add_prop(tp_: String; ds: TDBLookupComboboxEh);
+    id2_: Integer;
+    procedure add_prop(tp_: string; ds: TDBLookupComboboxEh);
   public
-    sel_id_ :Integer;
+    sel_id_: Integer;
   end;
 
 var
@@ -357,10 +357,9 @@ implementation
 
 uses Unit_list_kart, Unit_Mainform, Unit_add_prop;
 
-   type
-    EPasswordInvalid = class(Exception);
+type
+  EPasswordInvalid = class(Exception);
 {$R *.dfm}
-
 
 procedure TForm_kart_pr.save_changes(ask_: Integer);
 var
@@ -379,7 +378,7 @@ begin
   if not (Form_kart.OD_kart_pr.State in [dsBrowse]) then
     Form_kart.OD_kart_pr.Post;
 
-  id_:=Form_kart.OD_kart_pr.FieldByName('id').AsInteger;
+  id_ := Form_kart.OD_kart_pr.FieldByName('id').AsInteger;
 
   if (Form_kart.OD_kart_pr.UpdatesPending = true)
     or (OD_c_states.UpdatesPending = true)
@@ -387,15 +386,16 @@ begin
     or (Form_kart_pr.OD_lg_docs.UpdatesPending = true)
     or (Form_kart_pr.OD_lg_pr.UpdatesPending = true)
     or (Form_kart.OD_kart_pr.UpdateStatus in [usInserted, usModified, usDeleted])
-    or (Form_kart_pr.OD_lg_docs.UpdateStatus in [usInserted, usModified, usDeleted])
-    or (Form_kart_pr.OD_lg_pr.UpdateStatus in [usInserted, usModified, usDeleted])
-     then
-    ask1_:=1
+    or (Form_kart_pr.OD_lg_docs.UpdateStatus in [usInserted, usModified,
+      usDeleted])
+    or (Form_kart_pr.OD_lg_pr.UpdateStatus in [usInserted, usModified,
+      usDeleted]) then
+    ask1_ := 1
   else
-    ask1_:=0;
+    ask1_ := 0;
 
   if ask_ = 0 then //записываем без вопросов
-   begin
+  begin
     OD_lg_docs.Session.ApplyUpdates([OD_lg_docs], true);
     OD_lg_pr.Session.ApplyUpdates([OD_lg_pr], true);
     OD_c_states.Session.ApplyUpdates([OD_c_states], true);
@@ -407,9 +407,9 @@ begin
 
     Form_kart.save_changes(0);
     Form_kart.recalc_kart;
-   end
-   else if ask_ = 2 then //отменяем без вопросов
-   begin
+  end
+  else if ask_ = 2 then //отменяем без вопросов
+  begin
     OD_lg_docs.Session.CancelUpdates([OD_lg_docs]);
     OD_lg_pr.Session.CancelUpdates([OD_lg_pr]);
     OD_c_states.Session.CancelUpdates([OD_c_states]);
@@ -418,12 +418,13 @@ begin
     OD_lg_pr.Session.Rollback;
 
     Form_kart.recalc_kart;
-   end
-   else if (ask_ = 1) and (ask1_ = 1) then
+  end
+  else if (ask_ = 1) and (ask1_ = 1) then
+  begin
+    if (Application.MessageBox('Сохранить измения карточки?',
+      'Подтверждение', MB_ICONQUESTION + MB_APPLMODAL + MB_YESNO) = IDYES) then
+        // сохраняем с вопросом
     begin
-     if (Application.MessageBox('Сохранить измения карточки?',
-     'Подтверждение', MB_ICONQUESTION+MB_APPLMODAL+MB_YESNO) = IDYES) then // сохраняем с вопросом
-     begin
       OD_lg_docs.Session.ApplyUpdates([OD_lg_docs], true);
       OD_lg_pr.Session.ApplyUpdates([OD_lg_pr], true);
       OD_c_states.Session.ApplyUpdates([OD_c_states], true);
@@ -435,46 +436,46 @@ begin
 
       Form_kart.save_changes(0);
       Form_kart.recalc_kart;
-     end
-     else
-     begin
+    end
+    else
+    begin
       OD_lg_docs.Session.CancelUpdates([OD_lg_docs]);
       OD_lg_pr.Session.CancelUpdates([OD_lg_pr]);
       Form_kart.OD_kart_pr.Session.CancelUpdates([Form_kart.OD_kart_pr]);
       OD_lg_pr.Session.Rollback;
 
       Form_kart.recalc_kart;
-     end;
     end;
- if id_ = 0 then
-   Form_kart.OD_kart_pr.Last //новая запись
- else
-   Form_kart.OD_kart_pr.Locate('id', id_, []);  //update существующей
+  end;
+  if id_ = 0 then
+    Form_kart.OD_kart_pr.Last //новая запись
+  else
+    Form_kart.OD_kart_pr.Locate('id', id_, []); //update существующей
 end;
 
 procedure TForm_kart_pr.setAllowEdit;
 begin
-  Button2.Enabled:=false;
+  Button2.Enabled := false;
 
   //разрешить ли редактирование проживающих
   if (Form_list_kart.isAllowEdit_k_ = 0) and (Form_main.arch_mg_ = '') then
-    begin
-      Caption:='Проживающий';
-      OD_c_states.ReadOnly:=true;
-      OD_c_states2.ReadOnly:=true;
-    end
+  begin
+    Caption := 'Проживающий';
+    OD_c_states.ReadOnly := true;
+    OD_c_states2.ReadOnly := true;
+  end
   else if Form_main.arch_mg_ <> '' then
-    begin
-      Caption:='Архив';
-      OD_c_states.ReadOnly:=true;
-      OD_c_states2.ReadOnly:=true;
-    end
+  begin
+    Caption := 'Архив';
+    OD_c_states.ReadOnly := true;
+    OD_c_states2.ReadOnly := true;
+  end
   else
-    begin
-      Button2.Enabled:=true;
-      OD_c_states.ReadOnly:=false;
-      OD_c_states2.ReadOnly:=false;
-    end;
+  begin
+    Button2.Enabled := true;
+    OD_c_states.ReadOnly := false;
+    OD_c_states2.ReadOnly := false;
+  end;
 
   //разрешить ли редактирование льгот
 {  ред.21.05.2019 - льготы не нужны
@@ -506,47 +507,50 @@ if (Form_list_kart.isAllowEdit_l_ = 0) and (Form_main.arch_mg_ = '') then
     end;}
 end;
 
-procedure TForm_kart_pr.state_arch2(mgold_: String);
+procedure TForm_kart_pr.state_arch2(mgold_: string);
 begin // смена состояний формы
-with Form_kart_pr do
-begin
-  if (Form_main.arch_mg_ <> '') and (mgold_='') then
-  begin  // из текущего в архив
-    change_alias(OD_lg_pr, 'scott.c_lg_pr',
-      '(select * from scott.a_lg_pr where mg='''+Form_main.arch_mg_+''')');
-    change_alias(OD_lg_pr, 'scott.c_lg_docs',
-      '(select * from scott.a_lg_docs where mg='''+Form_main.arch_mg_+''')');
-    change_alias(OD_lg_docs, 'scott.c_lg_docs',
-      '(select * from scott.a_lg_docs where mg='''+Form_main.arch_mg_+''')');
-  end
-  else if (Form_main.arch_mg_ = '') and (mgold_ <> '') then
-  begin  // из архива в текущее
-    change_alias(OD_lg_pr,
-      '(select * from scott.a_lg_pr where mg='''+mgold_+''')',
-      'scott.c_lg_pr');
-    change_alias(OD_lg_pr,
-      '(select * from scott.a_lg_docs where mg='''+mgold_+''')',
-      'scott.c_lg_docs');
-    change_alias(OD_lg_docs,
-      '(select * from scott.a_lg_docs where mg='''+mgold_+''')',
-      'scott.c_lg_docs');
-  end
-  else if (Form_main.arch_mg_ <> '') and (mgold_ <> '') then
-  begin  // из архива в архив
-    change_alias(OD_lg_pr,
-      '(select * from scott.a_lg_pr where mg='''+mgold_+''')',
-      '(select * from scott.a_lg_pr where mg='''+Form_main.arch_mg_+''')'
-      );
-    change_alias(OD_lg_pr,
-      '(select * from scott.a_lg_docs where mg='''+mgold_+''')',
-      '(select * from scott.a_lg_docs where mg='''+Form_main.arch_mg_+''')'
-      );
-    change_alias(OD_lg_docs,
-      '(select * from scott.a_lg_docs where mg='''+mgold_+''')',
-      '(select * from scott.a_lg_docs where mg='''+Form_main.arch_mg_+''')'
-      );
+  with Form_kart_pr do
+  begin
+    if (Form_main.arch_mg_ <> '') and (mgold_ = '') then
+    begin // из текущего в архив
+      change_alias(OD_lg_pr, 'scott.c_lg_pr',
+        '(select * from scott.a_lg_pr where mg=''' + Form_main.arch_mg_ +
+          ''')');
+      change_alias(OD_lg_pr, 'scott.c_lg_docs',
+        '(select * from scott.a_lg_docs where mg=''' + Form_main.arch_mg_ +
+          ''')');
+      change_alias(OD_lg_docs, 'scott.c_lg_docs',
+        '(select * from scott.a_lg_docs where mg=''' + Form_main.arch_mg_ +
+          ''')');
+    end
+    else if (Form_main.arch_mg_ = '') and (mgold_ <> '') then
+    begin // из архива в текущее
+      change_alias(OD_lg_pr,
+        '(select * from scott.a_lg_pr where mg=''' + mgold_ + ''')',
+        'scott.c_lg_pr');
+      change_alias(OD_lg_pr,
+        '(select * from scott.a_lg_docs where mg=''' + mgold_ + ''')',
+        'scott.c_lg_docs');
+      change_alias(OD_lg_docs,
+        '(select * from scott.a_lg_docs where mg=''' + mgold_ + ''')',
+        'scott.c_lg_docs');
+    end
+    else if (Form_main.arch_mg_ <> '') and (mgold_ <> '') then
+    begin // из архива в архив
+      change_alias(OD_lg_pr,
+        '(select * from scott.a_lg_pr where mg=''' + mgold_ + ''')',
+        '(select * from scott.a_lg_pr where mg=''' + Form_main.arch_mg_ + ''')'
+        );
+      change_alias(OD_lg_pr,
+        '(select * from scott.a_lg_docs where mg=''' + mgold_ + ''')',
+        '(select * from scott.a_lg_docs where mg=''' + Form_main.arch_mg_ + ''')'
+        );
+      change_alias(OD_lg_docs,
+        '(select * from scott.a_lg_docs where mg=''' + mgold_ + ''')',
+        '(select * from scott.a_lg_docs where mg=''' + Form_main.arch_mg_ + ''')'
+        );
+    end;
   end;
-end;
 end;
 
 procedure TForm_kart_pr.FormClose(Sender: TObject;
@@ -554,20 +558,20 @@ procedure TForm_kart_pr.FormClose(Sender: TObject;
 begin
   exit_cancel;
   Form_kart.OD_kart_pr.Locate('id', id2_, []);
-  Action:=caFree;
+  Action := caFree;
 end;
 
 procedure TForm_kart_pr.OD_lg_docsSPK_IDValidate(Sender: TField);
 begin
-     if sender.Text = '' then
-       raise EPasswordInvalid.Create('Указанный код льготы не существует!');
+  if sender.Text = '' then
+    raise EPasswordInvalid.Create('Указанный код льготы не существует!');
 
 end;
 
 procedure TForm_kart_pr.OD_lg_docsTYPEValidate(Sender: TField);
 begin
-     if sender.Text = '' then
-       raise EPasswordInvalid.Create('Указанный тип льготы не существует!');
+  if sender.Text = '' then
+    raise EPasswordInvalid.Create('Указанный тип льготы не существует!');
 
 end;
 
@@ -575,47 +579,46 @@ procedure TForm_kart_pr.DBNavigator2BeforeAction(Sender: TObject;
   Button: TNavigateBtn);
 begin
   if (Button = nbDelete) and (msg3('Удалить проживающего?',
-     'Подверждение', MB_YESNO+MB_ICONQUESTION) <> IDYES) then
+    'Подверждение', MB_YESNO + MB_ICONQUESTION) <> IDYES) then
   begin
-   Abort();
+    Abort();
   end;
- 
+
   if (Button = nbInsert) and (msg3('Добавить проживающего?',
-     'Подверждение', MB_YESNO+MB_ICONQUESTION) <> IDYES) then
+    'Подверждение', MB_YESNO + MB_ICONQUESTION) <> IDYES) then
   begin
-   Abort();
+    Abort();
   end;
 end;
 
 procedure TForm_kart_pr.FormCreate(Sender: TObject);
 begin
-  id2_:=Form_kart.OD_kart_pr.FieldByName('id').AsInteger;
-  PageControl1.ActivePageIndex:=0;
-  OD_lg_pr.Active:=true;
-  OD_lg_docs.Active:=true;
+  id2_ := Form_kart.OD_kart_pr.FieldByName('id').AsInteger;
+  PageControl1.ActivePageIndex := 0;
+  OD_lg_pr.Active := true;
+  OD_lg_docs.Active := true;
 
-
-  OD_c_states.Active:=true;
-  OD_c_states2.Active:=true;
-  OD_c_status_pr.Active:=true;
-  OD_c_status_pr2.Active:=true;
+  OD_c_states.Active := true;
+  OD_c_states2.Active := true;
+  OD_c_status_pr.Active := true;
+  OD_c_status_pr2.Active := true;
   //отчет-отключить
-  OD_rep2.Active:=false;
+  OD_rep2.Active := false;
 
   //датасеты-включить
-  OD_doc.Active:=true;
-  OD_ub.Active:=true;
-  OD_nac.Active:=true;
-  OD_ovd.Active:=true;
-  OD_country.Active:=true;
-  OD_regn.Active:=true;
-  OD_distr.Active:=true;
-  OD_pol.Active:=true;
-  OD_citiz.Active:=true;
+  OD_doc.Active := true;
+  OD_ub.Active := true;
+  OD_nac.Active := true;
+  OD_ovd.Active := true;
+  OD_country.Active := true;
+  OD_regn.Active := true;
+  OD_distr.Active := true;
+  OD_pol.Active := true;
+  OD_citiz.Active := true;
 
   state_arch2('');
   SetAllowEdit;
-  TForm(Sender).AutoSize:=true;
+  TForm(Sender).AutoSize := true;
 end;
 
 procedure TForm_kart_pr.Button1Click(Sender: TObject);
@@ -629,9 +632,10 @@ begin
   begin
     // без коммита сохраняем id проживающего
     DataModule1.OraclePackage1.CallProcedure(
-    'scott.UTILS.ins_lg_doc', [Form_kart.OD_kart_pr.FieldByName('id').AsInteger]);
-    OD_lg_pr.Active:=False;
-    OD_lg_pr.Active:=True;
+      'scott.UTILS.ins_lg_doc',
+        [Form_kart.OD_kart_pr.FieldByName('id').AsInteger]);
+    OD_lg_pr.Active := False;
+    OD_lg_pr.Active := True;
     OD_lg_pr.Last;
   end
   else
@@ -644,52 +648,15 @@ procedure TForm_kart_pr.Button4Click(Sender: TObject);
 begin
 
   DataModule1.OraclePackage1.CallProcedure(
-   'scott.UTILS.del_lg_doc', [OD_lg_pr.FieldByName('c_lg_docs_id').AsInteger]);
-  OD_lg_pr.Active:=False;
-  OD_lg_pr.Active:=True;
+    'scott.UTILS.del_lg_doc', [OD_lg_pr.FieldByName('c_lg_docs_id').AsInteger]);
+  OD_lg_pr.Active := False;
+  OD_lg_pr.Active := True;
   OD_lg_pr.Last;
 end;
 
 function TForm_kart_pr.check_upd: Integer;
 begin
-//есть ли обновления записей?
-if not (OD_c_states.State in [dsBrowse]) then
-  OD_c_states.Post;
-if not (OD_c_states2.State in [dsBrowse]) then
-  OD_c_states2.Post;
-if not (OD_lg_pr.State in [dsBrowse]) then
-  OD_lg_pr.Post;
-if not (OD_lg_docs.State in [dsBrowse]) then
-  OD_lg_docs.Post;
-if not (Form_kart.OD_kart_pr.State in [dsBrowse]) then
-  Form_kart.OD_kart_pr.Post;
-
-if (OD_c_states.UpdatesPending = True)
- or (OD_c_states2.UpdatesPending = True)
- or (OD_lg_pr.UpdatesPending = True)
- or (OD_lg_docs.UpdatesPending = True)
- or (Form_kart.OD_kart_pr.UpdatesPending = True)
-  then
-  Result:=1
-  else
-  Result:=0;
-end;
-
-procedure TForm_kart_pr.exit_ok;
-var
-  id_: Integer;
-begin
-  if (check_upd=1)
-    then
-   begin
-     save_all;
-   end;
-end;
-
-procedure TForm_kart_pr.save_all;
- var err_, id_: Integer;
-begin
-//Сохранить все изменения
+  //есть ли обновления записей?
   if not (OD_c_states.State in [dsBrowse]) then
     OD_c_states.Post;
   if not (OD_c_states2.State in [dsBrowse]) then
@@ -701,15 +668,52 @@ begin
   if not (Form_kart.OD_kart_pr.State in [dsBrowse]) then
     Form_kart.OD_kart_pr.Post;
 
-  Form_kart.OD_kart_pr.Session.ApplyUpdates([Form_kart.OD_kart_pr],True);
+  if (OD_c_states.UpdatesPending = True)
+    or (OD_c_states2.UpdatesPending = True)
+    or (OD_lg_pr.UpdatesPending = True)
+    or (OD_lg_docs.UpdatesPending = True)
+    or (Form_kart.OD_kart_pr.UpdatesPending = True) then
+    Result := 1
+  else
+    Result := 0;
+end;
+
+procedure TForm_kart_pr.exit_ok;
+var
+  id_: Integer;
+begin
+  if (check_upd = 1) then
+  begin
+    save_all;
+  end;
+end;
+
+procedure TForm_kart_pr.save_all;
+var
+  err_, id_: Integer;
+begin
+  //Сохранить все изменения
+  if not (OD_c_states.State in [dsBrowse]) then
+    OD_c_states.Post;
+  if not (OD_c_states2.State in [dsBrowse]) then
+    OD_c_states2.Post;
+  if not (OD_lg_pr.State in [dsBrowse]) then
+    OD_lg_pr.Post;
+  if not (OD_lg_docs.State in [dsBrowse]) then
+    OD_lg_docs.Post;
+  if not (Form_kart.OD_kart_pr.State in [dsBrowse]) then
+    Form_kart.OD_kart_pr.Post;
+
+  Form_kart.OD_kart_pr.Session.ApplyUpdates([Form_kart.OD_kart_pr], True);
   Form_kart.OD_kart_pr.Session.ApplyUpdates([OD_c_states2], True);
   Form_kart.OD_kart_pr.Session.ApplyUpdates([OD_c_states], True);
   Form_kart.OD_kart_pr.Session.ApplyUpdates([OD_lg_pr], True);
   Form_kart.OD_kart_pr.Session.ApplyUpdates([OD_lg_docs], True);
 
-  id_:=Form_kart.OD_kart_pr.FieldByName('id').AsInteger;
-  err_:=DataModule1.OraclePackage1.CallStringFunction(
-   'scott.UTILS.tst_krt', [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, 1]);
+  id_ := Form_kart.OD_kart_pr.FieldByName('id').AsInteger;
+  err_ := DataModule1.OraclePackage1.CallStringFunction(
+    'scott.UTILS.tst_krt',
+      [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, 1]);
 
   //для изменений в пакетах?????
   OD_lg_docs.Session.Commit;
@@ -725,19 +729,19 @@ begin
   end;
   with Form_kart.OD_kart_pr do
   begin
-    Active:=False;
-    Active:=True;
+    Active := False;
+    Active := True;
     First;
 
     Locate('id', id_, [loCaseInsensitive]);
-{    if Locate('id', id_, [loCaseInsensitive]) = false then
-      ShowMessage('не найден проживающий');}
+    {    if Locate('id', id_, [loCaseInsensitive]) = false then
+          ShowMessage('не найден проживающий');}
   end;
 end;
 
 procedure TForm_kart_pr.cancel_all;
 begin
-//Отменить все изменения
+  //Отменить все изменения
   OD_c_states.CancelUpdates;
   OD_c_states2.CancelUpdates;
   OD_lg_pr.CancelUpdates;
@@ -745,7 +749,6 @@ begin
   Form_kart.OD_kart_pr.CancelUpdates;
   OD_c_states.Session.Rollback;
 end;
-
 
 procedure TForm_kart_pr.exit_cancel;
 begin
@@ -756,44 +759,44 @@ begin
   if not (OD_lg_docs.State in [dsBrowse]) then
     OD_lg_docs.Post;
 
-if (check_upd=1) and (msg3('Сохранить изменения?',
-   'Внимание!',
-   MB_YESNO+MB_ICONQUESTION) = IDYES) then
+  if (check_upd = 1) and (msg3('Сохранить изменения?',
+    'Внимание!',
+    MB_YESNO + MB_ICONQUESTION) = IDYES) then
   begin
-    if (check_upd=1) then
-     begin
-      save_all;
-{      with Form_kart.OD_kart_pr do --зачем, если в save_all есть это...
-      begin
-        Active:=False;
-        Active:=true;
-      end;}
-     end;
-  end
-  else
-  begin
-    if (check_upd=1) then
-     begin
-      cancel_all;
-     end;
-  end;
-{  if (Upd_=1) and (msg3('Сохранить изменения?',
-   'Внимание!',
-   MB_YESNO+MB_ICONQUESTION) = IDYES) then
-  begin
-   OD_lg_docs.Session.Commit;
-   ShowMessage('сохранено');
-   Upd_:=0;
-  end
-  else
-  begin
-    if Upd_=1 then
+    if (check_upd = 1) then
     begin
-     OD_lg_docs.Session.Rollback;
-     ShowMessage('отменено');
-     Upd_:=0;
+      save_all;
+      {      with Form_kart.OD_kart_pr do --зачем, если в save_all есть это...
+            begin
+              Active:=False;
+              Active:=true;
+            end;}
     end;
-  end;}
+  end
+  else
+  begin
+    if (check_upd = 1) then
+    begin
+      cancel_all;
+    end;
+  end;
+  {  if (Upd_=1) and (msg3('Сохранить изменения?',
+     'Внимание!',
+     MB_YESNO+MB_ICONQUESTION) = IDYES) then
+    begin
+     OD_lg_docs.Session.Commit;
+     ShowMessage('сохранено');
+     Upd_:=0;
+    end
+    else
+    begin
+      if Upd_=1 then
+      begin
+       OD_lg_docs.Session.Rollback;
+       ShowMessage('отменено');
+       Upd_:=0;
+      end;
+    end;}
 end;
 
 procedure TForm_kart_pr.Button3Click(Sender: TObject);
@@ -804,28 +807,30 @@ end;
 
 procedure TForm_kart_pr.OD_lg_prAfterScroll(DataSet: TDataSet);
 begin
-   OD_lg_docs.SetVariable('C_LG_DOCS_ID',
-     OD_lg_pr.FieldByName('C_LG_DOCS_ID').AsInteger);
-   OD_lg_docs.Active:=False;
-   OD_lg_docs.Active:=True;
+  OD_lg_docs.SetVariable('C_LG_DOCS_ID',
+    OD_lg_pr.FieldByName('C_LG_DOCS_ID').AsInteger);
+  OD_lg_docs.Active := False;
+  OD_lg_docs.Active := True;
 end;
 
 procedure TForm_kart_pr.wwDBEdit1Exit(Sender: TObject);
 begin
-    if length(wwDBEdit1.Text)+length(DBEdit1.Text) > 80 then
-   begin
-      ShowMessage('Длина Ф.И.О.+документ льготы слишком большая, уменьшите');
-      wwDBEdit1.SetFocus;
-   end;
+  if length(wwDBEdit1.Text) + length(DBEdit1.Text) > 80 then
+  begin
+    ShowMessage('Длина Ф.И.О.+документ льготы слишком большая, уменьшите');
+    //      wwDBEdit1.SetFocus;
+    Windows.SetFocus(wwDBEdit1.Handle);
+  end;
 end;
 
 procedure TForm_kart_pr.DBEdit1Exit(Sender: TObject);
 begin
-    if length(wwDBEdit1.Text)+length(DBEdit1.Text) > 80 then
-   begin
-      ShowMessage('Длина Ф.И.О.+документ льготы слишком большая, уменьшите');
-      DBEdit1.SetFocus;
-   end;
+  if length(wwDBEdit1.Text) + length(DBEdit1.Text) > 80 then
+  begin
+    ShowMessage('Длина Ф.И.О.+документ льготы слишком большая, уменьшите');
+    //      DBEdit1.SetFocus;
+    Windows.SetFocus(DBEdit1.Handle);
+  end;
 end;
 
 procedure TForm_kart_pr.OD_lg_prBeforeInsert(DataSet: TDataSet);
@@ -840,16 +845,16 @@ end;
 
 procedure TForm_kart_pr.OD_lg_docsAfterScroll(DataSet: TDataSet);
 begin
-   if OD_lg_docs.FieldByName('is_cancelled').AsInteger = 0 then
-     Label3.Visible:=True
-     else
-     Label3.Visible:=False;
+  if OD_lg_docs.FieldByName('is_cancelled').AsInteger = 0 then
+    Label3.Visible := True
+  else
+    Label3.Visible := False;
 
 end;
 
-procedure TForm_kart_pr.CMDialogKey(Var Msg: TWMKey);
+procedure TForm_kart_pr.CMDialogKey(var Msg: TWMKey);
 begin
-// Замена кода TAB на Enter 
+  // Замена кода TAB на Enter
   if not (ActiveControl is TButton) then
     if Msg.Charcode = 13 then
       Msg.Charcode := 9;
@@ -859,75 +864,77 @@ end;
 procedure TForm_kart_pr.wwDBLookupCombo2CloseUp(Sender: TObject;
   LookupTable, FillTable: TDataSet; modified: Boolean);
 begin
-{  OD_c_states.FieldByName('FK_STATUS').AsInteger:=
-    OD_c_status_pr.FieldByName('ID').AsInteger;
- }
+  {  OD_c_states.FieldByName('FK_STATUS').AsInteger:=
+      OD_c_status_pr.FieldByName('ID').AsInteger;
+   }
 end;
 
 procedure TForm_kart_pr.wwDBLookupCombo2Exit(Sender: TObject);
 begin
-{  if OD_c_status_pr.SearchRecord('NAME', wwDBLookupCombo2.Text,
-    [srFromBeginning]) <> true then
-  begin
-    msg2('Данный статус не найден!', 'Ошибка', MB_OK+MB_ICONSTOP);
-  end;
- }
+  {  if OD_c_status_pr.SearchRecord('NAME', wwDBLookupCombo2.Text,
+      [srFromBeginning]) <> true then
+    begin
+      msg2('Данный статус не найден!', 'Ошибка', MB_OK+MB_ICONSTOP);
+    end;
+   }
 end;
 
 procedure TForm_kart_pr.wwDBLookupCombo3CloseUp(Sender: TObject;
   LookupTable, FillTable: TDataSet; modified: Boolean);
 begin
-{  OD_c_states2.FieldByName('FK_STATUS').AsInteger:=
-    OD_c_status_pr2.FieldByName('ID').AsInteger;
- }
+  {  OD_c_states2.FieldByName('FK_STATUS').AsInteger:=
+      OD_c_status_pr2.FieldByName('ID').AsInteger;
+   }
 end;
 
 procedure TForm_kart_pr.wwDBLookupCombo3Exit(Sender: TObject);
 begin
-{  if OD_c_status_pr2.SearchRecord('NAME', wwDBLookupCombo3.Text,
-    [srFromBeginning]) <> true then
-  begin
-    msg2('Данный статус не найден!', 'Ошибка', MB_OK+MB_ICONSTOP);
-  end;
- }
+  {  if OD_c_status_pr2.SearchRecord('NAME', wwDBLookupCombo3.Text,
+      [srFromBeginning]) <> true then
+    begin
+      msg2('Данный статус не найден!', 'Ошибка', MB_OK+MB_ICONSTOP);
+    end;
+   }
 end;
 
 procedure TForm_kart_pr.wwDBNavigator1DeleteClick(Sender: TObject);
 begin
-{  if msg3('Удалить данный статус?',
-   'Внимание!',
-   MB_YESNO+MB_ICONQUESTION) <> IDYES then
-  begin
-    Abort;
-  end;}
+  {  if msg3('Удалить данный статус?',
+     'Внимание!',
+     MB_YESNO+MB_ICONQUESTION) <> IDYES then
+    begin
+      Abort;
+    end;}
 end;
 
 procedure TForm_kart_pr.wwNavButton6Click(Sender: TObject);
 begin
-{  if msg3('Удалить данный статус?',
-   'Внимание!',
-   MB_YESNO+MB_ICONQUESTION) <> IDYES then
-  begin
-    Abort;
-  end;}
+  {  if msg3('Удалить данный статус?',
+     'Внимание!',
+     MB_YESNO+MB_ICONQUESTION) <> IDYES then
+    begin
+      Abort;
+    end;}
 end;
 
 procedure TForm_kart_pr.OD_c_statesBeforePost(DataSet: TDataSet);
 begin
- if OD_c_states.FieldByName('FK_STATUS').AsString = '' then
- begin
-    msg2('Поле статуса должно быть заполнено!', 'Внимание!', MB_OK+MB_ICONSTOP);
+  if OD_c_states.FieldByName('FK_STATUS').AsString = '' then
+  begin
+    msg2('Поле статуса должно быть заполнено!', 'Внимание!', MB_OK +
+      MB_ICONSTOP);
     abort;
- end;
+  end;
 end;
 
 procedure TForm_kart_pr.OD_c_states2BeforePost(DataSet: TDataSet);
 begin
- if OD_c_states2.FieldByName('FK_STATUS').AsString = '' then
- begin
-    msg2('Поле статуса должно быть заполнено!', 'Внимание!', MB_OK+MB_ICONSTOP);
+  if OD_c_states2.FieldByName('FK_STATUS').AsString = '' then
+  begin
+    msg2('Поле статуса должно быть заполнено!', 'Внимание!', MB_OK +
+      MB_ICONSTOP);
     abort;
- end;
+  end;
 
 end;
 
@@ -942,12 +949,14 @@ var
 begin
   if not (Form_kart.OD_kart_pr.State in [dsBrowse]) then
     Form_kart.OD_kart_pr.Post;
-  if (Form_kart.OD_kart_pr.UpdatesPending = True) and (msg3('Сохранить карточку проживающего?',
-     'Подверждение', MB_YESNO+MB_ICONQUESTION) = IDYES) then
+  if (Form_kart.OD_kart_pr.UpdatesPending = True) and
+    (msg3('Сохранить карточку проживающего?',
+    'Подверждение', MB_YESNO + MB_ICONQUESTION) = IDYES) then
   begin
     //Сохранить c коммитом (без коммита нельзя - произойдет исключение потом)
-    err_:=DataModule1.OraclePackage1.CallStringFunction(
-     'scott.UTILS.tst_krt', [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, 1]);
+    err_ := DataModule1.OraclePackage1.CallStringFunction(
+      'scott.UTILS.tst_krt',
+        [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, 1]);
     Form_kart.OD_kart_pr.Session.ApplyUpdates([Form_kart.OD_kart_pr], True);
   end
   else if (Form_kart.OD_kart_pr.UpdatesPending = True) then
@@ -959,57 +968,59 @@ end;
 
 procedure TForm_kart_pr.OD_c_statesBeforeEdit(DataSet: TDataSet);
 begin
-   // save_krt_pr;
+  // save_krt_pr;
 end;
 
 procedure TForm_kart_pr.OD_c_states2BeforeEdit(DataSet: TDataSet);
 begin
-// save_krt_pr;
+  // save_krt_pr;
 
 end;
 
 procedure TForm_kart_pr.OD_c_states2BeforeInsert(DataSet: TDataSet);
 begin
-  if Form_kart.OD_kart_pr.State=dsInsert then
+  if Form_kart.OD_kart_pr.State = dsInsert then
   begin
-    if msg3('Сохранить карточку нового проживающего?', 'Подтверждение', MB_YESNO+MB_ICONQUESTION) =
-     ID_YES then
+    if msg3('Сохранить карточку нового проживающего?', 'Подтверждение', MB_YESNO
+      + MB_ICONQUESTION) =
+      ID_YES then
     begin
-     save_all;
+      save_all;
     end
-     else
-     Abort;
+    else
+      Abort;
   end;
 
-// save_krt_pr;
+  // save_krt_pr;
 
 end;
 
 procedure TForm_kart_pr.OD_c_states2BeforeDelete(DataSet: TDataSet);
 begin
-// save_krt_pr;
+  // save_krt_pr;
 
 end;
 
 procedure TForm_kart_pr.OD_c_statesBeforeDelete(DataSet: TDataSet);
 begin
-// save_krt_pr;
+  // save_krt_pr;
 
 end;
 
 procedure TForm_kart_pr.OD_c_statesBeforeInsert(DataSet: TDataSet);
 begin
-  if Form_kart.OD_kart_pr.State=dsInsert then
+  if Form_kart.OD_kart_pr.State = dsInsert then
   begin
-    if msg3('Сохранить карточку нового проживающего?', 'Подтверждение', MB_YESNO+MB_ICONQUESTION) =
-     ID_YES then
+    if msg3('Сохранить карточку нового проживающего?', 'Подтверждение', MB_YESNO
+      + MB_ICONQUESTION) =
+      ID_YES then
     begin
-     save_all;
+      save_all;
     end
-     else
-     Abort;
+    else
+      Abort;
   end;
-// save_krt_pr;
+  // save_krt_pr;
 
 end;
 
@@ -1019,7 +1030,7 @@ begin
   add_prop('Страна', DBLookupComboboxEh6);
 end;
 
-procedure TForm_kart_pr.add_prop(tp_: String; ds: TDBLookupComboboxEh);
+procedure TForm_kart_pr.add_prop(tp_: string; ds: TDBLookupComboboxEh);
 begin
   //Выбор значения реквизита из списка/добавление нового
   Application.CreateForm(TForm_add_prop, Form_add_prop);
@@ -1027,9 +1038,9 @@ begin
   Form_add_prop.ShowModal;
   if sel_id_ <> -1 then
   begin
-    ds.ListSource.DataSet.Active:=false;
-    ds.ListSource.DataSet.Active:=true;
-    ds.KeyValue:=sel_id_;
+    ds.ListSource.DataSet.Active := false;
+    ds.ListSource.DataSet.Active := true;
+    ds.KeyValue := sel_id_;
   end;
 end;
 
@@ -1109,3 +1120,4 @@ begin
 end;
 
 end.
+

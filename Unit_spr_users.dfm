@@ -387,7 +387,7 @@ object Form_spr_users: TForm_spr_users
     end
     object OD_t_orgREU: TStringField
       FieldName = 'REU'
-      Size = 3
+      Size = 1
     end
     object OD_t_orgNAME_ORG: TStringField
       FieldName = 'NAME_ORG'

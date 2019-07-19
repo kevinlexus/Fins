@@ -1,6 +1,6 @@
 object Form_spr_sprorg: TForm_spr_sprorg
-  Left = 430
-  Top = 299
+  Left = 436
+  Top = 258
   Width = 1311
   Height = 720
   BorderIcons = [biSystemMenu, biMinimize]
@@ -291,6 +291,12 @@ object Form_spr_sprorg: TForm_spr_sprorg
       object cxGrid1DBTableView1ADR: TcxGridDBColumn
         Caption = #1040#1076#1088#1077#1089' '#1086#1088#1075'.'
         DataBinding.FieldName = 'ADR'
+        Width = 125
+      end
+      object cxGrid1DBTableView1ADR_CASH: TcxGridDBColumn
+        Caption = #1040#1076#1088#1077#1089' '#1050#1072#1089#1089#1099
+        DataBinding.FieldName = 'ADR_CASH'
+        Width = 121
       end
       object cxGrid1DBTableView1INN: TcxGridDBColumn
         Caption = #1048#1085#1085
@@ -748,13 +754,15 @@ object Form_spr_sprorg: TForm_spr_sprorg
       
         ' s.fk_org2, s.bank_cd, s.adr_www, s.email, s.head_name, s.post_i' +
         'ndx, s.r_sch_addit, s.code_deb, s.dolg_name, '
-      ' s.fk_bill_var, s.bank_fname, s.grp, s.r_sch_gis, s.rowid'
+      
+        ' s.fk_bill_var, s.bank_fname, s.grp, s.r_sch_gis, s.adr_cash, s.' +
+        'rowid'
       '  from scott.t_org s'
       '  order by s.reu, s.name')
     Optimize = False
     OracleDictionary.UseMessageTable = True
     QBEDefinition.QBEFieldDefs = {
-      0400000030000000020000004944010000000000020000004344010000000000
+      0400000031000000020000004944010000000000020000004344010000000000
       08000000464B5F4F52475450010000000000040000004E414D45010000000000
       030000004E505001000000000001000000560100000000000900000050415245
       4E545F4944010000000000030000005245550100000000000500000054524553
@@ -779,10 +787,10 @@ object Form_spr_sprorg: TForm_spr_sprorg
       01000000000008000000434F44455F44454201000000000009000000444F4C47
       5F4E414D450100000000000B000000464B5F42494C4C5F564152010000000000
       0A00000042414E4B5F464E414D45010000000000030000004752500100000000
-      0009000000525F5343485F474953010000000000}
+      0009000000525F5343485F474953010000000000080000004144525F43415348
+      010000000000}
     RefreshOptions = [roAfterInsert, roAfterUpdate]
     Session = DataModule1.OracleSession1
-    Active = True
     BeforePost = OD_sprorgBeforePost
     AfterPost = OD_sprorgAfterPost
     AfterScroll = OD_sprorgAfterScroll
@@ -1078,6 +1086,10 @@ object Form_spr_sprorg: TForm_spr_sprorg
     end
     object OD_sprorgR_SCH_GIS: TStringField
       FieldName = 'R_SCH_GIS'
+    end
+    object OD_sprorgADR_CASH: TStringField
+      FieldName = 'ADR_CASH'
+      Size = 100
     end
   end
   object OD_t_orgp2: TOracleDataSet

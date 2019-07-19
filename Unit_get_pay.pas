@@ -4,28 +4,44 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, OracleData, Grids, DBGridEh, StdCtrls, Mask, DBCtrlsEh,
-  wwdbedit, Wwdbigrd, Wwdbgrid, DBSumLst, Buttons, Wwdotdot,
-  Wwdbcomb, Oracle, DBLookupEh, Utils, wwcheckbox, Menus, ComCtrls,
-  wwdbdatetimepicker, cxGraphics, cxControls, cxLookAndFeels,
-  cxLookAndFeelPainters, cxStyles, dxSkinsCore, dxSkinsDefaultPainters,
-  dxSkinscxPCPainter, cxCustomData, cxFilter, cxData, cxDataStorage,
-  cxEdit, cxDBData, cxGridLevel, cxGridCustomTableView, cxGridTableView,
+  Dialogs, DB, OracleData, DBGridEh, StdCtrls, Mask, DBCtrlsEh,
+  wwdbedit, Buttons, Wwdotdot,
+  Wwdbcomb, Oracle, DBLookupEh, Utils, wwcheckbox, Menus, 
+  wwdbdatetimepicker, cxControls, 
+  
+  
+  cxGridLevel, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, cxClasses, cxGridCustomView, cxGridCardView, cxGrid,
-  cxPropertiesStore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint,
-  dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
-  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
-  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
-  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
-  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
-  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
-  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
-  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  cxPropertiesStore, 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  cxGridCustomLayoutView, ExtCtrls, cxGraphics, cxLookAndFeels,
+  cxLookAndFeelPainters, cxStyles, dxSkinsCore, dxSkinBlack, dxSkinBlue,
+  dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom,
+  dxSkinDarkSide, dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle,
+  dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary,
+  dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin,
+  dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
   dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinPumpkin,
   dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
   dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
-  dxSkinTheAsphaltWorld, dxSkinValentine, dxSkinVS2010, dxSkinWhiteprint,
-  dxSkinXmas2008Blue, cxNavigator, cxGridCustomLayoutView, ExtCtrls;
+  dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter,
+  cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
+  cxDBData;
 
 type
   TForm_get_pay = class(TForm)
@@ -220,7 +236,8 @@ begin
   wwDBEdit3.Text:='';
   wwDBEdit4.Text:='';
   wwDBDateTimePicker1.Text:='';
-  wwDBEdit3.SetFocus;
+//  wwDBEdit3.SetFocus;
+Windows.SetFocus(wwDBEdit3.Handle);
 
   if (enter_type_ = 1) and (chk1.Checked) then
   begin
@@ -238,6 +255,7 @@ end;
 procedure TForm_get_pay.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
+  cxprprtstr1.StoreTo(True);
   Action:=caFree;
 end;
 
@@ -259,7 +277,8 @@ begin
   tmr1.Enabled:=true;
   if Key = #13 then
   begin
-    wwDBEdit1.SetFocus;
+//    wwDBEdit1.SetFocus;
+Windows.SetFocus(wwDBEdit1.Handle);
     Edit1.Text:=DataModule1.OraclePackage1.CallStringFunction(
       'scott.UTILS.GET_ADR_BY_LSK', [wwDBEdit3.Text]);
   end;
@@ -275,12 +294,14 @@ begin
      (OD_typespay.FieldByName('CD').AsString = 'Комплексный платеж') then
     begin
       if Key = #13 then
-        Button1.SetFocus;
+//        Button1.SetFocus;
+Windows.SetFocus(Button1.Handle)
     end
     else
     begin
       if Key = #13 then
-        wwDBEdit2.SetFocus;
+//        wwDBEdit2.SetFocus;
+Windows.SetFocus(wwDBEdit2.Handle);
     end;
   if RetKey(Key) then
     Key:= '.';
@@ -293,7 +314,8 @@ begin
   tmr1.Enabled:=true;
 
   if (Key = #13) and (DBLookupComboboxEh2.Enabled = true) then
-    DBLookupComboboxEh2.SetFocus
+//    DBLookupComboboxEh2.SetFocus
+      Windows.SetFocus(DBLookupComboboxEh2.Handle)
   else if (Key = #13) and (DBLookupComboboxEh2.Enabled = false) then
     Button1.SetFocus;
 
@@ -398,7 +420,8 @@ procedure TForm_get_pay.DBLookupComboboxEh2KeyPress(Sender: TObject;
   var Key: Char);
 begin
   if Key = #13 then
-    Button1.SetFocus;
+//    Button1.SetFocus;
+Windows.SetFocus(Button1.Handle);
 end;
 
 procedure TForm_get_pay.selTpPay;

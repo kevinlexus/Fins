@@ -1,10 +1,10 @@
 object Form_get_pay_nal: TForm_get_pay_nal
-  Left = 1168
-  Top = 206
-  Width = 652
-  Height = 414
+  Left = 247
+  Top = 547
+  Width = 635
+  Height = 404
   BorderIcons = [biSystemMenu, biMinimize]
-  Caption = #1042#1074#1086#1076' '#1086#1087#1083#1072#1090#1099', F12 - '#1089#1095#1077#1090#1095#1080#1082#1080
+  Caption = #1042#1074#1086#1076' '#1086#1087#1083#1072#1090#1099
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -95,8 +95,8 @@ object Form_get_pay_nal: TForm_get_pay_nal
   TextHeight = 13
   object GroupBox1: TGroupBox
     Left = 0
-    Top = 0
-    Width = 636
+    Top = 25
+    Width = 619
     Height = 41
     Align = alTop
     TabOrder = 0
@@ -162,13 +162,13 @@ object Form_get_pay_nal: TForm_get_pay_nal
   end
   object GroupBox2: TGroupBox
     Left = 0
-    Top = 333
-    Width = 636
+    Top = 303
+    Width = 619
     Height = 42
     Align = alBottom
-    TabOrder = 2
+    TabOrder = 1
     DesignSize = (
-      636
+      619
       42)
     object Label3: TLabel
       Left = 162
@@ -265,7 +265,7 @@ object Form_get_pay_nal: TForm_get_pay_nal
       OnKeyPress = wwDBEdit4KeyPress
     end
     object Button1: TButton
-      Left = 544
+      Left = 527
       Top = 11
       Width = 80
       Height = 25
@@ -281,88 +281,214 @@ object Form_get_pay_nal: TForm_get_pay_nal
       OnClick = Button1Click
     end
   end
-  object DBGridEh1: TDBGridEh
+  object StatusBar1: TStatusBar
     Left = 0
-    Top = 41
-    Width = 636
-    Height = 292
+    Top = 345
+    Width = 619
+    Height = 20
+    Panels = <>
+    OnDblClick = StatusBar1DblClick
+  end
+  object ToolBar1: TToolBar
+    Left = 0
+    Top = 0
+    Width = 619
+    Height = 25
+    AutoSize = True
+    ButtonHeight = 21
+    ButtonWidth = 74
+    Caption = 'ToolBar1'
+    ParentShowHint = False
+    ShowCaptions = True
+    ShowHint = True
+    TabOrder = 3
+    object ToolButton3: TToolButton
+      Left = 0
+      Top = 2
+      Caption = 'F10-'#1055#1086#1080#1089#1082
+      ImageIndex = 1
+    end
+    object ToolButton2: TToolButton
+      Left = 74
+      Top = 2
+      Caption = 'F11-'#1047#1072#1076#1086#1083#1078'.'
+      ImageIndex = 1
+      OnClick = ToolButton2Click
+    end
+    object ToolButton1: TToolButton
+      Left = 148
+      Top = 2
+      Caption = 'F12-'#1057#1095#1077#1090#1095#1080#1082#1080
+      ImageIndex = 0
+      OnClick = ToolButton1Click
+    end
+  end
+  object PageControl1: TPageControl
+    Left = 0
+    Top = 66
+    Width = 619
+    Height = 237
+    ActivePage = TabSheet1
     Align = alClient
-    ColumnDefValues.AlwaysShowEditButton = True
-    ColumnDefValues.AutoDropDown = True
-    DataSource = DS_c_kwtp_temp
-    Flat = False
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -15
-    Font.Name = 'MS Sans Serif'
-    Font.Style = []
-    FooterColor = clWindow
-    FooterFont.Charset = DEFAULT_CHARSET
-    FooterFont.Color = clWindowText
-    FooterFont.Height = -11
-    FooterFont.Name = 'MS Sans Serif'
-    FooterFont.Style = []
-    FooterRowCount = 1
-    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghEnterAsTab, dghDialogFind]
-    ParentFont = False
-    PopupMenu = PopupMenu1
-    SumList.Active = True
-    TabOrder = 1
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -15
-    TitleFont.Name = 'MS Sans Serif'
-    TitleFont.Style = []
-    OnColEnter = DBGridEh1ColEnter
-    OnColExit = DBGridEh1ColExit
-    OnKeyDown = DBGridEh1KeyDown
-    Columns = <
-      item
-        EditButtons = <>
-        FieldName = 'oper_name'
-        Footers = <>
+    TabOrder = 4
+    object TabSheet1: TTabSheet
+      object DBGridEh1: TDBGridEh
+        Left = 0
+        Top = 0
+        Width = 611
+        Height = 209
+        Align = alClient
+        ColumnDefValues.AlwaysShowEditButton = True
+        ColumnDefValues.AutoDropDown = True
+        DataSource = DS_c_kwtp_temp
+        Flat = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -15
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        FooterColor = clWindow
+        FooterFont.Charset = DEFAULT_CHARSET
+        FooterFont.Color = clWindowText
+        FooterFont.Height = -11
+        FooterFont.Name = 'MS Sans Serif'
+        FooterFont.Style = []
+        FooterRowCount = 1
+        OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghEnterAsTab, dghDialogFind]
+        ParentFont = False
+        PopupMenu = PopupMenu1
+        SumList.Active = True
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -15
+        TitleFont.Name = 'MS Sans Serif'
+        TitleFont.Style = []
+        OnColEnter = DBGridEh1ColEnter
+        OnColExit = DBGridEh1ColExit
+        OnKeyDown = DBGridEh1KeyDown
+        Columns = <
+          item
+            EditButtons = <>
+            FieldName = 'oper_name'
+            Footers = <>
+          end
+          item
+            EditButtons = <>
+            FieldName = 'SUMMA'
+            Footer.FieldName = 'SUMMA'
+            Footer.ValueType = fvtSum
+            Footers = <>
+          end
+          item
+            ButtonStyle = cbsEllipsis
+            EditButtons = <>
+            FieldName = 'PENYA'
+            Footer.ValueType = fvtSum
+            Footers = <>
+            Title.Caption = #1055#1077#1085#1103
+          end
+          item
+            EditButtons = <>
+            FieldName = 'ITOG'
+            Footer.ValueType = fvtSum
+            Footers = <>
+            ReadOnly = True
+            Title.Caption = #1048#1090#1086#1075#1086
+          end
+          item
+            EditButtons = <>
+            FieldName = 'CNT_SCH0'
+            Footers = <>
+            ReadOnly = True
+            Width = 81
+          end
+          item
+            EditButtons = <>
+            FieldName = 'CNT_SCH'
+            Footers = <>
+            ReadOnly = True
+            Width = 77
+          end>
       end
-      item
-        EditButtons = <>
-        FieldName = 'SUMMA'
-        Footer.FieldName = 'SUMMA'
-        Footer.ValueType = fvtSum
-        Footers = <>
-        OnEditButtonClick = DBGridEh1Columns2EditButtonClick
-        OnEditButtonDown = DBGridEh1Columns2EditButtonDown
+    end
+    object TabSheet2: TTabSheet
+      Caption = '2'
+      ImageIndex = 1
+      object cxGrid1: TcxGrid
+        Left = 0
+        Top = 0
+        Width = 611
+        Height = 209
+        Align = alClient
+        TabOrder = 0
+        object cxGrid1DBTableView1: TcxGridDBTableView
+          Navigator.Buttons.CustomButtons = <>
+          DataController.DataSource = DS_chargepay
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <
+            item
+              Kind = skSum
+              Column = cxGrid1DBTableView1SUMMA
+            end
+            item
+              Kind = skSum
+              Column = cxGrid1DBTableView1SUMMA2
+            end
+            item
+              Kind = skSum
+              Column = cxGrid1DBTableView1PENYA
+            end
+            item
+              Kind = skSum
+              Column = cxGrid1DBTableView1PENYA2
+            end>
+          DataController.Summary.SummaryGroups = <>
+          OptionsView.Footer = True
+          OptionsView.GroupByBox = False
+          OptionsView.GroupFooterMultiSummaries = True
+          object cxGrid1DBTableView1SUMMA: TcxGridDBColumn
+            DataBinding.FieldName = 'SUMMA'
+          end
+          object cxGrid1DBTableView1SUMMA2: TcxGridDBColumn
+            DataBinding.FieldName = 'SUMMA2'
+          end
+          object cxGrid1DBTableView1PENYA: TcxGridDBColumn
+            DataBinding.FieldName = 'PENYA'
+          end
+          object cxGrid1DBTableView1PENYA2: TcxGridDBColumn
+            DataBinding.FieldName = 'PENYA2'
+          end
+          object cxGrid1DBTableView1MG: TcxGridDBColumn
+            DataBinding.FieldName = 'MG'
+          end
+          object cxGrid1DBTableView1CHARGE: TcxGridDBColumn
+            DataBinding.FieldName = 'CHARGE'
+          end
+          object cxGrid1DBTableView1PAYMENT: TcxGridDBColumn
+            DataBinding.FieldName = 'PAYMENT'
+          end
+          object cxGrid1DBTableView1SAL: TcxGridDBColumn
+            DataBinding.FieldName = 'SAL'
+          end
+          object cxGrid1DBTableView1ITOG: TcxGridDBColumn
+            DataBinding.FieldName = 'ITOG'
+          end
+          object cxGrid1DBTableView1LSK: TcxGridDBColumn
+            DataBinding.FieldName = 'LSK'
+          end
+          object cxGrid1DBTableView1LSK_TP: TcxGridDBColumn
+            DataBinding.FieldName = 'LSK_TP'
+          end
+          object cxGrid1DBTableView1USL_NAME_SHORT: TcxGridDBColumn
+            DataBinding.FieldName = 'USL_NAME_SHORT'
+          end
+        end
+        object cxGrid1Level1: TcxGridLevel
+          GridView = cxGrid1DBTableView1
+        end
       end
-      item
-        ButtonStyle = cbsEllipsis
-        EditButtons = <>
-        FieldName = 'PENYA'
-        Footer.ValueType = fvtSum
-        Footers = <>
-        Title.Caption = #1055#1077#1085#1103
-        OnEditButtonClick = DBGridEh1Columns2EditButtonClick
-        OnEditButtonDown = DBGridEh1Columns2EditButtonDown
-      end
-      item
-        EditButtons = <>
-        FieldName = 'ITOG'
-        Footer.ValueType = fvtSum
-        Footers = <>
-        ReadOnly = True
-        Title.Caption = #1048#1090#1086#1075#1086
-      end
-      item
-        EditButtons = <>
-        FieldName = 'CNT_SCH0'
-        Footers = <>
-        ReadOnly = True
-        Width = 81
-      end
-      item
-        EditButtons = <>
-        FieldName = 'CNT_SCH'
-        Footers = <>
-        ReadOnly = True
-        Width = 77
-      end>
+    end
   end
   object OD_c_kwtp_temp: TOracleDataSet
     SQL.Strings = (
@@ -534,21 +660,23 @@ object Form_get_pay_nal: TForm_get_pay_nal
   end
   object OD_chargepay: TOracleDataSet
     SQL.Strings = (
+      'select t.rowid, t.lsk, t.lsk_tp, t.mg, t.charge, t.payment, '
       
-        'select t.rowid, t.mg, t.charge, t.payment, t.dolg, t.summa, t.pe' +
-        'nya, t.sal, t.itog'
+        't.summa, t.penya, t.summa2, t.penya2, t.sal, t.itog, t.usl_name_' +
+        'short'
       '      from scott.c_kwtp_temp_dolg t'
-      '      order by t.mg')
+      '      order by t.mg, t.lsk_tp')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      040000000800000006000000434841524745010000000000070000005041594D
-      454E5401000000000004000000444F4C47010000000000020000004D47010000
-      0000000500000053554D4D410100000000000300000053414C01000000000005
-      00000050454E59410100000000000400000049544F47010000000000}
-    RefreshOptions = [roBeforeEdit]
+      040000000C00000006000000434841524745010000000000070000005041594D
+      454E54010000000000020000004D470100000000000500000053554D4D410100
+      000000000300000053414C0100000000000500000050454E5941010000000000
+      0400000049544F47010000000000030000004C534B010000000000060000004C
+      534B5F54500100000000000E00000055534C5F4E414D455F53484F5254010000
+      0000000600000053554D4D41320100000000000600000050454E594132010000
+      000000}
     CommitOnPost = False
     Session = DataModule1.OracleSession1
-    Active = True
     BeforeInsert = OD_chargepayBeforeInsert
     BeforePost = OD_chargepayBeforePost
     Left = 40
@@ -578,13 +706,6 @@ object Form_get_pay_nal: TForm_get_pay_nal
       DisplayFormat = '### ### ### ##0.00'
       EditFormat = '###########0.00'
     end
-    object OD_chargepayDOLG: TFloatField
-      FieldKind = fkInternalCalc
-      FieldName = 'DOLG'
-      ReadOnly = True
-      DisplayFormat = '### ### ### ##0.00'
-      EditFormat = '###########0.00'
-    end
     object OD_chargepaySAL: TFloatField
       FieldName = 'SAL'
       DisplayFormat = '### ### ### ##0.00'
@@ -600,6 +721,24 @@ object Form_get_pay_nal: TForm_get_pay_nal
       DisplayFormat = '### ### ### ##0.00'
       EditFormat = '###########0.00'
     end
+    object OD_chargepayLSK: TStringField
+      FieldName = 'LSK'
+      Size = 8
+    end
+    object OD_chargepayLSK_TP: TStringField
+      FieldName = 'LSK_TP'
+      Size = 96
+    end
+    object OD_chargepayUSL_NAME_SHORT: TStringField
+      FieldName = 'USL_NAME_SHORT'
+      Size = 50
+    end
+    object OD_chargepaySUMMA2: TFloatField
+      FieldName = 'SUMMA2'
+    end
+    object OD_chargepayPENYA2: TFloatField
+      FieldName = 'PENYA2'
+    end
   end
   object DS_chargepay: TDataSource
     DataSet = OD_chargepay
@@ -609,8 +748,8 @@ object Form_get_pay_nal: TForm_get_pay_nal
   object OD_c_kwtp: TOracleDataSet
     SQL.Strings = (
       
-        'select t.lsk, k.fio, t2.name||'#39', '#39'||s.name||'#39', '#39'||NVL(LTRIM(k.nd' +
-        ','#39'0'#39'),'#39'0'#39')||'#39'-'#39'||NVL(LTRIM(k.kw,'#39'0'#39'),'#39'0'#39') as adr,'
+        'select t.lsk, k.k_lsk_id, k.fio, t2.name||'#39', '#39'||s.name||'#39', '#39'||NV' +
+        'L(LTRIM(k.nd,'#39'0'#39'),'#39'0'#39')||'#39'-'#39'||NVL(LTRIM(k.kw,'#39'0'#39'),'#39'0'#39') as adr,'
       
         '  scott.utils.get_sum_str_2(nvl(t.summa,0)+nvl(t.penya,0)) as su' +
         'mstr,'
@@ -622,17 +761,20 @@ object Form_get_pay_nal: TForm_get_pay_nal
         'k.phw,k.pgw,k.pel, k.k_fam||'#39' '#39'||substr(k.k_im,1,1)||'#39'. '#39'||subst' +
         'r(k.k_ot,1,1)||'#39'.'#39' as fio_owner,'
       
-        'c.name as name_org, c.phone as phone, c.adr as adr_org, c.inn, c' +
-        '.okpo, c.kpp, c2.name as name_org2, c2.inn as inn2, c2.phone as ' +
-        'phone2, decode(tp2.cd,'#39'LSK_TP_MAIN'#39', 1, '#39'LSK_TP_ADDIT'#39', 2) as de' +
-        'p'
+        'c.name as name_org, c.phone as phone, c.adr as adr_org, c.adr_ca' +
+        'sh, '
+      
+        'c.inn, c.okpo, c.kpp, c2.name as name_org2, c2.inn as inn2, c2.p' +
+        'hone as phone2, decode(tp2.cd,'#39'LSK_TP_MAIN'#39', 1, '#39'LSK_TP_ADDIT'#39', ' +
+        '2) as dep,'
+      'm.cash_num'
       
         'from scott.c_kwtp t, scott.kart k, scott.spul s, scott.t_org c, ' +
         'scott.t_org c2, scott.t_org t2, scott.t_org_tp tp, scott.v_lsk_t' +
-        'p tp2'
+        'p tp2, scott.c_comps m'
       
         'where t.id=:id and t.lsk=k.lsk and k.kul=s.id and c.id=scott.ini' +
-        't.get_org_nkom'
+        't.get_org_nkom and m.nkom=scott.init.get_nkom'
       'and k.reu=c2.reu'
       'and t2.fk_orgtp=tp.id and tp.cd='#39#1043#1086#1088#1086#1076#39
       'and k.fk_tp=tp2.id(+)'
@@ -640,7 +782,7 @@ object Form_get_pay_nal: TForm_get_pay_nal
     Optimize = False
     Variables.Data = {0300000001000000030000003A4944030000000400000053CE000000000000}
     QBEDefinition.QBEFieldDefs = {
-      040000001D000000030000004C534B0100000000000500000053554D4D410100
+      0400000020000000030000004C534B0100000000000500000053554D4D410100
       00000000040000004F504552010000000000040000004E494E4B010000000000
       040000004E4B4F4D010000000000040000004454454B01000000000007000000
       4441545F494E4B010000000000050000004E4B56495401000000000002000000
@@ -653,121 +795,13 @@ object Form_get_pay_nal: TForm_get_pay_nal
       47570100000000000300000050454C010000000000090000004E414D455F4F52
       473201000000000004000000494E4E320100000000000600000050484F4E4532
       0100000000000500000050484F4E450100000000000300000044455001000000
-      00000900000046494F5F4F574E4552010000000000}
+      00000900000046494F5F4F574E4552010000000000080000004B5F4C534B5F49
+      4401000000000008000000434153485F4E554D01000000000008000000414452
+      5F43415348010000000000}
     Session = DataModule1.OracleSession1
+    Active = True
     Left = 216
     Top = 152
-    object OD_c_kwtpLSK: TStringField
-      FieldName = 'LSK'
-      Required = True
-      Size = 8
-    end
-    object OD_c_kwtpFIO: TStringField
-      FieldName = 'FIO'
-      Size = 50
-    end
-    object OD_c_kwtpADR: TStringField
-      FieldName = 'ADR'
-      Size = 41
-    end
-    object OD_c_kwtpSUMSTR: TStringField
-      FieldName = 'SUMSTR'
-      Size = 4000
-    end
-    object OD_c_kwtpSUMMA: TFloatField
-      FieldName = 'SUMMA'
-    end
-    object OD_c_kwtpOPER: TStringField
-      DisplayWidth = 3
-      FieldName = 'OPER'
-      Required = True
-      Size = 3
-    end
-    object OD_c_kwtpFIO_KASS: TStringField
-      FieldName = 'FIO_KASS'
-      Size = 4000
-    end
-    object OD_c_kwtpNINK: TFloatField
-      FieldName = 'NINK'
-    end
-    object OD_c_kwtpNKOM: TStringField
-      FieldName = 'NKOM'
-      Required = True
-      Size = 3
-    end
-    object OD_c_kwtpDTEK: TDateTimeField
-      FieldName = 'DTEK'
-      Required = True
-    end
-    object OD_c_kwtpNKVIT: TFloatField
-      FieldName = 'NKVIT'
-    end
-    object OD_c_kwtpDAT_INK: TDateTimeField
-      FieldName = 'DAT_INK'
-    end
-    object OD_c_kwtpTS: TDateTimeField
-      FieldName = 'TS'
-    end
-    object OD_c_kwtpID: TFloatField
-      FieldName = 'ID'
-      Required = True
-    end
-    object OD_c_kwtpISCORRECT: TFloatField
-      FieldName = 'ISCORRECT'
-    end
-    object OD_c_kwtpNAME_ORG: TStringField
-      FieldName = 'NAME_ORG'
-      Size = 50
-    end
-    object OD_c_kwtpADR_ORG: TStringField
-      FieldName = 'ADR_ORG'
-      Size = 100
-    end
-    object OD_c_kwtpINN: TStringField
-      FieldName = 'INN'
-      Size = 12
-    end
-    object OD_c_kwtpOKPO: TStringField
-      FieldName = 'OKPO'
-      Size = 8
-    end
-    object OD_c_kwtpKPP: TStringField
-      FieldName = 'KPP'
-      Size = 12
-    end
-    object OD_c_kwtpPHW: TFloatField
-      FieldName = 'PHW'
-    end
-    object OD_c_kwtpPGW: TFloatField
-      FieldName = 'PGW'
-    end
-    object OD_c_kwtpPEL: TFloatField
-      FieldName = 'PEL'
-    end
-    object OD_c_kwtpNAME_ORG2: TStringField
-      FieldName = 'NAME_ORG2'
-      Required = True
-      Size = 64
-    end
-    object OD_c_kwtpINN2: TStringField
-      FieldName = 'INN2'
-      Size = 12
-    end
-    object OD_c_kwtpPHONE: TStringField
-      FieldName = 'PHONE'
-      Size = 15
-    end
-    object OD_c_kwtpPHONE2: TStringField
-      FieldName = 'PHONE2'
-      Size = 15
-    end
-    object OD_c_kwtpDEP: TFloatField
-      FieldName = 'DEP'
-    end
-    object OD_c_kwtpFIO_OWNER: TStringField
-      FieldName = 'FIO_OWNER'
-      Size = 31
-    end
   end
   object DS_c_kwtp: TDataSource
     DataSet = OD_c_kwtp
@@ -783,7 +817,7 @@ object Form_get_pay_nal: TForm_get_pay_nal
       
         'nvl(to_char(t.cnt_sch0),'#39#39') as cnt_sch0, nvl(to_char(t.cnt_sch),' +
         ' '#39#39') as cnt_sch,'
-      't.nink, t.nkom, t.dtek, t.nkvit, t.dat_ink, t.ts'
+      't.nink, t.nkom, t.dtek, t.nkvit, t.dat_ink, t.ts, o.cash_oper_tp'
       'from '
       'scott.c_kwtp_mg t, scott.oper o'
       'where c_kwtp_id = :c_kwtp_id and t.oper=o.oper'
@@ -793,14 +827,14 @@ object Form_get_pay_nal: TForm_get_pay_nal
       03000000010000000A0000003A435F4B5754505F494404000000000000000000
       0000}
     QBEDefinition.QBEFieldDefs = {
-      040000000F000000030000004C534B0100000000000500000053554D4D410100
+      0400000010000000030000004C534B0100000000000500000053554D4D410100
       000000000500000050454E5941010000000000040000004F5045520100000000
       0004000000444F504C010000000000040000004E494E4B010000000000040000
       004E4B4F4D010000000000040000004454454B01000000000007000000444154
       5F494E4B010000000000050000004E4B56495401000000000002000000545301
       0000000000040000004E41494D01000000000007000000434E545F5343480100
       0000000008000000434E545F534348300100000000000800000053554D4D5F49
-      5447010000000000}
+      54470100000000000C000000434153485F4F5045525F5450010000000000}
     Master = OD_c_kwtp
     MasterFields = 'ID'
     DetailFields = 'C_KWTP_ID'
@@ -808,63 +842,31 @@ object Form_get_pay_nal: TForm_get_pay_nal
     Left = 280
     Top = 152
     object OD_c_kwtp_mgLSK: TStringField
-      DisplayLabel = #1051'/C'
-      DisplayWidth = 8
       FieldName = 'LSK'
       Required = True
       Size = 8
     end
     object OD_c_kwtp_mgSUMMA: TFloatField
-      DisplayLabel = #1057#1091#1084#1084#1072
-      DisplayWidth = 10
       FieldName = 'SUMMA'
     end
     object OD_c_kwtp_mgPENYA: TFloatField
-      DisplayLabel = #1055#1077#1085#1103
-      DisplayWidth = 10
       FieldName = 'PENYA'
     end
+    object OD_c_kwtp_mgSUMM_ITG: TFloatField
+      FieldName = 'SUMM_ITG'
+    end
     object OD_c_kwtp_mgOPER: TStringField
-      DisplayLabel = #1054#1087#1077#1088#1072#1094#1080#1103
-      DisplayWidth = 8
       FieldName = 'OPER'
       Required = True
       Size = 3
     end
-    object OD_c_kwtp_mgDOPL: TStringField
-      DisplayLabel = #1055#1077#1088#1080#1086#1076
-      DisplayWidth = 7
-      FieldName = 'DOPL'
-      Required = True
-      Size = 7
-    end
-    object OD_c_kwtp_mgNINK: TFloatField
-      DisplayLabel = #8470' '#1082#1074#1080#1090
-      DisplayWidth = 10
-      FieldName = 'NINK'
-    end
-    object OD_c_kwtp_mgDTEK: TDateTimeField
-      DisplayLabel = #1044#1072#1090#1072
-      DisplayWidth = 9
-      FieldName = 'DTEK'
-      Required = True
-    end
-    object OD_c_kwtp_mgNKVIT: TFloatField
-      DisplayLabel = #8470' '#1082#1074#1080#1090
-      DisplayWidth = 10
-      FieldName = 'NKVIT'
-    end
-    object OD_c_kwtp_mgNKOM: TStringField
-      DisplayLabel = #8470' '#1082#1086#1084#1087'.'
-      DisplayWidth = 3
-      FieldName = 'NKOM'
-      Required = True
-      Visible = False
-      Size = 3
-    end
     object OD_c_kwtp_mgNAIM: TStringField
       FieldName = 'NAIM'
-      Size = 17
+      Size = 25
+    end
+    object OD_c_kwtp_mgDOPL: TStringField
+      FieldName = 'DOPL'
+      Size = 7
     end
     object OD_c_kwtp_mgCNT_SCH0: TStringField
       FieldName = 'CNT_SCH0'
@@ -874,8 +876,29 @@ object Form_get_pay_nal: TForm_get_pay_nal
       FieldName = 'CNT_SCH'
       Size = 40
     end
-    object OD_c_kwtp_mgSUMM_ITG: TFloatField
-      FieldName = 'SUMM_ITG'
+    object OD_c_kwtp_mgNINK: TFloatField
+      FieldName = 'NINK'
+    end
+    object OD_c_kwtp_mgNKOM: TStringField
+      FieldName = 'NKOM'
+      Required = True
+      Size = 3
+    end
+    object OD_c_kwtp_mgDTEK: TDateTimeField
+      FieldName = 'DTEK'
+      Required = True
+    end
+    object OD_c_kwtp_mgNKVIT: TFloatField
+      FieldName = 'NKVIT'
+    end
+    object OD_c_kwtp_mgDAT_INK: TDateTimeField
+      FieldName = 'DAT_INK'
+    end
+    object OD_c_kwtp_mgTS: TDateTimeField
+      FieldName = 'TS'
+    end
+    object OD_c_kwtp_mgCASH_OPER_TP: TFloatField
+      FieldName = 'CASH_OPER_TP'
     end
   end
   object DS_c_kwtp_mg: TDataSource
@@ -929,5 +952,109 @@ object Form_get_pay_nal: TForm_get_pay_nal
       Caption = #1059#1076#1072#1083#1080#1090#1100' '#1089#1090#1088#1086#1082#1091
       OnClick = N1Click
     end
+  end
+  object OD_kwtp_day: TOracleDataSet
+    SQL.Strings = (
+      'begin'
+      '  -- Call the procedure'
+      '  scott.c_get_pay.get_receipt_detail(p_kwtp_id => :p_kwtp_id,'
+      '                               p_rfcur => :p_rfcur);'
+      'end;')
+    Optimize = False
+    Variables.Data = {
+      03000000020000000A0000003A505F4B5754505F494403000000000000000000
+      0000080000003A505F5246435552740000000000000000000000}
+    QBEDefinition.QBEFieldDefs = {
+      04000000030000000500000053554D4D41010000000000040000004E414D4501
+      000000000003000000444550010000000000}
+    Master = OD_c_kwtp
+    MasterFields = 'ID'
+    DetailFields = 'P_KWTP_ID'
+    Session = DataModule1.OracleSession1
+    Left = 216
+    Top = 200
+  end
+  object dsDS_kwtp_day: TDataSource
+    DataSet = OD_kwtp_day
+    Left = 248
+    Top = 200
+  end
+  object OD_meter_vol: TOracleDataSet
+    SQL.Strings = (
+      
+        'select t.id, u.nm2 as name, max(t.n1) as last_num, sum(x.n1) as ' +
+        'vol from scott.METER t '
+      '       join scott.usl u on t.fk_usl=u.usl'
+      '       join scott.u_list s on s.cd='#39'ins_vol_sch'#39
+      '       join scott.params p on 1=1'
+      
+        '       left join scott.t_objxpar x on t.k_lsk_id=x.fk_k_lsk and ' +
+        's.id=x.fk_list and x.mg=p.period'
+      '       where t.fk_klsk_obj=:p_klsk_id'
+      '       group by t.id, u.nm2, u.npp'
+      '       order by u.npp')
+    Optimize = False
+    Variables.Data = {
+      03000000010000000A0000003A505F4B4C534B5F494405000000000000000000
+      0000}
+    QBEDefinition.QBEFieldDefs = {
+      0400000004000000040000004E414D4501000000000002000000494401000000
+      0000080000004C4153545F4E554D01000000000003000000564F4C0100000000
+      00}
+    Master = OD_c_kwtp
+    MasterFields = 'K_LSK_ID'
+    DetailFields = 'P_KLSK_ID'
+    Session = DataModule1.OracleSession1
+    Left = 280
+    Top = 200
+  end
+  object dsDS_meter_vol: TDataSource
+    DataSet = OD_meter_vol
+    Left = 312
+    Top = 200
+  end
+  object OD_get_money_nal2: TOracleDataSet
+    SQL.Strings = (
+      'begin'
+      
+        '  scott.c_get_pay.get_money_nal2(prep_refcursor => :prep_refcurs' +
+        'or);'
+      'end;')
+    Optimize = False
+    Variables.Data = {
+      03000000010000000F0000003A505245505F524546435552534F527400000000
+      00000000000000}
+    QBEDefinition.QBEFieldDefs = {
+      0400000010000000030000004C534B0100000000000500000053554D4D410100
+      000000000500000050454E5941010000000000040000004F5045520100000000
+      0004000000444F504C010000000000040000004E494E4B010000000000040000
+      004E4B4F4D010000000000040000004454454B01000000000007000000444154
+      5F494E4B010000000000050000004E4B56495401000000000002000000545301
+      0000000000040000004E41494D01000000000007000000434E545F5343480100
+      0000000008000000434E545F534348300100000000000800000053554D4D5F49
+      54470100000000000C000000434153485F4F5045525F5450010000000000}
+    Session = DataModule1.OracleSession1
+    Left = 280
+    Top = 120
+  end
+  object OD_Kart: TOracleDataSet
+    SQL.Strings = (
+      
+        'select k.lsk, k.reu, k.k_lsk_id, k.kul,k.nd,k.kw,k.house_id, nvl' +
+        '(trim(t.name_reu)||'#39', '#39'||s.name||'#39', '#39'||ltrim(k.nd,'#39'0'#39')||'#39'-'#39'||ltr' +
+        'im(k.kw,'#39'0'#39'),'
+      '     '#39#1040#1076#1088#1077#1089' '#1085#1077' '#1085#1072#1081#1076#1077#1085'!'#39') as adr'
+      '    from scott.kart k, scott.spul s, scott.s_reu_trest t'
+      '      where k.reu=t.reu and k.kul=s.id and'
+      '       k.lsk=:lsk')
+    Optimize = False
+    Variables.Data = {0300000001000000040000003A4C534B050000000000000000000000}
+    QBEDefinition.QBEFieldDefs = {
+      0400000003000000030000004C534B0100000000000300000041445201000000
+      0000080000004B5F4C534B5F4944010000000000}
+    Session = DataModule1.OracleSession1
+    DesignActivation = True
+    Left = 40
+    Top = 120
   end
 end

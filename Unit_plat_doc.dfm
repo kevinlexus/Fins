@@ -92,7 +92,7 @@ object Form_plat_doc: TForm_plat_doc
     Left = 0
     Top = 0
     Width = 615
-    Height = 634
+    Height = 633
     Align = alClient
     OutlineVisible = False
     OutlineWidth = 120
@@ -101,7 +101,7 @@ object Form_plat_doc: TForm_plat_doc
   end
   object Panel1: TPanel
     Left = 0
-    Top = 634
+    Top = 633
     Width = 615
     Height = 41
     Align = alBottom
@@ -287,7 +287,7 @@ object Form_plat_doc: TForm_plat_doc
     Top = 24
   end
   object frxReport1: TfrxReport
-    Version = '0.0'
+    Version = '5.1.9'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = frxPreview1

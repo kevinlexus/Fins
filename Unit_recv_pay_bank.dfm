@@ -1,6 +1,6 @@
 object Form_recv_pay_bank: TForm_recv_pay_bank
-  Left = 955
-  Top = 187
+  Left = 294
+  Top = 200
   Width = 867
   Height = 685
   BorderIcons = [biSystemMenu, biMinimize]

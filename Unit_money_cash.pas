@@ -47,7 +47,8 @@ end;
 procedure TForm_money_cash.edt1KeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
-    Button1.SetFocus;
+//    Button1.SetFocus;
+Windows.SetFocus(Button1.Handle);
 end;
 
 procedure TForm_money_cash.btn1Click(Sender: TObject);

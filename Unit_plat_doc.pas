@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, frxClass, StdCtrls, frxDBSet, frxPreview,
-  ExtCtrls, frxDesgn, frxDCtrl, Buttons;
+  ExtCtrls, frxDCtrl, Buttons;
 
 type
   TForm_plat_doc = class(TForm)
@@ -37,7 +37,7 @@ var
 
 implementation
 
-uses Unit_Mainform;
+
 
 {$R *.dfm}
 
@@ -66,7 +66,8 @@ end;
 
 procedure TForm_plat_doc.FormShow(Sender: TObject);
 begin
-  Form_plat_doc.Button1.SetFocus;
+//  Form_plat_doc.Button1.SetFocus;
+Windows.SetFocus(Form_plat_doc.Button1.Handle);
 end;
 
 procedure TForm_plat_doc.Button3Click(Sender: TObject);

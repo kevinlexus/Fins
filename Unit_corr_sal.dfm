@@ -1,6 +1,6 @@
 object Form_corr_sal: TForm_corr_sal
-  Left = 232
-  Top = 205
+  Left = 243
+  Top = 182
   Width = 931
   Height = 619
   Caption = #1050#1086#1088#1088#1077#1082#1094#1080#1103' '#1089#1072#1083#1100#1076#1086' '#1080' '#1086#1087#1083#1072#1090#1099
@@ -90,7 +90,7 @@ object Form_corr_sal: TForm_corr_sal
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
-    Left = 416
+    Left = 520
     Top = 16
     Width = 83
     Height = 13
@@ -103,7 +103,7 @@ object Form_corr_sal: TForm_corr_sal
     ParentFont = False
   end
   object Label4: TLabel
-    Left = 464
+    Left = 568
     Top = 40
     Width = 81
     Height = 13
@@ -116,7 +116,7 @@ object Form_corr_sal: TForm_corr_sal
     ParentFont = False
   end
   object Label3: TLabel
-    Left = 504
+    Left = 608
     Top = 16
     Width = 42
     Height = 13
@@ -300,7 +300,7 @@ object Form_corr_sal: TForm_corr_sal
       #1044#1086#1084)
   end
   object wwDBLookupCombo2: TwwDBLookupCombo
-    Left = 552
+    Left = 656
     Top = 32
     Width = 161
     Height = 21
@@ -317,7 +317,7 @@ object Form_corr_sal: TForm_corr_sal
     AllowClearKey = False
   end
   object wwDBLookupCombo1: TwwDBLookupCombo
-    Left = 552
+    Left = 656
     Top = 8
     Width = 161
     Height = 21
@@ -378,7 +378,7 @@ object Form_corr_sal: TForm_corr_sal
   object ComboBox1: TComboBox
     Left = 88
     Top = 8
-    Width = 321
+    Width = 425
     Height = 21
     ItemHeight = 13
     TabOrder = 7
@@ -388,11 +388,15 @@ object Form_corr_sal: TForm_corr_sal
       #1057#1072#1083#1100#1076#1086
       #1055#1086#1089#1090#1091#1087#1083#1077#1085#1080#1081' '#1086#1087#1083#1072#1090#1099
       #1055#1086#1089#1090#1091#1087#1083#1077#1085#1080#1081' '#1087#1077#1085#1080
-      #1050#1086#1088#1088#1077#1082#1094#1080#1103' '#1089#1072#1083#1100#1076#1086' (1-'#1072#1103' '#1087#1088#1086#1074#1086#1076#1082#1072')'
-      #1050#1086#1088#1088#1077#1082#1094#1080#1103' '#1089#1072#1083#1100#1076#1086' '#1087#1086' 003 '#1091#1089#1083' (2-'#1072#1103' '#1087#1088#1086#1074#1086#1076#1082#1072')')
+      
+        #1050#1086#1088#1088#1077#1082#1094#1080#1103' '#1089#1072#1083#1100#1076#1086' (1-'#1072#1103' '#1087#1088#1086#1074#1086#1076#1082#1072') - '#1042#1099#1087#1086#1083#1085#1103#1090#1100' '#1087#1086#1089#1083#1077' '#1092#1086#1088#1084#1080#1088#1086#1074#1072#1085#1080#1103' ' +
+        #1080#1089#1093'.'#1089#1072#1083#1100#1076#1086'!'
+      
+        #1050#1086#1088#1088#1077#1082#1094#1080#1103' '#1089#1072#1083#1100#1076#1086' '#1087#1086' 003 '#1091#1089#1083' (2-'#1072#1103' '#1087#1088#1086#1074#1086#1076#1082#1072') - '#1042#1099#1087#1086#1083#1085#1103#1090#1100' '#1087#1086#1089#1083#1077' '#1092#1086 +
+        #1088#1084#1080#1088#1086#1074#1072#1085#1080#1103' '#1080#1089#1093'.'#1089#1072#1083#1100#1076#1086'!')
   end
   object Button1: TButton
-    Left = 726
+    Left = 830
     Top = 16
     Width = 75
     Height = 25
@@ -401,7 +405,7 @@ object Form_corr_sal: TForm_corr_sal
     OnClick = Button1Click
   end
   object Button2: TButton
-    Left = 726
+    Left = 830
     Top = 56
     Width = 75
     Height = 25

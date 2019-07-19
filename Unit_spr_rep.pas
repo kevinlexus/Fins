@@ -78,7 +78,8 @@ end;
 procedure TForm_spr_rep.wwDBGrid1DragOver(Sender, Source: TObject; X,
   Y: Integer; State: TDragState; var Accept: Boolean);
 begin
-  Form_spr_rep.SetFocus;
+//  Form_spr_rep.SetFocus;
+Windows.SetFocus(Form_spr_rep.Handle);
 //  Form_spr_rep.Activate;
   Accept:=True;
 end;
@@ -123,7 +124,8 @@ end;
 procedure TForm_spr_rep.wwDBGrid2DragOver(Sender, Source: TObject; X,
   Y: Integer; State: TDragState; var Accept: Boolean);
 begin
-  Form_spr_rep.SetFocus;
+//  Form_spr_rep.SetFocus;
+Windows.SetFocus(Form_spr_rep.Handle);
 //  Form_spr_rep.Activate;
   Accept:=True;
 end;

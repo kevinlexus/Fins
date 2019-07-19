@@ -91,7 +91,7 @@ object Form_changes_list: TForm_changes_list
   TextHeight = 13
   object GroupBox2: TGroupBox
     Left = 0
-    Top = 542
+    Top = 541
     Width = 883
     Height = 39
     Align = alBottom
@@ -185,6 +185,7 @@ object Form_changes_list: TForm_changes_list
         Spacing = 4
         Transparent = False
         Caption = 'wwDBNavigator1Next'
+        Enabled = False
         DisabledTextColors.ShadeColor = clGray
         DisabledTextColors.HighlightColor = clBtnHighlight
         Index = 3
@@ -201,6 +202,7 @@ object Form_changes_list: TForm_changes_list
         Spacing = 4
         Transparent = False
         Caption = 'wwDBNavigator1NextPage'
+        Enabled = False
         DisabledTextColors.ShadeColor = clGray
         DisabledTextColors.HighlightColor = clBtnHighlight
         Index = 4
@@ -217,6 +219,7 @@ object Form_changes_list: TForm_changes_list
         Spacing = 4
         Transparent = False
         Caption = 'wwDBNavigator1Last'
+        Enabled = False
         DisabledTextColors.ShadeColor = clGray
         DisabledTextColors.HighlightColor = clBtnHighlight
         Index = 5
@@ -416,7 +419,7 @@ object Form_changes_list: TForm_changes_list
     Left = 0
     Top = 0
     Width = 883
-    Height = 542
+    Height = 541
     ControlType.Strings = (
       'TEXT;RichEdit;wwDBRichEdit1;F')
     Selected.Strings = (

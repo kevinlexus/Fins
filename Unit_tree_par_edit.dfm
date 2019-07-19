@@ -1,6 +1,6 @@
 object Form_tree_par_edit: TForm_tree_par_edit
-  Left = 664
-  Top = 206
+  Left = 717
+  Top = 150
   Width = 316
   Height = 471
   BorderIcons = [biSystemMenu]
@@ -91,7 +91,7 @@ object Form_tree_par_edit: TForm_tree_par_edit
     Left = 0
     Top = 0
     Width = 300
-    Height = 392
+    Height = 391
     ActivePage = TabSheet7
     Align = alClient
     TabOrder = 0
@@ -364,7 +364,7 @@ object Form_tree_par_edit: TForm_tree_par_edit
         Left = 0
         Top = 0
         Width = 292
-        Height = 364
+        Height = 363
         Align = alClient
         PopupMenu = PopupMenu1
         TabOrder = 0
@@ -419,7 +419,7 @@ object Form_tree_par_edit: TForm_tree_par_edit
   end
   object Panel1: TPanel
     Left = 0
-    Top = 392
+    Top = 391
     Width = 300
     Height = 41
     Align = alBottom
@@ -459,6 +459,9 @@ object Form_tree_par_edit: TForm_tree_par_edit
       000000464B5F534553010000000000030000004E5050010000000000}
     MasterFields = 'ID'
     DetailFields = 'FK_PAR'
+    LockingMode = lmNone
+    CommitOnPost = False
+    CachedUpdates = True
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True

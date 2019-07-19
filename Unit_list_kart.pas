@@ -8,26 +8,41 @@ uses
   wwclearpanel, Grids, Wwdbigrd, Wwdbgrid, StdCtrls, Utils,
   Wwintl, wwfltdlg, Mask, wwdbedit, StrUtils, 
   Buttons, wwdblook, wwcheckbox, Wwdbdlg, frxClass, frxDBSet, Menus,
-  wwDataInspector, DBCtrls, cxGraphics, cxControls, cxLookAndFeels,
-  cxLookAndFeelPainters, dxSkinsCore, dxSkinsDefaultPainters, cxStyles,
-  dxSkinscxPCPainter, cxCustomData, cxFilter, cxData, cxDataStorage,
-  cxEdit, cxDBData, cxGridLevel, cxClasses, cxGridCustomView,
+  wwDataInspector, DBCtrls, cxControls, 
+  cxStyles,
+  
+  cxEdit, cxGridLevel, cxClasses, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
-  cxPropertiesStore, dxSkinBlack, dxSkinBlue, dxSkinCaramel, dxSkinCoffee,
-  dxSkinDarkRoom, dxSkinDarkSide, dxSkinFoggy, dxSkinGlassOceans,
-  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
-  dxSkinMcSkin, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  cxPropertiesStore, 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  cxContainer, cxTextEdit, cxMaskEdit, 
+  cxLabel, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore,
+  dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee,
+  dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans,
+  dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky,
+  dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
   dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
   dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
-  dxSkinOffice2010Silver, dxSkinPumpkin, dxSkinSeven, dxSkinSharp,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinPumpkin,
+  dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
   dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
-  dxSkinValentine, dxSkinXmas2008Blue, dxSkinBlueprint,
-  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinHighContrast,
-  dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2013DarkGray,
-  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinSevenClassic,
-  dxSkinSharpPlus, dxSkinTheAsphaltWorld, dxSkinVS2010, dxSkinWhiteprint,
-  cxNavigator, cxContainer, cxTextEdit, cxMaskEdit, cxDropDownEdit,
-  cxMRUEdit, cxSplitter, cxLabel;
+  dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter,
+  cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, cxDBData;
 
 type
   TForm_list_kart = class(TForm)
@@ -147,7 +162,6 @@ type
     SpeedButton1: TSpeedButton;
     SpeedButton4: TSpeedButton;
     SpeedButton3: TSpeedButton;
-    SpeedButton5: TSpeedButton;
     SpeedButton2: TSpeedButton;
     BitBtn1: TBitBtn;
     OD_list_kartPSCH_DT: TDateTimeField;
@@ -236,7 +250,6 @@ type
     procedure SpeedButton3Click(Sender: TObject);
     procedure Realign;
     procedure FormPaint(Sender: TObject);
-    procedure SpeedButton5Click(Sender: TObject);
     procedure SetFields;
     procedure SetFields2;
     procedure OD_list_kartAfterOpen(DataSet: TDataSet);
@@ -288,7 +301,7 @@ uses Unit_form_kart, Unit_Mainform, DM_module1, Unit_find_adr,
   Unit_form_subsidii, Unit_chargepay, Unit_find_fio,
   Unit_find_contr, Unit_det_chrg, Unit_log_actions, Unit_houses_nabor,
   Unit_house_vvod, Unit_list_set, Unit_form_bills, Unit_sch_history,
-  Unit_lk_acc, u_frmPenCorr, u_frmAccFlow;
+  Unit_lk_acc, u_frmPenCorr, u_frmAccFlow, Unit_find_adr2;
 
 {$R *.dfm}
 
@@ -549,7 +562,7 @@ begin
 //    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1,'ADR')].Visible:=false;
     CheckBox1.Visible:=true;
     CheckBox2.Visible:=true;
-    SpeedButton5.Visible:=false;
+    //SpeedButton5.Visible:=false;
     // отобразить расход по счетчикам, без возможности правки
     if DataModule1.OraclePackage1.CallIntegerFunction
          ('scott.INIT.get_is_cnt_sch', [parNone]) = 1 then
@@ -618,7 +631,6 @@ end;
 
 procedure TForm_list_kart.SetFilter;
 begin
-//Фильтр по дому
  with OD_list_kart do
   begin
     Active:=false;
@@ -627,14 +639,25 @@ begin
     SetVariable('flt_nd_', Form_Main.flt_nd_);
     SetVariable('flt_kw_', Form_Main.flt_kw_);
     SetVariable('flt_k_lsk_id_', Form_Main.flt_k_lsk_id_);
+    SetVariable('SUBSTEXP1', ' and k.psch <> 8 ');
+    // устанавливаем порядок
+    SetVariable(':SUBSTEXP4',
+       ' order by s.name, scott.utils.f_order(k.nd,6), scott.utils.f_order2(k.nd),'
+       +'scott.utils.f_order(k.kw,7), scott.utils.f_order2(k.kw), decode(k.psch,8,1,9,1,0), decode(u.cd,''LSK_TP_MAIN'',0,1)');
 
-    if Form_Main.search_type_ <> 0 then
+    //устанавливаем порядок
+   { if Form_Main.search_type_ <> 0 then
     begin
-       //удаляем последнюю строчку
-       SQL.Delete(OD_list_kart.SQL.Count-1);
-       //устанавливаем порядок
-       SQL.Add('order by s.name, k.nd, k.kw, u.npp, decode(k.psch,8,1,9,1,0), decode(u.cd,''LSK_TP_MAIN'',0,1)');
-    end;
+       SetVariable(':SUBSTEXP4',
+       ' order by s.name, k.nd, k.kw, u.npp, decode(k.psch,8,1,9,1,0), decode(u.cd,''LSK_TP_MAIN'',0,1)');
+       //SQL.Add('order by s.name, k.nd, k.kw, u.npp, decode(k.psch,8,1,9,1,0), decode(u.cd,''LSK_TP_MAIN'',0,1)');
+    end
+    else
+    begin
+       SetVariable(':SUBSTEXP4',
+       ' order by s.name, scott.utils.f_order(k.nd,6),'
+       +'scott.utils.f_order(k.kw,7), decode(k.psch,8,1,9,1,0), decode(u.cd,''LSK_TP_MAIN'',0,1)');
+    end;     }
     Active:=true;
  end;
 
@@ -737,8 +760,12 @@ begin
 
   if FF('Form_kart', 0) = 1 then
   begin
+      Form_kart.OD_charge.SetVariable('k_lsk_id', OD_list_kart.FieldByName('k_lsk_id').AsInteger);
+      Form_kart.OD_charge.Active:=False;
+      Form_kart.OD_charge.Active:=True;
     try
       Form_kart.OD_charge.GotoBookmark(bm);
+
     except
     end
   end;
@@ -779,9 +806,12 @@ begin
     begin
       OD_list_kart.Active:=false;
       //удаляем последнюю строчку
-      OD_list_kart.SQL.Delete(OD_list_kart.SQL.Count-1);
+//      OD_list_kart.SQL.Delete(OD_list_kart.SQL.Count-1);
       //устанавливаем порядок
-      OD_list_kart.SQL.Add('order by s.name, k.nd, k.kw, u.npp, decode(k.psch,8,1,9,1,0), decode(u.cd,''LSK_TP_MAIN'',0,1)');
+//      OD_list_kart.SetVariable(':SUBSTEXP4',
+//       ' order by s.name, k.nd, k.kw, u.npp, decode(k.psch,8,1,9,1,0), decode(u.cd,''LSK_TP_MAIN'',0,1)');
+
+      //OD_list_kart.SQL.Add('order by s.name, k.nd, k.kw, u.npp, decode(k.psch,8,1,9,1,0), decode(u.cd,''LSK_TP_MAIN'',0,1)');
       OD_list_kart.Active:=true;
       OD_list_kart.SearchRecord('lsk', Form_Main.Lsk_, [srFromBeginning]);
     end;
@@ -797,9 +827,11 @@ begin
     begin
       OD_list_kart.Active:=false;
       //удаляем последнюю строчку
-      OD_list_kart.SQL.Delete(OD_list_kart.SQL.Count-1);
+      //OD_list_kart.SQL.Delete(OD_list_kart.SQL.Count-1);
       //устанавливаем порядок
-      OD_list_kart.SQL.Add('order by s.name, k.nd, k.kw, u.npp, decode(k.psch,8,1,9,1,0), decode(u.cd,''LSK_TP_MAIN'',0,1)');
+      //OD_list_kart.SQL.Add('order by s.name, k.nd, k.kw, u.npp, decode(k.psch,8,1,9,1,0), decode(u.cd,''LSK_TP_MAIN'',0,1)');
+      //OD_list_kart.SetVariable(':SUBSTEXP4',
+      // ' order by s.name, k.nd, k.kw, u.npp, decode(k.psch,8,1,9,1,0), decode(u.cd,''LSK_TP_MAIN'',0,1)');
       OD_list_kart.Active:=true;
       OD_list_kart.SearchRecord('lsk', Form_Main.Lsk_, [srFromBeginning]);
     end;
@@ -932,13 +964,14 @@ begin
 if CheckBox2.Checked = true then
 begin
   OD_list_kart.active:=false;
-  OD_list_kart.SetVariable('var1_', 1);
+  //OD_list_kart.SetVariable('var1_', 1);
+  OD_list_kart.SetVariable('SUBSTEXP1', ' and k.psch <> 8 ');
   OD_list_kart.active:=true;
 end
 else
 begin
   OD_list_kart.active:=false;
-  OD_list_kart.SetVariable('var1_', 0);
+  OD_list_kart.SetVariable('SUBSTEXP1', '');
   OD_list_kart.active:=true;
 end;
 
@@ -946,7 +979,10 @@ end;
 
 procedure TForm_list_kart.SpeedButton2Click(Sender: TObject);
 begin
-  OD_list_kart.SetVariable('var_', 0);
+  //OD_list_kart.SetVariable('var_', 0);
+  OD_list_kart.SetVariable('SUBSTEXP1', '');
+  OD_list_kart.SetVariable('SUBSTEXP2', '');
+  OD_list_kart.SetVariable('SUBSTEXP3', '');
   Form_Main.cl_flt;
   SetFilter;
 end;
@@ -974,20 +1010,24 @@ procedure TForm_list_kart.SpeedButton3Click(Sender: TObject);
 begin
  Application.CreateForm(TForm_find_fio, Form_find_fio);
  Form_find_fio.ShowModal;
+ OD_list_kart.active:=false;
+ OD_list_kart.SetVariable('SUBSTEXP2', '');
+ OD_list_kart.SetVariable('SUBSTEXP3', '');
  if Form_main.search_type_ = 4 then
  begin
-   OD_list_kart.active:=false;
-   OD_list_kart.SetVariable('str1_', Form_main.last_name_);
-   OD_list_kart.SetVariable('var_', 6);
-   OD_list_kart.active:=true;
+   //OD_list_kart.SetVariable('str1_', Form_main.last_name_);
+   //OD_list_kart.SetVariable('var_', 6);
+   OD_list_kart.SetVariable('SUBSTEXP2', ' and upper(k.fio) like ''%''||upper('''+
+     Form_main.last_name_+''')||''%'' ');
  end;
  if Form_main.search_type_ = 5 then
  begin
-   OD_list_kart.active:=false;
-   OD_list_kart.SetVariable('str1_', Form_main.last_name_);
-   OD_list_kart.SetVariable('var_', 7);
-   OD_list_kart.active:=true;
+   //OD_list_kart.SetVariable('str1_', Form_main.last_name_);
+   //OD_list_kart.SetVariable('var_', 7);
+   OD_list_kart.SetVariable('SUBSTEXP3', ' and exists (select * from scott.c_kart_pr k1'
+    + ' where k1.lsk=k.lsk and upper(k1.fio) like ''%''||upper('''+Form_main.last_name_+''')||''%'') ');
  end;
+   OD_list_kart.active:=true;
 end;
 
 procedure TForm_list_kart.FormPaint(Sender: TObject);
@@ -995,29 +1035,16 @@ begin
   Realign;
 end;
 
-procedure TForm_list_kart.SpeedButton5Click(Sender: TObject);
-begin
- Application.CreateForm(TForm_find_contr, Form_find_contr);
- Form_find_contr.ShowModal;
- if Form_main.search_type_ = 6 then
- begin
-   OD_list_kart.active:=false;
-   OD_list_kart.SetVariable('str1_', Form_main.last_name_);
-   OD_list_kart.SetVariable('var_', 5);
-   OD_list_kart.active:=true;
- end;
-end;
-
 procedure TForm_list_kart.OD_list_kartAfterOpen(DataSet: TDataSet);
 begin
   setFields;
 
   //Если нет критерия поиска - убрать возможность вытянуть все записи
-  if OD_list_kart.GetVariable('var_') = 0 then
+{  if OD_list_kart.GetVariable('var_') = 0 then
     begin
     if FF('Form_kart',0) =1 then
     begin
-       Form_kart.wwDBNavigator1Last.Visible:=False;
+//       Form_kart.wwDBNavigator1Last.Visible:=False;
     end;
     wwDBNavigator1Last.Visible:=False;
     end
@@ -1029,7 +1056,7 @@ begin
     end;
     wwDBNavigator1Last.Visible:=True;
     end;
-
+ }
 end;
 
 procedure TForm_list_kart.wwDBLookupCombo3CloseUp(Sender: TObject;
@@ -1183,9 +1210,9 @@ begin
   if not (OD_list_kart.State in [dsBrowse]) then
      OD_list_kart.Post;
 
-  Application.CreateForm(TForm_find_adr, Form_find_adr);
-  Form_find_adr.SetAccess(1,1,1,1);
-  if Form_find_adr.ShowModal = mrOk then
+  Application.CreateForm(TForm_find_adr2, Form_find_adr2);
+  Form_find_adr2.SetAccess(1,1,1,1);
+  if Form_find_adr2.ShowModal = mrOk then
   begin
    SetFilter;
   end;
@@ -1241,7 +1268,8 @@ begin
   if Key = #13 then
   begin
     // нажат Enter - перейти к другому полю
-    wwDBEdit2.SetFocus;
+//    wwDBEdit2.SetFocus;
+Windows.SetFocus(wwDBEdit2.Handle);
   end;
 end;
 
@@ -1265,7 +1293,8 @@ begin
   if Key = #13 then
   begin
     // нажат Enter - перейти к другому полю
-    wwDBEdit3.SetFocus;
+//    wwDBEdit3.SetFocus;
+Windows.SetFocus(wwDBEdit3.Handle);
   end;
 end;
 
@@ -1343,7 +1372,8 @@ begin
   // обновить запись
   OD_list_kart.RefreshRecord;
   OD_list_kart.Next;
-  wwDBEdit1.SetFocus;
+//  wwDBEdit1.SetFocus;
+Windows.SetFocus(wwDBEdit1.Handle);
 end;
 
 procedure TForm_list_kart.wwDBEdit3KeyPress(Sender: TObject;
@@ -1352,7 +1382,8 @@ begin
 if Key = #13 then
   begin
     // нажат Enter - перейти к другому полю
-    Button2.SetFocus;
+//    Button2.SetFocus;
+Windows.SetFocus(Button2.Handle);
   end;
 end;
 

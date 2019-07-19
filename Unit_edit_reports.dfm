@@ -1,6 +1,6 @@
 object Form_edit_reports: TForm_edit_reports
-  Left = 223
-  Top = 367
+  Left = 330
+  Top = 419
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077' '#1086#1090#1095#1105#1090#1086#1074
@@ -168,7 +168,7 @@ object Form_edit_reports: TForm_edit_reports
     Top = 48
   end
   object frxReport1: TfrxReport
-    Version = '0.0'
+    Version = '5.1.9'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

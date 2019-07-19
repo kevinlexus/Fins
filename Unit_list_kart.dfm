@@ -1,6 +1,6 @@
 object Form_list_kart: TForm_list_kart
-  Left = 191
-  Top = 375
+  Left = 351
+  Top = 390
   Width = 1280
   Height = 607
   Caption = #1050#1072#1088#1090#1086#1095#1082#1080
@@ -105,45 +105,42 @@ object Form_list_kart: TForm_list_kart
       'USL_VOL;CustomEdit;wwExpandButton1;F'
       'BTN;CustomEdit;wwExpandButton1;F')
     Selected.Strings = (
-      'LSK_TP'#9'15'#9#1058#1080#1087#9#9
-      'BTN'#9'2'#9' '#9#9
-      'NAME_REU'#9'8'#9#1054#1088#1075'.'#9#9
-      'LSK'#9'8'#9#1051'/C'#9#9
-      'DOG_NUM'#9'10'#9#8470' '#1076#1086#1075#1086#1074#1086#1088#1072#9#9
-      'KUL'#9'6'#9#1050#1086#1076' '#1091#1083'.'#9#9
-      'NAME'#9'19'#9#1059#1083#1080#1094#1072#9#9
-      'N_ND'#9'6'#9#1044#1086#1084#9#9
-      'N_KW'#9'7'#9#1050#1074'.'#9#9
-      'ENTR'#9'8'#9#1055#1086#1076#1098#1077#1079#1076#9#9
-      'N_STATUS'#9'8'#9#1057#1090#1072#1090#1091#1089#9#9
-      'FIO'#9'16'#9#1060'.'#1048'.'#1054'.'#9#9
-      'ET'#9'5'#9#1069#1090#1072#1078#9#9
-      'KPR'#9'7'#9#1055#1088#1086#1078#1080#1074'.'#9#9
-      'KPR_OT'#9'6'#9#1054#1090#1089#1091#1090'.'#9#9
-      'KPR_WR'#9'8'#9#1042#1088'.'#1079#1072#1088#1077#1075'.'#9#9
-      'KPR_WRP'#9'8'#9#1042#1088'.'#1087#1088#1086#1078'.'#9#9
-      'OPL'#9'7'#9#1054#1073#1097'.'#1087#1083'.'#9#9
-      'K_LSK_ID'#9'5'#9'KLSK '#1050#1074#1072#1088#1090#1080#1088#1099#9#9
-      'HOUSE_ID'#9'14'#9'HOUSE_ID '#1044#1086#1084#1072#9#9
-      'MHW'#9'8'#9#1050#1091#1073'.'#1061'.'#1042'.'#9#9
-      'MGW'#9'8'#9#1050#1091#1073'.'#1043'.'#1042'.'#9#9
-      'MEL'#9'11'#9#1050#1074#1090'.'#1069#1083'.'#1101#1085'.'#9#9
-      'DEB_ORG'#9'13'#9#1054#1088#1075'.'#1079#1072#1076#1086#1083#1078#1085'.'#9#9
-      'SUB_DATA'#9'10'#9#1054#1082#1086#1085#1095'.'#1089#1091#1073#9#9
-      'EL1'#9'9'#9#1069#1083'.'#1101#1085'.'#9#9
-      'KI'#9'10'#9#1051#1100#1075#1086#1090#1085#1080#1082#1086#1074#9#9
-      'PSCH_NAME'#9'9'#9#1057#1095#1077#1090#1095#1080#1082#9#9
-      'MG1'#9'7'#9#1057#9#9
-      'MG2'#9'7'#9#1087#1086#9#9
-      'KRAN1'#9'8'#9#1057#1080#1089#1090'.'#1086#1090#1086#1087'.'#9#9
-      'TEXT'#9'35'#9#1055#1088#1080#1084#1077#1095#1072#1085#1080#1077#9#9
-      'LSK_EXT'#9'8'#9'LSK_EXT'#9#9
-      'LSK_TP_CD'#9'32'#9'LSK_TP_CD'#9#9
-      'SEL1'#9'10'#9'SEL1'#9#9
-      'PARENT_LSK'#9'12'#9#1056#1086#1076#1080#1090'.'#1083#1080#1094'.'#1089#1095#1077#1090#9#9
-      'ELSK'#9'10'#9'ELSK'#9#9
-      'FK_KLSK_OBJ'#9'11'#9'KLSK '#1051#1080#1094'.'#1089#1095'.'#9#9
-      'DT_CR'#9'18'#9'DT_CR'#9#9)
+      'BTN'#9'2'#9' '
+      'NAME_REU'#9'8'#9#1054#1088#1075'.'
+      'ELSD'#9'8'#9#1045#1051#1057#1044
+      'LSK'#9'8'#9#1051'/C'
+      'DOG_NUM'#9'10'#9#8470' '#1076#1086#1075#1086#1074#1086#1088#1072
+      'KUL'#9'6'#9#1050#1086#1076' '#1091#1083'.'
+      'NAME'#9'19'#9#1059#1083#1080#1094#1072
+      'N_ND'#9'6'#9#1044#1086#1084
+      'N_KW'#9'7'#9#1050#1074'.'
+      'ENTR'#9'8'#9#1055#1086#1076#1098#1077#1079#1076
+      'N_STATUS'#9'8'#9#1057#1090#1072#1090#1091#1089
+      'FIO'#9'16'#9#1060'.'#1048'.'#1054'.'
+      'ET'#9'5'#9#1069#1090#1072#1078
+      'KPR'#9'7'#9#1055#1088#1086#1078#1080#1074'.'
+      'KPR_OT'#9'6'#9#1054#1090#1089#1091#1090'.'
+      'KPR_WR'#9'8'#9#1042#1088'.'#1079#1072#1088#1077#1075'.'
+      'KPR_WRP'#9'8'#9#1042#1088'.'#1087#1088#1086#1078'.'
+      'OPL'#9'7'#9#1054#1073#1097'.'#1087#1083'.'
+      'K_LSK_ID'#9'13'#9'KLSK '#1050#1074#1072#1088#1090#1080#1088#1099
+      'HOUSE_ID'#9'14'#9'HOUSE_ID '#1044#1086#1084#1072
+      'MHW'#9'8'#9#1050#1091#1073'.'#1061'.'#1042'.'
+      'MGW'#9'8'#9#1050#1091#1073'.'#1043'.'#1042'.'
+      'MEL'#9'11'#9#1050#1074#1090'.'#1069#1083'.'#1101#1085'.'
+      'DEB_ORG'#9'13'#9#1054#1088#1075'.'#1079#1072#1076#1086#1083#1078#1085'.'
+      'SUB_DATA'#9'10'#9#1054#1082#1086#1085#1095'.'#1089#1091#1073
+      'EL1'#9'9'#9#1069#1083'.'#1101#1085'.'
+      'KI'#9'10'#9#1051#1100#1075#1086#1090#1085#1080#1082#1086#1074
+      'PSCH_NAME'#9'9'#9#1057#1095#1077#1090#1095#1080#1082
+      'MG1'#9'7'#9#1057
+      'MG2'#9'7'#9#1087#1086
+      'KRAN1'#9'8'#9#1057#1080#1089#1090'.'#1086#1090#1086#1087'.'
+      'TEXT'#9'35'#9#1055#1088#1080#1084#1077#1095#1072#1085#1080#1077
+      'SEL1'#9'10'#9'SEL1'
+      'PARENT_LSK'#9'12'#9#1056#1086#1076#1080#1090'.'#1083#1080#1094'.'#1089#1095#1077#1090
+      'FK_KLSK_OBJ'#9'11'#9'KLSK '#1051#1080#1094'.'#1089#1095'.'
+      'DT_CR'#9'18'#9'DT_CR')
     IniAttributes.Delimiter = ';;'
     TitleColor = clBtnFace
     FixedCols = 0
@@ -432,6 +429,7 @@ object Form_list_kart: TForm_list_kart
           Spacing = 4
           Transparent = False
           Caption = 'wwDBNavigator1Insert'
+          Enabled = False
           DisabledTextColors.ShadeColor = clGray
           DisabledTextColors.HighlightColor = clBtnHighlight
           Index = 6
@@ -467,6 +465,7 @@ object Form_list_kart: TForm_list_kart
           Spacing = 4
           Transparent = False
           Caption = 'wwDBNavigator1Edit'
+          Enabled = False
           DisabledTextColors.ShadeColor = clGray
           DisabledTextColors.HighlightColor = clBtnHighlight
           Index = 8
@@ -520,6 +519,7 @@ object Form_list_kart: TForm_list_kart
           Spacing = 4
           Transparent = False
           Caption = 'wwDBNavigator1Refresh'
+          Enabled = False
           DisabledTextColors.ShadeColor = clGray
           DisabledTextColors.HighlightColor = clBtnHighlight
           Index = 11
@@ -537,6 +537,7 @@ object Form_list_kart: TForm_list_kart
           Spacing = 4
           Transparent = False
           Caption = 'wwDBNavigator1SaveBookmark'
+          Enabled = False
           DisabledTextColors.ShadeColor = clGray
           DisabledTextColors.HighlightColor = clBtnHighlight
           Index = 12
@@ -564,7 +565,7 @@ object Form_list_kart: TForm_list_kart
     object Panel4: TPanel
       Left = 1
       Top = 1
-      Width = 288
+      Width = 256
       Height = 39
       Align = alLeft
       TabOrder = 2
@@ -761,68 +762,8 @@ object Form_list_kart: TForm_list_kart
         ShowHint = True
         OnClick = SpeedButton3Click
       end
-      object SpeedButton5: TSpeedButton
-        Left = 179
-        Top = 5
-        Width = 25
-        Height = 25
-        Hint = #1060#1080#1083#1100#1090#1088' '#1087#1086' '#8470' '#1076#1086#1075#1086#1074#1086#1088#1072
-        Glyph.Data = {
-          0E060000424D0E06000000000000360000002800000016000000160000000100
-          180000000000D8050000120B0000120B00000000000000000000FFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDEDEDEB7B7B7B7B7B7FFFF
-          FFD5D5D5CDCFCFCDCFCFCDCFCFCDCFCFCDCFCFCDCFCFC7C9C9FFFFFF0000FFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5D5D5D6F6F6F4A
-          4A4AFFFFFFD7D7D7CFD2D0CFD2D0CFD2D0CFD2D0CFD2D0CFD1D0C8CACAFFFFFF
-          0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5D5D5D
-          686868494949FFFFFFD9D9D9D1D4D2D1D4D2D1D4D2D2D4D2D1D4D2D1D3D3C9CA
-          CAFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FF535353464646383838FFFFFFDBDADBD3D6D4D3D6D4CCCFCDD5D6D4D3D5D3D4
-          D6D5CBCBCBFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFF5A5A5A555555424242FFFFFFDDDDDDD7D8D6AEADACCFCDCC797A78
-          D7D8D6D7D7D7CCCCCCFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFF5C5C5C545454434343FFFFFFDEDEDEB9B8B7B2B2B0D3D4
-          D29E9E9CD9DAD8D9D9D9CDCDCDFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFF5555555252523F3F3FFFFFFFD9D9D9B1AFAEDB
-          DCDAAEAFADD9D9D8DBDCDADBDCDBCDCDCDFFFFFF0000FFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5555556D6D6D434444EAE9E9B7B5B4
-          D5D6D4D7D8D6B5B3B2DDDEDCDEDFDDDDDDDBD2D2D2FFFFFF0000FFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8D8D8D7A7A7A7E7D7DDDDC
-          DCCBC9C8DFE0DEBCBCBAD0D1CFDEDFDDA8A9A7D2D2D1FFFFFFFFFFFF0000FFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC8C8C6878684B9
-          B7B6FFFFFF817F7EC7C7C6C9C8C7E0E1DFE0E1DFBFBFBEFFFFFFFFFFFFFFFFFF
-          0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBBBABA979295
-          938A8D928E8FFFFFFFFFFFFFF2F1F1FBFBFBFAFAFAFEFEFEFFFFFFFFFFFFFFFF
-          FFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE5E4E5ADA9AC9493
-          8F7485746F8B707C917BA1A29F999497A8A7A6FFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFAEA9A981
-          887E427643267E271C821F247F26417A428E9B8C948E8FC1BFC0FFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD1CDCE
-          918E8A447C442B8F2A409C4171AA72439D422891293477359599929D999BFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFB0ACAD76847138913A2A952C58A559F0EDF163A9632B952C3290325E7A5D9B
-          9497D9D9D8FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFF9C96996781621F8B2180B683CDD9CFE6ECE7CCDACE8CBA8C2A922A
-          446F41968E91DBDBD9FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFA39EA26A7F652A9B2F6CBC71ADD1B0ECEDEBB0D3B374BC
-          7830A5354C75499B9195E3E4E1FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFC3C0C282877D579F5B51C45C50B659D7E3D957
-          B85D4DC2575AAE5F698066B0AAADFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE2E3E3A4A1A1687B678AB68FA0D5A3
-          A1D1A69ED4A296C6996D916D8E8D8CD3D3D4FFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFCCCAC9A5A1A28484
-          819A9C98ACB2AAA4A9A38B9286908E8DB6B4B6FFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD7
-          D7D7B7B6B49C9B989D9A9A9693939E9C9AC1BFC0FFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFE3E3E3C6C5C5BBBCBCB4B3B3D5D4D4FFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000}
-        ParentShowHint = False
-        ShowHint = True
-        OnClick = SpeedButton5Click
-      end
       object SpeedButton2: TSpeedButton
-        Left = 205
+        Left = 178
         Top = 5
         Width = 25
         Height = 25
@@ -882,7 +823,7 @@ object Form_list_kart: TForm_list_kart
         OnClick = SpeedButton2Click
       end
       object BitBtn1: TBitBtn
-        Left = 231
+        Left = 203
         Top = 5
         Width = 25
         Height = 25
@@ -910,7 +851,7 @@ object Form_list_kart: TForm_list_kart
         Width = 73
       end
       object BitBtn2: TBitBtn
-        Left = 260
+        Left = 229
         Top = 5
         Width = 25
         Height = 25
@@ -940,6 +881,7 @@ object Form_list_kart: TForm_list_kart
     OnBeforeCollapse = wwExpandButton1BeforeCollapse
     Caption = 'wwExpandButton1'
     TabOrder = 4
+    Visible = False
   end
   object cxGrid1: TcxGrid
     Left = 496
@@ -1209,7 +1151,70 @@ object Form_list_kart: TForm_list_kart
   end
   object OD_list_kart: TOracleDataSet
     SQL.Strings = (
-      'select null as btn, k.rowid, k.elsk, k.dt_cr,'
+      'select '
+      'null as btn, k.rowid, k.elsk, k.dt_cr,'
+      
+        'r.reu||'#39'-'#39'||r.name_reu as name_reu, k.reu, k.k_lsk_id, k.c_lsk_i' +
+        'd, k.lsk, k.lsk_ext, k.kul, s.name, ltrim(k.nd,'#39'0'#39') as n_nd, ltr' +
+        'im(k.kw,'#39'0'#39') as n_kw,'
+      'k.nd,k.kw, k.kfg,'
+      
+        'k.fio, k.k_im, k.k_ot, k.k_fam,k.psch, k.mgw,k.mhw, k.mel, k.pgw' +
+        ', k.phw, k.pel, k.pot, k.mot,'
+      
+        'k.et, k.kpr, k.kpr_ot, k.kpr_wr, k.kpr_wrp,k.ki, k.opl, k.ppl, k' +
+        '.komn, k.status, k.fk_deb_org,'
+      't.name as n_status, k.fk_distr,'
+      
+        'k.eksub1, k.eksub2, k.sgku, k.doppl, k.subs_cor, k.subs_cur, k.k' +
+        'ran1,'
+      'k.el, k.el1, case when k.subs_cur = 1 or  nvl(k.subs_cor,0) <>0 '
+      'then 1 else 0 end as subs_val, '
+      
+        'scott.init.get_nkom as nkom, k.sub_data, decode(k.psch, 0, '#39#1053#1086#1088#1084 +
+        #39','
+      
+        '1,'#39#1061'.'#1042'. '#1080' '#1043'.'#1042'.'#39', 2, '#39#1061'.'#1042'.'#39', 3, '#39#1043'.'#1042'.'#39') as psch_name, k.sch_el, k' +
+        '.house_id,'
+      'k.kan_sch, k.dog_num, k.schel_dt, k.psch_dt, '
+      'k.text,k.memo,k.schel_end,  k.polis, k.law_doc, k.law_doc_dt, '
+      'k.prvt_doc, k.prvt_doc_dt, k.fk_pasp_org, k.cpn, k.pn_dt,'
+      
+        'decode(mg1, '#39'000000'#39', '#39'...'#39', substr(mg1,1,4)||'#39'-'#39'||substr(mg1,5,' +
+        '2))  as mg1,'
+      
+        'decode(mg2, '#39'999999'#39', '#39'...'#39', substr(mg2,1,4)||'#39'-'#39'||substr(mg2,5,' +
+        '2))  as mg2,'
+      
+        's.name || '#39', '#39' || nvl(ltrim(k.nd, '#39'0'#39'), '#39'0'#39') || '#39'-'#39' ||nvl(ltrim(' +
+        'k.kw, '#39'0'#39'), '#39'0'#39') as adr, u.name as lsk_tp, u.cd as lsk_tp_cd, k.' +
+        'sel1, k.entr,'
+      'k.parent_lsk, k.fk_klsk_obj'
+      'from scott.kart k '
+      'join scott.spul s on k.kul=s.id'
+      'join scott.status t on k.status=t.id'
+      'join scott.s_reu_trest r on k.reu=r.reu'
+      'left join scott.u_list u on k.fk_tp=u.id'
+      'where nvl(:flt_reu_,k.reu)=k.reu'
+      'and nvl(:flt_kul_,k.kul)=k.kul'
+      'and nvl(:flt_nd_,k.nd)=k.nd'
+      'and nvl(:flt_kw_,k.kw)=k.kw'
+      
+        'and decode(:flt_k_lsk_id_, -1, k.k_lsk_id, :flt_k_lsk_id_)=k.k_l' +
+        'sk_id'
+      'and decode(:var3_, 0, u.cd, 1, '#39'LSK_TP_MAIN'#39')=u.cd'
+      ''
+      ':substExp1'
+      ''
+      ':substExp2'
+      ''
+      ':substExp3'
+      ''
+      ':substExp4'
+      ''
+      '/*'
+      'select '
+      'null as btn, k.rowid, k.elsk, ks.elsd, k.dt_cr,'
       
         'r.reu||'#39'-'#39'||r.name_reu as name_reu, k.reu, k.k_lsk_id, k.c_lsk_i' +
         'd, k.lsk, k.lsk_ext, k.kul, s.name, ltrim(k.nd,'#39'0'#39') as n_nd, ltr' +
@@ -1248,13 +1253,11 @@ object Form_list_kart: TForm_list_kart
         'sel1, k.entr,'
       'k.parent_lsk, k.fk_klsk_obj'
       
-        'from scott.kart k, scott.spul s, scott.status t, scott.s_reu_tre' +
-        'st r, scott.u_list u'
-      
-        'where k.kul=s.id and k.status=t.id and trim(k.reu)=trim(r.reu) -' +
-        '- '#1091#1073#1088#1072#1090#1100' Trim '#1082#1086#1075#1076#1072' '#1087#1077#1088#1077#1081#1076#1105#1084' '#1085#1072' 3 '#1079#1085#1072#1095#1082#1091
+        'from scott.kart k join scott.k_lsk ks, scott.spul s, scott.statu' +
+        's t, scott.s_reu_trest r, scott.u_list u'
+      'where k.kul=s.id and k.status=t.id and k.reu=r.reu'
       ' and k.fk_tp=u.id(+)'
-      ''
+      ' and k.k_lsk_id=ks.id'
       'and nvl(:flt_reu_,k.reu)=k.reu'
       'and nvl(:flt_kul_,k.kul)=k.kul'
       'and nvl(:flt_nd_,k.nd)=k.nd'
@@ -1263,15 +1266,75 @@ object Form_list_kart: TForm_list_kart
         'and decode(:flt_k_lsk_id_, -1, k.k_lsk_id, :flt_k_lsk_id_)=k.k_l' +
         'sk_id'
       'and decode(:var3_, 0, u.cd, 1, '#39'LSK_TP_MAIN'#39')=u.cd'
-      'and (:var1_=0 or (:var1_=1 and k.psch<>8)) and (:var_=0'
-      'or (:var_=5 and k.dog_num like upper(:str1_)||'#39'%'#39')'
       ''
-      'or (:var_=6 and'
-      ' exists '
+      ':substExp1'
+      ''
+      ':substExp2'
+      ''
+      ':substExp3'
+      ''
+      ':substExp4'
+      ''
+      '*/'
+      ''
+      '/*'
+      ''
+      'select '
+      'null as btn, k.rowid, k.elsk, ks.elsd, k.dt_cr,'
       
-        '  (select * from scott.kart k1 where k1.lsk=k.lsk and upper(k1.f' +
-        'io) like '#39'%'#39'||upper(:str1_)||'#39'%'#39')'
-      '  ) '
+        'r.reu||'#39'-'#39'||r.name_reu as name_reu, k.reu, k.k_lsk_id, k.c_lsk_i' +
+        'd, k.lsk, k.lsk_ext, k.kul, s.name, ltrim(k.nd,'#39'0'#39') as n_nd, ltr' +
+        'im(k.kw,'#39'0'#39') as n_kw,'
+      'k.nd,k.kw, k.kfg,'
+      
+        'k.fio, k.k_im, k.k_ot, k.k_fam,k.psch, k.mgw,k.mhw, k.mel, k.pgw' +
+        ', k.phw, k.pel, k.pot, k.mot,'
+      
+        'k.et, k.kpr, k.kpr_ot, k.kpr_wr, k.kpr_wrp,k.ki, k.opl, k.ppl, k' +
+        '.komn, k.status, k.fk_deb_org,'
+      't.name as n_status, k.fk_distr,'
+      
+        'k.eksub1, k.eksub2, k.sgku, k.doppl, k.subs_cor, k.subs_cur, k.k' +
+        'ran1,'
+      'k.el, k.el1, case when k.subs_cur = 1 or  nvl(k.subs_cor,0) <>0 '
+      'then 1 else 0 end as subs_val, '
+      
+        'scott.init.get_nkom as nkom, k.sub_data, decode(k.psch, 0, '#39#1053#1086#1088#1084 +
+        #39','
+      
+        '1,'#39#1061'.'#1042'. '#1080' '#1043'.'#1042'.'#39', 2, '#39#1061'.'#1042'.'#39', 3, '#39#1043'.'#1042'.'#39') as psch_name, k.sch_el, k' +
+        '.house_id,'
+      'k.kan_sch, k.dog_num, k.schel_dt, k.psch_dt, '
+      'k.text,k.memo,k.schel_end,  k.polis, k.law_doc, k.law_doc_dt, '
+      'k.prvt_doc, k.prvt_doc_dt, k.fk_pasp_org, k.cpn, k.pn_dt,'
+      
+        'decode(mg1, '#39'000000'#39', '#39'...'#39', substr(mg1,1,4)||'#39'-'#39'||substr(mg1,5,' +
+        '2))  as mg1,'
+      
+        'decode(mg2, '#39'999999'#39', '#39'...'#39', substr(mg2,1,4)||'#39'-'#39'||substr(mg2,5,' +
+        '2))  as mg2,'
+      
+        's.name || '#39', '#39' || nvl(ltrim(k.nd, '#39'0'#39'), '#39'0'#39') || '#39'-'#39' ||nvl(ltrim(' +
+        'k.kw, '#39'0'#39'), '#39'0'#39') as adr, u.name as lsk_tp, u.cd as lsk_tp_cd, k.' +
+        'sel1, k.entr,'
+      'k.parent_lsk, k.fk_klsk_obj'
+      
+        'from scott.kart k, scott.k_lsk ks, scott.spul s, scott.status t,' +
+        ' scott.s_reu_trest r, scott.u_list u'
+      'where k.kul=s.id and k.status=t.id and k.reu=r.reu'
+      ' and k.fk_tp=u.id(+)'
+      ' and k.k_lsk_id=ks.id'
+      'and nvl(:flt_reu_,k.reu)=k.reu'
+      'and nvl(:flt_kul_,k.kul)=k.kul'
+      'and nvl(:flt_nd_,k.nd)=k.nd'
+      'and nvl(:flt_kw_,k.kw)=k.kw'
+      
+        'and decode(:flt_k_lsk_id_, -1, k.k_lsk_id, :flt_k_lsk_id_)=k.k_l' +
+        'sk_id'
+      'and decode(:var3_, 0, u.cd, 1, '#39'LSK_TP_MAIN'#39')=u.cd'
+      'and decode(:var1_, 1, k.psch, 999)<>8 '
+      'and (:var_=0'
+      'or (:var_=6 and upper(k.fio) like '#39'%'#39'||upper(:str1_)||'#39'%'#39')'
       'or (:var_=7 and'
       ' exists '
       
@@ -1283,17 +1346,20 @@ object Form_list_kart: TForm_list_kart
         'order by s.name, scott.utils.f_order(k.nd,6), scott.utils.f_orde' +
         'r(k.kw,7), decode(k.psch,8,1,9,1,0), decode(u.cd,'#39'LSK_TP_MAIN'#39',0' +
         ',1) --'#1074#1085#1080#1084#1072#1085#1080#1077'! '#1101#1090#1086' '#1089#1095#1080#1090#1072#1077#1090#1089#1103' '#1087#1086#1089#1083#1077#1076#1085#1077#1081' '#1089#1090#1088#1086#1095#1082#1086#1081', '#1080' '#1101#1090#1072' '#1089#1090#1088#1086#1082#1072' '#1091 +
-        #1076#1072#1083#1103#1077#1090#1089#1103' '#1080' '#1076#1086#1073#1072#1074#1083#1103#1077#1090#1089#1103' '#1087#1088#1086#1075#1088#1072#1084#1084#1085#1086' '#1080#1079' '#1092#1086#1088#1084#1099'!!!')
+        #1076#1072#1083#1103#1077#1090#1089#1103' '#1080' '#1076#1086#1073#1072#1074#1083#1103#1077#1090#1089#1103' '#1087#1088#1086#1075#1088#1072#1084#1084#1085#1086' '#1080#1079' '#1092#1086#1088#1084#1099'!!!'
+      ''
+      '*/')
     Optimize = False
     Variables.Data = {
-      0300000009000000050000003A5641525F030000000400000000000000000000
-      00060000003A564152315F03000000040000000100000000000000060000003A
-      535452315F050000000000000000000000090000003A464C545F5245555F0500
-      00000000000000000000090000003A464C545F4B554C5F050000000000000000
-      000000080000003A464C545F4B575F050000000000000000000000080000003A
-      464C545F4E445F0500000000000000000000000E0000003A464C545F4B5F4C53
-      4B5F49445F030000000000000000000000060000003A564152335F0300000004
-      0000000100000000000000}
+      030000000A000000090000003A464C545F5245555F0500000000000000000000
+      00090000003A464C545F4B554C5F050000000000000000000000080000003A46
+      4C545F4B575F050000000000000000000000080000003A464C545F4E445F0500
+      000000000000000000000E0000003A464C545F4B5F4C534B5F49445F03000000
+      0000000000000000060000003A564152335F0300000004000000010000000000
+      00000A0000003A5355425354455850310100000000000000000000000A000000
+      3A5355425354455850320100000000000000000000000A0000003A5355425354
+      455850330100000000000000000000000A0000003A5355425354455850340100
+      00000000000000000000}
     OracleDictionary.UseMessageTable = True
     QBEDefinition.AllowOperators = True
     QBEDefinition.QBEFieldDefs = {
@@ -1344,7 +1410,6 @@ object Form_list_kart: TForm_list_kart
     CommitOnPost = False
     CachedUpdates = True
     Session = DataModule1.OracleSession1
-    Active = True
     AfterOpen = OD_list_kartAfterOpen
     BeforeInsert = OD_list_kartBeforeInsert
     BeforeScroll = OD_list_kartBeforeScroll
@@ -1352,13 +1417,6 @@ object Form_list_kart: TForm_list_kart
     OnEditError = OD_list_kartEditError
     Left = 8
     Top = 32
-    object OD_list_kartLSK_TP: TStringField
-      DisplayLabel = #1058#1080#1087
-      DisplayWidth = 15
-      FieldName = 'LSK_TP'
-      Required = True
-      Size = 96
-    end
     object OD_list_kartBTN: TStringField
       DisplayLabel = ' '
       DisplayWidth = 2
@@ -1473,7 +1531,7 @@ object Form_list_kart: TForm_list_kart
     end
     object OD_list_kartK_LSK_ID: TFloatField
       DisplayLabel = 'KLSK '#1050#1074#1072#1088#1090#1080#1088#1099
-      DisplayWidth = 5
+      DisplayWidth = 13
       FieldName = 'K_LSK_ID'
     end
     object OD_list_kartHOUSE_ID: TFloatField
@@ -1557,17 +1615,6 @@ object Form_list_kart: TForm_list_kart
       FieldName = 'TEXT'
       Size = 35
     end
-    object OD_list_kartLSK_EXT: TStringField
-      DisplayWidth = 8
-      FieldName = 'LSK_EXT'
-      Size = 8
-    end
-    object OD_list_kartLSK_TP_CD: TStringField
-      DisplayWidth = 32
-      FieldName = 'LSK_TP_CD'
-      Required = True
-      Size = 32
-    end
     object OD_list_kartSEL1: TFloatField
       DisplayWidth = 10
       FieldName = 'SEL1'
@@ -1578,11 +1625,6 @@ object Form_list_kart: TForm_list_kart
       FieldName = 'PARENT_LSK'
       Size = 8
     end
-    object OD_list_kartELSK: TStringField
-      DisplayWidth = 10
-      FieldName = 'ELSK'
-      Size = 255
-    end
     object OD_list_kartFK_KLSK_OBJ: TFloatField
       DisplayLabel = 'KLSK '#1051#1080#1094'.'#1089#1095'.'
       DisplayWidth = 11
@@ -1592,6 +1634,33 @@ object Form_list_kart: TForm_list_kart
       DisplayWidth = 18
       FieldName = 'DT_CR'
       Required = True
+    end
+    object OD_list_kartLSK_TP_CD: TStringField
+      DisplayWidth = 32
+      FieldName = 'LSK_TP_CD'
+      Required = True
+      Visible = False
+      Size = 32
+    end
+    object OD_list_kartLSK_TP: TStringField
+      DisplayLabel = #1058#1080#1087
+      DisplayWidth = 15
+      FieldName = 'LSK_TP'
+      Required = True
+      Visible = False
+      Size = 96
+    end
+    object OD_list_kartLSK_EXT: TStringField
+      DisplayWidth = 8
+      FieldName = 'LSK_EXT'
+      Visible = False
+      Size = 8
+    end
+    object OD_list_kartELSK: TStringField
+      DisplayWidth = 10
+      FieldName = 'ELSK'
+      Visible = False
+      Size = 255
     end
     object OD_list_kartSUBS_COR: TFloatField
       DisplayLabel = #1057#1091#1073#1089'.'#1082#1086#1088#1088'.'
@@ -1824,7 +1893,7 @@ object Form_list_kart: TForm_list_kart
       'select * from scott.t_org t')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000032000000020000004944010000000000020000004344010000000000
+      0400000033000000020000004944010000000000020000004344010000000000
       08000000464B5F4F52475450010000000000040000004E414D45010000000000
       030000004E505001000000000001000000560100000000000900000050415245
       4E545F4944010000000000030000005245550100000000000500000054524553
@@ -1850,7 +1919,8 @@ object Form_list_kart: TForm_list_kart
       00004F4B544D4F01000000000008000000434F44455F44454201000000000009
       000000444F4C475F4E414D450100000000000A00000042414E4B5F464E414D45
       0100000000000300000047525001000000000009000000525F5343485F474953
-      0100000000000B000000444953545F5041595F5450010000000000}
+      0100000000000B000000444953545F5041595F54500100000000000800000041
+      44525F43415348010000000000}
     Session = DataModule1.OracleSession1
     Active = True
     Left = 240

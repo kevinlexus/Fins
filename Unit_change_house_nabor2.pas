@@ -4,23 +4,33 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, wwdblook, DB, OracleData, Mask, wwdbedit, cxGraphics,
-  cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit,
-  dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinCaramel, dxSkinCoffee,
-  dxSkinDarkRoom, dxSkinDarkSide, dxSkinFoggy, dxSkinGlassOceans,
-  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
-  dxSkinMcSkin, dxSkinMoneyTwins, dxSkinOffice2007Black,
-  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
-  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
-  dxSkinOffice2010Silver, dxSkinPumpkin, dxSkinSeven, dxSkinSharp,
-  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
-  dxSkinsDefaultPainters, dxSkinValentine, dxSkinXmas2008Blue, cxTextEdit,
+  Dialogs, StdCtrls, wwdblook, DB, OracleData, Mask, wwdbedit, 
+  cxControls, cxContainer, cxEdit,
+  
+  
+  
+  
+  
+  
+  
+  
+  cxTextEdit,
   cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit,
-  cxDBLookupComboBox, ExtCtrls, dxSkinBlueprint, dxSkinDevExpressDarkStyle,
-  dxSkinDevExpressStyle, dxSkinHighContrast, dxSkinMetropolis,
-  dxSkinMetropolisDark, dxSkinOffice2013DarkGray,
-  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinSevenClassic,
-  dxSkinSharpPlus, dxSkinTheAsphaltWorld, dxSkinVS2010, dxSkinWhiteprint;
+  cxDBLookupComboBox, ExtCtrls, cxGraphics, cxLookAndFeels,
+  cxLookAndFeelPainters, dxSkinsCore, dxSkinBlack, dxSkinBlue,
+  dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom,
+  dxSkinDarkSide, dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle,
+  dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary,
+  dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin,
+  dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinPumpkin,
+  dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
+  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
+  dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue;
 
 type
   TForm_change_house_nabor2 = class(TForm)
@@ -69,8 +79,8 @@ var
 
 implementation
 
-uses DM_module1, Unit_houses_nabor, Unit_Mainform, Unit_status, Utils,
-  Unit_form_kart, Unit_tree_objects, Unit_list_kart, Unit_tarif_usl;
+uses DM_module1, Unit_Mainform, Unit_status, Utils,
+  Unit_tree_objects, Unit_list_kart, Unit_tarif_usl;
 
 {$R *.dfm}
 
@@ -125,7 +135,7 @@ begin
     cbb2.Enabled:=False;
     //Уровень-Л/C
     if (state_ = 1) then
-      Caption:='Добавление услуги по л.с.';
+      Caption:='Добавление услуги по лиц.счету:'+Form_list_kart.OD_list_kart.FieldByName('lsk').AsString;
   end;
 
   if (state_ = 1) then
@@ -258,7 +268,8 @@ begin
     Key:= '.';
 
   if Key = #13 then
-    Button1.SetFocus;
+//    Button1.SetFocus;
+Windows.SetFocus(Button1.Handle);
 end;
 
 procedure TForm_change_house_nabor2.wwDBEdit4KeyPress(Sender: TObject;

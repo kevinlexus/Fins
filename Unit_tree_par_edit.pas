@@ -7,24 +7,40 @@ uses
   Dialogs, StdCtrls, ExtCtrls, Mask, DBCtrls, wwdbdatetimepicker, ComCtrls, DB,
   wwdblook, OracleData, Grids, Wwdbigrd, Wwdbgrid, wwcheckbox,
   wwclearbuttongroup, wwradiogroup, wwSpeedButton, wwDBNavigator,
-  wwclearpanel, Menus, cxGraphics, cxControls, cxLookAndFeels,
-  cxLookAndFeelPainters, cxStyles, dxSkinsCore, dxSkinBlack, dxSkinBlue,
-  dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom,
-  dxSkinDarkSide, dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle,
-  dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary,
-  dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin,
-  dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
-  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
-  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
-  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  wwclearpanel, Menus, cxControls, 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  cxFilter, cxEdit, 
+  cxDBData, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
+  cxGridLevel, cxClasses, cxGridCustomView, cxGrid, cxTextEdit, cxGraphics,
+  cxLookAndFeels, cxLookAndFeelPainters, cxStyles, dxSkinsCore,
+  dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee,
+  dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans,
+  dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky,
+  dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
   dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinPumpkin,
   dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
   dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
   dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter,
-  cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
-  cxDBData, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
-  cxGridLevel, cxClasses, cxGridCustomView, cxGrid, cxCheckBox, cxTextEdit;
+  cxCustomData, cxData, cxDataStorage, cxNavigator, cxCheckBox;
 
 const
   CM_APPLYFILTER = WM_USER + 1;
@@ -135,6 +151,12 @@ procedure TForm_tree_par_edit.Button1Click(Sender: TObject);
 var
   id_: Integer;
 begin
+
+ // на выходе по Ок из формы - применил кэшированое update, иначе тормозит сильно ред.18.07.2019
+ if not (OD_list.State in [dsBrowse]) then
+    OD_list.Post;
+ DataModule1.OracleSession1.ApplyUpdates([OD_list], true);
+
 //with Form_tree_objects.OD_spr_params do
 with OD_dst do
 begin
@@ -171,14 +193,16 @@ end;
 
 procedure TForm_tree_par_edit.wwDBDateTimePicker1CloseUp(Sender: TObject);
 begin
-  Button1.SetFocus;
+//  Button1.SetFocus;
+Windows.SetFocus(Button1.Handle);
 end;
 
 procedure TForm_tree_par_edit.DBEdit1KeyDown(Sender: TObject;
   var Key: Word; Shift: TShiftState);
 begin
  if Key=VK_Return then
-    Button1.SetFocus;
+//    Button1.SetFocus;
+Windows.SetFocus(Button1.Handle);
 end;
 
 procedure TForm_tree_par_edit.DBEdit2KeyDown(Sender: TObject;
@@ -192,7 +216,8 @@ end;
 procedure TForm_tree_par_edit.wwDBLookupCombo1CloseUp(Sender: TObject;
   LookupTable, FillTable: TDataSet; modified: Boolean);
 begin
-    Button1.SetFocus;
+//    Button1.SetFocus;
+Windows.SetFocus(Button1.Handle);
 
 end;
 
@@ -213,28 +238,32 @@ begin
     //параметр - varchar2
       PageControl1.ActivePageIndex:=1;
       TabSheet2.TabVisible:=true;
-      DBEdit1.SetFocus;
+//      DBEdit1.SetFocus;
+Windows.SetFocus(DBEdit1.Handle);
     end
     else if FieldByName('CDTP').AsInteger=2 then
     begin
     //параметр - date
       PageControl1.ActivePageIndex:=0;
       TabSheet1.TabVisible:=true;
-      wwDBDateTimePicker1.SetFocus;
+//      wwDBDateTimePicker1.SetFocus;
+Windows.SetFocus(wwDBDateTimePicker1.Handle);
     end
     else if FieldByName('CDTP').AsInteger=0 then
     begin
     //параметр - number
       PageControl1.ActivePageIndex:=2;
       TabSheet3.TabVisible:=true;
-      DBEdit2.SetFocus;
+//      DBEdit2.SetFocus;
+Windows.SetFocus(DBEdit2.Handle);
     end
     else if FieldByName('CDTP').AsInteger=3 then
     begin
     //параметр - Logical
       PageControl1.ActivePageIndex:=4;
       TabSheet5.TabVisible:=true;
-      wwRadioGroup1.SetFocus;
+//      wwRadioGroup1.SetFocus;
+Windows.SetFocus(wwRadioGroup1.Handle);
     end
     else if FieldByName('CDTP').AsInteger=4 then
     begin
@@ -244,14 +273,16 @@ begin
       wwDBLookupCombo1.LookupValue:=OD_list.FieldByName('name').AsString;
       PageControl1.ActivePageIndex:=3;
       TabSheet4.TabVisible:=true;
-      wwDBLookupCombo1.SetFocus;
+//      wwDBLookupCombo1.SetFocus;
+Windows.SetFocus(wwDBLookupCombo1.Handle);
     end
     else if FieldByName('CDTP').AsInteger=5 then
     begin
     //параметр - список из SQL запроса-выбор нескольких значений
       OD_list.Active:=True;
       TabSheet7.TabVisible:=true;
-      cxGrid1.SetFocus;
+//      cxGrid1.SetFocus;
+Windows.SetFocus(cxGrid1.Handle);
       Form_tree_par_edit.Height:=600;
     end
     else if FieldByName('CDTP').AsInteger=6 then
@@ -260,7 +291,8 @@ begin
       OD_list.Active:=True;
       PageControl1.ActivePageIndex:=5;
       TabSheet6.TabVisible:=true;
-      cxGrid1.SetFocus;
+//      cxGrid1.SetFocus;
+Windows.SetFocus(cxGrid1.Handle);
     end;
   end;
 
@@ -270,7 +302,8 @@ procedure TForm_tree_par_edit.wwDBDateTimePicker1KeyDown(Sender: TObject;
   var Key: Word; Shift: TShiftState);
 begin
  if Key=VK_Return then
-    Button1.SetFocus;
+//    Button1.SetFocus;
+Windows.SetFocus(Button1.Handle);
 
 end;
 
@@ -278,7 +311,8 @@ procedure TForm_tree_par_edit.wwDBLookupCombo1KeyDown(Sender: TObject;
   var Key: Word; Shift: TShiftState);
 begin
  if Key=VK_Return then
-    Button1.SetFocus;
+//    Button1.SetFocus;
+Windows.SetFocus(Button1.Handle);
 
 end;
 
@@ -293,6 +327,7 @@ begin
  OD_list.Post;
  OD_list.Next;
  end;
+ // на выходе по Ок из формы - применил кэшированое update, иначе тормозит сильно ред.18.07.2019
  OD_list.EnableControls;
 end;
 
@@ -307,9 +342,8 @@ begin
  OD_list.Post;
  OD_list.Next;
  end;
- cxGrid1.Refresh;
+ // на выходе по Ок из формы - применил кэшированое update, иначе тормозит сильно ред.18.07.2019
  OD_list.EnableControls;
-
 end;
 
 procedure TForm_tree_par_edit.cxGrid1DBTableView1InitEditValue(

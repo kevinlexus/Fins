@@ -1,6 +1,6 @@
 object Form_Main: TForm_Main
-  Left = 249
-  Top = 189
+  Left = 469
+  Top = 245
   Width = 880
   Height = 724
   Caption = #1044#1080#1088#1077#1082#1090
@@ -1050,6 +1050,9 @@ object Form_Main: TForm_Main
         Caption = 'DVB'
         OnClick = DVB1Click
       end
+    end
+    object ver2011: TMenuItem
+      Caption = 'ver 2.079'
     end
   end
   object ImageList1: TImageList

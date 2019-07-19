@@ -5,23 +5,37 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Buttons, StdCtrls, Mask, DBCtrlsEh, DBGridEh, DB,
-  OracleData, wwdblook, wwdbedit, Wwdbspin, ImgList, cxGraphics,
-  cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit,
-  dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel,
-  dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
-  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans,
-  dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky,
-  dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
-  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
-  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
-  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
-  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  OracleData, wwdblook, wwdbedit, Wwdbspin, ImgList, 
+  cxControls, cxContainer, cxEdit,
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  cxGroupBox,
+  cxRadioGroup, ExtCtrls, cxGraphics, cxLookAndFeels,
+  cxLookAndFeelPainters, dxSkinsCore, dxSkinBlack, dxSkinBlue,
+  dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom,
+  dxSkinDarkSide, dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle,
+  dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary,
+  dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin,
+  dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
   dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinPumpkin,
   dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
   dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
-  dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue, cxGroupBox,
-  cxRadioGroup, ExtCtrls;
+  dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue;
 
 type
   TForm_house_new_vvod = class(TForm)
@@ -66,7 +80,7 @@ var
 
 implementation
 
-uses DM_module1, Utils, Unit_house_vvod, Unit_list_kart;
+uses DM_module1, Utils, Unit_house_vvod;
 
 {$R *.dfm}
 
@@ -130,7 +144,8 @@ procedure TForm_house_new_vvod.wwDBLookupCombo1KeyPress(Sender: TObject;
 begin
  try
   if Key = #13 then
-    wwDBLookupCombo3.SetFocus;
+//    wwDBLookupCombo3.SetFocus;
+Windows.SetFocus(wwDBLookupCombo3.Handle);
   except
   end;
 end;
@@ -145,7 +160,8 @@ procedure TForm_house_new_vvod.wwDBLookupCombo3KeyPress(Sender: TObject;
 begin
  try
   if Key = #13 then
-    wwDBLookupCombo2.SetFocus;
+//    wwDBLookupCombo2.SetFocus;
+Windows.SetFocus(wwDBLookupCombo2.Handle);
   except
   end;
 end;
@@ -155,7 +171,8 @@ procedure TForm_house_new_vvod.wwDBLookupCombo2KeyPress(Sender: TObject;
 begin
  try
   if Key = #13 then
-    wwDBSpinEdit1.SetFocus;
+//    wwDBSpinEdit1.SetFocus;
+Windows.SetFocus(wwDBSpinEdit1.Handle);
   except
   end;
 end;

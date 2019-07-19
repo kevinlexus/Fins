@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, OracleNavigator, DB, OracleData, StdCtrls, Grids,
+  Dialogs, ExtCtrls, DB, OracleData, StdCtrls, Grids,
   Wwdbigrd, Wwdbgrid, wwSpeedButton, wwDBNavigator, wwclearpanel,
   wwdbdatetimepicker, Mask, wwdbedit, Wwdotdot, Wwdbcomb;
 
@@ -61,7 +61,7 @@ var
 
 implementation
 
-uses Unit_tree_par_edit, Unit_Mainform, Unit_tree_objects;
+uses Unit_tree_par_edit;
 
 {$R *.dfm}
 
@@ -154,7 +154,8 @@ begin
   OD_spr_params.Active:=False;
   OD_spr_params.Active:=True;
   OD_spr_params.Locate('id', id_, []);
-  wwDBGrid2.SetFocus;
+//  wwDBGrid2.SetFocus;
+Windows.SetFocus(wwDBGrid2.Handle);
   wwDBGrid2.Repaint;
 end;
 
