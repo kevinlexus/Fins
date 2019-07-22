@@ -145,16 +145,16 @@ begin
   end
   else if (state_ = 2) then
   begin
-    old_org_:=DM_OLap.OD_data.FieldByName('org').AsInteger;
-    old_koeff_:=DM_OLap.OD_data.FieldByName('koeff').AsFloat;
-    old_norm_:=DM_OLap.OD_data.FieldByName('norm').AsFloat;
+    old_org_:=DM_Olap.Uni_data.FieldByName('org').AsInteger;
+    old_koeff_:=DM_Olap.Uni_data.FieldByName('koeff').AsFloat;
+    old_norm_:=DM_Olap.Uni_data.FieldByName('norm').AsFloat;
     wwDBLookupCombo1.Enabled:=False;
     wwDBLookupCombo1.Value:=
-      DM_OLap.OD_data.FieldByName('usl').AsString;
+      DM_Olap.Uni_data.FieldByName('usl').AsString;
     wwDBLookupCombo2.Value:=
-      DM_OLap.OD_data.FieldByName('org').AsString;
-    wwDBEdit3.Text:=DM_OLap.OD_data.FieldByName('koeff').AsString;
-    wwDBEdit1.Text:=DM_OLap.OD_data.FieldByName('norm').AsString;
+      DM_Olap.Uni_data.FieldByName('org').AsString;
+    wwDBEdit3.Text:=DM_Olap.Uni_data.FieldByName('koeff').AsString;
+    wwDBEdit1.Text:=DM_Olap.Uni_data.FieldByName('norm').AsString;
   end;
 
   end;

@@ -28,7 +28,7 @@ uses
   dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue, cxStyles,
   dxSkinscxPCPainter, cxCustomData, cxFilter, cxData, cxDataStorage,
   cxNavigator, cxDBData, cxGridLevel, cxClasses, cxGridCustomView,
-  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid;
+  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid, Uni;
 type
   TForm_tree_objects = class(TForm)
     DBGridEh1: TDBGridEh;
@@ -67,6 +67,61 @@ type
     dlgOpen1: TOpenDialog;
     Timer2: TTimer;
     wwDBGrid1: TwwDBGrid;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    cxGrid1: TcxGrid;
+    cxGrid1DBTableView1ID: TcxGridDBColumn;
+    cxGrid1DBTableView1CD: TcxGridDBColumn;
+    cxGrid1DBTableView1FK_ORGTP: TcxGridDBColumn;
+    cxGrid1DBTableView1NAME: TcxGridDBColumn;
+    cxGrid1DBTableView1NPP: TcxGridDBColumn;
+    cxGrid1DBTableView1V: TcxGridDBColumn;
+    cxGrid1DBTableView1PARENT_ID: TcxGridDBColumn;
+    cxGrid1DBTableView1REU: TcxGridDBColumn;
+    cxGrid1DBTableView1TREST: TcxGridDBColumn;
+    cxGrid1DBTableView1UCH: TcxGridDBColumn;
+    cxGrid1DBTableView1ADR: TcxGridDBColumn;
+    cxGrid1DBTableView1INN: TcxGridDBColumn;
+    cxGrid1DBTableView1MANAGER: TcxGridDBColumn;
+    cxGrid1DBTableView1BUH: TcxGridDBColumn;
+    cxGrid1DBTableView1RASCHET_SCHET: TcxGridDBColumn;
+    cxGrid1DBTableView1K_SCHET: TcxGridDBColumn;
+    cxGrid1DBTableView1KOD_OKONH: TcxGridDBColumn;
+    cxGrid1DBTableView1KOD_OGRN: TcxGridDBColumn;
+    cxGrid1DBTableView1BIK: TcxGridDBColumn;
+    cxGrid1DBTableView1PHONE: TcxGridDBColumn;
+    cxGrid1DBTableView1KPP: TcxGridDBColumn;
+    cxGrid1DBTableView1BANK: TcxGridDBColumn;
+    cxGrid1DBTableView1ID_EXP: TcxGridDBColumn;
+    cxGrid1DBTableView1ADR_RECIP: TcxGridDBColumn;
+    cxGrid1DBTableView1AUTHORIZED_DIR: TcxGridDBColumn;
+    cxGrid1DBTableView1AUTHORIZED_BUH: TcxGridDBColumn;
+    cxGrid1DBTableView1AUTH_DIR_DOC: TcxGridDBColumn;
+    cxGrid1DBTableView1AUTH_BUH_DOC: TcxGridDBColumn;
+    cxGrid1DBTableView1OKPO: TcxGridDBColumn;
+    cxGrid1DBTableView1VER_CD: TcxGridDBColumn;
+    cxGrid1DBTableView1FULL_NAME: TcxGridDBColumn;
+    cxGrid1DBTableView1PHONE2: TcxGridDBColumn;
+    cxGrid1DBTableView1PARENT_ID2: TcxGridDBColumn;
+    cxGrid1DBTableView1FK_ORG2: TcxGridDBColumn;
+    cxGrid1DBTableView1BANK_CD: TcxGridDBColumn;
+    cxGrid1DBTableView1ADR_WWW: TcxGridDBColumn;
+    cxGrid1DBTableView1EMAIL: TcxGridDBColumn;
+    cxGrid1DBTableView1HEAD_NAME: TcxGridDBColumn;
+    cxGrid1DBTableView1RASCHET_SCHET2: TcxGridDBColumn;
+    cxGrid1DBTableView1POST_INDX: TcxGridDBColumn;
+    cxGrid1DBTableView1R_SCH_ADDIT: TcxGridDBColumn;
+    cxGrid1DBTableView1FK_BILL_VAR: TcxGridDBColumn;
+    cxGrid1DBTableView1AOGUID: TcxGridDBColumn;
+    cxGrid1DBTableView1OKTMO: TcxGridDBColumn;
+    cxGrid1DBTableView1CODE_DEB: TcxGridDBColumn;
+    cxGrid1DBTableView1DOLG_NAME: TcxGridDBColumn;
+    cxGrid1DBTableView1BANK_FNAME: TcxGridDBColumn;
+    cxGrid1DBTableView1GRP: TcxGridDBColumn;
+    cxGrid1DBTableView1R_SCH_GIS: TcxGridDBColumn;
+    cxGrid1DBTableView1DIST_PAY_TP: TcxGridDBColumn;
+    cxGrid1DBTableView1ADR_CASH: TcxGridDBColumn;
+    cxGrid1DBTableView1ROWID: TcxGridDBColumn;
     procedure saveXML;
     procedure saveMap;
     procedure SetXMLDocNode2;
@@ -108,6 +163,12 @@ type
     procedure imp_gis_LS;
     procedure imp_gis_ELS;
     procedure Timer2Timer(Sender: TObject);
+    procedure repTypeOlap(action_: Integer);
+    procedure repTypeFastRep(rep_cd_: string);
+    procedure repTypeDBF(path, fname: string);
+    procedure repTypeTXT(path, fname: string);
+    procedure repTypeGrid;
+    procedure DBGridEh1DblClick(Sender: TObject);
   private
     Doc, Doc1: IXMLDomDocument;
     root, root1: IXMLDOMElement;
@@ -127,7 +188,6 @@ type
       show_paychk_, show_sel_org_, show_sel_oper_, show_deb_: Integer;
     OD_reports2: TOracleDataset;
     Cube_, Map_: TComponent;
-    fr_: TComponent;
     isTimerEvent: Boolean;
   end;
 
@@ -145,79 +205,79 @@ procedure TForm_tree_objects.prepData;
 begin
   Application.CreateForm(TForm_status, Form_status);
   Form_status.Update;
-  DM_Olap.OD_data.Active := false;
+  DM_Olap.Uni_data.Active := false;
   //Открываем зависимые датасеты, для отчетов
   //форма для контроля тарифов
-  if (rep_cd_ = '78') and (DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger = 3)
-    then
+  if (rep_cd_ = '78') and (DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger
+    = 3) then
   begin
-    DM_Olap.OD_nabor_lsk.Master := DM_Olap.OD_data;
-    DM_Olap.OD_nabor_lsk.Active := True;
+    DM_Olap.Uni_nabor_lsk.MasterSource := DM_Olap.Uni_data.DataSource;
+    DM_Olap.Uni_nabor_lsk.Active := True;
   end
   else if (rep_cd_ <> '78') or ((rep_cd_ = '78') and
     (DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger <> 3)) then
   begin
     //необходимо явно убирать Master, иначе датасет продолжает ссылаться, с ошибкой...
-    DM_Olap.OD_nabor_lsk.Master := nil;
-    DM_Olap.OD_nabor_lsk.Active := False;
+    //DM_Olap.Uni_nabor_lsk.Master := nil;
+    DM_Olap.Uni_nabor_lsk.Active := False;
   end;
 
   //Открываем зависимые датасеты, для отчетов
   //отчет - реестр для УСЗН
   if (rep_cd_ = '79') then
   begin
-    DM_OLap.OD_c_kart_pr.Master := DM_OLap.OD_data;
-    DM_OLap.OD_c_kart_pr.Active := True;
+    DM_OLap.Uni_c_kart_pr.MasterSource := DM_Olap.Uni_data.DataSource;
+    DM_OLap.Uni_c_kart_pr.Active := True;
   end
   else if (rep_cd_ <> '78') then
   begin
     //необходимо явно убирать Master, иначе датасет продолжает ссылаться, с ошибкой...
-    DM_OLap.OD_c_kart_pr.Master := nil;
-    DM_OLap.OD_c_kart_pr.Active := False;
+    //DM_OLap.OD_c_kart_pr.Master := nil;
+    DM_OLap.Uni_c_kart_pr.Active := False;
   end;
 
   //Открываем зависимые датасеты, для отчетов
   //отчет - список для администрации
   if (rep_cd_ = '83') then
   begin
-    DM_OLap.OD_detail.Active := False;
-    DM_OLap.OD_detail.Master := DM_OLap.OD_data;
-    DM_OLap.OD_detail.Active := True;
+    DM_OLap.Uni_detail.Active := False;
+    DM_OLap.Uni_detail.MasterSource := DM_Olap.Uni_data.DataSource;
+    DM_OLap.Uni_detail.Active := True;
   end
   else if (rep_cd_ <> '83') then
   begin
     //необходимо явно убирать Master, иначе датасет продолжает ссылаться, с ошибкой...
-    DM_OLap.OD_detail.Master := nil;
-    DM_OLap.OD_detail.Active := False;
+    //DM_OLap.Uni_detail.MasterSource := nil;
+    DM_OLap.Uni_detail.Active := False;
   end;
 
   if wwDBLookupCombo4.LookupValue <> '' then
-    DM_Olap.OD_data.SetVariable('org_', wwDBLookupCombo4.LookupValue)
+    DM_Olap.Uni_data.Params.ParamByName('org_').Value :=
+      StrToInt(wwDBLookupCombo4.LookupValue)
   else
-    DM_Olap.OD_data.SetVariable('org_', null);
+    DM_Olap.Uni_data.Params.ParamByName('org_').Value := null;
 
   if wwDBLookupCombo3.LookupValue <> '' then
-    DM_Olap.OD_data.SetVariable('oper_', wwDBLookupCombo3.LookupValue)
+    DM_Olap.Uni_data.Params.ParamByName('oper_').AsString :=
+      wwDBLookupCombo3.LookupValue
   else
-    DM_Olap.OD_data.SetVariable('oper_', null);
+    DM_Olap.Uni_data.Params.ParamByName('oper_').Value := null;
 
   //Возможность детализации
   if can_detail_ = 1 then
-    DM_Olap.OD_data.SetVariable('det_', StrToInt(wwDBLookupCombo2.LookupValue));
+    DM_Olap.Uni_data.Params.ParamByName('det_').AsInteger :=
+      StrToInt(wwDBLookupCombo2.LookupValue);
 
-//  if rep_cd_ = '56' then
-//    DM_Olap.OD_data.SetVariable('spk_id_', StrToInt(wwDBLookupCombo1.LookupValue));
-
-  DM_Olap.OD_data.SetVariable('cd_', rep_cd_);
+  DM_Olap.Uni_data.Params.ParamByName('cd_').AsString := rep_cd_;
 
   {  if rep_cd_ = '69' then
   begin
   //Задолжники
-    DM_Olap.OD_data.SetVariable('n1_', ComboBox2.ItemIndex);
+    DM_Olap.Uni_data.SetVariable('n1_', ComboBox2.ItemIndex);
     if wwDBEdit1.Text <> '' then
-      DM_Olap.OD_data.SetVariable('n2_', StrToInt(wwDBEdit1.Text))
+      DM_Olap.Uni_data.SetVariable('n2_', StrToInt(wwDBEdit1.Text))
     else
-      DM_Olap.OD_data.SetVariable('n2_', 0);
+      DM_Olap.Uni_data.SetVariable('n2_', 0);
   end;}
 
 {  if rep_cd_ = '14' then
@@ -225,11 +285,11 @@ begin
     //показывать ли промежуточное сальдо по месяцам
     if CheckBox2.Checked = true then
     begin
-      DM_Olap.OD_data.SetVariable('show_sal_', 1);
+      DM_Olap.Uni_data.SetVariable('show_sal_', 1);
     end
     else
     begin
-      DM_Olap.OD_data.SetVariable('show_sal_', 0);
+      DM_Olap.Uni_data.SetVariable('show_sal_', 0);
     end;
   end;}
 
@@ -239,42 +299,42 @@ begin
     //используем ту же show_sal_
     if CheckBox3.Checked = true then
     begin
-      DM_Olap.OD_data.SetVariable('show_sal_', 1);
+      DM_Olap.Uni_data.SetVariable('show_sal_', 1);
     end
     else
     begin
-      DM_Olap.OD_data.SetVariable('show_sal_', 0);
+      DM_Olap.Uni_data.SetVariable('show_sal_', 0);
     end;
   end;}
 
   if CheckBox5.Checked = true then
   begin
-    DM_Olap.OD_data.SetVariable('mg_', null);
-    DM_Olap.OD_data.SetVariable('mg1_', null);
-    DM_Olap.OD_data.SetVariable('dat_',
-      DBLookupComboBox5.KeyValue);
-    DM_Olap.OD_data.SetVariable('dat1_',
-      DBLookupComboBox6.KeyValue);
+    DM_Olap.Uni_data.Params.ParamByName('mg_').Value := null;
+    DM_Olap.Uni_data.Params.ParamByName('mg1_').Value := null;
+    DM_Olap.Uni_data.Params.ParamByName('dat_').AsDate :=
+      DBLookupComboBox5.KeyValue;
+    DM_Olap.Uni_data.Params.ParamByName('dat1_').AsDate :=
+      DBLookupComboBox6.KeyValue;
   end
   else
   begin
-    DM_Olap.OD_data.SetVariable('dat_', null);
-    DM_Olap.OD_data.SetVariable('dat1_', null);
-    DM_Olap.OD_data.SetVariable('mg_',
-      DBLookupComboBox5.KeyValue);
+    DM_Olap.Uni_data.Params.ParamByName('dat_').Value := null;
+    DM_Olap.Uni_data.Params.ParamByName('dat1_').Value := null;
+    DM_Olap.Uni_data.Params.ParamByName('mg_').AsString :=
+      DBLookupComboBox5.KeyValue;
     if two_periods_ = 1 then
-      DM_Olap.OD_data.SetVariable('mg1_',
-        DBLookupComboBox6.KeyValue)
+      DM_Olap.Uni_data.Params.ParamByName('mg1_').AsString :=
+        DBLookupComboBox6.KeyValue
     else
-      DM_Olap.OD_data.SetVariable('mg1_',
-        DBLookupComboBox5.KeyValue);
+      DM_Olap.Uni_data.Params.ParamByName('mg1_').AsString :=
+        DBLookupComboBox5.KeyValue;
   end;
 
   {  if have_date_ = 1 then
     begin
-      DM_Olap.OD_data.SetVariable('dat2_',
+      DM_Olap.Uni_data.SetVariable('dat2_',
          wwDBDateTimePicker1.Date);
-      DM_Olap.OD_data.SetVariable('dat3_',
+      DM_Olap.Uni_data.SetVariable('dat3_',
          wwDBDateTimePicker2.Date);
     end;}
 
@@ -283,15 +343,15 @@ begin
     if sel_many_ = 0 then
     begin
       //Старый вызов процедуры (выбор одного объекта)
-      DM_Olap.OD_data.SetVariable('reu_',
-        DM_Olap.MemTableEh2.FieldByName('reu').AsString);
-      DM_Olap.OD_data.SetVariable('kul_',
-        DM_Olap.MemTableEh2.FieldByName('kul').AsString);
-      DM_Olap.OD_data.SetVariable('nd_',
-        DM_Olap.MemTableEh2.FieldByName('nd').AsString);
-      DM_Olap.OD_data.SetVariable('p_house',
-        DM_Olap.MemTableEh2.FieldByName('fk_house').AsInteger);
-      DM_Olap.OD_data.SetVariable('var_', 3);
+      DM_Olap.Uni_data.Params.ParamByName('reu_').AsString :=
+        DM_Olap.MemTableEh2.FieldByName('reu').AsString;
+      DM_Olap.Uni_data.Params.ParamByName('kul_').AsString :=
+        DM_Olap.MemTableEh2.FieldByName('kul').AsString;
+      DM_Olap.Uni_data.Params.ParamByName('nd_').AsString :=
+        DM_Olap.MemTableEh2.FieldByName('nd').AsString;
+      DM_Olap.Uni_data.Params.ParamByName('p_house').AsInteger :=
+        DM_Olap.MemTableEh2.FieldByName('fk_house').AsInteger;
+      DM_Olap.Uni_data.Params.ParamByName('var_').AsInteger := 3;
     end;
   end
   else if DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger = 2 then
@@ -299,9 +359,9 @@ begin
     if sel_many_ = 0 then
     begin
       //Старый вызов процедуры (выбор одного объекта)
-      DM_Olap.OD_data.SetVariable('reu_',
-        DM_Olap.MemTableEh2.FieldByName('reu').AsString);
-      DM_Olap.OD_data.SetVariable('var_', 2);
+      DM_Olap.Uni_data.Params.ParamByName('reu_').AsString :=
+        DM_Olap.MemTableEh2.FieldByName('reu').AsString;
+      DM_Olap.Uni_data.Params.ParamByName('var_').AsInteger := 2;
     end;
   end
   else if DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger = 1 then
@@ -309,18 +369,18 @@ begin
     if sel_many_ = 0 then
     begin
       //Старый вызов процедуры (выбор одного объекта)
-      DM_Olap.OD_data.SetVariable('trest_',
-        DM_Olap.MemTableEh2.FieldByName('trest').AsString);
-      DM_Olap.OD_data.SetVariable('var_', 1);
+      DM_Olap.Uni_data.Params.ParamByName('trest_').AsString :=
+        DM_Olap.MemTableEh2.FieldByName('trest').AsString;
+      DM_Olap.Uni_data.Params.ParamByName('var_').AsInteger := 1;
     end;
   end
   else if DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger = 0 then
   begin
-    DM_Olap.OD_data.SetVariable('var_', 0);
+    DM_Olap.Uni_data.Params.ParamByName('var_').AsInteger := 0;
   end;
 
-  //  DM_Olap.OD_data.Active:=false;
-  DM_Olap.OD_data.Active := true;
+  DM_Olap.Uni_Data.Active := False;
+  DM_Olap.Uni_Data.Active := True;
   Form_status.Close;
 end;
 
@@ -341,7 +401,8 @@ begin
 
     //Может ли детализироваться?
     if can_detail_ = 0 then
-      SetVariable('level_id_', DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger)
+      SetVariable('level_id_',
+        DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger)
     else
       SetVariable('level_id_', StrToInt(wwDBLookupCombo2.LookupValue));
     Open;
@@ -435,7 +496,8 @@ begin
     if DBLookupComboBox5.KeyValue = DBLookupComboBox6.KeyValue then
       period_str_ := 'за ' + DM_OLap.OD_dat1.FieldByName('mg1').AsString
     else
-      period_str_ := 'за период с ' + DM_OLap.OD_dat1.FieldByName('mg1').AsString +
+      period_str_ := 'за период с ' + DM_OLap.OD_dat1.FieldByName('mg1').AsString
+        +
         ' по ' +
         DM_OLap.OD_dat2.FieldByName('mg1').AsString;
   end
@@ -447,7 +509,8 @@ begin
     else if DBLookupComboBox6.KeyValue = null then
       period_str_ := 'за ' + DM_OLap.OD_mg1.FieldByName('mg2').AsString
     else
-      period_str_ := 'за период с ' + DM_OLap.OD_mg1.FieldByName('mg1').AsString + ' по '
+      period_str_ := 'за период с ' + DM_OLap.OD_mg1.FieldByName('mg1').AsString
+        + ' по '
         +
         DM_OLap.OD_mg2.FieldByName('mg1').AsString;
   end;
@@ -484,7 +547,8 @@ begin
       SetVariable('id_', rep_id_);
       //Может ли детализироваться?
       if can_detail_ = 0 then
-        SetVariable('level_id_', DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger)
+        SetVariable('level_id_',
+          DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger)
       else
         SetVariable('level_id_', StrToInt(wwDBLookupCombo2.LookupValue));
       Open;
@@ -551,10 +615,13 @@ begin
     end;
 
     //наименование Объекта в отчёте
-    obj_ := '''' + ', по ' + DM_Olap.MemTableEh2.FieldByName('name').AsString + '''';
+    obj_ := '''' + ', по ' + DM_Olap.MemTableEh2.FieldByName('name').AsString +
+      '''';
     if DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger = 3 then
-      objexcel_ := ', по дому ' + DM_Olap.MemTableEh2.FieldByName('name').AsString
-    else if DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger in [0, 1, 2] then
+      objexcel_ := ', по дому ' +
+        DM_Olap.MemTableEh2.FieldByName('name').AsString
+    else if DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger in [0, 1, 2]
+      then
       objexcel_ := ', по Организации ' +
         DM_Olap.MemTableEh2.FieldByName('name').AsString;
 
@@ -566,307 +633,355 @@ begin
     if (DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger <=
       max_level_) and (rep_type_ = 0) then
     begin
-
-      if FF('Form_olap', 0) = 1 then
-      begin
-        //OLAP отчет
-        Form_olap.PVDimToolBar1.Visible := true;
-        Form_olap.PVColToolBar1.Visible := true;
-        Form_olap.PVRowToolBar1.Visible := true;
-        Form_olap.PivotGrid1.Visible := true;
-        Form_olap.PVMeasureToolBar1.Visible := true;
-
-        Cube_ := Form_olap.FindComponent('PivotCube' + rep_cd_);
-        Map_ := Form_olap.FindComponent('PivotMap' + rep_cd_);
-
-        if action_ = 0 then
-        begin
-          //Загрузить данные
-          TPivotCube(Cube_).Active := False;
-        end
-        else
-        begin
-          //Добавить данные
-          TPivotCube(Cube_).CanUpgrade := true;
-        end;
-
-        Form_olap.PivotGrid1.Map := TPivotMap(Map_);
-        Form_olap.PVDimToolBar1.Map := TPivotMap(Map_);
-        Form_olap.PVColToolBar1.Map := TPivotMap(Map_);
-        Form_olap.PVRowToolBar1.Map := TPivotMap(Map_);
-        Form_olap.PVMeasureToolBar1.Map := TPivotMap(Map_);
-
-        //подготовка данных
-        Form_olap.Button4.Visible := true;
-        Form_olap.Update;
-        prepData;
-
-        if DM_Olap.OD_data.RecordCount = 0 then
-          msg2('Нет информации!', 'Внимание!',
-            MB_OK + MB_ICONSTOP)
-        else
-        begin
-          setSize(0);
-          if action_ = 0 then
-          begin
-            //Загрузить данные
-            TPivotCube(Cube_).Active := True;
-          end
-          else
-          begin
-            //Добавить данные
-            TPivotCube(Cube_).Build;
-          end;
-        end;
-
-        //Раскрывать ли ветки PivotGrid-а
-        if (expand_row_ = 1) and (expand_col_ = 1) then
-          Form_olap.PivotGrid1.ExpandAll(True, True)
-        else if (expand_row_ = 1) and (expand_col_ = 0) then
-          Form_olap.PivotGrid1.ExpandAll(True, False)
-        else if (expand_row_ = 0) and (expand_col_ = 1) then
-          Form_olap.PivotGrid1.ExpandAll(False, True)
-        else if (expand_row_ = 0) and (expand_col_ = 0) then
-          Form_olap.PivotGrid1.ExpandAll(False, False);
-
-      end;
-      Form_olap.Button4.Visible := false;
-      Form_olap.Update;
-
+      // OLAP отчет
+      repTypeOlap(action_);
     end
     else if (DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger <=
       max_level_) and (rep_type_ = 1) then
     begin
       //Fastreport отчет
-      fr_ := Form_olap.FindComponent('frxReport' + rep_cd_);
-
-      //подготовка данных
-      Form_olap.Button4.Visible := true;
-      prepData;
-      Form_olap.Button4.Visible := false;
-
-      if DM_Olap.OD_data.RecordCount = 0 then
-      begin
-        msg2('Нет информации!', 'Внимание!',
-          MB_OK + MB_ICONSTOP);
-        SetSize(1);
-      end
-      else
-      begin
-        Application.CreateForm(TForm_status, Form_status);
-        Form_status.Update;
-        if frx_fname_ <> '' then
-        begin
-          //отчет, базирующийся на одном, универсальном датасете
-          fr_ := Form_olap.FindComponent('frxReport_base');
-          try
-            TfrxReport(fr_).LoadFromFile(Form_main.exepath_ + '\' + frx_fname_,
-              true);
-          except
-            msg2('Не найден файл отчета ' + frx_fname_, 'Внимание!',
-              MB_OK + MB_ICONSTOP);
-            Exit;
-          end;
-        end;
-
-        if fr_ = nil then
-        begin
-          msg2('Не найден отчет ' + 'frxReport' + rep_cd_, 'Внимание!',
-            MB_OK + MB_ICONSTOP);
-          Exit;
-        end;
-
-        //наименование Объекта в отчёте
-        TfrxReport(fr_).Variables['obj_'] := obj_;
-
-        //Установить период
-        TfrxReport(fr_).Variables['period_'] := '''' + period_str_ + '''';
-
-        if (rep_cd_ = '64') then
-        begin
-          //Установить период
-          TfrxReport(fr_).Variables['dt1_'] :=
-            DataModule1.OraclePackage1.CallDateFunction
-            ('scott.UTILS.getS_date_param', ['REP_DT_BR1']);
-          ;
-          TfrxReport(fr_).Variables['dt2_'] :=
-            DataModule1.OraclePackage1.CallDateFunction
-            ('scott.UTILS.getS_date_param', ['REP_DT_BR2']);
-          ;
-        end;
-
-        if (rep_cd_ = '73') or (rep_cd_ = '74') then
-        begin
-          //Установить период
-          TfrxReport(fr_).Variables['dt1_'] :=
-            DataModule1.OraclePackage1.CallDateFunction
-            ('scott.UTILS.getS_date_param', ['REP_DT_PROP1']);
-          ;
-          TfrxReport(fr_).Variables['dt2_'] :=
-            DataModule1.OraclePackage1.CallDateFunction
-            ('scott.UTILS.getS_date_param', ['REP_DT_PROP2']);
-          ;
-          //Установить параметр отчета
-          if DataModule1.OraclePackage1.CallIntegerFunction
-            ('scott.UTILS.getS_list_param', ['REP_PROP_VAR']) = 0 then
-            TfrxReport(fr_).Variables['var_'] := QuotedStr('прописанным')
-          else
-            TfrxReport(fr_).Variables['var_'] := QuotedStr('выписанным');
-        end;
-
-        if (rep_cd_ = '69') or (rep_cd_ = '82') then
-        begin
-          //Установить кол-во месяцев или рублей
-          if (DataModule1.OraclePackage1.CallIntegerFunction
-            ('scott.UTILS.getS_list_param', ['REP_DEB_VAR']) = 0) then
-            TfrxReport(fr_).Variables['txt_'] :=
-              QuotedStr(FloatToStr(DataModule1.OraclePackage1.CallFloatFunction
-              ('scott.UTILS.getS_int_param', ['REP_DEB_MONTH'])) + ' мес')
-          else
-            TfrxReport(fr_).Variables['txt_'] :=
-              QuotedStr(FloatToStr(DataModule1.OraclePackage1.CallFloatFunction
-              ('scott.UTILS.getS_int_param', ['REP_DEB_SUMMA'])) + ' руб.');
-        end;
-
-        if rep_cd_ = '61' then
-        begin
-          //наименование операции в отчёте
-          if wwDBLookupCombo4.LookupValue = '' then
-          begin
-            TfrxReport(fr_).Variables['oper_'] := '''' + ', по всем операциям' +
-              '''';
-          end
-          else
-          begin
-            TfrxReport(fr_).Variables['oper_'] := '''' + ', по операции: ' +
-              wwDBLookupCombo4.Text + '''';
-          end;
-
-          //наименование организации в отчёте
-          if wwDBLookupCombo3.LookupValue <> '' then
-          begin
-            TfrxReport(fr_).Variables['org_'] := '''' + ', по организации: ' +
-              wwDBLookupCombo3.Text + '''';
-          end
-          else
-          begin
-            TfrxReport(fr_).Variables['org_'] := '''' + ', по всем организациям'
-              + '''';
-          end;
-        end;
-
-        TfrxReport(fr_).PrepareReport(true);
-        Form_status.close;
-        Form_main.Panel2.Width := 0;
-        TfrxReport(fr_).ShowPreparedReport;
-        SetSize(1);
-
-        if FF('Form_olap', 0) = 1 then
-        begin
-          Form_olap.PVDimToolBar1.Visible := false;
-          Form_olap.PVColToolBar1.Visible := false;
-          Form_olap.PVRowToolBar1.Visible := false;
-          Form_olap.PivotGrid1.Visible := false;
-          Form_olap.PVMeasureToolBar1.Visible := false;
-          Form_olap.Button3.Visible := false;
-        end;
-      end;
-
+      repTypeFastrep(rep_cd_);
     end
     else if (DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger <=
       max_level_) and (rep_type_ = 2) then
     begin
-      //подготовка данных
-      Form_olap.Button4.Visible := true;
-      prepData;
-      Form_olap.Button4.Visible := false;
-
-      if DM_Olap.OD_data.RecordCount = 0 then
-      begin
-        msg2('Нет информации!', 'Внимание!',
-          MB_OK + MB_ICONSTOP);
-        SetSize(1);
-      end
-      else
-      begin
-        Application.CreateForm(TForm_status, Form_status);
-        Form_status.Update;
-        //Выгрузка в DBF
-        err_ := exp_to_dbf(DM_Olap.OD_data, str1_ + fname_);
-        Form_status.close;
-        SetSize(1);
-        if err_ = 0 then
-          msg2('Выгружено в ' + str1_ + fname_, 'Внимание', MB_OK +
-            MB_ICONINFORMATION)
-        else
-          msg2('Произошли ошибки во время выгрузки файла', 'Внимание', MB_OK +
-            MB_ICONINFORMATION);
-      end;
+      // DBF отчет
+      repTypeDBF(str1_, fname_);
     end
     else if (DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger <=
       max_level_) and (rep_type_ = 3) then
     begin
-      //подготовка данных
-      Form_olap.Button4.Visible := true;
-      prepData;
-      Form_olap.Button4.Visible := false;
-
-      if DM_Olap.OD_data.RecordCount = 0 then
-      begin
-        msg2('Нет информации!', 'Внимание!',
-          MB_OK + MB_ICONSTOP);
-        SetSize(1);
-      end
-      else
-      begin
-        Application.CreateForm(TForm_status, Form_status);
-        Form_status.Update;
-        //Выгрузка в TXT
-        err_ := exp_to_txt(DM_Olap.OD_data, str1_, fname_, fldsum_, issum_, iscnt_,
-          ishead_,
-          isoem_, DM_Olap.MemTableEh2.FieldByName('bank_cd').AsString);
-        Form_status.close;
-        SetSize(1);
-        if err_ = 0 then
-          msg2('Выгружено в ' + str1_ + fname_, 'Внимание', MB_OK +
-            MB_ICONINFORMATION)
-        else
-          msg2('Произошли ошибки во время выгрузки файла', 'Внимание', MB_OK +
-            MB_ICONINFORMATION);
-      end;
+      // TXT отчет
+      repTypeTXT(str1_, fname_);
     end
 
     else if (DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger <=
       max_level_) and (rep_type_ = 5) then
     begin
-      //подготовка данных
-      Form_olap.Button4.Visible := true;
-      prepData;
-      Form_olap.Button4.Visible := false;
-
-      if DM_Olap.OD_data.RecordCount = 0 then
-      begin
-        msg2('Нет информации!', 'Внимание!',
-          MB_OK + MB_ICONSTOP);
-        SetSize(1);
-      end
-      else
-      begin
-        Application.CreateForm(TForm_status, Form_status);
-        Form_status.Update;
-        Form_olap.cxGrid1.Align := alClient;
-        Form_olap.cxGrid1.Visible := true;
-        Form_olap.cxGrid1DBTableView1.DataController.CreateAllItems(False);
-        Form_olap.cxGrid1DBTableView1.OptionsView.ColumnAutoWidth := true;
-        Form_status.close;
-      end;
+      // GRID отчет
+      repTypeGrid;
     end
-
     else
     begin
       msg2('Отсутствует уровень детализации!', 'Внимание!',
         MB_OK + MB_ICONSTOP)
     end;
+  end;
+end;
+
+// тип отчета - OLAP
+
+procedure TForm_tree_objects.repTypeOlap(action_: Integer);
+var
+  i: Integer;
+begin
+  if FF('Form_olap', 0) = 1 then
+  begin
+    //OLAP отчет
+    Form_olap.PVDimToolBar1.Visible := true;
+    Form_olap.PVColToolBar1.Visible := true;
+    Form_olap.PVRowToolBar1.Visible := true;
+    Form_olap.PivotGrid1.Visible := true;
+    Form_olap.PVMeasureToolBar1.Visible := true;
+
+    Cube_ := Form_olap.FindComponent('PivotCube' + rep_cd_);
+    Map_ := Form_olap.FindComponent('PivotMap' + rep_cd_);
+
+    if action_ = 0 then
+    begin
+      //Загрузить данные
+      TPivotCube(Cube_).Active := False;
+    end
+    else
+    begin
+      //Добавить данные
+      TPivotCube(Cube_).CanUpgrade := true;
+    end;
+
+    Form_olap.PivotGrid1.Map := TPivotMap(Map_);
+    Form_olap.PVDimToolBar1.Map := TPivotMap(Map_);
+    Form_olap.PVColToolBar1.Map := TPivotMap(Map_);
+    Form_olap.PVRowToolBar1.Map := TPivotMap(Map_);
+    Form_olap.PVMeasureToolBar1.Map := TPivotMap(Map_);
+
+    //подготовка данных
+    Form_olap.Button4.Visible := true;
+    Form_olap.Update;
+    prepData;
+
+    if DM_Olap.Uni_data.RecordCount = 0 then
+      msg2('Нет информации!', 'Внимание!',
+        MB_OK + MB_ICONSTOP)
+    else
+    begin
+      setSize(0);
+      if action_ = 0 then
+      begin
+        // очистить все кубы на форме, от загруженной информации
+{        try
+        for i:=0 to ComponentCount-1 do
+        begin
+          if (Components[i] is TPivotCube) then
+          (Components[i] as TPivotCube).Active:=false;
+        end;
+        except
+            ShowMessage('Произошла ошибка при очистке OLAP кубов');
+        end;
+ }
+        //Загрузить данные
+        TPivotCube(Cube_).Active := True;
+      end
+      else
+      begin
+        //Добавить данные
+        TPivotCube(Cube_).Build;
+      end;
+    end;
+
+    //Раскрывать ли ветки PivotGrid-а
+    if (expand_row_ = 1) and (expand_col_ = 1) then
+      Form_olap.PivotGrid1.ExpandAll(True, True)
+    else if (expand_row_ = 1) and (expand_col_ = 0) then
+      Form_olap.PivotGrid1.ExpandAll(True, False)
+    else if (expand_row_ = 0) and (expand_col_ = 1) then
+      Form_olap.PivotGrid1.ExpandAll(False, True)
+    else if (expand_row_ = 0) and (expand_col_ = 0) then
+      Form_olap.PivotGrid1.ExpandAll(False, False);
+
+  end;
+  Form_olap.Button4.Visible := false;
+  Form_olap.Update;
+end;
+
+procedure TForm_tree_objects.repTypeFastRep(rep_cd_: string);
+var
+  fr_: TComponent;
+begin
+  fr_ := Form_olap.FindComponent('frxReport' + rep_cd_);
+  //подготовка данных
+  Form_olap.Button4.Visible := true;
+  prepData;
+  Form_olap.Button4.Visible := false;
+
+  if DM_Olap.Uni_data.RecordCount = 0 then
+  begin
+    msg2('Нет информации!', 'Внимание!',
+      MB_OK + MB_ICONSTOP);
+    SetSize(1);
+  end
+  else
+  begin
+    Application.CreateForm(TForm_status, Form_status);
+    Form_status.Update;
+    if frx_fname_ <> '' then
+    begin
+      //отчет, базирующийся на одном, универсальном датасете
+      fr_ := Form_olap.FindComponent('frxReport_base');
+      try
+        TfrxReport(fr_).LoadFromFile(Form_main.exepath_ + '\' + frx_fname_,
+          true);
+      except
+        msg2('Не найден файл отчета ' + frx_fname_, 'Внимание!',
+          MB_OK + MB_ICONSTOP);
+        Exit;
+      end;
+    end;
+
+    if fr_ = nil then
+    begin
+      msg2('Не найден отчет ' + 'frxReport' + rep_cd_, 'Внимание!',
+        MB_OK + MB_ICONSTOP);
+      Exit;
+    end;
+
+    //наименование Объекта в отчёте
+    TfrxReport(fr_).Variables['obj_'] := obj_;
+
+    //Установить период
+    TfrxReport(fr_).Variables['period_'] := '''' + period_str_ + '''';
+
+    if (rep_cd_ = '64') then
+    begin
+      //Установить период
+      TfrxReport(fr_).Variables['dt1_'] :=
+        DataModule1.OraclePackage1.CallDateFunction
+        ('scott.UTILS.getS_date_param', ['REP_DT_BR1']);
+      ;
+      TfrxReport(fr_).Variables['dt2_'] :=
+        DataModule1.OraclePackage1.CallDateFunction
+        ('scott.UTILS.getS_date_param', ['REP_DT_BR2']);
+      ;
+    end;
+
+    if (rep_cd_ = '73') or (rep_cd_ = '74') then
+    begin
+      //Установить период
+      TfrxReport(fr_).Variables['dt1_'] :=
+        DataModule1.OraclePackage1.CallDateFunction
+        ('scott.UTILS.getS_date_param', ['REP_DT_PROP1']);
+      ;
+      TfrxReport(fr_).Variables['dt2_'] :=
+        DataModule1.OraclePackage1.CallDateFunction
+        ('scott.UTILS.getS_date_param', ['REP_DT_PROP2']);
+      ;
+      //Установить параметр отчета
+      if DataModule1.OraclePackage1.CallIntegerFunction
+        ('scott.UTILS.getS_list_param', ['REP_PROP_VAR']) = 0 then
+        TfrxReport(fr_).Variables['var_'] := QuotedStr('прописанным')
+      else
+        TfrxReport(fr_).Variables['var_'] := QuotedStr('выписанным');
+    end;
+
+    if (rep_cd_ = '69') or (rep_cd_ = '82') then
+    begin
+      //Установить кол-во месяцев или рублей
+      if (DataModule1.OraclePackage1.CallIntegerFunction
+        ('scott.UTILS.getS_list_param', ['REP_DEB_VAR']) = 0) then
+        TfrxReport(fr_).Variables['txt_'] :=
+          QuotedStr(FloatToStr(DataModule1.OraclePackage1.CallFloatFunction
+          ('scott.UTILS.getS_int_param', ['REP_DEB_MONTH'])) + ' мес')
+      else
+        TfrxReport(fr_).Variables['txt_'] :=
+          QuotedStr(FloatToStr(DataModule1.OraclePackage1.CallFloatFunction
+          ('scott.UTILS.getS_int_param', ['REP_DEB_SUMMA'])) + ' руб.');
+    end;
+
+    if rep_cd_ = '61' then
+    begin
+      //наименование операции в отчёте
+      if wwDBLookupCombo4.LookupValue = '' then
+      begin
+        TfrxReport(fr_).Variables['oper_'] := '''' + ', по всем операциям' +
+          '''';
+      end
+      else
+      begin
+        TfrxReport(fr_).Variables['oper_'] := '''' + ', по операции: ' +
+          wwDBLookupCombo4.Text + '''';
+      end;
+
+      //наименование организации в отчёте
+      if wwDBLookupCombo3.LookupValue <> '' then
+      begin
+        TfrxReport(fr_).Variables['org_'] := '''' + ', по организации: ' +
+          wwDBLookupCombo3.Text + '''';
+      end
+      else
+      begin
+        TfrxReport(fr_).Variables['org_'] := '''' + ', по всем организациям'
+          + '''';
+      end;
+    end;
+
+    TfrxReport(fr_).PrepareReport(true);
+    Form_status.close;
+    Form_main.Panel2.Width := 0;
+    TfrxReport(fr_).ShowPreparedReport;
+    SetSize(1);
+
+    if FF('Form_olap', 0) = 1 then
+    begin
+      Form_olap.PVDimToolBar1.Visible := false;
+      Form_olap.PVColToolBar1.Visible := false;
+      Form_olap.PVRowToolBar1.Visible := false;
+      Form_olap.PivotGrid1.Visible := false;
+      Form_olap.PVMeasureToolBar1.Visible := false;
+      Form_olap.Button3.Visible := false;
+    end;
+  end;
+end;
+
+// тип отчета - DBF
+
+procedure TForm_tree_objects.repTypeDBF(path, fname: string);
+begin
+  //подготовка данных
+  Form_olap.Button4.Visible := true;
+  prepData;
+  Form_olap.Button4.Visible := false;
+
+  if DM_Olap.Uni_data.RecordCount = 0 then
+  begin
+    msg2('Нет информации!', 'Внимание!',
+      MB_OK + MB_ICONSTOP);
+    SetSize(1);
+  end
+  else
+  begin
+    Application.CreateForm(TForm_status, Form_status);
+    Form_status.Update;
+    //Выгрузка в DBF
+    err_ := exp_to_dbf(DM_Olap.Uni_data, path + fname);
+    Form_status.close;
+    SetSize(1);
+    if err_ = 0 then
+      msg2('Выгружено в ' + path + fname, 'Внимание', MB_OK +
+        MB_ICONINFORMATION)
+    else
+      msg2('Произошли ошибки во время выгрузки файла', 'Внимание', MB_OK +
+        MB_ICONINFORMATION);
+  end;
+end;
+
+// тип отчета - TXT
+
+procedure TForm_tree_objects.repTypeTXT(path, fname: string);
+begin
+  //подготовка данных
+  Form_olap.Button4.Visible := true;
+  prepData;
+  Form_olap.Button4.Visible := false;
+
+  if DM_Olap.Uni_data.RecordCount = 0 then
+  begin
+    msg2('Нет информации!', 'Внимание!',
+      MB_OK + MB_ICONSTOP);
+    SetSize(1);
+  end
+  else
+  begin
+    Application.CreateForm(TForm_status, Form_status);
+    Form_status.Update;
+    //Выгрузка в TXT
+    err_ := exp_to_txt(DM_Olap.Uni_data, path, fname, fldsum_, issum_,
+      iscnt_,
+      ishead_,
+      isoem_, DM_Olap.MemTableEh2.FieldByName('bank_cd').AsString);
+    Form_status.close;
+    SetSize(1);
+    if err_ = 0 then
+      msg2('Выгружено в ' + path + fname, 'Внимание', MB_OK +
+        MB_ICONINFORMATION)
+    else
+      msg2('Произошли ошибки во время выгрузки файла', 'Внимание', MB_OK +
+        MB_ICONINFORMATION);
+  end;
+end;
+
+// тип отчета - GRID
+
+procedure TForm_tree_objects.repTypeGrid;
+begin
+  //подготовка данных
+  Form_olap.Button4.Visible := true;
+  prepData;
+  Form_olap.Button4.Visible := false;
+
+  if DM_Olap.Uni_data.RecordCount = 0 then
+  begin
+    msg2('Нет информации!', 'Внимание!',
+      MB_OK + MB_ICONSTOP);
+    SetSize(1);
+  end
+  else
+  begin
+    Application.CreateForm(TForm_status, Form_status);
+    Form_status.Update;
+    Form_olap.cxGrid1.Align := alClient;
+    Form_olap.cxGrid1.Visible := true;
+    Form_olap.cxGrid1DBTableView1.DataController.CreateAllItems(False);
+    Form_olap.cxGrid1DBTableView1.OptionsView.ColumnAutoWidth := true;
+    Form_status.close;
   end;
 end;
 
@@ -908,7 +1023,7 @@ end;
 procedure TForm_tree_objects.setAccess(rep_: string; have_current_: Integer;
   two_periods_: Integer);
 begin
-  DM_Olap.OD_data.Active := false;
+  DM_Olap.Uni_data.Active := false;
 
   //Если форма не загружает и не загружала справочник, загрузить
   if (Form_Main.flag3_ = 0) and (flag2_ = 0) then
@@ -1130,13 +1245,14 @@ begin
     //    wwDBLookupCombo2.Visible:=False;
   end;
 
-  with DM_Olap.OD_spr_params do
+  with DM_Olap.Uni_spr_params do
   begin
-    Active := false;
-    SetVariable('cd_', rep_);
-    Active := true;
+    Params.ParamByName('cd_').AsString := rep_;
+    Active := False;
+    Active := True;
   end;
-  if DM_Olap.OD_spr_params.RecordCount = 0 then
+
+  if DM_Olap.Uni_spr_params.RecordCount = 0 then
     GroupBox1.Visible := False
   else
     GroupBox1.Visible := True;
@@ -1229,13 +1345,6 @@ begin
     active := true;
   end;
 
-  with DM_Olap.OD_spr_params do
-  begin
-    active := false;
-    //    SetVariable('id_', rep_id_);
-    active := true;
-  end;
-
   Panel1.AutoSize := True;
 end;
 
@@ -1308,14 +1417,17 @@ begin
   flag2_ := 1;
   Panel2.Visible := True;
   Update;
-  DataModule1.OraclePackage1.CallProcedure('scott.utils.prep_users_tree',
-    [parNone]);
+  //DataModule1.OraclePackage1.CallProcedure('scott.utils.prep_users_tree',
+  //  [parNone]);
+  DataModule1.UniStoredProc1.StoredProcName := 'scott.utils.prep_users_tree';
+  DataModule1.UniStoredProc1.Params.Clear;
+  DataModule1.UniStoredProc1.ExecProc;
 
   Panel2.Visible := False;
 
   //сбросить флаг загрузки справочников
   flag2_ := 0;
-  DM_Olap.OD_data.Active := false;
+  DM_Olap.Uni_data.Active := false;
   //Справочники загружены
   Form_Main.flag3_ := 1;
 end;
@@ -1376,7 +1488,8 @@ begin
   begin
     flag_ := 1;
     //Обновить само значение в поле
-    DM_Olap.MemTableEh2.FieldByName('sel').AsInteger := VarAsType(Value, varInteger);
+    DM_Olap.MemTableEh2.FieldByName('sel').AsInteger := VarAsType(Value,
+      varInteger);
     if Form_tree_objects.sel_many_ <> 0 then
     begin
       //Обновить значения в дочерних объектах
@@ -1385,7 +1498,8 @@ begin
     else
     begin
       //Обновить значения в во всех объектах (деселект всех)
-      desel_all_obj(DM_Olap.MemTableEh2, DM_Olap.MemTableEh2.FieldByName('id').AsInteger);
+      desel_all_obj(DM_Olap.MemTableEh2,
+        DM_Olap.MemTableEh2.FieldByName('id').AsInteger);
     end;
     DBGridEh1.Refresh;
     flag_ := 0;
@@ -1761,7 +1875,7 @@ var
   lskXL, houseXL: variant;
   suffix, reu, path, lskFname, houseFname, entr: string;
   a, b, c, e, f, g, i, houseId: Integer;
-  d: TOracleDataSet;
+  d: TUniQuery;
   acceptLsk, debug: Boolean;
 begin
   debug := Form_olap.chk1.Checked;
@@ -1830,7 +1944,7 @@ begin
   f := 3;
   g := 1;
 
-  d := DM_Olap.OD_data;
+  d := DM_Olap.Uni_data;
   d.First;
   d.DisableControls;
   while not d.Eof do
@@ -2162,7 +2276,7 @@ begin
 
     //поиск адреса в датасете отчёта
   //  try
-    if DM_Olap.OD_data.Locate('nylic;ndom;nkorp;nkw',
+    if DM_Olap.Uni_data.Locate('nylic;ndom;nkorp;nkw',
       VarArrayOf([street, nd, korp, kw]), []) then
     begin
       //найден адрес
@@ -2177,25 +2291,25 @@ begin
         if (str = '') or (str = '0') then //берём только не заполненные поля
         begin
 
-          if DM_Olap.OD_data.FieldByName(ARecord.S).DataType
+          if DM_Olap.Uni_data.FieldByName(ARecord.S).DataType
             = ftString then
             XL.WorkBooks[1].WorkSheets[1].Cells[y, i + 1] := '''' +
-              DM_Olap.OD_data.FieldByName(ARecord.S).AsString
-          else if DM_Olap.OD_data.FieldByName(ARecord.S).DataType
+              DM_Olap.Uni_data.FieldByName(ARecord.S).AsString
+          else if DM_Olap.Uni_data.FieldByName(ARecord.S).DataType
             = ftFloat then
             XL.WorkBooks[1].WorkSheets[1].Cells[y, i + 1] :=
-              DM_Olap.OD_data.FieldByName(ARecord.S).AsFloat
-          else if DM_Olap.OD_data.FieldByName(ARecord.S).DataType
+              DM_Olap.Uni_data.FieldByName(ARecord.S).AsFloat
+          else if DM_Olap.Uni_data.FieldByName(ARecord.S).DataType
             = ftInteger then
             XL.WorkBooks[1].WorkSheets[1].Cells[y, i + 1] :=
-              DM_Olap.OD_data.FieldByName(ARecord.S).AsInteger
-          else if DM_Olap.OD_data.FieldByName(ARecord.S).DataType
+              DM_Olap.Uni_data.FieldByName(ARecord.S).AsInteger
+          else if DM_Olap.Uni_data.FieldByName(ARecord.S).DataType
             = ftSmallInt then
             XL.WorkBooks[1].WorkSheets[1].Cells[y, i + 1] :=
-              DM_Olap.OD_data.FieldByName(ARecord.S).AsInteger
+              DM_Olap.Uni_data.FieldByName(ARecord.S).AsInteger
           else
             XL.WorkBooks[1].WorkSheets[1].Cells[y, i + 1] :=
-              DM_Olap.OD_data.FieldByName(ARecord.S).AsFloat;
+              DM_Olap.Uni_data.FieldByName(ARecord.S).AsFloat;
         end;
       end;
 
@@ -2238,8 +2352,8 @@ begin
     height_ := height_ + GroupBox5.Height;
   if GroupBox6.Visible then
     height_ := height_ + GroupBox6.Height;
-//  if GroupBox7.Visible then
-//    height_ := height_ + GroupBox7.Height;
+  //  if GroupBox7.Visible then
+  //    height_ := height_ + GroupBox7.Height;
 
   Panel1.Height := height_;
   Update;
@@ -2256,15 +2370,15 @@ begin
   Form_tree_par_edit.Left := curX_ +
     Form_Main.Left + Panel1.Left + Form_tree_objects.Left +
     GroupBox1.Left + wwDBGrid1.Left;
-  Form_tree_par_edit.SetAccess(DM_Olap.OD_spr_params);
+  Form_tree_par_edit.SetAccess(DM_Olap.DS_spr_params);
   Form_tree_par_edit.ShowModal;
 
-  id_ := DM_Olap.OD_spr_params.FieldByName('id').AsInteger;
-  DM_Olap.OD_spr_params.Active := False;
-  DM_Olap.OD_spr_params.Active := True;
-  DM_Olap.OD_spr_params.Locate('id', id_, []);
-//  wwDBGrid1.SetFocus;
-Windows.SetFocus(wwDBGrid1.Handle);
+  id_ := DM_Olap.Uni_spr_params.FieldByName('id').AsInteger;
+  DM_Olap.Uni_spr_params.Active := False;
+  DM_Olap.Uni_spr_params.Active := True;
+  DM_Olap.Uni_spr_params.Locate('id', id_, []);
+  //  wwDBGrid1.SetFocus;
+  Windows.SetFocus(wwDBGrid1.Handle);
   wwDBGrid1.Repaint;
 
 end;
@@ -2310,14 +2424,19 @@ begin
   //установить видимость закрытого фонда
   if CheckBox1.Checked = true then
   begin
-    DM_Olap.OD_tree_objects.SetVariable('set_psch', 0);
+    DM_Olap.Uni_tree_objects.Params.ParamByName('set_psch').AsInteger := 0;
+    //DM_Olap.OD_tree_objects.SetVariable('set_psch', 0);
   end
   else
   begin
-    DM_Olap.OD_tree_objects.SetVariable('set_psch', 1);
+    DM_Olap.Uni_tree_objects.Params.ParamByName('set_psch').AsInteger := 1;
+    //DM_Olap.OD_tree_objects.SetVariable('set_psch', 1);
   end;
-  DM_Olap.OD_tree_objects.Active := False;
-  DM_Olap.OD_tree_objects.Active := true;
+  //DM_Olap.OD_tree_objects.Active := False;
+  //DM_Olap.OD_tree_objects.Active := true;
+  DM_Olap.Uni_tree_objects.Active := False;
+  DM_Olap.Uni_tree_objects.Active := True;
+
   DM_Olap.MemTableEh2.Close;
   DM_Olap.MemTableEh2.FetchRecords(4000);
   DM_Olap.MemTableEh2.FetchRecords(4000);
@@ -2366,6 +2485,11 @@ begin
     DM_Olap.MemTableEh2.Filter := sqlStr;
     DM_Olap.MemTableEh2.Filtered := true;
   end;
+end;
+
+procedure TForm_tree_objects.DBGridEh1DblClick(Sender: TObject);
+begin
+  DM_Olap.KMP.Active:=True;
 end;
 
 end.

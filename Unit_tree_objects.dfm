@@ -1,6 +1,6 @@
 object Form_tree_objects: TForm_tree_objects
-  Left = 200
-  Top = 155
+  Left = 231
+  Top = 153
   Width = 363
   Height = 864
   Align = alLeft
@@ -136,6 +136,7 @@ object Form_tree_objects: TForm_tree_objects
     TitleFont.Name = 'MS Sans Serif'
     TitleFont.Style = []
     TitleLines = 1
+    OnDblClick = DBGridEh1DblClick
     Columns = <
       item
         EditButtons = <>
@@ -608,6 +609,181 @@ object Form_tree_objects: TForm_tree_objects
       TabOrder = 0
       Height = 18
       Width = 345
+    end
+  end
+  object cxGrid1: TcxGrid
+    Left = 32
+    Top = 504
+    Width = 273
+    Height = 225
+    TabOrder = 5
+    object cxGrid1DBTableView1: TcxGridDBTableView
+      Navigator.Buttons.CustomButtons = <>
+      DataController.DataSource = DM_Olap.DataSource1
+      DataController.Summary.DefaultGroupSummaryItems = <>
+      DataController.Summary.FooterSummaryItems = <>
+      DataController.Summary.SummaryGroups = <>
+      OptionsView.GroupByBox = False
+      object cxGrid1DBTableView1ID: TcxGridDBColumn
+        DataBinding.FieldName = 'ID'
+      end
+      object cxGrid1DBTableView1CD: TcxGridDBColumn
+        DataBinding.FieldName = 'CD'
+      end
+      object cxGrid1DBTableView1FK_ORGTP: TcxGridDBColumn
+        DataBinding.FieldName = 'FK_ORGTP'
+      end
+      object cxGrid1DBTableView1NAME: TcxGridDBColumn
+        DataBinding.FieldName = 'NAME'
+      end
+      object cxGrid1DBTableView1NPP: TcxGridDBColumn
+        DataBinding.FieldName = 'NPP'
+      end
+      object cxGrid1DBTableView1V: TcxGridDBColumn
+        DataBinding.FieldName = 'V'
+      end
+      object cxGrid1DBTableView1PARENT_ID: TcxGridDBColumn
+        DataBinding.FieldName = 'PARENT_ID'
+      end
+      object cxGrid1DBTableView1REU: TcxGridDBColumn
+        DataBinding.FieldName = 'REU'
+      end
+      object cxGrid1DBTableView1TREST: TcxGridDBColumn
+        DataBinding.FieldName = 'TREST'
+      end
+      object cxGrid1DBTableView1UCH: TcxGridDBColumn
+        DataBinding.FieldName = 'UCH'
+      end
+      object cxGrid1DBTableView1ADR: TcxGridDBColumn
+        DataBinding.FieldName = 'ADR'
+      end
+      object cxGrid1DBTableView1INN: TcxGridDBColumn
+        DataBinding.FieldName = 'INN'
+      end
+      object cxGrid1DBTableView1MANAGER: TcxGridDBColumn
+        DataBinding.FieldName = 'MANAGER'
+      end
+      object cxGrid1DBTableView1BUH: TcxGridDBColumn
+        DataBinding.FieldName = 'BUH'
+      end
+      object cxGrid1DBTableView1RASCHET_SCHET: TcxGridDBColumn
+        DataBinding.FieldName = 'RASCHET_SCHET'
+      end
+      object cxGrid1DBTableView1K_SCHET: TcxGridDBColumn
+        DataBinding.FieldName = 'K_SCHET'
+      end
+      object cxGrid1DBTableView1KOD_OKONH: TcxGridDBColumn
+        DataBinding.FieldName = 'KOD_OKONH'
+      end
+      object cxGrid1DBTableView1KOD_OGRN: TcxGridDBColumn
+        DataBinding.FieldName = 'KOD_OGRN'
+      end
+      object cxGrid1DBTableView1BIK: TcxGridDBColumn
+        DataBinding.FieldName = 'BIK'
+      end
+      object cxGrid1DBTableView1PHONE: TcxGridDBColumn
+        DataBinding.FieldName = 'PHONE'
+      end
+      object cxGrid1DBTableView1KPP: TcxGridDBColumn
+        DataBinding.FieldName = 'KPP'
+      end
+      object cxGrid1DBTableView1BANK: TcxGridDBColumn
+        DataBinding.FieldName = 'BANK'
+      end
+      object cxGrid1DBTableView1ID_EXP: TcxGridDBColumn
+        DataBinding.FieldName = 'ID_EXP'
+      end
+      object cxGrid1DBTableView1ADR_RECIP: TcxGridDBColumn
+        DataBinding.FieldName = 'ADR_RECIP'
+      end
+      object cxGrid1DBTableView1AUTHORIZED_DIR: TcxGridDBColumn
+        DataBinding.FieldName = 'AUTHORIZED_DIR'
+      end
+      object cxGrid1DBTableView1AUTHORIZED_BUH: TcxGridDBColumn
+        DataBinding.FieldName = 'AUTHORIZED_BUH'
+      end
+      object cxGrid1DBTableView1AUTH_DIR_DOC: TcxGridDBColumn
+        DataBinding.FieldName = 'AUTH_DIR_DOC'
+      end
+      object cxGrid1DBTableView1AUTH_BUH_DOC: TcxGridDBColumn
+        DataBinding.FieldName = 'AUTH_BUH_DOC'
+      end
+      object cxGrid1DBTableView1OKPO: TcxGridDBColumn
+        DataBinding.FieldName = 'OKPO'
+      end
+      object cxGrid1DBTableView1VER_CD: TcxGridDBColumn
+        DataBinding.FieldName = 'VER_CD'
+      end
+      object cxGrid1DBTableView1FULL_NAME: TcxGridDBColumn
+        DataBinding.FieldName = 'FULL_NAME'
+      end
+      object cxGrid1DBTableView1PHONE2: TcxGridDBColumn
+        DataBinding.FieldName = 'PHONE2'
+      end
+      object cxGrid1DBTableView1PARENT_ID2: TcxGridDBColumn
+        DataBinding.FieldName = 'PARENT_ID2'
+      end
+      object cxGrid1DBTableView1FK_ORG2: TcxGridDBColumn
+        DataBinding.FieldName = 'FK_ORG2'
+      end
+      object cxGrid1DBTableView1BANK_CD: TcxGridDBColumn
+        DataBinding.FieldName = 'BANK_CD'
+      end
+      object cxGrid1DBTableView1ADR_WWW: TcxGridDBColumn
+        DataBinding.FieldName = 'ADR_WWW'
+      end
+      object cxGrid1DBTableView1EMAIL: TcxGridDBColumn
+        DataBinding.FieldName = 'EMAIL'
+      end
+      object cxGrid1DBTableView1HEAD_NAME: TcxGridDBColumn
+        DataBinding.FieldName = 'HEAD_NAME'
+      end
+      object cxGrid1DBTableView1RASCHET_SCHET2: TcxGridDBColumn
+        DataBinding.FieldName = 'RASCHET_SCHET2'
+      end
+      object cxGrid1DBTableView1POST_INDX: TcxGridDBColumn
+        DataBinding.FieldName = 'POST_INDX'
+      end
+      object cxGrid1DBTableView1R_SCH_ADDIT: TcxGridDBColumn
+        DataBinding.FieldName = 'R_SCH_ADDIT'
+      end
+      object cxGrid1DBTableView1FK_BILL_VAR: TcxGridDBColumn
+        DataBinding.FieldName = 'FK_BILL_VAR'
+      end
+      object cxGrid1DBTableView1AOGUID: TcxGridDBColumn
+        DataBinding.FieldName = 'AOGUID'
+      end
+      object cxGrid1DBTableView1OKTMO: TcxGridDBColumn
+        DataBinding.FieldName = 'OKTMO'
+      end
+      object cxGrid1DBTableView1CODE_DEB: TcxGridDBColumn
+        DataBinding.FieldName = 'CODE_DEB'
+      end
+      object cxGrid1DBTableView1DOLG_NAME: TcxGridDBColumn
+        DataBinding.FieldName = 'DOLG_NAME'
+      end
+      object cxGrid1DBTableView1BANK_FNAME: TcxGridDBColumn
+        DataBinding.FieldName = 'BANK_FNAME'
+      end
+      object cxGrid1DBTableView1GRP: TcxGridDBColumn
+        DataBinding.FieldName = 'GRP'
+      end
+      object cxGrid1DBTableView1R_SCH_GIS: TcxGridDBColumn
+        DataBinding.FieldName = 'R_SCH_GIS'
+      end
+      object cxGrid1DBTableView1DIST_PAY_TP: TcxGridDBColumn
+        DataBinding.FieldName = 'DIST_PAY_TP'
+      end
+      object cxGrid1DBTableView1ADR_CASH: TcxGridDBColumn
+        DataBinding.FieldName = 'ADR_CASH'
+      end
+      object cxGrid1DBTableView1ROWID: TcxGridDBColumn
+        DataBinding.FieldName = 'ROWID'
+        Visible = False
+      end
+    end
+    object cxGrid1Level1: TcxGridLevel
+      GridView = cxGrid1DBTableView1
     end
   end
   object PopupMenu1: TPopupMenu

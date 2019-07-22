@@ -1,6 +1,6 @@
 object Form_houses_nabor: TForm_houses_nabor
-  Left = 367
-  Top = 277
+  Left = 731
+  Top = 265
   Width = 1085
   Height = 621
   Caption = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082' '#1076#1086#1084#1086#1074
@@ -1709,7 +1709,7 @@ object Form_houses_nabor: TForm_houses_nabor
     Left = 104
     Top = 240
   end
-  object OD_objxpar: TOracleDataSet
+  object KMP: TOracleDataSet
     SQL.Strings = (
       
         'select t.rowid, t.id,  t.fk_k_lsk, u.id as par_id, u.cd, u.name ' +
@@ -1743,10 +1743,10 @@ object Form_houses_nabor: TForm_houses_nabor
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True
-    Left = 72
+    Left = 8
     Top = 288
   end
-  object OD_par_value: TOracleDataSet
+  object KMP2: TOracleDataSet
     SQL.Strings = (
       'select t.*, t.rowid '
       'from scott.t_objxpar t'
@@ -1761,25 +1761,25 @@ object Form_houses_nabor: TForm_houses_nabor
       000000000007000000464B5F5553455201000000000006000000464B5F55534C
       0100000000000200000054500100000000000200000054530100000000000200
       00004D4701000000000006000000464B5F56414C010000000000}
-    Master = OD_objxpar
+    Master = KMP
     MasterFields = 'id'
     DetailFields = 'id'
     RefreshOptions = [roAfterInsert, roAfterUpdate, roAllFields]
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True
-    Left = 72
-    Top = 336
+    Left = 8
+    Top = 344
   end
   object DS_objxpar: TDataSource
-    DataSet = OD_objxpar
+    DataSet = Uni_objxpar
     Left = 104
     Top = 288
   end
   object DS_par_value: TDataSource
-    DataSet = OD_par_value
+    DataSet = Uni_par_value
     Left = 104
-    Top = 336
+    Top = 344
   end
   object OD_other: TOracleDataSet
     SQL.Strings = (
@@ -1901,5 +1901,75 @@ object Form_houses_nabor: TForm_houses_nabor
     DataSet = OD_usl_bills_house
     Left = 512
     Top = 280
+  end
+  object Uni_objxpar: TUniQuery
+    UpdatingTable = 'SCOTT.SPR_PAR_SES'
+    Connection = DataModule1.UniConnection1
+    SQL.Strings = (
+      
+        'select t.rowid, t.id,  t.fk_k_lsk, u.id as par_id, u.cd, u.name ' +
+        'as parname, u.val_tp,'
+      'case when u.val_tp = '#39'NM'#39' then to_char(t.n1)'
+      '     when u.val_tp = '#39'ST'#39' then t.s1'
+      '     when u.val_tp = '#39'DT'#39' then to_char(t.d1,'#39'DD.MM.YYYY'#39')'
+      '     when u.val_tp = '#39'ID'#39' then s.name'
+      '     end as val, u2.nm from scott.t_objxpar t'
+      '     join scott.u_list u on t.fk_list=u.id '
+      '     left join scott.u_list u2 on u.fk_unit=u2.id'
+      
+        '     --join scott.u_listtp tp on tp.cd='#39'house_params'#39' and tp.id=' +
+        'u.fk_listtp'
+      '     left join scott.u_list s on t.fk_val=s.id'
+      'where t.fk_k_lsk=:k_lsk_id'
+      '')
+    MasterSource = DS_houses
+    MasterFields = 'k_lsk_id'
+    DetailFields = 'k_lsk_id'
+    Constraints = <>
+    Left = 56
+    Top = 288
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'k_lsk_id'
+        ParamType = ptInput
+      end>
+  end
+  object Uni_par_value: TUniQuery
+    UpdatingTable = 'SCOTT.SPR_PAR_SES'
+    Connection = DataModule1.UniConnection1
+    SQL.Strings = (
+      
+        'select t.rowid, t.id,  t.fk_k_lsk, u.id as par_id, u.cd, u.name ' +
+        'as parname, u.val_tp,'
+      'case when u.val_tp = '#39'NM'#39' then to_char(t.n1)'
+      '     when u.val_tp = '#39'ST'#39' then t.s1'
+      '     when u.val_tp = '#39'DT'#39' then to_char(t.d1,'#39'DD.MM.YYYY'#39')'
+      '     when u.val_tp = '#39'ID'#39' then s.name'
+      '     end as val, u2.nm from scott.t_objxpar t'
+      '     join scott.u_list u on t.fk_list=u.id '
+      '     left join scott.u_list u2 on u.fk_unit=u2.id'
+      
+        '     --join scott.u_listtp tp on tp.cd='#39'house_params'#39' and tp.id=' +
+        'u.fk_listtp'
+      '     left join scott.u_list s on t.fk_val=s.id'
+      'where t.fk_k_lsk=:k_lsk_id'
+      '')
+    MasterSource = DS_objxpar
+    MasterFields = 'id'
+    DetailFields = 'id'
+    Constraints = <>
+    Left = 56
+    Top = 344
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'k_lsk_id'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftUnknown
+        Name = 'ID'
+      end>
   end
 end

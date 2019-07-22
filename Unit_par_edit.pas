@@ -36,7 +36,7 @@ uses
   dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
   dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
-  dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue;
+  dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue, MemDS, DBAccess, Uni;
 
 type
   TForm_par_edit = class(TForm)
@@ -50,13 +50,13 @@ type
     DS_value: TDataSource;
     Panel2: TPanel;
     TabSheet4: TTabSheet;
-    OD_list: TOracleDataSet;
     DS_list: TDataSource;
     cbb2: TcxLookupComboBox;
+    Uni_List: TUniQuery;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
-    procedure SetData(od_par: TOracleDataset;
-                      od_par_value: TOracleDataset; l_key: String);
+    procedure SetData(od_par: TUniQuery;
+                      od_par_value: TUniQuery; l_key: String);
     procedure TabSheet1Show(Sender: TObject);
     procedure TabSheet2Show(Sender: TObject);
     procedure TabSheet3Show(Sender: TObject);
@@ -68,7 +68,7 @@ type
     procedure cbb1PropertiesCloseUp(Sender: TObject);
     procedure cbb2PropertiesChange(Sender: TObject);
   private
-    l_od_par, l_od_par_value: TOracleDataset;
+    l_od_par, l_od_par_value: TUniQuery;
     g_key: String;
   public
     { Public declarations }
@@ -105,8 +105,8 @@ var
 begin
 end;
 
-procedure TForm_par_edit.SetData(od_par: TOracleDataset;
-  od_par_value: TOracleDataset; l_key: String);
+procedure TForm_par_edit.SetData(od_par: TUniQuery;
+  od_par_value: TUniQuery; l_key: String);
 begin
   l_od_par:=od_par;
   l_od_par_value:=od_par_value;
@@ -167,8 +167,9 @@ begin
       TabSheet2.TabVisible:=false;
       TabSheet3.TabVisible:=false;
       TabSheet4.TabVisible:=true;
-      OD_list.SetVariable('P_PAR_ID', FieldByName('PAR_ID').AsInteger);
-      OD_list.Active:=true;
+      Uni_list.Params.ParamByName('P_PAR_ID').AsInteger:=
+        FieldByName('PAR_ID').AsInteger;
+      Uni_list.Active:=true;
     end
   end;
 

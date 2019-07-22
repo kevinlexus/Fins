@@ -3,7 +3,7 @@ unit Utils;
 interface
 uses Forms, Classes, SysUtils, Dialogs, OracleData, DB, DBF, Windows,
   Wwdbgrid, DM_module1, oracle, Math, ShlObj, Controls, Messages,
-  ComCtrls, Menus, Unit_smpl_chk, StrUtils, Winsock;
+  ComCtrls, Menus, Unit_smpl_chk, StrUtils, Winsock, Uni;
 
 // тип - запись о правах редактирования пользователя
 type
@@ -30,7 +30,8 @@ type
   TParamRecArray = array of TParamRec;
 
 function FF(form_str_: string; show_: Integer): Integer; //FindForm
-function exp_to_dbf(dset: TOracleDataset; dbfname_: string): Integer;
+function exp_to_dbf(dset: TDataSet; dbfname_: string): Integer;
+//function exp_to_dbf(dset: TOracleDataSet; dbfname_: string): Integer;
 function exp_to_dbf_prec(dset: TOracleDataset; aTable, aSchema, aDbfname:
   string): Integer;
 procedure msg2(str1: string; str2: string; Flags_: Longint);
@@ -58,7 +59,7 @@ procedure change_alias(AODset: array of TOracleDataset; str1: string; str2:
   string); overload;
 procedure change_alias(dset: TOracleDataset; str1: string; str2: string;
   reopenDS: Boolean); overload;
-function exp_to_txt(dset: TOracleDataset; path_: string; fname_: string;
+function exp_to_txt(dset: TUniQuery; path_: string; fname_: string;
   fldsum_: string; issum_: Integer; iscnt_: Integer; ishead_: Integer; oem_:
     integer; bank_cd_: string): Integer;
 procedure SetMenu(acc_: Integer);
@@ -895,7 +896,7 @@ begin
 end;
           }
 
-function exp_to_txt(dset: TOracleDataset; path_: string; fname_: string;
+function exp_to_txt(dset: TUniQuery; path_: string; fname_: string;
   fldsum_: string; issum_: Integer; iscnt_: Integer; ishead_: Integer; oem_:
     integer; bank_cd_: string): Integer;
 var
@@ -1035,7 +1036,7 @@ end;
 
 //экспорт в DBF
 
-function exp_to_dbf(dset: TOracleDataset; dbfname_: string): Integer;
+function exp_to_dbf(dset: TDataSet; dbfname_: string): Integer;
 var
   i: integer;
   Src, Dest: string;

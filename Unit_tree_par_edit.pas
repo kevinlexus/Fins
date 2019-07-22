@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls, Mask, DBCtrls, wwdbdatetimepicker, ComCtrls, DB,
-  wwdblook, OracleData, Grids, Wwdbigrd, Wwdbgrid, wwcheckbox,
+  wwdblook, OracleData, Grids, Wwdbigrd, Wwdbgrid, wwcheckbox, Uni,
   wwclearbuttongroup, wwradiogroup, wwSpeedButton, wwDBNavigator,
   wwclearpanel, Menus, cxControls,
 
@@ -27,7 +27,8 @@ uses
   dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
   dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter,
-  cxCustomData, cxData, cxDataStorage, cxNavigator, cxCheckBox;
+  cxCustomData, cxData, cxDataStorage, cxNavigator, cxCheckBox, MemDS,
+  DBAccess;
 
 const
   CM_APPLYFILTER = WM_USER + 1;
@@ -45,7 +46,6 @@ type
     Button1: TButton;
     Button2: TButton;
     TabSheet4: TTabSheet;
-    OD_list: TOracleDataSet;
     wwDBLookupCombo1: TwwDBLookupCombo;
     DS_list: TDataSource;
     TabSheet5: TTabSheet;
@@ -71,7 +71,7 @@ type
     cxGrid1: TcxGrid;
     cxGrid1DBTableView1NAME: TcxGridDBColumn;
     cxGrid1DBTableView1SEL: TcxGridDBColumn;
-    cxGrid1DBTableView1ID: TcxGridDBColumn;
+    Uni_List: TUniQuery;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -87,7 +87,7 @@ type
       Shift: TShiftState);
     procedure wwDBLookupCombo1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
-    procedure SetAccess(OD_src: TOracleDataSet);
+    procedure SetAccess(OD_src: TDataSource);
     procedure N1Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure cxGrid1DBTableView1InitEditValue(
@@ -96,7 +96,7 @@ type
     procedure cxGrid1DBTableView1EditValueChanged(
       Sender: TcxCustomGridTableView; AItem: TcxCustomGridTableItem);
   private
-    OD_dst: TOracleDataSet;
+    OD_dst: TDataSource;
     FilterString: string;
     procedure CMApplyFilter(var Msg: TMessage); message CM_APPLYFILTER;
   public
@@ -123,15 +123,16 @@ begin
     end;
 end;
 
-procedure TForm_tree_par_edit.SetAccess(OD_src: TOracleDataSet);
+procedure TForm_tree_par_edit.SetAccess(OD_src: TDataSource);
 begin
   //установка способа вызова (из формы Form_tree_objects или из другой)
   OD_dst := OD_src;
-  OD_list.active := false;
-  OD_list.Master := OD_dst;
-  OD_list.active := true;
+  Uni_List.active := false;
+  Uni_List.MasterSource := OD_dst;
+  Uni_List.active := true;
 
-  DS_par.DataSet := OD_dst;
+  DS_par.DataSet := OD_dst.DataSet;
+  //DS_par.DataSet := OD_src;
   OD_dst.Edit;
 end;
 
@@ -141,15 +142,24 @@ var
 begin
 
   // на выходе по Ок из формы - применил кэшированое update, иначе тормозит сильно ред.18.07.2019
-  if not (OD_list.State in [dsBrowse]) then
-    OD_list.Post;
+  if not (Uni_list.State in [dsBrowse]) then
+    Uni_list.Post;
 
-  with OD_dst do
+  with OD_dst.DataSet do
   begin
     if FieldByName('CDTP').AsInteger = 4 then
     begin
-      DataModule1.OraclePackage1.CallProcedure('scott.utils.set_list_c',
-        [FieldByName('id').AsInteger, OD_list.FieldByName('id').AsInteger]);
+      DataModule1.UniStoredProc1.StoredProcName := 'scott.utils.set_list_c';
+      DataModule1.UniStoredProc1.Params.Clear;
+      DataModule1.UniStoredProc1.Params
+        .CreateParam(ftInteger, 'fk_par_', ptInput).AsInteger :=
+          FieldByName('id').AsInteger;
+      DataModule1.UniStoredProc1.Params
+        .CreateParam(ftInteger, 'id_', ptInput).AsInteger :=
+          Uni_list.FieldByName('id').AsInteger;
+      DataModule1.UniStoredProc1.ExecProc;
+      //      DataModule1.OraclePackage1.CallProcedure('scott.utils.set_list_c',
+      //        [FieldByName('id').AsInteger, Uni_list.FieldByName('id').AsInteger]);
     end;
 
     if not (State in [dsBrowse]) then
@@ -161,7 +171,7 @@ begin
     Locate('id', id_, []);
   end;
 
-  DataModule1.OracleSession1.ApplyUpdates([OD_list], true);
+  //DataModule1.OracleSession1.ApplyUpdates([OD_list], true);
 
   close;
 
@@ -169,8 +179,8 @@ end;
 
 procedure TForm_tree_par_edit.Button2Click(Sender: TObject);
 begin
-  if not (OD_dst.State in [dsBrowse]) then
-    OD_dst.Cancel;
+  if not (OD_dst.DataSet.State in [dsBrowse]) then
+    OD_dst.DataSet.Cancel;
   close;
 end;
 
@@ -220,7 +230,7 @@ begin
   TabSheet6.TabVisible := false;
   TabSheet7.TabVisible := false;
 
-  with OD_dst do
+  with OD_dst.DataSet do
   begin
     if FieldByName('CDTP').AsInteger = 1 then
     begin
@@ -257,9 +267,9 @@ begin
     else if FieldByName('CDTP').AsInteger = 4 then
     begin
       //параметр - список из SQL запроса-выбор одного значения
-      OD_list.Active := True;
-      OD_list.Locate('sel', 1, []);
-      wwDBLookupCombo1.LookupValue := OD_list.FieldByName('name').AsString;
+      Uni_list.Active := True;
+      Uni_list.Locate('sel', 1, []);
+      wwDBLookupCombo1.LookupValue := Uni_list.FieldByName('name').AsString;
       PageControl1.ActivePageIndex := 3;
       TabSheet4.TabVisible := true;
       //      wwDBLookupCombo1.SetFocus;
@@ -268,7 +278,7 @@ begin
     else if FieldByName('CDTP').AsInteger = 5 then
     begin
       //параметр - список из SQL запроса-выбор нескольких значений
-      OD_list.Active := True;
+      Uni_list.Active := True;
       TabSheet7.TabVisible := true;
       //      cxGrid1.SetFocus;
       Windows.SetFocus(cxGrid1.Handle);
@@ -277,7 +287,7 @@ begin
     else if FieldByName('CDTP').AsInteger = 6 then
     begin
       //параметр - список пользовательских значений (например ФИО)
-      OD_list.Active := True;
+      Uni_list.Active := True;
       PageControl1.ActivePageIndex := 5;
       TabSheet6.TabVisible := true;
       //      cxGrid1.SetFocus;
@@ -307,32 +317,32 @@ end;
 
 procedure TForm_tree_par_edit.N1Click(Sender: TObject);
 begin
-  OD_list.DisableControls;
-  OD_list.First;
-  while not OD_list.Eof do
+  Uni_list.DisableControls;
+  Uni_list.First;
+  while not Uni_list.Eof do
   begin
-    OD_list.Edit;
-    OD_list.FieldByName('sel').AsInteger := 1;
-    OD_list.Post;
-    OD_list.Next;
+    Uni_list.Edit;
+    Uni_list.FieldByName('sel').AsInteger := 1;
+    Uni_list.Post;
+    Uni_list.Next;
   end;
   // на выходе по Ок из формы - применил кэшированое update, иначе тормозит сильно ред.18.07.2019
-  OD_list.EnableControls;
+  Uni_list.EnableControls;
 end;
 
 procedure TForm_tree_par_edit.N2Click(Sender: TObject);
 begin
-  OD_list.DisableControls;
-  OD_list.First;
-  while not OD_list.Eof do
+  Uni_list.DisableControls;
+  Uni_list.First;
+  while not Uni_list.Eof do
   begin
-    OD_list.Edit;
-    OD_list.FieldByName('sel').AsInteger := 0;
-    OD_list.Post;
-    OD_list.Next;
+    Uni_list.Edit;
+    Uni_list.FieldByName('sel').AsInteger := 0;
+    Uni_list.Post;
+    Uni_list.Next;
   end;
   // на выходе по Ок из формы - применил кэшированое update, иначе тормозит сильно ред.18.07.2019
-  OD_list.EnableControls;
+  Uni_list.EnableControls;
 end;
 
 procedure TForm_tree_par_edit.cxGrid1DBTableView1InitEditValue(

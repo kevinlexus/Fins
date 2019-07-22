@@ -1,6 +1,6 @@
 object Form_olap: TForm_olap
-  Left = 642
-  Top = 260
+  Left = 603
+  Top = 205
   AutoScroll = False
   Caption = 'OLAP'
   ClientHeight = 743
@@ -524,6 +524,16 @@ object Form_olap: TForm_olap
     Settings.PrintSettings.PageNumber = True
     Settings.PrintSettings.DateTime = True
     ExtraViewInExport = False
+    object cxm1: TcxMemo
+      Left = 224
+      Top = 320
+      Lines.Strings = (
+        'cxm1')
+      TabOrder = 2
+      Visible = False
+      Height = 185
+      Width = 561
+    end
   end
   object PVDimToolBar1: TPVDimToolBar
     Left = 0
@@ -632,814 +642,6 @@ object Form_olap: TForm_olap
     TabOrder = 7
     Visible = False
   end
-  object cxm1: TcxMemo
-    Left = 101
-    Top = 123
-    Align = alClient
-    Properties.ScrollBars = ssBoth
-    TabOrder = 8
-    Visible = False
-    Height = 530
-    Width = 984
-  end
-  object PivotMap13: TPivotMap
-    Cube = PivotCube13
-    Columns = <>
-    Rows = <
-      item
-        Name = 'PREDPR'
-      end
-      item
-        Name = 'REU'
-      end
-      item
-        Name = 'PSCH'
-      end
-      item
-        Name = 'SCH'
-      end
-      item
-        Name = 'NM'
-      end
-      item
-        Name = 'ORGNAME'
-      end>
-    HideEmptyRows = True
-    HideEmptyColumns = True
-    TableMode = True
-    DDirection = True
-    AutoSaveMap = False
-    AutoExpand = True
-    Left = 64
-    Top = 136
-  end
-  object PivotCube13: TPivotCube
-    FactTableDataSet = DM_Olap.OD_data
-    Dimensions = <
-      item
-        Enabled = True
-        AliasName = 'LSK'
-        FieldName = 'LSK'
-        DataSet = DM_Olap.OD_data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1051#1080#1094'.'#1089#1095'.'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'PREDPR'
-        FieldName = 'TREST'
-        DataSet = DM_Olap.OD_trest_olap
-        KeyField = 'TREST'
-        LookupField = 'NAME_TR'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1060#1086#1085#1076
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'REU'
-        FieldName = 'REU'
-        DataSet = DM_Olap.OD_reu_olap
-        KeyField = 'REU'
-        LookupField = 'NAME_REU'
-        WrapTo = wt_None
-        Sorting = dmtKeySort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1046#1069#1054
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'PREDPR_DET'
-        FieldName = 'PREDPR_DET'
-        DataSet = DM_Olap.OD_data
-        KeyField = 'PREDPR_DET'
-        LookupField = 'PREDPR_DET'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1040#1076#1088'.'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'ORGNAME'
-        FieldName = 'ORG'
-        DataSet = DM_Olap.OD_org_olap
-        KeyField = 'ID'
-        LookupField = 'NAME'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'ORGMAIN'
-        FieldName = 'FK_ORG2'
-        DataSet = DM_Olap.OD_org2_olap
-        KeyField = 'ID'
-        LookupField = 'NAME'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1043#1083#1072#1074#1085#1072#1103' '#1086#1088#1075'.'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'NM'
-        FieldName = 'USL'
-        DataSet = DM_Olap.OD_usl_olap
-        KeyField = 'USL'
-        LookupField = 'NM'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1059#1089#1083#1091#1075#1072' '#1076#1077#1090'.'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'NM1'
-        FieldName = 'USLM'
-        DataSet = DM_Olap.OD_uslm_olap
-        KeyField = 'USLM'
-        LookupField = 'NM1'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1059#1089#1083#1091#1075#1072
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'STATUS'
-        FieldName = 'STATUS'
-        DataSet = DM_Olap.OD_status_olap
-        KeyField = 'ID'
-        LookupField = 'NAME'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1057#1090#1072#1090#1091#1089
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'PSCH'
-        FieldName = 'PSCH'
-        DataSet = DM_Olap.OD_psch_olap
-        KeyField = 'ID'
-        LookupField = 'NAME'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1055#1088#1080#1079#1085#1072#1082
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'IS_EMPT'
-        FieldName = 'IS_EMPT'
-        DataSet = DM_Olap.OD_data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1055#1091#1089#1090#1072#1103'?'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'SCH'
-        FieldName = 'SCH'
-        DataSet = DM_Olap.OD_data
-        KeyField = 'ID'
-        LookupField = 'NAME'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1058#1080#1087
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'VAL_GROUP'
-        FieldName = 'VAL_GROUP'
-        DataSet = DM_Olap.OD_data
-        KeyField = 'VAL_GROUP'
-        LookupField = 'VAL_GROUP'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1050#1086#1101#1092#1092
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'VAL_GROUP2'
-        FieldName = 'VAL_GROUP2'
-        DataSet = DM_Olap.OD_data
-        KeyField = 'VAL_GROUP2'
-        LookupField = 'VAL_GROUP2'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1053#1086#1088#1084#1072#1090#1080#1074
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'UCH'
-        FieldName = 'UCH'
-        DataSet = DM_Olap.OD_data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1050#1086#1090#1077#1083#1100#1085#1072#1103
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'MG1'
-        FieldName = 'MG1'
-        DataSet = DM_Olap.OD_data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1055#1077#1088#1080#1086#1076
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'FIO'
-        FieldName = 'FIO'
-        DataSet = DM_Olap.OD_data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1060#1048#1054
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'NAME_GR'
-        FieldName = 'NAME_GR'
-        DataSet = DM_Olap.OD_data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1059#1095#1072#1089#1090#1086#1082
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'ODPU_EX'
-        FieldName = 'ODPU_EX'
-        DataSet = DM_Olap.OD_data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1054#1044#1055#1059
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'LSK_TP'
-        FieldName = 'LSK_TP'
-        DataSet = DM_Olap.OD_data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1058#1080#1087' '#1089#1095#1077#1090#1072
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'IS_VOL'
-        FieldName = 'IS_VOL'
-        DataSet = DM_Olap.OD_data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1054#1073#1098#1077#1084'?'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'IsHotPipe'
-        FieldName = 'IsHotPipe'
-        DataSet = DM_Olap.OD_data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1043#1042' '#1048#1079#1086#1083
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'isTowel'
-        FieldName = 'isTowel'
-        DataSet = DM_Olap.OD_data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1055#1086#1083#1086#1090'.'#1089#1091#1096
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end>
-    LNG.Strings = (
-      'RowTotalName='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1056#1054#1050#1040#1052
-      'ColumnTotalName='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1054#1051#1041#1062#1040#1052
-      'PanelRowsCaption='#1057#1090#1088#1086#1082#1072
-      'PanelColumnsCaption='#1057#1090#1086#1083#1073#1077#1094
-      'PanelDimsCaption='#1060#1080#1083#1100#1090#1088
-      'CustomFilter='#1060#1080#1083#1100#1090#1088
-      
-        'pvToolBarCollapseError=Could not collapse TOOLBAR without border' +
-        ' alignment'
-      
-        'pvToolBarTreeFilterWarn=Cannot use incremental filtering on hier' +
-        'arhical dimensions!'
-      'pvToolBarNoFilter='#1053#1077#1090' '#1092#1080#1083#1100#1090#1088#1072
-      'pvToolBarCustomFilter='#1048#1089#1087#1086#1083#1100#1079'.'#1092#1080#1083#1100#1090#1088
-      'pvCubeErr1=Could not load dimension data!'
-      'pvCubeErr2=Could not load measure data!'
-      'pvCubeErr3=: You must specify dataset for dimension!'
-      
-        'pvCubeErr4=Could not load dimension items! Dimension: %s  Dimens' +
-        'ion item: %s'
-      'pvCubeErr5=Could not start building cube! Unknown error'
-      
-        'pvCubeErr6=You must set appropriate EventHandler for custom wrap' +
-        'ped dimensions! : %s'
-      'pvCubeErr7=You must set FactTableDataSet property!'
-      'pvCubeErr8=You must set at least ONE measure'
-      'pvCubeErr9=You must set at least ONE dimension'
-      'pvMapErr1='#1054#1096#1080#1073#1086#1095#1085#1099#1081' '#1080#1085#1076#1077#1082#1089
-      'pvMapErr2='#1054#1076#1085#1086' '#1080#1079#1084#1077#1088#1077#1085#1080#1077' '#1076#1086#1083#1078#1085#1086' '#1073#1099#1090#1100' '#1074#1080#1076#1080#1084#1099#1084'!'
-      'pvGridExcel0=Export note'
-      
-        'pvGridExcel1=Number of columns more than 256. Only first 255 col' +
-        'umns will be exported!'
-      'pvGridExcel2=Number of columns must be more than 0!'
-      'pvGridExcel3=Number of rows must be more than 0!'
-      
-        'pvGridExcel4=Could not export data to Excel! Check your MS Excel' +
-        ' installation'
-      'pvAMFAddMeasureForm=Calculated measures manager'
-      'pvAMFAddMeasureBtn='#1044#1086#1073#1072#1074#1080#1090#1100' '#1085#1086#1074#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFEditMeasureBtn='#1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1080#1084#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFDelMeasureBtn='#1059#1076#1072#1083#1080#1090#1100' '#1087#1086#1076#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFCalcLabel='#1055#1086#1076#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFCalcEditLabel='#1048#1089#1087#1086#1083#1100#1079#1091#1077#1084#1072#1103' '#1092#1086#1088#1084#1091#1083#1072
-      'pvAMFMeasureLabel='#1048#1084#1077#1102#1097#1080#1077#1089#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFViewsLabel='#1048#1084#1077#1102#1097#1080#1077#1089#1103' '#1082#1091#1088#1089#1086#1088#1099
-      'pvAMFCheckBtn='#1055#1088#1086#1074#1077#1088#1100#1090#1077' '#1092#1086#1088#1084#1091#1083#1091
-      'pvAMFSynaxError='#1057#1080#1085#1090#1072#1082#1089#1080#1095#1077#1089#1082#1072#1103' '#1086#1096#1080#1073#1082#1072
-      'pvAMFFormulaError=: '#1054#1096#1080#1073#1082#1072' '#1074' '#1092#1086#1088#1084#1091#1083#1077
-      'pvAMFDuplicateError='#1044#1091#1073#1083#1080#1088#1091#1077#1097#1077#1077#1089#1103' '#1080#1084#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFCheckOKName='#1054#1090#1084#1077#1095#1077#1085#1086'!'
-      'pvToolBarDDOKBtnHint='#1055#1088#1080#1085#1103#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
-      'pvToolBarDDCancelBtnHint='#1054#1090#1084#1077#1085#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
-      'pvToolBarDDFillBtnHint='#1042#1099#1076#1077#1083#1080#1090#1100' '#1074#1089#1077
-      'pvToolBarDDClearBtnHint='#1054#1090#1084#1077#1085#1080#1090#1100' '#1074#1089#1077
-      'pvToolBarDDRevertBtnHint='#1048#1085#1074#1077#1088#1090#1080#1088#1086#1074#1072#1090#1100
-      'pvToolBarDDExpandBtnHint='#1056#1072#1079#1074#1077#1088#1085#1091#1090#1100' '#1074#1089#1077' '#1074#1077#1090#1082#1080
-      'pvMapValueName='#1047#1085#1072#1095#1077#1085#1080#1077
-      'pvMapRowPercentName='#1055#1088#1086#1094#1077#1085#1090' '#1087#1086' '#1057#1090#1088#1086#1082#1072#1084
-      'pvMapColPercentName='#1055#1088#1086#1094#1077#1085#1090' '#1087#1086' '#1057#1090#1086#1083#1073#1094#1072#1084
-      'pvMapRecordCountName='#1050#1086#1083'-'#1074#1086
-      'pvMapRankName='#1056#1072#1085#1075'['#1057#1090#1086#1083#1073#1077#1094']'
-      'pvMapRankRName='#1056#1072#1085#1075'['#1057#1090#1088#1086#1082#1072']'
-      'pvMapSubPrevCName='#1056#1072#1079#1085#1080#1094#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1080#1084' '#1057#1090#1086#1083#1073#1094#1086#1084
-      'pvMapSubPrevRName='#1056#1072#1079#1085#1080#1094#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1077#1081' '#1057#1090#1088#1086#1082#1086#1081
-      'pvMapAddPrevCName='#1057#1091#1084#1084#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1080#1084' '#1057#1090#1086#1083#1073#1094#1086#1084
-      'pvMapAddPrevRName='#1057#1091#1084#1084#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1077#1081' '#1057#1090#1088#1086#1082#1086#1081
-      'pvMapRunningTotalName1='#1053#1072#1088#1072#1089#1090#1072#1102#1097#1077#1081' '#1048#1090#1086#1075' '#1087#1086' '#1057#1090#1086#1083#1073#1094#1091
-      'pvMapRunningTotalName2='#1053#1072#1088#1072#1089#1090#1072#1102#1097#1077#1081' '#1048#1090#1086#1075' '#1087#1086' '#1057#1090#1088#1086#1082#1077
-      'pvBtnHintAccept='#1055#1086#1076#1090#1074#1077#1088#1076#1080#1090#1100
-      'pvBtnHintCancel='#1054#1090#1084#1077#1085#1080#1090#1100
-      'pvBtnHintExpandTree='#1056#1072#1079#1074#1077#1088#1085#1091#1090#1100'/'#1057#1074#1077#1088#1085#1091#1090#1100' '#1074#1077#1090#1082#1080
-      'pvBtnHintCalcMeasureDialog='#1042#1082#1083'. '#1076#1080#1072#1083#1086#1075' '#1056#1072#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1075#1086' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintMeasureFillEnable='#1042#1099#1076#1077#1083#1080#1090#1100' '#1074#1089#1077
-      'pvBtnHintMeasureFillDisable='#1054#1090#1084#1077#1090#1080#1090#1100' '#1074#1089#1077
-      'pvBtnHintMeasureRevert='#1055#1077#1088#1077#1082#1083#1102#1095#1080#1090#1100' '#1089#1086#1089#1090#1086#1103#1085#1080#1077' '#1077#1076'.'#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimFillActive='#1042#1080#1076#1080#1084#1099' '#1074#1089#1077' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintDimFillHided='#1053#1077' '#1074#1080#1076#1080#1084#1099' '#1074#1089#1077' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintDimFillFiltered='#1060#1080#1083#1100#1090#1088#1086#1074#1072#1090#1100' '#1074#1089#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimRevert='#1062#1080#1082#1083#1080#1095#1085#1099#1081' '#1089#1076#1074#1080#1075' '#1089#1086#1089#1090#1086#1103#1085#1080#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimAddGroup='#1044#1086#1073#1072#1074#1080#1090#1100' '#1080#1077#1088#1072#1088#1093#1080#1095#1077#1089#1082#1091#1102' '#1075#1088#1091#1087#1087#1091
-      'pvBtnHintDimDelGroup='#1059#1076#1072#1083#1080#1090#1100' '#1080#1077#1088#1072#1088#1093#1080#1095#1077#1089#1082#1091#1102' '#1075#1088#1091#1087#1087#1091
-      'mbFormCaption='#1055#1086#1089#1090#1088#1086#1080#1090#1077#1083#1100' '#1079#1072#1087#1088#1086#1089#1072
-      'mbRowsCaption='#1057#1090#1088#1086#1082#1080
-      'mbColumnsCaption='#1057#1090#1086#1083#1073#1094#1099
-      'mbDimsCaption='#1048#1079#1084#1077#1088#1077#1085#1080#1103
-      'mbDisabledDimsCaption='#1053#1077#1072#1082#1090#1080#1074#1085#1099#1077' '#1048#1079#1084#1077#1088#1077#1085#1080#1103
-      
-        'mbRunEditBtnHint='#1054#1090#1082#1088#1099#1090#1100' '#1088#1077#1076#1072#1082#1090#1086#1088' '#1080#1079#1084#1077#1088#1077#1085#1080#1081' '#1076#1083#1103' '#1074#1099#1073#1088#1072#1085#1085#1099#1093' '#1080#1079#1084#1077#1088#1077 +
-        #1085#1080#1081
-      
-        'mbTreeViewHint=Drag'#39'n'#39'Drop dimension lable to choosen group. Dbl' +
-        '-click to run dimension editor'
-      'DimensionFormCaption='#1056#1077#1076#1072#1082#1090#1086#1088' '#1048#1079#1084#1077#1088#1077#1085#1080#1081' :'
-      'dimDisplayName='#1047#1072#1075#1086#1083#1086#1074#1086#1082
-      'dimCount='#1050#1086#1083'-'#1074#1086' '#1086#1073#1098#1077#1082#1090#1086#1074
-      'dimSOrtBtn='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072
-      'dimSortBtnHint='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072
-      'dimActiveItems='#1040#1082#1090#1080#1074#1085#1099#1077' '#1086#1073#1098#1077#1082#1090#1099
-      'dimInActiveItems='#1061#1088#1072#1085#1080#1083#1080#1097#1077'('#1085#1077' '#1072#1082#1090#1080#1074#1085#1099#1077' '#1086#1073#1098#1077#1082#1090#1099')'
-      'dimFilterError='#1050#1072#1082' '#1084#1080#1085#1080#1084#1091#1084' '#1086#1076#1085#1086' '#1080#1079#1084#1077#1088#1077#1085#1080#1077' '#1076#1086#1083#1078#1085#1086' '#1073#1099#1090#1100' '#1072#1082#1090#1080#1074#1085#1099#1084'!'
-      'dimSearch='#1053#1072#1081#1090#1080
-      
-        'dimTVHint=Drag'#39'n'#39'drop selected item(s) to group or repository ar' +
-        'ea'
-      'dimSortByName='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072' '#1087#1086' '#1080#1084#1077#1085#1080
-      'dimSortByKey='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072' '#1087#1086' '#1082#1083#1102#1095#1091
-      'dimNoSort='#1041#1077#1079' '#1089#1086#1088#1090#1080#1088#1086#1074#1082#1080
-      'dimSortAscending='#1055#1086' '#1074#1086#1079#1088#1072#1089#1090#1072#1102#1097#1077#1081
-      'dimSortDescending='#1055#1086' '#1091#1073#1099#1074#1072#1102#1097#1077#1081
-      'dimForecastingCB1=Enable prev. forecast value'
-      'dimForecastingCB2=Enable next. forecast value'
-      'dimForecastingType=Forecasting method'
-      'dimForecastingMethod1=Simple moving average'
-      'dimForecastingMethod2=Weighted Moving Average'
-      'dimForecastingMethod3=Double Exponential Smoothing'
-      'dimForecastingMethod4=Triple Exponential Smoothing'
-      'dimForecastingMethod5=Show Data Margins Only'
-      'dimForecastingMethod6=Show First and Last members'
-      'MeasureCommonFormCaption='#1055#1086#1089#1090#1088#1086#1080#1090#1077#1083#1100' '#1079#1085#1072#1095#1077#1085#1080#1081
-      'MFormatBtnName=Build format'
-      'MFormatFormCaption=Build format string'
-      'pvMapMVFmt0=Change measure type'
-      'pvMapMVFmt1=Cell'
-      'pvMapMVFmt2=Percent by Column'
-      'pvMapMVFmt3=Percent by Row'
-      'pvMapMVFmt4=Record count'
-      'pvMapMVFmt5=Rank by Column'
-      'pvMapMVFmt6=Rank by Row'
-      'pvMapMVFmt7=Previous member by Row'
-      'pvMapMVFmt8=Next member by Row'
-      'pvMapMVFmt9=Previous member by Column'
-      'pvMapMVFmt10=Next member by Column'
-      'pvMapMVFmt11=Running Total by Column'
-      'pvMapMVFmt12=Running Total by Row'
-      'pmMapMVOp1=Value'
-      'pmMapMVOp2=Subtract'
-      'pmMapMVOp3=Add'
-      'pmMapMVOp4=Divide'
-      'pmMapMVOp5=Multiply'
-      'pvMeasureCommon5=Min. value'
-      'pvMeasureCommon6=Max. value'
-      'pvMeasureCommon9=Value'
-      'pvMeasureCommon10=Operation'
-      'pvMeasureCommon11=Only one measure visible'
-      'pvMeasureCommon12=Value representation'
-      'pvMeasureCommon13=Filters'
-      'pvMeasureCommon14=Filter by Map cells'
-      'pvMeasureCommon15=Filter by fact table records'
-      'pvMeasureCommon16=Measure formating'
-      'pvMeasureCommon17=Formula (is calculated measure)'
-      'pvMeasureCommon18=Enabled'
-      'pvMeasureCommon19=Running Total by Column'
-      'pvMeasureCommon20=Running Total by Row'
-      'pvMeasureCommon21=Display caption'
-      'MeasureFilterError= Measure filter error'
-      'mfeWrongValue=Wrong value in  measure filter:'
-      'MeasureCommonFormDistinctName=Distinct'
-      'pvgSearchFormCaption=Search'
-      'pvgSearchArea=Search area'
-      'pvgSearchRow=Row header'
-      'pvgSearchCol=Column header'
-      'pvgSearchText=Text for search'
-      'pvgSearch1=Next'
-      'pvgSearch2=Forward'
-      'pvgSearch3=Case sensitive'
-      'pvgSearchBtn=Find again'
-      'pvgSearchFinish=Cannot find more'
-      'uHtmBuildHeaders=building headers...'
-      'uHtmPreparing=prepearing...'
-      'uHtmColTotal='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1054#1051#1041#1062#1040#1052
-      'uHtmRowTotal='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1056#1054#1050#1040#1052
-      'uHtmExportColHeader=exporting column headers...'
-      
-        'uHtmExportCells=exporting row headers, cell values and row total' +
-        's...'
-      'uHtmExportColTotal=exporting column totals...'
-      'uHtmSave=saving and executing...'
-      'uHtmLabel=Action...'
-      'ChartDDRows='#1057#1090#1088#1086#1082#1080
-      'ChartDDColumns='#1057#1090#1086#1083#1073#1094#1099
-      'ddChartViews=Views'
-      'ddChartLegend='#1051#1077#1075#1077#1085#1076#1072
-      'ddChartMarks=Marks'
-      'ChartXNextPage=Next page'
-      'ChartXPrevPage=Prev. page'
-      'CubeButtonCaption=Cube'
-      'ChartButtonCaption=Chart'
-      'pvGridSubTotal=Subtotal'
-      'pvGridSubTotalwName=Sub-total by '
-      'MFormatCount=3'
-      'MFormatName0=Generic'
-      'MFormatValue0=#0.00'
-      'MFormatName1=Price (US)'
-      'MFormatValue1=$ #0.00'
-      'MFormatName2=Summa'
-      'MFormatValue2=# ##0.00'
-      'MFormatCap1=Predefined formats'
-      'MFormatCap2=Format string'
-      'MFormatCap3=Number of decimals'
-      'MFormatCap4=Before'
-      'MFormatCap5=After'
-      'MFormatCap6=Design'
-      'MFormatCap7=Symbol'
-      'MFormatCap8=Example'
-      'MFormatCap9=Thousand separator'
-      'uXLSActionLabel=Action'
-      'uXLSAction1=Prepearing basic fonts'
-      'uXLSAction2=Prepearing basic formats'
-      'uXLSAction3=Applying row totals headers merging'
-      'uXLSAction4=Applying cells format'
-      'uXLSAction5=Applying columns headers merging'
-      'uXLSAction6=Applying rows headers merging'
-      'uXLSAction7=Applying column totals headers merging'
-      'uXLSAction8=Applying auto width for columns'
-      'uXLActionLabel=Action'
-      'uXLAction1=Prepearing cells array'
-      'uXLAction2=Prepearing column headers'
-      'uXLAction3=Processing'
-      'uXLAction4=Merging column headers'
-      'uXLAction5=Merging row headers'
-      'uXLAction6=Merging row total headers'
-      'uXLAction7=Applying cells format'
-      'pvGridPrint1=Print All'
-      'pvGridPrint2=Print selected'
-      'pvGridPrint3=Right click to scale menu'
-      'uXLSActionLabel2=Action progress'
-      'uXLSActionLabel2=Full progress'
-      'uHtmLabel2=Action progress'
-      'uHtmLabel3=Full progress'
-      'pvGridEditor1=Table'
-      'pvGridEditor2=Chart'
-      'pvGridEditor3=Method'
-      'pvGridEditor4=Summa'
-      'pvGridEditor5=Count'
-      'pvGridEditor6=Average'
-      'pvGridEditor7=Equal'
-      'pvGridEditor8=Proportional'
-      'pvGridPrint4=Print preview'
-      'pvGridPrint5=Scale page'
-      'pvGridPrint6=Scale print'
-      'pvGridPrint7=Fit page'
-      'pvGridPrint8=Fit width'
-      'pvGridPrint9=Fit height'
-      'pvGridPrint10=50%'
-      'pvGridPrint11=100%'
-      'pvGridPrint12=200%'
-      'pvGridPrint13=400%'
-      'pvGridPrintLocked=Process locked! Please wait....')
-    Measures = <
-      item
-        AliasName = 'CNT'
-        FieldName = 'CNT'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '#######0.000'
-        DisplayName = #1050#1086#1083'-'#1074#1086' ('#1045#1076'.)'
-      end
-      item
-        AliasName = 'OPL'
-        FieldName = 'OPL'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1055#1083#1086#1097#1072#1076#1100
-      end
-      item
-        AliasName = 'CHNG_VOL'
-        FieldName = 'CHNG_VOL'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1055#1077#1088#1077#1088#1072#1089#1095#1077#1090
-      end
-      item
-        AliasName = 'KLSK'
-        FieldName = 'KLSK'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1082#1086#1083'-'#1074#1086' '#1051'/'#1057
-      end
-      item
-        AliasName = 'KPR'
-        FieldName = 'KPR'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1055#1088#1086#1078#1080#1074'. '#1074' '#1090'.'#1095'. '#1042'.'#1054'.'
-      end
-      item
-        AliasName = 'KPR_OT'
-        FieldName = 'KPR_OT'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1042#1088'.'#1086#1090#1089#1091#1090'.'
-      end
-      item
-        AliasName = 'KPR_WR'
-        FieldName = 'KPR_WR'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1042#1088'.'#1079#1072#1088#1077#1075'.'
-      end
-      item
-        AliasName = 'CNT_LG'
-        FieldName = 'CNT_LG'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1051#1100#1075#1086#1090#1085#1080#1082#1086#1074
-      end
-      item
-        AliasName = 'CNT_SUBS'
-        FieldName = 'CNT_SUBS'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1055#1086#1083#1100#1079'.'#1089#1091#1073#1089#1080#1076'.('#1051'/'#1057')'
-      end
-      item
-        AliasName = 'CNT_ROOM'
-        FieldName = 'CNT_ROOM'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1050#1086#1084#1085#1072#1090
-      end
-      item
-        AliasName = 'ODPU_KUB'
-        FieldName = 'ODPU_KUB'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1054#1044#1055#1059', '#1045#1076'.'
-      end
-      item
-        AliasName = 'KUB_DIST'
-        FieldName = 'KUB_DIST'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1053#1086#1088#1084#1072#1090#1080#1074' '#1087#1086' '#1054#1044#1055#1059
-      end
-      item
-        AliasName = 'KUB_FACT_UPNORM'
-        FieldName = 'KUB_FACT_UPNORM'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1056#1072#1079#1085#1080#1094#1072
-      end
-      item
-        AliasName = 'KUB_FACT'
-        FieldName = 'KUB_FACT'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1054#1044#1053
-      end>
-    CubeName = 'test'
-    OptimizeLevel = optNormal
-    ExtendedMode = True
-    AlwaysSaveCounts = False
-    ExcludeZeros = True
-    ClearTimeInfo = True
-    Left = 32
-    Top = 136
-  end
   object PivotMap14: TPivotMap
     Cube = PivotCube14
     Columns = <>
@@ -1481,13 +683,13 @@ object Form_olap: TForm_olap
     Top = 168
   end
   object PivotCube14: TPivotCube
-    FactTableDataSet = DM_Olap.OD_data
+    FactTableDataSet = DM_Olap.Uni_data
     Dimensions = <
       item
         Enabled = True
         AliasName = 'MG1'
         FieldName = 'MG1'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1503,7 +705,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'PREDPR'
         FieldName = 'PREDPR'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1519,7 +721,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'REU'
         FieldName = 'REU'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1535,7 +737,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'PREDPR_DET'
         FieldName = 'PREDPR_DET'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1551,7 +753,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'TYPE'
         FieldName = 'TYPE'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1568,7 +770,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'STATUS'
         FieldName = 'STATUS'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1585,7 +787,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'ORG'
         FieldName = 'ORG'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         KeyField = 'ID'
         LookupField = 'NAME'
         WrapTo = wt_None
@@ -1604,7 +806,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NAME_GR'
         FieldName = 'NAME_GR'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         KeyField = 'NAME_GR'
         LookupField = 'NAME_GR'
         WrapTo = wt_None
@@ -1622,7 +824,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'LSK'
         FieldName = 'LSK'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1638,7 +840,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'ODPU_EX'
         FieldName = 'ODPU_EX'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1654,7 +856,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'OTHER_NAME'
         FieldName = 'OTHER_NAME'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1670,7 +872,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'VAL_GROUP2'
         FieldName = 'VAL_GROUP2'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1722,7 +924,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'FK_LSK_TP'
         FieldName = 'FK_LSK_TP'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         KeyField = 'ID'
         LookupField = 'NAME'
         WrapTo = wt_None
@@ -1740,7 +942,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'PSCH'
         FieldName = 'PSCH'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         KeyField = 'ID'
         LookupField = 'NAME'
         WrapTo = wt_None
@@ -1758,7 +960,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'GRP'
         FieldName = 'GRP'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1775,7 +977,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'IsHotPipe'
         FieldName = 'IsHotPipe'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1791,7 +993,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'isTowel'
         FieldName = 'isTowel'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2192,13 +1394,13 @@ object Form_olap: TForm_olap
     Top = 168
   end
   object PivotCube54: TPivotCube
-    FactTableDataSet = DM_Olap.OD_data
+    FactTableDataSet = DM_Olap.Uni_data
     Dimensions = <
       item
         Enabled = True
         AliasName = 'LSK'
         FieldName = 'LSK'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         KeyField = 'LSK'
         LookupField = 'LSK'
         WrapTo = wt_None
@@ -2216,7 +1418,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NAME_TR'
         FieldName = 'NAME_TR'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2232,7 +1434,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NAME_REU'
         FieldName = 'NAME_REU'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2248,7 +1450,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'ADR'
         FieldName = 'ADR'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         KeyField = 'ADR'
         LookupField = 'ADR'
         WrapTo = wt_None
@@ -2266,7 +1468,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'FIO'
         FieldName = 'FIO'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2282,7 +1484,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'CNT_MONTH'
         FieldName = 'CNT_MONTH'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         KeyField = 'CNT_MONTH'
         LookupField = 'CNT_MONTH'
         WrapTo = wt_None
@@ -2300,7 +1502,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'DAT'
         FieldName = 'DAT'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2316,7 +1518,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'DEB_ORG'
         FieldName = 'DEB_ORG'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2332,7 +1534,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'ST_NAME'
         FieldName = 'ST_NAME'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2348,7 +1550,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'PSCH'
         FieldName = 'PSCH'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2364,7 +1566,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = #1059#1083#1080#1094#1072
         FieldName = 'STREET'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         KeyField = 'STREET'
         WrapTo = wt_None
         Sorting = dmtKeySort
@@ -2381,7 +1583,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = #1044#1086#1084
         FieldName = 'ND'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         KeyField = 'ND'
         WrapTo = wt_None
         Sorting = dmtKeySort
@@ -2398,7 +1600,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = #1050#1074
         FieldName = 'KW'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         KeyField = 'KW'
         WrapTo = wt_None
         Sorting = dmtKeySort
@@ -2729,13 +1931,13 @@ object Form_olap: TForm_olap
     Top = 232
   end
   object PivotCube35: TPivotCube
-    FactTableDataSet = DM_Olap.OD_data
+    FactTableDataSet = DM_Olap.Uni_data
     Dimensions = <
       item
         Enabled = True
         AliasName = 'PREDPR'
         FieldName = 'PREDP'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         KeyField = 'PREDPR'
         WrapTo = wt_None
         Sorting = dmtNoSort
@@ -2752,7 +1954,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'REU'
         FieldName = 'REU'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2768,7 +1970,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'PREDPR_DET'
         FieldName = 'PREDPR_DET'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2784,7 +1986,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'MG_NAME'
         FieldName = 'MG_NAME'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2800,7 +2002,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'ORG_NAME'
         FieldName = 'ORG_NAME'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2816,7 +2018,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'DAT'
         FieldName = 'DAT'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2832,7 +2034,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'VAR_NAME'
         FieldName = 'VAR_NAME'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2848,7 +2050,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'DOPL_NAME'
         FieldName = 'DOPL_NAME'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2864,7 +2066,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NM'
         FieldName = 'NM'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2880,7 +2082,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NM1'
         FieldName = 'NM1'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2896,7 +2098,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'OPERNAME'
         FieldName = 'OPERNAME'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2912,7 +2114,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'CD_TP'
         FieldName = 'CD_TP'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -3938,13 +3140,13 @@ object Form_olap: TForm_olap
     Top = 168
   end
   object PivotCube57: TPivotCube
-    FactTableDataSet = DM_Olap.OD_data
+    FactTableDataSet = DM_Olap.Uni_data
     Dimensions = <
       item
         Enabled = True
         AliasName = 'PREDPR'
         FieldName = 'PREDP'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         KeyField = 'PREDP'
         LookupField = 'PREDP'
         WrapTo = wt_None
@@ -3962,7 +3164,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'PREDPR_DET'
         FieldName = 'PREDPR_DET'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         KeyField = 'PREDPR_DET'
         LookupField = 'PREDPR_DET'
         WrapTo = wt_None
@@ -3980,7 +3182,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'KW'
         FieldName = 'KW'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -3996,7 +3198,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'ORGNAME'
         FieldName = 'ORGNAME'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         KeyField = 'ORGNAME'
         LookupField = 'ORGNAME'
         WrapTo = wt_None
@@ -4014,7 +3216,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NM'
         FieldName = 'NM'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         KeyField = 'NM'
         LookupField = 'NM'
         WrapTo = wt_None
@@ -4032,7 +3234,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NM1'
         FieldName = 'NM1'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -4048,7 +3250,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'STATUS'
         FieldName = 'STATUS'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         KeyField = 'STATUS'
         LookupField = 'STATUS'
         WrapTo = wt_None
@@ -4066,7 +3268,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'SCH'
         FieldName = 'SCH'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         KeyField = 'SCH'
         LookupField = 'SCH'
         WrapTo = wt_None
@@ -4084,7 +3286,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'VAL_GROUP'
         FieldName = 'VAL_GROUP'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         KeyField = 'VAL_GROUP'
         LookupField = 'VAL_GROUP'
         WrapTo = wt_None
@@ -4102,7 +3304,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'MG1'
         FieldName = 'MG1'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -4432,13 +3634,13 @@ object Form_olap: TForm_olap
     Top = 264
   end
   object PivotCube58: TPivotCube
-    FactTableDataSet = DM_Olap.OD_data
+    FactTableDataSet = DM_Olap.Uni_data
     Dimensions = <
       item
         Enabled = True
         AliasName = 'PREDPR'
         FieldName = 'PREDP'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -4454,7 +3656,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'PREDPR_DET'
         FieldName = 'PREDPR_DET'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -4470,7 +3672,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'KW'
         FieldName = 'KW'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -4486,7 +3688,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'TYPE_PSCH'
         FieldName = 'TYPE_PSCH'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -4817,13 +4019,13 @@ object Form_olap: TForm_olap
     Top = 168
   end
   object PivotCube60: TPivotCube
-    FactTableDataSet = DM_Olap.OD_data
+    FactTableDataSet = DM_Olap.Uni_data
     Dimensions = <
       item
         Enabled = True
         AliasName = 'PREDPR'
         FieldName = 'PREDP'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -4839,7 +4041,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'PREDPR_DET'
         FieldName = 'PREDPR_DET'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -4855,7 +4057,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'TARIF_NAME'
         FieldName = 'TARIF_NAME'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -4871,7 +4073,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NM'
         FieldName = 'NM'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -4887,7 +4089,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'MG'
         FieldName = 'MG'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -5864,13 +5066,13 @@ object Form_olap: TForm_olap
     end
   end
   object PivotCube36: TPivotCube
-    FactTableDataSet = DM_Olap.OD_data
+    FactTableDataSet = DM_Olap.Uni_data
     Dimensions = <
       item
         Enabled = True
         AliasName = 'NKOM'
         FieldName = 'NKOM'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -5886,7 +5088,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NINK'
         FieldName = 'NINK'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -5902,7 +5104,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'DAT_INK'
         FieldName = 'DAT_INK'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -5918,7 +5120,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'OPERNAME'
         FieldName = 'OPERNAME'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -6288,13 +5490,13 @@ object Form_olap: TForm_olap
     Top = 304
   end
   object PivotCube80: TPivotCube
-    FactTableDataSet = DM_Olap.OD_data
+    FactTableDataSet = DM_Olap.Uni_data
     Dimensions = <
       item
         Enabled = True
         AliasName = 'NAME_TR'
         FieldName = 'NAME_TR'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -6310,7 +5512,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NAME_REU'
         FieldName = 'NAME_REU'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -6326,7 +5528,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'ADR'
         FieldName = 'ADR'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -6342,7 +5544,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'LSK'
         FieldName = 'LSK'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -6358,7 +5560,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NAME_ORG'
         FieldName = 'NAME_ORG'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -6374,7 +5576,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NM'
         FieldName = 'NM'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -6390,7 +5592,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'CNT'
         FieldName = 'CNT'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -6406,7 +5608,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NM1'
         FieldName = 'NM1'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -6422,7 +5624,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'MG'
         FieldName = 'MG'
-        DataSet = DM_Olap.OD_data
+        DataSet = DM_Olap.Uni_data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -6767,5 +5969,767 @@ object Form_olap: TForm_olap
     BCDToCurrency = False
     Left = 176
     Top = 384
+  end
+  object PivotCube13: TPivotCube
+    FactTableDataSet = DM_Olap.Uni_Data
+    Dimensions = <
+      item
+        Enabled = True
+        AliasName = 'LSK'
+        FieldName = 'LSK'
+        DataSet = DM_Olap.Uni_Data
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1051#1080#1094'.'#1089#1095'.'
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'PREDPR'
+        FieldName = 'TREST'
+        DataSet = DM_Olap.Uni_Data
+        KeyField = 'TREST'
+        LookupField = 'NAME_TR'
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1060#1086#1085#1076
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiRemoveFromCube
+      end
+      item
+        Enabled = True
+        AliasName = 'REU'
+        FieldName = 'REU'
+        DataSet = DM_Olap.Uni_Data
+        KeyField = 'REU'
+        LookupField = 'NAME_REU'
+        WrapTo = wt_None
+        Sorting = dmtKeySort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1046#1069#1054
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiRemoveFromCube
+      end
+      item
+        Enabled = True
+        AliasName = 'PREDPR_DET'
+        FieldName = 'PREDPR_DET'
+        DataSet = DM_Olap.Uni_Data
+        KeyField = 'PREDPR_DET'
+        LookupField = 'PREDPR_DET'
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1040#1076#1088'.'
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiRemoveFromCube
+      end
+      item
+        Enabled = True
+        AliasName = 'ORGNAME'
+        FieldName = 'ORG'
+        DataSet = DM_Olap.OD_org_olap
+        KeyField = 'ID'
+        LookupField = 'NAME'
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'ORGMAIN'
+        FieldName = 'FK_ORG2'
+        DataSet = DM_Olap.OD_org2_olap
+        KeyField = 'ID'
+        LookupField = 'NAME'
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1043#1083#1072#1074#1085#1072#1103' '#1086#1088#1075'.'
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'USL'
+        FieldName = 'USL'
+        DataSet = DM_Olap.OD_usl_olap
+        KeyField = 'USL'
+        LookupField = 'NM'
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1059#1089#1083#1091#1075#1072'.'#1076#1077#1090
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'USLM'
+        FieldName = 'USLM'
+        DataSet = DM_Olap.OD_uslm_olap
+        KeyField = 'USLM'
+        LookupField = 'NM1'
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1059#1089#1083#1091#1075#1072
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'IS_EMPT'
+        FieldName = 'IS_EMPT'
+        DataSet = DM_Olap.Uni_Data
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1055#1091#1089#1090#1072#1103'?'
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'SCH'
+        FieldName = 'SCH'
+        DataSet = DM_Olap.Uni_Data
+        KeyField = 'ID'
+        LookupField = 'NAME'
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1058#1080#1087
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiRemoveFromCube
+      end
+      item
+        Enabled = True
+        AliasName = 'VAL_GROUP'
+        FieldName = 'VAL_GROUP'
+        DataSet = DM_Olap.Uni_Data
+        KeyField = 'VAL_GROUP'
+        LookupField = 'VAL_GROUP'
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1050#1086#1101#1092#1092
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiRemoveFromCube
+      end
+      item
+        Enabled = True
+        AliasName = 'VAL_GROUP2'
+        FieldName = 'VAL_GROUP2'
+        DataSet = DM_Olap.Uni_Data
+        KeyField = 'VAL_GROUP2'
+        LookupField = 'VAL_GROUP2'
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1053#1086#1088#1084#1072#1090#1080#1074
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiRemoveFromCube
+      end
+      item
+        Enabled = True
+        AliasName = 'UCH'
+        FieldName = 'UCH'
+        DataSet = DM_Olap.Uni_Data
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1050#1086#1090#1077#1083#1100#1085#1072#1103
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiRemoveFromCube
+      end
+      item
+        Enabled = True
+        AliasName = 'MG1'
+        FieldName = 'MG1'
+        DataSet = DM_Olap.Uni_Data
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1055#1077#1088#1080#1086#1076
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiRemoveFromCube
+      end
+      item
+        Enabled = True
+        AliasName = 'FIO'
+        FieldName = 'FIO'
+        DataSet = DM_Olap.Uni_Data
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1060#1048#1054
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiRemoveFromCube
+      end
+      item
+        Enabled = True
+        AliasName = 'NAME_GR'
+        FieldName = 'NAME_GR'
+        DataSet = DM_Olap.Uni_Data
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1059#1095#1072#1089#1090#1086#1082
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'ODPU_EX'
+        FieldName = 'ODPU_EX'
+        DataSet = DM_Olap.Uni_Data
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1054#1044#1055#1059
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'LSK_TP'
+        FieldName = 'LSK_TP'
+        DataSet = DM_Olap.Uni_Data
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1058#1080#1087' '#1089#1095#1077#1090#1072
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'IS_VOL'
+        FieldName = 'IS_VOL'
+        DataSet = DM_Olap.Uni_Data
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1054#1073#1098#1077#1084'?'
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'IsHotPipe'
+        FieldName = 'IsHotPipe'
+        DataSet = DM_Olap.Uni_Data
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1043#1042' '#1048#1079#1086#1083
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'isTowel'
+        FieldName = 'isTowel'
+        DataSet = DM_Olap.Uni_Data
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1055#1086#1083#1086#1090'.'#1089#1091#1096
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end>
+    LNG.Strings = (
+      'RowTotalName='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1056#1054#1050#1040#1052
+      'ColumnTotalName='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1054#1051#1041#1062#1040#1052
+      'PanelRowsCaption='#1057#1090#1088#1086#1082#1072
+      'PanelColumnsCaption='#1057#1090#1086#1083#1073#1077#1094
+      'PanelDimsCaption='#1060#1080#1083#1100#1090#1088
+      'CustomFilter='#1060#1080#1083#1100#1090#1088
+      
+        'pvToolBarCollapseError=Could not collapse TOOLBAR without border' +
+        ' alignment'
+      
+        'pvToolBarTreeFilterWarn=Cannot use incremental filtering on hier' +
+        'arhical dimensions!'
+      'pvToolBarNoFilter='#1053#1077#1090' '#1092#1080#1083#1100#1090#1088#1072
+      'pvToolBarCustomFilter='#1048#1089#1087#1086#1083#1100#1079'.'#1092#1080#1083#1100#1090#1088
+      'pvCubeErr1=Could not load dimension data!'
+      'pvCubeErr2=Could not load measure data!'
+      'pvCubeErr3=: You must specify dataset for dimension!'
+      
+        'pvCubeErr4=Could not load dimension items! Dimension: %s  Dimens' +
+        'ion item: %s'
+      'pvCubeErr5=Could not start building cube! Unknown error'
+      
+        'pvCubeErr6=You must set appropriate EventHandler for custom wrap' +
+        'ped dimensions! : %s'
+      'pvCubeErr7=You must set FactTableDataSet property!'
+      'pvCubeErr8=You must set at least ONE measure'
+      'pvCubeErr9=You must set at least ONE dimension'
+      'pvMapErr1='#1054#1096#1080#1073#1086#1095#1085#1099#1081' '#1080#1085#1076#1077#1082#1089
+      'pvMapErr2='#1054#1076#1085#1086' '#1080#1079#1084#1077#1088#1077#1085#1080#1077' '#1076#1086#1083#1078#1085#1086' '#1073#1099#1090#1100' '#1074#1080#1076#1080#1084#1099#1084'!'
+      'pvGridExcel0=Export note'
+      
+        'pvGridExcel1=Number of columns more than 256. Only first 255 col' +
+        'umns will be exported!'
+      'pvGridExcel2=Number of columns must be more than 0!'
+      'pvGridExcel3=Number of rows must be more than 0!'
+      
+        'pvGridExcel4=Could not export data to Excel! Check your MS Excel' +
+        ' installation'
+      'pvAMFAddMeasureForm=Calculated measures manager'
+      'pvAMFAddMeasureBtn='#1044#1086#1073#1072#1074#1080#1090#1100' '#1085#1086#1074#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
+      'pvAMFEditMeasureBtn='#1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1080#1084#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
+      'pvAMFDelMeasureBtn='#1059#1076#1072#1083#1080#1090#1100' '#1087#1086#1076#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
+      'pvAMFCalcLabel='#1055#1086#1076#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
+      'pvAMFCalcEditLabel='#1048#1089#1087#1086#1083#1100#1079#1091#1077#1084#1072#1103' '#1092#1086#1088#1084#1091#1083#1072
+      'pvAMFMeasureLabel='#1048#1084#1077#1102#1097#1080#1077#1089#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
+      'pvAMFViewsLabel='#1048#1084#1077#1102#1097#1080#1077#1089#1103' '#1082#1091#1088#1089#1086#1088#1099
+      'pvAMFCheckBtn='#1055#1088#1086#1074#1077#1088#1100#1090#1077' '#1092#1086#1088#1084#1091#1083#1091
+      'pvAMFSynaxError='#1057#1080#1085#1090#1072#1082#1089#1080#1095#1077#1089#1082#1072#1103' '#1086#1096#1080#1073#1082#1072
+      'pvAMFFormulaError=: '#1054#1096#1080#1073#1082#1072' '#1074' '#1092#1086#1088#1084#1091#1083#1077
+      'pvAMFDuplicateError='#1044#1091#1073#1083#1080#1088#1091#1077#1097#1077#1077#1089#1103' '#1080#1084#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
+      'pvAMFCheckOKName='#1054#1090#1084#1077#1095#1077#1085#1086'!'
+      'pvToolBarDDOKBtnHint='#1055#1088#1080#1085#1103#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
+      'pvToolBarDDCancelBtnHint='#1054#1090#1084#1077#1085#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
+      'pvToolBarDDFillBtnHint='#1042#1099#1076#1077#1083#1080#1090#1100' '#1074#1089#1077
+      'pvToolBarDDClearBtnHint='#1054#1090#1084#1077#1085#1080#1090#1100' '#1074#1089#1077
+      'pvToolBarDDRevertBtnHint='#1048#1085#1074#1077#1088#1090#1080#1088#1086#1074#1072#1090#1100
+      'pvToolBarDDExpandBtnHint='#1056#1072#1079#1074#1077#1088#1085#1091#1090#1100' '#1074#1089#1077' '#1074#1077#1090#1082#1080
+      'pvMapValueName='#1047#1085#1072#1095#1077#1085#1080#1077
+      'pvMapRowPercentName='#1055#1088#1086#1094#1077#1085#1090' '#1087#1086' '#1057#1090#1088#1086#1082#1072#1084
+      'pvMapColPercentName='#1055#1088#1086#1094#1077#1085#1090' '#1087#1086' '#1057#1090#1086#1083#1073#1094#1072#1084
+      'pvMapRecordCountName='#1050#1086#1083'-'#1074#1086
+      'pvMapRankName='#1056#1072#1085#1075'['#1057#1090#1086#1083#1073#1077#1094']'
+      'pvMapRankRName='#1056#1072#1085#1075'['#1057#1090#1088#1086#1082#1072']'
+      'pvMapSubPrevCName='#1056#1072#1079#1085#1080#1094#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1080#1084' '#1057#1090#1086#1083#1073#1094#1086#1084
+      'pvMapSubPrevRName='#1056#1072#1079#1085#1080#1094#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1077#1081' '#1057#1090#1088#1086#1082#1086#1081
+      'pvMapAddPrevCName='#1057#1091#1084#1084#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1080#1084' '#1057#1090#1086#1083#1073#1094#1086#1084
+      'pvMapAddPrevRName='#1057#1091#1084#1084#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1077#1081' '#1057#1090#1088#1086#1082#1086#1081
+      'pvMapRunningTotalName1='#1053#1072#1088#1072#1089#1090#1072#1102#1097#1077#1081' '#1048#1090#1086#1075' '#1087#1086' '#1057#1090#1086#1083#1073#1094#1091
+      'pvMapRunningTotalName2='#1053#1072#1088#1072#1089#1090#1072#1102#1097#1077#1081' '#1048#1090#1086#1075' '#1087#1086' '#1057#1090#1088#1086#1082#1077
+      'pvBtnHintAccept='#1055#1086#1076#1090#1074#1077#1088#1076#1080#1090#1100
+      'pvBtnHintCancel='#1054#1090#1084#1077#1085#1080#1090#1100
+      'pvBtnHintExpandTree='#1056#1072#1079#1074#1077#1088#1085#1091#1090#1100'/'#1057#1074#1077#1088#1085#1091#1090#1100' '#1074#1077#1090#1082#1080
+      'pvBtnHintCalcMeasureDialog='#1042#1082#1083'. '#1076#1080#1072#1083#1086#1075' '#1056#1072#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1075#1086' '#1079#1085#1072#1095#1077#1085#1080#1103
+      'pvBtnHintMeasureFillEnable='#1042#1099#1076#1077#1083#1080#1090#1100' '#1074#1089#1077
+      'pvBtnHintMeasureFillDisable='#1054#1090#1084#1077#1090#1080#1090#1100' '#1074#1089#1077
+      'pvBtnHintMeasureRevert='#1055#1077#1088#1077#1082#1083#1102#1095#1080#1090#1100' '#1089#1086#1089#1090#1086#1103#1085#1080#1077' '#1077#1076'.'#1080#1079#1084#1077#1088#1077#1085#1080#1103
+      'pvBtnHintDimFillActive='#1042#1080#1076#1080#1084#1099' '#1074#1089#1077' '#1079#1085#1072#1095#1077#1085#1080#1103
+      'pvBtnHintDimFillHided='#1053#1077' '#1074#1080#1076#1080#1084#1099' '#1074#1089#1077' '#1079#1085#1072#1095#1077#1085#1080#1103
+      'pvBtnHintDimFillFiltered='#1060#1080#1083#1100#1090#1088#1086#1074#1072#1090#1100' '#1074#1089#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
+      'pvBtnHintDimRevert='#1062#1080#1082#1083#1080#1095#1085#1099#1081' '#1089#1076#1074#1080#1075' '#1089#1086#1089#1090#1086#1103#1085#1080#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
+      'pvBtnHintDimAddGroup='#1044#1086#1073#1072#1074#1080#1090#1100' '#1080#1077#1088#1072#1088#1093#1080#1095#1077#1089#1082#1091#1102' '#1075#1088#1091#1087#1087#1091
+      'pvBtnHintDimDelGroup='#1059#1076#1072#1083#1080#1090#1100' '#1080#1077#1088#1072#1088#1093#1080#1095#1077#1089#1082#1091#1102' '#1075#1088#1091#1087#1087#1091
+      'mbFormCaption='#1055#1086#1089#1090#1088#1086#1080#1090#1077#1083#1100' '#1079#1072#1087#1088#1086#1089#1072
+      'mbRowsCaption='#1057#1090#1088#1086#1082#1080
+      'mbColumnsCaption='#1057#1090#1086#1083#1073#1094#1099
+      'mbDimsCaption='#1048#1079#1084#1077#1088#1077#1085#1080#1103
+      'mbDisabledDimsCaption='#1053#1077#1072#1082#1090#1080#1074#1085#1099#1077' '#1048#1079#1084#1077#1088#1077#1085#1080#1103
+      
+        'mbRunEditBtnHint='#1054#1090#1082#1088#1099#1090#1100' '#1088#1077#1076#1072#1082#1090#1086#1088' '#1080#1079#1084#1077#1088#1077#1085#1080#1081' '#1076#1083#1103' '#1074#1099#1073#1088#1072#1085#1085#1099#1093' '#1080#1079#1084#1077#1088#1077 +
+        #1085#1080#1081
+      
+        'mbTreeViewHint=Drag'#39'n'#39'Drop dimension lable to choosen group. Dbl' +
+        '-click to run dimension editor'
+      'DimensionFormCaption='#1056#1077#1076#1072#1082#1090#1086#1088' '#1048#1079#1084#1077#1088#1077#1085#1080#1081' :'
+      'dimDisplayName='#1047#1072#1075#1086#1083#1086#1074#1086#1082
+      'dimCount='#1050#1086#1083'-'#1074#1086' '#1086#1073#1098#1077#1082#1090#1086#1074
+      'dimSOrtBtn='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072
+      'dimSortBtnHint='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072
+      'dimActiveItems='#1040#1082#1090#1080#1074#1085#1099#1077' '#1086#1073#1098#1077#1082#1090#1099
+      'dimInActiveItems='#1061#1088#1072#1085#1080#1083#1080#1097#1077'('#1085#1077' '#1072#1082#1090#1080#1074#1085#1099#1077' '#1086#1073#1098#1077#1082#1090#1099')'
+      'dimFilterError='#1050#1072#1082' '#1084#1080#1085#1080#1084#1091#1084' '#1086#1076#1085#1086' '#1080#1079#1084#1077#1088#1077#1085#1080#1077' '#1076#1086#1083#1078#1085#1086' '#1073#1099#1090#1100' '#1072#1082#1090#1080#1074#1085#1099#1084'!'
+      'dimSearch='#1053#1072#1081#1090#1080
+      
+        'dimTVHint=Drag'#39'n'#39'drop selected item(s) to group or repository ar' +
+        'ea'
+      'dimSortByName='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072' '#1087#1086' '#1080#1084#1077#1085#1080
+      'dimSortByKey='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072' '#1087#1086' '#1082#1083#1102#1095#1091
+      'dimNoSort='#1041#1077#1079' '#1089#1086#1088#1090#1080#1088#1086#1074#1082#1080
+      'dimSortAscending='#1055#1086' '#1074#1086#1079#1088#1072#1089#1090#1072#1102#1097#1077#1081
+      'dimSortDescending='#1055#1086' '#1091#1073#1099#1074#1072#1102#1097#1077#1081
+      'dimForecastingCB1=Enable prev. forecast value'
+      'dimForecastingCB2=Enable next. forecast value'
+      'dimForecastingType=Forecasting method'
+      'dimForecastingMethod1=Simple moving average'
+      'dimForecastingMethod2=Weighted Moving Average'
+      'dimForecastingMethod3=Double Exponential Smoothing'
+      'dimForecastingMethod4=Triple Exponential Smoothing'
+      'dimForecastingMethod5=Show Data Margins Only'
+      'dimForecastingMethod6=Show First and Last members'
+      'MeasureCommonFormCaption='#1055#1086#1089#1090#1088#1086#1080#1090#1077#1083#1100' '#1079#1085#1072#1095#1077#1085#1080#1081
+      'MFormatBtnName=Build format'
+      'MFormatFormCaption=Build format string'
+      'pvMapMVFmt0=Change measure type'
+      'pvMapMVFmt1=Cell'
+      'pvMapMVFmt2=Percent by Column'
+      'pvMapMVFmt3=Percent by Row'
+      'pvMapMVFmt4=Record count'
+      'pvMapMVFmt5=Rank by Column'
+      'pvMapMVFmt6=Rank by Row'
+      'pvMapMVFmt7=Previous member by Row'
+      'pvMapMVFmt8=Next member by Row'
+      'pvMapMVFmt9=Previous member by Column'
+      'pvMapMVFmt10=Next member by Column'
+      'pvMapMVFmt11=Running Total by Column'
+      'pvMapMVFmt12=Running Total by Row'
+      'pmMapMVOp1=Value'
+      'pmMapMVOp2=Subtract'
+      'pmMapMVOp3=Add'
+      'pmMapMVOp4=Divide'
+      'pmMapMVOp5=Multiply'
+      'pvMeasureCommon5=Min. value'
+      'pvMeasureCommon6=Max. value'
+      'pvMeasureCommon9=Value'
+      'pvMeasureCommon10=Operation'
+      'pvMeasureCommon11=Only one measure visible'
+      'pvMeasureCommon12=Value representation'
+      'pvMeasureCommon13=Filters'
+      'pvMeasureCommon14=Filter by Map cells'
+      'pvMeasureCommon15=Filter by fact table records'
+      'pvMeasureCommon16=Measure formating'
+      'pvMeasureCommon17=Formula (is calculated measure)'
+      'pvMeasureCommon18=Enabled'
+      'pvMeasureCommon19=Running Total by Column'
+      'pvMeasureCommon20=Running Total by Row'
+      'pvMeasureCommon21=Display caption'
+      'MeasureFilterError= Measure filter error'
+      'mfeWrongValue=Wrong value in  measure filter:'
+      'MeasureCommonFormDistinctName=Distinct'
+      'pvgSearchFormCaption=Search'
+      'pvgSearchArea=Search area'
+      'pvgSearchRow=Row header'
+      'pvgSearchCol=Column header'
+      'pvgSearchText=Text for search'
+      'pvgSearch1=Next'
+      'pvgSearch2=Forward'
+      'pvgSearch3=Case sensitive'
+      'pvgSearchBtn=Find again'
+      'pvgSearchFinish=Cannot find more'
+      'uHtmBuildHeaders=building headers...'
+      'uHtmPreparing=prepearing...'
+      'uHtmColTotal='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1054#1051#1041#1062#1040#1052
+      'uHtmRowTotal='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1056#1054#1050#1040#1052
+      'uHtmExportColHeader=exporting column headers...'
+      
+        'uHtmExportCells=exporting row headers, cell values and row total' +
+        's...'
+      'uHtmExportColTotal=exporting column totals...'
+      'uHtmSave=saving and executing...'
+      'uHtmLabel=Action...'
+      'ChartDDRows='#1057#1090#1088#1086#1082#1080
+      'ChartDDColumns='#1057#1090#1086#1083#1073#1094#1099
+      'ddChartViews=Views'
+      'ddChartLegend='#1051#1077#1075#1077#1085#1076#1072
+      'ddChartMarks=Marks'
+      'ChartXNextPage=Next page'
+      'ChartXPrevPage=Prev. page'
+      'CubeButtonCaption=Cube'
+      'ChartButtonCaption=Chart'
+      'pvGridSubTotal=Subtotal'
+      'pvGridSubTotalwName=Sub-total by '
+      'MFormatCount=3'
+      'MFormatName0=Generic'
+      'MFormatValue0=#0.00'
+      'MFormatName1=Price (US)'
+      'MFormatValue1=$ #0.00'
+      'MFormatName2=Summa'
+      'MFormatValue2=# ##0.00'
+      'MFormatCap1=Predefined formats'
+      'MFormatCap2=Format string'
+      'MFormatCap3=Number of decimals'
+      'MFormatCap4=Before'
+      'MFormatCap5=After'
+      'MFormatCap6=Design'
+      'MFormatCap7=Symbol'
+      'MFormatCap8=Example'
+      'MFormatCap9=Thousand separator'
+      'uXLSActionLabel=Action'
+      'uXLSAction1=Prepearing basic fonts'
+      'uXLSAction2=Prepearing basic formats'
+      'uXLSAction3=Applying row totals headers merging'
+      'uXLSAction4=Applying cells format'
+      'uXLSAction5=Applying columns headers merging'
+      'uXLSAction6=Applying rows headers merging'
+      'uXLSAction7=Applying column totals headers merging'
+      'uXLSAction8=Applying auto width for columns'
+      'uXLActionLabel=Action'
+      'uXLAction1=Prepearing cells array'
+      'uXLAction2=Prepearing column headers'
+      'uXLAction3=Processing'
+      'uXLAction4=Merging column headers'
+      'uXLAction5=Merging row headers'
+      'uXLAction6=Merging row total headers'
+      'uXLAction7=Applying cells format'
+      'pvGridPrint1=Print All'
+      'pvGridPrint2=Print selected'
+      'pvGridPrint3=Right click to scale menu'
+      'uXLSActionLabel2=Action progress'
+      'uXLSActionLabel2=Full progress'
+      'uHtmLabel2=Action progress'
+      'uHtmLabel3=Full progress'
+      'pvGridEditor1=Table'
+      'pvGridEditor2=Chart'
+      'pvGridEditor3=Method'
+      'pvGridEditor4=Summa'
+      'pvGridEditor5=Count'
+      'pvGridEditor6=Average'
+      'pvGridEditor7=Equal'
+      'pvGridEditor8=Proportional'
+      'pvGridPrint4=Print preview'
+      'pvGridPrint5=Scale page'
+      'pvGridPrint6=Scale print'
+      'pvGridPrint7=Fit page'
+      'pvGridPrint8=Fit width'
+      'pvGridPrint9=Fit height'
+      'pvGridPrint10=50%'
+      'pvGridPrint11=100%'
+      'pvGridPrint12=200%'
+      'pvGridPrint13=400%'
+      'pvGridPrintLocked=Process locked! Please wait....')
+    Measures = <
+      item
+        AliasName = 'CNT'
+        FieldName = 'CNT'
+        CalcType = ctSumma
+        DataType = ftFloat
+        FormatString = '#######0.000'
+        DisplayName = #1050#1086#1083'-'#1074#1086' ('#1045#1076'.)'
+      end
+      item
+        AliasName = 'OPL'
+        FieldName = 'OPL'
+        CalcType = ctSumma
+        DataType = ftFloat
+        FormatString = '########0.00##'
+        DisplayName = #1055#1083#1086#1097#1072#1076#1100
+      end
+      item
+        AliasName = 'CHNG_VOL'
+        FieldName = 'CHNG_VOL'
+        CalcType = ctSumma
+        DataType = ftFloat
+        FormatString = '########0.00##'
+        DisplayName = #1055#1077#1088#1077#1088#1072#1089#1095#1077#1090
+      end
+      item
+        AliasName = 'KLSK'
+        FieldName = 'KLSK'
+        CalcType = ctSumma
+        DataType = ftFloat
+        FormatString = '########0.00'
+        DisplayName = #1082#1086#1083'-'#1074#1086' '#1051'/'#1057
+      end
+      item
+        AliasName = 'KPR'
+        FieldName = 'KPR'
+        CalcType = ctSumma
+        DataType = ftFloat
+        FormatString = '########0.00'
+        DisplayName = #1055#1088#1086#1078#1080#1074'. '#1074' '#1090'.'#1095'. '#1042'.'#1054'.'
+      end
+      item
+        AliasName = 'KPR_OT'
+        FieldName = 'KPR_OT'
+        CalcType = ctSumma
+        DataType = ftFloat
+        FormatString = '########0.00'
+        DisplayName = #1042#1088'.'#1086#1090#1089#1091#1090'.'
+      end
+      item
+        AliasName = 'KPR_WR'
+        FieldName = 'KPR_WR'
+        CalcType = ctSumma
+        DataType = ftFloat
+        FormatString = '########0.00'
+        DisplayName = #1042#1088'.'#1079#1072#1088#1077#1075'.'
+      end
+      item
+        AliasName = 'CNT_LG'
+        FieldName = 'CNT_LG'
+        CalcType = ctSumma
+        DataType = ftFloat
+        FormatString = '########0.00'
+        DisplayName = #1051#1100#1075#1086#1090#1085#1080#1082#1086#1074
+      end
+      item
+        AliasName = 'CNT_SUBS'
+        FieldName = 'CNT_SUBS'
+        CalcType = ctSumma
+        DataType = ftFloat
+        FormatString = '########0.00'
+        DisplayName = #1055#1086#1083#1100#1079'.'#1089#1091#1073#1089#1080#1076'.('#1051'/'#1057')'
+      end
+      item
+        AliasName = 'CNT_ROOM'
+        FieldName = 'CNT_ROOM'
+        CalcType = ctSumma
+        DataType = ftFloat
+        FormatString = '########0.00##'
+        DisplayName = #1050#1086#1084#1085#1072#1090
+      end
+      item
+        AliasName = 'ODPU_KUB'
+        FieldName = 'ODPU_KUB'
+        CalcType = ctSumma
+        DataType = ftFloat
+        FormatString = '########0.00##'
+        DisplayName = #1054#1044#1055#1059', '#1045#1076'.'
+      end
+      item
+        AliasName = 'KUB_DIST'
+        FieldName = 'KUB_DIST'
+        CalcType = ctSumma
+        DataType = ftFloat
+        FormatString = '########0.00##'
+        DisplayName = #1053#1086#1088#1084#1072#1090#1080#1074' '#1087#1086' '#1054#1044#1055#1059
+      end
+      item
+        AliasName = 'KUB_FACT_UPNORM'
+        FieldName = 'KUB_FACT_UPNORM'
+        CalcType = ctSumma
+        DataType = ftFloat
+        FormatString = '########0.00##'
+        DisplayName = #1056#1072#1079#1085#1080#1094#1072
+      end
+      item
+        AliasName = 'KUB_FACT'
+        FieldName = 'KUB_FACT'
+        CalcType = ctSumma
+        DataType = ftFloat
+        FormatString = '########0.00##'
+        DisplayName = #1054#1044#1053
+      end>
+    CubeName = 'test'
+    OptimizeLevel = optNormal
+    ExtendedMode = True
+    AlwaysSaveCounts = False
+    ExcludeZeros = True
+    ClearTimeInfo = True
+    Left = 32
+    Top = 136
+  end
+  object PivotMap13: TPivotMap
+    Cube = PivotCube13
+    Columns = <>
+    Rows = <
+      item
+        Name = 'PREDPR'
+      end
+      item
+        Name = 'REU'
+      end
+      item
+        Name = 'PSCH'
+      end
+      item
+        Name = 'SCH'
+      end
+      item
+        Name = 'NM'
+      end
+      item
+        Name = 'ORGNAME'
+      end>
+    HideEmptyRows = True
+    HideEmptyColumns = True
+    TableMode = True
+    DDirection = True
+    AutoSaveMap = False
+    AutoExpand = True
+    Left = 64
+    Top = 136
   end
 end

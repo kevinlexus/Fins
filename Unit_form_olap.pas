@@ -5,17 +5,17 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, PivotToolBar_SRC, ExtCtrls, PivotGrid_SRC, StdCtrls,
-  PivotMap_SRC, PivotCube_SRC, PivotPaintner_SRC, 
+  PivotMap_SRC, PivotCube_SRC, PivotPaintner_SRC,
   Buttons, DB, Oracle, Menus, zCube_TLB, frxClass, frxDMPExport, frxDBSet,
-  frxDesgnCtrls, frxExportRTF, frxExportXLS, frxCross, 
+  frxDesgnCtrls, frxExportRTF, frxExportXLS, frxCross,
   frxExportText, frxExportCSV, cxControls,
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
   
   
   
@@ -43,7 +43,8 @@ uses
   dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
   dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter,
-  cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, cxDBData;
+  cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, cxDBData,
+  ufDataModuleOlap;
 
 type
   TForm_olap = class(TForm)
@@ -55,8 +56,6 @@ type
     PivotGrid1: TPivotGrid;
     PVDimToolBar1: TPVDimToolBar;
     PVMeasureToolBar1: TPVMeasureToolBar;
-    PivotMap13: TPivotMap;
-    PivotCube13: TPivotCube;
     PivotMap14: TPivotMap;
     PivotCube14: TPivotCube;
     Button4: TButton;
@@ -92,13 +91,15 @@ type
     cxGrid1DBTableView1: TcxGridDBTableView;
     cxGrid1Level1: TcxGridLevel;
     cxGrid1: TcxGrid;
-    cxm1: TcxMemo;
     chk1: TCheckBox;
     btn2: TButton;
     btn3: TButton;
     btn4: TButton;
     chk2: TCheckBox;
     cxComboBox1: TcxComboBox;
+    cxm1: TcxMemo;
+    PivotCube13: TPivotCube;
+    PivotMap13: TPivotMap;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);

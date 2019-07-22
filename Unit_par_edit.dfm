@@ -1,6 +1,6 @@
 object Form_par_edit: TForm_par_edit
-  Left = 1163
-  Top = 219
+  Left = 580
+  Top = 200
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077' '#1087#1072#1088#1072#1084#1077#1090#1088#1072
@@ -93,7 +93,7 @@ object Form_par_edit: TForm_par_edit
     Top = 0
     Width = 274
     Height = 94
-    ActivePage = TabSheet4
+    ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
     object TabSheet1: TTabSheet
@@ -180,28 +180,31 @@ object Form_par_edit: TForm_par_edit
     Left = 4
     Top = 56
   end
-  object OD_list: TOracleDataSet
+  object DS_list: TDataSource
+    DataSet = Uni_List
+    Left = 76
+    Top = 56
+  end
+  object Uni_List: TUniQuery
+    Connection = DataModule1.UniConnection1
     SQL.Strings = (
       'begin'
       '  -- Call the procedure'
       '  scott.c_obj_par.get_list_by_id(p_par_id => :p_par_id,'
       '                           prep_refcursor => :prep_refcursor);'
       'end;')
-    Optimize = False
-    Variables.Data = {
-      0300000002000000090000003A505F5041525F49440300000000000000000000
-      000F0000003A505245505F524546435552534F52740000000000000000000000}
-    QBEDefinition.QBEFieldDefs = {
-      0400000002000000020000004944010000000000040000004E414D4501000000
-      0000}
-    Session = DataModule1.OracleSession1
-    DesignActivation = True
-    Left = 36
+    Constraints = <>
+    Left = 40
     Top = 56
-  end
-  object DS_list: TDataSource
-    DataSet = OD_list
-    Left = 76
-    Top = 56
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'p_par_id'
+      end
+      item
+        DataType = ftCursor
+        Name = 'prep_refcursor'
+        Value = 'Object'
+      end>
   end
 end

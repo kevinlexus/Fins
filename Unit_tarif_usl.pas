@@ -78,7 +78,7 @@ begin
 if DM_Olap.OD_mg1.FieldByName('mg').AsString=Form_main.cur_mg_ then
 begin
   //Выбран текущий период
-  bm_:=DM_Olap.OD_data.GetBookmark;
+  bm_:=DM_Olap.Uni_data.GetBookmark;
   if FF('Form_change_house_nabor2', 1) = 0 then
     Application.CreateForm(TForm_change_house_nabor2,
       Form_change_house_nabor2);
@@ -86,12 +86,12 @@ begin
   Form_status.Update;
   Form_change_house_nabor2.setState(
     DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger, '', 2,
-    DM_Olap.OD_data.FieldByName('sptarn').AsInteger);
+    DM_Olap.Uni_data.FieldByName('sptarn').AsInteger);
   Form_status.Close;
   if Form_change_house_nabor2.ShowModal = mrOk then
   begin
     Form_tree_objects.prepData;
-    DM_Olap.OD_data.GotoBookmark(bm_);
+    DM_Olap.Uni_data.GotoBookmark(bm_);
   end;
 end;
 end;
@@ -100,7 +100,7 @@ procedure TForm_tarif_usl.mnu1Click(Sender: TObject);
 var
   bm_: TBookmark;
 begin
-  bm_:=DM_Olap.OD_data.GetBookmark;
+  bm_:=DM_Olap.Uni_data.GetBookmark;
     if FF('Form_change_house_nabor2', 1) = 0 then
       Application.CreateForm(TForm_change_house_nabor2,
         Form_change_house_nabor2);
@@ -110,7 +110,7 @@ begin
   if Form_change_house_nabor2.ShowModal = mrOk then
   begin
     Form_tree_objects.prepData;
-    DM_Olap.OD_data.GotoBookmark(bm_);
+    DM_Olap.Uni_data.GotoBookmark(bm_);
   end;
 end;
 
@@ -124,13 +124,13 @@ begin
    l_chrg:=1
    else
    l_chrg:=0;
-  bm_:=DM_Olap.OD_data.GetBookmark;
+  bm_:=DM_Olap.Uni_data.GetBookmark;
   l_lvl:=DM_Olap.MemTableEh2.FieldByName('OBJ_LEVEL').AsInteger;
   if (msg3('Удалить услугу: '+
-      DM_Olap.OD_data.FieldByName('NM').AsString+' по орг: '+
-      DM_Olap.OD_data.FieldByName('NAME').AsString+' с коэфф:'+
-      DM_Olap.OD_data.FieldByName('KOEFF').AsString+' и норм:'+
-      DM_Olap.OD_data.FieldByName('NORM').AsString+
+      DM_Olap.Uni_data.FieldByName('NM').AsString+' по орг: '+
+      DM_Olap.Uni_data.FieldByName('NAME').AsString+' с коэфф:'+
+      DM_Olap.Uni_data.FieldByName('KOEFF').AsString+' и норм:'+
+      DM_Olap.Uni_data.FieldByName('NORM').AsString+
       '?',
      'Подверждение', MB_YESNO+MB_ICONQUESTION) = IDYES) then
   begin
@@ -147,12 +147,12 @@ begin
            DM_Olap.MemTableEh2.FieldByName('fk_house').AsInteger,
            DM_Olap.MemTableEh2.FieldByName('reu').AsString,
            DM_Olap.MemTableEh2.FieldByName('trest').AsString,
-           DM_Olap.OD_data.FieldByName('usl').AsString,
-           DM_Olap.OD_data.FieldByName('org').AsInteger,
-           DM_Olap.OD_data.FieldByName('koeff').AsFloat,
-           DM_Olap.OD_data.FieldByName('norm').AsFloat,
+           DM_Olap.Uni_data.FieldByName('usl').AsString,
+           DM_Olap.Uni_data.FieldByName('org').AsInteger,
+           DM_Olap.Uni_data.FieldByName('koeff').AsFloat,
+           DM_Olap.Uni_data.FieldByName('norm').AsFloat,
            l_chrg]);
-      DM_Olap.OD_data.Refresh;
+      DM_Olap.Uni_data.Refresh;
       //начисление
       //ред.23.10.12-зачем здесь делать начисление, если оно будет сделано выше, в процедуре oracle??
 
@@ -165,7 +165,7 @@ begin
       Form_status.Close;
       Form_tree_objects.prepData;
       try
-        DM_Olap.OD_data.GotoBookmark(bm_);
+        DM_Olap.Uni_data.GotoBookmark(bm_);
       except
       end;
       msg2('Услуга удалена', 'Внимание!', MB_OK+MB_ICONINFORMATION);

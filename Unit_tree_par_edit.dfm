@@ -1,6 +1,6 @@
 object Form_tree_par_edit: TForm_tree_par_edit
-  Left = 880
-  Top = 136
+  Left = 728
+  Top = 162
   Width = 451
   Height = 333
   BorderIcons = [biSystemMenu]
@@ -92,7 +92,7 @@ object Form_tree_par_edit: TForm_tree_par_edit
     Top = 0
     Width = 435
     Height = 253
-    ActivePage = TabSheet7
+    ActivePage = TabSheet3
     Align = alClient
     TabOrder = 0
     object TabSheet1: TTabSheet
@@ -151,7 +151,7 @@ object Form_tree_par_edit: TForm_tree_par_edit
         DropDownAlignment = taLeftJustify
         Selected.Strings = (
           'NAME'#9'4'#9'NAME'#9#9)
-        LookupTable = OD_list
+        LookupTable = Uni_List
         LookupField = 'NAME'
         TabOrder = 0
         AutoDropDown = True
@@ -213,7 +213,7 @@ object Form_tree_par_edit: TForm_tree_par_edit
       object wwDBNavigator1: TwwDBNavigator
         Left = 0
         Top = 200
-        Width = 200
+        Width = 427
         Height = 25
         DataSource = DS_list
         RepeatInterval.InitialDelay = 500
@@ -333,6 +333,7 @@ object Form_tree_par_edit: TForm_tree_par_edit
           Spacing = 4
           Transparent = False
           Caption = 'wwDBNavigator1Insert'
+          Enabled = False
           DisabledTextColors.ShadeColor = clGray
           DisabledTextColors.HighlightColor = clBtnHighlight
           Index = 6
@@ -410,9 +411,6 @@ object Form_tree_par_edit: TForm_tree_par_edit
             Properties.ValueUnchecked = 0
             Width = 51
           end
-          object cxGrid1DBTableView1ID: TcxGridDBColumn
-            DataBinding.FieldName = 'ID'
-          end
         end
         object cxGrid1Level1: TcxGridLevel
           GridView = cxGrid1DBTableView1
@@ -447,32 +445,10 @@ object Form_tree_par_edit: TForm_tree_par_edit
       OnClick = Button2Click
     end
   end
-  object OD_list: TOracleDataSet
-    SQL.Strings = (
-      'select t.*, t.rowid from scott.list_c t'
-      'where t.fk_par=:fk_par'
-      'and t.fk_ses=USERENV('#39'sessionid'#39')'
-      'order by t.npp')
-    Optimize = False
-    Variables.Data = {0300000001000000070000003A464B5F504152030000000000000000000000}
-    QBEDefinition.QBEFieldDefs = {
-      0400000008000000020000004944010000000000040000004E414D4501000000
-      00000600000053454C5F49440100000000000600000053454C5F434401000000
-      000006000000464B5F5041520100000000000300000053454C01000000000006
-      000000464B5F534553010000000000030000004E5050010000000000}
-    MasterFields = 'ID'
-    DetailFields = 'FK_PAR'
-    LockingMode = lmNone
-    Session = DataModule1.OracleSession1
-    DesignActivation = True
-    Active = True
-    Left = 12
-    Top = 72
-  end
   object DS_list: TDataSource
-    DataSet = OD_list
-    Left = 44
-    Top = 72
+    DataSet = Uni_List
+    Left = 52
+    Top = 40
   end
   object DS_par: TDataSource
     Left = 12
@@ -489,5 +465,18 @@ object Form_tree_par_edit: TForm_tree_par_edit
       Caption = #1054#1090#1084#1077#1085#1080#1090#1100' '#1074#1089#1077
       OnClick = N2Click
     end
+  end
+  object Uni_List: TUniQuery
+    Connection = DataModule1.UniConnection1
+    SQL.Strings = (
+      'select t.*, t.rowid from scott.list_c t'
+      'where /*t.fk_par=:fk_par'
+      'and */t.fk_ses=USERENV('#39'sessionid'#39')'
+      'order by t.npp')
+    MasterFields = 'ID'
+    DetailFields = 'FK_PAR'
+    Constraints = <>
+    Left = 16
+    Top = 128
   end
 end

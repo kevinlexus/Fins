@@ -1,6 +1,6 @@
 object Form_print_lists: TForm_print_lists
-  Left = 305
-  Top = 261
+  Left = 1361
+  Top = 216
   AutoScroll = False
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #1057#1083#1091#1078#1077#1073#1085#1099#1077' '#1086#1090#1095#1077#1090#1099' ('#1089#1087#1080#1089#1082#1080')'
@@ -326,7 +326,7 @@ object Form_print_lists: TForm_print_lists
     Top = 336
   end
   object frxReport1: TfrxReport
-    Version = '0.0'
+    Version = '5.1.9'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -367,6 +367,7 @@ object Form_print_lists: TForm_print_lists
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
       object MasterData1: TfrxMasterData
+        FillType = ftBrush
         Height = 16.177180000000000000
         Top = 207.874150000000000000
         Width = 1511.812000000000000000
@@ -378,7 +379,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.102350000000001300
           Width = 216.988250000000000000
           Height = 12.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -393,7 +393,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.102350000000001300
           Width = 117.315090000000000000
           Height = 12.897650000000000000
-          ShowHint = False
           DataField = 'NAME'
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
@@ -411,7 +410,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.102350000000001300
           Width = 51.133890000000000000
           Height = 12.897650000000000000
-          ShowHint = False
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
           Font.Charset = DEFAULT_CHARSET
@@ -428,7 +426,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.102350000000001300
           Width = 49.370130000000000000
           Height = 12.897650000000000000
-          ShowHint = False
           DataField = 'KPR'
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
@@ -446,7 +443,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.102350000000001300
           Width = 42.370130000000000000
           Height = 12.897650000000000000
-          ShowHint = False
           DataField = 'KI'
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
@@ -464,7 +460,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.102350000000001300
           Width = 34.260360000000000000
           Height = 12.897650000000000000
-          ShowHint = False
           DataField = 'LG_IDS'
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
@@ -482,7 +477,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.102350000000001300
           Width = 43.870130000000000000
           Height = 12.897650000000000000
-          ShowHint = False
           DataField = 'OPL'
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
@@ -501,7 +495,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.102350000000001300
           Width = 62.870130000000000000
           Height = 12.897650000000000000
-          ShowHint = False
           DataField = 'SGKU'
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
@@ -520,7 +513,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.102350000000001300
           Width = 49.370130000000000000
           Height = 12.897650000000000000
-          ShowHint = False
           DataField = 'PLDOP'
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
@@ -539,7 +531,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.102350000000001300
           Width = 43.870130000000000000
           Height = 12.897650000000000000
-          ShowHint = False
           DataField = 'DOPPL'
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
@@ -558,7 +549,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.102350000000001300
           Width = 48.870130000000000000
           Height = 12.897650000000000000
-          ShowHint = False
           DataField = 'EKSUB1'
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
@@ -577,7 +567,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.102350000000001300
           Width = 51.370130000000000000
           Height = 12.897650000000000000
-          ShowHint = False
           DataField = 'EKSUB2'
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
@@ -596,7 +585,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.102350000000001300
           Width = 48.370130000000000000
           Height = 12.897650000000000000
-          ShowHint = False
           DataField = 'SUBS_COR'
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
@@ -615,7 +603,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.102350000000001300
           Width = 80.622140000000000000
           Height = 12.897650000000000000
-          ShowHint = False
           DataField = 'SUB_DATA'
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
@@ -633,7 +620,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.102350000000001300
           Width = 58.370130000000000000
           Height = 12.897650000000000000
-          ShowHint = False
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
           Font.Charset = DEFAULT_CHARSET
@@ -651,7 +637,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.102350000000001300
           Width = 51.870130000000000000
           Height = 12.897650000000000000
-          ShowHint = False
           DataField = 'NACH'
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
@@ -670,7 +655,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.102350000000001300
           Width = 47.870130000000000000
           Height = 12.897650000000000000
-          ShowHint = False
           DataField = 'SUBS'
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
@@ -689,7 +673,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.102350000000001300
           Width = 48.370130000000000000
           Height = 12.897650000000000000
-          ShowHint = False
           DataField = 'SUBS_EL'
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
@@ -708,7 +691,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.102350000000001300
           Width = 40.370130000000000000
           Height = 12.897650000000000000
-          ShowHint = False
           DataField = 'EL'
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
@@ -727,7 +709,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.102350000000001300
           Width = 66.488250000000000000
           Height = 12.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -739,6 +720,7 @@ object Form_print_lists: TForm_print_lists
         end
       end
       object PageHeader1: TfrxPageHeader
+        FillType = ftBrush
         Height = 46.677180000000000000
         Top = 64.252010000000000000
         Width = 1511.812000000000000000
@@ -747,7 +729,6 @@ object Form_print_lists: TForm_print_lists
           Top = 16.747990000000020000
           Width = 216.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -763,7 +744,6 @@ object Form_print_lists: TForm_print_lists
           Top = 16.747990000000020000
           Width = 169.815090000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
           Font.Charset = DEFAULT_CHARSET
@@ -781,7 +761,6 @@ object Form_print_lists: TForm_print_lists
           Top = 16.747990000000020000
           Width = 46.370130000000000000
           Height = 27.397650000000000000
-          ShowHint = False
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
           Font.Charset = DEFAULT_CHARSET
@@ -800,7 +779,6 @@ object Form_print_lists: TForm_print_lists
           Top = 16.747990000000020000
           Width = 38.760360000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
           Font.Charset = DEFAULT_CHARSET
@@ -817,7 +795,6 @@ object Form_print_lists: TForm_print_lists
           Top = 16.747990000000020000
           Width = 43.870130000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
           Font.Charset = DEFAULT_CHARSET
@@ -834,7 +811,6 @@ object Form_print_lists: TForm_print_lists
           Top = 16.747990000000020000
           Width = 62.870130000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
           Font.Charset = DEFAULT_CHARSET
@@ -852,7 +828,6 @@ object Form_print_lists: TForm_print_lists
           Top = 16.747990000000020000
           Width = 49.370130000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
           Font.Charset = DEFAULT_CHARSET
@@ -869,7 +844,6 @@ object Form_print_lists: TForm_print_lists
           Top = 16.747990000000020000
           Width = 43.870130000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
           Font.Charset = DEFAULT_CHARSET
@@ -886,7 +860,6 @@ object Form_print_lists: TForm_print_lists
           Top = 16.747990000000020000
           Width = 48.870130000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
           Font.Charset = DEFAULT_CHARSET
@@ -903,7 +876,6 @@ object Form_print_lists: TForm_print_lists
           Top = 16.747990000000020000
           Width = 51.370130000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
           Font.Charset = DEFAULT_CHARSET
@@ -920,7 +892,6 @@ object Form_print_lists: TForm_print_lists
           Top = 16.747990000000020000
           Width = 48.370130000000000000
           Height = 26.397650000000000000
-          ShowHint = False
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
           Font.Charset = DEFAULT_CHARSET
@@ -939,7 +910,6 @@ object Form_print_lists: TForm_print_lists
           Top = 16.747990000000020000
           Width = 80.622140000000000000
           Height = 26.897650000000000000
-          ShowHint = False
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
           Font.Charset = DEFAULT_CHARSET
@@ -958,7 +928,6 @@ object Form_print_lists: TForm_print_lists
           Top = 16.747990000000020000
           Width = 54.870130000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
           Font.Charset = DEFAULT_CHARSET
@@ -976,7 +945,6 @@ object Form_print_lists: TForm_print_lists
           Top = 16.747990000000020000
           Width = 57.870130000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
           Font.Charset = DEFAULT_CHARSET
@@ -993,7 +961,6 @@ object Form_print_lists: TForm_print_lists
           Top = 16.747990000000020000
           Width = 53.370130000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
           Font.Charset = DEFAULT_CHARSET
@@ -1010,7 +977,6 @@ object Form_print_lists: TForm_print_lists
           Top = 16.747990000000020000
           Width = 48.370130000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
           Font.Charset = DEFAULT_CHARSET
@@ -1028,7 +994,6 @@ object Form_print_lists: TForm_print_lists
           Top = 16.747990000000020000
           Width = 54.870130000000000000
           Height = 26.397650000000000000
-          ShowHint = False
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
           Font.Charset = DEFAULT_CHARSET
@@ -1046,7 +1011,6 @@ object Form_print_lists: TForm_print_lists
           Top = 16.747990000000020000
           Width = 66.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -1062,7 +1026,6 @@ object Form_print_lists: TForm_print_lists
           Top = 16.747990000000020000
           Width = 45.870130000000000000
           Height = 27.397650000000000000
-          ShowHint = False
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
           Font.Charset = DEFAULT_CHARSET
@@ -1081,7 +1044,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.704700000000003000
           Width = 234.988250000000000000
           Height = 12.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -1095,11 +1057,12 @@ object Form_print_lists: TForm_print_lists
           Left = 1.000000000000000000
           Top = 45.747990000000020000
           Width = 1348.500000000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
       end
       object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 18.897650000000000000
         Width = 1511.812000000000000000
@@ -1108,7 +1071,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.889765000000001000
           Width = 806.488250000000000000
           Height = 14.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -1126,7 +1088,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.602350000000001000
           Width = 242.988250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -1139,6 +1100,7 @@ object Form_print_lists: TForm_print_lists
         end
       end
       object GroupHeader1: TfrxGroupHeader
+        FillType = ftBrush
         Height = 16.775510000000000000
         Top = 170.078850000000000000
         Width = 1511.812000000000000000
@@ -1146,6 +1108,7 @@ object Form_print_lists: TForm_print_lists
         StartNewPage = True
       end
       object GroupFooter1: TfrxGroupFooter
+        FillType = ftBrush
         Height = 16.066790000000000000
         Top = 245.669450000000000000
         Width = 1511.812000000000000000
@@ -1154,7 +1117,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.169139999999999000
           Width = 230.988250000000000000
           Height = 11.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -1169,7 +1131,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.669139999999999000
           Width = 47.870130000000000000
           Height = 13.397650000000000000
-          ShowHint = False
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
           Font.Charset = DEFAULT_CHARSET
@@ -1186,7 +1147,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.669139999999999000
           Width = 48.370130000000000000
           Height = 13.397650000000000000
-          ShowHint = False
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
           Font.Charset = DEFAULT_CHARSET
@@ -1202,7 +1162,7 @@ object Form_print_lists: TForm_print_lists
           Left = 1.500000000000000000
           Top = 0.169139999999998700
           Width = 1348.500000000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Memo5: TfrxMemoView
@@ -1210,7 +1170,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.448669999999993000
           Width = 53.870130000000000000
           Height = 13.397650000000000000
-          ShowHint = False
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
           Font.Charset = DEFAULT_CHARSET
@@ -1227,7 +1186,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.448669999999993000
           Width = 53.870130000000000000
           Height = 13.397650000000000000
-          ShowHint = False
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
           Font.Charset = DEFAULT_CHARSET
@@ -1244,7 +1202,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.448669999999993000
           Width = 53.870130000000000000
           Height = 13.397650000000000000
-          ShowHint = False
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
           Font.Charset = DEFAULT_CHARSET
@@ -1258,6 +1215,7 @@ object Form_print_lists: TForm_print_lists
         end
       end
       object ReportSummary1: TfrxReportSummary
+        FillType = ftBrush
         Height = 16.255720000000000000
         Top = 321.260050000000000000
         Width = 1511.812000000000000000
@@ -1266,7 +1224,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.358069999999998000
           Width = 230.988250000000000000
           Height = 11.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -1281,7 +1238,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.858069999999998000
           Width = 47.870130000000000000
           Height = 13.397650000000000000
-          ShowHint = False
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
           Font.Charset = DEFAULT_CHARSET
@@ -1298,7 +1254,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.858069999999998000
           Width = 48.370130000000000000
           Height = 13.397650000000000000
-          ShowHint = False
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
           Font.Charset = DEFAULT_CHARSET
@@ -1315,7 +1270,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.637600000000020000
           Width = 53.870130000000000000
           Height = 13.397650000000000000
-          ShowHint = False
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
           Font.Charset = DEFAULT_CHARSET
@@ -1332,7 +1286,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.637600000000020000
           Width = 53.870130000000000000
           Height = 13.397650000000000000
-          ShowHint = False
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
           Font.Charset = DEFAULT_CHARSET
@@ -1349,7 +1302,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.637600000000020000
           Width = 53.870130000000000000
           Height = 13.397650000000000000
-          ShowHint = False
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
           Font.Charset = DEFAULT_CHARSET
@@ -1363,6 +1315,7 @@ object Form_print_lists: TForm_print_lists
         end
       end
       object PageFooter1: TfrxPageFooter
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 359.055350000000000000
         Width = 1511.812000000000000000
@@ -1371,7 +1324,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.062770000000000000
           Width = 68.988250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -1394,7 +1346,7 @@ object Form_print_lists: TForm_print_lists
     Top = 368
   end
   object frxReport2: TfrxReport
-    Version = '0.0'
+    Version = '5.1.9'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1434,6 +1386,7 @@ object Form_print_lists: TForm_print_lists
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
       object MasterData1: TfrxMasterData
+        FillType = ftBrush
         Height = 16.177180000000000000
         Top = 211.653680000000000000
         Width = 718.110700000000000000
@@ -1445,7 +1398,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.102350000000001000
           Width = 117.315090000000000000
           Height = 12.897650000000000000
-          ShowHint = False
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
           Font.Charset = DEFAULT_CHARSET
@@ -1462,7 +1414,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.102350000000001000
           Width = 51.133890000000000000
           Height = 12.897650000000000000
-          ShowHint = False
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
           Font.Charset = DEFAULT_CHARSET
@@ -1479,7 +1430,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.102350000000001000
           Width = 56.870130000000000000
           Height = 12.897650000000000000
-          ShowHint = False
           DataSet = frxDBData2
           DataSetName = 'frxDBData2'
           Font.Charset = DEFAULT_CHARSET
@@ -1497,7 +1447,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.102350000000001000
           Width = 66.488250000000000000
           Height = 12.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -9
@@ -1512,7 +1461,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.243969999999990000
           Width = 56.870130000000000000
           Height = 12.897650000000000000
-          ShowHint = False
           DataSet = frxDBData2
           DataSetName = 'frxDBData2'
           Font.Charset = DEFAULT_CHARSET
@@ -1527,6 +1475,7 @@ object Form_print_lists: TForm_print_lists
         end
       end
       object PageHeader1: TfrxPageHeader
+        FillType = ftBrush
         Height = 47.677180000000000000
         Top = 64.252010000000000000
         Width = 718.110700000000000000
@@ -1535,7 +1484,6 @@ object Form_print_lists: TForm_print_lists
           Top = 15.247990000000000000
           Width = 169.315090000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBData2
           DataSetName = 'frxDBData2'
           Font.Charset = DEFAULT_CHARSET
@@ -1553,7 +1501,6 @@ object Form_print_lists: TForm_print_lists
           Top = 15.247990000000000000
           Width = 55.370130000000000000
           Height = 27.397650000000000000
-          ShowHint = False
           DataSet = frxDBData2
           DataSetName = 'frxDBData2'
           Font.Charset = DEFAULT_CHARSET
@@ -1571,7 +1518,6 @@ object Form_print_lists: TForm_print_lists
           Top = 15.247990000000000000
           Width = 66.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -1587,7 +1533,6 @@ object Form_print_lists: TForm_print_lists
           Top = 15.247990000000000000
           Width = 55.370130000000000000
           Height = 27.397650000000000000
-          ShowHint = False
           DataSet = frxDBData2
           DataSetName = 'frxDBData2'
           Font.Charset = DEFAULT_CHARSET
@@ -1606,7 +1551,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.425169999999994300
           Width = 234.988250000000000000
           Height = 12.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -1620,11 +1564,12 @@ object Form_print_lists: TForm_print_lists
           Left = 2.000000000000000000
           Top = 45.247990000000000000
           Width = 365.500000000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
       end
       object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
@@ -1633,7 +1578,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.889765000000000600
           Width = 508.988250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -12
@@ -1651,7 +1595,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.102350000000001000
           Width = 200.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -1664,6 +1607,7 @@ object Form_print_lists: TForm_print_lists
         end
       end
       object GroupHeader1: TfrxGroupHeader
+        FillType = ftBrush
         Height = 16.775510000000000000
         Top = 173.858380000000000000
         Width = 718.110700000000000000
@@ -1671,6 +1615,7 @@ object Form_print_lists: TForm_print_lists
         StartNewPage = True
       end
       object GroupFooter1: TfrxGroupFooter
+        FillType = ftBrush
         Height = 16.066790000000000000
         Top = 249.448980000000000000
         Width = 718.110700000000000000
@@ -1679,7 +1624,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.169139999999999000
           Width = 230.988250000000000000
           Height = 11.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -1693,7 +1637,7 @@ object Form_print_lists: TForm_print_lists
           Left = 1.500000000000000000
           Top = 0.169139999999998700
           Width = 365.500000000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Memo5: TfrxMemoView
@@ -1701,7 +1645,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.948669999999992800
           Width = 57.870130000000000000
           Height = 13.397650000000000000
-          ShowHint = False
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
           Font.Charset = DEFAULT_CHARSET
@@ -1719,7 +1662,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.948669999999992800
           Width = 57.870130000000000000
           Height = 13.397650000000000000
-          ShowHint = False
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
           Font.Charset = DEFAULT_CHARSET
@@ -1734,6 +1676,7 @@ object Form_print_lists: TForm_print_lists
         end
       end
       object ReportSummary1: TfrxReportSummary
+        FillType = ftBrush
         Height = 16.255720000000000000
         Top = 325.039580000000000000
         Width = 718.110700000000000000
@@ -1742,7 +1685,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.358069999999998000
           Width = 230.988250000000000000
           Height = 11.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -1757,7 +1699,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.858069999999998000
           Width = 57.870130000000000000
           Height = 13.397650000000000000
-          ShowHint = False
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
           Font.Charset = DEFAULT_CHARSET
@@ -1775,7 +1716,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.858069999999998000
           Width = 57.870130000000000000
           Height = 13.397650000000000000
-          ShowHint = False
           DataSet = frxDBData1
           DataSetName = 'frxDBData1'
           Font.Charset = DEFAULT_CHARSET
@@ -1790,6 +1730,7 @@ object Form_print_lists: TForm_print_lists
         end
       end
       object PageFooter1: TfrxPageFooter
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 362.834880000000000000
         Width = 718.110700000000000000
@@ -1798,7 +1739,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.062770000000000000
           Width = 68.988250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -1835,7 +1775,7 @@ object Form_print_lists: TForm_print_lists
     Top = 400
   end
   object frxReport3: TfrxReport
-    Version = '0.0'
+    Version = '5.1.9'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1876,6 +1816,7 @@ object Form_print_lists: TForm_print_lists
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
       object MasterData1: TfrxMasterData
+        FillType = ftBrush
         Height = 15.177180000000000000
         Top = 192.756030000000000000
         Width = 1511.812000000000000000
@@ -1887,7 +1828,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.287677330000008000
           Width = 23.089359450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -1905,7 +1845,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.287677330000008000
           Width = 127.957360640000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataField = 'NAME'
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
@@ -1923,7 +1862,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.287677330000008000
           Width = 52.969836030000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -1942,7 +1880,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.287677331929046000
           Width = 46.200121451850900000
           Height = 12.951076025192700000
-          ShowHint = False
           DataField = 'ITR'
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
@@ -1962,7 +1899,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.287677331929046000
           Width = 46.200121451850900000
           Height = 12.951076025192700000
-          ShowHint = False
           DataField = 'ITRI'
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
@@ -1982,7 +1918,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.287677331929046000
           Width = 46.200121451850900000
           Height = 12.951076025192700000
-          ShowHint = False
           DataField = 'IDER'
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
@@ -2002,7 +1937,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.287677331929046000
           Width = 46.200121451850900000
           Height = 12.951076025192700000
-          ShowHint = False
           DataField = 'IDERI'
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
@@ -2022,7 +1956,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.287677331929046000
           Width = 46.200121451850900000
           Height = 12.951076025192700000
-          ShowHint = False
           DataField = 'IOT'
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
@@ -2042,7 +1975,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.287677331929046000
           Width = 46.200121451850900000
           Height = 12.951076025192700000
-          ShowHint = False
           DataField = 'IOTIP'
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
@@ -2062,7 +1994,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.287677331929046000
           Width = 46.200121451850900000
           Height = 12.951076025192700000
-          ShowHint = False
           DataField = 'IWOD'
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
@@ -2082,7 +2013,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.287677331929046000
           Width = 46.200121451850900000
           Height = 12.951076025192700000
-          ShowHint = False
           DataField = 'IWODIZ'
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
@@ -2102,7 +2032,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.287677331929046000
           Width = 46.200121451850900000
           Height = 12.951076025192700000
-          ShowHint = False
           DataField = 'IKAN'
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
@@ -2122,7 +2051,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.287677331929046000
           Width = 46.200121451850900000
           Height = 12.951076025192700000
-          ShowHint = False
           DataField = 'IKANIZ'
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
@@ -2142,7 +2070,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.287677331929046000
           Width = 46.200121451850900000
           Height = 12.951076025192700000
-          ShowHint = False
           DataField = 'IGW'
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
@@ -2162,7 +2089,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.287677331929046000
           Width = 46.200121451850900000
           Height = 12.951076025192700000
-          ShowHint = False
           DataField = 'IGWIZ'
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
@@ -2182,7 +2108,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.287677331929046000
           Width = 46.200121451850900000
           Height = 12.951076025192700000
-          ShowHint = False
           DataField = 'IO'
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
@@ -2202,7 +2127,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.287677330000008000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataField = 'ICS'
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
@@ -2222,7 +2146,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.287677330000008000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataField = 'IMUSOR'
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
@@ -2242,7 +2165,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.287677330000008000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataField = 'IG'
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
@@ -2262,7 +2184,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.287677330000008000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataField = 'IDZA'
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
@@ -2282,7 +2203,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.287677330000008000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataField = 'IDZAI'
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
@@ -2302,7 +2222,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.287677330000008000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataField = 'ITOG'
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
@@ -2322,7 +2241,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.287677331929046000
           Width = 37.520209112173300000
           Height = 12.951076025192700000
-          ShowHint = False
           DataField = 'ND'
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
@@ -2337,6 +2255,7 @@ object Form_print_lists: TForm_print_lists
         end
       end
       object PageHeader1: TfrxPageHeader
+        FillType = ftBrush
         Height = 29.177180000000000000
         Top = 64.252010000000000000
         Width = 1511.812000000000000000
@@ -2345,7 +2264,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.399429749999995900
           Width = 190.957360640000000000
           Height = 25.258244660000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -2364,7 +2282,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.795181370000008800
           Width = 52.969836030000000000
           Height = 25.258244660000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -2383,7 +2300,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.795181370000008800
           Width = 46.200121450000000000
           Height = 25.258244660000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -2402,7 +2318,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.795181370000008800
           Width = 46.200121450000000000
           Height = 25.258244660000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -2421,7 +2336,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.795181370000008800
           Width = 46.200121450000000000
           Height = 25.258244660000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -2440,7 +2354,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.795181370000008800
           Width = 46.200121450000000000
           Height = 25.258244660000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -2459,7 +2372,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.795181370000008800
           Width = 46.200121450000000000
           Height = 25.258244660000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -2478,7 +2390,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.795181370000008800
           Width = 46.200121450000000000
           Height = 25.258244660000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -2497,7 +2408,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.795181370000008800
           Width = 46.200121450000000000
           Height = 25.258244660000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -2516,7 +2426,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.795181370000008800
           Width = 46.200121450000000000
           Height = 25.258244660000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -2535,7 +2444,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.795181370000008800
           Width = 46.200121450000000000
           Height = 25.258244660000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -2554,7 +2462,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.795181370000008800
           Width = 46.200121450000000000
           Height = 25.258244660000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -2573,7 +2480,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.795181370000008800
           Width = 46.200121450000000000
           Height = 25.258244660000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -2592,7 +2498,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.795181370000008800
           Width = 46.200121450000000000
           Height = 25.258244660000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -2611,7 +2516,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.795181370000008800
           Width = 46.200121450000000000
           Height = 25.258244660000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -2630,7 +2534,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.795181370000008800
           Width = 46.200121450000000000
           Height = 25.258244660000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -2649,7 +2552,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.795181370000008800
           Width = 46.200121450000000000
           Height = 25.258244660000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -2668,7 +2570,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.795181370000008800
           Width = 46.200121450000000000
           Height = 25.258244660000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -2687,7 +2588,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.795181370000008800
           Width = 46.200121450000000000
           Height = 25.258244660000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -2706,7 +2606,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.795181370000008800
           Width = 46.200121450000000000
           Height = 25.258244660000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -2725,7 +2624,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.795181370000008800
           Width = 46.200121450000000000
           Height = 25.258244660000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -2743,11 +2641,12 @@ object Form_print_lists: TForm_print_lists
           Left = 1.000000000000000000
           Top = 27.602350000000000000
           Width = 1161.500000000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
       end
       object ReportSummary1: TfrxReportSummary
+        FillType = ftBrush
         Height = 17.677180000000000000
         Top = 313.700990000000000000
         Width = 1511.812000000000000000
@@ -2756,7 +2655,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.803029999999978000
           Width = 190.589359450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -2774,7 +2672,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.803029999999978000
           Width = 52.969836030000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -2793,7 +2690,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.803029999999978000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -2812,7 +2708,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.803029999999978000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -2831,7 +2726,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.803029999999978000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -2850,7 +2744,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.803029999999978000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -2869,7 +2762,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.803029999999978000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -2888,7 +2780,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.803029999999978000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -2907,7 +2798,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.803029999999978000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -2926,7 +2816,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.803029999999978000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -2945,7 +2834,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.803029999999978000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -2964,7 +2852,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.803029999999978000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -2983,7 +2870,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.803029999999978000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -3002,7 +2888,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.803029999999978000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -3021,7 +2906,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.803029999999978000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -3040,7 +2924,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.803029999999978000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -3059,7 +2942,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.803029999999978000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -3078,7 +2960,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.803029999999978000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -3097,7 +2978,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.803029999999978000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -3116,7 +2996,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.803029999999978000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -3135,7 +3014,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.803029999999978000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -3153,11 +3031,12 @@ object Form_print_lists: TForm_print_lists
           Left = 0.500000000000000000
           Top = 0.803029999999978400
           Width = 1161.500000000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
       end
       object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 18.897650000000000000
         Width = 1511.812000000000000000
@@ -3166,7 +3045,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.102350000000001000
           Width = 1144.988250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -12
@@ -3184,7 +3062,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.102350000000001000
           Width = 200.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -3197,6 +3074,7 @@ object Form_print_lists: TForm_print_lists
         end
       end
       object PageFooter1: TfrxPageFooter
+        FillType = ftBrush
         Height = 19.677180000000000000
         Top = 355.275820000000000000
         Width = 1511.812000000000000000
@@ -3205,7 +3083,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.373839999999972900
           Width = 68.988250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -3218,6 +3095,7 @@ object Form_print_lists: TForm_print_lists
         end
       end
       object GroupHeader1: TfrxGroupHeader
+        FillType = ftBrush
         Height = 16.677180000000000000
         Top = 154.960730000000000000
         Width = 1511.812000000000000000
@@ -3227,7 +3105,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.539269999999988000
           Width = 127.957360640000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -3241,6 +3118,7 @@ object Form_print_lists: TForm_print_lists
         end
       end
       object GroupFooter1: TfrxGroupFooter
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 230.551330000000000000
         Width = 1511.812000000000000000
@@ -3249,7 +3127,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.448669999999993000
           Width = 187.457360640000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -3266,7 +3143,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.448669999999993000
           Width = 52.969836030000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -3285,7 +3161,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.448669999999993000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -3304,7 +3179,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.448669999999993000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -3323,7 +3197,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.448669999999993000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -3342,7 +3215,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.448669999999993000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -3361,7 +3233,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.448669999999993000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -3380,7 +3251,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.448669999999993000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -3399,7 +3269,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.448669999999993000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -3418,7 +3287,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.448669999999993000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -3437,7 +3305,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.448669999999993000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -3456,7 +3323,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.448669999999993000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -3475,7 +3341,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.448669999999993000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -3494,7 +3359,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.448669999999993000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -3513,7 +3377,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.448669999999993000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -3532,7 +3395,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.448669999999993000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -3551,7 +3413,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.448669999999993000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -3570,7 +3431,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.448669999999993000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -3589,7 +3449,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.448669999999993000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -3608,7 +3467,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.448669999999993000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -3627,7 +3485,6 @@ object Form_print_lists: TForm_print_lists
           Top = 2.448669999999993000
           Width = 46.200121450000000000
           Height = 12.951076030000000000
-          ShowHint = False
           DataSet = frxDBData3
           DataSetName = 'frxDBData3'
           Font.Charset = DEFAULT_CHARSET
@@ -3645,7 +3502,7 @@ object Form_print_lists: TForm_print_lists
           Left = 0.500000000000000000
           Top = 1.448669999999993000
           Width = 1161.500000000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
       end
@@ -3678,7 +3535,7 @@ object Form_print_lists: TForm_print_lists
     Top = 432
   end
   object frxReport7: TfrxReport
-    Version = '0.0'
+    Version = '5.1.9'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -3723,7 +3580,6 @@ object Form_print_lists: TForm_print_lists
         Top = 89.031540000000000000
         Width = 240.000000000000000000
         Height = 130.000000000000000000
-        ShowHint = False
         DownThenAcross = False
         MaxWidth = 500
         RowLevels = 3
@@ -3742,295 +3598,286 @@ object Form_print_lists: TForm_print_lists
           662D38223F3E3C63726F73733E3C63656C6C6D656D6F733E3C546672784D656D
           6F56696577204C6566743D223135302C38383138382220546F703D223134352C
           3033313534222057696474683D22343022204865696768743D22313822205265
-          737472696374696F6E733D223234222053686F7748696E743D2246616C736522
-          20416C6C6F7745787072657373696F6E733D2246616C73652220436F6C6F723D
-          2231363737373231352220446973706C6179466F726D61742E446563696D616C
-          536570617261746F723D222C2220446973706C6179466F726D61742E466F726D
-          61745374723D2225322E32662220446973706C6179466F726D61742E4B696E64
-          3D22666B4E756D657269632220466F6E742E436861727365743D22312220466F
-          6E742E436F6C6F723D22302220466F6E742E4865696768743D222D392220466F
-          6E742E4E616D653D22417269616C2220466F6E742E5374796C653D2230222046
-          72616D652E5479703D2231352220476170583D22332220476170593D22332220
-          48416C69676E3D22686152696768742220506172656E74466F6E743D2246616C
-          7365222056416C69676E3D22766143656E7465722220546578743D22302C3030
-          222F3E3C546672784D656D6F56696577204C6566743D223136302220546F703D
-          223538222057696474683D22343022204865696768743D223232222052657374
-          72696374696F6E733D223234222053686F7748696E743D2246616C7365222041
-          6C6C6F7745787072657373696F6E733D2246616C73652220436F6C6F723D2231
-          363737373231352220446973706C6179466F726D61742E446563696D616C5365
+          737472696374696F6E733D2232342220416C6C6F7745787072657373696F6E73
+          3D2246616C73652220446973706C6179466F726D61742E446563696D616C5365
           70617261746F723D222C2220446973706C6179466F726D61742E466F726D6174
           5374723D2225322E32662220446973706C6179466F726D61742E4B696E643D22
           666B4E756D657269632220466F6E742E436861727365743D22312220466F6E74
           2E436F6C6F723D22302220466F6E742E4865696768743D222D392220466F6E74
           2E4E616D653D22417269616C2220466F6E742E5374796C653D22302220467261
-          6D652E5479703D2231352220476170583D22332220476170593D223322204841
-          6C69676E3D22686152696768742220506172656E74466F6E743D2246616C7365
-          222056416C69676E3D22766143656E7465722220546578743D22302C3030222F
-          3E3C546672784D656D6F56696577204C6566743D223135302C38383138382220
-          546F703D223136332C3033313534222057696474683D22343022204865696768
-          743D22313822205265737472696374696F6E733D223234222053686F7748696E
-          743D2246616C73652220416C6C6F7745787072657373696F6E733D2246616C73
-          652220436F6C6F723D2231363737373231352220446973706C6179466F726D61
-          742E446563696D616C536570617261746F723D222C2220446973706C6179466F
-          726D61742E466F726D61745374723D2225322E32662220446973706C6179466F
-          726D61742E4B696E643D22666B4E756D657269632220466F6E742E4368617273
-          65743D22312220466F6E742E436F6C6F723D22302220466F6E742E4865696768
-          743D222D392220466F6E742E4E616D653D22417269616C2220466F6E742E5374
-          796C653D223022204672616D652E5479703D2231352220476170583D22332220
-          476170593D2233222048416C69676E3D22686152696768742220506172656E74
-          466F6E743D2246616C7365222056416C69676E3D22766143656E746572222054
-          6578743D22302C3030222F3E3C546672784D656D6F56696577204C6566743D22
-          3135302C38383138382220546F703D223138312C303331353422205769647468
-          3D22343022204865696768743D22313822205265737472696374696F6E733D22
-          3234222053686F7748696E743D2246616C73652220416C6C6F77457870726573
-          73696F6E733D2246616C73652220436F6C6F723D223136373737323135222044
+          6D652E5479703D223135222046696C6C2E4261636B436F6C6F723D2231363737
+          373231352220476170583D22332220476170593D2233222048416C69676E3D22
+          686152696768742220506172656E74466F6E743D2246616C7365222056416C69
+          676E3D22766143656E7465722220546578743D22302C3030222F3E3C54667278
+          4D656D6F56696577204C6566743D223136302220546F703D2235382220576964
+          74683D22343022204865696768743D22323222205265737472696374696F6E73
+          3D2232342220416C6C6F7745787072657373696F6E733D2246616C7365222044
           6973706C6179466F726D61742E446563696D616C536570617261746F723D222C
           2220446973706C6179466F726D61742E466F726D61745374723D2225322E3266
           2220446973706C6179466F726D61742E4B696E643D22666B4E756D6572696322
           20466F6E742E436861727365743D22312220466F6E742E436F6C6F723D223022
           20466F6E742E4865696768743D222D392220466F6E742E4E616D653D22417269
           616C2220466F6E742E5374796C653D223022204672616D652E5479703D223135
+          222046696C6C2E4261636B436F6C6F723D223136373737323135222047617058
+          3D22332220476170593D2233222048416C69676E3D2268615269676874222050
+          6172656E74466F6E743D2246616C7365222056416C69676E3D22766143656E74
+          65722220546578743D22302C3030222F3E3C546672784D656D6F56696577204C
+          6566743D223135302C38383138382220546F703D223136332C30333135342220
+          57696474683D22343022204865696768743D2231382220526573747269637469
+          6F6E733D2232342220416C6C6F7745787072657373696F6E733D2246616C7365
+          2220446973706C6179466F726D61742E446563696D616C536570617261746F72
+          3D222C2220446973706C6179466F726D61742E466F726D61745374723D222532
+          2E32662220446973706C6179466F726D61742E4B696E643D22666B4E756D6572
+          69632220466F6E742E436861727365743D22312220466F6E742E436F6C6F723D
+          22302220466F6E742E4865696768743D222D392220466F6E742E4E616D653D22
+          417269616C2220466F6E742E5374796C653D223022204672616D652E5479703D
+          223135222046696C6C2E4261636B436F6C6F723D223136373737323135222047
+          6170583D22332220476170593D2233222048416C69676E3D2268615269676874
+          2220506172656E74466F6E743D2246616C7365222056416C69676E3D22766143
+          656E7465722220546578743D22302C3030222F3E3C546672784D656D6F566965
+          77204C6566743D223135302C38383138382220546F703D223138312C30333135
+          34222057696474683D22343022204865696768743D2231382220526573747269
+          6374696F6E733D2232342220416C6C6F7745787072657373696F6E733D224661
+          6C73652220446973706C6179466F726D61742E446563696D616C536570617261
+          746F723D222C2220446973706C6179466F726D61742E466F726D61745374723D
+          2225322E32662220446973706C6179466F726D61742E4B696E643D22666B4E75
+          6D657269632220466F6E742E436861727365743D22312220466F6E742E436F6C
+          6F723D22302220466F6E742E4865696768743D222D392220466F6E742E4E616D
+          653D22417269616C2220466F6E742E5374796C653D223022204672616D652E54
+          79703D223135222046696C6C2E4261636B436F6C6F723D223136373737323135
           2220476170583D22332220476170593D2233222048416C69676E3D2268615269
           6768742220506172656E74466F6E743D2246616C7365222056416C69676E3D22
           766143656E7465722220546578743D22302C3030222F3E3C546672784D656D6F
           56696577204C6566743D223139302C38383138382220546F703D223134352C30
           33313534222057696474683D22333222204865696768743D2231382220526573
-          7472696374696F6E733D223234222053686F7748696E743D2246616C73652220
-          416C6C6F7745787072657373696F6E733D2246616C73652220466F6E742E4368
-          61727365743D22312220466F6E742E436F6C6F723D22302220466F6E742E4865
-          696768743D222D392220466F6E742E4E616D653D22417269616C2220466F6E74
-          2E5374796C653D223022204672616D652E5479703D2231352220476170583D22
-          332220476170593D2233222048416C69676E3D22686152696768742220506172
-          656E74466F6E743D2246616C7365222056416C69676E3D22766143656E746572
-          2220546578743D22302C3030222F3E3C546672784D656D6F56696577204C6566
-          743D223230302220546F703D223538222057696474683D223332222048656967
-          68743D22323222205265737472696374696F6E733D223234222053686F774869
-          6E743D2246616C73652220416C6C6F7745787072657373696F6E733D2246616C
-          736522204672616D652E5479703D2231352220476170583D2233222047617059
-          3D2233222048416C69676E3D2268615269676874222056416C69676E3D227661
-          43656E7465722220546578743D22302C3030222F3E3C546672784D656D6F5669
-          6577204C6566743D223139302C38383138382220546F703D223136332C303331
-          3534222057696474683D22333222204865696768743D22313822205265737472
-          696374696F6E733D223234222053686F7748696E743D2246616C73652220416C
-          6C6F7745787072657373696F6E733D2246616C73652220466F6E742E43686172
-          7365743D22312220466F6E742E436F6C6F723D22302220466F6E742E48656967
-          68743D222D392220466F6E742E4E616D653D22417269616C2220466F6E742E53
-          74796C653D223022204672616D652E5479703D2231352220476170583D223322
-          20476170593D2233222048416C69676E3D22686152696768742220506172656E
-          74466F6E743D2246616C7365222056416C69676E3D22766143656E7465722220
-          546578743D22302C3030222F3E3C546672784D656D6F56696577204C6566743D
-          223139302C38383138382220546F703D223138312C3033313534222057696474
-          683D22333222204865696768743D22313822205265737472696374696F6E733D
-          223234222053686F7748696E743D2246616C73652220416C6C6F774578707265
-          7373696F6E733D2246616C73652220466F6E742E436861727365743D22312220
-          466F6E742E436F6C6F723D22302220466F6E742E4865696768743D222D392220
-          466F6E742E4E616D653D22417269616C2220466F6E742E5374796C653D223022
-          204672616D652E5479703D2231352220476170583D22332220476170593D2233
-          222048416C69676E3D22686152696768742220506172656E74466F6E743D2246
-          616C7365222056416C69676E3D22766143656E7465722220546578743D22302C
-          3030222F3E3C2F63656C6C6D656D6F733E3C63656C6C6865616465726D656D6F
-          733E3C546672784D656D6F56696577204C6566743D223332352220546F703D22
-          3434222057696474683D22343822204865696768743D22323222205265737472
-          696374696F6E733D2238222053686F7748696E743D2246616C73652220416C6C
-          6F7745787072657373696F6E733D2246616C73652220436F6C6F723D22313637
-          37373231352220466F6E742E436861727365743D22312220466F6E742E436F6C
-          6F723D22302220466F6E742E4865696768743D222D31332220466F6E742E4E61
-          6D653D22417269616C2220466F6E742E5374796C653D223022204672616D652E
-          5479703D2231352220476170583D22332220476170593D22332220506172656E
-          74466F6E743D2246616C7365222056416C69676E3D22766143656E7465722220
-          546578743D225F222F3E3C546672784D656D6F56696577204C6566743D223332
-          352220546F703D223636222057696474683D22343822204865696768743D2232
-          3222205265737472696374696F6E733D2238222053686F7748696E743D224661
-          6C73652220416C6C6F7745787072657373696F6E733D2246616C73652220436F
-          6C6F723D2231363737373231352220466F6E742E436861727365743D22312220
-          466F6E742E436F6C6F723D22302220466F6E742E4865696768743D222D313322
-          20466F6E742E4E616D653D22417269616C2220466F6E742E5374796C653D2230
-          22204672616D652E5479703D2231352220476170583D22332220476170593D22
-          332220506172656E74466F6E743D2246616C7365222056416C69676E3D227661
-          43656E7465722220546578743D225F222F3E3C546672784D656D6F5669657720
-          4C6566743D22302220546F703D2230222057696474683D223022204865696768
-          743D223022205265737472696374696F6E733D2238222053686F7748696E743D
-          2246616C73652220416C6C6F7745787072657373696F6E733D2246616C736522
-          204672616D652E5479703D2231352220476170583D22332220476170593D2233
-          222056416C69676E3D22766143656E7465722220546578743D225F222F3E3C54
-          6672784D656D6F56696577204C6566743D22302220546F703D22302220576964
-          74683D223022204865696768743D223022205265737472696374696F6E733D22
-          38222053686F7748696E743D2246616C73652220416C6C6F7745787072657373
-          696F6E733D2246616C736522204672616D652E5479703D223135222047617058
-          3D22332220476170593D2233222056416C69676E3D22766143656E7465722220
-          546578743D225F222F3E3C2F63656C6C6865616465726D656D6F733E3C636F6C
-          756D6E6D656D6F733E3C546672784D656D6F56696577205461673D2231303022
-          204C6566743D223135302C38383138382220546F703D223132372C3033313534
-          222057696474683D22343022204865696768743D223138222052657374726963
-          74696F6E733D223234222053686F7748696E743D2246616C73652220416C6C6F
-          7745787072657373696F6E733D2246616C73652220436F6C6F723D2231363737
-          373231352220446973706C6179466F726D61742E446563696D616C5365706172
-          61746F723D222C2220446973706C6179466F726D61742E466F726D6174537472
-          3D2225322E32662220446973706C6179466F726D61742E4B696E643D22666B4E
-          756D657269632220466F6E742E436861727365743D22312220466F6E742E436F
+          7472696374696F6E733D2232342220416C6C6F7745787072657373696F6E733D
+          2246616C73652220466F6E742E436861727365743D22312220466F6E742E436F
           6C6F723D22302220466F6E742E4865696768743D222D392220466F6E742E4E61
           6D653D22417269616C2220466F6E742E5374796C653D223022204672616D652E
           5479703D2231352220476170583D22332220476170593D2233222048416C6967
-          6E3D22686143656E7465722220506172656E74466F6E743D2246616C73652220
-          56416C69676E3D22766143656E7465722220546578743D22D0B0D0B0D0B2D0BF
-          D0B2D0BFD0B0222F3E3C2F636F6C756D6E6D656D6F733E3C636F6C756D6E746F
-          74616C6D656D6F733E3C546672784D656D6F56696577205461673D2233303022
-          204C6566743D223139302C38383138382220546F703D223132372C3033313534
+          6E3D22686152696768742220506172656E74466F6E743D2246616C7365222056
+          416C69676E3D22766143656E7465722220546578743D22302C3030222F3E3C54
+          6672784D656D6F56696577204C6566743D223230302220546F703D2235382220
+          57696474683D22333222204865696768743D2232322220526573747269637469
+          6F6E733D2232342220416C6C6F7745787072657373696F6E733D2246616C7365
+          22204672616D652E5479703D2231352220476170583D22332220476170593D22
+          33222048416C69676E3D2268615269676874222056416C69676E3D2276614365
+          6E7465722220546578743D22302C3030222F3E3C546672784D656D6F56696577
+          204C6566743D223139302C38383138382220546F703D223136332C3033313534
           222057696474683D22333222204865696768743D223138222052657374726963
-          74696F6E733D2238222053686F7748696E743D2246616C73652220416C6C6F77
-          45787072657373696F6E733D2246616C73652220436F6C6F723D223136373737
-          3231352220446973706C6179466F726D61742E446563696D616C536570617261
+          74696F6E733D2232342220416C6C6F7745787072657373696F6E733D2246616C
+          73652220466F6E742E436861727365743D22312220466F6E742E436F6C6F723D
+          22302220466F6E742E4865696768743D222D392220466F6E742E4E616D653D22
+          417269616C2220466F6E742E5374796C653D223022204672616D652E5479703D
+          2231352220476170583D22332220476170593D2233222048416C69676E3D2268
+          6152696768742220506172656E74466F6E743D2246616C7365222056416C6967
+          6E3D22766143656E7465722220546578743D22302C3030222F3E3C546672784D
+          656D6F56696577204C6566743D223139302C38383138382220546F703D223138
+          312C3033313534222057696474683D22333222204865696768743D2231382220
+          5265737472696374696F6E733D2232342220416C6C6F7745787072657373696F
+          6E733D2246616C73652220466F6E742E436861727365743D22312220466F6E74
+          2E436F6C6F723D22302220466F6E742E4865696768743D222D392220466F6E74
+          2E4E616D653D22417269616C2220466F6E742E5374796C653D22302220467261
+          6D652E5479703D2231352220476170583D22332220476170593D223322204841
+          6C69676E3D22686152696768742220506172656E74466F6E743D2246616C7365
+          222056416C69676E3D22766143656E7465722220546578743D22302C3030222F
+          3E3C2F63656C6C6D656D6F733E3C63656C6C6865616465726D656D6F733E3C54
+          6672784D656D6F56696577204C6566743D223332352220546F703D2234342220
+          57696474683D22343822204865696768743D2232322220526573747269637469
+          6F6E733D22382220416C6C6F7745787072657373696F6E733D2246616C736522
+          20466F6E742E436861727365743D22312220466F6E742E436F6C6F723D223022
+          20466F6E742E4865696768743D222D31332220466F6E742E4E616D653D224172
+          69616C2220466F6E742E5374796C653D223022204672616D652E5479703D2231
+          35222046696C6C2E4261636B436F6C6F723D2231363737373231352220476170
+          583D22332220476170593D22332220506172656E74466F6E743D2246616C7365
+          222056416C69676E3D22766143656E7465722220546578743D225F222F3E3C54
+          6672784D656D6F56696577204C6566743D223332352220546F703D2236362220
+          57696474683D22343822204865696768743D2232322220526573747269637469
+          6F6E733D22382220416C6C6F7745787072657373696F6E733D2246616C736522
+          20466F6E742E436861727365743D22312220466F6E742E436F6C6F723D223022
+          20466F6E742E4865696768743D222D31332220466F6E742E4E616D653D224172
+          69616C2220466F6E742E5374796C653D223022204672616D652E5479703D2231
+          35222046696C6C2E4261636B436F6C6F723D2231363737373231352220476170
+          583D22332220476170593D22332220506172656E74466F6E743D2246616C7365
+          222056416C69676E3D22766143656E7465722220546578743D225F222F3E3C54
+          6672784D656D6F56696577204C6566743D22302220546F703D22302220576964
+          74683D223022204865696768743D223022205265737472696374696F6E733D22
+          382220416C6C6F7745787072657373696F6E733D2246616C736522204672616D
+          652E5479703D2231352220476170583D22332220476170593D2233222056416C
+          69676E3D22766143656E7465722220546578743D225F222F3E3C546672784D65
+          6D6F56696577204C6566743D22302220546F703D2230222057696474683D2230
+          22204865696768743D223022205265737472696374696F6E733D22382220416C
+          6C6F7745787072657373696F6E733D2246616C736522204672616D652E547970
+          3D2231352220476170583D22332220476170593D2233222056416C69676E3D22
+          766143656E7465722220546578743D225F222F3E3C2F63656C6C686561646572
+          6D656D6F733E3C636F6C756D6E6D656D6F733E3C546672784D656D6F56696577
+          205461673D2231303022204C6566743D223135302C38383138382220546F703D
+          223132372C3033313534222057696474683D22343022204865696768743D2231
+          3822205265737472696374696F6E733D2232342220416C6C6F77457870726573
+          73696F6E733D2246616C73652220446973706C6179466F726D61742E44656369
+          6D616C536570617261746F723D222C2220446973706C6179466F726D61742E46
+          6F726D61745374723D2225322E32662220446973706C6179466F726D61742E4B
+          696E643D22666B4E756D657269632220466F6E742E436861727365743D223122
+          20466F6E742E436F6C6F723D22302220466F6E742E4865696768743D222D3922
+          20466F6E742E4E616D653D22417269616C2220466F6E742E5374796C653D2230
+          22204672616D652E5479703D223135222046696C6C2E4261636B436F6C6F723D
+          2231363737373231352220476170583D22332220476170593D2233222048416C
+          69676E3D22686143656E7465722220506172656E74466F6E743D2246616C7365
+          222056416C69676E3D22766143656E7465722220546578743D22D0B0D0B0D0B2
+          D0BFD0B2D0BFD0B0222F3E3C2F636F6C756D6E6D656D6F733E3C636F6C756D6E
+          746F74616C6D656D6F733E3C546672784D656D6F56696577205461673D223330
+          3022204C6566743D223139302C38383138382220546F703D223132372C303331
+          3534222057696474683D22333222204865696768743D22313822205265737472
+          696374696F6E733D22382220416C6C6F7745787072657373696F6E733D224661
+          6C73652220446973706C6179466F726D61742E446563696D616C536570617261
           746F723D222C2220446973706C6179466F726D61742E466F726D61745374723D
           2225322E32662220446973706C6179466F726D61742E4B696E643D22666B4E75
           6D657269632220466F6E742E436861727365743D22312220466F6E742E436F6C
           6F723D22302220466F6E742E4865696768743D222D392220466F6E742E4E616D
           653D22417269616C2220466F6E742E5374796C653D223122204672616D652E54
-          79703D2231352220476170583D22332220476170593D2233222048416C69676E
-          3D22686143656E7465722220506172656E74466F6E743D2246616C7365222056
-          416C69676E3D22766143656E7465722220546578743D22D098D182D0BED0B3D0
-          BE222F3E3C2F636F6C756D6E746F74616C6D656D6F733E3C636F726E65726D65
-          6D6F733E3C546672784D656D6F56696577204C6566743D2232322C3838313838
-          2220546F703D223130392C3033313534222057696474683D2231323822204865
-          696768743D22313822205265737472696374696F6E733D2238222053686F7748
-          696E743D2246616C73652220416C6C6F7745787072657373696F6E733D224661
-          6C73652220436F6C6F723D2231363737373231352220446973706C6179466F72
-          6D61742E446563696D616C536570617261746F723D222C2220446973706C6179
-          466F726D61742E466F726D61745374723D2225322E32662220446973706C6179
-          466F726D61742E4B696E643D22666B4E756D657269632220466F6E742E436861
-          727365743D22312220466F6E742E436F6C6F723D22302220466F6E742E486569
-          6768743D222D392220466F6E742E4E616D653D22417269616C2220466F6E742E
-          5374796C653D223022204672616D652E5479703D2231352220476170583D2233
-          2220476170593D2233222048416C69676E3D22686143656E7465722220506172
-          656E74466F6E743D2246616C7365222056416C69676E3D22766143656E746572
-          2220546578743D225F222F3E3C546672784D656D6F56696577204C6566743D22
-          3135302C38383138382220546F703D223130392C303331353422205769647468
-          3D22373222204865696768743D22313822205265737472696374696F6E733D22
-          38222053686F7748696E743D2246616C73652220416C6C6F7745787072657373
-          696F6E733D2246616C73652220436F6C6F723D22313637373732313522204469
-          73706C6179466F726D61742E446563696D616C536570617261746F723D222C22
-          20446973706C6179466F726D61742E466F726D61745374723D2225322E326622
-          20446973706C6179466F726D61742E4B696E643D22666B4E756D657269632220
-          466F6E742E436861727365743D22312220466F6E742E436F6C6F723D22302220
-          466F6E742E4865696768743D222D392220466F6E742E4E616D653D2241726961
-          6C2220466F6E742E5374796C653D223022204672616D652E5479703D22313522
-          20476170583D22332220476170593D2233222048416C69676E3D22686143656E
-          7465722220506172656E74466F6E743D2246616C7365222056416C69676E3D22
-          766143656E7465722220546578743D22D0A3D181D0BBD183D0B3D0B0222F3E3C
-          546672784D656D6F56696577204C6566743D223332352220546F703D22323222
-          2057696474683D22343822204865696768743D22323222205265737472696374
-          696F6E733D2238222056697369626C653D2246616C7365222053686F7748696E
-          743D2246616C73652220416C6C6F7745787072657373696F6E733D2246616C73
-          652220436F6C6F723D2231363737373231352220466F6E742E43686172736574
-          3D22312220466F6E742E436F6C6F723D22302220466F6E742E4865696768743D
-          222D31332220466F6E742E4E616D653D22417269616C2220466F6E742E537479
-          6C653D223022204672616D652E5479703D2231352220476170583D2233222047
-          6170593D2233222048416C69676E3D22686143656E7465722220506172656E74
-          466F6E743D2246616C7365222056416C69676E3D22766143656E746572222054
-          6578743D22222F3E3C546672784D656D6F56696577204C6566743D2232322C38
-          383138382220546F703D223132372C3033313534222057696474683D22343022
-          204865696768743D22313822205265737472696374696F6E733D223822205368
-          6F7748696E743D2246616C73652220416C6C6F7745787072657373696F6E733D
-          2246616C73652220436F6C6F723D2231363737373231352220446973706C6179
+          79703D223135222046696C6C2E4261636B436F6C6F723D223136373737323135
+          2220476170583D22332220476170593D2233222048416C69676E3D2268614365
+          6E7465722220506172656E74466F6E743D2246616C7365222056416C69676E3D
+          22766143656E7465722220546578743D22D098D182D0BED0B3D0BE222F3E3C2F
+          636F6C756D6E746F74616C6D656D6F733E3C636F726E65726D656D6F733E3C54
+          6672784D656D6F56696577204C6566743D2232322C38383138382220546F703D
+          223130392C3033313534222057696474683D2231323822204865696768743D22
+          313822205265737472696374696F6E733D22382220416C6C6F77457870726573
+          73696F6E733D2246616C73652220446973706C6179466F726D61742E44656369
+          6D616C536570617261746F723D222C2220446973706C6179466F726D61742E46
+          6F726D61745374723D2225322E32662220446973706C6179466F726D61742E4B
+          696E643D22666B4E756D657269632220466F6E742E436861727365743D223122
+          20466F6E742E436F6C6F723D22302220466F6E742E4865696768743D222D3922
+          20466F6E742E4E616D653D22417269616C2220466F6E742E5374796C653D2230
+          22204672616D652E5479703D223135222046696C6C2E4261636B436F6C6F723D
+          2231363737373231352220476170583D22332220476170593D2233222048416C
+          69676E3D22686143656E7465722220506172656E74466F6E743D2246616C7365
+          222056416C69676E3D22766143656E7465722220546578743D225F222F3E3C54
+          6672784D656D6F56696577204C6566743D223135302C38383138382220546F70
+          3D223130392C3033313534222057696474683D22373222204865696768743D22
+          313822205265737472696374696F6E733D22382220416C6C6F77457870726573
+          73696F6E733D2246616C73652220446973706C6179466F726D61742E44656369
+          6D616C536570617261746F723D222C2220446973706C6179466F726D61742E46
+          6F726D61745374723D2225322E32662220446973706C6179466F726D61742E4B
+          696E643D22666B4E756D657269632220466F6E742E436861727365743D223122
+          20466F6E742E436F6C6F723D22302220466F6E742E4865696768743D222D3922
+          20466F6E742E4E616D653D22417269616C2220466F6E742E5374796C653D2230
+          22204672616D652E5479703D223135222046696C6C2E4261636B436F6C6F723D
+          2231363737373231352220476170583D22332220476170593D2233222048416C
+          69676E3D22686143656E7465722220506172656E74466F6E743D2246616C7365
+          222056416C69676E3D22766143656E7465722220546578743D22D0A3D181D0BB
+          D183D0B3D0B0222F3E3C546672784D656D6F56696577204C6566743D22333235
+          2220546F703D223232222057696474683D22343822204865696768743D223232
+          22205265737472696374696F6E733D2238222056697369626C653D2246616C73
+          652220416C6C6F7745787072657373696F6E733D2246616C73652220466F6E74
+          2E436861727365743D22312220466F6E742E436F6C6F723D22302220466F6E74
+          2E4865696768743D222D31332220466F6E742E4E616D653D22417269616C2220
+          466F6E742E5374796C653D223022204672616D652E5479703D22313522204669
+          6C6C2E4261636B436F6C6F723D2231363737373231352220476170583D223322
+          20476170593D2233222048416C69676E3D22686143656E746572222050617265
+          6E74466F6E743D2246616C7365222056416C69676E3D22766143656E74657222
+          20546578743D22222F3E3C546672784D656D6F56696577204C6566743D223232
+          2C38383138382220546F703D223132372C3033313534222057696474683D2234
+          3022204865696768743D22313822205265737472696374696F6E733D22382220
+          416C6C6F7745787072657373696F6E733D2246616C73652220446973706C6179
           466F726D61742E446563696D616C536570617261746F723D222C222044697370
           6C6179466F726D61742E466F726D61745374723D2225322E32662220466F6E74
           2E436861727365743D22312220466F6E742E436F6C6F723D22302220466F6E74
           2E4865696768743D222D392220466F6E742E4E616D653D22417269616C222046
-          6F6E742E5374796C653D223022204672616D652E5479703D2231352220476170
-          583D22332220476170593D2233222048416C69676E3D22686143656E74657222
-          20506172656E74466F6E743D2246616C7365222056416C69676E3D2276614365
-          6E7465722220546578743D22D09BD18CD0B3D0BED182D0B0222F3E3C54667278
-          4D656D6F56696577204C6566743D2236322C38383138382220546F703D223132
-          372C3033313534222057696474683D22333822204865696768743D2231382220
-          5265737472696374696F6E733D2238222053686F7748696E743D2246616C7365
-          2220416C6C6F7745787072657373696F6E733D2246616C73652220466F6E742E
-          436861727365743D22312220466F6E742E436F6C6F723D22302220466F6E742E
-          4865696768743D222D392220466F6E742E4E616D653D22417269616C2220466F
-          6E742E5374796C653D223022204672616D652E5479703D223135222047617058
-          3D22332220476170593D22332220506172656E74466F6E743D2246616C736522
-          2056416C69676E3D22766143656E7465722220546578743D22D090D0B4D180D0
-          B5D181222F3E3C546672784D656D6F56696577204C6566743D223130302C3838
-          3138382220546F703D223132372C3033313534222057696474683D2235302220
-          4865696768743D22313822205265737472696374696F6E733D2238222053686F
-          7748696E743D2246616C73652220416C6C6F7745787072657373696F6E733D22
-          46616C73652220466F6E742E436861727365743D22312220466F6E742E436F6C
-          6F723D22302220466F6E742E4865696768743D222D392220466F6E742E4E616D
-          653D22417269616C2220466F6E742E5374796C653D223022204672616D652E54
-          79703D2231352220476170583D22332220476170593D22332220506172656E74
-          466F6E743D2246616C7365222056416C69676E3D22766143656E746572222054
-          6578743D22D09BD18CD0B3D0BED182D0BDD0B8D0BA222F3E3C2F636F726E6572
-          6D656D6F733E3C726F776D656D6F733E3C546672784D656D6F56696577205461
-          673D2232303022204C6566743D2232322C38383138382220546F703D22313435
-          2C3033313534222057696474683D22343022204865696768743D223336222052
-          65737472696374696F6E733D223234222053686F7748696E743D2246616C7365
-          2220416C6C6F7745787072657373696F6E733D2246616C73652220436F6C6F72
-          3D2231363737373231352220446973706C6179466F726D61742E446563696D61
-          6C536570617261746F723D222C2220446973706C6179466F726D61742E466F72
-          6D61745374723D2225322E32662220466F6E742E436861727365743D22312220
-          466F6E742E436F6C6F723D22302220466F6E742E4865696768743D222D392220
-          466F6E742E4E616D653D22417269616C2220466F6E742E5374796C653D223022
-          204672616D652E5479703D2231352220476170583D22332220476170593D2233
-          2220506172656E74466F6E743D2246616C73652220576F7264577261703D2246
-          616C7365222056416C69676E3D22766143656E7465722220546578743D22222F
-          3E3C546672784D656D6F56696577204C6566743D2236322C3838313838222054
-          6F703D223134352C3033313534222057696474683D2233382220486569676874
-          3D22313822205265737472696374696F6E733D223234222053686F7748696E74
-          3D2246616C73652220416C6C6F7745787072657373696F6E733D2246616C7365
-          2220466F6E742E436861727365743D22312220466F6E742E436F6C6F723D2230
-          2220466F6E742E4865696768743D222D392220466F6E742E4E616D653D224172
-          69616C2220466F6E742E5374796C653D223022204672616D652E5479703D2231
-          352220476170583D22332220476170593D22332220506172656E74466F6E743D
-          2246616C7365222056416C69676E3D22766143656E7465722220546578743D22
-          222F3E3C546672784D656D6F56696577204C6566743D223130302C3838313838
-          2220546F703D223134352C3033313534222057696474683D2235302220486569
-          6768743D22313822205265737472696374696F6E733D223234222053686F7748
-          696E743D2246616C73652220416C6C6F7745787072657373696F6E733D224661
-          6C73652220466F6E742E436861727365743D22312220466F6E742E436F6C6F72
+          6F6E742E5374796C653D223022204672616D652E5479703D223135222046696C
+          6C2E4261636B436F6C6F723D2231363737373231352220476170583D22332220
+          476170593D2233222048416C69676E3D22686143656E7465722220506172656E
+          74466F6E743D2246616C7365222056416C69676E3D22766143656E7465722220
+          546578743D22D09BD18CD0B3D0BED182D0B0222F3E3C546672784D656D6F5669
+          6577204C6566743D2236322C38383138382220546F703D223132372C30333135
+          34222057696474683D22333822204865696768743D2231382220526573747269
+          6374696F6E733D22382220416C6C6F7745787072657373696F6E733D2246616C
+          73652220466F6E742E436861727365743D22312220466F6E742E436F6C6F723D
+          22302220466F6E742E4865696768743D222D392220466F6E742E4E616D653D22
+          417269616C2220466F6E742E5374796C653D223022204672616D652E5479703D
+          2231352220476170583D22332220476170593D22332220506172656E74466F6E
+          743D2246616C7365222056416C69676E3D22766143656E746572222054657874
+          3D22D090D0B4D180D0B5D181222F3E3C546672784D656D6F56696577204C6566
+          743D223130302C38383138382220546F703D223132372C303331353422205769
+          6474683D22353022204865696768743D22313822205265737472696374696F6E
+          733D22382220416C6C6F7745787072657373696F6E733D2246616C7365222046
+          6F6E742E436861727365743D22312220466F6E742E436F6C6F723D2230222046
+          6F6E742E4865696768743D222D392220466F6E742E4E616D653D22417269616C
+          2220466F6E742E5374796C653D223022204672616D652E5479703D2231352220
+          476170583D22332220476170593D22332220506172656E74466F6E743D224661
+          6C7365222056416C69676E3D22766143656E7465722220546578743D22D09BD1
+          8CD0B3D0BED182D0BDD0B8D0BA222F3E3C2F636F726E65726D656D6F733E3C72
+          6F776D656D6F733E3C546672784D656D6F56696577205461673D223230302220
+          4C6566743D2232322C38383138382220546F703D223134352C30333135342220
+          57696474683D22343022204865696768743D2233362220526573747269637469
+          6F6E733D2232342220416C6C6F7745787072657373696F6E733D2246616C7365
+          2220446973706C6179466F726D61742E446563696D616C536570617261746F72
+          3D222C2220446973706C6179466F726D61742E466F726D61745374723D222532
+          2E32662220466F6E742E436861727365743D22312220466F6E742E436F6C6F72
           3D22302220466F6E742E4865696768743D222D392220466F6E742E4E616D653D
           22417269616C2220466F6E742E5374796C653D223022204672616D652E547970
-          3D2231352220476170583D22332220476170593D22332220506172656E74466F
-          6E743D2246616C7365222056416C69676E3D22766143656E7465722220546578
-          743D22222F3E3C2F726F776D656D6F733E3C726F77746F74616C6D656D6F733E
-          3C546672784D656D6F56696577205461673D2234303022204C6566743D223232
-          2C38383138382220546F703D223138312C3033313534222057696474683D2231
-          323822204865696768743D22313822205265737472696374696F6E733D223822
-          2053686F7748696E743D2246616C73652220416C6C6F7745787072657373696F
-          6E733D2246616C73652220436F6C6F723D223136373737323135222044697370
-          6C6179466F726D61742E446563696D616C536570617261746F723D222C222044
-          6973706C6179466F726D61742E466F726D61745374723D2225322E3266222046
-          6F6E742E436861727365743D22312220466F6E742E436F6C6F723D2230222046
-          6F6E742E4865696768743D222D392220466F6E742E4E616D653D22417269616C
-          2220466F6E742E5374796C653D223122204672616D652E5479703D2231352220
-          476170583D22332220476170593D2233222048416C69676E3D22686143656E74
-          65722220506172656E74466F6E743D2246616C7365222056416C69676E3D2276
-          6143656E7465722220546578743D22D098D182D0BED0B3D0BE222F3E3C546672
-          784D656D6F56696577204C6566743D2236322C38383138382220546F703D2231
-          36332C3033313534222057696474683D22383822204865696768743D22313822
-          205265737472696374696F6E733D2238222053686F7748696E743D2246616C73
-          652220416C6C6F7745787072657373696F6E733D2246616C7365222044697370
-          6C6179466F726D61742E446563696D616C536570617261746F723D222C222046
-          6F6E742E436861727365743D22312220466F6E742E436F6C6F723D2230222046
-          6F6E742E4865696768743D222D392220466F6E742E4E616D653D22417269616C
-          2220466F6E742E5374796C653D223122204672616D652E5479703D2231352220
-          476170583D22332220476170593D2233222048416C69676E3D22686143656E74
-          65722220506172656E74466F6E743D2246616C7365222056416C69676E3D2276
-          6143656E7465722220546578743D22D098D182D0BED0B3D0BE222F3E3C546672
-          784D656D6F56696577204C6566743D2239322220546F703D2235382220576964
-          74683D22363822204865696768743D22323222205265737472696374696F6E73
-          3D2238222056697369626C653D2246616C7365222053686F7748696E743D2246
-          616C73652220416C6C6F7745787072657373696F6E733D2246616C7365222046
-          6F6E742E436861727365743D22312220466F6E742E436F6C6F723D2230222046
-          6F6E742E4865696768743D222D31332220466F6E742E4E616D653D2241726961
-          6C2220466F6E742E5374796C653D223122204672616D652E5479703D22313522
-          20476170583D22332220476170593D2233222048416C69676E3D22686143656E
-          7465722220506172656E74466F6E743D2246616C7365222056416C69676E3D22
-          766143656E7465722220546578743D22546F74616C222F3E3C2F726F77746F74
-          616C6D656D6F733E3C63656C6C66756E6374696F6E733E3C6974656D20312F3E
-          3C2F63656C6C66756E6374696F6E733E3C636F6C756D6E736F72743E3C697465
-          6D20302F3E3C2F636F6C756D6E736F72743E3C726F77736F72743E3C6974656D
-          20302F3E3C6974656D20302F3E3C6974656D20322F3E3C2F726F77736F72743E
-          3C2F63726F73733E}
+          3D223135222046696C6C2E4261636B436F6C6F723D2231363737373231352220
+          476170583D22332220476170593D22332220506172656E74466F6E743D224661
+          6C73652220576F7264577261703D2246616C7365222056416C69676E3D227661
+          43656E7465722220546578743D22222F3E3C546672784D656D6F56696577204C
+          6566743D2236322C38383138382220546F703D223134352C3033313534222057
+          696474683D22333822204865696768743D22313822205265737472696374696F
+          6E733D2232342220416C6C6F7745787072657373696F6E733D2246616C736522
+          20466F6E742E436861727365743D22312220466F6E742E436F6C6F723D223022
+          20466F6E742E4865696768743D222D392220466F6E742E4E616D653D22417269
+          616C2220466F6E742E5374796C653D223022204672616D652E5479703D223135
+          2220476170583D22332220476170593D22332220506172656E74466F6E743D22
+          46616C7365222056416C69676E3D22766143656E7465722220546578743D2222
+          2F3E3C546672784D656D6F56696577204C6566743D223130302C383831383822
+          20546F703D223134352C3033313534222057696474683D223530222048656967
+          68743D22313822205265737472696374696F6E733D2232342220416C6C6F7745
+          787072657373696F6E733D2246616C73652220466F6E742E436861727365743D
+          22312220466F6E742E436F6C6F723D22302220466F6E742E4865696768743D22
+          2D392220466F6E742E4E616D653D22417269616C2220466F6E742E5374796C65
+          3D223022204672616D652E5479703D2231352220476170583D22332220476170
+          593D22332220506172656E74466F6E743D2246616C7365222056416C69676E3D
+          22766143656E7465722220546578743D22222F3E3C2F726F776D656D6F733E3C
+          726F77746F74616C6D656D6F733E3C546672784D656D6F56696577205461673D
+          2234303022204C6566743D2232322C38383138382220546F703D223138312C30
+          33313534222057696474683D2231323822204865696768743D22313822205265
+          737472696374696F6E733D22382220416C6C6F7745787072657373696F6E733D
+          2246616C73652220446973706C6179466F726D61742E446563696D616C536570
+          617261746F723D222C2220446973706C6179466F726D61742E466F726D617453
+          74723D2225322E32662220466F6E742E436861727365743D22312220466F6E74
+          2E436F6C6F723D22302220466F6E742E4865696768743D222D392220466F6E74
+          2E4E616D653D22417269616C2220466F6E742E5374796C653D22312220467261
+          6D652E5479703D223135222046696C6C2E4261636B436F6C6F723D2231363737
+          373231352220476170583D22332220476170593D2233222048416C69676E3D22
+          686143656E7465722220506172656E74466F6E743D2246616C7365222056416C
+          69676E3D22766143656E7465722220546578743D22D098D182D0BED0B3D0BE22
+          2F3E3C546672784D656D6F56696577204C6566743D2236322C38383138382220
+          546F703D223136332C3033313534222057696474683D22383822204865696768
+          743D22313822205265737472696374696F6E733D22382220416C6C6F77457870
+          72657373696F6E733D2246616C73652220446973706C6179466F726D61742E44
+          6563696D616C536570617261746F723D222C2220466F6E742E43686172736574
+          3D22312220466F6E742E436F6C6F723D22302220466F6E742E4865696768743D
+          222D392220466F6E742E4E616D653D22417269616C2220466F6E742E5374796C
+          653D223122204672616D652E5479703D2231352220476170583D223322204761
+          70593D2233222048416C69676E3D22686143656E7465722220506172656E7446
+          6F6E743D2246616C7365222056416C69676E3D22766143656E74657222205465
+          78743D22D098D182D0BED0B3D0BE222F3E3C546672784D656D6F56696577204C
+          6566743D2239322220546F703D223538222057696474683D2236382220486569
+          6768743D22323222205265737472696374696F6E733D2238222056697369626C
+          653D2246616C73652220416C6C6F7745787072657373696F6E733D2246616C73
+          652220466F6E742E436861727365743D22312220466F6E742E436F6C6F723D22
+          302220466F6E742E4865696768743D222D31332220466F6E742E4E616D653D22
+          417269616C2220466F6E742E5374796C653D223122204672616D652E5479703D
+          2231352220476170583D22332220476170593D2233222048416C69676E3D2268
+          6143656E7465722220506172656E74466F6E743D2246616C7365222056416C69
+          676E3D22766143656E7465722220546578743D22546F74616C222F3E3C2F726F
+          77746F74616C6D656D6F733E3C63656C6C66756E6374696F6E733E3C6974656D
+          20312F3E3C2F63656C6C66756E6374696F6E733E3C636F6C756D6E736F72743E
+          3C6974656D20302F3E3C2F636F6C756D6E736F72743E3C726F77736F72743E3C
+          6974656D20302F3E3C6974656D20302F3E3C6974656D20322F3E3C2F726F7773
+          6F72743E3C2F63726F73733E}
       end
       object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
         Height = 30.236240000000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
@@ -4039,7 +3886,6 @@ object Form_print_lists: TForm_print_lists
           Top = 3.779530000000001000
           Width = 445.984540000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -4073,7 +3919,7 @@ object Form_print_lists: TForm_print_lists
     Top = 304
   end
   object frxReport10: TfrxReport
-    Version = '0.0'
+    Version = '5.1.9'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -4109,6 +3955,7 @@ object Form_print_lists: TForm_print_lists
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
       object MasterData1: TfrxMasterData
+        FillType = ftBrush
         Height = 16.177180000000000000
         Top = 200.315090000000000000
         Width = 718.110700000000000000
@@ -4120,7 +3967,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.102350000000001000
           Width = 117.315090000000000000
           Height = 12.897650000000000000
-          ShowHint = False
           DataField = 'FIO'
           DataSet = frxDBDataset10
           DataSetName = 'frxDBData10'
@@ -4138,7 +3984,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.102350000000001000
           Width = 38.203463330000000000
           Height = 12.897650000000000000
-          ShowHint = False
           DataField = 'CNT_MONTH'
           DataSet = frxDBDataset10
           DataSetName = 'frxDBData10'
@@ -4157,7 +4002,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.102350000000001000
           Width = 88.902906669999990000
           Height = 12.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset10
           DataSetName = 'frxDBData10'
           Font.Charset = DEFAULT_CHARSET
@@ -4174,7 +4018,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.243969999999990000
           Width = 52.870130000000000000
           Height = 12.897650000000000000
-          ShowHint = False
           DataField = 'DOLG'
           DataSet = frxDBDataset10
           DataSetName = 'frxDBData10'
@@ -4193,7 +4036,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.012986670000004000
           Width = 70.488250000000000000
           Height = 12.897650000000000000
-          ShowHint = False
           DataField = 'LSK'
           DataSet = frxDBDataset10
           DataSetName = 'frxDBData10'
@@ -4211,7 +4053,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.000000000000000000
           Width = 32.209956670000000000
           Height = 12.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset10
           DataSetName = 'frxDBData10'
           Font.Charset = DEFAULT_CHARSET
@@ -4228,7 +4069,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.000000000000000000
           Width = 32.209956670000000000
           Height = 12.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset10
           DataSetName = 'frxDBData10'
           Font.Charset = DEFAULT_CHARSET
@@ -4242,6 +4082,7 @@ object Form_print_lists: TForm_print_lists
         end
       end
       object PageHeader1: TfrxPageHeader
+        FillType = ftBrush
         Height = 30.343846660000000000
         Top = 64.252010000000000000
         Width = 718.110700000000000000
@@ -4250,7 +4091,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.247990000000001000
           Width = 157.315090000000000000
           Height = 12.230983330000000000
-          ShowHint = False
           DataSet = frxDBData2
           DataSetName = 'frxDBData2'
           Font.Charset = DEFAULT_CHARSET
@@ -4268,7 +4108,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.247990000000001000
           Width = 66.488250000000000000
           Height = 12.230983330000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -4284,7 +4123,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.081323330000004000
           Width = 119.981756670000000000
           Height = 12.230983330000000000
-          ShowHint = False
           DataSet = frxDBData2
           DataSetName = 'frxDBData2'
           Font.Charset = DEFAULT_CHARSET
@@ -4302,7 +4140,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.081323330000004000
           Width = 57.981756670000000000
           Height = 26.897650000000000000
-          ShowHint = False
           DataSet = frxDBData2
           DataSetName = 'frxDBData2'
           Font.Charset = DEFAULT_CHARSET
@@ -4320,7 +4157,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.081323330000004000
           Width = 69.315090000000000000
           Height = 26.897650000000000000
-          ShowHint = False
           DataSet = frxDBData2
           DataSetName = 'frxDBData2'
           Font.Charset = DEFAULT_CHARSET
@@ -4335,6 +4171,7 @@ object Form_print_lists: TForm_print_lists
         end
       end
       object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
@@ -4343,7 +4180,6 @@ object Form_print_lists: TForm_print_lists
           Top = 0.889765000000000600
           Width = 508.988250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -12
@@ -4360,7 +4196,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.102350000000001000
           Width = 200.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -4373,6 +4208,7 @@ object Form_print_lists: TForm_print_lists
         end
       end
       object ReportSummary1: TfrxReportSummary
+        FillType = ftBrush
         Height = 16.255720000000000000
         Top = 275.905690000000000000
         Width = 718.110700000000000000
@@ -4381,7 +4217,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.358069999999998000
           Width = 230.988250000000000000
           Height = 14.564316670000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -4396,7 +4231,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.448669999999993000
           Width = 52.870130000000000000
           Height = 12.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset10
           DataSetName = 'frxDBData10'
           Font.Charset = DEFAULT_CHARSET
@@ -4411,6 +4245,7 @@ object Form_print_lists: TForm_print_lists
         end
       end
       object PageFooter1: TfrxPageFooter
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 313.700990000000000000
         Width = 718.110700000000000000
@@ -4419,7 +4254,6 @@ object Form_print_lists: TForm_print_lists
           Top = 1.062770000000000000
           Width = 68.988250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -4432,6 +4266,7 @@ object Form_print_lists: TForm_print_lists
         end
       end
       object GroupHeader1: TfrxGroupHeader
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 154.960730000000000000
         Width = 718.110700000000000000
@@ -4441,7 +4276,6 @@ object Form_print_lists: TForm_print_lists
           Top = 5.039269999999988000
           Width = 38.488250000000000000
           Height = 12.230983330000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -4457,7 +4291,6 @@ object Form_print_lists: TForm_print_lists
           Top = 5.039269999999988000
           Width = 102.488250000000000000
           Height = 12.230983330000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -4496,6 +4329,7 @@ object Form_print_lists: TForm_print_lists
     DataOnly = False
     Separator = ';'
     OEMCodepage = False
+    UTF8 = False
     NoSysSymbols = True
     ForcedQuotes = False
     Left = 128

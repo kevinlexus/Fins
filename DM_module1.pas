@@ -3,7 +3,8 @@ unit DM_module1;
 interface
 
 uses
-  SysUtils, Classes, Oracle, DB, OracleData, frxClass, frxDBSet;
+  SysUtils, Classes, Oracle, DB, OracleData, frxClass, frxDBSet, MemDS,
+  DBAccess, Uni;
 
 type
   TDataModule1 = class(TDataModule)
@@ -24,6 +25,8 @@ type
     OD_dat2: TOracleDataSet;
     DS_period1: TDataSource;
     DS_period2: TDataSource;
+    UniConnection1: TUniConnection;
+    UniStoredProc1: TUniStoredProc;
   private
     { Private declarations }
   public

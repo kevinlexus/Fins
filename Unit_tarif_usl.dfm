@@ -112,7 +112,6 @@ object Form_tarif_usl: TForm_tarif_usl
     FixedCols = 0
     ShowHorzScrollBar = True
     Align = alClient
-    DataSource = DM_Olap.DS_data
     EditCalculated = True
     KeyOptions = []
     Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgWordWrap, dgShowCellHint, dgProportionalColResize]

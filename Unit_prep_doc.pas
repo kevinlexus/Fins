@@ -6,7 +6,8 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, DB, OracleData, StdCtrls, Grids,
   Wwdbigrd, Wwdbgrid, wwSpeedButton, wwDBNavigator, wwclearpanel,
-  wwdbdatetimepicker, Mask, wwdbedit, Wwdotdot, Wwdbcomb;
+  wwdbdatetimepicker, Mask, wwdbedit, Wwdotdot, Wwdbcomb, MemDS, DBAccess, DM_module1,
+  Uni;
 
 type
   TForm_prep_doc = class(TForm)
@@ -28,18 +29,19 @@ type
     GroupBox2: TGroupBox;
     Button3: TButton;
     Button4: TButton;
-    OD_spr_params: TOracleDataSet;
-    OD_spr_paramsID: TFloatField;
-    OD_spr_paramsGR_NAME: TStringField;
-    OD_spr_paramsPARNAME: TStringField;
-    OD_spr_paramsCDTP: TFloatField;
-    OD_spr_paramsVAL: TStringField;
-    OD_spr_paramsPARN1: TFloatField;
-    OD_spr_paramsPARVC1: TStringField;
-    OD_spr_paramsPARDT1: TDateTimeField;
+    KMP: TOracleDataSet;
+    KMPID: TFloatField;
+    KMPGR_NAME: TStringField;
+    KMPPARNAME: TStringField;
+    KMPCDTP: TFloatField;
+    KMPVAL: TStringField;
+    KMPPARN1: TFloatField;
+    KMPPARVC1: TStringField;
+    KMPPARDT1: TDateTimeField;
     DS_spr_params: TDataSource;
     wwDBGrid2: TwwDBGrid;
     wwDBComboBox1: TwwDBComboBox;
+    Uni_spr_params: TUniQuery;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
@@ -76,9 +78,10 @@ begin
  with Form_prep_doc do
  begin
   exit_:=0;
-   if not (OD_spr_params.State in [dsBrowse]) then
-     OD_spr_params.Cancel;
-   OD_spr_params.Session.Rollback;
+   if not (Uni_spr_params.State in [dsBrowse]) then
+     Uni_spr_params.Cancel;
+//   OD_spr_params.Session.Rollback;
+  DataModule1.UniConnection1.Rollback;
   ModalResult:=mrCancel;
  end;
 end;
@@ -88,9 +91,9 @@ begin
  with Form_prep_doc do
  begin
    exit_:=1;
-   if not (OD_spr_params.State in [dsBrowse]) then
-     OD_spr_params.Post;
-   OD_spr_params.CommitUpdates;
+   if not (Uni_spr_params.State in [dsBrowse]) then
+     Uni_spr_params.Post;
+   Uni_spr_params.CommitUpdates;
 {   if not (OD_data2.State in [dsBrowse]) then
      OD_data2.Post;
    if not (OD_data3.State in [dsBrowse]) then
@@ -102,9 +105,9 @@ end;
 procedure TForm_prep_doc.SetAccess(cd_: String);
 begin
 //установка параметров формы
-  OD_spr_params.Active:=False;
-  OD_spr_params.SetVariable('cd_', cd_);
-  OD_spr_params.Active:=True;
+  Uni_spr_params.Active:=False;
+  Uni_spr_params.Params.ParamByName('cd_').AsString:=cd_;
+  Uni_spr_params.Active:=True;
 {  OD_data.Active:=False;
   OD_data2.Active:=False;
   OD_data3.Active:=False;
@@ -147,13 +150,13 @@ var
   id_: Integer;
 begin
   Application.CreateForm(TForm_tree_par_edit, Form_tree_par_edit);
-  Form_tree_par_edit.SetAccess(OD_spr_params);
+  Form_tree_par_edit.SetAccess(DS_spr_params);
   Form_tree_par_edit.ShowModal;
 
-  id_:=OD_spr_params.FieldByName('id').AsInteger;
-  OD_spr_params.Active:=False;
-  OD_spr_params.Active:=True;
-  OD_spr_params.Locate('id', id_, []);
+  id_:=Uni_spr_params.FieldByName('id').AsInteger;
+  Uni_spr_params.Active:=False;
+  Uni_spr_params.Active:=True;
+  Uni_spr_params.Locate('id', id_, []);
 //  wwDBGrid2.SetFocus;
 Windows.SetFocus(wwDBGrid2.Handle);
   wwDBGrid2.Repaint;

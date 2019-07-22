@@ -1,11 +1,11 @@
 object Form_prep_doc: TForm_prep_doc
-  Left = 843
+  Left = 1164
   Top = 164
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = #1055#1072#1088#1072#1084#1077#1090#1088#1099' '#1086#1090#1095#1077#1090#1072
-  ClientHeight = 373
-  ClientWidth = 358
+  ClientHeight = 348
+  ClientWidth = 364
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -91,7 +91,7 @@ object Form_prep_doc: TForm_prep_doc
   TextHeight = 13
   object wwDBNavigator1: TwwDBNavigator
     Left = 0
-    Top = 299
+    Top = 274
     Width = 350
     Height = 25
     Options = []
@@ -347,8 +347,8 @@ object Form_prep_doc: TForm_prep_doc
   end
   object GroupBox2: TGroupBox
     Left = 0
-    Top = 324
-    Width = 358
+    Top = 299
+    Width = 364
     Height = 49
     Align = alBottom
     TabOrder = 3
@@ -377,13 +377,13 @@ object Form_prep_doc: TForm_prep_doc
   object wwDBGrid2: TwwDBGrid
     Left = 0
     Top = 0
-    Width = 358
-    Height = 299
+    Width = 364
+    Height = 274
     ControlType.Strings = (
       'VAL;CustomEdit;wwDBComboBox1;F')
     Selected.Strings = (
       'GR_NAME'#9'17'#9' '#9'T'
-      'PARNAME'#9'21'#9' '#9'T'
+      'PARNAME'#9'22'#9' '#9'T'
       'VAL'#9'13'#9' '#9'T')
     IniAttributes.Delimiter = ';;'
     TitleColor = clBtnFace
@@ -425,7 +425,7 @@ object Form_prep_doc: TForm_prep_doc
     OnDropDown = wwDBComboBox1DropDown
     OnKeyDown = wwDBComboBox1KeyDown
   end
-  object OD_spr_params: TOracleDataSet
+  object KMP: TOracleDataSet
     SQL.Strings = (
       'select p.id, t.name as gr_name, p.name as parname, p.cdtp,'
       'case when p.cdtp = 0 then to_char(p.parn1)'
@@ -475,42 +475,91 @@ object Form_prep_doc: TForm_prep_doc
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True
-    Left = 385
-    Top = 96
-    object OD_spr_paramsID: TFloatField
+    Left = 9
+    Top = 104
+    object KMPID: TFloatField
       FieldName = 'ID'
       Required = True
     end
-    object OD_spr_paramsGR_NAME: TStringField
+    object KMPGR_NAME: TStringField
       FieldName = 'GR_NAME'
       Size = 64
     end
-    object OD_spr_paramsPARNAME: TStringField
+    object KMPPARNAME: TStringField
       FieldName = 'PARNAME'
       Size = 64
     end
-    object OD_spr_paramsCDTP: TFloatField
+    object KMPCDTP: TFloatField
       FieldName = 'CDTP'
     end
-    object OD_spr_paramsVAL: TStringField
+    object KMPVAL: TStringField
       FieldKind = fkInternalCalc
       FieldName = 'VAL'
       Size = 1000
     end
-    object OD_spr_paramsPARN1: TFloatField
+    object KMPPARN1: TFloatField
       FieldName = 'PARN1'
     end
-    object OD_spr_paramsPARVC1: TStringField
+    object KMPPARVC1: TStringField
       FieldName = 'PARVC1'
       Size = 1000
     end
-    object OD_spr_paramsPARDT1: TDateTimeField
+    object KMPPARDT1: TDateTimeField
       FieldName = 'PARDT1'
     end
   end
   object DS_spr_params: TDataSource
-    DataSet = OD_spr_params
-    Left = 417
-    Top = 96
+    DataSet = Uni_spr_params
+    Left = 89
+    Top = 104
+  end
+  object Uni_spr_params: TUniQuery
+    Connection = DataModule1.UniConnection1
+    SQL.Strings = (
+      'select p.id, t.name as gr_name, p.name as parname, p.cdtp,'
+      'case when p.cdtp = 0 then to_char(p.parn1)'
+      '     when p.cdtp = 1 then p.parvc1'
+      '     when p.cdtp = 2 then to_char(p.pardt1,'#39'DD.MM.YYYY'#39')'
+      '     when p.cdtp = 3 then decode(p.parn1,0,'#39#1053#1077#1090#39','#39#1044#1072#39')'
+      '     when p.cdtp = 4 then a.name'
+      '     when p.cdtp = 6 then b.name'
+      '     end as val, p.parn1,'
+      ' p.parvc1, p.pardt1, p.rowid'
+      'from '
+      'scott.repxpar r,'
+      'scott.spr_par_ses p,'
+      'scott.spr_par_ses t, '
+      'scott.reports s,'
+      '(select c.fk_par, max(c.name) as name'
+      ' from scott.list_c c'
+      ' where c.sel=1 and'
+      ' c.fk_ses=USERENV('#39'sessionid'#39')'
+      ' group by c.fk_par'
+      ') a,'
+      '(select c.fk_par, max(c.name) as name'
+      ' from scott.list_c c'
+      ' where c.fk_ses=USERENV('#39'sessionid'#39')'
+      ' group by c.fk_par'
+      ') b'
+      'where p.parent_id=t.id(+) and'
+      ' p.id=a.fk_par(+) and '
+      ' p.id=b.fk_par(+) and '
+      ' p.fk_ses=t.fk_ses(+) and'
+      ' p.cdtp is not null and'
+      ' p.fk_ses=USERENV('#39'sessionid'#39') and '
+      ' p.id=r.fk_par and'
+      ' r.fk_rep=s.id'
+      ' and s.cd=:cd_'
+      ' order by p.npp'
+      '')
+    Constraints = <>
+    Left = 48
+    Top = 104
+    ParamData = <
+      item
+        DataType = ftString
+        Name = 'cd_'
+        ParamType = ptInput
+      end>
   end
 end

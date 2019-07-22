@@ -4,6 +4,7 @@ program Direct;
 uses
   Controls,
   OracleMonitor,
+  OracleUniProvider,
   Forms,
   Unit_Mainform in 'Unit_Mainform.pas' {Form_Main},
   Unit_start in 'Unit_start.pas' {Form_start},
@@ -168,7 +169,7 @@ var
   Ini: TIniFile;
   Pass: string;
   SID: string;
-  s, User: string;
+  s, User,serverIp: string;
   I, I1: Integer;
 type
   TOracleErrorEvent = procedure(Error: EOracleError);
@@ -197,9 +198,7 @@ begin
 
   Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TDM_Olap, DM_Olap);
-  //Application.MessageBox('2', 'Check', 16);
   Application.CreateForm(TForm_Main, Form_Main);
-  //Application.MessageBox('3', 'Check', 16);
   s := Ini.ReadString('Application', 'User', '');
   Pass := '';
   I := 1;
@@ -234,7 +233,6 @@ begin
   SID := '';
   I := 1;
   I1 := Length(s);
-  //Application.MessageBox('4', 'Check', 16);
 
   while I < I1 do
   begin
@@ -242,30 +240,19 @@ begin
     I := I + 3;
   end;
   try
-    //Application.MessageBox('4.1', 'Check', 16);
     DataModule1.OracleSession1.Connected := false;
-    //Application.MessageBox('4.2', 'Check', 16);
     DataModule1.OracleSession1.LogonUsername := User;
-    //Application.MessageBox('4.3', 'Check', 16);
     DataModule1.OracleSession1.LogonPassword := Pass;
-    //Application.MessageBox('4.4', 'Check', 16);
     DataModule1.OracleSession1.LogonDatabase := SID;
-    //Application.MessageBox('4.5', 'Check', 16);
     DataModule1.OracleSession1.Connected := true;
-    //Application.MessageBox('4.6', 'Check', 16);
     if DataModule1.OracleSession1.StatementCache = True then
     begin
       Application.MessageBox('Недопустимо использование StatementCache в OracleSession, приводит к ошибке ORA-01410: Invalid Rowid!', 'Внимание!', 16)
     end;
-    //Application.MessageBox('5', 'Check', 16);
     DataModule1.OracleSession1.Connected := false;
-    //Application.MessageBox('5.1', 'Check', 16);
     DataModule1.OracleSession1.Connected := true;
-    //Application.MessageBox('5.2', 'Check', 16);
     DataModule1.OracleSession1.Connected := false;
-    //Application.MessageBox('5.3', 'Check', 16);
     DataModule1.OracleSession1.Connected := true;
-    //Application.MessageBox('5.4', 'Check', 16);
 
     DataModule1.OracleSession2.LogonUsername := User;
     DataModule1.OracleSession2.LogonPassword := Pass;
@@ -310,7 +297,6 @@ begin
 
     Form_Main.OracleEvent1.Start;
     Form_Main.User := User;
-    Ini.Free;
   except
     on E: EOracleError do
     begin
@@ -331,26 +317,36 @@ begin
     end;
   end;
 
-  //Application.MessageBox('8', 'Check', 16);
+  // UNIDAC сессия
+  serverIp := Ini.ReadString('Application', 'ServerIp', '');
+  Ini.Free;
+  if serverIp = '' then
+  begin
+      Application.MessageBox('В licenses.ini не указан Ip адрес сервера ServerIp',
+        'Внимание!', 16);
+      Application.Terminate;
+  end;
+
+  DataModule1.UniConnection1.Username:=DataModule1.OracleSession2.LogonUsername;
+  DataModule1.UniConnection1.Password:=DataModule1.OracleSession2.LogonPassword;
+  DataModule1.UniConnection1.Server:=serverIp;
+
+
   SetMenu(0);
-  //Application.MessageBox('9', 'Check', 16);
   with Form_Main do
   begin
     Form_Main.OD_params.Active := false;
     Form_Main.OD_params.Active := true;
     //Вариант работы приложения
-    ////Application.MessageBox('10', 'Check', 16);
     Form_main.org_var_ :=
       DataModule1.OraclePackage1.CallIntegerFunction('scott.INIT.get_org_var',
       [parNone]);
 
     //нельзя использовать versia в params - используется updater-ом
     Form_Main.CoolTrayIcon1.ShowTaskbarIcon;
-    ////Application.MessageBox('11', 'Check', 16);
   end;
 
   Form_main.OD_params.Active := true;
-  ////Application.MessageBox('12', 'Check', 16);
   Oracle.OnOracleError := EOracleErr;
 
   //справочник расценок по работам еще не загружен
@@ -371,7 +367,6 @@ begin
     Form_alert_exit.Timer1.Enabled := true;
     Form_alert_exit.ShowModal;
   end;
-  ////Application.MessageBox('13', 'Check', 16);
 
   if
     ((DataModule1.OraclePackage1.CallIntegerFunction('scott.INIT.get_have_splash',
@@ -392,27 +387,25 @@ begin
     Application.Icon := nil;
     Form_Main.Visible := true;
   end;
-  ////Application.MessageBox('14', 'Check', 16);
   Form_Main.CoolTrayIcon1.IconVisible := true;
   Form_main.WindowState := wsMaximized;
   Application.CreateForm(TForm_sel_comps, Form_sel_comps);
-  ////Application.MessageBox('15', 'Check', 16);
   Form_sel_comps.ShowModal;
-  ////Application.MessageBox('16', 'Check', 16);
 
   Form_main.exepath_ := ExtractFilePath(Application.ExeName);
 
   //загружаем параметры для сессии
-  DataModule1.OraclePackage1.CallProcedure('scott.utils.prep_users_par',
-    [parNone]);
+//  DataModule1.OraclePackage1.CallProcedure('scott.utils.prep_users_par',
+//    [parNone]);
+
+  DataModule1.UniStoredProc1.StoredProcName:='scott.utils.prep_users_par';
+  DataModule1.UniStoredProc1.Params.Clear;
+  DataModule1.UniStoredProc1.ExecProc;
+
   //включить таблицы параметров
   //параметры текущего РКЦ
   DataModule1.OD_rkc.Active := true;
-  ////Application.MessageBox('17', 'Check', 16);
   Application.Run;
-
-  // Stop the time counter.
-//  StopTimeMark(1);
 
 end.
 

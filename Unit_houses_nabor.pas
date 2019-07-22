@@ -41,7 +41,7 @@ uses
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
   dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter,
   cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
-  cxDBData, cxDBLookupComboBox, cxCheckBox;
+  cxDBData, cxDBLookupComboBox, cxCheckBox, MemDS, DBAccess, Uni;
 
 type
   TForm_houses_nabor = class(TForm)
@@ -145,8 +145,8 @@ type
     wwDBGrid8: TwwDBGrid;
     TabSheet1: TTabSheet;
     OD_housesK_LSK_ID: TFloatField;
-    OD_objxpar: TOracleDataSet;
-    OD_par_value: TOracleDataSet;
+    KMP: TOracleDataSet;
+    KMP2: TOracleDataSet;
     DS_objxpar: TDataSource;
     DS_par_value: TDataSource;
     OD_other: TOracleDataSet;
@@ -200,6 +200,8 @@ type
     cxGridDBTableView2ISVOL: TcxGridDBColumn;
     OD_housesPOSTCODE: TStringField;
     cxGridDBTableView1POSTCODE: TcxGridDBColumn;
+    Uni_objxpar: TUniQuery;
+    Uni_par_value: TUniQuery;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -298,8 +300,8 @@ begin
   //зачем вообще эта таблица нужна если есть t_objxpar??? вопр. 23.05.2013
   OD_housexlist.Active:=true;
   //
-  OD_objxpar.Active:=true;
-  OD_par_value.Active:=true;
+  Uni_objxpar.Active:=true;
+  Uni_par_value.Active:=true;
   
   OD_k_status.Active:=true;
   OD_status.Active:=true;
@@ -399,7 +401,7 @@ begin
     Key:= '.';
   Application.CreateForm(TForm_par_edit,
     Form_par_edit);
-    Form_par_edit.SetData(OD_objxpar, OD_par_value, Key);
+    Form_par_edit.SetData(Uni_objxpar, Uni_par_value, Key);
     Form_par_edit.ShowModal
 end;
 
@@ -500,7 +502,7 @@ procedure TForm_houses_nabor.wwDBGrid2DblClick(Sender: TObject);
 begin
   Application.CreateForm(TForm_par_edit,
     Form_par_edit);
-    Form_par_edit.SetData(OD_objxpar, OD_par_value, ' ');
+    Form_par_edit.SetData(Uni_objxpar, Uni_par_value, ' ');
     Form_par_edit.ShowModal
 end;
 
@@ -722,7 +724,7 @@ begin
     Key:= '.';
   Application.CreateForm(TForm_par_edit,
     Form_par_edit);
-    Form_par_edit.SetData(OD_objxpar, OD_par_value, Key);
+    Form_par_edit.SetData(Uni_objxpar, Uni_par_value, Key);
     Form_par_edit.ShowModal
 end;
 
@@ -733,7 +735,7 @@ procedure TForm_houses_nabor.cxGrid1DBTableView1CellDblClick(
 begin
     Application.CreateForm(TForm_par_edit,
     Form_par_edit);
-    Form_par_edit.SetData(OD_objxpar, OD_par_value, '');
+    Form_par_edit.SetData(Uni_objxpar, Uni_par_value, '');
     Form_par_edit.ShowModal
 end;
 
