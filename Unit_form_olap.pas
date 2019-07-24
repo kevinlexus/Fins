@@ -112,6 +112,18 @@ type
     procedure btn2Click(Sender: TObject);
     procedure btn3Click(Sender: TObject);
     procedure btn4Click(Sender: TObject);
+    procedure PVRowToolBar1DragDrop(Sender: TObject; Index: Integer;
+      var Apply: Boolean);
+    procedure PVRowToolBar1DropDown(Sender: TObject; Left, Top,
+      Index: Integer; var Apply: Boolean);
+    procedure PVColToolBar1DragDrop(Sender: TObject; Index: Integer;
+      var Apply: Boolean);
+    procedure PVColToolBar1DropDown(Sender: TObject; Left, Top,
+      Index: Integer; var Apply: Boolean);
+    procedure PVDimToolBar1DragDrop(Sender: TObject; Index: Integer;
+      var Apply: Boolean);
+    procedure PVDimToolBar1DropDown(Sender: TObject; Left, Top,
+      Index: Integer; var Apply: Boolean);
   private
   public
     rep_name_: String;
@@ -344,6 +356,46 @@ end;
 procedure TForm_olap.btn4Click(Sender: TObject);
 begin
   Form_tree_objects.imp_gis_ELS;
+end;
+
+procedure TForm_olap.PVRowToolBar1DragDrop(Sender: TObject; Index: Integer;
+  var Apply: Boolean);
+begin
+ DoubleBuffered := false;
+end;
+
+procedure TForm_olap.PVRowToolBar1DropDown(Sender: TObject; Left, Top,
+  Index: Integer; var Apply: Boolean);
+begin
+  DoubleBuffered := true;
+end;
+
+procedure TForm_olap.PVColToolBar1DragDrop(Sender: TObject; Index: Integer;
+  var Apply: Boolean);
+begin
+ DoubleBuffered := false;
+
+end;
+
+procedure TForm_olap.PVColToolBar1DropDown(Sender: TObject; Left, Top,
+  Index: Integer; var Apply: Boolean);
+begin
+ DoubleBuffered := true;
+
+end;
+
+procedure TForm_olap.PVDimToolBar1DragDrop(Sender: TObject; Index: Integer;
+  var Apply: Boolean);
+begin
+ DoubleBuffered := false;
+
+end;
+
+procedure TForm_olap.PVDimToolBar1DropDown(Sender: TObject; Left, Top,
+  Index: Integer; var Apply: Boolean);
+begin
+ DoubleBuffered := true;
+
 end;
 
 end.

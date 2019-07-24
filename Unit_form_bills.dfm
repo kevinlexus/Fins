@@ -1,8 +1,8 @@
 object Form_print_bills: TForm_print_bills
-  Left = 244
-  Top = 342
-  Width = 411
-  Height = 418
+  Left = 259
+  Top = 187
+  Width = 456
+  Height = 447
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #1057#1095#1077#1090#1072' '#1085#1072' '#1086#1087#1083#1072#1090#1091' '#1091#1089#1083#1091#1075' '#1046#1050#1061
   Color = clBtnFace
@@ -92,8 +92,8 @@ object Form_print_bills: TForm_print_bills
   TextHeight = 13
   object GroupBox1: TGroupBox
     Left = 0
-    Top = 318
-    Width = 395
+    Top = 342
+    Width = 440
     Height = 61
     Align = alTop
     TabOrder = 3
@@ -138,7 +138,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox2: TGroupBox
     Left = 0
     Top = 0
-    Width = 395
+    Width = 440
     Height = 105
     Align = alTop
     TabOrder = 0
@@ -275,8 +275,8 @@ object Form_print_bills: TForm_print_bills
   object GroupBox3: TGroupBox
     Left = 0
     Top = 105
-    Width = 395
-    Height = 176
+    Width = 440
+    Height = 200
     Align = alTop
     TabOrder = 2
     object Label5: TLabel
@@ -386,13 +386,13 @@ object Form_print_bills: TForm_print_bills
     object DBLookupComboboxEh4: TDBLookupComboboxEh
       Left = 328
       Top = 90
-      Width = 57
+      Width = 105
       Height = 21
       DropDownBox.Sizable = True
       DropDownBox.Width = 200
       Enabled = False
       EditButtons = <>
-      KeyField = 'LSK'
+      KeyField = 'K_LSK_ID'
       ListField = 'KW'
       ListSource = DS_kw
       TabOrder = 6
@@ -508,7 +508,7 @@ object Form_print_bills: TForm_print_bills
       Width = 161
     end
     object cxLookupComboBox1: TcxLookupComboBox
-      Left = 112
+      Left = 120
       Top = 147
       Properties.KeyFieldNames = 'FNAME_SCH'
       Properties.ListColumns = <
@@ -518,7 +518,31 @@ object Form_print_bills: TForm_print_bills
       Properties.ListOptions.ShowHeader = False
       Properties.ListSource = DS_spr_services
       TabOrder = 12
-      Width = 265
+      Width = 257
+    end
+    object CheckBox6: TCheckBox
+      Left = 4
+      Top = 176
+      Width = 112
+      Height = 17
+      Caption = #1069#1082#1089#1087#1086#1088#1090' '#1074' PDF:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 13
+      OnClick = CheckBox6Click
+    end
+    object Edit3: TEdit
+      Left = 120
+      Top = 172
+      Width = 168
+      Height = 21
+      Enabled = False
+      TabOrder = 14
+      Text = 'c:\temp\export'
     end
   end
   object DBLookupComboboxEh5: TDBLookupComboboxEh
@@ -536,8 +560,8 @@ object Form_print_bills: TForm_print_bills
   end
   object GroupBox4: TGroupBox
     Left = 0
-    Top = 281
-    Width = 395
+    Top = 305
+    Width = 440
     Height = 37
     Align = alTop
     TabOrder = 4
@@ -1003,22 +1027,26 @@ object Form_print_bills: TForm_print_bills
   end
   object OD_houses: TOracleDataSet
     SQL.Strings = (
-      'select scott.utils.f_order(null,6) as ord1,'
+      'select distinct scott.utils.f_order(null,6) as ord1,'
       '       scott.utils.f_order2(null) as ord2,'
       '       null as reu,'
       '       null as nd,'
       '       null as nd2,'
       '       null as nd_id,'
-      '       null as house_id'
+      '       null as house_id,'
+      '       null as kul_id2,'
+      '       null as nd_id2'
       '  from dual'
       'union all'
       'select distinct scott.utils.f_order(k.nd,6) as ord1,'
       '                scott.utils.f_order2(k.nd) as ord2,'
-      '                a.reu,'
-      '                LTRIM(k.nd, '#39'0'#39') || '#39' '#1046#1069#1054'-'#39' || s.name_reu as nd,'
+      '                null as reu,'
+      '                LTRIM(k.nd, '#39'0'#39') as nd,'
       '                LTRIM(k.nd, '#39'0'#39') as nd2,'
       '                k.nd as nd_id,'
-      '                k.id as house_id'
+      '                k.id as house_id,'
+      '                k.kul as kul_id2,'
+      '                k.nd as nd_id2'
       '  from scott.c_houses k, scott.kart a, scott.s_reu_trest s'
       ' where k.kul = :id'
       
@@ -1062,28 +1090,34 @@ object Form_print_bills: TForm_print_bills
       '       null as opl'
       '  from dual'
       'union all'
-      'select scott.utils.f_order(k.kw, 7) as ord1,'
+      'select distinct scott.utils.f_order(k.kw, 7) as ord1,'
       '       scott.utils.f_order2(k.kw) as ord2,'
+      '       LTRIM(k.kw, '#39'0'#39')||'#39'  '#39'|| '
       
-        '       LTRIM(k.kw, '#39'0'#39')||decode(tp.cd,'#39'LSK_TP_ADDIT'#39','#39'-'#1076#1086#1087#39','#39#39') ' +
-        ' as kw,'
-      '       k.lsk,'
+        '     case when lag(k.kw,1) over (order by k.reu, k.house_id, sco' +
+        'tt.utils.f_order(k.kw, 7), scott.utils.f_order2(k.kw))=k.kw or '
+      
+        '                     lead(k.kw,1) over (order by k.reu, k.house_' +
+        'id, scott.utils.f_order(k.kw, 7), scott.utils.f_order2(k.kw))=k.' +
+        'kw then '#39'k_lsk_id:'#39'||to_char(k.k_lsk_id) else '#39#39' end as kw,'
+      '       null as lsk,'
       '       k.kw as kw_id,'
-      '       k.fio,'
-      '       k.c_lsk_id,'
+      '       null as fio,'
+      '       null as c_lsk_id,'
       '       k.k_lsk_id,'
-      '       k.kpr,'
-      '       k.opl'
+      '       null as kpr,'
+      '       null as opl'
       '  from scott.kart k, scott.v_lsk_tp tp'
-      ' where k.house_id = :house_id'
+      ' where k.kul=:kul_id2 and k.nd=:nd_id2'
+      '-- where k.house_id = :house_id'
       'and k.fk_tp=tp.id'
       ' order by ord1, ord2'
       ''
       '/* '#1042#1085#1080#1084#1072#1085#1080#1077'! '#1044#1072#1090#1072#1089#1077#1090' '#1080#1089#1087#1086#1083#1100#1079#1091#1077#1090#1089#1103' '#1077#1097#1077' '#1080' '#1074' '#1072#1088#1093'.'#1089#1087#1088#1072#1074#1082#1077'! ???????*/')
     Optimize = False
     Variables.Data = {
-      0300000001000000090000003A484F5553455F49440300000004000000CB1700
-      0000000000}
+      0300000002000000080000003A4B554C5F494432050000000000000000000000
+      070000003A4E445F494432050000000000000000000000}
     QBEDefinition.QBEFieldDefs = {
       040000000A000000020000004B57010000000000050000004B575F4944010000
       000000030000004C534B0100000000000300000046494F010000000000080000
@@ -1091,10 +1125,9 @@ object Form_print_bills: TForm_print_bills
       00030000004B5052010000000000030000004F504C010000000000040000004F
       524431010000000000040000004F524432010000000000}
     Master = OD_houses
-    MasterFields = 'house_id'
-    DetailFields = 'house_id'
+    MasterFields = 'kul_id2;nd_id2'
+    DetailFields = 'kul_id2;nd_id2'
     Session = DataModule1.OracleSession1
-    Active = True
     Top = 392
   end
   object DS_kw: TDataSource
@@ -2444,7 +2477,7 @@ object Form_print_bills: TForm_print_bills
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Left = 312
-    Top = 176
+    Top = 104
   end
   object OD_cmp_detail_cap: TOracleDataSet
     SQL.Strings = (
@@ -2587,7 +2620,7 @@ object Form_print_bills: TForm_print_bills
     DataSet = OD_cmp_detail_primary
     BCDToCurrency = False
     Left = 344
-    Top = 176
+    Top = 104
   end
   object frxDB_cmp_detail_cap: TfrxDBDataset
     UserName = 'frxDB_cmp_detail_cap'
@@ -2711,7 +2744,7 @@ object Form_print_bills: TForm_print_bills
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Left = 376
-    Top = 176
+    Top = 104
   end
   object frxDBD_cmp_detail_main: TfrxDBDataset
     UserName = 'frxDBD_cmp_detail_main'
@@ -2760,7 +2793,7 @@ object Form_print_bills: TForm_print_bills
     DataSet = OD_cmp_detail_main
     BCDToCurrency = False
     Left = 408
-    Top = 176
+    Top = 104
   end
   object OD_cmp_funds_main: TOracleDataSet
     SQL.Strings = (
@@ -3297,5 +3330,28 @@ object Form_print_bills: TForm_print_bills
     StorageType = stRegistry
     Left = 16
     Top = 80
+  end
+  object frxPDFExport1: TfrxPDFExport
+    FileName = 'c:\temp\export'
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    PrintOptimized = False
+    Outline = False
+    Background = False
+    HTMLTags = True
+    Quality = 95
+    Author = 'FastReport'
+    Subject = 'FastReport PDF export'
+    ProtectionFlags = [ePrint, eModify, eCopy, eAnnot]
+    HideToolbar = False
+    HideMenubar = False
+    HideWindowUI = False
+    FitWindow = False
+    CenterWindow = False
+    PrintScaling = False
+    Left = 208
+    Top = 153
   end
 end

@@ -67,61 +67,6 @@ type
     dlgOpen1: TOpenDialog;
     Timer2: TTimer;
     wwDBGrid1: TwwDBGrid;
-    cxGrid1DBTableView1: TcxGridDBTableView;
-    cxGrid1Level1: TcxGridLevel;
-    cxGrid1: TcxGrid;
-    cxGrid1DBTableView1ID: TcxGridDBColumn;
-    cxGrid1DBTableView1CD: TcxGridDBColumn;
-    cxGrid1DBTableView1FK_ORGTP: TcxGridDBColumn;
-    cxGrid1DBTableView1NAME: TcxGridDBColumn;
-    cxGrid1DBTableView1NPP: TcxGridDBColumn;
-    cxGrid1DBTableView1V: TcxGridDBColumn;
-    cxGrid1DBTableView1PARENT_ID: TcxGridDBColumn;
-    cxGrid1DBTableView1REU: TcxGridDBColumn;
-    cxGrid1DBTableView1TREST: TcxGridDBColumn;
-    cxGrid1DBTableView1UCH: TcxGridDBColumn;
-    cxGrid1DBTableView1ADR: TcxGridDBColumn;
-    cxGrid1DBTableView1INN: TcxGridDBColumn;
-    cxGrid1DBTableView1MANAGER: TcxGridDBColumn;
-    cxGrid1DBTableView1BUH: TcxGridDBColumn;
-    cxGrid1DBTableView1RASCHET_SCHET: TcxGridDBColumn;
-    cxGrid1DBTableView1K_SCHET: TcxGridDBColumn;
-    cxGrid1DBTableView1KOD_OKONH: TcxGridDBColumn;
-    cxGrid1DBTableView1KOD_OGRN: TcxGridDBColumn;
-    cxGrid1DBTableView1BIK: TcxGridDBColumn;
-    cxGrid1DBTableView1PHONE: TcxGridDBColumn;
-    cxGrid1DBTableView1KPP: TcxGridDBColumn;
-    cxGrid1DBTableView1BANK: TcxGridDBColumn;
-    cxGrid1DBTableView1ID_EXP: TcxGridDBColumn;
-    cxGrid1DBTableView1ADR_RECIP: TcxGridDBColumn;
-    cxGrid1DBTableView1AUTHORIZED_DIR: TcxGridDBColumn;
-    cxGrid1DBTableView1AUTHORIZED_BUH: TcxGridDBColumn;
-    cxGrid1DBTableView1AUTH_DIR_DOC: TcxGridDBColumn;
-    cxGrid1DBTableView1AUTH_BUH_DOC: TcxGridDBColumn;
-    cxGrid1DBTableView1OKPO: TcxGridDBColumn;
-    cxGrid1DBTableView1VER_CD: TcxGridDBColumn;
-    cxGrid1DBTableView1FULL_NAME: TcxGridDBColumn;
-    cxGrid1DBTableView1PHONE2: TcxGridDBColumn;
-    cxGrid1DBTableView1PARENT_ID2: TcxGridDBColumn;
-    cxGrid1DBTableView1FK_ORG2: TcxGridDBColumn;
-    cxGrid1DBTableView1BANK_CD: TcxGridDBColumn;
-    cxGrid1DBTableView1ADR_WWW: TcxGridDBColumn;
-    cxGrid1DBTableView1EMAIL: TcxGridDBColumn;
-    cxGrid1DBTableView1HEAD_NAME: TcxGridDBColumn;
-    cxGrid1DBTableView1RASCHET_SCHET2: TcxGridDBColumn;
-    cxGrid1DBTableView1POST_INDX: TcxGridDBColumn;
-    cxGrid1DBTableView1R_SCH_ADDIT: TcxGridDBColumn;
-    cxGrid1DBTableView1FK_BILL_VAR: TcxGridDBColumn;
-    cxGrid1DBTableView1AOGUID: TcxGridDBColumn;
-    cxGrid1DBTableView1OKTMO: TcxGridDBColumn;
-    cxGrid1DBTableView1CODE_DEB: TcxGridDBColumn;
-    cxGrid1DBTableView1DOLG_NAME: TcxGridDBColumn;
-    cxGrid1DBTableView1BANK_FNAME: TcxGridDBColumn;
-    cxGrid1DBTableView1GRP: TcxGridDBColumn;
-    cxGrid1DBTableView1R_SCH_GIS: TcxGridDBColumn;
-    cxGrid1DBTableView1DIST_PAY_TP: TcxGridDBColumn;
-    cxGrid1DBTableView1ADR_CASH: TcxGridDBColumn;
-    cxGrid1DBTableView1ROWID: TcxGridDBColumn;
     procedure saveXML;
     procedure saveMap;
     procedure SetXMLDocNode2;
@@ -168,11 +113,11 @@ type
     procedure repTypeDBF(path, fname: string);
     procedure repTypeTXT(path, fname: string);
     procedure repTypeGrid;
-    procedure DBGridEh1DblClick(Sender: TObject);
+    procedure sel_tree_obj(trnode: TMemRecViewEh; sel_: Integer);
+    procedure desel_all_obj(tmem: TMemTableEh; id_: Integer);
   private
     Doc, Doc1: IXMLDomDocument;
     root, root1: IXMLDOMElement;
-    flag_: Integer;
     flag2_: Integer;
     obj_: string;
     objexcel_: string;
@@ -180,6 +125,7 @@ type
     l_edt1, l_edt2, l_edt3, fldsum_: string;
     curX_, curY_: Integer;
   public
+    flag_: Integer;
     l_rep_name, l_frm_name, rep_cd_, period_str_, period_str2_, strr_, fname_,
       frx_fname_: string;
     allow_, max_level_, can_detail_, rep_id_, sel_many_, //have_date_,
@@ -1456,7 +1402,7 @@ begin
   end;
 end;
 
-procedure sel_tree_obj(trnode: TMemRecViewEh; sel_: Integer);
+procedure TForm_tree_objects.sel_tree_obj(trnode: TMemRecViewEh; sel_: Integer);
 var
   a: Integer;
 begin
@@ -1468,7 +1414,7 @@ begin
   end;
 end;
 
-procedure desel_all_obj(tmem: TMemTableEh; id_: Integer);
+procedure TForm_tree_objects.desel_all_obj(tmem: TMemTableEh; id_: Integer);
 var
   a: Integer;
 begin
@@ -2485,11 +2431,6 @@ begin
     DM_Olap.MemTableEh2.Filter := sqlStr;
     DM_Olap.MemTableEh2.Filtered := true;
   end;
-end;
-
-procedure TForm_tree_objects.DBGridEh1DblClick(Sender: TObject);
-begin
-  DM_Olap.KMP.Active:=True;
 end;
 
 end.

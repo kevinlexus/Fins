@@ -41,7 +41,7 @@ uses
   dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
   dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue, cxClasses,
-  cxPropertiesStore;
+  cxPropertiesStore, frxExportPDF;
 
 type
   TForm_print_bills = class(TForm)
@@ -238,6 +238,9 @@ type
     DS_rep2: TDataSource;
     frxDBDataset15: TfrxDBDataset;
     cxprprtstr1: TcxPropertiesStore;
+    CheckBox6: TCheckBox;
+    frxPDFExport1: TfrxPDFExport;
+    Edit3: TEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -272,6 +275,7 @@ type
     function getStrUk(): String;
     procedure selAllUk();
     procedure kart_pr_report;
+    procedure CheckBox6Click(Sender: TObject);
 private
     sel_obj_: Integer;
     cnt_sch_: Integer;
@@ -612,16 +616,35 @@ begin
     VarToStr(cxLookupComboBox1.EditValue);
   frxReport1.LoadFromFile(Form_main.exepath_ +
     VarToStr(cxLookupComboBox1.EditValue) , True);
-{  frxReport1.LoadFromFile(Form_main.exepath_ +
-    OD_t_org.FieldByName('FNAME_SCH').asString , True);
-  Edit2.Text := 'Путь к файлу счета:' + Form_main.exepath_ +
-    OD_t_org.FieldByName('FNAME_SCH').asString;}
   Edit2.Visible := true;
 
   // открыть отчет
   frxReport1.PrepareReport(true);
   Form_status.Close;
-  frxReport1.ShowPreparedReport;
+
+  // деактивировать датасеты - чтоб не жрали память
+  OD_cmp_main.Active:=false;
+  OD_cmp_contractors.Active:=false;
+
+  OD_cmp_detail_primary.Active:=false;
+  OD_cmp_detail_cap.Active:=false;
+  OD_cmp_detail_main.Active:=false;
+
+  OD_cmp_funds_primary.Active:=false;
+  OD_cmp_funds_cap.Active:=false;
+  OD_cmp_funds_main.Active:=false;
+  OD_cmp_funds_lsk.Active:=false;
+  OD_cmp_qr.Active:=false;
+
+  if CheckBox6.Checked then
+  begin
+    // экспортировать в PDF
+    frxPDFExport1.FileName:=Edit3.Text;
+    frxReport1.Export(frxPDFExport1);
+  end
+  else
+    // показать отчет
+    frxReport1.ShowPreparedReport;
 
 end;
 
@@ -1488,6 +1511,15 @@ begin
   ComboProp:=cxCheckComboBox1.Properties;
   for i := 0 to ComboProp.Items.Count - 1 do
    cxCheckComboBox1.States[i] := cbsChecked;
+end;
+
+procedure TForm_print_bills.CheckBox6Click(Sender: TObject);
+begin
+  if CheckBox6.Checked then
+    Edit3.Enabled:=true
+  else
+    Edit3.Enabled:=false;
+
 end;
 
 end.

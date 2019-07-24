@@ -1397,8 +1397,8 @@ procedure TForm_tree_objects.MemTableEh2AfterScroll(DataSet: TDataSet);
 var
   str_: String;
 begin
-  if FF('Form_tree_objects', 0) = 1 then
-  begin
+  //if FF('Form_tree_objects', 0) = 1 then
+  //begin
     if (Form_tree_objects.can_detail_ = 1) then
     begin
     str_:=wwDBLookupCombo2.LookupValue;
@@ -1413,7 +1413,7 @@ begin
     wwDBLookupCombo2.LookupValue:=
        FieldByName('level_id').AsString;
     end;
-    end;
+    //end;
   end;
 end;
 

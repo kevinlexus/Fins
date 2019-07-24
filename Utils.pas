@@ -3,7 +3,7 @@ unit Utils;
 interface
 uses Forms, Classes, SysUtils, Dialogs, OracleData, DB, DBF, Windows,
   Wwdbgrid, DM_module1, oracle, Math, ShlObj, Controls, Messages,
-  ComCtrls, Menus, Unit_smpl_chk, StrUtils, Winsock, Uni;
+  ComCtrls, Menus, Unit_smpl_chk, StrUtils, Winsock, Uni, Variants;
 
 // тип - запись о правах редактирования пользователя
 type
@@ -75,6 +75,7 @@ function getDoublePar(var al: TParamRecArray; pCd: string): Double;
 function LeftPad(value: string; length: integer; pad: char): string;
 function IsEqual(const ANumber1, ANumber2: Double; const AMargin: Double): Boolean;
 function GetLocalIP: string;
+function VarToInt(var AVariant: variant; DefaultValue: integer = 0): integer;
 
 implementation
 uses Unit_Mainform;
@@ -1392,6 +1393,17 @@ begin
     Inc(i);
   end;
   WSACleanup;
+end;
+
+function VarToInt(var AVariant: variant; DefaultValue: integer = 0): integer;
+begin
+  //*** Если NULL или не числовое, то вернем значение по умолчанию
+  Result := DefaultValue;
+  if VarIsNull(AVariant) then
+    Result := 0
+  else
+    {//*** Если числовое, то вернем значение} if VarIsOrdinal(AVariant) then
+      Result := StrToInt(VarToStr(AVariant));
 end;
 
 end.

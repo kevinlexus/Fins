@@ -330,6 +330,7 @@ begin
   DataModule1.UniConnection1.Username:=DataModule1.OracleSession2.LogonUsername;
   DataModule1.UniConnection1.Password:=DataModule1.OracleSession2.LogonPassword;
   DataModule1.UniConnection1.Server:=serverIp;
+  DataModule1.UniConnection1.Connect;
 
 
   SetMenu(0);

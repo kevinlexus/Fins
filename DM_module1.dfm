@@ -266,6 +266,7 @@ object DataModule1: TDataModule1
     ProviderName = 'Oracle'
     SpecificOptions.Strings = (
       'Oracle.Direct=True')
+    Options.KeepDesignConnected = False
     Username = 'scott'
     Server = '127.0.0.1'
     Connected = True
