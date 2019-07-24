@@ -1,6 +1,6 @@
 object Form_print_bills: TForm_print_bills
-  Left = 259
-  Top = 187
+  Left = 339
+  Top = 217
   Width = 456
   Height = 447
   BorderIcons = [biSystemMenu, biMinimize]
@@ -375,7 +375,7 @@ object Form_print_bills: TForm_print_bills
       DropDownBox.Width = 200
       Enabled = False
       EditButtons = <>
-      KeyField = 'HOUSE_ID'
+      KeyField = 'REU;KUL;ND_ID'
       ListField = 'ND'
       ListSource = DS_houses
       TabOrder = 5
@@ -1030,40 +1030,34 @@ object Form_print_bills: TForm_print_bills
       'select distinct scott.utils.f_order(null,6) as ord1,'
       '       scott.utils.f_order2(null) as ord2,'
       '       null as reu,'
+      '       null as kul,'
       '       null as nd,'
-      '       null as nd2,'
       '       null as nd_id,'
-      '       null as house_id,'
-      '       null as kul_id2,'
-      '       null as nd_id2'
+      '       null as house_id'
       '  from dual'
       'union all'
       'select distinct scott.utils.f_order(k.nd,6) as ord1,'
       '                scott.utils.f_order2(k.nd) as ord2,'
-      '                null as reu,'
-      '                LTRIM(k.nd, '#39'0'#39') as nd,'
-      '                LTRIM(k.nd, '#39'0'#39') as nd2,'
+      '                a.reu as reu,'
+      '                a.kul as kul,'
+      '                LTRIM(k.nd, '#39'0'#39') || '#39' '#39' || s.name_reu as nd,'
       '                k.nd as nd_id,'
-      '                k.id as house_id,'
-      '                k.kul as kul_id2,'
-      '                k.nd as nd_id2'
+      '                k.id as house_id'
       '  from scott.c_houses k, scott.kart a, scott.s_reu_trest s'
       ' where k.kul = :id'
-      
-        '   and trim(a.reu) = trim(s.reu) --'#1084#1086#1078#1085#1086' '#1091#1073#1088#1072#1090#1100' trim, '#1087#1086#1089#1083#1077' '#1087#1077#1088#1077 +
-        #1093#1086#1076#1072' '#1085#1072' 3 '#1088#1072#1079#1088#1103#1076#1072
+      '   and a.reu = s.reu'
       '   and a.house_id=k.id'
       '   and (:var = 1 and nvl(k.psch, 0) <> 1 or :var = 0)'
       ' order by ord1, ord2')
     Optimize = False
     Variables.Data = {
-      0300000002000000030000003A49440500000005000000303030310000000000
+      0300000002000000030000003A49440500000005000000303135310000000000
       040000003A56415203000000040000000000000000000000}
     QBEDefinition.QBEFieldDefs = {
       0400000007000000020000004E44010000000000050000004E445F4944010000
-      00000003000000524555010000000000030000004E4432010000000000080000
-      00484F5553455F4944010000000000040000004F524431010000000000040000
-      004F524432010000000000}
+      0000000300000052455501000000000008000000484F5553455F494401000000
+      0000040000004F524431010000000000040000004F5244320100000000000300
+      00004B554C010000000000}
     Master = OD_streets
     MasterFields = 'ID'
     DetailFields = 'ID'
@@ -1108,16 +1102,15 @@ object Form_print_bills: TForm_print_bills
       '       null as kpr,'
       '       null as opl'
       '  from scott.kart k, scott.v_lsk_tp tp'
-      ' where k.kul=:kul_id2 and k.nd=:nd_id2'
+      ' where k.reu=:reu and k.kul=:kul and k.nd=:nd_id'
       '-- where k.house_id = :house_id'
       'and k.fk_tp=tp.id'
-      ' order by ord1, ord2'
-      ''
-      '/* '#1042#1085#1080#1084#1072#1085#1080#1077'! '#1044#1072#1090#1072#1089#1077#1090' '#1080#1089#1087#1086#1083#1100#1079#1091#1077#1090#1089#1103' '#1077#1097#1077' '#1080' '#1074' '#1072#1088#1093'.'#1089#1087#1088#1072#1074#1082#1077'! ???????*/')
+      ' order by ord1, ord2')
     Optimize = False
     Variables.Data = {
-      0300000002000000080000003A4B554C5F494432050000000000000000000000
-      070000003A4E445F494432050000000000000000000000}
+      0300000003000000040000003A52455505000000000000000000000004000000
+      3A4B554C050000000000000000000000060000003A4E445F4944050000000000
+      000000000000}
     QBEDefinition.QBEFieldDefs = {
       040000000A000000020000004B57010000000000050000004B575F4944010000
       000000030000004C534B0100000000000300000046494F010000000000080000
@@ -1125,8 +1118,8 @@ object Form_print_bills: TForm_print_bills
       00030000004B5052010000000000030000004F504C010000000000040000004F
       524431010000000000040000004F524432010000000000}
     Master = OD_houses
-    MasterFields = 'kul_id2;nd_id2'
-    DetailFields = 'kul_id2;nd_id2'
+    MasterFields = 'reu;kul;nd_id'
+    DetailFields = 'reu;kul;nd_id'
     Session = DataModule1.OracleSession1
     Top = 392
   end

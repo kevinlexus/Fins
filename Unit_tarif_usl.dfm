@@ -1,6 +1,6 @@
 object Form_tarif_usl: TForm_tarif_usl
-  Left = 926
-  Top = 241
+  Left = 487
+  Top = 220
   Width = 813
   Height = 768
   Caption = #1058#1072#1088#1080#1092#1099' '#1087#1086' '#1091#1089#1083#1091#1075#1072#1084

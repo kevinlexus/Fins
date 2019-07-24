@@ -420,7 +420,8 @@ begin
   OD_cmp_main.SetVariable('p_lsk1', wwDBEdit2.Text);
 
   OD_cmp_main.SetVariable('p_kul', DBLookupComboboxEh2.KeyValue);
-  if DBLookupComboboxEh3.KeyValue <> null then
+  //if DBLookupComboboxEh3.KeyValue <> null then
+  if not VarIsEmpty(DBLookupComboboxEh3.KeyValue) then
     OD_cmp_main.SetVariable('p_nd', OD_houses.FieldByName('nd_id').AsString)
   else
     OD_cmp_main.SetVariable('p_nd', null);
@@ -560,7 +561,7 @@ begin
   OD_cmp_main.SetVariable('p_lsk1', wwDBEdit2.Text);
 
   OD_cmp_main.SetVariable('p_kul', DBLookupComboboxEh2.KeyValue);
-  if DBLookupComboboxEh3.KeyValue <> null then
+  if not VarIsEmpty(DBLookupComboboxEh3.KeyValue) then
     OD_cmp_main.SetVariable('p_nd', OD_houses.FieldByName('nd_id').AsString)
   else
     OD_cmp_main.SetVariable('p_nd', null);
@@ -677,7 +678,8 @@ begin
   OD_main.SetVariable('lsk1_', wwDBEdit2.Text);
 
   OD_main.SetVariable('kul_', DBLookupComboboxEh2.KeyValue);
-  if DBLookupComboboxEh3.KeyValue <> null then
+  //if DBLookupComboboxEh3.KeyValue <> null then
+  if not VarIsEmpty(DBLookupComboboxEh3.KeyValue) then
     OD_main.SetVariable('nd_', OD_houses.FieldByName('nd_id').AsString)
   else
     OD_main.SetVariable('nd_', null);
@@ -717,7 +719,8 @@ begin
     OD_cmp_main.SetVariable('p_lsk1', wwDBEdit2.Text);
 
     OD_cmp_main.SetVariable('p_kul', DBLookupComboboxEh2.KeyValue);
-    if DBLookupComboboxEh3.KeyValue <> null then
+    //if DBLookupComboboxEh3.KeyValue <> null then
+    if not VarIsEmpty(DBLookupComboboxEh3.KeyValue) then
       OD_cmp_main.SetVariable('p_nd', OD_houses.FieldByName('nd_id').AsString)
     else
       OD_cmp_main.SetVariable('p_nd', null);
@@ -1230,6 +1233,8 @@ begin
 end;
 
 procedure TForm_print_bills.sel_lsk;
+var
+  keySel: Variant;
 begin
   if FF('Form_get_pay_nal', 0) = 1 then
   begin
@@ -1239,8 +1244,17 @@ begin
     OD_mg.First;
     cbb1.EditValue := Form_get_pay_nal.OD_kart.FieldByName('reu').AsString;
     DBLookupComboboxEh2.KeyValue := Form_get_pay_nal.OD_Kart.FieldByName('kul').AsString;
-    DBLookupComboboxEh3.KeyValue := Form_get_pay_nal.OD_Kart.FieldByName('house_id').AsString;
-    DBLookupComboboxEh4.KeyValue := Form_get_pay_nal.OD_Kart.FieldByName('lsk').AsString;
+
+    keySel:= VarArrayCreate([0, 2], varVariant);
+    keySel[0]:= Form_list_kart.OD_list_kart.FieldByName('reu').AsString;
+    keySel[1]:= Form_list_kart.OD_list_kart.FieldByName('kul').AsString;
+    keySel[2]:= Form_list_kart.OD_list_kart.FieldByName('nd').AsString;
+    //DBLookupComboboxEh3.Enabled:=True;
+    DBLookupComboboxEh3.KeyValue := keySel;
+    
+    //DBLookupComboboxEh3.KeyValue := Form_get_pay_nal.OD_Kart.FieldByName('house_id').AsString;
+    //DBLookupComboboxEh4.KeyValue := Form_get_pay_nal.OD_Kart.FieldByName('lsk').AsString;
+    DBLookupComboboxEh4.KeyValue := Form_get_pay_nal.OD_Kart.FieldByName('k_lsk_id').AsString;
 
     // по умолчанию период
     DBLookupComboboxEh1.KeyValue := Form_print_bills.OD_mg.FieldByName('mg').AsString;
@@ -1260,9 +1274,18 @@ begin
     OD_mg.First;
     cbb1.EditValue := Form_list_kart.OD_list_kart.FieldByName('reu').AsString;
     DBLookupComboboxEh2.KeyValue := Form_list_kart.OD_list_kart.FieldByName('kul').AsString;
-    DBLookupComboboxEh3.KeyValue := Form_list_kart.OD_list_kart.FieldByName('house_id').AsString;
-    DBLookupComboboxEh4.KeyValue := Form_list_kart.OD_list_kart.FieldByName('lsk').AsString;
 
+    keySel:= VarArrayCreate([0, 2], varVariant);
+    keySel[0]:= Form_list_kart.OD_list_kart.FieldByName('reu').AsString;
+    keySel[1]:= Form_list_kart.OD_list_kart.FieldByName('kul').AsString;
+    keySel[2]:= Form_list_kart.OD_list_kart.FieldByName('nd').AsString;
+
+    //DBLookupComboboxEh3.Enabled:=True;
+    DBLookupComboboxEh3.KeyValue := keySel;
+    //DBLookupComboboxEh3.KeyValue := Form_list_kart.OD_list_kart.FieldByName('house_id').AsString;
+    DBLookupComboboxEh4.KeyValue := Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger;
+    //DBLookupComboboxEh4.KeyValue := Form_list_kart.OD_list_kart.FieldByName('lsk').AsString;
+    Exit;
     // по умолчанию период
     DBLookupComboboxEh1.KeyValue := Form_print_bills.OD_mg.FieldByName('mg').AsString;
     OD_spr_services.SetVariable('p_mg', Form_print_bills.OD_mg.FieldByName('mg').AsString);

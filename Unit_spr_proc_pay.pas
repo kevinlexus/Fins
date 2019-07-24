@@ -61,6 +61,12 @@ type
     OD_uk: TOracleDataSet;
     DS_uk: TDataSource;
     cxGrid1DBTableView1UK_NAME: TcxGridDBColumn;
+    OD_spr_proc_payUSL: TStringField;
+    OD_spr_proc_payORG: TFloatField;
+    OD_spr_proc_payREU: TStringField;
+    OD_spr_proc_payMG1: TStringField;
+    OD_spr_proc_payMG2: TStringField;
+    OD_spr_proc_payID: TFloatField;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private

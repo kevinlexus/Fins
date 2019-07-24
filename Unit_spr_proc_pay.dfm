@@ -1,6 +1,6 @@
 object Form_spr_proc_pay: TForm_spr_proc_pay
-  Left = 297
-  Top = 342
+  Left = 549
+  Top = 271
   Width = 685
   Height = 509
   Caption = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082' '#1086#1073#1088#1072#1073#1086#1090#1082#1080' '#1086#1087#1083#1072#1090#1099
@@ -193,10 +193,40 @@ object Form_spr_proc_pay: TForm_spr_proc_pay
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True
+    Left = 16
+    Top = 128
+    object OD_spr_proc_payUSL: TStringField
+      FieldName = 'USL'
+      Required = True
+      Size = 3
+    end
+    object OD_spr_proc_payORG: TFloatField
+      FieldName = 'ORG'
+      Required = True
+    end
+    object OD_spr_proc_payREU: TStringField
+      FieldName = 'REU'
+      Required = True
+      Size = 3
+    end
+    object OD_spr_proc_payMG1: TStringField
+      FieldName = 'MG1'
+      Required = True
+      Size = 6
+    end
+    object OD_spr_proc_payMG2: TStringField
+      FieldName = 'MG2'
+      Required = True
+      Size = 6
+    end
+    object OD_spr_proc_payID: TFloatField
+      FieldName = 'ID'
+    end
   end
   object DS_spr_proc_pay: TDataSource
     DataSet = OD_spr_proc_pay
-    Left = 32
+    Left = 48
+    Top = 128
   end
   object OD_usl: TOracleDataSet
     SQL.Strings = (
@@ -209,12 +239,13 @@ object Form_spr_proc_pay: TForm_spr_proc_pay
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True
-    Top = 64
+    Left = 16
+    Top = 192
   end
   object DS_usl: TDataSource
     DataSet = OD_usl
-    Left = 32
-    Top = 64
+    Left = 48
+    Top = 192
   end
   object OD_org: TOracleDataSet
     SQL.Strings = (
@@ -227,12 +258,13 @@ object Form_spr_proc_pay: TForm_spr_proc_pay
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True
-    Top = 112
+    Left = 16
+    Top = 240
   end
   object DS_org: TDataSource
     DataSet = OD_org
-    Left = 32
-    Top = 112
+    Left = 48
+    Top = 240
   end
   object OD_uk: TOracleDataSet
     SQL.Strings = (
@@ -244,11 +276,12 @@ object Form_spr_proc_pay: TForm_spr_proc_pay
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True
-    Top = 160
+    Left = 16
+    Top = 288
   end
   object DS_uk: TDataSource
     DataSet = OD_uk
-    Left = 32
-    Top = 160
+    Left = 48
+    Top = 288
   end
 end

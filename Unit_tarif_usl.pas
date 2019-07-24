@@ -62,51 +62,51 @@ uses Unit_tree_objects, Unit_change_house_nabor2, Unit_status,
 procedure TForm_tarif_usl.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  Form_main.Panel2.Width:=2;
-  Action:=caFree;
+  Form_main.Panel2.Width := 2;
+  Action := caFree;
 end;
 
 procedure TForm_tarif_usl.Button1Click(Sender: TObject);
 begin
- Close;
+  Close;
 end;
 
 procedure TForm_tarif_usl.wwDBGrid2DblClick(Sender: TObject);
 var
   bm_: TBookmark;
 begin
-if DM_Olap.OD_mg1.FieldByName('mg').AsString=Form_main.cur_mg_ then
-begin
-  //Выбран текущий период
-  bm_:=DM_Olap.Uni_data.GetBookmark;
-  if FF('Form_change_house_nabor2', 1) = 0 then
-    Application.CreateForm(TForm_change_house_nabor2,
-      Form_change_house_nabor2);
-  Application.CreateForm(TForm_status, Form_status);
-  Form_status.Update;
-  Form_change_house_nabor2.setState(
-    DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger, '', 2,
-    DM_Olap.Uni_data.FieldByName('sptarn').AsInteger);
-  Form_status.Close;
-  if Form_change_house_nabor2.ShowModal = mrOk then
+  if DM_Olap.OD_mg1.FieldByName('mg').AsString = Form_main.cur_mg_ then
   begin
-    Form_tree_objects.prepData;
-    DM_Olap.Uni_data.GotoBookmark(bm_);
+    //Выбран текущий период
+    bm_ := DM_Olap.Uni_data.GetBookmark;
+    if FF('Form_change_house_nabor2', 1) = 0 then
+      Application.CreateForm(TForm_change_house_nabor2,
+        Form_change_house_nabor2);
+    Application.CreateForm(TForm_status, Form_status);
+    Form_status.Update;
+    Form_change_house_nabor2.setState(
+      DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger, '', 2,
+      DM_Olap.Uni_data.FieldByName('sptarn').AsInteger);
+    Form_status.Close;
+    if Form_change_house_nabor2.ShowModal = mrOk then
+    begin
+      Form_tree_objects.prepData;
+      DM_Olap.Uni_data.GotoBookmark(bm_);
+    end;
   end;
-end;
 end;
 
 procedure TForm_tarif_usl.mnu1Click(Sender: TObject);
 var
   bm_: TBookmark;
 begin
-  bm_:=DM_Olap.Uni_data.GetBookmark;
-    if FF('Form_change_house_nabor2', 1) = 0 then
-      Application.CreateForm(TForm_change_house_nabor2,
-        Form_change_house_nabor2);
-    Form_change_house_nabor2.setState(
-      DM_Olap.MemTableEh2.FieldByName('OBJ_LEVEL').AsInteger,
-      '', 1, 0);
+  bm_ := DM_Olap.Uni_data.GetBookmark;
+  if FF('Form_change_house_nabor2', 1) = 0 then
+    Application.CreateForm(TForm_change_house_nabor2,
+      Form_change_house_nabor2);
+  Form_change_house_nabor2.setState(
+    DM_Olap.MemTableEh2.FieldByName('OBJ_LEVEL').AsInteger,
+    '', 1, 0);
   if Form_change_house_nabor2.ShowModal = mrOk then
   begin
     Form_tree_objects.prepData;
@@ -121,37 +121,66 @@ var
   l_chrg: Integer;
 begin
   if Checkbox1.checked = true then
-   l_chrg:=1
-   else
-   l_chrg:=0;
-  bm_:=DM_Olap.Uni_data.GetBookmark;
-  l_lvl:=DM_Olap.MemTableEh2.FieldByName('OBJ_LEVEL').AsInteger;
-  if (msg3('Удалить услугу: '+
-      DM_Olap.Uni_data.FieldByName('NM').AsString+' по орг: '+
-      DM_Olap.Uni_data.FieldByName('NAME').AsString+' с коэфф:'+
-      DM_Olap.Uni_data.FieldByName('KOEFF').AsString+' и норм:'+
-      DM_Olap.Uni_data.FieldByName('NORM').AsString+
-      '?',
-     'Подверждение', MB_YESNO+MB_ICONQUESTION) = IDYES) then
+    l_chrg := 1
+  else
+    l_chrg := 0;
+  bm_ := DM_Olap.Uni_data.GetBookmark;
+  l_lvl := DM_Olap.MemTableEh2.FieldByName('OBJ_LEVEL').AsInteger;
+  if (msg3('Удалить услугу: ' +
+    DM_Olap.Uni_data.FieldByName('NM').AsString + ' по орг: ' +
+    DM_Olap.Uni_data.FieldByName('NAME').AsString + ' с коэфф:' +
+    DM_Olap.Uni_data.FieldByName('KOEFF').AsString + ' и норм:' +
+    DM_Olap.Uni_data.FieldByName('NORM').AsString +
+    '?',
+    'Подверждение', MB_YESNO + MB_ICONQUESTION) = IDYES) then
   begin
     if (((l_lvl = 0) or (l_lvl = 1)) and
-      (msg3('Услуга будет удалена по большому кол-ву л/c, продолжить?', 'Внимание!', MB_YESNO+MB_ICONQUESTION) = ID_YES))
+      (msg3('Услуга будет удалена по большому кол-ву л/c, продолжить?',
+        'Внимание!', MB_YESNO + MB_ICONQUESTION) = ID_YES))
       or ((l_lvl <> 0) and (l_lvl <> 1)) then
     begin
       Application.CreateForm(TForm_status, Form_status);
       Form_status.Update;
-      DataModule1.OraclePackage1.CallProcedure
-           ('scott.p_houses.house_del_usl',
-           [DM_Olap.MemTableEh2.FieldByName('OBJ_LEVEL').AsInteger,
-           null,
-           DM_Olap.MemTableEh2.FieldByName('fk_house').AsInteger,
-           DM_Olap.MemTableEh2.FieldByName('reu').AsString,
-           DM_Olap.MemTableEh2.FieldByName('trest').AsString,
-           DM_Olap.Uni_data.FieldByName('usl').AsString,
-           DM_Olap.Uni_data.FieldByName('org').AsInteger,
-           DM_Olap.Uni_data.FieldByName('koeff').AsFloat,
-           DM_Olap.Uni_data.FieldByName('norm').AsFloat,
-           l_chrg]);
+      {      DataModule1.OraclePackage1.CallProcedure
+                 ('scott.p_houses.house_del_usl',
+                 [DM_Olap.MemTableEh2.FieldByName('OBJ_LEVEL').AsInteger,
+                 null,
+                 DM_Olap.MemTableEh2.FieldByName('fk_house').AsInteger,
+                 DM_Olap.MemTableEh2.FieldByName('reu').AsString,
+                 DM_Olap.MemTableEh2.FieldByName('trest').AsString,
+                 DM_Olap.Uni_data.FieldByName('usl').AsString,
+                 DM_Olap.Uni_data.FieldByName('org').AsInteger,
+                 DM_Olap.Uni_data.FieldByName('koeff').AsFloat,
+                 DM_Olap.Uni_data.FieldByName('norm').AsFloat,
+                 l_chrg]);}
+
+      DataModule1.UniStoredProc1.StoredProcName :=
+        'scott.p_houses.house_del_usl';
+      with DataModule1.UniStoredProc1.Params do
+      begin
+        Clear;
+        CreateParam(ftInteger, 'p_lvl', ptInput).AsInteger :=
+          DM_Olap.MemTableEh2.FieldByName('OBJ_LEVEL').AsInteger;
+        CreateParam(ftString, 'lsk_', ptInput).AsString;
+        CreateParam(ftInteger, 'house_id_', ptInput).AsInteger :=
+          DM_Olap.MemTableEh2.FieldByName('fk_house').AsInteger;
+        CreateParam(ftString, 'p_reu', ptInput).AsString :=
+          DM_Olap.MemTableEh2.FieldByName('reu').AsString;
+        CreateParam(ftString, 'p_trest', ptInput).AsString :=
+          DM_Olap.MemTableEh2.FieldByName('trest').AsString;
+        CreateParam(ftString, 'usl_', ptInput).AsString :=
+          DM_Olap.Uni_data.FieldByName('usl').AsString;
+        CreateParam(ftInteger, 'org_', ptInput).AsInteger :=
+          DM_Olap.Uni_data.FieldByName('org').AsInteger;
+        CreateParam(ftFloat, 'koeff_', ptInput).AsFloat :=
+          DM_Olap.Uni_data.FieldByName('koeff').AsFloat;
+        CreateParam(ftFloat, 'norm_', ptInput).AsFloat :=
+          DM_Olap.Uni_data.FieldByName('norm').AsFloat;
+        CreateParam(ftInteger, 'p_chrg', ptInput).AsFloat :=
+          l_chrg;
+      end;
+      DataModule1.UniStoredProc1.ExecProc;
+
       DM_Olap.Uni_data.Refresh;
       //начисление
       //ред.23.10.12-зачем здесь делать начисление, если оно будет сделано выше, в процедуре oracle??
@@ -168,30 +197,31 @@ begin
         DM_Olap.Uni_data.GotoBookmark(bm_);
       except
       end;
-      msg2('Услуга удалена', 'Внимание!', MB_OK+MB_ICONINFORMATION);
-  end;
+      msg2('Услуга удалена', 'Внимание!', MB_OK + MB_ICONINFORMATION);
+    end;
   end;
 end;
 
 procedure TForm_tarif_usl.wwExpandButton4AfterExpand(Sender: TObject);
 begin
-  wwDBNavigator1.Top:=wwDBGrid1.Top+wwDBGrid1.Height;
-  wwDBNavigator1.Left:=wwDBGrid1.Left;
-  wwDBNavigator1.Visible:=True;
+  wwDBNavigator1.Top := wwDBGrid1.Top + wwDBGrid1.Height;
+  wwDBNavigator1.Left := wwDBGrid1.Left;
+  wwDBNavigator1.Visible := True;
 end;
 
 procedure TForm_tarif_usl.wwExpandButton4AfterCollapse(Sender: TObject);
 begin
-  wwDBNavigator1.Visible:=False;
+  wwDBNavigator1.Visible := False;
 
 end;
 
 procedure TForm_tarif_usl.CheckBox1Click(Sender: TObject);
 begin
-  if CheckBox1.Checked=False then
+  if CheckBox1.Checked = False then
   begin
-    msg2('В случае отключения расчета начисления, его нужно будет сформировать в "Итоговом" формировании!', 'Внимание!', MB_OK+MB_ICONINFORMATION);
+    msg2('В случае отключения расчета начисления, его нужно будет сформировать в "Итоговом" формировании!', 'Внимание!', MB_OK + MB_ICONINFORMATION);
   end;
 end;
 
 end.
+
