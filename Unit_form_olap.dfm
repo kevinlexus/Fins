@@ -1,10 +1,10 @@
 object Form_olap: TForm_olap
-  Left = 719
-  Top = 242
+  Left = -7
+  Top = 244
   AutoScroll = False
   Caption = 'OLAP'
   ClientHeight = 743
-  ClientWidth = 1085
+  ClientWidth = 1078
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -95,7 +95,7 @@ object Form_olap: TForm_olap
   object cxGrid1: TcxGrid
     Left = 101
     Top = 123
-    Width = 984
+    Width = 977
     Height = 530
     Align = alClient
     TabOrder = 6
@@ -165,7 +165,7 @@ object Form_olap: TForm_olap
   object PVColToolBar1: TPVColToolBar
     Left = 0
     Top = 81
-    Width = 1085
+    Width = 1078
     Height = 42
     CheckOrder = True
     ItemWidth = 80
@@ -216,17 +216,17 @@ object Form_olap: TForm_olap
   object GroupBox1: TGroupBox
     Left = 0
     Top = 695
-    Width = 1085
+    Width = 1078
     Height = 48
     Align = alBottom
     Anchors = []
     DockSite = True
     TabOrder = 5
     DesignSize = (
-      1085
+      1078
       48)
     object Button3: TButton
-      Left = 890
+      Left = 883
       Top = 16
       Width = 75
       Height = 25
@@ -239,7 +239,7 @@ object Form_olap: TForm_olap
       OnClick = Button3Click
     end
     object Button1: TButton
-      Left = 1002
+      Left = 995
       Top = 16
       Width = 75
       Height = 25
@@ -290,7 +290,7 @@ object Form_olap: TForm_olap
       Visible = False
     end
     object btn2: TButton
-      Left = 566
+      Left = 559
       Top = 15
       Width = 113
       Height = 25
@@ -303,7 +303,7 @@ object Form_olap: TForm_olap
       OnClick = btn2Click
     end
     object btn3: TButton
-      Left = 438
+      Left = 431
       Top = 15
       Width = 121
       Height = 25
@@ -316,7 +316,7 @@ object Form_olap: TForm_olap
       OnClick = btn3Click
     end
     object btn4: TButton
-      Left = 686
+      Left = 679
       Top = 15
       Width = 113
       Height = 25
@@ -352,7 +352,7 @@ object Form_olap: TForm_olap
   object PivotGrid1: TPivotGrid
     Left = 101
     Top = 123
-    Width = 984
+    Width = 977
     Height = 530
     MinColWidth = 40
     MaxColWidth = 300
@@ -542,7 +542,7 @@ object Form_olap: TForm_olap
   object PVDimToolBar1: TPVDimToolBar
     Left = 0
     Top = 0
-    Width = 1085
+    Width = 1078
     Height = 81
     CheckOrder = False
     ItemWidth = 100
@@ -593,7 +593,7 @@ object Form_olap: TForm_olap
   object PVMeasureToolBar1: TPVMeasureToolBar
     Left = 0
     Top = 653
-    Width = 1085
+    Width = 1078
     Height = 42
     CheckOrder = True
     ItemWidth = 80

@@ -157,7 +157,8 @@ uses
   u_frmDistPayLog in 'u_frmDistPayLog.pas' {frmDistPayLog},
   Unit_edit_pay_usl_org in 'Unit_edit_pay_usl_org.pas' {Form_edit_pay_usl_org},
   Unit_find_adr2 in 'Unit_find_adr2.pas' {Form_find_adr2},
-  ufDataModuleOlap in '..\work\Bexs\ufDataModuleOlap.pas' {DM_Olap: TDataModule};
+  ufDataModuleOlap in 'ufDataModuleOlap.pas' {DM_Olap: TDataModule},
+  ufDataModuleBill in 'ufDataModuleBill.pas' {DM_bill: TDataModule};
 
 //,
   //CnDebug;
@@ -199,6 +200,7 @@ begin
   Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TDM_Olap, DM_Olap);
   Application.CreateForm(TForm_Main, Form_Main);
+  Application.CreateForm(TDM_bill, DM_bill);
   s := Ini.ReadString('Application', 'User', '');
   Pass := '';
   I := 1;

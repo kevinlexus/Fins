@@ -1,6 +1,6 @@
 object Form_tree_par_edit: TForm_tree_par_edit
-  Left = 728
-  Top = 162
+  Left = 731
+  Top = 164
   Width = 451
   Height = 333
   BorderIcons = [biSystemMenu]

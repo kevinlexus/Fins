@@ -1,7 +1,7 @@
 object DataModule1: TDataModule1
   OldCreateOrder = False
-  Left = 382
-  Top = 201
+  Left = 718
+  Top = 127
   Height = 720
   Width = 683
   object OracleSession1: TOracleSession
