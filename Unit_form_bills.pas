@@ -41,7 +41,7 @@ uses
   dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
   dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue, cxClasses,
-  cxPropertiesStore, frxExportPDF;
+  cxPropertiesStore, frxExportPDF, ufDataModuleBill;
 
 type
   TForm_print_bills = class(TForm)

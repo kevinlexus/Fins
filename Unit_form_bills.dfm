@@ -1,8 +1,8 @@
 object Form_print_bills: TForm_print_bills
-  Left = 339
-  Top = 217
-  Width = 546
-  Height = 603
+  Left = 283
+  Top = 197
+  Width = 757
+  Height = 752
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #1057#1095#1077#1090#1072' '#1085#1072' '#1086#1087#1083#1072#1090#1091' '#1091#1089#1083#1091#1075' '#1046#1050#1061
   Color = clBtnFace
@@ -93,7 +93,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox1: TGroupBox
     Left = 0
     Top = 342
-    Width = 530
+    Width = 741
     Height = 61
     Align = alTop
     TabOrder = 3
@@ -138,7 +138,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox2: TGroupBox
     Left = 0
     Top = 0
-    Width = 530
+    Width = 741
     Height = 105
     Align = alTop
     TabOrder = 0
@@ -275,7 +275,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox3: TGroupBox
     Left = 0
     Top = 105
-    Width = 530
+    Width = 741
     Height = 200
     Align = alTop
     TabOrder = 2
@@ -561,7 +561,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox4: TGroupBox
     Left = 0
     Top = 305
-    Width = 530
+    Width = 741
     Height = 37
     Align = alTop
     TabOrder = 4
@@ -2418,8 +2418,8 @@ object Form_print_bills: TForm_print_bills
       494C4C010000000000}
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Left = 312
-    Top = 136
+    Left = 488
+    Top = 408
   end
   object OD_cmp_detail_primary: TOracleDataSet
     SQL.Strings = (
@@ -2469,8 +2469,8 @@ object Form_print_bills: TForm_print_bills
     DetailFields = 'p_klsk'
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Left = 312
-    Top = 104
+    Left = 488
+    Top = 376
   end
   object OD_cmp_detail_cap: TOracleDataSet
     SQL.Strings = (
@@ -2520,8 +2520,8 @@ object Form_print_bills: TForm_print_bills
     DetailFields = 'p_klsk'
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Left = 312
-    Top = 208
+    Left = 488
+    Top = 480
   end
   object OD_cmp_funds_primary: TOracleDataSet
     SQL.Strings = (
@@ -2558,8 +2558,8 @@ object Form_print_bills: TForm_print_bills
     DetailFields = 'p_klsk'
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Left = 312
-    Top = 240
+    Left = 488
+    Top = 512
   end
   object OD_cmp_funds_cap: TOracleDataSet
     SQL.Strings = (
@@ -2596,48 +2596,48 @@ object Form_print_bills: TForm_print_bills
     DetailFields = 'p_klsk'
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Left = 312
-    Top = 272
+    Left = 488
+    Top = 544
   end
   object frxDB_cmp_main: TfrxDBDataset
     UserName = 'frxDB_cmp_main'
     CloseDataSource = False
-    DataSet = OD_cmp_main
+    DataSet = DM_Bill.Uni_cmp_main
     BCDToCurrency = False
-    Left = 344
-    Top = 136
+    Left = 520
+    Top = 408
   end
   object frxDBD_cmp_detail_primary: TfrxDBDataset
     UserName = 'frxDB_cmp_detail_primary'
     CloseDataSource = False
-    DataSet = OD_cmp_detail_primary
+    DataSet = DM_Bill.Uni_cmp_detail_primary
     BCDToCurrency = False
-    Left = 344
-    Top = 104
+    Left = 520
+    Top = 376
   end
   object frxDB_cmp_detail_cap: TfrxDBDataset
     UserName = 'frxDB_cmp_detail_cap'
     CloseDataSource = False
-    DataSet = OD_cmp_detail_cap
+    DataSet = DM_Bill.Uni_cmp_detail_cap
     BCDToCurrency = False
-    Left = 344
-    Top = 208
+    Left = 520
+    Top = 480
   end
   object frxDB_cmp_funds_primary: TfrxDBDataset
     UserName = 'frxDB_cmp_funds_primary'
     CloseDataSource = False
-    DataSet = OD_cmp_funds_primary
+    DataSet = DM_Bill.Uni_cmp_funds_primary
     BCDToCurrency = False
-    Left = 344
-    Top = 240
+    Left = 520
+    Top = 512
   end
   object frxDB_cmp_funds_cap: TfrxDBDataset
     UserName = 'frxDB_cmp_funds_cap'
     CloseDataSource = False
-    DataSet = OD_cmp_funds_cap
+    DataSet = DM_Bill.Uni_cmp_funds_cap
     BCDToCurrency = False
-    Left = 344
-    Top = 272
+    Left = 520
+    Top = 544
   end
   object OD_cmp_contractors: TOracleDataSet
     SQL.Strings = (
@@ -2678,16 +2678,16 @@ object Form_print_bills: TForm_print_bills
     DetailFields = 'p_klsk'
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Left = 312
-    Top = 304
+    Left = 488
+    Top = 576
   end
   object frxDB_cmp_contractors: TfrxDBDataset
     UserName = 'frxDB_cmp_contractors'
     CloseDataSource = False
-    DataSet = OD_cmp_contractors
+    DataSet = DM_Bill.Uni_cmp_contractors
     BCDToCurrency = False
-    Left = 344
-    Top = 304
+    Left = 520
+    Top = 576
   end
   object OD_cmp_detail_main: TOracleDataSet
     SQL.Strings = (
@@ -2736,8 +2736,8 @@ object Form_print_bills: TForm_print_bills
     DetailFields = 'p_klsk'
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Left = 376
-    Top = 104
+    Left = 552
+    Top = 376
   end
   object frxDBD_cmp_detail_main: TfrxDBDataset
     UserName = 'frxDBD_cmp_detail_main'
@@ -2783,10 +2783,10 @@ object Form_print_bills: TForm_print_bills
       'LAST_DTEK=LAST_DTEK'
       'CHARGE=CHARGE'
       'QR=QR')
-    DataSet = OD_cmp_detail_main
+    DataSet = DM_Bill.Uni_cmp_detail_main
     BCDToCurrency = False
-    Left = 408
-    Top = 104
+    Left = 584
+    Top = 376
   end
   object OD_cmp_funds_main: TOracleDataSet
     SQL.Strings = (
@@ -2824,8 +2824,8 @@ object Form_print_bills: TForm_print_bills
     DetailFields = 'p_klsk'
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Left = 376
-    Top = 240
+    Left = 552
+    Top = 512
   end
   object frxDB_cmp_funds_main: TfrxDBDataset
     UserName = 'frxDB_cmp_funds_main'
@@ -2847,10 +2847,10 @@ object Form_print_bills: TForm_print_bills
       'BILL_COL2=BILL_COL2'
       'KUB=KUB'
       'PAY=PAY')
-    DataSet = OD_cmp_funds_main
+    DataSet = DM_Bill.Uni_cmp_funds_main
     BCDToCurrency = False
-    Left = 408
-    Top = 240
+    Left = 584
+    Top = 512
   end
   object OD_cmp_funds_lsk: TOracleDataSet
     SQL.Strings = (
@@ -2881,8 +2881,8 @@ object Form_print_bills: TForm_print_bills
     DetailFields = 'p_lsk'
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Left = 376
-    Top = 272
+    Left = 552
+    Top = 544
   end
   object frxDB_cmp_funds_lsk: TfrxDBDataset
     UserName = 'frxDB_cmp_funds_lsk'
@@ -2905,10 +2905,10 @@ object Form_print_bills: TForm_print_bills
       'KUB=KUB'
       'PAY=PAY'
       'CHARGEOWN=CHARGEOWN')
-    DataSet = OD_cmp_funds_lsk
+    DataSet = DM_Bill.Uni_cmp_funds_lsk
     BCDToCurrency = False
-    Left = 408
-    Top = 272
+    Left = 584
+    Top = 544
   end
   object OD_cmp_qr: TOracleDataSet
     SQL.Strings = (
@@ -2938,8 +2938,8 @@ object Form_print_bills: TForm_print_bills
     DetailFields = 'p_klsk'
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Left = 376
-    Top = 304
+    Left = 488
+    Top = 616
   end
   object frxDB_cmp_qr: TfrxDBDataset
     UserName = 'frxDB_cmp_qr'
@@ -2947,10 +2947,10 @@ object Form_print_bills: TForm_print_bills
     FieldAliases.Strings = (
       'QR=QR'
       'UK_NAME=UK_NAME')
-    DataSet = OD_cmp_qr
+    DataSet = DM_Bill.Uni_cmp_qr
     BCDToCurrency = False
-    Left = 408
-    Top = 304
+    Left = 584
+    Top = 576
   end
   object OD_uk: TOracleDataSet
     SQL.Strings = (
