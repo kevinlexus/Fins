@@ -19,6 +19,7 @@ type
     Uni_cmp_funds_lsk: TUniQuery;
     DS_cmp_main: TDataSource;
     DS_cmp_funds_primary: TDataSource;
+    Uni_arch: TUniQuery;
   private
     { Private declarations }
   public

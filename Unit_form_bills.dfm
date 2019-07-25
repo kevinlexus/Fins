@@ -1548,7 +1548,7 @@ object Form_print_bills: TForm_print_bills
       000000070000004B50525F575250010000000000030000005041590100000000
       00070000005041595F50454E01000000000004000000444F4C47010000000000
       07000000504552535F5450010000000000}
-    Master = OD_cmp_main
+    Master = OD_cmp_main2
     MasterFields = 'LSK'
     DetailFields = 'P_LSK'
     Session = DataModule1.OracleSession1
@@ -1583,7 +1583,7 @@ object Form_print_bills: TForm_print_bills
     Left = 48
     Top = 432
   end
-  object OD_arch: TOracleDataSet
+  object OD_arch2: TOracleDataSet
     SQL.Strings = (
       'begin'
       '  -- Call the procedure'
@@ -1681,8 +1681,8 @@ object Form_print_bills: TForm_print_bills
       00000000}
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Left = 208
-    Top = 328
+    Left = 488
+    Top = 344
   end
   object frxDBDataset7: TfrxDBDataset
     UserName = 'frxDBData_arch'
@@ -1697,10 +1697,10 @@ object Form_print_bills: TForm_print_bills
       'PAY='#1054#1087#1083#1072#1090#1072
       'PAY_PEN='#1054#1087#1083'.'#1087#1077#1085#1080
       'PEN='#1055#1077#1085#1103' '#1090#1077#1082'.')
-    DataSet = OD_arch
+    DataSet = DM_Bill.Uni_arch
     BCDToCurrency = False
-    Left = 240
-    Top = 328
+    Left = 520
+    Top = 344
   end
   object OD_main: TOracleDataSet
     SQL.Strings = (
@@ -2374,7 +2374,7 @@ object Form_print_bills: TForm_print_bills
     Left = 240
     Top = 456
   end
-  object OD_cmp_main: TOracleDataSet
+  object OD_cmp_main2: TOracleDataSet
     SQL.Strings = (
       'begin'
       '  -- Call the procedure'
@@ -2421,7 +2421,7 @@ object Form_print_bills: TForm_print_bills
     Left = 488
     Top = 408
   end
-  object OD_cmp_detail_primary: TOracleDataSet
+  object OD_cmp_detail_primary2: TOracleDataSet
     SQL.Strings = (
       'begin'
       ''
@@ -2464,7 +2464,7 @@ object Form_print_bills: TForm_print_bills
       0053554D5F5041590100000000000700000053554D5F50454E01000000000006
       000000504552494F440100000000000200000044540100000000000700000041
       44525F575757010000000000}
-    Master = OD_cmp_main
+    Master = OD_cmp_main2
     MasterFields = 'k_lsk_id'
     DetailFields = 'p_klsk'
     Session = DataModule1.OracleSession1
@@ -2472,7 +2472,7 @@ object Form_print_bills: TForm_print_bills
     Left = 488
     Top = 376
   end
-  object OD_cmp_detail_cap: TOracleDataSet
+  object OD_cmp_detail_cap2: TOracleDataSet
     SQL.Strings = (
       'begin'
       ''
@@ -2515,7 +2515,7 @@ object Form_print_bills: TForm_print_bills
       0053554D5F5041590100000000000700000053554D5F50454E01000000000006
       000000504552494F440100000000000200000044540100000000000700000041
       44525F575757010000000000}
-    Master = OD_cmp_main
+    Master = OD_cmp_main2
     MasterFields = 'k_lsk_id'
     DetailFields = 'p_klsk'
     Session = DataModule1.OracleSession1
@@ -2523,7 +2523,7 @@ object Form_print_bills: TForm_print_bills
     Left = 488
     Top = 480
   end
-  object OD_cmp_funds_primary: TOracleDataSet
+  object OD_cmp_funds_primary2: TOracleDataSet
     SQL.Strings = (
       'begin'
       ''
@@ -2553,7 +2553,7 @@ object Form_print_bills: TForm_print_bills
       47453201000000000004000000414D4E54010000000000030000004445420100
       000000000800000042494C4C5F434F4C0100000000000900000042494C4C5F43
       4F4C32010000000000030000004B5542010000000000}
-    Master = OD_cmp_main
+    Master = OD_cmp_main2
     MasterFields = 'k_lsk_id'
     DetailFields = 'p_klsk'
     Session = DataModule1.OracleSession1
@@ -2561,7 +2561,7 @@ object Form_print_bills: TForm_print_bills
     Left = 488
     Top = 512
   end
-  object OD_cmp_funds_cap: TOracleDataSet
+  object OD_cmp_funds_cap2: TOracleDataSet
     SQL.Strings = (
       'begin'
       ''
@@ -2591,7 +2591,7 @@ object Form_print_bills: TForm_print_bills
       47453201000000000004000000414D4E54010000000000030000004445420100
       000000000800000042494C4C5F434F4C0100000000000900000042494C4C5F43
       4F4C32010000000000030000004B5542010000000000}
-    Master = OD_cmp_main
+    Master = OD_cmp_main2
     MasterFields = 'k_lsk_id'
     DetailFields = 'p_klsk'
     Session = DataModule1.OracleSession1
@@ -2639,7 +2639,7 @@ object Form_print_bills: TForm_print_bills
     Left = 520
     Top = 544
   end
-  object OD_cmp_contractors: TOracleDataSet
+  object OD_cmp_contractors2: TOracleDataSet
     SQL.Strings = (
       'begin'
       ''
@@ -2673,7 +2673,7 @@ object Form_print_bills: TForm_print_bills
       030000004B505001000000000007000000554B5F4E414D450100000000000600
       0000504552494F44010000000000020000004454010000000000070000004144
       525F575757010000000000}
-    Master = OD_cmp_main
+    Master = OD_cmp_main2
     MasterFields = 'k_lsk_id'
     DetailFields = 'p_klsk'
     Session = DataModule1.OracleSession1
@@ -2689,7 +2689,7 @@ object Form_print_bills: TForm_print_bills
     Left = 520
     Top = 576
   end
-  object OD_cmp_detail_main: TOracleDataSet
+  object OD_cmp_detail_main2: TOracleDataSet
     SQL.Strings = (
       'begin'
       ''
@@ -2731,7 +2731,7 @@ object Form_print_bills: TForm_print_bills
       5F43484152474501000000000006000000434841524745010000000000060000
       00504552494F4401000000000002000000445401000000000007000000414452
       5F575757010000000000}
-    Master = OD_cmp_main
+    Master = OD_cmp_main2
     MasterFields = 'k_lsk_id'
     DetailFields = 'p_klsk'
     Session = DataModule1.OracleSession1
@@ -2788,7 +2788,7 @@ object Form_print_bills: TForm_print_bills
     Left = 584
     Top = 376
   end
-  object OD_cmp_funds_main: TOracleDataSet
+  object OD_cmp_funds_main2: TOracleDataSet
     SQL.Strings = (
       'begin'
       ''
@@ -2819,7 +2819,7 @@ object Form_print_bills: TForm_print_bills
       000000000800000042494C4C5F434F4C0100000000000900000042494C4C5F43
       4F4C32010000000000030000004B554201000000000003000000504159010000
       000000}
-    Master = OD_cmp_main
+    Master = OD_cmp_main2
     MasterFields = 'k_lsk_id'
     DetailFields = 'p_klsk'
     Session = DataModule1.OracleSession1
@@ -2852,7 +2852,7 @@ object Form_print_bills: TForm_print_bills
     Left = 584
     Top = 512
   end
-  object OD_cmp_funds_lsk: TOracleDataSet
+  object OD_cmp_funds_lsk2: TOracleDataSet
     SQL.Strings = (
       'begin'
       '  scott.rep_bills_ext.detail(p_lsk => :p_lsk,'
@@ -2876,7 +2876,7 @@ object Form_print_bills: TForm_print_bills
       000000000800000042494C4C5F434F4C0100000000000900000042494C4C5F43
       4F4C32010000000000030000004B554201000000000003000000504159010000
       000000090000004348415247454F574E010000000000}
-    Master = OD_cmp_detail_primary
+    Master = OD_cmp_detail_primary2
     MasterFields = 'lsk'
     DetailFields = 'p_lsk'
     Session = DataModule1.OracleSession1
@@ -2910,7 +2910,7 @@ object Form_print_bills: TForm_print_bills
     Left = 584
     Top = 544
   end
-  object OD_cmp_qr: TOracleDataSet
+  object OD_cmp_qr2: TOracleDataSet
     SQL.Strings = (
       'begin'
       ''
@@ -2933,7 +2933,7 @@ object Form_print_bills: TForm_print_bills
     QBEDefinition.QBEFieldDefs = {
       040000000200000002000000515201000000000007000000554B5F4E414D4501
       0000000000}
-    Master = OD_cmp_main
+    Master = OD_cmp_main2
     MasterFields = 'k_lsk_id'
     DetailFields = 'p_klsk'
     Session = DataModule1.OracleSession1
@@ -3076,7 +3076,7 @@ object Form_print_bills: TForm_print_bills
       5401000000000004000000454C534B0100000000000A000000504152454E545F
       4C534B0100000000000B000000464B5F4B4C534B5F4F424A0100000000000500
       000044545F4352010000000000}
-    Master = OD_cmp_main
+    Master = OD_cmp_main2
     MasterFields = 'lsk'
     DetailFields = 'lsk'
     Session = DataModule1.OracleSession1
@@ -3235,7 +3235,7 @@ object Form_print_bills: TForm_print_bills
       00445431010000000000030000004454320100000000000A000000464B5F4445
       425F4F524701000000000009000000505249565F50524F430100000000000400
       000041435054010000000000}
-    Master = OD_cmp_main
+    Master = OD_cmp_main2
     MasterFields = 'LSK'
     DetailFields = 'LSK'
     Session = DataModule1.OracleSession1
