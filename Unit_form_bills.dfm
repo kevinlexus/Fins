@@ -1,8 +1,8 @@
 object Form_print_bills: TForm_print_bills
   Left = 283
   Top = 197
-  Width = 757
-  Height = 752
+  Width = 465
+  Height = 444
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #1057#1095#1077#1090#1072' '#1085#1072' '#1086#1087#1083#1072#1090#1091' '#1091#1089#1083#1091#1075' '#1046#1050#1061
   Color = clBtnFace
@@ -93,7 +93,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox1: TGroupBox
     Left = 0
     Top = 342
-    Width = 741
+    Width = 449
     Height = 61
     Align = alTop
     TabOrder = 3
@@ -138,7 +138,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox2: TGroupBox
     Left = 0
     Top = 0
-    Width = 741
+    Width = 449
     Height = 105
     Align = alTop
     TabOrder = 0
@@ -275,7 +275,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox3: TGroupBox
     Left = 0
     Top = 105
-    Width = 741
+    Width = 449
     Height = 200
     Align = alTop
     TabOrder = 2
@@ -467,6 +467,8 @@ object Form_print_bills: TForm_print_bills
     object cbb1: TcxLookupComboBox
       Left = 24
       Top = 56
+      Properties.DropDownAutoSize = True
+      Properties.DropDownSizeable = True
       Properties.KeyFieldNames = 'REU'
       Properties.ListColumns = <
         item
@@ -561,7 +563,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox4: TGroupBox
     Left = 0
     Top = 305
-    Width = 741
+    Width = 449
     Height = 37
     Align = alTop
     TabOrder = 4
@@ -2950,7 +2952,7 @@ object Form_print_bills: TForm_print_bills
     DataSet = DM_Bill.Uni_cmp_qr
     BCDToCurrency = False
     Left = 584
-    Top = 576
+    Top = 624
   end
   object OD_uk: TOracleDataSet
     SQL.Strings = (

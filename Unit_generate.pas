@@ -90,8 +90,8 @@ begin
   //отметка о начале формировани€
   //«апросить о возможности начала формировани€
 
-  DataModule1.OraclePackage2.Session.Connected:=true;
-  l_state:=DataModule1.OraclePackage2.CallIntegerFunction
+  DataModule1.OraclePackage1.Session.Connected:=true;
+  l_state:=DataModule1.OraclePackage1.CallIntegerFunction
      ('scott.Utils.set_base_state_gen', [1]);
   if l_state = 1 then
   begin
@@ -466,8 +466,8 @@ begin
    if state_=1 then //если был назначен переход мес€ца...
    begin
      //отметка об окончании формировани€
-      DataModule1.OraclePackage2.Session.Connected:=true;
-      l_state:=DataModule1.OraclePackage2.CallIntegerFunction
+      DataModule1.OraclePackage1.Session.Connected:=true;
+      l_state:=DataModule1.OraclePackage1.CallIntegerFunction
          ('scott.Utils.set_base_state_gen', [0]);
 
      Memo1.Text:='¬ыполнен переход мес€ца, необходимо задать текущую дату!';
@@ -477,16 +477,16 @@ begin
    else if state_=2 then //если был назначен переход мес€ца, но он прошЄл с ошибкой
    begin
      //отметка об окончании формировани€
-      DataModule1.OraclePackage2.Session.Connected:=true;
-      l_state:=DataModule1.OraclePackage2.CallIntegerFunction
+      DataModule1.OraclePackage1.Session.Connected:=true;
+      l_state:=DataModule1.OraclePackage1.CallIntegerFunction
          ('scott.Utils.set_base_state_gen', [0]);
       Memo1.Text:=l_err_mess+' ѕереход мес€ца не выполнен!';
    end
    else if state_=3 then //»тоговое формирование произошло с ошибкой
    begin
      //отметка об окончании формировани€
-      DataModule1.OraclePackage2.Session.Connected:=true;
-      l_state:=DataModule1.OraclePackage2.CallIntegerFunction
+      DataModule1.OraclePackage1.Session.Connected:=true;
+      l_state:=DataModule1.OraclePackage1.CallIntegerFunction
          ('scott.Utils.set_base_state_gen', [0]);
     Application.CreateForm(TForm_gen_err_lst, Form_gen_err_lst);
     Form_gen_err_lst.OD_data.SetVariable('err_', err_);
@@ -498,16 +498,16 @@ begin
    else if (state_=4) or (state_=5) then //»тоговое формирование произошло с ошибкой
    begin
       //отметка об окончании формировани€
-      DataModule1.OraclePackage2.Session.Connected:=true;
-      l_state:=DataModule1.OraclePackage2.CallIntegerFunction
+      DataModule1.OraclePackage1.Session.Connected:=true;
+      l_state:=DataModule1.OraclePackage1.CallIntegerFunction
          ('scott.Utils.set_base_state_gen', [0]);
       Memo1.Text:=l_err_mess+' ‘ормирование остановлено!';
    end
    else
    begin
      //отметка об окончании формировани€
-      DataModule1.OraclePackage2.Session.Connected:=true;
-      l_state:=DataModule1.OraclePackage2.CallIntegerFunction
+      DataModule1.OraclePackage1.Session.Connected:=true;
+      l_state:=DataModule1.OraclePackage1.CallIntegerFunction
          ('scott.Utils.set_base_state_gen', [0]);
       if chk1.Checked then
         abfshtdwn1.Execute;

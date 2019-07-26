@@ -48,7 +48,7 @@ var
 begin
 with Form_gen_current do
 begin
-  DataModule1.OraclePackage2.Session.Connected:=true;
+  //DataModule1.OraclePackage1.Session.Connected:=true;
   if CheckBox1.Checked=true then
   begin
   valid_:=DataModule1.OraclePackage1.CallIntegerFunction
@@ -162,7 +162,7 @@ begin
       Form_status.Close;
      end;
   end;
-  DataModule1.OraclePackage2.Session.Connected:=false;
+  //DataModule1.OraclePackage1.Session.Connected:=false;
 
   msg4('Формирование закончено', 'Внимание!' , MB_OK+MB_ICONINFORMATION);
 end;

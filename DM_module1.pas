@@ -10,8 +10,6 @@ type
   TDataModule1 = class(TDataModule)
     OracleSession1: TOracleSession;
     OraclePackage1: TOraclePackage;
-    OracleSession2: TOracleSession;
-    OraclePackage2: TOraclePackage;
     OD_spul: TOracleDataSet;
     DS_spul: TDataSource;
     OD_reu: TOracleDataSet;

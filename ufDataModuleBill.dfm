@@ -1,7 +1,7 @@
 object DM_Bill: TDM_Bill
   OldCreateOrder = False
-  Left = 1156
-  Top = 199
+  Left = 1053
+  Top = 211
   Height = 607
   Width = 470
   object Uni_cmp_main: TUniQuery
@@ -24,6 +24,7 @@ object DM_Bill: TDM_Bill
       '                          p_sel_uk => :p_sel_uk,'
       '                          p_rfcur => :p_rfcur);'
       'end;')
+    FetchRows = 1000
     Options.AutoPrepare = True
     Constraints = <>
     Left = 32
@@ -105,7 +106,7 @@ object DM_Bill: TDM_Bill
     SQL.Strings = (
       'begin'
       ''
-      ' scott.rep_bills_compound.detail(p_klsk => :p_klsk,'
+      ' scott.rep_bills_compound.detail(p_klsk => :k_lsk_id,'
       '                            p_is_closed => :p_is_closed,'
       '                            p_mg => :p_mg,'
       '                            p_sel_tp => :p_sel_tp,'
@@ -115,16 +116,15 @@ object DM_Bill: TDM_Bill
       'end;')
     MasterSource = DS_cmp_main
     MasterFields = 'k_lsk_id'
-    DetailFields = 'p_klsk'
+    DetailFields = 'k_lsk_id'
     Options.AutoPrepare = True
     Constraints = <>
     Left = 32
     Top = 32
     ParamData = <
       item
-        DataType = ftInteger
-        Name = 'p_klsk'
-        ParamType = ptInput
+        DataType = ftUnknown
+        Name = 'k_lsk_id'
       end
       item
         DataType = ftInteger
@@ -162,7 +162,7 @@ object DM_Bill: TDM_Bill
     SQL.Strings = (
       'begin'
       ''
-      ' scott.rep_bills_compound.detail(p_klsk => :p_klsk,'
+      ' scott.rep_bills_compound.detail(p_klsk => :k_lsk_id,'
       '                            p_is_closed => :p_is_closed,'
       '                            p_mg => :p_mg,'
       '                            p_sel_tp => :p_sel_tp,'
@@ -172,16 +172,15 @@ object DM_Bill: TDM_Bill
       'end;')
     MasterSource = DS_cmp_main
     MasterFields = 'k_lsk_id'
-    DetailFields = 'p_klsk'
+    DetailFields = 'k_lsk_id'
     Options.AutoPrepare = True
     Constraints = <>
     Left = 184
     Top = 32
     ParamData = <
       item
-        DataType = ftInteger
-        Name = 'p_klsk'
-        ParamType = ptInput
+        DataType = ftUnknown
+        Name = 'k_lsk_id'
       end
       item
         DataType = ftInteger
@@ -219,7 +218,7 @@ object DM_Bill: TDM_Bill
     SQL.Strings = (
       'begin'
       ''
-      ' scott.rep_bills_compound.detail(p_klsk => :p_klsk,'
+      ' scott.rep_bills_compound.detail(p_klsk => :k_lsk_id,'
       '                            p_is_closed => :p_is_closed,'
       '                            p_mg => :p_mg,'
       '                            p_sel_tp => :p_sel_tp,'
@@ -229,16 +228,15 @@ object DM_Bill: TDM_Bill
       'end;')
     MasterSource = DS_cmp_main
     MasterFields = 'k_lsk_id'
-    DetailFields = 'p_klsk'
+    DetailFields = 'k_lsk_id'
     Options.AutoPrepare = True
     Constraints = <>
     Left = 32
     Top = 160
     ParamData = <
       item
-        DataType = ftInteger
-        Name = 'p_klsk'
-        ParamType = ptInput
+        DataType = ftUnknown
+        Name = 'k_lsk_id'
       end
       item
         DataType = ftInteger
@@ -276,7 +274,9 @@ object DM_Bill: TDM_Bill
     SQL.Strings = (
       'begin'
       ''
-      ' scott.rep_bills_compound.funds_flow_by_klsk(p_klsk => :p_klsk,'
+      
+        ' scott.rep_bills_compound.funds_flow_by_klsk(p_klsk => :k_lsk_id' +
+        ','
       '                                        p_sel_tp => :p_sel_tp,'
       '                            p_is_closed => :p_is_closed,'
       '                                        p_mg => :p_mg,'
@@ -287,16 +287,15 @@ object DM_Bill: TDM_Bill
       'end;')
     MasterSource = DS_cmp_main
     MasterFields = 'k_lsk_id'
-    DetailFields = 'p_klsk'
+    DetailFields = 'k_lsk_id'
     Options.AutoPrepare = True
     Constraints = <>
     Left = 32
     Top = 208
     ParamData = <
       item
-        DataType = ftInteger
-        Name = 'p_klsk'
-        ParamType = ptInput
+        DataType = ftUnknown
+        Name = 'k_lsk_id'
       end
       item
         DataType = ftInteger
@@ -334,7 +333,9 @@ object DM_Bill: TDM_Bill
     SQL.Strings = (
       'begin'
       ''
-      ' scott.rep_bills_compound.funds_flow_by_klsk(p_klsk => :p_klsk,'
+      
+        ' scott.rep_bills_compound.funds_flow_by_klsk(p_klsk => :k_lsk_id' +
+        ','
       '                                        p_sel_tp => :p_sel_tp,'
       '                            p_is_closed => :p_is_closed,'
       '                                        p_mg => :p_mg,'
@@ -345,16 +346,15 @@ object DM_Bill: TDM_Bill
       'end;')
     MasterSource = DS_cmp_main
     MasterFields = 'k_lsk_id'
-    DetailFields = 'p_klsk'
+    DetailFields = 'k_lsk_id'
     Options.AutoPrepare = True
     Constraints = <>
     Left = 32
     Top = 256
     ParamData = <
       item
-        DataType = ftInteger
-        Name = 'p_klsk'
-        ParamType = ptInput
+        DataType = ftUnknown
+        Name = 'k_lsk_id'
       end
       item
         DataType = ftInteger
@@ -392,7 +392,7 @@ object DM_Bill: TDM_Bill
     SQL.Strings = (
       'begin'
       ''
-      ' scott.rep_bills_compound.contractors(p_klsk => :p_klsk,'
+      ' scott.rep_bills_compound.contractors(p_klsk => :k_lsk_id,'
       '                            p_is_closed => :p_is_closed,'
       '                            p_mg => :p_mg,'
       '                            p_sel_flt_tp => :p_sel_flt_tp,'
@@ -401,16 +401,15 @@ object DM_Bill: TDM_Bill
       'end;')
     MasterSource = DS_cmp_main
     MasterFields = 'k_lsk_id'
-    DetailFields = 'p_klsk'
+    DetailFields = 'k_lsk_id'
     Options.AutoPrepare = True
     Constraints = <>
     Left = 32
     Top = 304
     ParamData = <
       item
-        DataType = ftInteger
-        Name = 'p_klsk'
-        ParamType = ptInput
+        DataType = ftUnknown
+        Name = 'k_lsk_id'
       end
       item
         DataType = ftInteger
@@ -443,7 +442,7 @@ object DM_Bill: TDM_Bill
     SQL.Strings = (
       'begin'
       ''
-      ' scott.rep_bills_compound.getQr(p_klsk => :p_klsk,'
+      ' scott.rep_bills_compound.getQr(p_klsk => :k_lsk_id,'
       '                            p_is_closed => :p_is_closed,'
       '                            p_mg => :p_mg,'
       '                            p_sel_tp => :p_sel_tp,'
@@ -453,7 +452,7 @@ object DM_Bill: TDM_Bill
       'end;')
     MasterSource = DS_cmp_main
     MasterFields = 'k_lsk_id'
-    DetailFields = 'p_klsk'
+    DetailFields = 'k_lsk_id'
     Options.AutoPrepare = True
     Constraints = <>
     Left = 32
@@ -461,7 +460,7 @@ object DM_Bill: TDM_Bill
     ParamData = <
       item
         DataType = ftInteger
-        Name = 'p_klsk'
+        Name = 'k_lsk_id'
         ParamType = ptInput
       end
       item
@@ -500,7 +499,9 @@ object DM_Bill: TDM_Bill
     SQL.Strings = (
       'begin'
       ''
-      ' scott.rep_bills_compound.funds_flow_by_klsk(p_klsk => :p_klsk,'
+      
+        ' scott.rep_bills_compound.funds_flow_by_klsk(p_klsk => :k_lsk_id' +
+        ','
       '                                        p_sel_tp => :p_sel_tp,'
       '                            p_is_closed => :p_is_closed,'
       '                                        p_mg => :p_mg,'
@@ -511,16 +512,15 @@ object DM_Bill: TDM_Bill
       'end;')
     MasterSource = DS_cmp_main
     MasterFields = 'k_lsk_id'
-    DetailFields = 'p_klsk'
+    DetailFields = 'k_lsk_id'
     Options.AutoPrepare = True
     Constraints = <>
     Left = 184
     Top = 208
     ParamData = <
       item
-        DataType = ftInteger
-        Name = 'p_klsk'
-        ParamType = ptInput
+        DataType = ftUnknown
+        Name = 'k_lsk_id'
       end
       item
         DataType = ftInteger
@@ -557,23 +557,22 @@ object DM_Bill: TDM_Bill
     Connection = DataModule1.UniConnection1
     SQL.Strings = (
       'begin'
-      '  scott.rep_bills_ext.detail(p_lsk => :p_lsk,'
+      '  scott.rep_bills_ext.detail(p_lsk => :lsk,'
       '                       p_mg => :p_mg,'
       '                       p_includesaldo => :p_includesaldo,'
       '                       p_rfcur => :p_rfcur);'
       'end;')
     MasterSource = DS_cmp_funds_primary
     MasterFields = 'lsk'
-    DetailFields = 'p_lsk'
+    DetailFields = 'lsk'
     Options.AutoPrepare = True
     Constraints = <>
     Left = 184
     Top = 256
     ParamData = <
       item
-        DataType = ftString
-        Name = 'p_lsk'
-        ParamType = ptInput
+        DataType = ftUnknown
+        Name = 'lsk'
       end
       item
         DataType = ftString

@@ -1,6 +1,6 @@
 object Form_pass: TForm_pass
-  Left = 251
-  Top = 284
+  Left = 526
+  Top = 170
   Width = 237
   Height = 132
   BorderIcons = []
@@ -57,7 +57,7 @@ object Form_pass: TForm_pass
     Left = 133
     Top = 0
     Width = 88
-    Height = 94
+    Height = 93
     Align = alRight
     TabOrder = 2
     object Button1: TButton
@@ -66,6 +66,7 @@ object Form_pass: TForm_pass
       Width = 75
       Height = 25
       Caption = #1054#1082
+      ModalResult = 1
       TabOrder = 0
       OnClick = Button1Click
     end
@@ -76,6 +77,7 @@ object Form_pass: TForm_pass
       Height = 25
       Cancel = True
       Caption = #1054#1090#1084#1077#1085#1072
+      ModalResult = 7
       TabOrder = 1
       OnClick = Button2Click
     end

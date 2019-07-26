@@ -100,7 +100,7 @@ Conditionals=
 DebugSourceDirs=
 UsePackages=0
 [Parameters]
-RunParams=
+RunParams=c:\fins\bak\licenses2.ini
 HostApplication=
 Launcher=
 UseLauncher=0

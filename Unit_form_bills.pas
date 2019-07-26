@@ -434,11 +434,14 @@ begin
   DM_Bill.Uni_cmp_main.ParamByName('p_reu').AsString := cbb1.EditValue;
   DM_Bill.Uni_cmp_main.ParamByName('p_lsk').AsString := wwDBEdit1.Text;
   DM_Bill.Uni_cmp_main.ParamByName('p_lsk1').AsString := wwDBEdit2.Text;
-  DM_Bill.Uni_cmp_main.ParamByName('p_kul').AsString :=
-    DBLookupComboboxEh2.KeyValue;
+  if not VarIsNull(DBLookupComboboxEh2.KeyValue) then
+    DM_Bill.Uni_cmp_main.ParamByName('p_kul').AsString :=
+      DBLookupComboboxEh2.KeyValue
+  else
+    DM_Bill.Uni_cmp_main.ParamByName('p_kul').clear;
 
   //if DBLookupComboboxEh3.KeyValue <> null then
-  if not VarIsEmpty(DBLookupComboboxEh3.KeyValue) then
+  if not VarIsNull(DBLookupComboboxEh3.KeyValue) then
     //OD_cmp_main.SetVariable('p_nd', OD_houses.FieldByName('nd_id').AsString)
     DM_Bill.Uni_cmp_main.ParamByName('p_nd').AsString :=
       OD_houses.FieldByName('nd_id').AsString
@@ -517,7 +520,7 @@ begin
     //ограничивать диапазон записи для печати счетов
 {    OD_cmp_main.SetVariable('p_firstNum',
       OD_ls_cnt.FieldByName('first_rec').AsInteger);
-    OD_cmp_main.SetVariable('p_lastNum',
+    OD_cmpl_main.SetVariable('p_lastNum',
       OD_ls_cnt.FieldByName('last_rec').AsInteger);}
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_firstNum').AsInteger :=
       OD_ls_cnt.FieldByName('first_rec').AsInteger;
@@ -662,7 +665,7 @@ begin
     cxImageComboBox1.ItemIndex;
 
   //OD_cmp_qr.SetVariable('p_sel_flt_tp', cxImageComboBox1.ItemIndex);
-  DM_Bill.Uni_cmp_funds_main.Params.ParamByName('p_sel_flt_tp').AsInteger :=
+  DM_Bill.Uni_cmp_qr.Params.ParamByName('p_sel_flt_tp').AsInteger :=
     cxImageComboBox1.ItemIndex;
 
   {  OD_cmp_main.SetVariable('p_sel_obj', sel_obj_);
@@ -675,10 +678,13 @@ begin
   DM_Bill.Uni_cmp_main.Params.ParamByName('p_reu').AsString := cbb1.EditValue;
   DM_Bill.Uni_cmp_main.Params.ParamByName('p_lsk').AsString := wwDBEdit1.Text;
   DM_Bill.Uni_cmp_main.Params.ParamByName('p_lsk1').AsString := wwDBEdit2.Text;
-  DM_Bill.Uni_cmp_main.Params.ParamByName('p_kul').AsString :=
-    DBLookupComboboxEh2.KeyValue;
+  if not VarIsNull(DBLookupComboboxEh2.KeyValue) then
+    DM_Bill.Uni_cmp_main.Params.ParamByName('p_kul').AsString :=
+      DBLookupComboboxEh2.KeyValue
+  else
+    DM_Bill.Uni_cmp_main.Params.ParamByName('p_kul').Clear;
 
-  if not VarIsEmpty(DBLookupComboboxEh3.KeyValue) then
+  if not VarIsNull(DBLookupComboboxEh3.KeyValue) then
     //OD_cmp_main.SetVariable('p_nd', OD_houses.FieldByName('nd_id').AsString)
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_nd').AsString :=
       OD_houses.FieldByName('nd_id').AsString
@@ -873,16 +879,9 @@ begin
   OD_main.SetVariable('lsk1_', wwDBEdit2.Text);
 
   OD_main.SetVariable('kul_', DBLookupComboboxEh2.KeyValue);
-  //if DBLookupComboboxEh3.KeyValue <> null then
-  if not VarIsEmpty(DBLookupComboboxEh3.KeyValue) then
-    OD_main.SetVariable('nd_', OD_houses.FieldByName('nd_id').AsString)
-  else
-    OD_main.SetVariable('nd_', null);
+  OD_main.SetVariable('nd_', null);
 
-  if DBLookupComboboxEh4.KeyValue <> null then
-    OD_main.SetVariable('kw_', OD_kw.FieldByName('kw_id').AsString)
-  else
-    OD_main.SetVariable('kw_', null);
+  OD_main.SetVariable('kw_', OD_kw.FieldByName('kw_id').AsString);
 
   if (tp_ = 5) then //справка арх-2
   begin
@@ -932,11 +931,12 @@ begin
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_lsk').AsString := wwDBEdit1.Text;
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_lsk1').AsString :=
       wwDBEdit2.Text;
-    DM_Bill.Uni_cmp_main.Params.ParamByName('p_kul').AsString :=
-      DBLookupComboboxEh2.KeyValue;
-
-    //if DBLookupComboboxEh3.KeyValue <> null then
-    if not VarIsEmpty(DBLookupComboboxEh3.KeyValue) then
+    if not VarIsNull(DBLookupComboboxEh2.KeyValue) then
+      DM_Bill.Uni_cmp_main.Params.ParamByName('p_kul').AsString :=
+        DBLookupComboboxEh2.KeyValue
+    else
+      DM_Bill.Uni_cmp_main.Params.ParamByName('p_kul').Clear;
+    if not VarIsNull(DBLookupComboboxEh3.KeyValue) then
       //OD_cmp_main.SetVariable('p_nd', OD_houses.FieldByName('nd_id').AsString)
       DM_Bill.Uni_cmp_main.Params.ParamByName('p_nd').AsString :=
         OD_houses.FieldByName('nd_id').AsString
@@ -944,7 +944,7 @@ begin
       //OD_cmp_main.SetVariable('p_nd', null);
       DM_Bill.Uni_cmp_main.Params.ParamByName('p_nd').Clear;
 
-    if DBLookupComboboxEh4.KeyValue <> null then
+    if not VarIsNull(DBLookupComboboxEh4.KeyValue) then
       //OD_cmp_main.SetVariable('p_kw', OD_kw.FieldByName('kw_id').AsString)
       DM_Bill.Uni_cmp_main.Params.ParamByName('p_kw').AsString :=
         OD_kw.FieldByName('kw_id').AsString
@@ -1221,7 +1221,8 @@ begin
 
   // ЗАГРУЗКА отчёта
   if (((tp_ = 0) or (tp_ = 4)) and (OD_main.RecordCount = 0) or (tp_ = 1)
-    and (OD_main.RecordCount = 0) or (tp_ = 2) and (DM_Bill.Uni_arch.RecordCount = 0)
+    and (OD_main.RecordCount = 0) or (tp_ = 2) and (DM_Bill.Uni_arch.RecordCount
+    = 0)
     or (tp_ = 5) and (DM_Bill.Uni_cmp_main.RecordCount = 0)) then
   begin
     Application.MessageBox('Нет информации за указанный период', 'Внимание!', 16

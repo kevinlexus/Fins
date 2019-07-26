@@ -6,6 +6,7 @@ uses
   OracleMonitor,
   OracleUniProvider,
   Forms,
+  Windows,
   Unit_Mainform in 'Unit_Mainform.pas' {Form_Main},
   Unit_start in 'Unit_start.pas' {Form_start},
   Test1 in 'Test1.pas',
@@ -18,8 +19,10 @@ uses
   DM_module1 in 'DM_module1.pas' {DataModule1: TDataModule},
   Unit_status_gen in 'Unit_status_gen.pas' {Form_status_gen},
   Unit_form_alert_exit in 'Unit_form_alert_exit.pas' {Form_alert_exit},
-  Unit_print_saldo_houses in 'Unit_print_saldo_houses.pas' {Form_print_saldo_houses},
-  Unit_print_saldo_org_usl in 'Unit_print_saldo_org_usl.pas' {Form_print_saldo_org_usl},
+  Unit_print_saldo_houses in 'Unit_print_saldo_houses.pas'
+    {Form_print_saldo_houses},
+  Unit_print_saldo_org_usl in 'Unit_print_saldo_org_usl.pas'
+    {Form_print_saldo_org_usl},
   Unit_sel_reu in 'Unit_sel_reu.pas' {Form_sel_reu},
   Unit_form_saldo_check in 'Unit_form_saldo_check.pas' {Form_saldo_check},
   Unit_generate in 'Unit_generate.pas' {Form_generate},
@@ -28,7 +31,8 @@ uses
   Unit_form_plan in 'Unit_form_plan.pas' {Form_plan},
   Unit_print_plan in 'Unit_print_plan.pas' {Form_print_plan},
   Unit_print_xito5 in 'Unit_print_xito5.pas' {Form_print_xito5},
-  Unit_print_opl_xito10_3 in 'Unit_print_opl_xito10_3.pas' {Form_print_opl_xito10_3},
+  Unit_print_opl_xito10_3 in 'Unit_print_opl_xito10_3.pas'
+    {Form_print_opl_xito10_3},
   Unit_print_saldo_usl in 'Unit_print_saldo_usl.pas' {Form_print_saldo_usl},
   Unit_print_lg_usl in 'Unit_print_lg_usl.pas' {Form_print_lg_usl},
   Unit_sel_uch in 'Unit_sel_uch.pas' {Form_sel_uch},
@@ -71,7 +75,8 @@ uses
   Unit_sel_arch_period in 'Unit_sel_arch_period.pas' {Form_sel_arch_period},
   Unit_changes_list in 'Unit_changes_list.pas' {Form_changes_list},
   Unit_houses_nabor in 'Unit_houses_nabor.pas' {Form_houses_nabor},
-  Unit_change_house_nabor2 in 'Unit_change_house_nabor2.pas' {Form_change_house_nabor},
+  Unit_change_house_nabor2 in 'Unit_change_house_nabor2.pas'
+    {Form_change_house_nabor},
   Unit_spr_spk in 'Unit_spr_spk.pas' {Form_spr_spk},
   Unit_gen_current in 'Unit_gen_current.pas' {Form_gen_current},
   Unit_print_lists in 'Unit_print_lists.pas' {Form_print_lists},
@@ -115,8 +120,10 @@ uses
   Unit_spr_params in 'Unit_spr_params.pas' {Form_spr_params},
   Unit_edit_bitmask in 'Unit_edit_bitmask.pas' {Form_edit_bitmask},
   Unit_spr_street in 'Unit_spr_street.pas' {Form_spr_street},
-  Unit_change_house_status in 'Unit_change_house_status.pas' {Form_change_house_status},
-  Unit_change_house_vvod in 'Unit_change_house_vvod.pas' {Form_change_house_vvod},
+  Unit_change_house_status in 'Unit_change_house_status.pas'
+    {Form_change_house_status},
+  Unit_change_house_vvod in 'Unit_change_house_vvod.pas'
+    {Form_change_house_vvod},
   Unit_spr_usl in 'Unit_spr_usl.pas' {Form_spr_usl},
   Unit_add_usl in 'Unit_add_usl.pas' {Form_add_usl},
   Unit_price_copy in 'Unit_price_copy.pas' {Form_price_copy},
@@ -158,7 +165,7 @@ uses
   Unit_edit_pay_usl_org in 'Unit_edit_pay_usl_org.pas' {Form_edit_pay_usl_org},
   Unit_find_adr2 in 'Unit_find_adr2.pas' {Form_find_adr2},
   ufDataModuleOlap in 'ufDataModuleOlap.pas' {DM_Olap: TDataModule},
-  ufDataModuleBill in 'ufDataModuleBill.pas' {DM_bill: TDataModule};
+  ufDataModuleBill in 'ufDataModuleBill.pas' {DM_Bill: TDataModule};
 
 //,
   //CnDebug;
@@ -170,29 +177,47 @@ var
   Ini: TIniFile;
   Pass: string;
   SID: string;
-  s, User,serverIp: string;
+  s, User, serverIp: string;
   I, I1: Integer;
 type
   TOracleErrorEvent = procedure(Error: EOracleError);
 var
   OnOracleError: TOracleErrorEvent = nil;
+  res: TModalResult;
 
 procedure EOracleErr(Error: EOracleError);
 begin
   //Проверяем ошибку возможно вызванную потерей связи
-  DataModule1.OraclePackage2.Session.Connected := true;
-  DataModule1.OraclePackage2.CallProcedure('scott.logger.log_', [parDate, 'User:'
+  DataModule1.OraclePackage1.Session.Connected := true;
+  DataModule1.OraclePackage1.CallProcedure('scott.logger.log_', [parDate, 'User:'
     + Form_main.User + ' ' + Error.Message]);
-  DataModule1.OraclePackage2.Session.Connected := false;
+  DataModule1.OraclePackage1.Session.Connected := false;
 end;
 
 begin
   //   StartTimeMark(1);
   //   OutputDebugString('bbbb');
     ////Application.MessageBox('1', 'Check', 16);
-  s := ParamStr(1);
-  GetDir(0, s);
-  Ini := TIniFile.Create(s + '\licenses.ini');
+  if ParamStr(1) <> '' then
+  begin
+    // первый параметр приложения - путь к файлу лицензии, включая его имя
+    // например c:\fins\bak\licenses2.ini
+    if not FileExists(s) then
+    begin
+      Application.MessageBox('Указан неверный путь или имя файла лицензии', 'Внимание!', MB_OK
+        + MB_ICONSTOP + MB_TOPMOST);
+      Application.Terminate;
+      Exit;
+    end;
+    s := ParamStr(1);
+    Ini := TIniFile.Create(s);
+  end
+  else
+  begin
+    s := ParamStr(0);
+    GetDir(0, s);
+    Ini := TIniFile.Create(s + '\licenses.ini');
+  end;
 
   Application.Initialize;
   DecimalSeparator := '.';
@@ -200,7 +225,7 @@ begin
   Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TDM_Olap, DM_Olap);
   Application.CreateForm(TForm_Main, Form_Main);
-  Application.CreateForm(TDM_bill, DM_bill);
+  Application.CreateForm(TDM_Bill, DM_Bill);
   s := Ini.ReadString('Application', 'User', '');
   Pass := '';
   I := 1;
@@ -226,7 +251,12 @@ begin
   begin
     Form_main.User := User;
     Application.CreateForm(TForm_pass, Form_pass);
-    Form_pass.ShowModal;
+    res := Form_pass.ShowModal;
+    if res <> mrOk then
+    begin
+      Application.Terminate;
+      Exit;
+    end;
     User := Form_main.User;
     Pass := Form_main.Pass;
   end;
@@ -251,14 +281,10 @@ begin
     begin
       Application.MessageBox('Недопустимо использование StatementCache в OracleSession, приводит к ошибке ORA-01410: Invalid Rowid!', 'Внимание!', 16)
     end;
-    DataModule1.OracleSession1.Connected := false;
-    DataModule1.OracleSession1.Connected := true;
-    DataModule1.OracleSession1.Connected := false;
-    DataModule1.OracleSession1.Connected := true;
 
-    DataModule1.OracleSession2.LogonUsername := User;
+    {DataModule1.OracleSession2.LogonUsername := User;
     DataModule1.OracleSession2.LogonPassword := Pass;
-    DataModule1.OracleSession2.LogonDatabase := SID;
+    DataModule1.OracleSession2.LogonDatabase := SID;}
 
     if DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
       ['drx5_админ_доступ_к_базе']) = 1 then
@@ -324,16 +350,17 @@ begin
   Ini.Free;
   if serverIp = '' then
   begin
-      Application.MessageBox('В licenses.ini не указан Ip адрес сервера ServerIp',
-        'Внимание!', 16);
-      Application.Terminate;
+    Application.MessageBox('В licenses.ini не указан Ip адрес сервера ServerIp',
+      'Внимание!', 16);
+    Application.Terminate;
   end;
 
-  DataModule1.UniConnection1.Username:=DataModule1.OracleSession2.LogonUsername;
-  DataModule1.UniConnection1.Password:=DataModule1.OracleSession2.LogonPassword;
-  DataModule1.UniConnection1.Server:=serverIp;
+  DataModule1.UniConnection1.Username :=
+    DataModule1.OracleSession1.LogonUsername;
+  DataModule1.UniConnection1.Password :=
+    DataModule1.OracleSession1.LogonPassword;
+  DataModule1.UniConnection1.Server := serverIp;
   DataModule1.UniConnection1.Connect;
-
 
   SetMenu(0);
   with Form_Main do
@@ -401,7 +428,7 @@ begin
 //  DataModule1.OraclePackage1.CallProcedure('scott.utils.prep_users_par',
 //    [parNone]);
 
-  DataModule1.UniStoredProc1.StoredProcName:='scott.utils.prep_users_par';
+  DataModule1.UniStoredProc1.StoredProcName := 'scott.utils.prep_users_par';
   DataModule1.UniStoredProc1.Params.Clear;
   DataModule1.UniStoredProc1.ExecProc;
 
