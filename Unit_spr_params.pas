@@ -227,9 +227,13 @@ end;
 procedure TForm_spr_params.chk1Click(Sender: TObject);
 begin
   if chk1.Checked then
+  begin
      OD_spr.ReadOnly := False
+  end
   else
+  begin
      OD_spr.ReadOnly := True;
+  end;
 
 end;
 

@@ -1,6 +1,6 @@
 object Form_spr_params: TForm_spr_params
-  Left = 239
-  Top = 461
+  Left = 963
+  Top = 180
   Width = 882
   Height = 491
   Caption = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082' '#1087#1072#1088#1072#1084#1077#1090#1088#1086#1074
@@ -303,7 +303,6 @@ object Form_spr_params: TForm_spr_params
     Align = alClient
     DataSource = DS_spr
     Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgWordWrap, dgShowCellHint, dgProportionalColResize]
-    ReadOnly = True
     TabOrder = 1
     TitleAlignment = taLeftJustify
     TitleFont.Charset = DEFAULT_CHARSET
@@ -442,7 +441,8 @@ object Form_spr_params: TForm_spr_params
   end
   object DS_spr: TwwDataSource
     DataSet = OD_spr
-    Top = 32
+    Left = 8
+    Top = 72
   end
   object OD_spr: TOracleDataSet
     SQL.Strings = (

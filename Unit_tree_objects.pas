@@ -2366,28 +2366,32 @@ begin
 end;
 
 procedure TForm_tree_objects.setpsch;
+var
+  l_before: Integer;
 begin
+  l_before := DM_Olap.Uni_tree_objects.Params.ParamByName('set_psch').AsInteger;
   //установить видимость закрытого фонда
   if CheckBox1.Checked = true then
   begin
     DM_Olap.Uni_tree_objects.Params.ParamByName('set_psch').AsInteger := 0;
-    //DM_Olap.OD_tree_objects.SetVariable('set_psch', 0);
   end
   else
   begin
     DM_Olap.Uni_tree_objects.Params.ParamByName('set_psch').AsInteger := 1;
-    //DM_Olap.OD_tree_objects.SetVariable('set_psch', 1);
   end;
-  //DM_Olap.OD_tree_objects.Active := False;
-  //DM_Olap.OD_tree_objects.Active := true;
-  DM_Olap.Uni_tree_objects.Active := False;
-  DM_Olap.Uni_tree_objects.Active := True;
 
-  DM_Olap.MemTableEh2.Close;
-  DM_Olap.MemTableEh2.FetchRecords(4000);
-  DM_Olap.MemTableEh2.FetchRecords(4000);
-  DM_Olap.MemTableEh2.FetchRecords(4000);
-  DM_Olap.MemTableEh2.Open;
+{  if DM_Olap.Uni_tree_objects.Params.ParamByName('set_psch').AsInteger <>
+    l_before then
+  begin}
+    DM_Olap.Uni_tree_objects.Active := False;
+    DM_Olap.Uni_tree_objects.Active := True;
+
+    DM_Olap.MemTableEh2.Close;
+    DM_Olap.MemTableEh2.FetchRecords(4000);
+    DM_Olap.MemTableEh2.FetchRecords(4000);
+    DM_Olap.MemTableEh2.FetchRecords(4000);
+    DM_Olap.MemTableEh2.Open;
+//  end;
 end;
 
 procedure TForm_tree_objects.Timer2Timer(Sender: TObject);

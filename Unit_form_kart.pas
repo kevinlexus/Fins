@@ -207,13 +207,9 @@ type
     OD_kart_prFK_TO_KUL: TStringField;
     OD_kart_prFK_MILIT: TFloatField;
     OD_kart_prFK_MILIT_REGN: TFloatField;
-    OD_nabor_p: TOracleDataSet;
-    DS_nabor_p: TDataSource;
     OD_spr_tarif: TOracleDataSet;
     DS_spr_tarif: TDataSource;
     Mem_spr_tarif: TMemTableEh;
-    PopupMenu1: TPopupMenu;
-    N1: TMenuItem;
     Label43: TLabel;
     DBLookupComboboxEh5: TDBLookupComboboxEh;
     DS_pasp: TDataSource;
@@ -221,12 +217,6 @@ type
     OD_paspID: TFloatField;
     OD_paspNAME: TStringField;
     OD_chargeVOL_ADD: TFloatField;
-    OD_nabor_pID_DVB: TFloatField;
-    OD_nabor_pNAME: TStringField;
-    OD_nabor_pFK_TARIF: TFloatField;
-    OD_nabor_pCENA: TFloatField;
-    OD_nabor_pLSK: TStringField;
-    N2: TMenuItem;
     OD_kart_prSTATUS_DATB: TDateTimeField;
     Label47: TLabel;
     OD_states_sch: TOracleDataSet;
@@ -334,7 +324,6 @@ type
     fltfldOD_chargeTP: TFloatField;
     fltfldOD_chargeSPTARN: TFloatField;
     PopupMenu3: TPopupMenu;
-    mnu1: TMenuItem;
     mnu2: TMenuItem;
     OD_chargeKF_KPR_SCH: TFloatField;
     BitBtn3: TBitBtn;
@@ -404,6 +393,9 @@ type
     btn1: TButton;
     OD_eolink: TOracleDataSet;
     DS_eolink: TDataSource;
+    Label53: TLabel;
+    DBEdit3: TDBEdit;
+    mnu1: TMenuItem;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure DBGridEh1DblClick(Sender: TObject);
     procedure OD_kartAfterPost(DataSet: TDataSet);
@@ -454,14 +446,10 @@ type
       TShiftState; X, Y: Integer);
     procedure DBGridEh2MouseDown(Sender: TObject; Button: TMouseButton; Shift:
       TShiftState; X, Y: Integer);
-    procedure DBGridEh2DragDrop(Sender, Source: TObject; X, Y: Integer);
-    procedure DBGridEh3DragDrop(Sender, Source: TObject; X, Y: Integer);
     procedure DBGridEh3DragOver(Sender, Source: TObject; X, Y: Integer; State:
       TDragState; var Accept: Boolean);
-    procedure N1Click(Sender: TObject);
     procedure CMDialogKey(var Msg: TWMKey); message CM_DIALOGKEY;
     procedure wwDBComboBox1DropDown(Sender: TObject);
-    procedure N2Click(Sender: TObject);
     procedure wwDBLookupCombo4CloseUp(Sender: TObject; LookupTable, FillTable:
       TDataSet; modified: Boolean);
     procedure wwDBLookupCombo4Exit(Sender: TObject);
@@ -498,6 +486,7 @@ type
       AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
     procedure chk1Click(Sender: TObject);
     procedure btn1Click(Sender: TObject);
+    procedure N1Click(Sender: TObject);
     //    procedure change_size;
   private
     tarif_, privs_, subsid_, changes_, itogn_: Double;
@@ -623,11 +612,6 @@ begin
   wwDBDateTimePicker2.Enabled := false;
   wwDBEdit5.Enabled := false;
 
-  //запрет правки цифрового тв (для всего фонда)
-  N1.Enabled := False;
-  N2.Enabled := False;
-  allow_dtv_ := 0;
-
   if (admin_ <> 1) and (Form_list_kart.isAllowEdit_ = 0) and (Form_main.arch_mg_
     = '') then
   begin
@@ -686,10 +670,6 @@ begin
     wwDBDateTimePicker2.Enabled := true;
     wwDBEdit5.Enabled := true;
 
-    //разрешение правки цифрового тв(для всего фонда)
-    N1.Enabled := True;
-    N2.Enabled := True;
-    allow_dtv_ := 1;
   end;
 
   if (Form_list_kart.isAllowEdit_k2_ = 1) and (Form_main.arch_mg_ = '') then
@@ -756,12 +736,6 @@ begin
   if not (Form_kart.OD_charge.State in [dsBrowse]) then
     Form_kart.OD_charge.Post;
 
-  if (Form_main.org_var_ = 1) then
-  begin
-    if not (Form_kart.OD_nabor_p.State in [dsBrowse]) then
-      Form_kart.OD_nabor_p.Post;
-  end;
-
   if not (Form_kart.OD_states_sch.State in [dsBrowse]) then
     Form_kart.OD_states_sch.Post;
   if not (Form_list_kart.OD_list_kart.State in [dsBrowse]) then
@@ -769,8 +743,7 @@ begin
 
   if (Form_list_kart.OD_list_kart.UpdateStatus in [usInserted, usModified,
     usDeleted])
-    or (Form_kart.OD_charge.UpdatesPending = true) or
-      (Form_kart.OD_nabor_p.UpdatesPending = true)
+    or (Form_kart.OD_charge.UpdatesPending = true) 
     or (Form_kart.OD_states_sch.UpdatesPending = true) or (updates_ = 1) then
   begin
 
@@ -779,7 +752,6 @@ begin
       DataModule1.OracleSession1.ApplyUpdates([Form_list_kart.OD_list_kart],
         true);
       DataModule1.OracleSession1.ApplyUpdates([Form_kart.OD_charge], true);
-      DataModule1.OracleSession1.ApplyUpdates([Form_kart.OD_nabor_p], true);
       DataModule1.OracleSession1.ApplyUpdates([Form_kart.OD_states_sch], true);
 
       //Проверка корректности статусов счетчиков, статусов проживающих
@@ -795,7 +767,6 @@ begin
     else if ask_ = 2 then //отменяем без вопросов
     begin
       Form_kart.OD_states_sch.CancelUpdates;
-      Form_kart.OD_nabor_p.CancelUpdates;
       Form_kart.OD_charge.CancelUpdates;
       Form_list_kart.OD_list_kart.CancelUpdates;
 
@@ -812,7 +783,6 @@ begin
         //для подтверждения изменений, сделанных в пакетах
         DataModule1.OracleSession1.Commit;
         DataModule1.OracleSession1.ApplyUpdates([Form_kart.OD_charge], true);
-        DataModule1.OracleSession1.ApplyUpdates([Form_kart.OD_nabor_p], true);
         DataModule1.OracleSession1.ApplyUpdates([Form_kart.OD_states_sch],
           true);
         DataModule1.OracleSession1.ApplyUpdates([Form_list_kart.OD_list_kart],
@@ -832,7 +802,6 @@ begin
         Form_list_kart.OD_list_kart.CancelUpdates;
         OD_charge.CancelUpdates;
         OD_states_sch.CancelUpdates;
-        OD_nabor_p.CancelUpdates;
       end;
       //recalc_kart;
     end;
@@ -1139,10 +1108,6 @@ begin
     OD_charge.Refresh;
     calcFooter;
   end;
-  if (Form_main.org_var_ = 1) then
-  begin
-    OD_nabor_p.Refresh;
-  end;
   OD_states_sch.Refresh;
   if FF('Form_det_chrg', 0) = 1 then
     Form_det_chrg.recalc;
@@ -1420,14 +1385,6 @@ begin
 
   //история состояний счетчиков
   OD_states_sch.Active := true;
-
-  if (Form_main.org_var_ = 1) then
-  begin
-    //  Временно принудительно ставим услугу '056'  (23.04.2010)
-    OD_nabor_p.Active := False;
-    OD_nabor_p.SetVariable('usl', '056');
-    OD_nabor_p.Active := true;
-  end;
 
   Form_kart.Top := 5;
   //  Form_kart.Left := trunc((Form_main.Width - Form_kart.Width) / 2);
@@ -1874,48 +1831,6 @@ begin
   end;
 end;
 
-procedure TForm_kart.DBGridEh2DragDrop(Sender, Source: TObject; X, Y: Integer);
-var
-  cnt_: Integer;
-  bm: TBookmark;
-begin
-  if action_ = 0 then
-  begin
-    //добавление новой программы в набор
-    //  Временно принудительно ставим услугу '056'  (23.04.2010)
-    cnt_ :=
-      DataModule1.OraclePackage1.CallIntegerFunction('scott.P_HOUSES.add_prog',
-      [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, fk_tarif_, '056',
-      OD_nabor_p.FieldByName('id_dvb').AsVariant]);
-    if cnt_ <> 0 then
-      msg2('Данная программа/пакет уже существуют в наборе!', 'Внимание!',
-        MB_ICONASTERISK)
-    else
-      updates_ := 1;
-
-  end;
-
-  OD_nabor_p.Active := False;
-  OD_nabor_p.Active := True;
-end;
-
-procedure TForm_kart.DBGridEh3DragDrop(Sender, Source: TObject; X, Y: Integer);
-var
-  bm: TBookmark;
-  cnt_: Integer;
-begin
-  if action_ = 1 then
-  begin
-    //удаление программы из набора
-    cnt_ :=
-      DataModule1.OraclePackage1.CallIntegerFunction('scott.P_HOUSES.del_prog',
-      [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, id_]);
-    OD_nabor_p.Active := False;
-    OD_nabor_p.Active := True;
-    updates_ := 1;
-  end;
-end;
-
 procedure TForm_kart.DBGridEh3DragOver(Sender, Source: TObject; X, Y: Integer;
   State: TDragState; var Accept: Boolean);
 begin
@@ -1930,20 +1845,6 @@ begin
     Exit;
   end;
 
-end;
-
-procedure TForm_kart.N1Click(Sender: TObject);
-var
-  cnt_: Integer;
-begin
-  //удаление программы из набора
-  cnt_ :=
-    DataModule1.OraclePackage1.CallIntegerFunction('scott.P_HOUSES.del_prog',
-    [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString,
-    OD_nabor_p.FieldByName('fk_tarif').AsInteger]);
-  OD_nabor_p.Active := False;
-  OD_nabor_p.Active := True;
-  updates_ := 1;
 end;
 
 procedure TForm_kart.CMDialogKey(var Msg: TWMKey);
@@ -1961,19 +1862,6 @@ procedure TForm_kart.wwDBComboBox1DropDown(Sender: TObject);
 begin
   //  PageControl3.ActivePageIndex := 1;
 
-end;
-
-procedure TForm_kart.N2Click(Sender: TObject);
-var
-  cnt_: Integer;
-begin
-  //удаление программы из набора
-  cnt_ :=
-    DataModule1.OraclePackage1.CallIntegerFunction('scott.P_HOUSES.del_prog',
-    [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString]);
-  OD_nabor_p.Active := False;
-  OD_nabor_p.Active := True;
-  updates_ := 1;
 end;
 
 procedure TForm_kart.wwDBLookupCombo4CloseUp(Sender: TObject; LookupTable,
@@ -2370,6 +2258,18 @@ procedure TForm_kart.btn1Click(Sender: TObject);
 begin
   save_changes(1);
   recalc_kart;
+end;
+
+procedure TForm_kart.N1Click(Sender: TObject);
+begin
+  if FF('Form_change_house_nabor2', 1) = 0 then
+    Application.CreateForm(TForm_change_house_nabor2, Form_change_house_nabor2);
+  Form_change_house_nabor2.setState(4,
+    Form_list_kart.OD_list_kart.FieldByName('lsk').asString, 1, 0);
+  if Form_change_house_nabor2.ShowModal = mrOk then
+  begin
+    OD_charge.Refresh;
+  end;
 end;
 
 end.

@@ -1,7 +1,7 @@
 object DM_Olap: TDM_Olap
   OldCreateOrder = False
-  Left = 1256
-  Top = 191
+  Left = 1216
+  Top = 171
   Height = 810
   Width = 686
   object DS_spr_params: TDataSource
@@ -639,7 +639,6 @@ object DM_Olap: TDM_Olap
       
         '                  p.name || '#39', '#39' || scott.utils.f_order(t.nd, 6)' +
         '), t.reu, p.name, t.nd, t.mg1')
-    Options.AutoPrepare = True
     Constraints = <>
     Left = 32
     Top = 192

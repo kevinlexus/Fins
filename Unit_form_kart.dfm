@@ -1,6 +1,6 @@
 object Form_kart: TForm_kart
-  Left = 640
-  Top = 175
+  Left = 894
+  Top = 176
   Width = 903
   Height = 675
   BorderIcons = [biSystemMenu, biMinimize]
@@ -2384,6 +2384,22 @@ object Form_kart: TForm_kart
         ParentShowHint = False
         ShowHint = True
       end
+      object Label53: TLabel
+        Left = 296
+        Top = 32
+        Width = 90
+        Height = 13
+        Hint = #1050#1086#1083'-'#1074#1086' '#1089#1086#1073#1089#1090#1074#1077#1085#1080#1080#1085#1086#1082#1086#1074' '#1076#1083#1103' '#1085#1072#1095#1080#1089#1083#1077#1085#1080#1103' '#1042#1099#1074#1086#1079#1072' '#1084#1091#1089#1086#1088#1072', '#1042#1086#1076#1099' ('#1058#1057#1046')'
+        Caption = #1050#1086#1083'-'#1074#1086' '#1089#1086#1073#1089#1090#1074'.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = True
+      end
       object cxDBCheckBox1: TcxDBCheckBox
         Left = 8
         Top = 0
@@ -2496,6 +2512,15 @@ object Form_kart: TForm_kart
         ShowHint = True
         TabOrder = 5
         OnClick = BitBtn2Click
+      end
+      object DBEdit3: TDBEdit
+        Left = 388
+        Top = 25
+        Width = 29
+        Height = 21
+        DataField = 'KPR_OWN'
+        DataSource = Form_list_kart.DS_list_kart
+        TabOrder = 6
       end
     end
   end
@@ -3804,57 +3829,6 @@ object Form_kart: TForm_kart
     Left = 456
     Top = 528
   end
-  object OD_nabor_p: TOracleDataSet
-    SQL.Strings = (
-      
-        'select t.lsk, t.id_dvb, s.name, t.fk_tarif, a.cena, t.rowid from' +
-        ' scott.nabor_progs t, scott.spr_tarif s, '
-      '(select s.* from scott.spr_tarif_prices s, scott.params p'
-      'where p.period between s.mg1 and s.mg2) a'
-      'where t.lsk=:lsk and t.usl=:usl and t.fk_tarif=s.id '
-      'and s.id=a.fk_tarif(+)'
-      'order by t.id_dvb')
-    Optimize = False
-    Variables.Data = {
-      0300000002000000040000003A4C534B05000000090000003031303030303032
-      0000000000040000003A55534C050000000000000000000000}
-    QBEDefinition.QBEFieldDefs = {
-      0400000005000000040000004E414D4501000000000008000000464B5F544152
-      49460100000000000400000043454E410100000000000600000049445F445642
-      010000000000030000004C534B010000000000}
-    Master = Form_list_kart.OD_list_kart
-    MasterFields = 'LSK'
-    DetailFields = 'LSK'
-    UpdatingTable = 'scott.nabor_progs'
-    CommitOnPost = False
-    CachedUpdates = True
-    Session = DataModule1.OracleSession1
-    Left = 156
-    Top = 440
-    object OD_nabor_pID_DVB: TFloatField
-      FieldName = 'ID_DVB'
-    end
-    object OD_nabor_pNAME: TStringField
-      FieldName = 'NAME'
-      Size = 32
-    end
-    object OD_nabor_pFK_TARIF: TFloatField
-      FieldName = 'FK_TARIF'
-    end
-    object OD_nabor_pCENA: TFloatField
-      FieldName = 'CENA'
-    end
-    object OD_nabor_pLSK: TStringField
-      FieldName = 'LSK'
-      Required = True
-      Size = 8
-    end
-  end
-  object DS_nabor_p: TDataSource
-    DataSet = OD_nabor_p
-    Left = 192
-    Top = 440
-  end
   object OD_spr_tarif: TOracleDataSet
     SQL.Strings = (
       
@@ -3899,18 +3873,6 @@ object Form_kart: TForm_kart
     TreeList.DefaultNodeExpanded = True
     Left = 268
     Top = 496
-  end
-  object PopupMenu1: TPopupMenu
-    Left = 68
-    Top = 416
-    object N1: TMenuItem
-      Caption = #1059#1076#1072#1083#1080#1090#1100' '#1087#1088#1086#1075#1088#1072#1084#1084#1091
-      OnClick = N1Click
-    end
-    object N2: TMenuItem
-      Caption = #1059#1076#1072#1083#1080#1090#1100' '#1074#1089#1077
-      OnClick = N2Click
-    end
   end
   object DS_pasp: TDataSource
     DataSet = OD_pasp
@@ -4034,7 +3996,7 @@ object Form_kart: TForm_kart
     Top = 400
     object mnu1: TMenuItem
       Caption = #1044#1086#1073#1072#1074#1080#1090#1100' '#1091#1089#1083#1091#1075#1091
-      OnClick = mnu1Click
+      OnClick = N1Click
     end
     object mnu2: TMenuItem
       Caption = #1059#1076#1072#1083#1080#1090#1100' '#1091#1089#1083#1091#1075#1091

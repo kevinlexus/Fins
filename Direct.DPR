@@ -198,19 +198,19 @@ begin
   //   StartTimeMark(1);
   //   OutputDebugString('bbbb');
     ////Application.MessageBox('1', 'Check', 16);
-  if ParamStr(1) <> '' then
-  begin
+  if ParamStr(1) <> '' then    
+  begin                                
     // первый параметр приложения - путь к файлу лицензии, включая его имя
     // например c:\fins\bak\licenses2.ini
-    if not FileExists(s) then
+    s := ParamStr(1);
+    if not FileExists(s) then       
     begin
       Application.MessageBox('Указан неверный путь или имя файла лицензии', 'Внимание!', MB_OK
-        + MB_ICONSTOP + MB_TOPMOST);
+        + MB_ICONSTOP + MB_TOPMOST);   
       Application.Terminate;
       Exit;
     end;
-    s := ParamStr(1);
-    Ini := TIniFile.Create(s);
+    Ini := TIniFile.Create(s);          
   end
   else
   begin

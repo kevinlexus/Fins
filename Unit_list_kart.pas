@@ -218,6 +218,7 @@ type
     OD_list_kartFK_KLSK_OBJ: TFloatField;
     OD_check_conn_gis: TOracleDataSet;
     OD_list_kartDT_CR: TDateTimeField;
+    OD_list_kartKPR_OWN: TFloatField;
     procedure wwDBGrid1DblClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure wwDBGrid1KeyDown(Sender: TObject; var Key: Word;

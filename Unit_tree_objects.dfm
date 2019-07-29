@@ -1,6 +1,6 @@
 object Form_tree_objects: TForm_tree_objects
-  Left = 235
-  Top = 155
+  Left = 237
+  Top = 145
   Width = 363
   Height = 864
   Align = alLeft
