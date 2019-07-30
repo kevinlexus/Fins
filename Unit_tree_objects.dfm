@@ -612,10 +612,11 @@ object Form_tree_objects: TForm_tree_objects
     DataController.ParentField = 'MAIN_ID'
     DataController.KeyField = 'ID'
     Navigator.Buttons.CustomButtons = <>
+    OptionsView.Headers = False
     RootValue = 0
     TabOrder = 5
-    OnFocusedNodeChanged = cxDBTreeList1FocusedNodeChanged
     object cxDBTreeList1ID: TcxDBTreeListColumn
+      Visible = False
       DataBinding.FieldName = 'ID'
       Width = 100
       Position.ColIndex = 0
@@ -627,7 +628,7 @@ object Form_tree_objects: TForm_tree_objects
     object cxDBTreeList1NAME: TcxDBTreeListColumn
       DataBinding.FieldName = 'NAME'
       Options.Editing = False
-      Width = 106
+      Width = 243
       Position.ColIndex = 1
       Position.RowIndex = 0
       Position.BandIndex = 0
@@ -638,7 +639,6 @@ object Form_tree_objects: TForm_tree_objects
       PropertiesClassName = 'TcxCheckBoxProperties'
       Properties.ValueChecked = 0
       Properties.ValueUnchecked = 1
-      Properties.OnEditValueChanged = cxDBTreeList1SELPropertiesEditValueChanged
       DataBinding.FieldName = 'SEL'
       Width = 100
       Position.ColIndex = 2

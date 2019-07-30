@@ -1,8 +1,8 @@
 object Form_print_bills: TForm_print_bills
-  Left = 283
-  Top = 197
-  Width = 465
-  Height = 444
+  Left = 273
+  Top = 173
+  Width = 488
+  Height = 443
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #1057#1095#1077#1090#1072' '#1085#1072' '#1086#1087#1083#1072#1090#1091' '#1091#1089#1083#1091#1075' '#1046#1050#1061
   Color = clBtnFace
@@ -93,7 +93,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox1: TGroupBox
     Left = 0
     Top = 342
-    Width = 449
+    Width = 472
     Height = 61
     Align = alTop
     TabOrder = 3
@@ -138,7 +138,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox2: TGroupBox
     Left = 0
     Top = 0
-    Width = 449
+    Width = 472
     Height = 105
     Align = alTop
     TabOrder = 0
@@ -275,7 +275,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox3: TGroupBox
     Left = 0
     Top = 105
-    Width = 449
+    Width = 472
     Height = 200
     Align = alTop
     TabOrder = 2
@@ -563,7 +563,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox4: TGroupBox
     Left = 0
     Top = 305
-    Width = 449
+    Width = 472
     Height = 37
     Align = alTop
     TabOrder = 4
@@ -1550,7 +1550,6 @@ object Form_print_bills: TForm_print_bills
       000000070000004B50525F575250010000000000030000005041590100000000
       00070000005041595F50454E01000000000004000000444F4C47010000000000
       07000000504552535F5450010000000000}
-    Master = OD_cmp_main2
     MasterFields = 'LSK'
     DetailFields = 'P_LSK'
     Session = DataModule1.OracleSession1
@@ -1585,107 +1584,6 @@ object Form_print_bills: TForm_print_bills
     Left = 48
     Top = 432
   end
-  object OD_arch2: TOracleDataSet
-    SQL.Strings = (
-      'begin'
-      '  -- Call the procedure'
-      '  scott.rep_bills.arch(p_k_lsk => :p_k_lsk,'
-      '                 p_adr => :p_adr,'
-      '                 p_lsk => :p_lsk,'
-      '                 p_mg1 => :p_mg1,'
-      '                 p_mg2 => :p_mg2,'
-      '                 p_rfcur => :p_rfcur);'
-      'end;'
-      ''
-      ''
-      ''
-      '/*select substr(m.mg,1,4)||'#39'-'#39'||substr(m.mg,5,2) as mg,'
-      
-        ' m.mg_new, m.lsk, nvl(a.nm,u2.nm2) as nm, case when a.summa=0 th' +
-        'en null else a.summa end as summa, '
-      'case when s.sal=0 then null else s.sal end as sal,'
-      'case when e.pay=0 then null else e.pay end as pay,'
-      'case when f.pen=0 then null else f.pen end as pen'
-      ' from '
-      ' scott.usl u2,'
-      ' (select k.lsk, t.mg, t.mg_new, k.mg1, k.mg2 from scott.kart k,'
-      
-        ' (select to_char(add_months(to_date(p.period||'#39'01'#39', '#39'YYYYMMDD'#39'),' +
-        ' -1*level),'#39'YYYYMM'#39') as mg,'
-      
-        ' to_char(add_months(to_date(p.period||'#39'01'#39', '#39'YYYYMMDD'#39'), -1*leve' +
-        'l+1),'#39'YYYYMM'#39') as mg_new'
-      '  from scott.params p connect by level <= 1000) t'
-      
-        '  where (:adr_=1 and k.k_lsk_id=:k_lsk_id_ or :adr_=0 and k.lsk=' +
-        ':lsk_)) m  ,'
-      '(select lsk, mg, nm, sum(summa) as summa from ('
-      '  select t.lsk, t.mg, u.nm2 as nm, t.summa as summa'
-      '  from scott.kart k, scott.arch_charges t, scott.usl u '
-      
-        ' where u.usl=t.usl_id and k.lsk=t.lsk and (:adr_=1 and k.k_lsk_i' +
-        'd=:k_lsk_id_ or :adr_=0 and k.lsk=:lsk_)'
-      '  union all'
-      '  select t.lsk, t.mg, u.nm2 as nm, t.summa as summa'
-      '    from scott.kart k, scott.arch_changes t, scott.usl u '
-      
-        '   where u.usl=t.usl_id and k.lsk=t.lsk and (:adr_=1 and k.k_lsk' +
-        '_id=:k_lsk_id_ or :adr_=0 and k.lsk=:lsk_)'
-      '  )'
-      '  group by lsk, mg, nm) a,'
-      
-        ' (select t.mg, t.lsk, sum(t.summa) as sal from scott.kart k, sco' +
-        'tt.saldo_usl t'
-      
-        '  where k.lsk=t.lsk and (:adr_=1 and k.k_lsk_id=:k_lsk_id_ or :a' +
-        'dr_=0 and k.lsk=:lsk_)'
-      '  group by t.mg, t.lsk) s,'
-      
-        ' (select t.mg, t.lsk, sum(t.summa) as pay from scott.kart k, sco' +
-        'tt.a_kwtp t'
-      
-        '  where k.lsk=t.lsk and (:adr_=1 and k.k_lsk_id=:k_lsk_id_ or :a' +
-        'dr_=0 and k.lsk=:lsk_)'
-      '  and t.mg between :mg1_ and :mg2_'
-      '  group by t.mg, t.lsk) e,'
-      
-        ' (select t.mg1, t.lsk, sum(t.penya) as pen from scott.kart k, sc' +
-        'ott.a_penya t, sys.v_params p'
-      
-        '  where k.lsk=t.lsk and (:adr_=1 and k.k_lsk_id=:k_lsk_id_ or :a' +
-        'dr_=0 and k.lsk=:lsk_)'
-      '  and t.mg1 between :mg1_ and :mg2_'
-      '  and t.mg=p.period3'
-      '  group by t.mg1, t.lsk) f'
-      'where m.mg=a.mg(+) and m.lsk=a.lsk(+)'
-      ' and m.mg between :mg1_ and :mg2_'
-      ' and m.mg_new=s.mg(+) and m.lsk=s.lsk(+)'
-      ' and m.mg=e.mg(+) and m.lsk=e.lsk(+)'
-      ' and m.mg=f.mg1(+) and m.lsk=f.lsk(+)'
-      
-        ' and (nvl(a.summa,0) <> 0 or nvl(s.sal,0) <> 0 or nvl(e.pay,0) <' +
-        '> 0)'
-      'and u2.usl='#39'003'#39
-      'order by m.mg, m.mg1, u2.npp'
-      '*/')
-    Optimize = False
-    Variables.Data = {
-      0300000006000000080000003A505F4B5F4C534B030000000000000000000000
-      060000003A505F414452030000000000000000000000060000003A505F4C534B
-      050000000000000000000000060000003A505F4D473105000000000000000000
-      0000060000003A505F4D4732050000000000000000000000080000003A505F52
-      46435552740000000000000000000000}
-    QBEDefinition.QBEFieldDefs = {
-      0400000009000000020000004D47010000000000060000004D475F4E45570100
-      00000000030000004C534B010000000000020000004E4D010000000000050000
-      0053554D4D410100000000000300000053414C01000000000003000000504159
-      0100000000000300000050454E010000000000070000005041595F50454E0100
-      00000000}
-    Session = DataModule1.OracleSession1
-    DesignActivation = True
-    Left = 488
-    Top = 344
-  end
   object frxDBDataset7: TfrxDBDataset
     UserName = 'frxDBData_arch'
     CloseDataSource = False
@@ -1701,8 +1599,8 @@ object Form_print_bills: TForm_print_bills
       'PEN='#1055#1077#1085#1103' '#1090#1077#1082'.')
     DataSet = DM_Bill.Uni_arch
     BCDToCurrency = False
-    Left = 520
-    Top = 344
+    Left = 448
+    Top = 128
   end
   object OD_main: TOracleDataSet
     SQL.Strings = (
@@ -2376,370 +2274,53 @@ object Form_print_bills: TForm_print_bills
     Left = 240
     Top = 456
   end
-  object OD_cmp_main2: TOracleDataSet
-    SQL.Strings = (
-      'begin'
-      '  -- Call the procedure'
-      '  scott.rep_bills_compound.main(p_sel_obj => :p_sel_obj,'
-      '                          p_reu => :p_reu,'
-      '                          p_kul => :p_kul,'
-      '                          p_nd => :p_nd,'
-      '                          p_kw => :p_kw,'
-      '                          p_lsk => :p_lsk,'
-      '                          p_lsk1 => :p_lsk1,'
-      '                          p_firstnum => :p_firstnum,'
-      '                          p_lastnum => :p_lastnum,'
-      '                          p_is_closed => :p_is_closed,'
-      '                          p_mg => :p_mg,'
-      '                          p_for_arch => :p_for_arch,'
-      '                          p_sel_uk => :p_sel_uk,'
-      '                          p_rfcur => :p_rfcur);'
-      'end;')
-    Optimize = False
-    Variables.Data = {
-      030000000E0000000C0000003A505F49535F434C4F5345440300000000000000
-      00000000050000003A505F4D47050000000000000000000000080000003A505F
-      52464355527400000000000000000000000B0000003A505F46495253544E554D
-      0300000000000000000000000A0000003A505F4C4153544E554D030000000000
-      0000000000000A0000003A505F53454C5F4F424A030000000000000000000000
-      060000003A505F524555050000000000000000000000060000003A505F4B554C
-      050000000000000000000000050000003A505F4E440500000000000000000000
-      00050000003A505F4B57050000000000000000000000060000003A505F4C534B
-      050000000000000000000000070000003A505F4C534B31050000000000000000
-      000000090000003A505F53454C5F554B0500000000000000000000000B000000
-      3A505F464F525F41524348030000000000000000000000}
-    QBEDefinition.QBEFieldDefs = {
-      0400000011000000030000004C534B010000000000080000004B5F4C534B5F49
-      44010000000000030000004F504C010000000000030000004D47320100000000
-      00030000004B5052010000000000060000004B50525F57520100000000000700
-      00004B50525F575250010000000000060000004B50525F4F5401000000000005
-      0000004F504C5F310100000000000700000053545F4E414D4501000000000007
-      000000504552535F545001000000000003000000414452010000000000020000
-      004D47010000000000060000004D475F5354520100000000000300000046494F
-      0100000000000700000050524E5F4E554D01000000000008000000464F525F42
-      494C4C010000000000}
-    Session = DataModule1.OracleSession1
-    DesignActivation = True
-    Left = 488
-    Top = 408
-  end
-  object OD_cmp_detail_primary2: TOracleDataSet
-    SQL.Strings = (
-      'begin'
-      ''
-      ' scott.rep_bills_compound.detail(p_klsk => :p_klsk,'
-      '                            p_is_closed => :p_is_closed,'
-      '                            p_mg => :p_mg,'
-      '                            p_sel_tp => :p_sel_tp,'
-      '                            p_sel_flt_tp => :p_sel_flt_tp,'
-      '                          p_sel_uk => :p_sel_uk,'
-      '                            p_rfcur => :p_rfcur);'
-      'end;')
-    Optimize = False
-    Variables.Data = {
-      0300000007000000070000003A505F4B4C534B0300000000000000000000000C
-      0000003A505F49535F434C4F534544030000000000000000000000050000003A
-      505F4D47050000000000000000000000090000003A505F53454C5F5450030000
-      000000000000000000080000003A505F52464355527400000000000000000000
-      000D0000003A505F53454C5F464C545F54500300000000000000000000000900
-      00003A505F53454C5F554B050000000000000000000000}
-    QBEDefinition.QBEFieldDefs = {
-      040000002A000000030000004C534B010000000000080000004B5F4C534B5F49
-      44010000000000030000004F504C0100000000000700000053545F4E414D4501
-      000000000007000000504552535F545001000000000003000000414452010000
-      0000000300000046494F01000000000004000000414452320100000000000D00
-      0000524153434845545F53434845540100000000000700000053414C5F4F5554
-      010000000000050000004B5F46414D010000000000040000004B5F494D010000
-      000000040000004B5F4F5401000000000003000000494E4E0100000000000700
-      00004B5F53434845540100000000000300000042494B01000000000004000000
-      42414E4B0100000000000900000046554C4C5F4E414D45010000000000050000
-      0050484F4E45010000000000070000004144525F4F5247010000000000040000
-      0050534348010000000000060000004C534B5F54500100000000000A0000004C
-      534B5F54505F4E50500100000000000700000050524E5F4E554D010000000000
-      0700000050524E5F4E45570100000000000800000050454E59415F494E010000
-      0000000A00000050454E59415F434F52520100000000000900000050454E5941
-      5F5041590100000000000900000050454E59415F4F5554010000000000030000
-      00504159010000000000090000004C4153545F4454454B010000000000020000
-      0051520100000000000600000053414C5F494E010000000000030000004B5050
-      01000000000007000000554B5F4E414D450100000000000C00000050454E5941
-      5F43484152474501000000000006000000434841524745010000000000070000
-      0053554D5F5041590100000000000700000053554D5F50454E01000000000006
-      000000504552494F440100000000000200000044540100000000000700000041
-      44525F575757010000000000}
-    Master = OD_cmp_main2
-    MasterFields = 'k_lsk_id'
-    DetailFields = 'p_klsk'
-    Session = DataModule1.OracleSession1
-    DesignActivation = True
-    Left = 488
-    Top = 376
-  end
-  object OD_cmp_detail_cap2: TOracleDataSet
-    SQL.Strings = (
-      'begin'
-      ''
-      ' scott.rep_bills_compound.detail(p_klsk => :p_klsk,'
-      '                            p_is_closed => :p_is_closed,'
-      '                            p_mg => :p_mg,'
-      '                            p_sel_tp => :p_sel_tp,'
-      '                            p_sel_flt_tp => :p_sel_flt_tp,'
-      '                          p_sel_uk => :p_sel_uk,'
-      '                            p_rfcur => :p_rfcur);'
-      'end;')
-    Optimize = False
-    Variables.Data = {
-      0300000007000000070000003A505F4B4C534B0300000000000000000000000C
-      0000003A505F49535F434C4F534544030000000000000000000000050000003A
-      505F4D47050000000000000000000000090000003A505F53454C5F5450030000
-      000000000000000000080000003A505F52464355527400000000000000000000
-      000D0000003A505F53454C5F464C545F54500300000000000000000000000900
-      00003A505F53454C5F554B050000000000000000000000}
-    QBEDefinition.QBEFieldDefs = {
-      040000002A000000030000004C534B010000000000080000004B5F4C534B5F49
-      44010000000000030000004F504C0100000000000700000053545F4E414D4501
-      000000000007000000504552535F545001000000000003000000414452010000
-      0000000300000046494F01000000000004000000414452320100000000000D00
-      0000524153434845545F53434845540100000000000700000053414C5F4F5554
-      010000000000050000004B5F46414D010000000000040000004B5F494D010000
-      000000040000004B5F4F5401000000000003000000494E4E0100000000000700
-      00004B5F53434845540100000000000300000042494B01000000000004000000
-      42414E4B0100000000000900000046554C4C5F4E414D45010000000000050000
-      0050484F4E45010000000000070000004144525F4F5247010000000000040000
-      0050534348010000000000060000004C534B5F54500100000000000A0000004C
-      534B5F54505F4E50500100000000000700000050524E5F4E554D010000000000
-      0700000050524E5F4E45570100000000000800000050454E59415F494E010000
-      0000000A00000050454E59415F434F52520100000000000900000050454E5941
-      5F5041590100000000000900000050454E59415F4F5554010000000000030000
-      00504159010000000000090000004C4153545F4454454B010000000000020000
-      0051520100000000000600000053414C5F494E010000000000030000004B5050
-      01000000000007000000554B5F4E414D450100000000000C00000050454E5941
-      5F43484152474501000000000006000000434841524745010000000000070000
-      0053554D5F5041590100000000000700000053554D5F50454E01000000000006
-      000000504552494F440100000000000200000044540100000000000700000041
-      44525F575757010000000000}
-    Master = OD_cmp_main2
-    MasterFields = 'k_lsk_id'
-    DetailFields = 'p_klsk'
-    Session = DataModule1.OracleSession1
-    DesignActivation = True
-    Left = 488
-    Top = 480
-  end
-  object OD_cmp_funds_primary2: TOracleDataSet
-    SQL.Strings = (
-      'begin'
-      ''
-      ' scott.rep_bills_compound.funds_flow_by_klsk(p_klsk => :p_klsk,'
-      '                                        p_sel_tp => :p_sel_tp,'
-      '                            p_is_closed => :p_is_closed,'
-      '                                        p_mg => :p_mg,'
-      '                            p_sel_flt_tp => :p_sel_flt_tp,'
-      '                          p_sel_uk => :p_sel_uk,'
-      '                                        p_rfcur => :p_rfcur);'
-      ''
-      'end;')
-    Optimize = False
-    Variables.Data = {
-      0300000007000000070000003A505F4B4C534B03000000000000000000000005
-      0000003A505F4D47050000000000000000000000090000003A505F53454C5F54
-      50030000000000000000000000080000003A505F524643555274000000000000
-      00000000000C0000003A505F49535F434C4F5345440300000000000000000000
-      000D0000003A505F53454C5F464C545F54500300000000000000000000000900
-      00003A505F53454C5F554B050000000000000000000000}
-    QBEDefinition.QBEFieldDefs = {
-      040000000F0000000B00000049535F414D4E545F53554D010000000000030000
-      0055534C010000000000030000004E5050010000000000040000004E414D4501
-      000000000005000000505249434501000000000003000000564F4C0100000000
-      0006000000434841524745010000000000070000004348414E47453101000000
-      00000C0000004348414E47455F50524F4331010000000000070000004348414E
-      47453201000000000004000000414D4E54010000000000030000004445420100
-      000000000800000042494C4C5F434F4C0100000000000900000042494C4C5F43
-      4F4C32010000000000030000004B5542010000000000}
-    Master = OD_cmp_main2
-    MasterFields = 'k_lsk_id'
-    DetailFields = 'p_klsk'
-    Session = DataModule1.OracleSession1
-    DesignActivation = True
-    Left = 488
-    Top = 512
-  end
-  object OD_cmp_funds_cap2: TOracleDataSet
-    SQL.Strings = (
-      'begin'
-      ''
-      ' scott.rep_bills_compound.funds_flow_by_klsk(p_klsk => :p_klsk,'
-      '                                        p_sel_tp => :p_sel_tp,'
-      '                            p_is_closed => :p_is_closed,'
-      '                                        p_mg => :p_mg,'
-      '                            p_sel_flt_tp => :p_sel_flt_tp,'
-      '                          p_sel_uk => :p_sel_uk,'
-      '                                        p_rfcur => :p_rfcur);'
-      ''
-      'end;')
-    Optimize = False
-    Variables.Data = {
-      0300000007000000070000003A505F4B4C534B03000000000000000000000005
-      0000003A505F4D47050000000000000000000000090000003A505F53454C5F54
-      50030000000000000000000000080000003A505F524643555274000000000000
-      00000000000C0000003A505F49535F434C4F5345440300000000000000000000
-      000D0000003A505F53454C5F464C545F54500300000000000000000000000900
-      00003A505F53454C5F554B050000000000000000000000}
-    QBEDefinition.QBEFieldDefs = {
-      040000000F0000000B00000049535F414D4E545F53554D010000000000030000
-      0055534C010000000000030000004E5050010000000000040000004E414D4501
-      000000000005000000505249434501000000000003000000564F4C0100000000
-      0006000000434841524745010000000000070000004348414E47453101000000
-      00000C0000004348414E47455F50524F4331010000000000070000004348414E
-      47453201000000000004000000414D4E54010000000000030000004445420100
-      000000000800000042494C4C5F434F4C0100000000000900000042494C4C5F43
-      4F4C32010000000000030000004B5542010000000000}
-    Master = OD_cmp_main2
-    MasterFields = 'k_lsk_id'
-    DetailFields = 'p_klsk'
-    Session = DataModule1.OracleSession1
-    DesignActivation = True
-    Left = 488
-    Top = 544
-  end
   object frxDB_cmp_main: TfrxDBDataset
     UserName = 'frxDB_cmp_main'
     CloseDataSource = False
     DataSet = DM_Bill.Uni_cmp_main
     BCDToCurrency = False
-    Left = 520
-    Top = 408
+    Left = 448
+    Top = 192
   end
   object frxDBD_cmp_detail_primary: TfrxDBDataset
     UserName = 'frxDB_cmp_detail_primary'
     CloseDataSource = False
     DataSet = DM_Bill.Uni_cmp_detail_primary
     BCDToCurrency = False
-    Left = 520
-    Top = 376
+    Left = 448
+    Top = 160
   end
   object frxDB_cmp_detail_cap: TfrxDBDataset
     UserName = 'frxDB_cmp_detail_cap'
     CloseDataSource = False
     DataSet = DM_Bill.Uni_cmp_detail_cap
     BCDToCurrency = False
-    Left = 520
-    Top = 480
+    Left = 448
+    Top = 264
   end
   object frxDB_cmp_funds_primary: TfrxDBDataset
     UserName = 'frxDB_cmp_funds_primary'
     CloseDataSource = False
     DataSet = DM_Bill.Uni_cmp_funds_primary
     BCDToCurrency = False
-    Left = 520
-    Top = 512
+    Left = 448
+    Top = 296
   end
   object frxDB_cmp_funds_cap: TfrxDBDataset
     UserName = 'frxDB_cmp_funds_cap'
     CloseDataSource = False
     DataSet = DM_Bill.Uni_cmp_funds_cap
     BCDToCurrency = False
-    Left = 520
-    Top = 544
-  end
-  object OD_cmp_contractors2: TOracleDataSet
-    SQL.Strings = (
-      'begin'
-      ''
-      ' scott.rep_bills_compound.contractors(p_klsk => :p_klsk,'
-      '                            p_is_closed => :p_is_closed,'
-      '                            p_mg => :p_mg,'
-      '                            p_sel_flt_tp => :p_sel_flt_tp,'
-      '                          p_sel_uk => :p_sel_uk,'
-      '                            p_rfcur => :p_rfcur);'
-      'end;')
-    Optimize = False
-    Variables.Data = {
-      0300000006000000070000003A505F4B4C534B0300000000000000000000000C
-      0000003A505F49535F434C4F534544030000000000000000000000050000003A
-      505F4D47050000000000000000000000080000003A505F524643555274000000
-      00000000000000000D0000003A505F53454C5F464C545F545003000000000000
-      0000000000090000003A505F53454C5F554B050000000000000000000000}
-    QBEDefinition.QBEFieldDefs = {
-      040000001D000000030000004C534B010000000000080000004B5F4C534B5F49
-      44010000000000030000004F504C0100000000000700000053545F4E414D4501
-      000000000007000000504552535F545001000000000003000000414452010000
-      0000000300000046494F01000000000004000000414452320100000000000D00
-      0000524153434845545F5343484554010000000000050000004B5F46414D0100
-      00000000040000004B5F494D010000000000040000004B5F4F54010000000000
-      03000000494E4E010000000000070000004B5F53434845540100000000000300
-      000042494B0100000000000400000042414E4B0100000000000900000046554C
-      4C5F4E414D450100000000000500000050484F4E450100000000000700000041
-      44525F4F52470100000000000400000050534348010000000000060000004C53
-      4B5F54500100000000000A0000004C534B5F54505F4E50500100000000000700
-      000050524E5F4E554D0100000000000700000050524E5F4E4557010000000000
-      030000004B505001000000000007000000554B5F4E414D450100000000000600
-      0000504552494F44010000000000020000004454010000000000070000004144
-      525F575757010000000000}
-    Master = OD_cmp_main2
-    MasterFields = 'k_lsk_id'
-    DetailFields = 'p_klsk'
-    Session = DataModule1.OracleSession1
-    DesignActivation = True
-    Left = 488
-    Top = 576
+    Left = 448
+    Top = 328
   end
   object frxDB_cmp_contractors: TfrxDBDataset
     UserName = 'frxDB_cmp_contractors'
     CloseDataSource = False
     DataSet = DM_Bill.Uni_cmp_contractors
     BCDToCurrency = False
-    Left = 520
-    Top = 576
-  end
-  object OD_cmp_detail_main2: TOracleDataSet
-    SQL.Strings = (
-      'begin'
-      ''
-      ' scott.rep_bills_compound.detail(p_klsk => :p_klsk,'
-      '                            p_is_closed => :p_is_closed,'
-      '                            p_mg => :p_mg,'
-      '                            p_sel_tp => :p_sel_tp,'
-      '                            p_sel_flt_tp => :p_sel_flt_tp,'
-      '                          p_sel_uk => :p_sel_uk,'
-      '                            p_rfcur => :p_rfcur);'
-      'end;')
-    Optimize = False
-    Variables.Data = {
-      0300000007000000070000003A505F4B4C534B0300000000000000000000000C
-      0000003A505F49535F434C4F534544030000000000000000000000050000003A
-      505F4D47050000000000000000000000090000003A505F53454C5F5450030000
-      000000000000000000080000003A505F52464355527400000000000000000000
-      000D0000003A505F53454C5F464C545F54500300000000000000000000000900
-      00003A505F53454C5F554B050000000000000000000000}
-    QBEDefinition.QBEFieldDefs = {
-      0400000028000000030000004C534B010000000000080000004B5F4C534B5F49
-      44010000000000030000004F504C0100000000000700000053545F4E414D4501
-      000000000007000000504552535F545001000000000003000000414452010000
-      0000000300000046494F01000000000004000000414452320100000000000D00
-      0000524153434845545F53434845540100000000000700000053414C5F4F5554
-      010000000000050000004B5F46414D010000000000040000004B5F494D010000
-      000000040000004B5F4F5401000000000003000000494E4E0100000000000700
-      00004B5F53434845540100000000000300000042494B01000000000004000000
-      42414E4B0100000000000900000046554C4C5F4E414D45010000000000050000
-      0050484F4E45010000000000070000004144525F4F5247010000000000040000
-      0050534348010000000000060000004C534B5F54500100000000000A0000004C
-      534B5F54505F4E50500100000000000700000050524E5F4E554D010000000000
-      0700000050524E5F4E45570100000000000800000050454E59415F494E010000
-      0000000A00000050454E59415F434F52520100000000000900000050454E5941
-      5F5041590100000000000900000050454E59415F4F5554010000000000030000
-      00504159010000000000090000004C4153545F4454454B010000000000020000
-      0051520100000000000600000053414C5F494E010000000000030000004B5050
-      01000000000007000000554B5F4E414D450100000000000C00000050454E5941
-      5F43484152474501000000000006000000434841524745010000000000060000
-      00504552494F4401000000000002000000445401000000000007000000414452
-      5F575757010000000000}
-    Master = OD_cmp_main2
-    MasterFields = 'k_lsk_id'
-    DetailFields = 'p_klsk'
-    Session = DataModule1.OracleSession1
-    DesignActivation = True
-    Left = 552
-    Top = 376
+    Left = 448
+    Top = 360
   end
   object frxDBD_cmp_detail_main: TfrxDBDataset
     UserName = 'frxDBD_cmp_detail_main'
@@ -2787,47 +2368,8 @@ object Form_print_bills: TForm_print_bills
       'QR=QR')
     DataSet = DM_Bill.Uni_cmp_detail_main
     BCDToCurrency = False
-    Left = 584
-    Top = 376
-  end
-  object OD_cmp_funds_main2: TOracleDataSet
-    SQL.Strings = (
-      'begin'
-      ''
-      ' scott.rep_bills_compound.funds_flow_by_klsk(p_klsk => :p_klsk,'
-      '                                        p_sel_tp => :p_sel_tp,'
-      '                            p_is_closed => :p_is_closed,'
-      '                                        p_mg => :p_mg,'
-      '                            p_sel_flt_tp => :p_sel_flt_tp,'
-      '                          p_sel_uk => :p_sel_uk,'
-      '                                        p_rfcur => :p_rfcur);'
-      ''
-      'end;')
-    Optimize = False
-    Variables.Data = {
-      0300000007000000070000003A505F4B4C534B03000000000000000000000005
-      0000003A505F4D47050000000000000000000000090000003A505F53454C5F54
-      50030000000000000000000000080000003A505F524643555274000000000000
-      00000000000C0000003A505F49535F434C4F5345440300000000000000000000
-      000D0000003A505F53454C5F464C545F54500300000000000000000000000900
-      00003A505F53454C5F554B050000000000000000000000}
-    QBEDefinition.QBEFieldDefs = {
-      04000000100000000B00000049535F414D4E545F53554D010000000000030000
-      0055534C010000000000030000004E5050010000000000040000004E414D4501
-      000000000005000000505249434501000000000003000000564F4C0100000000
-      0006000000434841524745010000000000070000004348414E47453101000000
-      00000C0000004348414E47455F50524F4331010000000000070000004348414E
-      47453201000000000004000000414D4E54010000000000030000004445420100
-      000000000800000042494C4C5F434F4C0100000000000900000042494C4C5F43
-      4F4C32010000000000030000004B554201000000000003000000504159010000
-      000000}
-    Master = OD_cmp_main2
-    MasterFields = 'k_lsk_id'
-    DetailFields = 'p_klsk'
-    Session = DataModule1.OracleSession1
-    DesignActivation = True
-    Left = 552
-    Top = 512
+    Left = 512
+    Top = 160
   end
   object frxDB_cmp_funds_main: TfrxDBDataset
     UserName = 'frxDB_cmp_funds_main'
@@ -2851,40 +2393,8 @@ object Form_print_bills: TForm_print_bills
       'PAY=PAY')
     DataSet = DM_Bill.Uni_cmp_funds_main
     BCDToCurrency = False
-    Left = 584
-    Top = 512
-  end
-  object OD_cmp_funds_lsk2: TOracleDataSet
-    SQL.Strings = (
-      'begin'
-      '  scott.rep_bills_ext.detail(p_lsk => :p_lsk,'
-      '                       p_mg => :p_mg,'
-      '                       p_includesaldo => :p_includesaldo,'
-      '                       p_rfcur => :p_rfcur);'
-      'end;')
-    Optimize = False
-    Variables.Data = {
-      0300000004000000050000003A505F4D47050000000000000000000000080000
-      003A505F5246435552740000000000000000000000060000003A505F4C534B05
-      00000009000000202020202020202000000000000F0000003A505F494E434C55
-      444553414C444F03000000040000000100000000000000}
-    QBEDefinition.QBEFieldDefs = {
-      04000000110000000B00000049535F414D4E545F53554D010000000000030000
-      0055534C010000000000030000004E5050010000000000040000004E414D4501
-      000000000005000000505249434501000000000003000000564F4C0100000000
-      0006000000434841524745010000000000070000004348414E47453101000000
-      00000C0000004348414E47455F50524F4331010000000000070000004348414E
-      47453201000000000004000000414D4E54010000000000030000004445420100
-      000000000800000042494C4C5F434F4C0100000000000900000042494C4C5F43
-      4F4C32010000000000030000004B554201000000000003000000504159010000
-      000000090000004348415247454F574E010000000000}
-    Master = OD_cmp_detail_primary2
-    MasterFields = 'lsk'
-    DetailFields = 'p_lsk'
-    Session = DataModule1.OracleSession1
-    DesignActivation = True
-    Left = 552
-    Top = 544
+    Left = 512
+    Top = 296
   end
   object frxDB_cmp_funds_lsk: TfrxDBDataset
     UserName = 'frxDB_cmp_funds_lsk'
@@ -2909,39 +2419,8 @@ object Form_print_bills: TForm_print_bills
       'CHARGEOWN=CHARGEOWN')
     DataSet = DM_Bill.Uni_cmp_funds_lsk
     BCDToCurrency = False
-    Left = 584
-    Top = 544
-  end
-  object OD_cmp_qr2: TOracleDataSet
-    SQL.Strings = (
-      'begin'
-      ''
-      ' scott.rep_bills_compound.getQr(p_klsk => :p_klsk,'
-      '                            p_is_closed => :p_is_closed,'
-      '                            p_mg => :p_mg,'
-      '                            p_sel_tp => :p_sel_tp,'
-      '                            p_sel_flt_tp => :p_sel_flt_tp,'
-      '                          p_sel_uk => :p_sel_uk,'
-      '                            p_rfcur => :p_rfcur);'
-      'end;')
-    Optimize = False
-    Variables.Data = {
-      0300000007000000070000003A505F4B4C534B0300000000000000000000000C
-      0000003A505F49535F434C4F534544030000000000000000000000050000003A
-      505F4D47050000000000000000000000090000003A505F53454C5F5450030000
-      000000000000000000080000003A505F52464355527400000000000000000000
-      000D0000003A505F53454C5F464C545F54500300000000000000000000000900
-      00003A505F53454C5F554B050000000000000000000000}
-    QBEDefinition.QBEFieldDefs = {
-      040000000200000002000000515201000000000007000000554B5F4E414D4501
-      0000000000}
-    Master = OD_cmp_main2
-    MasterFields = 'k_lsk_id'
-    DetailFields = 'p_klsk'
-    Session = DataModule1.OracleSession1
-    DesignActivation = True
-    Left = 488
-    Top = 616
+    Left = 512
+    Top = 328
   end
   object frxDB_cmp_qr: TfrxDBDataset
     UserName = 'frxDB_cmp_qr'
@@ -2951,8 +2430,8 @@ object Form_print_bills: TForm_print_bills
       'UK_NAME=UK_NAME')
     DataSet = DM_Bill.Uni_cmp_qr
     BCDToCurrency = False
-    Left = 584
-    Top = 624
+    Left = 448
+    Top = 408
   end
   object OD_uk: TOracleDataSet
     SQL.Strings = (
@@ -3078,7 +2557,6 @@ object Form_print_bills: TForm_print_bills
       5401000000000004000000454C534B0100000000000A000000504152454E545F
       4C534B0100000000000B000000464B5F4B4C534B5F4F424A0100000000000500
       000044545F4352010000000000}
-    Master = OD_cmp_main2
     MasterFields = 'lsk'
     DetailFields = 'lsk'
     Session = DataModule1.OracleSession1
@@ -3237,7 +2715,6 @@ object Form_print_bills: TForm_print_bills
       00445431010000000000030000004454320100000000000A000000464B5F4445
       425F4F524701000000000009000000505249565F50524F430100000000000400
       000041435054010000000000}
-    Master = OD_cmp_main2
     MasterFields = 'LSK'
     DetailFields = 'LSK'
     Session = DataModule1.OracleSession1

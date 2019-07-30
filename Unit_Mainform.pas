@@ -716,7 +716,7 @@ end;
 
 procedure TForm_Main.FormCreate(Sender: TObject);
 begin
-  //Application.OnException := AppException;
+  Application.OnException := AppException2;
   Versia := 187;
   //нельзя использовать versia в params - используется updater-ом
   CoolTrayIcon1.IconIndex := 22;

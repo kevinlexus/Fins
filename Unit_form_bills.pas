@@ -152,7 +152,6 @@ type
     OD_dataPHONE2: TStringField;
     fltfldOD_dataDOLG2: TFloatField;
     OD_dataDT_SCH: TDateTimeField;
-    OD_arch2: TOracleDataSet;
     frxDBDataset7: TfrxDBDataset;
     CheckBox3: TCheckBox;
     OD_main: TOracleDataSet;
@@ -193,27 +192,17 @@ type
     CheckBox5: TCheckBox;
     OD_detail_ext: TOracleDataSet;
     frxDBDataset13: TfrxDBDataset;
-    OD_cmp_main2: TOracleDataSet;
-    OD_cmp_detail_primary2: TOracleDataSet;
-    OD_cmp_detail_cap2: TOracleDataSet;
-    OD_cmp_funds_primary2: TOracleDataSet;
-    OD_cmp_funds_cap2: TOracleDataSet;
     frxDB_cmp_main: TfrxDBDataset;
     frxDBD_cmp_detail_primary: TfrxDBDataset;
     frxDB_cmp_detail_cap: TfrxDBDataset;
     frxDB_cmp_funds_primary: TfrxDBDataset;
     frxDB_cmp_funds_cap: TfrxDBDataset;
-    OD_cmp_contractors2: TOracleDataSet;
     frxDB_cmp_contractors: TfrxDBDataset;
     Label13: TLabel;
     cxImageComboBox1: TcxImageComboBox;
-    OD_cmp_detail_main2: TOracleDataSet;
     frxDBD_cmp_detail_main: TfrxDBDataset;
-    OD_cmp_funds_main2: TOracleDataSet;
     frxDB_cmp_funds_main: TfrxDBDataset;
-    OD_cmp_funds_lsk2: TOracleDataSet;
     frxDB_cmp_funds_lsk: TfrxDBDataset;
-    OD_cmp_qr2: TOracleDataSet;
     frxDB_cmp_qr: TfrxDBDataset;
     OD_uk: TOracleDataSet;
     DS_uk: TDataSource;
@@ -879,8 +868,7 @@ begin
   OD_main.SetVariable('lsk1_', wwDBEdit2.Text);
 
   OD_main.SetVariable('kul_', DBLookupComboboxEh2.KeyValue);
-  OD_main.SetVariable('nd_', null);
-
+  OD_main.SetVariable('nd_', OD_houses.FieldByName('nd_id').AsString);
   OD_main.SetVariable('kw_', OD_kw.FieldByName('kw_id').AsString);
 
   if (tp_ = 5) then //справка арх-2

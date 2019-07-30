@@ -10,7 +10,7 @@ uses
   ToolWin, ComCtrls, DataDriverEh, MemTableDataEh,
   MemTableEh, wwdbdatetimepicker, Mask, wwdbedit, Wwdotdot,
   Wwdbcomb, DBCtrlsEh, cxControls,
-  cxContainer, cxEdit,                                            
+  cxContainer, cxEdit,
   cxTextEdit, cxMemo, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters,
   dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel,
   dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
@@ -121,13 +121,10 @@ type
     procedure repTypeGrid;
     procedure sel_tree_obj(trnode: TMemRecViewEh; sel_: Integer);
     procedure desel_all_obj(tmem: TMemTableEh; id_: Integer);
-    procedure cxDBTreeList1SELPropertiesEditValueChanged(Sender: TObject);
-    procedure cxDBTreeList1FocusedNodeChanged(Sender: TcxCustomTreeList;
-      APrevFocusedNode, AFocusedNode: TcxTreeListNode);
   private
     Doc, Doc1: IXMLDomDocument;
     root, root1: IXMLDOMElement;
-    selTreeId, flag2_: Integer;
+    flag2_: Integer;
     obj_: string;
     objexcel_: string;
     err_, issum_, iscnt_, ishead_, isoem_: Integer;
@@ -165,7 +162,8 @@ begin
   //Открываем зависимые датасеты, для отчетов
   //форма для контроля тарифов
 
-  if (rep_cd_ = '78') and (DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger
+  if (rep_cd_ = '78') and
+    (DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger
     = 3) then
   begin
     DM_Olap.Uni_nabor_lsk.MasterSource := DM_Olap.Uni_data.DataSource;
@@ -295,7 +293,7 @@ begin
          wwDBDateTimePicker2.Date);
     end;}
 
-  if DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger = 3 then    
+  if DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger = 3 then
   begin
     if sel_many_ = 0 then
     begin
@@ -425,20 +423,26 @@ end;
 procedure TForm_tree_objects.LoadCube(action_: Integer);
 var
   str1_: string;
-  l_cnt: Integer;
+  I, l_cnt: Integer;
 begin
-  {l_cnt:=1;
-
-  for I := 0 to cxDBTreeList1.AbsoluteCount - 1 do
+  // проверка кол-ва выбранных объектов
+  if Form_tree_objects.sel_many_ = 0 then
   begin
-    if (selTreeId <> cxDBTreeList1.AbsoluteItems[I].Values[0]) and
-       (cxDBTreeList1.AbsoluteItems[I].Values[2] <> 1) then
+    l_cnt := 0;
+    for I := 0 to cxDBTreeList1.AbsoluteCount - 1 do
     begin
-      cxDBTreeList1.AbsoluteItems[I].Values[2]:=1;
-      l_cnt:=l_cnt+1;
+      if (cxDBTreeList1.AbsoluteItems[I].Values[2] <> 1) then
+      begin
+        l_cnt := l_cnt + 1;
+        if l_cnt > 1 then
+        begin
+          Application.MessageBox('Необходимо выбрать только один объект!',
+            'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
+          Exit;
+        end;
+      end;
     end;
-    if
-  end;}
+  end;
 
   //Путь выгрузки
   str1_ := DataModule1.OraclePackage1.CallStringFunction
@@ -533,7 +537,8 @@ begin
   //поиск выбранного элемента
   if sel_many_ = 0 then
   begin
-    if DM_Olap.Uni_tree_objects.Locate('sel', 0, [loCaseInsensitive]) = False then
+    if DM_Olap.Uni_tree_objects.Locate('sel', 0, [loCaseInsensitive]) = False
+      then
     begin
       msg2('Не найден выбранный элемент!', 'Внимание!', MB_OK + MB_ICONERROR);
       Exit;
@@ -586,13 +591,14 @@ begin
     end;
 
     //наименование Объекта в отчёте
-    obj_ := '''' + ', по ' + DM_Olap.Uni_tree_objects.FieldByName('name').AsString +
+    obj_ := '''' + ', по ' +
+      DM_Olap.Uni_tree_objects.FieldByName('name').AsString +
       '''';
     if DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger = 3 then
       objexcel_ := ', по дому ' +
         DM_Olap.Uni_tree_objects.FieldByName('name').AsString
-    else if DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger in [0, 1, 2]
-      then
+    else if DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger in [0,
+      1, 2] then
       objexcel_ := ', по Организации ' +
         DM_Olap.Uni_tree_objects.FieldByName('name').AsString;
 
@@ -995,12 +1001,6 @@ end;
 procedure TForm_tree_objects.setAccess(rep_: string; have_current_: Integer;
   two_periods_: Integer);
 begin
-  // стереть предыдущую отмеченную запись
-  selTreeId :=-1;
-  //prevRecNo:=-1;
-  // запрет обработки Post дважды
-  Form_tree_objects.isAlreadyInPost := False;
-
   DM_Olap.Uni_data.Active := false;
 
   //Если форма не загружает и не загружала справочник, загрузить
@@ -1444,26 +1444,26 @@ end;
 procedure TForm_tree_objects.MemTableEh2SetFieldValue(
   MemTable: TCustomMemTableEh; Field: TField; var Value: Variant);
 begin
-{  if flag_ = 0 then
-  begin
-    flag_ := 1;
-    //Обновить само значение в поле
-    DM_Olap.Uni_tree_objects.FieldByName('sel').AsInteger := VarAsType(Value,
-      varInteger);
-    if Form_tree_objects.sel_many_ <> 0 then
+  {  if flag_ = 0 then
     begin
-      //Обновить значения в дочерних объектах
-      sel_tree_obj(DM_Olap.MemTableEh2.TreeNode, VarAsType(Value, varInteger));
-    end
-    else
-    begin
-      //Обновить значения в во всех объектах (деселект всех)
-      desel_all_obj(DM_Olap.MemTableEh2,
-        DM_Olap.MemTableEh2.FieldByName('id').AsInteger);
-    end;
-    DBGridEh1.Refresh;
-    flag_ := 0;
-  end;}
+      flag_ := 1;
+      //Обновить само значение в поле
+      DM_Olap.Uni_tree_objects.FieldByName('sel').AsInteger := VarAsType(Value,
+        varInteger);
+      if Form_tree_objects.sel_many_ <> 0 then
+      begin
+        //Обновить значения в дочерних объектах
+        sel_tree_obj(DM_Olap.MemTableEh2.TreeNode, VarAsType(Value, varInteger));
+      end
+      else
+      begin
+        //Обновить значения в во всех объектах (деселект всех)
+        desel_all_obj(DM_Olap.MemTableEh2,
+          DM_Olap.MemTableEh2.FieldByName('id').AsInteger);
+      end;
+      DBGridEh1.Refresh;
+      flag_ := 0;
+    end;}
 end;
 
 procedure TForm_tree_objects.exp;
@@ -2394,8 +2394,8 @@ begin
     DM_Olap.Uni_tree_objects.Params.ParamByName('set_psch').AsInteger := 1;
   end;
 
-    DM_Olap.Uni_tree_objects.Active := False;
-    DM_Olap.Uni_tree_objects.Active := True;
+  DM_Olap.Uni_tree_objects.Active := False;
+  DM_Olap.Uni_tree_objects.Active := True;
 end;
 
 procedure TForm_tree_objects.Timer2Timer(Sender: TObject);
@@ -2439,34 +2439,6 @@ begin
     DM_Olap.Uni_tree_objects.Filter := sqlStr;
     DM_Olap.Uni_tree_objects.Filtered := true;
   end;
-end;
-
-procedure TForm_tree_objects.cxDBTreeList1SELPropertiesEditValueChanged(
-  Sender: TObject);
-var
-  I: Integer;
-begin
-{for I := 0 to cxDBTreeList1.AbsoluteCount - 1 do
-begin
-  if (selTreeId <> cxDBTreeList1.AbsoluteItems[I].Values[0]) and
-     (cxDBTreeList1.AbsoluteItems[I].Values[2] <> 1) then
-  begin
-    cxDBTreeList1.AbsoluteItems[I].Focused:=True;
-//    cxDBTreeList1.FocusedNode.GetNextVisible.Focused := True;
-    //cxDBTreeList1.DataController.Edit;
-    cxDBTreeList1.AbsoluteItems[I].Values[2]:=1;
-    //cxDBTreeList1.Post;
-  end;
-end;
-//cxDBTreeList1.Post;
- }
-end;
-
-procedure TForm_tree_objects.cxDBTreeList1FocusedNodeChanged(
-  Sender: TcxCustomTreeList; APrevFocusedNode,
-  AFocusedNode: TcxTreeListNode);
-begin
-  selTreeId:=AFocusedNode.Values[0];
 end;
 
 end.

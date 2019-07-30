@@ -1052,7 +1052,7 @@ object Form_Main: TForm_Main
       end
     end
     object ver: TMenuItem
-      Caption = 'ver 2.107'
+      Caption = 'ver 2.108'
     end
   end
   object ImageList1: TImageList
