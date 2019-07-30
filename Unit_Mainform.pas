@@ -2442,7 +2442,7 @@ begin
 
   if E is EOracleError then
   begin
-    if EOracleError(E).ErrorCode = 4068 then
+    if EOracleError(E).ErrorCode = 4068 then    
     begin
       if
         Application.MessageBox('Программа обновлена, зайти заново в приложение?',

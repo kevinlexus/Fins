@@ -1,7 +1,7 @@
 object DataModule1: TDataModule1
   OldCreateOrder = False
-  Left = 1077
-  Top = 224
+  Left = 1111
+  Top = 203
   Height = 720
   Width = 683
   object OracleSession1: TOracleSession
@@ -248,8 +248,7 @@ object DataModule1: TDataModule1
       'Oracle.Direct=True')
     Options.KeepDesignConnected = False
     Username = 'scott'
-    Server = '127.0.0.1'
-    Connected = True
+    Server = '127.0.0.13'
     Left = 32
     Top = 416
     EncryptedPassword = '92FF90FF91FF9AFF92FF86FF8DFF90FF'

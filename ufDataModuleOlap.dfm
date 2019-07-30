@@ -1,7 +1,7 @@
 object DM_Olap: TDM_Olap
   OldCreateOrder = False
-  Left = 1216
-  Top = 171
+  Left = 604
+  Top = 153
   Height = 810
   Width = 686
   object DS_spr_params: TDataSource
@@ -368,6 +368,15 @@ object DM_Olap: TDM_Olap
   object MemTableEh2: TMemTableEh
     FieldDefs = <
       item
+        Name = 'ROWID'
+        DataType = ftString
+        Size = 18
+      end
+      item
+        Name = 'SEL'
+        DataType = ftFloat
+      end
+      item
         Name = 'ID'
         Attributes = [faRequired]
         DataType = ftFloat
@@ -379,7 +388,21 @@ object DM_Olap: TDM_Olap
       item
         Name = 'NAME'
         DataType = ftString
-        Size = 40
+        Size = 72
+      end
+      item
+        Name = 'HOUSE_MG'
+        DataType = ftString
+        Size = 20
+      end
+      item
+        Name = 'EXIST1'
+        DataType = ftFloat
+      end
+      item
+        Name = 'TREST'
+        DataType = ftString
+        Size = 2
       end
       item
         Name = 'REU'
@@ -397,9 +420,13 @@ object DM_Olap: TDM_Olap
         Size = 6
       end
       item
-        Name = 'TREST'
+        Name = 'ND1'
         DataType = ftString
-        Size = 2
+        Size = 6
+      end
+      item
+        Name = 'OBJ_LEVEL'
+        DataType = ftFloat
       end
       item
         Name = 'STREET'
@@ -407,22 +434,9 @@ object DM_Olap: TDM_Olap
         Size = 25
       end
       item
-        Name = 'ND1'
-        DataType = ftString
-        Size = 6
-      end
-      item
         Name = 'NAME_TR'
         DataType = ftString
-        Size = 35
-      end
-      item
-        Name = 'SEL'
-        DataType = ftFloat
-      end
-      item
-        Name = 'OBJ_LEVEL'
-        DataType = ftFloat
+        Size = 64
       end
       item
         Name = 'BANK_CD'
@@ -431,15 +445,6 @@ object DM_Olap: TDM_Olap
       end
       item
         Name = 'FK_HOUSE'
-        DataType = ftFloat
-      end
-      item
-        Name = 'HOUSE_MG'
-        DataType = ftString
-        Size = 20
-      end
-      item
-        Name = 'EXIST1'
         DataType = ftFloat
       end>
     FetchAllOnOpen = True
@@ -465,7 +470,7 @@ object DM_Olap: TDM_Olap
   end
   object DS_tree_objects: TDataSource
     DataSet = MemTableEh2
-    Left = 144
+    Left = 152
     Top = 136
   end
   object Uni_Data: TUniQuery
@@ -591,7 +596,12 @@ object DM_Olap: TDM_Olap
       '               v.name_tr,'
       '               2,'
       '               s.reu||'#39'-'#39'||s.name,'
-      '               p.name||'#39', '#39'||ltrim(t.nd, '#39'0'#39')) as name,'
+      '               3,'
+      
+        '               case when t.tp_show = 1 then '#39#1056#1057#1054':'#39'||s.reu||'#39'-'#39'||' +
+        's.name'
+      '                 else p.name||'#39', '#39'||ltrim(t.nd, '#39'0'#39') end'
+      '               ) as name,'
       '       decode(t.obj_level, 3,'
       #39#1089' '#39'||'
       
@@ -614,6 +624,7 @@ object DM_Olap: TDM_Olap
       '       upper(s.name) as name_tr,'
       '       s.bank_cd,'
       '       t.fk_house'
+      ''
       '  from scott.tree_objects t,'
       '        scott.t_org s,'
       
