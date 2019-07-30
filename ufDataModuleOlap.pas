@@ -93,8 +93,7 @@ var
   l_id: Integer;
   l_flag: Boolean;
 begin
-  {
-  if Form_tree_objects.isAlreadyInPost <> True then
+  {if Form_tree_objects.isAlreadyInPost <> True then
   begin
     Form_tree_objects.isAlreadyInPost := True;
     // выбрать уровень детализации
@@ -119,7 +118,7 @@ begin
     begin
       with Uni_tree_objects do
       begin
-        // выбран объект    
+        // выбран объект
         if FieldByName('sel').AsInteger = 0 then
         begin
           Form_tree_objects.saveRecNo := RecNo;
@@ -143,15 +142,14 @@ begin
       end;
     end;
     Form_tree_objects.isAlreadyInPost := False;
-  end;
-  }
+  end;         }
 end;
 
 procedure TDM_Olap.Uni_tree_objectsAfterScroll(DataSet: TDataSet);
 var
   str_: string;
 begin
-{  if (Form_tree_objects.can_detail_ = 1) then
+  if (Form_tree_objects.can_detail_ = 1) then
   begin
     str_ := Form_tree_objects.wwDBLookupCombo2.LookupValue;
     if str_ <> '' then
@@ -168,7 +166,7 @@ begin
           FieldByName('level_id').AsString;
       end;
     end;
-  end;   }
+  end;   
 end;
 
 end.

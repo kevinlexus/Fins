@@ -72,6 +72,7 @@ type
     cxDBTreeList1: TcxDBTreeList;
     cxDBTreeList1SEL: TcxDBTreeListColumn;
     cxDBTreeList1NAME: TcxDBTreeListColumn;
+    cxDBTreeList1ID: TcxDBTreeListColumn;
     procedure saveXML;
     procedure saveMap;
     procedure SetXMLDocNode2;
@@ -121,10 +122,12 @@ type
     procedure sel_tree_obj(trnode: TMemRecViewEh; sel_: Integer);
     procedure desel_all_obj(tmem: TMemTableEh; id_: Integer);
     procedure cxDBTreeList1SELPropertiesEditValueChanged(Sender: TObject);
+    procedure cxDBTreeList1FocusedNodeChanged(Sender: TcxCustomTreeList;
+      APrevFocusedNode, AFocusedNode: TcxTreeListNode);
   private
     Doc, Doc1: IXMLDomDocument;
     root, root1: IXMLDOMElement;
-    flag2_: Integer;
+    selTreeId, flag2_: Integer;
     obj_: string;
     objexcel_: string;
     err_, issum_, iscnt_, ishead_, isoem_: Integer;
@@ -422,7 +425,21 @@ end;
 procedure TForm_tree_objects.LoadCube(action_: Integer);
 var
   str1_: string;
+  l_cnt: Integer;
 begin
+  {l_cnt:=1;
+
+  for I := 0 to cxDBTreeList1.AbsoluteCount - 1 do
+  begin
+    if (selTreeId <> cxDBTreeList1.AbsoluteItems[I].Values[0]) and
+       (cxDBTreeList1.AbsoluteItems[I].Values[2] <> 1) then
+    begin
+      cxDBTreeList1.AbsoluteItems[I].Values[2]:=1;
+      l_cnt:=l_cnt+1;
+    end;
+    if
+  end;}
+
   //Путь выгрузки
   str1_ := DataModule1.OraclePackage1.CallStringFunction
     ('scott.Utils.get_str_param', ['Путь1']);
@@ -979,7 +996,8 @@ procedure TForm_tree_objects.setAccess(rep_: string; have_current_: Integer;
   two_periods_: Integer);
 begin
   // стереть предыдущую отмеченную запись
-  prevRecNo:=-1;
+  selTreeId :=-1;
+  //prevRecNo:=-1;
   // запрет обработки Post дважды
   Form_tree_objects.isAlreadyInPost := False;
 
@@ -2425,9 +2443,30 @@ end;
 
 procedure TForm_tree_objects.cxDBTreeList1SELPropertiesEditValueChanged(
   Sender: TObject);
+var
+  I: Integer;
 begin
-  if DM_Olap.Uni_tree_objects.State = dsEdit then
-     DM_Olap.Uni_tree_objects.Post;
+{for I := 0 to cxDBTreeList1.AbsoluteCount - 1 do
+begin
+  if (selTreeId <> cxDBTreeList1.AbsoluteItems[I].Values[0]) and
+     (cxDBTreeList1.AbsoluteItems[I].Values[2] <> 1) then
+  begin
+    cxDBTreeList1.AbsoluteItems[I].Focused:=True;
+//    cxDBTreeList1.FocusedNode.GetNextVisible.Focused := True;
+    //cxDBTreeList1.DataController.Edit;
+    cxDBTreeList1.AbsoluteItems[I].Values[2]:=1;
+    //cxDBTreeList1.Post;
+  end;
+end;
+//cxDBTreeList1.Post;
+ }
+end;
+
+procedure TForm_tree_objects.cxDBTreeList1FocusedNodeChanged(
+  Sender: TcxCustomTreeList; APrevFocusedNode,
+  AFocusedNode: TcxTreeListNode);
+begin
+  selTreeId:=AFocusedNode.Values[0];
 end;
 
 end.

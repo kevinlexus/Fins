@@ -365,7 +365,7 @@ type
     procedure N139Click(Sender: TObject);
     procedure N140Click(Sender: TObject);
     procedure ToolButton3Click(Sender: TObject);
-    procedure AppException(Sender: TObject; E: Exception);
+    procedure AppException2(Sender: TObject; E: Exception);
   private
   public
     // выбранный период при переключении в архив
@@ -716,7 +716,7 @@ end;
 
 procedure TForm_Main.FormCreate(Sender: TObject);
 begin
-  Application.OnException := AppException;
+  //Application.OnException := AppException;
   Versia := 187;
   //нельзя использовать versia в params - используется updater-ом
   CoolTrayIcon1.IconIndex := 22;
@@ -2401,10 +2401,11 @@ end;
 
 // отобразить Exception на уровне приложения
 
-procedure TForm_Main.AppException(Sender: TObject; E: Exception);
+procedure TForm_Main.AppException2(Sender: TObject; E: Exception);
 var
   F: TextFile;
 begin
+  Exit;
   // предварительно отправить сообщение в базу
   try
     if E is EOracleError then

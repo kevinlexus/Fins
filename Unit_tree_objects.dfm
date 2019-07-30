@@ -1,6 +1,6 @@
 object Form_tree_objects: TForm_tree_objects
-  Left = 197
-  Top = 147
+  Left = 202
+  Top = 126
   Width = 351
   Height = 864
   Align = alLeft
@@ -612,15 +612,23 @@ object Form_tree_objects: TForm_tree_objects
     DataController.ParentField = 'MAIN_ID'
     DataController.KeyField = 'ID'
     Navigator.Buttons.CustomButtons = <>
-    OptionsBehavior.CellHints = True
-    OptionsView.Headers = False
     RootValue = 0
     TabOrder = 5
+    OnFocusedNodeChanged = cxDBTreeList1FocusedNodeChanged
+    object cxDBTreeList1ID: TcxDBTreeListColumn
+      DataBinding.FieldName = 'ID'
+      Width = 100
+      Position.ColIndex = 0
+      Position.RowIndex = 0
+      Position.BandIndex = 0
+      Summary.FooterSummaryItems = <>
+      Summary.GroupFooterSummaryItems = <>
+    end
     object cxDBTreeList1NAME: TcxDBTreeListColumn
       DataBinding.FieldName = 'NAME'
       Options.Editing = False
-      Width = 284
-      Position.ColIndex = 0
+      Width = 106
+      Position.ColIndex = 1
       Position.RowIndex = 0
       Position.BandIndex = 0
       Summary.FooterSummaryItems = <>
@@ -632,8 +640,8 @@ object Form_tree_objects: TForm_tree_objects
       Properties.ValueUnchecked = 1
       Properties.OnEditValueChanged = cxDBTreeList1SELPropertiesEditValueChanged
       DataBinding.FieldName = 'SEL'
-      Width = 37
-      Position.ColIndex = 1
+      Width = 100
+      Position.ColIndex = 2
       Position.RowIndex = 0
       Position.BandIndex = 0
       Summary.FooterSummaryItems = <>

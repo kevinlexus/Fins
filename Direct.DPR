@@ -188,10 +188,10 @@ var
 procedure EOracleErr(Error: EOracleError);
 begin
   //Проверяем ошибку возможно вызванную потерей связи
-  DataModule1.OraclePackage1.Session.Connected := true;
+  {DataModule1.OraclePackage1.Session.Connected := true;
   DataModule1.OraclePackage1.CallProcedure('scott.logger.log_', [parDate, 'User:'
     + Form_main.User + ' ' + Error.Message]);
-  DataModule1.OraclePackage1.Session.Connected := false;
+  DataModule1.OraclePackage1.Session.Connected := false;}
 end;
 
 begin

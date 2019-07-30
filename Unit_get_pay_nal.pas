@@ -371,6 +371,32 @@ begin
         + FloatToStr(l_itg)),
         'Внимание!', MB_OK + MB_ICONWARNING + MB_TOPMOST);
     end;
+
+    // отразить распределение на основной записи
+    with OD_c_kwtp_temp do
+    begin
+      First;
+      if State <> dsEdit then
+      begin
+        Edit;
+      end;
+      if l_itg = 0.00 then
+      begin
+        FieldByName('SUMMA').AsFloat :=
+          FieldByName('SUMMA').AsFloat + distSumm;
+        FieldByName('ITOG').AsFloat :=
+          FieldByName('ITOG').AsFloat + distSumm;
+      end
+      else
+      begin
+        FieldByName('SUMMA').AsFloat :=
+          FieldByName('SUMMA').AsFloat + (distSumm - l_itg);
+        FieldByName('ITOG').AsFloat :=
+          FieldByName('ITOG').AsFloat + (distSumm - l_itg);
+      end;
+      Post;
+    end;
+
   end;
   Form_get_pay_nal.OD_chargepay.EnableControls;
 end;
@@ -484,7 +510,7 @@ begin
       OD_chargepay.FieldByName('SUMMA2').AsFloat)
       or
       (OD_chargepay.FieldByName('PENYA').AsFloat <>
-        OD_chargepay.FieldByName('PENYA2').AsFloat) then
+      OD_chargepay.FieldByName('PENYA2').AsFloat) then
     begin
       OD_chargepay.Edit;
       OD_chargepay.FieldByName('SUMMA').AsFloat :=
@@ -511,8 +537,8 @@ begin
   begin
     //Выход на итог
     count;
-//    wwDBEdit1.SetFocus;
-Windows.SetFocus(wwDBEdit1.Handle);
+    //    wwDBEdit1.SetFocus;
+    Windows.SetFocus(wwDBEdit1.Handle);
   end
   else if (OD_usl_chk.FieldByName('iscounter').AsInteger = 0) then
   begin
@@ -579,8 +605,8 @@ end;
 procedure TForm_get_pay_nal.wwDBEdit4KeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
-//    wwDBEdit1.SetFocus;
-Windows.SetFocus(wwDBEdit1.Handle);
+    //    wwDBEdit1.SetFocus;
+    Windows.SetFocus(wwDBEdit1.Handle);
   if RetKey(Key) then
     Key := '.';
 
@@ -607,8 +633,8 @@ begin
     begin
       msg2('Не хватает денег для оплаты, повторите ввод', 'Внимание!', MB_OK +
         MB_ICONSTOP);
-//      wwDBEdit1.SetFocus;
-Windows.SetFocus(wwDBEdit1.Handle);
+      //      wwDBEdit1.SetFocus;
+      Windows.SetFocus(wwDBEdit1.Handle);
       exit;
     end;
 
@@ -618,8 +644,8 @@ Windows.SetFocus(wwDBEdit1.Handle);
       exit;
     end;
 
-//    Button1.SetFocus;
-Windows.SetFocus(Button1.Handle);
+    //    Button1.SetFocus;
+    Windows.SetFocus(Button1.Handle);
     summa_ := summGet - summItg;
 
     if summa_ > 0 then
@@ -640,8 +666,8 @@ Windows.SetFocus(Button1.Handle);
     end;
 
     wwDBEdit2.Text := FloatToStr(summa_);
-//    Button1.SetFocus;
-Windows.SetFocus(Button1.Handle);
+    //    Button1.SetFocus;
+    Windows.SetFocus(Button1.Handle);
   end;
   if RetKey(Key) then
     Key := '.';
@@ -791,8 +817,8 @@ begin
   DBGridEh1.Visible := false;
   DBGridEh1.SelectedIndex := 0;
   Button1.Enabled := true;
-//  wwDBEdit3.SetFocus;
-Windows.SetFocus(wwDBEdit3.Handle);
+  //  wwDBEdit3.SetFocus;
+  Windows.SetFocus(wwDBEdit3.Handle);
 end;
 
 // печать чека Result :0-успешно, 1-ошибка
@@ -1314,8 +1340,8 @@ begin
   if ((Shift = [ssCtrl]) and (key = VK_Return)) then
   begin
     count;
-//    wwDBEdit1.SetFocus;
-Windows.SetFocus(wwDBEdit1.Handle);
+    //    wwDBEdit1.SetFocus;
+    Windows.SetFocus(wwDBEdit1.Handle);
   end;
 end;
 
@@ -1412,8 +1438,8 @@ begin
       Application.CreateForm(TForm_print_bills, Form_print_bills);
       // выбрать задолженность
       Form_print_bills.ComboBox1.ItemIndex := 3;
-//      Form_print_bills.Button1.SetFocus;
-Windows.SetFocus(Form_print_bills.Button1.Handle);
+      //      Form_print_bills.Button1.SetFocus;
+      Windows.SetFocus(Form_print_bills.Button1.Handle);
     end;
   end
   else
