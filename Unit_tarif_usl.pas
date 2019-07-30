@@ -85,7 +85,7 @@ begin
     Application.CreateForm(TForm_status, Form_status);
     Form_status.Update;
     Form_change_house_nabor2.setState(
-      DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger, '', 2,
+      DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger, '', 2,
       DM_Olap.Uni_data.FieldByName('sptarn').AsInteger);
     Form_status.Close;
     if Form_change_house_nabor2.ShowModal = mrOk then
@@ -105,7 +105,7 @@ begin
     Application.CreateForm(TForm_change_house_nabor2,
       Form_change_house_nabor2);
   Form_change_house_nabor2.setState(
-    DM_Olap.MemTableEh2.FieldByName('OBJ_LEVEL').AsInteger,
+    DM_Olap.Uni_tree_objects.FieldByName('OBJ_LEVEL').AsInteger,
     '', 1, 0);
   if Form_change_house_nabor2.ShowModal = mrOk then
   begin
@@ -125,7 +125,7 @@ begin
   else
     l_chrg := 0;
   bm_ := DM_Olap.Uni_data.GetBookmark;
-  l_lvl := DM_Olap.MemTableEh2.FieldByName('OBJ_LEVEL').AsInteger;
+  l_lvl := DM_Olap.Uni_tree_objects.FieldByName('OBJ_LEVEL').AsInteger;
   if (msg3('Удалить услугу: ' +
     DM_Olap.Uni_data.FieldByName('NM').AsString + ' по орг: ' +
     DM_Olap.Uni_data.FieldByName('NAME').AsString + ' с коэфф:' +
@@ -143,11 +143,11 @@ begin
       Form_status.Update;
       {      DataModule1.OraclePackage1.CallProcedure
                  ('scott.p_houses.house_del_usl',
-                 [DM_Olap.MemTableEh2.FieldByName('OBJ_LEVEL').AsInteger,
+                 [DM_Olap.Uni_tree_objects.FieldByName('OBJ_LEVEL').AsInteger,
                  null,
-                 DM_Olap.MemTableEh2.FieldByName('fk_house').AsInteger,
-                 DM_Olap.MemTableEh2.FieldByName('reu').AsString,
-                 DM_Olap.MemTableEh2.FieldByName('trest').AsString,
+                 DM_Olap.Uni_tree_objects.FieldByName('fk_house').AsInteger,
+                 DM_Olap.Uni_tree_objects.FieldByName('reu').AsString,
+                 DM_Olap.Uni_tree_objects.FieldByName('trest').AsString,
                  DM_Olap.Uni_data.FieldByName('usl').AsString,
                  DM_Olap.Uni_data.FieldByName('org').AsInteger,
                  DM_Olap.Uni_data.FieldByName('koeff').AsFloat,
@@ -160,14 +160,14 @@ begin
       begin
         Clear;
         CreateParam(ftInteger, 'p_lvl', ptInput).AsInteger :=
-          DM_Olap.MemTableEh2.FieldByName('OBJ_LEVEL').AsInteger;
+          DM_Olap.Uni_tree_objects.FieldByName('OBJ_LEVEL').AsInteger;
         CreateParam(ftString, 'lsk_', ptInput).AsString;
         CreateParam(ftInteger, 'house_id_', ptInput).AsInteger :=
-          DM_Olap.MemTableEh2.FieldByName('fk_house').AsInteger;
+          DM_Olap.Uni_tree_objects.FieldByName('fk_house').AsInteger;
         CreateParam(ftString, 'p_reu', ptInput).AsString :=
-          DM_Olap.MemTableEh2.FieldByName('reu').AsString;
+          DM_Olap.Uni_tree_objects.FieldByName('reu').AsString;
         CreateParam(ftString, 'p_trest', ptInput).AsString :=
-          DM_Olap.MemTableEh2.FieldByName('trest').AsString;
+          DM_Olap.Uni_tree_objects.FieldByName('trest').AsString;
         CreateParam(ftString, 'usl_', ptInput).AsString :=
           DM_Olap.Uni_data.FieldByName('usl').AsString;
         CreateParam(ftInteger, 'org_', ptInput).AsInteger :=
@@ -188,9 +188,9 @@ begin
       {      DataModule1.OraclePackage1.CallProcedure
            ('scott.c_charges.gen_chrg_all',
             [l_lvl,
-             DM_Olap.MemTableEh2.FieldByName('fk_house').AsInteger,
-             DM_Olap.MemTableEh2.FieldByName('reu').AsString,
-             DM_Olap.MemTableEh2.FieldByName('trest').AsString]);}
+             DM_Olap.Uni_tree_objects.FieldByName('fk_house').AsInteger,
+             DM_Olap.Uni_tree_objects.FieldByName('reu').AsString,
+             DM_Olap.Uni_tree_objects.FieldByName('trest').AsString]);}
       Form_status.Close;
       Form_tree_objects.prepData;
       try

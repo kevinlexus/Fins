@@ -1,7 +1,7 @@
 object DM_Olap: TDM_Olap
   OldCreateOrder = False
-  Left = 604
-  Top = 153
+  Left = 579
+  Top = 162
   Height = 810
   Width = 686
   object DS_spr_params: TDataSource
@@ -365,113 +365,10 @@ object DM_Olap: TDM_Olap
     Left = 30
     Top = 136
   end
-  object MemTableEh2: TMemTableEh
-    FieldDefs = <
-      item
-        Name = 'ROWID'
-        DataType = ftString
-        Size = 18
-      end
-      item
-        Name = 'SEL'
-        DataType = ftFloat
-      end
-      item
-        Name = 'ID'
-        Attributes = [faRequired]
-        DataType = ftFloat
-      end
-      item
-        Name = 'MAIN_ID'
-        DataType = ftFloat
-      end
-      item
-        Name = 'NAME'
-        DataType = ftString
-        Size = 72
-      end
-      item
-        Name = 'HOUSE_MG'
-        DataType = ftString
-        Size = 20
-      end
-      item
-        Name = 'EXIST1'
-        DataType = ftFloat
-      end
-      item
-        Name = 'TREST'
-        DataType = ftString
-        Size = 2
-      end
-      item
-        Name = 'REU'
-        DataType = ftString
-        Size = 3
-      end
-      item
-        Name = 'KUL'
-        DataType = ftString
-        Size = 4
-      end
-      item
-        Name = 'ND'
-        DataType = ftString
-        Size = 6
-      end
-      item
-        Name = 'ND1'
-        DataType = ftString
-        Size = 6
-      end
-      item
-        Name = 'OBJ_LEVEL'
-        DataType = ftFloat
-      end
-      item
-        Name = 'STREET'
-        DataType = ftString
-        Size = 25
-      end
-      item
-        Name = 'NAME_TR'
-        DataType = ftString
-        Size = 64
-      end
-      item
-        Name = 'BANK_CD'
-        DataType = ftString
-        Size = 32
-      end
-      item
-        Name = 'FK_HOUSE'
-        DataType = ftFloat
-      end>
-    FetchAllOnOpen = True
-    IndexDefs = <
-      item
-        Name = 'idx1'
-        Fields = 'id'
-      end
-      item
-        Name = 'idx2'
-        Fields = 'main_id'
-      end>
-    Params = <>
-    DataDriver = DataSetDriverEh2
-    StoreDefs = True
-    TreeList.Active = True
-    TreeList.KeyFieldName = 'id'
-    TreeList.RefParentFieldName = 'main_id'
-    AfterScroll = MemTableEh2AfterScroll
-    OnSetFieldValue = MemTableEh2SetFieldValue
-    Left = 94
-    Top = 136
-  end
   object DS_tree_objects: TDataSource
-    DataSet = MemTableEh2
-    Left = 152
-    Top = 136
+    DataSet = Uni_tree_objects
+    Left = 96
+    Top = 192
   end
   object Uni_Data: TUniQuery
     Connection = DataModule1.UniConnection1
@@ -650,7 +547,11 @@ object DM_Olap: TDM_Olap
       
         '                  p.name || '#39', '#39' || scott.utils.f_order(t.nd, 6)' +
         '), t.reu, p.name, t.nd, t.mg1')
+    Active = True
     Constraints = <>
+    AfterEdit = Uni_tree_objectsAfterEdit
+    AfterPost = Uni_tree_objectsAfterPost
+    AfterScroll = Uni_tree_objectsAfterScroll
     Left = 32
     Top = 192
     ParamData = <

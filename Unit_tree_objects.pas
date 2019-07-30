@@ -10,7 +10,7 @@ uses
   ToolWin, ComCtrls, DataDriverEh, MemTableDataEh,
   MemTableEh, wwdbdatetimepicker, Mask, wwdbedit, Wwdotdot,
   Wwdbcomb, DBCtrlsEh, cxControls,
-  cxContainer, cxEdit,
+  cxContainer, cxEdit,                                            
   cxTextEdit, cxMemo, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters,
   dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel,
   dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
@@ -120,6 +120,7 @@ type
     procedure repTypeGrid;
     procedure sel_tree_obj(trnode: TMemRecViewEh; sel_: Integer);
     procedure desel_all_obj(tmem: TMemTableEh; id_: Integer);
+    procedure cxDBTreeList1SELPropertiesEditValueChanged(Sender: TObject);
   private
     Doc, Doc1: IXMLDomDocument;
     root, root1: IXMLDOMElement;
@@ -139,7 +140,8 @@ type
       show_paychk_, show_sel_org_, show_sel_oper_, show_deb_: Integer;
     OD_reports2: TOracleDataset;
     Cube_, Map_: TComponent;
-    isTimerEvent: Boolean;
+    isAlreadyInPost, isTimerEvent: Boolean;
+    prevRecNo, saveRecNo: Integer;
   end;
 
 var
@@ -160,19 +162,19 @@ begin
   //Открываем зависимые датасеты, для отчетов
   //форма для контроля тарифов
 
-{  if (rep_cd_ = '78') and (DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger //##
+  if (rep_cd_ = '78') and (DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger
     = 3) then
   begin
     DM_Olap.Uni_nabor_lsk.MasterSource := DM_Olap.Uni_data.DataSource;
     DM_Olap.Uni_nabor_lsk.Active := True;
   end
   else if (rep_cd_ <> '78') or ((rep_cd_ = '78') and
-    (DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger <> 3)) then
+    (DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger <> 3)) then
   begin
     //необходимо явно убирать Master, иначе датасет продолжает ссылаться, с ошибкой...
     //DM_Olap.Uni_nabor_lsk.Master := nil;
     DM_Olap.Uni_nabor_lsk.Active := False;
-  end; }
+  end;
 
   //Открываем зависимые датасеты, для отчетов
   //отчет - реестр для УСЗН
@@ -290,46 +292,46 @@ begin
          wwDBDateTimePicker2.Date);
     end;}
 
-{  if DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger = 3 then    //##
+  if DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger = 3 then    
   begin
     if sel_many_ = 0 then
     begin
       //Старый вызов процедуры (выбор одного объекта)
       DM_Olap.Uni_data.Params.ParamByName('reu_').AsString :=
-        DM_Olap.MemTableEh2.FieldByName('reu').AsString;
+        DM_Olap.Uni_tree_objects.FieldByName('reu').AsString;
       DM_Olap.Uni_data.Params.ParamByName('kul_').AsString :=
-        DM_Olap.MemTableEh2.FieldByName('kul').AsString;
+        DM_Olap.Uni_tree_objects.FieldByName('kul').AsString;
       DM_Olap.Uni_data.Params.ParamByName('nd_').AsString :=
-        DM_Olap.MemTableEh2.FieldByName('nd').AsString;
+        DM_Olap.Uni_tree_objects.FieldByName('nd').AsString;
       DM_Olap.Uni_data.Params.ParamByName('p_house').AsInteger :=
-        DM_Olap.MemTableEh2.FieldByName('fk_house').AsInteger;
+        DM_Olap.Uni_tree_objects.FieldByName('fk_house').AsInteger;
       DM_Olap.Uni_data.Params.ParamByName('var_').AsInteger := 3;
     end;
   end
-  else if DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger = 2 then
+  else if DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger = 2 then
   begin
     if sel_many_ = 0 then
     begin
       //Старый вызов процедуры (выбор одного объекта)
       DM_Olap.Uni_data.Params.ParamByName('reu_').AsString :=
-        DM_Olap.MemTableEh2.FieldByName('reu').AsString;
+        DM_Olap.Uni_tree_objects.FieldByName('reu').AsString;
       DM_Olap.Uni_data.Params.ParamByName('var_').AsInteger := 2;
     end;
   end
-  else if DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger = 1 then
+  else if DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger = 1 then
   begin
     if sel_many_ = 0 then
     begin
       //Старый вызов процедуры (выбор одного объекта)
       DM_Olap.Uni_data.Params.ParamByName('trest_').AsString :=
-        DM_Olap.MemTableEh2.FieldByName('trest').AsString;
+        DM_Olap.Uni_tree_objects.FieldByName('trest').AsString;
       DM_Olap.Uni_data.Params.ParamByName('var_').AsInteger := 1;
     end;
   end
-  else if DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger = 0 then
+  else if DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger = 0 then
   begin
     DM_Olap.Uni_data.Params.ParamByName('var_').AsInteger := 0;
-  end;          }
+  end;
 
   DM_Olap.Uni_Data.Active := False;
   DM_Olap.Uni_Data.Active := True;
@@ -351,12 +353,12 @@ begin
 
     SetVariable('id_', Form_tree_objects.rep_id_);
 
-    //Может ли детализироваться? //##
-    {if can_detail_ = 0 then
+    //Может ли детализироваться?
+    if can_detail_ = 0 then
       SetVariable('level_id_',
-        DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger)
+        DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger)
     else
-      SetVariable('level_id_', StrToInt(wwDBLookupCombo2.LookupValue));}
+      SetVariable('level_id_', StrToInt(wwDBLookupCombo2.LookupValue));
     Open;
 
     Active := true;
@@ -430,8 +432,8 @@ begin
   end;
 
   //Сохраняем выбор пользователя объектов для отчёта (домов в частности)
-{  if DM_Olap.MemTableEh2.State <> dsBrowse then //##
-    DM_Olap.MemTableEh2.Post;}
+  if DM_Olap.Uni_tree_objects.State <> dsBrowse then
+    DM_Olap.Uni_tree_objects.Post;
 
   if (two_periods_ <> 2) and ((DBLookupComboBox5.KeyValue = null) or
     ((DBLookupComboBox6.KeyValue = null) and (two_periods_ = 1))) then
@@ -498,11 +500,11 @@ begin
       ClearVariables;
       SetVariable('id_', rep_id_);
       //Может ли детализироваться?
-      {if can_detail_ = 0 then //##
+      if can_detail_ = 0 then
         SetVariable('level_id_',
-          DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger)
+          DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger)
       else
-        SetVariable('level_id_', StrToInt(wwDBLookupCombo2.LookupValue));}
+        SetVariable('level_id_', StrToInt(wwDBLookupCombo2.LookupValue));
       Open;
       strr_ := FieldByName('xmltext').AsString;
     finally
@@ -514,11 +516,11 @@ begin
   //поиск выбранного элемента
   if sel_many_ = 0 then
   begin
-    {if DM_Olap.MemTableEh2.Locate('sel', 0, [loCaseInsensitive]) = False then //##
+    if DM_Olap.Uni_tree_objects.Locate('sel', 0, [loCaseInsensitive]) = False then
     begin
       msg2('Не найден выбранный элемент!', 'Внимание!', MB_OK + MB_ICONERROR);
       Exit;
-    end;}
+    end;
   end;
 
   //Рабочая форма для вызова
@@ -567,47 +569,47 @@ begin
     end;
 
     //наименование Объекта в отчёте
-    {obj_ := '''' + ', по ' + DM_Olap.MemTableEh2.FieldByName('name').AsString + //##
+    obj_ := '''' + ', по ' + DM_Olap.Uni_tree_objects.FieldByName('name').AsString +
       '''';
-    if DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger = 3 then
+    if DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger = 3 then
       objexcel_ := ', по дому ' +
-        DM_Olap.MemTableEh2.FieldByName('name').AsString
-    else if DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger in [0, 1, 2]
+        DM_Olap.Uni_tree_objects.FieldByName('name').AsString
+    else if DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger in [0, 1, 2]
       then
       objexcel_ := ', по Организации ' +
-        DM_Olap.MemTableEh2.FieldByName('name').AsString;
+        DM_Olap.Uni_tree_objects.FieldByName('name').AsString;
 
     if (rep_type_ = 0) or (rep_type_ = 5) then
     begin
       Form_olap.Button3.Visible := true;
     end;
 
-    if (DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger <=
+    if (DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger <=
       max_level_) and (rep_type_ = 0) then
     begin
       // OLAP отчет
       repTypeOlap(action_);
     end
-    else if (DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger <=
+    else if (DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger <=
       max_level_) and (rep_type_ = 1) then
     begin
       //Fastreport отчет
       repTypeFastrep(rep_cd_);
     end
-    else if (DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger <=
+    else if (DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger <=
       max_level_) and (rep_type_ = 2) then
     begin
       // DBF отчет
       repTypeDBF(str1_, fname_);
     end
-    else if (DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger <=
+    else if (DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger <=
       max_level_) and (rep_type_ = 3) then
     begin
       // TXT отчет
       repTypeTXT(str1_, fname_);
     end
 
-    else if (DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger <=
+    else if (DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger <=
       max_level_) and (rep_type_ = 5) then
     begin
       // GRID отчет
@@ -618,7 +620,7 @@ begin
       msg2('Отсутствует уровень детализации!', 'Внимание!',
         MB_OK + MB_ICONSTOP)
     end;
-    }
+
   end;
 end;
 
@@ -899,7 +901,7 @@ begin
     err_ := exp_to_txt(DM_Olap.Uni_data, path, fname, fldsum_, issum_,
       iscnt_,
       ishead_,
-      isoem_, DM_Olap.MemTableEh2.FieldByName('bank_cd').AsString);
+      isoem_, DM_Olap.Uni_tree_objects.FieldByName('bank_cd').AsString);
     Form_status.close;
     SetSize(1);
     if err_ = 0 then
@@ -976,6 +978,11 @@ end;
 procedure TForm_tree_objects.setAccess(rep_: string; have_current_: Integer;
   two_periods_: Integer);
 begin
+  // стереть предыдущую отмеченную запись
+  prevRecNo:=-1;
+  // запрет обработки Post дважды
+  Form_tree_objects.isAlreadyInPost := False;
+
   DM_Olap.Uni_data.Active := false;
 
   //Если форма не загружает и не загружала справочник, загрузить
@@ -1095,8 +1102,8 @@ begin
 
   SetSize(1);
 
-{  DM_Olap.MemTableEh2.Filter := 'obj_level<=' + inttostr(max_level_); //##
-  DM_Olap.MemTableEh2.Filtered := true;}
+  DM_Olap.Uni_tree_objects.Filter := 'obj_level<=' + inttostr(max_level_);
+  DM_Olap.Uni_tree_objects.Filtered := true;
 
   //изменить наименование кнопки в соответствии с ф-цией отчета
   if (rep_type_ = 2) or (rep_type_ = 3) or (rep_type_ = 5) then
@@ -1179,17 +1186,17 @@ begin
     //    Label6.Visible:=True;
     //    wwDBLookupCombo2.Visible:=True;
 
-{    with DM_Olap.OD_level do //##
+    with DM_Olap.OD_level do
     begin
       Active := false;
       SetVariable('id',
-        DM_Olap.MemTableEh2.FieldByName('obj_level').AsInteger);
+        DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger);
       SetVariable('max_level',
         max_level_);
       Active := true;
     end;
     wwDBLookupCombo2.LookupValue :=
-      DM_Olap.MemTableEh2.FieldByName('obj_level').AsString;}
+      DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsString;
   end
   else
   begin
@@ -1328,7 +1335,7 @@ end;
 
 procedure TForm_tree_objects.N1Click(Sender: TObject);
 begin
-  DM_Olap.MemTableEh2.TreeList.FullCollapse;
+  //DM_Olap.Un.TreeList.FullCollapse;
 end;
 
 procedure TForm_tree_objects.Button2Click(Sender: TObject);
@@ -1389,24 +1396,6 @@ procedure TForm_tree_objects.MemTableEh2AfterScroll(DataSet: TDataSet);
 var
   str_: string;
 begin
-{if FF('Form_tree_objects', 0) = 1 then     //##
-  begin
-    if (Form_tree_objects.can_detail_ = 1) then
-    begin
-      str_ := wwDBLookupCombo2.LookupValue;
-      with DM_Olap.OD_level do
-      begin
-        Active := false;
-        SetVariable('id',
-          DM_Olap.MemTableEh2.FieldByName('OBJ_LEVEL').AsInteger);
-        Active := true;
-        SearchRecord('level_id', StrToInt(str_),
-          [srFromBeginning]);
-        wwDBLookupCombo2.LookupValue :=
-          FieldByName('level_id').AsString;
-      end;
-    end;
-  end;    }
 end;
 
 procedure TForm_tree_objects.sel_tree_obj(trnode: TMemRecViewEh; sel_: Integer);
@@ -1437,11 +1426,11 @@ end;
 procedure TForm_tree_objects.MemTableEh2SetFieldValue(
   MemTable: TCustomMemTableEh; Field: TField; var Value: Variant);
 begin
-  if flag_ = 0 then
+{  if flag_ = 0 then
   begin
     flag_ := 1;
     //Обновить само значение в поле
-    DM_Olap.MemTableEh2.FieldByName('sel').AsInteger := VarAsType(Value,
+    DM_Olap.Uni_tree_objects.FieldByName('sel').AsInteger := VarAsType(Value,
       varInteger);
     if Form_tree_objects.sel_many_ <> 0 then
     begin
@@ -1456,7 +1445,7 @@ begin
     end;
     DBGridEh1.Refresh;
     flag_ := 0;
-  end;
+  end;}
 end;
 
 procedure TForm_tree_objects.exp;
@@ -2387,18 +2376,8 @@ begin
     DM_Olap.Uni_tree_objects.Params.ParamByName('set_psch').AsInteger := 1;
   end;
 
-{  if DM_Olap.Uni_tree_objects.Params.ParamByName('set_psch').AsInteger <>
-    l_before then
-  begin}
     DM_Olap.Uni_tree_objects.Active := False;
     DM_Olap.Uni_tree_objects.Active := True;
-
-    {DM_Olap.MemTableEh2.Close;
-    DM_Olap.MemTableEh2.FetchRecords(4000);
-    DM_Olap.MemTableEh2.FetchRecords(4000);
-    DM_Olap.MemTableEh2.FetchRecords(4000);
-    DM_Olap.MemTableEh2.Open;} //##
-//  end;
 end;
 
 procedure TForm_tree_objects.Timer2Timer(Sender: TObject);
@@ -2415,7 +2394,7 @@ begin
     sqlStr := 'obj_level<=' + inttostr(max_level_);
     if (Edit1.Text = '') and (Edit2.Text = '') and (Edit3.Text = '') then
     begin
-      DM_Olap.MemTableEh2.TreeList.FullCollapse();
+      //DM_Olap.MemTableEh2.TreeList.FullCollapse();
     end
     else
     begin
@@ -2437,11 +2416,18 @@ begin
         sqlStr := sqlStr + 'and (nd1 LIKE ''%' + AnsiUpperCase(Edit3.Text) +
           '%'')';
       end;
-      DM_Olap.MemTableEh2.TreeList.FullExpand();
+      //DM_Olap.MemTableEh2.TreeList.FullExpand();
     end;
-    DM_Olap.MemTableEh2.Filter := sqlStr;
-    DM_Olap.MemTableEh2.Filtered := true;
+    DM_Olap.Uni_tree_objects.Filter := sqlStr;
+    DM_Olap.Uni_tree_objects.Filtered := true;
   end;
+end;
+
+procedure TForm_tree_objects.cxDBTreeList1SELPropertiesEditValueChanged(
+  Sender: TObject);
+begin
+  if DM_Olap.Uni_tree_objects.State = dsEdit then
+     DM_Olap.Uni_tree_objects.Post;
 end;
 
 end.

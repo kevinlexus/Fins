@@ -210,7 +210,7 @@ type
     ImageListTiny: TImageList;
     N140: TMenuItem;
     ToolButton3: TToolButton;
-    ver2011: TMenuItem;
+    ver: TMenuItem;
     procedure N5Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure N7Click(Sender: TObject);
@@ -510,8 +510,7 @@ begin
   begin
     if Form_main.arch_mg_ <> '' then
     begin
-      msg2('Получение справки из архива не возможно!', 'Внимание!', MB_OK +
-        MB_ICONSTOP);
+      msg2('Получение справки из архива не возможно!', 'Внимание!', 1);
     end
     else
     begin

@@ -248,7 +248,7 @@ object DataModule1: TDataModule1
       'Oracle.Direct=True')
     Options.KeepDesignConnected = False
     Username = 'scott'
-    Server = '127.0.0.13'
+    Server = '127.0.0.1'
     Left = 32
     Top = 416
     EncryptedPassword = '92FF90FF91FF9AFF92FF86FF8DFF90FF'

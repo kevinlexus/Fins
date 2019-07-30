@@ -1,6 +1,6 @@
 object Form_tree_objects: TForm_tree_objects
-  Left = 224
-  Top = 202
+  Left = 1529
+  Top = 224
   Width = 353
   Height = 740
   Align = alLeft
@@ -106,7 +106,7 @@ object Form_tree_objects: TForm_tree_objects
     Left = 0
     Top = 459
     Width = 337
-    Height = 214
+    Height = 213
     Align = alClient
     AutoFitColWidths = True
     Color = clInfoBk
@@ -589,7 +589,7 @@ object Form_tree_objects: TForm_tree_objects
   end
   object ToolBar1: TToolBar
     Left = 0
-    Top = 673
+    Top = 672
     Width = 337
     Height = 29
     Align = alBottom

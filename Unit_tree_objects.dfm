@@ -1,7 +1,7 @@
 object Form_tree_objects: TForm_tree_objects
-  Left = 234
-  Top = 148
-  Width = 383
+  Left = 197
+  Top = 147
+  Width = 351
   Height = 864
   Align = alLeft
   BorderStyle = bsSizeToolWin
@@ -97,7 +97,7 @@ object Form_tree_objects: TForm_tree_objects
   object Splitter1: TSplitter
     Left = 0
     Top = 453
-    Width = 367
+    Width = 335
     Height = 6
     Cursor = crVSplit
     Align = alTop
@@ -176,14 +176,14 @@ object Form_tree_objects: TForm_tree_objects
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 367
+    Width = 335
     Height = 433
     Align = alTop
     TabOrder = 0
     object Panel3: TPanel
       Left = 1
       Top = 41
-      Width = 365
+      Width = 333
       Height = 40
       Align = alBottom
       TabOrder = 0
@@ -249,7 +249,7 @@ object Form_tree_objects: TForm_tree_objects
     object GroupBox2: TGroupBox
       Left = 1
       Top = 81
-      Width = 365
+      Width = 333
       Height = 78
       Align = alBottom
       TabOrder = 1
@@ -373,7 +373,7 @@ object Form_tree_objects: TForm_tree_objects
     object GroupBox1: TGroupBox
       Left = 1
       Top = 282
-      Width = 365
+      Width = 333
       Height = 150
       Align = alBottom
       TabOrder = 5
@@ -399,14 +399,14 @@ object Form_tree_objects: TForm_tree_objects
       object wwDBGrid1: TwwDBGrid
         Left = 2
         Top = 15
-        Width = 361
+        Width = 329
         Height = 133
         ControlType.Strings = (
           'VAL;CustomEdit;wwDBComboBox1;F')
         Selected.Strings = (
-          'GR_NAME'#9'20'#9' '#9'T'
-          'PARNAME'#9'17'#9' '#9'T'
-          'VAL'#9'15'#9' '#9'T')
+          'GR_NAME'#9'18'#9' '#9'T'
+          'PARNAME'#9'15'#9' '#9'T'
+          'VAL'#9'13'#9' '#9'T')
         IniAttributes.Delimiter = ';;'
         TitleColor = clBtnFace
         FixedCols = 0
@@ -433,7 +433,7 @@ object Form_tree_objects: TForm_tree_objects
     object GroupBox5: TGroupBox
       Left = 1
       Top = 241
-      Width = 365
+      Width = 333
       Height = 41
       Align = alBottom
       Caption = #1044#1077#1090#1072#1083#1080#1079#1072#1094#1080#1103
@@ -471,7 +471,7 @@ object Form_tree_objects: TForm_tree_objects
     object GroupBox4: TGroupBox
       Left = 1
       Top = 200
-      Width = 365
+      Width = 333
       Height = 41
       Align = alBottom
       Caption = #1054#1087#1077#1088#1072#1094#1080#1103
@@ -509,7 +509,7 @@ object Form_tree_objects: TForm_tree_objects
     object GroupBox6: TGroupBox
       Left = 1
       Top = 159
-      Width = 365
+      Width = 333
       Height = 41
       Align = alBottom
       Caption = #1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103
@@ -548,7 +548,7 @@ object Form_tree_objects: TForm_tree_objects
   object ToolBar1: TToolBar
     Left = 0
     Top = 796
-    Width = 367
+    Width = 335
     Height = 29
     Align = alBottom
     ButtonWidth = 142
@@ -573,19 +573,10 @@ object Form_tree_objects: TForm_tree_objects
       OnClick = Button2Click
     end
   end
-  object Panel2: TPanel
-    Left = 88
-    Top = 440
-    Width = 105
-    Height = 33
-    Caption = #1046#1076#1080#1090#1077
-    TabOrder = 2
-    Visible = False
-  end
   object pnl1: TPanel
     Left = 0
     Top = 433
-    Width = 367
+    Width = 335
     Height = 20
     Align = alTop
     TabOrder = 4
@@ -605,13 +596,13 @@ object Form_tree_objects: TForm_tree_objects
       Style.IsFontAssigned = True
       TabOrder = 0
       Height = 18
-      Width = 365
+      Width = 333
     end
   end
   object cxDBTreeList1: TcxDBTreeList
     Left = 0
     Top = 459
-    Width = 367
+    Width = 335
     Height = 337
     Align = alClient
     Bands = <
@@ -621,10 +612,13 @@ object Form_tree_objects: TForm_tree_objects
     DataController.ParentField = 'MAIN_ID'
     DataController.KeyField = 'ID'
     Navigator.Buttons.CustomButtons = <>
-    RootValue = -1
+    OptionsBehavior.CellHints = True
+    OptionsView.Headers = False
+    RootValue = 0
     TabOrder = 5
     object cxDBTreeList1NAME: TcxDBTreeListColumn
       DataBinding.FieldName = 'NAME'
+      Options.Editing = False
       Width = 284
       Position.ColIndex = 0
       Position.RowIndex = 0
@@ -636,6 +630,7 @@ object Form_tree_objects: TForm_tree_objects
       PropertiesClassName = 'TcxCheckBoxProperties'
       Properties.ValueChecked = 0
       Properties.ValueUnchecked = 1
+      Properties.OnEditValueChanged = cxDBTreeList1SELPropertiesEditValueChanged
       DataBinding.FieldName = 'SEL'
       Width = 37
       Position.ColIndex = 1
@@ -644,6 +639,15 @@ object Form_tree_objects: TForm_tree_objects
       Summary.FooterSummaryItems = <>
       Summary.GroupFooterSummaryItems = <>
     end
+  end
+  object Panel2: TPanel
+    Left = 96
+    Top = 472
+    Width = 105
+    Height = 33
+    Caption = #1046#1076#1080#1090#1077
+    TabOrder = 2
+    Visible = False
   end
   object PopupMenu1: TPopupMenu
     Left = 136

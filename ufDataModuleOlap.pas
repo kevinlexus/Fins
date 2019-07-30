@@ -38,7 +38,6 @@ type
     OD_levelLEVEL_ID: TFloatField;
     OD_uslm_olap: TOracleDataSet;
     DataSetDriverEh2: TDataSetDriverEh;
-    MemTableEh2: TMemTableEh;
     DS_tree_objects: TDataSource;
     Uni_Data: TUniQuery;
     UniSQLMonitor1: TUniSQLMonitor;
@@ -48,13 +47,12 @@ type
     Uni_c_kart_pr: TUniQuery;
     Uni_detail: TUniQuery;
     DS_data: TDataSource;
-    procedure MemTableEh2AfterScroll(DataSet: TDataSet);
-    procedure MemTableEh2SetFieldValue(MemTable: TCustomMemTableEh;
-      Field: TField; var Value: Variant);
+    procedure Uni_tree_objectsAfterEdit(DataSet: TDataSet);
+    procedure Uni_tree_objectsAfterPost(DataSet: TDataSet);
+    procedure Uni_tree_objectsAfterScroll(DataSet: TDataSet);
   private
     { Private declarations }
   public
-    { Public declarations }
   end;
 
 var
@@ -66,53 +64,112 @@ uses Unit_tree_objects;
 
 {$R *.dfm}
 
-procedure TDM_Olap.MemTableEh2AfterScroll(DataSet: TDataSet);
-var
-  str_: String;
+procedure TDM_Olap.Uni_tree_objectsAfterEdit(DataSet: TDataSet);
 begin
-  if FF('Form_tree_objects', 0) = 1 then
-  begin
-    if (Form_tree_objects.can_detail_ = 1) then
-    begin
-    str_:=Form_tree_objects.wwDBLookupCombo2.LookupValue;
-    with OD_level do
-    begin
-    Active:=false;
-    SetVariable('id',
-      MemTableEh2.FieldByName('OBJ_LEVEL').AsInteger);
-    Active:=true;
-    SearchRecord('level_id', StrToInt(str_),
-      [srFromBeginning]);
-    Form_tree_objects.wwDBLookupCombo2.LookupValue:=
-       FieldByName('level_id').AsString;
-    end;
-    end;
-  end;
-
+  {    if Form_tree_objects.flag_ = 0 then
+      begin
+      Form_tree_objects.flag_:=1;
+        //Обновить само значение в поле
+        Uni_tree_objects.FieldByName('sel').AsInteger:=VarToInt(Value);
+        if Form_tree_objects.sel_many_ <> 0 then
+        begin
+          //Обновить значения в дочерних объектах
+          Form_tree_objects.sel_tree_obj(MemTableEh2.TreeNode, VarToInt(Value));
+        end
+        else
+        begin
+          //Обновить значения в во всех объектах (деселект всех)
+          Form_tree_objects.desel_all_obj(MemTableEh2, MemTableEh2.FieldByName('id').AsInteger);
+        end;
+        Form_tree_objects.DBGridEh1.Refresh;
+      Form_tree_objects.flag_:=0;
+      end;
+     }
 end;
 
-procedure TDM_Olap.MemTableEh2SetFieldValue(MemTable: TCustomMemTableEh;
-  Field: TField; var Value: Variant);
+procedure TDM_Olap.Uni_tree_objectsAfterPost(DataSet: TDataSet);
+var
+  str_: string;
+  l_id: Integer;
+  l_flag: Boolean;
 begin
-  if Form_tree_objects.flag_ = 0 then
+  {
+  if Form_tree_objects.isAlreadyInPost <> True then
   begin
-  Form_tree_objects.flag_:=1;
-    //Обновить само значение в поле
-    MemTableEh2.FieldByName('sel').AsInteger:=VarToInt(Value);
-    if Form_tree_objects.sel_many_ <> 0 then
+    Form_tree_objects.isAlreadyInPost := True;
+    // выбрать уровень детализации
+    if (Form_tree_objects.can_detail_ = 1) then
     begin
-      //Обновить значения в дочерних объектах
-      Form_tree_objects.sel_tree_obj(MemTableEh2.TreeNode, VarToInt(Value));
-    end
-    else
-    begin
-      //Обновить значения в во всех объектах (деселект всех)
-      Form_tree_objects.desel_all_obj(MemTableEh2, MemTableEh2.FieldByName('id').AsInteger);
+      str_ := Form_tree_objects.wwDBLookupCombo2.LookupValue;
+      with DM_Olap.OD_level do
+      begin
+        Active := false;
+        SetVariable('id',
+          Uni_tree_objects.FieldByName('OBJ_LEVEL').AsInteger);
+        Active := true;
+        SearchRecord('level_id', StrToInt(str_),
+          [srFromBeginning]);
+        Form_tree_objects.wwDBLookupCombo2.LookupValue :=
+          FieldByName('level_id').AsString;
+      end;
     end;
-    Form_tree_objects.DBGridEh1.Refresh;
-  Form_tree_objects.flag_:=0;
-  end;
 
+    // убрать отметки с других записей
+    if Form_tree_objects.sel_many_ = 0 then
+    begin
+      with Uni_tree_objects do
+      begin
+        // выбран объект    
+        if FieldByName('sel').AsInteger = 0 then
+        begin
+          Form_tree_objects.saveRecNo := RecNo;
+          if (Form_tree_objects.prevRecNo <> RecNo)
+            and (Form_tree_objects.prevRecNo <> -1) then
+          begin
+            // отменить предыдущую отметку
+            RecNo := Form_tree_objects.prevRecNo;
+            Edit;
+            FieldByName('sel').AsInteger := 1;
+            Post;
+            // вернуться назад
+            RecNo := Form_tree_objects.saveRecNo;
+            Form_tree_objects.prevRecNo := Form_tree_objects.saveRecNo;
+          end
+          else
+          begin
+            Form_tree_objects.prevRecNo := RecNo;
+          end;
+        end;
+      end;
+    end;
+    Form_tree_objects.isAlreadyInPost := False;
+  end;
+  }
+end;
+
+procedure TDM_Olap.Uni_tree_objectsAfterScroll(DataSet: TDataSet);
+var
+  str_: string;
+begin
+{  if (Form_tree_objects.can_detail_ = 1) then
+  begin
+    str_ := Form_tree_objects.wwDBLookupCombo2.LookupValue;
+    if str_ <> '' then
+    begin
+      with OD_level do
+      begin
+        Active := false;
+        SetVariable('id',
+          Uni_tree_objects.FieldByName('OBJ_LEVEL').AsInteger);
+        Active := true;
+        SearchRecord('level_id', StrToInt(str_),
+          [srFromBeginning]);
+        Form_tree_objects.wwDBLookupCombo2.LookupValue :=
+          FieldByName('level_id').AsString;
+      end;
+    end;
+  end;   }
 end;
 
 end.
+

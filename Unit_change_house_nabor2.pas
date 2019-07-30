@@ -258,11 +258,11 @@ begin
           CreateParam(ftInteger, 'p_lvl', ptInput).AsInteger := l_lvl;
           CreateParam(ftString, 'lsk_', ptInput).AsString;
           CreateParam(ftInteger, 'house_id_', ptInput).AsInteger :=
-            DM_Olap.MemTableEh2.FieldByName('fk_house').AsInteger;
+            DM_Olap.Uni_tree_objects.FieldByName('fk_house').AsInteger;
           CreateParam(ftString, 'p_reu', ptInput).AsString :=
-            DM_Olap.MemTableEh2.FieldByName('reu').AsString;
+            DM_Olap.Uni_tree_objects.FieldByName('reu').AsString;
           CreateParam(ftString, 'p_trest', ptInput).AsString :=
-            DM_Olap.MemTableEh2.FieldByName('trest').AsString;
+            DM_Olap.Uni_tree_objects.FieldByName('trest').AsString;
           CreateParam(ftString, 'usl_', ptInput).AsString :=
             OD_usl.FieldByName('usl').AsString;
           CreateParam(ftInteger, 'org_', ptInput).AsInteger :=
@@ -312,11 +312,11 @@ begin
         CreateParam(ftInteger, 'p_lvl', ptInput).AsInteger :=
           l_lvl;
         CreateParam(ftInteger, 'p_house_id', ptInput).AsInteger :=
-          DM_Olap.MemTableEh2.FieldByName('fk_house').AsInteger;
+          DM_Olap.Uni_tree_objects.FieldByName('fk_house').AsInteger;
         CreateParam(ftString, 'p_reu', ptInput).AsString :=
-          DM_Olap.MemTableEh2.FieldByName('reu').AsString;
+          DM_Olap.Uni_tree_objects.FieldByName('reu').AsString;
         CreateParam(ftString, 'p_trest', ptInput).AsString :=
-          DM_Olap.MemTableEh2.FieldByName('trest').AsString;
+          DM_Olap.Uni_tree_objects.FieldByName('trest').AsString;
         CreateParam(ftString, 'usl_', ptInput).AsString :=
           OD_usl.FieldByName('usl').AsString;
         CreateParam(ftInteger, 'old_org_', ptInput).AsInteger :=
