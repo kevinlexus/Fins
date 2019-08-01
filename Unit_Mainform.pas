@@ -2,7 +2,7 @@ unit Unit_Mainform;
 
 interface
 
-uses
+uses     
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Menus, ComCtrls, ToolWin, ImgList, DM_module1, IdBaseComponent,
   IdComponent, IdTCPConnection, IdTCPClient, IdFTP, ExtCtrls, StdCtrls, DBCtrls,

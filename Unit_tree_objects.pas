@@ -34,8 +34,6 @@ uses
 type
   TForm_tree_objects = class(TForm)
     DBGridEh1: TDBGridEh;
-    PopupMenu1: TPopupMenu;
-    N1: TMenuItem;
     Panel1: TPanel;
     ToolBar1: TToolBar;
     Button2: TButton;
@@ -73,10 +71,12 @@ type
     cxDBTreeList1SEL: TcxDBTreeListColumn;
     cxDBTreeList1NAME: TcxDBTreeListColumn;
     cxDBTreeList1ID: TcxDBTreeListColumn;
+    PopupMenu1: TPopupMenu;
+    N1: TMenuItem;
     procedure saveXML;
     procedure saveMap;
     procedure SetXMLDocNode2;
-    procedure LoadCube(action_: Integer);
+    procedure LoadData(action_: Integer);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormEndDock(Sender, Target: TObject; X, Y: Integer);
     procedure FormStartDock(Sender: TObject;
@@ -121,6 +121,7 @@ type
     procedure repTypeGrid;
     procedure sel_tree_obj(trnode: TMemRecViewEh; sel_: Integer);
     procedure desel_all_obj(tmem: TMemTableEh; id_: Integer);
+    procedure cxDBTreeList1SELPropertiesEditValueChanged(Sender: TObject);
   private
     Doc, Doc1: IXMLDomDocument;
     root, root1: IXMLDOMElement;
@@ -142,6 +143,8 @@ type
     Cube_, Map_: TComponent;
     isAlreadyInPost, isTimerEvent: Boolean;
     prevRecNo, saveRecNo: Integer;
+    // загружается ли куб?
+    isLoadingCube: Boolean;
   end;
 
 var
@@ -220,8 +223,11 @@ begin
 
   //Возможность детализации
   if can_detail_ = 1 then
+  begin
     DM_Olap.Uni_data.Params.ParamByName('det_').AsInteger :=
       StrToInt(wwDBLookupCombo2.LookupValue);
+
+  end;
 
   DM_Olap.Uni_data.Params.ParamByName('cd_').AsString := rep_cd_;
 
@@ -300,6 +306,8 @@ begin
       //Старый вызов процедуры (выбор одного объекта)
       DM_Olap.Uni_data.Params.ParamByName('reu_').AsString :=
         DM_Olap.Uni_tree_objects.FieldByName('reu').AsString;
+      DM_Olap.Uni_data.Params.ParamByName('p_for_reu').AsString :=
+        DM_Olap.Uni_tree_objects.FieldByName('for_reu').AsString;
       DM_Olap.Uni_data.Params.ParamByName('kul_').AsString :=
         DM_Olap.Uni_tree_objects.FieldByName('kul').AsString;
       DM_Olap.Uni_data.Params.ParamByName('nd_').AsString :=
@@ -316,6 +324,8 @@ begin
       //Старый вызов процедуры (выбор одного объекта)
       DM_Olap.Uni_data.Params.ParamByName('reu_').AsString :=
         DM_Olap.Uni_tree_objects.FieldByName('reu').AsString;
+      DM_Olap.Uni_data.Params.ParamByName('p_for_reu').AsString :=
+        DM_Olap.Uni_tree_objects.FieldByName('for_reu').AsString;
       DM_Olap.Uni_data.Params.ParamByName('var_').AsInteger := 2;
     end;
   end
@@ -420,11 +430,18 @@ begin
   Action := caFree;
 end;
 
-procedure TForm_tree_objects.LoadCube(action_: Integer);
+procedure TForm_tree_objects.LoadData(action_: Integer);
 var
   str1_: string;
-  I, l_cnt: Integer;
+  det, I, l_cnt: Integer;
 begin
+  // сохранить уровень детализации
+  if wwDBLookupCombo2.LookupValue <> '' then
+    det := StrToInt(wwDBLookupCombo2.LookupValue)
+  else
+    // не установлен
+    det := -1;
+
   // проверка кол-ва выбранных объектов
   if Form_tree_objects.sel_many_ = 0 then
   begin
@@ -499,7 +516,7 @@ begin
     Exit;
   end;
 
-  if (can_detail_ = 1) and (wwDBLookupCombo2.LookupValue = '') then
+  if (can_detail_ = 1) and (det = -1) then
   begin
     msg2('Не установлен уровень детализации!', 'Внимание!',
       MB_OK + MB_ICONSTOP);
@@ -525,7 +542,7 @@ begin
         SetVariable('level_id_',
           DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger)
       else
-        SetVariable('level_id_', StrToInt(wwDBLookupCombo2.LookupValue));
+        SetVariable('level_id_', det);
       Open;
       strr_ := FieldByName('xmltext').AsString;
     finally
@@ -1352,18 +1369,44 @@ begin
 end;
 
 procedure TForm_tree_objects.N1Click(Sender: TObject);
+var
+  l_recno: Integer;
 begin
-  //DM_Olap.Un.TreeList.FullCollapse;
+  // снять отметки с объектов в дереве
+  with DM_Olap.Uni_tree_objects do
+  begin
+    DisableControls;
+    l_recno := RecNo;
+    if State = dsEdit then
+      Post;
+    First;
+    while not Eof do
+    begin
+      if FieldByName('sel').AsInteger = 0 then
+      begin
+        Edit;
+        FieldByName('sel').AsInteger := 1;
+        Post;
+      end;
+      Next;
+    end;
+    RecNo := l_recno;
+    EnableControls;
+  end;
 end;
 
 procedure TForm_tree_objects.Button2Click(Sender: TObject);
 begin
-  LoadCube(1);
+  isLoadingCube := True;
+  LoadData(1);
+  isLoadingCube := False;
 end;
 
 procedure TForm_tree_objects.Button3Click(Sender: TObject);
 begin
-  LoadCube(0);
+  isLoadingCube := True;
+  LoadData(0);
+  isLoadingCube := False;
 end;
 
 procedure TForm_tree_objects.SetSize(var_: Integer);
@@ -2184,7 +2227,7 @@ var
   a, x, y, i: Integer;
   HeadList: TList;
   ARecord: PHeadList;
-  adr, str, street, nd, korp, kw: string;
+  adr, str, str2, street, nd, korp, kw: string;
 begin
   // Обьект EXCEL
   XL := CreateOleObject('Excel.Application');
@@ -2208,10 +2251,12 @@ begin
   //заполнить массив индексами заголовка XLS - файла
   HeadList := TList.Create;
   str := 'xx';
+  str2 := '';
   x := 1;
   while True do
   begin
     str := XL.WorkBooks[1].WorkSheets[1].Cells[3, x];
+    str2 := str2 + ',' + str;
     if str = '' then
       Break;
     New(ARecord);
@@ -2220,6 +2265,13 @@ begin
     HeadList.Add(ARecord);
     x := x + 1;
   end;
+
+  Application.MessageBox(PChar('В СЛУЧАЕ НЕВЫГРУЗКИ В ФАЙЛ ПРОВЕРИТЬ ЗАПОЛНЕНИЕ ПОЛЯ'+
+    #13#10+ ' SPUL.CD_USZN (ДОЛЖНО БЫТЬ В ТОЧНОСТИ КАК В EXCEL ФАЙЛЕ!'),
+    'Внимание!', MB_OK + MB_TOPMOST);
+
+  Application.MessageBox(PChar('Cписок заголовков EXCEL файла:' + #13#10 +
+    str2), 'Внимание!', MB_OK + MB_ICONQUESTION + MB_TOPMOST);
 
   //движемся вниз по файлу, находим адреса
   y := 4;
@@ -2235,9 +2287,9 @@ begin
     adr := street + nd + korp + kw;
 
     //поиск адреса в датасете отчёта
-  //  try
+    try
     if DM_Olap.Uni_data.Locate('nylic;ndom;nkorp;nkw',
-      VarArrayOf([street, nd, korp, kw]), []) then
+      VarArrayOf([street, nd, korp, kw]), [loCaseInsensitive]) then
     begin
       //найден адрес
       //идём по заголовку и переносим информацию
@@ -2245,9 +2297,6 @@ begin
       begin
         ARecord := HeadList.Items[i];
         str := XL.WorkBooks[1].WorkSheets[1].Cells[y, i + 1];
-        //        if ARecord.S='KPR' then
-        //         str:= str;
-
         if (str = '') or (str = '0') then //берём только не заполненные поля
         begin
 
@@ -2272,11 +2321,20 @@ begin
               DM_Olap.Uni_data.FieldByName(ARecord.S).AsFloat;
         end;
       end;
-
+    end
+    else
+    begin
+      ShowMessage('Не найден адрес:' + adr);
     end;
-    {  except
-          ShowMessage(adr);
-      end;}
+
+    except
+      on E : Exception do
+     begin
+        ShowMessage('Ошибка при выгрузке в EXCEL');
+        ShowMessage(E.Message);
+        ShowMessage(adr);
+     end;
+    end;
 
     y := y + 1;
   end;
@@ -2439,6 +2497,33 @@ begin
     DM_Olap.Uni_tree_objects.Filter := sqlStr;
     DM_Olap.Uni_tree_objects.Filtered := true;
   end;
+end;
+
+procedure TForm_tree_objects.cxDBTreeList1SELPropertiesEditValueChanged(
+  Sender: TObject);
+var
+  str_: string;
+begin
+  if (Form_tree_objects.isLoadingCube = false) and (Form_tree_objects.can_detail_
+    = 1) then
+  begin
+    str_ := Form_tree_objects.wwDBLookupCombo2.LookupValue;
+    if str_ <> '' then
+    begin
+      with DM_Olap.OD_level do
+      begin
+        Active := false;
+        SetVariable('id',
+          DM_Olap.Uni_tree_objects.FieldByName('OBJ_LEVEL').AsInteger);
+        Active := true;
+        SearchRecord('level_id', StrToInt(str_),
+          [srFromBeginning]);
+        Form_tree_objects.wwDBLookupCombo2.LookupValue :=
+          FieldByName('level_id').AsString;
+      end;
+    end;
+  end;
+
 end;
 
 end.

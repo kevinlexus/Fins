@@ -1385,7 +1385,7 @@ begin
     Label3.Caption := 'Период отчета';
     Label9.Visible := false;
     DBLookupComboboxEh5.Visible := false;
-    DBLookupComboboxEh1.Enabled := false;
+    DBLookupComboboxEh1.Enabled := true;    
     CheckBox2.Visible := true;
     CheckBox4.Visible := true;
     CheckBox5.Visible := false;

@@ -60,7 +60,7 @@ var
 
 implementation
 
-uses Unit_tree_objects;
+uses Unit_tree_objects, Unit_Mainform;
 
 {$R *.dfm}
 
@@ -146,10 +146,10 @@ begin
 end;
 
 procedure TDM_Olap.Uni_tree_objectsAfterScroll(DataSet: TDataSet);
-var
-  str_: string;
+//var
+//  str_: string;
 begin
-  if (Form_tree_objects.can_detail_ = 1) then
+{  if (Form_tree_objects.isLoadingCube = false) and (Form_tree_objects.can_detail_ = 1) then
   begin
     str_ := Form_tree_objects.wwDBLookupCombo2.LookupValue;
     if str_ <> '' then
@@ -166,7 +166,7 @@ begin
           FieldByName('level_id').AsString;
       end;
     end;
-  end;   
+  end;}   
 end;
 
 end.

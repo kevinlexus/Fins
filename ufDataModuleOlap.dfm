@@ -1,7 +1,7 @@
 object DM_Olap: TDM_Olap
   OldCreateOrder = False
-  Left = 579
-  Top = 162
+  Left = 864
+  Top = 153
   Height = 810
   Width = 686
   object DS_spr_params: TDataSource
@@ -375,8 +375,8 @@ object DM_Olap: TDM_Olap
     SQL.Strings = (
       'begin'
       
-        '  scott.stat.rep_stat(:reu_, :kul_, :nd_, :trest_, :mg_, :mg1_, ' +
-        ':dat_, :dat1_, '
+        '  scott.stat.rep_stat(:reu_, :p_for_reu, :kul_, :nd_, :trest_, :' +
+        'mg_, :mg1_, :dat_, :dat1_, '
       
         '    :var_, :det_, :org_, :oper_, :cd_, :spk_id_, :p_house, :p_ou' +
         't_tp, :prep_refcursor);'
@@ -391,6 +391,11 @@ object DM_Olap: TDM_Olap
         Name = 'reu_'
         ParamType = ptInput
         Value = 'xx'
+      end
+      item
+        DataType = ftString
+        Name = 'p_for_reu'
+        ParamType = ptInput
       end
       item
         DataType = ftString
@@ -492,12 +497,11 @@ object DM_Olap: TDM_Olap
       '               1,'
       '               v.name_tr,'
       '               2,'
-      '               s.reu||'#39'-'#39'||s.name,'
-      '               3,'
       
         '               case when t.tp_show = 1 then '#39#1056#1057#1054':'#39'||s.reu||'#39'-'#39'||' +
-        's.name'
-      '                 else p.name||'#39', '#39'||ltrim(t.nd, '#39'0'#39') end'
+        's.name else s.reu||'#39'-'#39'||s.name end,'
+      '               3,'
+      '               p.name||'#39', '#39'||ltrim(t.nd, '#39'0'#39')'
       '               ) as name,'
       '       decode(t.obj_level, 3,'
       #39#1089' '#39'||'
@@ -515,7 +519,7 @@ object DM_Olap: TDM_Olap
       ' case when t.obj_level=3 and t.mg2 = '#39'999999'#39' then 71'
       '         when t.obj_level=3 and t.mg2<>'#39'999999'#39' then 72'
       '     else -1 end as exist1,'
-      ' t.trest, t.reu,'
+      ' t.trest, t.reu, t.for_reu,'
       '       t.kul, t.nd, upper(ltrim(t.nd, '#39'0'#39')) as nd1, t.obj_level,'
       '       upper(p.name) as street,'
       '       upper(s.name) as name_tr,'
@@ -547,7 +551,6 @@ object DM_Olap: TDM_Olap
       
         '                  p.name || '#39', '#39' || scott.utils.f_order(t.nd, 6)' +
         '), t.reu, p.name, t.nd, t.mg1')
-    Active = True
     Constraints = <>
     AfterEdit = Uni_tree_objectsAfterEdit
     AfterPost = Uni_tree_objectsAfterPost

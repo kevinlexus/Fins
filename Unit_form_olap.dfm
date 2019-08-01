@@ -1,6 +1,6 @@
 object Form_olap: TForm_olap
-  Left = -7
-  Top = 244
+  Left = 756
+  Top = 217
   AutoScroll = False
   Caption = 'OLAP'
   ClientHeight = 743
@@ -4395,6 +4395,7 @@ object Form_olap: TForm_olap
   object frxDBDS_base: TfrxDBDataset
     UserName = 'frxDBDS_base'
     CloseDataSource = False
+    DataSet = DM_Olap.Uni_Data
     BCDToCurrency = False
     Left = 120
     Top = 384

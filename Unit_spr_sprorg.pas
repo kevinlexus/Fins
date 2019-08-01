@@ -42,7 +42,7 @@ uses
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
   dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter,
   cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
-  cxDBData, cxTextEdit, cxDBLookupComboBox;
+  cxDBData, cxTextEdit, cxDBLookupComboBox, cxCheckBox;
 
 type
   TForm_spr_sprorg = class(TForm)
@@ -213,6 +213,9 @@ type
     cxGridDBTableView3HIDE_ROW: TcxGridDBColumn;
     OD_sprorgADR_CASH: TStringField;
     cxGrid1DBTableView1ADR_CASH: TcxGridDBColumn;
+    OD_sprorgFK_ORG2: TFloatField;
+    OD_sprorgIS_RSO: TFloatField;
+    cxGrid1DBTableView1IS_RSO: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure OD_sprorgAfterScroll(DataSet: TDataSet);

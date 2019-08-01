@@ -1,6 +1,6 @@
 object Form_tree_objects: TForm_tree_objects
-  Left = 202
-  Top = 126
+  Left = 221
+  Top = 146
   Width = 351
   Height = 864
   Align = alLeft
@@ -127,7 +127,6 @@ object Form_tree_objects: TForm_tree_objects
     Options = [dgEditing, dgTitles, dgColumnResize, dgColLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
     ParentFont = False
     ParentShowHint = False
-    PopupMenu = PopupMenu1
     ShowHint = True
     TabOrder = 1
     TitleFont.Charset = DEFAULT_CHARSET
@@ -612,7 +611,9 @@ object Form_tree_objects: TForm_tree_objects
     DataController.ParentField = 'MAIN_ID'
     DataController.KeyField = 'ID'
     Navigator.Buttons.CustomButtons = <>
+    OptionsData.CheckHasChildren = False
     OptionsView.Headers = False
+    PopupMenu = PopupMenu1
     RootValue = 0
     TabOrder = 5
     object cxDBTreeList1ID: TcxDBTreeListColumn
@@ -639,6 +640,7 @@ object Form_tree_objects: TForm_tree_objects
       PropertiesClassName = 'TcxCheckBoxProperties'
       Properties.ValueChecked = 0
       Properties.ValueUnchecked = 1
+      Properties.OnEditValueChanged = cxDBTreeList1SELPropertiesEditValueChanged
       DataBinding.FieldName = 'SEL'
       Width = 100
       Position.ColIndex = 2
@@ -657,14 +659,6 @@ object Form_tree_objects: TForm_tree_objects
     TabOrder = 2
     Visible = False
   end
-  object PopupMenu1: TPopupMenu
-    Left = 136
-    Top = 568
-    object N1: TMenuItem
-      Caption = #1089#1074#1077#1088#1085#1091#1090#1100' '#1074#1077#1090#1082#1080
-      OnClick = N1Click
-    end
-  end
   object dlgOpen1: TOpenDialog
     InitialDir = 'c:\temp'
     Options = [ofHideReadOnly, ofNoChangeDir, ofFileMustExist, ofNoNetworkButton, ofEnableSizing]
@@ -675,5 +669,13 @@ object Form_tree_objects: TForm_tree_objects
     OnTimer = Timer2Timer
     Left = 265
     Top = 100
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 144
+    Top = 608
+    object N1: TMenuItem
+      Caption = #1057#1085#1103#1090#1100' '#1086#1090#1084#1077#1090#1082#1080
+      OnClick = N1Click
+    end
   end
 end
