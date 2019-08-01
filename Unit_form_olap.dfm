@@ -6000,7 +6000,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'PREDPR'
         FieldName = 'TREST'
-        DataSet = DM_Olap.Uni_Data
+        DataSet = DM_Olap.OD_trest_olap
         KeyField = 'TREST'
         LookupField = 'NAME_TR'
         WrapTo = wt_None
@@ -6018,7 +6018,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'REU'
         FieldName = 'REU'
-        DataSet = DM_Olap.Uni_Data
+        DataSet = DM_Olap.OD_reu_olap
         KeyField = 'REU'
         LookupField = 'NAME_REU'
         WrapTo = wt_None

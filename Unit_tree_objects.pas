@@ -303,7 +303,7 @@ begin
   begin
     if sel_many_ = 0 then
     begin
-      //Старый вызов процедуры (выбор одного объекта)
+      // выбор одного объекта
       DM_Olap.Uni_data.Params.ParamByName('reu_').AsString :=
         DM_Olap.Uni_tree_objects.FieldByName('reu').AsString;
       DM_Olap.Uni_data.Params.ParamByName('p_for_reu').AsString :=
@@ -321,7 +321,7 @@ begin
   begin
     if sel_many_ = 0 then
     begin
-      //Старый вызов процедуры (выбор одного объекта)
+      // выбор одного объекта
       DM_Olap.Uni_data.Params.ParamByName('reu_').AsString :=
         DM_Olap.Uni_tree_objects.FieldByName('reu').AsString;
       DM_Olap.Uni_data.Params.ParamByName('p_for_reu').AsString :=
@@ -333,7 +333,7 @@ begin
   begin
     if sel_many_ = 0 then
     begin
-      //Старый вызов процедуры (выбор одного объекта)
+      // выбор одного объекта
       DM_Olap.Uni_data.Params.ParamByName('trest_').AsString :=
         DM_Olap.Uni_tree_objects.FieldByName('trest').AsString;
       DM_Olap.Uni_data.Params.ParamByName('var_').AsInteger := 1;
@@ -458,6 +458,28 @@ begin
           Exit;
         end;
       end;
+    end;
+  end;
+
+  if sel_many_ = 0 then
+  begin
+    // найти выбранный объект
+    if DM_Olap.Uni_tree_objects.Locate('sel', 0,[]) then
+    begin
+      // проверить уровень
+      if (DM_Olap.Uni_tree_objects.FieldByName('FOR_REU').AsString <> '') and
+        (DBLookupComboBox5.KeyValue < 201907) then
+      begin
+        Application.MessageBox('Данный уровень не доступен при выборке данных до 01.07.2019',
+          'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
+        Exit;
+      end;
+    end
+    else 
+    begin
+      Application.MessageBox('Не найден выбранный объект',
+        'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
+      Exit;
     end;
   end;
 
@@ -2266,8 +2288,8 @@ begin
     x := x + 1;
   end;
 
-  Application.MessageBox(PChar('В СЛУЧАЕ НЕВЫГРУЗКИ В ФАЙЛ ПРОВЕРИТЬ ЗАПОЛНЕНИЕ ПОЛЯ'+
-    #13#10+ ' SPUL.CD_USZN (ДОЛЖНО БЫТЬ В ТОЧНОСТИ КАК В EXCEL ФАЙЛЕ!'),
+  Application.MessageBox(PChar('В СЛУЧАЕ НЕВЫГРУЗКИ В ФАЙЛ ПРОВЕРИТЬ ЗАПОЛНЕНИЕ ПОЛЯ' +
+    #13#10 + ' SPUL.CD_USZN (ДОЛЖНО БЫТЬ В ТОЧНОСТИ КАК В EXCEL ФАЙЛЕ!'),
     'Внимание!', MB_OK + MB_TOPMOST);
 
   Application.MessageBox(PChar('Cписок заголовков EXCEL файла:' + #13#10 +
@@ -2288,17 +2310,17 @@ begin
 
     //поиск адреса в датасете отчёта
     try
-    if DM_Olap.Uni_data.Locate('nylic;ndom;nkorp;nkw',
-      VarArrayOf([street, nd, korp, kw]), [loCaseInsensitive]) then
-    begin
-      //найден адрес
-      //идём по заголовку и переносим информацию
-      for i := 0 to HeadList.count - 1 do
+      if DM_Olap.Uni_data.Locate('nylic;ndom;nkorp;nkw',
+        VarArrayOf([street, nd, korp, kw]), [loCaseInsensitive]) then
       begin
-        ARecord := HeadList.Items[i];
-        str := XL.WorkBooks[1].WorkSheets[1].Cells[y, i + 1];
-        if (str = '') or (str = '0') then //берём только не заполненные поля
+        //найден адрес
+        //идём по заголовку и переносим информацию
+        for i := 0 to HeadList.count - 1 do
         begin
+          ARecord := HeadList.Items[i];
+          str := XL.WorkBooks[1].WorkSheets[1].Cells[y, i + 1];
+          //if (str = '') or (str = '0') then //берём только незаполненные поля
+          //begin            временно отключил ред.01.08.2019
 
           if DM_Olap.Uni_data.FieldByName(ARecord.S).DataType
             = ftString then
@@ -2319,21 +2341,21 @@ begin
           else
             XL.WorkBooks[1].WorkSheets[1].Cells[y, i + 1] :=
               DM_Olap.Uni_data.FieldByName(ARecord.S).AsFloat;
+          //end;
         end;
+      end
+      else
+      begin
+        ShowMessage('Не найден адрес:' + adr);
       end;
-    end
-    else
-    begin
-      ShowMessage('Не найден адрес:' + adr);
-    end;
 
     except
-      on E : Exception do
-     begin
+      on E: Exception do
+      begin
         ShowMessage('Ошибка при выгрузке в EXCEL');
         ShowMessage(E.Message);
         ShowMessage(adr);
-     end;
+      end;
     end;
 
     y := y + 1;

@@ -252,7 +252,7 @@ begin
     Form_main.User := User;
     Application.CreateForm(TForm_pass, Form_pass);
     res := Form_pass.ShowModal;
-    if res <> mrOk then
+    if res <> 2 then
     begin
       Application.Terminate;
       Exit;

@@ -2405,7 +2405,6 @@ procedure TForm_Main.AppException2(Sender: TObject; E: Exception);
 var
   F: TextFile;
 begin
-  Exit;
   // предварительно отправить сообщение в базу
   try
     if E is EOracleError then
