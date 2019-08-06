@@ -20,9 +20,9 @@ uses
   Unit_status_gen in 'Unit_status_gen.pas' {Form_status_gen},
   Unit_form_alert_exit in 'Unit_form_alert_exit.pas' {Form_alert_exit},
   Unit_print_saldo_houses in 'Unit_print_saldo_houses.pas'
-    {Form_print_saldo_houses},
+  {Form_print_saldo_houses},
   Unit_print_saldo_org_usl in 'Unit_print_saldo_org_usl.pas'
-    {Form_print_saldo_org_usl},
+  {Form_print_saldo_org_usl},
   Unit_sel_reu in 'Unit_sel_reu.pas' {Form_sel_reu},
   Unit_form_saldo_check in 'Unit_form_saldo_check.pas' {Form_saldo_check},
   Unit_generate in 'Unit_generate.pas' {Form_generate},
@@ -32,7 +32,7 @@ uses
   Unit_print_plan in 'Unit_print_plan.pas' {Form_print_plan},
   Unit_print_xito5 in 'Unit_print_xito5.pas' {Form_print_xito5},
   Unit_print_opl_xito10_3 in 'Unit_print_opl_xito10_3.pas'
-    {Form_print_opl_xito10_3},
+  {Form_print_opl_xito10_3},
   Unit_print_saldo_usl in 'Unit_print_saldo_usl.pas' {Form_print_saldo_usl},
   Unit_print_lg_usl in 'Unit_print_lg_usl.pas' {Form_print_lg_usl},
   Unit_sel_uch in 'Unit_sel_uch.pas' {Form_sel_uch},
@@ -76,7 +76,7 @@ uses
   Unit_changes_list in 'Unit_changes_list.pas' {Form_changes_list},
   Unit_houses_nabor in 'Unit_houses_nabor.pas' {Form_houses_nabor},
   Unit_change_house_nabor2 in 'Unit_change_house_nabor2.pas'
-    {Form_change_house_nabor},
+  {Form_change_house_nabor},
   Unit_spr_spk in 'Unit_spr_spk.pas' {Form_spr_spk},
   Unit_gen_current in 'Unit_gen_current.pas' {Form_gen_current},
   Unit_print_lists in 'Unit_print_lists.pas' {Form_print_lists},
@@ -121,9 +121,9 @@ uses
   Unit_edit_bitmask in 'Unit_edit_bitmask.pas' {Form_edit_bitmask},
   Unit_spr_street in 'Unit_spr_street.pas' {Form_spr_street},
   Unit_change_house_status in 'Unit_change_house_status.pas'
-    {Form_change_house_status},
+  {Form_change_house_status},
   Unit_change_house_vvod in 'Unit_change_house_vvod.pas'
-    {Form_change_house_vvod},
+  {Form_change_house_vvod},
   Unit_spr_usl in 'Unit_spr_usl.pas' {Form_spr_usl},
   Unit_add_usl in 'Unit_add_usl.pas' {Form_add_usl},
   Unit_price_copy in 'Unit_price_copy.pas' {Form_price_copy},
@@ -194,23 +194,25 @@ begin
   DataModule1.OraclePackage1.Session.Connected := false;}
 end;
 
+// загрузить Ini параметры
+
+procedure loadIniPar;
 begin
-  //   StartTimeMark(1);
-  //   OutputDebugString('bbbb');
-    ////Application.MessageBox('1', 'Check', 16);
-  if ParamStr(1) <> '' then    
-  begin                                
+
+  if ParamStr(1) <> '' then
+  begin
     // первый параметр приложения - путь к файлу лицензии, включая его имя
     // например c:\fins\bak\licenses2.ini
     s := ParamStr(1);
-    if not FileExists(s) then       
+    if not FileExists(s) then
     begin
-      Application.MessageBox('Указан неверный путь или имя файла лицензии', 'Внимание!', MB_OK
-        + MB_ICONSTOP + MB_TOPMOST);   
+      Application.MessageBox('Указан неверный путь или имя файла лицензии',
+        'Внимание!', MB_OK
+        + MB_ICONSTOP + MB_TOPMOST);
       Application.Terminate;
       Exit;
     end;
-    Ini := TIniFile.Create(s);          
+    Ini := TIniFile.Create(s);
   end
   else
   begin
@@ -219,13 +221,9 @@ begin
     Ini := TIniFile.Create(s + '\licenses.ini');
   end;
 
-  Application.Initialize;
-  DecimalSeparator := '.';
-
   Application.CreateForm(TDataModule1, DataModule1);
-  Application.CreateForm(TDM_Olap, DM_Olap);
   Application.CreateForm(TForm_Main, Form_Main);
-  Application.CreateForm(TDM_Bill, DM_Bill);
+
   s := Ini.ReadString('Application', 'User', '');
   Pass := '';
   I := 1;
@@ -271,6 +269,51 @@ begin
     SID := SID + CHR(StrToInt('$' + copy(s, I, 3)));
     I := I + 3;
   end;
+
+end;
+
+// загрузить параметры ККМ
+procedure loadKKMPar;
+begin
+    // режим тестирования ККМ
+  s := Ini.ReadString('Application', 'cash_test', '');
+  if s = '1' then
+    Form_Main.cash_test := 1
+  else
+    Form_Main.cash_test := 0;
+
+  // проверить наличие ККМ
+  s := Ini.ReadString('Application', 'have_cash', '');
+  if s <> '' then
+  begin
+    // наличие ККМ
+    Form_Main.have_cash := StrToInt(s);
+
+    if Form_Main.cash_test = 0 then
+    begin
+      // создать 1 ККМ
+      Form_Main.create_OLE_KKM(1);
+
+      s := Ini.ReadString('Application', 'cash2_Ip', '');
+      if s <> '' then
+      begin
+        // создать 2 ККМ, если указан его IP
+        Form_Main.create_OLE_KKM(2);
+      end
+    end;
+  end
+  else
+    // нет ККМ
+    Form_Main.have_cash := 0;
+
+end;
+
+begin
+  Application.Initialize;
+  DecimalSeparator := '.';
+  // загрузить Ini параметры
+  loadIniPar;
+
   try
     DataModule1.OracleSession1.Connected := false;
     DataModule1.OracleSession1.LogonUsername := User;
@@ -279,52 +322,11 @@ begin
     DataModule1.OracleSession1.Connected := true;
     if DataModule1.OracleSession1.StatementCache = True then
     begin
-      Application.MessageBox('Недопустимо использование StatementCache в OracleSession, приводит к ошибке ORA-01410: Invalid Rowid!', 'Внимание!', 16)
+      Application.MessageBox('Недопустимо использование StatementCache ' +
+        'в OracleSession, приводит к ошибке ORA-01410: Invalid Rowid!',
+        'Внимание!', 16)
     end;
 
-    {DataModule1.OracleSession2.LogonUsername := User;
-    DataModule1.OracleSession2.LogonPassword := Pass;
-    DataModule1.OracleSession2.LogonDatabase := SID;}
-
-    if DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
-      ['drx5_админ_доступ_к_базе']) = 1 then
-      Form_Main.g_admin := 1
-    else
-      Form_Main.g_admin := 0;
-
-    // режим тестирования ККМ
-    s := Ini.ReadString('Application', 'cash_test', '');
-    if s = '1' then
-      Form_Main.cash_test := 1
-    else
-      Form_Main.cash_test := 0;
-
-    // проверить наличие ККМ
-    s := Ini.ReadString('Application', 'have_cash', '');
-    if s <> '' then
-    begin
-      // наличие ККМ
-      Form_Main.have_cash := StrToInt(s);
-
-      if Form_Main.cash_test = 0 then
-      begin
-        // создать 1 ККМ
-        Form_Main.create_OLE_KKM(1);
-
-        s := Ini.ReadString('Application', 'cash2_Ip', '');
-        if s <> '' then
-        begin
-          // создать 2 ККМ, если указан его IP
-          Form_Main.create_OLE_KKM(2);
-        end
-      end;
-    end
-    else
-      // нет ККМ
-      Form_Main.have_cash := 0;
-
-    Form_Main.OracleEvent1.Start;
-    Form_Main.User := User;
   except
     on E: EOracleError do
     begin
@@ -344,6 +346,20 @@ begin
       Exit;
     end;
   end;
+
+  Application.CreateForm(TDM_Olap, DM_Olap);
+  Application.CreateForm(TDM_Bill, DM_Bill);
+
+  if DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
+    ['drx5_админ_доступ_к_базе']) = 1 then
+    Form_Main.g_admin := 1
+  else
+    Form_Main.g_admin := 0;
+
+  loadKKMPar;
+
+  Form_Main.OracleEvent1.Start;
+  Form_Main.User := User;
 
   // UNIDAC сессия
   serverIp := Ini.ReadString('Application', 'ServerIp', '');

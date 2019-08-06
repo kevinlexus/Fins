@@ -1,6 +1,6 @@
 object Form_olap: TForm_olap
-  Left = 756
-  Top = 217
+  Left = 613
+  Top = 228
   AutoScroll = False
   Caption = 'OLAP'
   ClientHeight = 743
@@ -793,8 +793,8 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'ORG'
         FieldName = 'ORG'
-        DataSet = DM_Olap.Uni_Data
-        KeyField = 'ID'
+        DataSet = DM_Olap.OD_org
+        KeyField = 'kod'
         LookupField = 'NAME'
         WrapTo = wt_None
         Sorting = dmtNoSort
@@ -948,7 +948,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'PSCH'
         FieldName = 'PSCH'
-        DataSet = DM_Olap.Uni_Data
+        DataSet = DM_Olap.OD_psch_olap
         KeyField = 'ID'
         LookupField = 'NAME'
         WrapTo = wt_None

@@ -1,8 +1,8 @@
 object Form_print_bills: TForm_print_bills
-  Left = 313
-  Top = 188
-  Width = 488
-  Height = 443
+  Left = 257
+  Top = 156
+  Width = 454
+  Height = 453
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #1057#1095#1077#1090#1072' '#1085#1072' '#1086#1087#1083#1072#1090#1091' '#1091#1089#1083#1091#1075' '#1046#1050#1061
   Color = clBtnFace
@@ -93,7 +93,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox1: TGroupBox
     Left = 0
     Top = 342
-    Width = 472
+    Width = 438
     Height = 61
     Align = alTop
     TabOrder = 3
@@ -138,7 +138,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox2: TGroupBox
     Left = 0
     Top = 0
-    Width = 472
+    Width = 438
     Height = 105
     Align = alTop
     TabOrder = 0
@@ -275,7 +275,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox3: TGroupBox
     Left = 0
     Top = 105
-    Width = 472
+    Width = 438
     Height = 200
     Align = alTop
     TabOrder = 2
@@ -546,6 +546,19 @@ object Form_print_bills: TForm_print_bills
       TabOrder = 14
       Text = 'c:\temp\export'
     end
+    object CheckBox7: TCheckBox
+      Left = 379
+      Top = 122
+      Width = 19
+      Height = 17
+      Hint = #1057#1085#1103#1090#1100'/'#1091#1089#1090#1072#1085#1086#1074#1080#1090#1100' '#1074#1089#1077' '#1086#1090#1084#1077#1095#1077#1085#1085#1099#1077' '#1101#1083#1077#1084#1077#1085#1090#1099
+      Checked = True
+      ParentShowHint = False
+      ShowHint = True
+      State = cbChecked
+      TabOrder = 15
+      OnClick = CheckBox7Click
+    end
   end
   object DBLookupComboboxEh5: TDBLookupComboboxEh
     Left = 96
@@ -563,7 +576,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox4: TGroupBox
     Left = 0
     Top = 305
-    Width = 472
+    Width = 438
     Height = 37
     Align = alTop
     TabOrder = 4
@@ -1523,44 +1536,6 @@ object Form_print_bills: TForm_print_bills
       FieldName = 'SUMMA'
     end
   end
-  object OD_arch_supp: TOracleDataSet
-    SQL.Strings = (
-      'begin'
-      '  -- Call the procedure'
-      '  scott.rep_bills.arch_supp(p_k_lsk => :p_k_lsk,'
-      '                 p_adr => :p_adr,'
-      '                 p_lsk => :p_lsk,'
-      '                 p_mg1 => :p_mg1,'
-      '                 p_mg2 => :p_mg2,'
-      '                 p_rfcur => :p_rfcur);'
-      'end;'
-      '')
-    Optimize = False
-    Variables.Data = {
-      0300000006000000080000003A505F4B5F4C534B030000000000000000000000
-      060000003A505F414452030000000000000000000000060000003A505F4C534B
-      050000000000000000000000060000003A505F4D473105000000000000000000
-      0000060000003A505F4D4732050000000000000000000000080000003A505F52
-      46435552740000000000000000000000}
-    QBEDefinition.QBEFieldDefs = {
-      040000000E00000006000000535452454554010000000000020000004E440100
-      00000000020000004B57010000000000030000004F504C010000000000030000
-      0046494F010000000000030000004C534B010000000000030000004B50520100
-      000000000500000050454E5941010000000000060000004B50525F5752010000
-      000000070000004B50525F575250010000000000030000005041590100000000
-      00070000005041595F50454E01000000000004000000444F4C47010000000000
-      07000000504552535F5450010000000000}
-    MasterFields = 'LSK'
-    DetailFields = 'P_LSK'
-    Session = DataModule1.OracleSession1
-    DesignActivation = True
-    Top = 432
-  end
-  object DS_kart: TDataSource
-    DataSet = OD_arch_supp
-    Left = 32
-    Top = 432
-  end
   object frxDBData_kart: TfrxDBDataset
     UserName = 'frxDBData_kart'
     CloseDataSource = False
@@ -1579,12 +1554,12 @@ object Form_print_bills: TForm_print_bills
       'PAY_PEN=PAY_PEN'
       'DOLG=DOLG'
       'PENYA=PENYA')
-    DataSet = OD_arch_supp
+    DataSet = DM_Bill.Uni_arch_supp
     BCDToCurrency = False
-    Left = 48
-    Top = 432
+    Left = 112
+    Top = 544
   end
-  object frxDBDataset7: TfrxDBDataset
+  object frxDBData_arch: TfrxDBDataset
     UserName = 'frxDBData_arch'
     CloseDataSource = False
     FieldAliases.Strings = (
@@ -1599,8 +1574,8 @@ object Form_print_bills: TForm_print_bills
       'PEN='#1055#1077#1085#1103' '#1090#1077#1082'.')
     DataSet = DM_Bill.Uni_arch
     BCDToCurrency = False
-    Left = 448
-    Top = 128
+    Left = 152
+    Top = 544
   end
   object OD_main: TOracleDataSet
     SQL.Strings = (

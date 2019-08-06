@@ -30,7 +30,7 @@ uses
   cxNavigator, cxDBData, cxGridLevel, cxClasses, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid, Uni,
   cxTL, cxMaskEdit, cxTLdxBarBuiltInMenu, cxInplaceContainer, cxDBTL,
-  cxTLData, cxCheckBox;
+  cxTLData, cxCheckBox, cxImageComboBox;
 type
   TForm_tree_objects = class(TForm)
     DBGridEh1: TDBGridEh;
@@ -68,11 +68,12 @@ type
     Timer2: TTimer;
     wwDBGrid1: TwwDBGrid;
     cxDBTreeList1: TcxDBTreeList;
-    cxDBTreeList1SEL: TcxDBTreeListColumn;
     cxDBTreeList1NAME: TcxDBTreeListColumn;
     cxDBTreeList1ID: TcxDBTreeListColumn;
     PopupMenu1: TPopupMenu;
     N1: TMenuItem;
+    cxDBTreeList1SEL: TcxDBTreeListColumn;
+    cxDBTreeList1EXIST1: TcxDBTreeListColumn;
     procedure saveXML;
     procedure saveMap;
     procedure SetXMLDocNode2;
@@ -464,7 +465,7 @@ begin
   if sel_many_ = 0 then
   begin
     // найти выбранный объект
-    if DM_Olap.Uni_tree_objects.Locate('sel', 0,[]) then
+    if DM_Olap.Uni_tree_objects.Locate('sel', 0, []) then
     begin
       // проверить уровень
       if (DM_Olap.Uni_tree_objects.FieldByName('FOR_REU').AsString <> '') and
@@ -475,7 +476,7 @@ begin
         Exit;
       end;
     end
-    else 
+    else
     begin
       Application.MessageBox('Не найден выбранный объект',
         'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
@@ -821,29 +822,22 @@ begin
     begin
       //Установить период
       TfrxReport(fr_).Variables['dt1_'] :=
-        DataModule1.OraclePackage1.CallDateFunction
-        ('scott.UTILS.getS_date_param', ['REP_DT_BR1']);
-      ;
+        getS_date_param('REP_DT_BR1');
       TfrxReport(fr_).Variables['dt2_'] :=
-        DataModule1.OraclePackage1.CallDateFunction
-        ('scott.UTILS.getS_date_param', ['REP_DT_BR2']);
-      ;
+        getS_date_param('REP_DT_BR2');
+
     end;
 
     if (rep_cd_ = '73') or (rep_cd_ = '74') then
     begin
       //Установить период
       TfrxReport(fr_).Variables['dt1_'] :=
-        DataModule1.OraclePackage1.CallDateFunction
-        ('scott.UTILS.getS_date_param', ['REP_DT_PROP1']);
-      ;
+        getS_date_param('REP_DT_PROP1');
       TfrxReport(fr_).Variables['dt2_'] :=
-        DataModule1.OraclePackage1.CallDateFunction
-        ('scott.UTILS.getS_date_param', ['REP_DT_PROP2']);
-      ;
+        getS_date_param('REP_DT_PROP2');
+
       //Установить параметр отчета
-      if DataModule1.OraclePackage1.CallIntegerFunction
-        ('scott.UTILS.getS_list_param', ['REP_PROP_VAR']) = 0 then
+      if getS_list_param('REP_PROP_VAR') = 0 then
         TfrxReport(fr_).Variables['var_'] := QuotedStr('прописанным')
       else
         TfrxReport(fr_).Variables['var_'] := QuotedStr('выписанным');
@@ -852,15 +846,12 @@ begin
     if (rep_cd_ = '69') or (rep_cd_ = '82') then
     begin
       //Установить кол-во месяцев или рублей
-      if (DataModule1.OraclePackage1.CallIntegerFunction
-        ('scott.UTILS.getS_list_param', ['REP_DEB_VAR']) = 0) then
+      if (getS_list_param('REP_DEB_VAR') = 0) then
         TfrxReport(fr_).Variables['txt_'] :=
-          QuotedStr(FloatToStr(DataModule1.OraclePackage1.CallFloatFunction
-          ('scott.UTILS.getS_int_param', ['REP_DEB_MONTH'])) + ' мес')
+          QuotedStr(FloatToStr(getS_double_param('REP_DEB_MONTH')) + ' мес')
       else
         TfrxReport(fr_).Variables['txt_'] :=
-          QuotedStr(FloatToStr(DataModule1.OraclePackage1.CallFloatFunction
-          ('scott.UTILS.getS_int_param', ['REP_DEB_SUMMA'])) + ' руб.');
+          QuotedStr(FloatToStr(getS_double_param('REP_DEB_SUMMA')) + ' руб.')
     end;
 
     if rep_cd_ = '61' then
@@ -2500,24 +2491,25 @@ begin
       begin
         sqlStr := sqlStr + ' and (name_tr LIKE ''%' + AnsiUpperCase(Edit1.Text)
           +
-          '%'')';
+          '%'' or obj_level <> 2)';
       end;
 
       if (Edit2.Text <> '') then
       begin
         sqlStr := sqlStr + ' and (street LIKE ''%' + AnsiUpperCase(Edit2.Text) +
-          '%'')';
+          '%'' or obj_level <> 3)';
       end;
 
       if (Edit3.Text <> '') then
       begin
         sqlStr := sqlStr + 'and (nd1 LIKE ''%' + AnsiUpperCase(Edit3.Text) +
-          '%'')';
+          '%'' or obj_level <> 3)';
       end;
       //DM_Olap.MemTableEh2.TreeList.FullExpand();
     end;
     DM_Olap.Uni_tree_objects.Filter := sqlStr;
     DM_Olap.Uni_tree_objects.Filtered := true;
+    cxDBTreeList1.Root.Expand(true);
   end;
 end;
 

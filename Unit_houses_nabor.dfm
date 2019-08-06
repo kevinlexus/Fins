@@ -134,7 +134,7 @@ object Form_houses_nabor: TForm_houses_nabor
     Top = 0
     Width = 491
     Height = 533
-    ActivePage = TabSheet5
+    ActivePage = TabSheet1
     Align = alClient
     TabOrder = 1
     object TabSheet1: TTabSheet
@@ -144,7 +144,7 @@ object Form_houses_nabor: TForm_houses_nabor
         Left = 0
         Top = 0
         Width = 483
-        Height = 506
+        Height = 505
         Align = alClient
         TabOrder = 0
         object cxGrid1DBTableView1: TcxGridDBTableView
@@ -649,7 +649,7 @@ object Form_houses_nabor: TForm_houses_nabor
         Left = 0
         Top = 0
         Width = 483
-        Height = 506
+        Height = 505
         Selected.Strings = (
           'NAME'#9'72'#9#1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077#9'F')
         IniAttributes.Delimiter = ';;'
@@ -975,15 +975,15 @@ object Form_houses_nabor: TForm_houses_nabor
         OptionsView.HeaderAutoHeight = True
         object cxGridDBTableView1NAME: TcxGridDBColumn
           DataBinding.FieldName = 'NAME'
-          Width = 95
+          Width = 77
         end
         object cxGridDBTableView1N_ND: TcxGridDBColumn
           DataBinding.FieldName = 'N_ND'
-          Width = 36
+          Width = 34
         end
         object cxGridDBTableView1HOUSE_TYPE: TcxGridDBColumn
           DataBinding.FieldName = 'HOUSE_TYPE'
-          Width = 27
+          Width = 25
         end
         object cxGridDBTableView1PASP: TcxGridDBColumn
           Caption = #1055#1072#1089#1087'.'#1089#1090#1086#1083'.'
@@ -999,7 +999,7 @@ object Form_houses_nabor: TForm_houses_nabor
             end>
           Properties.ListOptions.ShowHeader = False
           Properties.ListSource = DS_pasp
-          Width = 46
+          Width = 43
         end
         object cxGridDBTableView1OTHER: TcxGridDBColumn
           Caption = #1055#1088#1086#1095#1080#1077' '#1086#1088#1075'.'
@@ -1015,11 +1015,11 @@ object Form_houses_nabor: TForm_houses_nabor
             end>
           Properties.ListOptions.ShowHeader = False
           Properties.ListSource = DS_other
-          Width = 95
+          Width = 52
         end
         object cxGridDBTableView1UCH: TcxGridDBColumn
           DataBinding.FieldName = 'UCH'
-          Width = 29
+          Width = 30
         end
         object cxGridDBTableView1KRAN1: TcxGridDBColumn
           Caption = #1050#1088#1072#1085' '#1080#1079' '#1089#1080#1089'.'#1086#1090#1086#1087#1083#1077#1085#1080#1103
@@ -1027,7 +1027,7 @@ object Form_houses_nabor: TForm_houses_nabor
           PropertiesClassName = 'TcxCheckBoxProperties'
           Properties.ValueChecked = 1
           Properties.ValueUnchecked = 0
-          Width = 63
+          Width = 68
         end
         object cxGridDBTableView1TYPESPAY: TcxGridDBColumn
           Caption = #1055#1083#1072#1090#1077#1078'.'#1086#1087#1077#1088'.'
@@ -1043,19 +1043,19 @@ object Form_houses_nabor: TForm_houses_nabor
             end>
           Properties.ListOptions.ShowHeader = False
           Properties.ListSource = DS_typespay
-          Width = 81
+          Width = 72
         end
         object cxGridDBTableView1ID: TcxGridDBColumn
           Caption = 'ID'
           DataBinding.FieldName = 'ID'
           MinWidth = 8
-          Width = 18
+          Width = 40
         end
         object cxGridDBTableView1K_LSK_ID: TcxGridDBColumn
           Caption = 'KLSK'
           DataBinding.FieldName = 'K_LSK_ID'
           MinWidth = 8
-          Width = 19
+          Width = 41
         end
         object cxGridDBTableView1MINLSK: TcxGridDBColumn
           DataBinding.FieldName = 'MINLSK'
@@ -1074,12 +1074,17 @@ object Form_houses_nabor: TForm_houses_nabor
           Visible = False
         end
         object cxGridDBTableView1PSCH: TcxGridDBColumn
+          Caption = #1047#1072#1082#1088#1099#1090'?'
           DataBinding.FieldName = 'PSCH'
-          Visible = False
+          PropertiesClassName = 'TcxCheckBoxProperties'
+          Properties.ValueChecked = 1
+          Properties.ValueUnchecked = 0
+          Width = 33
         end
         object cxGridDBTableView1POSTCODE: TcxGridDBColumn
           Caption = #1048#1085#1076#1077#1082#1089
           DataBinding.FieldName = 'POSTCODE'
+          Width = 50
         end
       end
       object cxGrid1DBTableView2: TcxGridDBTableView
@@ -1112,12 +1117,10 @@ object Form_houses_nabor: TForm_houses_nabor
   object OD_houses: TOracleDataSet
     SQL.Strings = (
       'select t.rowid, t.house_type, t.id, t.kul, s.name, t.nd, '
-      
-        ' LTRIM(t.nd,'#39'0'#39') as n_nd, t.minlsk, t.maxlsk, t.uch, nvl(t.psch,' +
-        '0) as psch,'
+      ' LTRIM(t.nd,'#39'0'#39') as n_nd, t.minlsk, t.maxlsk, t.uch, t.psch,'
       
         ' t.fk_pasp_org, o.name as pasp_name, t.fk_other_org, o2.name as ' +
-        'other_name, t.kran1, t.k_lsk_id,'
+        'other_name, t.kran1, t.k_lsk_id, t.k_lsk_id as fk_k_lsk,'
       ' t.FK_TYPESPAY, t.postcode'
       
         ' from scott.c_houses t, scott.spul s, scott.t_org o, scott.t_org' +
@@ -1145,7 +1148,7 @@ object Form_houses_nabor: TForm_houses_nabor
       00000000000000000B0000003A464C545F484F5553455F030000000000000000
       000000}
     QBEDefinition.QBEFieldDefs = {
-      0400000012000000020000004944010000000000040000004E414D4501000000
+      0400000013000000020000004944010000000000040000004E414D4501000000
       0000020000004E44010000000000040000004E5F4E4401000000000006000000
       4D494E4C534B010000000000060000004D41584C534B0100000000000A000000
       484F5553455F5459504501000000000003000000554348010000000000030000
@@ -1154,14 +1157,15 @@ object Form_houses_nabor: TForm_houses_nabor
       050000004B52414E31010000000000080000004B5F4C534B5F49440100000000
       000A0000004F544845525F4E414D450100000000000C000000464B5F4F544845
       525F4F52470100000000000B000000464B5F5459504553504159010000000000
-      08000000504F5354434F4445010000000000}
+      08000000504F5354434F444501000000000008000000464B5F4B5F4C534B0100
+      00000000}
     Session = DataModule1.OracleSession1
     DesignActivation = True
     BeforeEdit = OD_housesBeforeEdit
     BeforePost = OD_housesBeforePost
     AfterPost = OD_housesAfterPost
-    Left = 480
-    Top = 224
+    Left = 56
+    Top = 248
     object OD_housesNAME: TStringField
       DisplayLabel = #1059#1083#1080#1094#1072
       DisplayWidth = 18
@@ -1260,8 +1264,6 @@ object Form_houses_nabor: TForm_houses_nabor
     object OD_housesPSCH: TFloatField
       FieldKind = fkInternalCalc
       FieldName = 'PSCH'
-      ReadOnly = True
-      Visible = False
     end
     object OD_housesFK_TYPESPAY: TFloatField
       FieldName = 'FK_TYPESPAY'
@@ -1270,11 +1272,14 @@ object Form_houses_nabor: TForm_houses_nabor
       FieldName = 'POSTCODE'
       Size = 6
     end
+    object OD_housesFK_K_LSK: TFloatField
+      FieldName = 'FK_K_LSK'
+    end
   end
   object DS_houses: TwwDataSource
     DataSet = OD_houses
-    Left = 512
-    Top = 224
+    Left = 104
+    Top = 248
   end
   object DS_sprorg: TDataSource
     DataSet = OD_sprorg
@@ -1498,7 +1503,7 @@ object Form_houses_nabor: TForm_houses_nabor
       'order by t.name')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000033000000020000004944010000000000040000004E414D4501000000
+      0400000034000000020000004944010000000000040000004E414D4501000000
       0000020000004344010000000000030000004E50500100000000000800000046
       4B5F4F5247545001000000000001000000560100000000000900000050415245
       4E545F4944010000000000030000005245550100000000000500000054524553
@@ -1525,7 +1530,7 @@ object Form_houses_nabor: TForm_houses_nabor
       000000444F4C475F4E414D450100000000000A00000042414E4B5F464E414D45
       0100000000000300000047525001000000000009000000525F5343485F474953
       0100000000000B000000444953545F5041595F54500100000000000800000041
-      44525F43415348010000000000}
+      44525F434153480100000000000600000049535F52534F010000000000}
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True
@@ -1701,75 +1706,13 @@ object Form_houses_nabor: TForm_houses_nabor
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True
-    Left = 72
-    Top = 240
+    Left = 256
+    Top = 176
   end
   object DS_housexlist: TwwDataSource
     DataSet = OD_housexlist
-    Left = 104
-    Top = 240
-  end
-  object KMP: TOracleDataSet
-    SQL.Strings = (
-      
-        'select t.rowid, t.id,  t.fk_k_lsk, u.id as par_id, u.cd, u.name ' +
-        'as parname, u.val_tp,'
-      'case when u.val_tp = '#39'NM'#39' then to_char(t.n1)'
-      '     when u.val_tp = '#39'ST'#39' then t.s1'
-      '     when u.val_tp = '#39'DT'#39' then to_char(t.d1,'#39'DD.MM.YYYY'#39')'
-      '     when u.val_tp = '#39'ID'#39' then s.name'
-      '     end as val, u2.nm from scott.t_objxpar t'
-      '     join scott.u_list u on t.fk_list=u.id '
-      '     left join scott.u_list u2 on u.fk_unit=u2.id'
-      
-        '     --join scott.u_listtp tp on tp.cd='#39'house_params'#39' and tp.id=' +
-        'u.fk_listtp'
-      '     left join scott.u_list s on t.fk_val=s.id'
-      'where t.fk_k_lsk=:k_lsk_id'
-      '')
-    Optimize = False
-    Variables.Data = {
-      0300000001000000090000003A4B5F4C534B5F49440300000000000000000000
-      00}
-    QBEDefinition.QBEFieldDefs = {
-      0400000008000000020000004944010000000000070000005041524E414D4501
-      00000000000600000056414C5F54500100000000000300000056414C01000000
-      0000020000004E4D010000000000060000005041525F49440100000000000200
-      0000434401000000000008000000464B5F4B5F4C534B010000000000}
-    Master = OD_houses
-    MasterFields = 'k_lsk_id'
-    DetailFields = 'k_lsk_id'
-    QueryAllRecords = False
-    Session = DataModule1.OracleSession1
-    DesignActivation = True
-    Active = True
-    Left = 8
-    Top = 288
-  end
-  object KMP2: TOracleDataSet
-    SQL.Strings = (
-      'select t.*, t.rowid '
-      'from scott.t_objxpar t'
-      'where t.id=:id')
-    Optimize = False
-    Variables.Data = {0300000001000000030000003A4944030000000000000000000000}
-    QBEDefinition.QBEFieldDefs = {
-      040000000F000000020000004944010000000000020000005331010000000000
-      020000004431010000000000020000004E310100000000000200000043310000
-      0000000006000000464B5F4C534B01000000000008000000464B5F4B5F4C534B
-      01000000000007000000464B5F4C495354010000000000040000005041535301
-      000000000007000000464B5F5553455201000000000006000000464B5F55534C
-      0100000000000200000054500100000000000200000054530100000000000200
-      00004D4701000000000006000000464B5F56414C010000000000}
-    Master = KMP
-    MasterFields = 'id'
-    DetailFields = 'id'
-    RefreshOptions = [roAfterInsert, roAfterUpdate, roAllFields]
-    Session = DataModule1.OracleSession1
-    DesignActivation = True
-    Active = True
-    Left = 8
-    Top = 344
+    Left = 288
+    Top = 176
   end
   object DS_objxpar: TDataSource
     DataSet = Uni_objxpar
@@ -1790,7 +1733,7 @@ object Form_houses_nabor: TForm_houses_nabor
       'order by t.name')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000033000000020000004944010000000000040000004E414D4501000000
+      0400000034000000020000004944010000000000040000004E414D4501000000
       0000020000004344010000000000030000004E50500100000000000800000046
       4B5F4F5247545001000000000001000000560100000000000900000050415245
       4E545F4944010000000000030000005245550100000000000500000054524553
@@ -1817,7 +1760,7 @@ object Form_houses_nabor: TForm_houses_nabor
       000000444F4C475F4E414D450100000000000A00000042414E4B5F464E414D45
       0100000000000300000047525001000000000009000000525F5343485F474953
       0100000000000B000000444953545F5041595F54500100000000000800000041
-      44525F43415348010000000000}
+      44525F434153480100000000000600000049535F52534F010000000000}
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True
@@ -1903,7 +1846,6 @@ object Form_houses_nabor: TForm_houses_nabor
     Top = 280
   end
   object Uni_objxpar: TUniQuery
-    UpdatingTable = 'SCOTT.SPR_PAR_SES'
     Connection = DataModule1.UniConnection1
     SQL.Strings = (
       
@@ -1920,41 +1862,27 @@ object Form_houses_nabor: TForm_houses_nabor
         '     --join scott.u_listtp tp on tp.cd='#39'house_params'#39' and tp.id=' +
         'u.fk_listtp'
       '     left join scott.u_list s on t.fk_val=s.id'
-      'where t.fk_k_lsk=:k_lsk_id'
+      '--where t.fk_k_lsk=:fk_k_lsk'
       '')
     MasterSource = DS_houses
-    MasterFields = 'k_lsk_id'
-    DetailFields = 'k_lsk_id'
+    MasterFields = 'fk_k_lsk'
+    DetailFields = 'fk_k_lsk'
     Constraints = <>
     Left = 56
     Top = 288
     ParamData = <
       item
         DataType = ftInteger
-        Name = 'k_lsk_id'
+        Name = 'fk_k_lsk'
         ParamType = ptInput
       end>
   end
   object Uni_par_value: TUniQuery
-    UpdatingTable = 'SCOTT.SPR_PAR_SES'
     Connection = DataModule1.UniConnection1
     SQL.Strings = (
-      
-        'select t.rowid, t.id,  t.fk_k_lsk, u.id as par_id, u.cd, u.name ' +
-        'as parname, u.val_tp,'
-      'case when u.val_tp = '#39'NM'#39' then to_char(t.n1)'
-      '     when u.val_tp = '#39'ST'#39' then t.s1'
-      '     when u.val_tp = '#39'DT'#39' then to_char(t.d1,'#39'DD.MM.YYYY'#39')'
-      '     when u.val_tp = '#39'ID'#39' then s.name'
-      '     end as val, u2.nm from scott.t_objxpar t'
-      '     join scott.u_list u on t.fk_list=u.id '
-      '     left join scott.u_list u2 on u.fk_unit=u2.id'
-      
-        '     --join scott.u_listtp tp on tp.cd='#39'house_params'#39' and tp.id=' +
-        'u.fk_listtp'
-      '     left join scott.u_list s on t.fk_val=s.id'
-      'where t.fk_k_lsk=:k_lsk_id'
-      '')
+      'select t.*, t.rowid '
+      'from scott.t_objxpar t'
+      'where t.id=:id')
     MasterSource = DS_objxpar
     MasterFields = 'id'
     DetailFields = 'id'
@@ -1964,12 +1892,8 @@ object Form_houses_nabor: TForm_houses_nabor
     ParamData = <
       item
         DataType = ftInteger
-        Name = 'k_lsk_id'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftUnknown
         Name = 'ID'
+        ParamType = ptInput
       end>
   end
 end

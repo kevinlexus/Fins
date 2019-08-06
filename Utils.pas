@@ -54,14 +54,14 @@ function lpad(inStr_: string; digit_: Integer): string;
 function simplBitSum(str_, str2_: string): string;
 function selectDir(hwnd_: hwnd): string;
 procedure change_alias(dset: TOracleDataset; str1: string; str2: string);
-  overload;
+overload;
 procedure change_alias(AODset: array of TOracleDataset; str1: string; str2:
   string); overload;
 procedure change_alias(dset: TOracleDataset; str1: string; str2: string;
   reopenDS: Boolean); overload;
 function exp_to_txt(dset: TUniQuery; path_: string; fname_: string;
   fldsum_: string; issum_: Integer; iscnt_: Integer; ishead_: Integer; oem_:
-    integer; bank_cd_: string): Integer;
+  integer; bank_cd_: string): Integer;
 procedure SetMenu(acc_: Integer);
 procedure SetMenuItem(acc_: Integer; Obj1: TComponent; str_: string);
 function ToDos(const Src: string): string;
@@ -73,9 +73,13 @@ function checkAccessRigths(var al: TAccessRecArray; pReu: string;
   pPaspOrg: Integer; pCd: string): Boolean;
 function getDoublePar(var al: TParamRecArray; pCd: string): Double;
 function LeftPad(value: string; length: integer; pad: char): string;
-function IsEqual(const ANumber1, ANumber2: Double; const AMargin: Double): Boolean;
+function IsEqual(const ANumber1, ANumber2: Double; const AMargin: Double):
+  Boolean;
 function GetLocalIP: string;
 function VarToInt(var AVariant: variant; DefaultValue: integer = 0): integer;
+function getS_date_param(strPar: string): TDateTime;
+function getS_double_param(strPar: string): Double;
+function getS_list_param(strPar: string): Integer;
 
 implementation
 uses Unit_Mainform;
@@ -201,6 +205,8 @@ begin
     SetMenuItem(acc_, N132, 'drn132_Отчет_по_кап2');
     SetMenuItem(acc_, N134, 'drn134_Загрузка_льготников');
     SetMenuItem(acc_, N135, 'drn135_Корр_пени');
+    SetMenuItem(acc_, N141, 'drn141_Реестр_оплаты_выв_мус');
+    SetMenuItem(acc_, N142, 'drn142_Реестр_кол_прож_выв_мус');
   end;
 end;
 
@@ -698,14 +704,14 @@ function msg3(str1: string; str2: string; Flags_: Longint): Longint;
 begin
   Result := MessageBoxEx(Application.Handle, PChar(str1),
     PChar(str2), Flags_ + MB_APPLMODAL + MB_SETFOREGROUND,
-      MAKELANGID(LANG_RUSSIAN, SUBLANG_DEFAULT));
+    MAKELANGID(LANG_RUSSIAN, SUBLANG_DEFAULT));
 end;
 
 procedure msg2(str1: string; str2: string; Flags_: Longint);
 begin
   MessageBoxEx(Application.Handle, PChar(str1),
     PChar(str2), Flags_ + MB_APPLMODAL + MB_SETFOREGROUND,
-      MAKELANGID(LANG_RUSSIAN, SUBLANG_DEFAULT));
+    MAKELANGID(LANG_RUSSIAN, SUBLANG_DEFAULT));
 end;
 
 procedure msg4(str1: string; str2: string; Flags_: Longint);
@@ -899,7 +905,7 @@ end;
 
 function exp_to_txt(dset: TUniQuery; path_: string; fname_: string;
   fldsum_: string; issum_: Integer; iscnt_: Integer; ishead_: Integer; oem_:
-    integer; bank_cd_: string): Integer;
+  integer; bank_cd_: string): Integer;
 var
   F: TextFile;
   i: Integer;
@@ -1312,10 +1318,8 @@ begin
   Result := val;
 end;
 
-
-
-
 // добавить лидирующие символы к строке
+
 function LeftPad(value: string; length: integer; pad: char): string;
 begin
   result := RightStr(StringOfChar(pad, length) + value, length);
@@ -1361,21 +1365,23 @@ end;}
 // сравнить два Double числа
 // ANumber1, ANumber2 - число 1,2
 // AMargin - допустимое отклонение
-function IsEqual(const ANumber1, ANumber2: Double; const AMargin: Double): Boolean;
+
+function IsEqual(const ANumber1, ANumber2: Double; const AMargin: Double):
+  Boolean;
 begin
-  Result := Abs(ANumber1-ANumber2) <= AMargin;
+  Result := Abs(ANumber1 - ANumber2) <= AMargin;
 end;
 
-
 // получить Ip адрес
+
 function getLocalIP: string;
 type
-  TaPInAddr = array [0..10] of PInAddr;
+  TaPInAddr = array[0..10] of PInAddr;
   PaPInAddr = ^TaPInAddr;
 var
   phe: PHostEnt;
   pptr: PaPInAddr;
-  Buffer: array [0..63] of Ansichar;
+  Buffer: array[0..63] of Ansichar;
   i: Integer;
   GInitData: TWSADATA;
 begin
@@ -1402,9 +1408,60 @@ begin
   if VarIsNull(AVariant) then
     Result := 0
   else
-    {//*** Если числовое, то вернем значение} if VarIsOrdinal(AVariant) then
+    if VarIsOrdinal(AVariant) then
       Result := StrToInt(VarToStr(AVariant));
 end;
 
+function getS_date_param(strPar: string): TDateTime;
+begin
+  DataModule1.UniStoredProc1.StoredProcName:='SCOTT.UTILS.GETS_DATE_PARAM';
+  DataModule1.UniStoredProc1.SQL.Clear;
+  DataModule1.UniStoredProc1.SQL.Add('begin ');
+  DataModule1.UniStoredProc1.SQL.Add(':RESULT := SCOTT.UTILS.GETS_DATE_PARAM(:CD_);');
+  DataModule1.UniStoredProc1.SQL.Add('end;');
+
+  DataModule1.UniStoredProc1.Params.Clear;
+  DataModule1.UniStoredProc1.Params
+    .CreateParam(ftInteger, 'CD_', ptInput).AsString := strPar;
+  DataModule1.UniStoredProc1.Params
+    .CreateParam(ftDate, 'RESULT', ptResult).AsString;
+  DataModule1.UniStoredProc1.ExecProc;
+  Result := DataModule1.UniStoredProc1.Params.ParamByName('RESULT').AsDateTime;
+end;
+
+
+function getS_double_param(strPar: string): Double;
+begin
+  DataModule1.UniStoredProc1.StoredProcName:='SCOTT.UTILS.GETS_INT_PARAM';
+  DataModule1.UniStoredProc1.SQL.Clear;
+  DataModule1.UniStoredProc1.SQL.Add('begin ');
+  DataModule1.UniStoredProc1.SQL.Add(':RESULT := SCOTT.UTILS.GETS_INT_PARAM(:CD_);');
+  DataModule1.UniStoredProc1.SQL.Add('end;');
+
+  DataModule1.UniStoredProc1.Params.Clear;
+  DataModule1.UniStoredProc1.Params
+    .CreateParam(ftInteger, 'CD_', ptInput).AsString := strPar;
+  DataModule1.UniStoredProc1.Params
+    .CreateParam(ftFloat, 'RESULT', ptResult).AsString;
+  DataModule1.UniStoredProc1.ExecProc;
+  Result := DataModule1.UniStoredProc1.Params.ParamByName('RESULT').AsFloat;
+end;
+
+function getS_list_param(strPar: string): Integer;
+begin
+  DataModule1.UniStoredProc1.StoredProcName:='SCOTT.UTILS.GETS_LIST_PARAM';
+  DataModule1.UniStoredProc1.SQL.Clear;
+  DataModule1.UniStoredProc1.SQL.Add('begin ');
+  DataModule1.UniStoredProc1.SQL.Add(':RESULT := SCOTT.UTILS.GETS_LIST_PARAM(:CD_);');
+  DataModule1.UniStoredProc1.SQL.Add('end;');
+
+  DataModule1.UniStoredProc1.Params.Clear;
+  DataModule1.UniStoredProc1.Params
+    .CreateParam(ftInteger, 'CD_', ptInput).AsString := strPar;
+  DataModule1.UniStoredProc1.Params
+    .CreateParam(ftInteger, 'RESULT', ptResult).AsString;
+  DataModule1.UniStoredProc1.ExecProc;
+  Result := DataModule1.UniStoredProc1.Params.ParamByName('RESULT').AsInteger;
+end;
 end.
 

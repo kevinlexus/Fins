@@ -1,5 +1,5 @@
 object Form_tree_objects: TForm_tree_objects
-  Left = 221
+  Left = 197
   Top = 146
   Width = 351
   Height = 864
@@ -629,7 +629,7 @@ object Form_tree_objects: TForm_tree_objects
     object cxDBTreeList1NAME: TcxDBTreeListColumn
       DataBinding.FieldName = 'NAME'
       Options.Editing = False
-      Width = 243
+      Width = 237
       Position.ColIndex = 1
       Position.RowIndex = 0
       Position.BandIndex = 0
@@ -639,10 +639,35 @@ object Form_tree_objects: TForm_tree_objects
     object cxDBTreeList1SEL: TcxDBTreeListColumn
       PropertiesClassName = 'TcxCheckBoxProperties'
       Properties.ValueChecked = 0
-      Properties.ValueUnchecked = 1
-      Properties.OnEditValueChanged = cxDBTreeList1SELPropertiesEditValueChanged
+      Properties.ValueUnchecked = '1'
       DataBinding.FieldName = 'SEL'
-      Width = 100
+      Width = 32
+      Position.ColIndex = 3
+      Position.RowIndex = 0
+      Position.BandIndex = 0
+      Summary.FooterSummaryItems = <>
+      Summary.GroupFooterSummaryItems = <>
+    end
+    object cxDBTreeList1EXIST1: TcxDBTreeListColumn
+      PropertiesClassName = 'TcxImageComboBoxProperties'
+      Properties.Images = Form_Main.ImageListTiny
+      Properties.Items = <
+        item
+          ImageIndex = 0
+          Value = 0
+        end
+        item
+          ImageIndex = 1
+          Value = 1
+        end>
+      Properties.ShowDescriptions = False
+      Properties.ValidateOnEnter = False
+      DataBinding.FieldName = 'EXIST1'
+      Options.EditAutoHeight = ieahNone
+      Options.Sizing = False
+      Options.VertSizing = False
+      Options.Editing = False
+      Width = 30
       Position.ColIndex = 2
       Position.RowIndex = 0
       Position.BandIndex = 0

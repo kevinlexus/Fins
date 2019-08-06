@@ -1,7 +1,7 @@
 object DM_Olap: TDM_Olap
   OldCreateOrder = False
-  Left = 864
-  Top = 153
+  Left = 1047
+  Top = 237
   Height = 810
   Width = 686
   object DS_spr_params: TDataSource
@@ -516,8 +516,8 @@ object DM_Olap: TDM_Olap
       '        else '#39'-'#39
       '        end, null)'
       ' as house_mg,'
-      ' case when t.obj_level=3 and t.mg2 = '#39'999999'#39' then 71'
-      '         when t.obj_level=3 and t.mg2<>'#39'999999'#39' then 72'
+      ' case when t.obj_level=3 and t.mg2 = '#39'999999'#39' then 1'
+      '         when t.obj_level=3 and t.mg2 <> '#39'999999'#39' then 0'
       '     else -1 end as exist1,'
       ' t.trest, t.reu, t.for_reu,'
       '       t.kul, t.nd, upper(ltrim(t.nd, '#39'0'#39')) as nd1, t.obj_level,'

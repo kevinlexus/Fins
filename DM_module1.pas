@@ -25,6 +25,7 @@ type
     DS_period2: TDataSource;
     UniConnection1: TUniConnection;
     UniStoredProc1: TUniStoredProc;
+    UniStoredProc2: TUniStoredProc;
   private
     { Private declarations }
   public

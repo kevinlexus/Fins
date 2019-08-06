@@ -1,7 +1,7 @@
 object DM_Bill: TDM_Bill
   OldCreateOrder = False
-  Left = 1147
-  Top = 264
+  Left = 1219
+  Top = 228
   Height = 607
   Width = 470
   object Uni_cmp_main: TUniQuery
@@ -98,7 +98,7 @@ object DM_Bill: TDM_Bill
       item
         DataType = ftCursor
         Name = 'p_rfcur'
-        Value = 'Object'
+        Value = ''
       end>
   end
   object Uni_cmp_detail_primary: TUniQuery
@@ -562,7 +562,7 @@ object DM_Bill: TDM_Bill
       '                       p_includesaldo => :p_includesaldo,'
       '                       p_rfcur => :p_rfcur);'
       'end;')
-    MasterSource = DS_cmp_funds_primary
+    MasterSource = DS_cmp_detail_primary
     MasterFields = 'lsk'
     DetailFields = 'lsk'
     Options.AutoPrepare = True
@@ -571,8 +571,9 @@ object DM_Bill: TDM_Bill
     Top = 256
     ParamData = <
       item
-        DataType = ftUnknown
+        DataType = ftString
         Name = 'lsk'
+        ParamType = ptInput
       end
       item
         DataType = ftString
@@ -605,22 +606,25 @@ object DM_Bill: TDM_Bill
     SQL.Strings = (
       'begin'
       '  -- Call the procedure'
-      '  scott.rep_bills.arch(p_k_lsk => :p_k_lsk,'
+      '  scott.rep_bills.arch(p_k_lsk => :k_lsk_id,'
       '                 p_adr => :p_adr,'
-      '                 p_lsk => :p_lsk,'
+      '                 p_lsk => :lsk,'
       '                 p_mg1 => :p_mg1,'
       '                 p_mg2 => :p_mg2,'
+      '                 p_sel_uk => :p_sel_uk,'
       '                 p_rfcur => :p_rfcur);'
       'end;')
     MasterSource = DS_cmp_main
+    MasterFields = 'k_lsk_id'
+    DetailFields = 'k_lsk_id'
     Options.AutoPrepare = True
     Constraints = <>
-    Left = 296
-    Top = 32
+    Left = 248
+    Top = 400
     ParamData = <
       item
         DataType = ftInteger
-        Name = 'p_k_lsk'
+        Name = 'k_lsk_id'
         ParamType = ptInput
       end
       item
@@ -630,7 +634,7 @@ object DM_Bill: TDM_Bill
       end
       item
         DataType = ftString
-        Name = 'p_lsk'
+        Name = 'lsk'
         ParamType = ptInput
       end
       item
@@ -641,6 +645,74 @@ object DM_Bill: TDM_Bill
       item
         DataType = ftString
         Name = 'p_mg2'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'p_sel_uk'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftCursor
+        Name = 'p_rfcur'
+        Value = 'Object'
+      end>
+  end
+  object DS_cmp_detail_primary: TDataSource
+    DataSet = Uni_cmp_detail_primary
+    Left = 112
+    Top = 35
+  end
+  object Uni_arch_supp: TUniQuery
+    Connection = DataModule1.UniConnection1
+    SQL.Strings = (
+      'begin'
+      '  -- Call the procedure'
+      '  scott.rep_bills.arch_supp(p_k_lsk => :k_lsk_id,'
+      '                 p_adr => :p_adr,'
+      '                 p_lsk => :lsk,'
+      '                 p_mg1 => :p_mg1,'
+      '                 p_mg2 => :p_mg2,'
+      '                 p_sel_uk => :p_sel_uk,'
+      '                 p_rfcur => :p_rfcur);'
+      'end;'
+      '')
+    MasterSource = DS_cmp_main
+    MasterFields = 'k_lsk_id'
+    DetailFields = 'k_lsk_id'
+    Options.AutoPrepare = True
+    Constraints = <>
+    Left = 184
+    Top = 400
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'k_lsk_id'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'p_adr'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'lsk'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'p_mg1'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'p_mg2'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'p_sel_uk'
         ParamType = ptInput
       end
       item

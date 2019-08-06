@@ -211,6 +211,8 @@ type
     N140: TMenuItem;
     ToolButton3: TToolButton;
     ver: TMenuItem;
+    N141: TMenuItem;
+    N142: TMenuItem;
     procedure N5Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure N7Click(Sender: TObject);
@@ -366,6 +368,8 @@ type
     procedure N140Click(Sender: TObject);
     procedure ToolButton3Click(Sender: TObject);
     procedure AppException2(Sender: TObject; E: Exception);
+    procedure N141Click(Sender: TObject);
+    procedure N142Click(Sender: TObject);
   private
   public
     // выбранный период при переключении в архив
@@ -1209,7 +1213,7 @@ begin
   if LeftStr(IList.Text, 4) = 'stop' then
   begin
     Application.CreateForm(TForm_alert_exit, Form_alert_exit);
-    Form_alert_exit.Memo1.Text := OD_params.FieldByName('message').AsString;
+    Form_alert_exit.Memo1.Text := 'Программа остановлена Администратором!';
     Form_alert_exit.ShowModal;
   end
   else if LeftStr(IList.Text, 4) = 'info' then
@@ -2432,6 +2436,12 @@ begin
     CloseFile(F);
   end;
 
+  // игнорировать ошибку данного типа
+  if E.Message='Дочерние окна не могут иметь меню.' then
+    Exit;
+  if E.Message='Окно не имеет полос прокрутки.' then
+    Exit;
+
   // защита, чтобы Enter-ом не прожали сообщение
   while
     Application.MessageBox('Программа приостановлена, повторить данное сообщение?',
@@ -2473,6 +2483,24 @@ begin
       Application.Terminate;
     end;
   end;
+
+end;
+
+procedure TForm_Main.N141Click(Sender: TObject);
+begin
+  StartTreeObj;
+  if FF('Form_olap', 0) = 0 then
+    Application.CreateForm(TForm_olap, Form_olap);
+  Form_tree_objects.setAccess('95', 0, 0);
+
+end;
+
+procedure TForm_Main.N142Click(Sender: TObject);
+begin
+  StartTreeObj;
+  if FF('Form_olap', 0) = 0 then
+    Application.CreateForm(TForm_olap, Form_olap);
+  Form_tree_objects.setAccess('96', 0, 0);
 
 end;
 

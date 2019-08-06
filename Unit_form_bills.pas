@@ -32,7 +32,10 @@ uses
   dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
   dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue, cxClasses,
-  cxPropertiesStore, frxExportPDF, ufDataModuleBill;
+  cxPropertiesStore, frxExportPDF, ufDataModuleBill, cxStyles,
+  dxSkinscxPCPainter, cxCustomData, cxFilter, cxData, cxDataStorage,
+  cxNavigator, cxDBData, cxGridCustomTableView, cxGridTableView,
+  cxGridDBTableView, cxGridLevel, cxGridCustomView, cxGrid;
 
 type
   TForm_print_bills = class(TForm)
@@ -146,13 +149,11 @@ type
     OD_data6LSK: TStringField;
     OD_data6SUMMA: TFloatField;
     OD_dataK_LSK_ID: TFloatField;
-    OD_arch_supp: TOracleDataSet;
-    DS_kart: TDataSource;
     frxDBData_kart: TfrxDBDataset;
     OD_dataPHONE2: TStringField;
     fltfldOD_dataDOLG2: TFloatField;
     OD_dataDT_SCH: TDateTimeField;
-    frxDBDataset7: TfrxDBDataset;
+    frxDBData_arch: TfrxDBDataset;
     CheckBox3: TCheckBox;
     OD_main: TOracleDataSet;
     frxDB_main: TfrxDBDataset;
@@ -221,6 +222,7 @@ type
     CheckBox6: TCheckBox;
     frxPDFExport1: TfrxPDFExport;
     Edit3: TEdit;
+    CheckBox7: TCheckBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -255,8 +257,10 @@ type
     procedure fillUk();
     function getStrUk(): string;
     procedure selAllUk();
+    procedure deSelAllUk();
     procedure kart_pr_report;
     procedure CheckBox6Click(Sender: TObject);
+    procedure CheckBox7Click(Sender: TObject);
   private
     sel_obj_: Integer;
     cnt_sch_: Integer;
@@ -664,7 +668,11 @@ begin
     OD_cmp_main.SetVariable('p_kul', DBLookupComboboxEh2.KeyValue);
     }
   DM_Bill.Uni_cmp_main.Params.ParamByName('p_sel_obj').AsInteger := sel_obj_;
-  DM_Bill.Uni_cmp_main.Params.ParamByName('p_reu').AsString := cbb1.EditValue;
+  if cbb1.EditValue <> null then
+    DM_Bill.Uni_cmp_main.Params.ParamByName('p_reu').AsString := cbb1.EditValue
+  else
+    DM_Bill.Uni_cmp_main.Params.ParamByName('p_reu').Clear;
+
   DM_Bill.Uni_cmp_main.Params.ParamByName('p_lsk').AsString := wwDBEdit1.Text;
   DM_Bill.Uni_cmp_main.Params.ParamByName('p_lsk1').AsString := wwDBEdit2.Text;
   if not VarIsNull(DBLookupComboboxEh2.KeyValue) then
@@ -839,7 +847,6 @@ procedure TForm_print_bills.old_report(tp_, pen_last_month_: Integer; repVar:
   string);
 begin
   // главный датасет для справки арх-2
-  //OD_cmp_main.Active := false;
   DM_Bill.Uni_cmp_main.Active := false;
   // главный датасет
   OD_main.Active := false;
@@ -849,17 +856,16 @@ begin
   OD_t_org2.Active := false;
   OD_t_org3.Active := false;
   OD_data2.Active := false;
-  //OD_arch.Active := false;
   DM_Bill.Uni_arch.Active := false;
 
   OD_data3.Active := false;
   OD_data6.Active := false;
   OD_vvod.Active := false;
-  OD_arch_supp.Active := false;
+  //OD_arch_supp.Active := false;
+  DM_Bill.Uni_arch_supp.Active := false;
 
   OD_main.SetVariable('mg_', DBLookupComboboxEh1.KeyValue);
 
-  //OD_cmp_main.SetVariable('p_for_arch', 1);
   DM_Bill.Uni_cmp_main.Params.ParamByName('p_for_arch').AsInteger := 1;
 
   OD_main.SetVariable('sel_obj_', sel_obj_);
@@ -877,45 +883,33 @@ begin
     begin
       //только для УК
       //ограничивать диапазон записи для печати счетов
-      //OD_cmp_main.SetVariable('p_for_arch', 1);
-      //DM_Bill.Uni_cmp_main.Params.ParamByName('p_for_arch').AsInteger:=1;
-
-      //OD_cmp_main.SetVariable('p_firstNum',
-      //OD_ls_cnt.FieldByName('first_rec').AsInteger);
       DM_Bill.Uni_cmp_main.Params.ParamByName('p_firstNum').AsInteger :=
         OD_ls_cnt.FieldByName('first_rec').AsInteger;
 
-      //OD_cmp_main.SetVariable('p_lastNum',
-      //OD_ls_cnt.FieldByName('last_rec').AsInteger);
       DM_Bill.Uni_cmp_main.Params.ParamByName('p_lastNum').AsInteger :=
         OD_ls_cnt.FieldByName('last_rec').AsInteger;
     end
     else
     begin
       //не ограничивать диапазон записи для печати счетов
-      //OD_cmp_main.SetVariable('p_firstNum', 0);
-      //OD_cmp_main.SetVariable('p_lastNum', 1000000000);
       DM_Bill.Uni_cmp_main.Params.ParamByName('p_firstNum').AsInteger := 0;
       DM_Bill.Uni_cmp_main.Params.ParamByName('p_lastNum').AsInteger :=
         1000000000;
     end;
 
     // установить параметры
-    //OD_cmp_main.SetVariable('p_mg', DBLookupComboboxEh5.KeyValue);
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_mg').AsString :=
       DBLookupComboboxEh5.KeyValue;
     // список УК для фильтра
-    //OD_cmp_main.SetVariable('p_sel_uk', getStrUk());
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_sel_uk').AsString := getStrUk();
 
-    //OD_cmp_main.SetVariable('p_sel_obj', sel_obj_);
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_sel_obj').AsInteger := sel_obj_;
 
-    //OD_cmp_main.SetVariable('p_reu', cbb1.EditValue);
-    DM_Bill.Uni_cmp_main.Params.ParamByName('p_reu').AsString := cbb1.EditValue;
-    //OD_cmp_main.SetVariable('p_lsk', wwDBEdit1.Text);
-    //OD_cmp_main.SetVariable('p_lsk1', wwDBEdit2.Text);
-    //OD_cmp_main.SetVariable('p_kul', DBLookupComboboxEh2.KeyValue);
+    if cbb1.EditValue <> null then
+      DM_Bill.Uni_cmp_main.Params.ParamByName('p_reu').AsString := cbb1.EditValue
+    else
+      DM_Bill.Uni_cmp_main.Params.ParamByName('p_reu').Clear;
+
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_lsk').AsString := wwDBEdit1.Text;
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_lsk1').AsString :=
       wwDBEdit2.Text;
@@ -925,39 +919,31 @@ begin
     else
       DM_Bill.Uni_cmp_main.Params.ParamByName('p_kul').Clear;
     if not VarIsNull(DBLookupComboboxEh3.KeyValue) then
-      //OD_cmp_main.SetVariable('p_nd', OD_houses.FieldByName('nd_id').AsString)
       DM_Bill.Uni_cmp_main.Params.ParamByName('p_nd').AsString :=
         OD_houses.FieldByName('nd_id').AsString
     else
-      //OD_cmp_main.SetVariable('p_nd', null);
       DM_Bill.Uni_cmp_main.Params.ParamByName('p_nd').Clear;
 
     if not VarIsNull(DBLookupComboboxEh4.KeyValue) then
-      //OD_cmp_main.SetVariable('p_kw', OD_kw.FieldByName('kw_id').AsString)
       DM_Bill.Uni_cmp_main.Params.ParamByName('p_kw').AsString :=
         OD_kw.FieldByName('kw_id').AsString
     else
-      //OD_cmp_main.SetVariable('p_kw', null);
       DM_Bill.Uni_cmp_main.Params.ParamByName('p_kw').Clear;
 
     // печатать ли закрытые счета
     if CheckBox2.Checked = true then
     begin
-      //OD_cmp_main.SetVariable('p_is_closed', 1);
       DM_Bill.Uni_cmp_main.Params.ParamByName('p_is_closed').AsInteger := 1;
     end
     else
     begin
-      //OD_cmp_main.SetVariable('p_is_closed', 0);
       DM_Bill.Uni_cmp_main.Params.ParamByName('p_is_closed').AsInteger := 0;
     end;
     // активировать датасеты
-    //OD_cmp_main.Active := true;
     DM_Bill.Uni_cmp_main.Active := True;
   end
   else
   begin
-    //OD_cmp_main.SetVariable('p_for_arch', 0);
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_for_arch').AsInteger := 0;
   end;
 
@@ -1014,54 +1000,76 @@ begin
     wwDBEdit2.Text := wwDBEdit1.Text;
     //OD_arch.SetVariable('p_mg1', DBLookupComboboxEh1.KeyValue);
     //OD_arch.SetVariable('p_mg2', DBLookupComboboxEh5.KeyValue);
+
+    DM_Bill.Uni_arch.Params.ParamByName('p_sel_uk').AsString :=
+      getStrUk();
     DM_Bill.Uni_arch.Params.ParamByName('p_mg1').AsString :=
       DBLookupComboboxEh1.KeyValue;
     DM_Bill.Uni_arch.Params.ParamByName('p_mg2').AsString :=
       DBLookupComboboxEh5.KeyValue;
 
-    OD_arch_supp.SetVariable('p_mg1', DBLookupComboboxEh1.KeyValue);
-    OD_arch_supp.SetVariable('p_mg2', DBLookupComboboxEh5.KeyValue);
+    //OD_arch_supp.SetVariable('p_mg1', DBLookupComboboxEh1.KeyValue);
+    //OD_arch_supp.SetVariable('p_mg2', DBLookupComboboxEh5.KeyValue);
+    DM_Bill.Uni_arch_supp.Params.ParamByName('p_sel_uk').AsString :=
+      getStrUk();
+    DM_Bill.Uni_arch_supp.Params.ParamByName('p_mg1').AsString :=
+      DBLookupComboboxEh1.KeyValue;
+    DM_Bill.Uni_arch_supp.Params.ParamByName('p_mg2').AsString :=
+      DBLookupComboboxEh5.KeyValue;
 
-    if sel_obj_ = 0 then
-    begin
-      //по л.с.
-       //OD_arch_supp.SetVariable('p_lsk', wwDBEdit1.Text);
-      OD_arch_supp.SetVariable('p_adr', 0);
-    end
-    else
-    begin
-      //по адресу
-       //OD_arch_supp.SetVariable('p_lsk', OD_kw.FieldByName('lsk').AsString);
-      OD_arch_supp.SetVariable('p_adr', 1);
-    end;
-    OD_arch_supp.Active := true;
+    {    if sel_obj_ = 0 then
+        begin
+          //по л.с.
+           //OD_arch_supp.SetVariable('p_lsk', wwDBEdit1.Text);
+          //OD_arch_supp.SetVariable('p_adr', 0);
+          DM_Bill.Uni_arch_supp.Params.ParamByName('p_adr').AsInteger:=0;
+        end
+        else
+        begin
+          //по адресу
+           //OD_arch_supp.SetVariable('p_lsk', OD_kw.FieldByName('lsk').AsString);
+          //OD_arch_supp.SetVariable('p_adr', 1);
+          DM_Bill.Uni_arch_supp.Params.ParamByName('p_adr').AsInteger:=1;
+        end;}
+    DM_Bill.Uni_arch_supp.Params.ParamByName('p_adr').AsInteger := 1;
+    //OD_arch_supp.Active := true;
+    DM_Bill.Uni_arch_supp.Active := True;
   end
   else if (tp_ = 5) then //справка арх-2
   begin
     wwDBEdit2.Text := wwDBEdit1.Text;
     //OD_arch.SetVariable('p_mg1', DBLookupComboboxEh1.KeyValue);
     //OD_arch.SetVariable('p_mg2', DBLookupComboboxEh5.KeyValue);
+    DM_Bill.Uni_arch.Params.ParamByName('p_sel_uk').AsString :=
+      getStrUk();
     DM_Bill.Uni_arch.Params.ParamByName('p_mg1').AsString :=
       DBLookupComboboxEh1.KeyValue;
     DM_Bill.Uni_arch.Params.ParamByName('p_mg2').AsString :=
       DBLookupComboboxEh5.KeyValue;
 
-    OD_arch_supp.SetVariable('p_mg1', DBLookupComboboxEh1.KeyValue);
-    OD_arch_supp.SetVariable('p_mg2', DBLookupComboboxEh5.KeyValue);
+    DM_Bill.Uni_arch_supp.Params.ParamByName('p_sel_uk').AsString :=
+      getStrUk();
+    DM_Bill.Uni_arch_supp.Params.ParamByName('p_mg1').AsString :=
+      DBLookupComboboxEh1.KeyValue;
+    DM_Bill.Uni_arch_supp.Params.ParamByName('p_mg2').AsString :=
+      DBLookupComboboxEh5.KeyValue;
 
-    if sel_obj_ = 0 then
-    begin
-      //по л.с.
-       //OD_arch_supp.SetVariable('p_lsk', wwDBEdit1.Text);
-      OD_arch_supp.SetVariable('p_adr', 0);
-    end
-    else
-    begin
-      //по адресу
-       //OD_arch_supp.SetVariable('p_lsk', OD_kw.FieldByName('lsk').AsString);
-      OD_arch_supp.SetVariable('p_adr', 1);
-    end;
-    OD_arch_supp.Active := true;
+    {    if sel_obj_ = 0 then
+        begin
+          //по л.с.
+           //OD_arch_supp.SetVariable('p_lsk', wwDBEdit1.Text);
+          //DM_Bill.Uni_arch_supp.SetVariable('p_adr', 0);
+          DM_Bill.Uni_arch_supp.Params.ParamByName('p_adr').AsInteger := 0;
+        end
+        else
+        begin
+          //по адресу
+           //OD_arch_supp.SetVariable('p_lsk', OD_kw.FieldByName('lsk').AsString);
+          //DM_Bill.Uni_arch_supp.SetVariable('p_adr', 1);
+          DM_Bill.Uni_arch_supp.Params.ParamByName('p_adr').AsInteger := 1;
+        end;}
+    DM_Bill.Uni_arch_supp.Params.ParamByName('p_adr').AsInteger := 1;
+    DM_Bill.Uni_arch_supp.Active := true;
   end
   else if (tp_ = 3) then //справка о задолжности
   begin
@@ -1091,11 +1099,11 @@ begin
 
       //OD_arch.MasterFields := 'LSK';
       //OD_arch.DetailFields := 'P_LSK';
-      DM_Bill.Uni_arch.MasterFields := 'LSK';
-      DM_Bill.Uni_arch.DetailFields := 'P_LSK';
+      //DM_Bill.Uni_arch.MasterFields := 'LSK';
+      //DM_Bill.Uni_arch.DetailFields := 'LSK';
 
       //OD_arch.SetVariable('p_adr', 0);
-      DM_Bill.Uni_arch.Params.ParamByName('p_adr').AsInteger := 0;
+      DM_Bill.Uni_arch.Params.ParamByName('p_adr').AsInteger := 1;
 
       { ред. 07.05.2019 - пока убрал
       OD_data2.SetVariable('lsk_', wwDBEdit1.Text);        }
@@ -1109,8 +1117,8 @@ begin
       //OD_arch.Master := OD_cmp_main;
       //OD_arch.MasterFields := 'K_LSK_ID';
       //OD_arch.DetailFields := 'P_K_LSK';
-      DM_Bill.Uni_arch.MasterFields := 'K_LSK_ID';
-      DM_Bill.Uni_arch.DetailFields := 'P_K_LSK';
+      //DM_Bill.Uni_arch.MasterFields := 'K_LSK_ID';
+      //DM_Bill.Uni_arch.DetailFields := 'K_LSK_ID';
 
       //OD_arch.SetVariable('p_k_lsk', Form_main.k_lsk_id_);
       //OD_arch.SetVariable('p_adr', 1);
@@ -1385,7 +1393,7 @@ begin
     Label3.Caption := 'Период отчета';
     Label9.Visible := false;
     DBLookupComboboxEh5.Visible := false;
-    DBLookupComboboxEh1.Enabled := true;    
+    DBLookupComboboxEh1.Enabled := true;
     CheckBox2.Visible := true;
     CheckBox4.Visible := true;
     CheckBox5.Visible := false;
@@ -1815,6 +1823,18 @@ begin
     cxCheckComboBox1.States[i] := cbsChecked;
 end;
 
+// снять отметки со всех элементов cxCheckComboBox
+
+procedure TForm_print_bills.deSelAllUk();
+var
+  i: Integer;
+  ComboProp: TcxCheckComboBoxProperties;
+begin
+  ComboProp := cxCheckComboBox1.Properties;
+  for i := 0 to ComboProp.Items.Count - 1 do
+    cxCheckComboBox1.States[i] := cbsUnChecked;
+end;
+
 procedure TForm_print_bills.CheckBox6Click(Sender: TObject);
 begin
   if CheckBox6.Checked then
@@ -1822,6 +1842,15 @@ begin
   else
     Edit3.Enabled := false;
 
+end;
+
+procedure TForm_print_bills.CheckBox7Click(Sender: TObject);
+begin
+  // снять/установить все отмеченные элементы УК комбобокса cxCheckComboBox1
+  if CheckBox7.Checked=true then
+    selAllUk
+  else
+    deSelAllUk;
 end;
 
 end.

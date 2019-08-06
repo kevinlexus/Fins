@@ -145,8 +145,6 @@ type
     wwDBGrid8: TwwDBGrid;
     TabSheet1: TTabSheet;
     OD_housesK_LSK_ID: TFloatField;
-    KMP: TOracleDataSet;
-    KMP2: TOracleDataSet;
     DS_objxpar: TDataSource;
     DS_par_value: TDataSource;
     OD_other: TOracleDataSet;
@@ -202,6 +200,7 @@ type
     cxGridDBTableView1POSTCODE: TcxGridDBColumn;
     Uni_objxpar: TUniQuery;
     Uni_par_value: TUniQuery;
+    OD_housesFK_K_LSK: TFloatField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);

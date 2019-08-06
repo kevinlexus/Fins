@@ -1,6 +1,6 @@
 object Form_Main: TForm_Main
-  Left = 906
-  Top = 216
+  Left = 666
+  Top = 359
   Width = 880
   Height = 724
   Caption = #1044#1080#1088#1077#1082#1090
@@ -812,6 +812,16 @@ object Form_Main: TForm_Main
             ImageIndex = 67
             OnClick = N138Click
           end
+          object N141: TMenuItem
+            Caption = #1056#1077#1077#1089#1090#1088' '#1087#1086' '#1086#1087#1083#1072#1090#1077' '#1079#1072' '#1074#1099#1074#1086#1079' '#1084#1091#1089#1086#1088#1072
+            ImageIndex = 67
+            OnClick = N141Click
+          end
+          object N142: TMenuItem
+            Caption = #1056#1077#1077#1089#1090#1088' '#1087#1086' '#1082#1086#1083'-'#1074#1091' '#1087#1088#1086#1078#1080#1074#1072#1102#1097#1080#1093' '#1087#1086' '#1074#1099#1074#1086#1079#1091' '#1084#1091#1089#1086#1088#1072
+            ImageIndex = 67
+            OnClick = N142Click
+          end
         end
         object N47: TMenuItem
           Caption = #1057#1087#1088#1072#1074#1082#1080
@@ -1052,7 +1062,7 @@ object Form_Main: TForm_Main
       end
     end
     object ver: TMenuItem
-      Caption = 'ver 2.1.16'
+      Caption = 'ver 2.1.34'
     end
   end
   object ImageList1: TImageList
@@ -12461,7 +12471,7 @@ object Form_Main: TForm_Main
     Height = 10
     Width = 10
     Left = 40
-    Top = 216
+    Top = 184
     Bitmap = {
       494C01010200040004000A000A00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000280000000A00000001002000000000004006

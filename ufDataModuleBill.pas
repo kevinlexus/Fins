@@ -9,7 +9,7 @@ type
   TDM_Bill = class(TDataModule)
     Uni_cmp_main: TUniQuery;
     Uni_cmp_detail_primary: TUniQuery;
-    Uni_cmp_detail_main: TUniQuery;
+    Uni_cmp_detail_main: TUniQuery;           
     Uni_cmp_detail_cap: TUniQuery;
     Uni_cmp_funds_primary: TUniQuery;
     Uni_cmp_funds_cap: TUniQuery;
@@ -20,6 +20,8 @@ type
     DS_cmp_main: TDataSource;
     DS_cmp_funds_primary: TDataSource;
     Uni_arch: TUniQuery;
+    DS_cmp_detail_primary: TDataSource;
+    Uni_arch_supp: TUniQuery;
   private
     { Private declarations }
   public
