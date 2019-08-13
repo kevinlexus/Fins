@@ -7,7 +7,24 @@ uses
   Dialogs, ExtCtrls, DB, OracleData, StdCtrls, Grids,
   Wwdbigrd, Wwdbgrid, wwSpeedButton, wwDBNavigator, wwclearpanel,
   wwdbdatetimepicker, Mask, wwdbedit, Wwdotdot, Wwdbcomb, MemDS, DBAccess, DM_module1,
-  Uni;
+  Uni, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
+  cxStyles, dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint,
+  dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinPumpkin,
+  dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
+  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
+  dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter,
+  cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
+  cxDBData, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
+  cxGridLevel, cxClasses, cxGridCustomView, cxGrid;
 
 type
   TForm_prep_doc = class(TForm)
@@ -93,7 +110,7 @@ begin
    exit_:=1;
    if not (Uni_spr_params.State in [dsBrowse]) then
      Uni_spr_params.Post;
-   Uni_spr_params.CommitUpdates;
+   //Uni_spr_params.CommitUpdates;
 {   if not (OD_data2.State in [dsBrowse]) then
      OD_data2.Post;
    if not (OD_data3.State in [dsBrowse]) then

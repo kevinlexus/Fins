@@ -216,6 +216,8 @@ type
     OD_sprorgFK_ORG2: TFloatField;
     OD_sprorgIS_RSO: TFloatField;
     cxGrid1DBTableView1IS_RSO: TcxGridDBColumn;
+    OD_sprorgIS_EXCHANGE_GIS: TFloatField;
+    cxGrid1DBTableView1IS_EXCHANGE_GIS: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure OD_sprorgAfterScroll(DataSet: TDataSet);

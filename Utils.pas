@@ -79,6 +79,7 @@ function GetLocalIP: string;
 function VarToInt(var AVariant: variant; DefaultValue: integer = 0): integer;
 function getS_date_param(strPar: string): TDateTime;
 function getS_double_param(strPar: string): Double;
+function getS_str_param(strPar: string): String;
 function getS_list_param(strPar: string): Integer;
 
 implementation
@@ -1424,9 +1425,12 @@ begin
   DataModule1.UniStoredProc1.Params
     .CreateParam(ftInteger, 'CD_', ptInput).AsString := strPar;
   DataModule1.UniStoredProc1.Params
-    .CreateParam(ftDate, 'RESULT', ptResult).AsString;
+    .CreateParam(ftDate, 'RESULT', ptResult);
   DataModule1.UniStoredProc1.ExecProc;
   Result := DataModule1.UniStoredProc1.Params.ParamByName('RESULT').AsDateTime;
+    // очистить SQL и параметры, для других вызовов (только при вызове функций)
+    DataModule1.UniStoredProc1.SQL.Clear;
+    DataModule1.UniStoredProc1.Params.Clear;
 end;
 
 
@@ -1442,9 +1446,32 @@ begin
   DataModule1.UniStoredProc1.Params
     .CreateParam(ftInteger, 'CD_', ptInput).AsString := strPar;
   DataModule1.UniStoredProc1.Params
-    .CreateParam(ftFloat, 'RESULT', ptResult).AsString;
+    .CreateParam(ftFloat, 'RESULT', ptResult);
   DataModule1.UniStoredProc1.ExecProc;
   Result := DataModule1.UniStoredProc1.Params.ParamByName('RESULT').AsFloat;
+    // очистить SQL и параметры, для других вызовов (только при вызове функций)
+    DataModule1.UniStoredProc1.SQL.Clear;
+    DataModule1.UniStoredProc1.Params.Clear;
+end;
+
+function getS_str_param(strPar: string): String;
+begin
+  DataModule1.UniStoredProc1.StoredProcName:='SCOTT.UTILS.GETS_STR_PARAM';
+  DataModule1.UniStoredProc1.SQL.Clear;
+  DataModule1.UniStoredProc1.SQL.Add('begin ');
+  DataModule1.UniStoredProc1.SQL.Add(':RESULT := SCOTT.UTILS.GETS_STR_PARAM(:CD_);');
+  DataModule1.UniStoredProc1.SQL.Add('end;');
+
+  DataModule1.UniStoredProc1.Params.Clear;
+  DataModule1.UniStoredProc1.Params
+    .CreateParam(ftInteger, 'CD_', ptInput).AsString := strPar;
+  DataModule1.UniStoredProc1.Params
+    .CreateParam(ftString, 'RESULT', ptResult);
+  DataModule1.UniStoredProc1.ExecProc;
+  Result := DataModule1.UniStoredProc1.Params.ParamByName('RESULT').AsString;
+    // очистить SQL и параметры, для других вызовов (только при вызове функций)
+    DataModule1.UniStoredProc1.SQL.Clear;
+    DataModule1.UniStoredProc1.Params.Clear;
 end;
 
 function getS_list_param(strPar: string): Integer;
@@ -1459,9 +1486,12 @@ begin
   DataModule1.UniStoredProc1.Params
     .CreateParam(ftInteger, 'CD_', ptInput).AsString := strPar;
   DataModule1.UniStoredProc1.Params
-    .CreateParam(ftInteger, 'RESULT', ptResult).AsString;
+    .CreateParam(ftInteger, 'RESULT', ptResult);
   DataModule1.UniStoredProc1.ExecProc;
   Result := DataModule1.UniStoredProc1.Params.ParamByName('RESULT').AsInteger;
+  // очистить SQL и параметры, для других вызовов
+  DataModule1.UniStoredProc1.SQL.Clear;
+  DataModule1.UniStoredProc1.Params.Clear;
 end;
 end.
 

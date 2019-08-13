@@ -43,11 +43,11 @@ type
     Label3: TLabel;
     wwDBLookupCombo2: TwwDBLookupCombo;
     Label5: TLabel;
-    wwDBEdit3: TwwDBEdit;
     Label1: TLabel;
-    wwDBEdit1: TwwDBEdit;
     cbb2: TcxLookupComboBox;
     lbl1: TLabel;
+    cxMaskEdit3: TcxMaskEdit;
+    cxMaskEdit1: TcxMaskEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button2Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -149,8 +149,8 @@ begin
       DM_Olap.Uni_data.FieldByName('usl').AsString;
     wwDBLookupCombo2.Value :=
       DM_Olap.Uni_data.FieldByName('org').AsString;
-    wwDBEdit3.Text := DM_Olap.Uni_data.FieldByName('koeff').AsString;
-    wwDBEdit1.Text := DM_Olap.Uni_data.FieldByName('norm').AsString;
+    cxMaskEdit3.Text := DM_Olap.Uni_data.FieldByName('koeff').AsString;
+    cxMaskEdit1.Text := DM_Olap.Uni_data.FieldByName('norm').AsString;
   end;
 
 end;
@@ -226,9 +226,9 @@ begin
           CreateParam(ftInteger, 'org_', ptInput).AsInteger :=
             OD_sprorg.FieldByName('kod').AsInteger;
           CreateParam(ftFloat, 'koeff_', ptInput).AsFloat :=
-            StrToFloat(NvlStr(wwDBEdit3.Text, '0'));
+            StrToFloat(NvlStr(cxMaskEdit3.Text, '0'));
           CreateParam(ftFloat, 'norm_', ptInput).AsFloat :=
-            StrToFloat(NvlStr(wwDBEdit1.Text, '0'));
+            StrToFloat(NvlStr(cxMaskEdit1.Text, '0'));
           CreateParam(ftInteger, 'p_chrg', ptInput).AsFloat :=
             l_chrg;
         end;
@@ -268,9 +268,9 @@ begin
           CreateParam(ftInteger, 'org_', ptInput).AsInteger :=
             OD_sprorg.FieldByName('kod').AsInteger;
           CreateParam(ftFloat, 'koeff_', ptInput).AsFloat :=
-            StrToFloat(NvlStr(wwDBEdit3.Text, '0'));
+            StrToFloat(NvlStr(cxMaskEdit3.Text, '0'));
           CreateParam(ftFloat, 'norm_', ptInput).AsFloat :=
-            StrToFloat(NvlStr(wwDBEdit1.Text, '0'));
+            StrToFloat(NvlStr(cxMaskEdit1.Text, '0'));
           CreateParam(ftInteger, 'p_chrg', ptInput).AsFloat :=
             l_chrg;
         end;
@@ -328,9 +328,9 @@ begin
         CreateParam(ftFloat, 'old_norm_', ptInput).AsFloat :=
           old_norm_;
         CreateParam(ftFloat, 'new_koeff_', ptInput).AsFloat :=
-          StrToFloat(NvlStr(wwDBEdit3.Text, '0'));
+          StrToFloat(NvlStr(cxMaskEdit3.Text, '0'));
         CreateParam(ftFloat, 'new_norm_', ptInput).AsFloat :=
-          StrToFloat(NvlStr(wwDBEdit1.Text, '0'));
+          StrToFloat(NvlStr(cxMaskEdit1.Text, '0'));
         CreateParam(ftInteger, 'p_chrg', ptInput).AsFloat :=
           l_chrg;
       end;
@@ -389,28 +389,28 @@ begin
   if st_ = 0 then
   begin
     //коэфф
-    wwDBEdit1.Visible := false;
+    cxMaskEdit1.Visible := false;
     Label1.Visible := false;
 
-    wwDBEdit3.Visible := true;
+    cxMaskEdit3.Visible := true;
     Label5.Visible := true;
   end
   else if st_ = 1 then
   begin
     //норматив
-    wwDBEdit3.Visible := false;
+    cxMaskEdit3.Visible := false;
     Label5.Visible := false;
 
-    wwDBEdit1.Visible := true;
+    cxMaskEdit1.Visible := true;
     Label1.Visible := true;
   end
   else if (st_ = 2) or (st_ = 3) or (st_ = 4) then
   begin
     //норматив и коэфф
-    wwDBEdit3.Visible := true;
+    cxMaskEdit3.Visible := true;
     Label5.Visible := true;
 
-    wwDBEdit1.Visible := true;
+    cxMaskEdit1.Visible := true;
     Label1.Visible := true;
   end;
 end;

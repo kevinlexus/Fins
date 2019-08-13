@@ -6,8 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, OracleData, DBGridEh, StdCtrls, Oracle, ExtCtrls,
   Mask, DBCtrlsEh, wwdbedit, cxControls,
-  
-  
+
   cxGridCustomTableView,
   cxGridTableView, cxGridDBTableView, cxGridLevel, cxClasses,
   cxGridCustomView, cxGrid, cxGraphics, cxLookAndFeels,
@@ -70,25 +69,34 @@ procedure enter_app;
 var
   l_val: Integer;
 begin
-  if (DataModule1.OraclePackage1.CallIntegerFunction(
-    'scott.INIT.get_login_acc', parNone)) > 1 then
-  begin
-    msg2('Программа запущена на другом компьютере, завершение',
-      'Внимание', MB_OK + MB_ICONINFORMATION);
-    Application.Terminate;
-  end;
-
+  {  if (DataModule1.OraclePackage1.CallIntegerFunction(
+      'scott.INIT.get_login_acc', parNone)) > 1 then
+    begin
+      msg2('Программа запущена на другом компьютере, завершение',
+        'Внимание', MB_OK + MB_ICONINFORMATION);
+      Application.Terminate;
+    end;
+   }
   DataModule1.OraclePackage1.CallProcedure
     ('scott.INIT.set_nkom',
-      [Form_sel_comps.OD_sel_comps.FieldByName('nkom').asString]);
+    [Form_sel_comps.OD_sel_comps.FieldByName('nkom').asString]);
+
+  DataModule1.UniStoredProc1.StoredProcName := 'scott.INIT.set_nkom';
+  DataModule1.UniStoredProc1.Params.Clear;
+  DataModule1.UniStoredProc1.Params.CreateParam(ftString, 'nkom_',
+    ptInput).AsString :=
+    Form_sel_comps.OD_sel_comps.FieldByName('nkom').asString;
+  DataModule1.UniStoredProc1.ExecProc;
+
   // № текущего комп.
   Form_main.nkom_ := Form_sel_comps.OD_sel_comps.FieldByName('nkom').asString;
   // № текущей ККМ
-  Form_main.cur_cash_num := Form_sel_comps.OD_sel_comps.FieldByName('cash_num').asInteger;
-  if Form_main.cur_cash_num=1 then
-     Form_main.cur_ECR:=Form_main.selECR
-    else
-     Form_main.cur_ECR:=Form_main.selECR2;
+  Form_main.cur_cash_num :=
+    Form_sel_comps.OD_sel_comps.FieldByName('cash_num').asInteger;
+  if Form_main.cur_cash_num = 1 then
+    Form_main.cur_ECR := Form_main.selECR
+  else
+    Form_main.cur_ECR := Form_main.selECR2;
 
   Form_main.default_reu_ := DataModule1.OraclePackage1.CallStringFunction
     ('scott.INIT.get_def_reu', [parNone]);
@@ -97,18 +105,32 @@ begin
     ('scott.INIT.get_cur_period', [parNone]);
   l_val := DataModule1.OraclePackage1.CallIntegerFunction
     ('scott.INIT.set_date', [Form_sel_comps.DBDateTimeEditEh1.Value]);
+
   if l_val = 3 then
     msg2('Дата не соответствует текущему периоду!', 'Внимание!', MB_OK +
       MB_ICONSTOP)
   else if (l_val = 1) then
   begin
-    {    if l_val = 2 then
-          msg2('Вы работаете периодом, следующим за текущим периодом системы!', 'Внимание!', MB_OK+MB_ICONINFORMATION);}
-    Form_main.cur_dt:=Form_sel_comps.DBDateTimeEditEh1.Value;
-    //ShowMessage(DateToStr(Form_main.cur_dt));
+    DataModule1.UniStoredProc1.StoredProcName := 'scott.INIT.set_date';
+    DataModule1.UniStoredProc1.SQL.Clear;
+    DataModule1.UniStoredProc1.SQL.Add('begin ');
+    DataModule1.UniStoredProc1.SQL.Add(':RESULT := scott.INIT.set_date(:dat_);');
+    DataModule1.UniStoredProc1.SQL.Add('end;');
+    DataModule1.UniStoredProc1.Params.Clear;
+    DataModule1.UniStoredProc1.Params.CreateParam(ftDate, 'dat_',
+      ptInput).AsDate := Form_sel_comps.DBDateTimeEditEh1.Value;
+    DataModule1.UniStoredProc1.Params
+      .CreateParam(ftInteger, 'RESULT', ptResult);
+    DataModule1.UniStoredProc1.ExecProc;
+    // очистить SQL и параметры, для других вызовов (только при вызове функций)
+    DataModule1.UniStoredProc1.SQL.Clear;
+    DataModule1.UniStoredProc1.Params.Clear;
+
+    Form_main.cur_dt := Form_sel_comps.DBDateTimeEditEh1.Value;
     Form_Main.OD_spr.Active := true;
     Form_main.Caption := Application.Title
-      + ' Дата:' + DateToStr(Form_sel_comps.DBDateTimeEditEh1.Value) + ' User:' +
+      + ' Дата:' + DateToStr(Form_sel_comps.DBDateTimeEditEh1.Value) + ' User:'
+      +
       Form_main.user;
     Form_main.Caption := Form_main.Caption + ': ' +
       DataModule1.OraclePackage1.CallStringFunction

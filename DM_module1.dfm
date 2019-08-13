@@ -261,28 +261,4 @@ object DataModule1: TDataModule1
     Left = 112
     Top = 416
   end
-  object UniStoredProc2: TUniStoredProc
-    StoredProcName = 'UTILS.GETS_DATE_PARAM'
-    SQL.Strings = (
-      'begin'
-      '  :RESULT := UTILS.GETS_DATE_PARAM(:CD_);'
-      'end;')
-    Connection = UniConnection1
-    Constraints = <>
-    Left = 112
-    Top = 464
-    ParamData = <
-      item
-        DataType = ftDateTime
-        Name = 'RESULT'
-        ParamType = ptResult
-      end
-      item
-        DataType = ftString
-        Name = 'CD_'
-        ParamType = ptInput
-      end>
-    CommandStoredProcName = 'UTILS.GETS_DATE_PARAM'
-    StoredProcIsQuery = True
-  end
 end

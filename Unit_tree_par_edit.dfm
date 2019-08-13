@@ -1,6 +1,6 @@
 object Form_tree_par_edit: TForm_tree_par_edit
-  Left = 731
-  Top = 164
+  Left = 917
+  Top = 190
   Width = 451
   Height = 333
   BorderIcons = [biSystemMenu]
@@ -92,7 +92,7 @@ object Form_tree_par_edit: TForm_tree_par_edit
     Top = 0
     Width = 435
     Height = 253
-    ActivePage = TabSheet3
+    ActivePage = TabSheet2
     Align = alClient
     TabOrder = 0
     object TabSheet1: TTabSheet

@@ -1,6 +1,6 @@
 object Form_kart: TForm_kart
-  Left = 894
-  Top = 176
+  Left = 603
+  Top = 330
   Width = 903
   Height = 675
   BorderIcons = [biSystemMenu, biMinimize]

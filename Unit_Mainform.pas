@@ -2,7 +2,7 @@ unit Unit_Mainform;
 
 interface
 
-uses     
+uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Menus, ComCtrls, ToolWin, ImgList, DM_module1, IdBaseComponent,
   IdComponent, IdTCPConnection, IdTCPClient, IdFTP, ExtCtrls, StdCtrls, DBCtrls,
@@ -1704,8 +1704,9 @@ begin
           OD_rep3.Active := true;
           frxReport_base.LoadFromFile(Form_main.exepath_ +
             '\заявление_на_вселение.fr3', True);
-          frxReport_base.Variables['dt1_'] :=
-            DataModule1.OraclePackage1.CallDateFunction('scott.UTILS.getS_date_param', ['REP_PREP_DT1']);
+          //frxReport_base.Variables['dt1_'] :=
+          //  DataModule1.OraclePackage1.CallDateFunction('scott.UTILS.getS_date_param', ['REP_PREP_DT1']);
+          frxReport_base.Variables['dt1_'] := getS_date_param('REP_PREP_DT1');
 
           frxReport_base.PrepareReport(true);
           frxReport_base.ShowPreparedReport;
@@ -1850,8 +1851,10 @@ begin
         OD_rep5.Active := True;
         frxReport_base.LoadFromFile(Form_main.exepath_ + '\спр_пасп_уголь.fr3',
           True);
-        frxReport_base.Variables['vc1_'] :=
-          DataModule1.OraclePackage1.CallStringFunction('scott.UTILS.getS_str_param', ['REP_PREP_VC']);
+        //frxReport_base.Variables['vc1_'] :=
+         //DataModule1.OraclePackage1.CallStringFunction('scott.UTILS.getS_str_param', ['REP_PREP_VC']);
+        frxReport_base.Variables['vc1_'] := getS_str_param('REP_PREP_VC');
+
         frxReport_base.PrepareReport(true);
         frxReport_base.ShowPreparedReport;
         OD_rep2.Active := false;
@@ -1949,10 +1952,12 @@ begin
 
             frxReport_base.LoadFromFile(Form_main.exepath_ +
               '\спр_пасп_наслед.fr3', True);
-            frxReport_base.Variables['fio_'] :=
-              QuotedStr(DataModule1.OraclePackage1.CallStringFunction('scott.UTILS.getS_str_param', ['REP_PREP_VC2']));
-            frxReport_base.Variables['dt1_'] :=
-              DataModule1.OraclePackage1.CallDateFunction('scott.UTILS.getS_date_param', ['REP_PREP_DT1']);
+            //frxReport_base.Variables['fio_'] :=
+            //  QuotedStr(DataModule1.OraclePackage1.CallStringFunction('scott.UTILS.getS_str_param', ['REP_PREP_VC2']));
+            frxReport_base.Variables['fio_'] := QuotedStr(getS_str_param('REP_PREP_VC2'));
+            //frxReport_base.Variables['dt1_'] :=
+            //  DataModule1.OraclePackage1.CallDateFunction('scott.UTILS.getS_date_param', ['REP_PREP_DT1']);
+            frxReport_base.Variables['dt1_'] := getS_date_param('REP_PREP_DT1');
 
             frxReport_base.PrepareReport(true);
             frxReport_base.ShowPreparedReport;
@@ -2437,25 +2442,27 @@ begin
   end;
 
   // игнорировать ошибку данного типа
-  if E.Message='Дочерние окна не могут иметь меню.' then
+  if E.Message = 'Дочерние окна не могут иметь меню.' then
     Exit;
-  if E.Message='Окно не имеет полос прокрутки.' then
+  if E.Message = 'Окно не имеет полос прокрутки.' then
     Exit;
-
-  // защита, чтобы Enter-ом не прожали сообщение
-  while
-    Application.MessageBox('Программа приостановлена, повторить данное сообщение?',
-    'Внимание!', MB_RETRYCANCEL + MB_ICONQUESTION + MB_TOPMOST) = IDRETRY do
-  begin
-  end;
+  if E.Message = 'Canvas does not allow drawing' then
+    Exit;
 
   if E is EOracleError then
   begin
-    if EOracleError(E).ErrorCode = 4068 then    
+    if EOracleError(E).ErrorCode = 4068 then
     begin
+      // защита, чтобы Enter-ом не прожали сообщение
+      while
+        Application.MessageBox('Программа обновлена, повторить данное сообщение?',
+        'Внимание!', MB_RETRYCANCEL + MB_ICONQUESTION + MB_TOPMOST) = IDRETRY do
+      begin
+      end;
+
       if
-        Application.MessageBox('Программа обновлена, зайти заново в приложение?',
-        'Внимание!', MB_YESNO + MB_ICONQUESTION + {MB_DEFBUTTON2 + } MB_TOPMOST)
+        Application.MessageBox('Выйти из приложения, чтоб параметры вступили в силу?',
+        'Внимание!', MB_YESNO + MB_ICONQUESTION + MB_TOPMOST)
         = IDYES then
       begin
         Application.Terminate;
@@ -2463,7 +2470,15 @@ begin
     end
     else
     begin
-      Application.ShowException(E);
+      // защита, чтобы Enter-ом не прожали сообщение
+      while
+        Application.MessageBox(PChar('Программа приостановлена по причине:' +
+          E.Message + #13#10
+        + ' повторить данное собщение?'),
+        'Внимание!', MB_RETRYCANCEL + MB_ICONQUESTION + MB_TOPMOST) = IDRETRY do
+      begin
+      end;
+
       if
         Application.MessageBox('Продолжить работу?',
         'Внимание!', MB_YESNO + MB_ICONQUESTION + MB_TOPMOST) <> IDYES then
@@ -2474,10 +2489,17 @@ begin
   end
   else
   begin
+    // защита, чтобы Enter-ом не прожали сообщение
+    while
+      Application.MessageBox(PChar('Программа приостановлена по причине:' +
+        E.Message + #13#10
+      + ' повторить данное собщение?'),
+      'Внимание!', MB_RETRYCANCEL + MB_ICONQUESTION + MB_TOPMOST) = IDRETRY do
+    begin
+    end;
 
-    Application.ShowException(E);
     if
-      Application.MessageBox('Произошла остановка выполнения, продолжить работу?',
+      Application.MessageBox('Продолжить работу?',
       'Внимание!', MB_YESNO + MB_ICONQUESTION + MB_TOPMOST) <> IDYES then
     begin
       Application.Terminate;

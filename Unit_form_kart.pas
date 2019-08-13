@@ -780,19 +780,20 @@ begin
       if (Msg3('—охранить измени€ карточки?', 'ѕодтверждение', MB_ICONQUESTION +
         MB_YESNO) = IDYES) then // сохран€ем с вопросом
       begin
-        //дл€ подтверждени€ изменений, сделанных в пакетах
-        DataModule1.OracleSession1.Commit;
         DataModule1.OracleSession1.ApplyUpdates([Form_kart.OD_charge], true);
         DataModule1.OracleSession1.ApplyUpdates([Form_kart.OD_states_sch],
           true);
         DataModule1.OracleSession1.ApplyUpdates([Form_list_kart.OD_list_kart],
           true);
-
         //ѕроверка корректности статусов счетчиков, статусов проживающих
         //— установкой признака валидности карточки
         err_ :=
           DataModule1.OraclePackage1.CallStringFunction('scott.UTILS.tst_krt',
           [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, 1]);
+
+        //дл€ подтверждени€ изменений, сделанных в пакетах
+        DataModule1.OracleSession1.Commit;
+
       end
       else
       begin

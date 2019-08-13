@@ -1558,7 +1558,7 @@ begin
     DBLookupComboboxEh4.KeyValue :=
       Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger;
     //DBLookupComboboxEh4.KeyValue := Form_list_kart.OD_list_kart.FieldByName('lsk').AsString;
-    Exit;
+    //Exit;
     // по умолчанию период
     DBLookupComboboxEh1.KeyValue :=
       Form_print_bills.OD_mg.FieldByName('mg').AsString;

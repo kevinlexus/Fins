@@ -1,6 +1,6 @@
 object Form_change_house_nabor2: TForm_change_house_nabor2
-  Left = 928
-  Top = 172
+  Left = 656
+  Top = 741
   Align = alCustom
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
@@ -237,30 +237,6 @@ object Form_change_house_nabor2: TForm_change_house_nabor2
       PreciseEditRegion = False
       AllowClearKey = False
     end
-    object wwDBEdit3: TwwDBEdit
-      Left = 452
-      Top = 0
-      Width = 73
-      Height = 21
-      Picture.PictureMask = '[#][#][#][#][#][#][.][#][#][#][#][#]'
-      TabOrder = 2
-      UnboundDataType = wwDefault
-      WantReturns = False
-      WordWrap = False
-      OnKeyPress = wwDBEdit3KeyPress
-    end
-    object wwDBEdit1: TwwDBEdit
-      Left = 576
-      Top = 0
-      Width = 73
-      Height = 21
-      Picture.PictureMask = '[#][#][#][#][#][#][.][#][#][#][#][#][#]'
-      TabOrder = 3
-      UnboundDataType = wwDefault
-      WantReturns = False
-      WordWrap = False
-      OnKeyPress = wwDBEdit3KeyPress
-    end
     object cbb2: TcxLookupComboBox
       Left = 48
       Top = 26
@@ -274,6 +250,24 @@ object Form_change_house_nabor2: TForm_change_house_nabor2
       TabOrder = 4
       Visible = False
       Width = 161
+    end
+    object cxMaskEdit3: TcxMaskEdit
+      Left = 451
+      Top = 2
+      Properties.MaskKind = emkRegExprEx
+      Properties.EditMask = '\d{0,5}|(\d{0,5}\.\d{1,5})'
+      Properties.ValidateOnEnter = False
+      Properties.ValidationOptions = [evoShowErrorIcon]
+      TabOrder = 2
+      Width = 73
+    end
+    object cxMaskEdit1: TcxMaskEdit
+      Left = 576
+      Top = 3
+      Properties.MaskKind = emkRegExprEx
+      Properties.EditMask = '\d{0,5}|(\d{0,5}\.\d{1,5})'
+      TabOrder = 3
+      Width = 73
     end
   end
   object DS_usl: TDataSource

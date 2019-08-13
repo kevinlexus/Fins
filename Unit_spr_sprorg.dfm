@@ -216,6 +216,14 @@ object Form_spr_sprorg: TForm_spr_sprorg
         Properties.ValueUnchecked = 0
         Width = 34
       end
+      object cxGrid1DBTableView1IS_EXCHANGE_GIS: TcxGridDBColumn
+        Caption = #1054#1073#1084#1077#1085' '#1043#1048#1057'?'
+        DataBinding.FieldName = 'IS_EXCHANGE_GIS'
+        PropertiesClassName = 'TcxCheckBoxProperties'
+        Properties.ValueChecked = 1
+        Properties.ValueUnchecked = 0
+        Width = 43
+      end
       object cxGrid1DBTableView1FK_BILL_VAR: TcxGridDBColumn
         DataBinding.FieldName = 'FK_BILL_VAR'
       end
@@ -764,13 +772,13 @@ object Form_spr_sprorg: TForm_spr_sprorg
         'ndx, s.r_sch_addit, s.code_deb, s.dolg_name, '
       
         ' s.fk_bill_var, s.bank_fname, s.grp, s.r_sch_gis, s.adr_cash, s.' +
-        'is_rso, s.rowid'
+        'is_rso, s.is_exchange_gis, s.rowid'
       '  from scott.t_org s'
       '  order by s.reu, s.name')
     Optimize = False
     OracleDictionary.UseMessageTable = True
     QBEDefinition.QBEFieldDefs = {
-      0400000032000000020000004944010000000000020000004344010000000000
+      0400000033000000020000004944010000000000020000004344010000000000
       08000000464B5F4F52475450010000000000040000004E414D45010000000000
       030000004E505001000000000001000000560100000000000900000050415245
       4E545F4944010000000000030000005245550100000000000500000054524553
@@ -796,7 +804,8 @@ object Form_spr_sprorg: TForm_spr_sprorg
       5F4E414D450100000000000B000000464B5F42494C4C5F564152010000000000
       0A00000042414E4B5F464E414D45010000000000030000004752500100000000
       0009000000525F5343485F474953010000000000080000004144525F43415348
-      0100000000000600000049535F52534F010000000000}
+      0100000000000600000049535F52534F0100000000000F00000049535F455843
+      48414E47455F474953010000000000}
     RefreshOptions = [roAfterInsert, roAfterUpdate]
     Session = DataModule1.OracleSession1
     BeforePost = OD_sprorgBeforePost
@@ -1104,6 +1113,9 @@ object Form_spr_sprorg: TForm_spr_sprorg
     end
     object OD_sprorgIS_RSO: TFloatField
       FieldName = 'IS_RSO'
+    end
+    object OD_sprorgIS_EXCHANGE_GIS: TFloatField
+      FieldName = 'IS_EXCHANGE_GIS'
     end
   end
   object OD_t_orgp2: TOracleDataSet

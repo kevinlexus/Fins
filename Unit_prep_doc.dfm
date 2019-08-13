@@ -1,11 +1,11 @@
 object Form_prep_doc: TForm_prep_doc
-  Left = 1164
-  Top = 164
+  Left = 483
+  Top = 189
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = #1055#1072#1088#1072#1084#1077#1090#1088#1099' '#1086#1090#1095#1077#1090#1072
-  ClientHeight = 348
-  ClientWidth = 364
+  ClientHeight = 289
+  ClientWidth = 397
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -91,7 +91,7 @@ object Form_prep_doc: TForm_prep_doc
   TextHeight = 13
   object wwDBNavigator1: TwwDBNavigator
     Left = 0
-    Top = 274
+    Top = 215
     Width = 350
     Height = 25
     Options = []
@@ -347,8 +347,8 @@ object Form_prep_doc: TForm_prep_doc
   end
   object GroupBox2: TGroupBox
     Left = 0
-    Top = 299
-    Width = 364
+    Top = 240
+    Width = 397
     Height = 49
     Align = alBottom
     TabOrder = 3
@@ -377,14 +377,14 @@ object Form_prep_doc: TForm_prep_doc
   object wwDBGrid2: TwwDBGrid
     Left = 0
     Top = 0
-    Width = 364
-    Height = 274
+    Width = 397
+    Height = 215
     ControlType.Strings = (
       'VAL;CustomEdit;wwDBComboBox1;F')
     Selected.Strings = (
-      'GR_NAME'#9'17'#9' '#9'T'
-      'PARNAME'#9'22'#9' '#9'T'
-      'VAL'#9'13'#9' '#9'T')
+      'GR_NAME'#9'18'#9' '#9'T'
+      'PARNAME'#9'24'#9' '#9'T'
+      'VAL'#9'16'#9' '#9'T')
     IniAttributes.Delimiter = ';;'
     TitleColor = clBtnFace
     FixedCols = 0
@@ -514,6 +514,7 @@ object Form_prep_doc: TForm_prep_doc
     Top = 104
   end
   object Uni_spr_params: TUniQuery
+    UpdatingTable = 'scott.spr_par_ses'
     Connection = DataModule1.UniConnection1
     SQL.Strings = (
       'select p.id, t.name as gr_name, p.name as parname, p.cdtp,'
@@ -526,8 +527,8 @@ object Form_prep_doc: TForm_prep_doc
       '     end as val, p.parn1,'
       ' p.parvc1, p.pardt1, p.rowid'
       'from '
-      'scott.repxpar r,'
       'scott.spr_par_ses p,'
+      'scott.repxpar r,'
       'scott.spr_par_ses t, '
       'scott.reports s,'
       '(select c.fk_par, max(c.name) as name'
