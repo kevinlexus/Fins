@@ -7,7 +7,7 @@ uses
   Dialogs, StdCtrls, wwdblook, DB, OracleData, Mask, wwdbedit,
   cxControls, cxContainer, cxEdit,
 
-  cxTextEdit,
+  cxTextEdit,                                 
   cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit,
   cxDBLookupComboBox, ExtCtrls, cxGraphics, cxLookAndFeels,
   cxLookAndFeelPainters, dxSkinsCore, dxSkinBlack, dxSkinBlue,

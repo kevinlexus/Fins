@@ -367,7 +367,7 @@ type
     procedure N139Click(Sender: TObject);
     procedure N140Click(Sender: TObject);
     procedure ToolButton3Click(Sender: TObject);
-    procedure AppException2(Sender: TObject; E: Exception);
+    procedure AppException(Sender: TObject; E: Exception);
     procedure N141Click(Sender: TObject);
     procedure N142Click(Sender: TObject);
   private
@@ -720,7 +720,7 @@ end;
 
 procedure TForm_Main.FormCreate(Sender: TObject);
 begin
-  Application.OnException := AppException2;
+  Application.OnException := AppException;
   Versia := 187;
   //нельзя использовать versia в params - используется updater-ом
   CoolTrayIcon1.IconIndex := 22;
@@ -1954,7 +1954,8 @@ begin
               '\спр_пасп_наслед.fr3', True);
             //frxReport_base.Variables['fio_'] :=
             //  QuotedStr(DataModule1.OraclePackage1.CallStringFunction('scott.UTILS.getS_str_param', ['REP_PREP_VC2']));
-            frxReport_base.Variables['fio_'] := QuotedStr(getS_str_param('REP_PREP_VC2'));
+            frxReport_base.Variables['fio_'] :=
+              QuotedStr(getS_str_param('REP_PREP_VC2'));
             //frxReport_base.Variables['dt1_'] :=
             //  DataModule1.OraclePackage1.CallDateFunction('scott.UTILS.getS_date_param', ['REP_PREP_DT1']);
             frxReport_base.Variables['dt1_'] := getS_date_param('REP_PREP_DT1');
@@ -2410,7 +2411,7 @@ end;
 
 // отобразить Exception на уровне приложения
 
-procedure TForm_Main.AppException2(Sender: TObject; E: Exception);
+procedure TForm_Main.AppException(Sender: TObject; E: Exception);
 var
   F: TextFile;
 begin
@@ -2472,38 +2473,36 @@ begin
     begin
       // защита, чтобы Enter-ом не прожали сообщение
       while
-        Application.MessageBox(PChar('Программа приостановлена по причине:' +
-          E.Message + #13#10
+        Application.MessageBox(PChar(E.Message + #13#10
         + ' повторить данное собщение?'),
         'Внимание!', MB_RETRYCANCEL + MB_ICONQUESTION + MB_TOPMOST) = IDRETRY do
       begin
       end;
 
-      if
-        Application.MessageBox('Продолжить работу?',
-        'Внимание!', MB_YESNO + MB_ICONQUESTION + MB_TOPMOST) <> IDYES then
-      begin
-        Application.Terminate;
-      end;
+      {      if
+              Application.MessageBox('Продолжить работу?',
+              'Внимание!', MB_YESNO + MB_ICONQUESTION + MB_TOPMOST) <> IDYES then
+            begin
+              Application.Terminate;
+            end;}
     end;
   end
   else
   begin
     // защита, чтобы Enter-ом не прожали сообщение
     while
-      Application.MessageBox(PChar('Программа приостановлена по причине:' +
-        E.Message + #13#10
+      Application.MessageBox(PChar(E.Message + #13#10
       + ' повторить данное собщение?'),
       'Внимание!', MB_RETRYCANCEL + MB_ICONQUESTION + MB_TOPMOST) = IDRETRY do
     begin
     end;
 
-    if
-      Application.MessageBox('Продолжить работу?',
-      'Внимание!', MB_YESNO + MB_ICONQUESTION + MB_TOPMOST) <> IDYES then
-    begin
-      Application.Terminate;
-    end;
+    {    if
+          Application.MessageBox('Продолжить работу?',
+          'Внимание!', MB_YESNO + MB_ICONQUESTION + MB_TOPMOST) <> IDYES then
+        begin
+          Application.Terminate;
+        end;}
   end;
 
 end;

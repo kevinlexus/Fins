@@ -74,6 +74,9 @@ type
     N1: TMenuItem;
     cxDBTreeList1SEL: TcxDBTreeListColumn;
     cxDBTreeList1EXIST1: TcxDBTreeListColumn;
+    cxDBTreeList1OBJ_LEVEL: TcxDBTreeListColumn;
+    N2: TMenuItem;
+    N3: TMenuItem;
     procedure saveXML;
     procedure saveMap;
     procedure SetXMLDocNode2;
@@ -123,6 +126,8 @@ type
     procedure sel_tree_obj(trnode: TMemRecViewEh; sel_: Integer);
     procedure desel_all_obj(tmem: TMemTableEh; id_: Integer);
     procedure cxDBTreeList1SELPropertiesEditValueChanged(Sender: TObject);
+    procedure N3Click(Sender: TObject);
+    procedure N2Click(Sender: TObject);
   private
     Doc, Doc1: IXMLDomDocument;
     root, root1: IXMLDOMElement;
@@ -2472,6 +2477,55 @@ end;
 procedure TForm_tree_objects.Timer2Timer(Sender: TObject);
 var
   sqlStr: string;
+
+  function checkVisibleChild(ANode: TcxTreeListNode): Boolean;
+  begin
+    if not ANode.HasChildren then
+      Result := False
+    else
+    begin
+      if ANode.ChildVisibleCount = 0 then
+        Result := False
+      else
+        Result := True;
+    end;
+  end;
+
+  procedure removeNotVisibleNodes;
+  var
+    I: Integer;
+    ANode: TcxTreeListNode;
+    hasChild: Boolean;
+  begin
+    for I := 0 to cxDBTreeList1.AbsoluteCount - 1 do
+    begin
+      ANode := cxDBTreeList1.AbsoluteItems[I];
+
+      if (ANode.Values[cxDBTreeList1OBJ_LEVEL.ItemIndex] <> 3) then
+      begin
+        // погасить ноды все кроме домов
+        hasChild := checkVisibleChild(ANode);
+        if (hasChild = false) then
+        begin
+          ANode.Visible := false;
+        end
+        else
+        begin
+          ANode.Visible := true;
+        end;
+      end
+      else
+      begin
+    {    // погасить ноды домов, которые имеют родителя = 0
+        if ANode. .Parent.Values[cxDBTreeList1ID.ItemIndex] = 0 then
+        begin
+          ANode.Visible := false;
+        end;}
+      end;
+    end;
+    cxDBTreeList1.Root.Expand(true);
+  end;
+
 begin
   if (l_edt1 <> Edit1.Text) or (l_edt2 <> Edit2.Text) or (l_edt3 <> Edit3.Text)
     then
@@ -2483,7 +2537,6 @@ begin
     sqlStr := 'obj_level<=' + inttostr(max_level_);
     if (Edit1.Text = '') and (Edit2.Text = '') and (Edit3.Text = '') then
     begin
-      //DM_Olap.MemTableEh2.TreeList.FullCollapse();
     end
     else
     begin
@@ -2505,11 +2558,14 @@ begin
         sqlStr := sqlStr + 'and (nd1 LIKE ''%' + AnsiUpperCase(Edit3.Text) +
           '%'' or obj_level <> 3)';
       end;
-      //DM_Olap.MemTableEh2.TreeList.FullExpand();
     end;
     DM_Olap.Uni_tree_objects.Filter := sqlStr;
     DM_Olap.Uni_tree_objects.Filtered := true;
-    cxDBTreeList1.Root.Expand(true);
+
+    // вызвать дважды, чтобы погасли все ноды и родительские в т.ч.
+    removeNotVisibleNodes();
+    removeNotVisibleNodes();
+
   end;
 end;
 
@@ -2538,6 +2594,16 @@ begin
     end;
   end;
 
+end;
+
+procedure TForm_tree_objects.N3Click(Sender: TObject);
+begin
+  cxDBTreeList1.Root.Expand(true);
+end;
+
+procedure TForm_tree_objects.N2Click(Sender: TObject);
+begin
+  cxDBTreeList1.Root.Collapse(True);
 end;
 
 end.

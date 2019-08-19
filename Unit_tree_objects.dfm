@@ -1,6 +1,6 @@
 object Form_tree_objects: TForm_tree_objects
-  Left = 197
-  Top = 146
+  Left = 206
+  Top = 148
   Width = 351
   Height = 864
   Align = alLeft
@@ -611,7 +611,6 @@ object Form_tree_objects: TForm_tree_objects
     DataController.ParentField = 'MAIN_ID'
     DataController.KeyField = 'ID'
     Navigator.Buttons.CustomButtons = <>
-    OptionsData.CheckHasChildren = False
     OptionsView.Headers = False
     PopupMenu = PopupMenu1
     RootValue = 0
@@ -674,6 +673,15 @@ object Form_tree_objects: TForm_tree_objects
       Summary.FooterSummaryItems = <>
       Summary.GroupFooterSummaryItems = <>
     end
+    object cxDBTreeList1OBJ_LEVEL: TcxDBTreeListColumn
+      Visible = False
+      DataBinding.FieldName = 'OBJ_LEVEL'
+      Position.ColIndex = 4
+      Position.RowIndex = 0
+      Position.BandIndex = 0
+      Summary.FooterSummaryItems = <>
+      Summary.GroupFooterSummaryItems = <>
+    end
   end
   object Panel2: TPanel
     Left = 96
@@ -701,6 +709,14 @@ object Form_tree_objects: TForm_tree_objects
     object N1: TMenuItem
       Caption = #1057#1085#1103#1090#1100' '#1086#1090#1084#1077#1090#1082#1080
       OnClick = N1Click
+    end
+    object N2: TMenuItem
+      Caption = #1057#1074#1077#1088#1085#1091#1090#1100' '#1074#1089#1077' '#1101#1083#1077#1084#1077#1085#1090#1099
+      OnClick = N2Click
+    end
+    object N3: TMenuItem
+      Caption = #1056#1072#1079#1074#1077#1088#1085#1091#1090#1100' '#1074#1089#1077' '#1101#1083#1077#1084#1077#1085#1090#1099
+      OnClick = N3Click
     end
   end
 end

@@ -1,7 +1,7 @@
 object DM_Olap: TDM_Olap
   OldCreateOrder = False
-  Left = 1047
-  Top = 237
+  Left = 610
+  Top = 217
   Height = 810
   Width = 686
   object DS_spr_params: TDataSource
@@ -501,7 +501,8 @@ object DM_Olap: TDM_Olap
         '               case when t.tp_show = 1 then '#39#1056#1057#1054':'#39'||s.reu||'#39'-'#39'||' +
         's.name else s.reu||'#39'-'#39'||s.name end,'
       '               3,'
-      '               p.name||'#39', '#39'||ltrim(t.nd, '#39'0'#39')'
+      '               p.name||'#39', '#39'||ltrim(t.nd, '#39'0'#39'),'
+      '               2.5, '#39#1056#1057#1054#39
       '               ) as name,'
       '       decode(t.obj_level, 3,'
       #39#1089' '#39'||'
@@ -537,8 +538,8 @@ object DM_Olap: TDM_Olap
       '   and t.kul = p.id(+)'
       '   and t.fk_user=USERENV('#39'sessionid'#39')'
       
-        '   and (t.obj_level<>3 or  t.obj_level=3 and :set_psch=1 and t.p' +
-        'sch<>1 or :set_psch <> 1'
+        '   and (t.obj_level<>3 or t.obj_level=3 and :set_psch=1 and t.ps' +
+        'ch<>1 or :set_psch <> 1'
       '   )'
       ' order by t.obj_level,'
       '          decode(t.obj_level,'

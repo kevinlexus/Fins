@@ -113,8 +113,6 @@ type
     OD_kfgKOEFF: TFloatField;
     OD_kart_prSTATUS_DAT: TDateTimeField;
     OD_kart_prSTATUS_CHNG: TDateTimeField;
-    OD_pschID: TFloatField;
-    OD_pschNAME: TStringField;
     OD_sch_el: TOracleDataSet;
     FloatField1: TFloatField;
     StringField1: TStringField;
@@ -221,11 +219,6 @@ type
     Label47: TLabel;
     OD_states_sch: TOracleDataSet;
     DS_states_sch: TDataSource;
-    OD_states_schSTATUS_NM: TStringField;
-    OD_states_schDT1: TDateTimeField;
-    OD_states_schDT2: TDateTimeField;
-    OD_states_schFK_STATUS: TFloatField;
-    OD_states_schLSK: TStringField;
     OD_chargeKF_KPR: TFloatField;
     Label13: TLabel;
     DBEdit11: TDBEdit;
@@ -283,7 +276,6 @@ type
     Label41: TLabel;
     DBLookupComboboxEh11: TDBLookupComboboxEh;
     TabSheet11: TTabSheet;
-    wwDBGrid3: TwwDBGrid;
     wwDBNavigator2: TwwDBNavigator;
     wwNavButton1: TwwNavButton;
     wwNavButton2: TwwNavButton;
@@ -291,7 +283,6 @@ type
     wwNavButton4: TwwNavButton;
     wwNavButton5: TwwNavButton;
     wwNavButton6: TwwNavButton;
-    wwDBLookupCombo4: TwwDBLookupCombo;
     TabSheet10: TTabSheet;
     Label25: TLabel;
     Label27: TLabel;
@@ -396,6 +387,24 @@ type
     Label53: TLabel;
     DBEdit3: TDBEdit;
     mnu1: TMenuItem;
+    OD_close_reason: TOracleDataSet;
+    DS_close_reason: TDataSource;
+    cxGrid2DBTableView1: TcxGridDBTableView;
+    cxGrid2Level1: TcxGridLevel;
+    cxGrid2: TcxGrid;
+    cxGrid2DBTableView1DT1: TcxGridDBColumn;
+    cxGrid2DBTableView1DT2: TcxGridDBColumn;
+    cxGrid2DBTableView1PSCH_NAME: TcxGridDBColumn;
+    cxGrid2DBTableView1CLOSE_REASON: TcxGridDBColumn;
+    OD_pschID: TFloatField;
+    OD_pschNAME: TStringField;
+    OD_pschTP: TFloatField;
+    OD_states_schID: TFloatField;
+    OD_states_schDT1: TDateTimeField;
+    OD_states_schDT2: TDateTimeField;
+    OD_states_schLSK: TStringField;
+    OD_states_schFK_STATUS: TFloatField;
+    OD_states_schFK_CLOSE_REASON: TFloatField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure DBGridEh1DblClick(Sender: TObject);
     procedure OD_kartAfterPost(DataSet: TDataSet);
@@ -452,7 +461,6 @@ type
     procedure wwDBComboBox1DropDown(Sender: TObject);
     procedure wwDBLookupCombo4CloseUp(Sender: TObject; LookupTable, FillTable:
       TDataSet; modified: Boolean);
-    procedure wwDBLookupCombo4Exit(Sender: TObject);
     procedure OD_states_schAfterInsert(DataSet: TDataSet);
     procedure wwNavButton6Click(Sender: TObject);
     procedure OD_states_schBeforePost(DataSet: TDataSet);
@@ -487,6 +495,13 @@ type
     procedure chk1Click(Sender: TObject);
     procedure btn1Click(Sender: TObject);
     procedure N1Click(Sender: TObject);
+    procedure wwDBLookupCombo1CloseUp(Sender: TObject; LookupTable,
+      FillTable: TDataSet; modified: Boolean);
+    procedure cxGrid2DBTableView1PSCH_NAMEPropertiesPopup(Sender: TObject);
+    procedure cxGrid2DBTableView1PSCH_NAMEPropertiesCloseUp(
+      Sender: TObject);
+    procedure cxGrid2DBTableView1PSCH_NAMEPropertiesInitPopup(
+      Sender: TObject);
     //    procedure change_size;
   private
     tarif_, privs_, subsid_, changes_, itogn_: Double;
@@ -1278,8 +1293,6 @@ begin
   // отключить возможность корректировки счетчиков в новой версии
   if getDoublePar(Form_main.paramList, 'VER_METER1') <> 0 then
     wwCheckBox3.Enabled := False;
-  //  if DataModule1.OraclePackage1.CallIntegerFunction
-  //               ('scott.Utils.get_int_param', ['VER_METER1']) <> 0 then
 
     //Настройки расположения формы
   cxprprtstr1.Active := True;
@@ -1299,93 +1312,42 @@ begin
     DBDateTimeEditEh1.Visible := false;
   end;
 
-  {   try
-      DataModule1.OraclePackage1.CallProcedure
-          ('scott.drx5_админ_доступ_к_базе', [parNone]);
-     except
-       CheckBox1.Visible:=false;
-       CheckBox4.Visible:=false;
-       DBDateTimeEditEh1.Visible:=false;
-     end;}
-
-  //  width := 898;
   updates_ := 0;
 
   if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
     ['drx3_Правка_кода_РЭУ']) = 0) then
     DBLookupComboboxEh9.Enabled := false;
 
-  {   try
-      DataModule1.OraclePackage1.CallProcedure
-          ('scott.drx3_Правка_кода_РЭУ', [parNone]);
-     except
-       DBLookupComboboxEh9.Enabled:=false;
-     end;}
-
   if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
     ['drx4_Правка_кода_Пасп_стола']) = 0) then
     DBLookupComboboxEh5.Enabled := false;
 
-  {   try
-      DataModule1.OraclePackage1.CallProcedure
-          ('scott.drx4_Правка_кода_Пасп_стола', [parNone]);
-     except
-       DBLookupComboboxEh5.Enabled:=false;
-     end;}
-
   DecimalSeparator := '.';
-  if Form_main.org_var_ = 0 then
-  begin
-    //организации ЖКХ
-    OD_tarif.Active := False;
-    //    PageControl3.ActivePageIndex := 0;
-    //    TabSheet9.TabVisible := False;
+  //организации ЖКХ
+  OD_tarif.Active := False;
+  //    PageControl3.ActivePageIndex := 0;
+  //    TabSheet9.TabVisible := False;
 
-    PageControl2.ActivePageIndex := 0;
+  PageControl1.ActivePageIndex := 0;
+  PageControl2.ActivePageIndex := 0;
 
-    TabSheet7.TabVisible := False;
-    TabSheet6.TabVisible := True;
-    wwDBComboDlg1.ShowButton := False;
-    DBLookupComboboxEh9.Enabled := false;
-    Panel2.Visible := true;
-    Form_main.ToolButton20.Visible := true;
-    //    Height := PageControl3.Height + Panel2.Height + Panel4.Height + PageControl2.Height + 200;
-    OD_spr_tarif.Active := False;
-    Mem_spr_tarif.Active := False;
-    OD_vvod.Active := true;
-    OD_status.Active := True;
-  end
-  else
-  begin
-    //Энерг +
-    OD_tarif.Active := True;
-    //    PageControl3.ActivePageIndex := 0;
-    //    TabSheet9.TabVisible := True;
+  TabSheet7.TabVisible := False;
+  TabSheet6.TabVisible := True;
+  wwDBComboDlg1.ShowButton := False;
+  DBLookupComboboxEh9.Enabled := false;
+  Panel2.Visible := true;
+  Form_main.ToolButton20.Visible := true;
+  //    Height := PageControl3.Height + Panel2.Height + Panel4.Height + PageControl2.Height + 200;
+  OD_spr_tarif.Active := False;
+  Mem_spr_tarif.Active := False;
+  OD_vvod.Active := true;
+  OD_status.Active := True;
 
-    PageControl2.ActivePageIndex := 0;
-    TabSheet5.Caption := 'Адрес';
-
-    TabSheet7.TabVisible := True;
-    TabSheet6.TabVisible := False;
-    wwDBComboDlg1.ShowButton := true;
-    OD_charge.FieldByName('koeff').readonly := true;
-
-    Form_main.ToolButton20.Visible := false;
-    Label2.Caption := 'Договор с';
-    Panel2.Visible := false;
-    //    Height := PageControl3.Height + Panel4.Height + PageControl2.Height + 40;
-
-    OD_spr_tarif.Active := False;
-    OD_spr_tarif.SetVariable('usl', '056');
-    OD_spr_tarif.Active := true;
-
-    Mem_spr_tarif.Active := False;
-    Mem_spr_tarif.Active := true;
-    OD_status.Active := False;
-  end;
-
-  //история состояний счетчиков
+  // история состояний счета
   OD_states_sch.Active := true;
+
+  // причины закрытия счета
+  OD_close_reason.Active := true;
 
   Form_kart.Top := 5;
   //  Form_kart.Left := trunc((Form_main.Width - Form_kart.Width) / 2);
@@ -1405,7 +1367,9 @@ begin
   OD_charge.Active := true;
   OD_s_reu_trest.Active := true;
   OD_spul.Active := true;
+
   OD_psch.Active := true;
+  
   OD_psch2.Active := true;
   OD_kfg.Active := true;
   OD_sch_el.Active := true;
@@ -1891,20 +1855,13 @@ begin
   end;
 end;
 
-procedure TForm_kart.wwDBLookupCombo4Exit(Sender: TObject);
-begin
-  if OD_psch.SearchRecord('NAME', wwDBLookupCombo4.Text, [srFromBeginning]) <>
-    true then
-  begin
-    msg2('Данный статус не найден!', 'Ошибка', MB_OK + MB_ICONSTOP);
-  end;
-
-end;
-
 procedure TForm_kart.OD_states_schAfterInsert(DataSet: TDataSet);
+var R:TRect; 
+      HW:THintWindow;
 begin
   OD_states_sch.FieldByName('LSK').AsString :=
     Form_list_kart.OD_list_kart.FieldByName('LSK').AsString;
+
 end;
 
 procedure TForm_kart.wwNavButton6Click(Sender: TObject);
@@ -1922,6 +1879,25 @@ begin
   begin
     msg2('Поле статуса должно быть заполнено!', 'Внимание!', MB_OK +
       MB_ICONSTOP);
+    abort;
+  end;
+
+  if ((OD_states_sch.FieldByName('FK_STATUS').AsInteger=8) or
+     (OD_states_sch.FieldByName('FK_STATUS').AsInteger=9))
+     and (OD_states_sch.FieldByName('FK_CLOSE_REASON').AsInteger=0) then
+  begin
+    Application.MessageBox('При закрытии лицевого счета должна быть заполнена '+
+     'причина закрытия в колонке "Примечание"!',
+     'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
+    abort;
+  end
+  else if (OD_states_sch.FieldByName('FK_STATUS').AsInteger<>8) and
+     (OD_states_sch.FieldByName('FK_STATUS').AsInteger<>9)
+     and (OD_states_sch.FieldByName('FK_CLOSE_REASON').AsInteger<>0) then
+  begin
+    Application.MessageBox('В записи открытого статуса не должно быть '+
+     'причины закрытия в колонке "Примечание"!',
+     'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
     abort;
   end;
 
@@ -2271,6 +2247,79 @@ begin
   begin
     OD_charge.Refresh;
   end;
+end;
+
+procedure TForm_kart.wwDBLookupCombo1CloseUp(Sender: TObject; LookupTable,
+  FillTable: TDataSet; modified: Boolean);
+var
+  access_: Integer;
+begin
+  access_ := 1;
+  try
+    DataModule1.OraclePackage1.CallProcedure('scott.drx_Установка_признака_сч',
+      [parNone]);
+  except
+    access_ := 0;
+  end;
+
+  OD_states_sch.FieldByName('FK_CLOSE_REASON').AsInteger :=
+    OD_close_reason.FieldByName('ID').AsInteger;
+
+end;
+
+procedure TForm_kart.cxGrid2DBTableView1PSCH_NAMEPropertiesPopup(
+  Sender: TObject);
+//var
+//  s: TcxLookupComboBoxProperties;
+begin
+  // перевести представление к упрощёному списку статусов
+//  s := Sender as TcxDBLookupComboBox;
+  //s:= cxGrid2DBTableView1PSCH_NAME.Properties as TcxLookupComboBoxProperties;
+  //TcxLookupComboBox(Sender).Properties.
+  //TcxLookupComboBox(Sender).Properties.Grid.DataController.Filter.Root.AddItem(LkupItem, foEqual, FltValue, '');
+
+  //s.DataController.Filter.FilterText:='issd=0';
+  //s.DataController.Filter.Active:=True;
+  //s:=TcxDBLookupComboBox(cxGrid2DBTableView1PSCH_NAME.Properties.);
+  //s.Properties.DataController.Filter.FilterText:='id=0';
+  //s.Properties.DataController.Filter.Active:=true
+{  OD_psch.SetVariable('tp',0);
+  OD_psch.Active:=false;
+  OD_psch.Active:=true;}
+
+end;
+
+procedure TForm_kart.cxGrid2DBTableView1PSCH_NAMEPropertiesCloseUp(
+  Sender: TObject);
+begin
+  TcxLookupComboBox(Sender).Properties.Grid.DataController.
+    Filter.Root.Clear();
+  // вернуть представление к расширенному списку статусов
+{  OD_psch.SetVariable('tp',1);
+  OD_psch.Active:=false;
+  OD_psch.Active:=true;}
+end;
+
+procedure TForm_kart.cxGrid2DBTableView1PSCH_NAMEPropertiesInitPopup(
+  Sender: TObject);
+var
+  LkupItem: TObject;
+begin
+  // ограничить выбор LookUp только 0,8,9 статусами
+  LkupItem := TcxLookupComboBox(Sender).Properties.
+    Grid.DataController.GetItemByFieldName('ID');
+  TcxLookupComboBox(Sender).Properties.Grid.DataController.
+    Filter.Active := true;
+  TcxLookupComboBox(Sender).Properties.Grid.DataController.
+    Filter.Root.Clear();
+  TcxLookupComboBox(Sender).Properties.Grid.DataController.
+    Filter.Root.BoolOperatorKind := fboOr;
+  TcxLookupComboBox(Sender).Properties.Grid.DataController.
+    Filter.Root.AddItem(LkupItem, foEqual, 0, '');
+  TcxLookupComboBox(Sender).Properties.Grid.DataController.
+    Filter.Root.AddItem(LkupItem, foEqual, 8, '');
+  TcxLookupComboBox(Sender).Properties.Grid.DataController.
+    Filter.Root.AddItem(LkupItem, foEqual, 9, '');
 end;
 
 end.

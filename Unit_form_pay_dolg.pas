@@ -201,6 +201,7 @@ begin
   //очистка предложенных к оплате сумм долгов и начисления
   with Form_get_pay_nal.OD_chargepay do
   begin
+    DisableControls;
     First;
     while not Eof do
     begin
@@ -212,7 +213,9 @@ begin
     end;
     if State = dsEdit then
       Post;
+    EnableControls;
   end;
+
 end;
 
 procedure TForm_get_pay_dolg.wwDBEdit1KeyPress(Sender: TObject;
@@ -222,10 +225,11 @@ begin
   begin
     if wwDBEdit1.Text <> '' then
     begin
-      Form_get_pay_nal.distPay(StrToFloat(wwDBEdit1.Text), True, True, True, False);
+      Form_get_pay_nal.distPay(StrToFloat(wwDBEdit1.Text), True, True, True,
+        False);
     end;
-//    Button1.SetFocus;
-Windows.SetFocus(Button1.Handle);
+    //    Button1.SetFocus;
+    Windows.SetFocus(Button1.Handle);
   end;
 end;
 
@@ -244,17 +248,17 @@ begin
   begin
     Form_get_pay_nal.reLoadDeb;
     Form_get_pay_nal.OD_chargepay.First;
-{    with Form_get_pay_nal.OD_chargepay do
-    begin
-      //заново залить задолжность
-      DataModule1.OraclePackage1.CallProcedure(
-        'scott.C_GET_PAY.init_c_kwtp_temp_dolg',
-        [Form_get_pay_nal.wwDBEdit3.Text]);
-      Active := false;
-      Active := true;
-      //заново залить задолжность
-      First;
-    end;}
+    {    with Form_get_pay_nal.OD_chargepay do
+        begin
+          //заново залить задолжность
+          DataModule1.OraclePackage1.CallProcedure(
+            'scott.C_GET_PAY.init_c_kwtp_temp_dolg',
+            [Form_get_pay_nal.wwDBEdit3.Text]);
+          Active := false;
+          Active := true;
+          //заново залить задолжность
+          First;
+        end;}
   end;
 
 end;

@@ -1,6 +1,6 @@
 object Form_kart: TForm_kart
-  Left = 603
-  Top = 330
+  Left = 319
+  Top = 202
   Width = 903
   Height = 675
   BorderIcons = [biSystemMenu, biMinimize]
@@ -427,7 +427,7 @@ object Form_kart: TForm_kart
       Top = 1
       Width = 337
       Height = 222
-      ActivePage = TabSheet3
+      ActivePage = TabSheet11
       Align = alLeft
       TabOrder = 1
       object TabSheet2: TTabSheet
@@ -1184,36 +1184,6 @@ object Form_kart: TForm_kart
       object TabSheet11: TTabSheet
         Caption = #1048#1089#1090#1086#1088#1080#1103' '#1089#1095'.'
         ImageIndex = 5
-        object wwDBGrid3: TwwDBGrid
-          Left = 0
-          Top = 0
-          Width = 329
-          Height = 161
-          ControlType.Strings = (
-            'STATUS_NM;CustomEdit;wwDBLookupCombo4;F'
-            'CNT;ImageIndex;Shrink To Fit')
-          Selected.Strings = (
-            'STATUS_NM'#9'18'#9#1057#1090#1072#1090#1091#1089#9#9
-            'DT1'#9'11'#9#1044#1072#1090#1072' '#1085#1072#1095'.'#9#9
-            'DT2'#9'12'#9#1044#1072#1090#1072' '#1082#1086#1085'.'#9#9)
-          IniAttributes.Delimiter = ';;'
-          TitleColor = clBtnFace
-          FixedCols = 0
-          ShowHorzScrollBar = True
-          Align = alCustom
-          DataSource = DS_states_sch
-          TabOrder = 0
-          TitleAlignment = taLeftJustify
-          TitleFont.Charset = DEFAULT_CHARSET
-          TitleFont.Color = clWindowText
-          TitleFont.Height = -11
-          TitleFont.Name = 'MS Sans Serif'
-          TitleFont.Style = []
-          TitleLines = 1
-          TitleButtons = False
-          UseTFields = False
-          ImageList = Form_Main.ImageList1
-        end
         object wwDBNavigator2: TwwDBNavigator
           Left = 3
           Top = 164
@@ -1327,23 +1297,68 @@ object Form_kart: TForm_kart
             Style = nbsDelete
           end
         end
-        object wwDBLookupCombo4: TwwDBLookupCombo
-          Left = 120
-          Top = 56
-          Width = 121
-          Height = 21
-          DropDownAlignment = taLeftJustify
-          Selected.Strings = (
-            'NAME'#9'15'#9'NAME'#9#9)
-          LookupTable = OD_psch
-          LookupField = 'NAME'
+        object cxGrid2: TcxGrid
+          Left = 0
+          Top = 0
+          Width = 329
+          Height = 194
+          Align = alClient
           TabOrder = 1
-          AutoDropDown = False
-          ShowButton = True
-          PreciseEditRegion = False
-          AllowClearKey = False
-          OnCloseUp = wwDBLookupCombo4CloseUp
-          OnExit = wwDBLookupCombo4Exit
+          object cxGrid2DBTableView1: TcxGridDBTableView
+            Navigator.Buttons.CustomButtons = <>
+            Navigator.Visible = True
+            DataController.DataSource = DS_states_sch
+            DataController.KeyFieldNames = 'ID'
+            DataController.Summary.DefaultGroupSummaryItems = <>
+            DataController.Summary.FooterSummaryItems = <>
+            DataController.Summary.SummaryGroups = <>
+            OptionsView.ColumnAutoWidth = True
+            OptionsView.GroupByBox = False
+            object cxGrid2DBTableView1PSCH_NAME: TcxGridDBColumn
+              Caption = #1057#1090#1072#1090#1091#1089
+              DataBinding.FieldName = 'FK_STATUS'
+              PropertiesClassName = 'TcxLookupComboBoxProperties'
+              Properties.KeyFieldNames = 'ID'
+              Properties.ListColumns = <
+                item
+                  FieldName = 'NAME'
+                end>
+              Properties.ListOptions.ShowHeader = False
+              Properties.ListSource = DS_psch
+              Properties.OnCloseUp = cxGrid2DBTableView1PSCH_NAMEPropertiesCloseUp
+              Properties.OnInitPopup = cxGrid2DBTableView1PSCH_NAMEPropertiesInitPopup
+              Properties.OnPopup = cxGrid2DBTableView1PSCH_NAMEPropertiesPopup
+              Width = 76
+            end
+            object cxGrid2DBTableView1CLOSE_REASON: TcxGridDBColumn
+              Caption = #1055#1088#1080#1084#1077#1095#1072#1085#1080#1077
+              DataBinding.FieldName = 'FK_CLOSE_REASON'
+              PropertiesClassName = 'TcxLookupComboBoxProperties'
+              Properties.ClearKey = 46
+              Properties.DropDownWidth = 500
+              Properties.KeyFieldNames = 'ID'
+              Properties.ListColumns = <
+                item
+                  FieldName = 'NAME'
+                end>
+              Properties.ListOptions.ShowHeader = False
+              Properties.ListSource = DS_close_reason
+              Width = 103
+            end
+            object cxGrid2DBTableView1DT1: TcxGridDBColumn
+              Caption = #1053#1072#1095#1072#1083#1086
+              DataBinding.FieldName = 'DT1'
+              Width = 67
+            end
+            object cxGrid2DBTableView1DT2: TcxGridDBColumn
+              Caption = #1054#1082#1086#1085#1095#1072#1085#1080#1077
+              DataBinding.FieldName = 'DT2'
+              Width = 81
+            end
+          end
+          object cxGrid2Level1: TcxGridLevel
+            GridView = cxGrid2DBTableView1
+          end
         end
       end
       object TabSheet10: TTabSheet
@@ -1571,7 +1586,7 @@ object Form_kart: TForm_kart
     Top = 0
     Width = 887
     Height = 81
-    ActivePage = TabSheet12
+    ActivePage = TabSheet5
     Align = alTop
     TabOrder = 0
     object TabSheet5: TTabSheet
@@ -3487,7 +3502,23 @@ object Form_kart: TForm_kart
   end
   object OD_psch: TOracleDataSet
     SQL.Strings = (
-      'select * from ('
+      'select t.* from ('
+      'select 0 as id, '#39#1054#1090#1082#1088#1099#1090#39'  as name, 1 as tp from dual'
+      'union all'
+      'select 1 as id, '#39#1054#1090#1082#1088#1099#1090#39'  as name, 0 as tp from dual'
+      'union all'
+      'select 2 as id, '#39#1054#1090#1082#1088#1099#1090#39' as name, 0 as tp from dual'
+      'union all'
+      'select 3 as id, '#39#1054#1090#1082#1088#1099#1090#39'  as name, 0 as tp from dual'
+      'union all'
+      'select 8 as id, '#39#1055#1088#1086#1096#1083'.'#39'  as name, 1 as tp from dual'
+      'union all'
+      'select 9 as id, '#39#1047#1072#1082#1088#1099#1090#39'  as name, 1 as tp from dual'
+      ') t'
+      'order by t.id'
+      ''
+      '/*'
+      'select t.* from ('
       'select 0 as id, '#39#1053#1086#1088#1084#1072#1090#1080#1074#39'  as name, 0 as tp from dual'
       'union all'
       'select 1 as id, '#39#1057#1095'. '#1061'.'#1042'. '#1080' '#1043'.'#1042'.'#39'  as name, 0 as tp from dual'
@@ -3509,56 +3540,30 @@ object Form_kart: TForm_kart
       'where (p.org_var=1 and t.id in (0,9) --'#1076#1083#1103' '#1101'+'
       'or p.org_var=0)'
       'and s.cd='#39'VER_METER1'#39' '
-      'and (s.parn1=0 and t.tp=0 or s.parn1 <> 0 and t.tp=1)')
+      'and (s.parn1=0 and t.tp=0 or s.parn1 <> 0 and t.tp=1)'
+      '*/')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000034000000020000004944010000000000040000004E414D4501000000
-      000002000000545001000000000005000000504152414D010000000000070000
-      004D455353414745010000000000030000005645520100000000000600000050
-      4552494F440100000000000C0000004147454E545F555054494D450100000000
-      00090000004D4553535F48494E5401000000000009000000504552494F445F50
-      4C01000000000007000000535542535F4F420100000000000400000049445F31
-      0100000000000D000000504552494F445F444542495453010000000000080000
-      0044545F4F544F50310100000000000800000044545F4F544F50320100000000
-      00040000005041525401000000000007000000434E545F534348010000000000
-      070000004B414E5F5343480100000000000600000053565F534F430100000000
-      000B00000053544154455F424153455F010000000000070000004B414E5F5641
-      52010000000000070000004F52475F5641520100000000000600000053504C41
-      53480100000000000B00000047454E5F4558505F4C5354010000000000080000
-      004B414E5F56415232010000000000080000004B4152545F4544310100000000
-      00090000004155544F5F5349474E0100000000000B00000046494E445F535452
-      4545540100000000000B00000050454E59415F4D4F4E54480100000000000700
-      0000434F52525F4C470100000000000D00000052454348415247455F42494C4C
-      0100000000000C00000053484F575F4558505F5041590100000000000B000000
-      444953545249425F5041590100000000000800000042494C4C5F50454E010000
-      0000000B000000504552494F445F4241434B0100000000000D00000050455249
-      4F445F464F525752440100000000000900000050454E59415F56415201000000
-      00000C00000049535F46554C4C4D4F4E54480100000000000800000057414954
-      5F5645520100000000000B00000049535F4445545F4348524701000000000004
-      00000049445F3201000000000002000000434401000000000006000000504152
-      564331010000000000050000005041524E31010000000000060000004E414D45
-      5F3101000000000004000000434454500100000000000A000000464B5F504152
-      4344545001000000000006000000504152445431010000000000090000005041
-      52454E545F49440100000000000800000053514C5F5445585401000000000003
-      0000004E5050010000000000040000004D454D4F010000000000}
+      0400000003000000020000004944010000000000040000004E414D4501000000
+      0000020000005450010000000000}
     Session = DataModule1.OracleSession1
-    Left = 568
-    Top = 464
-    object OD_pschNAME: TStringField
-      DisplayWidth = 15
-      FieldName = 'NAME'
-      Size = 15
-    end
+    Left = 672
+    Top = 344
     object OD_pschID: TFloatField
-      DisplayWidth = 10
       FieldName = 'ID'
-      Visible = False
+    end
+    object OD_pschNAME: TStringField
+      FieldName = 'NAME'
+      Size = 6
+    end
+    object OD_pschTP: TFloatField
+      FieldName = 'TP'
     end
   end
   object DS_psch: TDataSource
     DataSet = OD_psch
-    Left = 600
-    Top = 464
+    Left = 704
+    Top = 344
   end
   object OD_usl: TOracleDataSet
     SQL.Strings = (
@@ -3907,6 +3912,14 @@ object Form_kart: TForm_kart
   end
   object OD_states_sch: TOracleDataSet
     SQL.Strings = (
+      'select t.id,'
+      't.dt1, t.dt2, '
+      't.lsk, t.fk_status, t.fk_close_reason, t.rowid '
+      'from scott.c_states_sch t'
+      'where t.lsk=:lsk'
+      'order by nvl(t.dt1, to_date('#39'01011900'#39','#39'DDMMYYYY'#39'))'
+      ''
+      '/*'
       'select '
       'decode(s.parn1, 0,'
       'decode(t.fk_status, 8,'#39#1055#1088#1086#1096#1083'.'#39', 9, '#39#1047#1072#1082#1088#1099#1090#39', 0, '#39#1053#1086#1088#1084#1072#1090#1080#1074#39', 1, '
@@ -3914,21 +3927,26 @@ object Form_kart: TForm_kart
       'decode(t.fk_status, 8,'#39#1055#1088#1086#1096#1083'.'#39', 9, '#39#1047#1072#1082#1088#1099#1090#39', '#39#1054#1090#1082#1088#1099#1090#39')'
       ')'
       ' as status_nm, -- '#1054#1089#1090#1072#1074#1080#1083' '#1090#1086#1083#1100#1082#1086' '#1074#1080#1076#1080#1084#1099#1081' '#1089#1090#1072#1090#1091#1089' "'#1054#1090#1082#1088#1099#1090'"'
+      'r.name as close_reason_nm,'
       't.dt1, t.dt2, '
-      't.lsk, t.fk_status, t.rowid '
-      'from scott.c_states_sch t, scott.spr_params s '
+      't.lsk, t.fk_status, t.fk_close_reason, t.rowid '
+      
+        'from scott.c_states_sch t left join  scott.spr_params s  on s.cd' +
+        '='#39'VER_METER1'#39' '
+      ' left join scott.v_close_reason r on t.fk_close_reason=r.id'
       'where t.lsk=:lsk'
-      'and s.cd='#39'VER_METER1'#39' '
-      'order by nvl(t.dt1, to_date('#39'01011900'#39','#39'DDMMYYYY'#39'))')
+      'order by nvl(t.dt1, to_date('#39'01011900'#39','#39'DDMMYYYY'#39'))'
+      '*/')
     Optimize = False
     Variables.Data = {
       0300000001000000040000003A4C534B05000000090000002020202020202020
       0000000000}
     OracleDictionary.UseMessageTable = True
     QBEDefinition.QBEFieldDefs = {
-      0400000005000000090000005354415455535F4E4D0100000000000300000044
-      54310100000000000300000044543201000000000009000000464B5F53544154
-      5553010000000000030000004C534B010000000000}
+      0400000006000000030000004454310100000000000300000044543201000000
+      000009000000464B5F535441545553010000000000030000004C534B01000000
+      00000F000000464B5F434C4F53455F524541534F4E0100000000000200000049
+      44010000000000}
     Master = Form_list_kart.OD_list_kart
     MasterFields = 'LSK'
     DetailFields = 'LSK'
@@ -3936,43 +3954,37 @@ object Form_kart: TForm_kart
     CommitOnPost = False
     CachedUpdates = True
     Session = DataModule1.OracleSession1
+    Active = True
     AfterInsert = OD_states_schAfterInsert
     BeforePost = OD_states_schBeforePost
-    Left = 68
-    Top = 472
-    object OD_states_schSTATUS_NM: TStringField
-      DisplayLabel = #1057#1090#1072#1090#1091#1089
-      DisplayWidth = 10
-      FieldKind = fkInternalCalc
-      FieldName = 'STATUS_NM'
-      Size = 15
+    Left = 748
+    Top = 392
+    object OD_states_schID: TFloatField
+      FieldName = 'ID'
     end
     object OD_states_schDT1: TDateTimeField
-      DisplayLabel = #1044#1072#1090#1072' '#1085#1072#1095'.'
-      DisplayWidth = 12
       FieldName = 'DT1'
     end
     object OD_states_schDT2: TDateTimeField
-      DisplayLabel = #1044#1072#1090#1072' '#1082#1086#1085'.'
-      DisplayWidth = 13
       FieldName = 'DT2'
-    end
-    object OD_states_schFK_STATUS: TFloatField
-      DisplayWidth = 10
-      FieldName = 'FK_STATUS'
-      Visible = False
     end
     object OD_states_schLSK: TStringField
       FieldName = 'LSK'
       Required = True
-      Visible = False
       Size = 8
+    end
+    object OD_states_schFK_STATUS: TFloatField
+      FieldName = 'FK_STATUS'
+      Required = True
+    end
+    object OD_states_schFK_CLOSE_REASON: TFloatField
+      FieldName = 'FK_CLOSE_REASON'
     end
   end
   object DS_states_sch: TDataSource
     DataSet = OD_states_sch
-    Left = 100
-    Top = 472
+    Left = 780
+    Top = 392
   end
   object PopupMenu2: TPopupMenu
     Left = 478
@@ -4046,8 +4058,8 @@ object Form_kart: TForm_kart
       end>
     StorageName = 'cxPropertiesStore1'
     StorageType = stRegistry
-    Left = 16
-    Top = 80
+    Left = 88
+    Top = 56
   end
   object DS_psch2: TDataSource
     DataSet = OD_psch2
@@ -4150,5 +4162,22 @@ object Form_kart: TForm_kart
     DataSet = OD_eolink
     Left = 192
     Top = 368
+  end
+  object OD_close_reason: TOracleDataSet
+    SQL.Strings = (
+      'select * from SCOTT.V_CLOSE_REASON t'
+      'order by t.id')
+    Optimize = False
+    QBEDefinition.QBEFieldDefs = {
+      0400000002000000020000004944010000000000040000004E414D4501000000
+      0000}
+    Session = DataModule1.OracleSession1
+    Left = 672
+    Top = 392
+  end
+  object DS_close_reason: TDataSource
+    DataSet = OD_close_reason
+    Left = 704
+    Top = 392
   end
 end
