@@ -4,16 +4,9 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Mask, wwdbedit, Oracle, OracleData, DB, 
+  Dialogs, StdCtrls, Mask, wwdbedit, Oracle, OracleData, DB,
   cxControls, cxContainer, cxEdit,
-  
-  
-  
-  
-  
-  
-  
-  
+
   cxTextEdit,
   cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit,
   cxDBLookupComboBox, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters,
@@ -30,7 +23,7 @@ uses
   dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
   dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
-  dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue;
+  dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue, ExtCtrls;
 
 type
   TForm_new_lsk = class(TForm)
@@ -48,7 +41,9 @@ type
     cxLookupComboBox1: TcxLookupComboBox;
     Label1: TLabel;
     Label2: TLabel;
+    RadioGroup1: TRadioGroup;
     CheckBox1: TCheckBox;
+    CheckBox2: TCheckBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -63,7 +58,7 @@ type
 
 var
   Form_new_lsk: TForm_new_lsk;
-  str_: String;
+  str_: string;
 implementation
 
 uses DM_module1, Unit_list_kart;
@@ -73,16 +68,16 @@ uses DM_module1, Unit_list_kart;
 procedure TForm_new_lsk.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  Action:=caFree;
+  Action := caFree;
 end;
 
 procedure TForm_new_lsk.FormCreate(Sender: TObject);
 begin
-  OD_lsk_tp.Active:=true;
-  OD_reu.Active:=true;
-  cbb2.EditValue:='LSK_TP_MAIN';
-  str_:=Form_list_kart.OD_list_kart.FieldByName('lsk').asString;
-  wwDBEdit3.Text:=DataModule1.OraclePackage1.CallStringFunction(
+  OD_lsk_tp.Active := true;
+  OD_reu.Active := true;
+  cbb2.EditValue := 'LSK_TP_MAIN';
+  str_ := Form_list_kart.OD_list_kart.FieldByName('lsk').asString;
+  wwDBEdit3.Text := DataModule1.OraclePackage1.CallStringFunction(
     'scott.UTILS.get_new_lsk', [str_, null]);
   //cxLookupComboBox1.Enabled:=False;
 end;
@@ -94,85 +89,90 @@ end;
 
 procedure TForm_new_lsk.Button2Click(Sender: TObject);
 var
-cnt_: Integer;
+  lGetUslFromSrc, lDelUslFromSrc, cnt_: Integer;
 begin
   if DataModule1.OraclePackage1.CallIntegerFunction(
     'scott.UTILS.allow_cr_new_lsk',
     [str_]) = 0 then
-    begin
-     Application.MessageBox('Лицевой счет запрещено создавать!',
-      'Внимание!', MB_ICONSTOP+MB_OK+MB_APPLMODAL);
-    end
+  begin
+    Application.MessageBox('Лицевой счет запрещено создавать!',
+      'Внимание!', MB_ICONSTOP + MB_OK + MB_APPLMODAL);
+  end
   else
-    begin
-    if not CheckBox1.Checked then
-    begin
-      // присоединить к существующему помещению РСО или капремонт
-      cnt_:=DataModule1.OraclePackage1.CallIntegerFunction(
-        'scott.P_HOUSES.kart_lsk_special_add',
-        [Form_list_kart.OD_list_kart.FieldByName('lsk').asString,
-         cbb2.EditValue, wwDBEdit3.Text, 0, 0, cxLookupComboBox1.EditValue
-         ]);
-    end
+  begin
+    if CheckBox1.Checked = True then
+      lGetUslFromSrc := 1
     else
-    begin
-      // создать новое помещение
-      cnt_:=DataModule1.OraclePackage1.CallIntegerFunction(
-        'scott.P_HOUSES.create_lsk',
-        [Form_list_kart.OD_list_kart.FieldByName('lsk').asString,
-         wwDBEdit3.Text, null, null, cbb2.EditValue, cxLookupComboBox1.EditValue]);
-    end;
+      lGetUslFromSrc := 0;
+    if CheckBox2.Checked = True then
+      lDelUslFromSrc := 1
+    else
+      lDelUslFromSrc := 0;
 
-    if cnt_ =0 then
+    cnt_ := DataModule1.OraclePackage1.CallIntegerFunction(
+      'scott.P_HOUSES.kart_lsk_add',
+      [Form_list_kart.OD_list_kart.FieldByName('lsk').asString,
+      cbb2.EditValue, wwDBEdit3.Text,
+        lGetUslFromSrc,
+        lDelUslFromSrc,
+        RadioGroup1.ItemIndex,
+        cxLookupComboBox1.EditValue
+        ]);
+    if cnt_ = 0 then
     begin
       DataModule1.OraclePackage1.Session.Commit;
       Form_list_kart.OD_list_kart.Refresh;
-      Form_list_kart.OD_list_kart.SearchRecord('lsk', wwDBEdit3.Text, [srFromBeginning]);
-      Form_new_lsk.Visible:=false;
-       Application.MessageBox('Лицевой счет создан!',
-        'Внимание!', MB_ICONINFORMATION+MB_OK+MB_APPLMODAL);
+      Form_list_kart.OD_list_kart.SearchRecord('lsk', wwDBEdit3.Text,
+        [srFromBeginning]);
+      Form_new_lsk.Visible := false;
+      Application.MessageBox('Лицевой счет создан!',
+        'Внимание!', MB_ICONINFORMATION + MB_OK + MB_APPLMODAL);
       Close;
     end
-    else if cnt_ =1 then
+    else if cnt_ = 1 then
     begin
-       Application.MessageBox('Формат лицевого счета не соответствует требованиям!',
-        'Внимание!', MB_ICONINFORMATION+MB_OK+MB_APPLMODAL);
+      Application.MessageBox('Формат лицевого счета не соответствует требованиям!',
+        'Внимание!', MB_ICONINFORMATION + MB_OK + MB_APPLMODAL);
     end
-    else if cnt_ =2 then
+    else if cnt_ = 2 then
     begin
-       Application.MessageBox('Невозможно добавить услуги по лиц.счету!',
-        'Внимание!', MB_ICONINFORMATION+MB_OK+MB_APPLMODAL);
+      Application.MessageBox('Невозможно добавить услуги по лиц.счету!',
+        'Внимание!', MB_ICONINFORMATION + MB_OK + MB_APPLMODAL);
     end
-    else if cnt_ =3 then
+    else if cnt_ = 3 then
     begin
-       Application.MessageBox('Добавление произошло неудачно, лиц.счет не добавлен!',
-        'Внимание!', MB_ICONINFORMATION+MB_OK+MB_APPLMODAL);
+      Application.MessageBox('Добавление произошло неудачно, лиц.счет не добавлен!',
+        'Внимание!', MB_ICONINFORMATION + MB_OK + MB_APPLMODAL);
     end
-    else if cnt_ =4 then
+    else if cnt_ = 4 then
     begin
-       Application.MessageBox('По данному лиц.счету уже существует дополнительный!',
-        'Внимание!', MB_ICONINFORMATION+MB_OK+MB_APPLMODAL);
+      Application.MessageBox('По данному лиц.счету уже существует дополнительный!',
+        'Внимание!', MB_ICONINFORMATION + MB_OK + MB_APPLMODAL);
     end
     else
-     Application.MessageBox('Ошибка создания лицевого счета!',
-      'Внимание!', MB_ICONSTOP+MB_OK+MB_APPLMODAL);
-
+      Application.MessageBox('Ошибка создания лицевого счета!',
+        'Внимание!', MB_ICONSTOP + MB_OK + MB_APPLMODAL);
   end;
 end;
 
 procedure TForm_new_lsk.Button3Click(Sender: TObject);
 begin
-  wwDBEdit3.Text:=DataModule1.OraclePackage1.CallStringFunction(
+  wwDBEdit3.Text := DataModule1.OraclePackage1.CallStringFunction(
     'scott.UTILS.get_new_lsk', [str_, wwDBEdit3.Text]);
 end;
 
 procedure TForm_new_lsk.cbb2PropertiesCloseUp(Sender: TObject);
 begin
-{  if (cbb2.EditValue ='LSK_TP_RSO') or (cbb2.EditValue ='LSK_TP_ADDIT') then
-     cxLookupComboBox1.Enabled:=True
+  if (cbb2.EditValue = 'LSK_TP_RSO') or (cbb2.EditValue = 'LSK_TP_ADDIT') then
+  begin
+    CheckBox2.Enabled := True
+  end
   else
-     cxLookupComboBox1.Enabled:=False;
- }
+  begin
+    CheckBox2.Checked := False;
+    CheckBox2.Enabled := False;
+  end;
 end;
 
 end.
+

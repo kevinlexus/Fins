@@ -405,12 +405,13 @@ type
     OD_states_schLSK: TStringField;
     OD_states_schFK_STATUS: TFloatField;
     OD_states_schFK_CLOSE_REASON: TFloatField;
+    Button2: TButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure DBGridEh1DblClick(Sender: TObject);
     procedure OD_kartAfterPost(DataSet: TDataSet);
     procedure OD_kart_prSTATUSValidate(Sender: TField);
     procedure Button2Click(Sender: TObject);
-    procedure save_changes(ask_: Integer);
+    procedure saveOrRollbackKart(ask_: Integer; isCommit: Boolean);
     procedure wwDBEdit2Exit(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure wwDBEdit1Exit(Sender: TObject);
@@ -731,106 +732,87 @@ begin
     OD_charge.First
   else
     OD_charge.Locate('USL', usl_, []);
-
-  {  wwDBGrid2.ColumnByName('NM').FooterValue := 'Итого:';
-    wwDBGrid2.ColumnByName('TARIF').FooterValue := FloatToStrF(tarif_, ffFixed, 10, 2);
-    wwDBGrid2.ColumnByName('PRIVS').FooterValue := FloatToStrF(privs_, ffFixed, 10, 2);
-    wwDBGrid2.ColumnByName('SUBSID').FooterValue := FloatToStrF(subsid_, ffFixed, 10, 2);
-    wwDBGrid2.ColumnByName('CHANGES').FooterValue := FloatToStrF(changes_, ffFixed, 10, 2);
-    wwDBGrid2.ColumnByName('ITOGN').FooterValue := FloatToStrF(itogn_, ffFixed, 10, 2);}
 end;
 
-procedure TForm_kart.save_changes(ask_: Integer);
+// сохранить или откатить изменения
+
+procedure TForm_kart.saveOrRollbackKart(ask_: Integer; isCommit: Boolean);
 var
   err_: string;
 begin
-  //  LockControl(wwDBGrid2, true);
   LockControl(wwDBGrid4, true);
-  //  LockControl(DBGridEh1, true);
-   //сохранение карточки
-  if not (Form_kart.OD_charge.State in [dsBrowse]) then
-    Form_kart.OD_charge.Post;
-
-  if not (Form_kart.OD_states_sch.State in [dsBrowse]) then
-    Form_kart.OD_states_sch.Post;
-  if not (Form_list_kart.OD_list_kart.State in [dsBrowse]) then
-    Form_list_kart.OD_list_kart.Post;
-
-  if (Form_list_kart.OD_list_kart.UpdateStatus in [usInserted, usModified,
-    usDeleted])
-    or (Form_kart.OD_charge.UpdatesPending = true) 
-    or (Form_kart.OD_states_sch.UpdatesPending = true) or (updates_ = 1) then
+  if isCommit <> true then
   begin
-
-    if ask_ = 0 then //записываем без вопросов
-    begin
-      DataModule1.OracleSession1.ApplyUpdates([Form_list_kart.OD_list_kart],
-        true);
-      DataModule1.OracleSession1.ApplyUpdates([Form_kart.OD_charge], true);
-      DataModule1.OracleSession1.ApplyUpdates([Form_kart.OD_states_sch], true);
-
-      //Проверка корректности статусов счетчиков, статусов проживающих
-      //С установкой признака валидности карточки
-      err_ :=
-        DataModule1.OraclePackage1.CallStringFunction('scott.UTILS.tst_krt',
-        [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, 1]);
-
-      //для подтверждения изменений, сделанных в пакетах
-      DataModule1.OracleSession1.Commit;
-      //recalc_kart;
-    end
-    else if ask_ = 2 then //отменяем без вопросов
-    begin
-      Form_kart.OD_states_sch.CancelUpdates;
-      Form_kart.OD_charge.CancelUpdates;
-      Form_list_kart.OD_list_kart.CancelUpdates;
-
-      //для отмены изменений, сделанных в пакетах
-      DataModule1.OracleSession1.Rollback;
-
-      //recalc_kart;
-    end
-    else if (ask_ = 1) then
-    begin
-      if (Msg3('Сохранить измения карточки?', 'Подтверждение', MB_ICONQUESTION +
-        MB_YESNO) = IDYES) then // сохраняем с вопросом
-      begin
-        DataModule1.OracleSession1.ApplyUpdates([Form_kart.OD_charge], true);
-        DataModule1.OracleSession1.ApplyUpdates([Form_kart.OD_states_sch],
-          true);
-        DataModule1.OracleSession1.ApplyUpdates([Form_list_kart.OD_list_kart],
-          true);
-        //Проверка корректности статусов счетчиков, статусов проживающих
-        //С установкой признака валидности карточки
-        err_ :=
-          DataModule1.OraclePackage1.CallStringFunction('scott.UTILS.tst_krt',
-          [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, 1]);
-
-        //для подтверждения изменений, сделанных в пакетах
-        DataModule1.OracleSession1.Commit;
-
-      end
-      else
-      begin
-        //для отмены изменений, сделанных в пакетах
-        DataModule1.OracleSession1.Rollback;
-
-        Form_list_kart.OD_list_kart.CancelUpdates;
-        OD_charge.CancelUpdates;
-        OD_states_sch.CancelUpdates;
-      end;
-      //recalc_kart;
-    end;
+    // отменить изменения, без вопросов
+    if not (Form_kart.OD_charge.State in [dsBrowse]) then
+      Form_kart.OD_charge.Cancel;
+    if not (Form_kart.OD_states_sch.State in [dsBrowse]) then
+      Form_kart.OD_states_sch.Cancel;
+    if not (Form_list_kart.OD_list_kart.State in [dsBrowse]) then
+      Form_list_kart.OD_list_kart.Cancel;
+    DataModule1.OracleSession1.CancelUpdates([Form_list_kart.OD_list_kart,
+      Form_kart.OD_charge, Form_kart.OD_states_sch]);
+    // отмена изменений, сделанных в пакетах
+    DataModule1.OracleSession1.Rollback;
   end
-  else //пересчитать, даже если не было изменений
+  else
   begin
-    if ask_ = 0 then //записываем без вопросов
+    // сохранить изменения
+    if not (Form_kart.OD_charge.State in [dsBrowse]) then
+      Form_kart.OD_charge.Post;
+    if not (Form_kart.OD_states_sch.State in [dsBrowse]) then
+      Form_kart.OD_states_sch.Post;
+    if not (Form_list_kart.OD_list_kart.State in [dsBrowse]) then
+      Form_list_kart.OD_list_kart.Post;
+
+    if (Form_list_kart.OD_list_kart.UpdateStatus in [usInserted, usModified,
+      usDeleted])
+      or (Form_kart.OD_charge.UpdatesPending = true)
+      or (Form_kart.OD_states_sch.UpdatesPending = true) or (updates_ = 1) then
     begin
-      //recalc_kart;
-      //Проверка корректности статусов счетчиков, статусов проживающих
-      //С установкой признака валидности карточки
-  //      err_ := DataModule1.OraclePackage1.CallStringFunction('scott.UTILS.tst_krt',
-  //        [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, 1]);
+      if ask_ = 0 then
+      begin
+        // сохранить без вопросов
+        DataModule1.OracleSession1.ApplyUpdates([Form_list_kart.OD_list_kart,
+          Form_kart.OD_charge, Form_kart.OD_states_sch], true);
+        {DataModule1.OracleSession1.ApplyUpdates([Form_kart.OD_charge], true);
+        DataModule1.OracleSession1.ApplyUpdates([Form_kart.OD_states_sch],
+          true);}
+        // подтверждение изменений, сделанных в пакетах
+        DataModule1.OracleSession1.Commit;
+      end
+      else if (ask_ = 1) then
+      begin
+        if (Msg3('Сохранить измения карточки?', 'Подтверждение', MB_ICONQUESTION
+          +
+          MB_YESNO) = IDYES) then
+        begin
+          // сохранить с вопросом
+          DataModule1.OracleSession1.ApplyUpdates([Form_list_kart.OD_list_kart,
+            Form_kart.OD_charge, Form_kart.OD_states_sch], true);
+          { DataModule1.OracleSession1.ApplyUpdates([Form_kart.OD_charge], true);
+           DataModule1.OracleSession1.ApplyUpdates([Form_kart.OD_states_sch],
+             true);
+           DataModule1.OracleSession1.ApplyUpdates([Form_list_kart.OD_list_kart],
+             true);}
+           //для подтверждения изменений, сделанных в пакетах
+          DataModule1.OracleSession1.Commit;
+        end
+        else
+        begin
+          // отменить изменения
+          if not (Form_kart.OD_charge.State in [dsBrowse]) then
+            Form_kart.OD_charge.Cancel;
+          if not (Form_kart.OD_states_sch.State in [dsBrowse]) then
+            Form_kart.OD_states_sch.Cancel;
+          if not (Form_list_kart.OD_list_kart.State in [dsBrowse]) then
+            Form_list_kart.OD_list_kart.Cancel;
+          DataModule1.OracleSession1.CancelUpdates([Form_list_kart.OD_list_kart,
+            Form_kart.OD_charge, Form_kart.OD_states_sch]);
+          // отмена изменений, сделанных в пакетах
+          DataModule1.OracleSession1.Rollback;
+        end;
+      end;
     end;
   end;
 
@@ -839,19 +821,17 @@ begin
   Form_list_kart.setAllowEdit_kart;
   //обновить поля, отражающие статусы л/c
   refresh_kart;
-
   calcFooter;
+
   //сброс признака наличия обновления
   updates_ := 0;
-  //  LockControl(wwDBGrid2, false);
   LockControl(wwDBGrid4, false);
 
   //Проверка корректности статусов счетчиков, статусов проживающих
-//  if DataModule1.OraclePackage1.CallIntegerFunction('scott.Utils.get_int_param', ['SHOW_ALERT1']) = 1 then
   if getDoublePar(Form_main.paramList, 'SHOW_ALERT1') = 1 then
   begin
     err_ := DataModule1.OraclePackage1.CallStringFunction('scott.UTILS.tst_krt',
-      [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, 0]);
+      [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, 1]);
     if err_ <> '' then
     begin
       dxStatusBar1.Panels[0].Text := err_;
@@ -1090,7 +1070,7 @@ procedure TForm_kart.recalc_kart;
 var
   cnt_: Integer;
   err_: string;
-  l_dummy : Double; 
+  l_dummy: Double;
 begin
   LockWindowUpdate(handle);
 
@@ -1101,14 +1081,16 @@ begin
     cnt_ :=
       DataModule1.OraclePackage1.CallIntegerFunction('scott.C_CHARGES.gen_charges',
       [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, null, null,
-        null, 1, 0]);
+      null, 1, 0]);
 
     if getDoublePar(Form_main.paramList, 'JAVA_DEB_PEN') = 1 then
     begin
       // новый расчет долга и пени в Java
-      l_dummy:=DataModule1.OraclePackage1.CallFloatFunction('SCOTT.P_JAVA.GEN',
-        [1, null, null, null, Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger,
-        null, Form_Main.cur_dt, 0]);
+      l_dummy :=
+        DataModule1.OraclePackage1.CallFloatFunction('SCOTT.P_JAVA.GEN',
+        [1, null, null, null,
+        Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger,
+          null, Form_Main.cur_dt, 0]);
     end
     else
     begin
@@ -1134,7 +1116,7 @@ procedure TForm_kart.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   cxprprtstr1.StoreTo(True);
 
-  save_changes(1);
+  Form_kart.saveOrRollbackKart(1, True);
   Form_list_kart.OD_list_kart.RefreshRecord;
 
   Form_main.ToolButton20.Visible := false;
@@ -1155,9 +1137,8 @@ begin
   begin
     LockWindowUpdate(handle);
     kart_pr_id_ := OD_kart_pr.RecNo;
-    save_changes(1);
-    //  OD_kart_pr.First;
-    //  OD_kart_pr.MoveBy(kart_pr_id_-1);
+    Form_kart.saveOrRollbackKart(1, True);
+    // save_changes(1);
     if FF('Form_kart_pr', 1) = 0 then
       Application.CreateForm(TForm_kart_pr, Form_kart_pr);
     LockWindowUpdate(0);
@@ -1182,7 +1163,9 @@ end;
 
 procedure TForm_kart.Button2Click(Sender: TObject);
 begin
-  save_changes(0);
+  // отменить изменения, без вопроса
+  //cancel_changes(0);
+  saveOrRollbackKart(0, False);
 end;
 
 procedure TForm_kart.wwDBEdit2Exit(Sender: TObject);
@@ -1192,12 +1175,8 @@ begin
 end;
 
 procedure TForm_kart.state_arch2(mgold_: string);
-begin // смена состояний формы
-  {if Form_list_kart.OD_list_kart.GetVariable('var_') = 0 then
-  begin
-    Form_kart.wwDBNavigator1Last.Visible := False;
-    wwDBNavigator1Last.Visible := False;
-  end;}
+begin
+  // смена состояний формы
 
   with Form_kart do
   begin
@@ -1210,7 +1189,8 @@ begin // смена состояний формы
         '(select * from scott.a_lg_docs where mg=''' + Form_main.arch_mg_ +
         ''')');
       change_alias(OD_kart_pr, 'scott.c_lg_pr',
-        '(select * from scott.a_lg_pr where mg=''' + Form_main.arch_mg_ + ''')');
+        '(select * from scott.a_lg_pr where mg=''' + Form_main.arch_mg_ +
+        ''')');
 
       change_alias(OD_vvod, 'scott.c_vvod',
         '(select * from scott.a_vvod where mg=''' + Form_main.arch_mg_ + ''')');
@@ -1221,7 +1201,8 @@ begin // смена состояний формы
         ''' between mgfrom and mgto)');
       //change_alias(OD_charge, 'scott.c_charge', '(select * from scott.a_charge where mg=''' + Form_main.arch_mg_ + ''')');
       change_alias(OD_charge, 'scott.c_change',
-        '(select * from scott.a_change where mg=''' + Form_main.arch_mg_ + ''')');
+        '(select * from scott.a_change where mg=''' + Form_main.arch_mg_ +
+        ''')');
       //change_alias(OD_charge, 'scott.nabor_progs', '(select * from scott.a_nabor_progs where mg=''' + Form_main.arch_mg_ + ''')');
       change_alias(OD_charge, 'scott.nabor',
         '(select * from scott.a_nabor2 where ''' + Form_main.arch_mg_ +
@@ -1248,7 +1229,8 @@ begin // смена состояний формы
       change_alias(OD_charge, '(select * from scott.a_change where mg=''' +
         mgold_ + ''')', 'scott.c_change');
       //change_alias(OD_charge, '(select * from scott.a_nabor_progs where mg=''' + mgold_ + ''')', 'scott.nabor_progs');
-      change_alias(OD_charge, '(select * from scott.a_nabor2 where ''' + mgold_ +
+      change_alias(OD_charge, '(select * from scott.a_nabor2 where ''' + mgold_
+        +
         ''' between mgfrom and mgto)', 'scott.nabor');
       //change_alias(OD_charge, '(select * from scott.a_nabor where mg=''' + mgold_ + ''')', 'scott.nabor');
       wwDBGrid1.Visible := true;
@@ -1269,18 +1251,22 @@ begin // смена состояний формы
         ''')', '(select * from scott.a_vvod where mg=''' + Form_main.arch_mg_ +
         ''')');
       change_alias(OD_charge, '(select * from scott.a_vvod where mg=''' + mgold_
-        + ''')', '(select * from scott.a_vvod where mg=''' + Form_main.arch_mg_ +
+        + ''')', '(select * from scott.a_vvod where mg=''' + Form_main.arch_mg_
+        +
         ''')');
       change_alias(OD_charge, '(select * from scott.a_charge2 where ''' + mgold_
-        + ''' between mgfrom and mgto)', '(select * from scott.a_charge2 where '''
+        + ''' between mgfrom and mgto)',
+        '(select * from scott.a_charge2 where '''
         + Form_main.arch_mg_ + ''' between mgfrom and mgto)');
       //      change_alias(OD_charge, '(select * from scott.a_charge where mg=''' + mgold_ + ''')', '(select * from scott.a_charge where mg=''' + Form_main.arch_mg_ + ''')');
       change_alias(OD_charge, '(select * from scott.a_change where mg=''' +
         mgold_ + ''')', '(select * from scott.a_change where mg=''' +
         Form_main.arch_mg_ + ''')');
       //change_alias(OD_charge, '(select * from scott.a_nabor_progs where mg=''' + mgold_ + ''')', '(select * from scott.a_nabor_progs where mg=''' + Form_main.arch_mg_ + ''')');
-      change_alias(OD_charge, '(select * from scott.a_nabor2 where ''' + mgold_ +
-        ''' between mgfrom and mgto)', '(select * from scott.a_nabor2 where ''' +
+      change_alias(OD_charge, '(select * from scott.a_nabor2 where ''' + mgold_
+        +
+        ''' between mgfrom and mgto)', '(select * from scott.a_nabor2 where '''
+        +
         Form_main.arch_mg_ + ''' between mgfrom and mgto)');
       //change_alias(OD_charge, '(select * from scott.a_nabor where mg=''' + mgold_ + ''')', '(select * from scott.a_nabor where mg=''' + Form_main.arch_mg_ + ''')');
       wwDBGrid1.Visible := false;
@@ -1294,7 +1280,7 @@ begin
   if getDoublePar(Form_main.paramList, 'VER_METER1') <> 0 then
     wwCheckBox3.Enabled := False;
 
-    //Настройки расположения формы
+  //Настройки расположения формы
   cxprprtstr1.Active := True;
   cxprprtstr1.RestoreFrom;
 
@@ -1369,7 +1355,7 @@ begin
   OD_spul.Active := true;
 
   OD_psch.Active := true;
-  
+
   OD_psch2.Active := true;
   OD_kfg.Active := true;
   OD_sch_el.Active := true;
@@ -1410,7 +1396,8 @@ end;
 procedure TForm_kart.DBCheckBoxEh1MouseDown(Sender: TObject; Button:
   TMouseButton; Shift: TShiftState; X, Y: Integer);
 begin
-  save_changes(1);
+  saveOrRollbackKart(1, True);
+  //save_changes(1);
   if FF('Form_subsidii', 1) = 0 then
     Application.CreateForm(TForm_subsidii, Form_subsidii);
 
@@ -1472,8 +1459,8 @@ begin
   if Key = #13 then
   begin
     if DBEdit_mgw.Enabled = True then
-//      DBEdit_mgw.SetFocus
-Windows.SetFocus(DBEdit_mgw.Handle);
+      //      DBEdit_mgw.SetFocus
+      Windows.SetFocus(DBEdit_mgw.Handle);
   end;
 end;
 
@@ -1751,8 +1738,8 @@ begin
     Exit;
   end;
 
-//  TDBGridEh(Sender).SetFocus;
-Windows.SetFocus(TDBGridEh(Sender).Handle);
+  //  TDBGridEh(Sender).SetFocus;
+  Windows.SetFocus(TDBGridEh(Sender).Handle);
   AGrd := TDBGridEh(Sender).MouseCoord(X, Y);
   if AGrd.Y - 1 >= TDBGridEh(Sender).Row then
   begin
@@ -1856,8 +1843,9 @@ begin
 end;
 
 procedure TForm_kart.OD_states_schAfterInsert(DataSet: TDataSet);
-var R:TRect; 
-      HW:THintWindow;
+var
+  R: TRect;
+  HW: THintWindow;
 begin
   OD_states_sch.FieldByName('LSK').AsString :=
     Form_list_kart.OD_list_kart.FieldByName('LSK').AsString;
@@ -1882,22 +1870,23 @@ begin
     abort;
   end;
 
-  if ((OD_states_sch.FieldByName('FK_STATUS').AsInteger=8) or
-     (OD_states_sch.FieldByName('FK_STATUS').AsInteger=9))
-     and (OD_states_sch.FieldByName('FK_CLOSE_REASON').AsInteger=0) then
+  if ((OD_states_sch.FieldByName('FK_STATUS').AsInteger = 8) or
+    (OD_states_sch.FieldByName('FK_STATUS').AsInteger = 9))
+    and (OD_states_sch.FieldByName('FK_CLOSE_REASON').AsInteger = 0) then
   begin
-    Application.MessageBox('При закрытии лицевого счета должна быть заполнена '+
-     'причина закрытия в колонке "Примечание"!',
-     'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
+    Application.MessageBox('При закрытии лицевого счета должна быть заполнена '
+      +
+      'причина закрытия в колонке "Примечание"!',
+      'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
     abort;
   end
-  else if (OD_states_sch.FieldByName('FK_STATUS').AsInteger<>8) and
-     (OD_states_sch.FieldByName('FK_STATUS').AsInteger<>9)
-     and (OD_states_sch.FieldByName('FK_CLOSE_REASON').AsInteger<>0) then
+  else if (OD_states_sch.FieldByName('FK_STATUS').AsInteger <> 8) and
+    (OD_states_sch.FieldByName('FK_STATUS').AsInteger <> 9)
+    and (OD_states_sch.FieldByName('FK_CLOSE_REASON').AsInteger <> 0) then
   begin
-    Application.MessageBox('В записи открытого статуса не должно быть '+
-     'причины закрытия в колонке "Примечание"!',
-     'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
+    Application.MessageBox('В записи открытого статуса не должно быть ' +
+      'причины закрытия в колонке "Примечание"!',
+      'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
     abort;
   end;
 
@@ -1981,7 +1970,7 @@ begin
   if Form_set_krt_psch.ShowModal = mrOk then
   begin
     Update;
-    save_changes(1);
+    Form_kart.saveOrRollbackKart(1, True);
   end;
 end;
 
@@ -2099,17 +2088,17 @@ begin
     OD_charge.FieldByName('LSK').AsString + ' услугу: ' +
     OD_charge.FieldByName('NM').AsString + ' по орг: ' +
     OD_charge.FieldByName('ORG_NAME').AsString + ' с коэфф:' +
-      OD_charge.FieldByName('KOEFF').AsString + ' и норм:' +
-      OD_charge.FieldByName('NORM').AsString + '?', 'Подверждение', MB_YESNO +
-      MB_ICONQUESTION) = IDYES) then
+    OD_charge.FieldByName('KOEFF').AsString + ' и норм:' +
+    OD_charge.FieldByName('NORM').AsString + '?', 'Подверждение', MB_YESNO +
+    MB_ICONQUESTION) = IDYES) then
   begin
     DataModule1.OraclePackage1.CallProcedure('scott.p_houses.house_del_usl',
       [4, OD_charge.FieldByName('LSK').AsString, null, null,
-        null,
-      OD_charge.FieldByName('USL').AsString,
+      null,
+        OD_charge.FieldByName('USL').AsString,
         OD_charge.FieldByName('ORG').AsInteger,
         OD_charge.FieldByName('KOEFF').AsFloat,
-          OD_charge.FieldByName('NORM').AsFloat, 1]);
+        OD_charge.FieldByName('NORM').AsFloat, 1]);
     Form_kart.updates_ := 1;
     OD_charge.Refresh;
   end;
@@ -2135,7 +2124,7 @@ procedure TForm_kart.BitBtn4Click(Sender: TObject);
 begin
   // сохранить форму карточки
   if FF('Form_kart', 0) = 1 then
-    Form_kart.save_changes(1);
+    Form_kart.saveOrRollbackKart(1, True);
 
   if FF('Form_sch_history', 1) = 0 then
   begin
@@ -2233,7 +2222,9 @@ end;
 
 procedure TForm_kart.btn1Click(Sender: TObject);
 begin
-  save_changes(1);
+  // сохранить изменения, без вопроса
+  //save_changes(0);
+  saveOrRollbackKart(0, True);
   recalc_kart;
 end;
 

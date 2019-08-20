@@ -1551,7 +1551,7 @@ object Form_kart: TForm_kart
       Buttons.Filter.Visible = False
       DataSource = Form_list_kart.DS_list_kart
       Align = alLeft
-      TabOrder = 0
+      TabOrder = 2
     end
     object chk1: TCheckBox
       Left = 256
@@ -1568,7 +1568,7 @@ object Form_kart: TForm_kart
       ParentFont = False
       ParentShowHint = False
       ShowHint = True
-      TabOrder = 1
+      TabOrder = 3
       OnClick = chk1Click
     end
     object btn1: TButton
@@ -1577,8 +1577,18 @@ object Form_kart: TForm_kart
       Width = 75
       Height = 25
       Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100
-      TabOrder = 2
+      TabOrder = 0
       OnClick = btn1Click
+    end
+    object Button2: TButton
+      Left = 756
+      Top = -1
+      Width = 75
+      Height = 25
+      Cancel = True
+      Caption = #1054#1090#1084#1077#1085#1072
+      TabOrder = 1
+      OnClick = Button2Click
     end
   end
   object PageControl2: TPageControl
@@ -3954,7 +3964,6 @@ object Form_kart: TForm_kart
     CommitOnPost = False
     CachedUpdates = True
     Session = DataModule1.OracleSession1
-    Active = True
     AfterInsert = OD_states_schAfterInsert
     BeforePost = OD_states_schBeforePost
     Left = 748

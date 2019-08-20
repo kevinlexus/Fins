@@ -1,6 +1,6 @@
 object Form_list_kart: TForm_list_kart
-  Left = 351
-  Top = 390
+  Left = 320
+  Top = 337
   Width = 1280
   Height = 607
   Caption = #1050#1072#1088#1090#1086#1095#1082#1080
@@ -107,7 +107,6 @@ object Form_list_kart: TForm_list_kart
     Selected.Strings = (
       'BTN'#9'2'#9' '
       'NAME_REU'#9'8'#9#1054#1088#1075'.'
-      'ELSD'#9'8'#9#1045#1051#1057#1044
       'LSK'#9'8'#9#1051'/C'
       'DOG_NUM'#9'10'#9#8470' '#1076#1086#1075#1086#1074#1086#1088#1072
       'KUL'#9'6'#9#1050#1086#1076' '#1091#1083'.'
@@ -123,7 +122,8 @@ object Form_list_kart: TForm_list_kart
       'KPR_WR'#9'8'#9#1042#1088'.'#1079#1072#1088#1077#1075'.'
       'KPR_WRP'#9'8'#9#1042#1088'.'#1087#1088#1086#1078'.'
       'OPL'#9'7'#9#1054#1073#1097'.'#1087#1083'.'
-      'K_LSK_ID'#9'13'#9'KLSK '#1050#1074#1072#1088#1090#1080#1088#1099
+      'K_LSK_ID'#9'13'#9'KLSK '#1060#1080#1085'.'#1083#1080#1094'.'#1089#1095'.'
+      'FK_KLSK_PREMISE'#9'10'#9'KLSK '#1055#1086#1084#1077#1097'.'
       'HOUSE_ID'#9'14'#9'HOUSE_ID '#1044#1086#1084#1072
       'MHW'#9'8'#9#1050#1091#1073'.'#1061'.'#1042'.'
       'MGW'#9'8'#9#1050#1091#1073'.'#1043'.'#1042'.'
@@ -139,8 +139,8 @@ object Form_list_kart: TForm_list_kart
       'TEXT'#9'35'#9#1055#1088#1080#1084#1077#1095#1072#1085#1080#1077
       'SEL1'#9'10'#9'SEL1'
       'PARENT_LSK'#9'12'#9#1056#1086#1076#1080#1090'.'#1083#1080#1094'.'#1089#1095#1077#1090
-      'FK_KLSK_OBJ'#9'11'#9'KLSK '#1051#1080#1094'.'#1089#1095'.'
-      'DT_CR'#9'18'#9'DT_CR')
+      'DT_CR'#9'18'#9'DT_CR'
+      'FK_KLSK_OBJ'#9'11'#9'KLSK '#1051#1080#1094'.'#1089#1095'.')
     IniAttributes.Delimiter = ';;'
     TitleColor = clBtnFace
     FixedCols = 0
@@ -429,7 +429,6 @@ object Form_list_kart: TForm_list_kart
           Spacing = 4
           Transparent = False
           Caption = 'wwDBNavigator1Insert'
-          Enabled = False
           DisabledTextColors.ShadeColor = clGray
           DisabledTextColors.HighlightColor = clBtnHighlight
           Index = 6
@@ -465,7 +464,6 @@ object Form_list_kart: TForm_list_kart
           Spacing = 4
           Transparent = False
           Caption = 'wwDBNavigator1Edit'
-          Enabled = False
           DisabledTextColors.ShadeColor = clGray
           DisabledTextColors.HighlightColor = clBtnHighlight
           Index = 8
@@ -519,7 +517,6 @@ object Form_list_kart: TForm_list_kart
           Spacing = 4
           Transparent = False
           Caption = 'wwDBNavigator1Refresh'
-          Enabled = False
           DisabledTextColors.ShadeColor = clGray
           DisabledTextColors.HighlightColor = clBtnHighlight
           Index = 11
@@ -537,7 +534,6 @@ object Form_list_kart: TForm_list_kart
           Spacing = 4
           Transparent = False
           Caption = 'wwDBNavigator1SaveBookmark'
-          Enabled = False
           DisabledTextColors.ShadeColor = clGray
           DisabledTextColors.HighlightColor = clBtnHighlight
           Index = 12
@@ -1189,7 +1185,7 @@ object Form_list_kart: TForm_list_kart
         's.name || '#39', '#39' || nvl(ltrim(k.nd, '#39'0'#39'), '#39'0'#39') || '#39'-'#39' ||nvl(ltrim(' +
         'k.kw, '#39'0'#39'), '#39'0'#39') as adr, u.name as lsk_tp, u.cd as lsk_tp_cd, k.' +
         'sel1, k.entr,'
-      'k.parent_lsk, k.fk_klsk_obj'
+      'k.parent_lsk, k.fk_klsk_obj, k.fk_klsk_premise'
       'from scott.kart k '
       'join scott.spul s on k.kul=s.id'
       'join scott.status t on k.status=t.id'
@@ -1363,7 +1359,7 @@ object Form_list_kart: TForm_list_kart
     OracleDictionary.UseMessageTable = True
     QBEDefinition.AllowOperators = True
     QBEDefinition.QBEFieldDefs = {
-      0400000052000000030000004C534B010100000000030000004B554C00000000
+      0400000053000000030000004C534B010100000000030000004B554C00000000
       0000020000004E44000000000000020000004B57000000000000030000004649
       4F010100000000030000004B5052010000000000060000004B50525F57520100
       00000000060000004B50525F4F54010000000000030000004F504C0100000000
@@ -1402,7 +1398,8 @@ object Form_list_kart: TForm_list_kart
       000003000000504F54010000000000030000004D4F5401000000000004000000
       454C534B0100000000000A000000504152454E545F4C534B0100000000000B00
       0000464B5F4B4C534B5F4F424A0100000000000500000044545F435201000000
-      0000070000004B50525F4F574E010000000000}
+      0000070000004B50525F4F574E0100000000000F000000464B5F4B4C534B5F50
+      52454D495345010000000000}
     QueryAllRecords = False
     RefreshOptions = [roAfterInsert, roAfterUpdate, roAllFields]
     AfterRefreshRecord = OD_list_kartAfterRefreshRecord
@@ -1410,6 +1407,7 @@ object Form_list_kart: TForm_list_kart
     CommitOnPost = False
     CachedUpdates = True
     Session = DataModule1.OracleSession1
+    Active = True
     AfterOpen = OD_list_kartAfterOpen
     BeforeInsert = OD_list_kartBeforeInsert
     BeforeScroll = OD_list_kartBeforeScroll
@@ -1530,9 +1528,14 @@ object Form_list_kart: TForm_list_kart
       FieldName = 'OPL'
     end
     object OD_list_kartK_LSK_ID: TFloatField
-      DisplayLabel = 'KLSK '#1050#1074#1072#1088#1090#1080#1088#1099
+      DisplayLabel = 'KLSK '#1060#1080#1085'.'#1083#1080#1094'.'#1089#1095'.'
       DisplayWidth = 13
       FieldName = 'K_LSK_ID'
+    end
+    object OD_list_kartFK_KLSK_PREMISE: TFloatField
+      DisplayLabel = 'KLSK '#1055#1086#1084#1077#1097'.'
+      DisplayWidth = 10
+      FieldName = 'FK_KLSK_PREMISE'
     end
     object OD_list_kartHOUSE_ID: TFloatField
       DisplayLabel = 'HOUSE_ID '#1044#1086#1084#1072
@@ -1625,15 +1628,15 @@ object Form_list_kart: TForm_list_kart
       FieldName = 'PARENT_LSK'
       Size = 8
     end
-    object OD_list_kartFK_KLSK_OBJ: TFloatField
-      DisplayLabel = 'KLSK '#1051#1080#1094'.'#1089#1095'.'
-      DisplayWidth = 11
-      FieldName = 'FK_KLSK_OBJ'
-    end
     object OD_list_kartDT_CR: TDateTimeField
       DisplayWidth = 18
       FieldName = 'DT_CR'
       Required = True
+    end
+    object OD_list_kartFK_KLSK_OBJ: TFloatField
+      DisplayLabel = 'KLSK '#1051#1080#1094'.'#1089#1095'.'
+      DisplayWidth = 11
+      FieldName = 'FK_KLSK_OBJ'
     end
     object OD_list_kartLSK_TP_CD: TStringField
       DisplayWidth = 32
@@ -1884,6 +1887,7 @@ object Form_list_kart: TForm_list_kart
     end
     object OD_list_kartKPR_OWN: TFloatField
       FieldName = 'KPR_OWN'
+      Visible = False
     end
   end
   object DS_list_kart: TDataSource
@@ -1896,7 +1900,7 @@ object Form_list_kart: TForm_list_kart
       'select * from scott.t_org t')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000035000000020000004944010000000000020000004344010000000000
+      0400000036000000020000004944010000000000020000004344010000000000
       08000000464B5F4F52475450010000000000040000004E414D45010000000000
       030000004E505001000000000001000000560100000000000900000050415245
       4E545F4944010000000000030000005245550100000000000500000054524553
@@ -1924,7 +1928,8 @@ object Form_list_kart: TForm_list_kart
       0100000000000300000047525001000000000009000000525F5343485F474953
       0100000000000B000000444953545F5041595F54500100000000000800000041
       44525F434153480100000000000600000049535F52534F0100000000000F0000
-      0049535F45584348414E47455F474953010000000000}
+      0049535F45584348414E47455F4749530100000000000A0000004F52475F5450
+      5F474953010000000000}
     Session = DataModule1.OracleSession1
     Active = True
     Left = 240

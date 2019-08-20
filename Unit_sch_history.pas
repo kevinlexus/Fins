@@ -322,7 +322,8 @@ begin
 
     if FF('Form_kart', 0) = 1 then
     begin
-      Form_kart.save_changes(0);
+      Form_kart.saveOrRollbackKart(0, True);
+      //Form_kart.save_changes(0);
       Form_kart.recalc_kart;
     end;
 
@@ -480,7 +481,8 @@ begin
 
   // сохранить/обновить форму карточки, чтобы обновить поле расхода по счетчику
   if FF('Form_kart', 0) = 1 then
-    Form_kart.save_changes(0);
+    Form_kart.saveOrRollbackKart(0, True);
+    //Form_kart.save_changes(0);
 
 end;
 

@@ -208,6 +208,7 @@ type
     OD_check_conn_gis: TOracleDataSet;
     OD_list_kartDT_CR: TDateTimeField;
     OD_list_kartKPR_OWN: TFloatField;
+    OD_list_kartFK_KLSK_PREMISE: TFloatField;
     procedure wwDBGrid1DblClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure wwDBGrid1KeyDown(Sender: TObject; var Key: Word;
@@ -342,9 +343,6 @@ begin
   else
     isAllowEdit_ := 0;
 
-  //  isAllowEdit_:=DataModule1.OraclePackage1.CallIntegerFunction(
-  //      'scott.UTILS.allow_edit_lsk', [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, 'доступ к карт.рэу']);
-
   if (Form_main.arch_mg_ = '') then
   begin
     Caption := 'Карточки';
@@ -356,7 +354,6 @@ begin
     wwDBGrid1.ReadOnly := true;
   end;
 
-  //isAllowEdit_k_ -стояло почему то... ред.02.02.2012
   if isAllowEdit_ <> 0 then
   begin
     //доступ к правке счетчика по эл.эн.
@@ -404,21 +401,15 @@ begin
 
   end;
 
-  // отключить возможность корректировки счетчиков в новой версии
-  // кроме отопления, пока не перенес в scott.meter!
-//  if DataModule1.OraclePackage1.CallIntegerFunction
-//               ('scott.Utils.get_int_param', ['VER_METER1']) <> 0 then
   if getDoublePar(Form_main.paramList, 'VER_METER1') <> 0 then
   begin
     OD_list_kart.FieldByName('mhw').ReadOnly := true;
     OD_list_kart.FieldByName('mgw').ReadOnly := true;
     OD_list_kart.FieldByName('mel').ReadOnly := true;
-    //OD_list_kart.FieldByName('mot').ReadOnly:=true;
 
     OD_list_kart.FieldByName('phw').ReadOnly := true;
     OD_list_kart.FieldByName('pgw').ReadOnly := true;
     OD_list_kart.FieldByName('pel').ReadOnly := true;
-    //OD_list_kart.FieldByName('pot').ReadOnly:=true;
   end;
 
 end;
@@ -865,7 +856,8 @@ begin
   save_deb_kart_pr;
 
   if FF('Form_kart', 0) = 1 then
-    Form_kart.save_changes(1)
+    Form_kart.saveOrRollbackKart(1, True)
+    //Form_kart.save_changes(1)
   else
   begin
     if not (OD_list_kart.State in [dsBrowse]) then

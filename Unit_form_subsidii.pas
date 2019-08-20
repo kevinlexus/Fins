@@ -69,21 +69,18 @@ end;
 procedure TForm_subsidii.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  Form_kart.save_changes(2);
   Form_kart.recalc_kart;
   Action:=caFree;
 end;
 
 procedure TForm_subsidii.Button2Click(Sender: TObject);
 begin
-  Form_kart.save_changes(0);
   Form_kart.recalc_kart;
   Close;
 end;
 
 procedure TForm_subsidii.Button3Click(Sender: TObject);
 begin
-  Form_kart.save_changes(2);
   Form_kart.recalc_kart;
   Close;
 end;

@@ -1033,7 +1033,7 @@ end;
 
 procedure TForm_Main.ToolButton20Click(Sender: TObject);
 begin
-  Form_kart.save_changes(1);
+  Form_kart.saveOrRollbackKart(1, True);
   Form_kart.recalc_kart;
   if FF('Form_subsidii', 1) = 0 then
     Application.CreateForm(TForm_subsidii, Form_subsidii);

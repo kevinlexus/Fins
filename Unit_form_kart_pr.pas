@@ -404,8 +404,7 @@ begin
 
     //Commit ( изменения были сделаны через пакеты, сохраняем так)
     OD_lg_pr.Session.Commit;
-
-    Form_kart.save_changes(0);
+    Form_kart.saveOrRollbackKart(0, True);
     Form_kart.recalc_kart;
   end
   else if ask_ = 2 then //отменяем без вопросов
@@ -416,7 +415,6 @@ begin
     OD_c_states2.Session.CancelUpdates([OD_c_states2]);
     Form_kart.OD_kart_pr.Session.CancelUpdates([Form_kart.OD_kart_pr]);
     OD_lg_pr.Session.Rollback;
-
     Form_kart.recalc_kart;
   end
   else if (ask_ = 1) and (ask1_ = 1) then
@@ -433,8 +431,7 @@ begin
 
       //Commit ( изменения были сделаны через пакеты, сохраняем так)
       OD_lg_pr.Session.Commit;
-
-      Form_kart.save_changes(0);
+      Form_kart.saveOrRollbackKart(0, True);
       Form_kart.recalc_kart;
     end
     else
@@ -443,7 +440,6 @@ begin
       OD_lg_pr.Session.CancelUpdates([OD_lg_pr]);
       Form_kart.OD_kart_pr.Session.CancelUpdates([Form_kart.OD_kart_pr]);
       OD_lg_pr.Session.Rollback;
-
       Form_kart.recalc_kart;
     end;
   end;
@@ -718,8 +714,8 @@ begin
   //для изменений в пакетах?????
   OD_lg_docs.Session.Commit;
 
-  //пересчитать начисление
-  Form_kart.save_changes(0);
+  // пересчитать начисление
+  Form_kart.saveOrRollbackKart(0, True);
 
   //если не выполнить то будет record used by another user... (refresh before edit
   //в Form_list_kart.OD_list_kart глючит
