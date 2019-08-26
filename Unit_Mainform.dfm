@@ -1062,7 +1062,7 @@ object Form_Main: TForm_Main
       end
     end
     object ver: TMenuItem
-      Caption = 'ver 2.1.46'
+      Caption = 'ver 2.1.47'
     end
   end
   object ImageList1: TImageList
@@ -11656,42 +11656,10 @@ object Form_Main: TForm_Main
     Left = 48
     Top = 72
   end
-  object IdFTP1s: TIdFTP
-    MaxLineAction = maException
-    Host = '192.168.100.188'
-    Passive = True
-    Password = 'ftplog'
-    ProxySettings.ProxyType = fpcmNone
-    ProxySettings.Port = 0
-    Username = 'ftplog'
-    Left = 152
-    Top = 40
-  end
   object DS_param_exit: TDataSource
     DataSet = OD_params
     Left = 48
     Top = 104
-  end
-  object CoolTrayIcon1: TCoolTrayIcon
-    IconList = ImageList2
-    CycleInterval = 0
-    Hint = #1044#1080#1088#1077#1082#1090'-'#1046#1050#1061
-    Icon.Data = {
-      0000010001001010040000000000280100001600000028000000100000002000
-      0000010004000000000080000000000000000000000000000000000000000000
-      000000008000008000000080800080000000800080008080000080808000C0C0
-      C0000000FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF000000
-      000000000000F777777777777770F888888888888870F8F8F8F8F8F8F870F888
-      888888888870F8F8F888F8888870F8880F880F888870F8F888F088F88870F888
-      880F880F8870F8F888878888F870F888887778880F70F8F8887877888870F888
-      877777888870F888887778788870F888777777888870FFFF88FFFF88FFF00000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000000000000000000000000000000000000000000000000000}
-    IconVisible = True
-    IconIndex = 0
-    OnDblClick = CoolTrayIcon1DblClick
-    Left = 184
-    Top = 40
   end
   object Timer_messages: TTimer
     Enabled = False
@@ -12348,11 +12316,6 @@ object Form_Main: TForm_Main
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       000000000000}
-  end
-  object IdAntiFreeze1: TIdAntiFreeze
-    Active = False
-    Left = 72
-    Top = 40
   end
   object OD_spr: TOracleDataSet
     SQL.Strings = (

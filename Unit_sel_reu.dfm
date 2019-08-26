@@ -1,6 +1,6 @@
 object Form_sel_reu: TForm_sel_reu
-  Left = 848
-  Top = 192
+  Left = 1396
+  Top = 386
   BorderStyle = bsSingle
   Caption = #1042#1099#1073#1086#1088' '#1046#1069#1054' '#1076#1083#1103' '#1086#1090#1095#1077#1090#1072
   ClientHeight = 369

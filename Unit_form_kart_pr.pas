@@ -58,8 +58,6 @@ type
     DBDateTimeEditEh3: TDBDateTimeEditEh;
     DBLookupComboboxEh1: TDBLookupComboboxEh;
     Label10: TLabel;
-    OD_doc: TOracleDataSet;
-    DS_doc: TDataSource;
     Label13: TLabel;
     OD_nac: TOracleDataSet;
     DS_nac: TDataSource;
@@ -99,12 +97,6 @@ type
     Label12: TLabel;
     OD_ovd: TOracleDataSet;
     DS_ovd: TDataSource;
-    OD_docID: TFloatField;
-    OD_docCD: TStringField;
-    OD_docNAME: TStringField;
-    OD_docNM: TStringField;
-    OD_docFK_LISTTP: TFloatField;
-    OD_docNPP: TFloatField;
     OD_nacID: TFloatField;
     OD_nacCD: TStringField;
     OD_nacNAME: TStringField;
@@ -602,7 +594,6 @@ begin
   OD_rep2.Active := false;
 
   //датасеты-включить
-  OD_doc.Active := true;
   OD_ub.Active := true;
   OD_nac.Active := true;
   OD_ovd.Active := true;

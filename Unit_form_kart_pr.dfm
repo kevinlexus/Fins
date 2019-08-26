@@ -1,6 +1,6 @@
 object Form_kart_pr: TForm_kart_pr
-  Left = 1114
-  Top = 262
+  Left = 1252
+  Top = 220
   Width = 667
   Height = 448
   BorderIcons = [biSystemMenu, biMinimize]
@@ -625,7 +625,7 @@ object Form_kart_pr: TForm_kart_pr
           end>
         KeyField = 'ID'
         ListField = 'NAME'
-        ListSource = DS_doc
+        ListSource = Form_kart.DS_doc
         TabOrder = 5
         Visible = True
       end
@@ -2297,49 +2297,6 @@ object Form_kart_pr: TForm_kart_pr
     Connected = True
     Left = 64
     Top = 408
-  end
-  object OD_doc: TOracleDataSet
-    SQL.Strings = (
-      
-        'select t.* from scott.u_list t, scott.u_listtp tp where t.fk_lis' +
-        'ttp=tp.id'
-      'and tp.cd='#39#1044#1086#1082#1091#1084#1077#1085#1090#39)
-    Optimize = False
-    QBEDefinition.QBEFieldDefs = {
-      0400000006000000020000004944010000000000040000004E414D4501000000
-      000002000000434401000000000009000000464B5F4C49535454500100000000
-      00020000004E4D010000000000030000004E5050010000000000}
-    Session = DataModule1.OracleSession1
-    Left = 64
-    Top = 560
-    object OD_docID: TFloatField
-      FieldName = 'ID'
-      Required = True
-    end
-    object OD_docCD: TStringField
-      FieldName = 'CD'
-      Size = 32
-    end
-    object OD_docNAME: TStringField
-      FieldName = 'NAME'
-      Size = 96
-    end
-    object OD_docNM: TStringField
-      FieldName = 'NM'
-      Size = 32
-    end
-    object OD_docFK_LISTTP: TFloatField
-      FieldName = 'FK_LISTTP'
-    end
-    object OD_docNPP: TFloatField
-      FieldName = 'NPP'
-      Required = True
-    end
-  end
-  object DS_doc: TDataSource
-    DataSet = OD_doc
-    Left = 96
-    Top = 560
   end
   object OD_nac: TOracleDataSet
     SQL.Strings = (

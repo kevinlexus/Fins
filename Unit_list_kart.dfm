@@ -1,6 +1,6 @@
 object Form_list_kart: TForm_list_kart
   Left = 320
-  Top = 337
+  Top = 396
   Width = 1280
   Height = 607
   Caption = #1050#1072#1088#1090#1086#1095#1082#1080
@@ -1531,16 +1531,19 @@ object Form_list_kart: TForm_list_kart
       DisplayLabel = 'KLSK '#1060#1080#1085'.'#1083#1080#1094'.'#1089#1095'.'
       DisplayWidth = 13
       FieldName = 'K_LSK_ID'
+      ReadOnly = True
     end
     object OD_list_kartFK_KLSK_PREMISE: TFloatField
       DisplayLabel = 'KLSK '#1055#1086#1084#1077#1097'.'
       DisplayWidth = 10
       FieldName = 'FK_KLSK_PREMISE'
+      ReadOnly = True
     end
     object OD_list_kartHOUSE_ID: TFloatField
       DisplayLabel = 'HOUSE_ID '#1044#1086#1084#1072
       DisplayWidth = 14
       FieldName = 'HOUSE_ID'
+      ReadOnly = True
       Required = True
     end
     object OD_list_kartMHW: TFloatField
@@ -1637,6 +1640,7 @@ object Form_list_kart: TForm_list_kart
       DisplayLabel = 'KLSK '#1051#1080#1094'.'#1089#1095'.'
       DisplayWidth = 11
       FieldName = 'FK_KLSK_OBJ'
+      ReadOnly = True
     end
     object OD_list_kartLSK_TP_CD: TStringField
       DisplayWidth = 32
@@ -1983,7 +1987,7 @@ object Form_list_kart: TForm_list_kart
       0300000001000000040000003A4C534B05000000090000002020202020202020
       0000000000}
     QBEDefinition.QBEFieldDefs = {
-      0400000064000000030000004C534B010000000000030000004B554C01000000
+      0400000065000000030000004C534B010000000000030000004B554C01000000
       0000020000004E44010000000000020000004B57010000000000030000004649
       4F010000000000030000004B5052010000000000060000004B50525F57520100
       00000000060000004B50525F4F54010000000000070000004B50525F43454D01
@@ -2032,7 +2036,8 @@ object Form_list_kart: TForm_list_kart
       4C534B0100000000000B000000464B5F4B4C534B5F4F424A0100000000000500
       000044545F43520100000000000E00000055534C5F4E414D455F53484F525401
       00000000000D000000464143545F4D455445525F545001000000000007000000
-      4B50525F4F574E010000000000}
+      4B50525F4F574E0100000000000F000000464B5F4B4C534B5F5052454D495345
+      010000000000}
     Master = OD_list_kart
     MasterFields = 'lsk'
     Session = DataModule1.OracleSession1

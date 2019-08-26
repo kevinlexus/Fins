@@ -36,7 +36,6 @@ type
     N19: TMenuItem;
     N20: TMenuItem;
     OD_params: TOracleDataSet;
-    IdFTP1s: TIdFTP;
     DS_param_exit: TDataSource;
     N21: TMenuItem;
     N22: TMenuItem;
@@ -48,7 +47,6 @@ type
     N29: TMenuItem;
     N210: TMenuItem;
     N211: TMenuItem;
-    CoolTrayIcon1: TCoolTrayIcon;
     N30: TMenuItem;
     N31: TMenuItem;
     N212: TMenuItem;
@@ -149,7 +147,6 @@ type
     N94: TMenuItem;
     N95: TMenuItem;
     N96: TMenuItem;
-    IdAntiFreeze1: TIdAntiFreeze;
     N97: TMenuItem;
     OD_spr: TOracleDataSet;
     N98: TMenuItem;
@@ -601,8 +598,8 @@ end;
 
 procedure TForm_Main.N27Click(Sender: TObject);
 begin
-  Form_Main.CoolTrayIcon1.ShowBalloonHint('Совет дня:',
-    Form_Main.OD_params.FieldByName('mess_hint').AsString, bitWarning, 30);
+{  Form_Main.CoolTrayIcon1.ShowBalloonHint('Совет дня:',
+    Form_Main.OD_params.FieldByName('mess_hint').AsString, bitWarning, 30);}
 end;
 
 procedure TForm_Main.N28Click(Sender: TObject);
@@ -723,7 +720,7 @@ begin
   Application.OnException := AppException;
   Versia := 187;
   //нельзя использовать versia в params - используется updater-ом
-  CoolTrayIcon1.IconIndex := 22;
+//  CoolTrayIcon1.IconIndex := 22;
   DisableGhosting;
 end;
 
@@ -825,9 +822,9 @@ end;
 
 procedure TForm_Main.CoolTrayIcon1DblClick(Sender: TObject);
 begin
-  Form_main.CoolTrayIcon1.ShowMainForm;
+{  Form_main.CoolTrayIcon1.ShowMainForm;
   Form_main.CoolTrayIcon1.CycleIcons := False;
-  Form_main.CoolTrayIcon1.IconIndex := 5;
+  Form_main.CoolTrayIcon1.IconIndex := 5;}
 
 end;
 
@@ -878,7 +875,7 @@ end;
 
 procedure TForm_Main.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  Form_Main.CoolTrayIcon1.IconVisible := false;
+//  Form_Main.CoolTrayIcon1.IconVisible := false;
   if FF('Form_olap', 0) = 1 then
     Form_olap.Close;
   if FF('Form_tree_objects', 0) = 1 then
@@ -1218,8 +1215,8 @@ begin
   end
   else if LeftStr(IList.Text, 4) = 'info' then
   begin
-    Form_main.CoolTrayIcon1.ShowBalloonHint('Внимание!', copy(IList.Text, 6,
-      length(IList.Text)), bitInfo, 60);
+{    Form_main.CoolTrayIcon1.ShowBalloonHint('Внимание!', copy(IList.Text, 6,
+      length(IList.Text)), bitInfo, 60);}
   end
   else if LeftStr(IList.Text, pos('-', IList.Text) - 1) + '-lsk' =
     LowerCase(user) + '-lsk' then
@@ -2415,6 +2412,20 @@ procedure TForm_Main.AppException(Sender: TObject; E: Exception);
 var
   F: TextFile;
 begin
+  // игнорировать ошибку данного типа
+  if E.Message = 'Дочерние окна не могут иметь меню.' then
+    Exit;
+  if E.Message = 'Окно не имеет полос прокрутки.' then
+    Exit;
+  if E.Message = 'Canvas does not allow drawing' then
+    Exit;
+  if E.Message = 'The edit value is invalid' then
+  begin
+    Application.MessageBox('Ошибка ввода!',
+      'Внимание!', MB_OK + MB_ICONERROR + MB_TOPMOST);
+    Exit;
+  end;
+
   // предварительно отправить сообщение в базу
   try
     if E is EOracleError then
@@ -2442,27 +2453,19 @@ begin
     CloseFile(F);
   end;
 
-  // игнорировать ошибку данного типа
-  if E.Message = 'Дочерние окна не могут иметь меню.' then
-    Exit;
-  if E.Message = 'Окно не имеет полос прокрутки.' then
-    Exit;
-  if E.Message = 'Canvas does not allow drawing' then
-    Exit;
-
   if E is EOracleError then
   begin
     if EOracleError(E).ErrorCode = 4068 then
     begin
       // защита, чтобы Enter-ом не прожали сообщение
-      while
-        Application.MessageBox('Программа обновлена, повторить данное сообщение?',
-        'Внимание!', MB_RETRYCANCEL + MB_ICONQUESTION + MB_TOPMOST) = IDRETRY do
-      begin
-      end;
+      //while
+        //Application.MessageBox('Программа обновлена, повторить данное сообщение?',
+        //'Внимание!', MB_OK + MB_ICONQUESTION + MB_TOPMOST);// = IDRETRY do
+      //begin
+      //end;
 
       if
-        Application.MessageBox('Выйти из приложения, чтоб параметры вступили в силу?',
+        Application.MessageBox('Программа обновлена, выйти из приложения, чтоб параметры вступили в силу?',
         'Внимание!', MB_YESNO + MB_ICONQUESTION + MB_TOPMOST)
         = IDYES then
       begin
@@ -2472,12 +2475,11 @@ begin
     else
     begin
       // защита, чтобы Enter-ом не прожали сообщение
-      while
-        Application.MessageBox(PChar(E.Message + #13#10
-        + ' повторить данное собщение?'),
-        'Внимание!', MB_RETRYCANCEL + MB_ICONQUESTION + MB_TOPMOST) = IDRETRY do
-      begin
-      end;
+      //while
+      Application.MessageBox(PChar(E.Message + #13#10),
+        'Внимание!', MB_OK + MB_ICONERROR + MB_TOPMOST); // = IDRETRY do
+      //begin
+      //end;
 
       {      if
               Application.MessageBox('Продолжить работу?',
@@ -2490,19 +2492,22 @@ begin
   else
   begin
     // защита, чтобы Enter-ом не прожали сообщение
-    while
-      Application.MessageBox(PChar(E.Message + #13#10
-      + ' повторить данное собщение?'),
-      'Внимание!', MB_RETRYCANCEL + MB_ICONQUESTION + MB_TOPMOST) = IDRETRY do
-    begin
-    end;
+    Application.MessageBox(PChar(E.Message + #13#10),
+      'Внимание!', MB_OK + MB_ICONERROR + MB_TOPMOST); // = IDRETRY do
 
-    {    if
-          Application.MessageBox('Продолжить работу?',
-          'Внимание!', MB_YESNO + MB_ICONQUESTION + MB_TOPMOST) <> IDYES then
+    {    while
+          Application.MessageBox(PChar(E.Message + #13#10
+          + ' повторить данное собщение?'),
+          'Внимание!', MB_RETRYCANCEL + MB_ICONQUESTION + MB_TOPMOST) = IDRETRY do
         begin
-          Application.Terminate;
         end;}
+
+        {    if
+              Application.MessageBox('Продолжить работу?',
+              'Внимание!', MB_YESNO + MB_ICONQUESTION + MB_TOPMOST) <> IDYES then
+            begin
+              Application.Terminate;
+            end;}
   end;
 
 end;

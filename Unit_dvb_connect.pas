@@ -224,7 +224,7 @@ end;
 
 procedure TForm_dvb_connect.CheckBox3Click(Sender: TObject);
 begin
-  if CheckBox3.Checked then
+{  if CheckBox3.Checked then
   begin
     if msg3('Свернуть приложение?', 'Внимание!', MB_YESNO+MB_ICONQUESTION)= ID_YES then
     begin
@@ -239,7 +239,7 @@ begin
   begin
     Timer1.Enabled:=False;
   end;
-
+        }
 end;
 
 procedure TForm_dvb_connect.Timer1Timer(Sender: TObject);

@@ -389,7 +389,7 @@ begin
       [parNone]);
 
     //нельзя использовать versia в params - используется updater-ом
-    Form_Main.CoolTrayIcon1.ShowTaskbarIcon;
+//    Form_Main.CoolTrayIcon1.ShowTaskbarIcon;
   end;
 
   Form_main.OD_params.Active := true;
@@ -421,7 +421,7 @@ begin
     [parNone])) > 0)) then
   begin
     Application.Title := 'Директ';
-    Form_Main.CoolTrayIcon1.Hint := 'Директ';
+    //Form_Main.CoolTrayIcon1.Hint := 'Директ';
     Application.CreateForm(TForm_start, Form_start);
     Form_start.ShowModal;
     Form_start.Update;
@@ -429,11 +429,11 @@ begin
   else
   begin
     Application.Title := 'Приложение';
-    Form_Main.CoolTrayIcon1.Hint := 'Приложение';
+    //Form_Main.CoolTrayIcon1.Hint := 'Приложение';
     Application.Icon := nil;
     Form_Main.Visible := true;
   end;
-  Form_Main.CoolTrayIcon1.IconVisible := true;
+  //Form_Main.CoolTrayIcon1.IconVisible := true;
   Form_main.WindowState := wsMaximized;
   Application.CreateForm(TForm_sel_comps, Form_sel_comps);
   Form_sel_comps.ShowModal;

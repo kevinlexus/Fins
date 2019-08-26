@@ -33,7 +33,8 @@ uses
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
   dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue,
   dxSkinsdxStatusBarPainter, cxStyles, dxSkinscxPCPainter, cxCustomData,
-  cxFilter, cxData, cxDataStorage, cxDBData, cxDBLookupComboBox;
+  cxFilter, cxData, cxDataStorage, cxDBData, cxDBLookupComboBox,
+  cxImageComboBox, cxGridCardView, cxGridDBCardView, cxGridCustomLayoutView;
 
 type
   TForm_kart = class(TForm)
@@ -82,18 +83,6 @@ type
     OD_saldoSUMMA: TFloatField;
     OD_chargeVOLUME: TStringField;
     Panel2: TPanel;
-    GroupBox3: TGroupBox;
-    GroupBox1: TGroupBox;
-    Label8: TLabel;
-    Label9: TLabel;
-    Label10: TLabel;
-    Label5: TLabel;
-    Label6: TLabel;
-    DBLookupComboboxEh2: TDBLookupComboboxEh;
-    DBEdit4: TDBEdit;
-    DBEdit6: TDBEdit;
-    DBEditEh1: TDBEditEh;
-    DBEdit5: TDBEdit;
     Panel4: TPanel;
     OD_s_reu_trest: TOracleDataSet;
     DS_reu_trest: TDataSource;
@@ -220,80 +209,9 @@ type
     OD_states_sch: TOracleDataSet;
     DS_states_sch: TDataSource;
     OD_chargeKF_KPR: TFloatField;
-    Label13: TLabel;
-    DBEdit11: TDBEdit;
-    Label11: TLabel;
-    DBEdit9: TDBEdit;
-    Label12: TLabel;
-    DBEdit10: TDBEdit;
-    Label18: TLabel;
-    dbedtENTR: TDBEdit;
-    DBCheckBoxEh1: TDBCheckBoxEh;
     OD_chargeSCH_AUTO: TFloatField;
-    PageControl1: TPageControl;
-    TabSheet2: TTabSheet;
-    GroupBox5: TGroupBox;
-    Label14: TLabel;
-    Label15: TLabel;
-    Label30: TLabel;
-    Label17: TLabel;
-    Label16: TLabel;
-    Label23: TLabel;
-    DBEdit_mhw: TDBEdit;
-    DBEdit_mgw: TDBEdit;
-    DBLookupComboboxEh3: TDBLookupComboboxEh;
-    wwCheckBox2: TwwCheckBox;
-    wwCheckBox1: TwwCheckBox;
-    DBLookupComboboxEh13: TDBLookupComboboxEh;
-    DBEdit_mel: TwwDBEdit;
-    wwDBEdit3: TwwDBEdit;
-    TabSheet3: TTabSheet;
-    GroupBox7: TGroupBox;
-    Label26: TLabel;
-    Label28: TLabel;
-    Label29: TLabel;
-    Label31: TLabel;
-    Label44: TLabel;
-    Label32: TLabel;
-    DBEdit_mhw2: TDBEdit;
-    DBEdit_mgw2: TDBEdit;
-    DBLookupComboboxEh6: TDBLookupComboboxEh;
-    DBEdit_phw: TDBEdit;
-    DBEdit_pgw: TDBEdit;
-    DBEdit_pel: TDBEdit;
-    DBEdit_mel2: TDBEdit;
-    wwCheckBox3: TwwCheckBox;
-    DBLookupComboboxEh16: TDBLookupComboboxEh;
-    wwCheckBox4: TwwCheckBox;
-    TabSheet4: TTabSheet;
-    Label40: TLabel;
-    wwDBGrid1: TwwDBGrid;
-    TabSheet1: TTabSheet;
-    GroupBox9: TGroupBox;
-    Label39: TLabel;
-    DBLookupComboboxEh10: TDBLookupComboboxEh;
-    GroupBox10: TGroupBox;
-    Label41: TLabel;
-    DBLookupComboboxEh11: TDBLookupComboboxEh;
-    TabSheet11: TTabSheet;
-    wwDBNavigator2: TwwDBNavigator;
-    wwNavButton1: TwwNavButton;
-    wwNavButton2: TwwNavButton;
-    wwNavButton3: TwwNavButton;
-    wwNavButton4: TwwNavButton;
-    wwNavButton5: TwwNavButton;
-    wwNavButton6: TwwNavButton;
-    TabSheet10: TTabSheet;
-    Label25: TLabel;
-    Label27: TLabel;
-    DBEdit1: TDBEdit;
-    DBEdit13: TDBEdit;
-    Label45: TLabel;
-    Label46: TLabel;
-    DBEdit17: TDBEdit;
     OD_chargeVOL: TFloatField;
     OD_chargeNRM_KPR: TFloatField;
-    wwDBGrid4: TwwDBGrid;
     Label48: TLabel;
     wwDBDateTimePicker3: TwwDBDateTimePicker;
     DBEdit18: TDBEdit;
@@ -302,44 +220,28 @@ type
     Label50: TLabel;
     Button1: TButton;
     Button4: TButton;
-    CheckBox1: TCheckBox;
-    CheckBox4: TCheckBox;
     PopupMenu2: TPopupMenu;
     N3: TMenuItem;
     N4: TMenuItem;
     OD_kart_prST_DT1: TDateTimeField;
     OD_kart_prST_DT2: TDateTimeField;
     OD_kart_prST_NAME: TStringField;
-    wwCheckBox5: TwwCheckBox;
     fltfldOD_chargeORG: TFloatField;
     fltfldOD_chargeTP: TFloatField;
     fltfldOD_chargeSPTARN: TFloatField;
     PopupMenu3: TPopupMenu;
     mnu2: TMenuItem;
     OD_chargeKF_KPR_SCH: TFloatField;
-    BitBtn3: TBitBtn;
-    BitBtn4: TBitBtn;
-    Label51: TLabel;
-    DBEdit19: TDBEdit;
     DSDriver_tarif: TDataSetDriverEh;
-    BitBtn5: TBitBtn;
-    BitBtn6: TBitBtn;
     OD_houses: TOracleDataSet;
     DS_houses: TDataSource;
     DBLookupComboboxEh12: TDBLookupComboboxEh;
-    Label52: TLabel;
-    DBDateTimeEditEh1: TDBDateTimeEditEh;
     dxStatusBar1: TdxStatusBar;
     OD_chargeNRM_KPR2: TFloatField;
     OD_kart_prPRIV_PROC: TStringField;
     TabSheet12: TTabSheet;
     cxDBCheckBox1: TcxDBCheckBox;
     cxprprtstr1: TcxPropertiesStore;
-    lbl1: TLabel;
-    dbedtPOT: TDBEdit;
-    dbedtMOT: TDBEdit;
-    cxDBTextEdit1: TcxDBTextEdit;
-    lbl2: TLabel;
     DS_psch2: TDataSource;
     OD_psch2: TOracleDataSet;
     StringField2: TStringField;
@@ -348,8 +250,6 @@ type
     cxDBTextEdit2: TcxDBTextEdit;
     Label55: TLabel;
     Label24: TLabel;
-    DBEdit8: TDBEdit;
-    Label56: TLabel;
     Label60: TLabel;
     cxDBTextEdit3: TcxDBTextEdit;
     OD_chargeREU: TStringField;
@@ -389,13 +289,6 @@ type
     mnu1: TMenuItem;
     OD_close_reason: TOracleDataSet;
     DS_close_reason: TDataSource;
-    cxGrid2DBTableView1: TcxGridDBTableView;
-    cxGrid2Level1: TcxGridLevel;
-    cxGrid2: TcxGrid;
-    cxGrid2DBTableView1DT1: TcxGridDBColumn;
-    cxGrid2DBTableView1DT2: TcxGridDBColumn;
-    cxGrid2DBTableView1PSCH_NAME: TcxGridDBColumn;
-    cxGrid2DBTableView1CLOSE_REASON: TcxGridDBColumn;
     OD_pschID: TFloatField;
     OD_pschNAME: TStringField;
     OD_pschTP: TFloatField;
@@ -406,6 +299,169 @@ type
     OD_states_schFK_STATUS: TFloatField;
     OD_states_schFK_CLOSE_REASON: TFloatField;
     Button2: TButton;
+    Label61: TLabel;
+    Panel3: TPanel;
+    PageControl1: TPageControl;
+    TabSheet2: TTabSheet;
+    GroupBox5: TGroupBox;
+    Label14: TLabel;
+    Label15: TLabel;
+    Label30: TLabel;
+    Label17: TLabel;
+    Label16: TLabel;
+    Label23: TLabel;
+    Label45: TLabel;
+    DBEdit_mhw: TDBEdit;
+    DBEdit_mgw: TDBEdit;
+    DBLookupComboboxEh3: TDBLookupComboboxEh;
+    wwCheckBox2: TwwCheckBox;
+    wwCheckBox1: TwwCheckBox;
+    DBLookupComboboxEh13: TDBLookupComboboxEh;
+    DBEdit_mel: TwwDBEdit;
+    wwDBEdit3: TwwDBEdit;
+    BitBtn3: TBitBtn;
+    BitBtn6: TBitBtn;
+    TabSheet3: TTabSheet;
+    GroupBox7: TGroupBox;
+    Label26: TLabel;
+    Label28: TLabel;
+    Label29: TLabel;
+    Label31: TLabel;
+    Label44: TLabel;
+    Label32: TLabel;
+    lbl1: TLabel;
+    DBEdit_mhw2: TDBEdit;
+    DBEdit_mgw2: TDBEdit;
+    DBLookupComboboxEh6: TDBLookupComboboxEh;
+    DBEdit_phw: TDBEdit;
+    DBEdit_pgw: TDBEdit;
+    DBEdit_pel: TDBEdit;
+    DBEdit_mel2: TDBEdit;
+    wwCheckBox3: TwwCheckBox;
+    DBLookupComboboxEh16: TDBLookupComboboxEh;
+    wwCheckBox4: TwwCheckBox;
+    BitBtn4: TBitBtn;
+    BitBtn5: TBitBtn;
+    dbedtPOT: TDBEdit;
+    dbedtMOT: TDBEdit;
+    TabSheet4: TTabSheet;
+    Label40: TLabel;
+    wwDBGrid1: TwwDBGrid;
+    TabSheet1: TTabSheet;
+    GroupBox9: TGroupBox;
+    Label39: TLabel;
+    DBLookupComboboxEh10: TDBLookupComboboxEh;
+    wwCheckBox5: TwwCheckBox;
+    GroupBox10: TGroupBox;
+    Label41: TLabel;
+    DBLookupComboboxEh11: TDBLookupComboboxEh;
+    TabSheet11: TTabSheet;
+    wwDBNavigator2: TwwDBNavigator;
+    wwNavButton1: TwwNavButton;
+    wwNavButton2: TwwNavButton;
+    wwNavButton3: TwwNavButton;
+    wwNavButton4: TwwNavButton;
+    wwNavButton5: TwwNavButton;
+    wwNavButton6: TwwNavButton;
+    cxGrid2: TcxGrid;
+    cxGrid2DBTableView1: TcxGridDBTableView;
+    cxGrid2DBTableView1PSCH_NAME: TcxGridDBColumn;
+    cxGrid2DBTableView1CLOSE_REASON: TcxGridDBColumn;
+    cxGrid2DBTableView1DT1: TcxGridDBColumn;
+    cxGrid2DBTableView1DT2: TcxGridDBColumn;
+    cxGrid2Level1: TcxGridLevel;
+    TabSheet10: TTabSheet;
+    Label25: TLabel;
+    Label27: TLabel;
+    Label46: TLabel;
+    Label52: TLabel;
+    Label56: TLabel;
+    Label62: TLabel;
+    DBEdit1: TDBEdit;
+    DBEdit13: TDBEdit;
+    DBEdit17: TDBEdit;
+    CheckBox1: TCheckBox;
+    CheckBox4: TCheckBox;
+    DBDateTimeEditEh1: TDBDateTimeEditEh;
+    DBEdit8: TDBEdit;
+    DBEdit20: TDBEdit;
+    CheckBox2: TCheckBox;
+    PageControl3: TPageControl;
+    TabSheet8: TTabSheet;
+    TabSheet9: TTabSheet;
+    GroupBox1: TGroupBox;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label10: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label13: TLabel;
+    Label11: TLabel;
+    Label12: TLabel;
+    Label18: TLabel;
+    Label51: TLabel;
+    DBLookupComboboxEh2: TDBLookupComboboxEh;
+    DBEdit4: TDBEdit;
+    DBEdit6: TDBEdit;
+    DBEditEh1: TDBEditEh;
+    DBEdit5: TDBEdit;
+    DBEdit11: TDBEdit;
+    DBEdit9: TDBEdit;
+    DBEdit10: TDBEdit;
+    dbedtENTR: TDBEdit;
+    DBCheckBoxEh1: TDBCheckBoxEh;
+    DBEdit19: TDBEdit;
+    GroupBox3: TGroupBox;
+    wwDBGrid4: TwwDBGrid;
+    OD_owner: TOracleDataSet;
+    DS_owner: TDataSource;
+    OD_ownerID: TFloatField;
+    OD_ownerLSK: TStringField;
+    OD_ownerSURNAME: TStringField;
+    OD_ownerFIRSTNAME: TStringField;
+    OD_ownerPATRONYMIC: TStringField;
+    OD_ownerDT_BIRTH: TDateTimeField;
+    OD_ownerSEX: TFloatField;
+    OD_ownerFK_DOC_TP: TFloatField;
+    OD_ownerDOC_SERIES: TStringField;
+    OD_ownerDOC_NUM: TStringField;
+    OD_ownerDOC_DT: TDateTimeField;
+    OD_ownerDOC_ISSUED_BY: TStringField;
+    OD_ownerSHARE_RATE: TStringField;
+    OD_ownerUSE_GIS_ELS_DIVIDE: TFloatField;
+    cxGrid3DBTableView1: TcxGridDBTableView;
+    cxGrid3: TcxGrid;
+    cxGrid3DBTableView1SURNAME: TcxGridDBColumn;
+    cxGrid3DBTableView1FIRSTNAME: TcxGridDBColumn;
+    cxGrid3DBTableView1PATRONYMIC: TcxGridDBColumn;
+    cxGrid3DBTableView1DT_BIRTH: TcxGridDBColumn;
+    cxGrid3DBTableView1USE_GIS_ELS_DIVIDE: TcxGridDBColumn;
+    cxGrid3DBTableView1ID: TcxGridDBColumn;
+    cxGrid3Level1: TcxGridLevel;
+    cxGrid3DBTableView2: TcxGridDBTableView;
+    cxGrid3DBTableView2ID: TcxGridDBColumn;
+    cxGrid3DBTableView2SURNAME: TcxGridDBColumn;
+    cxGrid3DBTableView2FIRSTNAME: TcxGridDBColumn;
+    cxGrid3DBTableView2PATRONYMIC: TcxGridDBColumn;
+    cxGrid3DBTableView2DT_BIRTH: TcxGridDBColumn;
+    cxGrid3DBTableView2SHARE_RATE: TcxGridDBColumn;
+    cxGrid3DBTableView2USE_GIS_ELS_DIVIDE: TcxGridDBColumn;
+    cxGrid3DBCardView1: TcxGridDBCardView;
+    cxGrid3DBCardView1SEX: TcxGridDBCardViewRow;
+    cxGrid3DBCardView1DOC_SERIES: TcxGridDBCardViewRow;
+    cxGrid3DBCardView1DOC_NUM: TcxGridDBCardViewRow;
+    cxGrid3DBCardView1DOC_DT: TcxGridDBCardViewRow;
+    cxGrid3DBCardView1DOC_ISSUED_BY: TcxGridDBCardViewRow;
+    cxGrid3Level2: TcxGridLevel;
+    cxGrid3DBCardView1DOC_TP: TcxGridDBCardViewRow;
+    OD_doc: TOracleDataSet;
+    OD_docID: TFloatField;
+    OD_docCD: TStringField;
+    OD_docNAME: TStringField;
+    OD_docNM: TStringField;
+    OD_docFK_LISTTP: TFloatField;
+    OD_docNPP: TFloatField;
+    DS_doc: TDataSource;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure DBGridEh1DblClick(Sender: TObject);
     procedure OD_kartAfterPost(DataSet: TDataSet);
@@ -503,7 +559,11 @@ type
       Sender: TObject);
     procedure cxGrid2DBTableView1PSCH_NAMEPropertiesInitPopup(
       Sender: TObject);
-    //    procedure change_size;
+    procedure check_kart_correct;
+    procedure CheckBox2Click(Sender: TObject);
+    procedure cxGrid3DBTableView2FocusedItemChanged(
+      Sender: TcxCustomGridTableView; APrevFocusedItem,
+      AFocusedItem: TcxCustomGridTableItem);
   private
     tarif_, privs_, subsid_, changes_, itogn_: Double;
     size_, allow_dtv_, id_, action_, fk_tarif_: Integer;
@@ -735,49 +795,49 @@ begin
 end;
 
 // сохранить или откатить изменени€
-
 procedure TForm_kart.saveOrRollbackKart(ask_: Integer; isCommit: Boolean);
-var
-  err_: string;
 begin
   LockControl(wwDBGrid4, true);
   if isCommit <> true then
   begin
     // отменить изменени€, без вопросов
-    if not (Form_kart.OD_charge.State in [dsBrowse]) then
+    if not (OD_charge.State in [dsBrowse]) then
       Form_kart.OD_charge.Cancel;
-    if not (Form_kart.OD_states_sch.State in [dsBrowse]) then
+    if not (OD_states_sch.State in [dsBrowse]) then
       Form_kart.OD_states_sch.Cancel;
     if not (Form_list_kart.OD_list_kart.State in [dsBrowse]) then
       Form_list_kart.OD_list_kart.Cancel;
+    if not (OD_owner.State in [dsBrowse]) then
+        OD_owner.Cancel;
     DataModule1.OracleSession1.CancelUpdates([Form_list_kart.OD_list_kart,
-      Form_kart.OD_charge, Form_kart.OD_states_sch]);
+      OD_charge, OD_states_sch, OD_owner]);
     // отмена изменений, сделанных в пакетах
     DataModule1.OracleSession1.Rollback;
   end
   else
   begin
     // сохранить изменени€
-    if not (Form_kart.OD_charge.State in [dsBrowse]) then
-      Form_kart.OD_charge.Post;
-    if not (Form_kart.OD_states_sch.State in [dsBrowse]) then
-      Form_kart.OD_states_sch.Post;
+    if not (OD_charge.State in [dsBrowse]) then
+      OD_charge.Post;
+    if not (OD_states_sch.State in [dsBrowse]) then
+      OD_states_sch.Post;
     if not (Form_list_kart.OD_list_kart.State in [dsBrowse]) then
       Form_list_kart.OD_list_kart.Post;
+    if not (OD_owner.State in [dsBrowse]) then
+      OD_owner.Post;
 
     if (Form_list_kart.OD_list_kart.UpdateStatus in [usInserted, usModified,
       usDeleted])
-      or (Form_kart.OD_charge.UpdatesPending = true)
-      or (Form_kart.OD_states_sch.UpdatesPending = true) or (updates_ = 1) then
+      or (OD_charge.UpdatesPending = true)
+      or (OD_owner.UpdatesPending = true)
+      or (OD_states_sch.UpdatesPending = true) or (updates_ = 1) then
     begin
       if ask_ = 0 then
       begin
         // сохранить без вопросов
         DataModule1.OracleSession1.ApplyUpdates([Form_list_kart.OD_list_kart,
-          Form_kart.OD_charge, Form_kart.OD_states_sch], true);
-        {DataModule1.OracleSession1.ApplyUpdates([Form_kart.OD_charge], true);
-        DataModule1.OracleSession1.ApplyUpdates([Form_kart.OD_states_sch],
-          true);}
+          OD_charge, OD_owner, OD_states_sch], true);
+        check_kart_correct;
         // подтверждение изменений, сделанных в пакетах
         DataModule1.OracleSession1.Commit;
       end
@@ -789,26 +849,22 @@ begin
         begin
           // сохранить с вопросом
           DataModule1.OracleSession1.ApplyUpdates([Form_list_kart.OD_list_kart,
-            Form_kart.OD_charge, Form_kart.OD_states_sch], true);
-          { DataModule1.OracleSession1.ApplyUpdates([Form_kart.OD_charge], true);
-           DataModule1.OracleSession1.ApplyUpdates([Form_kart.OD_states_sch],
-             true);
-           DataModule1.OracleSession1.ApplyUpdates([Form_list_kart.OD_list_kart],
-             true);}
+            OD_charge, OD_owner, OD_states_sch], true);
+          check_kart_correct;
            //дл€ подтверждени€ изменений, сделанных в пакетах
           DataModule1.OracleSession1.Commit;
         end
         else
         begin
           // отменить изменени€
-          if not (Form_kart.OD_charge.State in [dsBrowse]) then
-            Form_kart.OD_charge.Cancel;
-          if not (Form_kart.OD_states_sch.State in [dsBrowse]) then
-            Form_kart.OD_states_sch.Cancel;
+          if not (OD_charge.State in [dsBrowse]) then
+            OD_charge.Cancel;
+          if not (OD_states_sch.State in [dsBrowse]) then
+            OD_states_sch.Cancel;
           if not (Form_list_kart.OD_list_kart.State in [dsBrowse]) then
             Form_list_kart.OD_list_kart.Cancel;
           DataModule1.OracleSession1.CancelUpdates([Form_list_kart.OD_list_kart,
-            Form_kart.OD_charge, Form_kart.OD_states_sch]);
+            OD_charge, OD_owner, OD_states_sch]);
           // отмена изменений, сделанных в пакетах
           DataModule1.OracleSession1.Rollback;
         end;
@@ -827,7 +883,13 @@ begin
   updates_ := 0;
   LockControl(wwDBGrid4, false);
 
-  //ѕроверка корректности статусов счетчиков, статусов проживающих
+end;
+
+// проверка корректности статусов счетчиков, статусов проживающих
+procedure TForm_kart.check_kart_correct;
+var
+  err_: string;
+begin
   if getDoublePar(Form_main.paramList, 'SHOW_ALERT1') = 1 then
   begin
     err_ := DataModule1.OraclePackage1.CallStringFunction('scott.UTILS.tst_krt',
@@ -845,7 +907,6 @@ begin
   begin
     dxStatusBar1.Panels[0].Text := '';
   end;
-
 end;
 
 procedure changes_sch_el(var_: Integer);
@@ -1039,30 +1100,6 @@ begin
       end
     end;
   end;
-
-  // разрешено ли править поле показани€ счетчика
-  // запрещено вводить здесть в версии со счетчиками в гис жкх!! ! ред. 26.06.2017
-{  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.INIT.get_is_cnt_sch', [parNone]) = 1)
-   or (DataModule1.OraclePackage1.CallIntegerFunction('scott.INIT.get_is_cnt_sch', [parNone]) = 0)
-  then
-  begin
-    PageControl1.ActivePageIndex := 1;
-    TabSheet2.TabVisible := false;
-  end
-  else
-  begin
-    PageControl1.ActivePageIndex := 0;
-    TabSheet3.TabVisible := false;
-  end;}
-
-{  with OD_houses do
-  begin
-    Active := false;
-    //SetVariable('reu', Form_list_kart.OD_list_kart.FieldByName('reu').AsString);
-    SetVariable('kul', OD_spul.FieldByName('id').AsString);
-    Active := true;
-  end;       }
-
   LockWindowUpdate(0);
 end;
 
@@ -1298,6 +1335,12 @@ begin
     DBDateTimeEditEh1.Visible := false;
   end;
 
+  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
+    ['drx_редактирование_klsk']) = 1) then
+    CheckBox2.Enabled := True
+  else
+    CheckBox2.Enabled := false;
+
   updates_ := 0;
 
   if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
@@ -1316,6 +1359,8 @@ begin
 
   PageControl1.ActivePageIndex := 0;
   PageControl2.ActivePageIndex := 0;
+  PageControl3.ActivePageIndex := 0;
+
 
   TabSheet7.TabVisible := False;
   TabSheet6.TabVisible := True;
@@ -1350,6 +1395,9 @@ begin
 
   OD_kart_pr.SetVariable('var_', 0);
   OD_kart_pr.Active := true;
+  OD_doc.Active := true;
+
+  OD_owner.Active:=True;
   OD_charge.Active := true;
   OD_s_reu_trest.Active := true;
   OD_spul.Active := true;
@@ -2311,6 +2359,33 @@ begin
     Filter.Root.AddItem(LkupItem, foEqual, 8, '');
   TcxLookupComboBox(Sender).Properties.Grid.DataController.
     Filter.Root.AddItem(LkupItem, foEqual, 9, '');
+end;
+
+procedure TForm_kart.CheckBox2Click(Sender: TObject);
+begin
+  if CheckBox2.Checked=True then
+  begin
+    Form_list_kart.OD_list_kartFK_KLSK_OBJ.ReadOnly:=False;
+    Form_list_kart.OD_list_kartK_LSK_ID.ReadOnly:=False;
+    Form_list_kart.OD_list_kartFK_KLSK_PREMISE.ReadOnly:=False;
+    Form_list_kart.OD_list_kartHOUSE_ID.ReadOnly:=False;
+  end
+  else
+  begin
+    Form_list_kart.OD_list_kartFK_KLSK_OBJ.ReadOnly:=True;
+    Form_list_kart.OD_list_kartK_LSK_ID.ReadOnly:=True;
+    Form_list_kart.OD_list_kartFK_KLSK_PREMISE.ReadOnly:=True;
+    Form_list_kart.OD_list_kartHOUSE_ID.ReadOnly:=True;
+  end;
+end;
+
+procedure TForm_kart.cxGrid3DBTableView2FocusedItemChanged(
+  Sender: TcxCustomGridTableView; APrevFocusedItem,
+  AFocusedItem: TcxCustomGridTableItem);
+begin
+  if (OD_owner.State = dsEdit) or (OD_owner.State = dsInsert) then
+    OD_owner.Post;
+
 end;
 
 end.

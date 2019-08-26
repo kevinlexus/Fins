@@ -28,7 +28,6 @@ uses
 type
   TForm_new_lsk = class(TForm)
     GroupBox1: TGroupBox;
-    wwDBEdit3: TwwDBEdit;
     GroupBox2: TGroupBox;
     Button2: TButton;
     Button1: TButton;
@@ -44,12 +43,17 @@ type
     RadioGroup1: TRadioGroup;
     CheckBox1: TCheckBox;
     CheckBox2: TCheckBox;
+    Label3: TLabel;
+    Label4: TLabel;
+    cxMaskEdit1: TcxMaskEdit;
+    cxMaskEdit2: TcxMaskEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure cbb2PropertiesCloseUp(Sender: TObject);
+    procedure RadioGroup1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -77,9 +81,8 @@ begin
   OD_reu.Active := true;
   cbb2.EditValue := 'LSK_TP_MAIN';
   str_ := Form_list_kart.OD_list_kart.FieldByName('lsk').asString;
-  wwDBEdit3.Text := DataModule1.OraclePackage1.CallStringFunction(
+  cxMaskEdit2.Text := DataModule1.OraclePackage1.CallStringFunction(
     'scott.UTILS.get_new_lsk', [str_, null]);
-  //cxLookupComboBox1.Enabled:=False;
 end;
 
 procedure TForm_new_lsk.Button1Click(Sender: TObject);
@@ -112,17 +115,18 @@ begin
     cnt_ := DataModule1.OraclePackage1.CallIntegerFunction(
       'scott.P_HOUSES.kart_lsk_add',
       [Form_list_kart.OD_list_kart.FieldByName('lsk').asString,
-      cbb2.EditValue, wwDBEdit3.Text,
+      cbb2.EditValue, cxMaskEdit2.Text,
         lGetUslFromSrc,
         lDelUslFromSrc,
         RadioGroup1.ItemIndex,
+        cxMaskEdit1.Text,
         cxLookupComboBox1.EditValue
         ]);
     if cnt_ = 0 then
     begin
       DataModule1.OraclePackage1.Session.Commit;
       Form_list_kart.OD_list_kart.Refresh;
-      Form_list_kart.OD_list_kart.SearchRecord('lsk', wwDBEdit3.Text,
+      Form_list_kart.OD_list_kart.SearchRecord('lsk', cxMaskEdit2.Text,
         [srFromBeginning]);
       Form_new_lsk.Visible := false;
       Application.MessageBox('Лицевой счет создан!',
@@ -157,8 +161,8 @@ end;
 
 procedure TForm_new_lsk.Button3Click(Sender: TObject);
 begin
-  wwDBEdit3.Text := DataModule1.OraclePackage1.CallStringFunction(
-    'scott.UTILS.get_new_lsk', [str_, wwDBEdit3.Text]);
+  cxMaskEdit2.Text := DataModule1.OraclePackage1.CallStringFunction(
+    'scott.UTILS.get_new_lsk', [str_, cxMaskEdit2.Text]);
 end;
 
 procedure TForm_new_lsk.cbb2PropertiesCloseUp(Sender: TObject);
@@ -171,6 +175,21 @@ begin
   begin
     CheckBox2.Checked := False;
     CheckBox2.Enabled := False;
+  end;
+end;
+
+procedure TForm_new_lsk.RadioGroup1Click(Sender: TObject);
+begin
+  // показать/скрыть поле ввода № квартиры
+  if RadioGroup1.ItemIndex=2 then
+  begin
+    Label3.Enabled:=True;
+    cxMaskEdit1.Enabled:=True;
+  end
+  else
+  begin
+    Label3.Enabled:=False;
+    cxMaskEdit1.Enabled:=False;
   end;
 end;
 
