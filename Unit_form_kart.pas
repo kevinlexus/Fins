@@ -34,7 +34,9 @@ uses
   dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue,
   dxSkinsdxStatusBarPainter, cxStyles, dxSkinscxPCPainter, cxCustomData,
   cxFilter, cxData, cxDataStorage, cxDBData, cxDBLookupComboBox,
-  cxImageComboBox, cxGridCardView, cxGridDBCardView, cxGridCustomLayoutView;
+  cxImageComboBox, cxGridCardView, cxGridDBCardView, cxGridCustomLayoutView,
+  dxLayoutContainer, cxGridViewLayoutContainer, cxGridLayoutView,
+  cxGridDBLayoutView, cxButtonEdit;
 
 type
   TForm_kart = class(TForm)
@@ -386,9 +388,15 @@ type
     DBEdit8: TDBEdit;
     DBEdit20: TDBEdit;
     CheckBox2: TCheckBox;
-    PageControl3: TPageControl;
-    TabSheet8: TTabSheet;
-    TabSheet9: TTabSheet;
+    OD_doc: TOracleDataSet;
+    OD_docID: TFloatField;
+    OD_docCD: TStringField;
+    OD_docNAME: TStringField;
+    OD_docNM: TStringField;
+    OD_docFK_LISTTP: TFloatField;
+    OD_docNPP: TFloatField;
+    DS_doc: TDataSource;
+    Panel5: TPanel;
     GroupBox1: TGroupBox;
     Label8: TLabel;
     Label9: TLabel;
@@ -413,55 +421,11 @@ type
     DBEdit19: TDBEdit;
     GroupBox3: TGroupBox;
     wwDBGrid4: TwwDBGrid;
-    OD_owner: TOracleDataSet;
-    DS_owner: TDataSource;
-    OD_ownerID: TFloatField;
-    OD_ownerLSK: TStringField;
-    OD_ownerSURNAME: TStringField;
-    OD_ownerFIRSTNAME: TStringField;
-    OD_ownerPATRONYMIC: TStringField;
-    OD_ownerDT_BIRTH: TDateTimeField;
-    OD_ownerSEX: TFloatField;
-    OD_ownerFK_DOC_TP: TFloatField;
-    OD_ownerDOC_SERIES: TStringField;
-    OD_ownerDOC_NUM: TStringField;
-    OD_ownerDOC_DT: TDateTimeField;
-    OD_ownerDOC_ISSUED_BY: TStringField;
-    OD_ownerSHARE_RATE: TStringField;
-    OD_ownerUSE_GIS_ELS_DIVIDE: TFloatField;
-    cxGrid3DBTableView1: TcxGridDBTableView;
-    cxGrid3: TcxGrid;
-    cxGrid3DBTableView1SURNAME: TcxGridDBColumn;
-    cxGrid3DBTableView1FIRSTNAME: TcxGridDBColumn;
-    cxGrid3DBTableView1PATRONYMIC: TcxGridDBColumn;
-    cxGrid3DBTableView1DT_BIRTH: TcxGridDBColumn;
-    cxGrid3DBTableView1USE_GIS_ELS_DIVIDE: TcxGridDBColumn;
-    cxGrid3DBTableView1ID: TcxGridDBColumn;
-    cxGrid3Level1: TcxGridLevel;
-    cxGrid3DBTableView2: TcxGridDBTableView;
-    cxGrid3DBTableView2ID: TcxGridDBColumn;
-    cxGrid3DBTableView2SURNAME: TcxGridDBColumn;
-    cxGrid3DBTableView2FIRSTNAME: TcxGridDBColumn;
-    cxGrid3DBTableView2PATRONYMIC: TcxGridDBColumn;
-    cxGrid3DBTableView2DT_BIRTH: TcxGridDBColumn;
-    cxGrid3DBTableView2SHARE_RATE: TcxGridDBColumn;
-    cxGrid3DBTableView2USE_GIS_ELS_DIVIDE: TcxGridDBColumn;
-    cxGrid3DBCardView1: TcxGridDBCardView;
-    cxGrid3DBCardView1SEX: TcxGridDBCardViewRow;
-    cxGrid3DBCardView1DOC_SERIES: TcxGridDBCardViewRow;
-    cxGrid3DBCardView1DOC_NUM: TcxGridDBCardViewRow;
-    cxGrid3DBCardView1DOC_DT: TcxGridDBCardViewRow;
-    cxGrid3DBCardView1DOC_ISSUED_BY: TcxGridDBCardViewRow;
-    cxGrid3Level2: TcxGridLevel;
-    cxGrid3DBCardView1DOC_TP: TcxGridDBCardViewRow;
-    OD_doc: TOracleDataSet;
-    OD_docID: TFloatField;
-    OD_docCD: TStringField;
-    OD_docNAME: TStringField;
-    OD_docNM: TStringField;
-    OD_docFK_LISTTP: TFloatField;
-    OD_docNPP: TFloatField;
-    DS_doc: TDataSource;
+    OD_kart_prDOK_SNILS: TStringField;
+    TabSheet8: TTabSheet;
+    GroupBox2: TGroupBox;
+    cxDBCheckBox2: TcxDBCheckBox;
+    OD_kart_prUSE_GIS_DIVIDE_ELS: TIntegerField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure DBGridEh1DblClick(Sender: TObject);
     procedure OD_kartAfterPost(DataSet: TDataSet);
@@ -561,9 +525,6 @@ type
       Sender: TObject);
     procedure check_kart_correct;
     procedure CheckBox2Click(Sender: TObject);
-    procedure cxGrid3DBTableView2FocusedItemChanged(
-      Sender: TcxCustomGridTableView; APrevFocusedItem,
-      AFocusedItem: TcxCustomGridTableItem);
   private
     tarif_, privs_, subsid_, changes_, itogn_: Double;
     size_, allow_dtv_, id_, action_, fk_tarif_: Integer;
@@ -807,10 +768,8 @@ begin
       Form_kart.OD_states_sch.Cancel;
     if not (Form_list_kart.OD_list_kart.State in [dsBrowse]) then
       Form_list_kart.OD_list_kart.Cancel;
-    if not (OD_owner.State in [dsBrowse]) then
-        OD_owner.Cancel;
     DataModule1.OracleSession1.CancelUpdates([Form_list_kart.OD_list_kart,
-      OD_charge, OD_states_sch, OD_owner]);
+      OD_charge, OD_states_sch]);
     // отмена изменений, сделанных в пакетах
     DataModule1.OracleSession1.Rollback;
   end
@@ -823,20 +782,17 @@ begin
       OD_states_sch.Post;
     if not (Form_list_kart.OD_list_kart.State in [dsBrowse]) then
       Form_list_kart.OD_list_kart.Post;
-    if not (OD_owner.State in [dsBrowse]) then
-      OD_owner.Post;
 
     if (Form_list_kart.OD_list_kart.UpdateStatus in [usInserted, usModified,
       usDeleted])
       or (OD_charge.UpdatesPending = true)
-      or (OD_owner.UpdatesPending = true)
       or (OD_states_sch.UpdatesPending = true) or (updates_ = 1) then
     begin
       if ask_ = 0 then
       begin
         // сохранить без вопросов
         DataModule1.OracleSession1.ApplyUpdates([Form_list_kart.OD_list_kart,
-          OD_charge, OD_owner, OD_states_sch], true);
+          OD_charge, OD_states_sch], true);
         check_kart_correct;
         // подтверждение изменений, сделанных в пакетах
         DataModule1.OracleSession1.Commit;
@@ -849,7 +805,7 @@ begin
         begin
           // сохранить с вопросом
           DataModule1.OracleSession1.ApplyUpdates([Form_list_kart.OD_list_kart,
-            OD_charge, OD_owner, OD_states_sch], true);
+            OD_charge, OD_states_sch], true);
           check_kart_correct;
            //для подтверждения изменений, сделанных в пакетах
           DataModule1.OracleSession1.Commit;
@@ -864,7 +820,7 @@ begin
           if not (Form_list_kart.OD_list_kart.State in [dsBrowse]) then
             Form_list_kart.OD_list_kart.Cancel;
           DataModule1.OracleSession1.CancelUpdates([Form_list_kart.OD_list_kart,
-            OD_charge, OD_owner, OD_states_sch]);
+            OD_charge, OD_states_sch]);
           // отмена изменений, сделанных в пакетах
           DataModule1.OracleSession1.Rollback;
         end;
@@ -1359,7 +1315,6 @@ begin
 
   PageControl1.ActivePageIndex := 0;
   PageControl2.ActivePageIndex := 0;
-  PageControl3.ActivePageIndex := 0;
 
 
   TabSheet7.TabVisible := False;
@@ -1397,7 +1352,6 @@ begin
   OD_kart_pr.Active := true;
   OD_doc.Active := true;
 
-  OD_owner.Active:=True;
   OD_charge.Active := true;
   OD_s_reu_trest.Active := true;
   OD_spul.Active := true;
@@ -2377,15 +2331,6 @@ begin
     Form_list_kart.OD_list_kartFK_KLSK_PREMISE.ReadOnly:=True;
     Form_list_kart.OD_list_kartHOUSE_ID.ReadOnly:=True;
   end;
-end;
-
-procedure TForm_kart.cxGrid3DBTableView2FocusedItemChanged(
-  Sender: TcxCustomGridTableView; APrevFocusedItem,
-  AFocusedItem: TcxCustomGridTableItem);
-begin
-  if (OD_owner.State = dsEdit) or (OD_owner.State = dsInsert) then
-    OD_owner.Post;
-
 end;
 
 end.

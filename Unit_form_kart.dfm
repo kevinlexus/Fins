@@ -1,6 +1,6 @@
 object Form_kart: TForm_kart
-  Left = 341
-  Top = 193
+  Left = 428
+  Top = 189
   Width = 903
   Height = 675
   BorderIcons = [biSystemMenu, biMinimize]
@@ -128,16 +128,16 @@ object Form_kart: TForm_kart
     object Panel3: TPanel
       Left = 1
       Top = 1
-      Width = 321
+      Width = 344
       Height = 222
       Align = alLeft
       TabOrder = 0
       object PageControl1: TPageControl
         Left = 1
         Top = 1
-        Width = 319
+        Width = 342
         Height = 220
-        ActivePage = TabSheet10
+        ActivePage = TabSheet8
         Align = alClient
         TabOrder = 0
         object TabSheet2: TTabSheet
@@ -1010,8 +1010,8 @@ object Form_kart: TForm_kart
           object cxGrid2: TcxGrid
             Left = 0
             Top = 0
-            Width = 329
-            Height = 194
+            Width = 334
+            Height = 192
             Align = alClient
             TabOrder = 1
             object cxGrid2DBTableView1: TcxGridDBTableView
@@ -1274,507 +1274,356 @@ object Form_kart: TForm_kart
             OnClick = CheckBox2Click
           end
         end
+        object TabSheet8: TTabSheet
+          Caption = #1043#1048#1057' '#1046#1050#1061
+          ImageIndex = 6
+          object GroupBox2: TGroupBox
+            Left = 2
+            Top = 0
+            Width = 329
+            Height = 49
+            Caption = #1055#1088#1080#1079#1085#1072#1082#1080' '#1083#1080#1094'.'#1089#1095#1077#1090#1072
+            TabOrder = 0
+            object cxDBCheckBox2: TcxDBCheckBox
+              Left = 8
+              Top = 17
+              Hint = #1048#1089#1087#1086#1083#1100#1079#1086#1074#1072#1090#1100' '#1080#1085#1092#1086#1088#1084#1072#1094#1080#1102' '#1076#1083#1103' '#1088#1072#1079#1076#1077#1083#1077#1085#1080#1103' '#1083#1080#1094'.'#1089#1095#1077#1090#1072' '#1074' '#1043#1048#1057' '#1046#1050#1061
+              Caption = #1056#1072#1079#1076#1077#1083#1077#1085#1085#1099#1081' '#1083#1080#1094'.'#1089#1095#1077#1090' '
+              DataBinding.DataField = 'DIVIDED'
+              DataBinding.DataSource = Form_list_kart.DS_list_kart
+              ParentFont = False
+              Properties.ValueChecked = 1
+              Properties.ValueUnchecked = 0
+              Style.Font.Charset = DEFAULT_CHARSET
+              Style.Font.Color = clWindowText
+              Style.Font.Height = -11
+              Style.Font.Name = 'MS Sans Serif'
+              Style.Font.Style = [fsBold]
+              Style.IsFontAssigned = True
+              TabOrder = 0
+              Width = 161
+            end
+          end
+        end
       end
     end
-    object PageControl3: TPageControl
-      Left = 322
+    object Panel5: TPanel
+      Left = 345
       Top = 1
-      Width = 564
+      Width = 541
       Height = 222
-      ActivePage = TabSheet8
       Align = alClient
       TabOrder = 1
-      object TabSheet9: TTabSheet
-        Caption = #1054#1089#1085#1086#1074#1085#1086#1077
-        ImageIndex = 1
-        object GroupBox1: TGroupBox
-          Left = 0
-          Top = 0
-          Width = 556
-          Height = 73
-          Align = alTop
-          Caption = #1054#1073#1098#1077#1082#1090' '#1085#1077#1076#1074#1080#1078#1080#1084#1086#1089#1090#1080
-          TabOrder = 0
-          object Label8: TLabel
-            Left = 144
-            Top = 52
-            Width = 47
-            Height = 13
-            Caption = #1057#1086#1073#1089#1090#1074'.'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'MS Sans Serif'
-            Font.Style = [fsBold]
-            ParentFont = False
-          end
-          object Label9: TLabel
-            Left = 0
-            Top = 24
-            Width = 103
-            Height = 13
-            Caption = #1055#1083#1086#1097#1072#1076#1100': '#1054#1073#1097#1072#1103
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'MS Sans Serif'
-            Font.Style = [fsBold]
-            ParentFont = False
-          end
-          object Label10: TLabel
-            Left = 152
-            Top = 23
-            Width = 41
-            Height = 13
-            Caption = #1046#1080#1083#1072#1103
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'MS Sans Serif'
-            Font.Style = [fsBold]
-            ParentFont = False
-          end
-          object Label5: TLabel
-            Left = 2
-            Top = 52
-            Width = 31
-            Height = 13
-            Caption = #1069#1090#1072#1078
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'MS Sans Serif'
-            Font.Style = [fsBold]
-            ParentFont = False
-          end
-          object Label6: TLabel
-            Left = 76
-            Top = 52
-            Width = 36
-            Height = 13
-            Caption = #1050#1086#1084#1085'.'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'MS Sans Serif'
-            Font.Style = [fsBold]
-            ParentFont = False
-          end
-          object Label13: TLabel
-            Left = 251
-            Top = 25
-            Width = 67
-            Height = 13
-            Caption = #1055#1088#1086#1078#1080#1074#1072#1077#1090
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'MS Sans Serif'
-            Font.Style = [fsBold]
-            ParentFont = False
-          end
-          object Label11: TLabel
-            Left = 360
-            Top = 25
-            Width = 56
-            Height = 13
-            Caption = #1042#1088'.'#1086#1090#1089#1091#1090'.'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'MS Sans Serif'
-            Font.Style = [fsBold]
-            ParentFont = False
-          end
-          object Label12: TLabel
-            Left = 292
-            Top = 52
-            Width = 58
-            Height = 13
-            Caption = #1042#1088'.'#1079#1072#1088#1077#1075'.'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'MS Sans Serif'
-            Font.Style = [fsBold]
-            ParentFont = False
-          end
-          object Label18: TLabel
-            Left = 453
-            Top = 24
-            Width = 53
-            Height = 13
-            Hint = #1050#1086#1083'-'#1074#1086' '#1083#1100#1075#1086#1090#1085#1080#1082#1086#1074
-            Caption = #1055#1086#1076#1098#1077#1079#1076
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'MS Sans Serif'
-            Font.Style = [fsBold]
-            ParentFont = False
-          end
-          object Label51: TLabel
-            Left = 388
-            Top = 52
-            Width = 54
-            Height = 13
-            Caption = #1042#1088'.'#1087#1088#1086#1078'.'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'MS Sans Serif'
-            Font.Style = [fsBold]
-            ParentFont = False
-          end
-          object DBLookupComboboxEh2: TDBLookupComboboxEh
-            Left = 200
-            Top = 44
-            Width = 89
-            Height = 21
-            DataField = 'STATUS'
-            DataSource = Form_list_kart.DS_list_kart
-            EditButtons = <>
-            KeyField = 'ID'
-            ListField = 'NAME'
-            ListSource = DS_status
-            TabOrder = 7
-            Visible = True
-          end
-          object DBEdit4: TDBEdit
-            Left = 107
-            Top = 16
-            Width = 41
-            Height = 21
-            DataField = 'OPL'
-            DataSource = Form_list_kart.DS_list_kart
-            TabOrder = 0
-            OnKeyPress = DBEdit4KeyPress
-          end
-          object DBEdit6: TDBEdit
-            Left = 198
-            Top = 17
-            Width = 41
-            Height = 21
-            DataField = 'PPL'
-            DataSource = Form_list_kart.DS_list_kart
-            TabOrder = 1
-            OnKeyPress = DBEdit6KeyPress
-          end
-          object DBEditEh1: TDBEditEh
-            Left = 40
-            Top = 44
-            Width = 25
-            Height = 21
-            Alignment = taLeftJustify
-            DataField = 'ET'
-            DataSource = Form_list_kart.DS_list_kart
-            EditButtons = <>
-            TabOrder = 5
-            Visible = True
-          end
-          object DBEdit5: TDBEdit
-            Left = 112
-            Top = 44
-            Width = 25
-            Height = 21
-            DataField = 'KOMN'
-            DataSource = Form_list_kart.DS_list_kart
-            TabOrder = 6
-          end
-          object DBEdit11: TDBEdit
-            Left = 318
-            Top = 17
-            Width = 33
-            Height = 21
-            DataField = 'KPR'
-            DataSource = Form_list_kart.DS_list_kart
-            ReadOnly = True
-            TabOrder = 2
-          end
-          object DBEdit9: TDBEdit
-            Left = 416
-            Top = 17
-            Width = 33
-            Height = 21
-            DataField = 'KPR_OT'
-            DataSource = Form_list_kart.DS_list_kart
-            ReadOnly = True
-            TabOrder = 3
-          end
-          object DBEdit10: TDBEdit
-            Left = 352
-            Top = 44
-            Width = 33
-            Height = 21
-            DataField = 'KPR_WR'
-            DataSource = Form_list_kart.DS_list_kart
-            ReadOnly = True
-            TabOrder = 8
-          end
-          object dbedtENTR: TDBEdit
-            Left = 506
-            Top = 17
-            Width = 33
-            Height = 21
-            DataField = 'ENTR'
-            DataSource = Form_list_kart.DS_list_kart
-            TabOrder = 4
-          end
-          object DBCheckBoxEh1: TDBCheckBoxEh
-            Left = 497
-            Top = 48
-            Width = 40
-            Height = 17
-            AllowGrayed = True
-            Caption = #1057#1091#1073#1089#1080#1076'.'
-            DataField = 'SUBS_VAL'
-            DataSource = Form_list_kart.DS_list_kart
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'MS Sans Serif'
-            Font.Style = [fsBold]
-            ParentFont = False
-            ReadOnly = True
-            TabOrder = 9
-            ValueChecked = '1'
-            ValueUnchecked = '0'
-            OnMouseDown = DBCheckBoxEh1MouseDown
-          end
-          object DBEdit19: TDBEdit
-            Left = 448
-            Top = 44
-            Width = 33
-            Height = 21
-            DataField = 'KPR_WRP'
-            DataSource = Form_list_kart.DS_list_kart
-            ReadOnly = True
-            TabOrder = 10
-          end
+      object GroupBox1: TGroupBox
+        Left = 1
+        Top = 1
+        Width = 539
+        Height = 73
+        Align = alTop
+        Caption = #1054#1073#1098#1077#1082#1090' '#1085#1077#1076#1074#1080#1078#1080#1084#1086#1089#1090#1080
+        TabOrder = 0
+        object Label8: TLabel
+          Left = 144
+          Top = 52
+          Width = 47
+          Height = 13
+          Caption = #1057#1086#1073#1089#1090#1074'.'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
         end
-        object GroupBox3: TGroupBox
+        object Label9: TLabel
           Left = 0
-          Top = 73
-          Width = 556
-          Height = 121
-          Align = alClient
-          Caption = #1055#1088#1086#1078#1080#1074#1072#1102#1097#1080#1077
+          Top = 24
+          Width = 103
+          Height = 13
+          Caption = #1055#1083#1086#1097#1072#1076#1100': '#1054#1073#1097#1072#1103
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label10: TLabel
+          Left = 152
+          Top = 23
+          Width = 41
+          Height = 13
+          Caption = #1046#1080#1083#1072#1103
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label5: TLabel
+          Left = 2
+          Top = 52
+          Width = 31
+          Height = 13
+          Caption = #1069#1090#1072#1078
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label6: TLabel
+          Left = 76
+          Top = 52
+          Width = 36
+          Height = 13
+          Caption = #1050#1086#1084#1085'.'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label13: TLabel
+          Left = 251
+          Top = 25
+          Width = 67
+          Height = 13
+          Caption = #1055#1088#1086#1078#1080#1074#1072#1077#1090
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label11: TLabel
+          Left = 360
+          Top = 25
+          Width = 56
+          Height = 13
+          Caption = #1042#1088'.'#1086#1090#1089#1091#1090'.'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label12: TLabel
+          Left = 292
+          Top = 52
+          Width = 58
+          Height = 13
+          Caption = #1042#1088'.'#1079#1072#1088#1077#1075'.'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label18: TLabel
+          Left = 453
+          Top = 24
+          Width = 53
+          Height = 13
+          Hint = #1050#1086#1083'-'#1074#1086' '#1083#1100#1075#1086#1090#1085#1080#1082#1086#1074
+          Caption = #1055#1086#1076#1098#1077#1079#1076
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label51: TLabel
+          Left = 388
+          Top = 52
+          Width = 54
+          Height = 13
+          Caption = #1042#1088'.'#1087#1088#1086#1078'.'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object DBLookupComboboxEh2: TDBLookupComboboxEh
+          Left = 200
+          Top = 44
+          Width = 89
+          Height = 21
+          DataField = 'STATUS'
+          DataSource = Form_list_kart.DS_list_kart
+          EditButtons = <>
+          KeyField = 'ID'
+          ListField = 'NAME'
+          ListSource = DS_status
+          TabOrder = 7
+          Visible = True
+        end
+        object DBEdit4: TDBEdit
+          Left = 107
+          Top = 16
+          Width = 41
+          Height = 21
+          DataField = 'OPL'
+          DataSource = Form_list_kart.DS_list_kart
+          TabOrder = 0
+          OnKeyPress = DBEdit4KeyPress
+        end
+        object DBEdit6: TDBEdit
+          Left = 198
+          Top = 17
+          Width = 41
+          Height = 21
+          DataField = 'PPL'
+          DataSource = Form_list_kart.DS_list_kart
           TabOrder = 1
-          object wwDBGrid4: TwwDBGrid
-            Left = 2
-            Top = 15
-            Width = 552
-            Height = 104
-            Hint = #1055#1088#1072#1074#1072#1103' '#1082#1085#1086#1087#1082#1072' '#1084#1099#1096#1080' - '#1087#1086#1082#1072#1079#1072#1090#1100'/'#1089#1082#1088#1099#1090#1100' '#1074#1099#1073#1099#1074#1096#1080#1093
-            Selected.Strings = (
-              'RN'#9'2'#9#8470#9'F'
-              'ST_NAME'#9'7'#9#1057#1090#1072#1090#1091#1089#9'F'
-              'FIO'#9'22'#9#1060'.'#1048'.'#1054'.'#9'F'
-              'PRIV_PROC'#9'10'#9'%~'#1087#1088#1080#1074#1072#1090#9'F'
-              'DAT_PROP'#9'8'#9#1044#1072#1090#1072' '#1087#1088#1086#1087#1080#1089#1082#1080#9'F'#9#1055#1088#1086#1087#1080#1089#1082#1072
-              'DAT_UB'#9'8'#9#1044#1072#1090#1072' '#1091#1073#1099#1090#1080#1103#9'F'#9#1055#1088#1086#1087#1080#1089#1082#1072
-              'ST_DT1'#9'8'#9#1053#1072#1095#1072#1083#1086#9'F'#9#1042#1088#1077#1084#1077#1085#1085#1072#1103' '#1088#1077#1075#1080#1089#1090#1088#1072#1094#1080#1103
-              'ST_DT2'#9'14'#9#1054#1082#1086#1085#1095#9'F'#9#1042#1088#1077#1084#1077#1085#1085#1072#1103' '#1088#1077#1075#1080#1089#1090#1088#1072#1094#1080#1103)
-            IniAttributes.Delimiter = ';;'
-            TitleColor = clBtnFace
-            FixedCols = 0
-            ShowHorzScrollBar = True
-            Align = alClient
-            DataSource = DS_kart_pr
-            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap, dgShowCellHint, dgProportionalColResize]
-            ParentShowHint = False
-            PopupMenu = PopupMenu2
-            ShowHint = True
-            TabOrder = 0
-            TitleAlignment = taLeftJustify
-            TitleFont.Charset = DEFAULT_CHARSET
-            TitleFont.Color = clWindowText
-            TitleFont.Height = -11
-            TitleFont.Name = 'MS Sans Serif'
-            TitleFont.Style = []
-            TitleLines = 2
-            TitleButtons = False
-            UseTFields = False
-            OnDblClick = wwDBGrid4DblClick
-            OnKeyDown = wwDBGrid4KeyDown
-          end
+          OnKeyPress = DBEdit6KeyPress
+        end
+        object DBEditEh1: TDBEditEh
+          Left = 40
+          Top = 44
+          Width = 25
+          Height = 21
+          Alignment = taLeftJustify
+          DataField = 'ET'
+          DataSource = Form_list_kart.DS_list_kart
+          EditButtons = <>
+          TabOrder = 5
+          Visible = True
+        end
+        object DBEdit5: TDBEdit
+          Left = 112
+          Top = 44
+          Width = 25
+          Height = 21
+          DataField = 'KOMN'
+          DataSource = Form_list_kart.DS_list_kart
+          TabOrder = 6
+        end
+        object DBEdit11: TDBEdit
+          Left = 318
+          Top = 17
+          Width = 33
+          Height = 21
+          DataField = 'KPR'
+          DataSource = Form_list_kart.DS_list_kart
+          ReadOnly = True
+          TabOrder = 2
+        end
+        object DBEdit9: TDBEdit
+          Left = 416
+          Top = 17
+          Width = 33
+          Height = 21
+          DataField = 'KPR_OT'
+          DataSource = Form_list_kart.DS_list_kart
+          ReadOnly = True
+          TabOrder = 3
+        end
+        object DBEdit10: TDBEdit
+          Left = 352
+          Top = 44
+          Width = 33
+          Height = 21
+          DataField = 'KPR_WR'
+          DataSource = Form_list_kart.DS_list_kart
+          ReadOnly = True
+          TabOrder = 8
+        end
+        object dbedtENTR: TDBEdit
+          Left = 506
+          Top = 17
+          Width = 33
+          Height = 21
+          DataField = 'ENTR'
+          DataSource = Form_list_kart.DS_list_kart
+          TabOrder = 4
+        end
+        object DBCheckBoxEh1: TDBCheckBoxEh
+          Left = 497
+          Top = 48
+          Width = 40
+          Height = 17
+          AllowGrayed = True
+          Caption = #1057#1091#1073#1089#1080#1076'.'
+          DataField = 'SUBS_VAL'
+          DataSource = Form_list_kart.DS_list_kart
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          ReadOnly = True
+          TabOrder = 9
+          ValueChecked = '1'
+          ValueUnchecked = '0'
+          OnMouseDown = DBCheckBoxEh1MouseDown
+        end
+        object DBEdit19: TDBEdit
+          Left = 448
+          Top = 44
+          Width = 33
+          Height = 21
+          DataField = 'KPR_WRP'
+          DataSource = Form_list_kart.DS_list_kart
+          ReadOnly = True
+          TabOrder = 10
         end
       end
-      object TabSheet8: TTabSheet
-        Caption = #1057#1086#1073#1089#1090#1074#1077#1085#1085#1080#1082#1080
-        object cxGrid3: TcxGrid
-          Left = 0
-          Top = 0
-          Width = 556
-          Height = 194
+      object GroupBox3: TGroupBox
+        Left = 1
+        Top = 74
+        Width = 539
+        Height = 147
+        Align = alClient
+        Caption = #1055#1088#1086#1078#1080#1074#1072#1102#1097#1080#1077
+        TabOrder = 1
+        object wwDBGrid4: TwwDBGrid
+          Left = 2
+          Top = 15
+          Width = 535
+          Height = 130
+          Hint = #1055#1088#1072#1074#1072#1103' '#1082#1085#1086#1087#1082#1072' '#1084#1099#1096#1080' - '#1087#1086#1082#1072#1079#1072#1090#1100'/'#1089#1082#1088#1099#1090#1100' '#1074#1099#1073#1099#1074#1096#1080#1093
+          Selected.Strings = (
+            'RN'#9'2'#9#8470#9'F'
+            'ST_NAME'#9'6'#9#1057#1090#1072#1090#1091#1089#9'F'
+            'FIO'#9'21'#9#1060'.'#1048'.'#1054'.'#9'F'
+            'PRIV_PROC'#9'9'#9'%~'#1087#1088#1080#1074#1072#1090#9'F'
+            'DAT_PROP'#9'7'#9#1044#1072#1090#1072' '#1087#1088#1086#1087#1080#1089#1082#1080#9'F'#9#1055#1088#1086#1087#1080#1089#1082#1072
+            'DAT_UB'#9'8'#9#1044#1072#1090#1072' '#1091#1073#1099#1090#1080#1103#9'F'#9#1055#1088#1086#1087#1080#1089#1082#1072
+            'ST_DT1'#9'8'#9#1053#1072#1095#1072#1083#1086#9'F'#9#1042#1088#1077#1084#1077#1085#1085#1072#1103' '#1088#1077#1075#1080#1089#1090#1088#1072#1094#1080#1103
+            'ST_DT2'#9'15'#9#1054#1082#1086#1085#1095#9'F'#9#1042#1088#1077#1084#1077#1085#1085#1072#1103' '#1088#1077#1075#1080#1089#1090#1088#1072#1094#1080#1103)
+          IniAttributes.Delimiter = ';;'
+          TitleColor = clBtnFace
+          FixedCols = 0
+          ShowHorzScrollBar = True
           Align = alClient
+          DataSource = DS_kart_pr
+          Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap, dgShowCellHint, dgProportionalColResize]
+          ParentShowHint = False
+          PopupMenu = PopupMenu2
+          ShowHint = True
           TabOrder = 0
-          object cxGrid3DBTableView1: TcxGridDBTableView
-            Navigator.Buttons.CustomButtons = <>
-            Navigator.Visible = True
-            DataController.DataSource = DS_owner
-            DataController.KeyFieldNames = 'ID'
-            DataController.Summary.DefaultGroupSummaryItems = <>
-            DataController.Summary.FooterSummaryItems = <>
-            DataController.Summary.SummaryGroups = <>
-            OptionsView.ColumnAutoWidth = True
-            OptionsView.GroupByBox = False
-            OptionsView.HeaderAutoHeight = True
-            object cxGrid3DBTableView1ID: TcxGridDBColumn
-              DataBinding.FieldName = 'ID'
-              Width = 20
-            end
-            object cxGrid3DBTableView1SURNAME: TcxGridDBColumn
-              Caption = #1060#1072#1084#1080#1083#1080#1103
-              DataBinding.FieldName = 'SURNAME'
-              Width = 61
-            end
-            object cxGrid3DBTableView1FIRSTNAME: TcxGridDBColumn
-              Caption = #1048#1084#1103
-              DataBinding.FieldName = 'FIRSTNAME'
-              Width = 43
-            end
-            object cxGrid3DBTableView1PATRONYMIC: TcxGridDBColumn
-              Caption = #1054#1090#1095#1077#1089#1090#1074#1086
-              DataBinding.FieldName = 'PATRONYMIC'
-              Width = 54
-            end
-            object cxGrid3DBTableView1DT_BIRTH: TcxGridDBColumn
-              Caption = #1044#1072#1090#1072' '#1088#1086#1078#1076'.'
-              DataBinding.FieldName = 'DT_BIRTH'
-              Width = 39
-            end
-            object cxGrid3DBTableView1USE_GIS_ELS_DIVIDE: TcxGridDBColumn
-              Caption = #1043#1048#1057' '#1046#1050#1061
-              DataBinding.FieldName = 'USE_GIS_ELS_DIVIDE'
-              PropertiesClassName = 'TcxCheckBoxProperties'
-              Properties.ValueChecked = 1
-              Properties.ValueUnchecked = 0
-              Width = 36
-            end
-          end
-          object cxGrid3DBTableView2: TcxGridDBTableView
-            Navigator.Buttons.CustomButtons = <>
-            OnFocusedItemChanged = cxGrid3DBTableView2FocusedItemChanged
-            DataController.DataSource = DS_owner
-            DataController.KeyFieldNames = 'ID'
-            DataController.Summary.DefaultGroupSummaryItems = <>
-            DataController.Summary.FooterSummaryItems = <>
-            DataController.Summary.SummaryGroups = <>
-            OptionsSelection.InvertSelect = False
-            OptionsView.ColumnAutoWidth = True
-            OptionsView.GroupByBox = False
-            object cxGrid3DBTableView2ID: TcxGridDBColumn
-              DataBinding.FieldName = 'ID'
-              Width = 20
-            end
-            object cxGrid3DBTableView2SURNAME: TcxGridDBColumn
-              Caption = #1060#1072#1084#1080#1083#1080#1103
-              DataBinding.FieldName = 'SURNAME'
-              Width = 83
-            end
-            object cxGrid3DBTableView2FIRSTNAME: TcxGridDBColumn
-              Caption = #1048#1084#1103
-              DataBinding.FieldName = 'FIRSTNAME'
-              Width = 84
-            end
-            object cxGrid3DBTableView2PATRONYMIC: TcxGridDBColumn
-              Caption = #1054#1090#1095#1077#1089#1090#1074#1086
-              DataBinding.FieldName = 'PATRONYMIC'
-              Width = 84
-            end
-            object cxGrid3DBTableView2DT_BIRTH: TcxGridDBColumn
-              Caption = #1044#1072#1090#1072' '#1088#1086#1078#1076'.'
-              DataBinding.FieldName = 'DT_BIRTH'
-              Width = 100
-            end
-            object cxGrid3DBTableView2SHARE_RATE: TcxGridDBColumn
-              Caption = #1044#1086#1083#1103
-              DataBinding.FieldName = 'SHARE_RATE'
-              Width = 111
-            end
-            object cxGrid3DBTableView2USE_GIS_ELS_DIVIDE: TcxGridDBColumn
-              Caption = #1048#1089#1087'. '#1043#1048#1057' '#1088#1072#1079#1076#1077#1083'. '#1045#1051#1057
-              DataBinding.FieldName = 'USE_GIS_ELS_DIVIDE'
-              PropertiesClassName = 'TcxCheckBoxProperties'
-              Properties.ClearKey = 46
-              Properties.ValueChecked = 1
-              Properties.ValueUnchecked = 0
-              HeaderHint = #1048#1089#1087#1086#1083#1100#1079#1086#1074#1072#1090#1100' '#1074' '#1043#1048#1057' '#1046#1050#1061' '#1076#1083#1103' '#1088#1072#1079#1076#1077#1083#1077#1085#1080#1103' '#1076#1086#1083#1075#1072
-              Width = 57
-            end
-          end
-          object cxGrid3DBCardView1: TcxGridDBCardView
-            Navigator.Buttons.CustomButtons = <>
-            DataController.DataSource = DS_owner
-            DataController.DetailKeyFieldNames = 'ID'
-            DataController.KeyFieldNames = 'ID'
-            DataController.MasterKeyFieldNames = 'ID'
-            DataController.Summary.DefaultGroupSummaryItems = <>
-            DataController.Summary.FooterSummaryItems = <>
-            DataController.Summary.SummaryGroups = <>
-            OptionsCustomize.RowFiltering = False
-            OptionsView.CardAutoWidth = True
-            OptionsView.CardIndent = 7
-            OptionsView.CardWidth = 400
-            object cxGrid3DBCardView1SEX: TcxGridDBCardViewRow
-              Caption = #1055#1086#1083
-              DataBinding.FieldName = 'SEX'
-              PropertiesClassName = 'TcxImageComboBoxProperties'
-              Properties.Alignment.Horz = taLeftJustify
-              Properties.Items = <
-                item
-                  Description = #1052#1091#1078'.'
-                  ImageIndex = 0
-                  Value = 1
-                end
-                item
-                  Description = #1046#1077#1085'.'
-                  Value = 0
-                end>
-              Position.BeginsLayer = True
-            end
-            object cxGrid3DBCardView1DOC_TP: TcxGridDBCardViewRow
-              Caption = #1042#1080#1076' '#1076#1086#1082#1091#1084#1077#1085#1090#1072
-              DataBinding.FieldName = 'FK_DOC_TP'
-              PropertiesClassName = 'TcxLookupComboBoxProperties'
-              Properties.DropDownAutoSize = True
-              Properties.DropDownSizeable = True
-              Properties.KeyFieldNames = 'ID'
-              Properties.ListColumns = <
-                item
-                  FieldName = 'NAME'
-                end>
-              Properties.ListSource = DS_doc
-              Position.BeginsLayer = True
-            end
-            object cxGrid3DBCardView1DOC_SERIES: TcxGridDBCardViewRow
-              Caption = #1044#1086#1082'.'#1089#1077#1088#1080#1103
-              DataBinding.FieldName = 'DOC_SERIES'
-              Position.BeginsLayer = False
-            end
-            object cxGrid3DBCardView1DOC_NUM: TcxGridDBCardViewRow
-              Caption = #1044#1086#1082'.'#1085#1086#1084#1077#1088
-              DataBinding.FieldName = 'DOC_NUM'
-              Position.BeginsLayer = True
-            end
-            object cxGrid3DBCardView1DOC_DT: TcxGridDBCardViewRow
-              Caption = #1044#1086#1082'.'#1076#1072#1090#1072
-              DataBinding.FieldName = 'DOC_DT'
-              Position.BeginsLayer = True
-            end
-            object cxGrid3DBCardView1DOC_ISSUED_BY: TcxGridDBCardViewRow
-              Caption = #1044#1086#1082'.'#1074#1099#1076#1072#1085
-              DataBinding.FieldName = 'DOC_ISSUED_BY'
-              Position.BeginsLayer = True
-            end
-          end
-          object cxGrid3Level1: TcxGridLevel
-            GridView = cxGrid3DBTableView2
-            object cxGrid3Level2: TcxGridLevel
-              GridView = cxGrid3DBCardView1
-            end
-          end
+          TitleAlignment = taLeftJustify
+          TitleFont.Charset = DEFAULT_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -11
+          TitleFont.Name = 'MS Sans Serif'
+          TitleFont.Style = []
+          TitleLines = 2
+          TitleButtons = False
+          UseTFields = False
+          OnDblClick = wwDBGrid4DblClick
+          OnKeyDown = wwDBGrid4KeyDown
         end
       end
     end
@@ -2970,14 +2819,15 @@ object Form_kart: TForm_kart
         'c.dat_prop, c.dat_ub, c.dat_rog, c.status, c.relat_id, c.status_' +
         'datb, c.status_dat, c.status_chng, c.fk_doc_tp, c.fk_nac,'
       
-        'c.b_place, c.dok_c, c.dok_n, c.dok_d, c.dok_v, c.fk_frm_cntr, c.' +
-        'fk_frm_regn, c.fk_frm_distr, c.frm_town, c.frm_dat,'
+        'c.b_place, c.dok_c, c.dok_n, c.dok_d, c.dok_v, c.dok_snils, c.fk' +
+        '_frm_cntr, c.fk_frm_regn, c.fk_frm_distr, c.frm_town, c.frm_dat,'
       
         'c.fk_frm_kul, c.frm_nd, c.frm_kw, c.w_place, c.fk_ub, c.fk_to_cn' +
         'tr, c.fk_to_regn, c.fk_to_distr, c.fk_citiz, c.to_town, '
       
         'c.fk_to_kul, c.to_nd, c.to_kw, c.fk_milit, c.fk_milit_regn, a.dt' +
-        '1 as st_dt1, a.dt2 as st_dt2, s.name2 as st_name, c.priv_proc'
+        '1 as st_dt1, a.dt2 as st_dt2, s.name2 as st_name, c.priv_proc, c' +
+        '.use_gis_divide_els'
       '  from scott.c_kart_pr c, scott.c_status_pr s,'
       
         '  (select r.fk_kart_pr, r.dt1, r.dt2  from scott.c_states_pr r, ' +
@@ -3062,7 +2912,7 @@ object Form_kart: TForm_kart
     OracleDictionary.UseMessageTable = True
     OracleDictionary.DefaultValues = True
     QBEDefinition.QBEFieldDefs = {
-      04000000300000000300000046494F01000000000003000000504F4C01000000
+      04000000320000000300000046494F01000000000003000000504F4C01000000
       0000080000004441545F50524F50010000000000060000005354415455530100
       00000000070000004441545F524F470100000000000200000049440100000000
       00030000004C534B01000000000002000000524E010000000000050000004E5F
@@ -3087,7 +2937,9 @@ object Form_kart: TForm_kart
       4C49540100000000000D000000464B5F4D494C49545F5245474E010000000000
       0B0000005354415455535F444154420100000000000600000053545F44543101
       00000000000600000053545F4454320100000000000700000053545F4E414D45
-      01000000000009000000505249565F50524F43010000000000}
+      01000000000009000000505249565F50524F4301000000000009000000444F4B
+      5F534E494C53010000000000120000005553455F4749535F4449564944455F45
+      4C53010000000000}
     Master = Form_list_kart.OD_list_kart
     MasterFields = 'LSK'
     DetailFields = 'LSK'
@@ -3367,6 +3219,13 @@ object Form_kart: TForm_kart
       DisplayLabel = '% '#1087#1088#1080#1074#1072#1090
       FieldName = 'PRIV_PROC'
       Size = 10
+    end
+    object OD_kart_prDOK_SNILS: TStringField
+      FieldName = 'DOK_SNILS'
+      Size = 11
+    end
+    object OD_kart_prUSE_GIS_DIVIDE_ELS: TIntegerField
+      FieldName = 'USE_GIS_DIVIDE_ELS'
     end
   end
   object DS_kart_pr: TDataSource
@@ -4414,87 +4273,6 @@ object Form_kart: TForm_kart
     DataSet = OD_close_reason
     Left = 704
     Top = 392
-  end
-  object OD_owner: TOracleDataSet
-    SQL.Strings = (
-      'select t.*, t.rowid from scott.owner t where t.lsk=:lsk')
-    Optimize = False
-    Variables.Data = {
-      0300000001000000040000003A4C534B05000000090000002020202020202020
-      0000000000}
-    QBEDefinition.QBEFieldDefs = {
-      040000000E000000030000004C534B0100000000000200000049440100000000
-      00070000005355524E414D450100000000000900000046495253544E414D4501
-      00000000000A000000504154524F4E594D49430100000000000800000044545F
-      42495254480100000000000300000053455801000000000009000000464B5F44
-      4F435F54500100000000000A000000444F435F53455249455301000000000007
-      000000444F435F4E554D01000000000006000000444F435F4454010000000000
-      0D000000444F435F4953535545445F42590100000000000A0000005348415245
-      5F52415445010000000000120000005553455F4749535F454C535F4449564944
-      45010000000000}
-    Master = Form_list_kart.OD_list_kart
-    MasterFields = 'LSK'
-    DetailFields = 'LSK'
-    CachedUpdates = True
-    Session = DataModule1.OracleSession1
-    Left = 228
-    Top = 368
-    object OD_ownerID: TFloatField
-      FieldName = 'ID'
-      ReadOnly = True
-    end
-    object OD_ownerLSK: TStringField
-      FieldName = 'LSK'
-      Required = True
-      Size = 8
-    end
-    object OD_ownerSURNAME: TStringField
-      FieldName = 'SURNAME'
-      Size = 25
-    end
-    object OD_ownerFIRSTNAME: TStringField
-      FieldName = 'FIRSTNAME'
-      Size = 15
-    end
-    object OD_ownerPATRONYMIC: TStringField
-      FieldName = 'PATRONYMIC'
-      Size = 15
-    end
-    object OD_ownerDT_BIRTH: TDateTimeField
-      FieldName = 'DT_BIRTH'
-    end
-    object OD_ownerSEX: TFloatField
-      FieldName = 'SEX'
-    end
-    object OD_ownerFK_DOC_TP: TFloatField
-      FieldName = 'FK_DOC_TP'
-    end
-    object OD_ownerDOC_SERIES: TStringField
-      FieldName = 'DOC_SERIES'
-      Size = 15
-    end
-    object OD_ownerDOC_NUM: TStringField
-      FieldName = 'DOC_NUM'
-      Size = 15
-    end
-    object OD_ownerDOC_DT: TDateTimeField
-      FieldName = 'DOC_DT'
-    end
-    object OD_ownerDOC_ISSUED_BY: TStringField
-      FieldName = 'DOC_ISSUED_BY'
-      Size = 65
-    end
-    object OD_ownerSHARE_RATE: TStringField
-      FieldName = 'SHARE_RATE'
-    end
-    object OD_ownerUSE_GIS_ELS_DIVIDE: TFloatField
-      FieldName = 'USE_GIS_ELS_DIVIDE'
-    end
-  end
-  object DS_owner: TDataSource
-    DataSet = OD_owner
-    Left = 264
-    Top = 368
   end
   object OD_doc: TOracleDataSet
     SQL.Strings = (

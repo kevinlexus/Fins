@@ -1,10 +1,10 @@
 object Form_kart_pr: TForm_kart_pr
-  Left = 1252
-  Top = 220
-  Width = 667
-  Height = 448
+  Left = 1130
+  Top = 221
+  Width = 680
+  Height = 525
   BorderIcons = [biSystemMenu, biMinimize]
-  Caption = #1050#1072#1088#1090#1086#1095#1082#1072' '#1087#1088#1086#1078#1080#1074#1072#1102#1097#1077#1075#1086
+  Caption = #1050#1072#1088#1090#1086#1095#1082#1072' '#1087#1088#1086#1086#1078#1080#1074#1072#1102#1097#1077#1075#1086' ('#1089#1086#1073#1089#1090#1074#1077#1085#1085#1080#1082#1072')'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -92,7 +92,7 @@ object Form_kart_pr: TForm_kart_pr
   TextHeight = 13
   object Label41: TLabel
     Left = 188
-    Top = 384
+    Top = 408
     Width = 23
     Height = 13
     Caption = #1050#1086#1076
@@ -105,7 +105,7 @@ object Form_kart_pr: TForm_kart_pr
   end
   object Button3: TButton
     Left = 551
-    Top = 376
+    Top = 400
     Width = 75
     Height = 25
     Cancel = True
@@ -117,7 +117,7 @@ object Form_kart_pr: TForm_kart_pr
     Left = 0
     Top = 72
     Width = 633
-    Height = 297
+    Height = 321
     ActivePage = TabSheet1
     TabOrder = 1
     object TabSheet1: TTabSheet
@@ -188,7 +188,7 @@ object Form_kart_pr: TForm_kart_pr
         ParentFont = False
       end
       object Label1: TLabel
-        Left = 297
+        Left = 301
         Top = 80
         Width = 37
         Height = 13
@@ -227,7 +227,7 @@ object Form_kart_pr: TForm_kart_pr
         ParentFont = False
       end
       object Label15: TLabel
-        Left = 194
+        Left = 197
         Top = 104
         Width = 25
         Height = 13
@@ -241,13 +241,13 @@ object Form_kart_pr: TForm_kart_pr
       end
       object Bevel1: TBevel
         Left = 0
-        Top = 120
+        Top = 151
         Width = 593
         Height = 2
       end
       object Label17: TLabel
         Left = 5
-        Top = 129
+        Top = 160
         Width = 189
         Height = 13
         Caption = #1054#1090#1082#1091#1076#1072' '#1080' '#1082#1086#1075#1076#1072' '#1087#1088#1080#1073#1099#1083' '#1074' '#1075#1086#1088#1086#1076
@@ -260,7 +260,7 @@ object Form_kart_pr: TForm_kart_pr
       end
       object Label18: TLabel
         Left = 21
-        Top = 152
+        Top = 183
         Width = 43
         Height = 13
         Caption = #1057#1090#1088#1072#1085#1072
@@ -273,7 +273,7 @@ object Form_kart_pr: TForm_kart_pr
       end
       object Label19: TLabel
         Left = 13
-        Top = 176
+        Top = 207
         Width = 51
         Height = 13
         Caption = #1054#1073#1083#1072#1089#1090#1100
@@ -286,7 +286,7 @@ object Form_kart_pr: TForm_kart_pr
       end
       object Label20: TLabel
         Left = 27
-        Top = 200
+        Top = 231
         Width = 37
         Height = 13
         Caption = #1056#1072#1081#1086#1085
@@ -299,7 +299,7 @@ object Form_kart_pr: TForm_kart_pr
       end
       object Label21: TLabel
         Left = 3
-        Top = 224
+        Top = 255
         Width = 61
         Height = 13
         Caption = #1053#1072#1089'.'#1087#1091#1085#1082#1090
@@ -312,7 +312,7 @@ object Form_kart_pr: TForm_kart_pr
       end
       object Label22: TLabel
         Left = 33
-        Top = 248
+        Top = 279
         Width = 31
         Height = 13
         Caption = #1044#1072#1090#1072
@@ -325,7 +325,7 @@ object Form_kart_pr: TForm_kart_pr
       end
       object Label23: TLabel
         Left = 280
-        Top = 152
+        Top = 183
         Width = 38
         Height = 13
         Caption = #1059#1083#1080#1094#1072
@@ -338,7 +338,7 @@ object Form_kart_pr: TForm_kart_pr
       end
       object Label24: TLabel
         Left = 291
-        Top = 176
+        Top = 207
         Width = 27
         Height = 13
         Caption = #1044#1086#1084
@@ -351,7 +351,7 @@ object Form_kart_pr: TForm_kart_pr
       end
       object Label25: TLabel
         Left = 302
-        Top = 200
+        Top = 231
         Width = 16
         Height = 13
         Caption = #1050#1074
@@ -364,7 +364,7 @@ object Form_kart_pr: TForm_kart_pr
       end
       object Label26: TLabel
         Left = 158
-        Top = 248
+        Top = 279
         Width = 157
         Height = 13
         Caption = #1052#1077#1089#1090#1086' '#1088#1072#1073#1086#1090#1099', '#1076#1086#1083#1078#1085#1086#1089#1090#1100
@@ -388,8 +388,21 @@ object Form_kart_pr: TForm_kart_pr
         Font.Style = [fsBold]
         ParentFont = False
       end
+      object Label42: TLabel
+        Left = 56
+        Top = 128
+        Width = 44
+        Height = 13
+        Caption = #1057#1053#1048#1051#1057
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
       object DBDateTimeEditEh3: TDBDateTimeEditEh
-        Left = 104
+        Left = 106
         Top = 0
         Width = 89
         Height = 21
@@ -426,7 +439,7 @@ object Form_kart_pr: TForm_kart_pr
         OnExit = DBEdit1Exit
       end
       object DBEdit5: TDBEdit
-        Left = 338
+        Left = 342
         Top = 72
         Width = 55
         Height = 21
@@ -446,7 +459,7 @@ object Form_kart_pr: TForm_kart_pr
         OnExit = DBEdit1Exit
       end
       object DBDateTimeEditEh2: TDBDateTimeEditEh
-        Left = 104
+        Left = 106
         Top = 96
         Width = 89
         Height = 21
@@ -460,7 +473,7 @@ object Form_kart_pr: TForm_kart_pr
       end
       object DBLookupComboboxEh6: TDBLookupComboboxEh
         Left = 66
-        Top = 144
+        Top = 175
         Width = 193
         Height = 21
         DataField = 'FK_FRM_REGN'
@@ -478,7 +491,7 @@ object Form_kart_pr: TForm_kart_pr
       end
       object DBLookupComboboxEh8: TDBLookupComboboxEh
         Left = 322
-        Top = 216
+        Top = 247
         Width = 193
         Height = 21
         DataField = 'FK_FRM_DISTR'
@@ -492,7 +505,7 @@ object Form_kart_pr: TForm_kart_pr
       end
       object DBEdit7: TDBEdit
         Left = 66
-        Top = 216
+        Top = 247
         Width = 191
         Height = 21
         DataField = 'FRM_TOWN'
@@ -502,7 +515,7 @@ object Form_kart_pr: TForm_kart_pr
       end
       object DBDateTimeEditEh6: TDBDateTimeEditEh
         Left = 67
-        Top = 240
+        Top = 271
         Width = 89
         Height = 21
         AutoSelect = False
@@ -515,7 +528,7 @@ object Form_kart_pr: TForm_kart_pr
       end
       object DBLookupComboboxEh9: TDBLookupComboboxEh
         Left = 322
-        Top = 144
+        Top = 175
         Width = 193
         Height = 21
         DataField = 'FK_FRM_KUL'
@@ -529,7 +542,7 @@ object Form_kart_pr: TForm_kart_pr
       end
       object DBEdit8: TDBEdit
         Left = 322
-        Top = 168
+        Top = 199
         Width = 79
         Height = 21
         DataField = 'FRM_ND'
@@ -539,7 +552,7 @@ object Form_kart_pr: TForm_kart_pr
       end
       object DBEdit9: TDBEdit
         Left = 322
-        Top = 192
+        Top = 223
         Width = 79
         Height = 21
         DataField = 'FRM_KW'
@@ -549,7 +562,7 @@ object Form_kart_pr: TForm_kart_pr
       end
       object DBEdit10: TDBEdit
         Left = 322
-        Top = 240
+        Top = 271
         Width = 279
         Height = 21
         DataField = 'W_PLACE'
@@ -559,7 +572,7 @@ object Form_kart_pr: TForm_kart_pr
       end
       object DBLookupComboboxEh18: TDBLookupComboboxEh
         Left = 66
-        Top = 168
+        Top = 199
         Width = 193
         Height = 21
         DataField = 'FK_FRM_CNTR'
@@ -577,7 +590,7 @@ object Form_kart_pr: TForm_kart_pr
       end
       object DBLookupComboboxEh19: TDBLookupComboboxEh
         Left = 66
-        Top = 192
+        Top = 223
         Width = 193
         Height = 21
         DataField = 'FK_FRM_DISTR'
@@ -648,7 +661,7 @@ object Form_kart_pr: TForm_kart_pr
         Visible = True
       end
       object DBLookupComboboxEh17: TDBLookupComboboxEh
-        Left = 220
+        Left = 223
         Top = 96
         Width = 381
         Height = 21
@@ -664,6 +677,35 @@ object Form_kart_pr: TForm_kart_pr
         ListSource = DS_ovd
         TabOrder = 9
         Visible = True
+      end
+      object DBEdit15: TDBEdit
+        Left = 105
+        Top = 120
+        Width = 88
+        Height = 21
+        DataField = 'DOK_SNILS'
+        DataSource = Form_kart.DS_kart_pr
+        TabOrder = 20
+        OnExit = DBEdit1Exit
+      end
+      object cxDBCheckBox1: TcxDBCheckBox
+        Left = 200
+        Top = 120
+        Hint = #1048#1089#1087#1086#1083#1100#1079#1086#1074#1072#1090#1100' '#1080#1085#1092#1086#1088#1084#1072#1094#1080#1102' '#1076#1083#1103' '#1088#1072#1079#1076#1077#1083#1077#1085#1080#1103' '#1083#1080#1094'.'#1089#1095#1077#1090#1072' '#1074' '#1043#1048#1057' '#1046#1050#1061
+        Caption = #1076#1083#1103' '#1043#1048#1057' '#1046#1050#1061
+        DataBinding.DataField = 'USE_GIS_DIVIDE_ELS'
+        DataBinding.DataSource = Form_kart.DS_kart_pr
+        ParentFont = False
+        Properties.ValueChecked = 1
+        Properties.ValueUnchecked = 0
+        Style.Font.Charset = DEFAULT_CHARSET
+        Style.Font.Color = clWindowText
+        Style.Font.Height = -11
+        Style.Font.Name = 'MS Sans Serif'
+        Style.Font.Style = [fsBold]
+        Style.IsFontAssigned = True
+        TabOrder = 21
+        Width = 113
       end
     end
     object TabSheet2: TTabSheet
@@ -1714,7 +1756,7 @@ object Form_kart_pr: TForm_kart_pr
   end
   object Button2: TButton
     Left = 466
-    Top = 376
+    Top = 400
     Width = 75
     Height = 25
     Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100
@@ -1723,7 +1765,7 @@ object Form_kart_pr: TForm_kart_pr
   end
   object DBNavigator2: TDBNavigator
     Left = 0
-    Top = 376
+    Top = 400
     Width = 174
     Height = 25
     DataSource = Form_kart.DS_kart_pr
@@ -1746,8 +1788,8 @@ object Form_kart_pr: TForm_kart_pr
     BeforeAction = DBNavigator2BeforeAction
   end
   object wwDBLookupCombo2: TwwDBLookupCombo
-    Left = 288
-    Top = 424
+    Left = 504
+    Top = 216
     Width = 121
     Height = 21
     DropDownAlignment = taLeftJustify
@@ -1764,8 +1806,8 @@ object Form_kart_pr: TForm_kart_pr
     OnExit = wwDBLookupCombo2Exit
   end
   object wwDBLookupCombo3: TwwDBLookupCombo
-    Left = 288
-    Top = 448
+    Left = 504
+    Top = 240
     Width = 121
     Height = 21
     DropDownAlignment = taLeftJustify
@@ -1783,7 +1825,7 @@ object Form_kart_pr: TForm_kart_pr
   end
   object DBEdit14: TDBEdit
     Left = 214
-    Top = 376
+    Top = 400
     Width = 113
     Height = 21
     Hint = #1059#1085#1080#1082#1072#1083#1100#1085#1099#1081' ID'

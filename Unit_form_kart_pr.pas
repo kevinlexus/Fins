@@ -9,7 +9,8 @@ uses
   Wwdbcomb, wwdbdatetimepicker, Wwdbigrd, Wwdbgrid, wwcheckbox, wwdblook,
   Wwdbdlg, wwSpeedButton, wwDBNavigator, wwDataInspector,
   DM_module1, Oracle, Utils, Buttons, Wwintl, ComCtrls, frxClass, frxDBSet,
-  wwclearpanel;
+  wwclearpanel, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxContainer, cxEdit, cxCheckBox, cxDBEdit;
 
 type
   TForm_kart_pr = class(TForm)
@@ -268,6 +269,9 @@ type
     DBLookupComboboxEh13: TDBLookupComboboxEh;
     lbl1: TLabel;
     dbedtK_OT: TDBEdit;
+    Label42: TLabel;
+    DBEdit15: TDBEdit;
+    cxDBCheckBox1: TcxDBCheckBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure OD_lg_docsSPK_IDValidate(Sender: TField);
     procedure OD_lg_docsTYPEValidate(Sender: TField);

@@ -209,6 +209,7 @@ type
     OD_list_kartDT_CR: TDateTimeField;
     OD_list_kartKPR_OWN: TFloatField;
     OD_list_kartFK_KLSK_PREMISE: TFloatField;
+    OD_list_kartDIVIDED: TFloatField;
     procedure wwDBGrid1DblClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure wwDBGrid1KeyDown(Sender: TObject; var Key: Word;
