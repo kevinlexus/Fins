@@ -425,7 +425,7 @@ type
     TabSheet8: TTabSheet;
     GroupBox2: TGroupBox;
     cxDBCheckBox2: TcxDBCheckBox;
-    OD_kart_prUSE_GIS_DIVIDE_ELS: TIntegerField;
+    OD_kart_prUSE_GIS_DIVIDE_ELS: TFloatField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure DBGridEh1DblClick(Sender: TObject);
     procedure OD_kartAfterPost(DataSet: TDataSet);
@@ -652,15 +652,15 @@ begin
   if (admin_ <> 1) and (Form_list_kart.isAllowEdit_ = 0) and (Form_main.arch_mg_
     = '') then
   begin
-    Caption := 'Карточка абонента';
+    Caption := 'Карточка лиц.счета';
   end
   else if Form_main.arch_mg_ <> '' then
   begin
-    Caption := 'Карточка абонента - Архив';
+    Caption := 'Карточка лиц.счета - Архив';
   end
   else
   begin
-    Caption := 'Карточка абонента';
+    Caption := 'Карточка лиц.счета';
     OD_charge.readonly := false;
 
     GroupBox1.Enabled := true;
@@ -756,6 +756,7 @@ begin
 end;
 
 // сохранить или откатить изменения
+
 procedure TForm_kart.saveOrRollbackKart(ask_: Integer; isCommit: Boolean);
 begin
   LockControl(wwDBGrid4, true);
@@ -807,7 +808,7 @@ begin
           DataModule1.OracleSession1.ApplyUpdates([Form_list_kart.OD_list_kart,
             OD_charge, OD_states_sch], true);
           check_kart_correct;
-           //для подтверждения изменений, сделанных в пакетах
+          //для подтверждения изменений, сделанных в пакетах
           DataModule1.OracleSession1.Commit;
         end
         else
@@ -842,6 +843,7 @@ begin
 end;
 
 // проверка корректности статусов счетчиков, статусов проживающих
+
 procedure TForm_kart.check_kart_correct;
 var
   err_: string;
@@ -1315,7 +1317,6 @@ begin
 
   PageControl1.ActivePageIndex := 0;
   PageControl2.ActivePageIndex := 0;
-
 
   TabSheet7.TabVisible := False;
   TabSheet6.TabVisible := True;
@@ -2120,6 +2121,8 @@ procedure TForm_kart.BitBtn3Click(Sender: TObject);
 begin
   if FF('Form_sch_history', 1) = 0 then
     Application.CreateForm(TForm_sch_history, Form_sch_history);
+  Form_sch_history.setKlsk(Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger, '');
+  Form_sch_history.setTp(0);
 end;
 
 procedure TForm_kart.BitBtn4Click(Sender: TObject);
@@ -2317,19 +2320,19 @@ end;
 
 procedure TForm_kart.CheckBox2Click(Sender: TObject);
 begin
-  if CheckBox2.Checked=True then
+  if CheckBox2.Checked = True then
   begin
-    Form_list_kart.OD_list_kartFK_KLSK_OBJ.ReadOnly:=False;
-    Form_list_kart.OD_list_kartK_LSK_ID.ReadOnly:=False;
-    Form_list_kart.OD_list_kartFK_KLSK_PREMISE.ReadOnly:=False;
-    Form_list_kart.OD_list_kartHOUSE_ID.ReadOnly:=False;
+    Form_list_kart.OD_list_kartFK_KLSK_OBJ.ReadOnly := False;
+    Form_list_kart.OD_list_kartK_LSK_ID.ReadOnly := False;
+    Form_list_kart.OD_list_kartFK_KLSK_PREMISE.ReadOnly := False;
+    Form_list_kart.OD_list_kartHOUSE_ID.ReadOnly := False;
   end
   else
   begin
-    Form_list_kart.OD_list_kartFK_KLSK_OBJ.ReadOnly:=True;
-    Form_list_kart.OD_list_kartK_LSK_ID.ReadOnly:=True;
-    Form_list_kart.OD_list_kartFK_KLSK_PREMISE.ReadOnly:=True;
-    Form_list_kart.OD_list_kartHOUSE_ID.ReadOnly:=True;
+    Form_list_kart.OD_list_kartFK_KLSK_OBJ.ReadOnly := True;
+    Form_list_kart.OD_list_kartK_LSK_ID.ReadOnly := True;
+    Form_list_kart.OD_list_kartFK_KLSK_PREMISE.ReadOnly := True;
+    Form_list_kart.OD_list_kartHOUSE_ID.ReadOnly := True;
   end;
 end;
 

@@ -1,7 +1,7 @@
 object DM_Bill: TDM_Bill
   OldCreateOrder = False
-  Left = 1219
-  Top = 228
+  Left = 1274
+  Top = 247
   Height = 607
   Width = 470
   object Uni_cmp_main: TUniQuery
@@ -20,12 +20,10 @@ object DM_Bill: TDM_Bill
       '                          p_lastnum => :p_lastnum,'
       '                          p_is_closed => :p_is_closed,'
       '                          p_mg => :p_mg,'
-      '                          p_for_arch => :p_for_arch,'
       '                          p_sel_uk => :p_sel_uk,'
       '                          p_rfcur => :p_rfcur);'
       'end;')
     FetchRows = 1000
-    Options.AutoPrepare = True
     Constraints = <>
     Left = 32
     Top = 80
@@ -86,11 +84,6 @@ object DM_Bill: TDM_Bill
         ParamType = ptInput
       end
       item
-        DataType = ftInteger
-        Name = 'p_for_arch'
-        ParamType = ptInput
-      end
-      item
         DataType = ftString
         Name = 'p_sel_uk'
         ParamType = ptInput
@@ -98,7 +91,7 @@ object DM_Bill: TDM_Bill
       item
         DataType = ftCursor
         Name = 'p_rfcur'
-        Value = ''
+        Value = 'Object'
       end>
   end
   object Uni_cmp_detail_primary: TUniQuery
@@ -106,7 +99,7 @@ object DM_Bill: TDM_Bill
     SQL.Strings = (
       'begin'
       ''
-      ' scott.rep_bills_compound.detail(p_klsk => :k_lsk_id,'
+      ' scott.rep_bills_compound2.detail(p_klsk => :k_lsk_id,'
       '                            p_is_closed => :p_is_closed,'
       '                            p_mg => :p_mg,'
       '                            p_sel_tp => :p_sel_tp,'
@@ -117,7 +110,6 @@ object DM_Bill: TDM_Bill
     MasterSource = DS_cmp_main
     MasterFields = 'k_lsk_id'
     DetailFields = 'k_lsk_id'
-    Options.AutoPrepare = True
     Constraints = <>
     Left = 32
     Top = 32
@@ -173,7 +165,6 @@ object DM_Bill: TDM_Bill
     MasterSource = DS_cmp_main
     MasterFields = 'k_lsk_id'
     DetailFields = 'k_lsk_id'
-    Options.AutoPrepare = True
     Constraints = <>
     Left = 184
     Top = 32
@@ -229,7 +220,6 @@ object DM_Bill: TDM_Bill
     MasterSource = DS_cmp_main
     MasterFields = 'k_lsk_id'
     DetailFields = 'k_lsk_id'
-    Options.AutoPrepare = True
     Constraints = <>
     Left = 32
     Top = 160
@@ -288,7 +278,6 @@ object DM_Bill: TDM_Bill
     MasterSource = DS_cmp_main
     MasterFields = 'k_lsk_id'
     DetailFields = 'k_lsk_id'
-    Options.AutoPrepare = True
     Constraints = <>
     Left = 32
     Top = 208
@@ -347,7 +336,6 @@ object DM_Bill: TDM_Bill
     MasterSource = DS_cmp_main
     MasterFields = 'k_lsk_id'
     DetailFields = 'k_lsk_id'
-    Options.AutoPrepare = True
     Constraints = <>
     Left = 32
     Top = 256
@@ -402,7 +390,6 @@ object DM_Bill: TDM_Bill
     MasterSource = DS_cmp_main
     MasterFields = 'k_lsk_id'
     DetailFields = 'k_lsk_id'
-    Options.AutoPrepare = True
     Constraints = <>
     Left = 32
     Top = 304
@@ -453,7 +440,6 @@ object DM_Bill: TDM_Bill
     MasterSource = DS_cmp_main
     MasterFields = 'k_lsk_id'
     DetailFields = 'k_lsk_id'
-    Options.AutoPrepare = True
     Constraints = <>
     Left = 32
     Top = 352
@@ -513,7 +499,6 @@ object DM_Bill: TDM_Bill
     MasterSource = DS_cmp_main
     MasterFields = 'k_lsk_id'
     DetailFields = 'k_lsk_id'
-    Options.AutoPrepare = True
     Constraints = <>
     Left = 184
     Top = 208
@@ -565,7 +550,6 @@ object DM_Bill: TDM_Bill
     MasterSource = DS_cmp_detail_primary
     MasterFields = 'lsk'
     DetailFields = 'lsk'
-    Options.AutoPrepare = True
     Constraints = <>
     Left = 184
     Top = 256
@@ -607,20 +591,19 @@ object DM_Bill: TDM_Bill
       'begin'
       '  -- Call the procedure'
       '  scott.rep_bills.arch(p_k_lsk => :k_lsk_id,'
-      '                 p_adr => :p_adr,'
+      '                 p_sel_obj => :p_sel_obj,'
       '                 p_lsk => :lsk,'
       '                 p_mg1 => :p_mg1,'
       '                 p_mg2 => :p_mg2,'
       '                 p_sel_uk => :p_sel_uk,'
       '                 p_rfcur => :p_rfcur);'
       'end;')
-    MasterSource = DS_cmp_main
+    MasterSource = DS_cmp_main_arch
     MasterFields = 'k_lsk_id'
     DetailFields = 'k_lsk_id'
-    Options.AutoPrepare = True
     Constraints = <>
-    Left = 248
-    Top = 400
+    Left = 88
+    Top = 464
     ParamData = <
       item
         DataType = ftInteger
@@ -629,7 +612,7 @@ object DM_Bill: TDM_Bill
       end
       item
         DataType = ftInteger
-        Name = 'p_adr'
+        Name = 'p_sel_obj'
         ParamType = ptInput
       end
       item
@@ -669,7 +652,7 @@ object DM_Bill: TDM_Bill
       'begin'
       '  -- Call the procedure'
       '  scott.rep_bills.arch_supp(p_k_lsk => :k_lsk_id,'
-      '                 p_adr => :p_adr,'
+      '                 p_sel_obj => :p_sel_obj,'
       '                 p_lsk => :lsk,'
       '                 p_mg1 => :p_mg1,'
       '                 p_mg2 => :p_mg2,'
@@ -677,13 +660,12 @@ object DM_Bill: TDM_Bill
       '                 p_rfcur => :p_rfcur);'
       'end;'
       '')
-    MasterSource = DS_cmp_main
+    MasterSource = DS_cmp_main_arch
     MasterFields = 'k_lsk_id'
     DetailFields = 'k_lsk_id'
-    Options.AutoPrepare = True
     Constraints = <>
-    Left = 184
-    Top = 400
+    Left = 32
+    Top = 464
     ParamData = <
       item
         DataType = ftInteger
@@ -692,7 +674,7 @@ object DM_Bill: TDM_Bill
       end
       item
         DataType = ftInteger
-        Name = 'p_adr'
+        Name = 'p_sel_obj'
         ParamType = ptInput
       end
       item
@@ -720,5 +702,82 @@ object DM_Bill: TDM_Bill
         Name = 'p_rfcur'
         Value = 'Object'
       end>
+  end
+  object Uni_cmp_main_arch: TUniQuery
+    Connection = DataModule1.UniConnection1
+    SQL.Strings = (
+      'begin'
+      '  -- Call the procedure'
+      '  scott.rep_bills_compound.main_arch(p_sel_obj => :p_sel_obj,'
+      '                          p_kul => :p_kul,'
+      '                          p_nd => :p_nd,'
+      '                          p_kw => :p_kw,'
+      '                          p_lsk => :p_lsk,'
+      '                          p_lsk1 => :p_lsk1,'
+      '                          p_is_closed => :p_is_closed,'
+      '                          p_mg => :p_mg,'
+      '                          p_sel_uk => :p_sel_uk,'
+      '                          p_rfcur => :p_rfcur);'
+      'end;')
+    FetchRows = 1000
+    Constraints = <>
+    Left = 32
+    Top = 432
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'p_sel_obj'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'p_kul'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'p_nd'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'p_kw'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'p_lsk'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'p_lsk1'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'p_is_closed'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'p_mg'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'p_sel_uk'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftCursor
+        Name = 'p_rfcur'
+        Value = ''
+      end>
+  end
+  object DS_cmp_main_arch: TDataSource
+    DataSet = Uni_cmp_main_arch
+    Left = 88
+    Top = 432
   end
 end

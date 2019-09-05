@@ -383,9 +383,9 @@ begin
     or (Form_kart_pr.OD_lg_pr.UpdatesPending = true)
     or (Form_kart.OD_kart_pr.UpdateStatus in [usInserted, usModified, usDeleted])
     or (Form_kart_pr.OD_lg_docs.UpdateStatus in [usInserted, usModified,
-      usDeleted])
+    usDeleted])
     or (Form_kart_pr.OD_lg_pr.UpdateStatus in [usInserted, usModified,
-      usDeleted]) then
+    usDeleted]) then
     ask1_ := 1
   else
     ask1_ := 0;
@@ -417,7 +417,7 @@ begin
   begin
     if (Application.MessageBox('Сохранить измения карточки?',
       'Подтверждение', MB_ICONQUESTION + MB_APPLMODAL + MB_YESNO) = IDYES) then
-        // сохраняем с вопросом
+      // сохраняем с вопросом
     begin
       OD_lg_docs.Session.ApplyUpdates([OD_lg_docs], true);
       OD_lg_pr.Session.ApplyUpdates([OD_lg_pr], true);
@@ -452,13 +452,13 @@ begin
   //разрешить ли редактирование проживающих
   if (Form_list_kart.isAllowEdit_k_ = 0) and (Form_main.arch_mg_ = '') then
   begin
-    Caption := 'Проживающий';
+    Caption := 'Карточка проживающего (собственника)';
     OD_c_states.ReadOnly := true;
     OD_c_states2.ReadOnly := true;
   end
   else if Form_main.arch_mg_ <> '' then
   begin
-    Caption := 'Архив';
+    Caption := 'Карточка проживающего (собственника) - Архив';
     OD_c_states.ReadOnly := true;
     OD_c_states2.ReadOnly := true;
   end
@@ -507,13 +507,13 @@ begin // смена состояний формы
     begin // из текущего в архив
       change_alias(OD_lg_pr, 'scott.c_lg_pr',
         '(select * from scott.a_lg_pr where mg=''' + Form_main.arch_mg_ +
-          ''')');
+        ''')');
       change_alias(OD_lg_pr, 'scott.c_lg_docs',
         '(select * from scott.a_lg_docs where mg=''' + Form_main.arch_mg_ +
-          ''')');
+        ''')');
       change_alias(OD_lg_docs, 'scott.c_lg_docs',
         '(select * from scott.a_lg_docs where mg=''' + Form_main.arch_mg_ +
-          ''')');
+        ''')');
     end
     else if (Form_main.arch_mg_ = '') and (mgold_ <> '') then
     begin // из архива в текущее
@@ -624,7 +624,7 @@ begin
     // без коммита сохраняем id проживающего
     DataModule1.OraclePackage1.CallProcedure(
       'scott.UTILS.ins_lg_doc',
-        [Form_kart.OD_kart_pr.FieldByName('id').AsInteger]);
+      [Form_kart.OD_kart_pr.FieldByName('id').AsInteger]);
     OD_lg_pr.Active := False;
     OD_lg_pr.Active := True;
     OD_lg_pr.Last;
@@ -702,10 +702,12 @@ begin
   Form_kart.OD_kart_pr.Session.ApplyUpdates([OD_lg_docs], True);
 
   id_ := Form_kart.OD_kart_pr.FieldByName('id').AsInteger;
-  err_ := DataModule1.OraclePackage1.CallStringFunction(
+  {err_ := DataModule1.OraclePackage1.CallStringFunction(
     'scott.UTILS.tst_krt',
-      [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, 1]);
+    [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, 1]);}
 
+  Form_kart.check_kart_correct;
+  
   //для изменений в пакетах?????
   OD_lg_docs.Session.Commit;
 
@@ -947,7 +949,7 @@ begin
     //Сохранить c коммитом (без коммита нельзя - произойдет исключение потом)
     err_ := DataModule1.OraclePackage1.CallStringFunction(
       'scott.UTILS.tst_krt',
-        [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, 1]);
+      [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, 1]);
     Form_kart.OD_kart_pr.Session.ApplyUpdates([Form_kart.OD_kart_pr], True);
   end
   else if (Form_kart.OD_kart_pr.UpdatesPending = True) then

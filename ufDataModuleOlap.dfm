@@ -1,7 +1,7 @@
 object DM_Olap: TDM_Olap
   OldCreateOrder = False
-  Left = 610
-  Top = 217
+  Left = 819
+  Top = 126
   Height = 810
   Width = 686
   object DS_spr_params: TDataSource
@@ -263,6 +263,7 @@ object DM_Olap: TDM_Olap
     Top = 448
   end
   object DS_c_kart_pr: TDataSource
+    DataSet = Uni_c_kart_pr
     Left = 80
     Top = 600
   end
@@ -502,7 +503,7 @@ object DM_Olap: TDM_Olap
         's.name else s.reu||'#39'-'#39'||s.name end,'
       '               3,'
       '               p.name||'#39', '#39'||ltrim(t.nd, '#39'0'#39'),'
-      '               2.5, '#39#1056#1057#1054#39
+      '               -1, '#39#1056#1057#1054#39
       '               ) as name,'
       '       decode(t.obj_level, 3,'
       #39#1089' '#39'||'

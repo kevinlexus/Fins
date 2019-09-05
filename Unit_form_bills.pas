@@ -149,7 +149,7 @@ type
     OD_data6LSK: TStringField;
     OD_data6SUMMA: TFloatField;
     OD_dataK_LSK_ID: TFloatField;
-    frxDBData_kart: TfrxDBDataset;
+    frxDB_arch_supp: TfrxDBDataset;
     OD_dataPHONE2: TStringField;
     fltfldOD_dataDOLG2: TFloatField;
     OD_dataDT_SCH: TDateTimeField;
@@ -223,6 +223,7 @@ type
     frxPDFExport1: TfrxPDFExport;
     Edit3: TEdit;
     CheckBox7: TCheckBox;
+    frxDB_cmp_main_arch: TfrxDBDataset;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -377,7 +378,7 @@ begin
   //OD_cmp_main.Active:=false;
   //OD_cmp_main.SetVariable('p_for_arch', 1); // как для арх справ?
   DM_Bill.Uni_cmp_main.Active := False;
-  DM_Bill.Uni_cmp_main.ParamByName('p_for_arch').AsInteger := 1;
+  //DM_Bill.Uni_cmp_main.ParamByName('p_for_arch').AsInteger := 1;
 
   OD_rep1.Active := false;
   OD_rep2.Active := false;
@@ -531,7 +532,7 @@ begin
   end;
   // установить параметры
   //OD_cmp_main.SetVariable('p_for_arch', 0);
-  DM_Bill.Uni_cmp_main.Params.ParamByName('p_for_arch').AsInteger := 0;
+  //DM_Bill.Uni_cmp_main.Params.ParamByName('p_for_arch').AsInteger := 0;
 
   //OD_cmp_main.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
   DM_Bill.Uni_cmp_main.Params.ParamByName('p_mg').AsString :=
@@ -847,7 +848,7 @@ procedure TForm_print_bills.old_report(tp_, pen_last_month_: Integer; repVar:
   string);
 begin
   // главный датасет для справки арх-2
-  DM_Bill.Uni_cmp_main.Active := false;
+  DM_Bill.Uni_cmp_main_arch.Active := false;
   // главный датасет
   OD_main.Active := false;
   OD_data.Active := false;
@@ -866,10 +867,8 @@ begin
 
   OD_main.SetVariable('mg_', DBLookupComboboxEh1.KeyValue);
 
-  DM_Bill.Uni_cmp_main.Params.ParamByName('p_for_arch').AsInteger := 1;
-
   OD_main.SetVariable('sel_obj_', sel_obj_);
-  OD_main.SetVariable('reu_', cbb1.EditValue); //DBLookupComboboxEh7.KeyValue);
+  OD_main.SetVariable('reu_', cbb1.EditValue);
   OD_main.SetVariable('lsk_', wwDBEdit1.Text);
   OD_main.SetVariable('lsk1_', wwDBEdit2.Text);
 
@@ -879,7 +878,7 @@ begin
 
   if (tp_ = 5) then //справка арх-2
   begin
-    if sel_obj_ = 2 then
+    {if sel_obj_ = 2 then
     begin
       //только для УК
       //ограничивать диапазон записи для печати счетов
@@ -895,56 +894,61 @@ begin
       DM_Bill.Uni_cmp_main.Params.ParamByName('p_firstNum').AsInteger := 0;
       DM_Bill.Uni_cmp_main.Params.ParamByName('p_lastNum').AsInteger :=
         1000000000;
-    end;
+    end; }
 
     // установить параметры
-    DM_Bill.Uni_cmp_main.Params.ParamByName('p_mg').AsString :=
+    DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_mg').AsString :=
       DBLookupComboboxEh5.KeyValue;
     // список УК для фильтра
-    DM_Bill.Uni_cmp_main.Params.ParamByName('p_sel_uk').AsString := getStrUk();
+    DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_sel_uk').AsString :=
+      getStrUk();
 
-    DM_Bill.Uni_cmp_main.Params.ParamByName('p_sel_obj').AsInteger := sel_obj_;
+    DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_sel_obj').AsInteger :=
+      sel_obj_;
 
-    if cbb1.EditValue <> null then
-      DM_Bill.Uni_cmp_main.Params.ParamByName('p_reu').AsString := cbb1.EditValue
-    else
-      DM_Bill.Uni_cmp_main.Params.ParamByName('p_reu').Clear;
+    {    if cbb1.EditValue <> null then
+          DM_Bill.Uni_cmp_main.Params.ParamByName('p_reu').AsString := cbb1.EditValue
+        else
+          DM_Bill.Uni_cmp_main.Params.ParamByName('p_reu').Clear;}
 
-    DM_Bill.Uni_cmp_main.Params.ParamByName('p_lsk').AsString := wwDBEdit1.Text;
-    DM_Bill.Uni_cmp_main.Params.ParamByName('p_lsk1').AsString :=
+    DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_lsk').AsString :=
+      wwDBEdit1.Text;
+    DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_lsk1').AsString :=
       wwDBEdit2.Text;
     if not VarIsNull(DBLookupComboboxEh2.KeyValue) then
-      DM_Bill.Uni_cmp_main.Params.ParamByName('p_kul').AsString :=
+      DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_kul').AsString :=
         DBLookupComboboxEh2.KeyValue
     else
-      DM_Bill.Uni_cmp_main.Params.ParamByName('p_kul').Clear;
+      DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_kul').Clear;
     if not VarIsNull(DBLookupComboboxEh3.KeyValue) then
-      DM_Bill.Uni_cmp_main.Params.ParamByName('p_nd').AsString :=
+      DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_nd').AsString :=
         OD_houses.FieldByName('nd_id').AsString
     else
-      DM_Bill.Uni_cmp_main.Params.ParamByName('p_nd').Clear;
+      DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_nd').Clear;
 
     if not VarIsNull(DBLookupComboboxEh4.KeyValue) then
-      DM_Bill.Uni_cmp_main.Params.ParamByName('p_kw').AsString :=
+      DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_kw').AsString :=
         OD_kw.FieldByName('kw_id').AsString
     else
-      DM_Bill.Uni_cmp_main.Params.ParamByName('p_kw').Clear;
+      DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_kw').Clear;
 
     // печатать ли закрытые счета
     if CheckBox2.Checked = true then
     begin
-      DM_Bill.Uni_cmp_main.Params.ParamByName('p_is_closed').AsInteger := 1;
+      DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_is_closed').AsInteger :=
+        1;
     end
     else
     begin
-      DM_Bill.Uni_cmp_main.Params.ParamByName('p_is_closed').AsInteger := 0;
+      DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_is_closed').AsInteger :=
+        0;
     end;
     // активировать датасеты
-    DM_Bill.Uni_cmp_main.Active := True;
+    DM_Bill.Uni_cmp_main_arch.Active := True;
   end
   else
   begin
-    DM_Bill.Uni_cmp_main.Params.ParamByName('p_for_arch').AsInteger := 0;
+    //DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_for_arch').AsInteger := 0;
   end;
 
   if sel_obj_ = 2 then
@@ -997,43 +1001,7 @@ begin
   end
   else if (tp_ = 2) then //справка арх
   begin
-    wwDBEdit2.Text := wwDBEdit1.Text;
-    //OD_arch.SetVariable('p_mg1', DBLookupComboboxEh1.KeyValue);
-    //OD_arch.SetVariable('p_mg2', DBLookupComboboxEh5.KeyValue);
 
-    DM_Bill.Uni_arch.Params.ParamByName('p_sel_uk').AsString :=
-      getStrUk();
-    DM_Bill.Uni_arch.Params.ParamByName('p_mg1').AsString :=
-      DBLookupComboboxEh1.KeyValue;
-    DM_Bill.Uni_arch.Params.ParamByName('p_mg2').AsString :=
-      DBLookupComboboxEh5.KeyValue;
-
-    //OD_arch_supp.SetVariable('p_mg1', DBLookupComboboxEh1.KeyValue);
-    //OD_arch_supp.SetVariable('p_mg2', DBLookupComboboxEh5.KeyValue);
-    DM_Bill.Uni_arch_supp.Params.ParamByName('p_sel_uk').AsString :=
-      getStrUk();
-    DM_Bill.Uni_arch_supp.Params.ParamByName('p_mg1').AsString :=
-      DBLookupComboboxEh1.KeyValue;
-    DM_Bill.Uni_arch_supp.Params.ParamByName('p_mg2').AsString :=
-      DBLookupComboboxEh5.KeyValue;
-
-    {    if sel_obj_ = 0 then
-        begin
-          //по л.с.
-           //OD_arch_supp.SetVariable('p_lsk', wwDBEdit1.Text);
-          //OD_arch_supp.SetVariable('p_adr', 0);
-          DM_Bill.Uni_arch_supp.Params.ParamByName('p_adr').AsInteger:=0;
-        end
-        else
-        begin
-          //по адресу
-           //OD_arch_supp.SetVariable('p_lsk', OD_kw.FieldByName('lsk').AsString);
-          //OD_arch_supp.SetVariable('p_adr', 1);
-          DM_Bill.Uni_arch_supp.Params.ParamByName('p_adr').AsInteger:=1;
-        end;}
-    DM_Bill.Uni_arch_supp.Params.ParamByName('p_adr').AsInteger := 1;
-    //OD_arch_supp.Active := true;
-    DM_Bill.Uni_arch_supp.Active := True;
   end
   else if (tp_ = 5) then //справка арх-2
   begin
@@ -1054,21 +1022,19 @@ begin
     DM_Bill.Uni_arch_supp.Params.ParamByName('p_mg2').AsString :=
       DBLookupComboboxEh5.KeyValue;
 
-    {    if sel_obj_ = 0 then
-        begin
-          //по л.с.
-           //OD_arch_supp.SetVariable('p_lsk', wwDBEdit1.Text);
-          //DM_Bill.Uni_arch_supp.SetVariable('p_adr', 0);
-          DM_Bill.Uni_arch_supp.Params.ParamByName('p_adr').AsInteger := 0;
-        end
-        else
-        begin
-          //по адресу
-           //OD_arch_supp.SetVariable('p_lsk', OD_kw.FieldByName('lsk').AsString);
-          //DM_Bill.Uni_arch_supp.SetVariable('p_adr', 1);
-          DM_Bill.Uni_arch_supp.Params.ParamByName('p_adr').AsInteger := 1;
-        end;}
-    DM_Bill.Uni_arch_supp.Params.ParamByName('p_adr').AsInteger := 1;
+    if sel_obj_ = 0 then
+    begin
+      //по л.с.
+      DM_Bill.Uni_arch.Params.ParamByName('p_sel_obj').AsInteger := 0;
+      DM_Bill.Uni_arch_supp.Params.ParamByName('lsk').AsString:=wwDBEdit1.Text;
+      DM_Bill.Uni_arch_supp.Params.ParamByName('p_sel_obj').AsInteger := 0;
+    end
+    else
+    begin
+      //по адресу
+      DM_Bill.Uni_arch.Params.ParamByName('p_sel_obj').AsInteger := 1;
+      DM_Bill.Uni_arch_supp.Params.ParamByName('p_sel_obj').AsInteger := 1;
+    end;
     DM_Bill.Uni_arch_supp.Active := true;
   end
   else if (tp_ = 3) then //справка о задолжности
@@ -1103,7 +1069,7 @@ begin
       //DM_Bill.Uni_arch.DetailFields := 'LSK';
 
       //OD_arch.SetVariable('p_adr', 0);
-      DM_Bill.Uni_arch.Params.ParamByName('p_adr').AsInteger := 1;
+      //DM_Bill.Uni_arch.Params.ParamByName('p_adr').AsInteger := 1;
 
       { ред. 07.05.2019 - пока убрал
       OD_data2.SetVariable('lsk_', wwDBEdit1.Text);        }
@@ -1122,7 +1088,7 @@ begin
 
       //OD_arch.SetVariable('p_k_lsk', Form_main.k_lsk_id_);
       //OD_arch.SetVariable('p_adr', 1);
-      DM_Bill.Uni_arch.Params.ParamByName('p_adr').AsInteger := 1;
+      //DM_Bill.Uni_arch.Params.ParamByName('p_adr').AsInteger := 1;
 
       { ред. 07.05.2019 - пока убрал
       OD_data2.SetVariable('lsk_', null);
@@ -1186,7 +1152,7 @@ begin
     //Арх.спр.
     //OD_cmp_main.Active := true;
     // OD_arch.Active := true;
-    DM_Bill.Uni_cmp_main.Active := True;
+    DM_Bill.Uni_cmp_main_arch.Active := True;
     DM_Bill.Uni_arch.Active := True;
     { ред. 07.05.2019 - пока убрал
       OD_data2.Active := true;}
@@ -1196,7 +1162,7 @@ begin
     // Арх.спр.-2
     //OD_cmp_main.Active := true;
     //OD_arch.Active := true;
-    DM_Bill.Uni_cmp_main.Active := True;
+    DM_Bill.Uni_cmp_main_arch.Active := True;
     DM_Bill.Uni_arch.Active := True;
   end
   else if tp_ = 3 then
@@ -1217,9 +1183,13 @@ begin
 
   // ЗАГРУЗКА отчёта
   if (((tp_ = 0) or (tp_ = 4)) and (OD_main.RecordCount = 0) or (tp_ = 1)
-    and (OD_main.RecordCount = 0) or (tp_ = 2) and (DM_Bill.Uni_arch.RecordCount
-    = 0)
-    or (tp_ = 5) and (DM_Bill.Uni_cmp_main.RecordCount = 0)) then
+    and (OD_main.RecordCount = 0)) then
+  begin
+    Application.MessageBox('Нет информации за указанный период', 'Внимание!', 16
+      + MB_APPLMODAL);
+    Form_status.Close;
+  end
+  else if (((tp_ = 2) or (tp_ = 5)) and (DM_Bill.Uni_cmp_main_arch.RecordCount = 0)) then
   begin
     Application.MessageBox('Нет информации за указанный период', 'Внимание!', 16
       + MB_APPLMODAL);
@@ -1299,7 +1269,7 @@ begin
     else if tp_ = 5 then
     begin
       //Справка из архива-2
-      frxReport1.LoadFromFile(Form_main.exepath_ + 'арх_спр2.fr3', True);
+      frxReport1.LoadFromFile(Form_main.exepath_ + 'арх_спр4.fr3', True);
       frxReport1.PrepareReport(true);
     end
     else if tp_ = 3 then
@@ -1847,7 +1817,7 @@ end;
 procedure TForm_print_bills.CheckBox7Click(Sender: TObject);
 begin
   // снять/установить все отмеченные элементы УК комбобокса cxCheckComboBox1
-  if CheckBox7.Checked=true then
+  if CheckBox7.Checked = true then
     selAllUk
   else
     deSelAllUk;

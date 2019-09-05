@@ -94,7 +94,7 @@ begin
   Form_main.cur_cash_num :=
     Form_sel_comps.OD_sel_comps.FieldByName('cash_num').asInteger;
   if Form_main.cur_cash_num = 1 then
-    Form_main.cur_ECR := Form_main.selECR
+    Form_main.cur_ECR := Form_main.selECR               
   else
     Form_main.cur_ECR := Form_main.selECR2;
 

@@ -1,6 +1,6 @@
 object Form_olap: TForm_olap
-  Left = 613
-  Top = 228
+  Left = 794
+  Top = 202
   AutoScroll = False
   Caption = 'OLAP'
   ClientHeight = 743
@@ -5492,6 +5492,7 @@ object Form_olap: TForm_olap
       'PRIV_PROC=PRIV_PROC'
       'REL_NAME=REL_NAME'
       'SHORT_NAME=SHORT_NAME')
+    DataSet = DM_Olap.Uni_c_kart_pr
     BCDToCurrency = False
     Left = 120
     Top = 304

@@ -190,15 +190,16 @@ begin
   //отчет - реестр для УСЗН
   if (rep_cd_ = '79') then
   begin
-    DM_OLap.Uni_c_kart_pr.MasterSource := DM_Olap.Uni_data.DataSource;
+    //DM_OLap.Uni_c_kart_pr.MasterSource := DM_Olap.Uni_data.DataSource;
     DM_OLap.Uni_c_kart_pr.Active := True;
-  end
-  else if (rep_cd_ <> '78') then
-  begin
+  end;
+  // 05.09.2019 чё за бред:
+//  else if (rep_cd_ <> '78') then
+//  begin
     //необходимо явно убирать Master, иначе датасет продолжает ссылаться, с ошибкой...
     //DM_OLap.OD_c_kart_pr.Master := nil;
-    DM_OLap.Uni_c_kart_pr.Active := False;
-  end;
+    //DM_OLap.Uni_c_kart_pr.Active := False;
+//  end;
 
   //Открываем зависимые датасеты, для отчетов
   //отчет - список для администрации
@@ -352,6 +353,8 @@ begin
 
   DM_Olap.Uni_Data.Active := False;
   DM_Olap.Uni_Data.Active := True;
+  cxm1.Lines.Clear;
+  cxm1.Lines.Text:='Получено строк:'+IntToStr(DM_Olap.Uni_Data.RecordCount);
   Form_status.Close;
 end;
 

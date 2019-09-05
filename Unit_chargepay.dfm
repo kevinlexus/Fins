@@ -1,6 +1,6 @@
 object Form_chargepay: TForm_chargepay
-  Left = 461
-  Top = 347
+  Left = 880
+  Top = 204
   Width = 835
   Height = 482
   BorderIcons = [biSystemMenu, biMinimize]

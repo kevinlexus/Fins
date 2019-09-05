@@ -1,8 +1,8 @@
 object Form_print_bills: TForm_print_bills
-  Left = 1124
-  Top = 165
-  Width = 454
-  Height = 453
+  Left = 253
+  Top = 173
+  Width = 451
+  Height = 447
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #1057#1095#1077#1090#1072' '#1085#1072' '#1086#1087#1083#1072#1090#1091' '#1091#1089#1083#1091#1075' '#1046#1050#1061
   Color = clBtnFace
@@ -93,7 +93,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox1: TGroupBox
     Left = 0
     Top = 342
-    Width = 438
+    Width = 435
     Height = 61
     Align = alTop
     TabOrder = 3
@@ -138,7 +138,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox2: TGroupBox
     Left = 0
     Top = 0
-    Width = 438
+    Width = 435
     Height = 105
     Align = alTop
     TabOrder = 0
@@ -275,7 +275,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox3: TGroupBox
     Left = 0
     Top = 105
-    Width = 438
+    Width = 435
     Height = 200
     Align = alTop
     TabOrder = 2
@@ -576,7 +576,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox4: TGroupBox
     Left = 0
     Top = 305
-    Width = 438
+    Width = 435
     Height = 37
     Align = alTop
     TabOrder = 4
@@ -1536,28 +1536,18 @@ object Form_print_bills: TForm_print_bills
       FieldName = 'SUMMA'
     end
   end
-  object frxDBData_kart: TfrxDBDataset
-    UserName = 'frxDBData_kart'
+  object frxDB_arch_supp: TfrxDBDataset
+    UserName = 'frxDB_arch_supp'
     CloseDataSource = False
     FieldAliases.Strings = (
-      'LSK=LSK'
-      'STREET=STREET'
-      'ND=ND'
-      'KW=KW'
-      'OPL=OPL'
-      'FIO=FIO'
-      'KPR=KPR'
-      'KPR_WR=KPR_WR'
-      'KPR_WRP=KPR_WRP'
-      'PERS_TP=PERS_TP'
       'PAY=PAY'
       'PAY_PEN=PAY_PEN'
       'DOLG=DOLG'
       'PENYA=PENYA')
     DataSet = DM_Bill.Uni_arch_supp
     BCDToCurrency = False
-    Left = 112
-    Top = 544
+    Left = 448
+    Top = 512
   end
   object frxDBData_arch: TfrxDBDataset
     UserName = 'frxDBData_arch'
@@ -1574,8 +1564,8 @@ object Form_print_bills: TForm_print_bills
       'PEN='#1055#1077#1085#1103' '#1090#1077#1082'.')
     DataSet = DM_Bill.Uni_arch
     BCDToCurrency = False
-    Left = 152
-    Top = 544
+    Left = 488
+    Top = 512
   end
   object OD_main: TOracleDataSet
     SQL.Strings = (
@@ -1716,7 +1706,7 @@ object Form_print_bills: TForm_print_bills
     Optimize = False
     Variables.Data = {0300000001000000040000003A4F5247030000000000000000000000}
     QBEDefinition.QBEFieldDefs = {
-      0400000035000000020000004944010000000000020000004344010000000000
+      0400000036000000020000004944010000000000020000004344010000000000
       08000000464B5F4F52475450010000000000040000004E414D45010000000000
       030000004E505001000000000001000000560100000000000900000050415245
       4E545F4944010000000000030000005245550100000000000500000054524553
@@ -1744,7 +1734,8 @@ object Form_print_bills: TForm_print_bills
       0100000000000300000047525001000000000009000000525F5343485F474953
       0100000000000B000000444953545F5041595F54500100000000000800000041
       44525F434153480100000000000600000049535F52534F0100000000000F0000
-      0049535F45584348414E47455F474953010000000000}
+      0049535F45584348414E47455F4749530100000000000A0000004F52475F5450
+      5F474953010000000000}
     Master = OD_data
     MasterFields = 'org'
     DetailFields = 'org'
@@ -2253,6 +2244,24 @@ object Form_print_bills: TForm_print_bills
   object frxDB_cmp_main: TfrxDBDataset
     UserName = 'frxDB_cmp_main'
     CloseDataSource = False
+    FieldAliases.Strings = (
+      'PRN_NUM=PRN_NUM'
+      'FOR_BILL=FOR_BILL'
+      'LSK=LSK'
+      'K_LSK_ID=K_LSK_ID'
+      'OPL=OPL'
+      'MG2=MG2'
+      'KPR=KPR'
+      'KPR_WR=KPR_WR'
+      'KPR_WRP=KPR_WRP'
+      'KPR_OT=KPR_OT'
+      'OPL_1=OPL_1'
+      'ST_NAME=ST_NAME'
+      'PERS_TP=PERS_TP'
+      'ADR=ADR'
+      'MG=MG'
+      'MG_STR=MG_STR'
+      'FIO=FIO')
     DataSet = DM_Bill.Uni_cmp_main
     BCDToCurrency = False
     Left = 448
@@ -2801,5 +2810,22 @@ object Form_print_bills: TForm_print_bills
     PrintScaling = False
     Left = 208
     Top = 153
+  end
+  object frxDB_cmp_main_arch: TfrxDBDataset
+    UserName = 'frxDB_cmp_main_arch'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'K_LSK_ID=K_LSK_ID'
+      'ADR=ADR'
+      'LSK=LSK'
+      'KPR=KPR'
+      'OPL=OPL'
+      'PERS_TP=PERS_TP'
+      'FIO=FIO'
+      'NAME_UK=NAME_UK')
+    DataSet = DM_Bill.Uni_cmp_main_arch
+    BCDToCurrency = False
+    Left = 448
+    Top = 464
   end
 end

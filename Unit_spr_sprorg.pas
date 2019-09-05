@@ -162,8 +162,6 @@ type
     OD_usl_bills: TOracleDataSet;
     DS_usl_bills: TDataSource;
     cxSplitter1: TcxSplitter;
-    OD_sprorgFK_BILL_VAR: TFloatField;
-    cxGrid1DBTableView1FK_BILL_VAR: TcxGridDBColumn;
     OD_sprorgBANK_FNAME: TStringField;
     cxGrid1DBTableView1BANK_FNAME: TcxGridDBColumn;
     cxGrid1DBTableView1GRP: TcxGridDBColumn;
@@ -218,11 +216,13 @@ type
     cxGrid1DBTableView1IS_RSO: TcxGridDBColumn;
     OD_sprorgIS_EXCHANGE_GIS: TFloatField;
     cxGrid1DBTableView1IS_EXCHANGE_GIS: TcxGridDBColumn;
+    OD_sprorgFK_BILL_VAR: TFloatField;
+    cxGrid1DBTableView1FK_BILL_VAR: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure OD_sprorgAfterScroll(DataSet: TDataSet);
-    procedure OD_sprorgBeforePost(DataSet: TDataSet);
-    procedure OD_sprorgAfterPost(DataSet: TDataSet);
+    procedure OD_sprorgBeforeEdit(DataSet: TDataSet);
+    procedure OD_sprorgAfterEdit(DataSet: TDataSet);
   private
     flt_:string;
   public
@@ -245,8 +245,8 @@ begin
   OD_org_tp.Active:=True;
   OD_org_tp.First;
   OD_org_tp2.Active:=True;
-  OD_usl_bills.Active:=True;
   OD_usl.Active:=True;
+  OD_usl_bills.Active:=True;
   OD_usl_tree.Active:=True;
   OD_usl_round.Active:=True;
 end;
@@ -260,7 +260,7 @@ end;
 
 procedure TForm_spr_sprorg.OD_sprorgAfterScroll(DataSet: TDataSet);
 begin
-    {  if OD_usl_tree.Active=True then
+  if OD_usl_tree.Active=True then
   begin
     // если не в режиме добавления организации
     OD_usl_bills.SetVariable('fk_bill_var',
@@ -271,21 +271,21 @@ begin
       OD_sprorg.FieldByName('fk_bill_var').AsInteger);
     OD_usl_tree.Active:=false;
     OD_usl_tree.Active:=true;
-  end;                       }
+  end;                       
 end;
 
-procedure TForm_spr_sprorg.OD_sprorgBeforePost(DataSet: TDataSet);
+procedure TForm_spr_sprorg.OD_sprorgBeforeEdit(DataSet: TDataSet);
 begin
-  {OD_usl_tree.Active:=False;
-  OD_usl_round.Active:=False;
-  OD_usl_bills.Active:=False;}
+  // закрыть датасеты - иначе не дает обновить ключевое поле fk_bill_var
+  //OD_usl_bills.Active:=False;
+  //OD_usl_tree.Active:=False;
 end;
 
-procedure TForm_spr_sprorg.OD_sprorgAfterPost(DataSet: TDataSet);
+procedure TForm_spr_sprorg.OD_sprorgAfterEdit(DataSet: TDataSet);
 begin
-{  OD_usl_tree.Active:=True;
-  OD_usl_round.Active:=True;
-  OD_usl_bills.Active:=True;  }
+  // открыть закрытые датасеты - иначе не дает обновить ключевое поле fk_bill_var
+  //OD_usl_bills.Active:=True;
+  //OD_usl_tree.Active:=True;
 end;
 
 end.

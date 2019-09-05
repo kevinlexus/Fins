@@ -1,6 +1,6 @@
 object Form_spr_sprorg: TForm_spr_sprorg
-  Left = 436
-  Top = 258
+  Left = 604
+  Top = 195
   Width = 1311
   Height = 720
   BorderIcons = [biSystemMenu, biMinimize]
@@ -216,6 +216,10 @@ object Form_spr_sprorg: TForm_spr_sprorg
         Properties.ValueUnchecked = 0
         Width = 34
       end
+      object cxGrid1DBTableView1FK_BILL_VAR: TcxGridDBColumn
+        Caption = #1058#1080#1087' '#1089#1095#1077#1090#1072'/FK_BILL_VAR'
+        DataBinding.FieldName = 'FK_BILL_VAR'
+      end
       object cxGrid1DBTableView1IS_EXCHANGE_GIS: TcxGridDBColumn
         Caption = #1054#1073#1084#1077#1085' '#1043#1048#1057'?'
         DataBinding.FieldName = 'IS_EXCHANGE_GIS'
@@ -223,9 +227,6 @@ object Form_spr_sprorg: TForm_spr_sprorg
         Properties.ValueChecked = 1
         Properties.ValueUnchecked = 0
         Width = 43
-      end
-      object cxGrid1DBTableView1FK_BILL_VAR: TcxGridDBColumn
-        DataBinding.FieldName = 'FK_BILL_VAR'
       end
       object cxGrid1DBTableView1NPP: TcxGridDBColumn
         DataBinding.FieldName = 'NPP'
@@ -808,8 +809,8 @@ object Form_spr_sprorg: TForm_spr_sprorg
       48414E47455F474953010000000000}
     RefreshOptions = [roAfterInsert, roAfterUpdate]
     Session = DataModule1.OracleSession1
-    BeforePost = OD_sprorgBeforePost
-    AfterPost = OD_sprorgAfterPost
+    BeforeEdit = OD_sprorgBeforeEdit
+    AfterEdit = OD_sprorgAfterEdit
     AfterScroll = OD_sprorgAfterScroll
     Left = 24
     Top = 56
@@ -1090,10 +1091,6 @@ object Form_spr_sprorg: TForm_spr_sprorg
       Visible = False
       Size = 10
     end
-    object OD_sprorgFK_BILL_VAR: TFloatField
-      DisplayLabel = #1058#1080#1087' '#1089#1095#1077#1090#1072'/ FK_BILL_VAR'
-      FieldName = 'FK_BILL_VAR'
-    end
     object OD_sprorgBANK_FNAME: TStringField
       FieldName = 'BANK_FNAME'
       Size = 100
@@ -1116,6 +1113,9 @@ object Form_spr_sprorg: TForm_spr_sprorg
     end
     object OD_sprorgIS_EXCHANGE_GIS: TFloatField
       FieldName = 'IS_EXCHANGE_GIS'
+    end
+    object OD_sprorgFK_BILL_VAR: TFloatField
+      FieldName = 'FK_BILL_VAR'
     end
   end
   object OD_t_orgp2: TOracleDataSet
@@ -1154,8 +1154,8 @@ object Form_spr_sprorg: TForm_spr_sprorg
       00464B5F42494C4C5F5641520100000000000D0000004652435F4745545F5052
       4943450100000000000800000042494C4C5F414747010000000000}
     Master = OD_sprorg
-    MasterFields = 'FK_BILL_VAR'
     Session = DataModule1.OracleSession1
+    DesignActivation = True
     Left = 272
     Top = 280
   end
@@ -1228,8 +1228,8 @@ object Form_spr_sprorg: TForm_spr_sprorg
       00484944455F564F4C01000000000008000000484944455F524F570100000000
       00}
     Master = OD_sprorg
-    MasterFields = 'FK_BILL_VAR'
     Session = DataModule1.OracleSession1
+    DesignActivation = True
     Left = 856
     Top = 560
   end
