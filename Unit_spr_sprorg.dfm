@@ -1,6 +1,6 @@
 object Form_spr_sprorg: TForm_spr_sprorg
-  Left = 604
-  Top = 195
+  Left = 309
+  Top = 163
   Width = 1311
   Height = 720
   BorderIcons = [biSystemMenu, biMinimize]
@@ -183,9 +183,9 @@ object Form_spr_sprorg: TForm_spr_sprorg
   object cxGrid1: TcxGrid
     Left = 0
     Top = 0
-    Width = 809
+    Width = 609
     Height = 681
-    Align = alLeft
+    Align = alClient
     TabOrder = 6
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
@@ -412,6 +412,10 @@ object Form_spr_sprorg: TForm_spr_sprorg
         DataBinding.FieldName = 'BANK_FNAME'
         Width = 218
       end
+      object cxGrid1DBTableView1GRP_DEB: TcxGridDBColumn
+        Caption = #1043#1088#1091#1087#1087'.'#1076#1086#1083#1075
+        DataBinding.FieldName = 'GRP_DEB'
+      end
     end
     object cxGrid1Level1: TcxGridLevel
       GridView = cxGrid1DBTableView1
@@ -436,232 +440,249 @@ object Form_spr_sprorg: TForm_spr_sprorg
     Visible = False
   end
   object cxSplitter1: TcxSplitter
-    Left = 809
+    Left = 609
     Top = 0
     Width = 8
     Height = 681
-    Control = cxGrid1
+    HotZoneClassName = 'TcxSimpleStyle'
+    AlignSplitter = salRight
+    PositionAfterOpen = 150
+    InvertDirection = True
+    MinSize = 60
+    Control = Panel1
+    OnAfterOpen = cxSplitter1AfterOpen
+    OnAfterClose = cxSplitter1AfterClose
+    Color = clBtnFace
+    ParentColor = False
   end
-  object PageControl1: TPageControl
-    Left = 817
+  object Panel1: TPanel
+    Left = 617
     Top = 0
-    Width = 478
+    Width = 678
     Height = 681
-    ActivePage = TabSheet3
-    Align = alClient
+    Align = alRight
     TabOrder = 8
-    object TabSheet1: TTabSheet
-      Caption = #1057#1095#1077#1090
-      object cxGrid2: TcxGrid
-        Left = 0
-        Top = 0
-        Width = 470
-        Height = 653
-        Align = alClient
-        TabOrder = 0
-        object cxGridDBTableView1: TcxGridDBTableView
-          Navigator.Buttons.CustomButtons = <>
-          Navigator.Visible = True
-          DataController.DataSource = DS_usl_bills
-          DataController.Summary.DefaultGroupSummaryItems = <>
-          DataController.Summary.FooterSummaryItems = <>
-          DataController.Summary.SummaryGroups = <>
-          OptionsSelection.InvertSelect = False
-          OptionsView.GroupByBox = False
-          OptionsView.HeaderAutoHeight = True
-          object cxGridDBTableView1ID: TcxGridDBColumn
-            Caption = #1059#1089#1083#1091#1075#1072'/ ID '
-            DataBinding.FieldName = 'ID'
-            Width = 28
+    object PageControl1: TPageControl
+      Left = 1
+      Top = 1
+      Width = 676
+      Height = 679
+      ActivePage = TabSheet3
+      Align = alClient
+      TabOrder = 0
+      object TabSheet1: TTabSheet
+        Caption = #1057#1095#1077#1090
+        object cxGrid2: TcxGrid
+          Left = 0
+          Top = 0
+          Width = 668
+          Height = 651
+          Align = alClient
+          TabOrder = 0
+          object cxGridDBTableView1: TcxGridDBTableView
+            Navigator.Buttons.CustomButtons = <>
+            Navigator.Visible = True
+            DataController.DataSource = DS_usl_bills
+            DataController.Summary.DefaultGroupSummaryItems = <>
+            DataController.Summary.FooterSummaryItems = <>
+            DataController.Summary.SummaryGroups = <>
+            OptionsSelection.InvertSelect = False
+            OptionsView.GroupByBox = False
+            OptionsView.HeaderAutoHeight = True
+            object cxGridDBTableView1ID: TcxGridDBColumn
+              Caption = #1059#1089#1083#1091#1075#1072'/ ID '
+              DataBinding.FieldName = 'ID'
+              Width = 28
+            end
+            object cxGridDBTableView1USL_ID: TcxGridDBColumn
+              Caption = #1059#1089#1083#1091#1075#1072' '#1087#1086#1076#1095'./ USL_ID'
+              DataBinding.FieldName = 'USL_ID'
+              Width = 46
+            end
+            object cxGridDBTableView1MG1: TcxGridDBColumn
+              Caption = 'C'
+              DataBinding.FieldName = 'MG1'
+            end
+            object cxGridDBTableView1MG2: TcxGridDBColumn
+              Caption = #1055#1086
+              DataBinding.FieldName = 'MG2'
+            end
+            object cxGridDBTableView1IS_VOL: TcxGridDBColumn
+              Caption = #1042#1082#1083'.'#1086#1073#1098#1077#1084'/ IS_VOL'
+              DataBinding.FieldName = 'IS_VOL'
+            end
+            object cxGridDBTableView1FK_TP: TcxGridDBColumn
+              DataBinding.FieldName = 'FK_TP'
+            end
+            object cxGridDBTableView1FK_BILL_VAR: TcxGridDBColumn
+              Caption = #1058#1080#1087' '#1089#1095#1077#1090#1072'/ FK_BILL_VAR'
+              DataBinding.FieldName = 'FK_BILL_VAR'
+            end
+            object cxGridDBTableView1FRC_GET_PRICE: TcxGridDBColumn
+              DataBinding.FieldName = 'FRC_GET_PRICE'
+            end
+            object cxGridDBTableView1BILL_AGG: TcxGridDBColumn
+              DataBinding.FieldName = 'BILL_AGG'
+            end
           end
-          object cxGridDBTableView1USL_ID: TcxGridDBColumn
-            Caption = #1059#1089#1083#1091#1075#1072' '#1087#1086#1076#1095'./ USL_ID'
-            DataBinding.FieldName = 'USL_ID'
-            Width = 46
+          object cxGridLevel1: TcxGridLevel
+            GridView = cxGridDBTableView1
           end
-          object cxGridDBTableView1MG1: TcxGridDBColumn
-            Caption = 'C'
-            DataBinding.FieldName = 'MG1'
-          end
-          object cxGridDBTableView1MG2: TcxGridDBColumn
-            Caption = #1055#1086
-            DataBinding.FieldName = 'MG2'
-          end
-          object cxGridDBTableView1IS_VOL: TcxGridDBColumn
-            Caption = #1042#1082#1083'.'#1086#1073#1098#1077#1084'/ IS_VOL'
-            DataBinding.FieldName = 'IS_VOL'
-          end
-          object cxGridDBTableView1FK_TP: TcxGridDBColumn
-            DataBinding.FieldName = 'FK_TP'
-          end
-          object cxGridDBTableView1FK_BILL_VAR: TcxGridDBColumn
-            Caption = #1058#1080#1087' '#1089#1095#1077#1090#1072'/ FK_BILL_VAR'
-            DataBinding.FieldName = 'FK_BILL_VAR'
-          end
-          object cxGridDBTableView1FRC_GET_PRICE: TcxGridDBColumn
-            DataBinding.FieldName = 'FRC_GET_PRICE'
-          end
-          object cxGridDBTableView1BILL_AGG: TcxGridDBColumn
-            DataBinding.FieldName = 'BILL_AGG'
-          end
-        end
-        object cxGridLevel1: TcxGridLevel
-          GridView = cxGridDBTableView1
         end
       end
-    end
-    object TabSheet2: TTabSheet
-      Caption = #1054#1082#1088#1091#1075#1083#1077#1085#1080#1077' '#1091#1089#1083#1091#1075' '#1090#1077#1082'.'#1089#1086#1076'.'
-      ImageIndex = 1
-      object cxGrid3: TcxGrid
-        Left = 0
-        Top = 41
-        Width = 470
-        Height = 612
-        Align = alClient
-        TabOrder = 0
-        object cxGridDBTableView2: TcxGridDBTableView
-          Navigator.Buttons.CustomButtons = <>
-          Navigator.Visible = True
-          DataController.DataSource = DS_usl_round
-          DataController.Summary.DefaultGroupSummaryItems = <>
-          DataController.Summary.FooterSummaryItems = <>
-          DataController.Summary.SummaryGroups = <>
-          OptionsSelection.InvertSelect = False
-          OptionsView.ColumnAutoWidth = True
-          OptionsView.GroupByBox = False
-          OptionsView.HeaderAutoHeight = True
-          object cxGridDBTableView2USL: TcxGridDBColumn
-            Caption = #1050#1086#1076' '#1091#1089#1083#1091#1075#1080
-            DataBinding.FieldName = 'USL'
-            Width = 69
+      object TabSheet2: TTabSheet
+        Caption = #1054#1082#1088#1091#1075#1083#1077#1085#1080#1077' '#1091#1089#1083#1091#1075' '#1090#1077#1082'.'#1089#1086#1076'.'
+        ImageIndex = 1
+        object cxGrid3: TcxGrid
+          Left = 0
+          Top = 41
+          Width = 668
+          Height = 610
+          Align = alClient
+          TabOrder = 0
+          object cxGridDBTableView2: TcxGridDBTableView
+            Navigator.Buttons.CustomButtons = <>
+            Navigator.Visible = True
+            DataController.DataSource = DS_usl_round
+            DataController.Summary.DefaultGroupSummaryItems = <>
+            DataController.Summary.FooterSummaryItems = <>
+            DataController.Summary.SummaryGroups = <>
+            OptionsSelection.InvertSelect = False
+            OptionsView.ColumnAutoWidth = True
+            OptionsView.GroupByBox = False
+            OptionsView.HeaderAutoHeight = True
+            object cxGridDBTableView2USL: TcxGridDBColumn
+              Caption = #1050#1086#1076' '#1091#1089#1083#1091#1075#1080
+              DataBinding.FieldName = 'USL'
+              Width = 69
+            end
+            object cxGridDBTableView2Column1: TcxGridDBColumn
+              Caption = #1059#1089#1083#1091#1075#1072
+              DataBinding.FieldName = 'USL'
+              PropertiesClassName = 'TcxLookupComboBoxProperties'
+              Properties.KeyFieldNames = 'USL'
+              Properties.ListColumns = <
+                item
+                  FieldName = 'NAME'
+                end>
+              Properties.ListSource = DS_usl
+              Width = 399
+            end
           end
-          object cxGridDBTableView2Column1: TcxGridDBColumn
-            Caption = #1059#1089#1083#1091#1075#1072
-            DataBinding.FieldName = 'USL'
-            PropertiesClassName = 'TcxLookupComboBoxProperties'
-            Properties.KeyFieldNames = 'USL'
-            Properties.ListColumns = <
-              item
-                FieldName = 'NAME'
-              end>
-            Properties.ListSource = DS_usl
-            Width = 399
-          end
-        end
-        object cxGridLevel2: TcxGridLevel
-          GridView = cxGridDBTableView2
-        end
-      end
-      object Memo2: TMemo
-        Left = 0
-        Top = 0
-        Width = 470
-        Height = 41
-        Align = alTop
-        Lines.Strings = (
-          
-            #1053#1077#1086#1073#1093#1086#1076#1080#1084#1086' '#1076#1086#1073#1072#1074#1080#1090#1100' '#1091#1089#1083#1091#1075#1080', '#1082#1086#1090#1086#1088#1099#1077' '#1073#1091#1076#1091#1090' '#1091#1095#1072#1089#1090#1074#1086#1074#1072#1090#1100' '#1074' '#1086#1082#1088#1091#1075#1083#1077#1085 +
-            #1080#1080' ('#1086#1073#1099#1095#1085#1086' '#1074#1093#1086#1076#1103#1097#1080#1077' '
-          
-            #1074' '#1090#1077#1082#1091#1097#1077#1077' '#1089#1086#1076#1077#1088#1078#1072#1085#1080#1077'). '#1054#1082#1088#1091#1075#1083#1077#1085#1080#1077' '#1073#1091#1076#1077#1090' '#1087#1088#1086#1080#1079#1074#1077#1076#1077#1085#1086' '#1085#1072' '#1091#1089#1083#1091#1075#1091' '#1089' ' +
-            #1084#1077#1085#1100#1096#1080#1084' '#1082#1086#1076#1086#1084'.')
-        TabOrder = 1
-      end
-    end
-    object TabSheet3: TTabSheet
-      Caption = #1057#1095#1077#1090'-'#1076#1077#1090#1072#1083'.'
-      ImageIndex = 2
-      object Memo3: TMemo
-        Left = 0
-        Top = 0
-        Width = 470
-        Height = 73
-        Align = alTop
-        Lines.Strings = (
-          
-            #1044#1077#1090#1072#1083#1080#1079#1072#1094#1080#1103' '#1085#1072#1089#1090#1088#1086#1081#1082#1080' '#1089#1095#1077#1090#1072'. '#1058#1086', '#1082#1072#1082' '#1074#1099#1075#1083#1103#1076#1103#1090' '#1089#1090#1088#1086#1082#1080' '#1091#1089#1083#1091#1075' '#1089' '#1086#1073#1098 +
-            #1077#1084#1086#1084', '#1088#1072#1089#1094#1077#1085#1082#1086#1081', '
-          
-            #1085#1072#1095#1080#1089#1083#1077#1085#1080#1077#1084'. '#1047#1072#1087#1086#1083#1085#1080#1090#1100' '#1090#1080#1087' '#1089#1095#1077#1090#1072', '#1077#1089#1083#1080' '#1079#1072#1087#1086#1083#1085#1077#1085' ID '#1076#1086#1084#1072', '#1090#1086' '#1073#1091#1076#1077 +
-            #1090' '#1085#1072#1089#1090#1088#1086#1077#1085#1086' '#1090#1086#1083#1100#1082#1086' '
-          
-            #1076#1083#1103' '#1076#1086#1084#1072'.'#1058#1080#1087': 0-'#1086#1073#1099#1095#1085#1072#1103' '#1091#1089#1083#1091#1075#1072', 1-'#1089#1086#1076#1077#1088#1078#1080#1090' '#1074#1083#1086#1078#1077#1085#1085#1099#1077', 2- SUM('#1089#1091#1084 +
-            #1084#1072','#1086#1073#1098#1077#1084', '#1088#1072#1089#1094#1077#1085#1082#1072' '
-          
-            #1074#1083#1086#1078#1077#1085#1085#1099#1093') '#1045#1089#1083#1080' '#1085#1091#1078#1085#1086' '#1089#1082#1088#1099#1090#1100' '#1094#1077#1085#1091' '#1080#1083#1080' '#1086#1073#1098#1077#1084' '#1080#1083#1080' '#1074#1089#1102' '#1089#1090#1088#1086#1082#1091', '#1089#1090#1072#1074 +
-            #1080#1090#1100' 1 '#1074' "'#1057#1082#1088#1099#1090#1100' '
-          #1094#1077#1085#1091'/'#1086#1073#1098#1105#1084'"')
-        TabOrder = 0
-      end
-      object cxGrid4: TcxGrid
-        Left = 0
-        Top = 73
-        Width = 470
-        Height = 580
-        Align = alClient
-        TabOrder = 1
-        object cxGridDBTableView3: TcxGridDBTableView
-          Navigator.Buttons.CustomButtons = <>
-          Navigator.Visible = True
-          DataController.DataSource = DS_usl_tree
-          DataController.Summary.DefaultGroupSummaryItems = <>
-          DataController.Summary.FooterSummaryItems = <>
-          DataController.Summary.SummaryGroups = <>
-          OptionsBehavior.FocusCellOnTab = True
-          OptionsBehavior.GoToNextCellOnEnter = True
-          OptionsBehavior.FocusCellOnCycle = True
-          OptionsSelection.InvertSelect = False
-          OptionsSelection.MultiSelect = True
-          OptionsSelection.CellMultiSelect = True
-          OptionsView.ColumnAutoWidth = True
-          OptionsView.GroupByBox = False
-          OptionsView.HeaderAutoHeight = True
-          object cxGridDBTableView3NPP: TcxGridDBColumn
-            Caption = #8470' '#1087'/'#1087
-            DataBinding.FieldName = 'NPP'
-            Width = 41
-          end
-          object cxGridDBTableView3TP: TcxGridDBColumn
-            Caption = #1058#1080#1087
-            DataBinding.FieldName = 'TP'
-            Width = 30
-          end
-          object cxGridDBTableView3USL: TcxGridDBColumn
-            Caption = #1059#1089#1083#1091#1075#1072' USL'
-            DataBinding.FieldName = 'USL'
-            Width = 77
-          end
-          object cxGridDBTableView3PARENT_USL: TcxGridDBColumn
-            Caption = #1056#1086#1076#1080#1090'.'#1091#1089#1083'. PARENT_USL'
-            DataBinding.FieldName = 'PARENT_USL'
-            Width = 77
-          end
-          object cxGridDBTableView3HIDE_PRICE: TcxGridDBColumn
-            Caption = #1057#1082#1088#1099#1090#1100' '#1094#1077#1085#1091
-            DataBinding.FieldName = 'HIDE_PRICE'
-          end
-          object cxGridDBTableView3HIDE_VOL: TcxGridDBColumn
-            Caption = #1057#1082#1088#1099#1090#1100' '#1086#1073#1098#1077#1084
-            DataBinding.FieldName = 'HIDE_VOL'
-          end
-          object cxGridDBTableView3HIDE_ROW: TcxGridDBColumn
-            Caption = #1057#1082#1088#1099#1090#1100' '#1089#1090#1088#1086#1082#1091
-            DataBinding.FieldName = 'HIDE_ROW'
-          end
-          object cxGridDBTableView3FK_BILL_VAR: TcxGridDBColumn
-            Caption = #1058#1080#1087' '#1089#1095#1077#1090#1072'/ FK_BILL_VAR'
-            DataBinding.FieldName = 'FK_BILL_VAR'
-            Width = 63
-          end
-          object cxGridDBTableView3FK_HOUSE: TcxGridDBColumn
-            Caption = 'ID '#1044#1086#1084#1072'/ FKHOUSE'
-            DataBinding.FieldName = 'FK_HOUSE'
-            Width = 78
+          object cxGridLevel2: TcxGridLevel
+            GridView = cxGridDBTableView2
           end
         end
-        object cxGridLevel3: TcxGridLevel
-          GridView = cxGridDBTableView3
+        object Memo2: TMemo
+          Left = 0
+          Top = 0
+          Width = 668
+          Height = 41
+          Align = alTop
+          Lines.Strings = (
+            
+              #1053#1077#1086#1073#1093#1086#1076#1080#1084#1086' '#1076#1086#1073#1072#1074#1080#1090#1100' '#1091#1089#1083#1091#1075#1080', '#1082#1086#1090#1086#1088#1099#1077' '#1073#1091#1076#1091#1090' '#1091#1095#1072#1089#1090#1074#1086#1074#1072#1090#1100' '#1074' '#1086#1082#1088#1091#1075#1083#1077#1085 +
+              #1080#1080' ('#1086#1073#1099#1095#1085#1086' '#1074#1093#1086#1076#1103#1097#1080#1077' '
+            
+              #1074' '#1090#1077#1082#1091#1097#1077#1077' '#1089#1086#1076#1077#1088#1078#1072#1085#1080#1077'). '#1054#1082#1088#1091#1075#1083#1077#1085#1080#1077' '#1073#1091#1076#1077#1090' '#1087#1088#1086#1080#1079#1074#1077#1076#1077#1085#1086' '#1085#1072' '#1091#1089#1083#1091#1075#1091' '#1089' ' +
+              #1084#1077#1085#1100#1096#1080#1084' '#1082#1086#1076#1086#1084'.')
+          TabOrder = 1
+        end
+      end
+      object TabSheet3: TTabSheet
+        Caption = #1057#1095#1077#1090'-'#1076#1077#1090#1072#1083'.'
+        ImageIndex = 2
+        object Memo3: TMemo
+          Left = 0
+          Top = 0
+          Width = 668
+          Height = 73
+          Align = alTop
+          Lines.Strings = (
+            
+              #1044#1077#1090#1072#1083#1080#1079#1072#1094#1080#1103' '#1085#1072#1089#1090#1088#1086#1081#1082#1080' '#1089#1095#1077#1090#1072'. '#1058#1086', '#1082#1072#1082' '#1074#1099#1075#1083#1103#1076#1103#1090' '#1089#1090#1088#1086#1082#1080' '#1091#1089#1083#1091#1075' '#1089' '#1086#1073#1098 +
+              #1077#1084#1086#1084', '#1088#1072#1089#1094#1077#1085#1082#1086#1081', '
+            
+              #1085#1072#1095#1080#1089#1083#1077#1085#1080#1077#1084'. '#1047#1072#1087#1086#1083#1085#1080#1090#1100' '#1090#1080#1087' '#1089#1095#1077#1090#1072', '#1077#1089#1083#1080' '#1079#1072#1087#1086#1083#1085#1077#1085' ID '#1076#1086#1084#1072', '#1090#1086' '#1073#1091#1076#1077 +
+              #1090' '#1085#1072#1089#1090#1088#1086#1077#1085#1086' '#1090#1086#1083#1100#1082#1086' '
+            
+              #1076#1083#1103' '#1076#1086#1084#1072'.'#1058#1080#1087': 0-'#1086#1073#1099#1095#1085#1072#1103' '#1091#1089#1083#1091#1075#1072', 1-'#1089#1086#1076#1077#1088#1078#1080#1090' '#1074#1083#1086#1078#1077#1085#1085#1099#1077', 2- SUM('#1089#1091#1084 +
+              #1084#1072','#1086#1073#1098#1077#1084', '#1088#1072#1089#1094#1077#1085#1082#1072' '
+            
+              #1074#1083#1086#1078#1077#1085#1085#1099#1093') '#1045#1089#1083#1080' '#1085#1091#1078#1085#1086' '#1089#1082#1088#1099#1090#1100' '#1094#1077#1085#1091' '#1080#1083#1080' '#1086#1073#1098#1077#1084' '#1080#1083#1080' '#1074#1089#1102' '#1089#1090#1088#1086#1082#1091', '#1089#1090#1072#1074 +
+              #1080#1090#1100' 1 '#1074' "'#1057#1082#1088#1099#1090#1100' '
+            #1094#1077#1085#1091'/'#1086#1073#1098#1105#1084'"')
+          TabOrder = 0
+        end
+        object cxGrid4: TcxGrid
+          Left = 0
+          Top = 73
+          Width = 668
+          Height = 578
+          Align = alClient
+          TabOrder = 1
+          object cxGridDBTableView3: TcxGridDBTableView
+            Navigator.Buttons.CustomButtons = <>
+            Navigator.Visible = True
+            DataController.DataSource = DS_usl_tree
+            DataController.Summary.DefaultGroupSummaryItems = <>
+            DataController.Summary.FooterSummaryItems = <>
+            DataController.Summary.SummaryGroups = <>
+            OptionsBehavior.FocusCellOnTab = True
+            OptionsBehavior.GoToNextCellOnEnter = True
+            OptionsBehavior.FocusCellOnCycle = True
+            OptionsSelection.InvertSelect = False
+            OptionsSelection.MultiSelect = True
+            OptionsSelection.CellMultiSelect = True
+            OptionsView.ColumnAutoWidth = True
+            OptionsView.GroupByBox = False
+            OptionsView.HeaderAutoHeight = True
+            object cxGridDBTableView3NPP: TcxGridDBColumn
+              Caption = #8470' '#1087'/'#1087
+              DataBinding.FieldName = 'NPP'
+              Width = 41
+            end
+            object cxGridDBTableView3TP: TcxGridDBColumn
+              Caption = #1058#1080#1087
+              DataBinding.FieldName = 'TP'
+              Width = 30
+            end
+            object cxGridDBTableView3USL: TcxGridDBColumn
+              Caption = #1059#1089#1083#1091#1075#1072' USL'
+              DataBinding.FieldName = 'USL'
+              Width = 77
+            end
+            object cxGridDBTableView3PARENT_USL: TcxGridDBColumn
+              Caption = #1056#1086#1076#1080#1090'.'#1091#1089#1083'. PARENT_USL'
+              DataBinding.FieldName = 'PARENT_USL'
+              Width = 77
+            end
+            object cxGridDBTableView3HIDE_PRICE: TcxGridDBColumn
+              Caption = #1057#1082#1088#1099#1090#1100' '#1094#1077#1085#1091
+              DataBinding.FieldName = 'HIDE_PRICE'
+            end
+            object cxGridDBTableView3HIDE_VOL: TcxGridDBColumn
+              Caption = #1057#1082#1088#1099#1090#1100' '#1086#1073#1098#1077#1084
+              DataBinding.FieldName = 'HIDE_VOL'
+            end
+            object cxGridDBTableView3HIDE_ROW: TcxGridDBColumn
+              Caption = #1057#1082#1088#1099#1090#1100' '#1089#1090#1088#1086#1082#1091
+              DataBinding.FieldName = 'HIDE_ROW'
+            end
+            object cxGridDBTableView3FK_BILL_VAR: TcxGridDBColumn
+              Caption = #1058#1080#1087' '#1089#1095#1077#1090#1072'/ FK_BILL_VAR'
+              DataBinding.FieldName = 'FK_BILL_VAR'
+              Width = 63
+            end
+            object cxGridDBTableView3FK_HOUSE: TcxGridDBColumn
+              Caption = 'ID '#1044#1086#1084#1072'/ FKHOUSE'
+              DataBinding.FieldName = 'FK_HOUSE'
+              Width = 78
+            end
+          end
+          object cxGridLevel3: TcxGridLevel
+            GridView = cxGridDBTableView3
+          end
         end
       end
     end
@@ -773,13 +794,13 @@ object Form_spr_sprorg: TForm_spr_sprorg
         'ndx, s.r_sch_addit, s.code_deb, s.dolg_name, '
       
         ' s.fk_bill_var, s.bank_fname, s.grp, s.r_sch_gis, s.adr_cash, s.' +
-        'is_rso, s.is_exchange_gis, s.rowid'
+        'is_rso, s.is_exchange_gis, s.grp_deb, s.rowid'
       '  from scott.t_org s'
       '  order by s.reu, s.name')
     Optimize = False
     OracleDictionary.UseMessageTable = True
     QBEDefinition.QBEFieldDefs = {
-      0400000033000000020000004944010000000000020000004344010000000000
+      0400000034000000020000004944010000000000020000004344010000000000
       08000000464B5F4F52475450010000000000040000004E414D45010000000000
       030000004E505001000000000001000000560100000000000900000050415245
       4E545F4944010000000000030000005245550100000000000500000054524553
@@ -806,7 +827,7 @@ object Form_spr_sprorg: TForm_spr_sprorg
       0A00000042414E4B5F464E414D45010000000000030000004752500100000000
       0009000000525F5343485F474953010000000000080000004144525F43415348
       0100000000000600000049535F52534F0100000000000F00000049535F455843
-      48414E47455F474953010000000000}
+      48414E47455F474953010000000000070000004752505F444542010000000000}
     RefreshOptions = [roAfterInsert, roAfterUpdate]
     Session = DataModule1.OracleSession1
     BeforeEdit = OD_sprorgBeforeEdit
@@ -1116,6 +1137,9 @@ object Form_spr_sprorg: TForm_spr_sprorg
     end
     object OD_sprorgFK_BILL_VAR: TFloatField
       FieldName = 'FK_BILL_VAR'
+    end
+    object OD_sprorgGRP_DEB: TFloatField
+      FieldName = 'GRP_DEB'
     end
   end
   object OD_t_orgp2: TOracleDataSet

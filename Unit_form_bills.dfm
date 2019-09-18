@@ -1,6 +1,6 @@
 object Form_print_bills: TForm_print_bills
-  Left = 253
-  Top = 173
+  Left = 354
+  Top = 151
   Width = 451
   Height = 447
   BorderIcons = [biSystemMenu, biMinimize]
@@ -128,9 +128,9 @@ object Form_print_bills: TForm_print_bills
     object CheckBox5: TCheckBox
       Left = 8
       Top = 27
-      Width = 105
+      Width = 145
       Height = 29
-      Caption = #1074#1072#1088#1080#1072#1085#1090' '#1086#1090#1095#1077#1090#1072
+      Caption = #1083#1072#1079#1077#1088#1085#1099#1081' '#1087#1088#1080#1085#1090#1077#1088
       TabOrder = 3
       WordWrap = True
     end

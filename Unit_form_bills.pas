@@ -1026,7 +1026,8 @@ begin
     begin
       //по л.с.
       DM_Bill.Uni_arch.Params.ParamByName('p_sel_obj').AsInteger := 0;
-      DM_Bill.Uni_arch_supp.Params.ParamByName('lsk').AsString:=wwDBEdit1.Text;
+      DM_Bill.Uni_arch_supp.Params.ParamByName('lsk').AsString :=
+        wwDBEdit1.Text;
       DM_Bill.Uni_arch_supp.Params.ParamByName('p_sel_obj').AsInteger := 0;
     end
     else
@@ -1189,7 +1190,8 @@ begin
       + MB_APPLMODAL);
     Form_status.Close;
   end
-  else if (((tp_ = 2) or (tp_ = 5)) and (DM_Bill.Uni_cmp_main_arch.RecordCount = 0)) then
+  else if (((tp_ = 2) or (tp_ = 5)) and (DM_Bill.Uni_cmp_main_arch.RecordCount =
+    0)) then
   begin
     Application.MessageBox('Нет информации за указанный период', 'Внимание!', 16
       + MB_APPLMODAL);
@@ -1204,16 +1206,17 @@ begin
   begin
     Edit2.Text := '';
     Edit2.Visible := false;
+
+    // выбор отчета - лазерный/матричный
+    if CheckBox5.Checked = True then
+      // лазерный принтер
+      repVar := 'lp_'
+    else
+      // матричный принтер
+      repVar := '';
+
     if (tp_ = 0) or (tp_ = 4) then
     begin
-      // для Полыс
-      if CheckBox5.Checked = True then
-        // лазерный принтер
-        repVar := 'lp_'
-      else
-        // матричный принтер
-        repVar := '';
-
       //Счета
       frxReport1.LoadFromFile(Form_main.exepath_ + repVar +
         OD_t_org.FieldByName('FNAME_SCH').asString, True);
@@ -1277,10 +1280,10 @@ begin
       //Cправка о задолженности
       if DataModule1.OraclePackage1.CallIntegerFunction //старый вариант
       ('scott.Utils.get_int_param', ['SPR_DEB_VAR']) = 0 then
-        frxReport1.LoadFromFile(Form_main.exepath_ + 'Счет_на_оплату1.fr3', True)
+        frxReport1.LoadFromFile(Form_main.exepath_ + repVar+'Счет_на_оплату1.fr3', True)
       else if DataModule1.OraclePackage1.CallIntegerFunction //новый вариант
       ('scott.Utils.get_int_param', ['SPR_DEB_VAR']) = 1 then
-        frxReport1.LoadFromFile(Form_main.exepath_ + 'спр_задолжн.fr3', True);
+        frxReport1.LoadFromFile(Form_main.exepath_ + repVar+'спр_задолжн.fr3', True);
 
       frxReport1.PrepareReport(true);
     end;
@@ -1369,6 +1372,7 @@ begin
     CheckBox5.Visible := false;
     Label13.Enabled := false;
     cxImageComboBox1.Enabled := false;
+    CheckBox5.Visible := true;
   end
   else
   begin

@@ -166,6 +166,26 @@ type
     cxGrid1DBTableView1BANK_FNAME: TcxGridDBColumn;
     cxGrid1DBTableView1GRP: TcxGridDBColumn;
     OD_sprorgGRP: TFloatField;
+    OD_usl_round: TOracleDataSet;
+    DS_usl_round: TDataSource;
+    OD_usl: TOracleDataSet;
+    DS_usl: TDataSource;
+    OD_sprorgR_SCH_GIS: TStringField;
+    cxGrid1DBTableView1R_SCH_GIS: TcxGridDBColumn;
+    OD_usl_tree: TOracleDataSet;
+    DS_usl_tree: TDataSource;
+    OD_sprorgADR_CASH: TStringField;
+    cxGrid1DBTableView1ADR_CASH: TcxGridDBColumn;
+    OD_sprorgFK_ORG2: TFloatField;
+    OD_sprorgIS_RSO: TFloatField;
+    cxGrid1DBTableView1IS_RSO: TcxGridDBColumn;
+    OD_sprorgIS_EXCHANGE_GIS: TFloatField;
+    cxGrid1DBTableView1IS_EXCHANGE_GIS: TcxGridDBColumn;
+    OD_sprorgFK_BILL_VAR: TFloatField;
+    cxGrid1DBTableView1FK_BILL_VAR: TcxGridDBColumn;
+    OD_sprorgGRP_DEB: TFloatField;
+    cxGrid1DBTableView1GRP_DEB: TcxGridDBColumn;
+    Panel1: TPanel;
     PageControl1: TPageControl;
     TabSheet1: TTabSheet;
     cxGrid2: TcxGrid;
@@ -181,48 +201,33 @@ type
     cxGridDBTableView1BILL_AGG: TcxGridDBColumn;
     cxGridLevel1: TcxGridLevel;
     TabSheet2: TTabSheet;
-    OD_usl_round: TOracleDataSet;
-    DS_usl_round: TDataSource;
     cxGrid3: TcxGrid;
     cxGridDBTableView2: TcxGridDBTableView;
-    cxGridLevel2: TcxGridLevel;
     cxGridDBTableView2USL: TcxGridDBColumn;
-    OD_usl: TOracleDataSet;
     cxGridDBTableView2Column1: TcxGridDBColumn;
-    DS_usl: TDataSource;
+    cxGridLevel2: TcxGridLevel;
     Memo2: TMemo;
-    OD_sprorgR_SCH_GIS: TStringField;
-    cxGrid1DBTableView1R_SCH_GIS: TcxGridDBColumn;
     TabSheet3: TTabSheet;
     Memo3: TMemo;
     cxGrid4: TcxGrid;
     cxGridDBTableView3: TcxGridDBTableView;
-    cxGridLevel3: TcxGridLevel;
-    OD_usl_tree: TOracleDataSet;
-    DS_usl_tree: TDataSource;
+    cxGridDBTableView3NPP: TcxGridDBColumn;
+    cxGridDBTableView3TP: TcxGridDBColumn;
     cxGridDBTableView3USL: TcxGridDBColumn;
     cxGridDBTableView3PARENT_USL: TcxGridDBColumn;
-    cxGridDBTableView3TP: TcxGridDBColumn;
-    cxGridDBTableView3FK_BILL_VAR: TcxGridDBColumn;
-    cxGridDBTableView3FK_HOUSE: TcxGridDBColumn;
-    cxGridDBTableView3NPP: TcxGridDBColumn;
     cxGridDBTableView3HIDE_PRICE: TcxGridDBColumn;
     cxGridDBTableView3HIDE_VOL: TcxGridDBColumn;
     cxGridDBTableView3HIDE_ROW: TcxGridDBColumn;
-    OD_sprorgADR_CASH: TStringField;
-    cxGrid1DBTableView1ADR_CASH: TcxGridDBColumn;
-    OD_sprorgFK_ORG2: TFloatField;
-    OD_sprorgIS_RSO: TFloatField;
-    cxGrid1DBTableView1IS_RSO: TcxGridDBColumn;
-    OD_sprorgIS_EXCHANGE_GIS: TFloatField;
-    cxGrid1DBTableView1IS_EXCHANGE_GIS: TcxGridDBColumn;
-    OD_sprorgFK_BILL_VAR: TFloatField;
-    cxGrid1DBTableView1FK_BILL_VAR: TcxGridDBColumn;
+    cxGridDBTableView3FK_BILL_VAR: TcxGridDBColumn;
+    cxGridDBTableView3FK_HOUSE: TcxGridDBColumn;
+    cxGridLevel3: TcxGridLevel;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure OD_sprorgAfterScroll(DataSet: TDataSet);
     procedure OD_sprorgBeforeEdit(DataSet: TDataSet);
     procedure OD_sprorgAfterEdit(DataSet: TDataSet);
+    procedure cxSplitter1AfterClose(Sender: TObject);
+    procedure cxSplitter1AfterOpen(Sender: TObject);
   private
     flt_:string;
   public
@@ -239,6 +244,7 @@ implementation
 
 procedure TForm_spr_sprorg.FormCreate(Sender: TObject);
 begin
+  cxSplitter1.CloseSplitter;
   OD_sprorg.Active:=True;
   OD_t_orgp.Active:=True;
   OD_t_orgp2.Active:=True;
@@ -246,9 +252,9 @@ begin
   OD_org_tp.First;
   OD_org_tp2.Active:=True;
   OD_usl.Active:=True;
-  OD_usl_bills.Active:=True;
-  OD_usl_tree.Active:=True;
-  OD_usl_round.Active:=True;
+  //OD_usl_bills.Active:=True;
+  //OD_usl_tree.Active:=True;
+  //OD_usl_round.Active:=True;
 end;
 
 procedure TForm_spr_sprorg.FormClose(Sender: TObject;
@@ -286,6 +292,20 @@ begin
   // открыть закрытые датасеты - иначе не дает обновить ключевое поле fk_bill_var
   //OD_usl_bills.Active:=True;
   //OD_usl_tree.Active:=True;
+end;
+
+procedure TForm_spr_sprorg.cxSplitter1AfterClose(Sender: TObject);
+begin
+    OD_usl_bills.Active:=false;
+    OD_usl_round.Active:=false;
+    OD_usl_tree.Active:=false;
+end;
+
+procedure TForm_spr_sprorg.cxSplitter1AfterOpen(Sender: TObject);
+begin
+    OD_usl_bills.Active:=true;
+    OD_usl_round.Active:=true;
+    OD_usl_tree.Active:=true;
 end;
 
 end.

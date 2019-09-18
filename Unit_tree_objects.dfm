@@ -1,5 +1,5 @@
 object Form_tree_objects: TForm_tree_objects
-  Left = 206
+  Left = 196
   Top = 148
   Width = 351
   Height = 864
@@ -639,6 +639,7 @@ object Form_tree_objects: TForm_tree_objects
       PropertiesClassName = 'TcxCheckBoxProperties'
       Properties.ValueChecked = 0
       Properties.ValueUnchecked = '1'
+      Properties.OnEditValueChanged = cxDBTreeList1SELPropertiesEditValueChanged
       DataBinding.FieldName = 'SEL'
       Width = 32
       Position.ColIndex = 3

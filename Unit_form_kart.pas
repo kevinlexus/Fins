@@ -1315,7 +1315,7 @@ begin
   //    PageControl3.ActivePageIndex := 0;
   //    TabSheet9.TabVisible := False;
 
-  PageControl1.ActivePageIndex := 0;
+  PageControl1.ActivePageIndex := 1;
   PageControl2.ActivePageIndex := 0;
 
   TabSheet7.TabVisible := False;
@@ -1870,7 +1870,7 @@ begin
   begin
     msg2('Поле статуса должно быть заполнено!', 'Внимание!', MB_OK +
       MB_ICONSTOP);
-    abort;
+    abort;                          
   end;
 
   if ((OD_states_sch.FieldByName('FK_STATUS').AsInteger = 8) or
@@ -1879,16 +1879,7 @@ begin
   begin
     Application.MessageBox('При закрытии лицевого счета должна быть заполнена '
       +
-      'причина закрытия в колонке "Примечание"!',
-      'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
-    abort;
-  end
-  else if (OD_states_sch.FieldByName('FK_STATUS').AsInteger <> 8) and
-    (OD_states_sch.FieldByName('FK_STATUS').AsInteger <> 9)
-    and (OD_states_sch.FieldByName('FK_CLOSE_REASON').AsInteger <> 0) then
-  begin
-    Application.MessageBox('В записи открытого статуса не должно быть ' +
-      'причины закрытия в колонке "Примечание"!',
+      'причина закрытия в колонке "Закрыт.сч.ГИС ЖКХ"!',
       'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
     abort;
   end;

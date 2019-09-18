@@ -112,6 +112,22 @@ begin
     else
       lDelUslFromSrc := 0;
 
+    if RadioGroup1.ItemIndex=3 then
+    begin
+      // скопировать все субсчета (Основной, РСО и т.п.) при разделении финансового лиц.счета клиента
+    cnt_ := DataModule1.OraclePackage1.CallIntegerFunction(
+      'scott.P_HOUSES.kart_lsk_group_add',
+      [Form_list_kart.OD_list_kart.FieldByName('lsk').asString,
+      cbb2.EditValue, cxMaskEdit2.Text,
+        lGetUslFromSrc,
+        lDelUslFromSrc,
+        cxMaskEdit1.Text,
+        cxLookupComboBox1.EditValue
+        ]);
+    end
+    else
+    begin
+      // создать счет / финансовый лиц.счет / помещение
     cnt_ := DataModule1.OraclePackage1.CallIntegerFunction(
       'scott.P_HOUSES.kart_lsk_add',
       [Form_list_kart.OD_list_kart.FieldByName('lsk').asString,
@@ -120,8 +136,10 @@ begin
         lDelUslFromSrc,
         RadioGroup1.ItemIndex,
         cxMaskEdit1.Text,
-        cxLookupComboBox1.EditValue
+        cxLookupComboBox1.EditValue,
+        null
         ]);
+    end;
     if cnt_ = 0 then
     begin
       DataModule1.OraclePackage1.Session.Commit;
@@ -129,7 +147,7 @@ begin
       Form_list_kart.OD_list_kart.SearchRecord('lsk', cxMaskEdit2.Text,
         [srFromBeginning]);
       Form_new_lsk.Visible := false;
-      Application.MessageBox('Лицевой счет создан!',
+      Application.MessageBox('Выполнено успешно!',
         'Внимание!', MB_ICONINFORMATION + MB_OK + MB_APPLMODAL);
       Close;
     end
@@ -190,6 +208,17 @@ begin
   begin
     Label3.Enabled:=False;
     cxMaskEdit1.Enabled:=False;
+  end;
+
+  if RadioGroup1.ItemIndex=3 then
+  begin
+    Label1.Enabled:=False;
+    cbb2.Enabled:=False;
+  end
+  else
+  begin
+    Label1.Enabled:=True;
+    cbb2.Enabled:=True;
   end;
 end;
 

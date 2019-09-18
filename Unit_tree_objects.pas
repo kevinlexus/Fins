@@ -124,7 +124,8 @@ type
     procedure repTypeTXT(path, fname: string);
     procedure repTypeGrid;
     procedure sel_tree_obj(trnode: TMemRecViewEh; sel_: Integer);
-    procedure desel_all_obj(tmem: TMemTableEh; id_: Integer);
+    //procedure desel_all_obj(tmem: TMemTableEh; id_: Integer);
+    procedure deselObjects(curObjId: Integer);
     procedure cxDBTreeList1SELPropertiesEditValueChanged(Sender: TObject);
     procedure N3Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
@@ -1390,6 +1391,11 @@ begin
 end;
 
 procedure TForm_tree_objects.N1Click(Sender: TObject);
+begin
+  deselObjects(-1);
+end;
+
+procedure TForm_tree_objects.deselObjects(curObjId: Integer);
 var
   l_recno: Integer;
 begin
@@ -1403,12 +1409,22 @@ begin
     First;
     while not Eof do
     begin
-      if FieldByName('sel').AsInteger = 0 then
+      if (FieldByName('sel').AsInteger = 0) and
+         (FieldByName('id').AsInteger <> curObjId) then
       begin
+        // снять отметку с прочих объектов
         Edit;
         FieldByName('sel').AsInteger := 1;
         Post;
+      end
+      else if (FieldByName('id').AsInteger = curObjId) then
+      begin
+        // установить отметку на выбранном объекте
+        Edit;
+        FieldByName('sel').AsInteger := 0;
+        Post;
       end;
+
       Next;
     end;
     RecNo := l_recno;
@@ -1492,7 +1508,7 @@ begin
   end;
 end;
 
-procedure TForm_tree_objects.desel_all_obj(tmem: TMemTableEh; id_: Integer);
+{procedure TForm_tree_objects.desel_all_obj(tmem: TMemTableEh; id_: Integer);
 var
   a: Integer;
 begin
@@ -1503,7 +1519,7 @@ begin
       tmem.rec.RecordsList.Rec[a].DataValues['sel', dvvCurValueEh] := 1;
     //    ShowMessage(tmem.rec.RecordsList.Rec[a].DataValues['name', dvvCurValueEh]);
   end;
-end;
+end;}
 
 procedure TForm_tree_objects.MemTableEh2SetFieldValue(
   MemTable: TCustomMemTableEh; Field: TField; var Value: Variant);
@@ -2577,6 +2593,10 @@ procedure TForm_tree_objects.cxDBTreeList1SELPropertiesEditValueChanged(
 var
   str_: string;
 begin
+
+  // снять отметки с прочих объектов
+  deselObjects(DM_Olap.Uni_tree_objects.FieldByName('ID').AsInteger);
+
   if (Form_tree_objects.isLoadingCube = false) and (Form_tree_objects.can_detail_
     = 1) then
   begin
@@ -2596,7 +2616,6 @@ begin
       end;
     end;
   end;
-
 end;
 
 procedure TForm_tree_objects.N3Click(Sender: TObject);

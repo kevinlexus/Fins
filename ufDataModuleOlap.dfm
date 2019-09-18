@@ -1,7 +1,7 @@
 object DM_Olap: TDM_Olap
   OldCreateOrder = False
-  Left = 819
-  Top = 126
+  Left = 611
+  Top = 159
   Height = 810
   Width = 686
   object DS_spr_params: TDataSource
@@ -673,7 +673,9 @@ object DM_Olap: TDM_Olap
       'from scott.a_kart_pr a, scott.relations r'
       'where a.lsk=:lsk and a.mg=:mg and a.relat_id=r.id'
       'and a.status<>4')
+    MasterSource = DS_data
     MasterFields = 'lsk;mg'
+    DetailFields = 'lsk;mg'
     Constraints = <>
     Left = 40
     Top = 600
