@@ -872,9 +872,21 @@ begin
   OD_main.SetVariable('lsk_', wwDBEdit1.Text);
   OD_main.SetVariable('lsk1_', wwDBEdit2.Text);
 
-  OD_main.SetVariable('kul_', DBLookupComboboxEh2.KeyValue);
-  OD_main.SetVariable('nd_', OD_houses.FieldByName('nd_id').AsString);
-  OD_main.SetVariable('kw_', OD_kw.FieldByName('kw_id').AsString);
+  if not VarIsNull(DBLookupComboboxEh2.KeyValue) then
+    OD_main.SetVariable('kul_', DBLookupComboboxEh2.KeyValue)
+  else
+    OD_main.SetVariable('kul_', null);
+
+  if not VarIsNull(DBLookupComboboxEh3.KeyValue) then
+    OD_main.SetVariable('nd_', OD_houses.FieldByName('nd_id').AsString)
+  else
+    OD_main.SetVariable('nd_', null);
+
+  if DBLookupComboboxEh4.KeyValue <> null then
+    OD_main.SetVariable('kw_', OD_kw.FieldByName('kw_id').AsString)
+  else
+    OD_main.SetVariable('kw_', null);
+
 
   if (tp_ = 5) then //справка арх-2
   begin
@@ -1414,9 +1426,6 @@ end;
 
 procedure TForm_print_bills.FormCreate(Sender: TObject);
 begin
-  //Настройки расположения формы
-  cxprprtstr1.Active := True;
-  cxprprtstr1.RestoreFrom;
   //Выбран поиск по адресу (по умолчанию)
   if DataModule1.OraclePackage1.CallIntegerFunction('scott.Utils.get_int_param',
     ['RECHARGE_BILL']) = 1 then
@@ -1469,6 +1478,9 @@ begin
   cxImageComboBox1.ItemIndex := 0;
   // наполнить списком УК
   fillUk();
+  //Настройки расположения формы
+  cxprprtstr1.Active := True;
+  cxprprtstr1.RestoreFrom;
 end;
 
 procedure TForm_print_bills.sel_lsk;

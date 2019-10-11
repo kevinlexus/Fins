@@ -1,6 +1,6 @@
 object Form_get_pay: TForm_get_pay
-  Left = 394
-  Top = 378
+  Left = 759
+  Top = 232
   Width = 903
   Height = 543
   Caption = #1042#1074#1086#1076' '#1086#1087#1083#1072#1090#1099
@@ -907,7 +907,7 @@ object Form_get_pay: TForm_get_pay
           'Top'
           'Width')
       end>
-    StorageName = 'cxPropertiesStore1'
+    StorageName = 'frmGetPayStore.ini'
     StorageType = stRegistry
     Left = 16
     Top = 96

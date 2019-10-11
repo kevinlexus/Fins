@@ -1,6 +1,6 @@
 object Form_kart: TForm_kart
-  Left = 733
-  Top = 220
+  Left = 239
+  Top = 380
   Width = 903
   Height = 675
   BorderIcons = [biSystemMenu, biMinimize]
@@ -908,7 +908,7 @@ object Form_kart: TForm_kart
               Top = 0
               Width = 25
               Height = 25
-              Hint = 'Move to first record'
+              Hint = #1050' '#1087#1077#1088#1074#1086#1081' '#1079#1072#1087#1080#1089#1080
               ImageIndex = -1
               NumGlyphs = 2
               Spacing = 4
@@ -925,7 +925,7 @@ object Form_kart: TForm_kart
               Top = 0
               Width = 25
               Height = 25
-              Hint = 'Move to prior record'
+              Hint = #1055#1088#1077#1076#1099#1076#1091#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
               ImageIndex = -1
               NumGlyphs = 2
               Spacing = 4
@@ -942,7 +942,7 @@ object Form_kart: TForm_kart
               Top = 0
               Width = 25
               Height = 25
-              Hint = 'Move to next record'
+              Hint = #1057#1083#1077#1076#1091#1102#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
               ImageIndex = -1
               NumGlyphs = 2
               Spacing = 4
@@ -959,7 +959,7 @@ object Form_kart: TForm_kart
               Top = 0
               Width = 25
               Height = 25
-              Hint = 'Move to last record'
+              Hint = #1055#1077#1088#1077#1081#1090#1080' '#1082' '#1087#1086#1089#1083#1077#1076#1085#1077#1081' '#1079#1072#1087#1080#1089#1080
               ImageIndex = -1
               NumGlyphs = 2
               Spacing = 4
@@ -976,7 +976,7 @@ object Form_kart: TForm_kart
               Top = 0
               Width = 25
               Height = 25
-              Hint = 'Insert new record'
+              Hint = #1044#1086#1073#1072#1074#1080#1090#1100' '#1085#1086#1074#1091#1102' '#1079#1072#1087#1080#1089#1100
               ImageIndex = -1
               NumGlyphs = 2
               Spacing = 4
@@ -993,7 +993,7 @@ object Form_kart: TForm_kart
               Top = 0
               Width = 25
               Height = 25
-              Hint = 'Delete current record'
+              Hint = #1059#1076#1072#1083#1080#1090#1100' '#1090#1077#1082#1091#1097#1091#1102' '#1079#1072#1087#1080#1089#1100
               ImageIndex = -1
               NumGlyphs = 2
               Spacing = 4
@@ -2742,6 +2742,7 @@ object Form_kart: TForm_kart
           item
             FieldName = 'NAME'
           end>
+        Properties.ListOptions.ShowHeader = False
         Properties.ListSource = DS_sprorg
         Width = 69
       end
@@ -2754,6 +2755,7 @@ object Form_kart: TForm_kart
           item
             FieldName = 'VVOD_NUM'
           end>
+        Properties.ListOptions.ShowHeader = False
         Properties.ListSource = DS_vvod
         Width = 53
       end
@@ -4156,7 +4158,7 @@ object Form_kart: TForm_kart
           'Top'
           'Width')
       end>
-    StorageName = 'cxPropertiesStore1'
+    StorageName = 'frmKartStore.ini'
     StorageType = stRegistry
     Left = 128
     Top = 24

@@ -195,7 +195,7 @@ object Form_edit_reports: TForm_edit_reports
         Properties.Strings = (
           'FileName')
       end>
-    StorageName = 'cxPropertiesStore1'
+    StorageName = 'frmEditReportsStore'
     StorageType = stRegistry
     Left = 104
     Top = 48

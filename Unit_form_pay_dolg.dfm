@@ -355,7 +355,7 @@ object Form_get_pay_dolg: TForm_get_pay_dolg
           'Top'
           'Width')
       end>
-    StorageName = 'cxPropertiesStore1'
+    StorageName = 'frmGetPayDolgStore'
     StorageType = stRegistry
     Left = 24
     Top = 48

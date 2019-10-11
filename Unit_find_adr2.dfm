@@ -1,6 +1,6 @@
 object Form_find_adr2: TForm_find_adr2
-  Left = 584
-  Top = 186
+  Left = 349
+  Top = 168
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = #1055#1086#1080#1089#1082' '#1087#1086' '#1072#1076#1088#1077#1089#1091
@@ -91,6 +91,19 @@ object Form_find_adr2: TForm_find_adr2
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 16
+  object Label1: TLabel
+    Left = 232
+    Top = 16
+    Width = 61
+    Height = 16
+    Caption = 'ID '#1076#1086#1084#1072':'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -14
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
   object Button1: TButton
     Left = 561
     Top = 39
@@ -220,7 +233,7 @@ object Form_find_adr2: TForm_find_adr2
     OnKeyPress = wwDBLookupCombo2KeyPress
   end
   object chk1: TCheckBox
-    Left = 236
+    Left = 420
     Top = 10
     Width = 149
     Height = 21
@@ -237,7 +250,7 @@ object Form_find_adr2: TForm_find_adr2
     OnClick = chk1Click
   end
   object chk2: TCheckBox
-    Left = 396
+    Left = 580
     Top = 10
     Width = 125
     Height = 21
@@ -252,6 +265,16 @@ object Form_find_adr2: TForm_find_adr2
     State = cbChecked
     TabOrder = 8
     OnClick = chk2Click
+  end
+  object Edit1: TEdit
+    Left = 296
+    Top = 8
+    Width = 73
+    Height = 24
+    Hint = 'ID '#1076#1086#1084#1072
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 9
   end
   object OD_streets: TOracleDataSet
     SQL.Strings = (

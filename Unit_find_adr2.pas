@@ -39,6 +39,8 @@ type
     chk1: TCheckBox;
     chk2: TCheckBox;
     OD_housesKUL: TStringField;
+    Edit1: TEdit;
+    Label1: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure wwDBLookupCombo3KeyPress(Sender: TObject; var Key: Char);
@@ -110,10 +112,9 @@ procedure TForm_find_adr2.Button1Click(Sender: TObject);
 var
   house_id_: Integer;
 begin
-//Начинать избавляться от house_id и т.п. и переходить к flt_house_ и т.п.
   Form_Main.cl_flt;
   Form_Main.search_type_:=0;
-  //поиск с точностью до УК?
+  //поиск по УК?
  if wwDBLookupCombo2.Text <> '' then
  begin
    Form_Main.flt_reu_:=OD_t_org.FieldByName('reu').asString;
@@ -123,6 +124,17 @@ begin
  begin
    //не введен критерий поиска
    Form_Main.flt_reu_:='';
+ end;
+
+ if Edit1.Text <> '' then
+ begin
+   Form_Main.flt_single_house_:=StrToInt(Edit1.Text);
+   Form_Main.search_type_:=7;
+ end
+ else
+ begin
+   //не введен критерий поиска
+   Form_Main.flt_single_house_:=-1;
  end;
 
   //поиск с точностью до улицы?
@@ -141,23 +153,15 @@ begin
   //поиск с точностью до дома?
  if wwDBLookupCombo3.Text <> '' then
  begin
-   //house_id_:=OD_houses.FieldByName('house_id').asInteger;
    Form_Main.flt_reu_:=OD_t_org.FieldByName('reu').asString;
-   //Form_Main.reu_:=OD_houses.FieldByName('reu').asString;
    Form_Main.kul_:=OD_streets.FieldByName('id').asString;
    Form_Main.nd_:=OD_houses.FieldByName('nd_id').asString;
-   //Form_Main.house_id_:=OD_houses.FieldByName('house_id').asInteger;
    Form_Main.flt_nd_:=OD_houses.FieldByName('nd_id').asString;
-   //Form_Main.flt_house_:=OD_houses.FieldByName('house_id').asInteger;
    Form_Main.search_type_:=2;
  end
  else
  begin
-   //не введен критерий поиска
-   //house_id_:=0;
-   //Form_Main.reu_:='';
-   //Form_Main.house_id_:=-1;
-   //Form_Main.flt_house_:=-1;
+   // не введен критерий поиска
    Form_Main.nd_:='';
  end;
 
@@ -168,14 +172,11 @@ begin
    Form_Main.flt_kw_:=OD_kw.FieldByName('kw_id').asString;
    Form_Main.k_lsk_id_:=DataModule1.OraclePackage1.CallStringFunction(
         'scott.UTILS.GET_K_LSK_ID_BY_LSK', [OD_kw.FieldByName('lsk').asString]);
-   //Form_Main.c_lsk_id_:=DataModule1.OraclePackage1.CallStringFunction(
-     //   'scott.UTILS.GET_C_LSK_ID_BY_LSK', [OD_kw.FieldByName('lsk').asString]);
    Form_Main.fio_:=OD_kw.FieldByName('fio').asString;
    Form_Main.str_adr_:=OD_streets.FieldByName('street').asString+', '+
      OD_houses.FieldByName('nd2').asString+'-'+
      OD_kw.FieldByName('kw').asString;
 
-   //Form_Main.reu_:=OD_houses.FieldByName('reu').asString;
    Form_Main.kul_:=OD_streets.FieldByName('id').asString;
    Form_Main.nd_:=OD_houses.FieldByName('nd_id').asString;
    Form_Main.kw_:=OD_kw.FieldByName('kw_id').asString;

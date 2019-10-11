@@ -1,8 +1,8 @@
 object Form_new_lsk: TForm_new_lsk
-  Left = 1383
-  Top = 237
+  Left = 1115
+  Top = 210
   Width = 392
-  Height = 395
+  Height = 421
   VertScrollBar.Visible = False
   Caption = #1057#1086#1079#1076#1072#1085#1080#1077' '#1085#1086#1074#1086#1075#1086' '#1083#1080#1094'.'#1089#1095#1077#1090#1072
   Color = clBtnFace
@@ -93,7 +93,7 @@ object Form_new_lsk: TForm_new_lsk
     Left = 0
     Top = 0
     Width = 376
-    Height = 305
+    Height = 321
     Align = alTop
     Caption = #1055#1072#1088#1072#1084#1077#1090#1088#1099' '#1085#1086#1074#1086#1075#1086' '#1083#1080#1094#1077#1074#1086#1075#1086' '#1089#1095#1077#1090#1072
     TabOrder = 0
@@ -259,10 +259,24 @@ object Form_new_lsk: TForm_new_lsk
       TabOrder = 0
       Width = 89
     end
+    object CheckBox3: TCheckBox
+      Left = 16
+      Top = 296
+      Width = 265
+      Height = 17
+      Caption = #1047#1072#1082#1088#1099#1090#1100' '#1083#1080#1094#1077#1074#1086#1081' '#1089#1095#1077#1090' - '#1080#1089#1090#1086#1095#1085#1080#1082
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 7
+    end
   end
   object GroupBox2: TGroupBox
     Left = 0
-    Top = 307
+    Top = 333
     Width = 376
     Height = 49
     Align = alBottom
@@ -310,12 +324,12 @@ object Form_new_lsk: TForm_new_lsk
     DesignActivation = True
     Active = True
     Left = 8
-    Top = 264
+    Top = 96
   end
   object DS_lsk_tp: TDataSource
     DataSet = OD_lsk_tp
     Left = 48
-    Top = 264
+    Top = 96
   end
   object OD_reu: TOracleDataSet
     SQL.Strings = (
@@ -330,11 +344,11 @@ object Form_new_lsk: TForm_new_lsk
     Session = DataModule1.OracleSession1
     Active = True
     Left = 80
-    Top = 264
+    Top = 96
   end
   object DS_reu: TDataSource
     DataSet = OD_reu
     Left = 112
-    Top = 264
+    Top = 96
   end
 end

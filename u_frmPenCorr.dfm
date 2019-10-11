@@ -1,6 +1,6 @@
 object frmPenCorr: TfrmPenCorr
-  Left = 351
-  Top = 207
+  Left = 417
+  Top = 436
   Width = 654
   Height = 528
   Caption = #1050#1086#1088#1088#1077#1082#1090#1080#1088#1086#1074#1082#1072' '#1087#1077#1085#1080
@@ -298,7 +298,7 @@ object frmPenCorr: TfrmPenCorr
           'Top'
           'Width')
       end>
-    StorageName = 'cxPropertiesStore1'
+    StorageName = 'StoreFrmPenCorr'
     StorageType = stRegistry
     Left = 16
     Top = 96

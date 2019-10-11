@@ -1,6 +1,6 @@
 object Form_kart_pr: TForm_kart_pr
-  Left = 365
-  Top = 378
+  Left = 302
+  Top = 321
   Width = 680
   Height = 525
   BorderIcons = [biSystemMenu, biMinimize]
@@ -4387,7 +4387,7 @@ object Form_kart_pr: TForm_kart_pr
       'c.id=a.fk_kart_pr(+) and'
       '(:var_=0 or :var_=1 and c.id=:id or :var_=2 and c.id<>:id) and '
       'c.relat_id=r.id(+) and '
-      'c.status <> 4 --'#1082#1088#1086#1084#1077' '#1074#1099#1073#1099#1074#1096#1080#1093
+      'c.status not in (4,7) --'#1082#1088#1086#1084#1077' '#1074#1099#1073#1099#1074#1096#1080#1093' '#1080' '#1073#1077#1079' '#1088#1077#1075#1080#1089#1090#1088#1072#1094#1080#1080
       'and exists '
       '(select * from scott.c_kart_pr p where p.id=:id and p.lsk=c.lsk'
       ')')

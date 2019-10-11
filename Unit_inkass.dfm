@@ -1,6 +1,6 @@
 object Form_inkass: TForm_inkass
-  Left = 217
-  Top = 194
+  Left = 336
+  Top = 187
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1048#1085#1082#1072#1089#1089#1072#1094#1080#1103

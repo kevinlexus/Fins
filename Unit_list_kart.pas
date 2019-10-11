@@ -460,7 +460,7 @@ begin // смена состояний формы
     begin // из текущего в архив
       change_alias(OD_list_kart, 'scott.kart',
         '(select * from scott.arch_kart where mg=''' + Form_main.arch_mg_ +
-          ''')', False);
+        ''')', False);
       //поменять алиас ELSK
       change_alias(OD_list_kart, 'k.elsk',
         'null as elsk', False);
@@ -485,7 +485,7 @@ begin // смена состояний формы
       change_alias(OD_list_kart,
         '(select * from scott.arch_kart where mg=''' + mgold_ + ''')',
         '(select * from scott.arch_kart where mg=''' + Form_main.arch_mg_ +
-          ''')');
+        ''')');
     end;
   end;
 end;
@@ -646,26 +646,12 @@ begin
     SetVariable('flt_nd_', Form_Main.flt_nd_);
     SetVariable('flt_kw_', Form_Main.flt_kw_);
     SetVariable('flt_k_lsk_id_', Form_Main.flt_k_lsk_id_);
+    SetVariable('flt_single_house_', Form_Main.flt_single_house_);
     SetVariable('SUBSTEXP1', ' and k.psch <> 8 ');
     // устанавливаем порядок
     SetVariable(':SUBSTEXP4',
-      ' order by s.name, scott.utils.f_order(k.nd,6), scott.utils.f_order2(k.nd),'
-      +
-        'scott.utils.f_order(k.kw,7), scott.utils.f_order2(k.kw), decode(k.psch,8,1,9,1,0), decode(u.cd,''LSK_TP_MAIN'',0,1)');
-
-    //устанавливаем порядок
-   { if Form_Main.search_type_ <> 0 then
-    begin
-       SetVariable(':SUBSTEXP4',
-       ' order by s.name, k.nd, k.kw, u.npp, decode(k.psch,8,1,9,1,0), decode(u.cd,''LSK_TP_MAIN'',0,1)');
-       //SQL.Add('order by s.name, k.nd, k.kw, u.npp, decode(k.psch,8,1,9,1,0), decode(u.cd,''LSK_TP_MAIN'',0,1)');
-    end
-    else
-    begin
-       SetVariable(':SUBSTEXP4',
-       ' order by s.name, scott.utils.f_order(k.nd,6),'
-       +'scott.utils.f_order(k.kw,7), decode(k.psch,8,1,9,1,0), decode(u.cd,''LSK_TP_MAIN'',0,1)');
-    end;     }
+      ' order by s.name, scott.utils.f_order(k.nd,6), scott.utils.f_order2(k.nd),' +
+      'scott.utils.f_order(k.kw,7), scott.utils.f_order2(k.kw), decode(k.psch,8,1,9,1,0), decode(u.cd,''LSK_TP_MAIN'',0,1)');
     Active := true;
   end;
 
@@ -858,7 +844,7 @@ begin
 
   if FF('Form_kart', 0) = 1 then
     Form_kart.saveOrRollbackKart(1, True)
-    //Form_kart.save_changes(1)
+      //Form_kart.save_changes(1)
   else
   begin
     if not (OD_list_kart.State in [dsBrowse]) then
@@ -919,7 +905,7 @@ begin
   if (OD_list_kart.FieldByName('psch').AsInteger = 8)
     or (OD_list_kart.FieldByName('psch').AsInteger = 9)
     // and
-  {//   (OD_list_kart.FieldByName('lsk_tp_cd').AsString = 'LSK_TP_MAIN')} then
+{//   (OD_list_kart.FieldByName('lsk_tp_cd').AsString = 'LSK_TP_MAIN')}then
   begin
     ABrush.Color := clSilver;
     AFont.Color := clBlack;
@@ -1036,7 +1022,7 @@ begin
     OD_list_kart.SetVariable('SUBSTEXP3',
       ' and exists (select * from scott.c_kart_pr k1'
       + ' where k1.lsk=k.lsk and upper(k1.fio) like ''%''||upper(''' +
-        Form_main.last_name_ + ''')||''%'') ');
+      Form_main.last_name_ + ''')||''%'') ');
   end;
   OD_list_kart.active := true;
 end;
@@ -1323,8 +1309,8 @@ begin
   begin
     ret := DataModule1.OraclePackage1.CallIntegerFunction
       ('scott.p_meter.ins_vol_meter', [null,
-        OD_list_kart.FieldByName('lsk').AsString,
-      '011', vol, null, 0]);
+      OD_list_kart.FieldByName('lsk').AsString,
+        '011', vol, null, 0]);
     if ret = 0 then
     begin
       DataModule1.OraclePackage1.Session.Commit;
@@ -1346,8 +1332,8 @@ begin
   begin
     ret := DataModule1.OraclePackage1.CallIntegerFunction
       ('scott.p_meter.ins_vol_meter', [null,
-        OD_list_kart.FieldByName('lsk').AsString,
-      '015', vol, null, 0]);
+      OD_list_kart.FieldByName('lsk').AsString,
+        '015', vol, null, 0]);
     if ret = 0 then
     begin
       DataModule1.OraclePackage1.Session.Commit;
@@ -1369,8 +1355,8 @@ begin
   begin
     ret := DataModule1.OraclePackage1.CallIntegerFunction
       ('scott.p_meter.ins_vol_meter', [null,
-        OD_list_kart.FieldByName('lsk').AsString,
-      '038', vol, null, 0]);
+      OD_list_kart.FieldByName('lsk').AsString,
+        '038', vol, null, 0]);
     if ret = 0 then
     begin
       DataModule1.OraclePackage1.Session.Commit;

@@ -47,6 +47,7 @@ type
     Label4: TLabel;
     cxMaskEdit1: TcxMaskEdit;
     cxMaskEdit2: TcxMaskEdit;
+    CheckBox3: TCheckBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -92,7 +93,7 @@ end;
 
 procedure TForm_new_lsk.Button2Click(Sender: TObject);
 var
-  lGetUslFromSrc, lDelUslFromSrc, cnt_: Integer;
+  lGetUslFromSrc, lDelUslFromSrc, lCloseSrc, cnt_: Integer;
 begin
   if DataModule1.OraclePackage1.CallIntegerFunction(
     'scott.UTILS.allow_cr_new_lsk',
@@ -111,6 +112,10 @@ begin
       lDelUslFromSrc := 1
     else
       lDelUslFromSrc := 0;
+    if CheckBox3.Checked = True then
+      lCloseSrc := 1
+    else
+      lCloseSrc := 0;
 
     if RadioGroup1.ItemIndex=3 then
     begin
@@ -122,7 +127,8 @@ begin
         lGetUslFromSrc,
         lDelUslFromSrc,
         cxMaskEdit1.Text,
-        cxLookupComboBox1.EditValue
+        cxLookupComboBox1.EditValue,
+        lCloseSrc
         ]);
     end
     else
@@ -137,7 +143,8 @@ begin
         RadioGroup1.ItemIndex,
         cxMaskEdit1.Text,
         cxLookupComboBox1.EditValue,
-        null
+        null,
+        lCloseSrc
         ]);
     end;
     if cnt_ = 0 then
