@@ -212,11 +212,9 @@ type
     OD_spr_services: TOracleDataSet;
     DS_spr_services: TDataSource;
     cxLookupComboBox1: TcxLookupComboBox;
-    OD_rep1: TOracleDataSet;
-    DS_rep1: TDataSource;
+    KMP_rep1: TOracleDataSet;
     frxDBDataset14: TfrxDBDataset;
-    OD_rep2: TOracleDataSet;
-    DS_rep2: TDataSource;
+    KMP_rep2: TOracleDataSet;
     frxDBDataset15: TfrxDBDataset;
     cxprprtstr1: TcxPropertiesStore;
     CheckBox6: TCheckBox;
@@ -380,8 +378,8 @@ begin
   DM_Bill.Uni_cmp_main.Active := False;
   //DM_Bill.Uni_cmp_main.ParamByName('p_for_arch').AsInteger := 1;
 
-  OD_rep1.Active := false;
-  OD_rep2.Active := false;
+  DM_Bill.Uni_rep1.Active := false;
+  DM_Bill.Uni_rep2.Active := false;
 
   if sel_obj_ = 2 then
   begin
@@ -466,8 +464,8 @@ begin
   // активировать датасеты
   //OD_cmp_main.Active := true;
   DM_Bill.Uni_cmp_main.Active := True;
-  OD_rep1.Active := true;
-  OD_rep2.Active := true;
+  DM_Bill.Uni_rep1.Active := true;
+  DM_Bill.Uni_rep2.Active := true;
   frxReport1.LoadFromFile(Form_main.exepath_ + '\справка_пасп3.fr3', True);
   frxReport1.PrepareReport(true);
   frxReport1.ShowPreparedReport;

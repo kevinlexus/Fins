@@ -201,6 +201,8 @@ type
     Uni_objxpar: TUniQuery;
     Uni_par_value: TUniQuery;
     OD_housesFK_K_LSK: TFloatField;
+    OD_housesGUID: TStringField;
+    cxGridDBTableView1GUID: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);

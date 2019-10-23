@@ -1,6 +1,6 @@
 object Form_get_pay: TForm_get_pay
-  Left = 759
-  Top = 232
+  Left = 754
+  Top = 432
   Width = 903
   Height = 543
   Caption = #1042#1074#1086#1076' '#1086#1087#1083#1072#1090#1099
@@ -762,9 +762,9 @@ object Form_get_pay: TForm_get_pay
       'select to_char(add_months(sysdate, a.rn),'#39'YYYYMM'#39') as mg,'
       'to_char(add_months(sysdate, a.rn),'#39'YYYY-MM'#39') as mg1'
       ' from '
-      '(select -1 * rownum as rn from all_objects where rownum <100'
+      '(select -1 * rownum as rn from all_objects where rownum <300'
       'union all'
-      'select rownum-1 as rn from all_objects where rownum <100'
+      'select rownum-1 as rn from all_objects where rownum <300'
       ') a, scott.params p'
       'where to_char(add_months(sysdate, a.rn),'#39'YYYYMM'#39')>=p.period_back'
       'and to_char(add_months(sysdate, a.rn),'#39'YYYYMM'#39')<=p.period_forwrd'

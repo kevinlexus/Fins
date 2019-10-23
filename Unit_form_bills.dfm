@@ -1,7 +1,7 @@
 object Form_print_bills: TForm_print_bills
-  Left = 279
-  Top = 152
-  Width = 451
+  Left = 215
+  Top = 157
+  Width = 468
   Height = 447
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #1057#1095#1077#1090#1072' '#1085#1072' '#1086#1087#1083#1072#1090#1091' '#1091#1089#1083#1091#1075' '#1046#1050#1061
@@ -93,7 +93,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox1: TGroupBox
     Left = 0
     Top = 342
-    Width = 435
+    Width = 452
     Height = 61
     Align = alTop
     TabOrder = 3
@@ -138,7 +138,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox2: TGroupBox
     Left = 0
     Top = 0
-    Width = 435
+    Width = 452
     Height = 105
     Align = alTop
     TabOrder = 0
@@ -275,7 +275,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox3: TGroupBox
     Left = 0
     Top = 105
-    Width = 435
+    Width = 452
     Height = 200
     Align = alTop
     TabOrder = 2
@@ -576,7 +576,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox4: TGroupBox
     Left = 0
     Top = 305
-    Width = 435
+    Width = 452
     Height = 37
     Align = alTop
     TabOrder = 4
@@ -2464,7 +2464,7 @@ object Form_print_bills: TForm_print_bills
     Left = 344
     Top = 392
   end
-  object OD_rep1: TOracleDataSet
+  object KMP_rep1: TOracleDataSet
     SQL.Strings = (
       'select k.*, '
       
@@ -2550,11 +2550,6 @@ object Form_print_bills: TForm_print_bills
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Left = 312
-    Top = 440
-  end
-  object DS_rep1: TDataSource
-    DataSet = OD_rep1
-    Left = 344
     Top = 440
   end
   object frxDBDataset14: TfrxDBDataset
@@ -2649,12 +2644,12 @@ object Form_print_bills: TForm_print_bills
       'FIO_PASP=FIO_PASP'
       'NAME_RKC=NAME_RKC'
       'PERS_TP=PERS_TP')
-    DataSet = OD_rep1
+    DataSet = DM_Bill.Uni_rep1
     BCDToCurrency = False
-    Left = 376
+    Left = 344
     Top = 442
   end
-  object OD_rep2: TOracleDataSet
+  object KMP_rep2: TOracleDataSet
     SQL.Strings = (
       
         'select rownum as rn, t.*, to_char(t.dat_prop,'#39'DD.MM.YYYY'#39') as dt' +
@@ -2708,11 +2703,6 @@ object Form_print_bills: TForm_print_bills
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Left = 312
-    Top = 472
-  end
-  object DS_rep2: TDataSource
-    DataSet = OD_rep2
-    Left = 344
     Top = 472
   end
   object frxDBDataset15: TfrxDBDataset
@@ -2771,9 +2761,9 @@ object Form_print_bills: TForm_print_bills
       'STATUS_NAME=STATUS_NAME'
       'RELAT_NAME=RELAT_NAME'
       'UB_NAME=UB_NAME')
-    DataSet = OD_rep2
+    DataSet = DM_Bill.Uni_rep2
     BCDToCurrency = False
-    Left = 376
+    Left = 344
     Top = 474
   end
   object cxprprtstr1: TcxPropertiesStore

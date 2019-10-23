@@ -1,7 +1,7 @@
 object DM_Bill: TDM_Bill
   OldCreateOrder = False
-  Left = 1274
-  Top = 247
+  Left = 1269
+  Top = 182
   Height = 607
   Width = 470
   object Uni_cmp_main: TUniQuery
@@ -91,7 +91,7 @@ object DM_Bill: TDM_Bill
       item
         DataType = ftCursor
         Name = 'p_rfcur'
-        Value = 'Object'
+        Value = ''
       end>
   end
   object Uni_cmp_detail_primary: TUniQuery
@@ -779,5 +779,77 @@ object DM_Bill: TDM_Bill
     DataSet = Uni_cmp_main_arch
     Left = 88
     Top = 432
+  end
+  object Uni_rep1: TUniQuery
+    Connection = DataModule1.UniConnection1
+    SQL.Strings = (
+      'select k.*, '
+      
+        'initcap(s.name)||'#39', '#39'||NVL(LTRIM(k.nd,'#39'0'#39'),'#39'0'#39')||'#39'-'#39'||NVL(LTRIM(' +
+        'k.kw,'#39'0'#39'),'#39'0'#39') as adr,'
+      'ltrim(k.nd,'#39'0'#39') as n_nd, ltrim(k.kw,'#39'0'#39') as n_kw,'
+      
+        's.name as street_name, r.name as distr_name, t.name as status_na' +
+        'me, o.name as name_reu,'
+      
+        ' o2.name as town_name, scott.init.get_fio as fio_pasp, o3.name a' +
+        's name_rkc,'
+      ' decode(t.cd, '#39'MUN'#39','#39#1053#1072#1085#1080#1084#1072#1090#1077#1083#1100#39','#39#1057#1086#1073#1089#1090#1074#1077#1085#1085#1080#1082#39') as pers_tp'
+      
+        ' from scott.kart k, scott.spul s, scott.u_list r, scott.status t' +
+        ', scott.t_org o, '
+      
+        ' scott.t_org o2, scott.t_org_tp tp, scott.t_org o3, scott.t_org_' +
+        'tp tp3'
+      
+        'where k.kul=s.id and k.fk_distr=r.id(+) and k.lsk=:lsk and k.sta' +
+        'tus=t.id(+)'
+      'and k.reu=o.reu and tp.cd='#39#1043#1086#1088#1086#1076#39' and tp.id=o2.fk_orgtp'
+      'and tp3.id=o3.fk_orgtp and tp3.cd='#39#1056#1050#1062#39)
+    MasterSource = DS_cmp_main
+    MasterFields = 'lsk'
+    DetailFields = 'lsk'
+    FetchRows = 1000
+    Constraints = <>
+    Left = 112
+    Top = 328
+    ParamData = <
+      item
+        DataType = ftString
+        Name = 'lsk'
+        ParamType = ptInput
+      end>
+  end
+  object Uni_rep2: TUniQuery
+    Connection = DataModule1.UniConnection1
+    SQL.Strings = (
+      
+        'select rownum as rn, t.*, to_char(t.dat_prop,'#39'DD.MM.YYYY'#39') as dt' +
+        '1,'
+      
+        'to_char(t.dat_ub,'#39'DD.MM.YYYY'#39') as dt2, p.name as status_name, r.' +
+        'name as relat_name, u.name as ub_name'
+      
+        ' from scott.c_kart_pr t, scott.c_status_pr p, scott.relations r,' +
+        ' scott.u_list u'
+      
+        ' where t.lsk = :lsk and t.status=p.id(+) and t.relat_id=r.id(+) ' +
+        'and t.fk_ub=u.id(+)'
+      ' and t.status not in (6) --'#1082#1088#1086#1084#1077' '#1074#1088#1077#1084#1077#1085#1085#1086' '#1087#1088#1086#1078#1080#1074
+      'order by t.id'
+      '')
+    MasterSource = DS_cmp_main
+    MasterFields = 'lsk'
+    DetailFields = 'lsk'
+    FetchRows = 1000
+    Constraints = <>
+    Left = 112
+    Top = 384
+    ParamData = <
+      item
+        DataType = ftString
+        Name = 'lsk'
+        ParamType = ptInput
+      end>
   end
 end

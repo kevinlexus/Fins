@@ -95,7 +95,7 @@ procedure TForm_new_lsk.Button2Click(Sender: TObject);
 var
   lGetUslFromSrc, lDelUslFromSrc, lCloseSrc, cnt_: Integer;
 begin
-  if DataModule1.OraclePackage1.CallIntegerFunction(
+ { if DataModule1.OraclePackage1.CallIntegerFunction(
     'scott.UTILS.allow_cr_new_lsk',
     [str_]) = 0 then
   begin
@@ -103,7 +103,7 @@ begin
       'Внимание!', MB_ICONSTOP + MB_OK + MB_APPLMODAL);
   end
   else
-  begin
+  begin }
     if CheckBox1.Checked = True then
       lGetUslFromSrc := 1
     else
@@ -119,6 +119,23 @@ begin
 
     if RadioGroup1.ItemIndex=3 then
     begin
+      // новое помещение
+      // скопировать все субсчета (Основной, РСО и т.п.) при создании помещения
+    cnt_ := DataModule1.OraclePackage1.CallIntegerFunction(
+      'scott.P_HOUSES.kart_lsk_group_add',
+      [Form_list_kart.OD_list_kart.FieldByName('lsk').asString,
+      cbb2.EditValue, cxMaskEdit2.Text,
+        lGetUslFromSrc,
+        lDelUslFromSrc,
+        cxMaskEdit1.Text,
+        cxLookupComboBox1.EditValue,
+        lCloseSrc,
+        RadioGroup1.ItemIndex
+        ]);
+    end
+    else if RadioGroup1.ItemIndex=4 then
+    begin
+      // новый фин.лиц.счет
       // скопировать все субсчета (Основной, РСО и т.п.) при разделении финансового лиц.счета клиента
     cnt_ := DataModule1.OraclePackage1.CallIntegerFunction(
       'scott.P_HOUSES.kart_lsk_group_add',
@@ -128,7 +145,8 @@ begin
         lDelUslFromSrc,
         cxMaskEdit1.Text,
         cxLookupComboBox1.EditValue,
-        lCloseSrc
+        lCloseSrc,
+        RadioGroup1.ItemIndex
         ]);
     end
     else
@@ -144,7 +162,8 @@ begin
         cxMaskEdit1.Text,
         cxLookupComboBox1.EditValue,
         null,
-        lCloseSrc
+        lCloseSrc,
+        null
         ]);
     end;
     if cnt_ = 0 then
@@ -181,7 +200,7 @@ begin
     else
       Application.MessageBox('Ошибка создания лицевого счета!',
         'Внимание!', MB_ICONSTOP + MB_OK + MB_APPLMODAL);
-  end;
+  //end;
 end;
 
 procedure TForm_new_lsk.Button3Click(Sender: TObject);
@@ -206,7 +225,7 @@ end;
 procedure TForm_new_lsk.RadioGroup1Click(Sender: TObject);
 begin
   // показать/скрыть поле ввода № квартиры
-  if RadioGroup1.ItemIndex=2 then
+  if (RadioGroup1.ItemIndex=2) or (RadioGroup1.ItemIndex=3) then
   begin
     Label3.Enabled:=True;
     cxMaskEdit1.Enabled:=True;
@@ -217,7 +236,7 @@ begin
     cxMaskEdit1.Enabled:=False;
   end;
 
-  if RadioGroup1.ItemIndex=3 then
+  if (RadioGroup1.ItemIndex=4) or (RadioGroup1.ItemIndex=3) then
   begin
     Label1.Enabled:=False;
     cbb2.Enabled:=False;

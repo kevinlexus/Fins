@@ -24,6 +24,8 @@ type
     Uni_arch_supp: TUniQuery;
     Uni_cmp_main_arch: TUniQuery;
     DS_cmp_main_arch: TDataSource;
+    Uni_rep1: TUniQuery;
+    Uni_rep2: TUniQuery;
   private
     { Private declarations }
   public
