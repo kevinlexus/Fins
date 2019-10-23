@@ -7,7 +7,7 @@ uses
   Dialogs, DB, OracleData, Grids, wwSpeedButton,
   wwDBNavigator, ExtCtrls, StdCtrls, Utils, Buttons, Oracle,
   frxClass, frxDBSet, Menus, cxControls, 
-  cxStyles, 
+  cxStyles,       
   
   cxEdit, cxGridLevel, cxClasses, cxGridCustomView,
   cxGridDBTableView, cxGrid,

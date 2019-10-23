@@ -387,7 +387,7 @@ end;
 procedure TForm_olap.PVDimToolBar1DragDrop(Sender: TObject; Index: Integer;
   var Apply: Boolean);
 begin
- DoubleBuffered := false;
+ DoubleBuffered := false;     
 
 end;
 

@@ -97,7 +97,7 @@ var
 begin
  { if DataModule1.OraclePackage1.CallIntegerFunction(
     'scott.UTILS.allow_cr_new_lsk',
-    [str_]) = 0 then
+    [str_]) = 0 then                
   begin
     Application.MessageBox('Лицевой счет запрещено создавать!',
       'Внимание!', MB_ICONSTOP + MB_OK + MB_APPLMODAL);
