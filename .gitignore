@@ -1,0 +1,12 @@
+# ignore all subdirs
+*/*
+
+/*.dcu
+/*.dll
+/*.exe
+/*.~*
+/Direct.drc
+/Direct.map
+/finres.RES
+/finres.rc
+

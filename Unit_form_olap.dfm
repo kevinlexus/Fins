@@ -6713,28 +6713,12 @@ object Form_olap: TForm_olap
         DisplayName = #1054#1044#1055#1059', '#1045#1076'.'
       end
       item
-        AliasName = 'KUB_DIST'
-        FieldName = 'KUB_DIST'
+        AliasName = 'KR_SOI'
+        FieldName = 'KR_SOI'
         CalcType = ctSumma
         DataType = ftFloat
         FormatString = '########0.00##'
-        DisplayName = #1053#1086#1088#1084#1072#1090#1080#1074' '#1087#1086' '#1054#1044#1055#1059
-      end
-      item
-        AliasName = 'KUB_FACT_UPNORM'
-        FieldName = 'KUB_FACT_UPNORM'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1056#1072#1079#1085#1080#1094#1072
-      end
-      item
-        AliasName = 'KUB_FACT'
-        FieldName = 'KUB_FACT'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1054#1044#1053
+        DisplayName = #1050#1056' '#1085#1072' '#1057#1054#1048
       end>
     CubeName = 'test'
     OptimizeLevel = optNormal
