@@ -21,6 +21,7 @@ object DM_Bill: TDM_Bill
       '                          p_is_closed => :p_is_closed,'
       '                          p_mg => :p_mg,'
       '                          p_sel_uk => :p_sel_uk,'
+      '                          p_postcode => :p_postcode,'
       '                          p_rfcur => :p_rfcur);'
       'end;')
     FetchRows = 1000
@@ -89,9 +90,14 @@ object DM_Bill: TDM_Bill
         ParamType = ptInput
       end
       item
+        DataType = ftString
+        Name = 'p_postcode'
+        ParamType = ptInput
+      end
+      item
         DataType = ftCursor
         Name = 'p_rfcur'
-        Value = ''
+        Value = 'Object'
       end>
   end
   object Uni_cmp_detail_primary: TUniQuery
@@ -856,8 +862,8 @@ object DM_Bill: TDM_Bill
     Connection = DataModule1.UniConnection1
     SQL.Strings = (
       'select distinct t.postcode from scott.kart k '
-      'left join scott.c_houses t on k.house_id=t.id'
-      'and k.reu=:reu'
+      'join scott.c_houses t on k.house_id=t.id'
+      'and k.reu=:reu and t.postcode is not null'
       'order by t.postcode')
     Constraints = <>
     Left = 264

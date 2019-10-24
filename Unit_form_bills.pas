@@ -478,126 +478,94 @@ end;
 procedure TForm_print_bills.compound_report(p_var: Integer);
 begin
   // главный датасет
-  //OD_cmp_main.Active := false;
   DM_Bill.Uni_cmp_main.Active := false;
   // реквизиты исполнителей
-  //OD_cmp_contractors.Active := false;
   DM_Bill.Uni_cmp_contractors.Active := false;
   // данные основных и РСО счетов
-  //OD_cmp_detail_primary.Active := false;
   DM_Bill.Uni_cmp_detail_primary.Active := False;
   // данные счетов по капремонту
-  //OD_cmp_detail_cap.Active := false;
   DM_Bill.Uni_cmp_detail_cap.Active := False;
   // данные по основному типу счета
-  //OD_cmp_detail_main.Active := false;
   DM_Bill.Uni_cmp_detail_main.Active := False;
   // данные начисления по основным счетам и РСО
-  //OD_cmp_funds_primary.Active := false;
   DM_Bill.Uni_cmp_funds_primary.Active := False;
   // данные начисления по капремонту
-  //OD_cmp_funds_cap.Active := false;
   DM_Bill.Uni_cmp_funds_cap.Active := False;
   // данные начисления по основному типу счета
-  //OD_cmp_funds_main.Active := false;
   DM_Bill.Uni_cmp_funds_main.Active := False;
   // данные начисления по конкретному лиц.счету
-  //OD_cmp_funds_lsk.Active := false;
   DM_Bill.Uni_cmp_funds_lsk.Active := False;
   // QR код
-  //OD_cmp_qr.Active := false;
   DM_Bill.Uni_cmp_qr.Active := False;
 
   if sel_obj_ = 2 then
   begin
     //только для УК
     //ограничивать диапазон записи для печати счетов
-{    OD_cmp_main.SetVariable('p_firstNum',
-      OD_ls_cnt.FieldByName('first_rec').AsInteger);
-    OD_cmpl_main.SetVariable('p_lastNum',
-      OD_ls_cnt.FieldByName('last_rec').AsInteger);}
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_firstNum').AsInteger :=
       OD_ls_cnt.FieldByName('first_rec').AsInteger;
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_lastNum').AsInteger :=
       OD_ls_cnt.FieldByName('last_rec').AsInteger;
+    if cxLookupComboBox2.EditValue <> null then
+      DM_Bill.Uni_cmp_main.Params.ParamByName('p_postcode').AsString :=
+        cxLookupComboBox2.EditValue
+    else
+      DM_Bill.Uni_cmp_main.Params.ParamByName('p_postcode').Clear;
   end
   else
   begin
     //не ограничивать диапазон записи для печати счетов
-    //OD_cmp_main.SetVariable('p_firstNum', 0);
-    //OD_cmp_main.SetVariable('p_lastNum', 1000000000);
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_firstNum').AsInteger := 0;
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_lastNum').AsInteger :=
       1000000000;
+    DM_Bill.Uni_cmp_main.Params.ParamByName('p_postcode').Clear;
   end;
   // установить параметры
-  //OD_cmp_main.SetVariable('p_for_arch', 0);
-  //DM_Bill.Uni_cmp_main.Params.ParamByName('p_for_arch').AsInteger := 0;
-
-  //OD_cmp_main.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
   DM_Bill.Uni_cmp_main.Params.ParamByName('p_mg').AsString :=
     DBLookupComboboxEh1.KeyValue;
   // список УК для фильтра
-  //OD_cmp_main.SetVariable('p_sel_uk', getStrUk());
   DM_Bill.Uni_cmp_main.Params.ParamByName('p_sel_uk').AsString := getStrUk();
 
-  //OD_cmp_contractors.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
   DM_Bill.Uni_cmp_contractors.Params.ParamByName('p_mg').AsString :=
     DBLookupComboboxEh1.KeyValue;
 
-  //OD_cmp_contractors.SetVariable('p_sel_uk', getStrUk());
   DM_Bill.Uni_cmp_contractors.Params.ParamByName('p_sel_uk').AsString :=
     getStrUk();
 
-  //OD_cmp_detail_primary.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
-  //OD_cmp_detail_primary.SetVariable('p_sel_uk', getStrUk());
   DM_Bill.Uni_cmp_detail_primary.Params.ParamByName('p_mg').AsString :=
     DBLookupComboboxEh1.KeyValue;
   DM_Bill.Uni_cmp_detail_primary.Params.ParamByName('p_sel_uk').AsString :=
     getStrUk();
 
-  //OD_cmp_detail_cap.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
-  //OD_cmp_detail_cap.SetVariable('p_sel_uk', getStrUk());
   DM_Bill.Uni_cmp_detail_cap.Params.ParamByName('p_mg').AsString :=
     DBLookupComboboxEh1.KeyValue;
   DM_Bill.Uni_cmp_detail_cap.Params.ParamByName('p_sel_uk').AsString :=
     getStrUk();
 
-  //OD_cmp_detail_main.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
-  //OD_cmp_detail_main.SetVariable('p_sel_uk', getStrUk());
   DM_Bill.Uni_cmp_detail_main.Params.ParamByName('p_mg').AsString :=
     DBLookupComboboxEh1.KeyValue;
   DM_Bill.Uni_cmp_detail_main.Params.ParamByName('p_sel_uk').AsString :=
     getStrUk();
 
-  //OD_cmp_funds_primary.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
-  //OD_cmp_funds_primary.SetVariable('p_sel_uk', getStrUk());
   DM_Bill.Uni_cmp_funds_primary.Params.ParamByName('p_mg').AsString :=
     DBLookupComboboxEh1.KeyValue;
   DM_Bill.Uni_cmp_funds_primary.Params.ParamByName('p_sel_uk').AsString :=
     getStrUk();
 
-  //OD_cmp_funds_cap.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
-  //OD_cmp_funds_cap.SetVariable('p_sel_uk', getStrUk());
   DM_Bill.Uni_cmp_funds_cap.Params.ParamByName('p_mg').AsString :=
     DBLookupComboboxEh1.KeyValue;
   DM_Bill.Uni_cmp_funds_cap.Params.ParamByName('p_sel_uk').AsString :=
     getStrUk();
 
-  //OD_cmp_funds_main.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
-  //OD_cmp_funds_main.SetVariable('p_sel_uk', getStrUk());
   DM_Bill.Uni_cmp_funds_main.Params.ParamByName('p_mg').AsString :=
     DBLookupComboboxEh1.KeyValue;
   DM_Bill.Uni_cmp_funds_main.Params.ParamByName('p_sel_uk').AsString :=
     getStrUk();
 
   // здесь не нужен фильтр p_sel_uk, так как выборка по p_lsk
-  //OD_cmp_funds_lsk.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
   DM_Bill.Uni_cmp_funds_lsk.Params.ParamByName('p_mg').AsString :=
     DBLookupComboboxEh1.KeyValue;
 
-  //OD_cmp_qr.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
-  //OD_cmp_qr.SetVariable('p_sel_uk', getStrUk());
   DM_Bill.Uni_cmp_qr.Params.ParamByName('p_mg').AsString :=
     DBLookupComboboxEh1.KeyValue;
   DM_Bill.Uni_cmp_qr.Params.ParamByName('p_sel_uk').AsString :=
@@ -605,69 +573,43 @@ begin
 
   // установить тип лиц.счета
   // все, кроме капремонта
-  //OD_cmp_detail_primary.SetVariable('p_sel_tp', 0);
-  //DM_Bill.Uni_cmp_detail_primary.Params.ParamByName('p_sel_tp').AsInteger := 0;
   DM_Bill.Uni_cmp_detail_primary.Params.ParamByName('p_sel_tp').AsInteger := 0;
 
   // капремонт
-  //OD_cmp_detail_cap.SetVariable('p_sel_tp', 1);
   DM_Bill.Uni_cmp_detail_cap.Params.ParamByName('p_sel_tp').AsInteger := 1;
 
   // основные, кроме закрытых (для отрывного)
-  //OD_cmp_detail_main.SetVariable('p_sel_tp', 3);
   DM_Bill.Uni_cmp_detail_main.Params.ParamByName('p_sel_tp').AsInteger := 3;
 
   // все, кроме капремонта
-  //OD_cmp_funds_primary.SetVariable('p_sel_tp', 0);
   DM_Bill.Uni_cmp_funds_primary.Params.ParamByName('p_sel_tp').AsInteger := 0;
 
   // капремонт
-  //OD_cmp_funds_cap.SetVariable('p_sel_tp', 1);
   DM_Bill.Uni_cmp_funds_cap.Params.ParamByName('p_sel_tp').AsInteger := 1;
 
   // основные
-  //OD_cmp_funds_main.SetVariable('p_sel_tp', 3);
   DM_Bill.Uni_cmp_funds_main.Params.ParamByName('p_sel_tp').AsInteger := 3;
 
   // все
-  //OD_cmp_qr.SetVariable('p_sel_tp', 4);
   DM_Bill.Uni_cmp_qr.Params.ParamByName('p_sel_tp').AsInteger := 4;
 
   // установить дополнительный фильтр
-  //OD_cmp_contractors.SetVariable('p_sel_flt_tp', cxImageComboBox1.ItemIndex);
   DM_Bill.Uni_cmp_contractors.Params.ParamByName('p_sel_flt_tp').AsInteger :=
     cxImageComboBox1.ItemIndex;
-  //OD_cmp_detail_primary.SetVariable('p_sel_flt_tp', cxImageComboBox1.ItemIndex);
   DM_Bill.Uni_cmp_detail_primary.Params.ParamByName('p_sel_flt_tp').AsInteger :=
     cxImageComboBox1.ItemIndex;
-  //OD_cmp_detail_cap.SetVariable('p_sel_flt_tp', cxImageComboBox1.ItemIndex);
   DM_Bill.Uni_cmp_detail_cap.Params.ParamByName('p_sel_flt_tp').AsInteger :=
     cxImageComboBox1.ItemIndex;
-  //OD_cmp_detail_main.SetVariable('p_sel_flt_tp', cxImageComboBox1.ItemIndex);
   DM_Bill.Uni_cmp_detail_main.Params.ParamByName('p_sel_flt_tp').AsInteger :=
     cxImageComboBox1.ItemIndex;
-  //OD_cmp_funds_primary.SetVariable('p_sel_flt_tp', cxImageComboBox1.ItemIndex);
   DM_Bill.Uni_cmp_funds_primary.Params.ParamByName('p_sel_flt_tp').AsInteger :=
     cxImageComboBox1.ItemIndex;
-
-  //OD_cmp_funds_cap.SetVariable('p_sel_flt_tp', cxImageComboBox1.ItemIndex);
   DM_Bill.Uni_cmp_funds_cap.Params.ParamByName('p_sel_flt_tp').AsInteger :=
     cxImageComboBox1.ItemIndex;
-
-  //OD_cmp_funds_main.SetVariable('p_sel_flt_tp', cxImageComboBox1.ItemIndex);
   DM_Bill.Uni_cmp_funds_main.Params.ParamByName('p_sel_flt_tp').AsInteger :=
     cxImageComboBox1.ItemIndex;
-
-  //OD_cmp_qr.SetVariable('p_sel_flt_tp', cxImageComboBox1.ItemIndex);
   DM_Bill.Uni_cmp_qr.Params.ParamByName('p_sel_flt_tp').AsInteger :=
     cxImageComboBox1.ItemIndex;
-
-  {  OD_cmp_main.SetVariable('p_sel_obj', sel_obj_);
-    OD_cmp_main.SetVariable('p_reu', cbb1.EditValue);
-    OD_cmp_main.SetVariable('p_lsk', wwDBEdit1.Text);
-    OD_cmp_main.SetVariable('p_lsk1', wwDBEdit2.Text);
-    OD_cmp_main.SetVariable('p_kul', DBLookupComboboxEh2.KeyValue);
-    }
   DM_Bill.Uni_cmp_main.Params.ParamByName('p_sel_obj').AsInteger := sel_obj_;
   if cbb1.EditValue <> null then
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_reu').AsString := cbb1.EditValue
@@ -683,112 +625,72 @@ begin
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_kul').Clear;
 
   if not VarIsNull(DBLookupComboboxEh3.KeyValue) then
-    //OD_cmp_main.SetVariable('p_nd', OD_houses.FieldByName('nd_id').AsString)
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_nd').AsString :=
       OD_houses.FieldByName('nd_id').AsString
   else
-    //OD_cmp_main.SetVariable('p_nd', null);
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_nd').Clear;
 
   if DBLookupComboboxEh4.KeyValue <> null then
-    //OD_cmp_main.SetVariable('p_kw', OD_kw.FieldByName('kw_id').AsString)
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_kw').AsString :=
       OD_kw.FieldByName('kw_id').AsString
   else
-    //OD_cmp_main.SetVariable('p_kw', null);
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_kw').Clear;
 
   // печатать ли закрытые счета
   if CheckBox2.Checked = true then
   begin
-    //OD_cmp_main.SetVariable('p_is_closed', 1);
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_is_closed').AsInteger := 1;
-    //OD_cmp_detail_primary.SetVariable('p_is_closed', 1);
     DM_Bill.Uni_cmp_detail_primary.Params.ParamByName('p_is_closed').AsInteger
       := 1;
-    //OD_cmp_detail_main.SetVariable('p_is_closed', 1);
     DM_Bill.Uni_cmp_detail_main.Params.ParamByName('p_is_closed').AsInteger
       := 1;
-    //OD_cmp_detail_cap.SetVariable('p_is_closed', 1);
     DM_Bill.Uni_cmp_detail_cap.Params.ParamByName('p_is_closed').AsInteger
       := 1;
-    //OD_cmp_contractors.SetVariable('p_is_closed', 1);
     DM_Bill.Uni_cmp_contractors.Params.ParamByName('p_is_closed').AsInteger :=
       1;
-    //OD_cmp_funds_primary.SetVariable('p_is_closed', 1);
     DM_Bill.Uni_cmp_funds_primary.Params.ParamByName('p_is_closed').AsInteger :=
       1;
-    //OD_cmp_funds_cap.SetVariable('p_is_closed', 1);
     DM_Bill.Uni_cmp_funds_cap.Params.ParamByName('p_is_closed').AsInteger :=
       1;
-    //OD_cmp_funds_main.SetVariable('p_is_closed', 1);
     DM_Bill.Uni_cmp_funds_main.Params.ParamByName('p_is_closed').AsInteger :=
       1;
-    //OD_cmp_qr.SetVariable('p_is_closed', 1);
     DM_Bill.Uni_cmp_qr.Params.ParamByName('p_is_closed').AsInteger :=
       1;
   end
   else
   begin
-    //OD_cmp_main.SetVariable('p_is_closed', 0);
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_is_closed').AsInteger := 0;
-    //OD_cmp_detail_primary.SetVariable('p_is_closed', 0);
     DM_Bill.Uni_cmp_detail_primary.Params.ParamByName('p_is_closed').AsInteger
       := 0;
-    //OD_cmp_detail_main.SetVariable('p_is_closed', 0);
     DM_Bill.Uni_cmp_detail_main.Params.ParamByName('p_is_closed').AsInteger
       := 0;
-    //OD_cmp_detail_cap.SetVariable('p_is_closed', 0);
     DM_Bill.Uni_cmp_detail_cap.Params.ParamByName('p_is_closed').AsInteger
       := 0;
-    //OD_cmp_contractors.SetVariable('p_is_closed', 0);
     DM_Bill.Uni_cmp_contractors.Params.ParamByName('p_is_closed').AsInteger :=
       0;
-    //OD_cmp_funds_primary.SetVariable('p_is_closed', 0);
     DM_Bill.Uni_cmp_funds_primary.Params.ParamByName('p_is_closed').AsInteger
       := 0;
-    //OD_cmp_funds_cap.SetVariable('p_is_closed', 0);
     DM_Bill.Uni_cmp_funds_cap.Params.ParamByName('p_is_closed').AsInteger
       := 0;
-    //OD_cmp_funds_main.SetVariable('p_is_closed', 0);
     DM_Bill.Uni_cmp_funds_main.Params.ParamByName('p_is_closed').AsInteger
       := 0;
-    //OD_cmp_qr.SetVariable('p_is_closed', 0);
     DM_Bill.Uni_cmp_qr.Params.ParamByName('p_is_closed').AsInteger
       := 0;
   end;
 
-  //OD_cmp_funds_lsk.SetVariable('P_INCLUDESALDO', 1);
   DM_Bill.Uni_cmp_funds_lsk.Params.ParamByName('P_INCLUDESALDO').AsInteger
     := 1;
 
   // активировать датасеты
-  //OD_cmp_main.Active := true;
   DM_Bill.Uni_cmp_main.Active := True;
-  //OD_cmp_contractors.Active := true;
   DM_Bill.Uni_cmp_contractors.Active := true;
-
-  //OD_cmp_detail_primary.Active := true;
   DM_Bill.Uni_cmp_detail_primary.Active := true;
-
-  //OD_cmp_detail_cap.Active := true;
   DM_Bill.Uni_cmp_detail_cap.Active := true;
-  //OD_cmp_detail_main.Active := true;
   DM_Bill.Uni_cmp_detail_main.Active := true;
-
-  //OD_cmp_funds_primary.Active := true;
   DM_Bill.Uni_cmp_funds_primary.Active := true;
-
-  //OD_cmp_funds_cap.Active := true;
   DM_Bill.Uni_cmp_funds_cap.Active := true;
-
-  //OD_cmp_funds_main.Active := true;
   DM_Bill.Uni_cmp_funds_main.Active := true;
-
-  //OD_cmp_funds_lsk.Active := true;
   DM_Bill.Uni_cmp_funds_lsk.Active := true;
-
-  //OD_cmp_qr.Active := true;
   DM_Bill.Uni_cmp_qr.Active := true;
 
   Edit2.Text := 'Путь к файлу счета:' + Form_main.exepath_ +
@@ -802,32 +704,15 @@ begin
   Form_status.Close;
 
   // деактивировать датасеты - чтоб не жрали память
-  //OD_cmp_main.Active := false;
   DM_Bill.Uni_cmp_main.Active := False;
-  //OD_cmp_contractors.Active := false;
   DM_Bill.Uni_cmp_contractors.Active := False;
-
-  //OD_cmp_detail_primary.Active := false;
   DM_Bill.Uni_cmp_detail_primary.Active := false;
-
-  //OD_cmp_detail_cap.Active := false;
   DM_Bill.Uni_cmp_detail_cap.Active := false;
-  //OD_cmp_detail_main.Active := false;
   DM_Bill.Uni_cmp_detail_main.Active := false;
-
-  //OD_cmp_funds_primary.Active := false;
   DM_Bill.Uni_cmp_funds_primary.Active := false;
-
-  //OD_cmp_funds_cap.Active := false;
   DM_Bill.Uni_cmp_funds_cap.Active := false;
-
-  //OD_cmp_funds_main.Active := false;
   DM_Bill.Uni_cmp_funds_main.Active := false;
-
-  //OD_cmp_funds_lsk.Active := false;
   DM_Bill.Uni_cmp_funds_lsk.Active := false;
-
-  //OD_cmp_qr.Active := false;
   DM_Bill.Uni_cmp_qr.Active := false;
 
   if CheckBox6.Checked then
@@ -886,7 +771,6 @@ begin
     OD_main.SetVariable('kw_', OD_kw.FieldByName('kw_id').AsString)
   else
     OD_main.SetVariable('kw_', null);
-
 
   if (tp_ = 5) then //справка арх-2
   begin
@@ -1292,10 +1176,12 @@ begin
       //Cправка о задолженности
       if DataModule1.OraclePackage1.CallIntegerFunction //старый вариант
       ('scott.Utils.get_int_param', ['SPR_DEB_VAR']) = 0 then
-        frxReport1.LoadFromFile(Form_main.exepath_ + repVar+'Счет_на_оплату1.fr3', True)
+        frxReport1.LoadFromFile(Form_main.exepath_ + repVar +
+          'Счет_на_оплату1.fr3', True)
       else if DataModule1.OraclePackage1.CallIntegerFunction //новый вариант
       ('scott.Utils.get_int_param', ['SPR_DEB_VAR']) = 1 then
-        frxReport1.LoadFromFile(Form_main.exepath_ + repVar+'спр_задолжн.fr3', True);
+        frxReport1.LoadFromFile(Form_main.exepath_ + repVar + 'спр_задолжн.fr3',
+          True);
 
       frxReport1.PrepareReport(true);
     end;
@@ -1606,8 +1492,8 @@ begin
     cbb1.Enabled := true;
 
     // отключить фильтр по почтовому индексу
-    Label15.Enabled:=False;
-    cxLookupComboBox2.Enabled:=False;
+    Label15.Enabled := False;
+    cxLookupComboBox2.Enabled := False;
 
     set_lsk(1, '');
     sel_obj_ := 1;
@@ -1637,8 +1523,8 @@ begin
     cbb1.Enabled := true;
 
     // отключить фильтр по почтовому индексу
-    Label15.Enabled:=False;
-    cxLookupComboBox2.Enabled:=False;
+    Label15.Enabled := False;
+    cxLookupComboBox2.Enabled := False;
 
     set_lsk(0, wwDBEdit1.Text);
     sel_obj_ := 0;
@@ -1669,11 +1555,11 @@ begin
     cbb1.EditValue := OD_reu.FieldByName('reu').AsString;
 
     // включить фильтр по почтовому индексу
-    Label15.Enabled:=True;
-    cxLookupComboBox2.Enabled:=True;
-    DM_Bill.Uni_postcode.ParamByName('reu').AsString:=cbb1.EditValue;
-    DM_Bill.Uni_postcode.Active:=False;
-    DM_Bill.Uni_postcode.Active:=True;
+    Label15.Enabled := True;
+    cxLookupComboBox2.Enabled := True;
+    DM_Bill.Uni_postcode.ParamByName('reu').AsString := cbb1.EditValue;
+    DM_Bill.Uni_postcode.Active := False;
+    DM_Bill.Uni_postcode.Active := True;
 
     sel_obj_ := 2;
     sel_ls_cnt;
@@ -1704,9 +1590,9 @@ begin
   // для фильтра выбора почтового индекса
   if wwDBLookupCombo1.LookupValue = '2' then
   begin
-    DM_Bill.Uni_postcode.ParamByName('reu').AsString:=cbb1.EditValue;
-    DM_Bill.Uni_postcode.Active:=False;
-    DM_Bill.Uni_postcode.Active:=True;
+    DM_Bill.Uni_postcode.ParamByName('reu').AsString := cbb1.EditValue;
+    DM_Bill.Uni_postcode.Active := False;
+    DM_Bill.Uni_postcode.Active := True;
   end;
 
 end;

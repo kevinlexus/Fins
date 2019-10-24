@@ -274,6 +274,7 @@ object Form_print_bills: TForm_print_bills
       Left = 280
       Top = 80
       Enabled = False
+      Properties.ClearKey = 46
       Properties.DropDownAutoSize = True
       Properties.DropDownSizeable = True
       Properties.KeyFieldNames = 'POSTCODE'
