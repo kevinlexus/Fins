@@ -26,6 +26,8 @@ type
     DS_cmp_main_arch: TDataSource;
     Uni_rep1: TUniQuery;
     Uni_rep2: TUniQuery;
+    Uni_postcode: TUniQuery;
+    DS_postcode: TDataSource;
   private
     { Private declarations }
   public

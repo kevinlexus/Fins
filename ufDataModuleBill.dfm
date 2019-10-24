@@ -1,7 +1,7 @@
 object DM_Bill: TDM_Bill
   OldCreateOrder = False
-  Left = 1269
-  Top = 182
+  Left = 1084
+  Top = 249
   Height = 607
   Width = 470
   object Uni_cmp_main: TUniQuery
@@ -99,7 +99,7 @@ object DM_Bill: TDM_Bill
     SQL.Strings = (
       'begin'
       ''
-      ' scott.rep_bills_compound2.detail(p_klsk => :k_lsk_id,'
+      ' scott.rep_bills_compound.detail(p_klsk => :k_lsk_id,'
       '                            p_is_closed => :p_is_closed,'
       '                            p_mg => :p_mg,'
       '                            p_sel_tp => :p_sel_tp,'
@@ -851,5 +851,27 @@ object DM_Bill: TDM_Bill
         Name = 'lsk'
         ParamType = ptInput
       end>
+  end
+  object Uni_postcode: TUniQuery
+    Connection = DataModule1.UniConnection1
+    SQL.Strings = (
+      'select distinct t.postcode from scott.kart k '
+      'left join scott.c_houses t on k.house_id=t.id'
+      'and k.reu=:reu'
+      'order by t.postcode')
+    Constraints = <>
+    Left = 264
+    Top = 208
+    ParamData = <
+      item
+        DataType = ftString
+        Name = 'reu'
+        ParamType = ptInput
+      end>
+  end
+  object DS_postcode: TDataSource
+    DataSet = Uni_postcode
+    Left = 312
+    Top = 208
   end
 end

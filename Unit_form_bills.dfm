@@ -174,17 +174,25 @@ object Form_print_bills: TForm_print_bills
     object Label11: TLabel
       Left = 229
       Top = 40
-      Width = 84
+      Width = 81
       Height = 13
-      Caption = #1087#1077#1095#1072#1090#1072#1090#1100' '#1086#1073#1098#1077#1084':'
+      Caption = #1087#1077#1095#1072#1090#1072#1090#1100' '#1086#1073#1098#1077#1084
       Enabled = False
     end
     object Label12: TLabel
       Left = 229
       Top = 64
+      Width = 33
+      Height = 13
+      Caption = #1086#1073#1098#1105#1084
+      Enabled = False
+    end
+    object Label15: TLabel
+      Left = 229
+      Top = 88
       Width = 36
       Height = 13
-      Caption = #1086#1073#1098#1105#1084':'
+      Caption = #1080#1085#1076#1077#1082#1089
       Enabled = False
     end
     object DBLookupComboboxEh1: TDBLookupComboboxEh
@@ -262,14 +270,21 @@ object Form_print_bills: TForm_print_bills
       TabOrder = 4
       Width = 63
     end
-    object pnl1: TPanel
-      Left = 144
-      Top = 72
-      Width = 185
-      Height = 41
-      Caption = #1047#1072#1075#1088#1091#1079#1082#1072'...'
+    object cxLookupComboBox2: TcxLookupComboBox
+      Left = 280
+      Top = 80
+      Enabled = False
+      Properties.DropDownAutoSize = True
+      Properties.DropDownSizeable = True
+      Properties.KeyFieldNames = 'POSTCODE'
+      Properties.ListColumns = <
+        item
+          FieldName = 'POSTCODE'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = DM_Bill.DS_postcode
       TabOrder = 5
-      Visible = False
+      Width = 105
     end
   end
   object GroupBox3: TGroupBox
@@ -588,6 +603,15 @@ object Form_print_bills: TForm_print_bills
       ReadOnly = True
       TabOrder = 0
     end
+  end
+  object pnl1: TPanel
+    Left = 136
+    Top = 168
+    Width = 185
+    Height = 41
+    Caption = #1047#1072#1075#1088#1091#1079#1082#1072'...'
+    TabOrder = 5
+    Visible = False
   end
   object OD_data: TOracleDataSet
     SQL.Strings = (
@@ -924,12 +948,12 @@ object Form_print_bills: TForm_print_bills
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Left = 16
-    Top = 72
+    Top = 144
   end
   object DS_mg: TDataSource
     DataSet = OD_mg
     Left = 16
-    Top = 104
+    Top = 176
   end
   object frxDBDataset1: TfrxDBDataset
     UserName = 'frxDBDataset1'
@@ -1165,12 +1189,12 @@ object Form_print_bills: TForm_print_bills
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Left = 48
-    Top = 72
+    Top = 144
   end
   object DS_mg1: TDataSource
     DataSet = OD_mg1
     Left = 48
-    Top = 104
+    Top = 176
   end
   object OD_data2: TOracleDataSet
     SQL.Strings = (
@@ -1827,7 +1851,7 @@ object Form_print_bills: TForm_print_bills
     Active = True
     AfterOpen = OD_sel_objAfterOpen
     Left = 312
-    Top = 16
+    Top = 240
   end
   object OD_ls_cnt: TOracleDataSet
     SQL.Strings = (
@@ -1851,12 +1875,12 @@ object Form_print_bills: TForm_print_bills
     BeforeOpen = OD_ls_cntBeforeOpen
     AfterOpen = OD_ls_cntAfterOpen
     Left = 312
-    Top = 48
+    Top = 272
   end
   object DS_ls_cnt: TDataSource
     DataSet = OD_ls_cnt
-    Left = 344
-    Top = 48
+    Left = 352
+    Top = 272
   end
   object DS_reu: TDataSource
     DataSet = OD_reu
@@ -2779,7 +2803,7 @@ object Form_print_bills: TForm_print_bills
     StorageName = 'frmPrintBillsStore.ini'
     StorageType = stRegistry
     Left = 16
-    Top = 80
+    Top = 152
   end
   object frxPDFExport1: TfrxPDFExport
     FileName = 'c:\temp\export'

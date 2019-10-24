@@ -184,7 +184,6 @@ type
     Label8: TLabel;
     cbb1: TcxLookupComboBox;
     cbb2: TcxLookupComboBox;
-    pnl1: TPanel;
     OD_dataBILL_BRAKE: TFloatField;
     OD_detail: TOracleDataSet;
     frxDBDataset11: TfrxDBDataset;
@@ -222,6 +221,9 @@ type
     Edit3: TEdit;
     CheckBox7: TCheckBox;
     frxDB_cmp_main_arch: TfrxDBDataset;
+    pnl1: TPanel;
+    Label15: TLabel;
+    cxLookupComboBox2: TcxLookupComboBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -1584,7 +1586,7 @@ begin
   if wwDBLookupCombo1.LookupValue = '0' then
   begin
     //по Адресу
-      //кол-во л.с. для печати
+    //кол-во л.с. для печати
     cbb2.Enabled := false;
     Label11.Enabled := false;
     Label12.Enabled := false;
@@ -1602,13 +1604,18 @@ begin
 
     Label8.Enabled := false;
     cbb1.Enabled := true;
+
+    // отключить фильтр по почтовому индексу
+    Label15.Enabled:=False;
+    cxLookupComboBox2.Enabled:=False;
+
     set_lsk(1, '');
     sel_obj_ := 1;
   end
   else if wwDBLookupCombo1.LookupValue = '1' then
   begin
     //по Л/C
-      //кол-во л.с. для печати
+    //кол-во л.с. для печати
     cbb2.Enabled := false;
     Label11.Enabled := false;
     Label12.Enabled := false;
@@ -1628,14 +1635,19 @@ begin
 
     Label8.Enabled := false;
     cbb1.Enabled := true;
-    //    DBLookupComboboxEh7.Enabled:=false;
+
+    // отключить фильтр по почтовому индексу
+    Label15.Enabled:=False;
+    cxLookupComboBox2.Enabled:=False;
+
     set_lsk(0, wwDBEdit1.Text);
     sel_obj_ := 0;
+
   end
   else if wwDBLookupCombo1.LookupValue = '2' then
   begin
     //по УК
-      //кол-во л.с. для печати
+    //кол-во л.с. для печати
     cbb2.Enabled := true;
     Label11.Enabled := true;
     Label12.Enabled := true;
@@ -1654,9 +1666,15 @@ begin
 
     Label8.Enabled := true;
     cbb1.Enabled := true;
-    //    DBLookupComboboxEh7.Enabled:=true;
     cbb1.EditValue := OD_reu.FieldByName('reu').AsString;
-    //    DBLookupComboboxEh7.KeyValue:=OD_reu.FieldByName('reu').AsString;
+
+    // включить фильтр по почтовому индексу
+    Label15.Enabled:=True;
+    cxLookupComboBox2.Enabled:=True;
+    DM_Bill.Uni_postcode.ParamByName('reu').AsString:=cbb1.EditValue;
+    DM_Bill.Uni_postcode.Active:=False;
+    DM_Bill.Uni_postcode.Active:=True;
+
     sel_obj_ := 2;
     sel_ls_cnt;
   end;
@@ -1682,6 +1700,14 @@ begin
   OD_ls_cnt.SetVariable('p_reu', cbb1.EditValue);
   OD_ls_cnt.Active := true;
   cbb2.EditValue := OD_ls_cnt.FieldByName('first_rec').AsString;
+
+  // для фильтра выбора почтового индекса
+  if wwDBLookupCombo1.LookupValue = '2' then
+  begin
+    DM_Bill.Uni_postcode.ParamByName('reu').AsString:=cbb1.EditValue;
+    DM_Bill.Uni_postcode.Active:=False;
+    DM_Bill.Uni_postcode.Active:=True;
+  end;
 
 end;
 

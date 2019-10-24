@@ -1,5 +1,5 @@
 object Form_find_adr: TForm_find_adr
-  Left = 1003
+  Left = 1141
   Top = 165
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
@@ -327,9 +327,9 @@ object Form_find_adr: TForm_find_adr
         '  and (:flt_reu_ is not null and a.reu = :flt_reu_ or :flt_reu_ ' +
         'is null)'
       
-        ' order by scott.utils.f_ord_digit(k.nd), scott.utils.f_ord3(k.nd' +
-        ') desc,'
-      '          decode(a.psch,8,1, 9,1, 0)')
+        ' order by scott.utils.f_ord_digit(k.nd), coalesce(scott.utils.f_' +
+        'ord3(k.nd),null,'#39'0'#39',scott.utils.f_ord3(k.nd)), decode(a.psch,8,1' +
+        ', 9,1, 0)')
     Optimize = False
     Variables.Data = {
       0300000003000000030000003A49440500000005000000303031200000000000
@@ -397,8 +397,8 @@ object Form_find_adr: TForm_find_adr
       'and (nvl(:p_var,0)=0 or tp.cd='#39'LSK_TP_MAIN'#39')'
       'and (nvl(:p_var2,0)=0 or k.psch not in (8,9))'
       
-        'order by scott.utils.f_ord_digit(k.kw), scott.utils.f_ord3(k.kw)' +
-        ' desc, tp.npp')
+        'order by scott.utils.f_ord_digit(k.kw), coalesce(scott.utils.f_o' +
+        'rd3(k.kw),null,'#39'0'#39',scott.utils.f_ord3(k.kw)), tp.npp')
     Optimize = False
     Variables.Data = {
       0300000003000000090000003A484F5553455F49440300000000000000000000
