@@ -31,7 +31,6 @@ type
 
 function FF(form_str_: string; show_: Integer): Integer; //FindForm
 function exp_to_dbf(dset: TDataSet; dbfname_: string): Integer;
-//function exp_to_dbf(dset: TOracleDataSet; dbfname_: string): Integer;
 function exp_to_dbf_prec(dset: TOracleDataset; aTable, aSchema, aDbfname:
   string): Integer;
 procedure msg2(str1: string; str2: string; Flags_: Longint);
@@ -317,12 +316,12 @@ begin
 
 end;
 
+// функция определения прав на выполнение процедуры базы
+// используется для определения админских прав
 function have_rights(str_: string): Integer;
 var
   err_: Integer;
 begin
-  //функция определения прав на выполнение процедуры базы
-  //используется для определения админских прав
   err_ := 0;
   try
     if str_ <> '' then
@@ -333,6 +332,23 @@ begin
   end;
   Result := err_;
 end;
+
+
+// проверка на доступ к элементам базы
+function isaccess(str1: string): Integer;
+var
+  i: Integer;
+begin
+  i := 1;
+  try
+    DataModule1.OraclePackage1.CallProcedure
+      (str1, [parNone]);
+  except
+    i := 0;
+  end;
+  Result := i;
+end;
+
 
 procedure LockControl(c: TWinControl; bLock: Boolean);
 begin
@@ -679,21 +695,6 @@ begin
   msg2('Not found column ' + UpperCase(ColName), 'Внимание!', MB_OK +
     MB_ICONERROR);
   //    Result := -1;
-end;
-
-function isaccess(str1: string): Integer;
-var
-  i: Integer;
-begin
-  //проверка на доступ к элементам базы
-  i := 1;
-  try
-    DataModule1.OraclePackage1.CallProcedure
-      (str1, [parNone]);
-  except
-    i := 0;
-  end;
-  Result := i;
 end;
 
 function MAKELANGID(p: DWORD; s: DWORD): LANGID;

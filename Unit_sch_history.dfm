@@ -1,6 +1,6 @@
 object Form_sch_history: TForm_sch_history
-  Left = 337
-  Top = 176
+  Left = 890
+  Top = 201
   Width = 963
   Height = 380
   Caption = #1048#1089#1090#1086#1088#1080#1103' '#1074#1074#1086#1076#1072' '#1087#1086#1082#1072#1079#1072#1085#1080#1081' '#1089#1095#1077#1090#1095#1080#1082#1086#1074
@@ -94,7 +94,7 @@ object Form_sch_history: TForm_sch_history
     Top = 0
     Width = 947
     Height = 341
-    ActivePage = TabSheet1
+    ActivePage = ts1
     Align = alClient
     TabOrder = 0
     object TabSheet1: TTabSheet
@@ -306,7 +306,7 @@ object Form_sch_history: TForm_sch_history
           Height = 102
           Align = alClient
           TabOrder = 0
-          Properties.ActivePage = cxTabSheet1
+          Properties.ActivePage = cxTabSheet2
           Properties.CustomButtons.Buttons = <>
           ClientRectBottom = 98
           ClientRectLeft = 4
@@ -625,8 +625,8 @@ object Form_sch_history: TForm_sch_history
       object cxGrid1: TcxGrid
         Left = 0
         Top = 0
-        Width = 932
-        Height = 355
+        Width = 939
+        Height = 313
         Align = alClient
         TabOrder = 0
         object cxGridDBTableView1: TcxGridDBTableView

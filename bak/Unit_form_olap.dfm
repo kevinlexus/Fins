@@ -1,10 +1,10 @@
 object Form_olap: TForm_olap
-  Left = 631
-  Top = 181
+  Left = 755
+  Top = 170
   AutoScroll = False
   Caption = 'OLAP'
-  ClientHeight = 739
-  ClientWidth = 951
+  ClientHeight = 743
+  ClientWidth = 1078
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -93,16 +93,16 @@ object Form_olap: TForm_olap
   PixelsPerInch = 96
   TextHeight = 13
   object cxGrid1: TcxGrid
-    Left = 200
-    Top = 240
-    Width = 488
-    Height = 313
-    Align = alCustom
+    Left = 101
+    Top = 123
+    Width = 977
+    Height = 530
+    Align = alClient
     TabOrder = 6
     Visible = False
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
-      DataController.DataSource = Form_tree_objects.DS_data
+      DataController.DataSource = DM_Olap.DS_data
       DataController.Summary.DefaultGroupSummaryItems = <>
       DataController.Summary.FooterSummaryItems = <>
       DataController.Summary.SummaryGroups = <>
@@ -115,7 +115,7 @@ object Form_olap: TForm_olap
     Left = 0
     Top = 123
     Width = 101
-    Height = 526
+    Height = 530
     CheckOrder = True
     ItemWidth = 80
     ItemHeight = 21
@@ -128,6 +128,7 @@ object Form_olap: TForm_olap
     DropDownFont.Style = []
     DropDownAutoExpand = True
     Floating = False
+    OnDropDown = PVRowToolBar1DropDown
     ItemSettings.Color = clBtnFace
     ItemSettings.Font.Charset = DEFAULT_CHARSET
     ItemSettings.Font.Color = clWindowText
@@ -155,6 +156,7 @@ object Form_olap: TForm_olap
     Chink = 4
     Caption = 'PVRowToolBar1'
     TabOrder = 2
+    OnDragDrop = PVRowToolBar1DragDrop
     Align = alLeft
     MultiLine = False
     MaxLineCount = 2
@@ -163,7 +165,7 @@ object Form_olap: TForm_olap
   object PVColToolBar1: TPVColToolBar
     Left = 0
     Top = 81
-    Width = 951
+    Width = 1078
     Height = 42
     CheckOrder = True
     ItemWidth = 80
@@ -177,6 +179,7 @@ object Form_olap: TForm_olap
     DropDownFont.Style = []
     DropDownAutoExpand = True
     Floating = False
+    OnDropDown = PVColToolBar1DropDown
     ItemSettings.Color = clBtnFace
     ItemSettings.Font.Charset = DEFAULT_CHARSET
     ItemSettings.Font.Color = clWindowText
@@ -204,6 +207,7 @@ object Form_olap: TForm_olap
     Chink = 4
     Caption = #1057#1090#1086#1083#1073#1094#1099
     TabOrder = 1
+    OnDragDrop = PVColToolBar1DragDrop
     Align = alTop
     MultiLine = False
     MaxLineCount = 2
@@ -211,18 +215,18 @@ object Form_olap: TForm_olap
   end
   object GroupBox1: TGroupBox
     Left = 0
-    Top = 691
-    Width = 951
+    Top = 695
+    Width = 1078
     Height = 48
     Align = alBottom
     Anchors = []
     DockSite = True
     TabOrder = 5
     DesignSize = (
-      951
+      1078
       48)
     object Button3: TButton
-      Left = 756
+      Left = 883
       Top = 16
       Width = 75
       Height = 25
@@ -235,7 +239,7 @@ object Form_olap: TForm_olap
       OnClick = Button3Click
     end
     object Button1: TButton
-      Left = 868
+      Left = 995
       Top = 16
       Width = 75
       Height = 25
@@ -286,7 +290,7 @@ object Form_olap: TForm_olap
       Visible = False
     end
     object btn2: TButton
-      Left = 432
+      Left = 559
       Top = 15
       Width = 113
       Height = 25
@@ -299,7 +303,7 @@ object Form_olap: TForm_olap
       OnClick = btn2Click
     end
     object btn3: TButton
-      Left = 304
+      Left = 431
       Top = 15
       Width = 121
       Height = 25
@@ -312,7 +316,7 @@ object Form_olap: TForm_olap
       OnClick = btn3Click
     end
     object btn4: TButton
-      Left = 552
+      Left = 679
       Top = 15
       Width = 113
       Height = 25
@@ -324,12 +328,32 @@ object Form_olap: TForm_olap
       Visible = False
       OnClick = btn4Click
     end
+    object chk2: TCheckBox
+      Left = 312
+      Top = 16
+      Width = 121
+      Height = 17
+      Caption = #1042' '#1090'.'#1095'. '#1087#1091#1089#1090#1099#1077' '#1045#1051#1057
+      TabOrder = 7
+      Visible = False
+    end
+    object cxComboBox1: TcxComboBox
+      Left = 184
+      Top = 16
+      Properties.Items.Strings = (
+        #1054#1089#1085#1086#1074#1085#1099#1077
+        #1056#1057#1054
+        #1050#1072#1087#1088#1077#1084#1086#1085#1090)
+      TabOrder = 8
+      Text = #1054#1089#1085#1086#1074#1085#1099#1077
+      Width = 121
+    end
   end
   object PivotGrid1: TPivotGrid
     Left = 101
     Top = 123
-    Width = 850
-    Height = 526
+    Width = 977
+    Height = 530
     MinColWidth = 40
     MaxColWidth = 300
     MinRowHeight = 18
@@ -504,11 +528,21 @@ object Form_olap: TForm_olap
     Settings.PrintSettings.PageNumber = True
     Settings.PrintSettings.DateTime = True
     ExtraViewInExport = False
+    object cxm1: TcxMemo
+      Left = 224
+      Top = 424
+      Lines.Strings = (
+        'cxm1')
+      TabOrder = 2
+      Visible = False
+      Height = 81
+      Width = 561
+    end
   end
   object PVDimToolBar1: TPVDimToolBar
     Left = 0
     Top = 0
-    Width = 951
+    Width = 1078
     Height = 81
     CheckOrder = False
     ItemWidth = 100
@@ -522,6 +556,7 @@ object Form_olap: TForm_olap
     DropDownFont.Style = []
     DropDownAutoExpand = True
     Floating = False
+    OnDropDown = PVDimToolBar1DropDown
     ItemSettings.Color = clBackground
     ItemSettings.Font.Charset = DEFAULT_CHARSET
     ItemSettings.Font.Color = clWhite
@@ -549,6 +584,7 @@ object Form_olap: TForm_olap
     Chink = 4
     Caption = #1060#1080#1083#1100#1090#1088
     TabOrder = 0
+    OnDragDrop = PVDimToolBar1DragDrop
     Align = alTop
     MultiLine = True
     MaxLineCount = 2
@@ -556,8 +592,8 @@ object Form_olap: TForm_olap
   end
   object PVMeasureToolBar1: TPVMeasureToolBar
     Left = 0
-    Top = 649
-    Width = 951
+    Top = 653
+    Width = 1078
     Height = 42
     CheckOrder = True
     ItemWidth = 80
@@ -612,782 +648,6 @@ object Form_olap: TForm_olap
     TabOrder = 7
     Visible = False
   end
-  object cxm1: TcxMemo
-    Left = 101
-    Top = 123
-    Align = alClient
-    Properties.ScrollBars = ssBoth
-    TabOrder = 8
-    Visible = False
-    Height = 526
-    Width = 850
-  end
-  object PivotMap13: TPivotMap
-    Cube = PivotCube13
-    Columns = <>
-    Rows = <
-      item
-        Name = 'PREDPR'
-      end
-      item
-        Name = 'REU'
-      end
-      item
-        Name = 'PSCH'
-      end
-      item
-        Name = 'SCH'
-      end
-      item
-        Name = 'NM'
-      end
-      item
-        Name = 'ORGNAME'
-      end>
-    HideEmptyRows = True
-    HideEmptyColumns = True
-    TableMode = True
-    DDirection = True
-    AutoSaveMap = False
-    AutoExpand = True
-    Left = 64
-    Top = 136
-  end
-  object PivotCube13: TPivotCube
-    FactTableDataSet = Form_tree_objects.OD_data
-    Dimensions = <
-      item
-        Enabled = True
-        AliasName = 'LSK'
-        FieldName = 'LSK'
-        DataSet = Form_tree_objects.OD_data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1051#1080#1094'.'#1089#1095'.'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'PREDPR'
-        FieldName = 'TREST'
-        DataSet = Form_tree_objects.OD_trest_olap
-        KeyField = 'TREST'
-        LookupField = 'NAME_TR'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1060#1086#1085#1076
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'REU'
-        FieldName = 'REU'
-        DataSet = Form_tree_objects.OD_reu_olap
-        KeyField = 'REU'
-        LookupField = 'NAME_REU'
-        WrapTo = wt_None
-        Sorting = dmtKeySort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1046#1069#1054
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'PREDPR_DET'
-        FieldName = 'PREDPR_DET'
-        DataSet = Form_tree_objects.OD_data
-        KeyField = 'PREDPR_DET'
-        LookupField = 'PREDPR_DET'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1040#1076#1088'.'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'ORGNAME'
-        FieldName = 'ORG'
-        DataSet = Form_tree_objects.OD_org_olap
-        KeyField = 'ID'
-        LookupField = 'NAME'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'ORGMAIN'
-        FieldName = 'FK_ORG2'
-        DataSet = Form_tree_objects.OD_org2_olap
-        KeyField = 'ID'
-        LookupField = 'NAME'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1043#1083#1072#1074#1085#1072#1103' '#1086#1088#1075'.'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'NM'
-        FieldName = 'USL'
-        DataSet = Form_tree_objects.OD_usl_olap
-        KeyField = 'USL'
-        LookupField = 'NM'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1059#1089#1083#1091#1075#1072' '#1076#1077#1090'.'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'NM1'
-        FieldName = 'USLM'
-        DataSet = Form_tree_objects.OD_uslm_olap
-        KeyField = 'USLM'
-        LookupField = 'NM1'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1059#1089#1083#1091#1075#1072
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'STATUS'
-        FieldName = 'STATUS'
-        DataSet = Form_tree_objects.OD_status_olap
-        KeyField = 'ID'
-        LookupField = 'NAME'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1057#1090#1072#1090#1091#1089
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'PSCH'
-        FieldName = 'PSCH'
-        DataSet = Form_tree_objects.OD_psch_olap
-        KeyField = 'ID'
-        LookupField = 'NAME'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1055#1088#1080#1079#1085#1072#1082
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'IS_EMPT'
-        FieldName = 'IS_EMPT'
-        DataSet = Form_tree_objects.OD_data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1055#1091#1089#1090#1072#1103'?'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'SCH'
-        FieldName = 'SCH'
-        DataSet = Form_tree_objects.OD_sch_olap
-        KeyField = 'ID'
-        LookupField = 'NAME'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1058#1080#1087
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'VAL_GROUP'
-        FieldName = 'VAL_GROUP'
-        DataSet = Form_tree_objects.OD_data
-        KeyField = 'VAL_GROUP'
-        LookupField = 'VAL_GROUP'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1050#1086#1101#1092#1092
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'VAL_GROUP2'
-        FieldName = 'VAL_GROUP2'
-        DataSet = Form_tree_objects.OD_data
-        KeyField = 'VAL_GROUP2'
-        LookupField = 'VAL_GROUP2'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1053#1086#1088#1084#1072#1090#1080#1074
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'UCH'
-        FieldName = 'UCH'
-        DataSet = Form_tree_objects.OD_data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1050#1086#1090#1077#1083#1100#1085#1072#1103
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'MG1'
-        FieldName = 'MG1'
-        DataSet = Form_tree_objects.OD_data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1055#1077#1088#1080#1086#1076
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'FIO'
-        FieldName = 'FIO'
-        DataSet = Form_tree_objects.OD_data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1060#1048#1054
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'NAME_GR'
-        FieldName = 'NAME_GR'
-        DataSet = Form_tree_objects.OD_data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1059#1095#1072#1089#1090#1086#1082
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'ODPU_EX'
-        FieldName = 'ODPU_EX'
-        DataSet = Form_tree_objects.OD_data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1054#1044#1055#1059
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'LSK_TP'
-        FieldName = 'LSK_TP'
-        DataSet = Form_tree_objects.OD_data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1058#1080#1087' '#1089#1095#1077#1090#1072
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'IS_VOL'
-        FieldName = 'IS_VOL'
-        DataSet = Form_tree_objects.OD_data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1054#1073#1098#1077#1084'?'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end>
-    LNG.Strings = (
-      'RowTotalName='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1056#1054#1050#1040#1052
-      'ColumnTotalName='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1054#1051#1041#1062#1040#1052
-      'PanelRowsCaption='#1057#1090#1088#1086#1082#1072
-      'PanelColumnsCaption='#1057#1090#1086#1083#1073#1077#1094
-      'PanelDimsCaption='#1060#1080#1083#1100#1090#1088
-      'CustomFilter='#1060#1080#1083#1100#1090#1088
-      
-        'pvToolBarCollapseError=Could not collapse TOOLBAR without border' +
-        ' alignment'
-      
-        'pvToolBarTreeFilterWarn=Cannot use incremental filtering on hier' +
-        'arhical dimensions!'
-      'pvToolBarNoFilter='#1053#1077#1090' '#1092#1080#1083#1100#1090#1088#1072
-      'pvToolBarCustomFilter='#1048#1089#1087#1086#1083#1100#1079'.'#1092#1080#1083#1100#1090#1088
-      'pvCubeErr1=Could not load dimension data!'
-      'pvCubeErr2=Could not load measure data!'
-      'pvCubeErr3=: You must specify dataset for dimension!'
-      
-        'pvCubeErr4=Could not load dimension items! Dimension: %s  Dimens' +
-        'ion item: %s'
-      'pvCubeErr5=Could not start building cube! Unknown error'
-      
-        'pvCubeErr6=You must set appropriate EventHandler for custom wrap' +
-        'ped dimensions! : %s'
-      'pvCubeErr7=You must set FactTableDataSet property!'
-      'pvCubeErr8=You must set at least ONE measure'
-      'pvCubeErr9=You must set at least ONE dimension'
-      'pvMapErr1='#1054#1096#1080#1073#1086#1095#1085#1099#1081' '#1080#1085#1076#1077#1082#1089
-      'pvMapErr2='#1054#1076#1085#1086' '#1080#1079#1084#1077#1088#1077#1085#1080#1077' '#1076#1086#1083#1078#1085#1086' '#1073#1099#1090#1100' '#1074#1080#1076#1080#1084#1099#1084'!'
-      'pvGridExcel0=Export note'
-      
-        'pvGridExcel1=Number of columns more than 256. Only first 255 col' +
-        'umns will be exported!'
-      'pvGridExcel2=Number of columns must be more than 0!'
-      'pvGridExcel3=Number of rows must be more than 0!'
-      
-        'pvGridExcel4=Could not export data to Excel! Check your MS Excel' +
-        ' installation'
-      'pvAMFAddMeasureForm=Calculated measures manager'
-      'pvAMFAddMeasureBtn='#1044#1086#1073#1072#1074#1080#1090#1100' '#1085#1086#1074#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFEditMeasureBtn='#1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1080#1084#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFDelMeasureBtn='#1059#1076#1072#1083#1080#1090#1100' '#1087#1086#1076#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFCalcLabel='#1055#1086#1076#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFCalcEditLabel='#1048#1089#1087#1086#1083#1100#1079#1091#1077#1084#1072#1103' '#1092#1086#1088#1084#1091#1083#1072
-      'pvAMFMeasureLabel='#1048#1084#1077#1102#1097#1080#1077#1089#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFViewsLabel='#1048#1084#1077#1102#1097#1080#1077#1089#1103' '#1082#1091#1088#1089#1086#1088#1099
-      'pvAMFCheckBtn='#1055#1088#1086#1074#1077#1088#1100#1090#1077' '#1092#1086#1088#1084#1091#1083#1091
-      'pvAMFSynaxError='#1057#1080#1085#1090#1072#1082#1089#1080#1095#1077#1089#1082#1072#1103' '#1086#1096#1080#1073#1082#1072
-      'pvAMFFormulaError=: '#1054#1096#1080#1073#1082#1072' '#1074' '#1092#1086#1088#1084#1091#1083#1077
-      'pvAMFDuplicateError='#1044#1091#1073#1083#1080#1088#1091#1077#1097#1077#1077#1089#1103' '#1080#1084#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFCheckOKName='#1054#1090#1084#1077#1095#1077#1085#1086'!'
-      'pvToolBarDDOKBtnHint='#1055#1088#1080#1085#1103#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
-      'pvToolBarDDCancelBtnHint='#1054#1090#1084#1077#1085#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
-      'pvToolBarDDFillBtnHint='#1042#1099#1076#1077#1083#1080#1090#1100' '#1074#1089#1077
-      'pvToolBarDDClearBtnHint='#1054#1090#1084#1077#1085#1080#1090#1100' '#1074#1089#1077
-      'pvToolBarDDRevertBtnHint='#1048#1085#1074#1077#1088#1090#1080#1088#1086#1074#1072#1090#1100
-      'pvToolBarDDExpandBtnHint='#1056#1072#1079#1074#1077#1088#1085#1091#1090#1100' '#1074#1089#1077' '#1074#1077#1090#1082#1080
-      'pvMapValueName='#1047#1085#1072#1095#1077#1085#1080#1077
-      'pvMapRowPercentName='#1055#1088#1086#1094#1077#1085#1090' '#1087#1086' '#1057#1090#1088#1086#1082#1072#1084
-      'pvMapColPercentName='#1055#1088#1086#1094#1077#1085#1090' '#1087#1086' '#1057#1090#1086#1083#1073#1094#1072#1084
-      'pvMapRecordCountName='#1050#1086#1083'-'#1074#1086
-      'pvMapRankName='#1056#1072#1085#1075'['#1057#1090#1086#1083#1073#1077#1094']'
-      'pvMapRankRName='#1056#1072#1085#1075'['#1057#1090#1088#1086#1082#1072']'
-      'pvMapSubPrevCName='#1056#1072#1079#1085#1080#1094#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1080#1084' '#1057#1090#1086#1083#1073#1094#1086#1084
-      'pvMapSubPrevRName='#1056#1072#1079#1085#1080#1094#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1077#1081' '#1057#1090#1088#1086#1082#1086#1081
-      'pvMapAddPrevCName='#1057#1091#1084#1084#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1080#1084' '#1057#1090#1086#1083#1073#1094#1086#1084
-      'pvMapAddPrevRName='#1057#1091#1084#1084#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1077#1081' '#1057#1090#1088#1086#1082#1086#1081
-      'pvMapRunningTotalName1='#1053#1072#1088#1072#1089#1090#1072#1102#1097#1077#1081' '#1048#1090#1086#1075' '#1087#1086' '#1057#1090#1086#1083#1073#1094#1091
-      'pvMapRunningTotalName2='#1053#1072#1088#1072#1089#1090#1072#1102#1097#1077#1081' '#1048#1090#1086#1075' '#1087#1086' '#1057#1090#1088#1086#1082#1077
-      'pvBtnHintAccept='#1055#1086#1076#1090#1074#1077#1088#1076#1080#1090#1100
-      'pvBtnHintCancel='#1054#1090#1084#1077#1085#1080#1090#1100
-      'pvBtnHintExpandTree='#1056#1072#1079#1074#1077#1088#1085#1091#1090#1100'/'#1057#1074#1077#1088#1085#1091#1090#1100' '#1074#1077#1090#1082#1080
-      'pvBtnHintCalcMeasureDialog='#1042#1082#1083'. '#1076#1080#1072#1083#1086#1075' '#1056#1072#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1075#1086' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintMeasureFillEnable='#1042#1099#1076#1077#1083#1080#1090#1100' '#1074#1089#1077
-      'pvBtnHintMeasureFillDisable='#1054#1090#1084#1077#1090#1080#1090#1100' '#1074#1089#1077
-      'pvBtnHintMeasureRevert='#1055#1077#1088#1077#1082#1083#1102#1095#1080#1090#1100' '#1089#1086#1089#1090#1086#1103#1085#1080#1077' '#1077#1076'.'#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimFillActive='#1042#1080#1076#1080#1084#1099' '#1074#1089#1077' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintDimFillHided='#1053#1077' '#1074#1080#1076#1080#1084#1099' '#1074#1089#1077' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintDimFillFiltered='#1060#1080#1083#1100#1090#1088#1086#1074#1072#1090#1100' '#1074#1089#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimRevert='#1062#1080#1082#1083#1080#1095#1085#1099#1081' '#1089#1076#1074#1080#1075' '#1089#1086#1089#1090#1086#1103#1085#1080#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimAddGroup='#1044#1086#1073#1072#1074#1080#1090#1100' '#1080#1077#1088#1072#1088#1093#1080#1095#1077#1089#1082#1091#1102' '#1075#1088#1091#1087#1087#1091
-      'pvBtnHintDimDelGroup='#1059#1076#1072#1083#1080#1090#1100' '#1080#1077#1088#1072#1088#1093#1080#1095#1077#1089#1082#1091#1102' '#1075#1088#1091#1087#1087#1091
-      'mbFormCaption='#1055#1086#1089#1090#1088#1086#1080#1090#1077#1083#1100' '#1079#1072#1087#1088#1086#1089#1072
-      'mbRowsCaption='#1057#1090#1088#1086#1082#1080
-      'mbColumnsCaption='#1057#1090#1086#1083#1073#1094#1099
-      'mbDimsCaption='#1048#1079#1084#1077#1088#1077#1085#1080#1103
-      'mbDisabledDimsCaption='#1053#1077#1072#1082#1090#1080#1074#1085#1099#1077' '#1048#1079#1084#1077#1088#1077#1085#1080#1103
-      
-        'mbRunEditBtnHint='#1054#1090#1082#1088#1099#1090#1100' '#1088#1077#1076#1072#1082#1090#1086#1088' '#1080#1079#1084#1077#1088#1077#1085#1080#1081' '#1076#1083#1103' '#1074#1099#1073#1088#1072#1085#1085#1099#1093' '#1080#1079#1084#1077#1088#1077 +
-        #1085#1080#1081
-      
-        'mbTreeViewHint=Drag'#39'n'#39'Drop dimension lable to choosen group. Dbl' +
-        '-click to run dimension editor'
-      'DimensionFormCaption='#1056#1077#1076#1072#1082#1090#1086#1088' '#1048#1079#1084#1077#1088#1077#1085#1080#1081' :'
-      'dimDisplayName='#1047#1072#1075#1086#1083#1086#1074#1086#1082
-      'dimCount='#1050#1086#1083'-'#1074#1086' '#1086#1073#1098#1077#1082#1090#1086#1074
-      'dimSOrtBtn='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072
-      'dimSortBtnHint='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072
-      'dimActiveItems='#1040#1082#1090#1080#1074#1085#1099#1077' '#1086#1073#1098#1077#1082#1090#1099
-      'dimInActiveItems='#1061#1088#1072#1085#1080#1083#1080#1097#1077'('#1085#1077' '#1072#1082#1090#1080#1074#1085#1099#1077' '#1086#1073#1098#1077#1082#1090#1099')'
-      'dimFilterError='#1050#1072#1082' '#1084#1080#1085#1080#1084#1091#1084' '#1086#1076#1085#1086' '#1080#1079#1084#1077#1088#1077#1085#1080#1077' '#1076#1086#1083#1078#1085#1086' '#1073#1099#1090#1100' '#1072#1082#1090#1080#1074#1085#1099#1084'!'
-      'dimSearch='#1053#1072#1081#1090#1080
-      
-        'dimTVHint=Drag'#39'n'#39'drop selected item(s) to group or repository ar' +
-        'ea'
-      'dimSortByName='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072' '#1087#1086' '#1080#1084#1077#1085#1080
-      'dimSortByKey='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072' '#1087#1086' '#1082#1083#1102#1095#1091
-      'dimNoSort='#1041#1077#1079' '#1089#1086#1088#1090#1080#1088#1086#1074#1082#1080
-      'dimSortAscending='#1055#1086' '#1074#1086#1079#1088#1072#1089#1090#1072#1102#1097#1077#1081
-      'dimSortDescending='#1055#1086' '#1091#1073#1099#1074#1072#1102#1097#1077#1081
-      'dimForecastingCB1=Enable prev. forecast value'
-      'dimForecastingCB2=Enable next. forecast value'
-      'dimForecastingType=Forecasting method'
-      'dimForecastingMethod1=Simple moving average'
-      'dimForecastingMethod2=Weighted Moving Average'
-      'dimForecastingMethod3=Double Exponential Smoothing'
-      'dimForecastingMethod4=Triple Exponential Smoothing'
-      'dimForecastingMethod5=Show Data Margins Only'
-      'dimForecastingMethod6=Show First and Last members'
-      'MeasureCommonFormCaption='#1055#1086#1089#1090#1088#1086#1080#1090#1077#1083#1100' '#1079#1085#1072#1095#1077#1085#1080#1081
-      'MFormatBtnName=Build format'
-      'MFormatFormCaption=Build format string'
-      'pvMapMVFmt0=Change measure type'
-      'pvMapMVFmt1=Cell'
-      'pvMapMVFmt2=Percent by Column'
-      'pvMapMVFmt3=Percent by Row'
-      'pvMapMVFmt4=Record count'
-      'pvMapMVFmt5=Rank by Column'
-      'pvMapMVFmt6=Rank by Row'
-      'pvMapMVFmt7=Previous member by Row'
-      'pvMapMVFmt8=Next member by Row'
-      'pvMapMVFmt9=Previous member by Column'
-      'pvMapMVFmt10=Next member by Column'
-      'pvMapMVFmt11=Running Total by Column'
-      'pvMapMVFmt12=Running Total by Row'
-      'pmMapMVOp1=Value'
-      'pmMapMVOp2=Subtract'
-      'pmMapMVOp3=Add'
-      'pmMapMVOp4=Divide'
-      'pmMapMVOp5=Multiply'
-      'pvMeasureCommon5=Min. value'
-      'pvMeasureCommon6=Max. value'
-      'pvMeasureCommon9=Value'
-      'pvMeasureCommon10=Operation'
-      'pvMeasureCommon11=Only one measure visible'
-      'pvMeasureCommon12=Value representation'
-      'pvMeasureCommon13=Filters'
-      'pvMeasureCommon14=Filter by Map cells'
-      'pvMeasureCommon15=Filter by fact table records'
-      'pvMeasureCommon16=Measure formating'
-      'pvMeasureCommon17=Formula (is calculated measure)'
-      'pvMeasureCommon18=Enabled'
-      'pvMeasureCommon19=Running Total by Column'
-      'pvMeasureCommon20=Running Total by Row'
-      'pvMeasureCommon21=Display caption'
-      'MeasureFilterError= Measure filter error'
-      'mfeWrongValue=Wrong value in  measure filter:'
-      'MeasureCommonFormDistinctName=Distinct'
-      'pvgSearchFormCaption=Search'
-      'pvgSearchArea=Search area'
-      'pvgSearchRow=Row header'
-      'pvgSearchCol=Column header'
-      'pvgSearchText=Text for search'
-      'pvgSearch1=Next'
-      'pvgSearch2=Forward'
-      'pvgSearch3=Case sensitive'
-      'pvgSearchBtn=Find again'
-      'pvgSearchFinish=Cannot find more'
-      'uHtmBuildHeaders=building headers...'
-      'uHtmPreparing=prepearing...'
-      'uHtmColTotal='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1054#1051#1041#1062#1040#1052
-      'uHtmRowTotal='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1056#1054#1050#1040#1052
-      'uHtmExportColHeader=exporting column headers...'
-      
-        'uHtmExportCells=exporting row headers, cell values and row total' +
-        's...'
-      'uHtmExportColTotal=exporting column totals...'
-      'uHtmSave=saving and executing...'
-      'uHtmLabel=Action...'
-      'ChartDDRows='#1057#1090#1088#1086#1082#1080
-      'ChartDDColumns='#1057#1090#1086#1083#1073#1094#1099
-      'ddChartViews=Views'
-      'ddChartLegend='#1051#1077#1075#1077#1085#1076#1072
-      'ddChartMarks=Marks'
-      'ChartXNextPage=Next page'
-      'ChartXPrevPage=Prev. page'
-      'CubeButtonCaption=Cube'
-      'ChartButtonCaption=Chart'
-      'pvGridSubTotal=Subtotal'
-      'pvGridSubTotalwName=Sub-total by '
-      'MFormatCount=3'
-      'MFormatName0=Generic'
-      'MFormatValue0=#0.00'
-      'MFormatName1=Price (US)'
-      'MFormatValue1=$ #0.00'
-      'MFormatName2=Summa'
-      'MFormatValue2=# ##0.00'
-      'MFormatCap1=Predefined formats'
-      'MFormatCap2=Format string'
-      'MFormatCap3=Number of decimals'
-      'MFormatCap4=Before'
-      'MFormatCap5=After'
-      'MFormatCap6=Design'
-      'MFormatCap7=Symbol'
-      'MFormatCap8=Example'
-      'MFormatCap9=Thousand separator'
-      'uXLSActionLabel=Action'
-      'uXLSAction1=Prepearing basic fonts'
-      'uXLSAction2=Prepearing basic formats'
-      'uXLSAction3=Applying row totals headers merging'
-      'uXLSAction4=Applying cells format'
-      'uXLSAction5=Applying columns headers merging'
-      'uXLSAction6=Applying rows headers merging'
-      'uXLSAction7=Applying column totals headers merging'
-      'uXLSAction8=Applying auto width for columns'
-      'uXLActionLabel=Action'
-      'uXLAction1=Prepearing cells array'
-      'uXLAction2=Prepearing column headers'
-      'uXLAction3=Processing'
-      'uXLAction4=Merging column headers'
-      'uXLAction5=Merging row headers'
-      'uXLAction6=Merging row total headers'
-      'uXLAction7=Applying cells format'
-      'pvGridPrint1=Print All'
-      'pvGridPrint2=Print selected'
-      'pvGridPrint3=Right click to scale menu'
-      'uXLSActionLabel2=Action progress'
-      'uXLSActionLabel2=Full progress'
-      'uHtmLabel2=Action progress'
-      'uHtmLabel3=Full progress'
-      'pvGridEditor1=Table'
-      'pvGridEditor2=Chart'
-      'pvGridEditor3=Method'
-      'pvGridEditor4=Summa'
-      'pvGridEditor5=Count'
-      'pvGridEditor6=Average'
-      'pvGridEditor7=Equal'
-      'pvGridEditor8=Proportional'
-      'pvGridPrint4=Print preview'
-      'pvGridPrint5=Scale page'
-      'pvGridPrint6=Scale print'
-      'pvGridPrint7=Fit page'
-      'pvGridPrint8=Fit width'
-      'pvGridPrint9=Fit height'
-      'pvGridPrint10=50%'
-      'pvGridPrint11=100%'
-      'pvGridPrint12=200%'
-      'pvGridPrint13=400%'
-      'pvGridPrintLocked=Process locked! Please wait....')
-    Measures = <
-      item
-        AliasName = 'CNT'
-        FieldName = 'CNT'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '#######0.000'
-        DisplayName = #1050#1086#1083'-'#1074#1086' ('#1045#1076'.)'
-      end
-      item
-        AliasName = 'OPL'
-        FieldName = 'OPL'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1055#1083#1086#1097#1072#1076#1100
-      end
-      item
-        AliasName = 'CHNG_VOL'
-        FieldName = 'CHNG_VOL'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1055#1077#1088#1077#1088#1072#1089#1095#1077#1090
-      end
-      item
-        AliasName = 'KLSK'
-        FieldName = 'KLSK'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1082#1086#1083'-'#1074#1086' '#1051'/'#1057
-      end
-      item
-        AliasName = 'KPR'
-        FieldName = 'KPR'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1055#1088#1086#1078#1080#1074'. '#1074' '#1090'.'#1095'. '#1042'.'#1054'.'
-      end
-      item
-        AliasName = 'KPR_OT'
-        FieldName = 'KPR_OT'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1042#1088'.'#1086#1090#1089#1091#1090'.'
-      end
-      item
-        AliasName = 'KPR_WR'
-        FieldName = 'KPR_WR'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1042#1088'.'#1079#1072#1088#1077#1075'.'
-      end
-      item
-        AliasName = 'CNT_LG'
-        FieldName = 'CNT_LG'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1051#1100#1075#1086#1090#1085#1080#1082#1086#1074
-      end
-      item
-        AliasName = 'CNT_SUBS'
-        FieldName = 'CNT_SUBS'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1055#1086#1083#1100#1079'.'#1089#1091#1073#1089#1080#1076'.('#1051'/'#1057')'
-      end
-      item
-        AliasName = 'CNT_ROOM'
-        FieldName = 'CNT_ROOM'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1050#1086#1084#1085#1072#1090
-      end
-      item
-        AliasName = 'ODPU_KUB'
-        FieldName = 'ODPU_KUB'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1054#1044#1055#1059', '#1045#1076'.'
-      end
-      item
-        AliasName = 'KUB_DIST'
-        FieldName = 'KUB_DIST'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1053#1086#1088#1084#1072#1090#1080#1074' '#1087#1086' '#1054#1044#1055#1059
-      end
-      item
-        AliasName = 'KUB_FACT_UPNORM'
-        FieldName = 'KUB_FACT_UPNORM'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1056#1072#1079#1085#1080#1094#1072
-      end
-      item
-        AliasName = 'KUB_FACT'
-        FieldName = 'KUB_FACT'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1054#1044#1053
-      end>
-    CubeName = 'test'
-    OptimizeLevel = optNormal
-    ExtendedMode = True
-    AlwaysSaveCounts = False
-    ExcludeZeros = True
-    ClearTimeInfo = True
-    Left = 32
-    Top = 136
-  end
   object PivotMap14: TPivotMap
     Cube = PivotCube14
     Columns = <>
@@ -1429,13 +689,13 @@ object Form_olap: TForm_olap
     Top = 168
   end
   object PivotCube14: TPivotCube
-    FactTableDataSet = Form_tree_objects.OD_data
+    FactTableDataSet = DM_Olap.Uni_Data
     Dimensions = <
       item
         Enabled = True
         AliasName = 'MG1'
         FieldName = 'MG1'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1451,7 +711,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'PREDPR'
         FieldName = 'PREDPR'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1467,7 +727,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'REU'
         FieldName = 'REU'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1483,7 +743,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'PREDPR_DET'
         FieldName = 'PREDPR_DET'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1499,7 +759,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'TYPE'
         FieldName = 'TYPE'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1516,7 +776,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'STATUS'
         FieldName = 'STATUS'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1533,8 +793,8 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'ORG'
         FieldName = 'ORG'
-        DataSet = Form_tree_objects.OD_org_olap
-        KeyField = 'ID'
+        DataSet = DM_Olap.OD_org
+        KeyField = 'kod'
         LookupField = 'NAME'
         WrapTo = wt_None
         Sorting = dmtNoSort
@@ -1552,7 +812,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NAME_GR'
         FieldName = 'NAME_GR'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         KeyField = 'NAME_GR'
         LookupField = 'NAME_GR'
         WrapTo = wt_None
@@ -1570,7 +830,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'LSK'
         FieldName = 'LSK'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1586,7 +846,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'ODPU_EX'
         FieldName = 'ODPU_EX'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1602,7 +862,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'OTHER_NAME'
         FieldName = 'OTHER_NAME'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1618,7 +878,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'VAL_GROUP2'
         FieldName = 'VAL_GROUP2'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -1634,7 +894,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'USL'
         FieldName = 'USL'
-        DataSet = Form_tree_objects.OD_usl_olap
+        DataSet = DM_Olap.OD_usl_olap
         KeyField = 'USL'
         LookupField = 'NM'
         WrapTo = wt_None
@@ -1652,7 +912,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'USLM'
         FieldName = 'USLM'
-        DataSet = Form_tree_objects.OD_uslm_olap
+        DataSet = DM_Olap.OD_uslm_olap
         KeyField = 'USLM'
         LookupField = 'NM1'
         WrapTo = wt_None
@@ -1670,7 +930,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'FK_LSK_TP'
         FieldName = 'FK_LSK_TP'
-        DataSet = Form_tree_objects.OD_lsk_tp_olap
+        DataSet = DM_Olap.Uni_Data
         KeyField = 'ID'
         LookupField = 'NAME'
         WrapTo = wt_None
@@ -1688,7 +948,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'PSCH'
         FieldName = 'PSCH'
-        DataSet = Form_tree_objects.OD_psch_olap
+        DataSet = DM_Olap.OD_psch_olap
         KeyField = 'ID'
         LookupField = 'NAME'
         WrapTo = wt_None
@@ -1706,13 +966,61 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'GRP'
         FieldName = 'GRP'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
         UnknownName = '[UNKNOWN]'
         DescriptionField = 'GRP'
         DisplayName = #1043#1088#1091#1087#1087#1072
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'IsHotPipe'
+        FieldName = 'IsHotPipe'
+        DataSet = DM_Olap.Uni_Data
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1043#1042' '#1048#1079#1086#1083
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'isTowel'
+        FieldName = 'isTowel'
+        DataSet = DM_Olap.Uni_Data
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1055#1086#1083#1086#1090'.'#1089#1091#1096
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'fio'
+        FieldName = 'fio'
+        DataSet = DM_Olap.Uni_Data
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1060'.'#1048'.'#1054'.'
         Forecasting.PrecedingName = '[Preceding]'
         Forecasting.ConsequentName = '[Consequent]'
         Forecasting.Method = dftTripleExponentialSmoothing
@@ -2051,22 +1359,6 @@ object Form_olap: TForm_olap
         DisplayName = #1054#1087#1083#1072#1090#1072
       end
       item
-        AliasName = 'PCHARGES'
-        FieldName = 'PCHARGES'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1055#1077#1085#1103' '#1085#1072#1095#1080#1089#1083'.'
-      end
-      item
-        AliasName = 'PN'
-        FieldName = 'PN'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1055#1077#1085#1103' '#1086#1087#1083#1072#1095'.'
-      end
-      item
         AliasName = 'OUTDEBET'
         FieldName = 'OUTDEBET'
         CalcType = ctSumma
@@ -2081,6 +1373,38 @@ object Form_olap: TForm_olap
         DataType = ftFloat
         FormatString = '########0.00'
         DisplayName = #1048#1089#1093'.'#1050#1088#1077#1076#1080#1090
+      end
+      item
+        AliasName = 'PINSAL'
+        FieldName = 'PINSAL'
+        CalcType = ctSumma
+        DataType = ftFloat
+        FormatString = '########0.00##'
+        DisplayName = #1042#1093'.'#1089#1072#1083'.'#1055#1077#1085#1080
+      end
+      item
+        AliasName = 'PCUR'
+        FieldName = 'PCUR'
+        CalcType = ctSumma
+        DataType = ftFloat
+        FormatString = '########0.00##'
+        DisplayName = #1053#1072#1095#1080#1089#1083'.'#1055#1077#1085#1080
+      end
+      item
+        AliasName = 'PN'
+        FieldName = 'PN'
+        CalcType = ctSumma
+        DataType = ftFloat
+        FormatString = '########0.00'
+        DisplayName = #1054#1087#1083#1072#1095'.'#1055#1077#1085#1080
+      end
+      item
+        AliasName = 'POUTSAL'
+        FieldName = 'POUTSAL'
+        CalcType = ctSumma
+        DataType = ftFloat
+        FormatString = '########0.00'
+        DisplayName = #1048#1089#1093'.'#1089#1072#1083'.'#1055#1077#1085#1080
       end>
     CubeName = 'test'
     OptimizeLevel = optNormal
@@ -2092,13 +1416,13 @@ object Form_olap: TForm_olap
     Top = 168
   end
   object PivotCube54: TPivotCube
-    FactTableDataSet = Form_tree_objects.OD_data
+    FactTableDataSet = DM_Olap.Uni_Data
     Dimensions = <
       item
         Enabled = True
         AliasName = 'LSK'
         FieldName = 'LSK'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         KeyField = 'LSK'
         LookupField = 'LSK'
         WrapTo = wt_None
@@ -2116,7 +1440,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NAME_TR'
         FieldName = 'NAME_TR'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2132,7 +1456,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NAME_REU'
         FieldName = 'NAME_REU'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2148,7 +1472,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'ADR'
         FieldName = 'ADR'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         KeyField = 'ADR'
         LookupField = 'ADR'
         WrapTo = wt_None
@@ -2166,7 +1490,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'FIO'
         FieldName = 'FIO'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2182,7 +1506,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'CNT_MONTH'
         FieldName = 'CNT_MONTH'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         KeyField = 'CNT_MONTH'
         LookupField = 'CNT_MONTH'
         WrapTo = wt_None
@@ -2200,7 +1524,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'DAT'
         FieldName = 'DAT'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2216,7 +1540,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'DEB_ORG'
         FieldName = 'DEB_ORG'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2232,7 +1556,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'ST_NAME'
         FieldName = 'ST_NAME'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2248,7 +1572,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'PSCH'
         FieldName = 'PSCH'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2264,7 +1588,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = #1059#1083#1080#1094#1072
         FieldName = 'STREET'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         KeyField = 'STREET'
         WrapTo = wt_None
         Sorting = dmtKeySort
@@ -2281,7 +1605,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = #1044#1086#1084
         FieldName = 'ND'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         KeyField = 'ND'
         WrapTo = wt_None
         Sorting = dmtKeySort
@@ -2298,7 +1622,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = #1050#1074
         FieldName = 'KW'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         KeyField = 'KW'
         WrapTo = wt_None
         Sorting = dmtKeySort
@@ -2629,13 +1953,13 @@ object Form_olap: TForm_olap
     Top = 232
   end
   object PivotCube35: TPivotCube
-    FactTableDataSet = Form_tree_objects.OD_data
+    FactTableDataSet = DM_Olap.Uni_Data
     Dimensions = <
       item
         Enabled = True
         AliasName = 'PREDPR'
         FieldName = 'PREDP'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         KeyField = 'PREDPR'
         WrapTo = wt_None
         Sorting = dmtNoSort
@@ -2652,7 +1976,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'REU'
         FieldName = 'REU'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2668,7 +1992,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'PREDPR_DET'
         FieldName = 'PREDPR_DET'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2684,7 +2008,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'MG_NAME'
         FieldName = 'MG_NAME'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2700,7 +2024,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'ORG_NAME'
         FieldName = 'ORG_NAME'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2716,7 +2040,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'DAT'
         FieldName = 'DAT'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2732,7 +2056,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'VAR_NAME'
         FieldName = 'VAR_NAME'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2748,7 +2072,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'DOPL_NAME'
         FieldName = 'DOPL_NAME'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2764,7 +2088,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NM'
         FieldName = 'NM'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2780,7 +2104,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NM1'
         FieldName = 'NM1'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2796,7 +2120,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'OPERNAME'
         FieldName = 'OPERNAME'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -2812,7 +2136,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'CD_TP'
         FieldName = 'CD_TP'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -3118,7 +2442,7 @@ object Form_olap: TForm_olap
     Top = 200
   end
   object frxReport56: TfrxReport
-    Version = '0.0'
+    Version = '5.1.9'
     DotMatrixReport = True
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -3165,6 +2489,7 @@ object Form_olap: TForm_olap
       BottomMargin = 4.497913761764030000
       FontStyle = []
       object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
         Height = 34.000000000000000000
         Top = 17.000000000000000000
         Width = 3820.800000000000000000
@@ -3173,7 +2498,6 @@ object Form_olap: TForm_olap
           Left = 19.200000000000000000
           Width = 931.200000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           FontStyle = [fsxCondensed]
           Memo.UTF8 = (
             
@@ -3185,6 +2509,7 @@ object Form_olap: TForm_olap
         end
       end
       object ReportSummary1: TfrxReportSummary
+        FillType = ftBrush
         Height = 204.000000000000000000
         Top = 425.000000000000000000
         Width = 3820.800000000000000000
@@ -3192,7 +2517,6 @@ object Form_olap: TForm_olap
           Top = 17.000000000000000000
           Width = 347.200000000000000000
           Height = 142.000000000000000000
-          ShowHint = False
           CellLevels = 2
           ColumnLevels = 0
           DownThenAcross = False
@@ -3212,157 +2536,145 @@ object Form_olap: TForm_olap
             662D38223F3E3C63726F73733E3C63656C6C6D656D6F733E3C54667278444D50
             4D656D6F56696577204C6566743D223330372C322220546F703D223531302220
             57696474683D2231392C3222204865696768743D223334222052657374726963
-            74696F6E733D223234222053686F7748696E743D2246616C73652220416C6C6F
-            7745787072657373696F6E733D2246616C736522204672616D652E5479703D22
-            3135222048416C69676E3D226861526967687422205472756E634F7574626F75
-            6E64546578743D2246616C7365222056416C69676E3D22766143656E74657222
-            20546578743D2230222F3E3C54667278444D504D656D6F56696577204C656674
-            3D223330372C322220546F703D22353434222057696474683D2231392C322220
-            4865696768743D22333422205265737472696374696F6E733D22323422205368
-            6F7748696E743D2246616C73652220416C6C6F7745787072657373696F6E733D
+            74696F6E733D2232342220416C6C6F7745787072657373696F6E733D2246616C
+            736522204672616D652E5479703D223135222048416C69676E3D226861526967
+            687422205472756E634F7574626F756E64546578743D2246616C736522205641
+            6C69676E3D22766143656E7465722220546578743D2230222F3E3C5466727844
+            4D504D656D6F56696577204C6566743D223330372C322220546F703D22353434
+            222057696474683D2231392C3222204865696768743D22333422205265737472
+            696374696F6E733D2232342220416C6C6F7745787072657373696F6E733D2246
+            616C736522204672616D652E5479703D223135222048416C69676E3D22686152
+            6967687422205472756E634F7574626F756E64546578743D2246616C73652220
+            56416C69676E3D22766143656E7465722220546578743D2230222F3E3C546672
+            78444D504D656D6F56696577204C6566743D223332362C342220546F703D2231
+            3032222057696474683D2231392C3222204865696768743D2233342220526573
+            7472696374696F6E733D2232342220416C6C6F7745787072657373696F6E733D
             2246616C736522204672616D652E5479703D223135222048416C69676E3D2268
             61526967687422205472756E634F7574626F756E64546578743D2246616C7365
             222056416C69676E3D22766143656E7465722220546578743D2230222F3E3C54
-            667278444D504D656D6F56696577204C6566743D223332362C342220546F703D
+            667278444D504D656D6F56696577204C6566743D223234392C362220546F703D
             22313032222057696474683D2231392C3222204865696768743D223334222052
-            65737472696374696F6E733D223234222053686F7748696E743D2246616C7365
-            2220416C6C6F7745787072657373696F6E733D2246616C736522204672616D65
-            2E5479703D223135222048416C69676E3D226861526967687422205472756E63
-            4F7574626F756E64546578743D2246616C7365222056416C69676E3D22766143
-            656E7465722220546578743D2230222F3E3C54667278444D504D656D6F566965
-            77204C6566743D223234392C362220546F703D22313032222057696474683D22
-            31392C3222204865696768743D22333422205265737472696374696F6E733D22
-            3234222053686F7748696E743D2246616C73652220416C6C6F77457870726573
+            65737472696374696F6E733D2232342220416C6C6F7745787072657373696F6E
+            733D2246616C736522204672616D652E5479703D223135222048416C69676E3D
+            226861526967687422205472756E634F7574626F756E64546578743D2246616C
+            7365222056416C69676E3D22766143656E7465722220546578743D2230222F3E
+            3C54667278444D504D656D6F56696577204C6566743D223234392C362220546F
+            703D22313336222057696474683D2231392C3222204865696768743D22333422
+            205265737472696374696F6E733D2232342220416C6C6F774578707265737369
+            6F6E733D2246616C736522204672616D652E5479703D223135222048416C6967
+            6E3D226861526967687422205472756E634F7574626F756E64546578743D2246
+            616C7365222056416C69676E3D22766143656E7465722220546578743D223022
+            2F3E3C54667278444D504D656D6F56696577204C6566743D223234392C362220
+            546F703D22313730222057696474683D2231392C3222204865696768743D2233
+            3422205265737472696374696F6E733D2232342220416C6C6F77457870726573
             73696F6E733D2246616C736522204672616D652E5479703D223135222048416C
             69676E3D226861526967687422205472756E634F7574626F756E64546578743D
             2246616C7365222056416C69676E3D22766143656E7465722220546578743D22
-            30222F3E3C54667278444D504D656D6F56696577204C6566743D223234392C36
-            2220546F703D22313336222057696474683D2231392C3222204865696768743D
-            22333422205265737472696374696F6E733D223234222053686F7748696E743D
-            2246616C73652220416C6C6F7745787072657373696F6E733D2246616C736522
-            204672616D652E5479703D223135222048416C69676E3D226861526967687422
-            205472756E634F7574626F756E64546578743D2246616C7365222056416C6967
-            6E3D22766143656E7465722220546578743D2230222F3E3C54667278444D504D
-            656D6F56696577204C6566743D223234392C362220546F703D22313730222057
-            696474683D2231392C3222204865696768743D22333422205265737472696374
-            696F6E733D223234222053686F7748696E743D2246616C73652220416C6C6F77
-            45787072657373696F6E733D2246616C736522204672616D652E5479703D2231
-            35222048416C69676E3D226861526967687422205472756E634F7574626F756E
+            30222F3E3C54667278444D504D656D6F56696577204C6566743D22302220546F
+            703D2230222057696474683D223022204865696768743D223022205265737472
+            696374696F6E733D22382220416C6C6F7745787072657373696F6E733D224661
+            6C736522204672616D652E5479703D223135222048416C69676E3D2268615269
+            67687422205472756E634F7574626F756E64546578743D2246616C7365222056
+            416C69676E3D22766143656E7465722220546578743D22222F3E3C5466727844
+            4D504D656D6F56696577204C6566743D22302220546F703D2230222057696474
+            683D223022204865696768743D223022205265737472696374696F6E733D2238
+            2220416C6C6F7745787072657373696F6E733D2246616C736522204672616D65
+            2E5479703D223135222048416C69676E3D226861526967687422205472756E63
+            4F7574626F756E64546578743D2246616C7365222056416C69676E3D22766143
+            656E7465722220546578743D22222F3E3C2F63656C6C6D656D6F733E3C63656C
+            6C6865616465726D656D6F733E3C54667278444D504D656D6F56696577204C65
+            66743D223231312C322220546F703D22353130222057696474683D223130352C
+            3622204865696768743D22333422205265737472696374696F6E733D22382220
+            416C6C6F7745787072657373696F6E733D2246616C736522204672616D652E54
+            79703D22313522205472756E634F7574626F756E64546578743D2246616C7365
+            222056416C69676E3D22766143656E7465722220546578743D22D09AD0BED0BB
+            2ED0BBD18CD0B32E222F3E3C54667278444D504D656D6F56696577204C656674
+            3D223231312C322220546F703D22353434222057696474683D223130352C3622
+            204865696768743D22333422205265737472696374696F6E733D22382220416C
+            6C6F7745787072657373696F6E733D2246616C736522204672616D652E547970
+            3D22313522205472756E634F7574626F756E64546578743D2246616C73652220
+            56416C69676E3D22766143656E7465722220546578743D22D09AD0BED0BB2ED0
+            BDD0BED181D0B8D1822E222F3E3C54667278444D504D656D6F56696577204C65
+            66743D223139322220546F703D22313032222057696474683D22313434222048
+            65696768743D22333422205265737472696374696F6E733D22382220416C6C6F
+            7745787072657373696F6E733D2246616C736522204672616D652E5479703D22
+            313522205472756E634F7574626F756E64546578743D2246616C736522205641
+            6C69676E3D22766143656E7465722220546578743D22D09AD0BED0BB2ED0BBD1
+            8CD0B32E222F3E3C54667278444D504D656D6F56696577204C6566743D223131
+            352C322220546F703D22313032222057696474683D223133342C342220486569
+            6768743D22333422205265737472696374696F6E733D22382220416C6C6F7745
+            787072657373696F6E733D2246616C736522204672616D652E5479703D223135
+            22205472756E634F7574626F756E64546578743D2246616C7365222056416C69
+            676E3D22766143656E7465722220546578743D22D09AD0BED0BB2ED0BDD0BED1
+            81D0B8D1822E222F3E3C2F63656C6C6865616465726D656D6F733E3C636F6C75
+            6D6E6D656D6F733E3C54667278444D504D656D6F56696577204C6566743D2233
+            30372C322220546F703D22353130222057696474683D2231392C322220486569
+            6768743D223022205265737472696374696F6E733D2232342220416C6C6F7745
+            787072657373696F6E733D2246616C736522204672616D652E5479703D223135
+            222048416C69676E3D22686143656E74657222205472756E634F7574626F756E
             64546578743D2246616C7365222056416C69676E3D22766143656E7465722220
-            546578743D2230222F3E3C54667278444D504D656D6F56696577204C6566743D
-            22302220546F703D2230222057696474683D223022204865696768743D223022
-            205265737472696374696F6E733D2238222053686F7748696E743D2246616C73
-            652220416C6C6F7745787072657373696F6E733D2246616C736522204672616D
-            652E5479703D223135222048416C69676E3D226861526967687422205472756E
+            546578743D22222F3E3C2F636F6C756D6E6D656D6F733E3C636F6C756D6E746F
+            74616C6D656D6F733E3C54667278444D504D656D6F56696577204C6566743D22
+            302220546F703D2230222057696474683D223022204865696768743D22302220
+            5265737472696374696F6E733D2238222056697369626C653D2246616C736522
+            20416C6C6F7745787072657373696F6E733D2246616C73652220466F6E745374
+            796C653D223022204672616D652E5479703D223135222048416C69676E3D2268
+            6143656E7465722220506172656E74466F6E743D2246616C736522205472756E
             634F7574626F756E64546578743D2246616C7365222056416C69676E3D227661
-            43656E7465722220546578743D22222F3E3C54667278444D504D656D6F566965
-            77204C6566743D22302220546F703D2230222057696474683D22302220486569
-            6768743D223022205265737472696374696F6E733D2238222053686F7748696E
-            743D2246616C73652220416C6C6F7745787072657373696F6E733D2246616C73
-            6522204672616D652E5479703D223135222048416C69676E3D22686152696768
-            7422205472756E634F7574626F756E64546578743D2246616C7365222056416C
-            69676E3D22766143656E7465722220546578743D22222F3E3C2F63656C6C6D65
-            6D6F733E3C63656C6C6865616465726D656D6F733E3C54667278444D504D656D
-            6F56696577204C6566743D223231312C322220546F703D223531302220576964
-            74683D223130352C3622204865696768743D2233342220526573747269637469
-            6F6E733D2238222053686F7748696E743D2246616C73652220416C6C6F774578
-            7072657373696F6E733D2246616C736522204672616D652E5479703D22313522
-            205472756E634F7574626F756E64546578743D2246616C7365222056416C6967
-            6E3D22766143656E7465722220546578743D22D09AD0BED0BB2ED0BBD18CD0B3
-            2E222F3E3C54667278444D504D656D6F56696577204C6566743D223231312C32
-            2220546F703D22353434222057696474683D223130352C362220486569676874
-            3D22333422205265737472696374696F6E733D2238222053686F7748696E743D
-            2246616C73652220416C6C6F7745787072657373696F6E733D2246616C736522
-            204672616D652E5479703D22313522205472756E634F7574626F756E64546578
-            743D2246616C7365222056416C69676E3D22766143656E746572222054657874
-            3D22D09AD0BED0BB2ED0BDD0BED181D0B8D1822E222F3E3C54667278444D504D
-            656D6F56696577204C6566743D223139322220546F703D223130322220576964
-            74683D2231343422204865696768743D22333422205265737472696374696F6E
-            733D2238222053686F7748696E743D2246616C73652220416C6C6F7745787072
-            657373696F6E733D2246616C736522204672616D652E5479703D223135222054
-            72756E634F7574626F756E64546578743D2246616C7365222056416C69676E3D
-            22766143656E7465722220546578743D22D09AD0BED0BB2ED0BBD18CD0B32E22
-            2F3E3C54667278444D504D656D6F56696577204C6566743D223131352C322220
-            546F703D22313032222057696474683D223133342C3422204865696768743D22
-            333422205265737472696374696F6E733D2238222053686F7748696E743D2246
-            616C73652220416C6C6F7745787072657373696F6E733D2246616C7365222046
-            72616D652E5479703D22313522205472756E634F7574626F756E64546578743D
-            2246616C7365222056416C69676E3D22766143656E7465722220546578743D22
-            D09AD0BED0BB2ED0BDD0BED181D0B8D1822E222F3E3C2F63656C6C6865616465
-            726D656D6F733E3C636F6C756D6E6D656D6F733E3C54667278444D504D656D6F
-            56696577204C6566743D223330372C322220546F703D22353130222057696474
-            683D2231392C3222204865696768743D223022205265737472696374696F6E73
-            3D223234222053686F7748696E743D2246616C73652220416C6C6F7745787072
-            657373696F6E733D2246616C736522204672616D652E5479703D223135222048
-            416C69676E3D22686143656E74657222205472756E634F7574626F756E645465
-            78743D2246616C7365222056416C69676E3D22766143656E7465722220546578
-            743D22222F3E3C2F636F6C756D6E6D656D6F733E3C636F6C756D6E746F74616C
-            6D656D6F733E3C54667278444D504D656D6F56696577204C6566743D22302220
-            546F703D2230222057696474683D223022204865696768743D22302220526573
-            7472696374696F6E733D2238222056697369626C653D2246616C736522205368
-            6F7748696E743D2246616C73652220416C6C6F7745787072657373696F6E733D
-            2246616C73652220466F6E745374796C653D223022204672616D652E5479703D
-            223135222048416C69676E3D22686143656E7465722220506172656E74466F6E
-            743D2246616C736522205472756E634F7574626F756E64546578743D2246616C
-            7365222056416C69676E3D22766143656E7465722220546578743D224772616E
-            6420546F74616C222F3E3C2F636F6C756D6E746F74616C6D656D6F733E3C636F
-            726E65726D656D6F733E3C54667278444D504D656D6F56696577204C6566743D
-            2231392C322220546F703D22343736222057696474683D223238382220486569
-            6768743D223022205265737472696374696F6E733D2238222056697369626C65
-            3D2246616C7365222053686F7748696E743D2246616C73652220416C6C6F7745
-            787072657373696F6E733D2246616C736522204672616D652E5479703D223135
-            222048416C69676E3D22686143656E74657222205472756E634F7574626F756E
-            64546578743D2246616C7365222056416C69676E3D22766143656E7465722220
-            546578743D22D09AD0BED0BB2ED0BBD18CD0B32E222F3E3C54667278444D504D
-            656D6F56696577204C6566743D223330372C322220546F703D22343736222057
-            696474683D2231392C3222204865696768743D22333422205265737472696374
-            696F6E733D2238222053686F7748696E743D2246616C73652220416C6C6F7745
-            787072657373696F6E733D2246616C736522204672616D652E5479703D223135
-            222048416C69676E3D22686143656E74657222205472756E634F7574626F756E
-            64546578743D2246616C7365222056416C69676E3D22766143656E7465722220
-            546578743D22222F3E3C54667278444D504D656D6F56696577204C6566743D22
-            3231312C322220546F703D22343736222057696474683D223130352C36222048
-            65696768743D22333422205265737472696374696F6E733D2238222053686F77
-            48696E743D2246616C73652220416C6C6F7745787072657373696F6E733D2246
-            616C736522204672616D652E5479703D223135222048416C69676E3D22686143
-            656E74657222205472756E634F7574626F756E64546578743D2246616C736522
-            2056416C69676E3D22766143656E7465722220546578743D22222F3E3C546672
+            43656E7465722220546578743D224772616E6420546F74616C222F3E3C2F636F
+            6C756D6E746F74616C6D656D6F733E3C636F726E65726D656D6F733E3C546672
             78444D504D656D6F56696577204C6566743D2231392C322220546F703D223437
-            36222057696474683D223138322C3422204865696768743D2233342220526573
-            7472696374696F6E733D2238222053686F7748696E743D2246616C7365222041
-            6C6C6F7745787072657373696F6E733D2246616C736522204672616D652E5479
-            703D223135222048416C69676E3D22686143656E74657222205472756E634F75
-            74626F756E64546578743D2246616C7365222056416C69676E3D22766143656E
-            7465722220546578743D22D098D182D0BED0B3D0BE20D0BFD0BE20D0BAD0B0D1
-            82D0B5D0B3D0BED180D0B8D0B8222F3E3C2F636F726E65726D656D6F733E3C72
-            6F776D656D6F733E3C54667278444D504D656D6F56696577204C6566743D2231
-            392C322220546F703D22353130222057696474683D223138322C342220486569
-            6768743D22363822205265737472696374696F6E733D223234222053686F7748
-            696E743D2246616C73652220416C6C6F7745787072657373696F6E733D224661
+            36222057696474683D2232383822204865696768743D22302220526573747269
+            6374696F6E733D2238222056697369626C653D2246616C73652220416C6C6F77
+            45787072657373696F6E733D2246616C736522204672616D652E5479703D2231
+            35222048416C69676E3D22686143656E74657222205472756E634F7574626F75
+            6E64546578743D2246616C7365222056416C69676E3D22766143656E74657222
+            20546578743D22D09AD0BED0BB2ED0BBD18CD0B32E222F3E3C54667278444D50
+            4D656D6F56696577204C6566743D223330372C322220546F703D223437362220
+            57696474683D2231392C3222204865696768743D223334222052657374726963
+            74696F6E733D22382220416C6C6F7745787072657373696F6E733D2246616C73
+            6522204672616D652E5479703D223135222048416C69676E3D22686143656E74
+            657222205472756E634F7574626F756E64546578743D2246616C736522205641
+            6C69676E3D22766143656E7465722220546578743D22222F3E3C54667278444D
+            504D656D6F56696577204C6566743D223231312C322220546F703D2234373622
+            2057696474683D223130352C3622204865696768743D22333422205265737472
+            696374696F6E733D22382220416C6C6F7745787072657373696F6E733D224661
             6C736522204672616D652E5479703D223135222048416C69676E3D2268614365
             6E74657222205472756E634F7574626F756E64546578743D2246616C73652220
-            56416C69676E3D22766143656E7465722220546578743D22222F3E3C2F726F77
-            6D656D6F733E3C726F77746F74616C6D656D6F733E3C54667278444D504D656D
-            6F56696577204C6566743D22302220546F703D22313032222057696474683D22
-            3131352C3222204865696768743D2231303222205265737472696374696F6E73
-            3D2238222056697369626C653D2246616C7365222053686F7748696E743D2246
-            616C73652220416C6C6F7745787072657373696F6E733D2246616C7365222046
-            6F6E745374796C653D223022204672616D652E5479703D223135222048416C69
-            676E3D22686143656E7465722220506172656E74466F6E743D2246616C736522
-            205472756E634F7574626F756E64546578743D2246616C7365222056416C6967
-            6E3D22766143656E7465722220546578743D224772616E6420546F74616C222F
-            3E3C2F726F77746F74616C6D656D6F733E3C63656C6C66756E6374696F6E733E
-            3C6974656D20312F3E3C6974656D20312F3E3C2F63656C6C66756E6374696F6E
-            733E3C636F6C756D6E736F72743E3C6974656D20302F3E3C2F636F6C756D6E73
-            6F72743E3C726F77736F72743E3C6974656D20322F3E3C2F726F77736F72743E
-            3C2F63726F73733E}
+            56416C69676E3D22766143656E7465722220546578743D22222F3E3C54667278
+            444D504D656D6F56696577204C6566743D2231392C322220546F703D22343736
+            222057696474683D223138322C3422204865696768743D223334222052657374
+            72696374696F6E733D22382220416C6C6F7745787072657373696F6E733D2246
+            616C736522204672616D652E5479703D223135222048416C69676E3D22686143
+            656E74657222205472756E634F7574626F756E64546578743D2246616C736522
+            2056416C69676E3D22766143656E7465722220546578743D22D098D182D0BED0
+            B3D0BE20D0BFD0BE20D0BAD0B0D182D0B5D0B3D0BED180D0B8D0B8222F3E3C2F
+            636F726E65726D656D6F733E3C726F776D656D6F733E3C54667278444D504D65
+            6D6F56696577204C6566743D2231392C322220546F703D223531302220576964
+            74683D223138322C3422204865696768743D2236382220526573747269637469
+            6F6E733D2232342220416C6C6F7745787072657373696F6E733D2246616C7365
+            22204672616D652E5479703D223135222048416C69676E3D22686143656E7465
+            7222205472756E634F7574626F756E64546578743D2246616C7365222056416C
+            69676E3D22766143656E7465722220546578743D22222F3E3C2F726F776D656D
+            6F733E3C726F77746F74616C6D656D6F733E3C54667278444D504D656D6F5669
+            6577204C6566743D22302220546F703D22313032222057696474683D22313135
+            2C3222204865696768743D2231303222205265737472696374696F6E733D2238
+            222056697369626C653D2246616C73652220416C6C6F7745787072657373696F
+            6E733D2246616C73652220466F6E745374796C653D223022204672616D652E54
+            79703D223135222048416C69676E3D22686143656E7465722220506172656E74
+            466F6E743D2246616C736522205472756E634F7574626F756E64546578743D22
+            46616C7365222056416C69676E3D22766143656E7465722220546578743D2247
+            72616E6420546F74616C222F3E3C2F726F77746F74616C6D656D6F733E3C6365
+            6C6C66756E6374696F6E733E3C6974656D20312F3E3C6974656D20312F3E3C2F
+            63656C6C66756E6374696F6E733E3C636F6C756D6E736F72743E3C6974656D20
+            302F3E3C2F636F6C756D6E736F72743E3C726F77736F72743E3C6974656D2032
+            2F3E3C2F726F77736F72743E3C2F63726F73733E}
         end
         object DMPMemo2: TfrxDMPMemoView
           Left = 9.600000000000000000
           Top = 187.000000000000000000
           Width = 864.000000000000000000
           Height = 17.000000000000000000
-          ShowHint = False
           FontStyle = []
           Memo.UTF8 = (
             #1056#1119#1056#1109#1056#1169#1056#1111#1056#1105#1057#1027#1057#1034' '#1056#1029#1056#176#1057#8225#1056#176#1056#187#1057#1034#1056#1029#1056#1105#1056#1108#1056#176'_____________')
@@ -3371,6 +2683,7 @@ object Form_olap: TForm_olap
         end
       end
       object MasterData1: TfrxMasterData
+        FillType = ftBrush
         Height = 306.000000000000000000
         Top = 85.000000000000000000
         Width = 3820.800000000000000000
@@ -3380,7 +2693,6 @@ object Form_olap: TForm_olap
           Top = 17.000000000000000000
           Width = 1172.800000000000000000
           Height = 261.000000000000000000
-          ShowHint = False
           AutoSize = False
           DownThenAcross = False
           GapX = 0
@@ -3409,438 +2721,408 @@ object Form_olap: TForm_olap
             662D38223F3E3C63726F73733E3C63656C6C6D656D6F733E3C54667278444D50
             4D656D6F56696577204C6566743D223937392C322220546F703D223233382220
             57696474683D2238362C3422204865696768743D223334222052657374726963
-            74696F6E733D223234222053686F7748696E743D2246616C73652220416C6C6F
-            7745787072657373696F6E733D2246616C73652220446973706C6179466F726D
-            61742E466F726D61745374723D2225322E32662220446973706C6179466F726D
-            61742E4B696E643D22666B4E756D657269632220466F6E745374796C653D2233
-            3222204672616D652E5479703D223135222048416C69676E3D22686152696768
-            742220506172656E74466F6E743D2246616C736522205472756E634F7574626F
-            756E64546578743D2246616C7365222056416C69676E3D22766143656E746572
-            2220546578743D22302C3030222F3E3C54667278444D504D656D6F5669657720
-            4C6566743D22313037352C322220546F703D22313730222057696474683D2238
-            362C3422204865696768743D22333422205265737472696374696F6E733D2232
-            34222053686F7748696E743D2246616C73652220416C6C6F7745787072657373
-            696F6E733D2246616C73652220466F6E745374796C653D22333222204672616D
-            652E5479703D223135222048416C69676E3D2268615269676874222050617265
-            6E74466F6E743D2246616C736522205472756E634F7574626F756E6454657874
-            3D2246616C7365222056416C69676E3D22766143656E7465722220546578743D
-            22302C3030222F3E3C54667278444D504D656D6F56696577204C6566743D2237
-            31302C342220546F703D22323034222057696474683D2238362C342220486569
-            6768743D22333422205265737472696374696F6E733D223234222053686F7748
-            696E743D2246616C73652220416C6C6F7745787072657373696F6E733D224661
-            6C73652220466F6E745374796C653D22333222204672616D652E5479703D2231
-            35222048416C69676E3D22686152696768742220506172656E74466F6E743D22
-            46616C736522205472756E634F7574626F756E64546578743D2246616C736522
-            2056416C69676E3D22766143656E7465722220546578743D2230222F3E3C5466
-            7278444D504D656D6F56696577204C6566743D223635322C382220546F703D22
-            323338222057696474683D2238362C3422204865696768743D22333422205265
-            737472696374696F6E733D223234222053686F7748696E743D2246616C736522
-            20416C6C6F7745787072657373696F6E733D2246616C73652220466F6E745374
-            796C653D22333222204672616D652E5479703D223135222048416C69676E3D22
-            686152696768742220506172656E74466F6E743D2246616C736522205472756E
-            634F7574626F756E64546578743D2246616C7365222056416C69676E3D227661
-            43656E7465722220546578743D2230222F3E3C54667278444D504D656D6F5669
-            6577204C6566743D223332362C342220546F703D223638222057696474683D22
-            35372C3622204865696768743D22333422205265737472696374696F6E733D22
-            3234222053686F7748696E743D2246616C73652220416C6C6F77457870726573
-            73696F6E733D2246616C736522204672616D652E5479703D223135222048416C
-            69676E3D226861526967687422205472756E634F7574626F756E64546578743D
-            2246616C7365222056416C69676E3D22766143656E7465722220546578743D22
-            30222F3E3C54667278444D504D656D6F56696577204C6566743D22313039342C
-            342220546F703D22323034222057696474683D2238362C342220486569676874
-            3D22333422205265737472696374696F6E733D223234222053686F7748696E74
-            3D2246616C73652220416C6C6F7745787072657373696F6E733D2246616C7365
-            22204672616D652E5479703D223135222048416C69676E3D2268615269676874
-            22205472756E634F7574626F756E64546578743D2246616C7365222056416C69
-            676E3D22766143656E7465722220546578743D22302C3030222F3E3C54667278
-            444D504D656D6F56696577204C6566743D223535362C382220546F703D223130
-            32222057696474683D2238362C3422204865696768743D223334222052657374
-            72696374696F6E733D223234222053686F7748696E743D2246616C7365222041
-            6C6C6F7745787072657373696F6E733D2246616C736522204672616D652E5479
-            703D223135222048416C69676E3D226861526967687422205472756E634F7574
-            626F756E64546578743D2246616C7365222056416C69676E3D22766143656E74
-            65722220546578743D2230222F3E3C54667278444D504D656D6F56696577204C
-            6566743D223731302C342220546F703D22313032222057696474683D2238362C
-            3422204865696768743D22333422205265737472696374696F6E733D22323422
-            2053686F7748696E743D2246616C73652220416C6C6F7745787072657373696F
+            74696F6E733D2232342220416C6C6F7745787072657373696F6E733D2246616C
+            73652220446973706C6179466F726D61742E466F726D61745374723D2225322E
+            32662220446973706C6179466F726D61742E4B696E643D22666B4E756D657269
+            632220466F6E745374796C653D22333222204672616D652E5479703D22313522
+            2048416C69676E3D22686152696768742220506172656E74466F6E743D224661
+            6C736522205472756E634F7574626F756E64546578743D2246616C7365222056
+            416C69676E3D22766143656E7465722220546578743D22302C3030222F3E3C54
+            667278444D504D656D6F56696577204C6566743D22313037352C322220546F70
+            3D22313730222057696474683D2238362C3422204865696768743D2233342220
+            5265737472696374696F6E733D2232342220416C6C6F7745787072657373696F
             6E733D2246616C73652220466F6E745374796C653D22333222204672616D652E
             5479703D223135222048416C69676E3D22686152696768742220506172656E74
             466F6E743D2246616C736522205472756E634F7574626F756E64546578743D22
             46616C7365222056416C69676E3D22766143656E7465722220546578743D2230
-            222F3E3C54667278444D504D656D6F56696577204C6566743D223937392C3222
-            20546F703D22323732222057696474683D2238362C3422204865696768743D22
-            363822205265737472696374696F6E733D223234222053686F7748696E743D22
-            46616C73652220416C6C6F7745787072657373696F6E733D2246616C73652220
-            446973706C6179466F726D61742E466F726D61745374723D2225322E32662220
-            446973706C6179466F726D61742E4B696E643D22666B4E756D65726963222046
-            6F6E745374796C653D22333222204672616D652E5479703D223135222048416C
-            69676E3D22686152696768742220506172656E74466F6E743D2246616C736522
-            205472756E634F7574626F756E64546578743D2246616C7365222056416C6967
-            6E3D22766143656E7465722220546578743D22302C3030222F3E3C5466727844
-            4D504D656D6F56696577204C6566743D22313035362220546F703D2232333822
-            2057696474683D22393622204865696768743D22333422205265737472696374
-            696F6E733D223234222053686F7748696E743D2246616C73652220416C6C6F77
-            45787072657373696F6E733D2246616C73652220446973706C6179466F726D61
-            742E466F726D61745374723D2225322E32662220446973706C6179466F726D61
-            742E4B696E643D22666B4E756D6572696322204672616D652E5479703D223135
-            222048416C69676E3D226861526967687422205472756E634F7574626F756E64
-            546578743D2246616C7365222056416C69676E3D22766143656E746572222054
-            6578743D22302C3030222F3E3C54667278444D504D656D6F56696577204C6566
-            743D22313135322220546F703D22313336222057696474683D22393622204865
-            696768743D22333422205265737472696374696F6E733D223234222053686F77
-            48696E743D2246616C73652220416C6C6F7745787072657373696F6E733D2246
-            616C736522204672616D652E5479703D223135222048416C69676E3D22686152
-            6967687422205472756E634F7574626F756E64546578743D2246616C73652220
-            56416C69676E3D22766143656E7465722220546578743D22302C3030222F3E3C
-            54667278444D504D656D6F56696577204C6566743D22313135322220546F703D
-            22313730222057696474683D22393622204865696768743D2233342220526573
-            7472696374696F6E733D223234222053686F7748696E743D2246616C73652220
+            2C3030222F3E3C54667278444D504D656D6F56696577204C6566743D22373130
+            2C342220546F703D22323034222057696474683D2238362C3422204865696768
+            743D22333422205265737472696374696F6E733D2232342220416C6C6F774578
+            7072657373696F6E733D2246616C73652220466F6E745374796C653D22333222
+            204672616D652E5479703D223135222048416C69676E3D226861526967687422
+            20506172656E74466F6E743D2246616C736522205472756E634F7574626F756E
+            64546578743D2246616C7365222056416C69676E3D22766143656E7465722220
+            546578743D2230222F3E3C54667278444D504D656D6F56696577204C6566743D
+            223635322C382220546F703D22323338222057696474683D2238362C34222048
+            65696768743D22333422205265737472696374696F6E733D2232342220416C6C
+            6F7745787072657373696F6E733D2246616C73652220466F6E745374796C653D
+            22333222204672616D652E5479703D223135222048416C69676E3D2268615269
+            6768742220506172656E74466F6E743D2246616C736522205472756E634F7574
+            626F756E64546578743D2246616C7365222056416C69676E3D22766143656E74
+            65722220546578743D2230222F3E3C54667278444D504D656D6F56696577204C
+            6566743D223332362C342220546F703D223638222057696474683D2235372C36
+            22204865696768743D22333422205265737472696374696F6E733D2232342220
             416C6C6F7745787072657373696F6E733D2246616C736522204672616D652E54
             79703D223135222048416C69676E3D226861526967687422205472756E634F75
             74626F756E64546578743D2246616C7365222056416C69676E3D22766143656E
-            7465722220546578743D22302C3030222F3E3C54667278444D504D656D6F5669
-            6577204C6566743D223537362220546F703D22323034222057696474683D2231
-            31352C3222204865696768743D22333422205265737472696374696F6E733D22
-            3234222053686F7748696E743D2246616C73652220416C6C6F77457870726573
-            73696F6E733D2246616C736522204672616D652E5479703D223135222048416C
-            69676E3D226861526967687422205472756E634F7574626F756E64546578743D
-            2246616C7365222056416C69676E3D22766143656E7465722220546578743D22
-            30222F3E3C54667278444D504D656D6F56696577204C6566743D223633332C36
-            2220546F703D22313032222057696474683D2235372C3622204865696768743D
-            22333422205265737472696374696F6E733D223234222053686F7748696E743D
-            2246616C73652220416C6C6F7745787072657373696F6E733D2246616C736522
+            7465722220546578743D2230222F3E3C54667278444D504D656D6F5669657720
+            4C6566743D22313039342C342220546F703D22323034222057696474683D2238
+            362C3422204865696768743D22333422205265737472696374696F6E733D2232
+            342220416C6C6F7745787072657373696F6E733D2246616C736522204672616D
+            652E5479703D223135222048416C69676E3D226861526967687422205472756E
+            634F7574626F756E64546578743D2246616C7365222056416C69676E3D227661
+            43656E7465722220546578743D22302C3030222F3E3C54667278444D504D656D
+            6F56696577204C6566743D223535362C382220546F703D223130322220576964
+            74683D2238362C3422204865696768743D22333422205265737472696374696F
+            6E733D2232342220416C6C6F7745787072657373696F6E733D2246616C736522
             204672616D652E5479703D223135222048416C69676E3D226861526967687422
             205472756E634F7574626F756E64546578743D2246616C7365222056416C6967
             6E3D22766143656E7465722220546578743D2230222F3E3C54667278444D504D
-            656D6F56696577204C6566743D223932312C362220546F703D22323034222057
+            656D6F56696577204C6566743D223731302C342220546F703D22313032222057
             696474683D2238362C3422204865696768743D22333422205265737472696374
-            696F6E733D223234222053686F7748696E743D2246616C73652220416C6C6F77
-            45787072657373696F6E733D2246616C736522204672616D652E5479703D2231
-            35222048416C69676E3D226861526967687422205472756E634F7574626F756E
-            64546578743D2246616C7365222056416C69676E3D22766143656E7465722220
-            546578743D22302C3030222F3E3C54667278444D504D656D6F56696577204C65
-            66743D22313137312C322220546F703D22323034222057696474683D22393622
-            204865696768743D22333422205265737472696374696F6E733D223234222053
-            686F7748696E743D2246616C73652220416C6C6F7745787072657373696F6E73
-            3D2246616C73652220466F6E745374796C653D22333222204672616D652E5479
-            703D223135222048416C69676E3D22686152696768742220506172656E74466F
-            6E743D2246616C736522205472756E634F7574626F756E64546578743D224661
+            696F6E733D2232342220416C6C6F7745787072657373696F6E733D2246616C73
+            652220466F6E745374796C653D22333222204672616D652E5479703D22313522
+            2048416C69676E3D22686152696768742220506172656E74466F6E743D224661
+            6C736522205472756E634F7574626F756E64546578743D2246616C7365222056
+            416C69676E3D22766143656E7465722220546578743D2230222F3E3C54667278
+            444D504D656D6F56696577204C6566743D223937392C322220546F703D223237
+            32222057696474683D2238362C3422204865696768743D223638222052657374
+            72696374696F6E733D2232342220416C6C6F7745787072657373696F6E733D22
+            46616C73652220446973706C6179466F726D61742E466F726D61745374723D22
+            25322E32662220446973706C6179466F726D61742E4B696E643D22666B4E756D
+            657269632220466F6E745374796C653D22333222204672616D652E5479703D22
+            3135222048416C69676E3D22686152696768742220506172656E74466F6E743D
+            2246616C736522205472756E634F7574626F756E64546578743D2246616C7365
+            222056416C69676E3D22766143656E7465722220546578743D22302C3030222F
+            3E3C54667278444D504D656D6F56696577204C6566743D22313035362220546F
+            703D22323338222057696474683D22393622204865696768743D223334222052
+            65737472696374696F6E733D2232342220416C6C6F7745787072657373696F6E
+            733D2246616C73652220446973706C6179466F726D61742E466F726D61745374
+            723D2225322E32662220446973706C6179466F726D61742E4B696E643D22666B
+            4E756D6572696322204672616D652E5479703D223135222048416C69676E3D22
+            6861526967687422205472756E634F7574626F756E64546578743D2246616C73
+            65222056416C69676E3D22766143656E7465722220546578743D22302C303022
+            2F3E3C54667278444D504D656D6F56696577204C6566743D2231313532222054
+            6F703D22313336222057696474683D22393622204865696768743D2233342220
+            5265737472696374696F6E733D2232342220416C6C6F7745787072657373696F
+            6E733D2246616C736522204672616D652E5479703D223135222048416C69676E
+            3D226861526967687422205472756E634F7574626F756E64546578743D224661
             6C7365222056416C69676E3D22766143656E7465722220546578743D22302C30
-            30222F3E3C54667278444D504D656D6F56696577204C6566743D22313131332C
-            362220546F703D22323034222057696474683D2238362C342220486569676874
-            3D22333422205265737472696374696F6E733D223234222053686F7748696E74
-            3D2246616C73652220416C6C6F7745787072657373696F6E733D2246616C7365
+            30222F3E3C54667278444D504D656D6F56696577204C6566743D223131353222
+            20546F703D22313730222057696474683D22393622204865696768743D223334
+            22205265737472696374696F6E733D2232342220416C6C6F7745787072657373
+            696F6E733D2246616C736522204672616D652E5479703D223135222048416C69
+            676E3D226861526967687422205472756E634F7574626F756E64546578743D22
+            46616C7365222056416C69676E3D22766143656E7465722220546578743D2230
+            2C3030222F3E3C54667278444D504D656D6F56696577204C6566743D22353736
+            2220546F703D22323034222057696474683D223131352C322220486569676874
+            3D22333422205265737472696374696F6E733D2232342220416C6C6F77457870
+            72657373696F6E733D2246616C736522204672616D652E5479703D2231352220
+            48416C69676E3D226861526967687422205472756E634F7574626F756E645465
+            78743D2246616C7365222056416C69676E3D22766143656E7465722220546578
+            743D2230222F3E3C54667278444D504D656D6F56696577204C6566743D223633
+            332C362220546F703D22313032222057696474683D2235372C36222048656967
+            68743D22333422205265737472696374696F6E733D2232342220416C6C6F7745
+            787072657373696F6E733D2246616C736522204672616D652E5479703D223135
+            222048416C69676E3D226861526967687422205472756E634F7574626F756E64
+            546578743D2246616C7365222056416C69676E3D22766143656E746572222054
+            6578743D2230222F3E3C54667278444D504D656D6F56696577204C6566743D22
+            3932312C362220546F703D22323034222057696474683D2238362C3422204865
+            696768743D22333422205265737472696374696F6E733D2232342220416C6C6F
+            7745787072657373696F6E733D2246616C736522204672616D652E5479703D22
+            3135222048416C69676E3D226861526967687422205472756E634F7574626F75
+            6E64546578743D2246616C7365222056416C69676E3D22766143656E74657222
+            20546578743D22302C3030222F3E3C54667278444D504D656D6F56696577204C
+            6566743D22313137312C322220546F703D22323034222057696474683D223936
+            22204865696768743D22333422205265737472696374696F6E733D2232342220
+            416C6C6F7745787072657373696F6E733D2246616C73652220466F6E74537479
+            6C653D22333222204672616D652E5479703D223135222048416C69676E3D2268
+            6152696768742220506172656E74466F6E743D2246616C736522205472756E63
+            4F7574626F756E64546578743D2246616C7365222056416C69676E3D22766143
+            656E7465722220546578743D22302C3030222F3E3C54667278444D504D656D6F
+            56696577204C6566743D22313131332C362220546F703D223230342220576964
+            74683D2238362C3422204865696768743D22333422205265737472696374696F
+            6E733D2232342220416C6C6F7745787072657373696F6E733D2246616C736522
+            204672616D652E5479703D223135222048416C69676E3D226861526967687422
+            205472756E634F7574626F756E64546578743D2246616C7365222056416C6967
+            6E3D22766143656E7465722220546578743D22302C3030222F3E3C5466727844
+            4D504D656D6F56696577204C6566743D22313035362220546F703D2232373222
+            2057696474683D22393622204865696768743D22363822205265737472696374
+            696F6E733D2232342220416C6C6F7745787072657373696F6E733D2246616C73
+            652220446973706C6179466F726D61742E466F726D61745374723D2225322E32
+            662220446973706C6179466F726D61742E4B696E643D22666B4E756D65726963
             22204672616D652E5479703D223135222048416C69676E3D2268615269676874
             22205472756E634F7574626F756E64546578743D2246616C7365222056416C69
-            676E3D22766143656E7465722220546578743D22302C3030222F3E3C54667278
-            444D504D656D6F56696577204C6566743D22313035362220546F703D22323732
-            222057696474683D22393622204865696768743D223638222052657374726963
-            74696F6E733D223234222053686F7748696E743D2246616C73652220416C6C6F
-            7745787072657373696F6E733D2246616C73652220446973706C6179466F726D
-            61742E466F726D61745374723D2225322E32662220446973706C6179466F726D
-            61742E4B696E643D22666B4E756D6572696322204672616D652E5479703D2231
-            35222048416C69676E3D226861526967687422205472756E634F7574626F756E
-            64546578743D2246616C7365222056416C69676E3D22766143656E7465722220
-            546578743D22302C3030222F3E3C2F63656C6C6D656D6F733E3C63656C6C6865
-            616465726D656D6F733E3C54667278444D504D656D6F56696577204C6566743D
-            223937392C322220546F703D22313336222057696474683D223133342C342220
-            4865696768743D22333422205265737472696374696F6E733D2238222053686F
-            7748696E743D2246616C73652220416C6C6F7745787072657373696F6E733D22
-            46616C736522204672616D652E5479703D22313522205472756E634F7574626F
-            756E64546578743D2246616C7365222056416C69676E3D22766143656E746572
-            2220546578743D22D0A1D183D0BCD0BCD0B0222F3E3C54667278444D504D656D
-            6F56696577204C6566743D223937392C322220546F703D223137302220576964
-            74683D223133342C3422204865696768743D2233342220526573747269637469
-            6F6E733D2238222053686F7748696E743D2246616C73652220416C6C6F774578
-            7072657373696F6E733D2246616C736522204672616D652E5479703D22313522
-            205472756E634F7574626F756E64546578743D2246616C7365222056416C6967
-            6E3D22766143656E7465722220546578743D22D0A1D183D0BCD0BCD0B0222F3E
-            3C54667278444D504D656D6F56696577204C6566743D223537362220546F703D
-            22323034222057696474683D223133342C3422204865696768743D2233342220
-            5265737472696374696F6E733D2238222053686F7748696E743D2246616C7365
+            676E3D22766143656E7465722220546578743D22302C3030222F3E3C2F63656C
+            6C6D656D6F733E3C63656C6C6865616465726D656D6F733E3C54667278444D50
+            4D656D6F56696577204C6566743D223937392C322220546F703D223133362220
+            57696474683D223133342C3422204865696768743D2233342220526573747269
+            6374696F6E733D22382220416C6C6F7745787072657373696F6E733D2246616C
+            736522204672616D652E5479703D22313522205472756E634F7574626F756E64
+            546578743D2246616C7365222056416C69676E3D22766143656E746572222054
+            6578743D22D0A1D183D0BCD0BCD0B0222F3E3C54667278444D504D656D6F5669
+            6577204C6566743D223937392C322220546F703D22313730222057696474683D
+            223133342C3422204865696768743D22333422205265737472696374696F6E73
+            3D22382220416C6C6F7745787072657373696F6E733D2246616C736522204672
+            616D652E5479703D22313522205472756E634F7574626F756E64546578743D22
+            46616C7365222056416C69676E3D22766143656E7465722220546578743D22D0
+            A1D183D0BCD0BCD0B0222F3E3C54667278444D504D656D6F56696577204C6566
+            743D223537362220546F703D22323034222057696474683D223133342C342220
+            4865696768743D22333422205265737472696374696F6E733D22382220416C6C
+            6F7745787072657373696F6E733D2246616C736522204672616D652E5479703D
+            22313522205472756E634F7574626F756E64546578743D2246616C7365222056
+            416C69676E3D22766143656E7465722220546578743D22D0A1D183D0BCD0BCD0
+            B0222F3E3C54667278444D504D656D6F56696577204C6566743D223531382C34
+            2220546F703D22323338222057696474683D223133342C342220486569676874
+            3D22333422205265737472696374696F6E733D22382220416C6C6F7745787072
+            657373696F6E733D2246616C736522204672616D652E5479703D223135222054
+            72756E634F7574626F756E64546578743D2246616C7365222056416C69676E3D
+            22766143656E7465722220546578743D22D0A1D183D0BCD0BCD0B0222F3E3C54
+            667278444D504D656D6F56696577204C6566743D22302220546F703D22302220
+            57696474683D223022204865696768743D223022205265737472696374696F6E
+            733D22382220416C6C6F7745787072657373696F6E733D2246616C7365222046
+            72616D652E5479703D22313522205472756E634F7574626F756E64546578743D
+            2246616C7365222056416C69676E3D22766143656E7465722220546578743D22
+            D0A1D183D0BCD0BCD0B0222F3E3C54667278444D504D656D6F56696577204C65
+            66743D22302220546F703D2230222057696474683D223022204865696768743D
+            223022205265737472696374696F6E733D22382220416C6C6F77457870726573
+            73696F6E733D2246616C736522204672616D652E5479703D2231352220547275
+            6E634F7574626F756E64546578743D2246616C7365222056416C69676E3D2276
+            6143656E7465722220546578743D22D0A1D183D0BCD0BCD0B0222F3E3C546672
+            78444D504D656D6F56696577204C6566743D22302220546F703D223022205769
+            6474683D223022204865696768743D223022205265737472696374696F6E733D
+            22382220416C6C6F7745787072657373696F6E733D2246616C73652220467261
+            6D652E5479703D22313522205472756E634F7574626F756E64546578743D2246
+            616C7365222056416C69676E3D22766143656E7465722220546578743D22D0A1
+            D183D0BCD0BCD0B0222F3E3C54667278444D504D656D6F56696577204C656674
+            3D22302220546F703D2230222057696474683D223022204865696768743D2230
+            22205265737472696374696F6E733D22382220416C6C6F774578707265737369
+            6F6E733D2246616C736522204672616D652E5479703D22313522205472756E63
+            4F7574626F756E64546578743D2246616C7365222056416C69676E3D22766143
+            656E7465722220546578743D22D0A1D183D0BCD0BCD0B0222F3E3C5466727844
+            4D504D656D6F56696577204C6566743D22302220546F703D2230222057696474
+            683D223022204865696768743D223022205265737472696374696F6E733D2238
             2220416C6C6F7745787072657373696F6E733D2246616C736522204672616D65
             2E5479703D22313522205472756E634F7574626F756E64546578743D2246616C
             7365222056416C69676E3D22766143656E7465722220546578743D22D0A1D183
-            D0BCD0BCD0B0222F3E3C54667278444D504D656D6F56696577204C6566743D22
-            3531382C342220546F703D22323338222057696474683D223133342C34222048
-            65696768743D22333422205265737472696374696F6E733D2238222053686F77
-            48696E743D2246616C73652220416C6C6F7745787072657373696F6E733D2246
-            616C736522204672616D652E5479703D22313522205472756E634F7574626F75
-            6E64546578743D2246616C7365222056416C69676E3D22766143656E74657222
-            20546578743D22D0A1D183D0BCD0BCD0B0222F3E3C54667278444D504D656D6F
-            56696577204C6566743D22302220546F703D2230222057696474683D22302220
-            4865696768743D223022205265737472696374696F6E733D2238222053686F77
-            48696E743D2246616C73652220416C6C6F7745787072657373696F6E733D2246
-            616C736522204672616D652E5479703D22313522205472756E634F7574626F75
-            6E64546578743D2246616C7365222056416C69676E3D22766143656E74657222
-            20546578743D22D0A1D183D0BCD0BCD0B0222F3E3C54667278444D504D656D6F
-            56696577204C6566743D22302220546F703D2230222057696474683D22302220
-            4865696768743D223022205265737472696374696F6E733D2238222053686F77
-            48696E743D2246616C73652220416C6C6F7745787072657373696F6E733D2246
-            616C736522204672616D652E5479703D22313522205472756E634F7574626F75
-            6E64546578743D2246616C7365222056416C69676E3D22766143656E74657222
-            20546578743D22D0A1D183D0BCD0BCD0B0222F3E3C54667278444D504D656D6F
-            56696577204C6566743D22302220546F703D2230222057696474683D22302220
-            4865696768743D223022205265737472696374696F6E733D2238222053686F77
-            48696E743D2246616C73652220416C6C6F7745787072657373696F6E733D2246
-            616C736522204672616D652E5479703D22313522205472756E634F7574626F75
-            6E64546578743D2246616C7365222056416C69676E3D22766143656E74657222
-            20546578743D22D0A1D183D0BCD0BCD0B0222F3E3C54667278444D504D656D6F
-            56696577204C6566743D22302220546F703D2230222057696474683D22302220
-            4865696768743D223022205265737472696374696F6E733D2238222053686F77
-            48696E743D2246616C73652220416C6C6F7745787072657373696F6E733D2246
-            616C736522204672616D652E5479703D22313522205472756E634F7574626F75
-            6E64546578743D2246616C7365222056416C69676E3D22766143656E74657222
-            20546578743D22D0A1D183D0BCD0BCD0B0222F3E3C54667278444D504D656D6F
-            56696577204C6566743D22302220546F703D2230222057696474683D22302220
-            4865696768743D223022205265737472696374696F6E733D2238222053686F77
-            48696E743D2246616C73652220416C6C6F7745787072657373696F6E733D2246
-            616C736522204672616D652E5479703D22313522205472756E634F7574626F75
-            6E64546578743D2246616C7365222056416C69676E3D22766143656E74657222
-            20546578743D22D0A1D183D0BCD0BCD0B0222F3E3C2F63656C6C686561646572
-            6D656D6F733E3C636F6C756D6E6D656D6F733E3C54667278444D504D656D6F56
-            696577204C6566743D223937392C322220546F703D2231373022205769647468
-            3D2238362C3422204865696768743D22383522205265737472696374696F6E73
-            3D223234222053686F7748696E743D2246616C73652220416C6C6F7745787072
-            657373696F6E733D2246616C73652220466F6E745374796C653D223332222046
-            72616D652E5479703D223135222048416C69676E3D22686143656E7465722220
-            506172656E74466F6E743D2246616C736522205472756E634F7574626F756E64
-            546578743D2246616C7365222056416C69676E3D22766143656E746572222054
-            6578743D22222F3E3C2F636F6C756D6E6D656D6F733E3C636F6C756D6E746F74
-            616C6D656D6F733E3C54667278444D504D656D6F56696577204C6566743D2231
-            3035362220546F703D22313730222057696474683D2239362220486569676874
-            3D22383522205265737472696374696F6E733D2238222053686F7748696E743D
-            2246616C73652220416C6C6F7745787072657373696F6E733D2246616C736522
-            20466F6E745374796C653D22333222204672616D652E5479703D223135222048
-            416C69676E3D22686143656E7465722220506172656E74466F6E743D2246616C
-            736522205472756E634F7574626F756E64546578743D2246616C736522205641
-            6C69676E3D22766143656E7465722220546578743D22D098D182D0BED0B3D0BE
-            222F3E3C2F636F6C756D6E746F74616C6D656D6F733E3C636F726E65726D656D
-            6F733E3C54667278444D504D656D6F56696577204C6566743D2231392C322220
-            546F703D22313336222057696474683D223935302C3422204865696768743D22
-            333422205265737472696374696F6E733D2238222053686F7748696E743D2246
-            616C73652220416C6C6F7745787072657373696F6E733D2246616C7365222046
-            6F6E745374796C653D22333222204672616D652E5479703D223135222048416C
-            69676E3D22686143656E7465722220506172656E74466F6E743D2246616C7365
-            22205472756E634F7574626F756E64546578743D2246616C7365222056416C69
-            676E3D22766143656E7465722220546578743D22222F3E3C54667278444D504D
-            656D6F56696577204C6566743D223937392C322220546F703D22313336222057
-            696474683D223138322C3422204865696768743D223334222052657374726963
-            74696F6E733D2238222053686F7748696E743D2246616C73652220416C6C6F77
+            D0BCD0BCD0B0222F3E3C2F63656C6C6865616465726D656D6F733E3C636F6C75
+            6D6E6D656D6F733E3C54667278444D504D656D6F56696577204C6566743D2239
+            37392C322220546F703D22313730222057696474683D2238362C342220486569
+            6768743D22383522205265737472696374696F6E733D2232342220416C6C6F77
             45787072657373696F6E733D2246616C73652220466F6E745374796C653D2233
             3222204672616D652E5479703D223135222048416C69676E3D22686143656E74
             65722220506172656E74466F6E743D2246616C736522205472756E634F757462
             6F756E64546578743D2246616C7365222056416C69676E3D22766143656E7465
-            722220546578743D22D0A3D181D0BBD183D0B3D0B0222F3E3C54667278444D50
-            4D656D6F56696577204C6566743D223937392C322220546F703D223334222057
-            696474683D223133342C3422204865696768743D223835222052657374726963
-            74696F6E733D2238222056697369626C653D2246616C7365222053686F774869
-            6E743D2246616C73652220416C6C6F7745787072657373696F6E733D2246616C
+            722220546578743D22222F3E3C2F636F6C756D6E6D656D6F733E3C636F6C756D
+            6E746F74616C6D656D6F733E3C54667278444D504D656D6F56696577204C6566
+            743D22313035362220546F703D22313730222057696474683D22393622204865
+            696768743D22383522205265737472696374696F6E733D22382220416C6C6F77
+            45787072657373696F6E733D2246616C73652220466F6E745374796C653D2233
+            3222204672616D652E5479703D223135222048416C69676E3D22686143656E74
+            65722220506172656E74466F6E743D2246616C736522205472756E634F757462
+            6F756E64546578743D2246616C7365222056416C69676E3D22766143656E7465
+            722220546578743D22D098D182D0BED0B3D0BE222F3E3C2F636F6C756D6E746F
+            74616C6D656D6F733E3C636F726E65726D656D6F733E3C54667278444D504D65
+            6D6F56696577204C6566743D2231392C322220546F703D223133362220576964
+            74683D223935302C3422204865696768743D2233342220526573747269637469
+            6F6E733D22382220416C6C6F7745787072657373696F6E733D2246616C736522
+            20466F6E745374796C653D22333222204672616D652E5479703D223135222048
+            416C69676E3D22686143656E7465722220506172656E74466F6E743D2246616C
+            736522205472756E634F7574626F756E64546578743D2246616C736522205641
+            6C69676E3D22766143656E7465722220546578743D22222F3E3C54667278444D
+            504D656D6F56696577204C6566743D223937392C322220546F703D2231333622
+            2057696474683D223138322C3422204865696768743D22333422205265737472
+            696374696F6E733D22382220416C6C6F7745787072657373696F6E733D224661
+            6C73652220466F6E745374796C653D22333222204672616D652E5479703D2231
+            35222048416C69676E3D22686143656E7465722220506172656E74466F6E743D
+            2246616C736522205472756E634F7574626F756E64546578743D2246616C7365
+            222056416C69676E3D22766143656E7465722220546578743D22D0A3D181D0BB
+            D183D0B3D0B0222F3E3C54667278444D504D656D6F56696577204C6566743D22
+            3937392C322220546F703D223334222057696474683D223133342C3422204865
+            696768743D22383522205265737472696374696F6E733D223822205669736962
+            6C653D2246616C73652220416C6C6F7745787072657373696F6E733D2246616C
             736522204672616D652E5479703D223135222048416C69676E3D22686143656E
             74657222205472756E634F7574626F756E64546578743D2246616C7365222056
             416C69676E3D22766143656E7465722220546578743D22222F3E3C5466727844
             4D504D656D6F56696577204C6566743D2231392C322220546F703D2231373022
             2057696474683D2238362C3422204865696768743D2238352220526573747269
-            6374696F6E733D2238222053686F7748696E743D2246616C73652220416C6C6F
-            7745787072657373696F6E733D2246616C73652220466F6E745374796C653D22
-            333222204672616D652E5479703D223135222048416C69676E3D22686143656E
-            7465722220506172656E74466F6E743D2246616C73652220576F726457726170
-            3D2246616C736522205472756E634F7574626F756E64546578743D2246616C73
-            65222056416C69676E3D22766143656E7465722220546578743D22D09B2ED0A1
-            2E222F3E3C54667278444D504D656D6F56696577204C6566743D223131352C32
-            2220546F703D22313730222057696474683D223230312C362220486569676874
-            3D22383522205265737472696374696F6E733D2238222053686F7748696E743D
-            2246616C73652220416C6C6F7745787072657373696F6E733D2246616C736522
-            20466F6E745374796C653D22333222204672616D652E5479703D223135222048
-            416C69676E3D22686143656E7465722220506172656E74466F6E743D2246616C
-            73652220576F7264577261703D2246616C736522205472756E634F7574626F75
-            6E64546578743D2246616C7365222056416C69676E3D22766143656E74657222
-            20546578743D22D090D0B4D180D0B5D181222F3E3C54667278444D504D656D6F
-            56696577204C6566743D223330372C322220546F703D22313730222057696474
-            683D2237362C3822204865696768743D22383522205265737472696374696F6E
-            733D2238222053686F7748696E743D2246616C73652220416C6C6F7745787072
-            657373696F6E733D2246616C73652220466F6E745374796C653D223332222046
-            72616D652E5479703D223135222048416C69676E3D22686143656E7465722220
-            506172656E74466F6E743D2246616C736522205472756E634F7574626F756E64
+            6374696F6E733D22382220416C6C6F7745787072657373696F6E733D2246616C
+            73652220466F6E745374796C653D22333222204672616D652E5479703D223135
+            222048416C69676E3D22686143656E7465722220506172656E74466F6E743D22
+            46616C73652220576F7264577261703D2246616C736522205472756E634F7574
+            626F756E64546578743D2246616C7365222056416C69676E3D22766143656E74
+            65722220546578743D22D09B2ED0A12E222F3E3C54667278444D504D656D6F56
+            696577204C6566743D223131352C322220546F703D2231373022205769647468
+            3D223230312C3622204865696768743D22383522205265737472696374696F6E
+            733D22382220416C6C6F7745787072657373696F6E733D2246616C7365222046
+            6F6E745374796C653D22333222204672616D652E5479703D223135222048416C
+            69676E3D22686143656E7465722220506172656E74466F6E743D2246616C7365
+            2220576F7264577261703D2246616C736522205472756E634F7574626F756E64
             546578743D2246616C7365222056416C69676E3D22766143656E746572222054
-            6578743D22D09ED0B1D1892ED0BFD0BB2E222F3E3C54667278444D504D656D6F
-            56696577204C6566743D223338342220546F703D22313730222057696474683D
-            2236372C3222204865696768743D22383522205265737472696374696F6E733D
-            2238222053686F7748696E743D2246616C73652220416C6C6F77457870726573
-            73696F6E733D2246616C73652220466F6E745374796C653D2233322220467261
-            6D652E5479703D223135222048416C69676E3D22686143656E74657222205061
-            72656E74466F6E743D2246616C736522205472756E634F7574626F756E645465
-            78743D2246616C7365222056416C69676E3D22766143656E7465722220546578
-            743D22D09AD0BED0BB2E20D0BFD180D0BED0B6222F3E3C54667278444D504D65
-            6D6F56696577204C6566743D223436302C382220546F703D2231373022205769
-            6474683D2235372C3622204865696768743D2238352220526573747269637469
-            6F6E733D2238222053686F7748696E743D2246616C73652220416C6C6F774578
-            7072657373696F6E733D2246616C73652220466F6E745374796C653D22313630
-            22204672616D652E5479703D223135222048416C69676E3D22686143656E7465
-            722220506172656E74466F6E743D2246616C736522205472756E634F7574626F
-            756E64546578743D2246616C7365222056416C69676E3D22766143656E746572
-            2220546578743D22D09AD0BED0BB2E20D0BBD18CD0B32E20D0B6D0B8D0BB222F
-            3E3C54667278444D504D656D6F56696577204C6566743D223531382C34222054
-            6F703D22313730222057696474683D2236372C3222204865696768743D223835
-            22205265737472696374696F6E733D2238222053686F7748696E743D2246616C
-            73652220416C6C6F7745787072657373696F6E733D2246616C73652220466F6E
+            6578743D22D090D0B4D180D0B5D181222F3E3C54667278444D504D656D6F5669
+            6577204C6566743D223330372C322220546F703D22313730222057696474683D
+            2237362C3822204865696768743D22383522205265737472696374696F6E733D
+            22382220416C6C6F7745787072657373696F6E733D2246616C73652220466F6E
             745374796C653D22333222204672616D652E5479703D223135222048416C6967
             6E3D22686143656E7465722220506172656E74466F6E743D2246616C73652220
             5472756E634F7574626F756E64546578743D2246616C7365222056416C69676E
-            3D22766143656E7465722220546578743D22D09AD0BED0BB2E20D0BBD18CD0B3
-            2E20D0BAD0BED0BC222F3E3C54667278444D504D656D6F56696577204C656674
-            3D223537362220546F703D22313730222057696474683D223230312C36222048
-            65696768743D22383522205265737472696374696F6E733D2238222053686F77
-            48696E743D2246616C73652220416C6C6F7745787072657373696F6E733D2246
-            616C73652220466F6E745374796C653D22333222204672616D652E5479703D22
-            3135222048416C69676E3D22686143656E7465722220506172656E74466F6E74
-            3D2246616C73652220576F7264577261703D2246616C736522205472756E634F
-            7574626F756E64546578743D2246616C7365222056416C69676E3D2276614365
-            6E7465722220546578743D22D0A42ED0982ED09E2E222F3E3C54667278444D50
-            4D656D6F56696577204C6566743D223738372C322220546F703D223137302220
-            57696474683D2231393222204865696768743D22383522205265737472696374
-            696F6E733D2238222053686F7748696E743D2246616C73652220416C6C6F7745
-            787072657373696F6E733D2246616C736522204672616D652E5479703D223135
-            222048416C69676E3D22686143656E74657222205472756E634F7574626F756E
-            64546578743D2246616C7365222056416C69676E3D22766143656E7465722220
-            546578743D22D094D0BED0BAD183D0BCD0B5D0BDD182222F3E3C2F636F726E65
-            726D656D6F733E3C726F776D656D6F733E3C54667278444D504D656D6F566965
-            77204C6566743D2231392C322220546F703D22323338222057696474683D2238
-            362C3422204865696768743D22333422205265737472696374696F6E733D2232
-            34222053686F7748696E743D2246616C73652220416C6C6F7745787072657373
-            696F6E733D2246616C73652220466F6E745374796C653D22333222204672616D
-            652E5479703D223135222048416C69676E3D22686143656E7465722220506172
-            656E74466F6E743D2246616C73652220576F7264577261703D2246616C736522
+            3D22766143656E7465722220546578743D22D09ED0B1D1892ED0BFD0BB2E222F
+            3E3C54667278444D504D656D6F56696577204C6566743D223338342220546F70
+            3D22313730222057696474683D2236372C3222204865696768743D2238352220
+            5265737472696374696F6E733D22382220416C6C6F7745787072657373696F6E
+            733D2246616C73652220466F6E745374796C653D22333222204672616D652E54
+            79703D223135222048416C69676E3D22686143656E7465722220506172656E74
+            466F6E743D2246616C736522205472756E634F7574626F756E64546578743D22
+            46616C7365222056416C69676E3D22766143656E7465722220546578743D22D0
+            9AD0BED0BB2E20D0BFD180D0BED0B6222F3E3C54667278444D504D656D6F5669
+            6577204C6566743D223436302C382220546F703D22313730222057696474683D
+            2235372C3622204865696768743D22383522205265737472696374696F6E733D
+            22382220416C6C6F7745787072657373696F6E733D2246616C73652220466F6E
+            745374796C653D2231363022204672616D652E5479703D223135222048416C69
+            676E3D22686143656E7465722220506172656E74466F6E743D2246616C736522
             205472756E634F7574626F756E64546578743D2246616C7365222056416C6967
-            6E3D22766143656E7465722220546578743D22222F3E3C54667278444D504D65
-            6D6F56696577204C6566743D223131352C322220546F703D2232333822205769
-            6474683D223230312C3622204865696768743D22333422205265737472696374
-            696F6E733D223234222053686F7748696E743D2246616C73652220416C6C6F77
-            45787072657373696F6E733D2246616C73652220466F6E745374796C653D2233
-            3222204672616D652E5479703D2231352220506172656E74466F6E743D224661
-            6C73652220576F7264577261703D2246616C736522205472756E634F7574626F
-            756E64546578743D2246616C7365222056416C69676E3D22766143656E746572
-            2220546578743D22222F3E3C54667278444D504D656D6F56696577204C656674
-            3D223330372C322220546F703D22323338222057696474683D2237362C382220
-            4865696768743D22333422205265737472696374696F6E733D22323422205368
-            6F7748696E743D2246616C73652220416C6C6F7745787072657373696F6E733D
-            2246616C73652220466F6E745374796C653D22333222204672616D652E547970
-            3D223135222048416C69676E3D22686152696768742220506172656E74466F6E
-            743D2246616C736522205472756E634F7574626F756E64546578743D2246616C
-            7365222056416C69676E3D22766143656E7465722220546578743D22222F3E3C
-            54667278444D504D656D6F56696577204C6566743D223338342220546F703D22
-            323338222057696474683D2236372C3222204865696768743D22333422205265
-            737472696374696F6E733D223234222053686F7748696E743D2246616C736522
-            20537472657463684D6F64653D22736D41637475616C4865696768742220416C
+            6E3D22766143656E7465722220546578743D22D09AD0BED0BB2E20D0BBD18CD0
+            B32E20D0B6D0B8D0BB222F3E3C54667278444D504D656D6F56696577204C6566
+            743D223531382C342220546F703D22313730222057696474683D2236372C3222
+            204865696768743D22383522205265737472696374696F6E733D22382220416C
             6C6F7745787072657373696F6E733D2246616C73652220466F6E745374796C65
-            3D22333222204672616D652E5479703D223135222048416C69676E3D22686152
-            696768742220506172656E74466F6E743D2246616C736522205472756E634F75
-            74626F756E64546578743D2246616C7365222056416C69676E3D22766143656E
-            7465722220546578743D22222F3E3C54667278444D504D656D6F56696577204C
-            6566743D223436302C382220546F703D22323338222057696474683D2235372C
-            3622204865696768743D22333422205265737472696374696F6E733D22323422
-            2053686F7748696E743D2246616C73652220537472657463684D6F64653D2273
-            6D41637475616C4865696768742220416C6C6F7745787072657373696F6E733D
-            2246616C73652220466F6E745374796C653D22333222204672616D652E547970
-            3D223135222048416C69676E3D22686152696768742220506172656E74466F6E
-            743D2246616C736522205472756E634F7574626F756E64546578743D2246616C
-            7365222056416C69676E3D22766143656E7465722220546578743D22222F3E3C
-            54667278444D504D656D6F56696577204C6566743D223531382C342220546F70
-            3D22323338222057696474683D2236372C3222204865696768743D2233342220
-            5265737472696374696F6E733D223234222053686F7748696E743D2246616C73
-            652220416C6C6F7745787072657373696F6E733D2246616C73652220466F6E74
-            5374796C653D22333222204672616D652E5479703D223135222048416C69676E
-            3D22686152696768742220506172656E74466F6E743D2246616C736522205472
-            756E634F7574626F756E64546578743D2246616C7365222056416C69676E3D22
-            766143656E7465722220546578743D22222F3E3C54667278444D504D656D6F56
-            696577204C6566743D223537362220546F703D22323338222057696474683D22
-            3230312C3622204865696768743D22333422205265737472696374696F6E733D
-            223234222053686F7748696E743D2246616C73652220416C6C6F774578707265
+            3D22333222204672616D652E5479703D223135222048416C69676E3D22686143
+            656E7465722220506172656E74466F6E743D2246616C736522205472756E634F
+            7574626F756E64546578743D2246616C7365222056416C69676E3D2276614365
+            6E7465722220546578743D22D09AD0BED0BB2E20D0BBD18CD0B32E20D0BAD0BE
+            D0BC222F3E3C54667278444D504D656D6F56696577204C6566743D2235373622
+            20546F703D22313730222057696474683D223230312C3622204865696768743D
+            22383522205265737472696374696F6E733D22382220416C6C6F774578707265
             7373696F6E733D2246616C73652220466F6E745374796C653D22333222204672
-            616D652E5479703D2231352220506172656E74466F6E743D2246616C73652220
-            576F7264577261703D2246616C736522205472756E634F7574626F756E645465
-            78743D2246616C7365222056416C69676E3D22766143656E7465722220546578
-            743D22222F3E3C54667278444D504D656D6F56696577204C6566743D22373837
-            2C322220546F703D22323338222057696474683D223139322220486569676874
-            3D22333422205265737472696374696F6E733D223234222053686F7748696E74
-            3D2246616C73652220416C6C6F7745787072657373696F6E733D2246616C7365
-            2220466F6E745374796C653D223022204672616D652E5479703D223135222050
+            616D652E5479703D223135222048416C69676E3D22686143656E746572222050
             6172656E74466F6E743D2246616C73652220576F7264577261703D2246616C73
             6522205472756E634F7574626F756E64546578743D2246616C7365222056416C
-            69676E3D22766143656E7465722220546578743D22222F3E3C2F726F776D656D
-            6F733E3C726F77746F74616C6D656D6F733E3C54667278444D504D656D6F5669
-            6577204C6566743D2231392C322220546F703D22323732222057696474683D22
-            3935302C3422204865696768743D22363822205265737472696374696F6E733D
-            2238222053686F7748696E743D2246616C73652220416C6C6F77457870726573
-            73696F6E733D2246616C73652220466F6E745374796C653D2233322220467261
-            6D652E5479703D223135222048416C69676E3D22686143656E74657222205061
-            72656E74466F6E743D2246616C736522205472756E634F7574626F756E645465
-            78743D2246616C7365222056416C69676E3D22766143656E7465722220546578
-            743D22D098D182D0BED0B3D0BE222F3E3C54667278444D504D656D6F56696577
-            204C6566743D2235372C362220546F703D22323732222057696474683D223430
-            332C3222204865696768743D22333422205265737472696374696F6E733D2238
-            222056697369626C653D2246616C7365222053686F7748696E743D2246616C73
-            652220416C6C6F7745787072657373696F6E733D2246616C73652220466F6E74
-            5374796C653D223022204672616D652E5479703D223135222048416C69676E3D
-            22686143656E7465722220506172656E74466F6E743D2246616C736522205472
-            756E634F7574626F756E64546578743D2246616C7365222056416C69676E3D22
-            766143656E7465722220546578743D22546F74616C222F3E3C54667278444D50
-            4D656D6F56696577204C6566743D223131352C322220546F703D223233382220
-            57696474683D223334352C3622204865696768743D2233342220526573747269
-            6374696F6E733D2238222056697369626C653D2246616C7365222053686F7748
-            696E743D2246616C73652220416C6C6F7745787072657373696F6E733D224661
-            6C73652220466F6E745374796C653D223022204672616D652E5479703D223135
-            222048416C69676E3D22686143656E7465722220506172656E74466F6E743D22
-            46616C736522205472756E634F7574626F756E64546578743D2246616C736522
-            2056416C69676E3D22766143656E7465722220546578743D22546F74616C222F
-            3E3C54667278444D504D656D6F56696577204C6566743D223137322C38222054
-            6F703D22323034222057696474683D2232383822204865696768743D22333422
-            205265737472696374696F6E733D2238222056697369626C653D2246616C7365
-            222053686F7748696E743D2246616C73652220416C6C6F774578707265737369
-            6F6E733D2246616C73652220466F6E745374796C653D223022204672616D652E
-            5479703D223135222048416C69676E3D22686143656E7465722220506172656E
-            74466F6E743D2246616C736522205472756E634F7574626F756E64546578743D
-            2246616C7365222056416C69676E3D22766143656E7465722220546578743D22
-            546F74616C222F3E3C54667278444D504D656D6F56696577204C6566743D2234
-            36302C382220546F703D22323034222057696474683D223633332C3622204865
-            696768743D22333422205265737472696374696F6E733D223822205669736962
-            6C653D2246616C7365222053686F7748696E743D2246616C73652220416C6C6F
-            7745787072657373696F6E733D2246616C73652220466F6E745374796C653D22
-            3022204672616D652E5479703D223135222048416C69676E3D22686143656E74
-            65722220506172656E74466F6E743D2246616C736522205472756E634F757462
-            6F756E64546578743D2246616C7365222056416C69676E3D22766143656E7465
-            722220546578743D22546F74616C222F3E3C54667278444D504D656D6F566965
-            77204C6566743D223332362C342220546F703D22313336222057696474683D22
-            3133342C3422204865696768743D22333422205265737472696374696F6E733D
-            2238222056697369626C653D2246616C7365222053686F7748696E743D224661
-            6C73652220416C6C6F7745787072657373696F6E733D2246616C73652220466F
-            6E745374796C653D223022204672616D652E5479703D223135222048416C6967
-            6E3D22686143656E7465722220506172656E74466F6E743D2246616C73652220
-            5472756E634F7574626F756E64546578743D2246616C7365222056416C69676E
-            3D22766143656E7465722220546578743D22546F74616C222F3E3C5466727844
-            4D504D656D6F56696577204C6566743D223430332C322220546F703D22313032
-            222057696474683D2235372C3622204865696768743D22333422205265737472
-            696374696F6E733D2238222056697369626C653D2246616C7365222053686F77
-            48696E743D2246616C73652220416C6C6F7745787072657373696F6E733D2246
-            616C73652220466F6E745374796C653D223022204672616D652E5479703D2231
-            35222048416C69676E3D22686143656E7465722220506172656E74466F6E743D
+            69676E3D22766143656E7465722220546578743D22D0A42ED0982ED09E2E222F
+            3E3C54667278444D504D656D6F56696577204C6566743D223738372C32222054
+            6F703D22313730222057696474683D2231393222204865696768743D22383522
+            205265737472696374696F6E733D22382220416C6C6F7745787072657373696F
+            6E733D2246616C736522204672616D652E5479703D223135222048416C69676E
+            3D22686143656E74657222205472756E634F7574626F756E64546578743D2246
+            616C7365222056416C69676E3D22766143656E7465722220546578743D22D094
+            D0BED0BAD183D0BCD0B5D0BDD182222F3E3C2F636F726E65726D656D6F733E3C
+            726F776D656D6F733E3C54667278444D504D656D6F56696577204C6566743D22
+            31392C322220546F703D22323338222057696474683D2238362C342220486569
+            6768743D22333422205265737472696374696F6E733D2232342220416C6C6F77
+            45787072657373696F6E733D2246616C73652220466F6E745374796C653D2233
+            3222204672616D652E5479703D223135222048416C69676E3D22686143656E74
+            65722220506172656E74466F6E743D2246616C73652220576F7264577261703D
             2246616C736522205472756E634F7574626F756E64546578743D2246616C7365
-            222056416C69676E3D22766143656E7465722220546578743D22546F74616C22
-            2F3E3C54667278444D504D656D6F56696577204C6566743D223731302C342220
-            546F703D22313032222057696474683D223130352C3622204865696768743D22
-            333422205265737472696374696F6E733D2238222056697369626C653D224661
-            6C7365222053686F7748696E743D2246616C73652220416C6C6F774578707265
-            7373696F6E733D2246616C73652220466F6E745374796C653D22302220467261
-            6D652E5479703D223135222048416C69676E3D22686143656E74657222205061
-            72656E74466F6E743D2246616C736522205472756E634F7574626F756E645465
-            78743D2246616C7365222056416C69676E3D22766143656E7465722220546578
-            743D22546F74616C222F3E3C2F726F77746F74616C6D656D6F733E3C63656C6C
-            66756E6374696F6E733E3C6974656D20312F3E3C2F63656C6C66756E6374696F
-            6E733E3C636F6C756D6E736F72743E3C6974656D20322F3E3C2F636F6C756D6E
-            736F72743E3C726F77736F72743E3C6974656D20322F3E3C6974656D20322F3E
-            3C6974656D20322F3E3C6974656D20322F3E3C6974656D20322F3E3C6974656D
-            20322F3E3C6974656D20322F3E3C6974656D20322F3E3C2F726F77736F72743E
-            3C2F63726F73733E}
+            222056416C69676E3D22766143656E7465722220546578743D22222F3E3C5466
+            7278444D504D656D6F56696577204C6566743D223131352C322220546F703D22
+            323338222057696474683D223230312C3622204865696768743D223334222052
+            65737472696374696F6E733D2232342220416C6C6F7745787072657373696F6E
+            733D2246616C73652220466F6E745374796C653D22333222204672616D652E54
+            79703D2231352220506172656E74466F6E743D2246616C73652220576F726457
+            7261703D2246616C736522205472756E634F7574626F756E64546578743D2246
+            616C7365222056416C69676E3D22766143656E7465722220546578743D22222F
+            3E3C54667278444D504D656D6F56696577204C6566743D223330372C32222054
+            6F703D22323338222057696474683D2237362C3822204865696768743D223334
+            22205265737472696374696F6E733D2232342220416C6C6F7745787072657373
+            696F6E733D2246616C73652220466F6E745374796C653D22333222204672616D
+            652E5479703D223135222048416C69676E3D2268615269676874222050617265
+            6E74466F6E743D2246616C736522205472756E634F7574626F756E6454657874
+            3D2246616C7365222056416C69676E3D22766143656E7465722220546578743D
+            22222F3E3C54667278444D504D656D6F56696577204C6566743D223338342220
+            546F703D22323338222057696474683D2236372C3222204865696768743D2233
+            3422205265737472696374696F6E733D2232342220537472657463684D6F6465
+            3D22736D41637475616C4865696768742220416C6C6F7745787072657373696F
+            6E733D2246616C73652220466F6E745374796C653D22333222204672616D652E
+            5479703D223135222048416C69676E3D22686152696768742220506172656E74
+            466F6E743D2246616C736522205472756E634F7574626F756E64546578743D22
+            46616C7365222056416C69676E3D22766143656E7465722220546578743D2222
+            2F3E3C54667278444D504D656D6F56696577204C6566743D223436302C382220
+            546F703D22323338222057696474683D2235372C3622204865696768743D2233
+            3422205265737472696374696F6E733D2232342220537472657463684D6F6465
+            3D22736D41637475616C4865696768742220416C6C6F7745787072657373696F
+            6E733D2246616C73652220466F6E745374796C653D22333222204672616D652E
+            5479703D223135222048416C69676E3D22686152696768742220506172656E74
+            466F6E743D2246616C736522205472756E634F7574626F756E64546578743D22
+            46616C7365222056416C69676E3D22766143656E7465722220546578743D2222
+            2F3E3C54667278444D504D656D6F56696577204C6566743D223531382C342220
+            546F703D22323338222057696474683D2236372C3222204865696768743D2233
+            3422205265737472696374696F6E733D2232342220416C6C6F77457870726573
+            73696F6E733D2246616C73652220466F6E745374796C653D2233322220467261
+            6D652E5479703D223135222048416C69676E3D22686152696768742220506172
+            656E74466F6E743D2246616C736522205472756E634F7574626F756E64546578
+            743D2246616C7365222056416C69676E3D22766143656E746572222054657874
+            3D22222F3E3C54667278444D504D656D6F56696577204C6566743D2235373622
+            20546F703D22323338222057696474683D223230312C3622204865696768743D
+            22333422205265737472696374696F6E733D2232342220416C6C6F7745787072
+            657373696F6E733D2246616C73652220466F6E745374796C653D223332222046
+            72616D652E5479703D2231352220506172656E74466F6E743D2246616C736522
+            20576F7264577261703D2246616C736522205472756E634F7574626F756E6454
+            6578743D2246616C7365222056416C69676E3D22766143656E74657222205465
+            78743D22222F3E3C54667278444D504D656D6F56696577204C6566743D223738
+            372C322220546F703D22323338222057696474683D2231393222204865696768
+            743D22333422205265737472696374696F6E733D2232342220416C6C6F774578
+            7072657373696F6E733D2246616C73652220466F6E745374796C653D22302220
+            4672616D652E5479703D2231352220506172656E74466F6E743D2246616C7365
+            2220576F7264577261703D2246616C736522205472756E634F7574626F756E64
+            546578743D2246616C7365222056416C69676E3D22766143656E746572222054
+            6578743D22222F3E3C2F726F776D656D6F733E3C726F77746F74616C6D656D6F
+            733E3C54667278444D504D656D6F56696577204C6566743D2231392C32222054
+            6F703D22323732222057696474683D223935302C3422204865696768743D2236
+            3822205265737472696374696F6E733D22382220416C6C6F7745787072657373
+            696F6E733D2246616C73652220466F6E745374796C653D22333222204672616D
+            652E5479703D223135222048416C69676E3D22686143656E7465722220506172
+            656E74466F6E743D2246616C736522205472756E634F7574626F756E64546578
+            743D2246616C7365222056416C69676E3D22766143656E746572222054657874
+            3D22D098D182D0BED0B3D0BE222F3E3C54667278444D504D656D6F5669657720
+            4C6566743D2235372C362220546F703D22323732222057696474683D22343033
+            2C3222204865696768743D22333422205265737472696374696F6E733D223822
+            2056697369626C653D2246616C73652220416C6C6F7745787072657373696F6E
+            733D2246616C73652220466F6E745374796C653D223022204672616D652E5479
+            703D223135222048416C69676E3D22686143656E7465722220506172656E7446
+            6F6E743D2246616C736522205472756E634F7574626F756E64546578743D2246
+            616C7365222056416C69676E3D22766143656E7465722220546578743D22546F
+            74616C222F3E3C54667278444D504D656D6F56696577204C6566743D22313135
+            2C322220546F703D22323338222057696474683D223334352C36222048656967
+            68743D22333422205265737472696374696F6E733D2238222056697369626C65
+            3D2246616C73652220416C6C6F7745787072657373696F6E733D2246616C7365
+            2220466F6E745374796C653D223022204672616D652E5479703D223135222048
+            416C69676E3D22686143656E7465722220506172656E74466F6E743D2246616C
+            736522205472756E634F7574626F756E64546578743D2246616C736522205641
+            6C69676E3D22766143656E7465722220546578743D22546F74616C222F3E3C54
+            667278444D504D656D6F56696577204C6566743D223137322C382220546F703D
+            22323034222057696474683D2232383822204865696768743D22333422205265
+            737472696374696F6E733D2238222056697369626C653D2246616C7365222041
+            6C6C6F7745787072657373696F6E733D2246616C73652220466F6E745374796C
+            653D223022204672616D652E5479703D223135222048416C69676E3D22686143
+            656E7465722220506172656E74466F6E743D2246616C736522205472756E634F
+            7574626F756E64546578743D2246616C7365222056416C69676E3D2276614365
+            6E7465722220546578743D22546F74616C222F3E3C54667278444D504D656D6F
+            56696577204C6566743D223436302C382220546F703D22323034222057696474
+            683D223633332C3622204865696768743D22333422205265737472696374696F
+            6E733D2238222056697369626C653D2246616C73652220416C6C6F7745787072
+            657373696F6E733D2246616C73652220466F6E745374796C653D223022204672
+            616D652E5479703D223135222048416C69676E3D22686143656E746572222050
+            6172656E74466F6E743D2246616C736522205472756E634F7574626F756E6454
+            6578743D2246616C7365222056416C69676E3D22766143656E74657222205465
+            78743D22546F74616C222F3E3C54667278444D504D656D6F56696577204C6566
+            743D223332362C342220546F703D22313336222057696474683D223133342C34
+            22204865696768743D22333422205265737472696374696F6E733D2238222056
+            697369626C653D2246616C73652220416C6C6F7745787072657373696F6E733D
+            2246616C73652220466F6E745374796C653D223022204672616D652E5479703D
+            223135222048416C69676E3D22686143656E7465722220506172656E74466F6E
+            743D2246616C736522205472756E634F7574626F756E64546578743D2246616C
+            7365222056416C69676E3D22766143656E7465722220546578743D22546F7461
+            6C222F3E3C54667278444D504D656D6F56696577204C6566743D223430332C32
+            2220546F703D22313032222057696474683D2235372C3622204865696768743D
+            22333422205265737472696374696F6E733D2238222056697369626C653D2246
+            616C73652220416C6C6F7745787072657373696F6E733D2246616C7365222046
+            6F6E745374796C653D223022204672616D652E5479703D223135222048416C69
+            676E3D22686143656E7465722220506172656E74466F6E743D2246616C736522
+            205472756E634F7574626F756E64546578743D2246616C7365222056416C6967
+            6E3D22766143656E7465722220546578743D22546F74616C222F3E3C54667278
+            444D504D656D6F56696577204C6566743D223731302C342220546F703D223130
+            32222057696474683D223130352C3622204865696768743D2233342220526573
+            7472696374696F6E733D2238222056697369626C653D2246616C73652220416C
+            6C6F7745787072657373696F6E733D2246616C73652220466F6E745374796C65
+            3D223022204672616D652E5479703D223135222048416C69676E3D2268614365
+            6E7465722220506172656E74466F6E743D2246616C736522205472756E634F75
+            74626F756E64546578743D2246616C7365222056416C69676E3D22766143656E
+            7465722220546578743D22546F74616C222F3E3C2F726F77746F74616C6D656D
+            6F733E3C63656C6C66756E6374696F6E733E3C6974656D20312F3E3C2F63656C
+            6C66756E6374696F6E733E3C636F6C756D6E736F72743E3C6974656D20322F3E
+            3C2F636F6C756D6E736F72743E3C726F77736F72743E3C6974656D20322F3E3C
+            6974656D20322F3E3C6974656D20322F3E3C6974656D20322F3E3C6974656D20
+            322F3E3C6974656D20322F3E3C6974656D20322F3E3C6974656D20322F3E3C2F
+            726F77736F72743E3C2F63726F73733E}
         end
       end
     end
@@ -3863,7 +3145,6 @@ object Form_olap: TForm_olap
       'USL_NAME='#1059#1089#1083#1091#1075#1072
       'SUMMA='#1057#1091#1084#1084#1072
       'DOC='#1044#1086#1082#1091#1084#1077#1085#1090)
-    DataSet = Form_tree_objects.OD_data
     BCDToCurrency = False
     Left = 120
     Top = 136
@@ -3881,13 +3162,13 @@ object Form_olap: TForm_olap
     Top = 168
   end
   object PivotCube57: TPivotCube
-    FactTableDataSet = Form_tree_objects.OD_data
+    FactTableDataSet = DM_Olap.Uni_Data
     Dimensions = <
       item
         Enabled = True
         AliasName = 'PREDPR'
         FieldName = 'PREDP'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         KeyField = 'PREDP'
         LookupField = 'PREDP'
         WrapTo = wt_None
@@ -3905,7 +3186,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'PREDPR_DET'
         FieldName = 'PREDPR_DET'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         KeyField = 'PREDPR_DET'
         LookupField = 'PREDPR_DET'
         WrapTo = wt_None
@@ -3923,7 +3204,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'KW'
         FieldName = 'KW'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -3939,7 +3220,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'ORGNAME'
         FieldName = 'ORGNAME'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         KeyField = 'ORGNAME'
         LookupField = 'ORGNAME'
         WrapTo = wt_None
@@ -3957,7 +3238,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NM'
         FieldName = 'NM'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         KeyField = 'NM'
         LookupField = 'NM'
         WrapTo = wt_None
@@ -3975,7 +3256,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NM1'
         FieldName = 'NM1'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -3991,7 +3272,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'STATUS'
         FieldName = 'STATUS'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         KeyField = 'STATUS'
         LookupField = 'STATUS'
         WrapTo = wt_None
@@ -4009,7 +3290,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'SCH'
         FieldName = 'SCH'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         KeyField = 'SCH'
         LookupField = 'SCH'
         WrapTo = wt_None
@@ -4027,7 +3308,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'VAL_GROUP'
         FieldName = 'VAL_GROUP'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         KeyField = 'VAL_GROUP'
         LookupField = 'VAL_GROUP'
         WrapTo = wt_None
@@ -4045,7 +3326,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'MG1'
         FieldName = 'MG1'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -4375,13 +3656,13 @@ object Form_olap: TForm_olap
     Top = 264
   end
   object PivotCube58: TPivotCube
-    FactTableDataSet = Form_tree_objects.OD_data
+    FactTableDataSet = DM_Olap.Uni_Data
     Dimensions = <
       item
         Enabled = True
         AliasName = 'PREDPR'
         FieldName = 'PREDP'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -4397,7 +3678,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'PREDPR_DET'
         FieldName = 'PREDPR_DET'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -4413,7 +3694,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'KW'
         FieldName = 'KW'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -4429,7 +3710,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'TYPE_PSCH'
         FieldName = 'TYPE_PSCH'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -4760,13 +4041,13 @@ object Form_olap: TForm_olap
     Top = 168
   end
   object PivotCube60: TPivotCube
-    FactTableDataSet = Form_tree_objects.OD_data
+    FactTableDataSet = DM_Olap.Uni_Data
     Dimensions = <
       item
         Enabled = True
         AliasName = 'PREDPR'
         FieldName = 'PREDP'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -4782,7 +4063,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'PREDPR_DET'
         FieldName = 'PREDPR_DET'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -4798,7 +4079,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'TARIF_NAME'
         FieldName = 'TARIF_NAME'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -4814,7 +4095,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NM'
         FieldName = 'NM'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -4830,7 +4111,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'MG'
         FieldName = 'MG'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -5130,13 +4411,13 @@ object Form_olap: TForm_olap
   object frxDBDS_base: TfrxDBDataset
     UserName = 'frxDBDS_base'
     CloseDataSource = False
-    DataSet = Form_tree_objects.OD_data
+    DataSet = DM_Olap.Uni_Data
     BCDToCurrency = False
     Left = 120
     Top = 384
   end
   object frxReport_base: TfrxReport
-    Version = '0.0'
+    Version = '5.1.9'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -5167,13 +4448,12 @@ object Form_olap: TForm_olap
       'DEB_PROC=DEB_PROC'
       'SUM_DISTR=SUM_DISTR'
       'PAY_PROC=PAY_PROC')
-    DataSet = Form_tree_objects.OD_data
     BCDToCurrency = False
     Left = 120
     Top = 208
   end
   object frxReport65: TfrxReport
-    Version = '0.0'
+    Version = '5.1.9'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -5199,34 +4479,33 @@ object Form_olap: TForm_olap
     Style = <
       item
         Name = 'Title'
-        Color = 14211288
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -16
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Fill.BackColor = 14211288
       end
       item
         Name = 'Header'
-        Color = 15790320
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Fill.BackColor = 15790320
       end
       item
         Name = 'Group header'
-        Color = 15790320
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Fill.BackColor = 15790320
       end
       item
         Name = 'Data'
-        Color = clNone
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
@@ -5235,7 +4514,6 @@ object Form_olap: TForm_olap
       end
       item
         Name = 'Group footer'
-        Color = clNone
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
@@ -5245,7 +4523,6 @@ object Form_olap: TForm_olap
       end
       item
         Name = 'Header line'
-        Color = clNone
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
@@ -5266,6 +4543,7 @@ object Form_olap: TForm_olap
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
       object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
         Height = 26.456710000000000000
         Top = 18.897650000000000000
         Width = 740.409927000000000000
@@ -5273,13 +4551,12 @@ object Form_olap: TForm_olap
           Align = baWidth
           Width = 740.409927000000000000
           Height = 22.677180000000000000
-          ShowHint = False
-          Color = 14211288
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Fill.BackColor = 14211288
           HAlign = haCenter
           Memo.UTF8 = (
             
@@ -5291,6 +4568,7 @@ object Form_olap: TForm_olap
         end
       end
       object GroupHeader1: TfrxGroupHeader
+        FillType = ftBrush
         Height = 64.252010000000000000
         Top = 105.826840000000000000
         Width = 740.409927000000000000
@@ -5299,13 +4577,12 @@ object Form_olap: TForm_olap
           Left = 445.302554430000000000
           Width = 73.023724810000000000
           Height = 62.992166670000000000
-          ShowHint = False
-          Color = 15790320
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Fill.BackColor = 15790320
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#160#1056#176#1057#1027#1056#1111#1057#1026#1056#181#1056#1169#1056#181#1056#187#1056#1105#1056#187#1056#1109#1057#1027#1057#1034
@@ -5318,13 +4595,12 @@ object Form_olap: TForm_olap
           Left = 518.326279250000000000
           Width = 77.652875210000000000
           Height = 62.992166670000000000
-          ShowHint = False
-          Color = 15790320
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Fill.BackColor = 15790320
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#160#1056#176#1057#1027#1056#1111#1057#1026#1056#181#1056#1169#1056#181#1056#187#1056#1105#1056#187#1056#1109#1057#1027#1057#1034
@@ -5336,13 +4612,12 @@ object Form_olap: TForm_olap
           Left = 595.979154450000000000
           Width = 72.446003340000000000
           Height = 62.992166670000000000
-          ShowHint = False
-          Color = 15790320
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Fill.BackColor = 15790320
           HAlign = haCenter
           Memo.UTF8 = (
             
@@ -5356,13 +4631,12 @@ object Form_olap: TForm_olap
           Left = 670.055027800000000000
           Width = 74.220470000000000000
           Height = 62.992166670000000000
-          ShowHint = False
-          Color = 15790320
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Fill.BackColor = 15790320
           HAlign = haCenter
           Memo.UTF8 = (
             
@@ -5374,8 +4648,6 @@ object Form_olap: TForm_olap
         object Memo2: TfrxMemoView
           Width = 443.417664810000000000
           Height = 64.252010000000000000
-          ShowHint = False
-          Color = 15790320
           DataSet = frxDBDataset65
           DataSetName = 'frxDBDataset65'
           Font.Charset = DEFAULT_CHARSET
@@ -5383,12 +4655,14 @@ object Form_olap: TForm_olap
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Fill.BackColor = 15790320
           Memo.UTF8 = (
             #1056#1118#1056#1105#1056#1111' '#1057#1026#1056#176#1057#1027#1056#1111#1057#1026#1056#181#1056#1169#1056#181#1056#187#1056#181#1056#1029#1056#1105#1057#1039': [frxDBDataset65."TYPE_DISTR"]')
           ParentFont = False
         end
       end
       object GroupHeader2: TfrxGroupHeader
+        FillType = ftBrush
         Height = 49.133890000000000000
         Top = 192.756030000000000000
         Width = 740.409927000000000000
@@ -5397,13 +4671,12 @@ object Form_olap: TForm_olap
           Top = 26.456709999999990000
           Width = 197.781913620000000000
           Height = 21.417336670000000000
-          ShowHint = False
-          Color = 15790320
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Fill.BackColor = 15790320
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#1032#1057#1027#1056#187#1057#1107#1056#1110#1056#176)
@@ -5415,13 +4688,12 @@ object Form_olap: TForm_olap
           Top = 26.456709999999990000
           Width = 247.524112260000000000
           Height = 21.417336670000000000
-          ShowHint = False
-          Color = 15790320
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Fill.BackColor = 15790320
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#1115#1057#1026#1056#1110#1056#176#1056#1029#1056#1105#1056#183#1056#176#1057#8224#1056#1105#1057#1039)
@@ -5432,8 +4704,6 @@ object Form_olap: TForm_olap
           Align = baWidth
           Width = 740.409927000000000000
           Height = 26.456710000000000000
-          ShowHint = False
-          Color = 15790320
           DataSet = frxDBDataset65
           DataSetName = 'frxDBDataset65'
           Font.Charset = DEFAULT_CHARSET
@@ -5441,6 +4711,7 @@ object Form_olap: TForm_olap
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Fill.BackColor = 15790320
           Memo.UTF8 = (
             #1056#1032#1056#1113': [frxDBDataset65."NAME_TR"]')
           ParentFont = False
@@ -5449,6 +4720,7 @@ object Form_olap: TForm_olap
         end
       end
       object MasterData1: TfrxMasterData
+        FillType = ftBrush
         Height = 18.897650000000000000
         Top = 264.567100000000000000
         Width = 740.409927000000000000
@@ -5458,7 +4730,6 @@ object Form_olap: TForm_olap
         object Memo13: TfrxMemoView
           Width = 197.781913620000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'NAME_USL'
           DataSet = frxDBDataset65
           DataSetName = 'frxDBDataset65'
@@ -5476,7 +4747,6 @@ object Form_olap: TForm_olap
           Left = 197.781913620000000000
           Width = 243.744582260000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'NAME_ORG'
           DataSet = frxDBDataset65
           DataSetName = 'frxDBDataset65'
@@ -5494,7 +4764,6 @@ object Form_olap: TForm_olap
           Left = 443.302554430000100000
           Width = 73.023724810000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'PAY'
           DataSet = frxDBDataset65
           DataSetName = 'frxDBDataset65'
@@ -5513,7 +4782,6 @@ object Form_olap: TForm_olap
           Left = 515.504330000000000000
           Width = 69.244194810000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'PAY_PROC'
           DataSet = frxDBDataset65
           DataSetName = 'frxDBDataset65'
@@ -5532,7 +4800,6 @@ object Form_olap: TForm_olap
           Left = 585.113591470000000000
           Width = 83.784593340000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataSet = frxDBDataset65
           DataSetName = 'frxDBDataset65'
           Font.Charset = DEFAULT_CHARSET
@@ -5550,7 +4817,6 @@ object Form_olap: TForm_olap
           Left = 669.055027800000000000
           Width = 70.440940000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'DEB_PROC'
           DataSet = frxDBDataset65
           DataSetName = 'frxDBDataset65'
@@ -5567,6 +4833,7 @@ object Form_olap: TForm_olap
         end
       end
       object GroupFooter1: TfrxGroupFooter
+        FillType = ftBrush
         Height = 18.897650000000000000
         Top = 351.496290000000000000
         Width = 740.409927000000000000
@@ -5574,8 +4841,6 @@ object Form_olap: TForm_olap
           Left = 439.523024430000000000
           Width = 76.803254810000000000
           Height = 18.897650000000000000
-          ShowHint = False
-          Color = clBtnFace
           DataSet = frxDBDataset65
           DataSetName = 'frxDBDataset65'
           Font.Charset = DEFAULT_CHARSET
@@ -5583,6 +4848,7 @@ object Form_olap: TForm_olap
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Fill.BackColor = clBtnFace
           HAlign = haRight
           Memo.UTF8 = (
             '[SUM(<frxDBDataset65."PAY">,MasterData1)]')
@@ -5592,8 +4858,6 @@ object Form_olap: TForm_olap
           Left = 515.504330000000000000
           Width = 69.244194810000000000
           Height = 18.897650000000000000
-          ShowHint = False
-          Color = clBtnFace
           DataSet = frxDBDataset65
           DataSetName = 'frxDBDataset65'
           Font.Charset = DEFAULT_CHARSET
@@ -5601,6 +4865,7 @@ object Form_olap: TForm_olap
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Fill.BackColor = clBtnFace
           HAlign = haRight
           Memo.UTF8 = (
             '[SUM(<frxDBDataset65."PAY_PROC">,MasterData1)]')
@@ -5610,8 +4875,6 @@ object Form_olap: TForm_olap
           Left = 669.055027800000000000
           Width = 70.440940000000000000
           Height = 18.897650000000000000
-          ShowHint = False
-          Color = clBtnFace
           DataSet = frxDBDataset65
           DataSetName = 'frxDBDataset65'
           Font.Charset = DEFAULT_CHARSET
@@ -5619,6 +4882,7 @@ object Form_olap: TForm_olap
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Fill.BackColor = clBtnFace
           HAlign = haRight
           Memo.UTF8 = (
             '[SUM(<frxDBDataset65."DEB_PROC">,MasterData1)]')
@@ -5627,8 +4891,6 @@ object Form_olap: TForm_olap
         object Memo31: TfrxMemoView
           Width = 439.638134810000000000
           Height = 18.897650000000000000
-          ShowHint = False
-          Color = clBtnFace
           DataSet = frxDBDataset65
           DataSetName = 'frxDBDataset65'
           Font.Charset = DEFAULT_CHARSET
@@ -5636,6 +4898,7 @@ object Form_olap: TForm_olap
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Fill.BackColor = clBtnFace
           Memo.UTF8 = (
             
               #1056#152#1057#8218#1056#1109#1056#1110#1056#1109' '#1056#1111#1056#1109' '#1057#8218#1056#1105#1056#1111#1057#1107' '#1057#1026#1056#176#1057#1027#1056#1111#1057#1026#1056#181#1056#1169#1056#181#1056#187#1056#181#1056#1029#1056#1105#1057#1039': [frxDBDatas' +
@@ -5646,8 +4909,6 @@ object Form_olap: TForm_olap
           Left = 584.535870000000000000
           Width = 84.362314810000000000
           Height = 18.897650000000000000
-          ShowHint = False
-          Color = clBtnFace
           DataSet = frxDBDataset65
           DataSetName = 'frxDBDataset65'
           Font.Charset = DEFAULT_CHARSET
@@ -5655,6 +4916,7 @@ object Form_olap: TForm_olap
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Fill.BackColor = clBtnFace
           HAlign = haRight
           Memo.UTF8 = (
             '[SUM(<frxDBDataset65."DEB">,MasterData1)]')
@@ -5662,6 +4924,7 @@ object Form_olap: TForm_olap
         end
       end
       object GroupFooter2: TfrxGroupFooter
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 306.141930000000000000
         Width = 740.409927000000000000
@@ -5669,8 +4932,6 @@ object Form_olap: TForm_olap
           Left = 439.523024430000100000
           Width = 76.803254810000000000
           Height = 18.897650000000000000
-          ShowHint = False
-          Color = clBtnFace
           DataSet = frxDBDataset65
           DataSetName = 'frxDBDataset65'
           Font.Charset = DEFAULT_CHARSET
@@ -5678,6 +4939,7 @@ object Form_olap: TForm_olap
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Fill.BackColor = clBtnFace
           HAlign = haRight
           Memo.UTF8 = (
             '[SUM(<frxDBDataset65."PAY">,MasterData1)]')
@@ -5687,8 +4949,6 @@ object Form_olap: TForm_olap
           Left = 515.504330000000000000
           Width = 69.244194810000000000
           Height = 18.897650000000000000
-          ShowHint = False
-          Color = clBtnFace
           DataSet = frxDBDataset65
           DataSetName = 'frxDBDataset65'
           Font.Charset = DEFAULT_CHARSET
@@ -5696,6 +4956,7 @@ object Form_olap: TForm_olap
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Fill.BackColor = clBtnFace
           HAlign = haRight
           Memo.UTF8 = (
             '[SUM(<frxDBDataset65."PAY_PROC">,MasterData1)]')
@@ -5705,8 +4966,6 @@ object Form_olap: TForm_olap
           Left = 669.055027800000000000
           Width = 70.440940000000000000
           Height = 18.897650000000000000
-          ShowHint = False
-          Color = clBtnFace
           DataSet = frxDBDataset65
           DataSetName = 'frxDBDataset65'
           Font.Charset = DEFAULT_CHARSET
@@ -5714,6 +4973,7 @@ object Form_olap: TForm_olap
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Fill.BackColor = clBtnFace
           HAlign = haRight
           Memo.UTF8 = (
             '[SUM(<frxDBDataset65."DEB_PROC">,MasterData1)]')
@@ -5722,8 +4982,6 @@ object Form_olap: TForm_olap
         object Memo26: TfrxMemoView
           Width = 439.638134810000000000
           Height = 18.897650000000000000
-          ShowHint = False
-          Color = clBtnFace
           DataSet = frxDBDataset65
           DataSetName = 'frxDBDataset65'
           Font.Charset = DEFAULT_CHARSET
@@ -5731,6 +4989,7 @@ object Form_olap: TForm_olap
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Fill.BackColor = clBtnFace
           Memo.UTF8 = (
             #1056#152#1057#8218#1056#1109#1056#1110#1056#1109' '#1056#1111#1056#1109' '#1056#1032#1056#1113': [frxDBDataset65."NAME_TR"]')
           ParentFont = False
@@ -5739,8 +4998,6 @@ object Form_olap: TForm_olap
           Left = 584.535870000000000000
           Width = 84.362314810000000000
           Height = 18.897650000000000000
-          ShowHint = False
-          Color = clBtnFace
           DataSet = frxDBDataset65
           DataSetName = 'frxDBDataset65'
           Font.Charset = DEFAULT_CHARSET
@@ -5748,6 +5005,7 @@ object Form_olap: TForm_olap
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Fill.BackColor = clBtnFace
           HAlign = haRight
           Memo.UTF8 = (
             '[SUM(<frxDBDataset65."DEB">,MasterData1)]')
@@ -5755,13 +5013,13 @@ object Form_olap: TForm_olap
         end
       end
       object PageFooter1: TfrxPageFooter
+        FillType = ftBrush
         Height = 26.456710000000000000
         Top = 476.220780000000000000
         Width = 740.409927000000000000
         object Memo21: TfrxMemoView
           Align = baWidth
           Width = 740.409927000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
@@ -5775,7 +5033,6 @@ object Form_olap: TForm_olap
         object Memo22: TfrxMemoView
           Top = 1.000000000000000000
           Height = 22.677180000000000000
-          ShowHint = False
           AutoWidth = True
           Memo.UTF8 = (
             '[Date] [Time]')
@@ -5786,13 +5043,13 @@ object Form_olap: TForm_olap
           Top = 1.000000000000000000
           Width = 75.590600000000000000
           Height = 22.677180000000000000
-          ShowHint = False
           HAlign = haRight
           Memo.UTF8 = (
             #1056#1038#1057#8218#1057#1026'. [Page#]')
         end
       end
       object ReportSummary1: TfrxReportSummary
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 430.866420000000000000
         Width = 740.409927000000000000
@@ -5800,8 +5057,6 @@ object Form_olap: TForm_olap
           Left = 439.523024430000100000
           Width = 76.803254810000000000
           Height = 18.897650000000000000
-          ShowHint = False
-          Color = clBtnFace
           DataSet = frxDBDataset65
           DataSetName = 'frxDBDataset65'
           Font.Charset = DEFAULT_CHARSET
@@ -5809,6 +5064,7 @@ object Form_olap: TForm_olap
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Fill.BackColor = clBtnFace
           HAlign = haRight
           Memo.UTF8 = (
             '[SUM(<frxDBDataset65."PAY">,MasterData1)]')
@@ -5817,8 +5073,6 @@ object Form_olap: TForm_olap
         object Memo36: TfrxMemoView
           Width = 443.417664810000000000
           Height = 18.897650000000000000
-          ShowHint = False
-          Color = clBtnFace
           DataSet = frxDBDataset65
           DataSetName = 'frxDBDataset65'
           Font.Charset = DEFAULT_CHARSET
@@ -5826,6 +5080,7 @@ object Form_olap: TForm_olap
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Fill.BackColor = clBtnFace
           Memo.UTF8 = (
             #1056#152#1057#8218#1056#1109#1056#1110#1056#1109' '#1056#1111#1056#1109' '#1056#1109#1057#8218#1057#8225#1056#181#1057#8218#1057#1107':')
           ParentFont = False
@@ -5834,13 +5089,13 @@ object Form_olap: TForm_olap
     end
   end
   object PivotCube36: TPivotCube
-    FactTableDataSet = Form_tree_objects.OD_data
+    FactTableDataSet = DM_Olap.Uni_Data
     Dimensions = <
       item
         Enabled = True
         AliasName = 'NKOM'
         FieldName = 'NKOM'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -5856,7 +5111,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NINK'
         FieldName = 'NINK'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -5872,7 +5127,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'DAT_INK'
         FieldName = 'DAT_INK'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -5888,7 +5143,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'OPERNAME'
         FieldName = 'OPERNAME'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -6253,19 +5508,19 @@ object Form_olap: TForm_olap
       'PRIV_PROC=PRIV_PROC'
       'REL_NAME=REL_NAME'
       'SHORT_NAME=SHORT_NAME')
-    DataSet = Form_tree_objects.OD_c_kart_pr
+    DataSet = DM_Olap.Uni_c_kart_pr
     BCDToCurrency = False
     Left = 120
     Top = 304
   end
   object PivotCube80: TPivotCube
-    FactTableDataSet = Form_tree_objects.OD_data
+    FactTableDataSet = DM_Olap.Uni_Data
     Dimensions = <
       item
         Enabled = True
         AliasName = 'NAME_TR'
         FieldName = 'NAME_TR'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -6281,7 +5536,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NAME_REU'
         FieldName = 'NAME_REU'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -6297,7 +5552,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'ADR'
         FieldName = 'ADR'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -6313,7 +5568,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'LSK'
         FieldName = 'LSK'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -6329,7 +5584,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NAME_ORG'
         FieldName = 'NAME_ORG'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -6345,7 +5600,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NM'
         FieldName = 'NM'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -6361,7 +5616,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'CNT'
         FieldName = 'CNT'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -6377,7 +5632,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'NM1'
         FieldName = 'NM1'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -6393,7 +5648,7 @@ object Form_olap: TForm_olap
         Enabled = True
         AliasName = 'MG'
         FieldName = 'MG'
-        DataSet = Form_tree_objects.OD_data
+        DataSet = DM_Olap.Uni_Data
         WrapTo = wt_None
         Sorting = dmtNoSort
         NullName = '[Null]'
@@ -6726,6 +5981,7 @@ object Form_olap: TForm_olap
     DataOnly = False
     Separator = ';'
     OEMCodepage = False
+    UTF8 = False
     NoSysSymbols = True
     ForcedQuotes = False
     Left = 248
@@ -6734,9 +5990,798 @@ object Form_olap: TForm_olap
   object frxDBDetail: TfrxDBDataset
     UserName = 'frxDBDS_detail'
     CloseDataSource = False
-    DataSet = Form_tree_objects.OD_detail
     BCDToCurrency = False
     Left = 176
     Top = 384
+  end
+  object PivotCube13: TPivotCube
+    FactTableDataSet = DM_Olap.Uni_Data
+    Dimensions = <
+      item
+        Enabled = True
+        AliasName = 'LSK'
+        FieldName = 'LSK'
+        DataSet = DM_Olap.Uni_Data
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1051#1080#1094'.'#1089#1095'.'
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'PREDPR'
+        FieldName = 'TREST'
+        DataSet = DM_Olap.OD_trest_olap
+        KeyField = 'TREST'
+        LookupField = 'NAME_TR'
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1060#1086#1085#1076
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiRemoveFromCube
+      end
+      item
+        Enabled = True
+        AliasName = 'REU'
+        FieldName = 'REU'
+        DataSet = DM_Olap.OD_reu_olap
+        KeyField = 'REU'
+        LookupField = 'NAME_REU'
+        WrapTo = wt_None
+        Sorting = dmtKeySort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1046#1069#1054
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiRemoveFromCube
+      end
+      item
+        Enabled = True
+        AliasName = 'PREDPR_DET'
+        FieldName = 'PREDPR_DET'
+        DataSet = DM_Olap.Uni_Data
+        KeyField = 'PREDPR_DET'
+        LookupField = 'PREDPR_DET'
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1040#1076#1088'.'
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiRemoveFromCube
+      end
+      item
+        Enabled = True
+        AliasName = 'ORGNAME'
+        FieldName = 'ORG'
+        DataSet = DM_Olap.OD_org_olap
+        KeyField = 'ID'
+        LookupField = 'NAME'
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'ORGMAIN'
+        FieldName = 'FK_ORG2'
+        DataSet = DM_Olap.OD_org2_olap
+        KeyField = 'ID'
+        LookupField = 'NAME'
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1043#1083#1072#1074#1085#1072#1103' '#1086#1088#1075'.'
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'USL'
+        FieldName = 'USL'
+        DataSet = DM_Olap.OD_usl_olap
+        KeyField = 'USL'
+        LookupField = 'NM'
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1059#1089#1083#1091#1075#1072'.'#1076#1077#1090
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'USLM'
+        FieldName = 'USLM'
+        DataSet = DM_Olap.OD_uslm_olap
+        KeyField = 'USLM'
+        LookupField = 'NM1'
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1059#1089#1083#1091#1075#1072
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'STATUS'
+        FieldName = 'STATUS'
+        DataSet = DM_Olap.OD_status_olap
+        KeyField = 'ID'
+        LookupField = 'NAME'
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1057#1090#1072#1090#1091#1089
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'PSCH'
+        FieldName = 'PSCH'
+        DataSet = DM_Olap.OD_psch_olap
+        KeyField = 'ID'
+        LookupField = 'NAME'
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1055#1088#1080#1079#1085#1072#1082
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'IS_EMPT'
+        FieldName = 'IS_EMPT'
+        DataSet = DM_Olap.Uni_Data
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1055#1091#1089#1090#1072#1103'?'
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'SCH'
+        FieldName = 'SCH'
+        DataSet = DM_Olap.OD_sch_olap
+        KeyField = 'ID'
+        LookupField = 'NAME'
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1058#1080#1087
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiRemoveFromCube
+      end
+      item
+        Enabled = True
+        AliasName = 'VAL_GROUP'
+        FieldName = 'VAL_GROUP'
+        DataSet = DM_Olap.Uni_Data
+        KeyField = 'VAL_GROUP'
+        LookupField = 'VAL_GROUP'
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1050#1086#1101#1092#1092
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiRemoveFromCube
+      end
+      item
+        Enabled = True
+        AliasName = 'VAL_GROUP2'
+        FieldName = 'VAL_GROUP2'
+        DataSet = DM_Olap.Uni_Data
+        KeyField = 'VAL_GROUP2'
+        LookupField = 'VAL_GROUP2'
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1053#1086#1088#1084#1072#1090#1080#1074
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiRemoveFromCube
+      end
+      item
+        Enabled = True
+        AliasName = 'UCH'
+        FieldName = 'UCH'
+        DataSet = DM_Olap.Uni_Data
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1050#1086#1090#1077#1083#1100#1085#1072#1103
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiRemoveFromCube
+      end
+      item
+        Enabled = True
+        AliasName = 'MG1'
+        FieldName = 'MG1'
+        DataSet = DM_Olap.Uni_Data
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1055#1077#1088#1080#1086#1076
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiRemoveFromCube
+      end
+      item
+        Enabled = True
+        AliasName = 'FIO'
+        FieldName = 'FIO'
+        DataSet = DM_Olap.Uni_Data
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1060#1048#1054
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiRemoveFromCube
+      end
+      item
+        Enabled = True
+        AliasName = 'NAME_GR'
+        FieldName = 'NAME_GR'
+        DataSet = DM_Olap.Uni_Data
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1059#1095#1072#1089#1090#1086#1082
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'ODPU_EX'
+        FieldName = 'ODPU_EX'
+        DataSet = DM_Olap.Uni_Data
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1054#1044#1055#1059
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'LSK_TP'
+        FieldName = 'LSK_TP'
+        DataSet = DM_Olap.Uni_Data
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1058#1080#1087' '#1089#1095#1077#1090#1072
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'IS_VOL'
+        FieldName = 'IS_VOL'
+        DataSet = DM_Olap.Uni_Data
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1054#1073#1098#1077#1084'?'
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'IsHotPipe'
+        FieldName = 'IsHotPipe'
+        DataSet = DM_Olap.Uni_Data
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1043#1042' '#1048#1079#1086#1083
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'isTowel'
+        FieldName = 'isTowel'
+        DataSet = DM_Olap.Uni_Data
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1055#1086#1083#1086#1090'.'#1089#1091#1096
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end>
+    LNG.Strings = (
+      'RowTotalName='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1056#1054#1050#1040#1052
+      'ColumnTotalName='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1054#1051#1041#1062#1040#1052
+      'PanelRowsCaption='#1057#1090#1088#1086#1082#1072
+      'PanelColumnsCaption='#1057#1090#1086#1083#1073#1077#1094
+      'PanelDimsCaption='#1060#1080#1083#1100#1090#1088
+      'CustomFilter='#1060#1080#1083#1100#1090#1088
+      
+        'pvToolBarCollapseError=Could not collapse TOOLBAR without border' +
+        ' alignment'
+      
+        'pvToolBarTreeFilterWarn=Cannot use incremental filtering on hier' +
+        'arhical dimensions!'
+      'pvToolBarNoFilter='#1053#1077#1090' '#1092#1080#1083#1100#1090#1088#1072
+      'pvToolBarCustomFilter='#1048#1089#1087#1086#1083#1100#1079'.'#1092#1080#1083#1100#1090#1088
+      'pvCubeErr1=Could not load dimension data!'
+      'pvCubeErr2=Could not load measure data!'
+      'pvCubeErr3=: You must specify dataset for dimension!'
+      
+        'pvCubeErr4=Could not load dimension items! Dimension: %s  Dimens' +
+        'ion item: %s'
+      'pvCubeErr5=Could not start building cube! Unknown error'
+      
+        'pvCubeErr6=You must set appropriate EventHandler for custom wrap' +
+        'ped dimensions! : %s'
+      'pvCubeErr7=You must set FactTableDataSet property!'
+      'pvCubeErr8=You must set at least ONE measure'
+      'pvCubeErr9=You must set at least ONE dimension'
+      'pvMapErr1='#1054#1096#1080#1073#1086#1095#1085#1099#1081' '#1080#1085#1076#1077#1082#1089
+      'pvMapErr2='#1054#1076#1085#1086' '#1080#1079#1084#1077#1088#1077#1085#1080#1077' '#1076#1086#1083#1078#1085#1086' '#1073#1099#1090#1100' '#1074#1080#1076#1080#1084#1099#1084'!'
+      'pvGridExcel0=Export note'
+      
+        'pvGridExcel1=Number of columns more than 256. Only first 255 col' +
+        'umns will be exported!'
+      'pvGridExcel2=Number of columns must be more than 0!'
+      'pvGridExcel3=Number of rows must be more than 0!'
+      
+        'pvGridExcel4=Could not export data to Excel! Check your MS Excel' +
+        ' installation'
+      'pvAMFAddMeasureForm=Calculated measures manager'
+      'pvAMFAddMeasureBtn='#1044#1086#1073#1072#1074#1080#1090#1100' '#1085#1086#1074#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
+      'pvAMFEditMeasureBtn='#1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1080#1084#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
+      'pvAMFDelMeasureBtn='#1059#1076#1072#1083#1080#1090#1100' '#1087#1086#1076#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
+      'pvAMFCalcLabel='#1055#1086#1076#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
+      'pvAMFCalcEditLabel='#1048#1089#1087#1086#1083#1100#1079#1091#1077#1084#1072#1103' '#1092#1086#1088#1084#1091#1083#1072
+      'pvAMFMeasureLabel='#1048#1084#1077#1102#1097#1080#1077#1089#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
+      'pvAMFViewsLabel='#1048#1084#1077#1102#1097#1080#1077#1089#1103' '#1082#1091#1088#1089#1086#1088#1099
+      'pvAMFCheckBtn='#1055#1088#1086#1074#1077#1088#1100#1090#1077' '#1092#1086#1088#1084#1091#1083#1091
+      'pvAMFSynaxError='#1057#1080#1085#1090#1072#1082#1089#1080#1095#1077#1089#1082#1072#1103' '#1086#1096#1080#1073#1082#1072
+      'pvAMFFormulaError=: '#1054#1096#1080#1073#1082#1072' '#1074' '#1092#1086#1088#1084#1091#1083#1077
+      'pvAMFDuplicateError='#1044#1091#1073#1083#1080#1088#1091#1077#1097#1077#1077#1089#1103' '#1080#1084#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
+      'pvAMFCheckOKName='#1054#1090#1084#1077#1095#1077#1085#1086'!'
+      'pvToolBarDDOKBtnHint='#1055#1088#1080#1085#1103#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
+      'pvToolBarDDCancelBtnHint='#1054#1090#1084#1077#1085#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
+      'pvToolBarDDFillBtnHint='#1042#1099#1076#1077#1083#1080#1090#1100' '#1074#1089#1077
+      'pvToolBarDDClearBtnHint='#1054#1090#1084#1077#1085#1080#1090#1100' '#1074#1089#1077
+      'pvToolBarDDRevertBtnHint='#1048#1085#1074#1077#1088#1090#1080#1088#1086#1074#1072#1090#1100
+      'pvToolBarDDExpandBtnHint='#1056#1072#1079#1074#1077#1088#1085#1091#1090#1100' '#1074#1089#1077' '#1074#1077#1090#1082#1080
+      'pvMapValueName='#1047#1085#1072#1095#1077#1085#1080#1077
+      'pvMapRowPercentName='#1055#1088#1086#1094#1077#1085#1090' '#1087#1086' '#1057#1090#1088#1086#1082#1072#1084
+      'pvMapColPercentName='#1055#1088#1086#1094#1077#1085#1090' '#1087#1086' '#1057#1090#1086#1083#1073#1094#1072#1084
+      'pvMapRecordCountName='#1050#1086#1083'-'#1074#1086
+      'pvMapRankName='#1056#1072#1085#1075'['#1057#1090#1086#1083#1073#1077#1094']'
+      'pvMapRankRName='#1056#1072#1085#1075'['#1057#1090#1088#1086#1082#1072']'
+      'pvMapSubPrevCName='#1056#1072#1079#1085#1080#1094#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1080#1084' '#1057#1090#1086#1083#1073#1094#1086#1084
+      'pvMapSubPrevRName='#1056#1072#1079#1085#1080#1094#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1077#1081' '#1057#1090#1088#1086#1082#1086#1081
+      'pvMapAddPrevCName='#1057#1091#1084#1084#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1080#1084' '#1057#1090#1086#1083#1073#1094#1086#1084
+      'pvMapAddPrevRName='#1057#1091#1084#1084#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1077#1081' '#1057#1090#1088#1086#1082#1086#1081
+      'pvMapRunningTotalName1='#1053#1072#1088#1072#1089#1090#1072#1102#1097#1077#1081' '#1048#1090#1086#1075' '#1087#1086' '#1057#1090#1086#1083#1073#1094#1091
+      'pvMapRunningTotalName2='#1053#1072#1088#1072#1089#1090#1072#1102#1097#1077#1081' '#1048#1090#1086#1075' '#1087#1086' '#1057#1090#1088#1086#1082#1077
+      'pvBtnHintAccept='#1055#1086#1076#1090#1074#1077#1088#1076#1080#1090#1100
+      'pvBtnHintCancel='#1054#1090#1084#1077#1085#1080#1090#1100
+      'pvBtnHintExpandTree='#1056#1072#1079#1074#1077#1088#1085#1091#1090#1100'/'#1057#1074#1077#1088#1085#1091#1090#1100' '#1074#1077#1090#1082#1080
+      'pvBtnHintCalcMeasureDialog='#1042#1082#1083'. '#1076#1080#1072#1083#1086#1075' '#1056#1072#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1075#1086' '#1079#1085#1072#1095#1077#1085#1080#1103
+      'pvBtnHintMeasureFillEnable='#1042#1099#1076#1077#1083#1080#1090#1100' '#1074#1089#1077
+      'pvBtnHintMeasureFillDisable='#1054#1090#1084#1077#1090#1080#1090#1100' '#1074#1089#1077
+      'pvBtnHintMeasureRevert='#1055#1077#1088#1077#1082#1083#1102#1095#1080#1090#1100' '#1089#1086#1089#1090#1086#1103#1085#1080#1077' '#1077#1076'.'#1080#1079#1084#1077#1088#1077#1085#1080#1103
+      'pvBtnHintDimFillActive='#1042#1080#1076#1080#1084#1099' '#1074#1089#1077' '#1079#1085#1072#1095#1077#1085#1080#1103
+      'pvBtnHintDimFillHided='#1053#1077' '#1074#1080#1076#1080#1084#1099' '#1074#1089#1077' '#1079#1085#1072#1095#1077#1085#1080#1103
+      'pvBtnHintDimFillFiltered='#1060#1080#1083#1100#1090#1088#1086#1074#1072#1090#1100' '#1074#1089#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
+      'pvBtnHintDimRevert='#1062#1080#1082#1083#1080#1095#1085#1099#1081' '#1089#1076#1074#1080#1075' '#1089#1086#1089#1090#1086#1103#1085#1080#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
+      'pvBtnHintDimAddGroup='#1044#1086#1073#1072#1074#1080#1090#1100' '#1080#1077#1088#1072#1088#1093#1080#1095#1077#1089#1082#1091#1102' '#1075#1088#1091#1087#1087#1091
+      'pvBtnHintDimDelGroup='#1059#1076#1072#1083#1080#1090#1100' '#1080#1077#1088#1072#1088#1093#1080#1095#1077#1089#1082#1091#1102' '#1075#1088#1091#1087#1087#1091
+      'mbFormCaption='#1055#1086#1089#1090#1088#1086#1080#1090#1077#1083#1100' '#1079#1072#1087#1088#1086#1089#1072
+      'mbRowsCaption='#1057#1090#1088#1086#1082#1080
+      'mbColumnsCaption='#1057#1090#1086#1083#1073#1094#1099
+      'mbDimsCaption='#1048#1079#1084#1077#1088#1077#1085#1080#1103
+      'mbDisabledDimsCaption='#1053#1077#1072#1082#1090#1080#1074#1085#1099#1077' '#1048#1079#1084#1077#1088#1077#1085#1080#1103
+      
+        'mbRunEditBtnHint='#1054#1090#1082#1088#1099#1090#1100' '#1088#1077#1076#1072#1082#1090#1086#1088' '#1080#1079#1084#1077#1088#1077#1085#1080#1081' '#1076#1083#1103' '#1074#1099#1073#1088#1072#1085#1085#1099#1093' '#1080#1079#1084#1077#1088#1077 +
+        #1085#1080#1081
+      
+        'mbTreeViewHint=Drag'#39'n'#39'Drop dimension lable to choosen group. Dbl' +
+        '-click to run dimension editor'
+      'DimensionFormCaption='#1056#1077#1076#1072#1082#1090#1086#1088' '#1048#1079#1084#1077#1088#1077#1085#1080#1081' :'
+      'dimDisplayName='#1047#1072#1075#1086#1083#1086#1074#1086#1082
+      'dimCount='#1050#1086#1083'-'#1074#1086' '#1086#1073#1098#1077#1082#1090#1086#1074
+      'dimSOrtBtn='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072
+      'dimSortBtnHint='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072
+      'dimActiveItems='#1040#1082#1090#1080#1074#1085#1099#1077' '#1086#1073#1098#1077#1082#1090#1099
+      'dimInActiveItems='#1061#1088#1072#1085#1080#1083#1080#1097#1077'('#1085#1077' '#1072#1082#1090#1080#1074#1085#1099#1077' '#1086#1073#1098#1077#1082#1090#1099')'
+      'dimFilterError='#1050#1072#1082' '#1084#1080#1085#1080#1084#1091#1084' '#1086#1076#1085#1086' '#1080#1079#1084#1077#1088#1077#1085#1080#1077' '#1076#1086#1083#1078#1085#1086' '#1073#1099#1090#1100' '#1072#1082#1090#1080#1074#1085#1099#1084'!'
+      'dimSearch='#1053#1072#1081#1090#1080
+      
+        'dimTVHint=Drag'#39'n'#39'drop selected item(s) to group or repository ar' +
+        'ea'
+      'dimSortByName='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072' '#1087#1086' '#1080#1084#1077#1085#1080
+      'dimSortByKey='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072' '#1087#1086' '#1082#1083#1102#1095#1091
+      'dimNoSort='#1041#1077#1079' '#1089#1086#1088#1090#1080#1088#1086#1074#1082#1080
+      'dimSortAscending='#1055#1086' '#1074#1086#1079#1088#1072#1089#1090#1072#1102#1097#1077#1081
+      'dimSortDescending='#1055#1086' '#1091#1073#1099#1074#1072#1102#1097#1077#1081
+      'dimForecastingCB1=Enable prev. forecast value'
+      'dimForecastingCB2=Enable next. forecast value'
+      'dimForecastingType=Forecasting method'
+      'dimForecastingMethod1=Simple moving average'
+      'dimForecastingMethod2=Weighted Moving Average'
+      'dimForecastingMethod3=Double Exponential Smoothing'
+      'dimForecastingMethod4=Triple Exponential Smoothing'
+      'dimForecastingMethod5=Show Data Margins Only'
+      'dimForecastingMethod6=Show First and Last members'
+      'MeasureCommonFormCaption='#1055#1086#1089#1090#1088#1086#1080#1090#1077#1083#1100' '#1079#1085#1072#1095#1077#1085#1080#1081
+      'MFormatBtnName=Build format'
+      'MFormatFormCaption=Build format string'
+      'pvMapMVFmt0=Change measure type'
+      'pvMapMVFmt1=Cell'
+      'pvMapMVFmt2=Percent by Column'
+      'pvMapMVFmt3=Percent by Row'
+      'pvMapMVFmt4=Record count'
+      'pvMapMVFmt5=Rank by Column'
+      'pvMapMVFmt6=Rank by Row'
+      'pvMapMVFmt7=Previous member by Row'
+      'pvMapMVFmt8=Next member by Row'
+      'pvMapMVFmt9=Previous member by Column'
+      'pvMapMVFmt10=Next member by Column'
+      'pvMapMVFmt11=Running Total by Column'
+      'pvMapMVFmt12=Running Total by Row'
+      'pmMapMVOp1=Value'
+      'pmMapMVOp2=Subtract'
+      'pmMapMVOp3=Add'
+      'pmMapMVOp4=Divide'
+      'pmMapMVOp5=Multiply'
+      'pvMeasureCommon5=Min. value'
+      'pvMeasureCommon6=Max. value'
+      'pvMeasureCommon9=Value'
+      'pvMeasureCommon10=Operation'
+      'pvMeasureCommon11=Only one measure visible'
+      'pvMeasureCommon12=Value representation'
+      'pvMeasureCommon13=Filters'
+      'pvMeasureCommon14=Filter by Map cells'
+      'pvMeasureCommon15=Filter by fact table records'
+      'pvMeasureCommon16=Measure formating'
+      'pvMeasureCommon17=Formula (is calculated measure)'
+      'pvMeasureCommon18=Enabled'
+      'pvMeasureCommon19=Running Total by Column'
+      'pvMeasureCommon20=Running Total by Row'
+      'pvMeasureCommon21=Display caption'
+      'MeasureFilterError= Measure filter error'
+      'mfeWrongValue=Wrong value in  measure filter:'
+      'MeasureCommonFormDistinctName=Distinct'
+      'pvgSearchFormCaption=Search'
+      'pvgSearchArea=Search area'
+      'pvgSearchRow=Row header'
+      'pvgSearchCol=Column header'
+      'pvgSearchText=Text for search'
+      'pvgSearch1=Next'
+      'pvgSearch2=Forward'
+      'pvgSearch3=Case sensitive'
+      'pvgSearchBtn=Find again'
+      'pvgSearchFinish=Cannot find more'
+      'uHtmBuildHeaders=building headers...'
+      'uHtmPreparing=prepearing...'
+      'uHtmColTotal='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1054#1051#1041#1062#1040#1052
+      'uHtmRowTotal='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1056#1054#1050#1040#1052
+      'uHtmExportColHeader=exporting column headers...'
+      
+        'uHtmExportCells=exporting row headers, cell values and row total' +
+        's...'
+      'uHtmExportColTotal=exporting column totals...'
+      'uHtmSave=saving and executing...'
+      'uHtmLabel=Action...'
+      'ChartDDRows='#1057#1090#1088#1086#1082#1080
+      'ChartDDColumns='#1057#1090#1086#1083#1073#1094#1099
+      'ddChartViews=Views'
+      'ddChartLegend='#1051#1077#1075#1077#1085#1076#1072
+      'ddChartMarks=Marks'
+      'ChartXNextPage=Next page'
+      'ChartXPrevPage=Prev. page'
+      'CubeButtonCaption=Cube'
+      'ChartButtonCaption=Chart'
+      'pvGridSubTotal=Subtotal'
+      'pvGridSubTotalwName=Sub-total by '
+      'MFormatCount=3'
+      'MFormatName0=Generic'
+      'MFormatValue0=#0.00'
+      'MFormatName1=Price (US)'
+      'MFormatValue1=$ #0.00'
+      'MFormatName2=Summa'
+      'MFormatValue2=# ##0.00'
+      'MFormatCap1=Predefined formats'
+      'MFormatCap2=Format string'
+      'MFormatCap3=Number of decimals'
+      'MFormatCap4=Before'
+      'MFormatCap5=After'
+      'MFormatCap6=Design'
+      'MFormatCap7=Symbol'
+      'MFormatCap8=Example'
+      'MFormatCap9=Thousand separator'
+      'uXLSActionLabel=Action'
+      'uXLSAction1=Prepearing basic fonts'
+      'uXLSAction2=Prepearing basic formats'
+      'uXLSAction3=Applying row totals headers merging'
+      'uXLSAction4=Applying cells format'
+      'uXLSAction5=Applying columns headers merging'
+      'uXLSAction6=Applying rows headers merging'
+      'uXLSAction7=Applying column totals headers merging'
+      'uXLSAction8=Applying auto width for columns'
+      'uXLActionLabel=Action'
+      'uXLAction1=Prepearing cells array'
+      'uXLAction2=Prepearing column headers'
+      'uXLAction3=Processing'
+      'uXLAction4=Merging column headers'
+      'uXLAction5=Merging row headers'
+      'uXLAction6=Merging row total headers'
+      'uXLAction7=Applying cells format'
+      'pvGridPrint1=Print All'
+      'pvGridPrint2=Print selected'
+      'pvGridPrint3=Right click to scale menu'
+      'uXLSActionLabel2=Action progress'
+      'uXLSActionLabel2=Full progress'
+      'uHtmLabel2=Action progress'
+      'uHtmLabel3=Full progress'
+      'pvGridEditor1=Table'
+      'pvGridEditor2=Chart'
+      'pvGridEditor3=Method'
+      'pvGridEditor4=Summa'
+      'pvGridEditor5=Count'
+      'pvGridEditor6=Average'
+      'pvGridEditor7=Equal'
+      'pvGridEditor8=Proportional'
+      'pvGridPrint4=Print preview'
+      'pvGridPrint5=Scale page'
+      'pvGridPrint6=Scale print'
+      'pvGridPrint7=Fit page'
+      'pvGridPrint8=Fit width'
+      'pvGridPrint9=Fit height'
+      'pvGridPrint10=50%'
+      'pvGridPrint11=100%'
+      'pvGridPrint12=200%'
+      'pvGridPrint13=400%'
+      'pvGridPrintLocked=Process locked! Please wait....')
+    Measures = <
+      item
+        AliasName = 'CNT'
+        FieldName = 'CNT'
+        CalcType = ctSumma
+        DataType = ftFloat
+        FormatString = '#######0.000'
+        DisplayName = #1050#1086#1083'-'#1074#1086' ('#1045#1076'.)'
+      end
+      item
+        AliasName = 'OPL'
+        FieldName = 'OPL'
+        CalcType = ctSumma
+        DataType = ftFloat
+        FormatString = '########0.00##'
+        DisplayName = #1055#1083#1086#1097#1072#1076#1100
+      end
+      item
+        AliasName = 'CHNG_VOL'
+        FieldName = 'CHNG_VOL'
+        CalcType = ctSumma
+        DataType = ftFloat
+        FormatString = '########0.00##'
+        DisplayName = #1055#1077#1088#1077#1088#1072#1089#1095#1077#1090
+      end
+      item
+        AliasName = 'KLSK'
+        FieldName = 'KLSK'
+        CalcType = ctSumma
+        DataType = ftFloat
+        FormatString = '########0.00'
+        DisplayName = #1082#1086#1083'-'#1074#1086' '#1051'/'#1057
+      end
+      item
+        AliasName = 'KPR'
+        FieldName = 'KPR'
+        CalcType = ctSumma
+        DataType = ftFloat
+        FormatString = '########0.00'
+        DisplayName = #1055#1088#1086#1078#1080#1074'. '#1074' '#1090'.'#1095'. '#1042'.'#1054'.'
+      end
+      item
+        AliasName = 'KPR_OT'
+        FieldName = 'KPR_OT'
+        CalcType = ctSumma
+        DataType = ftFloat
+        FormatString = '########0.00'
+        DisplayName = #1042#1088'.'#1086#1090#1089#1091#1090'.'
+      end
+      item
+        AliasName = 'KPR_WR'
+        FieldName = 'KPR_WR'
+        CalcType = ctSumma
+        DataType = ftFloat
+        FormatString = '########0.00'
+        DisplayName = #1042#1088'.'#1079#1072#1088#1077#1075'.'
+      end
+      item
+        AliasName = 'CNT_LG'
+        FieldName = 'CNT_LG'
+        CalcType = ctSumma
+        DataType = ftFloat
+        FormatString = '########0.00'
+        DisplayName = #1051#1100#1075#1086#1090#1085#1080#1082#1086#1074
+      end
+      item
+        AliasName = 'CNT_SUBS'
+        FieldName = 'CNT_SUBS'
+        CalcType = ctSumma
+        DataType = ftFloat
+        FormatString = '########0.00'
+        DisplayName = #1055#1086#1083#1100#1079'.'#1089#1091#1073#1089#1080#1076'.('#1051'/'#1057')'
+      end
+      item
+        AliasName = 'CNT_ROOM'
+        FieldName = 'CNT_ROOM'
+        CalcType = ctSumma
+        DataType = ftFloat
+        FormatString = '########0.00##'
+        DisplayName = #1050#1086#1084#1085#1072#1090
+      end
+      item
+        AliasName = 'ODPU_KUB'
+        FieldName = 'ODPU_KUB'
+        CalcType = ctSumma
+        DataType = ftFloat
+        FormatString = '########0.00##'
+        DisplayName = #1054#1044#1055#1059', '#1045#1076'.'
+      end
+      item
+        AliasName = 'FACT_CONS'
+        FieldName = 'FACT_CONS'
+        CalcType = ctSumma
+        DataType = ftFloat
+        FormatString = '########0.00##'
+        DisplayName = #1060#1072#1082#1090'.'#1087#1086#1090#1088'.'
+      end
+      item
+        AliasName = 'KR_SOI'
+        FieldName = 'KR_SOI'
+        CalcType = ctSumma
+        DataType = ftFloat
+        FormatString = '########0.00##'
+        DisplayName = #1050#1056' '#1085#1072' '#1057#1054#1048
+      end>
+    CubeName = 'test'
+    OptimizeLevel = optNormal
+    ExtendedMode = True
+    AlwaysSaveCounts = False
+    ExcludeZeros = True
+    ClearTimeInfo = True
+    Left = 32
+    Top = 136
+  end
+  object PivotMap13: TPivotMap
+    Cube = PivotCube13
+    Columns = <>
+    Rows = <
+      item
+        Name = 'PREDPR'
+      end
+      item
+        Name = 'REU'
+      end
+      item
+        Name = 'PSCH'
+      end
+      item
+        Name = 'SCH'
+      end
+      item
+        Name = 'NM'
+      end
+      item
+        Name = 'ORGNAME'
+      end>
+    HideEmptyRows = True
+    HideEmptyColumns = True
+    TableMode = True
+    DDirection = True
+    AutoSaveMap = False
+    AutoExpand = True
+    Left = 64
+    Top = 136
   end
 end

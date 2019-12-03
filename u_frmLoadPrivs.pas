@@ -87,6 +87,7 @@ type
     cbb1: TcxLookupComboBox;
     lbl1: TLabel;
     DS_mg1: TDataSource;
+    CheckBox1: TCheckBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure dxwzrdcntrl1ButtonClick(Sender: TObject;
@@ -215,8 +216,14 @@ begin
        while not Eof do
        begin
          //перенести данные
-         DataModule1.OraclePackage1.CallProcedure(
-           'scott.c_load_privs.prep_output', [cbb1.EditValue, FieldByName('id').AsInteger, parInteger]);
+         if not CheckBox1.Checked then
+           // старый вариант (много записей на адрес)
+           DataModule1.OraclePackage1.CallProcedure(
+             'scott.c_load_privs.prep_output', [cbb1.EditValue, FieldByName('id').AsInteger, parInteger])
+         else
+           // новый вариант (одна запись на адрес)
+           DataModule1.OraclePackage1.CallProcedure(
+             'scott.c_load_privs.prep_output2', [cbb1.EditValue, FieldByName('id').AsInteger, parInteger]);
          err:=DataModule1.OraclePackage1.GetParameter(2);
          DataModule1.OracleSession1.Commit;
          //получить данные из рефкурсора

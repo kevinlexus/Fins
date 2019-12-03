@@ -1,7 +1,7 @@
 object DM_Bill: TDM_Bill
   OldCreateOrder = False
-  Left = 1084
-  Top = 249
+  Left = 1191
+  Top = 244
   Height = 607
   Width = 470
   object Uni_cmp_main: TUniQuery
@@ -721,6 +721,8 @@ object DM_Bill: TDM_Bill
       '                          p_lsk => :p_lsk,'
       '                          p_lsk1 => :p_lsk1,'
       '                          p_is_closed => :p_is_closed,'
+      '                          p_firstNum => :p_firstNum,'
+      '                          p_lastNum => :p_lastNum,'
       '                          p_mg => :p_mg,'
       '                          p_sel_uk => :p_sel_uk,'
       '                          p_rfcur => :p_rfcur);'
@@ -766,6 +768,16 @@ object DM_Bill: TDM_Bill
         ParamType = ptInput
       end
       item
+        DataType = ftInteger
+        Name = 'p_firstNum'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'p_lastNum'
+        ParamType = ptInput
+      end
+      item
         DataType = ftString
         Name = 'p_mg'
         ParamType = ptInput
@@ -778,7 +790,7 @@ object DM_Bill: TDM_Bill
       item
         DataType = ftCursor
         Name = 'p_rfcur'
-        Value = ''
+        Value = 'Object'
       end>
   end
   object DS_cmp_main_arch: TDataSource

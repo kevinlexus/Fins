@@ -1,6 +1,6 @@
 object Form_change_house_nabor2: TForm_change_house_nabor2
-  Left = 656
-  Top = 741
+  Left = 919
+  Top = 789
   Align = alCustom
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
@@ -255,7 +255,7 @@ object Form_change_house_nabor2: TForm_change_house_nabor2
       Left = 451
       Top = 2
       Properties.MaskKind = emkRegExprEx
-      Properties.EditMask = '\d{0,5}|(\d{0,5}\.\d{1,5})'
+      Properties.EditMask = '\d{0,6}|(\d{0,6}\.\d{1,6})'
       Properties.ValidateOnEnter = False
       Properties.ValidationOptions = [evoShowErrorIcon]
       TabOrder = 2
@@ -265,7 +265,7 @@ object Form_change_house_nabor2: TForm_change_house_nabor2
       Left = 576
       Top = 3
       Properties.MaskKind = emkRegExprEx
-      Properties.EditMask = '\d{0,5}|(\d{0,5}\.\d{1,5})'
+      Properties.EditMask = '\d{0,6}|(\d{0,6}\.\d{1,6})'
       TabOrder = 3
       Width = 73
     end

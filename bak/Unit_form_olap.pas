@@ -5,10 +5,29 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, PivotToolBar_SRC, ExtCtrls, PivotGrid_SRC, StdCtrls,
-  PivotMap_SRC, PivotCube_SRC, PivotPaintner_SRC, 
+  PivotMap_SRC, PivotCube_SRC, PivotPaintner_SRC,
   Buttons, DB, Oracle, Menus, zCube_TLB, frxClass, frxDMPExport, frxDBSet,
-  frxPreview, frxDesgnCtrls, frxExportRTF, frxExportXLS, frxCross, Grids,
-  Wwdbigrd, Wwdbgrid, frxExportText, frxExportCSV, cxGraphics, cxControls,
+  frxDesgnCtrls, frxExportRTF, frxExportXLS, frxCross,
+  frxExportText, frxExportCSV, cxControls,
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  cxEdit, 
+  cxGridLevel, cxClasses, cxGridCustomView,
+  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid, 
+  cxContainer, cxTextEdit, cxMemo, cxMaskEdit, cxDropDownEdit, cxGraphics,
   cxLookAndFeels, cxLookAndFeelPainters, cxStyles, dxSkinsCore,
   dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee,
   dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
@@ -24,10 +43,8 @@ uses
   dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
   dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter,
-  cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
-  cxDBData, cxGridLevel, cxClasses, cxGridCustomView,
-  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid, ComObj, ComCtrls,
-  cxContainer, cxTextEdit, cxMemo;
+  cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, cxDBData,
+  ufDataModuleOlap;
 
 type
   TForm_olap = class(TForm)
@@ -39,8 +56,6 @@ type
     PivotGrid1: TPivotGrid;
     PVDimToolBar1: TPVDimToolBar;
     PVMeasureToolBar1: TPVMeasureToolBar;
-    PivotMap13: TPivotMap;
-    PivotCube13: TPivotCube;
     PivotMap14: TPivotMap;
     PivotCube14: TPivotCube;
     Button4: TButton;
@@ -76,11 +91,15 @@ type
     cxGrid1DBTableView1: TcxGridDBTableView;
     cxGrid1Level1: TcxGridLevel;
     cxGrid1: TcxGrid;
-    cxm1: TcxMemo;
     chk1: TCheckBox;
     btn2: TButton;
     btn3: TButton;
     btn4: TButton;
+    chk2: TCheckBox;
+    cxComboBox1: TcxComboBox;
+    cxm1: TcxMemo;
+    PivotCube13: TPivotCube;
+    PivotMap13: TPivotMap;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
@@ -93,6 +112,18 @@ type
     procedure btn2Click(Sender: TObject);
     procedure btn3Click(Sender: TObject);
     procedure btn4Click(Sender: TObject);
+    procedure PVRowToolBar1DragDrop(Sender: TObject; Index: Integer;
+      var Apply: Boolean);
+    procedure PVRowToolBar1DropDown(Sender: TObject; Left, Top,
+      Index: Integer; var Apply: Boolean);
+    procedure PVColToolBar1DragDrop(Sender: TObject; Index: Integer;
+      var Apply: Boolean);
+    procedure PVColToolBar1DropDown(Sender: TObject; Left, Top,
+      Index: Integer; var Apply: Boolean);
+    procedure PVDimToolBar1DragDrop(Sender: TObject; Index: Integer;
+      var Apply: Boolean);
+    procedure PVDimToolBar1DropDown(Sender: TObject; Left, Top,
+      Index: Integer; var Apply: Boolean);
   private
   public
     rep_name_: String;
@@ -325,6 +356,46 @@ end;
 procedure TForm_olap.btn4Click(Sender: TObject);
 begin
   Form_tree_objects.imp_gis_ELS;
+end;
+
+procedure TForm_olap.PVRowToolBar1DragDrop(Sender: TObject; Index: Integer;
+  var Apply: Boolean);
+begin
+ DoubleBuffered := false;
+end;
+
+procedure TForm_olap.PVRowToolBar1DropDown(Sender: TObject; Left, Top,
+  Index: Integer; var Apply: Boolean);
+begin
+  DoubleBuffered := true;
+end;
+
+procedure TForm_olap.PVColToolBar1DragDrop(Sender: TObject; Index: Integer;
+  var Apply: Boolean);
+begin
+ DoubleBuffered := false;
+
+end;
+
+procedure TForm_olap.PVColToolBar1DropDown(Sender: TObject; Left, Top,
+  Index: Integer; var Apply: Boolean);
+begin
+ DoubleBuffered := true;
+
+end;
+
+procedure TForm_olap.PVDimToolBar1DragDrop(Sender: TObject; Index: Integer;
+  var Apply: Boolean);
+begin
+ DoubleBuffered := false;     
+
+end;
+
+procedure TForm_olap.PVDimToolBar1DropDown(Sender: TObject; Left, Top,
+  Index: Integer; var Apply: Boolean);
+begin
+ DoubleBuffered := true;
+
 end;
 
 end.

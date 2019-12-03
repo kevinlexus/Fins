@@ -1437,8 +1437,7 @@ begin
     begin
       Application.CreateForm(TForm_print_bills, Form_print_bills);
       // выбрать задолженность
-      Form_print_bills.ComboBox1.ItemIndex := 3;
-      //      Form_print_bills.Button1.SetFocus;
+      Form_print_bills.cxImageComboBox2.ItemIndex := 3;
       Windows.SetFocus(Form_print_bills.Button1.Handle);
     end;
   end

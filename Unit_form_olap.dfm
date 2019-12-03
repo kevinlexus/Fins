@@ -1,6 +1,6 @@
 object Form_olap: TForm_olap
-  Left = 744
-  Top = 177
+  Left = 755
+  Top = 170
   AutoScroll = False
   Caption = 'OLAP'
   ClientHeight = 743
@@ -1005,6 +1005,22 @@ object Form_olap: TForm_olap
         NullName = '[Null]'
         UnknownName = '[UNKNOWN]'
         DisplayName = #1055#1086#1083#1086#1090'.'#1089#1091#1096
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'fio'
+        FieldName = 'fio'
+        DataSet = DM_Olap.Uni_Data
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1060'.'#1048'.'#1054'.'
         Forecasting.PrecedingName = '[Preceding]'
         Forecasting.ConsequentName = '[Consequent]'
         Forecasting.Method = dftTripleExponentialSmoothing
@@ -6711,6 +6727,14 @@ object Form_olap: TForm_olap
         DataType = ftFloat
         FormatString = '########0.00##'
         DisplayName = #1054#1044#1055#1059', '#1045#1076'.'
+      end
+      item
+        AliasName = 'FACT_CONS'
+        FieldName = 'FACT_CONS'
+        CalcType = ctSumma
+        DataType = ftFloat
+        FormatString = '########0.00##'
+        DisplayName = #1060#1072#1082#1090'.'#1087#1086#1090#1088'.'
       end
       item
         AliasName = 'KR_SOI'

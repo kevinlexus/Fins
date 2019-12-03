@@ -1,6 +1,6 @@
 object Form_print_bills: TForm_print_bills
-  Left = 215
-  Top = 157
+  Left = 233
+  Top = 182
   Width = 468
   Height = 447
   BorderIcons = [biSystemMenu, biMinimize]
@@ -204,44 +204,9 @@ object Form_print_bills: TForm_print_bills
       KeyField = 'MG'
       ListField = 'MG1'
       ListSource = DS_mg
-      TabOrder = 1
+      TabOrder = 0
       Visible = True
       OnCloseUp = DBLookupComboboxEh1CloseUp
-    end
-    object ComboBox1: TComboBox
-      Left = 96
-      Top = 8
-      Width = 129
-      Height = 21
-      Style = csDropDownList
-      ItemHeight = 13
-      TabOrder = 0
-      OnCloseUp = ComboBox1CloseUp
-      Items.Strings = (
-        #1057#1095#1077#1090#1072
-        #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082' '#1082#1074#1072#1088#1090#1080#1088#1086#1089#1098#1077#1084#1097#1080#1082#1086#1074
-        #1057#1087#1088#1072#1074#1082#1072' '#1080#1079' '#1072#1088#1093#1080#1074#1072
-        #1057#1087#1088#1072#1074#1082#1072' '#1086' '#1079#1072#1076#1086#1083#1078#1077#1085#1085#1086#1089#1090#1080
-        #1057#1095#1077#1090' '#1076#1083#1103' '#1059#1057#1047#1053
-        #1057#1087#1088#1072#1074#1082#1072' '#1080#1079' '#1072#1088#1093#1080#1074#1072'-2'
-        #1055#1086#1082#1074#1072#1088#1090#1080#1088#1085#1072#1103' '#1082#1072#1088#1090#1086#1095#1082#1072)
-    end
-    object wwDBLookupCombo1: TwwDBLookupCombo
-      Left = 256
-      Top = 8
-      Width = 129
-      Height = 21
-      DropDownAlignment = taLeftJustify
-      Selected.Strings = (
-        'NAME'#9'12'#9'NAME'#9#9)
-      LookupTable = OD_sel_obj
-      LookupField = 'id'
-      TabOrder = 2
-      AutoDropDown = False
-      ShowButton = True
-      PreciseEditRegion = False
-      AllowClearKey = False
-      OnCloseUp = wwDBLookupCombo1CloseUp
     end
     object Edit1: TEdit
       Left = 280
@@ -249,26 +214,8 @@ object Form_print_bills: TForm_print_bills
       Width = 57
       Height = 21
       Enabled = False
-      TabOrder = 3
+      TabOrder = 1
       OnChange = Edit1Change
-    end
-    object cbb2: TcxLookupComboBox
-      Left = 320
-      Top = 32
-      Enabled = False
-      Properties.DropDownWidth = 110
-      Properties.GridMode = True
-      Properties.KeyFieldNames = 'FIRST_REC'
-      Properties.ListColumns = <
-        item
-          FieldName = 'NAME'
-        end>
-      Properties.ListOptions.ShowHeader = False
-      Properties.ListSource = DS_ls_cnt
-      Properties.OnCloseUp = cbb2PropertiesCloseUp
-      Properties.OnPopup = cbb2PropertiesPopup
-      TabOrder = 4
-      Width = 63
     end
     object cxLookupComboBox2: TcxLookupComboBox
       Left = 280
@@ -284,8 +231,49 @@ object Form_print_bills: TForm_print_bills
         end>
       Properties.ListOptions.ShowHeader = False
       Properties.ListSource = DM_Bill.DS_postcode
-      TabOrder = 5
+      TabOrder = 2
       Width = 105
+    end
+    object cx3: TcxLookupComboBox
+      Left = 256
+      Top = 8
+      Properties.DropDownWidth = 110
+      Properties.GridMode = True
+      Properties.KeyFieldNames = 'ID'
+      Properties.ListColumns = <
+        item
+          FieldName = 'NAME'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = DS_sel_obj
+      Properties.OnCloseUp = cxLookupComboBox3PropertiesCloseUp
+      TabOrder = 3
+      Width = 129
+    end
+    object cxLookupComboBox4: TcxLookupComboBox
+      Left = 320
+      Top = 32
+      Properties.DropDownWidth = 110
+      Properties.GridMode = True
+      Properties.KeyFieldNames = 'FIRST_REC'
+      Properties.ListColumns = <
+        item
+          FieldName = 'FIRST_REC'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = DS_ls_cnt
+      Properties.OnPopup = cxLookupComboBox4PropertiesPopup
+      TabOrder = 4
+      Width = 65
+    end
+    object cxImageComboBox2: TcxImageComboBox
+      Left = 96
+      Top = 8
+      Properties.Items = <>
+      Properties.OnChange = cxImageComboBox2PropertiesChange
+      Properties.OnCloseUp = cxImageComboBox2PropertiesCloseUp
+      TabOrder = 5
+      Width = 129
     end
   end
   object GroupBox3: TGroupBox
@@ -949,12 +937,12 @@ object Form_print_bills: TForm_print_bills
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Left = 16
-    Top = 144
+    Top = 208
   end
   object DS_mg: TDataSource
     DataSet = OD_mg
     Left = 16
-    Top = 176
+    Top = 248
   end
   object frxDBDataset1: TfrxDBDataset
     UserName = 'frxDBDataset1'
@@ -1190,12 +1178,12 @@ object Form_print_bills: TForm_print_bills
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Left = 48
-    Top = 144
+    Top = 216
   end
   object DS_mg1: TDataSource
     DataSet = OD_mg1
     Left = 48
-    Top = 176
+    Top = 248
   end
   object OD_data2: TOracleDataSet
     SQL.Strings = (
@@ -1818,6 +1806,11 @@ object Form_print_bills: TForm_print_bills
       'select t.reu, t.reu||'#39'-'#39'||t.name as name'
       'from scott.t_org t, scott.t_org_tp tp'
       'where tp.id=t.fk_orgtp and t.reu is not null'
+      
+        'and exists (select s.* from scott.C_USERS_PERM s join scott.u_li' +
+        'st u on s.fk_perm_tp=u.id'
+      '                   and u.cd='#39#1076#1086#1089#1090#1091#1087' '#1082' '#1086#1090#1095#1105#1090#1072#1084#39
+      '                   where s.fk_reu=t.reu)'
       'order by t.reu')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
@@ -1832,16 +1825,16 @@ object Form_print_bills: TForm_print_bills
   object OD_sel_obj: TOracleDataSet
     SQL.Strings = (
       
-        'select 0 as id, '#39#1040#1076#1088#1077#1089#1091#39' as name from dual where :var_ in (0,1,2' +
-        ',3,4,5,6)'
+        'select '#39'0'#39' as id, '#39#1040#1076#1088#1077#1089#1091#39' as name from dual where :var_ in (0,1' +
+        ',2,3,4,5,6)'
       'union all'
       
-        'select 1 as id, '#39#1051#1080#1094#1077#1074#1086#1084#1091' '#1089#1095#1077#1090#1091#39' as name from dual where :var_ i' +
-        'n (0,1,2,3,4,5,6)'
+        'select '#39'1'#39' as id, '#39#1051#1080#1094#1077#1074#1086#1084#1091' '#1089#1095#1077#1090#1091#39' as name from dual where :var_' +
+        ' in (0,1,2,3,4,5,6)'
       'union all'
       
-        'select 2 as id, '#39#1059#1050#39' as name from dual where  :var_ in (0,1,4,5,' +
-        '6)')
+        'select '#39'2'#39' as id, '#39#1059#1050#39' as name from dual where  :var_ in (0,1,4,' +
+        '5,6)')
     Optimize = False
     Variables.Data = {0300000001000000050000003A5641525F030000000000000000000000}
     QBEDefinition.QBEFieldDefs = {
@@ -1849,7 +1842,6 @@ object Form_print_bills: TForm_print_bills
       0000}
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Active = True
     AfterOpen = OD_sel_objAfterOpen
     Left = 312
     Top = 240
@@ -2447,14 +2439,12 @@ object Form_print_bills: TForm_print_bills
     SQL.Strings = (
       'select t.reu, t.name, 1 as sel from scott.t_org t'
       'where t.reu is not null'
-      'order by t.reu'
-      ''
       
-        '/*select t.reu, o.name, t.sel, t.rowid from scott.TREE_OBJECTS t' +
-        ' left join scott.t_org o on t.reu=o.reu'
-      ' where t.obj_level=2 and t.fk_user=USERENV('#39'sessionid'#39')'
-      'order by t.reu'
-      '*/')
+        'and exists (select s.* from scott.C_USERS_PERM s join scott.u_li' +
+        'st u on s.fk_perm_tp=u.id'
+      '                   and u.cd='#39#1076#1086#1089#1090#1091#1087' '#1082' '#1086#1090#1095#1105#1090#1072#1084#39
+      '                   where s.fk_reu=t.reu)'
+      'order by t.reu')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
       040000000300000003000000524555010000000000040000004E414D45010000
@@ -2803,8 +2793,7 @@ object Form_print_bills: TForm_print_bills
       end>
     StorageName = 'frmPrintBillsStore.ini'
     StorageType = stRegistry
-    Left = 16
-    Top = 152
+    Top = 216
   end
   object frxPDFExport1: TfrxPDFExport
     FileName = 'c:\temp\export'
@@ -2845,5 +2834,10 @@ object Form_print_bills: TForm_print_bills
     BCDToCurrency = False
     Left = 448
     Top = 464
+  end
+  object DS_sel_obj: TDataSource
+    DataSet = OD_sel_obj
+    Left = 352
+    Top = 241
   end
 end

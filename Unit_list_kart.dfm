@@ -1,7 +1,7 @@
 object Form_list_kart: TForm_list_kart
-  Left = 261
-  Top = 304
-  Width = 1280
+  Left = 335
+  Top = 319
+  Width = 1044
   Height = 607
   Caption = #1050#1072#1088#1090#1086#1095#1082#1080
   Color = clBtnFace
@@ -94,7 +94,7 @@ object Form_list_kart: TForm_list_kart
   object wwDBGrid1: TwwDBGrid
     Left = 0
     Top = 0
-    Width = 833
+    Width = 597
     Height = 527
     ControlType.Strings = (
       'KRAN1;CheckBox;1;0'
@@ -220,12 +220,12 @@ object Form_list_kart: TForm_list_kart
   object Panel1: TPanel
     Left = 0
     Top = 527
-    Width = 1264
+    Width = 1028
     Height = 41
     Align = alBottom
     TabOrder = 3
     object Panel2: TPanel
-      Left = 835
+      Left = 599
       Top = 1
       Width = 428
       Height = 39
@@ -298,7 +298,7 @@ object Form_list_kart: TForm_list_kart
       end
     end
     object Panel3: TPanel
-      Left = 505
+      Left = 269
       Top = 1
       Width = 330
       Height = 39
@@ -918,7 +918,7 @@ object Form_list_kart: TForm_list_kart
     end
   end
   object Panel5: TPanel
-    Left = 833
+    Left = 597
     Top = 0
     Width = 431
     Height = 527
@@ -2179,6 +2179,11 @@ object Form_list_kart: TForm_list_kart
     object N2: TMenuItem
       Caption = #1042#1074#1086#1076' '#1086#1073#1098#1077#1084#1086#1074' '#1087#1086' '#1083'/'#1089
       OnClick = N2Click
+    end
+    object KLSKHOUSEID1: TMenuItem
+      Caption = #1047#1072#1084#1077#1085#1072' KLSK '#1080' HOUSE_ID'
+      Enabled = False
+      OnClick = KLSKHOUSEID1Click
     end
   end
   object frxDBDataset3: TfrxDBDataset

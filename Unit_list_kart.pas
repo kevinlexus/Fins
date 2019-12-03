@@ -210,6 +210,7 @@ type
     OD_list_kartKPR_OWN: TFloatField;
     OD_list_kartFK_KLSK_PREMISE: TFloatField;
     OD_list_kartDIVIDED: TFloatField;
+    KLSKHOUSEID1: TMenuItem;
     procedure wwDBGrid1DblClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure wwDBGrid1KeyDown(Sender: TObject; var Key: Word;
@@ -272,6 +273,7 @@ type
     procedure Button2Click(Sender: TObject);
     procedure wwDBEdit3KeyPress(Sender: TObject; var Key: Char);
     procedure BitBtn2Click(Sender: TObject);
+    procedure KLSKHOUSEID1Click(Sender: TObject);
   private
     bm: TBookmark;
   public
@@ -293,7 +295,8 @@ uses Unit_form_kart, Unit_Mainform, DM_module1, Unit_find_adr,
   Unit_form_subsidii, Unit_chargepay, Unit_find_fio,
   Unit_find_contr, Unit_det_chrg, Unit_log_actions, Unit_houses_nabor,
   Unit_house_vvod, Unit_list_set, Unit_form_bills, Unit_sch_history,
-  Unit_lk_acc, u_frmPenCorr, u_frmAccFlow, Unit_find_adr2;
+  Unit_lk_acc, u_frmPenCorr, u_frmAccFlow, Unit_find_adr2,
+  u_frmReplaceKlsk;
 
 {$R *.dfm}
 
@@ -632,6 +635,13 @@ begin
   setAllowEdit_list;
   Form_Main.cl_flt;
   SetFilter;
+
+  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
+    ['drx5_админ_доступ_к_базе']) = 1) then
+  begin
+     KLSKHOUSEID1.Enabled:=True;
+  end;
+
   // Пока отменил - возможно тормозит открытие формы (проверить) 03.09.2017
   //OD_list_kart.Locate('lsk', cxmskdt1.Text, [])
 end;
@@ -735,6 +745,9 @@ begin
 
   if FF('frmAccFlow', 0) = 1 then
     frmAccFlow.Close;
+
+  if FF('frmReplaceKlsk', 0) = 1 then
+    frmReplaceKlsk.Close;
 
   Form_main.ToolButton23.Visible := false;
   Form_main.ToolButton24.Visible := false;
@@ -1399,6 +1412,12 @@ begin
   end;
   Form_sch_history.setKlsk(Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger, '');
   Form_sch_history.setTp(0);
+end;
+
+procedure TForm_list_kart.KLSKHOUSEID1Click(Sender: TObject);
+begin
+  if FF('frmReplaceKlsk', 1) = 0 then
+    Application.CreateForm(TfrmReplaceKlsk, frmReplaceKlsk);
 end;
 
 end.

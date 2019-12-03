@@ -423,8 +423,8 @@ begin
            i:=i+OD_data.FieldByName('summa').AsFloat;
            OD_data.Next;
          end;
-         Writeln(f, '=|'+
-           IntToStr(OD_data.RecordCount)+'|'+FloatToStr(RoundTo(i, -2)));
+         //Writeln(f, '=|'+ ред.29.11.2019 - отменено по требованию —бербанка
+         //  IntToStr(OD_data.RecordCount)+'|'+FloatToStr(RoundTo(i, -2)));
          Flush(f);
          CloseFile(f);
          Form_status.Close;
@@ -458,8 +458,8 @@ begin
          i:=i+OD_data.FieldByName('summa').AsFloat;
          OD_data.Next;
        end;
-       Writeln(f, '=|'+
-         IntToStr(OD_data.RecordCount)+'|'+FloatToStr(RoundTo(i, -2)));
+       //Writeln(f, '=|'+ ред.29.11.2019 - отменено по требованию —бербанка
+         //IntToStr(OD_data.RecordCount)+'|'+FloatToStr(RoundTo(i, -2)));
        Flush(f);
        CloseFile(f);
        Form_status.Close;
@@ -505,8 +505,8 @@ begin
          i:=i+OD_data.FieldByName('summa').AsFloat;
          OD_data.Next;
        end;
-       Writeln(f, '=|'+
-         IntToStr(OD_data.RecordCount)+'|'+FloatToStr(RoundTo(i, -2)));
+       //Writeln(f, '=|'+ ред.29.11.2019 - отменено по требованию —бербанка
+         //IntToStr(OD_data.RecordCount)+'|'+FloatToStr(RoundTo(i, -2)));
        Flush(f);
        CloseFile(f);
        Form_status.Close;
@@ -548,8 +548,8 @@ begin
          i:=i+OD_data.FieldByName('summa').AsFloat;
          OD_data.Next;
        end;
-       Writeln(f, '=|'+
-         IntToStr(OD_data.RecordCount)+'|'+FloatToStr(RoundTo(i, -2)));
+       //Writeln(f, '=|'+ ред.29.11.2019 - отменено по требованию —бербанка
+         //IntToStr(OD_data.RecordCount)+'|'+FloatToStr(RoundTo(i, -2)));
        Flush(f);
        CloseFile(f);
        Form_status.Close;
@@ -581,8 +581,8 @@ begin
          i:=i+OD_data.FieldByName('summa').AsFloat;
          OD_data.Next;
        end;
-       Writeln(f, '=|'+
-         IntToStr(OD_data.RecordCount)+'|'+FloatToStr(RoundTo(i, -2)));
+       //Writeln(f, '=|'+  ред.29.11.2019 - отменено по требованию —бербанка
+         //IntToStr(OD_data.RecordCount)+'|'+FloatToStr(RoundTo(i, -2)));
        Flush(f);
        CloseFile(f);
        Form_status.Close;

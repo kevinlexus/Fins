@@ -35,7 +35,7 @@ uses
   cxPropertiesStore, frxExportPDF, ufDataModuleBill, cxStyles,
   dxSkinscxPCPainter, cxCustomData, cxFilter, cxData, cxDataStorage,
   cxNavigator, cxDBData, cxGridCustomTableView, cxGridTableView,
-  cxGridDBTableView, cxGridLevel, cxGridCustomView, cxGrid;
+  cxGridDBTableView, cxGridLevel, cxGridCustomView, cxGrid, cxDBEdit;
 
 type
   TForm_print_bills = class(TForm)
@@ -50,7 +50,6 @@ type
     Label3: TLabel;
     Label4: TLabel;
     DBLookupComboboxEh1: TDBLookupComboboxEh;
-    ComboBox1: TComboBox;
     GroupBox3: TGroupBox;
     Label5: TLabel;
     DBLookupComboboxEh2: TDBLookupComboboxEh;
@@ -163,7 +162,6 @@ type
     OD_reu: TOracleDataSet;
     Label10: TLabel;
     OD_sel_obj: TOracleDataSet;
-    wwDBLookupCombo1: TwwDBLookupCombo;
     Label11: TLabel;
     OD_ls_cnt: TOracleDataSet;
     DS_ls_cnt: TDataSource;
@@ -183,7 +181,6 @@ type
     chk1: TCheckBox;
     Label8: TLabel;
     cbb1: TcxLookupComboBox;
-    cbb2: TcxLookupComboBox;
     OD_dataBILL_BRAKE: TFloatField;
     OD_detail: TOracleDataSet;
     frxDBDataset11: TfrxDBDataset;
@@ -224,6 +221,10 @@ type
     pnl1: TPanel;
     Label15: TLabel;
     cxLookupComboBox2: TcxLookupComboBox;
+    cx3: TcxLookupComboBox;
+    DS_sel_obj: TDataSource;
+    cxLookupComboBox4: TcxLookupComboBox;
+    cxImageComboBox2: TcxImageComboBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -231,7 +232,6 @@ type
     procedure DBLookupComboboxEh3CloseUp(Sender: TObject; Accept: Boolean);
     procedure DBLookupComboboxEh2Enter(Sender: TObject);
     procedure DBLookupComboboxEh3Enter(Sender: TObject);
-    procedure ComboBox1CloseUp(Sender: TObject);
     procedure wwDBEdit2DblClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure DBLookupComboboxEh4CloseUp(Sender: TObject; Accept: Boolean);
@@ -248,8 +248,6 @@ type
     procedure sel_lsk;
     procedure DBLookupComboboxEh7CloseUp(Sender: TObject; Accept: Boolean);
     procedure cbb1PropertiesCloseUp(Sender: TObject);
-    procedure cbb2PropertiesCloseUp(Sender: TObject);
-    procedure cbb2PropertiesPopup(Sender: TObject);
     procedure DBLookupComboboxEh1CloseUp(Sender: TObject; Accept: Boolean);
     procedure OD_ls_cntBeforeOpen(DataSet: TDataSet);
     procedure OD_ls_cntAfterOpen(DataSet: TDataSet);
@@ -262,9 +260,14 @@ type
     procedure kart_pr_report;
     procedure CheckBox6Click(Sender: TObject);
     procedure CheckBox7Click(Sender: TObject);
+    procedure cxLookupComboBox3PropertiesCloseUp(Sender: TObject);
+    procedure cxLookupComboBox4PropertiesPopup(Sender: TObject);
+    procedure cxImageComboBox2PropertiesCloseUp(Sender: TObject);
+    procedure cxImageComboBox2PropertiesChange(Sender: TObject);
   private
     sel_obj_: Integer;
     cnt_sch_: Integer;
+    tp_: Integer;
   public
     { Public declarations }
   end;
@@ -289,7 +292,7 @@ end;
 procedure TForm_print_bills.Button1Click(Sender: TObject);
 var
   pen_last_month_: Integer;
-  tp_: Integer;
+ // tp_: Integer;
   repVar: string;
   // долг, пеня для арх справки
   // dolg, pen : Double;
@@ -301,7 +304,7 @@ begin
   wwDBEdit2.Text := RightStr('00000000' + wwDBEdit2.Text, 8);
 
   if (DBLookupComboboxEh1.KeyValue = null) or ((DBLookupComboboxEh5.KeyValue =
-    null) and (ComboBox1.ItemIndex = 2)) then
+    null) and (tp_ = 2)) then
   begin
     ShowMessage('Не выбран период отчета, Отмена');
     Exit;
@@ -323,7 +326,7 @@ begin
 
   // датасет основных параметров. (наим.орг, файл счета)
   OD_t_org.Active := false;
-  OD_t_org.SetVariable('var_', ComboBox1.ItemIndex);
+  OD_t_org.SetVariable('var_', tp_);
   OD_t_org.SetVariable('mg_', DBLookupComboboxEh1.KeyValue);
   OD_t_org.Active := true;
 
@@ -347,7 +350,7 @@ begin
   end;
 
   // тип отчета
-  tp_ := ComboBox1.ItemIndex;
+  //tp_ := rep_var;
 
   if (tp_ = 6) then
     // поквартирная карточка
@@ -774,23 +777,23 @@ begin
 
   if (tp_ = 5) then //справка арх-2
   begin
-    {if sel_obj_ = 2 then
+    if sel_obj_ = 2 then
     begin
       //только для УК
       //ограничивать диапазон записи для печати счетов
-      DM_Bill.Uni_cmp_main.Params.ParamByName('p_firstNum').AsInteger :=
+      DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_firstNum').AsInteger :=
         OD_ls_cnt.FieldByName('first_rec').AsInteger;
 
-      DM_Bill.Uni_cmp_main.Params.ParamByName('p_lastNum').AsInteger :=
+      DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_lastNum').AsInteger :=
         OD_ls_cnt.FieldByName('last_rec').AsInteger;
     end
     else
     begin
       //не ограничивать диапазон записи для печати счетов
-      DM_Bill.Uni_cmp_main.Params.ParamByName('p_firstNum').AsInteger := 0;
-      DM_Bill.Uni_cmp_main.Params.ParamByName('p_lastNum').AsInteger :=
+      DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_firstNum').AsInteger := 0;
+      DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_lastNum').AsInteger :=
         1000000000;
-    end; }
+    end;
 
     // установить параметры
     DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_mg').AsString :=
@@ -1226,66 +1229,6 @@ begin
   DBLookupComboboxEh4.Enabled := false;
 end;
 
-procedure TForm_print_bills.ComboBox1CloseUp(Sender: TObject);
-begin
-  OD_sel_obj.Active := false;
-  OD_sel_obj.SetVariable(':var_', ComboBox1.ItemIndex);
-  OD_sel_obj.Active := True;
-  sel_obj_ := OD_sel_obj.FieldByName('id').AsInteger;
-  wwDBLookupCombo1.LookupValue := OD_sel_obj.FieldByName('id').AsString;
-  set_obj;
-  if ComboBox1.ItemIndex = 0 then // Счета
-  begin
-    Label3.Caption := 'Период отчета';
-    Label9.Visible := false;
-    DBLookupComboboxEh5.Visible := false;
-    DBLookupComboboxEh1.Enabled := true;
-    CheckBox2.Visible := true;
-    CheckBox4.Visible := true;
-    CheckBox5.Visible := true;
-    Label13.Enabled := True;
-    cxImageComboBox1.Enabled := True;
-  end
-  else if (ComboBox1.ItemIndex = 2) or (ComboBox1.ItemIndex = 5) then
-    // Справка из архива
-  begin
-    Label3.Caption := 'Период отчета, с';
-    Label9.Visible := true;
-    DBLookupComboboxEh5.Visible := true;
-    DBLookupComboboxEh1.Enabled := true;
-    CheckBox2.Visible := false;
-    CheckBox4.Visible := false;
-    CheckBox5.Visible := false;
-    Label13.Enabled := false;
-    cxImageComboBox1.Enabled := false;
-  end
-  else if ComboBox1.ItemIndex = 3 then // Справка о задолженности
-  begin
-    Label3.Caption := 'Период отчета';
-    Label9.Visible := false;
-    DBLookupComboboxEh5.Visible := false;
-    DBLookupComboboxEh1.Enabled := true;
-    CheckBox2.Visible := true;
-    CheckBox4.Visible := true;
-    CheckBox5.Visible := false;
-    Label13.Enabled := false;
-    cxImageComboBox1.Enabled := false;
-    CheckBox5.Visible := true;
-  end
-  else
-  begin
-    Label3.Caption := 'Период отчета';
-    Label9.Visible := false;
-    DBLookupComboboxEh5.Visible := false;
-    DBLookupComboboxEh1.Enabled := true;
-    CheckBox2.Visible := true;
-    CheckBox4.Visible := true;
-    CheckBox5.Visible := false;
-    Label13.Enabled := false;
-    cxImageComboBox1.Enabled := false;
-  end
-end;
-
 procedure TForm_print_bills.set_lsk(var_: integer; lsk1_: string);
 begin
   if var_ = 0 then
@@ -1311,7 +1254,68 @@ begin
 end;
 
 procedure TForm_print_bills.FormCreate(Sender: TObject);
+var
+  Items: TcxImageComboBoxItems;
+  Item: TcxImageComboBoxItem;
 begin
+  // доступ к вариантам отчета
+  Items := cxImageComboBox2.Properties.Items;
+  Items.BeginUpdate;
+  try
+    Items.Clear;
+    if isaccess('scott.drx_print_bills_счет') = 1 then
+    begin
+      Item := Items.Add as TcxImageComboBoxItem;
+      Item.Value := 0;
+      Item.Description := 'Счета';
+      Item.ImageIndex := 0;
+    end;
+
+    if isaccess('scott.drx_print_bills_спр_арх') = 1 then
+    begin
+      Item := Items.Add as TcxImageComboBoxItem;
+      Item.Value := 1;
+      Item.Description := 'Справка из архива';
+      Item.ImageIndex := 1;
+    end;
+
+    if isaccess('scott.drx_print_bills_спр_зад') = 1 then
+    begin
+      Item := Items.Add as TcxImageComboBoxItem;
+      Item.Value := 2;
+      Item.Description := 'Справка о задолженности';
+      Item.ImageIndex := 2;
+    end;
+
+    if isaccess('scott.drx_print_bills_спр_усзн') = 1 then
+    begin
+      Item := Items.Add as TcxImageComboBoxItem;
+      Item.Value := 3;
+      Item.Description := 'Счет для УСЗН';
+      Item.ImageIndex := 3;
+    end;
+
+    if isaccess('scott.drx_print_bills_спр_арх2') = 1 then
+    begin
+      Item := Items.Add as TcxImageComboBoxItem;
+      Item.Value := 4;
+      Item.Description := 'Справка из архива-2';
+      Item.ImageIndex := 4;
+    end;
+
+    if isaccess('scott.drx_print_bills_кварт') = 1 then
+    begin
+      Item := Items.Add as TcxImageComboBoxItem;
+      Item.Value := 5;
+      Item.Description := 'Поквартирная карточка';
+      Item.ImageIndex := 5;
+    end;
+  finally
+    Items.EndUpdate;
+  end;
+
+  /////////
+
   //Выбран поиск по адресу (по умолчанию)
   if DataModule1.OraclePackage1.CallIntegerFunction('scott.Utils.get_int_param',
     ['RECHARGE_BILL']) = 1 then
@@ -1354,9 +1358,10 @@ begin
   // по умолчанию - выбор печать по адресу
   sel_obj_ := 1;
   OD_sel_obj.Active := false;
-  OD_sel_obj.SetVariable(':var_', ComboBox1.ItemIndex);
+  OD_sel_obj.SetVariable(':var_', tp_);
   OD_sel_obj.Active := True;
-  wwDBLookupCombo1.LookupValue := '0';
+  //wwDBLookupCombo1.LookupValue := '0';
+  cx3.EditValue := '0';
   // кол-во счетов по умолчанию
   cnt_sch_ := 1000;
   Edit1.Text := IntToStr(cnt_sch_);
@@ -1375,7 +1380,8 @@ var
 begin
   if FF('Form_get_pay_nal', 0) = 1 then
   begin
-    ComboBox1.ItemIndex := 0;
+    //ComboBox1.ItemIndex := 0;
+    cxImageComboBox2.ItemIndex:=0;
     wwDBEdit1.Text := Form_get_pay_nal.OD_kart.FieldByName('lsk').AsString;
     wwDBEdit2.Text := Form_get_pay_nal.OD_kart.FieldByName('lsk').AsString;
     OD_mg.First;
@@ -1411,7 +1417,8 @@ begin
   end
   else if FF('Form_list_kart', 0) = 1 then
   begin
-    ComboBox1.ItemIndex := 0;
+    //ComboBox1.ItemIndex := 0;
+    cxImageComboBox2.ItemIndex:=0;
     wwDBEdit1.Text := Form_list_kart.OD_list_kart.FieldByName('lsk').AsString;
     wwDBEdit2.Text := Form_list_kart.OD_list_kart.FieldByName('lsk').AsString;
     OD_mg.First;
@@ -1441,9 +1448,12 @@ begin
     cxLookupComboBox1.EditValue :=
       OD_spr_services.FieldByName('FNAME_SCH').AsString;
 
-    //Form_main.c_lsk_id_ := Form_list_kart.OD_list_kart.FieldByName('c_lsk_id').AsInteger;
     Form_main.k_lsk_id_ :=
       Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger;
+  end
+  else
+  begin
+    cxImageComboBox2.ItemIndex:=0;
   end;
 
 end;
@@ -1469,11 +1479,11 @@ end;
 
 procedure TForm_print_bills.set_obj;
 begin
-  if wwDBLookupCombo1.LookupValue = '0' then
+  if cx3.EditValue = '0' then
   begin
     //по Адресу
     //кол-во л.с. для печати
-    cbb2.Enabled := false;
+    cxLookupComboBox4.Enabled := false;
     Label11.Enabled := false;
     Label12.Enabled := false;
     Edit1.Enabled := false;
@@ -1498,11 +1508,11 @@ begin
     set_lsk(1, '');
     sel_obj_ := 1;
   end
-  else if wwDBLookupCombo1.LookupValue = '1' then
+  else if cx3.EditValue = '1' then
   begin
     //по Л/C
     //кол-во л.с. для печати
-    cbb2.Enabled := false;
+    cxLookupComboBox4.Enabled := false;
     Label11.Enabled := false;
     Label12.Enabled := false;
     Edit1.Enabled := false;
@@ -1530,11 +1540,11 @@ begin
     sel_obj_ := 0;
 
   end
-  else if wwDBLookupCombo1.LookupValue = '2' then
+  else if cx3.EditValue = '2' then
   begin
     //по УК
     //кол-во л.с. для печати
-    cbb2.Enabled := true;
+    cxLookupComboBox4.Enabled := true;
     Label11.Enabled := true;
     Label12.Enabled := true;
     Edit1.Enabled := true;
@@ -1582,13 +1592,24 @@ procedure TForm_print_bills.sel_ls_cnt;
 begin
   //задаем период для выборки кол-ва л.с., для печати счетов сотнями
   OD_ls_cnt.Active := false;
-  OD_ls_cnt.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue);
+  if (tp_ = 0) or (tp_ = 1)
+    or (tp_ = 4) or (tp_ = 6) then
+    // счет
+    OD_ls_cnt.SetVariable('p_mg', DBLookupComboboxEh1.KeyValue)
+  else
+    // остальные отчеты (арх.справ.)
+    OD_ls_cnt.SetVariable('p_mg', DBLookupComboboxEh5.KeyValue);
+
   OD_ls_cnt.SetVariable('p_reu', cbb1.EditValue);
   OD_ls_cnt.Active := true;
-  cbb2.EditValue := OD_ls_cnt.FieldByName('first_rec').AsString;
+  if OD_ls_cnt.RecordCount = 0 then
+    cxLookupComboBox4.EditValue := 0
+  else
+    cxLookupComboBox4.EditValue := OD_ls_cnt.FieldByName('first_rec').AsString;
 
-  // для фильтра выбора почтового индекса
-  if wwDBLookupCombo1.LookupValue = '2' then
+  //  ShowMessage(cx3.EditValue);
+    // для фильтра выбора почтового индекса
+  if cx3.EditValue = '2' then
   begin
     DM_Bill.Uni_postcode.ParamByName('reu').AsString := cbb1.EditValue;
     DM_Bill.Uni_postcode.Active := False;
@@ -1620,25 +1641,6 @@ end;
 procedure TForm_print_bills.cbb1PropertiesCloseUp(Sender: TObject);
 begin
   sel_ls_cnt;
-end;
-
-procedure TForm_print_bills.cbb2PropertiesCloseUp(Sender: TObject);
-begin
-  { if cbb2.EditValue <> '' then
-    OD_ls_cnt.Locate('first_rec', StrToInt(cbb2.EditValue), [])
-    else
-    OD_ls_cnt.Locate('first_rec', 0, []);}
-end;
-
-procedure TForm_print_bills.cbb2PropertiesPopup(Sender: TObject);
-begin
-  // msg2('test2','test2',mb_ok);
-  if OD_ls_cnt.GetVariable('p_cnt') <> IntToStr(cnt_sch_) then
-  begin
-    OD_ls_cnt.SetVariable('p_cnt', cnt_sch_);
-    OD_ls_cnt.Active := False;
-    OD_ls_cnt.Active := True;
-  end;
 end;
 
 procedure TForm_print_bills.DBLookupComboboxEh1CloseUp(Sender: TObject; Accept:
@@ -1747,6 +1749,95 @@ begin
     selAllUk
   else
     deSelAllUk;
+end;
+
+procedure TForm_print_bills.cxLookupComboBox3PropertiesCloseUp(
+  Sender: TObject);
+begin
+  set_obj;
+end;
+
+procedure TForm_print_bills.cxLookupComboBox4PropertiesPopup(
+  Sender: TObject);
+begin
+  if OD_ls_cnt.GetVariable('p_cnt') <> IntToStr(cnt_sch_) then
+  begin
+    OD_ls_cnt.SetVariable('p_cnt', cnt_sch_);
+    OD_ls_cnt.Active := False;
+    OD_ls_cnt.Active := True;
+  end;
+end;
+
+procedure TForm_print_bills.cxImageComboBox2PropertiesCloseUp(
+  Sender: TObject);
+begin
+  OD_sel_obj.Active := false;
+  OD_sel_obj.SetVariable(':var_', tp_);
+  OD_sel_obj.Active := True;
+  sel_obj_ := OD_sel_obj.FieldByName('id').AsInteger;
+  //wwDBLookupCombo1.LookupValue := OD_sel_obj.FieldByName('id').AsString;
+  cx3.EditValue := OD_sel_obj.FieldByName('id').AsString;
+  set_obj;
+  if tp_ = 0 then // Счета
+  begin
+    Label3.Caption := 'Период отчета';
+    Label9.Visible := false;
+    DBLookupComboboxEh5.Visible := false;
+    DBLookupComboboxEh1.Enabled := true;
+    CheckBox2.Visible := true;
+    CheckBox4.Visible := true;
+    CheckBox5.Visible := true;
+    Label13.Enabled := True;
+    cxImageComboBox1.Enabled := True;
+  end
+  else if (tp_ = 2) or (tp_ = 5) then
+    // Справка из архива
+  begin
+    Label3.Caption := 'Период отчета, с';
+    Label9.Visible := true;
+    DBLookupComboboxEh5.Visible := true;
+    DBLookupComboboxEh1.Enabled := true;
+    CheckBox2.Visible := false;
+    CheckBox4.Visible := false;
+    CheckBox5.Visible := false;
+    Label13.Enabled := false;
+    cxImageComboBox1.Enabled := false;
+  end
+  else if tp_ = 3 then // Справка о задолженности
+  begin
+    Label3.Caption := 'Период отчета';
+    Label9.Visible := false;
+    DBLookupComboboxEh5.Visible := false;
+    DBLookupComboboxEh1.Enabled := true;
+    CheckBox2.Visible := true;
+    CheckBox4.Visible := true;
+    CheckBox5.Visible := false;
+    Label13.Enabled := false;
+    cxImageComboBox1.Enabled := false;
+    CheckBox5.Visible := true;
+  end
+  else
+  begin
+    Label3.Caption := 'Период отчета';
+    Label9.Visible := false;
+    DBLookupComboboxEh5.Visible := false;
+    DBLookupComboboxEh1.Enabled := true;
+    CheckBox2.Visible := true;
+    CheckBox4.Visible := true;
+    CheckBox5.Visible := false;
+    Label13.Enabled := false;
+    cxImageComboBox1.Enabled := false;
+  end
+end;
+
+procedure TForm_print_bills.cxImageComboBox2PropertiesChange(
+  Sender: TObject);
+var
+  value: Variant;
+begin
+  // получить value cxImageComboBox
+  value := TcxImageComboBox(Sender).Properties.Items[TcxImageComboBox(Sender).ItemIndex].ImageIndex;
+  tp_:=VarToInt(value);
 end;
 
 end.
