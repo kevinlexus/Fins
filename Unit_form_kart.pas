@@ -36,7 +36,7 @@ uses
   cxFilter, cxData, cxDataStorage, cxDBData, cxDBLookupComboBox,
   cxImageComboBox, cxGridCardView, cxGridDBCardView, cxGridCustomLayoutView,
   dxLayoutContainer, cxGridViewLayoutContainer, cxGridLayoutView,
-  cxGridDBLayoutView, cxButtonEdit;
+  cxGridDBLayoutView, cxButtonEdit, cxMaskEdit;
 
 type
   TForm_kart = class(TForm)
@@ -426,6 +426,8 @@ type
     GroupBox2: TGroupBox;
     cxDBCheckBox2: TcxDBCheckBox;
     OD_kart_prUSE_GIS_DIVIDE_ELS: TFloatField;
+    Label63: TLabel;
+    cxDBMaskEdit1: TcxDBMaskEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure DBGridEh1DblClick(Sender: TObject);
     procedure OD_kartAfterPost(DataSet: TDataSet);
@@ -765,6 +767,8 @@ begin
     // отменить изменения, без вопросов
     if not (OD_charge.State in [dsBrowse]) then
       Form_kart.OD_charge.Cancel;
+    if not (Form_list_kart.OD_kart_detail.State in [dsBrowse]) then
+      Form_list_kart.OD_kart_detail.Cancel;
     if not (OD_states_sch.State in [dsBrowse]) then
       Form_kart.OD_states_sch.Cancel;
     if not (Form_list_kart.OD_list_kart.State in [dsBrowse]) then
@@ -781,18 +785,22 @@ begin
       OD_charge.Post;
     if not (OD_states_sch.State in [dsBrowse]) then
       OD_states_sch.Post;
+    if not (Form_list_kart.OD_kart_detail.State in [dsBrowse]) then
+      Form_list_kart.OD_kart_detail.Post;
     if not (Form_list_kart.OD_list_kart.State in [dsBrowse]) then
       Form_list_kart.OD_list_kart.Post;
 
     if (Form_list_kart.OD_list_kart.UpdateStatus in [usInserted, usModified,
       usDeleted])
       or (OD_charge.UpdatesPending = true)
+      or (Form_list_kart.OD_kart_detail.UpdatesPending = true)
       or (OD_states_sch.UpdatesPending = true) or (updates_ = 1) then
     begin
       if ask_ = 0 then
       begin
         // сохранить без вопросов
         DataModule1.OracleSession1.ApplyUpdates([Form_list_kart.OD_list_kart,
+          Form_list_kart.OD_kart_detail,
           OD_charge, OD_states_sch], true);
         check_kart_correct;
         // подтверждение изменений, сделанных в пакетах
@@ -806,6 +814,7 @@ begin
         begin
           // сохранить с вопросом
           DataModule1.OracleSession1.ApplyUpdates([Form_list_kart.OD_list_kart,
+            Form_list_kart.OD_kart_detail,
             OD_charge, OD_states_sch], true);
           check_kart_correct;
           //для подтверждения изменений, сделанных в пакетах
@@ -820,7 +829,10 @@ begin
             OD_states_sch.Cancel;
           if not (Form_list_kart.OD_list_kart.State in [dsBrowse]) then
             Form_list_kart.OD_list_kart.Cancel;
+          if not (Form_list_kart.OD_kart_detail.State in [dsBrowse]) then
+            Form_list_kart.OD_kart_detail.Cancel;
           DataModule1.OracleSession1.CancelUpdates([Form_list_kart.OD_list_kart,
+            Form_list_kart.OD_kart_detail,
             OD_charge, OD_states_sch]);
           // отмена изменений, сделанных в пакетах
           DataModule1.OracleSession1.Rollback;

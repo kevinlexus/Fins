@@ -409,23 +409,16 @@ object Form_admin: TForm_admin
         #39' ( SID='#39' ||'
       '       s2.sid || '#39' ) '#39' AS blocking_status'
       
-        '  from gv$lock l1, gv$session s1, gv$lock l2, gv$session s2, sco' +
-        'tt.t_user u'
+        '  from sys.v_$lock l1, sys.v_$session s1, sys.v_$lock l2, sys.v_' +
+        '$session s2, scott.t_user u'
       ' where s1.sid = l1.sid'
       '   and s2.sid = l2.sid'
-      '   and s1.inst_id = l1.inst_id'
-      '   and s2.inst_id = l2.inst_id'
       '   and l1.BLOCK = 1'
       '   and l2.request > 0'
       '   and l1.id1 = l2.id1'
       '   and l2.id2 = l2.id2'
       '   and s1.username=u.cd(+)'
-      ' order by s1.inst_id'
-      ''
-      ''
-      '--select t.*, u.name from v$session t, scott.t_user u'
-      '--where username=u.cd'
-      '--order by u.cd')
+      '')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
       04000000040000000F000000424C4F434B494E475F5354415455530100000000

@@ -178,7 +178,6 @@ type
     cxGridDBTableView1MAXLSK: TcxGridDBColumn;
     cxGridDBTableView1ND: TcxGridDBColumn;
     cxGridDBTableView1KUL: TcxGridDBColumn;
-    cxGridDBTableView1PSCH: TcxGridDBColumn;
     OD_housesFK_TYPESPAY: TFloatField;
     cxGridDBTableView1TYPESPAY: TcxGridDBColumn;
     OD_typespay: TOracleDataSet;
@@ -203,6 +202,7 @@ type
     OD_housesFK_K_LSK: TFloatField;
     OD_housesGUID: TStringField;
     cxGridDBTableView1GUID: TcxGridDBColumn;
+    cxGridDBTableView1PSCH: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);

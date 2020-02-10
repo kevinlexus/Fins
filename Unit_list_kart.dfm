@@ -1,6 +1,6 @@
 object Form_list_kart: TForm_list_kart
-  Left = 335
-  Top = 319
+  Left = 312
+  Top = 355
   Width = 1044
   Height = 607
   Caption = #1050#1072#1088#1090#1086#1095#1082#1080
@@ -430,7 +430,6 @@ object Form_list_kart: TForm_list_kart
           Spacing = 4
           Transparent = False
           Caption = 'wwDBNavigator1Insert'
-          Enabled = False
           DisabledTextColors.ShadeColor = clGray
           DisabledTextColors.HighlightColor = clBtnHighlight
           Index = 6
@@ -466,7 +465,6 @@ object Form_list_kart: TForm_list_kart
           Spacing = 4
           Transparent = False
           Caption = 'wwDBNavigator1Edit'
-          Enabled = False
           DisabledTextColors.ShadeColor = clGray
           DisabledTextColors.HighlightColor = clBtnHighlight
           Index = 8
@@ -520,7 +518,6 @@ object Form_list_kart: TForm_list_kart
           Spacing = 4
           Transparent = False
           Caption = 'wwDBNavigator1Refresh'
-          Enabled = False
           DisabledTextColors.ShadeColor = clGray
           DisabledTextColors.HighlightColor = clBtnHighlight
           Index = 11
@@ -538,7 +535,6 @@ object Form_list_kart: TForm_list_kart
           Spacing = 4
           Transparent = False
           Caption = 'wwDBNavigator1SaveBookmark'
-          Enabled = False
           DisabledTextColors.ShadeColor = clGray
           DisabledTextColors.HighlightColor = clBtnHighlight
           Index = 12
@@ -1278,6 +1274,8 @@ object Form_list_kart: TForm_list_kart
     CommitOnPost = False
     CachedUpdates = True
     Session = DataModule1.OracleSession1
+    DesignActivation = True
+    Active = True
     AfterOpen = OD_list_kartAfterOpen
     BeforeInsert = OD_list_kartBeforeInsert
     BeforeScroll = OD_list_kartBeforeScroll
@@ -2334,5 +2332,34 @@ object Form_list_kart: TForm_list_kart
     Session = DataModule1.OracleSession1
     Left = 849
     Top = 152
+  end
+  object OD_kart_detail: TOracleDataSet
+    SQL.Strings = (
+      'select d.*, d.rowid from scott.kart_detail d where lsk = :lsk')
+    Optimize = False
+    Variables.Data = {0300000001000000040000003A4C534B610000000000000000000000}
+    OracleDictionary.UseMessageTable = True
+    QBEDefinition.AllowOperators = True
+    QBEDefinition.QBEFieldDefs = {
+      0400000004000000030000004C534B0101000000000200000049440100000000
+      00040000004F5244310100000000000B000000434144415354525F4E554D0100
+      00000000}
+    Master = OD_list_kart
+    MasterFields = 'LSK'
+    DetailFields = 'LSK'
+    QueryAllRecords = False
+    RefreshOptions = [roAfterInsert, roAfterUpdate, roAllFields]
+    CommitOnPost = False
+    CachedUpdates = True
+    Session = DataModule1.OracleSession1
+    DesignActivation = True
+    Active = True
+    Left = 152
+    Top = 32
+  end
+  object DS_kart_detail: TDataSource
+    DataSet = OD_kart_detail
+    Left = 192
+    Top = 32
   end
 end

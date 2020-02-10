@@ -1,6 +1,6 @@
 object Form_print_bills: TForm_print_bills
-  Left = 233
-  Top = 182
+  Left = 220
+  Top = 171
   Width = 468
   Height = 447
   BorderIcons = [biSystemMenu, biMinimize]
@@ -1808,7 +1808,8 @@ object Form_print_bills: TForm_print_bills
       'where tp.id=t.fk_orgtp and t.reu is not null'
       
         'and exists (select s.* from scott.C_USERS_PERM s join scott.u_li' +
-        'st u on s.fk_perm_tp=u.id'
+        'st u on s.fk_perm_tp=u.id join scott.t_user e on e.cd=user and s' +
+        '.user_id=e.id'
       '                   and u.cd='#39#1076#1086#1089#1090#1091#1087' '#1082' '#1086#1090#1095#1105#1090#1072#1084#39
       '                   where s.fk_reu=t.reu)'
       'order by t.reu')
@@ -2441,7 +2442,8 @@ object Form_print_bills: TForm_print_bills
       'where t.reu is not null'
       
         'and exists (select s.* from scott.C_USERS_PERM s join scott.u_li' +
-        'st u on s.fk_perm_tp=u.id'
+        'st u on s.fk_perm_tp=u.id join scott.t_user e on e.cd=user and s' +
+        '.user_id=e.id'
       '                   and u.cd='#39#1076#1086#1089#1090#1091#1087' '#1082' '#1086#1090#1095#1105#1090#1072#1084#39
       '                   where s.fk_reu=t.reu)'
       'order by t.reu')

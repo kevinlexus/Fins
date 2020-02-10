@@ -1,6 +1,6 @@
 object Form_houses_nabor: TForm_houses_nabor
-  Left = 237
-  Top = 187
+  Left = 453
+  Top = 188
   Width = 1085
   Height = 621
   Caption = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082' '#1076#1086#1084#1086#1074
@@ -134,7 +134,7 @@ object Form_houses_nabor: TForm_houses_nabor
     Top = 0
     Width = 491
     Height = 533
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Align = alClient
     TabOrder = 1
     object TabSheet1: TTabSheet
@@ -1044,6 +1044,15 @@ object Form_houses_nabor: TForm_houses_nabor
           Properties.ListSource = DS_typespay
           Width = 72
         end
+        object cxGridDBTableView1PSCH: TcxGridDBColumn
+          Caption = #1047#1072#1082#1088#1099#1090'?'
+          DataBinding.FieldName = 'PSCH'
+          PropertiesClassName = 'TcxCheckBoxProperties'
+          Properties.NullStyle = nssUnchecked
+          Properties.ValueChecked = '1'
+          Properties.ValueUnchecked = '0'
+          Width = 45
+        end
         object cxGridDBTableView1ID: TcxGridDBColumn
           Caption = 'ID'
           DataBinding.FieldName = 'ID'
@@ -1071,14 +1080,6 @@ object Form_houses_nabor: TForm_houses_nabor
         object cxGridDBTableView1KUL: TcxGridDBColumn
           DataBinding.FieldName = 'KUL'
           Visible = False
-        end
-        object cxGridDBTableView1PSCH: TcxGridDBColumn
-          Caption = #1047#1072#1082#1088#1099#1090'?'
-          DataBinding.FieldName = 'PSCH'
-          PropertiesClassName = 'TcxCheckBoxProperties'
-          Properties.ValueChecked = 1
-          Properties.ValueUnchecked = 0
-          Width = 33
         end
         object cxGridDBTableView1POSTCODE: TcxGridDBColumn
           Caption = #1048#1085#1076#1077#1082#1089
@@ -1265,7 +1266,6 @@ object Form_houses_nabor: TForm_houses_nabor
       Size = 4
     end
     object OD_housesPSCH: TFloatField
-      FieldKind = fkInternalCalc
       FieldName = 'PSCH'
     end
     object OD_housesFK_TYPESPAY: TFloatField

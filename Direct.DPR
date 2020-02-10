@@ -160,7 +160,8 @@ uses
   Unit_find_adr2 in 'Unit_find_adr2.pas' {Form_find_adr2},
   ufDataModuleOlap in 'ufDataModuleOlap.pas' {DM_Olap: TDataModule},
   ufDataModuleBill in 'ufDataModuleBill.pas' {DM_Bill: TDataModule},
-  u_frmReplaceKlsk in 'u_frmReplaceKlsk.pas' {frmReplaceKlsk};
+  u_frmReplaceKlsk in 'u_frmReplaceKlsk.pas' {frmReplaceKlsk},
+  u_frmMeteGisConnect in 'u_frmMeteGisConnect.pas' {frmMeteGisConnect};
 
 //,
   //CnDebug;

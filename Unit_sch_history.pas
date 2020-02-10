@@ -42,7 +42,7 @@ uses
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
   dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter,
   cxCustomData, cxFilter, cxData, cxDataStorage, cxDBData, cxCheckBox,
-  cxImageComboBox, dxBarBuiltInMenu, dxCore, cxDateUtils;
+  cxImageComboBox, dxBarBuiltInMenu, dxCore, cxDateUtils, cxButtonEdit;
 
 type
   TForm_sch_history = class(TForm)
@@ -79,13 +79,6 @@ type
     cxTabSheet2: TcxTabSheet;
     OD_t_objxpar: TOracleDataSet;
     DS_t_objxpar: TDataSource;
-    cxGrid3: TcxGrid;
-    cxGridDBTableView2: TcxGridDBTableView;
-    cxGridLevel2: TcxGridLevel;
-    cxGridDBTableView2N1: TcxGridDBColumn;
-    cxGridDBTableView2TS: TcxGridDBColumn;
-    cxGridDBTableView2OPER_NAME: TcxGridDBColumn;
-    cxGridDBTableView2USER_NAME: TcxGridDBColumn;
     cxGrid2DBTableView1N1: TcxGridDBColumn;
     cxTextEdit1: TcxTextEdit;
     cxLabel4: TcxLabel;
@@ -101,8 +94,6 @@ type
     cxLabel8: TcxLabel;
     wwDBEdit4: TwwDBEdit;
     cxGrid2DBTableView1ACT: TcxGridDBColumn;
-    cxGridDBTableView2PERIOD: TcxGridDBColumn;
-    cxGridDBTableView2COMM: TcxGridDBColumn;
     DS_data: TDataSource;
     cxGrid2DBTableView1STATE: TcxGridDBColumn;
     Panel4: TPanel;
@@ -132,6 +123,20 @@ type
     OD_meterSTATE: TStringField;
     OD_meterSTATE_CD: TStringField;
     OD_meterCOUNTER: TStringField;
+    DataSource1: TDataSource;
+    cxGrid2DBTableView1GIS_CONN: TcxGridDBColumn;
+    OD_eolink_meter2: TOracleDataSet;
+    DS_eolink_meter2: TDataSource;
+    cxGrid3: TcxGrid;
+    cxGridDBTableView2: TcxGridDBTableView;
+    cxGridDBTableView2OPER_NAME: TcxGridDBColumn;
+    cxGridDBTableView2N1: TcxGridDBColumn;
+    cxGridDBTableView2TS: TcxGridDBColumn;
+    cxGridDBTableView2USER_NAME: TcxGridDBColumn;
+    cxGridDBTableView2STATUS_GIS: TcxGridDBColumn;
+    cxGridDBTableView2COMM: TcxGridDBColumn;
+    cxGridDBTableView2PERIOD: TcxGridDBColumn;
+    cxGridLevel2: TcxGridLevel;
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -151,6 +156,7 @@ type
     procedure setKlsk(klsk: Integer; lsk: String);
     procedure setTp(tp: Integer);
     procedure Button3Click(Sender: TObject);
+    procedure cxGrid2DBTableView1GIS_CONNPropertiesPopup(Sender: TObject);
 
   private
     // фильтр счетчиков
@@ -170,14 +176,13 @@ var
 
 implementation
 
-uses DM_module1, Unit_list_kart, Utils, Unit_form_kart, Unit_get_pay_nal;
+uses DM_module1, Unit_list_kart, Utils, Unit_form_kart, Unit_get_pay_nal,
+  u_frmMeteGisConnect;
 
 {$R *.dfm}
 
 procedure TForm_sch_history.FormCreate(Sender: TObject);
 begin
-//  cxPropertiesStore1.Active:=True;
-//  cxPropertiesStore1.RestoreFrom;
   // фильтры включены
   flt1:=1;
   flt2:=1;
@@ -190,7 +195,8 @@ begin
   cxDateEdit1.Date:=Date();
   pgc1.ActivePageIndex:=0;
   cxPageControl1.ActivePage:=cxTabSheet1;
-//  showmessage(IntToStr(Width));
+  OD_eolink_meter2.Active:=True;
+
   // задать минимальный размер
   if Width < 927 then
      Width := 927;
@@ -612,11 +618,7 @@ begin
   end;
 
     wwDBEdit2.Text:=OD_meter.FieldByName('N1').AsString;
-    //if (Self.Visible) and (cxPageControl1.ActivePageIndex=0) then
-    //begin
-     // wwDBEdit2.SetFocus;
-      //wwDBEdit2.SelectAll;
-    //end;
+
 end;
 
 procedure TForm_sch_history.CheckBox1Click(Sender: TObject);
@@ -651,6 +653,14 @@ end;
 procedure TForm_sch_history.Button3Click(Sender: TObject);
 begin
  Close;
+end;
+
+procedure TForm_sch_history.cxGrid2DBTableView1GIS_CONNPropertiesPopup(
+  Sender: TObject);
+begin
+  Application.CreateForm(TfrmMeteGisConnect, frmMeteGisConnect);
+  if frmMeteGisConnect.ShowModal = mrOk then
+
 end;
 
 end.

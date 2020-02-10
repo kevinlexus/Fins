@@ -252,7 +252,7 @@ type
     procedure OD_ls_cntBeforeOpen(DataSet: TDataSet);
     procedure OD_ls_cntAfterOpen(DataSet: TDataSet);
     procedure compound_report(p_var: Integer);
-    procedure old_report(tp_, pen_last_month_: Integer; repVar: string);
+    procedure old_report(pen_last_month_: Integer; repVar: string);
     procedure fillUk();
     function getStrUk(): string;
     procedure selAllUk();
@@ -360,7 +360,7 @@ begin
     (OD_t_org.FieldByName('BILL_TP').asInteger = 2) or
     (tp_ = 2) or (tp_ = 5) or (tp_ = 1) then
     // старый вариант отчетности или арх.справ или арх.справ-2
-    old_report(tp_, pen_last_month_, repVar)
+    old_report(pen_last_month_, repVar)
   else if (OD_t_org.FieldByName('BILL_TP').asInteger = 3) or
     (OD_t_org.FieldByName('BILL_TP').asInteger = 4) then
     // составной счет
@@ -732,7 +732,7 @@ end;
 
 // старый вариант отчетности
 
-procedure TForm_print_bills.old_report(tp_, pen_last_month_: Integer; repVar:
+procedure TForm_print_bills.old_report(pen_last_month_: Integer; repVar:
   string);
 begin
   // главный датасет для справки арх-2
@@ -1271,44 +1271,52 @@ begin
       Item.ImageIndex := 0;
     end;
 
-    if isaccess('scott.drx_print_bills_спр_арх') = 1 then
+    if isaccess('scott.drx_print_bills_спр_квартир') = 1 then
     begin
       Item := Items.Add as TcxImageComboBoxItem;
       Item.Value := 1;
-      Item.Description := 'Справка из архива';
+      Item.Description := 'Справочник квартиросъемщика';
       Item.ImageIndex := 1;
+    end;
+
+    if isaccess('scott.drx_print_bills_спр_арх') = 1 then
+    begin
+      Item := Items.Add as TcxImageComboBoxItem;
+      Item.Value := 2;
+      Item.Description := 'Справка из архива';
+      Item.ImageIndex := 2;
     end;
 
     if isaccess('scott.drx_print_bills_спр_зад') = 1 then
     begin
       Item := Items.Add as TcxImageComboBoxItem;
-      Item.Value := 2;
+      Item.Value := 3;
       Item.Description := 'Справка о задолженности';
-      Item.ImageIndex := 2;
+      Item.ImageIndex := 3;
     end;
 
     if isaccess('scott.drx_print_bills_спр_усзн') = 1 then
     begin
       Item := Items.Add as TcxImageComboBoxItem;
-      Item.Value := 3;
+      Item.Value := 4;
       Item.Description := 'Счет для УСЗН';
-      Item.ImageIndex := 3;
+      Item.ImageIndex := 4;
     end;
 
     if isaccess('scott.drx_print_bills_спр_арх2') = 1 then
     begin
       Item := Items.Add as TcxImageComboBoxItem;
-      Item.Value := 4;
+      Item.Value := 5;
       Item.Description := 'Справка из архива-2';
-      Item.ImageIndex := 4;
+      Item.ImageIndex := 5;
     end;
 
     if isaccess('scott.drx_print_bills_кварт') = 1 then
     begin
       Item := Items.Add as TcxImageComboBoxItem;
-      Item.Value := 5;
+      Item.Value := 6;
       Item.Description := 'Поквартирная карточка';
-      Item.ImageIndex := 5;
+      Item.ImageIndex := 6;
     end;
   finally
     Items.EndUpdate;

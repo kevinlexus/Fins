@@ -1,7 +1,7 @@
 object Form_sch_history: TForm_sch_history
-  Left = 890
-  Top = 201
-  Width = 963
+  Left = 357
+  Top = 238
+  Width = 1044
   Height = 380
   Caption = #1048#1089#1090#1086#1088#1080#1103' '#1074#1074#1086#1076#1072' '#1087#1086#1082#1072#1079#1072#1085#1080#1081' '#1089#1095#1077#1090#1095#1080#1082#1086#1074
   Color = clBtnFace
@@ -92,9 +92,9 @@ object Form_sch_history: TForm_sch_history
   object pgc1: TPageControl
     Left = 0
     Top = 0
-    Width = 947
+    Width = 1028
     Height = 341
-    ActivePage = ts1
+    ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
     object TabSheet1: TTabSheet
@@ -140,15 +140,17 @@ object Form_sch_history: TForm_sch_history
             DataController.Summary.DefaultGroupSummaryItems = <>
             DataController.Summary.FooterSummaryItems = <>
             DataController.Summary.SummaryGroups = <>
+            OptionsBehavior.CellHints = True
             OptionsBehavior.NavigatorHints = True
             OptionsData.Deleting = False
             OptionsData.Inserting = False
             OptionsSelection.InvertSelect = False
             OptionsView.GroupByBox = False
+            OptionsView.Indicator = True
             object cxGrid2DBTableView1NAME: TcxGridDBColumn
               Caption = #8470' '#1087'.'#1087'.'
               DataBinding.FieldName = 'NPP'
-              Width = 45
+              Width = 37
             end
             object cxGrid2DBTableView1NM: TcxGridDBColumn
               Caption = #1059#1089#1083#1091#1075#1072
@@ -186,24 +188,48 @@ object Form_sch_history: TForm_sch_history
               DataBinding.FieldName = 'DT2'
               Width = 65
             end
+            object cxGrid2DBTableView1GIS_CONN: TcxGridDBColumn
+              Caption = #1043#1048#1057' '#1055#1088#1080#1074#1103#1079#1082#1072
+              DataBinding.FieldName = 'K_LSK_ID'
+              PropertiesClassName = 'TcxLookupComboBoxProperties'
+              Properties.KeyFieldNames = 'FK_KLSK_OBJ'
+              Properties.ListColumns = <
+                item
+                  FieldName = 'NAME'
+                end>
+              Properties.ListOptions.ShowHeader = False
+              Properties.ListSource = DS_eolink_meter2
+              Properties.OnPopup = cxGrid2DBTableView1GIS_CONNPropertiesPopup
+              Width = 96
+            end
             object cxGrid2DBTableView1GIS_CONN_TP: TcxGridDBColumn
-              Caption = #1043#1048#1057
+              Caption = #1043#1048#1057' '#1087#1086#1082#1072#1079'.'
               DataBinding.FieldName = 'GIS_CONN_TP'
               PropertiesClassName = 'TcxImageComboBoxProperties'
               Properties.ClearKey = 16449
               Properties.DefaultImageIndex = 0
               Properties.Items = <
                 item
-                  Description = #1055#1088#1080#1085#1080#1084#1072#1090#1100' '#1087#1086#1082#1072#1079#1072#1085#1080#1103' '#1086#1090' '#1043#1048#1057
+                  Description = '3 - '#1042' '#1086#1073#1077' '#1089#1090#1086#1088#1086#1085#1099
+                  ImageIndex = 0
+                  Value = 3
+                end
+                item
+                  Description = '1 - '#1055#1088#1080#1085#1080#1084#1072#1090#1100
                   ImageIndex = 0
                   Value = 1
                 end
                 item
-                  Description = #1053#1077#1090' '#1086#1073#1084#1077#1085#1072
+                  Description = '2 - '#1054#1090#1087#1088#1072#1074#1083#1103#1090#1100
+                  Value = 2
+                end
+                item
+                  Description = '0 - '#1053#1077#1090' '#1086#1073#1084#1077#1085#1072
                   Value = 0
                 end>
+              HeaderHint = #1055#1088#1080#1079#1085#1072#1082' '#1086#1090#1087#1088#1072#1074#1082#1080' '#1087#1086#1082#1072#1079#1072#1085#1080#1081' '#1074' '#1043#1048#1057' '#1046#1050#1061
               MinWidth = 5
-              Width = 44
+              Width = 50
             end
             object cxGrid2DBTableView1ID: TcxGridDBColumn
               DataBinding.FieldName = 'ID'
@@ -222,7 +248,7 @@ object Form_sch_history: TForm_sch_history
       object Panel2: TPanel
         Left = 594
         Top = 0
-        Width = 345
+        Width = 426
         Height = 209
         Align = alClient
         Caption = 'Panel2'
@@ -230,7 +256,7 @@ object Form_sch_history: TForm_sch_history
         object cxGrid3: TcxGrid
           Left = 1
           Top = 1
-          Width = 343
+          Width = 424
           Height = 207
           Align = alClient
           TabOrder = 0
@@ -253,33 +279,40 @@ object Form_sch_history: TForm_sch_history
             DataController.Summary.DefaultGroupSummaryItems = <>
             DataController.Summary.FooterSummaryItems = <>
             DataController.Summary.SummaryGroups = <>
+            OptionsBehavior.CellHints = True
             OptionsBehavior.NavigatorHints = True
             OptionsSelection.InvertSelect = False
             OptionsView.GroupByBox = False
+            OptionsView.Indicator = True
             object cxGridDBTableView2OPER_NAME: TcxGridDBColumn
               Caption = #1044#1077#1081#1089#1090#1074#1080#1077
               DataBinding.FieldName = 'OPER_NAME'
-              Width = 128
+              Width = 74
             end
             object cxGridDBTableView2N1: TcxGridDBColumn
               Caption = #1047#1085#1072#1095#1077#1085#1080#1077
               DataBinding.FieldName = 'N1'
-              Width = 66
+              Width = 51
             end
             object cxGridDBTableView2TS: TcxGridDBColumn
               Caption = #1044#1072#1090#1072'-'#1074#1088#1077#1084#1103
               DataBinding.FieldName = 'TS'
-              Width = 99
+              Width = 68
             end
             object cxGridDBTableView2USER_NAME: TcxGridDBColumn
               Caption = #1055#1086#1083#1100#1079#1086#1074#1072#1090#1077#1083#1100
               DataBinding.FieldName = 'USER_NAME'
               Width = 56
             end
+            object cxGridDBTableView2STATUS_GIS: TcxGridDBColumn
+              Caption = #1057#1090#1072#1090#1091#1089' '#1043#1048#1057
+              DataBinding.FieldName = 'STATUS_GIS'
+              Width = 70
+            end
             object cxGridDBTableView2COMM: TcxGridDBColumn
               Caption = #1050#1086#1084#1084'.'
               DataBinding.FieldName = 'COMM'
-              Width = 98
+              Width = 48
             end
             object cxGridDBTableView2PERIOD: TcxGridDBColumn
               Caption = #1055#1077#1088#1080#1086#1076
@@ -294,7 +327,7 @@ object Form_sch_history: TForm_sch_history
       object Panel3: TPanel
         Left = 0
         Top = 209
-        Width = 939
+        Width = 1020
         Height = 104
         Align = alBottom
         Caption = 'Panel3'
@@ -302,21 +335,21 @@ object Form_sch_history: TForm_sch_history
         object cxPageControl1: TcxPageControl
           Left = 1
           Top = 1
-          Width = 937
+          Width = 1018
           Height = 102
           Align = alClient
           TabOrder = 0
-          Properties.ActivePage = cxTabSheet2
+          Properties.ActivePage = cxTabSheet1
           Properties.CustomButtons.Buttons = <>
           ClientRectBottom = 98
           ClientRectLeft = 4
-          ClientRectRight = 933
+          ClientRectRight = 1014
           ClientRectTop = 24
           object cxTabSheet1: TcxTabSheet
             Caption = #1042#1085#1077#1089#1090#1080' '#1087#1086#1082#1072#1079#1072#1085#1080#1077
             ImageIndex = 0
             object Panel4: TPanel
-              Left = 838
+              Left = 919
               Top = 0
               Width = 91
               Height = 74
@@ -485,7 +518,7 @@ object Form_sch_history: TForm_sch_history
             Caption = #1044#1086#1073#1072#1074#1080#1090#1100' '#1048#1055#1059
             ImageIndex = 1
             DesignSize = (
-              929
+              1010
               74)
             object cxTextEdit1: TcxTextEdit
               Left = 104
@@ -543,7 +576,7 @@ object Form_sch_history: TForm_sch_history
               Style.IsFontAssigned = True
             end
             object Button2: TButton
-              Left = 847
+              Left = 928
               Top = 24
               Width = 75
               Height = 25
@@ -625,7 +658,7 @@ object Form_sch_history: TForm_sch_history
       object cxGrid1: TcxGrid
         Left = 0
         Top = 0
-        Width = 939
+        Width = 1020
         Height = 313
         Align = alClient
         TabOrder = 0
@@ -714,7 +747,7 @@ object Form_sch_history: TForm_sch_history
     DetailFields = 'LSK'
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Left = 840
+    Left = 400
     Top = 80
   end
   object OD_meter: TOracleDataSet
@@ -722,10 +755,10 @@ object Form_sch_history: TForm_sch_history
       
         'select u.nm, t.*, case when t.dt1 <=last_day(to_date(p.period||'#39 +
         '01'#39', '#39'YYYYMMDD'#39')) '
-      'and t.dt2 > last_day(to_date(p.period||'#39'01'#39', '#39'YYYYMMDD'#39')) '
+      'and t.dt2 > last_day(to_date(p.period||'#39'01'#39', '#39'YYYYMMDD'#39'))'
       
         'then 1 else 0 end act,u3.name as state, u3.cd as state_cd, u.cou' +
-        'nter,'
+        'nter,  '
       ' t.rowid from scott.meter t join scott.usl u on t.fk_usl=u.usl '
       'join scott.params p on 1=1'
       'join scott.u_list u2 on u2.cd='#39#1055#1086#1074#1077#1088#1082#1072' '#1055#1059#39
@@ -759,10 +792,10 @@ object Form_sch_history: TForm_sch_history
       00414354010000000000030000004E5050010000000000050000005354415445
       0100000000000800000053544154455F434401000000000007000000434F554E
       5445520100000000000B0000004749535F434F4E4E5F5450010000000000}
-    MasterFields = 'k_lsk_id'
     RefreshOptions = [roAfterUpdate, roAllFields]
     Session = DataModule1.OracleSession1
     DesignActivation = True
+    Active = True
     AfterScroll = OD_meterAfterScroll
     Left = 88
     Top = 80
@@ -833,7 +866,10 @@ object Form_sch_history: TForm_sch_history
         #39'||substr(t.mg,1,4) as period,'
       
         ' decode(t.tp,0, '#39#1088#1091#1095#1085'.'#1074#1074#1086#1076#39', 1, '#39#1072#1074#1090#1086#1085#1072#1095'.'#39', 2, '#39#1086#1090#1084#1077#1085#1072' '#1072#1074#1090#1086#1085#1072#1095'.'#39 +
-        ', 3, '#39#1087#1077#1088#1077#1093#1086#1076#39', 4, '#39#1082#1086#1088#1088#1077#1082#1094'.'#1085#1077#1080#1089#1087#1088'.'#39') as comm'
+        ', 3, '#39#1087#1077#1088#1077#1093#1086#1076#39', 4, '#39#1082#1086#1088#1088#1077#1082#1094'.'#1085#1077#1080#1089#1087#1088'.'#39') as comm,'
+      
+        ' decode(t.status,0, '#39#1074#1085#1077#1089#1077#1085#1086#39', 1, '#39#1086#1090#1087#1088#1072#1074#1082#1072' '#1074' '#1043#1048#1057#39', 2, '#39#1079#1072#1075#1088#1091#1078#1077#1085 +
+        #1086' '#1074' '#1043#1048#1057#39', 3, '#39#1086#1096#1080#1073#1082#1072#39', 4, '#39#1087#1088#1080#1085#1103#1090#1086' '#1086#1090' '#1043#1048#1057#39') as status_gis'
       ' from scott.t_objxpar t'
       ' left join scott.u_list u on t.fk_list=u.id'
       ' left join scott.t_user s on t.fk_user=s.id'
@@ -844,10 +880,11 @@ object Form_sch_history: TForm_sch_history
       0300000001000000090000003A4B5F4C534B5F49440300000000000000000000
       00}
     QBEDefinition.QBEFieldDefs = {
-      0400000007000000020000004E31010000000000020000005453010000000000
+      0400000008000000020000004E31010000000000020000005453010000000000
       090000004F5045525F4E414D4501000000000009000000555345525F4E414D45
       01000000000002000000494401000000000006000000504552494F4401000000
-      000004000000434F4D4D010000000000}
+      000004000000434F4D4D0100000000000A0000005354415455535F4749530100
+      00000000}
     Master = OD_meter
     MasterFields = 'k_lsk_id'
     DetailFields = 'k_lsk_id'
@@ -855,12 +892,12 @@ object Form_sch_history: TForm_sch_history
     DesignActivation = True
     Active = True
     AfterRefresh = OD_t_objxparAfterRefresh
-    Left = 512
+    Left = 296
     Top = 80
   end
   object DS_t_objxpar: TDataSource
     DataSet = OD_t_objxpar
-    Left = 564
+    Left = 332
     Top = 80
   end
   object OD_usl: TOracleDataSet
@@ -885,7 +922,40 @@ object Form_sch_history: TForm_sch_history
   end
   object DS_data: TDataSource
     DataSet = OD_data
-    Left = 884
+    Left = 436
     Top = 80
+  end
+  object DataSource1: TDataSource
+    DataSet = OD_data
+    Left = 436
+    Top = 80
+  end
+  object OD_eolink_meter2: TOracleDataSet
+    SQL.Strings = (
+      'select e.fk_klsk_obj, wm_concat(u.name||'#39': '#39'||x.s1) as name'
+      ' from exs.eolink e join exs.eolxpar x on e.id=x.fk_eolink'
+      ' join oralv.u_hfpar u on x.fk_par=u.id '
+      ' join exs.eolink k on e.parent_id=k.id -- '#1087#1086#1084#1077#1097#1077#1085#1080#1077
+      ' and u.cd not in ('#39#1043#1048#1057' '#1046#1050#1061'.'#1055#1088#1080#1079#1085#1072#1082'_'#1055#1059'_'#1050#1056#39')'
+      'where k.fk_klsk_obj=:FK_KLSK_PREMISE'
+      ' group by e.fk_klsk_obj')
+    Optimize = False
+    Variables.Data = {
+      0300000001000000100000003A464B5F4B4C534B5F5052454D49534503000000
+      0000000000000000}
+    QBEDefinition.QBEFieldDefs = {
+      04000000020000000B000000464B5F4B4C534B5F4F424A010000000000040000
+      004E414D45010000000000}
+    Master = Form_list_kart.OD_list_kart
+    MasterFields = 'FK_KLSK_PREMISE'
+    Session = DataModule1.OracleSession1
+    DesignActivation = True
+    Left = 84
+    Top = 144
+  end
+  object DS_eolink_meter2: TDataSource
+    DataSet = OD_eolink_meter2
+    Left = 124
+    Top = 144
   end
 end

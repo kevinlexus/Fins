@@ -211,6 +211,8 @@ type
     OD_list_kartFK_KLSK_PREMISE: TFloatField;
     OD_list_kartDIVIDED: TFloatField;
     KLSKHOUSEID1: TMenuItem;
+    OD_kart_detail: TOracleDataSet;
+    DS_kart_detail: TDataSource;
     procedure wwDBGrid1DblClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure wwDBGrid1KeyDown(Sender: TObject; var Key: Word;
@@ -642,6 +644,8 @@ begin
      KLSKHOUSEID1.Enabled:=True;
   end;
 
+  // открыть детализационный датасет
+  OD_kart_detail.Active:=True;
   // ѕока отменил - возможно тормозит открытие формы (проверить) 03.09.2017
   //OD_list_kart.Locate('lsk', cxmskdt1.Text, [])
 end;
