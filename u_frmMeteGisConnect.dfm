@@ -1,6 +1,6 @@
 object frmMeteGisConnect: TfrmMeteGisConnect
-  Left = 1021
-  Top = 191
+  Left = 1341
+  Top = 155
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = #1055#1088#1080#1074#1103#1079#1082#1072' '#1089#1095#1077#1090#1095#1080#1082#1072' '#1082' '#1043#1048#1057' '#1046#1050#1061
@@ -124,15 +124,21 @@ object frmMeteGisConnect: TfrmMeteGisConnect
       OptionsData.Deleting = False
       OptionsData.Inserting = False
       OptionsSelection.InvertSelect = False
+      OptionsView.ColumnAutoWidth = True
       OptionsView.GroupByBox = False
       OptionsView.Indicator = True
-      object cxGridDBTableView3FK_KLSK_OBJ: TcxGridDBColumn
-        Caption = 'K_LSK_ID'
-        DataBinding.FieldName = 'FK_KLSK_OBJ'
-      end
       object cxGridDBTableView3NAME: TcxGridDBColumn
-        Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
+        Caption = #1055#1072#1088#1072#1084#1077#1090#1088#1099' '#1089#1095#1077#1090#1095#1080#1082#1072
         DataBinding.FieldName = 'NAME'
+        Width = 399
+      end
+      object cxGridDBTableView3EOLINK_ID: TcxGridDBColumn
+        DataBinding.FieldName = 'EOLINK_ID'
+        Width = 27
+      end
+      object cxGridDBTableView3FK_KLSK_OBJ: TcxGridDBColumn
+        DataBinding.FieldName = 'FK_KLSK_OBJ'
+        Width = 27
       end
     end
     object cxGridLevel3: TcxGridLevel
@@ -150,14 +156,15 @@ object frmMeteGisConnect: TfrmMeteGisConnect
       467
       41)
     object Button1: TButton
-      Left = 264
+      Left = 168
       Top = 2
       Width = 93
       Height = 31
       Anchors = [akRight, akBottom]
-      Caption = #1054#1082
+      Caption = #1055#1088#1080#1074#1103#1079#1072#1090#1100
       ModalResult = 1
       TabOrder = 0
+      OnClick = Button1Click
     end
     object Button2: TButton
       Left = 363
@@ -170,25 +177,42 @@ object frmMeteGisConnect: TfrmMeteGisConnect
       ModalResult = 2
       TabOrder = 1
     end
+    object Button3: TButton
+      Left = 265
+      Top = 2
+      Width = 93
+      Height = 31
+      Anchors = [akRight, akBottom]
+      Caption = #1054#1090#1074#1103#1079#1072#1090#1100
+      ModalResult = 4
+      TabOrder = 2
+      OnClick = Button3Click
+    end
   end
   object OD_eolink_meter: TOracleDataSet
     SQL.Strings = (
-      'select e.fk_klsk_obj, wm_concat(u.name||'#39': '#39'||x.s1) as name'
+      
+        'select e.id as eolink_id, e.fk_klsk_obj, wm_concat(u.name_short|' +
+        '|'#39': '#39'||coalesce(x.s1,to_char(x.n1),to_char(x.d1,'#39'DD.MM.YYYY'#39'))) ' +
+        'as name'
       ' from exs.eolink e join exs.eolxpar x on e.id=x.fk_eolink'
-      ' join oralv.u_hfpar u on x.fk_par=u.id '
+      
+        ' join (select * from oralv.u_hfpar r order by r.npp) u on x.fk_p' +
+        'ar=u.id '
       ' join exs.eolink k on e.parent_id=k.id -- '#1087#1086#1084#1077#1097#1077#1085#1080#1077
       ' where e.usl=:usl and k.fk_klsk_obj=:fk_klsk_premise'
       ' and u.cd not in ('#39#1043#1048#1057' '#1046#1050#1061'.'#1055#1088#1080#1079#1085#1072#1082'_'#1055#1059'_'#1050#1056#39')'
-      ' group by e.fk_klsk_obj')
+      ' group by e.id, e.fk_klsk_obj')
     Optimize = False
     Variables.Data = {
       0300000002000000040000003A55534C05000000000000000000000010000000
       3A464B5F4B4C534B5F5052454D495345030000000000000000000000}
     QBEDefinition.QBEFieldDefs = {
-      04000000020000000B000000464B5F4B4C534B5F4F424A010000000000040000
-      004E414D45010000000000}
+      04000000030000000B000000464B5F4B4C534B5F4F424A010000000000040000
+      004E414D4501000000000009000000454F4C494E4B5F4944010000000000}
     Session = DataModule1.OracleSession1
     DesignActivation = True
+    Active = True
     Left = 12
     Top = 8
   end

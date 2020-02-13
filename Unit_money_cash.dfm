@@ -1,6 +1,6 @@
 object Form_money_cash: TForm_money_cash
-  Left = 1145
-  Top = 234
+  Left = 312
+  Top = 192
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   ClientHeight = 216

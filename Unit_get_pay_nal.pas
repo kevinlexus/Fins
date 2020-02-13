@@ -153,7 +153,8 @@ type
     procedure clearPay;
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
-    function print_receipt(client_sum: Double; p_cashNum: Integer): Integer;
+    function print_receipt(client_sum: Double; p_cashNum: Integer;
+      p_cash_oper_tp: Integer): Integer;
     procedure ToolButton1Click(Sender: TObject);
     procedure ToolButton2Click(Sender: TObject);
     procedure invokeFormSchHistory;
@@ -758,9 +759,12 @@ begin
     end;
   end;
 
-  // регистрация и печать чека
+  /////////////////////////////////////////////////////
+  //           регистрация и печать чека
   l_flag := print_receipt(StrToFloat(wwDBEdit1.Text),
-    OD_c_kwtp.FieldByName('cash_num').AsInteger);
+    OD_c_kwtp.FieldByName('cash_num').AsInteger,
+    OD_c_kwtp.FieldByName('cash_oper_tp').AsInteger);
+  /////////////////////////////////////////////////////
 
   Button1.Enabled := true;
   if l_flag = 0 then
@@ -779,7 +783,7 @@ begin
 
   if getDoublePar(Form_main.paramList, 'RECEIPT_TP') = 1 then
   begin
-    // ТСЖ
+    // ТСЖ - распечатка чека на принтере
     if Form_Main.have_cash <> 1 then
     begin
       if FF('Form_plat_doc', 1) = 0 then
@@ -817,7 +821,6 @@ begin
   DBGridEh1.Visible := false;
   DBGridEh1.SelectedIndex := 0;
   Button1.Enabled := true;
-  //  wwDBEdit3.SetFocus;
   Windows.SetFocus(wwDBEdit3.Handle);
 end;
 
@@ -825,13 +828,13 @@ end;
 // client_sum: сумма, полученная от клиента
 
 function TForm_get_pay_nal.print_receipt(client_sum: Double; p_cashNum:
-  Integer): Integer;
+  Integer; p_cash_oper_tp: Integer): Integer;
 var
   // режим ККМ
   saved_cash_test, mode: Integer;
   F: TextFile;
-  pad1, pad2, path, oldLsk: string;
-  receiptTest, retry: Boolean;
+  pad1, pad2, path, oldLsk, eQres: string;
+  receiptTest, retry, eQsuccess: Boolean;
   inn, strDt: string;
   ECR: OleVariant;
 begin
@@ -856,6 +859,7 @@ begin
 
   if getDoublePar(Form_main.paramList, 'CHECK_CASH_CORRECTNESS') = 1 then
   begin
+    // ТСЖ - проверка корректности подключенного фискальника
     if not receiptTest then
     begin
       retry := True;
@@ -932,7 +936,7 @@ begin
   if getDoublePar(Form_main.paramList, 'RECEIPT_TP') = 1 then
   begin
     ///////////////////////////////////////////////////////////
-    //              ЧЕК ДЛЯ ТСЖ
+    //                   ЧЕК ДЛЯ ТСЖ
     // детализация фискального чека по периодам и услугам
     ///////////////////////////////////////////////////////////
     with OD_c_kwtp_mg do
@@ -979,6 +983,8 @@ begin
       end
       else
       begin
+        // порт открыт
+        // печать заголовка
         print_header_ecr('', 1, 1, 0, F, ECR);
         print_header_ecr('     К  А  С  С  О  В  Ы  Й   Ч  Е  К', 1, 1, 0, F,
           ECR);
@@ -1153,121 +1159,144 @@ begin
         end
         else
         begin
-          // прочие варианты
-          print_header_ecr('', 1, 1, 0, F, ECR);
-          print_header_ecr('     К  А  С  С  О  В  Ы  Й   Ч  Е  К', 1, 1, 0, F
-            , ECR);
-          print_header_ecr('', 1, 1, 0, F, ECR);
+          // порт открыт
 
-          // проверить режим
-          mode := check_mode(ECR);
-          if (Form_main.have_cash <> 2)
-            or ((Form_main.have_cash = 2)
-            and (mode = 2) or (mode = 3)) then
-            // если ККМ=2 то проверить режимы
+          ////////////////////////////////////////////////////
+          //                    ЭКВАЙРИНГ                   //
+          ////////////////////////////////////////////////////
+          eQsuccess := False;
+          // регистрация операции в эквайринге, если подключен
+          if (p_cash_oper_tp = 2) and (Form_Main.have_eq = 1) then
           begin
-            // открыть чек
-            if open_reg(ECR) <> 0 then
+            ECR.Sparam('Amount', FloatToStr(client_sum * 100));
+              // сумма в копейках
+            eQres:= Form_Main.eqECR.NFun(4000);
+            if eQres = '0' then
             begin
-              Result := 1;
+              // успешно
+              eQsuccess := true;
             end
             else
             begin
-              // прочие варианты
-              print_string_ecr2('Вас обслуживает организация:'
-                + OD_c_kwtp.FieldByName('name_org2').AsString
-                + ' ИНН ' + OD_c_kwtp.FieldByName('inn2').AsString
-                + ', тел.' + OD_c_kwtp.FieldByName('phone2').AsString, 1,
-                0, F, ECR);
-              print_string_ecr2('Платёжный агент:' +
-                OD_c_kwtp.FieldByName('name_org').AsString, 1, 0, F, ECR);
-              print_string_ecr2('Адрес кассы:'
-                + OD_c_kwtp.FieldByName('adr_org').AsString
-                + ', тел.' + OD_c_kwtp.FieldByName('phone2').AsString, 1,
-                0, F, ECR);
-              print_string_ecr2('Кассир:' +
-                OD_c_kwtp.FieldByName('fio_kass').AsString, 1, 0, F, ECR);
-              print_string_ecr2('Отдел №' +
-                OD_c_kwtp.FieldByName('dep').AsString,
-                1, 0, F, ECR);
-              print_string_ecr2('---------------------------------------', 1,
-                0, F, ECR);
-              print_string_ecr2('Ф.И.О.:' +
-                OD_c_kwtp.FieldByName('fio_owner').AsString, 1, 0, F, ECR);
-              print_string_ecr2('Адрес:' +
-                OD_c_kwtp.FieldByName('adr').AsString,
-                1, 0, F, ECR);
-
-              OD_get_money_nal2.First;
-              print_string_ecr2('Наим-е операции   Период    Оплата(руб.)',
-                1,
-                0, F, ECR);
-
-              oldLsk := '';
-              while not OD_get_money_nal2.Eof do
-              begin
-                if oldLsk <> OD_get_money_nal2.FieldByName('lsk').AsString then
-                begin
-                  oldLsk := OD_get_money_nal2.FieldByName('lsk').AsString;
-                  print_string_ecr2('Лиц.сч.' +
-                    OD_get_money_nal2.FieldByName('lsk_tp').AsString + ' № ' +
-                    OD_get_money_nal2.FieldByName('lsk').AsString, 1, 0, F,
-                    ECR);
-                end;
-                reg_ecr(OD_get_money_nal2.FieldByName('naim').AsString
-                  + calc_pads(OD_get_money_nal2.FieldByName('naim').AsString)
-                  + OD_get_money_nal2.FieldByName('dopl').AsString,
-                  OD_get_money_nal2.FieldByName('summ_itg').AsFloat,
-                  1, OD_c_kwtp.FieldByName('dep').AsInteger, F, ECR);
-                OD_get_money_nal2.Next;
-              end;
-              {while not OD_c_kwtp_mg.Eof do
-              begin
-                reg_ecr(OD_c_kwtp_mg.FieldByName('naim').AsString
-                  + calc_pads(OD_c_kwtp_mg.FieldByName('naim').AsString)
-                  + OD_c_kwtp_mg.FieldByName('dopl').AsString,
-                  OD_c_kwtp_mg.FieldByName('summ_itg').AsFloat,
-                  1, OD_c_kwtp.FieldByName('dep').AsInteger, F, ECR);
-                OD_c_kwtp_mg.Next;
-              end;}
-
-              //Закрытие чека
-              if close_reg_summ_ecr(client_sum, ECR, 0, F) <> 0 then
-              begin
-                // ошибка, попытаться аннулировать чек
-                if
-                  Application.MessageBox('Фискальный чек не прошёл регистрацию, аннулировать его?',
-                  'Внимание!', MB_YESNO + MB_ICONQUESTION) = IDYES then
-                begin
-                  annulment(ECR);
-                end;
-
-                Result := 1;
-                close_port_ecr(ECR);
-              end
-              else
-              begin
-                //успешно
-                Result := 0;
-                close_port_ecr(ECR);
-              end;
-              if Form_main.cash_test = 1 then
-              begin
-                // тестовый чек, закрыть файл
-                Flush(f);
-                CloseFile(f);
-              end;
+              // ошибка
+              Result := 1;
+              eQsuccess := false;
+              close_port_ecr(ECR);
             end;
 
           end
           else
+            eQsuccess := true;
+            
+          if eQsuccess = true then
           begin
-            // Некорректный режим ККМ
-            Result := 1;
-            msg2('Ошибка, ККМ находится в некорректном режиме:' +
-              check_mode2(ECR),
-              'Внимание!', MB_OK + MB_ICONERROR);
-            close_port_ecr(ECR);
+            // печать заголовка
+            print_header_ecr('', 1, 1, 0, F, ECR);
+            print_header_ecr('     К  А  С  С  О  В  Ы  Й   Ч  Е  К', 1, 1, 0, F
+              , ECR);
+            print_header_ecr('', 1, 1, 0, F, ECR);
+
+            // проверить режим
+            mode := check_mode(ECR);
+            if (Form_main.have_cash <> 2)
+              or ((Form_main.have_cash = 2)
+              and (mode = 2) or (mode = 3)) then
+              // если ККМ=2 то проверить режимы
+            begin
+              // открыть чек
+              if open_reg(ECR) <> 0 then
+              begin
+                Result := 1;
+              end
+              else
+              begin
+                print_string_ecr2('Вас обслуживает организация:'
+                  + OD_c_kwtp.FieldByName('name_org2').AsString
+                  + ' ИНН ' + OD_c_kwtp.FieldByName('inn2').AsString
+                  + ', тел.' + OD_c_kwtp.FieldByName('phone2').AsString, 1,
+                  0, F, ECR);
+                print_string_ecr2('Платёжный агент:' +
+                  OD_c_kwtp.FieldByName('name_org').AsString, 1, 0, F, ECR);
+                print_string_ecr2('Адрес кассы:'
+                  + OD_c_kwtp.FieldByName('adr_org').AsString
+                  + ', тел.' + OD_c_kwtp.FieldByName('phone2').AsString, 1,
+                  0, F, ECR);
+                print_string_ecr2('Кассир:' +
+                  OD_c_kwtp.FieldByName('fio_kass').AsString, 1, 0, F, ECR);
+                print_string_ecr2('Отдел №' +
+                  OD_c_kwtp.FieldByName('dep').AsString,
+                  1, 0, F, ECR);
+                print_string_ecr2('---------------------------------------', 1,
+                  0, F, ECR);
+                print_string_ecr2('Ф.И.О.:' +
+                  OD_c_kwtp.FieldByName('fio_owner').AsString, 1, 0, F, ECR);
+                print_string_ecr2('Адрес:' +
+                  OD_c_kwtp.FieldByName('adr').AsString,
+                  1, 0, F, ECR);
+
+                OD_get_money_nal2.First;
+                print_string_ecr2('Наим-е операции   Период    Оплата(руб.)',
+                  1,
+                  0, F, ECR);
+
+                oldLsk := '';
+                while not OD_get_money_nal2.Eof do
+                begin
+                  if oldLsk <> OD_get_money_nal2.FieldByName('lsk').AsString
+                    then
+                  begin
+                    oldLsk := OD_get_money_nal2.FieldByName('lsk').AsString;
+                    print_string_ecr2('Лиц.сч.' +
+                      OD_get_money_nal2.FieldByName('lsk_tp').AsString + ' № ' +
+                      OD_get_money_nal2.FieldByName('lsk').AsString, 1, 0, F,
+                      ECR);
+                  end;
+                  reg_ecr(OD_get_money_nal2.FieldByName('naim').AsString
+                    + calc_pads(OD_get_money_nal2.FieldByName('naim').AsString)
+                    + OD_get_money_nal2.FieldByName('dopl').AsString,
+                    OD_get_money_nal2.FieldByName('summ_itg').AsFloat,
+                    1, OD_c_kwtp.FieldByName('dep').AsInteger, F, ECR);
+                  OD_get_money_nal2.Next;
+                end;
+                // закрыть чек
+                if close_reg_summ_ecr(client_sum, ECR, 0, F) <> 0 then
+                begin
+                  // ошибка, попытаться аннулировать чек
+                  if
+                    Application.MessageBox('Фискальный чек не прошёл регистрацию, аннулировать его?',
+                    'Внимание!', MB_YESNO + MB_ICONQUESTION) = IDYES then
+                  begin
+                    annulment(ECR);
+                  end;
+
+                  Result := 1;
+                  close_port_ecr(ECR);
+                end
+                else
+                begin
+                  //успешно
+                  Result := 0;
+                  close_port_ecr(ECR);
+                end;
+                if Form_main.cash_test = 1 then
+                begin
+                  // тестовый чек, закрыть файл
+                  Flush(f);
+                  CloseFile(f);
+                end;
+              end;
+
+            end
+            else
+            begin
+              // Некорректный режим ККМ
+              Result := 1;
+              msg2('Ошибка, ККМ находится в некорректном режиме:' +
+                check_mode2(ECR),
+                'Внимание!', MB_OK + MB_ICONERROR);
+              close_port_ecr(ECR);
+            end;
+
           end;
         end;
       except

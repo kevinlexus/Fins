@@ -270,7 +270,7 @@ end;
 // загрузить параметры ККМ
 procedure loadKKMPar;
 begin
-    // режим тестирования ККМ
+  // режим тестирования ККМ
   s := Ini.ReadString('Application', 'cash_test', '');
   if s = '1' then
     Form_Main.cash_test := 1
@@ -300,6 +300,18 @@ begin
   else
     // нет ККМ
     Form_Main.have_cash := 0;
+
+  // проверить наличие Эквайринга
+  s := Ini.ReadString('Application', 'have_eq', '');
+  if s <> '' then
+  begin
+    Form_Main.have_eq := StrToInt(s);
+    // создать OLE Эквайринга, нужны sbrf.dll, gate.dll
+    Form_Main.create_OLE_Eq;
+  end
+  else
+    // нет Эквайринга
+    Form_Main.have_eq := 0;
 
 end;
 

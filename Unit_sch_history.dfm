@@ -1,6 +1,6 @@
 object Form_sch_history: TForm_sch_history
-  Left = 357
-  Top = 238
+  Left = 289
+  Top = 455
   Width = 1044
   Height = 380
   Caption = #1048#1089#1090#1086#1088#1080#1103' '#1074#1074#1086#1076#1072' '#1087#1086#1082#1072#1079#1072#1085#1080#1081' '#1089#1095#1077#1090#1095#1080#1082#1086#1074
@@ -198,7 +198,7 @@ object Form_sch_history: TForm_sch_history
                   FieldName = 'NAME'
                 end>
               Properties.ListOptions.ShowHeader = False
-              Properties.ListSource = DS_eolink_meter2
+              Properties.ListSource = DS_eolink_meter
               Properties.OnPopup = cxGrid2DBTableView1GIS_CONNPropertiesPopup
               Width = 96
             end
@@ -930,11 +930,15 @@ object Form_sch_history: TForm_sch_history
     Left = 436
     Top = 80
   end
-  object OD_eolink_meter2: TOracleDataSet
+  object OD_eolink_meter: TOracleDataSet
     SQL.Strings = (
-      'select e.fk_klsk_obj, wm_concat(u.name||'#39': '#39'||x.s1) as name'
+      
+        'select e.fk_klsk_obj, wm_concat(u.name_short||'#39': '#39'||coalesce(x.s' +
+        '1,to_char(x.n1),to_char(x.d1,'#39'DD.MM.YYYY'#39'))) as name'
       ' from exs.eolink e join exs.eolxpar x on e.id=x.fk_eolink'
-      ' join oralv.u_hfpar u on x.fk_par=u.id '
+      
+        ' join (select * from oralv.u_hfpar r order by r.npp) u on x.fk_p' +
+        'ar=u.id '
       ' join exs.eolink k on e.parent_id=k.id -- '#1087#1086#1084#1077#1097#1077#1085#1080#1077
       ' and u.cd not in ('#39#1043#1048#1057' '#1046#1050#1061'.'#1055#1088#1080#1079#1085#1072#1082'_'#1055#1059'_'#1050#1056#39')'
       'where k.fk_klsk_obj=:FK_KLSK_PREMISE'
@@ -953,8 +957,8 @@ object Form_sch_history: TForm_sch_history
     Left = 84
     Top = 144
   end
-  object DS_eolink_meter2: TDataSource
-    DataSet = OD_eolink_meter2
+  object DS_eolink_meter: TDataSource
+    DataSet = OD_eolink_meter
     Left = 124
     Top = 144
   end

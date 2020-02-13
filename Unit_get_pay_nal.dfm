@@ -1,8 +1,8 @@
 object Form_get_pay_nal: TForm_get_pay_nal
-  Left = 1259
-  Top = 289
-  Width = 635
-  Height = 404
+  Left = 363
+  Top = 174
+  Width = 633
+  Height = 409
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #1042#1074#1086#1076' '#1086#1087#1083#1072#1090#1099
   Color = clBtnFace
@@ -96,7 +96,7 @@ object Form_get_pay_nal: TForm_get_pay_nal
   object GroupBox1: TGroupBox
     Left = 0
     Top = 25
-    Width = 619
+    Width = 617
     Height = 41
     Align = alTop
     TabOrder = 0
@@ -162,13 +162,13 @@ object Form_get_pay_nal: TForm_get_pay_nal
   end
   object GroupBox2: TGroupBox
     Left = 0
-    Top = 303
-    Width = 619
+    Top = 308
+    Width = 617
     Height = 42
     Align = alBottom
     TabOrder = 1
     DesignSize = (
-      619
+      617
       42)
     object Label3: TLabel
       Left = 162
@@ -265,7 +265,7 @@ object Form_get_pay_nal: TForm_get_pay_nal
       OnKeyPress = wwDBEdit4KeyPress
     end
     object Button1: TButton
-      Left = 527
+      Left = 525
       Top = 11
       Width = 80
       Height = 25
@@ -283,8 +283,8 @@ object Form_get_pay_nal: TForm_get_pay_nal
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 345
-    Width = 619
+    Top = 350
+    Width = 617
     Height = 20
     Panels = <>
     OnDblClick = StatusBar1DblClick
@@ -292,7 +292,7 @@ object Form_get_pay_nal: TForm_get_pay_nal
   object ToolBar1: TToolBar
     Left = 0
     Top = 0
-    Width = 619
+    Width = 617
     Height = 25
     AutoSize = True
     ButtonHeight = 21
@@ -326,8 +326,8 @@ object Form_get_pay_nal: TForm_get_pay_nal
   object PageControl1: TPageControl
     Left = 0
     Top = 66
-    Width = 619
-    Height = 237
+    Width = 617
+    Height = 242
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 4
@@ -335,8 +335,8 @@ object Form_get_pay_nal: TForm_get_pay_nal
       object DBGridEh1: TDBGridEh
         Left = 0
         Top = 0
-        Width = 611
-        Height = 209
+        Width = 609
+        Height = 214
         Align = alClient
         ColumnDefValues.AlwaysShowEditButton = True
         ColumnDefValues.AutoDropDown = True

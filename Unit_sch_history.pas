@@ -125,8 +125,8 @@ type
     OD_meterCOUNTER: TStringField;
     DataSource1: TDataSource;
     cxGrid2DBTableView1GIS_CONN: TcxGridDBColumn;
-    OD_eolink_meter2: TOracleDataSet;
-    DS_eolink_meter2: TDataSource;
+    OD_eolink_meter: TOracleDataSet;
+    DS_eolink_meter: TDataSource;
     cxGrid3: TcxGrid;
     cxGridDBTableView2: TcxGridDBTableView;
     cxGridDBTableView2OPER_NAME: TcxGridDBColumn;
@@ -195,7 +195,7 @@ begin
   cxDateEdit1.Date:=Date();
   pgc1.ActivePageIndex:=0;
   cxPageControl1.ActivePage:=cxTabSheet1;
-  OD_eolink_meter2.Active:=True;
+  OD_eolink_meter.Active:=True;
 
   // задать минимальный размер
   if Width < 927 then
@@ -658,6 +658,8 @@ end;
 procedure TForm_sch_history.cxGrid2DBTableView1GIS_CONNPropertiesPopup(
   Sender: TObject);
 begin
+  if not (OD_meter.State in [dsBrowse]) then
+    OD_meter.Post;
   Application.CreateForm(TfrmMeteGisConnect, frmMeteGisConnect);
   if frmMeteGisConnect.ShowModal = mrOk then
 

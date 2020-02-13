@@ -210,6 +210,7 @@ type
     ver: TMenuItem;
     N141: TMenuItem;
     N142: TMenuItem;
+    option: TMenuItem;
     procedure N5Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure N7Click(Sender: TObject);
@@ -349,6 +350,7 @@ type
     procedure N511Click(Sender: TObject);
     procedure N129Click(Sender: TObject);
     procedure create_OLE_KKM(num: Integer);
+    procedure create_OLE_Eq;
     procedure N130Click(Sender: TObject);
     procedure N521Click(Sender: TObject);
     procedure N512Click(Sender: TObject);
@@ -399,6 +401,11 @@ type
     selECR_inn: string;
     // ИНН 2 ККМ
     selECR2_inn: string;
+
+    // OLE Эквайринга
+    eqECR: OleVariant;
+    // наличие терминала эквайринга
+    have_eq: Integer;
 
     // наличие ККМ
     have_cash: Integer;
@@ -619,6 +626,20 @@ begin
   Application.CreateForm(TForm_saldo_check, Form_saldo_check);
 end;
 
+
+procedure TForm_Main.create_OLE_Eq;
+begin
+  try
+    Form_Main.eqECR := CreateOleObject('SBRFSRV.Server');
+    option.Caption:=option.Caption+' Эквайринг';
+  except
+    Application.MessageBox('Не удалось создать объект драйвера Эквайринга!',
+      PChar(Application.Title), MB_ICONERROR + MB_OK);
+    Application.MessageBox('Устройство банковского терминала Эквайринга не будет задействовано!',
+      PChar(Application.Title), MB_ICONERROR + MB_OK);
+  end;
+end;
+
 procedure TForm_Main.create_OLE_KKM(num: Integer);
 var
   Ini: TIniFile;
@@ -642,12 +663,14 @@ begin
           // 1-ый ККМ
           selECR := CreateOleObject('AddIn.FprnM45');
           selECR.ApplicationHandle := Application.Handle;
+          option.Caption:=option.Caption+' ККМ-1';
         end
         else
         begin
           // 2-ой ККМ
           selECR2 := CreateOleObject('AddIn.FprnM45');
           selECR2.ApplicationHandle := Application.Handle;
+          option.Caption:=option.Caption+' ККМ-2';
         end;
         // необходимо для корректного отображения окон драйвера в контексте приложения
       except
