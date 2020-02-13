@@ -51,6 +51,7 @@ begin
  ProgressBar1.Position:=ProgressBar1.Max;
  Update;
  Action:=caFree;
+
 end;
 
 end.
