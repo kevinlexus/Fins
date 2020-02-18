@@ -498,10 +498,10 @@ object Form_get_pay_nal: TForm_get_pay_nal
     Optimize = False
     OracleDictionary.UseMessageTable = True
     QBEDefinition.QBEFieldDefs = {
-      04000000060000000500000053554D4D410100000000000500000050454E5941
+      04000000070000000500000053554D4D410100000000000500000050454E5941
       010000000000040000004F50455201000000000007000000434E545F53434801
       000000000008000000434E545F534348300100000000000400000049544F4701
-      0000000000}
+      00000000000C000000434153485F4F5045525F5450010000000000}
     MasterFields = 'OPER'
     DetailFields = 'OPER'
     CommitOnPost = False
@@ -560,7 +560,9 @@ object Form_get_pay_nal: TForm_get_pay_nal
   end
   object OD_oper: TOracleDataSet
     SQL.Strings = (
-      'select t.oper, t.oper||'#39' '#39'||t.naim as naim, t.fk_usl_chk'
+      
+        'select t.oper, t.oper||'#39' '#39'||t.naim as naim, t.fk_usl_chk, t.cash' +
+        '_oper_tp'
       'from scott.oper t, scott.usl m'
       
         'where t.fk_org=scott.init.get_org_nkom and t.fk_usl_chk=m.usl(+)' +
@@ -622,15 +624,18 @@ object Form_get_pay_nal: TForm_get_pay_nal
       ' --'#1090#1086#1083#1100#1082#1086' '#1085#1072#1083#1080#1095#1085#1099#1077' '#1086#1087#1077#1088#1072#1094#1080#1080
       ' and substr(t.oigu,2,1)='#39'1'#39
       'union all'
-      'select t.oper, t.oper||'#39' '#39'||t.naim as naim, t.fk_usl_chk'
+      
+        'select t.oper, t.oper||'#39' '#39'||t.naim as naim, t.fk_usl_chk, t.cash' +
+        '_oper_tp'
       'from scott.oper t --'#1086#1087#1077#1088#1072#1094#1080#1103' '#1085#1077' '#1087#1088#1080#1089#1074#1086#1077#1085#1085#1072#1103' '#1085#1080#1082#1072#1082#1086#1081' '#1086#1088#1075#1072#1085#1080#1079#1072#1094#1080#1080
       'where t.fk_org is null'
       'order by oper')
     Optimize = False
     Variables.Data = {0300000001000000040000003A4C534B050000000000000000000000}
     QBEDefinition.QBEFieldDefs = {
-      0400000003000000040000004F504552010000000000040000004E41494D0100
-      000000000A000000464B5F55534C5F43484B010000000000}
+      0400000004000000040000004F504552010000000000040000004E41494D0100
+      000000000A000000464B5F55534C5F43484B0100000000000C00000043415348
+      5F4F5045525F5450010000000000}
     MasterFields = 'OPER'
     DetailFields = 'OPER'
     Session = DataModule1.OracleSession1
@@ -651,6 +656,9 @@ object Form_get_pay_nal: TForm_get_pay_nal
     object OD_operFK_USL_CHK: TStringField
       FieldName = 'FK_USL_CHK'
       Size = 3
+    end
+    object OD_operCASH_OPER_TP: TFloatField
+      FieldName = 'CASH_OPER_TP'
     end
   end
   object DS_oper: TDataSource
@@ -817,7 +825,8 @@ object Form_get_pay_nal: TForm_get_pay_nal
       
         'nvl(to_char(t.cnt_sch0),'#39#39') as cnt_sch0, nvl(to_char(t.cnt_sch),' +
         ' '#39#39') as cnt_sch,'
-      't.nink, t.nkom, t.dtek, t.nkvit, t.dat_ink, t.ts, o.cash_oper_tp'
+      't.nink, t.nkom, t.dtek, t.nkvit, t.dat_ink, t.ts'
+      '--, o.cash_oper_tp'
       'from '
       'scott.c_kwtp_mg t, scott.oper o'
       'where c_kwtp_id = :c_kwtp_id and t.oper=o.oper'
@@ -896,9 +905,6 @@ object Form_get_pay_nal: TForm_get_pay_nal
     end
     object OD_c_kwtp_mgTS: TDateTimeField
       FieldName = 'TS'
-    end
-    object OD_c_kwtp_mgCASH_OPER_TP: TFloatField
-      FieldName = 'CASH_OPER_TP'
     end
   end
   object DS_c_kwtp_mg: TDataSource

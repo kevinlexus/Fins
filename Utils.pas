@@ -80,6 +80,8 @@ function getS_date_param(strPar: string): TDateTime;
 function getS_double_param(strPar: string): Double;
 function getS_str_param(strPar: string): String;
 function getS_list_param(strPar: string): Integer;
+procedure splitStr(const Source, Delimiter: String; var DelimitedList: TStringList);
+function removeControl(const S: string): string;
 
 implementation
 uses Unit_Mainform;
@@ -207,6 +209,7 @@ begin
     SetMenuItem(acc_, N135, 'drn135_Корр_пени');
     SetMenuItem(acc_, N141, 'drn141_Реестр_оплаты_выв_мус');
     SetMenuItem(acc_, N142, 'drn142_Реестр_кол_прож_выв_мус');
+    SetMenuItem(acc_, N143, 'drn143_Загрузка_внешних_лс');
   end;
 end;
 
@@ -1494,5 +1497,41 @@ begin
   DataModule1.UniStoredProc1.SQL.Clear;
   DataModule1.UniStoredProc1.Params.Clear;
 end;
+
+// разбить строку на подстроки используя разделитель
+procedure splitStr(const Source, Delimiter: String; var DelimitedList: TStringList);
+var
+  s: PChar;
+
+  DelimiterIndex: Integer;
+  Item: String;
+begin
+  s:=PChar(Source);
+
+  repeat
+    DelimiterIndex:=Pos(Delimiter, s);
+    if DelimiterIndex=0 then Break;
+
+    Item:=Copy(s, 1, DelimiterIndex-1);
+
+    DelimitedList.Add(Item);
+
+    inc(s, DelimiterIndex + Length(Delimiter)-1);
+  until DelimiterIndex = 0;
+  DelimitedList.Add(s);
+end;
+
+// убрать специальные символы из строки
+
+function removeControl(const S: string): string;
+var
+  I: Integer;
+begin
+  Result := S;
+  for I := 1 to Length(Result) do
+    if Result[I] in [#0..#31, #127] then
+      Result[I] := ' '
+end;
+
 end.
 

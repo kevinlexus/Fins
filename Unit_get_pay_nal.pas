@@ -95,7 +95,6 @@ type
     OD_c_kwtp_mgNKVIT: TFloatField;
     OD_c_kwtp_mgDAT_INK: TDateTimeField;
     OD_c_kwtp_mgTS: TDateTimeField;
-    OD_c_kwtp_mgCASH_OPER_TP: TFloatField;
     OD_chargepayLSK: TStringField;
     OD_chargepayLSK_TP: TStringField;
     OD_get_money_nal2: TOracleDataSet;
@@ -127,6 +126,7 @@ type
     cxGrid1DBTableView1LSK_TP: TcxGridDBColumn;
     cxGrid1DBTableView1USL_NAME_SHORT: TcxGridDBColumn;
     cxGrid1Level1: TcxGridLevel;
+    OD_operCASH_OPER_TP: TFloatField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure wwDBEdit3DblClick(Sender: TObject);
     procedure wwDBEdit3KeyPress(Sender: TObject; var Key: Char);
@@ -761,9 +761,11 @@ begin
 
   /////////////////////////////////////////////////////
   //           регистрация и печать чека
+  // ВНИМАНИЕ! в качестве типа операции используется поле из c_kwtp_mg
+  // поэтому кол-во операций при приеме оплаты не должно быть больше 1
   l_flag := print_receipt(StrToFloat(wwDBEdit1.Text),
     OD_c_kwtp.FieldByName('cash_num').AsInteger,
-    OD_c_kwtp.FieldByName('cash_oper_tp').AsInteger);
+    OD_oper.FieldByName('cash_oper_tp').AsInteger);
   /////////////////////////////////////////////////////
 
   Button1.Enabled := true;
@@ -833,7 +835,7 @@ var
   // режим ККМ
   saved_cash_test, mode: Integer;
   F: TextFile;
-  pad1, pad2, path, oldLsk, eQres: string;
+  pad1, pad2, path, oldLsk, eQres, check: string;
   receiptTest, retry, eQsuccess: Boolean;
   inn, strDt: string;
   ECR: OleVariant;
@@ -1070,7 +1072,9 @@ begin
           // поэтому кол-во операций при приеме оплаты не должно быть больше 1
           // (кол-во записей в c_kwtp_mg = 1!!!)
           if close_reg_summ_ecr_ext(client_sum, ECR,
-            OD_c_kwtp_mg.FieldByName('cash_oper_tp').AsInteger, F) <> 0 then
+            //OD_c_kwtp_mg.FieldByName('cash_oper_tp').AsInteger,
+            OD_oper.FieldByName('cash_oper_tp').AsInteger,
+            F) <> 0 then
           begin
             // ошибка, попытаться аннулировать чек
             if
@@ -1160,49 +1164,67 @@ begin
         else
         begin
           // порт открыт
-
-          ////////////////////////////////////////////////////
-          //                    ЭКВАЙРИНГ                   //
-          ////////////////////////////////////////////////////
-          eQsuccess := False;
-          // регистрация операции в эквайринге, если подключен
-          if (p_cash_oper_tp = 2) and (Form_Main.have_eq = 1) then
+          // проверить режим
+          mode := check_mode(ECR);
+          if (Form_main.have_cash <> 2)
+            or ((Form_main.have_cash = 2)
+            and (mode = 2) or (mode = 3)) then
+            // если ККМ=2 то проверить режимы
           begin
-            ECR.Sparam('Amount', FloatToStr(client_sum * 100));
-              // сумма в копейках
-            eQres:= Form_Main.eqECR.NFun(4000);
-            if eQres = '0' then
+            ////////////////////////////////////////////////////
+            //                    ЭКВАЙРИНГ                   //
+            ////////////////////////////////////////////////////
+            eQsuccess := False;
+            // регистрация операции в эквайринге, если подключен
+            if (p_cash_oper_tp = 2) and (Form_Main.have_eq = 1) then
             begin
-              // успешно
-              eQsuccess := true;
+              // принять оплату, сумма в копейках
+              Form_Main.eqECR.Sparam('Amount', FloatToStr(client_sum * 100));
+              eQres := Form_Main.eqECR.NFun(4000);
+              if eQres = '0' then
+              begin
+                // успешно
+                eQsuccess := true;
+                // перевести в "неподтвержденное" состояние транзакцию эквайринга
+                Form_Main.eqECR.NFun(6003);
+
+                check:=Form_Main.eqECR.GParamString('Cheque');
+
+                // печать чека на фискальнике, используя разбиение на строки и отрезку чека
+                printByLineWithCut(check, ECR, 20);
+
+                print_by_line('', ECR);
+                print_by_line('', ECR);
+                print_by_line('', ECR);
+                print_by_line('', ECR);
+                cutCheck(True, True, 1, ECR);
+              end
+              else
+              begin
+                // ошибка
+                Result := 1;
+                eQsuccess := false;
+                close_port_ecr(ECR);
+                if eQres = '113' then
+                begin
+                   Application.MessageBox('Возможно некорретно зарегистрировано sbrf.dll (regsvr32 надо выполнять в c:\Sc552\)' +
+                     #13#10, 'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
+                end;
+              end;
+
             end
             else
             begin
-              // ошибка
-              Result := 1;
-              eQsuccess := false;
-              close_port_ecr(ECR);
+              eQsuccess := true;
             end;
 
-          end
-          else
-            eQsuccess := true;
-            
-          if eQsuccess = true then
-          begin
-            // печать заголовка
-            print_header_ecr('', 1, 1, 0, F, ECR);
-            print_header_ecr('     К  А  С  С  О  В  Ы  Й   Ч  Е  К', 1, 1, 0, F
-              , ECR);
-            print_header_ecr('', 1, 1, 0, F, ECR);
-
-            // проверить режим
-            mode := check_mode(ECR);
-            if (Form_main.have_cash <> 2)
-              or ((Form_main.have_cash = 2)
-              and (mode = 2) or (mode = 3)) then
-              // если ККМ=2 то проверить режимы
+            if eQsuccess = true then
             begin
+              // печать заголовка
+              print_header_ecr('', 1, 1, 0, F, ECR);
+              print_header_ecr('     К  А  С  С  О  В  Ы  Й   Ч  Е  К', 1, 1, 0, F
+                , ECR);
+              print_header_ecr('', 1, 1, 0, F, ECR);
               // открыть чек
               if open_reg(ECR) <> 0 then
               begin
@@ -1259,7 +1281,8 @@ begin
                   OD_get_money_nal2.Next;
                 end;
                 // закрыть чек
-                if close_reg_summ_ecr(client_sum, ECR, 0, F) <> 0 then
+                if close_reg_summ_ecr(client_sum, ECR,
+                  OD_oper.FieldByName('cash_oper_tp').AsInteger, F) <> 0 then
                 begin
                   // ошибка, попытаться аннулировать чек
                   if
@@ -1271,12 +1294,24 @@ begin
 
                   Result := 1;
                   close_port_ecr(ECR);
+                  if (p_cash_oper_tp = 2) and (Form_Main.have_eq = 1) then
+                  begin
+                    // перевести в "отмененное" состояние транзакцию эквайринга
+                    Form_Main.eqECR.NFun(6004);
+                  end;
                 end
                 else
                 begin
-                  //успешно
+                  // успешно
                   Result := 0;
                   close_port_ecr(ECR);
+
+                  if (p_cash_oper_tp = 2) and (Form_Main.have_eq = 1) then
+                  begin
+                    // перевести в "подтвержденное" состояние транзакцию эквайринга
+                    Form_Main.eqECR.NFun(6001);
+                  end;
+
                 end;
                 if Form_main.cash_test = 1 then
                 begin
@@ -1285,18 +1320,16 @@ begin
                   CloseFile(f);
                 end;
               end;
-
-            end
-            else
-            begin
-              // Некорректный режим ККМ
-              Result := 1;
-              msg2('Ошибка, ККМ находится в некорректном режиме:' +
-                check_mode2(ECR),
-                'Внимание!', MB_OK + MB_ICONERROR);
-              close_port_ecr(ECR);
             end;
-
+          end
+          else
+          begin
+            // Некорректный режим ККМ
+            Result := 1;
+            msg2('Ошибка, ККМ находится в некорректном режиме:' +
+              check_mode2(ECR),
+              'Внимание!', MB_OK + MB_ICONERROR);
+            close_port_ecr(ECR);
           end;
         end;
       except
@@ -1319,6 +1352,7 @@ begin
     end
     else
     begin
+      // нет установленной ККМ, результат - Ок
       Result := 0;
     end;
   end;

@@ -19,6 +19,8 @@ type
     lbl1: TLabel;
     edt2: TEdit;
     lbl2: TLabel;
+    Button1: TButton;
+    Button2: TButton;
     procedure btn4Click(Sender: TObject);
     procedure btn1Click(Sender: TObject);
     procedure btn5Click(Sender: TObject);
@@ -29,6 +31,8 @@ type
     procedure btn7Click(Sender: TObject);
     procedure btn8Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -229,6 +233,60 @@ begin
     edt2.Text := 'Режим тестирования';
   end;
 
+  if Form_Main.have_eq = 1 then
+  begin
+    Button2.Enabled := true;
+  end
+  else
+  begin
+    Button2.Enabled := false;
+  end;
+
+end;
+
+procedure TForm_service_cash.Button1Click(Sender: TObject);
+var
+  eQres: string;
+begin
+  l_summa := 0;
+  Application.CreateForm(TForm_money_cash, Form_money_cash);
+  Form_money_cash.Caption := 'Возврат суммы, эквайринг';
+  Form_money_cash.lbl1.caption := 'Сумма для возврата:';
+  if Form_money_cash.ShowModal = mrOk then
+  begin
+    if l_summa = 0 then
+      Exit;
+    if Form_Main.have_eq = 1 then
+    begin
+      // вернуть покупку, сумма в копейках
+      Form_Main.eqECR.Sparam('Amount', FloatToStr(l_summa * 100));
+      eQres := Form_Main.eqECR.NFun(4002);
+      if eQres = '0' then
+      begin
+        // успешно
+        // перевести в "подтвержденное" состояние транзакцию эквайринга
+        Form_Main.eqECR.NFun(6001);
+        msg2('Сумма возвращена на карту!', 'Внимание!', MB_OK +
+          MB_ICONINFORMATION);
+      end
+      else
+      begin
+        msg2('Ошибка! код=' + eQres + ', cумма НЕ возвращена на карту!',
+          'Внимание!',
+          MB_OK + MB_ICONERROR);
+      end;
+    end;
+  end;
+
+end;
+
+procedure TForm_service_cash.Button2Click(Sender: TObject);
+begin
+  if (Form_Main.have_eq = 1) then
+  begin
+    // сверка итогов эквайринга
+    Form_Main.eqECR.NFun(6000);
+  end;
 end;
 
 end.

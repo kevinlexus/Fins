@@ -1,7 +1,7 @@
 object DataModule1: TDataModule1
   OldCreateOrder = False
-  Left = 639
-  Top = 11
+  Left = 245
+  Top = 152
   Height = 720
   Width = 683
   object OracleSession1: TOracleSession
@@ -35,7 +35,6 @@ object DataModule1: TDataModule1
       0000000000}
     QueryAllRecords = False
     Session = OracleSession1
-    Active = True
     Left = 32
     Top = 152
   end
@@ -56,7 +55,6 @@ object DataModule1: TDataModule1
       000000}
     Session = OracleSession1
     DesignActivation = True
-    Active = True
     Left = 32
     Top = 200
   end
@@ -104,7 +102,6 @@ object DataModule1: TDataModule1
       5F474953010000000000070000004752505F444542010000000000}
     Session = OracleSession1
     DesignActivation = True
-    Active = True
     Left = 32
     Top = 248
   end
@@ -252,7 +249,6 @@ object DataModule1: TDataModule1
     Options.KeepDesignConnected = False
     Username = 'scott'
     Server = '127.0.0.1'
-    Connected = True
     Left = 32
     Top = 416
     EncryptedPassword = '92FF90FF91FF9AFF92FF86FF8DFF90FF'

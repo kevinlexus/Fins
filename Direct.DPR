@@ -161,10 +161,9 @@ uses
   ufDataModuleOlap in 'ufDataModuleOlap.pas' {DM_Olap: TDataModule},
   ufDataModuleBill in 'ufDataModuleBill.pas' {DM_Bill: TDataModule},
   u_frmReplaceKlsk in 'u_frmReplaceKlsk.pas' {frmReplaceKlsk},
-  u_frmMeteGisConnect in 'u_frmMeteGisConnect.pas' {frmMeteGisConnect};
-
-//,
-  //CnDebug;
+  u_frmMeteGisConnect in 'u_frmMeteGisConnect.pas' {frmMeteGisConnect},
+  u_frmLoadKartExt in 'u_frmLoadKartExt.pas' {frmLoadKartExt},
+  u_frmKartExt in 'u_frmKartExt.pas' {frmKartExt};
 
 {  Unit_edit_pay_usl_org in '..\Program Files86\Borland\Delphi7\Components\FR412\LibD7\Unit_edit_pay_usl_org.pas'}
 
@@ -173,7 +172,7 @@ var
   Ini: TIniFile;
   Pass: string;
   SID: string;
-  s, User, serverIp: string;
+  s, User, serverIp, serverPort, serverSID: string;
   I, I1: Integer;
 type
   TOracleErrorEvent = procedure(Error: EOracleError);
@@ -369,8 +368,8 @@ begin
   Form_Main.User := User;
 
   // UNIDAC сессия
+  DataModule1.UniConnection1.Disconnect;
   serverIp := Ini.ReadString('Application', 'ServerIp', '');
-  Ini.Free;
   if serverIp = '' then
   begin
     Application.MessageBox('В licenses.ini не указан Ip адрес сервера ServerIp',
@@ -378,13 +377,29 @@ begin
     Application.Terminate;
   end;
 
+  serverPort := Ini.ReadString('Application', 'ServerPort', '');
+
   DataModule1.UniConnection1.Username :=
     DataModule1.OracleSession1.LogonUsername;
   DataModule1.UniConnection1.Password :=
     DataModule1.OracleSession1.LogonPassword;
-  DataModule1.UniConnection1.Server := serverIp;
+  if serverPort = '' then
+  begin
+    // порт по умолчанию
+    serverPort:='1521';
+  end;
+
+  serverSID := Ini.ReadString('Application', 'ServerSID', '');
+  if serverSID = '' then
+  begin
+    // SID по умолчанию
+    serverSID:='ORCL';
+  end;
+  DataModule1.UniConnection1.Server:=
+     serverIp+':'+serverPort+':'+serverSID;
   DataModule1.UniConnection1.Connect;
 
+  Ini.Free;
   SetMenu(0);
   with Form_Main do
   begin

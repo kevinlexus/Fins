@@ -211,6 +211,8 @@ type
     N141: TMenuItem;
     N142: TMenuItem;
     option: TMenuItem;
+    N143: TMenuItem;
+    N144: TMenuItem;
     procedure N5Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure N7Click(Sender: TObject);
@@ -369,6 +371,8 @@ type
     procedure AppException(Sender: TObject; E: Exception);
     procedure N141Click(Sender: TObject);
     procedure N142Click(Sender: TObject);
+    procedure N143Click(Sender: TObject);
+    procedure N144Click(Sender: TObject);
   private
   public
     // выбранный период при переключении в архив
@@ -478,7 +482,8 @@ uses
   Unit_spr_street, Unit_spr_usl, Unit_spr_rep, Unit_list_set, Unit_prep_doc,
   Unit_corr_sal, Unit_spr_comps, Unit_spr_props, Unit_lk_acc, Unit_auto_chrg,
   Unit_service_cash, u_frmLoadPrivs, u_frmPenCorr, u_frmLoadFias,
-  u_frmProject, Unit_spr_proc_pay, u_frmAccFlow;
+  u_frmProject, Unit_spr_proc_pay, u_frmAccFlow, u_frmLoadKartExt,
+  u_frmKartExt;
 
 {$R *.dfm}
 
@@ -2553,6 +2558,22 @@ begin
     Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('96', 0, 0);
 
+end;
+
+procedure TForm_Main.N143Click(Sender: TObject);
+begin
+  if FF('frmLoadKartExt', 1) = 0 then
+  begin
+    Application.CreateForm(TfrmLoadKartExt, frmLoadKartExt);
+  end;
+end;
+
+procedure TForm_Main.N144Click(Sender: TObject);
+begin
+  if FF('frmKartExt', 1) = 0 then
+  begin
+    Application.CreateForm(TfrmKartExt, frmKartExt);
+  end;
 end;
 
 end.

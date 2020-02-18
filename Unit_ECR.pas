@@ -3,7 +3,7 @@ unit Unit_ECR;
 interface
 
 uses
-  Unit_Mainform, Utils, Windows, SysUtils, DateUtils;
+  Unit_Mainform, Utils, Windows, SysUtils, DateUtils, StrUtils, Classes;
 
 procedure show_error(ECR: OleVariant; errStep: string);
 function show_error2(ECR: OleVariant; errStep: string): Integer;
@@ -16,12 +16,15 @@ function close_port(ECR: OleVariant): Integer;
 function calc_pads(p_txt: string): string;
 function calc_pads2(place: Integer; p_txt: string): string;
 procedure print_by_line(p_text: string; ECR: OleVariant);
+procedure printByLineWithCut(p_text: string; ECR: OleVariant; pCutLine: Integer);
 function annulment(ECR: OleVariant): Integer;
 
 function set_date_time_ecr(ECR: OleVariant): Integer;
 function open_reg(ECR: OleVariant): Integer;
 function open_reg_ecr(ECR: OleVariant): Integer;
 function check_status_and_wait(ECR: OleVariant): Integer;
+function cutCheck(cutType, feedAfterCut: Boolean; feedLineCount: Integer;
+  ECR: OleVariant): Integer;
 procedure unreg_ecr(p_name: string; p_price: double; p_quantity: double; p_dep:
   Integer; ECR: OleVariant);
 procedure reg_ecr(p_name: string; p_price: double; p_quantity: double; p_dep:
@@ -312,19 +315,18 @@ procedure show_error(ECR: OleVariant; errStep: string);
 var
   res: Integer;
 begin
-  res:=show_error2(ECR, errStep);
+  res := show_error2(ECR, errStep);
 end;
-
 
 function show_error2(ECR: OleVariant; errStep: string): Integer;
 begin
-  Result:=0;
+  Result := 0;
   //Показать ошибку ККМ
   if Form_Main.have_cash = 1 then
   begin
     if ECR.ResultCode <> 0 then
     begin
-      Result:=1;
+      Result := 1;
       msg2('Ошибка ККМ на шаге:' + errStep + ', код: ' + string(ECR.ResultCode)
         + ', описание: ' + string(ECR.ResultDescription)
         + '!', 'Внимание!', MB_OK + MB_ICONERROR);
@@ -338,14 +340,13 @@ begin
   begin
     if ECR.ResultCode <> 0 then
     begin
-      Result:=1;
+      Result := 1;
       msg2('Статус ККМ на шаге:' + errStep + ',: код: ' + string(ECR.ResultCode)
         + ', описание: ' + string(ECR.ResultCodeDescription)
         + '!', 'Внимание!', MB_OK + MB_ICONERROR);
     end;
   end;
 end;
-
 
 //внесение денег в ККМ
 
@@ -607,7 +608,7 @@ end;
 // закрыть чек
 // p_summa - итог суммы
 // ECR - OLE текущей кассы
-// tp - тип операции: 0-наличка, 1-безнал
+// tp - тип операции: 0-наличка, 1-безнал, 2-эквайринг
 
 function close_reg_summ_ecr(p_summa: double; ECR: OleVariant; tp: Integer;
   var F: TextFile // текстовый файл
@@ -630,8 +631,37 @@ begin
     end
     else if Form_main.have_cash = 2 then
     begin
-      // наличка
-      ECR.Summ1 := p_summa;
+      if tp = 0 then
+      begin
+        // наличка
+        ECR.Summ1 := p_summa;
+        ECR.Summ2 := 0;
+        ECR.Summ3 := 0;
+        ECR.Summ4 := 0;
+      end
+      else if tp = 2 then
+      begin
+        // эквайринг
+        ECR.Summ1 := 0;
+        ECR.Summ2 := 0;
+        ECR.Summ3 := 0;
+        ECR.Summ4 := p_summa;
+      end
+      else if tp = 3 then
+      begin
+        // перечисление безналично
+        ECR.Summ1 := 0;
+        ECR.Summ2 := 0;
+        ECR.Summ3 := p_summa;
+        ECR.Summ4 := 0;
+      end
+      else
+      begin
+        // прочие коды - как наличка
+        ECR.Summ1 := p_summa;
+        ECR.Summ4 := 0;
+      end;
+
       ECR.Password := '1';
       ECR.StringForPrinting := '==========================================';
       ECR.CloseCheck;
@@ -647,7 +677,7 @@ end;
 // закрыть чек - расширенно (для ТСЖ)
 // p_summa - итог суммы
 // ECR - OLE текущей кассы
-// tp - тип операции: 0-наличка, 1-безнал
+// tp - тип операции: 0-наличка, 1-безнал, 2-эквайринг
 
 function close_reg_summ_ecr_ext(p_summa: double; ECR: OleVariant; tp: Integer;
   var F: TextFile // текстовый файл
@@ -776,6 +806,7 @@ begin
 end;
 
 // Аннулирование
+
 function annulment(ECR: OleVariant): Integer;
 begin
   Result := 0;
@@ -823,6 +854,30 @@ begin
   end;
 end;
 
+// Отрезать чек
+
+function cutCheck(cutType, feedAfterCut: Boolean; feedLineCount: Integer;
+  ECR: OleVariant): Integer;
+begin
+  Result := 0;
+  if Form_main.cash_test = 0 then
+  begin
+    if Form_Main.have_cash = 1 then
+    begin
+    end
+    else if Form_Main.have_cash = 2 then
+    begin
+      ECR.Password := '1';
+      ECR.CutType := cutType;
+      ECR.FeedAfterCut := feedAfterCut;
+      ECR.FeedLineCount := feedLineCount;
+      ECR.CutCheck;
+      show_error(ECR, '28');
+    end;
+  end;
+end;
+//                cutCheck(False, True, 10, ECR);
+
 // печать по строкам (тупой Ритейл, не может переносить строки)
 
 procedure print_by_line(p_text: string; ECR: OleVariant);
@@ -839,6 +894,8 @@ begin
     if i > Length(p_text) then
       i := Length(p_text);
     str := Copy(p_text, j, i);
+    //msg2(str, 'Внимание!', MB_OK);
+
     ECR.StringForPrinting := str;
     ECR.PrintString;
     j := j + a + 1;
@@ -847,6 +904,34 @@ begin
   end;
 
 end;
+
+// печать с разбиением на строки, с отрезом на N строке
+
+procedure printByLineWithCut(p_text: string; ECR: OleVariant; pCutLine: Integer);
+var
+  lst: TStringList;
+  i, i2: Integer;
+begin
+  lst := TStringList.Create;
+  // разбить строку на подстроки, используя перенос строки
+  splitStr(p_text, #13#10, lst);
+  i2:=0;
+  for i := 0 to lst.Count - 1 do
+  begin
+    i2:=i2+1;
+    ECR.Password := '1';
+    ECR.UseReceiptRibbon := true;
+    ECR.UseJournalRibbon := false;
+    // убрать спецсимволы и отправить на печать
+    ECR.StringForPrinting := removeControl(lst[i]);
+    ECR.PrintString;
+    // отрезать на pCutLine строке
+    if i2=pCutLine then
+      cutCheck(True, True, 1, ECR);
+  end;
+  lst := nil;
+end;
+
 
 procedure print_string_ecr(p_text: string; //текст
   p_wrap, //Перенос 0-нет, 1-по словам, 2-по строке
