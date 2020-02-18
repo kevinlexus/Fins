@@ -1,6 +1,6 @@
 object Form_load_files: TForm_load_files
-  Left = 271
-  Top = 194
+  Left = 1361
+  Top = 169
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1047#1072#1075#1088#1091#1079#1082#1072' '#1092#1072#1081#1083#1086#1074' '#1074' '#1089#1080#1089#1090#1077#1084#1091

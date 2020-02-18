@@ -1,6 +1,6 @@
 object frmKartExt: TfrmKartExt
-  Left = 806
-  Top = 253
+  Left = 256
+  Top = 261
   Width = 868
   Height = 530
   Caption = #1042#1085#1077#1096#1085#1080#1077' '#1083#1080#1094'.'#1089#1095#1077#1090#1072
