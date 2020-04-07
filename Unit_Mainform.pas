@@ -213,6 +213,7 @@ type
     option: TMenuItem;
     N143: TMenuItem;
     N144: TMenuItem;
+    ImageList3: TImageList;
     procedure N5Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure N7Click(Sender: TObject);

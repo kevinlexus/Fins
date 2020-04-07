@@ -1191,7 +1191,7 @@ begin
                 check:=Form_Main.eqECR.GParamString('Cheque');
 
                 // печать чека на фискальнике, используя разбиение на строки и отрезку чека
-                printByLineWithCut(check, ECR, 20);
+                printByLineWithCut(check, ECR, 25);
 
                 print_by_line('', ECR);
                 print_by_line('', ECR);

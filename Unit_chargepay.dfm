@@ -1,6 +1,6 @@
 object Form_chargepay: TForm_chargepay
-  Left = 880
-  Top = 204
+  Left = 837
+  Top = 207
   Width = 835
   Height = 482
   BorderIcons = [biSystemMenu, biMinimize]
@@ -96,7 +96,7 @@ object Form_chargepay: TForm_chargepay
     Top = 0
     Width = 819
     Height = 383
-    ActivePage = TabSheet1
+    ActivePage = TabSheet5
     Align = alClient
     TabOrder = 0
     OnChange = PageControl1Change
@@ -408,7 +408,7 @@ object Form_chargepay: TForm_chargepay
         Left = 0
         Top = 0
         Width = 811
-        Height = 353
+        Height = 352
         Selected.Strings = (
           'MG3'#9'8'#9#1055#1077#1088#1080#1086#1076#9'F'
           'TP_NAME'#9'11'#9#1058#1080#1087#9'F'

@@ -221,6 +221,8 @@ type
     cxGridDBTableView3FK_BILL_VAR: TcxGridDBColumn;
     cxGridDBTableView3FK_HOUSE: TcxGridDBColumn;
     cxGridLevel3: TcxGridLevel;
+    cxGrid1DBTableView1CD: TcxGridDBColumn;
+    cxGrid1DBTableView1FK_ORG2: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure OD_sprorgAfterScroll(DataSet: TDataSet);

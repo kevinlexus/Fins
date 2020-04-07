@@ -1,6 +1,6 @@
 object frmLoadKartExt: TfrmLoadKartExt
-  Left = 783
-  Top = 281
+  Left = 864
+  Top = 161
   Width = 868
   Height = 530
   Caption = #1047#1072#1075#1088#1091#1079#1082#1072' '#1074#1085#1077#1096#1085#1080#1093' '#1083#1080#1094'.'#1089#1095#1077#1090#1086#1074
@@ -91,9 +91,9 @@ object frmLoadKartExt: TfrmLoadKartExt
   TextHeight = 13
   object cxGrid1: TcxGrid
     Left = 0
-    Top = 0
+    Top = 41
     Width = 852
-    Height = 450
+    Height = 409
     Align = alClient
     TabOrder = 0
     object cxGrid1DBTableView1: TcxGridDBTableView
@@ -107,73 +107,63 @@ object frmLoadKartExt: TfrmLoadKartExt
       DataController.Summary.SummaryGroups = <>
       OptionsBehavior.CellHints = True
       OptionsData.DeletingConfirmation = False
+      OptionsSelection.InvertSelect = False
       OptionsView.ColumnAutoWidth = True
       OptionsView.GroupByBox = False
       object cxGrid1DBTableView1EXT_LSK: TcxGridDBColumn
         Caption = #1042#1085#1077#1096#1085#1080#1081' '#1083#1080#1094'.'#1089#1095'.'
         DataBinding.FieldName = 'EXT_LSK'
-        Options.Editing = False
-        Width = 54
+        Width = 72
       end
       object cxGrid1DBTableView1LSK: TcxGridDBColumn
         Caption = #1051#1080#1094'.'#1089#1095'.'
         DataBinding.FieldName = 'LSK'
-        Options.Editing = False
-        Width = 51
+        Width = 59
       end
       object cxGrid1DBTableView1GUID: TcxGridDBColumn
         Caption = #1060#1080#1072#1089' GUID'
         DataBinding.FieldName = 'GUID'
-        Options.Editing = False
-        Width = 37
+        Width = 42
       end
       object cxGrid1DBTableView1FIO: TcxGridDBColumn
         Caption = #1060'.'#1048'.'#1054'.'
         DataBinding.FieldName = 'FIO'
-        Options.Editing = False
-        Width = 20
+        Width = 22
       end
       object cxGrid1DBTableView1ADDRESS: TcxGridDBColumn
         Caption = #1040#1076#1088#1077#1089
         DataBinding.FieldName = 'ADDRESS'
-        Options.Editing = False
-        Width = 179
+        Width = 203
       end
       object cxGrid1DBTableView1CODE: TcxGridDBColumn
         Caption = #1050#1086#1076' '#1091#1089#1083#1091#1075#1080
         DataBinding.FieldName = 'CODE'
-        Options.Editing = False
-        Width = 27
+        Width = 32
       end
       object cxGrid1DBTableView1NM: TcxGridDBColumn
         Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077' '#1091#1089#1083#1091#1075#1080
         DataBinding.FieldName = 'NM'
-        Options.Editing = False
-        Width = 93
+        Width = 105
       end
       object cxGrid1DBTableView1PERIOD_DEB: TcxGridDBColumn
         Caption = #1055#1077#1088#1080#1086#1076' '#1076#1086#1083#1075#1072
         DataBinding.FieldName = 'PERIOD_DEB'
-        Options.Editing = False
-        Width = 43
+        Width = 50
       end
       object cxGrid1DBTableView1SUMMA: TcxGridDBColumn
         Caption = #1057#1091#1084#1084#1072' '#1076#1086#1083#1075#1072
         DataBinding.FieldName = 'SUMMA'
-        Options.Editing = False
-        Width = 33
+        Width = 37
       end
       object cxGrid1DBTableView1COMM: TcxGridDBColumn
         Caption = #1050#1086#1084#1084#1077#1085#1090#1072#1088#1080#1081' '#1087#1086' '#1079#1072#1075#1088#1091#1079#1082#1077
         DataBinding.FieldName = 'COMM'
-        Options.Editing = False
-        Width = 137
+        Width = 155
       end
       object cxGrid1DBTableView1STATUS: TcxGridDBColumn
         Caption = #1057#1090#1072#1090#1091#1089
         DataBinding.FieldName = 'STATUS'
-        Options.Editing = False
-        Width = 49
+        Width = 56
       end
     end
     object cxGrid1Level1: TcxGridLevel
@@ -190,8 +180,21 @@ object frmLoadKartExt: TfrmLoadKartExt
     DesignSize = (
       852
       41)
+    object Label1: TLabel
+      Left = 128
+      Top = 16
+      Width = 65
+      Height = 13
+      Caption = #8470' '#1088#1077#1077#1089#1090#1088#1072
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
     object Button1: TButton
-      Left = 544
+      Left = 664
       Top = 8
       Width = 75
       Height = 25
@@ -200,29 +203,53 @@ object frmLoadKartExt: TfrmLoadKartExt
       TabOrder = 0
       OnClick = Button1Click
     end
-    object Button2: TButton
-      Left = 728
-      Top = 8
-      Width = 115
-      Height = 25
-      Anchors = [akRight, akBottom]
-      Caption = #1042#1099#1075#1088#1091#1079#1080#1090#1100' '#1086#1090#1095#1077#1090
-      TabOrder = 1
-    end
     object Button3: TButton
-      Left = 624
+      Left = 744
       Top = 8
       Width = 97
       Height = 25
       Anchors = [akRight, akBottom]
       Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100' '#1074' '#1073#1072#1079#1091
-      TabOrder = 2
+      TabOrder = 1
       OnClick = Button3Click
     end
+    object Button2: TButton
+      Left = 16
+      Top = 8
+      Width = 105
+      Height = 25
+      Anchors = [akRight, akBottom]
+      Caption = #1042#1099#1075#1088#1091#1079#1080#1090#1100' '#1086#1087#1083#1072#1090#1091
+      TabOrder = 2
+      OnClick = Button2Click
+    end
+    object Edit1: TEdit
+      Left = 200
+      Top = 8
+      Width = 17
+      Height = 21
+      TabOrder = 3
+      Text = '1'
+    end
+  end
+  object Memo1: TMemo
+    Left = 0
+    Top = 0
+    Width = 852
+    Height = 41
+    Align = alTop
+    Lines.Strings = (
+      
+        #1055#1088#1080' '#1085#1077#1086#1073#1093#1086#1076#1080#1084#1086#1089#1090#1080' ('#1076#1074#1072' '#1080' '#1073#1086#1083#1077#1077' '#1086#1090#1082#1088#1099#1090#1099#1093' '#1083#1080#1094'.'#1089#1095#1077#1090#1086#1074' '#1087#1086' '#1086#1076#1085#1086#1084#1091' '#1072#1076#1088 +
+        #1077#1089#1091', '#1085#1072#1087#1088#1080#1084#1077#1088' '#1088#1072#1079#1076#1077#1083#1077#1085#1099' '#1087#1086' '#1089#1091#1076#1091') '#1084#1086#1078#1085#1086' '#1088#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1087#1086#1083#1077' '#1087#1088#1080#1074#1103#1079 +
+        #1082#1080' "'#1051#1080#1094'.'#1089#1095'." '#1080' '#1087#1086#1084#1077#1085#1103#1090#1100' '
+      #1089#1090#1072#1090#1091#1089' '#1079#1072#1075#1088#1091#1079#1082#1080' '#1085#1072' 0')
+    TabOrder = 2
   end
   object OD_loadKartExt: TOracleDataSet
     SQL.Strings = (
-      'select t.*, t.rowid from scott.load_kart_ext t')
+      'select t.*, t.rowid from scott.load_kart_ext t'
+      ' order by t.id')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
       040000000C000000020000004944010000000000070000004558545F4C534B01
@@ -234,6 +261,61 @@ object frmLoadKartExt: TfrmLoadKartExt
     Session = DataModule1.OracleSession1
     Active = True
     Top = 72
+    object OD_loadKartExtID: TFloatField
+      FieldName = 'ID'
+      ReadOnly = True
+      Required = True
+    end
+    object OD_loadKartExtEXT_LSK: TStringField
+      FieldName = 'EXT_LSK'
+      ReadOnly = True
+      Size = 9
+    end
+    object OD_loadKartExtGUID: TStringField
+      FieldName = 'GUID'
+      ReadOnly = True
+      Size = 36
+    end
+    object OD_loadKartExtFIO: TStringField
+      FieldName = 'FIO'
+      ReadOnly = True
+      Size = 60
+    end
+    object OD_loadKartExtADDRESS: TStringField
+      FieldName = 'ADDRESS'
+      ReadOnly = True
+      Size = 255
+    end
+    object OD_loadKartExtCODE: TFloatField
+      FieldName = 'CODE'
+      ReadOnly = True
+    end
+    object OD_loadKartExtNM: TStringField
+      FieldName = 'NM'
+      ReadOnly = True
+      Size = 25
+    end
+    object OD_loadKartExtPERIOD_DEB: TStringField
+      FieldName = 'PERIOD_DEB'
+      ReadOnly = True
+      Size = 6
+    end
+    object OD_loadKartExtSUMMA: TFloatField
+      FieldName = 'SUMMA'
+      ReadOnly = True
+    end
+    object OD_loadKartExtCOMM: TStringField
+      FieldName = 'COMM'
+      ReadOnly = True
+      Size = 255
+    end
+    object OD_loadKartExtSTATUS: TFloatField
+      FieldName = 'STATUS'
+    end
+    object OD_loadKartExtLSK: TStringField
+      FieldName = 'LSK'
+      Size = 8
+    end
   end
   object DS_loadKartExt: TDataSource
     DataSet = OD_loadKartExt

@@ -697,15 +697,24 @@ begin
       l_var := DataModule1.OraclePackage1.CallIntegerFunction
         ('scott.C_GET_PAY.reverse_pay',
         [OD_c_kwtp.FieldByName('id').AsInteger]);
-      DataModule1.OraclePackage1.Session.Commit;
-      OD_c_kwtp.Prior;
-      OD_c_kwtp.Active := False;
-      OD_c_kwtp.Active := true;
-      OD_paycheck.Active := false;
-      DataModule1.OraclePackage1.Session.Commit;
-      msg2('Обратный платеж выполнен в текущем дне и с текущим № компьютера!',
-        'Внимание!',
-        MB_OK + MB_ICONINFORMATION)
+      if l_var <> 0 then
+      begin
+        DataModule1.OraclePackage1.Session.Rollback;
+        msg2('Обратный платеж не выполнен! Код ошибки='+IntToStr(l_var),
+          'Внимание!',
+          MB_OK + MB_ICONERROR);
+      end    
+      else
+      begin
+        OD_c_kwtp.Prior;
+        OD_c_kwtp.Active := False;
+        OD_c_kwtp.Active := true;
+        OD_paycheck.Active := false;
+        DataModule1.OraclePackage1.Session.Commit;
+        msg2('Обратный платеж выполнен в текущем дне и с текущим № компьютера!',
+          'Внимание!',
+          MB_OK + MB_ICONINFORMATION);
+      end;
     end;
   end;
 

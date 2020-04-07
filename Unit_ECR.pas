@@ -16,7 +16,8 @@ function close_port(ECR: OleVariant): Integer;
 function calc_pads(p_txt: string): string;
 function calc_pads2(place: Integer; p_txt: string): string;
 procedure print_by_line(p_text: string; ECR: OleVariant);
-procedure printByLineWithCut(p_text: string; ECR: OleVariant; pCutLine: Integer);
+procedure printByLineWithCut(p_text: string; ECR: OleVariant; pCutLine:
+  Integer);
 function annulment(ECR: OleVariant): Integer;
 
 function set_date_time_ecr(ECR: OleVariant): Integer;
@@ -907,7 +908,8 @@ end;
 
 // печать с разбиением на строки, с отрезом на N строке
 
-procedure printByLineWithCut(p_text: string; ECR: OleVariant; pCutLine: Integer);
+procedure printByLineWithCut(p_text: string; ECR: OleVariant; pCutLine:
+  Integer);
 var
   lst: TStringList;
   i, i2: Integer;
@@ -915,23 +917,24 @@ begin
   lst := TStringList.Create;
   // разбить строку на подстроки, использу€ перенос строки
   splitStr(p_text, #13#10, lst);
-  i2:=0;
+  i2 := 0;
   for i := 0 to lst.Count - 1 do
   begin
-    i2:=i2+1;
+    i2 := i2 + 1;
     ECR.Password := '1';
     ECR.UseReceiptRibbon := true;
     ECR.UseJournalRibbon := false;
     // убрать спецсимволы и отправить на печать
     ECR.StringForPrinting := removeControl(lst[i]);
     ECR.PrintString;
-    // отрезать на pCutLine строке
-    if i2=pCutLine then
+    // отрезать на pCutLine строке или в конце отчета
+    if (i2 = pCutLine) or (i = (lst.Count - 1)) then
+    begin
       cutCheck(True, True, 1, ECR);
+    end;
   end;
   lst := nil;
 end;
-
 
 procedure print_string_ecr(p_text: string; //текст
   p_wrap, //ѕеренос 0-нет, 1-по словам, 2-по строке

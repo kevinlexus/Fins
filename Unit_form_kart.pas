@@ -801,7 +801,7 @@ begin
         // сохранить без вопросов
         DataModule1.OracleSession1.ApplyUpdates([Form_list_kart.OD_list_kart,
           Form_list_kart.OD_kart_detail,
-          OD_charge, OD_states_sch], true);
+            OD_charge, OD_states_sch], true);
         check_kart_correct;
         // подтверждение изменений, сделанных в пакетах
         DataModule1.OracleSession1.Commit;
@@ -815,7 +815,7 @@ begin
           // сохранить с вопросом
           DataModule1.OracleSession1.ApplyUpdates([Form_list_kart.OD_list_kart,
             Form_list_kart.OD_kart_detail,
-            OD_charge, OD_states_sch], true);
+              OD_charge, OD_states_sch], true);
           check_kart_correct;
           //для подтверждения изменений, сделанных в пакетах
           DataModule1.OracleSession1.Commit;
@@ -833,7 +833,7 @@ begin
             Form_list_kart.OD_kart_detail.Cancel;
           DataModule1.OracleSession1.CancelUpdates([Form_list_kart.OD_list_kart,
             Form_list_kart.OD_kart_detail,
-            OD_charge, OD_states_sch]);
+              OD_charge, OD_states_sch]);
           // отмена изменений, сделанных в пакетах
           DataModule1.OracleSession1.Rollback;
         end;
@@ -916,7 +916,6 @@ end;
 procedure TForm_kart.refresh_kart;
 var
   err_: string;
-
 begin
   //Обновление карточки
   LockWindowUpdate(handle);
@@ -991,8 +990,6 @@ begin
     end;
 
     // отключить возможность корректировки счетчиков в новой версии
-//    if DataModule1.OraclePackage1.CallIntegerFunction
-//                 ('scott.Utils.get_int_param', ['VER_METER1']) <> 0 then
     if getDoublePar(Form_main.paramList, 'VER_METER1') <> 0 then
     begin
       DBLookupComboboxEh3.Enabled := false;
@@ -1069,6 +1066,40 @@ begin
         DBEdit_pgw.Enabled := false;
       end
     end;
+  end;
+
+  if getDoublePar(Form_main.paramList, 'CONTROL_METER') = 0 then
+  begin
+    // погасить элементы ввода по счетчикам, они могут быть некорректны, иметь расхождения с scott.meter
+    Label30.visible := false;
+    Label16.visible := false;
+    DBEdit_mhw.visible := false;
+    DBEdit_mgw.visible := false;
+    DBEdit_mel.visible := false;
+    wwDBEdit3.visible := false;
+    Label14.visible := false;
+    Label15.visible := false;
+    Label17.visible := false;
+    Label23.visible := false;
+    DBLookupComboboxEh3.visible := false;
+    DBLookupComboboxEh13.visible := false;
+
+    DBEdit_phw.visible := false;
+    DBEdit_mhw2.visible := false;
+    DBEdit_pgw.visible := false;
+    DBEdit_mgw2.visible := false;
+    DBEdit_pel.visible := false;
+    DBEdit_mel2.visible := false;
+    dbedtPOT.visible := false;
+    dbedtMOT.visible := false;
+    wwCheckBox3.visible := false;
+    Label29.visible := false;
+    Label28.visible := false;
+    lbl1.visible := false;
+    Label31.visible := false;
+    Label32.visible := false;
+    DBLookupComboboxEh6.visible := false;
+    DBLookupComboboxEh16.visible := false;
   end;
   LockWindowUpdate(0);
 end;
@@ -1882,7 +1913,7 @@ begin
   begin
     msg2('Поле статуса должно быть заполнено!', 'Внимание!', MB_OK +
       MB_ICONSTOP);
-    abort;                          
+    abort;
   end;
 
   if ((OD_states_sch.FieldByName('FK_STATUS').AsInteger = 8) or

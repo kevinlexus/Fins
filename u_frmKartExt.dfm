@@ -1,6 +1,6 @@
 object frmKartExt: TfrmKartExt
-  Left = 256
-  Top = 261
+  Left = 2497
+  Top = 319
   Width = 868
   Height = 530
   Caption = #1042#1085#1077#1096#1085#1080#1077' '#1083#1080#1094'.'#1089#1095#1077#1090#1072
@@ -85,6 +85,268 @@ object frmKartExt: TfrmKartExt
   OldCreateOrder = False
   Position = poMainFormCenter
   Visible = True
+  OnClose = FormClose
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 450
+    Width = 852
+    Height = 41
+    Align = alBottom
+    TabOrder = 0
+    DesignSize = (
+      852
+      41)
+    object Button2: TButton
+      Left = 728
+      Top = 8
+      Width = 115
+      Height = 25
+      Anchors = [akRight, akBottom]
+      Caption = #1042#1099#1075#1088#1091#1079#1080#1090#1100' '#1086#1090#1095#1077#1090
+      TabOrder = 0
+    end
+  end
+  object cxGrid1: TcxGrid
+    Left = 0
+    Top = 29
+    Width = 852
+    Height = 421
+    Align = alClient
+    TabOrder = 1
+    object cxGrid1DBTableView1: TcxGridDBTableView
+      Navigator.Buttons.CustomButtons = <>
+      Navigator.Visible = True
+      OnCustomDrawCell = cxGrid1DBTableView1CustomDrawCell
+      DataController.DataSource = DS_kartExt
+      DataController.KeyFieldNames = 'EXT_LSK'
+      DataController.Summary.DefaultGroupSummaryItems = <>
+      DataController.Summary.FooterSummaryItems = <>
+      DataController.Summary.SummaryGroups = <>
+      OptionsBehavior.CellHints = True
+      OptionsSelection.InvertSelect = False
+      OptionsView.ColumnAutoWidth = True
+      OptionsView.GroupByBox = False
+      object cxGrid1DBTableView1REU: TcxGridDBColumn
+        Caption = #1050#1086#1076' '#1059#1050
+        DataBinding.FieldName = 'REU'
+        Width = 43
+      end
+      object cxGrid1DBTableView1NAME_REU: TcxGridDBColumn
+        Caption = #1059#1050
+        DataBinding.FieldName = 'NAME_REU'
+        Width = 88
+      end
+      object cxGrid1DBTableView1EXT_LSK: TcxGridDBColumn
+        Caption = #1042#1085#1077#1096#1085#1080#1081' '#1083#1080#1094'.'#1089#1095'.'
+        DataBinding.FieldName = 'EXT_LSK'
+        Width = 70
+      end
+      object cxGrid1DBTableView1LSK: TcxGridDBColumn
+        Caption = #1051#1080#1094'.'#1089#1095'.'
+        DataBinding.FieldName = 'LSK'
+        Width = 51
+      end
+      object cxGrid1DBTableView1FIO: TcxGridDBColumn
+        Caption = #1060'.'#1048'.'#1054'.'
+        DataBinding.FieldName = 'FIO'
+        Width = 84
+      end
+      object cxGrid1DBTableView1KUL: TcxGridDBColumn
+        Caption = #1050#1086#1076'.'#1091#1083'.'
+        DataBinding.FieldName = 'KUL'
+        Width = 56
+      end
+      object cxGrid1DBTableView1NAME: TcxGridDBColumn
+        Caption = #1059#1083#1080#1094#1072
+        DataBinding.FieldName = 'NAME'
+        Width = 59
+      end
+      object cxGrid1DBTableView1N_ND: TcxGridDBColumn
+        Caption = #1044#1086#1084
+        DataBinding.FieldName = 'N_ND'
+        Width = 47
+      end
+      object cxGrid1DBTableView1N_KW: TcxGridDBColumn
+        Caption = #1050#1074'.'
+        DataBinding.FieldName = 'N_KW'
+        Width = 38
+      end
+      object cxGrid1DBTableView1KPR: TcxGridDBColumn
+        Caption = #1050#1086#1083'-'#1074#1086' '#1087#1088#1086#1078'.'
+        DataBinding.FieldName = 'KPR'
+        Width = 73
+      end
+      object cxGrid1DBTableView1OPL: TcxGridDBColumn
+        Caption = #1054#1073#1097'.'#1087#1083'.'
+        DataBinding.FieldName = 'OPL'
+        Width = 74
+      end
+      object cxGrid1DBTableView1DT_CRT: TcxGridDBColumn
+        Caption = #1057#1086#1079#1076#1072#1085
+        DataBinding.FieldName = 'DT_CRT'
+        Width = 85
+      end
+      object cxGrid1DBTableView1DT_UPD: TcxGridDBColumn
+        Caption = #1054#1073#1085#1086#1074#1083#1105#1085
+        DataBinding.FieldName = 'DT_UPD'
+        Width = 82
+      end
+      object cxGrid1DBTableView1PSCH: TcxGridDBColumn
+        DataBinding.FieldName = 'PSCH'
+        Visible = False
+      end
+      object cxGrid1DBTableView1LSK_TP_CD: TcxGridDBColumn
+        DataBinding.FieldName = 'LSK_TP_CD'
+        Visible = False
+      end
+      object cxGrid1DBTableView1V: TcxGridDBColumn
+        Caption = #1040#1082#1090#1091#1072#1083#1100#1085#1099#1081'?'
+        DataBinding.FieldName = 'V'
+        PropertiesClassName = 'TcxCheckBoxProperties'
+        Properties.ValueChecked = 1
+        Properties.ValueUnchecked = 0
+      end
+    end
+    object cxGrid1Level1: TcxGridLevel
+      GridView = cxGrid1DBTableView1
+    end
+  end
+  object ToolBar1: TToolBar
+    Left = 0
+    Top = 0
+    Width = 852
+    Height = 29
+    Caption = 'ToolBar1'
+    Images = Form_Main.ImageList3
+    TabOrder = 2
+    object ToolButton1: TToolButton
+      Left = 0
+      Top = 2
+      Hint = #1053#1072#1089#1090#1088#1086#1080#1090#1100' '#1092#1080#1083#1100#1090#1088' QBE'
+      Caption = 'ToolButton1'
+      ImageIndex = 0
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = ToolButton1Click
+    end
+    object ToolButton2: TToolButton
+      Left = 23
+      Top = 2
+      Hint = #1042#1082#1083#1102#1095#1080#1090#1100' '#1092#1080#1083#1100#1090#1088' QBE'
+      Caption = 'ToolButton2'
+      ImageIndex = 1
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = ToolButton2Click
+    end
+  end
+  object OD_kartExt: TOracleDataSet
+    SQL.Strings = (
+      'select '
+      'e.rowid, k.reu, e.lsk, e.ext_lsk, e.fio, e.dt_crt, e.dt_upd,'
+      
+        'r.reu||'#39'-'#39'||r.name_reu as name_reu, k.kul, s.name, ltrim(k.nd,'#39'0' +
+        #39') as n_nd, ltrim(k.kw,'#39'0'#39') as n_kw,'
+      'k.psch, k.kpr, k.opl, u.cd as lsk_tp_cd, e.v'
+      'from scott.kart_ext e'
+      'join scott.kart k on k.lsk=e.lsk'
+      'join scott.spul s on k.kul=s.id'
+      'join scott.s_reu_trest r on k.reu=r.reu'
+      'left join scott.u_list u on k.fk_tp=u.id')
+    Optimize = False
+    QBEDefinition.QBEFieldDefs = {
+      0400000010000000070000004558545F4C534B0100000000000300000046494F
+      010000000000030000004C534B0100000000000600000044545F435254010000
+      0000000600000044545F555044010000000000080000004E414D455F52455501
+      0000000000030000004B554C010000000000040000004E414D45010000000000
+      040000004E5F4E44010000000000040000004E5F4B5701000000000004000000
+      50534348010000000000030000004B5052010000000000030000004F504C0100
+      0000000003000000524555010000000000090000004C534B5F54505F43440100
+      000000000100000056010000000000}
+    Session = DataModule1.OracleSession1
+    Active = True
+    Top = 72
+    object OD_kartExtREU: TStringField
+      FieldName = 'REU'
+      ReadOnly = True
+      Size = 3
+    end
+    object OD_kartExtLSK: TStringField
+      FieldName = 'LSK'
+      ReadOnly = True
+      Size = 8
+    end
+    object OD_kartExtEXT_LSK: TStringField
+      FieldName = 'EXT_LSK'
+      ReadOnly = True
+      Size = 9
+    end
+    object OD_kartExtFIO: TStringField
+      FieldName = 'FIO'
+      ReadOnly = True
+      Size = 60
+    end
+    object OD_kartExtDT_CRT: TDateTimeField
+      FieldName = 'DT_CRT'
+      ReadOnly = True
+    end
+    object OD_kartExtDT_UPD: TDateTimeField
+      FieldName = 'DT_UPD'
+      ReadOnly = True
+    end
+    object OD_kartExtNAME_REU: TStringField
+      FieldName = 'NAME_REU'
+      ReadOnly = True
+      Size = 68
+    end
+    object OD_kartExtKUL: TStringField
+      FieldName = 'KUL'
+      ReadOnly = True
+      Size = 4
+    end
+    object OD_kartExtNAME: TStringField
+      FieldName = 'NAME'
+      ReadOnly = True
+      Size = 25
+    end
+    object OD_kartExtN_ND: TStringField
+      FieldName = 'N_ND'
+      ReadOnly = True
+      Size = 6
+    end
+    object OD_kartExtN_KW: TStringField
+      FieldName = 'N_KW'
+      ReadOnly = True
+      Size = 7
+    end
+    object OD_kartExtPSCH: TIntegerField
+      FieldName = 'PSCH'
+      ReadOnly = True
+    end
+    object OD_kartExtKPR: TIntegerField
+      FieldName = 'KPR'
+      ReadOnly = True
+    end
+    object OD_kartExtOPL: TFloatField
+      FieldName = 'OPL'
+      ReadOnly = True
+    end
+    object OD_kartExtLSK_TP_CD: TStringField
+      FieldName = 'LSK_TP_CD'
+      ReadOnly = True
+      Size = 32
+    end
+    object OD_kartExtV: TFloatField
+      FieldName = 'V'
+      Required = True
+    end
+  end
+  object DS_kartExt: TDataSource
+    DataSet = OD_kartExt
+    Left = 32
+    Top = 72
+  end
 end

@@ -416,6 +416,12 @@ object Form_spr_sprorg: TForm_spr_sprorg
         Caption = #1043#1088#1091#1087#1087'.'#1076#1086#1083#1075
         DataBinding.FieldName = 'GRP_DEB'
       end
+      object cxGrid1DBTableView1CD: TcxGridDBColumn
+        DataBinding.FieldName = 'CD'
+      end
+      object cxGrid1DBTableView1FK_ORG2: TcxGridDBColumn
+        DataBinding.FieldName = 'FK_ORG2'
+      end
     end
     object cxGrid1Level1: TcxGridLevel
       GridView = cxGrid1DBTableView1
@@ -779,7 +785,7 @@ object Form_spr_sprorg: TForm_spr_sprorg
   end
   object OD_sprorg: TOracleDataSet
     SQL.Strings = (
-      'select '#39#39' as lvl, s.id, s.cd, s.fk_orgtp, s.name, s.npp, '
+      'select '#39#39' as lvl, s.id, s.cd, s.fk_orgtp, s.name, s.npp, s.npp2,'
       
         's.v, s.parent_id, s.reu, s.trest, s.uch, s.adr, s.inn, s.manager' +
         ', s.buh, s.raschet_schet, s.raschet_schet2, '
@@ -800,7 +806,7 @@ object Form_spr_sprorg: TForm_spr_sprorg
     Optimize = False
     OracleDictionary.UseMessageTable = True
     QBEDefinition.QBEFieldDefs = {
-      0400000034000000020000004944010000000000020000004344010000000000
+      0400000035000000020000004944010000000000020000004344010000000000
       08000000464B5F4F52475450010000000000040000004E414D45010000000000
       030000004E505001000000000001000000560100000000000900000050415245
       4E545F4944010000000000030000005245550100000000000500000054524553
@@ -827,7 +833,8 @@ object Form_spr_sprorg: TForm_spr_sprorg
       0A00000042414E4B5F464E414D45010000000000030000004752500100000000
       0009000000525F5343485F474953010000000000080000004144525F43415348
       0100000000000600000049535F52534F0100000000000F00000049535F455843
-      48414E47455F474953010000000000070000004752505F444542010000000000}
+      48414E47455F474953010000000000070000004752505F444542010000000000
+      040000004E505032010000000000}
     RefreshOptions = [roAfterInsert, roAfterUpdate]
     Session = DataModule1.OracleSession1
     BeforeEdit = OD_sprorgBeforeEdit

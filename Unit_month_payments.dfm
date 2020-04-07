@@ -709,25 +709,23 @@ object Form_month_payments: TForm_month_payments
       ''
       
         'select t.lsk, a.summa, a.penya, nvl(t.summa,0)+nvl(t.penya,0) as' +
-        ' summ_itg, nvl(t.oper,'#39#1057#1086#1089#1090#1072#1074#39') as oper, dopl, '
+        ' summ_itg, a.oper, dopl, '
       
         't.nink, t.nkom, t.dtek, t.nkvit, t.dat_ink, t.ts, t.id, t.iscorr' +
-        'ect, c.name as comp_name, t.oper||'#39'-'#39'||p.naim as oper_name,'
+        'ect, c.name as comp_name, a.oper||'#39'-'#39'||p.naim as oper_name,'
       't.num_doc, t.dat_doc, m.cash_num'
       '  from scott.kart k join scott.c_kwtp t on k.lsk=t.lsk'
       
         '                               join scott.c_comps m on t.nkom=m.' +
         'nkom'
       
-        '                               left join scott.oper p on t.oper=' +
-        'p.oper'
-      
         '                               join scott.t_org c on m.fk_org=c.' +
         'id'
       
-        ' left join (select t.c_kwtp_id, sum(t.summa) as summa, sum(t.pen' +
-        'ya) as penya from scott.c_kwtp_mg t'
+        ' left join (select t.c_kwtp_id, max(t.oper) as oper, sum(t.summa' +
+        ') as summa, sum(t.penya) as penya from scott.c_kwtp_mg t'
       '               group by t.c_kwtp_id) a on t.id=a.c_kwtp_id'
+      ' left join scott.oper p on a.oper=p.oper'
       'where '
       ' ((:var =0) or (:var =1 and  k.k_lsk_id=:k_lsk_id))'
       'order by t.ts'
@@ -808,7 +806,7 @@ object Form_month_payments: TForm_month_payments
       FieldName = 'OPER'
       Origin = 't.oper'
       Required = True
-      Size = 4
+      Size = 3
     end
     object OD_c_kwtpDOPL: TStringField
       DisplayLabel = #1055#1077#1088#1080#1086#1076

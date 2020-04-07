@@ -1,6 +1,6 @@
 object Form_kart: TForm_kart
-  Left = 458
-  Top = 301
+  Left = 2012
+  Top = 234
   Width = 903
   Height = 675
   BorderIcons = [biSystemMenu, biMinimize]
@@ -146,8 +146,8 @@ object Form_kart: TForm_kart
             Left = 1
             Top = -2
             Width = 328
-            Height = 139
-            Caption = #1055#1088#1080#1073#1086#1088#1099' '#1091#1095#1105#1090#1072' '#1061'.'#1042'. '#1043'.'#1042'.'
+            Height = 187
+            Caption = #1055#1088#1080#1073#1086#1088#1099' '#1091#1095#1105#1090#1072
             TabOrder = 0
             object Label14: TLabel
               Left = 19
@@ -427,9 +427,9 @@ object Form_kart: TForm_kart
           ImageIndex = 1
           object GroupBox7: TGroupBox
             Left = 1
-            Top = 4
+            Top = -2
             Width = 328
-            Height = 165
+            Height = 187
             Caption = #1055#1088#1080#1073#1086#1088#1099' '#1091#1095#1105#1090#1072
             TabOrder = 0
             object Label26: TLabel
@@ -684,7 +684,7 @@ object Form_kart: TForm_kart
             end
             object BitBtn4: TBitBtn
               Left = 295
-              Top = 98
+              Top = 106
               Width = 25
               Height = 25
               Hint = #1048#1089#1090#1086#1088#1080#1103' '#1087#1086#1082#1072#1079#1072#1085#1080#1081' '#1087#1086' '#1089#1095#1077#1090#1095#1080#1082#1072#1084
@@ -703,7 +703,7 @@ object Form_kart: TForm_kart
             end
             object BitBtn5: TBitBtn
               Left = 295
-              Top = 66
+              Top = 74
               Width = 25
               Height = 25
               Hint = #1044#1077#1081#1089#1090#1074#1080#1103' '#1087#1086' '#1087#1088#1080#1073#1086#1088#1072#1084' '#1091#1095#1077#1090#1072

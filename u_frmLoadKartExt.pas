@@ -31,8 +31,23 @@ type
     cxGrid1DBTableView1LSK: TcxGridDBColumn;
     OpenDialog1: TOpenDialog;
     Button1: TButton;
-    Button2: TButton;
     Button3: TButton;
+    OD_loadKartExtID: TFloatField;
+    OD_loadKartExtEXT_LSK: TStringField;
+    OD_loadKartExtGUID: TStringField;
+    OD_loadKartExtFIO: TStringField;
+    OD_loadKartExtADDRESS: TStringField;
+    OD_loadKartExtCODE: TFloatField;
+    OD_loadKartExtNM: TStringField;
+    OD_loadKartExtPERIOD_DEB: TStringField;
+    OD_loadKartExtSUMMA: TFloatField;
+    OD_loadKartExtCOMM: TStringField;
+    OD_loadKartExtSTATUS: TFloatField;
+    OD_loadKartExtLSK: TStringField;
+    Memo1: TMemo;
+    Button2: TButton;
+    Label1: TLabel;
+    Edit1: TEdit;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
@@ -40,6 +55,7 @@ type
     procedure cxGrid1DBTableView1CustomDrawCell(
       Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;
       AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
+    procedure Button2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -51,7 +67,7 @@ var
 
 implementation
 
-uses DM_module1;
+uses DM_module1, Unit_status;
 
 {$R *.dfm}
 
@@ -78,19 +94,26 @@ begin
   if OpenDialog1.FileName <> '' then
   begin
     try
+      Application.CreateForm(TForm_status, Form_status);
+      Form_status.Update;
       l_res :=
         DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA.HTTP_REQ',
-        ['/loadFileKartExt/' + ExtractFileName(OpenDialog1.FileName), 'GET']);
-      if l_res = 'OK' then
+        ['/loadFileKartExt/' + ExtractFileName(OpenDialog1.FileName), null,
+        'GET']);
+      Form_status.Close;
+      if l_res = 'PROCESS' then
+        msg2('Выполняется загрузка файла!', 'Внимание!',
+          MB_OK + MB_ICONERROR)
+      else if l_res = 'ERROR' then
+        msg2('Произошла ошибка во время загрузки файла!', 'Внимание!',
+          MB_OK + MB_ICONERROR)
+      else
       begin
         OD_loadKartExt.Active := False;
         OD_loadKartExt.Active := True;
-        msg2('Файл успешно загружен!', 'Внимание!',
-          MB_OK + MB_ICONINFORMATION)
-      end
-      else
-        msg2('Произошла ошибка во время загрузки файла!', 'Внимание!',
-          MB_OK + MB_ICONERROR);
+        msg2('Загружено ' + l_res + ' записей', 'Внимание!',
+          MB_OK + MB_ICONINFORMATION);
+      end;
     except
       on E: EOracleError do
       begin
@@ -108,9 +131,12 @@ begin
   if Application.MessageBox('Сохранить лиц.счета в статусе=0 в базу?',
     'Внимание!', MB_YESNO + MB_ICONQUESTION + MB_TOPMOST) = IDYES then
   begin
+    Application.CreateForm(TForm_status, Form_status);
+    Form_status.Update;
     DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA.HTTP_REQ',
-      ['/loadApprovedKartExt', 'GET']);
-    Application.MessageBox('Лиц.счета успешно сохранены!', 'Внимание!', MB_OK 
+      ['/loadApprovedKartExt', null, 'GET']);
+    Form_status.Close;
+    Application.MessageBox('Лиц.счета успешно сохранены!', 'Внимание!', MB_OK
       + MB_ICONINFORMATION + MB_TOPMOST);
   end;
 end;
@@ -119,11 +145,11 @@ procedure TfrmLoadKartExt.cxGrid1DBTableView1CustomDrawCell(
   Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;
   AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
 var
- col: TcxGridDBColumn;
- s : string;
+  col: TcxGridDBColumn;
+  s: string;
 begin
   // цвет записи
-  col:=cxGrid1DBTableView1.GetColumnByFieldName('STATUS');
+  col := cxGrid1DBTableView1.GetColumnByFieldName('STATUS');
   s := AViewInfo.GridRecord.DisplayTexts[col.Index];
   if s = '0' then
   begin
@@ -132,12 +158,59 @@ begin
   else if s = '2' then
   begin
     // ошибка
-    ACanvas.Font.Color:= clRed;
+    ACanvas.Font.Color := clRed;
   end
   else if s = '1' then
   begin
     // уже загружен (неактивная запись)
-    ACanvas.Font.Color:= clGray;
+    ACanvas.Font.Color := clGray;
+  end;
+end;
+
+// выгрузка платежей по внешним лиц.счетам
+
+procedure TfrmLoadKartExt.Button2Click(Sender: TObject);
+var
+  l_res: string;
+  fileName: string;
+  cnt: Integer;
+begin
+  try
+    if
+      Application.MessageBox('Выгрузить реестр платежей по внешним лиц.счетам?',
+      'Внимание!', MB_YESNO + MB_ICONQUESTION + MB_TOPMOST) = IDYES then
+    begin
+      Application.CreateForm(TForm_status, Form_status);
+      Form_status.Update;
+      l_res :=
+        DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA.HTTP_REQ',
+        ['/unloadPaymentFileKartExt/' + Edit1.Text, null,
+        'GET']);
+      Form_status.Close;
+      if l_res = 'PROCESS' then
+        msg2('Выполняется выгрузка файла!', 'Внимание!',
+          MB_OK + MB_ICONERROR)
+      else if l_res = 'ERROR' then
+        msg2('Произошла ошибка во время выгрузки файла!', 'Внимание!',
+          MB_OK + MB_ICONERROR)
+      else
+      begin
+        OD_loadKartExt.Active := False;
+        OD_loadKartExt.Active := True;
+        // получить кол-во записей и имя файла из результата        
+        cnt := StrToInt(Copy(l_res, 0, Pos('_', l_res)-1));
+        fileName := Copy(l_res, Pos('_', l_res)+1, Length(l_res)-Pos('_', l_res)+1);
+        
+        msg2('Выгружено ' + IntToStr(cnt) + ' записей в файл:' + fileName, 'Внимание!',
+          MB_OK + MB_ICONINFORMATION);
+      end;
+    end;
+  except
+    on E: EOracleError do
+    begin
+      msg2(E.Message, 'Внимание!',
+        MB_OK + MB_ICONEXCLAMATION);
+    end;
   end;
 end;
 

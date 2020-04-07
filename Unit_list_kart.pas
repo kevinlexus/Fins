@@ -933,35 +933,6 @@ begin
     ABrush.Color := clMoneyGreen;
     AFont.Color := clBlack;
   end;
-
-  {  else if (OD_list_kart.FieldByName('psch').AsInteger = 9)
-    //and
-    //   (OD_list_kart.FieldByName('lsk_tp_cd').AsString = 'LSK_TP_MAIN')
-      then
-    begin
-      ABrush.Color := clGray;
-      AFont.Color := clBlack;
-    end
-    else if (OD_list_kart.FieldByName('psch').AsInteger = 8) and
-       (OD_list_kart.FieldByName('lsk_tp_cd').AsString = 'LSK_TP_ADDIT')
-      then
-    begin
-      ABrush.Color := clGreen;
-      AFont.Color := clBlack;
-    end
-    else if (OD_list_kart.FieldByName('psch').AsInteger = 9) and
-       (OD_list_kart.FieldByName('lsk_tp_cd').AsString = 'LSK_TP_ADDIT')
-      then
-    begin
-      ABrush.Color := clOlive;
-      AFont.Color := clBlack;
-    end
-    else if (OD_list_kart.FieldByName('lsk_tp_cd').AsString = 'LSK_TP_ADDIT')
-      then
-    begin
-      ABrush.Color := clMoneyGreen;
-      AFont.Color := clBlack;
-    end;}
 end;
 
 procedure TForm_list_kart.OD_list_kartBeforeInsert(DataSet: TDataSet);

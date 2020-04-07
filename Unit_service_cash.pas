@@ -281,11 +281,19 @@ begin
 end;
 
 procedure TForm_service_cash.Button2Click(Sender: TObject);
+var
+  check: string;
+  ECR: OleVariant;
 begin
   if (Form_Main.have_eq = 1) then
   begin
     // сверка итогов эквайринга
     Form_Main.eqECR.NFun(6000);
+    check:=Form_Main.eqECR.GParamString('Cheque');
+    Application.MessageBox(PChar(check), 'Проверка отчета', MB_OK 
+      + MB_ICONINFORMATION + MB_TOPMOST);
+    // печать чека на фискальнике, используя разбиение на строки и отрезку чека
+    printByLineWithCut(check, Form_main.selECR, 36);
   end;
 end;
 
