@@ -1,6 +1,6 @@
 object Form_spr_sprorg: TForm_spr_sprorg
-  Left = 309
-  Top = 163
+  Left = 466
+  Top = 223
   Width = 1311
   Height = 720
   BorderIcons = [biSystemMenu, biMinimize]
@@ -785,7 +785,7 @@ object Form_spr_sprorg: TForm_spr_sprorg
   end
   object OD_sprorg: TOracleDataSet
     SQL.Strings = (
-      'select '#39#39' as lvl, s.id, s.cd, s.fk_orgtp, s.name, s.npp, s.npp2,'
+      'select '#39#39' as lvl, s.id, s.cd, s.fk_orgtp, s.name, s.npp, '
       
         's.v, s.parent_id, s.reu, s.trest, s.uch, s.adr, s.inn, s.manager' +
         ', s.buh, s.raschet_schet, s.raschet_schet2, '

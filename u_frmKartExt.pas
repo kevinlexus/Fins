@@ -8,12 +8,12 @@ uses
   cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit,
   cxNavigator, DB, cxDBData, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, cxGridLevel, cxClasses, cxGridCustomView, cxGrid,
-  OracleData, StdCtrls, ExtCtrls, ComCtrls, ToolWin, cxCheckBox;
+  OracleData, StdCtrls, ExtCtrls, ComCtrls, ToolWin, cxCheckBox,
+  cxContainer;
 
 type
   TfrmKartExt = class(TForm)
     Panel1: TPanel;
-    Button2: TButton;
     OD_kartExt: TOracleDataSet;
     DS_kartExt: TDataSource;
     cxGrid1: TcxGrid;
@@ -54,6 +54,7 @@ type
     OD_kartExtLSK_TP_CD: TStringField;
     OD_kartExtV: TFloatField;
     cxGrid1DBTableView1V: TcxGridDBColumn;
+    chk1: TCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ToolButton1Click(Sender: TObject);
@@ -61,6 +62,7 @@ type
     procedure cxGrid1DBTableView1CustomDrawCell(
       Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;
       AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
+    procedure chk1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -76,17 +78,17 @@ implementation
 
 procedure TfrmKartExt.FormCreate(Sender: TObject);
 begin
-  OD_kartExt.Active:=True;
+  OD_kartExt.Active := True;
 end;
 
 procedure TfrmKartExt.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  Action:=caFree;
+  Action := caFree;
 end;
 
 procedure TfrmKartExt.ToolButton1Click(Sender: TObject);
 begin
-  OD_kartExt.QBEMode:=True;
+  OD_kartExt.QBEMode := True;
 end;
 
 procedure TfrmKartExt.ToolButton2Click(Sender: TObject);
@@ -98,27 +100,35 @@ procedure TfrmKartExt.cxGrid1DBTableView1CustomDrawCell(
   Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;
   AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
 var
- col,col2: TcxGridDBColumn;
- s,s2 : string;
+  col, col2: TcxGridDBColumn;
+  s, s2: string;
 begin
   // цвет записи
-  col:=cxGrid1DBTableView1.GetColumnByFieldName('PSCH');
+  col := cxGrid1DBTableView1.GetColumnByFieldName('PSCH');
   s := AViewInfo.GridRecord.DisplayTexts[col.Index];
-  col2:=cxGrid1DBTableView1.GetColumnByFieldName('LSK_TP_CD');
+  col2 := cxGrid1DBTableView1.GetColumnByFieldName('LSK_TP_CD');
   s2 := AViewInfo.GridRecord.DisplayTexts[col2.Index];
   if (s = '8') or (s = '9') then
   begin
     // закрытые лиц.сч.
     ACanvas.Font.Color := clBlack;
     ACanvas.Brush.Color := clSilver;
-  end
-  else if (s2 = 'LSK_TP_ADDIT') or (s2 = 'LSK_TP_RSO') then
-  begin
-    // капремонт или РСО счета
-    ACanvas.Font.Color := clBlack;
-    ACanvas.Brush.Color := clMoneyGreen;
   end;
 
 end;
 
+procedure TfrmKartExt.chk1Click(Sender: TObject);
+begin
+  if chk1.Checked then
+  begin
+    OD_kartExt.RefreshRecord;
+    OD_kartExt.ReadOnly := False
+  end
+  else
+  begin
+    OD_kartExt.ReadOnly := True;
+  end;
+end;
+
 end.
+

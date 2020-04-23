@@ -82,6 +82,7 @@ function getS_str_param(strPar: string): String;
 function getS_list_param(strPar: string): Integer;
 procedure splitStr(const Source, Delimiter: String; var DelimitedList: TStringList);
 function removeControl(const S: string): string;
+procedure logText(text: String);
 
 implementation
 uses Unit_Mainform;
@@ -907,6 +908,21 @@ begin
   CloseFile(f);
 end;
           }
+
+// логгирование событий в программе          
+procedure logText(text: String);
+var 
+  f: TextFile;
+  path: string;
+begin
+  path:=ExtractFilePath(Application.ExeName);
+  AssignFile(f, path + 'direct.log');
+  Append(f);
+  Writeln(f, DateTimeToStr(Now())+' '+text);
+  Flush(f);
+  CloseFile(f);
+end;
+
 
 function exp_to_txt(dset: TUniQuery; path_: string; fname_: string;
   fldsum_: string; issum_: Integer; iscnt_: Integer; ishead_: Integer; oem_:

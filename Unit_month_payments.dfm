@@ -1,6 +1,6 @@
 object Form_month_payments: TForm_month_payments
-  Left = 832
-  Top = 376
+  Left = 639
+  Top = 215
   Width = 852
   Height = 607
   Caption = #1055#1086#1089#1090#1091#1087#1083#1077#1085#1080#1103' '#1079#1072' '#1084#1077#1089#1103#1094
@@ -604,12 +604,15 @@ object Form_month_payments: TForm_month_payments
         '                            left join scott.oper p on t.oper=p.o' +
         'per'
       'where '
-      '((:var =0) or (:var =1 and  k.k_lsk_id=:k_lsk_id))'
+      
+        '((:var =0) or (:var =1 and  k.k_lsk_id=:k_lsk_id) or (:var =2 an' +
+        'd  k.lsk=:lsk) )'
       'order by t.c_kwtp_id, t.dopl')
     Optimize = False
     Variables.Data = {
-      0300000002000000040000003A56415203000000000000000000000009000000
-      3A4B5F4C534B5F4944030000000000000000000000}
+      0300000003000000040000003A56415203000000000000000000000009000000
+      3A4B5F4C534B5F4944030000000000000000000000040000003A4C534B050000
+      000000000000000000}
     QBEDefinition.QBEFieldDefs = {
       040000000F000000030000004C534B0100000000000500000053554D4D410100
       000000000500000050454E5941010000000000040000004F5045520100000000
@@ -727,36 +730,16 @@ object Form_month_payments: TForm_month_payments
       '               group by t.c_kwtp_id) a on t.id=a.c_kwtp_id'
       ' left join scott.oper p on a.oper=p.oper'
       'where '
-      ' ((:var =0) or (:var =1 and  k.k_lsk_id=:k_lsk_id))'
-      'order by t.ts'
-      ''
-      '/* '#1076#1083#1103' '#1087#1088#1080#1084#1077#1088#1072
-      'select t.lsk,  '
       
-        's.name||'#39', '#39'||NVL(LTRIM(k.nd,'#39'0'#39'),'#39'0'#39')||'#39'-'#39'||NVL(LTRIM(k.kw,'#39'0'#39')' +
-        ','#39'0'#39')'
-      
-        'as adr, a.summa, a.penya, nvl(t.summa,0)+nvl(t.penya,0) as summ_' +
-        'itg, t.oper, '
-      't.nink, t.nkom, t.dtek, t.nkvit, t.dat_ink, '
-      
-        'substr(t.dopl,1,4)||'#39'-'#39'||substr(t.dopl,5,2) as dopl, t.ts, t.id,' +
-        ' t.iscorrect '
-      
-        'from scott.c_kwtp t join scott.kart k on k.lsk=t.lsk and t.oper ' +
-        '= :oper and t.nkom=scott.init.get_nkom() and  ((:var =1) or (:va' +
-        'r =0 and  t.nink = 0))'
-      ' join scott.spul s on k.kul=s.id'
-      
-        ' left join (select t.c_kwtp_id, sum(t.summa) as summa, sum(t.pen' +
-        'ya) as penya from scott.c_kwtp_mg t'
-      '               group by t.c_kwtp_id) a on t.id=a.c_kwtp_id'
-      'order by t.ts'
-      '*/')
+        ' ((:var =0) or (:var =1 and  k.k_lsk_id=:k_lsk_id) or (:var =2 a' +
+        'nd  k.lsk=:lsk)'
+      ')'
+      'order by t.ts')
     Optimize = False
     Variables.Data = {
-      0300000002000000040000003A56415203000000000000000000000009000000
-      3A4B5F4C534B5F4944030000000000000000000000}
+      0300000003000000040000003A56415203000000000000000000000009000000
+      3A4B5F4C534B5F4944030000000000000000000000040000003A4C534B050000
+      000000000000000000}
     QBEDefinition.QBEFieldDefs = {
       0400000013000000030000004C534B0100000000000500000053554D4D410100
       000000000500000050454E5941010000000000040000004F5045520100000000

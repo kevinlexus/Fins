@@ -89,40 +89,40 @@ begin
   // загрузить файл с лиц.счетами
   OpenDialog1.Filter := 'TXT файлы (*.txt)|*.txt|Все файлы (*.*)|*.*';
   OpenDialog1.FilterIndex := 1;
-  OpenDialog1.Execute;
-
-  if OpenDialog1.FileName <> '' then
+  if OpenDialog1.Execute then
   begin
-    try
-      Application.CreateForm(TForm_status, Form_status);
-      Form_status.Update;
-      l_res :=
-        DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA.HTTP_REQ',
-        ['/loadFileKartExt/' + ExtractFileName(OpenDialog1.FileName), null,
-        'GET']);
-      Form_status.Close;
-      if l_res = 'PROCESS' then
-        msg2('Выполняется загрузка файла!', 'Внимание!',
-          MB_OK + MB_ICONERROR)
-      else if l_res = 'ERROR' then
-        msg2('Произошла ошибка во время загрузки файла!', 'Внимание!',
-          MB_OK + MB_ICONERROR)
-      else
-      begin
-        OD_loadKartExt.Active := False;
-        OD_loadKartExt.Active := True;
-        msg2('Загружено ' + l_res + ' записей', 'Внимание!',
-          MB_OK + MB_ICONINFORMATION);
-      end;
-    except
-      on E: EOracleError do
-      begin
-        msg2(E.Message, 'Внимание!',
-          MB_OK + MB_ICONEXCLAMATION);
+    if OpenDialog1.FileName <> '' then
+    begin
+      try
+        Application.CreateForm(TForm_status, Form_status);
+        Form_status.Update;
+        l_res :=
+          DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA.HTTP_REQ',
+          ['/loadFileKartExt/' + ExtractFileName(OpenDialog1.FileName), null,
+          'GET']);
+        Form_status.Close;
+        if l_res = 'PROCESS' then
+          msg2('Выполняется загрузка файла!', 'Внимание!',
+            MB_OK + MB_ICONERROR)
+        else if l_res = 'ERROR' then
+          msg2('Произошла ошибка во время загрузки файла!', 'Внимание!',
+            MB_OK + MB_ICONERROR)
+        else
+        begin
+          OD_loadKartExt.Active := False;
+          OD_loadKartExt.Active := True;
+          msg2('Загружено ' + l_res + ' записей', 'Внимание!',
+            MB_OK + MB_ICONINFORMATION);
+        end;
+      except
+        on E: EOracleError do
+        begin
+          msg2(E.Message, 'Внимание!',
+            MB_OK + MB_ICONEXCLAMATION);
+        end;
       end;
     end;
   end;
-
 end;
 
 procedure TfrmLoadKartExt.Button3Click(Sender: TObject);
@@ -197,11 +197,13 @@ begin
       begin
         OD_loadKartExt.Active := False;
         OD_loadKartExt.Active := True;
-        // получить кол-во записей и имя файла из результата        
-        cnt := StrToInt(Copy(l_res, 0, Pos('_', l_res)-1));
-        fileName := Copy(l_res, Pos('_', l_res)+1, Length(l_res)-Pos('_', l_res)+1);
-        
-        msg2('Выгружено ' + IntToStr(cnt) + ' записей в файл:' + fileName, 'Внимание!',
+        // получить кол-во записей и имя файла из результата
+        cnt := StrToInt(Copy(l_res, 0, Pos('_', l_res) - 1));
+        fileName := Copy(l_res, Pos('_', l_res) + 1, Length(l_res) - Pos('_',
+          l_res) + 1);
+
+        msg2('Выгружено ' + IntToStr(cnt) + ' записей в файл:' + fileName,
+          'Внимание!',
           MB_OK + MB_ICONINFORMATION);
       end;
     end;

@@ -1,6 +1,6 @@
 object Form_spr_params: TForm_spr_params
-  Left = 963
-  Top = 180
+  Left = 941
+  Top = 229
   Width = 882
   Height = 491
   Caption = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082' '#1087#1072#1088#1072#1084#1077#1090#1088#1086#1074
@@ -267,14 +267,21 @@ object Form_spr_params: TForm_spr_params
     object chk1: TCheckBox
       Left = 256
       Top = 16
-      Width = 169
+      Width = 97
       Height = 17
       Hint = #1042#1082#1083#1102#1095#1080#1090#1100', '#1077#1089#1083#1080' '#1085#1077#1086#1073#1093#1086#1076#1080#1084#1086' '#1086#1090#1088#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1087#1072#1088#1072#1084#1077#1090#1088#1099
-      Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1087#1072#1088#1072#1084#1077#1090#1088#1099
+      Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100
       ParentShowHint = False
       ShowHint = True
       TabOrder = 2
       OnClick = chk1Click
+    end
+    object cxCheckBox1: TcxCheckBox
+      Left = 368
+      Top = 16
+      Caption = 'cxCheckBox1'
+      TabOrder = 3
+      Width = 121
     end
   end
   object wwDBGrid1: TwwDBGrid

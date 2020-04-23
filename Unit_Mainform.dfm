@@ -1,8 +1,8 @@
 object Form_Main: TForm_Main
-  Left = 2293
-  Top = 143
+  Left = 672
+  Top = 238
   Width = 880
-  Height = 724
+  Height = 723
   Caption = #1044#1080#1088#1077#1082#1090
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -95,7 +95,7 @@ object Form_Main: TForm_Main
   object Splitter1: TSplitter
     Left = 1
     Top = 41
-    Height = 624
+    Height = 623
     Beveled = True
   end
   object ToolBar1: TToolBar
@@ -278,7 +278,7 @@ object Form_Main: TForm_Main
     Left = 0
     Top = 41
     Width = 1
-    Height = 624
+    Height = 623
     Align = alLeft
     DockSite = True
     TabOrder = 1
@@ -1070,9 +1070,14 @@ object Form_Main: TForm_Main
         Caption = 'DVB'
         OnClick = DVB1Click
       end
+      object N145: TMenuItem
+        Caption = #1051#1086#1075#1075#1080#1085#1075' '#1089#1086#1073#1099#1090#1080#1081
+        ImageIndex = 27
+        OnClick = N145Click
+      end
     end
     object ver: TMenuItem
-      Caption = 'ver 2.1.125'
+      Caption = 'ver 2.1.131'
       object option: TMenuItem
         Caption = #1055#1086#1076#1082#1083#1102#1095#1077#1085#1085#1099#1077' '#1086#1087#1094#1080#1080':'
       end

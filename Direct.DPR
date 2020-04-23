@@ -163,7 +163,8 @@ uses
   u_frmReplaceKlsk in 'u_frmReplaceKlsk.pas' {frmReplaceKlsk},
   u_frmMeteGisConnect in 'u_frmMeteGisConnect.pas' {frmMeteGisConnect},
   u_frmLoadKartExt in 'u_frmLoadKartExt.pas' {frmLoadKartExt},
-  u_frmKartExt in 'u_frmKartExt.pas' {frmKartExt};
+  u_frmKartExt in 'u_frmKartExt.pas' {frmKartExt},
+  u_frmLog in 'u_frmLog.pas' {frmLog};
 
 {  Unit_edit_pay_usl_org in '..\Program Files86\Borland\Delphi7\Components\FR412\LibD7\Unit_edit_pay_usl_org.pas'}
 

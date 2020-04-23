@@ -763,6 +763,7 @@ begin
   //           регистрация и печать чека
   // ВНИМАНИЕ! в качестве типа операции используется поле из c_kwtp_mg
   // поэтому кол-во операций при приеме оплаты не должно быть больше 1
+  logText('Начало регистрации оплаты');
   l_flag := print_receipt(StrToFloat(wwDBEdit1.Text),
     OD_c_kwtp.FieldByName('cash_num').AsInteger,
     OD_oper.FieldByName('cash_oper_tp').AsInteger);
@@ -773,11 +774,14 @@ begin
   begin
     // успешно
     DataModule1.OraclePackage1.Session.Commit;
+    logText('Окончание регистрации оплаты - успешно');
   end
   else
   begin
     // ошибка
+    logText('Окончание регистрации оплаты - ОШИБКА!');
     DataModule1.OraclePackage1.Session.Rollback;
+    logText('Окончание регистрации оплаты - Откат произведен!');
     Application.MessageBox('Ошибка при попытке распечатать кассовый чек!',
       'Внимание!', MB_OK + MB_ICONSTOP + MB_DEFBUTTON2);
     Exit;
@@ -833,14 +837,14 @@ function TForm_get_pay_nal.print_receipt(client_sum: Double; p_cashNum:
   Integer; p_cash_oper_tp: Integer): Integer;
 var
   // режим ККМ
-  saved_cash_test, mode: Integer;
+  mode: Integer;
   F: TextFile;
-  pad1, pad2, path, oldLsk, eQres, check: string;
-  receiptTest, retry, eQsuccess: Boolean;
+  pad1, pad2, path, oldLsk, eQres, check, strPrint: string;
+  retry, eQsuccess: Boolean;
   inn, strDt: string;
   ECR: OleVariant;
 begin
-  saved_cash_test := Form_main.cash_test;
+  logText('Начало регистрации чека');
 
   if p_cashNum = 1 then
   begin
@@ -854,48 +858,41 @@ begin
   end;
 
   Result := 1;
-  if Form_main.cash_test = 1 then
-    receiptTest := True
-  else
-    receiptTest := False;
 
   if getDoublePar(Form_main.paramList, 'CHECK_CASH_CORRECTNESS') = 1 then
   begin
     // ТСЖ - проверка корректности подключенного фискальника
-    if not receiptTest then
+    retry := True;
+    while retry do
     begin
-      retry := True;
-      while retry do
+      retry := False;
+      ECR.GetECRStatus;
+      // если заполнен ИНН ККМ, то проверить на правильность подсоединения
+      if (ECR.INN <> inn) then
       begin
-        retry := False;
-        ECR.GetECRStatus;
-        // если заполнен ИНН ККМ, то проверить на правильность подсоединения
-        if (ECR.INN <> inn) then
-        begin
-          case
-            Application.MessageBox('Подключен несоответствующий фискальный регистратор!',
-            'Внимание!', MB_ABORTRETRYIGNORE + MB_ICONSTOP) of
-            IDABORT:
-              begin
-                // выйти из процедуры
-                Result := 1;
-                Exit;
-              end;
-            IDRETRY:
-              begin
-                // повторить проверку ИНН
-                ECR.GetECRStatus;
-                if ECR.INN <> inn then
-                  retry := True
-                else
-                  retry := False;
-              end;
-            IDIGNORE:
-              begin
-                // распечатать чек на текущем ККМ
+        case
+          Application.MessageBox('Подключен несоответствующий фискальный регистратор!',
+          'Внимание!', MB_ABORTRETRYIGNORE + MB_ICONSTOP) of
+          IDABORT:
+            begin
+              // выйти из процедуры
+              Result := 1;
+              Exit;
+            end;
+          IDRETRY:
+            begin
+              // повторить проверку ИНН
+              ECR.GetECRStatus;
+              if ECR.INN <> inn then
+                retry := True
+              else
                 retry := False;
-              end;
-          end;
+            end;
+          IDIGNORE:
+            begin
+              // распечатать чек на текущем ККМ
+              retry := False;
+            end;
         end;
       end;
     end;
@@ -903,33 +900,35 @@ begin
 
   if open_port_ecr(ECR) <> 0 then
   begin
+    logText('ККМ: Открытие порта - ОШИБКА!');
     retry := True;
     while retry do
     begin
       // ошибка, возможно отключен фискальный регистратор
       case
         Application.MessageBox('Возможно отключен фискальный регистратор, печать чека будет не доступна. Продолжить без печати чека?',
-        'Внимание!', MB_ABORTRETRYIGNORE + MB_ICONSTOP) of
-        IDABORT:
+        'Внимание!', MB_RETRYCANCEL + MB_ICONSTOP) of
+        IDCANCEL:
           begin
             // выйти из процедуры
+            logText('Возможно отключен фискальный регистратор, печать чека будет не доступна - выход без печати чека');
             Result := 1;
             Exit;
           end;
         IDRETRY:
           begin
+            logText('Возможно отключен фискальный регистратор, печать чека будет не доступна - повтор проверки ККМ');
             // повторить проверку ККМ
             if open_port_ecr(ECR) <> 0 then
+            begin
+              logText('ККМ: Повторное открытие порта - ОШИБКА!');
               retry := True
+            end
             else
+            begin
+              logText('ККМ: Повторное открытие порта - успешно!');
               retry := False;
-          end;
-        IDIGNORE:
-          begin
-            // перевести в режим тестирования
-            receiptTest := True;
-            Form_main.cash_test := 1;
-            retry := False;
+            end
           end;
       end;
     end;
@@ -937,6 +936,7 @@ begin
 
   if getDoublePar(Form_main.paramList, 'RECEIPT_TP') = 1 then
   begin
+    logText('Чек вариант №1');
     ///////////////////////////////////////////////////////////
     //                   ЧЕК ДЛЯ ТСЖ
     // детализация фискального чека по периодам и услугам
@@ -958,16 +958,6 @@ begin
     end;
 
     try
-      if receiptTest then
-      begin
-        // тестовый чек, запись в файл
-        path := DataModule1.OraclePackage1.CallStringFunction
-          ('scott.Utils.get_str_param', ['Путь1']);
-        AssignFile(F, path + 'receipt.txt');
-        Rewrite(F);
-        Append(f);
-      end;
-
       if Form_Main.have_cash = 1 then
       begin
         // инициализация?
@@ -1131,22 +1121,13 @@ begin
   end
   else if getDoublePar(Form_main.paramList, 'RECEIPT_TP') = 0 then
   begin
+    logText('Чек вариант №2');
     ///////////////////////////////////////////////////////////
     //              ЧЕК ДЛЯ ПОЛЫС
     ///////////////////////////////////////////////////////////
     if (Form_Main.have_cash = 1) or (Form_Main.have_cash = 2) then
     begin
       try
-        if receiptTest then
-        begin
-          // тестовый чек, запись в файл
-          path := DataModule1.OraclePackage1.CallStringFunction
-            ('scott.Utils.get_str_param', ['Путь1']);
-          AssignFile(F, path + 'receipt.txt');
-          Rewrite(F);
-          Append(f);
-        end;
-
         //КАССА
         if Form_Main.have_cash = 1 then
         begin
@@ -1159,10 +1140,12 @@ begin
         // открыть порт
         if open_port_ecr(ECR) <> 0 then
         begin
+          logText('ККМ: порт не открыт');
           Result := 1;
         end
         else
         begin
+          logText('ККМ: порт открыт');
           // порт открыт
           // проверить режим
           mode := check_mode(ECR);
@@ -1178,17 +1161,19 @@ begin
             // регистрация операции в эквайринге, если подключен
             if (p_cash_oper_tp = 2) and (Form_Main.have_eq = 1) then
             begin
+              logText('Эквайринг');
               // принять оплату, сумма в копейках
               Form_Main.eqECR.Sparam('Amount', FloatToStr(client_sum * 100));
               eQres := Form_Main.eqECR.NFun(4000);
               if eQres = '0' then
               begin
+                logText('Эквайринг: сумма:' + FloatToStr(client_sum * 100));
                 // успешно
                 eQsuccess := true;
                 // перевести в "неподтвержденное" состояние транзакцию эквайринга
                 Form_Main.eqECR.NFun(6003);
 
-                check:=Form_Main.eqECR.GParamString('Cheque');
+                check := Form_Main.eqECR.GParamString('Cheque');
 
                 // печать чека на фискальнике, используя разбиение на строки и отрезку чека
                 printByLineWithCut(check, ECR, 25);
@@ -1197,18 +1182,43 @@ begin
                 print_by_line('', ECR);
                 print_by_line('', ECR);
                 print_by_line('', ECR);
+
+                // дополнительно указать адрес и лиц.счет, на случай потери записи в БД по платежу
+                print_string_ecr2('Адрес:' +
+                  OD_c_kwtp.FieldByName('adr').AsString,
+                  1, 0, F, ECR);
+                oldLsk := '';
+                while not OD_get_money_nal2.Eof do
+                begin
+                  if oldLsk <> OD_get_money_nal2.FieldByName('lsk').AsString
+                    then
+                  begin
+                    oldLsk := OD_get_money_nal2.FieldByName('lsk').AsString;
+                    strPrint := 'Лиц.сч.' +
+                      OD_get_money_nal2.FieldByName('lsk').AsString +
+                      OD_get_money_nal2.FieldByName('dopl').AsString +
+                      'сумма: ' +
+                        FloatToStr(OD_get_money_nal2.FieldByName('summ_itg').AsFloat);
+                    logText('Эквайринг: ' + strPrint);
+                    print_string_ecr2(strPrint, 1, 0, F, ECR);
+                  end;
+                  OD_get_money_nal2.Next;
+                end;
+
                 cutCheck(True, True, 1, ECR);
+                logText('Эквайринг: статус=6003 (неподтверждено)');
               end
               else
               begin
                 // ошибка
+                logText('Эквайринг: ОШИБКА');
                 Result := 1;
                 eQsuccess := false;
                 close_port_ecr(ECR);
                 if eQres = '113' then
                 begin
-                   Application.MessageBox('Возможно некорретно зарегистрировано sbrf.dll (regsvr32 надо выполнять в c:\Sc552\)' +
-                     #13#10, 'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
+                  Application.MessageBox('Возможно некорретно зарегистрировано sbrf.dll (regsvr32 надо выполнять в c:\Sc552\)' +
+                    #13#10, 'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
                 end;
               end;
 
@@ -1220,14 +1230,17 @@ begin
 
             if eQsuccess = true then
             begin
+              logText('ККМ: печать чека');
               // печать заголовка
               print_header_ecr('', 1, 1, 0, F, ECR);
-              print_header_ecr('     К  А  С  С  О  В  Ы  Й   Ч  Е  К', 1, 1, 0, F
+              print_header_ecr('     К  А  С  С  О  В  Ы  Й   Ч  Е  К', 1, 1, 0,
+                F
                 , ECR);
               print_header_ecr('', 1, 1, 0, F, ECR);
               // открыть чек
               if open_reg(ECR) <> 0 then
               begin
+                logText('ККМ: чек не открыт! ОШИБКА!');
                 Result := 1;
               end
               else
@@ -1280,16 +1293,19 @@ begin
                     1, OD_c_kwtp.FieldByName('dep').AsInteger, F, ECR);
                   OD_get_money_nal2.Next;
                 end;
+                logText('ККМ: Печать чека - успешно!');
                 // закрыть чек
                 if close_reg_summ_ecr(client_sum, ECR,
                   OD_oper.FieldByName('cash_oper_tp').AsInteger, F) <> 0 then
                 begin
+                  logText('ККМ: Закрытие чека - ОШИБКА!');
                   // ошибка, попытаться аннулировать чек
                   if
                     Application.MessageBox('Фискальный чек не прошёл регистрацию, аннулировать его?',
                     'Внимание!', MB_YESNO + MB_ICONQUESTION) = IDYES then
                   begin
                     annulment(ECR);
+                    logText('ККМ: Чек АННУЛИРОВАН!');
                   end;
 
                   Result := 1;
@@ -1298,10 +1314,12 @@ begin
                   begin
                     // перевести в "отмененное" состояние транзакцию эквайринга
                     Form_Main.eqECR.NFun(6004);
+                    logText('Эквайринг: статус=6004 (отменено)');
                   end;
                 end
                 else
                 begin
+                  logText('ККМ: Закрытие чека - успешно!');
                   // успешно
                   Result := 0;
                   close_port_ecr(ECR);
@@ -1310,6 +1328,7 @@ begin
                   begin
                     // перевести в "подтвержденное" состояние транзакцию эквайринга
                     Form_Main.eqECR.NFun(6001);
+                    logText('Эквайринг: статус=6001 (подтверждено)');
                   end;
 
                 end;
@@ -1326,6 +1345,8 @@ begin
           begin
             // Некорректный режим ККМ
             Result := 1;
+            logText('ККМ: ' + 'ККМ находится в некорректном режиме:' +
+              check_mode2(ECR) + ' - ОШИБКА!');
             msg2('Ошибка, ККМ находится в некорректном режиме:' +
               check_mode2(ECR),
               'Внимание!', MB_OK + MB_ICONERROR);
@@ -1336,6 +1357,8 @@ begin
         // Эксепшн в фискальном регистраторе или в базе данных
         on E: Exception do
         begin
+          logText('ОШИБКА в фискальном регистраторе или в базе данных, платеж не будет учтен');
+          logText('Начало отмены платежа в БД');
           Result := 1;
           ShowMessage('Exception class name: ' + E.ClassName + '' + 'Ошибка: ' +
             E.Message);
@@ -1347,6 +1370,7 @@ begin
             ('scott.C_GET_PAY.remove_pay',
             [OD_c_kwtp.FieldByName('id').AsInteger]);
           DataModule1.OraclePackage1.Session.Commit;
+          logText('Окончание отмены платежа в БД');
         end;
       end;
     end
@@ -1357,8 +1381,8 @@ begin
     end;
   end;
 
-  // вернуть состояние тестирования
-  Form_main.cash_test := saved_cash_test;
+  logText('Окончание регистрации чека');
+
 end;
 
 procedure TForm_get_pay_nal.wwDBComboBox1DropDown(Sender: TObject);

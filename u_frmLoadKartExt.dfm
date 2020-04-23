@@ -1,6 +1,6 @@
 object frmLoadKartExt: TfrmLoadKartExt
-  Left = 864
-  Top = 161
+  Left = 918
+  Top = 415
   Width = 868
   Height = 530
   Caption = #1047#1072#1075#1088#1091#1079#1082#1072' '#1074#1085#1077#1096#1085#1080#1093' '#1083#1080#1094'.'#1089#1095#1077#1090#1086#1074
@@ -249,7 +249,7 @@ object frmLoadKartExt: TfrmLoadKartExt
   object OD_loadKartExt: TOracleDataSet
     SQL.Strings = (
       'select t.*, t.rowid from scott.load_kart_ext t'
-      ' order by t.id')
+      ' order by t.status desc, t.address')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
       040000000C000000020000004944010000000000070000004558545F4C534B01

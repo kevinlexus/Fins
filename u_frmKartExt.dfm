@@ -1,6 +1,6 @@
 object frmKartExt: TfrmKartExt
-  Left = 2497
-  Top = 319
+  Left = 710
+  Top = 222
   Width = 868
   Height = 530
   Caption = #1042#1085#1077#1096#1085#1080#1077' '#1083#1080#1094'.'#1089#1095#1077#1090#1072
@@ -96,17 +96,17 @@ object frmKartExt: TfrmKartExt
     Height = 41
     Align = alBottom
     TabOrder = 0
-    DesignSize = (
-      852
-      41)
-    object Button2: TButton
-      Left = 728
+    object chk1: TCheckBox
+      Left = 8
       Top = 8
-      Width = 115
-      Height = 25
-      Anchors = [akRight, akBottom]
-      Caption = #1042#1099#1075#1088#1091#1079#1080#1090#1100' '#1086#1090#1095#1077#1090
+      Width = 97
+      Height = 17
+      Hint = #1042#1082#1083#1102#1095#1080#1090#1100', '#1077#1089#1083#1080' '#1085#1077#1086#1073#1093#1086#1076#1080#1084#1086' '#1086#1090#1088#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1087#1072#1088#1072#1084#1077#1090#1088#1099
+      Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 0
+      OnClick = chk1Click
     end
   end
   object cxGrid1: TcxGrid
@@ -255,7 +255,9 @@ object frmKartExt: TfrmKartExt
       'join scott.kart k on k.lsk=e.lsk'
       'join scott.spul s on k.kul=s.id'
       'join scott.s_reu_trest r on k.reu=r.reu'
-      'left join scott.u_list u on k.fk_tp=u.id')
+      'join scott.kart_detail d on k.lsk=d.lsk'
+      'left join scott.u_list u on k.fk_tp=u.id'
+      'order by d.ord1')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
       0400000010000000070000004558545F4C534B0100000000000300000046494F
@@ -266,6 +268,7 @@ object frmKartExt: TfrmKartExt
       50534348010000000000030000004B5052010000000000030000004F504C0100
       0000000003000000524555010000000000090000004C534B5F54505F43440100
       000000000100000056010000000000}
+    ReadOnly = True
     Session = DataModule1.OracleSession1
     Active = True
     Top = 72

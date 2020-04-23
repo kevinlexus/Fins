@@ -1,7 +1,7 @@
 unit Unit_Mainform;
 
 interface
-                  
+
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Menus, ComCtrls, ToolWin, ImgList, DM_module1, IdBaseComponent,
@@ -13,8 +13,7 @@ uses
   IdAntiFreezeBase, IdAntiFreeze, frxClass, frxDBSet, frxExportCSV,
   frxExportPDF,
   frxExportBIFF, frxExportText, frxExportRTF, ComObj,
-
-  Unit_spr_redirect, u_frmTwoPeriods;
+  Unit_spr_redirect, u_frmTwoPeriods, u_frmLog;
 type
   TShowForm = function(App, Scr, Sess_: integer): integer; stdcall;
   TForm_Main = class(TForm)
@@ -214,6 +213,7 @@ type
     N143: TMenuItem;
     N144: TMenuItem;
     ImageList3: TImageList;
+    N145: TMenuItem;
     procedure N5Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure N7Click(Sender: TObject);
@@ -374,6 +374,7 @@ type
     procedure N142Click(Sender: TObject);
     procedure N143Click(Sender: TObject);
     procedure N144Click(Sender: TObject);
+    procedure N145Click(Sender: TObject);
   private
   public
     // выбранный период при переключении в архив
@@ -613,8 +614,8 @@ end;
 
 procedure TForm_Main.N27Click(Sender: TObject);
 begin
-{  Form_Main.CoolTrayIcon1.ShowBalloonHint('Совет дня:',
-    Form_Main.OD_params.FieldByName('mess_hint').AsString, bitWarning, 30);}
+  {  Form_Main.CoolTrayIcon1.ShowBalloonHint('Совет дня:',
+      Form_Main.OD_params.FieldByName('mess_hint').AsString, bitWarning, 30);}
 end;
 
 procedure TForm_Main.N28Click(Sender: TObject);
@@ -632,12 +633,11 @@ begin
   Application.CreateForm(TForm_saldo_check, Form_saldo_check);
 end;
 
-
 procedure TForm_Main.create_OLE_Eq;
 begin
   try
     Form_Main.eqECR := CreateOleObject('SBRFSRV.Server');
-    option.Caption:=option.Caption+' Эквайринг';
+    option.Caption := option.Caption + ' Эквайринг';
   except
     Application.MessageBox('Не удалось создать объект драйвера Эквайринга!',
       PChar(Application.Title), MB_ICONERROR + MB_OK);
@@ -669,14 +669,14 @@ begin
           // 1-ый ККМ
           selECR := CreateOleObject('AddIn.FprnM45');
           selECR.ApplicationHandle := Application.Handle;
-          option.Caption:=option.Caption+' ККМ-1';
+          option.Caption := option.Caption + ' ККМ-1';
         end
         else
         begin
           // 2-ой ККМ
           selECR2 := CreateOleObject('AddIn.FprnM45');
           selECR2.ApplicationHandle := Application.Handle;
-          option.Caption:=option.Caption+' ККМ-2';
+          option.Caption := option.Caption + ' ККМ-2';
         end;
         // необходимо для корректного отображения окон драйвера в контексте приложения
       except
@@ -750,8 +750,7 @@ procedure TForm_Main.FormCreate(Sender: TObject);
 begin
   Application.OnException := AppException;
   Versia := 187;
-  //нельзя использовать versia в params - используется updater-ом
-//  CoolTrayIcon1.IconIndex := 22;
+  logText('Начало работы с Direct.exe');
   DisableGhosting;
 end;
 
@@ -853,9 +852,9 @@ end;
 
 procedure TForm_Main.CoolTrayIcon1DblClick(Sender: TObject);
 begin
-{  Form_main.CoolTrayIcon1.ShowMainForm;
-  Form_main.CoolTrayIcon1.CycleIcons := False;
-  Form_main.CoolTrayIcon1.IconIndex := 5;}
+  {  Form_main.CoolTrayIcon1.ShowMainForm;
+    Form_main.CoolTrayIcon1.CycleIcons := False;
+    Form_main.CoolTrayIcon1.IconIndex := 5;}
 
 end;
 
@@ -906,12 +905,11 @@ end;
 
 procedure TForm_Main.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-//  Form_Main.CoolTrayIcon1.IconVisible := false;
+  logText('Окончание работы с Direct.exe');
   if FF('Form_olap', 0) = 1 then
     Form_olap.Close;
   if FF('Form_tree_objects', 0) = 1 then
     Form_tree_objects.Close;
-
   DataModule1.OracleSession1.Commit;
 end;
 
@@ -1105,6 +1103,28 @@ begin
       end;
     end;
   end
+  else if FF('frmKartExt', 0) = 1 then
+  begin
+    Form_month_payments.Caption := 'Поступления за месяц по адресу';
+    with Form_month_payments.OD_c_kwtp do
+    begin
+      Master := frmKartExt.OD_kartExt;
+      MasterFields := 'lsk';
+      DetailFields := 'lsk';
+      SetVariable('var', 2);
+      Active := false;
+      Active := true;
+      with Form_month_payments.OD_c_kwtp_mg do
+      begin
+        Master := frmKartExt.OD_kartExt;
+        MasterFields := 'lsk';
+        DetailFields := 'lsk';
+        SetVariable('var', 2);
+        Active := false;
+        Active := true;
+      end;
+    end;
+  end
   else
   begin
     Form_month_payments.Caption := 'Поступления за месяц';
@@ -1246,8 +1266,8 @@ begin
   end
   else if LeftStr(IList.Text, 4) = 'info' then
   begin
-{    Form_main.CoolTrayIcon1.ShowBalloonHint('Внимание!', copy(IList.Text, 6,
-      length(IList.Text)), bitInfo, 60);}
+    {    Form_main.CoolTrayIcon1.ShowBalloonHint('Внимание!', copy(IList.Text, 6,
+          length(IList.Text)), bitInfo, 60);}
   end
   else if LeftStr(IList.Text, pos('-', IList.Text) - 1) + '-lsk' =
     LowerCase(user) + '-lsk' then
@@ -2575,6 +2595,17 @@ begin
   begin
     Application.CreateForm(TfrmKartExt, frmKartExt);
   end;
+end;
+
+procedure TForm_Main.N145Click(Sender: TObject);
+begin
+  ShellExecute(Handle, nil, PChar('notepad.exe'),
+    PChar(ExtractFilePath(Application.ExeName) + 'direct.log'),
+    nil, SW_SHOWNORMAL)
+  {  if FF('frmLog', 1) = 0 then
+    begin
+      Application.CreateForm(TfrmLog, frmLog);
+    end;}
 end;
 
 end.
