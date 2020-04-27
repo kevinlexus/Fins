@@ -1,7 +1,7 @@
 object DM_Olap: TDM_Olap
   OldCreateOrder = False
-  Left = 611
-  Top = 159
+  Left = 3295
+  Top = 166
   Height = 810
   Width = 686
   object DS_spr_params: TDataSource
@@ -383,6 +383,7 @@ object DM_Olap: TDM_Olap
         't_tp, :prep_refcursor);'
       'end;')
     FetchRows = 1000
+    Active = True
     Constraints = <>
     Left = 32
     Top = 32
@@ -461,7 +462,7 @@ object DM_Olap: TDM_Olap
         DataType = ftString
         Name = 'cd_'
         ParamType = ptInput
-        Value = '13'
+        Value = '97'
       end
       item
         DataType = ftInteger
@@ -481,7 +482,7 @@ object DM_Olap: TDM_Olap
       item
         DataType = ftCursor
         Name = 'prep_refcursor'
-        Value = 'Object'
+        Value = ''
       end>
   end
   object UniSQLMonitor1: TUniSQLMonitor

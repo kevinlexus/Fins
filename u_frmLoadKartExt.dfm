@@ -1,6 +1,6 @@
 object frmLoadKartExt: TfrmLoadKartExt
-  Left = 918
-  Top = 415
+  Left = 267
+  Top = 330
   Width = 868
   Height = 530
   Caption = #1047#1072#1075#1088#1091#1079#1082#1072' '#1074#1085#1077#1096#1085#1080#1093' '#1083#1080#1094'.'#1089#1095#1077#1090#1086#1074
@@ -181,11 +181,37 @@ object frmLoadKartExt: TfrmLoadKartExt
       852
       41)
     object Label1: TLabel
-      Left = 128
+      Left = 360
       Top = 16
       Width = 65
       Height = 13
       Caption = #8470' '#1088#1077#1077#1089#1090#1088#1072
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 128
+      Top = 16
+      Width = 7
+      Height = 13
+      Caption = #1057
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label3: TLabel
+      Left = 240
+      Top = 16
+      Width = 15
+      Height = 13
+      Caption = #1055#1086
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -224,12 +250,34 @@ object frmLoadKartExt: TfrmLoadKartExt
       OnClick = Button2Click
     end
     object Edit1: TEdit
-      Left = 200
+      Left = 432
       Top = 8
       Width = 17
       Height = 21
       TabOrder = 3
       Text = '1'
+    end
+    object cxDateEdit1: TcxDateEdit
+      Left = 141
+      Top = 10
+      Properties.DateButtons = [btnClear, btnToday]
+      Properties.SaveTime = False
+      Properties.ShowTime = False
+      Properties.ValidationOptions = [evoRaiseException, evoShowErrorIcon]
+      Properties.OnValidate = cxDateEdit1PropertiesValidate
+      TabOrder = 4
+      Width = 92
+    end
+    object cxDateEdit2: TcxDateEdit
+      Left = 261
+      Top = 10
+      Properties.DateButtons = [btnClear, btnToday]
+      Properties.SaveTime = False
+      Properties.ShowTime = False
+      Properties.ValidationOptions = [evoRaiseException, evoShowErrorIcon]
+      Properties.OnValidate = cxDateEdit2PropertiesValidate
+      TabOrder = 5
+      Width = 92
     end
   end
   object Memo1: TMemo

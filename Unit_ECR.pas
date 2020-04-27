@@ -16,7 +16,7 @@ function close_port(ECR: OleVariant): Integer;
 function calc_pads(p_txt: string): string;
 function calc_pads2(place: Integer; p_txt: string): string;
 procedure print_by_line(p_text: string; ECR: OleVariant);
-procedure printByLineWithCut(p_text: string; ECR: OleVariant; pCutLine:
+procedure printByLineWithCut(isCut: Boolean; p_text: string; ECR: OleVariant; pCutLine:
   Integer);
 function annulment(ECR: OleVariant): Integer;
 
@@ -182,134 +182,130 @@ var
 
 begin
   Result := 0;
-  if Form_main.cash_test = 0 then
+  // загрузить установки ККМ
+  // занимаем порт
+  if open_port(ECR) <> 0 then
   begin
-    // если не тестовый чек
-    // загрузить установки ККМ
-    // занимаем порт
-    if open_port(ECR) <> 0 then
-    begin
-      show_error(ECR, '5');
-      Result := 1;
-      Exit;
-    end;
-    // устанавливаем пароль админа
-    ECR.Password := '30';
-    // режим программирования
-    ECR.Mode := 4;
-    ECR.SetMode;
-
-    // Установка параметров
-    // этот блок не смог найти где печатается на чеке, просто очищаю его
-    l_cur_line := 0;
-    set_line('');
-    set_line('');
-    set_line('');
-    set_line('');
-    set_line('');
-    set_line('');
-
-    // строка типа "Спасибо за покупку!"
-    l_cur_line := 69;
-    set_line('');
-    set_line('');
-    set_line('');
-    set_line('');
-    set_line('');
-
-    // наименование орг
-    l_cur_line := 73;
-    set_line('');
-    l_cur_line := 74;
-    set_line('');
-    set_line('');
-    set_line('');
-    set_line('');
-    set_line('');
-    set_line('');
-    set_line('');
-    set_line('');
-    set_line('');
-
-    //дальше можно до 88 писать клише рекламного текста)
-
-    // VALUEPURPOSE
-    // не показывать кол-во товара на ЧЛ
-    ECR.ValuePurpose := 80;
-    ECR.Value := 0;
-    ECR.SetValue;
-    // не показывать кол-во товара на КЛ
-    ECR.ValuePurpose := 81;
-    ECR.Value := 0;
-    ECR.SetValue;
-
-    ECR.ValuePurpose := 171;
-    ECR.Value := 0;
-    ECR.SetValue;
-
-    ECR.ValuePurpose := 167;
-    ECR.Value := 0;
-    ECR.SetValue;
-
-    ECR.ValuePurpose := 174;
-    ECR.Value := 0;
-    ECR.SetValue;
-
-    ECR.ValuePurpose := 66;
-    ECR.Value := 6;
-    ECR.SetValue;
-
-    ECR.ValuePurpose := 67;
-    ECR.Value := 6;
-    ECR.SetValue;
-
-    // Включить печать отделов
-    ECR.ValuePurpose := 72;
-    ECR.Value := 3;
-    ECR.SetValue;
-
-    // Включить печать отделов в Z отчете
-    ECR.ValuePurpose := 207;
-    ECR.Value := 1;
-    ECR.SetValue;
-
-    // Название 1 отдела
-    ECR.CaptionPurpose := 36;
-    ECR.Caption := 'Отдел 1';
-    ECR.SetCaption;
-
-    // Название 2 отдела
-    ECR.CaptionPurpose := 37;
-    ECR.Caption := 'Отдел 2';
-    ECR.SetCaption;
-
-    // настроить шрифт ЧЛ
-    ECR.ValuePurpose := 62;
-    ECR.Value := 3;
-    ECR.SetValue;
-
-    // настроить шрифт КЛ
-    ECR.ValuePurpose := 63;
-    ECR.Value := 3;
-    ECR.SetValue;
-
-    // настроить межстрочный интервал ЧЛ
-    ECR.ValuePurpose := 60;
-    ECR.Value := 1;
-    ECR.SetValue;
-    // настроить межстрочный интервал КЛ
-    ECR.ValuePurpose := 61;
-    ECR.Value := 1;
-    ECR.SetValue;
-
-    // Выход из режима
-    // режим регистрации
-    ECR.Mode := 1;
-    ECR.SetMode;
-
-    // ECR.ResetMode;
-    close_port(ECR);
+    show_error(ECR, '5');
+    Result := 1;
+    Exit;
   end;
+  // устанавливаем пароль админа
+  ECR.Password := '30';
+  // режим программирования
+  ECR.Mode := 4;
+  ECR.SetMode;
+
+  // Установка параметров
+  // этот блок не смог найти где печатается на чеке, просто очищаю его
+  l_cur_line := 0;
+  set_line('');
+  set_line('');
+  set_line('');
+  set_line('');
+  set_line('');
+  set_line('');
+
+  // строка типа "Спасибо за покупку!"
+  l_cur_line := 69;
+  set_line('');
+  set_line('');
+  set_line('');
+  set_line('');
+  set_line('');
+
+  // наименование орг
+  l_cur_line := 73;
+  set_line('');
+  l_cur_line := 74;
+  set_line('');
+  set_line('');
+  set_line('');
+  set_line('');
+  set_line('');
+  set_line('');
+  set_line('');
+  set_line('');
+  set_line('');
+
+  //дальше можно до 88 писать клише рекламного текста)
+
+  // VALUEPURPOSE
+  // не показывать кол-во товара на ЧЛ
+  ECR.ValuePurpose := 80;
+  ECR.Value := 0;
+  ECR.SetValue;
+  // не показывать кол-во товара на КЛ
+  ECR.ValuePurpose := 81;
+  ECR.Value := 0;
+  ECR.SetValue;
+
+  ECR.ValuePurpose := 171;
+  ECR.Value := 0;
+  ECR.SetValue;
+
+  ECR.ValuePurpose := 167;
+  ECR.Value := 0;
+  ECR.SetValue;
+
+  ECR.ValuePurpose := 174;
+  ECR.Value := 0;
+  ECR.SetValue;
+
+  ECR.ValuePurpose := 66;
+  ECR.Value := 6;
+  ECR.SetValue;
+
+  ECR.ValuePurpose := 67;
+  ECR.Value := 6;
+  ECR.SetValue;
+
+  // Включить печать отделов
+  ECR.ValuePurpose := 72;
+  ECR.Value := 3;
+  ECR.SetValue;
+
+  // Включить печать отделов в Z отчете
+  ECR.ValuePurpose := 207;
+  ECR.Value := 1;
+  ECR.SetValue;
+
+  // Название 1 отдела
+  ECR.CaptionPurpose := 36;
+  ECR.Caption := 'Отдел 1';
+  ECR.SetCaption;
+
+  // Название 2 отдела
+  ECR.CaptionPurpose := 37;
+  ECR.Caption := 'Отдел 2';
+  ECR.SetCaption;
+
+  // настроить шрифт ЧЛ
+  ECR.ValuePurpose := 62;
+  ECR.Value := 3;
+  ECR.SetValue;
+
+  // настроить шрифт КЛ
+  ECR.ValuePurpose := 63;
+  ECR.Value := 3;
+  ECR.SetValue;
+
+  // настроить межстрочный интервал ЧЛ
+  ECR.ValuePurpose := 60;
+  ECR.Value := 1;
+  ECR.SetValue;
+  // настроить межстрочный интервал КЛ
+  ECR.ValuePurpose := 61;
+  ECR.Value := 1;
+  ECR.SetValue;
+
+  // Выход из режима
+  // режим регистрации
+  ECR.Mode := 1;
+  ECR.SetMode;
+
+  // ECR.ResetMode;
+  close_port(ECR);
 end;
 
 procedure show_error(ECR: OleVariant; errStep: string);
@@ -407,53 +403,45 @@ end;
 function open_port_ecr(ECR: OleVariant): Integer;
 begin
   Result := 0;
-  if Form_main.cash_test = 0 then
+  // занимаем порт
+  if (Form_Main.have_cash = 1) then
   begin
-    // если не тестовый чек
-      // занимаем порт
-    if (Form_Main.have_cash = 1) then
+    if open_port(ECR) <> 0 then
     begin
-      if open_port(ECR) <> 0 then
-      begin
-        show_error(ECR, '12');
-        Result := 1;
-        Exit;
-      end;
-    end;
-
-    // проверяем на фискализированность
-    // странно, почему то выдаёт каждый раз, даже если есть ЭКЛЗ
-    //  if not ECR.Fiscal then
-    //    msg2('ККМ НЕ фискализирована!', 'Внимание!', MB_OK+MB_ICONSTOP);
-
-    // получаем состояние ККМ
-    if (Form_Main.have_cash = 1) and (ECR.GetStatus <> 0) then
-    begin
-      show_error(ECR, '13');
-      close_port(ECR);
-      show_error(ECR, '14');
+      show_error(ECR, '12');
       Result := 1;
-    end
-    else if (Form_Main.have_cash = 2) then
-    begin
-      try
-        ECR.GetECRStatus;
-      except
-        Result := 1;
-      end;
+      Exit;
+    end;
+  end;
+
+  // проверяем на фискализированность
+  // странно, почему то выдаёт каждый раз, даже если есть ЭКЛЗ
+  //  if not ECR.Fiscal then
+  //    msg2('ККМ НЕ фискализирована!', 'Внимание!', MB_OK+MB_ICONSTOP);
+
+  // получаем состояние ККМ
+  if (Form_Main.have_cash = 1) and (ECR.GetStatus <> 0) then
+  begin
+    show_error(ECR, '13');
+    close_port(ECR);
+    show_error(ECR, '14');
+    Result := 1;
+  end
+  else if (Form_Main.have_cash = 2) then
+  begin
+    try
+      ECR.GetECRStatus;
+    except
+      Result := 1;
     end;
   end;
 end;
 
 procedure close_port_ecr(ECR: OleVariant);
 begin
-  if Form_main.cash_test = 0 then
-  begin
-    // если не тестовый чек
-    // освобождаем порт
-    if (Form_Main.have_cash = 1) and (close_port(ECR) <> 0) then
-      Exit;
-  end;
+  // освобождаем порт
+  if (Form_Main.have_cash = 1) and (close_port(ECR) <> 0) then
+    Exit;
 end;
 
 // открыть смену
@@ -616,58 +604,54 @@ function close_reg_summ_ecr(p_summa: double; ECR: OleVariant; tp: Integer;
   ): Integer;
 begin
   Result := 0;
-  if Form_main.cash_test = 0 then
+  // закрытие чека наличными со сдачей
+  if Form_main.have_cash = 1 then
   begin
-    // если не тестовый чек
-    // закрытие чека наличными со сдачей
-    if Form_main.have_cash = 1 then
+    ECR.Summ := p_summa;
+    ECR.TypeClose := 0;
+    if ECR.Delivery <> 0 then
     begin
-      ECR.Summ := p_summa;
-      ECR.TypeClose := 0;
-      if ECR.Delivery <> 0 then
-      begin
-        Result := 1;
-        show_error(ECR, '24');
-      end;
-    end
-    else if Form_main.have_cash = 2 then
-    begin
-      if tp = 0 then
-      begin
-        // наличка
-        ECR.Summ1 := p_summa;
-        ECR.Summ2 := 0;
-        ECR.Summ3 := 0;
-        ECR.Summ4 := 0;
-      end
-      else if tp = 2 then
-      begin
-        // эквайринг
-        ECR.Summ1 := 0;
-        ECR.Summ2 := 0;
-        ECR.Summ3 := 0;
-        ECR.Summ4 := p_summa;
-      end
-      else if tp = 3 then
-      begin
-        // перечисление безналично
-        ECR.Summ1 := 0;
-        ECR.Summ2 := 0;
-        ECR.Summ3 := p_summa;
-        ECR.Summ4 := 0;
-      end
-      else
-      begin
-        // прочие коды - как наличка
-        ECR.Summ1 := p_summa;
-        ECR.Summ4 := 0;
-      end;
-
-      ECR.Password := '1';
-      ECR.StringForPrinting := '==========================================';
-      ECR.CloseCheck;
-      show_error(ECR, '25');
+      Result := 1;
+      show_error(ECR, '24');
     end;
+  end
+  else if Form_main.have_cash = 2 then
+  begin
+    if tp = 0 then
+    begin
+      // наличка
+      ECR.Summ1 := p_summa;
+      ECR.Summ2 := 0;
+      ECR.Summ3 := 0;
+      ECR.Summ4 := 0;
+    end
+    else if tp = 2 then
+    begin
+      // эквайринг
+      ECR.Summ1 := 0;
+      ECR.Summ2 := 0;
+      ECR.Summ3 := 0;
+      ECR.Summ4 := p_summa;
+    end
+    else if tp = 3 then
+    begin
+      // перечисление безналично
+      ECR.Summ1 := 0;
+      ECR.Summ2 := 0;
+      ECR.Summ3 := p_summa;
+      ECR.Summ4 := 0;
+    end
+    else
+    begin
+      // прочие коды - как наличка
+      ECR.Summ1 := p_summa;
+      ECR.Summ4 := 0;
+    end;
+
+    ECR.Password := '1';
+    ECR.StringForPrinting := '==========================================';
+    ECR.CloseCheck;
+    show_error(ECR, '25');
   end
   else
   begin
@@ -685,47 +669,39 @@ function close_reg_summ_ecr_ext(p_summa: double; ECR: OleVariant; tp: Integer;
   ): Integer;
 begin
   Result := 0;
-  if Form_main.cash_test = 0 then
+  if tp = 1 then
   begin
-    // если не тестовый чек
-    if tp = 1 then
-    begin
-      // наличка
-      ECR.Summ1 := p_summa;
-      ECR.Summ2 := 0;
-      ECR.Summ3 := 0;
-      ECR.Summ4 := 0;
-    end
-    else if tp = 2 then
-    begin
-      // эквайринг
-      ECR.Summ1 := 0;
-      ECR.Summ2 := 0;
-      ECR.Summ3 := p_summa;
-      ECR.Summ4 := 0;
-    end
-    else if tp = 3 then
-    begin
-      // перечисление безналично
-      ECR.Summ1 := 0;
-      ECR.Summ2 := 0;
-      ECR.Summ3 := p_summa;
-      ECR.Summ4 := 0;
-    end;
-
-    ECR.Password := '1';
-    ECR.StringForPrinting := '==========================================';
-    ECR.CloseCheck;
-    if show_error2(ECR, '25') = 0 then
-      // дубль чека
-      ECR.RepeatDocument
-    else
-      Result := 1;
+    // наличка
+    ECR.Summ1 := p_summa;
+    ECR.Summ2 := 0;
+    ECR.Summ3 := 0;
+    ECR.Summ4 := 0;
   end
-  else
+  else if tp = 2 then
   begin
-    Writeln(F, 'Регистрация чека, сумма=' + FloatToStr(p_summa));
+    // эквайринг
+    ECR.Summ1 := 0;
+    ECR.Summ2 := 0;
+    ECR.Summ3 := p_summa;
+    ECR.Summ4 := 0;
+  end
+  else if tp = 3 then
+  begin
+    // перечисление безналично
+    ECR.Summ1 := 0;
+    ECR.Summ2 := 0;
+    ECR.Summ3 := p_summa;
+    ECR.Summ4 := 0;
   end;
+
+  ECR.Password := '1';
+  ECR.StringForPrinting := '==========================================';
+  ECR.CloseCheck;
+  if show_error2(ECR, '25') = 0 then
+    // дубль чека
+    ECR.RepeatDocument
+  else
+    Result := 1;
 end;
 
 // проверить режим ККМ
@@ -733,26 +709,17 @@ end;
 function check_mode(ECR: OleVariant): Integer;
 begin
   Result := 0;
-  if Form_main.cash_test = 0 then
+  if Form_Main.have_cash = 2 then
   begin
-    // не тестовый режим
-    if Form_Main.have_cash = 2 then
-    begin
-      // запросить статус
-      ECR.GetShortECRStatus;
-      // Работает в режимах 2 и 3 (см. свойство ECRMode).
-      Result := ECR.ECRMode;
-    end
-    else
-    begin
-      // для других ККМ
-
-    end;
+    // запросить статус
+    ECR.GetShortECRStatus;
+    // Работает в режимах 2 и 3 (см. свойство ECRMode).
+    Result := ECR.ECRMode;
   end
   else
   begin
-    // тестовый режим печати чека
-    Result := 2;
+    // для других ККМ
+
   end;
 end;
 
@@ -761,26 +728,17 @@ end;
 function check_mode2(ECR: OleVariant): string;
 begin
   Result := '';
-  if Form_main.cash_test = 0 then
+  if Form_Main.have_cash = 2 then
   begin
-    // не тестовый режим
-    if Form_Main.have_cash = 2 then
-    begin
-      // запросить статус
-      ECR.GetShortECRStatus;
-      // Работает в режимах 2 и 3 (см. свойство ECRMode).
-      Result := ECR.ECRModeDescription;
-    end
-    else
-    begin
-      // для других ККМ
-
-    end;
+    // запросить статус
+    ECR.GetShortECRStatus;
+    // Работает в режимах 2 и 3 (см. свойство ECRMode).
+    Result := ECR.ECRModeDescription;
   end
   else
   begin
-    // тестовый режим печати чека
-    Result := 'Ошибка в тестовом режиме!';
+    // для других ККМ
+
   end;
 end;
 
@@ -789,19 +747,15 @@ end;
 function open_reg(ECR: OleVariant): Integer;
 begin
   Result := 0;
-  if Form_main.cash_test = 0 then
+  if Form_Main.have_cash = 2 then
   begin
-    // не тестовый режим
-    if Form_Main.have_cash = 2 then
+    ECR.Password := '1';
+    ECR.CheckType := 0; // тип - продажа
+    ECR.OpenCheck;
+    if ECR.ResultCode <> 0 then
     begin
-      ECR.Password := '1';
-      ECR.CheckType := 0; // тип - продажа
-      ECR.OpenCheck;
-      if ECR.ResultCode <> 0 then
-      begin
-        show_error(ECR, '26');
-        Result := 1;
-      end;
+      show_error(ECR, '26');
+      Result := 1;
     end;
   end;
 end;
@@ -811,18 +765,14 @@ end;
 function annulment(ECR: OleVariant): Integer;
 begin
   Result := 0;
-  if Form_main.cash_test = 0 then
+  if Form_Main.have_cash = 2 then
   begin
-    // не тестовый режим
-    if Form_Main.have_cash = 2 then
+    ECR.Password := '1';
+    ECR.Annulment;
+    if ECR.ResultCode <> 0 then
     begin
-      ECR.Password := '1';
-      ECR.Annulment;
-      if ECR.ResultCode <> 0 then
-      begin
-        show_error(ECR, '37');
-        Result := 1;
-      end;
+      show_error(ECR, '37');
+      Result := 1;
     end;
   end;
 end;
@@ -832,52 +782,25 @@ end;
 function close_reg_ecr(ECR: OleVariant): Integer;
 begin
   Result := 0;
-  if Form_main.cash_test = 0 then
+  if Form_Main.have_cash = 1 then
   begin
-    if Form_Main.have_cash = 1 then
+    ECR.TypeClose := 0;
+    if ECR.CloseCheck <> 0 then
     begin
-      ECR.TypeClose := 0;
-      if ECR.CloseCheck <> 0 then
-      begin
-        Result := 1;
-        show_error(ECR, '27');
-      end;
-    end
-    else if Form_Main.have_cash = 2 then
-    begin
-      // закрыть чек
-      ECR.Password := '1';
-      ECR.Summ1 := 0;
-      ECR.StringForPrinting := '===================';
-      ECR.CloseCheck;
-      show_error(ECR, '28');
+      Result := 1;
+      show_error(ECR, '27');
     end;
+  end
+  else if Form_Main.have_cash = 2 then
+  begin
+    // закрыть чек
+    ECR.Password := '1';
+    ECR.Summ1 := 0;
+    ECR.StringForPrinting := '===================';
+    ECR.CloseCheck;
+    show_error(ECR, '28');
   end;
 end;
-
-// Отрезать чек
-
-function cutCheck(cutType, feedAfterCut: Boolean; feedLineCount: Integer;
-  ECR: OleVariant): Integer;
-begin
-  Result := 0;
-  if Form_main.cash_test = 0 then
-  begin
-    if Form_Main.have_cash = 1 then
-    begin
-    end
-    else if Form_Main.have_cash = 2 then
-    begin
-      ECR.Password := '1';
-      ECR.CutType := cutType;
-      ECR.FeedAfterCut := feedAfterCut;
-      ECR.FeedLineCount := feedLineCount;
-      ECR.CutCheck;
-      show_error(ECR, '28');
-    end;
-  end;
-end;
-//                cutCheck(False, True, 10, ECR);
 
 // печать по строкам (тупой Ритейл, не может переносить строки)
 
@@ -908,7 +831,8 @@ end;
 
 // печать с разбиением на строки, с отрезом на N строке
 
-procedure printByLineWithCut(p_text: string; ECR: OleVariant; pCutLine:
+procedure printByLineWithCut(isCut: Boolean; p_text: string; ECR: OleVariant;
+  pCutLine:
   Integer);
 var
   lst: TStringList;
@@ -927,13 +851,36 @@ begin
     // убрать спецсимволы и отправить на печать
     ECR.StringForPrinting := removeControl(lst[i]);
     ECR.PrintString;
-    // отрезать на pCutLine строке или в конце отчета
-    if (i2 = pCutLine) or (i = (lst.Count - 1)) then
+    if isCut then
     begin
-      cutCheck(True, True, 1, ECR);
+      // отрезать на pCutLine строке или в конце
+      if (i2 = pCutLine) or (i = (lst.Count - 1)) then
+      begin
+        cutCheck(False, True, 1, ECR);
+      end;
     end;
   end;
   lst := nil;
+end;
+
+// Отрезать чек cutType - true(полная или частичная), feedAfterCut - промотать после отреза
+
+function cutCheck(cutType, feedAfterCut: Boolean; feedLineCount: Integer;
+  ECR: OleVariant): Integer;
+begin
+  Result := 0;
+  if Form_Main.have_cash = 1 then
+  begin
+  end
+  else if Form_Main.have_cash = 2 then
+  begin
+    ECR.Password := '1';
+    ECR.CutType := cutType;
+    ECR.FeedAfterCut := feedAfterCut;
+    ECR.FeedLineCount := feedLineCount;
+    ECR.CutCheck;
+    show_error(ECR, '28');
+  end;
 end;
 
 procedure print_string_ecr(p_text: string; //текст
@@ -956,32 +903,22 @@ procedure print_string_ecr2(p_text: string; //текст
   ECR: OleVariant
   );
 begin
-  if Form_main.cash_test = 0 then
+  if Form_Main.have_cash = 1 then
   begin
-    // печать строки, если не тестовый режим
-    if Form_Main.have_cash = 1 then
-    begin
-      ECR.TextWrap := p_wrap;
-      ECR.Caption := p_text;
-      ECR.Alignment := p_align;
-      ECR.PrintString;
-      show_error(ECR, '29');
-    end
-    else if Form_Main.have_cash = 2 then
-    begin
-      ECR.Password := '1';
-      ECR.UseReceiptRibbon := false;
-      ECR.UseJournalRibbon := true;
-
-      print_by_line(p_text, ECR);
-    end;
+    ECR.TextWrap := p_wrap;
+    ECR.Caption := p_text;
+    ECR.Alignment := p_align;
+    ECR.PrintString;
+    show_error(ECR, '29');
   end
-  else
+  else if Form_Main.have_cash = 2 then
   begin
-    // тестовый режим, печать, если указан файл
-    Writeln(f, p_text);
-  end;
+    ECR.Password := '1';
+    ECR.UseReceiptRibbon := false;
+    ECR.UseJournalRibbon := true;
 
+    print_by_line(p_text, ECR);
+  end;
 end;
 
 // печать строки заголовка
@@ -994,40 +931,30 @@ procedure print_header_ecr(p_text: string; //текст
   ECR: OleVariant
   );
 begin
-  if Form_main.cash_test = 0 then
+  if Form_Main.have_cash = 1 then
   begin
-    // если не тестовый чек
-    if Form_Main.have_cash = 1 then
-    begin
-      ECR.Caption := p_text;
-      ECR.FontDblWidth := 1;
-      ECR.FontBold := 1;
-      ECR.RecFontHeight := 1;
-      ECR.Alignment := p_align;
-      ECR.TextWrap := p_wrap;
-      ECR.AddField;
-      ECR.PrintField;
-      show_error(ECR, '30');
-    end
-    else if Form_Main.have_cash = 2 then
-    begin
-      ECR.Password := '1';
-      ECR.UseReceiptRibbon := true;
-      ECR.UseJournalRibbon := true;
-      ECR.StringForPrinting := p_text;
-      if p_font = 1 then
-        ECR.PrintWideString
-      else
-        ECR.PrintString;
-      show_error(ECR, '31');
-    end;
+    ECR.Caption := p_text;
+    ECR.FontDblWidth := 1;
+    ECR.FontBold := 1;
+    ECR.RecFontHeight := 1;
+    ECR.Alignment := p_align;
+    ECR.TextWrap := p_wrap;
+    ECR.AddField;
+    ECR.PrintField;
+    show_error(ECR, '30');
   end
-  else
+  else if Form_Main.have_cash = 2 then
   begin
-    // тестовый чек
-    Writeln(f, p_text);
+    ECR.Password := '1';
+    ECR.UseReceiptRibbon := true;
+    ECR.UseJournalRibbon := true;
+    ECR.StringForPrinting := p_text;
+    if p_font = 1 then
+      ECR.PrintWideString
+    else
+      ECR.PrintString;
+    show_error(ECR, '31');
   end;
-
 end;
 
 // регистрация продажи
@@ -1038,39 +965,29 @@ procedure reg_ecr(p_name: string; p_price: double; p_quantity: double; p_dep:
   ECR: OleVariant
   );
 begin
-  if Form_main.cash_test = 0 then
+  if Form_main.have_cash = 1 then
   begin
-    // если не тестовый чек
-    if Form_main.have_cash = 1 then
-    begin
-      ECR.Name := p_name;
-      ECR.Price := p_price;
-      ECR.Quantity := p_quantity;
-      //указать отдел
-      ECR.Department := p_dep;
-      if ECR.Registration <> 0 then
-        show_error(ECR, '32');
-    end
-    else if Form_main.have_cash = 2 then
-    begin
-      // продажа
-      ECR.Password := '1';
-      // запросить статус
-      ECR.GetShortECRStatus;
-      ECR.StringForPrinting := p_name;
-      ECR.Price := p_price;
-      ECR.Quantity := p_quantity;
-      //указать отдел
-      ECR.Department := p_dep;
-      ECR.Sale;
-      show_error(ECR, '33');
-    end;
+    ECR.Name := p_name;
+    ECR.Price := p_price;
+    ECR.Quantity := p_quantity;
+    //указать отдел
+    ECR.Department := p_dep;
+    if ECR.Registration <> 0 then
+      show_error(ECR, '32');
   end
-  else
+  else if Form_main.have_cash = 2 then
   begin
-    // тестовый чек
-    Writeln(f, p_name + ' ' + FloatToStr(p_quantity) + 'шт x '
-      + FloatToStr(p_price));
+    // продажа
+    ECR.Password := '1';
+    // запросить статус
+    ECR.GetShortECRStatus;
+    ECR.StringForPrinting := p_name;
+    ECR.Price := p_price;
+    ECR.Quantity := p_quantity;
+    //указать отдел
+    ECR.Department := p_dep;
+    ECR.Sale;
+    show_error(ECR, '33');
   end;
 end;
 
@@ -1083,36 +1000,26 @@ procedure reg_ecr_ext(p_name: string; p_price: double; p_quantity: double;
   ECR: OleVariant
   );
 begin
-  if Form_main.cash_test = 0 then
-  begin
-    // если не тестовый чек
-      // продажа
-    ECR.Password := '1';
-    // запросить статус
-    ECR.GetShortECRStatus;
-    ECR.StringForPrinting := p_name;
-    ECR.Price := p_price;
-    ECR.Quantity := p_quantity;
-    //указать отдел
-    ECR.Department := p_dep;
-    // налог не рассчитывать
-    ECR.TaxValueEnabled := False;
+  // продажа
+  ECR.Password := '1';
+  // запросить статус
+  ECR.GetShortECRStatus;
+  ECR.StringForPrinting := p_name;
+  ECR.Price := p_price;
+  ECR.Quantity := p_quantity;
+  //указать отдел
+  ECR.Department := p_dep;
+  // налог не рассчитывать
+  ECR.TaxValueEnabled := False;
 
-    ECR.Sale;
-    show_error(ECR, '33');
+  ECR.Sale;
+  show_error(ECR, '33');
 
-    // напечатать НДС 0%
-    ECR.UseReceiptRibbon := false;
-    ECR.UseJournalRibbon := true;
+  // напечатать НДС 0%
+  ECR.UseReceiptRibbon := false;
+  ECR.UseJournalRibbon := true;
 
-    print_by_line('НДС 0%', ECR);
-  end
-  else
-  begin
-    // тестовый чек
-    Writeln(f, p_name + ' ' + FloatToStr(p_quantity) + 'шт x '
-      + FloatToStr(p_price));
-  end;
+  print_by_line('НДС 0%', ECR);
 end;
 
 // возврат продажи

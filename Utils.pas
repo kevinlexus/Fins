@@ -78,11 +78,12 @@ function GetLocalIP: string;
 function VarToInt(var AVariant: variant; DefaultValue: integer = 0): integer;
 function getS_date_param(strPar: string): TDateTime;
 function getS_double_param(strPar: string): Double;
-function getS_str_param(strPar: string): String;
+function getS_str_param(strPar: string): string;
 function getS_list_param(strPar: string): Integer;
-procedure splitStr(const Source, Delimiter: String; var DelimitedList: TStringList);
+procedure splitStr(const Source, Delimiter: string; var DelimitedList:
+  TStringList);
 function removeControl(const S: string): string;
-procedure logText(text: String);
+procedure logText(text: string);
 
 implementation
 uses Unit_Mainform;
@@ -322,6 +323,7 @@ end;
 
 // функция определения прав на выполнение процедуры базы
 // используется для определения админских прав
+
 function have_rights(str_: string): Integer;
 var
   err_: Integer;
@@ -337,8 +339,8 @@ begin
   Result := err_;
 end;
 
-
 // проверка на доступ к элементам базы
+
 function isaccess(str1: string): Integer;
 var
   i: Integer;
@@ -352,7 +354,6 @@ begin
   end;
   Result := i;
 end;
-
 
 procedure LockControl(c: TWinControl; bLock: Boolean);
 begin
@@ -909,20 +910,29 @@ begin
 end;
           }
 
-// логгирование событий в программе          
-procedure logText(text: String);
-var 
-  f: TextFile;
-  path: string;
-begin
-  path:=ExtractFilePath(Application.ExeName);
-  AssignFile(f, path + 'direct.log');
-  Append(f);
-  Writeln(f, DateTimeToStr(Now())+' '+text);
-  Flush(f);
-  CloseFile(f);
-end;
+// логгирование событий в программе
 
+procedure logText(text: string);
+var
+  f: TextFile;
+  fileName: string;
+begin
+  //  path:=ExtractFilePath(Application.ExeName); - ред. 24.04.20 - не получилось. берёт сетевое имя и не может туда записывать
+  //
+  try
+    fileName := 'c:\direct\direct.log';
+    AssignFile(f, fileName);
+    if not FileExists(fileName) then
+      Rewrite(f);
+    Append(f);
+    Writeln(f, DateTimeToStr(Now()) + ' ' + text);
+    Flush(f);
+    CloseFile(f);
+  except
+    Application.MessageBox('Необходимо наличие директория C:\direct для логгирования!',
+      'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
+  end;
+end;
 
 function exp_to_txt(dset: TUniQuery; path_: string; fname_: string;
   fldsum_: string; issum_: Integer; iscnt_: Integer; ishead_: Integer; oem_:
@@ -1428,14 +1438,13 @@ begin
   Result := DefaultValue;
   if VarIsNull(AVariant) then
     Result := 0
-  else
-    if VarIsOrdinal(AVariant) then
-      Result := StrToInt(VarToStr(AVariant));
+  else if VarIsOrdinal(AVariant) then
+    Result := StrToInt(VarToStr(AVariant));
 end;
 
 function getS_date_param(strPar: string): TDateTime;
 begin
-  DataModule1.UniStoredProc1.StoredProcName:='SCOTT.UTILS.GETS_DATE_PARAM';
+  DataModule1.UniStoredProc1.StoredProcName := 'SCOTT.UTILS.GETS_DATE_PARAM';
   DataModule1.UniStoredProc1.SQL.Clear;
   DataModule1.UniStoredProc1.SQL.Add('begin ');
   DataModule1.UniStoredProc1.SQL.Add(':RESULT := SCOTT.UTILS.GETS_DATE_PARAM(:CD_);');
@@ -1448,15 +1457,14 @@ begin
     .CreateParam(ftDate, 'RESULT', ptResult);
   DataModule1.UniStoredProc1.ExecProc;
   Result := DataModule1.UniStoredProc1.Params.ParamByName('RESULT').AsDateTime;
-    // очистить SQL и параметры, для других вызовов (только при вызове функций)
-    DataModule1.UniStoredProc1.SQL.Clear;
-    DataModule1.UniStoredProc1.Params.Clear;
+  // очистить SQL и параметры, для других вызовов (только при вызове функций)
+  DataModule1.UniStoredProc1.SQL.Clear;
+  DataModule1.UniStoredProc1.Params.Clear;
 end;
-
 
 function getS_double_param(strPar: string): Double;
 begin
-  DataModule1.UniStoredProc1.StoredProcName:='SCOTT.UTILS.GETS_INT_PARAM';
+  DataModule1.UniStoredProc1.StoredProcName := 'SCOTT.UTILS.GETS_INT_PARAM';
   DataModule1.UniStoredProc1.SQL.Clear;
   DataModule1.UniStoredProc1.SQL.Add('begin ');
   DataModule1.UniStoredProc1.SQL.Add(':RESULT := SCOTT.UTILS.GETS_INT_PARAM(:CD_);');
@@ -1469,14 +1477,14 @@ begin
     .CreateParam(ftFloat, 'RESULT', ptResult);
   DataModule1.UniStoredProc1.ExecProc;
   Result := DataModule1.UniStoredProc1.Params.ParamByName('RESULT').AsFloat;
-    // очистить SQL и параметры, для других вызовов (только при вызове функций)
-    DataModule1.UniStoredProc1.SQL.Clear;
-    DataModule1.UniStoredProc1.Params.Clear;
+  // очистить SQL и параметры, для других вызовов (только при вызове функций)
+  DataModule1.UniStoredProc1.SQL.Clear;
+  DataModule1.UniStoredProc1.Params.Clear;
 end;
 
-function getS_str_param(strPar: string): String;
+function getS_str_param(strPar: string): string;
 begin
-  DataModule1.UniStoredProc1.StoredProcName:='SCOTT.UTILS.GETS_STR_PARAM';
+  DataModule1.UniStoredProc1.StoredProcName := 'SCOTT.UTILS.GETS_STR_PARAM';
   DataModule1.UniStoredProc1.SQL.Clear;
   DataModule1.UniStoredProc1.SQL.Add('begin ');
   DataModule1.UniStoredProc1.SQL.Add(':RESULT := SCOTT.UTILS.GETS_STR_PARAM(:CD_);');
@@ -1489,14 +1497,14 @@ begin
     .CreateParam(ftString, 'RESULT', ptResult);
   DataModule1.UniStoredProc1.ExecProc;
   Result := DataModule1.UniStoredProc1.Params.ParamByName('RESULT').AsString;
-    // очистить SQL и параметры, для других вызовов (только при вызове функций)
-    DataModule1.UniStoredProc1.SQL.Clear;
-    DataModule1.UniStoredProc1.Params.Clear;
+  // очистить SQL и параметры, для других вызовов (только при вызове функций)
+  DataModule1.UniStoredProc1.SQL.Clear;
+  DataModule1.UniStoredProc1.Params.Clear;
 end;
 
 function getS_list_param(strPar: string): Integer;
 begin
-  DataModule1.UniStoredProc1.StoredProcName:='SCOTT.UTILS.GETS_LIST_PARAM';
+  DataModule1.UniStoredProc1.StoredProcName := 'SCOTT.UTILS.GETS_LIST_PARAM';
   DataModule1.UniStoredProc1.SQL.Clear;
   DataModule1.UniStoredProc1.SQL.Add('begin ');
   DataModule1.UniStoredProc1.SQL.Add(':RESULT := SCOTT.UTILS.GETS_LIST_PARAM(:CD_);');
@@ -1515,24 +1523,27 @@ begin
 end;
 
 // разбить строку на подстроки используя разделитель
-procedure splitStr(const Source, Delimiter: String; var DelimitedList: TStringList);
+
+procedure splitStr(const Source, Delimiter: string; var DelimitedList:
+  TStringList);
 var
   s: PChar;
 
   DelimiterIndex: Integer;
-  Item: String;
+  Item: string;
 begin
-  s:=PChar(Source);
+  s := PChar(Source);
 
   repeat
-    DelimiterIndex:=Pos(Delimiter, s);
-    if DelimiterIndex=0 then Break;
+    DelimiterIndex := Pos(Delimiter, s);
+    if DelimiterIndex = 0 then
+      Break;
 
-    Item:=Copy(s, 1, DelimiterIndex-1);
+    Item := Copy(s, 1, DelimiterIndex - 1);
 
     DelimitedList.Add(Item);
 
-    inc(s, DelimiterIndex + Length(Delimiter)-1);
+    inc(s, DelimiterIndex + Length(Delimiter) - 1);
   until DelimiterIndex = 0;
   DelimitedList.Add(s);
 end;
@@ -1548,7 +1559,6 @@ begin
     if Result[I] in [#0..#31, #127] then
       Result[I] := ' '
 end;
-
 
 end.
 

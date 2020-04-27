@@ -214,6 +214,7 @@ type
     N144: TMenuItem;
     ImageList3: TImageList;
     N145: TMenuItem;
+    N146: TMenuItem;
     procedure N5Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure N7Click(Sender: TObject);
@@ -375,6 +376,7 @@ type
     procedure N143Click(Sender: TObject);
     procedure N144Click(Sender: TObject);
     procedure N145Click(Sender: TObject);
+    procedure N146Click(Sender: TObject);
   private
   public
     // выбранный период при переключении в архив
@@ -415,8 +417,6 @@ type
 
     // наличие ККМ
     have_cash: Integer;
-    // тестовый режим ККМ? (0-нет,1-да)
-    cash_test: Integer;
     // для напоминания о включении ККМ
     //last_cash_num: Integer;
     // Для выполнения снятия Z отчета и т.п., но НЕ регистрации чека)
@@ -655,92 +655,88 @@ begin
   GetDir(0, path);
   Ini := TIniFile.Create(path + '\licenses.ini');
 
-  if Form_main.cash_test = 0 then
+  {if Form_main.cash_test = 0 then
   begin
-    // если не тестовый чек
-    // создать объект OLE KKM
-    if have_cash = 1 then
-    begin
-      // создаем объект общего драйвера ККМ
-      // если объект создать не удается генерируется исключение, по которому завершается работа приложения
-      try
-        if num = 1 then
-        begin
-          // 1-ый ККМ
-          selECR := CreateOleObject('AddIn.FprnM45');
-          selECR.ApplicationHandle := Application.Handle;
-          option.Caption := option.Caption + ' ККМ-1';
-        end
-        else
-        begin
-          // 2-ой ККМ
-          selECR2 := CreateOleObject('AddIn.FprnM45');
-          selECR2.ApplicationHandle := Application.Handle;
-          option.Caption := option.Caption + ' ККМ-2';
-        end;
-        // необходимо для корректного отображения окон драйвера в контексте приложения
-      except
-        Application.MessageBox('Не удалось создать объект общего драйвера ККМ!',
-          PChar(Application.Title), MB_ICONERROR + MB_OK);
-        Application.MessageBox('Устройство ККМ не будет задействовано!',
-          PChar(Application.Title), MB_ICONERROR + MB_OK);
+    // создаем объект общего драйвера ККМ
+    // если объект создать не удается генерируется исключение, по которому завершается работа приложения
+    try
+      if num = 1 then
+      begin
+        // 1-ый ККМ
+        selECR := CreateOleObject('AddIn.FprnM45');
+        selECR.ApplicationHandle := Application.Handle;
+        option.Caption := option.Caption + ' ККМ-1';
+      end
+      else
+      begin
+        // 2-ой ККМ
+        selECR2 := CreateOleObject('AddIn.FprnM45');
+        selECR2.ApplicationHandle := Application.Handle;
+        option.Caption := option.Caption + ' ККМ-2';
       end;
-    end
-    else if have_cash = 2 then
-    begin
-      // создаем объект общего драйвера ККМ
-      // если объект создать не удается генерируется исключение, по которому завершается работа приложения
-      try
-        if num = 1 then
-        begin
-          // 1-ый ККМ
-          selECR := CreateOleObject('AddIn.DrvFR');
+      // необходимо для корректного отображения окон драйвера в контексте приложения
+    except
+      Application.MessageBox('Не удалось создать объект общего драйвера ККМ!',
+        PChar(Application.Title), MB_ICONERROR + MB_OK);
+      Application.MessageBox('Устройство ККМ не будет задействовано!',
+        PChar(Application.Title), MB_ICONERROR + MB_OK);
+    end;
+  end
+  else }
+  if have_cash = 2 then
+  begin
+    // создаем объект общего драйвера ККМ
+    // если объект создать не удается генерируется исключение, по которому завершается работа приложения
+    try
+      if num = 1 then
+      begin
+        // 1-ый ККМ
+        selECR := CreateOleObject('AddIn.DrvFR');
 
-          // пока только для драйвера AddIn.DrvFR реализовал подключение по Ip
-          ip := Ini.ReadString('Application', 'cash1_Ip', '');
-          if ip <> '' then
-          begin
-            port := Ini.ReadString('Application', 'cash1_port', '');
-            // ИНН, если не заполнен, то не будет проверяться на корректность подключеного ККМ
-            Form_main.selECR_inn := Ini.ReadString('Application', 'cash1_inn',
-              '');
-            selECR.ConnectionType := 6; // TCP сокет
-            selECR.ProtocolType := 0; // стандартный протокол
-            selECR.IPAddress := ip; // Ip адрес
-            selECR.UseIPAddress := True;
-            // использовать Ip адрес ( в противном случае будет использовать имя компа)
-            selECR.TCPPort := port; // порт
-            selECR.Timeout := 5000; // таймаут в мс
-          end;
-        end
-        else
+        // пока только для драйвера AddIn.DrvFR реализовал подключение по Ip
+        ip := Ini.ReadString('Application', 'cash1_Ip', '');
+        if ip <> '' then
         begin
-          // 2-ой ККМ
-          selECR2 := CreateOleObject('AddIn.DrvFR');
-          // пока только для драйвера AddIn.DrvFR реализовал подключение по Ip
-          ip := Ini.ReadString('Application', 'cash2_Ip', '');
-          if ip <> '' then
-          begin
-            // ИНН, если не заполнен, то не будет проверяться на корректность подключеного ККМ
-            port := Ini.ReadString('Application', 'cash2_port', '');
-            Form_main.selECR2_inn := Ini.ReadString('Application', 'cash2_inn',
-              '');
-            selECR2.ConnectionType := 6; // TCP сокет
-            selECR2.ProtocolType := 0; // стандартный протокол
-            selECR2.IPAddress := ip; // Ip адрес
-            selECR2.UseIPAddress := True;
-            // использовать Ip адрес ( в противном случае будет использовать имя компа)
-            selECR2.TCPPort := port; // порт
-            selECR2.Timeout := 5000; // таймаут в мс
-          end;
+          port := Ini.ReadString('Application', 'cash1_port', '');
+          // ИНН, если не заполнен, то не будет проверяться на корректность подключеного ККМ
+          Form_main.selECR_inn := Ini.ReadString('Application', 'cash1_inn',
+            '');
+          selECR.ConnectionType := 6; // TCP сокет
+          selECR.ProtocolType := 0; // стандартный протокол
+          selECR.IPAddress := ip; // Ip адрес
+          selECR.UseIPAddress := True;
+          // использовать Ip адрес ( в противном случае будет использовать имя компа)
+          selECR.TCPPort := port; // порт
+          selECR.Timeout := 5000; // таймаут в мс
         end;
-
-      except
-        Application.MessageBox('Не удалось создать объект общего драйвера ККМ!',
-          PChar(Application.Title), MB_ICONERROR + MB_OK);
-        Application.MessageBox('Устройство ККМ-Штрих не будет задействовано!',
-          PChar(Application.Title), MB_ICONERROR + MB_OK);
+      end
+      else
+      begin
+        // 2-ой ККМ
+        selECR2 := CreateOleObject('AddIn.DrvFR');
+        // пока только для драйвера AddIn.DrvFR реализовал подключение по Ip
+        ip := Ini.ReadString('Application', 'cash2_Ip', '');
+        if ip <> '' then
+        begin
+          // ИНН, если не заполнен, то не будет проверяться на корректность подключеного ККМ
+          port := Ini.ReadString('Application', 'cash2_port', '');
+          Form_main.selECR2_inn := Ini.ReadString('Application', 'cash2_inn',
+            '');
+          selECR2.ConnectionType := 6; // TCP сокет
+          selECR2.ProtocolType := 0; // стандартный протокол
+          selECR2.IPAddress := ip; // Ip адрес
+          selECR2.UseIPAddress := True;
+          // использовать Ip адрес ( в противном случае будет использовать имя компа)
+          selECR2.TCPPort := port; // порт
+          selECR2.Timeout := 5000; // таймаут в мс
+        end;
       end;
+
+    except
+      Application.MessageBox('Не удалось создать объект общего драйвера ККМ!',
+        PChar(Application.Title), MB_ICONERROR + MB_OK);
+      Application.MessageBox('Устройство ККМ-Штрих не будет задействовано!',
+        PChar(Application.Title), MB_ICONERROR + MB_OK);
     end;
   end;
   Ini.Free;
@@ -2600,12 +2596,21 @@ end;
 procedure TForm_Main.N145Click(Sender: TObject);
 begin
   ShellExecute(Handle, nil, PChar('notepad.exe'),
-    PChar(ExtractFilePath(Application.ExeName) + 'direct.log'),
+    PChar('c:\direct\/direct.log'),
     nil, SW_SHOWNORMAL)
-  {  if FF('frmLog', 1) = 0 then
-    begin
-      Application.CreateForm(TfrmLog, frmLog);
-    end;}
+    {  if FF('frmLog', 1) = 0 then
+  begin
+    Application.CreateForm(TfrmLog, frmLog);
+  end;}
+end;
+
+procedure TForm_Main.N146Click(Sender: TObject);
+begin
+  StartTreeObj;
+  if FF('Form_olap', 0) = 0 then
+    Application.CreateForm(TForm_olap, Form_olap);
+  Form_tree_objects.setAccess('97', 0, 0);
+
 end;
 
 end.

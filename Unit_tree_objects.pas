@@ -5,7 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, GridsEh, DBGridEh, StdCtrls, DBCtrls, DB, OracleData, Buttons, Utils,
-  Oracle, PivotCube_SRC, PivotMap_SRC, MSXML2_TLB, ComObj, Menus, frxClass,
+  Oracle, PivotCube_SRC, PivotMap_SRC, PivotGrid_SRC,
+  PVMapBuilder_SRC, MSXML2_TLB, ComObj, Menus, frxClass,
   frxDBSet, wwdblook, Grids, Wwdbigrd, Wwdbgrid, ExtCtrls,
   ToolWin, ComCtrls, DataDriverEh, MemTableDataEh,
   MemTableEh, wwdbdatetimepicker, Mask, wwdbedit, Wwdotdot,
@@ -124,7 +125,6 @@ type
     procedure repTypeTXT(path, fname: string);
     procedure repTypeGrid;
     procedure sel_tree_obj(trnode: TMemRecViewEh; sel_: Integer);
-    //procedure desel_all_obj(tmem: TMemTableEh; id_: Integer);
     procedure deselObjects(curObjId: Integer);
     procedure cxDBTreeList1SELPropertiesEditValueChanged(Sender: TObject);
     procedure N3Click(Sender: TObject);
@@ -143,7 +143,7 @@ type
     l_rep_name, l_frm_name, rep_cd_, period_str_, period_str2_, strr_, fname_,
       frx_fname_: string;
     allow_, max_level_, can_detail_, rep_id_, sel_many_, //have_date_,
-    rep_type_, two_periods_,
+    rep_type_, two_periods_, show_total_row, show_total_col,
       first_time_, expand_row_, expand_col_,
       show_paychk_, show_sel_org_, show_sel_oper_, show_deb_: Integer;
     OD_reports2: TOracleDataset;
@@ -355,7 +355,7 @@ begin
   DM_Olap.Uni_Data.Active := False;
   DM_Olap.Uni_Data.Active := True;
   cxm1.Lines.Clear;
-  cxm1.Lines.Text:='Получено строк:'+IntToStr(DM_Olap.Uni_Data.RecordCount);
+  cxm1.Lines.Text := 'Получено строк:' + IntToStr(DM_Olap.Uni_Data.RecordCount);
   Form_status.Close;
 end;
 
@@ -710,6 +710,15 @@ begin
     Form_olap.PVRowToolBar1.Visible := true;
     Form_olap.PivotGrid1.Visible := true;
     Form_olap.PVMeasureToolBar1.Visible := true;
+    if show_total_row = 1 then
+      Form_olap.PivotGrid1.Settings.Specific.RowTotals := pvgtAtEnd
+    else
+      Form_olap.PivotGrid1.Settings.Specific.RowTotals := pvgtDisabled;
+
+    if show_total_col = 1 then
+      Form_olap.PivotGrid1.Settings.Specific.ColumnTotals := pvgtAtEnd
+    else
+      Form_olap.PivotGrid1.Settings.Specific.ColumnTotals := pvgtDisabled;
 
     Cube_ := Form_olap.FindComponent('PivotCube' + rep_cd_);
     Map_ := Form_olap.FindComponent('PivotMap' + rep_cd_);
@@ -1069,7 +1078,7 @@ begin
       'nvl(r.have_date,0) as have_date, ' +
       'r.frx_fname, ' +
       'r.fname, nvl(r.iscnt,0) as iscnt, nvl(r.issum,0) as issum, nvl(r.ishead,0) as ishead, r.fldsum, nvl(r.isoem,0) as isoem,  ' +
-      'r.frm_name ' +
+      'r.frm_name, r.show_total_row, r.show_total_col ' +
       'from scott.reports r ' +
       'where r.cd=:cd_';
     DeclareVariable('cd_', otString);
@@ -1087,6 +1096,8 @@ begin
       show_sel_org_ := FieldByName('show_sel_org').AsInteger;
       show_sel_oper_ := FieldByName('show_sel_oper').AsInteger;
       show_paychk_ := FieldByName('show_paychk').AsInteger;
+      show_total_row := FieldByName('show_total_row').AsInteger;
+      show_total_col := FieldByName('show_total_col').AsInteger;
       show_deb_ := FieldByName('show_deb').AsInteger;
       iscnt_ := FieldByName('iscnt').AsInteger;
       issum_ := FieldByName('issum').AsInteger;
@@ -1410,7 +1421,7 @@ begin
     while not Eof do
     begin
       if (FieldByName('sel').AsInteger = 0) and
-         (FieldByName('id').AsInteger <> curObjId) then
+        (FieldByName('id').AsInteger <> curObjId) then
       begin
         // снять отметку с прочих объектов
         Edit;
@@ -2535,11 +2546,11 @@ var
       end
       else
       begin
-    {    // погасить ноды домов, которые имеют родителя = 0
-        if ANode. .Parent.Values[cxDBTreeList1ID.ItemIndex] = 0 then
-        begin
-          ANode.Visible := false;
-        end;}
+        {    // погасить ноды домов, которые имеют родителя = 0
+            if ANode. .Parent.Values[cxDBTreeList1ID.ItemIndex] = 0 then
+            begin
+              ANode.Visible := false;
+            end;}
       end;
     end;
     cxDBTreeList1.Root.Expand(true);

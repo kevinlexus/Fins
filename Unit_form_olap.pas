@@ -100,6 +100,8 @@ type
     cxm1: TcxMemo;
     PivotCube13: TPivotCube;
     PivotMap13: TPivotMap;
+    PivotCube97: TPivotCube;
+    PivotMap97: TPivotMap;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);

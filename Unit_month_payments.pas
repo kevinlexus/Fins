@@ -479,76 +479,68 @@ begin
     OD_paycheck.Active := true;
     if (Form_Main.have_cash = 1) or (Form_Main.have_cash = 2) then
     begin
-      if Form_Main.cash_test = 0 then
+      // c кассовым аппаратом
+      if OD_c_kwtp.FieldByName('cash_num').AsInteger = 1 then
+        ECR := Form_main.selECR
+      else
+        ECR := Form_main.selECR2;
+
+      if open_port_ecr(ECR) <> 0 then
       begin
-        // c кассовым аппаратом и не в режиме тестирования
-        if OD_c_kwtp.FieldByName('cash_num').AsInteger = 1 then
-          ECR := Form_main.selECR
-        else
-          ECR := Form_main.selECR2;
-
-        if open_port_ecr(ECR) <> 0 then
-        begin
-          msg2('Порт ККМ не открыт!', 'Внимание!', MB_OK + MB_ICONERROR);
-          Exit;
-        end
-          //Входим в режим регистрации
-        else
-        begin
-          if msg3('Произвести возврат платежа в фискальном регистраторе?',
-            'Внимание!', MB_YESNO + MB_ICONQUESTION) = IDYES then
-          begin
-            try
-              //Возвращаем каждый платёж
-              print_string_ecr('Лицевой счет №' +
-                OD_c_kwtp.FieldByName('lsk').AsString, 1, 0, ECR);
-              print_string_ecr('Наим-е операции   Период    Оплата(руб.)', 1, 0,
-                ECR);
-
-              //Специальный датасет, для возврата продажи (содержит тело текущего платежа)
-              with OD_paycheck do
-              begin
-                First;
-                while not Eof do
-                begin
-                  unreg_ecr(FieldByName('oper_name').AsString +
-                    calc_pads(FieldByName('oper_name').AsString) +
-                    FieldByName('dopl').AsString,
-                    FieldByName('summ_itg').AsFloat, 1,
-                    FieldByName('dep').AsInteger, ECR
-                    );
-                  Next;
-                end;
-                if close_reg_ecr(ECR) <> 0 then
-                begin
-                  l_flag := 1;
-                end;
-                Active := false;
-              end;
-
-            except
-              // Эксепшн в фискальном регистраторе
-              on E: Exception do
-              begin
-                l_flag := 1;
-                ShowMessage('Exception class name = ' + E.ClassName + '' +
-                  'Ошибка: ' + E.Message);
-                ShowMessage('Возврат не будет учтён!');
-              end;
-            end;
-
-          end
-          else
-          begin
-            l_flag := 0;
-          end;
-
-        end;
+        msg2('Порт ККМ не открыт!', 'Внимание!', MB_OK + MB_ICONERROR);
+        Exit;
       end
+        //Входим в режим регистрации
       else
       begin
-        // режим тестирования
-        l_flag := 0;
+        if msg3('Произвести возврат платежа в фискальном регистраторе?',
+          'Внимание!', MB_YESNO + MB_ICONQUESTION) = IDYES then
+        begin
+          try
+            //Возвращаем каждый платёж
+            print_string_ecr('Лицевой счет №' +
+              OD_c_kwtp.FieldByName('lsk').AsString, 1, 0, ECR);
+            print_string_ecr('Наим-е операции   Период    Оплата(руб.)', 1, 0,
+              ECR);
+
+            //Специальный датасет, для возврата продажи (содержит тело текущего платежа)
+            with OD_paycheck do
+            begin
+              First;
+              while not Eof do
+              begin
+                unreg_ecr(FieldByName('oper_name').AsString +
+                  calc_pads(FieldByName('oper_name').AsString) +
+                  FieldByName('dopl').AsString,
+                  FieldByName('summ_itg').AsFloat, 1,
+                  FieldByName('dep').AsInteger, ECR
+                  );
+                Next;
+              end;
+              if close_reg_ecr(ECR) <> 0 then
+              begin
+                l_flag := 1;
+              end;
+              Active := false;
+            end;
+
+          except
+            // Эксепшн в фискальном регистраторе
+            on E: Exception do
+            begin
+              l_flag := 1;
+              ShowMessage('Exception class name = ' + E.ClassName + '' +
+                'Ошибка: ' + E.Message);
+              ShowMessage('Возврат не будет учтён!');
+            end;
+          end;
+
+        end
+        else
+        begin
+          l_flag := 0;
+        end;
+
       end;
 
     end
@@ -618,9 +610,7 @@ begin
     l_flag := 0;
     if (Form_Main.have_cash = 1) and (Form_Main.have_cash = 2) then
     begin
-      if Form_Main.cash_test = 0 then
-      begin
-        // c кассовым аппаратом и не в режиме тестирования
+        // c кассовым аппаратом
         l_flag := 1;
         if OD_c_kwtp.FieldByName('cash_num').AsInteger = 1 then
           ECR := Form_main.selECR
@@ -677,12 +667,6 @@ begin
 
           end;
         end;
-      end
-      else
-      begin
-        // режим тестирования
-        l_flag := 0;
-      end;
     end;
 
     if l_flag = 1 then
@@ -700,10 +684,10 @@ begin
       if l_var <> 0 then
       begin
         DataModule1.OraclePackage1.Session.Rollback;
-        msg2('Обратный платеж не выполнен! Код ошибки='+IntToStr(l_var),
+        msg2('Обратный платеж не выполнен! Код ошибки=' + IntToStr(l_var),
           'Внимание!',
           MB_OK + MB_ICONERROR);
-      end    
+      end
       else
       begin
         OD_c_kwtp.Prior;

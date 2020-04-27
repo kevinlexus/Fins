@@ -8,7 +8,9 @@ uses
   cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter, cxData,
   cxDataStorage, cxEdit, cxNavigator, cxDBData, ExtCtrls, cxGridLevel,
   cxClasses, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
-  cxGridDBTableView, cxGrid, StdCtrls, Utils, Oracle;
+  cxGridDBTableView, cxGrid, StdCtrls, Utils, Oracle, cxContainer,
+  ComCtrls, dxCore, cxDateUtils, cxTextEdit, cxMaskEdit, cxDropDownEdit,
+  cxCalendar, DateUtils;
 
 type
   TfrmLoadKartExt = class(TForm)
@@ -48,6 +50,10 @@ type
     Button2: TButton;
     Label1: TLabel;
     Edit1: TEdit;
+    cxDateEdit1: TcxDateEdit;
+    Label2: TLabel;
+    Label3: TLabel;
+    cxDateEdit2: TcxDateEdit;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
@@ -56,6 +62,12 @@ type
       Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;
       AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
     procedure Button2Click(Sender: TObject);
+    procedure cxDateEdit1PropertiesValidate(Sender: TObject;
+      var DisplayValue: Variant; var ErrorText: TCaption;
+      var Error: Boolean);
+    procedure cxDateEdit2PropertiesValidate(Sender: TObject;
+      var DisplayValue: Variant; var ErrorText: TCaption;
+      var Error: Boolean);
   private
     { Private declarations }
   public
@@ -67,12 +79,14 @@ var
 
 implementation
 
-uses DM_module1, Unit_status;
+uses DM_module1, Unit_status, Unit_Mainform;
 
 {$R *.dfm}
 
 procedure TfrmLoadKartExt.FormCreate(Sender: TObject);
 begin
+  cxDateEdit1.Date := Form_Main.cur_dt;
+  cxDateEdit2.Date := Form_Main.cur_dt;
   OD_loadKartExt.Active := True;
 end;
 
@@ -184,7 +198,8 @@ begin
       Form_status.Update;
       l_res :=
         DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA.HTTP_REQ',
-        ['/unloadPaymentFileKartExt/' + Edit1.Text, null,
+        ['/unloadPaymentFileKartExt/' + Edit1.Text
+         +'/'+ cxDateEdit1.Text +'/'+ cxDateEdit2.Text, null,
         'GET']);
       Form_status.Close;
       if l_res = 'PROCESS' then
@@ -212,6 +227,57 @@ begin
     begin
       msg2(E.Message, 'Внимание!',
         MB_OK + MB_ICONEXCLAMATION);
+    end;
+  end;
+end;
+
+procedure TfrmLoadKartExt.cxDateEdit1PropertiesValidate(Sender: TObject;
+  var DisplayValue: Variant; var ErrorText: TCaption; var Error: Boolean);
+var
+  year, month: Integer;
+  curYear, curMonth: Integer;
+begin
+  if DisplayValue = '' then
+  begin
+    Error := True;
+    ErrorText := 'Ошибка в дате!';
+  end
+  else
+  begin
+    year := YearOf(TcxDateEdit(Sender).Date);
+    month := MonthOfTheYear(TcxDateEdit(Sender).Date);
+    curYear := YearOf(Form_main.cur_dt);
+    curMonth := MonthOfTheYear(Form_main.cur_dt);
+    if (year <> curYear) or (month <> curMonth) then
+    begin
+      Error := True;
+      ErrorText := 'Дата не находится в текущем периоде!';
+    end;
+  end;
+
+end;
+
+procedure TfrmLoadKartExt.cxDateEdit2PropertiesValidate(Sender: TObject;
+  var DisplayValue: Variant; var ErrorText: TCaption; var Error: Boolean);
+var
+  year, month: Integer;
+  curYear, curMonth: Integer;
+begin
+  if DisplayValue = '' then
+  begin
+    Error := True;
+    ErrorText := 'Ошибка в дате!';
+  end
+  else
+  begin
+    year := YearOf(TcxDateEdit(Sender).Date);
+    month := MonthOfTheYear(TcxDateEdit(Sender).Date);
+    curYear := YearOf(Form_main.cur_dt);
+    curMonth := MonthOfTheYear(Form_main.cur_dt);
+    if (year <> curYear) or (month <> curMonth) then
+    begin
+      Error := True;
+      ErrorText := 'Дата не находится в текущем периоде!';
     end;
   end;
 end;

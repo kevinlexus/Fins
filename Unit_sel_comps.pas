@@ -69,14 +69,6 @@ procedure enter_app;
 var
   l_val: Integer;
 begin
-  {  if (DataModule1.OraclePackage1.CallIntegerFunction(
-      'scott.INIT.get_login_acc', parNone)) > 1 then
-    begin
-      msg2('Программа запущена на другом компьютере, завершение',
-        'Внимание', MB_OK + MB_ICONINFORMATION);
-      Application.Terminate;
-    end;
-   }
   DataModule1.OraclePackage1.CallProcedure
     ('scott.INIT.set_nkom',
     [Form_sel_comps.OD_sel_comps.FieldByName('nkom').asString]);

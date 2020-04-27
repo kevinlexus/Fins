@@ -217,20 +217,12 @@ procedure TForm_service_cash.FormCreate(Sender: TObject);
 var
   ECR: OleVariant;
 begin
-  if Form_main.cash_test = 0 then
+  ECR := Form_main.cur_ECR;
+  if (Form_Main.have_cash = 1) or (Form_Main.have_cash = 2) then
   begin
-    ECR := Form_main.cur_ECR;
-    if (Form_Main.have_cash = 1) or (Form_Main.have_cash = 2) then
-    begin
-      ECR.GetECRStatus;
-      edt1.Text := ECR.INN;
-      edt2.Text := ECR.IpAddress;
-    end;
-  end
-  else
-  begin
-    edt1.Text := 'Режим тестирования';
-    edt2.Text := 'Режим тестирования';
+    ECR.GetECRStatus;
+    edt1.Text := ECR.INN;
+    edt2.Text := ECR.IpAddress;
   end;
 
   if Form_Main.have_eq = 1 then
@@ -289,11 +281,12 @@ begin
   begin
     // сверка итогов эквайринга
     Form_Main.eqECR.NFun(6000);
-    check:=Form_Main.eqECR.GParamString('Cheque');
-    Application.MessageBox(PChar(check), 'Проверка отчета', MB_OK 
+    check := Form_Main.eqECR.GParamString('Cheque');
+    Application.MessageBox(PChar(check), 'Проверка отчета', MB_OK
       + MB_ICONINFORMATION + MB_TOPMOST);
-    // печать чека на фискальнике, используя разбиение на строки и отрезку чека
-    printByLineWithCut(check, Form_main.selECR, 36);
+    // печать чека на фискальнике, используя разбиение на строки
+    printByLineWithCut(True, check, Form_main.selECR, 36);
+    cutCheck(False, True, 1, ECR);   
   end;
 end;
 
