@@ -1,11 +1,12 @@
 object Form_find_adr2: TForm_find_adr2
-  Left = 349
-  Top = 168
+  Left = 664
+  Top = 211
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
+  BorderWidth = 1
   Caption = #1055#1086#1080#1089#1082' '#1087#1086' '#1072#1076#1088#1077#1089#1091
-  ClientHeight = 78
-  ClientWidth = 758
+  ClientHeight = 109
+  ClientWidth = 734
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -92,7 +93,7 @@ object Form_find_adr2: TForm_find_adr2
   PixelsPerInch = 96
   TextHeight = 16
   object Label1: TLabel
-    Left = 232
+    Left = 237
     Top = 16
     Width = 61
     Height = 16
@@ -105,10 +106,10 @@ object Form_find_adr2: TForm_find_adr2
     ParentFont = False
   end
   object Button1: TButton
-    Left = 561
+    Left = 577
     Top = 39
-    Width = 93
-    Height = 31
+    Width = 72
+    Height = 26
     Caption = #1054#1082
     ModalResult = 1
     TabOrder = 3
@@ -117,7 +118,7 @@ object Form_find_adr2: TForm_find_adr2
   object wwDBLookupCombo1: TwwDBLookupCombo
     Left = 30
     Top = 39
-    Width = 198
+    Width = 203
     Height = 24
     Hint = #1059#1083#1080#1094#1072
     DropDownAlignment = taLeftJustify
@@ -137,9 +138,9 @@ object Form_find_adr2: TForm_find_adr2
     OnKeyPress = wwDBLookupCombo1KeyPress
   end
   object wwDBLookupCombo3: TwwDBLookupCombo
-    Left = 236
+    Left = 240
     Top = 39
-    Width = 208
+    Width = 201
     Height = 26
     Hint = #1044#1086#1084
     AutoSize = False
@@ -164,7 +165,7 @@ object Form_find_adr2: TForm_find_adr2
     OnKeyPress = wwDBLookupCombo3KeyPress
   end
   object wwDBLookupCombo4: TwwDBLookupCombo
-    Left = 453
+    Left = 445
     Top = 39
     Width = 106
     Height = 24
@@ -192,8 +193,8 @@ object Form_find_adr2: TForm_find_adr2
   object Button2: TButton
     Left = 660
     Top = 39
-    Width = 92
-    Height = 31
+    Width = 69
+    Height = 26
     Cancel = True
     Caption = #1054#1090#1084#1077#1085#1072
     ModalResult = 2
@@ -213,7 +214,7 @@ object Form_find_adr2: TForm_find_adr2
   object wwDBLookupCombo2: TwwDBLookupCombo
     Left = 30
     Top = 10
-    Width = 198
+    Width = 203
     Height = 24
     Hint = #1059#1050
     DropDownAlignment = taLeftJustify
@@ -233,15 +234,15 @@ object Form_find_adr2: TForm_find_adr2
     OnKeyPress = wwDBLookupCombo2KeyPress
   end
   object chk1: TCheckBox
-    Left = 420
+    Left = 380
     Top = 10
-    Width = 149
+    Width = 125
     Height = 21
     Caption = #1054#1089#1085#1086#1074#1085#1099#1077' '#1089#1095#1077#1090#1072
     Checked = True
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -15
+    Font.Height = -11
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentFont = False
@@ -250,15 +251,15 @@ object Form_find_adr2: TForm_find_adr2
     OnClick = chk1Click
   end
   object chk2: TCheckBox
-    Left = 580
+    Left = 508
     Top = 10
-    Width = 125
+    Width = 109
     Height = 21
     Caption = #1044#1077#1081#1089#1090#1074#1091#1102#1097#1080#1077
     Checked = True
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -15
+    Font.Height = -11
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentFont = False
@@ -267,7 +268,7 @@ object Form_find_adr2: TForm_find_adr2
     OnClick = chk2Click
   end
   object Edit1: TEdit
-    Left = 296
+    Left = 301
     Top = 8
     Width = 73
     Height = 24
@@ -275,6 +276,18 @@ object Form_find_adr2: TForm_find_adr2
     ParentShowHint = False
     ShowHint = True
     TabOrder = 9
+  end
+  object cxLookupComboBox1: TcxLookupComboBox
+    Left = 240
+    Top = 72
+    Properties.KeyFieldNames = 'ND_ID'
+    Properties.ListColumns = <
+      item
+        FieldName = 'ND'
+      end>
+    Properties.ListSource = DS_houses
+    TabOrder = 10
+    Width = 201
   end
   object OD_streets: TOracleDataSet
     SQL.Strings = (
@@ -308,8 +321,8 @@ object Form_find_adr2: TForm_find_adr2
     MasterFields = 'reu'
     DetailFields = 'flt_reu_'
     Session = DataModule1.OracleSession1
-    Left = 24
-    Top = 64
+    Left = 16
+    Top = 160
     object OD_streetsID: TStringField
       FieldName = 'ID'
       Required = True
@@ -329,8 +342,8 @@ object Form_find_adr2: TForm_find_adr2
   end
   object DS_streets: TDataSource
     DataSet = OD_streets
-    Left = 56
-    Top = 64
+    Left = 48
+    Top = 160
   end
   object OD_houses: TOracleDataSet
     SQL.Strings = (
@@ -362,8 +375,8 @@ object Form_find_adr2: TForm_find_adr2
     DetailFields = 'ID'
     Session = DataModule1.OracleSession1
     Detachable = True
-    Left = 96
-    Top = 64
+    Left = 88
+    Top = 160
     object OD_housesND: TStringField
       DisplayWidth = 35
       FieldName = 'ND'
@@ -394,8 +407,8 @@ object Form_find_adr2: TForm_find_adr2
   end
   object DS_houses: TDataSource
     DataSet = OD_houses
-    Left = 128
-    Top = 64
+    Left = 120
+    Top = 160
   end
   object OD_kw: TOracleDataSet
     SQL.Strings = (
@@ -421,8 +434,8 @@ object Form_find_adr2: TForm_find_adr2
     MasterFields = 'kul;nd_id'
     DetailFields = 'kul;nd'
     Session = DataModule1.OracleSession1
-    Left = 168
-    Top = 64
+    Left = 160
+    Top = 160
     object OD_kwKW: TStringField
       DisplayWidth = 7
       FieldName = 'KW'
@@ -448,14 +461,14 @@ object Form_find_adr2: TForm_find_adr2
   end
   object DS_kw: TDataSource
     DataSet = OD_kw
-    Left = 200
-    Top = 64
+    Left = 192
+    Top = 160
   end
   object ImageList1: TImageList
     Height = 10
     Width = 10
-    Left = 104
-    Top = 24
+    Left = 88
+    Top = 192
     Bitmap = {
       494C01010200040004000A000A00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000280000000A00000001002000000000004006
@@ -529,12 +542,12 @@ object Form_find_adr2: TForm_find_adr2
       0400000004000000020000004944010000000000040000004E414D4501000000
       0000030000004F524401000000000003000000524555010000000000}
     Session = DataModule1.OracleSession1
-    Left = 24
-    Top = 96
+    Left = 16
+    Top = 192
   end
   object DS_t_org: TDataSource
     DataSet = OD_t_org
-    Left = 56
-    Top = 96
+    Left = 48
+    Top = 192
   end
 end
