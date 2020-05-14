@@ -212,6 +212,8 @@ begin
     SetMenuItem(acc_, N141, 'drn141_Реестр_оплаты_выв_мус');
     SetMenuItem(acc_, N142, 'drn142_Реестр_кол_прож_выв_мус');
     SetMenuItem(acc_, N143, 'drn143_Загрузка_внешних_лс');
+    SetMenuItem(acc_, N146, 'drn146_Объемы_по_счетчикам');
+
   end;
 end;
 
@@ -929,8 +931,8 @@ begin
     Flush(f);
     CloseFile(f);
   except
-    Application.MessageBox('Необходимо наличие директория C:\direct для логгирования!',
-      'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
+    //Application.MessageBox('Необходимо наличие директория C:\direct для логгирования!',
+    //  'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
   end;
 end;
 

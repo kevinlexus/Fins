@@ -55,6 +55,10 @@ type
     OD_kartExtV: TFloatField;
     cxGrid1DBTableView1V: TcxGridDBColumn;
     chk1: TCheckBox;
+    OD_kartExtFK_KLSK_PREMISE: TFloatField;
+    cxGrid1DBTableView1FK_KLSK_PREMISE: TcxGridDBColumn;
+    OD_kartExtFK_KLSK_ID: TFloatField;
+    cxGrid1DBTableView1FK_KLSK_ID: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ToolButton1Click(Sender: TObject);

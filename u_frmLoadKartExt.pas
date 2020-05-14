@@ -54,6 +54,10 @@ type
     Label2: TLabel;
     Label3: TLabel;
     cxDateEdit2: TcxDateEdit;
+    OD_loadKartExtFK_KLSK_PREMISE: TFloatField;
+    cxGrid1DBTableView1FK_KLSK_PREMISE: TcxGridDBColumn;
+    OD_loadKartExtFK_KLSK_ID: TFloatField;
+    cxGrid1DBTableView1FK_KLSK_ID: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
@@ -147,6 +151,8 @@ begin
   begin
     Application.CreateForm(TForm_status, Form_status);
     Form_status.Update;
+    if not (OD_loadKartExt.State in [dsBrowse]) then
+      OD_loadKartExt.Post;
     DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA.HTTP_REQ',
       ['/loadApprovedKartExt', null, 'GET']);
     Form_status.Close;
@@ -197,7 +203,7 @@ begin
       Application.CreateForm(TForm_status, Form_status);
       Form_status.Update;
       l_res :=
-        DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA.HTTP_REQ',
+        DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA2.HTTP_REQ',
         ['/unloadPaymentFileKartExt/' + Edit1.Text
          +'/'+ cxDateEdit1.Text +'/'+ cxDateEdit2.Text, null,
         'GET']);
@@ -237,7 +243,7 @@ var
   year, month: Integer;
   curYear, curMonth: Integer;
 begin
-  if DisplayValue = '' then
+{  if DisplayValue = '' then
   begin
     Error := True;
     ErrorText := 'Ошибка в дате!';
@@ -253,7 +259,7 @@ begin
       Error := True;
       ErrorText := 'Дата не находится в текущем периоде!';
     end;
-  end;
+  end;}
 
 end;
 
@@ -263,7 +269,7 @@ var
   year, month: Integer;
   curYear, curMonth: Integer;
 begin
-  if DisplayValue = '' then
+{  if DisplayValue = '' then
   begin
     Error := True;
     ErrorText := 'Ошибка в дате!';
@@ -279,7 +285,7 @@ begin
       Error := True;
       ErrorText := 'Дата не находится в текущем периоде!';
     end;
-  end;
+  end;}
 end;
 
 end.

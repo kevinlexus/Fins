@@ -1,6 +1,6 @@
 object Form_olap: TForm_olap
-  Left = 2174
-  Top = 185
+  Left = 2554
+  Top = 202
   AutoScroll = False
   Caption = 'OLAP'
   ClientHeight = 743
@@ -473,7 +473,7 @@ object Form_olap: TForm_olap
     Settings.Specific.Lines = True
     Settings.Specific.LineWidth = 1
     Settings.Specific.LineColor = clBlack
-    Settings.Specific.RowTotals = pvgtDisabled
+    Settings.Specific.RowTotals = pvgtAtEnd
     Settings.Specific.ColumnTotals = pvgtAtEnd
     Settings.Specific.ShowDimensionNames = True
     Settings.Specific.DisableCache = True
