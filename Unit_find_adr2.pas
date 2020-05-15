@@ -8,7 +8,7 @@ uses
   cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
   cxContainer, cxEdit, cxTextEdit, cxMaskEdit, cxDropDownEdit,
   cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, cxClasses,
-  cxPropertiesStore;
+  cxPropertiesStore, cxGroupBox;
 
 type
   TForm_find_adr2 = class(TForm)
@@ -19,7 +19,6 @@ type
     DS_houses: TDataSource;
     OD_kw: TOracleDataSet;
     DS_kw: TDataSource;
-    Button2: TButton;
     OD_housesND: TStringField;
     OD_housesND2: TStringField;
     OD_housesND_ID: TStringField;
@@ -30,21 +29,33 @@ type
     OD_streetsSTREET: TStringField;
     OD_kwKW: TStringField;
     OD_kwLSK: TStringField;
-    BitBtn1: TBitBtn;
     OD_streetsFIND_STREET: TFloatField;
     OD_housesPSCH: TFloatField;
     OD_t_org: TOracleDataSet;
     DS_t_org: TDataSource;
+    OD_housesKUL: TStringField;
+    cxPropertiesStore1: TcxPropertiesStore;
+    RadioButton1: TRadioButton;
+    RadioButton2: TRadioButton;
+    cxGroupBox1: TcxGroupBox;
+    BitBtn1: TBitBtn;
+    lkpUk: TcxLookupComboBox;
     chk1: TCheckBox;
     chk2: TCheckBox;
-    OD_housesKUL: TStringField;
-    Edit1: TEdit;
-    Label1: TLabel;
-    lkpHouse: TcxLookupComboBox;
     lkpKw: TcxLookupComboBox;
+    lkpHouse: TcxLookupComboBox;
     lkpStreet: TcxLookupComboBox;
-    lkpUk: TcxLookupComboBox;
-    cxPropertiesStore1: TcxPropertiesStore;
+    cxGroupBox2: TcxGroupBox;
+    Label1: TLabel;
+    Edit1: TEdit;
+    RadioButton3: TRadioButton;
+    Label2: TLabel;
+    Edit2: TEdit;
+    RadioButton4: TRadioButton;
+    RadioButton5: TRadioButton;
+    Edit3: TEdit;
+    Label3: TLabel;
+    Label4: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -58,6 +69,12 @@ type
     procedure lkpKwKeyPress(Sender: TObject; var Key: Char);
     procedure lkpStreetPropertiesCloseUp(Sender: TObject);
     procedure lkpHousePropertiesCloseUp(Sender: TObject);
+    procedure RadioButton1Click(Sender: TObject);
+    procedure RadioButton2Click(Sender: TObject);
+    procedure RadioButton3Click(Sender: TObject);
+    procedure RadioButton4Click(Sender: TObject);
+    procedure RadioButton5Click(Sender: TObject);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -115,91 +132,82 @@ var
 begin
   Form_Main.cl_flt;
   Form_Main.search_type_ := 0;
-  //поиск по УК?
-  if lkpUk.EditValue <> Null then
+  Form_Main.flt_single_house_ := -1;
+  Form_Main.flt_reu_ := '';
+  Form_Main.kul_ := '';
+  Form_Main.nd_ := '';
+  Form_Main.Lsk_ := '';
+  Form_Main.k_lsk_id_ := -1;
+  Form_Main.fio_ := '';
+//  Form_Main.str_adr_ := OD_streets.FieldByName('street').asString + ', ' +
+//    OD_houses.FieldByName('nd2').asString;
+
+  if RadioButton1.Checked then
   begin
-    Form_Main.flt_reu_ := OD_t_org.FieldByName('reu').asString;
-    Form_Main.search_type_ := 6;
+    //поиск по УК?
+    if lkpUk.EditValue <> Null then
+    begin
+      Form_Main.flt_reu_ := OD_t_org.FieldByName('reu').asString;
+      Form_Main.search_type_ := 6;
+    end;
+
+    //поиск с точностью до улицы?
+    if lkpStreet.EditValue <> Null then
+    begin
+      Form_Main.kul_ := OD_streets.FieldByName('id').asString;
+      Form_Main.flt_kul_ := OD_streets.FieldByName('id').asString;
+      Form_Main.search_type_ := 1;
+    end;
+
+    //поиск с точностью до дома?
+    if lkpHouse.EditValue <> Null then
+    begin
+      Form_Main.flt_reu_ := OD_t_org.FieldByName('reu').asString;
+      Form_Main.kul_ := OD_streets.FieldByName('id').asString;
+      Form_Main.nd_ := OD_houses.FieldByName('nd_id').asString;
+      Form_Main.flt_nd_ := OD_houses.FieldByName('nd_id').asString;
+      Form_Main.search_type_ := 2;
+    end;
+
+    //поиск с точностью до квартиры?
+    if lkpKw.EditValue <> Null then
+    begin
+      Form_Main.Lsk_ := OD_kw.FieldByName('lsk').asString;
+      Form_Main.flt_kw_ := OD_kw.FieldByName('kw_id').asString;
+      Form_Main.k_lsk_id_ := DataModule1.OraclePackage1.CallStringFunction(
+        'scott.UTILS.GET_K_LSK_ID_BY_LSK', [OD_kw.FieldByName('lsk').asString]);
+      Form_Main.fio_ := OD_kw.FieldByName('fio').asString;
+      Form_Main.str_adr_ := OD_streets.FieldByName('street').asString + ', ' +
+        OD_houses.FieldByName('nd2').asString + '-' +
+        OD_kw.FieldByName('kw').asString;
+
+      Form_Main.kul_ := OD_streets.FieldByName('id').asString;
+      Form_Main.nd_ := OD_houses.FieldByName('nd_id').asString;
+      Form_Main.kw_ := OD_kw.FieldByName('kw_id').asString;
+      Form_Main.search_type_ := 3;
+    end;
   end
   else
   begin
-    //не введен критерий поиска
-    Form_Main.flt_reu_ := '';
+    // по ID дома
+    if RadioButton3.Checked then
+    begin
+      if Edit1.Text <> '' then
+      begin
+        Form_Main.flt_single_house_ := StrToInt(Edit1.Text);
+        Form_Main.search_type_ := 7;
+      end
+    end;
+
   end;
 
-  if Edit1.Text <> '' then
-  begin
-    Form_Main.flt_single_house_ := StrToInt(Edit1.Text);
-    Form_Main.search_type_ := 7;
-  end
-  else
-  begin
-    //не введен критерий поиска
-    Form_Main.flt_single_house_ := -1;
-  end;
-
-  //поиск с точностью до улицы?
-  if lkpStreet.EditValue <> Null then
-  begin
-    Form_Main.kul_ := OD_streets.FieldByName('id').asString;
-    Form_Main.flt_kul_ := OD_streets.FieldByName('id').asString;
-    Form_Main.search_type_ := 1;
-  end
-  else
-  begin
-    //не введен критерий поиска
-    Form_Main.kul_ := '';
-  end;
-
-  //поиск с точностью до дома?
-  if lkpHouse.EditValue <> Null then
-  begin
-    Form_Main.flt_reu_ := OD_t_org.FieldByName('reu').asString;
-    Form_Main.kul_ := OD_streets.FieldByName('id').asString;
-    Form_Main.nd_ := OD_houses.FieldByName('nd_id').asString;
-    Form_Main.flt_nd_ := OD_houses.FieldByName('nd_id').asString;
-    Form_Main.search_type_ := 2;
-  end
-  else
-  begin
-    // не введен критерий поиска
-    Form_Main.nd_ := '';
-  end;
-
-  //поиск с точностью до квартиры?
-  if lkpKw.EditValue <> Null then
-  begin
-    Form_Main.Lsk_ := OD_kw.FieldByName('lsk').asString;
-    Form_Main.flt_kw_ := OD_kw.FieldByName('kw_id').asString;
-    Form_Main.k_lsk_id_ := DataModule1.OraclePackage1.CallStringFunction(
-      'scott.UTILS.GET_K_LSK_ID_BY_LSK', [OD_kw.FieldByName('lsk').asString]);
-    Form_Main.fio_ := OD_kw.FieldByName('fio').asString;
-    Form_Main.str_adr_ := OD_streets.FieldByName('street').asString + ', ' +
-      OD_houses.FieldByName('nd2').asString + '-' +
-      OD_kw.FieldByName('kw').asString;
-
-    Form_Main.kul_ := OD_streets.FieldByName('id').asString;
-    Form_Main.nd_ := OD_houses.FieldByName('nd_id').asString;
-    Form_Main.kw_ := OD_kw.FieldByName('kw_id').asString;
-
-    Form_Main.search_type_ := 3;
-  end
-  else
-  begin
-    //не выбрана квартира
-    Form_Main.Lsk_ := '';
-    Form_Main.k_lsk_id_ := -1;
-    Form_Main.fio_ := '';
-    Form_Main.str_adr_ := OD_streets.FieldByName('street').asString + ', ' +
-      OD_houses.FieldByName('nd2').asString;
-  end;
 end;
 
 procedure TForm_find_adr2.FormCreate(Sender: TObject);
 begin
   // вернуть сохранённые значения контролов
-  //cxPropertiesStore1.Active := True;
-  //cxPropertiesStore1.RestoreFrom;
+  cxPropertiesStore1.Active := True;
+  cxPropertiesStore1.RestoreFrom;
 
   OD_t_org.active := true;
 
@@ -224,6 +232,8 @@ begin
   OD_kw.SetVariable('p_var', 1);
   OD_kw.SetVariable('p_var2', 1);
   OD_kw.active := true;
+  Windows.SetFocus(lkpStreet.Handle)
+
 end;
 
 procedure TForm_find_adr2.BitBtn1Click(Sender: TObject);
@@ -304,9 +314,13 @@ begin
     if Key = #13 then
     begin
       if lkpKw.Enabled = True then
+      
         Windows.SetFocus(lkpKw.Handle)
       else
+      begin
+        lkpKw.Enabled:=True;
         Windows.SetFocus(Button1.Handle);
+      end;
     end;
   except
   end;
@@ -316,7 +330,10 @@ procedure TForm_find_adr2.lkpStreetKeyPress(Sender: TObject;
   var Key: Char);
 begin
   if Key = #13 then
+  begin
+    lkpHouse.Enabled:=True;
     Windows.SetFocus(lkpHouse.Handle)
+  end;
 
 end;
 
@@ -367,6 +384,56 @@ begin
   lkpKw.EditValue := Null;
   if lkpHouse.EditValue <> Null then
     lkpKw.Enabled := True;
+
+end;
+
+procedure TForm_find_adr2.RadioButton1Click(Sender: TObject);
+begin
+  cxGroupBox1.Enabled := true;
+  cxGroupBox1.PanelStyle.Active := True;
+  cxGroupBox2.Enabled := false;
+  cxGroupBox2.PanelStyle.Active := False;
+end;
+
+procedure TForm_find_adr2.RadioButton2Click(Sender: TObject);
+begin
+  cxGroupBox1.Enabled := false;
+  cxGroupBox1.PanelStyle.Active := False;
+  cxGroupBox2.Enabled := true;
+  cxGroupBox2.PanelStyle.Active := True;
+end;
+
+procedure TForm_find_adr2.RadioButton3Click(Sender: TObject);
+begin
+  Edit1.Enabled := True;
+  Edit2.Enabled := False;
+  Edit3.Enabled := False;
+end;
+
+procedure TForm_find_adr2.RadioButton4Click(Sender: TObject);
+begin
+  Edit1.Enabled := False;
+  Edit2.Enabled := True;
+  Edit3.Enabled := False;
+
+end;
+
+procedure TForm_find_adr2.RadioButton5Click(Sender: TObject);
+begin
+  Edit1.Enabled := False;
+  Edit2.Enabled := False;
+  Edit3.Enabled := True;
+
+end;
+
+procedure TForm_find_adr2.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #27 then
+  begin
+    ModalResult := mrAbort;
+    Key := #0;
+    Close;
+  end;
 
 end;
 
