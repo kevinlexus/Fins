@@ -660,6 +660,7 @@ begin
     SetVariable('flt_nd_', Form_Main.flt_nd_);
     SetVariable('flt_kw_', Form_Main.flt_kw_);
     SetVariable('flt_k_lsk_id_', Form_Main.flt_k_lsk_id_);
+    SetVariable('flt_klsk_premise', Form_Main.flt_klsk_premise);
     SetVariable('flt_single_house_', Form_Main.flt_single_house_);
     SetVariable('SUBSTEXP1', ' and k.psch not in(8,9) ');
     // устанавливаем порядок

@@ -1,12 +1,12 @@
 object Form_find_adr2: TForm_find_adr2
-  Left = 2280
-  Top = 308
+  Left = 2149
+  Top = 432
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   BorderWidth = 1
   Caption = #1055#1086#1080#1089#1082
   ClientHeight = 202
-  ClientWidth = 756
+  ClientWidth = 712
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -95,18 +95,18 @@ object Form_find_adr2: TForm_find_adr2
   PixelsPerInch = 96
   TextHeight = 16
   object Button1: TButton
-    Left = 665
-    Top = 87
+    Left = 633
+    Top = 96
     Width = 72
-    Height = 26
+    Height = 33
     Caption = #1048#1089#1082#1072#1090#1100
     ModalResult = 1
-    TabOrder = 3
+    TabOrder = 2
     OnClick = Button1Click
   end
   object RadioButton1: TRadioButton
-    Left = 640
-    Top = 40
+    Left = 616
+    Top = 48
     Width = 17
     Height = 17
     Checked = True
@@ -115,261 +115,258 @@ object Form_find_adr2: TForm_find_adr2
     OnClick = RadioButton1Click
   end
   object RadioButton2: TRadioButton
-    Left = 640
-    Top = 136
+    Left = 616
+    Top = 144
     Width = 17
     Height = 17
     TabOrder = 1
     OnClick = RadioButton2Click
   end
-  object cxGroupBox1: TcxGroupBox
+  object Panel1: TPanel
     Left = 8
-    Top = 8
-    Caption = #1055#1086' '#1072#1076#1088#1077#1089#1091
-    PanelStyle.Active = True
-    TabOrder = 2
-    Height = 89
-    Width = 625
-    object Label4: TLabel
-      Left = 268
-      Top = 29
-      Width = 108
-      Height = 13
-      Caption = #1060#1080#1083#1100#1090#1088' '#1074' '#1087#1086#1080#1089#1082#1077':'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object BitBtn1: TBitBtn
-      Left = 5
-      Top = 58
-      Width = 21
-      Height = 22
-      Hint = #1042#1072#1088#1080#1072#1085#1090' '#1087#1086#1080#1089#1082#1072' '#1091#1083#1080#1094#1099
-      ParentShowHint = False
-      ShowHint = True
-      TabOrder = 3
-      OnClick = BitBtn1Click
-    end
-    object lkpUk: TcxLookupComboBox
-      Left = 32
-      Top = 24
-      Hint = #1059#1050
-      ParentShowHint = False
-      Properties.GridMode = True
-      Properties.KeyFieldNames = 'REU'
-      Properties.ListColumns = <
-        item
-          FieldName = 'NAME'
-        end>
-      Properties.ListOptions.ShowHeader = False
-      Properties.ListSource = DS_t_org
-      Properties.OnChange = cxLookupComboBox4PropertiesChange
-      ShowHint = True
-      TabOrder = 4
-      OnKeyPress = lkpUkKeyPress
-      Width = 201
-    end
-    object chk1: TCheckBox
-      Left = 380
-      Top = 26
-      Width = 125
-      Height = 21
-      Caption = #1054#1089#1085#1086#1074#1085#1099#1077' '#1089#1095#1077#1090#1072
-      Checked = True
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-      State = cbChecked
-      TabOrder = 5
-      OnClick = chk1Click
-    end
-    object chk2: TCheckBox
-      Left = 508
-      Top = 26
-      Width = 109
-      Height = 21
-      Caption = #1044#1077#1081#1089#1090#1074#1091#1102#1097#1080#1077
-      Checked = True
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-      State = cbChecked
-      TabOrder = 6
-      OnClick = chk2Click
-    end
-    object lkpKw: TcxLookupComboBox
-      Left = 448
-      Top = 56
-      Hint = #1050#1074#1072#1088#1090#1080#1088#1072
+    Top = 120
+    Width = 601
+    Height = 73
+    TabOrder = 3
+    OnClick = Panel1Click
+    object cxGroupBox2: TcxGroupBox
+      Left = 8
+      Top = 8
+      Caption = #1055#1086' '#1080#1076#1077#1085#1090#1080#1092#1080#1082#1072#1090#1086#1088#1091
       Enabled = False
-      ParentShowHint = False
-      Properties.GridMode = True
-      Properties.KeyFieldNames = 'KW_ID'
-      Properties.ListColumns = <
-        item
-          FieldName = 'KW'
-        end>
-      Properties.ListOptions.ShowHeader = False
-      Properties.ListSource = DS_kw
-      ShowHint = True
-      TabOrder = 2
-      OnKeyPress = lkpKwKeyPress
-      Width = 105
-    end
-    object lkpHouse: TcxLookupComboBox
-      Left = 240
-      Top = 56
-      Hint = #1044#1086#1084
-      Enabled = False
-      ParentShowHint = False
-      Properties.GridMode = True
-      Properties.KeyFieldNames = 'ND_ID'
-      Properties.ListColumns = <
-        item
-          FieldName = 'ND'
-        end>
-      Properties.ListOptions.ShowHeader = False
-      Properties.ListSource = DS_houses
-      Properties.OnCloseUp = lkpHousePropertiesCloseUp
-      ShowHint = True
-      TabOrder = 1
-      OnKeyPress = lkpHouseKeyPress
-      Width = 201
-    end
-    object lkpStreet: TcxLookupComboBox
-      Left = 32
-      Top = 56
-      Hint = #1059#1083#1080#1094#1072
-      ParentShowHint = False
-      Properties.GridMode = True
-      Properties.KeyFieldNames = 'ID'
-      Properties.ListColumns = <
-        item
-          FieldName = 'NAME'
-        end>
-      Properties.ListOptions.ShowHeader = False
-      Properties.ListSource = DS_streets
-      Properties.OnCloseUp = lkpStreetPropertiesCloseUp
-      ShowHint = True
+      StyleDisabled.BorderColor = clBlack
+      StyleDisabled.BorderStyle = ebsNone
+      StyleDisabled.Color = clBtnShadow
+      StyleDisabled.TextColor = clBlack
       TabOrder = 0
-      OnKeyPress = lkpStreetKeyPress
-      Width = 201
+      Height = 57
+      Width = 585
+      object Label1: TLabel
+        Left = 5
+        Top = 25
+        Width = 61
+        Height = 16
+        Caption = 'ID '#1076#1086#1084#1072':'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -14
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label2: TLabel
+        Left = 165
+        Top = 25
+        Width = 106
+        Height = 16
+        Caption = 'ID '#1087#1086#1084#1077#1097#1077#1085#1080#1103':'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -14
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label3: TLabel
+        Left = 373
+        Top = 25
+        Width = 87
+        Height = 16
+        Caption = #1060#1080#1085'.'#1083#1080#1094'.'#1089#1095'.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -14
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Edit1: TEdit
+        Left = 69
+        Top = 17
+        Width = 73
+        Height = 24
+        Hint = 'ID '#1076#1086#1084#1072
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 0
+      end
+      object Edit2: TEdit
+        Left = 277
+        Top = 17
+        Width = 73
+        Height = 24
+        Hint = 'ID '#1076#1086#1084#1072
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 1
+      end
+      object Edit3: TEdit
+        Left = 461
+        Top = 17
+        Width = 73
+        Height = 24
+        Hint = 'ID '#1076#1086#1084#1072
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 2
+      end
     end
   end
-  object cxGroupBox2: TcxGroupBox
+  object Panel2: TPanel
     Left = 8
-    Top = 104
-    Caption = #1055#1086' '#1080#1076#1077#1085#1090#1080#1092#1080#1082#1072#1090#1086#1088#1091
-    Enabled = False
+    Top = 8
+    Width = 601
+    Height = 105
     TabOrder = 4
-    Height = 97
-    Width = 625
-    object Label1: TLabel
-      Left = 389
-      Top = 25
-      Width = 61
-      Height = 16
-      Caption = 'ID '#1076#1086#1084#1072':'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -14
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object Label2: TLabel
-      Left = 389
-      Top = 49
-      Width = 106
-      Height = 16
-      Caption = 'ID '#1087#1086#1084#1077#1097#1077#1085#1080#1103':'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -14
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object Label3: TLabel
-      Left = 389
-      Top = 73
-      Width = 87
-      Height = 16
-      Caption = #1060#1080#1085'.'#1083#1080#1094'.'#1089#1095'.'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -14
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object Edit1: TEdit
-      Left = 517
-      Top = 17
-      Width = 73
-      Height = 24
-      Hint = 'ID '#1076#1086#1084#1072
-      ParentShowHint = False
-      ShowHint = True
+    OnClick = Panel2Click
+    object cxGroupBox1: TcxGroupBox
+      Left = 0
+      Top = 8
+      Caption = #1055#1086' '#1072#1076#1088#1077#1089#1091
+      PanelStyle.Active = True
+      StyleDisabled.BorderColor = clBlack
+      StyleDisabled.BorderStyle = ebsNone
+      StyleDisabled.Color = clBtnShadow
+      StyleDisabled.TextColor = clBlack
+      StyleDisabled.TextStyle = []
       TabOrder = 0
-    end
-    object RadioButton3: TRadioButton
-      Left = 592
-      Top = 24
-      Width = 25
-      Height = 17
-      Checked = True
-      TabOrder = 3
-      TabStop = True
-      OnClick = RadioButton3Click
-    end
-    object Edit2: TEdit
-      Left = 517
-      Top = 41
-      Width = 73
-      Height = 24
-      Hint = 'ID '#1076#1086#1084#1072
-      Enabled = False
-      ParentShowHint = False
-      ShowHint = True
-      TabOrder = 1
-    end
-    object RadioButton4: TRadioButton
-      Left = 592
-      Top = 48
-      Width = 25
-      Height = 17
-      TabOrder = 4
-      OnClick = RadioButton4Click
-    end
-    object RadioButton5: TRadioButton
-      Left = 592
-      Top = 72
-      Width = 25
-      Height = 17
-      TabOrder = 5
-      OnClick = RadioButton5Click
-    end
-    object Edit3: TEdit
-      Left = 517
-      Top = 65
-      Width = 73
-      Height = 24
-      Hint = 'ID '#1076#1086#1084#1072
-      Enabled = False
-      ParentShowHint = False
-      ShowHint = True
-      TabOrder = 2
+      Height = 89
+      Width = 593
+      object Label4: TLabel
+        Left = 244
+        Top = 29
+        Width = 108
+        Height = 13
+        Caption = #1060#1080#1083#1100#1090#1088' '#1074' '#1087#1086#1080#1089#1082#1077':'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object BitBtn1: TBitBtn
+        Left = 5
+        Top = 58
+        Width = 21
+        Height = 22
+        Hint = #1042#1072#1088#1080#1072#1085#1090' '#1087#1086#1080#1089#1082#1072' '#1091#1083#1080#1094#1099
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 3
+        OnClick = BitBtn1Click
+      end
+      object lkpUk: TcxLookupComboBox
+        Left = 32
+        Top = 24
+        Hint = #1059#1050
+        ParentShowHint = False
+        Properties.GridMode = True
+        Properties.KeyFieldNames = 'REU'
+        Properties.ListColumns = <
+          item
+            FieldName = 'NAME'
+          end>
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = DS_t_org
+        Properties.OnChange = cxLookupComboBox4PropertiesChange
+        ShowHint = True
+        TabOrder = 4
+        OnKeyPress = lkpUkKeyPress
+        Width = 201
+      end
+      object chk1: TCheckBox
+        Left = 356
+        Top = 26
+        Width = 125
+        Height = 21
+        Caption = #1054#1089#1085#1086#1074#1085#1099#1077' '#1089#1095#1077#1090#1072
+        Checked = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+        State = cbChecked
+        TabOrder = 5
+        OnClick = chk1Click
+      end
+      object chk2: TCheckBox
+        Left = 484
+        Top = 26
+        Width = 101
+        Height = 21
+        Caption = #1044#1077#1081#1089#1090#1074#1091#1102#1097#1080#1077
+        Checked = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+        State = cbChecked
+        TabOrder = 6
+        OnClick = chk2Click
+      end
+      object lkpKw: TcxLookupComboBox
+        Left = 448
+        Top = 56
+        Hint = #1050#1074#1072#1088#1090#1080#1088#1072
+        Enabled = False
+        ParentShowHint = False
+        Properties.GridMode = True
+        Properties.KeyFieldNames = 'KW_ID'
+        Properties.ListColumns = <
+          item
+            FieldName = 'KW'
+          end>
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = DS_kw
+        ShowHint = True
+        TabOrder = 2
+        OnKeyPress = lkpKwKeyPress
+        Width = 105
+      end
+      object lkpHouse: TcxLookupComboBox
+        Left = 240
+        Top = 56
+        Hint = #1044#1086#1084
+        Enabled = False
+        ParentShowHint = False
+        Properties.GridMode = True
+        Properties.KeyFieldNames = 'ND_ID'
+        Properties.ListColumns = <
+          item
+            FieldName = 'ND'
+          end>
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = DS_houses
+        Properties.OnCloseUp = lkpHousePropertiesCloseUp
+        ShowHint = True
+        TabOrder = 1
+        OnKeyPress = lkpHouseKeyPress
+        Width = 201
+      end
+      object lkpStreet: TcxLookupComboBox
+        Left = 32
+        Top = 56
+        Hint = #1059#1083#1080#1094#1072
+        ParentShowHint = False
+        Properties.GridMode = True
+        Properties.KeyFieldNames = 'ID'
+        Properties.ListColumns = <
+          item
+            FieldName = 'NAME'
+          end>
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = DS_streets
+        Properties.OnCloseUp = lkpStreetPropertiesCloseUp
+        ShowHint = True
+        TabOrder = 0
+        OnKeyPress = lkpStreetKeyPress
+        Width = 201
+      end
     end
   end
   object OD_streets: TOracleDataSet
@@ -569,37 +566,7 @@ object Form_find_adr2: TForm_find_adr2
     Top = 272
   end
   object cxPropertiesStore1: TcxPropertiesStore
-    Components = <
-      item
-        Component = Edit1
-        Properties.Strings = (
-          'Text')
-      end
-      item
-        Component = Edit2
-        Properties.Strings = (
-          'Text')
-      end
-      item
-        Component = Edit3
-        Properties.Strings = (
-          'Text')
-      end
-      item
-        Component = lkpHouse
-        Properties.Strings = (
-          'EditValue')
-      end
-      item
-        Component = lkpKw
-        Properties.Strings = (
-          'EditValue')
-      end
-      item
-        Component = lkpStreet
-        Properties.Strings = (
-          'EditValue')
-      end>
+    Components = <>
     StorageName = 'frmListKartStore'
     StorageType = stRegistry
     Left = 80

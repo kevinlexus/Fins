@@ -443,6 +443,8 @@ type
     flt_kw_: string;
     flt_k_lsk_id_: Integer;
     flt_single_house_: Integer;
+    flt_klsk_premise: Integer;
+    
     //
     default_lsk: string;
     fio_: string;
@@ -499,6 +501,7 @@ begin
   flt_kw_ := '';
   flt_k_lsk_id_ := -1;
   flt_single_house_ := -1;
+  flt_klsk_premise := -1;
 end;
 
 procedure TForm_Main.N5Click(Sender: TObject);

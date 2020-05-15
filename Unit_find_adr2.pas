@@ -8,7 +8,7 @@ uses
   cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
   cxContainer, cxEdit, cxTextEdit, cxMaskEdit, cxDropDownEdit,
   cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, cxClasses,
-  cxPropertiesStore, cxGroupBox;
+  cxPropertiesStore, cxGroupBox, ExtCtrls;
 
 type
   TForm_find_adr2 = class(TForm)
@@ -37,7 +37,17 @@ type
     cxPropertiesStore1: TcxPropertiesStore;
     RadioButton1: TRadioButton;
     RadioButton2: TRadioButton;
+    Panel1: TPanel;
+    cxGroupBox2: TcxGroupBox;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Edit3: TEdit;
+    Panel2: TPanel;
     cxGroupBox1: TcxGroupBox;
+    Label4: TLabel;
     BitBtn1: TBitBtn;
     lkpUk: TcxLookupComboBox;
     chk1: TCheckBox;
@@ -45,17 +55,6 @@ type
     lkpKw: TcxLookupComboBox;
     lkpHouse: TcxLookupComboBox;
     lkpStreet: TcxLookupComboBox;
-    cxGroupBox2: TcxGroupBox;
-    Label1: TLabel;
-    Edit1: TEdit;
-    RadioButton3: TRadioButton;
-    Label2: TLabel;
-    Edit2: TEdit;
-    RadioButton4: TRadioButton;
-    RadioButton5: TRadioButton;
-    Edit3: TEdit;
-    Label3: TLabel;
-    Label4: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -75,6 +74,12 @@ type
     procedure RadioButton4Click(Sender: TObject);
     procedure RadioButton5Click(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure Panel1MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure Panel2MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure Panel1Click(Sender: TObject);
+    procedure Panel2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -134,10 +139,11 @@ begin
   Form_Main.search_type_ := 0;
   Form_Main.flt_single_house_ := -1;
   Form_Main.flt_reu_ := '';
+  Form_Main.flt_klsk_premise := -1;
+  Form_Main.k_lsk_id_ := -1;
   Form_Main.kul_ := '';
   Form_Main.nd_ := '';
   Form_Main.Lsk_ := '';
-  Form_Main.k_lsk_id_ := -1;
   Form_Main.fio_ := '';
 //  Form_Main.str_adr_ := OD_streets.FieldByName('street').asString + ', ' +
 //    OD_houses.FieldByName('nd2').asString;
@@ -190,17 +196,25 @@ begin
   else
   begin
     // по ID дома
-    if RadioButton3.Checked then
+    if Edit1.Text <> '' then
     begin
-      if Edit1.Text <> '' then
-      begin
-        Form_Main.flt_single_house_ := StrToInt(Edit1.Text);
-        Form_Main.search_type_ := 7;
-      end
+      Form_Main.flt_single_house_ := StrToInt(Edit1.Text);
+      Form_Main.search_type_ := 7;
+    end
+    else 
+    if Edit2.Text <> '' then
+    begin
+      // по ID помещения
+      Form_Main.flt_klsk_premise := StrToInt(Edit2.Text);
+      Form_Main.search_type_ := 8;
+    end else
+    if Edit3.Text <> '' then
+    begin
+      // по фин.лиц.сч.
+      Form_Main.flt_k_lsk_id_ := StrToInt(Edit3.Text);
+      Form_Main.search_type_ := 3;
     end;
-
   end;
-
 end;
 
 procedure TForm_find_adr2.FormCreate(Sender: TObject);
@@ -434,6 +448,38 @@ begin
     Key := #0;
     Close;
   end;
+
+end;
+
+procedure TForm_find_adr2.Panel1MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+begin
+  cxGroupBox1.Enabled:=False;
+  cxGroupBox2.Enabled:=True;
+end;
+
+procedure TForm_find_adr2.Panel2MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+begin
+  cxGroupBox1.Enabled:=True;
+  cxGroupBox2.Enabled:=False;
+
+end;
+
+procedure TForm_find_adr2.Panel1Click(Sender: TObject);
+begin
+  cxGroupBox1.Enabled:=False;
+  cxGroupBox2.Enabled:=True;
+  RadioButton1.Checked:=False;
+  RadioButton2.Checked:=True;
+end;
+
+procedure TForm_find_adr2.Panel2Click(Sender: TObject);
+begin
+  cxGroupBox1.Enabled:=True;
+  cxGroupBox2.Enabled:=False;
+  RadioButton1.Checked:=True;
+  RadioButton2.Checked:=False;
 
 end;
 

@@ -430,6 +430,7 @@ object Form_list_kart: TForm_list_kart
           Spacing = 4
           Transparent = False
           Caption = 'wwDBNavigator1Insert'
+          Enabled = False
           DisabledTextColors.ShadeColor = clGray
           DisabledTextColors.HighlightColor = clBtnHighlight
           Index = 6
@@ -465,6 +466,7 @@ object Form_list_kart: TForm_list_kart
           Spacing = 4
           Transparent = False
           Caption = 'wwDBNavigator1Edit'
+          Enabled = False
           DisabledTextColors.ShadeColor = clGray
           DisabledTextColors.HighlightColor = clBtnHighlight
           Index = 8
@@ -518,6 +520,7 @@ object Form_list_kart: TForm_list_kart
           Spacing = 4
           Transparent = False
           Caption = 'wwDBNavigator1Refresh'
+          Enabled = False
           DisabledTextColors.ShadeColor = clGray
           DisabledTextColors.HighlightColor = clBtnHighlight
           Index = 11
@@ -535,6 +538,7 @@ object Form_list_kart: TForm_list_kart
           Spacing = 4
           Transparent = False
           Caption = 'wwDBNavigator1SaveBookmark'
+          Enabled = False
           DisabledTextColors.ShadeColor = clGray
           DisabledTextColors.HighlightColor = clBtnHighlight
           Index = 12
@@ -1202,6 +1206,9 @@ object Form_list_kart: TForm_list_kart
       
         'and decode(:flt_k_lsk_id_, -1, k.k_lsk_id, :flt_k_lsk_id_)=k.k_l' +
         'sk_id'
+      
+        'and decode(:flt_klsk_premise, -1, k.fk_klsk_premise, :flt_klsk_p' +
+        'remise)=k.fk_klsk_premise'
       'and decode(:var3_, 0, u.cd, 1, '#39'LSK_TP_MAIN'#39')=u.cd'
       ''
       ':substExp1'
@@ -1213,7 +1220,7 @@ object Form_list_kart: TForm_list_kart
       ':substExp4')
     Optimize = False
     Variables.Data = {
-      030000000B000000090000003A464C545F5245555F0500000000000000000000
+      030000000C000000090000003A464C545F5245555F0500000000000000000000
       00090000003A464C545F4B554C5F050000000000000000000000080000003A46
       4C545F4B575F050000000000000000000000080000003A464C545F4E445F0500
       000000000000000000000E0000003A464C545F4B5F4C534B5F49445F03000000
@@ -1222,7 +1229,8 @@ object Form_list_kart: TForm_list_kart
       3A5355425354455850320100000000000000000000000A0000003A5355425354
       455850330100000000000000000000000A0000003A5355425354455850340100
       00000000000000000000120000003A464C545F53494E474C455F484F5553455F
-      030000000000000000000000}
+      030000000000000000000000110000003A464C545F4B4C534B5F5052454D4953
+      45030000000000000000000000}
     OracleDictionary.UseMessageTable = True
     QBEDefinition.AllowOperators = True
     QBEDefinition.QBEFieldDefs = {
@@ -1275,7 +1283,6 @@ object Form_list_kart: TForm_list_kart
     CachedUpdates = True
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Active = True
     AfterOpen = OD_list_kartAfterOpen
     BeforeInsert = OD_list_kartBeforeInsert
     BeforeScroll = OD_list_kartBeforeScroll
