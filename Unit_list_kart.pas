@@ -610,7 +610,7 @@ end;
 
 procedure TForm_list_kart.FormCreate(Sender: TObject);
 begin
-  //Настройки расположения формы
+  // Настройки расположения формы
   cxPropertiesStore1.Active := True;
   cxPropertiesStore1.RestoreFrom;
 

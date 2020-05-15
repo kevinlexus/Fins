@@ -1,12 +1,12 @@
 object Form_find_adr: TForm_find_adr
-  Left = 631
-  Top = 346
+  Left = 918
+  Top = 205
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   BorderWidth = 1
   Caption = #1055#1086#1080#1089#1082' '#1087#1086' '#1072#1076#1088#1077#1089#1091
-  ClientHeight = 76
-  ClientWidth = 729
+  ClientHeight = 71
+  ClientWidth = 731
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText

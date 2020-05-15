@@ -7,7 +7,8 @@ uses
   Dialogs, StdCtrls, DBCtrlsEh, DB, OracleData, wwdblook, Buttons, ImgList,
   cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
   cxContainer, cxEdit, cxTextEdit, cxMaskEdit, cxDropDownEdit,
-  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox;
+  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, cxClasses,
+  cxPropertiesStore;
 
 type
   TForm_find_adr2 = class(TForm)
@@ -18,9 +19,6 @@ type
     DS_houses: TDataSource;
     OD_kw: TOracleDataSet;
     DS_kw: TDataSource;
-    wwDBLookupCombo1: TwwDBLookupCombo;
-    wwDBLookupCombo3: TwwDBLookupCombo;
-    wwDBLookupCombo4: TwwDBLookupCombo;
     Button2: TButton;
     OD_housesND: TStringField;
     OD_housesND2: TStringField;
@@ -35,28 +33,29 @@ type
     BitBtn1: TBitBtn;
     OD_streetsFIND_STREET: TFloatField;
     OD_housesPSCH: TFloatField;
-    ImageList1: TImageList;
     OD_t_org: TOracleDataSet;
     DS_t_org: TDataSource;
-    wwDBLookupCombo2: TwwDBLookupCombo;
     chk1: TCheckBox;
     chk2: TCheckBox;
     OD_housesKUL: TStringField;
     Edit1: TEdit;
     Label1: TLabel;
-    cxLookupComboBox1: TcxLookupComboBox;
+    lkpHouse: TcxLookupComboBox;
+    lkpKw: TcxLookupComboBox;
+    lkpStreet: TcxLookupComboBox;
+    lkpUk: TcxLookupComboBox;
+    cxPropertiesStore1: TcxPropertiesStore;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
-    procedure wwDBLookupCombo3KeyPress(Sender: TObject; var Key: Char);
-    procedure wwDBLookupCombo4KeyPress(Sender: TObject; var Key: Char);
-    procedure wwDBLookupCombo1KeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
-    procedure wwDBLookupCombo1Change(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
-    procedure wwDBLookupCombo2KeyPress(Sender: TObject; var Key: Char);
-    procedure wwDBLookupCombo2Change(Sender: TObject);
     procedure chk1Click(Sender: TObject);
     procedure chk2Click(Sender: TObject);
+    procedure lkpHouseKeyPress(Sender: TObject; var Key: Char);
+    procedure lkpStreetKeyPress(Sender: TObject; var Key: Char);
+    procedure cxLookupComboBox4PropertiesChange(Sender: TObject);
+    procedure lkpUkKeyPress(Sender: TObject; var Key: Char);
+    procedure lkpKwKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -87,27 +86,23 @@ procedure TForm_find_adr2.SetAccess(is_flt_reu_:Integer;
     is_flt_kw_:Integer);
 begin
   //Установки фильтра
-  wwDBLookupCombo2.Visible:=False;
-  wwDBLookupCombo1.Visible:=False;
-  wwDBLookupCombo3.Visible:=False;
-  wwDBLookupCombo4.Visible:=False;
   chk1.Visible:=False;
 
   if is_flt_reu_ = 1 then
   begin
-     wwDBLookupCombo2.Visible:=True;
+     lkpUk.Visible:=True;
   end;
   if is_flt_kul_ = 1 then
   begin
-     wwDBLookupCombo1.Visible:=True;
+     lkpStreet.Visible:=True;
   end;
   if is_flt_house_ = 1 then
   begin
-     wwDBLookupCombo3.Visible:=True;
+     lkpHouse.Visible:=True;
   end;
   if is_flt_kw_ = 1 then
   begin
-     wwDBLookupCombo4.Visible:=True;
+     lkpKw.Visible:=True;
      chk1.Visible:=True;
   end;
 end;
@@ -119,7 +114,7 @@ begin
   Form_Main.cl_flt;
   Form_Main.search_type_:=0;
   //поиск по УК?
- if wwDBLookupCombo2.Text <> '' then
+ if cxLookupComboBox4.EditValue <> Null then
  begin
    Form_Main.flt_reu_:=OD_t_org.FieldByName('reu').asString;
    Form_Main.search_type_:=6;
@@ -142,7 +137,7 @@ begin
  end;
 
   //поиск с точностью до улицы?
- if wwDBLookupCombo1.Text <> '' then
+ if lkpStreet.EditValue <> Null then
  begin
    Form_Main.kul_:=OD_streets.FieldByName('id').asString;
    Form_Main.flt_kul_:=OD_streets.FieldByName('id').asString;
@@ -155,7 +150,7 @@ begin
  end;
 
   //поиск с точностью до дома?
- if wwDBLookupCombo3.Text <> '' then
+ if lkpHouse.EditValue <> Null then
  begin
    Form_Main.flt_reu_:=OD_t_org.FieldByName('reu').asString;
    Form_Main.kul_:=OD_streets.FieldByName('id').asString;
@@ -170,7 +165,7 @@ begin
  end;
 
  //поиск с точностью до квартиры?
- if wwDBLookupCombo4.Text <> '' then
+ if lkpKw.EditValue <> Null then
  begin
    Form_Main.Lsk_:=OD_kw.FieldByName('lsk').asString;
    Form_Main.flt_kw_:=OD_kw.FieldByName('kw_id').asString;
@@ -198,45 +193,12 @@ begin
  end;
 end;
 
-procedure TForm_find_adr2.wwDBLookupCombo3KeyPress(Sender: TObject;
-  var Key: Char);
-begin
- try
-  if Key = #13 then
-  begin
-    if wwDBLookupCombo4.Enabled = True then
-      wwDBLookupCombo4.SetFocus else
-     Button1.SetFocus;
-  end;
-  except
-  end;
-
-end;
-
-procedure TForm_find_adr2.wwDBLookupCombo4KeyPress(Sender: TObject;
-  var Key: Char);
-begin
- try
-  if Key = #13 then
-    Button1.SetFocus;
-  except
-  end;
-
-end;
-
-procedure TForm_find_adr2.wwDBLookupCombo1KeyPress(Sender: TObject;
-  var Key: Char);
-begin
-// try
-  if Key = #13 then
-    Windows.SetFocus(wwDBLookupCombo3.Handle)
-//    wwDBLookupCombo3.SetFocus;
-//  except
-//  end;
-end;
-
 procedure TForm_find_adr2.FormCreate(Sender: TObject);
 begin
+  // вернуть сохранённые значения контролов
+  cxPropertiesStore1.Active := True;
+  cxPropertiesStore1.RestoreFrom;
+  
   OD_t_org.active:=true;
 
   OD_streets.active:=false;
@@ -260,11 +222,6 @@ begin
   OD_kw.SetVariable('p_var', 1);
   OD_kw.SetVariable('p_var2', 1);
   OD_kw.active:=true;
-end;
-
-procedure TForm_find_adr2.wwDBLookupCombo1Change(Sender: TObject);
-begin
-  wwDBLookupCombo3.Text:='';
 end;
 
 procedure TForm_find_adr2.BitBtn1Click(Sender: TObject);
@@ -294,31 +251,6 @@ begin
   end;
   OD_streets.active:=false;
   OD_streets.active:=true;
-end;
-
-procedure TForm_find_adr2.wwDBLookupCombo2KeyPress(Sender: TObject;
-  var Key: Char);
-begin
-try
-  if Key = #13 then
-    wwDBLookupCombo1.SetFocus;
-  except
-  end;
-end;
-
-procedure TForm_find_adr2.wwDBLookupCombo2Change(Sender: TObject);
-begin
-  with OD_houses do
-  begin
-    Active:=False;
-    SetVariable('flt_reu_',
-      OD_t_org.FieldByName('reu').AsString);
-    Active:=True;
-  end;
-  wwDBLookupCombo1.LookupValue:='';
-  wwDBLookupCombo3.LookupValue:='';
-  wwDBLookupCombo4.LookupValue:='';
-
 end;
 
 procedure TForm_find_adr2.chk1Click(Sender: TObject);
@@ -361,6 +293,61 @@ begin
   OD_houses.active:=true;
  end;
 
+end;
+
+procedure TForm_find_adr2.lkpHouseKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+ try
+  if Key = #13 then
+  begin
+    if lkpKw.Enabled = True then
+      Windows.SetFocus(lkpKw.Handle) else
+      Windows.SetFocus(Button1.Handle);
+  end;
+  except
+  end;
+end;
+
+procedure TForm_find_adr2.lkpStreetKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  if Key = #13 then
+    Windows.SetFocus(lkpHouse.Handle)
+
+end;
+
+procedure TForm_find_adr2.cxLookupComboBox4PropertiesChange(
+  Sender: TObject);
+begin
+  with OD_houses do
+  begin
+    Active:=False;
+    SetVariable('flt_reu_',
+      OD_t_org.FieldByName('reu').AsString);
+    Active:=True;
+  end;
+
+end;
+
+procedure TForm_find_adr2.lkpUkKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+try
+  if Key = #13 then
+    lkpStreet.SetFocus;
+  except
+  end;
+end;
+
+procedure TForm_find_adr2.lkpKwKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+ try
+  if Key = #13 then
+     Windows.SetFocus(Button1.Handle);
+  except
+  end;
 end;
 
 end.

@@ -1,12 +1,12 @@
 object Form_find_adr2: TForm_find_adr2
-  Left = 664
-  Top = 211
+  Left = 721
+  Top = 181
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   BorderWidth = 1
   Caption = #1055#1086#1080#1089#1082' '#1087#1086' '#1072#1076#1088#1077#1089#1091
-  ClientHeight = 109
-  ClientWidth = 734
+  ClientHeight = 182
+  ClientWidth = 732
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -115,81 +115,6 @@ object Form_find_adr2: TForm_find_adr2
     TabOrder = 3
     OnClick = Button1Click
   end
-  object wwDBLookupCombo1: TwwDBLookupCombo
-    Left = 30
-    Top = 39
-    Width = 203
-    Height = 24
-    Hint = #1059#1083#1080#1094#1072
-    DropDownAlignment = taLeftJustify
-    LookupTable = OD_streets
-    LookupField = 'NAME'
-    Options = [loSearchOnBackspace]
-    ParentShowHint = False
-    ShowHint = True
-    TabOrder = 0
-    AutoDropDown = True
-    ShowButton = True
-    SearchDelay = 1
-    PreciseEditRegion = False
-    AllowClearKey = False
-    ShowMatchText = True
-    OnChange = wwDBLookupCombo1Change
-    OnKeyPress = wwDBLookupCombo1KeyPress
-  end
-  object wwDBLookupCombo3: TwwDBLookupCombo
-    Left = 240
-    Top = 39
-    Width = 201
-    Height = 26
-    Hint = #1044#1086#1084
-    AutoSize = False
-    ControlType.Strings = (
-      'PSCH;ImageIndex;Shrink To Fit')
-    DropDownAlignment = taLeftJustify
-    Selected.Strings = (
-      'ND'#9'35'#9'ND'#9'F'#9
-      'PSCH'#9'10'#9'PSCH'#9'F'#9)
-    LookupTable = OD_houses
-    LookupField = 'ND_ID'
-    ImageList = ImageList1
-    ParentShowHint = False
-    ShowHint = True
-    TabOrder = 1
-    AutoDropDown = True
-    ShowButton = True
-    SearchDelay = 1
-    PreciseEditRegion = False
-    AllowClearKey = False
-    ShowMatchText = True
-    OnKeyPress = wwDBLookupCombo3KeyPress
-  end
-  object wwDBLookupCombo4: TwwDBLookupCombo
-    Left = 445
-    Top = 39
-    Width = 106
-    Height = 24
-    Hint = #1050#1074#1072#1088#1090#1080#1088#1072
-    ControlType.Strings = (
-      'STATUS;ImageIndex;Original Size')
-    DropDownAlignment = taLeftJustify
-    Selected.Strings = (
-      'KW'#9'7'#9'KW'#9'F'
-      'FIO'#9'25'#9'FIO'#9'F')
-    LookupTable = OD_kw
-    LookupField = 'KW'
-    ImageList = Form_Main.ImageList1
-    ParentShowHint = False
-    ShowHint = True
-    TabOrder = 2
-    AutoDropDown = True
-    ShowButton = True
-    SearchDelay = 1
-    PreciseEditRegion = False
-    AllowClearKey = False
-    ShowMatchText = True
-    OnKeyPress = wwDBLookupCombo4KeyPress
-  end
   object Button2: TButton
     Left = 660
     Top = 39
@@ -208,30 +133,8 @@ object Form_find_adr2: TForm_find_adr2
     Hint = #1042#1072#1088#1080#1072#1085#1090' '#1087#1086#1080#1089#1082#1072' '#1091#1083#1080#1094#1099
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 6
+    TabOrder = 7
     OnClick = BitBtn1Click
-  end
-  object wwDBLookupCombo2: TwwDBLookupCombo
-    Left = 30
-    Top = 10
-    Width = 203
-    Height = 24
-    Hint = #1059#1050
-    DropDownAlignment = taLeftJustify
-    LookupTable = OD_t_org
-    LookupField = 'NAME'
-    Options = [loSearchOnBackspace]
-    ParentShowHint = False
-    ShowHint = True
-    TabOrder = 5
-    AutoDropDown = True
-    ShowButton = True
-    SearchDelay = 1
-    PreciseEditRegion = False
-    AllowClearKey = False
-    ShowMatchText = True
-    OnChange = wwDBLookupCombo2Change
-    OnKeyPress = wwDBLookupCombo2KeyPress
   end
   object chk1: TCheckBox
     Left = 380
@@ -247,7 +150,7 @@ object Form_find_adr2: TForm_find_adr2
     Font.Style = [fsBold]
     ParentFont = False
     State = cbChecked
-    TabOrder = 7
+    TabOrder = 8
     OnClick = chk1Click
   end
   object chk2: TCheckBox
@@ -264,7 +167,7 @@ object Form_find_adr2: TForm_find_adr2
     Font.Style = [fsBold]
     ParentFont = False
     State = cbChecked
-    TabOrder = 8
+    TabOrder = 9
     OnClick = chk2Click
   end
   object Edit1: TEdit
@@ -275,18 +178,79 @@ object Form_find_adr2: TForm_find_adr2
     Hint = 'ID '#1076#1086#1084#1072
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 9
+    TabOrder = 6
   end
-  object cxLookupComboBox1: TcxLookupComboBox
+  object lkpHouse: TcxLookupComboBox
     Left = 240
-    Top = 72
+    Top = 40
+    Hint = #1044#1086#1084
+    ParentShowHint = False
+    Properties.GridMode = True
     Properties.KeyFieldNames = 'ND_ID'
     Properties.ListColumns = <
       item
         FieldName = 'ND'
       end>
+    Properties.ListOptions.ShowHeader = False
     Properties.ListSource = DS_houses
-    TabOrder = 10
+    ShowHint = True
+    TabOrder = 1
+    OnKeyPress = lkpHouseKeyPress
+    Width = 201
+  end
+  object lkpKw: TcxLookupComboBox
+    Left = 448
+    Top = 40
+    Hint = #1050#1074#1072#1088#1090#1080#1088#1072
+    ParentShowHint = False
+    Properties.GridMode = True
+    Properties.KeyFieldNames = 'KW_ID'
+    Properties.ListColumns = <
+      item
+        FieldName = 'KW'
+      end>
+    Properties.ListOptions.ShowHeader = False
+    Properties.ListSource = DS_kw
+    ShowHint = True
+    TabOrder = 2
+    OnKeyPress = lkpKwKeyPress
+    Width = 105
+  end
+  object lkpStreet: TcxLookupComboBox
+    Left = 32
+    Top = 40
+    Hint = #1059#1083#1080#1094#1072
+    ParentShowHint = False
+    Properties.GridMode = True
+    Properties.KeyFieldNames = 'ID'
+    Properties.ListColumns = <
+      item
+        FieldName = 'NAME'
+      end>
+    Properties.ListOptions.ShowHeader = False
+    Properties.ListSource = DS_streets
+    ShowHint = True
+    TabOrder = 0
+    OnKeyPress = lkpStreetKeyPress
+    Width = 201
+  end
+  object lkpUk: TcxLookupComboBox
+    Left = 32
+    Top = 8
+    Hint = #1059#1050
+    ParentShowHint = False
+    Properties.GridMode = True
+    Properties.KeyFieldNames = 'REU'
+    Properties.ListColumns = <
+      item
+        FieldName = 'NAME'
+      end>
+    Properties.ListOptions.ShowHeader = False
+    Properties.ListSource = DS_t_org
+    Properties.OnChange = cxLookupComboBox4PropertiesChange
+    ShowHint = True
+    TabOrder = 5
+    OnKeyPress = lkpUkKeyPress
     Width = 201
   end
   object OD_streets: TOracleDataSet
@@ -321,8 +285,8 @@ object Form_find_adr2: TForm_find_adr2
     MasterFields = 'reu'
     DetailFields = 'flt_reu_'
     Session = DataModule1.OracleSession1
-    Left = 16
-    Top = 160
+    Left = 8
+    Top = 72
     object OD_streetsID: TStringField
       FieldName = 'ID'
       Required = True
@@ -342,8 +306,8 @@ object Form_find_adr2: TForm_find_adr2
   end
   object DS_streets: TDataSource
     DataSet = OD_streets
-    Left = 48
-    Top = 160
+    Left = 40
+    Top = 72
   end
   object OD_houses: TOracleDataSet
     SQL.Strings = (
@@ -375,8 +339,8 @@ object Form_find_adr2: TForm_find_adr2
     DetailFields = 'ID'
     Session = DataModule1.OracleSession1
     Detachable = True
-    Left = 88
-    Top = 160
+    Left = 80
+    Top = 72
     object OD_housesND: TStringField
       DisplayWidth = 35
       FieldName = 'ND'
@@ -407,8 +371,8 @@ object Form_find_adr2: TForm_find_adr2
   end
   object DS_houses: TDataSource
     DataSet = OD_houses
-    Left = 120
-    Top = 160
+    Left = 112
+    Top = 72
   end
   object OD_kw: TOracleDataSet
     SQL.Strings = (
@@ -434,8 +398,8 @@ object Form_find_adr2: TForm_find_adr2
     MasterFields = 'kul;nd_id'
     DetailFields = 'kul;nd'
     Session = DataModule1.OracleSession1
-    Left = 160
-    Top = 160
+    Left = 152
+    Top = 72
     object OD_kwKW: TStringField
       DisplayWidth = 7
       FieldName = 'KW'
@@ -461,73 +425,8 @@ object Form_find_adr2: TForm_find_adr2
   end
   object DS_kw: TDataSource
     DataSet = OD_kw
-    Left = 192
-    Top = 160
-  end
-  object ImageList1: TImageList
-    Height = 10
-    Width = 10
-    Left = 88
-    Top = 192
-    Bitmap = {
-      494C01010200040004000A000A00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
-      0000000000003600000028000000280000000A00000001002000000000004006
-      000000000000000000000000000000000000000000000000000000000000E0F1
-      D900C1E4B400C1E4B400E2F2DB00000000000000000000000000000000000000
-      000000000000F8F8F100F2F2E400F2F2E400F9F9F20000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      00000000000000000000000000000000000000000000F5FBF30098D181006BBE
-      4B0077C65B0077C65B0077C65B009FD58B00F7FCF5000000000000000000FDFD
-      FB00E8E8D100DEDEBE00E2E2C600E2E2C600E2E2C600EAEAD500FEFEFC000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000094CE7B0067BC460077C6
-      5B0092D87F00A5E5990092D87F0077C65B009DD488000000000000000000E6E6
-      CE00DDDDBC00E2E2C600EBEBD800F2F2E500EBEBD800E2E2C600EAEAD4000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000000000000000000000000000DCEFD40058B2320067BC460077C6
-      5B00A5E59900CCFFCC00A5E5990077C65B0067BC4600DFF1D800F7F7EF00D8D8
-      B200DDDDBC00E2E2C600F2F2E50000000000F2F2E500E2E2C600DDDDBC00F8F8
-      F100000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000000000000000000000000000B6DCA40058B2320067BC460077C6
-      5B0092D87F00A5E5990092D87F0077C65B0067BC4600BCE0AC00EEEEDC00D8D8
-      B200DDDDBC00E2E2C600EBEBD800F2F2E500EBEBD800E2E2C600DDDDBC00F0F0
-      E000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000000000000000000000000000B4DBA20054AF2D0060B73C006BBE
-      4B0077C65B0077C65B0077C65B006BBE4B0060B73C00BADFAA00EDEDDB00D7D7
-      AF00DBDBB700DEDEBE00E2E2C600E2E2C600E2E2C600DEDEBE00DBDBB700EFEF
-      DF00000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000000000000000000000000000DAEDD10049A81E0058B2320060B7
-      3C0067BC460067BC460067BC460060B73C0058B23200DCEFD400F6F6ED00D3D3
-      A800D8D8B200DBDBB700DDDDBC00DDDDBC00DDDDBC00DBDBB700D8D8B200F7F7
-      EF00000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000085C4680049A81E0054AF
-      2D0058B2320058B2320058B2320054AF2D008AC76E000000000000000000E2E2
-      C400D3D3A800D7D7AF00D8D8B200D8D8B200D8D8B200D7D7AF00E3E3C7000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      00000000000000000000000000000000000000000000F4FAF10082C2640045A5
-      190049A81E0049A81E0049A81E0087C56A00F5FAF2000000000000000000FDFD
-      FA00E0E0C200D2D2A500D3D3A800D3D3A800D3D3A800E2E2C500FDFDFA000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000000000000000000000000000000000000000000000000000D8EC
-      CE00AFD89B00AFD89B00D9ECCF00000000000000000000000000000000000000
-      000000000000F6F6EC00EBEBD800EBEBD800F6F6EC0000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000000000000000000000000000424D3E000000000000003E000000
-      28000000280000000A0000000100010000000000500000000000000000000000
-      000000000000000000000000FFFFFF00E1F87000000000008060100000000000
-      8060100000000000000100000000000000000000000000000000000000000000
-      000000000000000080601000000000008060100000000000E1F8700000000000
-      00000000000000000000000000000000000000000000}
+    Left = 184
+    Top = 72
   end
   object OD_t_org: TOracleDataSet
     SQL.Strings = (
@@ -542,12 +441,187 @@ object Form_find_adr2: TForm_find_adr2
       0400000004000000020000004944010000000000040000004E414D4501000000
       0000030000004F524401000000000003000000524555010000000000}
     Session = DataModule1.OracleSession1
-    Left = 16
-    Top = 192
+    Left = 8
+    Top = 104
   end
   object DS_t_org: TDataSource
     DataSet = OD_t_org
-    Left = 48
-    Top = 192
+    Left = 40
+    Top = 104
+  end
+  object cxPropertiesStore1: TcxPropertiesStore
+    Components = <
+      item
+        Component = lkpHouse
+        Properties.Strings = (
+          'Align'
+          'Anchors'
+          'AutoSize'
+          'BeepOnEnter'
+          'Constraints'
+          'Cursor'
+          'DragCursor'
+          'DragKind'
+          'DragMode'
+          'EditValue'
+          'Enabled'
+          'FakeStyleController'
+          'Height'
+          'HelpContext'
+          'HelpKeyword'
+          'HelpType'
+          'Hint'
+          'ImeMode'
+          'ImeName'
+          'Left'
+          'Name'
+          'ParentColor'
+          'ParentFont'
+          'ParentShowHint'
+          'PopupMenu'
+          'Properties'
+          'RepositoryItem'
+          'ShowHint'
+          'Style'
+          'StyleDisabled'
+          'StyleFocused'
+          'StyleHot'
+          'TabOrder'
+          'TabStop'
+          'Tag'
+          'Top'
+          'Visible'
+          'Width')
+      end
+      item
+        Component = lkpKw
+        Properties.Strings = (
+          'Align'
+          'Anchors'
+          'AutoSize'
+          'BeepOnEnter'
+          'Constraints'
+          'Cursor'
+          'DragCursor'
+          'DragKind'
+          'DragMode'
+          'EditValue'
+          'Enabled'
+          'FakeStyleController'
+          'Height'
+          'HelpContext'
+          'HelpKeyword'
+          'HelpType'
+          'Hint'
+          'ImeMode'
+          'ImeName'
+          'Left'
+          'Name'
+          'ParentColor'
+          'ParentFont'
+          'ParentShowHint'
+          'PopupMenu'
+          'Properties'
+          'RepositoryItem'
+          'ShowHint'
+          'Style'
+          'StyleDisabled'
+          'StyleFocused'
+          'StyleHot'
+          'TabOrder'
+          'TabStop'
+          'Tag'
+          'Top'
+          'Visible'
+          'Width')
+      end
+      item
+        Component = lkpStreet
+        Properties.Strings = (
+          'Align'
+          'Anchors'
+          'AutoSize'
+          'BeepOnEnter'
+          'Constraints'
+          'Cursor'
+          'DragCursor'
+          'DragKind'
+          'DragMode'
+          'EditValue'
+          'Enabled'
+          'FakeStyleController'
+          'Height'
+          'HelpContext'
+          'HelpKeyword'
+          'HelpType'
+          'Hint'
+          'ImeMode'
+          'ImeName'
+          'Left'
+          'Name'
+          'ParentColor'
+          'ParentFont'
+          'ParentShowHint'
+          'PopupMenu'
+          'Properties'
+          'RepositoryItem'
+          'ShowHint'
+          'Style'
+          'StyleDisabled'
+          'StyleFocused'
+          'StyleHot'
+          'TabOrder'
+          'TabStop'
+          'Tag'
+          'Top'
+          'Visible'
+          'Width')
+      end
+      item
+        Component = lkpUk
+        Properties.Strings = (
+          'Align'
+          'Anchors'
+          'AutoSize'
+          'BeepOnEnter'
+          'Constraints'
+          'Cursor'
+          'DragCursor'
+          'DragKind'
+          'DragMode'
+          'EditValue'
+          'Enabled'
+          'FakeStyleController'
+          'Height'
+          'HelpContext'
+          'HelpKeyword'
+          'HelpType'
+          'Hint'
+          'ImeMode'
+          'ImeName'
+          'Left'
+          'Name'
+          'ParentColor'
+          'ParentFont'
+          'ParentShowHint'
+          'PopupMenu'
+          'Properties'
+          'RepositoryItem'
+          'ShowHint'
+          'Style'
+          'StyleDisabled'
+          'StyleFocused'
+          'StyleHot'
+          'TabOrder'
+          'TabStop'
+          'Tag'
+          'Top'
+          'Visible'
+          'Width')
+      end>
+    StorageName = 'frmListKartStore'
+    StorageType = stRegistry
+    Left = 80
+    Top = 104
   end
 end

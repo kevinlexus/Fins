@@ -201,10 +201,8 @@ begin
   if Key = #13 then
   begin
     if wwDBLookupCombo4.Enabled = True then
-//      wwDBLookupCombo4.SetFocus else
-Windows.SetFocus(wwDBLookupCombo4.Handle) else
-//     Button1.SetFocus;
-Windows.SetFocus(Button1.Handle);
+      Windows.SetFocus(wwDBLookupCombo4.Handle) else
+      Windows.SetFocus(Button1.Handle);
   end;
   except
   end;
@@ -216,8 +214,7 @@ procedure TForm_find_adr.wwDBLookupCombo4KeyPress(Sender: TObject;
 begin
  try
   if Key = #13 then
-//    Button1.SetFocus;
-Windows.SetFocus(Button1.Handle);
+     Windows.SetFocus(Button1.Handle);
   except
   end;
 
@@ -226,12 +223,11 @@ end;
 procedure TForm_find_adr.wwDBLookupCombo1KeyPress(Sender: TObject;
   var Key: Char);
 begin
-// try
+ try
   if Key = #13 then
-//    wwDBLookupCombo3.SetFocus;
-Windows.SetFocus(wwDBLookupCombo3.Handle);
-//  except
-//  end;
+     Windows.SetFocus(wwDBLookupCombo3.Handle);
+  except
+  end;
 end;
 
 procedure TForm_find_adr.FormCreate(Sender: TObject);
