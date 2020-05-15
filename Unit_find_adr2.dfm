@@ -1,6 +1,6 @@
 object Form_find_adr2: TForm_find_adr2
-  Left = 721
-  Top = 181
+  Left = 628
+  Top = 245
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   BorderWidth = 1
@@ -184,6 +184,7 @@ object Form_find_adr2: TForm_find_adr2
     Left = 240
     Top = 40
     Hint = #1044#1086#1084
+    Enabled = False
     ParentShowHint = False
     Properties.GridMode = True
     Properties.KeyFieldNames = 'ND_ID'
@@ -193,6 +194,7 @@ object Form_find_adr2: TForm_find_adr2
       end>
     Properties.ListOptions.ShowHeader = False
     Properties.ListSource = DS_houses
+    Properties.OnCloseUp = lkpHousePropertiesCloseUp
     ShowHint = True
     TabOrder = 1
     OnKeyPress = lkpHouseKeyPress
@@ -202,6 +204,7 @@ object Form_find_adr2: TForm_find_adr2
     Left = 448
     Top = 40
     Hint = #1050#1074#1072#1088#1090#1080#1088#1072
+    Enabled = False
     ParentShowHint = False
     Properties.GridMode = True
     Properties.KeyFieldNames = 'KW_ID'
@@ -229,6 +232,7 @@ object Form_find_adr2: TForm_find_adr2
       end>
     Properties.ListOptions.ShowHeader = False
     Properties.ListSource = DS_streets
+    Properties.OnCloseUp = lkpStreetPropertiesCloseUp
     ShowHint = True
     TabOrder = 0
     OnKeyPress = lkpStreetKeyPress
@@ -454,170 +458,17 @@ object Form_find_adr2: TForm_find_adr2
       item
         Component = lkpHouse
         Properties.Strings = (
-          'Align'
-          'Anchors'
-          'AutoSize'
-          'BeepOnEnter'
-          'Constraints'
-          'Cursor'
-          'DragCursor'
-          'DragKind'
-          'DragMode'
-          'EditValue'
-          'Enabled'
-          'FakeStyleController'
-          'Height'
-          'HelpContext'
-          'HelpKeyword'
-          'HelpType'
-          'Hint'
-          'ImeMode'
-          'ImeName'
-          'Left'
-          'Name'
-          'ParentColor'
-          'ParentFont'
-          'ParentShowHint'
-          'PopupMenu'
-          'Properties'
-          'RepositoryItem'
-          'ShowHint'
-          'Style'
-          'StyleDisabled'
-          'StyleFocused'
-          'StyleHot'
-          'TabOrder'
-          'TabStop'
-          'Tag'
-          'Top'
-          'Visible'
-          'Width')
+          'EditValue')
       end
       item
         Component = lkpKw
         Properties.Strings = (
-          'Align'
-          'Anchors'
-          'AutoSize'
-          'BeepOnEnter'
-          'Constraints'
-          'Cursor'
-          'DragCursor'
-          'DragKind'
-          'DragMode'
-          'EditValue'
-          'Enabled'
-          'FakeStyleController'
-          'Height'
-          'HelpContext'
-          'HelpKeyword'
-          'HelpType'
-          'Hint'
-          'ImeMode'
-          'ImeName'
-          'Left'
-          'Name'
-          'ParentColor'
-          'ParentFont'
-          'ParentShowHint'
-          'PopupMenu'
-          'Properties'
-          'RepositoryItem'
-          'ShowHint'
-          'Style'
-          'StyleDisabled'
-          'StyleFocused'
-          'StyleHot'
-          'TabOrder'
-          'TabStop'
-          'Tag'
-          'Top'
-          'Visible'
-          'Width')
+          'EditValue')
       end
       item
         Component = lkpStreet
         Properties.Strings = (
-          'Align'
-          'Anchors'
-          'AutoSize'
-          'BeepOnEnter'
-          'Constraints'
-          'Cursor'
-          'DragCursor'
-          'DragKind'
-          'DragMode'
-          'EditValue'
-          'Enabled'
-          'FakeStyleController'
-          'Height'
-          'HelpContext'
-          'HelpKeyword'
-          'HelpType'
-          'Hint'
-          'ImeMode'
-          'ImeName'
-          'Left'
-          'Name'
-          'ParentColor'
-          'ParentFont'
-          'ParentShowHint'
-          'PopupMenu'
-          'Properties'
-          'RepositoryItem'
-          'ShowHint'
-          'Style'
-          'StyleDisabled'
-          'StyleFocused'
-          'StyleHot'
-          'TabOrder'
-          'TabStop'
-          'Tag'
-          'Top'
-          'Visible'
-          'Width')
-      end
-      item
-        Component = lkpUk
-        Properties.Strings = (
-          'Align'
-          'Anchors'
-          'AutoSize'
-          'BeepOnEnter'
-          'Constraints'
-          'Cursor'
-          'DragCursor'
-          'DragKind'
-          'DragMode'
-          'EditValue'
-          'Enabled'
-          'FakeStyleController'
-          'Height'
-          'HelpContext'
-          'HelpKeyword'
-          'HelpType'
-          'Hint'
-          'ImeMode'
-          'ImeName'
-          'Left'
-          'Name'
-          'ParentColor'
-          'ParentFont'
-          'ParentShowHint'
-          'PopupMenu'
-          'Properties'
-          'RepositoryItem'
-          'ShowHint'
-          'Style'
-          'StyleDisabled'
-          'StyleFocused'
-          'StyleHot'
-          'TabOrder'
-          'TabStop'
-          'Tag'
-          'Top'
-          'Visible'
-          'Width')
+          'EditValue')
       end>
     StorageName = 'frmListKartStore'
     StorageType = stRegistry
