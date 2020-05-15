@@ -80,6 +80,12 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure Panel1Click(Sender: TObject);
     procedure Panel2Click(Sender: TObject);
+    procedure Edit3KeyPress(Sender: TObject; var Key: Char);
+    procedure Edit2KeyPress(Sender: TObject; var Key: Char);
+    procedure Edit1KeyPress(Sender: TObject; var Key: Char);
+    procedure Edit1Change(Sender: TObject);
+    procedure Edit2Change(Sender: TObject);
+    procedure Edit3Change(Sender: TObject);
   private
     { Private declarations }
   public
@@ -480,6 +486,57 @@ begin
   cxGroupBox2.Enabled:=False;
   RadioButton1.Checked:=True;
   RadioButton2.Checked:=False;
+
+end;
+
+procedure TForm_find_adr2.Edit3KeyPress(Sender: TObject; var Key: Char);
+begin
+  try
+    if Key = #13 then
+      Windows.SetFocus(Button1.Handle);
+  except
+  end;
+
+end;
+
+procedure TForm_find_adr2.Edit2KeyPress(Sender: TObject; var Key: Char);
+begin
+  try
+    if Key = #13 then
+      Windows.SetFocus(Button1.Handle);
+  except
+  end;
+
+end;
+
+procedure TForm_find_adr2.Edit1KeyPress(Sender: TObject; var Key: Char);
+begin
+  try
+    if Key = #13 then
+      Windows.SetFocus(Button1.Handle);
+  except
+  end;
+
+end;
+
+procedure TForm_find_adr2.Edit1Change(Sender: TObject);
+begin
+  Edit2.Text:='';
+  Edit3.Text:='';
+  
+end;
+
+procedure TForm_find_adr2.Edit2Change(Sender: TObject);
+begin
+  Edit1.Text:='';
+  Edit3.Text:='';
+
+end;
+
+procedure TForm_find_adr2.Edit3Change(Sender: TObject);
+begin
+  Edit1.Text:='';
+  Edit2.Text:='';
 
 end;
 

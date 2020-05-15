@@ -1,5 +1,5 @@
 object Form_find_adr2: TForm_find_adr2
-  Left = 2149
+  Left = 2087
   Top = 432
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
@@ -189,6 +189,8 @@ object Form_find_adr2: TForm_find_adr2
         ParentShowHint = False
         ShowHint = True
         TabOrder = 0
+        OnChange = Edit1Change
+        OnKeyPress = Edit1KeyPress
       end
       object Edit2: TEdit
         Left = 277
@@ -199,6 +201,8 @@ object Form_find_adr2: TForm_find_adr2
         ParentShowHint = False
         ShowHint = True
         TabOrder = 1
+        OnChange = Edit2Change
+        OnKeyPress = Edit2KeyPress
       end
       object Edit3: TEdit
         Left = 461
@@ -209,6 +213,8 @@ object Form_find_adr2: TForm_find_adr2
         ParentShowHint = False
         ShowHint = True
         TabOrder = 2
+        OnChange = Edit3Change
+        OnKeyPress = Edit3KeyPress
       end
     end
   end
@@ -566,7 +572,37 @@ object Form_find_adr2: TForm_find_adr2
     Top = 272
   end
   object cxPropertiesStore1: TcxPropertiesStore
-    Components = <>
+    Components = <
+      item
+        Component = Edit1
+        Properties.Strings = (
+          'Text')
+      end
+      item
+        Component = Edit2
+        Properties.Strings = (
+          'Text')
+      end
+      item
+        Component = Edit3
+        Properties.Strings = (
+          'Text')
+      end
+      item
+        Component = lkpHouse
+        Properties.Strings = (
+          'EditValue')
+      end
+      item
+        Component = lkpKw
+        Properties.Strings = (
+          'EditValue')
+      end
+      item
+        Component = lkpStreet
+        Properties.Strings = (
+          'EditValue')
+      end>
     StorageName = 'frmListKartStore'
     StorageType = stRegistry
     Left = 80
