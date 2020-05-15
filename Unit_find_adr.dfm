@@ -1,11 +1,12 @@
 object Form_find_adr: TForm_find_adr
-  Left = 1141
-  Top = 165
+  Left = 1035
+  Top = 285
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
+  BorderWidth = 1
   Caption = #1055#1086#1080#1089#1082' '#1087#1086' '#1072#1076#1088#1077#1089#1091
-  ClientHeight = 78
-  ClientWidth = 758
+  ClientHeight = 71
+  ClientWidth = 731
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -92,10 +93,10 @@ object Form_find_adr: TForm_find_adr
   PixelsPerInch = 96
   TextHeight = 16
   object Button1: TButton
-    Left = 561
+    Left = 585
     Top = 39
-    Width = 93
-    Height = 31
+    Width = 72
+    Height = 26
     Caption = #1054#1082
     ModalResult = 1
     TabOrder = 3
@@ -179,8 +180,8 @@ object Form_find_adr: TForm_find_adr
   object Button2: TButton
     Left = 660
     Top = 39
-    Width = 92
-    Height = 31
+    Width = 69
+    Height = 26
     Cancel = True
     Caption = #1054#1090#1084#1077#1085#1072
     ModalResult = 2
@@ -222,13 +223,13 @@ object Form_find_adr: TForm_find_adr
   object chk1: TCheckBox
     Left = 236
     Top = 10
-    Width = 149
+    Width = 125
     Height = 21
     Caption = #1054#1089#1085#1086#1074#1085#1099#1077' '#1089#1095#1077#1090#1072
     Checked = True
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -15
+    Font.Height = -11
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentFont = False
@@ -237,7 +238,7 @@ object Form_find_adr: TForm_find_adr
     OnClick = chk1Click
   end
   object chk2: TCheckBox
-    Left = 396
+    Left = 364
     Top = 10
     Width = 125
     Height = 21
@@ -245,7 +246,7 @@ object Form_find_adr: TForm_find_adr
     Checked = True
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -15
+    Font.Height = -11
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentFont = False

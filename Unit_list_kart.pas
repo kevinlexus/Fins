@@ -610,7 +610,7 @@ end;
 
 procedure TForm_list_kart.FormCreate(Sender: TObject);
 begin
-  //Настройки расположения формы
+  // Настройки расположения формы
   cxPropertiesStore1.Active := True;
   cxPropertiesStore1.RestoreFrom;
 
@@ -660,8 +660,9 @@ begin
     SetVariable('flt_nd_', Form_Main.flt_nd_);
     SetVariable('flt_kw_', Form_Main.flt_kw_);
     SetVariable('flt_k_lsk_id_', Form_Main.flt_k_lsk_id_);
+    SetVariable('flt_klsk_premise', Form_Main.flt_klsk_premise);
     SetVariable('flt_single_house_', Form_Main.flt_single_house_);
-    SetVariable('SUBSTEXP1', ' and k.psch <> 8 ');
+    SetVariable('SUBSTEXP1', ' and k.psch not in(8,9) ');
     // устанавливаем порядок
     SetVariable(':SUBSTEXP4',
       ' order by s.name, scott.utils.f_order(k.nd,6), scott.utils.f_order2(k.nd),' +
@@ -946,8 +947,7 @@ begin
   if CheckBox2.Checked = true then
   begin
     OD_list_kart.active := false;
-    //OD_list_kart.SetVariable('var1_', 1);
-    OD_list_kart.SetVariable('SUBSTEXP1', ' and k.psch <> 8 ');
+    OD_list_kart.SetVariable('SUBSTEXP1', ' and k.psch not in(8,9) ');
     OD_list_kart.active := true;
   end
   else
@@ -961,7 +961,6 @@ end;
 
 procedure TForm_list_kart.SpeedButton2Click(Sender: TObject);
 begin
-  //OD_list_kart.SetVariable('var_', 0);
   OD_list_kart.SetVariable('SUBSTEXP1', '');
   OD_list_kart.SetVariable('SUBSTEXP2', '');
   OD_list_kart.SetVariable('SUBSTEXP3', '');
@@ -971,20 +970,11 @@ end;
 
 procedure TForm_list_kart.SpeedButton1Click(Sender: TObject);
 begin
-  {    Form_main.k_lsk_id_:=DataModule1.OraclePackage1.CallIntegerFunction(
-       'scott.utils.get_k_lsk_id_by_lsk',
-        [RightStr('00000000'+wwDBEdit1.Text, 8)]);
-                }
   Form_Main.cl_flt;
   Form_Main.flt_k_lsk_id_ := DataModule1.OraclePackage1.CallIntegerFunction(
     'scott.utils.get_k_lsk_id_by_lsk',
     [RightStr('00000000' + cxmskdt1.Text, 8)]);
   SetFilter;
-
-  {    OD_list_kart.active:=false;
-      OD_list_kart.SetVariable('k_lsk_id_', Form_main.k_lsk_id_);
-      OD_list_kart.SetVariable('var_', 4);
-      OD_list_kart.active:=true;}
   cxmskdt1.Text := RightStr('00000000' + cxmskdt1.Text, 8);
 end;
 
@@ -1238,13 +1228,23 @@ begin
   if not (OD_list_kart.State in [dsBrowse]) then
     OD_list_kart.Post;
 
+  Application.CreateForm(TForm_find_adr2, Form_find_adr2);
+  Form_find_adr2.SetAccess(1, 1, 1, 1);
+  if Form_find_adr2.ShowModal = mrOk then
+  begin
+    SetFilter;
+  end;
+
+{  if not (OD_list_kart.State in [dsBrowse]) then
+    OD_list_kart.Post;
+
   Application.CreateForm(TForm_find_adr, Form_find_adr);
   Form_find_adr.SetAccess(1, 1, 1, 1);
   if Form_find_adr.ShowModal = mrOk then
   begin
     SetFilter;
   end;
-
+ }
 end;
 
 procedure TForm_list_kart.wwDBEdit1KeyPress(Sender: TObject;
