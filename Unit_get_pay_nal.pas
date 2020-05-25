@@ -764,9 +764,14 @@ begin
   // ВНИМАНИЕ! в качестве типа операции используется поле из c_kwtp_mg
   // поэтому кол-во операций при приеме оплаты не должно быть больше 1
   logText('Начало регистрации оплаты');
-  l_flag := print_receipt(StrToFloat(wwDBEdit1.Text),
-    OD_c_kwtp.FieldByName('cash_num').AsInteger,
-    OD_oper.FieldByName('cash_oper_tp').AsInteger);
+  if (Form_Main.have_cash = 1) or (Form_Main.have_cash = 2) then
+  begin
+    l_flag := print_receipt(StrToFloat(wwDBEdit1.Text),
+      OD_c_kwtp.FieldByName('cash_num').AsInteger,
+      OD_oper.FieldByName('cash_oper_tp').AsInteger);
+  end
+  else
+    l_flag := 0;
   /////////////////////////////////////////////////////
 
   Button1.Enabled := true;
@@ -1198,7 +1203,7 @@ begin
                 print_by_line('', ECR);
                 print_by_line('', ECR);
 
-                // дополнительно указать адрес и лиц.счет, на случай потери записи в БД по платежу 
+                // дополнительно указать адрес и лиц.счет, на случай потери записи в БД по платежу
                 // - пока убрал печать в ККМ, не смог настроить отрезку. сделал логгирование в файл
                 print_string_ecr2('Адрес:' +
                   OD_c_kwtp.FieldByName('adr').AsString,
@@ -1220,7 +1225,7 @@ begin
                     //print_string_ecr2(strPrint, 1, 0, F, ECR);
                   end;
                   OD_get_money_nal2.Next;
-                end;         
+                end;
 
                 //printByLineWithCut(true, '...', ECR, 1);
                 logText('Эквайринг: статус=6003 (неподтверждено)');

@@ -1,6 +1,6 @@
 object Form_find_adr2: TForm_find_adr2
-  Left = 2087
-  Top = 432
+  Left = 895
+  Top = 674
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   BorderWidth = 1
@@ -134,10 +134,10 @@ object Form_find_adr2: TForm_find_adr2
       Top = 8
       Caption = #1055#1086' '#1080#1076#1077#1085#1090#1080#1092#1080#1082#1072#1090#1086#1088#1091
       Enabled = False
-      StyleDisabled.BorderColor = clBlack
-      StyleDisabled.BorderStyle = ebsNone
-      StyleDisabled.Color = clBtnShadow
-      StyleDisabled.TextColor = clBlack
+      StyleDisabled.BorderColor = clBtnShadow
+      StyleDisabled.BorderStyle = ebsUltraFlat
+      StyleDisabled.Color = clBtnFace
+      StyleDisabled.TextColor = clBtnShadow
       TabOrder = 0
       Height = 57
       Width = 585
@@ -230,10 +230,10 @@ object Form_find_adr2: TForm_find_adr2
       Top = 8
       Caption = #1055#1086' '#1072#1076#1088#1077#1089#1091
       PanelStyle.Active = True
-      StyleDisabled.BorderColor = clBlack
-      StyleDisabled.BorderStyle = ebsNone
-      StyleDisabled.Color = clBtnShadow
-      StyleDisabled.TextColor = clBlack
+      StyleDisabled.BorderColor = clBtnShadow
+      StyleDisabled.BorderStyle = ebsUltraFlat
+      StyleDisabled.Color = clBtnFace
+      StyleDisabled.TextColor = clBtnShadow
       StyleDisabled.TextStyle = []
       TabOrder = 0
       Height = 89
@@ -319,16 +319,21 @@ object Form_find_adr2: TForm_find_adr2
         Left = 448
         Top = 56
         Hint = #1050#1074#1072#1088#1090#1080#1088#1072
-        Enabled = False
         ParentShowHint = False
+        Properties.DropDownAutoSize = True
+        Properties.DropDownSizeable = True
         Properties.GridMode = True
         Properties.KeyFieldNames = 'KW_ID'
         Properties.ListColumns = <
           item
             FieldName = 'KW'
+          end
+          item
+            FieldName = 'FIO'
           end>
         Properties.ListOptions.ShowHeader = False
         Properties.ListSource = DS_kw
+        Properties.ReadOnly = True
         ShowHint = True
         TabOrder = 2
         OnKeyPress = lkpKwKeyPress
@@ -338,7 +343,6 @@ object Form_find_adr2: TForm_find_adr2
         Left = 240
         Top = 56
         Hint = #1044#1086#1084
-        Enabled = False
         ParentShowHint = False
         Properties.GridMode = True
         Properties.KeyFieldNames = 'ND_ID'
@@ -348,7 +352,8 @@ object Form_find_adr2: TForm_find_adr2
           end>
         Properties.ListOptions.ShowHeader = False
         Properties.ListSource = DS_houses
-        Properties.OnCloseUp = lkpHousePropertiesCloseUp
+        Properties.ReadOnly = True
+        Properties.OnEditValueChanged = lkpHousePropertiesEditValueChanged
         ShowHint = True
         TabOrder = 1
         OnKeyPress = lkpHouseKeyPress
@@ -367,7 +372,7 @@ object Form_find_adr2: TForm_find_adr2
           end>
         Properties.ListOptions.ShowHeader = False
         Properties.ListSource = DS_streets
-        Properties.OnCloseUp = lkpStreetPropertiesCloseUp
+        Properties.OnEditValueChanged = lkpStreetPropertiesEditValueChanged
         ShowHint = True
         TabOrder = 0
         OnKeyPress = lkpStreetKeyPress

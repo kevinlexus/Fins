@@ -270,6 +270,16 @@ end;
 
 procedure TForm_month_payments.FormCreate(Sender: TObject);
 begin
+  if have_rights('drx_Удалить_оплату') = 0 then
+    N1.Visible := True
+  else
+    N1.Visible := False;
+
+  if have_rights('drx_Вернуть_оплату') = 0 then
+    N3.Visible := True
+  else
+    N3.Visible := False;
+
   OD_c_kwtp.Active := true;
   OD_c_kwtp_mg.Active := true;
   OD_c_kwtp_chk.Active := false;
@@ -467,6 +477,7 @@ var
   bm: TBookmark;
   l_flag: Integer;
   ECR: OleVariant;
+  l_summa: Double;
 begin
   l_flag := 1;
   if msg3('Удалить оплату с суммой ' + OD_c_kwtp.FieldByName('summ_itg').AsString
@@ -507,8 +518,10 @@ begin
             with OD_paycheck do
             begin
               First;
+              l_summa := 0;
               while not Eof do
               begin
+                l_summa := l_summa + FieldByName('summ_itg').AsFloat;
                 unreg_ecr(FieldByName('oper_name').AsString +
                   calc_pads(FieldByName('oper_name').AsString) +
                   FieldByName('dopl').AsString,
@@ -517,10 +530,10 @@ begin
                   );
                 Next;
               end;
-              if close_reg_ecr(ECR) <> 0 then
-              begin
-                l_flag := 1;
-              end;
+              if close_reg_ecr(l_summa, ECR) <> 0 then
+                l_flag := 1
+              else
+                l_flag := 0;
               Active := false;
             end;
 
@@ -598,6 +611,7 @@ var
   bm: TBookmark;
   l_flag, l_var: Integer;
   ECR: OleVariant;
+  l_summa: Double;
 begin
   if msg3('Выполнить обратный платёж оплаты с суммой ' +
     OD_c_kwtp.FieldByName('summ_itg').AsString +
@@ -608,71 +622,74 @@ begin
   begin
     OD_paycheck.Active := true;
     l_flag := 0;
-    if (Form_Main.have_cash = 1) and (Form_Main.have_cash = 2) then
+    if (Form_Main.have_cash = 1) or (Form_Main.have_cash = 2) then
     begin
-        // c кассовым аппаратом
-        l_flag := 1;
-        if OD_c_kwtp.FieldByName('cash_num').AsInteger = 1 then
-          ECR := Form_main.selECR
-        else
-          ECR := Form_main.selECR2;
-        if open_port_ecr(ECR) <> 0 then
-        begin
-          Exit;
-        end
-          //Входим в режим регистрации
-        else
-        begin
-          if msg3('Произвести возврат платежа в фискальном регистраторе?',
-            'Внимание!', MB_YESNO + MB_ICONQUESTION) = IDYES then
-          begin
-            try
-              //Возвращаем каждый платёж
-              print_string_ecr('Лицевой счет №' +
-                OD_c_kwtp.FieldByName('lsk').AsString, 1, 0, ECR);
-              print_string_ecr('Наим-е операции   Период    Оплата(руб.)', 1, 0,
-                ECR);
+      // c кассовым аппаратом
+      l_flag := 1;
+      if OD_c_kwtp.FieldByName('cash_num').AsInteger = 1 then
+        ECR := Form_main.selECR
+      else
+        ECR := Form_main.selECR2;
 
-              //Специальный датасет, для возврата продажи (содержит тело текущего платежа)
-              with OD_paycheck do
-              begin
-                First;
-                while not Eof do
-                begin
-                  unreg_ecr(FieldByName('oper_name').AsString +
-                    calc_pads(FieldByName('oper_name').AsString) +
-                    FieldByName('dopl').AsString,
-                    FieldByName('summ_itg').AsFloat, 1,
-                    FieldByName('dep').AsInteger, ECR
-                    );
-                  Next;
-                end;
-                if close_reg_ecr(ECR) <> 0 then
-                begin
-                  l_flag := 1;
-                end;
-                Active := false;
-              end;
+      if open_port_ecr(ECR) <> 0 then
+      begin
+        Exit;
+      end
+        //Входим в режим регистрации
+      else
+      begin
+        if msg3('Произвести возврат платежа в фискальном регистраторе?',
+          'Внимание!', MB_YESNO + MB_ICONQUESTION) = IDYES then
+        begin
+          try
+            //Возвращаем каждый платёж
+            print_string_ecr('Лицевой счет №' +
+              OD_c_kwtp.FieldByName('lsk').AsString, 1, 0, ECR);
+            print_string_ecr('Наим-е операции   Период    Оплата(руб.)', 1, 0,
+              ECR);
 
-            except
-              // Эксепшн в фискальном регистраторе
-              on E: Exception do
+            //Специальный датасет, для возврата продажи (содержит тело текущего платежа)
+            with OD_paycheck do
+            begin
+              First;
+              l_summa := 0;
+              while not Eof do
               begin
-                l_flag := 1;
-                ShowMessage('Exception class name = ' + E.ClassName + '' +
-                  'Ошибка: ' + E.Message);
-                ShowMessage('Возврат не будет учтён!');
+                l_summa := l_summa + FieldByName('summ_itg').AsFloat;
+                unreg_ecr(FieldByName('oper_name').AsString +
+                  calc_pads(FieldByName('oper_name').AsString) +
+                  FieldByName('dopl').AsString,
+                  FieldByName('summ_itg').AsFloat, 1,
+                  FieldByName('dep').AsInteger, ECR
+                  );
+                Next;
               end;
+              if close_reg_ecr(l_summa, ECR) <> 0 then
+                l_flag := 1
+              else
+                l_flag := 0;
+              
+              Active := false;
             end;
 
+          except
+            // Эксепшн в фискальном регистраторе
+            on E: Exception do
+            begin
+              l_flag := 1;
+              ShowMessage('Exception class name = ' + E.ClassName + '' +
+                'Ошибка: ' + E.Message);
+              ShowMessage('Возврат не будет учтён!');
+            end;
           end;
+
         end;
+      end;
     end;
 
     if l_flag = 1 then
     begin
       // не успешно
-      //DataModule1.OraclePackage1.Session.Rollback;
       Exit;
     end
     else if l_flag = 0 then

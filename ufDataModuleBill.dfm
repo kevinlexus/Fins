@@ -1,7 +1,7 @@
 object DM_Bill: TDM_Bill
   OldCreateOrder = False
-  Left = 1191
-  Top = 244
+  Left = 1410
+  Top = 201
   Height = 607
   Width = 470
   object Uni_cmp_main: TUniQuery
@@ -596,9 +596,10 @@ object DM_Bill: TDM_Bill
     SQL.Strings = (
       'begin'
       '  -- Call the procedure'
-      '  scott.rep_bills.arch(p_k_lsk => :k_lsk_id,'
+      '  scott.rep_bills2.arch(p_k_lsk => :k_lsk_id,'
       '                 p_sel_obj => :p_sel_obj,'
       '                 p_lsk => :lsk,'
+      '                 p_tp => :p_tp,'
       '                 p_mg1 => :p_mg1,'
       '                 p_mg2 => :p_mg2,'
       '                 p_sel_uk => :p_sel_uk,'
@@ -607,9 +608,10 @@ object DM_Bill: TDM_Bill
     MasterSource = DS_cmp_main_arch
     MasterFields = 'k_lsk_id'
     DetailFields = 'k_lsk_id'
+    Active = True
     Constraints = <>
-    Left = 88
-    Top = 464
+    Left = 96
+    Top = 480
     ParamData = <
       item
         DataType = ftInteger
@@ -625,6 +627,12 @@ object DM_Bill: TDM_Bill
         DataType = ftString
         Name = 'lsk'
         ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'p_tp'
+        ParamType = ptInput
+        Value = 1
       end
       item
         DataType = ftString
@@ -644,7 +652,7 @@ object DM_Bill: TDM_Bill
       item
         DataType = ftCursor
         Name = 'p_rfcur'
-        Value = 'Object'
+        Value = ''
       end>
   end
   object DS_cmp_detail_primary: TDataSource
@@ -657,7 +665,7 @@ object DM_Bill: TDM_Bill
     SQL.Strings = (
       'begin'
       '  -- Call the procedure'
-      '  scott.rep_bills.arch_supp(p_k_lsk => :k_lsk_id,'
+      '  scott.rep_bills2.arch_supp(p_k_lsk => :k_lsk_id,'
       '                 p_sel_obj => :p_sel_obj,'
       '                 p_lsk => :lsk,'
       '                 p_mg1 => :p_mg1,'
@@ -671,7 +679,7 @@ object DM_Bill: TDM_Bill
     DetailFields = 'k_lsk_id'
     Constraints = <>
     Left = 32
-    Top = 464
+    Top = 480
     ParamData = <
       item
         DataType = ftInteger

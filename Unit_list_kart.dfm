@@ -430,7 +430,6 @@ object Form_list_kart: TForm_list_kart
           Spacing = 4
           Transparent = False
           Caption = 'wwDBNavigator1Insert'
-          Enabled = False
           DisabledTextColors.ShadeColor = clGray
           DisabledTextColors.HighlightColor = clBtnHighlight
           Index = 6
@@ -466,7 +465,6 @@ object Form_list_kart: TForm_list_kart
           Spacing = 4
           Transparent = False
           Caption = 'wwDBNavigator1Edit'
-          Enabled = False
           DisabledTextColors.ShadeColor = clGray
           DisabledTextColors.HighlightColor = clBtnHighlight
           Index = 8
@@ -520,7 +518,6 @@ object Form_list_kart: TForm_list_kart
           Spacing = 4
           Transparent = False
           Caption = 'wwDBNavigator1Refresh'
-          Enabled = False
           DisabledTextColors.ShadeColor = clGray
           DisabledTextColors.HighlightColor = clBtnHighlight
           Index = 11
@@ -538,7 +535,6 @@ object Form_list_kart: TForm_list_kart
           Spacing = 4
           Transparent = False
           Caption = 'wwDBNavigator1SaveBookmark'
-          Enabled = False
           DisabledTextColors.ShadeColor = clGray
           DisabledTextColors.HighlightColor = clBtnHighlight
           Index = 12
@@ -1283,6 +1279,7 @@ object Form_list_kart: TForm_list_kart
     CachedUpdates = True
     Session = DataModule1.OracleSession1
     DesignActivation = True
+    Active = True
     AfterOpen = OD_list_kartAfterOpen
     BeforeInsert = OD_list_kartBeforeInsert
     BeforeScroll = OD_list_kartBeforeScroll

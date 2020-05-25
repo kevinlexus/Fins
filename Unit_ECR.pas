@@ -44,7 +44,7 @@ function close_reg_summ_ecr(p_summa: double; ECR: OleVariant; tp: Integer;
 function close_reg_summ_ecr_ext(p_summa: double; ECR: OleVariant; tp: Integer;
   var F: TextFile
   ): Integer;
-function close_reg_ecr(ECR: OleVariant): Integer;
+function close_reg_ecr(l_summa: double; ECR: OleVariant): Integer;
 procedure rep_wo_clearance(p_mode: Integer; ECR: OleVariant);
 function rep_clearance(ECR: OleVariant): Integer;
 function put_money(l_summa: double; ECR: OleVariant): Integer;
@@ -779,7 +779,7 @@ end;
 
 // закрыть чек
 
-function close_reg_ecr(ECR: OleVariant): Integer;
+function close_reg_ecr(l_summa: double; ECR: OleVariant): Integer;
 begin
   Result := 0;
   if Form_Main.have_cash = 1 then
@@ -795,7 +795,7 @@ begin
   begin
     // закрыть чек
     ECR.Password := '1';
-    ECR.Summ1 := 0;
+    ECR.Summ1 := l_summa; // ред.25.02.2020 раньше стояло Summ1:=0 что приводило к ошибке 69... странно
     ECR.StringForPrinting := '===================';
     ECR.CloseCheck;
     show_error(ECR, '28');

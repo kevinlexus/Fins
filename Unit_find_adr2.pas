@@ -66,8 +66,6 @@ type
     procedure cxLookupComboBox4PropertiesChange(Sender: TObject);
     procedure lkpUkKeyPress(Sender: TObject; var Key: Char);
     procedure lkpKwKeyPress(Sender: TObject; var Key: Char);
-    procedure lkpStreetPropertiesCloseUp(Sender: TObject);
-    procedure lkpHousePropertiesCloseUp(Sender: TObject);
     procedure RadioButton1Click(Sender: TObject);
     procedure RadioButton2Click(Sender: TObject);
     procedure RadioButton3Click(Sender: TObject);
@@ -86,6 +84,8 @@ type
     procedure Edit1Change(Sender: TObject);
     procedure Edit2Change(Sender: TObject);
     procedure Edit3Change(Sender: TObject);
+    procedure lkpStreetPropertiesEditValueChanged(Sender: TObject);
+    procedure lkpHousePropertiesEditValueChanged(Sender: TObject);
   private
     { Private declarations }
   public
@@ -151,8 +151,8 @@ begin
   Form_Main.nd_ := '';
   Form_Main.Lsk_ := '';
   Form_Main.fio_ := '';
-//  Form_Main.str_adr_ := OD_streets.FieldByName('street').asString + ', ' +
-//    OD_houses.FieldByName('nd2').asString;
+  //  Form_Main.str_adr_ := OD_streets.FieldByName('street').asString + ', ' +
+  //    OD_houses.FieldByName('nd2').asString;
 
   if RadioButton1.Checked then
   begin
@@ -207,14 +207,13 @@ begin
       Form_Main.flt_single_house_ := StrToInt(Edit1.Text);
       Form_Main.search_type_ := 7;
     end
-    else 
-    if Edit2.Text <> '' then
+    else if Edit2.Text <> '' then
     begin
       // по ID помещения
       Form_Main.flt_klsk_premise := StrToInt(Edit2.Text);
       Form_Main.search_type_ := 8;
-    end else
-    if Edit3.Text <> '' then
+    end
+    else if Edit3.Text <> '' then
     begin
       // по фин.лиц.сч.
       Form_Main.flt_k_lsk_id_ := StrToInt(Edit3.Text);
@@ -331,16 +330,10 @@ procedure TForm_find_adr2.lkpHouseKeyPress(Sender: TObject;
   var Key: Char);
 begin
   try
-    if Key = #13 then
+    if (Key = #13) or (Key = #9) then
     begin
-      if lkpKw.Enabled = True then
-      
-        Windows.SetFocus(lkpKw.Handle)
-      else
-      begin
-        lkpKw.Enabled:=True;
-        Windows.SetFocus(Button1.Handle);
-      end;
+      if lkpKw.Properties.ReadOnly = False then
+        Windows.SetFocus(lkpKw.Handle);
     end;
   except
   end;
@@ -349,12 +342,13 @@ end;
 procedure TForm_find_adr2.lkpStreetKeyPress(Sender: TObject;
   var Key: Char);
 begin
-  if Key = #13 then
-  begin
-    lkpHouse.Enabled:=True;
-    Windows.SetFocus(lkpHouse.Handle)
+  try
+    if (Key = #13) or (Key = #9) then
+    begin
+      Windows.SetFocus(lkpHouse.Handle)
+    end;
+  except
   end;
-
 end;
 
 procedure TForm_find_adr2.cxLookupComboBox4PropertiesChange(
@@ -374,7 +368,7 @@ procedure TForm_find_adr2.lkpUkKeyPress(Sender: TObject;
   var Key: Char);
 begin
   try
-    if Key = #13 then
+    if (Key = #13) or (Key = #9) then
       lkpStreet.SetFocus;
   except
   end;
@@ -384,27 +378,10 @@ procedure TForm_find_adr2.lkpKwKeyPress(Sender: TObject;
   var Key: Char);
 begin
   try
-    if Key = #13 then
+    if (Key = #13) or (Key = #9) then
       Windows.SetFocus(Button1.Handle);
   except
   end;
-end;
-
-procedure TForm_find_adr2.lkpStreetPropertiesCloseUp(Sender: TObject);
-begin
-  lkpHouse.EditValue := Null;
-  lkpKw.EditValue := Null;
-  if lkpStreet.EditValue <> Null then
-    lkpHouse.Enabled := True;
-
-end;
-
-procedure TForm_find_adr2.lkpHousePropertiesCloseUp(Sender: TObject);
-begin
-  lkpKw.EditValue := Null;
-  if lkpHouse.EditValue <> Null then
-    lkpKw.Enabled := True;
-
 end;
 
 procedure TForm_find_adr2.RadioButton1Click(Sender: TObject);
@@ -460,39 +437,39 @@ end;
 procedure TForm_find_adr2.Panel1MouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 begin
-  cxGroupBox1.Enabled:=False;
-  cxGroupBox2.Enabled:=True;
+  cxGroupBox1.Enabled := False;
+  cxGroupBox2.Enabled := True;
 end;
 
 procedure TForm_find_adr2.Panel2MouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 begin
-  cxGroupBox1.Enabled:=True;
-  cxGroupBox2.Enabled:=False;
+  cxGroupBox1.Enabled := True;
+  cxGroupBox2.Enabled := False;
 
 end;
 
 procedure TForm_find_adr2.Panel1Click(Sender: TObject);
 begin
-  cxGroupBox1.Enabled:=False;
-  cxGroupBox2.Enabled:=True;
-  RadioButton1.Checked:=False;
-  RadioButton2.Checked:=True;
+  cxGroupBox1.Enabled := False;
+  cxGroupBox2.Enabled := True;
+  RadioButton1.Checked := False;
+  RadioButton2.Checked := True;
 end;
 
 procedure TForm_find_adr2.Panel2Click(Sender: TObject);
 begin
-  cxGroupBox1.Enabled:=True;
-  cxGroupBox2.Enabled:=False;
-  RadioButton1.Checked:=True;
-  RadioButton2.Checked:=False;
+  cxGroupBox1.Enabled := True;
+  cxGroupBox2.Enabled := False;
+  RadioButton1.Checked := True;
+  RadioButton2.Checked := False;
 
 end;
 
 procedure TForm_find_adr2.Edit3KeyPress(Sender: TObject; var Key: Char);
 begin
   try
-    if Key = #13 then
+    if (Key = #13) or (Key = #9) then
       Windows.SetFocus(Button1.Handle);
   except
   end;
@@ -502,7 +479,7 @@ end;
 procedure TForm_find_adr2.Edit2KeyPress(Sender: TObject; var Key: Char);
 begin
   try
-    if Key = #13 then
+    if (Key = #13) or (Key = #9) then
       Windows.SetFocus(Button1.Handle);
   except
   end;
@@ -512,7 +489,7 @@ end;
 procedure TForm_find_adr2.Edit1KeyPress(Sender: TObject; var Key: Char);
 begin
   try
-    if Key = #13 then
+    if (Key = #13) or (Key = #9) then
       Windows.SetFocus(Button1.Handle);
   except
   end;
@@ -521,22 +498,41 @@ end;
 
 procedure TForm_find_adr2.Edit1Change(Sender: TObject);
 begin
-  Edit2.Text:='';
-  Edit3.Text:='';
-  
+  Edit2.Text := '';
+  Edit3.Text := '';
+
 end;
 
 procedure TForm_find_adr2.Edit2Change(Sender: TObject);
 begin
-  Edit1.Text:='';
-  Edit3.Text:='';
+  Edit1.Text := '';
+  Edit3.Text := '';
 
 end;
 
 procedure TForm_find_adr2.Edit3Change(Sender: TObject);
 begin
-  Edit1.Text:='';
-  Edit2.Text:='';
+  Edit1.Text := '';
+  Edit2.Text := '';
+
+end;
+
+procedure TForm_find_adr2.lkpStreetPropertiesEditValueChanged(
+  Sender: TObject);
+begin
+  lkpHouse.EditValue := Null;
+  lkpKw.EditValue := Null;
+  if lkpStreet.EditValue <> Null then
+    lkpHouse.Properties.ReadOnly := False;
+
+end;
+
+procedure TForm_find_adr2.lkpHousePropertiesEditValueChanged(
+  Sender: TObject);
+begin
+  lkpKw.EditValue := Null;
+  if lkpHouse.EditValue <> Null then
+    lkpKw.Properties.ReadOnly := False;
 
 end;
 

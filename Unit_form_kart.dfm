@@ -1,6 +1,6 @@
 object Form_kart: TForm_kart
-  Left = 2706
-  Top = 189
+  Left = 918
+  Top = 282
   Width = 903
   Height = 675
   BorderIcons = [biSystemMenu, biMinimize]
@@ -137,7 +137,7 @@ object Form_kart: TForm_kart
         Top = 1
         Width = 342
         Height = 220
-        ActivePage = TabSheet2
+        ActivePage = TabSheet10
         Align = alClient
         TabOrder = 0
         object TabSheet2: TTabSheet
@@ -1089,11 +1089,11 @@ object Form_kart: TForm_kart
             WordWrap = True
           end
           object Label27: TLabel
-            Left = 8
+            Left = 0
             Top = 14
-            Width = 80
-            Height = 13
-            Caption = 'K_ID '#1060#1080#1085'.'#1051#1057
+            Width = 89
+            Height = 19
+            Caption = 'KLSK '#1060#1080#1085'.'#1051#1057
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -11
@@ -1133,9 +1133,9 @@ object Form_kart: TForm_kart
           object Label56: TLabel
             Left = 188
             Top = 13
-            Width = 50
-            Height = 13
-            Caption = 'K_ID '#1051#1057
+            Width = 61
+            Height = 20
+            Caption = 'KLSK '#1051#1057
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -11
@@ -1147,9 +1147,9 @@ object Form_kart: TForm_kart
           object Label62: TLabel
             Left = 168
             Top = 45
-            Width = 79
-            Height = 13
-            Caption = 'K_ID '#1055#1086#1084#1077#1097'.'
+            Width = 89
+            Height = 20
+            Caption = 'KLSK '#1055#1086#1084#1077#1097'.'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -11

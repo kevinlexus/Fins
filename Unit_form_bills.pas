@@ -225,6 +225,7 @@ type
     DS_sel_obj: TDataSource;
     cxLookupComboBox4: TcxLookupComboBox;
     cxImageComboBox2: TcxImageComboBox;
+    frxDBData_arch3: TfrxDBDataset;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -292,10 +293,7 @@ end;
 procedure TForm_print_bills.Button1Click(Sender: TObject);
 var
   pen_last_month_: Integer;
- // tp_: Integer;
   repVar: string;
-  // долг, пеня для арх справки
-  // dolg, pen : Double;
 begin
   // СЧЕТ
 
@@ -304,7 +302,7 @@ begin
   wwDBEdit2.Text := RightStr('00000000' + wwDBEdit2.Text, 8);
 
   if (DBLookupComboboxEh1.KeyValue = null) or ((DBLookupComboboxEh5.KeyValue =
-    null) and (tp_ = 2)) then
+    null) and ((tp_ = 2) or (tp_ = 5) or (tp_ = 7))) then
   begin
     ShowMessage('Не выбран период отчета, Отмена');
     Exit;
@@ -332,7 +330,7 @@ begin
 
   // подготовку делаем в случае выбора либо 1 л.с. либо 1 квартиры
   // и только не по арх спр.
-  if (tp_ <> 2) and (tp_ <> 5) and (sel_obj_ = 0)
+  if (tp_ <> 2) and (tp_ <> 5)  and (tp_ <> 7) and (sel_obj_ = 0)
     and (wwDBEdit1.Text = wwDBEdit2.Text)
     and (CheckBox3.Checked = True) then
   begin
@@ -340,7 +338,7 @@ begin
     DataModule1.OraclePackage1.CallProcedure('scott.GEN.prepare_arch_k_lsk',
       [Form_main.k_lsk_id_, pen_last_month_, 0]);
   end
-  else if (tp_ <> 2) and (tp_ <> 5) and (tp_ <> 6) and (sel_obj_ = 1)
+  else if (tp_ <> 2) and (tp_ <> 5)  and (tp_ <> 7) and (tp_ <> 6) and (sel_obj_ = 1)
     and (DBLookupComboboxEh4.KeyValue <> null)
     and (CheckBox3.Checked = True) then
   begin
@@ -350,7 +348,6 @@ begin
   end;
 
   // тип отчета
-  //tp_ := rep_var;
 
   if (tp_ = 6) then
     // поквартирная карточка
@@ -358,7 +355,7 @@ begin
   else if (OD_t_org.FieldByName('BILL_TP').asInteger = 0) or
     (OD_t_org.FieldByName('BILL_TP').asInteger = 1) or
     (OD_t_org.FieldByName('BILL_TP').asInteger = 2) or
-    (tp_ = 2) or (tp_ = 5) or (tp_ = 1) then
+    (tp_ = 2) or (tp_ = 5)  or (tp_ = 7) or (tp_ = 1) then
     // старый вариант отчетности или арх.справ или арх.справ-2
     old_report(pen_last_month_, repVar)
   else if (OD_t_org.FieldByName('BILL_TP').asInteger = 3) or
@@ -775,7 +772,7 @@ begin
   else
     OD_main.SetVariable('kw_', null);
 
-  if (tp_ = 5) then //справка арх-2
+  if (tp_ = 5) or (tp_ = 7) then //справка арх-2
   begin
     if sel_obj_ = 2 then
     begin
@@ -898,17 +895,19 @@ begin
     OD_data.SetVariable('mg1_', DBLookupComboboxEh1.KeyValue);
     OD_data.SetVariable('mg2_', DBLookupComboboxEh1.KeyValue);
   end
-  else if (tp_ = 2) then //справка арх
-  begin
-
-  end
-  else if (tp_ = 5) then //справка арх-2
+  else if (tp_ = 5) or (tp_ = 7) then //справка арх-2
   begin
     wwDBEdit2.Text := wwDBEdit1.Text;
     //OD_arch.SetVariable('p_mg1', DBLookupComboboxEh1.KeyValue);
     //OD_arch.SetVariable('p_mg2', DBLookupComboboxEh5.KeyValue);
     DM_Bill.Uni_arch.Params.ParamByName('p_sel_uk').AsString :=
       getStrUk();
+      
+    if tp_=5 then  
+      DM_Bill.Uni_arch.Params.ParamByName('p_tp').AsInteger :=0
+    else
+      DM_Bill.Uni_arch.Params.ParamByName('p_tp').AsInteger :=1;
+    
     DM_Bill.Uni_arch.Params.ParamByName('p_mg1').AsString :=
       DBLookupComboboxEh1.KeyValue;
     DM_Bill.Uni_arch.Params.ParamByName('p_mg2').AsString :=
@@ -953,52 +952,6 @@ begin
   begin
     //по адресу
     OD_data3.SetVariable('k_lsk_id_', Form_main.k_lsk_id_);
-  end;
-
-  if (sel_obj_ = 0) or (sel_obj_ = 2) then
-  begin
-    //По лицевому счету или УК
-    if (tp_ = 2) or (tp_ = 5) then //справка арх
-    begin
-      //OD_arch.SetVariable('p_lsk', wwDBEdit1.Text);
-      //OD_arch.Master := OD_cmp_main;
-
-      //OD_arch.MasterFields := 'LSK';
-      //OD_arch.DetailFields := 'P_LSK';
-      //DM_Bill.Uni_arch.MasterFields := 'LSK';
-      //DM_Bill.Uni_arch.DetailFields := 'LSK';
-
-      //OD_arch.SetVariable('p_adr', 0);
-      //DM_Bill.Uni_arch.Params.ParamByName('p_adr').AsInteger := 1;
-
-      { ред. 07.05.2019 - пока убрал
-      OD_data2.SetVariable('lsk_', wwDBEdit1.Text);        }
-    end;
-  end
-  else if sel_obj_ = 1 then
-  begin
-    //По адресу
-    if (tp_ = 2) or (tp_ = 5) then //справка арх
-    begin
-      //OD_arch.Master := OD_cmp_main;
-      //OD_arch.MasterFields := 'K_LSK_ID';
-      //OD_arch.DetailFields := 'P_K_LSK';
-      //DM_Bill.Uni_arch.MasterFields := 'K_LSK_ID';
-      //DM_Bill.Uni_arch.DetailFields := 'K_LSK_ID';
-
-      //OD_arch.SetVariable('p_k_lsk', Form_main.k_lsk_id_);
-      //OD_arch.SetVariable('p_adr', 1);
-      //DM_Bill.Uni_arch.Params.ParamByName('p_adr').AsInteger := 1;
-
-      { ред. 07.05.2019 - пока убрал
-      OD_data2.SetVariable('lsk_', null);
-      OD_data2.SetVariable('kul_', DBLookupComboboxEh2.KeyValue);
-      OD_data2.SetVariable('nd_', OD_houses.FieldByName('nd_id').AsString);
-      if DBLookupComboboxEh4.KeyValue <> null then
-        OD_data2.SetVariable('kw_', OD_kw.FieldByName('kw_id').AsString)
-      else
-        OD_data2.SetVariable('kw_', null);}
-    end;
   end;
 
   //печатать ли по старому фонду счета
@@ -1050,18 +1003,12 @@ begin
   else if (tp_ = 2) then
   begin
     //Арх.спр.
-    //OD_cmp_main.Active := true;
-    // OD_arch.Active := true;
     DM_Bill.Uni_cmp_main_arch.Active := True;
     DM_Bill.Uni_arch.Active := True;
-    { ред. 07.05.2019 - пока убрал
-      OD_data2.Active := true;}
   end
-  else if (tp_ = 5) then
+  else if (tp_ = 5) or (tp_ = 7) then
   begin
     // Арх.спр.-2
-    //OD_cmp_main.Active := true;
-    //OD_arch.Active := true;
     DM_Bill.Uni_cmp_main_arch.Active := True;
     DM_Bill.Uni_arch.Active := True;
   end
@@ -1089,7 +1036,7 @@ begin
       + MB_APPLMODAL);
     Form_status.Close;
   end
-  else if (((tp_ = 2) or (tp_ = 5)) and (DM_Bill.Uni_cmp_main_arch.RecordCount =
+  else if (((tp_ = 2) or (tp_ = 5) or (tp_ = 7)) and (DM_Bill.Uni_cmp_main_arch.RecordCount =
     0)) then
   begin
     Application.MessageBox('Нет информации за указанный период', 'Внимание!', 16
@@ -1172,6 +1119,12 @@ begin
     begin
       //Справка из архива-2
       frxReport1.LoadFromFile(Form_main.exepath_ + 'арх_спр4.fr3', True);
+      frxReport1.PrepareReport(true);
+    end
+    else if tp_ = 7 then
+    begin
+      //Справка из архива-3
+      frxReport1.LoadFromFile(Form_main.exepath_ + 'арх_спр5.fr3', True);
       frxReport1.PrepareReport(true);
     end
     else if tp_ = 3 then
@@ -1318,6 +1271,15 @@ begin
       Item.Description := 'Поквартирная карточка';
       Item.ImageIndex := 6;
     end;
+
+    if isaccess('scott.drx_print_bills_спр_арх3') = 1 then
+    begin
+      Item := Items.Add as TcxImageComboBoxItem;
+      Item.Value := 7;
+      Item.Description := 'Справка из архива-3';
+      Item.ImageIndex := 7;
+    end;
+
   finally
     Items.EndUpdate;
   end;
@@ -1389,7 +1351,7 @@ begin
   if FF('Form_get_pay_nal', 0) = 1 then
   begin
     //ComboBox1.ItemIndex := 0;
-    cxImageComboBox2.ItemIndex:=0;
+    cxImageComboBox2.ItemIndex := 0;
     wwDBEdit1.Text := Form_get_pay_nal.OD_kart.FieldByName('lsk').AsString;
     wwDBEdit2.Text := Form_get_pay_nal.OD_kart.FieldByName('lsk').AsString;
     OD_mg.First;
@@ -1426,7 +1388,7 @@ begin
   else if FF('Form_list_kart', 0) = 1 then
   begin
     //ComboBox1.ItemIndex := 0;
-    cxImageComboBox2.ItemIndex:=0;
+    cxImageComboBox2.ItemIndex := 0;
     wwDBEdit1.Text := Form_list_kart.OD_list_kart.FieldByName('lsk').AsString;
     wwDBEdit2.Text := Form_list_kart.OD_list_kart.FieldByName('lsk').AsString;
     OD_mg.First;
@@ -1461,7 +1423,7 @@ begin
   end
   else
   begin
-    cxImageComboBox2.ItemIndex:=0;
+    cxImageComboBox2.ItemIndex := 0;
   end;
 
 end;
@@ -1798,7 +1760,7 @@ begin
     Label13.Enabled := True;
     cxImageComboBox1.Enabled := True;
   end
-  else if (tp_ = 2) or (tp_ = 5) then
+  else if (tp_ = 2) or (tp_ = 5) or (tp_ = 7) then
     // Справка из архива
   begin
     Label3.Caption := 'Период отчета, с';
@@ -1844,8 +1806,9 @@ var
   value: Variant;
 begin
   // получить value cxImageComboBox
-  value := TcxImageComboBox(Sender).Properties.Items[TcxImageComboBox(Sender).ItemIndex].ImageIndex;
-  tp_:=VarToInt(value);
+  value :=
+    TcxImageComboBox(Sender).Properties.Items[TcxImageComboBox(Sender).ItemIndex].ImageIndex;
+  tp_ := VarToInt(value);
 end;
 
 end.

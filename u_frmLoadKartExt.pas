@@ -203,7 +203,7 @@ begin
       Application.CreateForm(TForm_status, Form_status);
       Form_status.Update;
       l_res :=
-        DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA2.HTTP_REQ',
+        DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA.HTTP_REQ',
         ['/unloadPaymentFileKartExt/' + Edit1.Text
          +'/'+ cxDateEdit1.Text +'/'+ cxDateEdit2.Text, null,
         'GET']);

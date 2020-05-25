@@ -1,6 +1,6 @@
 object frmKartExt: TfrmKartExt
-  Left = 572
-  Top = 294
+  Left = 751
+  Top = 332
   Width = 868
   Height = 530
   Caption = #1042#1085#1077#1096#1085#1080#1077' '#1083#1080#1094'.'#1089#1095#1077#1090#1072
@@ -150,6 +150,7 @@ object frmKartExt: TfrmKartExt
         Width = 54
       end
       object cxGrid1DBTableView1FK_KLSK_ID: TcxGridDBColumn
+        Caption = 'KLSK '#1060#1080#1085'.'#1083#1080#1094'.'
         DataBinding.FieldName = 'FK_KLSK_ID'
       end
       object cxGrid1DBTableView1FK_KLSK_PREMISE: TcxGridDBColumn

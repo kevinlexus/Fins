@@ -1,7 +1,7 @@
 object DM_Olap: TDM_Olap
   OldCreateOrder = False
-  Left = 3295
-  Top = 166
+  Left = 3101
+  Top = 214
   Height = 810
   Width = 686
   object DS_spr_params: TDataSource

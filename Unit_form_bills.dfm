@@ -1,8 +1,8 @@
 object Form_print_bills: TForm_print_bills
   Left = 220
-  Top = 171
-  Width = 468
-  Height = 447
+  Top = 172
+  Width = 415
+  Height = 449
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #1057#1095#1077#1090#1072' '#1085#1072' '#1086#1087#1083#1072#1090#1091' '#1091#1089#1083#1091#1075' '#1046#1050#1061
   Color = clBtnFace
@@ -93,7 +93,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox1: TGroupBox
     Left = 0
     Top = 342
-    Width = 452
+    Width = 399
     Height = 61
     Align = alTop
     TabOrder = 3
@@ -138,7 +138,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox2: TGroupBox
     Left = 0
     Top = 0
-    Width = 452
+    Width = 399
     Height = 105
     Align = alTop
     TabOrder = 0
@@ -279,7 +279,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox3: TGroupBox
     Left = 0
     Top = 105
-    Width = 452
+    Width = 399
     Height = 200
     Align = alTop
     TabOrder = 2
@@ -580,7 +580,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox4: TGroupBox
     Left = 0
     Top = 305
-    Width = 452
+    Width = 399
     Height = 37
     Align = alTop
     TabOrder = 4
@@ -1719,7 +1719,7 @@ object Form_print_bills: TForm_print_bills
     Optimize = False
     Variables.Data = {0300000001000000040000003A4F5247030000000000000000000000}
     QBEDefinition.QBEFieldDefs = {
-      0400000037000000020000004944010000000000020000004344010000000000
+      0400000038000000020000004944010000000000020000004344010000000000
       08000000464B5F4F52475450010000000000040000004E414D45010000000000
       030000004E505001000000000001000000560100000000000900000050415245
       4E545F4944010000000000030000005245550100000000000500000054524553
@@ -1748,7 +1748,8 @@ object Form_print_bills: TForm_print_bills
       0100000000000B000000444953545F5041595F54500100000000000800000041
       44525F434153480100000000000600000049535F52534F0100000000000F0000
       0049535F45584348414E47455F4749530100000000000A0000004F52475F5450
-      5F474953010000000000070000004752505F444542010000000000}
+      5F474953010000000000070000004752505F4445420100000000000F00000049
+      535F45584348414E47455F455854010000000000}
     Master = OD_data
     MasterFields = 'org'
     DetailFields = 'org'
@@ -1827,15 +1828,15 @@ object Form_print_bills: TForm_print_bills
     SQL.Strings = (
       
         'select '#39'0'#39' as id, '#39#1040#1076#1088#1077#1089#1091#39' as name from dual where :var_ in (0,1' +
-        ',2,3,4,5,6)'
+        ',2,3,4,5,6,7)'
       'union all'
       
         'select '#39'1'#39' as id, '#39#1051#1080#1094#1077#1074#1086#1084#1091' '#1089#1095#1077#1090#1091#39' as name from dual where :var_' +
-        ' in (0,1,2,3,4,5,6)'
+        ' in (0,1,2,3,4,5,6,7)'
       'union all'
       
         'select '#39'2'#39' as id, '#39#1059#1050#39' as name from dual where  :var_ in (0,1,4,' +
-        '5,6)')
+        '5,6,7)')
     Optimize = False
     Variables.Data = {0300000001000000050000003A5641525F030000000000000000000000}
     QBEDefinition.QBEFieldDefs = {
@@ -2841,5 +2842,25 @@ object Form_print_bills: TForm_print_bills
     DataSet = OD_sel_obj
     Left = 352
     Top = 241
+  end
+  object frxDBData_arch3: TfrxDBDataset
+    UserName = 'frxDBData_arch3'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'MG=MG'
+      'MG_NEW=MG_NEW'
+      'LSK=LSK'
+      'SAL_IN=SAL_IN'
+      'SAL_OUT=SAL_OUT'
+      'SUM_CHRG=SUM_CHRG'
+      'PAY=PAY'
+      'PAY_PEN=PAY_PEN'
+      'PEN_IN=PEN_IN'
+      'PEN_OUT=PEN_OUT'
+      'PEN_CUR=PEN_CUR')
+    DataSet = DM_Bill.Uni_arch
+    BCDToCurrency = False
+    Left = 520
+    Top = 512
   end
 end
