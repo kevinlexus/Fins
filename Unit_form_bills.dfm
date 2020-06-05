@@ -258,7 +258,7 @@ object Form_print_bills: TForm_print_bills
       Properties.KeyFieldNames = 'FIRST_REC'
       Properties.ListColumns = <
         item
-          FieldName = 'FIRST_REC'
+          FieldName = 'NAME'
         end>
       Properties.ListOptions.ShowHeader = False
       Properties.ListSource = DS_ls_cnt

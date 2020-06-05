@@ -1,6 +1,6 @@
 object Form_kart_pr: TForm_kart_pr
-  Left = 302
-  Top = 321
+  Left = 848
+  Top = 262
   Width = 680
   Height = 525
   BorderIcons = [biSystemMenu, biMinimize]
@@ -389,11 +389,37 @@ object Form_kart_pr: TForm_kart_pr
         ParentFont = False
       end
       object Label42: TLabel
-        Left = 56
+        Left = 200
         Top = 128
         Width = 44
         Height = 13
         Caption = #1057#1053#1048#1051#1057
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label43: TLabel
+        Left = 344
+        Top = 128
+        Width = 28
+        Height = 13
+        Caption = #1048#1053#1053
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label44: TLabel
+        Left = 24
+        Top = 128
+        Width = 80
+        Height = 13
+        Caption = #1050#1086#1076' '#1087#1086#1076#1088#1072#1079#1076'.'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -486,7 +512,7 @@ object Form_kart_pr: TForm_kart_pr
         KeyField = 'ID'
         ListField = 'NAME'
         ListSource = DS_country
-        TabOrder = 10
+        TabOrder = 13
         Visible = True
       end
       object DBLookupComboboxEh8: TDBLookupComboboxEh
@@ -500,7 +526,7 @@ object Form_kart_pr: TForm_kart_pr
         KeyField = 'ID'
         ListField = 'NAME'
         ListSource = DS_distr
-        TabOrder = 17
+        TabOrder = 20
         Visible = True
       end
       object DBEdit7: TDBEdit
@@ -510,7 +536,7 @@ object Form_kart_pr: TForm_kart_pr
         Height = 21
         DataField = 'FRM_TOWN'
         DataSource = Form_kart.DS_kart_pr
-        TabOrder = 16
+        TabOrder = 19
         OnExit = DBEdit1Exit
       end
       object DBDateTimeEditEh6: TDBDateTimeEditEh
@@ -523,7 +549,7 @@ object Form_kart_pr: TForm_kart_pr
         DataSource = Form_kart.DS_kart_pr
         EditButtons = <>
         Kind = dtkDateEh
-        TabOrder = 18
+        TabOrder = 21
         Visible = True
       end
       object DBLookupComboboxEh9: TDBLookupComboboxEh
@@ -537,7 +563,7 @@ object Form_kart_pr: TForm_kart_pr
         KeyField = 'ID'
         ListField = 'NAME'
         ListSource = Form_kart.DS_spul
-        TabOrder = 11
+        TabOrder = 14
         Visible = True
       end
       object DBEdit8: TDBEdit
@@ -547,7 +573,7 @@ object Form_kart_pr: TForm_kart_pr
         Height = 21
         DataField = 'FRM_ND'
         DataSource = Form_kart.DS_kart_pr
-        TabOrder = 13
+        TabOrder = 16
         OnExit = DBEdit1Exit
       end
       object DBEdit9: TDBEdit
@@ -557,7 +583,7 @@ object Form_kart_pr: TForm_kart_pr
         Height = 21
         DataField = 'FRM_KW'
         DataSource = Form_kart.DS_kart_pr
-        TabOrder = 15
+        TabOrder = 18
         OnExit = DBEdit1Exit
       end
       object DBEdit10: TDBEdit
@@ -567,7 +593,7 @@ object Form_kart_pr: TForm_kart_pr
         Height = 21
         DataField = 'W_PLACE'
         DataSource = Form_kart.DS_kart_pr
-        TabOrder = 19
+        TabOrder = 22
         OnExit = DBEdit1Exit
       end
       object DBLookupComboboxEh18: TDBLookupComboboxEh
@@ -585,7 +611,7 @@ object Form_kart_pr: TForm_kart_pr
         KeyField = 'ID'
         ListField = 'NAME'
         ListSource = DS_regn
-        TabOrder = 12
+        TabOrder = 15
         Visible = True
       end
       object DBLookupComboboxEh19: TDBLookupComboboxEh
@@ -603,7 +629,7 @@ object Form_kart_pr: TForm_kart_pr
         KeyField = 'ID'
         ListField = 'NAME'
         ListSource = DS_distr
-        TabOrder = 14
+        TabOrder = 17
         Visible = True
       end
       object DBLookupComboboxEh7: TDBLookupComboboxEh
@@ -679,17 +705,17 @@ object Form_kart_pr: TForm_kart_pr
         Visible = True
       end
       object DBEdit15: TDBEdit
-        Left = 105
+        Left = 249
         Top = 120
         Width = 88
         Height = 21
         DataField = 'DOK_SNILS'
         DataSource = Form_kart.DS_kart_pr
-        TabOrder = 20
+        TabOrder = 11
         OnExit = DBEdit1Exit
       end
       object cxDBCheckBox1: TcxDBCheckBox
-        Left = 200
+        Left = 488
         Top = 120
         Hint = 
           #1048#1089#1087#1086#1083#1100#1079#1086#1074#1072#1090#1100' '#1080#1085#1092#1086#1088#1084#1072#1094#1080#1102' '#1076#1083#1103' '#1088#1072#1079#1076#1077#1083#1077#1085#1080#1103' '#1083#1080#1094'.'#1089#1095#1077#1090#1072' '#1074' '#1043#1048#1057' '#1046#1050#1061' ('#1085#1077#1086#1073 +
@@ -708,8 +734,28 @@ object Form_kart_pr: TForm_kart_pr
         Style.Font.Name = 'MS Sans Serif'
         Style.Font.Style = [fsBold]
         Style.IsFontAssigned = True
-        TabOrder = 21
+        TabOrder = 23
         Width = 113
+      end
+      object DBEdit16: TDBEdit
+        Left = 377
+        Top = 120
+        Width = 88
+        Height = 21
+        DataField = 'DOK_INN'
+        DataSource = Form_kart.DS_kart_pr
+        TabOrder = 12
+        OnExit = DBEdit1Exit
+      end
+      object DBEdit17: TDBEdit
+        Left = 105
+        Top = 120
+        Width = 88
+        Height = 21
+        DataField = 'DOK_DIV'
+        DataSource = Form_kart.DS_kart_pr
+        TabOrder = 10
+        OnExit = DBEdit1Exit
       end
     end
     object TabSheet2: TTabSheet
@@ -1791,42 +1837,6 @@ object Form_kart_pr: TForm_kart_pr
     TabOrder = 2
     BeforeAction = DBNavigator2BeforeAction
   end
-  object wwDBLookupCombo2: TwwDBLookupCombo
-    Left = 504
-    Top = 216
-    Width = 121
-    Height = 21
-    DropDownAlignment = taLeftJustify
-    Selected.Strings = (
-      'NAME'#9'25'#9'NAME'#9#9)
-    LookupTable = OD_c_status_pr
-    LookupField = 'NAME'
-    TabOrder = 6
-    AutoDropDown = False
-    ShowButton = True
-    PreciseEditRegion = False
-    AllowClearKey = False
-    OnCloseUp = wwDBLookupCombo2CloseUp
-    OnExit = wwDBLookupCombo2Exit
-  end
-  object wwDBLookupCombo3: TwwDBLookupCombo
-    Left = 504
-    Top = 240
-    Width = 121
-    Height = 21
-    DropDownAlignment = taLeftJustify
-    Selected.Strings = (
-      'NAME'#9'25'#9'NAME'#9#9)
-    LookupTable = OD_c_status_pr2
-    LookupField = 'NAME'
-    TabOrder = 7
-    AutoDropDown = False
-    ShowButton = True
-    PreciseEditRegion = False
-    AllowClearKey = False
-    OnCloseUp = wwDBLookupCombo3CloseUp
-    OnExit = wwDBLookupCombo3Exit
-  end
   object DBEdit14: TDBEdit
     Left = 214
     Top = 400
@@ -2770,7 +2780,7 @@ object Form_kart_pr: TForm_kart_pr
         DataSetName = 'c_kart_pr'
       end
       item
-        DataSet = Form_print_bills.frxDBDataset14
+        DataSet = Form_list_kart.frxDBDataset1
         DataSetName = 'kart'
       end>
     Variables = <>

@@ -789,7 +789,7 @@ begin
   end;
   dset.SQL.Text := str_.Text;
   if i = 0 then
-    ShowMessage('Change_alias: ' + str1);
+    ShowMessage('Не найден Change_alias: ' + str1);
 
   if (reopenDS) then
   begin

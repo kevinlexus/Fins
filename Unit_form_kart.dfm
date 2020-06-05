@@ -1,6 +1,6 @@
 object Form_kart: TForm_kart
-  Left = 918
-  Top = 282
+  Left = 596
+  Top = 209
   Width = 903
   Height = 675
   BorderIcons = [biSystemMenu, biMinimize]
@@ -137,7 +137,7 @@ object Form_kart: TForm_kart
         Top = 1
         Width = 342
         Height = 220
-        ActivePage = TabSheet10
+        ActivePage = TabSheet3
         Align = alClient
         TabOrder = 0
         object TabSheet2: TTabSheet
@@ -1091,8 +1091,8 @@ object Form_kart: TForm_kart
           object Label27: TLabel
             Left = 0
             Top = 14
-            Width = 89
-            Height = 19
+            Width = 83
+            Height = 13
             Caption = 'KLSK '#1060#1080#1085'.'#1051#1057
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
@@ -1133,8 +1133,8 @@ object Form_kart: TForm_kart
           object Label56: TLabel
             Left = 188
             Top = 13
-            Width = 61
-            Height = 20
+            Width = 53
+            Height = 13
             Caption = 'KLSK '#1051#1057
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
@@ -1147,8 +1147,8 @@ object Form_kart: TForm_kart
           object Label62: TLabel
             Left = 168
             Top = 45
-            Width = 89
-            Height = 20
+            Width = 82
+            Height = 13
             Caption = 'KLSK '#1055#1086#1084#1077#1097'.'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
@@ -2856,8 +2856,9 @@ object Form_kart: TForm_kart
         'c.dat_prop, c.dat_ub, c.dat_rog, c.status, c.relat_id, c.status_' +
         'datb, c.status_dat, c.status_chng, c.fk_doc_tp, c.fk_nac,'
       
-        'c.b_place, c.dok_c, c.dok_n, c.dok_d, c.dok_v, c.dok_snils, c.fk' +
-        '_frm_cntr, c.fk_frm_regn, c.fk_frm_distr, c.frm_town, c.frm_dat,'
+        'c.b_place, c.dok_c, c.dok_n, c.dok_d, c.dok_v, c.dok_div, c.dok_' +
+        'inn, c.dok_snils, c.fk_frm_cntr, c.fk_frm_regn, c.fk_frm_distr, ' +
+        'c.frm_town, c.frm_dat,'
       
         'c.fk_frm_kul, c.frm_nd, c.frm_kw, c.w_place, c.fk_ub, c.fk_to_cn' +
         'tr, c.fk_to_regn, c.fk_to_distr, c.fk_citiz, c.to_town, '
@@ -2949,7 +2950,7 @@ object Form_kart: TForm_kart
     OracleDictionary.UseMessageTable = True
     OracleDictionary.DefaultValues = True
     QBEDefinition.QBEFieldDefs = {
-      04000000320000000300000046494F01000000000003000000504F4C01000000
+      04000000340000000300000046494F01000000000003000000504F4C01000000
       0000080000004441545F50524F50010000000000060000005354415455530100
       00000000070000004441545F524F470100000000000200000049440100000000
       00030000004C534B01000000000002000000524E010000000000050000004E5F
@@ -2976,7 +2977,8 @@ object Form_kart: TForm_kart
       00000000000600000053545F4454320100000000000700000053545F4E414D45
       01000000000009000000505249565F50524F4301000000000009000000444F4B
       5F534E494C53010000000000120000005553455F4749535F4449564944455F45
-      4C53010000000000}
+      4C5301000000000007000000444F4B5F44495601000000000007000000444F4B
+      5F494E4E010000000000}
     Master = Form_list_kart.OD_list_kart
     MasterFields = 'LSK'
     DetailFields = 'LSK'
@@ -3263,6 +3265,15 @@ object Form_kart: TForm_kart
     end
     object OD_kart_prUSE_GIS_DIVIDE_ELS: TFloatField
       FieldName = 'USE_GIS_DIVIDE_ELS'
+      Required = True
+    end
+    object OD_kart_prDOK_DIV: TStringField
+      FieldName = 'DOK_DIV'
+      Size = 120
+    end
+    object OD_kart_prDOK_INN: TStringField
+      FieldName = 'DOK_INN'
+      Size = 12
     end
   end
   object DS_kart_pr: TDataSource

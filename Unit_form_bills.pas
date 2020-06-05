@@ -774,7 +774,7 @@ begin
 
   if (tp_ = 5) or (tp_ = 7) then //справка арх-2
   begin
-    if sel_obj_ = 2 then
+{    if sel_obj_ = 2 then
     begin
       //только для УК
       //ограничивать диапазон записи для печати счетов
@@ -795,6 +795,8 @@ begin
     // установить параметры
     DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_mg').AsString :=
       DBLookupComboboxEh5.KeyValue;
+         убрать после тестирования! ред.28.05.2020
+      }
     // список УК для фильтра
     DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_sel_uk').AsString :=
       getStrUk();
@@ -1594,6 +1596,8 @@ begin
     cnt_sch_ := 1000
   else
     cnt_sch_ := StrToInt(Edit1.Text);
+
+  sel_ls_cnt;  
 end;
 
 procedure TForm_print_bills.DBLookupComboboxEh5CloseUp(Sender: TObject; Accept:

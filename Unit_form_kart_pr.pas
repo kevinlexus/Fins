@@ -246,8 +246,6 @@ type
     DS_c_status_pr: TDataSource;
     OD_c_status_pr2: TOracleDataSet;
     DS_c_status_pr2: TDataSource;
-    wwDBLookupCombo2: TwwDBLookupCombo;
-    wwDBLookupCombo3: TwwDBLookupCombo;
     Label41: TLabel;
     DBEdit14: TDBEdit;
     OD_c_statesLK_NAME: TStringField;
@@ -272,6 +270,10 @@ type
     Label42: TLabel;
     DBEdit15: TDBEdit;
     cxDBCheckBox1: TcxDBCheckBox;
+    Label43: TLabel;
+    DBEdit16: TDBEdit;
+    Label44: TLabel;
+    DBEdit17: TDBEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure OD_lg_docsSPK_IDValidate(Sender: TField);
     procedure OD_lg_docsTYPEValidate(Sender: TField);

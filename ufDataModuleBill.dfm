@@ -596,7 +596,7 @@ object DM_Bill: TDM_Bill
     SQL.Strings = (
       'begin'
       '  -- Call the procedure'
-      '  scott.rep_bills2.arch(p_k_lsk => :k_lsk_id,'
+      '  scott.rep_bills.arch(p_k_lsk => :k_lsk_id,'
       '                 p_sel_obj => :p_sel_obj,'
       '                 p_lsk => :lsk,'
       '                 p_tp => :p_tp,'
@@ -608,7 +608,6 @@ object DM_Bill: TDM_Bill
     MasterSource = DS_cmp_main_arch
     MasterFields = 'k_lsk_id'
     DetailFields = 'k_lsk_id'
-    Active = True
     Constraints = <>
     Left = 96
     Top = 480
@@ -652,7 +651,7 @@ object DM_Bill: TDM_Bill
       item
         DataType = ftCursor
         Name = 'p_rfcur'
-        Value = ''
+        Value = 'Object'
       end>
   end
   object DS_cmp_detail_primary: TDataSource
@@ -665,7 +664,7 @@ object DM_Bill: TDM_Bill
     SQL.Strings = (
       'begin'
       '  -- Call the procedure'
-      '  scott.rep_bills2.arch_supp(p_k_lsk => :k_lsk_id,'
+      '  scott.rep_bills.arch_supp(p_k_lsk => :k_lsk_id,'
       '                 p_sel_obj => :p_sel_obj,'
       '                 p_lsk => :lsk,'
       '                 p_mg1 => :p_mg1,'

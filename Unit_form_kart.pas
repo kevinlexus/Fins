@@ -425,9 +425,11 @@ type
     TabSheet8: TTabSheet;
     GroupBox2: TGroupBox;
     cxDBCheckBox2: TcxDBCheckBox;
-    OD_kart_prUSE_GIS_DIVIDE_ELS: TFloatField;
     Label63: TLabel;
     cxDBMaskEdit1: TcxDBMaskEdit;
+    OD_kart_prUSE_GIS_DIVIDE_ELS: TFloatField;
+    OD_kart_prDOK_DIV: TStringField;
+    OD_kart_prDOK_INN: TStringField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure DBGridEh1DblClick(Sender: TObject);
     procedure OD_kartAfterPost(DataSet: TDataSet);
@@ -1221,8 +1223,8 @@ begin
     if (Form_main.arch_mg_ <> '') and (mgold_ = '') then
     begin // из текущего в архив
       change_alias(OD_kart_pr, 'scott.c_kart_pr',
-        '(select * from scott.a_kart_pr where mg=''' + Form_main.arch_mg_ +
-        ''')');
+        '(select * from scott.a_kart_pr2 where ''' + Form_main.arch_mg_ +
+        ''' between mgFrom and mgTo)');
       change_alias(OD_kart_pr, 'scott.c_lg_docs',
         '(select * from scott.a_lg_docs where mg=''' + Form_main.arch_mg_ +
         ''')');
@@ -1237,21 +1239,18 @@ begin
       change_alias(OD_charge, 'scott.c_charge',
         '(select * from scott.a_charge2 where ''' + Form_main.arch_mg_ +
         ''' between mgfrom and mgto)');
-      //change_alias(OD_charge, 'scott.c_charge', '(select * from scott.a_charge where mg=''' + Form_main.arch_mg_ + ''')');
       change_alias(OD_charge, 'scott.c_change',
         '(select * from scott.a_change where mg=''' + Form_main.arch_mg_ +
         ''')');
-      //change_alias(OD_charge, 'scott.nabor_progs', '(select * from scott.a_nabor_progs where mg=''' + Form_main.arch_mg_ + ''')');
       change_alias(OD_charge, 'scott.nabor',
         '(select * from scott.a_nabor2 where ''' + Form_main.arch_mg_ +
         ''' between mgfrom and mgto)');
-      //change_alias(OD_charge, 'scott.nabor', '(select * from scott.a_nabor where mg=''' + Form_main.arch_mg_ + ''')');
       wwDBGrid1.Visible := false;
     end
     else if (Form_main.arch_mg_ = '') and (mgold_ <> '') then
     begin // из архива в текущее
-      change_alias(OD_kart_pr, '(select * from scott.a_kart_pr where mg=''' +
-        mgold_ + ''')', 'scott.c_kart_pr');
+      change_alias(OD_kart_pr, '(select * from scott.a_kart_pr2 where ''' + mgold_ +
+        ''' between mgFrom and mgTo)', 'scott.c_kart_pr');
       change_alias(OD_kart_pr, '(select * from scott.a_lg_docs where mg=''' +
         mgold_ + ''')', 'scott.c_lg_docs');
       change_alias(OD_kart_pr, '(select * from scott.a_lg_pr where mg=''' +
@@ -1263,21 +1262,18 @@ begin
         + ''')', 'scott.c_vvod');
       change_alias(OD_charge, '(select * from scott.a_charge2 where ''' + mgold_
         + ''' between mgfrom and mgto)', 'scott.c_charge');
-      //change_alias(OD_charge, '(select * from scott.a_charge where mg=''' + mgold_ + ''')', 'scott.c_charge');
       change_alias(OD_charge, '(select * from scott.a_change where mg=''' +
         mgold_ + ''')', 'scott.c_change');
-      //change_alias(OD_charge, '(select * from scott.a_nabor_progs where mg=''' + mgold_ + ''')', 'scott.nabor_progs');
       change_alias(OD_charge, '(select * from scott.a_nabor2 where ''' + mgold_
         +
         ''' between mgfrom and mgto)', 'scott.nabor');
-      //change_alias(OD_charge, '(select * from scott.a_nabor where mg=''' + mgold_ + ''')', 'scott.nabor');
       wwDBGrid1.Visible := true;
     end
     else if (Form_main.arch_mg_ <> '') and (mgold_ <> '') then
     begin // из архива в архив
-      change_alias(OD_kart_pr, '(select * from scott.a_kart_pr where mg=''' +
-        mgold_ + ''')', '(select * from scott.a_kart_pr where mg=''' +
-        Form_main.arch_mg_ + ''')');
+      change_alias(OD_kart_pr, '(select * from scott.a_kart_pr2 where ''' + mgold_ +
+        ''' between mgFrom and mgTo)', '(select * from scott.a_kart_pr2 where ''' + Form_main.arch_mg_ +
+        ''' between mgFrom and mgTo)');
       change_alias(OD_kart_pr, '(select * from scott.a_lg_docs where mg=''' +
         mgold_ + ''')', '(select * from scott.a_lg_docs where mg=''' +
         Form_main.arch_mg_ + ''')');
@@ -1296,17 +1292,14 @@ begin
         + ''' between mgfrom and mgto)',
         '(select * from scott.a_charge2 where '''
         + Form_main.arch_mg_ + ''' between mgfrom and mgto)');
-      //      change_alias(OD_charge, '(select * from scott.a_charge where mg=''' + mgold_ + ''')', '(select * from scott.a_charge where mg=''' + Form_main.arch_mg_ + ''')');
       change_alias(OD_charge, '(select * from scott.a_change where mg=''' +
         mgold_ + ''')', '(select * from scott.a_change where mg=''' +
         Form_main.arch_mg_ + ''')');
-      //change_alias(OD_charge, '(select * from scott.a_nabor_progs where mg=''' + mgold_ + ''')', '(select * from scott.a_nabor_progs where mg=''' + Form_main.arch_mg_ + ''')');
       change_alias(OD_charge, '(select * from scott.a_nabor2 where ''' + mgold_
         +
         ''' between mgfrom and mgto)', '(select * from scott.a_nabor2 where '''
         +
         Form_main.arch_mg_ + ''' between mgfrom and mgto)');
-      //change_alias(OD_charge, '(select * from scott.a_nabor where mg=''' + mgold_ + ''')', '(select * from scott.a_nabor where mg=''' + Form_main.arch_mg_ + ''')');
       wwDBGrid1.Visible := false;
     end;
   end;
