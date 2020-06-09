@@ -1,8 +1,8 @@
 object frmLoadKartExt: TfrmLoadKartExt
-  Left = 429
-  Top = 494
-  Width = 868
-  Height = 530
+  Left = 2153
+  Top = 434
+  Width = 865
+  Height = 534
   Caption = #1047#1072#1075#1088#1091#1079#1082#1072' '#1074#1085#1077#1096#1085#1080#1093' '#1083#1080#1094'.'#1089#1095#1077#1090#1086#1074
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -92,8 +92,8 @@ object frmLoadKartExt: TfrmLoadKartExt
   object cxGrid1: TcxGrid
     Left = 0
     Top = 41
-    Width = 852
-    Height = 409
+    Width = 849
+    Height = 413
     Align = alClient
     TabOrder = 0
     object cxGrid1DBTableView1: TcxGridDBTableView
@@ -181,19 +181,20 @@ object frmLoadKartExt: TfrmLoadKartExt
   end
   object Panel1: TPanel
     Left = 0
-    Top = 450
-    Width = 852
+    Top = 454
+    Width = 849
     Height = 41
     Align = alBottom
     TabOrder = 1
     DesignSize = (
-      852
+      849
       41)
     object Label1: TLabel
       Left = 360
       Top = 16
       Width = 65
       Height = 13
+      Anchors = [akRight, akBottom]
       Caption = #8470' '#1088#1077#1077#1089#1090#1088#1072
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -207,6 +208,7 @@ object frmLoadKartExt: TfrmLoadKartExt
       Top = 16
       Width = 7
       Height = 13
+      Anchors = [akRight, akBottom]
       Caption = #1057
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -220,6 +222,7 @@ object frmLoadKartExt: TfrmLoadKartExt
       Top = 16
       Width = 15
       Height = 13
+      Anchors = [akRight, akBottom]
       Caption = #1055#1086
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -229,7 +232,7 @@ object frmLoadKartExt: TfrmLoadKartExt
       ParentFont = False
     end
     object Button1: TButton
-      Left = 664
+      Left = 661
       Top = 8
       Width = 75
       Height = 25
@@ -239,7 +242,7 @@ object frmLoadKartExt: TfrmLoadKartExt
       OnClick = Button1Click
     end
     object Button3: TButton
-      Left = 744
+      Left = 741
       Top = 8
       Width = 97
       Height = 25
@@ -249,7 +252,7 @@ object frmLoadKartExt: TfrmLoadKartExt
       OnClick = Button3Click
     end
     object Button2: TButton
-      Left = 16
+      Left = 13
       Top = 8
       Width = 105
       Height = 25
@@ -263,12 +266,14 @@ object frmLoadKartExt: TfrmLoadKartExt
       Top = 8
       Width = 17
       Height = 21
+      Anchors = [akRight, akBottom]
       TabOrder = 3
       Text = '1'
     end
     object cxDateEdit1: TcxDateEdit
       Left = 141
       Top = 10
+      Anchors = [akRight, akBottom]
       Properties.DateButtons = [btnClear, btnToday]
       Properties.SaveTime = False
       Properties.ShowTime = False
@@ -280,6 +285,7 @@ object frmLoadKartExt: TfrmLoadKartExt
     object cxDateEdit2: TcxDateEdit
       Left = 261
       Top = 10
+      Anchors = [akRight, akBottom]
       Properties.DateButtons = [btnClear, btnToday]
       Properties.SaveTime = False
       Properties.ShowTime = False
@@ -292,14 +298,15 @@ object frmLoadKartExt: TfrmLoadKartExt
   object Memo1: TMemo
     Left = 0
     Top = 0
-    Width = 852
+    Width = 849
     Height = 41
     Align = alTop
     Lines.Strings = (
       
         #1055#1088#1080' '#1085#1077#1086#1073#1093#1086#1076#1080#1084#1086#1089#1090#1080' ('#1076#1074#1072' '#1080' '#1073#1086#1083#1077#1077' '#1086#1090#1082#1088#1099#1090#1099#1093' '#1083#1080#1094'.'#1089#1095#1077#1090#1086#1074' '#1087#1086' '#1086#1076#1085#1086#1084#1091' '#1072#1076#1088 +
         #1077#1089#1091', '#1085#1072#1087#1088#1080#1084#1077#1088' '#1088#1072#1079#1076#1077#1083#1077#1085#1099' '#1087#1086' '#1089#1091#1076#1091') '#1084#1086#1078#1085#1086' '#1088#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1087#1086#1083#1077' '#1087#1088#1080#1074#1103#1079 +
-        #1082#1080' "'#1051#1080#1094'.'#1089#1095'." '#1080' '#1087#1086#1084#1077#1085#1103#1090#1100' '
+        #1082#1080' "'#1051#1080#1094'.'#1089#1095'." '#1080' '
+      #1087#1086#1084#1077#1085#1103#1090#1100' '
       #1089#1090#1072#1090#1091#1089' '#1079#1072#1075#1088#1091#1079#1082#1080' '#1085#1072' 0')
     TabOrder = 2
   end
