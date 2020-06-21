@@ -164,8 +164,9 @@ begin
   begin  // из текущего в архив
     Form_chargepay.Caption:='Движение по Л/C - Архив';
     change_alias(OD_chargepay,
-    'select mg, sum(summa) as summa from scott.c_chargepay where period=(select period from scott.params)',
-      'select mg, sum(summa) as summa from scott.c_chargepay where period=('''+Form_main.arch_mg_+''')', false);
+      'select mg, sum(summa) as summa from scott.c_chargepay2 where (select period from scott.params) between mgFrom and mgTo',
+      'select mg, sum(summa) as summa from scott.c_chargepay2 where ('''+Form_main.arch_mg_+''')  between mgFrom and mgTo', false
+      );
     change_alias(OD_chargepay,'scott.c_penya',
       '(select * from scott.a_penya where mg='''+Form_main.arch_mg_+''')', false);
     change_alias(OD_chargepay,'scott.c_pen_cur',
@@ -182,8 +183,9 @@ begin
   begin  // из архива в текущее
     Form_chargepay.Caption:='Движение по Л/C';
     change_alias(OD_chargepay,
-      'select mg, sum(summa) as summa from scott.c_chargepay where period=('''+mgold_+''')',
-      'select mg, sum(summa) as summa from scott.c_chargepay where period=(select period from scott.params)', false);
+      'select mg, sum(summa) as summa from scott.c_chargepay2 where ('''+mgold_+''')  between mgFrom and mgTo',
+      'select mg, sum(summa) as summa from scott.c_chargepay2 where (select period from scott.params) between mgFrom and mgTo', false
+      );
     change_alias(OD_chargepay,
       '(select * from scott.a_penya where mg='''+mgold_+''')',
       'scott.c_penya', false);
@@ -203,8 +205,8 @@ begin
   begin  // из архива в архив
     Form_chargepay.Caption:='Движение по Л/C - Архив';
     change_alias(OD_chargepay,
-      'select mg, sum(summa) as summa from scott.c_chargepay where period=('''+mgold_+''')',
-      'select mg, sum(summa) as summa from scott.c_chargepay where period=('''+Form_main.arch_mg_+''')', false
+      'select mg, sum(summa) as summa from scott.c_chargepay2 where ('''+mgold_+''')  between mgFrom and mgTo',
+      'select mg, sum(summa) as summa from scott.c_chargepay2 where ('''+Form_main.arch_mg_+''')  between mgFrom and mgTo', false
       );
     change_alias(OD_chargepay,
       '(select * from scott.a_penya where mg='''+mgold_+''')',

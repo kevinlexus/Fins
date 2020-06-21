@@ -1624,7 +1624,7 @@ begin
   StartTreeObj;
   if FF('Form_olap', 0) = 0 then
     Application.CreateForm(TForm_olap, Form_olap);
-  Form_tree_objects.setAccess('64', 0, 0);
+  Form_tree_objects.setAccess('64', 0, 1);
 end;
 
 procedure TForm_Main.N97Click(Sender: TObject);

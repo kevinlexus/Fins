@@ -556,14 +556,16 @@ object Form_chargepay: TForm_chargepay
       '  from scott.long_table a'
       
         '  left join (select mg, sum(summa) as summa from scott.c_chargep' +
-        'ay where period=(select period from scott.params)'
+        'ay2 where (select period from scott.params) between mgFrom and m' +
+        'gTo'
       '                and lsk = :lsk'
       '                and type = 0'
       '              group by mg) b'
       '    on a.mg = b.mg'
       
         '  left join (select mg, sum(summa) as summa from scott.c_chargep' +
-        'ay where period=(select period from scott.params)'
+        'ay2 where (select period from scott.params) between mgFrom and m' +
+        'gTo'
       '                and lsk = :lsk'
       '                and type = 1'
       '              group by mg) c'

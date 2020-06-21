@@ -10,7 +10,10 @@ uses
   Wwdbdlg, wwSpeedButton, wwDBNavigator, wwDataInspector,
   DM_module1, Oracle, Utils, Buttons, Wwintl, ComCtrls, frxClass, frxDBSet,
   wwclearpanel, cxGraphics, cxControls, cxLookAndFeels,
-  cxLookAndFeelPainters, cxContainer, cxEdit, cxCheckBox, cxDBEdit;
+  cxLookAndFeelPainters, cxContainer, cxEdit, cxCheckBox, cxDBEdit,
+  cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator,
+  cxDBData, cxDBLookupComboBox, cxGridCustomTableView, cxGridTableView,
+  cxGridDBTableView, cxGridLevel, cxClasses, cxGridCustomView, cxGrid;
 
 type
   TForm_kart_pr = class(TForm)
@@ -216,24 +219,8 @@ type
     TabSheet5: TTabSheet;
     OD_c_states: TOracleDataSet;
     DS_c_states: TDataSource;
-    wwDBGrid2: TwwDBGrid;
-    wwDBNavigator1: TwwDBNavigator;
-    wwDBNavigator1First: TwwNavButton;
-    wwDBNavigator1Prior: TwwNavButton;
-    wwDBNavigator1Next: TwwNavButton;
-    wwDBNavigator1Last: TwwNavButton;
-    wwDBNavigator1Insert: TwwNavButton;
-    wwDBNavigator1Delete: TwwNavButton;
     OD_c_states2: TOracleDataSet;
     DS_c_states2: TDataSource;
-    wwDBGrid3: TwwDBGrid;
-    wwDBNavigator2: TwwDBNavigator;
-    wwNavButton1: TwwNavButton;
-    wwNavButton2: TwwNavButton;
-    wwNavButton3: TwwNavButton;
-    wwNavButton4: TwwNavButton;
-    wwNavButton5: TwwNavButton;
-    wwNavButton6: TwwNavButton;
     OD_c_statesFK_STATUS: TFloatField;
     OD_c_statesDT1: TDateTimeField;
     OD_c_statesDT2: TDateTimeField;
@@ -274,6 +261,18 @@ type
     DBEdit16: TDBEdit;
     Label44: TLabel;
     DBEdit17: TDBEdit;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    cxGrid1: TcxGrid;
+    cxGrid1DBTableView1DT1: TcxGridDBColumn;
+    cxGrid1DBTableView1DT2: TcxGridDBColumn;
+    cxGrid1DBTableView1State: TcxGridDBColumn;
+    cxGrid2: TcxGrid;
+    cxGridDBTableView1: TcxGridDBTableView;
+    cxGridDBState: TcxGridDBColumn;
+    cxGridDBDt1: TcxGridDBColumn;
+    cxGridDBDt2: TcxGridDBColumn;
+    cxGridLevel1: TcxGridLevel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure OD_lg_docsSPK_IDValidate(Sender: TField);
     procedure OD_lg_docsTYPEValidate(Sender: TField);
