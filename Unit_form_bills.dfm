@@ -1343,10 +1343,10 @@ object Form_print_bills: TForm_print_bills
   object OD_data4: TOracleDataSet
     SQL.Strings = (
       'select t.fio, c.name as st_name, r.name as rl_name'
-      ' from scott.a_kart_pr t, scott.c_status_pr c, scott.relations r'
+      ' from scott.a_kart_pr2 t, scott.c_status_pr c, scott.relations r'
       
-        'where t.status <> 4 and t.mg=:mg and t.status=c.id(+) and t.rela' +
-        't_id=r.id(+) and'
+        'where t.status <> 4 and :mg between t.mgFrom and t.mgTo and t.st' +
+        'atus=c.id(+) and t.relat_id=r.id(+) and'
       '  t.lsk =:lsk')
     Optimize = False
     Variables.Data = {
