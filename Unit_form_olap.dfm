@@ -1,6 +1,6 @@
 object Form_olap: TForm_olap
-  Left = 2554
-  Top = 202
+  Left = 551
+  Top = 173
   AutoScroll = False
   Caption = 'OLAP'
   ClientHeight = 743
@@ -5154,6 +5154,23 @@ object Form_olap: TForm_olap
         Forecasting.Method = dftTripleExponentialSmoothing
         Forecasting.Enabled = False
         EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'DTEK'
+        FieldName = 'DTEK'
+        DataSet = DM_Olap.Uni_Data
+        KeyField = 'DTEK'
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1044#1072#1090#1072' '#1086#1087#1083#1072#1090#1099
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
       end>
     LNG.Strings = (
       'RowTotalName='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1056#1054#1050#1040#1052
@@ -5443,6 +5460,9 @@ object Form_olap: TForm_olap
       end
       item
         Name = 'DAT_INK'
+      end
+      item
+        Name = 'DTEK'
       end
       item
         Name = 'OPERNAME'
@@ -7149,5 +7169,566 @@ object Form_olap: TForm_olap
     AutoExpand = True
     Left = 64
     Top = 448
+  end
+  object PivotCube98: TPivotCube
+    FactTableDataSet = DM_Olap.Uni_Data
+    Dimensions = <
+      item
+        Enabled = True
+        AliasName = 'LSK'
+        FieldName = 'LSK'
+        DataSet = DM_Olap.Uni_Data
+        KeyField = 'LSK'
+        LookupField = 'LSK'
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1051'/'#1057
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'NAME_TR'
+        FieldName = 'NAME_TR'
+        DataSet = DM_Olap.Uni_Data
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1060#1086#1085#1076
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'NAME_REU'
+        FieldName = 'NAME_REU'
+        DataSet = DM_Olap.Uni_Data
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1046#1069#1054
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'ADR'
+        FieldName = 'ADR'
+        DataSet = DM_Olap.Uni_Data
+        KeyField = 'ADR'
+        LookupField = 'ADR'
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1040#1076#1088#1077#1089
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'FIO'
+        FieldName = 'FIO'
+        DataSet = DM_Olap.Uni_Data
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1060'.'#1048'.'#1054'.'
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'CNT_MONTH'
+        FieldName = 'CNT_MONTH'
+        DataSet = DM_Olap.Uni_Data
+        KeyField = 'CNT_MONTH'
+        LookupField = 'CNT_MONTH'
+        WrapTo = wt_None
+        Sorting = dmtKeySort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1052#1077#1089#1103#1094#1077#1074
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'DAT'
+        FieldName = 'DAT'
+        DataSet = DM_Olap.Uni_Data
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1044#1072#1090#1072
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'DEB_ORG'
+        FieldName = 'DEB_ORG'
+        DataSet = DM_Olap.Uni_Data
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1054#1088#1075'. '#1079#1072#1076#1086#1083#1078#1085#1080#1082#1072
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'ST_NAME'
+        FieldName = 'ST_NAME'
+        DataSet = DM_Olap.Uni_Data
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1057#1090#1072#1090#1091#1089
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'PSCH'
+        FieldName = 'PSCH'
+        DataSet = DM_Olap.Uni_Data
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1055#1088#1080#1079#1085#1072#1082
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = #1059#1083#1080#1094#1072
+        FieldName = 'STREET'
+        DataSet = DM_Olap.Uni_Data
+        KeyField = 'STREET'
+        WrapTo = wt_None
+        Sorting = dmtKeySort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1059#1083#1080#1094#1072
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = #1044#1086#1084
+        FieldName = 'ND'
+        DataSet = DM_Olap.Uni_Data
+        KeyField = 'ND'
+        WrapTo = wt_None
+        Sorting = dmtKeySort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1044#1086#1084
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = #1050#1074
+        FieldName = 'KW'
+        DataSet = DM_Olap.Uni_Data
+        KeyField = 'KW'
+        WrapTo = wt_None
+        Sorting = dmtKeySort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1050#1074
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end
+      item
+        Enabled = True
+        AliasName = 'PERIOD_DEB'
+        FieldName = 'PERIOD_DEB'
+        DataSet = DM_Olap.Uni_Data
+        WrapTo = wt_None
+        Sorting = dmtNoSort
+        NullName = '[Null]'
+        UnknownName = '[UNKNOWN]'
+        DisplayName = #1055#1077#1088#1080#1086#1076' '#1076#1086#1083#1075#1072
+        Forecasting.PrecedingName = '[Preceding]'
+        Forecasting.ConsequentName = '[Consequent]'
+        Forecasting.Method = dftTripleExponentialSmoothing
+        Forecasting.Enabled = False
+        EmptyItems = deiMarkDisabled
+      end>
+    LNG.Strings = (
+      'RowTotalName='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1056#1054#1050#1040#1052
+      'ColumnTotalName='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1054#1051#1041#1062#1040#1052
+      'PanelRowsCaption='#1057#1090#1088#1086#1082#1072
+      'PanelColumnsCaption='#1057#1090#1086#1083#1073#1077#1094
+      'PanelDimsCaption='#1060#1080#1083#1100#1090#1088
+      'CustomFilter='#1060#1080#1083#1100#1090#1088
+      
+        'pvToolBarCollapseError=Could not collapse TOOLBAR without border' +
+        ' alignment'
+      
+        'pvToolBarTreeFilterWarn=Cannot use incremental filtering on hier' +
+        'arhical dimensions!'
+      'pvToolBarNoFilter='#1053#1077#1090' '#1092#1080#1083#1100#1090#1088#1072
+      'pvToolBarCustomFilter='#1048#1089#1087#1086#1083#1100#1079'.'#1092#1080#1083#1100#1090#1088
+      'pvCubeErr1=Could not load dimension data!'
+      'pvCubeErr2=Could not load measure data!'
+      'pvCubeErr3=: You must specify dataset for dimension!'
+      
+        'pvCubeErr4=Could not load dimension items! Dimension: %s  Dimens' +
+        'ion item: %s'
+      'pvCubeErr5=Could not start building cube! Unknown error'
+      
+        'pvCubeErr6=You must set appropriate EventHandler for custom wrap' +
+        'ped dimensions! : %s'
+      'pvCubeErr7=You must set FactTableDataSet property!'
+      'pvCubeErr8=You must set at least ONE measure'
+      'pvCubeErr9=You must set at least ONE dimension'
+      'pvMapErr1='#1054#1096#1080#1073#1086#1095#1085#1099#1081' '#1080#1085#1076#1077#1082#1089
+      'pvMapErr2='#1054#1076#1085#1086' '#1080#1079#1084#1077#1088#1077#1085#1080#1077' '#1076#1086#1083#1078#1085#1086' '#1073#1099#1090#1100' '#1074#1080#1076#1080#1084#1099#1084'!'
+      'pvGridExcel0=Export note'
+      
+        'pvGridExcel1=Number of columns more than 256. Only first 255 col' +
+        'umns will be exported!'
+      'pvGridExcel2=Number of columns must be more than 0!'
+      'pvGridExcel3=Number of rows must be more than 0!'
+      
+        'pvGridExcel4=Could not export data to Excel! Check your MS Excel' +
+        ' installation'
+      'pvAMFAddMeasureForm=Calculated measures manager'
+      'pvAMFAddMeasureBtn='#1044#1086#1073#1072#1074#1080#1090#1100' '#1085#1086#1074#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
+      'pvAMFEditMeasureBtn='#1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1080#1084#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
+      'pvAMFDelMeasureBtn='#1059#1076#1072#1083#1080#1090#1100' '#1087#1086#1076#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
+      'pvAMFCalcLabel='#1055#1086#1076#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
+      'pvAMFCalcEditLabel='#1048#1089#1087#1086#1083#1100#1079#1091#1077#1084#1072#1103' '#1092#1086#1088#1084#1091#1083#1072
+      'pvAMFMeasureLabel='#1048#1084#1077#1102#1097#1080#1077#1089#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
+      'pvAMFViewsLabel='#1048#1084#1077#1102#1097#1080#1077#1089#1103' '#1082#1091#1088#1089#1086#1088#1099
+      'pvAMFCheckBtn='#1055#1088#1086#1074#1077#1088#1100#1090#1077' '#1092#1086#1088#1084#1091#1083#1091
+      'pvAMFSynaxError='#1057#1080#1085#1090#1072#1082#1089#1080#1095#1077#1089#1082#1072#1103' '#1086#1096#1080#1073#1082#1072
+      'pvAMFFormulaError=: '#1054#1096#1080#1073#1082#1072' '#1074' '#1092#1086#1088#1084#1091#1083#1077
+      'pvAMFDuplicateError='#1044#1091#1073#1083#1080#1088#1091#1077#1097#1077#1077#1089#1103' '#1080#1084#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
+      'pvAMFCheckOKName='#1054#1090#1084#1077#1095#1077#1085#1086'!'
+      'pvToolBarDDOKBtnHint='#1055#1088#1080#1085#1103#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
+      'pvToolBarDDCancelBtnHint='#1054#1090#1084#1077#1085#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
+      'pvToolBarDDFillBtnHint='#1042#1099#1076#1077#1083#1080#1090#1100' '#1074#1089#1077
+      'pvToolBarDDClearBtnHint='#1054#1090#1084#1077#1085#1080#1090#1100' '#1074#1089#1077
+      'pvToolBarDDRevertBtnHint='#1048#1085#1074#1077#1088#1090#1080#1088#1086#1074#1072#1090#1100
+      'pvToolBarDDExpandBtnHint='#1056#1072#1079#1074#1077#1088#1085#1091#1090#1100' '#1074#1089#1077' '#1074#1077#1090#1082#1080
+      'pvMapValueName='#1047#1085#1072#1095#1077#1085#1080#1077
+      'pvMapRowPercentName='#1055#1088#1086#1094#1077#1085#1090' '#1087#1086' '#1057#1090#1088#1086#1082#1072#1084
+      'pvMapColPercentName='#1055#1088#1086#1094#1077#1085#1090' '#1087#1086' '#1057#1090#1086#1083#1073#1094#1072#1084
+      'pvMapRecordCountName='#1050#1086#1083'-'#1074#1086
+      'pvMapRankName='#1056#1072#1085#1075'['#1057#1090#1086#1083#1073#1077#1094']'
+      'pvMapRankRName='#1056#1072#1085#1075'['#1057#1090#1088#1086#1082#1072']'
+      'pvMapSubPrevCName='#1056#1072#1079#1085#1080#1094#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1080#1084' '#1057#1090#1086#1083#1073#1094#1086#1084
+      'pvMapSubPrevRName='#1056#1072#1079#1085#1080#1094#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1077#1081' '#1057#1090#1088#1086#1082#1086#1081
+      'pvMapAddPrevCName='#1057#1091#1084#1084#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1080#1084' '#1057#1090#1086#1083#1073#1094#1086#1084
+      'pvMapAddPrevRName='#1057#1091#1084#1084#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1077#1081' '#1057#1090#1088#1086#1082#1086#1081
+      'pvMapRunningTotalName1='#1053#1072#1088#1072#1089#1090#1072#1102#1097#1077#1081' '#1048#1090#1086#1075' '#1087#1086' '#1057#1090#1086#1083#1073#1094#1091
+      'pvMapRunningTotalName2='#1053#1072#1088#1072#1089#1090#1072#1102#1097#1077#1081' '#1048#1090#1086#1075' '#1087#1086' '#1057#1090#1088#1086#1082#1077
+      'pvBtnHintAccept='#1055#1086#1076#1090#1074#1077#1088#1076#1080#1090#1100
+      'pvBtnHintCancel='#1054#1090#1084#1077#1085#1080#1090#1100
+      'pvBtnHintExpandTree='#1056#1072#1079#1074#1077#1088#1085#1091#1090#1100'/'#1057#1074#1077#1088#1085#1091#1090#1100' '#1074#1077#1090#1082#1080
+      'pvBtnHintCalcMeasureDialog='#1042#1082#1083'. '#1076#1080#1072#1083#1086#1075' '#1056#1072#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1075#1086' '#1079#1085#1072#1095#1077#1085#1080#1103
+      'pvBtnHintMeasureFillEnable='#1042#1099#1076#1077#1083#1080#1090#1100' '#1074#1089#1077
+      'pvBtnHintMeasureFillDisable='#1054#1090#1084#1077#1090#1080#1090#1100' '#1074#1089#1077
+      'pvBtnHintMeasureRevert='#1055#1077#1088#1077#1082#1083#1102#1095#1080#1090#1100' '#1089#1086#1089#1090#1086#1103#1085#1080#1077' '#1077#1076'.'#1080#1079#1084#1077#1088#1077#1085#1080#1103
+      'pvBtnHintDimFillActive='#1042#1080#1076#1080#1084#1099' '#1074#1089#1077' '#1079#1085#1072#1095#1077#1085#1080#1103
+      'pvBtnHintDimFillHided='#1053#1077' '#1074#1080#1076#1080#1084#1099' '#1074#1089#1077' '#1079#1085#1072#1095#1077#1085#1080#1103
+      'pvBtnHintDimFillFiltered='#1060#1080#1083#1100#1090#1088#1086#1074#1072#1090#1100' '#1074#1089#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
+      'pvBtnHintDimRevert='#1062#1080#1082#1083#1080#1095#1085#1099#1081' '#1089#1076#1074#1080#1075' '#1089#1086#1089#1090#1086#1103#1085#1080#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
+      'pvBtnHintDimAddGroup='#1044#1086#1073#1072#1074#1080#1090#1100' '#1080#1077#1088#1072#1088#1093#1080#1095#1077#1089#1082#1091#1102' '#1075#1088#1091#1087#1087#1091
+      'pvBtnHintDimDelGroup='#1059#1076#1072#1083#1080#1090#1100' '#1080#1077#1088#1072#1088#1093#1080#1095#1077#1089#1082#1091#1102' '#1075#1088#1091#1087#1087#1091
+      'mbFormCaption='#1055#1086#1089#1090#1088#1086#1080#1090#1077#1083#1100' '#1079#1072#1087#1088#1086#1089#1072
+      'mbRowsCaption='#1057#1090#1088#1086#1082#1080
+      'mbColumnsCaption='#1057#1090#1086#1083#1073#1094#1099
+      'mbDimsCaption='#1048#1079#1084#1077#1088#1077#1085#1080#1103
+      'mbDisabledDimsCaption='#1053#1077#1072#1082#1090#1080#1074#1085#1099#1077' '#1048#1079#1084#1077#1088#1077#1085#1080#1103
+      
+        'mbRunEditBtnHint='#1054#1090#1082#1088#1099#1090#1100' '#1088#1077#1076#1072#1082#1090#1086#1088' '#1080#1079#1084#1077#1088#1077#1085#1080#1081' '#1076#1083#1103' '#1074#1099#1073#1088#1072#1085#1085#1099#1093' '#1080#1079#1084#1077#1088#1077 +
+        #1085#1080#1081
+      
+        'mbTreeViewHint=Drag'#39'n'#39'Drop dimension lable to choosen group. Dbl' +
+        '-click to run dimension editor'
+      'DimensionFormCaption='#1056#1077#1076#1072#1082#1090#1086#1088' '#1048#1079#1084#1077#1088#1077#1085#1080#1081' :'
+      'dimDisplayName='#1047#1072#1075#1086#1083#1086#1074#1086#1082
+      'dimCount='#1050#1086#1083'-'#1074#1086' '#1086#1073#1098#1077#1082#1090#1086#1074
+      'dimSOrtBtn='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072
+      'dimSortBtnHint='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072
+      'dimActiveItems='#1040#1082#1090#1080#1074#1085#1099#1077' '#1086#1073#1098#1077#1082#1090#1099
+      'dimInActiveItems='#1061#1088#1072#1085#1080#1083#1080#1097#1077'('#1085#1077' '#1072#1082#1090#1080#1074#1085#1099#1077' '#1086#1073#1098#1077#1082#1090#1099')'
+      'dimFilterError='#1050#1072#1082' '#1084#1080#1085#1080#1084#1091#1084' '#1086#1076#1085#1086' '#1080#1079#1084#1077#1088#1077#1085#1080#1077' '#1076#1086#1083#1078#1085#1086' '#1073#1099#1090#1100' '#1072#1082#1090#1080#1074#1085#1099#1084'!'
+      'dimSearch='#1053#1072#1081#1090#1080
+      
+        'dimTVHint=Drag'#39'n'#39'drop selected item(s) to group or repository ar' +
+        'ea'
+      'dimSortByName='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072' '#1087#1086' '#1080#1084#1077#1085#1080
+      'dimSortByKey='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072' '#1087#1086' '#1082#1083#1102#1095#1091
+      'dimNoSort='#1041#1077#1079' '#1089#1086#1088#1090#1080#1088#1086#1074#1082#1080
+      'dimSortAscending='#1055#1086' '#1074#1086#1079#1088#1072#1089#1090#1072#1102#1097#1077#1081
+      'dimSortDescending='#1055#1086' '#1091#1073#1099#1074#1072#1102#1097#1077#1081
+      'dimForecastingCB1=Enable prev. forecast value'
+      'dimForecastingCB2=Enable next. forecast value'
+      'dimForecastingType=Forecasting method'
+      'dimForecastingMethod1=Simple moving average'
+      'dimForecastingMethod2=Weighted Moving Average'
+      'dimForecastingMethod3=Double Exponential Smoothing'
+      'dimForecastingMethod4=Triple Exponential Smoothing'
+      'dimForecastingMethod5=Show Data Margins Only'
+      'dimForecastingMethod6=Show First and Last members'
+      'MeasureCommonFormCaption='#1055#1086#1089#1090#1088#1086#1080#1090#1077#1083#1100' '#1079#1085#1072#1095#1077#1085#1080#1081
+      'MFormatBtnName=Build format'
+      'MFormatFormCaption=Build format string'
+      'pvMapMVFmt0=Change measure type'
+      'pvMapMVFmt1=Cell'
+      'pvMapMVFmt2=Percent by Column'
+      'pvMapMVFmt3=Percent by Row'
+      'pvMapMVFmt4=Record count'
+      'pvMapMVFmt5=Rank by Column'
+      'pvMapMVFmt6=Rank by Row'
+      'pvMapMVFmt7=Previous member by Row'
+      'pvMapMVFmt8=Next member by Row'
+      'pvMapMVFmt9=Previous member by Column'
+      'pvMapMVFmt10=Next member by Column'
+      'pvMapMVFmt11=Running Total by Column'
+      'pvMapMVFmt12=Running Total by Row'
+      'pmMapMVOp1=Value'
+      'pmMapMVOp2=Subtract'
+      'pmMapMVOp3=Add'
+      'pmMapMVOp4=Divide'
+      'pmMapMVOp5=Multiply'
+      'pvMeasureCommon5=Min. value'
+      'pvMeasureCommon6=Max. value'
+      'pvMeasureCommon9=Value'
+      'pvMeasureCommon10=Operation'
+      'pvMeasureCommon11=Only one measure visible'
+      'pvMeasureCommon12=Value representation'
+      'pvMeasureCommon13=Filters'
+      'pvMeasureCommon14=Filter by Map cells'
+      'pvMeasureCommon15=Filter by fact table records'
+      'pvMeasureCommon16=Measure formating'
+      'pvMeasureCommon17=Formula (is calculated measure)'
+      'pvMeasureCommon18=Enabled'
+      'pvMeasureCommon19=Running Total by Column'
+      'pvMeasureCommon20=Running Total by Row'
+      'pvMeasureCommon21=Display caption'
+      'MeasureFilterError= Measure filter error'
+      'mfeWrongValue=Wrong value in  measure filter:'
+      'MeasureCommonFormDistinctName=Distinct'
+      'pvgSearchFormCaption=Search'
+      'pvgSearchArea=Search area'
+      'pvgSearchRow=Row header'
+      'pvgSearchCol=Column header'
+      'pvgSearchText=Text for search'
+      'pvgSearch1=Next'
+      'pvgSearch2=Forward'
+      'pvgSearch3=Case sensitive'
+      'pvgSearchBtn=Find again'
+      'pvgSearchFinish=Cannot find more'
+      'uHtmBuildHeaders=building headers...'
+      'uHtmPreparing=prepearing...'
+      'uHtmColTotal='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1054#1051#1041#1062#1040#1052
+      'uHtmRowTotal='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1056#1054#1050#1040#1052
+      'uHtmExportColHeader=exporting column headers...'
+      
+        'uHtmExportCells=exporting row headers, cell values and row total' +
+        's...'
+      'uHtmExportColTotal=exporting column totals...'
+      'uHtmSave=saving and executing...'
+      'uHtmLabel=Action...'
+      'ChartDDRows='#1057#1090#1088#1086#1082#1080
+      'ChartDDColumns='#1057#1090#1086#1083#1073#1094#1099
+      'ddChartViews=Views'
+      'ddChartLegend='#1051#1077#1075#1077#1085#1076#1072
+      'ddChartMarks=Marks'
+      'ChartXNextPage=Next page'
+      'ChartXPrevPage=Prev. page'
+      'CubeButtonCaption=Cube'
+      'ChartButtonCaption=Chart'
+      'pvGridSubTotal=Subtotal'
+      'pvGridSubTotalwName=Sub-total by '
+      'MFormatCount=3'
+      'MFormatName0=Generic'
+      'MFormatValue0=#0.00'
+      'MFormatName1=Price (US)'
+      'MFormatValue1=$ #0.00'
+      'MFormatName2=Summa'
+      'MFormatValue2=# ##0.00'
+      'MFormatCap1=Predefined formats'
+      'MFormatCap2=Format string'
+      'MFormatCap3=Number of decimals'
+      'MFormatCap4=Before'
+      'MFormatCap5=After'
+      'MFormatCap6=Design'
+      'MFormatCap7=Symbol'
+      'MFormatCap8=Example'
+      'MFormatCap9=Thousand separator'
+      'uXLSActionLabel=Action'
+      'uXLSAction1=Prepearing basic fonts'
+      'uXLSAction2=Prepearing basic formats'
+      'uXLSAction3=Applying row totals headers merging'
+      'uXLSAction4=Applying cells format'
+      'uXLSAction5=Applying columns headers merging'
+      'uXLSAction6=Applying rows headers merging'
+      'uXLSAction7=Applying column totals headers merging'
+      'uXLSAction8=Applying auto width for columns'
+      'uXLActionLabel=Action'
+      'uXLAction1=Prepearing cells array'
+      'uXLAction2=Prepearing column headers'
+      'uXLAction3=Processing'
+      'uXLAction4=Merging column headers'
+      'uXLAction5=Merging row headers'
+      'uXLAction6=Merging row total headers'
+      'uXLAction7=Applying cells format'
+      'pvGridPrint1='#1055#1077#1095#1072#1090#1100' '#1074#1089#1077#1075#1086
+      'pvGridPrint2='#1055#1077#1095#1072#1090#1100' '#1074#1099#1073#1088#1072#1085#1085'.'
+      'pvGridPrint3='#1055#1088#1072#1074#1099#1081' '#1082#1083#1080#1082' - '#1084#1072#1089#1096#1090#1072#1073'.'
+      'uXLSActionLabel2=Action progress'
+      'uXLSActionLabel2=Full progress'
+      'uHtmLabel2=Action progress'
+      'uHtmLabel3=Full progress'
+      'pvGridEditor1=Table'
+      'pvGridEditor2=Chart'
+      'pvGridEditor3=Method'
+      'pvGridEditor4=Summa'
+      'pvGridEditor5=Count'
+      'pvGridEditor6=Average'
+      'pvGridEditor7=Equal'
+      'pvGridEditor8=Proportional'
+      'pvGridPrint4=Print preview'
+      'pvGridPrint5='#1052#1072#1089#1096'.'#1089#1090#1088#1072#1085#1080#1094
+      'pvGridPrint6='#1052#1072#1089#1096'.'#1087#1077#1095#1072#1090#1100
+      'pvGridPrint7='#1055#1086' '#1089#1090#1088#1072#1085#1080#1094#1077
+      'pvGridPrint8='#1055#1086' '#1096#1080#1088#1080#1085#1077
+      'pvGridPrint9='#1055#1086' '#1074#1099#1089#1086#1090#1077
+      'pvGridPrint10=50%'
+      'pvGridPrint11=100%'
+      'pvGridPrint12=200%'
+      'pvGridPrint13=400%'
+      'pvGridPrintLocked=Process locked! Please wait....')
+    Measures = <
+      item
+        AliasName = 'DOLG'
+        FieldName = 'DOLG'
+        CalcType = ctSumma
+        DataType = ftFloat
+        FormatString = '########0.00##'
+        DisplayName = #1044#1086#1083#1075
+      end
+      item
+        AliasName = 'PENYA'
+        FieldName = 'PENYA'
+        CalcType = ctSumma
+        DataType = ftFloat
+        FormatString = '########0.00##'
+        DisplayName = #1055#1077#1085#1103
+      end
+      item
+        AliasName = 'NACHISL'
+        FieldName = 'NACHISL'
+        CalcType = ctSumma
+        DataType = ftFloat
+        FormatString = '########0.00##'
+        DisplayName = #1053#1072#1095#1080#1089#1083#1077#1085#1080#1077
+      end
+      item
+        AliasName = 'PAYMENT'
+        FieldName = 'PAYMENT'
+        CalcType = ctSumma
+        DataType = ftFloat
+        FormatString = '########0.00##'
+        DisplayName = #1054#1087#1083#1072#1090#1072
+      end
+      item
+        AliasName = 'DEB_MONTH'
+        FieldName = 'DEB_MONTH'
+        CalcType = ctSumma
+        DataType = ftUnknown
+        FormatString = '########0.00##'
+        DisplayName = #1044#1086#1083#1075'-'#1087#1077#1088#1080#1086#1076
+      end>
+    CubeName = 'test'
+    OptimizeLevel = optNormal
+    ExtendedMode = True
+    AlwaysSaveCounts = False
+    ExcludeZeros = True
+    ClearTimeInfo = True
+    Left = 32
+    Top = 488
+  end
+  object PivotMap98: TPivotMap
+    Cube = PivotCube98
+    Columns = <
+      item
+        Name = 'MG'
+      end>
+    Rows = <
+      item
+        Name = 'PREDPR'
+      end
+      item
+        Name = 'REU'
+      end
+      item
+        Name = 'ORG_NAME'
+      end>
+    HideEmptyRows = True
+    HideEmptyColumns = True
+    TableMode = True
+    DDirection = True
+    AutoSaveMap = False
+    AutoExpand = True
+    Left = 64
+    Top = 488
   end
 end

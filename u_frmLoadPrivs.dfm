@@ -1,6 +1,6 @@
 object frmLoadPrivs: TfrmLoadPrivs
-  Left = 241
-  Top = 199
+  Left = 797
+  Top = 214
   Width = 680
   Height = 581
   Caption = #1052#1072#1089#1090#1077#1088' '#1079#1072#1075#1088#1091#1079#1082#1080' '#1083#1100#1075#1086#1090#1085#1080#1082#1086#1074
@@ -315,18 +315,31 @@ object frmLoadPrivs: TfrmLoadPrivs
         object lbl1: TLabel
           Left = 8
           Top = 16
-          Width = 38
+          Width = 44
           Height = 13
           Caption = #1055#1077#1088#1080#1086#1076
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
           Font.Name = 'Tahoma'
-          Font.Style = []
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label1: TLabel
+          Left = 8
+          Top = 40
+          Width = 48
+          Height = 13
+          Caption = #1042#1072#1088#1080#1072#1085#1090
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
           ParentFont = False
         end
         object cbb1: TcxLookupComboBox
-          Left = 56
+          Left = 64
           Top = 8
           Properties.KeyFieldNames = 'MG'
           Properties.ListColumns = <
@@ -336,21 +349,41 @@ object frmLoadPrivs: TfrmLoadPrivs
           Properties.ListOptions.ShowHeader = False
           Properties.ListSource = DS_mg1
           TabOrder = 0
-          Width = 113
+          Width = 105
         end
         object CheckBox1: TCheckBox
           Left = 7
-          Top = 36
+          Top = 84
           Width = 153
           Height = 33
           Hint = 
             #1042#1085#1080#1084#1072#1085#1080#1077'! '#1055#1086#1083#1085#1086#1089#1090#1100#1102' '#1086#1095#1080#1097#1072#1102#1090#1089#1103' '#1089#1087#1088#1072#1074#1086#1095#1085#1080#1082#1080' '#1089#1086#1086#1090#1074#1077#1090#1089#1090#1074#1080#1081', '#1077#1089#1083#1080' '#1086#1085#1080 +
             ' '#1073#1099#1083#1080' '#1079#1072#1087#1086#1083#1085#1077#1085#1099'!!!'
           Caption = #1054#1076#1085#1072' '#1079#1072#1087#1080#1089#1100' '#1085#1072' '#1072#1076#1088#1077#1089
+          Checked = True
           ParentShowHint = False
           ShowHint = True
+          State = cbChecked
           TabOrder = 1
           WordWrap = True
+        end
+        object cxImageComboBox1: TcxImageComboBox
+          Left = 64
+          Top = 32
+          EditValue = '0'
+          Properties.Items = <
+            item
+              Description = #1054#1089#1085#1086#1074#1085#1086#1081
+              ImageIndex = 0
+              Value = '0'
+            end
+            item
+              Description = #1058#1050#1054
+              Value = '1'
+            end>
+          Properties.OnCloseUp = cxImageComboBox1PropertiesCloseUp
+          TabOrder = 2
+          Width = 105
         end
       end
     end
@@ -482,13 +515,14 @@ object frmLoadPrivs: TfrmLoadPrivs
   object OD_data: TOracleDataSet
     SQL.Strings = (
       'begin'
-      '  scott.c_load_privs.rep(:p_file, :prep_refcursor);'
+      '  scott.c_load_privs.rep(:p_file, :prep_refcursor, :p_tp);'
       'end;')
     ReadBuffer = 1000
     Optimize = False
     Variables.Data = {
-      03000000020000000F0000003A505245505F524546435552534F527400000000
-      00000000000000070000003A505F46494C45030000000000000000000000}
+      03000000030000000F0000003A505245505F524546435552534F527400000000
+      00000000000000070000003A505F46494C450300000000000000000000000500
+      00003A505F5450030000000000000000000000}
     QBEDefinition.QBEFieldDefs = {
       0400000069000000040000004F52473101000000000003000000524555010000
       000000030000004B554C0100000000000700000053545F434F44450100000000

@@ -1,6 +1,6 @@
 object Form_kart: TForm_kart
-  Left = 596
-  Top = 209
+  Left = 668
+  Top = 242
   Width = 903
   Height = 675
   BorderIcons = [biSystemMenu, biMinimize]
@@ -908,7 +908,7 @@ object Form_kart: TForm_kart
               Top = 0
               Width = 25
               Height = 25
-              Hint = #1050' '#1087#1077#1088#1074#1086#1081' '#1079#1072#1087#1080#1089#1080
+              Hint = 'Move to first record'
               ImageIndex = -1
               NumGlyphs = 2
               Spacing = 4
@@ -925,7 +925,7 @@ object Form_kart: TForm_kart
               Top = 0
               Width = 25
               Height = 25
-              Hint = #1055#1088#1077#1076#1099#1076#1091#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
+              Hint = 'Move to prior record'
               ImageIndex = -1
               NumGlyphs = 2
               Spacing = 4
@@ -942,7 +942,7 @@ object Form_kart: TForm_kart
               Top = 0
               Width = 25
               Height = 25
-              Hint = #1057#1083#1077#1076#1091#1102#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
+              Hint = 'Move to next record'
               ImageIndex = -1
               NumGlyphs = 2
               Spacing = 4
@@ -959,7 +959,7 @@ object Form_kart: TForm_kart
               Top = 0
               Width = 25
               Height = 25
-              Hint = #1055#1077#1088#1077#1081#1090#1080' '#1082' '#1087#1086#1089#1083#1077#1076#1085#1077#1081' '#1079#1072#1087#1080#1089#1080
+              Hint = 'Move to last record'
               ImageIndex = -1
               NumGlyphs = 2
               Spacing = 4
@@ -976,7 +976,7 @@ object Form_kart: TForm_kart
               Top = 0
               Width = 25
               Height = 25
-              Hint = #1044#1086#1073#1072#1074#1080#1090#1100' '#1085#1086#1074#1091#1102' '#1079#1072#1087#1080#1089#1100
+              Hint = 'Insert new record'
               ImageIndex = -1
               NumGlyphs = 2
               Spacing = 4
@@ -993,7 +993,7 @@ object Form_kart: TForm_kart
               Top = 0
               Width = 25
               Height = 25
-              Hint = #1059#1076#1072#1083#1080#1090#1100' '#1090#1077#1082#1091#1097#1091#1102' '#1079#1072#1087#1080#1089#1100
+              Hint = 'Delete current record'
               ImageIndex = -1
               NumGlyphs = 2
               Spacing = 4
@@ -1705,7 +1705,7 @@ object Form_kart: TForm_kart
     Top = 0
     Width = 887
     Height = 81
-    ActivePage = TabSheet12
+    ActivePage = TabSheet6
     Align = alTop
     TabOrder = 0
     object TabSheet5: TTabSheet
@@ -2811,39 +2811,13 @@ object Form_kart: TForm_kart
       GridView = cxGrid1DBTableView1
     end
   end
-  object OD_spul: TOracleDataSet
-    SQL.Strings = (
-      'select * from scott.spul s'
-      'order by s.name')
-    Optimize = False
-    QBEDefinition.QBEFieldDefs = {
-      0400000004000000020000004944010000000000040000004E414D4501000000
-      00000800000043445F4B4C4144520100000000000700000043445F55535A4E01
-      0000000000}
-    QueryAllRecords = False
-    Session = DataModule1.OracleSession1
-    Active = True
-    Left = 360
-    Top = 496
-  end
   object DS_spul: TDataSource
-    DataSet = OD_spul
+    DataSet = DataModule1.OD_spul2
     Left = 392
     Top = 496
   end
-  object OD_status: TOracleDataSet
-    SQL.Strings = (
-      'select * from scott.status s')
-    Optimize = False
-    QBEDefinition.QBEFieldDefs = {
-      0400000002000000020000004944010000000000040000004E414D4501000000
-      0000}
-    Session = DataModule1.OracleSession1
-    Left = 360
-    Top = 528
-  end
   object DS_status: TDataSource
-    DataSet = OD_status
+    DataSet = DataModule1.OD_status
     Left = 392
     Top = 528
   end
@@ -3618,118 +3592,18 @@ object Form_kart: TForm_kart
     Left = 192
     Top = 512
   end
-  object OD_sprorg: TOracleDataSet
-    SQL.Strings = (
-      
-        'select t.id as kod, t.id||'#39'  '#39'||t.name as name, tp.name as tp_or' +
-        'g '
-      'from scott.t_org t, scott.t_org_tp tp'
-      'where tp.id=t.fk_orgtp'
-      'order by t.id')
-    Optimize = False
-    QBEDefinition.QBEFieldDefs = {
-      0400000003000000030000004B4F44010000000000040000004E414D45010000
-      0000000600000054505F4F5247010000000000}
-    QueryAllRecords = False
-    Session = DataModule1.OracleSession1
-    Active = True
-    Left = 360
-    Top = 560
-  end
   object DS_sprorg: TDataSource
-    DataSet = OD_sprorg
+    DataSet = DataModule1.OD_sprorg
     Left = 392
     Top = 560
   end
-  object OD_psch: TOracleDataSet
-    SQL.Strings = (
-      'select t.* from ('
-      'select 0 as id, '#39#1054#1090#1082#1088#1099#1090#39'  as name, 1 as tp from dual'
-      'union all'
-      'select 1 as id, '#39#1054#1090#1082#1088#1099#1090#39'  as name, 0 as tp from dual'
-      'union all'
-      'select 2 as id, '#39#1054#1090#1082#1088#1099#1090#39' as name, 0 as tp from dual'
-      'union all'
-      'select 3 as id, '#39#1054#1090#1082#1088#1099#1090#39'  as name, 0 as tp from dual'
-      'union all'
-      'select 8 as id, '#39#1055#1088#1086#1096#1083'.'#39'  as name, 1 as tp from dual'
-      'union all'
-      'select 9 as id, '#39#1047#1072#1082#1088#1099#1090#39'  as name, 1 as tp from dual'
-      ') t'
-      'order by t.id'
-      ''
-      '/*'
-      'select t.* from ('
-      'select 0 as id, '#39#1053#1086#1088#1084#1072#1090#1080#1074#39'  as name, 0 as tp from dual'
-      'union all'
-      'select 1 as id, '#39#1057#1095'. '#1061'.'#1042'. '#1080' '#1043'.'#1042'.'#39'  as name, 0 as tp from dual'
-      'union all'
-      'select 2 as id, '#39#1057#1095'. '#1061'.'#1042'.'#39'  as name, 0 as tp from dual'
-      'union all'
-      'select 3 as id, '#39#1057#1095'. '#1043'.'#1042'.'#39'  as name, 0 as tp from dual'
-      'union all'
-      'select 8 as id, '#39#1055#1088#1086#1096#1083'.'#39'  as name, 0 as tp from dual'
-      'union all'
-      'select 9 as id, '#39#1047#1072#1082#1088#1099#1090#39'  as name, 0 as tp from dual'
-      'union all'
-      'select 0 as id, '#39#1054#1090#1082#1088#1099#1090#39'  as name, 1 as tp from dual'
-      'union all'
-      'select 8 as id, '#39#1055#1088#1086#1096#1083'.'#39'  as name, 1 as tp from dual'
-      'union all'
-      'select 9 as id, '#39#1047#1072#1082#1088#1099#1090#39'  as name, 1 as tp from dual'
-      ') t, scott.params p, scott.spr_params s '
-      'where (p.org_var=1 and t.id in (0,9) --'#1076#1083#1103' '#1101'+'
-      'or p.org_var=0)'
-      'and s.cd='#39'VER_METER1'#39' '
-      'and (s.parn1=0 and t.tp=0 or s.parn1 <> 0 and t.tp=1)'
-      '*/')
-    Optimize = False
-    QBEDefinition.QBEFieldDefs = {
-      0400000003000000020000004944010000000000040000004E414D4501000000
-      0000020000005450010000000000}
-    Session = DataModule1.OracleSession1
-    Left = 672
-    Top = 344
-    object OD_pschID: TFloatField
-      FieldName = 'ID'
-    end
-    object OD_pschNAME: TStringField
-      FieldName = 'NAME'
-      Size = 6
-    end
-    object OD_pschTP: TFloatField
-      FieldName = 'TP'
-    end
-  end
   object DS_psch: TDataSource
-    DataSet = OD_psch
+    DataSet = DataModule1.OD_psch
     Left = 704
     Top = 344
   end
-  object OD_usl: TOracleDataSet
-    SQL.Strings = (
-      'select t.usl, t.usl||'#39'-'#39'||nm as nm'
-      'from scott.usl t')
-    Optimize = False
-    QBEDefinition.QBEFieldDefs = {
-      04000000020000000300000055534C010000000000020000004E4D0100000000
-      00}
-    QueryAllRecords = False
-    Session = DataModule1.OracleSession1
-    Left = 560
-    Top = 512
-    object OD_uslUSL: TStringField
-      FieldName = 'USL'
-      Required = True
-      Size = 3
-    end
-    object OD_uslNM: TStringField
-      FieldName = 'NM'
-      Size = 22
-    end
-  end
   object DS_usl: TDataSource
-    DataSet = OD_usl
+    DataSet = DataModule1.OD_usl
     Left = 592
     Top = 512
   end
@@ -3774,35 +3648,8 @@ object Form_kart: TForm_kart
     Left = 520
     Top = 496
   end
-  object OD_s_reu_trest: TOracleDataSet
-    SQL.Strings = (
-      'select s.reu, s.reu||'#39' '#39'||s.name_reu as name_reu, s.name_tr'
-      ' from scott.s_reu_trest s')
-    Optimize = False
-    QBEDefinition.QBEFieldDefs = {
-      040000000300000003000000524555010000000000070000004E414D455F5452
-      010000000000080000004E414D455F524555010000000000}
-    Master = Form_list_kart.OD_list_kart
-    Session = DataModule1.OracleSession1
-    Left = 560
-    Top = 544
-    object OD_s_reu_trestREU: TStringField
-      DisplayWidth = 3
-      FieldName = 'REU'
-      Required = True
-      Size = 3
-    end
-    object OD_s_reu_trestNAME_TR: TStringField
-      FieldName = 'NAME_TR'
-      Size = 35
-    end
-    object OD_s_reu_trestNAME_REU: TStringField
-      FieldName = 'NAME_REU'
-      Size = 35
-    end
-  end
   object DS_reu_trest: TDataSource
-    DataSet = OD_s_reu_trest
+    DataSet = DataModule1.OD_s_reu_trest
     Left = 592
     Top = 544
   end
@@ -3861,52 +3708,13 @@ object Form_kart: TForm_kart
     Left = 656
     Top = 512
   end
-  object OD_kfg: TOracleDataSet
-    SQL.Strings = (
-      'select sk.id, sk.koeff from scott.spr_koeff sk'
-      '                ')
-    Optimize = False
-    QBEDefinition.QBEFieldDefs = {
-      0400000002000000020000004944010000000000050000004B4F454646010000
-      000000}
-    Session = DataModule1.OracleSession1
-    Left = 488
-    Top = 432
-    object OD_kfgID: TFloatField
-      FieldName = 'ID'
-      Required = True
-    end
-    object OD_kfgKOEFF: TFloatField
-      FieldName = 'KOEFF'
-    end
-  end
   object DS_kfg: TDataSource
-    DataSet = OD_kfg
+    DataSet = DataModule1.OD_kfg
     Left = 520
     Top = 432
   end
-  object OD_sch_el: TOracleDataSet
-    SQL.Strings = (
-      'select 0 as id, '#39#1053#1086#1088#1084#1072#1090#1080#1074#39'  as name from dual'
-      'union all'
-      'select 1 as id, '#39#1057#1095#1077#1090#1095#1080#1082#39'  as name from dual')
-    Optimize = False
-    QBEDefinition.QBEFieldDefs = {
-      0400000002000000020000004944010000000000040000004E414D4501000000
-      0000}
-    Session = DataModule1.OracleSession1
-    Left = 488
-    Top = 400
-    object FloatField1: TFloatField
-      FieldName = 'ID'
-    end
-    object StringField1: TStringField
-      FieldName = 'NAME'
-      Size = 15
-    end
-  end
   object DS_sch_el: TDataSource
-    DataSet = OD_sch_el
+    DataSet = DataModule1.OD_sch_el
     Left = 520
     Top = 400
   end
@@ -3932,46 +3740,8 @@ object Form_kart: TForm_kart
     Left = 656
     Top = 544
   end
-  object OD_distr: TOracleDataSet
-    SQL.Strings = (
-      
-        'select t.* from scott.u_list t, scott.u_listtp tp where t.fk_lis' +
-        'ttp=tp.id'
-      'and tp.cd='#39#1056#1072#1081#1086#1085#39)
-    Optimize = False
-    QBEDefinition.QBEFieldDefs = {
-      0400000006000000020000004944010000000000040000004E414D4501000000
-      000002000000434401000000000009000000464B5F4C49535454500100000000
-      00020000004E4D010000000000030000004E5050010000000000}
-    Session = DataModule1.OracleSession1
-    Left = 424
-    Top = 528
-    object OD_distrID: TFloatField
-      FieldName = 'ID'
-      Required = True
-    end
-    object OD_distrCD: TStringField
-      FieldName = 'CD'
-      Size = 32
-    end
-    object OD_distrNAME: TStringField
-      FieldName = 'NAME'
-      Size = 96
-    end
-    object OD_distrNM: TStringField
-      FieldName = 'NM'
-      Size = 32
-    end
-    object OD_distrFK_LISTTP: TFloatField
-      FieldName = 'FK_LISTTP'
-    end
-    object OD_distrNPP: TFloatField
-      FieldName = 'NPP'
-      Required = True
-    end
-  end
   object DS_distr: TDataSource
-    DataSet = OD_distr
+    DataSet = DataModule1.OD_distr
     Left = 456
     Top = 528
   end
@@ -4021,35 +3791,9 @@ object Form_kart: TForm_kart
     Top = 496
   end
   object DS_pasp: TDataSource
-    DataSet = OD_pasp
+    DataSet = DataModule1.OD_pasp
     Left = 456
     Top = 560
-  end
-  object OD_pasp: TOracleDataSet
-    SQL.Strings = (
-      
-        'select t.* from scott.t_org t, scott.t_org_tp tp where t.fk_orgt' +
-        'p=tp.id'
-      'and tp.cd='#39#1055#1072#1089#1087#1086#1088#1090#1085#1099#1081' '#1089#1090#1086#1083#39)
-    Optimize = False
-    QBEDefinition.QBEFieldDefs = {
-      040000000A000000020000004944010000000000040000004E414D4501000000
-      0000020000004344010000000000030000004E50500100000000000800000046
-      4B5F4F5247545001000000000001000000560100000000000900000050415245
-      4E545F4944010000000000030000005245550100000000000500000054524553
-      5401000000000003000000554348010000000000}
-    Session = DataModule1.OracleSession1
-    Left = 424
-    Top = 560
-    object OD_paspID: TFloatField
-      FieldName = 'ID'
-      Required = True
-    end
-    object OD_paspNAME: TStringField
-      FieldName = 'NAME'
-      Required = True
-      Size = 64
-    end
   end
   object OD_states_sch: TOracleDataSet
     SQL.Strings = (
@@ -4202,81 +3946,18 @@ object Form_kart: TForm_kart
     Top = 24
   end
   object DS_psch2: TDataSource
-    DataSet = OD_psch2
+    DataSet = DataModule1.OD_psch2
     Left = 672
     Top = 464
   end
-  object OD_psch2: TOracleDataSet
-    SQL.Strings = (
-      'select * from ('
-      'select 0 as id, '#39#1053#1086#1088#1084#1072#1090#1080#1074#39'  as name, 0 as tp from dual'
-      'union all'
-      'select 1 as id, '#39#1057#1095'. '#1061'.'#1042'. '#1080' '#1043'.'#1042'.'#39'  as name, 0 as tp from dual'
-      'union all'
-      'select 2 as id, '#39#1057#1095'. '#1061'.'#1042'.'#39'  as name, 0 as tp from dual'
-      'union all'
-      'select 3 as id, '#39#1057#1095'. '#1043'.'#1042'.'#39'  as name, 0 as tp from dual'
-      'union all'
-      'select 8 as id, '#39#1055#1088#1086#1096#1083'.'#39'  as name, 0 as tp from dual'
-      'union all'
-      'select 9 as id, '#39#1047#1072#1082#1088#1099#1090#39'  as name, 0 as tp from dual'
-      ') t, scott.params p'
-      'where (p.org_var=1 and t.id in (0,9) --'#1076#1083#1103' '#1101'+'
-      'or p.org_var=0)')
-    Optimize = False
-    QBEDefinition.QBEFieldDefs = {
-      0400000034000000020000004944010000000000040000004E414D4501000000
-      000002000000545001000000000005000000504152414D010000000000070000
-      004D455353414745010000000000030000005645520100000000000600000050
-      4552494F440100000000000C0000004147454E545F555054494D450100000000
-      00090000004D4553535F48494E5401000000000009000000504552494F445F50
-      4C01000000000007000000535542535F4F420100000000000400000049445F31
-      0100000000000D000000504552494F445F444542495453010000000000080000
-      0044545F4F544F50310100000000000800000044545F4F544F50320100000000
-      00040000005041525401000000000007000000434E545F534348010000000000
-      070000004B414E5F5343480100000000000600000053565F534F430100000000
-      000B00000053544154455F424153455F010000000000070000004B414E5F5641
-      52010000000000070000004F52475F5641520100000000000600000053504C41
-      53480100000000000B00000047454E5F4558505F4C5354010000000000080000
-      004B414E5F56415232010000000000080000004B4152545F4544310100000000
-      00090000004155544F5F5349474E0100000000000B00000046494E445F535452
-      4545540100000000000B00000050454E59415F4D4F4E54480100000000000700
-      0000434F52525F4C470100000000000D00000052454348415247455F42494C4C
-      0100000000000C00000053484F575F4558505F5041590100000000000B000000
-      444953545249425F5041590100000000000800000042494C4C5F50454E010000
-      0000000B000000504552494F445F4241434B0100000000000D00000050455249
-      4F445F464F525752440100000000000900000050454E59415F56415201000000
-      00000C00000049535F46554C4C4D4F4E54480100000000000800000057414954
-      5F5645520100000000000B00000049535F4445545F4348524701000000000004
-      00000049445F3201000000000002000000434401000000000006000000504152
-      564331010000000000050000005041524E31010000000000060000004E414D45
-      5F3101000000000004000000434454500100000000000A000000464B5F504152
-      4344545001000000000006000000504152445431010000000000090000005041
-      52454E545F49440100000000000800000053514C5F5445585401000000000003
-      0000004E5050010000000000040000004D454D4F010000000000}
-    Session = DataModule1.OracleSession1
-    Left = 640
-    Top = 464
-    object StringField2: TStringField
-      DisplayWidth = 15
-      FieldName = 'NAME'
-      Size = 15
-    end
-    object FloatField2: TFloatField
-      DisplayWidth = 10
-      FieldName = 'ID'
-      Visible = False
-    end
-  end
   object OD_eolink: TOracleDataSet
     SQL.Strings = (
+      'select t.* from exs.eolink t where t.lsk=:lsk'
       
-        'select t.* from exs.eolink t where t.fk_klsk_obj=:fk_klsk_premis' +
-        'e')
+        '--t.fk_klsk_obj=:fk_klsk_premise - '#1091#1082#1072#1079#1099#1074#1072#1083' '#1085#1072' '#1087#1086#1084#1077#1097#1077#1085#1080#1077'. '#1085#1072#1076#1086' '#1085 +
+        #1072' '#1051#1080#1094' '#1089#1095'. '#1088#1077#1076'.21.07.2020')
     Optimize = False
-    Variables.Data = {
-      0300000001000000100000003A464B5F4B4C534B5F5052454D49534503000000
-      0000000000000000}
+    Variables.Data = {0300000001000000040000003A4C534B050000000000000000000000}
     QBEDefinition.QBEFieldDefs = {
       040000001B000000030000004C534B0100000000000200000049440100000000
       0003000000524555010000000000030000004B554C010000000000020000004E
@@ -4293,8 +3974,8 @@ object Form_kart: TForm_kart
       0100000000000900000053455256494345494401000000000003000000455252
       010000000000}
     Master = Form_list_kart.OD_list_kart
-    MasterFields = 'FK_KLSK_PREMISE'
-    DetailFields = 'FK_KLSK_PREMISE'
+    MasterFields = 'LSK'
+    DetailFields = 'LSK'
     ReadOnly = True
     Session = DataModule1.OracleSession1
     Left = 156
@@ -4305,65 +3986,13 @@ object Form_kart: TForm_kart
     Left = 192
     Top = 368
   end
-  object OD_close_reason: TOracleDataSet
-    SQL.Strings = (
-      'select * from SCOTT.V_CLOSE_REASON t'
-      'order by t.id')
-    Optimize = False
-    QBEDefinition.QBEFieldDefs = {
-      0400000002000000020000004944010000000000040000004E414D4501000000
-      0000}
-    Session = DataModule1.OracleSession1
-    Left = 672
-    Top = 392
-  end
   object DS_close_reason: TDataSource
-    DataSet = OD_close_reason
+    DataSet = DataModule1.OD_close_reason
     Left = 704
     Top = 392
   end
-  object OD_doc: TOracleDataSet
-    SQL.Strings = (
-      
-        'select t.* from scott.u_list t, scott.u_listtp tp where t.fk_lis' +
-        'ttp=tp.id'
-      'and tp.cd='#39#1044#1086#1082#1091#1084#1077#1085#1090#39
-      'order by t.npp')
-    Optimize = False
-    QBEDefinition.QBEFieldDefs = {
-      0400000006000000020000004944010000000000040000004E414D4501000000
-      000002000000434401000000000009000000464B5F4C49535454500100000000
-      00020000004E4D010000000000030000004E5050010000000000}
-    Session = DataModule1.OracleSession1
-    DesignActivation = True
-    Left = 16
-    Top = 520
-    object OD_docID: TFloatField
-      FieldName = 'ID'
-      Required = True
-    end
-    object OD_docCD: TStringField
-      FieldName = 'CD'
-      Size = 32
-    end
-    object OD_docNAME: TStringField
-      FieldName = 'NAME'
-      Size = 96
-    end
-    object OD_docNM: TStringField
-      FieldName = 'NM'
-      Size = 32
-    end
-    object OD_docFK_LISTTP: TFloatField
-      FieldName = 'FK_LISTTP'
-    end
-    object OD_docNPP: TFloatField
-      FieldName = 'NPP'
-      Required = True
-    end
-  end
   object DS_doc: TDataSource
-    DataSet = OD_doc
+    DataSet = DataModule1.OD_doc
     Left = 48
     Top = 520
   end

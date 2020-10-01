@@ -40,9 +40,7 @@ uses
 
 type
   TForm_kart = class(TForm)
-    OD_spul: TOracleDataSet;
     DS_spul: TDataSource;
-    OD_status: TOracleDataSet;
     DS_status: TDataSource;
     OD_kart_pr: TOracleDataSet;
     DS_kart_pr: TDataSource;
@@ -62,21 +60,16 @@ type
     OD_chargeITOGN: TFloatField;
     OD_chargeKOEFF: TFloatField;
     OD_chargeNORM: TFloatField;
-    OD_sprorg: TOracleDataSet;
     DS_sprorg: TDataSource;
     OD_chargeorg_name: TStringField;
     OD_kart_prLSK: TStringField;
-    OD_psch: TOracleDataSet;
     DS_psch: TDataSource;
     OD_kart_prRN: TFloatField;
     OD_kart_prPOL: TFloatField;
     OD_chargeCENA: TFloatField;
     OD_chargeNM: TStringField;
     OD_chargeUSL: TStringField;
-    OD_usl: TOracleDataSet;
     DS_usl: TDataSource;
-    OD_uslUSL: TStringField;
-    OD_uslNM: TStringField;
     OD_kart_prRELAT_ID: TFloatField;
     OD_saldo: TOracleDataSet;
     DS_saldo: TDataSource;
@@ -86,11 +79,7 @@ type
     OD_chargeVOLUME: TStringField;
     Panel2: TPanel;
     Panel4: TPanel;
-    OD_s_reu_trest: TOracleDataSet;
     DS_reu_trest: TDataSource;
-    OD_s_reu_trestREU: TStringField;
-    OD_s_reu_trestNAME_TR: TStringField;
-    OD_s_reu_trestNAME_REU: TStringField;
     OD_chargeFK_TARIF: TFloatField;
     OD_tarif: TOracleDataSet;
     DS_tarif: TDataSource;
@@ -98,15 +87,9 @@ type
     OD_tarifUSL: TStringField;
     OD_tarifNAME: TStringField;
     OD_tarifTARIF_NAME: TStringField;
-    OD_kfg: TOracleDataSet;
     DS_kfg: TDataSource;
-    OD_kfgID: TFloatField;
-    OD_kfgKOEFF: TFloatField;
     OD_kart_prSTATUS_DAT: TDateTimeField;
     OD_kart_prSTATUS_CHNG: TDateTimeField;
-    OD_sch_el: TOracleDataSet;
-    FloatField1: TFloatField;
-    StringField1: TStringField;
     DS_sch_el: TDataSource;
     OD_vvod: TOracleDataSet;
     DS_vvod: TDataSource;
@@ -122,15 +105,8 @@ type
     OD_kart_prDOK_N: TStringField;
     OD_kart_prDOK_D: TDateTimeField;
     OD_kart_prDOK_V: TStringField;
-    OD_distr: TOracleDataSet;
     DS_distr: TDataSource;
     OD_kart_prDAT_UB: TDateTimeField;
-    OD_distrID: TFloatField;
-    OD_distrCD: TStringField;
-    OD_distrNAME: TStringField;
-    OD_distrNM: TStringField;
-    OD_distrFK_LISTTP: TFloatField;
-    OD_distrNPP: TFloatField;
     OD_kart_prFK_FRM_CNTR: TFloatField;
     OD_kart_prFK_FRM_REGN: TFloatField;
     OD_kart_prFK_FRM_DISTR: TFloatField;
@@ -202,9 +178,6 @@ type
     Label43: TLabel;
     DBLookupComboboxEh5: TDBLookupComboboxEh;
     DS_pasp: TDataSource;
-    OD_pasp: TOracleDataSet;
-    OD_paspID: TFloatField;
-    OD_paspNAME: TStringField;
     OD_chargeVOL_ADD: TFloatField;
     OD_kart_prSTATUS_DATB: TDateTimeField;
     Label47: TLabel;
@@ -245,9 +218,6 @@ type
     cxDBCheckBox1: TcxDBCheckBox;
     cxprprtstr1: TcxPropertiesStore;
     DS_psch2: TDataSource;
-    OD_psch2: TOracleDataSet;
-    StringField2: TStringField;
-    FloatField2: TFloatField;
     Label54: TLabel;
     cxDBTextEdit2: TcxDBTextEdit;
     Label55: TLabel;
@@ -289,11 +259,7 @@ type
     Label53: TLabel;
     DBEdit3: TDBEdit;
     mnu1: TMenuItem;
-    OD_close_reason: TOracleDataSet;
     DS_close_reason: TDataSource;
-    OD_pschID: TFloatField;
-    OD_pschNAME: TStringField;
-    OD_pschTP: TFloatField;
     OD_states_schID: TFloatField;
     OD_states_schDT1: TDateTimeField;
     OD_states_schDT2: TDateTimeField;
@@ -388,13 +354,6 @@ type
     DBEdit8: TDBEdit;
     DBEdit20: TDBEdit;
     CheckBox2: TCheckBox;
-    OD_doc: TOracleDataSet;
-    OD_docID: TFloatField;
-    OD_docCD: TStringField;
-    OD_docNAME: TStringField;
-    OD_docNM: TStringField;
-    OD_docFK_LISTTP: TFloatField;
-    OD_docNPP: TFloatField;
     DS_doc: TDataSource;
     Panel5: TPanel;
     GroupBox1: TGroupBox;
@@ -1249,7 +1208,8 @@ begin
     end
     else if (Form_main.arch_mg_ = '') and (mgold_ <> '') then
     begin // из архива в текущее
-      change_alias(OD_kart_pr, '(select * from scott.a_kart_pr2 where ''' + mgold_ +
+      change_alias(OD_kart_pr, '(select * from scott.a_kart_pr2 where ''' +
+        mgold_ +
         ''' between mgFrom and mgTo)', 'scott.c_kart_pr');
       change_alias(OD_kart_pr, '(select * from scott.a_lg_docs where mg=''' +
         mgold_ + ''')', 'scott.c_lg_docs');
@@ -1271,8 +1231,10 @@ begin
     end
     else if (Form_main.arch_mg_ <> '') and (mgold_ <> '') then
     begin // из архива в архив
-      change_alias(OD_kart_pr, '(select * from scott.a_kart_pr2 where ''' + mgold_ +
-        ''' between mgFrom and mgTo)', '(select * from scott.a_kart_pr2 where ''' + Form_main.arch_mg_ +
+      change_alias(OD_kart_pr, '(select * from scott.a_kart_pr2 where ''' +
+        mgold_ +
+        ''' between mgFrom and mgTo)', '(select * from scott.a_kart_pr2 where '''
+          + Form_main.arch_mg_ +
         ''' between mgFrom and mgTo)');
       change_alias(OD_kart_pr, '(select * from scott.a_lg_docs where mg=''' +
         mgold_ + ''')', '(select * from scott.a_lg_docs where mg=''' +
@@ -1321,28 +1283,24 @@ begin
   CheckBox4.Visible := true;
   DBDateTimeEditEh1.Visible := true;
 
-  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
-    ['drx5_админ_доступ_к_базе']) = 0) then
+  if not Form_Main.isAdmin then
   begin
     CheckBox1.Visible := false;
     CheckBox4.Visible := false;
     DBDateTimeEditEh1.Visible := false;
   end;
 
-  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
-    ['drx_редактирование_klsk']) = 1) then
+  if Form_Main.isEditKlsk then
     CheckBox2.Enabled := True
   else
     CheckBox2.Enabled := false;
 
   updates_ := 0;
 
-  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
-    ['drx3_Правка_кода_РЭУ']) = 0) then
+  if not Form_Main.isEditReu then
     DBLookupComboboxEh9.Enabled := false;
 
-  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
-    ['drx4_Правка_кода_Пасп_стола']) = 0) then
+  if not Form_Main.isEditPasp then
     DBLookupComboboxEh5.Enabled := false;
 
   DecimalSeparator := '.';
@@ -1364,19 +1322,18 @@ begin
   OD_spr_tarif.Active := False;
   Mem_spr_tarif.Active := False;
   OD_vvod.Active := true;
-  OD_status.Active := True;
+  //OD_status.Active := True;
 
   // история состояний счета
   OD_states_sch.Active := true;
 
   // причины закрытия счета
-  OD_close_reason.Active := true;
+  //OD_close_reason.Active := true;
 
   Form_kart.Top := 5;
   //  Form_kart.Left := trunc((Form_main.Width - Form_kart.Width) / 2);
 
-  if DataModule1.OraclePackage1.CallIntegerFunction('scott.INIT.get_kart_ed1',
-    [parNone]) = 1 then
+  if Form_Main.isKartEd1 then
   begin
     TabSheet1.TabVisible := true;
   end
@@ -1387,20 +1344,20 @@ begin
 
   OD_kart_pr.SetVariable('var_', 0);
   OD_kart_pr.Active := true;
-  OD_doc.Active := true;
+  //OD_doc.Active := true;
 
   OD_charge.Active := true;
-  OD_s_reu_trest.Active := true;
-  OD_spul.Active := true;
+  //OD_s_reu_trest.Active := true;
+  //OD_spul.Active := true;
 
-  OD_psch.Active := true;
+  //OD_psch.Active := true;
 
-  OD_psch2.Active := true;
-  OD_kfg.Active := true;
-  OD_sch_el.Active := true;
-  OD_distr.Active := true;
-  OD_pasp.Active := true;
-  OD_sprorg.Active := true;
+  //OD_psch2.Active := true;
+  //OD_kfg.Active := true;
+  //OD_sch_el.Active := true;
+  //OD_distr.Active := true;
+  //OD_pasp.Active := true;
+  //OD_sprorg.Active := true;
   OD_houses.Active := true;
   OD_eolink.Active := true;
 
@@ -1868,16 +1825,16 @@ begin
     access_ := 0;
   end;
 
-  if (OD_psch.FieldByName('ID').AsInteger = 8) and (access_ = 0) then
+  if (DataModule1.OD_psch.FieldByName('ID').AsInteger = 8) and (access_ = 0) then
   begin
     msg2('Данный признак счёта запрещено устанавливать!', 'Внимание!', MB_OK +
       MB_ICONSTOP);
-    OD_psch.Locate('ID', 0, []);
+    DataModule1.OD_psch.Locate('ID', 0, []);
   end
   else
   begin
     OD_states_sch.FieldByName('FK_STATUS').AsInteger :=
-      OD_psch.FieldByName('ID').AsInteger;
+      DataModule1.OD_psch.FieldByName('ID').AsInteger;
   end;
 end;
 
@@ -2286,7 +2243,7 @@ begin
   end;
 
   OD_states_sch.FieldByName('FK_CLOSE_REASON').AsInteger :=
-    OD_close_reason.FieldByName('ID').AsInteger;
+    DataModule1.OD_close_reason.FieldByName('ID').AsInteger;
 
 end;
 

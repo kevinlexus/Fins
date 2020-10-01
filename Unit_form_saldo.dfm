@@ -89,17 +89,17 @@ object Form_saldo: TForm_saldo
   Visible = True
   OnClose = FormClose
   OnCreate = FormCreate
-  PixelsPerInch = 120
+  PixelsPerInch = 96
   TextHeight = 16
   object GroupBox1: TGroupBox
     Left = 0
-    Top = 380
-    Width = 467
+    Top = 386
+    Width = 469
     Height = 60
     Align = alBottom
     TabOrder = 0
     DesignSize = (
-      467
+      469
       60)
     object Button3: TButton
       Left = 479
@@ -147,8 +147,8 @@ object Form_saldo: TForm_saldo
   object PageControl1: TPageControl
     Left = 0
     Top = 0
-    Width = 467
-    Height = 380
+    Width = 469
+    Height = 386
     ActivePage = TabSheet2
     Align = alClient
     TabOrder = 2
@@ -194,8 +194,8 @@ object Form_saldo: TForm_saldo
       object wwDBGrid2: TwwDBGrid
         Left = 0
         Top = 0
-        Width = 459
-        Height = 349
+        Width = 461
+        Height = 355
         Selected.Strings = (
           'MG'#9'5'#9#1055#1077#1088#1080#1086#1076#9'F'
           'USL'#9'2'#9#1050#1086#1076'~'#1091#1089#1083#9'F'
@@ -203,7 +203,7 @@ object Form_saldo: TForm_saldo
           'ORG'#9'2'#9#1050#1086#1076'~'#1086#1088#1075'.'#9'F'
           'NAME_ORG'#9'14'#9#1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103#9'F'
           'SUMMA'#9'10'#9#1042#1093'.'#1089#1091#1084#1084#1072#9'F'
-          'SUMMA2'#9'8'#9#1048#1089#1093'.'#1089#1091#1084#1084#1072#9'F')
+          'SUMMA2'#9'9'#9#1048#1089#1093'.'#1089#1091#1084#1084#1072#9'F')
         IniAttributes.Delimiter = ';;'
         TitleColor = clBtnFace
         FixedCols = 0

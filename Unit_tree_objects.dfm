@@ -1,6 +1,6 @@
 object Form_tree_objects: TForm_tree_objects
-  Left = 196
-  Top = 148
+  Left = 275
+  Top = 155
   Width = 351
   Height = 864
   Align = alLeft
@@ -101,76 +101,6 @@ object Form_tree_objects: TForm_tree_objects
     Height = 6
     Cursor = crVSplit
     Align = alTop
-  end
-  object DBGridEh1: TDBGridEh
-    Left = 0
-    Top = 768
-    Width = 367
-    Height = 28
-    Align = alCustom
-    AutoFitColWidths = True
-    Color = clInfoBk
-    ColumnDefValues.ToolTips = True
-    DataSource = DM_Olap.DS_tree_objects
-    Flat = False
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -13
-    Font.Name = 'MS Sans Serif'
-    Font.Style = []
-    FooterColor = clWindow
-    FooterFont.Charset = DEFAULT_CHARSET
-    FooterFont.Color = clWindowText
-    FooterFont.Height = -11
-    FooterFont.Name = 'MS Sans Serif'
-    FooterFont.Style = []
-    Options = [dgEditing, dgTitles, dgColumnResize, dgColLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
-    ParentFont = False
-    ParentShowHint = False
-    ShowHint = True
-    TabOrder = 1
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -13
-    TitleFont.Name = 'MS Sans Serif'
-    TitleFont.Style = []
-    TitleLines = 1
-    Visible = False
-    Columns = <
-      item
-        EditButtons = <>
-        FieldName = 'NAME'
-        Footers = <>
-        Title.Caption = #1054#1073#1098#1077#1082#1090
-        Width = 294
-      end
-      item
-        EditButtons = <>
-        FieldName = 'HOUSE_MG'
-        Footers = <>
-        Title.Caption = #1055#1077#1088#1080#1086#1076
-        Width = 16
-      end
-      item
-        EditButtons = <>
-        FieldName = 'EXIST1'
-        Footers = <>
-        ImageList = Form_Main.ImageList1
-        Title.Caption = ' '
-        Width = 17
-      end
-      item
-        AlwaysShowEditButton = True
-        Checkboxes = True
-        EditButtons = <>
-        FieldName = 'SEL'
-        Footers = <>
-        KeyList.Strings = (
-          '0'
-          '1')
-        Title.Caption = #1042#1099#1073#1086#1088
-        Width = 18
-      end>
   end
   object Panel1: TPanel
     Left = 0
@@ -552,7 +482,7 @@ object Form_tree_objects: TForm_tree_objects
     Align = alBottom
     ButtonWidth = 142
     Caption = 'ToolBar1'
-    TabOrder = 3
+    TabOrder = 2
     object Button3: TButton
       Left = 0
       Top = 2
@@ -578,7 +508,7 @@ object Form_tree_objects: TForm_tree_objects
     Width = 335
     Height = 20
     Align = alTop
-    TabOrder = 4
+    TabOrder = 3
     object cxm1: TcxMemo
       Left = 1
       Top = 1
@@ -614,7 +544,7 @@ object Form_tree_objects: TForm_tree_objects
     OptionsView.Headers = False
     PopupMenu = PopupMenu1
     RootValue = 0
-    TabOrder = 5
+    TabOrder = 4
     object cxDBTreeList1ID: TcxDBTreeListColumn
       Visible = False
       DataBinding.FieldName = 'ID'
@@ -690,7 +620,7 @@ object Form_tree_objects: TForm_tree_objects
     Width = 105
     Height = 33
     Caption = #1046#1076#1080#1090#1077
-    TabOrder = 2
+    TabOrder = 1
     Visible = False
   end
   object dlgOpen1: TOpenDialog

@@ -766,6 +766,11 @@ begin
   logText('Начало регистрации оплаты');
   if (Form_Main.have_cash = 1) or (Form_Main.have_cash = 2) then
   begin
+    logText('Вызов print_receipt: oper=' +
+      OD_oper.FieldByName('oper').AsString + ', cash_oper_tp=' +
+      OD_oper.FieldByName('cash_oper_tp').AsString + ' cash_num=' +
+      OD_c_kwtp.FieldByName('cash_num').AsString);
+
     l_flag := print_receipt(StrToFloat(wwDBEdit1.Text),
       OD_c_kwtp.FieldByName('cash_num').AsInteger,
       OD_oper.FieldByName('cash_oper_tp').AsInteger);
@@ -1103,7 +1108,7 @@ begin
             // успешно
             Result := 0;
             close_port_ecr(ECR);
-            logText('ККМ: Регистрация чека - успешно!');
+            logText('ККМ: Регистрация чека - успешно');
           end;
         end
         else
@@ -1166,19 +1171,32 @@ begin
         else
         begin
           logText('ККМ: порт открыт');
+          { 24.07.20
+          ПОЛЫСАЕВО так:
+          [Application]
+          # SID=078065
+           SID=06F07206306C
+           User=042055047048034
+           Pass=074065073074034
+           Have_cash=2
+          ServerIp=192.168.1.102
+          have_eq=1
+          }
+
           // порт открыт
           // проверить режим
           mode := check_mode(ECR);
           if (Form_main.have_cash <> 2)
             or ((Form_main.have_cash = 2)
-            and (mode = 2) or (mode = 3)) then
-            // если ККМ=2 то проверить режимы
+            and (mode = 2) or (mode = 3)) then // если ККМ=2 то проверить режимы
           begin
             ////////////////////////////////////////////////////
             //                    ЭКВАЙРИНГ                   //
             ////////////////////////////////////////////////////
             eQsuccess := False;
             // регистрация операции в эквайринге, если подключен
+            logText('Параметры: p_cash_oper_tp=' + IntToStr(p_cash_oper_tp) +
+              ', Form_Main.have_eq=' + IntToStr(Form_Main.have_eq));
             if (p_cash_oper_tp = 2) and (Form_Main.have_eq = 1) then
             begin
               logText('Эквайринг');
@@ -1247,6 +1265,7 @@ begin
             end
             else
             begin
+              logText('Наличные');
               eQsuccess := true;
             end;
 
@@ -1303,11 +1322,19 @@ begin
                     then
                   begin
                     oldLsk := OD_get_money_nal2.FieldByName('lsk').AsString;
+                    logText('Лиц.счет:' +
+                      OD_get_money_nal2.FieldByName('lsk').AsString);
                     print_string_ecr2('Лиц.сч.' +
                       OD_get_money_nal2.FieldByName('lsk_tp').AsString + ' № ' +
                       OD_get_money_nal2.FieldByName('lsk').AsString, 1, 0, F,
                       ECR);
                   end;
+                  logText('Строка оплаты:' +
+                    OD_get_money_nal2.FieldByName('naim').AsString
+                    + OD_get_money_nal2.FieldByName('naim').AsString
+                    + OD_get_money_nal2.FieldByName('dopl').AsString);
+                  logText('Сумма:' +
+                    FloatToStr(OD_get_money_nal2.FieldByName('summ_itg').AsFloat));
                   reg_ecr(OD_get_money_nal2.FieldByName('naim').AsString
                     + calc_pads(OD_get_money_nal2.FieldByName('naim').AsString)
                     + OD_get_money_nal2.FieldByName('dopl').AsString,

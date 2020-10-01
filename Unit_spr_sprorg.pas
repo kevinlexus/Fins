@@ -223,6 +223,8 @@ type
     cxGridLevel3: TcxGridLevel;
     cxGrid1DBTableView1CD: TcxGridDBColumn;
     cxGrid1DBTableView1FK_ORG2: TcxGridDBColumn;
+    OD_sprorgSERVICE_NAME_GIS: TStringField;
+    cxGrid1DBTableView1SERVICE_NAME_GIS: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure OD_sprorgAfterScroll(DataSet: TDataSet);

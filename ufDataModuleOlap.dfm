@@ -1,7 +1,7 @@
 object DM_Olap: TDM_Olap
   OldCreateOrder = False
-  Left = 3101
-  Top = 214
+  Left = 2258
+  Top = 190
   Height = 810
   Width = 686
   object DS_spr_params: TDataSource
@@ -383,7 +383,6 @@ object DM_Olap: TDM_Olap
         't_tp, :prep_refcursor);'
       'end;')
     FetchRows = 1000
-    Active = True
     Constraints = <>
     Left = 32
     Top = 32
@@ -628,18 +627,21 @@ object DM_Olap: TDM_Olap
       end>
   end
   object Uni_nabor_lsk: TUniQuery
+    KeyFields = 'id'
     Connection = DataModule1.UniConnection1
     SQL.Strings = (
       
-        'select ltrim(t.kw,'#39'0'#39') as kw, n.*, n.rowid from scott.kart t, sc' +
-        'ott.nabor n'
+        'select ltrim(t.kw,'#39'0'#39') as kw, n.*, n.rowid from scott.nabor n, s' +
+        'cott.kart t'
       'where t.lsk=n.lsk and n.usl=:usl and'
       'exists'
       '(select * from  scott.kart k'
       '  where k.lsk=n.lsk and k.house_id=:house_id)'
       'and nvl(n.koeff,0)=nvl(:koeff,0) and nvl(n.norm,0)=nvl(:norm,0)'
       'order by scott.utils.f_order(t.kw,7)')
+    MasterSource = DS_data
     MasterFields = 'house_id;koeff;norm;usl'
+    DetailFields = 'house_id;koeff;norm;usl'
     Constraints = <>
     Left = 40
     Top = 544
@@ -671,12 +673,14 @@ object DM_Olap: TDM_Olap
       
         'select a.*, r.name as rel_name,a.k_fam||'#39' '#39'||substr(a.k_im,1,1)|' +
         '|'#39'.'#39'||substr(a.k_ot,1,1)||'#39'.'#39' as short_name'
-      'from scott.a_kart_pr a, scott.relations r'
-      'where a.lsk=:lsk and a.mg=:mg and a.relat_id=r.id'
+      'from scott.a_kart_pr2 a, scott.relations r'
+      
+        'where a.lsk=:lsk and :mg between a.mgFrom and a.mgTo and a.relat' +
+        '_id=r.id'
       'and a.status<>4')
     MasterSource = DS_data
-    MasterFields = 'lsk;mg'
-    DetailFields = 'lsk;mg'
+    MasterFields = 'lsk'
+    DetailFields = 'lsk'
     Constraints = <>
     Left = 40
     Top = 600

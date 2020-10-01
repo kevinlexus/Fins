@@ -215,6 +215,7 @@ type
     ImageList3: TImageList;
     N145: TMenuItem;
     N146: TMenuItem;
+    N872: TMenuItem;
     procedure N5Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure N7Click(Sender: TObject);
@@ -377,6 +378,7 @@ type
     procedure N144Click(Sender: TObject);
     procedure N145Click(Sender: TObject);
     procedure N146Click(Sender: TObject);
+    procedure N872Click(Sender: TObject);
   private
   public
     // выбранный период при переключении в архив
@@ -444,7 +446,7 @@ type
     flt_k_lsk_id_: Integer;
     flt_single_house_: Integer;
     flt_klsk_premise: Integer;
-    
+
     //
     default_lsk: string;
     fio_: string;
@@ -456,6 +458,13 @@ type
     accessList: TAccessRecArray;
     // массив параметров
     paramList: TParamRecArray;
+    // параметры для карточки проживающих и прочего
+    isAdmin: Boolean;
+    isEditKlsk: Boolean;
+    isEditReu: Boolean;
+    isEditPasp: Boolean;
+    isKartEd1: Boolean;
+
   end;
 
 var
@@ -1011,29 +1020,29 @@ end;
 
 procedure TForm_Main.ToolButton23Click(Sender: TObject);
 begin
-  if FF('Form_list_kart', 0) = 1 then
-  begin
-    with Form_list_kart do
-    begin
-      with OD_list_kart do
-      begin
-        Active := false;
-        SetVariable(':SUBSTEXP4',
-          ' order by k.lsk');
+  {// ред.закомментировал 30.09.20 if FF('Form_list_kart', 0) = 1 then
+   begin
+     with Form_list_kart do
+     begin
+       with OD_list_kart do
+       begin
+         Active := false;
+         SetVariable(':SUBSTEXP4',
+           ' order by k.lsk');
 
-        //удаляем последнюю строчку
-          //SQL.Delete(SQL.Count - 1);
-        //устанавливаем порядок
-          //SQL.Add('order by k.lsk');
-        Active := true;
-      end;
-    end;
-  end;
+         //удаляем последнюю строчку
+           //SQL.Delete(SQL.Count - 1);
+         //устанавливаем порядок
+           //SQL.Add('order by k.lsk');
+         Active := true;
+       end;
+     end;
+   end;}
 end;
 
 procedure TForm_Main.ToolButton24Click(Sender: TObject);
 begin
-  if FF('Form_list_kart', 0) = 1 then
+  {// ред.закомментировал 30.09.20if FF('Form_list_kart', 0) = 1 then
   begin
     with Form_list_kart do
     begin
@@ -1053,7 +1062,7 @@ begin
       end;
     end;
   end;
-
+   }
 end;
 
 procedure TForm_Main.ToolButton20Click(Sender: TObject);
@@ -2602,9 +2611,9 @@ begin
     PChar('c:\direct\/direct.log'),
     nil, SW_SHOWNORMAL)
     {  if FF('frmLog', 1) = 0 then
-  begin
-    Application.CreateForm(TfrmLog, frmLog);
-  end;}
+begin
+  Application.CreateForm(TfrmLog, frmLog);
+end;}
 end;
 
 procedure TForm_Main.N146Click(Sender: TObject);
@@ -2614,6 +2623,14 @@ begin
     Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('97', 0, 0);
 
+end;
+
+procedure TForm_Main.N872Click(Sender: TObject);
+begin
+  StartTreeObj;
+  if FF('Form_olap', 0) = 0 then
+    Application.CreateForm(TForm_olap, Form_olap);
+  Form_tree_objects.setAccess('98', 1, 1);
 end;
 
 end.

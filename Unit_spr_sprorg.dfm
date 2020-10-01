@@ -422,6 +422,10 @@ object Form_spr_sprorg: TForm_spr_sprorg
       object cxGrid1DBTableView1FK_ORG2: TcxGridDBColumn
         DataBinding.FieldName = 'FK_ORG2'
       end
+      object cxGrid1DBTableView1SERVICE_NAME_GIS: TcxGridDBColumn
+        Caption = #1048#1084#1103' '#1089#1077#1088#1074#1080#1089#1072' '#1043#1048#1057
+        DataBinding.FieldName = 'SERVICE_NAME_GIS'
+      end
     end
     object cxGrid1Level1: TcxGridLevel
       GridView = cxGrid1DBTableView1
@@ -800,7 +804,8 @@ object Form_spr_sprorg: TForm_spr_sprorg
         'ndx, s.r_sch_addit, s.code_deb, s.dolg_name, '
       
         ' s.fk_bill_var, s.bank_fname, s.grp, s.r_sch_gis, s.adr_cash, s.' +
-        'is_rso, s.is_exchange_gis, s.grp_deb, s.rowid'
+        'is_rso, s.is_exchange_gis, s.grp_deb, s.service_name_gis, s.rowi' +
+        'd'
       '  from scott.t_org s'
       '  order by s.reu, s.name')
     Optimize = False
@@ -834,7 +839,7 @@ object Form_spr_sprorg: TForm_spr_sprorg
       0009000000525F5343485F474953010000000000080000004144525F43415348
       0100000000000600000049535F52534F0100000000000F00000049535F455843
       48414E47455F474953010000000000070000004752505F444542010000000000
-      040000004E505032010000000000}
+      10000000534552564943455F4E414D455F474953010000000000}
     RefreshOptions = [roAfterInsert, roAfterUpdate]
     Session = DataModule1.OracleSession1
     BeforeEdit = OD_sprorgBeforeEdit
@@ -1147,6 +1152,9 @@ object Form_spr_sprorg: TForm_spr_sprorg
     end
     object OD_sprorgGRP_DEB: TFloatField
       FieldName = 'GRP_DEB'
+    end
+    object OD_sprorgSERVICE_NAME_GIS: TStringField
+      FieldName = 'SERVICE_NAME_GIS'
     end
   end
   object OD_t_orgp2: TOracleDataSet

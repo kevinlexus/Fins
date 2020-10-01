@@ -620,6 +620,11 @@ begin
     'Внимание!',
     MB_YESNO + MB_ICONQUESTION) = IDYES then
   begin
+    logText('Начало возврата оплаты');
+    logText('Выполнить обратный платёж оплаты с суммой ' +
+         OD_c_kwtp.FieldByName('summ_itg').AsString +
+         ' руб., Л/С ' + OD_c_kwtp.FieldByName('lsk').AsString);
+
     OD_paycheck.Active := true;
     l_flag := 0;
     if (Form_Main.have_cash = 1) or (Form_Main.have_cash = 2) then
@@ -633,6 +638,7 @@ begin
 
       if open_port_ecr(ECR) <> 0 then
       begin
+        logText('ККМ: Открытие порта - ОШИБКА!');
         Exit;
       end
         //Входим в режим регистрации
@@ -662,13 +668,20 @@ begin
                   FieldByName('summ_itg').AsFloat, 1,
                   FieldByName('dep').AsInteger, ECR
                   );
+                logText('Сумма возврата:' +
+                  FloatToStr(FieldByName('summ_itg').AsFloat));
                 Next;
               end;
               if close_reg_ecr(l_summa, ECR) <> 0 then
-                l_flag := 1
+              begin
+                l_flag := 1;
+                logText('ККМ: Регистрация возврата - ОШИБКА!');
+              end
               else
+              begin
                 l_flag := 0;
-              
+                logText('ККМ: Регистрация возврата - успешно');
+              end;  
               Active := false;
             end;
 
@@ -676,6 +689,7 @@ begin
             // Эксепшн в фискальном регистраторе
             on E: Exception do
             begin
+              logText('ОШИБКА в фискальном регистраторе или в БД! Откат транзакции!');
               l_flag := 1;
               ShowMessage('Exception class name = ' + E.ClassName + '' +
                 'Ошибка: ' + E.Message);
@@ -690,6 +704,7 @@ begin
     if l_flag = 1 then
     begin
       // не успешно
+      logText('Окончание возврата оплаты - ОШИБКА');
       Exit;
     end
     else if l_flag = 0 then
@@ -701,9 +716,11 @@ begin
       if l_var <> 0 then
       begin
         DataModule1.OraclePackage1.Session.Rollback;
-        msg2('Обратный платеж не выполнен! Код ошибки=' + IntToStr(l_var),
+        logText('ОШИБКА в БД при регистрации обратной оплаты Сумма в ККМ не будет идти с Директ!');
+         msg2('Обратный платеж не выполнен! Код ошибки=' + IntToStr(l_var),
           'Внимание!',
           MB_OK + MB_ICONERROR);
+        logText('Окончание возврата оплаты - ОШИБКА');
       end
       else
       begin
@@ -712,6 +729,7 @@ begin
         OD_c_kwtp.Active := true;
         OD_paycheck.Active := false;
         DataModule1.OraclePackage1.Session.Commit;
+        logText('Окончание возврата оплаты - успешно');
         msg2('Обратный платеж выполнен в текущем дне и с текущим № компьютера!',
           'Внимание!',
           MB_OK + MB_ICONINFORMATION);

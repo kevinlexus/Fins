@@ -25,6 +25,47 @@ type
     DS_period2: TDataSource;
     UniConnection1: TUniConnection;
     UniStoredProc1: TUniStoredProc;
+    OD_pasp: TOracleDataSet;
+    OD_paspID: TFloatField;
+    OD_paspNAME: TStringField;
+    OD_distr: TOracleDataSet;
+    OD_distrID: TFloatField;
+    OD_distrCD: TStringField;
+    OD_distrNAME: TStringField;
+    OD_distrNM: TStringField;
+    OD_distrFK_LISTTP: TFloatField;
+    OD_distrNPP: TFloatField;
+    OD_kfg: TOracleDataSet;
+    OD_kfgID: TFloatField;
+    OD_kfgKOEFF: TFloatField;
+    OD_sprorg: TOracleDataSet;
+    OD_status: TOracleDataSet;
+    OD_spul2: TOracleDataSet;
+    OD_s_reu_trest: TOracleDataSet;
+    OD_s_reu_trestREU: TStringField;
+    OD_s_reu_trestNAME_TR: TStringField;
+    OD_s_reu_trestNAME_REU: TStringField;
+    OD_close_reason: TOracleDataSet;
+    OD_psch: TOracleDataSet;
+    OD_pschID: TFloatField;
+    OD_pschNAME: TStringField;
+    OD_pschTP: TFloatField;
+    OD_psch2: TOracleDataSet;
+    StringField1: TStringField;
+    FloatField1: TFloatField;
+    OD_doc: TOracleDataSet;
+    OD_docID: TFloatField;
+    OD_docCD: TStringField;
+    OD_docNAME: TStringField;
+    OD_docNM: TStringField;
+    OD_docFK_LISTTP: TFloatField;
+    OD_docNPP: TFloatField;
+    OD_usl: TOracleDataSet;
+    OD_uslUSL: TStringField;
+    OD_uslNM: TStringField;
+    OD_sch_el: TOracleDataSet;
+    FloatField2: TFloatField;
+    StringField2: TStringField;
   private
     { Private declarations }
   public

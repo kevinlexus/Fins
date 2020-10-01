@@ -181,6 +181,7 @@ begin
     SetMenuItem(acc_, N83, 'drn83_Списки_задолжников');
     SetMenuItem(acc_, N87, 'drn87_Списки_показ_сч');
     SetMenuItem(acc_, N871, 'drn871_Списки_задолжн_OLAP2');
+    SetMenuItem(acc_, N872, 'drn872_Списки_задолжн_OLAP3');
     SetMenuItem(acc_, N88, 'drn88_Справочник_пени');
     SetMenuItem(acc_, N10, 'drn10_Оплата_внешняя');
     SetMenuItem(acc_, N73, 'drn73_Система');

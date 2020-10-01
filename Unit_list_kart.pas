@@ -636,7 +636,7 @@ begin
   state_arch2('');
   setAllowEdit_list;
   Form_Main.cl_flt;
-  SetFilter;
+  //SetFilter;
 
   if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
     ['drx5_админ_доступ_к_базе']) = 1) then
@@ -664,9 +664,9 @@ begin
     SetVariable('flt_single_house_', Form_Main.flt_single_house_);
     SetVariable('SUBSTEXP1', ' and k.psch not in(8,9) ');
     // устанавливаем порядок
-    SetVariable(':SUBSTEXP4',
-      ' order by s.name, scott.utils.f_order(k.nd,6), scott.utils.f_order2(k.nd),' +
-      'scott.utils.f_order(k.kw,7), scott.utils.f_order2(k.kw), decode(k.psch,8,1,9,1,0), decode(u.cd,''LSK_TP_MAIN'',0,1)');
+    // ред.закомментировал 30.09.20 SetVariable(':SUBSTEXP4',
+    //  ' order by s.name, scott.utils.f_order(k.nd,6), scott.utils.f_order2(k.nd),' +
+    //  'scott.utils.f_order(k.kw,7), scott.utils.f_order2(k.kw), decode(k.psch,8,1,9,1,0), decode(u.cd,''LSK_TP_MAIN'',0,1)');
     Active := true;
   end;
 
@@ -1182,7 +1182,7 @@ end;
 
 procedure TForm_list_kart.cxmskdt1DblClick(Sender: TObject);
 begin
-  if not (OD_list_kart.State in [dsBrowse]) then
+  if not (OD_list_kart.State in [dsInactive, dsBrowse]) then
     OD_list_kart.Post;
 
   Application.CreateForm(TForm_find_adr2, Form_find_adr2);

@@ -5,7 +5,11 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Buttons, StdCtrls, Grids, Wwdbigrd, Wwdbgrid, DB, Utils, Menus,
-  wwcheckbox, ExtCtrls, wwSpeedButton, wwDBNavigator, wwclearpanel;
+  wwcheckbox, ExtCtrls, wwSpeedButton, wwDBNavigator, wwclearpanel,
+  cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxStyles,
+  cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
+  cxDBData, cxGridLevel, cxClasses, cxGridCustomView,
+  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid;
 
 type
   TForm_tarif_usl = class(TForm)
@@ -13,40 +17,30 @@ type
     PopupMenu3: TPopupMenu;
     mnu1: TMenuItem;
     mnu2: TMenuItem;
-    wwDBGrid1: TwwDBGrid;
     wwExpandButton4: TwwExpandButton;
-    wwDBGrid1IButton: TwwIButton;
-    wwDBNavigator1: TwwDBNavigator;
-    wwDBNavigator1First: TwwNavButton;
-    wwDBNavigator1PriorPage: TwwNavButton;
-    wwDBNavigator1Prior: TwwNavButton;
-    wwDBNavigator1Next: TwwNavButton;
-    wwDBNavigator1NextPage: TwwNavButton;
-    wwDBNavigator1Last: TwwNavButton;
-    wwDBNavigator1Insert: TwwNavButton;
-    wwDBNavigator1Delete: TwwNavButton;
-    wwDBNavigator1Edit: TwwNavButton;
-    wwDBNavigator1Post: TwwNavButton;
-    wwDBNavigator1Cancel: TwwNavButton;
-    wwDBNavigator1Refresh: TwwNavButton;
-    wwDBNavigator1SaveBookmark: TwwNavButton;
-    wwDBNavigator1RestoreBookmark: TwwNavButton;
     Panel2: TPanel;
     Panel1: TPanel;
     Button1: TButton;
     CheckBox1: TCheckBox;
+    Panel3: TPanel;
+    Label1: TLabel;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    cxGrid1: TcxGrid;
+    cxGrid1DBTableView1KW: TcxGridDBColumn;
+    cxGrid1DBTableView1LSK: TcxGridDBColumn;
+    cxGrid1DBTableView1KOEFF: TcxGridDBColumn;
+    cxGrid1DBTableView1NORM: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure wwDBGrid2DblClick(Sender: TObject);
     procedure mnu1Click(Sender: TObject);
     procedure mnu2Click(Sender: TObject);
-    procedure wwExpandButton4AfterExpand(Sender: TObject);
     procedure wwExpandButton4AfterCollapse(Sender: TObject);
     procedure CheckBox1Click(Sender: TObject);
+    procedure setType(l_lvl: Integer; name: String);
   private
     { Private declarations }
-  public
-    { Public declarations }
   end;
 
 var
@@ -141,19 +135,6 @@ begin
     begin
       Application.CreateForm(TForm_status, Form_status);
       Form_status.Update;
-      {      DataModule1.OraclePackage1.CallProcedure
-                 ('scott.p_houses.house_del_usl',
-                 [DM_Olap.Uni_tree_objects.FieldByName('OBJ_LEVEL').AsInteger,
-                 null,
-                 DM_Olap.Uni_tree_objects.FieldByName('fk_house').AsInteger,
-                 DM_Olap.Uni_tree_objects.FieldByName('reu').AsString,
-                 DM_Olap.Uni_tree_objects.FieldByName('trest').AsString,
-                 DM_Olap.Uni_data.FieldByName('usl').AsString,
-                 DM_Olap.Uni_data.FieldByName('org').AsInteger,
-                 DM_Olap.Uni_data.FieldByName('koeff').AsFloat,
-                 DM_Olap.Uni_data.FieldByName('norm').AsFloat,
-                 l_chrg]);}
-
       DataModule1.UniStoredProc1.StoredProcName :=
         'scott.p_houses.house_del_usl';
       with DataModule1.UniStoredProc1.Params do
@@ -182,15 +163,6 @@ begin
       DataModule1.UniStoredProc1.ExecProc;
 
       DM_Olap.Uni_data.Refresh;
-      //начисление
-      //ред.23.10.12-зачем здесь делать начисление, если оно будет сделано выше, в процедуре oracle??
-
-      {      DataModule1.OraclePackage1.CallProcedure
-           ('scott.c_charges.gen_chrg_all',
-            [l_lvl,
-             DM_Olap.Uni_tree_objects.FieldByName('fk_house').AsInteger,
-             DM_Olap.Uni_tree_objects.FieldByName('reu').AsString,
-             DM_Olap.Uni_tree_objects.FieldByName('trest').AsString]);}
       Form_status.Close;
       Form_tree_objects.prepData;
       try
@@ -202,16 +174,9 @@ begin
   end;
 end;
 
-procedure TForm_tarif_usl.wwExpandButton4AfterExpand(Sender: TObject);
-begin
-  wwDBNavigator1.Top := wwDBGrid1.Top + wwDBGrid1.Height;
-  wwDBNavigator1.Left := wwDBGrid1.Left;
-  wwDBNavigator1.Visible := True;
-end;
-
 procedure TForm_tarif_usl.wwExpandButton4AfterCollapse(Sender: TObject);
 begin
-  wwDBNavigator1.Visible := False;
+//  wwDBNavigator1.Visible := False;
 
 end;
 
@@ -220,6 +185,41 @@ begin
   if CheckBox1.Checked = False then
   begin
     msg2('В случае отключения расчета начисления, его нужно будет сформировать в "Итоговом" формировании!', 'Внимание!', MB_OK + MB_ICONINFORMATION);
+  end;
+end;
+
+procedure TForm_tarif_usl.setType(l_lvl: Integer; name: String);
+begin
+  if (l_lvl= 4) or (l_lvl=-1) then
+  begin
+    // по лс не поддерживается
+    mnu1.Caption:='Не поддерживается';
+    mnu2.Caption:='Не поддерживается';
+    Label1.Caption:='Не поддерживается';
+  end
+  else if l_lvl= 3 then
+  begin
+    mnu1.Caption:='Добавить услугу по дому';
+    mnu2.Caption:='Удалить услугу по дому';
+    Label1.Caption:='Работа с тарифом по дому '+name;
+  end
+  else if l_lvl=2 then
+  begin
+    mnu1.Caption:='Добавить услугу по УК';
+    mnu2.Caption:='Удалить услугу по УК';
+    Label1.Caption:='Работа с тарифом по УК '+name;
+  end
+  else if l_lvl=1 then
+  begin
+    mnu1.Caption:='Добавить услугу по Фонду';
+    mnu2.Caption:='Удалить услугу по Фонду';
+    Label1.Caption:='Работа с тарифом по Фонду '+name;
+  end
+  else if l_lvl=0 then
+  begin
+    mnu1.Caption:='Добавить услугу по Городу';
+    mnu2.Caption:='Удалить услугу по Городу';
+    Label1.Caption:='Работа с тарифом по Городу';
   end;
 end;
 

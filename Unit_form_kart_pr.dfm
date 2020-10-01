@@ -1,6 +1,6 @@
 object Form_kart_pr: TForm_kart_pr
-  Left = 605
-  Top = 177
+  Left = 975
+  Top = 245
   Width = 680
   Height = 525
   BorderIcons = [biSystemMenu, biMinimize]
@@ -4013,7 +4013,6 @@ object Form_kart_pr: TForm_kart_pr
     CachedUpdates = True
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Active = True
     BeforeInsert = OD_c_statesBeforeInsert
     BeforeEdit = OD_c_statesBeforeEdit
     BeforePost = OD_c_statesBeforePost

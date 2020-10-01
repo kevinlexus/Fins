@@ -1,5 +1,5 @@
 object frmLoadKartExt: TfrmLoadKartExt
-  Left = 2153
+  Left = 233
   Top = 434
   Width = 865
   Height = 534

@@ -1,6 +1,6 @@
 object Form_find_adr2: TForm_find_adr2
-  Left = 895
-  Top = 674
+  Left = 686
+  Top = 193
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   BorderWidth = 1

@@ -1,6 +1,6 @@
 object Form_get_pay_nal: TForm_get_pay_nal
-  Left = 548
-  Top = 231
+  Left = 328
+  Top = 183
   Width = 633
   Height = 409
   BorderIcons = [biSystemMenu, biMinimize]
@@ -807,7 +807,6 @@ object Form_get_pay_nal: TForm_get_pay_nal
       4401000000000008000000434153485F4E554D01000000000008000000414452
       5F43415348010000000000}
     Session = DataModule1.OracleSession1
-    Active = True
     Left = 216
     Top = 152
   end

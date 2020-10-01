@@ -422,11 +422,38 @@ begin
   //справочник расценок по работам еще не загружен
   Form_main.isloadedspr_ := 0;
 
+  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
+    ['drx5_админ_доступ_к_базе']) = 0) then
+    Form_main.isAdmin := true
+  else
+    Form_main.isAdmin := false;
+
+  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
+    ['drx_редактирование_klsk']) = 1) then
+    Form_main.isEditKlsk := true
+  else
+    Form_main.isEditKlsk := false;
+
+  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
+    ['drx3_Правка_кода_РЭУ']) = 0) then
+    Form_main.isEditReu := true
+  else
+    Form_main.isEditReu := false;
+
+  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
+    ['drx4_Правка_кода_Пасп_стола']) = 0) then
+    Form_main.isEditPasp := true
+  else
+    Form_main.isEditPasp := false;
+
+  if DataModule1.OraclePackage1.CallIntegerFunction('scott.INIT.get_kart_ed1',
+    [parNone]) = 1 then
+    Form_Main.isKartEd1:=True
+  else  
+    Form_Main.isKartEd1:=False;
+
   // Отображать ли меню по выполнению плана
-  if (Form_Main.OD_params.FieldByName('agent_uptime').AsInteger = 1) then
-  begin
-    Form_Main.N25.Enabled := false;
-  end;
+  Form_Main.N25.Enabled := false;
 
   if (User <> 'scott') and (User <> 'lev') and
     (Form_Main.OD_params.FieldByName('param').AsInteger = 1) then
@@ -475,6 +502,19 @@ begin
   //включить таблицы параметров
   //параметры текущего РКЦ
   DataModule1.OD_rkc.Active := true;
+  DataModule1.OD_pasp.Active := true;
+  DataModule1.OD_distr.Active := true;
+  DataModule1.OD_kfg.Active := true;
+  DataModule1.OD_sprorg.Active := true;
+  DataModule1.OD_status.Active := true;
+  DataModule1.OD_spul2.Active := true;
+  DataModule1.OD_s_reu_trest.Active := true;
+  DataModule1.OD_close_reason.Active := true;
+  DataModule1.OD_psch.Active := true;
+  DataModule1.OD_psch2.Active := true;
+  DataModule1.OD_usl.Active := true;
+  DataModule1.OD_sch_el.Active := true;
+  
   Application.Run;
 end.
 

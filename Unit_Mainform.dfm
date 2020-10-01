@@ -1,8 +1,8 @@
 object Form_Main: TForm_Main
-  Left = 409
-  Top = 242
+  Left = 827
+  Top = 145
   Width = 880
-  Height = 723
+  Height = 628
   Caption = #1044#1080#1088#1077#1082#1090
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -95,7 +95,7 @@ object Form_Main: TForm_Main
   object Splitter1: TSplitter
     Left = 1
     Top = 41
-    Height = 623
+    Height = 528
     Beveled = True
   end
   object ToolBar1: TToolBar
@@ -278,7 +278,7 @@ object Form_Main: TForm_Main
     Left = 0
     Top = 41
     Width = 1
-    Height = 623
+    Height = 528
     Align = alLeft
     DockSite = True
     TabOrder = 1
@@ -782,6 +782,11 @@ object Form_Main: TForm_Main
             ImageIndex = 67
             OnClick = N871Click
           end
+          object N872: TMenuItem
+            Caption = #1057#1087#1080#1089#1086#1082' '#1079#1072#1076#1086#1083#1078#1085#1080#1082#1086#1074' OLAP-3'
+            ImageIndex = 67
+            OnClick = N872Click
+          end
           object N510: TMenuItem
             Caption = #1057#1087#1088#1072#1074#1082#1072' '#1087#1086' '#1085#1072#1095#1080#1089#1083#1077#1085#1080#1102' '#1082#1074'.'#1087#1083#1072#1090#1099' ('#1087#1088#1080#1083'.6) '
             ImageIndex = 67
@@ -1082,7 +1087,7 @@ object Form_Main: TForm_Main
       end
     end
     object ver: TMenuItem
-      Caption = 'ver 2.1.163'
+      Caption = 'ver 2.1.178'
       object option: TMenuItem
         Caption = #1055#1086#1076#1082#1083#1102#1095#1077#1085#1085#1099#1077' '#1086#1087#1094#1080#1080':'
       end

@@ -102,6 +102,8 @@ type
     PivotMap13: TPivotMap;
     PivotCube97: TPivotCube;
     PivotMap97: TPivotMap;
+    PivotCube98: TPivotCube;
+    PivotMap98: TPivotMap;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);

@@ -34,7 +34,6 @@ uses
   cxTLData, cxCheckBox, cxImageComboBox;
 type
   TForm_tree_objects = class(TForm)
-    DBGridEh1: TDBGridEh;
     Panel1: TPanel;
     ToolBar1: TToolBar;
     Button2: TButton;
@@ -176,14 +175,11 @@ begin
     (DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger
     = 3) then
   begin
-    DM_Olap.Uni_nabor_lsk.MasterSource := DM_Olap.Uni_data.DataSource;
     DM_Olap.Uni_nabor_lsk.Active := True;
   end
   else if (rep_cd_ <> '78') or ((rep_cd_ = '78') and
     (DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger <> 3)) then
   begin
-    //необходимо явно убирать Master, иначе датасет продолжает ссылаться, с ошибкой...
-    //DM_Olap.Uni_nabor_lsk.Master := nil;
     DM_Olap.Uni_nabor_lsk.Active := False;
   end;
 
@@ -191,9 +187,9 @@ begin
   //отчет - реестр для УСЗН
   if (rep_cd_ = '79') then
   begin
-    //DM_OLap.Uni_c_kart_pr.MasterSource := DM_Olap.Uni_data.DataSource;
     DM_OLap.Uni_c_kart_pr.Active := True;
   end;
+
   // 05.09.2019 чё за бред:
 //  else if (rep_cd_ <> '78') then
 //  begin
@@ -602,6 +598,8 @@ begin
     begin
       with Form_tarif_usl do
       begin
+        Form_tarif_usl.setType(DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger,
+         DM_Olap.Uni_tree_objects.FieldByName('name').AsString);
         if DM_OLap.OD_mg1.FieldByName('mg').AsString = Form_main.cur_mg_ then
         begin
           //Выбран текущий период
@@ -1127,7 +1125,7 @@ begin
   begin
     Form_tarif_usl.Close;
   end;
-
+  
   //Открытие-закрытие необходимых форм, в зависимости от типа отчета
   if rep_type_ = 4 then
   begin
@@ -1269,8 +1267,6 @@ begin
   else
   begin
     GroupBox5.Visible := False;
-    //    Label6.Visible:=False;
-    //    wwDBLookupCombo2.Visible:=False;
   end;
 
   with DM_Olap.Uni_spr_params do

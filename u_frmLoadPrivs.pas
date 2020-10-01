@@ -41,7 +41,7 @@ uses
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
   dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue, ShlObj,
   cxShellCommon, cxStyles, dxSkinscxPCPainter, cxCustomData, cxFilter,
-  cxData, cxDataStorage, cxNavigator, cxDBData;
+  cxData, cxDataStorage, cxNavigator, cxDBData, cxImageComboBox;
 
 type
   TfrmLoadPrivs = class(TForm)
@@ -88,6 +88,8 @@ type
     lbl1: TLabel;
     DS_mg1: TDataSource;
     CheckBox1: TCheckBox;
+    Label1: TLabel;
+    cxImageComboBox1: TcxImageComboBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure dxwzrdcntrl1ButtonClick(Sender: TObject;
@@ -100,6 +102,7 @@ type
       Sender: TcxCustomGridTableItem; ARecord: TcxCustomGridRecord;
       var AText: String);
     procedure chk2Click(Sender: TObject);
+    procedure cxImageComboBox1PropertiesCloseUp(Sender: TObject);
   private
     { Private declarations }
   public
@@ -223,11 +226,13 @@ begin
          else
            // новый вариант (одна запись на адрес)
            DataModule1.OraclePackage1.CallProcedure(
-             'scott.c_load_privs.prep_output2', [cbb1.EditValue, FieldByName('id').AsInteger, parInteger]);
+             'scott.c_load_privs.prep_output2', [cbb1.EditValue, FieldByName('id').AsInteger,
+              parInteger, cxImageComboBox1.ItemIndex]);
          err:=DataModule1.OraclePackage1.GetParameter(2);
          DataModule1.OracleSession1.Commit;
          //получить данные из рефкурсора
          OD_data.SetVariable('p_file', FieldByName('id').AsInteger);
+         OD_data.SetVariable('p_tp', cxImageComboBox1.ItemIndex);
          OD_data.Active:=False;
          OD_data.Active:=True;
          exp_to_dbf_prec(OD_data, 'LOAD_PRIVS', 'SCOTT', 'c:\temp\out\'+FieldByName('name').AsString);
@@ -336,6 +341,19 @@ begin
   else
   begin
     chk2.Checked:=False;
+  end;
+end;
+
+procedure TfrmLoadPrivs.cxImageComboBox1PropertiesCloseUp(Sender: TObject);
+begin
+  if cxImageComboBox1.ItemIndex=0 then
+  begin
+     CheckBox1.Enabled:=True
+  end
+  else if cxImageComboBox1.ItemIndex=1 then   
+  begin
+     CheckBox1.Checked:=True;
+     CheckBox1.Enabled:=False;
   end;
 end;
 

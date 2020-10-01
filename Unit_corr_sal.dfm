@@ -1,6 +1,6 @@
 object Form_corr_sal: TForm_corr_sal
-  Left = 243
-  Top = 182
+  Left = 640
+  Top = 196
   Width = 931
   Height = 619
   Caption = #1050#1086#1088#1088#1077#1082#1094#1080#1103' '#1089#1072#1083#1100#1076#1086' '#1080' '#1086#1087#1083#1072#1090#1099
@@ -393,7 +393,8 @@ object Form_corr_sal: TForm_corr_sal
         #1080#1089#1093'.'#1089#1072#1083#1100#1076#1086'!'
       
         #1050#1086#1088#1088#1077#1082#1094#1080#1103' '#1089#1072#1083#1100#1076#1086' '#1087#1086' 003 '#1091#1089#1083' (2-'#1072#1103' '#1087#1088#1086#1074#1086#1076#1082#1072') - '#1042#1099#1087#1086#1083#1085#1103#1090#1100' '#1087#1086#1089#1083#1077' '#1092#1086 +
-        #1088#1084#1080#1088#1086#1074#1072#1085#1080#1103' '#1080#1089#1093'.'#1089#1072#1083#1100#1076#1086'!')
+        #1088#1084#1080#1088#1086#1074#1072#1085#1080#1103' '#1080#1089#1093'.'#1089#1072#1083#1100#1076#1086'!'
+      #1050#1086#1088#1088#1077#1082#1094#1080#1103' '#1089#1072#1083#1100#1076#1086' '#1087#1086' '#1055#1077#1085#1077)
   end
   object Button1: TButton
     Left = 830
@@ -422,7 +423,7 @@ object Form_corr_sal: TForm_corr_sal
     Align = alBottom
     TabOrder = 10
     object TabSheet1: TTabSheet
-      Caption = #1050#1086#1088#1088#1077#1082#1090#1080#1088#1086#1074#1082#1080' '#1086#1087#1083#1072#1090#1086#1081
+      Caption = #1050#1086#1088#1088#1077#1082#1090#1080#1088#1086#1074#1082#1080
       object cxGrid2: TcxGrid
         Left = 0
         Top = 0
@@ -444,32 +445,37 @@ object Form_corr_sal: TForm_corr_sal
           object cxGridDBTableView1FK_DOC: TcxGridDBColumn
             Caption = #8470' '#1076#1086#1082'.'
             DataBinding.FieldName = 'FK_DOC'
-            Width = 51
+            Width = 54
+          end
+          object cxGridDBTableView1DTEK: TcxGridDBColumn
+            Caption = #1044#1072#1090#1072
+            DataBinding.FieldName = 'DTEK'
+            Width = 64
           end
           object cxGridDBTableView1TEXT: TcxGridDBColumn
-            Caption = #1054#1087#1080#1089#1072#1085#1080#1077
+            Caption = #1055#1088#1080#1084#1077#1095#1072#1085#1080#1077
             DataBinding.FieldName = 'TEXT'
-            Width = 69
+            Width = 280
           end
           object cxGridDBTableView1NAME_REU: TcxGridDBColumn
             Caption = #1059#1050
             DataBinding.FieldName = 'NAME_REU'
-            Width = 196
+            Width = 126
           end
           object cxGridDBTableView1NAME_USL: TcxGridDBColumn
             Caption = #1059#1089#1083#1091#1075#1072
             DataBinding.FieldName = 'NAME_USL'
-            Width = 146
+            Width = 94
           end
           object cxGridDBTableView1NAME_ORG: TcxGridDBColumn
             Caption = #1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103
             DataBinding.FieldName = 'NAME_ORG'
-            Width = 298
+            Width = 193
           end
           object cxGridDBTableView1SUMMA: TcxGridDBColumn
             Caption = #1057#1091#1084#1084#1072
             DataBinding.FieldName = 'SUMMA'
-            Width = 146
+            Width = 94
           end
         end
         object cxGridLevel1: TcxGridLevel
@@ -592,8 +598,25 @@ object Form_corr_sal: TForm_corr_sal
   object OD_data: TOracleDataSet
     SQL.Strings = (
       
-        'select t.fk_doc, d.text, o2.reu||'#39'-'#39'||o2.name as name_reu, u.usl' +
-        '||'#39'-'#39'||u.nm as name_usl, '
+        'select d.id as fk_doc, d.dtek, d.text, o2.reu||'#39'-'#39'||o2.name as n' +
+        'ame_reu, u.usl||'#39'-'#39'||u.nm as name_usl, '
+      ' o.id||'#39'-'#39'||o.name as name_org, '
+      'sum(summa) as summa'
+      'from scott.c_change_docs d'
+      ' left join scott.t_corrects_payments t on  t.fk_doc=d.id'
+      ' left join scott.kart k on k.lsk=t.lsk'
+      ' left join scott.usl u on t.usl=u.usl'
+      ' left join scott.params p on t.mg=p.period'
+      ' left join scott.t_org o on t.org=o.id'
+      ' left join scott.t_org o2 on k.reu=o2.reu'
+      
+        'group by d.id, d.text, d.dtek, o2.reu, o2.name, u.usl, u.nm, o.i' +
+        'd, o.name'
+      'order by d.id, o2.name, u.nm, o.name'
+      ''
+      
+        '/*select t.fk_doc, d.text, o2.reu||'#39'-'#39'||o2.name as name_reu, u.u' +
+        'sl||'#39'-'#39'||u.nm as name_usl, '
       ' o.id||'#39'-'#39'||o.name as name_org, '
       'sum(summa) as summa'
       
@@ -607,7 +630,7 @@ object Form_corr_sal: TForm_corr_sal
       
         'group by t.fk_doc, d.text, o2.reu, o2.name, u.usl, u.nm, o.id, o' +
         '.name'
-      'order by t.fk_doc, o2.name, u.nm, o.name'
+      'order by t.fk_doc, o2.name, u.nm, o.name*/'
       ''
       '/*'
       
@@ -630,10 +653,10 @@ object Form_corr_sal: TForm_corr_sal
       '*/')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000006000000080000004E414D455F55534C010000000000080000004E41
+      0400000007000000080000004E414D455F55534C010000000000080000004E41
       4D455F4F5247010000000000080000004E414D455F5245550100000000000500
       000053554D4D4101000000000004000000544558540100000000000600000046
-      4B5F444F43010000000000}
+      4B5F444F43010000000000040000004454454B010000000000}
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True
