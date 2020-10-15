@@ -216,6 +216,7 @@ type
     N145: TMenuItem;
     N146: TMenuItem;
     N872: TMenuItem;
+    ProgressBar1: TProgressBar;
     procedure N5Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure N7Click(Sender: TObject);

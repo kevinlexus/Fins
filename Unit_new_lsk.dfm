@@ -1,6 +1,6 @@
 object Form_new_lsk: TForm_new_lsk
-  Left = 225
-  Top = 173
+  Left = 250
+  Top = 181
   Width = 497
   Height = 455
   VertScrollBar.Visible = False
@@ -200,7 +200,9 @@ object Form_new_lsk: TForm_new_lsk
         
           #1053#1086#1074#1086#1077' '#1087#1086#1084#1077#1097#1077#1085#1080#1077' ('#1060#1080#1079#1080#1095#1077#1089#1082#1080' '#1086#1090#1076#1077#1083#1100#1085#1086#1077' '#1087#1086#1084#1077#1097#1077#1085#1080#1077' - c'#1082#1086#1087#1080#1088#1086#1074#1072#1090#1100' '#1074#1089#1077 +
           ' '#1089#1091#1073#1089#1095#1077#1090#1072')'
-        #1053#1086#1074#1099#1081' '#1092#1080#1085#1072#1085#1089#1086#1074#1099#1081' '#1083#1080#1094'.'#1089#1095#1077#1090' ('#1057#1082#1086#1087#1080#1088#1086#1074#1072#1090#1100' '#1074#1089#1077' '#1089#1091#1073#1089#1095#1077#1090#1072')')
+        
+          #1053#1086#1074#1099#1081' '#1092#1080#1085#1072#1085#1089#1086#1074#1099#1081' '#1083#1080#1094'.'#1089#1095#1077#1090' ('#1055#1088#1080' '#1088#1072#1079#1076#1077#1083#1077#1085#1080#1080' '#1076#1086#1083#1075#1086#1074' - '#1089#1082#1086#1087#1080#1088#1086#1074#1072#1090#1100' '#1074 +
+          #1089#1077' '#1089#1091#1073#1089#1095#1077#1090#1072')')
       ParentFont = False
       TabOrder = 4
       OnClick = RadioGroup1Click
@@ -281,6 +283,13 @@ object Form_new_lsk: TForm_new_lsk
       ParentFont = False
       TabOrder = 7
     end
+    object CheckBox4: TCheckBox
+      Left = 448
+      Top = 320
+      Width = 25
+      Height = 17
+      TabOrder = 8
+    end
   end
   object GroupBox2: TGroupBox
     Left = 0
@@ -331,13 +340,13 @@ object Form_new_lsk: TForm_new_lsk
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True
-    Left = 8
-    Top = 128
+    Left = 16
+    Top = 72
   end
   object DS_lsk_tp: TDataSource
     DataSet = OD_lsk_tp
-    Left = 48
-    Top = 128
+    Left = 56
+    Top = 72
   end
   object OD_reu: TOracleDataSet
     SQL.Strings = (
@@ -351,12 +360,12 @@ object Form_new_lsk: TForm_new_lsk
       000000}
     Session = DataModule1.OracleSession1
     Active = True
-    Left = 80
-    Top = 128
+    Left = 88
+    Top = 72
   end
   object DS_reu: TDataSource
     DataSet = OD_reu
-    Left = 112
-    Top = 128
+    Left = 120
+    Top = 72
   end
 end

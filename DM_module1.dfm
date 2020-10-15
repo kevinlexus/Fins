@@ -12,7 +12,6 @@ object DataModule1: TDataModule1
     LogonDatabase = 'XE'
     ThreadSafe = True
     RollbackOnDisconnect = True
-    OptimizerGoal = ogChoose
     MessageTable = 'scott.my_messages'
     StatementCacheSize = 40
     Connected = True
@@ -628,5 +627,26 @@ object DataModule1: TDataModule1
       FieldName = 'NAME'
       Size = 15
     end
+  end
+  object OD_list_choice: TOracleDataSet
+    SQL.Strings = (
+      'begin'
+      '  scott.generator.list_choice_hs(:clr_, :psaldo_refcursor);'
+      'end;')
+    Optimize = False
+    Variables.Data = {
+      0300000002000000110000003A5053414C444F5F524546435552534F52740000
+      000000000000000000050000003A434C525F030000000000000000000000}
+    QBEDefinition.QBEFieldDefs = {
+      0400000004000000020000004E440100000000000300000053454C0100000000
+      00040000004E414D4501000000000003000000414452010000000000}
+    LockingMode = lmNone
+    UpdatingTable = 'scott.list_choices_hs'
+    CommitOnPost = False
+    Session = OracleSession1
+    DesignActivation = True
+    Active = True
+    Left = 128
+    Top = 616
   end
 end

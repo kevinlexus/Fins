@@ -66,6 +66,7 @@ type
     OD_sch_el: TOracleDataSet;
     FloatField2: TFloatField;
     StringField2: TStringField;
+    OD_list_choice: TOracleDataSet;
   private
     { Private declarations }
   public

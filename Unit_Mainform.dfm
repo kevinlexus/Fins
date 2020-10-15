@@ -1,6 +1,6 @@
 object Form_Main: TForm_Main
-  Left = 827
-  Top = 145
+  Left = 946
+  Top = 340
   Width = 880
   Height = 628
   Caption = #1044#1080#1088#1077#1082#1090
@@ -315,6 +315,15 @@ object Form_Main: TForm_Main
       ShowHint = False
       Transparent = False
     end
+  end
+  object ProgressBar1: TProgressBar
+    Left = 384
+    Top = 264
+    Width = 150
+    Height = 17
+    Max = 10
+    Position = 1
+    TabOrder = 3
   end
   object MainMenu1: TMainMenu
     Images = ImageList1
@@ -1087,7 +1096,7 @@ object Form_Main: TForm_Main
       end
     end
     object ver: TMenuItem
-      Caption = 'ver 2.1.178'
+      Caption = 'ver 2.1.188'
       object option: TMenuItem
         Caption = #1055#1086#1076#1082#1083#1102#1095#1077#1085#1085#1099#1077' '#1086#1087#1094#1080#1080':'
       end

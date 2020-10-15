@@ -322,6 +322,8 @@ begin
   // загрузить Ini параметры
   loadIniPar;
 
+  Form_Main.ProgressBar1.Position:=1;
+  Form_Main.Update;
   try
     DataModule1.OracleSession1.Connected := false;
     DataModule1.OracleSession1.LogonUsername := User;
@@ -419,11 +421,14 @@ begin
   Form_main.OD_params.Active := true;
   Oracle.OnOracleError := EOracleErr;
 
+  Form_Main.ProgressBar1.Position:=2;
+  Form_Main.Update;
+  
   //справочник расценок по работам еще не загружен
   Form_main.isloadedspr_ := 0;
 
   if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
-    ['drx5_админ_доступ_к_базе']) = 0) then
+    ['drx5_админ_доступ_к_базе']) = 1) then
     Form_main.isAdmin := true
   else
     Form_main.isAdmin := false;
@@ -435,13 +440,13 @@ begin
     Form_main.isEditKlsk := false;
 
   if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
-    ['drx3_Правка_кода_РЭУ']) = 0) then
+    ['drx3_Правка_кода_РЭУ']) = 1) then
     Form_main.isEditReu := true
   else
     Form_main.isEditReu := false;
 
   if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
-    ['drx4_Правка_кода_Пасп_стола']) = 0) then
+    ['drx4_Правка_кода_Пасп_стола']) = 1) then
     Form_main.isEditPasp := true
   else
     Form_main.isEditPasp := false;
@@ -455,6 +460,38 @@ begin
   // Отображать ли меню по выполнению плана
   Form_Main.N25.Enabled := false;
 
+
+  //загружаем параметры для сессии
+  DataModule1.UniStoredProc1.StoredProcName := 'scott.utils.prep_users_par';
+  DataModule1.UniStoredProc1.Params.Clear;
+  DataModule1.UniStoredProc1.ExecProc;
+
+  Form_Main.ProgressBar1.Position:=3;
+  Form_Main.Update;
+
+  //включить таблицы параметров
+  //параметры текущего РКЦ
+  DataModule1.OD_rkc.Active := true;
+  DataModule1.OD_pasp.Active := true;
+  DataModule1.OD_distr.Active := true;
+  DataModule1.OD_kfg.Active := true;
+  DataModule1.OD_sprorg.Active := true;
+  DataModule1.OD_status.Active := true;
+  DataModule1.OD_spul2.Active := true;
+  DataModule1.OD_s_reu_trest.Active := true;
+  DataModule1.OD_close_reason.Active := true;
+  DataModule1.OD_psch.Active := true;
+  DataModule1.OD_psch2.Active := true;
+  DataModule1.OD_usl.Active := true;
+  DataModule1.OD_sch_el.Active := true;
+  
+  Form_Main.ProgressBar1.Position:=4;
+  Form_Main.Update;
+
+  // загрузить дома, для формы выбора дома
+  DataModule1.OD_list_choice.SetVariable('clr_',1);
+  DataModule1.OD_list_choice.Active := true;
+  
   if (User <> 'scott') and (User <> 'lev') and
     (Form_Main.OD_params.FieldByName('param').AsInteger = 1) then
   begin
@@ -484,37 +521,17 @@ begin
     Application.Icon := nil;
     Form_Main.Visible := true;
   end;
-  //Form_Main.CoolTrayIcon1.IconVisible := true;
+
+  Form_Main.ProgressBar1.Position:=5;
+  Form_Main.Update;
+  Form_Main.ProgressBar1.Hide;
+
   Form_main.WindowState := wsMaximized;
   Application.CreateForm(TForm_sel_comps, Form_sel_comps);
   Form_sel_comps.ShowModal;
 
   Form_main.exepath_ := ExtractFilePath(Application.ExeName);
-
-  //загружаем параметры для сессии
-//  DataModule1.OraclePackage1.CallProcedure('scott.utils.prep_users_par',
-//    [parNone]);
-
-  DataModule1.UniStoredProc1.StoredProcName := 'scott.utils.prep_users_par';
-  DataModule1.UniStoredProc1.Params.Clear;
-  DataModule1.UniStoredProc1.ExecProc;
-
-  //включить таблицы параметров
-  //параметры текущего РКЦ
-  DataModule1.OD_rkc.Active := true;
-  DataModule1.OD_pasp.Active := true;
-  DataModule1.OD_distr.Active := true;
-  DataModule1.OD_kfg.Active := true;
-  DataModule1.OD_sprorg.Active := true;
-  DataModule1.OD_status.Active := true;
-  DataModule1.OD_spul2.Active := true;
-  DataModule1.OD_s_reu_trest.Active := true;
-  DataModule1.OD_close_reason.Active := true;
-  DataModule1.OD_psch.Active := true;
-  DataModule1.OD_psch2.Active := true;
-  DataModule1.OD_usl.Active := true;
-  DataModule1.OD_sch_el.Active := true;
-  
+ 
   Application.Run;
 end.
 

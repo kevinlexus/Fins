@@ -16,24 +16,7 @@ type
   TfrmLoadKartExt = class(TForm)
     OD_loadKartExt: TOracleDataSet;
     DS_loadKartExt: TDataSource;
-    cxGrid1DBTableView1: TcxGridDBTableView;
-    cxGrid1Level1: TcxGridLevel;
-    cxGrid1: TcxGrid;
-    Panel1: TPanel;
-    cxGrid1DBTableView1EXT_LSK: TcxGridDBColumn;
-    cxGrid1DBTableView1GUID: TcxGridDBColumn;
-    cxGrid1DBTableView1FIO: TcxGridDBColumn;
-    cxGrid1DBTableView1ADDRESS: TcxGridDBColumn;
-    cxGrid1DBTableView1CODE: TcxGridDBColumn;
-    cxGrid1DBTableView1NM: TcxGridDBColumn;
-    cxGrid1DBTableView1PERIOD_DEB: TcxGridDBColumn;
-    cxGrid1DBTableView1SUMMA: TcxGridDBColumn;
-    cxGrid1DBTableView1COMM: TcxGridDBColumn;
-    cxGrid1DBTableView1STATUS: TcxGridDBColumn;
-    cxGrid1DBTableView1LSK: TcxGridDBColumn;
     OpenDialog1: TOpenDialog;
-    Button1: TButton;
-    Button3: TButton;
     OD_loadKartExtID: TFloatField;
     OD_loadKartExtEXT_LSK: TStringField;
     OD_loadKartExtGUID: TStringField;
@@ -46,18 +29,55 @@ type
     OD_loadKartExtCOMM: TStringField;
     OD_loadKartExtSTATUS: TFloatField;
     OD_loadKartExtLSK: TStringField;
+    OD_loadKartExtFK_KLSK_PREMISE: TFloatField;
+    OD_loadKartExtFK_KLSK_ID: TFloatField;
+    PageControl1: TPageControl;
+    TabSheet1: TTabSheet;
+    TabSheet2: TTabSheet;
+    cxGrid1: TcxGrid;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    cxGrid1DBTableView1EXT_LSK: TcxGridDBColumn;
+    cxGrid1DBTableView1LSK: TcxGridDBColumn;
+    cxGrid1DBTableView1FK_KLSK_ID: TcxGridDBColumn;
+    cxGrid1DBTableView1FK_KLSK_PREMISE: TcxGridDBColumn;
+    cxGrid1DBTableView1GUID: TcxGridDBColumn;
+    cxGrid1DBTableView1FIO: TcxGridDBColumn;
+    cxGrid1DBTableView1ADDRESS: TcxGridDBColumn;
+    cxGrid1DBTableView1CODE: TcxGridDBColumn;
+    cxGrid1DBTableView1NM: TcxGridDBColumn;
+    cxGrid1DBTableView1PERIOD_DEB: TcxGridDBColumn;
+    cxGrid1DBTableView1SUMMA: TcxGridDBColumn;
+    cxGrid1DBTableView1COMM: TcxGridDBColumn;
+    cxGrid1DBTableView1STATUS: TcxGridDBColumn;
+    cxGrid1Level1: TcxGridLevel;
+    cxGrid2: TcxGrid;
+    cxGridDBTableView1: TcxGridDBTableView;
+    cxGridLevel1: TcxGridLevel;
+    OD_not_linked: TOracleDataSet;
+    DS_not_linked: TDataSource;
+    cxGridDBTableView1LSK: TcxGridDBColumn;
+    cxGridDBTableView1CHARGES: TcxGridDBColumn;
+    cxGridDBTableView1PAYMENT: TcxGridDBColumn;
+    cxGridDBTableView1KUL: TcxGridDBColumn;
+    cxGridDBTableView1STREET: TcxGridDBColumn;
+    cxGridDBTableView1ND: TcxGridDBColumn;
+    cxGridDBTableView1KW: TcxGridDBColumn;
     Memo1: TMemo;
-    Button2: TButton;
+    Memo2: TMemo;
+    Panel1: TPanel;
     Label1: TLabel;
-    Edit1: TEdit;
-    cxDateEdit1: TcxDateEdit;
     Label2: TLabel;
     Label3: TLabel;
+    Button1: TButton;
+    Button3: TButton;
+    Button2: TButton;
+    Edit1: TEdit;
+    cxDateEdit1: TcxDateEdit;
     cxDateEdit2: TcxDateEdit;
-    OD_loadKartExtFK_KLSK_PREMISE: TFloatField;
-    cxGrid1DBTableView1FK_KLSK_PREMISE: TcxGridDBColumn;
-    OD_loadKartExtFK_KLSK_ID: TFloatField;
-    cxGrid1DBTableView1FK_KLSK_ID: TcxGridDBColumn;
+    Panel2: TPanel;
+    Button4: TButton;
+    cxDateEdit3: TcxDateEdit;
+    Label4: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
@@ -72,6 +92,9 @@ type
     procedure cxDateEdit2PropertiesValidate(Sender: TObject;
       var DisplayValue: Variant; var ErrorText: TCaption;
       var Error: Boolean);
+    procedure TabSheet2Show(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
+    procedure cxDateEdit3PropertiesCloseUp(Sender: TObject);
   private
     { Private declarations }
   public
@@ -83,7 +106,8 @@ var
 
 implementation
 
-uses DM_module1, Unit_status, Unit_Mainform;
+uses DM_module1, Unit_status, Unit_Mainform,
+ cxGridExportLink, cxExport, ShellAPI;
 
 {$R *.dfm}
 
@@ -91,7 +115,12 @@ procedure TfrmLoadKartExt.FormCreate(Sender: TObject);
 begin
   cxDateEdit1.Date := Form_Main.cur_dt;
   cxDateEdit2.Date := Form_Main.cur_dt;
+  cxDateEdit3.Date := Form_Main.cur_dt;
   OD_loadKartExt.Active := True;
+  OD_not_linked.SetVariable('dt1', cxDateEdit1.Date);
+  OD_not_linked.Active:=false;
+  OD_not_linked.Active:=true;
+  PageControl1.ActivePageIndex:=0;
 end;
 
 procedure TfrmLoadKartExt.FormClose(Sender: TObject;
@@ -115,7 +144,7 @@ begin
         Application.CreateForm(TForm_status, Form_status);
         Form_status.Update;
         l_res :=
-          DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA2.HTTP_REQ',
+          DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA.HTTP_REQ',
           ['/loadFileKartExt/' + ExtractFileName(OpenDialog1.FileName), null,
           'GET']);
         Form_status.Close;
@@ -153,7 +182,7 @@ begin
     Form_status.Update;
     if not (OD_loadKartExt.State in [dsBrowse]) then
       OD_loadKartExt.Post;
-    DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA2.HTTP_REQ',
+    DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA.HTTP_REQ',
       ['/loadApprovedKartExt', null, 'GET']);
     Form_status.Close;
     Application.MessageBox('Лиц.счета успешно сохранены!', 'Внимание!', MB_OK
@@ -286,6 +315,31 @@ begin
       ErrorText := 'Дата не находится в текущем периоде!';
     end;
   end;}
+end;
+
+procedure TfrmLoadKartExt.TabSheet2Show(Sender: TObject);
+begin
+   OD_not_linked.SetVariable('dt1', cxDateEdit1.Date);
+   OD_not_linked.Active:=false;
+   OD_not_linked.Active:=true;
+end;
+
+procedure TfrmLoadKartExt.Button4Click(Sender: TObject);
+var
+  szFilename : string;
+begin
+ szFilename := 'C:\temp\без_привязки.xlsx';
+
+ ExportGridToXLSX(szFilename , cxGrid2, true, true, true);
+ ShellExecute(Self.Handle, 'open', PChar(szFilename), nil, nil, SW_SHOWMAXIMIZED);
+
+end;
+
+procedure TfrmLoadKartExt.cxDateEdit3PropertiesCloseUp(Sender: TObject);
+begin
+   OD_not_linked.SetVariable('dt1', cxDateEdit1.Date);
+   OD_not_linked.Active:=false;
+   OD_not_linked.Active:=true;
 end;
 
 end.

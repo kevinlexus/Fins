@@ -1,6 +1,6 @@
 object frmKartExt: TfrmKartExt
-  Left = 751
-  Top = 332
+  Left = 642
+  Top = 350
   Width = 868
   Height = 530
   Caption = #1042#1085#1077#1096#1085#1080#1077' '#1083#1080#1094'.'#1089#1095#1077#1090#1072
@@ -132,76 +132,77 @@ object frmKartExt: TfrmKartExt
       object cxGrid1DBTableView1REU: TcxGridDBColumn
         Caption = #1050#1086#1076' '#1059#1050
         DataBinding.FieldName = 'REU'
-        Width = 37
+        Width = 34
       end
       object cxGrid1DBTableView1NAME_REU: TcxGridDBColumn
         Caption = #1059#1050
         DataBinding.FieldName = 'NAME_REU'
-        Width = 77
+        Width = 72
       end
       object cxGrid1DBTableView1EXT_LSK: TcxGridDBColumn
         Caption = #1042#1085#1077#1096#1085#1080#1081' '#1083#1080#1094'.'#1089#1095'.'
         DataBinding.FieldName = 'EXT_LSK'
-        Width = 61
+        Width = 57
       end
       object cxGrid1DBTableView1LSK: TcxGridDBColumn
         Caption = #1051#1080#1094'.'#1089#1095'.'
         DataBinding.FieldName = 'LSK'
-        Width = 54
+        Width = 82
       end
       object cxGrid1DBTableView1FK_KLSK_ID: TcxGridDBColumn
         Caption = 'KLSK '#1060#1080#1085'.'#1083#1080#1094'.'
         DataBinding.FieldName = 'FK_KLSK_ID'
+        Width = 56
       end
       object cxGrid1DBTableView1FK_KLSK_PREMISE: TcxGridDBColumn
         Caption = 'KLSK '#1055#1086#1084#1077#1097'.'
         DataBinding.FieldName = 'FK_KLSK_PREMISE'
-        Width = 55
+        Width = 50
       end
       object cxGrid1DBTableView1FIO: TcxGridDBColumn
         Caption = #1060'.'#1048'.'#1054'.'
         DataBinding.FieldName = 'FIO'
-        Width = 72
+        Width = 63
       end
       object cxGrid1DBTableView1KUL: TcxGridDBColumn
         Caption = #1050#1086#1076'.'#1091#1083'.'
         DataBinding.FieldName = 'KUL'
-        Width = 47
+        Width = 41
       end
       object cxGrid1DBTableView1NAME: TcxGridDBColumn
         Caption = #1059#1083#1080#1094#1072
         DataBinding.FieldName = 'NAME'
-        Width = 51
+        Width = 45
       end
       object cxGrid1DBTableView1N_ND: TcxGridDBColumn
         Caption = #1044#1086#1084
         DataBinding.FieldName = 'N_ND'
-        Width = 40
+        Width = 35
       end
       object cxGrid1DBTableView1N_KW: TcxGridDBColumn
         Caption = #1050#1074'.'
         DataBinding.FieldName = 'N_KW'
-        Width = 32
+        Width = 29
       end
       object cxGrid1DBTableView1KPR: TcxGridDBColumn
         Caption = #1050#1086#1083'-'#1074#1086' '#1087#1088#1086#1078'.'
         DataBinding.FieldName = 'KPR'
-        Width = 63
+        Width = 55
       end
       object cxGrid1DBTableView1OPL: TcxGridDBColumn
         Caption = #1054#1073#1097'.'#1087#1083'.'
         DataBinding.FieldName = 'OPL'
-        Width = 63
+        Width = 57
       end
       object cxGrid1DBTableView1DT_CRT: TcxGridDBColumn
         Caption = #1057#1086#1079#1076#1072#1085
         DataBinding.FieldName = 'DT_CRT'
-        Width = 73
+        Width = 63
       end
       object cxGrid1DBTableView1DT_UPD: TcxGridDBColumn
         Caption = #1054#1073#1085#1086#1074#1083#1105#1085
         DataBinding.FieldName = 'DT_UPD'
-        Width = 70
+        Width = 63
       end
       object cxGrid1DBTableView1PSCH: TcxGridDBColumn
         DataBinding.FieldName = 'PSCH'
@@ -217,7 +218,7 @@ object frmKartExt: TfrmKartExt
         PropertiesClassName = 'TcxCheckBoxProperties'
         Properties.ValueChecked = 1
         Properties.ValueUnchecked = 0
-        Width = 55
+        Width = 48
       end
     end
     object cxGrid1Level1: TcxGridLevel
@@ -257,6 +258,36 @@ object frmKartExt: TfrmKartExt
     SQL.Strings = (
       'select '
       
+        'e.rowid, e.fk_klsk_premise, k.lsk, k.reu, e.lsk, e.fk_klsk_id, e' +
+        '.ext_lsk, e.fio, e.dt_crt, e.dt_upd,'
+      
+        'r.reu||'#39'-'#39'||r.name_reu as name_reu, k.kul, s.name, ltrim(k.nd,'#39'0' +
+        #39') as n_nd, ltrim(k.kw,'#39'0'#39') as n_kw,'
+      'k.psch, k.kpr, k.opl, u.cd as lsk_tp_cd, e.v, e.fk_klsk_premise'
+      'from scott.kart_ext e'
+      
+        'join scott.kart k on (e.lsk=k.lsk or e.fk_klsk_premise=k.fk_klsk' +
+        '_premise or e.fk_klsk_id=k.k_lsk_id)   -- '#1074#1086#1079#1084#1086#1078#1085#1086' '#1073#1091#1076#1077#1090' '#1090#1086#1088#1084#1086#1079#1080 +
+        #1090#1100' '#1095#1077#1088#1077#1079' OR'
+      
+        '     and case when e.fk_klsk_premise is not null then e.fk_klsk_' +
+        'premise else k.fk_klsk_premise end = k.fk_klsk_premise'
+      
+        '     and case when e.fk_klsk_id is not null then e.fk_klsk_id el' +
+        'se k.k_lsk_id end = k.k_lsk_id'
+      'join scott.kart_detail d on k.lsk=d.lsk '
+      
+        '     and case when e.fk_klsk_premise is not null or e.fk_klsk_id' +
+        ' is not null then d.is_main_in_premise else 1 end = 1 -- '#1075#1083#1072#1074#1085#1099#1081 +
+        ' '#1083#1080#1094'.'#1089#1095#1077#1090' '#1074' '#1087#1086#1084#1077#1097#1077#1085#1080#1080
+      'left join scott.spul s on k.kul=s.id'
+      'left join scott.s_reu_trest r on k.reu=r.reu'
+      'left join scott.u_list u on k.fk_tp=u.id'
+      'order by d.ord1'
+      ''
+      '/*'
+      'select '
+      
         'e.rowid, k.reu, e.lsk, e.fk_klsk_id, e.ext_lsk, e.fio, e.dt_crt,' +
         ' e.dt_upd,'
       
@@ -282,10 +313,11 @@ object frmKartExt: TfrmKartExt
       'join scott.spul s on k.kul=s.id'
       'join scott.s_reu_trest r on k.reu=r.reu'
       'left join scott.u_list u on k.fk_tp=u.id'
-      'order by d.ord1')
+      'order by d.ord1'
+      '*/')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000012000000070000004558545F4C534B0100000000000300000046494F
+      0400000014000000070000004558545F4C534B0100000000000300000046494F
       010000000000030000004C534B0100000000000600000044545F435254010000
       0000000600000044545F555044010000000000080000004E414D455F52455501
       0000000000030000004B554C010000000000040000004E414D45010000000000
@@ -293,7 +325,9 @@ object frmKartExt: TfrmKartExt
       50534348010000000000030000004B5052010000000000030000004F504C0100
       0000000003000000524555010000000000090000004C534B5F54505F43440100
       0000000001000000560100000000000F000000464B5F4B4C534B5F5052454D49
-      53450100000000000A000000464B5F4B4C534B5F4944010000000000}
+      53450100000000000A000000464B5F4B4C534B5F494401000000000005000000
+      4C534B5F3101000000000011000000464B5F4B4C534B5F5052454D4953455F31
+      010000000000}
     ReadOnly = True
     RefreshOptions = [roBeforeEdit, roAfterUpdate, roAllFields]
     Session = DataModule1.OracleSession1
@@ -305,6 +339,7 @@ object frmKartExt: TfrmKartExt
       Size = 3
     end
     object OD_kartExtLSK: TStringField
+      DisplayWidth = 15
       FieldName = 'LSK'
       Size = 8
     end

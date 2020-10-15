@@ -648,6 +648,16 @@ begin
   OD_kart_detail.Active:=True;
   // Пока отменил - возможно тормозит открытие формы (проверить) 03.09.2017
   //OD_list_kart.Locate('lsk', cxmskdt1.Text, [])
+
+  if not (OD_list_kart.State in [dsInactive, dsBrowse]) then
+  OD_list_kart.Post;
+
+  Application.CreateForm(TForm_find_adr2, Form_find_adr2);
+  Form_find_adr2.SetAccess(1, 1, 1, 1);
+  if Form_find_adr2.ShowModal = mrOk then
+  begin
+    SetFilter;
+  end;
 end;
 
 procedure TForm_list_kart.SetFilter;

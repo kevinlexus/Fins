@@ -61,7 +61,7 @@ var
 
 implementation
 
-uses DM_module1, Unit_Mainform, Utils, Unit_recv_pay_bank;
+uses DM_module1, Unit_Mainform, Utils, Unit_recv_pay_bank, Unit_status;
 
 {$R *.dfm}
 

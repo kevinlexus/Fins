@@ -1,6 +1,6 @@
 object frmLoadKartExt: TfrmLoadKartExt
-  Left = 233
-  Top = 434
+  Left = 408
+  Top = 322
   Width = 865
   Height = 534
   Caption = #1047#1072#1075#1088#1091#1079#1082#1072' '#1074#1085#1077#1096#1085#1080#1093' '#1083#1080#1094'.'#1089#1095#1077#1090#1086#1074
@@ -89,226 +89,362 @@ object frmLoadKartExt: TfrmLoadKartExt
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object cxGrid1: TcxGrid
-    Left = 0
-    Top = 41
-    Width = 849
-    Height = 413
-    Align = alClient
-    TabOrder = 0
-    object cxGrid1DBTableView1: TcxGridDBTableView
-      Navigator.Buttons.CustomButtons = <>
-      Navigator.Visible = True
-      OnCustomDrawCell = cxGrid1DBTableView1CustomDrawCell
-      DataController.DataSource = DS_loadKartExt
-      DataController.KeyFieldNames = 'ID'
-      DataController.Summary.DefaultGroupSummaryItems = <>
-      DataController.Summary.FooterSummaryItems = <>
-      DataController.Summary.SummaryGroups = <>
-      OptionsBehavior.CellHints = True
-      OptionsData.DeletingConfirmation = False
-      OptionsSelection.InvertSelect = False
-      OptionsView.ColumnAutoWidth = True
-      OptionsView.GroupByBox = False
-      object cxGrid1DBTableView1EXT_LSK: TcxGridDBColumn
-        Caption = #1042#1085#1077#1096#1085#1080#1081' '#1083#1080#1094'.'#1089#1095'.'
-        DataBinding.FieldName = 'EXT_LSK'
-        Width = 67
-      end
-      object cxGrid1DBTableView1LSK: TcxGridDBColumn
-        Caption = #1051#1080#1094'.'#1089#1095'.'
-        DataBinding.FieldName = 'LSK'
-        Width = 64
-      end
-      object cxGrid1DBTableView1FK_KLSK_ID: TcxGridDBColumn
-        Caption = 'KLSK '#1060#1080#1085'.'#1083#1080#1094'.'
-        DataBinding.FieldName = 'FK_KLSK_ID'
-      end
-      object cxGrid1DBTableView1FK_KLSK_PREMISE: TcxGridDBColumn
-        Caption = 'KLSK '#1055#1086#1084#1077#1097'.'
-        DataBinding.FieldName = 'FK_KLSK_PREMISE'
-        Width = 58
-      end
-      object cxGrid1DBTableView1GUID: TcxGridDBColumn
-        Caption = #1060#1080#1072#1089' GUID'
-        DataBinding.FieldName = 'GUID'
-        Width = 39
-      end
-      object cxGrid1DBTableView1FIO: TcxGridDBColumn
-        Caption = #1060'.'#1048'.'#1054'.'
-        DataBinding.FieldName = 'FIO'
-        Width = 20
-      end
-      object cxGrid1DBTableView1ADDRESS: TcxGridDBColumn
-        Caption = #1040#1076#1088#1077#1089
-        DataBinding.FieldName = 'ADDRESS'
-        Width = 186
-      end
-      object cxGrid1DBTableView1CODE: TcxGridDBColumn
-        Caption = #1050#1086#1076' '#1091#1089#1083#1091#1075#1080
-        DataBinding.FieldName = 'CODE'
-        Width = 29
-      end
-      object cxGrid1DBTableView1NM: TcxGridDBColumn
-        Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077' '#1091#1089#1083#1091#1075#1080
-        DataBinding.FieldName = 'NM'
-        Width = 96
-      end
-      object cxGrid1DBTableView1PERIOD_DEB: TcxGridDBColumn
-        Caption = #1055#1077#1088#1080#1086#1076' '#1076#1086#1083#1075#1072
-        DataBinding.FieldName = 'PERIOD_DEB'
-        Width = 47
-      end
-      object cxGrid1DBTableView1SUMMA: TcxGridDBColumn
-        Caption = #1057#1091#1084#1084#1072' '#1076#1086#1083#1075#1072
-        DataBinding.FieldName = 'SUMMA'
-        Width = 33
-      end
-      object cxGrid1DBTableView1COMM: TcxGridDBColumn
-        Caption = #1050#1086#1084#1084#1077#1085#1090#1072#1088#1080#1081' '#1087#1086' '#1079#1072#1075#1088#1091#1079#1082#1077
-        DataBinding.FieldName = 'COMM'
-        Width = 143
-      end
-      object cxGrid1DBTableView1STATUS: TcxGridDBColumn
-        Caption = #1057#1090#1072#1090#1091#1089
-        DataBinding.FieldName = 'STATUS'
-        Width = 51
-      end
-    end
-    object cxGrid1Level1: TcxGridLevel
-      GridView = cxGrid1DBTableView1
-    end
-  end
-  object Panel1: TPanel
-    Left = 0
-    Top = 454
-    Width = 849
-    Height = 41
-    Align = alBottom
-    TabOrder = 1
-    DesignSize = (
-      849
-      41)
-    object Label1: TLabel
-      Left = 360
-      Top = 16
-      Width = 65
-      Height = 13
-      Anchors = [akRight, akBottom]
-      Caption = #8470' '#1088#1077#1077#1089#1090#1088#1072
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object Label2: TLabel
-      Left = 128
-      Top = 16
-      Width = 7
-      Height = 13
-      Anchors = [akRight, akBottom]
-      Caption = #1057
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object Label3: TLabel
-      Left = 240
-      Top = 16
-      Width = 15
-      Height = 13
-      Anchors = [akRight, akBottom]
-      Caption = #1055#1086
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object Button1: TButton
-      Left = 661
-      Top = 8
-      Width = 75
-      Height = 25
-      Anchors = [akRight, akBottom]
-      Caption = #1047#1072#1075#1088#1091#1079#1080#1090#1100
-      TabOrder = 0
-      OnClick = Button1Click
-    end
-    object Button3: TButton
-      Left = 741
-      Top = 8
-      Width = 97
-      Height = 25
-      Anchors = [akRight, akBottom]
-      Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100' '#1074' '#1073#1072#1079#1091
-      TabOrder = 1
-      OnClick = Button3Click
-    end
-    object Button2: TButton
-      Left = 13
-      Top = 8
-      Width = 105
-      Height = 25
-      Anchors = [akRight, akBottom]
-      Caption = #1042#1099#1075#1088#1091#1079#1080#1090#1100' '#1086#1087#1083#1072#1090#1091
-      TabOrder = 2
-      OnClick = Button2Click
-    end
-    object Edit1: TEdit
-      Left = 432
-      Top = 8
-      Width = 17
-      Height = 21
-      Anchors = [akRight, akBottom]
-      TabOrder = 3
-      Text = '1'
-    end
-    object cxDateEdit1: TcxDateEdit
-      Left = 141
-      Top = 10
-      Anchors = [akRight, akBottom]
-      Properties.DateButtons = [btnClear, btnToday]
-      Properties.SaveTime = False
-      Properties.ShowTime = False
-      Properties.ValidationOptions = [evoRaiseException, evoShowErrorIcon]
-      Properties.OnValidate = cxDateEdit1PropertiesValidate
-      TabOrder = 4
-      Width = 92
-    end
-    object cxDateEdit2: TcxDateEdit
-      Left = 261
-      Top = 10
-      Anchors = [akRight, akBottom]
-      Properties.DateButtons = [btnClear, btnToday]
-      Properties.SaveTime = False
-      Properties.ShowTime = False
-      Properties.ValidationOptions = [evoRaiseException, evoShowErrorIcon]
-      Properties.OnValidate = cxDateEdit2PropertiesValidate
-      TabOrder = 5
-      Width = 92
-    end
-  end
-  object Memo1: TMemo
+  object PageControl1: TPageControl
     Left = 0
     Top = 0
     Width = 849
-    Height = 41
-    Align = alTop
-    Lines.Strings = (
-      
-        #1055#1088#1080' '#1085#1077#1086#1073#1093#1086#1076#1080#1084#1086#1089#1090#1080' ('#1076#1074#1072' '#1080' '#1073#1086#1083#1077#1077' '#1086#1090#1082#1088#1099#1090#1099#1093' '#1083#1080#1094'.'#1089#1095#1077#1090#1086#1074' '#1087#1086' '#1086#1076#1085#1086#1084#1091' '#1072#1076#1088 +
-        #1077#1089#1091', '#1085#1072#1087#1088#1080#1084#1077#1088' '#1088#1072#1079#1076#1077#1083#1077#1085#1099' '#1087#1086' '#1089#1091#1076#1091') '#1084#1086#1078#1085#1086' '#1088#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1087#1086#1083#1077' '#1087#1088#1080#1074#1103#1079 +
-        #1082#1080' "'#1051#1080#1094'.'#1089#1095'." '#1080' '
-      #1087#1086#1084#1077#1085#1103#1090#1100' '
-      #1089#1090#1072#1090#1091#1089' '#1079#1072#1075#1088#1091#1079#1082#1080' '#1085#1072' 0')
-    TabOrder = 2
+    Height = 495
+    ActivePage = TabSheet2
+    Align = alClient
+    TabOrder = 0
+    object TabSheet1: TTabSheet
+      Caption = #1054#1089#1085#1086#1074#1085#1086#1077
+      object cxGrid1: TcxGrid
+        Left = 0
+        Top = 41
+        Width = 841
+        Height = 385
+        Align = alClient
+        TabOrder = 0
+        object cxGrid1DBTableView1: TcxGridDBTableView
+          Navigator.Buttons.CustomButtons = <>
+          Navigator.Visible = True
+          OnCustomDrawCell = cxGrid1DBTableView1CustomDrawCell
+          DataController.DataSource = DS_loadKartExt
+          DataController.KeyFieldNames = 'ID'
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <>
+          DataController.Summary.SummaryGroups = <>
+          OptionsBehavior.CellHints = True
+          OptionsData.DeletingConfirmation = False
+          OptionsSelection.InvertSelect = False
+          OptionsView.ColumnAutoWidth = True
+          OptionsView.GroupByBox = False
+          object cxGrid1DBTableView1EXT_LSK: TcxGridDBColumn
+            Caption = #1042#1085#1077#1096#1085#1080#1081' '#1083#1080#1094'.'#1089#1095'.'
+            DataBinding.FieldName = 'EXT_LSK'
+            Width = 67
+          end
+          object cxGrid1DBTableView1LSK: TcxGridDBColumn
+            Caption = #1051#1080#1094'.'#1089#1095'.'
+            DataBinding.FieldName = 'LSK'
+            Width = 64
+          end
+          object cxGrid1DBTableView1FK_KLSK_ID: TcxGridDBColumn
+            Caption = 'KLSK '#1060#1080#1085'.'#1083#1080#1094'.'
+            DataBinding.FieldName = 'FK_KLSK_ID'
+          end
+          object cxGrid1DBTableView1FK_KLSK_PREMISE: TcxGridDBColumn
+            Caption = 'KLSK '#1055#1086#1084#1077#1097'.'
+            DataBinding.FieldName = 'FK_KLSK_PREMISE'
+            Width = 58
+          end
+          object cxGrid1DBTableView1GUID: TcxGridDBColumn
+            Caption = #1060#1080#1072#1089' GUID'
+            DataBinding.FieldName = 'GUID'
+            Width = 39
+          end
+          object cxGrid1DBTableView1FIO: TcxGridDBColumn
+            Caption = #1060'.'#1048'.'#1054'.'
+            DataBinding.FieldName = 'FIO'
+            Width = 20
+          end
+          object cxGrid1DBTableView1ADDRESS: TcxGridDBColumn
+            Caption = #1040#1076#1088#1077#1089
+            DataBinding.FieldName = 'ADDRESS'
+            Width = 186
+          end
+          object cxGrid1DBTableView1CODE: TcxGridDBColumn
+            Caption = #1050#1086#1076' '#1091#1089#1083#1091#1075#1080
+            DataBinding.FieldName = 'CODE'
+            Width = 29
+          end
+          object cxGrid1DBTableView1NM: TcxGridDBColumn
+            Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077' '#1091#1089#1083#1091#1075#1080
+            DataBinding.FieldName = 'NM'
+            Width = 96
+          end
+          object cxGrid1DBTableView1PERIOD_DEB: TcxGridDBColumn
+            Caption = #1055#1077#1088#1080#1086#1076' '#1076#1086#1083#1075#1072
+            DataBinding.FieldName = 'PERIOD_DEB'
+            Width = 47
+          end
+          object cxGrid1DBTableView1SUMMA: TcxGridDBColumn
+            Caption = #1057#1091#1084#1084#1072' '#1076#1086#1083#1075#1072
+            DataBinding.FieldName = 'SUMMA'
+            Width = 33
+          end
+          object cxGrid1DBTableView1COMM: TcxGridDBColumn
+            Caption = #1050#1086#1084#1084#1077#1085#1090#1072#1088#1080#1081' '#1087#1086' '#1079#1072#1075#1088#1091#1079#1082#1077
+            DataBinding.FieldName = 'COMM'
+            Width = 143
+          end
+          object cxGrid1DBTableView1STATUS: TcxGridDBColumn
+            Caption = #1057#1090#1072#1090#1091#1089
+            DataBinding.FieldName = 'STATUS'
+            Width = 51
+          end
+        end
+        object cxGrid1Level1: TcxGridLevel
+          GridView = cxGrid1DBTableView1
+        end
+      end
+      object Memo1: TMemo
+        Left = 0
+        Top = 0
+        Width = 841
+        Height = 41
+        Align = alTop
+        Lines.Strings = (
+          
+            #1055#1088#1080' '#1085#1077#1086#1073#1093#1086#1076#1080#1084#1086#1089#1090#1080' ('#1076#1074#1072' '#1080' '#1073#1086#1083#1077#1077' '#1086#1090#1082#1088#1099#1090#1099#1093' '#1083#1080#1094'.'#1089#1095#1077#1090#1086#1074' '#1087#1086' '#1086#1076#1085#1086#1084#1091' '#1072#1076#1088 +
+            #1077#1089#1091', '#1085#1072#1087#1088#1080#1084#1077#1088' '#1088#1072#1079#1076#1077#1083#1077#1085#1099' '#1087#1086' '#1089#1091#1076#1091') '#1084#1086#1078#1085#1086' '#1088#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1087#1086#1083#1077' '#1087#1088#1080#1074#1103#1079 +
+            #1082#1080' "'#1051#1080#1094'.'#1089#1095'." '#1080' '
+          #1087#1086#1084#1077#1085#1103#1090#1100' '
+          #1089#1090#1072#1090#1091#1089' '#1079#1072#1075#1088#1091#1079#1082#1080' '#1085#1072' 0')
+        TabOrder = 1
+      end
+      object Panel1: TPanel
+        Left = 0
+        Top = 426
+        Width = 841
+        Height = 41
+        Align = alBottom
+        TabOrder = 2
+        DesignSize = (
+          841
+          41)
+        object Label1: TLabel
+          Left = 360
+          Top = 16
+          Width = 65
+          Height = 13
+          Anchors = [akRight, akBottom]
+          Caption = #8470' '#1088#1077#1077#1089#1090#1088#1072
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label2: TLabel
+          Left = 128
+          Top = 16
+          Width = 7
+          Height = 13
+          Anchors = [akRight, akBottom]
+          Caption = #1057
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label3: TLabel
+          Left = 240
+          Top = 16
+          Width = 15
+          Height = 13
+          Anchors = [akRight, akBottom]
+          Caption = #1055#1086
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Button1: TButton
+          Left = 661
+          Top = 8
+          Width = 75
+          Height = 25
+          Anchors = [akRight, akBottom]
+          Caption = #1047#1072#1075#1088#1091#1079#1080#1090#1100
+          TabOrder = 0
+          OnClick = Button1Click
+        end
+        object Button3: TButton
+          Left = 741
+          Top = 8
+          Width = 97
+          Height = 25
+          Anchors = [akRight, akBottom]
+          Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100' '#1074' '#1073#1072#1079#1091
+          TabOrder = 1
+          OnClick = Button3Click
+        end
+        object Button2: TButton
+          Left = 13
+          Top = 8
+          Width = 105
+          Height = 25
+          Anchors = [akRight, akBottom]
+          Caption = #1042#1099#1075#1088#1091#1079#1080#1090#1100' '#1086#1087#1083#1072#1090#1091
+          TabOrder = 2
+          OnClick = Button2Click
+        end
+        object Edit1: TEdit
+          Left = 432
+          Top = 8
+          Width = 17
+          Height = 21
+          Anchors = [akRight, akBottom]
+          TabOrder = 3
+          Text = '1'
+        end
+        object cxDateEdit1: TcxDateEdit
+          Left = 141
+          Top = 10
+          Anchors = [akRight, akBottom]
+          Properties.DateButtons = [btnClear, btnToday]
+          Properties.SaveTime = False
+          Properties.ShowTime = False
+          Properties.ValidationOptions = [evoRaiseException, evoShowErrorIcon]
+          Properties.OnValidate = cxDateEdit1PropertiesValidate
+          TabOrder = 4
+          Width = 92
+        end
+        object cxDateEdit2: TcxDateEdit
+          Left = 261
+          Top = 10
+          Anchors = [akRight, akBottom]
+          Properties.DateButtons = [btnClear, btnToday]
+          Properties.SaveTime = False
+          Properties.ShowTime = False
+          Properties.ValidationOptions = [evoRaiseException, evoShowErrorIcon]
+          Properties.OnValidate = cxDateEdit2PropertiesValidate
+          TabOrder = 5
+          Width = 92
+        end
+      end
+    end
+    object TabSheet2: TTabSheet
+      Caption = #1041#1077#1079' '#1087#1088#1080#1074#1103#1079#1082#1080
+      ImageIndex = 1
+      OnShow = TabSheet2Show
+      object cxGrid2: TcxGrid
+        Left = 0
+        Top = 33
+        Width = 841
+        Height = 393
+        Align = alClient
+        TabOrder = 0
+        object cxGridDBTableView1: TcxGridDBTableView
+          Navigator.Buttons.CustomButtons = <>
+          Navigator.Visible = True
+          DataController.DataSource = DS_not_linked
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <>
+          DataController.Summary.SummaryGroups = <>
+          OptionsBehavior.CellHints = True
+          OptionsData.DeletingConfirmation = False
+          OptionsData.Editing = False
+          OptionsData.Inserting = False
+          OptionsSelection.InvertSelect = False
+          OptionsView.ColumnAutoWidth = True
+          OptionsView.GroupByBox = False
+          object cxGridDBTableView1LSK: TcxGridDBColumn
+            Caption = #1051#1080#1094'.'#1089#1095'.'
+            DataBinding.FieldName = 'LSK'
+            Width = 97
+          end
+          object cxGridDBTableView1CHARGES: TcxGridDBColumn
+            Caption = #1053#1072#1095#1080#1089#1083#1077#1085#1086
+            DataBinding.FieldName = 'CHARGES'
+            Width = 120
+          end
+          object cxGridDBTableView1PAYMENT: TcxGridDBColumn
+            Caption = #1054#1087#1083#1072#1095#1077#1085#1086
+            DataBinding.FieldName = 'PAYMENT'
+            Width = 120
+          end
+          object cxGridDBTableView1KUL: TcxGridDBColumn
+            Caption = #1050#1086#1076' '#1091#1083'.'
+            DataBinding.FieldName = 'KUL'
+            Width = 66
+          end
+          object cxGridDBTableView1STREET: TcxGridDBColumn
+            Caption = #1059#1083#1080#1094#1072
+            DataBinding.FieldName = 'STREET'
+            Width = 148
+          end
+          object cxGridDBTableView1ND: TcxGridDBColumn
+            Caption = #8470' '#1076#1086#1084#1072
+            DataBinding.FieldName = 'ND'
+            Width = 134
+          end
+          object cxGridDBTableView1KW: TcxGridDBColumn
+            Caption = #8470' '#1082#1074'.'
+            DataBinding.FieldName = 'KW'
+            Width = 154
+          end
+        end
+        object cxGridLevel1: TcxGridLevel
+          GridView = cxGridDBTableView1
+        end
+      end
+      object Memo2: TMemo
+        Left = 0
+        Top = 0
+        Width = 841
+        Height = 33
+        Align = alTop
+        Lines.Strings = (
+          
+            #1040#1076#1088#1077#1089#1072', '#1087#1086' '#1082#1086#1090#1086#1088#1099#1084' '#1085#1077' '#1073#1099#1083#1080' '#1079#1072#1075#1088#1091#1078#1077#1085#1099' '#1076#1083#1103' '#1087#1088#1080#1074#1103#1079#1082#1080' '#1074#1085#1077#1096#1085#1080#1077' '#1083#1080#1094'.'#1089#1095 +
+            #1077#1090#1072'. '#1057#1087#1080#1089#1086#1082' '#1085#1077#1086#1073#1093#1086#1076#1080#1084#1086' '#1086#1090#1087#1088#1072#1074#1080#1090#1100' '#1074' '#1063#1043#1050)
+        TabOrder = 1
+      end
+      object Panel2: TPanel
+        Left = 0
+        Top = 426
+        Width = 841
+        Height = 41
+        Align = alBottom
+        TabOrder = 2
+        DesignSize = (
+          841
+          41)
+        object Label4: TLabel
+          Left = 8
+          Top = 16
+          Width = 31
+          Height = 13
+          Anchors = [akRight, akBottom]
+          Caption = #1044#1072#1090#1072
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Button4: TButton
+          Left = 752
+          Top = 8
+          Width = 75
+          Height = 25
+          Caption = #1069#1082#1089#1087#1086#1088#1090
+          TabOrder = 0
+          OnClick = Button4Click
+        end
+        object cxDateEdit3: TcxDateEdit
+          Left = 45
+          Top = 10
+          Anchors = [akRight, akBottom]
+          Properties.DateButtons = [btnClear, btnToday]
+          Properties.SaveTime = False
+          Properties.ShowTime = False
+          Properties.ValidationOptions = [evoRaiseException, evoShowErrorIcon]
+          Properties.OnCloseUp = cxDateEdit3PropertiesCloseUp
+          TabOrder = 1
+          Width = 92
+        end
+      end
+    end
   end
   object OD_loadKartExt: TOracleDataSet
     SQL.Strings = (
@@ -326,7 +462,8 @@ object frmLoadKartExt: TfrmLoadKartExt
       010000000000}
     Session = DataModule1.OracleSession1
     Active = True
-    Top = 72
+    Left = 8
+    Top = 232
     object OD_loadKartExtID: TFloatField
       FieldName = 'ID'
       ReadOnly = True
@@ -391,8 +528,8 @@ object frmLoadKartExt: TfrmLoadKartExt
   end
   object DS_loadKartExt: TDataSource
     DataSet = OD_loadKartExt
-    Left = 32
-    Top = 72
+    Left = 40
+    Top = 232
   end
   object OpenDialog1: TOpenDialog
     DefaultExt = 'txt'
@@ -400,5 +537,46 @@ object frmLoadKartExt: TfrmLoadKartExt
     Options = [ofHideReadOnly, ofFileMustExist, ofEnableSizing]
     Left = 8
     Top = 120
+  end
+  object OD_not_linked: TOracleDataSet
+    SQL.Strings = (
+      'select t.lsk, k.k_lsk_id, k.fk_klsk_premise,'
+      
+        ' coalesce(e.ext_lsk, e2.ext_lsk) as ext_lsk, t.charges, t.paymen' +
+        't,'
+      
+        ' k.kul, s.name as street, ltrim(k.nd,'#39'0'#39') as nd, ltrim(k.kw,'#39'0'#39')' +
+        ' as kw'
+      '  from scott.xitog3_lsk t'
+      '  join scott.kart k on t.lsk=k.lsk'
+      '  join scott.spul s on k.kul=s.id'
+      
+        'left join scott.kart_ext e on e.fk_klsk_premise=k.fk_klsk_premis' +
+        'e'
+      'left join scott.kart_ext e2 on e2.fk_klsk_id=k.k_lsk_id'
+      
+        'where not exists (select * from scott.kart_ext e where e.fk_klsk' +
+        '_premise=k.fk_klsk_premise or e.fk_klsk_id=k.k_lsk_id)'
+      'and t.mg=to_char(:dt1,'#39'YYYYMM'#39')'
+      'and t.org=14'
+      'and (nvl(t.charges,0)<>0 or nvl(t.payment,0)<>0)')
+    Optimize = False
+    Variables.Data = {0300000001000000040000003A4454310C0000000000000000000000}
+    QBEDefinition.QBEFieldDefs = {
+      040000000A000000070000004558545F4C534B010000000000030000004C534B
+      0100000000000F000000464B5F4B4C534B5F5052454D49534501000000000008
+      0000004B5F4C534B5F4944010000000000070000004348415247455301000000
+      0000070000005041594D454E54010000000000030000004B554C010000000000
+      06000000535452454554010000000000020000004E4401000000000002000000
+      4B57010000000000}
+    Session = DataModule1.OracleSession1
+    DesignActivation = True
+    Left = 8
+    Top = 280
+  end
+  object DS_not_linked: TDataSource
+    DataSet = OD_not_linked
+    Left = 40
+    Top = 280
   end
 end

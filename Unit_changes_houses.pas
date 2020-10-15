@@ -454,9 +454,9 @@ begin
    if clr_=0 then
    begin
      Application.CreateForm(TForm_sel_hs, Form_sel_hs);
-     Form_sel_hs.OD_list_choice.Active := false;
+     {Form_sel_hs.OD_list_choice.Active := false;
      Form_sel_hs.OD_list_choice.SetVariable('clr_',1);
-     Form_sel_hs.OD_list_choice.Active := true;
+     Form_sel_hs.OD_list_choice.Active := true;}
 //    clr_:=1;  -- нельзя ставить 1, так как после коммита по раз.изменениям, таблица очищается...
    end
    else
