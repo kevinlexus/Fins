@@ -1,11 +1,11 @@
 object Form_find_adr2: TForm_find_adr2
-  Left = 686
-  Top = 193
+  Left = 629
+  Top = 185
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   BorderWidth = 1
   Caption = #1055#1086#1080#1089#1082
-  ClientHeight = 202
+  ClientHeight = 252
   ClientWidth = 712
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -124,7 +124,7 @@ object Form_find_adr2: TForm_find_adr2
   end
   object Panel1: TPanel
     Left = 8
-    Top = 120
+    Top = 152
     Width = 601
     Height = 73
     TabOrder = 3
@@ -222,11 +222,11 @@ object Form_find_adr2: TForm_find_adr2
     Left = 8
     Top = 8
     Width = 601
-    Height = 105
+    Height = 137
     TabOrder = 4
     OnClick = Panel2Click
     object cxGroupBox1: TcxGroupBox
-      Left = 0
+      Left = 8
       Top = 8
       Caption = #1055#1086' '#1072#1076#1088#1077#1089#1091
       PanelStyle.Active = True
@@ -364,14 +364,19 @@ object Form_find_adr2: TForm_find_adr2
         Top = 56
         Hint = #1059#1083#1080#1094#1072
         ParentShowHint = False
-        Properties.GridMode = True
+        Properties.DropDownAutoSize = True
+        Properties.DropDownListStyle = lsEditList
+        Properties.DropDownSizeable = True
+        Properties.IncrementalFiltering = False
         Properties.KeyFieldNames = 'ID'
         Properties.ListColumns = <
           item
             FieldName = 'NAME'
           end>
+        Properties.ListOptions.CaseInsensitive = True
         Properties.ListOptions.ShowHeader = False
         Properties.ListSource = DS_streets
+        Properties.OnChange = lkpStreetPropertiesChange
         Properties.OnEditValueChanged = lkpStreetPropertiesEditValueChanged
         ShowHint = True
         TabOrder = 0
@@ -380,20 +385,27 @@ object Form_find_adr2: TForm_find_adr2
       end
     end
   end
+  object cxLabel1: TcxLabel
+    Left = 248
+    Top = 232
+    Caption = 'cxLabel1'
+  end
   object OD_streets: TOracleDataSet
     SQL.Strings = (
       'select s.id, nvl(p.find_street,0) as find_street, '
       ' case when nvl(p.find_street,0)=1 and :var = 0 then '
-      '   s.name '
+      '   o.name||'#39', '#39'||s.name '
       '      when nvl(p.find_street,0)=0 and :var = 0 then '
-      '   ltrim(s.id, '#39'0'#39')||'#39' '#39'||s.name'
+      '   ltrim(s.id, '#39'0'#39')||'#39' '#39'||o.name||'#39', '#39'||s.name'
       '      when :var = 1 then '
-      '   s.name '
+      '   o.name||'#39', '#39'||s.name '
       '      when :var = 2 then '
-      '   ltrim(s.id, '#39'0'#39')||'#39' '#39'||s.name'
+      '   ltrim(s.id, '#39'0'#39')||'#39' '#39'||o.name||'#39', '#39'||s.name'
       ' end as name,'
-      ' s.name as street '
-      ' from scott.spul s, scott.params p'
+      ' o.name||'#39', '#39'||s.name as street '
+      ' from scott.spul s '
+      'join scott.params p on 1=1'
+      'join scott.t_org o on s.fk_settlement=o.id'
       ' where '
       
         ' (:flt_reu_ is not null and exists (select * from scott.kart k, ' +
@@ -444,7 +456,7 @@ object Form_find_adr2: TForm_find_adr2
       '  from scott.c_houses k'
       '   left join scott.kart a on a.house_id = k.id'
       ' where '
-      '  k.kul = :id and (nvl(:p_var2,0)=0 or a.psch not in (8,9))'
+      '  k.kul = :kul and (nvl(:p_var2,0)=0 or a.psch not in (8,9))'
       
         '  and (:flt_reu_ is not null and a.reu = :flt_reu_ or :flt_reu_ ' +
         'is null)'
@@ -454,16 +466,13 @@ object Form_find_adr2: TForm_find_adr2
         ', 9,1, 0)')
     Optimize = False
     Variables.Data = {
-      0300000003000000030000003A49440500000005000000303031200000000000
-      090000003A464C545F5245555F050000000000000000000000070000003A505F
-      56415232030000000000000000000000}
+      0300000003000000090000003A464C545F5245555F0500000000000000000000
+      00070000003A505F56415232030000000000000000000000040000003A4B554C
+      050000000000000000000000}
     QBEDefinition.QBEFieldDefs = {
       0400000006000000020000004E44010000000000050000004E445F4944010000
       000000030000004E443201000000000004000000505343480100000000000300
       0000524555010000000000030000004B554C010000000000}
-    Master = OD_streets
-    MasterFields = 'ID'
-    DetailFields = 'ID'
     Session = DataModule1.OracleSession1
     Detachable = True
     Left = 80
@@ -612,5 +621,21 @@ object Form_find_adr2: TForm_find_adr2
     StorageType = stRegistry
     Left = 80
     Top = 272
+  end
+  object cxGridViewRepository1: TcxGridViewRepository
+    Left = 632
+    Top = 176
+    object cxGridViewRepository1DBTableView1: TcxGridDBTableView
+      Navigator.Buttons.CustomButtons = <>
+      DataController.DataModeController.GridMode = True
+      DataController.DataSource = DS_streets
+      DataController.KeyFieldNames = 'ID'
+      DataController.Summary.DefaultGroupSummaryItems = <>
+      DataController.Summary.FooterSummaryItems = <>
+      DataController.Summary.SummaryGroups = <>
+      object cxGridViewRepository1DBTableView1Column1: TcxGridDBColumn
+        DataBinding.FieldName = 'STREET'
+      end
+    end
   end
 end

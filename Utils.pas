@@ -3,7 +3,9 @@ unit Utils;
 interface
 uses Forms, Classes, SysUtils, Dialogs, OracleData, DB, DBF, Windows,
   Wwdbgrid, DM_module1, oracle, Math, ShlObj, Controls, Messages,
-  ComCtrls, Menus, Unit_smpl_chk, StrUtils, Winsock, Uni, Variants;
+  ComCtrls, Menus, Unit_smpl_chk, StrUtils, Winsock, Uni, Variants,
+  cxEdit, cxDBEdit, cxEditConsts, cxCustomData,
+  cxDBData,cxFilterControl, cxFilter, cxDataUtils;
 
 // тип - запись о правах редактирования пользователя
 type
@@ -84,6 +86,7 @@ procedure splitStr(const Source, Delimiter: string; var DelimitedList:
   TStringList);
 function removeControl(const S: string): string;
 procedure logText(text: string);
+procedure ApplySearchFilter(Controller: TcxDBDataController; Fields: string; Text: string);
 
 implementation
 uses Unit_Mainform;
@@ -1562,6 +1565,68 @@ begin
     if Result[I] in [#0..#31, #127] then
       Result[I] := ' '
 end;
+
+procedure SplitDelimitedString(AStrings: TStrings; AText, ADelimiter: string);
+var
+  p, n: integer;
+  Text: PChar;
+begin
+  Text := PChar(AText);
+  AStrings.Clear;
+  n := Length(ADelimiter);
+  while Assigned(Text) do
+  begin
+    p := Pos(ADelimiter, Text) - 1;
+    if p < 0 then
+      Break;
+    AStrings.Add(Copy(Text, 1, p));
+    Inc(Text, p + n);
+  end;
+  if Assigned(Text) and (Length(Text) > 0) then
+    AStrings.Add(Text);
+end;
+
+// Установка фильтра для полей lookup-а, с разбивкой по словам и полям
+procedure ApplySearchFilter(Controller: TcxDBDataController; Fields: string; Text: string);
+var
+  i, j: integer;
+  ItemLink: TObject;
+  Filter: TcxDataFilterCriteria;
+  FL: TcxFilterCriteriaItemList;
+  FieldList, TextWords: TStrings;
+begin
+  TextWords := TStringList.Create;
+  FieldList := TStringList.Create;
+  try
+    Filter := Controller.Filter;
+    Filter.BeginUpdate;
+    try
+      Filter.Active := false;
+      Filter.Clear;
+      Filter.Options := Filter.Options + [fcoCaseInsensitive];
+      Filter.Root.BoolOperatorKind := fboOr;
+      SplitDelimitedString(FieldList, Fields, ';');
+      SplitDelimitedString(TextWords, Text, ' ');
+      for i := 0 to FieldList.Count - 1 do
+        if FieldList[i] <> '' then
+        begin
+          FL := Filter.Root.AddItemList(fboAnd);
+          ItemLink := Controller.GetItemByFieldName(FieldList[i]);
+          if Assigned(ItemLink) then
+            for j := 0 to TextWords.Count - 1 do
+              if TextWords[j] <> '' then
+                FL.AddItem(ItemLink, foLike, '%' + TextWords[j] + '%', TextWords[j]);
+        end;
+      Filter.Active := true;
+    finally
+      Filter.EndUpdate;
+    end;
+  finally
+    TextWords.Free;
+    FieldList.Free;
+  end;
+end;
+
 
 end.
 

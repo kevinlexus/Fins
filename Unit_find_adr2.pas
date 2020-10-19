@@ -8,7 +8,11 @@ uses
   cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
   cxContainer, cxEdit, cxTextEdit, cxMaskEdit, cxDropDownEdit,
   cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, cxClasses,
-  cxPropertiesStore, cxGroupBox, ExtCtrls;
+  cxPropertiesStore, cxGroupBox, ExtCtrls, cxDBData, cxFilterControl, cxCustomData,
+  cxFilter,  
+  cxGridCustomView, cxGrid, cxDBExtLookupComboBox, cxStyles, cxData,
+  cxDataStorage, cxNavigator, cxLabel, cxGridCustomTableView,
+  cxGridTableView, cxGridDBTableView, Utils;
 
 type
   TForm_find_adr2 = class(TForm)
@@ -55,6 +59,10 @@ type
     lkpKw: TcxLookupComboBox;
     lkpHouse: TcxLookupComboBox;
     lkpStreet: TcxLookupComboBox;
+    cxGridViewRepository1: TcxGridViewRepository;
+    cxGridViewRepository1DBTableView1: TcxGridDBTableView;
+    cxGridViewRepository1DBTableView1Column1: TcxGridDBColumn;
+    cxLabel1: TcxLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -86,6 +94,7 @@ type
     procedure Edit3Change(Sender: TObject);
     procedure lkpStreetPropertiesEditValueChanged(Sender: TObject);
     procedure lkpHousePropertiesEditValueChanged(Sender: TObject);
+    procedure lkpStreetPropertiesChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -345,6 +354,10 @@ begin
   try
     if (Key = #13) or (Key = #9) then
     begin
+      //ShowMessage(lkpStreet.EditValue);
+      OD_houses.SetVariable('kul',lkpStreet.EditValue);
+      OD_houses.Active:=False;
+      OD_houses.Active:=True;
       Windows.SetFocus(lkpHouse.Handle)
     end;
   except
@@ -524,7 +537,6 @@ begin
   lkpKw.EditValue := Null;
   if lkpStreet.EditValue <> Null then
     lkpHouse.Properties.ReadOnly := False;
-
 end;
 
 procedure TForm_find_adr2.lkpHousePropertiesEditValueChanged(
@@ -533,6 +545,40 @@ begin
   lkpKw.EditValue := Null;
   if lkpHouse.EditValue <> Null then
     lkpKw.Properties.ReadOnly := False;
+
+end;
+
+procedure SplitDelimitedString(AStrings: TStrings; AText, ADelimiter: string);
+var
+  p, n: integer;
+  Text: PChar;
+begin
+  Text := PChar(AText);
+  AStrings.Clear;
+  n := Length(ADelimiter);
+  while Assigned(Text) do
+  begin
+    p := Pos(ADelimiter, Text) - 1;
+    if p < 0 then
+      Break;
+    AStrings.Add(Copy(Text, 1, p));
+    Inc(Text, p + n);
+  end;
+  if Assigned(Text) and (Length(Text) > 0) then
+    AStrings.Add(Text);
+end;
+
+
+
+procedure TForm_find_adr2.lkpStreetPropertiesChange(Sender: TObject);
+var
+  S: TcxDBLookupComboBox;
+begin
+  S := TcxDBLookupComboBox(Sender);
+  ApplySearchFilter(S.Properties.DataController, S.Properties.ListFieldNames, S.Text);
+
+  // для тестирования
+  cxLabel1.Caption := S.Properties.DataController.Filter.FilterText;
 
 end;
 
