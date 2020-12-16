@@ -116,8 +116,6 @@ begin
   DataModule1.OraclePackage1.CallProcedure
     ('scott.dbase_pkg.load_file_txt',['LOAD_FILE_DIR',
                           OpenDialog1.FileName]);
-//  Edit1.Text:=DataModule1.OraclePackage1.CallDateFunction
-//    ('scott.C_GET_PAY.get_payment_bank_date',[parNone]);
   Edit2.Text:=DataModule1.OraclePackage1.CallFloatFunction
     ('scott.C_GET_PAY.get_payment_bank_summa',[parNone]);
   Edit3.Text:=DataModule1.OraclePackage1.CallFloatFunction

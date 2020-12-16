@@ -23,7 +23,7 @@ uses
   dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
   dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
-  dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue, ExtCtrls;
+  dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue, ExtCtrls, Utils;
 
 type
   TForm_new_lsk = class(TForm)
@@ -67,7 +67,7 @@ var
   str_: string;
 implementation
 
-uses DM_module1, Unit_list_kart;
+uses DM_module1, Unit_list_kart, Unit_Mainform;
 
 {$R *.dfm}
 
@@ -97,7 +97,9 @@ var
   lGetUslFromSrc, lDelUslFromSrc, lCloseSrc, cnt_: Integer;
 begin
   if ((RadioGroup1.ItemIndex = 2) or (RadioGroup1.ItemIndex = 3)) and
-    (CheckBox4.Checked = False) then
+    (CheckBox4.Checked = False) 
+     and (getDoublePar(Form_main.paramList, 'CHECK_ADD_LSK')=1) // защита от дурака, чтобы не надобавляли кучу лиц счетов, как разные помещения (Полыс.)
+     then
   begin
     Application.MessageBox('Ошибка, обратиться к разработчику!',
       'Внимание!', MB_ICONSTOP + MB_OK + MB_APPLMODAL);

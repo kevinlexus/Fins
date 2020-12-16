@@ -82,8 +82,6 @@ type
     N55: TMenuItem;
     N56: TMenuItem;
     N57: TMenuItem;
-    ToolButton23: TToolButton;
-    ToolButton24: TToolButton;
     ToolButton20: TToolButton;
     ToolButton21: TToolButton;
     ToolButton25: TToolButton;
@@ -447,6 +445,7 @@ type
     flt_k_lsk_id_: Integer;
     flt_single_house_: Integer;
     flt_klsk_premise: Integer;
+    flt_els_: string;
 
     //
     default_lsk: string;

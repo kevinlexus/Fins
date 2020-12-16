@@ -1,6 +1,6 @@
 object Form_add_lsk: TForm_add_lsk
-  Left = 253
-  Top = 220
+  Left = 660
+  Top = 192
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1053#1086#1074#1099#1081' '#1076#1086#1084
@@ -185,13 +185,16 @@ object Form_add_lsk: TForm_add_lsk
   end
   object OD_spul: TOracleDataSet
     SQL.Strings = (
-      'select * from scott.spul s'
-      'order by s.name')
+      
+        'select s.id, ot.name_short||'#39'. '#39'||o.name||'#39', '#39'||s.name as name  ' +
+        'from scott.spul s'
+      'join scott.t_org o on s.fk_settlement=o.id'
+      'join scott.t_org_tp ot on o.fk_orgtp=ot.id'
+      'order by ot.name_short||'#39'. '#39'||o.name||'#39', '#39'||s.name')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000004000000020000004944010000000000040000004E414D4501000000
-      00000800000043445F4B4C4144520100000000000700000043445F55535A4E01
-      0000000000}
+      0400000002000000020000004944010000000000040000004E414D4501000000
+      0000}
     Session = DataModule1.OracleSession1
     Active = True
     Left = 16

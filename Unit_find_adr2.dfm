@@ -1,11 +1,11 @@
 object Form_find_adr2: TForm_find_adr2
-  Left = 629
-  Top = 185
+  Left = 461
+  Top = 201
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   BorderWidth = 1
   Caption = #1055#1086#1080#1089#1082
-  ClientHeight = 252
+  ClientHeight = 228
   ClientWidth = 712
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -124,9 +124,9 @@ object Form_find_adr2: TForm_find_adr2
   end
   object Panel1: TPanel
     Left = 8
-    Top = 152
+    Top = 120
     Width = 601
-    Height = 73
+    Height = 97
     TabOrder = 3
     OnClick = Panel1Click
     object cxGroupBox2: TcxGroupBox
@@ -139,7 +139,7 @@ object Form_find_adr2: TForm_find_adr2
       StyleDisabled.Color = clBtnFace
       StyleDisabled.TextColor = clBtnShadow
       TabOrder = 0
-      Height = 57
+      Height = 81
       Width = 585
       object Label1: TLabel
         Left = 5
@@ -173,6 +173,32 @@ object Form_find_adr2: TForm_find_adr2
         Width = 87
         Height = 16
         Caption = #1060#1080#1085'.'#1083#1080#1094'.'#1089#1095'.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -14
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label5: TLabel
+        Left = 157
+        Top = 57
+        Width = 37
+        Height = 16
+        Caption = #1045#1051#1057':'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -14
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label6: TLabel
+        Left = 9
+        Top = 57
+        Width = 58
+        Height = 16
+        Caption = #1051#1080#1094'.'#1089#1095'.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -14
@@ -216,13 +242,37 @@ object Form_find_adr2: TForm_find_adr2
         OnChange = Edit3Change
         OnKeyPress = Edit3KeyPress
       end
+      object Edit4: TEdit
+        Left = 197
+        Top = 49
+        Width = 92
+        Height = 24
+        Hint = 'ID '#1076#1086#1084#1072
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 3
+        OnChange = Edit4Change
+        OnKeyPress = Edit4KeyPress
+      end
+      object Edit5: TEdit
+        Left = 69
+        Top = 49
+        Width = 76
+        Height = 24
+        Hint = 'ID '#1076#1086#1084#1072
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 4
+        OnChange = Edit5Change
+        OnKeyPress = Edit5KeyPress
+      end
     end
   end
   object Panel2: TPanel
     Left = 8
     Top = 8
     Width = 601
-    Height = 137
+    Height = 105
     TabOrder = 4
     OnClick = Panel2Click
     object cxGroupBox1: TcxGroupBox
@@ -316,7 +366,7 @@ object Form_find_adr2: TForm_find_adr2
         OnClick = chk2Click
       end
       object lkpKw: TcxLookupComboBox
-        Left = 448
+        Left = 480
         Top = 56
         Hint = #1050#1074#1072#1088#1090#1080#1088#1072
         ParentShowHint = False
@@ -340,7 +390,7 @@ object Form_find_adr2: TForm_find_adr2
         Width = 105
       end
       object lkpHouse: TcxLookupComboBox
-        Left = 240
+        Left = 272
         Top = 56
         Hint = #1044#1086#1084
         ParentShowHint = False
@@ -377,11 +427,13 @@ object Form_find_adr2: TForm_find_adr2
         Properties.ListOptions.ShowHeader = False
         Properties.ListSource = DS_streets
         Properties.OnChange = lkpStreetPropertiesChange
+        Properties.OnCloseUp = lkpStreetPropertiesCloseUp
         Properties.OnEditValueChanged = lkpStreetPropertiesEditValueChanged
         ShowHint = True
         TabOrder = 0
+        OnExit = lkpStreetExit
         OnKeyPress = lkpStreetKeyPress
-        Width = 201
+        Width = 233
       end
     end
   end
@@ -394,18 +446,23 @@ object Form_find_adr2: TForm_find_adr2
     SQL.Strings = (
       'select s.id, nvl(p.find_street,0) as find_street, '
       ' case when nvl(p.find_street,0)=1 and :var = 0 then '
-      '   o.name||'#39', '#39'||s.name '
+      '   ot.name_short||'#39'. '#39'||o.name||'#39', '#39'||initcap(s.name)'
       '      when nvl(p.find_street,0)=0 and :var = 0 then '
-      '   ltrim(s.id, '#39'0'#39')||'#39' '#39'||o.name||'#39', '#39'||s.name'
+      
+        '   ltrim(s.id, '#39'0'#39')||'#39' '#39'||ot.name_short||'#39'. '#39'||o.name||'#39', '#39'||ini' +
+        'tcap(s.name)'
       '      when :var = 1 then '
-      '   o.name||'#39', '#39'||s.name '
+      '   o.name||'#39', '#39'||initcap(s.name) '
       '      when :var = 2 then '
-      '   ltrim(s.id, '#39'0'#39')||'#39' '#39'||o.name||'#39', '#39'||s.name'
+      
+        '   ltrim(s.id, '#39'0'#39')||'#39' '#39'||ot.name_short||'#39'. '#39'||o.name||'#39', '#39'||ini' +
+        'tcap(s.name)'
       ' end as name,'
-      ' o.name||'#39', '#39'||s.name as street '
+      ' ot.name_short||'#39'. '#39'||o.name||'#39', '#39'||initcap(s.name) as street '
       ' from scott.spul s '
       'join scott.params p on 1=1'
       'join scott.t_org o on s.fk_settlement=o.id'
+      'join scott.t_org_tp ot on o.fk_orgtp=ot.id'
       ' where '
       
         ' (:flt_reu_ is not null and exists (select * from scott.kart k, ' +
@@ -433,7 +490,7 @@ object Form_find_adr2: TForm_find_adr2
     end
     object OD_streetsNAME: TStringField
       FieldName = 'NAME'
-      Size = 25
+      Size = 50
     end
     object OD_streetsSTREET: TStringField
       FieldName = 'STREET'
@@ -603,39 +660,18 @@ object Form_find_adr2: TForm_find_adr2
           'Text')
       end
       item
-        Component = lkpHouse
+        Component = Edit4
         Properties.Strings = (
-          'EditValue')
+          'Text')
       end
       item
-        Component = lkpKw
+        Component = Edit5
         Properties.Strings = (
-          'EditValue')
-      end
-      item
-        Component = lkpStreet
-        Properties.Strings = (
-          'EditValue')
+          'Text')
       end>
     StorageName = 'frmListKartStore'
     StorageType = stRegistry
     Left = 80
     Top = 272
-  end
-  object cxGridViewRepository1: TcxGridViewRepository
-    Left = 632
-    Top = 176
-    object cxGridViewRepository1DBTableView1: TcxGridDBTableView
-      Navigator.Buttons.CustomButtons = <>
-      DataController.DataModeController.GridMode = True
-      DataController.DataSource = DS_streets
-      DataController.KeyFieldNames = 'ID'
-      DataController.Summary.DefaultGroupSummaryItems = <>
-      DataController.Summary.FooterSummaryItems = <>
-      DataController.Summary.SummaryGroups = <>
-      object cxGridViewRepository1DBTableView1Column1: TcxGridDBColumn
-        DataBinding.FieldName = 'STREET'
-      end
-    end
   end
 end

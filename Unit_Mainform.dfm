@@ -1,6 +1,6 @@
 object Form_Main: TForm_Main
-  Left = 946
-  Top = 340
+  Left = 431
+  Top = 320
   Width = 880
   Height = 628
   Caption = #1044#1080#1088#1077#1082#1090
@@ -150,37 +150,15 @@ object Form_Main: TForm_Main
       Visible = False
       OnClick = ToolButton25Click
     end
-    object ToolButton23: TToolButton
-      Left = 164
-      Top = 2
-      Hint = #1057#1086#1088#1090#1080#1088#1086#1074#1082#1072' '#1087#1086' '#1051#1080#1094#1077#1074#1099#1084
-      Caption = 'ToolButton23'
-      ImageIndex = 31
-      ParentShowHint = False
-      ShowHint = True
-      Visible = False
-      OnClick = ToolButton23Click
-    end
-    object ToolButton24: TToolButton
-      Left = 205
-      Top = 2
-      Hint = #1057#1086#1088#1090#1080#1088#1086#1074#1082#1072' '#1087#1086' '#1072#1076#1088#1077#1089#1091
-      Caption = 'ToolButton24'
-      ImageIndex = 32
-      ParentShowHint = False
-      ShowHint = True
-      Visible = False
-      OnClick = ToolButton24Click
-    end
     object ToolButton11: TToolButton
-      Left = 246
+      Left = 164
       Top = 2
       Caption = #1046#1091#1088#1085#1072#1083' '#1076#1077#1081#1089#1090#1074#1080#1081
       ImageIndex = 66
       MenuItem = N72
     end
     object ToolButton20: TToolButton
-      Left = 287
+      Left = 205
       Top = 2
       Hint = #1057#1091#1073#1089#1080#1076#1080#1103
       Caption = 'ToolButton20'
@@ -191,7 +169,7 @@ object Form_Main: TForm_Main
       OnClick = ToolButton20Click
     end
     object ToolButton26: TToolButton
-      Left = 328
+      Left = 246
       Top = 2
       Hint = #1044#1074#1080#1078#1077#1085#1080#1077' '#1087#1086' '#1083#1080#1094#1077#1074#1086#1084#1091
       Caption = 'ToolButton26'
@@ -202,7 +180,7 @@ object Form_Main: TForm_Main
       OnClick = ToolButton26Click
     end
     object ToolButton21: TToolButton
-      Left = 369
+      Left = 287
       Top = 2
       Hint = #1055#1077#1088#1077#1088#1072#1089#1095#1077#1090#1099' '#1085#1072#1095#1080#1089#1083#1077#1085#1080#1081
       Caption = 'ToolButton21'
@@ -213,7 +191,7 @@ object Form_Main: TForm_Main
       OnClick = ToolButton21Click
     end
     object ToolButton18: TToolButton
-      Left = 410
+      Left = 328
       Top = 2
       Hint = #1055#1088#1086#1089#1084#1086#1090#1088' '#1087#1086#1089#1090#1091#1087#1083#1077#1085#1080#1081' '#1079#1072' '#1084#1077#1089#1103#1094
       Caption = 'ToolButton18'
@@ -223,7 +201,7 @@ object Form_Main: TForm_Main
       OnClick = ToolButton18Click
     end
     object ToolButton10: TToolButton
-      Left = 451
+      Left = 369
       Top = 2
       Hint = #1057#1072#1083#1100#1076#1086' '#1087#1086' '#1051'/'#1057
       Caption = #1057#1072#1083#1100#1076#1086' '#1087#1086' '#1051'/'#1057
@@ -234,7 +212,7 @@ object Form_Main: TForm_Main
       OnClick = ToolButton10Click
     end
     object ToolButton1: TToolButton
-      Left = 492
+      Left = 410
       Top = 2
       Caption = #1042#1074#1086#1076' '#1086#1087#1083#1072#1090#1099', '#1085#1072#1083'.'
       ImageIndex = 39
@@ -243,7 +221,7 @@ object Form_Main: TForm_Main
       ShowHint = True
     end
     object ToolButton2: TToolButton
-      Left = 533
+      Left = 451
       Top = 2
       Hint = #1057#1083#1091#1078#1077#1073#1085#1099#1077' '#1086#1090#1095#1077#1090#1099' ('#1057#1087#1080#1089#1082#1080')'
       Caption = 'ToolButton2'
@@ -253,7 +231,7 @@ object Form_Main: TForm_Main
       OnClick = ToolButton2Click
     end
     object ToolButton3: TToolButton
-      Left = 574
+      Left = 492
       Top = 2
       Hint = #1054#1073#1086#1088#1086#1090#1099' '#1087#1086' '#1083#1080#1094#1077#1074#1086#1084#1091' '#1089#1095#1077#1090#1091
       Caption = 'ToolButton3'
@@ -264,7 +242,7 @@ object Form_Main: TForm_Main
       OnClick = ToolButton3Click
     end
     object ToolButton5: TToolButton
-      Left = 615
+      Left = 533
       Top = 2
       Hint = #1056#1072#1073#1086#1090#1072' '#1089' '#1072#1088#1093#1080#1074#1086#1084
       Caption = 'ToolButton5'
@@ -1096,7 +1074,7 @@ object Form_Main: TForm_Main
       end
     end
     object ver: TMenuItem
-      Caption = 'ver 2.1.188'
+      Caption = 'ver 2.1.196'
       object option: TMenuItem
         Caption = #1055#1086#1076#1082#1083#1102#1095#1077#1085#1085#1099#1077' '#1086#1087#1094#1080#1080':'
       end

@@ -226,7 +226,6 @@ type
     procedure wwIncrementalSearch1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure OD_list_kartBeforeScroll(DataSet: TDataSet);
-    procedure FormActivate(Sender: TObject);
     procedure setAllowEdit_list;
     procedure setAllowEdit_kart;
     procedure state_arch2(mgold_: string);
@@ -641,16 +640,16 @@ begin
   if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
     ['drx5_админ_доступ_к_базе']) = 1) then
   begin
-     KLSKHOUSEID1.Enabled:=True;
+    KLSKHOUSEID1.Enabled := True;
   end;
 
   // открыть детализационный датасет
-  OD_kart_detail.Active:=True;
+  OD_kart_detail.Active := True;
   // ѕока отменил - возможно тормозит открытие формы (проверить) 03.09.2017
   //OD_list_kart.Locate('lsk', cxmskdt1.Text, [])
 
   if not (OD_list_kart.State in [dsInactive, dsBrowse]) then
-  OD_list_kart.Post;
+    OD_list_kart.Post;
 
   Application.CreateForm(TForm_find_adr2, Form_find_adr2);
   Form_find_adr2.SetAccess(1, 1, 1, 1);
@@ -672,6 +671,18 @@ begin
     SetVariable('flt_k_lsk_id_', Form_Main.flt_k_lsk_id_);
     SetVariable('flt_klsk_premise', Form_Main.flt_klsk_premise);
     SetVariable('flt_single_house_', Form_Main.flt_single_house_);
+    if Form_Main.search_type_ = 9 then
+    begin
+      OD_list_kart.SetVariable('SUBSTEXP4',
+        ' and exists (select * from exs.eolink e where k.lsk=e.lsk and e.fk_objtp=18 and e.uniqnum=''' +
+          Form_Main.flt_els_ + ''')');
+    end
+    else
+    begin
+      OD_list_kart.SetVariable('SUBSTEXP4',
+        '');
+    end;
+
     SetVariable('SUBSTEXP1', ' and k.psch not in(8,9) ');
     // устанавливаем пор€док
     // ред.закомментировал 30.09.20 SetVariable(':SUBSTEXP4',
@@ -764,8 +775,6 @@ begin
   if FF('frmReplaceKlsk', 0) = 1 then
     frmReplaceKlsk.Close;
 
-  Form_main.ToolButton23.Visible := false;
-  Form_main.ToolButton24.Visible := false;
   Action := caFree;
 end;
 
@@ -887,12 +896,6 @@ begin
           [OD_list_kart.FieldByName('lsk').AsString, null, null, null, 1, 0]);
     end;
   end;
-end;
-
-procedure TForm_list_kart.FormActivate(Sender: TObject);
-begin
-  Form_main.ToolButton23.Visible := true;
-  Form_main.ToolButton24.Visible := true;
 end;
 
 procedure TForm_list_kart.CheckBox1Click(Sender: TObject);
@@ -1245,16 +1248,16 @@ begin
     SetFilter;
   end;
 
-{  if not (OD_list_kart.State in [dsBrowse]) then
-    OD_list_kart.Post;
+  {  if not (OD_list_kart.State in [dsBrowse]) then
+      OD_list_kart.Post;
 
-  Application.CreateForm(TForm_find_adr, Form_find_adr);
-  Form_find_adr.SetAccess(1, 1, 1, 1);
-  if Form_find_adr.ShowModal = mrOk then
-  begin
-    SetFilter;
-  end;
- }
+    Application.CreateForm(TForm_find_adr, Form_find_adr);
+    Form_find_adr.SetAccess(1, 1, 1, 1);
+    if Form_find_adr.ShowModal = mrOk then
+    begin
+      SetFilter;
+    end;
+   }
 end;
 
 procedure TForm_list_kart.wwDBEdit1KeyPress(Sender: TObject;

@@ -226,6 +226,11 @@ type
     cxLookupComboBox4: TcxLookupComboBox;
     cxImageComboBox2: TcxImageComboBox;
     frxDBData_arch3: TfrxDBDataset;
+    GroupBox5: TGroupBox;
+    fltMgFrom: TDBLookupComboboxEh;
+    Label16: TLabel;
+    fltMgTo: TDBLookupComboboxEh;
+    Label17: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -942,19 +947,6 @@ begin
     wwDBEdit2.Text := wwDBEdit1.Text;
   end;
 
-  //Справка о задолженности
-  if sel_obj_ = 0 then
-  begin
-    //по л.с.
-    OD_data3.SetVariable('p_lsk', wwDBEdit1.Text);
-    OD_data3.SetVariable('k_lsk_id_', 0);
-  end
-  else
-  begin
-    //по адресу
-    OD_data3.SetVariable('k_lsk_id_', Form_main.k_lsk_id_);
-  end;
-
   //печатать ли по старому фонду счета
   if CheckBox2.Checked = true then
   begin
@@ -1016,6 +1008,20 @@ begin
   else if tp_ = 3 then
   begin
     //Долги по периодам, для счета (Полыс)
+    if sel_obj_ = 0 then
+    begin
+      //по л.с.
+      OD_data3.SetVariable('p_lsk', wwDBEdit1.Text);
+      OD_data3.SetVariable('k_lsk_id_', 0);
+    end
+    else
+    begin
+      //по адресу
+      OD_data3.SetVariable('k_lsk_id_', Form_main.k_lsk_id_);
+    end;
+
+    OD_data3.SetVariable('p_mg_from', fltMgFrom.KeyValue);
+    OD_data3.SetVariable('p_mg_to', fltMgTo.KeyValue);
     OD_data3.Active := true;
   end;
 
@@ -1762,6 +1768,7 @@ begin
     CheckBox5.Visible := true;
     Label13.Enabled := True;
     cxImageComboBox1.Enabled := True;
+    GroupBox5.Visible := false;
   end
   else if (tp_ = 2) or (tp_ = 5) or (tp_ = 7) then
     // Справка из архива
@@ -1775,6 +1782,7 @@ begin
     CheckBox5.Visible := false;
     Label13.Enabled := false;
     cxImageComboBox1.Enabled := false;
+    GroupBox5.Visible := false;
   end
   else if tp_ = 3 then // Справка о задолженности
   begin
@@ -1788,6 +1796,7 @@ begin
     Label13.Enabled := false;
     cxImageComboBox1.Enabled := false;
     CheckBox5.Visible := true;
+    GroupBox5.Visible := true;
   end
   else
   begin
@@ -1800,6 +1809,7 @@ begin
     CheckBox5.Visible := false;
     Label13.Enabled := false;
     cxImageComboBox1.Enabled := false;
+    GroupBox5.Visible := false;
   end
 end;
 

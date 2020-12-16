@@ -10,9 +10,28 @@ uses
   cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit,
   cxNavigator, cxDBData, cxGridLevel, cxClasses, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
-  cxCheckBox, Menus;
+  cxCheckBox, Menus, cxVariants;
 
 type
+  TcxGridTableControllerAccess = class (TcxGridTableController);
+
+  TMycxGridDBTableView = class (TcxGridDBTableView)
+  protected
+    function GetViewDataClass: TcxCustomGridViewDataClass; override;
+  end;
+
+  TMycxGridViewData = class (TcxGridViewData)
+  protected
+    function GetFilterRowClass: TcxGridFilterRowClass; override;
+  end;
+
+  TMycxGridFilterRow = class (TcxGridFilterRow)
+  protected
+    procedure SetValue(Index: Integer; const Value: Variant); override;
+  end;
+
+  TcxGridDBTableView = class (TMycxGridDBTableView);
+
   TForm_sel_hs = class(TForm)
     DS_list_choice: TDataSource;
     Panel1: TPanel;
@@ -50,6 +69,51 @@ implementation
 uses Unit_status;
 
 {$R *.dfm}
+
+procedure TMycxGridFilterRow.SetValue(Index: Integer;
+  const Value: Variant);
+var
+  AGridView: TcxGridTableView;
+  AColumn: TcxGridColumn;
+  AValue: Variant;
+begin
+  AGridView := GridView;
+  TcxGridTableControllerAccess(AGridView.Controller).KeepFilterRowFocusing := True;
+  try
+    AColumn := AGridView.Columns[Index];
+    if VarIsSoftNull(Value) then
+      AColumn.DataBinding.Filtered := False
+    else
+    begin
+      DataController.Filter.BeginUpdate;
+      try
+        DataController.Filter.Active := True;
+        AValue := '%' + Value;
+        AColumn.DataBinding.AddToFilter(nil,
+          GetFilterOperatorKind(AValue, True), AValue,
+          GetDisplayTextForValue(Index, AValue), True);
+      finally
+        DataController.Filter.EndUpdate;
+      end;
+    end;
+  finally
+    TcxGridTableControllerAccess(AGridView.Controller).KeepFilterRowFocusing := False;
+  end;
+end;
+
+{ TMycxGridViewData }
+
+function TMycxGridViewData.GetFilterRowClass: TcxGridFilterRowClass;
+begin
+  Result := TMycxGridFilterRow;
+end;
+
+{ TMycxGridDBTableView }
+
+function TMycxGridDBTableView.GetViewDataClass: TcxCustomGridViewDataClass;
+begin
+  Result := TMycxGridViewData;
+end;
 
 procedure TForm_sel_hs.FormClose(Sender: TObject;
   var Action: TCloseAction);

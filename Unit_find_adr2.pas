@@ -12,7 +12,7 @@ uses
   cxFilter,  
   cxGridCustomView, cxGrid, cxDBExtLookupComboBox, cxStyles, cxData,
   cxDataStorage, cxNavigator, cxLabel, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, Utils;
+  cxGridTableView, cxGridDBTableView, Utils, StrUtils;
 
 type
   TForm_find_adr2 = class(TForm)
@@ -59,10 +59,11 @@ type
     lkpKw: TcxLookupComboBox;
     lkpHouse: TcxLookupComboBox;
     lkpStreet: TcxLookupComboBox;
-    cxGridViewRepository1: TcxGridViewRepository;
-    cxGridViewRepository1DBTableView1: TcxGridDBTableView;
-    cxGridViewRepository1DBTableView1Column1: TcxGridDBColumn;
     cxLabel1: TcxLabel;
+    Label5: TLabel;
+    Edit4: TEdit;
+    Edit5: TEdit;
+    Label6: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -95,6 +96,12 @@ type
     procedure lkpStreetPropertiesEditValueChanged(Sender: TObject);
     procedure lkpHousePropertiesEditValueChanged(Sender: TObject);
     procedure lkpStreetPropertiesChange(Sender: TObject);
+    procedure lkpStreetPropertiesCloseUp(Sender: TObject);
+    procedure lkpStreetExit(Sender: TObject);
+    procedure Edit4KeyPress(Sender: TObject; var Key: Char);
+    procedure Edit4Change(Sender: TObject);
+    procedure Edit5Change(Sender: TObject);
+    procedure Edit5KeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -149,12 +156,14 @@ end;
 procedure TForm_find_adr2.Button1Click(Sender: TObject);
 var
   house_id_: Integer;
+  lsk: string;
 begin
   Form_Main.cl_flt;
   Form_Main.search_type_ := 0;
   Form_Main.flt_single_house_ := -1;
   Form_Main.flt_reu_ := '';
   Form_Main.flt_klsk_premise := -1;
+  Form_Main.flt_els_ := '';
   Form_Main.k_lsk_id_ := -1;
   Form_Main.kul_ := '';
   Form_Main.nd_ := '';
@@ -175,8 +184,8 @@ begin
     //поиск с точностью до улицы?
     if lkpStreet.EditValue <> Null then
     begin
-      Form_Main.kul_ := OD_streets.FieldByName('id').asString;
-      Form_Main.flt_kul_ := OD_streets.FieldByName('id').asString;
+      Form_Main.kul_ := lkpStreet.EditValue;
+      Form_Main.flt_kul_ := lkpStreet.EditValue;
       Form_Main.search_type_ := 1;
     end;
 
@@ -227,6 +236,21 @@ begin
       // по фин.лиц.сч.
       Form_Main.flt_k_lsk_id_ := StrToInt(Edit3.Text);
       Form_Main.search_type_ := 3;
+    end
+    else if Edit4.Text <> '' then
+    begin
+      // по ЕЛС
+      Form_Main.flt_els_ := Edit4.Text;
+      Form_Main.search_type_ := 9;
+    end
+    else if Edit5.Text <> '' then
+    begin
+      // по Лиц.счету (найти klsk)
+      lsk := RightStr('00000000' + Trim(Edit5.Text), 8);
+      Form_Main.flt_k_lsk_id_ := DataModule1.OraclePackage1.CallIntegerFunction(
+        'scott.utils.get_k_lsk_id_by_lsk',
+        [lsk]);
+      Form_Main.search_type_ := 10;
     end;
   end;
 end;
@@ -354,10 +378,6 @@ begin
   try
     if (Key = #13) or (Key = #9) then
     begin
-      //ShowMessage(lkpStreet.EditValue);
-      OD_houses.SetVariable('kul',lkpStreet.EditValue);
-      OD_houses.Active:=False;
-      OD_houses.Active:=True;
       Windows.SetFocus(lkpHouse.Handle)
     end;
   except
@@ -513,21 +533,40 @@ procedure TForm_find_adr2.Edit1Change(Sender: TObject);
 begin
   Edit2.Text := '';
   Edit3.Text := '';
-
+  Edit4.Text := '';
+  Edit5.Text := '';
 end;
 
 procedure TForm_find_adr2.Edit2Change(Sender: TObject);
 begin
   Edit1.Text := '';
   Edit3.Text := '';
-
+  Edit4.Text := '';
+  Edit5.Text := '';
 end;
 
 procedure TForm_find_adr2.Edit3Change(Sender: TObject);
 begin
   Edit1.Text := '';
   Edit2.Text := '';
+  Edit4.Text := '';
+  Edit5.Text := '';
+end;
 
+procedure TForm_find_adr2.Edit4Change(Sender: TObject);
+begin
+  Edit1.Text := '';
+  Edit2.Text := '';
+  Edit3.Text := '';
+  Edit5.Text := '';
+end;
+
+procedure TForm_find_adr2.Edit5Change(Sender: TObject);
+begin
+  Edit1.Text := '';
+  Edit2.Text := '';
+  Edit3.Text := '';
+  Edit4.Text := '';
 end;
 
 procedure TForm_find_adr2.lkpStreetPropertiesEditValueChanged(
@@ -548,27 +587,6 @@ begin
 
 end;
 
-procedure SplitDelimitedString(AStrings: TStrings; AText, ADelimiter: string);
-var
-  p, n: integer;
-  Text: PChar;
-begin
-  Text := PChar(AText);
-  AStrings.Clear;
-  n := Length(ADelimiter);
-  while Assigned(Text) do
-  begin
-    p := Pos(ADelimiter, Text) - 1;
-    if p < 0 then
-      Break;
-    AStrings.Add(Copy(Text, 1, p));
-    Inc(Text, p + n);
-  end;
-  if Assigned(Text) and (Length(Text) > 0) then
-    AStrings.Add(Text);
-end;
-
-
 
 procedure TForm_find_adr2.lkpStreetPropertiesChange(Sender: TObject);
 var
@@ -580,6 +598,40 @@ begin
   // для тестирования
   cxLabel1.Caption := S.Properties.DataController.Filter.FilterText;
 
+end;
+
+procedure TForm_find_adr2.lkpStreetPropertiesCloseUp(Sender: TObject);
+begin
+{  OD_houses.SetVariable('kul',lkpStreet.EditValue);
+  OD_houses.Active:=False;
+  OD_houses.Active:=True;}
+end;
+
+procedure TForm_find_adr2.lkpStreetExit(Sender: TObject);
+begin
+      OD_houses.SetVariable('kul',lkpStreet.EditValue);
+      OD_houses.Active:=False;
+      OD_houses.Active:=True;
+
+end;
+
+procedure TForm_find_adr2.Edit4KeyPress(Sender: TObject; var Key: Char);
+begin
+ try
+    if (Key = #13) or (Key = #9) then
+      Windows.SetFocus(Button1.Handle);
+  except
+  end;
+end;
+
+
+procedure TForm_find_adr2.Edit5KeyPress(Sender: TObject; var Key: Char);
+begin
+ try
+    if (Key = #13) or (Key = #9) then
+      Windows.SetFocus(Button1.Handle);
+  except
+  end;
 end;
 
 end.

@@ -1,8 +1,8 @@
 object Form_print_bills: TForm_print_bills
-  Left = 953
-  Top = 193
-  Width = 415
-  Height = 449
+  Left = 265
+  Top = 185
+  Width = 411
+  Height = 547
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #1057#1095#1077#1090#1072' '#1085#1072' '#1086#1087#1083#1072#1090#1091' '#1091#1089#1083#1091#1075' '#1046#1050#1061
   Color = clBtnFace
@@ -92,8 +92,8 @@ object Form_print_bills: TForm_print_bills
   TextHeight = 13
   object GroupBox1: TGroupBox
     Left = 0
-    Top = 342
-    Width = 399
+    Top = 345
+    Width = 395
     Height = 61
     Align = alTop
     TabOrder = 3
@@ -138,16 +138,16 @@ object Form_print_bills: TForm_print_bills
   object GroupBox2: TGroupBox
     Left = 0
     Top = 0
-    Width = 399
+    Width = 395
     Height = 105
     Align = alTop
     TabOrder = 0
     object Label3: TLabel
       Left = 8
       Top = 40
-      Width = 74
+      Width = 86
       Height = 13
-      Caption = #1055#1077#1088#1080#1086#1076' '#1086#1090#1095#1077#1090#1072
+      Caption = #1055#1077#1088#1080#1086#1076' '#1086#1090#1095#1077#1090#1072', '#1089
     end
     object Label4: TLabel
       Left = 8
@@ -280,8 +280,8 @@ object Form_print_bills: TForm_print_bills
   end
   object GroupBox3: TGroupBox
     Left = 0
-    Top = 105
-    Width = 399
+    Top = 145
+    Width = 395
     Height = 200
     Align = alTop
     TabOrder = 2
@@ -581,8 +581,8 @@ object Form_print_bills: TForm_print_bills
   end
   object GroupBox4: TGroupBox
     Left = 0
-    Top = 305
-    Width = 399
+    Top = 406
+    Width = 395
     Height = 37
     Align = alTop
     TabOrder = 4
@@ -597,12 +597,60 @@ object Form_print_bills: TForm_print_bills
   end
   object pnl1: TPanel
     Left = 136
-    Top = 168
+    Top = 208
     Width = 185
     Height = 41
     Caption = #1047#1072#1075#1088#1091#1079#1082#1072'...'
     TabOrder = 5
     Visible = False
+  end
+  object GroupBox5: TGroupBox
+    Left = 0
+    Top = 105
+    Width = 395
+    Height = 40
+    Align = alTop
+    Caption = #1060#1080#1083#1100#1090#1088' '#1087#1077#1088#1080#1086#1076#1072
+    TabOrder = 6
+    Visible = False
+    object Label16: TLabel
+      Left = 232
+      Top = 19
+      Width = 12
+      Height = 13
+      Caption = #1087#1086
+    end
+    object Label17: TLabel
+      Left = 80
+      Top = 19
+      Width = 6
+      Height = 13
+      Caption = #1089
+    end
+    object fltMgFrom: TDBLookupComboboxEh
+      Left = 96
+      Top = 11
+      Width = 129
+      Height = 21
+      EditButtons = <>
+      KeyField = 'MG'
+      ListField = 'MG1'
+      ListSource = DS_mg
+      TabOrder = 0
+      Visible = True
+    end
+    object fltMgTo: TDBLookupComboboxEh
+      Left = 256
+      Top = 11
+      Width = 129
+      Height = 21
+      EditButtons = <>
+      KeyField = 'MG'
+      ListField = 'MG1'
+      ListSource = DS_mg1
+      TabOrder = 1
+      Visible = True
+    end
   end
   object OD_data: TOracleDataSet
     SQL.Strings = (
@@ -697,7 +745,7 @@ object Form_print_bills: TForm_print_bills
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Left = 144
-    Top = 328
+    Top = 368
     object OD_dataMG1: TStringField
       FieldName = 'MG1'
       Size = 8
@@ -939,12 +987,12 @@ object Form_print_bills: TForm_print_bills
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Left = 16
-    Top = 208
+    Top = 248
   end
   object DS_mg: TDataSource
     DataSet = OD_mg
     Left = 16
-    Top = 248
+    Top = 288
   end
   object frxDBDataset1: TfrxDBDataset
     UserName = 'frxDBDataset1'
@@ -1021,7 +1069,7 @@ object Form_print_bills: TForm_print_bills
     DataSet = OD_data
     BCDToCurrency = False
     Left = 176
-    Top = 328
+    Top = 368
   end
   object frxReport1: TfrxReport
     Version = '5.1.9'
@@ -1048,12 +1096,12 @@ object Form_print_bills: TForm_print_bills
       00000000}
     Session = DataModule1.OracleSession1
     Active = True
-    Top = 328
+    Top = 368
   end
   object DS_streets: TDataSource
     DataSet = OD_streets
     Left = 32
-    Top = 328
+    Top = 368
   end
   object OD_houses: TOracleDataSet
     SQL.Strings = (
@@ -1093,12 +1141,12 @@ object Form_print_bills: TForm_print_bills
     DetailFields = 'ID'
     Session = DataModule1.OracleSession1
     Detachable = True
-    Top = 360
+    Top = 400
   end
   object DS_houses: TDataSource
     DataSet = OD_houses
     Left = 32
-    Top = 360
+    Top = 400
   end
   object OD_kw: TOracleDataSet
     SQL.Strings = (
@@ -1151,12 +1199,12 @@ object Form_print_bills: TForm_print_bills
     MasterFields = 'reu;kul;nd_id'
     DetailFields = 'reu;kul;nd_id'
     Session = DataModule1.OracleSession1
-    Top = 392
+    Top = 432
   end
   object DS_kw: TDataSource
     DataSet = OD_kw
     Left = 32
-    Top = 392
+    Top = 432
   end
   object OD_mg1: TOracleDataSet
     SQL.Strings = (
@@ -1180,12 +1228,12 @@ object Form_print_bills: TForm_print_bills
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Left = 48
-    Top = 216
+    Top = 256
   end
   object DS_mg1: TDataSource
     DataSet = OD_mg1
     Left = 48
-    Top = 248
+    Top = 288
   end
   object OD_data2: TOracleDataSet
     SQL.Strings = (
@@ -1272,7 +1320,7 @@ object Form_print_bills: TForm_print_bills
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Left = 144
-    Top = 360
+    Top = 400
   end
   object frxDBDataset2: TfrxDBDataset
     UserName = 'frxDBDataset2'
@@ -1290,7 +1338,7 @@ object Form_print_bills: TForm_print_bills
     DataSet = OD_data2
     BCDToCurrency = False
     Left = 176
-    Top = 360
+    Top = 400
   end
   object OD_data3: TOracleDataSet
     SQL.Strings = (
@@ -1298,6 +1346,8 @@ object Form_print_bills: TForm_print_bills
       ''
       ' scott.rep_bills.deb(p_lsk => :p_lsk,'
       '                 p_k_lsk_id => :k_lsk_id_,'
+      '                 p_flt_mg_from => :p_flt_mg_from,'
+      '                 p_flt_mg_to => :p_flt_mg_to,'
       '                 p_rfcur => :p_rfcur);'
       ''
       'end;'
@@ -1305,9 +1355,11 @@ object Form_print_bills: TForm_print_bills
       '')
     Optimize = False
     Variables.Data = {
-      03000000030000000A0000003A4B5F4C534B5F49445F03000000000000000000
+      03000000050000000A0000003A4B5F4C534B5F49445F03000000000000000000
       0000080000003A505F5246435552740000000000000000000000060000003A50
-      5F4C534B050000000000000000000000}
+      5F4C534B0500000000000000000000000E0000003A505F464C545F4D475F4652
+      4F4D0500000000000000000000000C0000003A505F464C545F4D475F544F0500
+      00000000000000000000}
     QBEDefinition.QBEFieldDefs = {
       040000000F0000000600000043484152474501000000000004000000444F4C47
       0100000000000500000050454E5941010000000000030000004C534B01000000
@@ -1320,7 +1372,7 @@ object Form_print_bills: TForm_print_bills
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Left = 144
-    Top = 392
+    Top = 432
   end
   object frxDBDataset3: TfrxDBDataset
     UserName = 'frxDBDataset3'
@@ -1328,7 +1380,7 @@ object Form_print_bills: TForm_print_bills
     DataSet = OD_data3
     BCDToCurrency = False
     Left = 176
-    Top = 392
+    Top = 432
   end
   object frxDotMatrixExport1: TfrxDotMatrixExport
     UseFileCache = True
@@ -1363,7 +1415,7 @@ object Form_print_bills: TForm_print_bills
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Left = 144
-    Top = 424
+    Top = 464
   end
   object frxDBDataset4: TfrxDBDataset
     UserName = 'frxDB_kart_pr'
@@ -1375,7 +1427,7 @@ object Form_print_bills: TForm_print_bills
     DataSet = OD_data4
     BCDToCurrency = False
     Left = 176
-    Top = 424
+    Top = 464
   end
   object frxRTFExport1: TfrxRTFExport
     UseFileCache = True
@@ -1448,7 +1500,7 @@ object Form_print_bills: TForm_print_bills
       000000}
     Session = DataModule1.OracleSession1
     Left = 80
-    Top = 360
+    Top = 400
   end
   object frxDBDataset5: TfrxDBDataset
     UserName = 'frxDBDataset5'
@@ -1504,7 +1556,7 @@ object Form_print_bills: TForm_print_bills
     DataSet = OD_t_org
     BCDToCurrency = False
     Left = 112
-    Top = 360
+    Top = 400
   end
   object frxDBDataset6: TfrxDBDataset
     UserName = 'frxDBDataset6'
@@ -1648,7 +1700,7 @@ object Form_print_bills: TForm_print_bills
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Left = 80
-    Top = 328
+    Top = 368
   end
   object frxDB_main: TfrxDBDataset
     UserName = 'frxDB_main'
@@ -1712,7 +1764,7 @@ object Form_print_bills: TForm_print_bills
     DataSet = OD_main
     BCDToCurrency = False
     Left = 112
-    Top = 328
+    Top = 368
   end
   object OD_t_org2: TOracleDataSet
     SQL.Strings = (
@@ -1759,7 +1811,7 @@ object Form_print_bills: TForm_print_bills
     Session = DataModule1.OracleSession1
     Active = True
     Left = 80
-    Top = 392
+    Top = 432
   end
   object frxDBDataset8: TfrxDBDataset
     UserName = 'frxDB_t_org2'
@@ -1803,7 +1855,7 @@ object Form_print_bills: TForm_print_bills
     DataSet = OD_t_org2
     BCDToCurrency = False
     Left = 112
-    Top = 392
+    Top = 432
   end
   object OD_reu: TOracleDataSet
     SQL.Strings = (
@@ -1849,7 +1901,7 @@ object Form_print_bills: TForm_print_bills
     DesignActivation = True
     AfterOpen = OD_sel_objAfterOpen
     Left = 312
-    Top = 240
+    Top = 280
   end
   object OD_ls_cnt: TOracleDataSet
     SQL.Strings = (
@@ -1873,12 +1925,12 @@ object Form_print_bills: TForm_print_bills
     BeforeOpen = OD_ls_cntBeforeOpen
     AfterOpen = OD_ls_cntAfterOpen
     Left = 312
-    Top = 272
+    Top = 312
   end
   object DS_ls_cnt: TDataSource
     DataSet = OD_ls_cnt
     Left = 352
-    Top = 272
+    Top = 312
   end
   object DS_reu: TDataSource
     DataSet = OD_reu
@@ -2122,7 +2174,7 @@ object Form_print_bills: TForm_print_bills
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Left = 208
-    Top = 368
+    Top = 408
   end
   object frxDBDataset11: TfrxDBDataset
     UserName = 'frxDBDetail'
@@ -2150,7 +2202,7 @@ object Form_print_bills: TForm_print_bills
     DataSet = OD_detail
     BCDToCurrency = False
     Left = 240
-    Top = 368
+    Top = 408
   end
   object OD_detail2: TOracleDataSet
     SQL.Strings = (
@@ -2183,7 +2235,7 @@ object Form_print_bills: TForm_print_bills
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Left = 208
-    Top = 408
+    Top = 448
   end
   object frxDBDataset12: TfrxDBDataset
     UserName = 'frxDBDetail2'
@@ -2208,7 +2260,7 @@ object Form_print_bills: TForm_print_bills
     DataSet = OD_detail2
     BCDToCurrency = False
     Left = 240
-    Top = 408
+    Top = 448
   end
   object OD_detail_ext: TOracleDataSet
     SQL.Strings = (
@@ -2458,12 +2510,12 @@ object Form_print_bills: TForm_print_bills
     Session = DataModule1.OracleSession1
     Active = True
     Left = 312
-    Top = 352
+    Top = 392
   end
   object DS_uk: TDataSource
     DataSet = OD_uk
     Left = 344
-    Top = 352
+    Top = 392
   end
   object OD_spr_services: TOracleDataSet
     SQL.Strings = (
@@ -2478,12 +2530,12 @@ object Form_print_bills: TForm_print_bills
       595045010000000000020000005450010000000000}
     Session = DataModule1.OracleSession1
     Left = 312
-    Top = 392
+    Top = 432
   end
   object DS_spr_services: TDataSource
     DataSet = OD_spr_services
     Left = 344
-    Top = 392
+    Top = 432
   end
   object KMP_rep1: TOracleDataSet
     SQL.Strings = (
@@ -2799,7 +2851,7 @@ object Form_print_bills: TForm_print_bills
       end>
     StorageName = 'frmPrintBillsStore.ini'
     StorageType = stRegistry
-    Top = 216
+    Top = 256
   end
   object frxPDFExport1: TfrxPDFExport
     FileName = 'c:\temp\export'
@@ -2822,7 +2874,7 @@ object Form_print_bills: TForm_print_bills
     CenterWindow = False
     PrintScaling = False
     Left = 208
-    Top = 153
+    Top = 193
   end
   object frxDB_cmp_main_arch: TfrxDBDataset
     UserName = 'frxDB_cmp_main_arch'
@@ -2844,7 +2896,7 @@ object Form_print_bills: TForm_print_bills
   object DS_sel_obj: TDataSource
     DataSet = OD_sel_obj
     Left = 352
-    Top = 241
+    Top = 281
   end
   object frxDBData_arch3: TfrxDBDataset
     UserName = 'frxDBData_arch3'

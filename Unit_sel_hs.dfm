@@ -1,6 +1,6 @@
 object Form_sel_hs: TForm_sel_hs
-  Left = 990
-  Top = 258
+  Left = 1262
+  Top = 180
   Width = 440
   Height = 455
   Caption = #1042#1099#1073#1086#1088' '#1076#1086#1084#1086#1074' '#1076#1083#1103' '#1086#1090#1095#1077#1090#1072
@@ -119,13 +119,14 @@ object Form_sel_hs: TForm_sel_hs
       Navigator.Buttons.CustomButtons = <>
       Navigator.Visible = True
       FilterBox.MRUItemsListDropDownCount = 5
+      FilterBox.Visible = fvNever
       DataController.DataSource = DS_list_choice
       DataController.Filter.Options = [fcoCaseInsensitive, fcoSoftCompare]
       DataController.Summary.DefaultGroupSummaryItems = <>
       DataController.Summary.FooterSummaryItems = <>
       DataController.Summary.SummaryGroups = <>
       Filtering.ColumnFilteredItemsList = True
-      FilterRow.InfoText = #1050#1083#1080#1082' '#1076#1083#1103' '#1087#1086#1080#1089#1082#1072', '#1085#1072#1087#1088#1080#1084#1077#1088' '#1051#1045#1053'%2'
+      FilterRow.InfoText = #1050#1083#1080#1082' '#1076#1083#1103' '#1087#1086#1080#1089#1082#1072
       FilterRow.Visible = True
       FilterRow.ApplyChanges = fracImmediately
       OptionsView.ColumnAutoWidth = True
