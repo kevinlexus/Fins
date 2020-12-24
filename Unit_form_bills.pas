@@ -174,7 +174,7 @@ type
     OD_t_org3: TOracleDataSet;
     frxDBDataset10: TfrxDBDataset;
     GroupBox4: TGroupBox;
-    Edit2: TEdit;
+    filePath: TEdit;
     OD_dataKPR_WRP: TFloatField;
     OD_dataITG_PEN_PAY: TFloatField;
     OD_dataSL: TFloatField;
@@ -258,7 +258,7 @@ type
     procedure OD_ls_cntBeforeOpen(DataSet: TDataSet);
     procedure OD_ls_cntAfterOpen(DataSet: TDataSet);
     procedure compound_report(p_var: Integer);
-    procedure old_report(pen_last_month_: Integer; repVar: string);
+    procedure old_report(pen_last_month_: Integer);
     procedure fillUk();
     function getStrUk(): string;
     procedure selAllUk();
@@ -270,10 +270,12 @@ type
     procedure cxLookupComboBox4PropertiesPopup(Sender: TObject);
     procedure cxImageComboBox2PropertiesCloseUp(Sender: TObject);
     procedure cxImageComboBox2PropertiesChange(Sender: TObject);
-  private
+    procedure selVar();
+private
     sel_obj_: Integer;
     cnt_sch_: Integer;
     tp_: Integer;
+    filePathStr: String;
   public
     { Public declarations }
   end;
@@ -298,7 +300,6 @@ end;
 procedure TForm_print_bills.Button1Click(Sender: TObject);
 var
   pen_last_month_: Integer;
-  repVar: string;
 begin
   // СЧЕТ
 
@@ -327,15 +328,9 @@ begin
   Application.CreateForm(TForm_status, Form_status);
   Form_status.Update;
 
-  // датасет основных параметров. (наим.орг, файл счета)
-  OD_t_org.Active := false;
-  OD_t_org.SetVariable('var_', tp_);
-  OD_t_org.SetVariable('mg_', DBLookupComboboxEh1.KeyValue);
-  OD_t_org.Active := true;
-
   // подготовку делаем в случае выбора либо 1 л.с. либо 1 квартиры
   // и только не по арх спр.
-  if (tp_ <> 2) and (tp_ <> 5)  and (tp_ <> 7) and (sel_obj_ = 0)
+  if (tp_ <> 2) and (tp_ <> 5) and (tp_ <> 7) and (sel_obj_ = 0)
     and (wwDBEdit1.Text = wwDBEdit2.Text)
     and (CheckBox3.Checked = True) then
   begin
@@ -343,7 +338,8 @@ begin
     DataModule1.OraclePackage1.CallProcedure('scott.GEN.prepare_arch_k_lsk',
       [Form_main.k_lsk_id_, pen_last_month_, 0]);
   end
-  else if (tp_ <> 2) and (tp_ <> 5)  and (tp_ <> 7) and (tp_ <> 6) and (sel_obj_ = 1)
+  else if (tp_ <> 2) and (tp_ <> 5) and (tp_ <> 7) and (tp_ <> 6) and (sel_obj_
+    = 1)
     and (DBLookupComboboxEh4.KeyValue <> null)
     and (CheckBox3.Checked = True) then
   begin
@@ -360,9 +356,9 @@ begin
   else if (OD_t_org.FieldByName('BILL_TP').asInteger = 0) or
     (OD_t_org.FieldByName('BILL_TP').asInteger = 1) or
     (OD_t_org.FieldByName('BILL_TP').asInteger = 2) or
-    (tp_ = 2) or (tp_ = 5)  or (tp_ = 7) or (tp_ = 1) then
+    (tp_ = 2) or (tp_ = 5) or (tp_ = 7) or (tp_ = 1) then
     // старый вариант отчетности или арх.справ или арх.справ-2
-    old_report(pen_last_month_, repVar)
+    old_report(pen_last_month_)
   else if (OD_t_org.FieldByName('BILL_TP').asInteger = 3) or
     (OD_t_org.FieldByName('BILL_TP').asInteger = 4) then
     // составной счет
@@ -473,7 +469,8 @@ begin
   DM_Bill.Uni_cmp_main.Active := True;
   DM_Bill.Uni_rep1.Active := true;
   DM_Bill.Uni_rep2.Active := true;
-  frxReport1.LoadFromFile(Form_main.exepath_ + '\справка_пасп3.fr3', True);
+  frxReport1.LoadFromFile(filePathStr, True);
+  //frxReport1.LoadFromFile(Form_main.exepath_ + '\справка_пасп3.fr3', True);
   frxReport1.PrepareReport(true);
   frxReport1.ShowPreparedReport;
 end;
@@ -698,11 +695,11 @@ begin
   DM_Bill.Uni_cmp_funds_lsk.Active := true;
   DM_Bill.Uni_cmp_qr.Active := true;
 
-  Edit2.Text := 'Путь к файлу счета:' + Form_main.exepath_ +
-    VarToStr(cxLookupComboBox1.EditValue);
-  frxReport1.LoadFromFile(Form_main.exepath_ +
-    VarToStr(cxLookupComboBox1.EditValue), True);
-  Edit2.Visible := true;
+  //filePath.Text := 'Путь к файлу:' + Form_main.exepath_ +
+  //  VarToStr(cxLookupComboBox1.EditValue);
+  //frxReport1.LoadFromFile(Form_main.exepath_ +
+  //  VarToStr(cxLookupComboBox1.EditValue), True);
+  frxReport1.LoadFromFile(filePathStr, True);
 
   // открыть отчет
   frxReport1.PrepareReport(true);
@@ -734,8 +731,7 @@ end;
 
 // старый вариант отчетности
 
-procedure TForm_print_bills.old_report(pen_last_month_: Integer; repVar:
-  string);
+procedure TForm_print_bills.old_report(pen_last_month_: Integer);
 begin
   // главный датасет для справки арх-2
   DM_Bill.Uni_cmp_main_arch.Active := false;
@@ -908,12 +904,12 @@ begin
     //OD_arch.SetVariable('p_mg2', DBLookupComboboxEh5.KeyValue);
     DM_Bill.Uni_arch.Params.ParamByName('p_sel_uk').AsString :=
       getStrUk();
-      
-    if tp_=5 then  
-      DM_Bill.Uni_arch.Params.ParamByName('p_tp').AsInteger :=0
+
+    if tp_ = 5 then
+      DM_Bill.Uni_arch.Params.ParamByName('p_tp').AsInteger := 0
     else
-      DM_Bill.Uni_arch.Params.ParamByName('p_tp').AsInteger :=1;
-    
+      DM_Bill.Uni_arch.Params.ParamByName('p_tp').AsInteger := 1;
+
     DM_Bill.Uni_arch.Params.ParamByName('p_mg1').AsString :=
       DBLookupComboboxEh1.KeyValue;
     DM_Bill.Uni_arch.Params.ParamByName('p_mg2').AsString :=
@@ -1020,8 +1016,8 @@ begin
       OD_data3.SetVariable('k_lsk_id_', Form_main.k_lsk_id_);
     end;
 
-    OD_data3.SetVariable('p_mg_from', fltMgFrom.KeyValue);
-    OD_data3.SetVariable('p_mg_to', fltMgTo.KeyValue);
+    OD_data3.SetVariable('p_flt_mg_from', fltMgFrom.KeyValue);
+    OD_data3.SetVariable('p_flt_mg_to', fltMgTo.KeyValue);
     OD_data3.Active := true;
   end;
 
@@ -1043,7 +1039,8 @@ begin
       + MB_APPLMODAL);
     Form_status.Close;
   end
-  else if (((tp_ = 2) or (tp_ = 5) or (tp_ = 7)) and (DM_Bill.Uni_cmp_main_arch.RecordCount =
+  else if (((tp_ = 2) or (tp_ = 5) or (tp_ = 7)) and
+    (DM_Bill.Uni_cmp_main_arch.RecordCount =
     0)) then
   begin
     Application.MessageBox('Нет информации за указанный период', 'Внимание!', 16
@@ -1057,25 +1054,15 @@ begin
   end
   else
   begin
-    Edit2.Text := '';
-    Edit2.Visible := false;
-
-    // выбор отчета - лазерный/матричный
-    if CheckBox5.Checked = True then
-      // лазерный принтер
-      repVar := 'lp_'
-    else
-      // матричный принтер
-      repVar := '';
 
     if (tp_ = 0) or (tp_ = 4) then
     begin
       //Счета
-      frxReport1.LoadFromFile(Form_main.exepath_ + repVar +
-        OD_t_org.FieldByName('FNAME_SCH').asString, True);
-      Edit2.Text := 'Путь к файлу счета:' + Form_main.exepath_ + repVar +
-        OD_t_org.FieldByName('FNAME_SCH').asString;
-      Edit2.Visible := true;
+      frxReport1.LoadFromFile(filePathStr, True);
+      //frxReport1.LoadFromFile(Form_main.exepath_ + repVar +
+      //  OD_t_org.FieldByName('FNAME_SCH').asString, True);
+      //filePath.Text := 'Путь к файлу:' + Form_main.exepath_ + repVar +
+      //  OD_t_org.FieldByName('FNAME_SCH').asString;
 
       //В счет ставим реквизиты организации
       frxReport1.Variables['name_org'] := '''' +
@@ -1113,38 +1100,62 @@ begin
     else if tp_ = 1 then
     begin
       //Справочник квартиросъемщиков
-      frxReport1.LoadFromFile(Form_main.exepath_ + 'спр_кв.fr3', True);
+      frxReport1.LoadFromFile(filePathStr, True);
+      //frxReport1.LoadFromFile(Form_main.exepath_ + 'спр_кв.fr3', True);
       frxReport1.PrepareReport(true);
+      //filePath.Text := 'Путь к файлу:' + Form_main.exepath_
+      //  + 'спр_кв.fr3';
     end
     else if tp_ = 2 then
     begin
       //Справка из архива
-      frxReport1.LoadFromFile(Form_main.exepath_ + 'арх_спр1.fr3', True);
+      frxReport1.LoadFromFile(filePathStr, True);
+      //frxReport1.LoadFromFile(Form_main.exepath_ + 'арх_спр1.fr3', True);
       frxReport1.PrepareReport(true);
+      //filePath.Text := 'Путь к файлу:' + Form_main.exepath_
+      //  + 'арх_спр1.fr3';
     end
     else if tp_ = 5 then
     begin
       //Справка из архива-2
-      frxReport1.LoadFromFile(Form_main.exepath_ + 'арх_спр4.fr3', True);
+      frxReport1.LoadFromFile(filePathStr, True);
+      //frxReport1.LoadFromFile(Form_main.exepath_ + 'арх_спр4.fr3', True);
       frxReport1.PrepareReport(true);
+      //filePath.Text := 'Путь к файлу:' + Form_main.exepath_
+      //  + 'арх_спр4.fr3';
     end
     else if tp_ = 7 then
     begin
       //Справка из архива-3
-      frxReport1.LoadFromFile(Form_main.exepath_ + 'арх_спр5.fr3', True);
+      frxReport1.LoadFromFile(filePathStr, True);
+      //frxReport1.LoadFromFile(Form_main.exepath_ + 'арх_спр5.fr3', True);
       frxReport1.PrepareReport(true);
+      //filePath.Text := 'Путь к файлу:' + Form_main.exepath_
+      //  + 'арх_спр5.fr3';
     end
     else if tp_ = 3 then
     begin
       //Cправка о задолженности
       if DataModule1.OraclePackage1.CallIntegerFunction //старый вариант
       ('scott.Utils.get_int_param', ['SPR_DEB_VAR']) = 0 then
-        frxReport1.LoadFromFile(Form_main.exepath_ + repVar +
-          'Счет_на_оплату1.fr3', True)
-      else if DataModule1.OraclePackage1.CallIntegerFunction //новый вариант
-      ('scott.Utils.get_int_param', ['SPR_DEB_VAR']) = 1 then
-        frxReport1.LoadFromFile(Form_main.exepath_ + repVar + 'спр_задолжн.fr3',
+      begin
+        frxReport1.LoadFromFile(filePathStr, True);
+        //frxReport1.LoadFromFile(Form_main.exepath_ + repVar +
+        //  'Счет_на_оплату1.fr3', True);
+        //filePath.Text := 'Путь к файлу:' + Form_main.exepath_
+        //  + 'Счет_на_оплату1.fr3';
+      end
+      else if
+        DataModule1.OraclePackage1.CallIntegerFunction('scott.Utils.get_int_param',
+        ['SPR_DEB_VAR']) = 1 then //новый вариант
+      begin
+        frxReport1.LoadFromFile(filePathStr,
           True);
+        //frxReport1.LoadFromFile(Form_main.exepath_ + repVar + 'спр_задолжн.fr3',
+        //  True);
+        //filePath.Text := 'Путь к файлу:' + Form_main.exepath_
+        //  + 'спр_задолжн.fr3';
+      end;
 
       frxReport1.PrepareReport(true);
     end;
@@ -1346,6 +1357,8 @@ begin
   cxImageComboBox1.ItemIndex := 0;
   // наполнить списком УК
   fillUk();
+
+  selVar();
   //Настройки расположения формы
   cxprprtstr1.Active := True;
   cxprprtstr1.RestoreFrom;
@@ -1602,7 +1615,7 @@ begin
   else
     cnt_sch_ := StrToInt(Edit1.Text);
 
-  sel_ls_cnt;  
+  sel_ls_cnt;
 end;
 
 procedure TForm_print_bills.DBLookupComboboxEh5CloseUp(Sender: TObject; Accept:
@@ -1750,11 +1763,18 @@ end;
 procedure TForm_print_bills.cxImageComboBox2PropertiesCloseUp(
   Sender: TObject);
 begin
+  selVar();
+end;
+
+procedure TForm_print_bills.selVar();
+var
+  repVar: string;
+begin 
+
   OD_sel_obj.Active := false;
   OD_sel_obj.SetVariable(':var_', tp_);
   OD_sel_obj.Active := True;
   sel_obj_ := OD_sel_obj.FieldByName('id').AsInteger;
-  //wwDBLookupCombo1.LookupValue := OD_sel_obj.FieldByName('id').AsString;
   cx3.EditValue := OD_sel_obj.FieldByName('id').AsString;
   set_obj;
   if tp_ = 0 then // Счета
@@ -1810,7 +1830,100 @@ begin
     Label13.Enabled := false;
     cxImageComboBox1.Enabled := false;
     GroupBox5.Visible := false;
+  end;
+
+  filePathStr:='';
+  if (tp_ = 0) or (tp_ = 4) then
+  begin
+    //Счета
+    // датасет основных параметров. (наим.орг, файл счета)
+    OD_t_org.Active := false;
+    OD_t_org.SetVariable('var_', tp_);
+    OD_t_org.SetVariable('mg_', DBLookupComboboxEh1.KeyValue);
+    OD_t_org.Active := true;
+
+    if (OD_t_org.FieldByName('BILL_TP').asInteger = 0) or
+      (OD_t_org.FieldByName('BILL_TP').asInteger = 1) or
+      (OD_t_org.FieldByName('BILL_TP').asInteger = 2) then
+    begin
+      // старый вариант счета
+      // выбор отчета - лазерный/матричный
+      if CheckBox5.Checked = True then
+        // лазерный принтер
+        repVar := 'lp_'
+      else
+        // матричный принтер
+        repVar := '';
+      filePathStr := Form_main.exepath_ + repVar +
+        OD_t_org.FieldByName('FNAME_SCH').asString;
+    end
+    else if (OD_t_org.FieldByName('BILL_TP').asInteger = 3) or
+      (OD_t_org.FieldByName('BILL_TP').asInteger = 4) then
+    begin
+      // составной счет
+      cxLookupComboBox1.EditValue :=
+        OD_spr_services.FieldByName('FNAME_SCH').AsString;
+
+      filePathStr := Form_main.exepath_ +
+        VarToStr(cxLookupComboBox1.EditValue);
+    end
   end
+  else if tp_ = 1 then
+  begin
+    //Справочник квартиросъемщиков
+    filePathStr := Form_main.exepath_
+      + 'спр_кв.fr3';
+  end
+  else if tp_ = 2 then
+  begin
+    //Справка из архива
+    filePathStr := Form_main.exepath_
+      + 'арх_спр1.fr3';
+  end
+  else if tp_ = 5 then
+  begin
+    //Справка из архива-2
+    filePathStr := Form_main.exepath_
+      + 'арх_спр4.fr3';
+  end
+  else if tp_ = 6 then
+  begin
+    // поквартирная карточка
+    filePathStr := Form_main.exepath_ +
+      'справка_пасп3.fr3';
+  end
+  else if tp_ = 7 then
+  begin
+    //Справка из архива-3
+    filePathStr := Form_main.exepath_
+      + 'арх_спр5.fr3';
+  end
+  else if tp_ = 3 then
+  begin
+    //Cправка о задолженности
+    if DataModule1.OraclePackage1.CallIntegerFunction //старый вариант
+    ('scott.Utils.get_int_param', ['SPR_DEB_VAR']) = 0 then
+    begin
+      filePathStr := Form_main.exepath_
+        + 'Счет_на_оплату1.fr3';
+    end
+    else if
+      DataModule1.OraclePackage1.CallIntegerFunction('scott.Utils.get_int_param',
+      ['SPR_DEB_VAR']) = 1 then //новый вариант
+    begin
+      filePathStr := Form_main.exepath_
+        + 'спр_задолжн.fr3';
+    end;
+  end
+  else
+  begin
+    Application.MessageBox(PChar('Некорректный bill_tp=' +
+      OD_t_org.FieldByName('BILL_TP').AsString),
+      'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
+  end;
+
+  filePath.Text := 'Путь к файлу:' + filePathStr;
+
 end;
 
 procedure TForm_print_bills.cxImageComboBox2PropertiesChange(

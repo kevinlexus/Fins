@@ -1,6 +1,6 @@
 object Form_print_bills: TForm_print_bills
-  Left = 265
-  Top = 185
+  Left = 211
+  Top = 169
   Width = 411
   Height = 547
   BorderIcons = [biSystemMenu, biMinimize]
@@ -586,7 +586,7 @@ object Form_print_bills: TForm_print_bills
     Height = 37
     Align = alTop
     TabOrder = 4
-    object Edit2: TEdit
+    object filePath: TEdit
       Left = 8
       Top = 10
       Width = 377
