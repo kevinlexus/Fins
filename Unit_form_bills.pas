@@ -1298,6 +1298,21 @@ begin
       Item.ImageIndex := 7;
     end;
 
+    if isaccess('scott.drx_print_bills_движение') = 1 then
+    begin
+      Item := Items.Add as TcxImageComboBoxItem;
+      Item.Value := 8;
+      Item.Description := 'Движение средств по лиц.сч.';
+      Item.ImageIndex := 8;
+    end;
+    
+    if isaccess('scott.drx_print_спр_по_расчету_пени') = 1 then
+    begin
+      Item := Items.Add as TcxImageComboBoxItem;
+      Item.Value := 9;
+      Item.Description := 'Справка по расчету пени';
+      Item.ImageIndex := 9;
+    end;
   finally
     Items.EndUpdate;
   end;
