@@ -166,6 +166,7 @@ uses
   Unit_find_adr2 in 'Unit_find_adr2.pas' {Form_find_adr2},
   ufDataModuleOlap in 'ufDataModuleOlap.pas' {DM_Olap: TDataModule},
   ufDataModuleBill in 'ufDataModuleBill.pas' {DM_Bill: TDataModule},
+  ufDataModuleBill2 in 'ufDataModuleBill2.pas' {DM_Bill2: TDataModule},
   u_frmReplaceKlsk in 'u_frmReplaceKlsk.pas' {frmReplaceKlsk},
   u_frmMeteGisConnect in 'u_frmMeteGisConnect.pas' {frmMeteGisConnect},
   u_frmLoadKartExt in 'u_frmLoadKartExt.pas' {frmLoadKartExt},
@@ -359,6 +360,7 @@ begin
 
   Application.CreateForm(TDM_Olap, DM_Olap);
   Application.CreateForm(TDM_Bill, DM_Bill);
+  Application.CreateForm(TDM_Bill2, DM_Bill2);
 
   if DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
     ['drx5_админ_доступ_к_базе']) = 1 then

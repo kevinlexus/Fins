@@ -203,6 +203,7 @@ object Form_print_bills: TForm_print_bills
       EditButtons = <>
       KeyField = 'MG'
       ListField = 'MG1'
+      ListSource = DM_Bill2.DS_mg
       TabOrder = 0
       Visible = True
       OnCloseUp = DBLookupComboboxEh1CloseUp
@@ -566,6 +567,7 @@ object Form_print_bills: TForm_print_bills
     EditButtons = <>
     KeyField = 'MG'
     ListField = 'MG1'
+    ListSource = DM_Bill2.DS_mg1
     TabOrder = 1
     Visible = False
     OnCloseUp = DBLookupComboboxEh5CloseUp
