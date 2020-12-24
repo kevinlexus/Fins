@@ -245,6 +245,7 @@ object Form_print_bills: TForm_print_bills
           FieldName = 'NAME'
         end>
       Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = DM_Bill2.DS_sel_obj
       Properties.OnCloseUp = cxLookupComboBox3PropertiesCloseUp
       TabOrder = 3
       Width = 129
@@ -364,6 +365,7 @@ object Form_print_bills: TForm_print_bills
       EditButtons = <>
       KeyField = 'ID'
       ListField = 'STREET'
+      ListSource = DM_Bill2.DS_streets
       TabOrder = 4
       Visible = True
       OnCloseUp = DBLookupComboboxEh2CloseUp
@@ -380,6 +382,7 @@ object Form_print_bills: TForm_print_bills
       EditButtons = <>
       KeyField = 'REU;KUL;ND_ID'
       ListField = 'ND'
+      ListSource = DM_Bill2.DS_houses
       TabOrder = 5
       Visible = True
       OnCloseUp = DBLookupComboboxEh3CloseUp
@@ -396,6 +399,7 @@ object Form_print_bills: TForm_print_bills
       EditButtons = <>
       KeyField = 'K_LSK_ID'
       ListField = 'KW'
+      ListSource = DM_Bill2.DS_kw
       TabOrder = 6
       Visible = True
       OnCloseUp = DBLookupComboboxEh4CloseUp
@@ -476,6 +480,7 @@ object Form_print_bills: TForm_print_bills
           FieldName = 'NAME'
         end>
       Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = DM_Bill2.DS_reu
       Properties.OnCloseUp = cbb1PropertiesCloseUp
       TabOrder = 9
       Width = 145
@@ -518,6 +523,7 @@ object Form_print_bills: TForm_print_bills
           FieldName = 'FNAME_SCH'
         end>
       Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = DM_Bill2.DS_spr_services
       TabOrder = 12
       Width = 257
     end
@@ -628,6 +634,7 @@ object Form_print_bills: TForm_print_bills
       EditButtons = <>
       KeyField = 'MG'
       ListField = 'MG1'
+      ListSource = DM_Bill2.DS_mg
       TabOrder = 0
       Visible = True
     end
@@ -639,6 +646,7 @@ object Form_print_bills: TForm_print_bills
       EditButtons = <>
       KeyField = 'MG'
       ListField = 'MG1'
+      ListSource = DM_Bill2.DS_mg1
       TabOrder = 1
       Visible = True
     end
