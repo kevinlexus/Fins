@@ -1,8 +1,8 @@
 object Form_print_bills: TForm_print_bills
   Left = 423
   Top = 215
-  Width = 603
-  Height = 681
+  Width = 533
+  Height = 491
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #1057#1095#1077#1090#1072' '#1085#1072' '#1086#1087#1083#1072#1090#1091' '#1091#1089#1083#1091#1075' '#1046#1050#1061
   Color = clBtnFace
@@ -93,7 +93,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox1: TGroupBox
     Left = 0
     Top = 345
-    Width = 587
+    Width = 517
     Height = 61
     Align = alTop
     TabOrder = 3
@@ -138,7 +138,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox2: TGroupBox
     Left = 0
     Top = 0
-    Width = 587
+    Width = 517
     Height = 105
     Align = alTop
     TabOrder = 0
@@ -280,7 +280,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox3: TGroupBox
     Left = 0
     Top = 145
-    Width = 587
+    Width = 517
     Height = 200
     Align = alTop
     TabOrder = 2
@@ -581,7 +581,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox4: TGroupBox
     Left = 0
     Top = 406
-    Width = 587
+    Width = 517
     Height = 37
     Align = alTop
     TabOrder = 4
@@ -606,7 +606,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox5: TGroupBox
     Left = 0
     Top = 105
-    Width = 587
+    Width = 517
     Height = 40
     Align = alTop
     Caption = #1060#1080#1083#1100#1090#1088' '#1087#1077#1088#1080#1086#1076#1072
@@ -664,7 +664,8 @@ object Form_print_bills: TForm_print_bills
     ScriptLanguage = 'PascalScript'
     StoreInDFM = False
     OnReportPrint = 'frxReport1OnReportPrint'
-    Top = 488
+    Left = 448
+    Top = 128
   end
   object frxDotMatrixExport1: TfrxDotMatrixExport
     UseFileCache = True

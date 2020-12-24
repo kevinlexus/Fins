@@ -1,8 +1,8 @@
 object DM_Bill2: TDM_Bill2
   OldCreateOrder = False
-  Left = 1207
-  Top = 328
-  Height = 704
+  Left = 687
+  Top = 124
+  Height = 844
   Width = 685
   object OD_mg: TOracleDataSet
     SQL.Strings = (
@@ -26,8 +26,8 @@ object DM_Bill2: TDM_Bill2
       00}
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Left = 16
-    Top = 248
+    Left = 24
+    Top = 32
   end
   object OD_mg1: TOracleDataSet
     SQL.Strings = (
@@ -50,18 +50,18 @@ object DM_Bill2: TDM_Bill2
       00}
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Left = 48
-    Top = 256
+    Left = 24
+    Top = 88
   end
   object DS_mg: TDataSource
     DataSet = OD_mg
-    Left = 16
-    Top = 288
+    Left = 88
+    Top = 32
   end
   object DS_mg1: TDataSource
     DataSet = OD_mg1
-    Left = 48
-    Top = 288
+    Left = 88
+    Top = 88
   end
   object OD_streets: TOracleDataSet
     SQL.Strings = (
@@ -73,12 +73,13 @@ object DM_Bill2: TDM_Bill2
       00000000}
     Session = DataModule1.OracleSession1
     Active = True
-    Top = 368
+    Left = 24
+    Top = 248
   end
   object DS_streets: TDataSource
     DataSet = OD_streets
-    Left = 32
-    Top = 368
+    Left = 88
+    Top = 248
   end
   object OD_houses: TOracleDataSet
     SQL.Strings = (
@@ -118,12 +119,13 @@ object DM_Bill2: TDM_Bill2
     DetailFields = 'ID'
     Session = DataModule1.OracleSession1
     Detachable = True
-    Top = 400
+    Left = 24
+    Top = 304
   end
   object DS_houses: TDataSource
     DataSet = OD_houses
-    Left = 32
-    Top = 400
+    Left = 88
+    Top = 304
   end
   object OD_kw: TOracleDataSet
     SQL.Strings = (
@@ -176,12 +178,13 @@ object DM_Bill2: TDM_Bill2
     MasterFields = 'reu;kul;nd_id'
     DetailFields = 'reu;kul;nd_id'
     Session = DataModule1.OracleSession1
-    Top = 432
+    Left = 24
+    Top = 352
   end
   object DS_kw: TDataSource
     DataSet = OD_kw
-    Left = 32
-    Top = 432
+    Left = 88
+    Top = 352
   end
   object OD_main: TOracleDataSet
     SQL.Strings = (
@@ -248,8 +251,8 @@ object DM_Bill2: TDM_Bill2
       534B5F4944010000000000}
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Left = 80
-    Top = 368
+    Left = 160
+    Top = 32
   end
   object frxDB_main: TfrxDBDataset
     UserName = 'frxDB_main'
@@ -312,8 +315,8 @@ object DM_Bill2: TDM_Bill2
       'QR=QR')
     DataSet = OD_main
     BCDToCurrency = False
-    Left = 112
-    Top = 368
+    Left = 224
+    Top = 32
   end
   object OD_data: TOracleDataSet
     SQL.Strings = (
@@ -407,8 +410,8 @@ object DM_Bill2: TDM_Bill2
     DetailFields = 'lsk_'
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Left = 144
-    Top = 368
+    Left = 160
+    Top = 88
     object OD_dataMG1: TStringField
       FieldName = 'MG1'
       Size = 8
@@ -701,8 +704,8 @@ object DM_Bill2: TDM_Bill2
     OpenDataSource = False
     DataSet = OD_data
     BCDToCurrency = False
-    Left = 176
-    Top = 368
+    Left = 224
+    Top = 88
   end
   object OD_t_org: TOracleDataSet
     SQL.Strings = (
@@ -745,8 +748,8 @@ object DM_Bill2: TDM_Bill2
       08000000434F44455F4445420100000000000700000042494C4C5F5450010000
       000000}
     Session = DataModule1.OracleSession1
-    Left = 80
-    Top = 400
+    Left = 160
+    Top = 144
   end
   object frxDBDataset4: TfrxDBDataset
     UserName = 'frxDBDataset5'
@@ -801,8 +804,8 @@ object DM_Bill2: TDM_Bill2
       'BILL_TP=BILL_TP')
     DataSet = OD_t_org
     BCDToCurrency = False
-    Left = 112
-    Top = 400
+    Left = 224
+    Top = 144
   end
   object OD_data2: TOracleDataSet
     SQL.Strings = (
@@ -888,8 +891,8 @@ object DM_Bill2: TDM_Bill2
       000000}
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Left = 144
-    Top = 400
+    Left = 160
+    Top = 192
   end
   object frxDBDataset2: TfrxDBDataset
     UserName = 'frxDBDataset2'
@@ -906,8 +909,8 @@ object DM_Bill2: TDM_Bill2
       'ITOG=ITOG')
     DataSet = OD_data2
     BCDToCurrency = False
-    Left = 176
-    Top = 400
+    Left = 224
+    Top = 192
   end
   object OD_detail: TOracleDataSet
     SQL.Strings = (
@@ -936,8 +939,8 @@ object DM_Bill2: TDM_Bill2
     DetailFields = 'p_lsk'
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Left = 208
-    Top = 408
+    Left = 160
+    Top = 248
   end
   object frxDBDataset5: TfrxDBDataset
     UserName = 'frxDBDetail'
@@ -964,8 +967,8 @@ object DM_Bill2: TDM_Bill2
     OpenDataSource = False
     DataSet = OD_detail
     BCDToCurrency = False
-    Left = 240
-    Top = 408
+    Left = 224
+    Top = 248
   end
   object OD_reu: TOracleDataSet
     SQL.Strings = (
@@ -986,13 +989,13 @@ object DM_Bill2: TDM_Bill2
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True
-    Left = 80
-    Top = 432
+    Left = 160
+    Top = 352
   end
   object DS_reu: TDataSource
     DataSet = OD_reu
-    Left = 112
-    Top = 432
+    Left = 224
+    Top = 352
   end
   object OD_data3: TOracleDataSet
     SQL.Strings = (
@@ -1025,16 +1028,16 @@ object DM_Bill2: TDM_Bill2
       0000000000}
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Left = 144
-    Top = 432
+    Left = 24
+    Top = 408
   end
   object frxDBDataset3: TfrxDBDataset
     UserName = 'frxDBDataset3'
     CloseDataSource = False
     DataSet = OD_data3
     BCDToCurrency = False
-    Left = 176
-    Top = 432
+    Left = 88
+    Top = 408
   end
   object OD_data6: TOracleDataSet
     SQL.Strings = (
@@ -1059,8 +1062,8 @@ object DM_Bill2: TDM_Bill2
     DetailFields = 'k_lsk_id;mg;psch'
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Left = 144
-    Top = 456
+    Left = 24
+    Top = 632
     object OD_data6LSK: TStringField
       FieldName = 'LSK'
       Required = True
@@ -1078,8 +1081,8 @@ object DM_Bill2: TDM_Bill2
       'SUMMA=SUMMA')
     DataSet = OD_data6
     BCDToCurrency = False
-    Left = 176
-    Top = 456
+    Left = 88
+    Top = 632
   end
   object OD_detail_ext: TOracleDataSet
     SQL.Strings = (
@@ -1109,8 +1112,8 @@ object DM_Bill2: TDM_Bill2
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True
-    Left = 208
-    Top = 456
+    Left = 160
+    Top = 464
   end
   object frxDBDataset7: TfrxDBDataset
     UserName = 'frxDBDetail_ext'
@@ -1131,8 +1134,8 @@ object DM_Bill2: TDM_Bill2
     OpenDataSource = False
     DataSet = OD_detail_ext
     BCDToCurrency = False
-    Left = 240
-    Top = 456
+    Left = 224
+    Top = 464
   end
   object OD_detail2: TOracleDataSet
     SQL.Strings = (
@@ -1164,8 +1167,8 @@ object DM_Bill2: TDM_Bill2
     DetailFields = 'p_lsk;p_mg;p_bill_var;p_tp'
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Left = 208
-    Top = 448
+    Left = 160
+    Top = 408
   end
   object frxDBDataset8: TfrxDBDataset
     UserName = 'frxDBDetail2'
@@ -1189,8 +1192,8 @@ object DM_Bill2: TDM_Bill2
     OpenDataSource = False
     DataSet = OD_detail2
     BCDToCurrency = False
-    Left = 240
-    Top = 448
+    Left = 224
+    Top = 408
   end
   object OD_t_org3: TOracleDataSet
     SQL.Strings = (
@@ -1230,8 +1233,8 @@ object DM_Bill2: TDM_Bill2
     MasterFields = 'reu'
     DetailFields = 'reu'
     Session = DataModule1.OracleSession1
-    Left = 80
-    Top = 472
+    Left = 24
+    Top = 464
   end
   object frxDBDataset10: TfrxDBDataset
     UserName = 'frxDB_t_org3'
@@ -1275,8 +1278,8 @@ object DM_Bill2: TDM_Bill2
       'ADR_WWW=ADR_WWW')
     DataSet = OD_t_org3
     BCDToCurrency = False
-    Left = 112
-    Top = 472
+    Left = 88
+    Top = 464
   end
   object OD_vvod: TOracleDataSet
     SQL.Strings = (
@@ -1378,8 +1381,8 @@ object DM_Bill2: TDM_Bill2
     DetailFields = 'lsk;mg'
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Left = 144
-    Top = 496
+    Left = 24
+    Top = 576
   end
   object frxDBDataset9: TfrxDBDataset
     UserName = 'frxDBDataset9'
@@ -1398,8 +1401,8 @@ object DM_Bill2: TDM_Bill2
       'DT2=DT2')
     DataSet = OD_vvod
     BCDToCurrency = False
-    Left = 176
-    Top = 496
+    Left = 88
+    Top = 576
   end
   object KMP_rep2: TOracleDataSet
     SQL.Strings = (
@@ -1454,8 +1457,8 @@ object DM_Bill2: TDM_Bill2
     DetailFields = 'LSK'
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Left = 312
-    Top = 472
+    Left = 160
+    Top = 696
   end
   object frxDBDataset11: TfrxDBDataset
     UserName = 'c_kart_pr'
@@ -1515,8 +1518,8 @@ object DM_Bill2: TDM_Bill2
       'UB_NAME=UB_NAME')
     DataSet = DM_Bill.Uni_rep2
     BCDToCurrency = False
-    Left = 344
-    Top = 474
+    Left = 224
+    Top = 698
   end
   object frxDBDataset12: TfrxDBDataset
     UserName = 'kart'
@@ -1612,8 +1615,8 @@ object DM_Bill2: TDM_Bill2
       'PERS_TP=PERS_TP')
     DataSet = DM_Bill.Uni_rep1
     BCDToCurrency = False
-    Left = 344
-    Top = 442
+    Left = 224
+    Top = 634
   end
   object KMP_rep1: TOracleDataSet
     SQL.Strings = (
@@ -1700,8 +1703,8 @@ object DM_Bill2: TDM_Bill2
     DetailFields = 'lsk'
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Left = 312
-    Top = 440
+    Left = 160
+    Top = 632
   end
   object OD_spr_services: TOracleDataSet
     SQL.Strings = (
@@ -1715,13 +1718,13 @@ object DM_Bill2: TDM_Bill2
       47010000000000030000004D47310100000000000B000000464B5F5343485F54
       595045010000000000020000005450010000000000}
     Session = DataModule1.OracleSession1
-    Left = 312
-    Top = 432
+    Left = 160
+    Top = 576
   end
   object DS_spr_services: TDataSource
     DataSet = OD_spr_services
-    Left = 344
-    Top = 432
+    Left = 224
+    Top = 576
   end
   object OD_uk: TOracleDataSet
     SQL.Strings = (
@@ -1740,13 +1743,13 @@ object DM_Bill2: TDM_Bill2
       0000000300000053454C010000000000}
     Session = DataModule1.OracleSession1
     Active = True
-    Left = 312
-    Top = 392
+    Left = 160
+    Top = 520
   end
   object DS_uk: TDataSource
     DataSet = OD_uk
-    Left = 344
-    Top = 392
+    Left = 224
+    Top = 520
   end
   object OD_sel_obj: TOracleDataSet
     SQL.Strings = (
@@ -1769,13 +1772,13 @@ object DM_Bill2: TDM_Bill2
     Session = DataModule1.OracleSession1
     DesignActivation = True
     AfterOpen = OD_sel_objAfterOpen
-    Left = 312
-    Top = 280
+    Left = 24
+    Top = 144
   end
   object DS_sel_obj: TDataSource
     DataSet = OD_sel_obj
-    Left = 352
-    Top = 281
+    Left = 88
+    Top = 145
   end
   object OD_ls_cnt: TOracleDataSet
     SQL.Strings = (
@@ -1798,21 +1801,21 @@ object DM_Bill2: TDM_Bill2
     DesignActivation = True
     BeforeOpen = OD_ls_cntBeforeOpen
     AfterOpen = OD_ls_cntAfterOpen
-    Left = 312
-    Top = 312
+    Left = 24
+    Top = 192
   end
   object DS_ls_cnt: TDataSource
     DataSet = OD_ls_cnt
-    Left = 352
-    Top = 312
+    Left = 88
+    Top = 192
   end
   object frxDBD_cmp_detail_primary: TfrxDBDataset
     UserName = 'frxDB_cmp_detail_primary'
     CloseDataSource = False
     DataSet = DM_Bill.Uni_cmp_detail_primary
     BCDToCurrency = False
-    Left = 448
-    Top = 160
+    Left = 336
+    Top = 32
   end
   object frxDBD_cmp_detail_main: TfrxDBDataset
     UserName = 'frxDBD_cmp_detail_main'
@@ -1860,8 +1863,8 @@ object DM_Bill2: TDM_Bill2
       'QR=QR')
     DataSet = DM_Bill.Uni_cmp_detail_main
     BCDToCurrency = False
-    Left = 512
-    Top = 160
+    Left = 336
+    Top = 88
   end
   object frxDB_cmp_main: TfrxDBDataset
     UserName = 'frxDB_cmp_main'
@@ -1886,24 +1889,24 @@ object DM_Bill2: TDM_Bill2
       'FIO=FIO')
     DataSet = DM_Bill.Uni_cmp_main
     BCDToCurrency = False
-    Left = 448
-    Top = 192
+    Left = 336
+    Top = 144
   end
   object frxDB_cmp_detail_cap: TfrxDBDataset
     UserName = 'frxDB_cmp_detail_cap'
     CloseDataSource = False
     DataSet = DM_Bill.Uni_cmp_detail_cap
     BCDToCurrency = False
-    Left = 448
-    Top = 264
+    Left = 336
+    Top = 192
   end
   object frxDB_cmp_funds_primary: TfrxDBDataset
     UserName = 'frxDB_cmp_funds_primary'
     CloseDataSource = False
     DataSet = DM_Bill.Uni_cmp_funds_primary
     BCDToCurrency = False
-    Left = 448
-    Top = 296
+    Left = 336
+    Top = 248
   end
   object frxDB_cmp_funds_main: TfrxDBDataset
     UserName = 'frxDB_cmp_funds_main'
@@ -1927,7 +1930,7 @@ object DM_Bill2: TDM_Bill2
       'PAY=PAY')
     DataSet = DM_Bill.Uni_cmp_funds_main
     BCDToCurrency = False
-    Left = 512
+    Left = 336
     Top = 296
   end
   object frxDB_cmp_funds_cap: TfrxDBDataset
@@ -1935,8 +1938,8 @@ object DM_Bill2: TDM_Bill2
     CloseDataSource = False
     DataSet = DM_Bill.Uni_cmp_funds_cap
     BCDToCurrency = False
-    Left = 448
-    Top = 328
+    Left = 336
+    Top = 352
   end
   object frxDB_cmp_funds_lsk: TfrxDBDataset
     UserName = 'frxDB_cmp_funds_lsk'
@@ -1961,16 +1964,16 @@ object DM_Bill2: TDM_Bill2
       'CHARGEOWN=CHARGEOWN')
     DataSet = DM_Bill.Uni_cmp_funds_lsk
     BCDToCurrency = False
-    Left = 512
-    Top = 328
+    Left = 336
+    Top = 408
   end
   object frxDB_cmp_contractors: TfrxDBDataset
     UserName = 'frxDB_cmp_contractors'
     CloseDataSource = False
     DataSet = DM_Bill.Uni_cmp_contractors
     BCDToCurrency = False
-    Left = 448
-    Top = 360
+    Left = 336
+    Top = 464
   end
   object frxDB_cmp_qr: TfrxDBDataset
     UserName = 'frxDB_cmp_qr'
@@ -1980,8 +1983,8 @@ object DM_Bill2: TDM_Bill2
       'UK_NAME=UK_NAME')
     DataSet = DM_Bill.Uni_cmp_qr
     BCDToCurrency = False
-    Left = 448
-    Top = 408
+    Left = 336
+    Top = 520
   end
   object frxDB_cmp_main_arch: TfrxDBDataset
     UserName = 'frxDB_cmp_main_arch'
@@ -1997,8 +2000,8 @@ object DM_Bill2: TDM_Bill2
       'NAME_UK=NAME_UK')
     DataSet = DM_Bill.Uni_cmp_main_arch
     BCDToCurrency = False
-    Left = 448
-    Top = 464
+    Left = 336
+    Top = 576
   end
   object frxDB_arch_supp: TfrxDBDataset
     UserName = 'frxDB_arch_supp'
@@ -2010,8 +2013,8 @@ object DM_Bill2: TDM_Bill2
       'PENYA=PENYA')
     DataSet = DM_Bill.Uni_arch_supp
     BCDToCurrency = False
-    Left = 448
-    Top = 512
+    Left = 336
+    Top = 632
   end
   object frxDBData_arch: TfrxDBDataset
     UserName = 'frxDBData_arch'
@@ -2028,8 +2031,8 @@ object DM_Bill2: TDM_Bill2
       'PEN='#1055#1077#1085#1103' '#1090#1077#1082'.')
     DataSet = DM_Bill.Uni_arch
     BCDToCurrency = False
-    Left = 488
-    Top = 512
+    Left = 336
+    Top = 696
   end
   object frxDBData_arch3: TfrxDBDataset
     UserName = 'frxDBData_arch3'
@@ -2048,8 +2051,8 @@ object DM_Bill2: TDM_Bill2
       'PEN_CUR=PEN_CUR')
     DataSet = DM_Bill.Uni_arch
     BCDToCurrency = False
-    Left = 520
-    Top = 512
+    Left = 336
+    Top = 752
   end
   object OD_t_org2: TOracleDataSet
     SQL.Strings = (
@@ -2093,8 +2096,8 @@ object DM_Bill2: TDM_Bill2
     MasterFields = 'org'
     DetailFields = 'org'
     Session = DataModule1.OracleSession1
-    Left = 80
-    Top = 432
+    Left = 160
+    Top = 304
   end
   object frxDBDataset13: TfrxDBDataset
     UserName = 'frxDB_t_org2'
@@ -2137,8 +2140,8 @@ object DM_Bill2: TDM_Bill2
       'BANK_CD=BANK_CD')
     DataSet = OD_t_org2
     BCDToCurrency = False
-    Left = 112
-    Top = 432
+    Left = 224
+    Top = 304
   end
   object OD_data4: TOracleDataSet
     SQL.Strings = (
@@ -2159,8 +2162,8 @@ object DM_Bill2: TDM_Bill2
     DetailFields = 'lsk; mg'
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Left = 144
-    Top = 464
+    Left = 24
+    Top = 520
   end
   object frxDBDataset14: TfrxDBDataset
     UserName = 'frxDB_kart_pr'
@@ -2171,7 +2174,7 @@ object DM_Bill2: TDM_Bill2
       'RL_NAME=RL_NAME')
     DataSet = OD_data4
     BCDToCurrency = False
-    Left = 176
-    Top = 464
+    Left = 88
+    Top = 520
   end
 end
