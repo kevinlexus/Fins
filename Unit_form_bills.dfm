@@ -1,6 +1,6 @@
 object Form_print_bills: TForm_print_bills
-  Left = 423
-  Top = 215
+  Left = 387
+  Top = 193
   Width = 533
   Height = 491
   BorderIcons = [biSystemMenu, biMinimize]
@@ -263,6 +263,7 @@ object Form_print_bills: TForm_print_bills
           FieldName = 'NAME'
         end>
       Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = DM_Bill2.DS_ls_cnt
       Properties.OnPopup = cxLookupComboBox4PropertiesPopup
       TabOrder = 4
       Width = 65

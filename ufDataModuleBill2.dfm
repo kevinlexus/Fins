@@ -1,7 +1,7 @@
 object DM_Bill2: TDM_Bill2
   OldCreateOrder = False
-  Left = 687
-  Top = 124
+  Left = 1045
+  Top = 178
   Height = 844
   Width = 685
   object OD_mg: TOracleDataSet
