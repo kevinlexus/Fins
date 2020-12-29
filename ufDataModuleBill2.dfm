@@ -1,7 +1,7 @@
 object DM_Bill2: TDM_Bill2
   OldCreateOrder = False
-  Left = 1045
-  Top = 178
+  Left = 709
+  Top = 158
   Height = 844
   Width = 685
   object OD_mg: TOracleDataSet
@@ -143,23 +143,31 @@ object DM_Bill2: TDM_Bill2
       'union all'
       'select distinct scott.utils.f_order(k.kw, 7) as ord1,'
       '       scott.utils.f_order2(k.kw) as ord2,'
-      '       LTRIM(k.kw, '#39'0'#39')||'#39'  '#39'|| '
       
-        '     case when lag(k.kw,1) over (order by k.reu, k.house_id, sco' +
-        'tt.utils.f_order(k.kw, 7), scott.utils.f_order2(k.kw))=k.kw or '
+        '       LTRIM(k.kw, '#39'0'#39')||'#39'    '#39'||  '#39#1092'.'#1083#1080#1094'.:'#39'||to_char(k.k_lsk_id' +
+        ')'
+      
+        '    /* case when lag(k.kw,1) over (order by k.reu, k.house_id, s' +
+        'cott.utils.f_order(k.kw, 7), scott.utils.f_order2(k.kw))=k.kw or' +
+        ' '
       
         '                     lead(k.kw,1) over (order by k.reu, k.house_' +
         'id, scott.utils.f_order(k.kw, 7), scott.utils.f_order2(k.kw))=k.' +
-        'kw then '#39'k_lsk_id:'#39'||to_char(k.k_lsk_id) else '#39#39' end as kw,'
-      '       null as lsk,'
+        'kw then '#39#1092'.'#1083#1080#1094'.:'#39'||to_char(k.k_lsk_id) else '#39#39' end as kw*/,'
+      '       k.lsk as lsk,'
       '       k.kw as kw_id,'
       '       null as fio,'
       '       null as c_lsk_id,'
       '       k.k_lsk_id,'
       '       null as kpr,'
       '       null as opl'
-      '  from scott.kart k, scott.v_lsk_tp tp'
-      ' where k.reu=:reu and k.kul=:kul and k.nd=:nd_id'
+      
+        '--       s.name || '#39', '#39' || nvl(ltrim(k.nd, '#39'0'#39'), '#39'0'#39') || '#39'-'#39' ||n' +
+        'vl(ltrim(k.kw, '#39'0'#39'), '#39'0'#39') as adr'
+      '  from scott.kart k, scott.v_lsk_tp tp--, scott.spul s'
+      
+        ' where k.reu=:reu and k.kul=:kul and k.nd=:nd_id-- and k.kul=s.i' +
+        'd'
       '-- where k.house_id = :house_id'
       'and k.fk_tp=tp.id'
       ' order by ord1, ord2')
@@ -1755,11 +1763,11 @@ object DM_Bill2: TDM_Bill2
     SQL.Strings = (
       
         'select '#39'0'#39' as id, '#39#1040#1076#1088#1077#1089#1091#39' as name from dual where :var_ in (0,1' +
-        ',2,3,4,5,6,7)'
+        ',2,3,4,5,6,7,8,9)'
       'union all'
       
         'select '#39'1'#39' as id, '#39#1051#1080#1094#1077#1074#1086#1084#1091' '#1089#1095#1077#1090#1091#39' as name from dual where :var_' +
-        ' in (0,1,2,3,4,5,6,7)'
+        ' in (0,1,2,3,4,5,6,7,8,9)'
       'union all'
       
         'select '#39'2'#39' as id, '#39#1059#1050#39' as name from dual where  :var_ in (0,1,4,' +

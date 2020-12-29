@@ -1,6 +1,6 @@
 object Form_chargepay: TForm_chargepay
-  Left = 837
-  Top = 207
+  Left = 201
+  Top = 367
   Width = 835
   Height = 482
   BorderIcons = [biSystemMenu, biMinimize]
@@ -1630,5 +1630,18 @@ object Form_chargepay: TForm_chargepay
     Datasets = <>
     Variables = <>
     Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 210.000000000000000000
+      PaperHeight = 297.000000000000000000
+      PaperSize = 9
+      LeftMargin = 10.000000000000000000
+      RightMargin = 10.000000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
+    end
   end
 end

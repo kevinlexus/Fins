@@ -1,9 +1,9 @@
 object DM_Bill: TDM_Bill
   OldCreateOrder = False
-  Left = 1370
-  Top = 221
-  Height = 607
-  Width = 470
+  Left = 1378
+  Top = 147
+  Height = 855
+  Width = 512
   object Uni_cmp_main: TUniQuery
     Connection = DataModule1.UniConnection1
     SQL.Strings = (
@@ -898,5 +898,56 @@ object DM_Bill: TDM_Bill
     DataSet = Uni_postcode
     Left = 312
     Top = 208
+  end
+  object DS_chargepay: TDataSource
+    DataSet = Uni_chargepay
+    Left = 96
+    Top = 536
+  end
+  object frxDB_chargepay: TfrxDBDataset
+    UserName = 'frxDB_chargepay'
+    CloseDataSource = False
+    DataSource = DS_chargepay
+    BCDToCurrency = False
+    Left = 160
+    Top = 536
+  end
+  object Uni_chargepay: TUniQuery
+    Connection = DataModule1.UniConnection1
+    SQL.Strings = (
+      'begin'
+      '  -- Call the procedure'
+      '  scott.rep_bills_compound.get_chargepay(p_lsk => :lsk,'
+      '                                   p_mg_from => :p_mg_from,'
+      '                                   p_mg_to => :p_mg_to,'
+      '                                   p_rfcur => :p_rfcur);'
+      'end;')
+    MasterSource = DS_cmp_main
+    MasterFields = 'lsk'
+    DetailFields = 'lsk'
+    Constraints = <>
+    Left = 32
+    Top = 536
+    ParamData = <
+      item
+        DataType = ftString
+        Name = 'lsk'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'p_mg_from'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'p_mg_to'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftCursor
+        Name = 'p_rfcur'
+        Value = 'Object'
+      end>
   end
 end

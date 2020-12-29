@@ -3,7 +3,7 @@ unit ufDataModuleBill;
 interface
 
 uses
-  SysUtils, Classes, DB, MemDS, DBAccess, Uni;
+  SysUtils, Classes, DB, MemDS, DBAccess, Uni, frxClass, frxDBSet;
 
 type
   TDM_Bill = class(TDataModule)
@@ -28,6 +28,9 @@ type
     Uni_rep2: TUniQuery;
     Uni_postcode: TUniQuery;
     DS_postcode: TDataSource;
+    DS_chargepay: TDataSource;
+    frxDB_chargepay: TfrxDBDataset;
+    Uni_chargepay: TUniQuery;
   private
     { Private declarations }
   public

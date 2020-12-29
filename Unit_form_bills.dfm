@@ -1,8 +1,8 @@
 object Form_print_bills: TForm_print_bills
-  Left = 387
-  Top = 193
-  Width = 533
-  Height = 491
+  Left = 300
+  Top = 129
+  Width = 471
+  Height = 479
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #1057#1095#1077#1090#1072' '#1085#1072' '#1086#1087#1083#1072#1090#1091' '#1091#1089#1083#1091#1075' '#1046#1050#1061
   Color = clBtnFace
@@ -93,7 +93,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox1: TGroupBox
     Left = 0
     Top = 345
-    Width = 517
+    Width = 438
     Height = 61
     Align = alTop
     TabOrder = 3
@@ -138,7 +138,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox2: TGroupBox
     Left = 0
     Top = 0
-    Width = 517
+    Width = 438
     Height = 105
     Align = alTop
     TabOrder = 0
@@ -281,7 +281,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox3: TGroupBox
     Left = 0
     Top = 145
-    Width = 517
+    Width = 438
     Height = 200
     Align = alTop
     TabOrder = 2
@@ -398,7 +398,7 @@ object Form_print_bills: TForm_print_bills
       DropDownBox.Width = 200
       Enabled = False
       EditButtons = <>
-      KeyField = 'K_LSK_ID'
+      KeyField = 'LSK'
       ListField = 'KW'
       ListSource = DM_Bill2.DS_kw
       TabOrder = 6
@@ -582,7 +582,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox4: TGroupBox
     Left = 0
     Top = 406
-    Width = 517
+    Width = 438
     Height = 37
     Align = alTop
     TabOrder = 4
@@ -596,8 +596,8 @@ object Form_print_bills: TForm_print_bills
     end
   end
   object pnl1: TPanel
-    Left = 136
-    Top = 208
+    Left = 144
+    Top = 224
     Width = 185
     Height = 41
     Caption = #1047#1072#1075#1088#1091#1079#1082#1072'...'
@@ -607,7 +607,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox5: TGroupBox
     Left = 0
     Top = 105
-    Width = 517
+    Width = 438
     Height = 40
     Align = alTop
     Caption = #1060#1080#1083#1100#1090#1088' '#1087#1077#1088#1080#1086#1076#1072
@@ -660,8 +660,8 @@ object Form_print_bills: TForm_print_bills
     PreviewOptions.Zoom = 1.000000000000000000
     PrintOptions.Printer = #1055#1086' '#1091#1084#1086#1083#1095#1072#1085#1080#1102
     PrintOptions.PrintOnSheet = 0
-    ReportOptions.CreateDate = 43396.392157245400000000
-    ReportOptions.LastChange = 43440.464695092600000000
+    ReportOptions.CreateDate = 40100.574150914400000000
+    ReportOptions.LastChange = 44194.665912152780000000
     ScriptLanguage = 'PascalScript'
     StoreInDFM = False
     OnReportPrint = 'frxReport1OnReportPrint'

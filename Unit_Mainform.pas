@@ -908,7 +908,7 @@ begin
     FreeLibrary(HLib);
   end
   else
-    ShowMessage(Format('Library %s was not found', [LibName]));
+    ShowMessage(Format('Library %s not found', [LibName]));
 end;
 
 procedure TForm_Main.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -2612,7 +2612,7 @@ begin
     nil, SW_SHOWNORMAL)
     {  if FF('frmLog', 1) = 0 then
 begin
-  Application.CreateForm(TfrmLog, frmLog);
+Application.CreateForm(TfrmLog, frmLog);
 end;}
 end;
 
