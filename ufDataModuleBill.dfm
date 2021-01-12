@@ -1,7 +1,7 @@
 object DM_Bill: TDM_Bill
   OldCreateOrder = False
-  Left = 1378
-  Top = 147
+  Left = 1368
+  Top = 161
   Height = 855
   Width = 512
   object Uni_cmp_main: TUniQuery
@@ -899,17 +899,12 @@ object DM_Bill: TDM_Bill
     Left = 312
     Top = 208
   end
-  object DS_chargepay: TDataSource
-    DataSet = Uni_chargepay
-    Left = 96
-    Top = 536
-  end
   object frxDB_chargepay: TfrxDBDataset
     UserName = 'frxDB_chargepay'
     CloseDataSource = False
-    DataSource = DS_chargepay
+    DataSet = Uni_chargepay
     BCDToCurrency = False
-    Left = 160
+    Left = 152
     Top = 536
   end
   object Uni_chargepay: TUniQuery
@@ -929,6 +924,59 @@ object DM_Bill: TDM_Bill
     Left = 32
     Top = 536
     ParamData = <
+      item
+        DataType = ftString
+        Name = 'lsk'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'p_mg_from'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'p_mg_to'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftCursor
+        Name = 'p_rfcur'
+        Value = 'Object'
+      end>
+  end
+  object frxdbdtstDBD_rep_lsk: TfrxDBDataset
+    UserName = 'rep_lsk'
+    CloseDataSource = False
+    DataSet = Uni_rep_penya
+    BCDToCurrency = False
+    Left = 152
+    Top = 594
+  end
+  object Uni_rep_penya: TUniQuery
+    Connection = DataModule1.UniConnection1
+    SQL.Strings = (
+      'begin'
+      '  -- Call the procedure'
+      '  scott.rep_lsk.rep(p_rep_cd => :p_rep_cd,'
+      '              p_lsk => :lsk,'
+      '              p_mg1 => :p_mg_from,'
+      '              p_mg2 => :p_mg_to,'
+      '              prep_refcursor => :p_rfcur);'
+      'end;'
+      '')
+    MasterSource = DS_cmp_main
+    MasterFields = 'lsk'
+    DetailFields = 'lsk'
+    Constraints = <>
+    Left = 32
+    Top = 592
+    ParamData = <
+      item
+        DataType = ftString
+        Name = 'p_rep_cd'
+        ParamType = ptInput
+      end
       item
         DataType = ftString
         Name = 'lsk'

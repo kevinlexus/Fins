@@ -2381,7 +2381,6 @@ begin
       //Образец вызова модальной формы с передачей параметров!
       Application.CreateForm(TfrmTwoPeriods, frmTwoPeriods);
       frmTwoPeriods.set_rep('93');
-      //DataModule1.DS_period1.DataSet:=DataModule1.DS_period1
       frmTwoPeriods.chk1.Enabled := False;
       //отключить возможность выбора текущ. периода
       if (frmTwoPeriods.ShowModal = mrOk) then

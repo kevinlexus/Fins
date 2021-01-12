@@ -1,9 +1,9 @@
 object DM_Bill2: TDM_Bill2
   OldCreateOrder = False
-  Left = 709
-  Top = 158
+  Left = 885
+  Top = 160
   Height = 844
-  Width = 685
+  Width = 489
   object OD_mg: TOracleDataSet
     SQL.Strings = (
       

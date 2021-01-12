@@ -28,9 +28,10 @@ type
     Uni_rep2: TUniQuery;
     Uni_postcode: TUniQuery;
     DS_postcode: TDataSource;
-    DS_chargepay: TDataSource;
     frxDB_chargepay: TfrxDBDataset;
     Uni_chargepay: TUniQuery;
+    frxdbdtstDBD_rep_lsk: TfrxDBDataset;
+    Uni_rep_penya: TUniQuery;
   private
     { Private declarations }
   public

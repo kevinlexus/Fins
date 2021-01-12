@@ -1,8 +1,8 @@
 object Form_print_bills: TForm_print_bills
-  Left = 300
-  Top = 129
-  Width = 471
-  Height = 479
+  Left = 1292
+  Top = 303
+  Width = 457
+  Height = 491
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #1057#1095#1077#1090#1072' '#1085#1072' '#1086#1087#1083#1072#1090#1091' '#1091#1089#1083#1091#1075' '#1046#1050#1061
   Color = clBtnFace
@@ -93,10 +93,10 @@ object Form_print_bills: TForm_print_bills
   object GroupBox1: TGroupBox
     Left = 0
     Top = 345
-    Width = 438
+    Width = 441
     Height = 61
     Align = alTop
-    TabOrder = 3
+    TabOrder = 2
     object Button1: TButton
       Left = 232
       Top = 22
@@ -138,13 +138,13 @@ object Form_print_bills: TForm_print_bills
   object GroupBox2: TGroupBox
     Left = 0
     Top = 0
-    Width = 438
+    Width = 441
     Height = 105
     Align = alTop
     TabOrder = 0
     object Label3: TLabel
       Left = 8
-      Top = 40
+      Top = 48
       Width = 86
       Height = 13
       Caption = #1055#1077#1088#1080#1086#1076' '#1086#1090#1095#1077#1090#1072', '#1089
@@ -195,26 +195,13 @@ object Form_print_bills: TForm_print_bills
       Caption = #1080#1085#1076#1077#1082#1089
       Enabled = False
     end
-    object DBLookupComboboxEh1: TDBLookupComboboxEh
-      Left = 96
-      Top = 40
-      Width = 129
-      Height = 21
-      EditButtons = <>
-      KeyField = 'MG'
-      ListField = 'MG1'
-      ListSource = DM_Bill2.DS_mg
-      TabOrder = 0
-      Visible = True
-      OnCloseUp = DBLookupComboboxEh1CloseUp
-    end
     object Edit1: TEdit
       Left = 280
       Top = 56
       Width = 57
       Height = 21
       Enabled = False
-      TabOrder = 1
+      TabOrder = 0
       OnChange = Edit1Change
     end
     object cxLookupComboBox2: TcxLookupComboBox
@@ -231,7 +218,7 @@ object Form_print_bills: TForm_print_bills
         end>
       Properties.ListOptions.ShowHeader = False
       Properties.ListSource = DM_Bill.DS_postcode
-      TabOrder = 2
+      TabOrder = 1
       Width = 105
     end
     object cx3: TcxLookupComboBox
@@ -247,7 +234,7 @@ object Form_print_bills: TForm_print_bills
       Properties.ListOptions.ShowHeader = False
       Properties.ListSource = DM_Bill2.DS_sel_obj
       Properties.OnCloseUp = cxLookupComboBox3PropertiesCloseUp
-      TabOrder = 3
+      TabOrder = 2
       Width = 129
     end
     object cxLookupComboBox4: TcxLookupComboBox
@@ -265,7 +252,7 @@ object Form_print_bills: TForm_print_bills
       Properties.ListOptions.ShowHeader = False
       Properties.ListSource = DM_Bill2.DS_ls_cnt
       Properties.OnPopup = cxLookupComboBox4PropertiesPopup
-      TabOrder = 4
+      TabOrder = 3
       Width = 65
     end
     object cxImageComboBox2: TcxImageComboBox
@@ -274,17 +261,47 @@ object Form_print_bills: TForm_print_bills
       Properties.Items = <>
       Properties.OnChange = cxImageComboBox2PropertiesChange
       Properties.OnCloseUp = cxImageComboBox2PropertiesCloseUp
-      TabOrder = 5
+      TabOrder = 4
       Width = 129
+    end
+    object lkpMgFrom: TcxLookupComboBox
+      Left = 96
+      Top = 40
+      Properties.DropDownSizeable = True
+      Properties.GridMode = True
+      Properties.KeyFieldNames = 'MG'
+      Properties.ListColumns = <
+        item
+          FieldName = 'MG1'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = DM_Bill2.DS_mg
+      TabOrder = 5
+      Width = 97
+    end
+    object lkpMgTo: TcxLookupComboBox
+      Left = 96
+      Top = 72
+      Properties.DropDownSizeable = True
+      Properties.GridMode = True
+      Properties.KeyFieldNames = 'MG'
+      Properties.ListColumns = <
+        item
+          FieldName = 'MG1'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = DM_Bill2.DS_mg1
+      TabOrder = 6
+      Width = 97
     end
   end
   object GroupBox3: TGroupBox
     Left = 0
     Top = 145
-    Width = 438
+    Width = 441
     Height = 200
     Align = alTop
-    TabOrder = 2
+    TabOrder = 1
     object Label5: TLabel
       Left = 8
       Top = 28
@@ -566,26 +583,13 @@ object Form_print_bills: TForm_print_bills
       OnClick = CheckBox7Click
     end
   end
-  object DBLookupComboboxEh5: TDBLookupComboboxEh
-    Left = 96
-    Top = 72
-    Width = 129
-    Height = 21
-    EditButtons = <>
-    KeyField = 'MG'
-    ListField = 'MG1'
-    ListSource = DM_Bill2.DS_mg1
-    TabOrder = 1
-    Visible = False
-    OnCloseUp = DBLookupComboboxEh5CloseUp
-  end
   object GroupBox4: TGroupBox
     Left = 0
     Top = 406
-    Width = 438
+    Width = 441
     Height = 37
     Align = alTop
-    TabOrder = 4
+    TabOrder = 3
     object filePath: TEdit
       Left = 8
       Top = 10
@@ -597,21 +601,21 @@ object Form_print_bills: TForm_print_bills
   end
   object pnl1: TPanel
     Left = 144
-    Top = 224
+    Top = 176
     Width = 185
     Height = 41
     Caption = #1047#1072#1075#1088#1091#1079#1082#1072'...'
-    TabOrder = 5
+    TabOrder = 4
     Visible = False
   end
   object GroupBox5: TGroupBox
     Left = 0
     Top = 105
-    Width = 438
+    Width = 441
     Height = 40
     Align = alTop
     Caption = #1060#1080#1083#1100#1090#1088' '#1087#1077#1088#1080#1086#1076#1072
-    TabOrder = 6
+    TabOrder = 5
     Visible = False
     object Label16: TLabel
       Left = 232
