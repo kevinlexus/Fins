@@ -59,6 +59,16 @@ type
     cxGrid1DBTableView1FK_KLSK_PREMISE: TcxGridDBColumn;
     OD_kartExtFK_KLSK_ID: TFloatField;
     cxGrid1DBTableView1FK_KLSK_ID: TcxGridDBColumn;
+    OD_kartExtLSK_1: TStringField;
+    OD_kartExtFK_KLSK_PREMISE_1: TFloatField;
+    OD_kartExtINSAL: TFloatField;
+    OD_kartExtCHRG: TFloatField;
+    OD_kartExtPAYMENT: TFloatField;
+    OD_kartExtOUTSAL: TFloatField;
+    cxGrid1DBTableView1INSAL: TcxGridDBColumn;
+    cxGrid1DBTableView1CHRG: TcxGridDBColumn;
+    cxGrid1DBTableView1PAYMENT: TcxGridDBColumn;
+    cxGrid1DBTableView1OUTSAL: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ToolButton1Click(Sender: TObject);
@@ -78,11 +88,26 @@ var
 
 implementation
 
+uses Unit_Mainform, Utils;
+
 {$R *.dfm}
 
 procedure TfrmKartExt.FormCreate(Sender: TObject);
 begin
   OD_kartExt.Active := True;
+  if getDoublePar(Form_main.paramList, 'EXT_LSK_LOAD_TP') = 0 then
+    begin
+      // Полыс
+      cxGrid1DBTableView1INSAL.Visible:=false;
+      cxGrid1DBTableView1CHRG.Visible:=false;
+      cxGrid1DBTableView1PAYMENT.Visible:=false;
+      cxGrid1DBTableView1OUTSAL.Visible:=false;
+    end
+    else
+    begin
+      // Кис
+    end;
+  
 end;
 
 procedure TfrmKartExt.FormClose(Sender: TObject; var Action: TCloseAction);

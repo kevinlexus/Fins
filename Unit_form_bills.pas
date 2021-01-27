@@ -141,6 +141,8 @@ type
     procedure cxImageComboBox2PropertiesCloseUp(Sender: TObject);
     procedure cxImageComboBox2PropertiesChange(Sender: TObject);
     procedure selVar();
+    procedure lkpMgFromPropertiesCloseUp(Sender: TObject);
+    procedure lkpMgToPropertiesCloseUp(Sender: TObject);
   private
     cnt_sch_: Integer;
     tp_: Integer;
@@ -1899,6 +1901,25 @@ begin
   value :=
     TcxImageComboBox(Sender).Properties.Items[TcxImageComboBox(Sender).ItemIndex].ImageIndex;
   tp_ := VarToInt(value);
+end;
+
+procedure TForm_print_bills.lkpMgFromPropertiesCloseUp(Sender: TObject);
+begin
+  if sel_obj_ = 2 then
+    sel_ls_cnt;
+  DM_Bill2.OD_spr_services.SetVariable('p_mg', lkpMgFrom.EditValue);
+  DM_Bill2.OD_spr_services.Active := False;
+  DM_Bill2.OD_spr_services.Active := True;
+  cxLookupComboBox1.EditValue :=
+    DM_Bill2.OD_spr_services.FieldByName('FNAME_SCH').AsString;
+    
+end;
+
+procedure TForm_print_bills.lkpMgToPropertiesCloseUp(Sender: TObject);
+begin
+  if sel_obj_ = 2 then
+    sel_ls_cnt;
+
 end;
 
 end.

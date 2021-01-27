@@ -78,6 +78,13 @@ type
     Button4: TButton;
     cxDateEdit3: TcxDateEdit;
     Label4: TLabel;
+    OD_loadKartExtINSAL: TFloatField;
+    OD_loadKartExtCHRG: TFloatField;
+    OD_loadKartExtPAYMENT: TFloatField;
+    OD_loadKartExtKW: TStringField;
+    cxGrid1DBTableView1INSAL: TcxGridDBColumn;
+    cxGrid1DBTableView1CHRG: TcxGridDBColumn;
+    cxGrid1DBTableView1PAYMENT: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
@@ -121,6 +128,21 @@ begin
   OD_not_linked.Active:=false;
   OD_not_linked.Active:=true;
   PageControl1.ActivePageIndex:=0;
+
+  if getDoublePar(Form_main.paramList, 'EXT_LSK_LOAD_TP') = 0 then
+    begin
+      // Полыс
+      cxGrid1DBTableView1INSAL.Visible:=false;
+      cxGrid1DBTableView1CHRG.Visible:=false;
+      cxGrid1DBTableView1PAYMENT.Visible:=false;
+      cxGrid1DBTableView1SUMMA.Visible:=false;
+    end
+    else
+    begin
+      // Кис
+      TabSheet2.TabVisible:=False;
+    end;
+    
 end;
 
 procedure TfrmLoadKartExt.FormClose(Sender: TObject;
@@ -200,20 +222,45 @@ begin
   // цвет записи
   col := cxGrid1DBTableView1.GetColumnByFieldName('STATUS');
   s := AViewInfo.GridRecord.DisplayTexts[col.Index];
-  if s = '0' then
-  begin
-    // принять к загрузке
-  end
-  else if s = '2' then
-  begin
-    // ошибка
-    ACanvas.Font.Color := clRed;
-  end
-  else if s = '1' then
-  begin
-    // уже загружен (неактивная запись)
-    ACanvas.Font.Color := clGray;
-  end;
+    if getDoublePar(Form_main.paramList, 'EXT_LSK_LOAD_TP') = 0 then
+    begin
+      // Полыс
+      if s = '0' then
+      begin
+        // принять к загрузке
+      end
+      else if s = '2' then
+      begin
+        // ошибка
+        ACanvas.Font.Color := clRed;
+      end
+      else if s = '1' then
+      begin
+        // уже загружен (неактивная запись)
+        ACanvas.Font.Color := clGray;
+      end;
+    end
+    else
+    begin
+      // Кис
+      if s = '1' then
+      begin
+        // не обрабатывать (отмечено пользователем, как неактивная запись)
+        ACanvas.Font.Color := clGray;
+      end
+      else if s = '2' then
+      begin
+        // ошибка - внешний лиц.сч. дублируется в файле
+        ACanvas.Font.Color := clRed;
+      end
+      else if (s = '7') or (s = '8') or (s = '9') then
+      begin
+        // необходимо привязать лиц.счет вручную, или проверить привязку к лиц.счету
+        ACanvas.Font.Color := clBlue;
+      end;
+
+    end;
+
 end;
 
 // выгрузка платежей по внешним лиц.счетам

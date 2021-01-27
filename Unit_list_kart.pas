@@ -671,6 +671,7 @@ begin
     SetVariable('flt_k_lsk_id_', Form_Main.flt_k_lsk_id_);
     SetVariable('flt_klsk_premise', Form_Main.flt_klsk_premise);
     SetVariable('flt_single_house_', Form_Main.flt_single_house_);
+    SetVariable('var3_', 0);
     if Form_Main.search_type_ = 9 then
     begin
       OD_list_kart.SetVariable('SUBSTEXP4',

@@ -1,6 +1,6 @@
 object Form_print_bills: TForm_print_bills
-  Left = 1292
-  Top = 303
+  Left = 420
+  Top = 169
   Width = 457
   Height = 491
   BorderIcons = [biSystemMenu, biMinimize]
@@ -276,6 +276,7 @@ object Form_print_bills: TForm_print_bills
         end>
       Properties.ListOptions.ShowHeader = False
       Properties.ListSource = DM_Bill2.DS_mg
+      Properties.OnCloseUp = lkpMgFromPropertiesCloseUp
       TabOrder = 5
       Width = 97
     end
@@ -291,6 +292,7 @@ object Form_print_bills: TForm_print_bills
         end>
       Properties.ListOptions.ShowHeader = False
       Properties.ListSource = DM_Bill2.DS_mg1
+      Properties.OnCloseUp = lkpMgToPropertiesCloseUp
       TabOrder = 6
       Width = 97
     end

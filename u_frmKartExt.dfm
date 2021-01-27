@@ -1,7 +1,7 @@
 object frmKartExt: TfrmKartExt
-  Left = 642
-  Top = 350
-  Width = 868
+  Left = 418
+  Top = 198
+  Width = 1086
   Height = 530
   Caption = #1042#1085#1077#1096#1085#1080#1077' '#1083#1080#1094'.'#1089#1095#1077#1090#1072
   Color = clBtnFace
@@ -92,7 +92,7 @@ object frmKartExt: TfrmKartExt
   object Panel1: TPanel
     Left = 0
     Top = 450
-    Width = 852
+    Width = 1070
     Height = 41
     Align = alBottom
     TabOrder = 0
@@ -112,7 +112,7 @@ object frmKartExt: TfrmKartExt
   object cxGrid1: TcxGrid
     Left = 0
     Top = 29
-    Width = 852
+    Width = 1070
     Height = 421
     Align = alClient
     TabOrder = 1
@@ -132,22 +132,22 @@ object frmKartExt: TfrmKartExt
       object cxGrid1DBTableView1REU: TcxGridDBColumn
         Caption = #1050#1086#1076' '#1059#1050
         DataBinding.FieldName = 'REU'
-        Width = 34
+        Width = 33
       end
       object cxGrid1DBTableView1NAME_REU: TcxGridDBColumn
         Caption = #1059#1050
         DataBinding.FieldName = 'NAME_REU'
-        Width = 72
+        Width = 69
       end
       object cxGrid1DBTableView1EXT_LSK: TcxGridDBColumn
         Caption = #1042#1085#1077#1096#1085#1080#1081' '#1083#1080#1094'.'#1089#1095'.'
         DataBinding.FieldName = 'EXT_LSK'
-        Width = 57
+        Width = 55
       end
       object cxGrid1DBTableView1LSK: TcxGridDBColumn
         Caption = #1051#1080#1094'.'#1089#1095'.'
         DataBinding.FieldName = 'LSK'
-        Width = 82
+        Width = 56
       end
       object cxGrid1DBTableView1FK_KLSK_ID: TcxGridDBColumn
         Caption = 'KLSK '#1060#1080#1085'.'#1083#1080#1094'.'
@@ -157,7 +157,7 @@ object frmKartExt: TfrmKartExt
       object cxGrid1DBTableView1FK_KLSK_PREMISE: TcxGridDBColumn
         Caption = 'KLSK '#1055#1086#1084#1077#1097'.'
         DataBinding.FieldName = 'FK_KLSK_PREMISE'
-        Width = 50
+        Width = 49
       end
       object cxGrid1DBTableView1FIO: TcxGridDBColumn
         Caption = #1060'.'#1048'.'#1054'.'
@@ -167,7 +167,7 @@ object frmKartExt: TfrmKartExt
       object cxGrid1DBTableView1KUL: TcxGridDBColumn
         Caption = #1050#1086#1076'.'#1091#1083'.'
         DataBinding.FieldName = 'KUL'
-        Width = 41
+        Width = 40
       end
       object cxGrid1DBTableView1NAME: TcxGridDBColumn
         Caption = #1059#1083#1080#1094#1072
@@ -187,7 +187,7 @@ object frmKartExt: TfrmKartExt
       object cxGrid1DBTableView1KPR: TcxGridDBColumn
         Caption = #1050#1086#1083'-'#1074#1086' '#1087#1088#1086#1078'.'
         DataBinding.FieldName = 'KPR'
-        Width = 55
+        Width = 54
       end
       object cxGrid1DBTableView1OPL: TcxGridDBColumn
         Caption = #1054#1073#1097'.'#1087#1083'.'
@@ -202,7 +202,7 @@ object frmKartExt: TfrmKartExt
       object cxGrid1DBTableView1DT_UPD: TcxGridDBColumn
         Caption = #1054#1073#1085#1086#1074#1083#1105#1085
         DataBinding.FieldName = 'DT_UPD'
-        Width = 63
+        Width = 61
       end
       object cxGrid1DBTableView1PSCH: TcxGridDBColumn
         DataBinding.FieldName = 'PSCH'
@@ -218,7 +218,27 @@ object frmKartExt: TfrmKartExt
         PropertiesClassName = 'TcxCheckBoxProperties'
         Properties.ValueChecked = 1
         Properties.ValueUnchecked = 0
-        Width = 48
+        Width = 49
+      end
+      object cxGrid1DBTableView1INSAL: TcxGridDBColumn
+        Caption = #1042#1093'.'#1086#1089#1090#1072#1090#1086#1082
+        DataBinding.FieldName = 'INSAL'
+        Width = 63
+      end
+      object cxGrid1DBTableView1CHRG: TcxGridDBColumn
+        Caption = #1053#1072#1095#1080#1089#1083#1077#1085#1086
+        DataBinding.FieldName = 'CHRG'
+        Width = 64
+      end
+      object cxGrid1DBTableView1PAYMENT: TcxGridDBColumn
+        Caption = #1054#1087#1083#1072#1095#1077#1085#1086
+        DataBinding.FieldName = 'PAYMENT'
+        Width = 63
+      end
+      object cxGrid1DBTableView1OUTSAL: TcxGridDBColumn
+        Caption = #1048#1089#1093'.'#1086#1089#1090#1072#1090#1086#1082
+        DataBinding.FieldName = 'OUTSAL'
+        Width = 64
       end
     end
     object cxGrid1Level1: TcxGridLevel
@@ -228,7 +248,7 @@ object frmKartExt: TfrmKartExt
   object ToolBar1: TToolBar
     Left = 0
     Top = 0
-    Width = 852
+    Width = 1070
     Height = 29
     Caption = 'ToolBar1'
     Images = Form_Main.ImageList3
@@ -263,7 +283,9 @@ object frmKartExt: TfrmKartExt
       
         'r.reu||'#39'-'#39'||r.name_reu as name_reu, k.kul, s.name, ltrim(k.nd,'#39'0' +
         #39') as n_nd, ltrim(k.kw,'#39'0'#39') as n_kw,'
-      'k.psch, k.kpr, k.opl, u.cd as lsk_tp_cd, e.v, e.fk_klsk_premise'
+      
+        'k.psch, k.kpr, k.opl, u.cd as lsk_tp_cd, e.v, e.fk_klsk_premise,' +
+        ' e.insal, e.chrg, e.payment, e.outsal'
       'from scott.kart_ext e'
       
         'join scott.kart k on (e.lsk=k.lsk or e.fk_klsk_premise=k.fk_klsk' +
@@ -317,7 +339,7 @@ object frmKartExt: TfrmKartExt
       '*/')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000014000000070000004558545F4C534B0100000000000300000046494F
+      0400000018000000070000004558545F4C534B0100000000000300000046494F
       010000000000030000004C534B0100000000000600000044545F435254010000
       0000000600000044545F555044010000000000080000004E414D455F52455501
       0000000000030000004B554C010000000000040000004E414D45010000000000
@@ -327,7 +349,9 @@ object frmKartExt: TfrmKartExt
       0000000001000000560100000000000F000000464B5F4B4C534B5F5052454D49
       53450100000000000A000000464B5F4B4C534B5F494401000000000005000000
       4C534B5F3101000000000011000000464B5F4B4C534B5F5052454D4953455F31
-      010000000000}
+      01000000000005000000494E53414C0100000000000400000043485247010000
+      000000070000005041594D454E54010000000000060000004F555453414C0100
+      00000000}
     ReadOnly = True
     RefreshOptions = [roBeforeEdit, roAfterUpdate, roAllFields]
     Session = DataModule1.OracleSession1
@@ -411,6 +435,25 @@ object frmKartExt: TfrmKartExt
     end
     object OD_kartExtFK_KLSK_ID: TFloatField
       FieldName = 'FK_KLSK_ID'
+    end
+    object OD_kartExtLSK_1: TStringField
+      FieldName = 'LSK_1'
+      Size = 8
+    end
+    object OD_kartExtFK_KLSK_PREMISE_1: TFloatField
+      FieldName = 'FK_KLSK_PREMISE_1'
+    end
+    object OD_kartExtINSAL: TFloatField
+      FieldName = 'INSAL'
+    end
+    object OD_kartExtCHRG: TFloatField
+      FieldName = 'CHRG'
+    end
+    object OD_kartExtPAYMENT: TFloatField
+      FieldName = 'PAYMENT'
+    end
+    object OD_kartExtOUTSAL: TFloatField
+      FieldName = 'OUTSAL'
     end
   end
   object DS_kartExt: TDataSource
