@@ -1,6 +1,6 @@
 object frmLoadKartExt: TfrmLoadKartExt
-  Left = 322
-  Top = 498
+  Left = 390
+  Top = 418
   Width = 1045
   Height = 520
   Caption = #1047#1072#1075#1088#1091#1079#1082#1072' '#1074#1085#1077#1096#1085#1080#1093' '#1083#1080#1094'.'#1089#1095#1077#1090#1086#1074
@@ -103,7 +103,7 @@ object frmLoadKartExt: TfrmLoadKartExt
         Left = 0
         Top = 41
         Width = 1021
-        Height = 371
+        Height = 330
         Align = alClient
         TabOrder = 0
         object cxGrid1DBTableView1: TcxGridDBTableView
@@ -199,6 +199,14 @@ object frmLoadKartExt: TfrmLoadKartExt
             Caption = #1048#1089#1093'.'#1086#1089#1090#1072#1090#1086#1082
             DataBinding.FieldName = 'SUMMA'
             Width = 44
+          end
+          object cxGrid1DBTableView1RASCHET_SCHET: TcxGridDBColumn
+            Caption = #1056'/'#1057'1'
+            DataBinding.FieldName = 'RASCHET_SCHET'
+          end
+          object cxGrid1DBTableView1RASCHET_SCHET_COLUMN: TcxGridDBColumn
+            Caption = #1056'/'#1057' '#1089#1090#1086#1083#1073#1077#1094
+            DataBinding.FieldName = 'RASCHET_SCHET_COLUMN'
           end
         end
         object cxGrid1Level1: TcxGridLevel
@@ -336,6 +344,37 @@ object frmLoadKartExt: TfrmLoadKartExt
           Width = 92
         end
       end
+      object Panel3: TPanel
+        Left = 0
+        Top = 371
+        Width = 1021
+        Height = 41
+        Align = alBottom
+        TabOrder = 3
+        DesignSize = (
+          1021
+          41)
+        object Button5: TButton
+          Left = 841
+          Top = 8
+          Width = 75
+          Height = 25
+          Anchors = [akRight, akBottom]
+          Caption = #1047#1072#1075#1088#1091#1079#1080#1090#1100
+          TabOrder = 0
+          OnClick = Button1Click
+        end
+        object Button6: TButton
+          Left = 921
+          Top = 8
+          Width = 97
+          Height = 25
+          Anchors = [akRight, akBottom]
+          Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100' '#1074' '#1073#1072#1079#1091
+          TabOrder = 1
+          OnClick = Button3Click
+        end
+      end
     end
     object TabSheet2: TTabSheet
       Caption = #1041#1077#1079' '#1087#1088#1080#1074#1103#1079#1082#1080
@@ -468,7 +507,7 @@ object frmLoadKartExt: TfrmLoadKartExt
       ' order by t.status desc, t.address')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000012000000020000004944010000000000070000004558545F4C534B01
+      0400000014000000020000004944010000000000070000004558545F4C534B01
       000000000004000000475549440100000000000300000046494F010000000000
       070000004144445245535301000000000004000000434F444501000000000002
       0000004E4D0100000000000A000000504552494F445F44454201000000000005
@@ -476,7 +515,9 @@ object frmLoadKartExt: TfrmLoadKartExt
       535441545553010000000000030000004C534B0100000000000F000000464B5F
       4B4C534B5F5052454D4953450100000000000A000000464B5F4B4C534B5F4944
       01000000000005000000494E53414C0100000000000400000043485247010000
-      000000070000005041594D454E54010000000000020000004B57010000000000}
+      000000070000005041594D454E54010000000000020000004B57010000000000
+      0D000000524153434845545F5343484554010000000000140000005241534348
+      45545F53434845545F434F4C554D4E010000000000}
     Session = DataModule1.OracleSession1
     Active = True
     Left = 8
@@ -544,16 +585,27 @@ object frmLoadKartExt: TfrmLoadKartExt
     end
     object OD_loadKartExtINSAL: TFloatField
       FieldName = 'INSAL'
+      ReadOnly = True
     end
     object OD_loadKartExtCHRG: TFloatField
       FieldName = 'CHRG'
+      ReadOnly = True
     end
     object OD_loadKartExtPAYMENT: TFloatField
       FieldName = 'PAYMENT'
+      ReadOnly = True
     end
     object OD_loadKartExtKW: TStringField
       FieldName = 'KW'
       Size = 7
+    end
+    object OD_loadKartExtRASCHET_SCHET: TStringField
+      FieldName = 'RASCHET_SCHET'
+      ReadOnly = True
+    end
+    object OD_loadKartExtRASCHET_SCHET_COLUMN: TFloatField
+      FieldName = 'RASCHET_SCHET_COLUMN'
+      ReadOnly = True
     end
   end
   object DS_loadKartExt: TDataSource

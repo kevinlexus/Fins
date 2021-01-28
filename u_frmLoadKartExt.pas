@@ -85,6 +85,13 @@ type
     cxGrid1DBTableView1INSAL: TcxGridDBColumn;
     cxGrid1DBTableView1CHRG: TcxGridDBColumn;
     cxGrid1DBTableView1PAYMENT: TcxGridDBColumn;
+    Panel3: TPanel;
+    Button5: TButton;
+    Button6: TButton;
+    OD_loadKartExtRASCHET_SCHET: TStringField;
+    OD_loadKartExtRASCHET_SCHET_COLUMN: TFloatField;
+    cxGrid1DBTableView1RASCHET_SCHET: TcxGridDBColumn;
+    cxGrid1DBTableView1RASCHET_SCHET_COLUMN: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
@@ -136,11 +143,14 @@ begin
       cxGrid1DBTableView1CHRG.Visible:=false;
       cxGrid1DBTableView1PAYMENT.Visible:=false;
       cxGrid1DBTableView1SUMMA.Visible:=false;
+      Panel3.Visible:=False;
     end
     else
     begin
       // Кис
+      Memo1.Visible:=False;
       TabSheet2.TabVisible:=False;
+      Panel1.Visible:=False;
     end;
     
 end;
@@ -197,7 +207,7 @@ end;
 procedure TfrmLoadKartExt.Button3Click(Sender: TObject);
 begin
   // сохранить успешно обработанные лиц.счета в базу
-  if Application.MessageBox('Сохранить лиц.счета в статусе=0 в базу?',
+  if Application.MessageBox('Сохранить обработанные успешно лиц.счета в базу?',
     'Внимание!', MB_YESNO + MB_ICONQUESTION + MB_TOPMOST) = IDYES then
   begin
     Application.CreateForm(TForm_status, Form_status);
@@ -248,7 +258,7 @@ begin
         // не обрабатывать (отмечено пользователем, как неактивная запись)
         ACanvas.Font.Color := clGray;
       end
-      else if s = '2' then
+      else if (s = '2') or (s = '10') then
       begin
         // ошибка - внешний лиц.сч. дублируется в файле
         ACanvas.Font.Color := clRed;
