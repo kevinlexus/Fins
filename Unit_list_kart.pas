@@ -31,7 +31,8 @@ uses
   dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
   dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter,
-  cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, cxDBData;
+  cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, cxDBData,
+  cxDropDownEdit, cxMRUEdit, cxEditRepositoryItems;
 
 type
   TForm_list_kart = class(TForm)
@@ -147,7 +148,6 @@ type
     wwDBNavigator1SaveBookmark: TwwNavButton;
     wwDBNavigator1RestoreBookmark: TwwNavButton;
     Panel4: TPanel;
-    Label1: TLabel;
     SpeedButton1: TSpeedButton;
     SpeedButton4: TSpeedButton;
     SpeedButton3: TSpeedButton;
@@ -180,7 +180,6 @@ type
     OD_list_kartSEL1: TFloatField;
     OD_rep_lsk: TOracleDataSet;
     frxdbdtstDBD_rep_lsk: TfrxDBDataset;
-    cxmskdt1: TcxMaskEdit;
     OD_list_kartENTR: TFloatField;
     OD_list_kartPOT: TFloatField;
     OD_list_kartMOT: TFloatField;
@@ -213,6 +212,7 @@ type
     KLSKHOUSEID1: TMenuItem;
     OD_kart_detail: TOracleDataSet;
     DS_kart_detail: TDataSource;
+    cxMRUEdit1: TcxMRUEdit;
     procedure wwDBGrid1DblClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure wwDBGrid1KeyDown(Sender: TObject; var Key: Word;
@@ -275,6 +275,8 @@ type
     procedure wwDBEdit3KeyPress(Sender: TObject; var Key: Char);
     procedure BitBtn2Click(Sender: TObject);
     procedure KLSKHOUSEID1Click(Sender: TObject);
+    procedure cxMRUEdit1KeyPress(Sender: TObject; var Key: Char);
+    procedure cxMRUEdit1DblClick(Sender: TObject);
   private
     bm: TBookmark;
   public
@@ -987,9 +989,9 @@ begin
   Form_Main.cl_flt;
   Form_Main.flt_k_lsk_id_ := DataModule1.OraclePackage1.CallIntegerFunction(
     'scott.utils.get_k_lsk_id_by_lsk',
-    [RightStr('00000000' + cxmskdt1.Text, 8)]);
+    [RightStr('00000000' + cxMRUEdit1.Text, 8)]);
   SetFilter;
-  cxmskdt1.Text := RightStr('00000000' + cxmskdt1.Text, 8);
+  cxMRUEdit1.Text := RightStr('00000000' + cxMRUEdit1.Text, 8);
 end;
 
 procedure TForm_list_kart.SpeedButton3Click(Sender: TObject);
@@ -1215,7 +1217,7 @@ var
 begin
   if Key = #13 then
   begin
-    lsk := RightStr('00000000' + Trim(cxmskdt1.Text), 8);
+    lsk := RightStr('00000000' + Trim(cxMRUEdit1.Text), 8);
     Form_Main.cl_flt;
     Form_Main.flt_k_lsk_id_ := DataModule1.OraclePackage1.CallIntegerFunction(
       'scott.utils.get_k_lsk_id_by_lsk',
@@ -1232,7 +1234,7 @@ begin
       chk1.Checked := false;
     end;
 
-    cxmskdt1.Text := lsk;
+    cxMRUEdit1.Text := lsk;
   end;
 
 end;
@@ -1407,6 +1409,49 @@ procedure TForm_list_kart.KLSKHOUSEID1Click(Sender: TObject);
 begin
   if FF('frmReplaceKlsk', 1) = 0 then
     Application.CreateForm(TfrmReplaceKlsk, frmReplaceKlsk);
+end;
+
+procedure TForm_list_kart.cxMRUEdit1KeyPress(Sender: TObject;
+  var Key: Char);
+var
+  lsk: string;
+  isFound: Boolean;
+begin
+  if Key = #13 then
+  begin
+    lsk := RightStr('00000000' + Trim(cxMRUEdit1.Text), 8);
+    Form_Main.cl_flt;
+    Form_Main.flt_k_lsk_id_ := DataModule1.OraclePackage1.CallIntegerFunction(
+      'scott.utils.get_k_lsk_id_by_lsk',
+      [lsk]);
+    SetFilter;
+    isfound := OD_list_kart.SearchRecord('LSK', lsk, [srFromBeginning]);
+
+    if not isfound then
+    begin
+      // не найдены записи, отключить фильтр по основным
+      OD_list_kart.active := false;
+      OD_list_kart.SetVariable('var3_', 0);
+      OD_list_kart.active := true;
+      chk1.Checked := false;
+    end;
+
+    cxMRUEdit1.Text := lsk;
+  end;
+end;
+
+procedure TForm_list_kart.cxMRUEdit1DblClick(Sender: TObject);
+begin
+  if not (OD_list_kart.State in [dsInactive, dsBrowse]) then
+    OD_list_kart.Post;
+
+  Application.CreateForm(TForm_find_adr2, Form_find_adr2);
+  Form_find_adr2.SetAccess(1, 1, 1, 1);
+  if Form_find_adr2.ShowModal = mrOk then
+  begin
+    SetFilter;
+  end;
+
 end;
 
 end.

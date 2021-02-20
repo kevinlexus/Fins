@@ -1,6 +1,6 @@
 object Form_kart: TForm_kart
-  Left = 668
-  Top = 242
+  Left = 486
+  Top = 256
   Width = 903
   Height = 675
   BorderIcons = [biSystemMenu, biMinimize]
@@ -1705,7 +1705,7 @@ object Form_kart: TForm_kart
     Top = 0
     Width = 887
     Height = 81
-    ActivePage = TabSheet6
+    ActivePage = TabSheet12
     Align = alTop
     TabOrder = 0
     object TabSheet5: TTabSheet

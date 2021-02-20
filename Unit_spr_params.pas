@@ -77,7 +77,6 @@ type
     cxDBCheckBox1: TcxDBCheckBox;
     OD_params: TOracleDataSet;
     DS_params: TDataSource;
-    cxCheckBox1: TcxCheckBox;
     procedure Button1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);

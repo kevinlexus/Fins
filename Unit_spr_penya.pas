@@ -59,7 +59,6 @@ type
     cxGrid2: TcxGrid;
     cxGridDBTableView1: TcxGridDBTableView;
     cxGridLevel1: TcxGridLevel;
-    cxspltr1: TcxSplitter;
     cxGridDBTableView1MG: TcxGridDBColumn;
     cxGridDBTableView1DAT: TcxGridDBColumn;
     OD_lsk_tp: TOracleDataSet;
@@ -84,6 +83,7 @@ type
     OD_stav_rRATE: TFloatField;
     OD_stav_rPARTRATE: TStringField;
     OD_stav_rID: TFloatField;
+    cxSplitter1: TcxSplitter;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure wwDBGrid1KeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);

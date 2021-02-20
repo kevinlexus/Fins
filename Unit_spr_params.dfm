@@ -276,13 +276,6 @@ object Form_spr_params: TForm_spr_params
       TabOrder = 2
       OnClick = chk1Click
     end
-    object cxCheckBox1: TcxCheckBox
-      Left = 368
-      Top = 16
-      Caption = 'cxCheckBox1'
-      TabOrder = 3
-      Width = 121
-    end
   end
   object wwDBGrid1: TwwDBGrid
     Left = 0

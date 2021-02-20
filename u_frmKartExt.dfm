@@ -1,6 +1,6 @@
 object frmKartExt: TfrmKartExt
-  Left = 374
-  Top = 174
+  Left = 414
+  Top = 468
   Width = 1086
   Height = 530
   Caption = #1042#1085#1077#1096#1085#1080#1077' '#1083#1080#1094'.'#1089#1095#1077#1090#1072
@@ -240,6 +240,10 @@ object frmKartExt: TfrmKartExt
         DataBinding.FieldName = 'OUTSAL'
         Width = 64
       end
+      object cxGrid1DBTableView1RASCHET_SCHET: TcxGridDBColumn
+        Caption = #1056'/'#1057
+        DataBinding.FieldName = 'RASCHET_SCHET'
+      end
     end
     object cxGrid1Level1: TcxGridLevel
       GridView = cxGrid1DBTableView1
@@ -274,6 +278,15 @@ object frmKartExt: TfrmKartExt
       OnClick = ToolButton2Click
     end
   end
+  object pnl1: TPanel
+    Left = 448
+    Top = 192
+    Width = 185
+    Height = 41
+    Caption = #1047#1072#1075#1088#1091#1079#1082#1072'...'
+    TabOrder = 3
+    Visible = False
+  end
   object OD_kartExt: TOracleDataSet
     SQL.Strings = (
       'select '
@@ -285,7 +298,42 @@ object frmKartExt: TfrmKartExt
         #39') as n_nd, ltrim(k.kw,'#39'0'#39') as n_kw,'
       
         'k.psch, k.kpr, k.opl, u.cd as lsk_tp_cd, e.v, e.fk_klsk_premise,' +
-        ' e.insal, e.chrg, e.payment, e.outsal'
+        ' e.insal, e.chrg, e.payment, e.outsal, e.raschet_schet'
+      'from scott.kart_ext e'
+      'join scott.kart k on '
+      
+        '     case when e.lsk is not null then e.lsk else k.lsk end = k.l' +
+        'sk'
+      
+        '     and case when e.fk_klsk_premise is not null then e.fk_klsk_' +
+        'premise else k.fk_klsk_premise end = k.fk_klsk_premise'
+      
+        '     and case when e.fk_klsk_id is not null then e.fk_klsk_id el' +
+        'se k.k_lsk_id end = k.k_lsk_id'
+      'join scott.kart_detail d on k.lsk=d.lsk '
+      
+        '     and (case when e.fk_klsk_premise is not null then d.is_main' +
+        '_in_premise else 0 end = 1 -- '#1075#1083#1072#1074#1085#1099#1081' '#1083#1080#1094'.'#1089#1095#1077#1090' '#1074' '#1087#1086#1084#1077#1097#1077#1085#1080#1080
+      
+        '     or case when e.fk_klsk_id is not null then d.is_main_in_kls' +
+        'k else 0 end = 1) -- '#1075#1083#1072#1074#1085#1099#1081' '#1083#1080#1094'.'#1089#1095#1077#1090' '#1074' '#1092#1080#1085'.'#1083#1080#1094'.'#1089#1095'.'
+      'left join scott.spul s on k.kul=s.id'
+      'left join scott.s_reu_trest r on k.reu=r.reu'
+      'left join scott.u_list u on k.fk_tp=u.id'
+      'order by d.ord1'
+      ''
+      '/*'
+      ''
+      'select '
+      
+        'e.rowid, e.fk_klsk_premise, k.lsk, k.reu, e.lsk, e.fk_klsk_id, e' +
+        '.ext_lsk, e.fio, e.dt_crt, e.dt_upd,'
+      
+        'r.reu||'#39'-'#39'||r.name_reu as name_reu, k.kul, s.name, ltrim(k.nd,'#39'0' +
+        #39') as n_nd, ltrim(k.kw,'#39'0'#39') as n_kw,'
+      
+        'k.psch, k.kpr, k.opl, u.cd as lsk_tp_cd, e.v, e.fk_klsk_premise,' +
+        ' e.insal, e.chrg, e.payment, e.outsal, e.raschet_schet'
       'from scott.kart_ext e'
       
         'join scott.kart k on (e.lsk=k.lsk or e.fk_klsk_premise=k.fk_klsk' +
@@ -307,39 +355,10 @@ object frmKartExt: TfrmKartExt
       'left join scott.u_list u on k.fk_tp=u.id'
       'order by d.ord1'
       ''
-      '/*'
-      'select '
-      
-        'e.rowid, k.reu, e.lsk, e.fk_klsk_id, e.ext_lsk, e.fio, e.dt_crt,' +
-        ' e.dt_upd,'
-      
-        'r.reu||'#39'-'#39'||r.name_reu as name_reu, k.kul, s.name, ltrim(k.nd,'#39'0' +
-        #39') as n_nd, ltrim(k.kw,'#39'0'#39') as n_kw,'
-      'k.psch, k.kpr, k.opl, u.cd as lsk_tp_cd, e.v, e.fk_klsk_premise'
-      'from scott.kart_ext e'
-      
-        'join scott.kart k on e.lsk=k.lsk or e.fk_klsk_premise=k.fk_klsk_' +
-        'premise or e.fk_klsk_id=k.k_lsk_id   -- '#1074#1086#1079#1084#1086#1078#1085#1086' '#1073#1091#1076#1077#1090' '#1090#1086#1088#1084#1086#1079#1080#1090#1100 +
-        ' '#1095#1077#1088#1077#1079' OR'
-      'join scott.kart_detail d on k.lsk=d.lsk '
-      
-        'and case when e.fk_klsk_premise is not null then e.fk_klsk_premi' +
-        'se else k.fk_klsk_premise end = k.fk_klsk_premise'
-      
-        'and case when e.fk_klsk_id is not null then e.fk_klsk_id else k.' +
-        'k_lsk_id end = k.k_lsk_id'
-      
-        'and case when e.fk_klsk_premise is not null or e.fk_klsk_id is n' +
-        'ot null then d.is_main_in_premise else 1 end = 1 -- '#1075#1083#1072#1074#1085#1099#1081' '#1083#1080#1094'.' +
-        #1089#1095#1077#1090' '#1074' '#1087#1086#1084#1077#1097#1077#1085#1080#1080
-      'join scott.spul s on k.kul=s.id'
-      'join scott.s_reu_trest r on k.reu=r.reu'
-      'left join scott.u_list u on k.fk_tp=u.id'
-      'order by d.ord1'
       '*/')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000018000000070000004558545F4C534B0100000000000300000046494F
+      0400000019000000070000004558545F4C534B0100000000000300000046494F
       010000000000030000004C534B0100000000000600000044545F435254010000
       0000000600000044545F555044010000000000080000004E414D455F52455501
       0000000000030000004B554C010000000000040000004E414D45010000000000
@@ -351,11 +370,10 @@ object frmKartExt: TfrmKartExt
       4C534B5F3101000000000011000000464B5F4B4C534B5F5052454D4953455F31
       01000000000005000000494E53414C0100000000000400000043485247010000
       000000070000005041594D454E54010000000000060000004F555453414C0100
-      00000000}
+      000000000D000000524153434845545F5343484554010000000000}
     ReadOnly = True
     RefreshOptions = [roBeforeEdit, roAfterUpdate, roAllFields]
     Session = DataModule1.OracleSession1
-    Active = True
     Top = 72
     object OD_kartExtREU: TStringField
       FieldName = 'REU'
@@ -454,6 +472,9 @@ object frmKartExt: TfrmKartExt
     end
     object OD_kartExtOUTSAL: TFloatField
       FieldName = 'OUTSAL'
+    end
+    object OD_kartExtRASCHET_SCHET: TStringField
+      FieldName = 'RASCHET_SCHET'
     end
   end
   object DS_kartExt: TDataSource

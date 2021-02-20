@@ -1,6 +1,6 @@
 object frmLoadKartExt: TfrmLoadKartExt
-  Left = 390
-  Top = 418
+  Left = 300
+  Top = 386
   Width = 1045
   Height = 520
   Caption = #1047#1072#1075#1088#1091#1079#1082#1072' '#1074#1085#1077#1096#1085#1080#1093' '#1083#1080#1094'.'#1089#1095#1077#1090#1086#1074
@@ -101,9 +101,9 @@ object frmLoadKartExt: TfrmLoadKartExt
       Caption = #1054#1089#1085#1086#1074#1085#1086#1077
       object cxGrid1: TcxGrid
         Left = 0
-        Top = 41
+        Top = 82
         Width = 1021
-        Height = 330
+        Height = 289
         Align = alClient
         TabOrder = 0
         object cxGrid1DBTableView1: TcxGridDBTableView
@@ -175,6 +175,11 @@ object frmLoadKartExt: TfrmLoadKartExt
             DataBinding.FieldName = 'COMM'
             Width = 107
           end
+          object cxGrid1DBTableView1APPROVE_RESULT: TcxGridDBColumn
+            Caption = #1056#1077#1079#1091#1083#1100#1090#1072#1090
+            DataBinding.FieldName = 'APPROVE_RESULT'
+            Width = 107
+          end
           object cxGrid1DBTableView1STATUS: TcxGridDBColumn
             Caption = #1057#1090#1072#1090#1091#1089
             DataBinding.FieldName = 'STATUS'
@@ -201,12 +206,8 @@ object frmLoadKartExt: TfrmLoadKartExt
             Width = 44
           end
           object cxGrid1DBTableView1RASCHET_SCHET: TcxGridDBColumn
-            Caption = #1056'/'#1057'1'
+            Caption = #1056'/'#1057
             DataBinding.FieldName = 'RASCHET_SCHET'
-          end
-          object cxGrid1DBTableView1RASCHET_SCHET_COLUMN: TcxGridDBColumn
-            Caption = #1056'/'#1057' '#1089#1090#1086#1083#1073#1077#1094
-            DataBinding.FieldName = 'RASCHET_SCHET_COLUMN'
           end
         end
         object cxGrid1Level1: TcxGridLevel
@@ -215,17 +216,14 @@ object frmLoadKartExt: TfrmLoadKartExt
       end
       object Memo1: TMemo
         Left = 0
-        Top = 0
+        Top = 41
         Width = 1021
         Height = 41
         Align = alTop
         Lines.Strings = (
           
-            #1055#1088#1080' '#1085#1077#1086#1073#1093#1086#1076#1080#1084#1086#1089#1090#1080' ('#1076#1074#1072' '#1080' '#1073#1086#1083#1077#1077' '#1086#1090#1082#1088#1099#1090#1099#1093' '#1083#1080#1094'.'#1089#1095#1077#1090#1086#1074' '#1087#1086' '#1086#1076#1085#1086#1084#1091' '#1072#1076#1088 +
-            #1077#1089#1091', '#1085#1072#1087#1088#1080#1084#1077#1088' '#1088#1072#1079#1076#1077#1083#1077#1085#1099' '#1087#1086' '#1089#1091#1076#1091') '#1084#1086#1078#1085#1086' '#1088#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1087#1086#1083#1077' '#1087#1088#1080#1074#1103#1079 +
-            #1082#1080' "'#1051#1080#1094'.'#1089#1095'." '#1080' '
-          #1087#1086#1084#1077#1085#1103#1090#1100' '
-          #1089#1090#1072#1090#1091#1089' '#1079#1072#1075#1088#1091#1079#1082#1080' '#1085#1072' 0')
+            #1044#1083#1103' '#1080#1075#1085#1086#1088#1080#1088#1086#1074#1072#1085#1080#1103' '#1079#1072#1075#1088#1091#1078#1072#1077#1084#1086#1081' '#1079#1072#1087#1080#1089#1080': C'#1090#1072#1090#1091#1089': 1, '#1076#1083#1103' '#1087#1086#1076#1090#1074#1077#1088#1078#1076#1077#1085 +
+            #1080#1103' '#1079#1072#1075#1088#1091#1079#1082#1080': C'#1090#1072#1090#1091#1089': 0')
         TabOrder = 1
       end
       object Panel1: TPanel
@@ -375,6 +373,21 @@ object frmLoadKartExt: TfrmLoadKartExt
           OnClick = Button3Click
         end
       end
+      object Memo3: TMemo
+        Left = 0
+        Top = 0
+        Width = 1021
+        Height = 41
+        Align = alTop
+        Lines.Strings = (
+          
+            #1055#1088#1080' '#1085#1077#1086#1073#1093#1086#1076#1080#1084#1086#1089#1090#1080' ('#1076#1074#1072' '#1080' '#1073#1086#1083#1077#1077' '#1086#1090#1082#1088#1099#1090#1099#1093' '#1083#1080#1094'.'#1089#1095#1077#1090#1086#1074' '#1087#1086' '#1086#1076#1085#1086#1084#1091' '#1072#1076#1088 +
+            #1077#1089#1091', '#1085#1072#1087#1088#1080#1084#1077#1088' '#1088#1072#1079#1076#1077#1083#1077#1085#1099' '#1087#1086' '#1089#1091#1076#1091') '#1084#1086#1078#1085#1086' '#1088#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1087#1086#1083#1077' '#1087#1088#1080#1074#1103#1079 +
+            #1082#1080' "'#1051#1080#1094'.'#1089#1095'." '#1080' '
+          #1087#1086#1084#1077#1085#1103#1090#1100' '
+          #1089#1090#1072#1090#1091#1089' '#1079#1072#1075#1088#1091#1079#1082#1080' '#1085#1072' 0')
+        TabOrder = 4
+      end
     end
     object TabSheet2: TTabSheet
       Caption = #1041#1077#1079' '#1087#1088#1080#1074#1103#1079#1082#1080
@@ -516,8 +529,8 @@ object frmLoadKartExt: TfrmLoadKartExt
       4B4C534B5F5052454D4953450100000000000A000000464B5F4B4C534B5F4944
       01000000000005000000494E53414C0100000000000400000043485247010000
       000000070000005041594D454E54010000000000020000004B57010000000000
-      0D000000524153434845545F5343484554010000000000140000005241534348
-      45545F53434845545F434F4C554D4E010000000000}
+      0D000000524153434845545F53434845540100000000000E000000415050524F
+      56455F524553554C54010000000000}
     Session = DataModule1.OracleSession1
     Active = True
     Left = 8
@@ -603,9 +616,10 @@ object frmLoadKartExt: TfrmLoadKartExt
       FieldName = 'RASCHET_SCHET'
       ReadOnly = True
     end
-    object OD_loadKartExtRASCHET_SCHET_COLUMN: TFloatField
-      FieldName = 'RASCHET_SCHET_COLUMN'
+    object OD_loadKartExtAPPROVE_RESULT: TStringField
+      FieldName = 'APPROVE_RESULT'
       ReadOnly = True
+      Size = 255
     end
   end
   object DS_loadKartExt: TDataSource

@@ -64,6 +64,7 @@ type
     Edit4: TEdit;
     Edit5: TEdit;
     Label6: TLabel;
+    cxPropertiesStore2: TcxPropertiesStore;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);

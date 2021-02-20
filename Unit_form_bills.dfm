@@ -1,6 +1,6 @@
 object Form_print_bills: TForm_print_bills
-  Left = 420
-  Top = 169
+  Left = 352
+  Top = 213
   Width = 457
   Height = 491
   BorderIcons = [biSystemMenu, biMinimize]
@@ -133,6 +133,7 @@ object Form_print_bills: TForm_print_bills
       Caption = #1083#1072#1079#1077#1088#1085#1099#1081' '#1087#1088#1080#1085#1090#1077#1088
       TabOrder = 3
       WordWrap = True
+      OnClick = CheckBox5Click
     end
   end
   object GroupBox2: TGroupBox

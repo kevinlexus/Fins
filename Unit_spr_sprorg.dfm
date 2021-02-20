@@ -1,6 +1,6 @@
 object Form_spr_sprorg: TForm_spr_sprorg
-  Left = 466
-  Top = 223
+  Left = 576
+  Top = 227
   Width = 1311
   Height = 720
   BorderIcons = [biSystemMenu, biMinimize]
@@ -195,6 +195,7 @@ object Form_spr_sprorg: TForm_spr_sprorg
       DataController.Summary.DefaultGroupSummaryItems = <>
       DataController.Summary.FooterSummaryItems = <>
       DataController.Summary.SummaryGroups = <>
+      OptionsBehavior.CellHints = True
       OptionsView.GroupByBox = False
       OptionsView.HeaderAutoHeight = True
       object cxGrid1DBTableView1ID: TcxGridDBColumn
@@ -245,19 +246,17 @@ object Form_spr_sprorg: TForm_spr_sprorg
       end
       object cxGrid1DBTableView1LKTP: TcxGridDBColumn
         DataBinding.FieldName = 'LKTP'
+        Width = 56
       end
       object cxGrid1DBTableView1LKPAR: TcxGridDBColumn
         Caption = #1056#1086#1076'.'#1086#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103
         DataBinding.FieldName = 'LKPAR'
+        Width = 62
       end
       object cxGrid1DBTableView1LKPAR2: TcxGridDBColumn
         Caption = #1056#1086#1076'. '#1086#1088#1075'.'#1087#1086#1089#1090#1072#1074#1097#1080#1082#1086#1074
         DataBinding.FieldName = 'LKPAR2'
-      end
-      object cxGrid1DBTableView1TREST: TcxGridDBColumn
-        DataBinding.FieldName = 'TREST'
-        Options.Editing = False
-        Width = 53
+        Width = 66
       end
       object cxGrid1DBTableView1BANK_CD: TcxGridDBColumn
         Caption = #1050#1086#1076' '#1073#1072#1085#1082#1072' '#1076#1083#1103' txt '#1092#1072#1081#1083'.'
@@ -273,29 +272,36 @@ object Form_spr_sprorg: TForm_spr_sprorg
         Width = 100
       end
       object cxGrid1DBTableView1RASCHET_SCHET: TcxGridDBColumn
+        Caption = #1056'/C-1'
         DataBinding.FieldName = 'RASCHET_SCHET'
+        Width = 92
       end
       object cxGrid1DBTableView1RASCHET_SCHET2: TcxGridDBColumn
         DataBinding.FieldName = 'RASCHET_SCHET2'
+        Width = 92
       end
       object cxGrid1DBTableView1R_SCH_GIS: TcxGridDBColumn
         Caption = #1056'/'#1057' '#1043#1048#1057' '#1046#1050#1061
         DataBinding.FieldName = 'R_SCH_GIS'
+        Width = 80
       end
       object cxGrid1DBTableView1R_SCH_ADDIT: TcxGridDBColumn
         DataBinding.FieldName = 'R_SCH_ADDIT'
+        Width = 84
       end
       object cxGrid1DBTableView1CODE_DEB: TcxGridDBColumn
         Caption = #1050#1086#1076' '#1076#1083#1103' '#1074#1099#1075#1088' '#1076#1086#1083#1075#1086#1074
         DataBinding.FieldName = 'CODE_DEB'
+        Width = 46
       end
       object cxGrid1DBTableView1DOLG_NAME: TcxGridDBColumn
         Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077' '#1076#1083#1103' '#1076#1086#1083#1075#1086#1074
         DataBinding.FieldName = 'DOLG_NAME'
-        Width = 100
+        Width = 60
       end
       object cxGrid1DBTableView1FK_ORGTP: TcxGridDBColumn
         DataBinding.FieldName = 'FK_ORGTP'
+        Width = 30
       end
       object cxGrid1DBTableView1V: TcxGridDBColumn
         DataBinding.FieldName = 'V'
@@ -304,56 +310,72 @@ object Form_spr_sprorg: TForm_spr_sprorg
       object cxGrid1DBTableView1UCH: TcxGridDBColumn
         Caption = #1059#1095#1072#1089#1090#1086#1082
         DataBinding.FieldName = 'UCH'
+        Width = 52
       end
       object cxGrid1DBTableView1ADR: TcxGridDBColumn
         Caption = #1040#1076#1088#1077#1089' '#1086#1088#1075'.'
         DataBinding.FieldName = 'ADR'
-        Width = 125
+        Width = 73
       end
       object cxGrid1DBTableView1ADR_CASH: TcxGridDBColumn
         Caption = #1040#1076#1088#1077#1089' '#1050#1072#1089#1089#1099
         DataBinding.FieldName = 'ADR_CASH'
-        Width = 121
+        Width = 77
       end
       object cxGrid1DBTableView1INN: TcxGridDBColumn
         Caption = #1048#1085#1085
         DataBinding.FieldName = 'INN'
+        Width = 66
       end
       object cxGrid1DBTableView1MANAGER: TcxGridDBColumn
         Caption = #1044#1080#1088#1077#1082#1090#1086#1088
         DataBinding.FieldName = 'MANAGER'
+        Width = 56
       end
       object cxGrid1DBTableView1BUH: TcxGridDBColumn
         Caption = #1041#1091#1093#1075#1072#1083#1090#1077#1088
         DataBinding.FieldName = 'BUH'
+        Width = 58
       end
       object cxGrid1DBTableView1K_SCHET: TcxGridDBColumn
         Caption = #1050#1086#1088#1088'.'#1089#1095'.'
         DataBinding.FieldName = 'K_SCHET'
+        Width = 72
       end
       object cxGrid1DBTableView1KOD_OKONH: TcxGridDBColumn
         Caption = #1054#1050#1054#1053#1061
         DataBinding.FieldName = 'KOD_OKONH'
+        Width = 58
       end
       object cxGrid1DBTableView1KOD_OGRN: TcxGridDBColumn
         Caption = #1054#1043#1056#1053
         DataBinding.FieldName = 'KOD_OGRN'
+        Width = 50
       end
       object cxGrid1DBTableView1BIK: TcxGridDBColumn
         Caption = #1041#1048#1050
         DataBinding.FieldName = 'BIK'
+        Width = 52
       end
       object cxGrid1DBTableView1PHONE: TcxGridDBColumn
         Caption = #1058#1077#1083#1077#1092#1086#1085
         DataBinding.FieldName = 'PHONE'
+        Width = 52
+      end
+      object cxGrid1DBTableView1PHONE2: TcxGridDBColumn
+        Caption = #1058#1077#1083#1077#1092#1086#1085'-2'
+        DataBinding.FieldName = 'PHONE2'
+        Width = 60
       end
       object cxGrid1DBTableView1KPP: TcxGridDBColumn
         Caption = #1050#1055#1055
         DataBinding.FieldName = 'KPP'
+        Width = 42
       end
       object cxGrid1DBTableView1BANK: TcxGridDBColumn
         Caption = #1056#1077#1082#1074#1080#1079#1080#1090#1099' '#1073#1072#1085#1082#1072
         DataBinding.FieldName = 'BANK'
+        Width = 106
       end
       object cxGrid1DBTableView1ID_EXP: TcxGridDBColumn
         DataBinding.FieldName = 'ID_EXP'
@@ -362,22 +384,27 @@ object Form_spr_sprorg: TForm_spr_sprorg
       object cxGrid1DBTableView1ADR_RECIP: TcxGridDBColumn
         Caption = #1040#1076#1088#1077#1089' '#1087#1086#1083#1091#1095#1072#1090#1077#1083#1103
         DataBinding.FieldName = 'ADR_RECIP'
+        Width = 106
       end
       object cxGrid1DBTableView1AUTHORIZED_DIR: TcxGridDBColumn
         Caption = #1059#1087#1086#1083#1085#1086#1084#1086#1095#1077#1085#1085#1099#1081' '#1087#1088#1080#1082#1072#1079#1086#1084', '#1079#1072' '#1076#1080#1088#1077#1082#1090#1086#1088#1072
         DataBinding.FieldName = 'AUTHORIZED_DIR'
+        Width = 100
       end
       object cxGrid1DBTableView1AUTHORIZED_BUH: TcxGridDBColumn
         Caption = #1059#1087#1086#1083#1085#1086#1084#1086#1095#1077#1085#1085#1099#1081' '#1087#1088#1080#1082#1072#1079#1086#1084', '#1079#1072' '#1075#1083'.'#1073#1091#1093'.'
         DataBinding.FieldName = 'AUTHORIZED_BUH'
+        Width = 98
       end
       object cxGrid1DBTableView1AUTH_DIR_DOC: TcxGridDBColumn
         Caption = #1044#1086#1082#1091#1084#1077#1085#1090' - '#1059#1087#1086#1083#1085#1086#1084#1086#1095#1077#1085#1085#1099#1081' '#1087#1088#1080#1082#1072#1079#1086#1084', '#1079#1072' '#1076#1080#1088#1077#1082#1090#1086#1088#1072
         DataBinding.FieldName = 'AUTH_DIR_DOC'
+        Width = 76
       end
       object cxGrid1DBTableView1AUTH_BUH_DOC: TcxGridDBColumn
         Caption = #1044#1086#1082#1091#1084#1077#1085#1090' - '#1059#1087#1086#1083#1085#1086#1084#1086#1095#1077#1085#1085#1099#1081' '#1087#1088#1080#1082#1072#1079#1086#1084', '#1079#1072' '#1075#1083'.'#1073#1091#1093'.'
         DataBinding.FieldName = 'AUTH_BUH_DOC'
+        Width = 64
       end
       object cxGrid1DBTableView1OKPO: TcxGridDBColumn
         Caption = #1054#1050#1055#1054
@@ -390,10 +417,7 @@ object Form_spr_sprorg: TForm_spr_sprorg
       object cxGrid1DBTableView1FULL_NAME: TcxGridDBColumn
         Caption = #1055#1086#1083#1085#1086#1077' '#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077' '#1086#1088#1075#1072#1085#1080#1079#1072#1094#1080#1080
         DataBinding.FieldName = 'FULL_NAME'
-      end
-      object cxGrid1DBTableView1PHONE2: TcxGridDBColumn
-        Caption = #1058#1077#1083#1077#1092#1086#1085'-2'
-        DataBinding.FieldName = 'PHONE2'
+        Width = 80
       end
       object cxGrid1DBTableView1PARENT_ID2: TcxGridDBColumn
         DataBinding.FieldName = 'PARENT_ID2'
@@ -402,15 +426,16 @@ object Form_spr_sprorg: TForm_spr_sprorg
       object cxGrid1DBTableView1HEAD_NAME: TcxGridDBColumn
         Caption = #1044#1086#1083#1078#1085#1086#1089#1090#1100' '#1088#1091#1082#1086#1074#1086#1076#1080#1090#1077#1083#1103
         DataBinding.FieldName = 'HEAD_NAME'
-        Width = 206
+        Width = 70
       end
       object cxGrid1DBTableView1POST_INDX: TcxGridDBColumn
         DataBinding.FieldName = 'POST_INDX'
+        Width = 60
       end
       object cxGrid1DBTableView1BANK_FNAME: TcxGridDBColumn
         Caption = #1048#1084#1103' '#1092#1072#1081#1083#1072' '#1076#1083#1103' '#1074#1099#1075#1088#1091#1079#1082#1080' '#1074' '#1057#1073#1077#1088#1073#1072#1085#1082
         DataBinding.FieldName = 'BANK_FNAME'
-        Width = 218
+        Width = 78
       end
       object cxGrid1DBTableView1GRP_DEB: TcxGridDBColumn
         Caption = #1043#1088#1091#1087#1087'.'#1076#1086#1083#1075
@@ -418,13 +443,16 @@ object Form_spr_sprorg: TForm_spr_sprorg
       end
       object cxGrid1DBTableView1CD: TcxGridDBColumn
         DataBinding.FieldName = 'CD'
+        Width = 46
       end
       object cxGrid1DBTableView1FK_ORG2: TcxGridDBColumn
         DataBinding.FieldName = 'FK_ORG2'
+        Width = 50
       end
       object cxGrid1DBTableView1SERVICE_NAME_GIS: TcxGridDBColumn
         Caption = #1048#1084#1103' '#1089#1077#1088#1074#1080#1089#1072' '#1043#1048#1057
         DataBinding.FieldName = 'SERVICE_NAME_GIS'
+        Width = 78
       end
     end
     object cxGrid1Level1: TcxGridLevel
@@ -731,12 +759,12 @@ object Form_spr_sprorg: TForm_spr_sprorg
     Optimize = False
     SequenceField.ApplyMoment = amOnNewRecord
     QBEDefinition.QBEFieldDefs = {
-      040000000B000000020000004944010000000000020000004344010000000000
+      040000000C000000020000004944010000000000020000004344010000000000
       040000004E414D45010000000000030000004E50500100000000000100000056
       01000000000009000000504152454E545F494401000000000004000000545950
       45010000000000070000004D454E555F4944010000000000060000004E414D45
       5F30010000000000060000004E414D455F3101000000000004000000434F4D4D
-      010000000000}
+      0100000000000A0000004E414D455F53484F5254010000000000}
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True

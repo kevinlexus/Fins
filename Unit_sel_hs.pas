@@ -43,6 +43,7 @@ type
     cxGrid1DBTableView1SEL: TcxGridDBColumn;
     PopupMenu1: TPopupMenu;
     N1: TMenuItem;
+    N2: TMenuItem;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -55,6 +56,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure DBGridEh1DblClick(Sender: TObject);
     procedure N1Click(Sender: TObject);
+    procedure N2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -267,16 +269,42 @@ begin
     RecNo := l_recno;
     EnableControls;
   end;
-{  DataModule1.OD_list_choice.First;
-  while not DataModule1.OD_list_choice.Eof do
-  begin
-    if (DataModule1.OD_list_choice.State = dsBrowse) then
-      DataModule1.OD_list_choice.Edit;
-    DataModule1.OD_list_choice.FieldByName('sel').AsInteger := 0;
-    DataModule1.OD_list_choice.Next;
-  end;}
   LockWindowUpdate(0);
   Form_status.Close;
+end;
+
+procedure TForm_sel_hs.N2Click(Sender: TObject);
+var
+  l_recno: Integer;
+begin
+  Application.CreateForm(TForm_status, Form_status);
+  Form_status.Update;
+  LockWindowUpdate(handle);
+  with DataModule1.OD_list_choice do
+  begin
+    DisableControls;
+    l_recno := RecNo;
+    if State = dsEdit then
+      Post;
+    First;
+    while not Eof do
+    begin
+      if (FieldByName('sel').AsInteger = 1) then
+      begin
+        // установить отметку
+        Edit;
+        FieldByName('sel').AsInteger := 0;
+        Post;
+      end;
+
+      Next;
+    end;
+    RecNo := l_recno;
+    EnableControls;
+  end;
+  LockWindowUpdate(0);
+  Form_status.Close;
+
 end;
 
 end.

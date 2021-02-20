@@ -143,6 +143,7 @@ type
     procedure selVar();
     procedure lkpMgFromPropertiesCloseUp(Sender: TObject);
     procedure lkpMgToPropertiesCloseUp(Sender: TObject);
+    procedure CheckBox5Click(Sender: TObject);
   private
     cnt_sch_: Integer;
     tp_: Integer;
@@ -283,14 +284,14 @@ begin
   setMainDataset;
 
   if not VarIsNull(lkpMgFrom.EditValue) then
-    DM_Bill.Uni_chargepay.ParamByName('p_mg_from').AsString := lkpMgFrom.EditValue
+    DM_Bill.Uni_rep_penya.ParamByName('p_mg_from').AsString := lkpMgFrom.EditValue
   else
-    DM_Bill.Uni_chargepay.ParamByName('p_mg_from').clear;
+    DM_Bill.Uni_rep_penya.ParamByName('p_mg_from').clear;
 
   if not VarIsNull(lkpMgTo.EditValue) then
-    DM_Bill.Uni_chargepay.ParamByName('p_mg_to').AsString := lkpMgTo.EditValue
+    DM_Bill.Uni_rep_penya.ParamByName('p_mg_to').AsString := lkpMgTo.EditValue
   else
-    DM_Bill.Uni_chargepay.ParamByName('p_mg_to').clear;
+    DM_Bill.Uni_rep_penya.ParamByName('p_mg_to').clear;
 
   DM_Bill.Uni_rep_penya.ParamByName('p_rep_cd').asString := '93';
   DM_Bill.Uni_rep_penya.Active := false;
@@ -1870,8 +1871,12 @@ begin
     if DataModule1.OraclePackage1.CallIntegerFunction //старый вариант
     ('scott.Utils.get_int_param', ['SPR_DEB_VAR']) = 0 then
     begin
-      filePathStr := Form_main.exepath_
-        + '—чет_на_оплату1.fr3';
+      if CheckBox5.Checked then
+        filePathStr := Form_main.exepath_
+          + 'lp_—чет_на_оплату1.fr3'
+      else
+        filePathStr := Form_main.exepath_
+          + '—чет_на_оплату1.fr3';
     end
     else if
       DataModule1.OraclePackage1.CallIntegerFunction('scott.Utils.get_int_param',
@@ -1920,6 +1925,11 @@ begin
   if sel_obj_ = 2 then
     sel_ls_cnt;
 
+end;
+
+procedure TForm_print_bills.CheckBox5Click(Sender: TObject);
+begin
+  selVar();
 end;
 
 end.

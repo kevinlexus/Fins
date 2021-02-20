@@ -1,8 +1,8 @@
 object Form_spr_penya: TForm_spr_penya
-  Left = 344
-  Top = 286
-  Width = 626
-  Height = 601
+  Left = 1008
+  Top = 254
+  Width = 700
+  Height = 555
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082' '#1087#1077#1085#1080
   Color = clBtnFace
@@ -107,9 +107,9 @@ object Form_spr_penya: TForm_spr_penya
   object cxGrid1: TcxGrid
     Left = 0
     Top = 0
-    Width = 610
-    Height = 200
-    Align = alTop
+    Width = 684
+    Height = 228
+    Align = alClient
     TabOrder = 1
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
@@ -176,10 +176,10 @@ object Form_spr_penya: TForm_spr_penya
   end
   object cxGrid2: TcxGrid
     Left = 0
-    Top = 208
-    Width = 610
-    Height = 354
-    Align = alClient
+    Top = 236
+    Width = 684
+    Height = 280
+    Align = alBottom
     TabOrder = 2
     object cxGridDBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
@@ -233,13 +233,18 @@ object Form_spr_penya: TForm_spr_penya
       GridView = cxGridDBTableView1
     end
   end
-  object cxspltr1: TcxSplitter
+  object cxSplitter1: TcxSplitter
     Left = 0
-    Top = 200
-    Width = 610
+    Top = 228
+    Width = 684
     Height = 8
-    AlignSplitter = salTop
+    HotZoneClassName = 'TcxSimpleStyle'
+    AlignSplitter = salBottom
+    PositionAfterOpen = 150
+    MinSize = 60
     Control = cxGrid2
+    Color = clBtnFace
+    ParentColor = False
   end
   object OD_stav_r: TOracleDataSet
     SQL.Strings = (

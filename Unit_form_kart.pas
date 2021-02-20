@@ -1076,12 +1076,26 @@ begin
   //Пересчет карточки
   with Form_kart do
   begin
-    // пересчитать начисление
-    cnt_ :=
-      DataModule1.OraclePackage1.CallIntegerFunction('scott.C_CHARGES.gen_charges',
-      [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, null, null,
-      null, 1, 0]);
+    // рассчитать начисление
+    if getDoublePar(Form_main.paramList, 'JAVA_CHARGE') = 1 then
+    begin
+      // в Java
+      l_dummy :=
+        DataModule1.OraclePackage1.CallFloatFunction('SCOTT.P_JAVA.GEN',
+        [0, null, null, null,
+        Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger,
+          null, Form_Main.cur_dt, 0]);
+    end
+    else
+    begin
+      // старый вариант (ТСЖ)
+      cnt_ :=
+        DataModule1.OraclePackage1.CallIntegerFunction('scott.C_CHARGES.gen_charges',
+        [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, null, null,
+        null, 1, 0]);
+    end;    
 
+      
     if getDoublePar(Form_main.paramList, 'JAVA_DEB_PEN') = 1 then
     begin
       // новый расчет долга и пени в Java
@@ -2212,7 +2226,6 @@ end;
 procedure TForm_kart.btn1Click(Sender: TObject);
 begin
   // сохранить изменения, без вопроса
-  //save_changes(0);
   saveOrRollbackKart(0, True);
   recalc_kart;
 end;

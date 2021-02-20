@@ -1,6 +1,6 @@
 object Form_sel_hs: TForm_sel_hs
-  Left = 1262
-  Top = 180
+  Left = 952
+  Top = 464
   Width = 440
   Height = 455
   Caption = #1042#1099#1073#1086#1088' '#1076#1086#1084#1086#1074' '#1076#1083#1103' '#1086#1090#1095#1077#1090#1072
@@ -159,6 +159,10 @@ object Form_sel_hs: TForm_sel_hs
   object PopupMenu1: TPopupMenu
     Left = 16
     Top = 40
+    object N2: TMenuItem
+      Caption = #1042#1099#1073#1088#1072#1090#1100' '#1074#1089#1077
+      OnClick = N2Click
+    end
     object N1: TMenuItem
       Caption = #1057#1085#1103#1090#1100' '#1086#1090#1084#1077#1090#1082#1080
       OnClick = N1Click

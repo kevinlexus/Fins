@@ -13,7 +13,8 @@ uses
   IdAntiFreezeBase, IdAntiFreeze, frxClass, frxDBSet, frxExportCSV,
   frxExportPDF,
   frxExportBIFF, frxExportText, frxExportRTF, ComObj,
-  Unit_spr_redirect, u_frmTwoPeriods, u_frmLog;
+  Unit_spr_redirect, u_frmTwoPeriods, u_frmLog, cxClasses, cxEdit,
+  cxEditRepositoryItems;
 type
   TShowForm = function(App, Scr, Sess_: integer): integer; stdcall;
   TForm_Main = class(TForm)
@@ -215,6 +216,8 @@ type
     N146: TMenuItem;
     N872: TMenuItem;
     ProgressBar1: TProgressBar;
+    cxEditRepository1: TcxEditRepository;
+    cxEditRepository1MRUItem1: TcxEditRepositoryMRUItem;
     procedure N5Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure N7Click(Sender: TObject);

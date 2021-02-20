@@ -1,6 +1,6 @@
 object Form_find_adr2: TForm_find_adr2
-  Left = 1075
-  Top = 459
+  Left = 1067
+  Top = 681
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   BorderWidth = 1
@@ -673,5 +673,36 @@ object Form_find_adr2: TForm_find_adr2
     StorageType = stRegistry
     Left = 80
     Top = 272
+  end
+  object cxPropertiesStore2: TcxPropertiesStore
+    Components = <
+      item
+        Component = Edit1
+        Properties.Strings = (
+          'Text')
+      end
+      item
+        Component = Edit2
+        Properties.Strings = (
+          'Text')
+      end
+      item
+        Component = Edit3
+        Properties.Strings = (
+          'Text')
+      end
+      item
+        Component = Edit4
+        Properties.Strings = (
+          'Text')
+      end
+      item
+        Component = Edit5
+        Properties.Strings = (
+          'Text')
+      end>
+    StorageName = 'cxPropertiesStore2'
+    Left = 640
+    Top = 8
   end
 end

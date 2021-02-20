@@ -89,9 +89,10 @@ type
     Button5: TButton;
     Button6: TButton;
     OD_loadKartExtRASCHET_SCHET: TStringField;
-    OD_loadKartExtRASCHET_SCHET_COLUMN: TFloatField;
     cxGrid1DBTableView1RASCHET_SCHET: TcxGridDBColumn;
-    cxGrid1DBTableView1RASCHET_SCHET_COLUMN: TcxGridDBColumn;
+    Memo3: TMemo;
+    OD_loadKartExtAPPROVE_RESULT: TStringField;
+    cxGrid1DBTableView1APPROVE_RESULT: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
@@ -144,15 +145,15 @@ begin
       cxGrid1DBTableView1PAYMENT.Visible:=false;
       cxGrid1DBTableView1SUMMA.Visible:=false;
       Panel3.Visible:=False;
+      Memo1.Visible:=False;
     end
     else
     begin
       // Кис
-      Memo1.Visible:=False;
+      Memo3.Visible:=False;
       TabSheet2.TabVisible:=False;
       Panel1.Visible:=False;
     end;
-    
 end;
 
 procedure TfrmLoadKartExt.FormClose(Sender: TObject;
@@ -176,7 +177,7 @@ begin
         Application.CreateForm(TForm_status, Form_status);
         Form_status.Update;
         l_res :=
-          DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA.HTTP_REQ',
+          DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA2.HTTP_REQ',
           ['/loadFileKartExt/' + ExtractFileName(OpenDialog1.FileName), null,
           'GET']);
         Form_status.Close;
@@ -214,7 +215,7 @@ begin
     Form_status.Update;
     if not (OD_loadKartExt.State in [dsBrowse]) then
       OD_loadKartExt.Post;
-    DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA.HTTP_REQ',
+    DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA2.HTTP_REQ',
       ['/loadApprovedKartExt', null, 'GET']);
     Form_status.Close;
     Application.MessageBox('Лиц.счета успешно сохранены!', 'Внимание!', MB_OK
@@ -260,10 +261,15 @@ begin
       end
       else if (s = '2') or (s = '10') then
       begin
-        // ошибка - внешний лиц.сч. дублируется в файле
+        // ошибка
         ACanvas.Font.Color := clRed;
       end
-      else if (s = '7') or (s = '8') or (s = '9') then
+      else if (s = '0') then
+      begin
+        // одобрено на загрузку в БД пользователем
+        ACanvas.Font.Color := clGreen;
+      end
+      else if (s = '7') or (s = '8') or (s = '5') then
       begin
         // необходимо привязать лиц.счет вручную, или проверить привязку к лиц.счету
         ACanvas.Font.Color := clBlue;

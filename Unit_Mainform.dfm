@@ -1,6 +1,6 @@
 object Form_Main: TForm_Main
-  Left = 483
-  Top = 230
+  Left = 227
+  Top = 336
   Width = 880
   Height = 628
   Caption = #1044#1080#1088#1077#1082#1090
@@ -1074,7 +1074,7 @@ object Form_Main: TForm_Main
       end
     end
     object ver: TMenuItem
-      Caption = 'ver 2.2.0'
+      Caption = 'ver 2.2.7'
       object option: TMenuItem
         Caption = #1055#1086#1076#1082#1083#1102#1095#1077#1085#1085#1099#1077' '#1086#1087#1094#1080#1080':'
       end
@@ -12916,5 +12916,11 @@ object Form_Main: TForm_Main
       E7E7F27FF1F79FF9EFF7F97FFC73DFFBDFF3FC7FFF0BCFF38001FE7FFFC1E3C7
       8001FF7FFFF9F81FFFFFFFFFFFFEFFFF00000000000000000000000000000000
       000000000000}
+  end
+  object cxEditRepository1: TcxEditRepository
+    Left = 40
+    Top = 232
+    object cxEditRepository1MRUItem1: TcxEditRepositoryMRUItem
+    end
   end
 end

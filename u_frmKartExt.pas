@@ -69,6 +69,9 @@ type
     cxGrid1DBTableView1CHRG: TcxGridDBColumn;
     cxGrid1DBTableView1PAYMENT: TcxGridDBColumn;
     cxGrid1DBTableView1OUTSAL: TcxGridDBColumn;
+    OD_kartExtRASCHET_SCHET: TStringField;
+    cxGrid1DBTableView1RASCHET_SCHET: TcxGridDBColumn;
+    pnl1: TPanel;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ToolButton1Click(Sender: TObject);
@@ -94,7 +97,10 @@ uses Unit_Mainform, Utils;
 
 procedure TfrmKartExt.FormCreate(Sender: TObject);
 begin
+  pnl1.Visible:=True;
+  Refresh;
   OD_kartExt.Active := True;
+  pnl1.Visible:=False;
   if getDoublePar(Form_main.paramList, 'EXT_LSK_LOAD_TP') = 0 then
     begin
       // Полыс
@@ -102,6 +108,7 @@ begin
       cxGrid1DBTableView1CHRG.Visible:=false;
       cxGrid1DBTableView1PAYMENT.Visible:=false;
       cxGrid1DBTableView1OUTSAL.Visible:=false;
+      cxGrid1DBTableView1RASCHET_SCHET.Visible:=false;
     end
     else
     begin

@@ -123,7 +123,6 @@ type
     cxGrid1DBTableView1LKPAR: TcxGridDBColumn;
     cxGrid1DBTableView1LKPAR2: TcxGridDBColumn;
     cxGrid1DBTableView1REU: TcxGridDBColumn;
-    cxGrid1DBTableView1TREST: TcxGridDBColumn;
     cxGrid1DBTableView1BANK_CD: TcxGridDBColumn;
     cxGrid1DBTableView1ADR_WWW: TcxGridDBColumn;
     cxGrid1DBTableView1EMAIL: TcxGridDBColumn;
