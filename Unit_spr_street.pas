@@ -5,25 +5,37 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, StdCtrls, wwSpeedButton, wwDBNavigator, ExtCtrls,
-  GridsEh, DBGridEh, Wwdatsrc, OracleData, DBCtrls, Utils;
+  GridsEh, DBGridEh, Wwdatsrc, OracleData, DBCtrls, Utils, cxGraphics,
+  cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxStyles,
+  cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
+  cxDBData, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
+  cxGridLevel, cxClasses, cxGridCustomView, cxGrid, cxDBLookupComboBox;
 
 type
   TForm_spr_street = class(TForm)
     OD_street: TOracleDataSet;
-    DS_oper: TwwDataSource;
-    DBGridEh1: TDBGridEh;
     GroupBox1: TGroupBox;
     Button1: TButton;
     Button2: TButton;
     OD_streetID: TStringField;
     OD_streetNAME: TStringField;
-    DBNavigator2: TDBNavigator;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    cxGrid1: TcxGrid;
+    cxGrid1DBTableView1ID: TcxGridDBColumn;
+    cxGrid1DBTableView1NAME: TcxGridDBColumn;
+    OD_streetFK_SETTLEMENT: TFloatField;
+    OD_cities: TOracleDataSet;
+    cxGrid1DBTableView1SETTLEMENT: TcxGridDBColumn;
+    DS_cities: TDataSource;
+    DS_streets: TDataSource;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure DBNavigator2BeforeAction(Sender: TObject;
       Button: TNavigateBtn);
+    procedure OD_streetFK_SETTLEMENTValidate(Sender: TField);
   private
     exit_: Integer;
   public
@@ -83,7 +95,8 @@ end;
 procedure TForm_spr_street.FormCreate(Sender: TObject);
 begin
   exit_:=2;  //Выход через закрытие окна
-  AutoSize:=True;
+  OD_street.Active:=true;
+  OD_cities.Active:=true;
 end;
 
 procedure TForm_spr_street.DBNavigator2BeforeAction(Sender: TObject;
@@ -94,6 +107,14 @@ begin
   begin
    Abort();
   end;
+end;
+
+procedure TForm_spr_street.OD_streetFK_SETTLEMENTValidate(Sender: TField);
+begin
+{   if Sender.Text='' then
+     Application.MessageBox('Заполните наименование населенного пункта', 
+       'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
+ }      
 end;
 
 end.

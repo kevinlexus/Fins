@@ -141,9 +141,11 @@ type
     procedure cxImageComboBox2PropertiesCloseUp(Sender: TObject);
     procedure cxImageComboBox2PropertiesChange(Sender: TObject);
     procedure selVar();
+    procedure prepControls();
     procedure lkpMgFromPropertiesCloseUp(Sender: TObject);
     procedure lkpMgToPropertiesCloseUp(Sender: TObject);
     procedure CheckBox5Click(Sender: TObject);
+    procedure cxLookupComboBox1PropertiesCloseUp(Sender: TObject);
   private
     cnt_sch_: Integer;
     tp_: Integer;
@@ -284,7 +286,8 @@ begin
   setMainDataset;
 
   if not VarIsNull(lkpMgFrom.EditValue) then
-    DM_Bill.Uni_rep_penya.ParamByName('p_mg_from').AsString := lkpMgFrom.EditValue
+    DM_Bill.Uni_rep_penya.ParamByName('p_mg_from').AsString :=
+      lkpMgFrom.EditValue
   else
     DM_Bill.Uni_rep_penya.ParamByName('p_mg_from').clear;
 
@@ -359,10 +362,17 @@ begin
     DM_Bill.Uni_cmp_main.ParamByName('p_nd').Clear;
 
   if DBLookupComboboxEh4.KeyValue <> null then
+  begin
     DM_Bill.Uni_cmp_main.ParamByName('p_kw').AsString :=
-      DM_Bill2.OD_kw.FieldByName('kw_id').AsString
+      DM_Bill2.OD_kw.FieldByName('kw_id').AsString;
+    DM_Bill.Uni_cmp_main.ParamByName('p_klsk_id').AsInteger :=
+      DM_Bill2.OD_kw.FieldByName('k_lsk_id').AsInteger;
+  end
   else
+  begin
     DM_Bill.Uni_cmp_main.ParamByName('p_kw').Clear;
+    DM_Bill.Uni_cmp_main.ParamByName('p_klsk_id').Clear;
+  end;
 
   // печатать ли закрытые счета
   if CheckBox2.Checked = true then
@@ -552,11 +562,24 @@ begin
   else
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_nd').Clear;
 
+  {  if DBLookupComboboxEh4.KeyValue <> null then
+      DM_Bill.Uni_cmp_main.Params.ParamByName('p_kw').AsString :=
+        DM_Bill2.OD_kw.FieldByName('kw_id').AsString
+    else
+      DM_Bill.Uni_cmp_main.Params.ParamByName('p_kw').Clear;
+   }
   if DBLookupComboboxEh4.KeyValue <> null then
-    DM_Bill.Uni_cmp_main.Params.ParamByName('p_kw').AsString :=
-      DM_Bill2.OD_kw.FieldByName('kw_id').AsString
+  begin
+    DM_Bill.Uni_cmp_main.ParamByName('p_kw').AsString :=
+      DM_Bill2.OD_kw.FieldByName('kw_id').AsString;
+    DM_Bill.Uni_cmp_main.ParamByName('p_klsk_id').AsInteger :=
+      DM_Bill2.OD_kw.FieldByName('k_lsk_id').AsInteger;
+  end
   else
-    DM_Bill.Uni_cmp_main.Params.ParamByName('p_kw').Clear;
+  begin
+    DM_Bill.Uni_cmp_main.ParamByName('p_kw').Clear;
+    DM_Bill.Uni_cmp_main.ParamByName('p_klsk_id').Clear;
+  end;
 
   // печатать ли закрытые счета
   if CheckBox2.Checked = true then
@@ -689,12 +712,26 @@ begin
   else
     DM_Bill2.OD_main.SetVariable('nd_', null);
 
+  // вернул 03.03.21
   if DBLookupComboboxEh4.KeyValue <> null then
     DM_Bill2.OD_main.SetVariable('kw_',
       DM_Bill2.OD_kw.FieldByName('kw_id').AsString)
   else
     DM_Bill2.OD_main.SetVariable('kw_', null);
 
+  {   if DBLookupComboboxEh4.KeyValue <> null then
+    begin
+      DM_Bill.Uni_cmp_main.ParamByName('p_kw').AsString :=
+        DM_Bill2.OD_kw.FieldByName('kw_id').AsString;
+      DM_Bill.Uni_cmp_main.ParamByName('p_klsk_id').AsInteger :=
+        DM_Bill2.OD_kw.FieldByName('k_lsk_id').AsInteger;
+    end
+    else
+    begin
+      DM_Bill.Uni_cmp_main.ParamByName('p_kw').Clear;
+      DM_Bill.Uni_cmp_main.ParamByName('p_klsk_id').Clear;
+    end;
+   }
   if (tp_ = 5) or (tp_ = 7) then //справка арх-2
   begin
     if sel_obj_ = 2 then
@@ -1297,7 +1334,12 @@ begin
   // наполнить списком УК
   fillUk();
 
+  // настройка элементов управления
+  prepControls();
+
+  // настройка наименования отчёта
   selVar();
+
   //Настройки расположения формы
   cxprprtstr1.Active := True;
   cxprprtstr1.RestoreFrom;
@@ -1307,9 +1349,12 @@ procedure TForm_print_bills.sel_lsk;
 var
   keySel: Variant;
 begin
+  // настройка периода по умолчанию
+  DM_Bill2.OD_mg.First;
+  lkpMgFrom.EditValue := DM_Bill2.OD_mg.FieldByName('mg').AsString;
+
   if FF('Form_get_pay_nal', 0) = 1 then
   begin
-    //ComboBox1.ItemIndex := 0;
     cxImageComboBox2.ItemIndex := 0;
     wwDBEdit1.Text := Form_get_pay_nal.OD_kart.FieldByName('lsk').AsString;
     wwDBEdit2.Text := Form_get_pay_nal.OD_kart.FieldByName('lsk').AsString;
@@ -1322,20 +1367,11 @@ begin
     keySel[0] := Form_list_kart.OD_list_kart.FieldByName('reu').AsString;
     keySel[1] := Form_list_kart.OD_list_kart.FieldByName('kul').AsString;
     keySel[2] := Form_list_kart.OD_list_kart.FieldByName('nd').AsString;
-    //DBLookupComboboxEh3.Enabled:=True;
     DBLookupComboboxEh3.KeyValue := keySel;
 
-    //DBLookupComboboxEh3.KeyValue := Form_get_pay_nal.OD_kart.FieldByName('house_id').AsString;
     DBLookupComboboxEh4.KeyValue :=
       Form_get_pay_nal.OD_kart.FieldByName('lsk').AsString;
-    //DBLookupComboboxEh4.KeyValue := // исправил ред.28.12.20
-    //  Form_get_pay_nal.OD_kart.FieldByName('k_lsk_id').AsString;
 
-    // по умолчанию период
-    lkpMgFrom.EditValue :=
-      DM_Bill2.OD_mg.FieldByName('mg').AsString;
-
-    //Form_main.c_lsk_id_ := Form_get_pay_nal.OD_kart.FieldByName('c_lsk_id').AsInteger;
     Form_main.k_lsk_id_ :=
       Form_get_pay_nal.OD_kart.FieldByName('k_lsk_id').AsInteger;
   end
@@ -1355,24 +1391,9 @@ begin
     keySel[1] := Form_list_kart.OD_list_kart.FieldByName('kul').AsString;
     keySel[2] := Form_list_kart.OD_list_kart.FieldByName('nd').AsString;
 
-    //DBLookupComboboxEh3.Enabled:=True;
     DBLookupComboboxEh3.KeyValue := keySel;
-    //DBLookupComboboxEh3.KeyValue := Form_list_kart.OD_list_kart.FieldByName('house_id').AsString;
-    //DBLookupComboboxEh4.KeyValue :=
-    //  Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger; // исправил ред.28.12.20
     DBLookupComboboxEh4.KeyValue :=
       Form_list_kart.OD_list_kart.FieldByName('lsk').AsString;
-    //Exit;
-    // по умолчанию период
-    lkpMgFrom.EditValue :=
-      DM_Bill2.OD_mg.FieldByName('mg').AsString;
-    {    DM_Bill2.OD_spr_services.SetVariable('p_mg',
-          DM_Bill2.OD_mg.FieldByName('mg').AsString);
-        DM_Bill2.OD_spr_services.Active := False;
-        DM_Bill2.OD_spr_services.Active := True;
-        cxLookupComboBox1.EditValue :=
-          DM_Bill2.OD_spr_services.FieldByName('FNAME_SCH').AsString;
-     }
     Form_main.k_lsk_id_ :=
       Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger;
   end
@@ -1568,14 +1589,6 @@ end;
 procedure TForm_print_bills.lkpMgFromCloseUp(Sender: TObject; Accept:
   Boolean);
 begin
-  selVar;
-  if sel_obj_ = 2 then
-    sel_ls_cnt;
-  {  DM_Bill2.OD_spr_services.SetVariable('p_mg', lkpMgFrom.EditValue);
-    DM_Bill2.OD_spr_services.Active := False;
-    DM_Bill2.OD_spr_services.Active := True;
-    cxLookupComboBox1.EditValue :=
-      DM_Bill2.OD_spr_services.FieldByName('FNAME_SCH').AsString;}
 end;
 
 {procedure TForm_print_bills.DM_Bill2.OD_ls_cntBeforeOpen(DataSet: TDataSet);
@@ -1697,6 +1710,15 @@ begin
   selVar();
 end;
 
+procedure TForm_print_bills.prepControls();
+begin
+  DM_Bill2.OD_spr_services.SetVariable('p_mg', lkpMgFrom.EditValue);
+  DM_Bill2.OD_spr_services.Active := False;
+  DM_Bill2.OD_spr_services.Active := True;
+  cxLookupComboBox1.EditValue :=
+    DM_Bill2.OD_spr_services.FieldByName('FNAME_SCH').AsString;
+end;
+
 procedure TForm_print_bills.selVar();
 var
   repVar: string;
@@ -1710,17 +1732,22 @@ begin
   set_obj;
   lkpMgFrom.Visible := false;
   lkpMgTo.Visible := false;
+
   if tp_ = 0 then // Счета
   begin
     Label3.Caption := 'Период отчета';
     Label13.Enabled := True;
     Label9.Visible := false;
-    //    lkpMgFrom.Enabled := true;
     lkpMgFrom.Visible := true;
     CheckBox2.Visible := true;
     CheckBox4.Visible := true;
     CheckBox5.Visible := true;
     cxImageComboBox1.Enabled := True;
+  end
+  else if (tp_ = 1) then
+  begin
+    // Справочник квартиросьемщика
+    lkpMgFrom.Visible := true;
   end
   else if (tp_ = 2) or (tp_ = 5) or (tp_ = 7) then
     // Справка из архива
@@ -1816,13 +1843,6 @@ begin
       (DM_Bill2.OD_t_org.FieldByName('BILL_TP').asInteger = 4) then
     begin
       // составной счет
-      DM_Bill2.OD_spr_services.SetVariable('p_mg',
-        DM_Bill2.OD_mg.FieldByName('mg').AsString);
-      DM_Bill2.OD_spr_services.Active := False;
-      DM_Bill2.OD_spr_services.Active := True;
-      cxLookupComboBox1.EditValue :=
-        DM_Bill2.OD_spr_services.FieldByName('FNAME_SCH').AsString;
-
       filePathStr := Form_main.exepath_ +
         VarToStr(cxLookupComboBox1.EditValue);
     end
@@ -1912,12 +1932,10 @@ procedure TForm_print_bills.lkpMgFromPropertiesCloseUp(Sender: TObject);
 begin
   if sel_obj_ = 2 then
     sel_ls_cnt;
-  DM_Bill2.OD_spr_services.SetVariable('p_mg', lkpMgFrom.EditValue);
-  DM_Bill2.OD_spr_services.Active := False;
-  DM_Bill2.OD_spr_services.Active := True;
-  cxLookupComboBox1.EditValue :=
-    DM_Bill2.OD_spr_services.FieldByName('FNAME_SCH').AsString;
-    
+
+  prepControls();
+
+  selVar();
 end;
 
 procedure TForm_print_bills.lkpMgToPropertiesCloseUp(Sender: TObject);
@@ -1928,6 +1946,12 @@ begin
 end;
 
 procedure TForm_print_bills.CheckBox5Click(Sender: TObject);
+begin
+  selVar();
+end;
+
+procedure TForm_print_bills.cxLookupComboBox1PropertiesCloseUp(
+  Sender: TObject);
 begin
   selVar();
 end;

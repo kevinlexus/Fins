@@ -1,6 +1,6 @@
 object Form_print_bills: TForm_print_bills
-  Left = 352
-  Top = 213
+  Left = 1252
+  Top = 301
   Width = 457
   Height = 491
   BorderIcons = [biSystemMenu, biMinimize]
@@ -545,6 +545,7 @@ object Form_print_bills: TForm_print_bills
         end>
       Properties.ListOptions.ShowHeader = False
       Properties.ListSource = DM_Bill2.DS_spr_services
+      Properties.OnCloseUp = cxLookupComboBox1PropertiesCloseUp
       TabOrder = 12
       Width = 257
     end

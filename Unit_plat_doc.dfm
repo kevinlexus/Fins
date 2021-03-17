@@ -1,6 +1,6 @@
 object Form_plat_doc: TForm_plat_doc
-  Left = 942
-  Top = 278
+  Left = 1126
+  Top = 238
   Width = 631
   Height = 713
   Caption = #1055#1083#1072#1090#1077#1078#1085#1099#1081' '#1076#1086#1082#1091#1084#1077#1085#1090
@@ -235,8 +235,8 @@ object Form_plat_doc: TForm_plat_doc
     TabOrder = 2
     Visible = False
   end
-  object frxDBDataset1: TfrxDBDataset
-    UserName = 'frxDBDataset1'
+  object frxDBc_kwtp_chk: TfrxDBDataset
+    UserName = 'frxDBc_kwtp_chk'
     CloseDataSource = False
     FieldAliases.Strings = (
       'LSK=LSK'
@@ -266,8 +266,8 @@ object Form_plat_doc: TForm_plat_doc
     Left = 24
     Top = 24
   end
-  object frxDBDataset2: TfrxDBDataset
-    UserName = 'frxDBDataset2'
+  object frxDBc_kwtp_mg_chk: TfrxDBDataset
+    UserName = 'frxDBc_kwtp_mg_chk'
     CloseDataSource = False
     FieldAliases.Strings = (
       'LSK=LSK'

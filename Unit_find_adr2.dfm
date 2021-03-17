@@ -702,6 +702,7 @@ object Form_find_adr2: TForm_find_adr2
           'Text')
       end>
     StorageName = 'cxPropertiesStore2'
+    StorageType = stRegistry
     Left = 640
     Top = 8
   end

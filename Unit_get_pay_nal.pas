@@ -808,8 +808,8 @@ begin
       with Form_plat_doc do
       begin
 
-        frxDBDataset1.DataSource := DS_c_kwtp;
-        frxDBDataset2.DataSource := DS_c_kwtp_mg;
+        frxDBc_kwtp_chk.DataSource := DS_c_kwtp;
+        frxDBc_kwtp_mg_chk.DataSource := DS_c_kwtp_mg;
 
         //если используется собственный файл платежной квитанции - использовать его
         //ТСЖ

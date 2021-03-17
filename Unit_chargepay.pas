@@ -6,22 +6,9 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Grids, DBGridEh, DB, OracleData, StdCtrls, Utils, ComCtrls,
   ExtCtrls, Wwdbigrd, Wwdbgrid, frxClass, frxDBSet, wwcheckbox,
-  cxControls, 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  cxEdit, 
+  cxControls,
+
+  cxEdit,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
   cxGridLevel, cxClasses, cxGridCustomView, cxGrid, Menus, cxContainer,
   cxTextEdit, cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit,
@@ -115,7 +102,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button3Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure state_arch2(mgold_: String);
+    procedure state_arch2(mgold_: string);
     procedure recalc;
     procedure PageControl1Change(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -148,7 +135,7 @@ uses DM_module1, Unit_list_kart, Unit_Mainform, u_frmTwoLsk;
 procedure TForm_chargepay.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  Action:=caFree;
+  Action := caFree;
 end;
 
 procedure TForm_chargepay.Button3Click(Sender: TObject);
@@ -156,89 +143,107 @@ begin
   Close;
 end;
 
-procedure TForm_chargepay.state_arch2(mgold_: String);
+procedure TForm_chargepay.state_arch2(mgold_: string);
 begin // смена состояний формы
-with Form_chargepay do
-begin
-  if (Form_main.arch_mg_ <> '') and (mgold_='') then
-  begin  // из текущего в архив
-    Form_chargepay.Caption:='Движение по Л/C - Архив';
-    change_alias(OD_chargepay,
-      'select mg, sum(summa) as summa from scott.c_chargepay2 where (select period from scott.params) between mgFrom and mgTo',
-      'select mg, sum(summa) as summa from scott.c_chargepay2 where ('''+Form_main.arch_mg_+''')  between mgFrom and mgTo', false
-      );
-    change_alias(OD_chargepay,'scott.c_penya',
-      '(select * from scott.a_penya where mg='''+Form_main.arch_mg_+''')', false);
-    change_alias(OD_chargepay,'scott.c_pen_cur',
-      '(select * from scott.a_pen_cur where mg='''+Form_main.arch_mg_+''')', false);
-    change_alias(OD_chargepay,'scott.c_pen_corr',
-      '(select * from scott.a_pen_corr where mg='''+Form_main.arch_mg_+''')', false);
-    change_alias(OD_chargepay,'scott.c_kwtp_mg',
-      '(select * from scott.a_kwtp_mg where mg='''+Form_main.arch_mg_+''')', false);
-    change_alias(OD_chargepay,'(select scott.utils.add_months_pr(m.period,-1) from scott.v_params m)',
-      '(select scott.utils.add_months_pr('''+Form_main.arch_mg_+''',-1) from scott.v_params m)', true);
+  with Form_chargepay do
+  begin
+    if (Form_main.arch_mg_ <> '') and (mgold_ = '') then
+    begin // из текущего в архив
+      Form_chargepay.Caption := 'Движение по Л/C - Архив';
+      change_alias(OD_chargepay,
+        'select mg, sum(summa) as summa from scott.c_chargepay2 where (select period from scott.params) between mgFrom and mgTo',
+        'select mg, sum(summa) as summa from scott.c_chargepay2 where (''' +
+        Form_main.arch_mg_ + ''')  between mgFrom and mgTo', false
+        );
+      change_alias(OD_chargepay, 'scott.c_penya',
+        '(select * from scott.a_penya where mg=''' + Form_main.arch_mg_ + ''')',
+        false);
+      change_alias(OD_chargepay, 'scott.c_pen_cur',
+        '(select * from scott.a_pen_cur where mg=''' + Form_main.arch_mg_ +
+        ''')', false);
+      change_alias(OD_chargepay, 'scott.c_pen_corr',
+        '(select * from scott.a_pen_corr where mg=''' + Form_main.arch_mg_ +
+        ''')', false);
+      change_alias(OD_chargepay, 'scott.c_kwtp_mg',
+        '(select * from scott.a_kwtp_mg where mg=''' + Form_main.arch_mg_ +
+        ''')', false);
+      change_alias(OD_chargepay,
+        '(select scott.utils.add_months_pr(m.period,-1) from scott.v_params m)',
+        '(select scott.utils.add_months_pr(''' + Form_main.arch_mg_ +
+        ''',-1) from scott.v_params m)', true);
 
-  end
-  else if (Form_main.arch_mg_ = '') and (mgold_ <> '') then
-  begin  // из архива в текущее
-    Form_chargepay.Caption:='Движение по Л/C';
-    change_alias(OD_chargepay,
-      'select mg, sum(summa) as summa from scott.c_chargepay2 where ('''+mgold_+''')  between mgFrom and mgTo',
-      'select mg, sum(summa) as summa from scott.c_chargepay2 where (select period from scott.params) between mgFrom and mgTo', false
-      );
-    change_alias(OD_chargepay,
-      '(select * from scott.a_penya where mg='''+mgold_+''')',
-      'scott.c_penya', false);
-    change_alias(OD_chargepay,
-      '(select * from scott.a_pen_cur where mg='''+mgold_+''')',
-      'scott.c_pen_cur', false);
-    change_alias(OD_chargepay,
-      '(select * from scott.a_pen_corr where mg='''+mgold_+''')',
-      'scott.c_pen_corr', false);
-    change_alias(OD_chargepay,
-      '(select * from scott.a_kwtp_mg where mg='''+mgold_+''')',
-      'scott.c_kwtp_mg', false);
-    change_alias(OD_chargepay,'(select scott.utils.add_months_pr('''+mgold_+''',-1) from scott.v_params m)',
-      '(select scott.utils.add_months_pr(m.period,-1) from scott.v_params m)', true);
-  end
-  else if (Form_main.arch_mg_ <> '') and (mgold_ <> '') then
-  begin  // из архива в архив
-    Form_chargepay.Caption:='Движение по Л/C - Архив';
-    change_alias(OD_chargepay,
-      'select mg, sum(summa) as summa from scott.c_chargepay2 where ('''+mgold_+''')  between mgFrom and mgTo',
-      'select mg, sum(summa) as summa from scott.c_chargepay2 where ('''+Form_main.arch_mg_+''')  between mgFrom and mgTo', false
-      );
-    change_alias(OD_chargepay,
-      '(select * from scott.a_penya where mg='''+mgold_+''')',
-      '(select * from scott.a_penya where mg='''+Form_main.arch_mg_+''')', false
-      );
-    change_alias(OD_chargepay,
-      '(select * from scott.a_pen_cur where mg='''+mgold_+''')',
-      '(select * from scott.a_pen_cur where mg='''+Form_main.arch_mg_+''')', false
-      );
-    change_alias(OD_chargepay,
-      '(select * from scott.a_pen_corr where mg='''+mgold_+''')',
-      '(select * from scott.a_pen_corr where mg='''+Form_main.arch_mg_+''')', false
-      );
-    change_alias(OD_chargepay,
-      '(select * from scott.a_kwtp_mg where mg='''+mgold_+''')',
-      '(select * from scott.a_kwtp_mg where mg='''+Form_main.arch_mg_+''')', false
-      );
-    change_alias(OD_chargepay,'(select scott.utils.add_months_pr('''+mgold_+''',-1) from scott.v_params m)',
-      '(select scott.utils.add_months_pr('''+Form_main.arch_mg_+''',-1) from scott.v_params m)', true);
+    end
+    else if (Form_main.arch_mg_ = '') and (mgold_ <> '') then
+    begin // из архива в текущее
+      Form_chargepay.Caption := 'Движение по Л/C';
+      change_alias(OD_chargepay,
+        'select mg, sum(summa) as summa from scott.c_chargepay2 where (''' + mgold_
+        + ''')  between mgFrom and mgTo',
+        'select mg, sum(summa) as summa from scott.c_chargepay2 where (select period from scott.params) between mgFrom and mgTo', false
+        );
+      change_alias(OD_chargepay,
+        '(select * from scott.a_penya where mg=''' + mgold_ + ''')',
+        'scott.c_penya', false);
+      change_alias(OD_chargepay,
+        '(select * from scott.a_pen_cur where mg=''' + mgold_ + ''')',
+        'scott.c_pen_cur', false);
+      change_alias(OD_chargepay,
+        '(select * from scott.a_pen_corr where mg=''' + mgold_ + ''')',
+        'scott.c_pen_corr', false);
+      change_alias(OD_chargepay,
+        '(select * from scott.a_kwtp_mg where mg=''' + mgold_ + ''')',
+        'scott.c_kwtp_mg', false);
+      change_alias(OD_chargepay, '(select scott.utils.add_months_pr(''' + mgold_
+        + ''',-1) from scott.v_params m)',
+        '(select scott.utils.add_months_pr(m.period,-1) from scott.v_params m)',
+        true);
+    end
+    else if (Form_main.arch_mg_ <> '') and (mgold_ <> '') then
+    begin // из архива в архив
+      Form_chargepay.Caption := 'Движение по Л/C - Архив';
+      change_alias(OD_chargepay,
+        'select mg, sum(summa) as summa from scott.c_chargepay2 where (''' + mgold_
+        + ''')  between mgFrom and mgTo',
+        'select mg, sum(summa) as summa from scott.c_chargepay2 where (''' +
+        Form_main.arch_mg_ + ''')  between mgFrom and mgTo', false
+        );
+      change_alias(OD_chargepay,
+        '(select * from scott.a_penya where mg=''' + mgold_ + ''')',
+        '(select * from scott.a_penya where mg=''' + Form_main.arch_mg_ + ''')',
+        false
+        );
+      change_alias(OD_chargepay,
+        '(select * from scott.a_pen_cur where mg=''' + mgold_ + ''')',
+        '(select * from scott.a_pen_cur where mg=''' + Form_main.arch_mg_ +
+        ''')', false
+        );
+      change_alias(OD_chargepay,
+        '(select * from scott.a_pen_corr where mg=''' + mgold_ + ''')',
+        '(select * from scott.a_pen_corr where mg=''' + Form_main.arch_mg_ +
+        ''')', false
+        );
+      change_alias(OD_chargepay,
+        '(select * from scott.a_kwtp_mg where mg=''' + mgold_ + ''')',
+        '(select * from scott.a_kwtp_mg where mg=''' + Form_main.arch_mg_ +
+        ''')', false
+        );
+      change_alias(OD_chargepay, '(select scott.utils.add_months_pr(''' + mgold_
+        + ''',-1) from scott.v_params m)',
+        '(select scott.utils.add_months_pr(''' + Form_main.arch_mg_ +
+        ''',-1) from scott.v_params m)', true);
+    end;
   end;
-end;
 end;
 
 procedure TForm_chargepay.closeDts;
 begin
- //Закрыть датасеты, чтобы не тормозили
- OD_chargepay.Active:=false;
- OD_chargepay2.Active:=false;
- OD_chargepay3.Active:=false;
- OD_chargepay4.Active:=false;
- OD_chargepay5.Active:=false;
- OD_chargepay6.Active:=false;
+  //Закрыть датасеты, чтобы не тормозили
+  OD_chargepay.Active := false;
+  OD_chargepay2.Active := false;
+  OD_chargepay3.Active := false;
+  OD_chargepay4.Active := false;
+  OD_chargepay5.Active := false;
+  OD_chargepay6.Active := false;
 end;
 
 procedure TForm_chargepay.recalc;
@@ -246,141 +251,159 @@ var
   sum_chrg_: Double;
   sum_chng_: Double;
   sum_pay_: Double;
+  l_dummy: Double;
 begin
-  //Обновляем движение по лицевому счету
-  DataModule1.OraclePackage1.CallProcedure
-         ('scott.C_CPENYA.gen_charge_pay',
-          [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, 1]);
-  DataModule1.OraclePackage1.CallProcedure
-         ('scott.C_CPENYA.gen_penya',
-         [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, 0, 1]);
+  if getDoublePar(Form_main.paramList, 'JAVA_DEB_PEN') = 1 then
+  begin
+    // новый расчет задолженности и пени в Java
+      l_dummy :=
+        DataModule1.OraclePackage1.CallFloatFunction('SCOTT.P_JAVA2.GEN',
+        [1, null, null, null,
+        Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger,
+          null, Form_Main.cur_dt, 0]);
+  end
+  else
+  begin
+    // старый вызов, PL/SQL
+    // расчет задолженности
+    DataModule1.OraclePackage1.CallProcedure
+      ('scott.C_CPENYA.gen_charge_pay',
+      [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, 1]);
+
+    DataModule1.OraclePackage1.CallProcedure
+      ('scott.C_CPENYA.gen_penya',
+      [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, 0, 1]);
+  end;
 
   CloseDts;
-  OD_chargepay.Active:=true;
+  OD_chargepay.Active := true;
   OD_chargepay.Last;
 
-  if PageControl1.ActivePageIndex=1 then
+  if PageControl1.ActivePageIndex = 1 then
   begin
-  Panel1.Visible:=true;
-  Update;
-  DataModule1.OraclePackage1.CallProcedure
-   ('scott.GEN.prepare_arch_lsk',
-     [Form_list_kart.OD_list_kart.FieldByName('lsk').asString, 0]);
-  OD_chargepay2.Active:=false;
-  OD_chargepay2.Active:=true;
-  OD_chargepay4.Active:=false;
-  OD_chargepay4.Active:=true;
-  OD_chargepay2.Last;
-  calcFooter;
-  Panel1.Visible:=false;
+    Panel1.Visible := true;
+    Update;
+    DataModule1.OraclePackage1.CallProcedure
+      ('scott.GEN.prepare_arch_lsk',
+      [Form_list_kart.OD_list_kart.FieldByName('lsk').asString, 0]);
+    OD_chargepay2.Active := false;
+    OD_chargepay2.Active := true;
+    OD_chargepay4.Active := false;
+    OD_chargepay4.Active := true;
+    OD_chargepay2.Last;
+    calcFooter;
+    Panel1.Visible := false;
 
   end
-  else if PageControl1.ActivePageIndex=2 then
+  else if PageControl1.ActivePageIndex = 2 then
   begin
-  Panel1.Visible:=true;
-  Update;
-  OD_chargepay3.Active:=false;
-  OD_chargepay3.Active:=true;
+    Panel1.Visible := true;
+    Update;
+    OD_chargepay3.Active := false;
+    OD_chargepay3.Active := true;
 
-  OD_chargepay3.First;
-  while not OD_chargepay3.Eof do
-  begin
-    sum_chrg_:=sum_chrg_+OD_chargepay3.FieldByName('sum_chrg').AsFloat;
-    sum_chng_:=sum_chng_+OD_chargepay3.FieldByName('sum_chng').AsFloat;
-    sum_pay_:=sum_pay_+OD_chargepay3.FieldByName('sum_pay').AsFloat;
-    OD_chargepay3.Next;
-  end;
-  OD_chargepay3.Last;
+    OD_chargepay3.First;
+    while not OD_chargepay3.Eof do
+    begin
+      sum_chrg_ := sum_chrg_ + OD_chargepay3.FieldByName('sum_chrg').AsFloat;
+      sum_chng_ := sum_chng_ + OD_chargepay3.FieldByName('sum_chng').AsFloat;
+      sum_pay_ := sum_pay_ + OD_chargepay3.FieldByName('sum_pay').AsFloat;
+      OD_chargepay3.Next;
+    end;
+    OD_chargepay3.Last;
 
-  wwDBGrid2.ColumnByName('SUM_CHRG').FooterValue :=FloatToStrF(sum_chrg_, ffFixed, 10, 2);
-  wwDBGrid2.ColumnByName('SUM_CHNG').FooterValue :=FloatToStrF(sum_chng_, ffFixed, 10, 2);
-  wwDBGrid2.ColumnByName('SUM_PAY').FooterValue :=FloatToStrF(sum_pay_, ffFixed, 10, 2);
-  wwDBGrid2.RedrawGrid;
-  Panel1.Visible:=false;
+    wwDBGrid2.ColumnByName('SUM_CHRG').FooterValue := FloatToStrF(sum_chrg_,
+      ffFixed, 10, 2);
+    wwDBGrid2.ColumnByName('SUM_CHNG').FooterValue := FloatToStrF(sum_chng_,
+      ffFixed, 10, 2);
+    wwDBGrid2.ColumnByName('SUM_PAY').FooterValue := FloatToStrF(sum_pay_,
+      ffFixed, 10, 2);
+    wwDBGrid2.RedrawGrid;
+    Panel1.Visible := false;
   end
-  else if PageControl1.ActivePageIndex=3 then
+  else if PageControl1.ActivePageIndex = 3 then
   begin
-  Panel1.Visible:=true;
-  Update;
-  DataModule1.OraclePackage1.CallProcedure
-   ('scott.GEN.prepare_arch_lsk',
-     [Form_list_kart.OD_list_kart.FieldByName('lsk').asString, 0]);
-  OD_chargepay5.Active:=false;
-  OD_chargepay5.Active:=true;
-  calcFooter5;
-  Panel1.Visible:=false;
+    Panel1.Visible := true;
+    Update;
+    DataModule1.OraclePackage1.CallProcedure
+      ('scott.GEN.prepare_arch_lsk',
+      [Form_list_kart.OD_list_kart.FieldByName('lsk').asString, 0]);
+    OD_chargepay5.Active := false;
+    OD_chargepay5.Active := true;
+    calcFooter5;
+    Panel1.Visible := false;
   end
-  else if PageControl1.ActivePageIndex=4 then
+  else if PageControl1.ActivePageIndex = 4 then
   begin
-  Panel1.Visible:=true;
-  Update;
-  DataModule1.OraclePackage1.CallProcedure
-   ('scott.GEN.prepare_arch_lsk',
-     [Form_list_kart.OD_list_kart.FieldByName('lsk').asString, 0]);
-  OD_chargepay6.Active:=false;
-  OD_chargepay6.Active:=true;
-  Panel1.Visible:=false;
+    Panel1.Visible := true;
+    Update;
+    DataModule1.OraclePackage1.CallProcedure
+      ('scott.GEN.prepare_arch_lsk',
+      [Form_list_kart.OD_list_kart.FieldByName('lsk').asString, 0]);
+    OD_chargepay6.Active := false;
+    OD_chargepay6.Active := true;
+    Panel1.Visible := false;
   end;
 end;
 
 procedure TForm_chargepay.FormCreate(Sender: TObject);
 begin
   // включить выбор периодов
-  OD_mg.Active:=true;
+  OD_mg.Active := true;
   OD_mg.Last;
-  cxLookupComboBox1.EditValue:=OD_mg.FieldByName('MG').AsString;
+  cxLookupComboBox1.EditValue := OD_mg.FieldByName('MG').AsString;
   OD_mg.First;
-  cxLookupComboBox2.EditValue:=OD_mg.FieldByName('MG').AsString;
+  cxLookupComboBox2.EditValue := OD_mg.FieldByName('MG').AsString;
   refreshGrids;
 
-  PageControl1.ActivePageIndex:=0;
+  PageControl1.ActivePageIndex := 0;
 
   if DataModule1.OraclePackage1.CallIntegerFunction
-       ('scott.Utils.get_int_param', ['DET_CHARGEPAY1']) = 1 then
+    ('scott.Utils.get_int_param', ['DET_CHARGEPAY1']) = 1 then
   begin
     //параметр показать Детализацию для Э+
-    TabSheet4.TabVisible:=True;
+    TabSheet4.TabVisible := True;
   end
   else
   begin
     //параметр скрыть Детализацию для Э+
-    TabSheet4.TabVisible:=False;
+    TabSheet4.TabVisible := False;
   end;
 
   if DataModule1.OraclePackage1.CallIntegerFunction
-       ('scott.Utils.get_int_param', ['DET_CHARGEPAY2']) = 1 then
+    ('scott.Utils.get_int_param', ['DET_CHARGEPAY2']) = 1 then
   begin
     //показать Детализацию для ЖКХ
-    TabSheet2.TabVisible:=True;
+    TabSheet2.TabVisible := True;
   end
   else
   begin
     //скрыть Детализацию для ЖКХ
-    TabSheet2.TabVisible:=False;
+    TabSheet2.TabVisible := False;
   end;
 
   if DataModule1.OraclePackage1.CallIntegerFunction
-       ('scott.Utils.get_int_param', ['DET_CHARGEPAY3']) = 1 then
+    ('scott.Utils.get_int_param', ['DET_CHARGEPAY3']) = 1 then
   begin
     //Организации ЖКХ, показать Прочие источники
-    TabSheet3.TabVisible:=True;
+    TabSheet3.TabVisible := True;
   end
   else
   begin
     //Организации ЖКХ, скрыть Прочие источники
-    TabSheet3.TabVisible:=False;
+    TabSheet3.TabVisible := False;
   end;
 
   if DataModule1.OraclePackage1.CallIntegerFunction
-       ('scott.Utils.get_int_param', ['DET_CHARGEPAY4']) = 1 then
+    ('scott.Utils.get_int_param', ['DET_CHARGEPAY4']) = 1 then
   begin
     //Показать детализацию построчную (не по колонкам)
-    TabSheet5.TabVisible:=True;
+    TabSheet5.TabVisible := True;
   end
   else
   begin
     //Скрыть детализацию построчную (не по колонкам)
-    TabSheet5.TabVisible:=False;
+    TabSheet5.TabVisible := False;
   end;
 
   state_arch2('');
@@ -389,25 +412,25 @@ end;
 
 procedure TForm_chargepay.PageControl1Change(Sender: TObject);
 begin
-  if PageControl1.ActivePageIndex= 0 then
+  if PageControl1.ActivePageIndex = 0 then
   begin
-    CheckBox1.Visible:=False;
+    CheckBox1.Visible := False;
   end
-  else if PageControl1.ActivePageIndex= 1 then
+  else if PageControl1.ActivePageIndex = 1 then
   begin
-    CheckBox1.Visible:=True;
+    CheckBox1.Visible := True;
   end
-  else if PageControl1.ActivePageIndex= 2 then
+  else if PageControl1.ActivePageIndex = 2 then
   begin
-    CheckBox1.Visible:=False;
+    CheckBox1.Visible := False;
   end
-  else if PageControl1.ActivePageIndex= 3 then
+  else if PageControl1.ActivePageIndex = 3 then
   begin
-    CheckBox1.Visible:=True;
+    CheckBox1.Visible := True;
   end
-  else if PageControl1.ActivePageIndex= 4 then
+  else if PageControl1.ActivePageIndex = 4 then
   begin
-    CheckBox1.Visible:=True;
+    CheckBox1.Visible := True;
   end;
   recalc;
 end;
@@ -423,89 +446,90 @@ begin
   OD_chargepay5.DisableControls;
   OD_chargepay6.DisableControls;
 
-  if PageControl1.ActivePageIndex= 0 then
+  if PageControl1.ActivePageIndex = 0 then
   begin
     frxReport1.LoadFromFile(Form_main.exepath_ + 'det1.fr3', True);
-    frxReport1.Variables['lsk_']:=
-      ''''+Form_list_kart.OD_list_kart.FieldByName('lsk').AsString+'''';
-    frxReport1.Variables['adr_']:=
-      ''''+Form_list_kart.OD_list_kart.FieldByName('adr').AsString+'''';
+    frxReport1.Variables['lsk_'] :=
+      '''' + Form_list_kart.OD_list_kart.FieldByName('lsk').AsString + '''';
+    frxReport1.Variables['adr_'] :=
+      '''' + Form_list_kart.OD_list_kart.FieldByName('adr').AsString + '''';
 
-    frxReport1.Variables['mg1']:=''''+cxLookupComboBox1.EditText+'''';
-    frxReport1.Variables['mg2']:=''''+cxLookupComboBox2.EditText+'''';
+    frxReport1.Variables['mg1'] := '''' + cxLookupComboBox1.EditText + '''';
+    frxReport1.Variables['mg2'] := '''' + cxLookupComboBox2.EditText + '''';
 
     frxReport1.PrepareReport(true);
     frxReport1.ShowPreparedReport;
 
   end
-  else if PageControl1.ActivePageIndex= 1 then
+  else if PageControl1.ActivePageIndex = 1 then
   begin
     frxReport1.LoadFromFile(Form_main.exepath_ + 'det3.fr3', True);
-    CheckBox1.Visible:=True;
-    if CheckBox1.Checked=True then
-      frxReport1.Script.Variables['det_']:=1
+    CheckBox1.Visible := True;
+    if CheckBox1.Checked = True then
+      frxReport1.Script.Variables['det_'] := 1
     else
-      frxReport1.Script.Variables['det_']:=0;
+      frxReport1.Script.Variables['det_'] := 0;
 
-    frxReport1.Variables['lsk_']:=
-      ''''+Form_list_kart.OD_list_kart.FieldByName('lsk').AsString+'''';
-    frxReport1.Variables['adr_']:=
-      ''''+Form_list_kart.OD_list_kart.FieldByName('adr').AsString+'''';
-    frxReport1.Variables['mg1']:=''''+cxLookupComboBox1.EditText+'''';
-    frxReport1.Variables['mg2']:=''''+cxLookupComboBox2.EditText+'''';
+    frxReport1.Variables['lsk_'] :=
+      '''' + Form_list_kart.OD_list_kart.FieldByName('lsk').AsString + '''';
+    frxReport1.Variables['adr_'] :=
+      '''' + Form_list_kart.OD_list_kart.FieldByName('adr').AsString + '''';
+    frxReport1.Variables['mg1'] := '''' + cxLookupComboBox1.EditText + '''';
+    frxReport1.Variables['mg2'] := '''' + cxLookupComboBox2.EditText + '''';
 
     frxReport1.PrepareReport(true);
     frxReport1.ShowPreparedReport;
   end
-  else if PageControl1.ActivePageIndex= 2 then
+  else if PageControl1.ActivePageIndex = 2 then
   begin
     frxReport1.LoadFromFile(Form_main.exepath_ + 'det2.fr3', True);
-    CheckBox1.Visible:=False;
-    frxReport1.Variables['lsk_']:=
-      ''''+Form_list_kart.OD_list_kart.FieldByName('lsk').AsString+'''';
-    frxReport1.Variables['adr_']:=
-      ''''+Form_list_kart.OD_list_kart.FieldByName('adr').AsString+'''';
+    CheckBox1.Visible := False;
+    frxReport1.Variables['lsk_'] :=
+      '''' + Form_list_kart.OD_list_kart.FieldByName('lsk').AsString + '''';
+    frxReport1.Variables['adr_'] :=
+      '''' + Form_list_kart.OD_list_kart.FieldByName('adr').AsString + '''';
 
-    frxReport1.Variables['mg1']:=''''+cxLookupComboBox1.EditText+'''';
-    frxReport1.Variables['mg2']:=''''+cxLookupComboBox2.EditText+'''';
+    frxReport1.Variables['mg1'] := '''' + cxLookupComboBox1.EditText + '''';
+    frxReport1.Variables['mg2'] := '''' + cxLookupComboBox2.EditText + '''';
 
     frxReport1.PrepareReport(true);
     frxReport1.ShowPreparedReport;
   end
-  else if PageControl1.ActivePageIndex= 3 then
+  else if PageControl1.ActivePageIndex = 3 then
   begin
     frxReport1.LoadFromFile(Form_main.exepath_ + 'det5.fr3', True);
-    CheckBox1.Visible:=False;
-    frxReport1.Variables['lsk_']:=
-      ''''+Form_list_kart.OD_list_kart.FieldByName('lsk').AsString+'''';
+    CheckBox1.Visible := False;
+    frxReport1.Variables['lsk_'] :=
+      '''' + Form_list_kart.OD_list_kart.FieldByName('lsk').AsString + '''';
 
-    frxReport1.Variables['adr_']:=
-      ''''+Form_list_kart.OD_list_kart.FieldByName('adr').AsString+'''';
+    frxReport1.Variables['adr_'] :=
+      '''' + Form_list_kart.OD_list_kart.FieldByName('adr').AsString + '''';
 
-    frxReport1.Variables['mg1']:=''''+cxLookupComboBox1.EditText+'''';
-    frxReport1.Variables['mg2']:=''''+cxLookupComboBox2.EditText+'''';
+    frxReport1.Variables['mg1'] := '''' + cxLookupComboBox1.EditText + '''';
+    frxReport1.Variables['mg2'] := '''' + cxLookupComboBox2.EditText + '''';
 
     frxReport1.PrepareReport(true);
     frxReport1.ShowPreparedReport;
   end
-  else if PageControl1.ActivePageIndex= 4 then
+  else if PageControl1.ActivePageIndex = 4 then
   begin
     frxReport1.LoadFromFile(Form_main.exepath_ + 'det6.fr3', True);
-    CheckBox1.Visible:=False;
-    frxReport1.Variables['lsk_']:=
-      ''''+Form_list_kart.OD_list_kart.FieldByName('lsk').AsString+'''';
+    CheckBox1.Visible := False;
+    frxReport1.Variables['lsk_'] :=
+      '''' + Form_list_kart.OD_list_kart.FieldByName('lsk').AsString + '''';
 
-    frxReport1.Variables['adr_']:=
-      ''''+Form_list_kart.OD_list_kart.FieldByName('adr').AsString+'''';
+    frxReport1.Variables['adr_'] :=
+      '''' + Form_list_kart.OD_list_kart.FieldByName('adr').AsString + '''';
 
-    frxReport1.Variables['mg1']:=''''+cxLookupComboBox1.EditText+'''';
-    frxReport1.Variables['mg2']:=''''+cxLookupComboBox2.EditText+'''';
+    frxReport1.Variables['mg1'] := '''' + cxLookupComboBox1.EditText + '''';
+    frxReport1.Variables['mg2'] := '''' + cxLookupComboBox2.EditText + '''';
 
     frxReport1.PrepareReport(true);
     frxReport1.ShowPreparedReport;
   end;
 
-  Form_chargepay.Caption:='Движение по лицевому счету, отчет:'+frxReport1.FileName;
+  Form_chargepay.Caption := 'Движение по лицевому счету, отчет:' +
+    frxReport1.FileName;
   //Разрешаем перерисовку
   OD_chargepay.EnableControls;
   OD_chargepay2.EnableControls;
@@ -517,70 +541,77 @@ end;
 
 procedure TForm_chargepay.calcFooter;
 var
-  charges_, changes_, payment_ : Double;
+  charges_, changes_, payment_: Double;
 begin
-  charges_:=0;
-  changes_:=0;
-  payment_:=0;
+  charges_ := 0;
+  changes_ := 0;
+  payment_ := 0;
 
   OD_chargepay2.First;
   while not OD_chargepay2.Eof do
   begin
-    charges_:=charges_+OD_chargepay2.FieldByName('chrg').AsFloat;
-    changes_:=changes_+OD_chargepay2.FieldByName('chng').AsFloat;
-    payment_:=payment_+OD_chargepay2.FieldByName('pay').AsFloat;
+    charges_ := charges_ + OD_chargepay2.FieldByName('chrg').AsFloat;
+    changes_ := changes_ + OD_chargepay2.FieldByName('chng').AsFloat;
+    payment_ := payment_ + OD_chargepay2.FieldByName('pay').AsFloat;
     OD_chargepay2.Next;
   end;
-  wwDBGrid1.ColumnByName('MG').FooterValue :='Итого:';
-  wwDBGrid1.ColumnByName('CHRG').FooterValue :=FloatToStrF(charges_, ffFixed, 10, 2);
-  wwDBGrid1.ColumnByName('CHNG').FooterValue :=FloatToStrF(changes_, ffFixed, 10, 2);
-  wwDBGrid1.ColumnByName('PAY').FooterValue :=FloatToStrF(payment_, ffFixed, 10, 2);
+  wwDBGrid1.ColumnByName('MG').FooterValue := 'Итого:';
+  wwDBGrid1.ColumnByName('CHRG').FooterValue := FloatToStrF(charges_, ffFixed,
+    10, 2);
+  wwDBGrid1.ColumnByName('CHNG').FooterValue := FloatToStrF(changes_, ffFixed,
+    10, 2);
+  wwDBGrid1.ColumnByName('PAY').FooterValue := FloatToStrF(payment_, ffFixed,
+    10, 2);
 end;
 
 procedure TForm_chargepay.calcFooter5;
 var
-  charges_, changes_, payment_ : Double;
+  charges_, changes_, payment_: Double;
 begin
-  charges_:=0;
-  changes_:=0;
-  payment_:=0;
+  charges_ := 0;
+  changes_ := 0;
+  payment_ := 0;
 
   OD_chargepay5.First;
   while not OD_chargepay5.Eof do
   begin
-    charges_:=charges_+OD_chargepay5.FieldByName('chrg').AsFloat;
-    changes_:=changes_+OD_chargepay5.FieldByName('chng').AsFloat;
-    payment_:=payment_+OD_chargepay5.FieldByName('pay').AsFloat;
+    charges_ := charges_ + OD_chargepay5.FieldByName('chrg').AsFloat;
+    changes_ := changes_ + OD_chargepay5.FieldByName('chng').AsFloat;
+    payment_ := payment_ + OD_chargepay5.FieldByName('pay').AsFloat;
     OD_chargepay5.Next;
   end;
-  wwDBGrid4.ColumnByName('MG').FooterValue :='Итого:';
-  wwDBGrid4.ColumnByName('CHRG').FooterValue :=FloatToStrF(charges_, ffFixed, 10, 2);
-  wwDBGrid4.ColumnByName('CHNG').FooterValue :=FloatToStrF(changes_, ffFixed, 10, 2);
-  wwDBGrid4.ColumnByName('PAY').FooterValue :=FloatToStrF(payment_, ffFixed, 10, 2);
+  wwDBGrid4.ColumnByName('MG').FooterValue := 'Итого:';
+  wwDBGrid4.ColumnByName('CHRG').FooterValue := FloatToStrF(charges_, ffFixed,
+    10, 2);
+  wwDBGrid4.ColumnByName('CHNG').FooterValue := FloatToStrF(changes_, ffFixed,
+    10, 2);
+  wwDBGrid4.ColumnByName('PAY').FooterValue := FloatToStrF(payment_, ffFixed,
+    10, 2);
 end;
 
 procedure TForm_chargepay.CheckBox2Click(Sender: TObject);
 begin
   if CheckBox2.checked then
-      Form_chargepay.FormStyle:=fsStayOnTop
-    else
-      Form_chargepay.FormStyle:=fsMDIChild;
+    Form_chargepay.FormStyle := fsStayOnTop
+  else
+    Form_chargepay.FormStyle := fsMDIChild;
 end;
 
 procedure TForm_chargepay.N1Click(Sender: TObject);
 begin
   //убрать входящее сальдо по пене
   if DataModule1.OraclePackage1.CallIntegerFunction
-         ('scott.C_CPENYA.corr_sal_pen',
-          [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString,
-           OD_chargepay.FieldByName('mg2').AsString]) <> 0 then
+    ('scott.C_CPENYA.corr_sal_pen',
+    [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString,
+    OD_chargepay.FieldByName('mg2').AsString]) <> 0 then
   begin
     DataModule1.OracleSession1.Rollback;
-    msg2('Входящего сальдо по пене нет, либо уже удалено!', 'Внимание!', MB_OK+MB_ICONSTOP);
+    msg2('Входящего сальдо по пене нет, либо уже удалено!', 'Внимание!', MB_OK +
+      MB_ICONSTOP);
   end
   else
     DataModule1.OracleSession1.Commit;
-//  recalc;
+  //  recalc;
 end;
 
 procedure TForm_chargepay.N2Click(Sender: TObject);
@@ -590,12 +621,12 @@ begin
   begin
     //убрать входящее сальдо по пене
     if DataModule1.OraclePackage1.CallIntegerFunction
-           ('scott.C_CPENYA.corr_sal_pen2',
-            [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString,
-             frmTwoLsk.edt2.text]) <> 0 then
+      ('scott.C_CPENYA.corr_sal_pen2',
+      [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString,
+      frmTwoLsk.edt2.text]) <> 0 then
     begin
       DataModule1.OracleSession1.Rollback;
-      msg2('Сальдо не перенесено!', 'Внимание!', MB_OK+MB_ICONSTOP);
+      msg2('Сальдо не перенесено!', 'Внимание!', MB_OK + MB_ICONSTOP);
     end
     else
       DataModule1.OracleSession1.Commit;
@@ -603,11 +634,10 @@ begin
     recalc;
   end;
 
-
 end;
 
-
 // Обновить гриды
+
 procedure TForm_chargepay.refreshGrids;
 begin
 
@@ -626,34 +656,33 @@ begin
   OD_chargepay7.SetVariable('MG1', VarToStr(cxLookupComboBox1.EditValue));
   OD_chargepay7.SetVariable('MG2', VarToStr(cxLookupComboBox2.EditValue));
 
-  if PageControl1.ActivePageIndex= 0 then
+  if PageControl1.ActivePageIndex = 0 then
   begin
-    OD_chargepay.Active:=false;
-    OD_chargepay.Active:=true;
+    OD_chargepay.Active := false;
+    OD_chargepay.Active := true;
   end
-  else if PageControl1.ActivePageIndex= 1 then
+  else if PageControl1.ActivePageIndex = 1 then
   begin
-    OD_chargepay2.Active:=false;
-    OD_chargepay2.Active:=true;
+    OD_chargepay2.Active := false;
+    OD_chargepay2.Active := true;
   end
-  else if PageControl1.ActivePageIndex= 2 then
+  else if PageControl1.ActivePageIndex = 2 then
   begin
-    OD_chargepay3.Active:=false;
-    OD_chargepay3.Active:=true;
+    OD_chargepay3.Active := false;
+    OD_chargepay3.Active := true;
   end
-  else if PageControl1.ActivePageIndex= 3 then
+  else if PageControl1.ActivePageIndex = 3 then
   begin
-    OD_chargepay5.Active:=false;
-    OD_chargepay5.Active:=true;
+    OD_chargepay5.Active := false;
+    OD_chargepay5.Active := true;
   end
-  else if PageControl1.ActivePageIndex= 4 then
+  else if PageControl1.ActivePageIndex = 4 then
   begin
-    OD_chargepay6.Active:=false;
-    OD_chargepay6.Active:=true;
+    OD_chargepay6.Active := false;
+    OD_chargepay6.Active := true;
   end;
 
 end;
-
 
 procedure TForm_chargepay.cxLookupComboBox1PropertiesCloseUp(
   Sender: TObject);
@@ -671,11 +700,12 @@ procedure TForm_chargepay.N3Click(Sender: TObject);
 begin
   //убрать входящее сальдо по пене
   if DataModule1.OraclePackage1.CallIntegerFunction
-         ('scott.C_CPENYA.corr_all_sal_pen',
-          [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString]) <> 0 then
+    ('scott.C_CPENYA.corr_all_sal_pen',
+    [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString]) <> 0 then
   begin
     DataModule1.OracleSession1.Rollback;
-    msg2('Входящего сальдо по пене нет, либо уже удалено!', 'Внимание!', MB_OK+MB_ICONSTOP);
+    msg2('Входящего сальдо по пене нет, либо уже удалено!', 'Внимание!', MB_OK +
+      MB_ICONSTOP);
   end
   else
     DataModule1.OracleSession1.Commit;
@@ -684,3 +714,4 @@ begin
 end;
 
 end.
+

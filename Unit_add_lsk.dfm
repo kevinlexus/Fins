@@ -122,6 +122,8 @@ object Form_add_lsk: TForm_add_lsk
       Top = 48
       Width = 185
       Height = 21
+      DropDownBox.Sizable = True
+      DropDownBox.Width = 250
       EditButtons = <>
       KeyField = 'ID'
       ListField = 'NAME'

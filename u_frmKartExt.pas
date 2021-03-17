@@ -59,8 +59,6 @@ type
     cxGrid1DBTableView1FK_KLSK_PREMISE: TcxGridDBColumn;
     OD_kartExtFK_KLSK_ID: TFloatField;
     cxGrid1DBTableView1FK_KLSK_ID: TcxGridDBColumn;
-    OD_kartExtLSK_1: TStringField;
-    OD_kartExtFK_KLSK_PREMISE_1: TFloatField;
     OD_kartExtINSAL: TFloatField;
     OD_kartExtCHRG: TFloatField;
     OD_kartExtPAYMENT: TFloatField;
@@ -80,6 +78,8 @@ type
       Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;
       AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
     procedure chk1Click(Sender: TObject);
+    procedure OD_kartExtBeforeQuery(Sender: TOracleDataSet);
+    procedure OD_kartExtAfterQuery(Sender: TOracleDataSet);
   private
     { Private declarations }
   public
@@ -97,10 +97,7 @@ uses Unit_Mainform, Utils;
 
 procedure TfrmKartExt.FormCreate(Sender: TObject);
 begin
-  pnl1.Visible:=True;
-  Refresh;
   OD_kartExt.Active := True;
-  pnl1.Visible:=False;
   if getDoublePar(Form_main.paramList, 'EXT_LSK_LOAD_TP') = 0 then
     begin
       // Полыс
@@ -164,6 +161,17 @@ begin
   begin
     OD_kartExt.ReadOnly := True;
   end;
+end;
+
+procedure TfrmKartExt.OD_kartExtBeforeQuery(Sender: TOracleDataSet);
+begin
+  pnl1.Visible:=True;
+  Refresh;
+end;
+
+procedure TfrmKartExt.OD_kartExtAfterQuery(Sender: TOracleDataSet);
+begin
+  pnl1.Visible:=False;
 end;
 
 end.

@@ -155,13 +155,14 @@ begin
     // создать счет / финансовый лиц.счет / помещение
     cnt_ := DataModule1.OraclePackage1.CallIntegerFunction(
       'scott.P_HOUSES.kart_lsk_add',
-      [Form_list_kart.OD_list_kart.FieldByName('lsk').asString,
-      cbb2.EditValue, cxMaskEdit2.Text,
+      [cbb2.EditValue, 
+        Form_list_kart.OD_list_kart.FieldByName('lsk').asString,
+        cxMaskEdit2.Text,
         lGetUslFromSrc,
         lDelUslFromSrc,
         RadioGroup1.ItemIndex,
         cxMaskEdit1.Text,
-        cxLookupComboBox1.EditValue,
+        cxLookupComboBox1.EditValue,                                  
         null,
         lCloseSrc,
         null
@@ -201,7 +202,12 @@ begin
   else
     Application.MessageBox('Ошибка создания лицевого счета!',
       'Внимание!', MB_ICONSTOP + MB_OK + MB_APPLMODAL);
-  //end;
+
+  if cnt_ <> 0 then
+  begin
+    DataModule1.OraclePackage1.Session.Rollback;
+  end;
+
 end;
 
 procedure TForm_new_lsk.Button3Click(Sender: TObject);

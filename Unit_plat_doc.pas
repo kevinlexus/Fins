@@ -13,8 +13,8 @@ type
     Panel1: TPanel;
     Button1: TButton;
     Button2: TButton;
-    frxDBDataset1: TfrxDBDataset;
-    frxDBDataset2: TfrxDBDataset;
+    frxDBc_kwtp_chk: TfrxDBDataset;
+    frxDBc_kwtp_mg_chk: TfrxDBDataset;
     frxReport1: TfrxReport;
     frxDialogControls1: TfrxDialogControls;
     Memo1: TMemo;

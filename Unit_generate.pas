@@ -37,7 +37,6 @@ type
     CheckBox1: TCheckBox;
     Panel1: TPanel;
     Memo1: TMemo;
-    abfshtdwn1: TabfShutdown;
     chk1: TCheckBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button2Click(Sender: TObject);
@@ -509,8 +508,8 @@ begin
       DataModule1.OraclePackage1.Session.Connected:=true;
       l_state:=DataModule1.OraclePackage1.CallIntegerFunction
          ('scott.Utils.set_base_state_gen', [0]);
-      if chk1.Checked then
-        abfshtdwn1.Execute;
+      //if chk1.Checked then
+      //  abfshtdwn1.Execute;
       Memo1.Text:='Формирование выполнено!';
    end;
 

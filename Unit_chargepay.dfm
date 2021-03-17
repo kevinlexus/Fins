@@ -1,6 +1,6 @@
 object Form_chargepay: TForm_chargepay
-  Left = 201
-  Top = 367
+  Left = 973
+  Top = 323
   Width = 835
   Height = 482
   BorderIcons = [biSystemMenu, biMinimize]
@@ -470,7 +470,6 @@ object Form_chargepay: TForm_chargepay
       Width = 119
       Height = 30
       Anchors = [akRight, akBottom]
-      Cancel = True
       Caption = #1055#1077#1095#1072#1090#1100
       TabOrder = 1
       OnClick = Button1Click

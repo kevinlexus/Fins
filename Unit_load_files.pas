@@ -118,7 +118,7 @@ begin
           l_res :=
             DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA.HTTP_REQ',
             ['loadFileMeterVal', ExtractFileName(OpenDialog1.FileName) + '/' +
-            isSetPrev, 'GET']);
+            isSetPrev, null, 'GET']);
           Form_status.Close;
           OD_docxpar.Active := False;
           OD_docxpar.Active := True;
@@ -157,7 +157,7 @@ begin
           l_res :=
             DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA.HTTP_REQ',
             ['unloadFileMeterVal', ExtractFileName(OpenDialog1.FileName) + '/' +
-            getStrUk, 'GET']);
+            getStrUk, null, 'GET']);
           Form_status.Close;
           if l_res = 'PROCESS' then
             msg2('Выполняется выгрузка файла!', 'Внимание!',

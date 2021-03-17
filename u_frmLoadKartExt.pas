@@ -93,7 +93,8 @@ type
     Memo3: TMemo;
     OD_loadKartExtAPPROVE_RESULT: TStringField;
     cxGrid1DBTableView1APPROVE_RESULT: TcxGridDBColumn;
-    procedure FormCreate(Sender: TObject);
+    pnl1: TPanel;
+    Timer1: TTimer;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
@@ -110,6 +111,8 @@ type
     procedure TabSheet2Show(Sender: TObject);
     procedure Button4Click(Sender: TObject);
     procedure cxDateEdit3PropertiesCloseUp(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -125,36 +128,6 @@ uses DM_module1, Unit_status, Unit_Mainform,
  cxGridExportLink, cxExport, ShellAPI;
 
 {$R *.dfm}
-
-procedure TfrmLoadKartExt.FormCreate(Sender: TObject);
-begin
-  cxDateEdit1.Date := Form_Main.cur_dt;
-  cxDateEdit2.Date := Form_Main.cur_dt;
-  cxDateEdit3.Date := Form_Main.cur_dt;
-  OD_loadKartExt.Active := True;
-  OD_not_linked.SetVariable('dt1', cxDateEdit1.Date);
-  OD_not_linked.Active:=false;
-  OD_not_linked.Active:=true;
-  PageControl1.ActivePageIndex:=0;
-
-  if getDoublePar(Form_main.paramList, 'EXT_LSK_LOAD_TP') = 0 then
-    begin
-      // Полыс
-      cxGrid1DBTableView1INSAL.Visible:=false;
-      cxGrid1DBTableView1CHRG.Visible:=false;
-      cxGrid1DBTableView1PAYMENT.Visible:=false;
-      cxGrid1DBTableView1SUMMA.Visible:=false;
-      Panel3.Visible:=False;
-      Memo1.Visible:=False;
-    end
-    else
-    begin
-      // Кис
-      Memo3.Visible:=False;
-      TabSheet2.TabVisible:=False;
-      Panel1.Visible:=False;
-    end;
-end;
 
 procedure TfrmLoadKartExt.FormClose(Sender: TObject;
   var Action: TCloseAction);
@@ -177,8 +150,8 @@ begin
         Application.CreateForm(TForm_status, Form_status);
         Form_status.Update;
         l_res :=
-          DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA2.HTTP_REQ',
-          ['/loadFileKartExt/' + ExtractFileName(OpenDialog1.FileName), null,
+          DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA.HTTP_REQ',
+          ['/loadFileKartExt/' + ExtractFileName(OpenDialog1.FileName), null, null,
           'GET']);
         Form_status.Close;
         if l_res = 'PROCESS' then
@@ -215,8 +188,8 @@ begin
     Form_status.Update;
     if not (OD_loadKartExt.State in [dsBrowse]) then
       OD_loadKartExt.Post;
-    DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA2.HTTP_REQ',
-      ['/loadApprovedKartExt', null, 'GET']);
+    DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA.HTTP_REQ',
+      ['/loadApprovedKartExt', null, null, 'GET']);
     Form_status.Close;
     Application.MessageBox('Лиц.счета успешно сохранены!', 'Внимание!', MB_OK
       + MB_ICONINFORMATION + MB_TOPMOST);
@@ -294,10 +267,10 @@ begin
     begin
       Application.CreateForm(TForm_status, Form_status);
       Form_status.Update;
-      l_res :=
-        DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA2.HTTP_REQ',
+      l_res :=                                               
+        DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA.HTTP_REQ',
         ['/unloadPaymentFileKartExt/' + Edit1.Text
-         +'/'+ cxDateEdit1.Text +'/'+ cxDateEdit2.Text, null,
+         +'/'+ cxDateEdit1.Text +'/'+ cxDateEdit2.Text, null, null,
         'GET']);
       Form_status.Close;
       if l_res = 'PROCESS' then
@@ -403,6 +376,49 @@ begin
    OD_not_linked.SetVariable('dt1', cxDateEdit1.Date);
    OD_not_linked.Active:=false;
    OD_not_linked.Active:=true;
+end;
+
+procedure TfrmLoadKartExt.Timer1Timer(Sender: TObject);
+begin
+  Timer1.Enabled:=false;
+  
+  pnl1.Visible:=True;
+  Refresh;
+  OD_loadKartExt.Active := True;
+  pnl1.Visible:=False;
+
+  OD_not_linked.SetVariable('dt1', cxDateEdit1.Date);
+  OD_not_linked.Active:=false;
+  OD_not_linked.Active:=true;
+
+end;
+
+procedure TfrmLoadKartExt.FormCreate(Sender: TObject);
+begin
+  cxDateEdit1.Date := Form_Main.cur_dt;
+  cxDateEdit2.Date := Form_Main.cur_dt;
+  cxDateEdit3.Date := Form_Main.cur_dt;
+
+  PageControl1.ActivePageIndex:=0;
+
+  if getDoublePar(Form_main.paramList, 'EXT_LSK_LOAD_TP') = 0 then
+    begin
+      // Полыс
+      cxGrid1DBTableView1INSAL.Visible:=false;
+      cxGrid1DBTableView1CHRG.Visible:=false;
+      cxGrid1DBTableView1PAYMENT.Visible:=false;
+      cxGrid1DBTableView1SUMMA.Visible:=false;
+      Panel3.Visible:=False;
+      Memo1.Visible:=False;
+    end
+    else
+    begin
+      // Кис
+      Memo3.Visible:=False;
+      TabSheet2.TabVisible:=False;
+      Panel1.Visible:=False;
+    end;
+
 end;
 
 end.

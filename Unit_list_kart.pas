@@ -1433,7 +1433,7 @@ begin
       OD_list_kart.active := false;
       OD_list_kart.SetVariable('var3_', 0);
       OD_list_kart.active := true;
-      chk1.Checked := false;
+      chk1.Checked := false;                        
     end;
 
     cxMRUEdit1.Text := lsk;

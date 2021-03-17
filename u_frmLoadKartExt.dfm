@@ -1,6 +1,6 @@
 object frmLoadKartExt: TfrmLoadKartExt
-  Left = 300
-  Top = 386
+  Left = 246
+  Top = 486
   Width = 1045
   Height = 520
   Caption = #1047#1072#1075#1088#1091#1079#1082#1072' '#1074#1085#1077#1096#1085#1080#1093' '#1083#1080#1094'.'#1089#1095#1077#1090#1086#1074
@@ -388,6 +388,14 @@ object frmLoadKartExt: TfrmLoadKartExt
           #1089#1090#1072#1090#1091#1089' '#1079#1072#1075#1088#1091#1079#1082#1080' '#1085#1072' 0')
         TabOrder = 4
       end
+      object pnl1: TPanel
+        Left = 400
+        Top = 184
+        Width = 185
+        Height = 41
+        Caption = #1047#1072#1075#1088#1091#1079#1082#1072'...'
+        TabOrder = 5
+      end
     end
     object TabSheet2: TTabSheet
       Caption = #1041#1077#1079' '#1087#1088#1080#1074#1103#1079#1082#1080
@@ -531,7 +539,9 @@ object frmLoadKartExt: TfrmLoadKartExt
       000000070000005041594D454E54010000000000020000004B57010000000000
       0D000000524153434845545F53434845540100000000000E000000415050524F
       56455F524553554C54010000000000}
+    QueryAllRecords = False
     Session = DataModule1.OracleSession1
+    DesignActivation = True
     Active = True
     Left = 8
     Top = 232
@@ -674,5 +684,10 @@ object frmLoadKartExt: TfrmLoadKartExt
     DataSet = OD_not_linked
     Left = 40
     Top = 280
+  end
+  object Timer1: TTimer
+    OnTimer = Timer1Timer
+    Left = 60
+    Top = 128
   end
 end

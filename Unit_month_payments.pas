@@ -311,9 +311,9 @@ begin
     Application.CreateForm(TForm_plat_doc, Form_plat_doc);
   with Form_plat_doc do
   begin
-    frxDBDataset1.DataSource :=
+    frxDBc_kwtp_chk.DataSource :=
       DS_c_kwtp_chk;
-    frxDBDataset2.DataSource :=
+    frxDBc_kwtp_mg_chk.DataSource :=
       DS_c_kwtp_mg_chk;
 
     {  if DataModule1.OraclePackage1.CallIntegerFunction

@@ -1096,11 +1096,13 @@ begin
     end;    
 
       
-    if getDoublePar(Form_main.paramList, 'JAVA_DEB_PEN') = 1 then
+{    ¬опрос. «ачем здесь вообще пересчитывать задолженность и пеню? ред.09.03.21
+
+if getDoublePar(Form_main.paramList, 'JAVA_DEB_PEN') = 1 then
     begin
       // новый расчет долга и пени в Java
       l_dummy :=
-        DataModule1.OraclePackage1.CallFloatFunction('SCOTT.P_JAVA.GEN',
+        DataModule1.OraclePackage1.CallFloatFunction('SCOTT.P_JAVA2.GEN',
         [1, null, null, null,
         Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger,
           null, Form_Main.cur_dt, 0]);
@@ -1115,6 +1117,7 @@ begin
       DataModule1.OraclePackage1.CallProcedure('scott.C_CPENYA.gen_penya',
         [Form_list_kart.OD_list_kart.FieldByName('lsk').asString, 0, 1]);
     end;
+    }
     Form_list_kart.OD_list_kart.RefreshRecord;
     OD_charge.Refresh;
     calcFooter;

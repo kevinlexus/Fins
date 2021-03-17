@@ -5,7 +5,7 @@ uses Forms, Classes, SysUtils, Dialogs, OracleData, DB, DBF, Windows,
   Wwdbgrid, DM_module1, oracle, Math, ShlObj, Controls, Messages,
   ComCtrls, Menus, Unit_smpl_chk, StrUtils, Winsock, Uni, Variants,
   cxEdit, cxDBEdit, cxEditConsts, cxCustomData,
-  cxDBData,cxFilterControl, cxFilter, cxDataUtils;
+  cxDBData, cxFilterControl, cxFilter, cxDataUtils;
 
 // тип - запись о правах редактирования пользователя
 type
@@ -86,7 +86,8 @@ procedure splitStr(const Source, Delimiter: string; var DelimitedList:
   TStringList);
 function removeControl(const S: string): string;
 procedure logText(text: string);
-procedure ApplySearchFilter(Controller: TcxDBDataController; Fields: string; Text: string);
+procedure ApplySearchFilter(Controller: TcxDBDataController; Fields: string;
+  Text: string);
 
 implementation
 uses Unit_Mainform;
@@ -1587,7 +1588,9 @@ begin
 end;
 
 // Установка фильтра для полей lookup-а, с разбивкой по словам и полям
-procedure ApplySearchFilter(Controller: TcxDBDataController; Fields: string; Text: string);
+
+procedure ApplySearchFilter(Controller: TcxDBDataController; Fields: string;
+  Text: string);
 var
   i, j: integer;
   ItemLink: TObject;
@@ -1615,7 +1618,8 @@ begin
           if Assigned(ItemLink) then
             for j := 0 to TextWords.Count - 1 do
               if TextWords[j] <> '' then
-                FL.AddItem(ItemLink, foLike, '%' + TextWords[j] + '%', TextWords[j]);
+                FL.AddItem(ItemLink, foLike, '%' + TextWords[j] + '%',
+                  TextWords[j]);
         end;
       Filter.Active := true;
     finally
@@ -1625,6 +1629,21 @@ begin
     TextWords.Free;
     FieldList.Free;
   end;
+end;
+
+procedure Sleep(const uSec: UInt);
+
+var
+  uStart: UInt;
+
+begin
+  uStart := GetTickCount;
+
+  while (GetTickCount<(uStart + (uSec * 1000))) do
+  begin
+    Sleep(250);
+    Application.ProcessMessages;
+  end
 end;
 
 

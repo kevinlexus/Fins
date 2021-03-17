@@ -1,7 +1,7 @@
 object DM_Bill: TDM_Bill
   OldCreateOrder = False
-  Left = 1368
-  Top = 161
+  Left = 2600
+  Top = 145
   Height = 855
   Width = 512
   object Uni_cmp_main: TUniQuery
@@ -16,6 +16,7 @@ object DM_Bill: TDM_Bill
       '                          p_kw => :p_kw,'
       '                          p_lsk => :p_lsk,'
       '                          p_lsk1 => :p_lsk1,'
+      '                          p_klsk_id => :p_klsk_id,'
       '                          p_firstnum => :p_firstnum,'
       '                          p_lastnum => :p_lastnum,'
       '                          p_is_closed => :p_is_closed,'
@@ -63,6 +64,10 @@ object DM_Bill: TDM_Bill
         DataType = ftString
         Name = 'p_lsk1'
         ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'p_klsk_id'
       end
       item
         DataType = ftInteger
@@ -172,8 +177,8 @@ object DM_Bill: TDM_Bill
     MasterFields = 'k_lsk_id'
     DetailFields = 'k_lsk_id'
     Constraints = <>
-    Left = 184
-    Top = 32
+    Left = 240
+    Top = 40
     ParamData = <
       item
         DataType = ftUnknown

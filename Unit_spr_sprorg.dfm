@@ -1,6 +1,6 @@
 object Form_spr_sprorg: TForm_spr_sprorg
-  Left = 576
-  Top = 227
+  Left = 680
+  Top = 193
   Width = 1311
   Height = 720
   BorderIcons = [biSystemMenu, biMinimize]

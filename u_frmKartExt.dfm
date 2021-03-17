@@ -1,6 +1,6 @@
 object frmKartExt: TfrmKartExt
-  Left = 414
-  Top = 468
+  Left = 382
+  Top = 366
   Width = 1086
   Height = 530
   Caption = #1042#1085#1077#1096#1085#1080#1077' '#1083#1080#1094'.'#1089#1095#1077#1090#1072
@@ -291,14 +291,41 @@ object frmKartExt: TfrmKartExt
     SQL.Strings = (
       'select '
       
-        'e.rowid, e.fk_klsk_premise, k.lsk, k.reu, e.lsk, e.fk_klsk_id, e' +
-        '.ext_lsk, e.fio, e.dt_crt, e.dt_upd,'
+        'e.rowid, e.fk_klsk_premise, t.reu, e.lsk, e.fk_klsk_id, e.ext_ls' +
+        'k, e.fio, e.dt_crt, e.dt_upd,'
+      
+        'r.reu||'#39'-'#39'||r.name_reu as name_reu, t.kul, s.name, ltrim(t.nd,'#39'0' +
+        #39') as n_nd, ltrim(t.kw,'#39'0'#39') as n_kw,'
+      
+        't.psch, t.kpr, t.opl, u.cd as lsk_tp_cd, e.v, e.insal, e.chrg, e' +
+        '.payment, e.outsal, e.raschet_schet'
+      'from scott.kart_ext e'
+      
+        'left join scott.kart k2 join scott.kart_detail d2 on k2.lsk=d2.l' +
+        'sk and d2.is_main_in_premise=1 on e.fk_klsk_premise = k2.fk_klsk' +
+        '_premise'
+      
+        'left join scott.kart k3 join scott.kart_detail d3 on k3.lsk=d3.l' +
+        'sk and d3.is_main_in_klsk=1 on e.fk_klsk_id = k3.k_lsk_id'
+      'left join scott.kart t on t.lsk=coalesce(e.lsk, d2.lsk, d3.lsk)'
+      'left join scott.kart_detail a on t.lsk=a.lsk'
+      'left join scott.spul s on t.kul=s.id'
+      'left join scott.s_reu_trest r on t.reu=r.reu'
+      'left join scott.u_list u on t.fk_tp=u.id'
+      'order by a.ord1'
+      ''
+      ''
+      '/*'
+      'select '
+      
+        'e.rowid, e.fk_klsk_premise, k.reu, e.lsk, e.fk_klsk_id, e.ext_ls' +
+        'k, e.fio, e.dt_crt, e.dt_upd,'
       
         'r.reu||'#39'-'#39'||r.name_reu as name_reu, k.kul, s.name, ltrim(k.nd,'#39'0' +
         #39') as n_nd, ltrim(k.kw,'#39'0'#39') as n_kw,'
       
-        'k.psch, k.kpr, k.opl, u.cd as lsk_tp_cd, e.v, e.fk_klsk_premise,' +
-        ' e.insal, e.chrg, e.payment, e.outsal, e.raschet_schet'
+        'k.psch, k.kpr, k.opl, u.cd as lsk_tp_cd, e.v, e.insal, e.chrg, e' +
+        '.payment, e.outsal, e.raschet_schet'
       'from scott.kart_ext e'
       'join scott.kart k on '
       
@@ -311,9 +338,13 @@ object frmKartExt: TfrmKartExt
         '     and case when e.fk_klsk_id is not null then e.fk_klsk_id el' +
         'se k.k_lsk_id end = k.k_lsk_id'
       'join scott.kart_detail d on k.lsk=d.lsk '
+      '     and ('
       
-        '     and (case when e.fk_klsk_premise is not null then d.is_main' +
-        '_in_premise else 0 end = 1 -- '#1075#1083#1072#1074#1085#1099#1081' '#1083#1080#1094'.'#1089#1095#1077#1090' '#1074' '#1087#1086#1084#1077#1097#1077#1085#1080#1080
+        '     case when e.lsk is not null and e.fk_klsk_premise is null a' +
+        'nd e.fk_klsk_id is null then 1 else 0 end=1 '
+      
+        '     or case when e.fk_klsk_premise is not null then d.is_main_i' +
+        'n_premise else 0 end = 1 -- '#1075#1083#1072#1074#1085#1099#1081' '#1083#1080#1094'.'#1089#1095#1077#1090' '#1074' '#1087#1086#1084#1077#1097#1077#1085#1080#1080
       
         '     or case when e.fk_klsk_id is not null then d.is_main_in_kls' +
         'k else 0 end = 1) -- '#1075#1083#1072#1074#1085#1099#1081' '#1083#1080#1094'.'#1089#1095#1077#1090' '#1074' '#1092#1080#1085'.'#1083#1080#1094'.'#1089#1095'.'
@@ -321,76 +352,51 @@ object frmKartExt: TfrmKartExt
       'left join scott.s_reu_trest r on k.reu=r.reu'
       'left join scott.u_list u on k.fk_tp=u.id'
       'order by d.ord1'
-      ''
-      '/*'
-      ''
-      'select '
-      
-        'e.rowid, e.fk_klsk_premise, k.lsk, k.reu, e.lsk, e.fk_klsk_id, e' +
-        '.ext_lsk, e.fio, e.dt_crt, e.dt_upd,'
-      
-        'r.reu||'#39'-'#39'||r.name_reu as name_reu, k.kul, s.name, ltrim(k.nd,'#39'0' +
-        #39') as n_nd, ltrim(k.kw,'#39'0'#39') as n_kw,'
-      
-        'k.psch, k.kpr, k.opl, u.cd as lsk_tp_cd, e.v, e.fk_klsk_premise,' +
-        ' e.insal, e.chrg, e.payment, e.outsal, e.raschet_schet'
-      'from scott.kart_ext e'
-      
-        'join scott.kart k on (e.lsk=k.lsk or e.fk_klsk_premise=k.fk_klsk' +
-        '_premise or e.fk_klsk_id=k.k_lsk_id)   -- '#1074#1086#1079#1084#1086#1078#1085#1086' '#1073#1091#1076#1077#1090' '#1090#1086#1088#1084#1086#1079#1080 +
-        #1090#1100' '#1095#1077#1088#1077#1079' OR'
-      
-        '     and case when e.fk_klsk_premise is not null then e.fk_klsk_' +
-        'premise else k.fk_klsk_premise end = k.fk_klsk_premise'
-      
-        '     and case when e.fk_klsk_id is not null then e.fk_klsk_id el' +
-        'se k.k_lsk_id end = k.k_lsk_id'
-      'join scott.kart_detail d on k.lsk=d.lsk '
-      
-        '     and case when e.fk_klsk_premise is not null or e.fk_klsk_id' +
-        ' is not null then d.is_main_in_premise else 1 end = 1 -- '#1075#1083#1072#1074#1085#1099#1081 +
-        ' '#1083#1080#1094'.'#1089#1095#1077#1090' '#1074' '#1087#1086#1084#1077#1097#1077#1085#1080#1080
-      'left join scott.spul s on k.kul=s.id'
-      'left join scott.s_reu_trest r on k.reu=r.reu'
-      'left join scott.u_list u on k.fk_tp=u.id'
-      'order by d.ord1'
-      ''
       '*/')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000019000000070000004558545F4C534B0100000000000300000046494F
+      0400000017000000070000004558545F4C534B0100000000000300000046494F
       010000000000030000004C534B0100000000000600000044545F435254010000
-      0000000600000044545F555044010000000000080000004E414D455F52455501
+      0100000600000044545F555044010000010000080000004E414D455F52455500
       0000000000030000004B554C010000000000040000004E414D45010000000000
       040000004E5F4E44010000000000040000004E5F4B5701000000000004000000
-      50534348010000000000030000004B5052010000000000030000004F504C0100
-      0000000003000000524555010000000000090000004C534B5F54505F43440100
+      50534348000000000000030000004B5052000000000000030000004F504C0000
+      0000000003000000524555010000000000090000004C534B5F54505F43440000
       0000000001000000560100000000000F000000464B5F4B4C534B5F5052454D49
       53450100000000000A000000464B5F4B4C534B5F494401000000000005000000
-      4C534B5F3101000000000011000000464B5F4B4C534B5F5052454D4953455F31
-      01000000000005000000494E53414C0100000000000400000043485247010000
-      000000070000005041594D454E54010000000000060000004F555453414C0100
-      000000000D000000524153434845545F5343484554010000000000}
+      494E53414C000000000000040000004348524700000000000007000000504159
+      4D454E54000000000000060000004F555453414C0000000000000D0000005241
+      53434845545F5343484554000000000000}
     ReadOnly = True
+    QueryAllRecords = False
     RefreshOptions = [roBeforeEdit, roAfterUpdate, roAllFields]
+    BeforeQuery = OD_kartExtBeforeQuery
+    AfterQuery = OD_kartExtAfterQuery
+    QBEMode = True
     Session = DataModule1.OracleSession1
+    DesignActivation = True
+    Active = True
     Top = 72
     object OD_kartExtREU: TStringField
       FieldName = 'REU'
+      Origin = 't.reu'
       ReadOnly = True
       Size = 3
     end
     object OD_kartExtLSK: TStringField
       DisplayWidth = 15
       FieldName = 'LSK'
+      Origin = 'e.lsk'
       Size = 8
     end
     object OD_kartExtEXT_LSK: TStringField
       FieldName = 'EXT_LSK'
+      Origin = 'e.ext_lsk'
       Size = 9
     end
     object OD_kartExtFIO: TStringField
       FieldName = 'FIO'
+      Origin = 'e.fio'
       ReadOnly = True
       Size = 60
     end
@@ -409,26 +415,31 @@ object frmKartExt: TfrmKartExt
     end
     object OD_kartExtKUL: TStringField
       FieldName = 'KUL'
+      Origin = 't.kul'
       ReadOnly = True
       Size = 4
     end
     object OD_kartExtNAME: TStringField
       FieldName = 'NAME'
+      Origin = 's.name'
       ReadOnly = True
       Size = 25
     end
     object OD_kartExtN_ND: TStringField
       FieldName = 'N_ND'
+      Origin = 't.nd'
       ReadOnly = True
       Size = 6
     end
     object OD_kartExtN_KW: TStringField
       FieldName = 'N_KW'
+      Origin = 't.kw'
       ReadOnly = True
       Size = 7
     end
     object OD_kartExtPSCH: TIntegerField
       FieldName = 'PSCH'
+      Origin = 't.psch'
       ReadOnly = True
     end
     object OD_kartExtKPR: TIntegerField
@@ -450,16 +461,11 @@ object frmKartExt: TfrmKartExt
     end
     object OD_kartExtFK_KLSK_PREMISE: TFloatField
       FieldName = 'FK_KLSK_PREMISE'
+      Origin = 'e.FK_KLSK_PREMISE'
     end
     object OD_kartExtFK_KLSK_ID: TFloatField
       FieldName = 'FK_KLSK_ID'
-    end
-    object OD_kartExtLSK_1: TStringField
-      FieldName = 'LSK_1'
-      Size = 8
-    end
-    object OD_kartExtFK_KLSK_PREMISE_1: TFloatField
-      FieldName = 'FK_KLSK_PREMISE_1'
+      Origin = 'e.FK_KLSK_PREMISE'
     end
     object OD_kartExtINSAL: TFloatField
       FieldName = 'INSAL'

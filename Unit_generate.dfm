@@ -370,10 +370,4 @@ object Form_generate: TForm_generate
       TabOrder = 0
     end
   end
-  object abfshtdwn1: TabfShutdown
-    ActionType = aatShutdown
-    Force = True
-    Left = 408
-    Top = 8
-  end
 end

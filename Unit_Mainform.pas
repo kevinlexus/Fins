@@ -11,19 +11,19 @@ uses
   CustomizeDlg, CoolTrayIcon, Oracle, DBCtrlsEh, OleCtl, Utils, StrUtils,
   MemTableDataEh, DataDriverEh, wwdbedit, Wwintl, DVButils, ShellAPI,
   IdAntiFreezeBase, IdAntiFreeze, frxClass, frxDBSet, frxExportCSV,
-  frxExportPDF,
-  frxExportBIFF, frxExportText, frxExportRTF, ComObj,
-  Unit_spr_redirect, u_frmTwoPeriods, u_frmLog, cxClasses, cxEdit,
+  frxExportPDF,                                                       
+  frxExportBIFF, frxExportText, frxExportRTF, ComObj,                   
+  Unit_spr_redirect, u_frmTwoPeriods, u_frmLog, cxClasses, cxEdit,                                            
   cxEditRepositoryItems;
-type
+type                                                                             
   TShowForm = function(App, Scr, Sess_: integer): integer; stdcall;
   TForm_Main = class(TForm)
     MainMenu1: TMainMenu;
-    N1: TMenuItem;
-    N2: TMenuItem;
-    N3: TMenuItem;
+    N1: TMenuItem;                                     
+    N2: TMenuItem;               
+    N3: TMenuItem;                      
     N4: TMenuItem;
-    N5: TMenuItem;
+    N5: TMenuItem;                                                                                                        
     N6: TMenuItem;
     N7: TMenuItem;
     N8: TMenuItem;

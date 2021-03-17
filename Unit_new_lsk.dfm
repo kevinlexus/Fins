@@ -1,6 +1,6 @@
 object Form_new_lsk: TForm_new_lsk
-  Left = 250
-  Top = 181
+  Left = 1236
+  Top = 187
   Width = 497
   Height = 455
   VertScrollBar.Visible = False
