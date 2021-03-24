@@ -102,14 +102,15 @@ object Form_saldo: TForm_saldo
       469
       60)
     object Button3: TButton
-      Left = 479
+      Left = 238
       Top = 20
-      Width = 92
+      Width = 30
       Height = 30
       Anchors = [akRight, akBottom]
       Cancel = True
-      Caption = #1047#1072#1082#1088#1099#1090#1100
+      Caption = #1076#1083#1103' '#1079#1072#1082#1088#1099#1090#1080#1103' '#1087#1086' Esc'
       TabOrder = 0
+      Visible = False
       OnClick = Button3Click
     end
     object Button1: TButton

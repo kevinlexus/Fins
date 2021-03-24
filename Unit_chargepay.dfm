@@ -96,9 +96,9 @@ object Form_chargepay: TForm_chargepay
     Top = 0
     Width = 819
     Height = 383
-    ActivePage = TabSheet5
+    ActivePage = TabSheet1
     Align = alClient
-    TabOrder = 0
+    TabOrder = 1
     OnChange = PageControl1Change
     object TabSheet1: TTabSheet
       Caption = #1044#1074#1080#1078#1077#1085#1080#1077
@@ -257,7 +257,7 @@ object Form_chargepay: TForm_chargepay
         Left = 0
         Top = 0
         Width = 811
-        Height = 353
+        Height = 352
         ControlType.Strings = (
           'PAY_ID;CustomEdit;wwExpandButton1;F')
         Selected.Strings = (
@@ -446,7 +446,7 @@ object Form_chargepay: TForm_chargepay
     Width = 819
     Height = 60
     Align = alBottom
-    TabOrder = 2
+    TabOrder = 0
     DesignSize = (
       819
       60)
@@ -464,16 +464,6 @@ object Form_chargepay: TForm_chargepay
       Height = 16
       Caption = #1087#1086
     end
-    object Button1: TButton
-      Left = 689
-      Top = 20
-      Width = 119
-      Height = 30
-      Anchors = [akRight, akBottom]
-      Caption = #1055#1077#1095#1072#1090#1100
-      TabOrder = 1
-      OnClick = Button1Click
-    end
     object CheckBox1: TCheckBox
       Left = 9
       Top = 34
@@ -483,7 +473,7 @@ object Form_chargepay: TForm_chargepay
       Checked = True
       Enabled = False
       State = cbChecked
-      TabOrder = 2
+      TabOrder = 3
       Visible = False
     end
     object CheckBox2: TCheckBox
@@ -492,7 +482,7 @@ object Form_chargepay: TForm_chargepay
       Width = 139
       Height = 21
       Caption = #1047#1072#1082#1088#1077#1087#1080#1090#1100' '#1086#1082#1085#1086
-      TabOrder = 0
+      TabOrder = 1
       OnClick = CheckBox2Click
     end
     object cxLookupComboBox1: TcxLookupComboBox
@@ -506,7 +496,7 @@ object Form_chargepay: TForm_chargepay
       Properties.ListOptions.ShowHeader = False
       Properties.ListSource = DS_mg1
       Properties.OnCloseUp = cxLookupComboBox1PropertiesCloseUp
-      TabOrder = 3
+      TabOrder = 4
       Width = 99
     end
     object cxLookupComboBox2: TcxLookupComboBox
@@ -520,8 +510,29 @@ object Form_chargepay: TForm_chargepay
       Properties.ListOptions.ShowHeader = False
       Properties.ListSource = DS_mg1
       Properties.OnCloseUp = cxLookupComboBox2PropertiesCloseUp
-      TabOrder = 4
+      TabOrder = 5
       Width = 105
+    end
+    object Button2: TButton
+      Left = 726
+      Top = 24
+      Width = 27
+      Height = 21
+      Anchors = [akRight, akBottom]
+      Cancel = True
+      Caption = #1076#1083#1103' '#1079#1072#1082#1088#1099#1090#1080#1103' '#1087#1086' Esc'
+      TabOrder = 0
+      OnClick = Button2Click
+    end
+    object Button1: TButton
+      Left = 681
+      Top = 20
+      Width = 119
+      Height = 30
+      Anchors = [akRight, akBottom]
+      Caption = #1055#1077#1095#1072#1090#1100
+      TabOrder = 2
+      OnClick = Button1Click
     end
   end
   object Panel1: TPanel
@@ -530,7 +541,7 @@ object Form_chargepay: TForm_chargepay
     Width = 228
     Height = 50
     Caption = #1046#1076#1080#1090#1077'...'
-    TabOrder = 1
+    TabOrder = 2
     Visible = False
   end
   object OD_chargepay: TOracleDataSet

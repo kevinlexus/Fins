@@ -1,7 +1,7 @@
 object DataModule1: TDataModule1
   OldCreateOrder = False
   Left = 250
-  Top = 250
+  Top = 202
   Height = 768
   Width = 722
   object OracleSession1: TOracleSession
@@ -376,9 +376,9 @@ object DataModule1: TDataModule1
       'order by s.name')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000004000000020000004944010000000000040000004E414D4501000000
+      0400000005000000020000004944010000000000040000004E414D4501000000
       00000800000043445F4B4C4144520100000000000700000043445F55535A4E01
-      0000000000}
+      00000000000D000000464B5F534554544C454D454E54010000000000}
     QueryAllRecords = False
     Session = OracleSession1
     Active = True
@@ -633,6 +633,7 @@ object DataModule1: TDataModule1
       'begin'
       '  scott.generator.list_choice_hs(:clr_, :psaldo_refcursor);'
       'end;')
+    ReadBuffer = 2000
     Optimize = False
     Variables.Data = {
       0300000002000000110000003A5053414C444F5F524546435552534F52740000

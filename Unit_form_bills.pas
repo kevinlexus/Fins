@@ -1609,6 +1609,7 @@ var
   i: Integer;
 begin
   DM_Bill2.OD_uk.Active := True;
+  DM_Bill2.OD_uk.First;
   while not DM_Bill2.OD_uk.Eof do
   begin
     with cxCheckComboBox1.Properties.Items.Add do

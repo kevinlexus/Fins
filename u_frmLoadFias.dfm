@@ -320,6 +320,7 @@ object frmLoadFias: TfrmLoadFias
       'select t.*, a.offname, t.rowid from scott.prep_street_fias t'
       'join scott.fias_addr a on upper(t.aoguid)=upper(a.aoguid)'
       'order by a.offname')
+    ReadBuffer = 5000
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
       0400000003000000030000004B554C01000000000006000000414F4755494401
@@ -362,6 +363,7 @@ object frmLoadFias: TfrmLoadFias
         ' order by decode(t.nd, null, -1, 0), t.ext_nylic, t.ext_ndom, t.' +
         'ext_nkorp'
       '*/')
+    ReadBuffer = 5000
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
       0400000006000000040000004E414D45010000000000030000004B554C010000
@@ -391,6 +393,7 @@ object frmLoadFias: TfrmLoadFias
       'and t.kul=:kul'
       '--and t.nd like '#39'%'#39'||:nd||'#39'%'#39'  '
       'order by t.nd')
+    ReadBuffer = 5000
     Optimize = False
     Variables.Data = {0300000001000000040000003A4B554C050000000000000000000000}
     QBEDefinition.QBEFieldDefs = {

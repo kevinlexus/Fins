@@ -99,6 +99,7 @@ type
     cxLookupComboBox2: TcxLookupComboBox;
     N3: TMenuItem;
     frxReport1: TfrxReport;
+    Button2: TButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button3Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -116,6 +117,7 @@ type
     procedure cxLookupComboBox2PropertiesCloseUp(Sender: TObject);
     procedure refreshGrids;
     procedure N3Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
 
   private
     { Private declarations }
@@ -711,6 +713,11 @@ begin
     DataModule1.OracleSession1.Commit;
   recalc;
 
+end;
+
+procedure TForm_chargepay.Button2Click(Sender: TObject);
+begin
+  Close;
 end;
 
 end.

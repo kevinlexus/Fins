@@ -1,7 +1,7 @@
 object DM_Olap: TDM_Olap
   OldCreateOrder = False
-  Left = 2258
-  Top = 190
+  Left = 700
+  Top = 166
   Height = 810
   Width = 686
   object DS_spr_params: TDataSource
@@ -32,6 +32,7 @@ object DM_Olap: TDM_Olap
         'select t.kod, to_char(t.kod)||'#39' '#39'||t.name as name from scott.spr' +
         'org t'
       'order by t.name')
+    ReadBuffer = 2000
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
       0400000002000000040000004E414D45010000000000030000004B4F44010000
@@ -61,6 +62,7 @@ object DM_Olap: TDM_Olap
         'select t.id, to_char(t.id)||'#39' '#39'||t.name as name from scott.t_org' +
         ' t'
       'order by t.name')
+    ReadBuffer = 2000
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
       0400000002000000040000004E414D4501000000000002000000494401000000
@@ -74,6 +76,7 @@ object DM_Olap: TDM_Olap
     SQL.Strings = (
       'select t.id, t.name'
       ' from scott.spul t')
+    ReadBuffer = 2000
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
       0400000002000000020000004944010000000000040000004E414D4501000000
@@ -146,6 +149,7 @@ object DM_Olap: TDM_Olap
         'select t.id, to_char(t.id)||'#39' '#39'||t.name as name from scott.t_org' +
         ' t'
       'order by t.name')
+    ReadBuffer = 2000
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
       0400000002000000040000004E414D4501000000000002000000494401000000
