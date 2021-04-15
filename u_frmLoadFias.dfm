@@ -1,6 +1,6 @@
 object frmLoadFias: TfrmLoadFias
-  Left = 727
-  Top = 381
+  Left = 265
+  Top = 395
   Width = 781
   Height = 603
   Caption = #1052#1072#1089#1090#1077#1088' '#1079#1072#1075#1088#1091#1079#1082#1080' '#1089#1087#1088#1072#1074#1086#1095#1085#1080#1082#1072' '#1060#1048#1040#1057
@@ -266,7 +266,7 @@ object frmLoadFias: TfrmLoadFias
             Caption = #1059#1083#1080#1094#1072
             DataBinding.FieldName = 'NAME'
             Options.Editing = False
-            Width = 170
+            Width = 153
           end
           object cxGridDBTableView1HOUSENUM: TcxGridDBColumn
             Caption = #1044#1086#1084', '#1060#1048#1040#1057
@@ -274,24 +274,26 @@ object frmLoadFias: TfrmLoadFias
             Options.Editing = False
             Width = 72
           end
-          object cxGridDBTableView1Column1: TcxGridDBColumn
+          object cxGridDBTableView1FullNdName: TcxGridDBColumn
             Caption = #1044#1086#1084', '#1056#1050#1062
             DataBinding.FieldName = 'FK_HOUSE'
             PropertiesClassName = 'TcxLookupComboBoxProperties'
             Properties.ClearKey = 46
+            Properties.DropDownSizeable = True
+            Properties.DropDownWidth = 300
             Properties.KeyFieldNames = 'ID'
             Properties.ListColumns = <
               item
-                FieldName = 'ND'
+                FieldName = 'FULL_ND_NAME'
               end>
             Properties.ListOptions.ShowHeader = False
             Properties.ListSource = DS_lkp_house
-            Width = 77
+            Width = 305
           end
           object cxGridDBTableView1HOUSEGUID: TcxGridDBColumn
             Caption = #1059#1085#1080#1082#1072#1083#1100#1085#1099#1081' '#1080#1076#1077#1085#1090#1080#1092#1080#1082#1072#1090#1086#1088
             DataBinding.FieldName = 'HOUSEGUID'
-            Width = 324
+            Width = 194
           end
         end
         object cxGridLevel1: TcxGridLevel
@@ -314,6 +316,15 @@ object frmLoadFias: TfrmLoadFias
         TabOrder = 0
       end
     end
+  end
+  object Panel1: TPanel
+    Left = 288
+    Top = 265
+    Width = 129
+    Height = 48
+    Caption = #1060#1086#1088#1084#1080#1088#1086#1074#1072#1085#1080#1077'...'
+    TabOrder = 1
+    Visible = False
   end
   object OD_prep_street: TOracleDataSet
     SQL.Strings = (
@@ -386,21 +397,25 @@ object frmLoadFias: TfrmLoadFias
   end
   object OD_lkp_house: TOracleDataSet
     SQL.Strings = (
-      'select t.id, ltrim(t.nd,'#39'0'#39') as nd from scott.c_houses t'
+      
+        'select t.id, ltrim(t.nd,'#39'0'#39') as nd, o.name||'#39', '#39'||s.name||'#39', '#39'||' +
+        'ltrim(t.nd,'#39'0'#39') as full_nd_name from scott.c_houses t join scott' +
+        '.spul s on t.kul=s.id join scott.t_org o on s.fk_settlement=o.id'
       
         'where exists (select * from scott.kart k where k.house_id=t.id a' +
         'nd k.psch not in (8,9)) --'#1075#1076#1077' '#1077#1089#1090#1100' '#1086#1090#1082#1088#1099#1090#1099#1077' '#1083'.'#1089'.'
-      'and t.kul=:kul'
+      '--and t.kul=:kul'
       '--and t.nd like '#39'%'#39'||:nd||'#39'%'#39'  '
-      'order by t.nd')
+      'order by s.name, t.nd')
     ReadBuffer = 5000
     Optimize = False
-    Variables.Data = {0300000001000000040000003A4B554C050000000000000000000000}
     QBEDefinition.QBEFieldDefs = {
-      0400000002000000020000004E44010000000000020000004944010000000000}
+      0400000003000000020000004E44010000000000020000004944010000000000
+      0C00000046554C4C5F4E445F4E414D45010000000000}
     QueryAllRecords = False
     Session = DataModule1.OracleSession1
     DesignActivation = True
+    Active = True
     Left = 32
     Top = 312
   end

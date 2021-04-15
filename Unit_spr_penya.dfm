@@ -1,6 +1,6 @@
 object Form_spr_penya: TForm_spr_penya
-  Left = 1008
-  Top = 254
+  Left = 540
+  Top = 256
   Width = 700
   Height = 555
   BorderIcons = [biSystemMenu, biMinimize]
@@ -261,6 +261,7 @@ object Form_spr_penya: TForm_spr_penya
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True
+    AfterPost = OD_stav_rAfterPost
     Left = 24
     Top = 120
     object OD_stav_rPROC: TFloatField
@@ -313,6 +314,7 @@ object Form_spr_penya: TForm_spr_penya
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True
+    AfterPost = OD_spr_penAfterPost
     Left = 24
     Top = 88
     object OD_spr_penMG: TStringField

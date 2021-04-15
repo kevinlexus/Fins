@@ -248,6 +248,7 @@ object DataModule1: TDataModule1
     Options.KeepDesignConnected = False
     Username = 'scott'
     Server = '127.0.0.1'
+    Connected = True
     Left = 32
     Top = 416
     EncryptedPassword = '92FF90FF91FF9AFF92FF86FF8DFF90FF'
@@ -633,7 +634,7 @@ object DataModule1: TDataModule1
       'begin'
       '  scott.generator.list_choice_hs(:clr_, :psaldo_refcursor);'
       'end;')
-    ReadBuffer = 2000
+    ReadBuffer = 5000
     Optimize = False
     Variables.Data = {
       0300000002000000110000003A5053414C444F5F524546435552534F52740000
@@ -649,5 +650,32 @@ object DataModule1: TDataModule1
     Active = True
     Left = 128
     Top = 616
+  end
+  object UniTablePriveleges: TUniQuery
+    Connection = UniConnection1
+    SQL.Strings = (
+      
+        'select upper(t.table_name) as priv_name from sys.dba_tab_privs t' +
+        ' where t.grantee=:user_name'
+      '    union all'
+      
+        '    select upper(t.table_name) as priv_name from sys.table_privi' +
+        'leges t'
+      '     where exists'
+      '     (select granted_role from dba_role_privs d'
+      '       where d.GRANTED_ROLE=t.GRANTEE'
+      '       start with grantee = :user_name'
+      '       connect by prior granted_role = grantee'
+      '     )')
+    FetchRows = 1000
+    Constraints = <>
+    Left = 200
+    Top = 416
+    ParamData = <
+      item
+        DataType = ftString
+        Name = 'user_name'
+        ParamType = ptInput
+      end>
   end
 end

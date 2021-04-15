@@ -67,6 +67,7 @@ type
     FloatField2: TFloatField;
     StringField2: TStringField;
     OD_list_choice: TOracleDataSet;
+    UniTablePriveleges: TUniQuery;
   private
     { Private declarations }
   public

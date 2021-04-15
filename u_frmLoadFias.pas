@@ -73,9 +73,10 @@ type
     cxGrid1DBTableView1Column1: TcxGridDBColumn;
     cxGrid1DBTableView1OFFNAME: TcxGridDBColumn;
     cxGrid1DBTableView1AOGUID: TcxGridDBColumn;
-    cxGridDBTableView1Column1: TcxGridDBColumn;
+    cxGridDBTableView1FullNdName: TcxGridDBColumn;
     cxGridDBTableView1HOUSEGUID: TcxGridDBColumn;
     Memo1: TMemo;
+    Panel1: TPanel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure dxwzrdcntrl1ButtonClick(Sender: TObject;
       AKind: TdxWizardControlButtonKind; var AHandled: Boolean);
@@ -131,6 +132,8 @@ begin
   begin
     if dxwzrdcntrl1.ActivePageIndex=0 then //при переходе с очистки файлов к справочнику улиц
     begin
+    Panel1.Visible:=true;
+    Refresh;
     if chk2.Checked then //очистить если задано, справочники соответствий
         DataModule1.OraclePackage1.CallProcedure(
          'scott.c_load_fias.clear_spr', [parNone]);
@@ -141,9 +144,12 @@ begin
             DataModule1.OracleSession1.Commit;
       OD_prep_street.Active:=False;
       OD_prep_street.Active:=True;
+    Panel1.Visible:=false;
     end
     else if dxwzrdcntrl1.ActivePageIndex=1 then //при переходе со справочника улиц к справочнику домов
     begin
+    Panel1.Visible:=true;
+    Refresh;
       if (OD_prep_street.State = dsEdit) then
         OD_prep_street.Post;
       DataModule1.OraclePackage1.CallProcedure(
@@ -151,6 +157,7 @@ begin
           DataModule1.OracleSession1.Commit;
       OD_prep_house.Active:=False;
       OD_prep_house.Active:=True;
+    Panel1.Visible:=false;
     end;
   end
   else if AKind=wcbkFinish then
@@ -191,14 +198,14 @@ end;
 
 procedure TfrmLoadFias.OD_prep_houseAfterScroll(DataSet: TDataSet);
 begin
-  with OD_lkp_house do
+{  with OD_lkp_house do
   begin
    Active:=False;
    SetVariable('kul', OD_prep_house.FieldByName('kul').AsString);
    //SetVariable('nd', OD_prep_house.FieldByName('housenum').AsString);
    Active:=True;
-  end;
-
+  end;}
+                
 end;
 
 procedure TfrmLoadFias.cxGridDBTableView1Column1GetDisplayText(

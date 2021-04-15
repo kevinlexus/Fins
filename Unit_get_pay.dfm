@@ -1,6 +1,6 @@
 object Form_get_pay: TForm_get_pay
-  Left = 754
-  Top = 432
+  Left = 426
+  Top = 408
   Width = 903
   Height = 543
   Caption = #1042#1074#1086#1076' '#1086#1087#1083#1072#1090#1099

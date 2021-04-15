@@ -58,6 +58,7 @@ type
 var
   Form_sel_comps: TForm_sel_comps;
   nkom_: string;
+  isLoaded: Boolean;
 
 implementation
 
@@ -171,11 +172,13 @@ end;
 
 procedure TForm_sel_comps.FormCreate(Sender: TObject);
 begin
+  isLoaded:=false;
   OD_sel_comps.Active := True;
   nkom_ := DataModule1.OraclePackage1.CallStringFunction(
     'scott.INIT.get_nkom', parNone);
   OD_sel_comps.SearchRecord('nkom', nkom_, [srFromBeginning]);
   sel_comp;
+  isLoaded:=true;
 end;
 
 procedure TForm_sel_comps.DBGridEh1KeyPress(Sender: TObject;
@@ -187,7 +190,7 @@ end;
 
 procedure TForm_sel_comps.OD_sel_compsAfterScroll(DataSet: TDataSet);
 begin
-  sel_comp;
+  if isLoaded then sel_comp;
 end;
 
 end.

@@ -362,12 +362,6 @@ begin
   Application.CreateForm(TDM_Bill, DM_Bill);
   Application.CreateForm(TDM_Bill2, DM_Bill2);
 
-  if DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
-    ['drx5_админ_доступ_к_базе']) = 1 then
-    Form_Main.g_admin := 1
-  else
-    Form_Main.g_admin := 0;
-
   loadKKMPar;
 
   Form_Main.OracleEvent1.Start;
@@ -405,6 +399,9 @@ begin
     serverIp + ':' + serverPort + ':' + serverSID;
   DataModule1.UniConnection1.Connect;
 
+  // права пользователей
+  DataModule1.UniTablePriveleges.ParamByName('user_name').AsString:=UpperCase(User);
+  DataModule1.UniTablePriveleges.Active:=True;
   Ini.Free;
   SetMenu(0);
   with Form_Main do
@@ -429,26 +426,38 @@ begin
   //справочник расценок по работам еще не загружен
   Form_main.isloadedspr_ := 0;
 
-  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
-    ['drx5_админ_доступ_к_базе']) = 1) then
+
+//  if DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
+//    ['drx5_админ_доступ_к_базе']) = 1 then
+  if CheckAccess('drx5_админ_доступ_к_базе') then
+    Form_Main.g_admin := 1
+  else
+    Form_Main.g_admin := 0;
+  
+  //  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
+//    ['drx5_админ_доступ_к_базе']) = 1) then
+  if CheckAccess('drx5_админ_доступ_к_базе') then
     Form_main.isAdmin := true
   else
     Form_main.isAdmin := false;
 
-  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
-    ['drx_редактирование_klsk']) = 1) then
+//  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
+//    ['drx_редактирование_klsk']) = 1) then
+  if CheckAccess('drx_редактирование_klsk') then
     Form_main.isEditKlsk := true
   else
     Form_main.isEditKlsk := false;
 
-  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
-    ['drx3_Правка_кода_РЭУ']) = 1) then
+//  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
+//    ['drx3_Правка_кода_РЭУ']) = 1) then
+  if CheckAccess('drx3_Правка_кода_РЭУ') then
     Form_main.isEditReu := true
   else
     Form_main.isEditReu := false;
 
-  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
-    ['drx4_Правка_кода_Пасп_стола']) = 1) then
+//  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
+//    ['drx4_Правка_кода_Пасп_стола']) = 1) then
+  if CheckAccess('drx4_Правка_кода_Пасп_стола') then
     Form_main.isEditPasp := true
   else
     Form_main.isEditPasp := false;
@@ -461,7 +470,6 @@ begin
 
   // Отображать ли меню по выполнению плана
   Form_Main.N25.Enabled := false;
-
 
   //загружаем параметры для сессии
   DataModule1.UniStoredProc1.StoredProcName := 'scott.utils.prep_users_par';

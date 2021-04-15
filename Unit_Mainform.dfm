@@ -1,6 +1,6 @@
 object Form_Main: TForm_Main
-  Left = 359
-  Top = 294
+  Left = 655
+  Top = 316
   Width = 880
   Height = 628
   Caption = #1044#1080#1088#1077#1082#1090
@@ -494,6 +494,7 @@ object Form_Main: TForm_Main
         ImageIndex = 14
         object N5: TMenuItem
           Caption = #1060#1086#1088#1084'.'#1087#1086' '#1082#1086#1085#1094#1091' '#1084#1077#1089#1103#1094#1072
+          Enabled = False
           ImageIndex = 14
           OnClick = N5Click
         end
@@ -1074,7 +1075,7 @@ object Form_Main: TForm_Main
       end
     end
     object ver: TMenuItem
-      Caption = 'ver 2.3.5'
+      Caption = 'ver 2.3.17'
       object option: TMenuItem
         Caption = #1055#1086#1076#1082#1083#1102#1095#1077#1085#1085#1099#1077' '#1086#1087#1094#1080#1080':'
       end

@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, wwSpeedButton, wwDBNavigator, ExtCtrls, 
   DB, OracleData, StdCtrls, wwdbdatetimepicker,
-  cxControls, 
+  cxControls, Oracle, 
   
   
   
@@ -87,6 +87,8 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure wwDBGrid1KeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
+    procedure OD_spr_penAfterPost(DataSet: TDataSet);
+    procedure OD_stav_rAfterPost(DataSet: TDataSet);
   private
     exit_: Integer;
   public
@@ -125,6 +127,20 @@ begin
   OD_spr_pen.Active:=True;
   OD_lsk_tp.Active:=True;
   DataModule1.OD_reu.Active:=True;
+end;
+
+procedure TForm_spr_penya.OD_spr_penAfterPost(DataSet: TDataSet);
+begin
+    DataModule1.OraclePackage1.CallProcedure
+      ('scott.P_JAVA.reloadSprPen',
+      [parNone]);
+end;
+
+procedure TForm_spr_penya.OD_stav_rAfterPost(DataSet: TDataSet);
+begin
+    DataModule1.OraclePackage1.CallProcedure
+      ('scott.P_JAVA.reloadSprPen',
+      [parNone]);
 end;
 
 end.

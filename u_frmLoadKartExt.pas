@@ -232,9 +232,9 @@ begin
         // не обрабатывать (отмечено пользователем, как неактивная запись)
         ACanvas.Font.Color := clGray;
       end
-      else if (s = '2') or (s = '10') then
+      else if (s = '2') or (s = '10') or (s = '15') then
       begin
-        // ошибка
+        // ошибка или закрытие лиц.счета
         ACanvas.Font.Color := clRed;
       end
       else if (s = '0') then

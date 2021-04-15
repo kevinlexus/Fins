@@ -12,14 +12,14 @@ uses
   MemTableDataEh, DataDriverEh, wwdbedit, Wwintl, DVButils, ShellAPI,
   IdAntiFreezeBase, IdAntiFreeze, frxClass, frxDBSet, frxExportCSV,
   frxExportPDF,                                                       
-  frxExportBIFF, frxExportText, frxExportRTF, ComObj,                   
+  frxExportBIFF, frxExportText, frxExportRTF, ComObj,                                      
   Unit_spr_redirect, u_frmTwoPeriods, u_frmLog, cxClasses, cxEdit,                                            
   cxEditRepositoryItems;
 type                                                                             
   TShowForm = function(App, Scr, Sess_: integer): integer; stdcall;
   TForm_Main = class(TForm)
     MainMenu1: TMainMenu;
-    N1: TMenuItem;                                     
+    N1: TMenuItem;                                      
     N2: TMenuItem;               
     N3: TMenuItem;                      
     N4: TMenuItem;
@@ -287,7 +287,7 @@ type
     procedure OracleEvent1Event(Sender: TOracleEvent; const ObjectName: string;
       const Info: Variant);
     procedure N67Click(Sender: TObject);
-    procedure N69Click(Sender: TObject);
+    procedure N69Click(Sender: TObject);       
     procedure N70Click(Sender: TObject);
     procedure OLAP1Click(Sender: TObject);
     procedure N71Click(Sender: TObject);
@@ -300,18 +300,18 @@ type
     procedure N77Click(Sender: TObject);
     procedure FormPaint(Sender: TObject);
     procedure N78Click(Sender: TObject);
-    procedure N79Click(Sender: TObject);
-    procedure N80Click(Sender: TObject);
+    procedure N79Click(Sender: TObject);           
+    procedure N80Click(Sender: TObject);                                                               
     procedure N81Click(Sender: TObject);
     procedure N82Click(Sender: TObject);
-    procedure N83Click(Sender: TObject);
+    procedure N83Click(Sender: TObject);                          
     procedure N84Click(Sender: TObject);
     procedure N85Click(Sender: TObject);
-    procedure N87Click(Sender: TObject);
+    procedure N87Click(Sender: TObject);                   
     procedure N88Click(Sender: TObject);
     procedure N90Click(Sender: TObject);
     procedure Oracle1Click(Sender: TObject);
-    procedure N10Click(Sender: TObject);
+    procedure N10Click(Sender: TObject);                 
     procedure DVB1Click(Sender: TObject);
     procedure N91Click(Sender: TObject);
     procedure N92Click(Sender: TObject);

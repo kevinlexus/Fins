@@ -146,8 +146,8 @@ begin
       end;
       Form_status.incpos(1);
       //Пеня
-      DataModule1.OraclePackage1.CallProcedure
-            ('scott.c_cpenya.gen_charge_pay_full', [parNone]);
+      //DataModule1.OraclePackage1.CallProcedure
+      //      ('scott.c_cpenya.gen_charge_pay_full', [parNone]);
       DataModule1.OraclePackage1.CallProcedure
             ('scott.c_cpenya.gen_charge_pay_pen', [DBDateTimeEditEh3.Value]);
       Form_status.incpos(1);

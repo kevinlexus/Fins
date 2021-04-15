@@ -3305,7 +3305,7 @@ object Form_kart: TForm_kart
         'pe,1,summa,0)) as summa, '
       '           sum(decode(t.type,4,summa,0)) as summa_b, '
       '           sum(decode(t.type,2,summa,0)) as summa_c,'
-      '           sum(decode(t.type,0,test_opl,0)) as volume,'
+      '           sum(decode(t.type,1,test_opl,0)) as volume,'
       '           max(decode(t.type,1,test_cena,0)) as cena'
       '          from scott.c_charge t'
       '         --where lsk = :lsk'

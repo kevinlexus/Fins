@@ -67,6 +67,7 @@ object DM_Bill2: TDM_Bill2
     SQL.Strings = (
       'select id, name as street from scott.spul'
       'order by name')
+    ReadBuffer = 1000
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
       0400000002000000020000004944010000000000060000005354524545540100

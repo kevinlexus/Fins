@@ -88,6 +88,7 @@ function removeControl(const S: string): string;
 procedure logText(text: string);
 procedure ApplySearchFilter(Controller: TcxDBDataController; Fields: string;
   Text: string);
+function CheckAccess(privelege: string): Boolean;
 
 implementation
 uses Unit_Mainform;
@@ -222,6 +223,12 @@ begin
   end;
 end;
 
+function CheckAccess(privelege: string): Boolean;
+begin
+  Result:= DataModule1.UniTablePriveleges.Locate('priv_name', AnsiUpperCase(privelege),
+    [loCaseInsensitive]);
+end;
+
 procedure SetMenuItem(acc_: Integer; Obj1: TComponent; str_: string);
 var
   l_cnt: Integer;
@@ -229,11 +236,13 @@ begin
   if (acc_ = 0) or (acc_ = 3) then
   begin
     if str_ <> '' then
-      l_cnt := DataModule1.OraclePackage1.CallIntegerFunction
-        ('scott.init.is_allow_acc', [str_]);
-    //      try
-      //        DataModule1.OraclePackage1.CallProcedure
-      //            ('scott.'+str_, [parNone]);
+    begin
+      if DataModule1.UniTablePriveleges.Locate('priv_name', AnsiUpperCase(str_),
+        [loCaseInsensitive]) then
+        l_cnt := 1;
+      //      l_cnt := DataModule1.OraclePackage1.CallIntegerFunction
+      //        ('scott.init.is_allow_acc', [str_]);
+    end;
     if l_cnt = 1 then
     begin
       //первоначальная установка видимых(не рабочих) пунктов меню
@@ -262,7 +271,6 @@ begin
     end
     else
     begin
-      //      except
       if Obj1 is TToolButton then
       begin
         if acc_ = 3 then
@@ -286,7 +294,6 @@ begin
           +
           TComponent(Obj1).Name, 'Внимание!', MB_OK);
     end;
-    //      end;
 
   end
   else if acc_ = 1 then
@@ -1645,7 +1652,6 @@ begin
     Application.ProcessMessages;
   end
 end;
-
 
 end.
 

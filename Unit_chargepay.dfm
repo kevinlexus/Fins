@@ -536,11 +536,11 @@ object Form_chargepay: TForm_chargepay
     end
   end
   object Panel1: TPanel
-    Left = 256
+    Left = 328
     Top = 217
-    Width = 228
+    Width = 156
     Height = 50
-    Caption = #1046#1076#1080#1090#1077'...'
+    Caption = #1060#1086#1088#1084#1080#1088#1086#1074#1072#1085#1080#1077'...'
     TabOrder = 2
     Visible = False
   end
