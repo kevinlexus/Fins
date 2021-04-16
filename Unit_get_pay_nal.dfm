@@ -1,5 +1,5 @@
 object Form_get_pay_nal: TForm_get_pay_nal
-  Left = 174
+  Left = 264
   Top = 191
   Width = 633
   Height = 409
@@ -783,7 +783,8 @@ object Form_get_pay_nal: TForm_get_pay_nal
       
         'where t.id=:id and t.lsk=k.lsk and k.kul=s.id and c.id=scott.ini' +
         't.get_org_nkom and m.nkom=scott.init.get_nkom'
-      'and k.reu=c2.reu'
+      '--and k.reu=c2.reu '#1088#1077#1076'.15.04.2021 '#1087#1086' '#1087#1088#1086#1089#1100#1073#1077' '#1055#1086#1083#1099#1089'.'
+      'and c2.reu=scott.utils_ext.get_main_reu(k.lsk)'
       'and t2.fk_orgtp=tp.id and tp.cd='#39#1043#1086#1088#1086#1076#39
       'and k.fk_tp=tp2.id(+)'
       'order by t.nkvit')
@@ -1039,8 +1040,8 @@ object Form_get_pay_nal: TForm_get_pay_nal
       0000000008000000434E545F534348300100000000000800000053554D4D5F49
       54470100000000000C000000434153485F4F5045525F5450010000000000}
     Session = DataModule1.OracleSession1
-    Left = 280
-    Top = 120
+    Left = 216
+    Top = 96
   end
   object OD_Kart: TOracleDataSet
     SQL.Strings = (

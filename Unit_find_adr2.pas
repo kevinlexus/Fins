@@ -156,7 +156,7 @@ end;
 
 procedure TForm_find_adr2.Button1Click(Sender: TObject);
 var
-  house_id_: Integer;
+  house_id_,kartType: Integer;
   lsk: string;
 begin
   Form_Main.cl_flt;
@@ -170,8 +170,14 @@ begin
   Form_Main.nd_ := '';
   Form_Main.Lsk_ := '';
   Form_Main.fio_ := '';
-  //  Form_Main.str_adr_ := OD_streets.FieldByName('street').asString + ', ' +
-  //    OD_houses.FieldByName('nd2').asString;
+  Form_Main.isNotMain := false;
+  Form_Main.isClosed := false;
+  
+  if not chk1.Checked then
+    Form_Main.isNotMain := true;
+  if not chk2.Checked then
+    Form_Main.isClosed := true;
+    
 
   if RadioButton1.Checked then
   begin
@@ -252,6 +258,19 @@ begin
         'scott.utils.get_k_lsk_id_by_lsk',
         [lsk]);
       Form_Main.search_type_ := 10;
+      kartType := DataModule1.OraclePackage1.CallIntegerFunction(
+          'scott.utils_ext.get_type_of_kart',
+             [lsk]);
+      if (kartType = 0) or (kartType = 10) then
+        Form_Main.isClosed := True
+      else
+        Form_Main.isClosed := False;
+        
+      if (kartType = 0) or (kartType = 1) then
+        Form_Main.isNotMain := True
+      else
+        Form_Main.isNotMain := False;
+             
     end;
   end;
 end;

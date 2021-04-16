@@ -1,6 +1,6 @@
 object Form_list_kart: TForm_list_kart
-  Left = 475
-  Top = 372
+  Left = 2105
+  Top = 168
   Width = 1044
   Height = 607
   Caption = #1050#1072#1088#1090#1086#1095#1082#1080
@@ -243,22 +243,8 @@ object Form_list_kart: TForm_list_kart
         TabOrder = 0
         OnClick = Button1Click
       end
-      object CheckBox2: TCheckBox
-        Left = 13
-        Top = 11
-        Width = 49
-        Height = 17
-        Hint = #1057#1087#1088#1103#1090#1072#1090#1100'/'#1087#1086#1082#1072#1079#1072#1090#1100' '#1051'/'#1057' '#1089#1090#1072#1088#1086#1075#1086' '#1092#1086#1085#1076#1072
-        Caption = #1060#1086#1085#1076
-        Checked = True
-        ParentShowHint = False
-        ShowHint = True
-        State = cbChecked
-        TabOrder = 1
-        OnClick = CheckBox2Click
-      end
       object CheckBox1: TCheckBox
-        Left = 133
+        Left = 157
         Top = 11
         Width = 73
         Height = 17
@@ -266,25 +252,25 @@ object Form_list_kart: TForm_list_kart
         Caption = #1047#1072#1082#1088#1077#1087#1080#1090#1100
         ParentShowHint = False
         ShowHint = True
-        TabOrder = 2
+        TabOrder = 1
         OnClick = CheckBox1Click
       end
       object chk1: TCheckBox
-        Left = 69
+        Left = 80
         Top = 11
-        Width = 60
+        Width = 76
         Height = 17
-        Hint = #1057#1087#1088#1103#1090#1072#1090#1100'/'#1087#1086#1082#1072#1079#1072#1090#1100' '#1051'/'#1057' '#1089#1090#1072#1088#1086#1075#1086' '#1092#1086#1085#1076#1072
-        Caption = #1054#1089#1085'.'#1089#1095
+        Hint = #1055#1086#1082#1072#1079#1072#1090#1100' '#1076#1086#1087#1086#1083#1085#1080#1090#1077#1083#1100#1085#1099#1077' '#1083#1080#1094'.'#1089#1095#1077#1090#1072
+        Caption = #1054#1089#1085#1086#1074#1085#1099#1077
         Checked = True
         ParentShowHint = False
         ShowHint = True
         State = cbChecked
-        TabOrder = 3
+        TabOrder = 2
         OnClick = chk1Click
       end
       object CheckBox3: TCheckBox
-        Left = 213
+        Left = 237
         Top = 11
         Width = 73
         Height = 17
@@ -292,35 +278,47 @@ object Form_list_kart: TForm_list_kart
         Caption = #1057#1095#1077#1090#1095#1080#1082#1080
         ParentShowHint = False
         ShowHint = True
-        TabOrder = 4
+        TabOrder = 3
         OnClick = CheckBox3Click
+      end
+      object chk2: TCheckBox
+        Left = 9
+        Top = 11
+        Width = 72
+        Height = 17
+        Hint = #1055#1086#1082#1072#1079#1072#1090#1100' '#1079#1072#1082#1088#1099#1090#1099#1077' '#1083#1080#1094'.'#1089#1095#1077#1090#1072
+        Caption = #1047#1072#1082#1088#1099#1090#1099#1077
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 4
+        OnClick = chk2Click
       end
     end
     object Panel3: TPanel
-      Left = 269
+      Left = 256
       Top = 1
-      Width = 330
+      Width = 343
       Height = 39
       Align = alRight
       TabOrder = 1
       object wwDBNavigator1: TwwDBNavigator
         Left = 1
-        Top = 1
+        Top = 8
         Width = 328
-        Height = 37
+        Height = 22
         AutosizeStyle = asSizeNavButtons
         DataSource = DS_list_kart
         Options = [noConfirmDelete, noUseInternationalText]
         ShowHint = True
         RepeatInterval.InitialDelay = 500
         RepeatInterval.Interval = 100
-        Align = alClient
+        Align = alCustom
         ParentShowHint = False
         object wwDBNavigator1First: TwwNavButton
           Left = 0
           Top = 0
           Width = 24
-          Height = 37
+          Height = 22
           Hint = #1050' '#1087#1077#1088#1074#1086#1081' '#1079#1072#1087#1080#1089#1080
           ImageIndex = -1
           NumGlyphs = 2
@@ -337,7 +335,7 @@ object Form_list_kart: TForm_list_kart
           Left = 24
           Top = 0
           Width = 24
-          Height = 37
+          Height = 22
           Hint = #1053#1072#1079#1072#1076' '#1085#1072' 10 '#1079#1072#1087#1080#1089#1077#1081
           ImageIndex = -1
           NumGlyphs = 2
@@ -354,7 +352,7 @@ object Form_list_kart: TForm_list_kart
           Left = 48
           Top = 0
           Width = 24
-          Height = 37
+          Height = 22
           Hint = #1055#1088#1077#1076#1099#1076#1091#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
           ImageIndex = -1
           NumGlyphs = 2
@@ -371,7 +369,7 @@ object Form_list_kart: TForm_list_kart
           Left = 72
           Top = 0
           Width = 24
-          Height = 37
+          Height = 22
           Hint = #1057#1083#1077#1076#1091#1102#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
           ImageIndex = -1
           NumGlyphs = 2
@@ -388,7 +386,7 @@ object Form_list_kart: TForm_list_kart
           Left = 96
           Top = 0
           Width = 24
-          Height = 37
+          Height = 22
           Hint = #1042#1087#1077#1088#1077#1076' '#1085#1072' 10 '#1079#1072#1087#1080#1089#1077#1081
           ImageIndex = -1
           NumGlyphs = 2
@@ -405,7 +403,7 @@ object Form_list_kart: TForm_list_kart
           Left = 120
           Top = 0
           Width = 24
-          Height = 37
+          Height = 22
           Hint = #1055#1077#1088#1077#1081#1090#1080' '#1082' '#1087#1086#1089#1083#1077#1076#1085#1077#1081' '#1079#1072#1087#1080#1089#1080
           ImageIndex = -1
           NumGlyphs = 2
@@ -422,7 +420,7 @@ object Form_list_kart: TForm_list_kart
           Left = 144
           Top = 0
           Width = 23
-          Height = 37
+          Height = 22
           Hint = #1044#1086#1073#1072#1074#1080#1090#1100' '#1085#1086#1074#1091#1102' '#1079#1072#1087#1080#1089#1100
           ImageIndex = -1
           NumGlyphs = 2
@@ -440,7 +438,7 @@ object Form_list_kart: TForm_list_kart
           Left = 167
           Top = 0
           Width = 23
-          Height = 37
+          Height = 22
           Hint = #1059#1076#1072#1083#1080#1090#1100' '#1090#1077#1082#1091#1097#1091#1102' '#1079#1072#1087#1080#1089#1100
           ImageIndex = -1
           NumGlyphs = 2
@@ -458,7 +456,7 @@ object Form_list_kart: TForm_list_kart
           Left = 190
           Top = 0
           Width = 23
-          Height = 37
+          Height = 22
           Hint = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1090#1077#1082#1091#1097#1091#1102' '#1079#1072#1087#1080#1089#1100
           ImageIndex = -1
           NumGlyphs = 2
@@ -476,7 +474,7 @@ object Form_list_kart: TForm_list_kart
           Left = 213
           Top = 0
           Width = 23
-          Height = 37
+          Height = 22
           Hint = #1054#1090#1087#1088#1072#1074#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103' '#1074' '#1073#1072#1079#1091
           ImageIndex = -1
           NumGlyphs = 2
@@ -494,7 +492,7 @@ object Form_list_kart: TForm_list_kart
           Left = 236
           Top = 0
           Width = 23
-          Height = 37
+          Height = 22
           Hint = #1054#1090#1084#1077#1085#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103' '#1090#1077#1082#1091#1097#1077#1081' '#1079#1072#1087#1080#1089#1080
           ImageIndex = -1
           NumGlyphs = 2
@@ -512,7 +510,7 @@ object Form_list_kart: TForm_list_kart
           Left = 259
           Top = 0
           Width = 23
-          Height = 37
+          Height = 22
           Hint = #1054#1073#1085#1086#1074#1080#1090#1100' '#1079#1072#1087#1080#1089#1080
           ImageIndex = -1
           NumGlyphs = 2
@@ -530,7 +528,7 @@ object Form_list_kart: TForm_list_kart
           Left = 282
           Top = 0
           Width = 23
-          Height = 37
+          Height = 22
           Hint = #1055#1086#1089#1090#1072#1074#1080#1090#1100' '#1079#1072#1082#1083#1072#1076#1082#1091' '#1085#1072' '#1090#1077#1082#1091#1097#1077#1081' '#1079#1072#1087#1080#1089#1080
           ImageIndex = -1
           NumGlyphs = 2
@@ -547,7 +545,7 @@ object Form_list_kart: TForm_list_kart
           Left = 305
           Top = 0
           Width = 23
-          Height = 37
+          Height = 22
           Hint = #1055#1077#1088#1077#1081#1090#1080' '#1082' '#1089#1086#1093#1088#1072#1085#1105#1085#1085#1086#1081' '#1079#1072#1082#1083#1072#1076#1082#1077
           ImageIndex = -1
           NumGlyphs = 2
@@ -565,72 +563,12 @@ object Form_list_kart: TForm_list_kart
     object Panel4: TPanel
       Left = 1
       Top = 1
-      Width = 272
+      Width = 256
       Height = 39
       Align = alLeft
       TabOrder = 2
-      object SpeedButton1: TSpeedButton
-        Left = 118
-        Top = 5
-        Width = 25
-        Height = 25
-        Hint = #1060#1080#1083#1100#1090#1088' '#1087#1086' '#1083#1080#1094#1077#1074#1086#1084#1091
-        Glyph.Data = {
-          0E060000424D0E06000000000000360000002800000016000000160000000100
-          180000000000D8050000120B0000120B00000000000000000000FFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDEDEDEB7B7B7B7B7B7FFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5D5D5D6F6F6F4A
-          4A4AC4C4C4FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5D5D5D
-          686868494949C6C6C6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FF535353464646383838CCCCCCFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFF5A5A5A555555424242CACACAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFF5C5C5C545454434343C8C8C8FFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFF5555555252523F3F3FCCCCCCFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5555556D6D6D434444C7C7C7FFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8D8D8D7A7A7A7E7D7DE3E3
-          E3FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC8C8C6878684B9
-          B7B6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBBBABA979295
-          938A8D928E8F989597BDBDBEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE5E4E5ADA9AC9493
-          8F7485746F8B707C917BA1A29F999497A8A7A6FFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFAEA9A981
-          887E427643267E271C821F247F26417A428E9B8C948E8FC1BFC0FFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD1CDCE
-          918E8A447C442B8F2A409C4171AA72439D422891293477359599929D999BFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFB0ACAD76847138913A2A952C58A559F0EDF163A9632B952C3290325E7A5D9B
-          9497D9D9D8FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFF9C96996781621F8B2180B683CDD9CFE6ECE7CCDACE8CBA8C2A922A
-          446F41968E91DBDBD9FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFA39EA26A7F652A9B2F6CBC71ADD1B0ECEDEBB0D3B374BC
-          7830A5354C75499B9195E3E4E1FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFC3C0C282877D579F5B51C45C50B659D7E3D957
-          B85D4DC2575AAE5F698066B0AAADFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE2E3E3A4A1A1687B678AB68FA0D5A3
-          A1D1A69ED4A296C6996D916D8E8D8CD3D3D4FFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFCCCAC9A5A1A28484
-          819A9C98ACB2AAA4A9A38B9286908E8DB6B4B6FFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD7
-          D7D7B7B6B49C9B989D9A9A9693939E9C9AC1BFC0FFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFE3E3E3C6C5C5BBBCBCB4B3B3D5D4D4FFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000}
-        ParentShowHint = False
-        ShowHint = True
-        OnClick = SpeedButton1Click
-      end
       object SpeedButton4: TSpeedButton
-        Left = 143
+        Left = 119
         Top = 5
         Width = 25
         Height = 25
@@ -690,7 +628,7 @@ object Form_list_kart: TForm_list_kart
         OnClick = SpeedButton4Click
       end
       object SpeedButton3: TSpeedButton
-        Left = 169
+        Left = 145
         Top = 5
         Width = 25
         Height = 25
@@ -750,7 +688,7 @@ object Form_list_kart: TForm_list_kart
         OnClick = SpeedButton3Click
       end
       object SpeedButton2: TSpeedButton
-        Left = 194
+        Left = 170
         Top = 5
         Width = 25
         Height = 25
@@ -810,7 +748,7 @@ object Form_list_kart: TForm_list_kart
         OnClick = SpeedButton2Click
       end
       object BitBtn1: TBitBtn
-        Left = 219
+        Left = 195
         Top = 5
         Width = 25
         Height = 25
@@ -828,7 +766,7 @@ object Form_list_kart: TForm_list_kart
         OnClick = BitBtn1Click
       end
       object BitBtn2: TBitBtn
-        Left = 245
+        Left = 221
         Top = 5
         Width = 25
         Height = 25

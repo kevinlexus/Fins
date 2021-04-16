@@ -467,7 +467,8 @@ type
     isEditReu: Boolean;
     isEditPasp: Boolean;
     isKartEd1: Boolean;
-
+    isClosed: Boolean;
+    isNotMain: Boolean;
   end;
 
 var

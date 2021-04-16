@@ -129,7 +129,6 @@ type
     Panel1: TPanel;
     Panel2: TPanel;
     Button1: TButton;
-    CheckBox2: TCheckBox;
     CheckBox1: TCheckBox;
     Panel3: TPanel;
     wwDBNavigator1: TwwDBNavigator;
@@ -148,7 +147,6 @@ type
     wwDBNavigator1SaveBookmark: TwwNavButton;
     wwDBNavigator1RestoreBookmark: TwwNavButton;
     Panel4: TPanel;
-    SpeedButton1: TSpeedButton;
     SpeedButton4: TSpeedButton;
     SpeedButton3: TSpeedButton;
     SpeedButton2: TSpeedButton;
@@ -213,6 +211,7 @@ type
     OD_kart_detail: TOracleDataSet;
     DS_kart_detail: TDataSource;
     cxMRUEdit1: TcxMRUEdit;
+    chk2: TCheckBox;
     procedure wwDBGrid1DblClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure wwDBGrid1KeyDown(Sender: TObject; var Key: Word;
@@ -238,9 +237,9 @@ type
       State: TGridDrawState; Highlight: Boolean; AFont: TFont;
       ABrush: TBrush);
     procedure OD_list_kartBeforeInsert(DataSet: TDataSet);
-    procedure CheckBox2Click(Sender: TObject);
+    procedure chk2Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
-    procedure SpeedButton1Click(Sender: TObject);
+    //    procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
     procedure Realign;
     procedure FormPaint(Sender: TObject);
@@ -258,14 +257,14 @@ type
     procedure N3Click(Sender: TObject);
     procedure N1Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
-    procedure SetFilter;
+    procedure SetFilter(isShowClosed: Boolean; isShowNotMain: Boolean);
     procedure CheckBox3Click(Sender: TObject);
     procedure wwExpandButton1BeforeExpand(Sender: TObject);
     procedure wwExpandButton1BeforeCollapse(Sender: TObject);
     procedure save_deb_kart_pr;
     procedure chk1Click(Sender: TObject);
-    procedure cxmskdt1DblClick(Sender: TObject);
-    procedure cxmskdt1KeyPress(Sender: TObject; var Key: Char);
+    //    procedure cxmskdt1DblClick(Sender: TObject);
+    //    procedure cxmskdt1KeyPress(Sender: TObject; var Key: Char);
     procedure SpeedButton4Click(Sender: TObject);
     procedure wwDBEdit1KeyPress(Sender: TObject; var Key: Char);
     procedure wwDBEdit1KeyDown(Sender: TObject; var Key: Word;
@@ -561,7 +560,7 @@ begin
       false;
     wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'ELSK')].Visible := false;
     CheckBox1.Visible := false;
-    CheckBox2.Visible := false;
+    chk2.Visible := false;
   end
   else
   begin
@@ -574,7 +573,7 @@ begin
       false;
     //    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1,'ADR')].Visible:=false;
     CheckBox1.Visible := true;
-    CheckBox2.Visible := true;
+    chk2.Visible := true;
     //SpeedButton5.Visible:=false;
     // отобразить расход по счетчикам, без возможности правки
     if DataModule1.OraclePackage1.CallIntegerFunction
@@ -657,11 +656,12 @@ begin
   Form_find_adr2.SetAccess(1, 1, 1, 1);
   if Form_find_adr2.ShowModal = mrOk then
   begin
-    SetFilter;
+    SetFilter(Form_Main.isClosed, Form_Main.isNotMain);
   end;
 end;
 
-procedure TForm_list_kart.SetFilter;
+procedure TForm_list_kart.SetFilter(isShowClosed: Boolean; isShowNotMain:
+  Boolean);
 begin
   with OD_list_kart do
   begin
@@ -673,20 +673,60 @@ begin
     SetVariable('flt_k_lsk_id_', Form_Main.flt_k_lsk_id_);
     SetVariable('flt_klsk_premise', Form_Main.flt_klsk_premise);
     SetVariable('flt_single_house_', Form_Main.flt_single_house_);
-    SetVariable('var3_', 0);
     if Form_Main.search_type_ = 9 then
     begin
       OD_list_kart.SetVariable('SUBSTEXP4',
         ' and exists (select * from exs.eolink e where k.lsk=e.lsk and e.fk_objtp=18 and e.uniqnum=''' +
-          Form_Main.flt_els_ + ''')');
+        Form_Main.flt_els_ + ''')');
     end
     else
     begin
-      OD_list_kart.SetVariable('SUBSTEXP4',
-        '');
+      OD_list_kart.SetVariable('SUBSTEXP4', '');
     end;
 
-    SetVariable('SUBSTEXP1', ' and k.psch not in(8,9) ');
+    if isShowClosed then
+    begin
+      chk2.OnClick := nil; // чтобы не вызвать onClick на CheckBox-е
+      try
+        chk2.Checked := true;
+      finally
+        chk2.OnClick := chk2Click;
+      end;
+
+      SetVariable('SUBSTEXP1', '');
+    end
+    else
+    begin
+      chk2.OnClick := nil; // чтобы не вызвать onClick на CheckBox-е
+      try
+        chk2.Checked := false;
+      finally
+        chk2.OnClick := chk2Click;
+      end;
+      SetVariable('SUBSTEXP1', ' and k.psch not in(8,9) ');
+    end;
+
+    if isShowNotMain then
+    begin
+      chk1.OnClick := nil; // чтобы не вызвать onClick на CheckBox-е
+      try
+        chk1.Checked := false;
+      finally
+        chk1.OnClick := chk2Click;
+      end;
+      SetVariable('var3_', 0)
+    end
+    else
+    begin
+      chk1.OnClick := nil; // чтобы не вызвать onClick на CheckBox-е
+      try
+        chk1.Checked := true;
+      finally
+        chk1.OnClick := chk2Click;
+      end;
+      SetVariable('var3_', 1);
+    end;
+
     // устанавливаем порядок
     // ред.закомментировал 30.09.20 SetVariable(':SUBSTEXP4',
     //  ' order by s.name, scott.utils.f_order(k.nd,6), scott.utils.f_order2(k.nd),' +
@@ -958,9 +998,9 @@ begin
   Abort;
 end;
 
-procedure TForm_list_kart.CheckBox2Click(Sender: TObject);
+procedure TForm_list_kart.chk2Click(Sender: TObject);
 begin
-  if CheckBox2.Checked = true then
+  if chk2.Checked = false then
   begin
     OD_list_kart.active := false;
     OD_list_kart.SetVariable('SUBSTEXP1', ' and k.psch not in(8,9) ');
@@ -981,18 +1021,19 @@ begin
   OD_list_kart.SetVariable('SUBSTEXP2', '');
   OD_list_kart.SetVariable('SUBSTEXP3', '');
   Form_Main.cl_flt;
-  SetFilter;
+  SetFilter(False, False);
 end;
 
-procedure TForm_list_kart.SpeedButton1Click(Sender: TObject);
+{procedure TForm_list_kart.SpeedButton1Click(Sender: TObject);
 begin
   Form_Main.cl_flt;
   Form_Main.flt_k_lsk_id_ := DataModule1.OraclePackage1.CallIntegerFunction(
     'scott.utils.get_k_lsk_id_by_lsk',
     [RightStr('00000000' + cxMRUEdit1.Text, 8)]);
-  SetFilter;
+  SetFilter(False);
   cxMRUEdit1.Text := RightStr('00000000' + cxMRUEdit1.Text, 8);
 end;
+}
 
 procedure TForm_list_kart.SpeedButton3Click(Sender: TObject);
 begin
@@ -1196,7 +1237,7 @@ begin
 
 end;
 
-procedure TForm_list_kart.cxmskdt1DblClick(Sender: TObject);
+{procedure TForm_list_kart.cxmskdt1DblClick(Sender: TObject);
 begin
   if not (OD_list_kart.State in [dsInactive, dsBrowse]) then
     OD_list_kart.Post;
@@ -1205,7 +1246,7 @@ begin
   Form_find_adr2.SetAccess(1, 1, 1, 1);
   if Form_find_adr2.ShowModal = mrOk then
   begin
-    SetFilter;
+    SetFilter(False);
   end;
 
 end;
@@ -1238,6 +1279,7 @@ begin
   end;
 
 end;
+}
 
 procedure TForm_list_kart.SpeedButton4Click(Sender: TObject);
 begin
@@ -1248,7 +1290,7 @@ begin
   Form_find_adr2.SetAccess(1, 1, 1, 1);
   if Form_find_adr2.ShowModal = mrOk then
   begin
-    SetFilter;
+    SetFilter(False, False);
   end;
 
   {  if not (OD_list_kart.State in [dsBrowse]) then
@@ -1416,6 +1458,9 @@ procedure TForm_list_kart.cxMRUEdit1KeyPress(Sender: TObject;
 var
   lsk: string;
   isFound: Boolean;
+  isNotMain: Boolean;
+  isClosed: Boolean;
+  kartType: Integer;
 begin
   if Key = #13 then
   begin
@@ -1424,18 +1469,37 @@ begin
     Form_Main.flt_k_lsk_id_ := DataModule1.OraclePackage1.CallIntegerFunction(
       'scott.utils.get_k_lsk_id_by_lsk',
       [lsk]);
-    SetFilter;
-    isfound := OD_list_kart.SearchRecord('LSK', lsk, [srFromBeginning]);
+    kartType := DataModule1.OraclePackage1.CallIntegerFunction(
+      'scott.utils_ext.get_type_of_kart',
+      [lsk]);
+    isClosed := False;
 
-    if not isfound then
-    begin
-      // не найдены записи, отключить фильтр по основным
-      OD_list_kart.active := false;
-      OD_list_kart.SetVariable('var3_', 0);
-      OD_list_kart.active := true;
-      chk1.Checked := false;                        
-    end;
+    if (kartType = 0) or (kartType = 10) then
+      isClosed := True;
+    isNotMain := False;
+    if (kartType = 0) or (kartType = 1) then
+      isNotMain := True;
+    SetFilter(isClosed, isNotMain);
+    {    isfound := OD_list_kart.SearchRecord('LSK', lsk, [srFromBeginning]);
 
+        if (not isfound) and (chk1.Checked=true) then
+        begin
+          // не найдены записи, отключить фильтр по основным
+          OD_list_kart.active := false;
+          OD_list_kart.SetVariable('var3_', 0);
+          OD_list_kart.active := true;
+          chk1.Checked := false;
+          isfound := OD_list_kart.SearchRecord('LSK', lsk, [srFromBeginning]);
+          if (not isfound) and (CheckBox2.Checked = false) then
+          begin
+            // все равно не найдены записи, отключить фильтр по закрытому фонду
+            OD_list_kart.active := false;
+            OD_list_kart.SetVariable('SUBSTEXP1', '');
+            OD_list_kart.active := true;
+            CheckBox2.Checked := True;
+          end;
+        end;
+    }
     cxMRUEdit1.Text := lsk;
   end;
 end;
@@ -1449,7 +1513,7 @@ begin
   Form_find_adr2.SetAccess(1, 1, 1, 1);
   if Form_find_adr2.ShowModal = mrOk then
   begin
-    SetFilter;
+    SetFilter(Form_Main.isClosed, Form_Main.isNotMain);
   end;
 
 end;
