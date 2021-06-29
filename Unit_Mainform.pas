@@ -133,7 +133,6 @@ type
     N11: TMenuItem;
     N12: TMenuItem;
     N36: TMenuItem;
-    DVB1: TMenuItem;
     N73: TMenuItem;
     N74: TMenuItem;
     N75: TMenuItem;
@@ -208,7 +207,6 @@ type
     ver: TMenuItem;
     N141: TMenuItem;
     N142: TMenuItem;
-    option: TMenuItem;
     N143: TMenuItem;
     N144: TMenuItem;
     ImageList3: TImageList;
@@ -218,6 +216,10 @@ type
     ProgressBar1: TProgressBar;
     cxEditRepository1: TcxEditRepository;
     cxEditRepository1MRUItem1: TcxEditRepositoryMRUItem;
+    N1705211: TMenuItem;
+    Options1: TMenuItem;
+    N3105211: TMenuItem;
+    N1706211: TMenuItem;
     procedure N5Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure N7Click(Sender: TObject);
@@ -653,7 +655,7 @@ procedure TForm_Main.create_OLE_Eq;
 begin
   try
     Form_Main.eqECR := CreateOleObject('SBRFSRV.Server');
-    option.Caption := option.Caption + ' Эквайринг';
+    Options1.Caption := Options1.Caption + ' Эквайринг';
   except
     Application.MessageBox('Не удалось создать объект драйвера Эквайринга!',
       PChar(Application.Title), MB_ICONERROR + MB_OK);

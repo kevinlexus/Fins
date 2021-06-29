@@ -148,7 +148,7 @@ begin
     begin
       DataModule1.OraclePackage1.CallProcedure
         ('scott.gen.go_next_month_year', [parNone]);
-      if getDoublePar(Form_main.paramList, 'JAVA_DEB_PEN') = 0 then
+      {if getDoublePar(Form_main.paramList, 'JAVA_DEB_PEN') = 0 then
       begin
         // Формирование начисления
         DataModule1.OraclePackage1.CallProcedure
@@ -159,7 +159,7 @@ begin
         // Движение по Л/С
         DataModule1.OraclePackage1.CallProcedure
           ('scott.C_CPENYA.gen_charge_pay_pen', [parNone]);
-      end;
+      end;}
     end;
     Form_generate.g_tr_flag := 1;
   except

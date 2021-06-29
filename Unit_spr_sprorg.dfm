@@ -1,6 +1,6 @@
 object Form_spr_sprorg: TForm_spr_sprorg
-  Left = 1026
-  Top = 231
+  Left = 394
+  Top = 227
   Width = 1311
   Height = 720
   BorderIcons = [biSystemMenu, biMinimize]
@@ -505,7 +505,7 @@ object Form_spr_sprorg: TForm_spr_sprorg
       Top = 1
       Width = 676
       Height = 679
-      ActivePage = TabSheet3
+      ActivePage = TabSheet1
       Align = alClient
       TabOrder = 0
       object TabSheet1: TTabSheet

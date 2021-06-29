@@ -1,6 +1,6 @@
 object Form_generate: TForm_generate
-  Left = 1008
-  Top = 191
+  Left = 766
+  Top = 441
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1060#1086#1088#1084#1080#1088#1086#1074#1072#1085#1080#1077' '#1087#1086' '#1082#1086#1085#1094#1091' '#1084#1077#1089#1103#1094#1072
@@ -107,6 +107,7 @@ object Form_generate: TForm_generate
       Height = 17
       Caption = #1055#1086' '#1087#1091#1085#1082#1090#1072#1084' '#1085#1072#1095#1080#1089#1083#1077#1085#1080#1103
       Color = clBtnFace
+      Enabled = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clDefault
       Font.Height = -11
@@ -123,6 +124,7 @@ object Form_generate: TForm_generate
       Height = 17
       Caption = #1055#1086' '#1090#1088#1077#1089#1090#1072#1084' / '#1087#1088#1077#1076#1087#1088#1080#1103#1090#1080#1103#1084
       Color = clBtnFace
+      Enabled = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clDefault
       Font.Height = -11
@@ -139,6 +141,7 @@ object Form_generate: TForm_generate
       Height = 17
       Caption = #1055#1086' '#1086#1087#1077#1088#1072#1094#1080#1103#1084' '#1076#1083#1103' '#1086#1073#1086#1088#1086#1090#1082#1080
       Color = clBtnFace
+      Enabled = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clDefault
       Font.Height = -11
@@ -155,6 +158,7 @@ object Form_generate: TForm_generate
       Height = 17
       Caption = #1055#1086' '#1086#1087#1077#1088#1072#1094#1080#1103#1084
       Color = clBtnFace
+      Enabled = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clDefault
       Font.Height = -11
@@ -178,6 +182,7 @@ object Form_generate: TForm_generate
       Width = 137
       Height = 17
       Caption = #1054#1073#1086#1088#1086#1090#1085#1072#1103' '#1074#1077#1076#1086#1084#1086#1089#1090#1100
+      Enabled = False
       TabOrder = 2
     end
     object CheckBox18: TCheckBox
@@ -186,6 +191,7 @@ object Form_generate: TForm_generate
       Width = 145
       Height = 17
       Caption = #1044#1074#1080#1078#1077#1085#1080#1077', '#1087#1077#1085#1103' '#1087#1086' '#1051'/C'
+      Enabled = False
       TabOrder = 1
     end
     object CheckBox1: TCheckBox
@@ -195,6 +201,7 @@ object Form_generate: TForm_generate
       Height = 17
       Caption = #1057#1072#1083#1100#1076#1086
       Color = clBtnFace
+      Enabled = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clDefault
       Font.Height = -11
@@ -252,6 +259,7 @@ object Form_generate: TForm_generate
       Width = 147
       Height = 17
       Caption = #1048#1090#1086#1075#1086#1074#1086#1077' '#1092#1086#1088#1084#1080#1088#1086#1074#1072#1085#1080#1077
+      Enabled = False
       TabOrder = 2
       OnClick = CheckBox20Click
     end
@@ -262,6 +270,7 @@ object Form_generate: TForm_generate
       Height = 17
       Hint = #1042#1099#1082#1083#1102#1095#1080#1090#1100' '#1082#1086#1084#1087#1100#1102#1090#1077#1088' '#1087#1086' '#1086#1082#1086#1085#1095#1072#1085#1080#1102' '#1092#1086#1088#1084#1080#1088#1086#1074#1072#1085#1080#1103
       Caption = #1042#1099#1082#1083'.'#1087#1086' '#1086#1082#1086#1085#1095#1072#1085#1080#1102
+      Enabled = False
       ParentShowHint = False
       ShowHint = True
       TabOrder = 3
@@ -280,6 +289,7 @@ object Form_generate: TForm_generate
       Width = 153
       Height = 17
       Caption = #1042#1086#1079#1084#1077#1097#1077#1085#1080#1077' '#1087#1086' '#1083#1100#1075#1086#1090#1072#1084
+      Enabled = False
       TabOrder = 0
     end
   end
@@ -296,6 +306,7 @@ object Form_generate: TForm_generate
       Width = 217
       Height = 17
       Caption = #1057#1090#1072#1090#1080#1089#1090#1080#1082#1072' '#1087#1086' '#1091#1089#1083#1091#1075#1072#1084', '#1086#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103#1084
+      Enabled = False
       TabOrder = 0
     end
   end
@@ -312,6 +323,7 @@ object Form_generate: TForm_generate
       Width = 161
       Height = 17
       Caption = #1040#1088#1093#1080#1074', '#1089#1095#1077#1090#1072', '#1079#1072#1076#1086#1083#1078#1085#1080#1082#1080
+      Enabled = False
       TabOrder = 0
     end
     object CheckBox16: TCheckBox
@@ -320,6 +332,7 @@ object Form_generate: TForm_generate
       Width = 177
       Height = 17
       Caption = #1057#1087#1080#1089#1082#1080' '#1076#1083#1103' '#1101#1082#1089#1087#1086#1088#1090#1072' '#1074' DBF'
+      Enabled = False
       TabOrder = 1
     end
   end
@@ -336,6 +349,7 @@ object Form_generate: TForm_generate
       Width = 81
       Height = 17
       Caption = #1053#1072#1095#1080#1089#1083#1077#1085#1080#1077
+      Enabled = False
       TabOrder = 1
     end
     object CheckBox19: TCheckBox
@@ -344,6 +358,7 @@ object Form_generate: TForm_generate
       Width = 105
       Height = 17
       Caption = #1056#1072#1089#1087#1088'. '#1086#1073#1098#1105#1084#1086#1074
+      Enabled = False
       TabOrder = 0
     end
   end

@@ -712,7 +712,7 @@ begin
       try
         chk1.Checked := false;
       finally
-        chk1.OnClick := chk2Click;
+        chk1.OnClick := chk1Click;
       end;
       SetVariable('var3_', 0)
     end
@@ -722,7 +722,7 @@ begin
       try
         chk1.Checked := true;
       finally
-        chk1.OnClick := chk2Click;
+        chk1.OnClick := chk1Click;
       end;
       SetVariable('var3_', 1);
     end;

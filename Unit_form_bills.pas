@@ -258,6 +258,7 @@ begin
 
   setMainDataset;
 
+  DM_Bill.Uni_chargepay.ParamByName('p_mg').AsString := lkpMgFrom.EditValue;
   {  ред.29.12.2020 Внутренние периоды используются в Полыс, в отчет для Кис, не стал добавлять
   if not VarIsNull(fltMgFrom.KeyValue) then
       DM_Bill.Uni_chargepay.ParamByName('p_mg_from').AsString := fltMgFrom.KeyValue
@@ -562,12 +563,6 @@ begin
   else
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_nd').Clear;
 
-  {  if DBLookupComboboxEh4.KeyValue <> null then
-      DM_Bill.Uni_cmp_main.Params.ParamByName('p_kw').AsString :=
-        DM_Bill2.OD_kw.FieldByName('kw_id').AsString
-    else
-      DM_Bill.Uni_cmp_main.Params.ParamByName('p_kw').Clear;
-   }
   if DBLookupComboboxEh4.KeyValue <> null then
   begin
     DM_Bill.Uni_cmp_main.ParamByName('p_kw').AsString :=

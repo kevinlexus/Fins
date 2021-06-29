@@ -918,6 +918,7 @@ object DM_Bill: TDM_Bill
       'begin'
       '  -- Call the procedure'
       '  scott.rep_bills_compound.get_chargepay(p_lsk => :lsk,'
+      '                                   p_mg => :p_mg,'
       '                                   p_mg_from => :p_mg_from,'
       '                                   p_mg_to => :p_mg_to,'
       '                                   p_rfcur => :p_rfcur);'
@@ -933,6 +934,10 @@ object DM_Bill: TDM_Bill
         DataType = ftString
         Name = 'lsk'
         ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'p_mg'
       end
       item
         DataType = ftString

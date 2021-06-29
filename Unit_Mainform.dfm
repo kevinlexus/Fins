@@ -1,6 +1,6 @@
 object Form_Main: TForm_Main
-  Left = 295
-  Top = 312
+  Left = 611
+  Top = 354
   Width = 880
   Height = 628
   Caption = #1044#1080#1088#1077#1082#1090
@@ -494,7 +494,6 @@ object Form_Main: TForm_Main
         ImageIndex = 14
         object N5: TMenuItem
           Caption = #1060#1086#1088#1084'.'#1087#1086' '#1082#1086#1085#1094#1091' '#1084#1077#1089#1103#1094#1072
-          Enabled = False
           ImageIndex = 14
           OnClick = N5Click
         end
@@ -1064,20 +1063,24 @@ object Form_Main: TForm_Main
         ImageIndex = 22
         OnClick = N16Click
       end
-      object DVB1: TMenuItem
-        Caption = 'DVB'
-        OnClick = DVB1Click
-      end
       object N145: TMenuItem
         Caption = #1051#1086#1075#1075#1080#1085#1075' '#1089#1086#1073#1099#1090#1080#1081
         ImageIndex = 27
         OnClick = N145Click
       end
+      object Options1: TMenuItem
+      end
     end
     object ver: TMenuItem
-      Caption = 'ver 2.3.18'
-      object option: TMenuItem
-        Caption = #1055#1086#1076#1082#1083#1102#1095#1077#1085#1085#1099#1077' '#1086#1087#1094#1080#1080':'
+      Caption = 'ver 2.3.21'
+      object N1705211: TMenuItem
+        Caption = '17.05.21 - '#1048#1089#1087#1088#1072#1074#1083#1077#1085#1086' '#1074#1099#1087#1086#1083#1085#1077#1085#1080#1077' '#1087#1077#1088#1077#1093#1086#1076#1072
+      end
+      object N3105211: TMenuItem
+        Caption = '31.05.21 - '#1048#1089#1087#1088#1072#1074#1083#1077#1085#1086' '#1092#1086#1088#1084#1080#1088#1086#1074#1072#1085#1080#1077' '#1087#1077#1088#1077#1093#1086#1076#1072
+      end
+      object N1706211: TMenuItem
+        Caption = '17.06.21 - '#1048#1089#1087#1088#1072#1074#1083#1077#1085#1080#1077' '#1076#1074#1080#1078#1077#1085#1080#1103' '#1074' '#1089#1095#1077#1090#1077
       end
     end
   end
