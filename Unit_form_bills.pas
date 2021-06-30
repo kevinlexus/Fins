@@ -406,9 +406,15 @@ begin
   frxReport1.ShowPreparedReport;
 end;
 
-// составной счет
+// новый вариант процедуры, для подготовки экспортов в PDF счетов
+// и последующего парсинга Java и отправкой на e-mail пользователям
 
-procedure TForm_print_bills.compound_report(p_var: Integer);
+procedure compound_report_export(p_kul, p_nd, p_kw, p_postcode: Variant; p_sel_obj,
+  p_show_acc, p_klsk_id: Integer;
+  p_lsk1, p_lsk2, p_lkpMgFrom, p_strUk,
+  p_uk, p_filePathStr, p_exportPdfPath: string;
+  p_print_old, p_export_pdf: Boolean; frxReport1: TfrxReport; frxPDFExport1:
+  TfrxPDFExport);
 begin
   // главный датасет
   DM_Bill.Uni_cmp_main.Active := false;
@@ -431,17 +437,17 @@ begin
   // QR код
   DM_Bill.Uni_cmp_qr.Active := False;
 
-  if sel_obj_ = 2 then
+  if p_sel_obj = 2 then
   begin
-    //только для УК
+    //только по УК
     //ограничивать диапазон записи для печати счетов
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_firstNum').AsInteger :=
       DM_Bill2.OD_ls_cnt.FieldByName('first_rec').AsInteger;
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_lastNum').AsInteger :=
       DM_Bill2.OD_ls_cnt.FieldByName('last_rec').AsInteger;
-    if cxLookupComboBox2.EditValue <> null then
+    if not VarIsNull(p_postcode) then
       DM_Bill.Uni_cmp_main.Params.ParamByName('p_postcode').AsString :=
-        cxLookupComboBox2.EditValue
+        p_postcode
     else
       DM_Bill.Uni_cmp_main.Params.ParamByName('p_postcode').Clear;
   end
@@ -455,54 +461,54 @@ begin
   end;
   // установить параметры
   DM_Bill.Uni_cmp_main.Params.ParamByName('p_mg').AsString :=
-    lkpMgFrom.EditValue;
+    p_lkpMgFrom;
   // список УК для фильтра
-  DM_Bill.Uni_cmp_main.Params.ParamByName('p_sel_uk').AsString := getStrUk();
+  DM_Bill.Uni_cmp_main.Params.ParamByName('p_sel_uk').AsString := p_strUk;
 
   DM_Bill.Uni_cmp_contractors.Params.ParamByName('p_mg').AsString :=
-    lkpMgFrom.EditValue;
+    p_lkpMgFrom;
 
   DM_Bill.Uni_cmp_contractors.Params.ParamByName('p_sel_uk').AsString :=
-    getStrUk();
+    p_strUk;
 
   DM_Bill.Uni_cmp_detail_primary.Params.ParamByName('p_mg').AsString :=
-    lkpMgFrom.EditValue;
+    p_lkpMgFrom;
   DM_Bill.Uni_cmp_detail_primary.Params.ParamByName('p_sel_uk').AsString :=
-    getStrUk();
+    p_strUk;
 
   DM_Bill.Uni_cmp_detail_cap.Params.ParamByName('p_mg').AsString :=
-    lkpMgFrom.EditValue;
+    p_lkpMgFrom;
   DM_Bill.Uni_cmp_detail_cap.Params.ParamByName('p_sel_uk').AsString :=
-    getStrUk();
+    p_strUk;
 
   DM_Bill.Uni_cmp_detail_main.Params.ParamByName('p_mg').AsString :=
-    lkpMgFrom.EditValue;
+    p_lkpMgFrom;
   DM_Bill.Uni_cmp_detail_main.Params.ParamByName('p_sel_uk').AsString :=
-    getStrUk();
+    p_strUk;
 
   DM_Bill.Uni_cmp_funds_primary.Params.ParamByName('p_mg').AsString :=
-    lkpMgFrom.EditValue;
+    p_lkpMgFrom;
   DM_Bill.Uni_cmp_funds_primary.Params.ParamByName('p_sel_uk').AsString :=
-    getStrUk();
+    p_strUk;
 
   DM_Bill.Uni_cmp_funds_cap.Params.ParamByName('p_mg').AsString :=
-    lkpMgFrom.EditValue;
+    p_lkpMgFrom;
   DM_Bill.Uni_cmp_funds_cap.Params.ParamByName('p_sel_uk').AsString :=
-    getStrUk();
+    p_strUk;
 
   DM_Bill.Uni_cmp_funds_main.Params.ParamByName('p_mg').AsString :=
-    lkpMgFrom.EditValue;
+    p_lkpMgFrom;
   DM_Bill.Uni_cmp_funds_main.Params.ParamByName('p_sel_uk').AsString :=
-    getStrUk();
+    p_strUk;
 
   // здесь не нужен фильтр p_sel_uk, так как выборка по p_lsk
   DM_Bill.Uni_cmp_funds_lsk.Params.ParamByName('p_mg').AsString :=
-    lkpMgFrom.EditValue;
+    p_lkpMgFrom;
 
   DM_Bill.Uni_cmp_qr.Params.ParamByName('p_mg').AsString :=
-    lkpMgFrom.EditValue;
+    p_lkpMgFrom;
   DM_Bill.Uni_cmp_qr.Params.ParamByName('p_sel_uk').AsString :=
-    getStrUk();
+    p_strUk;
 
   // установить тип лиц.счета
   // все, кроме капремонта
@@ -528,47 +534,47 @@ begin
 
   // установить дополнительный фильтр
   DM_Bill.Uni_cmp_contractors.Params.ParamByName('p_sel_flt_tp').AsInteger :=
-    cxImageComboBox1.ItemIndex;
+    p_show_acc;
   DM_Bill.Uni_cmp_detail_primary.Params.ParamByName('p_sel_flt_tp').AsInteger :=
-    cxImageComboBox1.ItemIndex;
+    p_show_acc;
   DM_Bill.Uni_cmp_detail_cap.Params.ParamByName('p_sel_flt_tp').AsInteger :=
-    cxImageComboBox1.ItemIndex;
+    p_show_acc;
   DM_Bill.Uni_cmp_detail_main.Params.ParamByName('p_sel_flt_tp').AsInteger :=
-    cxImageComboBox1.ItemIndex;
+    p_show_acc;
   DM_Bill.Uni_cmp_funds_primary.Params.ParamByName('p_sel_flt_tp').AsInteger :=
-    cxImageComboBox1.ItemIndex;
+    p_show_acc;
   DM_Bill.Uni_cmp_funds_cap.Params.ParamByName('p_sel_flt_tp').AsInteger :=
-    cxImageComboBox1.ItemIndex;
+    p_show_acc;
   DM_Bill.Uni_cmp_funds_main.Params.ParamByName('p_sel_flt_tp').AsInteger :=
-    cxImageComboBox1.ItemIndex;
+    p_show_acc;
   DM_Bill.Uni_cmp_qr.Params.ParamByName('p_sel_flt_tp').AsInteger :=
-    cxImageComboBox1.ItemIndex;
-  DM_Bill.Uni_cmp_main.Params.ParamByName('p_sel_obj').AsInteger := sel_obj_;
-  if cbb1.EditValue <> null then
-    DM_Bill.Uni_cmp_main.Params.ParamByName('p_reu').AsString := cbb1.EditValue
+    p_show_acc;
+  DM_Bill.Uni_cmp_main.Params.ParamByName('p_sel_obj').AsInteger := p_sel_obj;
+  if p_uk <> null then
+    DM_Bill.Uni_cmp_main.Params.ParamByName('p_reu').AsString := p_uk
   else
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_reu').Clear;
 
-  DM_Bill.Uni_cmp_main.Params.ParamByName('p_lsk').AsString := wwDBEdit1.Text;
-  DM_Bill.Uni_cmp_main.Params.ParamByName('p_lsk1').AsString := wwDBEdit2.Text;
-  if not VarIsNull(DBLookupComboboxEh2.KeyValue) then
+  DM_Bill.Uni_cmp_main.Params.ParamByName('p_lsk').AsString := p_lsk1;
+  DM_Bill.Uni_cmp_main.Params.ParamByName('p_lsk1').AsString := p_lsk2;
+  if not VarIsNull(p_kul) then
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_kul').AsString :=
-      DBLookupComboboxEh2.KeyValue
+      p_kul
   else
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_kul').Clear;
 
-  if not VarIsNull(DBLookupComboboxEh3.KeyValue) then
+  if not VarIsNull(p_nd) then
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_nd').AsString :=
-      DM_Bill2.OD_houses.FieldByName('nd_id').AsString
+      p_nd
   else
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_nd').Clear;
 
-  if DBLookupComboboxEh4.KeyValue <> null then
+  if not VarIsNull(p_kw) then
   begin
     DM_Bill.Uni_cmp_main.ParamByName('p_kw').AsString :=
-      DM_Bill2.OD_kw.FieldByName('kw_id').AsString;
+      p_kw;
     DM_Bill.Uni_cmp_main.ParamByName('p_klsk_id').AsInteger :=
-      DM_Bill2.OD_kw.FieldByName('k_lsk_id').AsInteger;
+      p_klsk_id;
   end
   else
   begin
@@ -577,7 +583,7 @@ begin
   end;
 
   // печатать ли закрытые счета
-  if CheckBox2.Checked = true then
+  if p_print_old = true then
   begin
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_is_closed').AsInteger := 1;
     DM_Bill.Uni_cmp_detail_primary.Params.ParamByName('p_is_closed').AsInteger
@@ -633,11 +639,7 @@ begin
   DM_Bill.Uni_cmp_funds_lsk.Active := true;
   DM_Bill.Uni_cmp_qr.Active := true;
 
-  //filePath.Text := 'Путь к файлу:' + Form_main.exepath_ +
-  //  VarToStr(cxLookupComboBox1.EditValue);
-  //frxReport1.LoadFromFile(Form_main.exepath_ +
-  //  VarToStr(cxLookupComboBox1.EditValue), True);
-  frxReport1.LoadFromFile(filePathStr, True);
+  frxReport1.LoadFromFile(p_filePathStr, True);
 
   // открыть отчет
   frxReport1.PrepareReport(true);
@@ -655,15 +657,54 @@ begin
   DM_Bill.Uni_cmp_funds_lsk.Active := false;
   DM_Bill.Uni_cmp_qr.Active := false;
 
-  if CheckBox6.Checked then
+  if p_export_pdf then
   begin
     // экспортировать в PDF
-    frxPDFExport1.FileName := Edit3.Text;
+    frxPDFExport1.FileName := p_exportPdfPath;
     frxReport1.Export(frxPDFExport1);
   end
   else
     // показать отчет
     frxReport1.ShowPreparedReport;
+
+end;
+
+// составной счет
+
+procedure TForm_print_bills.compound_report(p_var: Integer);
+var
+  pKul, pNd, pKw: Variant;
+  pKlskId: Integer;
+begin
+  if not VarIsNull(DBLookupComboboxEh2.KeyValue) then
+    pKul := DBLookupComboboxEh2.KeyValue
+  else
+    pKul := null;
+
+  if not VarIsNull(DBLookupComboboxEh3.KeyValue) then
+    pNd := DM_Bill2.OD_houses.FieldByName('nd_id').AsString
+  else
+    pNd := null;
+
+  if DBLookupComboboxEh4.KeyValue <> null then
+  begin
+    pKw :=
+      DM_Bill2.OD_kw.FieldByName('kw_id').AsString;
+    pKlskId :=
+      DM_Bill2.OD_kw.FieldByName('k_lsk_id').AsInteger;
+  end
+  else
+  begin
+    pKw := null;
+    pKlskId := null;
+  end;
+
+  compound_report_export(pKul, pNd, pKw, cxLookupComboBox2.EditValue, sel_obj_, 
+    cxImageComboBox1.ItemIndex,
+    pKlskId, wwDBEdit1.Text, wwDBEdit2.Text,
+    lkpMgFrom.EditValue, getStrUk(),
+    cbb1.EditValue, filePathStr, Edit3.Text, CheckBox2.Checked,
+    CheckBox6.Checked, frxReport1, frxPDFExport1);
 
 end;
 

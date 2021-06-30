@@ -1,6 +1,6 @@
 object Form_print_bills: TForm_print_bills
-  Left = 476
-  Top = 165
+  Left = 224
+  Top = 189
   Width = 457
   Height = 491
   BorderIcons = [biSystemMenu, biMinimize]
