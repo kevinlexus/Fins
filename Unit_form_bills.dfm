@@ -1,8 +1,8 @@
 object Form_print_bills: TForm_print_bills
-  Left = 224
-  Top = 189
-  Width = 457
-  Height = 491
+  Left = 2155
+  Top = 353
+  Width = 501
+  Height = 511
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #1057#1095#1077#1090#1072' '#1085#1072' '#1086#1087#1083#1072#1090#1091' '#1091#1089#1083#1091#1075' '#1046#1050#1061
   Color = clBtnFace
@@ -93,7 +93,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox1: TGroupBox
     Left = 0
     Top = 345
-    Width = 441
+    Width = 485
     Height = 61
     Align = alTop
     TabOrder = 2
@@ -139,7 +139,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox2: TGroupBox
     Left = 0
     Top = 0
-    Width = 441
+    Width = 485
     Height = 105
     Align = alTop
     TabOrder = 0
@@ -301,7 +301,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox3: TGroupBox
     Left = 0
     Top = 145
-    Width = 441
+    Width = 485
     Height = 200
     Align = alTop
     TabOrder = 1
@@ -586,11 +586,27 @@ object Form_print_bills: TForm_print_bills
       TabOrder = 15
       OnClick = CheckBox7Click
     end
+    object chkExportFlow: TCheckBox
+      Left = 305
+      Top = 168
+      Width = 128
+      Height = 29
+      Caption = #1069#1082#1089#1087#1086#1088#1090' '#1087#1086#1090#1086#1082#1086#1084
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 16
+      WordWrap = True
+      OnClick = CheckBox5Click
+    end
   end
   object GroupBox4: TGroupBox
     Left = 0
     Top = 406
-    Width = 441
+    Width = 485
     Height = 37
     Align = alTop
     TabOrder = 3
@@ -615,7 +631,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox5: TGroupBox
     Left = 0
     Top = 105
-    Width = 441
+    Width = 485
     Height = 40
     Align = alTop
     Caption = #1060#1080#1083#1100#1090#1088' '#1087#1077#1088#1080#1086#1076#1072
@@ -658,6 +674,36 @@ object Form_print_bills: TForm_print_bills
       ListSource = DM_Bill2.DS_mg1
       TabOrder = 1
       Visible = True
+    end
+  end
+  object dxStatusBar1: TdxStatusBar
+    Left = 0
+    Top = 452
+    Width = 485
+    Height = 20
+    Panels = <
+      item
+        PanelStyleClassName = 'TdxStatusBarContainerPanelStyle'
+        PanelStyle.Container = dxStatusBar1Container3
+        Bevel = dxpbNone
+      end>
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    object dxStatusBar1Container3: TdxStatusBarContainerControl
+      Left = 0
+      Top = 2
+      Width = 469
+      Height = 18
+      object cxProgressBar1: TcxProgressBar
+        Left = 0
+        Top = 0
+        Align = alClient
+        TabOrder = 0
+        Width = 469
+      end
     end
   end
   object frxReport1: TfrxReport
@@ -734,7 +780,7 @@ object Form_print_bills: TForm_print_bills
   object frxPDFExport1: TfrxPDFExport
     FileName = 'c:\temp\export'
     UseFileCache = True
-    ShowProgress = True
+    ShowProgress = False
     OverwritePrompt = False
     DataOnly = False
     PrintOptimized = False
@@ -744,14 +790,14 @@ object Form_print_bills: TForm_print_bills
     Quality = 95
     Author = 'FastReport'
     Subject = 'FastReport PDF export'
-    ProtectionFlags = [ePrint, eModify, eCopy, eAnnot]
+    ProtectionFlags = []
     HideToolbar = False
     HideMenubar = False
     HideWindowUI = False
     FitWindow = False
     CenterWindow = False
     PrintScaling = False
-    Left = 208
-    Top = 193
+    Left = 160
+    Top = 177
   end
 end

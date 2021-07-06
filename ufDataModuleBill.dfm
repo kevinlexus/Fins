@@ -1,7 +1,7 @@
 object DM_Bill: TDM_Bill
   OldCreateOrder = False
-  Left = 2600
-  Top = 145
+  Left = 1982
+  Top = 415
   Height = 855
   Width = 512
   object Uni_cmp_main: TUniQuery
@@ -1007,5 +1007,14 @@ object DM_Bill: TDM_Bill
         Name = 'p_rfcur'
         Value = 'Object'
       end>
+  end
+  object Uni_spr_bill_print: TUniQuery
+    Connection = DataModule1.UniConnection1
+    SQL.Strings = (
+      'select * from scott.spr_bill_print t '
+      'order by t.reu')
+    Constraints = <>
+    Left = 32
+    Top = 648
   end
 end

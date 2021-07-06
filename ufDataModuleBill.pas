@@ -32,6 +32,7 @@ type
     Uni_chargepay: TUniQuery;
     frxdbdtstDBD_rep_lsk: TfrxDBDataset;
     Uni_rep_penya: TUniQuery;
+    Uni_spr_bill_print: TUniQuery;
   private
     { Private declarations }
   public

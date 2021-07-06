@@ -35,7 +35,8 @@ uses
   cxPropertiesStore, frxExportPDF, ufDataModuleBill, cxStyles,
   dxSkinscxPCPainter, cxCustomData, cxFilter, cxData, cxDataStorage,
   cxNavigator, cxDBData, cxGridCustomTableView, cxGridTableView,
-  cxGridDBTableView, cxGridLevel, cxGridCustomView, cxGrid, cxDBEdit;
+  cxGridDBTableView, cxGridLevel, cxGridCustomView, cxGrid, cxDBEdit,
+  ComCtrls, dxTaskbarProgress, cxProgressBar, dxStatusBar;
 
 type
   TForm_print_bills = class(TForm)
@@ -98,6 +99,10 @@ type
     Label17: TLabel;
     lkpMgFrom: TcxLookupComboBox;
     lkpMgTo: TcxLookupComboBox;
+    chkExportFlow: TCheckBox;
+    dxStatusBar1: TdxStatusBar;
+    dxStatusBar1Container3: TdxStatusBarContainerControl;
+    cxProgressBar1: TcxProgressBar;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -146,6 +151,7 @@ type
     procedure lkpMgToPropertiesCloseUp(Sender: TObject);
     procedure CheckBox5Click(Sender: TObject);
     procedure cxLookupComboBox1PropertiesCloseUp(Sender: TObject);
+    procedure query_OD_ls_cnt(p_mg, p_reu: string; p_cnt: Integer);
   private
     cnt_sch_: Integer;
     tp_: Integer;
@@ -175,6 +181,8 @@ procedure TForm_print_bills.Button1Click(Sender: TObject);
 var
   pen_last_month_: Integer;
 begin
+  cxProgressBar1.Position := 10;
+  Update;
   // ПОДГОТОВКА датасетов, установка параметров
   wwDBEdit1.Text := RightStr('00000000' + wwDBEdit1.Text, 8);
   wwDBEdit2.Text := RightStr('00000000' + wwDBEdit2.Text, 8);
@@ -198,9 +206,6 @@ begin
     pen_last_month_ := 0
   else
     pen_last_month_ := 1;
-
-  Application.CreateForm(TForm_status, Form_status);
-  Form_status.Update;
 
   // подготовку делаем в случае выбора либо 1 л.с. либо 1 квартиры
   // и только не по арх спр.
@@ -247,8 +252,8 @@ begin
     Application.MessageBox('Некорректный BILL_TP в таблице spr_services!',
       'Внимание!', MB_OK + MB_ICONSTOP + MB_DEFBUTTON2);
 
-  if FF('Form_status', 0) = 1 then
-    Form_status.Close;
+  cxProgressBar1.Position := 100;
+
 end;
 
 // движение по счету
@@ -409,12 +414,13 @@ end;
 // новый вариант процедуры, для подготовки экспортов в PDF счетов
 // и последующего парсинга Java и отправкой на e-mail пользователям
 
-procedure compound_report_export(p_kul, p_nd, p_kw, p_postcode: Variant; p_sel_obj,
+procedure compound_report_export(p_kul, p_nd, p_kw, p_postcode: Variant;
+  p_sel_obj,
   p_show_acc, p_klsk_id: Integer;
   p_lsk1, p_lsk2, p_lkpMgFrom, p_strUk,
   p_uk, p_filePathStr, p_exportPdfPath: string;
   p_print_old, p_export_pdf: Boolean; frxReport1: TfrxReport; frxPDFExport1:
-  TfrxPDFExport);
+  TfrxPDFExport; p_firstNum, p_lastNum: Integer; p_export_flow: Boolean);
 begin
   // главный датасет
   DM_Bill.Uni_cmp_main.Active := false;
@@ -442,9 +448,13 @@ begin
     //только по УК
     //ограничивать диапазон записи для печати счетов
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_firstNum').AsInteger :=
-      DM_Bill2.OD_ls_cnt.FieldByName('first_rec').AsInteger;
+      p_firstNum;
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_lastNum').AsInteger :=
-      DM_Bill2.OD_ls_cnt.FieldByName('last_rec').AsInteger;
+      p_lastNum;
+    {    DM_Bill.Uni_cmp_main.Params.ParamByName('p_firstNum').AsInteger :=
+          DM_Bill2.OD_ls_cnt.FieldByName('first_rec').AsInteger;
+        DM_Bill.Uni_cmp_main.Params.ParamByName('p_lastNum').AsInteger :=
+          DM_Bill2.OD_ls_cnt.FieldByName('last_rec').AsInteger;}
     if not VarIsNull(p_postcode) then
       DM_Bill.Uni_cmp_main.Params.ParamByName('p_postcode').AsString :=
         p_postcode
@@ -643,7 +653,6 @@ begin
 
   // открыть отчет
   frxReport1.PrepareReport(true);
-  Form_status.Close;
 
   // деактивировать датасеты - чтоб не жрали память
   DM_Bill.Uni_cmp_main.Active := False;
@@ -663,6 +672,18 @@ begin
     frxPDFExport1.FileName := p_exportPdfPath;
     frxReport1.Export(frxPDFExport1);
   end
+  else if p_export_flow then
+  begin
+    // экспортировать в PDF потоком
+    try
+      frxPDFExport1.FileName := p_exportPdfPath;
+      frxPDFExport1.ShowDialog := False;
+      frxPDFExport1.OverwritePrompt := False;
+      frxReport1.Export(frxPDFExport1);
+    except
+      ShowMessage('Ошибка экспорта в PDF #1');
+    end;
+  end
   else
     // показать отчет
     frxReport1.ShowPreparedReport;
@@ -674,7 +695,7 @@ end;
 procedure TForm_print_bills.compound_report(p_var: Integer);
 var
   pKul, pNd, pKw: Variant;
-  pKlskId: Integer;
+  pKlskId, Pos, cnt: Integer;
 begin
   if not VarIsNull(DBLookupComboboxEh2.KeyValue) then
     pKul := DBLookupComboboxEh2.KeyValue
@@ -696,15 +717,96 @@ begin
   else
   begin
     pKw := null;
-    pKlskId := null;
+    pKlskId := 0;
   end;
 
-  compound_report_export(pKul, pNd, pKw, cxLookupComboBox2.EditValue, sel_obj_, 
-    cxImageComboBox1.ItemIndex,
-    pKlskId, wwDBEdit1.Text, wwDBEdit2.Text,
-    lkpMgFrom.EditValue, getStrUk(),
-    cbb1.EditValue, filePathStr, Edit3.Text, CheckBox2.Checked,
-    CheckBox6.Checked, frxReport1, frxPDFExport1);
+  if chkExportFlow.Checked then
+  begin
+    DM_Bill.Uni_spr_bill_print.Active := False;
+    DM_Bill.Uni_spr_bill_print.Active := True;
+
+    cnt := DM_Bill.Uni_spr_bill_print.RecordCount;
+    DM_Bill.Uni_spr_bill_print.First;
+    while not DM_Bill.Uni_spr_bill_print.Eof do
+    begin
+      // выводить по 1000!
+      query_OD_ls_cnt(lkpMgFrom.EditValue,
+        DM_Bill.Uni_spr_bill_print.FieldByName('REU').AsString, 1000);
+
+      while not DM_Bill2.OD_ls_cnt.Eof do
+      begin
+        {        Application.MessageBox(PChar('Начало выгрузки:' + Edit3.Text + '_' +
+                  DM_Bill.Uni_spr_bill_print.FieldByName('REU').AsString
+                  + '_'
+                  + DM_Bill.Uni_spr_bill_print.FieldByName('PREFIX').AsString
+                  + '_'
+                  + DM_Bill2.OD_ls_cnt.FieldByName('name').AsString
+                  + '.pdf')
+                  ,
+                  'Внимание!', MB_OK +
+                  MB_ICONINFORMATION + MB_TOPMOST);
+         }
+        compound_report_export(pKul, pNd, pKw, cxLookupComboBox2.EditValue,
+          sel_obj_,
+          cxImageComboBox1.ItemIndex,
+          pKlskId, wwDBEdit1.Text, wwDBEdit2.Text,
+          lkpMgFrom.EditValue,
+          DM_Bill.Uni_spr_bill_print.FieldByName('FILTER_REU').AsString,
+          DM_Bill.Uni_spr_bill_print.FieldByName('REU').AsString, filePathStr,
+          Edit3.Text + '_' +
+          DM_Bill.Uni_spr_bill_print.FieldByName('REU').AsString
+          + '_'
+          + DM_Bill.Uni_spr_bill_print.FieldByName('PREFIX').AsString
+          + '_'
+          + DM_Bill2.OD_ls_cnt.FieldByName('name').AsString
+          + '.pdf',
+          CheckBox2.Checked,
+          CheckBox6.Checked, frxReport1, frxPDFExport1,
+          DM_Bill2.OD_ls_cnt.FieldByName('first_rec').AsInteger,
+          DM_Bill2.OD_ls_cnt.FieldByName('last_rec').AsInteger,
+          chkExportFlow.Checked
+          );
+        {        Application.MessageBox(PChar('Выгружено:' + Edit3.Text + '_' +
+                  DM_Bill.Uni_spr_bill_print.FieldByName('REU').AsString
+                  + '_'
+                  + DM_Bill.Uni_spr_bill_print.FieldByName('PREFIX').AsString
+                  + '_'
+                  + DM_Bill2.OD_ls_cnt.FieldByName('name').AsString
+                  + '.pdf'),
+                  'Внимание!', MB_OK +
+                  MB_ICONINFORMATION + MB_TOPMOST);}
+                {    DM_Bill.Uni_cmp_main.Params.ParamByName('p_firstNum').AsInteger :=
+            DM_Bill2.OD_ls_cnt.FieldByName('first_rec').AsInteger;
+          DM_Bill.Uni_cmp_main.Params.ParamByName('p_lastNum').AsInteger :=
+            DM_Bill2.OD_ls_cnt.FieldByName('last_rec').AsInteger;}
+
+        DM_Bill2.OD_ls_cnt.Next;
+        pos := pos + 1;
+        cxProgressBar1.Position := pos / cnt * 100;
+      end;
+      DM_Bill.Uni_spr_bill_print.Next;
+    end;
+  end
+  else
+  begin
+    //    DM_Bill.Uni_cmp_main.Params.ParamByName('p_firstNum').AsInteger := 0;
+  //    DM_Bill.Uni_cmp_main.Params.ParamByName('p_lastNum').AsInteger :=
+  //      1000000000;
+  //      query_OD_ls_cnt(lkpMgFrom.EditValue,
+  //        DM_Bill.Uni_spr_bill_print.FieldByName('REU').AsString, 1000);
+
+    compound_report_export(pKul, pNd, pKw, cxLookupComboBox2.EditValue,
+      sel_obj_,
+      cxImageComboBox1.ItemIndex,
+      pKlskId, wwDBEdit1.Text, wwDBEdit2.Text,
+      lkpMgFrom.EditValue, getStrUk(),
+      cbb1.EditValue, filePathStr, Edit3.Text, CheckBox2.Checked,
+      CheckBox6.Checked, frxReport1, frxPDFExport1,
+      DM_Bill2.OD_ls_cnt.FieldByName('first_rec').AsInteger,
+      DM_Bill2.OD_ls_cnt.FieldByName('last_rec').AsInteger,
+      chkExportFlow.Checked
+      );
+  end;
 
 end;
 
@@ -1033,7 +1135,6 @@ begin
   begin
     Application.MessageBox('Нет информации за указанный период', 'Внимание!', 16
       + MB_APPLMODAL);
-    Form_status.Close;
   end
   else if (((tp_ = 2) or (tp_ = 5) or (tp_ = 7)) and
     (DM_Bill.Uni_cmp_main_arch.RecordCount =
@@ -1041,12 +1142,10 @@ begin
   begin
     Application.MessageBox('Нет информации за указанный период', 'Внимание!', 16
       + MB_APPLMODAL);
-    Form_status.Close;
   end
   else if ((tp_ = 3) and (DM_Bill2.OD_data3.RecordCount = 0)) then
   begin
     Application.MessageBox('Нет задолженности', 'Внимание!', 16 + MB_APPLMODAL);
-    Form_status.Close;
   end
   else
   begin
@@ -1156,7 +1255,6 @@ begin
 
       frxReport1.PrepareReport(true);
     end;
-    Form_status.Close;
     frxReport1.ShowPreparedReport;
   end;
 end;
@@ -1564,20 +1662,41 @@ begin
   set_obj;
 end;
 
+procedure TForm_print_bills.query_OD_ls_cnt(p_mg, p_reu: string; p_cnt:
+  Integer);
+begin
+  DM_Bill2.OD_ls_cnt.Active := false;
+  DM_Bill2.OD_ls_cnt.SetVariable('p_mg', p_mg);
+  DM_Bill2.OD_ls_cnt.SetVariable('p_reu', p_reu);
+  DM_Bill2.OD_ls_cnt.SetVariable('p_cnt', p_cnt);
+  DM_Bill2.OD_ls_cnt.Active := true;
+end;
+
 procedure TForm_print_bills.sel_ls_cnt;
+var
+  l_mg, l_reu: string;
 begin
   //задаем период для выборки кол-ва л.с., для печати счетов сотнями
-  DM_Bill2.OD_ls_cnt.Active := false;
+  //DM_Bill2.OD_ls_cnt.Active := false;
   if (tp_ = 0) or (tp_ = 1)
     or (tp_ = 4) or (tp_ = 6) then
     // счет
-    DM_Bill2.OD_ls_cnt.SetVariable('p_mg', lkpMgFrom.EditValue)
+    //DM_Bill2.OD_ls_cnt.SetVariable('p_mg', lkpMgFrom.EditValue)
+    l_mg := lkpMgFrom.EditValue
   else
     // остальные отчеты (арх.справ.)
-    DM_Bill2.OD_ls_cnt.SetVariable('p_mg', lkpMgTo.EditValue);
+    //DM_Bill2.OD_ls_cnt.SetVariable('p_mg', lkpMgTo.EditValue);
+    l_mg := lkpMgTo.EditValue;
 
-  DM_Bill2.OD_ls_cnt.SetVariable('p_reu', cbb1.EditValue);
-  DM_Bill2.OD_ls_cnt.Active := true;
+  //DM_Bill2.OD_ls_cnt.SetVariable('p_reu', cbb1.EditValue);
+  if not VarIsNull(cbb1.EditValue) then
+    l_reu := cbb1.EditValue
+  else
+    l_reu := '';
+  //DM_Bill2.OD_ls_cnt.Active := true;
+
+  query_OD_ls_cnt(l_mg, l_reu, cnt_sch_);
+
   if DM_Bill2.OD_ls_cnt.RecordCount = 0 then
     cxLookupComboBox4.EditValue := 0
   else
@@ -1733,12 +1852,13 @@ end;
 procedure TForm_print_bills.cxLookupComboBox4PropertiesPopup(
   Sender: TObject);
 begin
-  if DM_Bill2.OD_ls_cnt.GetVariable('p_cnt') <> IntToStr(cnt_sch_) then
-  begin
-    DM_Bill2.OD_ls_cnt.SetVariable('p_cnt', cnt_sch_);
-    DM_Bill2.OD_ls_cnt.Active := False;
-    DM_Bill2.OD_ls_cnt.Active := True;
-  end;
+  sel_ls_cnt;
+  {  if DM_Bill2.OD_ls_cnt.GetVariable('p_cnt') <> IntToStr(cnt_sch_) then
+    begin
+      DM_Bill2.OD_ls_cnt.SetVariable('p_cnt', cnt_sch_);
+      DM_Bill2.OD_ls_cnt.Active := False;
+      DM_Bill2.OD_ls_cnt.Active := True;
+    end;}
 end;
 
 procedure TForm_print_bills.cxImageComboBox2PropertiesCloseUp(
