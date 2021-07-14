@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, DB, OracleData, DVButils, wwdblook, Utils, 
-  wwriched, Mask, DBCtrlsEh, Grids, Wwdbigrd, Wwdbgrid, ExtCtrls, Oracle;
+  wwriched, DBCtrlsEh, Wwdbgrid, ExtCtrls, Oracle, Grids, Wwdbigrd, Mask;
 
 
 type
@@ -54,7 +54,7 @@ var
 
 implementation
 
-uses DM_module1, Unit_Mainform;
+uses DM_module1;
 {$R *.dfm}
 
 procedure TForm_dvb_connect.FormCreate(Sender: TObject);

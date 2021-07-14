@@ -4,9 +4,9 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, wwSpeedButton, wwDBNavigator, wwclearpanel, StdCtrls, ExtCtrls,
-  Buttons, Mask, wwdbedit, Grids, Wwdbigrd, Wwdbgrid, DB, OracleData,
-  wwdblook, StrUtils, Utils, ImgList;
+  Dialogs, wwSpeedButton, wwDBNavigator, StdCtrls, ExtCtrls,
+  Buttons, Mask, wwdbedit, Wwdbgrid, DB, OracleData,
+  wwdblook, StrUtils, Utils, ImgList, wwclearpanel, Grids, Wwdbigrd;
 
 type
   TForm_list_set = class(TForm)

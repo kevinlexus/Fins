@@ -1,5 +1,5 @@
 object Form_list_kart: TForm_list_kart
-  Left = 2105
+  Left = 185
   Top = 168
   Width = 1044
   Height = 607

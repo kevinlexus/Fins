@@ -4,8 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, GridsEh, DBGridEh, DB, wwfltdlg,
-  Buttons;
+  Dialogs, StdCtrls, DBGridEh, DB, wwfltdlg,
+  Buttons, GridsEh;
 
 type
   TForm_edit_work = class(TForm)

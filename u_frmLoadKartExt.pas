@@ -4,13 +4,16 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, OracleData, cxGraphics, cxControls, cxLookAndFeels,
-  cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter, cxData,
-  cxDataStorage, cxEdit, cxNavigator, cxDBData, ExtCtrls, cxGridLevel,
-  cxClasses, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
-  cxGridDBTableView, cxGrid, StdCtrls, Utils, Oracle, cxContainer,
-  ComCtrls, dxCore, cxDateUtils, cxTextEdit, cxMaskEdit, cxDropDownEdit,
-  cxCalendar, DateUtils;
+  Dialogs, DB, OracleData, cxGraphics, cxControls, 
+  
+  ExtCtrls, cxGridLevel,
+  cxClasses, cxGridCustomTableView, 
+  cxGridDBTableView, cxGrid, StdCtrls, Utils, Oracle, 
+  ComCtrls, 
+  cxCalendar, cxLookAndFeels, cxLookAndFeelPainters, cxStyles,
+  cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
+  cxDBData, cxContainer, dxCore, cxDateUtils, cxTextEdit, cxMaskEdit,
+  cxDropDownEdit, cxGridTableView, cxGridCustomView;
 
 type
   TfrmLoadKartExt = class(TForm)
@@ -125,7 +128,7 @@ var
 implementation
 
 uses DM_module1, Unit_status, Unit_Mainform,
- cxGridExportLink, cxExport, ShellAPI;
+ cxGridExportLink, ShellAPI;
 
 {$R *.dfm}
 

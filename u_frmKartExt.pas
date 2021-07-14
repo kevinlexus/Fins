@@ -4,12 +4,14 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
-  cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit,
-  cxNavigator, DB, cxDBData, cxGridCustomTableView, cxGridTableView,
-  cxGridDBTableView, cxGridLevel, cxClasses, cxGridCustomView, cxGrid,
-  OracleData, StdCtrls, ExtCtrls, ComCtrls, ToolWin, cxCheckBox,
-  cxContainer;
+  Dialogs, cxGraphics, cxControls, 
+  
+  DB, cxGridCustomTableView, 
+  cxGridDBTableView, cxGridLevel, cxClasses, cxGrid,
+  OracleData, StdCtrls, ExtCtrls, ComCtrls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter, cxData,
+  cxDataStorage, cxEdit, cxNavigator, cxDBData, cxCheckBox, ToolWin,
+  cxGridTableView, cxGridCustomView;
 
 type
   TfrmKartExt = class(TForm)

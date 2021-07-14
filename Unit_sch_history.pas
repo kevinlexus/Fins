@@ -8,10 +8,10 @@ uses
   wwSpeedButton, wwDBNavigator, StdCtrls, wwdblook, ComCtrls,
   cxControls, 
   
-  cxEdit, cxGridLevel,
-  cxClasses, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
-  cxGridDBTableView, cxGrid, cxContainer, cxTextEdit, cxMaskEdit,
-  cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
+  cxGridLevel,
+  cxClasses, cxGridCustomTableView, 
+  cxGridDBTableView, cxGrid, cxTextEdit, 
+  cxDBLookupComboBox,
   
   
   
@@ -27,22 +27,11 @@ uses
   
   cxNavigator, cxSplitter, cxPC,
   cxLabel, Mask, wwdbedit, Math, cxCalendar, cxGraphics, cxLookAndFeels,
-  cxLookAndFeelPainters, cxStyles, dxSkinsCore, dxSkinBlack, dxSkinBlue,
-  dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom,
-  dxSkinDarkSide, dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle,
-  dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary,
-  dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin,
-  dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
-  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
-  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
-  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
-  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinPumpkin,
-  dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
-  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
-  dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
-  dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter,
-  cxCustomData, cxFilter, cxData, cxDataStorage, cxDBData, cxCheckBox,
-  cxImageComboBox, dxBarBuiltInMenu, dxCore, cxDateUtils, cxButtonEdit;
+  cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter, cxData,
+  cxDataStorage, cxEdit, cxDBData, cxCheckBox, cxImageComboBox,
+  dxBarBuiltInMenu, cxContainer, dxCore, cxDateUtils, cxDropDownEdit,
+  cxLookupEdit, cxDBLookupEdit, cxMaskEdit, cxGridTableView,
+  cxGridCustomView;
 
 type
   TForm_sch_history = class(TForm)
@@ -176,7 +165,7 @@ var
 
 implementation
 
-uses DM_module1, Unit_list_kart, Utils, Unit_form_kart, Unit_get_pay_nal,
+uses DM_module1, Utils, Unit_form_kart, Unit_get_pay_nal,
   u_frmMeteGisConnect;
 
 {$R *.dfm}

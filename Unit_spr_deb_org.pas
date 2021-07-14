@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, StdCtrls, wwSpeedButton, wwDBNavigator, ExtCtrls,
-  Grids, Wwdbigrd, Wwdbgrid, OracleData, Wwdatsrc, DBCtrls, Utils;
+  Wwdbgrid, OracleData, Wwdatsrc, DBCtrls, Utils, Grids, Wwdbigrd;
 
 type
   TForm_spr_deb_org = class(TForm)

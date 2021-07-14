@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, OracleData, Grids, DBGrids, StdCtrls, DBCtrls, ExtCtrls;
+  Dialogs, DB, OracleData, DBGrids, StdCtrls, DBCtrls, ExtCtrls, Grids;
 
 type
   TForm_plan = class(TForm)

@@ -4,8 +4,9 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
-  cxContainer, cxEdit, cxTextEdit, cxMemo, StdCtrls;
+  Dialogs, cxGraphics, cxControls, 
+  cxMemo, StdCtrls, cxLookAndFeels, cxLookAndFeelPainters, cxContainer,
+  cxEdit, cxTextEdit;
 
 type
   TfrmLog = class(TForm)

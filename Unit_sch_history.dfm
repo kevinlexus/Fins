@@ -1,5 +1,5 @@
 object Form_sch_history: TForm_sch_history
-  Left = 2524
+  Left = 604
   Top = 538
   Width = 1044
   Height = 380

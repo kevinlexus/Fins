@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Grids, Wwdbigrd, Wwdbgrid, DB, OracleData, StdCtrls, ExtCtrls;
+  Dialogs, Wwdbgrid, DB, OracleData, StdCtrls, ExtCtrls, Grids, Wwdbigrd;
 
 type
   TForm_gen_err_lst = class(TForm)

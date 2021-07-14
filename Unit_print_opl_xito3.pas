@@ -59,7 +59,7 @@ var
 
 implementation
 
-uses DM_module1, Unit_status;
+uses Unit_status;
 
 {$R *.dfm}
 

@@ -4,8 +4,9 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ComCtrls, DB, OracleData, Grids, Wwdbigrd, Wwdbgrid,
-  wwSpeedButton, wwDBNavigator, wwclearpanel, ExtCtrls, Menus, Utils;
+  Dialogs, StdCtrls, ComCtrls, DB, OracleData, Wwdbgrid,
+  wwSpeedButton, wwDBNavigator, ExtCtrls, Menus, Utils, wwclearpanel,
+  Grids, Wwdbigrd;
 
 type
   TForm_spr_usl = class(TForm)

@@ -16,23 +16,24 @@ uses
   cxPropertiesStore,
 
   cxContainer, cxTextEdit, cxMaskEdit,
-  cxLabel, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore,
-  dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee,
-  dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
-  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans,
-  dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky,
-  dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
-  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
-  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
-  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
-  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
-  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinPumpkin,
-  dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
-  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
-  dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
-  dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter,
-  cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, cxDBData,
-  cxDropDownEdit, cxMRUEdit, cxEditRepositoryItems;
+  cxLabel, cxGraphics, 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  cxDropDownEdit, cxMRUEdit, cxLookAndFeels, cxLookAndFeelPainters,
+  cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, cxDBData;
 
 type
   TForm_list_kart = class(TForm)
@@ -295,7 +296,7 @@ implementation
 uses Unit_form_kart, Unit_Mainform, DM_module1, Unit_find_adr,
   Unit_month_payments, Unit_changes_lsk, Unit_form_kart_pr,
   Unit_form_subsidii, Unit_chargepay, Unit_find_fio,
-  Unit_find_contr, Unit_det_chrg, Unit_log_actions, Unit_houses_nabor,
+  Unit_det_chrg, Unit_log_actions, Unit_houses_nabor,
   Unit_house_vvod, Unit_list_set, Unit_form_bills, Unit_sch_history,
   Unit_lk_acc, u_frmPenCorr, u_frmAccFlow, Unit_find_adr2,
   u_frmReplaceKlsk;

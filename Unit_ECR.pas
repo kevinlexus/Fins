@@ -3,7 +3,7 @@ unit Unit_ECR;
 interface
 
 uses
-  Unit_Mainform, Utils, Windows, SysUtils, DateUtils, StrUtils, Classes;
+  Unit_Mainform, Utils, Windows, SysUtils, DateUtils, Classes;
 
 procedure show_error(ECR: OleVariant; errStep: string);
 function show_error2(ECR: OleVariant; errStep: string): Integer;

@@ -908,7 +908,7 @@ object Form_kart: TForm_kart
               Top = 0
               Width = 25
               Height = 25
-              Hint = #1050' '#1087#1077#1088#1074#1086#1081' '#1079#1072#1087#1080#1089#1080
+              Hint = 'Move to first record'
               ImageIndex = -1
               NumGlyphs = 2
               Spacing = 4
@@ -925,7 +925,7 @@ object Form_kart: TForm_kart
               Top = 0
               Width = 25
               Height = 25
-              Hint = #1055#1088#1077#1076#1099#1076#1091#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
+              Hint = 'Move to prior record'
               ImageIndex = -1
               NumGlyphs = 2
               Spacing = 4
@@ -942,7 +942,7 @@ object Form_kart: TForm_kart
               Top = 0
               Width = 25
               Height = 25
-              Hint = #1057#1083#1077#1076#1091#1102#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
+              Hint = 'Move to next record'
               ImageIndex = -1
               NumGlyphs = 2
               Spacing = 4
@@ -959,7 +959,7 @@ object Form_kart: TForm_kart
               Top = 0
               Width = 25
               Height = 25
-              Hint = #1055#1077#1088#1077#1081#1090#1080' '#1082' '#1087#1086#1089#1083#1077#1076#1085#1077#1081' '#1079#1072#1087#1080#1089#1080
+              Hint = 'Move to last record'
               ImageIndex = -1
               NumGlyphs = 2
               Spacing = 4
@@ -976,7 +976,7 @@ object Form_kart: TForm_kart
               Top = 0
               Width = 25
               Height = 25
-              Hint = #1044#1086#1073#1072#1074#1080#1090#1100' '#1085#1086#1074#1091#1102' '#1079#1072#1087#1080#1089#1100
+              Hint = 'Insert new record'
               ImageIndex = -1
               NumGlyphs = 2
               Spacing = 4
@@ -993,7 +993,7 @@ object Form_kart: TForm_kart
               Top = 0
               Width = 25
               Height = 25
-              Hint = #1059#1076#1072#1083#1080#1090#1100' '#1090#1077#1082#1091#1097#1091#1102' '#1079#1072#1087#1080#1089#1100
+              Hint = 'Delete current record'
               ImageIndex = -1
               NumGlyphs = 2
               Spacing = 4

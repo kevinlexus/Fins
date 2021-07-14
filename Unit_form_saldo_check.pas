@@ -4,8 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Grids, DBGrids, DB, OracleData, StdCtrls, Mask, DBCtrlsEh,
-  DBLookupEh, DBGridEh;
+  Dialogs, DBGrids, DB, OracleData, StdCtrls, DBCtrlsEh,
+  DBLookupEh, DBGridEh, Mask, Grids;
 
 type
   TForm_saldo_check = class(TForm)

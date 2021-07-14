@@ -4,12 +4,15 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Buttons, StdCtrls, Grids, Wwdbigrd, Wwdbgrid, DB, Utils, Menus,
-  wwcheckbox, ExtCtrls, wwSpeedButton, wwDBNavigator, wwclearpanel,
-  cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxStyles,
-  cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
-  cxDBData, cxGridLevel, cxClasses, cxGridCustomView,
-  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid;
+  Dialogs, Buttons, StdCtrls, Wwdbgrid, DB, Utils, Menus,
+  wwcheckbox, ExtCtrls, wwSpeedButton, wwDBNavigator, 
+  cxGraphics, cxControls, 
+  
+  cxGridLevel, cxClasses, 
+  cxGridDBTableView, cxGrid, cxLookAndFeels, cxLookAndFeelPainters,
+  cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit,
+  cxNavigator, cxDBData, cxGridCustomTableView, cxGridTableView,
+  cxGridCustomView, Grids, Wwdbigrd;
 
 type
   TForm_tarif_usl = class(TForm)

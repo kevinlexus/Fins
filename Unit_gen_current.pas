@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Mask, DBCtrlsEh, Oracle, ExtCtrls;
+  Dialogs, StdCtrls, DBCtrlsEh, Oracle, ExtCtrls, Mask;
 
 type
   TForm_gen_current = class(TForm)

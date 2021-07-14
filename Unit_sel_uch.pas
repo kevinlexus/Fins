@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, OracleData, ExtCtrls, DBCtrls, DBGridEh,
-  ImgList, StdCtrls, DM_module1, Buttons, GridsEh;
+  StdCtrls, DM_module1, Buttons, ImgList, GridsEh;
 
 type
   TForm_sel_uch = class(TForm)

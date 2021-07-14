@@ -1,6 +1,6 @@
 object Form_Main: TForm_Main
-  Left = 675
-  Top = 372
+  Left = 469
+  Top = 286
   Width = 880
   Height = 628
   Caption = #1044#1080#1088#1077#1082#1090
@@ -12379,6 +12379,7 @@ object Form_Main: TForm_Main
     OverwritePrompt = False
     DataOnly = False
     PictureType = gpPNG
+    OpenAfterExport = False
     Wysiwyg = True
     Creator = 'FastReport'
     SuppressPageHeadersFooters = False
@@ -12395,6 +12396,7 @@ object Form_Main: TForm_Main
     Frames = False
     EmptyLines = False
     OEMCodepage = False
+    OpenAfterExport = False
     DeleteEmptyColumns = True
     Left = 208
     Top = 104
@@ -12404,6 +12406,7 @@ object Form_Main: TForm_Main
     ShowProgress = True
     OverwritePrompt = False
     DataOnly = False
+    OpenAfterExport = False
     RowHeightScale = 1.000000000000000000
     ChunkSize = 0
     Inaccuracy = 10.000000000000000000
@@ -12418,11 +12421,13 @@ object Form_Main: TForm_Main
     ShowProgress = True
     OverwritePrompt = False
     DataOnly = False
+    OpenAfterExport = False
     PrintOptimized = False
     Outline = False
     Background = False
     HTMLTags = True
     Quality = 95
+    Transparency = False
     Author = 'FastReport'
     Subject = 'FastReport PDF export'
     ProtectionFlags = [ePrint, eModify, eCopy, eAnnot]
@@ -12432,6 +12437,7 @@ object Form_Main: TForm_Main
     FitWindow = False
     CenterWindow = False
     PrintScaling = False
+    PdfA = False
     Left = 208
     Top = 144
   end
@@ -12443,6 +12449,7 @@ object Form_Main: TForm_Main
     Separator = ';'
     OEMCodepage = False
     UTF8 = False
+    OpenAfterExport = False
     NoSysSymbols = True
     ForcedQuotes = False
     Left = 240

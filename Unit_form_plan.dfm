@@ -169,6 +169,7 @@ object Form_plan: TForm_plan
       'select t.*, t.rowid '
       'from scott.proc_plan t '
       'where t.mg=:mg')
+    Optimize = False
     Variables.Data = {0300000001000000030000003A4D47050000000000000000000000}
     QBEDefinition.QBEFieldDefs = {
       0400000003000000030000005245550100000000000700000053554D504C414E
@@ -184,6 +185,7 @@ object Form_plan: TForm_plan
       'select distinct mg'
       'from scott.proc_plan t '
       'order by mg desc')
+    Optimize = False
     QBEDefinition.QBEFieldDefs = {0400000001000000020000004D47010000000000}
     Session = DataModule1.OracleSession1
     Left = 64

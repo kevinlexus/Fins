@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, Oracle;
+  Dialogs, Buttons, Oracle, StdCtrls;
 
 type
   TForm_load_file = class(TForm)

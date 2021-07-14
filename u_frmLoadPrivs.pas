@@ -18,30 +18,34 @@ uses
   
   
   
-  cxContainer, cxEdit,
-  cxListView, cxShellListView, StdCtrls, dxCustomWizardControl,
+  
+  cxShellListView, StdCtrls, dxCustomWizardControl,
   dxWizardControl, ExtCtrls, Oracle, 
   DB, 
-  cxGridLevel, cxClasses, cxGridCustomView, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, cxGrid, cxDBLookupComboBox,
-  OracleData, cxTextEdit, cxMaskEdit, cxDropDownEdit, cxLookupEdit,
-  cxDBLookupEdit, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters,
-  dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel,
-  dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
-  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans,
-  dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky,
-  dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
-  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
-  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
-  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
-  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
-  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinPumpkin,
-  dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
-  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
-  dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
-  dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue, ShlObj,
-  cxShellCommon, cxStyles, dxSkinscxPCPainter, cxCustomData, cxFilter,
-  cxData, cxDataStorage, cxNavigator, cxDBData, cxImageComboBox;
+  cxGridLevel, cxClasses, cxGridCustomTableView,
+  cxGridDBTableView, cxGrid, cxDBLookupComboBox,
+  OracleData, 
+  cxGraphics, 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  cxImageComboBox, cxLookAndFeels, cxLookAndFeelPainters, ShlObj,
+  cxShellCommon, cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage,
+  cxEdit, cxNavigator, cxDBData, cxContainer, cxTextEdit, cxMaskEdit,
+  cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxGridTableView,
+  cxGridCustomView, cxListView;
 
 type
   TfrmLoadPrivs = class(TForm)

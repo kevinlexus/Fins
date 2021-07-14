@@ -4,8 +4,9 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, OracleData, Wwdatsrc, StdCtrls, Grids, Wwdbigrd, Wwdbgrid,
-  wwdblook, wwSpeedButton, wwDBNavigator, ExtCtrls, wwclearpanel, Oracle;
+  Dialogs, DB, OracleData, Wwdatsrc, StdCtrls, Wwdbgrid,
+  wwdblook, wwSpeedButton, wwDBNavigator, ExtCtrls, Oracle, wwclearpanel,
+  Grids, Wwdbigrd;
 
 type
   TForm_spr_spk = class(TForm)
@@ -75,7 +76,7 @@ var
 
 implementation
 
-uses DM_module1;
+
 
 {$R *.dfm}
 

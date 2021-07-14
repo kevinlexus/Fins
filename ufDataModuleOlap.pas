@@ -3,8 +3,8 @@ unit ufDataModuleOlap;
 interface
 
 uses
-  SysUtils, Classes, DB, OracleData, MemTableDataEh, MemTableEh,
-  DataDriverEh, DBAccess, Uni, MemDS, DASQLMonitor, UniSQLMonitor, Utils;
+  SysUtils, Classes, DB, OracleData, MemTableDataEh, 
+  DataDriverEh, DBAccess, Uni, MemDS, DASQLMonitor, UniSQLMonitor;
 
 type
   TDM_Olap = class(TDataModule)
@@ -60,7 +60,7 @@ var
 
 implementation
 
-uses Unit_tree_objects, Unit_Mainform;
+
 
 {$R *.dfm}
 

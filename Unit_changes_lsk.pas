@@ -6,9 +6,9 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, OracleData, StdCtrls, 
   wwdbedit, Wwdotdot, Wwdbcomb, wwdblook, Oracle, Utils, wwriched,
-  DBGridEh, wwSpeedButton, wwDBNavigator, ExtCtrls, wwclearpanel,
-  Menus, Wwintl, wwDialog, wwfltdlg, Grids, Wwdbigrd,
-  Wwdbgrid, ComCtrls;
+  DBGridEh, wwSpeedButton, wwDBNavigator, ExtCtrls, 
+  Menus, Wwintl, wwfltdlg, Wwdbigrd,
+  Wwdbgrid, ComCtrls, wwDialog, Grids, wwclearpanel;
 
 type
   TForm_changes_lsk = class(TForm)

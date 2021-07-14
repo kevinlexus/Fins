@@ -24,25 +24,12 @@ uses
   
   
   
-  cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
-  cxGridLevel, cxClasses, cxGridCustomView, cxGrid, cxSplitter, 
+  cxGridDBTableView,
+  cxGridLevel, cxClasses, cxGrid, cxSplitter, 
   ComCtrls, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters, cxStyles,
-  dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel,
-  dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
-  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans,
-  dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky,
-  dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
-  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
-  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
-  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
-  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
-  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinPumpkin,
-  dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
-  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
-  dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
-  dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter,
   cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
-  cxDBData, cxTextEdit, cxDBLookupComboBox, cxCheckBox;
+  cxDBData, cxCheckBox, cxTextEdit, cxDBLookupComboBox,
+  cxGridCustomTableView, cxGridTableView, cxGridCustomView;
 
 type
   TForm_spr_sprorg = class(TForm)
@@ -224,6 +211,23 @@ type
     cxGrid1DBTableView1FK_ORG2: TcxGridDBColumn;
     OD_sprorgSERVICE_NAME_GIS: TStringField;
     cxGrid1DBTableView1SERVICE_NAME_GIS: TcxGridDBColumn;
+    TabSheet4: TTabSheet;
+    OD_spr_bill_print: TOracleDataSet;
+    DS_spr_bill_print: TDataSource;
+    cxGrid5DBTableView1: TcxGridDBTableView;
+    cxGrid5Level1: TcxGridLevel;
+    cxGrid5: TcxGrid;
+    cxGrid5DBTableView1FILTER_REU: TcxGridDBColumn;
+    cxGrid5DBTableView1IS_EXPORT_PDF: TcxGridDBColumn;
+    cxGrid5DBTableView1PREFIX: TcxGridDBColumn;
+    OD_reu: TOracleDataSet;
+    DS_reu: TDataSource;
+    cxGrid5DBTableView1UK: TcxGridDBColumn;
+    OD_spr_bill_printID: TFloatField;
+    OD_spr_bill_printREU: TStringField;
+    OD_spr_bill_printFILTER_REU: TStringField;
+    OD_spr_bill_printIS_EXPORT_PDF: TFloatField;
+    OD_spr_bill_printPREFIX: TStringField;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure OD_sprorgAfterScroll(DataSet: TDataSet);
@@ -255,6 +259,8 @@ begin
   OD_org_tp.First;
   OD_org_tp2.Active:=True;
   OD_usl.Active:=True;
+  OD_spr_bill_print.Active:=True;
+  OD_reu.Active:=True;
   //OD_usl_bills.Active:=True;
   //OD_usl_tree.Active:=True;
   //OD_usl_round.Active:=True;

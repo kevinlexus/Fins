@@ -4,34 +4,36 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, GridsEh, DBGridEh, StdCtrls, DBCtrls, DB, OracleData, Buttons, Utils,
+  Dialogs, DBGridEh, StdCtrls, DBCtrls, DB, OracleData, Buttons, Utils,
   Oracle, PivotCube_SRC, PivotMap_SRC, PivotGrid_SRC,
-  PVMapBuilder_SRC, MSXML2_TLB, ComObj, Menus, frxClass,
-  frxDBSet, wwdblook, Grids, Wwdbigrd, Wwdbgrid, ExtCtrls,
-  ToolWin, ComCtrls, DataDriverEh, MemTableDataEh,
-  MemTableEh, wwdbdatetimepicker, Mask, wwdbedit, Wwdotdot,
+  MSXML2_TLB, ComObj, Menus, frxClass,
+  frxDBSet, wwdblook, Wwdbgrid, ExtCtrls,
+  ComCtrls, DataDriverEh, MemTableDataEh,
+  MemTableEh, wwdbdatetimepicker, wwdbedit, Wwdotdot,
   Wwdbcomb, DBCtrlsEh, cxControls,
-  cxContainer, cxEdit,
-  cxTextEdit, cxMemo, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters,
-  dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel,
-  dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
-  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans,
-  dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky,
-  dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
-  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
-  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
-  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
-  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
-  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinPumpkin,
-  dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
-  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
-  dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine,
-  dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue, cxStyles,
-  dxSkinscxPCPainter, cxCustomData, cxFilter, cxData, cxDataStorage,
-  cxNavigator, cxDBData, cxGridLevel, cxClasses, cxGridCustomView,
-  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid, Uni,
-  cxTL, cxMaskEdit, cxTLdxBarBuiltInMenu, cxInplaceContainer, cxDBTL,
-  cxTLData, cxCheckBox, cxImageComboBox;
+  
+  cxMemo, cxGraphics, 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  cxClasses, 
+  cxGridTableView, cxGridDBTableView, Uni,
+  cxTL, cxDBTL, cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit,
+  cxCustomData, cxStyles, cxMaskEdit, cxCheckBox, cxImageComboBox,
+  cxTLdxBarBuiltInMenu, cxInplaceContainer, cxTLData, cxTextEdit, ToolWin,
+  Grids, Wwdbigrd, Mask;
 type
   TForm_tree_objects = class(TForm)
     Panel1: TPanel;

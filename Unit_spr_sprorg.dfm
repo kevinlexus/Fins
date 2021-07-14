@@ -1,6 +1,6 @@
 object Form_spr_sprorg: TForm_spr_sprorg
-  Left = 394
-  Top = 227
+  Left = 518
+  Top = 265
   Width = 1311
   Height = 720
   BorderIcons = [biSystemMenu, biMinimize]
@@ -505,7 +505,7 @@ object Form_spr_sprorg: TForm_spr_sprorg
       Top = 1
       Width = 676
       Height = 679
-      ActivePage = TabSheet1
+      ActivePage = TabSheet4
       Align = alClient
       TabOrder = 0
       object TabSheet1: TTabSheet
@@ -720,6 +720,62 @@ object Form_spr_sprorg: TForm_spr_sprorg
           end
           object cxGridLevel3: TcxGridLevel
             GridView = cxGridDBTableView3
+          end
+        end
+      end
+      object TabSheet4: TTabSheet
+        Caption = #1057#1095#1077#1090' '#1101#1082#1089#1087#1086#1088#1090
+        ImageIndex = 3
+        object cxGrid5: TcxGrid
+          Left = 0
+          Top = 0
+          Width = 668
+          Height = 651
+          Align = alClient
+          TabOrder = 0
+          object cxGrid5DBTableView1: TcxGridDBTableView
+            Navigator.Buttons.CustomButtons = <>
+            Navigator.Visible = True
+            DataController.DataSource = DS_spr_bill_print
+            DataController.KeyFieldNames = 'ID'
+            DataController.Summary.DefaultGroupSummaryItems = <>
+            DataController.Summary.FooterSummaryItems = <>
+            DataController.Summary.SummaryGroups = <>
+            OptionsView.ColumnAutoWidth = True
+            OptionsView.GroupByBox = False
+            object cxGrid5DBTableView1UK: TcxGridDBColumn
+              Caption = #1059#1050
+              DataBinding.FieldName = 'REU'
+              PropertiesClassName = 'TcxLookupComboBoxProperties'
+              Properties.KeyFieldNames = 'REU'
+              Properties.ListColumns = <
+                item
+                  FieldName = 'NAME'
+                end>
+              Properties.ListOptions.ShowHeader = False
+              Properties.ListSource = DS_reu
+              Width = 107
+            end
+            object cxGrid5DBTableView1FILTER_REU: TcxGridDBColumn
+              Caption = #1060#1080#1083#1100#1090#1088' '#1059#1050
+              DataBinding.FieldName = 'FILTER_REU'
+              Width = 291
+            end
+            object cxGrid5DBTableView1PREFIX: TcxGridDBColumn
+              Caption = #1055#1088#1077#1092#1080#1082#1089
+              DataBinding.FieldName = 'PREFIX'
+              Width = 130
+            end
+            object cxGrid5DBTableView1IS_EXPORT_PDF: TcxGridDBColumn
+              DataBinding.FieldName = 'IS_EXPORT_PDF'
+              PropertiesClassName = 'TcxCheckBoxProperties'
+              Properties.ValueChecked = 1
+              Properties.ValueUnchecked = 0
+              Width = 118
+            end
+          end
+          object cxGrid5Level1: TcxGridLevel
+            GridView = cxGrid5DBTableView1
           end
         end
       end
@@ -1304,5 +1360,68 @@ object Form_spr_sprorg: TForm_spr_sprorg
     DataSet = OD_usl_tree
     Left = 888
     Top = 560
+  end
+  object OD_spr_bill_print: TOracleDataSet
+    SQL.Strings = (
+      'select t.*,t.rowid from scott.spr_bill_print t')
+    Optimize = False
+    OracleDictionary.UseMessageTable = True
+    QBEDefinition.QBEFieldDefs = {
+      0400000005000000020000004944010000000000030000005245550100000000
+      000A00000046494C5445525F5245550100000000000D00000049535F4558504F
+      52545F50444601000000000006000000505245464958010000000000}
+    Session = DataModule1.OracleSession1
+    DesignActivation = True
+    Active = True
+    Left = 856
+    Top = 608
+    object OD_spr_bill_printID: TFloatField
+      FieldName = 'ID'
+      ReadOnly = True
+    end
+    object OD_spr_bill_printREU: TStringField
+      FieldName = 'REU'
+      Required = True
+      Size = 3
+    end
+    object OD_spr_bill_printFILTER_REU: TStringField
+      FieldName = 'FILTER_REU'
+      Size = 500
+    end
+    object OD_spr_bill_printIS_EXPORT_PDF: TFloatField
+      DisplayLabel = #1069#1082#1089#1087#1086#1088#1090#1080#1088#1086#1074#1072#1090#1100
+      FieldName = 'IS_EXPORT_PDF'
+      Required = True
+    end
+    object OD_spr_bill_printPREFIX: TStringField
+      FieldName = 'PREFIX'
+      Size = 256
+    end
+  end
+  object DS_spr_bill_print: TDataSource
+    DataSet = OD_spr_bill_print
+    Left = 888
+    Top = 608
+  end
+  object OD_reu: TOracleDataSet
+    SQL.Strings = (
+      'select t.reu, t.reu||'#39'-'#39'||t.name as name'
+      'from scott.t_org t, scott.t_org_tp tp'
+      'where tp.id=t.fk_orgtp and t.reu is not null'
+      'order by t.reu')
+    Optimize = False
+    QBEDefinition.QBEFieldDefs = {
+      0400000002000000040000004E414D4501000000000003000000524555010000
+      000000}
+    Session = DataModule1.OracleSession1
+    DesignActivation = True
+    Active = True
+    Left = 936
+    Top = 456
+  end
+  object DS_reu: TDataSource
+    DataSet = OD_reu
+    Left = 976
+    Top = 456
   end
 end

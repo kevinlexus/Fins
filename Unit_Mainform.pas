@@ -4,17 +4,17 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Menus, ComCtrls, ToolWin, ImgList, DM_module1, IdBaseComponent,
-  IdComponent, IdTCPConnection, IdTCPClient, IdFTP, ExtCtrls, StdCtrls, DBCtrls,
+  Dialogs, Menus, ComCtrls, ToolWin, ImgList, DM_module1, 
+  IdComponent, ExtCtrls, StdCtrls, DBCtrls,
   DB, OracleData,
   IniFiles,
   CustomizeDlg, CoolTrayIcon, Oracle, DBCtrlsEh, OleCtl, Utils, StrUtils,
   MemTableDataEh, DataDriverEh, wwdbedit, Wwintl, DVButils, ShellAPI,
-  IdAntiFreezeBase, IdAntiFreeze, frxClass, frxDBSet, frxExportCSV,
+  frxClass, frxDBSet, frxExportCSV,
   frxExportPDF,                                                       
   frxExportBIFF, frxExportText, frxExportRTF, ComObj,                                      
-  Unit_spr_redirect, u_frmTwoPeriods, u_frmLog, cxClasses, cxEdit,                                            
-  cxEditRepositoryItems;
+  Unit_spr_redirect, u_frmTwoPeriods, cxClasses, cxEdit,                                            
+  cxEditRepositoryItems, frxExportBaseDialog;
 type                                                                             
   TShowForm = function(App, Scr, Sess_: integer): integer; stdcall;
   TForm_Main = class(TForm)

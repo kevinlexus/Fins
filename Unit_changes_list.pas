@@ -4,10 +4,11 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, wwdblook, wwdbedit, DB, OracleData, Grids,
-  Wwdbigrd, Wwdbgrid, ComCtrls, wwriched, Utils, wwSpeedButton,
-  wwDBNavigator, ExtCtrls, wwclearpanel, wwDialog, wwfltdlg, Wwintl,
-  Wwtable, Wwdatsrc, OracleNavigator, Menus;
+  Dialogs, StdCtrls, wwdblook, wwdbedit, DB, OracleData, 
+  Wwdbgrid, ComCtrls, wwriched, Utils, wwSpeedButton,
+  wwDBNavigator, ExtCtrls, wwfltdlg, Wwintl,
+  Wwtable, Wwdatsrc, OracleNavigator, Menus, wwDialog, Grids, Wwdbigrd,
+  wwclearpanel;
 
 type
   TForm_changes_list = class(TForm)

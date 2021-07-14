@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, Wwdatsrc, OracleData, StdCtrls, wwSpeedButton,
   wwDBNavigator, ExtCtrls, 
-  GridsEh, DBGridEh, DBCtrls, Utils;
+  DBGridEh, DBCtrls, Utils, GridsEh;
 
 type
   TForm_spr_oper = class(TForm)

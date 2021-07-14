@@ -4,11 +4,13 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
-  cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit,
-  cxNavigator, DB, cxDBData, ExtCtrls, cxGridLevel, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, cxClasses, cxGridCustomView, cxGrid,
-  OracleData, StdCtrls;
+  Dialogs, cxGraphics, cxControls, 
+  
+  DB, ExtCtrls, cxGridLevel, 
+  cxGridDBTableView, cxClasses, cxGrid,
+  OracleData, StdCtrls, cxLookAndFeels, cxLookAndFeelPainters, cxStyles,
+  cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
+  cxDBData, cxGridCustomTableView, cxGridTableView, cxGridCustomView;
 
 type
   TfrmMeteGisConnect = class(TForm)

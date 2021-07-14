@@ -5,12 +5,13 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, OracleData, ExtCtrls, DBCtrls, DBGridEh,
-  ImgList, StdCtrls, DM_module1, Buttons, Grids, Wwdbigrd,
-  Wwdbgrid, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
-  cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit,
-  cxNavigator, cxDBData, cxGridLevel, cxClasses, cxGridCustomView,
+  StdCtrls, DM_module1, Buttons, 
+  cxGraphics, cxControls, 
+  cxCustomData, cxFilter, 
+  cxGridLevel, cxClasses, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
-  cxCheckBox, Menus, cxVariants;
+  Menus, cxVariants, cxLookAndFeels, cxLookAndFeelPainters, cxStyles,
+  cxData, cxDataStorage, cxEdit, cxNavigator, cxDBData, cxCheckBox;
 
 type
   TcxGridTableControllerAccess = class (TcxGridTableController);

@@ -4,7 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, DB, OracleData, Mask, DBCtrlsEh, DBLookupEh, DBGridEh, Utils;
+  Dialogs, StdCtrls, DB, OracleData, DBCtrlsEh, DBLookupEh, DBGridEh, Utils,
+  Mask;
 
 type
   TForm_add_lsk = class(TForm)

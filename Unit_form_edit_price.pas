@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, DB, OracleData, wwdblook, DBCtrls, Mask, DBCtrlsEh;
+  Dialogs, StdCtrls, DB, OracleData, wwdblook, DBCtrls, DBCtrlsEh, Mask;
 
 type
   TForm_edit_price = class(TForm)

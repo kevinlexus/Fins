@@ -4,14 +4,17 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Mask, wwdbedit, Wwdotdot, Wwdbcomb, Oracle, Utils, IdURI,
-  cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
-  cxContainer, cxEdit, cxTextEdit, cxMaskEdit, cxDropDownEdit,
-  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, DB, OracleData,
-  cxCheckBox, cxCheckComboBox, ExtCtrls, cxStyles, cxCustomData, cxFilter,
-  cxData, cxDataStorage, cxNavigator, cxDBData, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, cxGridLevel, cxClasses,
-  cxGridCustomView, cxGrid, Menus;
+  Dialogs, StdCtrls, wwdbedit, Wwdotdot, Wwdbcomb, Oracle, Utils, 
+  cxGraphics, cxControls, cxLookAndFeelPainters,
+  
+  DB, OracleData,
+  cxCheckBox, cxCheckComboBox, ExtCtrls, 
+  
+  cxGridDBTableView, cxGridLevel, cxClasses,
+  cxGrid, Menus, cxLookAndFeels, cxContainer, cxEdit, cxStyles,
+  cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, cxDBData,
+  cxGridCustomTableView, cxGridTableView, cxGridCustomView, cxTextEdit,
+  cxMaskEdit, cxDropDownEdit, Mask;
 
 type
   TForm_load_files = class(TForm)

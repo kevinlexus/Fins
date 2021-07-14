@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, wwdblook, Mask, wwdbedit;
+  Dialogs, StdCtrls, wwdblook, wwdbedit, Mask;
 
 type
   TForm_spr_tarif_chng = class(TForm)

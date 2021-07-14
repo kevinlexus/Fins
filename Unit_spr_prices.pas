@@ -5,8 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, Wwdatsrc, OracleData, StdCtrls, wwSpeedButton,
-  wwDBNavigator, ExtCtrls, wwclearpanel, Grids, Wwdbigrd, Wwdbgrid,
-  wwdblook, Menus;
+  wwDBNavigator, ExtCtrls, Wwdbgrid,
+  wwdblook, Menus, wwclearpanel, Grids, Wwdbigrd;
 
 type
   TForm_spr_prices = class(TForm)

@@ -4,8 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, GridsEh, DBGridEh, DB, OracleData, StdCtrls, Mask,
-  wwdbedit, Menus, cxClasses, cxPropertiesStore, ComCtrls;
+  Dialogs, DBGridEh, DB, OracleData, StdCtrls, Mask,
+  wwdbedit, Menus, cxClasses, cxPropertiesStore, ComCtrls, GridsEh;
 
 type
   TForm_get_pay_dolg = class(TForm)
@@ -49,7 +49,7 @@ var
 
 implementation
 
-uses Unit_get_pay_nal, Utils, Math, DM_module1, Unit_Mainform;
+uses Unit_get_pay_nal, Utils, Math, DM_module1;
 
 {$R *.dfm}
 

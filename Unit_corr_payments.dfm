@@ -371,7 +371,6 @@ object Form_corr_payments: TForm_corr_payments
       00}
     CommitOnPost = False
     Session = DataModule1.OracleSession1
-    Active = True
     Left = 64
   end
   object DS_uslm: TDataSource

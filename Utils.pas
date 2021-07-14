@@ -4,8 +4,8 @@ interface
 uses Forms, Classes, SysUtils, Dialogs, OracleData, DB, DBF, Windows,
   Wwdbgrid, DM_module1, oracle, Math, ShlObj, Controls, Messages,
   ComCtrls, Menus, Unit_smpl_chk, StrUtils, Winsock, Uni, Variants,
-  cxEdit, cxDBEdit, cxEditConsts, cxCustomData,
-  cxDBData, cxFilterControl, cxFilter, cxDataUtils;
+  cxCustomData,
+  cxDBData, cxFilter;
 
 // тип - запись о правах редактирования пользователя
 type

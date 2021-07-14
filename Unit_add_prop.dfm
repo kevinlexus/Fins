@@ -88,15 +88,15 @@ object Form_add_prop: TForm_add_prop
   TextHeight = 13
   object Panel1: TPanel
     Left = 0
-    Top = 86
-    Width = 488
+    Top = 81
+    Width = 481
     Height = 342
     Align = alBottom
     TabOrder = 1
     object wwDBGrid1: TwwDBGrid
       Left = 1
       Top = 1
-      Width = 486
+      Width = 479
       Height = 315
       Selected.Strings = (
         'NAME'#9'96'#9#1053#1072#1081#1076#1077#1085#1099#1077' '#1074#1072#1088#1080#1072#1085#1090#1099#9'F')
@@ -122,13 +122,12 @@ object Form_add_prop: TForm_add_prop
     object wwDBNavigator1: TwwDBNavigator
       Left = 1
       Top = 316
-      Width = 486
+      Width = 175
       Height = 25
       DataSource = DS_list
       Options = []
       RepeatInterval.InitialDelay = 500
       RepeatInterval.Interval = 100
-      Anchors = [akLeft, akTop, akRight, akBottom]
       Align = alBottom
       object wwDBNavigator1First: TwwNavButton
         Left = 0

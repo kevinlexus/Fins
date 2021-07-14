@@ -81,7 +81,7 @@ var
 
 implementation
 
-uses Unit_status, Unit_sel_reu, Unit_sel_usl, DM_module1;
+uses Unit_status, Unit_sel_reu, Unit_sel_usl;
 
 {$R *.dfm}
 

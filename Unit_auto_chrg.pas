@@ -4,8 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, OracleData, ExtCtrls, Grids, Wwdbigrd, Wwdbgrid, StdCtrls,
-  Menus, ComCtrls, wwriched, Utils;
+  Dialogs, DB, OracleData, ExtCtrls, Wwdbgrid, StdCtrls,
+  Menus, ComCtrls, wwriched, Utils, Grids, Wwdbigrd;
 
 type
   TForm_auto_chrg = class(TForm)

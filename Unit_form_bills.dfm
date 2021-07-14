@@ -1,6 +1,6 @@
 object Form_print_bills: TForm_print_bills
-  Left = 2155
-  Top = 353
+  Left = 289
+  Top = 249
   Width = 501
   Height = 511
   BorderIcons = [biSystemMenu, biMinimize]
@@ -707,7 +707,7 @@ object Form_print_bills: TForm_print_bills
     end
   end
   object frxReport1: TfrxReport
-    Version = '5.1.9'
+    Version = '6.2.11'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator]
@@ -740,6 +740,7 @@ object Form_print_bills: TForm_print_bills
     OverwritePrompt = False
     DataOnly = False
     PictureType = gpPNG
+    OpenAfterExport = False
     Wysiwyg = True
     Creator = 'FastReport'
     SuppressPageHeadersFooters = False
@@ -783,11 +784,13 @@ object Form_print_bills: TForm_print_bills
     ShowProgress = False
     OverwritePrompt = False
     DataOnly = False
+    OpenAfterExport = False
     PrintOptimized = False
     Outline = False
     Background = False
     HTMLTags = True
     Quality = 95
+    Transparency = False
     Author = 'FastReport'
     Subject = 'FastReport PDF export'
     ProtectionFlags = []
@@ -797,7 +800,8 @@ object Form_print_bills: TForm_print_bills
     FitWindow = False
     CenterWindow = False
     PrintScaling = False
-    Left = 160
-    Top = 177
+    PdfA = False
+    Left = 448
+    Top = 169
   end
 end

@@ -32,7 +32,7 @@ var
 
 implementation
 
-uses DM_module1;
+
 
 {$R *.dfm}
 

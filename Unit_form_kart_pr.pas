@@ -5,15 +5,19 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Unit_form_kart, StdCtrls, Mask, DBCtrls, DBCtrlsEh, DBLookupEh,
-  ExtCtrls, Grids, DB, OracleData, DBGridEh, wwdbedit, Wwdotdot,
-  Wwdbcomb, wwdbdatetimepicker, Wwdbigrd, Wwdbgrid, wwcheckbox, wwdblook,
+  ExtCtrls, DB, OracleData, DBGridEh, wwdbedit, Wwdotdot,
+  Wwdbcomb, wwdbdatetimepicker, Wwdbgrid, wwcheckbox, wwdblook,
   Wwdbdlg, wwSpeedButton, wwDBNavigator, wwDataInspector,
   DM_module1, Oracle, Utils, Buttons, Wwintl, ComCtrls, frxClass, frxDBSet,
-  wwclearpanel, cxGraphics, cxControls, cxLookAndFeels,
-  cxLookAndFeelPainters, cxContainer, cxEdit, cxCheckBox, cxDBEdit,
-  cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator,
-  cxDBData, cxDBLookupComboBox, cxGridCustomTableView, cxGridTableView,
-  cxGridDBTableView, cxGridLevel, cxClasses, cxGridCustomView, cxGrid;
+  cxGraphics, cxControls, 
+  cxDBEdit,
+  
+  
+  cxGridDBTableView, cxGridLevel, cxClasses, cxGrid, cxLookAndFeels,
+  cxLookAndFeelPainters, cxContainer, cxEdit, cxStyles, cxCustomData,
+  cxFilter, cxData, cxDataStorage, cxNavigator, cxDBData,
+  cxDBLookupComboBox, cxGridCustomTableView, cxGridTableView,
+  cxGridCustomView, Grids, Wwdbigrd, cxCheckBox;
 
 type
   TForm_kart_pr = class(TForm)

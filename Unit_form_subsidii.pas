@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Unit_form_kart, StdCtrls, Mask, DBCtrls, DB, wwdbdatetimepicker;
+  Dialogs, Unit_form_kart, StdCtrls, DBCtrls, DB, wwdbdatetimepicker, Mask;
 
 type
   TForm_subsidii = class(TForm)

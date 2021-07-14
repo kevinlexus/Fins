@@ -4,15 +4,16 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, DBCtrlsEh, DB, OracleData, wwdblook, Buttons, ImgList,
-  cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
-  cxContainer, cxEdit, cxTextEdit, cxMaskEdit, cxDropDownEdit,
-  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, cxClasses,
-  cxPropertiesStore, cxGroupBox, ExtCtrls, cxDBData, cxFilterControl, cxCustomData,
-  cxFilter,  
-  cxGridCustomView, cxGrid, cxDBExtLookupComboBox, cxStyles, cxData,
-  cxDataStorage, cxNavigator, cxLabel, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, Utils, StrUtils;
+  Dialogs, StdCtrls, DBCtrlsEh, DB, OracleData, wwdblook, Buttons, 
+  cxGraphics, cxControls, 
+  cxEdit, 
+  cxDBLookupEdit, cxDBLookupComboBox, cxClasses,
+  cxPropertiesStore, cxGroupBox, ExtCtrls, cxDBData, 
+   
+  
+  cxLabel, 
+  Utils, StrUtils, cxLookAndFeels, cxLookAndFeelPainters, cxContainer,
+  cxTextEdit, cxMaskEdit, cxDropDownEdit, cxLookupEdit;
 
 type
   TForm_find_adr2 = class(TForm)

@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, OracleData, DBCtrls, StdCtrls, DM_module1, 
+  Dialogs, DB, OracleData, DBCtrls, StdCtrls, 
   frxClass, frxDMPExport, frxDBSet,
   frxExportXLS;
 

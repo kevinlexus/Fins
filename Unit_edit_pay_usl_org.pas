@@ -4,9 +4,9 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, DB, OracleData, Grids, Wwdbigrd, Wwdbgrid, 
+  Dialogs, StdCtrls, DB, OracleData, Wwdbigrd, Wwdbgrid, 
   wwdbedit, Wwdotdot, Wwdbcomb, wwdblook, wwSpeedButton, wwDBNavigator,
-  wwclearpanel, ExtCtrls, Utils, Math;
+  ExtCtrls, Utils, Math, wwclearpanel, Grids;
 
 type
   TForm_edit_pay_usl_org = class(TForm)
@@ -67,7 +67,7 @@ var
 
 implementation
   uses
-   Unit_month_payments, DM_module1;
+   Unit_month_payments;
   {$R *.dfm}
 
 procedure exit_ok;

@@ -195,7 +195,6 @@ object Form_sel_lsk_contr: TForm_sel_lsk_contr
       04000000020000000300000046494F010000000000030000004C534B01000000
       0000}
     Session = DataModule1.OracleSession1
-    Active = True
     Left = 48
     Top = 104
   end

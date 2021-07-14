@@ -64,7 +64,7 @@ var
 
 implementation
 
-uses DM_module1, Unit_sel_comps, Unit_gen_err_lst, Unit_Gthread;
+uses DM_module1, Unit_sel_comps, Unit_Gthread;
 
 {$R *.dfm}
 

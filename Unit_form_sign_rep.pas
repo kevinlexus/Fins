@@ -4,8 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, OracleData, DBGridEh, ImgList, StdCtrls,
-  ExtCtrls, DBCtrls, Oracle, GridsEh;
+  Dialogs, DB, OracleData, DBGridEh, StdCtrls,
+  ExtCtrls, DBCtrls, Oracle, ImgList, GridsEh;
 
 type
   TForm_sign_rep = class(TForm)

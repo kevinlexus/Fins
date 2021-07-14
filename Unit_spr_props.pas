@@ -4,9 +4,9 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, OracleData, Wwdatsrc, StdCtrls, Grids,
-  Wwdbigrd, Wwdbgrid, wwdblook, wwSpeedButton, wwDBNavigator, ExtCtrls,
-  wwclearpanel, Utils;
+  Dialogs, DB, OracleData, Wwdatsrc, StdCtrls, 
+  Wwdbgrid, wwdblook, wwSpeedButton, wwDBNavigator, ExtCtrls,
+  Utils, Grids, Wwdbigrd, wwclearpanel;
 
 type
   TForm_spr_props = class(TForm)

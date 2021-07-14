@@ -4,8 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, OracleData, StdCtrls, Mask, wwdbedit, Wwdotdot, Wwdbcomb,
-  wwdblook, Utils, DBCtrlsEh, DBLookupEh, DBGridEh;
+  Dialogs, DB, OracleData, StdCtrls, wwdbedit, Wwdotdot, Wwdbcomb,
+  wwdblook, Utils, DBCtrlsEh, DBLookupEh, DBGridEh, Mask;
 
 type
   TForm_sel_arch_period = class(TForm)
