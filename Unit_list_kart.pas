@@ -16,22 +16,8 @@ uses
   cxPropertiesStore,
 
   cxContainer, cxTextEdit, cxMaskEdit,
-  cxLabel, cxGraphics, 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  cxLabel, cxGraphics,
+
   cxDropDownEdit, cxMRUEdit, cxLookAndFeels, cxLookAndFeelPainters,
   cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, cxDBData;
 
@@ -213,6 +199,7 @@ type
     DS_kart_detail: TDataSource;
     cxMRUEdit1: TcxMRUEdit;
     chk2: TCheckBox;
+    N4: TMenuItem;
     procedure wwDBGrid1DblClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure wwDBGrid1KeyDown(Sender: TObject; var Key: Word;
@@ -277,6 +264,7 @@ type
     procedure KLSKHOUSEID1Click(Sender: TObject);
     procedure cxMRUEdit1KeyPress(Sender: TObject; var Key: Char);
     procedure cxMRUEdit1DblClick(Sender: TObject);
+    procedure N4Click(Sender: TObject);
   private
     bm: TBookmark;
   public
@@ -299,7 +287,7 @@ uses Unit_form_kart, Unit_Mainform, DM_module1, Unit_find_adr,
   Unit_det_chrg, Unit_log_actions, Unit_houses_nabor,
   Unit_house_vvod, Unit_list_set, Unit_form_bills, Unit_sch_history,
   Unit_lk_acc, u_frmPenCorr, u_frmAccFlow, Unit_find_adr2,
-  u_frmReplaceKlsk;
+  u_frmReplaceKlsk, u_frmKlskPar;
 
 {$R *.dfm}
 
@@ -1516,6 +1504,13 @@ begin
   begin
     SetFilter(Form_Main.isClosed, Form_Main.isNotMain);
   end;
+
+end;
+
+procedure TForm_list_kart.N4Click(Sender: TObject);
+begin
+  if FF('frmKlskPar', 1) = 0 then
+    Application.CreateForm(TfrmKlskPar, frmKlskPar);
 
 end;
 

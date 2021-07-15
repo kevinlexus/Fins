@@ -1,6 +1,6 @@
 object Form_lk_acc: TForm_lk_acc
-  Left = 244
-  Top = 183
+  Left = 1184
+  Top = 525
   Width = 453
   Height = 335
   BorderIcons = [biSystemMenu]
@@ -189,7 +189,7 @@ object Form_lk_acc: TForm_lk_acc
     end
   end
   object frxReport1: TfrxReport
-    Version = '5.1.9'
+    Version = '6.2.11'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

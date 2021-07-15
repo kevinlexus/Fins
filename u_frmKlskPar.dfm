@@ -1,16 +1,16 @@
-object Form_lk_par: TForm_lk_par
-  Left = 822
-  Top = 168
-  BorderStyle = bsSingle
-  Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077' '#1087#1072#1088#1072#1084#1077#1090#1088#1072
-  ClientHeight = 118
-  ClientWidth = 298
+object frmKlskPar: TfrmKlskPar
+  Left = 821
+  Top = 324
+  Width = 527
+  Height = 349
+  Caption = #1055#1072#1088#1072#1084#1077#1090#1088#1099
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  FormStyle = fsMDIChild
   Icon.Data = {
     0000010001002020080000000000A80800001600000028000000200000004000
     0000010008000000000000040000000000000000000000000000000000000000
@@ -84,83 +84,133 @@ object Form_lk_par: TForm_lk_par
     000000000000000000000000000000000000000000000000000080000001}
   OldCreateOrder = False
   Position = poMainFormCenter
+  Visible = True
   OnClose = FormClose
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object PageControl1: TPageControl
+  object cxGrid1: TcxGrid
     Left = 0
     Top = 0
-    Width = 298
-    Height = 77
-    ActivePage = TabSheet1
+    Width = 511
+    Height = 310
     Align = alClient
     TabOrder = 0
-    object TabSheet1: TTabSheet
-      object wwDBDateTimePicker1: TwwDBDateTimePicker
-        Left = 72
-        Top = 24
-        Width = 121
-        Height = 21
-        CalendarAttributes.Font.Charset = DEFAULT_CHARSET
-        CalendarAttributes.Font.Color = clWindowText
-        CalendarAttributes.Font.Height = -11
-        CalendarAttributes.Font.Name = 'MS Sans Serif'
-        CalendarAttributes.Font.Style = []
-        DataField = 'D1'
-        Epoch = 1950
-        ShowButton = True
-        TabOrder = 0
+    object cxGrid1DBTableView1: TcxGridDBTableView
+      OnDblClick = cxGrid1DBTableView1DblClick
+      Navigator.Buttons.CustomButtons = <>
+      Navigator.Visible = True
+      DataController.DataSource = DS_objxpar
+      DataController.KeyFieldNames = 'ID'
+      DataController.Summary.DefaultGroupSummaryItems = <>
+      DataController.Summary.FooterSummaryItems = <>
+      DataController.Summary.SummaryGroups = <>
+      OptionsView.ColumnAutoWidth = True
+      OptionsView.GroupByBox = False
+      OptionsView.Header = False
+      object cxGrid1DBTableView1ULIST: TcxGridDBColumn
+        Caption = #1055#1072#1088#1072#1084#1077#1090#1088
+        DataBinding.FieldName = 'FK_LIST'
+        PropertiesClassName = 'TcxLookupComboBoxProperties'
+        Properties.KeyFieldNames = 'ID'
+        Properties.ListColumns = <
+          item
+            FieldName = 'NAME'
+          end>
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = DS_u_list
+      end
+      object cxGrid1DBTableView1VAL: TcxGridDBColumn
+        Caption = #1047#1085#1072#1095#1077#1085#1080#1077
+        DataBinding.FieldName = 'VAL'
+        Options.Editing = False
+        Width = 99
       end
     end
-    object TabSheet2: TTabSheet
-      ImageIndex = 1
-      object DBEdit1: TDBEdit
-        Left = 72
-        Top = 24
-        Width = 121
-        Height = 21
-        DataField = 'S1'
-        TabOrder = 0
-      end
-    end
-    object TabSheet3: TTabSheet
-      ImageIndex = 2
-      object DBEdit2: TDBEdit
-        Left = 72
-        Top = 24
-        Width = 121
-        Height = 21
-        DataField = 'N1'
-        TabOrder = 0
-      end
+    object cxGrid1Level1: TcxGridLevel
+      GridView = cxGrid1DBTableView1
     end
   end
-  object Panel1: TPanel
-    Left = 0
-    Top = 77
-    Width = 298
-    Height = 41
-    Align = alBottom
-    TabOrder = 1
-    object Button1: TButton
-      Left = 128
-      Top = 8
-      Width = 75
-      Height = 25
-      Caption = #1054#1082
-      TabOrder = 0
-      OnClick = Button1Click
+  object OD_objxpar: TOracleDataSet
+    SQL.Strings = (
+      'select x.id, x.fk_list, '
+      
+        'decode(u.val_tp,'#39'NM'#39', to_char(x.n1), '#39'ST'#39', x.s1, '#39'DT'#39', to_char(x' +
+        '.d1,'#39'DD.MM.YYYY'#39'), null) as val, '
+      'u.val_tp, '
+      'x.s1, x.n1, x.d1, x.rowid'
+      ' from scott.t_objxpar x join scott.u_list u on u.id=x.fk_list'
+      
+        ' join scott.u_listtp tp on u.fk_listtp=tp.id and tp.cd='#39#1055#1072#1088#1072#1084#1077#1090#1088 +
+        #1099' '#1083#1080#1094'.'#1089#1095#1077#1090#1072#39
+      'where '
+      'x.fk_k_lsk=:k_lsk_id'
+      'order by u.npp ')
+    Optimize = False
+    Variables.Data = {
+      0300000001000000090000003A4B5F4C534B5F49440300000000000000000000
+      00}
+    QBEDefinition.QBEFieldDefs = {
+      04000000070000000200000049440100000000000300000056414C0100000000
+      00020000005331010000000000020000004E310100000000000600000056414C
+      5F545001000000000002000000443101000000000007000000464B5F4C495354
+      010000000000}
+    Session = DataModule1.OracleSession1
+    DesignActivation = True
+    Left = 112
+    Top = 96
+    object OD_objxparID: TFloatField
+      FieldName = 'ID'
     end
-    object Button2: TButton
-      Left = 208
-      Top = 8
-      Width = 75
-      Height = 25
-      Cancel = True
-      Caption = #1054#1090#1084#1077#1085#1072
-      TabOrder = 1
-      OnClick = Button2Click
+    object OD_objxparFK_LIST: TFloatField
+      FieldName = 'FK_LIST'
+      Required = True
     end
+    object OD_objxparVAL: TStringField
+      FieldName = 'VAL'
+      Size = 255
+    end
+    object OD_objxparVAL_TP: TStringField
+      FieldName = 'VAL_TP'
+      Size = 3
+    end
+    object OD_objxparS1: TStringField
+      FieldName = 'S1'
+      Size = 255
+    end
+    object OD_objxparN1: TFloatField
+      FieldName = 'N1'
+    end
+    object OD_objxparD1: TDateTimeField
+      FieldName = 'D1'
+    end
+  end
+  object DS_objxpar: TDataSource
+    DataSet = OD_objxpar
+    Left = 136
+    Top = 96
+  end
+  object OD_u_list: TOracleDataSet
+    SQL.Strings = (
+      'select * from scott.u_list u order by u.name')
+    Optimize = False
+    QBEDefinition.QBEFieldDefs = {
+      040000000A0000000200000049440100000000000600000056414C5F54500100
+      00000000020000004344010000000000040000004E414D450100000000000200
+      00004E4D01000000000009000000464B5F4C4953545450010000000000030000
+      004E505001000000000007000000464B5F554E49540100000000000700000053
+      514C544558540100000000000D000000464B5F4558535F555F4C495354010000
+      000000}
+    CommitOnPost = False
+    Session = DataModule1.OracleSession1
+    DesignActivation = True
+    Active = True
+    Left = 112
+    Top = 144
+  end
+  object DS_u_list: TDataSource
+    DataSet = OD_u_list
+    Left = 136
+    Top = 144
   end
 end

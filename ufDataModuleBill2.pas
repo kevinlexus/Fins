@@ -167,15 +167,15 @@ end;
 
 procedure TDM_Bill2.OD_ls_cntBeforeOpen(DataSet: TDataSet);
 begin
-  Form_print_bills.pnl1.Visible := true;
-  Form_print_bills.Update;
+  //Form_print_bills.pnl1.Visible := true;
+  //Form_print_bills.Update;
 
 end;
 
 procedure TDM_Bill2.OD_ls_cntAfterOpen(DataSet: TDataSet);
 begin
-  Form_print_bills.pnl1.Visible := false;
-  Form_print_bills.Update;
+  //Form_print_bills.pnl1.Visible := false;
+  //Form_print_bills.Update;
 end;
 
 end.

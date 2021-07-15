@@ -184,6 +184,8 @@ begin
 end;
 
 procedure TForm_lk_acc.wwDBGrid1DblClick(Sender: TObject);
+var
+  formLkPar: TForm_lk_par;
 begin
   with OD_objxpar do
   begin
@@ -192,8 +194,15 @@ begin
     or (FieldByName('VAL_TP').AsString='NM') then
     begin
       wwDBGrid1.FlushChanges;
-      Application.CreateForm(TForm_lk_par, Form_lk_par);
-      Form_lk_par.ShowModal;
+      formLkPar:=TForm_lk_par.Create(Form_lk_acc, DS_objxpar);
+      formLkPar.ShowModal;
+
+      //Application.CreateForm(TForm_lk_par, Form_lk_par);
+      //Form_lk_par.wwDBDateTimePicker1.DataSource:=Form_lk_acc.DS_objxpar;
+      //Form_lk_par.DBEdit1.DataSource:=Form_lk_acc.DS_objxpar;
+      //Form_lk_par.DBEdit2.DataSource:=Form_lk_acc.DS_objxpar;
+
+      //Form_lk_par.ShowModal;
     end;
   end;
 end;

@@ -1,8 +1,8 @@
 object Form_print_bills: TForm_print_bills
-  Left = 289
-  Top = 249
-  Width = 501
-  Height = 511
+  Left = 319
+  Top = 389
+  Width = 475
+  Height = 539
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #1057#1095#1077#1090#1072' '#1085#1072' '#1086#1087#1083#1072#1090#1091' '#1091#1089#1083#1091#1075' '#1046#1050#1061
   Color = clBtnFace
@@ -92,8 +92,8 @@ object Form_print_bills: TForm_print_bills
   TextHeight = 13
   object GroupBox1: TGroupBox
     Left = 0
-    Top = 345
-    Width = 485
+    Top = 369
+    Width = 459
     Height = 61
     Align = alTop
     TabOrder = 2
@@ -139,7 +139,7 @@ object Form_print_bills: TForm_print_bills
   object GroupBox2: TGroupBox
     Left = 0
     Top = 0
-    Width = 485
+    Width = 459
     Height = 105
     Align = alTop
     TabOrder = 0
@@ -301,8 +301,8 @@ object Form_print_bills: TForm_print_bills
   object GroupBox3: TGroupBox
     Left = 0
     Top = 145
-    Width = 485
-    Height = 200
+    Width = 459
+    Height = 224
     Align = alTop
     TabOrder = 1
     object Label5: TLabel
@@ -370,6 +370,19 @@ object Form_print_bills: TForm_print_bills
       Width = 50
       Height = 13
       Caption = #1064#1072#1073#1083#1086#1085':'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label18: TLabel
+      Left = 120
+      Top = 176
+      Width = 92
+      Height = 13
+      Caption = #1055#1091#1090#1100' '#1101#1089#1082#1087#1086#1088#1090#1072':'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -549,12 +562,12 @@ object Form_print_bills: TForm_print_bills
       TabOrder = 12
       Width = 257
     end
-    object CheckBox6: TCheckBox
+    object chkExportPDF: TCheckBox
       Left = 4
       Top = 176
       Width = 112
       Height = 17
-      Caption = #1069#1082#1089#1087#1086#1088#1090' '#1074' PDF:'
+      Caption = #1069#1082#1089#1087#1086#1088#1090' '#1074' PDF'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -562,10 +575,10 @@ object Form_print_bills: TForm_print_bills
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 13
-      OnClick = CheckBox6Click
+      OnClick = chkExportPDFClick
     end
-    object Edit3: TEdit
-      Left = 120
+    object edtExpportPath: TEdit
+      Left = 216
       Top = 172
       Width = 168
       Height = 21
@@ -587,11 +600,11 @@ object Form_print_bills: TForm_print_bills
       OnClick = CheckBox7Click
     end
     object chkExportFlow: TCheckBox
-      Left = 305
-      Top = 168
-      Width = 128
+      Left = 3
+      Top = 191
+      Width = 166
       Height = 29
-      Caption = #1069#1082#1089#1087#1086#1088#1090' '#1087#1086#1090#1086#1082#1086#1084
+      Caption = #1069#1082#1089#1087#1086#1088#1090' '#1087#1086#1090#1086#1082#1086#1084' '#1074' PDF'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -600,13 +613,13 @@ object Form_print_bills: TForm_print_bills
       ParentFont = False
       TabOrder = 16
       WordWrap = True
-      OnClick = CheckBox5Click
+      OnClick = chkExportFlowClick
     end
   end
   object GroupBox4: TGroupBox
     Left = 0
-    Top = 406
-    Width = 485
+    Top = 430
+    Width = 459
     Height = 37
     Align = alTop
     TabOrder = 3
@@ -619,23 +632,14 @@ object Form_print_bills: TForm_print_bills
       TabOrder = 0
     end
   end
-  object pnl1: TPanel
-    Left = 144
-    Top = 176
-    Width = 185
-    Height = 41
-    Caption = #1047#1072#1075#1088#1091#1079#1082#1072'...'
-    TabOrder = 4
-    Visible = False
-  end
   object GroupBox5: TGroupBox
     Left = 0
     Top = 105
-    Width = 485
+    Width = 459
     Height = 40
     Align = alTop
     Caption = #1060#1080#1083#1100#1090#1088' '#1087#1077#1088#1080#1086#1076#1072
-    TabOrder = 5
+    TabOrder = 4
     Visible = False
     object Label16: TLabel
       Left = 232
@@ -678,8 +682,8 @@ object Form_print_bills: TForm_print_bills
   end
   object dxStatusBar1: TdxStatusBar
     Left = 0
-    Top = 452
-    Width = 485
+    Top = 480
+    Width = 459
     Height = 20
     Panels = <
       item
@@ -695,14 +699,14 @@ object Form_print_bills: TForm_print_bills
     object dxStatusBar1Container3: TdxStatusBarContainerControl
       Left = 0
       Top = 2
-      Width = 469
+      Width = 443
       Height = 18
       object cxProgressBar1: TcxProgressBar
         Left = 0
         Top = 0
         Align = alClient
         TabOrder = 0
-        Width = 469
+        Width = 443
       end
     end
   end
@@ -803,5 +807,10 @@ object Form_print_bills: TForm_print_bills
     PdfA = False
     Left = 448
     Top = 169
+  end
+  object Timer1: TTimer
+    OnTimer = Timer1Timer
+    Left = 8
+    Top = 64
   end
 end

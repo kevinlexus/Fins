@@ -1,6 +1,6 @@
 object Form_list_kart: TForm_list_kart
-  Left = 185
-  Top = 168
+  Left = 373
+  Top = 336
   Width = 1044
   Height = 607
   Caption = #1050#1072#1088#1090#1086#1095#1082#1080
@@ -2012,7 +2012,7 @@ object Form_list_kart: TForm_list_kart
     Top = 162
   end
   object frxReport_base: TfrxReport
-    Version = '5.1.9'
+    Version = '6.2.11'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -2173,6 +2173,10 @@ object Form_list_kart: TForm_list_kart
       Caption = #1047#1072#1084#1077#1085#1072' KLSK '#1080' HOUSE_ID'
       Enabled = False
       OnClick = KLSKHOUSEID1Click
+    end
+    object N4: TMenuItem
+      Caption = #1055#1072#1088#1072#1084#1077#1090#1088#1099' '#1092#1080#1085'.'#1083#1080#1094'.'#1089#1095#1077#1090#1072
+      OnClick = N4Click
     end
   end
   object frxDBDataset3: TfrxDBDataset

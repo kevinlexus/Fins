@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls, DBCtrls, wwdbdatetimepicker, ComCtrls, DB,
-  Mask;
+  Mask, OracleData;
 
 type
   TForm_lk_par = class(TForm)
@@ -25,6 +25,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure exit_ok;
     procedure exit_cancel;
+    constructor Create(AOwner: TComponent; DS: TDataSource); overload;
   private
     exit_: Integer;
   public
@@ -39,28 +40,37 @@ uses Unit_lk_acc;
 
 {$R *.dfm}
 
+constructor TForm_lk_par.Create(AOwner: TComponent; DS: TDataSource);
+begin
+  inherited Create(AOwner);
+  wwDBDateTimePicker1.DataSource := DS;
+  DBEdit1.DataSource := DS;
+  DBEdit2.DataSource := DS;
+end;
+
 procedure TForm_lk_par.FormCreate(Sender: TObject);
 begin
-  exit_:=2;
-  with Form_lk_acc.OD_objxpar do
+  exit_ := 2;
+  //  with Form_lk_acc.OD_objxpar do
+  with wwDBDateTimePicker1.DataSource.DataSet do
   begin
-    if FieldByName('VAL_TP').AsString='ST' then
+    if FieldByName('VAL_TP').AsString = 'ST' then
     begin
-      PageControl1.ActivePageIndex:=1;
-      TabSheet1.TabVisible:=false;
-      TabSheet3.TabVisible:=false;
+      PageControl1.ActivePageIndex := 1;
+      TabSheet1.TabVisible := false;
+      TabSheet3.TabVisible := false;
     end
-    else if FieldByName('VAL_TP').AsString='DT' then
+    else if FieldByName('VAL_TP').AsString = 'DT' then
     begin
-      PageControl1.ActivePageIndex:=0;
-      TabSheet2.TabVisible:=false;
-      TabSheet3.TabVisible:=false;
+      PageControl1.ActivePageIndex := 0;
+      TabSheet2.TabVisible := false;
+      TabSheet3.TabVisible := false;
     end
-    else if FieldByName('VAL_TP').AsString='NM' then
+    else if FieldByName('VAL_TP').AsString = 'NM' then
     begin
-      PageControl1.ActivePageIndex:=2;
-      TabSheet1.TabVisible:=false;
-      TabSheet2.TabVisible:=false;
+      PageControl1.ActivePageIndex := 2;
+      TabSheet1.TabVisible := false;
+      TabSheet2.TabVisible := false;
     end;
   end;
 end;
@@ -69,45 +79,50 @@ procedure TForm_lk_par.exit_ok;
 var
   id_: Integer;
 begin
-  exit_:=1;
-  with Form_lk_acc.OD_objxpar do
+  exit_ := 1;
+  //with Form_lk_acc.OD_objxpar do
+  with TOracleDataSet(wwDBDateTimePicker1.DataSource.DataSet) do
   begin
-   if not (State in [dsBrowse]) then
-     Post;
-   //Apply без коммита
-   Session.ApplyUpdates([Form_lk_acc.OD_objxpar], False);
-   id_:=FieldByName('id').AsInteger;
-   Active:=False;
-   Active:=True;
-   Locate('id', id_, []);
+    if not (State in [dsBrowse]) then
+      Post;
+    //Apply без коммита
+    //Session.ApplyUpdates([Form_lk_acc.OD_objxpar], False);
+    Session.ApplyUpdates([wwDBDateTimePicker1.DataSource.DataSet], False);
+    id_ := FieldByName('id').AsInteger;
+    Active := False;
+    Active := True;
+    Locate('id', id_, []);
   end;
 end;
 
 procedure TForm_lk_par.exit_cancel;
 begin
- exit_:=0;
- if not (Form_lk_acc.OD_objxpar.State in [dsBrowse]) then
-   Form_lk_acc.OD_objxpar.Cancel;
+  exit_ := 0;
+  //if not (Form_lk_acc.OD_objxpar.State in [dsBrowse]) then
+  //  Form_lk_acc.OD_objxpar.Cancel;
+  if not (wwDBDateTimePicker1.DataSource.DataSet.State in [dsBrowse]) then
+    wwDBDateTimePicker1.DataSource.DataSet.Cancel;
 end;
 
 procedure TForm_lk_par.Button1Click(Sender: TObject);
 begin
- exit_ok;
- close;
+  exit_ok;
+  close;
 end;
 
 procedure TForm_lk_par.Button2Click(Sender: TObject);
 begin
- exit_cancel;
- close;
+  exit_cancel;
+  close;
 end;
 
 procedure TForm_lk_par.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  if exit_=2 then
+  if exit_ = 2 then
     exit_cancel;
-  Action:=caFree;
+  Action := caFree;
 end;
 
 end.
+

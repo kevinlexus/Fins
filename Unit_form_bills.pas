@@ -68,11 +68,10 @@ type
     Label14: TLabel;
     cxLookupComboBox1: TcxLookupComboBox;
     cxprprtstr1: TcxPropertiesStore;
-    CheckBox6: TCheckBox;
+    chkExportPDF: TCheckBox;
     frxPDFExport1: TfrxPDFExport;
-    Edit3: TEdit;
+    edtExpportPath: TEdit;
     CheckBox7: TCheckBox;
-    pnl1: TPanel;
     Label15: TLabel;
     cxLookupComboBox2: TcxLookupComboBox;
     cx3: TcxLookupComboBox;
@@ -89,6 +88,8 @@ type
     dxStatusBar1: TdxStatusBar;
     dxStatusBar1Container3: TdxStatusBarContainerControl;
     cxProgressBar1: TcxProgressBar;
+    Label18: TLabel;
+    Timer1: TTimer;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -125,7 +126,6 @@ type
     procedure chargePayReport;
     procedure report_penya;
     procedure setMainDataset;
-    procedure CheckBox6Click(Sender: TObject);
     procedure CheckBox7Click(Sender: TObject);
     procedure cxLookupComboBox3PropertiesCloseUp(Sender: TObject);
     procedure cxLookupComboBox4PropertiesPopup(Sender: TObject);
@@ -138,6 +138,9 @@ type
     procedure CheckBox5Click(Sender: TObject);
     procedure cxLookupComboBox1PropertiesCloseUp(Sender: TObject);
     procedure query_OD_ls_cnt(p_mg, p_reu: string; p_cnt: Integer);
+    procedure chkExportPDFClick(Sender: TObject);
+    procedure chkExportFlowClick(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
   private
     cnt_sch_: Integer;
     tp_: Integer;
@@ -785,8 +788,8 @@ begin
     cnt := DM_Bill.Uni_spr_bill_print.RecordCount;
     pos := 0;
     DM_Bill.Uni_spr_bill_print.First;
-    CreateDir(Edit3.Text);
-    CreateDir(Edit3.Text + '\' + lkpMgFrom.EditValue);
+    CreateDir(edtExpportPath.Text);
+    CreateDir(edtExpportPath.Text + '\' + lkpMgFrom.EditValue);
 
     while not DM_Bill.Uni_spr_bill_print.Eof do
     begin
@@ -799,7 +802,8 @@ begin
 
         while not DM_Bill2.OD_ls_cnt.Eof do
         begin
-          filePathExport := Edit3.Text + '\' + lkpMgFrom.EditValue + '\' +
+          filePathExport := edtExpportPath.Text + '\' + lkpMgFrom.EditValue + '\'
+            +
             DM_Bill.Uni_spr_bill_print.FieldByName('REU').AsString
             + '_'
             + DM_Bill.Uni_spr_bill_print.FieldByName('PREFIX').AsString
@@ -816,7 +820,7 @@ begin
             DM_Bill.Uni_spr_bill_print.FieldByName('REU').AsString, filePathStr,
             filePathExport,
             CheckBox2.Checked,
-            CheckBox6.Checked, frxReport1, frxPDFExport1, //115331, 126623,
+            chkExportPDF.Checked, frxReport1, frxPDFExport1, //115331, 126623,
             DM_Bill2.OD_ls_cnt.FieldByName('first_rec').AsInteger,
             DM_Bill2.OD_ls_cnt.FieldByName('last_rec').AsInteger,
             chkExportFlow.Checked
@@ -845,8 +849,8 @@ begin
       cxImageComboBox1.ItemIndex,
       pKlskId, wwDBEdit1.Text, wwDBEdit2.Text,
       lkpMgFrom.EditValue, getStrUk(),
-      cbb1.EditValue, filePathStr, Edit3.Text, CheckBox2.Checked,
-      CheckBox6.Checked, frxReport1, frxPDFExport1,
+      cbb1.EditValue, filePathStr, edtExpportPath.Text, CheckBox2.Checked,
+      chkExportPDF.Checked, frxReport1, frxPDFExport1,
       DM_Bill2.OD_ls_cnt.FieldByName('first_rec').AsInteger,
       DM_Bill2.OD_ls_cnt.FieldByName('last_rec').AsInteger,
       chkExportFlow.Checked
@@ -1761,12 +1765,14 @@ end;
 
 procedure TForm_print_bills.Edit1Change(Sender: TObject);
 begin
-  if Edit1.Text = '' then
-    cnt_sch_ := 1000
-  else
-    cnt_sch_ := StrToInt(Edit1.Text);
+  Timer1.Enabled := False;
+  Timer1.Enabled := True;
+  {  if Edit1.Text = '' then
+      cnt_sch_ := 1000
+    else
+      cnt_sch_ := StrToInt(Edit1.Text);
 
-  sel_ls_cnt;
+    sel_ls_cnt;}
 end;
 
 procedure TForm_print_bills.lkpMgToCloseUp(Sender: TObject; Accept:
@@ -1790,17 +1796,6 @@ procedure TForm_print_bills.lkpMgFromCloseUp(Sender: TObject; Accept:
   Boolean);
 begin
 end;
-
-{procedure TForm_print_bills.DM_Bill2.OD_ls_cntBeforeOpen(DataSet: TDataSet);
-begin
-  pnl1.Visible := true;
-  Update;
-end;
-
-procedure TForm_print_bills.DM_Bill2.OD_ls_cntAfterOpen(DataSet: TDataSet);
-begin
-  pnl1.Visible := false;
-end;}
 
 // наполнить checkComboBox значениями УК
 
@@ -1868,15 +1863,6 @@ begin
   ComboProp := cxCheckComboBox1.Properties;
   for i := 0 to ComboProp.Items.Count - 1 do
     cxCheckComboBox1.States[i] := cbsUnChecked;
-end;
-
-procedure TForm_print_bills.CheckBox6Click(Sender: TObject);
-begin
-  if CheckBox6.Checked then
-    Edit3.Enabled := true
-  else
-    Edit3.Enabled := false;
-
 end;
 
 procedure TForm_print_bills.CheckBox7Click(Sender: TObject);
@@ -2156,6 +2142,30 @@ procedure TForm_print_bills.cxLookupComboBox1PropertiesCloseUp(
   Sender: TObject);
 begin
   selVar();
+end;
+
+procedure TForm_print_bills.chkExportPDFClick(Sender: TObject);
+begin
+  if chkExportPDF.Checked then
+    chkExportFlow.Checked := False;
+end;
+
+procedure TForm_print_bills.chkExportFlowClick(Sender: TObject);
+begin
+  if chkExportFlow.Checked then
+    chkExportPDF.Checked := False;
+
+end;
+
+procedure TForm_print_bills.Timer1Timer(Sender: TObject);
+begin
+  if Edit1.Text = '' then
+    cnt_sch_ := 1000
+  else
+    cnt_sch_ := StrToInt(Edit1.Text);
+
+  sel_ls_cnt;
+  Timer1.Enabled := False;
 end;
 
 end.
