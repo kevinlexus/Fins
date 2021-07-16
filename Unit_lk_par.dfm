@@ -93,7 +93,7 @@ object Form_lk_par: TForm_lk_par
     Top = 0
     Width = 298
     Height = 77
-    ActivePage = TabSheet1
+    ActivePage = TabSheet4
     Align = alClient
     TabOrder = 0
     object TabSheet1: TTabSheet
@@ -133,6 +133,18 @@ object Form_lk_par: TForm_lk_par
         Height = 21
         DataField = 'N1'
         TabOrder = 0
+      end
+    end
+    object TabSheet4: TTabSheet
+      ImageIndex = 3
+      object cxDBCheckBox1: TcxDBCheckBox
+        Left = 88
+        Top = 16
+        DataBinding.DataField = 'N1'
+        Properties.ValueChecked = 1
+        Properties.ValueUnchecked = 0
+        TabOrder = 0
+        Width = 25
       end
     end
   end

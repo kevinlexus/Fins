@@ -1,6 +1,6 @@
 object Form_lk_acc: TForm_lk_acc
-  Left = 1184
-  Top = 525
+  Left = 354
+  Top = 275
   Width = 453
   Height = 335
   BorderIcons = [biSystemMenu]

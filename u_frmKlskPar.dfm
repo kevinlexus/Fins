@@ -1,6 +1,6 @@
 object frmKlskPar: TfrmKlskPar
-  Left = 821
-  Top = 324
+  Left = 241
+  Top = 526
   Width = 527
   Height = 349
   Caption = #1055#1072#1088#1072#1084#1077#1090#1088#1099
@@ -136,27 +136,31 @@ object frmKlskPar: TfrmKlskPar
       'select x.id, x.fk_list, '
       
         'decode(u.val_tp,'#39'NM'#39', to_char(x.n1), '#39'ST'#39', x.s1, '#39'DT'#39', to_char(x' +
-        '.d1,'#39'DD.MM.YYYY'#39'), null) as val, '
+        '.d1,'#39'DD.MM.YYYY'#39'), '#39'BL'#39', decode(x.n1,1,'#39#1044#1072#39',0,'#39#1053#1077#1090#39', null) , nul' +
+        'l) as val, '
       'u.val_tp, '
-      'x.s1, x.n1, x.d1, x.rowid'
+      'x.s1, x.n1, x.d1, x.fk_k_lsk, x.rowid'
       ' from scott.t_objxpar x join scott.u_list u on u.id=x.fk_list'
       
         ' join scott.u_listtp tp on u.fk_listtp=tp.id and tp.cd='#39#1055#1072#1088#1072#1084#1077#1090#1088 +
         #1099' '#1083#1080#1094'.'#1089#1095#1077#1090#1072#39
       'where '
       'x.fk_k_lsk=:k_lsk_id'
-      'order by u.npp ')
+      'order by u.name')
     Optimize = False
     Variables.Data = {
       0300000001000000090000003A4B5F4C534B5F49440300000000000000000000
       00}
     QBEDefinition.QBEFieldDefs = {
-      04000000070000000200000049440100000000000300000056414C0100000000
+      04000000080000000200000049440100000000000300000056414C0100000000
       00020000005331010000000000020000004E310100000000000600000056414C
       5F545001000000000002000000443101000000000007000000464B5F4C495354
-      010000000000}
+      01000000000008000000464B5F4B5F4C534B010000000000}
+    QueryAllRecords = False
+    RefreshOptions = [roAfterInsert, roAfterUpdate, roAllFields]
     Session = DataModule1.OracleSession1
     DesignActivation = True
+    OnNewRecord = OD_objxparNewRecord
     Left = 112
     Top = 96
     object OD_objxparID: TFloatField
@@ -184,6 +188,9 @@ object frmKlskPar: TfrmKlskPar
     object OD_objxparD1: TDateTimeField
       FieldName = 'D1'
     end
+    object OD_objxparFK_K_LSK: TFloatField
+      FieldName = 'FK_K_LSK'
+    end
   end
   object DS_objxpar: TDataSource
     DataSet = OD_objxpar
@@ -192,7 +199,11 @@ object frmKlskPar: TfrmKlskPar
   end
   object OD_u_list: TOracleDataSet
     SQL.Strings = (
-      'select * from scott.u_list u order by u.name')
+      
+        'select u.* from scott.u_list u join scott.u_listtp tp on u.fk_li' +
+        'sttp=tp.id'
+      'where tp.cd='#39#1055#1072#1088#1072#1084#1077#1090#1088#1099' '#1083#1080#1094'.'#1089#1095#1077#1090#1072#39
+      'order by u.name')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
       040000000A0000000200000049440100000000000600000056414C5F54500100

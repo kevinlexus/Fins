@@ -28,9 +28,11 @@ type
     OD_objxparS1: TStringField;
     OD_objxparN1: TFloatField;
     OD_objxparD1: TDateTimeField;
+    OD_objxparFK_K_LSK: TFloatField;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure cxGrid1DBTableView1DblClick(Sender: TObject);
+    procedure OD_objxparNewRecord(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -48,34 +50,31 @@ uses Unit_lk_par, Unit_list_kart;
 
 procedure TfrmKlskPar.FormCreate(Sender: TObject);
 begin
-  OD_objxpar.SetVariable('K_LSK_ID', Form_list_kart.OD_list_kart.FieldByName('K_LSK_ID').AsInteger);
-  OD_objxpar.Active:=True;
-  OD_u_list.Active:=True;
+  OD_objxpar.SetVariable('K_LSK_ID',
+    Form_list_kart.OD_list_kart.FieldByName('K_LSK_ID').AsInteger);
+  OD_objxpar.Active := True;
+  OD_u_list.Active := True;
 end;
 
 procedure TfrmKlskPar.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  Action:=caFree;
+  Action := caFree;
 end;
 
 procedure TfrmKlskPar.cxGrid1DBTableView1DblClick(Sender: TObject);
 var
   formLkPar: TForm_lk_par;
 begin
-  with OD_objxpar do
-  begin
-    if (FieldByName('VAL_TP').AsString='ST')
-    or (FieldByName('VAL_TP').AsString='DT')
-    or (FieldByName('VAL_TP').AsString='NM') then
-    begin
-      formLkPar:=TForm_lk_par.Create(frmKlskPar, DS_objxpar);
-      formLkPar.ShowModal;
-
-      //Application.CreateForm(TForm_lk_par, Form_lk_par);
-      //Form_lk_par.ShowModal;
-    end;
-  end;
+  formLkPar := TForm_lk_par.Create(frmKlskPar, DS_objxpar);
+  formLkPar.ShowModal;
 
 end;
 
+procedure TfrmKlskPar.OD_objxparNewRecord(DataSet: TDataSet);
+begin
+  OD_objxpar.FieldByName('FK_K_LSK').AsInteger :=
+    Form_list_kart.OD_list_kart.FieldByName('K_LSK_ID').AsInteger;
+end;
+
 end.
+

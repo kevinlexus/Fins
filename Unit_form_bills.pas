@@ -484,7 +484,7 @@ begin
     p_strUk;
 
   DM_Bill.Uni_cmp_detail_cap.Params.ParamByName('p_mg').AsString :=
-    p_lkpMgFrom;
+    p_lkpMgFrom;                                                                          
   DM_Bill.Uni_cmp_detail_cap.Params.ParamByName('p_sel_uk').AsString :=
     p_strUk;
 
@@ -835,15 +835,11 @@ begin
       end;
       DM_Bill.Uni_spr_bill_print.Next;
     end;
+    Application.MessageBox('Ёкспорт выполнен', '¬нимание!', MB_OK + 
+      MB_ICONINFORMATION + MB_TOPMOST);
   end
   else
   begin
-    //    DM_Bill.Uni_cmp_main.Params.ParamByName('p_firstNum').AsInteger := 0;
-  //    DM_Bill.Uni_cmp_main.Params.ParamByName('p_lastNum').AsInteger :=
-  //      1000000000;
-  //      query_OD_ls_cnt(lkpMgFrom.EditValue,
-  //        DM_Bill.Uni_spr_bill_print.FieldByName('REU').AsString, 1000);
-
     compound_report_export(pKul, pNd, pKw, cxLookupComboBox2.EditValue,
       sel_obj_,
       cxImageComboBox1.ItemIndex,

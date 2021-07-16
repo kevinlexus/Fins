@@ -5,7 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls, DBCtrls, wwdbdatetimepicker, ComCtrls, DB,
-  Mask, OracleData;
+  Mask, OracleData, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxContainer, cxEdit, cxCheckBox, cxDBEdit;
 
 type
   TForm_lk_par = class(TForm)
@@ -19,6 +20,8 @@ type
     Panel1: TPanel;
     Button1: TButton;
     Button2: TButton;
+    TabSheet4: TTabSheet;
+    cxDBCheckBox1: TcxDBCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -46,6 +49,7 @@ begin
   wwDBDateTimePicker1.DataSource := DS;
   DBEdit1.DataSource := DS;
   DBEdit2.DataSource := DS;
+  cxDBCheckBox1.DataBinding.DataSource := DS;
 end;
 
 procedure TForm_lk_par.FormCreate(Sender: TObject);
@@ -59,18 +63,35 @@ begin
       PageControl1.ActivePageIndex := 1;
       TabSheet1.TabVisible := false;
       TabSheet3.TabVisible := false;
+      TabSheet4.TabVisible := false;
     end
     else if FieldByName('VAL_TP').AsString = 'DT' then
     begin
       PageControl1.ActivePageIndex := 0;
       TabSheet2.TabVisible := false;
       TabSheet3.TabVisible := false;
+      TabSheet4.TabVisible := false;
     end
     else if FieldByName('VAL_TP').AsString = 'NM' then
     begin
       PageControl1.ActivePageIndex := 2;
       TabSheet1.TabVisible := false;
       TabSheet2.TabVisible := false;
+      TabSheet4.TabVisible := false;
+    end
+    else if FieldByName('VAL_TP').AsString = 'BL' then
+    begin
+      PageControl1.ActivePageIndex := 3;
+      TabSheet1.TabVisible := false;
+      TabSheet2.TabVisible := false;
+      TabSheet3.TabVisible := false;
+    end
+    else
+    begin
+      TabSheet1.TabVisible := false;
+      TabSheet2.TabVisible := false;
+      TabSheet3.TabVisible := false;
+      TabSheet4.TabVisible := false;
     end;
   end;
 end;
