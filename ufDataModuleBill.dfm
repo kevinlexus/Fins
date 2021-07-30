@@ -23,6 +23,7 @@ object DM_Bill: TDM_Bill
       '                          p_mg => :p_mg,'
       '                          p_sel_uk => :p_sel_uk,'
       '                          p_postcode => :p_postcode,'
+      '                          p_exp_email => :p_exp_email,'
       '                          p_rfcur => :p_rfcur);'
       'end;')
     FetchRows = 1000
@@ -98,6 +99,10 @@ object DM_Bill: TDM_Bill
         DataType = ftString
         Name = 'p_postcode'
         ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'p_exp_email'
       end
       item
         DataType = ftCursor

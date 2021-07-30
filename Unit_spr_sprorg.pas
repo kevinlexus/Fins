@@ -228,6 +228,8 @@ type
     OD_spr_bill_printFILTER_REU: TStringField;
     OD_spr_bill_printIS_EXPORT_PDF: TFloatField;
     OD_spr_bill_printPREFIX: TStringField;
+    OD_spr_bill_printIS_EXPORT_EMAIL: TFloatField;
+    cxGrid5DBTableView1IS_EXPORT_EMAIL: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure OD_sprorgAfterScroll(DataSet: TDataSet);

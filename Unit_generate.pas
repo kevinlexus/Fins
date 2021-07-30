@@ -437,90 +437,28 @@ end;
 procedure TForm_generate.Button3Click(Sender: TObject);
 var
   l_state, cnt_: Integer;
+  l_res: string;
 
 begin
   Memo1.Text := 'Выполняется переход...';
   Update;
   DataModule1.OraclePackage1.CallProcedure
     ('scott.gen.go_next_month_year', [parNone]);
-  Memo1.Text := 'Выполнен переход месяца, необходимо задать текущую дату!';
+  // завершить модуль начисления
+  try
+    l_res :=
+      DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA.HTTP_REQ',
+      ['terminateApp', null, null, 'GET']);
+  except
+  end;
+  Application.MessageBox('Выполнен переход месяца, необходимо ЗАГРУЗИТЬ модуль начисления', 'Внимание!', MB_OK +
+    MB_ICONWARNING + MB_TOPMOST);
+
+  Application.MessageBox('Необходимо задать текущую дату', 'Внимание!', MB_OK +
+    MB_ICONWARNING + MB_TOPMOST);
+
   Application.CreateForm(TForm_sel_comps, Form_sel_comps);
   Form_sel_comps.ShowModal;
-
-  //  Application.CreateForm(TForm_status_gen, Form_status_gen);
-{  Button3.Enabled := false;
-  GroupBox9.Enabled := false;
-  GroupBox2.Enabled := false;
-  GroupBox1.Enabled := false;
-  GroupBox3.Enabled := false;
-  GroupBox8.Enabled := false;
-  GroupBox7.Enabled := false;
-  GroupBox4.Enabled := false;
-  GroupBox5.Enabled := false;
-  Generate;
-  GroupBox9.Enabled := true;
-  GroupBox2.Enabled := true;
-  GroupBox1.Enabled := true;
-  GroupBox3.Enabled := true;
-  GroupBox8.Enabled := true;
-  GroupBox7.Enabled := true;
-  GroupBox4.Enabled := true;
-  GroupBox5.Enabled := true;
-  Button3.Enabled := true;
-
-  if state_ = 1 then //если был назначен переход месяца...
-  begin
-    //отметка об окончании формирования
-    DataModule1.OraclePackage1.Session.Connected := true;
-    l_state := DataModule1.OraclePackage1.CallIntegerFunction
-      ('scott.Utils.set_base_state_gen', [0]);
-
-    Memo1.Text := 'Выполнен переход месяца, необходимо задать текущую дату!';
-    Application.CreateForm(TForm_sel_comps, Form_sel_comps);
-    Form_sel_comps.ShowModal;
-  end
-  else if state_ = 2 then
-    //если был назначен переход месяца, но он прошёл с ошибкой
-  begin
-    //отметка об окончании формирования
-    DataModule1.OraclePackage1.Session.Connected := true;
-    l_state := DataModule1.OraclePackage1.CallIntegerFunction
-      ('scott.Utils.set_base_state_gen', [0]);
-    Memo1.Text := l_err_mess + ' Переход месяца не выполнен!';
-  end
-  else if state_ = 3 then //Итоговое формирование произошло с ошибкой
-  begin
-    //отметка об окончании формирования
-    DataModule1.OraclePackage1.Session.Connected := true;
-    l_state := DataModule1.OraclePackage1.CallIntegerFunction
-      ('scott.Utils.set_base_state_gen', [0]);
-    Application.CreateForm(TForm_gen_err_lst, Form_gen_err_lst);
-    Form_gen_err_lst.OD_data.SetVariable('err_', err_);
-    Form_gen_err_lst.OD_data.Active := True;
-    Form_gen_err_lst.Label1.Caption := l_err_mess;
-    Form_gen_err_lst.ShowModal;
-    Memo1.Text := l_err_mess + ' Формирование остановлено!';
-  end
-  else if (state_ = 4) or (state_ = 5) then
-    //Итоговое формирование произошло с ошибкой
-  begin
-    //отметка об окончании формирования
-    DataModule1.OraclePackage1.Session.Connected := true;
-    l_state := DataModule1.OraclePackage1.CallIntegerFunction
-      ('scott.Utils.set_base_state_gen', [0]);
-    Memo1.Text := l_err_mess + ' Формирование остановлено!';
-  end
-  else
-  begin
-    //отметка об окончании формирования
-    DataModule1.OraclePackage1.Session.Connected := true;
-    l_state := DataModule1.OraclePackage1.CallIntegerFunction
-      ('scott.Utils.set_base_state_gen', [0]);
-    //if chk1.Checked then
-    //  abfshtdwn1.Execute;
-    Memo1.Text := 'Формирование выполнено!';
-  end;
- }
 end;
 
 procedure TForm_generate.CheckBox20Click(Sender: TObject);

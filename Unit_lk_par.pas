@@ -6,13 +6,13 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls, DBCtrls, wwdbdatetimepicker, ComCtrls, DB,
   Mask, OracleData, cxGraphics, cxControls, cxLookAndFeels,
-  cxLookAndFeelPainters, cxContainer, cxEdit, cxCheckBox, cxDBEdit;
+  cxLookAndFeelPainters, cxContainer, cxEdit, cxCheckBox, cxDBEdit,
+  cxTextEdit, cxMaskEdit, cxDropDownEdit, cxCalendar;
 
 type
   TForm_lk_par = class(TForm)
     PageControl1: TPageControl;
     TabSheet1: TTabSheet;
-    wwDBDateTimePicker1: TwwDBDateTimePicker;
     TabSheet2: TTabSheet;
     DBEdit1: TDBEdit;
     TabSheet3: TTabSheet;
@@ -22,6 +22,7 @@ type
     Button2: TButton;
     TabSheet4: TTabSheet;
     cxDBCheckBox1: TcxDBCheckBox;
+    cxDBDateEdit1: TcxDBDateEdit;
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -46,7 +47,7 @@ uses Unit_lk_acc;
 constructor TForm_lk_par.Create(AOwner: TComponent; DS: TDataSource);
 begin
   inherited Create(AOwner);
-  wwDBDateTimePicker1.DataSource := DS;
+  cxDBDateEdit1.DataBinding.DataSource := DS;
   DBEdit1.DataSource := DS;
   DBEdit2.DataSource := DS;
   cxDBCheckBox1.DataBinding.DataSource := DS;
@@ -56,7 +57,7 @@ procedure TForm_lk_par.FormCreate(Sender: TObject);
 begin
   exit_ := 2;
   //  with Form_lk_acc.OD_objxpar do
-  with wwDBDateTimePicker1.DataSource.DataSet do
+  with cxDBDateEdit1.DataBinding.DataSource.DataSet do
   begin
     if FieldByName('VAL_TP').AsString = 'ST' then
     begin
@@ -102,13 +103,13 @@ var
 begin
   exit_ := 1;
   //with Form_lk_acc.OD_objxpar do
-  with TOracleDataSet(wwDBDateTimePicker1.DataSource.DataSet) do
+  with TOracleDataSet(cxDBDateEdit1.DataBinding.DataSource.DataSet) do
   begin
     if not (State in [dsBrowse]) then
       Post;
     //Apply без коммита
     //Session.ApplyUpdates([Form_lk_acc.OD_objxpar], False);
-    Session.ApplyUpdates([wwDBDateTimePicker1.DataSource.DataSet], False);
+    Session.ApplyUpdates([cxDBDateEdit1.DataBinding.DataSource.DataSet], False);
     id_ := FieldByName('id').AsInteger;
     Active := False;
     Active := True;
@@ -121,8 +122,8 @@ begin
   exit_ := 0;
   //if not (Form_lk_acc.OD_objxpar.State in [dsBrowse]) then
   //  Form_lk_acc.OD_objxpar.Cancel;
-  if not (wwDBDateTimePicker1.DataSource.DataSet.State in [dsBrowse]) then
-    wwDBDateTimePicker1.DataSource.DataSet.Cancel;
+  if not (cxDBDateEdit1.DataBinding.DataSource.DataSet.State in [dsBrowse]) then
+    cxDBDateEdit1.DataBinding.DataSource.DataSet.Cancel;
 end;
 
 procedure TForm_lk_par.Button1Click(Sender: TObject);

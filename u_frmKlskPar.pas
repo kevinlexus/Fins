@@ -65,6 +65,9 @@ procedure TfrmKlskPar.cxGrid1DBTableView1DblClick(Sender: TObject);
 var
   formLkPar: TForm_lk_par;
 begin
+  if (OD_objxpar.State = dsEdit) or (OD_objxpar.State = dsInsert) then
+    OD_objxpar.Post;
+
   formLkPar := TForm_lk_par.Create(frmKlskPar, DS_objxpar);
   formLkPar.ShowModal;
 

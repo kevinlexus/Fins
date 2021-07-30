@@ -1,6 +1,6 @@
 object Form_spr_sprorg: TForm_spr_sprorg
-  Left = 612
-  Top = 569
+  Left = 990
+  Top = 223
   Width = 1311
   Height = 720
   BorderIcons = [biSystemMenu, biMinimize]
@@ -505,7 +505,7 @@ object Form_spr_sprorg: TForm_spr_sprorg
       Top = 1
       Width = 676
       Height = 679
-      ActivePage = TabSheet1
+      ActivePage = TabSheet4
       Align = alClient
       TabOrder = 0
       object TabSheet1: TTabSheet
@@ -754,24 +754,32 @@ object Form_spr_sprorg: TForm_spr_sprorg
                 end>
               Properties.ListOptions.ShowHeader = False
               Properties.ListSource = DS_reu
-              Width = 107
+              Width = 100
             end
             object cxGrid5DBTableView1FILTER_REU: TcxGridDBColumn
               Caption = #1060#1080#1083#1100#1090#1088' '#1059#1050
               DataBinding.FieldName = 'FILTER_REU'
-              Width = 291
+              Width = 273
             end
             object cxGrid5DBTableView1PREFIX: TcxGridDBColumn
               Caption = #1055#1088#1077#1092#1080#1082#1089
               DataBinding.FieldName = 'PREFIX'
-              Width = 130
+              Width = 60
             end
             object cxGrid5DBTableView1IS_EXPORT_PDF: TcxGridDBColumn
               DataBinding.FieldName = 'IS_EXPORT_PDF'
               PropertiesClassName = 'TcxCheckBoxProperties'
               Properties.ValueChecked = 1
               Properties.ValueUnchecked = 0
-              Width = 118
+              Width = 99
+            end
+            object cxGrid5DBTableView1IS_EXPORT_EMAIL: TcxGridDBColumn
+              Caption = #1058#1086#1083#1100#1082#1086' '#1089' '#1101#1083'.'#1087#1086#1095#1090#1086#1081
+              DataBinding.FieldName = 'IS_EXPORT_EMAIL'
+              PropertiesClassName = 'TcxCheckBoxProperties'
+              Properties.ValueChecked = 1
+              Properties.ValueUnchecked = 0
+              Width = 134
             end
           end
           object cxGrid5Level1: TcxGridLevel
@@ -1367,9 +1375,10 @@ object Form_spr_sprorg: TForm_spr_sprorg
     Optimize = False
     OracleDictionary.UseMessageTable = True
     QBEDefinition.QBEFieldDefs = {
-      0400000005000000020000004944010000000000030000005245550100000000
+      0400000006000000020000004944010000000000030000005245550100000000
       000A00000046494C5445525F5245550100000000000D00000049535F4558504F
-      52545F50444601000000000006000000505245464958010000000000}
+      52545F504446010000000000060000005052454649580100000000000F000000
+      49535F4558504F52545F454D41494C010000000000}
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True
@@ -1396,6 +1405,9 @@ object Form_spr_sprorg: TForm_spr_sprorg
     object OD_spr_bill_printPREFIX: TStringField
       FieldName = 'PREFIX'
       Size = 256
+    end
+    object OD_spr_bill_printIS_EXPORT_EMAIL: TFloatField
+      FieldName = 'IS_EXPORT_EMAIL'
     end
   end
   object DS_spr_bill_print: TDataSource

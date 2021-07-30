@@ -409,7 +409,8 @@ procedure compound_report_export(p_kul, p_nd, p_kw, p_postcode: Variant;
   p_lsk1, p_lsk2, p_lkpMgFrom, p_strUk,
   p_uk, p_filePathStr, p_exportPdfPath: string;
   p_print_old, p_export_pdf: Boolean; frxReport1: TfrxReport; frxPDFExport1:
-  TfrxPDFExport; p_firstNum, p_lastNum: Integer; p_export_flow: Boolean);
+  TfrxPDFExport; p_firstNum, p_lastNum: Integer; p_export_flow: Boolean;
+  p_export_email: Integer);
 var
   report: TfrxReport;
   exportPdf: TfrxPDFExport;
@@ -469,6 +470,8 @@ begin
   // установить параметры
   DM_Bill.Uni_cmp_main.Params.ParamByName('p_mg').AsString :=
     p_lkpMgFrom;
+  DM_Bill.Uni_cmp_main.Params.ParamByName('p_exp_email').AsInteger :=
+    p_export_email;
   // список УК для фильтра
   DM_Bill.Uni_cmp_main.Params.ParamByName('p_sel_uk').AsString := p_strUk;
 
@@ -484,7 +487,7 @@ begin
     p_strUk;
 
   DM_Bill.Uni_cmp_detail_cap.Params.ParamByName('p_mg').AsString :=
-    p_lkpMgFrom;                                                                          
+    p_lkpMgFrom;
   DM_Bill.Uni_cmp_detail_cap.Params.ParamByName('p_sel_uk').AsString :=
     p_strUk;
 
@@ -650,103 +653,70 @@ begin
   DM_Bill.Uni_cmp_qr.Active := true;
   //logText('rep.1.6');
 
-  if p_export_flow then
+  if DM_Bill.Uni_cmp_main.RecordCount > 0 then
   begin
-    report := TfrxReport.Create(nil);
-    report.LoadFromFile(p_filePathStr, True);
-    report.PrepareReport(true);
-    //report.EngineOptions.MaxMemSize:=200;
-    //report.EngineOptions.UseFileCache:=true;
-    //report.EngineOptions.TempDir:='c:\temp';
 
-    report.EngineOptions.NewSilentMode := simReThrow;
-    //  пробрасывает ошибку экспорта
-  //report.EngineOptions.SilentMode:=True;
+    if p_export_flow then
+    begin
+      report := TfrxReport.Create(nil);
+      report.LoadFromFile(p_filePathStr, True);
+      report.PrepareReport(true);
+
+      report.EngineOptions.NewSilentMode := simReThrow;
+    end
+    else
+    begin
+      frxReport1.LoadFromFile(p_filePathStr, True);
+      frxReport1.PrepareReport(true);
+    end;
+
+    // деактивировать датасеты - чтоб не жрали память
+    DM_Bill.Uni_cmp_main.Active := False;
+    DM_Bill.Uni_cmp_contractors.Active := False;
+    DM_Bill.Uni_cmp_detail_primary.Active := false;
+    DM_Bill.Uni_cmp_detail_cap.Active := false;
+    DM_Bill.Uni_cmp_detail_main.Active := false;
+    DM_Bill.Uni_cmp_funds_primary.Active := false;
+    DM_Bill.Uni_cmp_funds_cap.Active := false;
+    DM_Bill.Uni_cmp_funds_main.Active := false;
+    DM_Bill.Uni_cmp_funds_lsk.Active := false;
+    DM_Bill.Uni_cmp_qr.Active := false;
+
+    if p_export_pdf then
+    begin
+      // экспортировать в PDF
+      frxPDFExport1.FileName := p_exportPdfPath;
+      frxReport1.Export(frxPDFExport1);
+    end
+    else if p_export_flow then
+    begin
+      // экспортировать в PDF потоком
+      exportPdf := TfrxPDFExport.Create(nil);
+      exportPdf.FileName := p_exportPdfPath;
+      exportPdf.ShowDialog := False;
+      exportPdf.OverwritePrompt := False;
+      report.Export(exportPdf);
+      FreeAndNil(exportPdf);
+      FreeAndNil(report);
+    end
+    else
+      // показать отчет
+      frxReport1.ShowPreparedReport;
   end
   else
   begin
-    frxReport1.LoadFromFile(p_filePathStr, True);
-    frxReport1.PrepareReport(true);
+    // деактивировать датасеты - чтоб не жрали память
+    DM_Bill.Uni_cmp_main.Active := False;
+    DM_Bill.Uni_cmp_contractors.Active := False;
+    DM_Bill.Uni_cmp_detail_primary.Active := false;
+    DM_Bill.Uni_cmp_detail_cap.Active := false;
+    DM_Bill.Uni_cmp_detail_main.Active := false;
+    DM_Bill.Uni_cmp_funds_primary.Active := false;
+    DM_Bill.Uni_cmp_funds_cap.Active := false;
+    DM_Bill.Uni_cmp_funds_main.Active := false;
+    DM_Bill.Uni_cmp_funds_lsk.Active := false;
+    DM_Bill.Uni_cmp_qr.Active := false;
   end;
-
-  //logText('rep.1.7');
-  // деактивировать датасеты - чтоб не жрали память
-  DM_Bill.Uni_cmp_main.Active := False;
-  DM_Bill.Uni_cmp_contractors.Active := False;
-  DM_Bill.Uni_cmp_detail_primary.Active := false;
-  DM_Bill.Uni_cmp_detail_cap.Active := false;
-  DM_Bill.Uni_cmp_detail_main.Active := false;
-  DM_Bill.Uni_cmp_funds_primary.Active := false;
-  DM_Bill.Uni_cmp_funds_cap.Active := false;
-  DM_Bill.Uni_cmp_funds_main.Active := false;
-  DM_Bill.Uni_cmp_funds_lsk.Active := false;
-  DM_Bill.Uni_cmp_qr.Active := false;
-
-  //logText('rep.1.8');
-  if p_export_pdf then
-  begin
-    // экспортировать в PDF
-    frxPDFExport1.FileName := p_exportPdfPath;
-    frxReport1.Export(frxPDFExport1);
-  end
-  else if p_export_flow then
-  begin
-    // экспортировать в PDF потоком
-   // try
-      //try
-        //logText('exp.1.0');
-    exportPdf := TfrxPDFExport.Create(nil);
-    //logText('exp.1.1');
-    exportPdf.FileName := p_exportPdfPath;
-    //logText('exp.1.2');
-    exportPdf.ShowDialog := False;
-    //logText('exp.1.3');
-    exportPdf.OverwritePrompt := False;
-    //logText('exp.1.4');
-    report.Export(exportPdf);
-    //finally
-      //logText('exp.1.5');
-    FreeAndNil(exportPdf);
-    //exportPdf.Free;
-    //logText('exp.1.6');
-    //report.Free;
-    FreeAndNil(report);
-    //logText('exp.1.7');
-  //end;
-
-  {      frxPDFExport1.FileName := p_exportPdfPath;
-        frxPDFExport1.ShowDialog := False;
-        frxPDFExport1.OverwritePrompt := False;
-        frxReport1.Export(frxPDFExport1);
-        }
-{    except
-    //logText('Ошибка экспорта в PDF #1');
-    //logText('exp_repeate.1.0');
-    exportPdf := TfrxPDFExport.Create(nil);
-    //logText('exp_repeate.1.1');
-    exportPdf.FileName := p_exportPdfPath;
-    //logText('exp_repeate.1.2');
-    exportPdf.ShowDialog := False;
-    //logText('exp_repeate.1.3');
-    exportPdf.OverwritePrompt := False;
-    //logText('exp_repeate.1.4');
-    report.Export(exportPdf);
-  //finally
-    //logText('exp_repeate.1.5');
-    //exportPdf.Free;
-    FreeAndNil(exportPdf);
-    //logText('exp_repeate.1.6');
-    //report.Free;
-    FreeAndNil(report);
-    //logText('exp_repeate.1.7');
-
-//     ShowMessage('Ошибка экспорта в PDF #1');
-end;}
-  end
-  else
-    // показать отчет
-    frxReport1.ShowPreparedReport;
-
 end;
 
 // составной счет
@@ -755,7 +725,7 @@ procedure TForm_print_bills.compound_report(p_var: Integer);
 var
   pKul, pNd, pKw: Variant;
   pKlskId, Pos, cnt: Integer;
-  filePathExport: string;
+  filePathExport, expEmailPrefix: string;
 begin
   if not VarIsNull(DBLookupComboboxEh2.KeyValue) then
     pKul := DBLookupComboboxEh2.KeyValue
@@ -800,10 +770,18 @@ begin
           DM_Bill.Uni_spr_bill_print.FieldByName('REU').AsString,
           StrToInt(Edit1.Text));
 
+        if DM_Bill.Uni_spr_bill_print.FieldByName('IS_EXPORT_EMAIL').AsInteger
+          = 1 then
+          expEmailPrefix := 'email_'
+        else
+          expEmailPrefix := '';
+
         while not DM_Bill2.OD_ls_cnt.Eof do
         begin
-          filePathExport := edtExpportPath.Text + '\' + lkpMgFrom.EditValue + '\'
-            +
+          filePathExport :=
+            edtExpportPath.Text + '\' + lkpMgFrom.EditValue +
+            '\'
+            + expEmailPrefix +
             DM_Bill.Uni_spr_bill_print.FieldByName('REU').AsString
             + '_'
             + DM_Bill.Uni_spr_bill_print.FieldByName('PREFIX').AsString
@@ -823,7 +801,8 @@ begin
             chkExportPDF.Checked, frxReport1, frxPDFExport1, //115331, 126623,
             DM_Bill2.OD_ls_cnt.FieldByName('first_rec').AsInteger,
             DM_Bill2.OD_ls_cnt.FieldByName('last_rec').AsInteger,
-            chkExportFlow.Checked
+            chkExportFlow.Checked,
+            DM_Bill.Uni_spr_bill_print.FieldByName('IS_EXPORT_EMAIL').AsInteger
             );
           cxProgressBar1.Properties.Text := '';
 
@@ -835,7 +814,7 @@ begin
       end;
       DM_Bill.Uni_spr_bill_print.Next;
     end;
-    Application.MessageBox('Экспорт выполнен', 'Внимание!', MB_OK + 
+    Application.MessageBox('Экспорт выполнен', 'Внимание!', MB_OK +
       MB_ICONINFORMATION + MB_TOPMOST);
   end
   else
@@ -849,7 +828,7 @@ begin
       chkExportPDF.Checked, frxReport1, frxPDFExport1,
       DM_Bill2.OD_ls_cnt.FieldByName('first_rec').AsInteger,
       DM_Bill2.OD_ls_cnt.FieldByName('last_rec').AsInteger,
-      chkExportFlow.Checked
+      chkExportFlow.Checked, 0
       );
   end;
 

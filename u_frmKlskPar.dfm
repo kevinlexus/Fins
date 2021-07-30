@@ -1,6 +1,6 @@
 object frmKlskPar: TfrmKlskPar
-  Left = 241
-  Top = 526
+  Left = 205
+  Top = 626
   Width = 527
   Height = 349
   Caption = #1055#1072#1088#1072#1084#1077#1090#1088#1099
