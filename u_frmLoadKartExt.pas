@@ -88,9 +88,6 @@ type
     cxGrid1DBTableView1INSAL: TcxGridDBColumn;
     cxGrid1DBTableView1CHRG: TcxGridDBColumn;
     cxGrid1DBTableView1PAYMENT: TcxGridDBColumn;
-    Panel3: TPanel;
-    Button5: TButton;
-    Button6: TButton;
     OD_loadKartExtRASCHET_SCHET: TStringField;
     cxGrid1DBTableView1RASCHET_SCHET: TcxGridDBColumn;
     Memo3: TMemo;
@@ -115,11 +112,10 @@ type
     procedure Button4Click(Sender: TObject);
     procedure cxDateEdit3PropertiesCloseUp(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
+    procedure init(pOrgId:Integer);
   private
-    { Private declarations }
+    orgId: Integer;
   public
-    { Public declarations }
   end;
 
 var
@@ -154,8 +150,8 @@ begin
         Form_status.Update;
         l_res :=
           DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA.HTTP_REQ',
-          ['/loadFileKartExt/' + ExtractFileName(OpenDialog1.FileName), null, null,
-          'GET']);
+          ['loadFileKartExt/' + ExtractFileName(OpenDialog1.FileName)+'/'+IntToStr(orgId), null, null,
+          'GET', Form_main.javaServer]);
         Form_status.Close;
         if l_res = 'PROCESS' then
           msg2('Выполняется загрузка файла!', 'Внимание!',
@@ -192,7 +188,7 @@ begin
     if not (OD_loadKartExt.State in [dsBrowse]) then
       OD_loadKartExt.Post;
     DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA.HTTP_REQ',
-      ['/loadApprovedKartExt', null, null, 'GET']);
+      ['loadApprovedKartExt/'+IntToStr(orgId), null, null, 'GET', Form_main.javaServer]);
     Form_status.Close;
     Application.MessageBox('Лиц.счета успешно сохранены!', 'Внимание!', MB_OK
       + MB_ICONINFORMATION + MB_TOPMOST);
@@ -272,9 +268,9 @@ begin
       Form_status.Update;
       l_res :=                                               
         DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA.HTTP_REQ',
-        ['/unloadPaymentFileKartExt/' + Edit1.Text
-         +'/'+ cxDateEdit1.Text +'/'+ cxDateEdit2.Text, null, null,
-        'GET']);
+        ['unloadPaymentFileKartExt/' + Edit1.Text
+         +'/'+ cxDateEdit1.Text +'/'+ cxDateEdit2.Text+'/'+IntToStr(orgId), null, null,
+        'GET', Form_main.javaServer]);
       Form_status.Close;
       if l_res = 'PROCESS' then
         msg2('Выполняется выгрузка файла!', 'Внимание!',
@@ -396,32 +392,37 @@ begin
 
 end;
 
-procedure TfrmLoadKartExt.FormCreate(Sender: TObject);
+procedure TfrmLoadKartExt.init(pOrgId:Integer);
 begin
+  orgId:=pOrgId;
   cxDateEdit1.Date := Form_Main.cur_dt;
   cxDateEdit2.Date := Form_Main.cur_dt;
   cxDateEdit3.Date := Form_Main.cur_dt;
 
   PageControl1.ActivePageIndex:=0;
 
-  if getDoublePar(Form_main.paramList, 'EXT_LSK_LOAD_TP') = 0 then
+//  if getDoublePar(Form_main.paramList, 'EXT_LSK_LOAD_TP') = 0 then
+  if orgId = 14 then
     begin
-      // Полыс
+      // Полыс, ЧГК
       cxGrid1DBTableView1INSAL.Visible:=false;
       cxGrid1DBTableView1CHRG.Visible:=false;
       cxGrid1DBTableView1PAYMENT.Visible:=false;
       cxGrid1DBTableView1SUMMA.Visible:=false;
-      Panel3.Visible:=False;
       Memo1.Visible:=False;
+      Caption:='Загрузка внешних лиц.счетов ЧГК';
     end
-    else
+    else if orgId = 90 then
     begin
-      // Кис
+      // Кис, ФКР
       Memo3.Visible:=False;
       TabSheet2.TabVisible:=False;
-      Panel1.Visible:=False;
-    end;
-
+      Caption:='Загрузка внешних лиц.счетов ФКР';
+    end
+    else
+       Application.MessageBox(PChar('Некорректный orgId!='+IntToStr(orgId)), 'Внимание!', MB_OK + 
+         MB_ICONSTOP + MB_TOPMOST);
+         
 end;
 
 end.

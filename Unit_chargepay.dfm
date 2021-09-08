@@ -1,6 +1,6 @@
 object Form_chargepay: TForm_chargepay
-  Left = 973
-  Top = 323
+  Left = 975
+  Top = 324
   Width = 835
   Height = 482
   BorderIcons = [biSystemMenu, biMinimize]
@@ -1057,7 +1057,7 @@ object Form_chargepay: TForm_chargepay
     Top = 184
   end
   object frxrprt_e: TfrxReport
-    Version = '5.1.9'
+    Version = '6.2.11'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1088,6 +1088,7 @@ object Form_chargepay: TForm_chargepay
         Font.Height = -16
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = 14211288
       end
       item
@@ -1097,6 +1098,7 @@ object Form_chargepay: TForm_chargepay
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = 15790320
       end
       item
@@ -1106,6 +1108,7 @@ object Form_chargepay: TForm_chargepay
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = 15790320
       end
       item
@@ -1115,6 +1118,7 @@ object Form_chargepay: TForm_chargepay
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
       end
       item
         Name = 'Group footer'
@@ -1132,6 +1136,7 @@ object Form_chargepay: TForm_chargepay
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Frame.Width = 2.000000000000000000
       end>
     object Data: TfrxDataPage
@@ -1146,12 +1151,15 @@ object Form_chargepay: TForm_chargepay
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Height = 45.354360000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Width = 457.323130000000000000
           Height = 18.897650000000000000
           AutoWidth = True
@@ -1160,6 +1168,7 @@ object Form_chargepay: TForm_chargepay
           Font.Height = -15
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 15000804
           HAlign = haCenter
           Memo.UTF8 = (
@@ -1171,10 +1180,12 @@ object Form_chargepay: TForm_chargepay
       end
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 41.574830000000000000
         Top = 86.929190000000000000
         Width = 718.110700000000000000
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 64.252010000000000000
           Width = 718.110236220000000000
           Height = 22.677180000000000000
@@ -1183,11 +1194,13 @@ object Form_chargepay: TForm_chargepay
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 2.000000000000000000
           HAlign = haCenter
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 64.252010000000000000
           Width = 78.000000000000000000
           Height = 41.574830000000000000
@@ -1196,6 +1209,7 @@ object Form_chargepay: TForm_chargepay
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 15790320
           HAlign = haCenter
           Memo.UTF8 = (
@@ -1204,6 +1218,7 @@ object Form_chargepay: TForm_chargepay
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 142.252010000000000000
           Width = 78.000000000000000000
           Height = 22.677180000000000000
@@ -1212,6 +1227,7 @@ object Form_chargepay: TForm_chargepay
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 15790320
           HAlign = haCenter
           Memo.UTF8 = (
@@ -1219,6 +1235,7 @@ object Form_chargepay: TForm_chargepay
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 220.252010000000000000
           Width = 78.000000000000000000
           Height = 22.677180000000000000
@@ -1227,6 +1244,7 @@ object Form_chargepay: TForm_chargepay
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 15790320
           HAlign = haCenter
           Memo.UTF8 = (
@@ -1234,6 +1252,7 @@ object Form_chargepay: TForm_chargepay
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 5.858070000000000000
           Width = 56.000000000000000000
           Height = 22.677180000000000000
@@ -1242,6 +1261,7 @@ object Form_chargepay: TForm_chargepay
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 15790320
           HAlign = haCenter
           Memo.UTF8 = (
@@ -1251,6 +1271,7 @@ object Form_chargepay: TForm_chargepay
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 23.677180000000000000
         Top = 188.976500000000000000
         Width = 718.110700000000000000
@@ -1258,6 +1279,7 @@ object Form_chargepay: TForm_chargepay
         DataSetName = 'frxDBDataset1'
         RowCount = 0
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 64.252010000000000000
           Width = 78.000000000000000000
           Height = 18.897650000000000000
@@ -1271,12 +1293,14 @@ object Form_chargepay: TForm_chargepay
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             '[frxDBDataset1."CHARGE"]')
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 138.472480000000000000
           Width = 78.000000000000000000
           Height = 18.897650000000000000
@@ -1290,12 +1314,14 @@ object Form_chargepay: TForm_chargepay
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             '[frxDBDataset1."PAYMENT"]')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 216.472480000000000000
           Width = 78.000000000000000000
           Height = 18.897650000000000000
@@ -1309,12 +1335,14 @@ object Form_chargepay: TForm_chargepay
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             '[frxDBDataset1."DOLG"]')
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 5.858070000000000000
           Width = 56.000000000000000000
           Height = 18.897650000000000000
@@ -1326,6 +1354,7 @@ object Form_chargepay: TForm_chargepay
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             '[frxDBDataset1."MG"]')
@@ -1334,10 +1363,12 @@ object Form_chargepay: TForm_chargepay
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 52.913420000000000000
         Top = 234.330860000000000000
         Width = 718.110700000000000000
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 64.252010000000000000
           Width = 74.220470000000000000
           Height = 18.897650000000000000
@@ -1350,6 +1381,7 @@ object Form_chargepay: TForm_chargepay
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = 15790320
           HAlign = haRight
           Memo.UTF8 = (
@@ -1357,6 +1389,7 @@ object Form_chargepay: TForm_chargepay
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 138.472480000000000000
           Width = 78.000000000000000000
           Height = 18.897650000000000000
@@ -1369,6 +1402,7 @@ object Form_chargepay: TForm_chargepay
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = 15790320
           HAlign = haRight
           Memo.UTF8 = (
@@ -1376,6 +1410,7 @@ object Form_chargepay: TForm_chargepay
           ParentFont = False
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 216.472480000000000000
           Width = 78.000000000000000000
           Height = 18.897650000000000000
@@ -1388,6 +1423,7 @@ object Form_chargepay: TForm_chargepay
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = 15790320
           HAlign = haRight
           Memo.UTF8 = (
@@ -1395,6 +1431,7 @@ object Form_chargepay: TForm_chargepay
           ParentFont = False
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Width = 56.000000000000000000
           Height = 18.897650000000000000
@@ -1405,12 +1442,14 @@ object Form_chargepay: TForm_chargepay
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 15790320
           Memo.UTF8 = (
             #1056#152#1057#8218#1056#1109#1056#1110#1056#1109':')
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 30.236240000000000000
           Width = 229.858380000000000000
@@ -1422,6 +1461,7 @@ object Form_chargepay: TForm_chargepay
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#160#1056#176#1057#1027#1056#1111#1056#181#1057#8225#1056#176#1057#8218#1056#176#1056#1029#1056#1109': [Now]')
           ParentFont = False
@@ -1621,7 +1661,7 @@ object Form_chargepay: TForm_chargepay
     Top = 320
   end
   object frxReport1: TfrxReport
-    Version = '5.1.9'
+    Version = '6.2.11'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1652,6 +1692,7 @@ object Form_chargepay: TForm_chargepay
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
     end
   end
 end

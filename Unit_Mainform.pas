@@ -4,26 +4,26 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Menus, ComCtrls, ToolWin, ImgList, DM_module1, 
+  Dialogs, Menus, ComCtrls, ToolWin, ImgList, DM_module1,
   IdComponent, ExtCtrls, StdCtrls, DBCtrls,
   DB, OracleData,
   IniFiles,
   CustomizeDlg, CoolTrayIcon, Oracle, DBCtrlsEh, OleCtl, Utils, StrUtils,
   MemTableDataEh, DataDriverEh, wwdbedit, Wwintl, DVButils, ShellAPI,
   frxClass, frxDBSet, frxExportCSV,
-  frxExportPDF,                                                       
-  frxExportBIFF, frxExportText, frxExportRTF, ComObj,                                      
-  Unit_spr_redirect, u_frmTwoPeriods, cxClasses, cxEdit,                                            
+  frxExportPDF,
+  frxExportBIFF, frxExportText, frxExportRTF, ComObj,
+  Unit_spr_redirect, u_frmTwoPeriods, cxClasses, cxEdit,
   cxEditRepositoryItems, frxExportBaseDialog;
-type                                                                             
+type
   TShowForm = function(App, Scr, Sess_: integer): integer; stdcall;
   TForm_Main = class(TForm)
     MainMenu1: TMainMenu;
-    N1: TMenuItem;                                      
-    N2: TMenuItem;               
-    N3: TMenuItem;                      
+    N1: TMenuItem;
+    N2: TMenuItem;
+    N3: TMenuItem;
     N4: TMenuItem;
-    N5: TMenuItem;                                                                                                        
+    N5: TMenuItem;
     N6: TMenuItem;
     N7: TMenuItem;
     N8: TMenuItem;
@@ -221,6 +221,12 @@ type
     N3105211: TMenuItem;
     N1706211: TMenuItem;
     N140721PDF1: TMenuItem;
+    N147: TMenuItem;
+    N1208211: TMenuItem;
+    PanelJavaTest: TPanel;
+    Label2: TLabel;
+    ProdJavaServer1: TMenuItem;
+    N2608211: TMenuItem;
     procedure N5Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure N7Click(Sender: TObject);
@@ -290,7 +296,7 @@ type
     procedure OracleEvent1Event(Sender: TOracleEvent; const ObjectName: string;
       const Info: Variant);
     procedure N67Click(Sender: TObject);
-    procedure N69Click(Sender: TObject);       
+    procedure N69Click(Sender: TObject);
     procedure N70Click(Sender: TObject);
     procedure OLAP1Click(Sender: TObject);
     procedure N71Click(Sender: TObject);
@@ -303,18 +309,18 @@ type
     procedure N77Click(Sender: TObject);
     procedure FormPaint(Sender: TObject);
     procedure N78Click(Sender: TObject);
-    procedure N79Click(Sender: TObject);           
-    procedure N80Click(Sender: TObject);                                                               
+    procedure N79Click(Sender: TObject);
+    procedure N80Click(Sender: TObject);
     procedure N81Click(Sender: TObject);
     procedure N82Click(Sender: TObject);
-    procedure N83Click(Sender: TObject);                          
+    procedure N83Click(Sender: TObject);
     procedure N84Click(Sender: TObject);
     procedure N85Click(Sender: TObject);
-    procedure N87Click(Sender: TObject);                   
+    procedure N87Click(Sender: TObject);
     procedure N88Click(Sender: TObject);
     procedure N90Click(Sender: TObject);
     procedure Oracle1Click(Sender: TObject);
-    procedure N10Click(Sender: TObject);                 
+    procedure N10Click(Sender: TObject);
     procedure DVB1Click(Sender: TObject);
     procedure N91Click(Sender: TObject);
     procedure N92Click(Sender: TObject);
@@ -384,6 +390,9 @@ type
     procedure N145Click(Sender: TObject);
     procedure N146Click(Sender: TObject);
     procedure N872Click(Sender: TObject);
+    procedure N147Click(Sender: TObject);
+    procedure Options1Click(Sender: TObject);
+    procedure ProdJavaServer1Click(Sender: TObject);
   private
   public
     // выбранный период при переключении в архив
@@ -436,7 +445,8 @@ type
     cur_ECR: OleVariant;
     // текущая дата
     cur_dt: TDateTime;
-
+    // сервер Java "", - прод. 2 - тест 
+    javaServer: string;
     // Переменные для фильтра
     reu_: string;
     kul_: string;
@@ -464,6 +474,8 @@ type
     accessList: TAccessRecArray;
     // массив параметров
     paramList: TParamRecArray;
+    // массив U_LIST
+    uList: TUlistRecArray;
     // параметры для карточки проживающих и прочего
     isAdmin: Boolean;
     isEditKlsk: Boolean;
@@ -2601,6 +2613,8 @@ begin
   begin
     Application.CreateForm(TfrmLoadKartExt, frmLoadKartExt);
   end;
+  frmLoadKartExt.init(90);
+
 end;
 
 procedure TForm_Main.N144Click(Sender: TObject);
@@ -2637,6 +2651,30 @@ begin
   if FF('Form_olap', 0) = 0 then
     Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('98', 1, 1);
+end;
+
+procedure TForm_Main.N147Click(Sender: TObject);
+begin
+  if FF('frmLoadKartExt', 1) = 0 then
+  begin
+    Application.CreateForm(TfrmLoadKartExt, frmLoadKartExt);
+  end;
+  frmLoadKartExt.init(14);
+
+end;
+
+procedure TForm_Main.Options1Click(Sender: TObject);
+begin
+  Form_Main.javaServer:='2';
+  Form_Main.PanelJavaTest.Visible:=True;
+
+end;
+
+procedure TForm_Main.ProdJavaServer1Click(Sender: TObject);
+begin
+  Form_Main.javaServer:='';
+  Form_Main.PanelJavaTest.Visible:=False;  
+
 end;
 
 end.

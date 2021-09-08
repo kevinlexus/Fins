@@ -1,6 +1,6 @@
 object frmKartExt: TfrmKartExt
-  Left = 382
-  Top = 366
+  Left = 699
+  Top = 499
   Width = 1086
   Height = 530
   Caption = #1042#1085#1077#1096#1085#1080#1077' '#1083#1080#1094'.'#1089#1095#1077#1090#1072
@@ -291,11 +291,11 @@ object frmKartExt: TfrmKartExt
     SQL.Strings = (
       'select '
       
-        'e.rowid, e.fk_klsk_premise, t.reu, e.lsk, e.fk_klsk_id, e.ext_ls' +
+        'e.rowid, e.fk_klsk_premise, r.reu, e.lsk, e.fk_klsk_id, e.ext_ls' +
         'k, e.fio, e.dt_crt, e.dt_upd,'
       
-        'r.reu||'#39'-'#39'||r.name_reu as name_reu, t.kul, s.name, ltrim(t.nd,'#39'0' +
-        #39') as n_nd, ltrim(t.kw,'#39'0'#39') as n_kw,'
+        'r.reu||'#39'-'#39'||r.name as name_reu, t.kul, s.name, ltrim(t.nd,'#39'0'#39') a' +
+        's n_nd, ltrim(t.kw,'#39'0'#39') as n_kw,'
       
         't.psch, t.kpr, t.opl, u.cd as lsk_tp_cd, e.v, e.insal, e.chrg, e' +
         '.payment, e.outsal, e.raschet_schet'
@@ -310,7 +310,7 @@ object frmKartExt: TfrmKartExt
       'left join scott.kart t on t.lsk=coalesce(e.lsk, d2.lsk, d3.lsk)'
       'left join scott.kart_detail a on t.lsk=a.lsk'
       'left join scott.spul s on t.kul=s.id'
-      'left join scott.s_reu_trest r on t.reu=r.reu'
+      'left join scott.t_org r on e.fk_uk=r.id'
       'left join scott.u_list u on t.fk_tp=u.id'
       'order by a.ord1'
       ''
@@ -375,7 +375,6 @@ object frmKartExt: TfrmKartExt
     QBEMode = True
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Active = True
     Top = 72
     object OD_kartExtREU: TStringField
       FieldName = 'REU'

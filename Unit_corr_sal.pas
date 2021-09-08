@@ -276,14 +276,14 @@ begin
       // 1-ая корректировка сальдо
       DataModule1.OraclePackage1.CallProcedure
         ('scott.P_JAVA.correct',
-        [1, Form_Main.cur_dt, getStrUk]);
+        [1, Form_Main.cur_dt, getStrUk, Form_main.javaServer]);
     end
     else if tp = 4 then
     begin
       // 2-ая корректировка сальдо
       DataModule1.OraclePackage1.CallProcedure
         ('scott.P_JAVA.correct',
-        [2, Form_Main.cur_dt, getStrUk]);
+        [2, Form_Main.cur_dt, getStrUk, Form_main.javaServer]);
     end
     else if tp = 5 then
     begin

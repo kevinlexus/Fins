@@ -68,6 +68,7 @@ type
     StringField2: TStringField;
     OD_list_choice: TOracleDataSet;
     UniTablePriveleges: TUniQuery;
+    OD_u_list: TOracleDataSet;
   private
     { Private declarations }
   public

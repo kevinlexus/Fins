@@ -1,7 +1,7 @@
 object DM_Bill: TDM_Bill
   OldCreateOrder = False
-  Left = 1982
-  Top = 185
+  Left = 1887
+  Top = 238
   Height = 855
   Width = 512
   object Uni_cmp_main: TUniQuery

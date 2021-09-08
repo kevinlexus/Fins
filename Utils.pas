@@ -31,6 +31,15 @@ type
 type
   TParamRecArray = array of TParamRec;
 
+  // тип - запись U_LIST
+type
+  TUListRec = record
+    id: Integer; // ID
+    cd: string; // CD
+  end;
+type
+  TUListRecArray = array of TUListRec;
+
 function FF(form_str_: string; show_: Integer): Integer; //FindForm
 function exp_to_dbf(dset: TDataSet; dbfname_: string): Integer;
 function exp_to_dbf_prec(dset: TOracleDataset; aTable, aSchema, aDbfname:
@@ -89,6 +98,8 @@ procedure logText(text: string);
 procedure ApplySearchFilter(Controller: TcxDBDataController; Fields: string;
   Text: string);
 function CheckAccess(privelege: string): Boolean;
+procedure loadListIdCd(var al: TUListRecArray);
+function getListIdByCd(var al: TUListRecArray; pId: Integer): String;
 
 implementation
 uses Unit_Mainform;
@@ -217,7 +228,8 @@ begin
     SetMenuItem(acc_, N135, 'drn135_Корр_пени');
     SetMenuItem(acc_, N141, 'drn141_Реестр_оплаты_выв_мус');
     SetMenuItem(acc_, N142, 'drn142_Реестр_кол_прож_выв_мус');
-    SetMenuItem(acc_, N143, 'drn143_Загрузка_внешних_лс');
+    SetMenuItem(acc_, N143, 'drn143_Загрузка_внешних_лс_ФКР');
+    SetMenuItem(acc_, N147, 'drn143_Загрузка_внешних_лс_ЧГК');
     SetMenuItem(acc_, N146, 'drn146_Объемы_по_счетчикам');
 
   end;
@@ -225,7 +237,8 @@ end;
 
 function CheckAccess(privelege: string): Boolean;
 begin
-  Result:= DataModule1.UniTablePriveleges.Locate('priv_name', AnsiUpperCase(privelege),
+  Result := DataModule1.UniTablePriveleges.Locate('priv_name',
+    AnsiUpperCase(privelege),
     [loCaseInsensitive]);
 end;
 
@@ -1651,6 +1664,61 @@ begin
     Sleep(250);
     Application.ProcessMessages;
   end
+end;
+
+// заполнить первоначально массив U_LIST
+
+procedure loadListIdCd(var al: TUListRecArray);
+var
+  i,size: Integer;
+  val: Double;
+begin
+  DataModule1.OD_u_list.Active:=true;
+  size:=DataModule1.OD_u_list.RecordCount+1;
+  SetLength(al, size);
+
+  DataModule1.OD_u_list.First;
+  i:=0;
+  while (not DataModule1.OD_u_list.Eof) do
+  begin
+    i:=i+1;
+    with al[i] do
+    begin
+      id := DataModule1.OD_u_list.FieldByName('id').AsInteger;
+      cd := DataModule1.OD_u_list.FieldByName('cd').AsString;
+    end;
+
+    DataModule1.OD_u_list.Next;
+  end;
+
+  DataModule1.OD_u_list.Active:=false;
+end;
+
+// получить U_LIST.ID по CD (Кэшированно)
+
+function getListIdByCd(var al: TUListRecArray; pId: Integer): String;
+var
+  size, i: Integer;
+  val: Double;
+begin
+  size := Length(al);
+  // поискать параметр в массиве
+  for i := 0 to size - 1 do
+  begin
+    with al[i] do
+    begin
+      if id = pId then
+      begin
+        // найдена запись
+        Result := cd;
+        Exit;
+      end;
+    end;
+  end;
+  // не нашли в массиве, спросить у БД
+  raise Exception.CreateFmt(
+    'Запись не найдена в массиве U_LIST! : id=''%s''', [pId]);
+
 end;
 
 end.

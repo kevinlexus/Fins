@@ -86,7 +86,7 @@ var
 
 implementation
 
-uses Utils, DM_module1;
+uses Utils, DM_module1, Unit_Mainform;
 {$R *.dfm}
 
 procedure TForm_spr_penya.FormClose(Sender: TObject;
@@ -119,14 +119,14 @@ procedure TForm_spr_penya.OD_spr_penAfterPost(DataSet: TDataSet);
 begin
     DataModule1.OraclePackage1.CallProcedure
       ('scott.P_JAVA.reloadSprPen',
-      [parNone]);
+      [parNone, Form_main.javaServer]);
 end;
 
 procedure TForm_spr_penya.OD_stav_rAfterPost(DataSet: TDataSet);
 begin
     DataModule1.OraclePackage1.CallProcedure
       ('scott.P_JAVA.reloadSprPen',
-      [parNone]);
+      [parNone, Form_main.javaServer]);
 end;
 
 end.

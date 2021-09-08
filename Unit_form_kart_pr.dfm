@@ -1,6 +1,6 @@
 object Form_kart_pr: TForm_kart_pr
-  Left = 975
-  Top = 245
+  Left = 1195
+  Top = 641
   Width = 680
   Height = 525
   BorderIcons = [biSystemMenu, biMinimize]
@@ -118,7 +118,7 @@ object Form_kart_pr: TForm_kart_pr
     Top = 72
     Width = 633
     Height = 321
-    ActivePage = TabSheet5
+    ActivePage = TabSheet3
     TabOrder = 1
     object TabSheet1: TTabSheet
       Caption = #1054#1073#1097#1072#1103' '#1080#1085#1092#1086#1088#1084#1072#1094#1080#1103
@@ -963,6 +963,32 @@ object Form_kart_pr: TForm_kart_pr
         Font.Style = [fsBold]
         ParentFont = False
       end
+      object Label45: TLabel
+        Left = 264
+        Top = 8
+        Width = 104
+        Height = 13
+        Caption = #1044#1086#1082#1091#1084#1077#1085#1090': '#1057#1077#1088#1080#1103
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label46: TLabel
+        Left = 448
+        Top = 8
+        Width = 40
+        Height = 13
+        Caption = #1053#1086#1084#1077#1088
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
       object DBDateTimeEditEh7: TDBDateTimeEditEh
         Left = 67
         Top = 24
@@ -1091,6 +1117,23 @@ object Form_kart_pr: TForm_kart_pr
         ListSource = DS_ub
         TabOrder = 0
         Visible = True
+        OnCloseUp = DBLookupComboboxEh13CloseUp
+      end
+      object cxDBTextEdit1: TcxDBTextEdit
+        Left = 376
+        Top = 0
+        DataBinding.DataField = 'DOK_DEATH_C'
+        DataBinding.DataSource = Form_kart.DS_kart_pr
+        TabOrder = 9
+        Width = 65
+      end
+      object cxDBTextEdit2: TcxDBTextEdit
+        Left = 496
+        Top = 0
+        DataBinding.DataField = 'DOK_DEATH_N'
+        DataBinding.DataSource = Form_kart.DS_kart_pr
+        TabOrder = 10
+        Width = 81
       end
     end
     object TabSheet4: TTabSheet
@@ -2558,7 +2601,7 @@ object Form_kart_pr: TForm_kart_pr
     Top = 410
   end
   object frxReport1: TfrxReport
-    Version = '5.1.9'
+    Version = '6.2.11'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -2597,12 +2640,15 @@ object Form_kart_pr: TForm_kart_pr
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Height = 619.842920000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 3.779530000000001000
           Width = 200.315090000000000000
@@ -2612,11 +2658,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#1113#1056#176#1057#1026#1057#8218#1056#1109#1057#8225#1056#1108#1056#176' '#1057#1026#1056#181#1056#1110#1056#1105#1057#1027#1057#8218#1057#1026#1056#176#1057#8224#1056#1105#1056#1105)
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 604.724800000000000000
           Top = 3.779530000000001000
           Width = 102.047310000000000000
@@ -2626,12 +2674,14 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             '[kart."LSK"]')
           ParentFont = False
         end
         object Memo38: TfrxMemoView
+          AllowVectorExport = True
           Left = 427.086890000000000000
           Top = 3.779530000000001000
           Width = 173.858380000000000000
@@ -2641,12 +2691,14 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             #1056#8250#1056#1105#1057#8224#1056#181#1056#1030#1056#1109#1056#8470' '#1057#1027#1057#8225#1056#181#1057#8218)
           ParentFont = False
         end
         object Memo40: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 26.456710000000000000
           Width = 86.929190000000000000
@@ -2656,11 +2708,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             '1.'#1056#164#1056#176#1056#1112#1056#1105#1056#187#1056#1105#1057#1039)
           ParentFont = False
         end
         object Memo41: TfrxMemoView
+          AllowVectorExport = True
           Left = 102.047310000000000000
           Top = 26.456710000000000000
           Width = 147.401670000000000000
@@ -2670,11 +2724,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[c_kart_pr."K_FAM"]')
           ParentFont = False
         end
         object Memo42: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 51.653576670000010000
           Width = 86.929190000000000000
@@ -2684,11 +2740,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             '2.'#1056#152#1056#1112#1057#1039)
           ParentFont = False
         end
         object Memo43: TfrxMemoView
+          AllowVectorExport = True
           Left = 102.047310000000000000
           Top = 51.913420000000000000
           Width = 147.401670000000000000
@@ -2698,11 +2756,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[c_kart_pr."K_IM"]')
           ParentFont = False
         end
         object Memo44: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 76.850443330000000000
           Width = 86.929190000000000000
@@ -2712,11 +2772,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             '3.'#1056#1115#1057#8218#1057#8225#1056#181#1057#1027#1057#8218#1056#1030#1056#1109)
           ParentFont = False
         end
         object Memo45: TfrxMemoView
+          AllowVectorExport = True
           Left = 102.047310000000000000
           Top = 77.590600000000000000
           Width = 147.401670000000000000
@@ -2726,11 +2788,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[c_kart_pr."K_OT"]')
           ParentFont = False
         end
         object Memo46: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 102.047310000000000000
           Width = 139.842610000000000000
@@ -2740,11 +2804,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             '4.'#1056#1116#1056#176#1057#8224#1056#1105#1056#1109#1056#1029#1056#176#1056#187#1057#1034#1056#1029#1056#1109#1057#1027#1057#8218#1057#1034)
           ParentFont = False
         end
         object Memo47: TfrxMemoView
+          AllowVectorExport = True
           Left = 154.960730000000000000
           Top = 102.047310000000000000
           Width = 162.519790000000000000
@@ -2754,11 +2820,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[c_kart_pr."NAC_NAME"]')
           ParentFont = False
         end
         object Memo48: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 136.063080000000000000
           Width = 124.724490000000000000
@@ -2768,11 +2836,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             '7.'#1056#8221#1056#176#1057#8218#1056#176' '#1057#1026#1056#1109#1056#182#1056#1169#1056#181#1056#1029#1056#1105#1057#1039)
           ParentFont = False
         end
         object Memo49: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 158.740260000000000000
           Width = 147.401670000000000000
@@ -2782,11 +2852,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[c_kart_pr."DAT_ROG"]')
           ParentFont = False
         end
         object Memo50: TfrxMemoView
+          AllowVectorExport = True
           Left = 188.976500000000000000
           Top = 132.283550000000000000
           Width = 159.370181670000000000
@@ -2796,11 +2868,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             '8.'#1056#1114#1056#181#1057#1027#1057#8218#1056#1109' '#1057#1026#1056#1109#1056#182#1056#1169#1056#181#1056#1029#1056#1105#1057#1039)
           ParentFont = False
         end
         object Memo51: TfrxMemoView
+          AllowVectorExport = True
           Left = 188.976500000000000000
           Top = 151.181200000000000000
           Width = 521.575140000000000000
@@ -2810,11 +2884,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[c_kart_pr."B_PLACE"]')
           ParentFont = False
         end
         object Line4: TfrxLineView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 132.283550000000000000
           Width = 710.551640000000000000
@@ -2822,6 +2898,7 @@ object Form_kart_pr: TForm_kart_pr
           Frame.Typ = [ftTop]
         end
         object Memo52: TfrxMemoView
+          AllowVectorExport = True
           Left = 427.086890000000000000
           Top = 26.456710000000000000
           Width = 124.724490000000000000
@@ -2831,11 +2908,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             '5.'#1056#1115#1057#8218#1056#1029#1056#1109#1057#8364#1056#181#1056#1029#1056#1105#1056#181)
           ParentFont = False
         end
         object Memo53: TfrxMemoView
+          AllowVectorExport = True
           Left = 559.370440000000000000
           Top = 26.456710000000000000
           Width = 147.401670000000000000
@@ -2845,11 +2924,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[c_kart_pr."RELAT_NAME"]')
           ParentFont = False
         end
         object Memo54: TfrxMemoView
+          AllowVectorExport = True
           Left = 427.086890000000000000
           Top = 52.913420000000000000
           Width = 124.724490000000000000
@@ -2859,11 +2940,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             '6.'#1056#8220#1057#1026#1056#176#1056#182#1056#1169#1056#176#1056#1029#1057#1027#1057#8218#1056#1030#1056#1109)
           ParentFont = False
         end
         object Memo55: TfrxMemoView
+          AllowVectorExport = True
           Left = 559.370440000000000000
           Top = 52.913420000000000000
           Width = 147.401670000000000000
@@ -2873,11 +2956,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[c_kart_pr."CITIZ_NAME"]')
           ParentFont = False
         end
         object Line5: TfrxLineView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 181.417440000000000000
           Width = 710.551640000000000000
@@ -2885,6 +2970,7 @@ object Form_kart_pr: TForm_kart_pr
           Frame.Typ = [ftTop]
         end
         object Line6: TfrxLineView
+          AllowVectorExport = True
           Left = 173.858380000000000000
           Top = 132.283550000000000000
           Height = 49.133890000000000000
@@ -2892,24 +2978,28 @@ object Form_kart_pr: TForm_kart_pr
           Frame.Typ = [ftLeft]
         end
         object Line7: TfrxLineView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Height = 132.283550000000000000
           Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Line8: TfrxLineView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Width = 710.551640000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Line9: TfrxLineView
+          AllowVectorExport = True
           Left = 714.331170000000000000
           Height = 132.283550000000000000
           Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Line10: TfrxLineView
+          AllowVectorExport = True
           Left = 714.331170000000000000
           Top = 132.283550000000000000
           Height = 309.921460000000000000
@@ -2917,6 +3007,7 @@ object Form_kart_pr: TForm_kart_pr
           Frame.Typ = [ftLeft]
         end
         object Line11: TfrxLineView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 132.283550000000000000
           Height = 49.133890000000000000
@@ -2924,6 +3015,7 @@ object Form_kart_pr: TForm_kart_pr
           Frame.Typ = [ftLeft]
         end
         object Memo56: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 188.976500000000000000
           Width = 185.196970000000000000
@@ -2933,11 +3025,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             '9.'#1056#1115#1057#8218#1056#1108#1057#1107#1056#1169#1056#176' '#1056#1105' '#1056#1108#1056#1109#1056#1110#1056#1169#1056#176' '#1056#1111#1057#1026#1056#1105#1056#177#1057#8249#1056#187)
           ParentFont = False
         end
         object Memo57: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 215.433210000000000000
           Width = 64.252010000000000000
@@ -2947,11 +3041,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#1115#1056#177#1056#187#1056#176#1057#1027#1057#8218#1057#1034)
           ParentFont = False
         end
         object Memo58: TfrxMemoView
+          AllowVectorExport = True
           Left = 79.370130000000000000
           Top = 215.433210000000000000
           Width = 260.787570000000000000
@@ -2961,11 +3057,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[c_kart_pr."FRM_REGN_NAME"]')
           ParentFont = False
         end
         object Memo59: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 238.110390000000000000
           Width = 64.252010000000000000
@@ -2975,11 +3073,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#160#1056#176#1056#8470#1056#1109#1056#1029)
           ParentFont = False
         end
         object Memo60: TfrxMemoView
+          AllowVectorExport = True
           Left = 79.370130000000000000
           Top = 238.110390000000000000
           Width = 260.787570000000000000
@@ -2989,11 +3089,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[c_kart_pr."FRM_DISTR_NAME"]')
           ParentFont = False
         end
         object Memo61: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 260.787570000000000000
           Width = 64.252010000000000000
@@ -3003,11 +3105,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#8220#1056#1109#1057#1026#1056#1109#1056#1169)
           ParentFont = False
         end
         object Memo62: TfrxMemoView
+          AllowVectorExport = True
           Left = 79.370130000000000000
           Top = 260.787570000000000000
           Width = 260.787570000000000000
@@ -3017,11 +3121,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[c_kart_pr."FRM_TOWN"]')
           ParentFont = False
         end
         object Memo63: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 287.244280000000000000
           Width = 64.252010000000000000
@@ -3031,11 +3137,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#8221#1056#176#1057#8218#1056#176)
           ParentFont = False
         end
         object Memo64: TfrxMemoView
+          AllowVectorExport = True
           Left = 79.370130000000000000
           Top = 287.244280000000000000
           Width = 260.787570000000000000
@@ -3045,11 +3153,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[c_kart_pr."FRM_DAT"]')
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 385.512060000000000000
           Top = 215.433210000000000000
           Width = 26.456710000000000000
@@ -3059,11 +3169,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#1032#1056#187'.')
           ParentFont = False
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 419.527830000000000000
           Top = 215.433210000000000000
           Width = 260.787570000000000000
@@ -3073,11 +3185,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[c_kart_pr."FRM_STREET_NAME"]')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 385.512060000000000000
           Top = 238.110390000000000000
           Width = 34.015770000000000000
@@ -3087,11 +3201,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#8221#1056#1109#1056#1112)
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 419.527830000000000000
           Top = 238.110390000000000000
           Width = 260.787570000000000000
@@ -3101,11 +3217,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[c_kart_pr."FRM_ND"]')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 385.512060000000000000
           Top = 264.567100000000000000
           Width = 34.015770000000000000
@@ -3115,11 +3233,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#1113#1056#1030'.')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 419.527830000000000000
           Top = 264.567100000000000000
           Width = 260.787570000000000000
@@ -3129,11 +3249,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[c_kart_pr."FRM_KW"]')
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 181.417440000000000000
           Height = 260.787570000000000000
@@ -3141,6 +3263,7 @@ object Form_kart_pr: TForm_kart_pr
           Frame.Typ = [ftLeft]
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 309.921460000000000000
           Width = 710.551640000000000000
@@ -3148,6 +3271,7 @@ object Form_kart_pr: TForm_kart_pr
           Frame.Typ = [ftTop]
         end
         object Line15: TfrxLineView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 343.937230000000000000
           Width = 710.551640000000000000
@@ -3155,6 +3279,7 @@ object Form_kart_pr: TForm_kart_pr
           Frame.Typ = [ftTop]
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 11.338590000000000000
           Top = 321.260050000000000000
           Width = 117.165430000000000000
@@ -3164,11 +3289,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             '10.'#1056#8221#1056#1109#1056#1108#1057#1107#1056#1112#1056#181#1056#1029#1057#8218)
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 136.063080000000000000
           Top = 321.260050000000000000
           Width = 49.133890000000000000
@@ -3178,12 +3305,14 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#1038#1056#181#1057#1026#1056#1105#1057#1039)
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 188.976500000000000000
           Top = 321.260050000000000000
           Width = 71.811070000000000000
@@ -3193,12 +3322,14 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#1116#1056#1109#1056#1112#1056#181#1057#1026)
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 347.716760000000000000
           Width = 120.944960000000000000
@@ -3208,11 +3339,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[c_kart_pr."DOC_TP_NAME"]')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 136.063080000000000000
           Top = 347.716760000000000000
           Width = 49.133890000000000000
@@ -3222,11 +3355,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[c_kart_pr."DOK_C"]')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 188.976500000000000000
           Top = 347.716760000000000000
           Width = 68.031540000000000000
@@ -3236,11 +3371,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[c_kart_pr."DOK_N"]')
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 264.567100000000000000
           Top = 321.260050000000000000
           Width = 445.984540000000000000
@@ -3250,12 +3387,14 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#8221#1056#1109#1056#1108#1057#1107#1056#1112#1056#181#1056#1029#1057#8218' '#1056#1030#1057#8249#1056#1169#1056#176#1056#1029)
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 264.567100000000000000
           Top = 347.716760000000000000
           Width = 445.984540000000000000
@@ -3265,11 +3404,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[c_kart_pr."DOK_V"]  [c_kart_pr."DOK_D"]')
           ParentFont = False
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Left = 132.283550000000000000
           Top = 309.921460000000000000
           Height = 34.015770000000000000
@@ -3277,6 +3418,7 @@ object Form_kart_pr: TForm_kart_pr
           Frame.Typ = [ftLeft]
         end
         object Line12: TfrxLineView
+          AllowVectorExport = True
           Left = 188.976500000000000000
           Top = 309.921460000000000000
           Height = 34.015770000000000000
@@ -3284,6 +3426,7 @@ object Form_kart_pr: TForm_kart_pr
           Frame.Typ = [ftLeft]
         end
         object Line13: TfrxLineView
+          AllowVectorExport = True
           Left = 264.567100000000000000
           Top = 309.921460000000000000
           Height = 34.015770000000000000
@@ -3291,6 +3434,7 @@ object Form_kart_pr: TForm_kart_pr
           Frame.Typ = [ftLeft]
         end
         object Line14: TfrxLineView
+          AllowVectorExport = True
           Left = 377.953000000000000000
           Top = 181.417440000000000000
           Height = 128.504020000000000000
@@ -3298,6 +3442,7 @@ object Form_kart_pr: TForm_kart_pr
           Frame.Typ = [ftLeft]
         end
         object Line16: TfrxLineView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 377.953000000000000000
           Width = 710.551640000000000000
@@ -3305,6 +3450,7 @@ object Form_kart_pr: TForm_kart_pr
           Frame.Typ = [ftTop]
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 385.512060000000000000
           Width = 188.976500000000000000
@@ -3314,11 +3460,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             '11.'#1056#1106#1056#1169#1057#1026#1056#181#1057#1027' '#1056#1112#1056#181#1057#1027#1057#8218#1056#1109#1056#182#1056#1105#1057#8218#1056#181#1056#187#1057#1034#1057#1027#1057#8218#1056#1030#1056#176)
           ParentFont = False
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 204.094620000000000000
           Top = 385.512060000000000000
           Width = 506.457020000000000000
@@ -3328,6 +3476,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             
               '[c_kart_pr."TOWN_NAME"]  '#1056#1032#1056#187'. [kart."STREET_NAME"],  '#1056#1169#1056#1109#1056#1112' [ka' +
@@ -3335,6 +3484,7 @@ object Form_kart_pr: TForm_kart_pr
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 419.527830000000000000
           Width = 207.874150000000000000
@@ -3344,11 +3494,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             '12.'#1056#1114#1056#181#1057#1027#1057#8218#1056#1109' '#1057#1026#1056#176#1056#177#1056#1109#1057#8218#1057#8249' '#1056#1105' '#1056#1169#1056#1109#1056#187#1056#182#1056#1029#1056#1109#1057#1027#1057#8218#1057#1034)
           ParentFont = False
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 219.212740000000000000
           Top = 419.527830000000000000
           Width = 506.457020000000000000
@@ -3358,11 +3510,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[c_kart_pr."W_PLACE"]')
           ParentFont = False
         end
         object Line17: TfrxLineView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 442.205010000000000000
           Width = 710.551640000000000000
@@ -3379,12 +3533,15 @@ object Form_kart_pr: TForm_kart_pr
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
       object ReportTitle2: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Height = 676.535870000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 3.779530000000001000
           Width = 238.110390000000000000
@@ -3394,6 +3551,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             '13.'#1056#8221#1056#181#1057#8218#1056#1105' '#1056#1169#1056#1109' 14-'#1056#187#1056#181#1057#8218#1056#1029#1056#181#1056#1110#1056#1109' '#1056#1030#1056#1109#1056#183#1057#1026#1056#176#1057#1027#1057#8218#1056#176
             
@@ -3402,6 +3560,7 @@ object Form_kart_pr: TForm_kart_pr
           ParentFont = False
         end
         object Line18: TfrxLineView
+          AllowVectorExport = True
           Left = 264.567100000000000000
           Top = 22.677180000000000000
           Width = 434.645950000000000000
@@ -3409,6 +3568,7 @@ object Form_kart_pr: TForm_kart_pr
           Frame.Typ = [ftTop]
         end
         object Line19: TfrxLineView
+          AllowVectorExport = True
           Left = 264.567100000000000000
           Top = 49.133889999999990000
           Width = 434.645950000000000000
@@ -3416,6 +3576,7 @@ object Form_kart_pr: TForm_kart_pr
           Frame.Typ = [ftTop]
         end
         object Line20: TfrxLineView
+          AllowVectorExport = True
           Left = 264.567100000000000000
           Top = 75.590599999999990000
           Width = 434.645950000000000000
@@ -3423,6 +3584,7 @@ object Form_kart_pr: TForm_kart_pr
           Frame.Typ = [ftTop]
         end
         object Line21: TfrxLineView
+          AllowVectorExport = True
           Left = 264.567100000000000000
           Top = 102.047310000000000000
           Width = 434.645950000000000000
@@ -3430,6 +3592,7 @@ object Form_kart_pr: TForm_kart_pr
           Frame.Typ = [ftTop]
         end
         object Line22: TfrxLineView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 132.283550000000000000
           Width = 710.551640000000000000
@@ -3437,24 +3600,28 @@ object Form_kart_pr: TForm_kart_pr
           Frame.Typ = [ftTop]
         end
         object Line23: TfrxLineView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Width = 710.551640000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Line24: TfrxLineView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Height = 449.764070000000000000
           Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Line25: TfrxLineView
+          AllowVectorExport = True
           Left = 714.331170000000000000
           Height = 449.764070000000000000
           Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 139.842610000000000000
           Width = 238.110390000000000000
@@ -3464,6 +3631,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             '14. '#1056#1115#1057#8218#1056#1029#1056#1109#1057#8364#1056#181#1056#1029#1056#1105#1056#181' '#1056#1108' '#1056#1030#1056#1109#1056#181#1056#1029#1056#1029#1056#1109#1056#8470' '#1057#1027#1056#187#1057#1107#1056#182#1056#177#1056#181
             
@@ -3472,6 +3640,7 @@ object Form_kart_pr: TForm_kart_pr
           ParentFont = False
         end
         object Line26: TfrxLineView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 226.771800000000000000
           Width = 710.551640000000000000
@@ -3479,6 +3648,7 @@ object Form_kart_pr: TForm_kart_pr
           Frame.Typ = [ftTop]
         end
         object Line27: TfrxLineView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 449.764070000000000000
           Width = 710.551640000000000000
@@ -3486,6 +3656,7 @@ object Form_kart_pr: TForm_kart_pr
           Frame.Typ = [ftTop]
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 230.551330000000000000
           Width = 238.110390000000000000
@@ -3495,11 +3666,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             '15. '#1056#1115#1057#8218#1056#1112#1056#181#1057#8218#1056#1108#1056#176' '#1056#1109' '#1056#1111#1057#1026#1056#1109#1056#1111#1056#1105#1057#1027#1056#1108#1056#181)
           ParentFont = False
         end
         object Line28: TfrxLineView
+          AllowVectorExport = True
           Left = 309.921460000000000000
           Top = 226.771800000000000000
           Height = 222.992270000000000000
@@ -3507,6 +3680,7 @@ object Form_kart_pr: TForm_kart_pr
           Frame.Typ = [ftLeft]
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 253.228510000000000000
           Top = 139.842610000000000000
           Width = 457.323130000000000000
@@ -3516,11 +3690,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[c_kart_pr."MILIT_NAME"], [c_kart_pr."MILIT_REGN_NAME"]')
           ParentFont = False
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 79.370130000000000000
           Top = 257.008040000000000000
           Width = 147.401670000000000000
@@ -3530,11 +3706,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[c_kart_pr."DAT_PROP"]')
           ParentFont = False
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 257.008040000000000000
           Width = 68.031540000000000000
@@ -3544,11 +3722,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#1119#1057#1026#1056#1109#1056#1111#1056#1105#1057#1027#1056#176#1056#1029)
           ParentFont = False
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 283.464750000000000000
           Width = 117.165430000000000000
@@ -3558,11 +3738,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#1038#1057#8218#1056#176#1057#8218#1057#1107#1057#1027' '#1056#1111#1057#1026#1056#1109#1056#1111#1056#1105#1057#1027#1056#1108#1056#1105)
           ParentFont = False
         end
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Left = 128.504020000000000000
           Top = 283.464750000000000000
           Width = 177.637910000000000000
@@ -3572,11 +3754,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[c_kart_pr."STATUS_NAME"]')
           ParentFont = False
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Left = 313.700990000000000000
           Top = 230.551330000000000000
           Width = 362.834880000000000000
@@ -3586,6 +3770,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             
               '16. '#1056#8217#1057#8249#1056#177#1057#8249#1056#187' '#1056#1030' ('#1056#1029#1056#176#1056#1105#1056#1112#1056#181#1056#1029#1056#1109#1056#1030#1056#176#1056#1029#1056#1105#1056#181' '#1056#1109#1056#177#1056#187#1056#176#1057#1027#1057#8218#1056#1105', '#1056#1108#1057#1026 +
@@ -3595,6 +3780,7 @@ object Form_kart_pr: TForm_kart_pr
           ParentFont = False
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Left = 423.307360000000000000
           Top = 404.409710000000000000
           Width = 120.944960000000000000
@@ -3604,11 +3790,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[c_kart_pr."DAT_UB"]')
           ParentFont = False
         end
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Left = 317.480520000000000000
           Top = 404.409710000000000000
           Width = 102.047310000000000000
@@ -3618,11 +3806,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#8221#1056#176#1057#8218#1056#176' '#1056#1030#1057#8249#1056#1111#1056#1105#1057#1027#1056#1108#1056#1105)
           ParentFont = False
         end
         object Memo33: TfrxMemoView
+          AllowVectorExport = True
           Left = 317.480520000000000000
           Top = 279.685220000000000000
           Width = 64.252010000000000000
@@ -3632,11 +3822,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#1115#1056#177#1056#187#1056#176#1057#1027#1057#8218#1057#1034)
           ParentFont = False
         end
         object Memo34: TfrxMemoView
+          AllowVectorExport = True
           Left = 389.291590000000000000
           Top = 279.685220000000000000
           Width = 260.787570000000000000
@@ -3646,11 +3838,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[c_kart_pr."FRM_REGN_NAME"]')
           ParentFont = False
         end
         object Memo35: TfrxMemoView
+          AllowVectorExport = True
           Left = 317.480520000000000000
           Top = 302.362400000000000000
           Width = 64.252010000000000000
@@ -3660,11 +3854,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#160#1056#176#1056#8470#1056#1109#1056#1029)
           ParentFont = False
         end
         object Memo36: TfrxMemoView
+          AllowVectorExport = True
           Left = 389.291590000000000000
           Top = 302.362400000000000000
           Width = 260.787570000000000000
@@ -3674,11 +3870,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[c_kart_pr."FRM_DISTR_NAME"]')
           ParentFont = False
         end
         object Memo37: TfrxMemoView
+          AllowVectorExport = True
           Left = 317.480520000000000000
           Top = 325.039580000000000000
           Width = 64.252010000000000000
@@ -3688,11 +3886,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#8220#1056#1109#1057#1026#1056#1109#1056#1169)
           ParentFont = False
         end
         object Memo39: TfrxMemoView
+          AllowVectorExport = True
           Left = 389.291590000000000000
           Top = 325.039580000000000000
           Width = 260.787570000000000000
@@ -3702,11 +3902,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[c_kart_pr."FRM_TOWN"]')
           ParentFont = False
         end
         object Memo65: TfrxMemoView
+          AllowVectorExport = True
           Left = 317.480520000000000000
           Top = 351.496290000000000000
           Width = 64.252010000000000000
@@ -3716,11 +3918,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#8221#1056#176#1057#8218#1056#176)
           ParentFont = False
         end
         object Memo66: TfrxMemoView
+          AllowVectorExport = True
           Left = 389.291590000000000000
           Top = 351.496290000000000000
           Width = 260.787570000000000000
@@ -3730,11 +3934,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[c_kart_pr."FRM_DAT"]')
           ParentFont = False
         end
         object Memo67: TfrxMemoView
+          AllowVectorExport = True
           Left = 317.480520000000000000
           Top = 377.953000000000000000
           Width = 23.743201282051300000
@@ -3744,11 +3950,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#1032#1056#187'.')
           ParentFont = False
         end
         object Memo68: TfrxMemoView
+          AllowVectorExport = True
           Left = 348.007493080000000000
           Top = 377.953000000000000000
           Width = 131.992816920000000000
@@ -3758,11 +3966,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[c_kart_pr."FRM_STREET_NAME"]')
           ParentFont = False
         end
         object Memo69: TfrxMemoView
+          AllowVectorExport = True
           Left = 483.779840000000000000
           Top = 377.953000000000000000
           Width = 34.015770000000010000
@@ -3772,11 +3982,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#8221#1056#1109#1056#1112)
           ParentFont = False
         end
         object Memo70: TfrxMemoView
+          AllowVectorExport = True
           Left = 517.795610000000000000
           Top = 377.953000000000000000
           Width = 41.574830000000000000
@@ -3786,11 +3998,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[c_kart_pr."FRM_ND"]')
           ParentFont = False
         end
         object Memo71: TfrxMemoView
+          AllowVectorExport = True
           Left = 559.370440000000000000
           Top = 377.953000000000000000
           Width = 26.456710000000000000
@@ -3800,11 +4014,13 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#1113#1056#1030'.')
           ParentFont = False
         end
         object Memo72: TfrxMemoView
+          AllowVectorExport = True
           Left = 585.827150000000000000
           Top = 377.953000000000000000
           Width = 37.795300000000000000
@@ -3814,6 +4030,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[c_kart_pr."FRM_KW"]')
           ParentFont = False
@@ -3963,7 +4180,7 @@ object Form_kart_pr: TForm_kart_pr
     Top = 528
   end
   object frxReport_base: TfrxReport
-    Version = '5.1.9'
+    Version = '6.2.11'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

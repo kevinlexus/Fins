@@ -17,25 +17,11 @@ uses
 
   cxNavigator, cxGridCustomTableView,
   cxGridTableView, cxGridDBTableView, cxGridLevel, cxGridCustomView, cxGrid,
-  cxDBNavigator, 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  cxDBNavigator,
+
   cxCustomData,
   cxFilter, cxDBData, cxDBLookupComboBox,
-  
-  
+
   cxMaskEdit, cxLookAndFeels, cxLookAndFeelPainters, cxStyles, cxData,
   cxDataStorage;
 
@@ -390,6 +376,8 @@ type
     OD_kart_prUSE_GIS_DIVIDE_ELS: TFloatField;
     OD_kart_prDOK_DIV: TStringField;
     OD_kart_prDOK_INN: TStringField;
+    OD_kart_prDOK_DEATH_C: TStringField;
+    OD_kart_prDOK_DEATH_N: TStringField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure DBGridEh1DblClick(Sender: TObject);
     procedure OD_kartAfterPost(DataSet: TDataSet);
@@ -1085,7 +1073,7 @@ begin
         DataModule1.OraclePackage1.CallFloatFunction('SCOTT.P_JAVA.GEN',
         [0, null, null, null,
         Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger,
-          null, Form_Main.cur_dt, 0]);
+          null, Form_Main.cur_dt, 0, Form_main.javaServer]);
     end
     else
     begin
@@ -1094,31 +1082,8 @@ begin
         DataModule1.OraclePackage1.CallIntegerFunction('scott.C_CHARGES.gen_charges',
         [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, null, null,
         null, 1, 0]);
-    end;    
-
-      
-{    Вопрос. Зачем здесь вообще пересчитывать задолженность и пеню? ред.09.03.21
-
-if getDoublePar(Form_main.paramList, 'JAVA_DEB_PEN') = 1 then
-    begin
-      // новый расчет долга и пени в Java
-      l_dummy :=
-        DataModule1.OraclePackage1.CallFloatFunction('SCOTT.P_JAVA2.GEN',
-        [1, null, null, null,
-        Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger,
-          null, Form_Main.cur_dt, 0]);
-    end
-    else
-    begin
-      // старый вызов, PL/SQL
-      // пересчитать движение
-      DataModule1.OraclePackage1.CallProcedure('scott.C_CPENYA.gen_charge_pay',
-        [Form_list_kart.OD_list_kart.FieldByName('lsk').asString, 1]);
-      // пересчитать пеню
-      DataModule1.OraclePackage1.CallProcedure('scott.C_CPENYA.gen_penya',
-        [Form_list_kart.OD_list_kart.FieldByName('lsk').asString, 0, 1]);
     end;
-    }
+
     Form_list_kart.OD_list_kart.RefreshRecord;
     OD_charge.Refresh;
     calcFooter;
@@ -1252,7 +1217,7 @@ begin
       change_alias(OD_kart_pr, '(select * from scott.a_kart_pr2 where ''' +
         mgold_ +
         ''' between mgFrom and mgTo)', '(select * from scott.a_kart_pr2 where '''
-          + Form_main.arch_mg_ +
+        + Form_main.arch_mg_ +
         ''' between mgFrom and mgTo)');
       change_alias(OD_kart_pr, '(select * from scott.a_lg_docs where mg=''' +
         mgold_ + ''')', '(select * from scott.a_lg_docs where mg=''' +
@@ -1419,16 +1384,8 @@ end;
 
 procedure TForm_kart.OD_kart_prAfterScroll(DataSet: TDataSet);
 begin
-  { if FF('Form_kart_pr',0)=1 then
-    begin
-    with Form_kart_pr.OD_lg_pr do
-    begin
-      SetVariable('C_KART_PR_ID',
-        OD_kart_pr.FieldByName('id').AsInteger);
-      Active:=False;
-      Active:=True;
-    end;
-    end;}
+  if FF('Form_kart_pr', 0) = 1 then
+    Form_kart_pr.setFieldsDokDeath();
 end;
 
 procedure TForm_kart.wwDBEdit3KeyPress(Sender: TObject; var Key: Char);
@@ -1843,7 +1800,8 @@ begin
     access_ := 0;
   end;
 
-  if (DataModule1.OD_psch.FieldByName('ID').AsInteger = 8) and (access_ = 0) then
+  if (DataModule1.OD_psch.FieldByName('ID').AsInteger = 8) and (access_ = 0)
+    then
   begin
     msg2('Данный признак счёта запрещено устанавливать!', 'Внимание!', MB_OK +
       MB_ICONSTOP);

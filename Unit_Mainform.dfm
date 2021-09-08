@@ -1,6 +1,6 @@
 object Form_Main: TForm_Main
-  Left = 927
-  Top = 356
+  Left = 545
+  Top = 503
   Width = 880
   Height = 628
   Caption = #1044#1080#1088#1077#1082#1090
@@ -303,6 +303,39 @@ object Form_Main: TForm_Main
     Position = 1
     TabOrder = 3
   end
+  object PanelJavaTest: TPanel
+    Left = 727
+    Top = 80
+    Width = 137
+    Height = 15
+    Align = alCustom
+    Ctl3D = True
+    ParentCtl3D = False
+    TabOrder = 4
+    Visible = False
+    DesignSize = (
+      137
+      15)
+    object Label2: TLabel
+      Left = 2
+      Top = 1
+      Width = 57
+      Height = 13
+      Anchors = [akTop, akRight]
+      Caption = #1058#1045#1057#1058' JAVA'
+      Color = clFuchsia
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      Transparent = False
+    end
+  end
   object MainMenu1: TMainMenu
     Images = ImageList1
     Top = 40
@@ -485,9 +518,14 @@ object Form_Main: TForm_Main
         OnClick = N137Click
       end
       object N143: TMenuItem
-        Caption = #1047#1072#1075#1088#1091#1079#1082#1072' '#1074#1085#1077#1096#1085#1080#1093' '#1083#1080#1094'.'#1089#1095#1077#1090#1086#1074
+        Caption = #1047#1072#1075#1088#1091#1079#1082#1072' '#1060#1050#1056
         ImageIndex = 66
         OnClick = N143Click
+      end
+      object N147: TMenuItem
+        Caption = #1047#1072#1075#1088#1091#1079#1082#1072' '#1063#1043#1050
+        ImageIndex = 66
+        OnClick = N147Click
       end
       object N4: TMenuItem
         Caption = #1060#1086#1088#1084#1080#1088#1086#1074#1072#1085#1080#1077
@@ -1069,10 +1107,16 @@ object Form_Main: TForm_Main
         OnClick = N145Click
       end
       object Options1: TMenuItem
+        Caption = 'Test Java Server'
+        OnClick = Options1Click
+      end
+      object ProdJavaServer1: TMenuItem
+        Caption = 'Prod Java Server'
+        OnClick = ProdJavaServer1Click
       end
     end
     object ver: TMenuItem
-      Caption = 'ver 2.3.29'
+      Caption = 'ver 2.3.45'
       object N1705211: TMenuItem
         Caption = '17.05.21 - '#1048#1089#1087#1088#1072#1074#1083#1077#1085#1086' '#1074#1099#1087#1086#1083#1085#1077#1085#1080#1077' '#1087#1077#1088#1077#1093#1086#1076#1072
       end
@@ -1084,6 +1128,12 @@ object Form_Main: TForm_Main
       end
       object N140721PDF1: TMenuItem
         Caption = '14.07.21 - '#1069#1082#1089#1087#1086#1088#1090' '#1089#1095#1077#1090#1086#1074' '#1087#1086#1090#1086#1082#1086#1084' '#1074' PDF'
+      end
+      object N1208211: TMenuItem
+        Caption = '12.08.21 - '#1055#1077#1088#1077#1088#1072#1073#1086#1090#1072#1085' '#1088#1072#1079#1076#1077#1083' "'#1047#1072#1075#1088#1091#1079#1082#1072' '#1074#1085#1077#1096#1085#1080#1093' '#1083#1080#1094'.'#1089#1095'."'
+      end
+      object N2608211: TMenuItem
+        Caption = '26.08.21 - '#1044#1086#1087#1086#1083#1085#1077#1085#1072' '#1074#1099#1075#1088#1091#1079#1082#1072' '#1086#1087#1083#1072#1090#1099' '#1087#1086' '#1060#1050#1056
       end
     end
   end

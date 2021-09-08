@@ -340,8 +340,10 @@ object Form_house_vvod: TForm_house_vvod
         OptionsData.Inserting = False
         OptionsSelection.InvertSelect = False
         OptionsView.NoDataToDisplayInfoText = #1053#1077#1090' '#1076#1072#1085#1085#1099#1093
+        OptionsView.GroupByBox = False
         OptionsView.HeaderAutoHeight = True
         OptionsView.HeaderEndEllipsis = True
+        OptionsView.Indicator = True
         object cxGrid1DBTableView1REU: TcxGridDBColumn
           Caption = #1056#1069#1059
           DataBinding.FieldName = 'REU'
@@ -905,7 +907,7 @@ object Form_house_vvod: TForm_house_vvod
     Top = 400
   end
   object frxReport1: TfrxReport
-    Version = '5.1.9'
+    Version = '6.2.11'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -936,6 +938,7 @@ object Form_house_vvod: TForm_house_vvod
         Font.Height = -16
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = 14211288
       end
       item
@@ -945,6 +948,7 @@ object Form_house_vvod: TForm_house_vvod
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = 15790320
       end
       item
@@ -954,6 +958,7 @@ object Form_house_vvod: TForm_house_vvod
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = 15790320
       end
       item
@@ -963,6 +968,7 @@ object Form_house_vvod: TForm_house_vvod
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
       end
       item
         Name = 'Group footer'
@@ -980,6 +986,7 @@ object Form_house_vvod: TForm_house_vvod
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Frame.Width = 2.000000000000000000
       end>
     object Data: TfrxDataPage
@@ -995,17 +1002,20 @@ object Form_house_vvod: TForm_house_vvod
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
       HGuides.Strings = (
         '22,67718')
       VGuides.Strings = (
         '873,07143')
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Height = 181.417440000000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         object Memo1: TfrxMemoView
           Align = baWidth
+          AllowVectorExport = True
           Width = 1046.929810000000000000
           Height = 22.677180000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -1013,6 +1023,7 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 14211288
           HAlign = haCenter
           Memo.UTF8 = (
@@ -1026,10 +1037,12 @@ object Form_house_vvod: TForm_house_vvod
       end
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 45.354360000000000000
         Top = 222.992270000000000000
         Width = 1046.929810000000000000
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Width = 54.944998600000000000
           Height = 18.897650000000000000
           DataSet = frxDBDataset1
@@ -1039,11 +1052,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             #1074#8222#8211' '#1056#1030#1056#1030#1056#1109#1056#1169#1056#176)
           ParentFont = False
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 75.590600000000000000
           Width = 51.165468600000000000
           Height = 34.015770000000000000
@@ -1054,12 +1069,14 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#1115#1056#177#1057#1033#1057#8216#1056#1112
             #1056#1029#1056#176' '#1056#1030#1056#1030#1056#1109#1056#1169)
           ParentFont = False
         end
         object Memo42: TfrxMemoView
+          AllowVectorExport = True
           Left = 176.541565570000000000
           Width = 70.063118600000000000
           Height = 34.015770000000000000
@@ -1070,12 +1087,14 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#1115#1056#177#1057#1033#1056#181#1056#1112
             #1056#1111#1056#1109' '#1056#1029#1056#1109#1057#1026#1056#1112'.')
           ParentFont = False
         end
         object Memo43: TfrxMemoView
+          AllowVectorExport = True
           Left = 246.573105570000000000
           Width = 66.283588600000000000
           Height = 34.015770000000000000
@@ -1086,12 +1105,14 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#1115#1056#177#1057#1033#1056#181#1056#1112' '#1056#1111#1056#1109
             #1057#1027#1057#8225#1056#181#1057#8218#1057#8225#1056#1105#1056#1108#1056#176#1056#1112)
           ParentFont = False
         end
         object Memo44: TfrxMemoView
+          AllowVectorExport = True
           Left = 314.604645570000000000
           Width = 70.063118600000000000
           Height = 34.015770000000000000
@@ -1102,12 +1123,14 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#1115#1056#177#1057#1033#1057#8216#1056#1112' '#1056#1111#1056#1109
             #1056#1029#1056#181#1056#182#1056#1105#1056#187#1057#8249#1056#1112)
           ParentFont = False
         end
         object Memo45: TfrxMemoView
+          AllowVectorExport = True
           Left = 453.543600000000000000
           Width = 62.504058600000000000
           Height = 45.354360000000000000
@@ -1118,12 +1141,14 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#8221#1056#1109#1057#1026#1056#176#1057#1027#1056#1111#1057#1026'.'#1057#8222#1056#176#1056#1108#1057#8218
             #1056#1029#1056#1109#1057#1026#1056#1112#1056#176#1057#8218#1056#1105#1056#1030)
           ParentFont = False
         end
         object Memo47: TfrxMemoView
+          AllowVectorExport = True
           Left = 521.575140000000000000
           Width = 60.504058600000000000
           Height = 45.354360000000000000
@@ -1134,12 +1159,14 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#8221#1056#1109#1057#1026#1056#176#1057#1027#1056#1111#1057#1026'.'#1057#8222#1056#176#1056#1108#1057#8218
             #1057#1027#1057#8225#1056#181#1057#8218#1057#8225#1056#1105#1056#1108#1056#1105)
           ParentFont = False
         end
         object Memo48: TfrxMemoView
+          AllowVectorExport = True
           Left = 582.047620000000000000
           Width = 60.472480000000000000
           Height = 45.354360000000000000
@@ -1150,12 +1177,14 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#8221#1056#1109#1057#1026#1056#176#1057#1027#1056#1111#1057#1026'.'#1057#8222#1056#176#1056#1108#1057#8218
             #1056#1029#1056#176' '#1056#1029#1056#181#1056#182#1056#1105#1056#187'.')
           ParentFont = False
         end
         object Memo49: TfrxMemoView
+          AllowVectorExport = True
           Left = 642.520100000000000000
           Width = 68.031540000000000000
           Height = 34.015770000000000000
@@ -1166,12 +1195,14 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#8221#1056#1109#1057#1026#1056#176#1057#1027#1056#1111#1057#1026'.'
             #1056#1105#1057#8218#1056#1109#1056#1110#1056#1109)
           ParentFont = False
         end
         object Memo50: TfrxMemoView
+          AllowVectorExport = True
           Left = 714.331170000000000000
           Width = 47.385938600000000000
           Height = 34.015770000000000000
@@ -1182,12 +1213,14 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#8250'/'#1056#1038' '#1056#1111#1056#1109' '
             #1056#1029#1056#1109#1057#1026#1056#1112#1056#176#1057#8218'.')
           ParentFont = False
         end
         object Memo51: TfrxMemoView
+          AllowVectorExport = True
           Left = 763.465060000000000000
           Width = 47.385938600000000000
           Height = 34.015770000000000000
@@ -1198,12 +1231,14 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#8250'/C '#1056#1111#1056#1109' '
             #1057#1027#1057#8225#1056#181#1057#8218#1057#8225#1056#1105#1056#1108'.')
           ParentFont = False
         end
         object Memo52: TfrxMemoView
+          AllowVectorExport = True
           Left = 812.598950000000000000
           Width = 56.692950000000000000
           Height = 34.015770000000000000
@@ -1214,11 +1249,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#167#1056#181#1056#187', '#1056#1029#1056#1109#1057#1026#1056#1112)
           ParentFont = False
         end
         object Memo53: TfrxMemoView
+          AllowVectorExport = True
           Left = 873.071430000000000000
           Width = 58.724528600000000000
           Height = 34.015770000000000000
@@ -1229,12 +1266,14 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#1119#1056#187#1056#1109#1057#8240#1056#176#1056#1169#1057#1034
             #1056#1169#1056#1109#1056#1112#1056#176)
           ParentFont = False
         end
         object Memo54: TfrxMemoView
+          AllowVectorExport = True
           Left = 933.543910000000000000
           Width = 58.724528600000000000
           Height = 34.015770000000000000
@@ -1245,12 +1284,14 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#1119#1056#187#1056#1109#1057#8240#1056#176#1056#1169#1057#1034' '
             #1056#1111#1056#1109' '#1056#1030#1056#1030#1056#1109#1056#1169#1057#1107)
           ParentFont = False
         end
         object Memo40: TfrxMemoView
+          AllowVectorExport = True
           Left = 386.415715570000000000
           Width = 66.283588600000000000
           Height = 34.015770000000000000
@@ -1261,12 +1302,14 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#1115#1056#177#1057#1033#1057#8216#1056#1112
             #1056#1105#1057#8218#1056#1109#1056#1110#1056#1109)
           ParentFont = False
         end
         object Memo46: TfrxMemoView
+          AllowVectorExport = True
           Left = 993.345847460000000000
           Width = 55.615541140000000000
           Height = 45.354360000000000000
@@ -1277,12 +1320,14 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#1119#1056#187#1056#1109#1057#8240#1056#176#1056#1169#1057#1034' '#1056#1111#1056#1109
             #1056#1029#1056#181#1056#182#1056#1105#1056#187'.')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 126.472441400000000000
           Width = 51.165468600000000000
           Height = 34.015770000000000000
@@ -1293,6 +1338,7 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#160#1056#176#1057#1027#1056#1111#1057#1026#1056#181'-'
             #1056#1169#1056#181#1056#187#1056#181#1056#1029#1056#1105#1056#181)
@@ -1301,12 +1347,14 @@ object Form_house_vvod: TForm_house_vvod
       end
       object GroupHeader2: TfrxGroupHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 370.393940000000000000
         Width = 1046.929810000000000000
         Condition = 'frxDBDataset1."VVOD"'
         object Memo21: TfrxMemoView
           Align = baLeft
+          AllowVectorExport = True
           Width = 400.630180000000000000
           Height = 18.897650000000000000
           DataSet = frxDBDataset1
@@ -1316,6 +1364,7 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             '[frxDBDataset1."VVOD"]')
           ParentFont = False
@@ -1324,6 +1373,7 @@ object Form_house_vvod: TForm_house_vvod
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 453.543600000000000000
         Width = 1046.929810000000000000
@@ -1331,6 +1381,7 @@ object Form_house_vvod: TForm_house_vvod
         DataSetName = 'frxDBDataset1'
         RowCount = 0
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 0.903655570000000000
           Width = 54.944998600000000000
           Height = 18.897650000000000000
@@ -1341,12 +1392,14 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8 = (
             '[frxDBDataset1."VVOD_NUM"]')
           ParentFont = False
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 74.746304170000000000
           Width = 50.916798670000000000
           Height = 18.897650000000000000
@@ -1358,12 +1411,14 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             '[frxDBDataset1."KUB"]')
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 178.541565570000000000
           Width = 69.776053130000000000
           Height = 18.897650000000000000
@@ -1374,11 +1429,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[frxDBDataset1."KUB_NORM"]')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 248.286169480000000000
           Width = 66.012008770000000000
           Height = 18.897650000000000000
@@ -1389,11 +1446,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[frxDBDataset1."KUB_SCH"]')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 316.038967880000000000
           Width = 69.776053130000000000
           Height = 18.897650000000000000
@@ -1404,11 +1463,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[frxDBDataset1."KUB_AR"]')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 453.543600000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -1419,11 +1480,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[frxDBDataset1."KUB_NRM_FACT"]')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 521.575140000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -1434,11 +1497,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[frxDBDataset1."KUB_SCH_FACT"]')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 582.047620000000000000
           Width = 62.350521290000000000
           Height = 18.897650000000000000
@@ -1449,11 +1514,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[frxDBDataset1."KUB_AR_FACT"]')
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 643.538776040000000000
           Width = 67.012863960000000000
           Height = 18.897650000000000000
@@ -1464,11 +1531,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[frxDBDataset1."KUB_FACT"]')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 713.922700600000000000
           Width = 47.191787000000000000
           Height = 18.897650000000000000
@@ -1479,11 +1548,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[frxDBDataset1."CNT_LSK"]')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 762.855277220000000000
           Width = 47.191787000000000000
           Height = 18.897650000000000000
@@ -1494,11 +1565,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[frxDBDataset1."SCH_CNT"]')
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 811.787853840000000000
           Width = 57.504046160000000000
           Height = 18.897650000000000000
@@ -1509,11 +1582,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[frxDBDataset1."KPR"]')
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 872.105477390000000000
           Width = 58.483920060000000000
           Height = 18.897650000000000000
@@ -1524,11 +1599,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[frxDBDataset1."OPL"]')
           ParentFont = False
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 932.330187070000000000
           Width = 58.483920060000000000
           Height = 18.897650000000000000
@@ -1539,11 +1616,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[frxDBDataset1."OPL_ADD"]')
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 387.555810630000000000
           Width = 66.012008770000000000
           Height = 18.897650000000000000
@@ -1554,6 +1633,7 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             
               '[<frxDBDataset1."KUB_NORM">+<frxDBDataset1."KUB_SCH">+<frxDBData' +
@@ -1561,6 +1641,7 @@ object Form_house_vvod: TForm_house_vvod
           ParentFont = False
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 992.298701680000000000
           Width = 55.387670870000000000
           Height = 18.897650000000000000
@@ -1571,11 +1652,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[frxDBDataset1."OPL_AR"]')
           ParentFont = False
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 125.628145570000000000
           Width = 50.916798670000000000
           Height = 18.897650000000000000
@@ -1586,6 +1669,7 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             '[frxDBDataset1."KUB_DIST"]')
@@ -1594,11 +1678,13 @@ object Form_house_vvod: TForm_house_vvod
       end
       object GroupFooter2: TfrxGroupFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 495.118430000000000000
         Width = 1046.929810000000000000
         HideIfSingleDataRecord = True
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Left = 73.842648600000000000
           Width = 50.916798670000000000
           Height = 18.897650000000000000
@@ -1609,12 +1695,14 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             '[SUM(<frxDBDataset1."KUB">,MasterData1)]')
           ParentFont = False
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Left = 177.637910000000000000
           Width = 69.776053130000000000
           Height = 18.897650000000000000
@@ -1625,11 +1713,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[SUM(<frxDBDataset1."KUB_NORM">,MasterData1)]')
           ParentFont = False
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Left = 247.382513910000000000
           Width = 66.012008770000000000
           Height = 18.897650000000000000
@@ -1640,11 +1730,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[SUM(<frxDBDataset1."KUB_SCH">,MasterData1)]')
           ParentFont = False
         end
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Left = 315.135312310000000000
           Width = 69.776053130000000000
           Height = 18.897650000000000000
@@ -1655,11 +1747,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[SUM(<frxDBDataset1."KUB_AR">,MasterData1)]')
           ParentFont = False
         end
         object Memo32: TfrxMemoView
+          AllowVectorExport = True
           Left = 453.543600000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -1670,11 +1764,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[SUM(<frxDBDataset1."KUB_NRM_FACT">,MasterData1)]')
           ParentFont = False
         end
         object Memo33: TfrxMemoView
+          AllowVectorExport = True
           Left = 521.575140000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -1685,11 +1781,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[SUM(<frxDBDataset1."KUB_SCH_FACT">,MasterData1)]')
           ParentFont = False
         end
         object Memo34: TfrxMemoView
+          AllowVectorExport = True
           Left = 582.047620000000000000
           Width = 61.446865720000000000
           Height = 18.897650000000000000
@@ -1700,11 +1798,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[SUM(<frxDBDataset1."KUB_AR_FACT">,MasterData1)]')
           ParentFont = False
         end
         object Memo35: TfrxMemoView
+          AllowVectorExport = True
           Left = 642.520100000000000000
           Width = 68.031540000000000000
           Height = 18.897650000000000000
@@ -1715,11 +1815,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[SUM(<frxDBDataset1."KUB_FACT">,MasterData1)]')
           ParentFont = False
         end
         object Memo36: TfrxMemoView
+          AllowVectorExport = True
           Left = 713.019045030000000000
           Width = 47.191787000000000000
           Height = 18.897650000000000000
@@ -1730,11 +1832,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[SUM(<frxDBDataset1."CNT_LSK">,MasterData1)]')
           ParentFont = False
         end
         object Memo37: TfrxMemoView
+          AllowVectorExport = True
           Left = 761.951621650000000000
           Width = 47.191787000000000000
           Height = 18.897650000000000000
@@ -1745,11 +1849,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[SUM(<frxDBDataset1."SCH_CNT">,MasterData1)]')
           ParentFont = False
         end
         object Memo38: TfrxMemoView
+          AllowVectorExport = True
           Left = 810.884198270000000000
           Width = 58.407701730000000000
           Height = 18.897650000000000000
@@ -1760,11 +1866,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[SUM(<frxDBDataset1."KPR">,MasterData1)]')
           ParentFont = False
         end
         object Memo41: TfrxMemoView
+          AllowVectorExport = True
           Left = 871.201821820000000000
           Width = 58.483920060000000000
           Height = 18.897650000000000000
@@ -1775,11 +1883,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[SUM(<frxDBDataset1."OPL">,MasterData1)]')
           ParentFont = False
         end
         object Memo55: TfrxMemoView
+          AllowVectorExport = True
           Left = 931.426531500000000000
           Width = 58.483920060000000000
           Height = 18.897650000000000000
@@ -1790,11 +1900,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[SUM(<frxDBDataset1."OPL_ADD">,MasterData1)]')
           ParentFont = False
         end
         object Memo56: TfrxMemoView
+          AllowVectorExport = True
           Left = 386.652155060000000000
           Width = 66.012008770000000000
           Height = 18.897650000000000000
@@ -1805,6 +1917,7 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             
               '[SUM(<frxDBDataset1."KUB_NORM">+<frxDBDataset1."KUB_SCH">+<frxDB' +
@@ -1812,6 +1925,7 @@ object Form_house_vvod: TForm_house_vvod
           ParentFont = False
         end
         object Memo57: TfrxMemoView
+          AllowVectorExport = True
           Left = 991.651241190000000000
           Width = 55.387670870000000000
           Height = 18.897650000000000000
@@ -1822,11 +1936,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[SUM(<frxDBDataset1."OPL_AR">,MasterData1)]')
           ParentFont = False
         end
         object Memo71: TfrxMemoView
+          AllowVectorExport = True
           Width = 72.623701440000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -1834,6 +1950,7 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 15790320
           HAlign = haCenter
           Memo.UTF8 = (
@@ -1841,6 +1958,7 @@ object Form_house_vvod: TForm_house_vvod
           ParentFont = False
         end
         object Memo58: TfrxMemoView
+          AllowVectorExport = True
           Left = 124.724490000000000000
           Width = 50.916798670000000000
           Height = 18.897650000000000000
@@ -1851,6 +1969,7 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             '[SUM(<frxDBDataset1."KUB_DIST">,MasterData1)]')
@@ -1859,16 +1978,19 @@ object Form_house_vvod: TForm_house_vvod
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 27.188930000000000000
         Top = 574.488560000000000000
         Width = 1046.929810000000000000
         object Memo39: TfrxMemoView
           Align = baWidth
+          AllowVectorExport = True
           Width = 1046.929810000000000000
           Frame.Typ = [ftTop]
           Frame.Width = 2.000000000000000000
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 3.779530000000000000
           Width = 229.858380000000000000
@@ -1880,12 +2002,14 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#160#1056#176#1057#1027#1056#1111#1056#181#1057#8225#1056#176#1057#8218#1056#176#1056#1029#1056#1109': [Now]')
           ParentFont = False
         end
         object Memo18: TfrxMemoView
           Align = baRight
+          AllowVectorExport = True
           Left = 971.339210000000000000
           Width = 75.590600000000000000
           Height = 22.677180000000000000
@@ -1894,6 +2018,7 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             #1056#1038#1057#8218#1057#1026'. [Page#]')
@@ -1902,11 +2027,13 @@ object Form_house_vvod: TForm_house_vvod
       end
       object GroupHeader3: TfrxGroupHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 411.968770000000000000
         Width = 1046.929810000000000000
         Condition = 'frxDBDataset1."ADR"'
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Width = 401.442811440000000000
           Height = 18.897650000000000000
@@ -1915,6 +2042,7 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 15790320
           Memo.UTF8 = (
             '[frxDBDataset1."ADR"]')
@@ -1923,11 +2051,13 @@ object Form_house_vvod: TForm_house_vvod
       end
       object GroupHeader1: TfrxGroupHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 328.819110000000000000
         Width = 1046.929810000000000000
         Condition = 'frxDBDataset1."NAME_REU"'
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Width = 401.442811440000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -1935,6 +2065,7 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 15790320
           Memo.UTF8 = (
             #1056#8211#1056#173#1056#1115': [frxDBDataset1."NAME_REU"]')
@@ -1951,12 +2082,15 @@ object Form_house_vvod: TForm_house_vvod
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
       object GroupFooter4: TfrxGroupFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 170.078850000000000000
         Width = 1046.929810000000000000
         object Memo74: TfrxMemoView
+          AllowVectorExport = True
           Left = 73.842648600000000000
           Width = 50.916798670000000000
           Height = 18.897650000000000000
@@ -1967,12 +2101,14 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             '[SUM(<frxDBDataset1."KUB">,MasterData2)]')
           ParentFont = False
         end
         object Memo75: TfrxMemoView
+          AllowVectorExport = True
           Left = 127.600364430000000000
           Width = 69.776053130000000000
           Height = 18.897650000000000000
@@ -1983,11 +2119,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[SUM(<frxDBDataset1."KUB_NORM">,MasterData2)]')
           ParentFont = False
         end
         object Memo76: TfrxMemoView
+          AllowVectorExport = True
           Left = 197.344968340000000000
           Width = 66.012008770000000000
           Height = 18.897650000000000000
@@ -1998,11 +2136,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[SUM(<frxDBDataset1."KUB_SCH">,MasterData2)]')
           ParentFont = False
         end
         object Memo77: TfrxMemoView
+          AllowVectorExport = True
           Left = 265.097766740000000000
           Width = 69.776053130000000000
           Height = 18.897650000000000000
@@ -2013,11 +2153,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[SUM(<frxDBDataset1."KUB_AR">,MasterData2)]')
           ParentFont = False
         end
         object Memo78: TfrxMemoView
+          AllowVectorExport = True
           Left = 404.367407890000000000
           Width = 81.068186200000000000
           Height = 18.897650000000000000
@@ -2028,11 +2170,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[SUM(<frxDBDataset1."KUB_NRM_FACT">,MasterData2)]')
           ParentFont = False
         end
         object Memo79: TfrxMemoView
+          AllowVectorExport = True
           Left = 485.184578190000000000
           Width = 81.068186200000000000
           Height = 18.897650000000000000
@@ -2043,11 +2187,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[SUM(<frxDBDataset1."KUB_SCH_FACT">,MasterData2)]')
           ParentFont = False
         end
         object Memo80: TfrxMemoView
+          AllowVectorExport = True
           Left = 566.221315170000000000
           Width = 84.832230550000000000
           Height = 18.897650000000000000
@@ -2058,11 +2204,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[SUM(<frxDBDataset1."KUB_AR_FACT">,MasterData2)]')
           ParentFont = False
         end
         object Memo81: TfrxMemoView
+          AllowVectorExport = True
           Left = 652.794335340000000000
           Width = 58.483920060000000000
           Height = 18.897650000000000000
@@ -2073,11 +2221,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[SUM(<frxDBDataset1."KUB_FACT">,MasterData2)]')
           ParentFont = False
         end
         object Memo82: TfrxMemoView
+          AllowVectorExport = True
           Left = 713.019045030000000000
           Width = 47.191787000000000000
           Height = 18.897650000000000000
@@ -2088,11 +2238,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[SUM(<frxDBDataset1."CNT_LSK">,MasterData2)]')
           ParentFont = False
         end
         object Memo83: TfrxMemoView
+          AllowVectorExport = True
           Left = 761.951621650000000000
           Width = 47.191787000000000000
           Height = 18.897650000000000000
@@ -2103,11 +2255,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[SUM(<frxDBDataset1."SCH_CNT">,MasterData2)]')
           ParentFont = False
         end
         object Memo84: TfrxMemoView
+          AllowVectorExport = True
           Left = 810.884198270000000000
           Width = 35.899653930000000000
           Height = 18.897650000000000000
@@ -2118,11 +2272,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[SUM(<frxDBDataset1."KPR">,MasterData2)]')
           ParentFont = False
         end
         object Memo85: TfrxMemoView
+          AllowVectorExport = True
           Left = 848.524641820000000000
           Width = 58.483920060000000000
           Height = 18.897650000000000000
@@ -2133,11 +2289,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[SUM(<frxDBDataset1."OPL">,MasterData2)]')
           ParentFont = False
         end
         object Memo86: TfrxMemoView
+          AllowVectorExport = True
           Left = 908.749351500000000000
           Width = 58.483920060000000000
           Height = 18.897650000000000000
@@ -2148,11 +2306,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[SUM(<frxDBDataset1."OPL_ADD">,MasterData2)]')
           ParentFont = False
         end
         object Memo87: TfrxMemoView
+          AllowVectorExport = True
           Left = 336.614609490000000000
           Width = 66.012008770000000000
           Height = 18.897650000000000000
@@ -2163,6 +2323,7 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             
               '[SUM(<frxDBDataset1."KUB_NORM">+<frxDBDataset1."KUB_SCH">+<frxDB' +
@@ -2170,6 +2331,7 @@ object Form_house_vvod: TForm_house_vvod
           ParentFont = False
         end
         object Memo104: TfrxMemoView
+          AllowVectorExport = True
           Left = 968.974061190000000000
           Width = 77.304141840000000000
           Height = 18.897650000000000000
@@ -2180,11 +2342,13 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[SUM(<frxDBDataset1."OPL_AR">,MasterData2)]')
           ParentFont = False
         end
         object Memo105: TfrxMemoView
+          AllowVectorExport = True
           Width = 72.623701440000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -2192,6 +2356,7 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 15790320
           HAlign = haCenter
           Memo.UTF8 = (
@@ -2201,11 +2366,13 @@ object Form_house_vvod: TForm_house_vvod
       end
       object GroupHeader6: TfrxGroupHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 64.252010000000000000
         Width = 1046.929810000000000000
         Condition = 'frxDBDataset1."NAME_REU"'
         object Memo106: TfrxMemoView
+          AllowVectorExport = True
           Width = 401.442811440000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -2213,6 +2380,7 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 15790320
           Memo.UTF8 = (
             #1056#8211#1056#173#1056#1115': [frxDBDataset1."NAME_REU"]')
@@ -2221,6 +2389,7 @@ object Form_house_vvod: TForm_house_vvod
       end
       object MasterData2: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Top = 147.401670000000000000
         Width = 1046.929810000000000000
         DataSet = frxDBDataset1
@@ -2229,11 +2398,13 @@ object Form_house_vvod: TForm_house_vvod
       end
       object Header1: TfrxHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         object Memo72: TfrxMemoView
           Align = baWidth
+          AllowVectorExport = True
           Width = 1046.929810000000000000
           Height = 22.677180000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -2241,6 +2412,7 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = 14211288
           HAlign = haCenter
           Memo.UTF8 = (
@@ -2252,12 +2424,14 @@ object Form_house_vvod: TForm_house_vvod
       end
       object GroupHeader4: TfrxGroupHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 105.826840000000000000
         Width = 1046.929810000000000000
         Condition = 'frxDBDataset1."VVOD"'
         object Memo5: TfrxMemoView
           Align = baLeft
+          AllowVectorExport = True
           Width = 400.630180000000000000
           Height = 18.897650000000000000
           DataSet = frxDBDataset1
@@ -2267,6 +2441,7 @@ object Form_house_vvod: TForm_house_vvod
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             '[frxDBDataset1."VVOD"]')
           ParentFont = False

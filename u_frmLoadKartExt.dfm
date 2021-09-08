@@ -1,6 +1,6 @@
 object frmLoadKartExt: TfrmLoadKartExt
-  Left = 294
-  Top = 456
+  Left = 638
+  Top = 635
   Width = 1045
   Height = 520
   Caption = #1047#1072#1075#1088#1091#1079#1082#1072' '#1074#1085#1077#1096#1085#1080#1093' '#1083#1080#1094'.'#1089#1095#1077#1090#1086#1074
@@ -86,7 +86,6 @@ object frmLoadKartExt: TfrmLoadKartExt
   Position = poMainFormCenter
   Visible = True
   OnClose = FormClose
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object PageControl1: TPageControl
@@ -103,7 +102,7 @@ object frmLoadKartExt: TfrmLoadKartExt
         Left = 0
         Top = 82
         Width = 1021
-        Height = 289
+        Height = 330
         Align = alClient
         TabOrder = 0
         object cxGrid1DBTableView1: TcxGridDBTableView
@@ -342,37 +341,6 @@ object frmLoadKartExt: TfrmLoadKartExt
           Width = 92
         end
       end
-      object Panel3: TPanel
-        Left = 0
-        Top = 371
-        Width = 1021
-        Height = 41
-        Align = alBottom
-        TabOrder = 3
-        DesignSize = (
-          1021
-          41)
-        object Button5: TButton
-          Left = 841
-          Top = 8
-          Width = 75
-          Height = 25
-          Anchors = [akRight, akBottom]
-          Caption = #1047#1072#1075#1088#1091#1079#1080#1090#1100
-          TabOrder = 0
-          OnClick = Button1Click
-        end
-        object Button6: TButton
-          Left = 921
-          Top = 8
-          Width = 97
-          Height = 25
-          Anchors = [akRight, akBottom]
-          Caption = #1057#1086#1093#1088#1072#1085#1080#1090#1100' '#1074' '#1073#1072#1079#1091
-          TabOrder = 1
-          OnClick = Button3Click
-        end
-      end
       object Memo3: TMemo
         Left = 0
         Top = 0
@@ -386,7 +354,7 @@ object frmLoadKartExt: TfrmLoadKartExt
             #1082#1080' "'#1051#1080#1094'.'#1089#1095'." '#1080' '
           #1087#1086#1084#1077#1085#1103#1090#1100' '
           #1089#1090#1072#1090#1091#1089' '#1079#1072#1075#1088#1091#1079#1082#1080' '#1085#1072' 0')
-        TabOrder = 4
+        TabOrder = 3
       end
       object pnl1: TPanel
         Left = 400
@@ -394,7 +362,7 @@ object frmLoadKartExt: TfrmLoadKartExt
         Width = 185
         Height = 41
         Caption = #1047#1072#1075#1088#1091#1079#1082#1072'...'
-        TabOrder = 5
+        TabOrder = 4
       end
     end
     object TabSheet2: TTabSheet

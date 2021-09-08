@@ -173,9 +173,7 @@ uses
 {$R *.RES}
 var
   Ini: TIniFile;
-  Pass: string;
-  SID: string;
-  s, User, serverIp, serverPort, serverSID: string;
+  Pass, SID, s, User, serverIp, serverPort, serverSID: string;
   I, I1: Integer;
 type
   TOracleErrorEvent = procedure(Error: EOracleError);
@@ -221,6 +219,7 @@ begin
 
   Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TForm_Main, Form_Main);
+  
   s := Ini.ReadString('Application', 'User', '');
   Pass := '';
   I := 1;
@@ -230,6 +229,7 @@ begin
     User := User + CHR(StrToInt('$' + copy(s, I, 3)));
     I := I + 3;
   end;
+  
   s := Ini.ReadString('Application', 'Pass', '');
   Pass := '';
   I := 1;
@@ -267,6 +267,8 @@ begin
     I := I + 3;
   end;
 
+//  javaServer := Ini.ReadString('Application', 'javaServer', '');
+  
 end;
 
 // загрузить параметры ККМ
@@ -489,7 +491,10 @@ begin
   DataModule1.OD_psch2.Active := true;
   DataModule1.OD_usl.Active := true;
   DataModule1.OD_sch_el.Active := true;
-  
+
+  // загрузить U_LIST в память
+  Utils.loadListIdCd(Form_main.uList);
+
   Form_Main.ProgressBar1.Position:=4;
   Form_Main.Update;
 

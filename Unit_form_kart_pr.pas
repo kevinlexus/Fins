@@ -9,15 +9,14 @@ uses
   Wwdbcomb, wwdbdatetimepicker, Wwdbgrid, wwcheckbox, wwdblook,
   Wwdbdlg, wwSpeedButton, wwDBNavigator, wwDataInspector,
   DM_module1, Oracle, Utils, Buttons, Wwintl, ComCtrls, frxClass, frxDBSet,
-  cxGraphics, cxControls, 
+  cxGraphics, cxControls,
   cxDBEdit,
-  
-  
+
   cxGridDBTableView, cxGridLevel, cxClasses, cxGrid, cxLookAndFeels,
   cxLookAndFeelPainters, cxContainer, cxEdit, cxStyles, cxCustomData,
   cxFilter, cxData, cxDataStorage, cxNavigator, cxDBData,
   cxDBLookupComboBox, cxGridCustomTableView, cxGridTableView,
-  cxGridCustomView, Grids, Wwdbigrd, cxCheckBox;
+  cxGridCustomView, Grids, Wwdbigrd, cxCheckBox, cxTextEdit;
 
 type
   TForm_kart_pr = class(TForm)
@@ -277,6 +276,10 @@ type
     cxGridDBDt1: TcxGridDBColumn;
     cxGridDBDt2: TcxGridDBColumn;
     cxGridLevel1: TcxGridLevel;
+    cxDBTextEdit1: TcxDBTextEdit;
+    cxDBTextEdit2: TcxDBTextEdit;
+    Label45: TLabel;
+    Label46: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure OD_lg_docsSPK_IDValidate(Sender: TField);
     procedure OD_lg_docsTYPEValidate(Sender: TField);
@@ -345,6 +348,9 @@ type
       var Handled: Boolean);
     procedure DBLookupComboboxEh13EditButtons0Click(Sender: TObject;
       var Handled: Boolean);
+    procedure DBLookupComboboxEh13CloseUp(Sender: TObject;
+      Accept: Boolean);
+    procedure setFieldsDokDeath();
   private
     id2_: Integer;
     procedure add_prop(tp_: string; ds: TDBLookupComboboxEh);
@@ -614,6 +620,7 @@ begin
 
   state_arch2('');
   SetAllowEdit;
+  setFieldsDokDeath;
   TForm(Sender).AutoSize := true;
 end;
 
@@ -712,7 +719,7 @@ begin
     [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, 1]);}
 
   Form_kart.check_kart_correct;
-  
+
   //для изменений в пакетах?????
   OD_lg_docs.Session.Commit;
 
@@ -1114,6 +1121,35 @@ procedure TForm_kart_pr.DBLookupComboboxEh13EditButtons0Click(
   Sender: TObject; var Handled: Boolean);
 begin
   add_prop('Причина выписки', DBLookupComboboxEh13);
+
+end;
+
+procedure TForm_kart_pr.DBLookupComboboxEh13CloseUp(Sender: TObject;
+  Accept: Boolean);
+begin
+  setFieldsDokDeath();
+end;
+
+procedure TForm_kart_pr.setFieldsDokDeath();
+var
+  fkUb:Integer;
+begin
+  fkUb:=Form_kart.OD_kart_pr.FieldByName('fk_ub').AsInteger;
+  
+  if Utils.getListIdByCd(Form_main.uList, fkUb) = 'По факту смерти' then
+  begin
+    Label45.Visible := True;
+    Label46.Visible := True;
+    cxDBTextEdit1.Visible := True;
+    cxDBTextEdit2.Visible := True;
+  end
+  else
+  begin
+    Label45.Visible := False;
+    Label46.Visible := False;
+    cxDBTextEdit1.Visible := False;
+    cxDBTextEdit2.Visible := False;
+  end;
 
 end;
 

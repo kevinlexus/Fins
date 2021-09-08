@@ -1,7 +1,7 @@
 object DataModule1: TDataModule1
   OldCreateOrder = False
-  Left = 250
-  Top = 202
+  Left = 1578
+  Top = 147
   Height = 768
   Width = 722
   object OracleSession1: TOracleSession
@@ -677,5 +677,20 @@ object DataModule1: TDataModule1
         Name = 'user_name'
         ParamType = ptInput
       end>
+  end
+  object OD_u_list: TOracleDataSet
+    SQL.Strings = (
+      'select * from scott.u_list s')
+    Optimize = False
+    QBEDefinition.QBEFieldDefs = {
+      040000000A000000020000004944010000000000040000004E414D4501000000
+      0000020000004344010000000000020000004E4D01000000000009000000464B
+      5F4C4953545450010000000000030000004E5050010000000000060000005641
+      4C5F545001000000000007000000464B5F554E49540100000000000700000053
+      514C544558540100000000000D000000464B5F4558535F555F4C495354010000
+      000000}
+    Session = OracleSession1
+    Left = 128
+    Top = 664
   end
 end

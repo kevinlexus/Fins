@@ -1,6 +1,6 @@
 object Form_kart: TForm_kart
-  Left = 486
-  Top = 256
+  Left = 358
+  Top = 564
   Width = 903
   Height = 675
   BorderIcons = [biSystemMenu, biMinimize]
@@ -908,7 +908,7 @@ object Form_kart: TForm_kart
               Top = 0
               Width = 25
               Height = 25
-              Hint = #1050' '#1087#1077#1088#1074#1086#1081' '#1079#1072#1087#1080#1089#1080
+              Hint = 'Move to first record'
               ImageIndex = -1
               NumGlyphs = 2
               Spacing = 4
@@ -925,7 +925,7 @@ object Form_kart: TForm_kart
               Top = 0
               Width = 25
               Height = 25
-              Hint = #1055#1088#1077#1076#1099#1076#1091#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
+              Hint = 'Move to prior record'
               ImageIndex = -1
               NumGlyphs = 2
               Spacing = 4
@@ -942,7 +942,7 @@ object Form_kart: TForm_kart
               Top = 0
               Width = 25
               Height = 25
-              Hint = #1057#1083#1077#1076#1091#1102#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
+              Hint = 'Move to next record'
               ImageIndex = -1
               NumGlyphs = 2
               Spacing = 4
@@ -959,7 +959,7 @@ object Form_kart: TForm_kart
               Top = 0
               Width = 25
               Height = 25
-              Hint = #1055#1077#1088#1077#1081#1090#1080' '#1082' '#1087#1086#1089#1083#1077#1076#1085#1077#1081' '#1079#1072#1087#1080#1089#1080
+              Hint = 'Move to last record'
               ImageIndex = -1
               NumGlyphs = 2
               Spacing = 4
@@ -976,7 +976,7 @@ object Form_kart: TForm_kart
               Top = 0
               Width = 25
               Height = 25
-              Hint = #1044#1086#1073#1072#1074#1080#1090#1100' '#1085#1086#1074#1091#1102' '#1079#1072#1087#1080#1089#1100
+              Hint = 'Insert new record'
               ImageIndex = -1
               NumGlyphs = 2
               Spacing = 4
@@ -993,7 +993,7 @@ object Form_kart: TForm_kart
               Top = 0
               Width = 25
               Height = 25
-              Hint = #1059#1076#1072#1083#1080#1090#1100' '#1090#1077#1082#1091#1097#1091#1102' '#1079#1072#1087#1080#1089#1100
+              Hint = 'Delete current record'
               ImageIndex = -1
               NumGlyphs = 2
               Spacing = 4
@@ -2839,7 +2839,7 @@ object Form_kart: TForm_kart
       
         'c.fk_to_kul, c.to_nd, c.to_kw, c.fk_milit, c.fk_milit_regn, a.dt' +
         '1 as st_dt1, a.dt2 as st_dt2, s.name2 as st_name, c.priv_proc, c' +
-        '.use_gis_divide_els'
+        '.use_gis_divide_els, c.dok_death_c, c.dok_death_n'
       '  from scott.c_kart_pr c, scott.c_status_pr s,'
       
         '  (select r.fk_kart_pr, r.dt1, r.dt2  from scott.c_states_pr r, ' +
@@ -2857,65 +2857,7 @@ object Form_kart: TForm_kart
       ' where lsk =:lsk and c.status=s.id '
       ' and (:var_=0 and c.status<>4 or :var_=1)'
       ' and c.id=a.fk_kart_pr(+)'
-      'order by c.id'
-      ''
-      '/*'
-      
-        'select rownum as rn, c.rowid, c.lsk, c.id, c.fio, c.k_fam, c.k_i' +
-        'm, c.k_ot, decode(pol, 1, '#39#1052#1059#1046#39', '#39#1046#1045#1053#39') as n_pol, pol,'
-      
-        'c.dat_prop, c.dat_ub, c.dat_rog, c.status, c.relat_id, c.status_' +
-        'datb, c.status_dat, c.status_chng, c.fk_doc_tp, c.fk_nac,'
-      
-        'c.b_place, c.dok_c, c.dok_n, c.dok_d, c.dok_v, c.fk_frm_cntr, c.' +
-        'fk_frm_regn, c.fk_frm_distr, c.frm_town, c.frm_dat,'
-      
-        'c.fk_frm_kul, c.frm_nd, c.frm_kw, c.w_place, c.fk_ub, c.fk_to_cn' +
-        'tr, c.fk_to_regn, c.fk_to_distr, c.fk_citiz, c.to_town, '
-      'c.fk_to_kul, c.to_nd, c.to_kw, c.fk_milit, c.fk_milit_regn'
-      '  from scott.c_kart_pr c'
-      ' where lsk =:lsk'
-      ' and (:var_=0 and c.status<>4 or :var_=1)'
-      'order by c.id'
-      '*/'
-      ''
-      '/* '#1087#1086' '#1083#1100#1075#1086#1090#1072#1084','
-      'decode((select max(s.name)'
-      
-        '                 from scott.c_lg_docs d, scott.c_lg_pr b, scott.' +
-        'spk s'
-      '                where b.spk_id = s.id'
-      '                  and d.c_kart_pr_id = c.id'
-      '                  and b.c_lg_docs_id  = d.id and b.type=1'
-      '                  and s.id <> 1),'
-      '               null,'
-      '               '#39#1053#1045#1058' '#1051#1068#1043#1054#1058#39','
-      '               (select max(s.name)'
-      '                 from '
-      '  scott.c_lg_docs d, '
-      'scott.c_lg_pr b, scott.spk s'
-      '                where b.spk_id = s.id'
-      '                  and d.c_kart_pr_id = c.id'
-      '                  and b.c_lg_docs_id  = d.id and b.type=1'
-      '                  and s.id <> 1)) as priv_name,'
-      'decode((select max(s.name)'
-      
-        '                 from scott.c_lg_docs d, scott.c_lg_pr b, scott.' +
-        'spk s'
-      '                where b.spk_id = s.id'
-      '                  and d.c_kart_pr_id = c.id'
-      '                  and b.c_lg_docs_id  = d.id and b.type=0'
-      '                  and s.id <> 1),'
-      '               null,'
-      '               '#39#1053#1045#1058' '#1051#1068#1043#1054#1058#39','
-      '               (select max(s.name)'
-      '                 from '
-      '  scott.c_lg_docs d, '
-      'scott.c_lg_pr b, scott.spk s'
-      '                where b.spk_id = s.id'
-      '                  and d.c_kart_pr_id = c.id'
-      '                  and b.c_lg_docs_id  = d.id and b.type=0'
-      '                  and s.id <> 1)) as priv_name2*/')
+      'order by c.id')
     Optimize = False
     Variables.Data = {
       0300000002000000040000003A4C534B05000000090000002020202020202020
@@ -2924,7 +2866,7 @@ object Form_kart: TForm_kart
     OracleDictionary.UseMessageTable = True
     OracleDictionary.DefaultValues = True
     QBEDefinition.QBEFieldDefs = {
-      04000000340000000300000046494F01000000000003000000504F4C01000000
+      04000000360000000300000046494F01000000000003000000504F4C01000000
       0000080000004441545F50524F50010000000000060000005354415455530100
       00000000070000004441545F524F470100000000000200000049440100000000
       00030000004C534B01000000000002000000524E010000000000050000004E5F
@@ -2952,7 +2894,8 @@ object Form_kart: TForm_kart
       01000000000009000000505249565F50524F4301000000000009000000444F4B
       5F534E494C53010000000000120000005553455F4749535F4449564944455F45
       4C5301000000000007000000444F4B5F44495601000000000007000000444F4B
-      5F494E4E010000000000}
+      5F494E4E0100000000000B000000444F4B5F44454154485F430100000000000B
+      000000444F4B5F44454154485F4E010000000000}
     Master = Form_list_kart.OD_list_kart
     MasterFields = 'LSK'
     DetailFields = 'LSK'
@@ -3248,6 +3191,14 @@ object Form_kart: TForm_kart
     object OD_kart_prDOK_INN: TStringField
       FieldName = 'DOK_INN'
       Size = 12
+    end
+    object OD_kart_prDOK_DEATH_C: TStringField
+      FieldName = 'DOK_DEATH_C'
+      Size = 10
+    end
+    object OD_kart_prDOK_DEATH_N: TStringField
+      FieldName = 'DOK_DEATH_N'
+      Size = 10
     end
   end
   object DS_kart_pr: TDataSource

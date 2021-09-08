@@ -66,7 +66,7 @@ var
 
 implementation
 
-uses DM_module1, Unit_status;
+uses DM_module1, Unit_status, Unit_Mainform;
 
 {$R *.dfm}
 
@@ -121,7 +121,7 @@ begin
           l_res :=
             DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA.HTTP_REQ',
             ['loadFileMeterVal', ExtractFileName(OpenDialog1.FileName) + '/' +
-            isSetPrev, null, 'GET']);
+            isSetPrev, null, 'GET', Form_main.javaServer]);
           Form_status.Close;
           OD_docxpar.Active := False;
           OD_docxpar.Active := True;
@@ -160,7 +160,7 @@ begin
           l_res :=
             DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA.HTTP_REQ',
             ['unloadFileMeterVal', ExtractFileName(OpenDialog1.FileName) + '/' +
-            getStrUk, null, 'GET']);
+            getStrUk, null, 'GET', Form_main.javaServer]);
           Form_status.Close;
           if l_res = 'PROCESS' then
             msg2('Выполняется выгрузка файла!', 'Внимание!',
@@ -310,12 +310,12 @@ begin
     OD_docxpar.Active := False;
     OD_docxpar.Active := True;
     OD_docxpar.Last;
-    if l_res > 0 then
+//    if l_res > 0 then
       msg2('Реестр отменен! Удалено строк:' + IntToStr(l_res), 'Внимание!',
         MB_OK + MB_ICONINFORMATION)
-    else
-      msg2('Ошибка! Реестр не был отменен', 'Внимание!',
-        MB_OK + MB_ICONERROR);
+{    else
+      msg2('Реестр был отменён, но кол-во отменённых показаний = 0', 'Внимание!',
+        MB_OK + MB_ICONERROR);}
   end;
 end;
 

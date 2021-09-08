@@ -251,7 +251,7 @@ begin
         DataModule1.OraclePackage1.CallFloatFunction('SCOTT.P_JAVA.GEN',
         [1, null, null, null,
         Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger,
-          null, Form_Main.cur_dt, 0]);
+          null, Form_Main.cur_dt, 0, Form_main.javaServer]);
   end
   else
   begin

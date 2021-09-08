@@ -996,6 +996,7 @@ begin
       begin
         // ошибка
         Result := 1;
+            logText('ККМ: Регистрация чека - ОШИБКА при открытии порта ККМ!');
       end
       else
       begin
@@ -1018,6 +1019,7 @@ begin
           begin
             // ошибка
             Result := 1;
+            logText('ККМ: Регистрация чека - ОШИБКА при открытии чека!');
           end
           else
           begin

@@ -448,7 +448,7 @@ begin
   try
     l_res :=
       DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA.HTTP_REQ',
-      ['terminateApp', null, null, 'GET']);
+      ['terminateApp', null, null, 'GET', Form_main.javaServer]);
   except
   end;
   Application.MessageBox('¬ыполнен переход мес€ца, необходимо «ј√–”«»“№ модуль начислени€', '¬нимание!', MB_OK +
