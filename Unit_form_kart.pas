@@ -1385,7 +1385,7 @@ end;
 procedure TForm_kart.OD_kart_prAfterScroll(DataSet: TDataSet);
 begin
   if FF('Form_kart_pr', 0) = 1 then
-    Form_kart_pr.setFieldsDokDeath();
+    Form_kart_pr.setFieldsDokDeath(False, True);
 end;
 
 procedure TForm_kart.wwDBEdit3KeyPress(Sender: TObject; var Key: Char);

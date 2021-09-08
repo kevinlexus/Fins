@@ -350,7 +350,7 @@ type
       var Handled: Boolean);
     procedure DBLookupComboboxEh13CloseUp(Sender: TObject;
       Accept: Boolean);
-    procedure setFieldsDokDeath();
+    procedure setFieldsDokDeath(isVisible, isCheckVisible: Boolean);
   private
     id2_: Integer;
     procedure add_prop(tp_: string; ds: TDBLookupComboboxEh);
@@ -620,7 +620,7 @@ begin
 
   state_arch2('');
   SetAllowEdit;
-  setFieldsDokDeath;
+  setFieldsDokDeath(False, True);
   TForm(Sender).AutoSize := true;
 end;
 
@@ -1127,30 +1127,51 @@ end;
 procedure TForm_kart_pr.DBLookupComboboxEh13CloseUp(Sender: TObject;
   Accept: Boolean);
 begin
-  setFieldsDokDeath();
+  if OD_ub.FieldByName('cd').AsString = 'По факту смерти' then
+    setFieldsDokDeath(True, False)
+    else
+    setFieldsDokDeath(False, False);
+    
 end;
 
-procedure TForm_kart_pr.setFieldsDokDeath();
+procedure TForm_kart_pr.setFieldsDokDeath(isVisible, isCheckVisible: Boolean);
 var
-  fkUb:Integer;
+  fkUb: Integer;
 begin
-  fkUb:=Form_kart.OD_kart_pr.FieldByName('fk_ub').AsInteger;
-  
-  if Utils.getListIdByCd(Form_main.uList, fkUb) = 'По факту смерти' then
+  if isCheckVisible = true then
+  begin
+    fkUb := Form_kart.OD_kart_pr.FieldByName('fk_ub').AsInteger;
+
+    if Utils.getListIdByCd(Form_main.uList, fkUb) = 'По факту смерти' then
+    begin
+      Label45.Visible := True;
+      Label46.Visible := True;
+      cxDBTextEdit1.Visible := True;
+      cxDBTextEdit2.Visible := True;
+    end
+    else
+    begin
+      Label45.Visible := False;
+      Label46.Visible := False;
+      cxDBTextEdit1.Visible := False;
+      cxDBTextEdit2.Visible := False;
+    end;
+
+  end
+  else if isVisible = true then
   begin
     Label45.Visible := True;
     Label46.Visible := True;
     cxDBTextEdit1.Visible := True;
     cxDBTextEdit2.Visible := True;
   end
-  else
+  else if isVisible = false then
   begin
     Label45.Visible := False;
     Label46.Visible := False;
     cxDBTextEdit1.Visible := False;
     cxDBTextEdit2.Visible := False;
   end;
-
 end;
 
 end.
