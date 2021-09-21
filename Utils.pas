@@ -99,7 +99,7 @@ procedure ApplySearchFilter(Controller: TcxDBDataController; Fields: string;
   Text: string);
 function CheckAccess(privelege: string): Boolean;
 procedure loadListIdCd(var al: TUListRecArray);
-function getListIdByCd(var al: TUListRecArray; pId: Integer): String;
+function getListIdByCd(var al: TUListRecArray; pId: Integer): string;
 
 implementation
 uses Unit_Mainform;
@@ -814,7 +814,8 @@ begin
   end;
   dset.SQL.Text := str_.Text;
   if i = 0 then
-    ShowMessage('Не найден Change_alias: ' + str1);
+    ShowMessage('Не найден Change_alias ' + str1 + ' в выражении ' +
+      dset.SQL.Text);
 
   if (reopenDS) then
   begin
@@ -1670,18 +1671,18 @@ end;
 
 procedure loadListIdCd(var al: TUListRecArray);
 var
-  i,size: Integer;
+  i, size: Integer;
   val: Double;
 begin
-  DataModule1.OD_u_list.Active:=true;
-  size:=DataModule1.OD_u_list.RecordCount+1;
+  DataModule1.OD_u_list.Active := true;
+  size := DataModule1.OD_u_list.RecordCount + 1;
   SetLength(al, size);
 
   DataModule1.OD_u_list.First;
-  i:=0;
+  i := 0;
   while (not DataModule1.OD_u_list.Eof) do
   begin
-    i:=i+1;
+    i := i + 1;
     with al[i] do
     begin
       id := DataModule1.OD_u_list.FieldByName('id').AsInteger;
@@ -1691,12 +1692,12 @@ begin
     DataModule1.OD_u_list.Next;
   end;
 
-  DataModule1.OD_u_list.Active:=false;
+  DataModule1.OD_u_list.Active := false;
 end;
 
 // получить U_LIST.ID по CD (Кэшированно)
 
-function getListIdByCd(var al: TUListRecArray; pId: Integer): String;
+function getListIdByCd(var al: TUListRecArray; pId: Integer): string;
 var
   size, i: Integer;
   val: Double;

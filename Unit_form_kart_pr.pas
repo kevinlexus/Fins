@@ -519,24 +519,24 @@ begin // смена состояний формы
       change_alias(OD_lg_pr, 'scott.c_lg_pr',
         '(select * from scott.a_lg_pr where mg=''' + Form_main.arch_mg_ +
         ''')');
-      change_alias(OD_lg_pr, 'scott.c_lg_docs',
-        '(select * from scott.a_lg_docs where mg=''' + Form_main.arch_mg_ +
-        ''')');
-      change_alias(OD_lg_docs, 'scott.c_lg_docs',
-        '(select * from scott.a_lg_docs where mg=''' + Form_main.arch_mg_ +
-        ''')');
+//      change_alias(OD_lg_pr, 'scott.c_lg_docs',
+//        '(select * from scott.a_lg_docs where mg=''' + Form_main.arch_mg_ +
+//        ''')');
+//      change_alias(OD_lg_docs, 'scott.c_lg_docs',
+//        '(select * from scott.a_lg_docs where mg=''' + Form_main.arch_mg_ +
+//        ''')');
     end
     else if (Form_main.arch_mg_ = '') and (mgold_ <> '') then
     begin // из архива в текущее
       change_alias(OD_lg_pr,
         '(select * from scott.a_lg_pr where mg=''' + mgold_ + ''')',
         'scott.c_lg_pr');
-      change_alias(OD_lg_pr,
-        '(select * from scott.a_lg_docs where mg=''' + mgold_ + ''')',
-        'scott.c_lg_docs');
-      change_alias(OD_lg_docs,
-        '(select * from scott.a_lg_docs where mg=''' + mgold_ + ''')',
-        'scott.c_lg_docs');
+//      change_alias(OD_lg_pr,
+//        '(select * from scott.a_lg_docs where mg=''' + mgold_ + ''')',
+//        'scott.c_lg_docs');
+//      change_alias(OD_lg_docs,
+//        '(select * from scott.a_lg_docs where mg=''' + mgold_ + ''')',
+//        'scott.c_lg_docs');
     end
     else if (Form_main.arch_mg_ <> '') and (mgold_ <> '') then
     begin // из архива в архив
@@ -544,14 +544,14 @@ begin // смена состояний формы
         '(select * from scott.a_lg_pr where mg=''' + mgold_ + ''')',
         '(select * from scott.a_lg_pr where mg=''' + Form_main.arch_mg_ + ''')'
         );
-      change_alias(OD_lg_pr,
+{      change_alias(OD_lg_pr,
         '(select * from scott.a_lg_docs where mg=''' + mgold_ + ''')',
         '(select * from scott.a_lg_docs where mg=''' + Form_main.arch_mg_ + ''')'
         );
       change_alias(OD_lg_docs,
         '(select * from scott.a_lg_docs where mg=''' + mgold_ + ''')',
         '(select * from scott.a_lg_docs where mg=''' + Form_main.arch_mg_ + ''')'
-        );
+        );}
     end;
   end;
 end;

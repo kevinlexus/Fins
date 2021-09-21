@@ -30,7 +30,8 @@ uses
   cxMemo, cxDropDownEdit, cxGraphics, cxLookAndFeels,
   cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter, cxData,
   cxDataStorage, cxEdit, cxNavigator, cxDBData, cxContainer, cxTextEdit,
-  cxMaskEdit, cxGridCustomView, cxGridCustomTableView, cxGridTableView;
+  cxMaskEdit, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
+  frxExportBaseDialog;
 
 type
   TForm_olap = class(TForm)

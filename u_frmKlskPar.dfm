@@ -1,6 +1,6 @@
 object frmKlskPar: TfrmKlskPar
-  Left = 205
-  Top = 626
+  Left = 947
+  Top = 968
   Width = 527
   Height = 349
   Caption = #1055#1072#1088#1072#1084#1077#1090#1088#1099
@@ -105,9 +105,9 @@ object frmKlskPar: TfrmKlskPar
       DataController.Summary.DefaultGroupSummaryItems = <>
       DataController.Summary.FooterSummaryItems = <>
       DataController.Summary.SummaryGroups = <>
+      OptionsBehavior.CellHints = True
       OptionsView.ColumnAutoWidth = True
       OptionsView.GroupByBox = False
-      OptionsView.Header = False
       object cxGrid1DBTableView1ULIST: TcxGridDBColumn
         Caption = #1055#1072#1088#1072#1084#1077#1090#1088
         DataBinding.FieldName = 'FK_LIST'
@@ -119,12 +119,28 @@ object frmKlskPar: TfrmKlskPar
           end>
         Properties.ListOptions.ShowHeader = False
         Properties.ListSource = DS_u_list
+        Width = 128
       end
       object cxGrid1DBTableView1VAL: TcxGridDBColumn
         Caption = #1047#1085#1072#1095#1077#1085#1080#1077
         DataBinding.FieldName = 'VAL'
         Options.Editing = False
-        Width = 99
+        Width = 95
+      end
+      object cxGrid1DBTableView1DT_CRT: TcxGridDBColumn
+        Caption = #1057#1086#1079#1076#1072#1085#1086
+        DataBinding.FieldName = 'DT_CRT'
+        Width = 77
+      end
+      object cxGrid1DBTableView1DT_UPD: TcxGridDBColumn
+        Caption = #1054#1073#1085#1086#1074#1083#1077#1085#1086
+        DataBinding.FieldName = 'DT_UPD'
+        Width = 97
+      end
+      object cxGrid1DBTableView1USER_NAME: TcxGridDBColumn
+        Caption = #1055#1086#1083#1100#1079#1086#1074#1072#1090#1077#1083#1100
+        DataBinding.FieldName = 'USER_NAME'
+        Width = 112
       end
     end
     object cxGrid1Level1: TcxGridLevel
@@ -139,11 +155,14 @@ object frmKlskPar: TfrmKlskPar
         '.d1,'#39'DD.MM.YYYY'#39'), '#39'BL'#39', decode(x.n1,1,'#39#1044#1072#39',0,'#39#1053#1077#1090#39', null) , nul' +
         'l) as val, '
       'u.val_tp, '
-      'x.s1, x.n1, x.d1, x.fk_k_lsk, x.rowid'
+      
+        'x.s1, x.n1, x.d1, x.fk_k_lsk, x.dt_crt, x.dt_upd, u2.name as use' +
+        'r_name, x.rowid'
       ' from scott.t_objxpar x join scott.u_list u on u.id=x.fk_list'
       
         ' join scott.u_listtp tp on u.fk_listtp=tp.id and tp.cd='#39#1055#1072#1088#1072#1084#1077#1090#1088 +
         #1099' '#1083#1080#1094'.'#1089#1095#1077#1090#1072#39
+      ' left join scott.t_user u2 on x.fk_user=u2.id'
       'where '
       'x.fk_k_lsk=:k_lsk_id'
       'order by u.name')
@@ -152,14 +171,17 @@ object frmKlskPar: TfrmKlskPar
       0300000001000000090000003A4B5F4C534B5F49440300000000000000000000
       00}
     QBEDefinition.QBEFieldDefs = {
-      04000000080000000200000049440100000000000300000056414C0100000000
+      040000000B0000000200000049440100000000000300000056414C0100000000
       00020000005331010000000000020000004E310100000000000600000056414C
       5F545001000000000002000000443101000000000007000000464B5F4C495354
-      01000000000008000000464B5F4B5F4C534B010000000000}
+      01000000000008000000464B5F4B5F4C534B0100000000000600000044545F43
+      52540100000000000600000044545F5550440100000000000900000055534552
+      5F4E414D45010000000000}
     QueryAllRecords = False
     RefreshOptions = [roAfterInsert, roAfterUpdate, roAllFields]
     Session = DataModule1.OracleSession1
     DesignActivation = True
+    Active = True
     OnNewRecord = OD_objxparNewRecord
     Left = 112
     Top = 96
@@ -190,6 +212,19 @@ object frmKlskPar: TfrmKlskPar
     end
     object OD_objxparFK_K_LSK: TFloatField
       FieldName = 'FK_K_LSK'
+    end
+    object OD_objxparDT_CRT: TDateTimeField
+      FieldName = 'DT_CRT'
+      ReadOnly = True
+    end
+    object OD_objxparDT_UPD: TDateTimeField
+      FieldName = 'DT_UPD'
+      ReadOnly = True
+    end
+    object OD_objxparUSER_NAME: TStringField
+      FieldName = 'USER_NAME'
+      ReadOnly = True
+      Size = 32
     end
   end
   object DS_objxpar: TDataSource

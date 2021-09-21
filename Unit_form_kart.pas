@@ -1167,12 +1167,12 @@ begin
       change_alias(OD_kart_pr, 'scott.c_kart_pr',
         '(select * from scott.a_kart_pr2 where ''' + Form_main.arch_mg_ +
         ''' between mgFrom and mgTo)');
-      change_alias(OD_kart_pr, 'scott.c_lg_docs',
-        '(select * from scott.a_lg_docs where mg=''' + Form_main.arch_mg_ +
-        ''')');
-      change_alias(OD_kart_pr, 'scott.c_lg_pr',
-        '(select * from scott.a_lg_pr where mg=''' + Form_main.arch_mg_ +
-        ''')');
+//      change_alias(OD_kart_pr, 'scott.c_lg_docs',
+//        '(select * from scott.a_lg_docs where mg=''' + Form_main.arch_mg_ +
+//        ''')');
+//      change_alias(OD_kart_pr, 'scott.c_lg_pr',
+//        '(select * from scott.a_lg_pr where mg=''' + Form_main.arch_mg_ +
+//        ''')');
 
       change_alias(OD_vvod, 'scott.c_vvod',
         '(select * from scott.a_vvod where mg=''' + Form_main.arch_mg_ + ''')');
@@ -1194,10 +1194,10 @@ begin
       change_alias(OD_kart_pr, '(select * from scott.a_kart_pr2 where ''' +
         mgold_ +
         ''' between mgFrom and mgTo)', 'scott.c_kart_pr');
-      change_alias(OD_kart_pr, '(select * from scott.a_lg_docs where mg=''' +
-        mgold_ + ''')', 'scott.c_lg_docs');
-      change_alias(OD_kart_pr, '(select * from scott.a_lg_pr where mg=''' +
-        mgold_ + ''')', 'scott.c_lg_pr');
+//      change_alias(OD_kart_pr, '(select * from scott.a_lg_docs where mg=''' +
+//        mgold_ + ''')', 'scott.c_lg_docs');
+//      change_alias(OD_kart_pr, '(select * from scott.a_lg_pr where mg=''' +
+//        mgold_ + ''')', 'scott.c_lg_pr');
 
       change_alias(OD_vvod, '(select * from scott.a_vvod where mg=''' + mgold_ +
         ''')', 'scott.c_vvod');

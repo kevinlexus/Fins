@@ -29,6 +29,12 @@ type
     OD_objxparN1: TFloatField;
     OD_objxparD1: TDateTimeField;
     OD_objxparFK_K_LSK: TFloatField;
+    OD_objxparDT_CRT: TDateTimeField;
+    OD_objxparDT_UPD: TDateTimeField;
+    OD_objxparUSER_NAME: TStringField;
+    cxGrid1DBTableView1DT_CRT: TcxGridDBColumn;
+    cxGrid1DBTableView1DT_UPD: TcxGridDBColumn;
+    cxGrid1DBTableView1USER_NAME: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure cxGrid1DBTableView1DblClick(Sender: TObject);
