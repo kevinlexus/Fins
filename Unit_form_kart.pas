@@ -23,7 +23,7 @@ uses
   cxFilter, cxDBData, cxDBLookupComboBox,
 
   cxMaskEdit, cxLookAndFeels, cxLookAndFeelPainters, cxStyles, cxData,
-  cxDataStorage;
+  cxDataStorage, cxCalendar;
 
 type
   TForm_kart = class(TForm)
@@ -378,6 +378,10 @@ type
     OD_kart_prDOK_INN: TStringField;
     OD_kart_prDOK_DEATH_C: TStringField;
     OD_kart_prDOK_DEATH_N: TStringField;
+    OD_chargeDT1: TDateTimeField;
+    OD_chargeDT2: TDateTimeField;
+    cxGrid1DBTableView1DT1: TcxGridDBColumn;
+    cxGrid1DBTableView1DT2: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure DBGridEh1DblClick(Sender: TObject);
     procedure OD_kartAfterPost(DataSet: TDataSet);

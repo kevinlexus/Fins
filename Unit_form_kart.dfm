@@ -1,6 +1,6 @@
 object Form_kart: TForm_kart
-  Left = 358
-  Top = 564
+  Left = 894
+  Top = 550
   Width = 903
   Height = 675
   BorderIcons = [biSystemMenu, biMinimize]
@@ -137,7 +137,7 @@ object Form_kart: TForm_kart
         Top = 1
         Width = 342
         Height = 220
-        ActivePage = TabSheet1
+        ActivePage = TabSheet2
         Align = alClient
         TabOrder = 0
         object TabSheet2: TTabSheet
@@ -2710,60 +2710,63 @@ object Form_kart: TForm_kart
       object cxGrid1DBTableView1REU: TcxGridDBColumn
         Caption = #1059#1050
         DataBinding.FieldName = 'REU'
+        Width = 20
       end
       object cxGrid1DBTableView1LSK: TcxGridDBColumn
         Caption = #1051#1057
         DataBinding.FieldName = 'LSK'
         Options.Editing = False
-        Width = 57
+        Width = 45
       end
       object cxGrid1DBTableView1USL: TcxGridDBColumn
         DataBinding.FieldName = 'USL'
         Options.Editing = False
-        Width = 32
+        Width = 25
       end
       object cxGrid1DBTableView1NM: TcxGridDBColumn
         DataBinding.FieldName = 'NM'
         Options.Editing = False
-        Width = 114
+        Width = 89
       end
       object cxGrid1DBTableView1VOLUME: TcxGridDBColumn
         DataBinding.FieldName = 'VOLUME'
         Options.Editing = False
-        Width = 49
+        Width = 39
       end
       object cxGrid1DBTableView1CENA: TcxGridDBColumn
         DataBinding.FieldName = 'CENA'
         Options.Editing = False
-        Width = 63
+        Width = 49
       end
       object cxGrid1DBTableView1TARIF: TcxGridDBColumn
         DataBinding.FieldName = 'TARIF'
         Options.Editing = False
-        Width = 56
+        Width = 44
       end
       object cxGrid1DBTableView1CHANGES: TcxGridDBColumn
         DataBinding.FieldName = 'CHANGES'
         Options.Editing = False
-        Width = 68
+        Width = 54
       end
       object cxGrid1DBTableView1ITOGN: TcxGridDBColumn
         DataBinding.FieldName = 'ITOGN'
         Options.Editing = False
-        Width = 70
+        Width = 55
       end
       object cxGrid1DBTableView1KOEFF: TcxGridDBColumn
         DataBinding.FieldName = 'KOEFF'
-        Width = 49
+        Width = 38
       end
       object cxGrid1DBTableView1NORM: TcxGridDBColumn
         DataBinding.FieldName = 'NORM'
-        Width = 43
+        Width = 34
       end
       object cxGrid1DBTableView1ORG_NAME: TcxGridDBColumn
         Caption = #1055#1086#1089#1090#1072#1074#1097#1080#1082
         DataBinding.FieldName = 'ORG'
         PropertiesClassName = 'TcxLookupComboBoxProperties'
+        Properties.DropDownSizeable = True
+        Properties.DropDownWidth = 200
         Properties.KeyFieldNames = 'KOD'
         Properties.ListColumns = <
           item
@@ -2771,12 +2774,14 @@ object Form_kart: TForm_kart
           end>
         Properties.ListOptions.ShowHeader = False
         Properties.ListSource = DS_sprorg
-        Width = 69
+        Width = 54
       end
       object cxGrid1DBTableView1FK_VVOD: TcxGridDBColumn
         Caption = #8470' '#1042#1074#1086#1076#1072
         DataBinding.FieldName = 'FK_VVOD'
         PropertiesClassName = 'TcxLookupComboBoxProperties'
+        Properties.DropDownSizeable = True
+        Properties.DropDownWidth = 200
         Properties.KeyFieldNames = 'ID'
         Properties.ListColumns = <
           item
@@ -2784,19 +2789,19 @@ object Form_kart: TForm_kart
           end>
         Properties.ListOptions.ShowHeader = False
         Properties.ListSource = DS_vvod
-        Width = 53
+        Width = 42
       end
       object cxGrid1DBTableView1VOL: TcxGridDBColumn
         Caption = #1056#1072#1089#1087#1088'.'#1085#1086#1088#1084'.'
         DataBinding.FieldName = 'VOL'
         Options.Editing = False
-        Width = 76
+        Width = 60
       end
       object cxGrid1DBTableView1VOL_ADD: TcxGridDBColumn
         Caption = #1056#1072#1089#1087#1088'.'#1089#1095#1077#1090#1095'.'
         DataBinding.FieldName = 'VOL_ADD'
         Options.Editing = False
-        Width = 78
+        Width = 61
       end
       object cxGrid1DBTableView1CD_TP: TcxGridDBColumn
         DataBinding.FieldName = 'CD_TP'
@@ -2805,6 +2810,18 @@ object Form_kart: TForm_kart
       object cxGrid1DBTableView1PSCH: TcxGridDBColumn
         DataBinding.FieldName = 'PSCH'
         Visible = False
+      end
+      object cxGrid1DBTableView1DT1: TcxGridDBColumn
+        Caption = #1053#1072#1095#1072#1083#1086
+        DataBinding.FieldName = 'DT1'
+        PropertiesClassName = 'TcxDateEditProperties'
+        Width = 72
+      end
+      object cxGrid1DBTableView1DT2: TcxGridDBColumn
+        Caption = #1054#1082#1086#1085#1095#1072#1085#1080#1077
+        DataBinding.FieldName = 'DT2'
+        PropertiesClassName = 'TcxDateEditProperties'
+        Width = 104
       end
     end
     object cxGrid1Level1: TcxGridLevel
@@ -3242,7 +3259,8 @@ object Form_kart: TForm_kart
       '       nvl(d.summa, 0) as changes,'
       '       nvl(a.summa, 0) - nvl(a.summa_b, 0) - nvl(a.summa_c, 0) +'
       '       nvl(d.summa, 0) as itogn,'
-      '       m.sptarn'
+      '       m.sptarn,'
+      '       n.dt1, n.dt2'
       
         '  from  scott.nabor n join scott.kart k on k.lsk=n.lsk and decod' +
         'e(k.psch, 8, :p_closed, 9, :p_closed,1)=1'
@@ -3252,15 +3270,17 @@ object Form_kart: TForm_kart
       '                     join scott.sprorg g on n.org = g.kod'
       '                     join scott.v_lsk_tp tp on k.fk_tp=tp.id'
       
-        '                     left join (select lsk, usl, sum(decode(t.ty' +
-        'pe,1,summa,0)) as summa, '
+        '                     left join (select lsk, usl, org, sum(decode' +
+        '(t.type,1,summa,0)) as summa, '
       '           sum(decode(t.type,4,summa,0)) as summa_b, '
       '           sum(decode(t.type,2,summa,0)) as summa_c,'
       '           sum(decode(t.type,1,test_opl,0)) as volume,'
       '           max(decode(t.type,1,test_cena,0)) as cena'
       '          from scott.c_charge t'
       '         --where lsk = :lsk'
-      '         group by lsk, usl) a on n.lsk = a.lsk and n.usl = a.usl'
+      
+        '         group by lsk, usl, org) a on n.lsk = a.lsk and n.usl = ' +
+        'a.usl and n.org=a.org'
       
         '                    left join (select cc.lsk, cc.usl, sum(cc.sum' +
         'ma) as summa'
@@ -3305,7 +3325,8 @@ object Form_kart: TForm_kart
       '       null as subsid,'
       '       nvl(sum(t.summa), 0) as changes,'
       '       nvl(sum(t.summa), 0) as  itogn,'
-      '       0 as sptarn'
+      '       0 as sptarn,'
+      '       null as dt1, null as dt2'
       '      from scott.kart k '
       '      join scott.c_change t on k.lsk=t.lsk'
       
@@ -3353,21 +3374,22 @@ object Form_kart: TForm_kart
       '       null as subsid,'
       '       null as changes,'
       '       null as  itogn,'
-      '       0 as sptarn'
+      '       0 as sptarn,'
+      '       null as dt1, null as dt2'
       
         '      from scott.kart k join scott.c_charge t on k.lsk=t.lsk and' +
         ' k.k_lsk_id=:k_lsk_id and decode(k.psch, 8, :p_closed, 9, :p_clo' +
         'sed,1)=1'
       '      join scott.usl u on t.usl=u.usl and t.type=5'
       '      join scott.v_lsk_tp tp on k.fk_tp=tp.id'
-      ' order by reu, npp'
+      ' order by reu, npp, dt1'
       '')
     Optimize = False
     Variables.Data = {
       0300000002000000090000003A4B5F4C534B5F49440300000000000000000000
       00090000003A505F434C4F534544030000000000000000000000}
     QBEDefinition.QBEFieldDefs = {
-      040000001F000000050000005441524946010000000000050000005052495653
+      0400000021000000050000005441524946010000000000050000005052495653
       0100000000000300000055534C01000000000006000000535542534944010000
       000000070000004348414E4745530100000000000500000049544F474E010000
       000000030000004C534B010000000000050000004B4F45464601000000000004
@@ -3382,7 +3404,8 @@ object Form_kart: TForm_kart
       00000000000A0000004B465F4B50525F534348010000000000080000004E524D
       5F4B505232010000000000080000004B5F4C534B5F4944010000000000030000
       005245550100000000000500000043445F545001000000000004000000505343
-      48010000000000}
+      4801000000000003000000445431010000000000030000004454320100000000
+      00}
     UpdatingTable = 'scott.nabor'
     CommitOnPost = False
     CachedUpdates = True
@@ -3536,6 +3559,12 @@ object Form_kart: TForm_kart
     end
     object OD_chargePSCH: TIntegerField
       FieldName = 'PSCH'
+    end
+    object OD_chargeDT1: TDateTimeField
+      FieldName = 'DT1'
+    end
+    object OD_chargeDT2: TDateTimeField
+      FieldName = 'DT2'
     end
   end
   object DS_charge: TDataSource

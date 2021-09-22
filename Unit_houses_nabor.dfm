@@ -312,7 +312,7 @@ object Form_houses_nabor: TForm_houses_nabor
             Top = 0
             Width = 25
             Height = 25
-            Hint = 'Move to first record'
+            Hint = #1050' '#1087#1077#1088#1074#1086#1081' '#1079#1072#1087#1080#1089#1080
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -329,7 +329,7 @@ object Form_houses_nabor: TForm_houses_nabor
             Top = 0
             Width = 25
             Height = 25
-            Hint = 'Move backward 10 records'
+            Hint = #1053#1072#1079#1072#1076' '#1085#1072' 10 '#1079#1072#1087#1080#1089#1077#1081
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -346,7 +346,7 @@ object Form_houses_nabor: TForm_houses_nabor
             Top = 0
             Width = 25
             Height = 25
-            Hint = 'Move to prior record'
+            Hint = #1055#1088#1077#1076#1099#1076#1091#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -363,7 +363,7 @@ object Form_houses_nabor: TForm_houses_nabor
             Top = 0
             Width = 25
             Height = 25
-            Hint = 'Move to next record'
+            Hint = #1057#1083#1077#1076#1091#1102#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -380,7 +380,7 @@ object Form_houses_nabor: TForm_houses_nabor
             Top = 0
             Width = 25
             Height = 25
-            Hint = 'Move forward 10 records'
+            Hint = #1042#1087#1077#1088#1077#1076' '#1085#1072' 10 '#1079#1072#1087#1080#1089#1077#1081
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -397,7 +397,7 @@ object Form_houses_nabor: TForm_houses_nabor
             Top = 0
             Width = 25
             Height = 25
-            Hint = 'Move to last record'
+            Hint = #1055#1077#1088#1077#1081#1090#1080' '#1082' '#1087#1086#1089#1083#1077#1076#1085#1077#1081' '#1079#1072#1087#1080#1089#1080
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -414,7 +414,7 @@ object Form_houses_nabor: TForm_houses_nabor
             Top = 0
             Width = 25
             Height = 25
-            Hint = 'Insert new record'
+            Hint = #1044#1086#1073#1072#1074#1080#1090#1100' '#1085#1086#1074#1091#1102' '#1079#1072#1087#1080#1089#1100
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -432,7 +432,7 @@ object Form_houses_nabor: TForm_houses_nabor
             Top = 0
             Width = 25
             Height = 25
-            Hint = 'Delete current record'
+            Hint = #1059#1076#1072#1083#1080#1090#1100' '#1090#1077#1082#1091#1097#1091#1102' '#1079#1072#1087#1080#1089#1100
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -450,7 +450,7 @@ object Form_houses_nabor: TForm_houses_nabor
             Top = 0
             Width = 25
             Height = 25
-            Hint = 'Edit current record'
+            Hint = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1090#1077#1082#1091#1097#1091#1102' '#1079#1072#1087#1080#1089#1100
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -467,7 +467,7 @@ object Form_houses_nabor: TForm_houses_nabor
             Top = 0
             Width = 25
             Height = 25
-            Hint = 'Post changes of current record'
+            Hint = #1054#1090#1087#1088#1072#1074#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103' '#1074' '#1073#1072#1079#1091
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -485,7 +485,7 @@ object Form_houses_nabor: TForm_houses_nabor
             Top = 0
             Width = 25
             Height = 25
-            Hint = 'Cancel changes made to current record'
+            Hint = #1054#1090#1084#1077#1085#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103' '#1090#1077#1082#1091#1097#1077#1081' '#1079#1072#1087#1080#1089#1080
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -503,7 +503,7 @@ object Form_houses_nabor: TForm_houses_nabor
             Top = 0
             Width = 25
             Height = 25
-            Hint = 'Refresh the contents of the dataset'
+            Hint = #1054#1073#1085#1086#1074#1080#1090#1100' '#1079#1072#1087#1080#1089#1080
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -521,7 +521,7 @@ object Form_houses_nabor: TForm_houses_nabor
             Top = 0
             Width = 25
             Height = 25
-            Hint = 'Bookmark current record'
+            Hint = #1055#1086#1089#1090#1072#1074#1080#1090#1100' '#1079#1072#1082#1083#1072#1076#1082#1091' '#1085#1072' '#1090#1077#1082#1091#1097#1077#1081' '#1079#1072#1087#1080#1089#1080
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -537,7 +537,7 @@ object Form_houses_nabor: TForm_houses_nabor
             Top = 0
             Width = 25
             Height = 25
-            Hint = 'Go back to saved bookmark'
+            Hint = #1055#1077#1088#1077#1081#1090#1080' '#1082' '#1089#1086#1093#1088#1072#1085#1105#1085#1085#1086#1081' '#1079#1072#1082#1083#1072#1076#1082#1077
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -1510,7 +1510,7 @@ object Form_houses_nabor: TForm_houses_nabor
       'order by t.name')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      040000003C000000020000004944010000000000040000004E414D4501000000
+      040000003F000000020000004944010000000000040000004E414D4501000000
       0000020000004344010000000000030000004E50500100000000000800000046
       4B5F4F5247545001000000000001000000560100000000000900000050415245
       4E545F4944010000000000030000005245550100000000000500000054524553
@@ -1544,7 +1544,10 @@ object Form_houses_nabor: TForm_houses_nabor
       4E414D455F4749530100000000001600000055534C5F464F525F435245415445
       5F4558545F4C534B0100000000001900000049535F4352454154455F4558545F
       4C534B5F494E5F4B415254010000000000110000004558545F4C534B5F464F52
-      4D41545F5450010000000000}
+      4D41545F5450010000000000150000004558545F4C534B5F4C4F41445F53414C
+      444F5F5450010000000000100000004558545F4C534B5F4C4F41445F50415901
+      0000000000150000004558545F4C534B5F5041595F464F524D41545F54500100
+      00000000}
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True
@@ -1747,7 +1750,7 @@ object Form_houses_nabor: TForm_houses_nabor
       'order by t.name')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      040000003C000000020000004944010000000000040000004E414D4501000000
+      040000003F000000020000004944010000000000040000004E414D4501000000
       0000020000004344010000000000030000004E50500100000000000800000046
       4B5F4F5247545001000000000001000000560100000000000900000050415245
       4E545F4944010000000000030000005245550100000000000500000054524553
@@ -1781,7 +1784,10 @@ object Form_houses_nabor: TForm_houses_nabor
       4E414D455F4749530100000000001600000055534C5F464F525F435245415445
       5F4558545F4C534B0100000000001900000049535F4352454154455F4558545F
       4C534B5F494E5F4B415254010000000000110000004558545F4C534B5F464F52
-      4D41545F5450010000000000}
+      4D41545F5450010000000000150000004558545F4C534B5F4C4F41445F53414C
+      444F5F5450010000000000100000004558545F4C534B5F4C4F41445F50415901
+      0000000000150000004558545F4C534B5F5041595F464F524D41545F54500100
+      00000000}
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True
