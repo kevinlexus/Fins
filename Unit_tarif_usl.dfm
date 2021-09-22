@@ -1,6 +1,6 @@
 object Form_tarif_usl: TForm_tarif_usl
-  Left = 832
-  Top = 194
+  Left = 876
+  Top = 502
   Width = 813
   Height = 768
   Caption = #1058#1072#1088#1080#1092#1099' '#1087#1086' '#1091#1089#1083#1091#1075#1072#1084
@@ -101,12 +101,14 @@ object Form_tarif_usl: TForm_tarif_usl
       'BTN;CustomEdit;wwExpandButton4;F')
     Selected.Strings = (
       'BTN'#9'2'#9' '#9'F'
-      'USL'#9'3'#9#1050#1086#1076'~'#1091#1089#1083#9'F'
-      'NM'#9'13'#9#1059#1089#1083#1091#1075#1072#9'F'
-      'KOEFF'#9'9'#9#1050#1086#1101#1092#1092#9'F'
-      'NORM'#9'11'#9#1053#1086#1088#1084#1072#1090#1080#1074#9'F'
-      'NAME'#9'29'#9#1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103#9'F'
-      'NAME2'#9'54'#9#1043#1083#1072#1074#1085#1072#1103'~'#1054#1088#1075'.'#9'F')
+      'USL'#9'2'#9#1050#1086#1076'~'#1091#1089#1083#9'F'
+      'NM'#9'9'#9#1059#1089#1083#1091#1075#1072#9'F'
+      'KOEFF'#9'6'#9#1050#1086#1101#1092#1092#9'F'
+      'NORM'#9'8'#9#1053#1086#1088#1084#1072#1090#1080#1074#9'F'
+      'NAME'#9'22'#9#1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103#9'F'
+      'NAME2'#9'42'#9#1043#1083#1072#1074#1085#1072#1103'~'#1054#1088#1075'.'#9'F'
+      'DT1'#9'14'#9#1053#1072#1095#1072#1083#1086#9'F'
+      'DT2'#9'14'#9#1054#1082#1086#1085#1095#1072#1085#1080#1077#9'F')
     IniAttributes.Delimiter = ';;'
     TitleColor = clBtnFace
     FixedCols = 0
@@ -238,6 +240,14 @@ object Form_tarif_usl: TForm_tarif_usl
       object cxGrid1DBTableView1NORM: TcxGridDBColumn
         Caption = #1053#1086#1088#1084#1072#1090#1080#1074
         DataBinding.FieldName = 'NORM'
+      end
+      object cxGrid1DBTableView1DT1: TcxGridDBColumn
+        Caption = #1053#1072#1095#1072#1083#1086
+        DataBinding.FieldName = 'DT1'
+      end
+      object cxGrid1DBTableView1DT2: TcxGridDBColumn
+        Caption = #1054#1082#1086#1085#1095#1072#1085#1080#1077
+        DataBinding.FieldName = 'DT2'
       end
     end
     object cxGrid1Level1: TcxGridLevel

@@ -34,6 +34,8 @@ type
     cxGrid1DBTableView1LSK: TcxGridDBColumn;
     cxGrid1DBTableView1KOEFF: TcxGridDBColumn;
     cxGrid1DBTableView1NORM: TcxGridDBColumn;
+    cxGrid1DBTableView1DT1: TcxGridDBColumn;
+    cxGrid1DBTableView1DT2: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure wwDBGrid2DblClick(Sender: TObject);

@@ -387,6 +387,7 @@ object DM_Olap: TDM_Olap
         't_tp, :prep_refcursor);'
       'end;')
     FetchRows = 1000
+    Active = True
     Constraints = <>
     Left = 32
     Top = 32
@@ -465,7 +466,7 @@ object DM_Olap: TDM_Olap
         DataType = ftString
         Name = 'cd_'
         ParamType = ptInput
-        Value = '97'
+        Value = '78'
       end
       item
         DataType = ftInteger
@@ -651,12 +652,12 @@ object DM_Olap: TDM_Olap
     Top = 544
     ParamData = <
       item
-        DataType = ftString
+        DataType = ftFixedChar
         Name = 'usl'
         ParamType = ptInput
       end
       item
-        DataType = ftInteger
+        DataType = ftString
         Name = 'house_id'
         ParamType = ptInput
       end

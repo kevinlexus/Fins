@@ -11,7 +11,8 @@ uses
   cxMaskEdit, 
   cxDBLookupComboBox, ExtCtrls, cxGraphics, cxLookAndFeels,
   cxLookAndFeelPainters, cxContainer, cxEdit, cxTextEdit, cxDropDownEdit,
-  cxLookupEdit, cxDBLookupEdit;
+  cxLookupEdit, cxDBLookupEdit, ComCtrls, dxCore, cxDateUtils, cxCalendar,
+  cxDBEdit;
 
 type
   TForm_change_house_nabor2 = class(TForm)
@@ -36,6 +37,10 @@ type
     lbl1: TLabel;
     cxMaskEdit3: TcxMaskEdit;
     cxMaskEdit1: TcxMaskEdit;
+    Label4: TLabel;
+    Label6: TLabel;
+    cxDateEdit1: TcxDateEdit;
+    cxDateEdit2: TcxDateEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button2Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -139,6 +144,8 @@ begin
       DM_Olap.Uni_data.FieldByName('org').AsString;
     cxMaskEdit3.Text := DM_Olap.Uni_data.FieldByName('koeff').AsString;
     cxMaskEdit1.Text := DM_Olap.Uni_data.FieldByName('norm').AsString;
+    cxDateEdit1.Date := DM_Olap.Uni_data.FieldByName('dt1').AsDateTime;
+    cxDateEdit2.Date := DM_Olap.Uni_data.FieldByName('dt2').AsDateTime;
   end;
 
 end;
