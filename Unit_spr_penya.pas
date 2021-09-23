@@ -119,14 +119,14 @@ procedure TForm_spr_penya.OD_spr_penAfterPost(DataSet: TDataSet);
 begin
     DataModule1.OraclePackage1.CallProcedure
       ('scott.P_JAVA.reloadSprPen',
-      [parNone, Form_main.javaServer]);
+      [Form_main.javaServer]);
 end;
 
 procedure TForm_spr_penya.OD_stav_rAfterPost(DataSet: TDataSet);
 begin
     DataModule1.OraclePackage1.CallProcedure
       ('scott.P_JAVA.reloadSprPen',
-      [parNone, Form_main.javaServer]);
+      [Form_main.javaServer]);
 end;
 
 end.
