@@ -191,20 +191,6 @@ begin
       if l_lvl = 4 then
       begin
         //по л.с.
-{        DataModule1.OraclePackage1.CallProcedure
-          ('scott.p_houses.house_add_usl',
-          [l_lvl,
-          Form_list_kart.OD_list_kart.FieldByName('lsk').AsString,
-            null,
-            null,
-            null,
-            OD_usl.FieldByName('usl').AsString,
-            OD_sprorg.FieldByName('kod').AsInteger,
-            StrToFloat(NvlStr(wwDBEdit3.Text, '0')),
-            StrToFloat(NvlStr(wwDBEdit1.Text, '0')),
-            l_chrg
-            ]);}
-
         DataModule1.UniStoredProc1.StoredProcName :=
           'scott.p_houses.house_add_usl';
         with DataModule1.UniStoredProc1.Params do
@@ -226,6 +212,10 @@ begin
             StrToFloat(NvlStr(cxMaskEdit1.Text, '0'));
           CreateParam(ftInteger, 'p_chrg', ptInput).AsFloat :=
             l_chrg;
+          CreateParam(ftDate, 'p_dt1', ptInput).AsDate :=
+            cxDateEdit1.Date;
+          CreateParam(ftDate, 'p_dt2', ptInput).AsDate :=
+            cxDateEdit2.Date;
         end;
         DataModule1.UniStoredProc1.ExecProc;
 
@@ -233,18 +223,6 @@ begin
       else
       begin
         //по прочим объектам
-        {DataModule1.OraclePackage1.CallProcedure
-          ('scott.p_houses.house_add_usl',
-          [l_lvl,
-          null,
-            DM_Olap.MemTableEh2.FieldByName('fk_house').AsInteger,
-            DM_Olap.MemTableEh2.FieldByName('reu').AsString,
-            DM_Olap.MemTableEh2.FieldByName('trest').AsString,
-            OD_usl.FieldByName('usl').AsString,
-            OD_sprorg.FieldByName('kod').AsInteger,
-            StrToFloat(NvlStr(wwDBEdit3.Text, '0')),
-            StrToFloat(NvlStr(wwDBEdit1.Text, '0')),
-            l_chrg]);}
         DataModule1.UniStoredProc1.StoredProcName :=
           'scott.p_houses.house_add_usl';
         with DataModule1.UniStoredProc1.Params do
@@ -268,6 +246,10 @@ begin
             StrToFloat(NvlStr(cxMaskEdit1.Text, '0'));
           CreateParam(ftInteger, 'p_chrg', ptInput).AsFloat :=
             l_chrg;
+          CreateParam(ftDate, 'p_dt1', ptInput).AsDate :=
+            cxDateEdit1.Date;
+          CreateParam(ftDate, 'p_dt2', ptInput).AsDate :=
+            cxDateEdit2.Date;
         end;
         DataModule1.UniStoredProc1.ExecProc;
 
@@ -286,19 +268,6 @@ begin
       //изменение существующей услуги
       Application.CreateForm(TForm_status, Form_status);
       Form_status.Update;
-      {DataModule1.OraclePackage1.CallProcedure
-           ('scott.p_houses.house_chng_usl',
-           [l_lvl,
-           DM_Olap.MemTableEh2.FieldByName('fk_house').AsInteger,
-           DM_Olap.MemTableEh2.FieldByName('reu').AsString,
-           DM_Olap.MemTableEh2.FieldByName('trest').AsString,
-           OD_usl.FieldByName('usl').AsString,
-           old_org_,
-           OD_sprorg.FieldByName('kod').AsInteger,
-           old_koeff_, old_norm_,
-           StrToFloat(NvlStr(wwDBEdit3.Text,'0')),
-           StrToFloat(NvlStr(wwDBEdit1.Text,'0')),
-           l_chrg]);}
       DataModule1.UniStoredProc1.StoredProcName :=
         'scott.p_houses.house_chng_usl';
       with DataModule1.UniStoredProc1.Params do
@@ -328,6 +297,10 @@ begin
           StrToFloat(NvlStr(cxMaskEdit1.Text, '0'));
         CreateParam(ftInteger, 'p_chrg', ptInput).AsFloat :=
           l_chrg;
+          CreateParam(ftDate, 'p_dt1', ptInput).AsDate :=
+            cxDateEdit1.Date;
+          CreateParam(ftDate, 'p_dt2', ptInput).AsDate :=
+            cxDateEdit2.Date;
       end;
       DataModule1.UniStoredProc1.ExecProc;
       Form_status.Close;

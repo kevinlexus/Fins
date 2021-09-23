@@ -147,11 +147,21 @@ object Form_spr_penya: TForm_spr_penya
       object cxGrid1DBTableView1DAT1: TcxGridDBColumn
         Caption = #1053#1072#1095#1072#1083#1086
         DataBinding.FieldName = 'DAT1'
+        PropertiesClassName = 'TcxDateEditProperties'
+        Properties.AutoSelect = False
+        Properties.InputKind = ikMask
+        Properties.SaveTime = False
+        Properties.ShowTime = False
         Width = 71
       end
       object cxGrid1DBTableView1DAT2: TcxGridDBColumn
         Caption = #1054#1082#1086#1085#1095#1072#1085#1080#1077
         DataBinding.FieldName = 'DAT2'
+        PropertiesClassName = 'TcxDateEditProperties'
+        Properties.AutoSelect = False
+        Properties.InputKind = ikMask
+        Properties.SaveTime = False
+        Properties.ShowTime = False
         Width = 68
       end
       object cxGrid1DBTableView1RATE: TcxGridDBColumn
@@ -200,6 +210,11 @@ object Form_spr_penya: TForm_spr_penya
       object cxGridDBTableView1DAT: TcxGridDBColumn
         Caption = #1059#1089#1090#1072#1085#1086#1074#1083#1077#1085#1085#1072#1103' '#1076#1072#1090#1072' '#1086#1087#1083#1072#1090#1099
         DataBinding.FieldName = 'DAT'
+        PropertiesClassName = 'TcxDateEditProperties'
+        Properties.AutoSelect = False
+        Properties.InputKind = ikMask
+        Properties.SaveTime = False
+        Properties.ShowTime = False
         Width = 226
       end
       object cxGridDBTableView1Column1: TcxGridDBColumn
@@ -261,7 +276,9 @@ object Form_spr_penya: TForm_spr_penya
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True
-    AfterPost = OD_stav_rAfterPost
+    AfterInsert = OD_spr_penAfterPost
+    AfterPost = OD_spr_penAfterPost
+    AfterDelete = OD_spr_penAfterPost
     Left = 24
     Top = 120
     object OD_stav_rPROC: TFloatField
@@ -314,7 +331,9 @@ object Form_spr_penya: TForm_spr_penya
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True
+    AfterInsert = OD_spr_penAfterPost
     AfterPost = OD_spr_penAfterPost
+    AfterDelete = OD_spr_penAfterPost
     Left = 24
     Top = 88
     object OD_spr_penMG: TStringField

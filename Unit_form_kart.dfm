@@ -1,6 +1,6 @@
 object Form_kart: TForm_kart
-  Left = 894
-  Top = 550
+  Left = 1426
+  Top = 408
   Width = 903
   Height = 675
   BorderIcons = [biSystemMenu, biMinimize]
@@ -2815,12 +2815,20 @@ object Form_kart: TForm_kart
         Caption = #1053#1072#1095#1072#1083#1086
         DataBinding.FieldName = 'DT1'
         PropertiesClassName = 'TcxDateEditProperties'
+        Properties.AutoSelect = False
+        Properties.InputKind = ikMask
+        Properties.SaveTime = False
+        Properties.ShowTime = False
         Width = 72
       end
       object cxGrid1DBTableView1DT2: TcxGridDBColumn
         Caption = #1054#1082#1086#1085#1095#1072#1085#1080#1077
         DataBinding.FieldName = 'DT2'
         PropertiesClassName = 'TcxDateEditProperties'
+        Properties.AutoSelect = False
+        Properties.InputKind = ikMask
+        Properties.SaveTime = False
+        Properties.ShowTime = False
         Width = 104
       end
     end

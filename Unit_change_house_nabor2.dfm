@@ -1,6 +1,6 @@
 object Form_change_house_nabor2: TForm_change_house_nabor2
-  Left = 1785
-  Top = 943
+  Left = 493
+  Top = 247
   Align = alCustom
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
@@ -132,7 +132,7 @@ object Form_change_house_nabor2: TForm_change_house_nabor2
     Left = 0
     Top = 0
     Width = 663
-    Height = 65
+    Height = 57
     Align = alTop
     TabOrder = 1
     object Label2: TLabel
@@ -202,8 +202,8 @@ object Form_change_house_nabor2: TForm_change_house_nabor2
       Visible = False
     end
     object Label4: TLabel
-      Left = 285
-      Top = 40
+      Left = 213
+      Top = 32
       Width = 44
       Height = 13
       Caption = #1053#1072#1095#1072#1083#1086
@@ -215,8 +215,8 @@ object Form_change_house_nabor2: TForm_change_house_nabor2
       ParentFont = False
     end
     object Label6: TLabel
-      Left = 461
-      Top = 40
+      Left = 349
+      Top = 32
       Width = 65
       Height = 13
       Caption = #1054#1082#1086#1085#1095#1072#1085#1080#1077
@@ -296,16 +296,18 @@ object Form_change_house_nabor2: TForm_change_house_nabor2
       Width = 73
     end
     object cxDateEdit1: TcxDateEdit
-      Left = 336
-      Top = 36
+      Left = 264
+      Top = 28
+      Properties.InputKind = ikMask
       TabOrder = 5
-      Width = 121
+      Width = 81
     end
     object cxDateEdit2: TcxDateEdit
-      Left = 528
-      Top = 36
+      Left = 416
+      Top = 28
+      Properties.InputKind = ikMask
       TabOrder = 6
-      Width = 121
+      Width = 89
     end
   end
   object DS_usl: TDataSource
