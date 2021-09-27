@@ -2065,7 +2065,10 @@ begin
         OD_charge.FieldByName('USL').AsString,
         OD_charge.FieldByName('ORG').AsInteger,
         OD_charge.FieldByName('KOEFF').AsFloat,
-        OD_charge.FieldByName('NORM').AsFloat, 1]);
+        OD_charge.FieldByName('NORM').AsFloat, 1,
+        OD_charge.FieldByName('DT1').AsDateTime,
+        OD_charge.FieldByName('DT2').AsDateTime
+        ]);
     Form_kart.updates_ := 1;
     OD_charge.Refresh;
   end;

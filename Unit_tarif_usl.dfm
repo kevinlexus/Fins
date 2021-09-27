@@ -1,6 +1,6 @@
 object Form_tarif_usl: TForm_tarif_usl
-  Left = 876
-  Top = 502
+  Left = 1086
+  Top = 252
   Width = 813
   Height = 768
   Caption = #1058#1072#1088#1080#1092#1099' '#1087#1086' '#1091#1089#1083#1091#1075#1072#1084
@@ -130,6 +130,7 @@ object Form_tarif_usl: TForm_tarif_usl
     TitleButtons = False
     UseTFields = False
     OnDblClick = wwDBGrid2DblClick
+    PaintOptions.ActiveRecordColor = clSkyBlue
   end
   object wwExpandButton4: TwwExpandButton
     Left = 72
@@ -228,6 +229,7 @@ object Form_tarif_usl: TForm_tarif_usl
       object cxGrid1DBTableView1KW: TcxGridDBColumn
         Caption = #1050#1074'.'
         DataBinding.FieldName = 'KW'
+        Width = 48
       end
       object cxGrid1DBTableView1LSK: TcxGridDBColumn
         Caption = #1051#1080#1094'.'#1089#1095'.'
@@ -240,6 +242,11 @@ object Form_tarif_usl: TForm_tarif_usl
       object cxGrid1DBTableView1NORM: TcxGridDBColumn
         Caption = #1053#1086#1088#1084#1072#1090#1080#1074
         DataBinding.FieldName = 'NORM'
+      end
+      object cxGrid1DBTableView1ORG: TcxGridDBColumn
+        Caption = #1050#1086#1076'.'#1054#1088#1075'.'
+        DataBinding.FieldName = 'ORG'
+        Width = 54
       end
       object cxGrid1DBTableView1DT1: TcxGridDBColumn
         Caption = #1053#1072#1095#1072#1083#1086

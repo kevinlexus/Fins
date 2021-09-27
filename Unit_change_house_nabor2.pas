@@ -57,6 +57,7 @@ type
     l_lvl, old_org_, state_: Integer;
     old_koeff_, old_norm_: Double;
     l_lsk: string;
+    old_dt1, old_dt2: TDateTime;
   public
     var_: Integer;
   end;
@@ -137,6 +138,8 @@ begin
     old_org_ := DM_Olap.Uni_data.FieldByName('org').AsInteger;
     old_koeff_ := DM_Olap.Uni_data.FieldByName('koeff').AsFloat;
     old_norm_ := DM_Olap.Uni_data.FieldByName('norm').AsFloat;
+    old_dt1 := DM_Olap.Uni_data.FieldByName('dt1').AsDateTime;
+    old_dt2 := DM_Olap.Uni_data.FieldByName('dt2').AsDateTime;
     wwDBLookupCombo1.Enabled := False;
     wwDBLookupCombo1.Value :=
       DM_Olap.Uni_data.FieldByName('usl').AsString;
@@ -297,6 +300,10 @@ begin
           StrToFloat(NvlStr(cxMaskEdit1.Text, '0'));
         CreateParam(ftInteger, 'p_chrg', ptInput).AsFloat :=
           l_chrg;
+          CreateParam(ftDate, 'p_dt1_old', ptInput).AsDate :=
+            old_dt1;
+          CreateParam(ftDate, 'p_dt2_old', ptInput).AsDate :=
+            old_dt2;
           CreateParam(ftDate, 'p_dt1', ptInput).AsDate :=
             cxDateEdit1.Date;
           CreateParam(ftDate, 'p_dt2', ptInput).AsDate :=
