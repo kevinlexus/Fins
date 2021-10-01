@@ -151,6 +151,11 @@ begin
     cxDateEdit2.Date := DM_Olap.Uni_data.FieldByName('dt2').AsDateTime;
   end;
 
+  if cxDateEdit1.Date=-700000 then
+     cxDateEdit1.Date:= StrToDate('01.01.1900');
+  if cxDateEdit2.Date=-700000 then
+     cxDateEdit2.Date:= StrToDate('01.01.2500');
+     
 end;
 
 procedure TForm_change_house_nabor2.Button2Click(Sender: TObject);

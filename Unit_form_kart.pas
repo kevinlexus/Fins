@@ -23,7 +23,7 @@ uses
   cxFilter, cxDBData, cxDBLookupComboBox,
 
   cxMaskEdit, cxLookAndFeels, cxLookAndFeelPainters, cxStyles, cxData,
-  cxDataStorage, cxCalendar;
+  cxDataStorage, cxCalendar, dxBarBuiltInMenu, cxPC;
 
 type
   TForm_kart = class(TForm)
@@ -36,7 +36,6 @@ type
     OD_kart_prN_POL: TStringField;
     OD_kart_prSTATUS: TFloatField;
     OD_charge: TOracleDataSet;
-    DS_charge: TDataSource;
     OD_kart_prDAT_ROG: TDateTimeField;
     OD_kart_prID: TFloatField;
     OD_chargeLSK: TStringField;
@@ -45,8 +44,6 @@ type
     OD_chargeSUBSID: TFloatField;
     OD_chargeCHANGES: TFloatField;
     OD_chargeITOGN: TFloatField;
-    OD_chargeKOEFF: TFloatField;
-    OD_chargeNORM: TFloatField;
     DS_sprorg: TDataSource;
     OD_chargeorg_name: TStringField;
     OD_kart_prLSK: TStringField;
@@ -63,25 +60,15 @@ type
     OD_saldoLSK: TStringField;
     OD_saldoMG: TStringField;
     OD_saldoSUMMA: TFloatField;
-    OD_chargeVOLUME: TStringField;
     Panel2: TPanel;
     Panel4: TPanel;
     DS_reu_trest: TDataSource;
-    OD_chargeFK_TARIF: TFloatField;
-    OD_tarif: TOracleDataSet;
-    DS_tarif: TDataSource;
-    OD_tarifID: TFloatField;
-    OD_tarifUSL: TStringField;
-    OD_tarifNAME: TStringField;
-    OD_tarifTARIF_NAME: TStringField;
     DS_kfg: TDataSource;
     OD_kart_prSTATUS_DAT: TDateTimeField;
     OD_kart_prSTATUS_CHNG: TDateTimeField;
     DS_sch_el: TDataSource;
     OD_vvod: TOracleDataSet;
     DS_vvod: TDataSource;
-    OD_chargeFK_VVOD: TFloatField;
-    OD_chargeVVOD_NUM: TFloatField;
     OD_kart_prK_FAM: TStringField;
     OD_kart_prK_IM: TStringField;
     OD_kart_prK_OT: TStringField;
@@ -165,15 +152,10 @@ type
     Label43: TLabel;
     DBLookupComboboxEh5: TDBLookupComboboxEh;
     DS_pasp: TDataSource;
-    OD_chargeVOL_ADD: TFloatField;
     OD_kart_prSTATUS_DATB: TDateTimeField;
     Label47: TLabel;
     OD_states_sch: TOracleDataSet;
     DS_states_sch: TDataSource;
-    OD_chargeKF_KPR: TFloatField;
-    OD_chargeSCH_AUTO: TFloatField;
-    OD_chargeVOL: TFloatField;
-    OD_chargeNRM_KPR: TFloatField;
     Label48: TLabel;
     wwDBDateTimePicker3: TwwDBDateTimePicker;
     DBEdit18: TDBEdit;
@@ -188,18 +170,14 @@ type
     OD_kart_prST_DT1: TDateTimeField;
     OD_kart_prST_DT2: TDateTimeField;
     OD_kart_prST_NAME: TStringField;
-    fltfldOD_chargeORG: TFloatField;
     fltfldOD_chargeTP: TFloatField;
-    fltfldOD_chargeSPTARN: TFloatField;
     PopupMenu3: TPopupMenu;
     mnu2: TMenuItem;
-    OD_chargeKF_KPR_SCH: TFloatField;
     DSDriver_tarif: TDataSetDriverEh;
     OD_houses: TOracleDataSet;
     DS_houses: TDataSource;
     DBLookupComboboxEh12: TDBLookupComboboxEh;
     dxStatusBar1: TdxStatusBar;
-    OD_chargeNRM_KPR2: TFloatField;
     OD_kart_prPRIV_PROC: TStringField;
     TabSheet12: TTabSheet;
     cxDBCheckBox1: TcxDBCheckBox;
@@ -216,28 +194,8 @@ type
     BitBtn1: TBitBtn;
     BitBtn2: TBitBtn;
     cxDBNavigator1: TcxDBNavigator;
-    cxGrid1: TcxGrid;
-    cxGrid1DBTableView1: TcxGridDBTableView;
-    cxGrid1DBTableView1REU: TcxGridDBColumn;
-    cxGrid1DBTableView1LSK: TcxGridDBColumn;
-    cxGrid1DBTableView1USL: TcxGridDBColumn;
-    cxGrid1DBTableView1NM: TcxGridDBColumn;
-    cxGrid1DBTableView1VOLUME: TcxGridDBColumn;
-    cxGrid1DBTableView1CENA: TcxGridDBColumn;
-    cxGrid1DBTableView1TARIF: TcxGridDBColumn;
-    cxGrid1DBTableView1CHANGES: TcxGridDBColumn;
-    cxGrid1DBTableView1ITOGN: TcxGridDBColumn;
-    cxGrid1DBTableView1KOEFF: TcxGridDBColumn;
-    cxGrid1DBTableView1NORM: TcxGridDBColumn;
-    cxGrid1DBTableView1ORG_NAME: TcxGridDBColumn;
-    cxGrid1DBTableView1FK_VVOD: TcxGridDBColumn;
-    cxGrid1DBTableView1VOL: TcxGridDBColumn;
-    cxGrid1DBTableView1VOL_ADD: TcxGridDBColumn;
-    cxGrid1DBTableView1CD_TP: TcxGridDBColumn;
-    cxGrid1Level1: TcxGridLevel;
     chk1: TCheckBox;
     OD_chargePSCH: TIntegerField;
-    cxGrid1DBTableView1PSCH: TcxGridDBColumn;
     lbl4: TLabel;
     cxDBTextEdit5: TcxDBTextEdit;
     btn1: TButton;
@@ -378,10 +336,70 @@ type
     OD_kart_prDOK_INN: TStringField;
     OD_kart_prDOK_DEATH_C: TStringField;
     OD_kart_prDOK_DEATH_N: TStringField;
-    OD_chargeDT1: TDateTimeField;
-    OD_chargeDT2: TDateTimeField;
-    cxGrid1DBTableView1DT1: TcxGridDBColumn;
-    cxGrid1DBTableView1DT2: TcxGridDBColumn;
+    OD_nabor: TOracleDataSet;
+    StringField1: TStringField;
+    StringField2: TStringField;
+    FloatField7: TFloatField;
+    FloatField8: TFloatField;
+    FloatField9: TFloatField;
+    FloatField10: TFloatField;
+    StringField5: TStringField;
+    FloatField11: TFloatField;
+    FloatField12: TFloatField;
+    FloatField13: TFloatField;
+    FloatField14: TFloatField;
+    FloatField15: TFloatField;
+    FloatField16: TFloatField;
+    FloatField18: TFloatField;
+    FloatField19: TFloatField;
+    FloatField20: TFloatField;
+    FloatField21: TFloatField;
+    StringField6: TStringField;
+    StringField7: TStringField;
+    IntegerField1: TIntegerField;
+    DateTimeField1: TDateTimeField;
+    DateTimeField2: TDateTimeField;
+    cxPageControl1: TcxPageControl;
+    cxTabSheet1: TcxTabSheet;
+    cxTabSheet2: TcxTabSheet;
+    cxGrid1: TcxGrid;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    cxGrid1DBTableView1REU: TcxGridDBColumn;
+    cxGrid1DBTableView1LSK: TcxGridDBColumn;
+    cxGrid1DBTableView1USL: TcxGridDBColumn;
+    cxGrid1DBTableView1NM: TcxGridDBColumn;
+    cxGrid1DBTableView1VOLUME: TcxGridDBColumn;
+    cxGrid1DBTableView1CENA: TcxGridDBColumn;
+    cxGrid1DBTableView1TARIF: TcxGridDBColumn;
+    cxGrid1DBTableView1CHANGES: TcxGridDBColumn;
+    cxGrid1DBTableView1ITOGN: TcxGridDBColumn;
+    cxGrid1DBTableView1ORG_NAME: TcxGridDBColumn;
+    cxGrid1DBTableView1CD_TP: TcxGridDBColumn;
+    cxGrid1DBTableView1PSCH: TcxGridDBColumn;
+    cxGrid1Level1: TcxGridLevel;
+    cxGrid3: TcxGrid;
+    cxGridDBTableView1: TcxGridDBTableView;
+    cxGridDBColumnREU: TcxGridDBColumn;
+    cxGridDBColumnLSK: TcxGridDBColumn;
+    cxGridDBColumnUSL: TcxGridDBColumn;
+    cxGridDBColumnNM: TcxGridDBColumn;
+    cxGridDBColumnKOEFF: TcxGridDBColumn;
+    cxGridDBColumnNORM: TcxGridDBColumn;
+    cxGridDBColumnORG: TcxGridDBColumn;
+    cxGridDBColumnFK_VVOD: TcxGridDBColumn;
+    cxGridDBColumnVOL: TcxGridDBColumn;
+    cxGridDBColumnVOL_ADD: TcxGridDBColumn;
+    cxGridDBColumnCD_TP: TcxGridDBColumn;
+    cxGridDBColumnPSCH: TcxGridDBColumn;
+    cxGridDBColumnDT1: TcxGridDBColumn;
+    cxGridDBColumnDT2: TcxGridDBColumn;
+    cxGridLevel1: TcxGridLevel;
+    DS_charge: TDataSource;
+    DS_nabor: TDataSource;
+    OD_naborORG: TIntegerField;
+    OD_chargeVOLUME: TFloatField;
+    OD_chargeUNITS: TStringField;
+    cxGrid1DBTableView1UNITS: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure DBGridEh1DblClick(Sender: TObject);
     procedure OD_kartAfterPost(DataSet: TDataSet);
@@ -415,11 +433,11 @@ type
     procedure DBEdit_mgw2KeyPress(Sender: TObject; var Key: Char);
     procedure DBEdit_pelKeyPress(Sender: TObject; var Key: Char);
     procedure DBEdit_mel2KeyPress(Sender: TObject; var Key: Char);
-    procedure DBGridEh2Columns12EditButtonDown(Sender: TObject; TopButton:
-      Boolean; var AutoRepeat, Handled: Boolean);
-    procedure calcFooter;
+    //procedure DBGridEh2Columns12EditButtonDown(Sender: TObject; TopButton:
+//      Boolean; var AutoRepeat, Handled: Boolean);
+//    procedure calcFooter;
     procedure wwDBGrid2KeyPress(Sender: TObject; var Key: Char);
-    procedure setFields;
+//    procedure setFields;
     procedure DBEdit_phwKeyPress(Sender: TObject; var Key: Char);
     procedure BitBtn1Click(Sender: TObject);
     procedure BitBtn2Click(Sender: TObject);
@@ -530,6 +548,7 @@ begin
   //разрешить ли редактирование лицевого счета
   OD_kart_pr.Active := false;
   OD_charge.Active := false;
+  OD_nabor.Active := false;
 
   //Разрешено ли редактировать проживающих (паспортный стол)
   if (admin_ <> 1) and (Form_list_kart.isAllowEdit_k_ = 0) and
@@ -556,7 +575,7 @@ begin
   end;
 
   //Разрешение на правку карточки
-  OD_charge.readonly := true;
+  OD_nabor.readonly := true;
 
   GroupBox1.Enabled := false;
   DBEdit4.Enabled := false;
@@ -617,7 +636,7 @@ begin
   else
   begin
     Caption := 'Карточка лиц.счета';
-    OD_charge.readonly := false;
+    OD_nabor.readonly := false;
 
     GroupBox1.Enabled := true;
     DBEdit5.Enabled := true;
@@ -685,9 +704,10 @@ begin
 
   OD_kart_pr.Active := true;
   OD_charge.Active := true;
+  OD_nabor.Active := true;
 end;
 
-procedure TForm_kart.calcFooter;
+{procedure TForm_kart.calcFooter;
 begin
   tarif_ := 0;
   privs_ := 0;
@@ -710,7 +730,7 @@ begin
   else
     OD_charge.Locate('USL', usl_, []);
 end;
-
+ }
 // сохранить или откатить изменения
 
 procedure TForm_kart.saveOrRollbackKart(ask_: Integer; isCommit: Boolean);
@@ -719,8 +739,8 @@ begin
   if isCommit <> true then
   begin
     // отменить изменения, без вопросов
-    if not (OD_charge.State in [dsBrowse]) then
-      Form_kart.OD_charge.Cancel;
+    if not (OD_nabor.State in [dsBrowse]) then
+      Form_kart.OD_nabor.Cancel;
     if not (Form_list_kart.OD_kart_detail.State in [dsBrowse]) then
       Form_list_kart.OD_kart_detail.Cancel;
     if not (OD_states_sch.State in [dsBrowse]) then
@@ -728,15 +748,15 @@ begin
     if not (Form_list_kart.OD_list_kart.State in [dsBrowse]) then
       Form_list_kart.OD_list_kart.Cancel;
     DataModule1.OracleSession1.CancelUpdates([Form_list_kart.OD_list_kart,
-      OD_charge, OD_states_sch]);
+      OD_nabor, OD_states_sch]);
     // отмена изменений, сделанных в пакетах
     DataModule1.OracleSession1.Rollback;
   end
   else
   begin
     // сохранить изменения
-    if not (OD_charge.State in [dsBrowse]) then
-      OD_charge.Post;
+    if not (OD_nabor.State in [dsBrowse]) then
+      OD_nabor.Post;
     if not (OD_states_sch.State in [dsBrowse]) then
       OD_states_sch.Post;
     if not (Form_list_kart.OD_kart_detail.State in [dsBrowse]) then
@@ -746,7 +766,7 @@ begin
 
     if (Form_list_kart.OD_list_kart.UpdateStatus in [usInserted, usModified,
       usDeleted])
-      or (OD_charge.UpdatesPending = true)
+      or (OD_nabor.UpdatesPending = true)
       or (Form_list_kart.OD_kart_detail.UpdatesPending = true)
       or (OD_states_sch.UpdatesPending = true) or (updates_ = 1) then
     begin
@@ -755,7 +775,7 @@ begin
         // сохранить без вопросов
         DataModule1.OracleSession1.ApplyUpdates([Form_list_kart.OD_list_kart,
           Form_list_kart.OD_kart_detail,
-            OD_charge, OD_states_sch], true);
+            OD_nabor, OD_states_sch], true);
         check_kart_correct;
         // подтверждение изменений, сделанных в пакетах
         DataModule1.OracleSession1.Commit;
@@ -769,7 +789,7 @@ begin
           // сохранить с вопросом
           DataModule1.OracleSession1.ApplyUpdates([Form_list_kart.OD_list_kart,
             Form_list_kart.OD_kart_detail,
-              OD_charge, OD_states_sch], true);
+              OD_nabor, OD_states_sch], true);
           check_kart_correct;
           //для подтверждения изменений, сделанных в пакетах
           DataModule1.OracleSession1.Commit;
@@ -777,8 +797,8 @@ begin
         else
         begin
           // отменить изменения
-          if not (OD_charge.State in [dsBrowse]) then
-            OD_charge.Cancel;
+          if not (OD_nabor.State in [dsBrowse]) then
+            OD_nabor.Cancel;
           if not (OD_states_sch.State in [dsBrowse]) then
             OD_states_sch.Cancel;
           if not (Form_list_kart.OD_list_kart.State in [dsBrowse]) then
@@ -787,7 +807,7 @@ begin
             Form_list_kart.OD_kart_detail.Cancel;
           DataModule1.OracleSession1.CancelUpdates([Form_list_kart.OD_list_kart,
             Form_list_kart.OD_kart_detail,
-              OD_charge, OD_states_sch]);
+              OD_nabor, OD_states_sch]);
           // отмена изменений, сделанных в пакетах
           DataModule1.OracleSession1.Rollback;
         end;
@@ -800,7 +820,7 @@ begin
   Form_list_kart.setAllowEdit_kart;
   //обновить поля, отражающие статусы л/c
   refresh_kart;
-  calcFooter;
+//  calcFooter;
 
   //сброс признака наличия обновления
   updates_ := 0;
@@ -1090,7 +1110,7 @@ begin
 
     Form_list_kart.OD_list_kart.RefreshRecord;
     OD_charge.Refresh;
-    calcFooter;
+//    calcFooter;
   end;
   OD_states_sch.Refresh;
   if FF('Form_det_chrg', 0) = 1 then
@@ -1291,11 +1311,8 @@ begin
     DBLookupComboboxEh5.Enabled := false;
 
   DecimalSeparator := '.';
-  //организации ЖКХ
-  OD_tarif.Active := False;
-  //    PageControl3.ActivePageIndex := 0;
-  //    TabSheet9.TabVisible := False;
 
+  cxPageControl1.ActivePageIndex:=0;
   PageControl1.ActivePageIndex := 1;
   PageControl2.ActivePageIndex := 0;
 
@@ -1331,30 +1348,20 @@ begin
 
   OD_kart_pr.SetVariable('var_', 0);
   OD_kart_pr.Active := true;
-  //OD_doc.Active := true;
-
-  OD_charge.Active := true;
-  //OD_s_reu_trest.Active := true;
-  //OD_spul.Active := true;
-
-  //OD_psch.Active := true;
-
-  //OD_psch2.Active := true;
-  //OD_kfg.Active := true;
-  //OD_sch_el.Active := true;
-  //OD_distr.Active := true;
-  //OD_pasp.Active := true;
-  //OD_sprorg.Active := true;
+  OD_nabor.Active := true;
   OD_houses.Active := true;
   OD_eolink.Active := true;
 
   OD_charge.SetVariable('k_lsk_id',
     Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger);
   OD_charge.Active := True;
+  OD_nabor.SetVariable('k_lsk_id',
+    Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger);
+  OD_nabor.Active := True;
 
   SetAllowEdit(0);
   state_arch2('');
-  calcFooter;
+//  calcFooter;
 end;
 
 procedure TForm_kart.wwDBEdit1Exit(Sender: TObject);
@@ -1564,7 +1571,7 @@ begin
     end;}
 end;
 
-procedure TForm_kart.DBGridEh2Columns12EditButtonDown(Sender: TObject;
+{procedure TForm_kart.DBGridEh2Columns12EditButtonDown(Sender: TObject;
   TopButton: Boolean; var AutoRepeat, Handled: Boolean);
 begin
   with OD_tarif do
@@ -1573,7 +1580,7 @@ begin
     SetVariable('usl', OD_charge.FieldByName('usl').AsString);
     Active := true;
   end;
-end;
+end;}
 
 procedure TForm_kart.wwDBGrid2KeyPress(Sender: TObject; var Key: Char);
 begin
@@ -1582,87 +1589,10 @@ begin
 
 end;
 
-procedure TForm_kart.setFields;
-begin
-  OD_charge.DisableControls;
-  //  wwDBGrid2.Selected.Clear;
-  if Form_main.org_var_ = 0 then
-  begin
-    //ЖКХ
-  {    wwDBGrid2.Fields[GetGridColumnByName(wwDBGrid2,'TARIF_CENA')].Visible:=false;
-      wwDBGrid2.Fields[GetGridColumnByName(wwDBGrid2,'FK_DVB')].Visible:=false;
-      wwDBGrid2.Fields[GetGridColumnByName(wwDBGrid2,'NRM_KPR')].Visible:=false;
-      wwDBGrid2.Fields[GetGridColumnByName(wwDBGrid2,'SCH_AUTO')].Visible:=false;
-   }
-  {    wwDBGrid2.Selected.Add('LSK' + #9 + '8' + #9 + 'Лс');
-      wwDBGrid2.Selected.Add('USL' + #9 + '3' + #9 + 'Код');
-      wwDBGrid2.Selected.Add('NM' + #9 + '15' + #9 + 'Услуга');
-      wwDBGrid2.Selected.Add('VOLUME' + #9 + '6' + #9 + 'Объем');
-      wwDBGrid2.Selected.Add('CENA' + #9 + '7' + #9 + 'Расценка');
-      wwDBGrid2.Selected.Add('TARIF' + #9 + '7' + #9 + 'Тариф');
-      wwDBGrid2.Selected.Add('CHANGES' + #9 + '7' + #9 + 'Изменения');
-
-      wwDBGrid2.Selected.Add('ITOGN' + #9 + '7' + #9 + 'Итого');
-      wwDBGrid2.Selected.Add('KOEFF' + #9 + '7' + #9 + 'Коэфф');
-      wwDBGrid2.Selected.Add('NORM' + #9 + '7' + #9 + 'Норма');
-      wwDBGrid2.Selected.Add('ORG_NAME' + #9 + '10' + #9 + 'Поставщик');
-      wwDBGrid2.Selected.Add('VVOD_NUM' + #9 + '6' + #9 + '№ Ввода');
-      wwDBGrid2.Selected.Add('VOL' + #9 + '7' + #9 + 'Распр.~норм.');
-      wwDBGrid2.Selected.Add('VOL_ADD' + #9 + '7' + #9 + 'Распр.~счетч.');  }
-    if fld_state_ = 1 then
-    begin
-      {      wwDBGrid2.Fields[GetGridColumnByName(wwDBGrid2,'NRM_KPR')].Visible:=false;
-            wwDBGrid2.Fields[GetGridColumnByName(wwDBGrid2,'SCH_AUTO')].Visible:=false;}
-      //      wwDBGrid2.Selected.Add('NRM_KPR' + #9 + '7' + #9 + 'Прожив.~для расчета');
-      //      wwDBGrid2.Selected.Add('NRM_KPR2' + #9 + '7' + #9 + 'Прожив.~по расц.');
-      //      wwDBGrid2.Selected.Add('KF_KPR' + #9 + '7' + #9 + '%прожив~норм');
-      //      wwDBGrid2.Selected.Add('KF_KPR_SCH' + #9 + '7' + #9 + '%прожив~счетч');
-      {      wwDBGrid2.Selected.Add('SCH_AUTO' + #9 + '7' + #9 + 'Авто~начисл.');
-            wwDBGrid2.Selected.Add('PRIVS' + #9 + '7' + #9 + 'Льготы');
-            wwDBGrid2.Selected.Add('SUBSID' + #9 + '7' + #9 + 'Субсидии');}
-    end;
-  end
-  else
-  begin
-    //Прочие организации
-      {wwDBGrid2.Fields[GetGridColumnByName(wwDBGrid2,'VOLUME')].Visible:=false;
-      wwDBGrid2.Fields[GetGridColumnByName(wwDBGrid2,'TARIF')].Visible:=false;
-      wwDBGrid2.Fields[GetGridColumnByName(wwDBGrid2,'PRIVS')].Visible:=false;
-      wwDBGrid2.Fields[GetGridColumnByName(wwDBGrid2,'SUBSID')].Visible:=false;
-      wwDBGrid2.Fields[GetGridColumnByName(wwDBGrid2,'KOEFF')].Visible:=false;
-      wwDBGrid2.Fields[GetGridColumnByName(wwDBGrid2,'NORM')].Visible:=false;
-      wwDBGrid2.Fields[GetGridColumnByName(wwDBGrid2,'ORG_NAME')].Visible:=false;
-      wwDBGrid2.Fields[GetGridColumnByName(wwDBGrid2,'VVOD_NUM')].Visible:=false;
-      wwDBGrid2.Fields[GetGridColumnByName(wwDBGrid2,'VOL')].Visible:=false;
-      wwDBGrid2.Fields[GetGridColumnByName(wwDBGrid2,'VOL_ADD')].Visible:=false;
-      wwDBGrid2.Fields[GetGridColumnByName(wwDBGrid2,'KF_KPR')].Visible:=false;}
-  {    wwDBGrid2.Selected.Add('USL' + #9 + '3' + #9 + 'Код');
-      wwDBGrid2.Selected.Add('NM' + #9 + '10' + #9 + 'Услуга');
-      wwDBGrid2.Selected.Add('CENA' + #9 + '3' + #9 + 'Расценка');
-      wwDBGrid2.Selected.Add('NORM' + #9 + '3' + #9 + 'Объем');
-      wwDBGrid2.Selected.Add('CHANGES' + #9 + '7' + #9 + 'Изменения');
-      wwDBGrid2.Selected.Add('ITOGN' + #9 + '8' + #9 + 'Итого');}
-  //    wwDBGrid2.Selected.Add('TARIF_CENA' + #9 + '10' + #9 + 'Тариф');
-  //    wwDBGrid2.Selected.Add('FK_DVB' + #9 + '8' + #9 + 'Декодеры');
-  end;
-  //  wwDBGrid2.Fields[GetGridColumnByName(wwDBGrid2, 'USL')].readonly := True;
-  //  wwDBGrid2.ApplySelected;
-  OD_charge.EnableControls;
-end;
-
 procedure TForm_kart.DBEdit_phwKeyPress(Sender: TObject; var Key: Char);
 begin
   if RetKey(Key) then
     Key := '.';
-  {
-    if Key = #13 then
-    begin
-      if DBEdit_pgw.Enabled =True then
-        DBEdit_pgw.SetFocus
-        else
-         if Button2.Enabled =True then
-           Button2.SetFocus;
-    end;}
 end;
 
 procedure TForm_kart.BitBtn1Click(Sender: TObject);
@@ -1889,8 +1819,8 @@ end;
 
 procedure TForm_kart.OD_chargeAfterOpen(DataSet: TDataSet);
 begin
-  OD_charge.Locate('USL', usl_, []);
-  setFields;
+//  OD_charge.Locate('USL', usl_, []);
+//  setFields;
 end;
 
 procedure TForm_kart.CheckBox1Click(Sender: TObject);
@@ -2007,6 +1937,8 @@ procedure TForm_kart.OD_chargeAfterScroll(DataSet: TDataSet);
 begin
   if (Form_list_kart.isAllowEdit_ = 1) and (Form_main.arch_mg_ = '') then
   begin
+      OD_nabor.readonly := False;
+{
     //по строкам, где раз.изм запрещено править коэфф. и норм.
     if OD_charge.FieldByName('tp').AsInteger = 1 then
       OD_charge.readonly := True
@@ -2028,11 +1960,12 @@ begin
         OD_chargeNORM.readonly := False;
         OD_chargeKOEFF.readonly := False;
       end;
-    end;
+    end;}
   end
   else
   begin
-    OD_charge.readonly := True
+//    OD_charge.readonly := True
+      OD_nabor.readonly := True;
   end;
 
 end;
@@ -2046,31 +1979,32 @@ begin
   if Form_change_house_nabor2.ShowModal = mrOk then
   begin
     OD_charge.Refresh;
+    OD_nabor.Refresh;
   end;
 end;
 
 procedure TForm_kart.mnu2Click(Sender: TObject);
 begin
   if (msg3('Удалить в лиц.сч:' +
-    OD_charge.FieldByName('LSK').AsString + ' услугу: ' +
-    OD_charge.FieldByName('NM').AsString + ' по орг: ' +
-    OD_charge.FieldByName('ORG_NAME').AsString + ' с коэфф:' +
-    OD_charge.FieldByName('KOEFF').AsString + ' и норм:' +
-    OD_charge.FieldByName('NORM').AsString + '?', 'Подверждение', MB_YESNO +
+    OD_nabor.FieldByName('LSK').AsString + ' услугу: ' +
+    OD_nabor.FieldByName('NM').AsString + ' по орг: ' +
+    OD_nabor.FieldByName('ORG').AsString + ' с коэфф:' +
+    OD_nabor.FieldByName('KOEFF').AsString + ' и норм:' +
+    OD_nabor.FieldByName('NORM').AsString + '?', 'Подверждение', MB_YESNO +
     MB_ICONQUESTION) = IDYES) then
   begin
     DataModule1.OraclePackage1.CallProcedure('scott.p_houses.house_del_usl',
-      [4, OD_charge.FieldByName('LSK').AsString, null, null,
+      [4, OD_nabor.FieldByName('LSK').AsString, null, null,
       null,
-        OD_charge.FieldByName('USL').AsString,
-        OD_charge.FieldByName('ORG').AsInteger,
-        OD_charge.FieldByName('KOEFF').AsFloat,
-        OD_charge.FieldByName('NORM').AsFloat, 1,
-        OD_charge.FieldByName('DT1').AsDateTime,
-        OD_charge.FieldByName('DT2').AsDateTime
+        OD_nabor.FieldByName('USL').AsString,
+        OD_nabor.FieldByName('ORG').AsInteger,
+        OD_nabor.FieldByName('KOEFF').AsFloat,
+        OD_nabor.FieldByName('NORM').AsFloat, 1,
+        OD_nabor.FieldByName('DT1').AsDateTime,
+        OD_nabor.FieldByName('DT2').AsDateTime
         ]);
     Form_kart.updates_ := 1;
-    OD_charge.Refresh;
+    OD_nabor.Refresh;
   end;
 end;
 
@@ -2184,11 +2118,19 @@ end;
 procedure TForm_kart.chk1Click(Sender: TObject);
 begin
   if chk1.Checked then
-    OD_charge.SetVariable('p_closed', 1)
+  begin
+    OD_charge.SetVariable('p_closed', 1);
+    OD_nabor.SetVariable('p_closed', 1);
+  end
   else
+  begin
     OD_charge.SetVariable('p_closed', 0);
+    OD_nabor.SetVariable('p_closed', 0);
+  end;
   OD_charge.Active := false;
   OD_charge.Active := true;
+  OD_nabor.Active := false;
+  OD_nabor.Active := true;
 
 end;
 
@@ -2208,6 +2150,7 @@ begin
   if Form_change_house_nabor2.ShowModal = mrOk then
   begin
     OD_charge.Refresh;
+    OD_nabor.Refresh;
   end;
 end;
 

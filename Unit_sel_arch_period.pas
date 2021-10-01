@@ -87,7 +87,7 @@ begin
   begin
     Form_kart.state_arch2(mgold_);
     Form_kart.setAllowEdit(0);
-    Form_kart.calcFooter;
+//    Form_kart.calcFooter;
   end;
 
   if FF('Form_kart_pr', 0) = 1 then

@@ -1,6 +1,6 @@
 object Form_kart: TForm_kart
-  Left = 1426
-  Top = 408
+  Left = 628
+  Top = 394
   Width = 903
   Height = 675
   BorderIcons = [biSystemMenu, biMinimize]
@@ -2673,167 +2673,263 @@ object Form_kart: TForm_kart
     Font.Name = 'Tahoma'
     Font.Style = []
   end
-  object cxGrid1: TcxGrid
+  object cxPageControl1: TcxPageControl
     Left = 0
     Top = 305
     Width = 887
     Height = 287
     Align = alClient
     TabOrder = 4
-    object cxGrid1DBTableView1: TcxGridDBTableView
-      PopupMenu = PopupMenu3
-      Navigator.Buttons.CustomButtons = <>
-      OnCustomDrawCell = cxGrid1DBTableView1CustomDrawCell
-      DataController.DataSource = DS_charge
-      DataController.Summary.DefaultGroupSummaryItems = <>
-      DataController.Summary.FooterSummaryItems = <
-        item
-          Kind = skSum
-          Column = cxGrid1DBTableView1TARIF
+    Properties.ActivePage = cxTabSheet1
+    Properties.CustomButtons.Buttons = <>
+    ClientRectBottom = 283
+    ClientRectLeft = 4
+    ClientRectRight = 883
+    ClientRectTop = 24
+    object cxTabSheet1: TcxTabSheet
+      Caption = #1053#1072#1095#1080#1089#1083#1077#1085#1080#1077
+      ImageIndex = 0
+      object cxGrid1: TcxGrid
+        Left = 0
+        Top = 0
+        Width = 879
+        Height = 259
+        Align = alClient
+        TabOrder = 0
+        object cxGrid1DBTableView1: TcxGridDBTableView
+          Navigator.Buttons.CustomButtons = <>
+          OnCustomDrawCell = cxGrid1DBTableView1CustomDrawCell
+          DataController.DataSource = DS_charge
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <
+            item
+              Kind = skSum
+              Column = cxGrid1DBTableView1TARIF
+            end
+            item
+              Kind = skSum
+              Column = cxGrid1DBTableView1CHANGES
+            end
+            item
+              Kind = skSum
+              Column = cxGrid1DBTableView1ITOGN
+            end
+            item
+              Format = #1048#1090#1086#1075#1086' 0.00'
+              Kind = skSum
+              Column = cxGrid1DBTableView1VOLUME
+            end>
+          DataController.Summary.SummaryGroups = <>
+          OptionsBehavior.CellHints = True
+          OptionsView.ColumnAutoWidth = True
+          OptionsView.Footer = True
+          OptionsView.FooterMultiSummaries = True
+          OptionsView.GroupByBox = False
+          OptionsView.GroupFooterMultiSummaries = True
+          OptionsView.HeaderAutoHeight = True
+          object cxGrid1DBTableView1REU: TcxGridDBColumn
+            Caption = #1059#1050
+            DataBinding.FieldName = 'REU'
+            Width = 33
+          end
+          object cxGrid1DBTableView1LSK: TcxGridDBColumn
+            Caption = #1051#1057
+            DataBinding.FieldName = 'LSK'
+            Width = 75
+          end
+          object cxGrid1DBTableView1USL: TcxGridDBColumn
+            DataBinding.FieldName = 'USL'
+            Width = 43
+          end
+          object cxGrid1DBTableView1NM: TcxGridDBColumn
+            DataBinding.FieldName = 'NM'
+            Options.Editing = False
+            Width = 124
+          end
+          object cxGrid1DBTableView1ORG_NAME: TcxGridDBColumn
+            DataBinding.FieldName = 'ORG_NAME'
+            Options.Editing = False
+            Width = 95
+          end
+          object cxGrid1DBTableView1VOLUME: TcxGridDBColumn
+            Caption = #1054#1073#1098#1077#1084
+            DataBinding.FieldName = 'VOLUME'
+            Options.Editing = False
+            Width = 68
+          end
+          object cxGrid1DBTableView1UNITS: TcxGridDBColumn
+            Caption = #1045#1076'.'#1080#1079#1084'.'
+            DataBinding.FieldName = 'UNITS'
+            Width = 47
+          end
+          object cxGrid1DBTableView1CENA: TcxGridDBColumn
+            DataBinding.FieldName = 'CENA'
+            Options.Editing = False
+            Width = 96
+          end
+          object cxGrid1DBTableView1TARIF: TcxGridDBColumn
+            DataBinding.FieldName = 'TARIF'
+            Options.Editing = False
+            Width = 84
+          end
+          object cxGrid1DBTableView1CHANGES: TcxGridDBColumn
+            DataBinding.FieldName = 'CHANGES'
+            Options.Editing = False
+            Width = 105
+          end
+          object cxGrid1DBTableView1ITOGN: TcxGridDBColumn
+            DataBinding.FieldName = 'ITOGN'
+            Options.Editing = False
+            Width = 107
+          end
+          object cxGrid1DBTableView1CD_TP: TcxGridDBColumn
+            DataBinding.FieldName = 'CD_TP'
+            Visible = False
+          end
+          object cxGrid1DBTableView1PSCH: TcxGridDBColumn
+            DataBinding.FieldName = 'PSCH'
+            Visible = False
+          end
         end
-        item
-          Kind = skSum
-          Column = cxGrid1DBTableView1CHANGES
+        object cxGrid1Level1: TcxGridLevel
+          GridView = cxGrid1DBTableView1
         end
-        item
-          Kind = skSum
-          Column = cxGrid1DBTableView1ITOGN
-        end>
-      DataController.Summary.SummaryGroups = <>
-      OptionsBehavior.CellHints = True
-      OptionsView.ColumnAutoWidth = True
-      OptionsView.Footer = True
-      OptionsView.FooterMultiSummaries = True
-      OptionsView.GroupByBox = False
-      OptionsView.GroupFooterMultiSummaries = True
-      OptionsView.HeaderAutoHeight = True
-      object cxGrid1DBTableView1REU: TcxGridDBColumn
-        Caption = #1059#1050
-        DataBinding.FieldName = 'REU'
-        Width = 20
-      end
-      object cxGrid1DBTableView1LSK: TcxGridDBColumn
-        Caption = #1051#1057
-        DataBinding.FieldName = 'LSK'
-        Options.Editing = False
-        Width = 45
-      end
-      object cxGrid1DBTableView1USL: TcxGridDBColumn
-        DataBinding.FieldName = 'USL'
-        Options.Editing = False
-        Width = 25
-      end
-      object cxGrid1DBTableView1NM: TcxGridDBColumn
-        DataBinding.FieldName = 'NM'
-        Options.Editing = False
-        Width = 89
-      end
-      object cxGrid1DBTableView1VOLUME: TcxGridDBColumn
-        DataBinding.FieldName = 'VOLUME'
-        Options.Editing = False
-        Width = 39
-      end
-      object cxGrid1DBTableView1CENA: TcxGridDBColumn
-        DataBinding.FieldName = 'CENA'
-        Options.Editing = False
-        Width = 49
-      end
-      object cxGrid1DBTableView1TARIF: TcxGridDBColumn
-        DataBinding.FieldName = 'TARIF'
-        Options.Editing = False
-        Width = 44
-      end
-      object cxGrid1DBTableView1CHANGES: TcxGridDBColumn
-        DataBinding.FieldName = 'CHANGES'
-        Options.Editing = False
-        Width = 54
-      end
-      object cxGrid1DBTableView1ITOGN: TcxGridDBColumn
-        DataBinding.FieldName = 'ITOGN'
-        Options.Editing = False
-        Width = 55
-      end
-      object cxGrid1DBTableView1KOEFF: TcxGridDBColumn
-        DataBinding.FieldName = 'KOEFF'
-        Width = 38
-      end
-      object cxGrid1DBTableView1NORM: TcxGridDBColumn
-        DataBinding.FieldName = 'NORM'
-        Width = 34
-      end
-      object cxGrid1DBTableView1ORG_NAME: TcxGridDBColumn
-        Caption = #1055#1086#1089#1090#1072#1074#1097#1080#1082
-        DataBinding.FieldName = 'ORG'
-        PropertiesClassName = 'TcxLookupComboBoxProperties'
-        Properties.DropDownSizeable = True
-        Properties.DropDownWidth = 200
-        Properties.KeyFieldNames = 'KOD'
-        Properties.ListColumns = <
-          item
-            FieldName = 'NAME'
-          end>
-        Properties.ListOptions.ShowHeader = False
-        Properties.ListSource = DS_sprorg
-        Width = 54
-      end
-      object cxGrid1DBTableView1FK_VVOD: TcxGridDBColumn
-        Caption = #8470' '#1042#1074#1086#1076#1072
-        DataBinding.FieldName = 'FK_VVOD'
-        PropertiesClassName = 'TcxLookupComboBoxProperties'
-        Properties.DropDownSizeable = True
-        Properties.DropDownWidth = 200
-        Properties.KeyFieldNames = 'ID'
-        Properties.ListColumns = <
-          item
-            FieldName = 'VVOD_NUM'
-          end>
-        Properties.ListOptions.ShowHeader = False
-        Properties.ListSource = DS_vvod
-        Width = 42
-      end
-      object cxGrid1DBTableView1VOL: TcxGridDBColumn
-        Caption = #1056#1072#1089#1087#1088'.'#1085#1086#1088#1084'.'
-        DataBinding.FieldName = 'VOL'
-        Options.Editing = False
-        Width = 60
-      end
-      object cxGrid1DBTableView1VOL_ADD: TcxGridDBColumn
-        Caption = #1056#1072#1089#1087#1088'.'#1089#1095#1077#1090#1095'.'
-        DataBinding.FieldName = 'VOL_ADD'
-        Options.Editing = False
-        Width = 61
-      end
-      object cxGrid1DBTableView1CD_TP: TcxGridDBColumn
-        DataBinding.FieldName = 'CD_TP'
-        Visible = False
-      end
-      object cxGrid1DBTableView1PSCH: TcxGridDBColumn
-        DataBinding.FieldName = 'PSCH'
-        Visible = False
-      end
-      object cxGrid1DBTableView1DT1: TcxGridDBColumn
-        Caption = #1053#1072#1095#1072#1083#1086
-        DataBinding.FieldName = 'DT1'
-        PropertiesClassName = 'TcxDateEditProperties'
-        Properties.AutoSelect = False
-        Properties.InputKind = ikMask
-        Properties.SaveTime = False
-        Properties.ShowTime = False
-        Width = 72
-      end
-      object cxGrid1DBTableView1DT2: TcxGridDBColumn
-        Caption = #1054#1082#1086#1085#1095#1072#1085#1080#1077
-        DataBinding.FieldName = 'DT2'
-        PropertiesClassName = 'TcxDateEditProperties'
-        Properties.AutoSelect = False
-        Properties.InputKind = ikMask
-        Properties.SaveTime = False
-        Properties.ShowTime = False
-        Width = 104
       end
     end
-    object cxGrid1Level1: TcxGridLevel
-      GridView = cxGrid1DBTableView1
+    object cxTabSheet2: TcxTabSheet
+      Caption = #1059#1089#1083#1091#1075#1080
+      ImageIndex = 1
+      object cxGrid3: TcxGrid
+        Left = 0
+        Top = 0
+        Width = 879
+        Height = 259
+        Align = alClient
+        PopupMenu = PopupMenu3
+        TabOrder = 0
+        object cxGridDBTableView1: TcxGridDBTableView
+          PopupMenu = PopupMenu3
+          Navigator.Buttons.CustomButtons = <>
+          OnCustomDrawCell = cxGrid1DBTableView1CustomDrawCell
+          DataController.DataSource = DS_nabor
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <
+            item
+              Kind = skSum
+            end
+            item
+              Kind = skSum
+            end
+            item
+              Kind = skSum
+            end>
+          DataController.Summary.SummaryGroups = <>
+          OptionsBehavior.CellHints = True
+          OptionsView.ColumnAutoWidth = True
+          OptionsView.GroupByBox = False
+          OptionsView.HeaderAutoHeight = True
+          object cxGridDBColumnREU: TcxGridDBColumn
+            Caption = #1059#1050
+            DataBinding.FieldName = 'REU'
+            Width = 20
+          end
+          object cxGridDBColumnLSK: TcxGridDBColumn
+            Caption = #1051#1057
+            DataBinding.FieldName = 'LSK'
+            Width = 45
+          end
+          object cxGridDBColumnUSL: TcxGridDBColumn
+            DataBinding.FieldName = 'USL'
+            Width = 25
+          end
+          object cxGridDBColumnNM: TcxGridDBColumn
+            DataBinding.FieldName = 'NM'
+            Options.Editing = False
+            Width = 89
+          end
+          object cxGridDBColumnORG: TcxGridDBColumn
+            Caption = #1055#1086#1089#1090#1072#1074#1097#1080#1082
+            DataBinding.FieldName = 'ORG'
+            PropertiesClassName = 'TcxLookupComboBoxProperties'
+            Properties.DropDownSizeable = True
+            Properties.DropDownWidth = 200
+            Properties.KeyFieldNames = 'KOD'
+            Properties.ListColumns = <
+              item
+                FieldName = 'NAME'
+              end>
+            Properties.ListOptions.ShowHeader = False
+            Properties.ListSource = DS_sprorg
+            Width = 54
+          end
+          object cxGridDBColumnKOEFF: TcxGridDBColumn
+            DataBinding.FieldName = 'KOEFF'
+            Width = 38
+          end
+          object cxGridDBColumnNORM: TcxGridDBColumn
+            DataBinding.FieldName = 'NORM'
+            Width = 34
+          end
+          object cxGridDBColumnFK_VVOD: TcxGridDBColumn
+            Caption = #8470' '#1042#1074#1086#1076#1072
+            DataBinding.FieldName = 'FK_VVOD'
+            PropertiesClassName = 'TcxLookupComboBoxProperties'
+            Properties.DropDownSizeable = True
+            Properties.DropDownWidth = 200
+            Properties.KeyFieldNames = 'ID'
+            Properties.ListColumns = <
+              item
+                FieldName = 'VVOD_NUM'
+              end>
+            Properties.ListOptions.ShowHeader = False
+            Properties.ListSource = DS_vvod
+            Width = 42
+          end
+          object cxGridDBColumnVOL: TcxGridDBColumn
+            Caption = #1056#1072#1089#1087#1088'.'#1085#1086#1088#1084'.'
+            DataBinding.FieldName = 'VOL'
+            Options.Editing = False
+            Width = 60
+          end
+          object cxGridDBColumnVOL_ADD: TcxGridDBColumn
+            Caption = #1056#1072#1089#1087#1088'.'#1089#1095#1077#1090#1095'.'
+            DataBinding.FieldName = 'VOL_ADD'
+            Options.Editing = False
+            Width = 61
+          end
+          object cxGridDBColumnCD_TP: TcxGridDBColumn
+            DataBinding.FieldName = 'CD_TP'
+            Visible = False
+          end
+          object cxGridDBColumnPSCH: TcxGridDBColumn
+            DataBinding.FieldName = 'PSCH'
+            Visible = False
+          end
+          object cxGridDBColumnDT1: TcxGridDBColumn
+            Caption = #1053#1072#1095#1072#1083#1086
+            DataBinding.FieldName = 'DT1'
+            PropertiesClassName = 'TcxDateEditProperties'
+            Properties.AutoSelect = False
+            Properties.InputKind = ikMask
+            Properties.SaveTime = False
+            Properties.ShowTime = False
+            Width = 72
+          end
+          object cxGridDBColumnDT2: TcxGridDBColumn
+            Caption = #1054#1082#1086#1085#1095#1072#1085#1080#1077
+            DataBinding.FieldName = 'DT2'
+            PropertiesClassName = 'TcxDateEditProperties'
+            Properties.AutoSelect = False
+            Properties.InputKind = ikMask
+            Properties.SaveTime = False
+            Properties.ShowTime = False
+            Width = 104
+          end
+        end
+        object cxGridLevel1: TcxGridLevel
+          GridView = cxGridDBTableView1
+        end
+      end
     end
   end
   object DS_spul: TDataSource
@@ -3233,7 +3329,66 @@ object Form_kart: TForm_kart
   end
   object OD_charge: TOracleDataSet
     SQL.Strings = (
-      'select 0 as tp, n.rowid,'
+      'select 0 as tp, '
+      '       m.npp,'
+      '       k.k_lsk_id,'
+      '       k.lsk,'
+      '       k.psch,'
+      '       k.reu,'
+      '       tp.cd as cd_tp,'
+      '       m.usl,'
+      '       m.nm,'
+      
+        '  --     to_char(a.volume,'#39'9999990'#39'||rpad('#39'.'#39',nvl(m.chrg_round,3' +
+        ')+1,'#39'9'#39'))|| '#39' '#39' || m.ed_izm as volume, --'#1087#1086' '#1091#1084#1086#1083#1095#1072#1085#1080#1102' '#1086#1082#1088#1091#1075#1083#1077#1085#1080#1077 +
+        ' 3 '#1079#1085#1072#1082#1072', '#1074' '#1087#1088#1086#1090#1080#1074#1085#1086#1084' '#1089#1083#1091#1095#1072#1077' '#1073#1077#1088#1077#1090#1089#1103' '#1080#1079' '#1089#1087#1088#1072#1074#1086#1095#1085#1080#1082#1072' usl - '#1091#1073#1088#1072#1083' ' +
+        #1088#1077#1076'.01.10.21'
+      '       a.volume,'
+      '       m.ed_izm as units,'
+      '       a.cena,'
+      '       nvl(a.summa, 0) as tarif,'
+      '       o.id || '#39'  '#39' || o.name as org_name,'
+      '       nvl(a.summa_b, 0) as privs,'
+      '       nvl(a.summa_c, 0) as subsid,'
+      '       nvl(d.summa, 0) as changes,'
+      '       nvl(a.summa, 0) - nvl(a.summa_b, 0) - nvl(a.summa_c, 0) +'
+      '       nvl(d.summa, 0) as itogn'
+      '  from  '
+      '           scott.usl u '
+      '           join scott.t_org o on 1=1'
+      '           join scott.usl m on u.usl = m.usl'
+      
+        '           join scott.kart k on decode(k.psch, 8, :p_closed, 9, ' +
+        ':p_closed,1)=1'
+      '           join scott.v_lsk_tp tp on k.fk_tp=tp.id'
+      
+        '           left join (select lsk, usl, org, sum(decode(t.type,1,' +
+        'summa,0)) as summa, '
+      '                     sum(decode(t.type,4,summa,0)) as summa_b, '
+      '                     sum(decode(t.type,2,summa,0)) as summa_c,'
+      '                     sum(decode(t.type,1,test_opl,0)) as volume,'
+      '                     max(decode(t.type,1,test_cena,0)) as cena'
+      '                    from scott.c_charge t'
+      
+        '                   group by lsk, usl, org) a on k.lsk = a.lsk an' +
+        'd u.usl=a.usl and o.id=a.org'
+      
+        '           left join (select s.lsk, s.usl, s.org, sum(s.summa) a' +
+        's summa'
+      '                    from scott.v_changes_for_saldo s'
+      
+        '                   group by s.lsk, s.usl, s.org) d on k.lsk = d.' +
+        'lsk and u.usl = d.usl and o.id=d.org'
+      
+        ' where k.k_lsk_id = :k_lsk_id and coalesce (a.usl,d.usl) is not ' +
+        'null'
+      ' order by reu, npp'
+      ''
+      
+        '-- where k.k_lsk_id = 104887 and coalesce (a.usl,d.usl) is not n' +
+        'ull'
+      ''
+      '/*select 0 as tp, n.rowid,'
       '       m.npp,'
       '       k.k_lsk_id,'
       '       n.lsk,'
@@ -3391,38 +3546,31 @@ object Form_kart: TForm_kart
       '      join scott.usl u on t.usl=u.usl and t.type=5'
       '      join scott.v_lsk_tp tp on k.fk_tp=tp.id'
       ' order by reu, npp, dt1'
-      '')
+      ''
+      '*/')
     Optimize = False
     Variables.Data = {
       0300000002000000090000003A4B5F4C534B5F49440300000000000000000000
       00090000003A505F434C4F534544030000000000000000000000}
     QBEDefinition.QBEFieldDefs = {
-      0400000021000000050000005441524946010000000000050000005052495653
+      0400000012000000050000005441524946010000000000050000005052495653
       0100000000000300000055534C01000000000006000000535542534944010000
       000000070000004348414E4745530100000000000500000049544F474E010000
-      000000030000004C534B010000000000050000004B4F45464601000000000004
-      0000004E4F524D010000000000030000004F5247010000000000040000004345
-      4E41010000000000020000004E4D01000000000006000000564F4C554D450100
-      0000000008000000464B5F5441524946010000000000080000004F52475F4E41
-      4D4501000000000007000000464B5F56564F440100000000000800000056564F
-      445F4E554D01000000000007000000564F4C5F41444401000000000006000000
-      4B465F4B5052010000000000080000005343485F4155544F0100000000000300
-      0000564F4C010000000000070000004E524D5F4B505201000000000003000000
-      4E50500100000000000200000054500100000000000600000053505441524E01
-      00000000000A0000004B465F4B50525F534348010000000000080000004E524D
-      5F4B505232010000000000080000004B5F4C534B5F4944010000000000030000
-      005245550100000000000500000043445F545001000000000004000000505343
-      4801000000000003000000445431010000000000030000004454320100000000
-      00}
-    UpdatingTable = 'scott.nabor'
+      000000030000004C534B0100000000000400000043454E410100000000000200
+      00004E4D01000000000006000000564F4C554D45010000000000080000004F52
+      475F4E414D45010000000000030000004E505001000000000002000000545001
+      0000000000080000004B5F4C534B5F4944010000000000030000005245550100
+      000000000500000043445F545001000000000004000000505343480100000000
+      0005000000554E495453010000000000}
     CommitOnPost = False
-    CachedUpdates = True
     Session = DataModule1.OracleSession1
+    DesignActivation = True
+    Active = True
     AfterOpen = OD_chargeAfterOpen
     BeforeClose = OD_chargeBeforeClose
     AfterScroll = OD_chargeAfterScroll
-    Left = 160
-    Top = 512
+    Left = 24
+    Top = 376
     object OD_chargeUSL: TStringField
       DisplayLabel = #1050#1086#1076
       DisplayWidth = 3
@@ -3436,13 +3584,6 @@ object Form_kart: TForm_kart
       FieldName = 'NM'
       ReadOnly = True
       Size = 35
-    end
-    object OD_chargeVOLUME: TStringField
-      DisplayLabel = #1054#1073#1098#1077#1084
-      DisplayWidth = 7
-      FieldName = 'VOLUME'
-      ReadOnly = True
-      Size = 46
     end
     object OD_chargeCENA: TFloatField
       DisplayLabel = #1056#1072#1089#1094#1077#1085#1082#1072
@@ -3485,30 +3626,12 @@ object Form_kart: TForm_kart
       FieldName = 'ITOGN'
       ReadOnly = True
     end
-    object OD_chargeKOEFF: TFloatField
-      DisplayLabel = #1050#1086#1101#1092#1092
-      DisplayWidth = 7
-      FieldName = 'KOEFF'
-    end
-    object OD_chargeNORM: TFloatField
-      DisplayLabel = #1053#1086#1088#1084#1072
-      DisplayWidth = 6
-      FieldName = 'NORM'
-    end
     object OD_chargeorg_name: TStringField
       DisplayLabel = #1055#1086#1089#1090#1072#1074#1097#1080#1082
       DisplayWidth = 25
       FieldKind = fkInternalCalc
       FieldName = 'ORG_NAME'
       Size = 25
-    end
-    object OD_chargeFK_TARIF: TFloatField
-      DisplayWidth = 10
-      FieldName = 'FK_TARIF'
-      Visible = False
-    end
-    object OD_chargeFK_VVOD: TFloatField
-      FieldName = 'FK_VVOD'
     end
     object OD_chargeLSK: TStringField
       DisplayWidth = 8
@@ -3518,44 +3641,8 @@ object Form_kart: TForm_kart
       Visible = False
       Size = 8
     end
-    object OD_chargeVVOD_NUM: TFloatField
-      FieldKind = fkInternalCalc
-      FieldName = 'VVOD_NUM'
-    end
-    object OD_chargeVOL_ADD: TFloatField
-      FieldName = 'VOL_ADD'
-      ReadOnly = True
-    end
-    object OD_chargeKF_KPR: TFloatField
-      FieldName = 'KF_KPR'
-      ReadOnly = True
-    end
-    object OD_chargeSCH_AUTO: TFloatField
-      FieldName = 'SCH_AUTO'
-    end
-    object OD_chargeVOL: TFloatField
-      FieldName = 'VOL'
-      ReadOnly = True
-    end
-    object OD_chargeNRM_KPR: TFloatField
-      FieldName = 'NRM_KPR'
-      ReadOnly = True
-    end
-    object fltfldOD_chargeORG: TFloatField
-      FieldName = 'ORG'
-    end
     object fltfldOD_chargeTP: TFloatField
       FieldName = 'TP'
-    end
-    object fltfldOD_chargeSPTARN: TFloatField
-      FieldName = 'SPTARN'
-    end
-    object OD_chargeKF_KPR_SCH: TFloatField
-      FieldName = 'KF_KPR_SCH'
-      ReadOnly = True
-    end
-    object OD_chargeNRM_KPR2: TFloatField
-      FieldName = 'NRM_KPR2'
     end
     object OD_chargeREU: TStringField
       FieldName = 'REU'
@@ -3568,17 +3655,13 @@ object Form_kart: TForm_kart
     object OD_chargePSCH: TIntegerField
       FieldName = 'PSCH'
     end
-    object OD_chargeDT1: TDateTimeField
-      FieldName = 'DT1'
+    object OD_chargeVOLUME: TFloatField
+      FieldName = 'VOLUME'
     end
-    object OD_chargeDT2: TDateTimeField
-      FieldName = 'DT2'
+    object OD_chargeUNITS: TStringField
+      FieldName = 'UNITS'
+      Size = 15
     end
-  end
-  object DS_charge: TDataSource
-    DataSet = OD_charge
-    Left = 192
-    Top = 512
   end
   object DS_sprorg: TDataSource
     DataSet = DataModule1.OD_sprorg
@@ -3640,61 +3723,6 @@ object Form_kart: TForm_kart
     DataSet = DataModule1.OD_s_reu_trest
     Left = 592
     Top = 544
-  end
-  object OD_tarif: TOracleDataSet
-    SQL.Strings = (
-      
-        'select t.*, t.name||'#39',  '#39'||s.cena||'#39' '#1088#1091#1073'.'#39' as tarif_name from sc' +
-        'ott.spr_tarif t,'
-      'scott.spr_tarif_prices s, scott.params p, scott.usl u'
-      
-        'where (t.usl=:usl or :usl is null) and t.id=s.fk_tarif and t.usl' +
-        '=u.usl'
-      'and p.period between s.mg1 and s.mg2'
-      'and nvl(u.n_progs,0)=0')
-    Optimize = False
-    Variables.Data = {
-      0300000001000000040000003A55534C05000000040000003030330000000000}
-    QBEDefinition.QBEFieldDefs = {
-      04000000060000000300000055534C0100000000000200000049440100000000
-      00040000004E414D450100000000000A00000054415249465F4E414D45010000
-      000000040000004D41534B010000000000020000004344010000000000}
-    Master = OD_charge
-    MasterFields = 'usl'
-    DetailFields = 'usl'
-    QueryAllRecords = False
-    Session = DataModule1.OracleSession1
-    Left = 624
-    Top = 512
-    object OD_tarifTARIF_NAME: TStringField
-      DisplayWidth = 114
-      FieldName = 'TARIF_NAME'
-      Size = 114
-    end
-    object OD_tarifNAME: TStringField
-      DisplayWidth = 32
-      FieldName = 'NAME'
-      Visible = False
-      Size = 32
-    end
-    object OD_tarifID: TFloatField
-      DisplayWidth = 10
-      FieldName = 'ID'
-      Required = True
-      Visible = False
-    end
-    object OD_tarifUSL: TStringField
-      DisplayWidth = 3
-      FieldName = 'USL'
-      Required = True
-      Visible = False
-      Size = 3
-    end
-  end
-  object DS_tarif: TDataSource
-    DataSet = OD_tarif
-    Left = 656
-    Top = 512
   end
   object DS_kfg: TDataSource
     DataSet = DataModule1.OD_kfg
@@ -3983,5 +4011,181 @@ object Form_kart: TForm_kart
     DataSet = DataModule1.OD_doc
     Left = 48
     Top = 520
+  end
+  object OD_nabor: TOracleDataSet
+    SQL.Strings = (
+      'select 0 as tp, n.rowid,'
+      '       m.npp,'
+      '       k.k_lsk_id,'
+      '       n.lsk,'
+      '       k.psch,'
+      '       k.reu,'
+      '       tp.cd as cd_tp,'
+      '       m.usl,'
+      '       m.nm,'
+      '       n.koeff,'
+      '       n.norm,'
+      '       n.org,'
+      '       n.fk_tarif,'
+      '       n.fk_vvod,'
+      '       n.vol,'
+      '       n.vol_add,'
+      '       v.vvod_num,'
+      '       n.kf_kpr,'
+      '       n.kf_kpr_sch,'
+      '       n.nrm_kpr,'
+      '       n.nrm_kpr2,'
+      '       n.sch_auto,'
+      '       g.kod || '#39'  '#39' || g.name as org_name,'
+      '       m.sptarn,'
+      '       n.dt1, n.dt2'
+      
+        '  from  scott.nabor n join scott.kart k on k.lsk=n.lsk and decod' +
+        'e(k.psch, 8, :p_closed, 9, :p_closed,1)=1'
+      
+        '                     left join scott.c_vvod v on n.fk_vvod = v.i' +
+        'd'
+      '                     join scott.sprorg g on n.org = g.kod'
+      '                     join scott.v_lsk_tp tp on k.fk_tp=tp.id'
+      '                     join scott.usl m on n.usl = m.usl'
+      ' where k.k_lsk_id = :k_lsk_id'
+      ' order by reu, npp, dt1'
+      '')
+    Optimize = False
+    Variables.Data = {
+      0300000002000000090000003A4B5F4C534B5F49440300000000000000000000
+      00090000003A505F434C4F534544030000000000000000000000}
+    QBEDefinition.QBEFieldDefs = {
+      040000001A0000000300000055534C010000000000030000004C534B01000000
+      0000050000004B4F454646010000000000040000004E4F524D01000000000003
+      0000004F5247010000000000020000004E4D01000000000008000000464B5F54
+      41524946010000000000080000004F52475F4E414D4501000000000007000000
+      464B5F56564F440100000000000800000056564F445F4E554D01000000000007
+      000000564F4C5F414444010000000000060000004B465F4B5052010000000000
+      080000005343485F4155544F01000000000003000000564F4C01000000000007
+      0000004E524D5F4B5052010000000000030000004E5050010000000000020000
+      0054500100000000000600000053505441524E0100000000000A0000004B465F
+      4B50525F534348010000000000080000004E524D5F4B50523201000000000008
+      0000004B5F4C534B5F4944010000000000030000005245550100000000000500
+      000043445F545001000000000004000000505343480100000000000300000044
+      543101000000000003000000445432010000000000}
+    UpdatingTable = 'scott.nabor'
+    CommitOnPost = False
+    CachedUpdates = True
+    Session = DataModule1.OracleSession1
+    Active = True
+    AfterOpen = OD_chargeAfterOpen
+    BeforeClose = OD_chargeBeforeClose
+    AfterScroll = OD_chargeAfterScroll
+    Left = 24
+    Top = 424
+    object StringField1: TStringField
+      DisplayLabel = #1050#1086#1076
+      DisplayWidth = 3
+      FieldName = 'USL'
+      ReadOnly = True
+      Required = True
+      Size = 3
+    end
+    object StringField2: TStringField
+      DisplayLabel = #1059#1089#1083#1091#1075#1072
+      DisplayWidth = 17
+      FieldName = 'NM'
+      ReadOnly = True
+      Size = 35
+    end
+    object FloatField7: TFloatField
+      DisplayLabel = #1050#1086#1101#1092#1092
+      DisplayWidth = 7
+      FieldName = 'KOEFF'
+    end
+    object FloatField8: TFloatField
+      DisplayLabel = #1053#1086#1088#1084#1072
+      DisplayWidth = 6
+      FieldName = 'NORM'
+    end
+    object FloatField9: TFloatField
+      DisplayWidth = 10
+      FieldName = 'FK_TARIF'
+      Visible = False
+    end
+    object FloatField10: TFloatField
+      FieldName = 'FK_VVOD'
+    end
+    object StringField5: TStringField
+      DisplayWidth = 8
+      FieldName = 'LSK'
+      ReadOnly = True
+      Required = True
+      Visible = False
+      Size = 8
+    end
+    object FloatField11: TFloatField
+      FieldKind = fkInternalCalc
+      FieldName = 'VVOD_NUM'
+    end
+    object FloatField12: TFloatField
+      FieldName = 'VOL_ADD'
+      ReadOnly = True
+    end
+    object FloatField13: TFloatField
+      FieldName = 'KF_KPR'
+      ReadOnly = True
+    end
+    object FloatField14: TFloatField
+      FieldName = 'SCH_AUTO'
+    end
+    object FloatField15: TFloatField
+      FieldName = 'VOL'
+      ReadOnly = True
+    end
+    object FloatField16: TFloatField
+      FieldName = 'NRM_KPR'
+      ReadOnly = True
+    end
+    object FloatField18: TFloatField
+      FieldName = 'TP'
+    end
+    object FloatField19: TFloatField
+      FieldName = 'SPTARN'
+    end
+    object FloatField20: TFloatField
+      FieldName = 'KF_KPR_SCH'
+      ReadOnly = True
+    end
+    object FloatField21: TFloatField
+      FieldName = 'NRM_KPR2'
+    end
+    object StringField6: TStringField
+      FieldName = 'REU'
+      Size = 3
+    end
+    object StringField7: TStringField
+      FieldName = 'CD_TP'
+      Size = 32
+    end
+    object IntegerField1: TIntegerField
+      FieldName = 'PSCH'
+    end
+    object DateTimeField1: TDateTimeField
+      FieldName = 'DT1'
+    end
+    object DateTimeField2: TDateTimeField
+      FieldName = 'DT2'
+    end
+    object OD_naborORG: TIntegerField
+      FieldName = 'ORG'
+      Required = True
+    end
+  end
+  object DS_charge: TDataSource
+    DataSet = OD_charge
+    Left = 72
+    Top = 376
+  end
+  object DS_nabor: TDataSource
+    DataSet = OD_nabor
+    Left = 72
+    Top = 424
   end
 end

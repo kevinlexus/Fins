@@ -818,7 +818,7 @@ begin
   if FF('Form_kart', 0) = 1 then
   begin
     //    setAllowEdit_kart;
-    Form_kart.calcFooter;
+//    Form_kart.calcFooter;
   end;
 
   if FF('Form_kart', 0) = 1 then
