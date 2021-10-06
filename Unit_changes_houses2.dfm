@@ -1,9 +1,9 @@
-object Form_changes_houses: TForm_changes_houses
-  Left = 335
-  Top = 274
+object Form_changes_houses2: TForm_changes_houses2
+  Left = 1239
+  Top = 744
   Width = 863
   Height = 508
-  Caption = #1055#1077#1088#1077#1088#1072#1089#1095#1077#1090#1099' '#1087#1086' '#1076#1086#1084#1072#1084' - '#1083#1080#1094#1077#1074#1099#1084
+  Caption = #1055#1077#1088#1077#1088#1072#1089#1095#1077#1090#1099
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -112,32 +112,6 @@ object Form_changes_houses: TForm_changes_houses
         Height = 129
         Align = alBottom
         TabOrder = 0
-        object Label1: TLabel
-          Left = 8
-          Top = 20
-          Width = 35
-          Height = 13
-          Caption = #1051'/'#1057' '#1089
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -11
-          Font.Name = 'MS Sans Serif'
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
-        object Label2: TLabel
-          Left = 144
-          Top = 20
-          Width = 15
-          Height = 13
-          Caption = #1087#1086
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -11
-          Font.Name = 'MS Sans Serif'
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
         object Label3: TLabel
           Left = 677
           Top = 23
@@ -164,8 +138,21 @@ object Form_changes_houses: TForm_changes_houses
           Font.Style = [fsBold]
           ParentFont = False
         end
+        object Label1: TLabel
+          Left = 8
+          Top = 20
+          Width = 45
+          Height = 13
+          Caption = #1051#1080#1094'.'#1089#1095'.'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
         object wwDBEdit3: TwwDBEdit
-          Left = 48
+          Left = 54
           Top = 16
           Width = 89
           Height = 21
@@ -177,23 +164,6 @@ object Form_changes_houses: TForm_changes_houses
           ParentFont = False
           Picture.PictureMask = '[#][#][#][#][#][#][#][#]'
           TabOrder = 0
-          UnboundDataType = wwDefault
-          WantReturns = False
-          WordWrap = False
-        end
-        object wwDBEdit1: TwwDBEdit
-          Left = 168
-          Top = 16
-          Width = 89
-          Height = 21
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -11
-          Font.Name = 'MS Sans Serif'
-          Font.Style = [fsBold]
-          ParentFont = False
-          Picture.PictureMask = '[#][#][#][#][#][#][#][#]'
-          TabOrder = 1
           UnboundDataType = wwDefault
           WantReturns = False
           WordWrap = False
@@ -211,7 +181,7 @@ object Form_changes_houses: TForm_changes_houses
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
-          TabOrder = 4
+          TabOrder = 3
           OnClick = chk5Click
         end
         object CheckBox2: TCheckBox
@@ -229,7 +199,7 @@ object Form_changes_houses: TForm_changes_houses
           ParentFont = False
           ParentShowHint = False
           ShowHint = True
-          TabOrder = 5
+          TabOrder = 4
         end
         object btn1: TButton
           Left = 760
@@ -237,7 +207,7 @@ object Form_changes_houses: TForm_changes_houses
           Width = 68
           Height = 25
           Caption = #1042#1099#1087#1086#1083#1085#1080#1090#1100
-          TabOrder = 3
+          TabOrder = 2
           OnClick = btn1Click
         end
         object wwDBEdit2: TwwDBEdit
@@ -245,7 +215,7 @@ object Form_changes_houses: TForm_changes_houses
           Top = 16
           Width = 324
           Height = 21
-          TabOrder = 2
+          TabOrder = 1
           UnboundDataType = wwDefault
           WantReturns = False
           WordWrap = False
@@ -265,7 +235,7 @@ object Form_changes_houses: TForm_changes_houses
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
-          TabOrder = 7
+          TabOrder = 6
           OnClick = chk7Click
         end
         object GroupBox2: TGroupBox
@@ -280,7 +250,7 @@ object Form_changes_houses: TForm_changes_houses
           Font.Name = 'MS Sans Serif'
           Font.Style = []
           ParentFont = False
-          TabOrder = 9
+          TabOrder = 8
           object DBComboBoxEh2: TDBComboBoxEh
             Left = 8
             Top = 14
@@ -379,7 +349,7 @@ object Form_changes_houses: TForm_changes_houses
           ParentFont = False
           ParentShowHint = False
           ShowHint = True
-          TabOrder = 10
+          TabOrder = 9
           WordWrap = True
           OnClick = chk1Click
         end
@@ -394,7 +364,7 @@ object Form_changes_houses: TForm_changes_houses
             end>
           Properties.ListOptions.ShowHeader = False
           Properties.ListSource = DS_mg
-          TabOrder = 11
+          TabOrder = 10
           Width = 89
         end
         object chk2: TCheckBox
@@ -414,7 +384,7 @@ object Form_changes_houses: TForm_changes_houses
           Font.Style = [fsBold]
           ParentFont = False
           State = cbChecked
-          TabOrder = 8
+          TabOrder = 7
         end
         object chk3: TCheckBox
           Left = 4
@@ -433,7 +403,7 @@ object Form_changes_houses: TForm_changes_houses
           Font.Style = [fsBold]
           ParentFont = False
           State = cbChecked
-          TabOrder = 6
+          TabOrder = 5
         end
         object cxLookupComboBox1: TcxLookupComboBox
           Left = 744
@@ -445,7 +415,7 @@ object Form_changes_houses: TForm_changes_houses
             end>
           Properties.ListOptions.ShowHeader = False
           Properties.ListSource = DS_mg
-          TabOrder = 12
+          TabOrder = 11
           Width = 89
         end
         object chk4: TCheckBox
@@ -460,7 +430,7 @@ object Form_changes_houses: TForm_changes_houses
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
-          TabOrder = 13
+          TabOrder = 12
         end
         object chk6: TCheckBox
           Left = 558
@@ -474,7 +444,7 @@ object Form_changes_houses: TForm_changes_houses
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
-          TabOrder = 14
+          TabOrder = 13
         end
       end
       object Panel1: TPanel
@@ -893,6 +863,15 @@ object Form_changes_houses: TForm_changes_houses
         object cxgrd1Level1: TcxGridLevel
           GridView = cxgrdbtblvwGrid1DBTableView1
         end
+      end
+      object Memo1: TMemo
+        Left = 328
+        Top = 96
+        Width = 297
+        Height = 153
+        Lines.Strings = (
+          'Memo1')
+        TabOrder = 1
       end
     end
   end

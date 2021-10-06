@@ -64,6 +64,7 @@ uses
   Unit_list_kart in 'Unit_list_kart.pas' {Form_list_kart},
   Unit_changes_lsk in 'Unit_changes_lsk.pas' {Form_changes_lsk},
   Unit_changes_houses in 'Unit_changes_houses.pas' {Form_changes_houses},
+  Unit_changes_houses2 in 'Unit_changes_houses2.pas' {Form_changes_houses2},
   Unit_new_lsk in 'Unit_new_lsk.pas' {Form_new_lsk},
   Unit_house_vvod in 'Unit_house_vvod.pas' {Form_house_vvod},
   Unit_chargepay in 'Unit_chargepay.pas' {Form_chargepay},
@@ -219,7 +220,6 @@ begin
 
   Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TForm_Main, Form_Main);
-  
   s := Ini.ReadString('Application', 'User', '');
   Pass := '';
   I := 1;

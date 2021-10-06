@@ -1,6 +1,6 @@
 object Form_kart: TForm_kart
-  Left = 628
-  Top = 394
+  Left = 631
+  Top = 396
   Width = 903
   Height = 675
   BorderIcons = [biSystemMenu, biMinimize]
@@ -1699,6 +1699,24 @@ object Form_kart: TForm_kart
       TabOrder = 1
       OnClick = Button2Click
     end
+    object chk2: TCheckBox
+      Left = 400
+      Top = 5
+      Width = 105
+      Height = 17
+      Hint = #1043#1088#1091#1087#1087#1080#1088#1086#1074#1072#1090#1100' '#1079#1072#1087#1080#1089#1080' '#1085#1072#1095#1080#1089#1083#1077#1085#1080#1103
+      Caption = #1043#1088#1091#1087#1080#1088#1086#1074#1072#1090#1100
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 4
+      OnClick = chk2Click
+    end
   end
   object PageControl2: TPageControl
     Left = 0
@@ -2700,24 +2718,49 @@ object Form_kart: TForm_kart
           Navigator.Buttons.CustomButtons = <>
           OnCustomDrawCell = cxGrid1DBTableView1CustomDrawCell
           DataController.DataSource = DS_charge
-          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.DefaultGroupSummaryItems = <
+            item
+              Format = #1054#1073#1098#1077#1084' 0.00'
+              Kind = skSum
+              Column = cxGrid1DBTableView1VOLUME
+            end
+            item
+              Format = #1048#1079#1084#1077#1085#1077#1085#1080#1103' 0.00'
+              Kind = skSum
+              Column = cxGrid1DBTableView1CHANGES
+            end
+            item
+              Format = #1058#1072#1088#1080#1092' 0.00'
+              Kind = skSum
+              Column = cxGrid1DBTableView1TARIF
+            end
+            item
+              Kind = skSum
+              Position = spFooter
+              Column = cxGrid1DBTableView1TARIF
+            end
+            item
+              Format = #1048#1090#1086#1075#1086' 0.00'
+              Kind = skSum
+              Column = cxGrid1DBTableView1ITOGN
+            end
+            item
+              Kind = skSum
+              Position = spFooter
+              Column = cxGrid1DBTableView1ITOGN
+            end>
           DataController.Summary.FooterSummaryItems = <
             item
               Kind = skSum
               Column = cxGrid1DBTableView1TARIF
             end
             item
-              Kind = skSum
+              Format = #1048#1090#1086#1075#1086' 0.00'
               Column = cxGrid1DBTableView1CHANGES
             end
             item
               Kind = skSum
               Column = cxGrid1DBTableView1ITOGN
-            end
-            item
-              Format = #1048#1090#1086#1075#1086' 0.00'
-              Kind = skSum
-              Column = cxGrid1DBTableView1VOLUME
             end>
           DataController.Summary.SummaryGroups = <>
           OptionsBehavior.CellHints = True

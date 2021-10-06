@@ -1,6 +1,6 @@
 object Form_list_kart: TForm_list_kart
-  Left = 608
-  Top = 211
+  Left = 611
+  Top = 214
   Width = 1044
   Height = 607
   Caption = #1050#1072#1088#1090#1086#1095#1082#1080

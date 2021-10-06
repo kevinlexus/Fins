@@ -1,4 +1,4 @@
-unit Unit_changes_houses;
+unit Unit_changes_houses2;
 
 interface
 
@@ -24,7 +24,7 @@ uses
   cxDBLookupEdit;
 
 type
-  TForm_changes_houses = class(TForm)
+  TForm_changes_houses2 = class(TForm)
     OD_list_choices_changes: TOracleDataSet;
     DS_list_choices_changes: TDataSource;
     OD_sprorg: TOracleDataSet;
@@ -70,12 +70,9 @@ type
     cxgrdbtblvwGrid1DBTableView1USER_NAME: TcxGridDBColumn;
     cxgrdbtblvwGrid1DBTableView1ID: TcxGridDBColumn;
     GroupBox1: TGroupBox;
-    Label1: TLabel;
-    Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
     wwDBEdit3: TwwDBEdit;
-    wwDBEdit1: TwwDBEdit;
     chk5: TCheckBox;
     CheckBox2: TCheckBox;
     btn1: TButton;
@@ -111,6 +108,8 @@ type
     nbtn10: TwwNavButton;
     nbtn11: TwwNavButton;
     chk6: TCheckBox;
+    Label1: TLabel;
+    Memo1: TMemo;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btn1Click(Sender: TObject);
     procedure btn2Click(Sender: TObject);
@@ -128,7 +127,7 @@ type
   end;
 
 var
-  Form_changes_houses: TForm_changes_houses;
+  Form_changes_houses2: TForm_changes_houses2;
   clr_: Integer;
 
 implementation
@@ -138,7 +137,7 @@ uses DM_module1, Unit_status, Unit_sel_hs, Unit_list_kart, Unit_chargepay,
 
 {$R *.dfm}
 
-procedure TForm_changes_houses.setAllowEdit;
+procedure TForm_changes_houses2.setAllowEdit;
 begin
   //разрешить ли редактирование
   if (Form_main.arch_mg_ = '') then
@@ -153,25 +152,25 @@ begin
   end;
 end;
 
-procedure TForm_changes_houses.state_arch2(mgold_: string);
+procedure TForm_changes_houses2.state_arch2(mgold_: string);
 begin // смена состояний формы
   with Form_changes_lsk do
   begin
     if (Form_main.arch_mg_ <> '') and (mgold_ = '') then
     begin // из текущего в архив
-      change_alias(Form_changes_houses.OD_c_change_docs, 'scott.c_change_docs',
+      change_alias(Form_changes_houses2.OD_c_change_docs, 'scott.c_change_docs',
         '(select * from scott.a_change_docs where mg=''' + Form_main.arch_mg_ +
         ''')');
     end
     else if (Form_main.arch_mg_ = '') and (mgold_ <> '') then
     begin // из архива в текущее
-      change_alias(Form_changes_houses.OD_c_change_docs,
+      change_alias(Form_changes_houses2.OD_c_change_docs,
         '(select * from scott.a_change_docs where mg=''' + mgold_ + ''')',
         'scott.c_change_docs');
     end
     else if (Form_main.arch_mg_ <> '') and (mgold_ <> '') then
     begin // из архива в архив
-      change_alias(Form_changes_houses.OD_c_change_docs,
+      change_alias(Form_changes_houses2.OD_c_change_docs,
         '(select * from scott.a_change_docs where mg=''' + mgold_ + ''')',
         '(select * from scott.a_change_docs where mg=''' + Form_main.arch_mg_ +
         ''')'
@@ -181,17 +180,18 @@ begin // смена состояний формы
   end;
 end;
 
-procedure TForm_changes_houses.FormClose(Sender: TObject;
+procedure TForm_changes_houses2.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   Action := caFree;
 end;
 
-procedure TForm_changes_houses.btn1Click(Sender: TObject);
+procedure TForm_changes_houses2.btn1Click(Sender: TObject);
 var
   cnt_, tst_, is_sch_, usl_add_, doc_id_: Integer;
   l_chk2, l_chk3, l_chk4, l_chk6, l_psch: Integer;
   paramChangesUsl: string;
+  isFirstLine: Boolean;
 begin
   if not (OD_list_choices_changes.State in [dsBrowse]) then
     OD_list_choices_changes.Post;
@@ -211,9 +211,9 @@ begin
     Abort;
   end;
 
-  if (not chk5.Checked) and (wwDBEdit1.Text = '') and (wwDBEdit3.Text = '') then
+  if (not chk5.Checked) and (wwDBEdit3.Text = '') then
   begin
-    Application.MessageBox('Не указаны лицевые счета!', 'Внимание',
+    Application.MessageBox('Не указан лицевой счет!', 'Внимание',
       MB_OK + MB_ICONEXCLAMATION + MB_APPLMODAL);
     Abort;
   end;
@@ -264,97 +264,79 @@ begin
   Application.CreateForm(TForm_status, Form_status);
   Form_status.Update;
 
-
-    //Тестируем
-  try
-    DataModule1.OraclePackage1.CallProcedure
-      ('scott.C_CHANGES.gen_changes_proc',
-      [wwDBEdit3.Text, wwDBEdit1.Text,
-      cxLookupComboBox1.EditValue,
-        cxLookupComboBox2.EditValue,
-        usl_add_, is_sch_, l_psch, 1,
-        wwDBEdit2.Text, parInteger, parInteger,
-        DBComboBoxEh3.ItemIndex,
-        OD_status.FieldByName('id').AsInteger,
-        l_chk2,
-        l_chk3,
-        l_chk4,
-        DBComboBoxEh4.ItemIndex,
-        l_chk6
-        ]);
-  except
-
-    on E: EOracleError do
-    begin
-      msg2(E.Message,
-        'Внимание!', MB_ICONSTOP + MB_OK);
-      Form_status.Close;
-      Exit;
-    end;
-  end;
-  cnt_ := DataModule1.OraclePackage1.GetParameter(9);
-  doc_id_ := DataModule1.OraclePackage1.GetParameter(10);
-  if cnt_ = 2 then
+  // ****************** Перерасчет на Java
+  paramChangesUsl := '{"lsk": "' + wwDBEdit3.Text + '",';
+  paramChangesUsl := paramChangesUsl +
+    '"periods": ["202101","202102","202103"],';
+  paramChangesUsl := paramChangesUsl + '"isAddUslSvSocn": "true",';
+  paramChangesUsl := paramChangesUsl + '"isAddUslKan": "true",';
+  paramChangesUsl := paramChangesUsl + '"processMeter": "1",';
+  paramChangesUsl := paramChangesUsl + '"processAccount": "0",';
+  paramChangesUsl := paramChangesUsl + '"processStatus": "2",';
+  paramChangesUsl := paramChangesUsl + '"processLskTp": "2",';
+  paramChangesUsl := paramChangesUsl + '"processTp": "1",';
+  paramChangesUsl := paramChangesUsl + '"isProcessEmpty": "false",';
+  paramChangesUsl := paramChangesUsl +
+    '"comment": "коментарий к перерасчету",';
+  paramChangesUsl := paramChangesUsl + '"change": [';
+  OD_list_choices_changes.First;
+  isFirstLine := True;
+  while not OD_list_choices_changes.Eof do
   begin
-    if msg3('Период не соответствует периоду действия данных Л/C., продолжить?',
-      'Внимание!',
-      MB_ICONQUESTION + MB_YESNO) = ID_NO then
+    if (OD_list_choices_changes.FieldByName('PROC1').AsInteger <> 0) or
+      (OD_list_choices_changes.FieldByName('PROC2').AsInteger <> 0) or
+      (OD_list_choices_changes.FieldByName('ABS_SET').AsInteger <> 0) or
+      (OD_list_choices_changes.FieldByName('CNT_DAYS').AsInteger <> 0) or
+      (OD_list_choices_changes.FieldByName('CNT_DAYS2').AsInteger <> 0) then
     begin
-      Form_status.Close;
-      exit;
-    end;
-  end;
-
-  if cnt_ = 3 then
-  begin
-    msg2('Попытка выполнить перерасчет по услуге, которой нет в данном лицевом счете, за требуемый период,'
-      +
-      ' ОПРЕДЕЛИТЕ для неё организацию, в форме перерасчета', 'Внимание!',
-      MB_ICONSTOP + MB_OK);
-    Form_status.Close;
-    exit;
-  end;
-
-  //Выполняем
-  try
-    DataModule1.OraclePackage1.CallProcedure
-      ('scott.C_CHANGES.gen_changes_proc',
-      [wwDBEdit3.Text, wwDBEdit1.Text,
-      cxLookupComboBox1.EditValue,
-        cxLookupComboBox2.EditValue,
-        usl_add_, is_sch_, l_psch, 0,
-        wwDBEdit2.Text, parInteger, parInteger,
-        DBComboBoxEh3.ItemIndex,
-        OD_status.FieldByName('id').AsInteger,
-        l_chk2,
-        l_chk3,
-        l_chk4,
-        DBComboBoxEh4.ItemIndex,
-        l_chk6]);
-  except
-    on E: EOracleError do
-    begin
-      if Pos('20001', E.Message) <> 0 then
-        msg2('Вам запрещено выполнять изменения по Л/С: ' + copy(E.Message, 12,
-          8),
-          'Внимание!', MB_ICONSTOP + MB_OK)
+      if isFirstLine then
+      begin
+        isFirstLine := False;
+      end
       else
-        msg2(E.Message,
-          'Внимание!', MB_ICONSTOP + MB_OK);
-      Form_status.Close;
-      Exit;
+        paramChangesUsl := paramChangesUsl + ',';
+      paramChangesUsl := paramChangesUsl + '{';
+      paramChangesUsl := paramChangesUsl +
+        '"USL_ID":"' + OD_list_choices_changes.FieldByName('USL_ID').AsString +
+        '"';
+      paramChangesUsl := paramChangesUsl +
+        ',"ORG1_ID":"' + OD_list_choices_changes.FieldByName('ORG1_ID').AsString
+        +
+        '"';
+      paramChangesUsl := paramChangesUsl +
+        ',"PROC1":"' + OD_list_choices_changes.FieldByName('PROC1').AsString +
+        '"';
+      paramChangesUsl := paramChangesUsl +
+        ',"ORG2_ID":"' + OD_list_choices_changes.FieldByName('ORG2_ID').AsString
+        +
+        '"';
+      paramChangesUsl := paramChangesUsl +
+        ',"PROC2":"' + OD_list_choices_changes.FieldByName('PROC2').AsString +
+        '"';
+      paramChangesUsl := paramChangesUsl +
+        ',"ABS_SET":"' + OD_list_choices_changes.FieldByName('ABS_SET').AsString
+        +
+        '"';
+      paramChangesUsl := paramChangesUsl +
+        ',"CNT_DAYS":"' +
+        OD_list_choices_changes.FieldByName('CNT_DAYS').AsString +
+        '"';
+      paramChangesUsl := paramChangesUsl +
+        ',"CNT_DAYS2":"' +
+        OD_list_choices_changes.FieldByName('CNT_DAYS2').AsString +
+        '"';
+      paramChangesUsl := paramChangesUsl + '}';
     end;
+    OD_list_choices_changes.Next;
   end;
-  cnt_ := DataModule1.OraclePackage1.GetParameter(9);
-  doc_id_ := DataModule1.OraclePackage1.GetParameter(10);
-  Form_status.Close;
-  msg2('Перерасчет выполнен по ' + IntToStr(cnt_) + ' Л/C.', 'Внимание!',
-    MB_OK + MB_ICONINFORMATION);
-  tst_ := DataModule1.OraclePackage1.CallIntegerFunction
-    ('scott.C_CHANGES.test_abs_or_proc',
-    [parNone]);
+  paramChangesUsl := paramChangesUsl + ']';
 
-  //чистим поля
+  paramChangesUsl := paramChangesUsl + '}';
+  Memo1.Text := paramChangesUsl;
+  //    ShowMessage(PChar(paramChangesUsl));
+      // ****************** Перерасчет на Java
+
+    //чистим поля
   if tst_ = 0 then //изменения по процентам
   begin
     //    wwDBEdit1.Text:='';  Убрал - задолбало чиститься 16.10.2013
@@ -385,12 +367,12 @@ begin
     Form_chargepay.recalc;
 end;
 
-procedure TForm_changes_houses.btn2Click(Sender: TObject);
+procedure TForm_changes_houses2.btn2Click(Sender: TObject);
 begin
   Close;
 end;
 
-procedure TForm_changes_houses.FormCreate(Sender: TObject);
+procedure TForm_changes_houses2.FormCreate(Sender: TObject);
 begin
   DBComboBoxEh1.ItemIndex := 1;
   DBComboBoxEh2.ItemIndex := 0;
@@ -411,7 +393,6 @@ begin
 
   if FF('Form_list_kart', 0) = 1 then
   begin
-    wwDBEdit1.Text := Form_list_kart.OD_list_kart.FieldByName('lsk').AsString;
     wwDBEdit3.Text := Form_list_kart.OD_list_kart.FieldByName('lsk').AsString;
   end;
   DataModule1.OraclePackage1.CallProcedure
@@ -427,22 +408,16 @@ begin
   clr_ := 0;
 end;
 
-procedure TForm_changes_houses.chk5Click(Sender: TObject);
+procedure TForm_changes_houses2.chk5Click(Sender: TObject);
 begin
   if chk5.Checked then
   begin
-    wwDBEdit1.Enabled := false;
     wwDBEdit3.Enabled := false;
-    wwDBEdit1.Text := '';
     wwDBEdit3.Text := '';
 
     if clr_ = 0 then
     begin
       Application.CreateForm(TForm_sel_hs, Form_sel_hs);
-      {Form_sel_hs.OD_list_choice.Active := false;
-      Form_sel_hs.OD_list_choice.SetVariable('clr_',1);
-      Form_sel_hs.OD_list_choice.Active := true;}
- //    clr_:=1;  -- нельзя ставить 1, так как после коммита по раз.изменениям, таблица очищается...
     end
     else
     begin
@@ -451,12 +426,11 @@ begin
   end
   else
   begin
-    wwDBEdit1.Enabled := true;
     wwDBEdit3.Enabled := true;
   end;
 end;
 
-procedure TForm_changes_houses.DBGridEh1KeyPress(Sender: TObject;
+procedure TForm_changes_houses2.DBGridEh1KeyPress(Sender: TObject;
   var Key: Char);
 begin
   if RetKey(Key) then
@@ -464,7 +438,7 @@ begin
 
 end;
 
-procedure TForm_changes_houses.chk7Click(Sender: TObject);
+procedure TForm_changes_houses2.chk7Click(Sender: TObject);
 begin
   if CheckBox3.checked = True then
   begin
@@ -487,7 +461,7 @@ begin
 
 end;
 
-procedure TForm_changes_houses.chk1Click(Sender: TObject);
+procedure TForm_changes_houses2.chk1Click(Sender: TObject);
 begin
   //  wwDBLookupCombo2.Enabled:=chk1.Checked;
   cxLookupComboBox2.Enabled := chk1.Checked;

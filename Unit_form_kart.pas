@@ -400,6 +400,7 @@ type
     OD_chargeVOLUME: TFloatField;
     OD_chargeUNITS: TStringField;
     cxGrid1DBTableView1UNITS: TcxGridDBColumn;
+    chk2: TCheckBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure DBGridEh1DblClick(Sender: TObject);
     procedure OD_kartAfterPost(DataSet: TDataSet);
@@ -499,6 +500,7 @@ type
       Sender: TObject);
     procedure check_kart_correct;
     procedure CheckBox2Click(Sender: TObject);
+    procedure chk2Click(Sender: TObject);
   private
     tarif_, privs_, subsid_, changes_, itogn_: Double;
     size_, allow_dtv_, id_, action_, fk_tarif_: Integer;
@@ -2243,6 +2245,15 @@ begin
     Form_list_kart.OD_list_kartFK_KLSK_PREMISE.ReadOnly := True;
     Form_list_kart.OD_list_kartHOUSE_ID.ReadOnly := True;
   end;
+end;
+
+procedure TForm_kart.chk2Click(Sender: TObject);
+begin
+   if chk2.Checked then
+      cxGrid1DBTableView1.OptionsView.GroupByBox:=True
+   else
+      cxGrid1DBTableView1.OptionsView.GroupByBox:=False;
+   
 end;
 
 end.
