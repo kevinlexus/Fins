@@ -1,6 +1,6 @@
 object Form_kart: TForm_kart
-  Left = 631
-  Top = 396
+  Left = 181
+  Top = 660
   Width = 903
   Height = 675
   BorderIcons = [biSystemMenu, biMinimize]
@@ -3381,6 +3381,77 @@ object Form_kart: TForm_kart
       '       tp.cd as cd_tp,'
       '       m.usl,'
       '       m.nm,'
+      '       a.volume,'
+      '       m.ed_izm as units,'
+      '       a.cena,'
+      '       o.id || '#39'  '#39' || o.name as org_name,'
+      '       nvl(summa_tarif, 0) as tarif,'
+      '       nvl(summa_privs, 0) as privs,'
+      '       nvl(summa_subsid, 0) as subsid,'
+      '       0 as changes,'
+      
+        '       nvl(a.summa_tarif, 0) - nvl(a.summa_privs, 0) - nvl(a.sum' +
+        'ma_subsid, 0) +'
+      '       nvl(a.summa_change, 0) as itogn'
+      '  from  '
+      '           scott.kart k'
+      '           join scott.v_lsk_tp tp on k.fk_tp=tp.id'
+      '           join (select lsk, usl, org, '
+      '                  sum(summa_tarif) as summa_tarif,'
+      '                  sum(summa_privs) as summa_privs,'
+      '                  sum(summa_subsid) as summa_subsid,'
+      '                  sum(summa_change) as summa_change,'
+      '                  sum(volume) as volume,'
+      '                  max(cena) as cena'
+      '                   from '
+      
+        '                  (select t.lsk, t.usl, coalesce(t.org, n.org) a' +
+        's org, '
+      '                     decode(t.type,1,t.summa,0) as summa_tarif, '
+      '                     decode(t.type,4,summa,0) as summa_privs, '
+      '                     decode(t.type,2,summa,0) as summa_subsid,'
+      '                     0 as summa_change,'
+      '                     decode(t.type,1,test_opl,0) as volume,'
+      '                     decode(t.type,1,test_cena,0) as cena'
+      '                    from scott.kart a '
+      
+        '                     join scott.c_charge t on a.lsk=t.lsk and a.' +
+        'k_lsk_id = :k_lsk_id '
+      
+        '                     left join scott.nabor n on t.lsk=n.lsk and ' +
+        't.usl=n.usl and t.org is null'
+      '                    union all'
+      '                 select t.lsk, t.usl, t.org, '
+      '                     0 as summa_tarif, '
+      '                     0 as summa_privs, '
+      '                     0 as summa_subsid,'
+      '                     t.summa as summa_change,'
+      '                     0 as volume,'
+      '                     0 as cena'
+      '                    from scott.kart a '
+      
+        '                     join scott.c_change t on a.lsk=t.lsk and a.' +
+        'k_lsk_id = :k_lsk_id '
+      '                    ) group by lsk, usl, org'
+      '                   ) a on k.lsk = a.lsk'
+      '           join scott.usl u on a.usl=u.usl'
+      '           join scott.t_org o on a.org=o.id'
+      '           join scott.usl m on u.usl = m.usl'
+      
+        ' where k.k_lsk_id = :k_lsk_id  and decode(k.psch, 8, :p_closed, ' +
+        '9, :p_closed,1)=1'
+      ' order by reu, npp'
+      ''
+      ''
+      '/*select 0 as tp, '
+      '       m.npp,'
+      '       k.k_lsk_id,'
+      '       k.lsk,'
+      '       k.psch,'
+      '       k.reu,'
+      '       tp.cd as cd_tp,'
+      '       m.usl,'
+      '       m.nm,'
       
         '  --     to_char(a.volume,'#39'9999990'#39'||rpad('#39'.'#39',nvl(m.chrg_round,3' +
         ')+1,'#39'9'#39'))|| '#39' '#39' || m.ed_izm as volume, --'#1087#1086' '#1091#1084#1086#1083#1095#1072#1085#1080#1102' '#1086#1082#1088#1091#1075#1083#1077#1085#1080#1077 +
@@ -3405,32 +3476,31 @@ object Form_kart: TForm_kart
         ':p_closed,1)=1'
       '           join scott.v_lsk_tp tp on k.fk_tp=tp.id'
       
-        '           left join (select lsk, usl, org, sum(decode(t.type,1,' +
-        'summa,0)) as summa, '
+        '           left join (select t.lsk, t.usl, t.org, sum(decode(t.t' +
+        'ype,1,t.summa,0)) as summa, '
       '                     sum(decode(t.type,4,summa,0)) as summa_b, '
       '                     sum(decode(t.type,2,summa,0)) as summa_c,'
       '                     sum(decode(t.type,1,test_opl,0)) as volume,'
       '                     max(decode(t.type,1,test_cena,0)) as cena'
-      '                    from scott.c_charge t'
       
-        '                   group by lsk, usl, org) a on k.lsk = a.lsk an' +
-        'd u.usl=a.usl and o.id=a.org'
+        '                    from scott.c_charge t join scott.kart r on t' +
+        '.lsk=r.lsk and r.k_lsk_id = :k_lsk_id'
+      
+        '                   group by t.lsk, t.usl, t.org) a on k.lsk = a.' +
+        'lsk and u.usl=a.usl and o.id=a.org'
       
         '           left join (select s.lsk, s.usl, s.org, sum(s.summa) a' +
         's summa'
-      '                    from scott.v_changes_for_saldo s'
+      
+        '                    from scott.v_changes_for_saldo s join scott.' +
+        'kart r on s.lsk=r.lsk and r.k_lsk_id = :k_lsk_id'
       
         '                   group by s.lsk, s.usl, s.org) d on k.lsk = d.' +
         'lsk and u.usl = d.usl and o.id=d.org'
       
         ' where k.k_lsk_id = :k_lsk_id and coalesce (a.usl,d.usl) is not ' +
         'null'
-      ' order by reu, npp'
-      ''
-      
-        '-- where k.k_lsk_id = 104887 and coalesce (a.usl,d.usl) is not n' +
-        'ull'
-      ''
+      ' order by reu, npp*/'
       '/*select 0 as tp, n.rowid,'
       '       m.npp,'
       '       k.k_lsk_id,'
@@ -3608,7 +3678,6 @@ object Form_kart: TForm_kart
     CommitOnPost = False
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Active = True
     AfterOpen = OD_chargeAfterOpen
     BeforeClose = OD_chargeBeforeClose
     AfterScroll = OD_chargeAfterScroll

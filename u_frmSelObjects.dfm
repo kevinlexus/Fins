@@ -1,16 +1,15 @@
-object Form_sel_hs: TForm_sel_hs
-  Left = 1238
-  Top = 168
-  Width = 440
-  Height = 455
-  Caption = #1042#1099#1073#1086#1088' '#1076#1086#1084#1086#1074' '#1076#1083#1103' '#1086#1090#1095#1077#1090#1072
+object frmSelObjects: TfrmSelObjects
+  Left = 1175
+  Top = 158
+  Width = 534
+  Height = 634
+  Caption = #1042#1099#1073#1086#1088' '#1086#1073#1098#1077#1082#1090#1086#1074
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
-  Font.Name = 'MS Sans Serif'
+  Font.Name = 'Tahoma'
   Font.Style = []
-  FormStyle = fsMDIChild
   Icon.Data = {
     0000010001002020080000000000A80800001600000028000000200000004000
     0000010008000000000000040000000000000000000000000000000000000000
@@ -84,88 +83,151 @@ object Form_sel_hs: TForm_sel_hs
     000000000000000000000000000000000000000000000000000080000001}
   OldCreateOrder = False
   Position = poMainFormCenter
-  Visible = True
   OnClose = FormClose
-  OnShow = FormShow
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
     Left = 0
-    Top = 375
-    Width = 424
+    Top = 554
+    Width = 518
     Height = 41
     Align = alBottom
     TabOrder = 0
-    object Button1: TButton
-      Left = 342
-      Top = 8
-      Width = 67
-      Height = 25
-      Cancel = True
-      Caption = #1054#1082
+    object chkIsPremiseSearch: TCheckBox
+      Left = 8
+      Top = 16
+      Width = 129
+      Height = 17
+      Caption = #1055#1086#1080#1089#1082' '#1087#1086#1084#1077#1097#1077#1085#1080#1081
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       TabOrder = 0
-      OnClick = Button1Click
+      OnClick = chkIsPremiseSearchClick
     end
   end
-  object cxGrid1: TcxGrid
+  object Panel2: TPanel
     Left = 0
     Top = 0
-    Width = 424
-    Height = 375
-    Align = alClient
-    PopupMenu = PopupMenu1
+    Width = 518
+    Height = 433
+    Align = alTop
+    Caption = 'Panel2'
     TabOrder = 1
-    object cxGrid1DBTableView1: TcxGridDBTableView
+    object cxGrid1: TcxGrid
+      Left = 1
+      Top = 1
+      Width = 516
+      Height = 431
+      Align = alClient
+      TabOrder = 0
+      object cxGrid1DBTableView1: TcxGridDBTableView
+        OnDblClick = cxGrid1DBTableView1DblClick
+        Navigator.Buttons.CustomButtons = <>
+        Navigator.Visible = True
+        FilterBox.Visible = fvNever
+        DataController.DataSource = DS_sel_objects
+        DataController.Filter.Options = [fcoCaseInsensitive, fcoSoftCompare]
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <>
+        DataController.Summary.SummaryGroups = <>
+        FilterRow.InfoText = #1050#1083#1080#1082' '#1076#1083#1103' '#1087#1086#1080#1089#1082#1072
+        FilterRow.Visible = True
+        FilterRow.ApplyChanges = fracImmediately
+        OptionsData.CancelOnExit = False
+        OptionsData.Deleting = False
+        OptionsData.DeletingConfirmation = False
+        OptionsData.Editing = False
+        OptionsData.Inserting = False
+        OptionsSelection.CellSelect = False
+        OptionsView.ColumnAutoWidth = True
+        OptionsView.GroupByBox = False
+        object cxGrid1DBTableView1KUL: TcxGridDBColumn
+          Caption = #1050#1086#1076'.'#1091#1083'.'
+          DataBinding.FieldName = 'KUL'
+          Width = 36
+        end
+        object cxGrid1DBTableView1ADR: TcxGridDBColumn
+          Caption = #1040#1076#1088#1077#1089
+          DataBinding.FieldName = 'ADR'
+          Width = 383
+        end
+        object cxGrid1DBTableView1K_LSK_ID_DIVIDED: TcxGridDBColumn
+          Caption = #1060#1080#1085'.'#1083#1080#1094'.'#1089#1095#1077#1090
+          DataBinding.FieldName = 'K_LSK_ID_DIVIDED'
+          Width = 80
+        end
+        object cxGrid1DBTableView1ID: TcxGridDBColumn
+          DataBinding.FieldName = 'ID'
+          Visible = False
+        end
+        object cxGrid1DBTableView1ND: TcxGridDBColumn
+          DataBinding.FieldName = 'ND'
+          Visible = False
+        end
+        object cxGrid1DBTableView1KW: TcxGridDBColumn
+          DataBinding.FieldName = 'KW'
+          Visible = False
+        end
+        object cxGrid1DBTableView1K_LSK_ID: TcxGridDBColumn
+          DataBinding.FieldName = 'K_LSK_ID'
+          Visible = False
+        end
+        object cxGrid1DBTableView1TP: TcxGridDBColumn
+          DataBinding.FieldName = 'TP'
+          Visible = False
+        end
+      end
+      object cxGrid1Level1: TcxGridLevel
+        GridView = cxGrid1DBTableView1
+      end
+    end
+  end
+  object Panel3: TPanel
+    Left = 0
+    Top = 433
+    Width = 518
+    Height = 121
+    Align = alClient
+    TabOrder = 2
+    object cxTreeList1: TcxTreeList
+      Left = 1
+      Top = 1
+      Width = 516
+      Height = 119
+      Align = alClient
+      Bands = <>
       Navigator.Buttons.CustomButtons = <>
-      Navigator.Visible = True
-      FilterBox.MRUItemsListDropDownCount = 5
-      FilterBox.Visible = fvNever
-      DataController.DataSource = DS_list_choice
-      DataController.Filter.Options = [fcoCaseInsensitive, fcoSoftCompare]
-      DataController.Summary.DefaultGroupSummaryItems = <>
-      DataController.Summary.FooterSummaryItems = <>
-      DataController.Summary.SummaryGroups = <>
-      Filtering.ColumnFilteredItemsList = True
-      FilterRow.InfoText = #1050#1083#1080#1082' '#1076#1083#1103' '#1087#1086#1080#1089#1082#1072
-      FilterRow.Visible = True
-      FilterRow.ApplyChanges = fracImmediately
+      OptionsData.Editing = False
+      OptionsData.Deleting = False
       OptionsView.ColumnAutoWidth = True
-      OptionsView.GroupByBox = False
-      object cxGrid1DBTableView1ADR: TcxGridDBColumn
-        Caption = #1040#1076#1088#1077#1089
-        DataBinding.FieldName = 'ADR'
-        Options.Editing = False
-        Options.Sorting = False
-      end
-      object cxGrid1DBTableView1SEL: TcxGridDBColumn
-        Caption = #1042#1099#1073#1088#1072#1085#1086'?'
-        DataBinding.FieldName = 'SEL'
-        PropertiesClassName = 'TcxCheckBoxProperties'
-        Properties.ValueChecked = 0
-        Properties.ValueUnchecked = 1
-        Options.Filtering = False
-        Options.Sorting = False
-      end
-    end
-    object cxGrid1Level1: TcxGridLevel
-      GridView = cxGrid1DBTableView1
+      OptionsView.Headers = False
+      TabOrder = 0
+      OnDblClick = cxTreeList1DblClick
     end
   end
-  object DS_list_choice: TDataSource
-    DataSet = DataModule1.OD_list_choice
-    Left = 16
-    Top = 384
+  object Uni_sel_objects: TUniQuery
+    Connection = DataModule1.UniConnection1
+    SQL.Strings = (
+      'select * from scott.tree_adr t '
+      'where t.tp in (&tp)'
+      'order by t.id')
+    Constraints = <>
+    Left = 40
+    Top = 232
+    MacroData = <
+      item
+        Name = 'tp'
+        Value = '1'
+      end>
   end
-  object PopupMenu1: TPopupMenu
-    Left = 16
-    Top = 40
-    object N2: TMenuItem
-      Caption = #1042#1099#1073#1088#1072#1090#1100' '#1074#1089#1077
-      OnClick = N2Click
-    end
-    object N1: TMenuItem
-      Caption = #1057#1085#1103#1090#1100' '#1086#1090#1084#1077#1090#1082#1080
-      OnClick = N1Click
-    end
+  object DS_sel_objects: TDataSource
+    DataSet = Uni_sel_objects
+    Left = 104
+    Top = 232
   end
 end

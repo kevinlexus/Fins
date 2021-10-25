@@ -1245,12 +1245,12 @@ begin
         ''' between mgFrom and mgTo)', '(select * from scott.a_kart_pr2 where '''
         + Form_main.arch_mg_ +
         ''' between mgFrom and mgTo)');
-      change_alias(OD_kart_pr, '(select * from scott.a_lg_docs where mg=''' +
-        mgold_ + ''')', '(select * from scott.a_lg_docs where mg=''' +
-        Form_main.arch_mg_ + ''')');
-      change_alias(OD_kart_pr, '(select * from scott.a_lg_pr where mg=''' +
-        mgold_ + ''')', '(select * from scott.a_lg_pr where mg=''' +
-        Form_main.arch_mg_ + ''')');
+//      change_alias(OD_kart_pr, '(select * from scott.a_lg_docs where mg=''' +
+//        mgold_ + ''')', '(select * from scott.a_lg_docs where mg=''' +
+//        Form_main.arch_mg_ + ''')');
+//      change_alias(OD_kart_pr, '(select * from scott.a_lg_pr where mg=''' +
+//        mgold_ + ''')', '(select * from scott.a_lg_pr where mg=''' +
+//        Form_main.arch_mg_ + ''')');
 
       change_alias(OD_vvod, '(select * from scott.a_vvod where mg=''' + mgold_ +
         ''')', '(select * from scott.a_vvod where mg=''' + Form_main.arch_mg_ +

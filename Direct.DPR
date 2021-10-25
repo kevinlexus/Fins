@@ -167,7 +167,8 @@ uses
   u_frmLoadKartExt in 'u_frmLoadKartExt.pas' {frmLoadKartExt},
   u_frmKartExt in 'u_frmKartExt.pas' {frmKartExt},
   u_frmLog in 'u_frmLog.pas' {frmLog},
-  u_frmKlskPar in 'u_frmKlskPar.pas' {frmKlskPar};
+  u_frmKlskPar in 'u_frmKlskPar.pas' {frmKlskPar},
+  u_frmSelObjects in 'u_frmSelObjects.pas' {frmSelObjects};
 
 {  Unit_edit_pay_usl_org in '..\Program Files86\Borland\Delphi7\Components\FR412\LibD7\Unit_edit_pay_usl_org.pas'}
 
@@ -229,7 +230,7 @@ begin
     User := User + CHR(StrToInt('$' + copy(s, I, 3)));
     I := I + 3;
   end;
-  
+
   s := Ini.ReadString('Application', 'Pass', '');
   Pass := '';
   I := 1;
@@ -267,8 +268,8 @@ begin
     I := I + 3;
   end;
 
-//  javaServer := Ini.ReadString('Application', 'javaServer', '');
-  
+  //  javaServer := Ini.ReadString('Application', 'javaServer', '');
+
 end;
 
 // загрузить параметры ККМ
@@ -318,9 +319,11 @@ begin
   Application.Initialize;
   DecimalSeparator := '.';
   // загрузить Ini параметры
+  //ShowMessage('0');
   loadIniPar;
 
-  Form_Main.ProgressBar1.Position:=1;
+  //ShowMessage('1');
+  Form_Main.ProgressBar1.Position := 1;
   Form_Main.Update;
   try
     DataModule1.OracleSession1.Connected := false;
@@ -355,14 +358,18 @@ begin
     end;
   end;
 
+//ShowMessage('2');
   Application.CreateForm(TDM_Olap, DM_Olap);
   Application.CreateForm(TDM_Bill, DM_Bill);
   Application.CreateForm(TDM_Bill2, DM_Bill2);
 
-  loadKKMPar;
+//ShowMessage('3');
+  loadKKMPar;  
+//ShowMessage('4');
 
   Form_Main.OracleEvent1.Start;
   Form_Main.User := User;
+//ShowMessage('5');
 
   // UNIDAC сессия
   DataModule1.UniConnection1.Disconnect;
@@ -396,9 +403,11 @@ begin
     serverIp + ':' + serverPort + ':' + serverSID;
   DataModule1.UniConnection1.Connect;
 
+//ShowMessage('6');
   // права пользователей
-  DataModule1.UniTablePriveleges.ParamByName('user_name').AsString:=UpperCase(User);
-  DataModule1.UniTablePriveleges.Active:=True;
+  DataModule1.UniTablePriveleges.ParamByName('user_name').AsString :=
+    UpperCase(User);
+  DataModule1.UniTablePriveleges.Active := True;
   Ini.Free;
   SetMenu(0);
   with Form_Main do
@@ -414,23 +423,23 @@ begin
 //    Form_Main.CoolTrayIcon1.ShowTaskbarIcon;
   end;
 
+//ShowMessage('7');
   Form_main.OD_params.Active := true;
   Oracle.OnOracleError := EOracleErr;
 
-  Form_Main.ProgressBar1.Position:=2;
+  Form_Main.ProgressBar1.Position := 2;
   Form_Main.Update;
-  
+
   //справочник расценок по работам еще не загружен
   Form_main.isloadedspr_ := 0;
 
-
-//  if DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
-//    ['drx5_админ_доступ_к_базе']) = 1 then
+  //  if DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
+  //    ['drx5_админ_доступ_к_базе']) = 1 then
   if CheckAccess('drx5_админ_доступ_к_базе') then
     Form_Main.g_admin := 1
   else
     Form_Main.g_admin := 0;
-  
+
   //  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
 //    ['drx5_админ_доступ_к_базе']) = 1) then
   if CheckAccess('drx5_админ_доступ_к_базе') then
@@ -438,22 +447,22 @@ begin
   else
     Form_main.isAdmin := false;
 
-//  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
-//    ['drx_редактирование_klsk']) = 1) then
+  //  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
+  //    ['drx_редактирование_klsk']) = 1) then
   if CheckAccess('drx_редактирование_klsk') then
     Form_main.isEditKlsk := true
   else
     Form_main.isEditKlsk := false;
 
-//  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
-//    ['drx3_Правка_кода_РЭУ']) = 1) then
+  //  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
+  //    ['drx3_Правка_кода_РЭУ']) = 1) then
   if CheckAccess('drx3_Правка_кода_РЭУ') then
     Form_main.isEditReu := true
   else
     Form_main.isEditReu := false;
 
-//  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
-//    ['drx4_Правка_кода_Пасп_стола']) = 1) then
+  //  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
+  //    ['drx4_Правка_кода_Пасп_стола']) = 1) then
   if CheckAccess('drx4_Правка_кода_Пасп_стола') then
     Form_main.isEditPasp := true
   else
@@ -461,19 +470,21 @@ begin
 
   if DataModule1.OraclePackage1.CallIntegerFunction('scott.INIT.get_kart_ed1',
     [parNone]) = 1 then
-    Form_Main.isKartEd1:=True
-  else  
-    Form_Main.isKartEd1:=False;
+    Form_Main.isKartEd1 := True
+  else
+    Form_Main.isKartEd1 := False;
 
   // Отображать ли меню по выполнению плана
   Form_Main.N25.Enabled := false;
 
+//ShowMessage('8');
   //загружаем параметры для сессии
   DataModule1.UniStoredProc1.StoredProcName := 'scott.utils.prep_users_par';
   DataModule1.UniStoredProc1.Params.Clear;
   DataModule1.UniStoredProc1.ExecProc;
 
-  Form_Main.ProgressBar1.Position:=3;
+//ShowMessage('9');
+  Form_Main.ProgressBar1.Position := 3;
   Form_Main.Update;
 
   //включить таблицы параметров
@@ -492,16 +503,17 @@ begin
   DataModule1.OD_usl.Active := true;
   DataModule1.OD_sch_el.Active := true;
 
+//ShowMessage('10');
   // загрузить U_LIST в память
   Utils.loadListIdCd(Form_main.uList);
 
-  Form_Main.ProgressBar1.Position:=4;
+  Form_Main.ProgressBar1.Position := 4;
   Form_Main.Update;
 
   // загрузить дома, для формы выбора дома
-  DataModule1.OD_list_choice.SetVariable('clr_',1);
+  DataModule1.OD_list_choice.SetVariable('clr_', 1);
   DataModule1.OD_list_choice.Active := true;
-  
+
   if (User <> 'scott') and (User <> 'lev') and
     (Form_Main.OD_params.FieldByName('param').AsInteger = 1) then
   begin
@@ -512,6 +524,7 @@ begin
     Form_alert_exit.ShowModal;
   end;
 
+//ShowMessage('11');
   if
     ((DataModule1.OraclePackage1.CallIntegerFunction('scott.INIT.get_have_splash',
     [parNone]) = 1) or
@@ -532,16 +545,17 @@ begin
     Form_Main.Visible := true;
   end;
 
-  Form_Main.ProgressBar1.Position:=5;
+  Form_Main.ProgressBar1.Position := 5;
   Form_Main.Update;
   Form_Main.ProgressBar1.Hide;
 
   Form_main.WindowState := wsMaximized;
   Application.CreateForm(TForm_sel_comps, Form_sel_comps);
   Form_sel_comps.ShowModal;
+//ShowMessage('12');
 
   Form_main.exepath_ := ExtractFilePath(Application.ExeName);
- 
+
   Application.Run;
 end.
 

@@ -21,7 +21,8 @@ uses
   cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, cxDBData,
   cxGridCustomTableView, cxGridTableView, cxGridCustomView, wwclearpanel,
   GridsEh, cxTextEdit, cxMaskEdit, cxDropDownEdit, cxLookupEdit,
-  cxDBLookupEdit;
+  cxDBLookupEdit, IdBaseComponent, IdComponent, IdTCPConnection,
+  IdTCPClient, IdHTTP;
 
 type
   TForm_changes_houses2 = class(TForm)
@@ -42,8 +43,8 @@ type
     OD_list_choices_changesPROC1: TFloatField;
     OD_list_choices_changesPROC2: TFloatField;
     OD_list_choices_changesABS_SET: TFloatField;
-    OD_mg: TOracleDataSet;
-    DS_mg: TDataSource;
+    OD_mg1: TOracleDataSet;
+    DS_mg1: TDataSource;
     OD_list_choices_changesTYPE_NAME: TStringField;
     OD_list_choices_changesCNT_DAYS: TFloatField;
     OD_list_choices_changesCNT_DAYS2: TFloatField;
@@ -70,56 +71,69 @@ type
     cxgrdbtblvwGrid1DBTableView1USER_NAME: TcxGridDBColumn;
     cxgrdbtblvwGrid1DBTableView1ID: TcxGridDBColumn;
     GroupBox1: TGroupBox;
-    Label3: TLabel;
     Label4: TLabel;
-    wwDBEdit3: TwwDBEdit;
-    chk5: TCheckBox;
-    CheckBox2: TCheckBox;
     btn1: TButton;
     wwDBEdit2: TwwDBEdit;
-    CheckBox3: TCheckBox;
     GroupBox2: TGroupBox;
     DBComboBoxEh2: TDBComboBoxEh;
     DBComboBoxEh1: TDBComboBoxEh;
     DBComboBoxEh3: TDBComboBoxEh;
     DBLookupComboboxEh1: TDBLookupComboboxEh;
     DBComboBoxEh4: TDBComboBoxEh;
-    chk1: TCheckBox;
-    cxLookupComboBox2: TcxLookupComboBox;
-    chk2: TCheckBox;
-    chk3: TCheckBox;
-    cxLookupComboBox1: TcxLookupComboBox;
-    chk4: TCheckBox;
     Panel1: TPanel;
-    DBGridEh1: TDBGridEh;
-    wdbnvgtr1: TwwDBNavigator;
-    nbtn1: TwwNavButton;
-    nbtn2: TwwNavButton;
-    nbtn3: TwwNavButton;
-    nbtn4: TwwNavButton;
-    nbtn5: TwwNavButton;
-    nbtn6: TwwNavButton;
-    nbtn7: TwwNavButton;
-    nbtnDBNavigator1Delete: TwwNavButton;
-    nbtnDBNavigator1Edit: TwwNavButton;
-    nbtnDBNavigator1Post: TwwNavButton;
-    nbtn8: TwwNavButton;
-    nbtn9: TwwNavButton;
-    nbtn10: TwwNavButton;
-    nbtn11: TwwNavButton;
-    chk6: TCheckBox;
-    Label1: TLabel;
     Memo1: TMemo;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    cxGrid1: TcxGrid;
+    cxGrid1DBTableView1USL_ID: TcxGridDBColumn;
+    cxGrid1DBTableView1usl_name: TcxGridDBColumn;
+    cxGrid1DBTableView1ORG1_ID: TcxGridDBColumn;
+    cxGrid1DBTableView1org_name1: TcxGridDBColumn;
+    cxGrid1DBTableView1PROC1: TcxGridDBColumn;
+    cxGrid1DBTableView1ORG2_ID: TcxGridDBColumn;
+    cxGrid1DBTableView1org_name2: TcxGridDBColumn;
+    cxGrid1DBTableView1PROC2: TcxGridDBColumn;
+    cxGrid1DBTableView1ABS_SET: TcxGridDBColumn;
+    cxGrid1DBTableView1TYPE_NAME: TcxGridDBColumn;
+    cxGrid1DBTableView1CNT_DAYS: TcxGridDBColumn;
+    cxGrid1DBTableView1CNT_DAYS2: TcxGridDBColumn;
+    GroupBox3: TGroupBox;
+    chkIsPremise: TCheckBox;
+    chkIsLsk: TCheckBox;
+    chkIsObjects: TCheckBox;
+    GroupBox4: TGroupBox;
+    CheckBox1: TCheckBox;
+    chk3: TCheckBox;
+    CheckBox2: TCheckBox;
+    chk2: TCheckBox;
+    chk6: TCheckBox;
+    chk4: TCheckBox;
+    GroupBox5: TGroupBox;
+    Label1: TLabel;
+    cbbMgFrom: TcxLookupComboBox;
+    Label2: TLabel;
+    cbbMgTo: TcxLookupComboBox;
+    chk1: TCheckBox;
+    cbbMgGen: TcxLookupComboBox;
+    DS_mg2: TDataSource;
+    OD_mg2: TOracleDataSet;
+    cxtxtPremise: TcxTextEdit;
+    cxtxtLsk: TcxTextEdit;
+    chkIsAll: TCheckBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btn1Click(Sender: TObject);
     procedure btn2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure chk5Click(Sender: TObject);
+    procedure chkIsObjectsClick(Sender: TObject);
     procedure DBGridEh1KeyPress(Sender: TObject; var Key: Char);
     procedure chk7Click(Sender: TObject);
     procedure chk1Click(Sender: TObject);
     procedure setAllowEdit;
     procedure state_arch2(mgold_: string);
+    procedure chkIsLskClick(Sender: TObject);
+    procedure chkIsPremiseClick(Sender: TObject);
+    procedure setObjectChecked(tp: integer);
+    procedure chkIsAllClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -129,11 +143,12 @@ type
 var
   Form_changes_houses2: TForm_changes_houses2;
   clr_: Integer;
+  selectedObjectsJson: string;
 
 implementation
 
 uses DM_module1, Unit_status, Unit_sel_hs, Unit_list_kart, Unit_chargepay,
-  Unit_Mainform, Unit_changes_lsk;
+  Unit_Mainform, Unit_changes_lsk, u_frmSelObjects;
 
 {$R *.dfm}
 
@@ -190,7 +205,7 @@ procedure TForm_changes_houses2.btn1Click(Sender: TObject);
 var
   cnt_, tst_, is_sch_, usl_add_, doc_id_: Integer;
   l_chk2, l_chk3, l_chk4, l_chk6, l_psch: Integer;
-  paramChangesUsl: string;
+  l_res, paramChangesUsl, selObjTp: string;
   isFirstLine: Boolean;
 begin
   if not (OD_list_choices_changes.State in [dsBrowse]) then
@@ -203,15 +218,14 @@ begin
     Abort;
   end;
 
-  if (cxLookupComboBox1.EditValue = '') {or (not cxLookupComboBox1.EditModified)}
-    then
+  if (cbbMgFrom.EditValue = '') and (cbbMgTo.EditValue = '') then
   begin
     msg2('Не указан период изменений!', 'Внимание',
       MB_OK + MB_ICONSTOP + MB_APPLMODAL);
     Abort;
   end;
 
-  if (not chk5.Checked) and (wwDBEdit3.Text = '') then
+  if (chkIsLsk.Checked) and (cxtxtLsk.Text = '') then
   begin
     Application.MessageBox('Не указан лицевой счет!', 'Внимание',
       MB_OK + MB_ICONEXCLAMATION + MB_APPLMODAL);
@@ -264,10 +278,32 @@ begin
   Application.CreateForm(TForm_status, Form_status);
   Form_status.Update;
 
-  // ****************** Перерасчет на Java
-  paramChangesUsl := '{"lsk": "' + wwDBEdit3.Text + '",';
+  // ****************** JSON объект
+  paramChangesUsl := '{"lsk": "' + cxtxtLsk.Text + '",';
   paramChangesUsl := paramChangesUsl +
-    '"periods": ["202101","202102","202103"],';
+    '"periodFrom": "' + cbbMgFrom.EditValue + '",' +
+    '"periodTo": "' + cbbMgTo.EditValue + '",';
+  if chkIsObjects.Checked = True then
+  begin
+    paramChangesUsl := paramChangesUsl + selectedObjectsJson + ',';
+  end;
+
+  selObjTp := '';
+  if chkIsPremise.Checked then
+    selObjTp := '0'
+  else if chkIsLsk.Checked then
+    selObjTp := '1'
+  else if chkIsObjects.Checked then
+    selObjTp := '2'
+  else
+  begin
+    Application.MessageBox('Необходимо выбрать объекты для перерасчета!', 'Внимание!', MB_OK +
+      MB_ICONSTOP + MB_TOPMOST);
+    Exit;
+  end;
+  paramChangesUsl :=paramChangesUsl+ '"selObjTp": "' + selObjTp + '",';
+
+  isFirstLine := True;
   paramChangesUsl := paramChangesUsl + '"isAddUslSvSocn": "true",';
   paramChangesUsl := paramChangesUsl + '"isAddUslKan": "true",';
   paramChangesUsl := paramChangesUsl + '"processMeter": "1",';
@@ -277,8 +313,8 @@ begin
   paramChangesUsl := paramChangesUsl + '"processTp": "1",';
   paramChangesUsl := paramChangesUsl + '"isProcessEmpty": "false",';
   paramChangesUsl := paramChangesUsl +
-    '"comment": "коментарий к перерасчету",';
-  paramChangesUsl := paramChangesUsl + '"change": [';
+    '"comment": "коммент",';
+  paramChangesUsl := paramChangesUsl + '"changeUslList": [';
   OD_list_choices_changes.First;
   isFirstLine := True;
   while not OD_list_choices_changes.Eof do
@@ -297,32 +333,32 @@ begin
         paramChangesUsl := paramChangesUsl + ',';
       paramChangesUsl := paramChangesUsl + '{';
       paramChangesUsl := paramChangesUsl +
-        '"USL_ID":"' + OD_list_choices_changes.FieldByName('USL_ID').AsString +
+        '"uslId":"' + OD_list_choices_changes.FieldByName('USL_ID').AsString +
         '"';
       paramChangesUsl := paramChangesUsl +
-        ',"ORG1_ID":"' + OD_list_choices_changes.FieldByName('ORG1_ID').AsString
+        ',"org1Id":"' + OD_list_choices_changes.FieldByName('ORG1_ID').AsString
         +
         '"';
       paramChangesUsl := paramChangesUsl +
-        ',"PROC1":"' + OD_list_choices_changes.FieldByName('PROC1').AsString +
+        ',"proc1":"' + OD_list_choices_changes.FieldByName('PROC1').AsString +
         '"';
       paramChangesUsl := paramChangesUsl +
-        ',"ORG2_ID":"' + OD_list_choices_changes.FieldByName('ORG2_ID').AsString
+        ',"org2Id":"' + OD_list_choices_changes.FieldByName('ORG2_ID').AsString
         +
         '"';
       paramChangesUsl := paramChangesUsl +
-        ',"PROC2":"' + OD_list_choices_changes.FieldByName('PROC2').AsString +
+        ',"proc2":"' + OD_list_choices_changes.FieldByName('PROC2').AsString +
         '"';
       paramChangesUsl := paramChangesUsl +
-        ',"ABS_SET":"' + OD_list_choices_changes.FieldByName('ABS_SET').AsString
+        ',"absSet":"' + OD_list_choices_changes.FieldByName('ABS_SET').AsString
         +
         '"';
       paramChangesUsl := paramChangesUsl +
-        ',"CNT_DAYS":"' +
+        ',"cntDays":"' +
         OD_list_choices_changes.FieldByName('CNT_DAYS').AsString +
         '"';
       paramChangesUsl := paramChangesUsl +
-        ',"CNT_DAYS2":"' +
+        ',"cntDays2":"' +
         OD_list_choices_changes.FieldByName('CNT_DAYS2').AsString +
         '"';
       paramChangesUsl := paramChangesUsl + '}';
@@ -333,6 +369,12 @@ begin
 
   paramChangesUsl := paramChangesUsl + '}';
   Memo1.Text := paramChangesUsl;
+  l_res :=
+    DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA.HTTP_REQ',
+    ['genChanges', null, null, 'POST', Form_main.javaServer, paramChangesUsl]);
+
+  //sendGetRequest(Memo1.Text);
+
   //    ShowMessage(PChar(paramChangesUsl));
       // ****************** Перерасчет на Java
 
@@ -383,17 +425,18 @@ begin
   SetAllowEdit;
   state_arch2('');
 
-  OD_mg.Active := True;
+  OD_mg1.Active := True;
+  OD_mg2.Active := True;
   OD_status.Active := True;
   OD_usl.Active := True;
   OD_c_change_docs.Active := True;
 
-  cxLookupComboBox1.EditValue := OD_mg.FieldByName('period').AsString;
-  //  wwDBLookupCombo2.LookUpValue:=OD_mg.FieldByName('period').AsString;
+  cbbMgFrom.EditValue := OD_mg1.FieldByName('MG').AsString;
+  cbbMgTo.EditValue := OD_mg2.FieldByName('MG').AsString;
 
   if FF('Form_list_kart', 0) = 1 then
   begin
-    wwDBEdit3.Text := Form_list_kart.OD_list_kart.FieldByName('lsk').AsString;
+    cxtxtLsk.Text := Form_list_kart.OD_list_kart.FieldByName('lsk').AsString;
   end;
   DataModule1.OraclePackage1.CallProcedure
     ('scott.C_CHANGES.clear_changes_proc', [parNone]);
@@ -408,25 +451,18 @@ begin
   clr_ := 0;
 end;
 
-procedure TForm_changes_houses2.chk5Click(Sender: TObject);
+procedure TForm_changes_houses2.chkIsObjectsClick(Sender: TObject);
+var
+  modalForm: TfrmSelObjects;
 begin
-  if chk5.Checked then
+  setObjectChecked(2);
+  if chkIsObjects.Checked then
   begin
-    wwDBEdit3.Enabled := false;
-    wwDBEdit3.Text := '';
-
-    if clr_ = 0 then
-    begin
-      Application.CreateForm(TForm_sel_hs, Form_sel_hs);
-    end
-    else
-    begin
-      Application.CreateForm(TForm_sel_hs, Form_sel_hs);
-    end;
-  end
-  else
-  begin
-    wwDBEdit3.Enabled := true;
+    cxtxtLsk.Text := '';
+    modalForm := TfrmSelObjects.Create(nil);
+    selectedObjectsJson := '';
+    if modalForm.ShowModal = mrOk then
+      selectedObjectsJson := modalForm.ReturnValue;
   end;
 end;
 
@@ -440,7 +476,7 @@ end;
 
 procedure TForm_changes_houses2.chk7Click(Sender: TObject);
 begin
-  if CheckBox3.checked = True then
+  if CheckBox2.checked = True then
   begin
     OD_sprorg.Active := False;
     OD_sprorg.SetVariable('var_', 0);
@@ -463,12 +499,55 @@ end;
 
 procedure TForm_changes_houses2.chk1Click(Sender: TObject);
 begin
-  //  wwDBLookupCombo2.Enabled:=chk1.Checked;
-  cxLookupComboBox2.Enabled := chk1.Checked;
+  cbbMgGen.Enabled := chk1.Checked;
   if chk1.Checked = False then
   begin
-    cxLookupComboBox2.EditValue := '';
+    cbbMgGen.EditValue := '';
   end;
+end;
+
+procedure TForm_changes_houses2.chkIsLskClick(Sender: TObject);
+begin
+  setObjectChecked(1);
+end;
+
+// переключить выбранный для перерасчета объект
+
+procedure TForm_changes_houses2.setObjectChecked(tp: Integer);
+begin
+  if tp = 0 then
+  begin
+    chkIsLsk.Checked := False;
+    chkIsObjects.Checked := False;
+  end
+  else if tp = 1 then
+  begin
+    chkIsObjects.Checked := False;
+    chkIsPremise.Checked := False;
+  end
+  else if tp = 2 then
+  begin
+    chkIsPremise.Checked := False;
+    chkIsLsk.Checked := False;
+  end
+  else if tp = 3 then
+  begin
+    chkIsPremise.Checked := False;
+    chkIsLsk.Checked := False;
+    chkIsObjects.Checked := False;
+  end
+
+end;
+
+procedure TForm_changes_houses2.chkIsPremiseClick(Sender: TObject);
+begin
+  setObjectChecked(0);
+end;
+
+procedure TForm_changes_houses2.chkIsAllClick(Sender: TObject);
+begin
+  setObjectChecked(3);
+
 end;
 
 end.

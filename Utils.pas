@@ -5,7 +5,7 @@ uses Forms, Classes, SysUtils, Dialogs, OracleData, DB, DBF, Windows,
   Wwdbgrid, DM_module1, oracle, Math, ShlObj, Controls, Messages,
   ComCtrls, Menus, Unit_smpl_chk, StrUtils, Winsock, Uni, Variants,
   cxCustomData,
-  cxDBData, cxFilter;
+  cxDBData, cxFilter, IdHTTP;
 
 // тип - запись о правах редактирования пользователя
 type
@@ -100,6 +100,7 @@ procedure ApplySearchFilter(Controller: TcxDBDataController; Fields: string;
 function CheckAccess(privelege: string): Boolean;
 procedure loadListIdCd(var al: TUListRecArray);
 function getListIdByCd(var al: TUListRecArray; pId: Integer): string;
+//procedure sendGetRequest(request: string);
 
 implementation
 uses Unit_Mainform;
@@ -1721,6 +1722,32 @@ begin
     'Запись не найдена в массиве U_LIST! : id=''%s''', [pId]);
 
 end;
+
+{procedure sendGetRequest(request: string);
+var
+  s: string;
+  Resp_Json: string;
+  Req_Json: TStream;
+  IdHTTP1: TIdHTTP;
+begin
+  s := request;
+  Req_Json := TstringStream.Create(s);
+  Req_Json.Position := 0;
+  IdHTTP1 := TIdHTTP.Create(nil);
+
+  try
+    IdHTTP1.Request.UserAgent :=
+      'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36';
+    IdHTTP1.Request.Accept := 'application/json';
+    IdHTTP1.Request.ContentType :=
+      'application/json';
+    //IdHTTP1.Request.AcceptCharSet := 'utf-8';
+    Resp_Json:=IdHTTP1.Post('http://127.0.0.1:8100/genChanges', Req_Json);
+  finally
+    Req_Json.Free;
+  end;
+
+end;}
 
 end.
 
