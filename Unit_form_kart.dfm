@@ -1,6 +1,6 @@
 object Form_kart: TForm_kart
-  Left = 181
-  Top = 660
+  Left = 575
+  Top = 466
   Width = 903
   Height = 675
   BorderIcons = [biSystemMenu, biMinimize]
@@ -3388,7 +3388,7 @@ object Form_kart: TForm_kart
       '       nvl(summa_tarif, 0) as tarif,'
       '       nvl(summa_privs, 0) as privs,'
       '       nvl(summa_subsid, 0) as subsid,'
-      '       0 as changes,'
+      '       nvl(summa_change, 0) as changes,'
       
         '       nvl(a.summa_tarif, 0) - nvl(a.summa_privs, 0) - nvl(a.sum' +
         'ma_subsid, 0) +'

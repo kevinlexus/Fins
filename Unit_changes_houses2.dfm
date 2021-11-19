@@ -1,6 +1,6 @@
 object Form_changes_houses2: TForm_changes_houses2
-  Left = 1463
-  Top = 206
+  Left = 309
+  Top = 268
   Width = 903
   Height = 612
   Caption = #1055#1077#1088#1077#1088#1072#1089#1095#1077#1090#1099
@@ -532,7 +532,7 @@ object Form_changes_houses2: TForm_changes_houses2
             WordWrap = True
             OnClick = chk1Click
           end
-          object cbbMgGen: TcxLookupComboBox
+          object cbbMgProcess: TcxLookupComboBox
             Left = 208
             Top = 42
             Enabled = False
@@ -569,6 +569,7 @@ object Form_changes_houses2: TForm_changes_houses2
             DataController.Summary.DefaultGroupSummaryItems = <>
             DataController.Summary.FooterSummaryItems = <>
             DataController.Summary.SummaryGroups = <>
+            OptionsView.ColumnAutoWidth = True
             OptionsView.GroupByBox = False
             OptionsView.Indicator = True
             object cxGrid1DBTableView1USL_ID: TcxGridDBColumn
@@ -578,34 +579,23 @@ object Form_changes_houses2: TForm_changes_houses2
               DataBinding.FieldName = 'usl_name'
             end
             object cxGrid1DBTableView1ORG1_ID: TcxGridDBColumn
+              Caption = #1050#1086#1076' '#1086#1088#1075
               DataBinding.FieldName = 'ORG1_ID'
             end
             object cxGrid1DBTableView1org_name1: TcxGridDBColumn
+              Caption = #1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103
               DataBinding.FieldName = 'org_name1'
             end
             object cxGrid1DBTableView1PROC1: TcxGridDBColumn
+              Caption = '% '#1087#1077#1088#1077#1088#1072#1089#1095#1077#1090#1072
               DataBinding.FieldName = 'PROC1'
-            end
-            object cxGrid1DBTableView1ORG2_ID: TcxGridDBColumn
-              DataBinding.FieldName = 'ORG2_ID'
-            end
-            object cxGrid1DBTableView1org_name2: TcxGridDBColumn
-              DataBinding.FieldName = 'org_name2'
-            end
-            object cxGrid1DBTableView1PROC2: TcxGridDBColumn
-              DataBinding.FieldName = 'PROC2'
-            end
-            object cxGrid1DBTableView1ABS_SET: TcxGridDBColumn
-              DataBinding.FieldName = 'ABS_SET'
-            end
-            object cxGrid1DBTableView1TYPE_NAME: TcxGridDBColumn
-              DataBinding.FieldName = 'TYPE_NAME'
             end
             object cxGrid1DBTableView1CNT_DAYS: TcxGridDBColumn
               DataBinding.FieldName = 'CNT_DAYS'
+              Width = 72
             end
-            object cxGrid1DBTableView1CNT_DAYS2: TcxGridDBColumn
-              DataBinding.FieldName = 'CNT_DAYS2'
+            object cxGrid1DBTableView1ABS_SET: TcxGridDBColumn
+              DataBinding.FieldName = 'ABS_SET'
             end
           end
           object cxGrid1Level1: TcxGridLevel

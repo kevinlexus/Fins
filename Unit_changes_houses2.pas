@@ -90,13 +90,8 @@ type
     cxGrid1DBTableView1ORG1_ID: TcxGridDBColumn;
     cxGrid1DBTableView1org_name1: TcxGridDBColumn;
     cxGrid1DBTableView1PROC1: TcxGridDBColumn;
-    cxGrid1DBTableView1ORG2_ID: TcxGridDBColumn;
-    cxGrid1DBTableView1org_name2: TcxGridDBColumn;
-    cxGrid1DBTableView1PROC2: TcxGridDBColumn;
     cxGrid1DBTableView1ABS_SET: TcxGridDBColumn;
-    cxGrid1DBTableView1TYPE_NAME: TcxGridDBColumn;
     cxGrid1DBTableView1CNT_DAYS: TcxGridDBColumn;
-    cxGrid1DBTableView1CNT_DAYS2: TcxGridDBColumn;
     GroupBox3: TGroupBox;
     chkIsPremise: TCheckBox;
     chkIsLsk: TCheckBox;
@@ -114,7 +109,7 @@ type
     Label2: TLabel;
     cbbMgTo: TcxLookupComboBox;
     chk1: TCheckBox;
-    cbbMgGen: TcxLookupComboBox;
+    cbbMgProcess: TcxLookupComboBox;
     DS_mg2: TDataSource;
     OD_mg2: TOracleDataSet;
     cxtxtPremise: TcxTextEdit;
@@ -279,39 +274,64 @@ begin
   Form_status.Update;
 
   // ****************** JSON объект
-  paramChangesUsl := '{"lsk": "' + cxtxtLsk.Text + '",';
+//  paramChangesUsl := '{"lsk": "' + cxtxtLsk.Text + '",';
+  paramChangesUsl := paramChangesUsl +
+    '{"dt": "' + DateToStr(Form_main.cur_dt) + '",' +
+    '"user": "' + Form_main.user + '",';
   paramChangesUsl := paramChangesUsl +
     '"periodFrom": "' + cbbMgFrom.EditValue + '",' +
     '"periodTo": "' + cbbMgTo.EditValue + '",';
-  if chkIsObjects.Checked = True then
-  begin
-    paramChangesUsl := paramChangesUsl + selectedObjectsJson + ',';
-  end;
+  if chk1.Checked = True then
+    paramChangesUsl := paramChangesUsl + '"periodProcess": "' +
+      cbbMgProcess.EditValue + '",';
 
-  selObjTp := '';
   if chkIsPremise.Checked then
-    selObjTp := '0'
+    selectedObjectsJson :=
+      '"selObjList": [{"klskId":"' + cxtxtLsk.Text + '","tp":"1"}]'
   else if chkIsLsk.Checked then
-    selObjTp := '1'
+    selectedObjectsJson :=
+      '"selObjList": [{"lsk":"' + cxtxtLsk.Text + '","tp":"2"}]'
   else if chkIsObjects.Checked then
-    selObjTp := '2'
+  else if chkIsAll.Checked then
+  begin
+    selectedObjectsJson :=
+      '"selObjList": [{"tp":"3"}]'
+  end
   else
   begin
-    Application.MessageBox('Необходимо выбрать объекты для перерасчета!', 'Внимание!', MB_OK +
+    Application.MessageBox('Необходимо выбрать объекты для перерасчета!',
+      'Внимание!', MB_OK +
       MB_ICONSTOP + MB_TOPMOST);
     Exit;
   end;
-  paramChangesUsl :=paramChangesUsl+ '"selObjTp": "' + selObjTp + '",';
+  paramChangesUsl := paramChangesUsl + selectedObjectsJson + ',';
+
+  //paramChangesUsl := paramChangesUsl + '"selObjTp": "' + selObjTp + '",';
+
+  //  if chkIsObjects.Checked = True then
+  //  begin
+  //    paramChangesUsl := paramChangesUsl + selectedObjectsJson + ',';
+  //  end
+  //  else if chkIsPremise.Checked = True then
+  //  begin
+  //    paramChangesUsl := paramChangesUsl + '"selObjList": [{"klskId": "' +
+  //      '12123123123' + '", "tp":"1"}]' + ','; //todo сделать корректный klskId!!!
+  //  end
+  //  else if chkIsLsk.Checked = True then
+  //  begin
+  //    paramChangesUsl := paramChangesUsl + '"selObjList": [{"lsk": "' +
+  //      cxtxtLsk.Text + '", "tp":"2"}]' + ',';
+  //  end;
 
   isFirstLine := True;
   paramChangesUsl := paramChangesUsl + '"isAddUslSvSocn": "true",';
-  paramChangesUsl := paramChangesUsl + '"isAddUslKan": "true",';
+  paramChangesUsl := paramChangesUsl + '"isAddUslWaste": "true",';
   paramChangesUsl := paramChangesUsl + '"processMeter": "1",';
   paramChangesUsl := paramChangesUsl + '"processAccount": "0",';
   paramChangesUsl := paramChangesUsl + '"processStatus": "2",';
   paramChangesUsl := paramChangesUsl + '"processLskTp": "2",';
   paramChangesUsl := paramChangesUsl + '"processTp": "1",';
-  paramChangesUsl := paramChangesUsl + '"isProcessEmpty": "false",';
+  paramChangesUsl := paramChangesUsl + '"processEmpty": "0",';
   paramChangesUsl := paramChangesUsl +
     '"comment": "коммент",';
   paramChangesUsl := paramChangesUsl + '"changeUslList": [';
@@ -336,19 +356,19 @@ begin
         '"uslId":"' + OD_list_choices_changes.FieldByName('USL_ID').AsString +
         '"';
       paramChangesUsl := paramChangesUsl +
-        ',"org1Id":"' + OD_list_choices_changes.FieldByName('ORG1_ID').AsString
+        ',"orgId":"' + OD_list_choices_changes.FieldByName('ORG1_ID').AsString
         +
         '"';
       paramChangesUsl := paramChangesUsl +
-        ',"proc1":"' + OD_list_choices_changes.FieldByName('PROC1').AsString +
+        ',"proc":"' + OD_list_choices_changes.FieldByName('PROC1').AsString +
         '"';
-      paramChangesUsl := paramChangesUsl +
-        ',"org2Id":"' + OD_list_choices_changes.FieldByName('ORG2_ID').AsString
-        +
-        '"';
-      paramChangesUsl := paramChangesUsl +
-        ',"proc2":"' + OD_list_choices_changes.FieldByName('PROC2').AsString +
-        '"';
+//      paramChangesUsl := paramChangesUsl +
+//        ',"org2Id":"' + OD_list_choices_changes.FieldByName('ORG2_ID').AsString
+//        +
+//        '"';
+//      paramChangesUsl := paramChangesUsl +
+//        ',"proc2":"' + OD_list_choices_changes.FieldByName('PROC2').AsString +
+//        '"';
       paramChangesUsl := paramChangesUsl +
         ',"absSet":"' + OD_list_choices_changes.FieldByName('ABS_SET').AsString
         +
@@ -357,10 +377,10 @@ begin
         ',"cntDays":"' +
         OD_list_choices_changes.FieldByName('CNT_DAYS').AsString +
         '"';
-      paramChangesUsl := paramChangesUsl +
-        ',"cntDays2":"' +
-        OD_list_choices_changes.FieldByName('CNT_DAYS2').AsString +
-        '"';
+//      paramChangesUsl := paramChangesUsl +
+//        ',"cntDays2":"' +
+//        OD_list_choices_changes.FieldByName('CNT_DAYS2').AsString +
+//        '"';
       paramChangesUsl := paramChangesUsl + '}';
     end;
     OD_list_choices_changes.Next;
@@ -499,10 +519,10 @@ end;
 
 procedure TForm_changes_houses2.chk1Click(Sender: TObject);
 begin
-  cbbMgGen.Enabled := chk1.Checked;
+  cbbMgProcess.Enabled := chk1.Checked;
   if chk1.Checked = False then
   begin
-    cbbMgGen.EditValue := '';
+    cbbMgProcess.EditValue := '';
   end;
 end;
 
@@ -519,16 +539,19 @@ begin
   begin
     chkIsLsk.Checked := False;
     chkIsObjects.Checked := False;
+    chkIsAll.Checked:=False;
   end
   else if tp = 1 then
   begin
     chkIsObjects.Checked := False;
     chkIsPremise.Checked := False;
+    chkIsAll.Checked:=False;
   end
   else if tp = 2 then
   begin
     chkIsPremise.Checked := False;
     chkIsLsk.Checked := False;
+    chkIsAll.Checked:=False;
   end
   else if tp = 3 then
   begin

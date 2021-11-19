@@ -1,6 +1,6 @@
 object frmSelObjects: TfrmSelObjects
-  Left = 1175
-  Top = 158
+  Left = 1176
+  Top = 160
   Width = 534
   Height = 634
   Caption = #1042#1099#1073#1086#1088' '#1086#1073#1098#1077#1082#1090#1086#1074
