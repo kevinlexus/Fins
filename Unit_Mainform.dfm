@@ -1,6 +1,6 @@
 object Form_Main: TForm_Main
-  Left = 604
-  Top = 226
+  Left = 708
+  Top = 260
   Width = 880
   Height = 628
   Caption = #1044#1080#1088#1077#1082#1090
@@ -179,8 +179,15 @@ object Form_Main: TForm_Main
       Visible = False
       OnClick = ToolButton26Click
     end
-    object ToolButton21: TToolButton
+    object ToolButton6: TToolButton
       Left = 287
+      Top = 2
+      Caption = 'ToolButton6'
+      ImageIndex = 51
+      OnClick = ToolButton6Click
+    end
+    object ToolButton21: TToolButton
+      Left = 328
       Top = 2
       Hint = #1055#1077#1088#1077#1088#1072#1089#1095#1077#1090#1099' '#1085#1072#1095#1080#1089#1083#1077#1085#1080#1081
       Caption = 'ToolButton21'
@@ -191,7 +198,7 @@ object Form_Main: TForm_Main
       OnClick = ToolButton21Click
     end
     object ToolButton18: TToolButton
-      Left = 328
+      Left = 369
       Top = 2
       Hint = #1055#1088#1086#1089#1084#1086#1090#1088' '#1087#1086#1089#1090#1091#1087#1083#1077#1085#1080#1081' '#1079#1072' '#1084#1077#1089#1103#1094
       Caption = 'ToolButton18'
@@ -201,7 +208,7 @@ object Form_Main: TForm_Main
       OnClick = ToolButton18Click
     end
     object ToolButton10: TToolButton
-      Left = 369
+      Left = 410
       Top = 2
       Hint = #1057#1072#1083#1100#1076#1086' '#1087#1086' '#1051'/'#1057
       Caption = #1057#1072#1083#1100#1076#1086' '#1087#1086' '#1051'/'#1057
@@ -212,7 +219,7 @@ object Form_Main: TForm_Main
       OnClick = ToolButton10Click
     end
     object ToolButton1: TToolButton
-      Left = 410
+      Left = 451
       Top = 2
       Caption = #1042#1074#1086#1076' '#1086#1087#1083#1072#1090#1099', '#1085#1072#1083'.'
       ImageIndex = 39
@@ -221,7 +228,7 @@ object Form_Main: TForm_Main
       ShowHint = True
     end
     object ToolButton2: TToolButton
-      Left = 451
+      Left = 492
       Top = 2
       Hint = #1057#1083#1091#1078#1077#1073#1085#1099#1077' '#1086#1090#1095#1077#1090#1099' ('#1057#1087#1080#1089#1082#1080')'
       Caption = 'ToolButton2'
@@ -231,7 +238,7 @@ object Form_Main: TForm_Main
       OnClick = ToolButton2Click
     end
     object ToolButton3: TToolButton
-      Left = 492
+      Left = 533
       Top = 2
       Hint = #1054#1073#1086#1088#1086#1090#1099' '#1087#1086' '#1083#1080#1094#1077#1074#1086#1084#1091' '#1089#1095#1077#1090#1091
       Caption = 'ToolButton3'
@@ -242,7 +249,7 @@ object Form_Main: TForm_Main
       OnClick = ToolButton3Click
     end
     object ToolButton5: TToolButton
-      Left = 533
+      Left = 574
       Top = 2
       Hint = #1056#1072#1073#1086#1090#1072' '#1089' '#1072#1088#1093#1080#1074#1086#1084
       Caption = 'ToolButton5'
@@ -412,6 +419,11 @@ object Form_Main: TForm_Main
         Caption = #1055#1077#1088#1077#1088#1072#1089#1095#1077#1090#1099' '#1087#1086' '#1076#1086#1084#1072#1084' - '#1083#1080#1094#1077#1074#1099#1084
         ImageIndex = 51
         OnClick = N56Click
+      end
+      object N214: TMenuItem
+        Caption = #1055#1077#1088#1077#1088#1072#1089#1095#1077#1090#1099' '#1087#1086' '#1076#1086#1084#1072#1084' - '#1083#1080#1094#1077#1074#1099#1084'-2'
+        ImageIndex = 51
+        OnClick = N214Click
       end
       object N135: TMenuItem
         Caption = #1050#1086#1088#1088#1077#1082#1090#1080#1088#1086#1074#1082#1072' '#1087#1077#1085#1080
@@ -1116,7 +1128,7 @@ object Form_Main: TForm_Main
       end
     end
     object ver: TMenuItem
-      Caption = 'ver 2.5.6'
+      Caption = 'ver 2.6.1'
       object N1705211: TMenuItem
         Caption = '17.05.21 - '#1048#1089#1087#1088#1072#1074#1083#1077#1085#1086' '#1074#1099#1087#1086#1083#1085#1077#1085#1080#1077' '#1087#1077#1088#1077#1093#1086#1076#1072
       end
@@ -1142,7 +1154,9 @@ object Form_Main: TForm_Main
       end
       object N2501: TMenuItem
         Caption = '18.10.21 - '#1042#1077#1088#1089#1080#1103' 2.5.0 - '#1056#1072#1079#1076#1077#1083#1077#1085#1080#1077' '#1085#1072#1073#1086#1088#1086#1074' '#1091#1089#1083#1091#1075' '#1087#1086' dt1 '#1080' dt2'
-        OnClick = N2501Click
+      end
+      object N221121260Java1: TMenuItem
+        Caption = '22.11.21 - '#1042#1077#1088#1089#1080#1103' 2.6.0 - '#1055#1077#1088#1077#1088#1072#1089#1095#1077#1090#1099' '#1085#1072' Java'
       end
     end
   end

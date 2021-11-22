@@ -171,6 +171,8 @@ begin
     SetMenuItem(acc_, N82, 'drn82_¬вод_оплаты_по_адр');
     SetMenuItem(acc_, N55, 'drn55_»нкассаци€');
     SetMenuItem(acc_, N56, 'drn56_ѕерерасч_по_домам');
+    SetMenuItem(acc_, N214, 'drn214_ѕерерасч_по_домам');
+    SetMenuItem(acc_, ToolButton6, 'drn214_ѕерерасч_по_домам');
     SetMenuItem(acc_, N57, 'drn57_¬вод_объемов_по_домам');
     SetMenuItem(acc_, N44, 'drn44_—чета');
     SetMenuItem(acc_, ToolButton15, 'drn44_—чета');

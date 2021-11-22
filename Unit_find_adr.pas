@@ -52,6 +52,7 @@ type
     procedure wwDBLookupCombo2Change(Sender: TObject);
     procedure chk1Click(Sender: TObject);
     procedure chk2Click(Sender: TObject);
+    procedure setAddrToFormMain;
   private
     { Private declarations }
   public
@@ -165,21 +166,7 @@ begin
  //поиск с точностью до квартиры?
  if wwDBLookupCombo4.Text <> '' then
  begin
-   Form_Main.Lsk_:=OD_kw.FieldByName('lsk').asString;
-   Form_Main.flt_kw_:=OD_kw.FieldByName('kw_id').asString;
-   Form_Main.k_lsk_id_:=DataModule1.OraclePackage1.CallStringFunction(
-        'scott.UTILS.GET_K_LSK_ID_BY_LSK', [OD_kw.FieldByName('lsk').asString]);
-   //Form_Main.c_lsk_id_:=DataModule1.OraclePackage1.CallStringFunction(
-     //   'scott.UTILS.GET_C_LSK_ID_BY_LSK', [OD_kw.FieldByName('lsk').asString]);
-   Form_Main.fio_:=OD_kw.FieldByName('fio').asString;
-   Form_Main.str_adr_:=OD_streets.FieldByName('street').asString+', '+
-     OD_houses.FieldByName('nd2').asString+'-'+
-     OD_kw.FieldByName('kw').asString;
-
-   Form_Main.reu_:=OD_houses.FieldByName('reu').asString;
-   Form_Main.kul_:=OD_streets.FieldByName('id').asString;
-   Form_Main.nd_:=OD_houses.FieldByName('nd_id').asString;
-   Form_Main.kw_:=OD_kw.FieldByName('kw_id').asString;
+   setAddrToFormMain;
 
    Form_Main.search_type_:=3;
  end
@@ -192,6 +179,23 @@ begin
    Form_Main.str_adr_:=OD_streets.FieldByName('street').asString+', '+
      OD_houses.FieldByName('nd2').asString;
  end;
+end;
+
+procedure TForm_find_adr.setAddrToFormMain;
+begin
+   Form_Main.Lsk_:=OD_kw.FieldByName('lsk').asString;
+   Form_Main.flt_kw_:=OD_kw.FieldByName('kw_id').asString;
+   Form_Main.k_lsk_id_:=DataModule1.OraclePackage1.CallStringFunction(
+        'scott.UTILS.GET_K_LSK_ID_BY_LSK', [OD_kw.FieldByName('lsk').asString]);
+   Form_Main.fio_:=OD_kw.FieldByName('fio').asString;
+   Form_Main.str_adr_:=OD_streets.FieldByName('street').asString+', '+
+     OD_houses.FieldByName('nd2').asString+'-'+
+     OD_kw.FieldByName('kw').asString;
+
+   Form_Main.reu_:=OD_houses.FieldByName('reu').asString;
+   Form_Main.kul_:=OD_streets.FieldByName('id').asString;
+   Form_Main.nd_:=OD_houses.FieldByName('nd_id').asString;
+   Form_Main.kw_:=OD_kw.FieldByName('kw_id').asString;
 end;
 
 procedure TForm_find_adr.wwDBLookupCombo3KeyPress(Sender: TObject;

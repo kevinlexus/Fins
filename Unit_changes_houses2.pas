@@ -81,7 +81,6 @@ type
     DBLookupComboboxEh1: TDBLookupComboboxEh;
     DBComboBoxEh4: TDBComboBoxEh;
     Panel1: TPanel;
-    Memo1: TMemo;
     cxGrid1DBTableView1: TcxGridDBTableView;
     cxGrid1Level1: TcxGridLevel;
     cxGrid1: TcxGrid;
@@ -137,13 +136,14 @@ type
 
 var
   Form_changes_houses2: TForm_changes_houses2;
-  clr_: Integer;
-  selectedObjectsJson: string;
+  k_lsk_id, clr_: Integer;
+  lsk, adr, selectedObjectsJson: string;
+  clickFlag: Boolean = false;
 
 implementation
 
 uses DM_module1, Unit_status, Unit_sel_hs, Unit_list_kart, Unit_chargepay,
-  Unit_Mainform, Unit_changes_lsk, u_frmSelObjects;
+  Unit_Mainform, Unit_changes_lsk, u_frmSelObjects, StrUtils;
 
 {$R *.dfm}
 
@@ -198,7 +198,7 @@ end;
 
 procedure TForm_changes_houses2.btn1Click(Sender: TObject);
 var
-  cnt_, tst_, is_sch_, usl_add_, doc_id_: Integer;
+  cnt_, tst_, is_sch_, usl_add_, changeDocId: Integer;
   l_chk2, l_chk3, l_chk4, l_chk6, l_psch: Integer;
   l_res, paramChangesUsl, selObjTp: string;
   isFirstLine: Boolean;
@@ -274,10 +274,11 @@ begin
   Form_status.Update;
 
   // ****************** JSON объект
-//  paramChangesUsl := '{"lsk": "' + cxtxtLsk.Text + '",';
   paramChangesUsl := paramChangesUsl +
     '{"dt": "' + DateToStr(Form_main.cur_dt) + '",' +
     '"user": "' + Form_main.user + '",';
+  paramChangesUsl := paramChangesUsl +
+    '"comment": "' + wwDBEdit2.Text + '",';
   paramChangesUsl := paramChangesUsl +
     '"periodFrom": "' + cbbMgFrom.EditValue + '",' +
     '"periodTo": "' + cbbMgTo.EditValue + '",';
@@ -287,10 +288,14 @@ begin
 
   if chkIsPremise.Checked then
     selectedObjectsJson :=
-      '"selObjList": [{"klskId":"' + cxtxtLsk.Text + '","tp":"1"}]'
+      '"selObjList": [{"klskId":"' + IntToStr(k_lsk_id) +
+      '","tp":"1"}]'
   else if chkIsLsk.Checked then
+  begin
+    cxtxtLsk.Text := RightStr('00000000' + Trim(cxtxtLsk.Text), 8);
     selectedObjectsJson :=
       '"selObjList": [{"lsk":"' + cxtxtLsk.Text + '","tp":"2"}]'
+  end
   else if chkIsObjects.Checked then
   else if chkIsAll.Checked then
   begin
@@ -306,23 +311,6 @@ begin
   end;
   paramChangesUsl := paramChangesUsl + selectedObjectsJson + ',';
 
-  //paramChangesUsl := paramChangesUsl + '"selObjTp": "' + selObjTp + '",';
-
-  //  if chkIsObjects.Checked = True then
-  //  begin
-  //    paramChangesUsl := paramChangesUsl + selectedObjectsJson + ',';
-  //  end
-  //  else if chkIsPremise.Checked = True then
-  //  begin
-  //    paramChangesUsl := paramChangesUsl + '"selObjList": [{"klskId": "' +
-  //      '12123123123' + '", "tp":"1"}]' + ','; //todo сделать корректный klskId!!!
-  //  end
-  //  else if chkIsLsk.Checked = True then
-  //  begin
-  //    paramChangesUsl := paramChangesUsl + '"selObjList": [{"lsk": "' +
-  //      cxtxtLsk.Text + '", "tp":"2"}]' + ',';
-  //  end;
-
   isFirstLine := True;
   paramChangesUsl := paramChangesUsl + '"isAddUslSvSocn": "true",';
   paramChangesUsl := paramChangesUsl + '"isAddUslWaste": "true",';
@@ -332,8 +320,6 @@ begin
   paramChangesUsl := paramChangesUsl + '"processLskTp": "2",';
   paramChangesUsl := paramChangesUsl + '"processTp": "1",';
   paramChangesUsl := paramChangesUsl + '"processEmpty": "0",';
-  paramChangesUsl := paramChangesUsl +
-    '"comment": "коммент",';
   paramChangesUsl := paramChangesUsl + '"changeUslList": [';
   OD_list_choices_changes.First;
   isFirstLine := True;
@@ -362,13 +348,6 @@ begin
       paramChangesUsl := paramChangesUsl +
         ',"proc":"' + OD_list_choices_changes.FieldByName('PROC1').AsString +
         '"';
-//      paramChangesUsl := paramChangesUsl +
-//        ',"org2Id":"' + OD_list_choices_changes.FieldByName('ORG2_ID').AsString
-//        +
-//        '"';
-//      paramChangesUsl := paramChangesUsl +
-//        ',"proc2":"' + OD_list_choices_changes.FieldByName('PROC2').AsString +
-//        '"';
       paramChangesUsl := paramChangesUsl +
         ',"absSet":"' + OD_list_choices_changes.FieldByName('ABS_SET').AsString
         +
@@ -377,10 +356,6 @@ begin
         ',"cntDays":"' +
         OD_list_choices_changes.FieldByName('CNT_DAYS').AsString +
         '"';
-//      paramChangesUsl := paramChangesUsl +
-//        ',"cntDays2":"' +
-//        OD_list_choices_changes.FieldByName('CNT_DAYS2').AsString +
-//        '"';
       paramChangesUsl := paramChangesUsl + '}';
     end;
     OD_list_choices_changes.Next;
@@ -388,45 +363,47 @@ begin
   paramChangesUsl := paramChangesUsl + ']';
 
   paramChangesUsl := paramChangesUsl + '}';
-  Memo1.Text := paramChangesUsl;
+  //  Memo1.Text := paramChangesUsl;
   l_res :=
     DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA.HTTP_REQ',
     ['genChanges', null, null, 'POST', Form_main.javaServer, paramChangesUsl]);
 
-  //sendGetRequest(Memo1.Text);
-
-  //    ShowMessage(PChar(paramChangesUsl));
-      // ****************** Перерасчет на Java
-
-    //чистим поля
-  if tst_ = 0 then //изменения по процентам
+  Form_status.Close;
+  if Copy(l_res, 0, 5) = 'ERROR' then
   begin
-    //    wwDBEdit1.Text:='';  Убрал - задолбало чиститься 16.10.2013
-    //    wwDBEdit3.Text:='';
+    Application.MessageBox(PChar(Copy(l_res, 7, Length(l_res))), 'Внимание!',
+      MB_OK +
+      MB_ICONSTOP + MB_TOPMOST);
   end
-  else //изменения в абс суммах
-  begin
-    //    wwDBEdit1.Text:='';  Убрал - задолбало чиститься 16.10.2013
-    //    wwDBEdit3.Text:='';
-    DataModule1.OraclePackage1.CallProcedure
-      ('scott.C_CHANGES.clear_changes_proc', [parNone]);
-  end;
-
-  OD_report.Active := false;
-  OD_report.SetVariable('doc_id_', doc_id_);
-  //Выводить детализированный отчет, если записей не много (< 20)
-  if cnt_ > 20 then
-    OD_report.SetVariable('var_', 0)
   else
-    OD_report.SetVariable('var_', 1);
-  OD_report.Active := true;
-  frxReport1.PrepareReport(true);
-  frxReport1.ShowPreparedReport;
-  OD_list_choices_changes.Refresh;
-  OD_c_change_docs.Refresh;
+  begin
+    changeDocId := StrToInt(Copy(l_res, 3, Length(l_res)));
+    //чистим поля
+{    if tst_ = 0 then //изменения по процентам
+    begin
+    end
+    else //изменения в абс суммах
+    begin
+      DataModule1.OraclePackage1.CallProcedure
+        ('scott.C_CHANGES.clear_changes_proc', [parNone]);
+    end;}
 
-  if FF('Form_chargepay', 0) = 1 then
-    Form_chargepay.recalc;
+    OD_report.Active := false;
+    OD_report.SetVariable('doc_id_', changeDocId);
+    //Выводить детализированный отчет, если записей не много (< 20)
+    if cnt_ > 20 then
+      OD_report.SetVariable('var_', 0)
+    else
+      OD_report.SetVariable('var_', 1);
+    OD_report.Active := true;
+    frxReport1.PrepareReport(true);
+    frxReport1.ShowPreparedReport;
+    OD_list_choices_changes.Refresh;
+    OD_c_change_docs.Refresh;
+
+    if FF('Form_chargepay', 0) = 1 then
+      Form_chargepay.recalc;
+  end;
 end;
 
 procedure TForm_changes_houses2.btn2Click(Sender: TObject);
@@ -436,6 +413,7 @@ end;
 
 procedure TForm_changes_houses2.FormCreate(Sender: TObject);
 begin
+
   DBComboBoxEh1.ItemIndex := 1;
   DBComboBoxEh2.ItemIndex := 0;
   DBComboBoxEh3.ItemIndex := 0;
@@ -451,13 +429,11 @@ begin
   OD_usl.Active := True;
   OD_c_change_docs.Active := True;
 
-  cbbMgFrom.EditValue := OD_mg1.FieldByName('MG').AsString;
-  cbbMgTo.EditValue := OD_mg2.FieldByName('MG').AsString;
-
-  if FF('Form_list_kart', 0) = 1 then
-  begin
-    cxtxtLsk.Text := Form_list_kart.OD_list_kart.FieldByName('lsk').AsString;
-  end;
+  //  cbbMgFrom.EditValue := OD_mg1.FieldByName('MG').AsString;
+  //  cbbMgTo.EditValue := OD_mg2.FieldByName('MG').AsString;
+  cbbMgFrom.EditValue := Form_Main.currentPeriod;
+  cbbMgTo.EditValue := Form_Main.currentPeriod;
+  cbbMgProcess.EditValue := Form_Main.currentPeriod;
   DataModule1.OraclePackage1.CallProcedure
     ('scott.C_CHANGES.clear_changes_proc', [parNone]);
   OD_sprorg.Active := False;
@@ -467,8 +443,25 @@ begin
   OD_sprorg2.SetVariable('var_', 1);
   OD_sprorg2.Active := True;
   OD_list_choices_changes.Refresh;
-
   clr_ := 0;
+
+  // выбор адреса для перерасчета
+  k_lsk_id := -1;
+  if FF('Form_list_kart', 0) = 1 then
+  begin
+    k_lsk_id := DataModule1.OraclePackage1.CallStringFunction(
+      'scott.UTILS.GET_K_LSK_ID_BY_LSK',
+      [Form_list_kart.OD_list_kart.FieldByName('lsk').asString]);
+    adr := Form_list_kart.OD_list_kart.FieldByName('name').asString
+      + ', ' +
+      Form_list_kart.OD_list_kart.FieldByName('n_nd').asString + '-' +
+      Form_list_kart.OD_list_kart.FieldByName('n_kw').asString + ' (фин.лиц:' +
+      IntToStr(k_lsk_id) + ')';
+    lsk := Form_list_kart.OD_list_kart.FieldByName('lsk').AsString;
+    chkIsPremise.Checked := true;
+    setObjectChecked(0);
+  end;
+
 end;
 
 procedure TForm_changes_houses2.chkIsObjectsClick(Sender: TObject);
@@ -535,30 +528,46 @@ end;
 
 procedure TForm_changes_houses2.setObjectChecked(tp: Integer);
 begin
-  if tp = 0 then
+  if clickFlag = False then
   begin
-    chkIsLsk.Checked := False;
-    chkIsObjects.Checked := False;
-    chkIsAll.Checked:=False;
-  end
-  else if tp = 1 then
-  begin
-    chkIsObjects.Checked := False;
-    chkIsPremise.Checked := False;
-    chkIsAll.Checked:=False;
-  end
-  else if tp = 2 then
-  begin
-    chkIsPremise.Checked := False;
-    chkIsLsk.Checked := False;
-    chkIsAll.Checked:=False;
-  end
-  else if tp = 3 then
-  begin
-    chkIsPremise.Checked := False;
-    chkIsLsk.Checked := False;
-    chkIsObjects.Checked := False;
-  end
+    clickFlag := True;
+    if tp = 0 then
+    begin
+      chkIsLsk.Checked := False;
+      chkIsObjects.Checked := False;
+      chkIsAll.Checked := False;
+      if k_lsk_id <> -1 then
+        cxtxtPremise.Text := adr
+      else
+        cxtxtPremise.Text := 'Помещение не выбрано';
+      cxtxtLsk.Text := '';
+    end
+    else if tp = 1 then
+    begin
+      chkIsObjects.Checked := False;
+      chkIsPremise.Checked := False;
+      chkIsAll.Checked := False;
+      cxtxtPremise.Text := '';
+      cxtxtLsk.Text := lsk;
+    end
+    else if tp = 2 then
+    begin
+      chkIsPremise.Checked := False;
+      chkIsLsk.Checked := False;
+      chkIsAll.Checked := False;
+      cxtxtPremise.Text := '';
+      cxtxtLsk.Text := '';
+    end
+    else if tp = 3 then
+    begin
+      chkIsPremise.Checked := False;
+      chkIsLsk.Checked := False;
+      chkIsObjects.Checked := False;
+      cxtxtPremise.Text := '';
+      cxtxtLsk.Text := '';
+    end;
+    clickFlag := False;
+  end;
 
 end;
 

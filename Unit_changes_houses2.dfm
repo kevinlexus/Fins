@@ -1,6 +1,6 @@
 object Form_changes_houses2: TForm_changes_houses2
-  Left = 309
-  Top = 268
+  Left = 445
+  Top = 388
   Width = 903
   Height = 612
   Caption = #1055#1077#1088#1077#1088#1072#1089#1095#1077#1090#1099
@@ -262,7 +262,7 @@ object Form_changes_houses2: TForm_changes_houses2
           Left = 8
           Top = 8
           Width = 553
-          Height = 57
+          Height = 65
           Caption = #1042#1099#1087#1086#1083#1085#1080#1090#1100' '#1087#1086':'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -287,8 +287,8 @@ object Form_changes_houses2: TForm_changes_houses2
             OnClick = chkIsPremiseClick
           end
           object chkIsLsk: TCheckBox
-            Left = 352
-            Top = 16
+            Left = 224
+            Top = 40
             Width = 105
             Height = 17
             Caption = #1051#1080#1094#1077#1074#1086#1081' '#1089#1095#1077#1090
@@ -303,7 +303,7 @@ object Form_changes_houses2: TForm_changes_houses2
           end
           object chkIsObjects: TCheckBox
             Left = 5
-            Top = 36
+            Top = 40
             Width = 124
             Height = 17
             Hint = #1042#1099#1073#1086#1088' '#1086#1073#1098#1077#1082#1090#1086#1074
@@ -321,17 +321,17 @@ object Form_changes_houses2: TForm_changes_houses2
             Left = 100
             Top = 14
             TabOrder = 3
-            Width = 249
+            Width = 317
           end
           object cxtxtLsk: TcxTextEdit
-            Left = 456
-            Top = 14
+            Left = 327
+            Top = 38
             TabOrder = 4
             Width = 89
           end
           object chkIsAll: TCheckBox
             Left = 132
-            Top = 36
+            Top = 40
             Width = 93
             Height = 17
             Caption = #1042#1077#1089#1100' '#1092#1086#1085#1076
@@ -444,6 +444,7 @@ object Form_changes_houses2: TForm_changes_houses2
             Font.Style = [fsBold]
             ParentFont = False
             TabOrder = 4
+            Visible = False
           end
         end
         object GroupBox5: TGroupBox
@@ -569,6 +570,8 @@ object Form_changes_houses2: TForm_changes_houses2
             DataController.Summary.DefaultGroupSummaryItems = <>
             DataController.Summary.FooterSummaryItems = <>
             DataController.Summary.SummaryGroups = <>
+            OptionsData.Deleting = False
+            OptionsData.Inserting = False
             OptionsView.ColumnAutoWidth = True
             OptionsView.GroupByBox = False
             OptionsView.Indicator = True
@@ -670,15 +673,6 @@ object Form_changes_houses2: TForm_changes_houses2
         object cxgrd1Level1: TcxGridLevel
           GridView = cxgrdbtblvwGrid1DBTableView1
         end
-      end
-      object Memo1: TMemo
-        Left = 328
-        Top = 96
-        Width = 297
-        Height = 153
-        Lines.Strings = (
-          'Memo1')
-        TabOrder = 1
       end
     end
   end
@@ -1405,11 +1399,12 @@ object Form_changes_houses2: TForm_changes_houses2
       'order by t.id')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000009000000020000004944010000000000080000004D474348414E4745
+      040000000A000000020000004944010000000000080000004D474348414E4745
       010000000000040000004454454B010000000000020000005453010000000000
       07000000555345525F4944010000000000040000005445585401000000000005
       00000043445F5450010000000000030000004D47320100000000000900000055
-      5345525F4E414D45010000000000}
+      5345525F4E414D450100000000000A000000504152414D5F4A534F4E01000000
+      0000}
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True

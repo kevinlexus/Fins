@@ -229,6 +229,9 @@ type
     N2608211: TMenuItem;
     N1109211: TMenuItem;
     N2501: TMenuItem;
+    N214: TMenuItem;
+    ToolButton6: TToolButton;
+    N221121260Java1: TMenuItem;
     procedure N5Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure N7Click(Sender: TObject);
@@ -395,7 +398,8 @@ type
     procedure N147Click(Sender: TObject);
     procedure Options1Click(Sender: TObject);
     procedure ProdJavaServer1Click(Sender: TObject);
-    procedure N2501Click(Sender: TObject);
+    procedure N214Click(Sender: TObject);
+    procedure ToolButton6Click(Sender: TObject);
   private
   public
     // выбранный период при переключении в архив
@@ -465,7 +469,7 @@ type
     flt_single_house_: Integer;
     flt_klsk_premise: Integer;
     flt_els_: string;
-
+    currentPeriod: string;
     //
     default_lsk: string;
     fio_: string;
@@ -2680,7 +2684,13 @@ begin
 
 end;
 
-procedure TForm_Main.N2501Click(Sender: TObject);
+procedure TForm_Main.N214Click(Sender: TObject);
+begin
+  Application.CreateForm(TForm_changes_houses2, Form_changes_houses2);
+
+end;
+
+procedure TForm_Main.ToolButton6Click(Sender: TObject);
 begin
   Application.CreateForm(TForm_changes_houses2, Form_changes_houses2);
 
