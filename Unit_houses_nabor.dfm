@@ -1,6 +1,6 @@
 object Form_houses_nabor: TForm_houses_nabor
-  Left = 1025
-  Top = 680
+  Left = 1411
+  Top = 736
   Width = 1085
   Height = 621
   Caption = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082' '#1076#1086#1084#1086#1074
@@ -312,7 +312,7 @@ object Form_houses_nabor: TForm_houses_nabor
             Top = 0
             Width = 25
             Height = 25
-            Hint = #1050' '#1087#1077#1088#1074#1086#1081' '#1079#1072#1087#1080#1089#1080
+            Hint = 'Move to first record'
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -329,7 +329,7 @@ object Form_houses_nabor: TForm_houses_nabor
             Top = 0
             Width = 25
             Height = 25
-            Hint = #1053#1072#1079#1072#1076' '#1085#1072' 10 '#1079#1072#1087#1080#1089#1077#1081
+            Hint = 'Move backward 10 records'
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -346,7 +346,7 @@ object Form_houses_nabor: TForm_houses_nabor
             Top = 0
             Width = 25
             Height = 25
-            Hint = #1055#1088#1077#1076#1099#1076#1091#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
+            Hint = 'Move to prior record'
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -363,7 +363,7 @@ object Form_houses_nabor: TForm_houses_nabor
             Top = 0
             Width = 25
             Height = 25
-            Hint = #1057#1083#1077#1076#1091#1102#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
+            Hint = 'Move to next record'
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -380,7 +380,7 @@ object Form_houses_nabor: TForm_houses_nabor
             Top = 0
             Width = 25
             Height = 25
-            Hint = #1042#1087#1077#1088#1077#1076' '#1085#1072' 10 '#1079#1072#1087#1080#1089#1077#1081
+            Hint = 'Move forward 10 records'
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -397,7 +397,7 @@ object Form_houses_nabor: TForm_houses_nabor
             Top = 0
             Width = 25
             Height = 25
-            Hint = #1055#1077#1088#1077#1081#1090#1080' '#1082' '#1087#1086#1089#1083#1077#1076#1085#1077#1081' '#1079#1072#1087#1080#1089#1080
+            Hint = 'Move to last record'
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -414,7 +414,7 @@ object Form_houses_nabor: TForm_houses_nabor
             Top = 0
             Width = 25
             Height = 25
-            Hint = #1044#1086#1073#1072#1074#1080#1090#1100' '#1085#1086#1074#1091#1102' '#1079#1072#1087#1080#1089#1100
+            Hint = 'Insert new record'
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -432,7 +432,7 @@ object Form_houses_nabor: TForm_houses_nabor
             Top = 0
             Width = 25
             Height = 25
-            Hint = #1059#1076#1072#1083#1080#1090#1100' '#1090#1077#1082#1091#1097#1091#1102' '#1079#1072#1087#1080#1089#1100
+            Hint = 'Delete current record'
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -450,7 +450,7 @@ object Form_houses_nabor: TForm_houses_nabor
             Top = 0
             Width = 25
             Height = 25
-            Hint = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1090#1077#1082#1091#1097#1091#1102' '#1079#1072#1087#1080#1089#1100
+            Hint = 'Edit current record'
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -467,7 +467,7 @@ object Form_houses_nabor: TForm_houses_nabor
             Top = 0
             Width = 25
             Height = 25
-            Hint = #1054#1090#1087#1088#1072#1074#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103' '#1074' '#1073#1072#1079#1091
+            Hint = 'Post changes of current record'
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -485,7 +485,7 @@ object Form_houses_nabor: TForm_houses_nabor
             Top = 0
             Width = 25
             Height = 25
-            Hint = #1054#1090#1084#1077#1085#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103' '#1090#1077#1082#1091#1097#1077#1081' '#1079#1072#1087#1080#1089#1080
+            Hint = 'Cancel changes made to current record'
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -503,7 +503,7 @@ object Form_houses_nabor: TForm_houses_nabor
             Top = 0
             Width = 25
             Height = 25
-            Hint = #1054#1073#1085#1086#1074#1080#1090#1100' '#1079#1072#1087#1080#1089#1080
+            Hint = 'Refresh the contents of the dataset'
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -521,7 +521,7 @@ object Form_houses_nabor: TForm_houses_nabor
             Top = 0
             Width = 25
             Height = 25
-            Hint = #1055#1086#1089#1090#1072#1074#1080#1090#1100' '#1079#1072#1082#1083#1072#1076#1082#1091' '#1085#1072' '#1090#1077#1082#1091#1097#1077#1081' '#1079#1072#1087#1080#1089#1080
+            Hint = 'Bookmark current record'
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -537,7 +537,7 @@ object Form_houses_nabor: TForm_houses_nabor
             Top = 0
             Width = 25
             Height = 25
-            Hint = #1055#1077#1088#1077#1081#1090#1080' '#1082' '#1089#1086#1093#1088#1072#1085#1105#1085#1085#1086#1081' '#1079#1072#1082#1083#1072#1076#1082#1077
+            Hint = 'Go back to saved bookmark'
             ImageIndex = -1
             NumGlyphs = 2
             Spacing = 4
@@ -1404,7 +1404,7 @@ object Form_houses_nabor: TForm_houses_nabor
         'kw),'
       
         ' translate(upper(k.kw),'#39'0123456789'#39','#39' '#39'), '#39' '#39'),'#39'0'#39') as kw, t.lsk' +
-        ', t.fk_vvod, v.vvod_num, t.rowid'
+        ', t.fk_vvod, v.vvod_num, k.k_lsk_id, t.rowid'
       ' from scott.kart k, scott.nabor t, scott.usl u, scott.c_vvod v'
       
         ' where k.lsk=t.lsk and k.house_id=:house_id_ and t.usl=u.usl and' +
@@ -1418,7 +1418,7 @@ object Form_houses_nabor: TForm_houses_nabor
         '.kw),'
       
         ' translate(upper(k.kw),'#39'0123456789'#39','#39' '#39'), '#39' '#39'),'#39'0'#39') as kw, t.lsk' +
-        ', t.fk_vvod, null, t.rowid'
+        ', t.fk_vvod, null, k.k_lsk_id, t.rowid'
       ' from scott.kart k, scott.nabor t, scott.usl u'
       
         ' where k.lsk=t.lsk and k.house_id=:house_id_ and t.usl=u.usl and' +
@@ -1433,9 +1433,10 @@ object Form_houses_nabor: TForm_houses_nabor
       0000090000003A464B5F56564F445F030000000000000000000000050000003A
       55534C5F050000000000000000000000}
     QBEDefinition.QBEFieldDefs = {
-      0400000005000000020000004B57010000000000030000004C534B0100000000
+      0400000006000000020000004B57010000000000030000004C534B0100000000
       0007000000464B5F56564F440100000000000800000056564F445F4E554D0100
-      00000000030000004F5244010000000000}
+      00000000030000004F5244010000000000080000004B5F4C534B5F4944010000
+      000000}
     UpdatingTable = 'scott.nabor'
     Session = DataModule1.OracleSession1
     DesignActivation = True
@@ -1459,6 +1460,9 @@ object Form_houses_nabor: TForm_houses_nabor
     object OD_k_vvodVVOD_NUM: TFloatField
       FieldKind = fkInternalCalc
       FieldName = 'VVOD_NUM'
+    end
+    object OD_k_vvodK_LSK_ID: TFloatField
+      FieldName = 'K_LSK_ID'
     end
   end
   object DS_k_vvod: TwwDataSource

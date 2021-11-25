@@ -97,9 +97,9 @@ type
     chkIsObjects: TCheckBox;
     GroupBox4: TGroupBox;
     CheckBox1: TCheckBox;
-    chk3: TCheckBox;
+    chkIsAddUslWaste: TCheckBox;
     CheckBox2: TCheckBox;
-    chk2: TCheckBox;
+    chkIsChargeAtEnd: TCheckBox;
     chk6: TCheckBox;
     chk4: TCheckBox;
     GroupBox5: TGroupBox;
@@ -227,48 +227,6 @@ begin
     Abort;
   end;
 
-  if CheckBox2.Checked then
-    usl_add_ := 1
-  else
-    usl_add_ := 0;
-
-  //По окончанию - начисление?
-  if Chk2.Checked then
-    l_chk2 := 1
-  else
-    l_chk2 := 0;
-
-  //Добавить водоотведение?
-  if Chk3.Checked then
-    l_chk3 := 1
-  else
-    l_chk3 := 0;
-
-  //Провести только по пустым квартирам?
-  if Chk4.Checked then
-    l_chk4 := 1
-  else
-    l_chk4 := 0;
-
-  // Провести как корректировку сальдо?
-  if Chk6.Checked then
-    l_chk6 := 1
-  else
-    l_chk6 := 0;
-
-  if DBComboBoxEh1.ItemIndex = 0 then
-    is_sch_ := 0
-  else if DBComboBoxEh1.ItemIndex = 1 then
-    is_sch_ := 1
-  else if DBComboBoxEh1.ItemIndex = 2 then
-    is_sch_ := 2;
-
-  if DBComboBoxEh2.ItemIndex = 0 then
-    l_psch := 0
-  else if DBComboBoxEh2.ItemIndex = 1 then
-    l_psch := 1
-  else if DBComboBoxEh2.ItemIndex = 2 then
-    l_psch := 2;
 
   Application.CreateForm(TForm_status, Form_status);
   Form_status.Update;
@@ -312,14 +270,28 @@ begin
   paramChangesUsl := paramChangesUsl + selectedObjectsJson + ',';
 
   isFirstLine := True;
-  paramChangesUsl := paramChangesUsl + '"isAddUslSvSocn": "true",';
-  paramChangesUsl := paramChangesUsl + '"isAddUslWaste": "true",';
-  paramChangesUsl := paramChangesUsl + '"processMeter": "1",';
-  paramChangesUsl := paramChangesUsl + '"processAccount": "0",';
-  paramChangesUsl := paramChangesUsl + '"processStatus": "2",';
-  paramChangesUsl := paramChangesUsl + '"processLskTp": "2",';
-  paramChangesUsl := paramChangesUsl + '"processTp": "1",';
-  paramChangesUsl := paramChangesUsl + '"processEmpty": "0",';
+  //По окончанию - начисление?
+  if chkIsChargeAtEnd.Checked then
+    paramChangesUsl := paramChangesUsl + '"isChargeAtEnd": "true",';
+    
+  //Добавить водоотведение?
+  if chkIsAddUslWaste.Checked then
+    paramChangesUsl := paramChangesUsl + '"isAddUslWaste": "true",'
+  else
+    paramChangesUsl := paramChangesUsl + '"isAddUslWaste": "false",';
+    
+  //Провести только по пустым квартирам?
+  if Chk4.Checked then
+    paramChangesUsl := paramChangesUsl + '"processEmpty": "1",'
+  else
+    paramChangesUsl := paramChangesUsl + '"processEmpty": "0",';
+
+  paramChangesUsl := paramChangesUsl + '"processMeter": "'+IntToStr(DBComboBoxEh1.ItemIndex)+'",';
+  paramChangesUsl := paramChangesUsl + '"processAccount": "'+IntToStr(DBComboBoxEh2.ItemIndex)+'",';
+  paramChangesUsl := paramChangesUsl + '"processKran": "'+IntToStr(DBComboBoxEh3.ItemIndex)+'",';
+  paramChangesUsl := paramChangesUsl + '"processStatus": "'+OD_status.FieldByName('id').AsString+'",';
+  paramChangesUsl := paramChangesUsl + '"processLskTp": "'+IntToStr(DBComboBoxEh4.ItemIndex)+'",';
+  //paramChangesUsl := paramChangesUsl + '"processTp": "1",';
   paramChangesUsl := paramChangesUsl + '"changeUslList": [';
   OD_list_choices_changes.First;
   isFirstLine := True;
@@ -378,16 +350,6 @@ begin
   else
   begin
     changeDocId := StrToInt(Copy(l_res, 3, Length(l_res)));
-    //чистим поля
-{    if tst_ = 0 then //изменения по процентам
-    begin
-    end
-    else //изменения в абс суммах
-    begin
-      DataModule1.OraclePackage1.CallProcedure
-        ('scott.C_CHANGES.clear_changes_proc', [parNone]);
-    end;}
-
     OD_report.Active := false;
     OD_report.SetVariable('doc_id_', changeDocId);
     //Выводить детализированный отчет, если записей не много (< 20)

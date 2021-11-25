@@ -401,6 +401,7 @@ type
     OD_chargeUNITS: TStringField;
     cxGrid1DBTableView1UNITS: TcxGridDBColumn;
     chk2: TCheckBox;
+    SpeedButton1: TSpeedButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure DBGridEh1DblClick(Sender: TObject);
     procedure OD_kartAfterPost(DataSet: TDataSet);
@@ -438,7 +439,7 @@ type
 //      Boolean; var AutoRepeat, Handled: Boolean);
 //    procedure calcFooter;
     procedure wwDBGrid2KeyPress(Sender: TObject; var Key: Char);
-//    procedure setFields;
+    //    procedure setFields;
     procedure DBEdit_phwKeyPress(Sender: TObject; var Key: Char);
     procedure BitBtn1Click(Sender: TObject);
     procedure BitBtn2Click(Sender: TObject);
@@ -501,6 +502,7 @@ type
     procedure check_kart_correct;
     procedure CheckBox2Click(Sender: TObject);
     procedure chk2Click(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
   private
     tarif_, privs_, subsid_, changes_, itogn_: Double;
     size_, allow_dtv_, id_, action_, fk_tarif_: Integer;
@@ -822,9 +824,9 @@ begin
   Form_list_kart.setAllowEdit_kart;
   //обновить поля, отражающие статусы л/c
   refresh_kart;
-//  calcFooter;
+  //  calcFooter;
 
-  //сброс признака наличия обновления
+    //сброс признака наличия обновления
   updates_ := 0;
   LockControl(wwDBGrid4, false);
 
@@ -1112,7 +1114,7 @@ begin
 
     Form_list_kart.OD_list_kart.RefreshRecord;
     OD_charge.Refresh;
-//    calcFooter;
+    //    calcFooter;
   end;
   OD_states_sch.Refresh;
   if FF('Form_det_chrg', 0) = 1 then
@@ -1193,12 +1195,12 @@ begin
       change_alias(OD_kart_pr, 'scott.c_kart_pr',
         '(select * from scott.a_kart_pr2 where ''' + Form_main.arch_mg_ +
         ''' between mgFrom and mgTo)');
-//      change_alias(OD_kart_pr, 'scott.c_lg_docs',
-//        '(select * from scott.a_lg_docs where mg=''' + Form_main.arch_mg_ +
-//        ''')');
-//      change_alias(OD_kart_pr, 'scott.c_lg_pr',
-//        '(select * from scott.a_lg_pr where mg=''' + Form_main.arch_mg_ +
-//        ''')');
+      //      change_alias(OD_kart_pr, 'scott.c_lg_docs',
+      //        '(select * from scott.a_lg_docs where mg=''' + Form_main.arch_mg_ +
+      //        ''')');
+      //      change_alias(OD_kart_pr, 'scott.c_lg_pr',
+      //        '(select * from scott.a_lg_pr where mg=''' + Form_main.arch_mg_ +
+      //        ''')');
 
       change_alias(OD_vvod, 'scott.c_vvod',
         '(select * from scott.a_vvod where mg=''' + Form_main.arch_mg_ + ''')');
@@ -1220,10 +1222,10 @@ begin
       change_alias(OD_kart_pr, '(select * from scott.a_kart_pr2 where ''' +
         mgold_ +
         ''' between mgFrom and mgTo)', 'scott.c_kart_pr');
-//      change_alias(OD_kart_pr, '(select * from scott.a_lg_docs where mg=''' +
-//        mgold_ + ''')', 'scott.c_lg_docs');
-//      change_alias(OD_kart_pr, '(select * from scott.a_lg_pr where mg=''' +
-//        mgold_ + ''')', 'scott.c_lg_pr');
+      //      change_alias(OD_kart_pr, '(select * from scott.a_lg_docs where mg=''' +
+      //        mgold_ + ''')', 'scott.c_lg_docs');
+      //      change_alias(OD_kart_pr, '(select * from scott.a_lg_pr where mg=''' +
+      //        mgold_ + ''')', 'scott.c_lg_pr');
 
       change_alias(OD_vvod, '(select * from scott.a_vvod where mg=''' + mgold_ +
         ''')', 'scott.c_vvod');
@@ -1245,12 +1247,12 @@ begin
         ''' between mgFrom and mgTo)', '(select * from scott.a_kart_pr2 where '''
         + Form_main.arch_mg_ +
         ''' between mgFrom and mgTo)');
-//      change_alias(OD_kart_pr, '(select * from scott.a_lg_docs where mg=''' +
-//        mgold_ + ''')', '(select * from scott.a_lg_docs where mg=''' +
-//        Form_main.arch_mg_ + ''')');
-//      change_alias(OD_kart_pr, '(select * from scott.a_lg_pr where mg=''' +
-//        mgold_ + ''')', '(select * from scott.a_lg_pr where mg=''' +
-//        Form_main.arch_mg_ + ''')');
+      //      change_alias(OD_kart_pr, '(select * from scott.a_lg_docs where mg=''' +
+      //        mgold_ + ''')', '(select * from scott.a_lg_docs where mg=''' +
+      //        Form_main.arch_mg_ + ''')');
+      //      change_alias(OD_kart_pr, '(select * from scott.a_lg_pr where mg=''' +
+      //        mgold_ + ''')', '(select * from scott.a_lg_pr where mg=''' +
+      //        Form_main.arch_mg_ + ''')');
 
       change_alias(OD_vvod, '(select * from scott.a_vvod where mg=''' + mgold_ +
         ''')', '(select * from scott.a_vvod where mg=''' + Form_main.arch_mg_ +
@@ -1314,7 +1316,7 @@ begin
 
   DecimalSeparator := '.';
 
-  cxPageControl1.ActivePageIndex:=0;
+  cxPageControl1.ActivePageIndex := 0;
   PageControl1.ActivePageIndex := 1;
   PageControl2.ActivePageIndex := 0;
 
@@ -1363,7 +1365,7 @@ begin
 
   SetAllowEdit(0);
   state_arch2('');
-//  calcFooter;
+  //  calcFooter;
 end;
 
 procedure TForm_kart.wwDBEdit1Exit(Sender: TObject);
@@ -1821,8 +1823,8 @@ end;
 
 procedure TForm_kart.OD_chargeAfterOpen(DataSet: TDataSet);
 begin
-//  OD_charge.Locate('USL', usl_, []);
-//  setFields;
+  //  OD_charge.Locate('USL', usl_, []);
+  //  setFields;
 end;
 
 procedure TForm_kart.CheckBox1Click(Sender: TObject);
@@ -1939,35 +1941,35 @@ procedure TForm_kart.OD_chargeAfterScroll(DataSet: TDataSet);
 begin
   if (Form_list_kart.isAllowEdit_ = 1) and (Form_main.arch_mg_ = '') then
   begin
-      OD_nabor.readonly := False;
-{
-    //по строкам, где раз.изм запрещено править коэфф. и норм.
-    if OD_charge.FieldByName('tp').AsInteger = 1 then
-      OD_charge.readonly := True
-    else
-    begin
-      OD_charge.readonly := False;
-      if OD_charge.FieldByName('sptarn').AsInteger = 0 then
-      begin
-        OD_chargeNORM.readonly := True;
-        OD_chargeKOEFF.readonly := False;
-      end
-      else if OD_charge.FieldByName('sptarn').AsInteger = 1 then
-      begin
-        OD_chargeNORM.readonly := False;
-        OD_chargeKOEFF.readonly := True;
-      end
-      else
-      begin
-        OD_chargeNORM.readonly := False;
-        OD_chargeKOEFF.readonly := False;
-      end;
-    end;}
+    OD_nabor.readonly := False;
+    {
+        //по строкам, где раз.изм запрещено править коэфф. и норм.
+        if OD_charge.FieldByName('tp').AsInteger = 1 then
+          OD_charge.readonly := True
+        else
+        begin
+          OD_charge.readonly := False;
+          if OD_charge.FieldByName('sptarn').AsInteger = 0 then
+          begin
+            OD_chargeNORM.readonly := True;
+            OD_chargeKOEFF.readonly := False;
+          end
+          else if OD_charge.FieldByName('sptarn').AsInteger = 1 then
+          begin
+            OD_chargeNORM.readonly := False;
+            OD_chargeKOEFF.readonly := True;
+          end
+          else
+          begin
+            OD_chargeNORM.readonly := False;
+            OD_chargeKOEFF.readonly := False;
+          end;
+        end;}
   end
   else
   begin
-//    OD_charge.readonly := True
-      OD_nabor.readonly := True;
+    //    OD_charge.readonly := True
+    OD_nabor.readonly := True;
   end;
 
 end;
@@ -2249,11 +2251,24 @@ end;
 
 procedure TForm_kart.chk2Click(Sender: TObject);
 begin
-   if chk2.Checked then
-      cxGrid1DBTableView1.OptionsView.GroupByBox:=True
-   else
-      cxGrid1DBTableView1.OptionsView.GroupByBox:=False;
-   
+  if chk2.Checked then
+    cxGrid1DBTableView1.OptionsView.GroupByBox := True
+  else
+    cxGrid1DBTableView1.OptionsView.GroupByBox := False;
+
+end;
+
+procedure TForm_kart.SpeedButton1Click(Sender: TObject);
+begin
+  if Application.MessageBox('Установить собственника автоматически?',
+    'Внимание!', MB_YESNO + MB_ICONQUESTION + MB_TOPMOST) = IDYES then
+  begin
+    DataModule1.OraclePackage1.CallProcedure('scott.utils.set_krt_adm',
+      [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString]);
+    Form_list_kart.OD_list_kart.RefreshRecord;
+  
+  end;
+
 end;
 
 end.

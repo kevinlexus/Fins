@@ -923,9 +923,15 @@ begin
     begin
       DataModule1.OracleSession1.ApplyUpdates([OD_list_kart], true);
       if FF('Form_kart', 0) = 0 then
-        cnt_ := DataModule1.OraclePackage1.CallIntegerFunction(
-          'scott.C_CHARGES.gen_charges',
-          [OD_list_kart.FieldByName('lsk').AsString, null, null, null, 1, 0]);
+        cnt_ :=
+          DataModule1.OraclePackage1.CallFloatFunction('SCOTT.P_JAVA.GEN',
+          [0, null, null, null,
+          OD_list_kart.FieldByName('k_lsk_id').AsInteger,
+            null, Form_Main.cur_dt, 0, Form_main.javaServer]);
+
+      { cnt_ := DataModule1.OraclePackage1.CallIntegerFunction(
+         'scott.C_CHARGES.gen_charges',
+         [OD_list_kart.FieldByName('lsk').AsString, null, null, null, 1, 0]);}
     end;
   end;
 end;
