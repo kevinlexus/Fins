@@ -486,9 +486,14 @@ begin
             [OD_vvod.FieldByName('id').AsInteger]);
 
    //пересчитать начисление
-   a:=DataModule1.OraclePackage1.CallIntegerFunction
-           ('scott.c_charges.gen_charges',
-            [null, null, null, OD_vvod.FieldByName('id').AsInteger, 1, 0]);
+        a :=
+          DataModule1.OraclePackage1.CallFloatFunction('SCOTT.P_JAVA.GEN',
+          [0, null, OD_vvod.FieldByName('id').AsInteger, null,
+          null, null, Form_Main.cur_dt, 0, Form_main.javaServer]);
+
+//   a:=DataModule1.OraclePackage1.CallIntegerFunction
+//           ('scott.c_charges.gen_charges',
+//            [null, null, null, OD_vvod.FieldByName('id').AsInteger, 1, 0]);
 
   //OD_vvod.Session.ApplyUpdates([OD_vvod], true);//коммит
   i:=OD_vvod.FieldByName('id').AsInteger;

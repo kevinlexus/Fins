@@ -216,7 +216,10 @@ begin
     OD_changes.Next;
   end;
     OD_changes.Next;
+    try
   OD_changes.GotoBookmark(bm);
+             except
+      end;
 
   wwDBGrid1.ColumnByName('LSK').FooterValue :='Итого:';
   wwDBGrid1.ColumnByName('SUMMA').FooterValue :=FloatToStrF(summa_, ffFixed, 10, 2);

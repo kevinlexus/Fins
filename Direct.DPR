@@ -19,8 +19,10 @@ uses
   DM_module1 in 'DM_module1.pas' {DataModule1: TDataModule},
   Unit_status_gen in 'Unit_status_gen.pas' {Form_status_gen},
   Unit_form_alert_exit in 'Unit_form_alert_exit.pas' {Form_alert_exit},
-  Unit_print_saldo_houses in 'Unit_print_saldo_houses.pas' {Form_print_saldo_houses},
-  Unit_print_saldo_org_usl in 'Unit_print_saldo_org_usl.pas' {Form_print_saldo_org_usl},
+  Unit_print_saldo_houses in 'Unit_print_saldo_houses.pas'
+    {Form_print_saldo_houses},
+  Unit_print_saldo_org_usl in 'Unit_print_saldo_org_usl.pas'
+    {Form_print_saldo_org_usl},
   Unit_sel_reu in 'Unit_sel_reu.pas' {Form_sel_reu},
   Unit_form_saldo_check in 'Unit_form_saldo_check.pas' {Form_saldo_check},
   Unit_generate in 'Unit_generate.pas' {Form_generate},
@@ -29,7 +31,8 @@ uses
   Unit_form_plan in 'Unit_form_plan.pas' {Form_plan},
   Unit_print_plan in 'Unit_print_plan.pas' {Form_print_plan},
   Unit_print_xito5 in 'Unit_print_xito5.pas' {Form_print_xito5},
-  Unit_print_opl_xito10_3 in 'Unit_print_opl_xito10_3.pas' {Form_print_opl_xito10_3},
+  Unit_print_opl_xito10_3 in 'Unit_print_opl_xito10_3.pas'
+    {Form_print_opl_xito10_3},
   Unit_print_saldo_usl in 'Unit_print_saldo_usl.pas' {Form_print_saldo_usl},
   Unit_print_lg_usl in 'Unit_print_lg_usl.pas' {Form_print_lg_usl},
   Unit_sel_uch in 'Unit_sel_uch.pas' {Form_sel_uch},
@@ -64,6 +67,7 @@ uses
   Unit_list_kart in 'Unit_list_kart.pas' {Form_list_kart},
   Unit_changes_lsk in 'Unit_changes_lsk.pas' {Form_changes_lsk},
   Unit_changes_houses in 'Unit_changes_houses.pas' {Form_changes_houses},
+  Unit_changes_houses2 in 'Unit_changes_houses2.pas' {Form_changes_houses2},
   Unit_new_lsk in 'Unit_new_lsk.pas' {Form_new_lsk},
   Unit_house_vvod in 'Unit_house_vvod.pas' {Form_house_vvod},
   Unit_chargepay in 'Unit_chargepay.pas' {Form_chargepay},
@@ -72,7 +76,8 @@ uses
   Unit_sel_arch_period in 'Unit_sel_arch_period.pas' {Form_sel_arch_period},
   Unit_changes_list in 'Unit_changes_list.pas' {Form_changes_list},
   Unit_houses_nabor in 'Unit_houses_nabor.pas' {Form_houses_nabor},
-  Unit_change_house_nabor2 in 'Unit_change_house_nabor2.pas' {Form_change_house_nabor},
+  Unit_change_house_nabor2 in 'Unit_change_house_nabor2.pas'
+    {Form_change_house_nabor},
   Unit_spr_spk in 'Unit_spr_spk.pas' {Form_spr_spk},
   Unit_gen_current in 'Unit_gen_current.pas' {Form_gen_current},
   Unit_print_lists in 'Unit_print_lists.pas' {Form_print_lists},
@@ -116,8 +121,10 @@ uses
   Unit_spr_params in 'Unit_spr_params.pas' {Form_spr_params},
   Unit_edit_bitmask in 'Unit_edit_bitmask.pas' {Form_edit_bitmask},
   Unit_spr_street in 'Unit_spr_street.pas' {Form_spr_street},
-  Unit_change_house_status in 'Unit_change_house_status.pas' {Form_change_house_status},
-  Unit_change_house_vvod in 'Unit_change_house_vvod.pas' {Form_change_house_vvod},
+  Unit_change_house_status in 'Unit_change_house_status.pas'
+    {Form_change_house_status},
+  Unit_change_house_vvod in 'Unit_change_house_vvod.pas'
+    {Form_change_house_vvod},
   Unit_spr_usl in 'Unit_spr_usl.pas' {Form_spr_usl},
   Unit_add_usl in 'Unit_add_usl.pas' {Form_add_usl},
   Unit_price_copy in 'Unit_price_copy.pas' {Form_price_copy},
@@ -166,7 +173,8 @@ uses
   u_frmLoadKartExt in 'u_frmLoadKartExt.pas' {frmLoadKartExt},
   u_frmKartExt in 'u_frmKartExt.pas' {frmKartExt},
   u_frmLog in 'u_frmLog.pas' {frmLog},
-  u_frmKlskPar in 'u_frmKlskPar.pas' {frmKlskPar};
+  u_frmKlskPar in 'u_frmKlskPar.pas' {frmKlskPar},
+  u_frmSelObjects in 'u_frmSelObjects.pas' {frmSelObjects};
 
 {  Unit_edit_pay_usl_org in '..\Program Files86\Borland\Delphi7\Components\FR412\LibD7\Unit_edit_pay_usl_org.pas'}
 
@@ -219,7 +227,6 @@ begin
 
   Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TForm_Main, Form_Main);
-  
   s := Ini.ReadString('Application', 'User', '');
   Pass := '';
   I := 1;
@@ -229,7 +236,7 @@ begin
     User := User + CHR(StrToInt('$' + copy(s, I, 3)));
     I := I + 3;
   end;
-  
+
   s := Ini.ReadString('Application', 'Pass', '');
   Pass := '';
   I := 1;
@@ -267,8 +274,8 @@ begin
     I := I + 3;
   end;
 
-//  javaServer := Ini.ReadString('Application', 'javaServer', '');
-  
+  //  javaServer := Ini.ReadString('Application', 'javaServer', '');
+
 end;
 
 // загрузить параметры ККМ
@@ -318,9 +325,11 @@ begin
   Application.Initialize;
   DecimalSeparator := '.';
   // загрузить Ini параметры
+  //ShowMessage('0');
   loadIniPar;
 
-  Form_Main.ProgressBar1.Position:=1;
+  //ShowMessage('1');
+  Form_Main.ProgressBar1.Position := 1;
   Form_Main.Update;
   try
     DataModule1.OracleSession1.Connected := false;
@@ -355,16 +364,20 @@ begin
     end;
   end;
 
+  //ShowMessage('2');
   Application.CreateForm(TDM_Olap, DM_Olap);
   Application.CreateForm(TDM_Bill, DM_Bill);
   Application.CreateForm(TDM_Bill2, DM_Bill2);
 
+  //ShowMessage('3');
   loadKKMPar;
+  //ShowMessage('4');
 
   Form_Main.OracleEvent1.Start;
   Form_Main.User := User;
+  //ShowMessage('5');
 
-  // UNIDAC сессия
+    // UNIDAC сессия
   DataModule1.UniConnection1.Disconnect;
   serverIp := Ini.ReadString('Application', 'ServerIp', '');
   if serverIp = '' then
@@ -396,9 +409,11 @@ begin
     serverIp + ':' + serverPort + ':' + serverSID;
   DataModule1.UniConnection1.Connect;
 
-  // права пользователей
-  DataModule1.UniTablePriveleges.ParamByName('user_name').AsString:=UpperCase(User);
-  DataModule1.UniTablePriveleges.Active:=True;
+  //ShowMessage('6');
+    // права пользователей
+  DataModule1.UniTablePriveleges.ParamByName('user_name').AsString :=
+    UpperCase(User);
+  DataModule1.UniTablePriveleges.Active := True;
   Ini.Free;
   SetMenu(0);
   with Form_Main do
@@ -414,23 +429,25 @@ begin
 //    Form_Main.CoolTrayIcon1.ShowTaskbarIcon;
   end;
 
+  //ShowMessage('7');
   Form_main.OD_params.Active := true;
+
+  Form_main.currentPeriod := Form_main.OD_params.FieldByName('period').AsString;
   Oracle.OnOracleError := EOracleErr;
 
-  Form_Main.ProgressBar1.Position:=2;
+  Form_Main.ProgressBar1.Position := 2;
   Form_Main.Update;
-  
+
   //справочник расценок по работам еще не загружен
   Form_main.isloadedspr_ := 0;
 
-
-//  if DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
-//    ['drx5_админ_доступ_к_базе']) = 1 then
+  //  if DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
+  //    ['drx5_админ_доступ_к_базе']) = 1 then
   if CheckAccess('drx5_админ_доступ_к_базе') then
     Form_Main.g_admin := 1
   else
     Form_Main.g_admin := 0;
-  
+
   //  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
 //    ['drx5_админ_доступ_к_базе']) = 1) then
   if CheckAccess('drx5_админ_доступ_к_базе') then
@@ -438,22 +455,22 @@ begin
   else
     Form_main.isAdmin := false;
 
-//  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
-//    ['drx_редактирование_klsk']) = 1) then
+  //  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
+  //    ['drx_редактирование_klsk']) = 1) then
   if CheckAccess('drx_редактирование_klsk') then
     Form_main.isEditKlsk := true
   else
     Form_main.isEditKlsk := false;
 
-//  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
-//    ['drx3_Правка_кода_РЭУ']) = 1) then
+  //  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
+  //    ['drx3_Правка_кода_РЭУ']) = 1) then
   if CheckAccess('drx3_Правка_кода_РЭУ') then
     Form_main.isEditReu := true
   else
     Form_main.isEditReu := false;
 
-//  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
-//    ['drx4_Правка_кода_Пасп_стола']) = 1) then
+  //  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
+  //    ['drx4_Правка_кода_Пасп_стола']) = 1) then
   if CheckAccess('drx4_Правка_кода_Пасп_стола') then
     Form_main.isEditPasp := true
   else
@@ -461,19 +478,21 @@ begin
 
   if DataModule1.OraclePackage1.CallIntegerFunction('scott.INIT.get_kart_ed1',
     [parNone]) = 1 then
-    Form_Main.isKartEd1:=True
-  else  
-    Form_Main.isKartEd1:=False;
+    Form_Main.isKartEd1 := True
+  else
+    Form_Main.isKartEd1 := False;
 
   // Отображать ли меню по выполнению плана
   Form_Main.N25.Enabled := false;
 
-  //загружаем параметры для сессии
+  //ShowMessage('8');
+    //загружаем параметры для сессии
   DataModule1.UniStoredProc1.StoredProcName := 'scott.utils.prep_users_par';
   DataModule1.UniStoredProc1.Params.Clear;
   DataModule1.UniStoredProc1.ExecProc;
 
-  Form_Main.ProgressBar1.Position:=3;
+  //ShowMessage('9');
+  Form_Main.ProgressBar1.Position := 3;
   Form_Main.Update;
 
   //включить таблицы параметров
@@ -492,16 +511,17 @@ begin
   DataModule1.OD_usl.Active := true;
   DataModule1.OD_sch_el.Active := true;
 
-  // загрузить U_LIST в память
+  //ShowMessage('10');
+    // загрузить U_LIST в память
   Utils.loadListIdCd(Form_main.uList);
 
-  Form_Main.ProgressBar1.Position:=4;
+  Form_Main.ProgressBar1.Position := 4;
   Form_Main.Update;
 
   // загрузить дома, для формы выбора дома
-  DataModule1.OD_list_choice.SetVariable('clr_',1);
+  DataModule1.OD_list_choice.SetVariable('clr_', 1);
   DataModule1.OD_list_choice.Active := true;
-  
+
   if (User <> 'scott') and (User <> 'lev') and
     (Form_Main.OD_params.FieldByName('param').AsInteger = 1) then
   begin
@@ -512,6 +532,7 @@ begin
     Form_alert_exit.ShowModal;
   end;
 
+  //ShowMessage('11');
   if
     ((DataModule1.OraclePackage1.CallIntegerFunction('scott.INIT.get_have_splash',
     [parNone]) = 1) or
@@ -532,16 +553,17 @@ begin
     Form_Main.Visible := true;
   end;
 
-  Form_Main.ProgressBar1.Position:=5;
+  Form_Main.ProgressBar1.Position := 5;
   Form_Main.Update;
   Form_Main.ProgressBar1.Hide;
 
   Form_main.WindowState := wsMaximized;
   Application.CreateForm(TForm_sel_comps, Form_sel_comps);
   Form_sel_comps.ShowModal;
+  //ShowMessage('12');
 
   Form_main.exepath_ := ExtractFilePath(Application.ExeName);
- 
+
   Application.Run;
 end.
 

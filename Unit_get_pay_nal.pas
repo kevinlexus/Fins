@@ -471,10 +471,12 @@ begin
             // ¬ыполнить начисление в PL/SQL или в Java, (если в Java, то оно будет выполнено дважды, еще и в момент распр. платежа,
             // так как модуль Ќачисление еще выполн€ет функцию заполнени€ коротких наименований услуг по лиц.счету
             // Java может распределить по свежему начислению (дл€ “—∆, чтобы в чеке отразить суммы)
-      l_cnt :=
+
+            // убрал, 24.11.21 - так как выполн€етс€ в Java при распределении платежа
+{      l_cnt :=
         DataModule1.OraclePackage1.CallIntegerFunction('scott.C_CHARGES.gen_charges',
         [wwDBEdit3.Text, null, null,
-        null, 1, 0]);
+        null, 1, 0]);}
       //    end;
       clearPay;
     end
@@ -1600,7 +1602,7 @@ begin
     Edit1.Text := OD_Kart.FieldByName('adr').AsString;
     klsk := OD_Kart.FieldByName('k_lsk_id').AsInteger;
 
-    if getDoublePar(Form_main.paramList, 'JAVA_CHARGE') <> 1 then
+{    if getDoublePar(Form_main.paramList, 'JAVA_CHARGE') <> 1 then
     begin
       // ¬ыполнить начисление в PL/SQL, если нет Java модул€ начислени€
       // чтобы уже Java могла распределить по свежему начислению
@@ -1609,7 +1611,7 @@ begin
         [Form_Main.Lsk_, null, null,
         null, 1, 0]);
     end;
-
+ }
     setNkom(Form_Main.Lsk_);
     clearPay;
     //очищаем оплату по мес€цам

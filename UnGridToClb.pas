@@ -73,8 +73,11 @@ begin
 
     FreeMem(pch);
     FreeMem(pch1);
-
+                 try
     dbg.DataSource.DataSet.GotoBookmark(bm);
+          except
+      end;
+
     //ShowMessage('Данные успешно скопированы в буфер обмена.');
   finally
     dbg.Visible := True;

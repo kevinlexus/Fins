@@ -1,9 +1,9 @@
-object Form_changes_houses: TForm_changes_houses
-  Left = 1207
-  Top = 202
-  Width = 863
-  Height = 508
-  Caption = #1055#1077#1088#1077#1088#1072#1089#1095#1077#1090#1099' '#1087#1086' '#1076#1086#1084#1072#1084' - '#1083#1080#1094#1077#1074#1099#1084
+object Form_changes_houses2: TForm_changes_houses2
+  Left = 873
+  Top = 660
+  Width = 903
+  Height = 612
+  Caption = #1055#1077#1088#1077#1088#1072#1089#1095#1077#1090#1099
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -92,68 +92,29 @@ object Form_changes_houses: TForm_changes_houses
   object cxpgcntrl1: TcxPageControl
     Left = 0
     Top = 0
-    Width = 847
-    Height = 469
+    Width = 887
+    Height = 573
     Align = alClient
     TabOrder = 0
     Properties.ActivePage = cxTabSheet
     Properties.CustomButtons.Buttons = <>
-    ClientRectBottom = 465
+    ClientRectBottom = 569
     ClientRectLeft = 4
-    ClientRectRight = 843
+    ClientRectRight = 883
     ClientRectTop = 24
     object cxTabSheet: TcxTabSheet
       Caption = #1053#1086#1074#1099#1081' '#1087#1077#1088#1077#1088#1072#1089#1095#1077#1090
       ImageIndex = 0
       object GroupBox1: TGroupBox
         Left = 0
-        Top = 312
-        Width = 839
-        Height = 129
+        Top = 320
+        Width = 879
+        Height = 225
         Align = alBottom
         TabOrder = 0
-        object Label1: TLabel
-          Left = 8
-          Top = 20
-          Width = 35
-          Height = 13
-          Caption = #1051'/'#1057' '#1089
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -11
-          Font.Name = 'MS Sans Serif'
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
-        object Label2: TLabel
-          Left = 144
-          Top = 20
-          Width = 15
-          Height = 13
-          Caption = #1087#1086
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -11
-          Font.Name = 'MS Sans Serif'
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
-        object Label3: TLabel
-          Left = 677
-          Top = 23
-          Width = 66
-          Height = 13
-          Caption = #1047#1072' '#1087#1077#1088#1080#1086#1076':'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -11
-          Font.Name = 'MS Sans Serif'
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
         object Label4: TLabel
-          Left = 267
-          Top = 20
+          Left = 6
+          Top = 200
           Width = 74
           Height = 13
           Caption = #1055#1088#1080#1084#1077#1095#1072#1085#1080#1077
@@ -164,123 +125,44 @@ object Form_changes_houses: TForm_changes_houses
           Font.Style = [fsBold]
           ParentFont = False
         end
-        object wwDBEdit3: TwwDBEdit
-          Left = 48
-          Top = 16
-          Width = 89
-          Height = 21
+        object btn1: TButton
+          Left = 672
+          Top = 88
+          Width = 193
+          Height = 121
+          Caption = #1042#1099#1087#1086#1083#1085#1080#1090#1100
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
-          Picture.PictureMask = '[#][#][#][#][#][#][#][#]'
+          TabOrder = 1
+          OnClick = btn1Click
+        end
+        object wwDBEdit2: TwwDBEdit
+          Left = 81
+          Top = 195
+          Width = 576
+          Height = 21
           TabOrder = 0
           UnboundDataType = wwDefault
           WantReturns = False
           WordWrap = False
         end
-        object wwDBEdit1: TwwDBEdit
-          Left = 168
-          Top = 16
-          Width = 89
-          Height = 21
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -11
-          Font.Name = 'MS Sans Serif'
-          Font.Style = [fsBold]
-          ParentFont = False
-          Picture.PictureMask = '[#][#][#][#][#][#][#][#]'
-          TabOrder = 1
-          UnboundDataType = wwDefault
-          WantReturns = False
-          WordWrap = False
-        end
-        object chk5: TCheckBox
-          Left = 5
-          Top = 44
-          Width = 108
-          Height = 17
-          Hint = #1042#1099#1073#1088#1072#1090#1100' '#1087#1086#1089#1090#1072#1074#1097#1080#1082#1086#1074' '#1076#1083#1103' '#1087#1077#1088#1077#1088#1072#1089#1095#1077#1090#1072
-          Caption = #1042#1099#1073#1088#1072#1090#1100' '#1076#1086#1084#1072
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -11
-          Font.Name = 'MS Sans Serif'
-          Font.Style = [fsBold]
-          ParentFont = False
-          TabOrder = 4
-          OnClick = chk5Click
-        end
-        object CheckBox2: TCheckBox
-          Left = 5
-          Top = 60
-          Width = 164
-          Height = 17
-          Hint = #1044#1072#1085#1085#1072#1103' '#1092#1091#1085#1082#1094#1080#1103' '#1074#1099#1087#1086#1083#1085#1103#1077#1090#1089#1103' '#1090#1086#1083#1100#1082#1086' '#1087#1086' '#1061'.'#1042'. '#1080' '#1043'.'#1042'. '#1080' '#1050#1072#1085#1072#1083#1080#1079'.'
-          Caption = #1044#1086#1073#1072#1074#1080#1090#1100' '#1091#1089#1083#1091#1075#1080' '#1089#1074'.'#1089'.'#1085'.'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -11
-          Font.Name = 'MS Sans Serif'
-          Font.Style = [fsBold]
-          ParentFont = False
-          ParentShowHint = False
-          ShowHint = True
-          TabOrder = 5
-        end
-        object btn1: TButton
-          Left = 760
-          Top = 80
-          Width = 68
-          Height = 25
-          Caption = #1042#1099#1087#1086#1083#1085#1080#1090#1100
-          TabOrder = 3
-          OnClick = btn1Click
-        end
-        object wwDBEdit2: TwwDBEdit
-          Left = 349
-          Top = 16
-          Width = 324
-          Height = 21
-          TabOrder = 2
-          UnboundDataType = wwDefault
-          WantReturns = False
-          WordWrap = False
-        end
-        object CheckBox3: TCheckBox
-          Left = 5
-          Top = 93
-          Width = 124
-          Height = 17
-          Hint = 
-            #1048#1089#1087#1086#1083#1100#1079#1086#1074#1072#1090#1100' '#1074#1089#1077#1093' '#1087#1086#1089#1090#1072#1074#1097#1080#1082#1086#1074' '#1080#1079' '#1089#1087#1088#1072#1074#1086#1095#1085#1080#1082#1072', '#1087#1088#1080' '#1074#1074#1086#1076#1077' '#1086#1088#1075#1072#1085#1080#1079#1072 +
-            #1094#1080#1081' '#1076#1083#1103' '#1087#1077#1088#1077#1088#1072#1089#1095#1105#1090#1072
-          Caption = #1042#1089#1077' '#1086#1088#1075#1072#1085#1080#1079#1072#1094#1080#1080
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -11
-          Font.Name = 'MS Sans Serif'
-          Font.Style = [fsBold]
-          ParentFont = False
-          TabOrder = 7
-          OnClick = chk7Click
-        end
         object GroupBox2: TGroupBox
-          Left = 248
-          Top = 38
+          Left = 352
+          Top = 78
           Width = 305
-          Height = 87
+          Height = 115
           Caption = #1060#1080#1083#1100#1090#1088
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
           Font.Name = 'MS Sans Serif'
-          Font.Style = []
+          Font.Style = [fsBold]
           ParentFont = False
-          TabOrder = 9
+          TabOrder = 2
           object DBComboBoxEh2: TDBComboBoxEh
             Left = 8
             Top = 14
@@ -361,468 +243,381 @@ object Form_changes_houses: TForm_changes_houses
             TabOrder = 4
             Visible = True
           end
+          object chk4: TCheckBox
+            Left = 8
+            Top = 91
+            Width = 129
+            Height = 17
+            Caption = #1085#1077#1090' '#1087#1088#1086#1078#1080#1074#1072#1102#1097#1080#1093
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            ParentFont = False
+            TabOrder = 5
+          end
         end
-        object chk1: TCheckBox
-          Left = 558
-          Top = 48
-          Width = 91
-          Height = 25
-          Hint = 
-            #1042#1086#1079#1084#1086#1078#1085#1086#1089#1090#1100' '#1074#1099#1073#1086#1088#1072' '#1087#1077#1088#1080#1086#1076#1072', '#1074' '#1082#1086#1090#1086#1088#1086#1084' '#1085#1077#1086#1073#1093#1086#1076#1080#1084#1086' '#1087#1088#1086#1074#1077#1089#1090#1080' '#1080#1079#1084#1077#1085#1077 +
-            #1085#1080#1103
-          Caption = #1055#1088#1086#1074#1077#1089#1090#1080' '#1087#1077#1088#1080#1086#1076#1086#1084':'
+        object GroupBox3: TGroupBox
+          Left = 8
+          Top = 8
+          Width = 553
+          Height = 65
+          Caption = #1042#1099#1087#1086#1083#1085#1080#1090#1100' '#1087#1086':'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
-          ParentShowHint = False
-          ShowHint = True
-          TabOrder = 10
-          WordWrap = True
-          OnClick = chk1Click
+          TabOrder = 3
+          object Label3: TLabel
+            Left = 418
+            Top = 42
+            Width = 17
+            Height = 13
+            Caption = #1055#1086
+          end
+          object chkIsPremise: TCheckBox
+            Left = 6
+            Top = 16
+            Width = 97
+            Height = 17
+            Caption = #1055#1086#1084#1077#1097#1077#1085#1080#1077
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            ParentFont = False
+            TabOrder = 0
+            OnClick = chkIsPremiseClick
+          end
+          object chkIsLsk: TCheckBox
+            Left = 224
+            Top = 40
+            Width = 105
+            Height = 17
+            Caption = #1051#1080#1094'. '#1089#1095#1077#1090' c'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            ParentFont = False
+            TabOrder = 1
+            OnClick = chkIsLskClick
+          end
+          object chkIsObjects: TCheckBox
+            Left = 5
+            Top = 40
+            Width = 124
+            Height = 17
+            Hint = #1042#1099#1073#1086#1088' '#1086#1073#1098#1077#1082#1090#1086#1074
+            Caption = #1042#1099#1073#1086#1088' '#1086#1073#1098#1077#1082#1090#1086#1074
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            ParentFont = False
+            TabOrder = 2
+            OnClick = chkIsObjectsClick
+          end
+          object cxtxtPremise: TcxTextEdit
+            Left = 100
+            Top = 14
+            TabOrder = 3
+            Width = 317
+          end
+          object cxtxtLskFrom: TcxTextEdit
+            Left = 327
+            Top = 38
+            TabOrder = 4
+            Width = 89
+          end
+          object chkIsAll: TCheckBox
+            Left = 132
+            Top = 40
+            Width = 93
+            Height = 17
+            Caption = #1042#1077#1089#1100' '#1092#1086#1085#1076
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            ParentFont = False
+            TabOrder = 6
+            OnClick = chkIsAllClick
+          end
+          object cxtxtLskTo: TcxTextEdit
+            Left = 439
+            Top = 38
+            TabOrder = 5
+            Width = 89
+          end
         end
-        object cxLookupComboBox2: TcxLookupComboBox
-          Left = 640
-          Top = 48
-          Enabled = False
-          Properties.KeyFieldNames = 'MG'
-          Properties.ListColumns = <
-            item
-              FieldName = 'MG1'
-            end>
-          Properties.ListOptions.ShowHeader = False
-          Properties.ListSource = DS_mg
-          TabOrder = 11
-          Width = 89
-        end
-        object chk2: TCheckBox
-          Left = 5
-          Top = 109
-          Width = 188
-          Height = 17
-          Hint = 
-            #1042#1099#1087#1086#1083#1085#1080#1090#1100' '#1085#1072#1095#1080#1089#1083#1077#1085#1080#1077' '#1087#1086' '#1080#1090#1086#1075#1091' '#1087#1077#1088#1077#1088#1072#1089#1095#1077#1090#1072' ('#1089#1085#1080#1078#1077#1085#1080#1077' '#1087#1088#1086#1080#1079#1074#1086#1076#1080#1090#1077#1083 +
-            #1100#1085#1086#1089#1090#1080')'
-          Caption = #1055#1086' '#1086#1082#1086#1085#1095#1072#1085#1080#1102'- '#1085#1072#1095#1080#1089#1083#1077#1085#1080#1077
-          Checked = True
+        object GroupBox4: TGroupBox
+          Left = 8
+          Top = 72
+          Width = 337
+          Height = 121
+          Caption = #1055#1072#1088#1072#1084#1077#1090#1088#1099
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
-          State = cbChecked
-          TabOrder = 8
+          TabOrder = 4
+          object CheckBox1: TCheckBox
+            Left = 5
+            Top = 64
+            Width = 156
+            Height = 17
+            Hint = #1044#1072#1085#1085#1072#1103' '#1092#1091#1085#1082#1094#1080#1103' '#1074#1099#1087#1086#1083#1085#1103#1077#1090#1089#1103' '#1090#1086#1083#1100#1082#1086' '#1087#1086' '#1061'.'#1042'. '#1080' '#1043'.'#1042'. '#1080' '#1050#1072#1085#1072#1083#1080#1079'.'
+            Caption = #1044#1086#1073#1072#1074#1080#1090#1100' '#1091#1089#1083#1091#1075#1080' '#1089#1074'.'#1089'.'#1085'.'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 0
+            Visible = False
+          end
+          object chkIsAddUslWaste: TCheckBox
+            Left = 5
+            Top = 40
+            Width = 244
+            Height = 17
+            Hint = 
+              #1042#1099#1087#1086#1083#1085#1080#1090#1100' '#1085#1072#1095#1080#1089#1083#1077#1085#1080#1077' '#1087#1086' '#1080#1090#1086#1075#1091' '#1087#1077#1088#1077#1088#1072#1089#1095#1077#1090#1072' ('#1089#1085#1080#1078#1077#1085#1080#1077' '#1087#1088#1086#1080#1079#1074#1086#1076#1080#1090#1077#1083 +
+              #1100#1085#1086#1089#1090#1080')'
+            Caption = #1044#1086#1073#1072#1074#1080#1090#1100' '#1074#1086#1076#1086#1086#1090#1074#1077#1076#1077#1085#1080#1077' '#1082' '#1061'.'#1042'. '#1043'.'#1042'.'
+            Checked = True
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            ParentFont = False
+            State = cbChecked
+            TabOrder = 1
+          end
+          object CheckBox2: TCheckBox
+            Left = 5
+            Top = 16
+            Width = 284
+            Height = 17
+            Hint = 
+              #1048#1089#1087#1086#1083#1100#1079#1086#1074#1072#1090#1100' '#1074#1089#1077#1093' '#1087#1086#1089#1090#1072#1074#1097#1080#1082#1086#1074' '#1080#1079' '#1089#1087#1088#1072#1074#1086#1095#1085#1080#1082#1072', '#1087#1088#1080' '#1074#1074#1086#1076#1077' '#1086#1088#1075#1072#1085#1080#1079#1072 +
+              #1094#1080#1081' '#1076#1083#1103' '#1087#1077#1088#1077#1088#1072#1089#1095#1105#1090#1072
+            Caption = #1055#1086#1082#1072#1079#1099#1074#1072#1090#1100' '#1074#1089#1077' '#1086#1088#1075#1072#1085#1080#1079#1072#1094#1080#1080', '#1087#1088#1080' '#1074#1099#1073#1086#1088#1077
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            ParentFont = False
+            TabOrder = 2
+            OnClick = chk7Click
+          end
+          object chkIsChargeAtEnd: TCheckBox
+            Left = 141
+            Top = 64
+            Width = 188
+            Height = 17
+            Hint = 
+              #1042#1099#1087#1086#1083#1085#1080#1090#1100' '#1085#1072#1095#1080#1089#1083#1077#1085#1080#1077' '#1087#1086' '#1080#1090#1086#1075#1091' '#1087#1077#1088#1077#1088#1072#1089#1095#1077#1090#1072' ('#1089#1085#1080#1078#1077#1085#1080#1077' '#1087#1088#1086#1080#1079#1074#1086#1076#1080#1090#1077#1083 +
+              #1100#1085#1086#1089#1090#1080')'
+            Caption = #1055#1086' '#1086#1082#1086#1085#1095#1072#1085#1080#1102' - '#1085#1072#1095#1080#1089#1083#1077#1085#1080#1077
+            Checked = True
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            ParentFont = False
+            State = cbChecked
+            TabOrder = 3
+            Visible = False
+          end
+          object chk6: TCheckBox
+            Left = 6
+            Top = 88
+            Width = 155
+            Height = 17
+            Caption = #1082#1086#1088#1088#1077#1082#1090#1080#1088#1086#1074#1082#1080' '#1089#1072#1083#1100#1076#1086
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            ParentFont = False
+            TabOrder = 4
+            Visible = False
+          end
         end
-        object chk3: TCheckBox
-          Left = 4
-          Top = 76
-          Width = 244
-          Height = 17
-          Hint = 
-            #1042#1099#1087#1086#1083#1085#1080#1090#1100' '#1085#1072#1095#1080#1089#1083#1077#1085#1080#1077' '#1087#1086' '#1080#1090#1086#1075#1091' '#1087#1077#1088#1077#1088#1072#1089#1095#1077#1090#1072' ('#1089#1085#1080#1078#1077#1085#1080#1077' '#1087#1088#1086#1080#1079#1074#1086#1076#1080#1090#1077#1083 +
-            #1100#1085#1086#1089#1090#1080')'
-          Caption = #1044#1086#1073#1072#1074#1080#1090#1100' '#1074#1086#1076#1086#1086#1090#1074#1077#1076#1077#1085#1080#1077' '#1082' '#1061'.'#1042'. '#1043'.'#1042'.'
-          Checked = True
+        object GroupBox5: TGroupBox
+          Left = 568
+          Top = 8
+          Width = 305
+          Height = 73
+          Caption = #1055#1077#1088#1080#1086#1076
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
-          State = cbChecked
-          TabOrder = 6
-        end
-        object cxLookupComboBox1: TcxLookupComboBox
-          Left = 744
-          Top = 16
-          Properties.KeyFieldNames = 'MG'
-          Properties.ListColumns = <
-            item
-              FieldName = 'MG1'
-            end>
-          Properties.ListOptions.ShowHeader = False
-          Properties.ListSource = DS_mg
-          TabOrder = 12
-          Width = 89
-        end
-        object chk4: TCheckBox
-          Left = 558
-          Top = 75
-          Width = 129
-          Height = 17
-          Caption = #1085#1077#1090' '#1087#1088#1086#1078#1080#1074#1072#1102#1097#1080#1093
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -11
-          Font.Name = 'MS Sans Serif'
-          Font.Style = [fsBold]
-          ParentFont = False
-          TabOrder = 13
-        end
-        object chk6: TCheckBox
-          Left = 558
-          Top = 95
-          Width = 155
-          Height = 17
-          Caption = #1082#1086#1088#1088#1077#1082#1090#1080#1088#1086#1074#1082#1080' '#1089#1072#1083#1100#1076#1086
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -11
-          Font.Name = 'MS Sans Serif'
-          Font.Style = [fsBold]
-          ParentFont = False
-          TabOrder = 14
+          TabOrder = 5
+          object Label1: TLabel
+            Left = 8
+            Top = 20
+            Width = 73
+            Height = 13
+            Caption = #1047#1072' '#1087#1077#1088#1080#1086#1076' '#1089
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
+          object Label2: TLabel
+            Left = 186
+            Top = 20
+            Width = 15
+            Height = 13
+            Caption = #1087#1086
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
+          object cbbMgFrom: TcxLookupComboBox
+            Left = 88
+            Top = 13
+            Properties.KeyFieldNames = 'MG'
+            Properties.ListColumns = <
+              item
+                FieldName = 'MG1'
+              end>
+            Properties.ListOptions.ShowHeader = False
+            Properties.ListSource = DS_mg1
+            TabOrder = 0
+            Width = 89
+          end
+          object cbbMgTo: TcxLookupComboBox
+            Left = 208
+            Top = 13
+            Properties.KeyFieldNames = 'MG'
+            Properties.ListColumns = <
+              item
+                FieldName = 'MG1'
+              end>
+            Properties.ListOptions.ShowHeader = False
+            Properties.ListSource = DS_mg2
+            TabOrder = 1
+            Width = 89
+          end
+          object chk1: TCheckBox
+            Left = 8
+            Top = 46
+            Width = 145
+            Height = 17
+            Hint = 
+              #1042#1086#1079#1084#1086#1078#1085#1086#1089#1090#1100' '#1074#1099#1073#1086#1088#1072' '#1087#1077#1088#1080#1086#1076#1072', '#1074' '#1082#1086#1090#1086#1088#1086#1084' '#1085#1077#1086#1073#1093#1086#1076#1080#1084#1086' '#1087#1088#1086#1074#1077#1089#1090#1080' '#1080#1079#1084#1077#1085#1077 +
+              #1085#1080#1103
+            Caption = #1055#1088#1086#1074#1077#1089#1090#1080' '#1087#1077#1088#1080#1086#1076#1086#1084
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            ParentFont = False
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 2
+            WordWrap = True
+            OnClick = chk1Click
+          end
+          object cbbMgProcess: TcxLookupComboBox
+            Left = 208
+            Top = 42
+            Enabled = False
+            Properties.KeyFieldNames = 'MG'
+            Properties.ListColumns = <
+              item
+                FieldName = 'MG1'
+              end>
+            Properties.ListOptions.ShowHeader = False
+            Properties.ListSource = DS_mg1
+            TabOrder = 3
+            Width = 89
+          end
         end
       end
       object Panel1: TPanel
         Left = 0
         Top = 0
-        Width = 839
-        Height = 312
+        Width = 879
+        Height = 320
         Align = alClient
         TabOrder = 1
-        object DBGridEh1: TDBGridEh
+        object cxGrid1: TcxGrid
           Left = 1
           Top = 1
-          Width = 837
-          Height = 285
+          Width = 877
+          Height = 318
           Align = alClient
-          DataSource = DS_list_choices_changes
-          Flat = False
-          FooterColor = clWindow
-          FooterFont.Charset = DEFAULT_CHARSET
-          FooterFont.Color = clWindowText
-          FooterFont.Height = -11
-          FooterFont.Name = 'MS Sans Serif'
-          FooterFont.Style = []
           TabOrder = 0
-          TitleFont.Charset = DEFAULT_CHARSET
-          TitleFont.Color = clWindowText
-          TitleFont.Height = -11
-          TitleFont.Name = 'MS Sans Serif'
-          TitleFont.Style = []
-          OnKeyPress = DBGridEh1KeyPress
-          Columns = <
-            item
-              EditButtons = <>
-              FieldName = 'TYPE_NAME'
-              Footers = <>
-              Width = 45
+          object cxGrid1DBTableView1: TcxGridDBTableView
+            Navigator.Buttons.CustomButtons = <>
+            Navigator.Visible = True
+            DataController.DataSource = DS_list_choices_changes
+            DataController.Summary.DefaultGroupSummaryItems = <>
+            DataController.Summary.FooterSummaryItems = <>
+            DataController.Summary.SummaryGroups = <>
+            OptionsData.Deleting = False
+            OptionsData.Inserting = False
+            OptionsView.ColumnAutoWidth = True
+            OptionsView.GroupByBox = False
+            OptionsView.Indicator = True
+            object cxGrid1DBTableView1USL_ID: TcxGridDBColumn
+              DataBinding.FieldName = 'USL_ID'
             end
-            item
-              EditButtons = <>
-              FieldName = 'USL_ID'
-              Footers = <>
+            object cxGrid1DBTableView1usl_name: TcxGridDBColumn
+              DataBinding.FieldName = 'usl_name'
             end
-            item
-              DropDownBox.Options = [dlgColumnResizeEh, dlgColLinesEh]
-              DropDownWidth = 250
-              EditButtons = <>
-              FieldName = 'usl_name'
-              Footers = <>
-              Width = 165
+            object cxGrid1DBTableView1ORG1_ID: TcxGridDBColumn
+              Caption = #1050#1086#1076' '#1086#1088#1075
+              DataBinding.FieldName = 'ORG1_ID'
             end
-            item
-              DropDownBox.Options = [dlgColumnResizeEh, dlgColLinesEh]
-              DropDownWidth = 250
-              EditButtons = <>
-              FieldName = 'org_name1'
-              Footers = <>
-              Width = 110
+            object cxGrid1DBTableView1org_name1: TcxGridDBColumn
+              Caption = #1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103
+              DataBinding.FieldName = 'org_name1'
             end
-            item
-              EditButtons = <>
-              FieldName = 'PROC1'
-              Footers = <>
-              Width = 58
+            object cxGrid1DBTableView1PROC1: TcxGridDBColumn
+              Caption = '% '#1087#1077#1088#1077#1088#1072#1089#1095#1077#1090#1072
+              DataBinding.FieldName = 'PROC1'
             end
-            item
-              EditButtons = <>
-              FieldName = 'CNT_DAYS'
-              Footers = <>
-              Title.Caption = #1050#1086#1083'-'#1074#1086' '#1076#1085#1077#1081' 1'
-              Width = 73
+            object cxGrid1DBTableView1CNT_DAYS: TcxGridDBColumn
+              DataBinding.FieldName = 'CNT_DAYS'
+              Width = 72
             end
-            item
-              EditButtons = <>
-              FieldName = 'ABS_SET'
-              Footers = <>
+            object cxGrid1DBTableView1ABS_SET: TcxGridDBColumn
+              DataBinding.FieldName = 'ABS_SET'
             end
-            item
-              DropDownBox.Options = [dlgColumnResizeEh, dlgColLinesEh]
-              DropDownWidth = 250
-              EditButtons = <>
-              FieldName = 'org_name2'
-              Footers = <>
-              Width = 92
-            end
-            item
-              EditButtons = <>
-              FieldName = 'PROC2'
-              Footers = <>
-              Width = 58
-            end
-            item
-              EditButtons = <>
-              FieldName = 'CNT_DAYS2'
-              Footers = <>
-              Width = 73
-            end>
-        end
-        object wdbnvgtr1: TwwDBNavigator
-          Left = 1
-          Top = 286
-          Width = 837
-          Height = 25
-          DataSource = DS_list_choices_changes
-          Options = [noUseInternationalText]
-          ShowHint = True
-          RepeatInterval.InitialDelay = 500
-          RepeatInterval.Interval = 100
-          Align = alBottom
-          ParentShowHint = False
-          object nbtn1: TwwNavButton
-            Left = 0
-            Top = 0
-            Width = 25
-            Height = 25
-            Hint = #1050' '#1087#1077#1088#1074#1086#1081' '#1079#1072#1087#1080#1089#1080
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'wwDBNavigator1First'
-            Enabled = False
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 0
-            Style = nbsFirst
           end
-          object nbtn2: TwwNavButton
-            Left = 25
-            Top = 0
-            Width = 25
-            Height = 25
-            Hint = #1053#1072#1079#1072#1076' '#1085#1072' 10 '#1079#1072#1087#1080#1089#1077#1081
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'wwDBNavigator1PriorPage'
-            Enabled = False
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 1
-            Style = nbsPriorPage
-          end
-          object nbtn3: TwwNavButton
-            Left = 50
-            Top = 0
-            Width = 25
-            Height = 25
-            Hint = #1055#1088#1077#1076#1099#1076#1091#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'wwDBNavigator1Prior'
-            Enabled = False
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 2
-            Style = nbsPrior
-          end
-          object nbtn4: TwwNavButton
-            Left = 75
-            Top = 0
-            Width = 25
-            Height = 25
-            Hint = #1057#1083#1077#1076#1091#1102#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'wwDBNavigator1Next'
-            Enabled = False
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 3
-            Style = nbsNext
-          end
-          object nbtn5: TwwNavButton
-            Left = 100
-            Top = 0
-            Width = 25
-            Height = 25
-            Hint = #1042#1087#1077#1088#1077#1076' '#1085#1072' 10 '#1079#1072#1087#1080#1089#1077#1081
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'wwDBNavigator1NextPage'
-            Enabled = False
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 4
-            Style = nbsNextPage
-          end
-          object nbtn6: TwwNavButton
-            Left = 125
-            Top = 0
-            Width = 25
-            Height = 25
-            Hint = #1055#1077#1088#1077#1081#1090#1080' '#1082' '#1087#1086#1089#1083#1077#1076#1085#1077#1081' '#1079#1072#1087#1080#1089#1080
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'wwDBNavigator1Last'
-            Enabled = False
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 5
-            Style = nbsLast
-          end
-          object nbtn7: TwwNavButton
-            Left = 150
-            Top = 0
-            Width = 25
-            Height = 25
-            Hint = #1044#1086#1073#1072#1074#1080#1090#1100' '#1085#1086#1074#1091#1102' '#1079#1072#1087#1080#1089#1100
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'wwDBNavigator1Insert'
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 6
-            Style = nbsInsert
-          end
-          object nbtnDBNavigator1Delete: TwwNavButton
-            Left = 175
-            Top = 0
-            Width = 25
-            Height = 25
-            Hint = #1059#1076#1072#1083#1080#1090#1100' '#1090#1077#1082#1091#1097#1091#1102' '#1079#1072#1087#1080#1089#1100
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'nbtnDBNavigator1Delete'
-            Enabled = False
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 7
-            Style = nbsDelete
-          end
-          object nbtnDBNavigator1Edit: TwwNavButton
-            Left = 200
-            Top = 0
-            Width = 25
-            Height = 25
-            Hint = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1090#1077#1082#1091#1097#1091#1102' '#1079#1072#1087#1080#1089#1100
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'nbtnDBNavigator1Edit'
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 8
-            Style = nbsEdit
-            Visible = False
-          end
-          object nbtnDBNavigator1Post: TwwNavButton
-            Left = 225
-            Top = 0
-            Width = 25
-            Height = 25
-            Hint = #1054#1090#1087#1088#1072#1074#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103' '#1074' '#1073#1072#1079#1091
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'nbtnDBNavigator1Post'
-            Enabled = False
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 9
-            Style = nbsPost
-            Visible = False
-          end
-          object nbtn8: TwwNavButton
-            Left = 250
-            Top = 0
-            Width = 25
-            Height = 25
-            Hint = #1054#1090#1084#1077#1085#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103' '#1090#1077#1082#1091#1097#1077#1081' '#1079#1072#1087#1080#1089#1080
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'wwDBNavigator1Cancel'
-            Enabled = False
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 10
-            Style = nbsCancel
-            Visible = False
-          end
-          object nbtn9: TwwNavButton
-            Left = 275
-            Top = 0
-            Width = 25
-            Height = 25
-            Hint = #1054#1073#1085#1086#1074#1080#1090#1100' '#1079#1072#1087#1080#1089#1080
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'wwDBNavigator1Refresh'
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 11
-            Style = nbsRefresh
-            Visible = False
-          end
-          object nbtn10: TwwNavButton
-            Left = 300
-            Top = 0
-            Width = 25
-            Height = 25
-            Hint = #1055#1086#1089#1090#1072#1074#1080#1090#1100' '#1079#1072#1082#1083#1072#1076#1082#1091' '#1085#1072' '#1090#1077#1082#1091#1097#1077#1081' '#1079#1072#1087#1080#1089#1080
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'wwDBNavigator1SaveBookmark'
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 12
-            Style = nbsSaveBookmark
-            Visible = False
-          end
-          object nbtn11: TwwNavButton
-            Left = 325
-            Top = 0
-            Width = 25
-            Height = 25
-            Hint = #1055#1077#1088#1077#1081#1090#1080' '#1082' '#1089#1086#1093#1088#1072#1085#1105#1085#1085#1086#1081' '#1079#1072#1082#1083#1072#1076#1082#1077
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'wwDBNavigator1RestoreBookmark'
-            Enabled = False
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 13
-            Style = nbsRestoreBookmark
-            Visible = False
+          object cxGrid1Level1: TcxGridLevel
+            GridView = cxGrid1DBTableView1
           end
         end
       end
@@ -833,8 +628,8 @@ object Form_changes_houses: TForm_changes_houses
       object cxgrd1: TcxGrid
         Left = 0
         Top = 0
-        Width = 839
-        Height = 441
+        Width = 879
+        Height = 545
         Align = alClient
         TabOrder = 0
         object cxgrdbtblvwGrid1DBTableView1: TcxGridDBTableView
@@ -1098,21 +893,8 @@ object Form_changes_houses: TForm_changes_houses
     Left = 72
     Top = 152
   end
-  object OD_mg: TOracleDataSet
+  object OD_mg1: TOracleDataSet
     SQL.Strings = (
-      '/*select to_char(add_months(sysdate, rn),'#39'YYYYMM'#39') as mg,'
-      
-        'to_char(add_months(sysdate, rn),'#39'YYYY-MM'#39') as mg1, substr(p.peri' +
-        'od,1,4)||'#39'-'#39'||substr(p.period,5,2) as period'
-      ' from '
-      '(select -1 * rownum as rn from all_objects '
-      'where rownum < 36'
-      'union all'
-      'select rownum-1 as rn from all_objects '
-      'where rownum < 12), scott.params p'
-      'order by mg'
-      '*/'
-      ''
       'select to_char(add_months(sysdate, a.rn),'#39'YYYYMM'#39') as mg,'
       'to_char(add_months(sysdate, a.rn),'#39'YYYY-MM'#39') as mg1, '
       'substr(p.period,1,4)||'#39'-'#39'||substr(p.period,5,2) as period'
@@ -1131,13 +913,13 @@ object Form_changes_houses: TForm_changes_houses
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True
-    Left = 104
-    Top = 152
+    Left = 280
+    Top = 120
   end
-  object DS_mg: TDataSource
-    DataSet = OD_mg
-    Left = 136
-    Top = 152
+  object DS_mg1: TDataSource
+    DataSet = OD_mg1
+    Left = 312
+    Top = 120
   end
   object OD_report: TOracleDataSet
     SQL.Strings = (
@@ -1165,7 +947,8 @@ object Form_changes_houses: TForm_changes_houses
       
         '          substr(d.mgchange, 1, 4) || '#39'-'#39' || substr(d.mgchange, ' +
         '5, 2),'
-      '          trim(u.nm)')
+      '          trim(u.nm)'
+      'order by lsk')
     Optimize = False
     Variables.Data = {
       0300000002000000080000003A444F435F49445F030000000000000000000000
@@ -1648,5 +1431,33 @@ object Form_changes_houses: TForm_changes_houses
     DataSet = OD_c_change_docs
     Left = 208
     Top = 120
+  end
+  object DS_mg2: TDataSource
+    DataSet = OD_mg2
+    Left = 312
+    Top = 168
+  end
+  object OD_mg2: TOracleDataSet
+    SQL.Strings = (
+      'select to_char(add_months(sysdate, a.rn),'#39'YYYYMM'#39') as mg,'
+      'to_char(add_months(sysdate, a.rn),'#39'YYYY-MM'#39') as mg1, '
+      'substr(p.period,1,4)||'#39'-'#39'||substr(p.period,5,2) as period'
+      ' from '
+      '(select -1 * rownum as rn from all_objects where rownum <500'
+      'union all'
+      'select rownum-1 as rn from all_objects where rownum <500'
+      ') a, scott.params p'
+      'where to_char(add_months(sysdate, a.rn),'#39'YYYYMM'#39')>=p.period_back'
+      'and to_char(add_months(sysdate, a.rn),'#39'YYYYMM'#39')<=p.period_forwrd'
+      'order by mg')
+    Optimize = False
+    QBEDefinition.QBEFieldDefs = {
+      0400000003000000020000004D47010000000000030000004D47310100000000
+      0006000000504552494F44010000000000}
+    Session = DataModule1.OracleSession1
+    DesignActivation = True
+    Active = True
+    Left = 280
+    Top = 168
   end
 end

@@ -26,7 +26,8 @@ uses
   cxGridLevel, cxClasses, cxGrid, cxSplitter, cxGraphics, cxLookAndFeels,
   cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter, cxData,
   cxDataStorage, cxEdit, cxNavigator, cxDBData, cxDBLookupComboBox,
-  cxGridCustomTableView, cxGridTableView, cxGridCustomView, StdCtrls;
+  cxGridCustomTableView, cxGridTableView, cxGridCustomView, StdCtrls,
+  cxCalendar;
 
 type
   TForm_spr_penya = class(TForm)
@@ -74,7 +75,6 @@ type
     procedure wwDBGrid1KeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
     procedure OD_spr_penAfterPost(DataSet: TDataSet);
-    procedure OD_stav_rAfterPost(DataSet: TDataSet);
   private
     exit_: Integer;
   public
@@ -121,13 +121,5 @@ begin
       ('scott.P_JAVA.reloadSprPen',
       [Form_main.javaServer]);
 end;
-
-procedure TForm_spr_penya.OD_stav_rAfterPost(DataSet: TDataSet);
-begin
-    DataModule1.OraclePackage1.CallProcedure
-      ('scott.P_JAVA.reloadSprPen',
-      [Form_main.javaServer]);
-end;
-
 
 end.

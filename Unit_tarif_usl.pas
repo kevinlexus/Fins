@@ -34,6 +34,9 @@ type
     cxGrid1DBTableView1LSK: TcxGridDBColumn;
     cxGrid1DBTableView1KOEFF: TcxGridDBColumn;
     cxGrid1DBTableView1NORM: TcxGridDBColumn;
+    cxGrid1DBTableView1DT1: TcxGridDBColumn;
+    cxGrid1DBTableView1DT2: TcxGridDBColumn;
+    cxGrid1DBTableView1ORG: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure wwDBGrid2DblClick(Sender: TObject);
@@ -88,7 +91,11 @@ begin
     if Form_change_house_nabor2.ShowModal = mrOk then
     begin
       Form_tree_objects.prepData;
+      try
       DM_Olap.Uni_data.GotoBookmark(bm_);
+            except
+      end;
+
     end;
   end;
 end;
@@ -107,7 +114,11 @@ begin
   if Form_change_house_nabor2.ShowModal = mrOk then
   begin
     Form_tree_objects.prepData;
+    try
     DM_Olap.Uni_data.GotoBookmark(bm_);
+          except
+      end;
+
   end;
 end;
 
@@ -162,6 +173,10 @@ begin
           DM_Olap.Uni_data.FieldByName('norm').AsFloat;
         CreateParam(ftInteger, 'p_chrg', ptInput).AsFloat :=
           l_chrg;
+        CreateParam(ftDate, 'p_dt1', ptInput).AsDateTime :=
+          DM_Olap.Uni_data.FieldByName('dt1').AsDateTime;
+        CreateParam(ftDate, 'p_dt2', ptInput).AsDateTime :=
+          DM_Olap.Uni_data.FieldByName('dt2').AsDateTime;
       end;
       DataModule1.UniStoredProc1.ExecProc;
 

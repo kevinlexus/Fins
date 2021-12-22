@@ -89,7 +89,7 @@ var
   id_: Integer;
 begin
   //сохранить значение
-  with l_od_par do
+  with l_od_par_value do
   begin
    if not (State in [dsBrowse]) then
      Post;
@@ -98,6 +98,14 @@ begin
    Active:=True;
    Locate('id', id_, []);
   end;
+  with l_od_par do
+  begin
+   id_:=FieldByName('id').AsInteger;
+   Active:=False;
+   Active:=True;
+   Locate('id', id_, []);
+  end;
+
   Action:=caFree;
 end;
 
@@ -147,8 +155,10 @@ begin
       TabSheet1.TabVisible:=false;
       TabSheet2.TabVisible:=false;
       TabSheet4.TabVisible:=false;
-      if l_key <>'' then
+{      if l_key <>'' then
       begin
+        if not (State in [dsEdit]) then
+            Edit;
         try
           l_od_par_value.FieldByName('N1').AsFloat:=strTofloat(l_key);
         except
@@ -159,7 +169,7 @@ begin
            else
             raise;
         end;
-      end;
+      end;}
     end
     else if FieldByName('VAL_TP').AsString='ID' then
     begin

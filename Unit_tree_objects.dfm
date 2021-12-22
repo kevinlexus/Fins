@@ -1,6 +1,6 @@
 object Form_tree_objects: TForm_tree_objects
-  Left = 275
-  Top = 155
+  Left = 359
+  Top = 203
   Width = 351
   Height = 864
   Align = alLeft
@@ -541,6 +541,8 @@ object Form_tree_objects: TForm_tree_objects
     DataController.ParentField = 'MAIN_ID'
     DataController.KeyField = 'ID'
     Navigator.Buttons.CustomButtons = <>
+    Navigator.Buttons.Filter.Visible = False
+    Navigator.Visible = True
     OptionsView.Headers = False
     PopupMenu = PopupMenu1
     RootValue = 0

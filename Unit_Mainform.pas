@@ -228,7 +228,10 @@ type
     ProdJavaServer1: TMenuItem;
     N2608211: TMenuItem;
     N1109211: TMenuItem;
-    N2309211: TMenuItem;
+    N2501: TMenuItem;
+    N214: TMenuItem;
+    ToolButton6: TToolButton;
+    N221121260Java1: TMenuItem;
     procedure N5Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure N7Click(Sender: TObject);
@@ -395,6 +398,8 @@ type
     procedure N147Click(Sender: TObject);
     procedure Options1Click(Sender: TObject);
     procedure ProdJavaServer1Click(Sender: TObject);
+    procedure N214Click(Sender: TObject);
+    procedure ToolButton6Click(Sender: TObject);
   private
   public
     // выбранный период при переключении в архив
@@ -447,7 +452,7 @@ type
     cur_ECR: OleVariant;
     // текущая дата
     cur_dt: TDateTime;
-    // сервер Java "", - прод. 2 - тест 
+    // сервер Java "", - прод. 2 - тест
     javaServer: string;
     // Переменные для фильтра
     reu_: string;
@@ -464,7 +469,7 @@ type
     flt_single_house_: Integer;
     flt_klsk_premise: Integer;
     flt_els_: string;
-
+    currentPeriod: string;
     //
     default_lsk: string;
     fio_: string;
@@ -517,7 +522,7 @@ uses
   Unit_corr_sal, Unit_spr_comps, Unit_spr_props, Unit_lk_acc, Unit_auto_chrg,
   Unit_service_cash, u_frmLoadPrivs, u_frmPenCorr, u_frmLoadFias,
   u_frmProject, Unit_spr_proc_pay, u_frmAccFlow, u_frmLoadKartExt,
-  u_frmKartExt;
+  u_frmKartExt, Unit_changes_houses2;
 
 {$R *.dfm}
 
@@ -1618,7 +1623,10 @@ begin
         //    OD_rep3.Active:=false;
         OD_rep5.Active := false;
       end;
-      Form_kart.OD_kart_pr.GotoBookmark(bm);
+      try
+        Form_kart.OD_kart_pr.GotoBookmark(bm);
+      except
+      end;
     end;
   end
   else
@@ -1838,7 +1846,11 @@ begin
         OD_rep5.Active := false;
         Form_list_kart.OD_rep1.Active := False;
       end;
-      Form_kart.OD_kart_pr.GotoBookmark(bm);
+      try
+        Form_kart.OD_kart_pr.GotoBookmark(bm);
+      except
+      end;
+
     end;
   end
   else
@@ -1885,7 +1897,11 @@ begin
         OD_rep5.Active := false;
         Form_list_kart.OD_rep1.Active := False;
       end;
+      try
       Form_kart.OD_kart_pr.GotoBookmark(bm);
+            except
+      end;
+
     end;
   end
   else
@@ -1938,7 +1954,11 @@ begin
         OD_rep5.Active := false;
         Form_list_kart.OD_rep1.Active := False;
       end;
+      try
       Form_kart.OD_kart_pr.GotoBookmark(bm);
+            except
+      end;
+
     end;
   end
   else
@@ -1985,7 +2005,11 @@ begin
         OD_rep5.Active := false;
         Form_list_kart.OD_rep1.Active := False;
       end;
+      try
       Form_kart.OD_kart_pr.GotoBookmark(bm);
+            except
+      end;
+
     end;
   end
   else
@@ -2164,7 +2188,11 @@ begin
           OD_rep5.Active := false;
           Form_list_kart.OD_rep1.Active := False;
         end;
+        try
         Form_kart.OD_kart_pr.GotoBookmark(bm);
+              except
+      end;
+
       end;
     end;
   end
@@ -2667,15 +2695,27 @@ end;
 
 procedure TForm_Main.Options1Click(Sender: TObject);
 begin
-  Form_Main.javaServer:='2';
-  Form_Main.PanelJavaTest.Visible:=True;
+  Form_Main.javaServer := '2';
+  Form_Main.PanelJavaTest.Visible := True;
 
 end;
 
 procedure TForm_Main.ProdJavaServer1Click(Sender: TObject);
 begin
-  Form_Main.javaServer:='';
-  Form_Main.PanelJavaTest.Visible:=False;  
+  Form_Main.javaServer := '';
+  Form_Main.PanelJavaTest.Visible := False;
+
+end;
+
+procedure TForm_Main.N214Click(Sender: TObject);
+begin
+  Application.CreateForm(TForm_changes_houses2, Form_changes_houses2);
+
+end;
+
+procedure TForm_Main.ToolButton6Click(Sender: TObject);
+begin
+  Application.CreateForm(TForm_changes_houses2, Form_changes_houses2);
 
 end;
 

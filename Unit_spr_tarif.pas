@@ -228,7 +228,11 @@ begin
   bm:=Mem_spr_tarif.GetBookmark;
   Mem_spr_tarif.Active:=false;
   Mem_spr_tarif.Active:=true;
+  try
   Mem_spr_tarif.GotoBookmark(bm);
+        except
+      end;
+
 end;
 
 procedure TForm_spr_tarif.wwDBGrid1KeyPress(Sender: TObject;

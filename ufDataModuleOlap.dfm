@@ -1,7 +1,7 @@
 object DM_Olap: TDM_Olap
   OldCreateOrder = False
-  Left = 700
-  Top = 166
+  Left = 1724
+  Top = 346
   Height = 810
   Width = 686
   object DS_spr_params: TDataSource
@@ -387,6 +387,7 @@ object DM_Olap: TDM_Olap
         't_tp, :prep_refcursor);'
       'end;')
     FetchRows = 1000
+    Active = True
     Constraints = <>
     Left = 32
     Top = 32
@@ -465,7 +466,7 @@ object DM_Olap: TDM_Olap
         DataType = ftString
         Name = 'cd_'
         ParamType = ptInput
-        Value = '97'
+        Value = '78'
       end
       item
         DataType = ftInteger
@@ -642,21 +643,22 @@ object DM_Olap: TDM_Olap
       '(select * from  scott.kart k'
       '  where k.lsk=n.lsk and k.house_id=:house_id)'
       'and nvl(n.koeff,0)=nvl(:koeff,0) and nvl(n.norm,0)=nvl(:norm,0)'
+      'and n.dt1=:dt1 and n.dt2=:dt2'
       'order by scott.utils.f_order(t.kw,7)')
     MasterSource = DS_data
-    MasterFields = 'house_id;koeff;norm;usl'
-    DetailFields = 'house_id;koeff;norm;usl'
+    MasterFields = 'house_id;koeff;norm;usl;dt1;dt2'
+    DetailFields = 'house_id;koeff;norm;usl;dt1;dt2'
     Constraints = <>
     Left = 40
     Top = 544
     ParamData = <
       item
-        DataType = ftString
+        DataType = ftFixedChar
         Name = 'usl'
         ParamType = ptInput
       end
       item
-        DataType = ftInteger
+        DataType = ftString
         Name = 'house_id'
         ParamType = ptInput
       end
@@ -668,6 +670,16 @@ object DM_Olap: TDM_Olap
       item
         DataType = ftFloat
         Name = 'norm'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftDate
+        Name = 'DT1'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftDate
+        Name = 'DT2'
         ParamType = ptInput
       end>
   end

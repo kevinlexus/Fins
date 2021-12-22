@@ -1,12 +1,12 @@
 object Form_change_house_nabor2: TForm_change_house_nabor2
-  Left = 919
-  Top = 789
+  Left = 575
+  Top = 217
   Align = alCustom
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077' '#1091#1089#1083#1091#1075#1080
-  ClientHeight = 95
-  ClientWidth = 657
+  ClientHeight = 107
+  ClientWidth = 663
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -92,8 +92,8 @@ object Form_change_house_nabor2: TForm_change_house_nabor2
   TextHeight = 13
   object GroupBox1: TGroupBox
     Left = 0
-    Top = 46
-    Width = 657
+    Top = 58
+    Width = 663
     Height = 49
     Align = alBottom
     TabOrder = 0
@@ -131,8 +131,8 @@ object Form_change_house_nabor2: TForm_change_house_nabor2
   object pnl1: TPanel
     Left = 0
     Top = 0
-    Width = 657
-    Height = 49
+    Width = 663
+    Height = 57
     Align = alTop
     TabOrder = 1
     object Label2: TLabel
@@ -201,6 +201,32 @@ object Form_change_house_nabor2: TForm_change_house_nabor2
       ParentFont = False
       Visible = False
     end
+    object Label4: TLabel
+      Left = 213
+      Top = 32
+      Width = 44
+      Height = 13
+      Caption = #1053#1072#1095#1072#1083#1086
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label6: TLabel
+      Left = 349
+      Top = 32
+      Width = 65
+      Height = 13
+      Caption = #1054#1082#1086#1085#1095#1072#1085#1080#1077
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
     object wwDBLookupCombo1: TwwDBLookupCombo
       Left = 48
       Top = 0
@@ -268,6 +294,20 @@ object Form_change_house_nabor2: TForm_change_house_nabor2
       Properties.EditMask = '\d{0,6}|(\d{0,6}\.\d{1,6})'
       TabOrder = 3
       Width = 73
+    end
+    object cxDateEdit1: TcxDateEdit
+      Left = 264
+      Top = 28
+      Properties.InputKind = ikMask
+      TabOrder = 5
+      Width = 81
+    end
+    object cxDateEdit2: TcxDateEdit
+      Left = 416
+      Top = 28
+      Properties.InputKind = ikMask
+      TabOrder = 6
+      Width = 89
     end
   end
   object DS_usl: TDataSource

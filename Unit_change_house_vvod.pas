@@ -70,7 +70,11 @@ begin
   bm:=Form_houses_nabor.OD_vvod.GetBookmark;
   Form_houses_nabor.OD_vvod.Active:=false;
   Form_houses_nabor.OD_vvod.Active:=true;
+  try
   Form_houses_nabor.OD_vvod.GotoBookmark(bm);
+        except
+      end;
+
   Form_status.Close;
   Close;
 

@@ -114,7 +114,11 @@ begin
       l_sum2:=l_sum2+OD_sal.FieldByName('summa2').AsFloat;
       OD_sal.Next;
     end;
+    try
     OD_sal.GotoBookmark(l_bm);
+          except
+      end;
+
     wwDBGrid1.ColumnByName('NAME_ORG').FooterValue :='Итого:';
     wwDBGrid1.ColumnByName('SUMMA').FooterValue :=FloatToStrF(l_sum, ffFixed, 10, 2);
     wwDBGrid1.ColumnByName('SUMMA2').FooterValue :=FloatToStrF(l_sum2, ffFixed, 10, 2);
@@ -129,7 +133,11 @@ begin
       l_sum2:=l_sum2+OD_deb_usl.FieldByName('summa2').AsFloat;
       OD_deb_usl.Next;
     end;
+    try
     OD_deb_usl.GotoBookmark(l_bm);
+          except
+      end;
+
     wwDBGrid2.ColumnByName('NAME_ORG').FooterValue :='Итого:';
     wwDBGrid2.ColumnByName('SUMMA').FooterValue :=FloatToStrF(l_sum, ffFixed, 10, 2);
     wwDBGrid2.ColumnByName('SUMMA2').FooterValue :=FloatToStrF(l_sum2, ffFixed, 10, 2);

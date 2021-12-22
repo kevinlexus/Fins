@@ -1,8 +1,8 @@
 object Form_sch_history: TForm_sch_history
-  Left = 604
-  Top = 538
-  Width = 1044
-  Height = 380
+  Left = 426
+  Top = 138
+  Width = 1058
+  Height = 370
   Caption = #1048#1089#1090#1086#1088#1080#1103' '#1074#1074#1086#1076#1072' '#1087#1086#1082#1072#1079#1072#1085#1080#1081' '#1089#1095#1077#1090#1095#1080#1082#1086#1074
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -92,8 +92,8 @@ object Form_sch_history: TForm_sch_history
   object pgc1: TPageControl
     Left = 0
     Top = 0
-    Width = 1028
-    Height = 341
+    Width = 1042
+    Height = 331
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
@@ -103,16 +103,16 @@ object Form_sch_history: TForm_sch_history
       object Panel1: TPanel
         Left = 0
         Top = 0
-        Width = 577
-        Height = 209
+        Width = 529
+        Height = 199
         Align = alLeft
         Caption = 'Panel1'
         TabOrder = 0
         object cxGrid2: TcxGrid
           Left = 1
           Top = 1
-          Width = 575
-          Height = 207
+          Width = 527
+          Height = 197
           Align = alClient
           TabOrder = 0
           object cxGrid2DBTableView1: TcxGridDBTableView
@@ -246,18 +246,18 @@ object Form_sch_history: TForm_sch_history
         end
       end
       object Panel2: TPanel
-        Left = 594
+        Left = 546
         Top = 0
-        Width = 426
-        Height = 209
+        Width = 488
+        Height = 199
         Align = alClient
         Caption = 'Panel2'
         TabOrder = 1
         object cxGrid3: TcxGrid
           Left = 1
           Top = 1
-          Width = 424
-          Height = 207
+          Width = 486
+          Height = 197
           Align = alClient
           TabOrder = 0
           object cxGridDBTableView2: TcxGridDBTableView
@@ -277,17 +277,31 @@ object Form_sch_history: TForm_sch_history
             DataController.DataSource = DS_t_objxpar
             DataController.KeyFieldNames = 'id'
             DataController.Summary.DefaultGroupSummaryItems = <>
-            DataController.Summary.FooterSummaryItems = <>
+            DataController.Summary.FooterSummaryItems.OnSummary = cxGridDBTableView2DataControllerSummaryFooterSummaryItemsSummary
+            DataController.Summary.FooterSummaryItems = <
+              item
+                Kind = skSum
+                Column = cxGridDBTableView2N1
+              end
+              item
+                Format = #1056#1072#1089#1093#1086#1076' '#1074' '#1090#1077#1082' '#1087#1077#1088#1080#1086#1076#1077':'
+                Kind = skCount
+                Column = cxGridDBTableView2OPER_NAME
+              end>
             DataController.Summary.SummaryGroups = <>
             OptionsBehavior.CellHints = True
             OptionsBehavior.NavigatorHints = True
+            OptionsData.Deleting = False
+            OptionsData.Editing = False
+            OptionsData.Inserting = False
             OptionsSelection.InvertSelect = False
+            OptionsView.Footer = True
             OptionsView.GroupByBox = False
             OptionsView.Indicator = True
             object cxGridDBTableView2OPER_NAME: TcxGridDBColumn
               Caption = #1044#1077#1081#1089#1090#1074#1080#1077
               DataBinding.FieldName = 'OPER_NAME'
-              Width = 74
+              Width = 124
             end
             object cxGridDBTableView2N1: TcxGridDBColumn
               Caption = #1047#1085#1072#1095#1077#1085#1080#1077
@@ -326,8 +340,8 @@ object Form_sch_history: TForm_sch_history
       end
       object Panel3: TPanel
         Left = 0
-        Top = 209
-        Width = 1020
+        Top = 199
+        Width = 1034
         Height = 104
         Align = alBottom
         Caption = 'Panel3'
@@ -335,7 +349,7 @@ object Form_sch_history: TForm_sch_history
         object cxPageControl1: TcxPageControl
           Left = 1
           Top = 1
-          Width = 1018
+          Width = 1032
           Height = 102
           Align = alClient
           TabOrder = 0
@@ -343,13 +357,13 @@ object Form_sch_history: TForm_sch_history
           Properties.CustomButtons.Buttons = <>
           ClientRectBottom = 98
           ClientRectLeft = 4
-          ClientRectRight = 1014
+          ClientRectRight = 1028
           ClientRectTop = 24
           object cxTabSheet1: TcxTabSheet
             Caption = #1042#1085#1077#1089#1090#1080' '#1087#1086#1082#1072#1079#1072#1085#1080#1077
             ImageIndex = 0
             object Panel4: TPanel
-              Left = 919
+              Left = 933
               Top = 0
               Width = 91
               Height = 74
@@ -518,7 +532,7 @@ object Form_sch_history: TForm_sch_history
             Caption = #1044#1086#1073#1072#1074#1080#1090#1100' '#1048#1055#1059
             ImageIndex = 1
             DesignSize = (
-              1010
+              1024
               74)
             object cxTextEdit1: TcxTextEdit
               Left = 104
@@ -576,7 +590,7 @@ object Form_sch_history: TForm_sch_history
               Style.IsFontAssigned = True
             end
             object Button2: TButton
-              Left = 928
+              Left = 942
               Top = 24
               Width = 75
               Height = 25
@@ -646,10 +660,10 @@ object Form_sch_history: TForm_sch_history
         end
       end
       object cxSplitter1: TcxSplitter
-        Left = 577
+        Left = 529
         Top = 0
         Width = 17
-        Height = 209
+        Height = 199
         Control = Panel1
       end
     end

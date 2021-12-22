@@ -292,7 +292,11 @@ end;
 
 procedure TForm_recv_pay_bank.OD_regAfterRefresh(DataSet: TDataSet);
 begin
+  try
   if OD_reg.BookmarkValid(bm) then OD_reg.GotoBookmark(bm);
+        except
+      end;
+
 end;
 
 procedure TForm_recv_pay_bank.N2Click(Sender: TObject);
