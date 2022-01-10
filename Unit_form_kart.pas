@@ -23,7 +23,8 @@ uses
   cxFilter, cxDBData, cxDBLookupComboBox,
 
   cxMaskEdit, cxLookAndFeels, cxLookAndFeelPainters, cxStyles, cxData,
-  cxDataStorage, cxCalendar, dxBarBuiltInMenu, cxPC;
+  cxDataStorage, cxCalendar, dxBarBuiltInMenu, cxPC, cxDropDownEdit,
+  cxLookupEdit, cxDBLookupEdit;
 
 type
   TForm_kart = class(TForm)
@@ -111,12 +112,10 @@ type
     DBEdit30: TDBEdit;
     DBEdit12: TDBEdit;
     Label42: TLabel;
-    DBLookupComboboxEh4: TDBLookupComboboxEh;
     Label22: TLabel;
     wwDBEdit2: TwwDBEdit;
     Label7: TLabel;
     Label4: TLabel;
-    DBLookupComboboxEh1: TDBLookupComboboxEh;
     Label3: TLabel;
     Panel1: TPanel;
     DBLookupComboboxEh9: TDBLookupComboboxEh;
@@ -176,7 +175,6 @@ type
     DSDriver_tarif: TDataSetDriverEh;
     OD_houses: TOracleDataSet;
     DS_houses: TDataSource;
-    DBLookupComboboxEh12: TDBLookupComboboxEh;
     dxStatusBar1: TdxStatusBar;
     OD_kart_prPRIV_PROC: TStringField;
     TabSheet12: TTabSheet;
@@ -215,25 +213,6 @@ type
     Label61: TLabel;
     Panel3: TPanel;
     PageControl1: TPageControl;
-    TabSheet2: TTabSheet;
-    GroupBox5: TGroupBox;
-    Label14: TLabel;
-    Label15: TLabel;
-    Label30: TLabel;
-    Label17: TLabel;
-    Label16: TLabel;
-    Label23: TLabel;
-    Label45: TLabel;
-    DBEdit_mhw: TDBEdit;
-    DBEdit_mgw: TDBEdit;
-    DBLookupComboboxEh3: TDBLookupComboboxEh;
-    wwCheckBox2: TwwCheckBox;
-    wwCheckBox1: TwwCheckBox;
-    DBLookupComboboxEh13: TDBLookupComboboxEh;
-    DBEdit_mel: TwwDBEdit;
-    wwDBEdit3: TwwDBEdit;
-    BitBtn3: TBitBtn;
-    BitBtn6: TBitBtn;
     TabSheet3: TTabSheet;
     GroupBox7: TGroupBox;
     Label26: TLabel;
@@ -241,17 +220,14 @@ type
     Label29: TLabel;
     Label31: TLabel;
     Label44: TLabel;
-    Label32: TLabel;
     lbl1: TLabel;
     DBEdit_mhw2: TDBEdit;
     DBEdit_mgw2: TDBEdit;
-    DBLookupComboboxEh6: TDBLookupComboboxEh;
     DBEdit_phw: TDBEdit;
     DBEdit_pgw: TDBEdit;
     DBEdit_pel: TDBEdit;
     DBEdit_mel2: TDBEdit;
     wwCheckBox3: TwwCheckBox;
-    DBLookupComboboxEh16: TDBLookupComboboxEh;
     wwCheckBox4: TwwCheckBox;
     BitBtn4: TBitBtn;
     BitBtn5: TBitBtn;
@@ -267,7 +243,6 @@ type
     wwCheckBox5: TwwCheckBox;
     GroupBox10: TGroupBox;
     Label41: TLabel;
-    DBLookupComboboxEh11: TDBLookupComboboxEh;
     TabSheet11: TTabSheet;
     wwDBNavigator2: TwwDBNavigator;
     wwNavButton1: TwwNavButton;
@@ -312,16 +287,11 @@ type
     Label12: TLabel;
     Label18: TLabel;
     Label51: TLabel;
-    DBLookupComboboxEh2: TDBLookupComboboxEh;
-    DBEdit4: TDBEdit;
-    DBEdit6: TDBEdit;
-    DBEditEh1: TDBEditEh;
     DBEdit5: TDBEdit;
     DBEdit11: TDBEdit;
     DBEdit9: TDBEdit;
     DBEdit10: TDBEdit;
     dbedtENTR: TDBEdit;
-    DBCheckBoxEh1: TDBCheckBoxEh;
     DBEdit19: TDBEdit;
     GroupBox3: TGroupBox;
     OD_kart_prDOK_SNILS: TStringField;
@@ -413,6 +383,15 @@ type
     cxGridDBTableView2STATUS: TcxGridDBColumn;
     cxGridDBTableView2USE_GIS_DIVIDE_ELS: TcxGridDBColumn;
     cxGridDBTableView2PROC_PRIV: TcxGridDBColumn;
+    wwCheckBox6: TwwCheckBox;
+    cxdbtxEdit4OPL: TcxDBTextEdit;
+    cxdbtxEdit6PPL: TcxDBTextEdit;
+    cxdbtxEdit1ET: TcxDBTextEdit;
+    cbb2STATUS: TcxDBLookupComboBox;
+    cbb1FK_DEB_ORG: TcxDBLookupComboBox;
+    cbb1KUL: TcxDBLookupComboBox;
+    cbb12HOUSE_ID: TcxDBLookupComboBox;
+    cbb4FK_DISTR: TcxDBLookupComboBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure DBGridEh1DblClick(Sender: TObject);
     procedure OD_kartAfterPost(DataSet: TDataSet);
@@ -596,14 +575,13 @@ begin
   OD_nabor.readonly := true;
 
   GroupBox1.Enabled := false;
-  DBEdit4.Enabled := false;
-  DBEdit6.Enabled := false;
-  DBLookupComboboxEh2.Enabled := false;
+  cxdbtxEdit4OPL.Enabled := false;
+  cxdbtxEdit6PPL.Enabled := false;
+  cbb2STATUS.Enabled := false;
 
   DBEdit5.Enabled := false;
-  DBEditEh1.Enabled := false;
+  cxdbtxEdit1ET.Enabled := false;
 
-  TabSheet2.Enabled := false;
   TabSheet3.Enabled := false;
   TabSheet4.Enabled := false;
   TabSheet1.Enabled := false;
@@ -620,13 +598,13 @@ begin
   //wwDBComboDlg1.Enabled := false;
   //wwDBComboDlg1.ReadOnly:=True;
 
-  DBLookupComboboxEh1.Enabled := false;
+  cbb1KUL.Enabled := false;
 
   //   wwDBEdit1.Enabled:=false;
-  DBLookupComboboxEh12.Enabled := false;
+  cbb12HOUSE_ID.Enabled := false;
 
   wwDBEdit2.Enabled := false;
-  DBLookupComboboxEh4.Enabled := false;
+  cbb4FK_DISTR.Enabled := false;
   DBEdit12.Enabled := false;
 
   DBEdit15.Enabled := false;
@@ -658,7 +636,7 @@ begin
 
     GroupBox1.Enabled := true;
     DBEdit5.Enabled := true;
-    DBEditEh1.Enabled := true;
+    cxdbtxEdit1ET.Enabled := true;
     Button1.Enabled := true;
     Button4.Enabled := true;
     mnu1.Enabled := true;
@@ -666,12 +644,11 @@ begin
     DBLookupComboboxEh5.Enabled := true;
 
     //площади
-    DBEdit4.Enabled := true;
-    DBEdit6.Enabled := true;
+    cxdbtxEdit4OPL.Enabled := true;
+    cxdbtxEdit6PPL.Enabled := true;
     //статус квартиры
-    DBLookupComboboxEh2.Enabled := true;
+    cbb2STATUS.Enabled := true;
 
-    TabSheet2.Enabled := true;
     TabSheet3.Enabled := true;
     TabSheet4.Enabled := true;
     TabSheet1.Enabled := true;
@@ -681,11 +658,11 @@ begin
 
     //wwDBComboDlg1.Enabled := true;
     //    wwDBComboDlg1.ReadOnly:=false;
-    DBLookupComboboxEh1.Enabled := true;
+    cbb1KUL.Enabled := true;
     //     wwDBEdit1.Enabled:=true;
-    DBLookupComboboxEh12.Enabled := true;
+    cbb12HOUSE_ID.Enabled := true;
     wwDBEdit2.Enabled := true;
-    DBLookupComboboxEh4.Enabled := true;
+    cbb4FK_DISTR.Enabled := true;
     DBEdit12.Enabled := true;
 
     DBEdit15.Enabled := true;
@@ -707,8 +684,8 @@ begin
     //открыть отдельными привелеги€ми
     //площади
     GroupBox1.Enabled := true;
-    DBEdit4.Enabled := true;
-    DBEdit6.Enabled := true;
+    cxdbtxEdit4OPL.Enabled := true;
+    cxdbtxEdit6PPL.Enabled := true;
     DBEdit5.Enabled := true;
   end;
 
@@ -717,7 +694,7 @@ begin
     //открыть отдельными привелеги€ми
     //статус квартиры
     GroupBox1.Enabled := true;
-    DBLookupComboboxEh2.Enabled := true;
+    cbb2STATUS.Enabled := true;
   end;
 
   OD_kart_pr.Active := true;
@@ -878,25 +855,25 @@ var
 begin
   with Form_kart do
   begin
-    if var_ = 0 then
-      psch_new := DBLookupComboboxEh13.KeyValue
-    else
-      psch_new := DBLookupComboboxEh16.KeyValue;
-
+    { if var_ = 0 then
+       psch_new := DBLookupComboboxEh13.KeyValue
+     else
+       psch_new := DBLookupComboboxEh16.KeyValue;
+     }
     psch_old := Form_list_kart.OD_list_kart.FieldByName('sch_el').asFloat;
 
     if (psch_old = 0) and (psch_new = 1) then
     begin
-      DBEdit_mel.Enabled := true;
-      DBEdit_mel.Text := '0';
+      //DBEdit_mel.Enabled := true;
+//      DBEdit_mel.Text := '0';
       DBEdit_pel.Enabled := true;
       DBEdit_mel2.Text := '0';
       Form_list_kart.OD_list_kart.FieldByName('mel').asFloat := 0;
     end
     else if (psch_old = 1) and (psch_new = 0) then
     begin
-      DBEdit_mel.Enabled := false;
-      DBEdit_mel.Text := '0';
+      //      DBEdit_mel.Enabled := false;
+      //      DBEdit_mel.Text := '0';
       DBEdit_pel.Enabled := false;
       DBEdit_mel2.Text := '0';
 
@@ -910,7 +887,7 @@ var
   err_: string;
 begin
   //ќбновление карточки
-  LockWindowUpdate(handle);
+//  LockWindowUpdate(handle);
   with Form_kart do
   begin
     wwDBEdit2.text := Form_list_kart.OD_list_kart.FieldByName('n_kw').AsString;
@@ -980,120 +957,7 @@ begin
         Label47.Font.Color := clGreen;
       end;
     end;
-
-    // отключить возможность корректировки счетчиков в новой версии
-    if getDoublePar(Form_main.paramList, 'VER_METER1') <> 0 then
-    begin
-      DBLookupComboboxEh3.Enabled := false;
-      DBLookupComboboxEh13.Enabled := false;
-      DBLookupComboboxEh6.Enabled := false;
-      DBLookupComboboxEh16.Enabled := false;
-
-      DBEdit_pel.Enabled := false;
-      DBEdit_mel.Enabled := false;
-      DBEdit_mel2.Enabled := false;
-
-      DBEdit_phw.Enabled := false;
-      DBEdit_mhw.Enabled := false;
-      DBEdit_mhw2.Enabled := false;
-
-      DBEdit_pgw.Enabled := false;
-      DBEdit_mgw.Enabled := false;
-      DBEdit_mgw2.Enabled := false;
-      dbedtPOT.Enabled := false;
-      dbedtMOT.Enabled := false;
-    end
-    else
-    begin
-      //Ёл.эн. счетчик
-      if DBLookupComboboxEh13.KeyValue = 1 then
-      begin
-        // счетчик
-        DBEdit_mel.Enabled := true;
-        DBEdit_mel2.Enabled := false;
-        DBEdit_pel.Enabled := true;
-      end
-      else
-      begin
-        // норматив
-        DBEdit_mel.Enabled := false;
-        DBEdit_mel2.Enabled := false;
-        DBEdit_pel.Enabled := false;
-      end;
-
-      //х.в. г.в. счетчик
-      if DBLookupComboboxEh3.KeyValue = 0 then
-      begin
-        DBEdit_mhw.Enabled := false;
-        DBEdit_mgw.Enabled := false;
-        DBEdit_phw.Enabled := false;
-        DBEdit_pgw.Enabled := false;
-      end
-      else if DBLookupComboboxEh3.KeyValue = 1 then
-      begin
-        DBEdit_mhw.Enabled := true;
-        DBEdit_mgw.Enabled := true;
-        DBEdit_phw.Enabled := true;
-        DBEdit_pgw.Enabled := true;
-      end
-      else if DBLookupComboboxEh3.KeyValue = 2 then
-      begin
-        DBEdit_mhw.Enabled := true;
-        DBEdit_mgw.Enabled := false;
-        DBEdit_phw.Enabled := true;
-        DBEdit_pgw.Enabled := false;
-      end
-      else if DBLookupComboboxEh3.KeyValue = 3 then
-      begin
-        DBEdit_mhw.Enabled := false;
-        DBEdit_mgw.Enabled := true;
-        DBEdit_phw.Enabled := false;
-        DBEdit_pgw.Enabled := true;
-      end
-      else
-      begin
-        DBEdit_mhw.Enabled := false;
-        DBEdit_mgw.Enabled := false;
-        DBEdit_phw.Enabled := false;
-        DBEdit_pgw.Enabled := false;
-      end
-    end;
   end;
-
-  if getDoublePar(Form_main.paramList, 'CONTROL_METER') = 0 then
-  begin
-    // погасить элементы ввода по счетчикам, они могут быть некорректны, иметь расхождени€ с scott.meter
-    Label30.visible := false;
-    Label16.visible := false;
-    DBEdit_mhw.visible := false;
-    DBEdit_mgw.visible := false;
-    DBEdit_mel.visible := false;
-    wwDBEdit3.visible := false;
-    Label14.visible := false;
-    Label15.visible := false;
-    Label17.visible := false;
-    Label23.visible := false;
-    DBLookupComboboxEh3.visible := false;
-    DBLookupComboboxEh13.visible := false;
-
-    DBEdit_phw.visible := false;
-    DBEdit_mhw2.visible := false;
-    DBEdit_pgw.visible := false;
-    DBEdit_mgw2.visible := false;
-    DBEdit_pel.visible := false;
-    DBEdit_mel2.visible := false;
-    dbedtPOT.visible := false;
-    dbedtMOT.visible := false;
-    wwCheckBox3.visible := false;
-    Label29.visible := false;
-    Label28.visible := false;
-    lbl1.visible := false;
-    Label31.visible := false;
-    Label32.visible := false;
-    DBLookupComboboxEh6.visible := false;
-    DBLookupComboboxEh16.visible := false;
-  end;
-  LockWindowUpdate(0);
 end;
 
 procedure TForm_kart.recalc_kart;
@@ -1456,12 +1320,6 @@ begin
   if RetKey(Key) then
     Key := '.';
 
-  if Key = #13 then
-  begin
-    if DBEdit_mgw.Enabled = True then
-      //      DBEdit_mgw.SetFocus
-      Windows.SetFocus(DBEdit_mgw.Handle);
-  end;
 end;
 
 procedure TForm_kart.DBEdit_mgwKeyPress(Sender: TObject; var Key: Char);
@@ -2280,7 +2138,7 @@ begin
     DataModule1.OraclePackage1.CallProcedure('scott.utils.set_krt_adm',
       [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString]);
     Form_list_kart.OD_list_kart.RefreshRecord;
-  
+
   end;
 
 end;

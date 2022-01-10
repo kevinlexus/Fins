@@ -1,6 +1,6 @@
 object Form_kart: TForm_kart
-  Left = 785
-  Top = 620
+  Left = 1045
+  Top = 676
   Width = 903
   Height = 675
   BorderIcons = [biSystemMenu, biMinimize]
@@ -137,291 +137,9 @@ object Form_kart: TForm_kart
         Top = 1
         Width = 342
         Height = 220
-        ActivePage = TabSheet2
+        ActivePage = TabSheet1
         Align = alClient
         TabOrder = 0
-        object TabSheet2: TTabSheet
-          Caption = #1054#1089#1085#1086#1074#1085#1086#1077
-          object GroupBox5: TGroupBox
-            Left = 1
-            Top = -2
-            Width = 328
-            Height = 187
-            Caption = #1055#1088#1080#1073#1086#1088#1099' '#1091#1095#1105#1090#1072
-            TabOrder = 0
-            object Label14: TLabel
-              Left = 19
-              Top = 66
-              Width = 25
-              Height = 13
-              Caption = #1061'.'#1042'.'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'MS Sans Serif'
-              Font.Style = [fsBold]
-              ParentFont = False
-            end
-            object Label15: TLabel
-              Left = 19
-              Top = 90
-              Width = 24
-              Height = 13
-              Caption = #1043'.'#1042'.'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'MS Sans Serif'
-              Font.Style = [fsBold]
-              ParentFont = False
-            end
-            object Label30: TLabel
-              Left = 141
-              Top = 45
-              Width = 33
-              Height = 13
-              Caption = #1056#1072#1089#1093'.'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'MS Sans Serif'
-              Font.Style = [fsBold]
-              ParentFont = False
-            end
-            object Label17: TLabel
-              Left = 5
-              Top = 117
-              Width = 38
-              Height = 13
-              Caption = #1069#1083'.'#1101#1085'.'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'MS Sans Serif'
-              Font.Style = [fsBold]
-              ParentFont = False
-            end
-            object Label16: TLabel
-              Left = 212
-              Top = 45
-              Width = 26
-              Height = 13
-              Caption = #1056#1091#1073'.'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'MS Sans Serif'
-              Font.Style = [fsBold]
-              ParentFont = False
-            end
-            object Label23: TLabel
-              Left = 48
-              Top = 45
-              Width = 44
-              Height = 13
-              Caption = #1058#1080#1087' '#1089#1095'.'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'MS Sans Serif'
-              Font.Style = [fsBold]
-              ParentFont = False
-            end
-            object Label45: TLabel
-              Left = 8
-              Top = 32
-              Width = 430
-              Height = 13
-              Caption = 
-                #1048#1085#1086#1075#1076#1072' PageControl1 '#1088#1091#1075#1072#1077#1090#1089#1103' failed to delete tab 0, '#1083#1077#1095#1080#1090#1089#1103' CTR' +
-                'L+X, CTRL-V...... '#1073#1088#1077#1076
-              Color = clAqua
-              ParentColor = False
-              Visible = False
-            end
-            object DBEdit_mhw: TDBEdit
-              Left = 139
-              Top = 61
-              Width = 63
-              Height = 21
-              Hint = 
-                #1056#1072#1089#1093#1086#1076' '#1085#1072' '#1095#1077#1083#1086#1074#1077#1082#1072', '#1087#1088#1080' '#1085#1072#1095#1080#1089#1083#1077#1085#1080#1080' '#1087#1086' '#1085#1086#1088#1084#1072#1090#1080#1074#1091', '#1056#1072#1089#1093#1086#1076' '#1085#1072' '#1082#1074#1072#1088#1090 +
-                #1080#1088#1091', '#1087#1088#1080' '#1085#1072#1095#1080#1089#1083#1077#1085#1080#1080' '#1087#1086' '#1089#1095#1077#1090#1095#1080#1082#1091
-              DataField = 'MHW'
-              DataSource = Form_list_kart.DS_list_kart
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 2
-              OnKeyPress = DBEdit_mhwKeyPress
-            end
-            object DBEdit_mgw: TDBEdit
-              Left = 139
-              Top = 85
-              Width = 63
-              Height = 21
-              Hint = 
-                #1056#1072#1089#1093#1086#1076' '#1085#1072' '#1095#1077#1083#1086#1074#1077#1082#1072', '#1087#1088#1080' '#1085#1072#1095#1080#1089#1083#1077#1085#1080#1080' '#1087#1086' '#1085#1086#1088#1084#1072#1090#1080#1074#1091', '#1056#1072#1089#1093#1086#1076' '#1085#1072' '#1082#1074#1072#1088#1090 +
-                #1080#1088#1091', '#1087#1088#1080' '#1085#1072#1095#1080#1089#1083#1077#1085#1080#1080' '#1087#1086' '#1089#1095#1077#1090#1095#1080#1082#1091
-              DataField = 'MGW'
-              DataSource = Form_list_kart.DS_list_kart
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 4
-              OnKeyPress = DBEdit_mgwKeyPress
-            end
-            object DBLookupComboboxEh3: TDBLookupComboboxEh
-              Left = 46
-              Top = 62
-              Width = 89
-              Height = 21
-              DataField = 'PSCH'
-              DataSource = Form_list_kart.DS_list_kart
-              Enabled = False
-              EditButtons = <>
-              KeyField = 'ID'
-              ListField = 'NAME'
-              ListSource = DS_psch
-              TabOrder = 3
-              Visible = True
-            end
-            object wwCheckBox2: TwwCheckBox
-              Left = 139
-              Top = 18
-              Width = 81
-              Height = 17
-              Hint = #1050#1088#1072#1085' '#1074' '#1089#1080#1089#1090#1077#1084#1077' '#1086#1090#1086#1087#1083#1077#1085#1080#1103
-              DisableThemes = False
-              AlwaysTransparent = False
-              ValueChecked = '1'
-              ValueUnchecked = '0'
-              DisplayValueChecked = '1'
-              DisplayValueUnchecked = '0'
-              NullAndBlankState = cbUnchecked
-              Caption = #1057#1080#1089#1090'.'#1086#1090#1086#1087'.'
-              DataField = 'KRAN1'
-              DataSource = Form_list_kart.DS_list_kart
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'MS Sans Serif'
-              Font.Style = [fsBold]
-              ParentFont = False
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 0
-            end
-            object wwCheckBox1: TwwCheckBox
-              Left = 230
-              Top = 18
-              Width = 61
-              Height = 17
-              Hint = #1059#1095#1080#1090#1099#1074#1072#1090#1100' '#1082#1091#1073#1099' '#1082#1072#1085#1072#1083#1080#1079#1086#1074#1072#1085#1080#1103' '#1087#1086' '#1089#1095#1077#1090#1095#1080#1082#1072#1084
-              DisableThemes = False
-              AlwaysTransparent = False
-              ValueChecked = '1'
-              ValueUnchecked = '0'
-              DisplayValueChecked = '1'
-              DisplayValueUnchecked = '0'
-              NullAndBlankState = cbUnchecked
-              Caption = #1050#1072#1085'.'#1089#1095'.'
-              DataField = 'KAN_SCH'
-              DataSource = Form_list_kart.DS_list_kart
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'MS Sans Serif'
-              Font.Style = [fsBold]
-              ParentFont = False
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 1
-            end
-            object DBLookupComboboxEh13: TDBLookupComboboxEh
-              Left = 45
-              Top = 109
-              Width = 92
-              Height = 21
-              DataField = 'SCH_EL'
-              DataSource = Form_list_kart.DS_list_kart
-              EditButtons = <>
-              KeyField = 'ID'
-              ListField = 'NAME'
-              ListSource = DS_sch_el
-              TabOrder = 5
-              Visible = True
-              OnCloseUp = DBLookupComboboxEh13CloseUp
-            end
-            object DBEdit_mel: TwwDBEdit
-              Left = 139
-              Top = 109
-              Width = 63
-              Height = 21
-              Hint = 
-                #1056#1072#1089#1093#1086#1076' '#1085#1072' '#1095#1077#1083#1086#1074#1077#1082#1072', '#1087#1088#1080' '#1085#1072#1095#1080#1089#1083#1077#1085#1080#1080' '#1087#1086' '#1085#1086#1088#1084#1072#1090#1080#1074#1091', '#1056#1072#1089#1093#1086#1076' '#1085#1072' '#1082#1074#1072#1088#1090 +
-                #1080#1088#1091', '#1087#1088#1080' '#1085#1072#1095#1080#1089#1083#1077#1085#1080#1080' '#1087#1086' '#1089#1095#1077#1090#1095#1080#1082#1091
-              DataField = 'MEL'
-              DataSource = Form_list_kart.DS_list_kart
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 6
-              UnboundDataType = wwDefault
-              WantReturns = False
-              WordWrap = False
-              OnKeyPress = DBEdit_melKeyPress
-            end
-            object wwDBEdit3: TwwDBEdit
-              Left = 206
-              Top = 109
-              Width = 62
-              Height = 21
-              Hint = #1053#1072#1095#1080#1089#1083#1077#1085#1080#1077' '#1089#1091#1084#1084#1086#1081' '#1087#1086' '#1091#1089#1083#1091#1075#1077' '#1069#1083'.'#1101#1085#1077#1088#1075'.'
-              DataField = 'EL1'
-              DataSource = Form_list_kart.DS_list_kart
-              TabOrder = 7
-              UnboundDataType = wwDefault
-              WantReturns = False
-              WordWrap = False
-              OnKeyPress = wwDBEdit3KeyPress
-            end
-            object BitBtn3: TBitBtn
-              Left = 295
-              Top = 106
-              Width = 25
-              Height = 25
-              Hint = #1048#1089#1090#1086#1088#1080#1103' '#1087#1086#1082#1072#1079#1072#1085#1080#1081' '#1087#1086' '#1089#1095#1077#1090#1095#1080#1082#1072#1084
-              Caption = #1057
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'MS Sans Serif'
-              Font.Style = [fsBold]
-              ParentFont = False
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 8
-              OnClick = BitBtn3Click
-            end
-            object BitBtn6: TBitBtn
-              Left = 295
-              Top = 74
-              Width = 25
-              Height = 25
-              Hint = #1044#1077#1081#1089#1090#1074#1080#1103' '#1087#1086' '#1087#1088#1080#1073#1086#1088#1072#1084' '#1091#1095#1077#1090#1072
-              Caption = #1044
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'MS Sans Serif'
-              Font.Style = [fsBold]
-              ParentFont = False
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 9
-              TabStop = False
-              OnClick = BitBtn6Click
-            end
-          end
-        end
         object TabSheet3: TTabSheet
           Caption = #1054#1089#1085#1086#1074#1085#1086#1077
           ImageIndex = 1
@@ -446,7 +164,7 @@ object Form_kart: TForm_kart
               ParentFont = False
             end
             object Label28: TLabel
-              Left = 21
+              Left = 93
               Top = 79
               Width = 24
               Height = 13
@@ -459,7 +177,7 @@ object Form_kart: TForm_kart
               ParentFont = False
             end
             object Label29: TLabel
-              Left = 20
+              Left = 92
               Top = 55
               Width = 25
               Height = 13
@@ -472,7 +190,7 @@ object Form_kart: TForm_kart
               ParentFont = False
             end
             object Label31: TLabel
-              Left = 5
+              Left = 77
               Top = 103
               Width = 38
               Height = 13
@@ -497,21 +215,8 @@ object Form_kart: TForm_kart
               Font.Style = [fsBold]
               ParentFont = False
             end
-            object Label32: TLabel
-              Left = 45
-              Top = 37
-              Width = 44
-              Height = 13
-              Caption = #1058#1080#1087' '#1089#1095'.'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'MS Sans Serif'
-              Font.Style = [fsBold]
-              ParentFont = False
-            end
             object lbl1: TLabel
-              Left = 21
+              Left = 53
               Top = 128
               Width = 65
               Height = 13
@@ -536,7 +241,7 @@ object Form_kart: TForm_kart
               Enabled = False
               ParentShowHint = False
               ShowHint = True
-              TabOrder = 4
+              TabOrder = 3
               OnKeyPress = DBEdit_mhw2KeyPress
             end
             object DBEdit_mgw2: TDBEdit
@@ -552,23 +257,8 @@ object Form_kart: TForm_kart
               Enabled = False
               ParentShowHint = False
               ShowHint = True
-              TabOrder = 6
+              TabOrder = 5
               OnKeyPress = DBEdit_mgw2KeyPress
-            end
-            object DBLookupComboboxEh6: TDBLookupComboboxEh
-              Left = 43
-              Top = 50
-              Width = 78
-              Height = 21
-              DataField = 'PSCH'
-              DataSource = Form_list_kart.DS_list_kart
-              Enabled = False
-              EditButtons = <>
-              KeyField = 'ID'
-              ListField = 'NAME'
-              ListSource = DS_psch2
-              TabOrder = 2
-              Visible = True
             end
             object DBEdit_phw: TDBEdit
               Left = 125
@@ -577,7 +267,7 @@ object Form_kart: TForm_kart
               Height = 21
               DataField = 'PHW'
               DataSource = Form_list_kart.DS_list_kart
-              TabOrder = 3
+              TabOrder = 2
               OnKeyPress = DBEdit_phwKeyPress
             end
             object DBEdit_pgw: TDBEdit
@@ -587,7 +277,7 @@ object Form_kart: TForm_kart
               Height = 21
               DataField = 'PGW'
               DataSource = Form_list_kart.DS_list_kart
-              TabOrder = 5
+              TabOrder = 4
               OnKeyPress = DBEdit_pgwKeyPress
             end
             object DBEdit_pel: TDBEdit
@@ -597,7 +287,7 @@ object Form_kart: TForm_kart
               Height = 21
               DataField = 'PEL'
               DataSource = Form_list_kart.DS_list_kart
-              TabOrder = 8
+              TabOrder = 6
               OnKeyPress = DBEdit_pelKeyPress
             end
             object DBEdit_mel2: TDBEdit
@@ -613,11 +303,11 @@ object Form_kart: TForm_kart
               Enabled = False
               ParentShowHint = False
               ShowHint = True
-              TabOrder = 9
+              TabOrder = 7
               OnKeyPress = DBEdit_mel2KeyPress
             end
             object wwCheckBox3: TwwCheckBox
-              Left = 212
+              Left = 203
               Top = 16
               Width = 49
               Height = 17
@@ -641,23 +331,8 @@ object Form_kart: TForm_kart
               TabOrder = 1
               OnClick = wwCheckBox3Click
             end
-            object DBLookupComboboxEh16: TDBLookupComboboxEh
-              Left = 43
-              Top = 98
-              Width = 78
-              Height = 21
-              DataField = 'SCH_EL'
-              DataSource = Form_list_kart.DS_list_kart
-              EditButtons = <>
-              KeyField = 'ID'
-              ListField = 'NAME'
-              ListSource = DS_sch_el
-              TabOrder = 7
-              Visible = True
-              OnCloseUp = DBLookupComboboxEh16CloseUp
-            end
             object wwCheckBox4: TwwCheckBox
-              Left = 124
+              Left = 115
               Top = 16
               Width = 81
               Height = 17
@@ -697,7 +372,7 @@ object Form_kart: TForm_kart
               ParentFont = False
               ParentShowHint = False
               ShowHint = True
-              TabOrder = 10
+              TabOrder = 8
               TabStop = False
               OnClick = BitBtn4Click
             end
@@ -716,7 +391,7 @@ object Form_kart: TForm_kart
               ParentFont = False
               ParentShowHint = False
               ShowHint = True
-              TabOrder = 11
+              TabOrder = 9
               TabStop = False
               OnClick = BitBtn5Click
             end
@@ -727,7 +402,7 @@ object Form_kart: TForm_kart
               Height = 21
               DataField = 'POT'
               DataSource = Form_list_kart.DS_list_kart
-              TabOrder = 12
+              TabOrder = 10
               OnKeyPress = dbedtPOTKeyPress
             end
             object dbedtMOT: TDBEdit
@@ -743,8 +418,34 @@ object Form_kart: TForm_kart
               Enabled = False
               ParentShowHint = False
               ShowHint = True
-              TabOrder = 13
+              TabOrder = 11
               OnKeyPress = dbedtMOTKeyPress
+            end
+            object wwCheckBox6: TwwCheckBox
+              Left = 253
+              Top = 17
+              Width = 61
+              Height = 17
+              Hint = #1059#1095#1080#1090#1099#1074#1072#1090#1100' '#1082#1091#1073#1099' '#1082#1072#1085#1072#1083#1080#1079#1086#1074#1072#1085#1080#1103' '#1087#1086' '#1089#1095#1077#1090#1095#1080#1082#1072#1084
+              DisableThemes = False
+              AlwaysTransparent = False
+              ValueChecked = '1'
+              ValueUnchecked = '0'
+              DisplayValueChecked = '1'
+              DisplayValueUnchecked = '0'
+              NullAndBlankState = cbUnchecked
+              Caption = #1050#1072#1085'.'#1089#1095'.'
+              DataField = 'KAN_SCH'
+              DataSource = Form_list_kart.DS_list_kart
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'MS Sans Serif'
+              Font.Style = [fsBold]
+              ParentFont = False
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 12
             end
           end
         end
@@ -875,19 +576,20 @@ object Form_kart: TForm_kart
               Font.Style = [fsBold]
               ParentFont = False
             end
-            object DBLookupComboboxEh11: TDBLookupComboboxEh
+            object cbb1FK_DEB_ORG: TcxDBLookupComboBox
               Left = 91
-              Top = 14
-              Width = 230
-              Height = 21
-              DataField = 'FK_DEB_ORG'
-              DataSource = Form_list_kart.DS_list_kart
-              EditButtons = <>
-              KeyField = 'ID'
-              ListField = 'NAME'
-              ListSource = Form_list_kart.DS_debits_org
+              Top = 15
+              DataBinding.DataField = 'FK_DEB_ORG'
+              DataBinding.DataSource = Form_list_kart.DS_list_kart
+              Properties.KeyFieldNames = 'ID'
+              Properties.ListColumns = <
+                item
+                  FieldName = 'NAME'
+                end>
+              Properties.ListOptions.ShowHeader = False
+              Properties.ListSource = Form_list_kart.DS_debits_org
               TabOrder = 0
-              Visible = True
+              Width = 227
             end
           end
         end
@@ -1458,52 +1160,6 @@ object Form_kart: TForm_kart
           Font.Style = [fsBold]
           ParentFont = False
         end
-        object DBLookupComboboxEh2: TDBLookupComboboxEh
-          Left = 200
-          Top = 44
-          Width = 89
-          Height = 21
-          DataField = 'STATUS'
-          DataSource = Form_list_kart.DS_list_kart
-          EditButtons = <>
-          KeyField = 'ID'
-          ListField = 'NAME'
-          ListSource = DS_status
-          TabOrder = 7
-          Visible = True
-        end
-        object DBEdit4: TDBEdit
-          Left = 107
-          Top = 16
-          Width = 41
-          Height = 21
-          DataField = 'OPL'
-          DataSource = Form_list_kart.DS_list_kart
-          TabOrder = 0
-          OnKeyPress = DBEdit4KeyPress
-        end
-        object DBEdit6: TDBEdit
-          Left = 198
-          Top = 17
-          Width = 41
-          Height = 21
-          DataField = 'PPL'
-          DataSource = Form_list_kart.DS_list_kart
-          TabOrder = 1
-          OnKeyPress = DBEdit6KeyPress
-        end
-        object DBEditEh1: TDBEditEh
-          Left = 40
-          Top = 44
-          Width = 25
-          Height = 21
-          Alignment = taLeftJustify
-          DataField = 'ET'
-          DataSource = Form_list_kart.DS_list_kart
-          EditButtons = <>
-          TabOrder = 5
-          Visible = True
-        end
         object DBEdit5: TDBEdit
           Left = 112
           Top = 44
@@ -1511,7 +1167,7 @@ object Form_kart: TForm_kart
           Height = 21
           DataField = 'KOMN'
           DataSource = Form_list_kart.DS_list_kart
-          TabOrder = 6
+          TabOrder = 3
         end
         object DBEdit11: TDBEdit
           Left = 318
@@ -1521,7 +1177,7 @@ object Form_kart: TForm_kart
           DataField = 'KPR'
           DataSource = Form_list_kart.DS_list_kart
           ReadOnly = True
-          TabOrder = 2
+          TabOrder = 0
         end
         object DBEdit9: TDBEdit
           Left = 416
@@ -1531,7 +1187,7 @@ object Form_kart: TForm_kart
           DataField = 'KPR_OT'
           DataSource = Form_list_kart.DS_list_kart
           ReadOnly = True
-          TabOrder = 3
+          TabOrder = 1
         end
         object DBEdit10: TDBEdit
           Left = 352
@@ -1541,7 +1197,7 @@ object Form_kart: TForm_kart
           DataField = 'KPR_WR'
           DataSource = Form_list_kart.DS_list_kart
           ReadOnly = True
-          TabOrder = 8
+          TabOrder = 4
         end
         object dbedtENTR: TDBEdit
           Left = 506
@@ -1550,28 +1206,7 @@ object Form_kart: TForm_kart
           Height = 21
           DataField = 'ENTR'
           DataSource = Form_list_kart.DS_list_kart
-          TabOrder = 4
-        end
-        object DBCheckBoxEh1: TDBCheckBoxEh
-          Left = 497
-          Top = 48
-          Width = 40
-          Height = 17
-          AllowGrayed = True
-          Caption = #1057#1091#1073#1089#1080#1076'.'
-          DataField = 'SUBS_VAL'
-          DataSource = Form_list_kart.DS_list_kart
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -11
-          Font.Name = 'MS Sans Serif'
-          Font.Style = [fsBold]
-          ParentFont = False
-          ReadOnly = True
-          TabOrder = 9
-          ValueChecked = '1'
-          ValueUnchecked = '0'
-          OnMouseDown = DBCheckBoxEh1MouseDown
+          TabOrder = 2
         end
         object DBEdit19: TDBEdit
           Left = 448
@@ -1581,7 +1216,46 @@ object Form_kart: TForm_kart
           DataField = 'KPR_WRP'
           DataSource = Form_list_kart.DS_list_kart
           ReadOnly = True
-          TabOrder = 10
+          TabOrder = 5
+        end
+        object cxdbtxEdit4OPL: TcxDBTextEdit
+          Left = 106
+          Top = 16
+          DataBinding.DataField = 'OPL'
+          DataBinding.DataSource = Form_list_kart.DS_list_kart
+          TabOrder = 6
+          Width = 42
+        end
+        object cxdbtxEdit6PPL: TcxDBTextEdit
+          Left = 197
+          Top = 17
+          DataBinding.DataField = 'PPL'
+          DataBinding.DataSource = Form_list_kart.DS_list_kart
+          TabOrder = 7
+          Width = 42
+        end
+        object cxdbtxEdit1ET: TcxDBTextEdit
+          Left = 34
+          Top = 43
+          DataBinding.DataField = 'ET'
+          DataBinding.DataSource = Form_list_kart.DS_list_kart
+          TabOrder = 8
+          Width = 34
+        end
+        object cbb2STATUS: TcxDBLookupComboBox
+          Left = 192
+          Top = 44
+          DataBinding.DataField = 'STATUS'
+          DataBinding.DataSource = Form_list_kart.DS_list_kart
+          Properties.KeyFieldNames = 'ID'
+          Properties.ListColumns = <
+            item
+              FieldName = 'NAME'
+            end>
+          Properties.ListOptions.ShowHeader = False
+          Properties.ListSource = DS_status
+          TabOrder = 9
+          Width = 96
         end
       end
       object GroupBox3: TGroupBox
@@ -1598,6 +1272,7 @@ object Form_kart: TForm_kart
           Width = 535
           Height = 130
           Align = alClient
+          PopupMenu = PopupMenu2
           TabOrder = 0
           object cxGridDBTableView2: TcxGridDBTableView
             OnDblClick = cxGridDBTableView2DblClick
@@ -2030,46 +1705,18 @@ object Form_kart: TForm_kart
         DataSource = Form_list_kart.DS_list_kart
         ParentShowHint = False
         ShowHint = True
-        TabOrder = 10
-      end
-      object DBLookupComboboxEh4: TDBLookupComboboxEh
-        Left = 360
-        Top = 30
-        Width = 89
-        Height = 21
-        DataField = 'FK_DISTR'
-        DataSource = Form_list_kart.DS_list_kart
-        EditButtons = <>
-        KeyField = 'ID'
-        ListField = 'NAME'
-        ListSource = DS_distr
-        TabOrder = 9
-        Visible = True
+        TabOrder = 7
       end
       object wwDBEdit2: TwwDBEdit
         Left = 255
         Top = 31
         Width = 66
         Height = 21
-        TabOrder = 8
+        TabOrder = 6
         UnboundDataType = wwDefault
         WantReturns = False
         WordWrap = False
         OnExit = wwDBEdit2Exit
-      end
-      object DBLookupComboboxEh1: TDBLookupComboboxEh
-        Left = 40
-        Top = 31
-        Width = 97
-        Height = 21
-        DataField = 'KUL'
-        DataSource = Form_list_kart.DS_list_kart
-        EditButtons = <>
-        KeyField = 'ID'
-        ListField = 'NAME'
-        ListSource = DS_spul
-        TabOrder = 6
-        Visible = True
       end
       object Panel1: TPanel
         Left = 8
@@ -2143,22 +1790,6 @@ object Form_kart: TForm_kart
         DataSource = Form_list_kart.DS_list_kart
         TabOrder = 4
       end
-      object DBLookupComboboxEh12: TDBLookupComboboxEh
-        Left = 168
-        Top = 31
-        Width = 57
-        Height = 21
-        DataField = 'HOUSE_ID'
-        DataSource = Form_list_kart.DS_list_kart
-        EditButtons = <>
-        KeyField = 'ID'
-        ListField = 'ND'
-        ListSource = DS_houses
-        ReadOnly = True
-        TabOrder = 7
-        Visible = True
-        OnDropDown = DBLookupComboboxEh12DropDown
-      end
       object cxDBTextEdit5: TcxDBTextEdit
         Left = 297
         Top = 0
@@ -2167,8 +1798,53 @@ object Form_kart: TForm_kart
         DataBinding.DataSource = DS_eolink
         ParentShowHint = False
         ShowHint = True
-        TabOrder = 11
+        TabOrder = 8
         Width = 88
+      end
+      object cbb1KUL: TcxDBLookupComboBox
+        Left = 43
+        Top = 32
+        DataBinding.DataField = 'KUL'
+        DataBinding.DataSource = Form_list_kart.DS_list_kart
+        Properties.KeyFieldNames = 'ID'
+        Properties.ListColumns = <
+          item
+            FieldName = 'NAME'
+          end>
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = DS_spul
+        TabOrder = 9
+        Width = 96
+      end
+      object cbb12HOUSE_ID: TcxDBLookupComboBox
+        Left = 171
+        Top = 32
+        DataBinding.DataField = 'HOUSE_ID'
+        DataBinding.DataSource = Form_list_kart.DS_list_kart
+        Properties.KeyFieldNames = 'ID'
+        Properties.ListColumns = <
+          item
+            FieldName = 'ND'
+          end>
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = DS_houses
+        TabOrder = 10
+        Width = 51
+      end
+      object cbb4FK_DISTR: TcxDBLookupComboBox
+        Left = 359
+        Top = 31
+        DataBinding.DataField = 'FK_DISTR'
+        DataBinding.DataSource = Form_list_kart.DS_list_kart
+        Properties.KeyFieldNames = 'ID'
+        Properties.ListColumns = <
+          item
+            FieldName = 'NAME'
+          end>
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = DS_distr
+        TabOrder = 11
+        Width = 92
       end
     end
     object TabSheet6: TTabSheet
@@ -4184,8 +3860,8 @@ object Form_kart: TForm_kart
       end>
     StorageName = 'frmKartStore.ini'
     StorageType = stRegistry
-    Left = 128
-    Top = 24
+    Left = 144
+    Top = 8
   end
   object DS_psch2: TDataSource
     DataSet = DataModule1.OD_psch2
