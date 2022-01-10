@@ -444,18 +444,21 @@ begin
   Update;
   DataModule1.OraclePackage1.CallProcedure
     ('scott.gen.go_next_month_year', [parNone]);
-  // завершить модуль начисления
+  // перезагрузить справочники
   try
     l_res :=
       DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA.HTTP_REQ',
-      ['terminateApp', null, null, 'GET', Form_main.javaServer]);
+      ['reloadParams', null, null, 'GET', Form_main.javaServer]);
+    l_res :=
+      DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA.HTTP_REQ',
+      ['reloadSprPen', null, null, 'GET', Form_main.javaServer]);
   except
   end;
-  Application.MessageBox('Выполнен переход месяца, необходимо ЗАГРУЗИТЬ модуль начисления', 'Внимание!', MB_OK +
-    MB_ICONWARNING + MB_TOPMOST);
 
   Application.MessageBox('Необходимо задать текущую дату', 'Внимание!', MB_OK +
     MB_ICONWARNING + MB_TOPMOST);
+
+  Memo1.Text := 'Переход выполнен!';
 
   Application.CreateForm(TForm_sel_comps, Form_sel_comps);
   Form_sel_comps.ShowModal;
