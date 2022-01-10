@@ -1,6 +1,6 @@
 object Form_kart: TForm_kart
-  Left = 1101
-  Top = 338
+  Left = 785
+  Top = 620
   Width = 903
   Height = 675
   BorderIcons = [biSystemMenu, biMinimize]
@@ -908,7 +908,7 @@ object Form_kart: TForm_kart
               Top = 0
               Width = 25
               Height = 25
-              Hint = #1050' '#1087#1077#1088#1074#1086#1081' '#1079#1072#1087#1080#1089#1080
+              Hint = 'Move to first record'
               ImageIndex = -1
               NumGlyphs = 2
               Spacing = 4
@@ -925,7 +925,7 @@ object Form_kart: TForm_kart
               Top = 0
               Width = 25
               Height = 25
-              Hint = #1055#1088#1077#1076#1099#1076#1091#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
+              Hint = 'Move to prior record'
               ImageIndex = -1
               NumGlyphs = 2
               Spacing = 4
@@ -942,7 +942,7 @@ object Form_kart: TForm_kart
               Top = 0
               Width = 25
               Height = 25
-              Hint = #1057#1083#1077#1076#1091#1102#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
+              Hint = 'Move to next record'
               ImageIndex = -1
               NumGlyphs = 2
               Spacing = 4
@@ -959,7 +959,7 @@ object Form_kart: TForm_kart
               Top = 0
               Width = 25
               Height = 25
-              Hint = #1055#1077#1088#1077#1081#1090#1080' '#1082' '#1087#1086#1089#1083#1077#1076#1085#1077#1081' '#1079#1072#1087#1080#1089#1080
+              Hint = 'Move to last record'
               ImageIndex = -1
               NumGlyphs = 2
               Spacing = 4
@@ -976,7 +976,7 @@ object Form_kart: TForm_kart
               Top = 0
               Width = 25
               Height = 25
-              Hint = #1044#1086#1073#1072#1074#1080#1090#1100' '#1085#1086#1074#1091#1102' '#1079#1072#1087#1080#1089#1100
+              Hint = 'Insert new record'
               ImageIndex = -1
               NumGlyphs = 2
               Spacing = 4
@@ -993,7 +993,7 @@ object Form_kart: TForm_kart
               Top = 0
               Width = 25
               Height = 25
-              Hint = #1059#1076#1072#1083#1080#1090#1100' '#1090#1077#1082#1091#1097#1091#1102' '#1079#1072#1087#1080#1089#1100
+              Hint = 'Delete current record'
               ImageIndex = -1
               NumGlyphs = 2
               Spacing = 4
@@ -1592,46 +1592,99 @@ object Form_kart: TForm_kart
         Align = alClient
         Caption = #1055#1088#1086#1078#1080#1074#1072#1102#1097#1080#1077
         TabOrder = 1
-        object wwDBGrid4: TwwDBGrid
+        object cxGrid4: TcxGrid
           Left = 2
           Top = 15
           Width = 535
           Height = 130
-          Hint = #1055#1088#1072#1074#1072#1103' '#1082#1085#1086#1087#1082#1072' '#1084#1099#1096#1080' - '#1087#1086#1082#1072#1079#1072#1090#1100'/'#1089#1082#1088#1099#1090#1100' '#1074#1099#1073#1099#1074#1096#1080#1093
-          ControlType.Strings = (
-            'USE_GIS_DIVIDE_ELS;CheckBox;1;0')
-          Selected.Strings = (
-            'RN'#9'2'#9#8470#9'F'
-            'ST_NAME'#9'5'#9#1057#1090#1072#1090#1091#1089#9'F'
-            'FIO'#9'20'#9#1060'.'#1048'.'#1054'.'#9'F'
-            'PRIV_PROC'#9'10'#9'%~'#1087#1088#1080#1074#1072#1090#9'F'
-            'DAT_PROP'#9'9'#9#1044#1072#1090#1072' '#1087#1088#1086#1087#1080#1089#1082#1080#9'F'#9#1055#1088#1086#1087#1080#1089#1082#1072
-            'DAT_UB'#9'9'#9#1044#1072#1090#1072' '#1091#1073#1099#1090#1080#1103#9'F'#9#1055#1088#1086#1087#1080#1089#1082#1072
-            'ST_DT1'#9'8'#9#1053#1072#1095#1072#1083#1086#9'F'#9#1042#1088#1077#1084#1077#1085#1085#1072#1103' '#1088#1077#1075#1080#1089#1090#1088#1072#1094#1080#1103
-            'ST_DT2'#9'9'#9#1054#1082#1086#1085#1095#9'F'#9#1042#1088#1077#1084#1077#1085#1085#1072#1103' '#1088#1077#1075#1080#1089#1090#1088#1072#1094#1080#1103
-            'USE_GIS_DIVIDE_ELS'#9'4'#9#1043#1048#1057#9'F')
-          IniAttributes.Delimiter = ';;'
-          TitleColor = clBtnFace
-          FixedCols = 0
-          ShowHorzScrollBar = True
           Align = alClient
-          DataSource = DS_kart_pr
-          Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap, dgShowCellHint, dgProportionalColResize]
-          ParentShowHint = False
-          PopupMenu = PopupMenu2
-          ShowHint = True
           TabOrder = 0
-          TitleAlignment = taLeftJustify
-          TitleFont.Charset = DEFAULT_CHARSET
-          TitleFont.Color = clWindowText
-          TitleFont.Height = -11
-          TitleFont.Name = 'MS Sans Serif'
-          TitleFont.Style = []
-          TitleLines = 2
-          TitleButtons = False
-          UseTFields = False
-          OnDblClick = wwDBGrid4DblClick
-          OnKeyDown = wwDBGrid4KeyDown
+          object cxGridDBTableView2: TcxGridDBTableView
+            OnDblClick = cxGridDBTableView2DblClick
+            OnKeyDown = cxGridDBTableView2KeyDown
+            Navigator.Buttons.CustomButtons = <>
+            DataController.DataSource = DS_kart_pr
+            DataController.Summary.DefaultGroupSummaryItems = <
+              item
+                Format = #1054#1073#1098#1077#1084' 0.00'
+                Kind = skSum
+              end
+              item
+                Format = #1048#1079#1084#1077#1085#1077#1085#1080#1103' 0.00'
+                Kind = skSum
+              end
+              item
+                Format = #1058#1072#1088#1080#1092' 0.00'
+                Kind = skSum
+              end
+              item
+                Kind = skSum
+                Position = spFooter
+              end
+              item
+                Format = #1048#1090#1086#1075#1086' 0.00'
+                Kind = skSum
+              end
+              item
+                Kind = skSum
+                Position = spFooter
+              end>
+            DataController.Summary.FooterSummaryItems = <
+              item
+                Kind = skSum
+              end
+              item
+                Format = #1048#1090#1086#1075#1086' 0.00'
+              end
+              item
+                Kind = skSum
+              end>
+            DataController.Summary.SummaryGroups = <>
+            OptionsBehavior.CellHints = True
+            OptionsData.Deleting = False
+            OptionsData.Editing = False
+            OptionsData.Inserting = False
+            OptionsView.ColumnAutoWidth = True
+            OptionsView.FooterMultiSummaries = True
+            OptionsView.GroupByBox = False
+            OptionsView.GroupFooterMultiSummaries = True
+            OptionsView.HeaderAutoHeight = True
+            OptionsView.Indicator = True
+            object cxGridDBTableView2RN: TcxGridDBColumn
+              DataBinding.FieldName = 'RN'
+            end
+            object cxGridDBTableView2STATUS: TcxGridDBColumn
+              DataBinding.FieldName = 'STATUS'
+              Visible = False
+            end
+            object cxGridDBTableView2FIO: TcxGridDBColumn
+              DataBinding.FieldName = 'FIO'
+            end
+            object cxGridDBTableView2PROC_PRIV: TcxGridDBColumn
+              DataBinding.FieldName = 'PRIV_PROC'
+            end
+            object cxGridDBTableView2DAT_PROP: TcxGridDBColumn
+              DataBinding.FieldName = 'DAT_PROP'
+            end
+            object cxGridDBTableView2DAT_UB: TcxGridDBColumn
+              DataBinding.FieldName = 'DAT_UB'
+            end
+            object cxGridDBTableView2ST_DT1: TcxGridDBColumn
+              Caption = #1053#1072#1095#1072#1083#1086
+              DataBinding.FieldName = 'ST_DT1'
+            end
+            object cxGridDBTableView2ST_DT2: TcxGridDBColumn
+              Caption = #1054#1082#1086#1085#1095#1072#1085#1080#1077
+              DataBinding.FieldName = 'ST_DT2'
+            end
+            object cxGridDBTableView2USE_GIS_DIVIDE_ELS: TcxGridDBColumn
+              Caption = #1043#1048#1057
+              DataBinding.FieldName = 'USE_GIS_DIVIDE_ELS'
+            end
+          end
+          object cxGridLevel2: TcxGridLevel
+            GridView = cxGridDBTableView2
+          end
         end
       end
     end

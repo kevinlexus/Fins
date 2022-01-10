@@ -324,7 +324,6 @@ type
     DBCheckBoxEh1: TDBCheckBoxEh;
     DBEdit19: TDBEdit;
     GroupBox3: TGroupBox;
-    wwDBGrid4: TwwDBGrid;
     OD_kart_prDOK_SNILS: TStringField;
     TabSheet8: TTabSheet;
     GroupBox2: TGroupBox;
@@ -402,6 +401,18 @@ type
     cxGrid1DBTableView1UNITS: TcxGridDBColumn;
     chk2: TCheckBox;
     SpeedButton1: TSpeedButton;
+    cxGrid4: TcxGrid;
+    cxGridDBTableView2: TcxGridDBTableView;
+    cxGridLevel2: TcxGridLevel;
+    cxGridDBTableView2RN: TcxGridDBColumn;
+    cxGridDBTableView2FIO: TcxGridDBColumn;
+    cxGridDBTableView2DAT_PROP: TcxGridDBColumn;
+    cxGridDBTableView2DAT_UB: TcxGridDBColumn;
+    cxGridDBTableView2ST_DT1: TcxGridDBColumn;
+    cxGridDBTableView2ST_DT2: TcxGridDBColumn;
+    cxGridDBTableView2STATUS: TcxGridDBColumn;
+    cxGridDBTableView2USE_GIS_DIVIDE_ELS: TcxGridDBColumn;
+    cxGridDBTableView2PROC_PRIV: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure DBGridEh1DblClick(Sender: TObject);
     procedure OD_kartAfterPost(DataSet: TDataSet);
@@ -503,6 +514,9 @@ type
     procedure CheckBox2Click(Sender: TObject);
     procedure chk2Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure cxGridDBTableView2DblClick(Sender: TObject);
+    procedure cxGridDBTableView2KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     tarif_, privs_, subsid_, changes_, itogn_: Double;
     size_, allow_dtv_, id_, action_, fk_tarif_: Integer;
@@ -739,7 +753,7 @@ end;
 
 procedure TForm_kart.saveOrRollbackKart(ask_: Integer; isCommit: Boolean);
 begin
-  LockControl(wwDBGrid4, true);
+  LockControl(cxGrid4, true);
   if isCommit <> true then
   begin
     // отменить изменения, без вопросов
@@ -828,7 +842,7 @@ begin
 
     //сброс признака наличия обновления
   updates_ := 0;
-  LockControl(wwDBGrid4, false);
+  LockControl(cxGrid4, false);
 
 end;
 
@@ -2269,6 +2283,19 @@ begin
   
   end;
 
+end;
+
+procedure TForm_kart.cxGridDBTableView2DblClick(Sender: TObject);
+begin
+  open_kart_pr;
+
+end;
+
+procedure TForm_kart.cxGridDBTableView2KeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+  if Key = 13 then
+    open_kart_pr;
 end;
 
 end.

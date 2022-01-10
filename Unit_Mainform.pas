@@ -8,8 +8,8 @@ uses
   IdComponent, ExtCtrls, StdCtrls, DBCtrls,
   DB, OracleData,
   IniFiles,
-  CustomizeDlg, CoolTrayIcon, Oracle, DBCtrlsEh, OleCtl, Utils, StrUtils,
-  MemTableDataEh, DataDriverEh, wwdbedit, Wwintl, DVButils, ShellAPI,
+  CustomizeDlg, CoolTrayIcon, Oracle, OleCtl, Utils, StrUtils,
+  DVButils, ShellAPI,
   frxClass, frxDBSet, frxExportCSV,
   frxExportPDF,
   frxExportBIFF, frxExportText, frxExportRTF, ComObj,
@@ -115,7 +115,6 @@ type
     ToolButton1: TToolButton;
     N79: TMenuItem;
     N80: TMenuItem;
-    wwIntl1: TwwIntl;
     Panel1: TPanel;
     Label1: TLabel;
     N77: TMenuItem;
