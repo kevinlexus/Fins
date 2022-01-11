@@ -43,7 +43,6 @@ type
     TabSheet3: TTabSheet;
     Label2: TLabel;
     Label7: TLabel;
-    DBDateTimeEditEh3: TDBDateTimeEditEh;
     DBLookupComboboxEh1: TDBLookupComboboxEh;
     Label10: TLabel;
     Label13: TLabel;
@@ -63,8 +62,6 @@ type
     DBEdit1: TDBEdit;
     DBEdit3: TDBEdit;
     DBEdit4: TDBEdit;
-    DBDateTimeEditEh4: TDBDateTimeEditEh;
-    DBLookupComboboxEh2: TDBLookupComboboxEh;
     Label16: TLabel;
     Label12: TLabel;
     OD_ovd: TOracleDataSet;
@@ -183,7 +180,6 @@ type
     DBNavigator2: TDBNavigator;
     frxReport_base: TfrxReport;
     Label40: TLabel;
-    DBDateTimeEditEh8: TDBDateTimeEditEh;
     TabSheet5: TTabSheet;
     OD_c_states: TOracleDataSet;
     DS_c_states: TDataSource;
@@ -211,7 +207,6 @@ type
     DBLookupComboboxEh19: TDBLookupComboboxEh;
     DBLookupComboboxEh7: TDBLookupComboboxEh;
     DBLookupComboboxEh5: TDBLookupComboboxEh;
-    DBLookupComboboxEh4: TDBLookupComboboxEh;
     DBLookupComboboxEh15: TDBLookupComboboxEh;
     DBLookupComboboxEh16: TDBLookupComboboxEh;
     DBLookupComboboxEh17: TDBLookupComboboxEh;
@@ -247,6 +242,11 @@ type
     cbbRELAT: TcxDBLookupComboBox;
     cxdbdtdtDAT_PROP: TcxDBDateEdit;
     cxDBDateEdit1: TcxDBDateEdit;
+    cxDBDateEdit2: TcxDBDateEdit;
+    cxDBDateEdit3: TcxDBDateEdit;
+    cxDBDateEdit4: TcxDBDateEdit;
+    DBLookupComboboxEh3: TDBLookupComboboxEh;
+    cbb2STATUS: TcxDBLookupComboBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure OD_lg_docsSPK_IDValidate(Sender: TField);
     procedure OD_lg_docsTYPEValidate(Sender: TField);
@@ -281,8 +281,8 @@ type
     procedure OD_c_states2BeforeDelete(DataSet: TDataSet);
     procedure OD_c_statesBeforeDelete(DataSet: TDataSet);
     procedure OD_c_statesBeforeInsert(DataSet: TDataSet);
-    procedure DBLookupComboboxEh6EditButtons0Click(Sender: TObject;
-      var Handled: Boolean);
+//    procedure DBLookupComboboxEh6EditButtons0Click(Sender: TObject;
+//      var Handled: Boolean);
     procedure DBLookupComboboxEh18EditButtons0Click(Sender: TObject;
       var Handled: Boolean);
     procedure DBLookupComboboxEh19EditButtons0Click(Sender: TObject;
@@ -293,8 +293,8 @@ type
       var Handled: Boolean);
     procedure DBLookupComboboxEh16EditButtons0Click(Sender: TObject;
       var Handled: Boolean);
-    procedure DBLookupComboboxEh4EditButtons0Click(Sender: TObject;
-      var Handled: Boolean);
+//    procedure DBLookupComboboxEh4EditButtons0Click(Sender: TObject;
+//      var Handled: Boolean);
     procedure DBLookupComboboxEh5EditButtons0Click(Sender: TObject;
       var Handled: Boolean);
     procedure DBLookupComboboxEh17EditButtons0Click(Sender: TObject;
@@ -312,7 +312,7 @@ type
     procedure setFieldsDokDeath(isVisible, isCheckVisible: Boolean);
   private
     id2_: Integer;
-    procedure add_prop(tp_: string; ds: TDBLookupComboboxEh);
+//    procedure add_prop(tp_: string; ds: TDBLookupComboboxEh);
   public
     sel_id_: Integer;
   end;
@@ -860,7 +860,7 @@ begin
 
 end;
 
-procedure TForm_kart_pr.DBLookupComboboxEh6EditButtons0Click(
+{procedure TForm_kart_pr.DBLookupComboboxEh6EditButtons0Click(
   Sender: TObject; var Handled: Boolean);
 begin
   add_prop('Страна', DBLookupComboboxEh6);
@@ -879,79 +879,80 @@ begin
     ds.KeyValue := sel_id_;
   end;
 end;
+}
 
 procedure TForm_kart_pr.DBLookupComboboxEh18EditButtons0Click(
   Sender: TObject; var Handled: Boolean);
 begin
-  add_prop('Область', DBLookupComboboxEh18);
+//  add_prop('Область', DBLookupComboboxEh18);
 end;
 
 procedure TForm_kart_pr.DBLookupComboboxEh19EditButtons0Click(
   Sender: TObject; var Handled: Boolean);
 begin
-  add_prop('Район', DBLookupComboboxEh19);
+//  add_prop('Район', DBLookupComboboxEh19);
 end;
 
 procedure TForm_kart_pr.DBLookupComboboxEh7EditButtons0Click(
   Sender: TObject; var Handled: Boolean);
 begin
-  add_prop('Национальность', DBLookupComboboxEh7);
+//  add_prop('Национальность', DBLookupComboboxEh7);
 end;
 
 procedure TForm_kart_pr.DBLookupComboboxEh15EditButtons0Click(
   Sender: TObject; var Handled: Boolean);
 begin
-  add_prop('Военнообязанность', DBLookupComboboxEh15);
+//  add_prop('Военнообязанность', DBLookupComboboxEh15);
 
 end;
 
 procedure TForm_kart_pr.DBLookupComboboxEh16EditButtons0Click(
   Sender: TObject; var Handled: Boolean);
 begin
-  add_prop('Военкомат', DBLookupComboboxEh16);
+//  add_prop('Военкомат', DBLookupComboboxEh16);
 
 end;
 
-procedure TForm_kart_pr.DBLookupComboboxEh4EditButtons0Click(
+{procedure TForm_kart_pr.DBLookupComboboxEh4EditButtons0Click(
   Sender: TObject; var Handled: Boolean);
 begin
   add_prop('Гражданство', DBLookupComboboxEh4);
-end;
+end;}
 
 procedure TForm_kart_pr.DBLookupComboboxEh5EditButtons0Click(
   Sender: TObject; var Handled: Boolean);
 begin
-  add_prop('Документ', DBLookupComboboxEh5);
+//  add_prop('Документ', DBLookupComboboxEh5);
 end;
 
 procedure TForm_kart_pr.DBLookupComboboxEh17EditButtons0Click(
   Sender: TObject; var Handled: Boolean);
 begin
-  add_prop('ОВД', DBLookupComboboxEh17);
+//  add_prop('ОВД', DBLookupComboboxEh17);
 end;
 
 procedure TForm_kart_pr.DBLookupComboboxEh20EditButtons0Click(
   Sender: TObject; var Handled: Boolean);
 begin
-  add_prop('Страна', DBLookupComboboxEh20);
+//  add_prop('Страна', DBLookupComboboxEh20);
 end;
 
 procedure TForm_kart_pr.DBLookupComboboxEh11EditButtons0Click(
   Sender: TObject; var Handled: Boolean);
 begin
-  add_prop('Область', DBLookupComboboxEh11);
+//  add_prop('Область', DBLookupComboboxEh11);
 end;
 
 procedure TForm_kart_pr.DBLookupComboboxEh12EditButtons0Click(
   Sender: TObject; var Handled: Boolean);
 begin
-  add_prop('Район', DBLookupComboboxEh12);
+//  add_prop('Район', DBLookupComboboxEh12);
 end;
 
 procedure TForm_kart_pr.DBLookupComboboxEh13EditButtons0Click(
   Sender: TObject; var Handled: Boolean);
 begin
-  add_prop('Причина выписки', DBLookupComboboxEh13);
+//  add_prop('Причина выписки', DBLookupComboboxEh13);
 
 end;
 
