@@ -1,6 +1,6 @@
 object Form_kart_pr: TForm_kart_pr
-  Left = 1741
-  Top = 423
+  Left = 605
+  Top = 683
   Width = 680
   Height = 525
   BorderIcons = [biSystemMenu, biMinimize]
@@ -1328,7 +1328,7 @@ object Form_kart_pr: TForm_kart_pr
       DataSource = Form_kart.DS_kart_pr
       EditButtons = <>
       Kind = dtkDateEh
-      TabOrder = 6
+      TabOrder = 5
       Visible = False
     end
     object DBLookupComboboxEh2: TDBLookupComboboxEh
@@ -1343,33 +1343,7 @@ object Form_kart_pr: TForm_kart_pr
       KeyField = 'ID'
       ListField = 'NAME'
       ReadOnly = True
-      TabOrder = 4
-      Visible = True
-    end
-    object DBDateTimeEditEh1: TDBDateTimeEditEh
-      Left = 542
-      Top = 8
-      Width = 89
-      Height = 21
-      DataField = 'DAT_PROP'
-      DataSource = Form_kart.DS_kart_pr
-      Enabled = False
-      EditButtons = <>
-      Kind = dtkDateEh
       TabOrder = 3
-      Visible = True
-    end
-    object DBDateTimeEditEh5: TDBDateTimeEditEh
-      Left = 542
-      Top = 32
-      Width = 89
-      Height = 21
-      DataField = 'DAT_UB'
-      DataSource = Form_kart.DS_kart_pr
-      Enabled = False
-      EditButtons = <>
-      Kind = dtkDateEh
-      TabOrder = 7
       Visible = True
     end
     object DBDateTimeEditEh8: TDBDateTimeEditEh
@@ -1381,7 +1355,7 @@ object Form_kart_pr: TForm_kart_pr
       DataSource = Form_kart.DS_kart_pr
       EditButtons = <>
       Kind = dtkDateEh
-      TabOrder = 5
+      TabOrder = 4
       Visible = False
     end
     object dbedtK_OT: TDBEdit
@@ -1394,9 +1368,9 @@ object Form_kart_pr: TForm_kart_pr
       DataSource = Form_kart.DS_kart_pr
       ParentShowHint = False
       ShowHint = True
-      TabOrder = 8
+      TabOrder = 6
     end
-    object cbb2STATUS: TcxDBLookupComboBox
+    object cbbRELAT: TcxDBLookupComboBox
       Left = 8
       Top = 7
       DataBinding.DataField = 'RELAT_ID'
@@ -1408,9 +1382,24 @@ object Form_kart_pr: TForm_kart_pr
         end>
       Properties.ListOptions.ShowHeader = False
       Properties.ListSource = DS_relations
-      TabOrder = 9
-      OnExit = cbb2STATUSExit
+      TabOrder = 7
       Width = 110
+    end
+    object cxdbdtdtDAT_PROP: TcxDBDateEdit
+      Left = 543
+      Top = 10
+      DataBinding.DataField = 'DAT_PROP'
+      DataBinding.DataSource = Form_kart.DS_kart_pr
+      TabOrder = 8
+      Width = 86
+    end
+    object cxDBDateEdit1: TcxDBDateEdit
+      Left = 543
+      Top = 35
+      DataBinding.DataField = 'DAT_UB'
+      DataBinding.DataSource = Form_kart.DS_kart_pr
+      TabOrder = 9
+      Width = 86
     end
   end
   object Button2: TButton

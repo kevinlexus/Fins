@@ -17,7 +17,7 @@ uses
   cxFilter, cxData, cxDataStorage, cxNavigator, cxDBData,
   cxDBLookupComboBox, cxGridCustomTableView, cxGridTableView,
   cxGridCustomView, Grids, Wwdbigrd, cxCheckBox, cxTextEdit, cxMaskEdit,
-  cxDropDownEdit, cxLookupEdit, cxDBLookupEdit;
+  cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxCalendar;
 
 type
   TForm_kart_pr = class(TForm)
@@ -65,8 +65,6 @@ type
     DBEdit4: TDBEdit;
     DBDateTimeEditEh4: TDBDateTimeEditEh;
     DBLookupComboboxEh2: TDBLookupComboboxEh;
-    DBDateTimeEditEh1: TDBDateTimeEditEh;
-    DBDateTimeEditEh5: TDBDateTimeEditEh;
     Label16: TLabel;
     Label12: TLabel;
     OD_ovd: TOracleDataSet;
@@ -246,7 +244,9 @@ type
     cxDBTextEdit2: TcxDBTextEdit;
     Label45: TLabel;
     Label46: TLabel;
-    cbb2STATUS: TcxDBLookupComboBox;
+    cbbRELAT: TcxDBLookupComboBox;
+    cxdbdtdtDAT_PROP: TcxDBDateEdit;
+    cxDBDateEdit1: TcxDBDateEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure OD_lg_docsSPK_IDValidate(Sender: TField);
     procedure OD_lg_docsTYPEValidate(Sender: TField);
@@ -310,7 +310,6 @@ type
     procedure DBLookupComboboxEh13CloseUp(Sender: TObject;
       Accept: Boolean);
     procedure setFieldsDokDeath(isVisible, isCheckVisible: Boolean);
-    procedure cbb2STATUSExit(Sender: TObject);
   private
     id2_: Integer;
     procedure add_prop(tp_: string; ds: TDBLookupComboboxEh);

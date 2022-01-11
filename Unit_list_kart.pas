@@ -63,7 +63,7 @@ type
     OD_list_kartC_LSK_ID: TFloatField;
     OD_list_kartMG1: TStringField;
     OD_list_kartMG2: TStringField;
-    OD_list_kartNAME_REU: TStringField;
+    fk: TStringField;
     OD_list_kartHOUSE_ID: TFloatField;
     OD_list_kartKAN_SCH: TFloatField;
     OD_list_kartK_LSK_ID: TFloatField;
@@ -292,6 +292,8 @@ uses Unit_form_kart, Unit_Mainform, DM_module1, Unit_find_adr,
 {$R *.dfm}
 
 procedure TForm_list_kart.setAllowEdit_kart;
+var
+  lll: Integer;
 begin
   // проверка прав на доступ к объекту в Form_kart
   if (Utils.checkAccessRigths(Form_Main.accessList,
@@ -308,6 +310,7 @@ begin
   else
     isAllowEdit_k2_ := 0;
 
+  lll:=OD_list_kart.FieldByName('fk_pasp_org').AsInteger;
   if (Utils.checkAccessRigths(Form_Main.accessList, '',
     OD_list_kart.FieldByName('fk_pasp_org').AsInteger,
     'доступ к пасп.столу')) then
