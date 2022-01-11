@@ -393,7 +393,6 @@ object DataModule1: TDataModule1
     QBEDefinition.QBEFieldDefs = {
       040000000300000003000000524555010000000000070000004E414D455F5452
       010000000000080000004E414D455F524555010000000000}
-    Master = Form_list_kart.OD_list_kart
     Session = OracleSession1
     Left = 80
     Top = 520

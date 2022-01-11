@@ -1,6 +1,6 @@
 object Form_kart: TForm_kart
-  Left = 1045
-  Top = 676
+  Left = 1041
+  Top = 690
   Width = 903
   Height = 675
   BorderIcons = [biSystemMenu, biMinimize]
@@ -137,7 +137,7 @@ object Form_kart: TForm_kart
         Top = 1
         Width = 342
         Height = 220
-        ActivePage = TabSheet1
+        ActivePage = TabSheet8
         Align = alClient
         TabOrder = 0
         object TabSheet3: TTabSheet
@@ -518,21 +518,22 @@ object Form_kart: TForm_kart
               Font.Style = [fsBold]
               ParentFont = False
             end
-            object DBLookupComboboxEh10: TDBLookupComboboxEh
-              Left = 99
+            object cbb2KFG: TcxDBLookupComboBox
+              Left = 94
               Top = 12
-              Width = 62
-              Height = 21
-              DataField = 'KFG'
-              DataSource = Form_list_kart.DS_list_kart
-              EditButtons = <>
-              KeyField = 'ID'
-              ListField = 'KOEFF'
-              ListSource = DS_kfg
+              DataBinding.DataField = 'KFG'
+              DataBinding.DataSource = Form_list_kart.DS_list_kart
+              Properties.KeyFieldNames = 'ID'
+              Properties.ListColumns = <
+                item
+                  FieldName = 'KOEFF'
+                end>
+              Properties.ListOptions.ShowHeader = False
+              Properties.ListSource = DS_kfg
               TabOrder = 0
-              Visible = True
+              Width = 79
             end
-            object wwCheckBox5: TwwCheckBox
+            object wwCheckBox1: TwwCheckBox
               Left = 176
               Top = 16
               Width = 97
@@ -926,18 +927,6 @@ object Form_kart: TForm_kart
             Visible = False
             OnClick = CheckBox4Click
           end
-          object DBDateTimeEditEh1: TDBDateTimeEditEh
-            Left = 128
-            Top = 104
-            Width = 97
-            Height = 21
-            DataField = 'PN_DT'
-            DataSource = Form_list_kart.DS_list_kart
-            EditButtons = <>
-            Kind = dtkDateEh
-            TabOrder = 5
-            Visible = True
-          end
           object DBEdit8: TDBEdit
             Left = 256
             Top = 8
@@ -945,7 +934,7 @@ object Form_kart: TForm_kart
             Height = 21
             DataField = 'FK_KLSK_OBJ'
             DataSource = Form_list_kart.DS_list_kart
-            TabOrder = 6
+            TabOrder = 5
           end
           object DBEdit20: TDBEdit
             Left = 256
@@ -954,7 +943,7 @@ object Form_kart: TForm_kart
             Height = 21
             DataField = 'FK_KLSK_PREMISE'
             DataSource = Form_list_kart.DS_list_kart
-            TabOrder = 7
+            TabOrder = 6
           end
           object CheckBox2: TCheckBox
             Left = 8
@@ -972,8 +961,16 @@ object Form_kart: TForm_kart
             ParentFont = False
             ParentShowHint = False
             ShowHint = True
-            TabOrder = 8
+            TabOrder = 7
             OnClick = CheckBox2Click
+          end
+          object cxdbdtdtPN_DT: TcxDBDateEdit
+            Left = 130
+            Top = 104
+            DataBinding.DataField = 'PN_DT'
+            DataBinding.DataSource = Form_list_kart.DS_list_kart
+            TabOrder = 8
+            Width = 103
           end
         end
         object TabSheet8: TTabSheet
@@ -1451,7 +1448,7 @@ object Form_kart: TForm_kart
     Top = 0
     Width = 887
     Height = 81
-    ActivePage = TabSheet5
+    ActivePage = TabSheet7
     Align = alTop
     TabOrder = 0
     object TabSheet5: TTabSheet
@@ -1705,42 +1702,14 @@ object Form_kart: TForm_kart
         DataSource = Form_list_kart.DS_list_kart
         ParentShowHint = False
         ShowHint = True
-        TabOrder = 7
-      end
-      object wwDBEdit2: TwwDBEdit
-        Left = 255
-        Top = 31
-        Width = 66
-        Height = 21
-        TabOrder = 6
-        UnboundDataType = wwDefault
-        WantReturns = False
-        WordWrap = False
-        OnExit = wwDBEdit2Exit
+        TabOrder = 5
       end
       object Panel1: TPanel
         Left = 8
         Top = 24
         Width = 873
         Height = 2
-        TabOrder = 5
-      end
-      object DBLookupComboboxEh9: TDBLookupComboboxEh
-        Left = 8
-        Top = 0
-        Width = 121
-        Height = 21
-        DataField = 'REU'
-        DataSource = Form_list_kart.DS_list_kart
-        DropDownBox.AutoDrop = True
-        DropDownBox.Rows = 5
-        DropDownBox.Sizable = True
-        EditButtons = <>
-        KeyField = 'REU'
-        ListField = 'NAME_REU'
-        ListSource = DS_reu_trest
-        TabOrder = 0
-        Visible = True
+        TabOrder = 4
       end
       object wwDBComboDlg1: TwwDBComboDlg
         Left = 152
@@ -1759,7 +1728,7 @@ object Form_kart: TForm_kart
         Font.Style = [fsBold]
         ParentFont = False
         ReadOnly = True
-        TabOrder = 1
+        TabOrder = 0
         WordWrap = False
         UnboundDataType = wwDefault
       end
@@ -1770,7 +1739,7 @@ object Form_kart: TForm_kart
         Height = 21
         DataField = 'K_FAM'
         DataSource = Form_list_kart.DS_list_kart
-        TabOrder = 2
+        TabOrder = 1
       end
       object DBEdit7: TDBEdit
         Left = 704
@@ -1779,7 +1748,7 @@ object Form_kart: TForm_kart
         Height = 21
         DataField = 'K_IM'
         DataSource = Form_list_kart.DS_list_kart
-        TabOrder = 3
+        TabOrder = 2
       end
       object DBEdit14: TDBEdit
         Left = 784
@@ -1788,7 +1757,7 @@ object Form_kart: TForm_kart
         Height = 21
         DataField = 'K_OT'
         DataSource = Form_list_kart.DS_list_kart
-        TabOrder = 4
+        TabOrder = 3
       end
       object cxDBTextEdit5: TcxDBTextEdit
         Left = 297
@@ -1798,7 +1767,7 @@ object Form_kart: TForm_kart
         DataBinding.DataSource = DS_eolink
         ParentShowHint = False
         ShowHint = True
-        TabOrder = 8
+        TabOrder = 6
         Width = 88
       end
       object cbb1KUL: TcxDBLookupComboBox
@@ -1813,7 +1782,7 @@ object Form_kart: TForm_kart
           end>
         Properties.ListOptions.ShowHeader = False
         Properties.ListSource = DS_spul
-        TabOrder = 9
+        TabOrder = 7
         Width = 96
       end
       object cbb12HOUSE_ID: TcxDBLookupComboBox
@@ -1828,7 +1797,7 @@ object Form_kart: TForm_kart
           end>
         Properties.ListOptions.ShowHeader = False
         Properties.ListSource = DS_houses
-        TabOrder = 10
+        TabOrder = 8
         Width = 51
       end
       object cbb4FK_DISTR: TcxDBLookupComboBox
@@ -1843,8 +1812,30 @@ object Form_kart: TForm_kart
           end>
         Properties.ListOptions.ShowHeader = False
         Properties.ListSource = DS_distr
-        TabOrder = 11
+        TabOrder = 9
         Width = 92
+      end
+      object cbb9REU: TcxDBLookupComboBox
+        Left = 9
+        Top = 1
+        DataBinding.DataField = 'REU'
+        DataBinding.DataSource = Form_list_kart.DS_list_kart
+        Properties.KeyFieldNames = 'REU'
+        Properties.ListColumns = <
+          item
+            FieldName = 'NAME_REU'
+          end>
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = DS_reu_trest
+        TabOrder = 10
+        Width = 121
+      end
+      object cxtxtKw2: TcxTextEdit
+        Left = 256
+        Top = 32
+        TabOrder = 11
+        OnExit = cxtxtKw2Exit
+        Width = 62
       end
     end
     object TabSheet6: TTabSheet
@@ -1944,7 +1935,7 @@ object Form_kart: TForm_kart
         DataSource = Form_list_kart.DS_list_kart
         ParentShowHint = False
         ShowHint = True
-        TabOrder = 1
+        TabOrder = 0
       end
       object DBEdit16: TDBEdit
         Left = 656
@@ -1956,37 +1947,7 @@ object Form_kart: TForm_kart
         DataSource = Form_list_kart.DS_list_kart
         ParentShowHint = False
         ShowHint = True
-        TabOrder = 3
-      end
-      object DBLookupComboboxEh5: TDBLookupComboboxEh
-        Left = 656
-        Top = 30
-        Width = 225
-        Height = 21
-        DataField = 'FK_PASP_ORG'
-        DataSource = Form_list_kart.DS_list_kart
-        EditButtons = <>
-        KeyField = 'ID'
-        ListField = 'NAME'
-        ListSource = DS_pasp
-        TabOrder = 6
-        Visible = True
-      end
-      object wwDBDateTimePicker3: TwwDBDateTimePicker
-        Left = 392
-        Top = 0
-        Width = 121
-        Height = 21
-        CalendarAttributes.Font.Charset = DEFAULT_CHARSET
-        CalendarAttributes.Font.Color = clWindowText
-        CalendarAttributes.Font.Height = -11
-        CalendarAttributes.Font.Name = 'MS Sans Serif'
-        CalendarAttributes.Font.Style = []
-        DataField = 'LAW_DOC_DT'
-        DataSource = Form_list_kart.DS_list_kart
-        Epoch = 1950
-        ShowButton = True
-        TabOrder = 0
+        TabOrder = 2
       end
       object DBEdit18: TDBEdit
         Left = 104
@@ -2000,23 +1961,7 @@ object Form_kart: TForm_kart
         DataSource = Form_list_kart.DS_list_kart
         ParentShowHint = False
         ShowHint = True
-        TabOrder = 5
-      end
-      object wwDBDateTimePicker4: TwwDBDateTimePicker
-        Left = 392
-        Top = 24
-        Width = 121
-        Height = 21
-        CalendarAttributes.Font.Charset = DEFAULT_CHARSET
-        CalendarAttributes.Font.Color = clWindowText
-        CalendarAttributes.Font.Height = -11
-        CalendarAttributes.Font.Name = 'MS Sans Serif'
-        CalendarAttributes.Font.Style = []
-        DataField = 'PRVT_DOC_DT'
-        DataSource = Form_list_kart.DS_list_kart
-        Epoch = 1950
-        ShowButton = True
-        TabOrder = 4
+        TabOrder = 3
       end
       object Button4: TButton
         Left = 835
@@ -2024,8 +1969,39 @@ object Form_kart: TForm_kart
         Width = 43
         Height = 25
         Caption = #1057#1090#1072#1090#1091#1089
-        TabOrder = 2
+        TabOrder = 1
         OnClick = Button4Click
+      end
+      object cbb5FK_PASP_ORG: TcxDBLookupComboBox
+        Left = 656
+        Top = 31
+        DataBinding.DataField = 'FK_PASP_ORG'
+        DataBinding.DataSource = Form_list_kart.DS_list_kart
+        Properties.KeyFieldNames = 'ID'
+        Properties.ListColumns = <
+          item
+            FieldName = 'NAME'
+          end>
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = DS_pasp
+        TabOrder = 4
+        Width = 220
+      end
+      object cxdbdtdt3LAW_DOC_DT: TcxDBDateEdit
+        Left = 392
+        Top = 0
+        DataBinding.DataField = 'LAW_DOC_DT'
+        DataBinding.DataSource = Form_list_kart.DS_list_kart
+        TabOrder = 5
+        Width = 97
+      end
+      object cxdbdtdt4PRVT_DOC_DT: TcxDBDateEdit
+        Left = 392
+        Top = 24
+        DataBinding.DataField = 'PRVT_DOC_DT'
+        DataBinding.DataSource = Form_list_kart.DS_list_kart
+        TabOrder = 6
+        Width = 97
       end
     end
     object TabSheet7: TTabSheet
@@ -2154,7 +2130,7 @@ object Form_kart: TForm_kart
         DataField = 'SUMMA'
         DataSource = DS_saldo
         ReadOnly = True
-        TabOrder = 2
+        TabOrder = 1
         UnboundDataType = wwDefault
         WantReturns = False
         WordWrap = False
@@ -2167,7 +2143,7 @@ object Form_kart: TForm_kart
         DataField = 'TEXT'
         DataSource = Form_list_kart.DS_list_kart
         Picture.AllowInvalidExit = True
-        TabOrder = 1
+        TabOrder = 0
         UnboundDataType = wwDefault
         WantReturns = False
         WordWrap = False
@@ -2186,7 +2162,7 @@ object Form_kart: TForm_kart
         DataSource = Form_list_kart.DS_list_kart
         Epoch = 1950
         ShowButton = True
-        TabOrder = 8
+        TabOrder = 7
       end
       object wwDBDateTimePicker1: TwwDBDateTimePicker
         Left = 64
@@ -2202,19 +2178,7 @@ object Form_kart: TForm_kart
         DataSource = Form_list_kart.DS_list_kart
         Epoch = 1950
         ShowButton = True
-        TabOrder = 7
-      end
-      object wwDBEdit6: TwwDBEdit
-        Left = 64
-        Top = 8
-        Width = 121
-        Height = 21
-        DataField = 'DOG_NUM'
-        DataSource = Form_list_kart.DS_list_kart
-        TabOrder = 0
-        UnboundDataType = wwDefault
-        WantReturns = False
-        WordWrap = False
+        TabOrder = 6
       end
       object DBEdit28: TDBEdit
         Left = 664
@@ -2224,7 +2188,7 @@ object Form_kart: TForm_kart
         DataField = 'K_LSK_ID'
         DataSource = Form_list_kart.DS_list_kart
         ReadOnly = True
-        TabOrder = 4
+        TabOrder = 3
         Visible = False
       end
       object DBEdit29: TDBEdit
@@ -2235,7 +2199,7 @@ object Form_kart: TForm_kart
         DataField = 'HOUSE_ID'
         DataSource = Form_list_kart.DS_list_kart
         ReadOnly = True
-        TabOrder = 3
+        TabOrder = 2
         Visible = False
       end
       object DBEdit30: TDBEdit
@@ -2246,7 +2210,7 @@ object Form_kart: TForm_kart
         DataField = 'C_LSK_ID'
         DataSource = Form_list_kart.DS_list_kart
         ReadOnly = True
-        TabOrder = 5
+        TabOrder = 4
         Visible = False
       end
       object Button1: TButton
@@ -2255,8 +2219,16 @@ object Form_kart: TForm_kart
         Width = 43
         Height = 25
         Caption = #1057#1090#1072#1090#1091#1089
-        TabOrder = 6
+        TabOrder = 5
         OnClick = Button4Click
+      end
+      object cxdbtxEdit6DOG_NUM: TcxDBTextEdit
+        Left = 64
+        Top = 8
+        DataBinding.DataField = 'DOG_NUM'
+        DataBinding.DataSource = Form_list_kart.DS_list_kart
+        TabOrder = 8
+        Width = 121
       end
     end
     object TabSheet12: TTabSheet
@@ -3677,20 +3649,8 @@ object Form_kart: TForm_kart
     Top = 440
   end
   object DS_spr_tarif: TDataSource
-    DataSet = Mem_spr_tarif
     Left = 264
     Top = 440
-  end
-  object Mem_spr_tarif: TMemTableEh
-    Active = True
-    Params = <>
-    DataDriver = DSDriver_tarif
-    TreeList.Active = True
-    TreeList.KeyFieldName = 'id'
-    TreeList.RefParentFieldName = 'parent_id'
-    TreeList.DefaultNodeExpanded = True
-    Left = 268
-    Top = 496
   end
   object DS_pasp: TDataSource
     DataSet = DataModule1.OD_pasp
@@ -3801,11 +3761,6 @@ object Form_kart: TForm_kart
       OnClick = mnu2Click
     end
   end
-  object DSDriver_tarif: TDataSetDriverEh
-    ProviderDataSet = OD_spr_tarif
-    Left = 300
-    Top = 496
-  end
   object OD_houses: TOracleDataSet
     SQL.Strings = (
       
@@ -3860,7 +3815,7 @@ object Form_kart: TForm_kart
       end>
     StorageName = 'frmKartStore.ini'
     StorageType = stRegistry
-    Left = 144
+    Left = 208
     Top = 8
   end
   object DS_psch2: TDataSource

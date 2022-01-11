@@ -4,11 +4,11 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Mask, DBCtrls, DB, OracleData, Oracle, DBCtrlsEh,
-  DBLookupEh, ExtCtrls, Grids, DBGridEh, Buttons, wwcheckbox, wwSpeedButton,
+  Dialogs, StdCtrls, Mask, DBCtrls, DB, OracleData, Oracle, 
+ ExtCtrls, Grids, Buttons, wwcheckbox, wwSpeedButton,
   wwDBNavigator, wwclearpanel, wwdbedit, ComCtrls, Utils, wwfltdlg, Wwdbigrd,
   Wwdbgrid, GridsEh, wwdbdatetimepicker, wwdblook, Wwdotdot, frxClass, frxDBSet,
-  MemTableDataEh, MemTableEh, DataDriverEh, Menus, Wwdbcomb, cxGraphics,
+Menus, Wwdbcomb, cxGraphics,
   cxControls,
   dxStatusBar,
 
@@ -101,7 +101,6 @@ type
     Label37: TLabel;
     wwDBDateTimePicker2: TwwDBDateTimePicker;
     wwDBDateTimePicker1: TwwDBDateTimePicker;
-    wwDBEdit6: TwwDBEdit;
     Label33: TLabel;
     Label34: TLabel;
     DBEdit28: TDBEdit;
@@ -113,12 +112,10 @@ type
     DBEdit12: TDBEdit;
     Label42: TLabel;
     Label22: TLabel;
-    wwDBEdit2: TwwDBEdit;
     Label7: TLabel;
     Label4: TLabel;
     Label3: TLabel;
     Panel1: TPanel;
-    DBLookupComboboxEh9: TDBLookupComboboxEh;
     Label1: TLabel;
     wwDBComboDlg1: TwwDBComboDlg;
     DBText1: TDBText;
@@ -147,18 +144,14 @@ type
     OD_kart_prFK_MILIT_REGN: TFloatField;
     OD_spr_tarif: TOracleDataSet;
     DS_spr_tarif: TDataSource;
-    Mem_spr_tarif: TMemTableEh;
     Label43: TLabel;
-    DBLookupComboboxEh5: TDBLookupComboboxEh;
     DS_pasp: TDataSource;
     OD_kart_prSTATUS_DATB: TDateTimeField;
     Label47: TLabel;
     OD_states_sch: TOracleDataSet;
     DS_states_sch: TDataSource;
     Label48: TLabel;
-    wwDBDateTimePicker3: TwwDBDateTimePicker;
     DBEdit18: TDBEdit;
-    wwDBDateTimePicker4: TwwDBDateTimePicker;
     Label49: TLabel;
     Label50: TLabel;
     Button1: TButton;
@@ -172,7 +165,6 @@ type
     fltfldOD_chargeTP: TFloatField;
     PopupMenu3: TPopupMenu;
     mnu2: TMenuItem;
-    DSDriver_tarif: TDataSetDriverEh;
     OD_houses: TOracleDataSet;
     DS_houses: TDataSource;
     dxStatusBar1: TdxStatusBar;
@@ -239,8 +231,6 @@ type
     TabSheet1: TTabSheet;
     GroupBox9: TGroupBox;
     Label39: TLabel;
-    DBLookupComboboxEh10: TDBLookupComboboxEh;
-    wwCheckBox5: TwwCheckBox;
     GroupBox10: TGroupBox;
     Label41: TLabel;
     TabSheet11: TTabSheet;
@@ -270,7 +260,6 @@ type
     DBEdit17: TDBEdit;
     CheckBox1: TCheckBox;
     CheckBox4: TCheckBox;
-    DBDateTimeEditEh1: TDBDateTimeEditEh;
     DBEdit8: TDBEdit;
     DBEdit20: TDBEdit;
     CheckBox2: TCheckBox;
@@ -392,13 +381,21 @@ type
     cbb1KUL: TcxDBLookupComboBox;
     cbb12HOUSE_ID: TcxDBLookupComboBox;
     cbb4FK_DISTR: TcxDBLookupComboBox;
+    cbb2KFG: TcxDBLookupComboBox;
+    cbb9REU: TcxDBLookupComboBox;
+    wwCheckBox1: TwwCheckBox;
+    cxdbdtdtPN_DT: TcxDBDateEdit;
+    cbb5FK_PASP_ORG: TcxDBLookupComboBox;
+    cxtxtKw2: TcxTextEdit;
+    cxdbdtdt3LAW_DOC_DT: TcxDBDateEdit;
+    cxdbdtdt4PRVT_DOC_DT: TcxDBDateEdit;
+    cxdbtxEdit6DOG_NUM: TcxDBTextEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure DBGridEh1DblClick(Sender: TObject);
     procedure OD_kartAfterPost(DataSet: TDataSet);
     procedure OD_kart_prSTATUSValidate(Sender: TField);
     procedure Button2Click(Sender: TObject);
     procedure saveOrRollbackKart(ask_: Integer; isCommit: Boolean);
-    procedure wwDBEdit2Exit(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure wwDBEdit1Exit(Sender: TObject);
     procedure setAllowEdit(admin_: Integer);
@@ -436,14 +433,14 @@ type
     procedure wwDBComboDlg1CustomDlg(Sender: TObject);
     procedure DBLookupComboboxEh13CloseUp(Sender: TObject; Accept: Boolean);
     procedure DBLookupComboboxEh16CloseUp(Sender: TObject; Accept: Boolean);
-    procedure DBGridEh2DragOver(Sender, Source: TObject; X, Y: Integer; State:
-      TDragState; var Accept: Boolean);
-    procedure DBGridEh3MouseDown(Sender: TObject; Button: TMouseButton; Shift:
-      TShiftState; X, Y: Integer);
-    procedure DBGridEh2MouseDown(Sender: TObject; Button: TMouseButton; Shift:
-      TShiftState; X, Y: Integer);
-    procedure DBGridEh3DragOver(Sender, Source: TObject; X, Y: Integer; State:
-      TDragState; var Accept: Boolean);
+//    procedure DBGridEh2DragOver(Sender, Source: TObject; X, Y: Integer; State:
+//      TDragState; var Accept: Boolean);
+//    procedure DBGridEh3MouseDown(Sender: TObject; Button: TMouseButton; Shift:
+//      TShiftState; X, Y: Integer);
+//    procedure DBGridEh2MouseDown(Sender: TObject; Button: TMouseButton; Shift:
+//      TShiftState; X, Y: Integer);
+//    procedure DBGridEh3DragOver(Sender, Source: TObject; X, Y: Integer; State:
+//      TDragState; var Accept: Boolean);
     procedure CMDialogKey(var Msg: TWMKey); message CM_DIALOGKEY;
     procedure wwDBComboBox1DropDown(Sender: TObject);
     procedure wwDBLookupCombo4CloseUp(Sender: TObject; LookupTable, FillTable:
@@ -496,6 +493,7 @@ type
     procedure cxGridDBTableView2DblClick(Sender: TObject);
     procedure cxGridDBTableView2KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure cxtxtKw2Exit(Sender: TObject);
   private
     tarif_, privs_, subsid_, changes_, itogn_: Double;
     size_, allow_dtv_, id_, action_, fk_tarif_: Integer;
@@ -585,7 +583,7 @@ begin
   TabSheet3.Enabled := false;
   TabSheet4.Enabled := false;
   TabSheet1.Enabled := false;
-  DBLookupComboboxEh5.Enabled := false;
+  cbb5FK_PASP_ORG.Enabled := false;
   Button1.Enabled := false;
   Button4.Enabled := false;
   mnu1.Enabled := false;
@@ -603,18 +601,18 @@ begin
   //   wwDBEdit1.Enabled:=false;
   cbb12HOUSE_ID.Enabled := false;
 
-  wwDBEdit2.Enabled := false;
+  cxtxtKw2.Enabled := false;
   cbb4FK_DISTR.Enabled := false;
   DBEdit12.Enabled := false;
 
   DBEdit15.Enabled := false;
 
   DBEdit18.Enabled := false;
-  wwDBDateTimePicker3.Enabled := false;
-  wwDBDateTimePicker4.Enabled := false;
+  cxdbdtdt3LAW_DOC_DT.Enabled := false;
+  cxdbdtdt4PRVT_DOC_DT.Enabled := false;
 
   DBEdit16.Enabled := false;
-  wwDBEdit6.Enabled := false;
+  cxdbtxEdit6DOG_NUM.Enabled := false;
   wwDBEdit7.Enabled := false;
   wwDBDateTimePicker1.Enabled := false;
   wwDBDateTimePicker2.Enabled := false;
@@ -641,7 +639,7 @@ begin
     Button4.Enabled := true;
     mnu1.Enabled := true;
     mnu2.Enabled := true;
-    DBLookupComboboxEh5.Enabled := true;
+    cbb5FK_PASP_ORG.Enabled := true;
 
     //площади
     cxdbtxEdit4OPL.Enabled := true;
@@ -661,17 +659,17 @@ begin
     cbb1KUL.Enabled := true;
     //     wwDBEdit1.Enabled:=true;
     cbb12HOUSE_ID.Enabled := true;
-    wwDBEdit2.Enabled := true;
+    cxtxtKw2.Enabled := true;
     cbb4FK_DISTR.Enabled := true;
     DBEdit12.Enabled := true;
 
     DBEdit15.Enabled := true;
     DBEdit18.Enabled := true;
-    wwDBDateTimePicker3.Enabled := true;
-    wwDBDateTimePicker4.Enabled := true;
+    cxdbdtdt3LAW_DOC_DT.Enabled := true;
+    cxdbdtdt4PRVT_DOC_DT.Enabled := true;
 
     DBEdit16.Enabled := true;
-    wwDBEdit6.Enabled := true;
+    cxdbtxEdit6DOG_NUM.Enabled := true;
     wwDBEdit7.Enabled := true;
     wwDBDateTimePicker1.Enabled := true;
     wwDBDateTimePicker2.Enabled := true;
@@ -890,7 +888,7 @@ begin
 //  LockWindowUpdate(handle);
   with Form_kart do
   begin
-    wwDBEdit2.text := Form_list_kart.OD_list_kart.FieldByName('n_kw').AsString;
+    cxtxtKw2.text := Form_list_kart.OD_list_kart.FieldByName('n_kw').AsString;
     //  wwDBEdit1.text:=
     //    Form_list_kart.OD_list_kart.FieldByName('n_nd').AsString;
     with OD_vvod do
@@ -1056,12 +1054,6 @@ begin
   saveOrRollbackKart(0, False);
 end;
 
-procedure TForm_kart.wwDBEdit2Exit(Sender: TObject);
-begin
-  Form_list_kart.OD_list_kart.Edit;
-  Form_list_kart.OD_list_kart.FieldByName('kw').AsString := wwDBEdit2.text;
-end;
-
 procedure TForm_kart.state_arch2(mgold_: string);
 begin
   // смена состояний формы
@@ -1170,13 +1162,13 @@ begin
   //Включение возможности Админ-опции правки признака счетчика и т.п.
   CheckBox1.Visible := true;
   CheckBox4.Visible := true;
-  DBDateTimeEditEh1.Visible := true;
+  cxdbdtdtPN_DT.Visible := true;
 
   if not Form_Main.isAdmin then
   begin
     CheckBox1.Visible := false;
     CheckBox4.Visible := false;
-    DBDateTimeEditEh1.Visible := false;
+    cxdbdtdtPN_DT.Visible := false;
   end;
 
   if Form_Main.isEditKlsk then
@@ -1186,11 +1178,8 @@ begin
 
   updates_ := 0;
 
-  if not Form_Main.isEditReu then
-    DBLookupComboboxEh9.Enabled := false;
-
   if not Form_Main.isEditPasp then
-    DBLookupComboboxEh5.Enabled := false;
+    cbb5FK_PASP_ORG.Enabled := false;
 
   DecimalSeparator := '.';
 
@@ -1201,12 +1190,14 @@ begin
   TabSheet7.TabVisible := False;
   TabSheet6.TabVisible := True;
   wwDBComboDlg1.ShowButton := False;
-  DBLookupComboboxEh9.Enabled := false;
+
+  cbb9REU.Enabled := false;
+
   Panel2.Visible := true;
   Form_main.ToolButton20.Visible := true;
   //    Height := PageControl3.Height + Panel2.Height + Panel4.Height + PageControl2.Height + 200;
   OD_spr_tarif.Active := False;
-  Mem_spr_tarif.Active := False;
+//  Mem_spr_tarif.Active := False;
   OD_vvod.Active := true;
   //OD_status.Active := True;
 
@@ -1503,7 +1494,7 @@ begin
   changes_sch_el(1);
 end;
 
-procedure TForm_kart.DBGridEh2DragOver(Sender, Source: TObject; X, Y: Integer;
+{procedure TForm_kart.DBGridEh2DragOver(Sender, Source: TObject; X, Y: Integer;
   State: TDragState; var Accept: Boolean);
 var
   AGrd: TGridCoord;
@@ -1535,6 +1526,7 @@ begin
     Sleep(10);
   end;
 end;
+
 
 procedure TForm_kart.DBGridEh3MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
@@ -1579,6 +1571,7 @@ begin
   end;
 
 end;
+}
 
 procedure TForm_kart.CMDialogKey(var Msg: TWMKey);
 begin
@@ -2154,6 +2147,12 @@ procedure TForm_kart.cxGridDBTableView2KeyDown(Sender: TObject;
 begin
   if Key = 13 then
     open_kart_pr;
+end;
+
+procedure TForm_kart.cxtxtKw2Exit(Sender: TObject);
+begin
+  Form_list_kart.OD_list_kart.Edit;
+  Form_list_kart.OD_list_kart.FieldByName('kw').AsString := cxtxtKw2.text;
 end;
 
 end.
