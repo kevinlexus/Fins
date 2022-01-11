@@ -93,22 +93,6 @@ type
     PageControl2: TPageControl;
     TabSheet5: TTabSheet;
     TabSheet6: TTabSheet;
-    TabSheet7: TTabSheet;
-    wwDBEdit5: TwwDBEdit;
-    Label19: TLabel;
-    wwDBEdit7: TwwDBEdit;
-    Label38: TLabel;
-    Label37: TLabel;
-    wwDBDateTimePicker2: TwwDBDateTimePicker;
-    wwDBDateTimePicker1: TwwDBDateTimePicker;
-    Label33: TLabel;
-    Label34: TLabel;
-    DBEdit28: TDBEdit;
-    Label58: TLabel;
-    DBEdit29: TDBEdit;
-    Label57: TLabel;
-    Label59: TLabel;
-    DBEdit30: TDBEdit;
     DBEdit12: TDBEdit;
     Label42: TLabel;
     Label22: TLabel;
@@ -154,7 +138,6 @@ type
     DBEdit18: TDBEdit;
     Label49: TLabel;
     Label50: TLabel;
-    Button1: TButton;
     Button4: TButton;
     PopupMenu2: TPopupMenu;
     N3: TMenuItem;
@@ -383,13 +366,12 @@ type
     cbb4FK_DISTR: TcxDBLookupComboBox;
     cbb2KFG: TcxDBLookupComboBox;
     cbb9REU: TcxDBLookupComboBox;
-    wwCheckBox1: TwwCheckBox;
     cxdbdtdtPN_DT: TcxDBDateEdit;
     cbb5FK_PASP_ORG: TcxDBLookupComboBox;
     cxtxtKw2: TcxTextEdit;
     cxdbdtdt3LAW_DOC_DT: TcxDBDateEdit;
     cxdbdtdt4PRVT_DOC_DT: TcxDBDateEdit;
-    cxdbtxEdit6DOG_NUM: TcxDBTextEdit;
+    cxdbchckbxCPN: TcxDBCheckBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure DBGridEh1DblClick(Sender: TObject);
     procedure OD_kartAfterPost(DataSet: TDataSet);
@@ -584,7 +566,6 @@ begin
   TabSheet4.Enabled := false;
   TabSheet1.Enabled := false;
   cbb5FK_PASP_ORG.Enabled := false;
-  Button1.Enabled := false;
   Button4.Enabled := false;
   mnu1.Enabled := false;
   mnu2.Enabled := false;
@@ -612,11 +593,6 @@ begin
   cxdbdtdt4PRVT_DOC_DT.Enabled := false;
 
   DBEdit16.Enabled := false;
-  cxdbtxEdit6DOG_NUM.Enabled := false;
-  wwDBEdit7.Enabled := false;
-  wwDBDateTimePicker1.Enabled := false;
-  wwDBDateTimePicker2.Enabled := false;
-  wwDBEdit5.Enabled := false;
 
   if (admin_ <> 1) and (Form_list_kart.isAllowEdit_ = 0) and (Form_main.arch_mg_
     = '') then
@@ -635,7 +611,6 @@ begin
     GroupBox1.Enabled := true;
     DBEdit5.Enabled := true;
     cxdbtxEdit1ET.Enabled := true;
-    Button1.Enabled := true;
     Button4.Enabled := true;
     mnu1.Enabled := true;
     mnu2.Enabled := true;
@@ -669,12 +644,6 @@ begin
     cxdbdtdt4PRVT_DOC_DT.Enabled := true;
 
     DBEdit16.Enabled := true;
-    cxdbtxEdit6DOG_NUM.Enabled := true;
-    wwDBEdit7.Enabled := true;
-    wwDBDateTimePicker1.Enabled := true;
-    wwDBDateTimePicker2.Enabled := true;
-    wwDBEdit5.Enabled := true;
-
   end;
 
   if (Form_list_kart.isAllowEdit_k2_ = 1) and (Form_main.arch_mg_ = '') then
@@ -1187,7 +1156,6 @@ begin
   PageControl1.ActivePageIndex := 1;
   PageControl2.ActivePageIndex := 0;
 
-  TabSheet7.TabVisible := False;
   TabSheet6.TabVisible := True;
   wwDBComboDlg1.ShowButton := False;
 

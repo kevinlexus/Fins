@@ -1,6 +1,6 @@
 object Form_kart: TForm_kart
-  Left = 1041
-  Top = 690
+  Left = 1019
+  Top = 638
   Width = 903
   Height = 675
   BorderIcons = [biSystemMenu, biMinimize]
@@ -137,7 +137,7 @@ object Form_kart: TForm_kart
         Top = 1
         Width = 342
         Height = 220
-        ActivePage = TabSheet8
+        ActivePage = TabSheet1
         Align = alClient
         TabOrder = 0
         object TabSheet3: TTabSheet
@@ -533,28 +533,16 @@ object Form_kart: TForm_kart
               TabOrder = 0
               Width = 79
             end
-            object wwCheckBox1: TwwCheckBox
-              Left = 176
-              Top = 16
-              Width = 97
-              Height = 17
-              DisableThemes = False
-              AlwaysTransparent = False
-              ValueChecked = '1'
-              ValueUnchecked = '0'
-              DisplayValueChecked = '1'
-              DisplayValueUnchecked = '0'
-              NullAndBlankState = cbUnchecked
+            object cxdbchckbxCPN: TcxDBCheckBox
+              Left = 192
+              Top = 13
               Caption = #1053#1077' '#1085#1072#1095'.'#1087#1077#1085#1080
-              DataField = 'CPN'
-              DataSource = Form_list_kart.DS_list_kart
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'MS Sans Serif'
-              Font.Style = [fsBold]
-              ParentFont = False
+              DataBinding.DataField = 'CPN'
+              DataBinding.DataSource = Form_list_kart.DS_list_kart
+              Properties.ValueChecked = 1
+              Properties.ValueUnchecked = 0
               TabOrder = 1
+              Width = 97
             end
           end
           object GroupBox10: TGroupBox
@@ -1448,7 +1436,7 @@ object Form_kart: TForm_kart
     Top = 0
     Width = 887
     Height = 81
-    ActivePage = TabSheet7
+    ActivePage = TabSheet12
     Align = alTop
     TabOrder = 0
     object TabSheet5: TTabSheet
@@ -2002,233 +1990,6 @@ object Form_kart: TForm_kart
         DataBinding.DataSource = Form_list_kart.DS_list_kart
         TabOrder = 6
         Width = 97
-      end
-    end
-    object TabSheet7: TTabSheet
-      Caption = #1044#1086#1087#1086#1083#1085#1080#1090#1077#1083#1100#1085#1086
-      ImageIndex = 2
-      object Label19: TLabel
-        Left = 404
-        Top = 16
-        Width = 65
-        Height = 13
-        Caption = #1042#1093'. '#1089#1072#1083#1100#1076#1086
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'MS Sans Serif'
-        Font.Style = [fsBold]
-        ParentFont = False
-        WordWrap = True
-      end
-      object Label38: TLabel
-        Left = 212
-        Top = 16
-        Width = 53
-        Height = 13
-        Caption = #1058#1077#1083#1077#1092#1086#1085
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'MS Sans Serif'
-        Font.Style = [fsBold]
-        ParentFont = False
-        WordWrap = True
-      end
-      object Label37: TLabel
-        Left = 196
-        Top = 40
-        Width = 73
-        Height = 13
-        Caption = #1044#1072#1090#1072' '#1086#1082#1086#1085#1095'.'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'MS Sans Serif'
-        Font.Style = [fsBold]
-        ParentFont = False
-        WordWrap = True
-      end
-      object Label33: TLabel
-        Left = 4
-        Top = 16
-        Width = 41
-        Height = 13
-        Caption = #8470' '#1076#1086#1075'.'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'MS Sans Serif'
-        Font.Style = [fsBold]
-        ParentFont = False
-        WordWrap = True
-      end
-      object Label34: TLabel
-        Left = 4
-        Top = 40
-        Width = 59
-        Height = 13
-        Caption = #1044#1072#1090#1072' '#1085#1072#1095'.'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'MS Sans Serif'
-        Font.Style = [fsBold]
-        ParentFont = False
-        WordWrap = True
-      end
-      object Label58: TLabel
-        Left = 637
-        Top = 14
-        Width = 29
-        Height = 13
-        Caption = 'K_ID'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'MS Sans Serif'
-        Font.Style = [fsBold]
-        ParentFont = False
-        Visible = False
-        WordWrap = True
-      end
-      object Label57: TLabel
-        Left = 548
-        Top = 15
-        Width = 30
-        Height = 13
-        Caption = 'H_ID'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'MS Sans Serif'
-        Font.Style = [fsBold]
-        ParentFont = False
-        Visible = False
-        WordWrap = True
-      end
-      object Label59: TLabel
-        Left = 716
-        Top = 16
-        Width = 29
-        Height = 13
-        Caption = 'C_ID'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'MS Sans Serif'
-        Font.Style = [fsBold]
-        ParentFont = False
-        Visible = False
-        WordWrap = True
-      end
-      object wwDBEdit5: TwwDBEdit
-        Left = 472
-        Top = 8
-        Width = 73
-        Height = 21
-        DataField = 'SUMMA'
-        DataSource = DS_saldo
-        ReadOnly = True
-        TabOrder = 1
-        UnboundDataType = wwDefault
-        WantReturns = False
-        WordWrap = False
-      end
-      object wwDBEdit7: TwwDBEdit
-        Left = 272
-        Top = 8
-        Width = 121
-        Height = 21
-        DataField = 'TEXT'
-        DataSource = Form_list_kart.DS_list_kart
-        Picture.AllowInvalidExit = True
-        TabOrder = 0
-        UnboundDataType = wwDefault
-        WantReturns = False
-        WordWrap = False
-      end
-      object wwDBDateTimePicker2: TwwDBDateTimePicker
-        Left = 272
-        Top = 32
-        Width = 121
-        Height = 21
-        CalendarAttributes.Font.Charset = DEFAULT_CHARSET
-        CalendarAttributes.Font.Color = clWindowText
-        CalendarAttributes.Font.Height = -11
-        CalendarAttributes.Font.Name = 'MS Sans Serif'
-        CalendarAttributes.Font.Style = []
-        DataField = 'SCHEL_END'
-        DataSource = Form_list_kart.DS_list_kart
-        Epoch = 1950
-        ShowButton = True
-        TabOrder = 7
-      end
-      object wwDBDateTimePicker1: TwwDBDateTimePicker
-        Left = 64
-        Top = 32
-        Width = 121
-        Height = 21
-        CalendarAttributes.Font.Charset = DEFAULT_CHARSET
-        CalendarAttributes.Font.Color = clWindowText
-        CalendarAttributes.Font.Height = -11
-        CalendarAttributes.Font.Name = 'MS Sans Serif'
-        CalendarAttributes.Font.Style = []
-        DataField = 'SCHEL_DT'
-        DataSource = Form_list_kart.DS_list_kart
-        Epoch = 1950
-        ShowButton = True
-        TabOrder = 6
-      end
-      object DBEdit28: TDBEdit
-        Left = 664
-        Top = 8
-        Width = 49
-        Height = 21
-        DataField = 'K_LSK_ID'
-        DataSource = Form_list_kart.DS_list_kart
-        ReadOnly = True
-        TabOrder = 3
-        Visible = False
-      end
-      object DBEdit29: TDBEdit
-        Left = 584
-        Top = 8
-        Width = 49
-        Height = 21
-        DataField = 'HOUSE_ID'
-        DataSource = Form_list_kart.DS_list_kart
-        ReadOnly = True
-        TabOrder = 2
-        Visible = False
-      end
-      object DBEdit30: TDBEdit
-        Left = 752
-        Top = 8
-        Width = 57
-        Height = 21
-        DataField = 'C_LSK_ID'
-        DataSource = Form_list_kart.DS_list_kart
-        ReadOnly = True
-        TabOrder = 4
-        Visible = False
-      end
-      object Button1: TButton
-        Left = 832
-        Top = 12
-        Width = 43
-        Height = 25
-        Caption = #1057#1090#1072#1090#1091#1089
-        TabOrder = 5
-        OnClick = Button4Click
-      end
-      object cxdbtxEdit6DOG_NUM: TcxDBTextEdit
-        Left = 64
-        Top = 8
-        DataBinding.DataField = 'DOG_NUM'
-        DataBinding.DataSource = Form_list_kart.DS_list_kart
-        TabOrder = 8
-        Width = 121
       end
     end
     object TabSheet12: TTabSheet
