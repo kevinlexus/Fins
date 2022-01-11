@@ -1,6 +1,6 @@
 object Form_kart: TForm_kart
-  Left = 1019
-  Top = 638
+  Left = 1055
+  Top = 544
   Width = 903
   Height = 675
   BorderIcons = [biSystemMenu, biMinimize]
@@ -137,7 +137,7 @@ object Form_kart: TForm_kart
         Top = 1
         Width = 342
         Height = 220
-        ActivePage = TabSheet1
+        ActivePage = TabSheet11
         Align = alClient
         TabOrder = 0
         object TabSheet3: TTabSheet
@@ -241,7 +241,7 @@ object Form_kart: TForm_kart
               Enabled = False
               ParentShowHint = False
               ShowHint = True
-              TabOrder = 3
+              TabOrder = 1
               OnKeyPress = DBEdit_mhw2KeyPress
             end
             object DBEdit_mgw2: TDBEdit
@@ -257,7 +257,7 @@ object Form_kart: TForm_kart
               Enabled = False
               ParentShowHint = False
               ShowHint = True
-              TabOrder = 5
+              TabOrder = 3
               OnKeyPress = DBEdit_mgw2KeyPress
             end
             object DBEdit_phw: TDBEdit
@@ -267,7 +267,7 @@ object Form_kart: TForm_kart
               Height = 21
               DataField = 'PHW'
               DataSource = Form_list_kart.DS_list_kart
-              TabOrder = 2
+              TabOrder = 0
               OnKeyPress = DBEdit_phwKeyPress
             end
             object DBEdit_pgw: TDBEdit
@@ -277,7 +277,7 @@ object Form_kart: TForm_kart
               Height = 21
               DataField = 'PGW'
               DataSource = Form_list_kart.DS_list_kart
-              TabOrder = 4
+              TabOrder = 2
               OnKeyPress = DBEdit_pgwKeyPress
             end
             object DBEdit_pel: TDBEdit
@@ -287,7 +287,7 @@ object Form_kart: TForm_kart
               Height = 21
               DataField = 'PEL'
               DataSource = Form_list_kart.DS_list_kart
-              TabOrder = 6
+              TabOrder = 4
               OnKeyPress = DBEdit_pelKeyPress
             end
             object DBEdit_mel2: TDBEdit
@@ -303,59 +303,8 @@ object Form_kart: TForm_kart
               Enabled = False
               ParentShowHint = False
               ShowHint = True
-              TabOrder = 7
+              TabOrder = 5
               OnKeyPress = DBEdit_mel2KeyPress
-            end
-            object wwCheckBox3: TwwCheckBox
-              Left = 203
-              Top = 16
-              Width = 49
-              Height = 17
-              Hint = #1050#1086#1088#1088#1077#1082#1090#1080#1088#1086#1074#1082#1072' '#1087#1086#1082#1072#1079#1072#1085#1080#1081' '#1080' '#1088#1072#1089#1093#1086#1076#1072' '#1089#1095#1077#1090#1095#1080#1082#1086#1074
-              DisableThemes = False
-              AlwaysTransparent = False
-              ValueChecked = '1'
-              ValueUnchecked = '0'
-              DisplayValueChecked = '1'
-              DisplayValueUnchecked = '0'
-              NullAndBlankState = cbUnchecked
-              Caption = #1050#1086#1088#1088'.'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'MS Sans Serif'
-              Font.Style = [fsBold]
-              ParentFont = False
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 1
-              OnClick = wwCheckBox3Click
-            end
-            object wwCheckBox4: TwwCheckBox
-              Left = 115
-              Top = 16
-              Width = 81
-              Height = 17
-              Hint = #1050#1088#1072#1085' '#1074' '#1089#1080#1089#1090#1077#1084#1077' '#1086#1090#1086#1087#1083#1077#1085#1080#1103
-              DisableThemes = False
-              AlwaysTransparent = False
-              ValueChecked = '1'
-              ValueUnchecked = '0'
-              DisplayValueChecked = '1'
-              DisplayValueUnchecked = '0'
-              NullAndBlankState = cbUnchecked
-              Caption = #1057#1080#1089#1090'.'#1086#1090#1086#1087'.'
-              DataField = 'KRAN1'
-              DataSource = Form_list_kart.DS_list_kart
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'MS Sans Serif'
-              Font.Style = [fsBold]
-              ParentFont = False
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 0
             end
             object BitBtn4: TBitBtn
               Left = 295
@@ -372,7 +321,7 @@ object Form_kart: TForm_kart
               ParentFont = False
               ParentShowHint = False
               ShowHint = True
-              TabOrder = 8
+              TabOrder = 6
               TabStop = False
               OnClick = BitBtn4Click
             end
@@ -391,7 +340,7 @@ object Form_kart: TForm_kart
               ParentFont = False
               ParentShowHint = False
               ShowHint = True
-              TabOrder = 9
+              TabOrder = 7
               TabStop = False
               OnClick = BitBtn5Click
             end
@@ -402,7 +351,7 @@ object Form_kart: TForm_kart
               Height = 21
               DataField = 'POT'
               DataSource = Form_list_kart.DS_list_kart
-              TabOrder = 10
+              TabOrder = 8
               OnKeyPress = dbedtPOTKeyPress
             end
             object dbedtMOT: TDBEdit
@@ -418,34 +367,39 @@ object Form_kart: TForm_kart
               Enabled = False
               ParentShowHint = False
               ShowHint = True
-              TabOrder = 11
+              TabOrder = 9
               OnKeyPress = dbedtMOTKeyPress
             end
-            object wwCheckBox6: TwwCheckBox
-              Left = 253
-              Top = 17
-              Width = 61
-              Height = 17
-              Hint = #1059#1095#1080#1090#1099#1074#1072#1090#1100' '#1082#1091#1073#1099' '#1082#1072#1085#1072#1083#1080#1079#1086#1074#1072#1085#1080#1103' '#1087#1086' '#1089#1095#1077#1090#1095#1080#1082#1072#1084
-              DisableThemes = False
-              AlwaysTransparent = False
-              ValueChecked = '1'
-              ValueUnchecked = '0'
-              DisplayValueChecked = '1'
-              DisplayValueUnchecked = '0'
-              NullAndBlankState = cbUnchecked
+            object cxdbchckbxKRAN1: TcxDBCheckBox
+              Left = 112
+              Top = 15
+              Caption = #1057#1080#1089#1090'.'#1086#1090#1086#1087'.'
+              DataBinding.DataField = 'KRAN1'
+              DataBinding.DataSource = Form_list_kart.DS_list_kart
+              Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 1
+              Properties.ValueUnchecked = 0
+              TabOrder = 10
+              Width = 81
+            end
+            object cxdbchckbxKAN_SCH: TcxDBCheckBox
+              Left = 240
+              Top = 15
               Caption = #1050#1072#1085'.'#1089#1095'.'
-              DataField = 'KAN_SCH'
-              DataSource = Form_list_kart.DS_list_kart
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'MS Sans Serif'
-              Font.Style = [fsBold]
-              ParentFont = False
-              ParentShowHint = False
-              ShowHint = True
+              DataBinding.DataField = 'KAN_SCH'
+              DataBinding.DataSource = Form_list_kart.DS_list_kart
+              Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 1
+              Properties.ValueUnchecked = 0
+              TabOrder = 11
+              Width = 65
+            end
+            object cxchckbx3: TcxCheckBox
+              Left = 194
+              Top = 15
+              Caption = #1050#1086#1088#1088'.'
               TabOrder = 12
+              Width = 57
             end
           end
         end
@@ -454,45 +408,73 @@ object Form_kart: TForm_kart
           ImageIndex = 2
           OnHide = TabSheet4Hide
           OnShow = TabSheet4Show
-          object Label40: TLabel
-            Left = 1
-            Top = 1
-            Width = 110
-            Height = 13
-            Caption = #1042#1093#1086#1076#1103#1097#1077#1077' '#1089#1072#1083#1100#1076#1086':'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'MS Sans Serif'
-            Font.Style = [fsBold]
-            ParentFont = False
-            WordWrap = True
-          end
-          object wwDBGrid1: TwwDBGrid
+          object cxGrid5: TcxGrid
             Left = 0
-            Top = 16
-            Width = 185
-            Height = 121
-            Selected.Strings = (
-              'LSK'#9'8'#9'LSK'
-              'SUMMA'#9'14'#9'SUMMA')
-            IniAttributes.Delimiter = ';;'
-            TitleColor = clBtnFace
-            FixedCols = 0
-            ShowHorzScrollBar = False
-            DataSource = DS_saldo
-            Options = [dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgWordWrap, dgPerfectRowFit, dgProportionalColResize, dgDblClickColSizing]
-            ParentShowHint = False
-            ShowHint = False
+            Top = 0
+            Width = 334
+            Height = 192
+            Align = alClient
+            PopupMenu = PopupMenu2
             TabOrder = 0
-            TitleAlignment = taLeftJustify
-            TitleFont.Charset = DEFAULT_CHARSET
-            TitleFont.Color = clWindowText
-            TitleFont.Height = -11
-            TitleFont.Name = 'MS Sans Serif'
-            TitleFont.Style = []
-            TitleLines = 1
-            TitleButtons = False
+            object cxGridDBTableView3: TcxGridDBTableView
+              OnDblClick = cxGridDBTableView2DblClick
+              OnKeyDown = cxGridDBTableView2KeyDown
+              Navigator.Buttons.CustomButtons = <>
+              DataController.DataSource = DS_saldo
+              DataController.Summary.DefaultGroupSummaryItems = <
+                item
+                  Format = #1054#1073#1098#1077#1084' 0.00'
+                  Kind = skSum
+                end
+                item
+                  Format = #1048#1079#1084#1077#1085#1077#1085#1080#1103' 0.00'
+                  Kind = skSum
+                end
+                item
+                  Format = #1058#1072#1088#1080#1092' 0.00'
+                  Kind = skSum
+                end
+                item
+                  Kind = skSum
+                  Position = spFooter
+                end
+                item
+                  Format = #1048#1090#1086#1075#1086' 0.00'
+                  Kind = skSum
+                end
+                item
+                  Kind = skSum
+                  Position = spFooter
+                end>
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Kind = skSum
+                end
+                item
+                  Format = #1048#1090#1086#1075#1086' 0.00'
+                end
+                item
+                  Kind = skSum
+                end>
+              DataController.Summary.SummaryGroups = <>
+              OptionsBehavior.CellHints = True
+              OptionsData.Deleting = False
+              OptionsData.Editing = False
+              OptionsData.Inserting = False
+              OptionsView.ColumnAutoWidth = True
+              OptionsView.FooterMultiSummaries = True
+              OptionsView.GroupByBox = False
+              OptionsView.GroupFooterMultiSummaries = True
+              OptionsView.HeaderAutoHeight = True
+              OptionsView.Indicator = True
+              object cxGridDBTableView3SUMMA: TcxGridDBColumn
+                Caption = #1042#1093#1086#1076#1103#1097#1077#1077' '#1089#1072#1083#1100#1076#1086
+                DataBinding.FieldName = 'SUMMA'
+              end
+            end
+            object cxGridLevel3: TcxGridLevel
+              GridView = cxGridDBTableView3
+            end
           end
         end
         object TabSheet1: TTabSheet
@@ -539,6 +521,7 @@ object Form_kart: TForm_kart
               Caption = #1053#1077' '#1085#1072#1095'.'#1087#1077#1085#1080
               DataBinding.DataField = 'CPN'
               DataBinding.DataSource = Form_list_kart.DS_list_kart
+              Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 1
               Properties.ValueUnchecked = 0
               TabOrder = 1
@@ -585,126 +568,13 @@ object Form_kart: TForm_kart
         object TabSheet11: TTabSheet
           Caption = #1048#1089#1090#1086#1088#1080#1103' '#1089#1095'.'
           ImageIndex = 5
-          object wwDBNavigator2: TwwDBNavigator
-            Left = 3
-            Top = 164
-            Width = 150
-            Height = 25
-            DataSource = DS_states_sch
-            Options = [noUseInternationalText]
-            RepeatInterval.InitialDelay = 500
-            RepeatInterval.Interval = 100
-            object wwNavButton1: TwwNavButton
-              Left = 0
-              Top = 0
-              Width = 25
-              Height = 25
-              Hint = 'Move to first record'
-              ImageIndex = -1
-              NumGlyphs = 2
-              Spacing = 4
-              Transparent = False
-              Caption = 'wwDBNavigator1First'
-              Enabled = False
-              DisabledTextColors.ShadeColor = clGray
-              DisabledTextColors.HighlightColor = clBtnHighlight
-              Index = 0
-              Style = nbsFirst
-            end
-            object wwNavButton2: TwwNavButton
-              Left = 25
-              Top = 0
-              Width = 25
-              Height = 25
-              Hint = 'Move to prior record'
-              ImageIndex = -1
-              NumGlyphs = 2
-              Spacing = 4
-              Transparent = False
-              Caption = 'wwDBNavigator1Prior'
-              Enabled = False
-              DisabledTextColors.ShadeColor = clGray
-              DisabledTextColors.HighlightColor = clBtnHighlight
-              Index = 1
-              Style = nbsPrior
-            end
-            object wwNavButton3: TwwNavButton
-              Left = 50
-              Top = 0
-              Width = 25
-              Height = 25
-              Hint = 'Move to next record'
-              ImageIndex = -1
-              NumGlyphs = 2
-              Spacing = 4
-              Transparent = False
-              Caption = 'wwDBNavigator1Next'
-              Enabled = False
-              DisabledTextColors.ShadeColor = clGray
-              DisabledTextColors.HighlightColor = clBtnHighlight
-              Index = 2
-              Style = nbsNext
-            end
-            object wwNavButton4: TwwNavButton
-              Left = 75
-              Top = 0
-              Width = 25
-              Height = 25
-              Hint = 'Move to last record'
-              ImageIndex = -1
-              NumGlyphs = 2
-              Spacing = 4
-              Transparent = False
-              Caption = 'wwDBNavigator1Last'
-              Enabled = False
-              DisabledTextColors.ShadeColor = clGray
-              DisabledTextColors.HighlightColor = clBtnHighlight
-              Index = 3
-              Style = nbsLast
-            end
-            object wwNavButton5: TwwNavButton
-              Left = 100
-              Top = 0
-              Width = 25
-              Height = 25
-              Hint = 'Insert new record'
-              ImageIndex = -1
-              NumGlyphs = 2
-              Spacing = 4
-              Transparent = False
-              Caption = 'wwDBNavigator1Insert'
-              Enabled = False
-              DisabledTextColors.ShadeColor = clGray
-              DisabledTextColors.HighlightColor = clBtnHighlight
-              Index = 4
-              Style = nbsInsert
-            end
-            object wwNavButton6: TwwNavButton
-              Left = 125
-              Top = 0
-              Width = 25
-              Height = 25
-              Hint = 'Delete current record'
-              ImageIndex = -1
-              NumGlyphs = 2
-              Spacing = 4
-              Transparent = False
-              Caption = 'wwDBNavigator1Delete'
-              Enabled = False
-              DisabledTextColors.ShadeColor = clGray
-              DisabledTextColors.HighlightColor = clBtnHighlight
-              OnClick = wwNavButton6Click
-              Index = 5
-              Style = nbsDelete
-            end
-          end
           object cxGrid2: TcxGrid
             Left = 0
             Top = 0
             Width = 334
             Height = 192
             Align = alClient
-            TabOrder = 1
+            TabOrder = 0
             object cxGrid2DBTableView1: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               Navigator.Visible = True
@@ -1436,7 +1306,7 @@ object Form_kart: TForm_kart
     Top = 0
     Width = 887
     Height = 81
-    ActivePage = TabSheet12
+    ActivePage = TabSheet5
     Align = alTop
     TabOrder = 0
     object TabSheet5: TTabSheet
@@ -1690,35 +1560,14 @@ object Form_kart: TForm_kart
         DataSource = Form_list_kart.DS_list_kart
         ParentShowHint = False
         ShowHint = True
-        TabOrder = 5
+        TabOrder = 4
       end
       object Panel1: TPanel
         Left = 8
         Top = 24
         Width = 873
         Height = 2
-        TabOrder = 4
-      end
-      object wwDBComboDlg1: TwwDBComboDlg
-        Left = 152
-        Top = 0
-        Width = 81
-        Height = 21
-        OnCustomDlg = wwDBComboDlg1CustomDlg
-        ShowButton = True
-        Style = csDropDown
-        DataField = 'LSK'
-        DataSource = Form_list_kart.DS_list_kart
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'MS Sans Serif'
-        Font.Style = [fsBold]
-        ParentFont = False
-        ReadOnly = True
-        TabOrder = 0
-        WordWrap = False
-        UnboundDataType = wwDefault
+        TabOrder = 3
       end
       object DBEdit2: TDBEdit
         Left = 576
@@ -1727,7 +1576,7 @@ object Form_kart: TForm_kart
         Height = 21
         DataField = 'K_FAM'
         DataSource = Form_list_kart.DS_list_kart
-        TabOrder = 1
+        TabOrder = 0
       end
       object DBEdit7: TDBEdit
         Left = 704
@@ -1736,7 +1585,7 @@ object Form_kart: TForm_kart
         Height = 21
         DataField = 'K_IM'
         DataSource = Form_list_kart.DS_list_kart
-        TabOrder = 2
+        TabOrder = 1
       end
       object DBEdit14: TDBEdit
         Left = 784
@@ -1745,7 +1594,7 @@ object Form_kart: TForm_kart
         Height = 21
         DataField = 'K_OT'
         DataSource = Form_list_kart.DS_list_kart
-        TabOrder = 3
+        TabOrder = 2
       end
       object cxDBTextEdit5: TcxDBTextEdit
         Left = 297
@@ -1755,7 +1604,7 @@ object Form_kart: TForm_kart
         DataBinding.DataSource = DS_eolink
         ParentShowHint = False
         ShowHint = True
-        TabOrder = 6
+        TabOrder = 5
         Width = 88
       end
       object cbb1KUL: TcxDBLookupComboBox
@@ -1770,7 +1619,7 @@ object Form_kart: TForm_kart
           end>
         Properties.ListOptions.ShowHeader = False
         Properties.ListSource = DS_spul
-        TabOrder = 7
+        TabOrder = 6
         Width = 96
       end
       object cbb12HOUSE_ID: TcxDBLookupComboBox
@@ -1785,7 +1634,7 @@ object Form_kart: TForm_kart
           end>
         Properties.ListOptions.ShowHeader = False
         Properties.ListSource = DS_houses
-        TabOrder = 8
+        TabOrder = 7
         Width = 51
       end
       object cbb4FK_DISTR: TcxDBLookupComboBox
@@ -1800,7 +1649,7 @@ object Form_kart: TForm_kart
           end>
         Properties.ListOptions.ShowHeader = False
         Properties.ListSource = DS_distr
-        TabOrder = 9
+        TabOrder = 8
         Width = 92
       end
       object cbb9REU: TcxDBLookupComboBox
@@ -1815,15 +1664,27 @@ object Form_kart: TForm_kart
           end>
         Properties.ListOptions.ShowHeader = False
         Properties.ListSource = DS_reu_trest
-        TabOrder = 10
+        TabOrder = 9
         Width = 121
       end
       object cxtxtKw2: TcxTextEdit
         Left = 256
         Top = 32
-        TabOrder = 11
+        TabOrder = 10
         OnExit = cxtxtKw2Exit
         Width = 62
+      end
+      object cxDBTextEdit1: TcxDBTextEdit
+        Left = 153
+        Top = 1
+        Hint = #1051#1080#1094#1077#1074#1086#1081' '#1089#1095#1077#1090
+        DataBinding.DataField = 'LSK'
+        DataBinding.DataSource = Form_list_kart.DS_list_kart
+        ParentShowHint = False
+        Properties.ReadOnly = True
+        ShowHint = True
+        TabOrder = 11
+        Width = 83
       end
     end
     object TabSheet6: TTabSheet
@@ -3576,8 +3437,7 @@ object Form_kart: TForm_kart
       end>
     StorageName = 'frmKartStore.ini'
     StorageType = stRegistry
-    Left = 208
-    Top = 8
+    Left = 416
   end
   object DS_psch2: TDataSource
     DataSet = DataModule1.OD_psch2

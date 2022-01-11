@@ -101,7 +101,6 @@ type
     Label3: TLabel;
     Panel1: TPanel;
     Label1: TLabel;
-    wwDBComboDlg1: TwwDBComboDlg;
     DBText1: TDBText;
     Label20: TLabel;
     Label21: TLabel;
@@ -202,28 +201,17 @@ type
     DBEdit_pgw: TDBEdit;
     DBEdit_pel: TDBEdit;
     DBEdit_mel2: TDBEdit;
-    wwCheckBox3: TwwCheckBox;
-    wwCheckBox4: TwwCheckBox;
     BitBtn4: TBitBtn;
     BitBtn5: TBitBtn;
     dbedtPOT: TDBEdit;
     dbedtMOT: TDBEdit;
     TabSheet4: TTabSheet;
-    Label40: TLabel;
-    wwDBGrid1: TwwDBGrid;
     TabSheet1: TTabSheet;
     GroupBox9: TGroupBox;
     Label39: TLabel;
     GroupBox10: TGroupBox;
     Label41: TLabel;
     TabSheet11: TTabSheet;
-    wwDBNavigator2: TwwDBNavigator;
-    wwNavButton1: TwwNavButton;
-    wwNavButton2: TwwNavButton;
-    wwNavButton3: TwwNavButton;
-    wwNavButton4: TwwNavButton;
-    wwNavButton5: TwwNavButton;
-    wwNavButton6: TwwNavButton;
     cxGrid2: TcxGrid;
     cxGrid2DBTableView1: TcxGridDBTableView;
     cxGrid2DBTableView1PSCH_NAME: TcxGridDBColumn;
@@ -355,7 +343,6 @@ type
     cxGridDBTableView2STATUS: TcxGridDBColumn;
     cxGridDBTableView2USE_GIS_DIVIDE_ELS: TcxGridDBColumn;
     cxGridDBTableView2PROC_PRIV: TcxGridDBColumn;
-    wwCheckBox6: TwwCheckBox;
     cxdbtxEdit4OPL: TcxDBTextEdit;
     cxdbtxEdit6PPL: TcxDBTextEdit;
     cxdbtxEdit1ET: TcxDBTextEdit;
@@ -372,6 +359,14 @@ type
     cxdbdtdt3LAW_DOC_DT: TcxDBDateEdit;
     cxdbdtdt4PRVT_DOC_DT: TcxDBDateEdit;
     cxdbchckbxCPN: TcxDBCheckBox;
+    cxdbchckbxKRAN1: TcxDBCheckBox;
+    cxdbchckbxKAN_SCH: TcxDBCheckBox;
+    cxchckbx3: TcxCheckBox;
+    cxGrid5: TcxGrid;
+    cxGridDBTableView3: TcxGridDBTableView;
+    cxGridLevel3: TcxGridLevel;
+    cxGridDBTableView3SUMMA: TcxGridDBColumn;
+    cxDBTextEdit1: TcxDBTextEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure DBGridEh1DblClick(Sender: TObject);
     procedure OD_kartAfterPost(DataSet: TDataSet);
@@ -1054,7 +1049,7 @@ begin
       change_alias(OD_charge, 'scott.nabor',
         '(select * from scott.a_nabor2 where ''' + Form_main.arch_mg_ +
         ''' between mgfrom and mgto)');
-      wwDBGrid1.Visible := false;
+      cxGrid2.Visible := false;
     end
     else if (Form_main.arch_mg_ = '') and (mgold_ <> '') then
     begin // из архива в текущее
@@ -1077,7 +1072,7 @@ begin
       change_alias(OD_charge, '(select * from scott.a_nabor2 where ''' + mgold_
         +
         ''' between mgfrom and mgto)', 'scott.nabor');
-      wwDBGrid1.Visible := true;
+      cxGrid2.Visible := true;
     end
     else if (Form_main.arch_mg_ <> '') and (mgold_ <> '') then
     begin // из архива в архив
@@ -1112,7 +1107,7 @@ begin
         ''' between mgfrom and mgto)', '(select * from scott.a_nabor2 where '''
         +
         Form_main.arch_mg_ + ''' between mgfrom and mgto)');
-      wwDBGrid1.Visible := false;
+      cxGrid2.Visible := false;
     end;
   end;
 end;
@@ -1121,7 +1116,7 @@ procedure TForm_kart.FormCreate(Sender: TObject);
 begin
   // отключить возможность корректировки счетчиков в новой версии
   if getDoublePar(Form_main.paramList, 'VER_METER1') <> 0 then
-    wwCheckBox3.Enabled := False;
+    cxchckbx3.Enabled := False;
 
   //Настройки расположения формы
   cxprprtstr1.Active := True;
@@ -1157,7 +1152,7 @@ begin
   PageControl2.ActivePageIndex := 0;
 
   TabSheet6.TabVisible := True;
-  wwDBComboDlg1.ShowButton := False;
+//  wwDBComboDlg1.ShowButton := False;
 
   cbb9REU.Enabled := false;
 
@@ -1307,7 +1302,7 @@ begin
   psch_old := Form_list_kart.OD_list_kart.FieldByName('psch').asInteger;
 
   //сч.х.в. г.в.
-  if wwCheckBox3.Checked = true then
+  if cxchckbx3.Checked = true then
   begin
     if (psch_old = 1) or (psch_old = 2) then
       DBEdit_mhw2.Enabled := true;
@@ -1323,7 +1318,7 @@ begin
   psch_old := Form_list_kart.OD_list_kart.FieldByName('sch_el').asInteger;
 
   //сч.эл.эн
-  if wwCheckBox3.Checked = true then
+  if cxchckbx3.Checked = true then
   begin
     if (psch_old = 1) then
       DBEdit_mel2.Enabled := true;
@@ -1334,7 +1329,7 @@ begin
   end;
 
   //сч.отопления
-  if wwCheckBox3.Checked = true then
+  if cxchckbx3.Checked = true then
   begin
     dbedtMOT.Enabled := true;
   end
