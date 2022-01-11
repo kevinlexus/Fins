@@ -75,19 +75,6 @@ type
     Label1: TLabel;
     Label4: TLabel;
     Label5: TLabel;
-    TabSheet4: TTabSheet;
-    Label3: TLabel;
-    Button1: TButton;
-    Button4: TButton;
-    wwDBDateTimePicker2: TwwDBDateTimePicker;
-    wwCheckBox1: TwwCheckBox;
-    wwDBEdit1: TwwDBEdit;
-    wwDBDateTimePicker1: TwwDBDateTimePicker;
-    Label9: TLabel;
-    Label8: TLabel;
-    Label11: TLabel;
-    wwDBGrid1: TwwDBGrid;
-    wwDBLookupComboDlg1: TwwDBLookupComboDlg;
     DBDateTimeEditEh2: TDBDateTimeEditEh;
     Label15: TLabel;
     Panel1: TPanel;
@@ -240,7 +227,6 @@ type
     DBEdit14: TDBEdit;
     OD_c_statesLK_NAME: TStringField;
     OD_c_states2LK_NAME: TStringField;
-    Memo1: TMemo;
     frxDBDataset5: TfrxDBDataset;
     OD_rep5: TOracleDataSet;
     DBLookupComboboxEh18: TDBLookupComboboxEh;

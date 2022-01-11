@@ -5,10 +5,10 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Mask, DBCtrls, DB, OracleData, Oracle, 
- ExtCtrls, Grids, Buttons, wwcheckbox, wwSpeedButton,
-  wwDBNavigator, wwclearpanel, wwdbedit, ComCtrls, Utils, wwfltdlg, Wwdbigrd,
-  Wwdbgrid, GridsEh, wwdbdatetimepicker, wwdblook, Wwdotdot, frxClass, frxDBSet,
-Menus, Wwdbcomb, cxGraphics,
+ ExtCtrls, Grids, Buttons, 
+  ComCtrls, Utils, 
+   frxClass, frxDBSet,
+Menus, cxGraphics,
   cxControls,
   dxStatusBar,
 
@@ -368,70 +368,37 @@ type
     cxGridDBTableView3SUMMA: TcxGridDBColumn;
     cxDBTextEdit1: TcxDBTextEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure DBGridEh1DblClick(Sender: TObject);
     procedure OD_kartAfterPost(DataSet: TDataSet);
     procedure OD_kart_prSTATUSValidate(Sender: TField);
     procedure Button2Click(Sender: TObject);
     procedure saveOrRollbackKart(ask_: Integer; isCommit: Boolean);
     procedure FormCreate(Sender: TObject);
-    procedure wwDBEdit1Exit(Sender: TObject);
     procedure setAllowEdit(admin_: Integer);
     procedure refresh_kart;
     procedure recalc_kart;
     procedure state_arch2(mgold_: string);
     procedure ToolButton5Click(Sender: TObject);
     procedure ToolButton6Click(Sender: TObject);
-    procedure DBCheckBoxEh1MouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
     procedure OD_kart_prAfterScroll(DataSet: TDataSet);
-    procedure wwDBEdit3KeyPress(Sender: TObject; var Key: Char);
     procedure DBEdit_melKeyPress(Sender: TObject; var Key: Char);
-    procedure DBGridEh1KeyDown(Sender: TObject; var Key: Word; Shift:
-      TShiftState);
     procedure DBEdit4KeyPress(Sender: TObject; var Key: Char);
     procedure DBEdit6KeyPress(Sender: TObject; var Key: Char);
     procedure DBEdit_mhwKeyPress(Sender: TObject; var Key: Char);
     procedure DBEdit_mgwKeyPress(Sender: TObject; var Key: Char);
-    procedure DBGridEh2KeyPress(Sender: TObject; var Key: Char);
     procedure wwCheckBox3Click(Sender: TObject);
     procedure DBEdit_pgwKeyPress(Sender: TObject; var Key: Char);
     procedure DBEdit_mhw2KeyPress(Sender: TObject; var Key: Char);
     procedure DBEdit_mgw2KeyPress(Sender: TObject; var Key: Char);
     procedure DBEdit_pelKeyPress(Sender: TObject; var Key: Char);
     procedure DBEdit_mel2KeyPress(Sender: TObject; var Key: Char);
-    //procedure DBGridEh2Columns12EditButtonDown(Sender: TObject; TopButton:
-//      Boolean; var AutoRepeat, Handled: Boolean);
-//    procedure calcFooter;
-    procedure wwDBGrid2KeyPress(Sender: TObject; var Key: Char);
-    //    procedure setFields;
     procedure DBEdit_phwKeyPress(Sender: TObject; var Key: Char);
     procedure BitBtn1Click(Sender: TObject);
     procedure BitBtn2Click(Sender: TObject);
-    procedure wwDBComboDlg1CustomDlg(Sender: TObject);
-    procedure DBLookupComboboxEh13CloseUp(Sender: TObject; Accept: Boolean);
-    procedure DBLookupComboboxEh16CloseUp(Sender: TObject; Accept: Boolean);
-//    procedure DBGridEh2DragOver(Sender, Source: TObject; X, Y: Integer; State:
-//      TDragState; var Accept: Boolean);
-//    procedure DBGridEh3MouseDown(Sender: TObject; Button: TMouseButton; Shift:
-//      TShiftState; X, Y: Integer);
-//    procedure DBGridEh2MouseDown(Sender: TObject; Button: TMouseButton; Shift:
-//      TShiftState; X, Y: Integer);
-//    procedure DBGridEh3DragOver(Sender, Source: TObject; X, Y: Integer; State:
-//      TDragState; var Accept: Boolean);
     procedure CMDialogKey(var Msg: TWMKey); message CM_DIALOGKEY;
-    procedure wwDBComboBox1DropDown(Sender: TObject);
-    procedure wwDBLookupCombo4CloseUp(Sender: TObject; LookupTable, FillTable:
-      TDataSet; modified: Boolean);
     procedure OD_states_schAfterInsert(DataSet: TDataSet);
-    procedure wwNavButton6Click(Sender: TObject);
     procedure OD_states_schBeforePost(DataSet: TDataSet);
     procedure OD_chargeBeforeClose(DataSet: TDataSet);
-    procedure OD_chargeAfterOpen(DataSet: TDataSet);
     procedure CheckBox1Click(Sender: TObject);
-    procedure CheckBox3Click(Sender: TObject);
-    procedure wwDBGrid4DblClick(Sender: TObject);
-    procedure wwDBGrid4KeyDown(Sender: TObject; var Key: Word; Shift:
-      TShiftState);
     procedure Button4Click(Sender: TObject);
     procedure CheckBox4Click(Sender: TObject);
     procedure N3Click(Sender: TObject);
@@ -439,13 +406,10 @@ type
     procedure OD_chargeAfterScroll(DataSet: TDataSet);
     procedure mnu1Click(Sender: TObject);
     procedure mnu2Click(Sender: TObject);
-    procedure wwDBGrid2CalcCellColors(Sender: TObject; Field: TField; State:
-      TGridDrawState; Highlight: Boolean; AFont: TFont; ABrush: TBrush);
     procedure BitBtn3Click(Sender: TObject);
     procedure BitBtn4Click(Sender: TObject);
     procedure BitBtn6Click(Sender: TObject);
     procedure BitBtn5Click(Sender: TObject);
-    procedure DBLookupComboboxEh12DropDown(Sender: TObject);
     procedure TabSheet4Show(Sender: TObject);
     procedure TabSheet4Hide(Sender: TObject);
     procedure dbedtPOTKeyPress(Sender: TObject; var Key: Char);
@@ -456,9 +420,6 @@ type
     procedure chk1Click(Sender: TObject);
     procedure btn1Click(Sender: TObject);
     procedure N1Click(Sender: TObject);
-    procedure wwDBLookupCombo1CloseUp(Sender: TObject; LookupTable,
-      FillTable: TDataSet; modified: Boolean);
-    procedure cxGrid2DBTableView1PSCH_NAMEPropertiesPopup(Sender: TObject);
     procedure cxGrid2DBTableView1PSCH_NAMEPropertiesCloseUp(
       Sender: TObject);
     procedure cxGrid2DBTableView1PSCH_NAMEPropertiesInitPopup(
@@ -995,11 +956,6 @@ begin
   end;
 end;
 
-procedure TForm_kart.DBGridEh1DblClick(Sender: TObject);
-begin
-  open_kart_pr;
-end;
-
 procedure TForm_kart.OD_kartAfterPost(DataSet: TDataSet);
 begin
   Form_kart.refresh_kart;
@@ -1200,12 +1156,6 @@ begin
   //  calcFooter;
 end;
 
-procedure TForm_kart.wwDBEdit1Exit(Sender: TObject);
-begin
-  //  Form_list_kart.OD_list_kart.Edit;
-  //  Form_list_kart.OD_list_kart.FieldByName('nd').AsString:=wwDBEdit1.text;
-end;
-
 procedure TForm_kart.ToolButton5Click(Sender: TObject);
 begin
   if FF('Form_chargepay', 1) = 0 then
@@ -1219,26 +1169,10 @@ begin
 
 end;
 
-procedure TForm_kart.DBCheckBoxEh1MouseDown(Sender: TObject; Button:
-  TMouseButton; Shift: TShiftState; X, Y: Integer);
-begin
-  saveOrRollbackKart(1, True);
-  //save_changes(1);
-  if FF('Form_subsidii', 1) = 0 then
-    Application.CreateForm(TForm_subsidii, Form_subsidii);
-
-end;
-
 procedure TForm_kart.OD_kart_prAfterScroll(DataSet: TDataSet);
 begin
   if FF('Form_kart_pr', 0) = 1 then
     Form_kart_pr.setFieldsDokDeath(False, True);
-end;
-
-procedure TForm_kart.wwDBEdit3KeyPress(Sender: TObject; var Key: Char);
-begin
-  if RetKey(Key) then
-    Key := '.';
 end;
 
 procedure TForm_kart.DBEdit_melKeyPress(Sender: TObject; var Key: Char);
@@ -1246,13 +1180,6 @@ begin
   if RetKey(Key) then
     Key := '.';
 
-end;
-
-procedure TForm_kart.DBGridEh1KeyDown(Sender: TObject; var Key: Word; Shift:
-  TShiftState);
-begin
-  if key = 13 then
-    open_kart_pr;
 end;
 
 procedure TForm_kart.DBEdit4KeyPress(Sender: TObject; var Key: Char);
@@ -1282,12 +1209,6 @@ begin
     Key := '.';
 end;
 
-procedure TForm_kart.DBGridEh2KeyPress(Sender: TObject; var Key: Char);
-begin
-  if RetKey(Key) then
-    Key := '.';
-
-end;
 
 procedure TForm_kart.wwCheckBox3Click(Sender: TObject);
 var
@@ -1344,15 +1265,6 @@ procedure TForm_kart.DBEdit_pgwKeyPress(Sender: TObject; var Key: Char);
 begin
   if RetKey(Key) then
     Key := '.';
-  {
-    if Key = #13 then
-    begin
-      if DBEdit_pel.Enabled =True then
-          DBEdit_pel.SetFocus
-        else
-         if Button2.Enabled =True then
-           Button2.SetFocus;
-    end;}
 end;
 
 procedure TForm_kart.DBEdit_mhw2KeyPress(Sender: TObject; var Key: Char);
@@ -1365,15 +1277,6 @@ procedure TForm_kart.DBEdit_mgw2KeyPress(Sender: TObject; var Key: Char);
 begin
   if RetKey(Key) then
     Key := '.';
-  {
-    if Key = #13 then
-    begin
-      if DBEdit_mel.Enabled =True then
-         DBEdit_mel.SetFocus
-        else
-         if Button2.Enabled =True then
-           Button2.SetFocus;
-    end;}
 end;
 
 procedure TForm_kart.DBEdit_pelKeyPress(Sender: TObject; var Key: Char);
@@ -1412,13 +1315,6 @@ begin
   end;
 end;}
 
-procedure TForm_kart.wwDBGrid2KeyPress(Sender: TObject; var Key: Char);
-begin
-  if RetKey(Key) then
-    Key := '.';
-
-end;
-
 procedure TForm_kart.DBEdit_phwKeyPress(Sender: TObject; var Key: Char);
 begin
   if RetKey(Key) then
@@ -1438,103 +1334,6 @@ begin
     Application.CreateForm(TForm_log_actions, Form_log_actions);
 end;
 
-procedure TForm_kart.wwDBComboDlg1CustomDlg(Sender: TObject);
-begin
-  if FF('Form_sel_lsk_contr', 0) = 0 then
-    Application.CreateForm(TForm_sel_lsk_contr, Form_sel_lsk_contr);
-  Form_sel_lsk_contr.ShowModal;
-end;
-
-procedure TForm_kart.DBLookupComboboxEh13CloseUp(Sender: TObject; Accept:
-  Boolean);
-begin
-  changes_sch_el(0);
-end;
-
-procedure TForm_kart.DBLookupComboboxEh16CloseUp(Sender: TObject; Accept:
-  Boolean);
-begin
-  changes_sch_el(1);
-end;
-
-{procedure TForm_kart.DBGridEh2DragOver(Sender, Source: TObject; X, Y: Integer;
-  State: TDragState; var Accept: Boolean);
-var
-  AGrd: TGridCoord;
-begin
-  //Разрешить/запретить правку
-  if allow_dtv_ = 1 then
-  begin
-    Accept := True;
-  end
-  else
-  begin
-    Accept := False;
-    Exit;
-  end;
-
-  //  TDBGridEh(Sender).SetFocus;
-  Windows.SetFocus(TDBGridEh(Sender).Handle);
-  AGrd := TDBGridEh(Sender).MouseCoord(X, Y);
-  if AGrd.Y - 1 >= TDBGridEh(Sender).Row then
-  begin
-    TDBGridEh(Sender).DataSource.DataSet.MoveBy(1);
-    TDBGridEh(Sender).Refresh;
-    Sleep(10);
-  end
-  else if AGrd.Y < TDBGridEh(Sender).Row then
-  begin
-    TDBGridEh(Sender).DataSource.DataSet.MoveBy(-1);
-    TDBGridEh(Sender).Refresh;
-    Sleep(10);
-  end;
-end;
-
-
-procedure TForm_kart.DBGridEh3MouseDown(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Integer);
-begin
-  //добавление программы в набор абонента
-  action_ := 0;
-
-  if Button = mbLeft then
-  begin
-    //Сохраняем ID программы для добавления в набор абонента
-    TDBGridEh(Sender).BeginDrag(False, 10);
-    fk_tarif_ :=
-      TDBGridEh(Sender).DataSource.DataSet.FieldByName('ID').AsInteger;
-  end;
-end;
-
-procedure TForm_kart.DBGridEh2MouseDown(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Integer);
-begin
-  //перемещение/удаление программы в наборе абонента
-  action_ := 1;
-  if Button = mbLeft then
-  begin
-    TDBGridEh(Sender).BeginDrag(False, 10);
-    id_ :=
-      TDBGridEh(Sender).DataSource.DataSet.FieldByName('fk_tarif').AsInteger;
-  end;
-end;
-
-procedure TForm_kart.DBGridEh3DragOver(Sender, Source: TObject; X, Y: Integer;
-  State: TDragState; var Accept: Boolean);
-begin
-  //Разрешить/запретить правку
-  if allow_dtv_ = 1 then
-  begin
-    Accept := True;
-  end
-  else
-  begin
-    Accept := False;
-    Exit;
-  end;
-
-end;
-}
 
 procedure TForm_kart.CMDialogKey(var Msg: TWMKey);
 begin
@@ -1547,38 +1346,6 @@ begin
   inherited;
 end;
 
-procedure TForm_kart.wwDBComboBox1DropDown(Sender: TObject);
-begin
-  //  PageControl3.ActivePageIndex := 1;
-
-end;
-
-procedure TForm_kart.wwDBLookupCombo4CloseUp(Sender: TObject; LookupTable,
-  FillTable: TDataSet; modified: Boolean);
-var
-  access_: Integer;
-begin
-  access_ := 1;
-  try
-    DataModule1.OraclePackage1.CallProcedure('scott.drx_Установка_признака_сч',
-      [parNone]);
-  except
-    access_ := 0;
-  end;
-
-  if (DataModule1.OD_psch.FieldByName('ID').AsInteger = 8) and (access_ = 0)
-    then
-  begin
-    msg2('Данный признак счёта запрещено устанавливать!', 'Внимание!', MB_OK +
-      MB_ICONSTOP);
-    DataModule1.OD_psch.Locate('ID', 0, []);
-  end
-  else
-  begin
-    OD_states_sch.FieldByName('FK_STATUS').AsInteger :=
-      DataModule1.OD_psch.FieldByName('ID').AsInteger;
-  end;
-end;
 
 procedure TForm_kart.OD_states_schAfterInsert(DataSet: TDataSet);
 var
@@ -1588,15 +1355,6 @@ begin
   OD_states_sch.FieldByName('LSK').AsString :=
     Form_list_kart.OD_list_kart.FieldByName('LSK').AsString;
 
-end;
-
-procedure TForm_kart.wwNavButton6Click(Sender: TObject);
-begin
-  if msg3('Удалить данный статус?', 'Внимание!', MB_YESNO + MB_ICONQUESTION) <>
-    IDYES then
-  begin
-    Abort;
-  end;
 end;
 
 procedure TForm_kart.OD_states_schBeforePost(DataSet: TDataSet);
@@ -1621,39 +1379,12 @@ begin
 
 end;
 
-{procedure TForm_kart.change_size;
-begin
-  //изменить размер формы
-  if size_=0 then
-  begin
-  size_:=1;
-  PageControl1.Visible:=false;
-  Panel2.Height:=161;
-  GroupBox3.Height:=156;
-  PageControl3.Height:=373;
-  Panel4.Top:=PageControl3.Top+PageControl3.Height;
-  end
-  else
-  begin
-  PageControl1.Visible:=true;
-  Panel2.Height:=249;
-  GroupBox3.Height:=247;
-  PageControl3.Height:=280;
-  Panel4.Top:=PageControl3.Top+PageControl3.Height;
-  size_:=0;
-  end;
-end;}
 
 procedure TForm_kart.OD_chargeBeforeClose(DataSet: TDataSet);
 begin
   usl_ := OD_charge.FieldByName('usl').AsString;
 end;
 
-procedure TForm_kart.OD_chargeAfterOpen(DataSet: TDataSet);
-begin
-  //  OD_charge.Locate('USL', usl_, []);
-  //  setFields;
-end;
 
 procedure TForm_kart.CheckBox1Click(Sender: TObject);
 begin
@@ -1665,33 +1396,6 @@ begin
 
 end;
 
-procedure TForm_kart.CheckBox3Click(Sender: TObject);
-begin
-  {  if CheckBox3.Checked = True then
-    begin
-      fld_state_ := 1;
-      setFields;
-    end
-    else
-    begin
-      fld_state_ := 0;
-      setFields;
-    end;
-   }
-end;
-
-procedure TForm_kart.wwDBGrid4DblClick(Sender: TObject);
-begin
-  open_kart_pr;
-end;
-
-procedure TForm_kart.wwDBGrid4KeyDown(Sender: TObject; var Key: Word; Shift:
-  TShiftState);
-begin
-  if Key = 13 then
-    open_kart_pr;
-
-end;
 
 procedure TForm_kart.Button4Click(Sender: TObject);
 begin
@@ -1770,33 +1474,9 @@ begin
   if (Form_list_kart.isAllowEdit_ = 1) and (Form_main.arch_mg_ = '') then
   begin
     OD_nabor.readonly := False;
-    {
-        //по строкам, где раз.изм запрещено править коэфф. и норм.
-        if OD_charge.FieldByName('tp').AsInteger = 1 then
-          OD_charge.readonly := True
-        else
-        begin
-          OD_charge.readonly := False;
-          if OD_charge.FieldByName('sptarn').AsInteger = 0 then
-          begin
-            OD_chargeNORM.readonly := True;
-            OD_chargeKOEFF.readonly := False;
-          end
-          else if OD_charge.FieldByName('sptarn').AsInteger = 1 then
-          begin
-            OD_chargeNORM.readonly := False;
-            OD_chargeKOEFF.readonly := True;
-          end
-          else
-          begin
-            OD_chargeNORM.readonly := False;
-            OD_chargeKOEFF.readonly := False;
-          end;
-        end;}
   end
   else
   begin
-    //    OD_charge.readonly := True
     OD_nabor.readonly := True;
   end;
 
@@ -1840,16 +1520,6 @@ begin
   end;
 end;
 
-procedure TForm_kart.wwDBGrid2CalcCellColors(Sender: TObject; Field: TField;
-  State: TGridDrawState; Highlight: Boolean; AFont: TFont; ABrush: TBrush);
-begin
-  if (OD_charge.FieldByName('tp').AsInteger = 2) then
-  begin
-    ABrush.Color := clSkyBlue;
-    AFont.Color := clBlack;
-  end;
-end;
-
 procedure TForm_kart.BitBtn3Click(Sender: TObject);
 begin
   if FF('Form_sch_history', 1) = 0 then
@@ -1884,16 +1554,6 @@ begin
     Application.CreateForm(TForm_reg_sch, Form_reg_sch);
 end;
 
-procedure TForm_kart.DBLookupComboboxEh12DropDown(Sender: TObject);
-begin
-  { with OD_houses do
-   begin
-     Active := false;
-     //SetVariable('reu', Form_list_kart.OD_list_kart.FieldByName('reu').AsString);
-     SetVariable('kul', OD_spul.FieldByName('id').AsString);
-     Active := true;
-   end;}
-end;
 
 procedure TForm_kart.TabSheet4Show(Sender: TObject);
 begin
@@ -1986,55 +1646,12 @@ begin
   end;
 end;
 
-procedure TForm_kart.wwDBLookupCombo1CloseUp(Sender: TObject; LookupTable,
-  FillTable: TDataSet; modified: Boolean);
-var
-  access_: Integer;
-begin
-  access_ := 1;
-  try
-    DataModule1.OraclePackage1.CallProcedure('scott.drx_Установка_признака_сч',
-      [parNone]);
-  except
-    access_ := 0;
-  end;
-
-  OD_states_sch.FieldByName('FK_CLOSE_REASON').AsInteger :=
-    DataModule1.OD_close_reason.FieldByName('ID').AsInteger;
-
-end;
-
-procedure TForm_kart.cxGrid2DBTableView1PSCH_NAMEPropertiesPopup(
-  Sender: TObject);
-//var
-//  s: TcxLookupComboBoxProperties;
-begin
-  // перевести представление к упрощёному списку статусов
-//  s := Sender as TcxDBLookupComboBox;
-  //s:= cxGrid2DBTableView1PSCH_NAME.Properties as TcxLookupComboBoxProperties;
-  //TcxLookupComboBox(Sender).Properties.
-  //TcxLookupComboBox(Sender).Properties.Grid.DataController.Filter.Root.AddItem(LkupItem, foEqual, FltValue, '');
-
-  //s.DataController.Filter.FilterText:='issd=0';
-  //s.DataController.Filter.Active:=True;
-  //s:=TcxDBLookupComboBox(cxGrid2DBTableView1PSCH_NAME.Properties.);
-  //s.Properties.DataController.Filter.FilterText:='id=0';
-  //s.Properties.DataController.Filter.Active:=true
-{  OD_psch.SetVariable('tp',0);
-  OD_psch.Active:=false;
-  OD_psch.Active:=true;}
-
-end;
 
 procedure TForm_kart.cxGrid2DBTableView1PSCH_NAMEPropertiesCloseUp(
   Sender: TObject);
 begin
   TcxLookupComboBox(Sender).Properties.Grid.DataController.
     Filter.Root.Clear();
-  // вернуть представление к расширенному списку статусов
-{  OD_psch.SetVariable('tp',1);
-  OD_psch.Active:=false;
-  OD_psch.Active:=true;}
 end;
 
 procedure TForm_kart.cxGrid2DBTableView1PSCH_NAMEPropertiesInitPopup(

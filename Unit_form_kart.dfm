@@ -1,6 +1,6 @@
 object Form_kart: TForm_kart
-  Left = 1055
-  Top = 544
+  Left = 1237
+  Top = 578
   Width = 903
   Height = 675
   BorderIcons = [biSystemMenu, biMinimize]
@@ -566,7 +566,7 @@ object Form_kart: TForm_kart
           end
         end
         object TabSheet11: TTabSheet
-          Caption = #1048#1089#1090#1086#1088#1080#1103' '#1089#1095'.'
+          Caption = #1048#1089#1090#1086#1088#1080#1103' '#1083#1080#1094'.'#1089#1095'.'
           ImageIndex = 5
           object cxGrid2: TcxGrid
             Left = 0
@@ -598,7 +598,6 @@ object Form_kart: TForm_kart
                 Properties.ListSource = DS_psch
                 Properties.OnCloseUp = cxGrid2DBTableView1PSCH_NAMEPropertiesCloseUp
                 Properties.OnInitPopup = cxGrid2DBTableView1PSCH_NAMEPropertiesInitPopup
-                Properties.OnPopup = cxGrid2DBTableView1PSCH_NAMEPropertiesPopup
                 Width = 76
               end
               object cxGrid2DBTableView1CLOSE_REASON: TcxGridDBColumn
@@ -3046,7 +3045,6 @@ object Form_kart: TForm_kart
     CommitOnPost = False
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    AfterOpen = OD_chargeAfterOpen
     BeforeClose = OD_chargeBeforeClose
     AfterScroll = OD_chargeAfterScroll
     Left = 24
@@ -3552,7 +3550,6 @@ object Form_kart: TForm_kart
     CachedUpdates = True
     Session = DataModule1.OracleSession1
     Active = True
-    AfterOpen = OD_chargeAfterOpen
     BeforeClose = OD_chargeBeforeClose
     AfterScroll = OD_chargeAfterScroll
     Left = 24
