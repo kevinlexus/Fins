@@ -16,7 +16,8 @@ uses
   cxLookAndFeelPainters, cxContainer, cxEdit, cxStyles, cxCustomData,
   cxFilter, cxData, cxDataStorage, cxNavigator, cxDBData,
   cxDBLookupComboBox, cxGridCustomTableView, cxGridTableView,
-  cxGridCustomView, Grids, Wwdbigrd, cxCheckBox, cxTextEdit;
+  cxGridCustomView, Grids, Wwdbigrd, cxCheckBox, cxTextEdit, cxMaskEdit,
+  cxDropDownEdit, cxLookupEdit, cxDBLookupEdit;
 
 type
   TForm_kart_pr = class(TForm)
@@ -25,22 +26,6 @@ type
     DS_pol: TDataSource;
     OD_spk: TOracleDataSet;
     DS_spk: TDataSource;
-    OD_lg_docs: TOracleDataSet;
-    DS_lg_docs: TDataSource;
-    OD_lg_docsDOC: TStringField;
-    OD_lg_docsDAT_BEGIN: TDateTimeField;
-    OD_lg_docsMAIN: TFloatField;
-    OD_lg_pr: TOracleDataSet;
-    DS_lg_pr: TDataSource;
-    OD_lg_prDOC: TStringField;
-    OD_lg_prDAT_BEGIN: TDateTimeField;
-    OD_lg_prC_LG_DOCS_ID: TFloatField;
-    OD_lg_prSPK_ID: TFloatField;
-    OD_lg_prspk_name: TStringField;
-    OD_lg_prTYPE_NAME: TStringField;
-    OD_lg_prTYPE: TFloatField;
-    OD_lg_docsC_KART_PR_ID: TFloatField;
-    OD_lg_docsID: TFloatField;
     OD_relations: TOracleDataSet;
     DS_relations: TDataSource;
     OD_spkID: TFloatField;
@@ -48,14 +33,10 @@ type
     OD_spkGR_ID: TFloatField;
     OD_spkSPK_STAT_ID: TFloatField;
     OD_spkGR_LG_ID: TFloatField;
-    OD_lg_docsDAT_END: TDateTimeField;
-    OD_lg_prDAT_END: TDateTimeField;
-    wwIntl1: TwwIntl;
     OD_relationsID: TFloatField;
     OD_relationsNAME: TStringField;
     OD_relationsNAME2: TStringField;
     OD_relationsFK_RELAT_TP: TFloatField;
-    OD_lg_docsIS_CANCELLED: TFloatField;
     PageControl1: TPageControl;
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
@@ -79,7 +60,6 @@ type
     Label15: TLabel;
     Panel1: TPanel;
     Label6: TLabel;
-    DBLookupComboboxEh3: TDBLookupComboboxEh;
     DBEdit1: TDBEdit;
     DBEdit3: TDBEdit;
     DBEdit4: TDBEdit;
@@ -266,6 +246,7 @@ type
     cxDBTextEdit2: TcxDBTextEdit;
     Label45: TLabel;
     Label46: TLabel;
+    cbb2STATUS: TcxDBLookupComboBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure OD_lg_docsSPK_IDValidate(Sender: TField);
     procedure OD_lg_docsTYPEValidate(Sender: TField);
@@ -274,15 +255,7 @@ type
     procedure setAllowEdit;
     procedure state_arch2(mgold_: string);
     procedure FormCreate(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
-    procedure Button4Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
-    procedure OD_lg_prAfterScroll(DataSet: TDataSet);
-    procedure wwDBEdit1Exit(Sender: TObject);
-    procedure DBEdit1Exit(Sender: TObject);
-    procedure OD_lg_prBeforeInsert(DataSet: TDataSet);
-    procedure OD_lg_docsBeforeInsert(DataSet: TDataSet);
-    procedure OD_lg_docsAfterScroll(DataSet: TDataSet);
     procedure save_changes(ask_: Integer);
     procedure CMDialogKey(var Msg: TWMKey); message CM_DIALOGKEY;
     procedure wwDBLookupCombo2CloseUp(Sender: TObject; LookupTable,
@@ -337,6 +310,7 @@ type
     procedure DBLookupComboboxEh13CloseUp(Sender: TObject;
       Accept: Boolean);
     procedure setFieldsDokDeath(isVisible, isCheckVisible: Boolean);
+    procedure cbb2STATUSExit(Sender: TObject);
   private
     id2_: Integer;
     procedure add_prop(tp_: string; ds: TDBLookupComboboxEh);
@@ -360,10 +334,6 @@ var
   id_: Integer;
 begin
   //делаем Post заранее, иначе не виден в UpdatesPending статус
-  if not (OD_lg_docs.State in [dsBrowse]) then
-    OD_lg_docs.Post;
-  if not (OD_lg_pr.State in [dsBrowse]) then
-    OD_lg_pr.Post;
   if not (OD_c_states.State in [dsBrowse]) then
     OD_c_states.Post;
   if not (OD_c_states2.State in [dsBrowse]) then
@@ -376,38 +346,26 @@ begin
   if (Form_kart.OD_kart_pr.UpdatesPending = true)
     or (OD_c_states.UpdatesPending = true)
     or (OD_c_states2.UpdatesPending = true)
-    or (Form_kart_pr.OD_lg_docs.UpdatesPending = true)
-    or (Form_kart_pr.OD_lg_pr.UpdatesPending = true)
-    or (Form_kart.OD_kart_pr.UpdateStatus in [usInserted, usModified, usDeleted])
-    or (Form_kart_pr.OD_lg_docs.UpdateStatus in [usInserted, usModified,
-    usDeleted])
-    or (Form_kart_pr.OD_lg_pr.UpdateStatus in [usInserted, usModified,
-    usDeleted]) then
+    or (Form_kart.OD_kart_pr.UpdateStatus in [usInserted, usModified, usDeleted]) then
     ask1_ := 1
   else
     ask1_ := 0;
 
   if ask_ = 0 then //записываем без вопросов
   begin
-    OD_lg_docs.Session.ApplyUpdates([OD_lg_docs], true);
-    OD_lg_pr.Session.ApplyUpdates([OD_lg_pr], true);
     OD_c_states.Session.ApplyUpdates([OD_c_states], true);
     OD_c_states2.Session.ApplyUpdates([OD_c_states2], true);
     Form_kart.OD_kart_pr.Session.ApplyUpdates([Form_kart.OD_kart_pr], true);
 
     //Commit ( изменения были сделаны через пакеты, сохраняем так)
-    OD_lg_pr.Session.Commit;
     Form_kart.saveOrRollbackKart(0, True);
     Form_kart.recalc_kart;
   end
   else if ask_ = 2 then //отменяем без вопросов
   begin
-    OD_lg_docs.Session.CancelUpdates([OD_lg_docs]);
-    OD_lg_pr.Session.CancelUpdates([OD_lg_pr]);
     OD_c_states.Session.CancelUpdates([OD_c_states]);
     OD_c_states2.Session.CancelUpdates([OD_c_states2]);
     Form_kart.OD_kart_pr.Session.CancelUpdates([Form_kart.OD_kart_pr]);
-    OD_lg_pr.Session.Rollback;
     Form_kart.recalc_kart;
   end
   else if (ask_ = 1) and (ask1_ = 1) then
@@ -416,23 +374,17 @@ begin
       'Подтверждение', MB_ICONQUESTION + MB_APPLMODAL + MB_YESNO) = IDYES) then
       // сохраняем с вопросом
     begin
-      OD_lg_docs.Session.ApplyUpdates([OD_lg_docs], true);
-      OD_lg_pr.Session.ApplyUpdates([OD_lg_pr], true);
       OD_c_states.Session.ApplyUpdates([OD_c_states], true);
       OD_c_states2.Session.ApplyUpdates([OD_c_states2], true);
       Form_kart.OD_kart_pr.Session.ApplyUpdates([Form_kart.OD_kart_pr], true);
 
       //Commit ( изменения были сделаны через пакеты, сохраняем так)
-      OD_lg_pr.Session.Commit;
       Form_kart.saveOrRollbackKart(0, True);
       Form_kart.recalc_kart;
     end
     else
     begin
-      OD_lg_docs.Session.CancelUpdates([OD_lg_docs]);
-      OD_lg_pr.Session.CancelUpdates([OD_lg_pr]);
       Form_kart.OD_kart_pr.Session.CancelUpdates([Form_kart.OD_kart_pr]);
-      OD_lg_pr.Session.Rollback;
       Form_kart.recalc_kart;
     end;
   end;
@@ -502,42 +454,12 @@ begin // смена состояний формы
   begin
     if (Form_main.arch_mg_ <> '') and (mgold_ = '') then
     begin // из текущего в архив
-      change_alias(OD_lg_pr, 'scott.c_lg_pr',
-        '(select * from scott.a_lg_pr where mg=''' + Form_main.arch_mg_ +
-        ''')');
-//      change_alias(OD_lg_pr, 'scott.c_lg_docs',
-//        '(select * from scott.a_lg_docs where mg=''' + Form_main.arch_mg_ +
-//        ''')');
-//      change_alias(OD_lg_docs, 'scott.c_lg_docs',
-//        '(select * from scott.a_lg_docs where mg=''' + Form_main.arch_mg_ +
-//        ''')');
     end
     else if (Form_main.arch_mg_ = '') and (mgold_ <> '') then
     begin // из архива в текущее
-      change_alias(OD_lg_pr,
-        '(select * from scott.a_lg_pr where mg=''' + mgold_ + ''')',
-        'scott.c_lg_pr');
-//      change_alias(OD_lg_pr,
-//        '(select * from scott.a_lg_docs where mg=''' + mgold_ + ''')',
-//        'scott.c_lg_docs');
-//      change_alias(OD_lg_docs,
-//        '(select * from scott.a_lg_docs where mg=''' + mgold_ + ''')',
-//        'scott.c_lg_docs');
     end
     else if (Form_main.arch_mg_ <> '') and (mgold_ <> '') then
     begin // из архива в архив
-      change_alias(OD_lg_pr,
-        '(select * from scott.a_lg_pr where mg=''' + mgold_ + ''')',
-        '(select * from scott.a_lg_pr where mg=''' + Form_main.arch_mg_ + ''')'
-        );
-{      change_alias(OD_lg_pr,
-        '(select * from scott.a_lg_docs where mg=''' + mgold_ + ''')',
-        '(select * from scott.a_lg_docs where mg=''' + Form_main.arch_mg_ + ''')'
-        );
-      change_alias(OD_lg_docs,
-        '(select * from scott.a_lg_docs where mg=''' + mgold_ + ''')',
-        '(select * from scott.a_lg_docs where mg=''' + Form_main.arch_mg_ + ''')'
-        );}
     end;
   end;
 end;
@@ -584,8 +506,6 @@ procedure TForm_kart_pr.FormCreate(Sender: TObject);
 begin
   id2_ := Form_kart.OD_kart_pr.FieldByName('id').AsInteger;
   PageControl1.ActivePageIndex := 0;
-  OD_lg_pr.Active := true;
-  OD_lg_docs.Active := true;
 
   OD_c_states.Active := true;
   OD_c_states2.Active := true;
@@ -610,12 +530,10 @@ begin
   TForm(Sender).AutoSize := true;
 end;
 
-procedure TForm_kart_pr.Button1Click(Sender: TObject);
+{procedure TForm_kart_pr.Button1Click(Sender: TObject);
 begin
   if not (Form_kart.OD_kart_pr.State in [dsBrowse]) then
     Form_kart.OD_kart_pr.Post;
-  if not (OD_lg_docs.State in [dsBrowse]) then
-    OD_lg_docs.Post;
 
   if Form_kart.OD_kart_pr.RecordCount <> 0 then
   begin
@@ -623,16 +541,12 @@ begin
     DataModule1.OraclePackage1.CallProcedure(
       'scott.UTILS.ins_lg_doc',
       [Form_kart.OD_kart_pr.FieldByName('id').AsInteger]);
-    OD_lg_pr.Active := False;
-    OD_lg_pr.Active := True;
-    OD_lg_pr.Last;
   end
   else
   begin
     ShowMessage('Не внесён проживающий!');
   end;
 end;
-
 procedure TForm_kart_pr.Button4Click(Sender: TObject);
 begin
 
@@ -642,6 +556,7 @@ begin
   OD_lg_pr.Active := True;
   OD_lg_pr.Last;
 end;
+}
 
 function TForm_kart_pr.check_upd: Integer;
 begin
@@ -650,17 +565,11 @@ begin
     OD_c_states.Post;
   if not (OD_c_states2.State in [dsBrowse]) then
     OD_c_states2.Post;
-  if not (OD_lg_pr.State in [dsBrowse]) then
-    OD_lg_pr.Post;
-  if not (OD_lg_docs.State in [dsBrowse]) then
-    OD_lg_docs.Post;
   if not (Form_kart.OD_kart_pr.State in [dsBrowse]) then
     Form_kart.OD_kart_pr.Post;
 
   if (OD_c_states.UpdatesPending = True)
     or (OD_c_states2.UpdatesPending = True)
-    or (OD_lg_pr.UpdatesPending = True)
-    or (OD_lg_docs.UpdatesPending = True)
     or (Form_kart.OD_kart_pr.UpdatesPending = True) then
     Result := 1
   else
@@ -686,28 +595,16 @@ begin
     OD_c_states.Post;
   if not (OD_c_states2.State in [dsBrowse]) then
     OD_c_states2.Post;
-  if not (OD_lg_pr.State in [dsBrowse]) then
-    OD_lg_pr.Post;
-  if not (OD_lg_docs.State in [dsBrowse]) then
-    OD_lg_docs.Post;
   if not (Form_kart.OD_kart_pr.State in [dsBrowse]) then
     Form_kart.OD_kart_pr.Post;
 
   Form_kart.OD_kart_pr.Session.ApplyUpdates([Form_kart.OD_kart_pr], True);
   Form_kart.OD_kart_pr.Session.ApplyUpdates([OD_c_states2], True);
   Form_kart.OD_kart_pr.Session.ApplyUpdates([OD_c_states], True);
-  Form_kart.OD_kart_pr.Session.ApplyUpdates([OD_lg_pr], True);
-  Form_kart.OD_kart_pr.Session.ApplyUpdates([OD_lg_docs], True);
 
   id_ := Form_kart.OD_kart_pr.FieldByName('id').AsInteger;
-  {err_ := DataModule1.OraclePackage1.CallStringFunction(
-    'scott.UTILS.tst_krt',
-    [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, 1]);}
 
   Form_kart.check_kart_correct;
-
-  //для изменений в пакетах?????
-  OD_lg_docs.Session.Commit;
 
   // пересчитать начисление
   Form_kart.saveOrRollbackKart(0, True);
@@ -735,8 +632,6 @@ begin
   //Отменить все изменения
   OD_c_states.CancelUpdates;
   OD_c_states2.CancelUpdates;
-  OD_lg_pr.CancelUpdates;
-  OD_lg_docs.CancelUpdates;
   Form_kart.OD_kart_pr.CancelUpdates;
   OD_c_states.Session.Rollback;
 end;
@@ -745,10 +640,6 @@ procedure TForm_kart_pr.exit_cancel;
 begin
   if not (Form_kart.OD_kart_pr.State in [dsBrowse]) then
     Form_kart.OD_kart_pr.Post;
-  if not (OD_lg_pr.State in [dsBrowse]) then
-    OD_lg_pr.Post;
-  if not (OD_lg_docs.State in [dsBrowse]) then
-    OD_lg_docs.Post;
 
   if (check_upd = 1) and (msg3('Сохранить изменения?',
     'Внимание!',
@@ -796,52 +687,7 @@ begin
   Close;
 end;
 
-procedure TForm_kart_pr.OD_lg_prAfterScroll(DataSet: TDataSet);
-begin
-  OD_lg_docs.SetVariable('C_LG_DOCS_ID',
-    OD_lg_pr.FieldByName('C_LG_DOCS_ID').AsInteger);
-  OD_lg_docs.Active := False;
-  OD_lg_docs.Active := True;
-end;
 
-procedure TForm_kart_pr.wwDBEdit1Exit(Sender: TObject);
-begin
-  if length(wwDBEdit1.Text) + length(DBEdit1.Text) > 80 then
-  begin
-    ShowMessage('Длина Ф.И.О.+документ льготы слишком большая, уменьшите');
-    //      wwDBEdit1.SetFocus;
-    Windows.SetFocus(wwDBEdit1.Handle);
-  end;
-end;
-
-procedure TForm_kart_pr.DBEdit1Exit(Sender: TObject);
-begin
-  if length(wwDBEdit1.Text) + length(DBEdit1.Text) > 80 then
-  begin
-    ShowMessage('Длина Ф.И.О.+документ льготы слишком большая, уменьшите');
-    //      DBEdit1.SetFocus;
-    Windows.SetFocus(DBEdit1.Handle);
-  end;
-end;
-
-procedure TForm_kart_pr.OD_lg_prBeforeInsert(DataSet: TDataSet);
-begin
-  Abort;
-end;
-
-procedure TForm_kart_pr.OD_lg_docsBeforeInsert(DataSet: TDataSet);
-begin
-  Abort;
-end;
-
-procedure TForm_kart_pr.OD_lg_docsAfterScroll(DataSet: TDataSet);
-begin
-  if OD_lg_docs.FieldByName('is_cancelled').AsInteger = 0 then
-    Label3.Visible := True
-  else
-    Label3.Visible := False;
-
-end;
 
 procedure TForm_kart_pr.CMDialogKey(var Msg: TWMKey);
 begin
@@ -1159,6 +1005,7 @@ begin
     cxDBTextEdit2.Visible := False;
   end;
 end;
+
 
 end.
 

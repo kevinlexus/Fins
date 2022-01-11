@@ -1,6 +1,6 @@
 object Form_kart_pr: TForm_kart_pr
-  Left = 1503
-  Top = 545
+  Left = 1741
+  Top = 423
   Width = 680
   Height = 525
   BorderIcons = [biSystemMenu, biMinimize]
@@ -118,7 +118,7 @@ object Form_kart_pr: TForm_kart_pr
     Top = 72
     Width = 633
     Height = 321
-    ActivePage = TabSheet5
+    ActivePage = TabSheet1
     TabOrder = 1
     object TabSheet1: TTabSheet
       Caption = #1054#1073#1097#1072#1103' '#1080#1085#1092#1086#1088#1084#1072#1094#1080#1103
@@ -462,7 +462,6 @@ object Form_kart_pr: TForm_kart_pr
         DataField = 'B_PLACE'
         DataSource = Form_kart.DS_kart_pr
         TabOrder = 2
-        OnExit = DBEdit1Exit
       end
       object DBEdit5: TDBEdit
         Left = 342
@@ -472,7 +471,6 @@ object Form_kart_pr: TForm_kart_pr
         DataField = 'DOK_C'
         DataSource = Form_kart.DS_kart_pr
         TabOrder = 6
-        OnExit = DBEdit1Exit
       end
       object DBEdit6: TDBEdit
         Left = 442
@@ -482,7 +480,6 @@ object Form_kart_pr: TForm_kart_pr
         DataField = 'DOK_N'
         DataSource = Form_kart.DS_kart_pr
         TabOrder = 7
-        OnExit = DBEdit1Exit
       end
       object DBDateTimeEditEh2: TDBDateTimeEditEh
         Left = 106
@@ -537,7 +534,6 @@ object Form_kart_pr: TForm_kart_pr
         DataField = 'FRM_TOWN'
         DataSource = Form_kart.DS_kart_pr
         TabOrder = 19
-        OnExit = DBEdit1Exit
       end
       object DBDateTimeEditEh6: TDBDateTimeEditEh
         Left = 67
@@ -574,7 +570,6 @@ object Form_kart_pr: TForm_kart_pr
         DataField = 'FRM_ND'
         DataSource = Form_kart.DS_kart_pr
         TabOrder = 16
-        OnExit = DBEdit1Exit
       end
       object DBEdit9: TDBEdit
         Left = 322
@@ -584,7 +579,6 @@ object Form_kart_pr: TForm_kart_pr
         DataField = 'FRM_KW'
         DataSource = Form_kart.DS_kart_pr
         TabOrder = 18
-        OnExit = DBEdit1Exit
       end
       object DBEdit10: TDBEdit
         Left = 322
@@ -594,7 +588,6 @@ object Form_kart_pr: TForm_kart_pr
         DataField = 'W_PLACE'
         DataSource = Form_kart.DS_kart_pr
         TabOrder = 22
-        OnExit = DBEdit1Exit
       end
       object DBLookupComboboxEh18: TDBLookupComboboxEh
         Left = 66
@@ -712,7 +705,6 @@ object Form_kart_pr: TForm_kart_pr
         DataField = 'DOK_SNILS'
         DataSource = Form_kart.DS_kart_pr
         TabOrder = 11
-        OnExit = DBEdit1Exit
       end
       object cxDBCheckBox1: TcxDBCheckBox
         Left = 488
@@ -745,7 +737,6 @@ object Form_kart_pr: TForm_kart_pr
         DataField = 'DOK_INN'
         DataSource = Form_kart.DS_kart_pr
         TabOrder = 12
-        OnExit = DBEdit1Exit
       end
       object DBEdit17: TDBEdit
         Left = 105
@@ -755,7 +746,6 @@ object Form_kart_pr: TForm_kart_pr
         DataField = 'DOK_DIV'
         DataSource = Form_kart.DS_kart_pr
         TabOrder = 10
-        OnExit = DBEdit1Exit
       end
     end
     object TabSheet2: TTabSheet
@@ -1010,7 +1000,6 @@ object Form_kart_pr: TForm_kart_pr
         DataField = 'TO_TOWN'
         DataSource = Form_kart.DS_kart_pr
         TabOrder = 8
-        OnExit = DBEdit1Exit
       end
       object DBEdit12: TDBEdit
         Left = 322
@@ -1020,7 +1009,6 @@ object Form_kart_pr: TForm_kart_pr
         DataField = 'TO_KW'
         DataSource = Form_kart.DS_kart_pr
         TabOrder = 6
-        OnExit = DBEdit1Exit
       end
       object DBEdit13: TDBEdit
         Left = 322
@@ -1030,7 +1018,6 @@ object Form_kart_pr: TForm_kart_pr
         DataField = 'TO_ND'
         DataSource = Form_kart.DS_kart_pr
         TabOrder = 4
-        OnExit = DBEdit1Exit
       end
       object DBLookupComboboxEh14: TDBLookupComboboxEh
         Left = 322
@@ -1296,20 +1283,6 @@ object Form_kart_pr: TForm_kart_pr
       Font.Style = [fsBold]
       ParentFont = False
     end
-    object DBLookupComboboxEh3: TDBLookupComboboxEh
-      Left = 8
-      Top = 8
-      Width = 113
-      Height = 21
-      DataField = 'RELAT_ID'
-      DataSource = Form_kart.DS_kart_pr
-      EditButtons = <>
-      KeyField = 'ID'
-      ListField = 'NAME'
-      ListSource = DS_relations
-      TabOrder = 0
-      Visible = True
-    end
     object DBEdit1: TDBEdit
       Left = 122
       Top = 8
@@ -1320,8 +1293,7 @@ object Form_kart_pr: TForm_kart_pr
       DataSource = Form_kart.DS_kart_pr
       ParentShowHint = False
       ShowHint = True
-      TabOrder = 1
-      OnExit = DBEdit1Exit
+      TabOrder = 0
     end
     object DBEdit3: TDBEdit
       Left = 237
@@ -1333,8 +1305,7 @@ object Form_kart_pr: TForm_kart_pr
       DataSource = Form_kart.DS_kart_pr
       ParentShowHint = False
       ShowHint = True
-      TabOrder = 2
-      OnExit = DBEdit1Exit
+      TabOrder = 1
     end
     object DBEdit4: TDBEdit
       Left = 321
@@ -1346,11 +1317,10 @@ object Form_kart_pr: TForm_kart_pr
       DataSource = Form_kart.DS_kart_pr
       ParentShowHint = False
       ShowHint = True
-      TabOrder = 3
-      OnExit = DBEdit1Exit
+      TabOrder = 2
     end
     object DBDateTimeEditEh4: TDBDateTimeEditEh
-      Left = 282
+      Left = 266
       Top = 31
       Width = 89
       Height = 21
@@ -1358,7 +1328,7 @@ object Form_kart_pr: TForm_kart_pr
       DataSource = Form_kart.DS_kart_pr
       EditButtons = <>
       Kind = dtkDateEh
-      TabOrder = 7
+      TabOrder = 6
       Visible = False
     end
     object DBLookupComboboxEh2: TDBLookupComboboxEh
@@ -1373,7 +1343,7 @@ object Form_kart_pr: TForm_kart_pr
       KeyField = 'ID'
       ListField = 'NAME'
       ReadOnly = True
-      TabOrder = 5
+      TabOrder = 4
       Visible = True
     end
     object DBDateTimeEditEh1: TDBDateTimeEditEh
@@ -1386,7 +1356,7 @@ object Form_kart_pr: TForm_kart_pr
       Enabled = False
       EditButtons = <>
       Kind = dtkDateEh
-      TabOrder = 4
+      TabOrder = 3
       Visible = True
     end
     object DBDateTimeEditEh5: TDBDateTimeEditEh
@@ -1399,7 +1369,7 @@ object Form_kart_pr: TForm_kart_pr
       Enabled = False
       EditButtons = <>
       Kind = dtkDateEh
-      TabOrder = 8
+      TabOrder = 7
       Visible = True
     end
     object DBDateTimeEditEh8: TDBDateTimeEditEh
@@ -1411,7 +1381,7 @@ object Form_kart_pr: TForm_kart_pr
       DataSource = Form_kart.DS_kart_pr
       EditButtons = <>
       Kind = dtkDateEh
-      TabOrder = 6
+      TabOrder = 5
       Visible = False
     end
     object dbedtK_OT: TDBEdit
@@ -1424,8 +1394,23 @@ object Form_kart_pr: TForm_kart_pr
       DataSource = Form_kart.DS_kart_pr
       ParentShowHint = False
       ShowHint = True
+      TabOrder = 8
+    end
+    object cbb2STATUS: TcxDBLookupComboBox
+      Left = 8
+      Top = 7
+      DataBinding.DataField = 'RELAT_ID'
+      DataBinding.DataSource = Form_kart.DS_kart_pr
+      Properties.KeyFieldNames = 'ID'
+      Properties.ListColumns = <
+        item
+          FieldName = 'NAME'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = DS_relations
       TabOrder = 9
-      OnExit = DBEdit1Exit
+      OnExit = cbb2STATUSExit
+      Width = 110
     end
   end
   object Button2: TButton
@@ -1473,7 +1458,6 @@ object Form_kart_pr: TForm_kart_pr
     ReadOnly = True
     ShowHint = True
     TabOrder = 3
-    OnExit = DBEdit1Exit
   end
   object OD_pol: TOracleDataSet
     SQL.Strings = (
@@ -1544,175 +1528,6 @@ object Form_kart_pr: TForm_kart_pr
     Left = 96
     Top = 528
   end
-  object OD_lg_docs: TOracleDataSet
-    SQL.Strings = (
-      
-        'select d.rowid, d.id, d.c_kart_pr_id, d.doc, d.dat_begin, d.dat_' +
-        'end, d.main,'
-      'case when d.dat_end is not null'
-      
-        '                        and d.dat_end < to_date(p.period||'#39'01'#39', ' +
-        #39'YYYYMMDD'#39') then 0'
-      '                        else 1'
-      '                        end as is_cancelled'
-      'from scott.c_lg_docs d, scott.params p'
-      'where d.id=:c_lg_docs_id')
-    Optimize = False
-    Variables.Data = {
-      03000000010000000D0000003A435F4C475F444F43535F494403000000000000
-      0000000000}
-    SequenceField.ApplyMoment = amOnNewRecord
-    OracleDictionary.UseMessageTable = True
-    OracleDictionary.DefaultValues = True
-    QBEDefinition.QBEFieldDefs = {
-      04000000070000000C000000435F4B4152545F50525F49440100000000000300
-      0000444F43010000000000090000004441545F424547494E0100000000000200
-      00004944010000000000040000004D41494E010000000000070000004441545F
-      454E440100000000000C00000049535F43414E43454C4C4544010000000000}
-    RefreshOptions = [roBeforeEdit, roAfterInsert, roAfterUpdate, roAllFields]
-    UpdatingTable = 'scott.c_lg_docs'
-    CommitOnPost = False
-    CachedUpdates = True
-    Session = DataModule1.OracleSession1
-    DesignActivation = True
-    Active = True
-    BeforeInsert = OD_lg_docsBeforeInsert
-    AfterScroll = OD_lg_docsAfterScroll
-    Top = 440
-    object OD_lg_docsMAIN: TFloatField
-      DisplayLabel = #1053#1086#1089#1080#1090#1077#1083#1100
-      DisplayWidth = 8
-      FieldName = 'MAIN'
-    end
-    object OD_lg_docsC_KART_PR_ID: TFloatField
-      FieldName = 'C_KART_PR_ID'
-    end
-    object OD_lg_docsDOC: TStringField
-      DisplayLabel = #1044#1086#1082#1091#1084#1077#1085#1090
-      DisplayWidth = 55
-      FieldName = 'DOC'
-      Size = 55
-    end
-    object OD_lg_docsDAT_BEGIN: TDateTimeField
-      DisplayWidth = 18
-      FieldName = 'DAT_BEGIN'
-    end
-    object OD_lg_docsID: TFloatField
-      FieldKind = fkInternalCalc
-      FieldName = 'ID'
-      Required = True
-    end
-    object OD_lg_docsDAT_END: TDateTimeField
-      FieldName = 'DAT_END'
-    end
-    object OD_lg_docsIS_CANCELLED: TFloatField
-      FieldName = 'IS_CANCELLED'
-    end
-  end
-  object DS_lg_docs: TDataSource
-    DataSet = OD_lg_docs
-    Left = 32
-    Top = 440
-  end
-  object OD_lg_pr: TOracleDataSet
-    SQL.Strings = (
-      'select r.rowid, rownum, decode(r.type,0,d.doc, null) as doc, '
-      
-        'decode(r.type,0,d.dat_begin, null) as dat_begin, decode(r.type,0' +
-        ',d.dat_end, null) as dat_end,'
-      
-        'r.c_lg_docs_id, r.spk_id, decode(r.type,1,'#39#1058#1077#1082'.'#1089#1086#1076'.'#39', '#39#1050#1086#1084#1084'.'#1091#1089#1083'.' +
-        #39') as type_name, r.type'
-      'from scott.c_lg_pr r, scott.c_lg_docs d'
-      'where r.c_lg_docs_id=d.id'
-      ' and d.c_kart_pr_id = :id'
-      ' order by r.c_lg_docs_id, type desc')
-    Optimize = False
-    Variables.Data = {0300000001000000030000003A4944030000000000000000000000}
-    SequenceField.ApplyMoment = amOnNewRecord
-    OracleDictionary.UseMessageTable = True
-    OracleDictionary.DefaultValues = True
-    QBEDefinition.QBEFieldDefs = {
-      04000000080000000600000053504B5F49440100000000000C000000435F4C47
-      5F444F43535F494401000000000003000000444F430100000000000900000044
-      41545F424547494E01000000000009000000545950455F4E414D450100000000
-      00040000005459504501000000000006000000524F574E554D01000000000007
-      0000004441545F454E44010000000000}
-    Master = Form_kart.OD_kart_pr
-    MasterFields = 'ID'
-    RefreshOptions = [roBeforeEdit, roAfterInsert, roAfterUpdate, roAllFields]
-    UpdatingTable = 'scott.c_lg_pr'
-    CommitOnPost = False
-    CachedUpdates = True
-    Session = DataModule1.OracleSession1
-    DesignActivation = True
-    BeforeInsert = OD_lg_prBeforeInsert
-    AfterScroll = OD_lg_prAfterScroll
-    Top = 408
-    object OD_lg_prTYPE_NAME: TStringField
-      DisplayLabel = #1058#1080#1087
-      DisplayWidth = 9
-      FieldKind = fkInternalCalc
-      FieldName = 'TYPE_NAME'
-      ReadOnly = True
-      Size = 9
-    end
-    object OD_lg_prspk_name: TStringField
-      DisplayLabel = #1051#1100#1075#1086#1090#1072
-      DisplayWidth = 34
-      FieldKind = fkLookup
-      FieldName = 'spk_name'
-      LookupDataSet = OD_spk
-      LookupKeyFields = 'ID'
-      LookupResultField = 'NAME'
-      KeyFields = 'SPK_ID'
-      Lookup = True
-    end
-    object OD_lg_prDOC: TStringField
-      DisplayLabel = #1044#1086#1082#1091#1084#1077#1085#1090
-      DisplayWidth = 22
-      FieldKind = fkInternalCalc
-      FieldName = 'DOC'
-      ReadOnly = True
-      Size = 55
-    end
-    object OD_lg_prDAT_BEGIN: TDateTimeField
-      DisplayLabel = #1044#1072#1090#1072' '#1074#1099#1076#1072#1095#1080
-      DisplayWidth = 11
-      FieldKind = fkInternalCalc
-      FieldName = 'DAT_BEGIN'
-      ReadOnly = True
-    end
-    object OD_lg_prDAT_END: TDateTimeField
-      DisplayLabel = #1044#1072#1090#1072' '#1086#1082#1086#1085#1095
-      DisplayWidth = 13
-      FieldKind = fkInternalCalc
-      FieldName = 'DAT_END'
-      ReadOnly = True
-    end
-    object OD_lg_prC_LG_DOCS_ID: TFloatField
-      DisplayLabel = 'ID'
-      DisplayWidth = 11
-      FieldName = 'C_LG_DOCS_ID'
-      Visible = False
-    end
-    object OD_lg_prSPK_ID: TFloatField
-      DisplayWidth = 10
-      FieldName = 'SPK_ID'
-      Visible = False
-    end
-    object OD_lg_prTYPE: TFloatField
-      DisplayWidth = 10
-      FieldName = 'TYPE'
-      Required = True
-      Visible = False
-    end
-  end
-  object DS_lg_pr: TDataSource
-    DataSet = OD_lg_pr
-    Left = 32
-    Top = 408
-  end
   object OD_relations: TOracleDataSet
     SQL.Strings = (
       'select * from scott.relations r '
@@ -1746,237 +1561,6 @@ object Form_kart_pr: TForm_kart_pr
     DataSet = OD_relations
     Left = 160
     Top = 432
-  end
-  object wwIntl1: TwwIntl
-    Navigator.ConfirmDeleteMessage = 'Delete record?'
-    Navigator.Hints.FirstHint = 'Move to first record'
-    Navigator.Hints.PriorHint = 'Move to prior record'
-    Navigator.Hints.NextHint = 'Move to next record'
-    Navigator.Hints.LastHint = 'Move to last record'
-    Navigator.Hints.InsertHint = 'Insert new record'
-    Navigator.Hints.DeleteHint = 'Delete current record'
-    Navigator.Hints.EditHint = 'Edit current record'
-    Navigator.Hints.PostHint = 'Post changes of current record'
-    Navigator.Hints.CancelHint = 'Cancel changes made to current record'
-    Navigator.Hints.RefreshHint = 'Refresh the contents of the dataset'
-    Navigator.Hints.PriorPageHint = 'Move backward %d records'
-    Navigator.Hints.NextPageHint = 'Move forward %d records'
-    Navigator.Hints.SaveBookmarkHint = 'Bookmark current record'
-    Navigator.Hints.RestoreBookmarkHint = 'Go back to saved bookmark'
-    Navigator.Hints.RecordViewDialogHint = 'View current record'
-    Navigator.Hints.LocateDialogHint = 'Locate a specific record'
-    Navigator.Hints.FilterDialogHint = 'Filter the dataset'
-    Navigator.Hints.SearchDialogHint = 'Search the dataset'
-    SearchDialog.SearchCharLabel = '&'#1055#1086#1080#1089#1082' '#1089#1090#1088#1086#1082#1080
-    SearchDialog.SearchCharShortLabel = '&Search Char'
-    SearchDialog.SearchByLabel = 'Search &By'
-    SearchDialog.StatusRecLabel = 'Rec #'
-    SearchDialog.StatusOfLabel = 'of'
-    SearchDialog.SearchCharHint = 'Enter characters for incremental search'
-    SearchDialog.SearchByHint = 'Incremental searching and sorting order'
-    LocateDialog.FieldValueLabel = 'Field &Value'
-    LocateDialog.SearchTypeLabel = '&Search Type'
-    LocateDialog.CaseSensitiveLabel = '&Case-sensitive'
-    LocateDialog.MatchExactLabel = '&Exact Match'
-    LocateDialog.MatchStartLabel = '&Partial Match at Beginning'
-    LocateDialog.MatchAnyLabel = 'Partial Match &Anywhere'
-    LocateDialog.FieldsLabel = '&Fields'
-    LocateDialog.BtnFirst = 'Fi&rst'
-    LocateDialog.BtnNext = '&Next'
-    LocateDialog.BtnCancel = 'Cancel'
-    LocateDialog.BtnClose = 'Close'
-    LocateDialog.FieldValueHint = 'Enter field'#39's search value'
-    LocateDialog.CaseSensitiveHint = 'Searching is case-sensitive'
-    LocateDialog.MatchExactHint = 'Match occurs only if there is an exact match'
-    LocateDialog.MatchStartHint = 'Match occurs if the start of the field'#39's value matches'
-    LocateDialog.MatchAnyHint = 'Match occurs if any part of the field matches'
-    LocateDialog.BtnFirstHint = 'Find first match'
-    LocateDialog.BtnNextHint = 'Find next match from current record'
-    LocateDialog.FieldNameHint = 'Select the field to search on'
-    MonthCalendar.PopupYearLabel = 'Edit Year'
-    MonthCalendar.EnterYearPrompt = 'Enter Valid Year'
-    FilterDialog.BtnViewSummary = #1055#1086#1089#1084#1086#1090#1088#1077#1090#1100' '#1074#1099#1088#1072#1078#1077#1085#1080#1077
-    FilterDialog.BtnViewSummaryHint = 'C'#1084#1086#1090#1088#1077#1090#1100' '#1074#1099#1088#1072#1078'. '#1090#1077#1082#1091#1097#1077#1075#1086' '#1082#1088#1080#1090#1077#1088#1080#1103
-    FilterDialog.BtnNewSearch = #1053#1086#1074#1099#1081' '#1087#1086#1080#1089#1082
-    FilterDialog.BtnNewSearchHint = #1053#1072#1095#1072#1090#1100' '#1085#1086#1074#1099#1081' '#1087#1086#1080#1089#1082
-    FilterDialog.FieldOrderLabel = #1055#1086#1088#1103#1076#1086#1082' '#1087#1086#1083#1077#1081
-    FilterDialog.FieldOrderHint = 'Sort field list alphabetically or in their natural logical order'
-    FilterDialog.AlphabeticLabel = #1055#1086' '#1072#1083#1092#1072#1074#1080#1090#1091
-    FilterDialog.LogicalLabel = #1051#1086#1075#1080#1095#1077#1089#1082#1086#1077
-    FilterDialog.AllFieldsLabel = '&'#1042#1089#1077
-    FilterDialog.SearchedFieldsLabel = #1053#1072#1081#1076#1077#1085#1085#1099#1077
-    FilterDialog.StartingRangeLabel = #1053#1072#1095#1072#1083#1100#1085#1086#1077' '#1079#1085#1072#1095#1077#1085#1080#1077
-    FilterDialog.EndingRangeLabel = #1050#1086#1085#1077#1095#1085#1099#1081' '#1076#1080#1072#1087#1072#1079#1086#1085
-    FilterDialog.StartingRangeHint = #1042#1074#1077#1076#1080#1090#1077' '#1085#1072#1095#1072#1083#1100#1085#1086#1077' '#1079#1085#1072#1095#1077#1085#1080#1077
-    FilterDialog.EndingRangeHint = #1042#1074#1077#1076#1080#1090#1077' '#1082#1086#1085#1077#1095#1085#1086#1077' '#1079#1085#1072#1095#1077#1085#1080#1077' '#1076#1083#1103' '#1087#1086#1083#1103
-    FilterDialog.BtnClearMin = #1057#1090#1077#1088#1077#1090#1100
-    FilterDialog.BtnClearMax = #1057#1090#1077#1088#1077#1090#1100
-    FilterDialog.BtnClearFilterValue = '&'#1057#1090#1077#1088#1077#1090#1100
-    FilterDialog.BtnClearMinHint = #1057#1090#1077#1088#1077#1090#1100' '#1085#1072#1095#1072#1083#1100#1085#1099#1081' '#1076#1080#1072#1087#1072#1079#1086#1085' '#1079#1085#1072#1095#1077#1085#1080#1081
-    FilterDialog.BtnClearMaxHint = #1057#1090#1077#1088#1077#1090#1100' '#1082#1086#1085#1077#1095#1085#1099#1081' '#1076#1080#1072#1087#1072#1079#1086#1085' '#1079#1085#1072#1095#1077#1085#1080#1081
-    FilterDialog.BtnClearFilterValueHint = 'Clear the current field'#39's search value'
-    FilterDialog.ByValueLabel = #1055#1086' '#1079#1085#1072#1095#1077#1085#1080#1102
-    FilterDialog.ByRangeLabel = #1055#1086' '#1076#1080#1072#1087#1072#1079#1086#1085#1091
-    FilterDialog.FieldValueLabel = #1055#1086#1083#1103' '#1080' '#1047#1085#1072#1095#1077#1085#1080#1103
-    FilterDialog.FieldValueHint = #1042#1074#1077#1076#1080#1090#1077' '#1080#1089#1082#1086#1084#1086#1077' '#1079#1085#1072#1095#1077#1085#1080#1077
-    FilterDialog.SearchTypeLabel = #1058#1080#1087' '#1087#1086#1080#1089#1082#1072
-    FilterDialog.SearchTypeHint = #1059#1082#1072#1078#1080#1090#1077' '#1082#1072#1082' '#1087#1086#1083#1077' '#1076#1086#1083#1078#1085#1086' '#1089#1088#1072#1074#1085#1080#1074#1072#1090#1100#1089#1103
-    FilterDialog.MatchExactLabel = #1058#1086#1095#1085#1086#1077' '#1089#1086#1074#1087#1072#1076#1077#1085#1080#1077
-    FilterDialog.MatchStartLabel = #1063#1072#1089#1090#1080#1095#1085#1086#1077' '#1089#1086#1074#1087#1072#1076#1077#1085#1080#1077' '#1089' '#1085#1072#1095#1072#1083#1072' '#1087#1086#1083#1103
-    FilterDialog.MatchAnyLabel = #1063#1072#1089#1090#1080#1095#1085#1086#1077' '#1089#1086#1074#1087#1072#1076#1077#1085#1080#1077' '#1075#1076#1077' '#1091#1075#1086#1076#1085#1086
-    FilterDialog.CaseSensitiveLabel = #1056#1077#1075#1080#1089#1090#1088#1086#1079#1072#1074#1080#1089#1080#1084#1086
-    FilterDialog.CaseSensitiveHint = #1055#1086#1080#1089#1082' '#1089' '#1091#1095#1077#1090#1086#1084' '#1088#1077#1075#1080#1089#1090#1088#1072
-    FilterDialog.NonMatchingLabel = #1053#1077' '#1089#1086#1074#1087#1072#1076#1072#1102#1097#1080#1077' '#1079#1072#1087#1080#1089#1080
-    FilterDialog.NonMatchingHint = #1055#1086#1082#1072#1079#1072#1090#1100' '#1079#1072#1087#1080#1089#1080' '#1085#1077' '#1089#1086#1074#1087#1072#1076#1072#1102#1097#1080#1077' '#1089' '#1082#1088#1080#1090#1077#1088#1080#1077#1084' '#1087#1086#1080#1089#1082#1072
-    FilterDialog.SummaryFieldLabel = #1055#1086#1083#1077
-    FilterDialog.SummarySearchLabel = #1058#1080#1087' '#1087#1086#1080#1089#1082#1072
-    FilterDialog.SummaryValueLabel = #1047#1085#1072#1095#1077#1085#1080#1077
-    FilterDialog.FieldsLabel = #1055#1086#1083#1103
-    FilterDialog.ValueRangeTabHint = #1048#1089#1082#1072#1090#1100' '#1087#1086' '#1079#1085#1072#1095#1077#1085#1080#1102' '#1080#1083#1080' '#1087#1086' '#1076#1080#1072#1087#1072#1079#1086#1085#1091
-    FilterDialog.AllSearchedTabHint = 'Show all fields or only currently searched fields'
-    FilterDialog.ViewSummaryNotText = #1053#1077
-    RichEdit.FontNameComboHint = 'Font | Changes the font of the selection'
-    RichEdit.FontSizeComboHint = 'Font Size | Changes the font size of the selection'
-    RichEdit.NewButtonHint = 'New | Creates a new document'
-    RichEdit.LoadButtonHint = 'Load | Load from file'
-    RichEdit.SaveAsButtonHint = 'Save As | Save to file'
-    RichEdit.PrintButtonHint = 'Print | Prints the active document'
-    RichEdit.FindButtonHint = 'Find | Finds the specified text'
-    RichEdit.CutButtonHint = 'Cut | Cuts the selection and puts it on the Clipboard'
-    RichEdit.CopyButtonHint = 'Copy | Copies the selection and puts it on the Clipboard'
-    RichEdit.UndoButtonHint = 'Undo | Reverses the last action'
-    RichEdit.RedoButtonHint = 'Redo | Reverses the last undo action'
-    RichEdit.PasteButtonHint = 'Paste | Inserts Clipboard contents'
-    RichEdit.BoldButtonHint = 'Bold | Makes the selection bold (toggle)'
-    RichEdit.ColorButtonHint = 'Color | Formats the selection with a color'
-    RichEdit.UnderlineButtonHint = 
-      'Underline | Formats the selection with a continuous underline (t' +
-      'oggle)'
-    RichEdit.ItalicButtonHint = 'Italic | Makes the selection italic (toggle)'
-    RichEdit.LeftButtonHint = 'Align Left | Left-justifies paragraph (toggle)'
-    RichEdit.CenterButtonHint = 'Center | Center-justifies paragraph (toggle)'
-    RichEdit.RightButtonHint = 'Align Right | Right-justifies paragraph (toggle)'
-    RichEdit.JustifyButtonHint = 'Justify | Full Justification for paragraph (toggle)'
-    RichEdit.BulletButtonHint = 'Bullets | Inserts a bullet on this line (toggle)'
-    RichEdit.HighlightButtonHint = 'Highlight Text | Makes the selection highlighted'
-    RichEdit.SaveExitHint = 'Save And Exit | Saves changes and exits editor'
-    RichEdit.PageSetupHint = 'Page Setup | Changes page layout settings'
-    RichEdit.ExitHint = 'Exit'
-    RichEdit.ClearHint = 'Erases the Selection'
-    RichEdit.SelectAllHint = 'Selects all of the text'
-    RichEdit.FindNextHint = 'Repeats the last find'
-    RichEdit.ReplaceHint = 'Replaces specific text with different text'
-    RichEdit.InsertObjectHint = 'Inserts new embedded object'
-    RichEdit.SpellCheckHint = 'Check spelling'
-    RichEdit.ToolbarHint = 'Shows or hides the toolbar'
-    RichEdit.FormatBarHint = 'Shows or hides the format bar'
-    RichEdit.ViewStatusBarHint = 'Shows or hides the status bar'
-    RichEdit.OptionsHint = 'Sets options'
-    RichEdit.FontHint = 'Selects font for current selection'
-    RichEdit.ParagraphHint = 'Formats current or selected paragraph(s)'
-    RichEdit.TabsHint = 'Sets tabs'
-    RichEdit.CAPLockCaption = 'CAP'
-    RichEdit.NUMLockCaption = 'NUM'
-    RichEdit.MenuLabels.FileCaption = '&File'
-    RichEdit.MenuLabels.LoadCaption = '&Load'
-    RichEdit.MenuLabels.SaveAsCaption = 'Save &As'
-    RichEdit.MenuLabels.SaveExitCaption = '&Save and Exit'
-    RichEdit.MenuLabels.PrintCaption = '&Print'
-    RichEdit.MenuLabels.PageSetupCaption = 'Page Set&up'
-    RichEdit.MenuLabels.ExitCaption = 'E&xit'
-    RichEdit.MenuLabels.EditCaption = '&Edit'
-    RichEdit.MenuLabels.UndoCaption = '&Undo'
-    RichEdit.MenuLabels.CutCaption = 'Cu&t'
-    RichEdit.MenuLabels.CopyCaption = '&Copy'
-    RichEdit.MenuLabels.PasteCaption = '&Paste'
-    RichEdit.MenuLabels.ClearCaption = 'Cle&ar'
-    RichEdit.MenuLabels.SelectallCaption = 'Select A&ll'
-    RichEdit.MenuLabels.FindCaption = '&Find'
-    RichEdit.MenuLabels.FindNextCaption = 'Find &Next'
-    RichEdit.MenuLabels.ReplaceCaption = 'R&eplace'
-    RichEdit.MenuLabels.InsertObjectCaption = '&Object...'
-    RichEdit.MenuLabels.ToolCaption = '&Tools'
-    RichEdit.MenuLabels.SpellCheckCaption = 'Check &Spelling'
-    RichEdit.MenuLabels.InsertCaption = '&Insert'
-    RichEdit.MenuLabels.RulerCaption = '&Ruler'
-    RichEdit.MenuLabels.ViewCaption = '&View'
-    RichEdit.MenuLabels.ToolbarCaption = '&Toolbar'
-    RichEdit.MenuLabels.FormatBarCaption = '&Format Bar'
-    RichEdit.MenuLabels.ViewStatusBarCaption = '&Status Bar'
-    RichEdit.MenuLabels.OptionsCaption = '&Options'
-    RichEdit.MenuLabels.FormatCaption = 'F&ormat'
-    RichEdit.MenuLabels.FontCaption = '&Font'
-    RichEdit.MenuLabels.BulletStyleCaption = '&Bullet Style'
-    RichEdit.MenuLabels.ParagraphCaption = '&Paragraph'
-    RichEdit.MenuLabels.TabsCaption = '&Tabs'
-    RichEdit.MenuLabels.HelpCaption = 'Help'
-    RichEdit.PopupMenuLabels.EditCaption = '&Edit'
-    RichEdit.PopupMenuLabels.ViewCaption = '&View'
-    RichEdit.PopupMenuLabels.CutCaption = 'Cu&t'
-    RichEdit.PopupMenuLabels.CopyCaption = '&Copy'
-    RichEdit.PopupMenuLabels.PasteCaption = '&Paste'
-    RichEdit.PopupMenuLabels.FontCaption = '&Font'
-    RichEdit.PopupMenuLabels.BulletStyleCaption = '&Bullet Style'
-    RichEdit.PopupMenuLabels.BoldCaption = 'B&old'
-    RichEdit.PopupMenuLabels.ItalicCaption = '&Italic'
-    RichEdit.PopupMenuLabels.UnderlineCaption = '&Underline'
-    RichEdit.PopupMenuLabels.ParagraphCaption = 'P&aragraph'
-    RichEdit.PopupMenuLabels.TabsCaption = '&Tabs'
-    RichEdit.PopupMenuLabels.FindCaption = 'Fin&d'
-    RichEdit.PopupMenuLabels.ReplaceCaption = '&Replace'
-    RichEdit.PopupMenuLabels.InsertObjectCaption = 'Insert &Object...'
-    RichEdit.PopupMenuLabels.ObjectPropertiesCaption = 'Object P&roperties'
-    RichEdit.PopupMenuLabels.SpellCheckCaption = 'Check &Spelling'
-    RichEdit.ParagraphDialog.ParagraphDlgCaption = 'Paragraph'
-    RichEdit.ParagraphDialog.IndentationGroupBoxCaption = 'Indentation'
-    RichEdit.ParagraphDialog.LeftEditHint = 'Left Indentation'
-    RichEdit.ParagraphDialog.RightEditHint = 'Right Indentation'
-    RichEdit.ParagraphDialog.FirstLineEditHint = 'First Line of Paragraph Indentation'
-    RichEdit.ParagraphDialog.AlignmentHint = 'Changes Alignment of Paragraph'
-    RichEdit.ParagraphDialog.LeftEditCaption = 'Left:'
-    RichEdit.ParagraphDialog.RightEditCaption = 'Right:'
-    RichEdit.ParagraphDialog.FirstLineEditCaption = 'First line:'
-    RichEdit.ParagraphDialog.SpacingGroupCaption = 'Spacing'
-    RichEdit.ParagraphDialog.BeforeParagraphCaption = '&Before'
-    RichEdit.ParagraphDialog.AfterParagraphCaption = 'Aft&er'
-    RichEdit.ParagraphDialog.WithinParagraphCaption = 'Li&ne Spacing'
-    RichEdit.ParagraphDialog.WithinParagraphAtCaption = '&At'
-    RichEdit.ParagraphDialog.AlignmentCaption = 'Alignment'
-    RichEdit.ParagraphDialog.AlignLeft = 'Left'
-    RichEdit.ParagraphDialog.AlignRight = 'Right'
-    RichEdit.ParagraphDialog.AlignCenter = 'Center'
-    RichEdit.ParagraphDialog.AlignJustify = 'Justify'
-    RichEdit.TabDialog.TabDlgCaption = 'Tab'
-    RichEdit.TabDialog.TabGroupBoxCaption = '&Tab Stop Position'
-    RichEdit.TabDialog.SetTabButtonCaption = 'Set'
-    RichEdit.TabDialog.ClearTabButtonCaption = 'Clear'
-    RichEdit.TabDialog.ClearAllButtonCaption = 'Clear All'
-    RichEdit.TabDialog.TabPositionEditHint = 'Tab Position Edit Box'
-    RichEdit.TabDialog.ListBoxHint = 'List of tabs and their positions'
-    RichEdit.TabDialog.SetButtonHint = 'Set a new tab position'
-    RichEdit.TabDialog.ClearButtonHint = 'Clear the selected tab position'
-    RichEdit.TabDialog.ClearAllButtonHint = 'Clear all the tabs'
-    UserMessages.wwDBGridDiscardChanges = 'Discard changes to this record?'
-    UserMessages.PictureValidateError = 'Invalid characters. Field : '
-    UserMessages.LocateNoMatches = 'No matches found'
-    UserMessages.LocateNoMoreMatches = 'No more matches found'
-    UserMessages.MemoChangesWarning = 'Changes have been made!  Are you sure you wish to cancel?'
-    UserMessages.RichEditExitWarning = 'Changes have been made!  Do you wish to save your changes?'
-    UserMessages.RichEditClearWarning = 'Clear entire text?'
-    UserMessages.RichEditSpellCheckComplete = 'The spell check is complete.'
-    UserMessages.RichEditMSWordNotFound = 'Unable to start Microsoft Word'#39's Spell Checker.'
-    UserMessages.FilterDlgNoCriteria = #1042#1099' '#1085#1077' '#1074#1074#1077#1083#1080' '#1074#1099#1088#1072#1078#1077#1085#1080#1103' '#1076#1083#1103' '#1087#1086#1080#1089#1082#1072
-    UserMessages.RecordViewExitWarning = 'Changes have been made!  Do you wish to save your changes?'
-    OKCancelBitmapped = True
-    BtnOKCaption = '&OK'
-    BtnCancelCaption = #1054#1090#1084#1077#1085#1072
-    CheckBoxInGridStyle = cbStyleAuto
-    VersionInfoPower = '4000.0.9.1'
-    FilterMemoSize = 65536
-    DialogFontStyle = []
-    Connected = True
-    Left = 64
-    Top = 408
   end
   object OD_nac: TOracleDataSet
     SQL.Strings = (
