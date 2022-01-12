@@ -22,7 +22,7 @@ object frmProject: TfrmProject
     Left = 0
     Top = 0
     Width = 1235
-    Height = 535
+    Height = 534
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText

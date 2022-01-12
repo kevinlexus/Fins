@@ -91,7 +91,7 @@ object Form_reg_sch: TForm_reg_sch
   TextHeight = 13
   object Panel2: TPanel
     Left = 0
-    Top = 271
+    Top = 270
     Width = 629
     Height = 46
     Align = alBottom
@@ -220,7 +220,7 @@ object Form_reg_sch: TForm_reg_sch
     Left = 0
     Top = 0
     Width = 629
-    Height = 271
+    Height = 270
     Align = alClient
     TabOrder = 6
     object cxGrid1DBTableView1: TcxGridDBTableView

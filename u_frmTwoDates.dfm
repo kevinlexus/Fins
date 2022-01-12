@@ -2,7 +2,7 @@ object frmTwoDates: TfrmTwoDates
   Left = 244
   Top = 520
   Width = 313
-  Height = 157
+  Height = 158
   AutoSize = True
   Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1087#1077#1088#1080#1086#1076
   Color = clBtnFace
@@ -124,7 +124,7 @@ object frmTwoDates: TfrmTwoDates
       Left = 17
       Top = 8
       Width = 254
-      Height = 17
+      Height = 26
       Caption = #1054#1073#1088#1072#1079#1077#1094', '#1074#1099#1079#1086#1074#1072' '#1084#1086#1076#1072#1083#1100#1085#1086#1081' '#1092#1086#1088#1084#1099', '#1089' '#1087#1077#1088#1077#1076#1072#1095#1077#1081' '#1087#1072#1088#1072#1084#1077#1090#1088#1086#1074'!!!'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clRed

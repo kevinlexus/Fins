@@ -92,12 +92,12 @@ object Form_sel_usl: TForm_sel_usl
   object wwDBGrid1: TwwDBGrid
     Left = 0
     Top = 0
-    Width = 375
-    Height = 343
+    Width = 367
+    Height = 331
     ControlType.Strings = (
       'SEL;CheckBox;0;1')
     Selected.Strings = (
-      'NM1'#9'45'#9#1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077#9'F'
+      'NM1'#9'44'#9#1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077#9'F'
       'SEL'#9'10'#9#1042#1099#1073#1088#1072#1090#1100#9'F')
     IniAttributes.Delimiter = ';;'
     TitleColor = clBtnFace
@@ -120,8 +120,8 @@ object Form_sel_usl: TForm_sel_usl
   end
   object Panel1: TPanel
     Left = 0
-    Top = 343
-    Width = 375
+    Top = 331
+    Width = 367
     Height = 39
     Align = alBottom
     TabOrder = 1
