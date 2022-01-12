@@ -4,10 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Unit_form_kart, StdCtrls, Mask, DBCtrls, DBCtrlsEh, DBLookupEh,
-  ExtCtrls, DB, OracleData, DBGridEh, wwdbedit, Wwdotdot,
-  Wwdbcomb, wwdbdatetimepicker, Wwdbgrid, wwcheckbox, wwdblook,
-  Wwdbdlg, wwSpeedButton, wwDBNavigator, wwDataInspector,
+  Dialogs, Unit_form_kart, StdCtrls, Mask, DBCtrls,
+  ExtCtrls, DB, OracleData, 
   DM_module1, Oracle, Utils, Buttons, Wwintl, ComCtrls, frxClass, frxDBSet,
   cxGraphics, cxControls,
   cxDBEdit,
@@ -43,7 +41,6 @@ type
     TabSheet3: TTabSheet;
     Label2: TLabel;
     Label7: TLabel;
-    DBLookupComboboxEh1: TDBLookupComboboxEh;
     Label10: TLabel;
     Label13: TLabel;
     OD_nac: TOracleDataSet;
@@ -55,7 +52,6 @@ type
     Label1: TLabel;
     Label4: TLabel;
     Label5: TLabel;
-    DBDateTimeEditEh2: TDBDateTimeEditEh;
     Label15: TLabel;
     Panel1: TPanel;
     Label6: TLabel;
@@ -80,7 +76,6 @@ type
     OD_ovdNPP: TFloatField;
     Bevel1: TBevel;
     Label17: TLabel;
-    DBLookupComboboxEh6: TDBLookupComboboxEh;
     Label18: TLabel;
     OD_country: TOracleDataSet;
     FloatField1: TFloatField;
@@ -107,13 +102,10 @@ type
     FloatField8: TFloatField;
     FloatField9: TFloatField;
     DS_distr: TDataSource;
-    DBLookupComboboxEh8: TDBLookupComboboxEh;
     Label20: TLabel;
     Label21: TLabel;
     DBEdit7: TDBEdit;
     Label22: TLabel;
-    DBDateTimeEditEh6: TDBDateTimeEditEh;
-    DBLookupComboboxEh9: TDBLookupComboboxEh;
     Label23: TLabel;
     DBEdit8: TDBEdit;
     Label24: TLabel;
@@ -161,7 +153,6 @@ type
     FloatField18: TFloatField;
     DS_milit_regn: TDataSource;
     Label27: TLabel;
-    DBDateTimeEditEh7: TDBDateTimeEditEh;
     Label28: TLabel;
     Label29: TLabel;
     Bevel3: TBevel;
@@ -175,7 +166,6 @@ type
     DBEdit13: TDBEdit;
     Label35: TLabel;
     Label36: TLabel;
-    DBLookupComboboxEh14: TDBLookupComboboxEh;
     Button2: TButton;
     DBNavigator2: TDBNavigator;
     frxReport_base: TfrxReport;
@@ -203,17 +193,6 @@ type
     OD_c_states2LK_NAME: TStringField;
     frxDBDataset5: TfrxDBDataset;
     OD_rep5: TOracleDataSet;
-    DBLookupComboboxEh18: TDBLookupComboboxEh;
-    DBLookupComboboxEh19: TDBLookupComboboxEh;
-    DBLookupComboboxEh7: TDBLookupComboboxEh;
-    DBLookupComboboxEh5: TDBLookupComboboxEh;
-    DBLookupComboboxEh15: TDBLookupComboboxEh;
-    DBLookupComboboxEh16: TDBLookupComboboxEh;
-    DBLookupComboboxEh17: TDBLookupComboboxEh;
-    DBLookupComboboxEh20: TDBLookupComboboxEh;
-    DBLookupComboboxEh11: TDBLookupComboboxEh;
-    DBLookupComboboxEh12: TDBLookupComboboxEh;
-    DBLookupComboboxEh13: TDBLookupComboboxEh;
     lbl1: TLabel;
     dbedtK_OT: TDBEdit;
     Label42: TLabel;
@@ -245,8 +224,26 @@ type
     cxDBDateEdit2: TcxDBDateEdit;
     cxDBDateEdit3: TcxDBDateEdit;
     cxDBDateEdit4: TcxDBDateEdit;
-    DBLookupComboboxEh3: TDBLookupComboboxEh;
     cbb2STATUS: TcxDBLookupComboBox;
+    cbb2POL: TcxDBLookupComboBox;
+    cbb2FK_NAC: TcxDBLookupComboBox;
+    cbb2FK_CITIZ: TcxDBLookupComboBox;
+    cbb2FK_DOC_TP: TcxDBLookupComboBox;
+    cbb2DOK_V: TcxDBLookupComboBox;
+    cbb2FK_FRM_COUNTRY: TcxDBLookupComboBox;
+    cbb2FK_FRM_REGION: TcxDBLookupComboBox;
+    cbb2FK_FRM_DISTR: TcxDBLookupComboBox;
+    cbb2FK_FRM_KUL: TcxDBLookupComboBox;
+    cxdbdtdtFRM_DAT: TcxDBDateEdit;
+    cbb2FK_MILIT: TcxDBLookupComboBox;
+    cbb2FK_MILIT_REGN: TcxDBLookupComboBox;
+    cbb2FK_UB: TcxDBLookupComboBox;
+    cxDBDateEdit5: TcxDBDateEdit;
+    cbb2FK_TO_CNTR: TcxDBLookupComboBox;
+    cbb2FK_TO_REGN: TcxDBLookupComboBox;
+    cbb2FK_TO_DISTR: TcxDBLookupComboBox;
+    cbb2FK_TO_KUL: TcxDBLookupComboBox;
+    cxdbdtdtDOK_D: TcxDBDateEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure OD_lg_docsSPK_IDValidate(Sender: TField);
     procedure OD_lg_docsTYPEValidate(Sender: TField);
@@ -321,7 +318,7 @@ var
   Form_kart_pr: TForm_kart_pr;
 implementation
 
-uses Unit_list_kart, Unit_Mainform, Unit_add_prop;
+uses Unit_list_kart, Unit_Mainform;
 
 type
   EPasswordInvalid = class(Exception);

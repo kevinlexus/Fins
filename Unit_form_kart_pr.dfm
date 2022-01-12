@@ -1,6 +1,6 @@
 object Form_kart_pr: TForm_kart_pr
-  Left = 927
-  Top = 229
+  Left = 1593
+  Top = 767
   Width = 680
   Height = 525
   BorderIcons = [biSystemMenu, biMinimize]
@@ -427,20 +427,6 @@ object Form_kart_pr: TForm_kart_pr
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object DBLookupComboboxEh1: TDBLookupComboboxEh
-        Left = 233
-        Top = 0
-        Width = 65
-        Height = 21
-        DataField = 'POL'
-        DataSource = Form_kart.DS_kart_pr
-        EditButtons = <>
-        KeyField = 'ID'
-        ListField = 'NAME'
-        ListSource = DS_pol
-        TabOrder = 0
-        Visible = True
-      end
       object DBEdit2: TDBEdit
         Left = 106
         Top = 24
@@ -448,7 +434,7 @@ object Form_kart_pr: TForm_kart_pr
         Height = 21
         DataField = 'B_PLACE'
         DataSource = Form_kart.DS_kart_pr
-        TabOrder = 1
+        TabOrder = 0
       end
       object DBEdit5: TDBEdit
         Left = 342
@@ -457,7 +443,7 @@ object Form_kart_pr: TForm_kart_pr
         Height = 21
         DataField = 'DOK_C'
         DataSource = Form_kart.DS_kart_pr
-        TabOrder = 4
+        TabOrder = 1
       end
       object DBEdit6: TDBEdit
         Left = 442
@@ -466,51 +452,7 @@ object Form_kart_pr: TForm_kart_pr
         Height = 21
         DataField = 'DOK_N'
         DataSource = Form_kart.DS_kart_pr
-        TabOrder = 5
-      end
-      object DBDateTimeEditEh2: TDBDateTimeEditEh
-        Left = 106
-        Top = 96
-        Width = 89
-        Height = 21
-        AutoSelect = False
-        DataField = 'DOK_D'
-        DataSource = Form_kart.DS_kart_pr
-        EditButtons = <>
-        Kind = dtkDateEh
-        TabOrder = 6
-        Visible = True
-      end
-      object DBLookupComboboxEh6: TDBLookupComboboxEh
-        Left = 66
-        Top = 175
-        Width = 193
-        Height = 21
-        DataField = 'FK_FRM_REGN'
-        DataSource = Form_kart.DS_kart_pr
-        EditButtons = <
-          item
-            Style = ebsPlusEh
-          end>
-        KeyField = 'ID'
-        ListField = 'NAME'
-        ListSource = DS_country
-        TabOrder = 11
-        Visible = True
-      end
-      object DBLookupComboboxEh8: TDBLookupComboboxEh
-        Left = 322
-        Top = 247
-        Width = 193
-        Height = 21
-        DataField = 'FK_FRM_DISTR'
-        DataSource = Form_kart.DS_kart_pr
-        EditButtons = <>
-        KeyField = 'ID'
-        ListField = 'NAME'
-        ListSource = DS_distr
-        TabOrder = 18
-        Visible = True
+        TabOrder = 2
       end
       object DBEdit7: TDBEdit
         Left = 66
@@ -519,34 +461,7 @@ object Form_kart_pr: TForm_kart_pr
         Height = 21
         DataField = 'FRM_TOWN'
         DataSource = Form_kart.DS_kart_pr
-        TabOrder = 17
-      end
-      object DBDateTimeEditEh6: TDBDateTimeEditEh
-        Left = 67
-        Top = 271
-        Width = 89
-        Height = 21
-        AutoSelect = False
-        DataField = 'FRM_DAT'
-        DataSource = Form_kart.DS_kart_pr
-        EditButtons = <>
-        Kind = dtkDateEh
-        TabOrder = 19
-        Visible = True
-      end
-      object DBLookupComboboxEh9: TDBLookupComboboxEh
-        Left = 322
-        Top = 175
-        Width = 193
-        Height = 21
-        DataField = 'FK_FRM_KUL'
-        DataSource = Form_kart.DS_kart_pr
-        EditButtons = <>
-        KeyField = 'ID'
-        ListField = 'NAME'
-        ListSource = Form_kart.DS_spul
-        TabOrder = 12
-        Visible = True
+        TabOrder = 8
       end
       object DBEdit8: TDBEdit
         Left = 322
@@ -555,7 +470,7 @@ object Form_kart_pr: TForm_kart_pr
         Height = 21
         DataField = 'FRM_ND'
         DataSource = Form_kart.DS_kart_pr
-        TabOrder = 14
+        TabOrder = 6
       end
       object DBEdit9: TDBEdit
         Left = 322
@@ -564,7 +479,7 @@ object Form_kart_pr: TForm_kart_pr
         Height = 21
         DataField = 'FRM_KW'
         DataSource = Form_kart.DS_kart_pr
-        TabOrder = 16
+        TabOrder = 7
       end
       object DBEdit10: TDBEdit
         Left = 322
@@ -573,97 +488,7 @@ object Form_kart_pr: TForm_kart_pr
         Height = 21
         DataField = 'W_PLACE'
         DataSource = Form_kart.DS_kart_pr
-        TabOrder = 20
-      end
-      object DBLookupComboboxEh18: TDBLookupComboboxEh
-        Left = 66
-        Top = 199
-        Width = 193
-        Height = 21
-        DataField = 'FK_FRM_CNTR'
-        DataSource = Form_kart.DS_kart_pr
-        EditButtons = <
-          item
-            Style = ebsPlusEh
-            OnClick = DBLookupComboboxEh18EditButtons0Click
-          end>
-        KeyField = 'ID'
-        ListField = 'NAME'
-        ListSource = DS_regn
-        TabOrder = 13
-        Visible = True
-      end
-      object DBLookupComboboxEh19: TDBLookupComboboxEh
-        Left = 66
-        Top = 223
-        Width = 193
-        Height = 21
-        DataField = 'FK_FRM_DISTR'
-        DataSource = Form_kart.DS_kart_pr
-        EditButtons = <
-          item
-            Style = ebsPlusEh
-            OnClick = DBLookupComboboxEh19EditButtons0Click
-          end>
-        KeyField = 'ID'
-        ListField = 'NAME'
-        ListSource = DS_distr
-        TabOrder = 15
-        Visible = True
-      end
-      object DBLookupComboboxEh7: TDBLookupComboboxEh
-        Left = 106
-        Top = 48
-        Width = 193
-        Height = 21
-        DataField = 'FK_NAC'
-        DataSource = Form_kart.DS_kart_pr
-        EditButtons = <
-          item
-            Style = ebsPlusEh
-            OnClick = DBLookupComboboxEh7EditButtons0Click
-          end>
-        KeyField = 'ID'
-        ListField = 'NAME'
-        ListSource = DS_nac
-        TabOrder = 2
-        Visible = True
-      end
-      object DBLookupComboboxEh5: TDBLookupComboboxEh
-        Left = 106
-        Top = 72
-        Width = 193
-        Height = 21
-        DataField = 'FK_DOC_TP'
-        DataSource = Form_kart.DS_kart_pr
-        EditButtons = <
-          item
-            Style = ebsPlusEh
-            OnClick = DBLookupComboboxEh5EditButtons0Click
-          end>
-        KeyField = 'ID'
-        ListField = 'NAME'
-        ListSource = Form_kart.DS_doc
-        TabOrder = 3
-        Visible = True
-      end
-      object DBLookupComboboxEh17: TDBLookupComboboxEh
-        Left = 223
-        Top = 96
-        Width = 381
-        Height = 21
-        DataField = 'DOK_V'
-        DataSource = Form_kart.DS_kart_pr
-        EditButtons = <
-          item
-            Style = ebsPlusEh
-            OnClick = DBLookupComboboxEh17EditButtons0Click
-          end>
-        KeyField = 'ID'
-        ListField = 'NAME'
-        ListSource = DS_ovd
-        TabOrder = 7
-        Visible = True
+        TabOrder = 9
       end
       object DBEdit15: TDBEdit
         Left = 249
@@ -672,7 +497,7 @@ object Form_kart_pr: TForm_kart_pr
         Height = 21
         DataField = 'DOK_SNILS'
         DataSource = Form_kart.DS_kart_pr
-        TabOrder = 9
+        TabOrder = 4
       end
       object cxDBCheckBox1: TcxDBCheckBox
         Left = 488
@@ -694,7 +519,7 @@ object Form_kart_pr: TForm_kart_pr
         Style.Font.Name = 'MS Sans Serif'
         Style.Font.Style = [fsBold]
         Style.IsFontAssigned = True
-        TabOrder = 21
+        TabOrder = 10
         Width = 113
       end
       object DBEdit16: TDBEdit
@@ -704,7 +529,7 @@ object Form_kart_pr: TForm_kart_pr
         Height = 21
         DataField = 'DOK_INN'
         DataSource = Form_kart.DS_kart_pr
-        TabOrder = 10
+        TabOrder = 5
       end
       object DBEdit17: TDBEdit
         Left = 105
@@ -713,7 +538,7 @@ object Form_kart_pr: TForm_kart_pr
         Height = 21
         DataField = 'DOK_DIV'
         DataSource = Form_kart.DS_kart_pr
-        TabOrder = 8
+        TabOrder = 3
       end
       object cxDBDateEdit2: TcxDBDateEdit
         Left = 107
@@ -721,25 +546,161 @@ object Form_kart_pr: TForm_kart_pr
         DataBinding.DataField = 'DAT_ROG'
         DataBinding.DataSource = Form_kart.DS_kart_pr
         Properties.ReadOnly = False
-        TabOrder = 22
+        TabOrder = 11
         Width = 86
       end
-      object DBLookupComboboxEh3: TDBLookupComboboxEh
-        Left = 394
-        Top = 48
-        Width = 193
-        Height = 21
-        DataField = 'FK_CITIZ'
-        DataSource = Form_kart.DS_kart_pr
-        EditButtons = <
+      object cbb2POL: TcxDBLookupComboBox
+        Left = 232
+        Top = -1
+        DataBinding.DataField = 'POL'
+        DataBinding.DataSource = Form_kart.DS_kart_pr
+        Properties.KeyFieldNames = 'ID'
+        Properties.ListColumns = <
           item
-            Style = ebsPlusEh
+            FieldName = 'NAME'
           end>
-        KeyField = 'ID'
-        ListField = 'NAME'
-        ListSource = DS_citiz
-        TabOrder = 23
-        Visible = True
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = DS_pol
+        TabOrder = 12
+        Width = 57
+      end
+      object cbb2FK_NAC: TcxDBLookupComboBox
+        Left = 104
+        Top = 47
+        DataBinding.DataField = 'FK_NAC'
+        DataBinding.DataSource = Form_kart.DS_kart_pr
+        Properties.KeyFieldNames = 'ID'
+        Properties.ListColumns = <
+          item
+            FieldName = 'NAME'
+          end>
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = DS_nac
+        TabOrder = 13
+        Width = 193
+      end
+      object cbb2FK_CITIZ: TcxDBLookupComboBox
+        Left = 392
+        Top = 47
+        DataBinding.DataField = 'FK_CITIZ'
+        DataBinding.DataSource = Form_kart.DS_kart_pr
+        Properties.KeyFieldNames = 'ID'
+        Properties.ListColumns = <
+          item
+            FieldName = 'NAME'
+          end>
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = DS_citiz
+        TabOrder = 14
+        Width = 193
+      end
+      object cbb2FK_DOC_TP: TcxDBLookupComboBox
+        Left = 104
+        Top = 71
+        DataBinding.DataField = 'FK_DOC_TP'
+        DataBinding.DataSource = Form_kart.DS_kart_pr
+        Properties.KeyFieldNames = 'ID'
+        Properties.ListColumns = <
+          item
+            FieldName = 'NAME'
+          end>
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = Form_kart.DS_doc
+        TabOrder = 15
+        Width = 193
+      end
+      object cbb2DOK_V: TcxDBLookupComboBox
+        Left = 224
+        Top = 95
+        DataBinding.DataField = 'DOK_V'
+        DataBinding.DataSource = Form_kart.DS_kart_pr
+        Properties.KeyFieldNames = 'ID'
+        Properties.ListColumns = <
+          item
+            FieldName = 'NAME'
+          end>
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = DS_ovd
+        TabOrder = 16
+        Width = 361
+      end
+      object cbb2FK_FRM_COUNTRY: TcxDBLookupComboBox
+        Left = 64
+        Top = 175
+        DataBinding.DataField = 'FK_FRM_CNTR'
+        DataBinding.DataSource = Form_kart.DS_kart_pr
+        Properties.KeyFieldNames = 'ID'
+        Properties.ListColumns = <
+          item
+            FieldName = 'NAME'
+          end>
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = DS_country
+        TabOrder = 17
+        Width = 193
+      end
+      object cbb2FK_FRM_REGION: TcxDBLookupComboBox
+        Left = 64
+        Top = 199
+        DataBinding.DataField = 'FK_FRM_REGN'
+        DataBinding.DataSource = Form_kart.DS_kart_pr
+        Properties.KeyFieldNames = 'ID'
+        Properties.ListColumns = <
+          item
+            FieldName = 'NAME'
+          end>
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = DS_regn
+        TabOrder = 18
+        Width = 193
+      end
+      object cbb2FK_FRM_DISTR: TcxDBLookupComboBox
+        Left = 64
+        Top = 223
+        DataBinding.DataField = 'FK_FRM_DISTR'
+        DataBinding.DataSource = Form_kart.DS_kart_pr
+        Properties.KeyFieldNames = 'ID'
+        Properties.ListColumns = <
+          item
+            FieldName = 'NAME'
+          end>
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = DS_distr
+        TabOrder = 19
+        Width = 193
+      end
+      object cbb2FK_FRM_KUL: TcxDBLookupComboBox
+        Left = 320
+        Top = 175
+        DataBinding.DataField = 'FK_FRM_KUL'
+        DataBinding.DataSource = Form_kart.DS_kart_pr
+        Properties.KeyFieldNames = 'ID'
+        Properties.ListColumns = <
+          item
+            FieldName = 'NAME'
+          end>
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = Form_kart.DS_spul
+        TabOrder = 20
+        Width = 193
+      end
+      object cxdbdtdtFRM_DAT: TcxDBDateEdit
+        Left = 67
+        Top = 273
+        DataBinding.DataField = 'FRM_DAT'
+        DataBinding.DataSource = Form_kart.DS_kart_pr
+        Properties.ReadOnly = False
+        TabOrder = 21
+        Width = 86
+      end
+      object cxdbdtdtDOK_D: TcxDBDateEdit
+        Left = 106
+        Top = 96
+        DataBinding.DataField = 'DOK_D'
+        DataBinding.DataSource = Form_kart.DS_kart_pr
+        Properties.ReadOnly = False
+        TabOrder = 22
+        Width = 86
       end
     end
     object TabSheet2: TTabSheet
@@ -771,41 +732,35 @@ object Form_kart_pr: TForm_kart_pr
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object DBLookupComboboxEh15: TDBLookupComboboxEh
-        Left = 130
-        Top = 0
-        Width = 193
-        Height = 21
-        DataField = 'FK_MILIT'
-        DataSource = Form_kart.DS_kart_pr
-        EditButtons = <
+      object cbb2FK_MILIT: TcxDBLookupComboBox
+        Left = 128
+        Top = -1
+        DataBinding.DataField = 'FK_MILIT'
+        DataBinding.DataSource = Form_kart.DS_kart_pr
+        Properties.KeyFieldNames = 'ID'
+        Properties.ListColumns = <
           item
-            Style = ebsPlusEh
-            OnClick = DBLookupComboboxEh15EditButtons0Click
+            FieldName = 'NAME'
           end>
-        KeyField = 'ID'
-        ListField = 'NAME'
-        ListSource = DS_milit
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = DS_milit
         TabOrder = 0
-        Visible = True
-      end
-      object DBLookupComboboxEh16: TDBLookupComboboxEh
-        Left = 130
-        Top = 24
         Width = 193
-        Height = 21
-        DataField = 'FK_MILIT_REGN'
-        DataSource = Form_kart.DS_kart_pr
-        EditButtons = <
+      end
+      object cbb2FK_MILIT_REGN: TcxDBLookupComboBox
+        Left = 128
+        Top = 23
+        DataBinding.DataField = 'FK_MILIT_REGN'
+        DataBinding.DataSource = Form_kart.DS_kart_pr
+        Properties.KeyFieldNames = 'ID'
+        Properties.ListColumns = <
           item
-            Style = ebsPlusEh
-            OnClick = DBLookupComboboxEh16EditButtons0Click
+            FieldName = 'NAME'
           end>
-        KeyField = 'ID'
-        ListField = 'NAME'
-        ListSource = DS_milit_regn
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = DS_milit_regn
         TabOrder = 1
-        Visible = True
+        Width = 193
       end
     end
     object TabSheet3: TTabSheet
@@ -973,19 +928,6 @@ object Form_kart_pr: TForm_kart_pr
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object DBDateTimeEditEh7: TDBDateTimeEditEh
-        Left = 67
-        Top = 24
-        Width = 89
-        Height = 21
-        DataField = 'DAT_UB'
-        DataSource = Form_kart.DS_kart_pr
-        Enabled = False
-        EditButtons = <>
-        Kind = dtkDateEh
-        TabOrder = 1
-        Visible = True
-      end
       object DBEdit11: TDBEdit
         Left = 66
         Top = 150
@@ -993,7 +935,7 @@ object Form_kart_pr: TForm_kart_pr
         Height = 21
         DataField = 'TO_TOWN'
         DataSource = Form_kart.DS_kart_pr
-        TabOrder = 8
+        TabOrder = 2
       end
       object DBEdit12: TDBEdit
         Left = 322
@@ -1002,7 +944,7 @@ object Form_kart_pr: TForm_kart_pr
         Height = 21
         DataField = 'TO_KW'
         DataSource = Form_kart.DS_kart_pr
-        TabOrder = 6
+        TabOrder = 1
       end
       object DBEdit13: TDBEdit
         Left = 322
@@ -1011,101 +953,14 @@ object Form_kart_pr: TForm_kart_pr
         Height = 21
         DataField = 'TO_ND'
         DataSource = Form_kart.DS_kart_pr
-        TabOrder = 4
-      end
-      object DBLookupComboboxEh14: TDBLookupComboboxEh
-        Left = 322
-        Top = 78
-        Width = 193
-        Height = 21
-        DataField = 'FK_TO_KUL'
-        DataSource = Form_kart.DS_kart_pr
-        EditButtons = <>
-        KeyField = 'ID'
-        ListField = 'NAME'
-        ListSource = Form_kart.DS_spul
-        TabOrder = 2
-        Visible = True
-      end
-      object DBLookupComboboxEh20: TDBLookupComboboxEh
-        Left = 66
-        Top = 80
-        Width = 193
-        Height = 21
-        DataField = 'FK_TO_CNTR'
-        DataSource = Form_kart.DS_kart_pr
-        EditButtons = <
-          item
-            Style = ebsPlusEh
-            OnClick = DBLookupComboboxEh20EditButtons0Click
-          end>
-        KeyField = 'ID'
-        ListField = 'NAME'
-        ListSource = DS_country
-        TabOrder = 3
-        Visible = True
-      end
-      object DBLookupComboboxEh11: TDBLookupComboboxEh
-        Left = 66
-        Top = 104
-        Width = 193
-        Height = 21
-        DataField = 'FK_TO_REGN'
-        DataSource = Form_kart.DS_kart_pr
-        EditButtons = <
-          item
-            Style = ebsPlusEh
-            OnClick = DBLookupComboboxEh11EditButtons0Click
-          end>
-        KeyField = 'ID'
-        ListField = 'NAME'
-        ListSource = DS_regn
-        TabOrder = 5
-        Visible = True
-      end
-      object DBLookupComboboxEh12: TDBLookupComboboxEh
-        Left = 66
-        Top = 128
-        Width = 193
-        Height = 21
-        DataField = 'FK_TO_DISTR'
-        DataSource = Form_kart.DS_kart_pr
-        EditButtons = <
-          item
-            Style = ebsPlusEh
-            OnClick = DBLookupComboboxEh12EditButtons0Click
-          end>
-        KeyField = 'ID'
-        ListField = 'NAME'
-        ListSource = DS_distr
-        TabOrder = 7
-        Visible = True
-      end
-      object DBLookupComboboxEh13: TDBLookupComboboxEh
-        Left = 66
-        Top = 0
-        Width = 193
-        Height = 21
-        DataField = 'FK_UB'
-        DataSource = Form_kart.DS_kart_pr
-        EditButtons = <
-          item
-            Style = ebsPlusEh
-            OnClick = DBLookupComboboxEh13EditButtons0Click
-          end>
-        KeyField = 'ID'
-        ListField = 'NAME'
-        ListSource = DS_ub
         TabOrder = 0
-        Visible = True
-        OnCloseUp = DBLookupComboboxEh13CloseUp
       end
       object cxDBTextEdit1: TcxDBTextEdit
         Left = 376
         Top = 0
         DataBinding.DataField = 'DOK_DEATH_C'
         DataBinding.DataSource = Form_kart.DS_kart_pr
-        TabOrder = 9
+        TabOrder = 3
         Width = 65
       end
       object cxDBTextEdit2: TcxDBTextEdit
@@ -1113,8 +968,93 @@ object Form_kart_pr: TForm_kart_pr
         Top = 0
         DataBinding.DataField = 'DOK_DEATH_N'
         DataBinding.DataSource = Form_kart.DS_kart_pr
-        TabOrder = 10
+        TabOrder = 4
         Width = 81
+      end
+      object cbb2FK_UB: TcxDBLookupComboBox
+        Left = 68
+        Top = 1
+        DataBinding.DataField = 'FK_UB'
+        DataBinding.DataSource = Form_kart.DS_kart_pr
+        Properties.KeyFieldNames = 'ID'
+        Properties.ListColumns = <
+          item
+            FieldName = 'NAME'
+          end>
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = DS_ub
+        TabOrder = 5
+        Width = 193
+      end
+      object cxDBDateEdit5: TcxDBDateEdit
+        Left = 67
+        Top = 25
+        DataBinding.DataField = 'DAT_UB'
+        DataBinding.DataSource = Form_kart.DS_kart_pr
+        Enabled = False
+        Properties.ReadOnly = True
+        TabOrder = 6
+        Width = 86
+      end
+      object cbb2FK_TO_CNTR: TcxDBLookupComboBox
+        Left = 66
+        Top = 78
+        DataBinding.DataField = 'FK_TO_CNTR'
+        DataBinding.DataSource = Form_kart.DS_kart_pr
+        Properties.KeyFieldNames = 'ID'
+        Properties.ListColumns = <
+          item
+            FieldName = 'NAME'
+          end>
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = DS_country
+        TabOrder = 7
+        Width = 193
+      end
+      object cbb2FK_TO_REGN: TcxDBLookupComboBox
+        Left = 66
+        Top = 102
+        DataBinding.DataField = 'FK_TO_REGN'
+        DataBinding.DataSource = Form_kart.DS_kart_pr
+        Properties.KeyFieldNames = 'ID'
+        Properties.ListColumns = <
+          item
+            FieldName = 'NAME'
+          end>
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = DS_regn
+        TabOrder = 8
+        Width = 193
+      end
+      object cbb2FK_TO_DISTR: TcxDBLookupComboBox
+        Left = 66
+        Top = 126
+        DataBinding.DataField = 'FK_TO_DISTR'
+        DataBinding.DataSource = Form_kart.DS_kart_pr
+        Properties.KeyFieldNames = 'ID'
+        Properties.ListColumns = <
+          item
+            FieldName = 'NAME'
+          end>
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = DS_distr
+        TabOrder = 9
+        Width = 193
+      end
+      object cbb2FK_TO_KUL: TcxDBLookupComboBox
+        Left = 322
+        Top = 79
+        DataBinding.DataField = 'FK_TO_KUL'
+        DataBinding.DataSource = Form_kart.DS_kart_pr
+        Properties.KeyFieldNames = 'ID'
+        Properties.ListColumns = <
+          item
+            FieldName = 'NAME'
+          end>
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = Form_kart.DS_spul
+        TabOrder = 10
+        Width = 193
       end
     end
     object TabSheet5: TTabSheet
@@ -1365,6 +1305,7 @@ object Form_kart_pr: TForm_kart_pr
       DataBinding.DataSource = Form_kart.DS_kart_pr
       Properties.ReadOnly = False
       TabOrder = 7
+      Visible = False
       Width = 86
     end
     object cxDBDateEdit4: TcxDBDateEdit
@@ -1374,6 +1315,7 @@ object Form_kart_pr: TForm_kart_pr
       DataBinding.DataSource = Form_kart.DS_kart_pr
       Properties.ReadOnly = False
       TabOrder = 8
+      Visible = False
       Width = 86
     end
     object cbb2STATUS: TcxDBLookupComboBox
@@ -1388,6 +1330,7 @@ object Form_kart_pr: TForm_kart_pr
         end>
       Properties.ListOptions.ShowHeader = False
       Properties.ListSource = DS_c_status_pr
+      Properties.ReadOnly = True
       TabOrder = 9
       Width = 144
     end

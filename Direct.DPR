@@ -19,10 +19,8 @@ uses
   DM_module1 in 'DM_module1.pas' {DataModule1: TDataModule},
   Unit_status_gen in 'Unit_status_gen.pas' {Form_status_gen},
   Unit_form_alert_exit in 'Unit_form_alert_exit.pas' {Form_alert_exit},
-  Unit_print_saldo_houses in 'Unit_print_saldo_houses.pas'
-    {Form_print_saldo_houses},
-  Unit_print_saldo_org_usl in 'Unit_print_saldo_org_usl.pas'
-    {Form_print_saldo_org_usl},
+  Unit_print_saldo_houses in 'Unit_print_saldo_houses.pas' {Form_print_saldo_houses},
+  Unit_print_saldo_org_usl in 'Unit_print_saldo_org_usl.pas' {Form_print_saldo_org_usl},
   Unit_sel_reu in 'Unit_sel_reu.pas' {Form_sel_reu},
   Unit_form_saldo_check in 'Unit_form_saldo_check.pas' {Form_saldo_check},
   Unit_generate in 'Unit_generate.pas' {Form_generate},
@@ -31,8 +29,7 @@ uses
   Unit_form_plan in 'Unit_form_plan.pas' {Form_plan},
   Unit_print_plan in 'Unit_print_plan.pas' {Form_print_plan},
   Unit_print_xito5 in 'Unit_print_xito5.pas' {Form_print_xito5},
-  Unit_print_opl_xito10_3 in 'Unit_print_opl_xito10_3.pas'
-    {Form_print_opl_xito10_3},
+  Unit_print_opl_xito10_3 in 'Unit_print_opl_xito10_3.pas' {Form_print_opl_xito10_3},
   Unit_print_saldo_usl in 'Unit_print_saldo_usl.pas' {Form_print_saldo_usl},
   Unit_print_lg_usl in 'Unit_print_lg_usl.pas' {Form_print_lg_usl},
   Unit_sel_uch in 'Unit_sel_uch.pas' {Form_sel_uch},
@@ -76,8 +73,7 @@ uses
   Unit_sel_arch_period in 'Unit_sel_arch_period.pas' {Form_sel_arch_period},
   Unit_changes_list in 'Unit_changes_list.pas' {Form_changes_list},
   Unit_houses_nabor in 'Unit_houses_nabor.pas' {Form_houses_nabor},
-  Unit_change_house_nabor2 in 'Unit_change_house_nabor2.pas'
-    {Form_change_house_nabor},
+  Unit_change_house_nabor2 in 'Unit_change_house_nabor2.pas' {Form_change_house_nabor},
   Unit_spr_spk in 'Unit_spr_spk.pas' {Form_spr_spk},
   Unit_gen_current in 'Unit_gen_current.pas' {Form_gen_current},
   Unit_print_lists in 'Unit_print_lists.pas' {Form_print_lists},
@@ -121,10 +117,8 @@ uses
   Unit_spr_params in 'Unit_spr_params.pas' {Form_spr_params},
   Unit_edit_bitmask in 'Unit_edit_bitmask.pas' {Form_edit_bitmask},
   Unit_spr_street in 'Unit_spr_street.pas' {Form_spr_street},
-  Unit_change_house_status in 'Unit_change_house_status.pas'
-    {Form_change_house_status},
-  Unit_change_house_vvod in 'Unit_change_house_vvod.pas'
-    {Form_change_house_vvod},
+  Unit_change_house_status in 'Unit_change_house_status.pas' {Form_change_house_status},
+  Unit_change_house_vvod in 'Unit_change_house_vvod.pas' {Form_change_house_vvod},
   Unit_spr_usl in 'Unit_spr_usl.pas' {Form_spr_usl},
   Unit_add_usl in 'Unit_add_usl.pas' {Form_add_usl},
   Unit_price_copy in 'Unit_price_copy.pas' {Form_price_copy},
@@ -137,7 +131,6 @@ uses
   Unit_corr_sal in 'Unit_corr_sal.pas' {Form_corr_sal},
   Unit_spr_comps in 'Unit_spr_comps.pas' {Form_spr_comps},
   Unit_spr_props in 'Unit_spr_props.pas' {Form_spr_props},
-  Unit_add_prop in 'Unit_add_prop.pas' {Form_add_prop},
   Unit_tarif_usl in 'Unit_tarif_usl.pas' {Form_tarif_usl},
   Unit_lk_acc in 'Unit_lk_acc.pas' {Form_lk_acc},
   Unit_Gthread in 'Unit_Gthread.pas',
