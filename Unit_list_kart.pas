@@ -4,11 +4,11 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, OracleData, Oracle, wwSpeedButton, wwDBNavigator, ExtCtrls,
-  wwclearpanel, Grids, Wwdbigrd, Wwdbgrid, StdCtrls, Utils,
-  Wwintl, wwfltdlg, Mask, wwdbedit, StrUtils,
-  Buttons, wwdblook, wwcheckbox, Wwdbdlg, frxClass, frxDBSet, Menus,
-  wwDataInspector, DBCtrls, cxControls,
+  Dialogs, DB, OracleData, Oracle, ExtCtrls,
+  Grids, StdCtrls, Utils,
+  Mask, StrUtils,
+  Buttons, frxClass, frxDBSet, Menus,
+  DBCtrls, cxControls,
   cxStyles,
 
   cxEdit, cxGridLevel, cxClasses, cxGridCustomView,
@@ -19,7 +19,9 @@ uses
   cxLabel, cxGraphics,
 
   cxDropDownEdit, cxMRUEdit, cxLookAndFeels, cxLookAndFeelPainters,
-  cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, cxDBData;
+  cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, cxDBData,
+  wwcheckbox, wwSpeedButton, wwDBNavigator, wwclearpanel, wwdblook,
+  Wwdbigrd, Wwdbgrid;
 
 type
   TForm_list_kart = class(TForm)
@@ -174,18 +176,12 @@ type
     CheckBox3: TCheckBox;
     GroupBox1: TGroupBox;
     cxLabel1: TcxLabel;
-    wwDBEdit1: TwwDBEdit;
     cxLabel2: TcxLabel;
-    wwDBEdit2: TwwDBEdit;
     Button2: TButton;
-    wwDBEdit3: TwwDBEdit;
     cxLabel3: TcxLabel;
     GroupBox2: TGroupBox;
     cxLabel4: TcxLabel;
-    wwDBEdit4: TwwDBEdit;
     cxLabel5: TcxLabel;
-    wwDBEdit5: TwwDBEdit;
-    wwDBEdit6: TwwDBEdit;
     cxLabel6: TcxLabel;
     BitBtn2: TBitBtn;
     OD_list_kartFK_KLSK_OBJ: TFloatField;
@@ -200,6 +196,12 @@ type
     cxMRUEdit1: TcxMRUEdit;
     chk2: TCheckBox;
     N4: TMenuItem;
+    cxmskdtHW: TcxMaskEdit;
+    cxmskdtGW: TcxMaskEdit;
+    cxmskdtEL: TcxMaskEdit;
+    cxmskdtHW_VOL: TcxMaskEdit;
+    cxmskdtGW_VOL: TcxMaskEdit;
+    cxmskdtEL_VOL: TcxMaskEdit;
     procedure wwDBGrid1DblClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure wwDBGrid1KeyDown(Sender: TObject; var Key: Word;
@@ -265,6 +267,16 @@ type
     procedure cxMRUEdit1KeyPress(Sender: TObject; var Key: Char);
     procedure cxMRUEdit1DblClick(Sender: TObject);
     procedure N4Click(Sender: TObject);
+    procedure cxmskdtHWKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure cxmskdtHWKeyPress(Sender: TObject; var Key: Char);
+    procedure cxmskdtGWKeyPress(Sender: TObject; var Key: Char);
+    procedure cxmskdtELKeyPress(Sender: TObject; var Key: Char);
+    procedure cxmskdtHW_VOLKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure cxmskdtHW_VOLKeyPress(Sender: TObject; var Key: Char);
+    procedure cxmskdtGW_VOLKeyPress(Sender: TObject; var Key: Char);
+    procedure cxmskdtEL_VOLKeyPress(Sender: TObject; var Key: Char);
   private
     bm: TBookmark;
   public
@@ -443,9 +455,9 @@ begin
   end;
 
   // Обновить расход в панели правки расхода
-  wwDBEdit4.Text := OD_list_kart.FieldByName('MHW').asString;
-  wwDBEdit5.Text := OD_list_kart.FieldByName('MGW').asString;
-  wwDBEdit6.Text := OD_list_kart.FieldByName('MEL').asString;
+  cxmskdtHW.Text := OD_list_kart.FieldByName('MHW').asString;
+  cxmskdtGW.Text := OD_list_kart.FieldByName('MGW').asString;
+  cxmskdtEL.Text := OD_list_kart.FieldByName('MEL').asString;
 
 end;
 
@@ -1310,7 +1322,7 @@ begin
   begin
     // нажат Enter - перейти к другому полю
 //    wwDBEdit2.SetFocus;
-    Windows.SetFocus(wwDBEdit2.Handle);
+    //Windows.SetFocus(wwDBEdit2.Handle);
   end;
 end;
 
@@ -1335,7 +1347,7 @@ begin
   begin
     // нажат Enter - перейти к другому полю
 //    wwDBEdit3.SetFocus;
-    Windows.SetFocus(wwDBEdit3.Handle);
+    //Windows.SetFocus(wwDBEdit3.Handle);
   end;
 end;
 
@@ -1345,8 +1357,8 @@ var
   ret: Integer;
 begin
   // х.в.
-  if wwDBEdit1.Text <> '' then
-    vol := StrToFloat(wwDBEdit1.Text)
+  if cxmskdtHW_VOL.Text <> '' then
+    vol := StrToFloat(cxmskdtHW_VOL.Text)
   else
     vol := 0;
   if vol <> 0 then
@@ -1368,8 +1380,8 @@ begin
   end;
 
   // г.в.
-  if wwDBEdit2.Text <> '' then
-    vol := StrToFloat(wwDBEdit2.Text)
+  if cxmskdtGW_VOL.Text <> '' then
+    vol := StrToFloat(cxmskdtGW_VOL.Text)
   else
     vol := 0;
   if vol <> 0 then
@@ -1391,8 +1403,8 @@ begin
   end;
 
   // эл.эн.
-  if wwDBEdit3.Text <> '' then
-    vol := StrToFloat(wwDBEdit3.Text)
+  if cxmskdtEL_VOL.Text <> '' then
+    vol := StrToFloat(cxmskdtEL_VOL.Text)
   else
     vol := 0;
   if vol <> 0 then
@@ -1413,15 +1425,15 @@ begin
     end;
   end;
   // занулить объем
-  wwDBEdit1.Text := '';
-  wwDBEdit2.Text := '';
-  wwDBEdit3.Text := '';
+  cxmskdtHW_VOL.Text := '';
+  cxmskdtGW_VOL.Text := '';
+  cxmskdtEL_VOL.Text := '';
 
   // обновить запись
   OD_list_kart.RefreshRecord;
   OD_list_kart.Next;
   //  wwDBEdit1.SetFocus;
-  Windows.SetFocus(wwDBEdit1.Handle);
+  Windows.SetFocus(cxmskdtHW_VOL.Handle);
 end;
 
 procedure TForm_list_kart.wwDBEdit3KeyPress(Sender: TObject;
@@ -1521,6 +1533,93 @@ begin
   if FF('frmKlskPar', 1) = 0 then
     Application.CreateForm(TfrmKlskPar, frmKlskPar);
 
+end;
+
+procedure TForm_list_kart.cxmskdtHWKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if Key = 38 then
+  begin
+    OD_list_kart.Prior;
+  end
+  else if Key = 40 then
+  begin
+    OD_list_kart.Next;
+  end;
+
+end;
+
+procedure TForm_list_kart.cxmskdtHWKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    // нажат Enter - перейти к другому полю
+    Windows.SetFocus(cxmskdtGW_VOL.Handle);
+  end;
+end;
+
+procedure TForm_list_kart.cxmskdtGWKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    // нажат Enter - перейти к другому полю
+    Windows.SetFocus(cxmskdtEL_VOL.Handle);
+  end;
+end;
+
+procedure TForm_list_kart.cxmskdtELKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    // нажат Enter - перейти к другому полю
+    Windows.SetFocus(Button2.Handle);
+  end;
+end;
+
+procedure TForm_list_kart.cxmskdtHW_VOLKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+  if Key = 38 then
+  begin
+    OD_list_kart.Prior;
+  end
+  else if Key = 40 then
+  begin
+    OD_list_kart.Next;
+  end;
+end;
+
+procedure TForm_list_kart.cxmskdtHW_VOLKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    // нажат Enter - перейти к другому полю
+    Windows.SetFocus(cxmskdtGW_VOL.Handle);
+  end;
+end;
+
+procedure TForm_list_kart.cxmskdtGW_VOLKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    // нажат Enter - перейти к другому полю
+    Windows.SetFocus(cxmskdtEL_VOL.Handle);
+  end;
+end;
+
+procedure TForm_list_kart.cxmskdtEL_VOLKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    // нажат Enter - перейти к другому полю
+    Windows.SetFocus(Button2.Handle);
+  end;
 end;
 
 end.

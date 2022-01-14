@@ -1,8 +1,8 @@
 object Form_list_kart: TForm_list_kart
-  Left = 352
-  Top = 689
+  Left = 1454
+  Top = 537
   Width = 1044
-  Height = 607
+  Height = 633
   Caption = #1050#1072#1088#1090#1086#1095#1082#1080
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -94,7 +94,7 @@ object Form_list_kart: TForm_list_kart
     Left = 0
     Top = 0
     Width = 597
-    Height = 527
+    Height = 553
     ControlType.Strings = (
       'KRAN1;CheckBox;1;0'
       'SUBS_CUR;CheckBox;1;0'
@@ -218,7 +218,7 @@ object Form_list_kart: TForm_list_kart
   end
   object Panel1: TPanel
     Left = 0
-    Top = 527
+    Top = 553
     Width = 1028
     Height = 41
     Align = alBottom
@@ -898,7 +898,7 @@ object Form_list_kart: TForm_list_kart
     Left = 597
     Top = 0
     Width = 431
-    Height = 527
+    Height = 553
     Align = alRight
     TabOrder = 6
     Visible = False
@@ -928,25 +928,6 @@ object Form_list_kart: TForm_list_kart
         Style.Font.Style = [fsBold]
         Style.IsFontAssigned = True
       end
-      object wwDBEdit1: TwwDBEdit
-        Left = 39
-        Top = 25
-        Width = 74
-        Height = 24
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -15
-        Font.Name = 'MS Sans Serif'
-        Font.Style = [fsBold]
-        ParentFont = False
-        Picture.PictureMask = '[-][#][#][#][#][#][#][.][#][#][#][#][#]'
-        TabOrder = 1
-        UnboundDataType = wwDefault
-        WantReturns = False
-        WordWrap = False
-        OnKeyDown = wwDBEdit1KeyDown
-        OnKeyPress = wwDBEdit1KeyPress
-      end
       object cxLabel2: TcxLabel
         Left = 128
         Top = 28
@@ -959,50 +940,14 @@ object Form_list_kart: TForm_list_kart
         Style.Font.Style = [fsBold]
         Style.IsFontAssigned = True
       end
-      object wwDBEdit2: TwwDBEdit
-        Left = 159
-        Top = 25
-        Width = 82
-        Height = 24
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -15
-        Font.Name = 'MS Sans Serif'
-        Font.Style = [fsBold]
-        ParentFont = False
-        Picture.PictureMask = '[-][#][#][#][#][#][#][.][#][#][#][#][#]'
-        TabOrder = 3
-        UnboundDataType = wwDefault
-        WantReturns = False
-        WordWrap = False
-        OnKeyPress = wwDBEdit2KeyPress
-      end
       object Button2: TButton
         Left = 376
         Top = 24
         Width = 33
         Height = 25
         Caption = #1054#1082
-        TabOrder = 4
+        TabOrder = 2
         OnClick = Button2Click
-      end
-      object wwDBEdit3: TwwDBEdit
-        Left = 279
-        Top = 25
-        Width = 82
-        Height = 24
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -15
-        Font.Name = 'MS Sans Serif'
-        Font.Style = [fsBold]
-        ParentFont = False
-        Picture.PictureMask = '[-][#][#][#][#][#][#][.][#][#][#][#][#]'
-        TabOrder = 5
-        UnboundDataType = wwDefault
-        WantReturns = False
-        WordWrap = False
-        OnKeyPress = wwDBEdit3KeyPress
       end
       object cxLabel3: TcxLabel
         Left = 248
@@ -1015,6 +960,34 @@ object Form_list_kart: TForm_list_kart
         Style.Font.Name = 'Tahoma'
         Style.Font.Style = [fsBold]
         Style.IsFontAssigned = True
+      end
+      object cxmskdtHW_VOL: TcxMaskEdit
+        Left = 40
+        Top = 27
+        Properties.MaskKind = emkRegExprEx
+        Properties.EditMask = '\-?\d{1,6}(.\d{0,5})'
+        TabOrder = 4
+        OnKeyDown = cxmskdtHW_VOLKeyDown
+        OnKeyPress = cxmskdtHW_VOLKeyPress
+        Width = 73
+      end
+      object cxmskdtGW_VOL: TcxMaskEdit
+        Left = 160
+        Top = 27
+        Properties.MaskKind = emkRegExprEx
+        Properties.EditMask = '\-?\d{1,6}(.\d{0,5})'
+        TabOrder = 5
+        OnKeyPress = cxmskdtGW_VOLKeyPress
+        Width = 81
+      end
+      object cxmskdtEL_VOL: TcxMaskEdit
+        Left = 280
+        Top = 27
+        Properties.MaskKind = emkRegExprEx
+        Properties.EditMask = '\-?\d{1,6}(.\d{0,5})'
+        TabOrder = 6
+        OnKeyPress = cxmskdtEL_VOLKeyPress
+        Width = 81
       end
     end
     object GroupBox2: TGroupBox
@@ -1043,26 +1016,6 @@ object Form_list_kart: TForm_list_kart
         Style.Font.Style = [fsBold]
         Style.IsFontAssigned = True
       end
-      object wwDBEdit4: TwwDBEdit
-        Left = 39
-        Top = 25
-        Width = 74
-        Height = 24
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -15
-        Font.Name = 'MS Sans Serif'
-        Font.Style = [fsBold]
-        ParentFont = False
-        Picture.PictureMask = '[-][#][#][#][#][#][#][.][#][#][#][#][#]'
-        ReadOnly = True
-        TabOrder = 1
-        UnboundDataType = wwDefault
-        WantReturns = False
-        WordWrap = False
-        OnKeyDown = wwDBEdit1KeyDown
-        OnKeyPress = wwDBEdit1KeyPress
-      end
       object cxLabel5: TcxLabel
         Left = 128
         Top = 28
@@ -1074,44 +1027,6 @@ object Form_list_kart: TForm_list_kart
         Style.Font.Name = 'Tahoma'
         Style.Font.Style = [fsBold]
         Style.IsFontAssigned = True
-      end
-      object wwDBEdit5: TwwDBEdit
-        Left = 159
-        Top = 25
-        Width = 82
-        Height = 24
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -15
-        Font.Name = 'MS Sans Serif'
-        Font.Style = [fsBold]
-        ParentFont = False
-        Picture.PictureMask = '[-][#][#][#][#][#][#][.][#][#][#][#][#]'
-        ReadOnly = True
-        TabOrder = 3
-        UnboundDataType = wwDefault
-        WantReturns = False
-        WordWrap = False
-        OnKeyPress = wwDBEdit2KeyPress
-      end
-      object wwDBEdit6: TwwDBEdit
-        Left = 279
-        Top = 25
-        Width = 82
-        Height = 24
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -15
-        Font.Name = 'MS Sans Serif'
-        Font.Style = [fsBold]
-        ParentFont = False
-        Picture.PictureMask = '[-][#][#][#][#][#][#][.][#][#][#][#][#]'
-        ReadOnly = True
-        TabOrder = 4
-        UnboundDataType = wwDefault
-        WantReturns = False
-        WordWrap = False
-        OnKeyPress = wwDBEdit3KeyPress
       end
       object cxLabel6: TcxLabel
         Left = 248
@@ -1125,6 +1040,34 @@ object Form_list_kart: TForm_list_kart
         Style.Font.Style = [fsBold]
         Style.IsFontAssigned = True
       end
+      object cxmskdtHW: TcxMaskEdit
+        Left = 40
+        Top = 27
+        Properties.MaskKind = emkRegExprEx
+        Properties.EditMask = '\-?\d{1,6}(.\d{0,5})'
+        TabOrder = 3
+        OnKeyDown = cxmskdtHWKeyDown
+        OnKeyPress = cxmskdtHWKeyPress
+        Width = 73
+      end
+      object cxmskdtGW: TcxMaskEdit
+        Left = 160
+        Top = 27
+        Properties.MaskKind = emkRegExprEx
+        Properties.EditMask = '\-?\d{1,6}(.\d{0,5})'
+        TabOrder = 4
+        OnKeyPress = cxmskdtGWKeyPress
+        Width = 81
+      end
+    end
+    object cxmskdtEL: TcxMaskEdit
+      Left = 280
+      Top = 27
+      Properties.MaskKind = emkRegExprEx
+      Properties.EditMask = '\-?\d{1,6}(.\d{0,5})'
+      TabOrder = 2
+      OnKeyPress = cxmskdtELKeyPress
+      Width = 81
     end
   end
   object OD_list_kart: TOracleDataSet
@@ -2325,8 +2268,8 @@ object Form_list_kart: TForm_list_kart
   object OD_check_conn_gis: TOracleDataSet
     Optimize = False
     Session = DataModule1.OracleSession1
-    Left = 849
-    Top = 152
+    Left = 977
+    Top = 344
   end
   object OD_kart_detail: TOracleDataSet
     SQL.Strings = (
