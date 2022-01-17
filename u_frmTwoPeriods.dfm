@@ -179,7 +179,7 @@ object frmTwoPeriods: TfrmTwoPeriods
   end
   object GroupBox2: TGroupBox
     Left = 0
-    Top = 91
+    Top = 90
     Width = 298
     Height = 49
     Align = alBottom

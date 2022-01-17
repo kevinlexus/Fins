@@ -90,7 +90,7 @@ object Form_gen_err_lst: TForm_gen_err_lst
     Left = 0
     Top = 41
     Width = 613
-    Height = 312
+    Height = 311
     Selected.Strings = (
       'LSK'#9'8'#9#1051'/'#1057#9'F')
     IniAttributes.Delimiter = ';;'
