@@ -91,7 +91,7 @@ object Form_changes_lsk: TForm_changes_lsk
   TextHeight = 13
   object GroupBox2: TGroupBox
     Left = 0
-    Top = 470
+    Top = 471
     Width = 735
     Height = 37
     Align = alBottom
@@ -370,7 +370,7 @@ object Form_changes_lsk: TForm_changes_lsk
     Left = 0
     Top = 0
     Width = 735
-    Height = 470
+    Height = 471
     ControlType.Strings = (
       'TEXT;RichEdit;wwDBRichEdit1;F')
     Selected.Strings = (
