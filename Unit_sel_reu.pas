@@ -4,15 +4,18 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, OracleData, ExtCtrls, DBCtrls, DBGridEh,
-  StdCtrls, DM_module1, Buttons, ImgList, GridsEh;
+  Dialogs, DB, OracleData, ExtCtrls, DBCtrls, 
+  StdCtrls, DM_module1, Buttons, ImgList, cxGraphics, cxControls,
+  cxLookAndFeels, cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter,
+  cxData, cxDataStorage, cxEdit, cxNavigator, cxDBData,
+  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGridLevel,
+  cxClasses, cxGridCustomView, cxGrid, cxCheckBox;
 
 type
   TForm_sel_reu = class(TForm)
     OD_list_choice: TOracleDataSet;
     DS_list_choice: TDataSource;
     DBNavigator1: TDBNavigator;
-    DBGridEh1: TDBGridEh;
     ImageList1: TImageList;
     Button1: TButton;
     BitBtn1: TBitBtn;
@@ -20,6 +23,12 @@ type
     OD_list_choiceNAME_REU: TStringField;
     OD_list_choiceSEL: TIntegerField;
     OD_list_choiceREU: TStringField;
+    cxGrid1: TcxGrid;
+    cxGridDBTableView1: TcxGridDBTableView;
+    cxGridLevel1: TcxGridLevel;
+    cxGridDBTableView1NAME_REU: TcxGridDBColumn;
+    cxGridDBTableView1SEL: TcxGridDBColumn;
+    cxGridDBTableView1REU: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -27,10 +36,9 @@ type
     procedure SpeedButton1Click(Sender: TObject);
     procedure BitBtn2Click(Sender: TObject);
     procedure Edit1Change(Sender: TObject);
-    procedure DBGridEh1KeyUp(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
     procedure FormShow(Sender: TObject);
-    procedure DBGridEh1DblClick(Sender: TObject);
+    procedure cxGridDBTableView1DblClick(Sender: TObject);
+    procedure cxGridDBTableView1KeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -153,10 +161,25 @@ begin
     OD_list_choice.Filtered:=true;}
 end;
 
-procedure TForm_sel_reu.DBGridEh1KeyUp(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
+procedure TForm_sel_reu.FormShow(Sender: TObject);
 begin
-  if (Key = VK_SPACE) then
+  OD_list_choice.Active := true;
+end;
+
+procedure TForm_sel_reu.cxGridDBTableView1DblClick(Sender: TObject);
+begin
+    if (OD_list_choice.State = dsBrowse) then
+      OD_list_choice.Edit;
+    if (OD_list_choice.FieldByName('sel').AsInteger = 0) then
+      OD_list_choice.FieldByName('sel').AsInteger := 1
+    else
+      OD_list_choice.FieldByName('sel').AsInteger := 0;
+end;
+
+procedure TForm_sel_reu.cxGridDBTableView1KeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  if (VkKeyScan(Key) = 20) then
    begin
     if (OD_list_choice.State = dsBrowse) then
       OD_list_choice.Edit;
@@ -165,21 +188,6 @@ begin
     else
       OD_list_choice.FieldByName('sel').AsInteger := 0;
    end;
-end;
-
-procedure TForm_sel_reu.FormShow(Sender: TObject);
-begin
-  OD_list_choice.Active := true;
-end;
-
-procedure TForm_sel_reu.DBGridEh1DblClick(Sender: TObject);
-begin
-    if (OD_list_choice.State = dsBrowse) then
-      OD_list_choice.Edit;
-    if (OD_list_choice.FieldByName('sel').AsInteger = 0) then
-      OD_list_choice.FieldByName('sel').AsInteger := 1
-    else
-      OD_list_choice.FieldByName('sel').AsInteger := 0;
 end;
 
 end.

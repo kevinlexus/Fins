@@ -1,6 +1,6 @@
 object Form_sel_reu: TForm_sel_reu
-  Left = 1396
-  Top = 386
+  Left = 896
+  Top = 768
   BorderStyle = bsSingle
   Caption = #1042#1099#1073#1086#1088' '#1046#1069#1054' '#1076#1083#1103' '#1086#1090#1095#1077#1090#1072
   ClientHeight = 369
@@ -97,58 +97,8 @@ object Form_sel_reu: TForm_sel_reu
     Height = 33
     DataSource = DS_list_choice
     VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
-    TabOrder = 1
-    TabStop = True
-  end
-  object DBGridEh1: TDBGridEh
-    Left = 0
-    Top = 0
-    Width = 345
-    Height = 329
-    DataSource = DS_list_choice
-    Flat = False
-    FooterColor = clWindow
-    FooterFont.Charset = DEFAULT_CHARSET
-    FooterFont.Color = clWindowText
-    FooterFont.Height = -11
-    FooterFont.Name = 'MS Sans Serif'
-    FooterFont.Style = []
-    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
     TabOrder = 0
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'MS Sans Serif'
-    TitleFont.Style = []
-    OnDblClick = DBGridEh1DblClick
-    OnKeyUp = DBGridEh1KeyUp
-    Columns = <
-      item
-        EditButtons = <>
-        FieldName = 'REU'
-        Footers = <>
-        ReadOnly = True
-        Width = 55
-      end
-      item
-        Checkboxes = False
-        DblClickNextVal = True
-        EditButtons = <>
-        FieldName = 'SEL'
-        Footers = <>
-        ImageList = ImageList1
-        KeyList.Strings = (
-          '0'
-          '1')
-        ReadOnly = True
-        Title.Caption = #1042#1099#1073#1088#1072#1085'?'
-        Width = 49
-      end
-      item
-        EditButtons = <>
-        FieldName = 'NAME_REU'
-        Footers = <>
-      end>
+    TabStop = True
   end
   object Button1: TButton
     Left = 262
@@ -157,7 +107,7 @@ object Form_sel_reu: TForm_sel_reu
     Height = 33
     Cancel = True
     Caption = #1054#1082
-    TabOrder = 4
+    TabOrder = 3
     OnClick = Button1Click
   end
   object BitBtn1: TBitBtn
@@ -168,7 +118,7 @@ object Form_sel_reu: TForm_sel_reu
     Hint = #1042#1099#1073#1088#1072#1090#1100' '#1074#1089#1077
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 2
+    TabOrder = 1
     OnClick = BitBtn1Click
     Glyph.Data = {
       6A030000424D6A030000000000002A0100002800000018000000180000000100
@@ -208,7 +158,7 @@ object Form_sel_reu: TForm_sel_reu
     Hint = #1054#1090#1084#1077#1085#1080#1090#1100' '#1074#1089#1077
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 3
+    TabOrder = 2
     OnClick = BitBtn2Click
     Glyph.Data = {
       76060000424D7606000000000000360400002800000018000000180000000100
@@ -263,6 +213,86 @@ object Form_sel_reu: TForm_sel_reu
       2B1C0C05100E10101520202222222C3A3A3A3A3A3A3A04162D2527282B2C2B2B
       2C2C2B292520293A3A3A3A3A3A3A3A3A211E1A181D161A1A1A1A2020223A3A3A
       3A3A3A3A3A3A3A3A3A3A3A3A3A3A3A3A3A3A3A3A3A3A3A3A3A3A}
+  end
+  object cxGrid1: TcxGrid
+    Left = 0
+    Top = 0
+    Width = 347
+    Height = 369
+    Align = alClient
+    TabOrder = 4
+    object cxGridDBTableView1: TcxGridDBTableView
+      OnDblClick = cxGridDBTableView1DblClick
+      OnKeyPress = cxGridDBTableView1KeyPress
+      Navigator.Buttons.CustomButtons = <>
+      DataController.DataSource = DS_list_choice
+      DataController.Summary.DefaultGroupSummaryItems = <
+        item
+          Format = #1054#1073#1098#1077#1084' 0.00'
+          Kind = skSum
+        end
+        item
+          Format = #1048#1079#1084#1077#1085#1077#1085#1080#1103' 0.00'
+          Kind = skSum
+        end
+        item
+          Format = #1058#1072#1088#1080#1092' 0.00'
+          Kind = skSum
+        end
+        item
+          Kind = skSum
+          Position = spFooter
+        end
+        item
+          Format = #1048#1090#1086#1075#1086' 0.00'
+          Kind = skSum
+        end
+        item
+          Kind = skSum
+          Position = spFooter
+        end>
+      DataController.Summary.FooterSummaryItems = <
+        item
+          Kind = skSum
+        end
+        item
+          Format = #1048#1090#1086#1075#1086' 0.00'
+        end
+        item
+          Kind = skSum
+        end>
+      DataController.Summary.SummaryGroups = <>
+      OptionsBehavior.CellHints = True
+      OptionsData.Deleting = False
+      OptionsData.Editing = False
+      OptionsData.Inserting = False
+      OptionsView.ColumnAutoWidth = True
+      OptionsView.FooterMultiSummaries = True
+      OptionsView.GroupByBox = False
+      OptionsView.GroupFooterMultiSummaries = True
+      OptionsView.HeaderAutoHeight = True
+      OptionsView.Indicator = True
+      object cxGridDBTableView1REU: TcxGridDBColumn
+        Caption = #1050#1086#1076' '#1059#1050
+        DataBinding.FieldName = 'REU'
+        Width = 42
+      end
+      object cxGridDBTableView1SEL: TcxGridDBColumn
+        Caption = #1042#1099#1073#1088#1072#1085'?'
+        DataBinding.FieldName = 'SEL'
+        PropertiesClassName = 'TcxCheckBoxProperties'
+        Properties.ValueChecked = 1
+        Properties.ValueUnchecked = 0
+        Width = 71
+      end
+      object cxGridDBTableView1NAME_REU: TcxGridDBColumn
+        DataBinding.FieldName = 'NAME_REU'
+        Width = 220
+      end
+    end
+    object cxGridLevel1: TcxGridLevel
+      GridView = cxGridDBTableView1
+    end
   end
   object OD_list_choice: TOracleDataSet
     SQL.Strings = (
