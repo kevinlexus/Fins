@@ -385,7 +385,6 @@ type
     procedure DBEdit6KeyPress(Sender: TObject; var Key: Char);
     procedure DBEdit_mhwKeyPress(Sender: TObject; var Key: Char);
     procedure DBEdit_mgwKeyPress(Sender: TObject; var Key: Char);
-    procedure wwCheckBox3Click(Sender: TObject);
     procedure DBEdit_pgwKeyPress(Sender: TObject; var Key: Char);
     procedure DBEdit_mhw2KeyPress(Sender: TObject; var Key: Char);
     procedure DBEdit_mgw2KeyPress(Sender: TObject; var Key: Char);
@@ -1209,57 +1208,6 @@ begin
     Key := '.';
 end;
 
-
-procedure TForm_kart.wwCheckBox3Click(Sender: TObject);
-var
-  psch_old: Integer;
-begin
-  //Сохраним до корректировок расхода (чтобы правильно учлись признаки счетчиков)
-  //save_changes(1);
-
-  //Проверить можно ли теперь править некоторые поля, например MHW
-  Form_list_kart.setAllowEdit_list;
-
-  psch_old := Form_list_kart.OD_list_kart.FieldByName('psch').asInteger;
-
-  //сч.х.в. г.в.
-  if cxchckbx3.Checked = true then
-  begin
-    if (psch_old = 1) or (psch_old = 2) then
-      DBEdit_mhw2.Enabled := true;
-    if (psch_old = 1) or (psch_old = 3) then
-      DBEdit_mgw2.Enabled := true;
-  end
-  else
-  begin
-    DBEdit_mhw2.Enabled := false;
-    DBEdit_mgw2.Enabled := false;
-  end;
-
-  psch_old := Form_list_kart.OD_list_kart.FieldByName('sch_el').asInteger;
-
-  //сч.эл.эн
-  if cxchckbx3.Checked = true then
-  begin
-    if (psch_old = 1) then
-      DBEdit_mel2.Enabled := true;
-  end
-  else
-  begin
-    DBEdit_mel2.Enabled := false;
-  end;
-
-  //сч.отопления
-  if cxchckbx3.Checked = true then
-  begin
-    dbedtMOT.Enabled := true;
-  end
-  else
-  begin
-    dbedtMOT.Enabled := false;
-  end;
-
-end;
 
 procedure TForm_kart.DBEdit_pgwKeyPress(Sender: TObject; var Key: Char);
 begin

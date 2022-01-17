@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, OracleData, Wwdatsrc, Grids, Wwdbgrid,
+  Dialogs, DB, OracleData, Grids, 
   wwSpeedButton, wwDBNavigator, ExtCtrls, StdCtrls, Utils,
   Buttons, wwcheckbox, wwdblook, DBCtrls, ComCtrls,
   Menus, Oracle, cxControls,
@@ -16,7 +16,7 @@ uses
   Uni, cxLookAndFeels, cxLookAndFeelPainters, cxStyles, cxCustomData,
   cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator, cxDBData,
   cxDBLookupComboBox, cxCheckBox, MemDS, DBAccess, cxGridCustomLayoutView,
-  wwclearpanel, Wwdbigrd, cxGridCustomView;
+  wwclearpanel, Wwdbigrd, cxGridCustomView, Wwdatsrc, Wwdbgrid;
 
 type
   TForm_houses_nabor = class(TForm)
@@ -191,10 +191,10 @@ type
     procedure Button4Click(Sender: TObject);
     procedure exit_ok;
     procedure wwDBGrid3KeyPress(Sender: TObject; var Key: Char);
-    procedure wwDBGrid2KeyPress(Sender: TObject; var Key: Char);
-    procedure wwDBGrid1CalcCellColors(Sender: TObject; Field: TField;
-      State: TGridDrawState; Highlight: Boolean; AFont: TFont;
-      ABrush: TBrush);
+//    procedure wwDBGrid2KeyPress(Sender: TObject; var Key: Char);
+//    procedure wwDBGrid1CalcCellColors(Sender: TObject; Field: TField;
+     // State: TGridDrawState; Highlight: Boolean; AFont: TFont;
+    //  ABrush: TBrush);
     procedure CheckBox2Click(Sender: TObject);
     procedure OD_vvodAfterScroll(DataSet: TDataSet);
     procedure OD_k_vvodAfterPost(DataSet: TDataSet);
@@ -204,7 +204,7 @@ type
     procedure wwDBLookupCombo3NotInList(Sender: TObject;
       LookupTable: TDataSet; NewValue: string; var Accept: Boolean);
     procedure wwDBLookupCombo3Exit(Sender: TObject);
-    procedure wwDBGrid2DblClick(Sender: TObject);
+//    procedure wwDBGrid2DblClick(Sender: TObject);
     procedure wwDBLookupCombo4CloseUp(Sender: TObject; LookupTable,
       FillTable: TDataSet; modified: Boolean);
     procedure wwDBLookupCombo4Exit(Sender: TObject);
@@ -375,7 +375,7 @@ begin
 
 end;
 
-procedure TForm_houses_nabor.wwDBGrid2KeyPress(Sender: TObject;
+{procedure TForm_houses_nabor.wwDBGrid2KeyPress(Sender: TObject;
   var Key: Char);
 begin
   if RetKey(Key) then
@@ -384,20 +384,14 @@ begin
     Form_par_edit);
   Form_par_edit.SetData(Uni_objxpar, Uni_par_value, Key);
   Form_par_edit.ShowModal
-end;
+end;}
 
-procedure TForm_houses_nabor.wwDBGrid1CalcCellColors(Sender: TObject;
+{procedure TForm_houses_nabor.wwDBGrid1CalcCellColors(Sender: TObject;
   Field: TField; State: TGridDrawState; Highlight: Boolean; AFont: TFont;
   ABrush: TBrush);
 begin
-  {  if (OD_houses.FieldByName('psch').AsInteger = 1)
-      then
-    begin
-      ABrush.Color := clSilver;
-      AFont.Color := clBlack;
-    end;}
 end;
-
+ }
 procedure TForm_houses_nabor.CheckBox2Click(Sender: TObject);
 begin
   if CheckBox2.Checked = true then
@@ -491,13 +485,14 @@ begin
   end;
 end;
 
-procedure TForm_houses_nabor.wwDBGrid2DblClick(Sender: TObject);
+{procedure TForm_houses_nabor.wwDBGrid2DblClick(Sender: TObject);
 begin
   Application.CreateForm(TForm_par_edit,
     Form_par_edit);
   Form_par_edit.SetData(Uni_objxpar, Uni_par_value, ' ');
   Form_par_edit.ShowModal
 end;
+}
 
 procedure TForm_houses_nabor.wwDBLookupCombo4CloseUp(Sender: TObject;
   LookupTable, FillTable: TDataSet; modified: Boolean);

@@ -20,8 +20,7 @@ uses
 
   cxDropDownEdit, cxMRUEdit, cxLookAndFeels, cxLookAndFeelPainters,
   cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, cxDBData,
-  wwcheckbox, wwSpeedButton, wwDBNavigator, wwclearpanel, wwdblook,
-  Wwdbigrd, Wwdbgrid, dxBarBuiltInMenu, cxPC;
+  dxBarBuiltInMenu, cxPC, wwcheckbox, wwdblook;
 
 type
   TForm_list_kart = class(TForm)
@@ -192,10 +191,8 @@ type
     cxgrdListKartDBTableView1: TcxGridDBTableView;
     cxgrdListKartLevel1: TcxGridLevel;
     cxgrdListKart: TcxGrid;
-    cxgrdListKartDBTableView1BTN: TcxGridDBColumn;
     cxgrdListKartDBTableView1NAME_REU: TcxGridDBColumn;
     cxgrdListKartDBTableView1LSK: TcxGridDBColumn;
-    cxgrdListKartDBTableView1DOG_NUM: TcxGridDBColumn;
     cxgrdListKartDBTableView1KUL: TcxGridDBColumn;
     cxgrdListKartDBTableView1NAME: TcxGridDBColumn;
     cxgrdListKartDBTableView1N_ND: TcxGridDBColumn;
@@ -300,6 +297,7 @@ type
     procedure cxmskdtHW_VOLKeyPress(Sender: TObject; var Key: Char);
     procedure cxmskdtGW_VOLKeyPress(Sender: TObject; var Key: Char);
     procedure cxmskdtEL_VOLKeyPress(Sender: TObject; var Key: Char);
+    procedure cxgrdListKartDBTableView1DblClick(Sender: TObject);
   private
     bm: TBookmark;
   public
@@ -1645,6 +1643,16 @@ begin
     // нажат Enter - перейти к другому полю
     Windows.SetFocus(Button2.Handle);
   end;
+end;
+
+procedure TForm_list_kart.cxgrdListKartDBTableView1DblClick(
+  Sender: TObject);
+begin
+    if FF('Form_kart', 1) = 0 then
+    begin
+      setAllowEdit_kart;
+      Application.CreateForm(TForm_kart, Form_kart);
+    end;
 end;
 
 end.

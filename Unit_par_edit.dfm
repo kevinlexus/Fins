@@ -93,29 +93,12 @@ object Form_par_edit: TForm_par_edit
     Top = 0
     Width = 274
     Height = 94
-    ActivePage = TabSheet3
+    ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = #1044#1072#1090#1072
       OnShow = TabSheet1Show
-      object wwDBDateTimePicker1: TwwDBDateTimePicker
-        Left = 72
-        Top = 24
-        Width = 121
-        Height = 21
-        CalendarAttributes.Font.Charset = DEFAULT_CHARSET
-        CalendarAttributes.Font.Color = clWindowText
-        CalendarAttributes.Font.Height = -11
-        CalendarAttributes.Font.Name = 'MS Sans Serif'
-        CalendarAttributes.Font.Style = []
-        DataField = 'D1'
-        DataSource = DS_value
-        Epoch = 1950
-        ShowButton = True
-        TabOrder = 0
-        OnKeyPress = wwDBDateTimePicker1KeyPress
-      end
       object Panel2: TPanel
         Left = 0
         Top = 0
@@ -123,8 +106,17 @@ object Form_par_edit: TForm_par_edit
         Height = 17
         Caption = #1060#1086#1088#1084#1072' '#1087#1088#1077#1076#1085#1072#1079#1085#1072#1095#1077#1085#1072' '#1076#1083#1103' '#1089#1086#1074#1084#1077#1089#1090#1085#1086#1075#1086' '#1080#1089#1087#1086#1083#1100#1079'.'
         Color = clRed
-        TabOrder = 1
+        TabOrder = 0
         Visible = False
+      end
+      object cxdbdtdtD1: TcxDBDateEdit
+        Left = 80
+        Top = 16
+        DataBinding.DataField = 'D1'
+        DataBinding.DataSource = DS_value
+        TabOrder = 1
+        OnKeyPress = cxdbdtdtD1KeyPress
+        Width = 121
       end
     end
     object TabSheet2: TTabSheet
@@ -182,8 +174,8 @@ object Form_par_edit: TForm_par_edit
   end
   object DS_list: TDataSource
     DataSet = Uni_List
-    Left = 76
-    Top = 56
+    Left = 28
+    Top = 40
   end
   object Uni_List: TUniQuery
     Connection = DataModule1.UniConnection1

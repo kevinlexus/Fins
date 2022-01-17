@@ -505,7 +505,7 @@ uses
   Unit_print_xito5, Unit_print_opl_xito10_3, Unit_form_saldo_check,
   Unit_print_lg_usl, Unit_corrects, Unit_form_messages, Unit1_print_pen,
   Unit_print_bank, Unit_form_sign_rep, Unit_form_print_stat1,
-  Unit_print_status, Unit_form_params, Unit_form_bills, Unit_print_stat_usl,
+  Unit_print_status, Unit_form_params, Unit_form_bills, 
   Unit_corr_payments, Unit_print_xito13,
   Unit_print_debits_adm, Unit_form_kart, Unit_sel_comps, Unit_get_pay,
   Unit_inkass, Unit_list_kart, Unit_changes_houses, Unit_house_vvod,
@@ -953,9 +953,10 @@ end;
 
 procedure TForm_Main.N49Click(Sender: TObject);
 begin
-  Application.CreateForm(TForm_print_stat_usl, Form_print_stat_usl);
+  showmessage('Пункт меню не используется!')
+{  Application.CreateForm(TForm_print_stat_usl, Form_print_stat_usl);
   Form_print_stat_usl.Select_form(18, 1, 0);
-  Form_print_stat_usl.Caption := TMenuItem(Sender).Caption;
+  Form_print_stat_usl.Caption := TMenuItem(Sender).Caption;}
 end;
 
 procedure TForm_Main.N50Click(Sender: TObject);
@@ -971,9 +972,10 @@ end;
 
 procedure TForm_Main.N89Click(Sender: TObject);
 begin
-  Application.CreateForm(TForm_print_stat_usl, Form_print_stat_usl);
+  showmessage('Пункт меню не используется!')
+{  Application.CreateForm(TForm_print_stat_usl, Form_print_stat_usl);
   Form_print_stat_usl.Select_form(22, 1, 1);
-  Form_print_stat_usl.Caption := TMenuItem(Sender).Caption;
+  Form_print_stat_usl.Caption := TMenuItem(Sender).Caption;}
 end;
 
 procedure TForm_Main.N48Click(Sender: TObject);
@@ -1456,9 +1458,11 @@ end;
 
 procedure TForm_Main.N79Click(Sender: TObject);
 begin
-  Application.CreateForm(TForm_print_stat_usl, Form_print_stat_usl);
+    showmessage('Пункт меню не используется!')
+{  Application.CreateForm(TForm_print_stat_usl, Form_print_stat_usl);
   Form_print_stat_usl.Select_form(37, 2, 1);
   Form_print_stat_usl.Caption := TMenuItem(Sender).Caption;
+  }
 end;
 
 procedure TForm_Main.N80Click(Sender: TObject);
@@ -1541,10 +1545,12 @@ end;
 
 procedure TForm_Main.N10Click(Sender: TObject);
 begin
-  Application.CreateForm(TForm_print_stat_usl, Form_print_stat_usl);
+    showmessage('Пункт меню не используется!')
+
+{  Application.CreateForm(TForm_print_stat_usl, Form_print_stat_usl);
   Form_print_stat_usl.Select_form(59, 0, 1);
   Form_print_stat_usl.Caption := TMenuItem(Sender).Caption;
-
+ }
   {  Panel2.Width:=235;
     if FF('Form_olap', 0) = 0 then
       Application.CreateForm(TForm_olap, Form_olap);

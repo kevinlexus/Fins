@@ -126,7 +126,7 @@ var
 implementation
 
 {$R *.dfm}
-uses Unit_print_stat_usl, DM_module1, Unit_tree_objects, Unit_Mainform, Utils;
+uses DM_module1, Unit_tree_objects, Unit_Mainform, Utils;
 
 procedure TForm_olap.FormClose(Sender: TObject; var Action: TCloseAction);
 var
@@ -212,7 +212,7 @@ Var
    nkom_: _pvcstring;
 procedure FindCodeChng(cell : ICell; str_ : String);
 begin
-if Cell = nil then
+{if Cell = nil then
    Exit;
 while Cell.Owner <> nil do
       begin
@@ -224,6 +224,7 @@ while Cell.Owner <> nil do
       end;
       Cell := Cell.Owner;
       end;
+      }
 end;
 
 procedure FindCodeInk(cell : ICell);
@@ -250,7 +251,7 @@ end;
 
 begin
   //только для формы сверка разовых изменений
-  if FF('Form_print_stat_usl', 0) = 1 then
+{  if FF('Form_print_stat_usl', 0) = 1 then
   begin
     if Form_print_stat_usl.id_ = 37 then
     begin
@@ -289,7 +290,7 @@ begin
              MB_OK+MB_ICONSTOP);
     end;
   end;
-
+}
   //только для формы сверка инкассаций
   if Form_tree_objects.rep_cd_ = '36' then
   begin

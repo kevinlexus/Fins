@@ -1,6 +1,6 @@
 object Form_Main: TForm_Main
-  Left = 704
-  Top = 684
+  Left = 288
+  Top = 630
   Width = 880
   Height = 628
   Caption = #1044#1080#1088#1077#1082#1090

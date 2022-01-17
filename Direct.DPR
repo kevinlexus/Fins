@@ -43,9 +43,7 @@ uses
   Unit_form_sign_rep in 'Unit_form_sign_rep.pas' {Form_sign_rep},
   Unit_form_print_stat1 in 'Unit_form_print_stat1.pas' {Form_print_stat},
   Unit_print_status in 'Unit_print_status.pas' {Form_print_status},
-  Unit_form_params in 'Unit_form_params.pas' {Form_params},
   Unit_form_bills in 'Unit_form_bills.pas' {Form_print_bills},
-  Unit_print_stat_usl in 'Unit_print_stat_usl.pas' {Form_print_stat_usl},
   Unit_sel_usl in 'Unit_sel_usl.pas' {Form_sel_usl},
   Unit_form_olap in 'Unit_form_olap.pas' {Form_olap},
   Unit_corr_payments in 'Unit_corr_payments.pas' {Form_corr_payments},
@@ -138,7 +136,6 @@ uses
   Unit_auto_chrg in 'Unit_auto_chrg.pas' {Form_auto_chrg},
   Unit_lk_par in 'Unit_lk_par.pas' {Form_lk_par},
   Unit_reg_sch in 'Unit_reg_sch.pas' {Form_reg_sch},
-  Unit_par_edit in 'Unit_par_edit.pas' {Form_par_edit},
   Unit_gen_err_lst in 'Unit_gen_err_lst.pas' {Form_gen_err_lst},
   Unit_ECR in 'Unit_ECR.pas',
   Unit_service_cash in 'Unit_service_cash.pas' {Form_service_cash},
@@ -167,7 +164,8 @@ uses
   u_frmKartExt in 'u_frmKartExt.pas' {frmKartExt},
   u_frmLog in 'u_frmLog.pas' {frmLog},
   u_frmKlskPar in 'u_frmKlskPar.pas' {frmKlskPar},
-  u_frmSelObjects in 'u_frmSelObjects.pas' {frmSelObjects};
+  u_frmSelObjects in 'u_frmSelObjects.pas' {frmSelObjects},
+  Unit_par_edit in 'Unit_par_edit.pas' {Form_par_edit};
 
 {  Unit_edit_pay_usl_org in '..\Program Files86\Borland\Delphi7\Components\FR412\LibD7\Unit_edit_pay_usl_org.pas'}
 

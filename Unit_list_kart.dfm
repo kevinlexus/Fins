@@ -771,6 +771,7 @@ object Form_list_kart: TForm_list_kart
     Align = alClient
     TabOrder = 5
     object cxgrdListKartDBTableView1: TcxGridDBTableView
+      OnDblClick = cxgrdListKartDBTableView1DblClick
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.Insert.Enabled = False
       Navigator.Buttons.Append.Enabled = False
@@ -789,17 +790,11 @@ object Form_list_kart: TForm_list_kart
       OptionsData.Editing = False
       OptionsData.Inserting = False
       OptionsView.GroupByBox = False
-      object cxgrdListKartDBTableView1BTN: TcxGridDBColumn
-        DataBinding.FieldName = 'BTN'
-      end
       object cxgrdListKartDBTableView1NAME_REU: TcxGridDBColumn
         DataBinding.FieldName = 'NAME_REU'
       end
       object cxgrdListKartDBTableView1LSK: TcxGridDBColumn
         DataBinding.FieldName = 'LSK'
-      end
-      object cxgrdListKartDBTableView1DOG_NUM: TcxGridDBColumn
-        DataBinding.FieldName = 'DOG_NUM'
       end
       object cxgrdListKartDBTableView1KUL: TcxGridDBColumn
         DataBinding.FieldName = 'KUL'

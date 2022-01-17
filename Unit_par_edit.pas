@@ -38,13 +38,12 @@ uses
   
   Uni, cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit, MemDS,
   DBAccess, cxTextEdit, cxMaskEdit, cxDropDownEdit, cxLookupEdit,
-  cxDBLookupEdit, StdCtrls;
+  cxDBLookupEdit, StdCtrls, cxCalendar, cxDBEdit;
 
 type
   TForm_par_edit = class(TForm)
     PageControl1: TPageControl;
     TabSheet1: TTabSheet;
-    wwDBDateTimePicker1: TwwDBDateTimePicker;
     TabSheet2: TTabSheet;
     DBEdit1: TDBEdit;
     TabSheet3: TTabSheet;
@@ -55,6 +54,7 @@ type
     DS_list: TDataSource;
     cbb2: TcxLookupComboBox;
     Uni_List: TUniQuery;
+    cxdbdtdtD1: TcxDBDateEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure SetData(od_par: TUniQuery;
@@ -69,6 +69,7 @@ type
     procedure TabSheet4Show(Sender: TObject);
     procedure cbb1PropertiesCloseUp(Sender: TObject);
     procedure cbb2PropertiesChange(Sender: TObject);
+    procedure cxdbdtdtD1KeyPress(Sender: TObject; var Key: Char);
   private
     l_od_par, l_od_par_value: TUniQuery;
     g_key: String;
@@ -190,7 +191,7 @@ end;
 procedure TForm_par_edit.TabSheet1Show(Sender: TObject);
 begin
 //  wwDBDateTimePicker1.SetFocus;
-Windows.SetFocus(wwDBDateTimePicker1.Handle);
+Windows.SetFocus(cxdbdtdtD1.Handle);
 end;
 
 procedure TForm_par_edit.TabSheet2Show(Sender: TObject);
@@ -264,6 +265,13 @@ begin
   l_od_par_value.FieldByName('S1').AsString:= VarToStr(v[1]);
   l_od_par_value.Post;
 
+end;
+
+procedure TForm_par_edit.cxdbdtdtD1KeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  if Key = Chr(13) then
+    close;
 end;
 
 end.

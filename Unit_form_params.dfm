@@ -1,6 +1,6 @@
 object Form_params: TForm_params
-  Left = 2083
-  Top = 481
+  Left = 1501
+  Top = 305
   AutoSize = True
   BorderStyle = bsSingle
   Caption = #1055#1072#1088#1072#1084#1077#1090#1088#1099

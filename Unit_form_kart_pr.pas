@@ -14,7 +14,7 @@ uses
   cxLookAndFeelPainters, cxContainer, cxEdit, cxStyles, cxCustomData,
   cxFilter, cxData, cxDataStorage, cxNavigator, cxDBData,
   cxDBLookupComboBox, cxGridCustomTableView, cxGridTableView,
-  cxGridCustomView, Grids, Wwdbigrd, cxCheckBox, cxTextEdit, cxMaskEdit,
+  cxGridCustomView, Grids, cxCheckBox, cxTextEdit, cxMaskEdit,
   cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxCalendar;
 
 type
