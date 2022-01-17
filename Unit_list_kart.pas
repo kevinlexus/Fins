@@ -21,7 +21,7 @@ uses
   cxDropDownEdit, cxMRUEdit, cxLookAndFeels, cxLookAndFeelPainters,
   cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, cxDBData,
   wwcheckbox, wwSpeedButton, wwDBNavigator, wwclearpanel, wwdblook,
-  Wwdbigrd, Wwdbgrid;
+  Wwdbigrd, Wwdbgrid, dxBarBuiltInMenu, cxPC;
 
 type
   TForm_list_kart = class(TForm)
@@ -58,7 +58,6 @@ type
     OD_list_kartPPL: TFloatField;
     OD_list_kartKOMN: TIntegerField;
     DS_list_kart: TDataSource;
-    wwDBGrid1: TwwDBGrid;
     OD_list_kartKI: TIntegerField;
     OD_list_kartSUB_DATA: TDateTimeField;
     OD_list_kartPSCH_NAME: TStringField;
@@ -120,21 +119,6 @@ type
     Button1: TButton;
     CheckBox1: TCheckBox;
     Panel3: TPanel;
-    wwDBNavigator1: TwwDBNavigator;
-    wwDBNavigator1First: TwwNavButton;
-    wwDBNavigator1PriorPage: TwwNavButton;
-    wwDBNavigator1Prior: TwwNavButton;
-    wwDBNavigator1Next: TwwNavButton;
-    wwDBNavigator1NextPage: TwwNavButton;
-    wwDBNavigator1Last: TwwNavButton;
-    wwDBNavigator1Insert: TwwNavButton;
-    wwDBNavigator1Delete: TwwNavButton;
-    wwDBNavigator1Edit: TwwNavButton;
-    wwDBNavigator1Post: TwwNavButton;
-    wwDBNavigator1Cancel: TwwNavButton;
-    wwDBNavigator1Refresh: TwwNavButton;
-    wwDBNavigator1SaveBookmark: TwwNavButton;
-    wwDBNavigator1RestoreBookmark: TwwNavButton;
     Panel4: TPanel;
     SpeedButton4: TSpeedButton;
     SpeedButton3: TSpeedButton;
@@ -151,11 +135,6 @@ type
     DS_deb_kart_pr: TDataSource;
     OD_list_kartBTN: TStringField;
     wwExpandButton1: TwwExpandButton;
-    cxGrid1DBTableView1: TcxGridDBTableView;
-    cxGrid1Level1: TcxGridLevel;
-    cxGrid1: TcxGrid;
-    cxGrid1DBTableView1FIO: TcxGridDBColumn;
-    cxGrid1DBTableView1DEB_ORG_NAME: TcxGridDBColumn;
     OD_list_kartADR: TStringField;
     cxPropertiesStore1: TcxPropertiesStore;
     OD_list_kartLSK_EXT: TStringField;
@@ -174,15 +153,6 @@ type
     OD_list_kartPARENT_LSK: TStringField;
     Panel5: TPanel;
     CheckBox3: TCheckBox;
-    GroupBox1: TGroupBox;
-    cxLabel1: TcxLabel;
-    cxLabel2: TcxLabel;
-    Button2: TButton;
-    cxLabel3: TcxLabel;
-    GroupBox2: TGroupBox;
-    cxLabel4: TcxLabel;
-    cxLabel5: TcxLabel;
-    cxLabel6: TcxLabel;
     BitBtn2: TBitBtn;
     OD_list_kartFK_KLSK_OBJ: TFloatField;
     OD_check_conn_gis: TOracleDataSet;
@@ -196,13 +166,66 @@ type
     cxMRUEdit1: TcxMRUEdit;
     chk2: TCheckBox;
     N4: TMenuItem;
+    cxmskdtEL: TcxMaskEdit;
+    cxPageControl1: TcxPageControl;
+    cxTabSheet1: TcxTabSheet;
+    cxTabSheet2: TcxTabSheet;
+    GroupBox2: TGroupBox;
+    cxLabel4: TcxLabel;
+    cxLabel5: TcxLabel;
+    cxLabel6: TcxLabel;
     cxmskdtHW: TcxMaskEdit;
     cxmskdtGW: TcxMaskEdit;
-    cxmskdtEL: TcxMaskEdit;
+    GroupBox1: TGroupBox;
+    cxLabel1: TcxLabel;
+    cxLabel2: TcxLabel;
+    Button2: TButton;
+    cxLabel3: TcxLabel;
     cxmskdtHW_VOL: TcxMaskEdit;
     cxmskdtGW_VOL: TcxMaskEdit;
     cxmskdtEL_VOL: TcxMaskEdit;
-    procedure wwDBGrid1DblClick(Sender: TObject);
+    cxGrid1: TcxGrid;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    cxGrid1DBTableView1FIO: TcxGridDBColumn;
+    cxGrid1DBTableView1DEB_ORG_NAME: TcxGridDBColumn;
+    cxGrid1Level1: TcxGridLevel;
+    cxgrdListKartDBTableView1: TcxGridDBTableView;
+    cxgrdListKartLevel1: TcxGridLevel;
+    cxgrdListKart: TcxGrid;
+    cxgrdListKartDBTableView1BTN: TcxGridDBColumn;
+    cxgrdListKartDBTableView1NAME_REU: TcxGridDBColumn;
+    cxgrdListKartDBTableView1LSK: TcxGridDBColumn;
+    cxgrdListKartDBTableView1DOG_NUM: TcxGridDBColumn;
+    cxgrdListKartDBTableView1KUL: TcxGridDBColumn;
+    cxgrdListKartDBTableView1NAME: TcxGridDBColumn;
+    cxgrdListKartDBTableView1N_ND: TcxGridDBColumn;
+    cxgrdListKartDBTableView1N_KW: TcxGridDBColumn;
+    cxgrdListKartDBTableView1ENTR: TcxGridDBColumn;
+    cxgrdListKartDBTableView1N_STATUS: TcxGridDBColumn;
+    cxgrdListKartDBTableView1FIO: TcxGridDBColumn;
+    cxgrdListKartDBTableView1ET: TcxGridDBColumn;
+    cxgrdListKartDBTableView1KPR: TcxGridDBColumn;
+    cxgrdListKartDBTableView1KPR_OT: TcxGridDBColumn;
+    cxgrdListKartDBTableView1KPR_WR: TcxGridDBColumn;
+    cxgrdListKartDBTableView1KPR_WRP: TcxGridDBColumn;
+    cxgrdListKartDBTableView1OPL: TcxGridDBColumn;
+    cxgrdListKartDBTableView1K_LSK_ID: TcxGridDBColumn;
+    cxgrdListKartDBTableView1FK_KLSK_PREMISE: TcxGridDBColumn;
+    cxgrdListKartDBTableView1HOUSE_ID: TcxGridDBColumn;
+    cxgrdListKartDBTableView1MHW: TcxGridDBColumn;
+    cxgrdListKartDBTableView1MGW: TcxGridDBColumn;
+    cxgrdListKartDBTableView1MEL: TcxGridDBColumn;
+    cxgrdListKartDBTableView1DEB_ORG: TcxGridDBColumn;
+    cxgrdListKartDBTableView1EL1: TcxGridDBColumn;
+    cxgrdListKartDBTableView1PSCH_NAME: TcxGridDBColumn;
+    cxgrdListKartDBTableView1MG1: TcxGridDBColumn;
+    cxgrdListKartDBTableView1MG2: TcxGridDBColumn;
+    cxgrdListKartDBTableView1KRAN1: TcxGridDBColumn;
+    cxgrdListKartDBTableView1TEXT: TcxGridDBColumn;
+    cxgrdListKartDBTableView1PARENT_LSK: TcxGridDBColumn;
+    cxgrdListKartDBTableView1DT_CR: TcxGridDBColumn;
+    cxgrdListKartDBTableView1FK_KLSK_OBJ: TcxGridDBColumn;
+//    procedure wwDBGrid1DblClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure wwDBGrid1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -356,12 +379,10 @@ begin
   if (Form_main.arch_mg_ = '') then
   begin
     Caption := 'Карточки';
-    wwDBGrid1.ReadOnly := false;
   end
   else if Form_main.arch_mg_ <> '' then
   begin
     Caption := 'Карточки - Архив';
-    wwDBGrid1.ReadOnly := true;
   end;
 
   if isAllowEdit_ <> 0 then
@@ -499,6 +520,7 @@ begin // смена состояний формы
   end;
 end;
 
+{ разобраться после перехода на RAD, как работают эти поля
 procedure TForm_list_kart.wwDBGrid1DblClick(Sender: TObject);
 begin
   if (wwDBGrid1.SelectedField.FieldName <> 'SUBS_CUR') and
@@ -514,6 +536,7 @@ begin
     refresh_data;
   end;
 end;
+}
 
 procedure TForm_list_kart.Realign;
 begin
@@ -525,7 +548,8 @@ end;
 
 procedure TForm_list_kart.setFields;
 begin
-  if (Form_main.org_var_ = 1) then
+
+{  if (Form_main.org_var_ = 1) then
   begin
     wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'N_STATUS')].Visible :=
       false;
@@ -585,10 +609,10 @@ begin
     begin
       wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'MHW')].Visible := false;
       wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'MGW')].Visible := false;
-    end;
+    end;                  
     //    setFields2;
   end;
-
+                          }
 end;
 
 procedure TForm_list_kart.setFields2;
@@ -953,11 +977,12 @@ end;
 
 procedure TForm_list_kart.CheckBox1Click(Sender: TObject);
 begin
-  if CheckBox1.Checked then
+  ShowMessage('Функция не поддерживается'); // todo проверить необходимость данной функции
+{  if CheckBox1.Checked then
     wwDBGrid1.FixedCols := wwDBGrid1.SelectedField.Index
   else
     wwDBGrid1.FixedCols := 0;
-
+}
 end;
 
 procedure TForm_list_kart.OD_list_kartAfterPost(DataSet: TDataSet);

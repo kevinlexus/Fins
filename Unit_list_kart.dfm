@@ -1,6 +1,6 @@
 object Form_list_kart: TForm_list_kart
-  Left = 1454
-  Top = 537
+  Left = 764
+  Top = 635
   Width = 1044
   Height = 633
   Caption = #1050#1072#1088#1090#1086#1095#1082#1080
@@ -90,82 +90,6 @@ object Form_list_kart: TForm_list_kart
   OnPaint = FormPaint
   PixelsPerInch = 96
   TextHeight = 13
-  object wwDBGrid1: TwwDBGrid
-    Left = 0
-    Top = 0
-    Width = 597
-    Height = 553
-    ControlType.Strings = (
-      'KRAN1;CheckBox;1;0'
-      'SUBS_CUR;CheckBox;1;0'
-      'KAN_SCH;CheckBox;1;0'
-      'FK_DEB_ORG;CustomEdit;wwDBLookupCombo3;F'
-      'DEB_ORG;CustomEdit;wwDBLookupCombo3;F'
-      'USL_VOL;CustomEdit;wwExpandButton1;F'
-      'BTN;CustomEdit;wwExpandButton1;F')
-    Selected.Strings = (
-      'BTN'#9'2'#9' '#9#9
-      'NAME_REU'#9'8'#9#1054#1088#1075'.'#9#9
-      'LSK'#9'8'#9#1051'/C'#9#9
-      'DOG_NUM'#9'10'#9#8470' '#1076#1086#1075#1086#1074#1086#1088#1072#9#9
-      'KUL'#9'6'#9#1050#1086#1076' '#1091#1083'.'#9#9
-      'NAME'#9'19'#9#1059#1083#1080#1094#1072#9#9
-      'N_ND'#9'6'#9#1044#1086#1084#9#9
-      'N_KW'#9'7'#9#1050#1074'.'#9#9
-      'ENTR'#9'8'#9#1055#1086#1076#1098#1077#1079#1076#9#9
-      'N_STATUS'#9'8'#9#1057#1090#1072#1090#1091#1089#9#9
-      'FIO'#9'16'#9#1060'.'#1048'.'#1054'.'#9#9
-      'ET'#9'5'#9#1069#1090#1072#1078#9#9
-      'KPR'#9'7'#9#1055#1088#1086#1078#1080#1074'.'#9#9
-      'KPR_OT'#9'6'#9#1054#1090#1089#1091#1090'.'#9#9
-      'KPR_WR'#9'8'#9#1042#1088'.'#1079#1072#1088#1077#1075'.'#9#9
-      'KPR_WRP'#9'8'#9#1042#1088'.'#1087#1088#1086#1078'.'#9#9
-      'OPL'#9'7'#9#1054#1073#1097'.'#1087#1083'.'#9#9
-      'K_LSK_ID'#9'13'#9'KLSK '#1060#1080#1085'.'#1083#1080#1094'.'#1089#1095'.'#9#9
-      'FK_KLSK_PREMISE'#9'10'#9'KLSK '#1055#1086#1084#1077#1097'.'#9#9
-      'HOUSE_ID'#9'14'#9'HOUSE_ID '#1044#1086#1084#1072#9#9
-      'MHW'#9'8'#9#1050#1091#1073'.'#1061'.'#1042'.'#9#9
-      'MGW'#9'8'#9#1050#1091#1073'.'#1043'.'#1042'.'#9#9
-      'MEL'#9'11'#9#1050#1074#1090'.'#1069#1083'.'#1101#1085'.'#9#9
-      'DEB_ORG'#9'13'#9#1054#1088#1075'.'#1079#1072#1076#1086#1083#1078#1085'.'#9#9
-      'SUB_DATA'#9'10'#9#1054#1082#1086#1085#1095'.'#1089#1091#1073#9#9
-      'EL1'#9'9'#9#1069#1083'.'#1101#1085'.'#9#9
-      'KI'#9'10'#9#1051#1100#1075#1086#1090#1085#1080#1082#1086#1074#9#9
-      'PSCH_NAME'#9'9'#9#1057#1095#1077#1090#1095#1080#1082#9#9
-      'MG1'#9'7'#9#1057#9#9
-      'MG2'#9'7'#9#1087#1086#9#9
-      'KRAN1'#9'8'#9#1057#1080#1089#1090'.'#1086#1090#1086#1087'.'#9#9
-      'TEXT'#9'35'#9#1055#1088#1080#1084#1077#1095#1072#1085#1080#1077#9#9
-      'SEL1'#9'10'#9'SEL1'#9#9
-      'PARENT_LSK'#9'12'#9#1056#1086#1076#1080#1090'.'#1083#1080#1094'.'#1089#1095#1077#1090#9#9
-      'DT_CR'#9'18'#9'DT_CR'#9#9
-      'FK_KLSK_OBJ'#9'11'#9'KLSK '#1051#1080#1094'.'#1089#1095'.'#9#9
-      'DIVIDED'#9'10'#9'DIVIDED'#9#9)
-    IniAttributes.Delimiter = ';;'
-    TitleColor = clBtnFace
-    FixedCols = 0
-    ShowHorzScrollBar = True
-    EditControlOptions = [ecoSearchOwnerForm, ecoDisableDateTimePicker]
-    Align = alClient
-    DataSource = DS_list_kart
-    EditCalculated = True
-    Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap, dgShowCellHint]
-    PopupMenu = PopupMenu1
-    TabOrder = 0
-    TitleAlignment = taLeftJustify
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'MS Sans Serif'
-    TitleFont.Style = []
-    TitleLines = 1
-    TitleButtons = False
-    OnCalcCellColors = wwDBGrid1CalcCellColors
-    OnDblClick = wwDBGrid1DblClick
-    OnKeyDown = wwDBGrid1KeyDown
-    OnKeyPress = wwDBGrid1KeyPress
-    ImageList = Form_Main.ImageList1
-  end
   object wwDBLookupCombo3: TwwDBLookupCombo
     Left = 240
     Top = 291
@@ -178,7 +102,7 @@ object Form_list_kart: TForm_list_kart
     DataSource = DS_list_kart
     LookupTable = OD_debits_org
     LookupField = 'NAME'
-    TabOrder = 2
+    TabOrder = 1
     Visible = False
     AutoDropDown = False
     ShowButton = True
@@ -213,7 +137,7 @@ object Form_list_kart: TForm_list_kart
       #1092#1091#1085#1082#1094#1080#1086#1085#1072#1083' '#1074' '#1089#1074#1103#1079#1080' '#1089' '
       #1085#1077#1085#1091#1078#1085#1086#1089#1090#1100#1102','
       #1085#1086' '#1076#1083#1103' '#1087#1088#1080#1084#1077#1088#1072' - '#1086#1089#1090#1072#1074#1083#1077#1085)
-    TabOrder = 1
+    TabOrder = 0
     Visible = False
   end
   object Panel1: TPanel
@@ -222,7 +146,7 @@ object Form_list_kart: TForm_list_kart
     Width = 1028
     Height = 41
     Align = alBottom
-    TabOrder = 3
+    TabOrder = 2
     object Panel2: TPanel
       Left = 599
       Top = 1
@@ -272,10 +196,10 @@ object Form_list_kart: TForm_list_kart
       object CheckBox3: TCheckBox
         Left = 237
         Top = 11
-        Width = 73
+        Width = 100
         Height = 17
-        Hint = #1054#1090#1086#1073#1088#1072#1079#1080#1090#1100' '#1089#1095#1077#1090#1095#1080#1082#1080
-        Caption = #1057#1095#1077#1090#1095#1080#1082#1080
+        Hint = #1057#1095#1077#1090#1095#1080#1082#1080' '#1080' '#1079#1072#1076#1086#1083#1078#1085#1080#1082#1080
+        Caption = #1044#1086#1087#1086#1083#1085#1080#1090#1077#1083#1100#1085#1086
         ParentShowHint = False
         ShowHint = True
         TabOrder = 3
@@ -301,264 +225,6 @@ object Form_list_kart: TForm_list_kart
       Height = 39
       Align = alRight
       TabOrder = 1
-      object wwDBNavigator1: TwwDBNavigator
-        Left = 1
-        Top = 8
-        Width = 328
-        Height = 22
-        AutosizeStyle = asSizeNavButtons
-        DataSource = DS_list_kart
-        Options = [noConfirmDelete, noUseInternationalText]
-        ShowHint = True
-        RepeatInterval.InitialDelay = 500
-        RepeatInterval.Interval = 100
-        Align = alCustom
-        ParentShowHint = False
-        object wwDBNavigator1First: TwwNavButton
-          Left = 0
-          Top = 0
-          Width = 24
-          Height = 22
-          Hint = 'Move to first record'
-          ImageIndex = -1
-          NumGlyphs = 2
-          Spacing = 4
-          Transparent = False
-          Caption = 'wwDBNavigator1First'
-          Enabled = False
-          DisabledTextColors.ShadeColor = clGray
-          DisabledTextColors.HighlightColor = clBtnHighlight
-          Index = 0
-          Style = nbsFirst
-        end
-        object wwDBNavigator1PriorPage: TwwNavButton
-          Left = 24
-          Top = 0
-          Width = 24
-          Height = 22
-          Hint = 'Move backward 10 records'
-          ImageIndex = -1
-          NumGlyphs = 2
-          Spacing = 4
-          Transparent = False
-          Caption = 'wwDBNavigator1PriorPage'
-          Enabled = False
-          DisabledTextColors.ShadeColor = clGray
-          DisabledTextColors.HighlightColor = clBtnHighlight
-          Index = 1
-          Style = nbsPriorPage
-        end
-        object wwDBNavigator1Prior: TwwNavButton
-          Left = 48
-          Top = 0
-          Width = 24
-          Height = 22
-          Hint = 'Move to prior record'
-          ImageIndex = -1
-          NumGlyphs = 2
-          Spacing = 4
-          Transparent = False
-          Caption = 'wwDBNavigator1Prior'
-          Enabled = False
-          DisabledTextColors.ShadeColor = clGray
-          DisabledTextColors.HighlightColor = clBtnHighlight
-          Index = 2
-          Style = nbsPrior
-        end
-        object wwDBNavigator1Next: TwwNavButton
-          Left = 72
-          Top = 0
-          Width = 24
-          Height = 22
-          Hint = 'Move to next record'
-          ImageIndex = -1
-          NumGlyphs = 2
-          Spacing = 4
-          Transparent = False
-          Caption = 'wwDBNavigator1Next'
-          Enabled = False
-          DisabledTextColors.ShadeColor = clGray
-          DisabledTextColors.HighlightColor = clBtnHighlight
-          Index = 3
-          Style = nbsNext
-        end
-        object wwDBNavigator1NextPage: TwwNavButton
-          Left = 96
-          Top = 0
-          Width = 24
-          Height = 22
-          Hint = 'Move forward 10 records'
-          ImageIndex = -1
-          NumGlyphs = 2
-          Spacing = 4
-          Transparent = False
-          Caption = 'wwDBNavigator1NextPage'
-          Enabled = False
-          DisabledTextColors.ShadeColor = clGray
-          DisabledTextColors.HighlightColor = clBtnHighlight
-          Index = 4
-          Style = nbsNextPage
-        end
-        object wwDBNavigator1Last: TwwNavButton
-          Left = 120
-          Top = 0
-          Width = 24
-          Height = 22
-          Hint = 'Move to last record'
-          ImageIndex = -1
-          NumGlyphs = 2
-          Spacing = 4
-          Transparent = False
-          Caption = 'wwDBNavigator1Last'
-          Enabled = False
-          DisabledTextColors.ShadeColor = clGray
-          DisabledTextColors.HighlightColor = clBtnHighlight
-          Index = 5
-          Style = nbsLast
-        end
-        object wwDBNavigator1Insert: TwwNavButton
-          Left = 144
-          Top = 0
-          Width = 23
-          Height = 22
-          Hint = 'Insert new record'
-          ImageIndex = -1
-          NumGlyphs = 2
-          Spacing = 4
-          Transparent = False
-          Caption = 'wwDBNavigator1Insert'
-          Enabled = False
-          DisabledTextColors.ShadeColor = clGray
-          DisabledTextColors.HighlightColor = clBtnHighlight
-          Index = 6
-          Style = nbsInsert
-          Visible = False
-        end
-        object wwDBNavigator1Delete: TwwNavButton
-          Left = 167
-          Top = 0
-          Width = 23
-          Height = 22
-          Hint = 'Delete current record'
-          ImageIndex = -1
-          NumGlyphs = 2
-          Spacing = 4
-          Transparent = False
-          Caption = 'wwDBNavigator1Delete'
-          Enabled = False
-          DisabledTextColors.ShadeColor = clGray
-          DisabledTextColors.HighlightColor = clBtnHighlight
-          Index = 7
-          Style = nbsDelete
-          Visible = False
-        end
-        object wwDBNavigator1Edit: TwwNavButton
-          Left = 190
-          Top = 0
-          Width = 23
-          Height = 22
-          Hint = 'Edit current record'
-          ImageIndex = -1
-          NumGlyphs = 2
-          Spacing = 4
-          Transparent = False
-          Caption = 'wwDBNavigator1Edit'
-          Enabled = False
-          DisabledTextColors.ShadeColor = clGray
-          DisabledTextColors.HighlightColor = clBtnHighlight
-          Index = 8
-          Style = nbsEdit
-          Visible = False
-        end
-        object wwDBNavigator1Post: TwwNavButton
-          Left = 213
-          Top = 0
-          Width = 23
-          Height = 22
-          Hint = 'Post changes of current record'
-          ImageIndex = -1
-          NumGlyphs = 2
-          Spacing = 4
-          Transparent = False
-          Caption = 'wwDBNavigator1Post'
-          Enabled = False
-          DisabledTextColors.ShadeColor = clGray
-          DisabledTextColors.HighlightColor = clBtnHighlight
-          Index = 9
-          Style = nbsPost
-          Visible = False
-        end
-        object wwDBNavigator1Cancel: TwwNavButton
-          Left = 236
-          Top = 0
-          Width = 23
-          Height = 22
-          Hint = 'Cancel changes made to current record'
-          ImageIndex = -1
-          NumGlyphs = 2
-          Spacing = 4
-          Transparent = False
-          Caption = 'wwDBNavigator1Cancel'
-          Enabled = False
-          DisabledTextColors.ShadeColor = clGray
-          DisabledTextColors.HighlightColor = clBtnHighlight
-          Index = 10
-          Style = nbsCancel
-          Visible = False
-        end
-        object wwDBNavigator1Refresh: TwwNavButton
-          Left = 259
-          Top = 0
-          Width = 23
-          Height = 22
-          Hint = 'Refresh the contents of the dataset'
-          ImageIndex = -1
-          NumGlyphs = 2
-          Spacing = 4
-          Transparent = False
-          Caption = 'wwDBNavigator1Refresh'
-          Enabled = False
-          DisabledTextColors.ShadeColor = clGray
-          DisabledTextColors.HighlightColor = clBtnHighlight
-          Index = 11
-          Style = nbsRefresh
-          Visible = False
-        end
-        object wwDBNavigator1SaveBookmark: TwwNavButton
-          Left = 282
-          Top = 0
-          Width = 23
-          Height = 22
-          Hint = 'Bookmark current record'
-          ImageIndex = -1
-          NumGlyphs = 2
-          Spacing = 4
-          Transparent = False
-          Caption = 'wwDBNavigator1SaveBookmark'
-          Enabled = False
-          DisabledTextColors.ShadeColor = clGray
-          DisabledTextColors.HighlightColor = clBtnHighlight
-          Index = 12
-          Style = nbsSaveBookmark
-        end
-        object wwDBNavigator1RestoreBookmark: TwwNavButton
-          Left = 305
-          Top = 0
-          Width = 23
-          Height = 22
-          Hint = 'Go back to saved bookmark'
-          ImageIndex = -1
-          NumGlyphs = 2
-          Spacing = 4
-          Transparent = False
-          Caption = 'wwDBNavigator1RestoreBookmark'
-          Enabled = False
-          DisabledTextColors.ShadeColor = clGray
-          DisabledTextColors.HighlightColor = clBtnHighlight
-          Index = 13
-          Style = nbsRestoreBookmark
-        end
-      end
     end
     object Panel4: TPanel
       Left = 1
@@ -854,45 +520,11 @@ object Form_list_kart: TForm_list_kart
     Width = 16
     Height = 16
     DisableThemes = False
-    Grid = cxGrid1
     OnBeforeExpand = wwExpandButton1BeforeExpand
     OnBeforeCollapse = wwExpandButton1BeforeCollapse
     Caption = 'wwExpandButton1'
-    TabOrder = 4
+    TabOrder = 3
     Visible = False
-  end
-  object cxGrid1: TcxGrid
-    Left = 496
-    Top = 256
-    Width = 257
-    Height = 233
-    TabOrder = 5
-    Visible = False
-    object cxGrid1DBTableView1: TcxGridDBTableView
-      Navigator.Buttons.CustomButtons = <>
-      DataController.DataSource = DS_deb_kart_pr
-      DataController.KeyFieldNames = 'ID'
-      DataController.Summary.DefaultGroupSummaryItems = <>
-      DataController.Summary.FooterSummaryItems = <>
-      DataController.Summary.SummaryGroups = <>
-      OptionsData.Deleting = False
-      OptionsData.Inserting = False
-      OptionsView.NoDataToDisplayInfoText = #1053#1077#1090' '#1076#1072#1085#1085#1099#1093
-      OptionsView.ColumnAutoWidth = True
-      OptionsView.GroupByBox = False
-      object cxGrid1DBTableView1FIO: TcxGridDBColumn
-        Caption = #1060'.'#1048'.'#1054'.'
-        DataBinding.FieldName = 'FIO'
-        Width = 99
-      end
-      object cxGrid1DBTableView1DEB_ORG_NAME: TcxGridDBColumn
-        Caption = #1054#1088#1075'. '#1079#1072#1076#1086#1083#1078#1085#1080#1082#1072
-        DataBinding.FieldName = 'DEB_ORG_NAME'
-      end
-    end
-    object cxGrid1Level1: TcxGridLevel
-      GridView = cxGrid1DBTableView1
-    end
   end
   object Panel5: TPanel
     Left = 597
@@ -900,174 +532,365 @@ object Form_list_kart: TForm_list_kart
     Width = 431
     Height = 553
     Align = alRight
-    TabOrder = 6
+    TabOrder = 4
     Visible = False
-    object GroupBox1: TGroupBox
-      Left = 1
-      Top = 73
-      Width = 429
-      Height = 72
-      Align = alTop
-      Caption = #1053#1086#1074#1099#1081' '#1086#1073#1098#1077#1084'. '#1041#1091#1076#1077#1090' '#1076#1086#1073#1072#1074#1083#1077#1085' '#1082' '#1090#1077#1082#1091#1097#1077#1084#1091'!!!'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-      TabOrder = 0
-      object cxLabel1: TcxLabel
-        Left = 6
-        Top = 28
-        Caption = ' '#1061'.'#1042'.'
-        ParentFont = False
-        Style.Font.Charset = DEFAULT_CHARSET
-        Style.Font.Color = clWindowText
-        Style.Font.Height = -12
-        Style.Font.Name = 'Tahoma'
-        Style.Font.Style = [fsBold]
-        Style.IsFontAssigned = True
-      end
-      object cxLabel2: TcxLabel
-        Left = 128
-        Top = 28
-        Caption = #1043'.'#1042'.'
-        ParentFont = False
-        Style.Font.Charset = DEFAULT_CHARSET
-        Style.Font.Color = clWindowText
-        Style.Font.Height = -12
-        Style.Font.Name = 'Tahoma'
-        Style.Font.Style = [fsBold]
-        Style.IsFontAssigned = True
-      end
-      object Button2: TButton
-        Left = 376
-        Top = 24
-        Width = 33
-        Height = 25
-        Caption = #1054#1082
-        TabOrder = 2
-        OnClick = Button2Click
-      end
-      object cxLabel3: TcxLabel
-        Left = 248
-        Top = 28
-        Caption = #1069#1083'.'
-        ParentFont = False
-        Style.Font.Charset = DEFAULT_CHARSET
-        Style.Font.Color = clWindowText
-        Style.Font.Height = -12
-        Style.Font.Name = 'Tahoma'
-        Style.Font.Style = [fsBold]
-        Style.IsFontAssigned = True
-      end
-      object cxmskdtHW_VOL: TcxMaskEdit
-        Left = 40
-        Top = 27
-        Properties.MaskKind = emkRegExprEx
-        Properties.EditMask = '\-?\d{1,6}(.\d{0,5})'
-        TabOrder = 4
-        OnKeyDown = cxmskdtHW_VOLKeyDown
-        OnKeyPress = cxmskdtHW_VOLKeyPress
-        Width = 73
-      end
-      object cxmskdtGW_VOL: TcxMaskEdit
-        Left = 160
-        Top = 27
-        Properties.MaskKind = emkRegExprEx
-        Properties.EditMask = '\-?\d{1,6}(.\d{0,5})'
-        TabOrder = 5
-        OnKeyPress = cxmskdtGW_VOLKeyPress
-        Width = 81
-      end
-      object cxmskdtEL_VOL: TcxMaskEdit
-        Left = 280
-        Top = 27
-        Properties.MaskKind = emkRegExprEx
-        Properties.EditMask = '\-?\d{1,6}(.\d{0,5})'
-        TabOrder = 6
-        OnKeyPress = cxmskdtEL_VOLKeyPress
-        Width = 81
-      end
-    end
-    object GroupBox2: TGroupBox
-      Left = 1
-      Top = 1
-      Width = 429
-      Height = 72
-      Align = alTop
-      Caption = #1058#1077#1082#1091#1097#1080#1081' '#1086#1073#1098#1077#1084
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-      TabOrder = 1
-      object cxLabel4: TcxLabel
-        Left = 6
-        Top = 28
-        Caption = ' '#1061'.'#1042'.'
-        ParentFont = False
-        Style.Font.Charset = DEFAULT_CHARSET
-        Style.Font.Color = clWindowText
-        Style.Font.Height = -12
-        Style.Font.Name = 'Tahoma'
-        Style.Font.Style = [fsBold]
-        Style.IsFontAssigned = True
-      end
-      object cxLabel5: TcxLabel
-        Left = 128
-        Top = 28
-        Caption = #1043'.'#1042'.'
-        ParentFont = False
-        Style.Font.Charset = DEFAULT_CHARSET
-        Style.Font.Color = clWindowText
-        Style.Font.Height = -12
-        Style.Font.Name = 'Tahoma'
-        Style.Font.Style = [fsBold]
-        Style.IsFontAssigned = True
-      end
-      object cxLabel6: TcxLabel
-        Left = 248
-        Top = 28
-        Caption = #1069#1083'.'
-        ParentFont = False
-        Style.Font.Charset = DEFAULT_CHARSET
-        Style.Font.Color = clWindowText
-        Style.Font.Height = -12
-        Style.Font.Name = 'Tahoma'
-        Style.Font.Style = [fsBold]
-        Style.IsFontAssigned = True
-      end
-      object cxmskdtHW: TcxMaskEdit
-        Left = 40
-        Top = 27
-        Properties.MaskKind = emkRegExprEx
-        Properties.EditMask = '\-?\d{1,6}(.\d{0,5})'
-        TabOrder = 3
-        OnKeyDown = cxmskdtHWKeyDown
-        OnKeyPress = cxmskdtHWKeyPress
-        Width = 73
-      end
-      object cxmskdtGW: TcxMaskEdit
-        Left = 160
-        Top = 27
-        Properties.MaskKind = emkRegExprEx
-        Properties.EditMask = '\-?\d{1,6}(.\d{0,5})'
-        TabOrder = 4
-        OnKeyPress = cxmskdtGWKeyPress
-        Width = 81
-      end
-    end
     object cxmskdtEL: TcxMaskEdit
       Left = 280
       Top = 27
       Properties.MaskKind = emkRegExprEx
       Properties.EditMask = '\-?\d{1,6}(.\d{0,5})'
-      TabOrder = 2
+      TabOrder = 0
       OnKeyPress = cxmskdtELKeyPress
       Width = 81
+    end
+    object cxPageControl1: TcxPageControl
+      Left = 1
+      Top = 1
+      Width = 429
+      Height = 551
+      Align = alClient
+      TabOrder = 1
+      Properties.ActivePage = cxTabSheet1
+      Properties.CustomButtons.Buttons = <>
+      ClientRectBottom = 547
+      ClientRectLeft = 4
+      ClientRectRight = 425
+      ClientRectTop = 24
+      object cxTabSheet1: TcxTabSheet
+        Caption = #1057#1095#1077#1090#1095#1080#1082#1080
+        ImageIndex = 0
+        object GroupBox2: TGroupBox
+          Left = 0
+          Top = 0
+          Width = 421
+          Height = 72
+          Align = alTop
+          Caption = #1058#1077#1082#1091#1097#1080#1081' '#1086#1073#1098#1077#1084
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 0
+          object cxLabel4: TcxLabel
+            Left = 6
+            Top = 28
+            Caption = ' '#1061'.'#1042'.'
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -12
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = [fsBold]
+            Style.IsFontAssigned = True
+          end
+          object cxLabel5: TcxLabel
+            Left = 128
+            Top = 28
+            Caption = #1043'.'#1042'.'
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -12
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = [fsBold]
+            Style.IsFontAssigned = True
+          end
+          object cxLabel6: TcxLabel
+            Left = 248
+            Top = 28
+            Caption = #1069#1083'.'
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -12
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = [fsBold]
+            Style.IsFontAssigned = True
+          end
+          object cxmskdtHW: TcxMaskEdit
+            Left = 40
+            Top = 27
+            Properties.MaskKind = emkRegExprEx
+            Properties.EditMask = '\-?\d{1,6}\.?\d{0,5}'
+            Properties.ValidationOptions = [evoShowErrorIcon, evoAllowLoseFocus]
+            TabOrder = 3
+            OnKeyDown = cxmskdtHWKeyDown
+            OnKeyPress = cxmskdtHWKeyPress
+            Width = 73
+          end
+          object cxmskdtGW: TcxMaskEdit
+            Left = 160
+            Top = 27
+            Properties.MaskKind = emkRegExprEx
+            Properties.EditMask = '\-?\d{1,6}\.?\d{0,5}'
+            Properties.ValidationOptions = [evoShowErrorIcon, evoAllowLoseFocus]
+            TabOrder = 4
+            OnKeyPress = cxmskdtGWKeyPress
+            Width = 81
+          end
+        end
+        object GroupBox1: TGroupBox
+          Left = 0
+          Top = 72
+          Width = 421
+          Height = 72
+          Align = alTop
+          Caption = #1053#1086#1074#1099#1081' '#1086#1073#1098#1077#1084'. '#1041#1091#1076#1077#1090' '#1076#1086#1073#1072#1074#1083#1077#1085' '#1082' '#1090#1077#1082#1091#1097#1077#1084#1091'!!!'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 1
+          object cxLabel1: TcxLabel
+            Left = 6
+            Top = 28
+            Caption = ' '#1061'.'#1042'.'
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -12
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = [fsBold]
+            Style.IsFontAssigned = True
+          end
+          object cxLabel2: TcxLabel
+            Left = 128
+            Top = 28
+            Caption = #1043'.'#1042'.'
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -12
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = [fsBold]
+            Style.IsFontAssigned = True
+          end
+          object Button2: TButton
+            Left = 376
+            Top = 24
+            Width = 33
+            Height = 25
+            Caption = #1054#1082
+            TabOrder = 2
+            OnClick = Button2Click
+          end
+          object cxLabel3: TcxLabel
+            Left = 248
+            Top = 28
+            Caption = #1069#1083'.'
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -12
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = [fsBold]
+            Style.IsFontAssigned = True
+          end
+          object cxmskdtHW_VOL: TcxMaskEdit
+            Left = 40
+            Top = 27
+            Properties.MaskKind = emkRegExprEx
+            Properties.EditMask = '\-?\d{1,6}\.?\d{0,5}'
+            Properties.ValidationOptions = [evoShowErrorIcon, evoAllowLoseFocus]
+            TabOrder = 4
+            OnKeyDown = cxmskdtHW_VOLKeyDown
+            OnKeyPress = cxmskdtHW_VOLKeyPress
+            Width = 73
+          end
+          object cxmskdtGW_VOL: TcxMaskEdit
+            Left = 160
+            Top = 27
+            Properties.MaskKind = emkRegExprEx
+            Properties.EditMask = '\-?\d{1,6}\.?\d{0,5}'
+            Properties.ValidationOptions = [evoShowErrorIcon, evoAllowLoseFocus]
+            TabOrder = 5
+            OnKeyPress = cxmskdtGW_VOLKeyPress
+            Width = 81
+          end
+          object cxmskdtEL_VOL: TcxMaskEdit
+            Left = 280
+            Top = 27
+            Properties.MaskKind = emkRegExprEx
+            Properties.EditMask = '\-?\d{1,6}\.?\d{0,5}'
+            Properties.ValidationOptions = [evoShowErrorIcon, evoAllowLoseFocus]
+            TabOrder = 6
+            OnKeyPress = cxmskdtEL_VOLKeyPress
+            Width = 81
+          end
+        end
+      end
+      object cxTabSheet2: TcxTabSheet
+        Caption = #1047#1072#1076#1086#1083#1078#1085#1080#1082#1080
+        ImageIndex = 1
+        object cxGrid1: TcxGrid
+          Left = 0
+          Top = 0
+          Width = 421
+          Height = 233
+          Align = alTop
+          TabOrder = 0
+          Visible = False
+          object cxGrid1DBTableView1: TcxGridDBTableView
+            Navigator.Buttons.CustomButtons = <>
+            DataController.DataSource = DS_deb_kart_pr
+            DataController.KeyFieldNames = 'ID'
+            DataController.Summary.DefaultGroupSummaryItems = <>
+            DataController.Summary.FooterSummaryItems = <>
+            DataController.Summary.SummaryGroups = <>
+            OptionsData.Deleting = False
+            OptionsData.Inserting = False
+            OptionsView.NoDataToDisplayInfoText = #1053#1077#1090' '#1076#1072#1085#1085#1099#1093
+            OptionsView.ColumnAutoWidth = True
+            OptionsView.GroupByBox = False
+            object cxGrid1DBTableView1FIO: TcxGridDBColumn
+              Caption = #1060'.'#1048'.'#1054'.'
+              DataBinding.FieldName = 'FIO'
+              Width = 99
+            end
+            object cxGrid1DBTableView1DEB_ORG_NAME: TcxGridDBColumn
+              Caption = #1054#1088#1075'. '#1079#1072#1076#1086#1083#1078#1085#1080#1082#1072
+              DataBinding.FieldName = 'DEB_ORG_NAME'
+            end
+          end
+          object cxGrid1Level1: TcxGridLevel
+            GridView = cxGrid1DBTableView1
+          end
+        end
+      end
+    end
+  end
+  object cxgrdListKart: TcxGrid
+    Left = 0
+    Top = 0
+    Width = 597
+    Height = 553
+    Align = alClient
+    TabOrder = 5
+    object cxgrdListKartDBTableView1: TcxGridDBTableView
+      Navigator.Buttons.CustomButtons = <>
+      Navigator.Buttons.Insert.Enabled = False
+      Navigator.Buttons.Append.Enabled = False
+      Navigator.Buttons.Delete.Enabled = False
+      Navigator.Buttons.Edit.Enabled = False
+      Navigator.Buttons.Post.Enabled = False
+      Navigator.Buttons.SaveBookmark.Enabled = False
+      Navigator.Visible = True
+      DataController.DataSource = DS_list_kart
+      DataController.KeyFieldNames = 'LSK'
+      DataController.Summary.DefaultGroupSummaryItems = <>
+      DataController.Summary.FooterSummaryItems = <>
+      DataController.Summary.SummaryGroups = <>
+      OptionsBehavior.CellHints = True
+      OptionsData.Deleting = False
+      OptionsData.Editing = False
+      OptionsData.Inserting = False
+      OptionsView.GroupByBox = False
+      object cxgrdListKartDBTableView1BTN: TcxGridDBColumn
+        DataBinding.FieldName = 'BTN'
+      end
+      object cxgrdListKartDBTableView1NAME_REU: TcxGridDBColumn
+        DataBinding.FieldName = 'NAME_REU'
+      end
+      object cxgrdListKartDBTableView1LSK: TcxGridDBColumn
+        DataBinding.FieldName = 'LSK'
+      end
+      object cxgrdListKartDBTableView1DOG_NUM: TcxGridDBColumn
+        DataBinding.FieldName = 'DOG_NUM'
+      end
+      object cxgrdListKartDBTableView1KUL: TcxGridDBColumn
+        DataBinding.FieldName = 'KUL'
+      end
+      object cxgrdListKartDBTableView1NAME: TcxGridDBColumn
+        DataBinding.FieldName = 'NAME'
+      end
+      object cxgrdListKartDBTableView1N_ND: TcxGridDBColumn
+        DataBinding.FieldName = 'N_ND'
+      end
+      object cxgrdListKartDBTableView1N_KW: TcxGridDBColumn
+        DataBinding.FieldName = 'N_KW'
+      end
+      object cxgrdListKartDBTableView1ENTR: TcxGridDBColumn
+        DataBinding.FieldName = 'ENTR'
+      end
+      object cxgrdListKartDBTableView1N_STATUS: TcxGridDBColumn
+        DataBinding.FieldName = 'N_STATUS'
+      end
+      object cxgrdListKartDBTableView1FIO: TcxGridDBColumn
+        DataBinding.FieldName = 'FIO'
+      end
+      object cxgrdListKartDBTableView1ET: TcxGridDBColumn
+        DataBinding.FieldName = 'ET'
+      end
+      object cxgrdListKartDBTableView1KPR: TcxGridDBColumn
+        DataBinding.FieldName = 'KPR'
+      end
+      object cxgrdListKartDBTableView1KPR_OT: TcxGridDBColumn
+        DataBinding.FieldName = 'KPR_OT'
+      end
+      object cxgrdListKartDBTableView1KPR_WR: TcxGridDBColumn
+        DataBinding.FieldName = 'KPR_WR'
+      end
+      object cxgrdListKartDBTableView1KPR_WRP: TcxGridDBColumn
+        DataBinding.FieldName = 'KPR_WRP'
+      end
+      object cxgrdListKartDBTableView1OPL: TcxGridDBColumn
+        DataBinding.FieldName = 'OPL'
+      end
+      object cxgrdListKartDBTableView1K_LSK_ID: TcxGridDBColumn
+        DataBinding.FieldName = 'K_LSK_ID'
+      end
+      object cxgrdListKartDBTableView1FK_KLSK_PREMISE: TcxGridDBColumn
+        DataBinding.FieldName = 'FK_KLSK_PREMISE'
+      end
+      object cxgrdListKartDBTableView1HOUSE_ID: TcxGridDBColumn
+        DataBinding.FieldName = 'HOUSE_ID'
+      end
+      object cxgrdListKartDBTableView1MHW: TcxGridDBColumn
+        DataBinding.FieldName = 'MHW'
+      end
+      object cxgrdListKartDBTableView1MGW: TcxGridDBColumn
+        DataBinding.FieldName = 'MGW'
+      end
+      object cxgrdListKartDBTableView1MEL: TcxGridDBColumn
+        DataBinding.FieldName = 'MEL'
+      end
+      object cxgrdListKartDBTableView1DEB_ORG: TcxGridDBColumn
+        DataBinding.FieldName = 'DEB_ORG'
+      end
+      object cxgrdListKartDBTableView1EL1: TcxGridDBColumn
+        DataBinding.FieldName = 'EL1'
+      end
+      object cxgrdListKartDBTableView1PSCH_NAME: TcxGridDBColumn
+        DataBinding.FieldName = 'PSCH_NAME'
+      end
+      object cxgrdListKartDBTableView1MG1: TcxGridDBColumn
+        DataBinding.FieldName = 'MG1'
+      end
+      object cxgrdListKartDBTableView1MG2: TcxGridDBColumn
+        DataBinding.FieldName = 'MG2'
+      end
+      object cxgrdListKartDBTableView1KRAN1: TcxGridDBColumn
+        DataBinding.FieldName = 'KRAN1'
+      end
+      object cxgrdListKartDBTableView1TEXT: TcxGridDBColumn
+        DataBinding.FieldName = 'TEXT'
+      end
+      object cxgrdListKartDBTableView1PARENT_LSK: TcxGridDBColumn
+        DataBinding.FieldName = 'PARENT_LSK'
+      end
+      object cxgrdListKartDBTableView1DT_CR: TcxGridDBColumn
+        DataBinding.FieldName = 'DT_CR'
+      end
+      object cxgrdListKartDBTableView1FK_KLSK_OBJ: TcxGridDBColumn
+        DataBinding.FieldName = 'FK_KLSK_OBJ'
+      end
+    end
+    object cxgrdListKartLevel1: TcxGridLevel
+      GridView = cxgrdListKartDBTableView1
     end
   end
   object OD_list_kart: TOracleDataSet
