@@ -1,6 +1,6 @@
 object Form_sel_usl: TForm_sel_usl
-  Left = 746
-  Top = 164
+  Left = 610
+  Top = 822
   Width = 383
   Height = 409
   Caption = #1042#1099#1073#1086#1088' '#1091#1089#1083#1091#1075' '#1076#1083#1103' '#1086#1090#1095#1077#1090#1072
@@ -89,42 +89,13 @@ object Form_sel_usl: TForm_sel_usl
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object wwDBGrid1: TwwDBGrid
-    Left = 0
-    Top = 0
-    Width = 375
-    Height = 343
-    ControlType.Strings = (
-      'SEL;CheckBox;0;1')
-    Selected.Strings = (
-      'NM1'#9'45'#9#1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077#9'F'
-      'SEL'#9'10'#9#1042#1099#1073#1088#1072#1090#1100#9'F')
-    IniAttributes.Delimiter = ';;'
-    TitleColor = clBtnFace
-    FixedCols = 0
-    ShowHorzScrollBar = True
-    EditControlOptions = [ecoCheckboxSingleClick, ecoSearchOwnerForm]
-    Align = alClient
-    DataSource = DS_list_choice
-    Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgWordWrap, dgProportionalColResize]
-    TabOrder = 0
-    TitleAlignment = taLeftJustify
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'MS Sans Serif'
-    TitleFont.Style = []
-    TitleLines = 1
-    TitleButtons = False
-    UseTFields = False
-  end
   object Panel1: TPanel
     Left = 0
-    Top = 343
-    Width = 375
+    Top = 331
+    Width = 367
     Height = 39
     Align = alBottom
-    TabOrder = 1
+    TabOrder = 0
     object Button1: TButton
       Left = 296
       Top = 8
@@ -137,7 +108,7 @@ object Form_sel_usl: TForm_sel_usl
     end
     object BitBtn2: TBitBtn
       Left = 209
-      Top = 8
+      Top = 6
       Width = 41
       Height = 25
       Hint = #1054#1090#1084#1077#1085#1080#1090#1100' '#1074#1089#1077
@@ -201,7 +172,7 @@ object Form_sel_usl: TForm_sel_usl
     end
     object BitBtn1: TBitBtn
       Left = 168
-      Top = 8
+      Top = 6
       Width = 41
       Height = 25
       Hint = #1042#1099#1073#1088#1072#1090#1100' '#1074#1089#1077
@@ -239,15 +210,90 @@ object Form_sel_usl: TForm_sel_usl
         0404040411083607271A36363636353534040404040404040404040404040404
         0404040404040404040404040404}
     end
-    object DBNavigator1: TDBNavigator
-      Left = 0
-      Top = 8
-      Width = 168
-      Height = 25
-      DataSource = DS_list_choice
-      VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
-      TabOrder = 3
-      TabStop = True
+  end
+  object cxGrid1: TcxGrid
+    Left = 0
+    Top = 0
+    Width = 367
+    Height = 331
+    Align = alClient
+    TabOrder = 1
+    object cxGridDBTableView1: TcxGridDBTableView
+      OnDblClick = cxGridDBTableView1DblClick
+      Navigator.Buttons.CustomButtons = <>
+      Navigator.Buttons.Insert.Visible = False
+      Navigator.Buttons.Append.Visible = True
+      Navigator.Buttons.Delete.Visible = False
+      Navigator.Buttons.Edit.Visible = False
+      Navigator.Buttons.Post.Visible = False
+      Navigator.Buttons.Cancel.Visible = False
+      Navigator.Buttons.Refresh.Visible = False
+      Navigator.Buttons.SaveBookmark.Visible = False
+      Navigator.Buttons.Filter.Visible = False
+      Navigator.Visible = True
+      DataController.DataSource = DS_list_choice
+      DataController.Summary.DefaultGroupSummaryItems = <
+        item
+          Format = #1054#1073#1098#1077#1084' 0.00'
+          Kind = skSum
+        end
+        item
+          Format = #1048#1079#1084#1077#1085#1077#1085#1080#1103' 0.00'
+          Kind = skSum
+        end
+        item
+          Format = #1058#1072#1088#1080#1092' 0.00'
+          Kind = skSum
+        end
+        item
+          Kind = skSum
+          Position = spFooter
+        end
+        item
+          Format = #1048#1090#1086#1075#1086' 0.00'
+          Kind = skSum
+        end
+        item
+          Kind = skSum
+          Position = spFooter
+        end>
+      DataController.Summary.FooterSummaryItems = <
+        item
+          Kind = skSum
+        end
+        item
+          Format = #1048#1090#1086#1075#1086' 0.00'
+        end
+        item
+          Kind = skSum
+        end>
+      DataController.Summary.SummaryGroups = <>
+      OptionsBehavior.CellHints = True
+      OptionsData.Deleting = False
+      OptionsData.Editing = False
+      OptionsData.Inserting = False
+      OptionsView.ColumnAutoWidth = True
+      OptionsView.FooterMultiSummaries = True
+      OptionsView.GroupByBox = False
+      OptionsView.GroupFooterMultiSummaries = True
+      OptionsView.HeaderAutoHeight = True
+      OptionsView.Indicator = True
+      object cxGridDBTableView1NM1: TcxGridDBColumn
+        Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
+        DataBinding.FieldName = 'NM1'
+      end
+      object cxGridDBTableView1SEL: TcxGridDBColumn
+        Caption = #1042#1099#1073#1088#1072#1085#1086
+        DataBinding.FieldName = 'SEL'
+        PropertiesClassName = 'TcxCheckBoxProperties'
+        Properties.NullStyle = nssUnchecked
+        Properties.ValueChecked = 1
+        Properties.ValueGrayed = 0
+        Properties.ValueUnchecked = '0'
+      end
+    end
+    object cxGridLevel1: TcxGridLevel
+      GridView = cxGridDBTableView1
     end
   end
   object OD_list_choice: TOracleDataSet
