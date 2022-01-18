@@ -4,8 +4,10 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, DB, OracleData, DBCtrlsEh, DBLookupEh, DBGridEh, Utils,
-  Mask;
+  Dialogs, StdCtrls, DB, OracleData, Utils,
+  Mask, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
+  cxContainer, cxEdit, cxTextEdit, cxMaskEdit, cxDropDownEdit,
+  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox;
 
 type
   TForm_add_lsk = class(TForm)
@@ -15,22 +17,22 @@ type
     GroupBox1: TGroupBox;
     OD_reu: TOracleDataSet;
     DS_reu: TDataSource;
-    DBLookupComboboxEh1: TDBLookupComboboxEh;
     DS_spul: TDataSource;
     OD_spul: TOracleDataSet;
-    DBLookupComboboxEh3: TDBLookupComboboxEh;
-    DBEditEh1: TDBEditEh;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     OD_reuREU: TStringField;
     OD_reuNAME_REU: TStringField;
-    DBLookupComboboxEh5: TDBLookupComboboxEh;
     Label43: TLabel;
     DS_pasp: TDataSource;
     OD_pasp: TOracleDataSet;
     OD_paspID: TFloatField;
     OD_paspNAME: TStringField;
+    cbbUk: TcxLookupComboBox;
+    cbbStreet: TcxLookupComboBox;
+    cbbPasp: TcxLookupComboBox;
+    cxtxtNd: TcxTextEdit;
     procedure Button1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -70,7 +72,7 @@ procedure TForm_add_lsk.Button2Click(Sender: TObject);
 begin
 if (OD_reu.FieldByName('reu').AsString = null) or
    (OD_spul.FieldByName('id').AsString = null) or
-   (DBEditEh1.Text = '') then
+   (cxtxtNd.Text = '') then
    begin
      msg2('”казаны не все параметры!',
           '¬нимание!', MB_ICONSTOP+MB_OK+MB_APPLMODAL);
@@ -80,7 +82,7 @@ if (OD_reu.FieldByName('reu').AsString = null) or
 if DataModule1.OraclePackage1.CallIntegerFunction(
     'scott.p_houses.create_house',
     [OD_reu.FieldByName('reu').asString, OD_spul.FieldByName('id').asString,
-      DBEditEh1.Text]) = 0 then
+      cxtxtNd.Text]) = 0 then
     begin
      msg2('”казан существующий адрес!',
           '¬нимание!', MB_ICONSTOP+MB_OK+MB_APPLMODAL);

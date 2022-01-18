@@ -1,6 +1,6 @@
 object Form_add_lsk: TForm_add_lsk
-  Left = 660
-  Top = 192
+  Left = 998
+  Top = 176
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1053#1086#1074#1099#1081' '#1076#1086#1084
@@ -56,9 +56,9 @@ object Form_add_lsk: TForm_add_lsk
     object Label1: TLabel
       Left = 40
       Top = 24
-      Width = 30
+      Width = 18
       Height = 13
-      Caption = #1046#1069#1054
+      Caption = #1059#1050
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -105,52 +105,53 @@ object Form_add_lsk: TForm_add_lsk
       Font.Style = [fsBold]
       ParentFont = False
     end
-    object DBLookupComboboxEh1: TDBLookupComboboxEh
+    object cbbUk: TcxLookupComboBox
       Left = 80
-      Top = 16
-      Width = 185
-      Height = 21
-      EditButtons = <>
-      KeyField = 'REU'
-      ListField = 'NAME_REU'
-      ListSource = DS_reu
+      Top = 17
+      Properties.GridMode = True
+      Properties.KeyFieldNames = 'REU'
+      Properties.ListColumns = <
+        item
+          FieldName = 'NAME_REU'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = DS_reu
       TabOrder = 0
-      Visible = True
-    end
-    object DBLookupComboboxEh3: TDBLookupComboboxEh
-      Left = 80
-      Top = 48
       Width = 185
-      Height = 21
-      DropDownBox.Sizable = True
-      DropDownBox.Width = 250
-      EditButtons = <>
-      KeyField = 'ID'
-      ListField = 'NAME'
-      ListSource = DS_spul
-      TabOrder = 1
-      Visible = True
     end
-    object DBEditEh1: TDBEditEh
+    object cbbStreet: TcxLookupComboBox
+      Left = 80
+      Top = 49
+      Properties.GridMode = True
+      Properties.KeyFieldNames = 'ID'
+      Properties.ListColumns = <
+        item
+          FieldName = 'NAME'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = DS_spul
+      TabOrder = 1
+      Width = 185
+    end
+    object cbbPasp: TcxLookupComboBox
+      Left = 80
+      Top = 113
+      Properties.GridMode = True
+      Properties.KeyFieldNames = 'ID'
+      Properties.ListColumns = <
+        item
+          FieldName = 'NAME'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = DS_pasp
+      TabOrder = 2
+      Width = 185
+    end
+    object cxtxtNd: TcxTextEdit
       Left = 80
       Top = 80
-      Width = 121
-      Height = 21
-      EditButtons = <>
-      TabOrder = 2
-      Visible = True
-    end
-    object DBLookupComboboxEh5: TDBLookupComboboxEh
-      Left = 80
-      Top = 110
-      Width = 185
-      Height = 21
-      EditButtons = <>
-      KeyField = 'ID'
-      ListField = 'NAME'
-      ListSource = DS_pasp
       TabOrder = 3
-      Visible = True
+      Width = 121
     end
   end
   object OD_reu: TOracleDataSet
