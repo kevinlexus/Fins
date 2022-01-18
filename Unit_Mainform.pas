@@ -302,7 +302,6 @@ type
     procedure FormPaint(Sender: TObject);
     procedure N78Click(Sender: TObject);
     procedure N79Click(Sender: TObject);
-    procedure N80Click(Sender: TObject);
     procedure N81Click(Sender: TObject);
     procedure N82Click(Sender: TObject);
     procedure N83Click(Sender: TObject);
@@ -492,7 +491,7 @@ uses
   Unit_print_saldo_usl, Unit_print_plan, Unit_form_plan, Unit_print_pred_debit,
   Unit_corrects, 
   Unit1_print_pen,
-  Unit_print_bank, Unit_form_sign_rep, Unit_form_print_stat1,
+  Unit_print_bank, Unit_form_print_stat1,
   Unit_print_status, Unit_form_params, Unit_form_bills, 
   Unit_corr_payments, Unit_print_xito13,
   Unit_print_debits_adm, Unit_form_kart, Unit_sel_comps, Unit_get_pay,
@@ -501,10 +500,10 @@ uses
   Unit_chargepay, Unit_sel_arch_period, Unit_find_adr, Unit_changes_list,
   Unit_houses_nabor, Unit_spr_spk, Unit_gen_current, Unit_print_lists,
   Unit_spr_sprorg, Unit_spr_prices, Unit_spr_oper, Unit_status_gen,
-  Unit_spr_users, Unit_requests, Unit_form_saldo, Unit_form_olap,
-  Unit_tree_objects, Unit_get_pay_nal, Unit_spr_tarif, Unit_recv_pay_bank,
+  Unit_spr_users, Unit_form_saldo, Unit_form_olap,
+  Unit_tree_objects, Unit_get_pay_nal, Unit_recv_pay_bank,
   Unit_load_files, Unit_spr_deb_org, Unit_spr_penya, Unit_edit_reports,
-  Unit_oracle_load, Unit_form_kart_pr, Unit_dvb_connect, Unit_spr_params,
+  Unit_oracle_load, Unit_form_kart_pr, Unit_spr_params,
   Unit_spr_street, Unit_spr_usl, Unit_spr_rep, Unit_list_set, Unit_prep_doc,
   Unit_corr_sal, Unit_spr_comps, Unit_spr_props, Unit_lk_acc, Unit_auto_chrg,
   Unit_service_cash, u_frmLoadPrivs, u_frmPenCorr, u_frmLoadFias,
@@ -848,7 +847,7 @@ end;
 
 procedure TForm_Main.N38Click(Sender: TObject);
 begin
-  Application.CreateForm(TForm_sign_rep, Form_sign_rep);
+  //Application.CreateForm(TForm_sign_rep, Form_sign_rep);
 end;
 
 procedure TForm_Main.N40Click(Sender: TObject);
@@ -1337,8 +1336,8 @@ end;
 
 procedure TForm_Main.N74Click(Sender: TObject);
 begin
-  if FF('Form_dvb_connect', 1) = 0 then
-    Application.CreateForm(TForm_dvb_connect, Form_dvb_connect);
+  //if FF('Form_dvb_connect', 1) = 0 then
+//    Application.CreateForm(TForm_dvb_connect, Form_dvb_connect);
 end;
 
 procedure TForm_Main.N75Click(Sender: TObject);
@@ -1363,11 +1362,11 @@ end;
 
 procedure TForm_Main.N72Click(Sender: TObject);
 begin
-  if FF('Form_requests', 1) = 0 then
+{  if FF('Form_requests', 1) = 0 then
   begin
     Application.CreateForm(TForm_requests, Form_requests);
     Form_requests.setTypeAcess(1);
-  end;
+  end;}
 end;
 
 procedure TForm_Main.N76Click(Sender: TObject);
@@ -1441,15 +1440,6 @@ begin
   Form_print_stat_usl.Select_form(37, 2, 1);
   Form_print_stat_usl.Caption := TMenuItem(Sender).Caption;
   }
-end;
-
-procedure TForm_Main.N80Click(Sender: TObject);
-begin
-  if FF('Form_spr_tarif', 1) = 0 then
-  begin
-    Application.CreateForm(TForm_spr_tarif, Form_spr_tarif);
-    Form_spr_tarif.ShowModal;
-  end;
 end;
 
 procedure TForm_Main.N81Click(Sender: TObject);

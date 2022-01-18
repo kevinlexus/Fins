@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, OracleData, ExtCtrls, DBCtrls, DBGridEh,
+  Dialogs, DB, OracleData, ExtCtrls, DBCtrls, 
   StdCtrls, DM_module1, Buttons, 
   cxGraphics, cxControls, 
   cxCustomData, cxFilter, 

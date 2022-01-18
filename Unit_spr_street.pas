@@ -4,8 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, StdCtrls, wwSpeedButton, wwDBNavigator, ExtCtrls,
-  DBGridEh, Wwdatsrc, OracleData, DBCtrls, Utils, cxGraphics,
+  Dialogs, DB, StdCtrls, ExtCtrls,
+  OracleData, DBCtrls, Utils, cxGraphics,
   cxControls, 
   
   cxGridDBTableView,
