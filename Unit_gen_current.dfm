@@ -192,31 +192,22 @@ object Form_gen_current: TForm_gen_current
     TabOrder = 1
     OnClick = CheckBox2Click
   end
-  object cxdbdtdtDtFrom: TcxDBDateEdit
-    Left = 131
-    Top = 9
-    DataBinding.DataField = 'DAT_ROG'
-    DataBinding.DataSource = Form_kart.DS_kart_pr
-    Properties.ReadOnly = False
+  object cxDtFrom: TcxDateEdit
+    Left = 132
+    Top = 12
     TabOrder = 3
-    Width = 86
+    Width = 89
   end
-  object cxdbdtdtDtTo: TcxDBDateEdit
-    Left = 243
-    Top = 9
-    DataBinding.DataField = 'DAT_ROG'
-    DataBinding.DataSource = Form_kart.DS_kart_pr
-    Properties.ReadOnly = False
+  object cxDtTo: TcxDateEdit
+    Left = 240
+    Top = 13
     TabOrder = 4
-    Width = 86
+    Width = 89
   end
-  object cxdbdtdtDT: TcxDBDateEdit
-    Left = 243
-    Top = 52
-    DataBinding.DataField = 'DAT_ROG'
-    DataBinding.DataSource = Form_kart.DS_kart_pr
-    Properties.ReadOnly = False
+  object cxDt: TcxDateEdit
+    Left = 241
+    Top = 49
     TabOrder = 5
-    Width = 86
+    Width = 89
   end
 end

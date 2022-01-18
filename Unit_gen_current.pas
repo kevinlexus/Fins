@@ -4,9 +4,10 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, DBCtrlsEh, Oracle, ExtCtrls, Mask, cxGraphics,
+  Dialogs, StdCtrls, Oracle, ExtCtrls, Mask, cxGraphics,
   cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit,
-  cxTextEdit, cxMaskEdit, cxDropDownEdit, cxCalendar, cxDBEdit;
+  cxTextEdit, cxMaskEdit, cxDropDownEdit, cxCalendar, cxDBEdit, ComCtrls,
+  dxCore, cxDateUtils;
 
 type
   TForm_gen_current = class(TForm)
@@ -19,9 +20,9 @@ type
     Label2: TLabel;
     Bevel1: TBevel;
     Label3: TLabel;
-    cxdbdtdtDtFrom: TcxDBDateEdit;
-    cxdbdtdtDtTo: TcxDBDateEdit;
-    cxdbdtdtDT: TcxDBDateEdit;
+    cxDtTo: TcxDateEdit;
+    cxDt: TcxDateEdit;
+    cxDtFrom: TcxDateEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -54,9 +55,9 @@ begin
   if CheckBox1.Checked=true then
   begin
   valid_:=DataModule1.OraclePackage1.CallIntegerFunction
-         ('scott.INIT.check_date', [cxdbdtdtDtFrom.EditValue]);
+         ('scott.INIT.check_date', [cxDtFrom.EditValue]);
   valid1_:=DataModule1.OraclePackage1.CallIntegerFunction
-         ('scott.INIT.check_date', [cxdbdtdtDtTo.EditValue]);
+         ('scott.INIT.check_date', [cxDtTo.EditValue]);
     if (valid_ = 0) or (valid1_ = 0) then
       msg4('Дата не соответствует текущему периоду', 'Внимание!' , MB_ICONEXCLAMATION)
     else
@@ -84,18 +85,18 @@ begin
     Form_status.incpos(1);
     DataModule1.OraclePackage1.CallProcedure
        ('scott.gen.gen_opl_xito5day',
-       [cxdbdtdtDtFrom.EditValue,
-        cxdbdtdtDtTo.EditValue]);
+       [cxDtFrom.EditValue,
+        cxDtTo.EditValue]);
     Form_status.incpos(1);
     DataModule1.OraclePackage1.CallProcedure
        ('scott.gen.gen_opl_xito5day_',
-       [cxdbdtdtDtFrom.EditValue,
-        cxdbdtdtDtTo.EditValue]);
+       [cxDtFrom.EditValue,
+        cxDtTo.EditValue]);
     Form_status.incpos(1);
     DataModule1.OraclePackage1.CallProcedure
        ('scott.gen.gen_opl_xito10day',
-       [cxdbdtdtDtFrom.EditValue,
-        cxdbdtdtDtTo.EditValue]);
+       [cxDtFrom.EditValue,
+        cxDtTo.EditValue]);
     Form_status.Close;
     end;
   end;
@@ -103,7 +104,7 @@ begin
   if CheckBox2.Checked=true then
   begin
     valid_:=DataModule1.OraclePackage1.CallIntegerFunction
-          ('scott.INIT.check_date', [cxdbdtdtDT.EditValue]);
+          ('scott.INIT.check_date', [cxDt.EditValue]);
     if valid_ = 0 then
       msg4('Дата не соответствует текущему периоду', 'Внимание!' , MB_OK+MB_ICONEXCLAMATION)
     else
@@ -151,7 +152,7 @@ begin
       //DataModule1.OraclePackage1.CallProcedure
       //      ('scott.c_cpenya.gen_charge_pay_full', [parNone]);
       DataModule1.OraclePackage1.CallProcedure
-            ('scott.c_cpenya.gen_charge_pay_pen', [cxdbdtdtDT.EditValue]);
+            ('scott.c_cpenya.gen_charge_pay_pen', [cxDt.EditValue]);
       Form_status.incpos(1);
       //Архивные карточки
       DataModule1.OraclePackage1.CallProcedure
@@ -160,7 +161,7 @@ begin
       //Долги
       DataModule1.OraclePackage1.CallProcedure
          ('scott.gen.gen_debits_lsk_month',
-         [cxdbdtdtDT.EditValue]);
+         [cxDt.EditValue]);
       Form_status.Close;
      end;
   end;
@@ -179,10 +180,10 @@ end;
 procedure TForm_gen_current.FormCreate(Sender: TObject);
 begin
   Autosize:=true;
-  cxdbdtdtDtFrom.EditValue := DataModule1.OraclePackage1.CallDateFunction(
+  cxDtFrom.EditValue := DataModule1.OraclePackage1.CallDateFunction(
     'scott.INIT.get_period_date', [Form_main.nkom_]);
-  cxdbdtdtDtTo.EditValue := cxdbdtdtDtFrom.EditValue;
-  cxdbdtdtDT.EditValue := cxdbdtdtDtFrom.EditValue;
+  cxDtTo.EditValue := cxDtFrom.EditValue;
+  cxDt.EditValue := cxDtFrom.EditValue;
 end;
 
 procedure TForm_gen_current.Button1Click(Sender: TObject);
@@ -199,13 +200,13 @@ procedure TForm_gen_current.CheckBox1Click(Sender: TObject);
 begin
   if CheckBox1.Checked = True then
   begin
-  cxdbdtdtDtFrom.Enabled:=true;
-  cxdbdtdtDtTo.Enabled:=true;
+  cxDtFrom.Enabled:=true;
+  cxDtTo.Enabled:=true;
   end
   else
   begin
-  cxdbdtdtDtFrom.Enabled:=false;
-  cxdbdtdtDtTo.Enabled:=false;
+  cxDtFrom.Enabled:=false;
+  cxDtTo.Enabled:=false;
   end;
 
 end;
@@ -214,11 +215,11 @@ procedure TForm_gen_current.CheckBox2Click(Sender: TObject);
 begin
   if CheckBox2.Checked = True then
   begin
-  cxdbdtdtDT.Enabled:=true;
+  cxDt.Enabled:=true;
   end
   else
   begin
-  cxdbdtdtDT.Enabled:=false;
+  cxDt.Enabled:=false;
   end;
 
 end;

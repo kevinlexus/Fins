@@ -342,7 +342,7 @@ end;
 procedure TForm_houses_nabor.SpeedButton1Click(Sender: TObject);
 begin
   Application.CreateForm(TForm_find_adr, Form_find_adr);
-  Form_find_adr.wwDBLookupCombo4.Enabled := false;
+  Form_find_adr.cbbKw.Enabled := false;
   Form_find_adr.SetAccess(1, 1, 1, 0);
   if Form_find_adr.ShowModal = mrOk then
   begin

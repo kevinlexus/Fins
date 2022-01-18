@@ -759,7 +759,7 @@ end;
 
 procedure TForm_Main.FormCreate(Sender: TObject);
 begin
-  Application.OnException := AppException;
+  //Application.OnException := AppException;
   Versia := 187;
   logText('Начало работы с Direct.exe');
   DisableGhosting;
