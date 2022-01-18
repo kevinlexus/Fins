@@ -505,7 +505,7 @@ object Form_spr_sprorg: TForm_spr_sprorg
       Top = 1
       Width = 676
       Height = 679
-      ActivePage = TabSheet4
+      ActivePage = TabSheet1
       Align = alClient
       TabOrder = 0
       object TabSheet1: TTabSheet

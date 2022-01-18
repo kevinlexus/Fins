@@ -70,7 +70,6 @@ uses
   GRTreeView in 'GRTreeView.pas',
   Unit_form_edit_price in 'Unit_form_edit_price.pas' {Form_edit_price},
   Unit_status in 'Unit_status.pas' {Form_status},
-  Unit_edit_work in 'Unit_edit_work.pas' {Form_edit_work},
   Unit_form_saldo in 'Unit_form_saldo.pas' {Form_saldo},
   Unit_load_file in 'Unit_load_file.pas',
   Unit_tree_objects in 'Unit_tree_objects.pas' {Form_tree_objects},

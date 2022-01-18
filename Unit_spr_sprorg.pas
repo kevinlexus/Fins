@@ -4,9 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, Wwdatsrc, OracleData, StdCtrls, wwSpeedButton,
-  wwDBNavigator, ExtCtrls, DBCtrls, 
-  DBGridEh, DBCtrlsEh, wwdblook,
+  Dialogs, DB, OracleData, StdCtrls, 
+  ExtCtrls, DBCtrls, 
   cxControls,
   
   
@@ -29,7 +28,8 @@ uses
   ComCtrls, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters, cxStyles,
   cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
   cxDBData, cxCheckBox, cxTextEdit, cxDBLookupComboBox,
-  cxGridCustomTableView, cxGridTableView, cxGridCustomView;
+  cxGridCustomTableView, cxGridTableView, cxGridCustomView, Wwdatsrc,
+  wwdblook;
 
 type
   TForm_spr_sprorg = class(TForm)

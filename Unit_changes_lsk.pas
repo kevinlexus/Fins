@@ -8,7 +8,11 @@ uses
   wwdbedit, Wwdotdot, Wwdbcomb, wwdblook, Oracle, Utils, wwriched,
   DBGridEh, wwSpeedButton, wwDBNavigator, ExtCtrls, 
   Menus, Wwintl, wwfltdlg, Wwdbigrd,
-  Wwdbgrid, ComCtrls, wwDialog, Grids, wwclearpanel;
+  Wwdbgrid, ComCtrls, wwDialog, Grids, wwclearpanel, cxGraphics,
+  cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxStyles,
+  cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
+  cxDBData, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
+  cxGridLevel, cxClasses, cxGridCustomView, cxGrid;
 
 type
   TForm_changes_lsk = class(TForm)
@@ -29,32 +33,29 @@ type
     OD_changesTS: TDateTimeField;
     OD_changesTEXT: TStringField;
     OD_changesCNT_DAYS: TFloatField;
-    wwDBNavigator1: TwwDBNavigator;
-    wwDBNavigator1First: TwwNavButton;
-    wwDBNavigator1PriorPage: TwwNavButton;
-    wwDBNavigator1Prior: TwwNavButton;
-    wwDBNavigator1Next: TwwNavButton;
-    wwDBNavigator1NextPage: TwwNavButton;
-    wwDBNavigator1Last: TwwNavButton;
-    wwDBNavigator1Insert: TwwNavButton;
-    wwDBNavigator1Delete: TwwNavButton;
-    wwDBNavigator1Edit: TwwNavButton;
-    wwDBNavigator1Post: TwwNavButton;
-    wwDBNavigator1Cancel: TwwNavButton;
-    wwDBNavigator1Refresh: TwwNavButton;
-    wwDBNavigator1SaveBookmark: TwwNavButton;
-    wwDBNavigator1RestoreBookmark: TwwNavButton;
     PopupMenu3: TPopupMenu;
     mnu1: TMenuItem;
     mnu2: TMenuItem;
     OD_changesID: TFloatField;
     OD_changesDOC_ID: TFloatField;
-    wwDBGrid1: TwwDBGrid;
-    wwFilterDialog1: TwwFilterDialog;
-    wwIntl1: TwwIntl;
-    wwDBRichEdit1: TwwDBRichEdit;
     OD_changesMG2: TStringField;
     OD_changesVOL: TFloatField;
+    cxGrid1: TcxGrid;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    cxGrid1DBTableView1LSK: TcxGridDBColumn;
+    cxGrid1DBTableView1DTEK: TcxGridDBColumn;
+    cxGrid1DBTableView1MGCHANGE: TcxGridDBColumn;
+    cxGrid1DBTableView1MG2: TcxGridDBColumn;
+    cxGrid1DBTableView1PROC: TcxGridDBColumn;
+    cxGrid1DBTableView1CNT_DAYS: TcxGridDBColumn;
+    cxGrid1DBTableView1SUMMA: TcxGridDBColumn;
+    cxGrid1DBTableView1NM: TcxGridDBColumn;
+    cxGrid1DBTableView1NAME: TcxGridDBColumn;
+    cxGrid1DBTableView1FIO: TcxGridDBColumn;
+    cxGrid1DBTableView1TEXT: TcxGridDBColumn;
+    cxGrid1DBTableView1ID: TcxGridDBColumn;
+    cxGrid1DBTableView1DOC_ID: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -221,8 +222,6 @@ begin
              except
       end;
 
-  wwDBGrid1.ColumnByName('LSK').FooterValue :='Итого:';
-  wwDBGrid1.ColumnByName('SUMMA').FooterValue :=FloatToStrF(summa_, ffFixed, 10, 2);
 end;
 
 procedure TForm_changes_lsk.OD_changesAfterOpen(DataSet: TDataSet);
