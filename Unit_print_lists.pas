@@ -7,7 +7,7 @@ uses
   Dialogs, StdCtrls, Mask, DBCtrlsEh, DBLookupEh, DB, OracleData, frxClass,
   frxDBSet, frxExportXML, DBF, Utils, ExtCtrls, DBGridEh,
   wwdbedit, frxExportText, frxExportCSV, StrUtils, Math, wwdblook,
-  frxDesgn;
+  frxDesgn, frxExportBaseDialog;
 
 type
   TForm_print_lists = class(TForm)

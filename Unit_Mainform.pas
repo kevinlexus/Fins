@@ -25,13 +25,9 @@ type
     N4: TMenuItem;
     N5: TMenuItem;
     N6: TMenuItem;
-    N7: TMenuItem;
-    N8: TMenuItem;
     ToolBar1: TToolBar;
     ImageList1: TImageList;
     N13: TMenuItem;
-    N14: TMenuItem;
-    N15: TMenuItem;
     N18: TMenuItem;
     N19: TMenuItem;
     N20: TMenuItem;
@@ -45,11 +41,8 @@ type
     N26: TMenuItem;
     N28: TMenuItem;
     N29: TMenuItem;
-    N210: TMenuItem;
-    N211: TMenuItem;
     N30: TMenuItem;
     N31: TMenuItem;
-    N212: TMenuItem;
     N9: TMenuItem;
     N32: TMenuItem;
     N33: TMenuItem;
@@ -57,7 +50,6 @@ type
     Timer_messages: TTimer;
     N27: TMenuItem;
     N35: TMenuItem;
-    N37: TMenuItem;
     N38: TMenuItem;
     N39: TMenuItem;
     N40: TMenuItem;
@@ -128,7 +120,6 @@ type
     N88: TMenuItem;
     N90: TMenuItem;
     Oracle1: TMenuItem;
-    N10: TMenuItem;
     N11: TMenuItem;
     N12: TMenuItem;
     N36: TMenuItem;
@@ -143,7 +134,6 @@ type
     N94: TMenuItem;
     N95: TMenuItem;
     N96: TMenuItem;
-    N97: TMenuItem;
     OD_spr: TOracleDataSet;
     N98: TMenuItem;
     N99: TMenuItem;
@@ -250,11 +240,9 @@ type
     procedure N27Click(Sender: TObject);
     procedure N28Click(Sender: TObject);
     procedure N210Click(Sender: TObject);
-    procedure N30Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure N31Click(Sender: TObject);
     procedure N212Click(Sender: TObject);
-    procedure N32Click(Sender: TObject);
     procedure N34Click(Sender: TObject);
     procedure text1Click(Sender: TObject);
     procedure Timer_messagesTimer(Sender: TObject);
@@ -498,12 +486,12 @@ var
 implementation
 
 uses
-  Unit_print_opl_xito3, Unit_check_days, Unit_form_admin,
+  Unit_check_days, Unit_form_admin,
   Unit_print_opl_usl, Unit_print_strah, Unit_generate, Unit_print_saldo_houses,
   Unit_print_saldo_org_usl, Unit_form_alert_exit, Unit_about,
   Unit_print_saldo_usl, Unit_print_plan, Unit_form_plan, Unit_print_pred_debit,
-  Unit_print_xito5, Unit_print_opl_xito10_3, Unit_form_saldo_check,
-  Unit_print_lg_usl, Unit_corrects, Unit_form_messages, Unit1_print_pen,
+  Unit_corrects, 
+  Unit1_print_pen,
   Unit_print_bank, Unit_form_sign_rep, Unit_form_print_stat1,
   Unit_print_status, Unit_form_params, Unit_form_bills, 
   Unit_corr_payments, Unit_print_xito13,
@@ -550,7 +538,7 @@ end;
 
 procedure TForm_Main.N7Click(Sender: TObject);
 begin
-  Application.CreateForm(TForm_print_opl_xito3, Form_print_opl_xito3);
+ // Application.CreateForm(TForm_print_opl_xito3, Form_print_opl_xito3);
 end;
 
 procedure TForm_Main.N11Click(Sender: TObject);
@@ -598,7 +586,7 @@ end;
 
 procedure TForm_Main.N14Click(Sender: TObject);
 begin
-  Application.CreateForm(TForm_opl_usl, Form_opl_usl);
+  //Application.CreateForm(TForm_opl_usl, Form_opl_usl);
 end;
 
 procedure TForm_Main.N15Click(Sender: TObject);
@@ -662,12 +650,7 @@ end;
 
 procedure TForm_Main.N210Click(Sender: TObject);
 begin
-  Application.CreateForm(TForm_print_xito5, Form_print_xito5);
-end;
-
-procedure TForm_Main.N30Click(Sender: TObject);
-begin
-  Application.CreateForm(TForm_saldo_check, Form_saldo_check);
+ // Application.CreateForm(TForm_print_xito5, Form_print_xito5);
 end;
 
 procedure TForm_Main.create_OLE_Eq;
@@ -800,12 +783,7 @@ end;
 
 procedure TForm_Main.N212Click(Sender: TObject);
 begin
-  Application.CreateForm(TForm_print_opl_xito10_3, Form_print_opl_xito10_3);
-end;
-
-procedure TForm_Main.N32Click(Sender: TObject);
-begin
-  Application.CreateForm(TForm_print_lg_usl, Form_print_lg_usl);
+ // Application.CreateForm(TForm_print_opl_xito10_3, Form_print_opl_xito10_3);
 end;
 
 procedure TForm_Main.N34Click(Sender: TObject);
@@ -815,7 +793,7 @@ end;
 
 procedure TForm_Main.text1Click(Sender: TObject);
 begin
-  Application.CreateForm(TForm_messages, Form_messages);
+  //Application.CreateForm(TForm_messages, Form_messages);
 end;
 
 procedure TForm_Main.Timer_messagesTimer(Sender: TObject);

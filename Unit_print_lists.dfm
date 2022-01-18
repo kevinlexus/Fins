@@ -326,7 +326,7 @@ object Form_print_lists: TForm_print_lists
     Top = 336
   end
   object frxReport1: TfrxReport
-    Version = '5.1.9'
+    Version = '6.2.11'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -366,8 +366,10 @@ object Form_print_lists: TForm_print_lists
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 16.177180000000000000
         Top = 207.874150000000000000
         Width = 1511.812000000000000000
@@ -375,6 +377,7 @@ object Form_print_lists: TForm_print_lists
         DataSetName = 'frxDBData1'
         RowCount = 0
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 70.000000000000000000
           Top = 0.102350000000001300
           Width = 216.988250000000000000
@@ -384,11 +387,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[frxDBData1."FIO"]')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 289.000000000000000000
           Top = 0.102350000000001300
           Width = 117.315090000000000000
@@ -401,11 +406,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[frxDBData1."NAME"]')
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 407.500000000000000000
           Top = 0.102350000000001300
           Width = 51.133890000000000000
@@ -417,11 +424,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[frxDBData1."ND"]-[frxDBData1."KW"]')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 460.000000000000000000
           Top = 0.102350000000001300
           Width = 49.370130000000000000
@@ -434,11 +443,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[frxDBData1."KPR"]')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 512.500000000000000000
           Top = 0.102350000000001300
           Width = 42.370130000000000000
@@ -451,11 +462,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[frxDBData1."KI"]')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 558.500000000000000000
           Top = 0.102350000000001300
           Width = 34.260360000000000000
@@ -468,11 +481,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[frxDBData1."LG_IDS"]')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 599.500000000000000000
           Top = 0.102350000000001300
           Width = 43.870130000000000000
@@ -485,12 +500,14 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             '[frxDBData1."OPL"]')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 648.000000000000000000
           Top = 0.102350000000001300
           Width = 62.870130000000000000
@@ -503,12 +520,14 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             '[frxDBData1."SGKU"]')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 715.500000000000000000
           Top = 0.102350000000001300
           Width = 49.370130000000000000
@@ -521,12 +540,14 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             '[frxDBData1."PLDOP"]')
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 768.000000000000000000
           Top = 0.102350000000001300
           Width = 43.870130000000000000
@@ -539,12 +560,14 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             '[frxDBData1."DOPPL"]')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 818.000000000000000000
           Top = 0.102350000000001300
           Width = 48.870130000000000000
@@ -557,12 +580,14 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             '[frxDBData1."EKSUB1"]')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 870.500000000000000000
           Top = 0.102350000000001300
           Width = 51.370130000000000000
@@ -575,12 +600,14 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             '[frxDBData1."EKSUB2"]')
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 926.500000000000000000
           Top = 0.102350000000001300
           Width = 48.370130000000000000
@@ -593,12 +620,14 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             '[frxDBData1."SUBS_COR"]')
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 978.500000000000000000
           Top = 0.102350000000001300
           Width = 80.622140000000000000
@@ -611,11 +640,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[frxDBData1."SUB_DATA"]')
           ParentFont = False
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 1066.000000000000000000
           Top = 0.102350000000001300
           Width = 58.370130000000000000
@@ -627,12 +658,14 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             '[frxDBData1."DOLG"]')
           ParentFont = False
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 1128.000000000000000000
           Top = 0.102350000000001300
           Width = 51.870130000000000000
@@ -645,12 +678,14 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             '[frxDBData1."NACH"]')
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 1182.500000000000000000
           Top = 0.102350000000001300
           Width = 47.870130000000000000
@@ -663,12 +698,14 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             '[frxDBData1."SUBS"]')
           ParentFont = False
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 1236.500000000000000000
           Top = 0.102350000000001300
           Width = 48.370130000000000000
@@ -681,12 +718,14 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             '[frxDBData1."SUBS_EL"]')
           ParentFont = False
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 1291.500000000000000000
           Top = 0.102350000000001300
           Width = 40.370130000000000000
@@ -699,12 +738,14 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             '[frxDBData1."EL"]')
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 2.500000000000000000
           Top = 0.102350000000001300
           Width = 66.488250000000000000
@@ -714,6 +755,7 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[frxDBData1."LSK"]')
           ParentFont = False
@@ -721,10 +763,12 @@ object Form_print_lists: TForm_print_lists
       end
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 46.677180000000000000
         Top = 64.252010000000000000
         Width = 1511.812000000000000000
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 70.500000000000000000
           Top = 16.747990000000020000
           Width = 216.488250000000000000
@@ -734,12 +778,14 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#164'.'#1056#152'.'#1056#1115'.')
           ParentFont = False
         end
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Left = 288.000000000000000000
           Top = 16.747990000000020000
           Width = 169.815090000000000000
@@ -751,12 +797,14 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#1106#1056#1169#1057#1026#1056#181#1057#1027)
           ParentFont = False
         end
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Left = 460.500000000000000000
           Top = 16.747990000000020000
           Width = 46.370130000000000000
@@ -768,6 +816,7 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#1119#1057#1026#1056#1109#1056#182#1056#1105'-'
@@ -775,6 +824,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo33: TfrxMemoView
+          AllowVectorExport = True
           Left = 559.000000000000000000
           Top = 16.747990000000020000
           Width = 38.760360000000000000
@@ -786,11 +836,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#8250#1057#1034#1056#1110#1056#1109#1057#8218#1057#8249)
           ParentFont = False
         end
         object Memo34: TfrxMemoView
+          AllowVectorExport = True
           Left = 600.000000000000000000
           Top = 16.747990000000020000
           Width = 43.870130000000000000
@@ -802,11 +854,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#1115#1056#177#1057#8240'.'#1056#1111#1056#187'.')
           ParentFont = False
         end
         object Memo35: TfrxMemoView
+          AllowVectorExport = True
           Left = 648.500000000000000000
           Top = 16.747990000000020000
           Width = 62.870130000000000000
@@ -818,12 +872,14 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#1038#1056#8211#1056#1113#1056#1032)
           ParentFont = False
         end
         object Memo36: TfrxMemoView
+          AllowVectorExport = True
           Left = 716.500000000000000000
           Top = 16.747990000000020000
           Width = 49.370130000000000000
@@ -835,11 +891,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#8221#1056#1109#1056#1111'.'#1056#1111#1056#187'.')
           ParentFont = False
         end
         object Memo37: TfrxMemoView
+          AllowVectorExport = True
           Left = 768.500000000000000000
           Top = 16.747990000000020000
           Width = 43.870130000000000000
@@ -851,11 +909,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#1032#1056#1030#1056#181#1056#187'.'#1056#1111#1056#187'.')
           ParentFont = False
         end
         object Memo38: TfrxMemoView
+          AllowVectorExport = True
           Left = 818.500000000000000000
           Top = 16.747990000000020000
           Width = 48.870130000000000000
@@ -867,11 +927,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#1038#1056#1109#1056#1030'.'#1056#1169#1056#1109#1057#8230'.')
           ParentFont = False
         end
         object Memo39: TfrxMemoView
+          AllowVectorExport = True
           Left = 871.000000000000000000
           Top = 16.747990000000020000
           Width = 51.370130000000000000
@@ -883,11 +945,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#8221#1057#1107#1057#8364'.'#1056#1169#1056#1109#1057#8230'.')
           ParentFont = False
         end
         object Memo40: TfrxMemoView
+          AllowVectorExport = True
           Left = 927.000000000000000000
           Top = 16.747990000000020000
           Width = 48.370130000000000000
@@ -899,6 +963,7 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#1113#1056#1109#1057#1026#1057#1026'.'
@@ -906,6 +971,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo41: TfrxMemoView
+          AllowVectorExport = True
           Left = 979.000000000000000000
           Top = 16.747990000000020000
           Width = 80.622140000000000000
@@ -917,6 +983,7 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#8221#1056#176#1057#8218#1056#176' '
@@ -924,6 +991,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo42: TfrxMemoView
+          AllowVectorExport = True
           Left = 1066.500000000000000000
           Top = 16.747990000000020000
           Width = 54.870130000000000000
@@ -935,12 +1003,14 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#8221#1056#1109#1056#187#1056#1110)
           ParentFont = False
         end
         object Memo43: TfrxMemoView
+          AllowVectorExport = True
           Left = 1122.500000000000000000
           Top = 16.747990000000020000
           Width = 57.870130000000000000
@@ -952,11 +1022,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#1116#1056#176#1057#8225#1056#1105#1057#1027#1056#187#1056#181#1056#1029#1056#1109)
           ParentFont = False
         end
         object Memo44: TfrxMemoView
+          AllowVectorExport = True
           Left = 1183.000000000000000000
           Top = 16.747990000000020000
           Width = 53.370130000000000000
@@ -968,11 +1040,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#1038#1057#1107#1056#177#1057#1027#1056#1105#1056#1169#1056#1105#1057#1039)
           ParentFont = False
         end
         object Memo45: TfrxMemoView
+          AllowVectorExport = True
           Left = 1237.000000000000000000
           Top = 16.747990000000020000
           Width = 48.370130000000000000
@@ -984,12 +1058,14 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#1038#1057#1107#1056#177#1057#1027'.'#1057#1036#1056#187'.')
           ParentFont = False
         end
         object Memo46: TfrxMemoView
+          AllowVectorExport = True
           Left = 1292.000000000000000000
           Top = 16.747990000000020000
           Width = 54.870130000000000000
@@ -1001,12 +1077,14 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#173#1056#187'.'#1057#1036#1056#1029'.'#1056#1169#1056#187#1057#1039' '#1057#1027#1057#1107#1056#177#1057#1027'.')
           ParentFont = False
         end
         object Memo47: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.000000000000000000
           Top = 16.747990000000020000
           Width = 66.488250000000000000
@@ -1016,12 +1094,14 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#8250'/'#1056#1038)
           ParentFont = False
         end
         object Memo32: TfrxMemoView
+          AllowVectorExport = True
           Left = 509.500000000000000000
           Top = 16.747990000000020000
           Width = 45.870130000000000000
@@ -1033,6 +1113,7 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#8250#1057#1034#1056#1110#1056#1109#1057#8218#1056#1029#1056#1105'-'
@@ -1040,6 +1121,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.000000000000000000
           Top = 1.704700000000003000
           Width = 234.988250000000000000
@@ -1049,11 +1131,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#160#1056#173#1056#1032':[frxDBData1."REU"]')
           ParentFont = False
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Top = 45.747990000000020000
           Width = 1348.500000000000000000
@@ -1063,10 +1147,12 @@ object Form_print_lists: TForm_print_lists
       end
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 18.897650000000000000
         Width = 1511.812000000000000000
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 289.661875000000000000
           Top = 1.889765000000001000
           Width = 806.488250000000000000
@@ -1076,6 +1162,7 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8 = (
             
@@ -1084,6 +1171,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo55: TfrxMemoView
+          AllowVectorExport = True
           Left = 1266.000000000000000000
           Top = 1.602350000000001000
           Width = 242.988250000000000000
@@ -1093,6 +1181,7 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             #1056#1116#1056#176#1056#1111#1056#181#1057#8225#1056#176#1057#8218#1056#176#1056#1029#1056#1109': [<Date>]  [<Time>]')
@@ -1101,6 +1190,7 @@ object Form_print_lists: TForm_print_lists
       end
       object GroupHeader1: TfrxGroupHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 16.775510000000000000
         Top = 170.078850000000000000
         Width = 1511.812000000000000000
@@ -1109,10 +1199,12 @@ object Form_print_lists: TForm_print_lists
       end
       object GroupFooter1: TfrxGroupFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 16.066790000000000000
         Top = 245.669450000000000000
         Width = 1511.812000000000000000
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 2.000000000000000000
           Top = 2.169139999999999000
           Width = 230.988250000000000000
@@ -1122,11 +1214,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#152#1057#8218#1056#1109#1056#1110#1056#1109' '#1056#1111#1056#1109' '#1056#160#1056#173#1056#1032' [frxDBData1."REU"]')
           ParentFont = False
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 1241.000000000000000000
           Top = 2.669139999999999000
           Width = 47.870130000000000000
@@ -1138,11 +1232,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[SUM(<frxDBData1."SUBS">,MasterData1)]')
           ParentFont = False
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 1293.500000000000000000
           Top = 2.669139999999999000
           Width = 48.370130000000000000
@@ -1154,11 +1250,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[SUM(<frxDBData1."SUBS_EL">,MasterData1)]')
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Left = 1.500000000000000000
           Top = 0.169139999999998700
           Width = 1348.500000000000000000
@@ -1166,6 +1264,7 @@ object Form_print_lists: TForm_print_lists
           Frame.Typ = [ftTop]
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 1182.000000000000000000
           Top = 2.448669999999993000
           Width = 53.870130000000000000
@@ -1177,11 +1276,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[SUM(<frxDBData1."SUBS">,MasterData1)]')
           ParentFont = False
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Left = 1126.000000000000000000
           Top = 2.448669999999993000
           Width = 53.870130000000000000
@@ -1193,11 +1294,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[SUM(<frxDBData1."NACH">,MasterData1)]')
           ParentFont = False
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Left = 1066.500000000000000000
           Top = 2.448669999999993000
           Width = 53.870130000000000000
@@ -1209,6 +1312,7 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[SUM(<frxDBData1."DOLG">,MasterData1)]')
           ParentFont = False
@@ -1216,10 +1320,12 @@ object Form_print_lists: TForm_print_lists
       end
       object ReportSummary1: TfrxReportSummary
         FillType = ftBrush
+        Frame.Typ = []
         Height = 16.255720000000000000
         Top = 321.260050000000000000
         Width = 1511.812000000000000000
         object Memo48: TfrxMemoView
+          AllowVectorExport = True
           Left = 2.000000000000000000
           Top = 2.358069999999998000
           Width = 230.988250000000000000
@@ -1229,11 +1335,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#152#1057#8218#1056#1109#1056#1110#1056#1109' '#1056#1111#1056#1109' '#1056#1109#1057#8218#1057#8225#1057#8216#1057#8218#1057#1107)
           ParentFont = False
         end
         object Memo49: TfrxMemoView
+          AllowVectorExport = True
           Left = 1241.000000000000000000
           Top = 2.858069999999998000
           Width = 47.870130000000000000
@@ -1245,11 +1353,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[SUM(<frxDBData1."SUBS">,MasterData1)]')
           ParentFont = False
         end
         object Memo50: TfrxMemoView
+          AllowVectorExport = True
           Left = 1293.500000000000000000
           Top = 2.858069999999998000
           Width = 48.370130000000000000
@@ -1261,11 +1371,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[SUM(<frxDBData1."SUBS_EL">,MasterData1)]')
           ParentFont = False
         end
         object Memo51: TfrxMemoView
+          AllowVectorExport = True
           Left = 1182.000000000000000000
           Top = 2.637600000000020000
           Width = 53.870130000000000000
@@ -1277,11 +1389,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[SUM(<frxDBData1."SUBS">,MasterData1)]')
           ParentFont = False
         end
         object Memo52: TfrxMemoView
+          AllowVectorExport = True
           Left = 1126.000000000000000000
           Top = 2.637600000000020000
           Width = 53.870130000000000000
@@ -1293,11 +1407,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[SUM(<frxDBData1."NACH">,MasterData1)]')
           ParentFont = False
         end
         object Memo53: TfrxMemoView
+          AllowVectorExport = True
           Left = 1066.500000000000000000
           Top = 2.637600000000020000
           Width = 53.870130000000000000
@@ -1309,6 +1425,7 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[SUM(<frxDBData1."DOLG">,MasterData1)]')
           ParentFont = False
@@ -1316,10 +1433,12 @@ object Form_print_lists: TForm_print_lists
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 359.055350000000000000
         Width = 1511.812000000000000000
         object Memo54: TfrxMemoView
+          AllowVectorExport = True
           Left = 1441.000000000000000000
           Top = 1.062770000000000000
           Width = 68.988250000000000000
@@ -1329,6 +1448,7 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             #1056#1038#1057#8218#1057#1026'. [Page#] '#1056#1105#1056#183' [TotalPages#]')
@@ -1346,7 +1466,7 @@ object Form_print_lists: TForm_print_lists
     Top = 368
   end
   object frxReport2: TfrxReport
-    Version = '5.1.9'
+    Version = '6.2.11'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1385,8 +1505,10 @@ object Form_print_lists: TForm_print_lists
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 16.177180000000000000
         Top = 211.653680000000000000
         Width = 718.110700000000000000
@@ -1394,6 +1516,7 @@ object Form_print_lists: TForm_print_lists
         DataSetName = 'frxDBData2'
         RowCount = 0
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 71.000000000000000000
           Top = 1.102350000000001000
           Width = 117.315090000000000000
@@ -1405,11 +1528,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[frxDBData2."NAME"]')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 190.500000000000000000
           Top = 1.102350000000001000
           Width = 51.133890000000000000
@@ -1421,11 +1546,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[frxDBData2."ND"]-[frxDBData2."KW"]')
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 242.000000000000000000
           Top = 1.102350000000001000
           Width = 56.870130000000000000
@@ -1437,12 +1564,14 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             '[frxDBData2."SUBS"]')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 2.000000000000000000
           Top = 1.102350000000001000
           Width = 66.488250000000000000
@@ -1452,11 +1581,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[frxDBData2."LSK"]')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 304.000000000000000000
           Top = 1.243969999999990000
           Width = 56.870130000000000000
@@ -1468,6 +1599,7 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             '[frxDBData2."SUBS_EL"]')
@@ -1476,10 +1608,12 @@ object Form_print_lists: TForm_print_lists
       end
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 47.677180000000000000
         Top = 64.252010000000000000
         Width = 718.110700000000000000
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Left = 71.000000000000000000
           Top = 15.247990000000000000
           Width = 169.315090000000000000
@@ -1491,12 +1625,14 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#1106#1056#1169#1057#1026#1056#181#1057#1027)
           ParentFont = False
         end
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Left = 246.500000000000000000
           Top = 15.247990000000000000
           Width = 55.370130000000000000
@@ -1508,12 +1644,14 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#1038#1057#1107#1056#177#1057#1027#1056#1105#1056#1169#1056#1105#1057#1039)
           ParentFont = False
         end
         object Memo47: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.500000000000000000
           Top = 15.247990000000000000
           Width = 66.488250000000000000
@@ -1523,12 +1661,14 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#8250'/'#1056#1038)
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 304.500000000000000000
           Top = 15.247990000000000000
           Width = 55.370130000000000000
@@ -1540,6 +1680,7 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#1038#1057#1107#1056#177#1057#1027#1056#1105#1056#1169#1056#1105#1057#1039
@@ -1547,6 +1688,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.500000000000000000
           Top = 0.425169999999994300
           Width = 234.988250000000000000
@@ -1556,11 +1698,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#160#1056#173#1056#1032':[frxDBData2."REU"]')
           ParentFont = False
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Left = 2.000000000000000000
           Top = 45.247990000000000000
           Width = 365.500000000000000000
@@ -1570,10 +1714,12 @@ object Form_print_lists: TForm_print_lists
       end
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 2.661875000000000000
           Top = 0.889765000000000600
           Width = 508.988250000000000000
@@ -1583,6 +1729,7 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             
               #1056#1038#1056#1111#1056#1105#1057#1027#1056#1109#1056#1108' '#1056#1111#1056#1109#1056#187#1057#1034#1056#183#1057#1107#1057#1035#1057#8240#1056#1105#1057#8230#1057#1027#1057#1039' '#1057#1027#1057#1107#1056#177#1057#1027#1056#1105#1056#1169#1056#1105#1056#181#1056#8470' '#1056#1111#1056#1109' '#1056#8250 +
@@ -1591,6 +1738,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo55: TfrxMemoView
+          AllowVectorExport = True
           Left = 513.000000000000000000
           Top = 1.102350000000001000
           Width = 200.488250000000000000
@@ -1600,6 +1748,7 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             #1056#1116#1056#176#1056#1111#1056#181#1057#8225#1056#176#1057#8218#1056#176#1056#1029#1056#1109': [<Date>]  [<Time>]')
@@ -1608,6 +1757,7 @@ object Form_print_lists: TForm_print_lists
       end
       object GroupHeader1: TfrxGroupHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 16.775510000000000000
         Top = 173.858380000000000000
         Width = 718.110700000000000000
@@ -1616,10 +1766,12 @@ object Form_print_lists: TForm_print_lists
       end
       object GroupFooter1: TfrxGroupFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 16.066790000000000000
         Top = 249.448980000000000000
         Width = 718.110700000000000000
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 2.000000000000000000
           Top = 2.169139999999999000
           Width = 230.988250000000000000
@@ -1629,11 +1781,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#152#1057#8218#1056#1109#1056#1110#1056#1109' '#1056#1111#1056#1109' '#1056#160#1056#173#1056#1032' [frxDBData2."REU"]')
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Left = 1.500000000000000000
           Top = 0.169139999999998700
           Width = 365.500000000000000000
@@ -1641,6 +1795,7 @@ object Form_print_lists: TForm_print_lists
           Frame.Typ = [ftTop]
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 242.000000000000000000
           Top = 0.948669999999992800
           Width = 57.870130000000000000
@@ -1652,12 +1807,14 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             '[SUM(<frxDBData2."SUBS">,MasterData1)]')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 304.000000000000000000
           Top = 0.948669999999992800
           Width = 57.870130000000000000
@@ -1669,6 +1826,7 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             '[SUM(<frxDBData2."SUBS_EL">,MasterData1)]')
@@ -1677,10 +1835,12 @@ object Form_print_lists: TForm_print_lists
       end
       object ReportSummary1: TfrxReportSummary
         FillType = ftBrush
+        Frame.Typ = []
         Height = 16.255720000000000000
         Top = 325.039580000000000000
         Width = 718.110700000000000000
         object Memo48: TfrxMemoView
+          AllowVectorExport = True
           Left = 2.000000000000000000
           Top = 1.358069999999998000
           Width = 230.988250000000000000
@@ -1690,11 +1850,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#152#1057#8218#1056#1109#1056#1110#1056#1109' '#1056#1111#1056#1109' '#1056#1109#1057#8218#1057#8225#1057#8216#1057#8218#1057#1107)
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 242.000000000000000000
           Top = 0.858069999999998000
           Width = 57.870130000000000000
@@ -1706,12 +1868,14 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             '[SUM(<frxDBData2."SUBS">,MasterData1)]')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 304.000000000000000000
           Top = 0.858069999999998000
           Width = 57.870130000000000000
@@ -1723,6 +1887,7 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             '[SUM(<frxDBData2."SUBS_EL">,MasterData1)]')
@@ -1731,10 +1896,12 @@ object Form_print_lists: TForm_print_lists
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 362.834880000000000000
         Width = 718.110700000000000000
         object Memo54: TfrxMemoView
+          AllowVectorExport = True
           Left = 646.000000000000000000
           Top = 1.062770000000000000
           Width = 68.988250000000000000
@@ -1744,6 +1911,7 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             #1056#1038#1057#8218#1057#1026'. [Page#] '#1056#1105#1056#183' [TotalPages#]')
@@ -1775,7 +1943,7 @@ object Form_print_lists: TForm_print_lists
     Top = 400
   end
   object frxReport3: TfrxReport
-    Version = '5.1.9'
+    Version = '6.2.11'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1815,8 +1983,10 @@ object Form_print_lists: TForm_print_lists
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 15.177180000000000000
         Top = 192.756030000000000000
         Width = 1511.812000000000000000
@@ -1824,6 +1994,7 @@ object Form_print_lists: TForm_print_lists
         DataSetName = 'frxDBData3'
         RowCount = 0
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Top = 1.287677330000008000
           Width = 23.089359450000000000
@@ -1841,6 +2012,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 25.429421970000000000
           Top = 1.287677330000008000
           Width = 127.957360640000000000
@@ -1853,11 +2025,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[frxDBData3."NAME"]')
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 194.583571850000000000
           Top = 1.287677330000008000
           Width = 52.969836030000000000
@@ -1876,6 +2050,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 249.773767961966000000
           Top = 1.287677331929046000
           Width = 46.200121451850900000
@@ -1895,6 +2070,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 297.461070350356000000
           Top = 1.287677331929046000
           Width = 46.200121451850900000
@@ -1914,6 +2090,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 345.148372738746000000
           Top = 1.287677331929046000
           Width = 46.200121451850900000
@@ -1933,6 +2110,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 392.835675127135000000
           Top = 1.287677331929046000
           Width = 46.200121451850900000
@@ -1952,6 +2130,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 440.522977515525000000
           Top = 1.287677331929046000
           Width = 46.200121451850900000
@@ -1971,6 +2150,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 488.210279903915000000
           Top = 1.287677331929046000
           Width = 46.200121451850900000
@@ -1990,6 +2170,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 535.897582292304000000
           Top = 1.287677331929046000
           Width = 46.200121451850900000
@@ -2009,6 +2190,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 583.584884680694000000
           Top = 1.287677331929046000
           Width = 46.200121451850900000
@@ -2028,6 +2210,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 631.272187069083000000
           Top = 1.287677331929046000
           Width = 46.200121451850900000
@@ -2047,6 +2230,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 678.959489457473000000
           Top = 1.287677331929046000
           Width = 46.200121451850900000
@@ -2066,6 +2250,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 726.646791845863000000
           Top = 1.287677331929046000
           Width = 46.200121451850900000
@@ -2085,6 +2270,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 774.334094234252000000
           Top = 1.287677331929046000
           Width = 46.200121451850900000
@@ -2104,6 +2290,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 822.021396622642000000
           Top = 1.287677331929046000
           Width = 46.200121451850900000
@@ -2123,6 +2310,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 869.396001400000000000
           Top = 1.287677330000008000
           Width = 46.200121450000000000
@@ -2142,6 +2330,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 917.083303790000000000
           Top = 1.287677330000008000
           Width = 46.200121450000000000
@@ -2161,6 +2350,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 964.770606180000000000
           Top = 1.287677330000008000
           Width = 46.200121450000000000
@@ -2180,6 +2370,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 1012.457908560000000000
           Top = 1.287677330000008000
           Width = 46.200121450000000000
@@ -2199,6 +2390,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 1060.145210950000000000
           Top = 1.287677330000008000
           Width = 46.200121450000000000
@@ -2218,6 +2410,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 1109.207118120000000000
           Top = 1.287677330000008000
           Width = 46.200121450000000000
@@ -2237,6 +2430,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 154.399163185187000000
           Top = 1.287677331929046000
           Width = 37.520209112173300000
@@ -2249,6 +2443,7 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[frxDBData3."ND"]')
           ParentFont = False
@@ -2256,10 +2451,12 @@ object Form_print_lists: TForm_print_lists
       end
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 29.177180000000000000
         Top = 64.252010000000000000
         Width = 1511.812000000000000000
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Left = 1.429421970000000000
           Top = 0.399429749999995900
           Width = 190.957360640000000000
@@ -2278,6 +2475,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Left = 194.083571850000000000
           Top = 0.795181370000008800
           Width = 52.969836030000000000
@@ -2296,6 +2494,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Left = 249.273767960000000000
           Top = 0.795181370000008800
           Width = 46.200121450000000000
@@ -2314,6 +2513,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Left = 296.961070350000000000
           Top = 0.795181370000008800
           Width = 46.200121450000000000
@@ -2332,6 +2532,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo32: TfrxMemoView
+          AllowVectorExport = True
           Left = 344.648372740000000000
           Top = 0.795181370000008800
           Width = 46.200121450000000000
@@ -2350,6 +2551,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo33: TfrxMemoView
+          AllowVectorExport = True
           Left = 392.335675130000000000
           Top = 0.795181370000008800
           Width = 46.200121450000000000
@@ -2368,6 +2570,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo34: TfrxMemoView
+          AllowVectorExport = True
           Left = 440.022977520000000000
           Top = 0.795181370000008800
           Width = 46.200121450000000000
@@ -2386,6 +2589,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo35: TfrxMemoView
+          AllowVectorExport = True
           Left = 487.710279900000000000
           Top = 0.795181370000008800
           Width = 46.200121450000000000
@@ -2404,6 +2608,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo36: TfrxMemoView
+          AllowVectorExport = True
           Left = 535.397582290000000000
           Top = 0.795181370000008800
           Width = 46.200121450000000000
@@ -2422,6 +2627,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo37: TfrxMemoView
+          AllowVectorExport = True
           Left = 583.084884680000000000
           Top = 0.795181370000008800
           Width = 46.200121450000000000
@@ -2440,6 +2646,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo38: TfrxMemoView
+          AllowVectorExport = True
           Left = 630.772187070000000000
           Top = 0.795181370000008800
           Width = 46.200121450000000000
@@ -2458,6 +2665,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo39: TfrxMemoView
+          AllowVectorExport = True
           Left = 678.459489460000000000
           Top = 0.795181370000008800
           Width = 46.200121450000000000
@@ -2476,6 +2684,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo40: TfrxMemoView
+          AllowVectorExport = True
           Left = 726.146791850000000000
           Top = 0.795181370000008800
           Width = 46.200121450000000000
@@ -2494,6 +2703,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo41: TfrxMemoView
+          AllowVectorExport = True
           Left = 773.834094230000000000
           Top = 0.795181370000008800
           Width = 46.200121450000000000
@@ -2512,6 +2722,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo42: TfrxMemoView
+          AllowVectorExport = True
           Left = 821.521396620000000000
           Top = 0.795181370000008800
           Width = 46.200121450000000000
@@ -2530,6 +2741,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo44: TfrxMemoView
+          AllowVectorExport = True
           Left = 868.896001400000000000
           Top = 0.795181370000008800
           Width = 46.200121450000000000
@@ -2548,6 +2760,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo45: TfrxMemoView
+          AllowVectorExport = True
           Left = 916.583303790000000000
           Top = 0.795181370000008800
           Width = 46.200121450000000000
@@ -2566,6 +2779,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo46: TfrxMemoView
+          AllowVectorExport = True
           Left = 964.270606180000000000
           Top = 0.795181370000008800
           Width = 46.200121450000000000
@@ -2584,6 +2798,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo47: TfrxMemoView
+          AllowVectorExport = True
           Left = 1011.957908560000000000
           Top = 0.795181370000008800
           Width = 46.200121450000000000
@@ -2602,6 +2817,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo48: TfrxMemoView
+          AllowVectorExport = True
           Left = 1059.645210950000000000
           Top = 0.795181370000008800
           Width = 46.200121450000000000
@@ -2620,6 +2836,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo51: TfrxMemoView
+          AllowVectorExport = True
           Left = 1108.707118120000000000
           Top = 0.795181370000008800
           Width = 46.200121450000000000
@@ -2638,6 +2855,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Top = 27.602350000000000000
           Width = 1161.500000000000000000
@@ -2647,10 +2865,12 @@ object Form_print_lists: TForm_print_lists
       end
       object ReportSummary1: TfrxReportSummary
         FillType = ftBrush
+        Frame.Typ = []
         Height = 17.677180000000000000
         Top = 313.700990000000000000
         Width = 1511.812000000000000000
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 2.000000000000000000
           Top = 2.803029999999978000
           Width = 190.589359450000000000
@@ -2668,6 +2888,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 194.583571850000000000
           Top = 2.803029999999978000
           Width = 52.969836030000000000
@@ -2686,6 +2907,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 249.773767960000000000
           Top = 2.803029999999978000
           Width = 46.200121450000000000
@@ -2704,6 +2926,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo43: TfrxMemoView
+          AllowVectorExport = True
           Left = 297.461070350000000000
           Top = 2.803029999999978000
           Width = 46.200121450000000000
@@ -2722,6 +2945,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo49: TfrxMemoView
+          AllowVectorExport = True
           Left = 345.148372740000000000
           Top = 2.803029999999978000
           Width = 46.200121450000000000
@@ -2740,6 +2964,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo50: TfrxMemoView
+          AllowVectorExport = True
           Left = 392.835675130000000000
           Top = 2.803029999999978000
           Width = 46.200121450000000000
@@ -2758,6 +2983,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo52: TfrxMemoView
+          AllowVectorExport = True
           Left = 440.522977520000000000
           Top = 2.803029999999978000
           Width = 46.200121450000000000
@@ -2776,6 +3002,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo53: TfrxMemoView
+          AllowVectorExport = True
           Left = 488.210279900000000000
           Top = 2.803029999999978000
           Width = 46.200121450000000000
@@ -2794,6 +3021,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo54: TfrxMemoView
+          AllowVectorExport = True
           Left = 535.897582290000000000
           Top = 2.803029999999978000
           Width = 46.200121450000000000
@@ -2812,6 +3040,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo55: TfrxMemoView
+          AllowVectorExport = True
           Left = 583.584884680000000000
           Top = 2.803029999999978000
           Width = 46.200121450000000000
@@ -2830,6 +3059,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo56: TfrxMemoView
+          AllowVectorExport = True
           Left = 631.272187070000000000
           Top = 2.803029999999978000
           Width = 46.200121450000000000
@@ -2848,6 +3078,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo57: TfrxMemoView
+          AllowVectorExport = True
           Left = 678.959489460000000000
           Top = 2.803029999999978000
           Width = 46.200121450000000000
@@ -2866,6 +3097,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo58: TfrxMemoView
+          AllowVectorExport = True
           Left = 726.646791850000000000
           Top = 2.803029999999978000
           Width = 46.200121450000000000
@@ -2884,6 +3116,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo59: TfrxMemoView
+          AllowVectorExport = True
           Left = 774.334094230000000000
           Top = 2.803029999999978000
           Width = 46.200121450000000000
@@ -2902,6 +3135,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo60: TfrxMemoView
+          AllowVectorExport = True
           Left = 822.021396620000000000
           Top = 2.803029999999978000
           Width = 46.200121450000000000
@@ -2920,6 +3154,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo61: TfrxMemoView
+          AllowVectorExport = True
           Left = 869.396001400000000000
           Top = 2.803029999999978000
           Width = 46.200121450000000000
@@ -2938,6 +3173,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo62: TfrxMemoView
+          AllowVectorExport = True
           Left = 917.083303790000000000
           Top = 2.803029999999978000
           Width = 46.200121450000000000
@@ -2956,6 +3192,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo63: TfrxMemoView
+          AllowVectorExport = True
           Left = 964.770606180000000000
           Top = 2.803029999999978000
           Width = 46.200121450000000000
@@ -2974,6 +3211,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo64: TfrxMemoView
+          AllowVectorExport = True
           Left = 1012.457908560000000000
           Top = 2.803029999999978000
           Width = 46.200121450000000000
@@ -2992,6 +3230,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo65: TfrxMemoView
+          AllowVectorExport = True
           Left = 1060.145210950000000000
           Top = 2.803029999999978000
           Width = 46.200121450000000000
@@ -3010,6 +3249,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo66: TfrxMemoView
+          AllowVectorExport = True
           Left = 1109.207118120000000000
           Top = 2.803029999999978000
           Width = 46.200121450000000000
@@ -3028,6 +3268,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Left = 0.500000000000000000
           Top = 0.803029999999978400
           Width = 1161.500000000000000000
@@ -3037,10 +3278,12 @@ object Form_print_lists: TForm_print_lists
       end
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 18.897650000000000000
         Width = 1511.812000000000000000
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 9.000000000000000000
           Top = 1.102350000000001000
           Width = 1144.988250000000000000
@@ -3050,6 +3293,7 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8 = (
             
@@ -3058,6 +3302,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo67: TfrxMemoView
+          AllowVectorExport = True
           Left = 1308.000000000000000000
           Top = 1.102350000000001000
           Width = 200.488250000000000000
@@ -3067,6 +3312,7 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             #1056#1116#1056#176#1056#1111#1056#181#1057#8225#1056#176#1057#8218#1056#176#1056#1029#1056#1109': [<Date>]  [<Time>]')
@@ -3075,10 +3321,12 @@ object Form_print_lists: TForm_print_lists
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 19.677180000000000000
         Top = 355.275820000000000000
         Width = 1511.812000000000000000
         object Memo68: TfrxMemoView
+          AllowVectorExport = True
           Left = 1439.000000000000000000
           Top = 0.373839999999972900
           Width = 68.988250000000000000
@@ -3088,6 +3336,7 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             #1056#1038#1057#8218#1057#1026'. [Page#] '#1056#1105#1056#183' [TotalPages#]')
@@ -3096,11 +3345,13 @@ object Form_print_lists: TForm_print_lists
       end
       object GroupHeader1: TfrxGroupHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 16.677180000000000000
         Top = 154.960730000000000000
         Width = 1511.812000000000000000
         Condition = 'frxDBData3."REU"'
         object Memo69: TfrxMemoView
+          AllowVectorExport = True
           Left = 2.500000000000000000
           Top = 1.539269999999988000
           Width = 127.957360640000000000
@@ -3112,6 +3363,7 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#160#1056#173#1056#1032':[frxDBData3."REU"]')
           ParentFont = False
@@ -3119,10 +3371,12 @@ object Form_print_lists: TForm_print_lists
       end
       object GroupFooter1: TfrxGroupFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 230.551330000000000000
         Width = 1511.812000000000000000
         object Memo70: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.500000000000000000
           Top = 2.448669999999993000
           Width = 187.457360640000000000
@@ -3134,11 +3388,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#152#1057#8218#1056#1109#1056#1110#1056#1109' '#1056#1111#1056#1109' '#1056#160#1056#173#1056#1032':[frxDBData3."REU"]')
           ParentFont = False
         end
         object Memo71: TfrxMemoView
+          AllowVectorExport = True
           Left = 194.500000000000000000
           Top = 2.448669999999993000
           Width = 52.969836030000000000
@@ -3157,6 +3413,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo72: TfrxMemoView
+          AllowVectorExport = True
           Left = 249.690196110000000000
           Top = 2.448669999999993000
           Width = 46.200121450000000000
@@ -3175,6 +3432,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo73: TfrxMemoView
+          AllowVectorExport = True
           Left = 297.377498500000000000
           Top = 2.448669999999993000
           Width = 46.200121450000000000
@@ -3193,6 +3451,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo74: TfrxMemoView
+          AllowVectorExport = True
           Left = 345.064800890000000000
           Top = 2.448669999999993000
           Width = 46.200121450000000000
@@ -3211,6 +3470,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo75: TfrxMemoView
+          AllowVectorExport = True
           Left = 392.752103280000000000
           Top = 2.448669999999993000
           Width = 46.200121450000000000
@@ -3229,6 +3489,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo76: TfrxMemoView
+          AllowVectorExport = True
           Left = 440.439405670000000000
           Top = 2.448669999999993000
           Width = 46.200121450000000000
@@ -3247,6 +3508,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo77: TfrxMemoView
+          AllowVectorExport = True
           Left = 488.126708050000000000
           Top = 2.448669999999993000
           Width = 46.200121450000000000
@@ -3265,6 +3527,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo78: TfrxMemoView
+          AllowVectorExport = True
           Left = 535.814010440000000000
           Top = 2.448669999999993000
           Width = 46.200121450000000000
@@ -3283,6 +3546,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo79: TfrxMemoView
+          AllowVectorExport = True
           Left = 583.501312830000000000
           Top = 2.448669999999993000
           Width = 46.200121450000000000
@@ -3301,6 +3565,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo80: TfrxMemoView
+          AllowVectorExport = True
           Left = 631.188615220000000000
           Top = 2.448669999999993000
           Width = 46.200121450000000000
@@ -3319,6 +3584,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo81: TfrxMemoView
+          AllowVectorExport = True
           Left = 678.875917610000000000
           Top = 2.448669999999993000
           Width = 46.200121450000000000
@@ -3337,6 +3603,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo82: TfrxMemoView
+          AllowVectorExport = True
           Left = 726.563220000000000000
           Top = 2.448669999999993000
           Width = 46.200121450000000000
@@ -3355,6 +3622,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo83: TfrxMemoView
+          AllowVectorExport = True
           Left = 774.250522380000000000
           Top = 2.448669999999993000
           Width = 46.200121450000000000
@@ -3373,6 +3641,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo84: TfrxMemoView
+          AllowVectorExport = True
           Left = 821.937824770000000000
           Top = 2.448669999999993000
           Width = 46.200121450000000000
@@ -3391,6 +3660,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo85: TfrxMemoView
+          AllowVectorExport = True
           Left = 869.312429550000000000
           Top = 2.448669999999993000
           Width = 46.200121450000000000
@@ -3409,6 +3679,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo86: TfrxMemoView
+          AllowVectorExport = True
           Left = 916.999731940000000000
           Top = 2.448669999999993000
           Width = 46.200121450000000000
@@ -3427,6 +3698,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo87: TfrxMemoView
+          AllowVectorExport = True
           Left = 964.687034330000000000
           Top = 2.448669999999993000
           Width = 46.200121450000000000
@@ -3445,6 +3717,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo88: TfrxMemoView
+          AllowVectorExport = True
           Left = 1012.374336710000000000
           Top = 2.448669999999993000
           Width = 46.200121450000000000
@@ -3463,6 +3736,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo89: TfrxMemoView
+          AllowVectorExport = True
           Left = 1060.061639100000000000
           Top = 2.448669999999993000
           Width = 46.200121450000000000
@@ -3481,6 +3755,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo90: TfrxMemoView
+          AllowVectorExport = True
           Left = 1109.123546270000000000
           Top = 2.448669999999993000
           Width = 46.200121450000000000
@@ -3499,6 +3774,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Left = 0.500000000000000000
           Top = 1.448669999999993000
           Width = 1161.500000000000000000
@@ -3535,7 +3811,7 @@ object Form_print_lists: TForm_print_lists
     Top = 432
   end
   object frxReport7: TfrxReport
-    Version = '5.1.9'
+    Version = '6.2.11'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -3575,7 +3851,9 @@ object Form_print_lists: TForm_print_lists
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
       object DBCross1: TfrxDBCrossView
+        AllowVectorExport = True
         Left = 2.881880000000000000
         Top = 89.031540000000000000
         Width = 240.000000000000000000
@@ -3596,33 +3874,8 @@ object Form_print_lists: TForm_print_lists
         Memos = {
           3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D227574
           662D38223F3E3C63726F73733E3C63656C6C6D656D6F733E3C546672784D656D
-          6F56696577204C6566743D223135302C38383138382220546F703D223134352C
-          3033313534222057696474683D22343022204865696768743D22313822205265
-          737472696374696F6E733D2232342220416C6C6F7745787072657373696F6E73
-          3D2246616C73652220446973706C6179466F726D61742E446563696D616C5365
-          70617261746F723D222C2220446973706C6179466F726D61742E466F726D6174
-          5374723D2225322E32662220446973706C6179466F726D61742E4B696E643D22
-          666B4E756D657269632220466F6E742E436861727365743D22312220466F6E74
-          2E436F6C6F723D22302220466F6E742E4865696768743D222D392220466F6E74
-          2E4E616D653D22417269616C2220466F6E742E5374796C653D22302220467261
-          6D652E5479703D223135222046696C6C2E4261636B436F6C6F723D2231363737
-          373231352220476170583D22332220476170593D2233222048416C69676E3D22
-          686152696768742220506172656E74466F6E743D2246616C7365222056416C69
-          676E3D22766143656E7465722220546578743D22302C3030222F3E3C54667278
-          4D656D6F56696577204C6566743D223136302220546F703D2235382220576964
-          74683D22343022204865696768743D22323222205265737472696374696F6E73
-          3D2232342220416C6C6F7745787072657373696F6E733D2246616C7365222044
-          6973706C6179466F726D61742E446563696D616C536570617261746F723D222C
-          2220446973706C6179466F726D61742E466F726D61745374723D2225322E3266
-          2220446973706C6179466F726D61742E4B696E643D22666B4E756D6572696322
-          20466F6E742E436861727365743D22312220466F6E742E436F6C6F723D223022
-          20466F6E742E4865696768743D222D392220466F6E742E4E616D653D22417269
-          616C2220466F6E742E5374796C653D223022204672616D652E5479703D223135
-          222046696C6C2E4261636B436F6C6F723D223136373737323135222047617058
-          3D22332220476170593D2233222048416C69676E3D2268615269676874222050
-          6172656E74466F6E743D2246616C7365222056416C69676E3D22766143656E74
-          65722220546578743D22302C3030222F3E3C546672784D656D6F56696577204C
-          6566743D223135302C38383138382220546F703D223136332C30333135342220
+          6F5669657720416C6C6F77566563746F724578706F72743D225472756522204C
+          6566743D223135302C38383138382220546F703D223134352C30333135342220
           57696474683D22343022204865696768743D2231382220526573747269637469
           6F6E733D2232342220416C6C6F7745787072657373696F6E733D2246616C7365
           2220446973706C6179466F726D61742E446563696D616C536570617261746F72
@@ -3635,9 +3888,151 @@ object Form_print_lists: TForm_print_lists
           6170583D22332220476170593D2233222048416C69676E3D2268615269676874
           2220506172656E74466F6E743D2246616C7365222056416C69676E3D22766143
           656E7465722220546578743D22302C3030222F3E3C546672784D656D6F566965
-          77204C6566743D223135302C38383138382220546F703D223138312C30333135
-          34222057696474683D22343022204865696768743D2231382220526573747269
+          7720416C6C6F77566563746F724578706F72743D225472756522204C6566743D
+          223136302220546F703D223538222057696474683D2234302220486569676874
+          3D22323222205265737472696374696F6E733D2232342220416C6C6F77457870
+          72657373696F6E733D2246616C73652220446973706C6179466F726D61742E44
+          6563696D616C536570617261746F723D222C2220446973706C6179466F726D61
+          742E466F726D61745374723D2225322E32662220446973706C6179466F726D61
+          742E4B696E643D22666B4E756D657269632220466F6E742E436861727365743D
+          22312220466F6E742E436F6C6F723D22302220466F6E742E4865696768743D22
+          2D392220466F6E742E4E616D653D22417269616C2220466F6E742E5374796C65
+          3D223022204672616D652E5479703D223135222046696C6C2E4261636B436F6C
+          6F723D2231363737373231352220476170583D22332220476170593D22332220
+          48416C69676E3D22686152696768742220506172656E74466F6E743D2246616C
+          7365222056416C69676E3D22766143656E7465722220546578743D22302C3030
+          222F3E3C546672784D656D6F5669657720416C6C6F77566563746F724578706F
+          72743D225472756522204C6566743D223135302C38383138382220546F703D22
+          3136332C3033313534222057696474683D22343022204865696768743D223138
+          22205265737472696374696F6E733D2232342220416C6C6F7745787072657373
+          696F6E733D2246616C73652220446973706C6179466F726D61742E446563696D
+          616C536570617261746F723D222C2220446973706C6179466F726D61742E466F
+          726D61745374723D2225322E32662220446973706C6179466F726D61742E4B69
+          6E643D22666B4E756D657269632220466F6E742E436861727365743D22312220
+          466F6E742E436F6C6F723D22302220466F6E742E4865696768743D222D392220
+          466F6E742E4E616D653D22417269616C2220466F6E742E5374796C653D223022
+          204672616D652E5479703D223135222046696C6C2E4261636B436F6C6F723D22
+          31363737373231352220476170583D22332220476170593D2233222048416C69
+          676E3D22686152696768742220506172656E74466F6E743D2246616C73652220
+          56416C69676E3D22766143656E7465722220546578743D22302C3030222F3E3C
+          546672784D656D6F5669657720416C6C6F77566563746F724578706F72743D22
+          5472756522204C6566743D223135302C38383138382220546F703D223138312C
+          3033313534222057696474683D22343022204865696768743D22313822205265
+          737472696374696F6E733D2232342220416C6C6F7745787072657373696F6E73
+          3D2246616C73652220446973706C6179466F726D61742E446563696D616C5365
+          70617261746F723D222C2220446973706C6179466F726D61742E466F726D6174
+          5374723D2225322E32662220446973706C6179466F726D61742E4B696E643D22
+          666B4E756D657269632220466F6E742E436861727365743D22312220466F6E74
+          2E436F6C6F723D22302220466F6E742E4865696768743D222D392220466F6E74
+          2E4E616D653D22417269616C2220466F6E742E5374796C653D22302220467261
+          6D652E5479703D223135222046696C6C2E4261636B436F6C6F723D2231363737
+          373231352220476170583D22332220476170593D2233222048416C69676E3D22
+          686152696768742220506172656E74466F6E743D2246616C7365222056416C69
+          676E3D22766143656E7465722220546578743D22302C3030222F3E3C54667278
+          4D656D6F5669657720416C6C6F77566563746F724578706F72743D2254727565
+          22204C6566743D223139302C38383138382220546F703D223134352C30333135
+          34222057696474683D22333222204865696768743D2231382220526573747269
           6374696F6E733D2232342220416C6C6F7745787072657373696F6E733D224661
+          6C73652220466F6E742E436861727365743D22312220466F6E742E436F6C6F72
+          3D22302220466F6E742E4865696768743D222D392220466F6E742E4E616D653D
+          22417269616C2220466F6E742E5374796C653D223022204672616D652E547970
+          3D2231352220476170583D22332220476170593D2233222048416C69676E3D22
+          686152696768742220506172656E74466F6E743D2246616C7365222056416C69
+          676E3D22766143656E7465722220546578743D22302C3030222F3E3C54667278
+          4D656D6F5669657720416C6C6F77566563746F724578706F72743D2254727565
+          22204C6566743D223230302220546F703D223538222057696474683D22333222
+          204865696768743D22323222205265737472696374696F6E733D223234222041
+          6C6C6F7745787072657373696F6E733D2246616C736522204672616D652E5479
+          703D2231352220476170583D22332220476170593D2233222048416C69676E3D
+          2268615269676874222056416C69676E3D22766143656E746572222054657874
+          3D22302C3030222F3E3C546672784D656D6F5669657720416C6C6F7756656374
+          6F724578706F72743D225472756522204C6566743D223139302C383831383822
+          20546F703D223136332C3033313534222057696474683D223332222048656967
+          68743D22313822205265737472696374696F6E733D2232342220416C6C6F7745
+          787072657373696F6E733D2246616C73652220466F6E742E436861727365743D
+          22312220466F6E742E436F6C6F723D22302220466F6E742E4865696768743D22
+          2D392220466F6E742E4E616D653D22417269616C2220466F6E742E5374796C65
+          3D223022204672616D652E5479703D2231352220476170583D22332220476170
+          593D2233222048416C69676E3D22686152696768742220506172656E74466F6E
+          743D2246616C7365222056416C69676E3D22766143656E746572222054657874
+          3D22302C3030222F3E3C546672784D656D6F5669657720416C6C6F7756656374
+          6F724578706F72743D225472756522204C6566743D223139302C383831383822
+          20546F703D223138312C3033313534222057696474683D223332222048656967
+          68743D22313822205265737472696374696F6E733D2232342220416C6C6F7745
+          787072657373696F6E733D2246616C73652220466F6E742E436861727365743D
+          22312220466F6E742E436F6C6F723D22302220466F6E742E4865696768743D22
+          2D392220466F6E742E4E616D653D22417269616C2220466F6E742E5374796C65
+          3D223022204672616D652E5479703D2231352220476170583D22332220476170
+          593D2233222048416C69676E3D22686152696768742220506172656E74466F6E
+          743D2246616C7365222056416C69676E3D22766143656E746572222054657874
+          3D22302C3030222F3E3C2F63656C6C6D656D6F733E3C63656C6C686561646572
+          6D656D6F733E3C546672784D656D6F5669657720416C6C6F77566563746F7245
+          78706F72743D225472756522204C6566743D223332352220546F703D22343422
+          2057696474683D22343822204865696768743D22323222205265737472696374
+          696F6E733D22382220416C6C6F7745787072657373696F6E733D2246616C7365
+          2220466F6E742E436861727365743D22312220466F6E742E436F6C6F723D2230
+          2220466F6E742E4865696768743D222D31332220466F6E742E4E616D653D2241
+          7269616C2220466F6E742E5374796C653D223022204672616D652E5479703D22
+          3135222046696C6C2E4261636B436F6C6F723D22313637373732313522204761
+          70583D22332220476170593D22332220506172656E74466F6E743D2246616C73
+          65222056416C69676E3D22766143656E7465722220546578743D225F222F3E3C
+          546672784D656D6F5669657720416C6C6F77566563746F724578706F72743D22
+          5472756522204C6566743D223332352220546F703D223636222057696474683D
+          22343822204865696768743D22323222205265737472696374696F6E733D2238
+          2220416C6C6F7745787072657373696F6E733D2246616C73652220466F6E742E
+          436861727365743D22312220466F6E742E436F6C6F723D22302220466F6E742E
+          4865696768743D222D31332220466F6E742E4E616D653D22417269616C222046
+          6F6E742E5374796C653D223022204672616D652E5479703D223135222046696C
+          6C2E4261636B436F6C6F723D2231363737373231352220476170583D22332220
+          476170593D22332220506172656E74466F6E743D2246616C7365222056416C69
+          676E3D22766143656E7465722220546578743D225F222F3E3C546672784D656D
+          6F5669657720416C6C6F77566563746F724578706F72743D225472756522204C
+          6566743D22302220546F703D2230222057696474683D22302220486569676874
+          3D223022205265737472696374696F6E733D22382220416C6C6F774578707265
+          7373696F6E733D2246616C736522204672616D652E5479703D22313522204761
+          70583D22332220476170593D2233222056416C69676E3D22766143656E746572
+          2220546578743D225F222F3E3C546672784D656D6F5669657720416C6C6F7756
+          6563746F724578706F72743D225472756522204C6566743D22302220546F703D
+          2230222057696474683D223022204865696768743D2230222052657374726963
+          74696F6E733D22382220416C6C6F7745787072657373696F6E733D2246616C73
+          6522204672616D652E5479703D2231352220476170583D22332220476170593D
+          2233222056416C69676E3D22766143656E7465722220546578743D225F222F3E
+          3C2F63656C6C6865616465726D656D6F733E3C636F6C756D6E6D656D6F733E3C
+          546672784D656D6F56696577205461673D223130302220416C6C6F7756656374
+          6F724578706F72743D225472756522204C6566743D223135302C383831383822
+          20546F703D223132372C3033313534222057696474683D223430222048656967
+          68743D22313822205265737472696374696F6E733D2232342220416C6C6F7745
+          787072657373696F6E733D2246616C73652220446973706C6179466F726D6174
+          2E446563696D616C536570617261746F723D222C2220446973706C6179466F72
+          6D61742E466F726D61745374723D2225322E32662220446973706C6179466F72
+          6D61742E4B696E643D22666B4E756D657269632220466F6E742E436861727365
+          743D22312220466F6E742E436F6C6F723D22302220466F6E742E486569676874
+          3D222D392220466F6E742E4E616D653D22417269616C2220466F6E742E537479
+          6C653D223022204672616D652E5479703D223135222046696C6C2E4261636B43
+          6F6C6F723D2231363737373231352220476170583D22332220476170593D2233
+          222048416C69676E3D22686143656E7465722220506172656E74466F6E743D22
+          46616C7365222056416C69676E3D22766143656E7465722220546578743D22D0
+          B0D0B0D0B2D0BFD0B2D0BFD0B0222F3E3C2F636F6C756D6E6D656D6F733E3C63
+          6F6C756D6E746F74616C6D656D6F733E3C546672784D656D6F56696577205461
+          673D223330302220416C6C6F77566563746F724578706F72743D225472756522
+          204C6566743D223139302C38383138382220546F703D223132372C3033313534
+          222057696474683D22333222204865696768743D223138222052657374726963
+          74696F6E733D22382220416C6C6F7745787072657373696F6E733D2246616C73
+          652220446973706C6179466F726D61742E446563696D616C536570617261746F
+          723D222C2220446973706C6179466F726D61742E466F726D61745374723D2225
+          322E32662220446973706C6179466F726D61742E4B696E643D22666B4E756D65
+          7269632220466F6E742E436861727365743D22312220466F6E742E436F6C6F72
+          3D22302220466F6E742E4865696768743D222D392220466F6E742E4E616D653D
+          22417269616C2220466F6E742E5374796C653D223122204672616D652E547970
+          3D223135222046696C6C2E4261636B436F6C6F723D2231363737373231352220
+          476170583D22332220476170593D2233222048416C69676E3D22686143656E74
+          65722220506172656E74466F6E743D2246616C7365222056416C69676E3D2276
+          6143656E7465722220546578743D22D098D182D0BED0B3D0BE222F3E3C2F636F
+          6C756D6E746F74616C6D656D6F733E3C636F726E65726D656D6F733E3C546672
+          784D656D6F5669657720416C6C6F77566563746F724578706F72743D22547275
+          6522204C6566743D2232322C38383138382220546F703D223130392C30333135
+          34222057696474683D2231323822204865696768743D22313822205265737472
+          696374696F6E733D22382220416C6C6F7745787072657373696F6E733D224661
           6C73652220446973706C6179466F726D61742E446563696D616C536570617261
           746F723D222C2220446973706C6179466F726D61742E466F726D61745374723D
           2225322E32662220446973706C6179466F726D61742E4B696E643D22666B4E75
@@ -3645,243 +4040,148 @@ object Form_print_lists: TForm_print_lists
           6F723D22302220466F6E742E4865696768743D222D392220466F6E742E4E616D
           653D22417269616C2220466F6E742E5374796C653D223022204672616D652E54
           79703D223135222046696C6C2E4261636B436F6C6F723D223136373737323135
-          2220476170583D22332220476170593D2233222048416C69676E3D2268615269
-          6768742220506172656E74466F6E743D2246616C7365222056416C69676E3D22
-          766143656E7465722220546578743D22302C3030222F3E3C546672784D656D6F
-          56696577204C6566743D223139302C38383138382220546F703D223134352C30
-          33313534222057696474683D22333222204865696768743D2231382220526573
-          7472696374696F6E733D2232342220416C6C6F7745787072657373696F6E733D
-          2246616C73652220466F6E742E436861727365743D22312220466F6E742E436F
-          6C6F723D22302220466F6E742E4865696768743D222D392220466F6E742E4E61
-          6D653D22417269616C2220466F6E742E5374796C653D223022204672616D652E
-          5479703D2231352220476170583D22332220476170593D2233222048416C6967
-          6E3D22686152696768742220506172656E74466F6E743D2246616C7365222056
-          416C69676E3D22766143656E7465722220546578743D22302C3030222F3E3C54
-          6672784D656D6F56696577204C6566743D223230302220546F703D2235382220
-          57696474683D22333222204865696768743D2232322220526573747269637469
-          6F6E733D2232342220416C6C6F7745787072657373696F6E733D2246616C7365
-          22204672616D652E5479703D2231352220476170583D22332220476170593D22
-          33222048416C69676E3D2268615269676874222056416C69676E3D2276614365
-          6E7465722220546578743D22302C3030222F3E3C546672784D656D6F56696577
-          204C6566743D223139302C38383138382220546F703D223136332C3033313534
-          222057696474683D22333222204865696768743D223138222052657374726963
-          74696F6E733D2232342220416C6C6F7745787072657373696F6E733D2246616C
-          73652220466F6E742E436861727365743D22312220466F6E742E436F6C6F723D
-          22302220466F6E742E4865696768743D222D392220466F6E742E4E616D653D22
-          417269616C2220466F6E742E5374796C653D223022204672616D652E5479703D
-          2231352220476170583D22332220476170593D2233222048416C69676E3D2268
-          6152696768742220506172656E74466F6E743D2246616C7365222056416C6967
-          6E3D22766143656E7465722220546578743D22302C3030222F3E3C546672784D
-          656D6F56696577204C6566743D223139302C38383138382220546F703D223138
-          312C3033313534222057696474683D22333222204865696768743D2231382220
-          5265737472696374696F6E733D2232342220416C6C6F7745787072657373696F
-          6E733D2246616C73652220466F6E742E436861727365743D22312220466F6E74
-          2E436F6C6F723D22302220466F6E742E4865696768743D222D392220466F6E74
-          2E4E616D653D22417269616C2220466F6E742E5374796C653D22302220467261
-          6D652E5479703D2231352220476170583D22332220476170593D223322204841
-          6C69676E3D22686152696768742220506172656E74466F6E743D2246616C7365
-          222056416C69676E3D22766143656E7465722220546578743D22302C3030222F
-          3E3C2F63656C6C6D656D6F733E3C63656C6C6865616465726D656D6F733E3C54
-          6672784D656D6F56696577204C6566743D223332352220546F703D2234342220
-          57696474683D22343822204865696768743D2232322220526573747269637469
-          6F6E733D22382220416C6C6F7745787072657373696F6E733D2246616C736522
-          20466F6E742E436861727365743D22312220466F6E742E436F6C6F723D223022
-          20466F6E742E4865696768743D222D31332220466F6E742E4E616D653D224172
-          69616C2220466F6E742E5374796C653D223022204672616D652E5479703D2231
-          35222046696C6C2E4261636B436F6C6F723D2231363737373231352220476170
-          583D22332220476170593D22332220506172656E74466F6E743D2246616C7365
-          222056416C69676E3D22766143656E7465722220546578743D225F222F3E3C54
-          6672784D656D6F56696577204C6566743D223332352220546F703D2236362220
-          57696474683D22343822204865696768743D2232322220526573747269637469
-          6F6E733D22382220416C6C6F7745787072657373696F6E733D2246616C736522
-          20466F6E742E436861727365743D22312220466F6E742E436F6C6F723D223022
-          20466F6E742E4865696768743D222D31332220466F6E742E4E616D653D224172
-          69616C2220466F6E742E5374796C653D223022204672616D652E5479703D2231
-          35222046696C6C2E4261636B436F6C6F723D2231363737373231352220476170
-          583D22332220476170593D22332220506172656E74466F6E743D2246616C7365
-          222056416C69676E3D22766143656E7465722220546578743D225F222F3E3C54
-          6672784D656D6F56696577204C6566743D22302220546F703D22302220576964
-          74683D223022204865696768743D223022205265737472696374696F6E733D22
-          382220416C6C6F7745787072657373696F6E733D2246616C736522204672616D
-          652E5479703D2231352220476170583D22332220476170593D2233222056416C
-          69676E3D22766143656E7465722220546578743D225F222F3E3C546672784D65
-          6D6F56696577204C6566743D22302220546F703D2230222057696474683D2230
-          22204865696768743D223022205265737472696374696F6E733D22382220416C
-          6C6F7745787072657373696F6E733D2246616C736522204672616D652E547970
-          3D2231352220476170583D22332220476170593D2233222056416C69676E3D22
-          766143656E7465722220546578743D225F222F3E3C2F63656C6C686561646572
-          6D656D6F733E3C636F6C756D6E6D656D6F733E3C546672784D656D6F56696577
-          205461673D2231303022204C6566743D223135302C38383138382220546F703D
-          223132372C3033313534222057696474683D22343022204865696768743D2231
-          3822205265737472696374696F6E733D2232342220416C6C6F77457870726573
-          73696F6E733D2246616C73652220446973706C6179466F726D61742E44656369
-          6D616C536570617261746F723D222C2220446973706C6179466F726D61742E46
-          6F726D61745374723D2225322E32662220446973706C6179466F726D61742E4B
-          696E643D22666B4E756D657269632220466F6E742E436861727365743D223122
-          20466F6E742E436F6C6F723D22302220466F6E742E4865696768743D222D3922
-          20466F6E742E4E616D653D22417269616C2220466F6E742E5374796C653D2230
-          22204672616D652E5479703D223135222046696C6C2E4261636B436F6C6F723D
-          2231363737373231352220476170583D22332220476170593D2233222048416C
-          69676E3D22686143656E7465722220506172656E74466F6E743D2246616C7365
-          222056416C69676E3D22766143656E7465722220546578743D22D0B0D0B0D0B2
-          D0BFD0B2D0BFD0B0222F3E3C2F636F6C756D6E6D656D6F733E3C636F6C756D6E
-          746F74616C6D656D6F733E3C546672784D656D6F56696577205461673D223330
-          3022204C6566743D223139302C38383138382220546F703D223132372C303331
-          3534222057696474683D22333222204865696768743D22313822205265737472
-          696374696F6E733D22382220416C6C6F7745787072657373696F6E733D224661
-          6C73652220446973706C6179466F726D61742E446563696D616C536570617261
-          746F723D222C2220446973706C6179466F726D61742E466F726D61745374723D
-          2225322E32662220446973706C6179466F726D61742E4B696E643D22666B4E75
-          6D657269632220466F6E742E436861727365743D22312220466F6E742E436F6C
-          6F723D22302220466F6E742E4865696768743D222D392220466F6E742E4E616D
-          653D22417269616C2220466F6E742E5374796C653D223122204672616D652E54
-          79703D223135222046696C6C2E4261636B436F6C6F723D223136373737323135
           2220476170583D22332220476170593D2233222048416C69676E3D2268614365
           6E7465722220506172656E74466F6E743D2246616C7365222056416C69676E3D
-          22766143656E7465722220546578743D22D098D182D0BED0B3D0BE222F3E3C2F
-          636F6C756D6E746F74616C6D656D6F733E3C636F726E65726D656D6F733E3C54
-          6672784D656D6F56696577204C6566743D2232322C38383138382220546F703D
-          223130392C3033313534222057696474683D2231323822204865696768743D22
-          313822205265737472696374696F6E733D22382220416C6C6F77457870726573
-          73696F6E733D2246616C73652220446973706C6179466F726D61742E44656369
-          6D616C536570617261746F723D222C2220446973706C6179466F726D61742E46
-          6F726D61745374723D2225322E32662220446973706C6179466F726D61742E4B
-          696E643D22666B4E756D657269632220466F6E742E436861727365743D223122
-          20466F6E742E436F6C6F723D22302220466F6E742E4865696768743D222D3922
-          20466F6E742E4E616D653D22417269616C2220466F6E742E5374796C653D2230
-          22204672616D652E5479703D223135222046696C6C2E4261636B436F6C6F723D
-          2231363737373231352220476170583D22332220476170593D2233222048416C
-          69676E3D22686143656E7465722220506172656E74466F6E743D2246616C7365
-          222056416C69676E3D22766143656E7465722220546578743D225F222F3E3C54
-          6672784D656D6F56696577204C6566743D223135302C38383138382220546F70
-          3D223130392C3033313534222057696474683D22373222204865696768743D22
-          313822205265737472696374696F6E733D22382220416C6C6F77457870726573
-          73696F6E733D2246616C73652220446973706C6179466F726D61742E44656369
-          6D616C536570617261746F723D222C2220446973706C6179466F726D61742E46
-          6F726D61745374723D2225322E32662220446973706C6179466F726D61742E4B
-          696E643D22666B4E756D657269632220466F6E742E436861727365743D223122
-          20466F6E742E436F6C6F723D22302220466F6E742E4865696768743D222D3922
-          20466F6E742E4E616D653D22417269616C2220466F6E742E5374796C653D2230
-          22204672616D652E5479703D223135222046696C6C2E4261636B436F6C6F723D
-          2231363737373231352220476170583D22332220476170593D2233222048416C
-          69676E3D22686143656E7465722220506172656E74466F6E743D2246616C7365
-          222056416C69676E3D22766143656E7465722220546578743D22D0A3D181D0BB
-          D183D0B3D0B0222F3E3C546672784D656D6F56696577204C6566743D22333235
-          2220546F703D223232222057696474683D22343822204865696768743D223232
-          22205265737472696374696F6E733D2238222056697369626C653D2246616C73
-          652220416C6C6F7745787072657373696F6E733D2246616C73652220466F6E74
-          2E436861727365743D22312220466F6E742E436F6C6F723D22302220466F6E74
-          2E4865696768743D222D31332220466F6E742E4E616D653D22417269616C2220
-          466F6E742E5374796C653D223022204672616D652E5479703D22313522204669
-          6C6C2E4261636B436F6C6F723D2231363737373231352220476170583D223322
-          20476170593D2233222048416C69676E3D22686143656E746572222050617265
-          6E74466F6E743D2246616C7365222056416C69676E3D22766143656E74657222
-          20546578743D22222F3E3C546672784D656D6F56696577204C6566743D223232
-          2C38383138382220546F703D223132372C3033313534222057696474683D2234
-          3022204865696768743D22313822205265737472696374696F6E733D22382220
-          416C6C6F7745787072657373696F6E733D2246616C73652220446973706C6179
-          466F726D61742E446563696D616C536570617261746F723D222C222044697370
-          6C6179466F726D61742E466F726D61745374723D2225322E32662220466F6E74
-          2E436861727365743D22312220466F6E742E436F6C6F723D22302220466F6E74
-          2E4865696768743D222D392220466F6E742E4E616D653D22417269616C222046
-          6F6E742E5374796C653D223022204672616D652E5479703D223135222046696C
-          6C2E4261636B436F6C6F723D2231363737373231352220476170583D22332220
-          476170593D2233222048416C69676E3D22686143656E7465722220506172656E
-          74466F6E743D2246616C7365222056416C69676E3D22766143656E7465722220
-          546578743D22D09BD18CD0B3D0BED182D0B0222F3E3C546672784D656D6F5669
-          6577204C6566743D2236322C38383138382220546F703D223132372C30333135
-          34222057696474683D22333822204865696768743D2231382220526573747269
-          6374696F6E733D22382220416C6C6F7745787072657373696F6E733D2246616C
-          73652220466F6E742E436861727365743D22312220466F6E742E436F6C6F723D
-          22302220466F6E742E4865696768743D222D392220466F6E742E4E616D653D22
-          417269616C2220466F6E742E5374796C653D223022204672616D652E5479703D
-          2231352220476170583D22332220476170593D22332220506172656E74466F6E
-          743D2246616C7365222056416C69676E3D22766143656E746572222054657874
-          3D22D090D0B4D180D0B5D181222F3E3C546672784D656D6F56696577204C6566
-          743D223130302C38383138382220546F703D223132372C303331353422205769
-          6474683D22353022204865696768743D22313822205265737472696374696F6E
+          22766143656E7465722220546578743D225F222F3E3C546672784D656D6F5669
+          657720416C6C6F77566563746F724578706F72743D225472756522204C656674
+          3D223135302C38383138382220546F703D223130392C30333135342220576964
+          74683D22373222204865696768743D22313822205265737472696374696F6E73
+          3D22382220416C6C6F7745787072657373696F6E733D2246616C736522204469
+          73706C6179466F726D61742E446563696D616C536570617261746F723D222C22
+          20446973706C6179466F726D61742E466F726D61745374723D2225322E326622
+          20446973706C6179466F726D61742E4B696E643D22666B4E756D657269632220
+          466F6E742E436861727365743D22312220466F6E742E436F6C6F723D22302220
+          466F6E742E4865696768743D222D392220466F6E742E4E616D653D2241726961
+          6C2220466F6E742E5374796C653D223022204672616D652E5479703D22313522
+          2046696C6C2E4261636B436F6C6F723D2231363737373231352220476170583D
+          22332220476170593D2233222048416C69676E3D22686143656E746572222050
+          6172656E74466F6E743D2246616C7365222056416C69676E3D22766143656E74
+          65722220546578743D22D0A3D181D0BBD183D0B3D0B0222F3E3C546672784D65
+          6D6F5669657720416C6C6F77566563746F724578706F72743D22547275652220
+          4C6566743D223332352220546F703D223232222057696474683D223438222048
+          65696768743D22323222205265737472696374696F6E733D2238222056697369
+          626C653D2246616C73652220416C6C6F7745787072657373696F6E733D224661
+          6C73652220466F6E742E436861727365743D22312220466F6E742E436F6C6F72
+          3D22302220466F6E742E4865696768743D222D31332220466F6E742E4E616D65
+          3D22417269616C2220466F6E742E5374796C653D223022204672616D652E5479
+          703D223135222046696C6C2E4261636B436F6C6F723D22313637373732313522
+          20476170583D22332220476170593D2233222048416C69676E3D22686143656E
+          7465722220506172656E74466F6E743D2246616C7365222056416C69676E3D22
+          766143656E7465722220546578743D22222F3E3C546672784D656D6F56696577
+          20416C6C6F77566563746F724578706F72743D225472756522204C6566743D22
+          32322C38383138382220546F703D223132372C3033313534222057696474683D
+          22343022204865696768743D22313822205265737472696374696F6E733D2238
+          2220416C6C6F7745787072657373696F6E733D2246616C73652220446973706C
+          6179466F726D61742E446563696D616C536570617261746F723D222C22204469
+          73706C6179466F726D61742E466F726D61745374723D2225322E32662220466F
+          6E742E436861727365743D22312220466F6E742E436F6C6F723D22302220466F
+          6E742E4865696768743D222D392220466F6E742E4E616D653D22417269616C22
+          20466F6E742E5374796C653D223022204672616D652E5479703D223135222046
+          696C6C2E4261636B436F6C6F723D2231363737373231352220476170583D2233
+          2220476170593D2233222048416C69676E3D22686143656E7465722220506172
+          656E74466F6E743D2246616C7365222056416C69676E3D22766143656E746572
+          2220546578743D22D09BD18CD0B3D0BED182D0B0222F3E3C546672784D656D6F
+          5669657720416C6C6F77566563746F724578706F72743D225472756522204C65
+          66743D2236322C38383138382220546F703D223132372C303331353422205769
+          6474683D22333822204865696768743D22313822205265737472696374696F6E
           733D22382220416C6C6F7745787072657373696F6E733D2246616C7365222046
           6F6E742E436861727365743D22312220466F6E742E436F6C6F723D2230222046
           6F6E742E4865696768743D222D392220466F6E742E4E616D653D22417269616C
           2220466F6E742E5374796C653D223022204672616D652E5479703D2231352220
           476170583D22332220476170593D22332220506172656E74466F6E743D224661
-          6C7365222056416C69676E3D22766143656E7465722220546578743D22D09BD1
-          8CD0B3D0BED182D0BDD0B8D0BA222F3E3C2F636F726E65726D656D6F733E3C72
-          6F776D656D6F733E3C546672784D656D6F56696577205461673D223230302220
-          4C6566743D2232322C38383138382220546F703D223134352C30333135342220
-          57696474683D22343022204865696768743D2233362220526573747269637469
-          6F6E733D2232342220416C6C6F7745787072657373696F6E733D2246616C7365
-          2220446973706C6179466F726D61742E446563696D616C536570617261746F72
-          3D222C2220446973706C6179466F726D61742E466F726D61745374723D222532
-          2E32662220466F6E742E436861727365743D22312220466F6E742E436F6C6F72
-          3D22302220466F6E742E4865696768743D222D392220466F6E742E4E616D653D
-          22417269616C2220466F6E742E5374796C653D223022204672616D652E547970
-          3D223135222046696C6C2E4261636B436F6C6F723D2231363737373231352220
-          476170583D22332220476170593D22332220506172656E74466F6E743D224661
-          6C73652220576F7264577261703D2246616C7365222056416C69676E3D227661
-          43656E7465722220546578743D22222F3E3C546672784D656D6F56696577204C
-          6566743D2236322C38383138382220546F703D223134352C3033313534222057
-          696474683D22333822204865696768743D22313822205265737472696374696F
-          6E733D2232342220416C6C6F7745787072657373696F6E733D2246616C736522
-          20466F6E742E436861727365743D22312220466F6E742E436F6C6F723D223022
-          20466F6E742E4865696768743D222D392220466F6E742E4E616D653D22417269
-          616C2220466F6E742E5374796C653D223022204672616D652E5479703D223135
-          2220476170583D22332220476170593D22332220506172656E74466F6E743D22
-          46616C7365222056416C69676E3D22766143656E7465722220546578743D2222
-          2F3E3C546672784D656D6F56696577204C6566743D223130302C383831383822
-          20546F703D223134352C3033313534222057696474683D223530222048656967
-          68743D22313822205265737472696374696F6E733D2232342220416C6C6F7745
+          6C7365222056416C69676E3D22766143656E7465722220546578743D22D090D0
+          B4D180D0B5D181222F3E3C546672784D656D6F5669657720416C6C6F77566563
+          746F724578706F72743D225472756522204C6566743D223130302C3838313838
+          2220546F703D223132372C3033313534222057696474683D2235302220486569
+          6768743D22313822205265737472696374696F6E733D22382220416C6C6F7745
           787072657373696F6E733D2246616C73652220466F6E742E436861727365743D
           22312220466F6E742E436F6C6F723D22302220466F6E742E4865696768743D22
           2D392220466F6E742E4E616D653D22417269616C2220466F6E742E5374796C65
           3D223022204672616D652E5479703D2231352220476170583D22332220476170
           593D22332220506172656E74466F6E743D2246616C7365222056416C69676E3D
-          22766143656E7465722220546578743D22222F3E3C2F726F776D656D6F733E3C
-          726F77746F74616C6D656D6F733E3C546672784D656D6F56696577205461673D
-          2234303022204C6566743D2232322C38383138382220546F703D223138312C30
-          33313534222057696474683D2231323822204865696768743D22313822205265
-          737472696374696F6E733D22382220416C6C6F7745787072657373696F6E733D
-          2246616C73652220446973706C6179466F726D61742E446563696D616C536570
-          617261746F723D222C2220446973706C6179466F726D61742E466F726D617453
-          74723D2225322E32662220466F6E742E436861727365743D22312220466F6E74
-          2E436F6C6F723D22302220466F6E742E4865696768743D222D392220466F6E74
-          2E4E616D653D22417269616C2220466F6E742E5374796C653D22312220467261
-          6D652E5479703D223135222046696C6C2E4261636B436F6C6F723D2231363737
-          373231352220476170583D22332220476170593D2233222048416C69676E3D22
+          22766143656E7465722220546578743D22D09BD18CD0B3D0BED182D0BDD0B8D0
+          BA222F3E3C2F636F726E65726D656D6F733E3C726F776D656D6F733E3C546672
+          784D656D6F56696577205461673D223230302220416C6C6F77566563746F7245
+          78706F72743D225472756522204C6566743D2232322C38383138382220546F70
+          3D223134352C3033313534222057696474683D22343022204865696768743D22
+          333622205265737472696374696F6E733D2232342220416C6C6F774578707265
+          7373696F6E733D2246616C73652220446973706C6179466F726D61742E446563
+          696D616C536570617261746F723D222C2220446973706C6179466F726D61742E
+          466F726D61745374723D2225322E32662220466F6E742E436861727365743D22
+          312220466F6E742E436F6C6F723D22302220466F6E742E4865696768743D222D
+          392220466F6E742E4E616D653D22417269616C2220466F6E742E5374796C653D
+          223022204672616D652E5479703D223135222046696C6C2E4261636B436F6C6F
+          723D2231363737373231352220476170583D22332220476170593D2233222050
+          6172656E74466F6E743D2246616C73652220576F7264577261703D2246616C73
+          65222056416C69676E3D22766143656E7465722220546578743D22222F3E3C54
+          6672784D656D6F5669657720416C6C6F77566563746F724578706F72743D2254
+          72756522204C6566743D2236322C38383138382220546F703D223134352C3033
+          313534222057696474683D22333822204865696768743D223138222052657374
+          72696374696F6E733D2232342220416C6C6F7745787072657373696F6E733D22
+          46616C73652220466F6E742E436861727365743D22312220466F6E742E436F6C
+          6F723D22302220466F6E742E4865696768743D222D392220466F6E742E4E616D
+          653D22417269616C2220466F6E742E5374796C653D223022204672616D652E54
+          79703D2231352220476170583D22332220476170593D22332220506172656E74
+          466F6E743D2246616C7365222056416C69676E3D22766143656E746572222054
+          6578743D22222F3E3C546672784D656D6F5669657720416C6C6F77566563746F
+          724578706F72743D225472756522204C6566743D223130302C38383138382220
+          546F703D223134352C3033313534222057696474683D22353022204865696768
+          743D22313822205265737472696374696F6E733D2232342220416C6C6F774578
+          7072657373696F6E733D2246616C73652220466F6E742E436861727365743D22
+          312220466F6E742E436F6C6F723D22302220466F6E742E4865696768743D222D
+          392220466F6E742E4E616D653D22417269616C2220466F6E742E5374796C653D
+          223022204672616D652E5479703D2231352220476170583D2233222047617059
+          3D22332220506172656E74466F6E743D2246616C7365222056416C69676E3D22
+          766143656E7465722220546578743D22222F3E3C2F726F776D656D6F733E3C72
+          6F77746F74616C6D656D6F733E3C546672784D656D6F56696577205461673D22
+          3430302220416C6C6F77566563746F724578706F72743D225472756522204C65
+          66743D2232322C38383138382220546F703D223138312C303331353422205769
+          6474683D2231323822204865696768743D22313822205265737472696374696F
+          6E733D22382220416C6C6F7745787072657373696F6E733D2246616C73652220
+          446973706C6179466F726D61742E446563696D616C536570617261746F723D22
+          2C2220446973706C6179466F726D61742E466F726D61745374723D2225322E32
+          662220466F6E742E436861727365743D22312220466F6E742E436F6C6F723D22
+          302220466F6E742E4865696768743D222D392220466F6E742E4E616D653D2241
+          7269616C2220466F6E742E5374796C653D223122204672616D652E5479703D22
+          3135222046696C6C2E4261636B436F6C6F723D22313637373732313522204761
+          70583D22332220476170593D2233222048416C69676E3D22686143656E746572
+          2220506172656E74466F6E743D2246616C7365222056416C69676E3D22766143
+          656E7465722220546578743D22D098D182D0BED0B3D0BE222F3E3C546672784D
+          656D6F5669657720416C6C6F77566563746F724578706F72743D225472756522
+          204C6566743D2236322C38383138382220546F703D223136332C303331353422
+          2057696474683D22383822204865696768743D22313822205265737472696374
+          696F6E733D22382220416C6C6F7745787072657373696F6E733D2246616C7365
+          2220446973706C6179466F726D61742E446563696D616C536570617261746F72
+          3D222C2220466F6E742E436861727365743D22312220466F6E742E436F6C6F72
+          3D22302220466F6E742E4865696768743D222D392220466F6E742E4E616D653D
+          22417269616C2220466F6E742E5374796C653D223122204672616D652E547970
+          3D2231352220476170583D22332220476170593D2233222048416C69676E3D22
           686143656E7465722220506172656E74466F6E743D2246616C7365222056416C
           69676E3D22766143656E7465722220546578743D22D098D182D0BED0B3D0BE22
-          2F3E3C546672784D656D6F56696577204C6566743D2236322C38383138382220
-          546F703D223136332C3033313534222057696474683D22383822204865696768
-          743D22313822205265737472696374696F6E733D22382220416C6C6F77457870
-          72657373696F6E733D2246616C73652220446973706C6179466F726D61742E44
-          6563696D616C536570617261746F723D222C2220466F6E742E43686172736574
-          3D22312220466F6E742E436F6C6F723D22302220466F6E742E4865696768743D
-          222D392220466F6E742E4E616D653D22417269616C2220466F6E742E5374796C
-          653D223122204672616D652E5479703D2231352220476170583D223322204761
-          70593D2233222048416C69676E3D22686143656E7465722220506172656E7446
-          6F6E743D2246616C7365222056416C69676E3D22766143656E74657222205465
-          78743D22D098D182D0BED0B3D0BE222F3E3C546672784D656D6F56696577204C
-          6566743D2239322220546F703D223538222057696474683D2236382220486569
-          6768743D22323222205265737472696374696F6E733D2238222056697369626C
-          653D2246616C73652220416C6C6F7745787072657373696F6E733D2246616C73
-          652220466F6E742E436861727365743D22312220466F6E742E436F6C6F723D22
-          302220466F6E742E4865696768743D222D31332220466F6E742E4E616D653D22
-          417269616C2220466F6E742E5374796C653D223122204672616D652E5479703D
-          2231352220476170583D22332220476170593D2233222048416C69676E3D2268
-          6143656E7465722220506172656E74466F6E743D2246616C7365222056416C69
-          676E3D22766143656E7465722220546578743D22546F74616C222F3E3C2F726F
-          77746F74616C6D656D6F733E3C63656C6C66756E6374696F6E733E3C6974656D
-          20312F3E3C2F63656C6C66756E6374696F6E733E3C636F6C756D6E736F72743E
-          3C6974656D20302F3E3C2F636F6C756D6E736F72743E3C726F77736F72743E3C
-          6974656D20302F3E3C6974656D20302F3E3C6974656D20322F3E3C2F726F7773
-          6F72743E3C2F63726F73733E}
+          2F3E3C546672784D656D6F5669657720416C6C6F77566563746F724578706F72
+          743D225472756522204C6566743D2239322220546F703D223538222057696474
+          683D22363822204865696768743D22323222205265737472696374696F6E733D
+          2238222056697369626C653D2246616C73652220416C6C6F7745787072657373
+          696F6E733D2246616C73652220466F6E742E436861727365743D22312220466F
+          6E742E436F6C6F723D22302220466F6E742E4865696768743D222D3133222046
+          6F6E742E4E616D653D22417269616C2220466F6E742E5374796C653D22312220
+          4672616D652E5479703D2231352220476170583D22332220476170593D223322
+          2048416C69676E3D22686143656E7465722220506172656E74466F6E743D2246
+          616C7365222056416C69676E3D22766143656E7465722220546578743D22546F
+          74616C222F3E3C2F726F77746F74616C6D656D6F733E3C63656C6C66756E6374
+          696F6E733E3C6974656D20312F3E3C2F63656C6C66756E6374696F6E733E3C63
+          6F6C756D6E736F72743E3C6974656D20302F3E3C2F636F6C756D6E736F72743E
+          3C726F77736F72743E3C6974656D20302F3E3C6974656D20302F3E3C6974656D
+          20322F3E3C2F726F77736F72743E3C2F63726F73733E}
       end
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Height = 30.236240000000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 22.677180000000000000
           Top = 3.779530000000001000
           Width = 445.984540000000000000
@@ -3892,6 +4192,7 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#1115#1057#1026#1056#1110#1056#176#1056#1029#1056#1105#1056#183#1056#176#1057#8224#1056#1105#1057#1039': [frxDBData7."'#1056#1115#1057#1026#1056#1110#1056#176#1056#1029#1056#1105#1056#183#1056#176#1057#8224#1056#1105#1057#1039'"]')
           ParentFont = False
@@ -3919,7 +4220,7 @@ object Form_print_lists: TForm_print_lists
     Top = 304
   end
   object frxReport10: TfrxReport
-    Version = '5.1.9'
+    Version = '6.2.11'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -3954,8 +4255,10 @@ object Form_print_lists: TForm_print_lists
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 16.177180000000000000
         Top = 200.315090000000000000
         Width = 718.110700000000000000
@@ -3963,6 +4266,7 @@ object Form_print_lists: TForm_print_lists
         DataSetName = 'frxDBData10'
         RowCount = 0
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 316.333333330000000000
           Top = 1.102350000000001000
           Width = 117.315090000000000000
@@ -3975,11 +4279,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[frxDBData10."FIO"]')
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 437.333333330000000000
           Top = 1.102350000000001000
           Width = 38.203463330000000000
@@ -3992,12 +4298,14 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             '[frxDBData10."CNT_MONTH"]')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 158.000000000000000000
           Top = 1.102350000000001000
           Width = 88.902906669999990000
@@ -4009,11 +4317,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[frxDBData10."STREET_NAME"]')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 499.333333330000000000
           Top = 1.243969999999990000
           Width = 52.870130000000000000
@@ -4026,12 +4336,14 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             '[frxDBData10."DOLG"]')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 83.333333330000000000
           Top = 1.012986670000004000
           Width = 70.488250000000000000
@@ -4044,11 +4356,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[frxDBData10."LSK"]')
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 249.448980000000000000
           Top = 1.000000000000000000
           Width = 32.209956670000000000
@@ -4060,11 +4374,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[frxDBData10."ND"]')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 282.464750000000000000
           Top = 1.000000000000000000
           Width = 32.209956670000000000
@@ -4076,6 +4392,7 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             '[frxDBData10."KW"]')
           ParentFont = False
@@ -4083,10 +4400,12 @@ object Form_print_lists: TForm_print_lists
       end
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 30.343846660000000000
         Top = 64.252010000000000000
         Width = 718.110700000000000000
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Left = 155.000000010000000000
           Top = 1.247990000000001000
           Width = 157.315090000000000000
@@ -4098,12 +4417,14 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#1106#1056#1169#1057#1026#1056#181#1057#1027)
           ParentFont = False
         end
         object Memo47: TfrxMemoView
+          AllowVectorExport = True
           Left = 84.833333340000000000
           Top = 1.247990000000001000
           Width = 66.488250000000000000
@@ -4113,12 +4434,14 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#8250'/'#1056#1038)
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 313.333333330000000000
           Top = 1.081323330000004000
           Width = 119.981756670000000000
@@ -4130,12 +4453,14 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#164'.'#1056#152'.'#1056#1115'.')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 435.333333330000000000
           Top = 1.081323330000004000
           Width = 57.981756670000000000
@@ -4147,12 +4472,14 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#1113#1056#1109#1056#187'-'#1056#1030#1056#1109' '#1056#1112#1056#181#1057#1027#1057#1039#1057#8224#1056#181#1056#1030)
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 495.333333330000000000
           Top = 1.081323330000004000
           Width = 69.315090000000000000
@@ -4164,6 +4491,7 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#1038#1057#1107#1056#1112#1056#1112#1056#176' '#1056#183#1056#176#1056#1169#1056#1109#1056#187#1056#182#1056#1029#1056#1109#1057#1027#1057#8218#1056#1105)
@@ -4172,10 +4500,12 @@ object Form_print_lists: TForm_print_lists
       end
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 2.661875000000000000
           Top = 0.889765000000000600
           Width = 508.988250000000000000
@@ -4185,6 +4515,7 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             
               #1056#1038#1056#1111#1056#1105#1057#1027#1056#1109#1056#1108' '#1056#183#1056#176#1056#1169#1056#1109#1056#187#1056#182#1056#1029#1056#1105#1056#1108#1056#1109#1056#1030' '#1056#1029#1056#176'  [frxDBData10."DAT"], '#1057 +
@@ -4192,6 +4523,7 @@ object Form_print_lists: TForm_print_lists
           ParentFont = False
         end
         object Memo55: TfrxMemoView
+          AllowVectorExport = True
           Left = 513.000000000000000000
           Top = 1.102350000000001000
           Width = 200.488250000000000000
@@ -4201,6 +4533,7 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             #1056#1116#1056#176#1056#1111#1056#181#1057#8225#1056#176#1057#8218#1056#176#1056#1029#1056#1109': [<Date>]  [<Time>]')
@@ -4209,10 +4542,12 @@ object Form_print_lists: TForm_print_lists
       end
       object ReportSummary1: TfrxReportSummary
         FillType = ftBrush
+        Frame.Typ = []
         Height = 16.255720000000000000
         Top = 275.905690000000000000
         Width = 718.110700000000000000
         object Memo48: TfrxMemoView
+          AllowVectorExport = True
           Left = 2.000000000000000000
           Top = 1.358069999999998000
           Width = 230.988250000000000000
@@ -4222,11 +4557,13 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#152#1057#8218#1056#1109#1056#1110#1056#1109' '#1056#1111#1056#1109' '#1056#1109#1057#8218#1057#8225#1057#8216#1057#8218#1057#1107)
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 499.333333330000000000
           Top = 1.448669999999993000
           Width = 52.870130000000000000
@@ -4238,6 +4575,7 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             '[SUM(<frxDBData10."DOLG">,MasterData1)]')
@@ -4246,10 +4584,12 @@ object Form_print_lists: TForm_print_lists
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 313.700990000000000000
         Width = 718.110700000000000000
         object Memo54: TfrxMemoView
+          AllowVectorExport = True
           Left = 646.000000000000000000
           Top = 1.062770000000000000
           Width = 68.988250000000000000
@@ -4259,6 +4599,7 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             #1056#1038#1057#8218#1057#1026'. [Page#] '#1056#1105#1056#183' [TotalPages#]')
@@ -4267,11 +4608,13 @@ object Form_print_lists: TForm_print_lists
       end
       object GroupHeader1: TfrxGroupHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 154.960730000000000000
         Width = 718.110700000000000000
         Condition = 'frxDBData10."NAME_REU"'
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 6.000000000000000000
           Top = 5.039269999999988000
           Width = 38.488250000000000000
@@ -4281,12 +4624,14 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8 = (
             #1056#8211#1056#173#1056#1115':')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 49.333333330000000000
           Top = 5.039269999999988000
           Width = 102.488250000000000000
@@ -4296,6 +4641,7 @@ object Form_print_lists: TForm_print_lists
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8 = (
             '[frxDBData10."NAME_REU"]')
@@ -4330,6 +4676,7 @@ object Form_print_lists: TForm_print_lists
     Separator = ';'
     OEMCodepage = False
     UTF8 = False
+    OpenAfterExport = False
     NoSysSymbols = True
     ForcedQuotes = False
     Left = 128
@@ -4345,6 +4692,7 @@ object Form_print_lists: TForm_print_lists
     Frames = False
     EmptyLines = False
     OEMCodepage = False
+    OpenAfterExport = False
     DeleteEmptyColumns = True
     Left = 160
     Top = 368

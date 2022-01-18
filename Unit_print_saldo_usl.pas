@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, OracleData, StdCtrls, DBCtrls, 
   frxClass, frxDBSet, frxDMPExport, 
-  frxExportXLS;
+  frxExportXLS, frxExportBaseDialog;
 
 type
   TForm_print_saldo_usl = class(TForm)
@@ -69,7 +69,7 @@ var
 
 implementation
 
-uses Unit_status, Unit_sel_houses, Unit_sel_uch, Unit_Mainform, Utils;
+uses Unit_status, Unit_sel_houses, Unit_Mainform, Utils;
 
 {$R *.dfm}
 
@@ -489,15 +489,15 @@ begin
    Label6.Caption := '';
    if clr1_=0 then
    begin
-    Application.CreateForm(TForm_sel_uch, Form_sel_uch);
+{    Application.CreateForm(TForm_sel_uch, Form_sel_uch);
     Form_sel_uch.OD_list_choice.Active := false;
     Form_sel_uch.OD_list_choice.SetVariable('clr_',1);
-    Form_sel_uch.OD_list_choice.Active := true;
+    Form_sel_uch.OD_list_choice.Active := true;}
     clr1_:=1;
    end
    else
    begin
-    Application.CreateForm(TForm_sel_uch, Form_sel_uch);
+//    Application.CreateForm(TForm_sel_uch, Form_sel_uch);
    end;
   end
   else if DBLookupComboBox3.KeyValue = 2 then
@@ -584,15 +584,15 @@ begin
    Label6.Caption := '';
    if clr1_=0 then
    begin
-    Application.CreateForm(TForm_sel_uch, Form_sel_uch);
+{    Application.CreateForm(TForm_sel_uch, Form_sel_uch);
     Form_sel_uch.OD_list_choice.Active := false;
     Form_sel_uch.OD_list_choice.SetVariable('clr_',1);
-    Form_sel_uch.OD_list_choice.Active := true;
+    Form_sel_uch.OD_list_choice.Active := true;}
     clr1_:=1;
    end
    else
    begin
-    Application.CreateForm(TForm_sel_uch, Form_sel_uch);
+//    Application.CreateForm(TForm_sel_uch, Form_sel_uch);
    end;
   end
   else if DBLookupComboBox3.KeyValue = 2 then

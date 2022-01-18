@@ -334,7 +334,7 @@ object Form_opl_usl: TForm_opl_usl
     Left = 152
   end
   object frxReport1: TfrxReport
-    Version = '4.7.71'
+    Version = '6.2.11'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator]
@@ -371,21 +371,25 @@ object Form_opl_usl: TForm_opl_usl
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
       object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
+        Frame.Typ = []
         Height = 107.000000000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 68.000000000000000000
           Top = 35.102350000000000000
           Width = 553.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -15
           Font.Name = 'Times New Roman'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8 = (
             
@@ -394,16 +398,19 @@ object Form_opl_usl: TForm_opl_usl
           ParentFont = False
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 509.000000000000000000
           Top = 1.102350000000001000
           Width = 204.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#8221#1056#176#1057#8218#1056#176' '#1056#1111#1056#181#1057#8225#1056#176#1057#8218#1056#1105': [Date] [Time]')
         end
       end
       object MasterData1: TfrxMasterData
+        FillType = ftBrush
+        Frame.Typ = []
         Height = 23.677180000000000000
         Top = 226.771800000000000000
         Width = 718.110700000000000000
@@ -411,66 +418,74 @@ object Form_opl_usl: TForm_opl_usl
         DataSetName = 'frxDBData_opl_usl'
         RowCount = 0
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 455.000000000000000000
           Top = 1.566789999999997000
           Width = 103.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#160#1056#173#1056#1032': [frxDBData_opl_usl."FORREU"]')
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 565.000000000000000000
           Top = 1.566789999999997000
           Width = 138.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             '[frxDBData_opl_usl."SUMMA"]')
         end
       end
       object GroupHeader1: TfrxGroupHeader
+        FillType = ftBrush
+        Frame.Typ = []
         Height = 19.480210000000000000
         Top = 185.196970000000000000
         Width = 718.110700000000000000
         Condition = 'frxDBData_opl_usl."name_tr"'
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.000000000000000000
           Top = 0.582560000000000900
           Width = 344.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
           Font.Name = 'Times New Roman'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             '[frxDBData_opl_usl."NAME_TR"]')
           ParentFont = False
         end
       end
       object GroupFooter1: TfrxGroupFooter
+        FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 272.126160000000000000
         Width = 718.110700000000000000
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Left = 5.000000000000000000
           Top = 1.212429999999984000
           Width = 700.000000000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 565.000000000000000000
           Top = 2.212429999999983000
           Width = 139.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -479,37 +494,41 @@ object Form_opl_usl: TForm_opl_usl
           Font.Height = -13
           Font.Name = 'Times New Roman'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             '[SUM(<frxDBData_opl_usl."SUMMA">,MasterData1)]')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 456.000000000000000000
           Top = 2.212429999999983000
           Width = 102.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
           Font.Name = 'Times New Roman'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#152#1057#8218#1056#1109#1056#1110#1056#1109' '#1056#1111#1056#1109' '#1056#8211#1056#173#1056#1115':')
           ParentFont = False
         end
       end
       object ReportSummary1: TfrxReportSummary
+        FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 355.275820000000000000
         Width = 718.110700000000000000
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 565.000000000000000000
           Top = 2.062770000000000000
           Width = 139.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2f'
           DisplayFormat.Kind = fkNumeric
@@ -518,31 +537,34 @@ object Form_opl_usl: TForm_opl_usl
           Font.Height = -13
           Font.Name = 'Times New Roman'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8 = (
             '[SUM(<frxDBData_opl_usl."SUMMA">,MasterData1)]')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 456.000000000000000000
           Top = 2.062770000000000000
           Width = 102.488250000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
           Font.Name = 'Times New Roman'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8 = (
             #1056#152#1057#8218#1056#1109#1056#1110#1056#1109' '#1056#1111#1056#1109' '#1056#1109#1057#8218#1057#8225#1056#181#1057#8218#1057#1107':')
           ParentFont = False
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Left = 7.000000000000000000
           Top = 1.062770000000000000
           Width = 698.000000000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
       end
