@@ -105,12 +105,6 @@ begin
     Form_changes_lsk.setAllowEdit;
   end;
 
-  if FF('Form_changes_houses', 0) = 1 then
-  begin
-    Form_changes_houses.state_arch2(mgold_);
-    Form_changes_houses.setAllowEdit;
-  end;
-
   if FF('frmPenCorr', 0) = 1 then
   begin
     frmPenCorr.state_arch2(mgold_);

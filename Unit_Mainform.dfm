@@ -971,7 +971,6 @@ object Form_Main: TForm_Main
       object N70: TMenuItem
         Caption = #1055#1086#1083#1100#1079#1086#1074#1072#1090#1077#1083#1080
         ImageIndex = 60
-        OnClick = N70Click
       end
       object N80: TMenuItem
         Caption = #1058#1072#1088#1080#1092#1099

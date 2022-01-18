@@ -1,6 +1,6 @@
 object Form_changes_houses2: TForm_changes_houses2
-  Left = 319
-  Top = 666
+  Left = 625
+  Top = 772
   Width = 903
   Height = 612
   Caption = #1055#1077#1088#1077#1088#1072#1089#1095#1077#1090#1099

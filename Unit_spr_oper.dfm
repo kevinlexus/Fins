@@ -1,6 +1,6 @@
 object Form_spr_oper: TForm_spr_oper
-  Left = 850
-  Top = 476
+  Left = 1022
+  Top = 326
   AutoScroll = False
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082' '#1086#1087#1077#1088#1072#1094#1080#1081
@@ -97,7 +97,7 @@ object Form_spr_oper: TForm_spr_oper
     Width = 702
     Height = 49
     Align = alBottom
-    TabOrder = 2
+    TabOrder = 0
     object Button1: TButton
       Left = 518
       Top = 16
@@ -118,82 +118,52 @@ object Form_spr_oper: TForm_spr_oper
       OnClick = Button2Click
     end
   end
-  object DBGridEh1: TDBGridEh
+  object cxGrid1: TcxGrid
     Left = 0
     Top = 0
     Width = 702
-    Height = 337
-    Align = alTop
-    DataSource = DS_oper
-    Flat = False
-    FooterColor = clWindow
-    FooterFont.Charset = DEFAULT_CHARSET
-    FooterFont.Color = clWindowText
-    FooterFont.Height = -11
-    FooterFont.Name = 'MS Sans Serif'
-    FooterFont.Style = []
-    TabOrder = 0
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'MS Sans Serif'
-    TitleFont.Style = []
-    Columns = <
-      item
-        EditButtons = <>
-        FieldName = 'OPER'
-        Footers = <>
-      end
-      item
-        EditButtons = <>
-        FieldName = 'NAIM'
-        Footers = <>
-      end
-      item
-        EditButtons = <>
-        FieldName = 'sprorg_name'
-        Footers = <>
-      end
-      item
-        EditButtons = <>
-        FieldName = 'usl_nm'
-        Footers = <>
-      end
-      item
-        EditButtons = <>
-        FieldName = 'usl_nm1'
-        Footers = <>
-      end
-      item
-        EditButtons = <>
-        FieldName = 'ISCOUNTER'
-        Footers = <>
-        Title.Caption = #1055#1086#1082#1072#1079#1099#1074'.'#1089#1095#1077#1090#1095#1080#1082' '#1087#1088#1080' '#1086#1087#1083#1072#1090#1077
-      end>
-  end
-  object DBNavigator2: TDBNavigator
-    Left = 8
-    Top = 344
-    Width = 180
-    Height = 25
-    DataSource = DS_oper
-    VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbInsert, nbDelete]
-    Hints.Strings = (
-      #1055#1077#1088#1074#1099#1081
-      #1055#1088#1077#1076#1099#1076#1091#1097#1080#1081
-      #1057#1083#1077#1076#1091#1102#1097#1080#1081
-      #1055#1086#1089#1083#1077#1076#1085#1080#1081
-      #1044#1086#1073#1072#1074#1080#1090#1100' '#1087#1088#1086#1078#1080#1074#1072#1102#1097#1077#1075#1086
-      #1059#1076#1072#1083#1080#1090#1100' '#1087#1088#1086#1078#1080#1074#1072#1102#1097#1077#1075#1086
-      'Edit record'
-      'Post edit'
-      'Cancel edit'
-      'Refresh data')
-    ParentShowHint = False
-    ConfirmDelete = False
-    ShowHint = True
+    Height = 367
+    Align = alClient
     TabOrder = 1
-    BeforeAction = DBNavigator2BeforeAction
+    object cxGrid1DBTableView1: TcxGridDBTableView
+      Navigator.Buttons.CustomButtons = <>
+      Navigator.Visible = True
+      DataController.DataSource = DS_oper
+      DataController.Summary.DefaultGroupSummaryItems = <>
+      DataController.Summary.FooterSummaryItems = <>
+      DataController.Summary.SummaryGroups = <>
+      OptionsData.Deleting = False
+      OptionsData.Inserting = False
+      OptionsView.ColumnAutoWidth = True
+      OptionsView.GroupByBox = False
+      OptionsView.Indicator = True
+      object cxGrid1DBTableView1OPER: TcxGridDBColumn
+        DataBinding.FieldName = 'OPER'
+      end
+      object cxGrid1DBTableView1NAIM: TcxGridDBColumn
+        DataBinding.FieldName = 'NAIM'
+      end
+      object cxGrid1DBTableView1sprorg_name: TcxGridDBColumn
+        DataBinding.FieldName = 'sprorg_name'
+      end
+      object cxGrid1DBTableView1usl_nm: TcxGridDBColumn
+        DataBinding.FieldName = 'usl_nm'
+      end
+      object cxGrid1DBTableView1usl_nm1: TcxGridDBColumn
+        DataBinding.FieldName = 'usl_nm1'
+      end
+      object cxGrid1DBTableView1ISCOUNTER: TcxGridDBColumn
+        Caption = #1055#1086#1082#1072#1079#1099#1074'.'#1089#1095'.?'
+        DataBinding.FieldName = 'ISCOUNTER'
+        PropertiesClassName = 'TcxCheckBoxProperties'
+        Properties.NullStyle = nssUnchecked
+        Properties.ValueChecked = 1
+        Properties.ValueUnchecked = 0
+      end
+    end
+    object cxGrid1Level1: TcxGridLevel
+      GridView = cxGrid1DBTableView1
+    end
   end
   object OD_oper: TOracleDataSet
     SQL.Strings = (
@@ -280,11 +250,6 @@ object Form_spr_oper: TForm_spr_oper
       FieldName = 'ISCOUNTER'
     end
   end
-  object DS_oper: TwwDataSource
-    DataSet = OD_oper
-    Left = 112
-    Top = 80
-  end
   object OD_t_org: TOracleDataSet
     SQL.Strings = (
       
@@ -318,7 +283,7 @@ object Form_spr_oper: TForm_spr_oper
       'select * from scott.usl u')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      04000000300000000400000055534C4D0100000000000300000055534C010000
+      04000000310000000400000055534C4D0100000000000300000055534C010000
       000000050000004B41525457010000000000040000004B574E49010000000000
       030000004C50570100000000000600000045445F495A4D010000000000020000
       004E4D010000000000030000004E4D310100000000000500000055534C5F5001
@@ -343,7 +308,8 @@ object Form_spr_oper: TForm_spr_oper
       505F50454E5F5245460100000000000700000055534C5F564F4C010000000000
       0800000042494C4C5F434F4C0100000000000900000042494C4C5F434F4C3201
       0000000000080000004E4D5F53484F52540100000000000B0000005553455F56
-      4F4C5F43414E01000000000009000000484944455F43485247010000000000}
+      4F4C5F43414E01000000000009000000484944455F434852470100000000000B
+      00000055534C4D5F47524F555031010000000000}
     Session = DataModule1.OracleSession1
     Active = True
     Left = 80
@@ -372,7 +338,7 @@ object Form_spr_oper: TForm_spr_oper
       'select * from scott.usl u')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      04000000300000000400000055534C4D0100000000000300000055534C010000
+      04000000310000000400000055534C4D0100000000000300000055534C010000
       000000050000004B41525457010000000000040000004B574E49010000000000
       030000004C50570100000000000600000045445F495A4D010000000000020000
       004E4D010000000000030000004E4D310100000000000500000055534C5F5001
@@ -397,7 +363,8 @@ object Form_spr_oper: TForm_spr_oper
       505F50454E5F5245460100000000000700000055534C5F564F4C010000000000
       0800000042494C4C5F434F4C0100000000000900000042494C4C5F434F4C3201
       0000000000080000004E4D5F53484F52540100000000000B0000005553455F56
-      4F4C5F43414E01000000000009000000484944455F43485247010000000000}
+      4F4C5F43414E01000000000009000000484944455F434852470100000000000B
+      00000055534C4D5F47524F555031010000000000}
     Session = DataModule1.OracleSession1
     Active = True
     Left = 80
@@ -420,5 +387,10 @@ object Form_spr_oper: TForm_spr_oper
     DataSet = OD_usl2
     Left = 112
     Top = 192
+  end
+  object DS_oper: TDataSource
+    DataSet = OD_oper
+    Left = 112
+    Top = 80
   end
 end

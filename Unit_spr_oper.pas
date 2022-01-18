@@ -4,9 +4,13 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, Wwdatsrc, OracleData, StdCtrls, wwSpeedButton,
-  wwDBNavigator, ExtCtrls, 
-  DBGridEh, DBCtrls, Utils, GridsEh;
+  Dialogs, DB, OracleData, StdCtrls, 
+  ExtCtrls, 
+  DBCtrls, Utils, cxGraphics, cxControls,
+  cxLookAndFeels, cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter,
+  cxData, cxDataStorage, cxEdit, cxNavigator, cxDBData, cxCheckBox,
+  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGridLevel,
+  cxClasses, cxGridCustomView, cxGrid;
 
 type
   TForm_spr_oper = class(TForm)
@@ -14,7 +18,6 @@ type
     Button1: TButton;
     Button2: TButton;
     OD_oper: TOracleDataSet;
-    DS_oper: TwwDataSource;
     OD_operOPER: TStringField;
     OD_operNAIM: TStringField;
     OD_t_org: TOracleDataSet;
@@ -33,13 +36,21 @@ type
     OD_operusl_nm: TStringField;
     OD_operusl_nm1: TStringField;
     OD_opersprorg_name: TStringField;
-    DBGridEh1: TDBGridEh;
     OD_uslNM: TStringField;
     OD_usl2NM: TStringField;
     OD_t_orgID: TFloatField;
     OD_operFK_ORG: TFloatField;
-    DBNavigator2: TDBNavigator;
     OD_operISCOUNTER: TFloatField;
+    cxGrid1: TcxGrid;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    cxGrid1DBTableView1OPER: TcxGridDBColumn;
+    cxGrid1DBTableView1NAIM: TcxGridDBColumn;
+    cxGrid1DBTableView1sprorg_name: TcxGridDBColumn;
+    cxGrid1DBTableView1usl_nm: TcxGridDBColumn;
+    cxGrid1DBTableView1usl_nm1: TcxGridDBColumn;
+    cxGrid1DBTableView1ISCOUNTER: TcxGridDBColumn;
+    DS_oper: TDataSource;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);

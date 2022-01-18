@@ -66,7 +66,6 @@ uses
   Unit_spr_prices in 'Unit_spr_prices.pas' {Form_spr_prices},
   Unit_spr_oper in 'Unit_spr_oper.pas' {Form_spr_oper},
   Unit_add_lsk in 'Unit_add_lsk.pas' {Form_add_lsk},
-  Unit_spr_users in 'Unit_spr_users.pas' {Form_spr_users},
   Unit_sel_hs in 'Unit_sel_hs.pas' {Form_sel_hs},
   GRTreeView in 'GRTreeView.pas',
   Unit_form_edit_price in 'Unit_form_edit_price.pas' {Form_edit_price},

@@ -284,7 +284,6 @@ type
       const Info: Variant);
     procedure N67Click(Sender: TObject);
     procedure N69Click(Sender: TObject);
-    procedure N70Click(Sender: TObject);
     procedure OLAP1Click(Sender: TObject);
     procedure N71Click(Sender: TObject);
     procedure N68Click(Sender: TObject);
@@ -494,7 +493,7 @@ uses
   Unit_chargepay, Unit_sel_arch_period, Unit_find_adr, Unit_changes_list,
   Unit_houses_nabor, Unit_spr_spk, Unit_gen_current, Unit_print_lists,
   Unit_spr_sprorg, Unit_spr_prices, Unit_spr_oper, Unit_status_gen,
-  Unit_spr_users, Unit_form_saldo, Unit_form_olap,
+  Unit_form_saldo, Unit_form_olap,
   Unit_tree_objects, Unit_get_pay_nal, Unit_recv_pay_bank,
   Unit_load_files, Unit_spr_deb_org, Unit_spr_penya, Unit_edit_reports,
   Unit_oracle_load, Unit_form_kart_pr, Unit_spr_params,
@@ -1278,11 +1277,6 @@ end;
 procedure TForm_Main.N69Click(Sender: TObject);
 begin
   Application.CreateForm(TForm_spr_oper, Form_spr_oper);
-end;
-
-procedure TForm_Main.N70Click(Sender: TObject);
-begin
-  Application.CreateForm(TForm_spr_users, Form_spr_users);
 end;
 
 procedure TForm_Main.OLAP1Click(Sender: TObject);
