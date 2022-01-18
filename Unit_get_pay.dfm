@@ -1,5 +1,5 @@
 object Form_get_pay: TForm_get_pay
-  Left = 366
+  Left = 342
   Top = 756
   Width = 903
   Height = 543

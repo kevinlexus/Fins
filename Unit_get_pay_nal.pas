@@ -5,28 +5,15 @@ interface
 uses
   Windows, SysUtils, Variants, Classes, Controls, Forms,
   Dialogs, DB, Oracle, OracleData,
-  StdCtrls, Mask, wwdbedit,
-  DBGridEh, frxClass, frxDBSet, Menus, Unit_ecr, Math, GridsEh, ComCtrls,
-  ToolWin, cxGraphics, cxControls, 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  StdCtrls, Mask,
+  frxClass, frxDBSet, Menus, Unit_ecr, Math, ComCtrls,
+  ToolWin, cxGraphics, cxControls,
+
   cxGridLevel, cxClasses, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
   cxLookAndFeels, cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter,
-  cxData, cxDataStorage, cxEdit, cxNavigator, cxDBData;
+  cxData, cxDataStorage, cxEdit, cxNavigator, cxDBData, cxContainer,
+  cxTextEdit, cxMaskEdit, GridsEh, DBGridEh, cxDBLookupComboBox;
 
 type
   TForm_get_pay_nal = class(TForm)
@@ -34,7 +21,6 @@ type
     DS_c_kwtp_temp: TDataSource;
     GroupBox1: TGroupBox;
     Label1: TLabel;
-    wwDBEdit3: TwwDBEdit;
     Edit1: TEdit;
     OD_c_kwtp_tempSUMMA: TFloatField;
     OD_c_kwtp_tempPENYA: TFloatField;
@@ -43,15 +29,11 @@ type
     DS_oper: TDataSource;
     OD_operOPER: TStringField;
     OD_operNAIM: TStringField;
-    OD_c_kwtp_tempoper_name: TStringField;
     Label2: TLabel;
     GroupBox2: TGroupBox;
     Label3: TLabel;
-    wwDBEdit1: TwwDBEdit;
     Label4: TLabel;
-    wwDBEdit2: TwwDBEdit;
     Label5: TLabel;
-    wwDBEdit4: TwwDBEdit;
     Button1: TButton;
     OD_c_kwtp_tempCNT_SCH: TFloatField;
     OD_chargepay: TOracleDataSet;
@@ -112,7 +94,6 @@ type
     PageControl1: TPageControl;
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
-    DBGridEh1: TDBGridEh;
     cxGrid1: TcxGrid;
     cxGrid1DBTableView1: TcxGridDBTableView;
     cxGrid1DBTableView1SUMMA: TcxGridDBColumn;
@@ -129,27 +110,28 @@ type
     cxGrid1DBTableView1USL_NAME_SHORT: TcxGridDBColumn;
     cxGrid1Level1: TcxGridLevel;
     OD_operCASH_OPER_TP: TFloatField;
+    cxLsk: TcxMaskEdit;
+    cxAmount: TcxMaskEdit;
+    cxSumma: TcxMaskEdit;
+    cxRemain: TcxMaskEdit;
+    cxGrid2: TcxGrid;
+    cxGridDBTableView1: TcxGridDBTableView;
+    cxGridLevel1: TcxGridLevel;
+    cxGridDBTableView1OPER: TcxGridDBColumn;
+    cxGridDBTableView1CNT_SCH: TcxGridDBColumn;
+    cxGridDBTableView1CNT_SCH0: TcxGridDBColumn;
+    cxGridDBTableView1SUMMA: TcxGridDBColumn;
+    cxGridDBTableView1PENYA: TcxGridDBColumn;
+    cxGridDBTableView1ITOG: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure wwDBEdit3DblClick(Sender: TObject);
-    procedure wwDBEdit3KeyPress(Sender: TObject; var Key: Char);
     procedure Button2Click(Sender: TObject);
-    procedure wwDBEdit4KeyPress(Sender: TObject; var Key: Char);
-    procedure wwDBEdit1KeyPress(Sender: TObject; var Key: Char);
     procedure Button1Click(Sender: TObject);
     procedure action;
     procedure wwDBComboBox1DropDown(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure count;
-    procedure DBGridEh1Columns2EditButtonClick(Sender: TObject; var Handled:
-      Boolean);
-    procedure DBGridEh1KeyDown(Sender: TObject; var Key: Word; Shift:
-      TShiftState);
-    procedure DBGridEh1Columns2EditButtonDown(Sender: TObject; TopButton:
-      Boolean; var AutoRepeat, Handled: Boolean);
-    procedure DBGridEh1ColEnter(Sender: TObject);
     procedure OD_chargepayBeforeInsert(DataSet: TDataSet);
     procedure OD_chargepayBeforePost(DataSet: TDataSet);
-    procedure DBGridEh1ColExit(Sender: TObject);
     procedure N1Click(Sender: TObject);
     procedure setNkom(p_lsk: string);
     procedure clearPay;
@@ -166,6 +148,15 @@ type
       isUseArchPeriod, isUseCurPeriod, isAddit: Boolean);
     procedure reLoadDeb;
     procedure StatusBar1DblClick(Sender: TObject);
+    procedure cxLskDblClick(Sender: TObject);
+    procedure cxLskKeyPress(Sender: TObject; var Key: Char);
+    procedure cxAmountKeyPress(Sender: TObject; var Key: Char);
+    procedure cxSummaKeyPress(Sender: TObject; var Key: Char);
+    procedure cxGridDBTableView1EditKeyDown(Sender: TcxCustomGridTableView;
+      AItem: TcxCustomGridTableItem; AEdit: TcxCustomEdit; var Key: Word;
+      Shift: TShiftState);
+    procedure cxGridDBTableView1KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     klsk: Integer;
   public
@@ -220,7 +211,7 @@ begin
       // заново залить долги
       {DataModule1.OraclePackage1.CallProcedure(
         'scott.C_GET_PAY.init_c_kwtp_temp_dolg',
-        [Form_get_pay_nal.wwDBEdit3.Text]);
+        [Form_get_pay_nal.cxLsk.Text]);
       Active := false;
       Active := true;}
       reLoadDeb;
@@ -408,15 +399,10 @@ procedure TForm_get_pay_nal.FormClose(Sender: TObject; var Action:
   TCloseAction);
 begin
   //Чтобы не было Access Violation на EHGrid, при закрытии формы
-  DBGridEh1.DataSource := nil;
+  //DBGridEh1.DataSource := nil;
   // Обязательный Rollback, в случае если остались начисления счетчиков
   DataModule1.OracleSession1.Rollback;
   Action := caFree;
-end;
-
-procedure TForm_get_pay_nal.wwDBEdit3DblClick(Sender: TObject);
-begin
-  invokeSearchAdr;
 end;
 
 procedure TForm_get_pay_nal.setNkom(p_lsk: string);
@@ -432,7 +418,7 @@ begin
   begin
     l_nkom :=
       DataModule1.OraclePackage1.CallStringFunction('scott.UTILS.get_nkom_pay_lsk',
-      [wwDBEdit3.Text]);
+      [cxLsk.Text]);
     ;
     DataModule1.OraclePackage1.CallProcedure('scott.INIT.set_nkom', [l_nkom]);
   end;
@@ -444,59 +430,18 @@ begin
        ('scott.INIT.get_nkom', [parNone]);;}
 end;
 
-procedure TForm_get_pay_nal.wwDBEdit3KeyPress(Sender: TObject; var Key: Char);
-var
-  l_cnt: Integer;
-begin
-  if (Key = #13) and (wwDBEdit3.Text <> '') then
-  begin
-    wwDBEdit3.Text := LeftPad(wwDBEdit3.Text, 8, '0');
-    DBGridEh1.Visible := true;
-    DBGridEh1.SetFocus;
-    {    Edit1.Text :=
-          DataModule1.OraclePackage1.CallStringFunction('scott.UTILS.GET_ADR_BY_LSK',
-          [wwDBEdit3.Text]);}
-    OD_Kart.SetVariable('lsk', wwDBEdit3.Text);
-    OD_Kart.Active := False;
-    OD_Kart.Active := True;
-    Edit1.Text := OD_Kart.FieldByName('adr').AsString;
-    if OD_Kart.FieldByName('lsk').asString <> '' then
-    begin
-      StatusBar1.SimpleText := '';
-      klsk := OD_Kart.FieldByName('k_lsk_id').AsInteger;
-      //DataModule1.OraclePackage1.CallStringFunction('scott.UTILS.GET_K_LSK_ID_BY_LSK', [wwDBEdit3.Text]);
-      setNkom(wwDBEdit3.Text);
-      //    if getDoublePar(Form_main.paramList, 'JAVA_CHARGE') <> 1 then
-      //    begin
-            // Выполнить начисление в PL/SQL или в Java, (если в Java, то оно будет выполнено дважды, еще и в момент распр. платежа,
-            // так как модуль Начисление еще выполняет функцию заполнения коротких наименований услуг по лиц.счету
-            // Java может распределить по свежему начислению (для ТСЖ, чтобы в чеке отразить суммы)
-
-            // убрал, 24.11.21 - так как выполняется в Java при распределении платежа
-{      l_cnt :=
-        DataModule1.OraclePackage1.CallIntegerFunction('scott.C_CHARGES.gen_charges',
-        [wwDBEdit3.Text, null, null,
-        null, 1, 0]);}
-      //    end;
-      clearPay;
-    end
-    else
-    begin
-      StatusBar1.SimpleText := 'Лицевой счет не найден!';
-    end;
-  end;
-end;
-
 procedure TForm_get_pay_nal.clearPay;
 begin
   //очищаем оплату по месяцам
   OD_c_kwtp_temp.Active := false;
   OD_c_kwtp_temp.Active := true;
+  OD_c_kwtp_temp.Edit;
+
   OD_oper.Active := false;
-  OD_oper.SetVariable('lsk', wwDBEdit3.Text);
+  OD_oper.SetVariable('lsk', cxLsk.Text);
   OD_oper.Active := true;
 
-  DataModule1.OraclePackage1.CallProcedure('scott.C_GET_PAY.init_c_kwtp_temp_dolg', [wwDBEdit3.Text]);
+  DataModule1.OraclePackage1.CallProcedure('scott.C_GET_PAY.init_c_kwtp_temp_dolg', [cxLsk.Text]);
   OD_chargepay.Active := false;
   OD_chargepay.Active := true;
 end;
@@ -542,8 +487,8 @@ begin
   begin
     //Выход на итог
     count;
-    //    wwDBEdit1.SetFocus;
-    Windows.SetFocus(wwDBEdit1.Handle);
+    //    cxSumma.SetFocus;
+    Windows.SetFocus(cxSumma.Handle);
   end
   else if (OD_usl_chk.FieldByName('iscounter').AsInteger = 0) then
   begin
@@ -568,11 +513,11 @@ begin
       Form_get_cnt_sch.Caption := 'Показания счетчика';
       Form_get_cnt_sch.cxMeter.Text :=
         FloatToStr(DataModule1.OraclePackage1.CallFloatFunction('scott.c_charges.gen_charges_sch',
-        [wwDBEdit3.Text, OD_usl_chk.FieldByName('fk_usl_chk').AsString, 0,
+        [cxLsk.Text, OD_usl_chk.FieldByName('fk_usl_chk').AsString, 0,
         null]));
       Form_get_cnt_sch.cnt_sch0_ :=
         DataModule1.OraclePackage1.CallFloatFunction('scott.c_charges.gen_charges_sch',
-        [wwDBEdit3.Text, OD_usl_chk.FieldByName('fk_usl_chk').AsString, 0,
+        [cxLsk.Text, OD_usl_chk.FieldByName('fk_usl_chk').AsString, 0,
         null]);
     end
     else
@@ -597,7 +542,7 @@ begin
   begin
     i := i + OD_c_kwtp_temp.FieldByName('summa').AsFloat +
       OD_c_kwtp_temp.FieldByName('penya').AsFloat;
-    wwDBEdit4.Text := FloatToStr(i);
+    cxAmount.Text := FloatToStr(i);
     OD_c_kwtp_temp.Next
   end;
 end;
@@ -607,91 +552,19 @@ begin
   Close;
 end;
 
-procedure TForm_get_pay_nal.wwDBEdit4KeyPress(Sender: TObject; var Key: Char);
-begin
-  if Key = #13 then
-    //    wwDBEdit1.SetFocus;
-    Windows.SetFocus(wwDBEdit1.Handle);
-  if RetKey(Key) then
-    Key := '.';
-
-end;
-
-procedure TForm_get_pay_nal.wwDBEdit1KeyPress(Sender: TObject; var Key: Char);
-var
-  summGet, summItg, summa_: Double;
-  err_: Integer;
-begin
-  if Key = #13 then
-  begin
-    if wwDBEdit1.Text = '' then
-      summGet := 0
-    else
-      summGet := StrToFloat(wwDBEdit1.Text);
-
-    if wwDBEdit4.Text = '' then
-      summItg := 0
-    else
-      summItg := StrToFloat(wwDBEdit4.Text);
-
-    if (summGet - summItg < 0) then
-    begin
-      msg2('Не хватает денег для оплаты, повторите ввод', 'Внимание!', MB_OK +
-        MB_ICONSTOP);
-      //      wwDBEdit1.SetFocus;
-      Windows.SetFocus(wwDBEdit1.Handle);
-      exit;
-    end;
-
-    if (summItg = 0) then
-    begin
-      msg2('Сумма квитанции = 0, отмена', 'Внимание!', MB_OK + MB_ICONSTOP);
-      exit;
-    end;
-
-    //    Button1.SetFocus;
-    Windows.SetFocus(Button1.Handle);
-    summa_ := summGet - summItg;
-
-    if summa_ > 0 then
-    begin
-      if msg3('Распределить остаток ' + FloatToStr(summa_) +
-        ' на текущий месяц?',
-        'Внимание!', MB_YESNO +
-        MB_ICONQUESTION) = ID_YES then
-      begin
-        if not (OD_chargepay.State in [dsBrowse]) then
-          OD_chargepay.Post;
-
-        distPay(summa_, False, False, True, True);
-        summa_ := 0;
-        //пересчитать итог
-        count;
-      end;
-    end;
-
-    wwDBEdit2.Text := FloatToStr(summa_);
-    //    Button1.SetFocus;
-    Windows.SetFocus(Button1.Handle);
-  end;
-  if RetKey(Key) then
-    Key := '.';
-
-end;
-
 procedure TForm_get_pay_nal.Button1Click(Sender: TObject);
 var
   i, l_par, c_kwtp_id_, l_flag, l_cnt: Integer;
   summRemain, summCheck, summGet: Double;
 begin
 
-  if (StrToFloat(wwDBEdit1.Text) - StrToFloat(wwDBEdit4.Text) < 0) then
+  if (StrToFloat(cxSumma.Text) - StrToFloat(cxAmount.Text) < 0) then
   begin
     msg2('Не хватает денег для оплаты, отмена', 'Внимание!', MB_OK +
       MB_ICONSTOP);
     exit;
   end;
-  if (StrToFloat(wwDBEdit4.Text) = 0) then
+  if (StrToFloat(cxAmount.Text) = 0) then
   begin
     msg2('Сумма квитанции = 0, отмена', 'Внимание!', MB_OK + MB_ICONSTOP);
     exit;
@@ -707,13 +580,13 @@ begin
     OD_c_kwtp_temp.Post;
 
   //Автоматически определить номер компьютера, поменять если необходимо
-  setNkom(wwDBEdit3.Text);
+  setNkom(cxLsk.Text);
 
   if getDoublePar(Form_main.paramList, 'RECEIPT_TP') = 1 then
   begin
     // ТСЖ - провести платеж
     c_kwtp_id_ := DataModule1.OraclePackage1.CallIntegerFunction(
-      'scott.C_GET_PAY.get_money_nal', [wwDBEdit3.Text]);
+      'scott.C_GET_PAY.get_money_nal', [cxLsk.Text]);
     //платёжный документ
     with OD_c_kwtp do
     begin
@@ -731,10 +604,10 @@ begin
     // проверить соответствие итоговой суммы прошедшей в c_kwtp_mg и принятой от клиента
     summCheck := 0;
     summRemain := 0;
-    if wwDBEdit1.Text <> '' then
-      summGet := StrToFloat(wwDBEdit1.Text);
-    if wwDBEdit2.Text <> '' then
-      summRemain := StrToFloat(wwDBEdit2.Text);
+    if cxSumma.Text <> '' then
+      summGet := StrToFloat(cxSumma.Text);
+    if cxRemain.Text <> '' then
+      summRemain := StrToFloat(cxRemain.Text);
 
     with OD_get_money_nal2 do
     begin
@@ -775,7 +648,7 @@ begin
       OD_oper.FieldByName('cash_oper_tp').AsString + ' cash_num=' +
       OD_c_kwtp.FieldByName('cash_num').AsString);
 
-    l_flag := print_receipt(StrToFloat(wwDBEdit1.Text),
+    l_flag := print_receipt(StrToFloat(cxSumma.Text),
       OD_c_kwtp.FieldByName('cash_num').AsInteger,
       OD_oper.FieldByName('cash_oper_tp').AsInteger);
   end
@@ -835,14 +708,14 @@ begin
     Form_list_kart.OD_list_kart.RefreshRecord;
 
   Edit1.Text := '';
-  wwDBEdit1.Text := '0';
-  wwDBEdit2.Text := '0';
-  wwDBEdit3.Text := '';
-  wwDBEdit4.Text := '0';
-  DBGridEh1.Visible := false;
-  DBGridEh1.SelectedIndex := 0;
+  cxSumma.Text := '0';
+  cxRemain.Text := '0';
+  cxLsk.Text := '';
+  cxAmount.Text := '0';
+  cxGrid2.Visible := false;
+  //DBGridEh1.SelectedIndex := 0;
   Button1.Enabled := true;
-  Windows.SetFocus(wwDBEdit3.Handle);
+  Windows.SetFocus(cxLsk.Handle);
 end;
 
 // печать чека Result :0-успешно, 1-ошибка
@@ -998,7 +871,7 @@ begin
       begin
         // ошибка
         Result := 1;
-            logText('ККМ: Регистрация чека - ОШИБКА при открытии порта ККМ!');
+        logText('ККМ: Регистрация чека - ОШИБКА при открытии порта ККМ!');
       end
       else
       begin
@@ -1444,57 +1317,16 @@ begin
   DecimalSeparator := '.';
   OD_oper.Active := true;
   OD_usl_chk.Active := true;
-  wwDBEdit1.Text := '0';
-  wwDBEdit2.Text := '0';
-  wwDBEdit4.Text := '0';
+  cxSumma.Text := '0';
+  cxRemain.Text := '0';
+  cxAmount.Text := '0';
   OD_c_kwtp_temp.Active := false;
   if FF('Form_list_kart', 0) = 1 then
   begin
-    wwDBEdit3.Text := Form_list_kart.OD_list_kart.FieldByName('lsk').AsString;
-    setNkom(wwDBEdit3.Text);
+    cxLsk.Text := Form_list_kart.OD_list_kart.FieldByName('lsk').AsString;
+    setNkom(cxLsk.Text);
   end;
   TabSheet2.TabVisible := False;
-end;
-
-procedure TForm_get_pay_nal.DBGridEh1Columns2EditButtonClick(Sender: TObject; var
-  Handled: Boolean);
-begin
-  action;
-end;
-
-procedure TForm_get_pay_nal.DBGridEh1KeyDown(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
-begin
-  //выбор долгов или показ сч.
-   //(wwDBGrid1.GetActiveCol = 3)
-  if (DBGridEh1.SelectedField.FieldName = 'PENYA') and (key = VK_Return) then
-  begin
-    action;
-  end;
-
-  //выход на итог
-  if ((Shift = [ssCtrl]) and (key = VK_Return)) then
-  begin
-    count;
-    //    wwDBEdit1.SetFocus;
-    Windows.SetFocus(wwDBEdit1.Handle);
-  end;
-end;
-
-procedure TForm_get_pay_nal.DBGridEh1Columns2EditButtonDown(Sender: TObject;
-  TopButton: Boolean; var AutoRepeat, Handled: Boolean);
-begin
-  action;
-end;
-
-procedure TForm_get_pay_nal.DBGridEh1ColEnter(Sender: TObject);
-begin
-  if ((DBGridEh1.SelectedField.FieldName = 'SUMMA') or
-    (DBGridEh1.SelectedField.FieldName = 'PENYA')) then
-  begin
-    DBGridEh1.Columns[1].ReadOnly := true; //SUMMA
-    DBGridEh1.Columns[2].ReadOnly := true; //PENYA
-  end;
 end;
 
 procedure TForm_get_pay_nal.OD_chargepayBeforeInsert(DataSet: TDataSet);
@@ -1506,16 +1338,6 @@ procedure TForm_get_pay_nal.OD_chargepayBeforePost(DataSet: TDataSet);
 begin
   if FF('Form_get_pay_dolg', 0) = 1 then
     Form_get_pay_dolg.recalc;
-end;
-
-procedure TForm_get_pay_nal.DBGridEh1ColExit(Sender: TObject);
-begin
-  if ((DBGridEh1.SelectedField.FieldName = 'SUMMA') or
-    (DBGridEh1.SelectedField.FieldName = 'PENYA')) then
-  begin
-    DBGridEh1.Columns[1].ReadOnly := false; //SUMMA
-    DBGridEh1.Columns[2].ReadOnly := false; //PENYA
-  end;
 end;
 
 procedure TForm_get_pay_nal.N1Click(Sender: TObject);
@@ -1554,7 +1376,7 @@ begin
     begin
       Application.CreateForm(TForm_sch_history, Form_sch_history);
     end;
-    Form_sch_history.setKlsk(klsk, wwDBEdit3.Text);
+    Form_sch_history.setKlsk(klsk, cxLsk.Text);
     Form_sch_history.setTp(1);
   end
   else
@@ -1592,7 +1414,7 @@ begin
   Application.CreateForm(TForm_find_adr, Form_find_adr);
   if Form_find_adr.ShowModal = mrOk then
   begin
-    wwDBEdit3.Text := Form_Main.Lsk_;
+    cxLsk.Text := Form_Main.Lsk_;
     {    Edit1.Text :=
           DataModule1.OraclePackage1.CallStringFunction('scott.UTILS.GET_ADR_BY_LSK',
           [Form_Main.Lsk_]);}
@@ -1602,16 +1424,16 @@ begin
     Edit1.Text := OD_Kart.FieldByName('adr').AsString;
     klsk := OD_Kart.FieldByName('k_lsk_id').AsInteger;
 
-{    if getDoublePar(Form_main.paramList, 'JAVA_CHARGE') <> 1 then
-    begin
-      // Выполнить начисление в PL/SQL, если нет Java модуля начисления
-      // чтобы уже Java могла распределить по свежему начислению
-      l_cnt :=
-        DataModule1.OraclePackage1.CallIntegerFunction('scott.C_CHARGES.gen_charges',
-        [Form_Main.Lsk_, null, null,
-        null, 1, 0]);
-    end;
- }
+    {    if getDoublePar(Form_main.paramList, 'JAVA_CHARGE') <> 1 then
+        begin
+          // Выполнить начисление в PL/SQL, если нет Java модуля начисления
+          // чтобы уже Java могла распределить по свежему начислению
+          l_cnt :=
+            DataModule1.OraclePackage1.CallIntegerFunction('scott.C_CHARGES.gen_charges',
+            [Form_Main.Lsk_, null, null,
+            null, 1, 0]);
+        end;
+     }
     setNkom(Form_Main.Lsk_);
     clearPay;
     //очищаем оплату по месяцам
@@ -1620,7 +1442,7 @@ begin
     OD_c_kwtp_temp.Active := false;
     OD_c_kwtp_temp.Active := true;
     OD_oper.Active := false;
-    OD_oper.SetVariable('lsk', wwDBEdit3.Text);
+    OD_oper.SetVariable('lsk', cxLsk.Text);
     OD_oper.Active := true;
 
     DataModule1.OraclePackage1.CallProcedure('scott.C_GET_PAY.init_c_kwtp_temp_dolg', [Form_main.lsk_]);
@@ -1648,6 +1470,157 @@ begin
     TabSheet2.TabVisible := False
   else
     TabSheet2.TabVisible := True;
+end;
+
+procedure TForm_get_pay_nal.cxLskDblClick(Sender: TObject);
+begin
+  invokeSearchAdr;
+end;
+
+procedure TForm_get_pay_nal.cxLskKeyPress(Sender: TObject; var Key: Char);
+var
+  l_cnt: Integer;
+begin
+  if (Key = #13) and (cxLsk.Text <> '') then
+  begin
+    cxLsk.Text := LeftPad(cxLsk.Text, 8, '0');
+    cxGrid2.Visible := true;
+    cxGrid2.SetFocus;
+    cxGridDBTableView1OPER.Focused:=True;
+    
+    OD_Kart.SetVariable('lsk', cxLsk.Text);
+    OD_Kart.Active := False;
+    OD_Kart.Active := True;
+    Edit1.Text := OD_Kart.FieldByName('adr').AsString;
+    if OD_Kart.FieldByName('lsk').asString <> '' then
+    begin
+      StatusBar1.SimpleText := '';
+      klsk := OD_Kart.FieldByName('k_lsk_id').AsInteger;
+      setNkom(cxLsk.Text);
+      clearPay;
+    end
+    else
+    begin
+      StatusBar1.SimpleText := 'Лицевой счет не найден!';
+    end;
+  end;
+end;
+
+procedure TForm_get_pay_nal.cxAmountKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  if Key = #13 then
+    //    cxSumma.SetFocus;
+    Windows.SetFocus(cxSumma.Handle);
+  if RetKey(Key) then
+    Key := '.';
+
+end;
+
+procedure TForm_get_pay_nal.cxSummaKeyPress(Sender: TObject;
+  var Key: Char);
+var
+  summGet, summItg, summa_: Double;
+  err_: Integer;
+begin
+  if Key = #13 then
+  begin
+    if cxSumma.Text = '' then
+      summGet := 0
+    else
+      summGet := StrToFloat(cxSumma.Text);
+
+    if cxAmount.Text = '' then
+      summItg := 0
+    else
+      summItg := StrToFloat(cxAmount.Text);
+
+    if (summGet - summItg < 0) then
+    begin
+      msg2('Не хватает денег для оплаты, повторите ввод', 'Внимание!', MB_OK +
+        MB_ICONSTOP);
+      //      cxSumma.SetFocus;
+      Windows.SetFocus(cxSumma.Handle);
+      exit;
+    end;
+
+    if (summItg = 0) then
+    begin
+      msg2('Сумма квитанции = 0, отмена', 'Внимание!', MB_OK + MB_ICONSTOP);
+      exit;
+    end;
+
+    //    Button1.SetFocus;
+    Windows.SetFocus(Button1.Handle);
+    summa_ := summGet - summItg;
+
+    if summa_ > 0 then
+    begin
+      if msg3('Распределить остаток ' + FloatToStr(summa_) +
+        ' на текущий месяц?',
+        'Внимание!', MB_YESNO +
+        MB_ICONQUESTION) = ID_YES then
+      begin
+        if not (OD_chargepay.State in [dsBrowse]) then
+          OD_chargepay.Post;
+
+        distPay(summa_, False, False, True, True);
+        summa_ := 0;
+        //пересчитать итог
+        count;
+      end;
+    end;
+
+    cxRemain.Text := FloatToStr(summa_);
+    //    Button1.SetFocus;
+    Windows.SetFocus(Button1.Handle);
+  end;
+  if RetKey(Key) then
+    Key := '.';
+end;
+
+procedure TForm_get_pay_nal.cxGridDBTableView1EditKeyDown(
+  Sender: TcxCustomGridTableView; AItem: TcxCustomGridTableItem;
+  AEdit: TcxCustomEdit; var Key: Word; Shift: TShiftState);
+begin
+  //выбор долгов или показ сч.
+
+   //(wwDBGrid1.GetActiveCol = 3)
+  //if (DBGridEh1.SelectedField.FieldName = 'PENYA') and (key = VK_Return) then
+//  begin
+//    action;
+//  end;
+
+  //выход на итог
+{  if ((Shift = [ssCtrl]) and (key = VK_Return)) then
+  begin
+    count;
+    Windows.SetFocus(cxSumma.Handle);
+  end;}
+end;
+
+procedure TForm_get_pay_nal.cxGridDBTableView1KeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+  with TcxGridDBTableView(TcxGridSite(Sender).GridView) do
+  begin
+    if ((Shift = [ssCtrl]) and (key = VK_Return)) then
+    begin
+      count;
+      Windows.SetFocus(cxSumma.Handle);
+    end
+    else if (Key = VK_Return) and (Controller.FocusedColumn = cxGridDBTableView1PENYA)
+      then
+    begin
+      action;
+    end
+    else if (Key = VK_Return) and (Controller.FocusedColumn = cxGridDBTableView1CNT_SCH)
+      then
+    begin
+      count;
+      Windows.SetFocus(cxSumma.Handle);
+    end;
+  end;
 end;
 
 end.

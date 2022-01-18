@@ -68,7 +68,6 @@ uses
   Unit_add_lsk in 'Unit_add_lsk.pas' {Form_add_lsk},
   Unit_sel_hs in 'Unit_sel_hs.pas' {Form_sel_hs},
   GRTreeView in 'GRTreeView.pas',
-  Unit_form_edit_price in 'Unit_form_edit_price.pas' {Form_edit_price},
   Unit_status in 'Unit_status.pas' {Form_status},
   Unit_form_saldo in 'Unit_form_saldo.pas' {Form_saldo},
   Unit_load_file in 'Unit_load_file.pas',

@@ -55,7 +55,7 @@ begin
       FieldByName('summa').AsFloat:=
             DataModule1.OraclePackage1.CallFloatFunction(
                'scott.c_charges.gen_charges_sch',
-               [Form_get_pay_nal.wwDBEdit3.Text, usl_, 1,
+               [Form_get_pay_nal.cxLsk.Text, usl_, 1,
                 summa_]);
       FieldByName('cnt_sch').AsFloat:=
         summa_;

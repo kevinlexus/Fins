@@ -1,6 +1,6 @@
 object Form_spr_oper: TForm_spr_oper
-  Left = 486
-  Top = 336
+  Left = 476
+  Top = 746
   AutoScroll = False
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082' '#1086#1087#1077#1088#1072#1094#1080#1081

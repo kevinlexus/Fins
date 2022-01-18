@@ -1,6 +1,6 @@
 object Form_get_pay_nal: TForm_get_pay_nal
-  Left = 208
-  Top = 680
+  Left = 474
+  Top = 268
   Width = 633
   Height = 409
   BorderIcons = [biSystemMenu, biMinimize]
@@ -97,7 +97,7 @@ object Form_get_pay_nal: TForm_get_pay_nal
     Left = 0
     Top = 25
     Width = 617
-    Height = 41
+    Height = 48
     Align = alTop
     TabOrder = 0
     object Label1: TLabel
@@ -126,25 +126,6 @@ object Form_get_pay_nal: TForm_get_pay_nal
       Font.Style = [fsBold]
       ParentFont = False
     end
-    object wwDBEdit3: TwwDBEdit
-      Left = 38
-      Top = 11
-      Width = 107
-      Height = 24
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -15
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-      Picture.PictureMask = '[#][#][#][#][#][#][#][#]'
-      TabOrder = 0
-      UnboundDataType = wwDefault
-      WantReturns = False
-      WordWrap = False
-      OnDblClick = wwDBEdit3DblClick
-      OnKeyPress = wwDBEdit3KeyPress
-    end
     object Edit1: TEdit
       Left = 208
       Top = 11
@@ -157,7 +138,25 @@ object Form_get_pay_nal: TForm_get_pay_nal
       Font.Style = [fsBold]
       ParentFont = False
       ReadOnly = True
+      TabOrder = 0
+    end
+    object cxLsk: TcxMaskEdit
+      Left = 40
+      Top = 12
+      ParentFont = False
+      Properties.EditMask = '00000000;1;_'
+      Properties.ValidationOptions = [evoShowErrorIcon, evoAllowLoseFocus]
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -15
+      Style.Font.Name = 'MS Sans Serif'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
       TabOrder = 1
+      Text = '        '
+      OnDblClick = cxLskDblClick
+      OnKeyPress = cxLskKeyPress
+      Width = 112
     end
   end
   object GroupBox2: TGroupBox
@@ -209,61 +208,6 @@ object Form_get_pay_nal: TForm_get_pay_nal
       Font.Style = [fsBold]
       ParentFont = False
     end
-    object wwDBEdit1: TwwDBEdit
-      Left = 240
-      Top = 8
-      Width = 105
-      Height = 24
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -15
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-      Picture.PictureMask = '[-][#][#][#][#][#][#][.][#][#]'
-      TabOrder = 0
-      UnboundDataType = wwDefault
-      WantReturns = False
-      WordWrap = False
-      OnKeyPress = wwDBEdit1KeyPress
-    end
-    object wwDBEdit2: TwwDBEdit
-      Left = 408
-      Top = 8
-      Width = 113
-      Height = 24
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -15
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-      Picture.PictureMask = '[-][#][#][#][#][#][#][.][#][#]'
-      ReadOnly = True
-      TabOrder = 1
-      UnboundDataType = wwDefault
-      WantReturns = False
-      WordWrap = False
-    end
-    object wwDBEdit4: TwwDBEdit
-      Left = 51
-      Top = 9
-      Width = 102
-      Height = 24
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -15
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-      Picture.PictureMask = '[-][#][#][#][#][#][#][.][#][#]'
-      ReadOnly = True
-      TabOrder = 2
-      UnboundDataType = wwDefault
-      WantReturns = False
-      WordWrap = False
-      OnKeyPress = wwDBEdit4KeyPress
-    end
     object Button1: TButton
       Left = 525
       Top = 11
@@ -277,8 +221,58 @@ object Form_get_pay_nal: TForm_get_pay_nal
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
-      TabOrder = 3
+      TabOrder = 0
       OnClick = Button1Click
+    end
+    object cxAmount: TcxMaskEdit
+      Left = 48
+      Top = 11
+      ParentFont = False
+      Properties.MaskKind = emkRegExprEx
+      Properties.EditMask = '\-?\d{1,6}\.?\d{0,5}'
+      Properties.ValidationOptions = [evoShowErrorIcon, evoAllowLoseFocus]
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -15
+      Style.Font.Name = 'MS Sans Serif'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
+      TabOrder = 1
+      OnKeyPress = cxAmountKeyPress
+      Width = 110
+    end
+    object cxSumma: TcxMaskEdit
+      Left = 240
+      Top = 11
+      ParentFont = False
+      Properties.MaskKind = emkRegExprEx
+      Properties.EditMask = '\-?\d{1,6}\.?\d{0,5}'
+      Properties.ValidationOptions = [evoShowErrorIcon, evoAllowLoseFocus]
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -15
+      Style.Font.Name = 'MS Sans Serif'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
+      TabOrder = 2
+      OnKeyPress = cxSummaKeyPress
+      Width = 110
+    end
+    object cxRemain: TcxMaskEdit
+      Left = 402
+      Top = 11
+      ParentFont = False
+      Properties.MaskKind = emkRegExprEx
+      Properties.EditMask = '\-?\d{1,6}\.?\d{0,5}'
+      Properties.ValidationOptions = [evoShowErrorIcon, evoAllowLoseFocus]
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -15
+      Style.Font.Name = 'MS Sans Serif'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
+      TabOrder = 3
+      Width = 111
     end
   end
   object StatusBar1: TStatusBar
@@ -325,91 +319,73 @@ object Form_get_pay_nal: TForm_get_pay_nal
   end
   object PageControl1: TPageControl
     Left = 0
-    Top = 66
+    Top = 73
     Width = 617
-    Height = 242
+    Height = 235
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 4
     object TabSheet1: TTabSheet
-      object DBGridEh1: TDBGridEh
+      object cxGrid2: TcxGrid
         Left = 0
         Top = 0
         Width = 609
-        Height = 214
+        Height = 207
         Align = alClient
-        ColumnDefValues.AlwaysShowEditButton = True
-        ColumnDefValues.AutoDropDown = True
-        DataSource = DS_c_kwtp_temp
-        Flat = False
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -15
-        Font.Name = 'MS Sans Serif'
-        Font.Style = []
-        FooterColor = clWindow
-        FooterFont.Charset = DEFAULT_CHARSET
-        FooterFont.Color = clWindowText
-        FooterFont.Height = -11
-        FooterFont.Name = 'MS Sans Serif'
-        FooterFont.Style = []
-        FooterRowCount = 1
-        OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghEnterAsTab, dghDialogFind]
-        ParentFont = False
-        PopupMenu = PopupMenu1
-        SumList.Active = True
         TabOrder = 0
-        TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -15
-        TitleFont.Name = 'MS Sans Serif'
-        TitleFont.Style = []
-        OnColEnter = DBGridEh1ColEnter
-        OnColExit = DBGridEh1ColExit
-        OnKeyDown = DBGridEh1KeyDown
-        Columns = <
-          item
-            EditButtons = <>
-            FieldName = 'oper_name'
-            Footers = <>
+        object cxGridDBTableView1: TcxGridDBTableView
+          OnKeyDown = cxGridDBTableView1KeyDown
+          Navigator.Buttons.CustomButtons = <>
+          Navigator.Visible = True
+          OnEditKeyDown = cxGridDBTableView1EditKeyDown
+          DataController.DataSource = DS_c_kwtp_temp
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <>
+          DataController.Summary.SummaryGroups = <>
+          OptionsBehavior.GoToNextCellOnEnter = True
+          OptionsData.Deleting = False
+          OptionsData.Inserting = False
+          OptionsSelection.InvertSelect = False
+          OptionsView.ColumnAutoWidth = True
+          OptionsView.GroupByBox = False
+          OptionsView.Indicator = True
+          object cxGridDBTableView1OPER: TcxGridDBColumn
+            Caption = #1054#1087#1077#1088#1072#1094#1080#1103
+            DataBinding.FieldName = 'OPER'
+            PropertiesClassName = 'TcxLookupComboBoxProperties'
+            Properties.KeyFieldNames = 'OPER'
+            Properties.ListColumns = <
+              item
+                FieldName = 'NAIM'
+              end>
+            Properties.ListOptions.ShowHeader = False
+            Properties.ListSource = DS_oper
           end
-          item
-            EditButtons = <>
-            FieldName = 'SUMMA'
-            Footer.FieldName = 'SUMMA'
-            Footer.ValueType = fvtSum
-            Footers = <>
+          object cxGridDBTableView1SUMMA: TcxGridDBColumn
+            DataBinding.FieldName = 'SUMMA'
+            Options.Editing = False
           end
-          item
-            ButtonStyle = cbsEllipsis
-            EditButtons = <>
-            FieldName = 'PENYA'
-            Footer.ValueType = fvtSum
-            Footers = <>
-            Title.Caption = #1055#1077#1085#1103
+          object cxGridDBTableView1PENYA: TcxGridDBColumn
+            Caption = #1055#1077#1085#1103
+            DataBinding.FieldName = 'PENYA'
+            Options.Editing = False
           end
-          item
-            EditButtons = <>
-            FieldName = 'ITOG'
-            Footer.ValueType = fvtSum
-            Footers = <>
-            ReadOnly = True
-            Title.Caption = #1048#1090#1086#1075#1086
+          object cxGridDBTableView1ITOG: TcxGridDBColumn
+            Caption = #1048#1090#1086#1075#1086
+            DataBinding.FieldName = 'ITOG'
           end
-          item
-            EditButtons = <>
-            FieldName = 'CNT_SCH0'
-            Footers = <>
-            ReadOnly = True
-            Width = 81
+          object cxGridDBTableView1CNT_SCH0: TcxGridDBColumn
+            DataBinding.FieldName = 'CNT_SCH0'
+            Options.Editing = False
           end
-          item
-            EditButtons = <>
-            FieldName = 'CNT_SCH'
-            Footers = <>
-            ReadOnly = True
-            Width = 77
-          end>
+          object cxGridDBTableView1CNT_SCH: TcxGridDBColumn
+            DataBinding.FieldName = 'CNT_SCH'
+            Options.Editing = False
+          end
+        end
+        object cxGridLevel1: TcxGridLevel
+          GridView = cxGridDBTableView1
+        end
       end
     end
     object TabSheet2: TTabSheet
@@ -418,8 +394,8 @@ object Form_get_pay_nal: TForm_get_pay_nal
       object cxGrid1: TcxGrid
         Left = 0
         Top = 0
-        Width = 611
-        Height = 209
+        Width = 609
+        Height = 207
         Align = alClient
         TabOrder = 0
         object cxGrid1DBTableView1: TcxGridDBTableView
@@ -498,27 +474,16 @@ object Form_get_pay_nal: TForm_get_pay_nal
     Optimize = False
     OracleDictionary.UseMessageTable = True
     QBEDefinition.QBEFieldDefs = {
-      04000000070000000500000053554D4D410100000000000500000050454E5941
+      04000000060000000500000053554D4D410100000000000500000050454E5941
       010000000000040000004F50455201000000000007000000434E545F53434801
       000000000008000000434E545F534348300100000000000400000049544F4701
-      00000000000C000000434153485F4F5045525F5450010000000000}
+      0000000000}
     MasterFields = 'OPER'
     DetailFields = 'OPER'
     CommitOnPost = False
     Session = DataModule1.OracleSession1
     Left = 40
     Top = 152
-    object OD_c_kwtp_tempoper_name: TStringField
-      DisplayLabel = #1054#1087#1077#1088#1072#1094#1080#1103
-      DisplayWidth = 25
-      FieldKind = fkLookup
-      FieldName = 'oper_name'
-      LookupDataSet = OD_oper
-      LookupKeyFields = 'OPER'
-      LookupResultField = 'NAIM'
-      KeyFields = 'OPER'
-      Lookup = True
-    end
     object OD_c_kwtp_tempCNT_SCH: TFloatField
       DisplayLabel = #1057#1095#1077#1090#1095#1080#1082' '#1087#1086#1089#1083#1077
       DisplayWidth = 10

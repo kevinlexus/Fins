@@ -1,6 +1,6 @@
 object Form_house_new_vvod: TForm_house_new_vvod
-  Left = 410
-  Top = 202
+  Left = 678
+  Top = 198
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = #1044#1086#1073#1072#1074#1083#1077#1085#1080#1077' '#1074#1074#1086#1076#1072'/'#1087#1086#1076#1098#1077#1079#1076#1072

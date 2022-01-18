@@ -92,7 +92,7 @@ end;
 
 procedure TForm_get_pay_dolg.exit_ok;
 begin
-  Form_get_pay_nal.wwDBEdit1.Text := wwDBEdit1.Text;
+  Form_get_pay_nal.cxSumma.Text := wwDBEdit1.Text;
   with Form_get_pay_nal do
   begin
     if not (OD_chargepay.State in [dsBrowse]) then
@@ -238,7 +238,7 @@ begin
   //убрать входящее сальдо по пене
   if DataModule1.OraclePackage1.CallIntegerFunction
     ('scott.C_CPENYA.corr_sal_pen',
-    [Form_get_pay_nal.wwDBEdit3.Text,
+    [Form_get_pay_nal.cxLsk.Text,
     Form_get_pay_nal.OD_chargepay.FieldByName('mg').AsString]) <> 0 then
   begin
     msg2('Входящего сальдо по пене нет, либо уже удалено!', 'Внимание!', MB_OK +
@@ -253,7 +253,7 @@ begin
           //заново залить задолжность
           DataModule1.OraclePackage1.CallProcedure(
             'scott.C_GET_PAY.init_c_kwtp_temp_dolg',
-            [Form_get_pay_nal.wwDBEdit3.Text]);
+            [Form_get_pay_nal.cxLsk.Text]);
           Active := false;
           Active := true;
           //заново залить задолжность
