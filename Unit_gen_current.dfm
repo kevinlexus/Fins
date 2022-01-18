@@ -1,6 +1,6 @@
 object Form_gen_current: TForm_gen_current
-  Left = 300
-  Top = 189
+  Left = 334
+  Top = 799
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1060#1086#1088#1084#1080#1088#1086#1074#1072#1085#1080#1077' '#1090#1077#1082#1091#1097#1077#1077
@@ -141,7 +141,7 @@ object Form_gen_current: TForm_gen_current
     Top = 76
     Width = 334
     Height = 49
-    TabOrder = 5
+    TabOrder = 2
     object Button2: TButton
       Left = 254
       Top = 16
@@ -174,7 +174,7 @@ object Form_gen_current: TForm_gen_current
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentFont = False
-    TabOrder = 2
+    TabOrder = 0
     OnClick = CheckBox1Click
   end
   object CheckBox2: TCheckBox
@@ -189,40 +189,34 @@ object Form_gen_current: TForm_gen_current
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentFont = False
-    TabOrder = 4
+    TabOrder = 1
     OnClick = CheckBox2Click
   end
-  object DBDateTimeEditEh1: TDBDateTimeEditEh
-    Left = 134
-    Top = 10
-    Width = 89
-    Height = 21
-    Enabled = False
-    EditButtons = <>
-    Kind = dtkDateEh
-    TabOrder = 0
-    Visible = True
-  end
-  object DBDateTimeEditEh2: TDBDateTimeEditEh
-    Left = 240
-    Top = 10
-    Width = 89
-    Height = 21
-    Enabled = False
-    EditButtons = <>
-    Kind = dtkDateEh
-    TabOrder = 1
-    Visible = True
-  end
-  object DBDateTimeEditEh3: TDBDateTimeEditEh
-    Left = 240
-    Top = 48
-    Width = 89
-    Height = 21
-    Enabled = False
-    EditButtons = <>
-    Kind = dtkDateEh
+  object cxdbdtdtDtFrom: TcxDBDateEdit
+    Left = 131
+    Top = 9
+    DataBinding.DataField = 'DAT_ROG'
+    DataBinding.DataSource = Form_kart.DS_kart_pr
+    Properties.ReadOnly = False
     TabOrder = 3
-    Visible = True
+    Width = 86
+  end
+  object cxdbdtdtDtTo: TcxDBDateEdit
+    Left = 243
+    Top = 9
+    DataBinding.DataField = 'DAT_ROG'
+    DataBinding.DataSource = Form_kart.DS_kart_pr
+    Properties.ReadOnly = False
+    TabOrder = 4
+    Width = 86
+  end
+  object cxdbdtdtDT: TcxDBDateEdit
+    Left = 243
+    Top = 52
+    DataBinding.DataField = 'DAT_ROG'
+    DataBinding.DataSource = Form_kart.DS_kart_pr
+    Properties.ReadOnly = False
+    TabOrder = 5
+    Width = 86
   end
 end
