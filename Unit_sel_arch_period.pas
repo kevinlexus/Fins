@@ -39,7 +39,7 @@ implementation
 uses Unit_Mainform, Unit_list_kart, Unit_form_kart, Unit_form_kart_pr,
   Unit_changes_lsk, Unit_month_payments, Unit_chargepay, Unit_changes_list,
   Unit_form_saldo, Unit_det_chrg, Unit_house_vvod, Unit_inkass_print,
-  Unit_spr_prices, Unit_list_set, u_frmPenCorr, Unit_changes_houses;
+  Unit_spr_prices, Unit_list_set, u_frmPenCorr;
 
 {$R *.dfm}
 

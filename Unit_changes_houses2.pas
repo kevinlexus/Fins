@@ -5,9 +5,9 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, OracleData, StdCtrls, Oracle,
-  wwSpeedButton, wwDBNavigator, ExtCtrls, DBGridEh, wwdblook,
-  Mask, wwdbedit, Wwdbdlg, Utils, frxClass, frxDBSet, DBCtrlsEh,
-  DBLookupEh, cxControls,
+  ExtCtrls,
+  Mask, Utils, frxClass, frxDBSet, 
+  cxControls,
 
   cxDBLookupComboBox,
 
@@ -19,10 +19,10 @@ uses
   cxGridDBTableView, cxGrid, cxGraphics, cxLookAndFeels,
   cxLookAndFeelPainters, dxBarBuiltInMenu, cxContainer, cxEdit, cxStyles,
   cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, cxDBData,
-  cxGridCustomTableView, cxGridTableView, cxGridCustomView, wwclearpanel,
-  GridsEh, cxTextEdit, cxMaskEdit, cxDropDownEdit, cxLookupEdit,
+  cxGridCustomTableView, cxGridTableView, cxGridCustomView, 
+  cxTextEdit, cxMaskEdit, cxDropDownEdit, cxLookupEdit,
   cxDBLookupEdit, IdBaseComponent, IdComponent, IdTCPConnection,
-  IdTCPClient, IdHTTP;
+  IdTCPClient, IdHTTP, cxImageComboBox;
 
 type
   TForm_changes_houses2 = class(TForm)
@@ -73,13 +73,7 @@ type
     GroupBox1: TGroupBox;
     Label4: TLabel;
     btn1: TButton;
-    wwDBEdit2: TwwDBEdit;
     GroupBox2: TGroupBox;
-    DBComboBoxEh2: TDBComboBoxEh;
-    DBComboBoxEh1: TDBComboBoxEh;
-    DBComboBoxEh3: TDBComboBoxEh;
-    DBLookupComboboxEh1: TDBLookupComboboxEh;
-    DBComboBoxEh4: TDBComboBoxEh;
     Panel1: TPanel;
     cxGrid1DBTableView1: TcxGridDBTableView;
     cxGrid1Level1: TcxGridLevel;
@@ -116,12 +110,17 @@ type
     chkIsAll: TCheckBox;
     cxtxtLskTo: TcxTextEdit;
     Label3: TLabel;
+    cxComment: TcxTextEdit;
+    imgOpenClose: TcxImageComboBox;
+    imgMeter: TcxImageComboBox;
+    imgValve: TcxImageComboBox;
+    imgType: TcxImageComboBox;
+    cbbStatus: TcxLookupComboBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btn1Click(Sender: TObject);
     procedure btn2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure chkIsObjectsClick(Sender: TObject);
-    procedure DBGridEh1KeyPress(Sender: TObject; var Key: Char);
     procedure chk7Click(Sender: TObject);
     procedure chk1Click(Sender: TObject);
     procedure setAllowEdit;
@@ -238,7 +237,7 @@ begin
     '{"dt": "' + DateToStr(Form_main.cur_dt) + '",' +
     '"user": "' + Form_main.user + '",';
   paramChangesUsl := paramChangesUsl +
-    '"comment": "' + wwDBEdit2.Text + '",';
+    '"comment": "' + cxComment.Text + '",';
   paramChangesUsl := paramChangesUsl +
     '"periodFrom": "' + cbbMgFrom.EditValue + '",' +
     '"periodTo": "' + cbbMgTo.EditValue + '",';
@@ -289,11 +288,11 @@ begin
   else
     paramChangesUsl := paramChangesUsl + '"processEmpty": "0",';
 
-  paramChangesUsl := paramChangesUsl + '"processMeter": "'+IntToStr(DBComboBoxEh1.ItemIndex)+'",';
-  paramChangesUsl := paramChangesUsl + '"processAccount": "'+IntToStr(DBComboBoxEh2.ItemIndex)+'",';
-  paramChangesUsl := paramChangesUsl + '"processKran": "'+IntToStr(DBComboBoxEh3.ItemIndex)+'",';
+  paramChangesUsl := paramChangesUsl + '"processMeter": "'+IntToStr(imgMeter.ItemIndex)+'",';
+  paramChangesUsl := paramChangesUsl + '"processAccount": "'+IntToStr(imgOpenClose.ItemIndex)+'",';
+  paramChangesUsl := paramChangesUsl + '"processKran": "'+IntToStr(imgValve.ItemIndex)+'",';
   paramChangesUsl := paramChangesUsl + '"processStatus": "'+OD_status.FieldByName('id').AsString+'",';
-  paramChangesUsl := paramChangesUsl + '"processLskTp": "'+IntToStr(DBComboBoxEh4.ItemIndex)+'",';
+  paramChangesUsl := paramChangesUsl + '"processLskTp": "'+IntToStr(imgType.ItemIndex)+'",';
   //paramChangesUsl := paramChangesUsl + '"processTp": "1",';
   paramChangesUsl := paramChangesUsl + '"changeUslList": [';
   OD_list_choices_changes.First;
@@ -379,11 +378,11 @@ end;
 procedure TForm_changes_houses2.FormCreate(Sender: TObject);
 begin
 
-  DBComboBoxEh1.ItemIndex := 1;
-  DBComboBoxEh2.ItemIndex := 2;
-  DBComboBoxEh3.ItemIndex := 0;
-  DBComboBoxEh4.ItemIndex := 0;
-  DBLookupComboboxEh1.KeyValue := 0;
+  imgMeter.ItemIndex := 1;
+  imgOpenClose.ItemIndex := 2;
+  imgValve.ItemIndex := 0;
+  imgType.ItemIndex := 0;
+  cbbStatus.EditValue := 0;
 
   SetAllowEdit;
   state_arch2('');
@@ -443,14 +442,6 @@ begin
     if modalForm.ShowModal = mrOk then
       selectedObjectsJson := modalForm.ReturnValue;
   end;
-end;
-
-procedure TForm_changes_houses2.DBGridEh1KeyPress(Sender: TObject;
-  var Key: Char);
-begin
-  if RetKey(Key) then
-    Key := '.';
-
 end;
 
 procedure TForm_changes_houses2.chk7Click(Sender: TObject);

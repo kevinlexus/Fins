@@ -1,6 +1,6 @@
 object Form_changes_houses2: TForm_changes_houses2
-  Left = 873
-  Top = 660
+  Left = 319
+  Top = 666
   Width = 903
   Height = 612
   Caption = #1055#1077#1088#1077#1088#1072#1089#1095#1077#1090#1099
@@ -137,18 +137,8 @@ object Form_changes_houses2: TForm_changes_houses2
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
-          TabOrder = 1
-          OnClick = btn1Click
-        end
-        object wwDBEdit2: TwwDBEdit
-          Left = 81
-          Top = 195
-          Width = 576
-          Height = 21
           TabOrder = 0
-          UnboundDataType = wwDefault
-          WantReturns = False
-          WordWrap = False
+          OnClick = btn1Click
         end
         object GroupBox2: TGroupBox
           Left = 352
@@ -162,87 +152,7 @@ object Form_changes_houses2: TForm_changes_houses2
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
-          TabOrder = 2
-          object DBComboBoxEh2: TDBComboBoxEh
-            Left = 8
-            Top = 14
-            Width = 145
-            Height = 21
-            EditButtons = <>
-            Items.Strings = (
-              #1055#1086' '#1074#1089#1077#1084' '#1083#1080#1094#1077#1074#1099#1084
-              #1058#1086#1083#1100#1082#1086' '#1087#1086' '#1079#1072#1082#1088#1099#1090#1099#1084' '
-              #1058#1086#1083#1100#1082#1086' '#1087#1086' '#1086#1090#1082#1088#1099#1090#1099#1084' ')
-            KeyItems.Strings = (
-              '0'
-              '1'
-              '2')
-            TabOrder = 0
-            Visible = True
-          end
-          object DBComboBoxEh1: TDBComboBoxEh
-            Left = 8
-            Top = 38
-            Width = 145
-            Height = 21
-            EditButtons = <>
-            Items.Strings = (
-              #1041#1077#1079' '#1089#1095#1077#1090#1095#1080#1082#1086#1074
-              #1042' '#1090'.'#1095'. '#1087#1086' '#1089#1095#1077#1090#1095#1080#1082#1072#1084
-              #1058#1086#1083#1100#1082#1086' '#1087#1086' '#1089#1095#1077#1090#1095#1080#1082#1072#1084)
-            KeyItems.Strings = (
-              '0'
-              '1'
-              '2')
-            TabOrder = 1
-            Visible = True
-          end
-          object DBComboBoxEh3: TDBComboBoxEh
-            Left = 160
-            Top = 14
-            Width = 137
-            Height = 21
-            EditButtons = <>
-            Items.Strings = (
-              #1055#1086' '#1074#1089#1077#1084' '#1083#1080#1094#1077#1074#1099#1084
-              #1057' '#1082#1088#1072#1085#1072#1084#1080' '#1080#1079' '#1089#1080#1089#1090'.'#1086#1090#1086#1087'.'
-              #1041#1077#1079' '#1082#1088#1072#1085#1086#1074' '#1080#1079' '#1089#1080#1089#1090'.'#1086#1090#1086#1087'.')
-            KeyItems.Strings = (
-              '0'
-              '1'
-              '2')
-            TabOrder = 2
-            Visible = True
-          end
-          object DBLookupComboboxEh1: TDBLookupComboboxEh
-            Left = 161
-            Top = 38
-            Width = 136
-            Height = 21
-            EditButtons = <>
-            KeyField = 'ID'
-            ListField = 'NAME'
-            ListSource = DS_status
-            TabOrder = 3
-            Visible = True
-          end
-          object DBComboBoxEh4: TDBComboBoxEh
-            Left = 8
-            Top = 62
-            Width = 145
-            Height = 21
-            EditButtons = <>
-            Items.Strings = (
-              #1054#1089#1085#1086#1074#1085#1099#1077
-              #1044#1086#1087#1086#1083#1085#1080#1090#1077#1083#1100#1085#1099#1077
-              #1042#1089#1077)
-            KeyItems.Strings = (
-              '0'
-              '1'
-              '2')
-            TabOrder = 4
-            Visible = True
-          end
+          TabOrder = 1
           object chk4: TCheckBox
             Left = 8
             Top = 91
@@ -255,7 +165,101 @@ object Form_changes_houses2: TForm_changes_houses2
             Font.Name = 'MS Sans Serif'
             Font.Style = [fsBold]
             ParentFont = False
+            TabOrder = 0
+          end
+          object imgOpenClose: TcxImageComboBox
+            Left = 10
+            Top = 12
+            Properties.Items = <
+              item
+                Description = #1055#1086' '#1074#1089#1077#1084' '#1083#1080#1094#1077#1074#1099#1084
+                ImageIndex = 0
+                Value = 0
+              end
+              item
+                Description = #1058#1086#1083#1100#1082#1086' '#1087#1086' '#1079#1072#1082#1088#1099#1090#1099#1084
+                Value = 1
+              end
+              item
+                Description = #1058#1086#1083#1100#1082#1086' '#1087#1086' '#1086#1090#1082#1088#1099#1090#1099#1084' '
+                Value = 2
+              end>
+            TabOrder = 1
+            Width = 141
+          end
+          object imgMeter: TcxImageComboBox
+            Left = 9
+            Top = 37
+            Properties.Items = <
+              item
+                Description = #1041#1077#1079' '#1089#1095#1077#1090#1095#1080#1082#1086#1074
+                ImageIndex = 0
+                Value = 0
+              end
+              item
+                Description = #1042' '#1090'.'#1095'. '#1087#1086' '#1089#1095#1077#1090#1095#1080#1082#1072#1084
+                Value = 1
+              end
+              item
+                Description = #1058#1086#1083#1100#1082#1086' '#1087#1086' '#1089#1095#1077#1090#1095#1080#1082#1072#1084
+                Value = 2
+              end>
+            TabOrder = 2
+            Width = 141
+          end
+          object imgValve: TcxImageComboBox
+            Left = 162
+            Top = 12
+            Properties.Items = <
+              item
+                Description = #1055#1086' '#1074#1089#1077#1084' '#1083#1080#1094#1077#1074#1099#1084
+                ImageIndex = 0
+                Value = 0
+              end
+              item
+                Description = #1057' '#1082#1088#1072#1085#1072#1084#1080' '#1080#1079' '#1089#1080#1089#1090'.'#1086#1090#1086#1087'.'
+                Value = 1
+              end
+              item
+                Description = #1041#1077#1079' '#1082#1088#1072#1085#1086#1074' '#1080#1079' '#1089#1080#1089#1090'.'#1086#1090#1086#1087'.'
+                Value = 2
+              end>
+            TabOrder = 3
+            Width = 134
+          end
+          object imgType: TcxImageComboBox
+            Left = 10
+            Top = 62
+            Properties.Items = <
+              item
+                Description = #1054#1089#1085#1086#1074#1085#1099#1077
+                ImageIndex = 0
+                Value = 0
+              end
+              item
+                Description = #1044#1086#1087#1086#1083#1085#1080#1090#1077#1083#1100#1085#1099#1077
+                Value = 1
+              end
+              item
+                Description = #1042#1089#1077
+                Value = 2
+              end>
+            TabOrder = 4
+            Width = 141
+          end
+          object cbbStatus: TcxLookupComboBox
+            Left = 161
+            Top = 38
+            Properties.GridMode = True
+            Properties.KeyFieldNames = 'ID'
+            Properties.ListColumns = <
+              item
+                FieldName = 'NAME'
+              end>
+            Properties.ListOptions.ShowHeader = False
+            Properties.ListSource = DS_status
             TabOrder = 5
+            Width = 133
           end
         end
         object GroupBox3: TGroupBox
@@ -270,7 +274,7 @@ object Form_changes_houses2: TForm_changes_houses2
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
-          TabOrder = 3
+          TabOrder = 2
           object Label3: TLabel
             Left = 418
             Top = 42
@@ -370,7 +374,7 @@ object Form_changes_houses2: TForm_changes_houses2
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
-          TabOrder = 4
+          TabOrder = 3
           object CheckBox1: TCheckBox
             Left = 5
             Top = 64
@@ -474,7 +478,7 @@ object Form_changes_houses2: TForm_changes_houses2
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
-          TabOrder = 5
+          TabOrder = 4
           object Label1: TLabel
             Left = 8
             Top = 20
@@ -562,6 +566,12 @@ object Form_changes_houses2: TForm_changes_houses2
             TabOrder = 3
             Width = 89
           end
+        end
+        object cxComment: TcxTextEdit
+          Left = 82
+          Top = 197
+          TabOrder = 5
+          Width = 575
         end
       end
       object Panel1: TPanel

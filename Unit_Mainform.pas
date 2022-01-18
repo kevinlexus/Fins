@@ -72,7 +72,6 @@ type
     N53: TMenuItem;
     N54: TMenuItem;
     N55: TMenuItem;
-    N56: TMenuItem;
     N57: TMenuItem;
     ToolButton20: TToolButton;
     ToolButton21: TToolButton;
@@ -265,7 +264,6 @@ type
     procedure N53Click(Sender: TObject);
     procedure N54Click(Sender: TObject);
     procedure N55Click(Sender: TObject);
-    procedure N56Click(Sender: TObject);
     procedure N57Click(Sender: TObject);
     procedure ToolButton21Click(Sender: TObject);
     procedure ToolButton23Click(Sender: TObject);
@@ -491,7 +489,7 @@ uses
   Unit_print_status, Unit_form_params, Unit_form_bills, 
   Unit_print_xito13,
   Unit_print_debits_adm, Unit_form_kart, Unit_sel_comps, Unit_get_pay,
-  Unit_inkass, Unit_list_kart, Unit_changes_houses, Unit_house_vvod,
+  Unit_inkass, Unit_list_kart, Unit_house_vvod,
   Unit_changes_lsk, Unit_form_subsidii, Unit_new_lsk, Unit_month_payments,
   Unit_chargepay, Unit_sel_arch_period, Unit_find_adr, Unit_changes_list,
   Unit_houses_nabor, Unit_spr_spk, Unit_gen_current, Unit_print_lists,
@@ -967,11 +965,6 @@ end;
 procedure TForm_Main.N55Click(Sender: TObject);
 begin
   Application.CreateForm(TForm_inkass, Form_inkass);
-end;
-
-procedure TForm_Main.N56Click(Sender: TObject);
-begin
-  Application.CreateForm(TForm_changes_houses, Form_changes_houses);
 end;
 
 procedure TForm_Main.N57Click(Sender: TObject);

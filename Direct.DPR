@@ -49,7 +49,6 @@ uses
   Unit_find_fio in 'Unit_find_fio.pas' {Form_find_fio},
   Unit_list_kart in 'Unit_list_kart.pas' {Form_list_kart},
   Unit_changes_lsk in 'Unit_changes_lsk.pas' {Form_changes_lsk},
-  Unit_changes_houses in 'Unit_changes_houses.pas' {Form_changes_houses},
   Unit_changes_houses2 in 'Unit_changes_houses2.pas' {Form_changes_houses2},
   Unit_new_lsk in 'Unit_new_lsk.pas' {Form_new_lsk},
   Unit_house_vvod in 'Unit_house_vvod.pas' {Form_house_vvod},
