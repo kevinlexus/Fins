@@ -1,6 +1,6 @@
 object Form_get_pay: TForm_get_pay
-  Left = 426
-  Top = 408
+  Left = 366
+  Top = 756
   Width = 903
   Height = 543
   Caption = #1042#1074#1086#1076' '#1086#1087#1083#1072#1090#1099
@@ -133,18 +133,6 @@ object Form_get_pay: TForm_get_pay
       TabOrder = 0
       Text = 'Edit1'
     end
-    object DBLookupComboboxEh1: TDBLookupComboboxEh
-      Left = 246
-      Top = 20
-      Width = 198
-      Height = 24
-      EditButtons = <>
-      KeyField = 'OPER'
-      ListField = 'NAIM'
-      ListSource = DS_oper
-      TabOrder = 1
-      Visible = True
-    end
     object CheckBox1: TCheckBox
       Left = 463
       Top = 20
@@ -152,7 +140,7 @@ object Form_get_pay: TForm_get_pay
       Height = 21
       Hint = #1058#1086#1083#1100#1082#1086' '#1087#1088#1086#1080#1085#1082#1072#1089#1089#1080#1088#1086#1074#1072#1085#1085#1099#1077' '#1087#1083#1072#1090#1077#1078#1080
       Caption = #1048#1085#1082#1072#1089#1089
-      TabOrder = 2
+      TabOrder = 1
       Visible = False
       OnClick = CheckBox1Click
     end
@@ -167,7 +155,21 @@ object Form_get_pay: TForm_get_pay
       ParentShowHint = False
       ShowHint = True
       State = cbChecked
+      TabOrder = 2
+    end
+    object cbbOper: TcxLookupComboBox
+      Left = 240
+      Top = 19
+      Properties.GridMode = True
+      Properties.KeyFieldNames = 'OPER'
+      Properties.ListColumns = <
+        item
+          FieldName = 'NAIM'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = DS_oper
       TabOrder = 3
+      Width = 217
     end
   end
   object GroupBox1: TGroupBox
@@ -275,144 +277,10 @@ object Form_get_pay: TForm_get_pay
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object wwDBEdit3: TwwDBEdit
-        Left = 39
-        Top = 16
-        Width = 110
-        Height = 33
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -20
-        Font.Name = 'MS Sans Serif'
-        Font.Style = [fsBold]
-        ParentFont = False
-        Picture.PictureMask = '[#][#][#][#][#][#][#][#]'
-        TabOrder = 0
-        UnboundDataType = wwDefault
-        WantReturns = False
-        WordWrap = False
-        OnDblClick = wwDBEdit3DblClick
-        OnKeyDown = wwDBEdit3KeyDown
-        OnKeyPress = wwDBEdit3KeyPress
-      end
-      object wwDBEdit1: TwwDBEdit
-        Left = 207
-        Top = 16
-        Width = 109
-        Height = 33
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -20
-        Font.Name = 'MS Sans Serif'
-        Font.Style = [fsBold]
-        ParentFont = False
-        Picture.PictureMask = '[-][#][#][#][#][#][#][.][#][#]'
-        TabOrder = 1
-        UnboundDataType = wwDefault
-        WantReturns = False
-        WordWrap = False
-        OnKeyPress = wwDBEdit1KeyPress
-      end
-      object wwDBEdit2: TwwDBEdit
-        Left = 364
-        Top = 16
-        Width = 110
-        Height = 33
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -20
-        Font.Name = 'MS Sans Serif'
-        Font.Style = [fsBold]
-        ParentFont = False
-        Picture.PictureMask = '[-][#][#][#][#][#][#][.][#][#]'
-        TabOrder = 2
-        UnboundDataType = wwDefault
-        WantReturns = False
-        WordWrap = False
-        OnKeyPress = wwDBEdit2KeyPress
-      end
-      object DBLookupComboboxEh2: TDBLookupComboboxEh
-        Left = 532
-        Top = 16
-        Width = 109
-        Height = 33
-        Enabled = False
-        EditButtons = <>
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -20
-        Font.Name = 'MS Sans Serif'
-        Font.Style = [fsBold]
-        KeyField = 'MG'
-        ListField = 'MG1'
-        ListSource = DS_mg
-        ParentFont = False
-        TabOrder = 3
-        Visible = True
-        OnChange = DBLookupComboboxEh2Change
-        OnKeyPress = DBLookupComboboxEh2KeyPress
-      end
-      object DBLookupComboboxEh3: TDBLookupComboboxEh
-        Left = 39
-        Top = 55
-        Width = 238
-        Height = 28
-        EditButtons = <>
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -17
-        Font.Name = 'MS Sans Serif'
-        Font.Style = []
-        KeyField = 'ID'
-        ListField = 'NAME'
-        ListSource = DS_typespay
-        ParentFont = False
-        TabOrder = 4
-        Visible = True
-        OnCloseUp = DBLookupComboboxEh3CloseUp
-      end
-      object wwDBEdit4: TwwDBEdit
-        Left = 335
-        Top = 55
-        Width = 139
-        Height = 33
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -20
-        Font.Name = 'MS Sans Serif'
-        Font.Style = [fsBold]
-        MaxLength = 23
-        ParentFont = False
-        TabOrder = 5
-        UnboundDataType = wwDefault
-        WantReturns = False
-        WordWrap = False
-      end
-      object wwDBDateTimePicker1: TwwDBDateTimePicker
-        Left = 548
-        Top = 55
-        Width = 149
-        Height = 33
-        AutoFillDateAndTime = True
-        CalendarAttributes.Font.Charset = DEFAULT_CHARSET
-        CalendarAttributes.Font.Color = clWindowText
-        CalendarAttributes.Font.Height = -11
-        CalendarAttributes.Font.Name = 'MS Sans Serif'
-        CalendarAttributes.Font.Style = []
-        Epoch = 2001
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -20
-        Font.Name = 'MS Sans Serif'
-        Font.Style = []
-        ParentFont = False
-        ShowButton = True
-        TabOrder = 6
-      end
       object Edit1: TEdit
-        Left = -3
+        Left = 4
         Top = 98
-        Width = 700
+        Width = 677
         Height = 33
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -421,7 +289,127 @@ object Form_get_pay: TForm_get_pay
         Font.Style = [fsBold]
         ParentFont = False
         ReadOnly = True
+        TabOrder = 0
+      end
+      object cxPeriod: TcxLookupComboBox
+        Left = 549
+        Top = 11
+        ParentFont = False
+        Properties.GridMode = True
+        Properties.KeyFieldNames = 'MG'
+        Properties.ListColumns = <
+          item
+            FieldName = 'MG1'
+          end>
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = DS_mg
+        Properties.OnChange = cxPeriodPropertiesChange
+        Style.Font.Charset = DEFAULT_CHARSET
+        Style.Font.Color = clWindowText
+        Style.Font.Height = -20
+        Style.Font.Name = 'MS Sans Serif'
+        Style.Font.Style = []
+        Style.IsFontAssigned = True
+        TabOrder = 1
+        OnKeyPress = cxPeriodKeyPress
+        Width = 114
+      end
+      object cxVar: TcxLookupComboBox
+        Left = 45
+        Top = 67
+        ParentFont = False
+        Properties.GridMode = True
+        Properties.KeyFieldNames = 'ID'
+        Properties.ListColumns = <
+          item
+            FieldName = 'NAME'
+          end>
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = DS_typespay
+        Properties.OnCloseUp = cxVarPropertiesCloseUp
+        Style.Font.Charset = DEFAULT_CHARSET
+        Style.Font.Color = clWindowText
+        Style.Font.Height = -15
+        Style.Font.Name = 'MS Sans Serif'
+        Style.Font.Style = []
+        Style.IsFontAssigned = True
+        TabOrder = 2
+        Width = 236
+      end
+      object cxLsk: TcxMaskEdit
+        Left = 40
+        Top = 20
+        ParentFont = False
+        Properties.EditMask = '00000000;1;_'
+        Properties.ValidationOptions = [evoShowErrorIcon, evoAllowLoseFocus]
+        Style.Font.Charset = DEFAULT_CHARSET
+        Style.Font.Color = clWindowText
+        Style.Font.Height = -20
+        Style.Font.Name = 'MS Sans Serif'
+        Style.Font.Style = []
+        Style.IsFontAssigned = True
+        TabOrder = 3
+        Text = '        '
+        OnDblClick = cxLskDblClick
+        OnKeyDown = cxLskKeyDown
+        OnKeyPress = cxLskKeyPress
+        Width = 112
+      end
+      object cxSumma: TcxMaskEdit
+        Left = 208
+        Top = 19
+        ParentFont = False
+        Properties.MaskKind = emkRegExprEx
+        Properties.EditMask = '\-?\d{1,6}\.?\d{0,5}'
+        Properties.ValidationOptions = [evoShowErrorIcon, evoAllowLoseFocus]
+        Style.Font.Charset = DEFAULT_CHARSET
+        Style.Font.Color = clWindowText
+        Style.Font.Height = -20
+        Style.Font.Name = 'MS Sans Serif'
+        Style.Font.Style = []
+        Style.IsFontAssigned = True
+        TabOrder = 4
+        OnKeyPress = cxSummaKeyPress
+        Width = 114
+      end
+      object cxPenya: TcxMaskEdit
+        Left = 362
+        Top = 19
+        ParentFont = False
+        Properties.MaskKind = emkRegExprEx
+        Properties.EditMask = '\-?\d{1,6}\.?\d{0,5}'
+        Properties.ValidationOptions = [evoShowErrorIcon, evoAllowLoseFocus]
+        Style.Font.Charset = DEFAULT_CHARSET
+        Style.Font.Color = clWindowText
+        Style.Font.Height = -20
+        Style.Font.Name = 'MS Sans Serif'
+        Style.Font.Style = []
+        Style.IsFontAssigned = True
+        TabOrder = 5
+        OnKeyPress = cxPenyaKeyPress
+        Width = 110
+      end
+      object cxNumDoc: TcxMaskEdit
+        Left = 338
+        Top = 59
+        ParentFont = False
+        Properties.MaskKind = emkRegExprEx
+        Properties.EditMask = '\-?\d{1,6}\.?\d{0,5}'
+        Properties.ValidationOptions = [evoShowErrorIcon, evoAllowLoseFocus]
+        Style.Font.Charset = DEFAULT_CHARSET
+        Style.Font.Color = clWindowText
+        Style.Font.Height = -20
+        Style.Font.Name = 'MS Sans Serif'
+        Style.Font.Style = []
+        Style.IsFontAssigned = True
+        TabOrder = 6
+        Width = 135
+      end
+      object cxDate: TcxDateEdit
+        Left = 560
+        Top = 64
         TabOrder = 7
+        Width = 121
       end
     end
     object Panel2: TPanel

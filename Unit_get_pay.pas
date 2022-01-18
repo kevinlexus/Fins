@@ -4,10 +4,10 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, OracleData, DBGridEh, StdCtrls, Mask, DBCtrlsEh,
-  wwdbedit, Buttons, Wwdotdot,
-  Wwdbcomb, Oracle, DBLookupEh, Utils, wwcheckbox, Menus, 
-  wwdbdatetimepicker, cxControls, 
+  Dialogs, DB, OracleData, StdCtrls, Mask, 
+  Buttons, 
+  Oracle, Utils, Menus, 
+  cxControls, 
   
   
   cxGridLevel, cxGridTableView,
@@ -27,7 +27,10 @@ uses
   
   ExtCtrls, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters, cxStyles,
   cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
-  cxDBData, cxGridCustomTableView, cxGridCustomView, cxGridCustomLayoutView;
+  cxDBData, cxGridCustomTableView, cxGridCustomView, cxGridCustomLayoutView,
+  cxContainer, cxTextEdit, cxMaskEdit, cxDropDownEdit, cxLookupEdit,
+  cxDBLookupEdit, cxDBLookupComboBox, ComCtrls, dxCore, cxDateUtils,
+  cxCalendar;
 
 type
   TForm_get_pay = class(TForm)
@@ -39,7 +42,6 @@ type
     OD_oper: TOracleDataSet;
     DS_oper: TDataSource;
     Label5: TLabel;
-    DBLookupComboboxEh1: TDBLookupComboboxEh;
     OD_mg: TOracleDataSet;
     DS_mg: TDataSource;
     CheckBox1: TCheckBox;
@@ -95,41 +97,41 @@ type
     chk1: TCheckBox;
     Panel1: TPanel;
     Label1: TLabel;
-    wwDBEdit3: TwwDBEdit;
-    wwDBEdit1: TwwDBEdit;
     Label2: TLabel;
     Label3: TLabel;
-    wwDBEdit2: TwwDBEdit;
     Label6: TLabel;
-    DBLookupComboboxEh2: TDBLookupComboboxEh;
-    DBLookupComboboxEh3: TDBLookupComboboxEh;
     Label7: TLabel;
     Label8: TLabel;
-    wwDBEdit4: TwwDBEdit;
     Label9: TLabel;
-    wwDBDateTimePicker1: TwwDBDateTimePicker;
     Edit1: TEdit;
     Panel2: TPanel;
     Button1: TButton;
+    cbbOper: TcxLookupComboBox;
+    cxPeriod: TcxLookupComboBox;
+    cxVar: TcxLookupComboBox;
+    cxLsk: TcxMaskEdit;
+    cxSumma: TcxMaskEdit;
+    cxPenya: TcxMaskEdit;
+    cxNumDoc: TcxMaskEdit;
+    cxDate: TcxDateEdit;
     procedure Button1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure wwDBGrid1UpdateFooter(Sender: TObject);
-    procedure wwDBEdit3KeyPress(Sender: TObject; var Key: Char);
-    procedure wwDBEdit1KeyPress(Sender: TObject; var Key: Char);
-    procedure wwDBEdit2KeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
     procedure setEnterType(type_: Integer);
     procedure Button2Click(Sender: TObject);
-    procedure wwDBEdit3DblClick(Sender: TObject);
-    procedure wwDBEdit3KeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
     procedure CheckBox1Click(Sender: TObject);
-    procedure DBLookupComboboxEh2KeyPress(Sender: TObject; var Key: Char);
-    procedure DBLookupComboboxEh3CloseUp(Sender: TObject; Accept: Boolean);
     procedure N1Click(Sender: TObject);
     procedure selTpPay;
     procedure tmr1Timer(Sender: TObject);
-    procedure DBLookupComboboxEh2Change(Sender: TObject);
+    procedure cxPeriodPropertiesChange(Sender: TObject);
+    procedure cxPeriodKeyPress(Sender: TObject; var Key: Char);
+    procedure cxVarPropertiesCloseUp(Sender: TObject);
+    procedure cxLskDblClick(Sender: TObject);
+    procedure cxLskKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure cxLskKeyPress(Sender: TObject; var Key: Char);
+    procedure cxSummaKeyPress(Sender: TObject; var Key: Char);
+    procedure cxPenyaKeyPress(Sender: TObject; var Key: Char);
   private
     //тип ввода (по адресный или по л.с.)
     enter_type_, l_upd: Integer;
@@ -151,14 +153,11 @@ begin
   if enter_type_ =1 then
   begin
   //ввод по-адресный
-//  DBComboBoxEh1.ItemIndex:=1;
-//  DBComboBoxEh1.Enabled:=false;
-  DBLookupComboboxEh2.KeyValue:=null;
-  DBLookupComboboxEh2.Enabled:=true;
+  cxPeriod.EditValue:=null;
+  cxPeriod.Enabled:=true;
   end
   else
   begin
-//  DBComboBoxEh1.Enabled:=true;
   //ввод по-л/с
   end;
 
@@ -171,17 +170,17 @@ var
   pn_: Extended;
   l_par: Integer;
 begin
-  if wwDBEdit1.Text <> '' then
-    summa_:=SuperStrToDouble(wwDBEdit1.Text, 0)
+  if cxSumma.Text <> '' then
+    summa_:=SuperStrToDouble(cxSumma.Text, 0)
   else
     summa_:=0;
 
-  if wwDBEdit2.Text <> '' then
-    pn_:=SuperStrToDouble(wwDBEdit2.Text, 0)
+  if cxPenya.Text <> '' then
+    pn_:=SuperStrToDouble(cxPenya.Text, 0)
   else
     pn_:=0;
 
-  if (DBLookupComboboxEh2.KeyValue = null)
+  if (cxPeriod.EditValue = null)
     and (OD_typespay.FieldByName('CD').AsString='Корректировка') then
   begin
     Application.MessageBox('Не указан период ввода, для корректировки оплаты!','Внимание',
@@ -192,12 +191,12 @@ begin
   try
     DataModule1.OraclePackage1.CallProcedure
            ('scott.C_GET_PAY.get_payment',
-           [null, wwDBEdit3.Text, summa_, pn_,
+           [null, cxLsk.Text, summa_, pn_,
             OD_oper.FieldByName('oper').asString,
-            DBLookupComboboxEh2.KeyValue,
-             DBLookupComboboxEh3.KeyValue, null, 1,
-             wwDBEdit4.Text,
-             wwDBDateTimePicker1.DateTime
+            cxPeriod.EditValue,
+             cxVar.EditValue, null, 1,
+             cxNumDoc.Text,
+             cxDate.Date
              ]);
     l_upd:=1;
   except
@@ -216,21 +215,20 @@ begin
    end;
   end;
 
-  DBLookupComboboxEh2.KeyValue:=null;
-  wwDBEdit1.Text:='';
-  wwDBEdit2.Text:='';
-  wwDBEdit3.Text:='';
-  wwDBEdit4.Text:='';
-  wwDBDateTimePicker1.Text:='';
-//  wwDBEdit3.SetFocus;
-Windows.SetFocus(wwDBEdit3.Handle);
+  cxPeriod.EditValue:=null;
+  cxSumma.Text:='';
+  cxPenya.Text:='';
+  cxLsk.Text:='';
+  cxNumDoc.Text:='';
+  cxDate.Text:='';
+Windows.SetFocus(cxLsk.Handle);
 
   if (enter_type_ = 1) and (chk1.Checked) then
   begin
     Application.CreateForm(TForm_find_adr, Form_find_adr);
     if Form_find_adr.ShowModal = mrOk then
     begin
-    wwDBEdit3.Text := Form_Main.Lsk_;
+    cxLsk.Text := Form_Main.Lsk_;
     Edit1.Text:=DataModule1.OraclePackage1.CallStringFunction(
       'scott.UTILS.GET_ADR_BY_LSK', [Form_Main.Lsk_]);
     end;
@@ -245,70 +243,6 @@ begin
   Action:=caFree;
 end;
 
-procedure TForm_get_pay.wwDBGrid1UpdateFooter(Sender: TObject);
-begin
-{  wwDBGrid1.ColumnByName('Lsk').FooterValue := 'Итого:';
-  wwDBGrid1.ColumnByName('Summa').FooterValue :=
-    FloatToStr(DBSumList1.SumCollection.Items[0].SumValue);
-  wwDBGrid1.ColumnByName('Penya').FooterValue :=
-    FloatToStr(DBSumList1.SumCollection.Items[1].SumValue);
-  wwDBGrid1.CalcCellRow;}
-end;
-
-procedure TForm_get_pay.wwDBEdit3KeyPress(Sender: TObject; var Key: Char);
-var
-  formexist_, a: Integer;
-begin
-  tmr1.Enabled:=False;
-  tmr1.Enabled:=true;
-  if Key = #13 then
-  begin
-//    wwDBEdit1.SetFocus;
-Windows.SetFocus(wwDBEdit1.Handle);
-    Edit1.Text:=DataModule1.OraclePackage1.CallStringFunction(
-      'scott.UTILS.GET_ADR_BY_LSK', [wwDBEdit3.Text]);
-  end;
-end;
-
-procedure TForm_get_pay.wwDBEdit1KeyPress(Sender: TObject; var Key: Char);
-begin
-  tmr1.Enabled:=False;
-  tmr1.Enabled:=true;
-  if (OD_typespay.FieldByName('CD').AsString = 'Единой суммой') or
-     (OD_typespay.FieldByName('CD').AsString = 'Единой суммой - сперва долги') or
-     (OD_typespay.FieldByName('CD').AsString = 'Единой суммой - сперва тек.нач') or
-     (OD_typespay.FieldByName('CD').AsString = 'Комплексный платеж') then
-    begin
-      if Key = #13 then
-//        Button1.SetFocus;
-Windows.SetFocus(Button1.Handle)
-    end
-    else
-    begin
-      if Key = #13 then
-//        wwDBEdit2.SetFocus;
-Windows.SetFocus(wwDBEdit2.Handle);
-    end;
-  if RetKey(Key) then
-    Key:= '.';
-
-end;
-
-procedure TForm_get_pay.wwDBEdit2KeyPress(Sender: TObject; var Key: Char);
-begin
-  tmr1.Enabled:=False;
-  tmr1.Enabled:=true;
-
-  if (Key = #13) and (DBLookupComboboxEh2.Enabled = true) then
-//    DBLookupComboboxEh2.SetFocus
-      Windows.SetFocus(DBLookupComboboxEh2.Handle)
-  else if (Key = #13) and (DBLookupComboboxEh2.Enabled = false) then
-    Button1.SetFocus;
-
-  if RetKey(Key) then
-    Key:= '.';
-
-end;
 
 procedure TForm_get_pay.FormCreate(Sender: TObject);
 begin
@@ -321,29 +255,18 @@ begin
   begin
    Label8.Visible:=true;
    Label9.Visible:=true;
-   wwDBEdit4.Visible:=true;
-   wwDBDateTimePicker1.Visible:=true;
+   cxNumDoc.Visible:=true;
+   cxDate.Visible:=true;
   end
   else
   begin
    Label8.Visible:=false;
    Label9.Visible:=false;
-   wwDBEdit4.Visible:=false;
-   wwDBDateTimePicker1.Visible:=false;
+   cxNumDoc.Visible:=false;
+   cxDate.Visible:=false;
   end;
 
-{  if OD_typespay.FieldByName('CD').AsString <> 'Обычный платеж' then
-    begin
-      DBLookupComboboxEh2.KeyValue:=null;
-      DBLookupComboboxEh2.Enabled:=true;
-    end
-    else
-    begin
-      DBLookupComboboxEh2.KeyValue:=null;
-      DBLookupComboboxEh2.Enabled:=false;
-    end;
- }
-  DBLookupComboboxEh3.KeyValue:=OD_typespay.FieldByName('id').AsInteger;
+  cxVar.EditValue:=OD_typespay.FieldByName('id').AsInteger;
   //Выбрать контролы в соответствии с типом платежа
   selTpPay;
 
@@ -352,7 +275,7 @@ begin
 // OD_c_kwtp_mg.Active:=True;
   OD_c_kwtp.SetVariable('var', 0); //не проинкасс
 //  OD_c_kwtp.Refresh;
-  DBLookupComboboxEh1.KeyValue:='01';
+  cbbOper.EditValue:='01';
   Edit2.Text:=DataModule1.OraclePackage1.CallStringFunction(
     'scott.INIT.get_nkom', parNone);
 
@@ -361,35 +284,6 @@ end;
 procedure TForm_get_pay.Button2Click(Sender: TObject);
 begin
   Close;
-end;
-
-procedure TForm_get_pay.wwDBEdit3DblClick(Sender: TObject);
-begin
-  Application.CreateForm(TForm_find_adr, Form_find_adr);
-  if Form_find_adr.ShowModal = mrOk then
-  begin
-    wwDBEdit3.Text := Form_Main.Lsk_;
-    Edit1.Text:=DataModule1.OraclePackage1.CallStringFunction(
-      'scott.UTILS.GET_ADR_BY_LSK', [Form_Main.Lsk_]);
-  end;
-end;
-
-procedure TForm_get_pay.wwDBEdit3KeyDown(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
-var
-  formexist_, a: Integer;
-begin
-  if Key=34 then
-  begin
-    Application.CreateForm(TForm_find_adr, Form_find_adr);
-    if Form_find_adr.ShowModal = mrOk then
-    begin
-      wwDBEdit3.Text := Form_Main.Lsk_;
-      Edit1.Text:=DataModule1.OraclePackage1.CallStringFunction(
-        'scott.UTILS.GET_ADR_BY_LSK', [Form_Main.Lsk_]);
-    end;
-  end;
-
 end;
 
 procedure TForm_get_pay.CheckBox1Click(Sender: TObject);
@@ -402,14 +296,6 @@ begin
    OD_c_kwtp.Refresh;
 end;
 
-procedure TForm_get_pay.DBLookupComboboxEh2KeyPress(Sender: TObject;
-  var Key: Char);
-begin
-  if Key = #13 then
-//    Button1.SetFocus;
-Windows.SetFocus(Button1.Handle);
-end;
-
 procedure TForm_get_pay.selTpPay;
 begin
   //Выбрать контролы в соответствии с типом платежа
@@ -418,36 +304,29 @@ begin
      (OD_typespay.FieldByName('CD').AsString = 'Единой суммой - сперва тек.нач') or
      (OD_typespay.FieldByName('CD').AsString = 'Комплексный платеж')  then
     begin
-      DBLookupComboboxEh2.KeyValue:=null;
-      DBLookupComboboxEh2.Enabled:=false;
-      wwDBEdit2.Text:='';
-      wwDBEdit2.Enabled:=false;
-      DBLookupComboboxEh2.Visible:=false;
-      wwDBEdit2.Visible:=false;
+      cxPeriod.EditValue:=null;
+      cxPeriod.Enabled:=false;
+      cxPenya.Text:='';
+      cxPenya.Enabled:=false;
+      cxPeriod.Visible:=false;
+      cxPenya.Visible:=false;
     end
   else if OD_typespay.FieldByName('CD').AsString <> 'Обычный платеж' then
     begin
-      DBLookupComboboxEh2.KeyValue:=null;
-      DBLookupComboboxEh2.Enabled:=true;
-      DBLookupComboboxEh2.Visible:=true;
-      wwDBEdit2.Enabled:=true;
-      wwDBEdit2.Visible:=true;
+      cxPeriod.EditValue:=null;
+      cxPeriod.Enabled:=true;
+      cxPeriod.Visible:=true;
+      cxPenya.Enabled:=true;
+      cxPenya.Visible:=true;
     end
   else
     begin
-      DBLookupComboboxEh2.KeyValue:=null;
-      DBLookupComboboxEh2.Enabled:=false;
-      DBLookupComboboxEh2.Visible:=true;
-      wwDBEdit2.Enabled:=true;
-      wwDBEdit2.Visible:=true;
+      cxPeriod.EditValue:=null;
+      cxPeriod.Enabled:=false;
+      cxPeriod.Visible:=true;
+      cxPenya.Enabled:=true;
+      cxPenya.Visible:=true;
     end;
-end;
-
-procedure TForm_get_pay.DBLookupComboboxEh3CloseUp(Sender: TObject;
-  Accept: Boolean);
-begin
-  //Выбрать контролы в соответствии с типом платежа
-  selTpPay;
 end;
 
 procedure TForm_get_pay.N1Click(Sender: TObject);
@@ -483,10 +362,102 @@ begin
 
 end;
 
-procedure TForm_get_pay.DBLookupComboboxEh2Change(Sender: TObject);
+procedure TForm_get_pay.cxPeriodPropertiesChange(Sender: TObject);
 begin
   tmr1.Enabled:=False;
   tmr1.Enabled:=true;
+end;
+
+procedure TForm_get_pay.cxPeriodKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+     Windows.SetFocus(Button1.Handle);
+end;
+
+procedure TForm_get_pay.cxVarPropertiesCloseUp(Sender: TObject);
+begin
+  //Выбрать контролы в соответствии с типом платежа
+  selTpPay;
+end;
+
+procedure TForm_get_pay.cxLskDblClick(Sender: TObject);
+begin
+  Application.CreateForm(TForm_find_adr, Form_find_adr);
+  if Form_find_adr.ShowModal = mrOk then
+  begin
+    cxLsk.Text := Form_Main.Lsk_;
+    Edit1.Text:=DataModule1.OraclePackage1.CallStringFunction(
+      'scott.UTILS.GET_ADR_BY_LSK', [Form_Main.Lsk_]);
+  end;
+end;
+
+procedure TForm_get_pay.cxLskKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+  if Key=34 then
+  begin
+    Application.CreateForm(TForm_find_adr, Form_find_adr);
+    if Form_find_adr.ShowModal = mrOk then
+    begin
+      cxLsk.Text := Form_Main.Lsk_;
+      Edit1.Text:=DataModule1.OraclePackage1.CallStringFunction(
+        'scott.UTILS.GET_ADR_BY_LSK', [Form_Main.Lsk_]);
+    end;
+  end;
+end;
+
+procedure TForm_get_pay.cxLskKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  tmr1.Enabled:=False;
+  tmr1.Enabled:=true;
+  if Key = #13 then
+  begin
+//    cxSumma.SetFocus;
+Windows.SetFocus(cxSumma.Handle);
+    Edit1.Text:=DataModule1.OraclePackage1.CallStringFunction(
+      'scott.UTILS.GET_ADR_BY_LSK', [cxLsk.Text]);
+  end;
+end;
+
+procedure TForm_get_pay.cxSummaKeyPress(Sender: TObject; var Key: Char);
+begin
+  tmr1.Enabled:=False;
+  tmr1.Enabled:=true;
+  if (OD_typespay.FieldByName('CD').AsString = 'Единой суммой') or
+     (OD_typespay.FieldByName('CD').AsString = 'Единой суммой - сперва долги') or
+     (OD_typespay.FieldByName('CD').AsString = 'Единой суммой - сперва тек.нач') or
+     (OD_typespay.FieldByName('CD').AsString = 'Комплексный платеж') then
+    begin
+      if Key = #13 then
+//        Button1.SetFocus;
+Windows.SetFocus(Button1.Handle)
+    end
+    else
+    begin
+      if Key = #13 then
+//        cxPenya.SetFocus;
+Windows.SetFocus(cxPenya.Handle);
+    end;
+  if RetKey(Key) then
+    Key:= '.';
+
+end;
+
+procedure TForm_get_pay.cxPenyaKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  tmr1.Enabled:=False;
+  tmr1.Enabled:=true;
+
+  if (Key = #13) and (cxPeriod.Enabled = true) then
+      Windows.SetFocus(cxPeriod.Handle)
+  else if (Key = #13) and (cxPeriod.Enabled = false) then
+    Button1.SetFocus;
+
+  if RetKey(Key) then
+    Key:= '.';
+
 end;
 
 end.
