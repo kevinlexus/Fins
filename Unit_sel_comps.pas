@@ -35,7 +35,6 @@ type
     procedure Button2Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
-    procedure DBGridEh1KeyPress(Sender: TObject; var Key: Char);
     procedure OD_sel_compsAfterScroll(DataSet: TDataSet);
   private
     procedure sel_comp;
@@ -167,13 +166,6 @@ begin
   OD_sel_comps.SearchRecord('nkom', nkom_, [srFromBeginning]);
   sel_comp;
   isLoaded:=true;
-end;
-
-procedure TForm_sel_comps.DBGridEh1KeyPress(Sender: TObject;
-  var Key: Char);
-begin
-  if Key = #13 then
-    enter_app;
 end;
 
 procedure TForm_sel_comps.OD_sel_compsAfterScroll(DataSet: TDataSet);

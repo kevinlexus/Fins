@@ -777,11 +777,6 @@ var
 begin
   with Form_kart do
   begin
-    { if var_ = 0 then
-       psch_new := DBLookupComboboxEh13.KeyValue
-     else
-       psch_new := DBLookupComboboxEh16.KeyValue;
-     }
     psch_old := Form_list_kart.OD_list_kart.FieldByName('sch_el').asFloat;
 
     if (psch_old = 0) and (psch_new = 1) then
@@ -1252,16 +1247,6 @@ begin
     end;}
 end;
 
-{procedure TForm_kart.DBGridEh2Columns12EditButtonDown(Sender: TObject;
-  TopButton: Boolean; var AutoRepeat, Handled: Boolean);
-begin
-  with OD_tarif do
-  begin
-    Active := false;
-    SetVariable('usl', OD_charge.FieldByName('usl').AsString);
-    Active := true;
-  end;
-end;}
 
 procedure TForm_kart.DBEdit_phwKeyPress(Sender: TObject; var Key: Char);
 begin

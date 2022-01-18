@@ -36,7 +36,6 @@ uses
   Unit_form_bills in 'Unit_form_bills.pas' {Form_print_bills},
   Unit_sel_usl in 'Unit_sel_usl.pas' {Form_sel_usl},
   Unit_form_olap in 'Unit_form_olap.pas' {Form_olap},
-  Unit_corr_payments in 'Unit_corr_payments.pas' {Form_corr_payments},
   Unit_print_xito13 in 'Unit_print_xito13.pas' {Form_print_xito13},
   Unit_print_debits_adm in 'Unit_print_debits_adm.pas' {Form_print_debits_adm},
   Unit_form_admin in 'Unit_form_admin.pas' {Form_admin},

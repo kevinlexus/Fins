@@ -222,13 +222,14 @@ object Form_sel_usl: TForm_sel_usl
       OnDblClick = cxGridDBTableView1DblClick
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.Insert.Visible = False
-      Navigator.Buttons.Append.Visible = True
+      Navigator.Buttons.Append.Visible = False
       Navigator.Buttons.Delete.Visible = False
       Navigator.Buttons.Edit.Visible = False
       Navigator.Buttons.Post.Visible = False
       Navigator.Buttons.Cancel.Visible = False
       Navigator.Buttons.Refresh.Visible = False
       Navigator.Buttons.SaveBookmark.Visible = False
+      Navigator.Buttons.GotoBookmark.Visible = False
       Navigator.Buttons.Filter.Visible = False
       Navigator.Visible = True
       DataController.DataSource = DS_list_choice

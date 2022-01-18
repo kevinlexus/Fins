@@ -443,7 +443,6 @@ object Form_Main: TForm_Main
         Caption = #1050#1086#1088#1088#1077#1082#1090#1080#1088#1086#1074#1082#1072' '#1089#1072#1083#1100#1076#1086' ('#1086#1087#1083#1072#1090#1072')'
         ImageIndex = 18
         Visible = False
-        OnClick = N46Click
       end
       object N51: TMenuItem
         Caption = #1050#1072#1088#1090#1086#1095#1082#1080

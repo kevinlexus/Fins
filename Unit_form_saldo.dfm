@@ -1,6 +1,6 @@
 object Form_saldo: TForm_saldo
-  Left = 832
-  Top = 219
+  Left = 1454
+  Top = 213
   Width = 485
   Height = 485
   BorderIcons = [biSystemMenu, biMinimize]

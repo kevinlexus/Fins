@@ -256,7 +256,6 @@ type
     procedure N45Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure N46Click(Sender: TObject);
     procedure N49Click(Sender: TObject);
     procedure N50Click(Sender: TObject);
     procedure N16Click(Sender: TObject);
@@ -490,7 +489,7 @@ uses
   Unit1_print_pen,
   Unit_print_bank, Unit_form_print_stat1,
   Unit_print_status, Unit_form_params, Unit_form_bills, 
-  Unit_corr_payments, Unit_print_xito13,
+  Unit_print_xito13,
   Unit_print_debits_adm, Unit_form_kart, Unit_sel_comps, Unit_get_pay,
   Unit_inkass, Unit_list_kart, Unit_changes_houses, Unit_house_vvod,
   Unit_changes_lsk, Unit_form_subsidii, Unit_new_lsk, Unit_month_payments,
@@ -913,11 +912,6 @@ begin
   if FF('Form_tree_objects', 0) = 1 then
     Form_tree_objects.Close;
   DataModule1.OracleSession1.Commit;
-end;
-
-procedure TForm_Main.N46Click(Sender: TObject);
-begin
-  Application.CreateForm(TForm_corr_payments, Form_corr_payments);
 end;
 
 procedure TForm_Main.N49Click(Sender: TObject);

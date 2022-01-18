@@ -1,6 +1,6 @@
 object Form_chargepay: TForm_chargepay
-  Left = 975
-  Top = 324
+  Left = 471
+  Top = 216
   Width = 835
   Height = 482
   BorderIcons = [biSystemMenu, biMinimize]
@@ -96,7 +96,7 @@ object Form_chargepay: TForm_chargepay
     Top = 0
     Width = 819
     Height = 383
-    ActivePage = TabSheet1
+    ActivePage = TabSheet5
     Align = alClient
     TabOrder = 1
     OnChange = PageControl1Change
@@ -250,193 +250,101 @@ object Form_chargepay: TForm_chargepay
         end
       end
     end
-    object TabSheet2: TTabSheet
-      Caption = #1044#1077#1090#1072#1083#1080#1079#1072#1094#1080#1103
-      ImageIndex = 1
-      object wwDBGrid1: TwwDBGrid
-        Left = 0
-        Top = 0
-        Width = 811
-        Height = 352
-        ControlType.Strings = (
-          'PAY_ID;CustomEdit;wwExpandButton1;F')
-        Selected.Strings = (
-          'PAY_ID'#9'2'#9#9'F'
-          'MG'#9'8'#9#1055#1077#1088#1080#1086#1076#9'F'
-          'CHRG'#9'11'#9#1053#1072#1095#1080#1089#1083#1077#1085#1086'. '#1074'~ '#1090'.'#1095'.'#1080#1079#1084#1077#1085#1077#1085#1080#1103#9'F'
-          'CHNG'#9'11'#9#1048#1079#1084#1077'-~'#1085#1077#1085#1080#1103#9'F'
-          'DTEK'#9'12'#9#1044#1072#1090#1072'~'#1087#1083#1072#1090#1077#1078#1072#9'F'
-          'PAY'#9'12'#9#1054#1087#1083#1072#1090#1072#9'F'
-          'PAY_PEN'#9'9'#9#1055#1077#1085#1103#9'F'
-          'OPER_NAME'#9'17'#9#1054#1087#1077#1088#1072#1094#1080#1103#9'F'
-          'COMP_NAME'#9'22'#9#1048#1089#1090#1086#1095#1085#1080#1082'~'#1086#1087#1083#1072#1090#1099#9'F')
-        IniAttributes.Delimiter = ';;'
-        TitleColor = clBtnFace
-        FixedCols = 0
-        ShowHorzScrollBar = True
-        Align = alClient
-        DataSource = DS_chargepay2
-        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgWordWrap, dgShowFooter, dgShowCellHint, dgProportionalColResize, dgDblClickColSizing]
-        TabOrder = 0
-        TitleAlignment = taLeftJustify
-        TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -14
-        TitleFont.Name = 'MS Sans Serif'
-        TitleFont.Style = []
-        TitleLines = 2
-        TitleButtons = False
-        UseTFields = False
-        FooterHeight = 20
-      end
-      object wwDBGrid3: TwwDBGrid
-        Left = 197
-        Top = 98
-        Width = 434
-        Height = 148
-        Selected.Strings = (
-          'OPER_NAME'#9'16'#9#1054#1087#1077#1088#1072#1094#1080#1103
-          'SUMMA'#9'10'#9#1054#1087#1083#1072#1090#1072
-          'PENYA'#9'10'#9#1055#1077#1085#1103
-          'DOPL'#9'13'#9#1055#1077#1088#1080#1086#1076' '#1086#1087#1083#1072#1090#1099)
-        IniAttributes.Delimiter = ';;'
-        TitleColor = clBtnFace
-        FixedCols = 0
-        ShowHorzScrollBar = True
-        Ctl3D = False
-        DataSource = DS_chargepay4
-        ParentCtl3D = False
-        TabOrder = 2
-        TitleAlignment = taLeftJustify
-        TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -14
-        TitleFont.Name = 'MS Sans Serif'
-        TitleFont.Style = []
-        TitleLines = 1
-        TitleButtons = False
-        Visible = False
-      end
-      object wwExpandButton1: TwwExpandButton
-        Left = 197
-        Top = 69
-        Width = 119
-        Height = 21
-        DisableThemes = False
-        Grid = wwDBGrid3
-        Caption = 'wwExpandButton1'
-        TabOrder = 1
-      end
-    end
-    object TabSheet3: TTabSheet
-      Caption = #1055#1088#1086#1095#1080#1077' '#1080#1089#1090#1086#1095#1085#1080#1082#1080
-      ImageIndex = 2
-      object wwDBGrid2: TwwDBGrid
-        Left = 0
-        Top = 0
-        Width = 811
-        Height = 353
-        Selected.Strings = (
-          'MG'#9'11'#9#1055#1077#1088#1080#1086#1076#9'F'
-          'LSK2'#9'13'#9#1042#1085#1077#1096#1085#1080#1081'~ '#1051'/C'#9'F'
-          'USL_NAME'#9'30'#9#1059#1089#1083#1091#1075#1072#9'F'
-          'SUM_CHRG'#9'15'#9#1053#1072#1095#1080#1089#1083#1077#1085#1080#1077#9'F'
-          'SUM_CHNG'#9'16'#9#1042' '#1090'.'#1095'. ~'#1080#1079#1084#1077#1085#1077#1085#1080#1103#9'F'
-          'SUM_PAY'#9'21'#9#1054#1087#1083#1072#1090#1072#9'F')
-        IniAttributes.Delimiter = ';;'
-        TitleColor = clBtnFace
-        FixedCols = 0
-        ShowHorzScrollBar = True
-        Align = alClient
-        DataSource = DS_chargepay3
-        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgWordWrap, dgProportionalColResize, dgDblClickColSizing]
-        TabOrder = 0
-        TitleAlignment = taLeftJustify
-        TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -14
-        TitleFont.Name = 'MS Sans Serif'
-        TitleFont.Style = []
-        TitleLines = 2
-        TitleButtons = False
-        UseTFields = False
-        FooterHeight = 10
-        GroupFieldName = 'mg'
-      end
-    end
-    object TabSheet4: TTabSheet
-      Caption = #1044#1077#1090#1072#1083#1080#1079#1072#1094#1080#1103
-      ImageIndex = 3
-      object wwDBGrid4: TwwDBGrid
-        Left = 0
-        Top = 0
-        Width = 811
-        Height = 353
-        Selected.Strings = (
-          'MG'#9'9'#9#1055#1077#1088#1080#1086#1076#9'F'
-          'CHRG'#9'11'#9#1053#1072#1095#1080#1089#1083#1077#1085#1086'. '#1074'~ '#1090'.'#1095'.'#1080#1079#1084#1077#1085#1077#1085#1080#1103#9'F'
-          'CHNG'#9'16'#9#1048#1079#1084#1077'-~'#1085#1077#1085#1080#1103#9'F'
-          'DTEK'#9'15'#9#1044#1072#1090#1072'~'#1087#1083#1072#1090#1077#1078#1072#9'F'
-          'PAY'#9'18'#9#1054#1087#1083#1072#1090#1072#9'F'
-          'PAY_PEN'#9'17'#9#1055#1077#1085#1103#9'F'
-          'OPER_NAME'#9'20'#9#1054#1087#1077#1088#1072#1094#1080#1103#9'F')
-        IniAttributes.Delimiter = ';;'
-        TitleColor = clBtnFace
-        FixedCols = 0
-        ShowHorzScrollBar = True
-        Align = alClient
-        DataSource = DS_chargepay5
-        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgWordWrap, dgShowFooter, dgShowCellHint, dgProportionalColResize, dgDblClickColSizing]
-        TabOrder = 0
-        TitleAlignment = taLeftJustify
-        TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -14
-        TitleFont.Name = 'MS Sans Serif'
-        TitleFont.Style = []
-        TitleLines = 2
-        TitleButtons = False
-        UseTFields = False
-        FooterHeight = 20
-        GroupFieldName = 'MG'
-      end
-    end
     object TabSheet5: TTabSheet
       Caption = #1044#1077#1090#1072#1083#1080#1079#1072#1094#1080#1103'2'
       ImageIndex = 4
-      object wwDBGrid6: TwwDBGrid
+      object cxGrid2: TcxGrid
         Left = 0
         Top = 0
         Width = 811
         Height = 352
-        Selected.Strings = (
-          'MG3'#9'8'#9#1055#1077#1088#1080#1086#1076#9'F'
-          'TP_NAME'#9'11'#9#1058#1080#1087#9'F'
-          'DTEK'#9'10'#9#1044#1072#1090#1072#9'F'
-          'NKVIT'#9'12'#9#8470' '#1050#1074#1080#1090#9'F'
-          'SUMMA'#9'10'#9#1057#1091#1084#1084#1072#9'F'
-          'PN'#9'12'#9#1055#1077#1085#1103#9'F'
-          'MG1'#9'11'#9#1047#1072' '#1087#1077#1088#1080#1086#1076#9'F'
-          'OPER_NAME'#9'31'#9#1054#1087#1077#1088#1072#1094#1080#1103#9'F')
-        IniAttributes.Delimiter = ';;'
-        TitleColor = clBtnFace
-        FixedCols = 0
-        ShowHorzScrollBar = True
         Align = alClient
-        DataSource = DS_chargepay6
-        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgWordWrap, dgShowFooter, dgShowCellHint, dgProportionalColResize, dgDblClickColSizing]
         TabOrder = 0
-        TitleAlignment = taLeftJustify
-        TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -14
-        TitleFont.Name = 'MS Sans Serif'
-        TitleFont.Style = []
-        TitleLines = 2
-        TitleButtons = False
-        UseTFields = False
-        FooterHeight = 20
-        GroupFieldName = 'MG3'
+        object cxGridDBTableView1: TcxGridDBTableView
+          PopupMenu = pm1
+          Navigator.Buttons.CustomButtons = <>
+          DataController.DataSource = DS_chargepay6
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <
+            item
+              Kind = skSum
+            end
+            item
+              Kind = skSum
+            end
+            item
+              Kind = skSum
+            end
+            item
+              Kind = skSum
+            end
+            item
+              Kind = skSum
+            end
+            item
+              Kind = skSum
+            end
+            item
+              Kind = skSum
+            end
+            item
+              Kind = skSum
+            end
+            item
+              Kind = skSum
+            end
+            item
+              Kind = skSum
+            end>
+          DataController.Summary.SummaryGroups = <>
+          OptionsSelection.InvertSelect = False
+          OptionsView.ColumnAutoWidth = True
+          OptionsView.Footer = True
+          OptionsView.GroupByBox = False
+          object cxGridDBTableView1MG3: TcxGridDBColumn
+            Caption = #1055#1077#1088#1080#1086#1076
+            DataBinding.FieldName = 'MG3'
+            Width = 55
+          end
+          object cxGridDBTableView1TP_NAME: TcxGridDBColumn
+            Caption = #1058#1080#1087
+            DataBinding.FieldName = 'TP_NAME'
+            Width = 65
+          end
+          object cxGridDBTableView1DTEK: TcxGridDBColumn
+            Caption = #1044#1072#1090#1072
+            DataBinding.FieldName = 'DTEK'
+            Width = 114
+          end
+          object cxGridDBTableView1NKVIT: TcxGridDBColumn
+            Caption = #8470' '#1050#1074#1080#1090
+            DataBinding.FieldName = 'NKVIT'
+            Width = 92
+          end
+          object cxGridDBTableView1SUMMA: TcxGridDBColumn
+            Caption = #1057#1091#1084#1084#1072
+            DataBinding.FieldName = 'SUMMA'
+            Width = 95
+          end
+          object cxGridDBTableView1PN: TcxGridDBColumn
+            Caption = #1055#1077#1085#1103
+            DataBinding.FieldName = 'PN'
+            Width = 95
+          end
+          object cxGridDBTableView1MG1: TcxGridDBColumn
+            Caption = #1047#1072' '#1087#1077#1088#1080#1086#1076
+            DataBinding.FieldName = 'MG1'
+            Width = 66
+          end
+          object cxGridDBTableView1OPER_NAME: TcxGridDBColumn
+            Caption = #1054#1087#1077#1088#1072#1094#1080#1103
+            DataBinding.FieldName = 'OPER_NAME'
+            Width = 227
+          end
+        end
+        object cxGridLevel1: TcxGridLevel
+          GridView = cxGridDBTableView1
+        end
       end
     end
   end
@@ -1029,6 +937,7 @@ object Form_chargepay: TForm_chargepay
     Master = Form_list_kart.OD_list_kart
     MasterFields = 'lsk'
     Session = DataModule1.OracleSession1
+    Active = True
     Left = 152
     Top = 248
   end

@@ -4,8 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DBGridEh, DB, OracleData, StdCtrls, Utils, ComCtrls,
-  ExtCtrls, Wwdbigrd, Wwdbgrid, frxClass, frxDBSet, wwcheckbox,
+  Dialogs,  DB, OracleData, StdCtrls, Utils, ComCtrls,
+  ExtCtrls, frxClass, frxDBSet, 
   cxControls,
 
   
@@ -25,35 +25,26 @@ type
     PageControl1: TPageControl;
     TabSheet1: TTabSheet;
     GroupBox1: TGroupBox;
-    TabSheet2: TTabSheet;
     OD_chargepay2: TOracleDataSet;
     DS_chargepay2: TDataSource;
-    wwDBGrid1: TwwDBGrid;
     Panel1: TPanel;
     Button1: TButton;
     frxDBDataset1: TfrxDBDataset;
-    TabSheet3: TTabSheet;
     OD_chargepay3: TOracleDataSet;
     DS_chargepay3: TDataSource;
-    wwDBGrid2: TwwDBGrid;
     frxDBDataset2: TfrxDBDataset;
     frxDBDataset3: TfrxDBDataset;
-    wwDBGrid3: TwwDBGrid;
     frxDBDataset4: TfrxDBDataset;
     OD_chargepay4: TOracleDataSet;
     DS_chargepay4: TDataSource;
     CheckBox1: TCheckBox;
-    TabSheet4: TTabSheet;
     OD_chargepay5: TOracleDataSet;
     DS_chargepay5: TDataSource;
-    wwDBGrid4: TwwDBGrid;
-    wwExpandButton1: TwwExpandButton;
     frxDBDataset5: TfrxDBDataset;
     TabSheet5: TTabSheet;
     OD_chargepay6: TOracleDataSet;
     DS_chargepay6: TDataSource;
     frxDBDataset6: TfrxDBDataset;
-    wwDBGrid6: TwwDBGrid;
     CheckBox2: TCheckBox;
     frxrprt_e: TfrxReport;
     OD_chargepay7: TOracleDataSet;
@@ -89,6 +80,17 @@ type
     N3: TMenuItem;
     frxReport1: TfrxReport;
     Button2: TButton;
+    cxGrid2: TcxGrid;
+    cxGridDBTableView1: TcxGridDBTableView;
+    cxGridLevel1: TcxGridLevel;
+    cxGridDBTableView1TP_NAME: TcxGridDBColumn;
+    cxGridDBTableView1NKVIT: TcxGridDBColumn;
+    cxGridDBTableView1DTEK: TcxGridDBColumn;
+    cxGridDBTableView1MG1: TcxGridDBColumn;
+    cxGridDBTableView1OPER_NAME: TcxGridDBColumn;
+    cxGridDBTableView1SUMMA: TcxGridDBColumn;
+    cxGridDBTableView1PN: TcxGridDBColumn;
+    cxGridDBTableView1MG3: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button3Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -303,13 +305,6 @@ begin
     end;
     OD_chargepay3.Last;
 
-    wwDBGrid2.ColumnByName('SUM_CHRG').FooterValue := FloatToStrF(sum_chrg_,
-      ffFixed, 10, 2);
-    wwDBGrid2.ColumnByName('SUM_CHNG').FooterValue := FloatToStrF(sum_chng_,
-      ffFixed, 10, 2);
-    wwDBGrid2.ColumnByName('SUM_PAY').FooterValue := FloatToStrF(sum_pay_,
-      ffFixed, 10, 2);
-    wwDBGrid2.RedrawGrid;
     Panel1.Visible := false;
   end
   else if PageControl1.ActivePageIndex = 3 then
@@ -353,37 +348,14 @@ begin
     ('scott.Utils.get_int_param', ['DET_CHARGEPAY1']) = 1 then
   begin
     //параметр показать Детализацию для Э+
-    TabSheet4.TabVisible := True;
+//    TabSheet4.TabVisible := True;
   end
   else
   begin
     //параметр скрыть Детализацию для Э+
-    TabSheet4.TabVisible := False;
+//    TabSheet4.TabVisible := False;
   end;
 
-  if DataModule1.OraclePackage1.CallIntegerFunction
-    ('scott.Utils.get_int_param', ['DET_CHARGEPAY2']) = 1 then
-  begin
-    //показать Детализацию для ЖКХ
-    TabSheet2.TabVisible := True;
-  end
-  else
-  begin
-    //скрыть Детализацию для ЖКХ
-    TabSheet2.TabVisible := False;
-  end;
-
-  if DataModule1.OraclePackage1.CallIntegerFunction
-    ('scott.Utils.get_int_param', ['DET_CHARGEPAY3']) = 1 then
-  begin
-    //Организации ЖКХ, показать Прочие источники
-    TabSheet3.TabVisible := True;
-  end
-  else
-  begin
-    //Организации ЖКХ, скрыть Прочие источники
-    TabSheet3.TabVisible := False;
-  end;
 
   if DataModule1.OraclePackage1.CallIntegerFunction
     ('scott.Utils.get_int_param', ['DET_CHARGEPAY4']) = 1 then
@@ -546,13 +518,6 @@ begin
     payment_ := payment_ + OD_chargepay2.FieldByName('pay').AsFloat;
     OD_chargepay2.Next;
   end;
-  wwDBGrid1.ColumnByName('MG').FooterValue := 'Итого:';
-  wwDBGrid1.ColumnByName('CHRG').FooterValue := FloatToStrF(charges_, ffFixed,
-    10, 2);
-  wwDBGrid1.ColumnByName('CHNG').FooterValue := FloatToStrF(changes_, ffFixed,
-    10, 2);
-  wwDBGrid1.ColumnByName('PAY').FooterValue := FloatToStrF(payment_, ffFixed,
-    10, 2);
 end;
 
 procedure TForm_chargepay.calcFooter5;
@@ -571,13 +536,6 @@ begin
     payment_ := payment_ + OD_chargepay5.FieldByName('pay').AsFloat;
     OD_chargepay5.Next;
   end;
-  wwDBGrid4.ColumnByName('MG').FooterValue := 'Итого:';
-  wwDBGrid4.ColumnByName('CHRG').FooterValue := FloatToStrF(charges_, ffFixed,
-    10, 2);
-  wwDBGrid4.ColumnByName('CHNG').FooterValue := FloatToStrF(changes_, ffFixed,
-    10, 2);
-  wwDBGrid4.ColumnByName('PAY').FooterValue := FloatToStrF(payment_, ffFixed,
-    10, 2);
 end;
 
 procedure TForm_chargepay.CheckBox2Click(Sender: TObject);
