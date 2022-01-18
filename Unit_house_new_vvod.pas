@@ -4,8 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Buttons, StdCtrls, Mask, DBCtrlsEh, DBGridEh, DB,
-  OracleData, wwdblook, wwdbedit, Wwdbspin, 
+  Dialogs, Buttons, StdCtrls, Mask,  DB,
+  OracleData, 
   cxControls, 
   
   
@@ -22,7 +22,9 @@ uses
   
   
   cxRadioGroup, ExtCtrls, cxGraphics, cxLookAndFeels,
-  cxLookAndFeelPainters, cxContainer, cxEdit, ImgList, cxGroupBox;
+  cxLookAndFeelPainters, cxContainer, cxEdit, ImgList, cxGroupBox,
+  cxTextEdit, cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit,
+  cxDBLookupComboBox;
 
 type
   TForm_house_new_vvod = class(TForm)
@@ -33,29 +35,28 @@ type
     Button1: TButton;
     Button2: TButton;
     Label2: TLabel;
-    wwDBLookupCombo1: TwwDBLookupCombo;
     Label6: TLabel;
-    wwDBLookupCombo3: TwwDBLookupCombo;
     OD_houses: TOracleDataSet;
     OD_streets: TOracleDataSet;
     DS_houses: TDataSource;
     DS_streets: TDataSource;
-    wwDBLookupCombo2: TwwDBLookupCombo;
-    wwDBSpinEdit1: TwwDBSpinEdit;
     Label3: TLabel;
     OD_c_vvod_uslUSL: TStringField;
     OD_c_vvod_uslNM: TStringField;
     ImageList1: TImageList;
     cxrdgrp1: TcxRadioGroup;
+    cbbStreet: TcxLookupComboBox;
+    cbbNd: TcxLookupComboBox;
+    cbbUsl: TcxLookupComboBox;
+    cxEntry: TcxTextEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
-    procedure wwDBLookupCombo1KeyPress(Sender: TObject; var Key: Char);
-    procedure wwDBLookupCombo1Change(Sender: TObject);
-    procedure wwDBLookupCombo3KeyPress(Sender: TObject; var Key: Char);
-    procedure wwDBLookupCombo2KeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
     procedure cxrdgrp1Click(Sender: TObject);
+    procedure cbbStreetPropertiesChange(Sender: TObject);
+    procedure cbbStreetKeyPress(Sender: TObject; var Key: Char);
+    procedure cbbNdKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -81,12 +82,12 @@ procedure TForm_house_new_vvod.Button1Click(Sender: TObject);
 var
   house_id_, fk_vvod_: Integer;
 begin
- if (cxrdgrp1.ItemIndex=0) and (wwDBLookupCombo2.Text = '') then
+ if (cxrdgrp1.ItemIndex=0) and (cbbUsl.Text = '') then
  begin
    msg2('Не указана услуга ввода!',
           'Внимание!', MB_ICONSTOP+MB_OK+MB_APPLMODAL);
  end
- else if wwDBLookupCombo3.Text = '' then
+ else if cbbNd.Text = '' then
  begin
    msg2('Не указан адрес дома!',
           'Внимание!', MB_ICONSTOP+MB_OK+MB_APPLMODAL);
@@ -98,12 +99,12 @@ begin
    fk_vvod_:=DataModule1.OraclePackage1.CallIntegerFunction
          ('scott.P_VVOD.create_vvod', [house_id_,
            OD_c_vvod_usl.FieldByName('usl').AsString,
-           StrToInt(wwDBSpinEdit1.Text)])
+           StrToInt(cxEntry.Text)])
    else
    fk_vvod_:=DataModule1.OraclePackage1.CallIntegerFunction
          ('scott.P_VVOD.create_vvod', [house_id_,
            '',
-           StrToInt(wwDBSpinEdit1.Text)]);
+           StrToInt(cxEntry.Text)]);
    if fk_vvod_ <> -1 then
    begin
       if FF('Form_house_vvod',0) =1 then
@@ -126,56 +127,18 @@ begin
   Close;
 end;
 
-procedure TForm_house_new_vvod.wwDBLookupCombo1KeyPress(Sender: TObject;
-  var Key: Char);
-begin
- try
-  if Key = #13 then
-//    wwDBLookupCombo3.SetFocus;
-Windows.SetFocus(wwDBLookupCombo3.Handle);
-  except
-  end;
-end;
-
-procedure TForm_house_new_vvod.wwDBLookupCombo1Change(Sender: TObject);
-begin
-  wwDBLookupCombo3.Text:='';
-end;
-
-procedure TForm_house_new_vvod.wwDBLookupCombo3KeyPress(Sender: TObject;
-  var Key: Char);
-begin
- try
-  if Key = #13 then
-//    wwDBLookupCombo2.SetFocus;
-Windows.SetFocus(wwDBLookupCombo2.Handle);
-  except
-  end;
-end;
-
-procedure TForm_house_new_vvod.wwDBLookupCombo2KeyPress(Sender: TObject;
-  var Key: Char);
-begin
- try
-  if Key = #13 then
-//    wwDBSpinEdit1.SetFocus;
-Windows.SetFocus(wwDBSpinEdit1.Handle);
-  except
-  end;
-end;
-
 procedure TForm_house_new_vvod.FormCreate(Sender: TObject);
 begin
   OD_houses.Active:=true;
   OD_streets.Active:=true;
   OD_c_vvod_usl.Active:=true;
-  wwDBLookupCombo1.LookupValue:=
+  cbbStreet.EditValue:=
      Form_house_vvod.OD_vvod.FieldByName('name').AsString;
-  wwDBLookupCombo2.LookupValue:=
+  cbbUsl.EditValue:=
      Form_house_vvod.OD_vvod.FieldByName('vvod').AsString;
   OD_houses.Locate('house_id',
     Form_house_vvod.OD_vvod.FieldByName('house_id').AsInteger,[]);
-  wwDBLookupCombo3.LookupValue:=OD_houses.FieldByName('nd').AsString;
+  cbbNd.EditValue:=OD_houses.FieldByName('nd').AsString;
 end;
 
 procedure TForm_house_new_vvod.cxrdgrp1Click(Sender: TObject);
@@ -184,14 +147,39 @@ begin
   if (cxrdgrp1.ItemIndex=0) then
   begin
     Label1.Visible:=True;
-    wwDBLookupCombo2.Visible:=True;
+    cbbUsl.Visible:=True;
   end
   else
   begin
     Label1.Visible:=False;
-    wwDBLookupCombo2.Visible:=False;
+    cbbUsl.Visible:=False;
   end;
 
+end;
+
+procedure TForm_house_new_vvod.cbbStreetPropertiesChange(Sender: TObject);
+begin
+  cbbNd.Text:='';
+end;
+
+procedure TForm_house_new_vvod.cbbStreetKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+ try
+  if Key = #13 then
+      Windows.SetFocus(cbbNd.Handle);
+  except
+  end;
+end;
+
+procedure TForm_house_new_vvod.cbbNdKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+ try
+  if Key = #13 then
+      Windows.SetFocus(cbbUsl.Handle);
+  except
+  end;
 end;
 
 end.

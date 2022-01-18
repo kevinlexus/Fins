@@ -5,10 +5,9 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, OracleData, StdCtrls, 
-  wwdbedit, Wwdotdot, Wwdbcomb, wwdblook, Oracle, Utils, wwriched,
-  DBGridEh, wwSpeedButton, wwDBNavigator, ExtCtrls, 
-  Menus, Wwintl, wwfltdlg, Wwdbigrd,
-  Wwdbgrid, ComCtrls, wwDialog, Grids, wwclearpanel, cxGraphics,
+  Oracle, Utils, wwriched,
+  ExtCtrls, 
+  Menus, ComCtrls, Grids, cxGraphics,
   cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxStyles,
   cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
   cxDBData, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,

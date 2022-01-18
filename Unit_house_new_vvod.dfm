@@ -147,7 +147,7 @@ object Form_house_new_vvod: TForm_house_new_vvod
     Width = 378
     Height = 49
     Align = alBottom
-    TabOrder = 4
+    TabOrder = 0
     object Button1: TButton
       Left = 208
       Top = 16
@@ -168,74 +168,6 @@ object Form_house_new_vvod: TForm_house_new_vvod
       OnClick = Button2Click
     end
   end
-  object wwDBLookupCombo1: TwwDBLookupCombo
-    Left = 24
-    Top = 8
-    Width = 177
-    Height = 21
-    DropDownAlignment = taLeftJustify
-    LookupTable = OD_streets
-    LookupField = 'NAME'
-    Options = [loSearchOnBackspace]
-    TabOrder = 0
-    AutoDropDown = True
-    ShowButton = True
-    PreciseEditRegion = False
-    AllowClearKey = False
-    ShowMatchText = True
-    OnChange = wwDBLookupCombo1Change
-    OnKeyPress = wwDBLookupCombo1KeyPress
-  end
-  object wwDBLookupCombo3: TwwDBLookupCombo
-    Left = 216
-    Top = 8
-    Width = 161
-    Height = 21
-    ControlType.Strings = (
-      'PSCH;ImageIndex;Original Size')
-    DropDownAlignment = taLeftJustify
-    Selected.Strings = (
-      'ND'#9'35'#9'ND'#9'F'
-      'PSCH'#9'10'#9'PSCH'#9'F')
-    LookupTable = OD_houses
-    LookupField = 'ND'
-    ImageList = ImageList1
-    TabOrder = 1
-    AutoDropDown = True
-    ShowButton = True
-    PreciseEditRegion = False
-    AllowClearKey = False
-    ShowMatchText = True
-    OnKeyPress = wwDBLookupCombo3KeyPress
-  end
-  object wwDBLookupCombo2: TwwDBLookupCombo
-    Left = 232
-    Top = 40
-    Width = 144
-    Height = 21
-    DropDownAlignment = taLeftJustify
-    Selected.Strings = (
-      'NM'#9'30'#9'NM'#9'F')
-    LookupTable = OD_c_vvod_usl
-    LookupField = 'NM'
-    Options = [loSearchOnBackspace]
-    TabOrder = 2
-    AutoDropDown = True
-    ShowButton = True
-    PreciseEditRegion = False
-    AllowClearKey = False
-    ShowMatchText = True
-    OnKeyPress = wwDBLookupCombo2KeyPress
-  end
-  object wwDBSpinEdit1: TwwDBSpinEdit
-    Left = 111
-    Top = 40
-    Width = 49
-    Height = 21
-    Increment = 1.000000000000000000
-    TabOrder = 3
-    UnboundDataType = wwDefault
-  end
   object cxrdgrp1: TcxRadioGroup
     Left = 8
     Top = 32
@@ -248,10 +180,63 @@ object Form_house_new_vvod: TForm_house_new_vvod
         Caption = #1055#1086#1076#1098#1077#1079#1076
       end>
     ItemIndex = 0
-    TabOrder = 5
+    TabOrder = 1
     OnClick = cxrdgrp1Click
     Height = 73
     Width = 81
+  end
+  object cbbStreet: TcxLookupComboBox
+    Left = 24
+    Top = 7
+    Properties.GridMode = True
+    Properties.KeyFieldNames = 'ID'
+    Properties.ListColumns = <
+      item
+        FieldName = 'NAME'
+      end>
+    Properties.ListOptions.ShowHeader = False
+    Properties.ListSource = DS_streets
+    Properties.OnChange = cbbStreetPropertiesChange
+    TabOrder = 2
+    OnKeyPress = cbbStreetKeyPress
+    Width = 177
+  end
+  object cbbNd: TcxLookupComboBox
+    Left = 217
+    Top = 7
+    Properties.GridMode = True
+    Properties.KeyFieldNames = 'ND_ID'
+    Properties.ListColumns = <
+      item
+        FieldName = 'ND'
+      end>
+    Properties.ListOptions.ShowHeader = False
+    Properties.ListSource = DS_houses
+    TabOrder = 3
+    OnKeyPress = cbbNdKeyPress
+    Width = 152
+  end
+  object cbbUsl: TcxLookupComboBox
+    Left = 230
+    Top = 43
+    Properties.GridMode = True
+    Properties.KeyFieldNames = 'USL'
+    Properties.ListColumns = <
+      item
+        FieldName = 'NM'
+      end>
+    Properties.ListOptions.ShowHeader = False
+    Properties.ListSource = DS_c_vvod_type
+    TabOrder = 4
+    OnKeyPress = cbbNdKeyPress
+    Width = 138
+  end
+  object cxEntry: TcxTextEdit
+    Left = 112
+    Top = 43
+    TabOrder = 5
+    Text = 'cxEntry'
+    Width = 39
   end
   object OD_c_vvod_usl: TOracleDataSet
     SQL.Strings = (
@@ -299,7 +284,7 @@ object Form_house_new_vvod: TForm_house_new_vvod
       'order by k.nd, nvl(k.psch,0)')
     Optimize = False
     Variables.Data = {
-      0300000001000000030000003A49440500000005000000303030310000000000}
+      0300000001000000030000003A49440500000005000000303137350000000000}
     QBEDefinition.QBEFieldDefs = {
       0400000006000000020000004E44010000000000050000004E445F4944010000
       00000008000000484F5553455F49440100000000000300000052455501000000
