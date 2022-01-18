@@ -278,38 +278,9 @@ type
     procedure OD_c_states2BeforeDelete(DataSet: TDataSet);
     procedure OD_c_statesBeforeDelete(DataSet: TDataSet);
     procedure OD_c_statesBeforeInsert(DataSet: TDataSet);
-//    procedure DBLookupComboboxEh6EditButtons0Click(Sender: TObject;
-//      var Handled: Boolean);
-    procedure DBLookupComboboxEh18EditButtons0Click(Sender: TObject;
-      var Handled: Boolean);
-    procedure DBLookupComboboxEh19EditButtons0Click(Sender: TObject;
-      var Handled: Boolean);
-    procedure DBLookupComboboxEh7EditButtons0Click(Sender: TObject;
-      var Handled: Boolean);
-    procedure DBLookupComboboxEh15EditButtons0Click(Sender: TObject;
-      var Handled: Boolean);
-    procedure DBLookupComboboxEh16EditButtons0Click(Sender: TObject;
-      var Handled: Boolean);
-//    procedure DBLookupComboboxEh4EditButtons0Click(Sender: TObject;
-//      var Handled: Boolean);
-    procedure DBLookupComboboxEh5EditButtons0Click(Sender: TObject;
-      var Handled: Boolean);
-    procedure DBLookupComboboxEh17EditButtons0Click(Sender: TObject;
-      var Handled: Boolean);
-    procedure DBLookupComboboxEh20EditButtons0Click(Sender: TObject;
-      var Handled: Boolean);
-    procedure DBLookupComboboxEh11EditButtons0Click(Sender: TObject;
-      var Handled: Boolean);
-    procedure DBLookupComboboxEh12EditButtons0Click(Sender: TObject;
-      var Handled: Boolean);
-    procedure DBLookupComboboxEh13EditButtons0Click(Sender: TObject;
-      var Handled: Boolean);
-    procedure DBLookupComboboxEh13CloseUp(Sender: TObject;
-      Accept: Boolean);
     procedure setFieldsDokDeath(isVisible, isCheckVisible: Boolean);
   private
     id2_: Integer;
-//    procedure add_prop(tp_: string; ds: TDBLookupComboboxEh);
   public
     sel_id_: Integer;
   end;
@@ -855,112 +826,6 @@ begin
   end;
   // save_krt_pr;
 
-end;
-
-{procedure TForm_kart_pr.DBLookupComboboxEh6EditButtons0Click(
-  Sender: TObject; var Handled: Boolean);
-begin
-  add_prop('Страна', DBLookupComboboxEh6);
-end;
-
-procedure TForm_kart_pr.add_prop(tp_: string; ds: TDBLookupComboboxEh);
-begin
-  //Выбор значения реквизита из списка/добавление нового
-  Application.CreateForm(TForm_add_prop, Form_add_prop);
-  Form_add_prop.seltp(tp_);
-  Form_add_prop.ShowModal;
-  if sel_id_ <> -1 then
-  begin
-    ds.ListSource.DataSet.Active := false;
-    ds.ListSource.DataSet.Active := true;
-    ds.KeyValue := sel_id_;
-  end;
-end;
-}
-
-procedure TForm_kart_pr.DBLookupComboboxEh18EditButtons0Click(
-  Sender: TObject; var Handled: Boolean);
-begin
-//  add_prop('Область', DBLookupComboboxEh18);
-end;
-
-procedure TForm_kart_pr.DBLookupComboboxEh19EditButtons0Click(
-  Sender: TObject; var Handled: Boolean);
-begin
-//  add_prop('Район', DBLookupComboboxEh19);
-end;
-
-procedure TForm_kart_pr.DBLookupComboboxEh7EditButtons0Click(
-  Sender: TObject; var Handled: Boolean);
-begin
-//  add_prop('Национальность', DBLookupComboboxEh7);
-end;
-
-procedure TForm_kart_pr.DBLookupComboboxEh15EditButtons0Click(
-  Sender: TObject; var Handled: Boolean);
-begin
-//  add_prop('Военнообязанность', DBLookupComboboxEh15);
-
-end;
-
-procedure TForm_kart_pr.DBLookupComboboxEh16EditButtons0Click(
-  Sender: TObject; var Handled: Boolean);
-begin
-//  add_prop('Военкомат', DBLookupComboboxEh16);
-
-end;
-
-{procedure TForm_kart_pr.DBLookupComboboxEh4EditButtons0Click(
-  Sender: TObject; var Handled: Boolean);
-begin
-  add_prop('Гражданство', DBLookupComboboxEh4);
-end;}
-
-procedure TForm_kart_pr.DBLookupComboboxEh5EditButtons0Click(
-  Sender: TObject; var Handled: Boolean);
-begin
-//  add_prop('Документ', DBLookupComboboxEh5);
-end;
-
-procedure TForm_kart_pr.DBLookupComboboxEh17EditButtons0Click(
-  Sender: TObject; var Handled: Boolean);
-begin
-//  add_prop('ОВД', DBLookupComboboxEh17);
-end;
-
-procedure TForm_kart_pr.DBLookupComboboxEh20EditButtons0Click(
-  Sender: TObject; var Handled: Boolean);
-begin
-//  add_prop('Страна', DBLookupComboboxEh20);
-end;
-
-procedure TForm_kart_pr.DBLookupComboboxEh11EditButtons0Click(
-  Sender: TObject; var Handled: Boolean);
-begin
-//  add_prop('Область', DBLookupComboboxEh11);
-end;
-
-procedure TForm_kart_pr.DBLookupComboboxEh12EditButtons0Click(
-  Sender: TObject; var Handled: Boolean);
-begin
-//  add_prop('Район', DBLookupComboboxEh12);
-end;
-
-procedure TForm_kart_pr.DBLookupComboboxEh13EditButtons0Click(
-  Sender: TObject; var Handled: Boolean);
-begin
-//  add_prop('Причина выписки', DBLookupComboboxEh13);
-
-end;
-
-procedure TForm_kart_pr.DBLookupComboboxEh13CloseUp(Sender: TObject;
-  Accept: Boolean);
-begin
-  if OD_ub.FieldByName('cd').AsString = 'По факту смерти' then
-    setFieldsDokDeath(True, False)
-    else
-    setFieldsDokDeath(False, False);
-    
 end;
 
 procedure TForm_kart_pr.setFieldsDokDeath(isVisible, isCheckVisible: Boolean);
