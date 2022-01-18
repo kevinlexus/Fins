@@ -4,14 +4,16 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, OracleData, DBGridEh, StdCtrls, Oracle, ExtCtrls,
-  Mask, DBCtrlsEh, wwdbedit, cxControls,
+  Dialogs, DB, OracleData, StdCtrls, Oracle, ExtCtrls,
+  Mask, cxControls,
 
   
   cxGridDBTableView, cxGridLevel, cxClasses,
   cxGrid, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters, cxStyles,
   cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
-  cxDBData, cxGridCustomTableView, cxGridTableView, cxGridCustomView;
+  cxDBData, cxGridCustomTableView, cxGridTableView, cxGridCustomView,
+  cxContainer, ComCtrls, dxCore, cxDateUtils, cxTextEdit, cxMaskEdit,
+  cxDropDownEdit, cxCalendar;
 
 type
   TForm_sel_comps = class(TForm)
@@ -19,9 +21,7 @@ type
     OD_sel_comps: TOracleDataSet;
     Button1: TButton;
     GroupBox1: TGroupBox;
-    DBDateTimeEditEh1: TDBDateTimeEditEh;
     GroupBox2: TGroupBox;
-    wwDBEdit1: TwwDBEdit;
     Button2: TButton;
     cxGrid1DBTableView1: TcxGridDBTableView;
     cxGrid1Level1: TcxGridLevel;
@@ -29,6 +29,8 @@ type
     cxGrid1DBTableView1NKOM: TcxGridDBColumn;
     cxGrid1DBTableView1PERIOD: TcxGridDBColumn;
     cxGrid1DBTableView1COMP_NAME: TcxGridDBColumn;
+    cxdtdt1: TcxDateEdit;
+    cxtxtUser: TcxTextEdit;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -83,7 +85,7 @@ begin
   Form_main.cur_mg_ := DataModule1.OraclePackage1.CallStringFunction
     ('scott.INIT.get_cur_period', [parNone]);
   l_val := DataModule1.OraclePackage1.CallIntegerFunction
-    ('scott.INIT.set_date', [Form_sel_comps.DBDateTimeEditEh1.Value]);
+    ('scott.INIT.set_date', [Form_sel_comps.cxdtdt1.EditValue]);
 
   if l_val = 3 then
     msg2('Дата не соответствует текущему периоду!', 'Внимание!', MB_OK +
@@ -97,7 +99,7 @@ begin
     DataModule1.UniStoredProc1.SQL.Add('end;');
     DataModule1.UniStoredProc1.Params.Clear;
     DataModule1.UniStoredProc1.Params.CreateParam(ftDate, 'dat_',
-      ptInput).AsDate := Form_sel_comps.DBDateTimeEditEh1.Value;
+      ptInput).AsDate := Form_sel_comps.cxdtdt1.EditValue;
     DataModule1.UniStoredProc1.Params
       .CreateParam(ftInteger, 'RESULT', ptResult);
     DataModule1.UniStoredProc1.ExecProc;
@@ -105,10 +107,10 @@ begin
     DataModule1.UniStoredProc1.SQL.Clear;
     DataModule1.UniStoredProc1.Params.Clear;
 
-    Form_main.cur_dt := Form_sel_comps.DBDateTimeEditEh1.Value;
+    Form_main.cur_dt := Form_sel_comps.cxdtdt1.EditValue;
     Form_Main.OD_spr.Active := true;
     Form_main.Caption := Application.Title
-      + ' Дата:' + DateToStr(Form_sel_comps.DBDateTimeEditEh1.Value) + ' User:'
+      + ' Дата:' + DateToStr(Form_sel_comps.cxdtdt1.EditValue) + ' User:'
       +
       Form_main.user;
     Form_main.Caption := Form_main.Caption + ': ' +
@@ -150,9 +152,9 @@ end;
 procedure TForm_sel_comps.sel_comp;
 begin
   nkom_ := OD_sel_comps.FieldByName('nkom').AsString;
-  DBDateTimeEditEh1.Value := DataModule1.OraclePackage1.CallDateFunction(
+  cxdtdt1.EditValue := DataModule1.OraclePackage1.CallDateFunction(
     'scott.INIT.get_period_date', [nkom_]);
-  wwDBEdit1.Text := DataModule1.OraclePackage1.CallStringFunction(
+  cxtxtUser.Text := DataModule1.OraclePackage1.CallStringFunction(
     'scott.INIT.get_fio', parNone);
 end;
 

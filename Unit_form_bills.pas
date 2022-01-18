@@ -4,25 +4,19 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, OracleData, StdCtrls, Mask, DBCtrlsEh, DBLookupEh, frxClass,
-  frxDBSet, StrUtils, ExtCtrls, frxBarcode, frxCross, wwdbedit,
-  wwdblook, DBGridEh, frxDMPExport, Oracle, frxExportXLS, frxExportRTF,
-  Wwdotdot, Wwdbcomb, syQRcode,
-  cxControls, cxLookAndFeelPainters, cxContainer,
-  cxEdit,
-
-  cxTextEdit, cxMaskEdit, cxDropDownEdit, cxLookupEdit,
-  cxDBLookupEdit, cxDBLookupComboBox,
-
-  cxImageComboBox,
-  cxCheckComboBox,
-
-  cxCheckBox, DBCtrls, cxGraphics,
-
-  cxClasses,
-  cxPropertiesStore, frxExportPDF, ufDataModuleBill,
-
-  ComCtrls, cxProgressBar, dxStatusBar, cxLookAndFeels, frxExportBaseDialog;
+  Dialogs, DB, OracleData, StdCtrls, Mask, frxClass,
+  frxDBSet, StrUtils, ExtCtrls, frxBarcode, frxCross, cxGraphics,
+  cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit,
+  cxCheckBox, cxMaskEdit, frxExportPDF, cxClasses, cxPropertiesStore,
+  frxExportXLS, frxExportBaseDialog, frxExportRTF, frxDMPExport,
+  cxProgressBar, dxStatusBar, cxCheckComboBox, cxImageComboBox, cxTextEdit,
+  cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
+  Oracle,
+  syQRcode,
+  DBCtrls, 
+  cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator,
+  cxDBData, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
+  cxGridLevel, cxGridCustomView, cxGrid;
 
 type
   TForm_print_bills = class(TForm)
@@ -34,17 +28,12 @@ type
     Label4: TLabel;
     GroupBox3: TGroupBox;
     Label5: TLabel;
-    DBLookupComboboxEh2: TDBLookupComboboxEh;
     Label1: TLabel;
     Label2: TLabel;
     Label6: TLabel;
     Label7: TLabel;
-    DBLookupComboboxEh3: TDBLookupComboboxEh;
-    DBLookupComboboxEh4: TDBLookupComboboxEh;
     CheckBox1: TCheckBox;
     Label9: TLabel;
-    wwDBEdit1: TwwDBEdit;
-    wwDBEdit2: TwwDBEdit;
     frxReport1: TfrxReport;
     CheckBox2: TCheckBox;
     frxDotMatrixExport1: TfrxDotMatrixExport;
@@ -60,7 +49,7 @@ type
     filePath: TEdit;
     chk1: TCheckBox;
     Label8: TLabel;
-    cbb1: TcxLookupComboBox;
+    cbbUk: TcxLookupComboBox;
     CheckBox5: TCheckBox;
     Label13: TLabel;
     cxImageComboBox1: TcxImageComboBox;
@@ -73,12 +62,10 @@ type
     edtExpportPath: TEdit;
     CheckBox7: TCheckBox;
     Label15: TLabel;
-    cxLookupComboBox2: TcxLookupComboBox;
+    cbbPostIndex: TcxLookupComboBox;
     cx3: TcxLookupComboBox;
     cxLookupComboBox4: TcxLookupComboBox;
     cxImageComboBox2: TcxImageComboBox;
-    fltMgFrom: TDBLookupComboBoxEh;
-    fltMgTo: TDBLookupComboBoxEh;
     GroupBox5: TGroupBox;
     Label16: TLabel;
     Label17: TLabel;
@@ -90,28 +77,25 @@ type
     cxProgressBar1: TcxProgressBar;
     Label18: TLabel;
     Timer1: TTimer;
+    cbbMgFrom: TcxLookupComboBox;
+    cbbMgTo: TcxLookupComboBox;
+    cbbNd: TcxLookupComboBox;
+    cbbKw: TcxLookupComboBox;
+    cbbStreet: TcxLookupComboBox;
+    cxmskdtLskFrom: TcxMaskEdit;
+    cxmskdtLskTo: TcxMaskEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
-    procedure DBLookupComboboxEh2CloseUp(Sender: TObject; Accept: Boolean);
-    procedure DBLookupComboboxEh3CloseUp(Sender: TObject; Accept: Boolean);
-    procedure DBLookupComboboxEh2Enter(Sender: TObject);
-    procedure DBLookupComboboxEh3Enter(Sender: TObject);
-    procedure wwDBEdit2DblClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure DBLookupComboboxEh4CloseUp(Sender: TObject; Accept: Boolean);
-    procedure wwDBEdit1Change(Sender: TObject);
-    procedure wwDBEdit2Change(Sender: TObject);
+    procedure cxmskdtLskFromChange(Sender: TObject);
     procedure set_lsk(var_: integer; lsk1_: string);
-    procedure wwDBLookupCombo1CloseUp(Sender: TObject; LookupTable, FillTable:
-      TDataSet; modified: Boolean);
     procedure set_obj;
     //procedure OD_sel_objAfterOpen(DataSet: TDataSet);
     procedure sel_ls_cnt;
     procedure Edit1Change(Sender: TObject);
     procedure lkpMgToCloseUp(Sender: TObject; Accept: Boolean);
     procedure sel_lsk;
-    procedure DBLookupComboboxEh7CloseUp(Sender: TObject; Accept: Boolean);
     procedure cbb1PropertiesCloseUp(Sender: TObject);
     procedure lkpMgFromCloseUp(Sender: TObject; Accept: Boolean);
     //procedure OD_ls_cntBeforeOpen(DataSet: TDataSet);
@@ -141,6 +125,12 @@ type
     procedure chkExportPDFClick(Sender: TObject);
     procedure chkExportFlowClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
+    procedure cbbStreetPropertiesCloseUp(Sender: TObject);
+    procedure cbbStreetEnter(Sender: TObject);
+    procedure cbbNdPropertiesCloseUp(Sender: TObject);
+    procedure cbbNdEnter(Sender: TObject);
+    procedure cxmskdtLskFromPropertiesChange(Sender: TObject);
+    procedure cxmskdtLskToDblClick(Sender: TObject);
   private
     cnt_sch_: Integer;
     tp_: Integer;
@@ -156,7 +146,7 @@ implementation
 
 uses
   Unit_Mainform, DM_module1, Unit_list_kart, Utils,
-  Unit_get_pay_nal, ufDataModuleBill2;
+  Unit_get_pay_nal, ufDataModuleBill2, ufDataModuleBill;
 {$R *.dfm}
 
 procedure TForm_print_bills.FormClose(Sender: TObject; var Action:
@@ -173,8 +163,8 @@ begin
   cxProgressBar1.Position := 10;
   Update;
   // ПОДГОТОВКА датасетов, установка параметров
-  wwDBEdit1.Text := RightStr('00000000' + wwDBEdit1.Text, 8);
-  wwDBEdit2.Text := RightStr('00000000' + wwDBEdit2.Text, 8);
+  cxmskdtLskFrom.Text := RightStr('00000000' + cxmskdtLskFrom.Text, 8);
+  cxmskdtLskTo.Text := RightStr('00000000' + cxmskdtLskTo.Text, 8);
 
   if (lkpMgFrom.EditValue =
     null)
@@ -185,7 +175,7 @@ begin
     Exit;
   end;
 
-  if (DBLookupComboboxEh2.KeyValue = null) and (sel_obj_ = 1) then
+  if (cbbStreet.EditValue = null) and (sel_obj_ = 1) then
   begin
     ShowMessage('Не выбран адрес для отчета, Отмена');
     Exit;
@@ -199,7 +189,7 @@ begin
   // подготовку делаем в случае выбора либо 1 л.с. либо 1 квартиры
   // и только не по арх спр.
   if (tp_ <> 2) and (tp_ <> 5) and (tp_ <> 7) and (sel_obj_ = 0)
-    and (wwDBEdit1.Text = wwDBEdit2.Text)
+    and (cxmskdtLskFrom.Text = cxmskdtLskTo.Text)
     and (CheckBox3.Checked = True) then
   begin
     //по 1 лс.
@@ -208,7 +198,7 @@ begin
   end
   else if (tp_ <> 2) and (tp_ <> 5) and (tp_ <> 7) and (tp_ <> 6) and (sel_obj_
     = 1)
-    and (DBLookupComboboxEh4.KeyValue <> null)
+    and (cbbKw.EditValue <> null)
     and (CheckBox3.Checked = True) then
   begin
     //по 1 квартире
@@ -337,26 +327,26 @@ begin
   DM_Bill.Uni_cmp_main.ParamByName('p_sel_obj').AsInteger :=
     sel_obj_;
 
-  if cbb1.EditValue <> null then
-    DM_Bill.Uni_cmp_main.Params.ParamByName('p_reu').AsString := cbb1.EditValue
+  if cbbUk.EditValue <> null then
+    DM_Bill.Uni_cmp_main.Params.ParamByName('p_reu').AsString := cbbUk.EditValue
   else
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_reu').Clear;
 
-  DM_Bill.Uni_cmp_main.ParamByName('p_lsk').AsString := wwDBEdit1.Text;
-  DM_Bill.Uni_cmp_main.ParamByName('p_lsk1').AsString := wwDBEdit2.Text;
-  if not VarIsNull(DBLookupComboboxEh2.KeyValue) then
+  DM_Bill.Uni_cmp_main.ParamByName('p_lsk').AsString := cxmskdtLskFrom.Text;
+  DM_Bill.Uni_cmp_main.ParamByName('p_lsk1').AsString := cxmskdtLskTo.Text;
+  if not VarIsNull(cbbStreet.EditValue) then
     DM_Bill.Uni_cmp_main.ParamByName('p_kul').AsString :=
-      DBLookupComboboxEh2.KeyValue
+      cbbStreet.EditValue
   else
     DM_Bill.Uni_cmp_main.ParamByName('p_kul').clear;
 
-  if not VarIsNull(DBLookupComboboxEh3.KeyValue) then
+  if not VarIsNull(cbbNd.EditValue) then
     DM_Bill.Uni_cmp_main.ParamByName('p_nd').AsString :=
       DM_Bill2.OD_houses.FieldByName('nd_id').AsString
   else
     DM_Bill.Uni_cmp_main.ParamByName('p_nd').Clear;
 
-  if DBLookupComboboxEh4.KeyValue <> null then
+  if cbbKw.EditValue <> null then
   begin
     DM_Bill.Uni_cmp_main.ParamByName('p_kw').AsString :=
       DM_Bill2.OD_kw.FieldByName('kw_id').AsString;
@@ -727,17 +717,17 @@ var
   pKlskId, Pos, cnt: Integer;
   filePathExport, expEmailPrefix: string;
 begin
-  if not VarIsNull(DBLookupComboboxEh2.KeyValue) then
-    pKul := DBLookupComboboxEh2.KeyValue
+  if not VarIsNull(cbbStreet.EditValue) then
+    pKul := cbbStreet.EditValue
   else
     pKul := null;
 
-  if not VarIsNull(DBLookupComboboxEh3.KeyValue) then
+  if not VarIsNull(cbbNd.EditValue) then
     pNd := DM_Bill2.OD_houses.FieldByName('nd_id').AsString
   else
     pNd := null;
 
-  if DBLookupComboboxEh4.KeyValue <> null then
+  if cbbKw.EditValue <> null then
   begin
     pKw :=
       DM_Bill2.OD_kw.FieldByName('kw_id').AsString;
@@ -789,10 +779,10 @@ begin
             + DM_Bill2.OD_ls_cnt.FieldByName('name').AsString
             + '.pdf';
           cxProgressBar1.Properties.Text := 'Выгружается:' + filePathExport;
-          compound_report_export(pKul, pNd, pKw, cxLookupComboBox2.EditValue,
+          compound_report_export(pKul, pNd, pKw, cbbPostIndex.EditValue,
             sel_obj_,
             cxImageComboBox1.ItemIndex,
-            pKlskId, wwDBEdit1.Text, wwDBEdit2.Text,
+            pKlskId, cxmskdtLskFrom.Text, cxmskdtLskTo.Text,
             lkpMgFrom.EditValue,
             DM_Bill.Uni_spr_bill_print.FieldByName('FILTER_REU').AsString,
             DM_Bill.Uni_spr_bill_print.FieldByName('REU').AsString, filePathStr,
@@ -819,12 +809,12 @@ begin
   end
   else
   begin
-    compound_report_export(pKul, pNd, pKw, cxLookupComboBox2.EditValue,
+    compound_report_export(pKul, pNd, pKw, cbbPostIndex.EditValue,
       sel_obj_,
       cxImageComboBox1.ItemIndex,
-      pKlskId, wwDBEdit1.Text, wwDBEdit2.Text,
+      pKlskId, cxmskdtLskFrom.Text, cxmskdtLskTo.Text,
       lkpMgFrom.EditValue, getStrUk(),
-      cbb1.EditValue, filePathStr, edtExpportPath.Text, CheckBox2.Checked,
+      'cbbUk.EditValue', filePathStr, edtExpportPath.Text, CheckBox2.Checked,
       chkExportPDF.Checked, frxReport1, frxPDFExport1,
       DM_Bill2.OD_ls_cnt.FieldByName('first_rec').AsInteger,
       DM_Bill2.OD_ls_cnt.FieldByName('last_rec').AsInteger,
@@ -859,41 +849,28 @@ begin
   DM_Bill2.OD_main.SetVariable('mg_', lkpMgFrom.EditValue);
 
   DM_Bill2.OD_main.SetVariable('sel_obj_', sel_obj_);
-  DM_Bill2.OD_main.SetVariable('reu_', cbb1.EditValue);
-  DM_Bill2.OD_main.SetVariable('lsk_', wwDBEdit1.Text);
-  DM_Bill2.OD_main.SetVariable('lsk1_', wwDBEdit2.Text);
+  DM_Bill2.OD_main.SetVariable('reu_', cbbUk.EditValue);
+  DM_Bill2.OD_main.SetVariable('lsk_', cxmskdtLskFrom.Text);
+  DM_Bill2.OD_main.SetVariable('lsk1_', cxmskdtLskTo.Text);
 
-  if not VarIsNull(DBLookupComboboxEh2.KeyValue) then
-    DM_Bill2.OD_main.SetVariable('kul_', DBLookupComboboxEh2.KeyValue)
+  if not VarIsNull(cbbStreet.EditValue) then
+    DM_Bill2.OD_main.SetVariable('kul_', cbbStreet.EditValue)
   else
     DM_Bill2.OD_main.SetVariable('kul_', null);
 
-  if not VarIsNull(DBLookupComboboxEh3.KeyValue) then
+  if not VarIsNull(cbbNd.EditValue) then
     DM_Bill2.OD_main.SetVariable('nd_',
       DM_Bill2.OD_houses.FieldByName('nd_id').AsString)
   else
     DM_Bill2.OD_main.SetVariable('nd_', null);
 
   // вернул 03.03.21
-  if DBLookupComboboxEh4.KeyValue <> null then
+  if cbbKw.EditValue <> null then
     DM_Bill2.OD_main.SetVariable('kw_',
       DM_Bill2.OD_kw.FieldByName('kw_id').AsString)
   else
     DM_Bill2.OD_main.SetVariable('kw_', null);
 
-  {   if DBLookupComboboxEh4.KeyValue <> null then
-    begin
-      DM_Bill.Uni_cmp_main.ParamByName('p_kw').AsString :=
-        DM_Bill2.OD_kw.FieldByName('kw_id').AsString;
-      DM_Bill.Uni_cmp_main.ParamByName('p_klsk_id').AsInteger :=
-        DM_Bill2.OD_kw.FieldByName('k_lsk_id').AsInteger;
-    end
-    else
-    begin
-      DM_Bill.Uni_cmp_main.ParamByName('p_kw').Clear;
-      DM_Bill.Uni_cmp_main.ParamByName('p_klsk_id').Clear;
-    end;
-   }
   if (tp_ = 5) or (tp_ = 7) then //справка арх-2
   begin
     if sel_obj_ = 2 then
@@ -931,21 +908,21 @@ begin
           DM_Bill.Uni_cmp_main.Params.ParamByName('p_reu').Clear;}
 
     DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_lsk').AsString :=
-      wwDBEdit1.Text;
+      cxmskdtLskFrom.Text;
     DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_lsk1').AsString :=
-      wwDBEdit2.Text;
-    if not VarIsNull(DBLookupComboboxEh2.KeyValue) then
+      cxmskdtLskTo.Text;
+    if not VarIsNull(cbbStreet.EditValue) then
       DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_kul').AsString :=
-        DBLookupComboboxEh2.KeyValue
+        cbbStreet.EditValue
     else
       DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_kul').Clear;
-    if not VarIsNull(DBLookupComboboxEh3.KeyValue) then
+    if not VarIsNull(cbbNd.EditValue) then
       DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_nd').AsString :=
         DM_Bill2.OD_houses.FieldByName('nd_id').AsString
     else
       DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_nd').Clear;
 
-    if not VarIsNull(DBLookupComboboxEh4.KeyValue) then
+    if not VarIsNull(cbbKw.EditValue) then
       DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_kw').AsString :=
         DM_Bill2.OD_kw.FieldByName('kw_id').AsString
     else
@@ -1020,7 +997,7 @@ begin
   end
   else if (tp_ = 5) or (tp_ = 7) then //справка арх-2
   begin
-    wwDBEdit2.Text := wwDBEdit1.Text;
+    cxmskdtLskTo.Text := cxmskdtLskFrom.Text;
     //DM_Bill2.OD_arch.SetVariable('p_mg1', lkpMgFrom.EditValue);
     //DM_Bill2.OD_arch.SetVariable('p_mg2', lkpMgTo.EditValue);
     DM_Bill.Uni_arch.Params.ParamByName('p_sel_uk').AsString :=
@@ -1048,7 +1025,7 @@ begin
       //по л.с.
       DM_Bill.Uni_arch.Params.ParamByName('p_sel_obj').AsInteger := 0;
       DM_Bill.Uni_arch_supp.Params.ParamByName('lsk').AsString :=
-        wwDBEdit1.Text;
+        cxmskdtLskFrom.Text;
       DM_Bill.Uni_arch_supp.Params.ParamByName('p_sel_obj').AsInteger := 0;
     end
     else
@@ -1061,7 +1038,7 @@ begin
   end
   else if (tp_ = 3) then //справка о задолжности
   begin
-    wwDBEdit2.Text := wwDBEdit1.Text;
+    cxmskdtLskTo.Text := cxmskdtLskFrom.Text;
   end;
 
   //печатать ли по старому фонду счета
@@ -1128,7 +1105,7 @@ begin
     if sel_obj_ = 0 then
     begin
       //по л.с.
-      DM_Bill2.OD_data3.SetVariable('p_lsk', wwDBEdit1.Text);
+      DM_Bill2.OD_data3.SetVariable('p_lsk', cxmskdtLskFrom.Text);
       DM_Bill2.OD_data3.SetVariable('k_lsk_id_', 0);
     end
     else
@@ -1137,8 +1114,8 @@ begin
       DM_Bill2.OD_data3.SetVariable('k_lsk_id_', Form_main.k_lsk_id_);
     end;
 
-    DM_Bill2.OD_data3.SetVariable('p_flt_mg_from', fltMgFrom.KeyValue);
-    DM_Bill2.OD_data3.SetVariable('p_flt_mg_to', fltMgTo.KeyValue);
+    DM_Bill2.OD_data3.SetVariable('p_flt_mg_from', cbbMgFrom.EditValue);
+    DM_Bill2.OD_data3.SetVariable('p_flt_mg_to', cbbMgTo.EditValue);
     DM_Bill2.OD_data3.Active := true;
   end;
 
@@ -1204,8 +1181,9 @@ begin
       else
         frxReport1.Script.Variables['var_'] := 0;
 
-      if ((sel_obj_ = 0) and (wwDBEdit1.Text <> wwDBEdit2.Text)) or ((sel_obj_ =
-        1) and (DBLookupComboboxEh4.KeyValue = null)) then
+      if ((sel_obj_ = 0) and (cxmskdtLskFrom.Text <> cxmskdtLskTo.Text)) or
+        ((sel_obj_ =
+        1) and (cbbKw.EditValue = null)) then
       begin
         //много страниц
         frxReport1.Script.Variables['split_'] := 0;
@@ -1288,38 +1266,6 @@ begin
   Close;
 end;
 
-procedure TForm_print_bills.DBLookupComboboxEh2CloseUp(Sender: TObject; Accept:
-  Boolean);
-begin
-  DM_Bill2.OD_houses.Active := true;
-  DBLookupComboboxEh3.Enabled := true;
-  DBLookupComboboxEh3.KeyValue := null;
-  DBLookupComboboxEh4.KeyValue := null;
-  {DM_Bill2.OD_houses.FieldByName('HOUSE_ID').AsString}
-end;
-
-procedure TForm_print_bills.DBLookupComboboxEh3CloseUp(Sender: TObject; Accept:
-  Boolean);
-begin
-  DM_Bill2.OD_kw.Active := true;
-  DBLookupComboboxEh4.Enabled := true;
-  DBLookupComboboxEh4.KeyValue := null
-end;
-
-procedure TForm_print_bills.DBLookupComboboxEh2Enter(Sender: TObject);
-begin
-  DM_Bill2.OD_kw.Active := false;
-  DBLookupComboboxEh4.Enabled := false;
-  DM_Bill2.OD_houses.Active := false;
-  DBLookupComboboxEh3.Enabled := false;
-end;
-
-procedure TForm_print_bills.DBLookupComboboxEh3Enter(Sender: TObject);
-begin
-  DM_Bill2.OD_kw.Active := false;
-  DBLookupComboboxEh4.Enabled := false;
-end;
-
 procedure TForm_print_bills.set_lsk(var_: integer; lsk1_: string);
 begin
   if var_ = 0 then
@@ -1337,11 +1283,6 @@ begin
 
 end;
 
-procedure TForm_print_bills.wwDBEdit2DblClick(Sender: TObject);
-begin
-  wwDBEdit2.Text := wwDBEdit1.Text;
-  set_lsk(0, wwDBEdit1.Text);
-end;
 
 procedure TForm_print_bills.FormCreate(Sender: TObject);
 var
@@ -1443,24 +1384,24 @@ begin
     ['RECHARGE_BILL']) = 1 then
     CheckBox3.Checked := True;
 
-  wwDBEdit1.Enabled := false;
-  wwDBEdit2.Enabled := false;
+  cxmskdtLskFrom.Enabled := false;
+  cxmskdtLskTo.Enabled := false;
   Label1.Enabled := false;
   Label5.Enabled := false;
   Label2.Enabled := true;
   Label6.Enabled := true;
   Label7.Enabled := true;
-  DBLookupComboboxEh2.Enabled := true;
-  DBLookupComboboxEh3.Enabled := false;
-  DBLookupComboboxEh4.Enabled := false;
+  cbbStreet.Enabled := true;
+  cbbNd.Enabled := false;
+  cbbKw.Enabled := false;
   DM_Bill2.OD_mg.Active := True;
   DM_Bill2.OD_mg1.Active := True;
   DM_Bill2.OD_reu.Active := True;
   DM_Bill2.OD_spr_services.Active := True;
 
-  if (FF('Form_list_kart', 0) = 1) or ((wwDBEdit1.Text = wwDBEdit2.Text)
-    and (wwDBEdit1.Text <> '') and (wwDBEdit2.Text <> '')) or
-    (DBLookupComboboxEh4.KeyValue <> null) then
+  if (FF('Form_list_kart', 0) = 1) or ((cxmskdtLskFrom.Text = cxmskdtLskTo.Text)
+    and (cxmskdtLskFrom.Text <> '') and (cxmskdtLskTo.Text <> '')) or
+    (cbbKw.EditValue <> null) then
   begin
     //Возможность видеть дома старого фонда
     DM_Bill2.OD_houses.Active := false;
@@ -1482,7 +1423,6 @@ begin
   DM_Bill2.OD_sel_obj.Active := false;
   DM_Bill2.OD_sel_obj.SetVariable(':var_', tp_);
   DM_Bill2.OD_sel_obj.Active := True;
-  //wwDBLookupCombo1.LookupValue := '0';
   cx3.EditValue := '0';
   // кол-во счетов по умолчанию
   cnt_sch_ := 1000;
@@ -1514,20 +1454,20 @@ begin
   if FF('Form_get_pay_nal', 0) = 1 then
   begin
     cxImageComboBox2.ItemIndex := 0;
-    wwDBEdit1.Text := Form_get_pay_nal.OD_kart.FieldByName('lsk').AsString;
-    wwDBEdit2.Text := Form_get_pay_nal.OD_kart.FieldByName('lsk').AsString;
+    cxmskdtLskFrom.Text := Form_get_pay_nal.OD_kart.FieldByName('lsk').AsString;
+    cxmskdtLskTo.Text := Form_get_pay_nal.OD_kart.FieldByName('lsk').AsString;
     DM_Bill2.OD_mg.First;
-    cbb1.EditValue := Form_get_pay_nal.OD_kart.FieldByName('reu').AsString;
-    DBLookupComboboxEh2.KeyValue :=
+    cbbUk.EditValue := Form_get_pay_nal.OD_kart.FieldByName('reu').AsString;
+    cbbStreet.EditValue :=
       Form_get_pay_nal.OD_kart.FieldByName('kul').AsString;
 
     keySel := VarArrayCreate([0, 2], varVariant);
     keySel[0] := Form_list_kart.OD_list_kart.FieldByName('reu').AsString;
     keySel[1] := Form_list_kart.OD_list_kart.FieldByName('kul').AsString;
     keySel[2] := Form_list_kart.OD_list_kart.FieldByName('nd').AsString;
-    DBLookupComboboxEh3.KeyValue := keySel;
+    cbbNd.EditValue := keySel;
 
-    DBLookupComboboxEh4.KeyValue :=
+    cbbKw.EditValue :=
       Form_get_pay_nal.OD_kart.FieldByName('lsk').AsString;
 
     Form_main.k_lsk_id_ :=
@@ -1537,11 +1477,13 @@ begin
   begin
     //ComboBox1.ItemIndex := 0;
     cxImageComboBox2.ItemIndex := 0;
-    wwDBEdit1.Text := Form_list_kart.OD_list_kart.FieldByName('lsk').AsString;
-    wwDBEdit2.Text := Form_list_kart.OD_list_kart.FieldByName('lsk').AsString;
+    cxmskdtLskFrom.Text :=
+      Form_list_kart.OD_list_kart.FieldByName('lsk').AsString;
+    cxmskdtLskTo.Text :=
+      Form_list_kart.OD_list_kart.FieldByName('lsk').AsString;
     DM_Bill2.OD_mg.First;
-    cbb1.EditValue := Form_list_kart.OD_list_kart.FieldByName('reu').AsString;
-    DBLookupComboboxEh2.KeyValue :=
+    cbbUk.EditValue := Form_list_kart.OD_list_kart.FieldByName('reu').AsString;
+    cbbStreet.EditValue :=
       Form_list_kart.OD_list_kart.FieldByName('kul').AsString;
 
     keySel := VarArrayCreate([0, 2], varVariant);
@@ -1549,8 +1491,8 @@ begin
     keySel[1] := Form_list_kart.OD_list_kart.FieldByName('kul').AsString;
     keySel[2] := Form_list_kart.OD_list_kart.FieldByName('nd').AsString;
 
-    DBLookupComboboxEh3.KeyValue := keySel;
-    DBLookupComboboxEh4.KeyValue :=
+    cbbNd.EditValue := keySel;
+    cbbKw.EditValue :=
       Form_list_kart.OD_list_kart.FieldByName('lsk').AsString;
     Form_main.k_lsk_id_ :=
       Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger;
@@ -1562,24 +1504,12 @@ begin
 
 end;
 
-procedure TForm_print_bills.DBLookupComboboxEh4CloseUp(Sender: TObject; Accept:
-  Boolean);
+
+procedure TForm_print_bills.cxmskdtLskFromChange(Sender: TObject);
 begin
-  wwDBEdit1.Text := DM_Bill2.OD_kw.FieldByName('lsk').AsString;
-  wwDBEdit2.Text := DM_Bill2.OD_kw.FieldByName('lsk').AsString;
-  //Form_main.c_lsk_id_ := DM_Bill2.OD_kw.FieldByName('c_lsk_id').AsInteger;
-  Form_main.k_lsk_id_ := DM_Bill2.OD_kw.FieldByName('k_lsk_id').AsInteger;
+  set_lsk(0, cxmskdtLskFrom.Text);
 end;
 
-procedure TForm_print_bills.wwDBEdit1Change(Sender: TObject);
-begin
-  set_lsk(0, wwDBEdit1.Text);
-end;
-
-procedure TForm_print_bills.wwDBEdit2Change(Sender: TObject);
-begin
-  //  set_lsk(0, wwDBEdit1.Text);
-end;
 
 procedure TForm_print_bills.set_obj;
 begin
@@ -1593,21 +1523,21 @@ begin
     Edit1.Enabled := false;
     CheckBox3.Enabled := True;
 
-    wwDBEdit1.Enabled := false;
-    wwDBEdit2.Enabled := false;
+    cxmskdtLskFrom.Enabled := false;
+    cxmskdtLskTo.Enabled := false;
     Label1.Enabled := false;
     Label5.Enabled := false;
     Label2.Enabled := true;
     Label6.Enabled := true;
     Label7.Enabled := true;
-    DBLookupComboboxEh2.Enabled := true;
+    cbbStreet.Enabled := true;
 
     Label8.Enabled := false;
-    cbb1.Enabled := true;
+    cbbUk.Enabled := true;
 
     // отключить фильтр по почтовому индексу
     Label15.Enabled := False;
-    cxLookupComboBox2.Enabled := False;
+    cbbPostIndex.Enabled := False;
 
     set_lsk(1, '');
     sel_obj_ := 1;
@@ -1622,25 +1552,25 @@ begin
     Edit1.Enabled := false;
     CheckBox3.Enabled := True;
 
-    wwDBEdit1.Enabled := true;
-    wwDBEdit2.Enabled := true;
+    cxmskdtLskFrom.Enabled := true;
+    cxmskdtLskTo.Enabled := true;
     Label1.Enabled := true;
     Label5.Enabled := true;
     Label2.Enabled := false;
     Label6.Enabled := false;
     Label7.Enabled := false;
-    DBLookupComboboxEh2.Enabled := false;
-    DBLookupComboboxEh3.Enabled := false;
-    DBLookupComboboxEh4.Enabled := false;
+    cbbStreet.Enabled := false;
+    cbbNd.Enabled := false;
+    cbbKw.Enabled := false;
 
     Label8.Enabled := false;
-    cbb1.Enabled := true;
+    cbbUk.Enabled := true;
 
     // отключить фильтр по почтовому индексу
     Label15.Enabled := False;
-    cxLookupComboBox2.Enabled := False;
+    cbbPostIndex.Enabled := False;
 
-    set_lsk(0, wwDBEdit1.Text);
+    set_lsk(0, cxmskdtLskFrom.Text);
     sel_obj_ := 0;
 
   end
@@ -1655,35 +1585,29 @@ begin
     CheckBox3.Checked := false;
     CheckBox3.Enabled := false;
 
-    wwDBEdit1.Enabled := false;
-    wwDBEdit2.Enabled := false;
+    cxmskdtLskFrom.Enabled := false;
+    cxmskdtLskTo.Enabled := false;
     Label1.Enabled := false;
     Label5.Enabled := false;
     Label2.Enabled := false;
     Label6.Enabled := false;
     Label7.Enabled := false;
-    DBLookupComboboxEh2.Enabled := false;
+    cbbStreet.Enabled := false;
 
     Label8.Enabled := true;
-    cbb1.Enabled := true;
-    cbb1.EditValue := DM_Bill2.OD_reu.FieldByName('reu').AsString;
+    cbbUk.Enabled := true;
+    cbbUk.EditValue := DM_Bill2.OD_reu.FieldByName('reu').AsString;
 
     // включить фильтр по почтовому индексу
     Label15.Enabled := True;
-    cxLookupComboBox2.Enabled := True;
-    DM_Bill.Uni_postcode.ParamByName('reu').AsString := cbb1.EditValue;
+    cbbPostIndex.Enabled := True;
+    DM_Bill.Uni_postcode.ParamByName('reu').AsString := cbbUk.EditValue;
     DM_Bill.Uni_postcode.Active := False;
     DM_Bill.Uni_postcode.Active := True;
 
     sel_obj_ := 2;
     sel_ls_cnt;
   end;
-end;
-
-procedure TForm_print_bills.wwDBLookupCombo1CloseUp(Sender: TObject;
-  LookupTable, FillTable: TDataSet; modified: Boolean);
-begin
-  set_obj;
 end;
 
 procedure TForm_print_bills.query_OD_ls_cnt(p_mg, p_reu: string; p_cnt:
@@ -1713,8 +1637,8 @@ begin
     l_mg := lkpMgTo.EditValue;
 
   //DM_Bill2.OD_ls_cnt.SetVariable('p_reu', cbb1.EditValue);
-  if not VarIsNull(cbb1.EditValue) then
-    l_reu := cbb1.EditValue
+  if not VarIsNull(cbbUk.EditValue) then
+    l_reu := cbbUk.EditValue
   else
     l_reu := '';
   //DM_Bill2.OD_ls_cnt.Active := true;
@@ -1731,7 +1655,7 @@ begin
     // для фильтра выбора почтового индекса
   if cx3.EditValue = '2' then
   begin
-    DM_Bill.Uni_postcode.ParamByName('reu').AsString := cbb1.EditValue;
+    DM_Bill.Uni_postcode.ParamByName('reu').AsString := cbbUk.EditValue;
     DM_Bill.Uni_postcode.Active := False;
     DM_Bill.Uni_postcode.Active := True;
   end;
@@ -1756,11 +1680,6 @@ begin
   sel_ls_cnt;
 end;
 
-procedure TForm_print_bills.DBLookupComboboxEh7CloseUp(Sender: TObject; Accept:
-  Boolean);
-begin
-  sel_ls_cnt;
-end;
 
 procedure TForm_print_bills.cbb1PropertiesCloseUp(Sender: TObject);
 begin
@@ -2141,6 +2060,44 @@ begin
 
   sel_ls_cnt;
   Timer1.Enabled := False;
+end;
+
+procedure TForm_print_bills.cbbStreetPropertiesCloseUp(Sender: TObject);
+begin
+  DM_Bill2.OD_houses.Active := true;
+  cbbNd.Enabled := true;
+end;
+
+procedure TForm_print_bills.cbbStreetEnter(Sender: TObject);
+begin
+  DM_Bill2.OD_kw.Active := false;
+  cbbKw.Enabled := false;
+  DM_Bill2.OD_houses.Active := false;
+  cbbNd.Enabled := false;
+end;
+
+procedure TForm_print_bills.cbbNdPropertiesCloseUp(Sender: TObject);
+begin
+  DM_Bill2.OD_kw.Active := true;
+  cbbKw.Enabled := true;
+end;
+
+procedure TForm_print_bills.cbbNdEnter(Sender: TObject);
+begin
+  DM_Bill2.OD_kw.Active := false;
+  cbbKw.Enabled := false;
+end;
+
+procedure TForm_print_bills.cxmskdtLskFromPropertiesChange(
+  Sender: TObject);
+begin
+  set_lsk(0, cxmskdtLskFrom.Text);
+end;
+
+procedure TForm_print_bills.cxmskdtLskToDblClick(Sender: TObject);
+begin
+  cxmskdtLskTo.Text := cxmskdtLskFrom.Text;
+  set_lsk(0, cxmskdtLskFrom.Text);
 end;
 
 end.

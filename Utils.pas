@@ -150,7 +150,7 @@ begin
     SetMenuItem(acc_, N30, 'drn30_Контроль_сальдо');
     SetMenuItem(acc_, N9, 'drn9_Льготники');
     SetMenuItem(acc_, N33, 'drn33_Текущие_работы');
-    SetMenuItem(acc_, N34, 'drn34_Корректировка_сальдо');
+//    SetMenuItem(acc_, N34, 'drn34_Корректировка_сальдо');
     SetMenuItem(acc_, N46, 'drn46_Корректировка_сальдо_опл');
     SetMenuItem(acc_, N27, 'drn27_Пеня');
 //    SetMenuItem(acc_, N37, 'drn37_Оплата_банка');

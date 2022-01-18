@@ -46,7 +46,6 @@ type
     N9: TMenuItem;
     N32: TMenuItem;
     N33: TMenuItem;
-    N34: TMenuItem;
     Timer_messages: TTimer;
     N27: TMenuItem;
     N35: TMenuItem;
@@ -243,7 +242,6 @@ type
     procedure FormCreate(Sender: TObject);
     procedure N31Click(Sender: TObject);
     procedure N212Click(Sender: TObject);
-    procedure N34Click(Sender: TObject);
     procedure text1Click(Sender: TObject);
     procedure Timer_messagesTimer(Sender: TObject);
     procedure N35Click(Sender: TObject);
@@ -489,7 +487,6 @@ uses
   Unit_print_opl_usl, Unit_print_strah, Unit_generate, Unit_print_saldo_houses,
   Unit_print_saldo_org_usl, Unit_form_alert_exit, Unit_about,
   Unit_print_saldo_usl, Unit_print_plan, Unit_form_plan, Unit_print_pred_debit,
-  Unit_corrects, 
   Unit1_print_pen,
   Unit_print_bank, Unit_form_print_stat1,
   Unit_print_status, Unit_form_params, Unit_form_bills, 
@@ -783,11 +780,6 @@ end;
 procedure TForm_Main.N212Click(Sender: TObject);
 begin
  // Application.CreateForm(TForm_print_opl_xito10_3, Form_print_opl_xito10_3);
-end;
-
-procedure TForm_Main.N34Click(Sender: TObject);
-begin
-  Application.CreateForm(TForm_corrects, Form_corrects);
 end;
 
 procedure TForm_Main.text1Click(Sender: TObject);

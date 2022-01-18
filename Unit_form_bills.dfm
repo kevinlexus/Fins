@@ -1,6 +1,6 @@
 object Form_print_bills: TForm_print_bills
-  Left = 691
-  Top = 470
+  Left = 371
+  Top = 197
   Width = 475
   Height = 539
   BorderIcons = [biSystemMenu, biMinimize]
@@ -205,7 +205,7 @@ object Form_print_bills: TForm_print_bills
       TabOrder = 0
       OnChange = Edit1Change
     end
-    object cxLookupComboBox2: TcxLookupComboBox
+    object cbbPostIndex: TcxLookupComboBox
       Left = 280
       Top = 80
       Enabled = False
@@ -390,79 +390,6 @@ object Form_print_bills: TForm_print_bills
       Font.Style = [fsBold]
       ParentFont = False
     end
-    object DBLookupComboboxEh2: TDBLookupComboboxEh
-      Left = 24
-      Top = 90
-      Width = 145
-      Height = 21
-      Enabled = False
-      EditButtons = <>
-      KeyField = 'ID'
-      ListField = 'STREET'
-      ListSource = DM_Bill2.DS_streets
-      TabOrder = 4
-      Visible = True
-      OnCloseUp = DBLookupComboboxEh2CloseUp
-      OnEnter = DBLookupComboboxEh2Enter
-    end
-    object DBLookupComboboxEh3: TDBLookupComboboxEh
-      Left = 184
-      Top = 90
-      Width = 129
-      Height = 21
-      DropDownBox.Sizable = True
-      DropDownBox.Width = 200
-      Enabled = False
-      EditButtons = <>
-      KeyField = 'REU;KUL;ND_ID'
-      ListField = 'ND'
-      ListSource = DM_Bill2.DS_houses
-      TabOrder = 5
-      Visible = True
-      OnCloseUp = DBLookupComboboxEh3CloseUp
-      OnEnter = DBLookupComboboxEh3Enter
-    end
-    object DBLookupComboboxEh4: TDBLookupComboboxEh
-      Left = 328
-      Top = 90
-      Width = 105
-      Height = 21
-      DropDownBox.Sizable = True
-      DropDownBox.Width = 200
-      Enabled = False
-      EditButtons = <>
-      KeyField = 'LSK'
-      ListField = 'KW'
-      ListSource = DM_Bill2.DS_kw
-      TabOrder = 6
-      Visible = True
-      OnCloseUp = DBLookupComboboxEh4CloseUp
-    end
-    object wwDBEdit1: TwwDBEdit
-      Left = 24
-      Top = 18
-      Width = 65
-      Height = 21
-      Picture.PictureMask = '[#][#][#][#][#][#][#][#]'
-      TabOrder = 1
-      UnboundDataType = wwDefault
-      WantReturns = False
-      WordWrap = False
-      OnChange = wwDBEdit1Change
-    end
-    object wwDBEdit2: TwwDBEdit
-      Left = 128
-      Top = 18
-      Width = 65
-      Height = 21
-      Picture.PictureMask = '[#][#][#][#][#][#][#][#]'
-      TabOrder = 2
-      UnboundDataType = wwDefault
-      WantReturns = False
-      WordWrap = False
-      OnChange = wwDBEdit2Change
-      OnDblClick = wwDBEdit2DblClick
-    end
     object CheckBox2: TCheckBox
       Left = 248
       Top = 6
@@ -480,7 +407,7 @@ object Form_print_bills: TForm_print_bills
       Caption = #1087#1077#1085#1103' '#1085#1072' '#1090#1077#1082'. '#1076#1072#1090#1091
       Checked = True
       State = cbChecked
-      TabOrder = 3
+      TabOrder = 1
       WordWrap = True
     end
     object CheckBox3: TCheckBox
@@ -489,7 +416,7 @@ object Form_print_bills: TForm_print_bills
       Width = 113
       Height = 25
       Caption = #1088#1072#1089#1089#1095#1080#1090#1072#1090#1100
-      TabOrder = 7
+      TabOrder = 2
       WordWrap = True
     end
     object chk1: TCheckBox
@@ -500,10 +427,10 @@ object Form_print_bills: TForm_print_bills
       Caption = #1087#1077#1095#1072#1090#1072#1090#1100' '#1076#1086#1087'.'#1089#1095#1077#1090#1072
       Checked = True
       State = cbChecked
-      TabOrder = 8
+      TabOrder = 3
       WordWrap = True
     end
-    object cbb1: TcxLookupComboBox
+    object cbbUk: TcxLookupComboBox
       Left = 24
       Top = 56
       Properties.DropDownAutoSize = True
@@ -516,7 +443,7 @@ object Form_print_bills: TForm_print_bills
       Properties.ListOptions.ShowHeader = False
       Properties.ListSource = DM_Bill2.DS_reu
       Properties.OnCloseUp = cbb1PropertiesCloseUp
-      TabOrder = 9
+      TabOrder = 4
       Width = 145
     end
     object cxImageComboBox1: TcxImageComboBox
@@ -536,7 +463,7 @@ object Form_print_bills: TForm_print_bills
           Description = '3. '#1056#1057#1054
           Value = 2
         end>
-      TabOrder = 10
+      TabOrder = 5
       Width = 89
     end
     object cxCheckComboBox1: TcxCheckComboBox
@@ -545,7 +472,7 @@ object Form_print_bills: TForm_print_bills
       BeepOnEnter = False
       Properties.EditValueFormat = cvfStatesString
       Properties.Items = <>
-      TabOrder = 11
+      TabOrder = 6
       Width = 161
     end
     object cxLookupComboBox1: TcxLookupComboBox
@@ -559,7 +486,7 @@ object Form_print_bills: TForm_print_bills
       Properties.ListOptions.ShowHeader = False
       Properties.ListSource = DM_Bill2.DS_spr_services
       Properties.OnCloseUp = cxLookupComboBox1PropertiesCloseUp
-      TabOrder = 12
+      TabOrder = 7
       Width = 257
     end
     object chkExportPDF: TCheckBox
@@ -574,7 +501,7 @@ object Form_print_bills: TForm_print_bills
       Font.Name = 'MS Sans Serif'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 13
+      TabOrder = 8
       OnClick = chkExportPDFClick
     end
     object edtExpportPath: TEdit
@@ -583,7 +510,7 @@ object Form_print_bills: TForm_print_bills
       Width = 168
       Height = 21
       Enabled = False
-      TabOrder = 14
+      TabOrder = 9
       Text = 'c:\temp\export'
     end
     object CheckBox7: TCheckBox
@@ -596,7 +523,7 @@ object Form_print_bills: TForm_print_bills
       ParentShowHint = False
       ShowHint = True
       State = cbChecked
-      TabOrder = 15
+      TabOrder = 10
       OnClick = CheckBox7Click
     end
     object chkExportFlow: TCheckBox
@@ -611,9 +538,77 @@ object Form_print_bills: TForm_print_bills
       Font.Name = 'MS Sans Serif'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 16
+      TabOrder = 11
       WordWrap = True
       OnClick = chkExportFlowClick
+    end
+    object cbbNd: TcxLookupComboBox
+      Left = 184
+      Top = 93
+      Enabled = False
+      Properties.GridMode = True
+      Properties.KeyFieldNames = 'REU;KUL;ND_ID'
+      Properties.ListColumns = <
+        item
+          FieldName = 'ND'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = DM_Bill2.DS_houses
+      Properties.OnCloseUp = cbbNdPropertiesCloseUp
+      TabOrder = 12
+      OnEnter = cbbNdEnter
+      Width = 129
+    end
+    object cbbKw: TcxLookupComboBox
+      Left = 328
+      Top = 93
+      Enabled = False
+      Properties.DropDownWidth = 200
+      Properties.GridMode = True
+      Properties.KeyFieldNames = 'LSK'
+      Properties.ListColumns = <
+        item
+          FieldName = 'KW'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = DM_Bill2.DS_kw
+      TabOrder = 13
+      Width = 105
+    end
+    object cbbStreet: TcxLookupComboBox
+      Left = 24
+      Top = 93
+      Properties.GridMode = True
+      Properties.KeyFieldNames = 'ID'
+      Properties.ListColumns = <
+        item
+          FieldName = 'STREET'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = DM_Bill2.DS_streets
+      Properties.OnCloseUp = cbbStreetPropertiesCloseUp
+      TabOrder = 14
+      OnEnter = cbbStreetEnter
+      Width = 145
+    end
+    object cxmskdtLskFrom: TcxMaskEdit
+      Left = 24
+      Top = 20
+      Properties.EditMask = '00000000;1;_'
+      Properties.ValidationOptions = [evoShowErrorIcon, evoAllowLoseFocus]
+      Properties.OnChange = cxmskdtLskFromPropertiesChange
+      TabOrder = 15
+      Text = '        '
+      Width = 65
+    end
+    object cxmskdtLskTo: TcxMaskEdit
+      Left = 128
+      Top = 20
+      Properties.ValidationOptions = [evoShowErrorIcon, evoAllowLoseFocus]
+      TabOrder = 16
+      Text = '        '
+      OnDblClick = cxmskdtLskToDblClick
+      Width = 65
     end
   end
   object GroupBox4: TGroupBox
@@ -655,29 +650,31 @@ object Form_print_bills: TForm_print_bills
       Height = 13
       Caption = #1089
     end
-    object fltMgFrom: TDBLookupComboboxEh
+    object cbbMgFrom: TcxLookupComboBox
       Left = 96
-      Top = 11
-      Width = 129
-      Height = 21
-      EditButtons = <>
-      KeyField = 'MG'
-      ListField = 'MG1'
-      ListSource = DM_Bill2.DS_mg
+      Top = 13
+      Properties.KeyFieldNames = 'MG'
+      Properties.ListColumns = <
+        item
+          FieldName = 'MG1'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = DM_Bill2.DS_mg
       TabOrder = 0
-      Visible = True
+      Width = 97
     end
-    object fltMgTo: TDBLookupComboboxEh
+    object cbbMgTo: TcxLookupComboBox
       Left = 256
       Top = 11
-      Width = 129
-      Height = 21
-      EditButtons = <>
-      KeyField = 'MG'
-      ListField = 'MG1'
-      ListSource = DM_Bill2.DS_mg1
+      Properties.KeyFieldNames = 'MG'
+      Properties.ListColumns = <
+        item
+          FieldName = 'MG1'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = DM_Bill2.DS_mg1
       TabOrder = 1
-      Visible = True
+      Width = 97
     end
   end
   object dxStatusBar1: TdxStatusBar

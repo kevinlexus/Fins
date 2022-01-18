@@ -28,13 +28,9 @@ uses
   Unit_print_plan in 'Unit_print_plan.pas' {Form_print_plan},
   Unit_print_saldo_usl in 'Unit_print_saldo_usl.pas' {Form_print_saldo_usl},
   Unit_print_pred_debit in 'Unit_print_pred_debit.pas' {Form_print_pred_debit},
-  Unit_corrects in 'Unit_corrects.pas' {Form_corrects},
   Unit_print_strah in 'Unit_print_strah.pas' {Form_print_strah},
-  //Unit_form_messages in 'Unit_form_messages.pas' {Form_messages},
   Unit1_print_pen in 'Unit1_print_pen.pas' {Form_print_pen},
-  //Unit_check_reports in 'Unit_check_reports.pas' {Form_check_reports},
   Unit_print_bank in 'Unit_print_bank.pas' {Form_print_bank},
-//  Unit_form_sign_rep in 'Unit_form_sign_rep.pas' {Form_sign_rep},
   Unit_form_print_stat1 in 'Unit_form_print_stat1.pas' {Form_print_stat},
   Unit_print_status in 'Unit_print_status.pas' {Form_print_status},
   Unit_form_bills in 'Unit_form_bills.pas' {Form_print_bills},
@@ -78,8 +74,6 @@ uses
   GRTreeView in 'GRTreeView.pas',
   Unit_form_edit_price in 'Unit_form_edit_price.pas' {Form_edit_price},
   Unit_status in 'Unit_status.pas' {Form_status},
-  //Unit_requests in 'Unit_requests.pas' {Form_requests},
-  //Unit_edit_request in 'Unit_edit_request.pas' {Form_edit_request},
   Unit_edit_work in 'Unit_edit_work.pas' {Form_edit_work},
   Unit_form_saldo in 'Unit_form_saldo.pas' {Form_saldo},
   Unit_load_file in 'Unit_load_file.pas',
@@ -103,9 +97,7 @@ uses
   Unit_edit_reports in 'Unit_edit_reports.pas' {Form_edit_reports},
   Unit_oracle_load in 'Unit_oracle_load.pas' {Form_oracle_load},
   DVButils in 'DVButils.pas',
-//  Unit_dvb_connect in 'Unit_dvb_connect.pas' {Form_dvb_connect},
   Unit_spr_params in 'Unit_spr_params.pas' {Form_spr_params},
-//  Unit_edit_bitmask in 'Unit_edit_bitmask.pas' {Form_edit_bitmask},
   Unit_spr_street in 'Unit_spr_street.pas' {Form_spr_street},
   Unit_change_house_status in 'Unit_change_house_status.pas' {Form_change_house_status},
   Unit_change_house_vvod in 'Unit_change_house_vvod.pas' {Form_change_house_vvod},
@@ -158,8 +150,6 @@ uses
   u_frmKlskPar in 'u_frmKlskPar.pas' {frmKlskPar},
   u_frmSelObjects in 'u_frmSelObjects.pas' {frmSelObjects},
   Unit_par_edit in 'Unit_par_edit.pas' {Form_par_edit};
-
-{  Unit_edit_pay_usl_org in '..\Program Files86\Borland\Delphi7\Components\FR412\LibD7\Unit_edit_pay_usl_org.pas'}
 
 {$R *.RES}
 var

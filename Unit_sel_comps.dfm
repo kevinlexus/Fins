@@ -1,6 +1,6 @@
 object Form_sel_comps: TForm_sel_comps
-  Left = 251
-  Top = 296
+  Left = 1685
+  Top = 196
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = #1042#1099#1073#1086#1088' '#1082#1086#1084#1087#1100#1102#1090#1077#1088#1072
@@ -107,15 +107,11 @@ object Form_sel_comps: TForm_sel_comps
     Align = alTop
     Caption = #1058#1077#1082#1091#1097#1072#1103' '#1076#1072#1090#1072
     TabOrder = 0
-    object DBDateTimeEditEh1: TDBDateTimeEditEh
-      Left = 89
-      Top = 20
-      Width = 109
-      Height = 24
-      EditButtons = <>
-      Kind = dtkDateEh
+    object cxdtdt1: TcxDateEdit
+      Left = 80
+      Top = 16
       TabOrder = 0
-      Visible = True
+      Width = 121
     end
   end
   object GroupBox2: TGroupBox
@@ -126,17 +122,13 @@ object Form_sel_comps: TForm_sel_comps
     Align = alTop
     Caption = #1055#1086#1083#1100#1079#1086#1074#1072#1090#1077#1083#1100
     TabOrder = 1
-    object wwDBEdit1: TwwDBEdit
-      Left = 10
-      Top = 20
-      Width = 267
-      Height = 24
-      ReadOnly = True
+    object cxtxtUser: TcxTextEdit
+      Left = 16
+      Top = 16
+      Properties.Alignment.Horz = taCenter
+      Properties.ReadOnly = True
       TabOrder = 0
-      UnboundDataType = wwDefault
-      UnboundAlignment = taCenter
-      WantReturns = False
-      WordWrap = False
+      Width = 257
     end
   end
   object Button2: TButton
