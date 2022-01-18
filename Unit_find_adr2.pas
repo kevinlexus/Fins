@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, DBCtrlsEh, DB, OracleData, wwdblook, Buttons, 
+  Dialogs, StdCtrls, DB, OracleData, wwdblook, Buttons, 
   cxGraphics, cxControls, 
   cxEdit, 
   cxDBLookupEdit, cxDBLookupComboBox, cxClasses,

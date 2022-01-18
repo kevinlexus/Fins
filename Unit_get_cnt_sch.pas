@@ -4,7 +4,9 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Mask, wwdbedit, DB, DBCtrlsEh, ExtCtrls;
+  Dialogs, StdCtrls, Mask, DB, ExtCtrls, cxGraphics, cxControls,
+  cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit, cxTextEdit,
+  cxMaskEdit;
 
 type
   TForm_get_cnt_sch = class(TForm)
@@ -12,12 +14,12 @@ type
     GroupBox2: TGroupBox;
     Button1: TButton;
     Button2: TButton;
-    wwDBEdit4: TwwDBEdit;
     Label5: TLabel;
+    cxMeter: TcxMaskEdit;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure wwDBEdit4KeyDown(Sender: TObject; var Key: Word;
+    procedure cxMeterKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
   private
     procedure action;
@@ -39,10 +41,10 @@ procedure TForm_get_cnt_sch.action;
 var
   summa_: Double;
 begin
-  if Form_get_cnt_sch.wwDBEdit4.Text ='' then
+  if Form_get_cnt_sch.cxMeter.Text ='' then
    summa_:=0
    else
-   summa_:=StrToFloat(Form_get_cnt_sch.wwDBEdit4.Text);
+   summa_:=StrToFloat(Form_get_cnt_sch.cxMeter.Text);
 
   with Form_get_pay_nal.OD_c_kwtp_temp do
   begin
@@ -62,7 +64,7 @@ begin
     else
     begin
       FieldByName('summa').AsFloat:=
-        StrToFloat(Form_get_cnt_sch.wwDBEdit4.Text);
+        StrToFloat(Form_get_cnt_sch.cxMeter.Text);
     end;
     Post;
   end;
@@ -85,7 +87,7 @@ begin
   Action:=caFree;
 end;
 
-procedure TForm_get_cnt_sch.wwDBEdit4KeyDown(Sender: TObject;
+procedure TForm_get_cnt_sch.cxMeterKeyDown(Sender: TObject;
   var Key: Word; Shift: TShiftState);
 begin
   if (key = VK_Return) then

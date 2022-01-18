@@ -566,7 +566,7 @@ begin
     if OD_usl_chk.FieldByName('iscounter').AsInteger = 1 then
     begin
       Form_get_cnt_sch.Caption := 'Показания счетчика';
-      Form_get_cnt_sch.wwDBEdit4.Text :=
+      Form_get_cnt_sch.cxMeter.Text :=
         FloatToStr(DataModule1.OraclePackage1.CallFloatFunction('scott.c_charges.gen_charges_sch',
         [wwDBEdit3.Text, OD_usl_chk.FieldByName('fk_usl_chk').AsString, 0,
         null]));

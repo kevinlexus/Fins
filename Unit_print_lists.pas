@@ -4,10 +4,13 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Mask, DBCtrlsEh, DBLookupEh, DB, OracleData, frxClass,
-  frxDBSet, frxExportXML, DBF, Utils, ExtCtrls, DBGridEh,
-  wwdbedit, frxExportText, frxExportCSV, StrUtils, Math, wwdblook,
-  frxDesgn, frxExportBaseDialog;
+  Dialogs, StdCtrls, Mask, DB, OracleData, frxClass,
+  frxDBSet, frxExportXML, DBF, Utils, ExtCtrls, 
+  frxExportText, frxExportCSV, StrUtils, Math, 
+  frxDesgn, frxExportBaseDialog, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxContainer, cxEdit, cxTextEdit, cxMaskEdit,
+  cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
+  cxImageComboBox;
 
 type
   TForm_print_lists = class(TForm)
@@ -15,7 +18,6 @@ type
     GroupBox2: TGroupBox;
     Button1: TButton;
     Button2: TButton;
-    DBLookupComboboxEh1: TDBLookupComboboxEh;
     Label3: TLabel;
     Label4: TLabel;
     OD_mg: TOracleDataSet;
@@ -35,7 +37,6 @@ type
     RadioGroup1: TRadioGroup;
     Edit1: TEdit;
     Label1: TLabel;
-    DBLookupComboboxEh2: TDBLookupComboboxEh;
     Label2: TLabel;
     Edit2: TEdit;
     Label5: TLabel;
@@ -45,8 +46,6 @@ type
     frxDBDataset10: TfrxDBDataset;
     GroupBox3: TGroupBox;
     Label6: TLabel;
-    ComboBox2: TComboBox;
-    wwDBEdit1: TwwDBEdit;
     frxCSVExport1: TfrxCSVExport;
     frxSimpleTextExport1: TfrxSimpleTextExport;
     OD_typeslist: TOracleDataSet;
@@ -54,11 +53,15 @@ type
     OD_typeslistID: TFloatField;
     OD_typeslistCD: TStringField;
     OD_typeslistNAME: TStringField;
-    wwDBLookupCombo1: TwwDBLookupCombo;
     frxDesigner1: TfrxDesigner;
     OD_data: TOracleDataSet;
     DS_data: TDataSource;
     OD_t_org: TOracleDataSet;
+    cbbVar: TcxLookupComboBox;
+    cbbMg: TcxLookupComboBox;
+    cbbOrg: TcxLookupComboBox;
+    cxImageSel: TcxImageComboBox;
+    cxtxtVal: TcxTextEdit;
     procedure FormCreate(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -66,9 +69,8 @@ type
     procedure RadioGroup1Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
-    procedure wwDBEdit1KeyPress(Sender: TObject; var Key: Char);
-    procedure wwDBLookupCombo1CloseUp(Sender: TObject; LookupTable,
-      FillTable: TDataSet; modified: Boolean);
+    procedure cbbUkPropertiesCloseUp(Sender: TObject);
+    procedure cxtxtValKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -89,7 +91,7 @@ procedure TForm_print_lists.FormCreate(Sender: TObject);
 begin
  clr_ := 0;
  clr1_ := 0;
- wwDBEdit1.Text:='0';
+ cxtxtVal.Text:='0';
  Autosize:=true;
  OD_typeslist.Active:=True;
 end;
@@ -106,8 +108,8 @@ var
   i: Double;
 
 begin
-  if (DBLookupComboboxEh1.KeyValue = null)
-     and (wwDBLookupCombo1.LookupValue <> '5' ) then
+  if (cbbMg.EditValue = null)
+     and (cbbVar.EditValue <> '5' ) then
   begin
     ShowMessage('Не выбран период отчета, Отмена');
     Exit;
@@ -117,11 +119,11 @@ begin
    Form_status.Update;
 
 
-   if wwDBLookupCombo1.LookupValue = '0' then // Субсидии по л/с
+   if cbbVar.EditValue = '0' then // Субсидии по л/с
    begin
     OD_data.Active:=false;
     OD_data.SetVariable('rep_id_', 1);
-    OD_data.SetVariable('mg_', DBLookupComboboxEh1.KeyValue);
+    OD_data.SetVariable('mg_', cbbMg.EditValue);
     OD_data.Active:=true;
     if OD_data.RecordCount =0 then
     begin
@@ -143,11 +145,11 @@ begin
       end;
     end;
    end
-   else if wwDBLookupCombo1.LookupValue = '1' then // Субсидии по л/с по обща
+   else if cbbVar.EditValue = '1' then // Субсидии по л/с по обща
    begin
     OD_data.Active:=false;
     OD_data.SetVariable('rep_id_', 2);
-    OD_data.SetVariable('mg_', DBLookupComboboxEh1.KeyValue);
+    OD_data.SetVariable('mg_', cbbMg.EditValue);
     OD_data.Active:=true;
     if OD_data.RecordCount =0 then
     begin
@@ -169,11 +171,11 @@ begin
       end;
     end;
    end
-   else if wwDBLookupCombo1.LookupValue = '2' then // Скидки по домам
+   else if cbbVar.EditValue = '2' then // Скидки по домам
    begin
     OD_data.Active:=false;
     OD_data.SetVariable('rep_id_', 3);
-    OD_data.SetVariable('mg_', DBLookupComboboxEh1.KeyValue);
+    OD_data.SetVariable('mg_', cbbMg.EditValue);
     OD_data.Active:=true;
     if OD_data.RecordCount =0 then
     begin
@@ -193,11 +195,11 @@ begin
       end;
     end;
    end
-   else if wwDBLookupCombo1.LookupValue = '3' then // Списки по льготникам
+   else if cbbVar.EditValue = '3' then // Списки по льготникам
    begin
     OD_data.Active:=false;
     OD_data.SetVariable('rep_id_', 4);
-    OD_data.SetVariable('mg_',  DBLookupComboboxEh1.KeyValue);
+    OD_data.SetVariable('mg_',  cbbMg.EditValue);
     OD_data.Active:=true;
     if RadioGroup1.ItemIndex = 0 then
     begin
@@ -209,11 +211,11 @@ begin
       Form_status.Close;
     end;
    end
-   else if wwDBLookupCombo1.LookupValue = '4' then // Задолжники
+   else if cbbVar.EditValue = '4' then // Задолжники
    begin
     OD_data.Active:=false;
     OD_data.SetVariable('rep_id_', 5);
-    OD_data.SetVariable('mg_',  DBLookupComboboxEh1.KeyValue);
+    OD_data.SetVariable('mg_',  cbbMg.EditValue);
     OD_data.Active:=true;
     if RadioGroup1.ItemIndex = 0 then
     begin
@@ -225,7 +227,7 @@ begin
       Form_status.Close;
     end;
    end
-   else if wwDBLookupCombo1.LookupValue= '5' then // Выгрузка произвольного файла
+   else if cbbVar.EditValue= '5' then // Выгрузка произвольного файла
    begin
     OD_data.Active:=false;
     OD_data.SetVariable('rep_id_', 6);
@@ -241,12 +243,12 @@ begin
       Form_status.Close;
     end;
    end
-   else if wwDBLookupCombo1.LookupValue = '6' then // Списки по льготникам
+   else if cbbVar.EditValue = '6' then // Списки по льготникам
    begin
     OD_data.Active:=false;
     OD_data.SetVariable('rep_id_', 7);
     OD_data.SetVariable('org_', OD_sprorg.FieldByName('kod').asInteger);
-    OD_data.SetVariable('mg_',  DBLookupComboboxEh1.KeyValue);
+    OD_data.SetVariable('mg_',  cbbMg.EditValue);
     OD_data.Active:=true;
     if RadioGroup1.ItemIndex = 0 then
     begin
@@ -260,11 +262,11 @@ begin
       Form_status.Close;
     end;
    end
-   else if wwDBLookupCombo1.LookupValue = '7' then // Списки по начислению
+   else if cbbVar.EditValue = '7' then // Списки по начислению
    begin
     OD_data.Active:=false;
     OD_data.SetVariable('rep_id_', 8);
-    OD_data.SetVariable('mg_',  DBLookupComboboxEh1.KeyValue);
+    OD_data.SetVariable('mg_',  cbbMg.EditValue);
     OD_data.Active:=true;
     if RadioGroup1.ItemIndex = 0 then
     begin
@@ -276,11 +278,11 @@ begin
       Form_status.Close;
     end;
    end
-   else if wwDBLookupCombo1.LookupValue = '8' then // Выгрузка оборотки для УК в DBF
+   else if cbbVar.EditValue = '8' then // Выгрузка оборотки для УК в DBF
    begin
     OD_data.Active:=false;
     OD_data.SetVariable('rep_id_', 9);
-    OD_data.SetVariable('mg_',  DBLookupComboboxEh1.KeyValue);
+    OD_data.SetVariable('mg_',  cbbMg.EditValue);
     OD_data.Active:=true;
     if RadioGroup1.ItemIndex = 0 then
     begin
@@ -292,19 +294,19 @@ begin
       Form_status.Close;
     end;
    end
-   else if wwDBLookupCombo1.LookupValue = '9' then // Задолжники по услугам
+   else if cbbVar.EditValue = '9' then // Задолжники по услугам
    begin
     OD_data.Active:=false;
     OD_data.SetVariable('rep_id_', 10);
-    OD_data.SetVariable('mg_',  DBLookupComboboxEh1.KeyValue);
-    OD_data.SetVariable('var_',  ComboBox2.ItemIndex);
-    OD_data.SetVariable('cnt_',  StrToFloat(wwDBEdit1.Text));
+    OD_data.SetVariable('mg_',  cbbMg.EditValue);
+    OD_data.SetVariable('var_',  cxImageSel.ItemIndex);
+    OD_data.SetVariable('cnt_',  StrToFloat(cxtxtVal.Text));
     OD_data.Active:=true;
 
-    if ComboBox2.ItemIndex = 0 then
-      frxReport10.Variables['txt_']:=''''+wwDBEdit1.Text+' месяцев'+''''
+    if cxImageSel.ItemIndex = 0 then
+      frxReport10.Variables['txt_']:=''''+cxtxtVal.Text+' месяцев'+''''
     else
-      frxReport10.Variables['txt_']:=''''+wwDBEdit1.Text+' рублей'+'''';
+      frxReport10.Variables['txt_']:=''''+cxtxtVal.Text+' рублей'+'''';
 
     if RadioGroup1.ItemIndex = 0 then
     begin
@@ -317,17 +319,17 @@ begin
       Form_status.Close;
     end;
    end
-   else if (wwDBLookupCombo1.LookupValue = '10') or
-     (wwDBLookupCombo1.LookupValue = '11') or
-     (wwDBLookupCombo1.LookupValue = '12') or
-     (wwDBLookupCombo1.LookupValue = '16') or
-     (wwDBLookupCombo1.LookupValue = '17') or
-     (wwDBLookupCombo1.LookupValue = '18') or
-     (wwDBLookupCombo1.LookupValue = '19') or
-     (wwDBLookupCombo1.LookupValue = '20') or
-     (wwDBLookupCombo1.LookupValue = '21') or
-     (wwDBLookupCombo1.LookupValue = '22') or
-     (wwDBLookupCombo1.LookupValue = '23')
+   else if (cbbVar.EditValue = '10') or
+     (cbbVar.EditValue = '11') or
+     (cbbVar.EditValue = '12') or
+     (cbbVar.EditValue = '16') or
+     (cbbVar.EditValue = '17') or
+     (cbbVar.EditValue = '18') or
+     (cbbVar.EditValue = '19') or
+     (cbbVar.EditValue = '20') or
+     (cbbVar.EditValue = '21') or
+     (cbbVar.EditValue = '22') or
+     (cbbVar.EditValue = '23')
      then // Долги для Почты, Сбербанка, для Сбербанка-2
    begin
     if RadioGroup1.ItemIndex = 0 then
@@ -336,32 +338,32 @@ begin
     end
     else
     begin
-     if (wwDBLookupCombo1.LookupValue = '10') or
-        (wwDBLookupCombo1.LookupValue = '19') or
-        (wwDBLookupCombo1.LookupValue = '20') or
-        (wwDBLookupCombo1.LookupValue = '22') or
-        (wwDBLookupCombo1.LookupValue = '23')
+     if (cbbVar.EditValue = '10') or
+        (cbbVar.EditValue = '19') or
+        (cbbVar.EditValue = '20') or
+        (cbbVar.EditValue = '22') or
+        (cbbVar.EditValue = '23')
       then
      begin
        OD_data.Active:=false;
 
-       if (wwDBLookupCombo1.LookupValue = '10') then
+       if (cbbVar.EditValue = '10') then
          OD_data.SetVariable('rep_id_', 11) //реестр в целом по сберу
-       else if (wwDBLookupCombo1.LookupValue = '19') then
+       else if (cbbVar.EditValue = '19') then
          OD_data.SetVariable('rep_id_', 19) //реестр по 1 расчет.счету
-       else if (wwDBLookupCombo1.LookupValue = '20') then
+       else if (cbbVar.EditValue = '20') then
          OD_data.SetVariable('rep_id_', 20)//реестр по 2 расчет.счету
-       else if (wwDBLookupCombo1.LookupValue = '22') then
+       else if (cbbVar.EditValue = '22') then
          OD_data.SetVariable('rep_id_', 22)
-       else if (wwDBLookupCombo1.LookupValue = '23') then
+       else if (cbbVar.EditValue = '23') then
          OD_data.SetVariable('rep_id_', 23);// Сбер по Свободе
 
-       if (wwDBLookupCombo1.LookupValue = '23') then
+       if (cbbVar.EditValue = '23') then
        begin
          DecimalSeparator := ',';
          OD_t_org.Active:=true;
          // Сбер по Свободе
-         OD_data.SetVariable('mg_',  DBLookupComboboxEh1.KeyValue);
+         OD_data.SetVariable('mg_',  cbbMg.EditValue);
          OD_data.Active:=true;
          OD_data.First;
          i:=0;
@@ -407,7 +409,7 @@ begin
          Append(f);
          // прочие реестры
          OD_data.SetVariable('proc_',  100);
-         OD_data.SetVariable('mg_',  DBLookupComboboxEh1.KeyValue);
+         OD_data.SetVariable('mg_',  cbbMg.EditValue);
          OD_data.Active:=true;
          OD_data.First;
          i:=0;
@@ -433,7 +435,7 @@ begin
        end;
 
      end
-     else if (wwDBLookupCombo1.LookupValue = '16') then
+     else if (cbbVar.EditValue = '16') then
      begin
        //Долги для сбера, с разделителем "."
        AssignFile(F, Edit2.Text+'dolgSB.txt');
@@ -442,7 +444,7 @@ begin
        OD_data.Active:=false;
        OD_data.SetVariable('rep_id_', 16);
        OD_data.SetVariable('proc_',  100);
-       OD_data.SetVariable('mg_',  DBLookupComboboxEh1.KeyValue);
+       OD_data.SetVariable('mg_',  cbbMg.EditValue);
        OD_data.Active:=true;
        OD_data.First;
        i:=0;
@@ -466,26 +468,26 @@ begin
        msg2('Долги выгружены в '+Edit2.Text+'dolgSB.txt', 'Внимание',
         MB_OK+MB_ICONINFORMATION);
      end
-     else if (wwDBLookupCombo1.LookupValue = '17') or (wwDBLookupCombo1.LookupValue = '21') then
+     else if (cbbVar.EditValue = '17') or (cbbVar.EditValue = '21') then
      begin
        //Долги для сбера, с разделителем "корп."
        AssignFile(F, Edit2.Text+'dolgSB.txt');
        Rewrite(F);
        Append(f);
        OD_data.Active:=false;
-       if wwDBLookupCombo1.LookupValue = '17' then
+       if cbbVar.EditValue = '17' then
          OD_data.SetVariable('rep_id_', 17)
-        else if wwDBLookupCombo1.LookupValue = '21' then
+        else if cbbVar.EditValue = '21' then
          OD_data.SetVariable('rep_id_', 21);
 
        OD_data.SetVariable('proc_',  100);
-       OD_data.SetVariable('mg_',  DBLookupComboboxEh1.KeyValue);
+       OD_data.SetVariable('mg_',  cbbMg.EditValue);
        OD_data.Active:=true;
        OD_data.First;
        i:=0;
        while not OD_data.Eof do
        begin
-         if wwDBLookupCombo1.LookupValue = '17' then
+         if cbbVar.EditValue = '17' then
            Writeln(f, OD_data.FieldByName('lsk').AsString+'|'+
             leftstr(OD_data.FieldByName('fio').AsString, 25)+'|'+
             leftstr(OD_data.FieldByName('adr').AsString, 64)+'|'+
@@ -493,7 +495,7 @@ begin
             OD_data.FieldByName('type_name').AsString+'|'+
             OD_data.FieldByName('period').AsString+'|'+'|'+
             OD_data.FieldByName('summa').AsString)
-         else if wwDBLookupCombo1.LookupValue = '21' then
+         else if cbbVar.EditValue = '21' then
            Writeln(f, OD_data.FieldByName('lsk').AsString+'|'+
             leftstr(OD_data.FieldByName('fio').AsString, 25)+'|'+
             leftstr(OD_data.FieldByName('adr').AsString, 64)+'|'+
@@ -513,26 +515,26 @@ begin
        msg2('Долги выгружены в '+Edit2.Text+'dolgSB.txt', 'Внимание',
         MB_OK+MB_ICONINFORMATION);
      end
-     else if (wwDBLookupCombo1.LookupValue = '11') then
+     else if (cbbVar.EditValue = '11') then
      begin
        OD_data.Active:=false;
        OD_data.SetVariable('rep_id_', 11);
        OD_data.SetVariable('proc_',  1);
-       OD_data.SetVariable('mg_',  DBLookupComboboxEh1.KeyValue);
+       OD_data.SetVariable('mg_',  cbbMg.EditValue);
        OD_data.Active:=true;
        exp_to_dbf(OD_data, Edit2.Text+'dolgP.dbf');
        Form_status.Close;
        msg2('Долги выгружены в '+Edit2.Text+'dolgP.dbf', 'Внимание',
         MB_OK+MB_ICONINFORMATION);
      end
-     else if (wwDBLookupCombo1.LookupValue = '12') then
+     else if (cbbVar.EditValue = '12') then
      begin
        AssignFile(F, Edit2.Text+'dolgSB2.txt');
        Rewrite(F);
        Append(f);
        OD_data.Active:=false;
        OD_data.SetVariable('rep_id_', 12);
-       OD_data.SetVariable('mg_',  DBLookupComboboxEh1.KeyValue);
+       OD_data.SetVariable('mg_',  cbbMg.EditValue);
        OD_data.Active:=true;
        OD_data.First;
        i:=0;
@@ -556,7 +558,7 @@ begin
        msg2('Долги выгружены в '+Edit2.Text+'dolgSB2.txt', 'Внимание',
         MB_OK+MB_ICONINFORMATION);
      end
-     else if (wwDBLookupCombo1.LookupValue = '18') then
+     else if (cbbVar.EditValue = '18') then
      begin
        //Долги по тарифам, по кабельному тв.
        AssignFile(F, Edit2.Text+'dolgSB3.txt');
@@ -564,7 +566,7 @@ begin
        Append(f);
        OD_data.Active:=false;
        OD_data.SetVariable('rep_id_', 18);
-       OD_data.SetVariable('mg_',  DBLookupComboboxEh1.KeyValue);
+       OD_data.SetVariable('mg_',  cbbMg.EditValue);
        OD_data.Active:=true;
        OD_data.First;
        i:=0;
@@ -591,7 +593,7 @@ begin
      end;
     end;
     end
-   else if (wwDBLookupCombo1.LookupValue = '15') then // Долги для Уралсиба
+   else if (cbbVar.EditValue = '15') then // Долги для Уралсиба
    begin
     if RadioGroup1.ItemIndex = 0 then
     begin
@@ -685,220 +687,211 @@ begin
    end;
 end;
 
-procedure TForm_print_lists.wwDBEdit1KeyPress(Sender: TObject;
-  var Key: Char);
-begin
-  if RetKey(Key) then
-    Key:= '.';
-
-end;
-
-procedure TForm_print_lists.wwDBLookupCombo1CloseUp(Sender: TObject;
-  LookupTable, FillTable: TDataSet; modified: Boolean);
+procedure TForm_print_lists.cbbUkPropertiesCloseUp(Sender: TObject);
 begin
   Button1.Enabled:=True;
-  if (wwDBLookupCombo1.LookupValue = '0') or (wwDBLookupCombo1.LookupValue = '1') then // Списки по субсидиям
+  if (cbbVar.EditValue = '0') or (cbbVar.EditValue = '1') then // Списки по субсидиям
   begin
-    DBLookupComboboxEh1.Enabled:=true;
+    cbbMg.Enabled:=true;
     Label1.Visible:=false;
     Label3.Visible:=true;
     Edit1.Visible:=false;
     OD_mg.Active:=false;
     OD_mg.SetVariable('id',52);
     OD_mg.Active:=true;
-    DBLookupComboboxEh1.KeyValue:=null;
-    DBLookupComboboxEh1.Visible:=true;
+    cbbMg.EditValue:=null;
+    cbbMg.Visible:=true;
     Label2.Visible:=false;
-    DBLookupComboboxEh2.Visible:=false;
+    cbbOrg.Visible:=false;
     RadioGroup1.Enabled:=true;
     Button3.Enabled:=true;
     Button4.Enabled:=false;
     GroupBox3.Enabled:=false;
     GroupBox3.visible:=false;
-    wwDBEdit1.Enabled:=false;
-    ComboBox2.Enabled:=false;
+    cxtxtVal.Enabled:=false;
+    cxImageSel.Enabled:=false;
   end
-  else if wwDBLookupCombo1.LookupValue = '2' then // Списки по изменениям
+  else if cbbVar.EditValue = '2' then // Списки по изменениям
   begin
-    DBLookupComboboxEh1.Enabled:=true;
+    cbbMg.Enabled:=true;
     Label1.Visible:=false;
     Label3.Visible:=true;
     Edit1.Visible:=false;
     OD_mg.Active:=false;
     OD_mg.SetVariable('id',53);
     OD_mg.Active:=true;
-    DBLookupComboboxEh1.KeyValue:=null;
-    DBLookupComboboxEh1.Visible:=true;
+    cbbMg.EditValue:=null;
+    cbbMg.Visible:=true;
     Label2.Visible:=false;
-    DBLookupComboboxEh2.Visible:=false;
+    cbbOrg.Visible:=false;
     RadioGroup1.Enabled:=true;
     Button3.Enabled:=true;
     Button4.Enabled:=false;
     GroupBox3.Enabled:=false;
     GroupBox3.visible:=false;
-    wwDBEdit1.Enabled:=false;
-    ComboBox2.Enabled:=false;
+    cxtxtVal.Enabled:=false;
+    cxImageSel.Enabled:=false;
   end
-  else if wwDBLookupCombo1.LookupValue = '3' then // Списки по льготникам
+  else if cbbVar.EditValue = '3' then // Списки по льготникам
   begin
-    DBLookupComboboxEh1.Enabled:=true;
+    cbbMg.Enabled:=true;
     Label1.Visible:=false;
     Label3.Visible:=true;
     Edit1.Visible:=false;
     OD_mg.Active:=false;
     OD_mg.SetVariable('id',54);
     OD_mg.Active:=true;
-    DBLookupComboboxEh1.KeyValue:=null;
-    DBLookupComboboxEh1.Visible:=true;
+    cbbMg.EditValue:=null;
+    cbbMg.Visible:=true;
     Label2.Visible:=false;
-    DBLookupComboboxEh2.Visible:=false;
+    cbbOrg.Visible:=false;
     RadioGroup1.ItemIndex:=1;
     RadioGroup1.Enabled:=false;
     Button3.Enabled:=true;
     Button4.Enabled:=false;
     GroupBox3.Enabled:=false;
     GroupBox3.visible:=false;
-    wwDBEdit1.Enabled:=false;
-    ComboBox2.Enabled:=false;
+    cxtxtVal.Enabled:=false;
+    cxImageSel.Enabled:=false;
   end
-  else if wwDBLookupCombo1.LookupValue = '4' then // Задолжники
+  else if cbbVar.EditValue = '4' then // Задолжники
   begin
-    DBLookupComboboxEh1.Enabled:=true;
+    cbbMg.Enabled:=true;
     Label1.Visible:=false;
     Label3.Visible:=true;
     Edit1.Visible:=false;
     OD_mg.Active:=false;
     OD_mg.SetVariable('id',54);
     OD_mg.Active:=true;
-    DBLookupComboboxEh1.KeyValue:=null;
-    DBLookupComboboxEh1.Visible:=true;
+    cbbMg.EditValue:=null;
+    cbbMg.Visible:=true;
     Label2.Visible:=false;
-    DBLookupComboboxEh2.Visible:=false;
+    cbbOrg.Visible:=false;
     RadioGroup1.ItemIndex:=1;
     RadioGroup1.Enabled:=false;
     Button3.Enabled:=true;
     Button4.Enabled:=false;
     GroupBox3.Enabled:=false;
     GroupBox3.visible:=false;
-    wwDBEdit1.Enabled:=false;
-    ComboBox2.Enabled:=false;
+    cxtxtVal.Enabled:=false;
+    cxImageSel.Enabled:=false;
   end
-  else if wwDBLookupCombo1.LookupValue = '5' then // Произвольный файл
+  else if cbbVar.EditValue = '5' then // Произвольный файл
   begin
-    DBLookupComboboxEh1.Enabled:=false;
+    cbbMg.Enabled:=false;
     Label1.Visible:=true;
     Edit1.Visible:=true;
     Label3.Visible:=false;
-    DBLookupComboboxEh1.Visible:=false;
+    cbbMg.Visible:=false;
     Label2.Visible:=false;
-    DBLookupComboboxEh2.Visible:=false;
+    cbbOrg.Visible:=false;
     RadioGroup1.ItemIndex:=1;
     RadioGroup1.Enabled:=false;
     Button3.Enabled:=true;
     Button4.Enabled:=false;
     GroupBox3.Enabled:=false;
     GroupBox3.visible:=false;
-    wwDBEdit1.Enabled:=false;
-    ComboBox2.Enabled:=false;
+    cxtxtVal.Enabled:=false;
+    cxImageSel.Enabled:=false;
   end
-  else if wwDBLookupCombo1.LookupValue = '6' then // Списки по льготникам, по орг
+  else if cbbVar.EditValue = '6' then // Списки по льготникам, по орг
   begin
-    DBLookupComboboxEh1.Enabled:=true;
+    cbbMg.Enabled:=true;
     Label1.Visible:=false;
     Label3.Visible:=true;
     Edit1.Visible:=false;
     OD_mg.Active:=false;
     OD_mg.SetVariable('id',54);
     OD_mg.Active:=true;
-    DBLookupComboboxEh1.KeyValue:=null;
-    DBLookupComboboxEh1.Visible:=true;
+    cbbMg.EditValue:=null;
+    cbbMg.Visible:=true;
     Label2.Visible:=true;
-    DBLookupComboboxEh2.Visible:=true;
+    cbbOrg.Visible:=true;
     RadioGroup1.Enabled:=true;
     Button3.Enabled:=true;
     Button4.Enabled:=false;
     GroupBox3.Enabled:=false;
     GroupBox3.visible:=false;
-    wwDBEdit1.Enabled:=false;
-    ComboBox2.Enabled:=false;
+    cxtxtVal.Enabled:=false;
+    cxImageSel.Enabled:=false;
   end
-  else if wwDBLookupCombo1.LookupValue = '7' then // Списки по начислению
+  else if cbbVar.EditValue = '7' then // Списки по начислению
   begin
-    DBLookupComboboxEh1.Enabled:=true;
+    cbbMg.Enabled:=true;
     Label1.Visible:=false;
     Label3.Visible:=true;
     Edit1.Visible:=false;
     OD_mg.Active:=false;
     OD_mg.SetVariable('id',52);
     OD_mg.Active:=true;
-    DBLookupComboboxEh1.KeyValue:=null;
-    DBLookupComboboxEh1.Visible:=true;
+    cbbMg.EditValue:=null;
+    cbbMg.Visible:=true;
     Label2.Visible:=false;
-    DBLookupComboboxEh2.Visible:=false;
+    cbbOrg.Visible:=false;
     RadioGroup1.ItemIndex:=1;
     RadioGroup1.Enabled:=false;
     Button3.Enabled:=true;
     Button4.Enabled:=false;
     GroupBox3.Enabled:=false;
     GroupBox3.visible:=false;
-    wwDBEdit1.Enabled:=false;
-    ComboBox2.Enabled:=false;
+    cxtxtVal.Enabled:=false;
+    cxImageSel.Enabled:=false;
   end
-  else if wwDBLookupCombo1.LookupValue = '8' then // Оборотка в DBF
+  else if cbbVar.EditValue = '8' then // Оборотка в DBF
   begin
-    DBLookupComboboxEh1.Enabled:=true;
+    cbbMg.Enabled:=true;
     Label1.Visible:=false;
     Label3.Visible:=true;
     Edit1.Visible:=false;
     OD_mg.Active:=false;
     OD_mg.SetVariable('id',54);
     OD_mg.Active:=true;
-    DBLookupComboboxEh1.KeyValue:=null;
-    DBLookupComboboxEh1.Visible:=true;
+    cbbMg.EditValue:=null;
+    cbbMg.Visible:=true;
     Label2.Visible:=false;
-    DBLookupComboboxEh2.Visible:=false;
+    cbbOrg.Visible:=false;
     RadioGroup1.ItemIndex:=1;
     RadioGroup1.Enabled:=false;
     Button3.Enabled:=true;
     Button4.Enabled:=false;
     GroupBox3.Enabled:=false;
     GroupBox3.visible:=false;
-    wwDBEdit1.Enabled:=false;
-    ComboBox2.Enabled:=false;
+    cxtxtVal.Enabled:=false;
+    cxImageSel.Enabled:=false;
   end
-  else if wwDBLookupCombo1.LookupValue = '9' then // Задолжники по услугам
+  else if cbbVar.EditValue = '9' then // Задолжники по услугам
   begin
-    DBLookupComboboxEh1.Enabled:=true;
+    cbbMg.Enabled:=true;
     Label1.Visible:=false;
     Label3.Visible:=true;
     Edit1.Visible:=false;
     OD_mg.Active:=false;
     OD_mg.SetVariable('id',54);
     OD_mg.Active:=true;
-    DBLookupComboboxEh1.KeyValue:=null;
-    DBLookupComboboxEh1.Visible:=true;
+    cbbMg.EditValue:=null;
+    cbbMg.Visible:=true;
     Label2.Visible:=false;
-    DBLookupComboboxEh2.Visible:=false;
+    cbbOrg.Visible:=false;
     RadioGroup1.ItemIndex:=0;
     RadioGroup1.Enabled:=false;
     GroupBox3.Enabled:=true;
     GroupBox3.visible:=true;
     Button3.Enabled:=true;
     Button4.Enabled:=true;
-    wwDBEdit1.Enabled:=true;
-    ComboBox2.Enabled:=true;
+    cxtxtVal.Enabled:=true;
+    cxImageSel.Enabled:=true;
   end
-  else if (wwDBLookupCombo1.LookupValue = '10')
-    or (wwDBLookupCombo1.LookupValue = '11')
-    or (wwDBLookupCombo1.LookupValue = '12')
-    or (wwDBLookupCombo1.LookupValue = '16')
-    or (wwDBLookupCombo1.LookupValue = '17')
-    or (wwDBLookupCombo1.LookupValue = '18')
-    or (wwDBLookupCombo1.LookupValue = '19')
-    or (wwDBLookupCombo1.LookupValue = '20')
-    or (wwDBLookupCombo1.LookupValue = '21')
-    or (wwDBLookupCombo1.LookupValue = '22')
-    or (wwDBLookupCombo1.LookupValue = '23')
+  else if (cbbVar.EditValue = '10')
+    or (cbbVar.EditValue = '11')
+    or (cbbVar.EditValue = '12')
+    or (cbbVar.EditValue = '16')
+    or (cbbVar.EditValue = '17')
+    or (cbbVar.EditValue = '18')
+    or (cbbVar.EditValue = '19')
+    or (cbbVar.EditValue = '20')
+    or (cbbVar.EditValue = '21')
+    or (cbbVar.EditValue = '22')
+    or (cbbVar.EditValue = '23')
     then // Долги для Сбербанка или Почты, для Сбербанка-2
   begin
     Label1.Visible:=false;
@@ -907,43 +900,43 @@ begin
     OD_mg.Active:=false;
     OD_mg.SetVariable('id',54);
     OD_mg.Active:=true;
-    DBLookupComboboxEh1.KeyValue:=null;
-    DBLookupComboboxEh1.Visible:=true;
+    cbbMg.EditValue:=null;
+    cbbMg.Visible:=true;
     Label2.Visible:=false;
-    DBLookupComboboxEh2.Visible:=false;
+    cbbOrg.Visible:=false;
     RadioGroup1.ItemIndex:=1;
     RadioGroup1.Enabled:=false;
     Button3.Enabled:=true;
     Button4.Enabled:=false;
     GroupBox3.Enabled:=false;
     GroupBox3.visible:=false;
-    wwDBEdit1.Enabled:=false;
-    ComboBox2.Enabled:=false;
+    cxtxtVal.Enabled:=false;
+    cxImageSel.Enabled:=false;
   end
-  else if (wwDBLookupCombo1.LookupValue = '13') or
-    (wwDBLookupCombo1.LookupValue = '14') then // Отчёт ТСЖ для администрации
+  else if (cbbVar.EditValue = '13') or
+    (cbbVar.EditValue = '14') then // Отчёт ТСЖ для администрации
   begin
-    DBLookupComboboxEh1.Enabled:=true;
+    cbbMg.Enabled:=true;
     Label1.Visible:=false;
     Label3.Visible:=true;
     Edit1.Visible:=false;
     OD_mg.Active:=false;
     OD_mg.SetVariable('id',12); //тип отчета - архивы
     OD_mg.Active:=true;
-    DBLookupComboboxEh1.KeyValue:=null;
-    DBLookupComboboxEh1.Visible:=true;
+    cbbMg.EditValue:=null;
+    cbbMg.Visible:=true;
     Label2.Visible:=false;
-    DBLookupComboboxEh2.Visible:=false;
+    cbbOrg.Visible:=false;
     RadioGroup1.ItemIndex:=0;
     RadioGroup1.Enabled:=false;
     GroupBox3.Enabled:=false;
     GroupBox3.visible:=false;
     Button3.Enabled:=false;
     Button4.Enabled:=false;
-    wwDBEdit1.Enabled:=true;
-    ComboBox2.Enabled:=true;
+    cxtxtVal.Enabled:=true;
+    cxImageSel.Enabled:=true;
   end
-  else if (wwDBLookupCombo1.LookupValue = '15')
+  else if (cbbVar.EditValue = '15')
     then // Долги для Уралсиба
   begin
     Label1.Visible:=false;
@@ -952,23 +945,30 @@ begin
     OD_mg.Active:=false;
     OD_mg.SetVariable('id',54);
     OD_mg.Active:=true;
-    DBLookupComboboxEh1.KeyValue:=null;
-    DBLookupComboboxEh1.Visible:=true;
+    cbbMg.EditValue:=null;
+    cbbMg.Visible:=true;
     Label2.Visible:=false;
-    DBLookupComboboxEh2.Visible:=false;
+    cbbOrg.Visible:=false;
     RadioGroup1.ItemIndex:=1;
     RadioGroup1.Enabled:=false;
     Button3.Enabled:=true;
     Button4.Enabled:=false;
     GroupBox3.Enabled:=false;
     GroupBox3.visible:=false;
-    wwDBEdit1.Enabled:=false;
-    ComboBox2.Enabled:=false;
+    cxtxtVal.Enabled:=false;
+    cxImageSel.Enabled:=false;
   end
   else
   begin  //не выбрано ничего
-    Button1.Enabled:=False;  
-  end;;
+    Button1.Enabled:=False;
+  end;
+end;
+
+procedure TForm_print_lists.cxtxtValKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  if RetKey(Key) then
+    Key:= '.';
 end;
 
 end.

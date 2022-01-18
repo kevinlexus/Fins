@@ -1,6 +1,6 @@
 object Form_print_lists: TForm_print_lists
-  Left = 1361
-  Top = 216
+  Left = 315
+  Top = 264
   AutoScroll = False
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #1057#1083#1091#1078#1077#1073#1085#1099#1077' '#1086#1090#1095#1077#1090#1099' ('#1089#1087#1080#1089#1082#1080')'
@@ -135,36 +135,12 @@ object Form_print_lists: TForm_print_lists
       Height = 13
       Caption = #1055#1091#1090#1100' '#1074#1099#1075#1088#1091#1079#1082#1080
     end
-    object DBLookupComboboxEh1: TDBLookupComboboxEh
-      Left = 88
-      Top = 48
-      Width = 129
-      Height = 21
-      EditButtons = <>
-      KeyField = 'MG'
-      ListField = 'MG1'
-      ListSource = DS_mg
-      TabOrder = 1
-      Visible = True
-    end
     object Edit1: TEdit
       Left = 88
       Top = 112
       Width = 121
       Height = 21
-      TabOrder = 3
-      Visible = False
-    end
-    object DBLookupComboboxEh2: TDBLookupComboboxEh
-      Left = 88
-      Top = 144
-      Width = 313
-      Height = 21
-      EditButtons = <>
-      KeyField = 'KOD'
-      ListField = 'NAME'
-      ListSource = DS_sprorg
-      TabOrder = 4
+      TabOrder = 1
       Visible = False
     end
     object Edit2: TEdit
@@ -173,26 +149,51 @@ object Form_print_lists: TForm_print_lists
       Width = 185
       Height = 21
       Enabled = False
-      TabOrder = 2
+      TabOrder = 0
       Text = 'c:\temp\'
     end
-    object wwDBLookupCombo1: TwwDBLookupCombo
+    object cbbVar: TcxLookupComboBox
       Left = 88
-      Top = 16
+      Top = 20
+      Properties.GridMode = True
+      Properties.KeyFieldNames = 'CD'
+      Properties.ListColumns = <
+        item
+          FieldName = 'NAME'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = DS_typeslist
+      Properties.OnCloseUp = cbbUkPropertiesCloseUp
+      TabOrder = 2
       Width = 313
-      Height = 21
-      DropDownAlignment = taLeftJustify
-      Selected.Strings = (
-        'NAME'#9'40'#9'NAME'#9'F'#9)
-      LookupTable = OD_typeslist
-      LookupField = 'CD'
-      Style = csDropDownList
-      TabOrder = 0
-      AutoDropDown = True
-      ShowButton = True
-      PreciseEditRegion = False
-      AllowClearKey = True
-      OnCloseUp = wwDBLookupCombo1CloseUp
+    end
+    object cbbMg: TcxLookupComboBox
+      Left = 88
+      Top = 52
+      Properties.GridMode = True
+      Properties.KeyFieldNames = 'MG'
+      Properties.ListColumns = <
+        item
+          FieldName = 'MG1'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = DS_mg
+      TabOrder = 3
+      Width = 129
+    end
+    object cbbOrg: TcxLookupComboBox
+      Left = 88
+      Top = 140
+      Properties.GridMode = True
+      Properties.KeyFieldNames = 'KOD'
+      Properties.ListColumns = <
+        item
+          FieldName = 'NAME'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = DS_sprorg
+      TabOrder = 4
+      Width = 313
     end
   end
   object GroupBox2: TGroupBox
@@ -267,31 +268,28 @@ object Form_print_lists: TForm_print_lists
       Height = 13
       Caption = #1057#1074#1099#1096#1077
     end
-    object ComboBox2: TComboBox
+    object cxImageSel: TcxImageComboBox
       Left = 168
-      Top = 19
-      Width = 73
-      Height = 21
-      Enabled = False
-      ItemHeight = 13
-      ItemIndex = 0
-      TabOrder = 1
-      Text = #1052#1077#1089#1103#1094#1077#1074
-      Items.Strings = (
-        #1052#1077#1089#1103#1094#1077#1074
-        #1056#1091#1073#1083#1077#1081)
-    end
-    object wwDBEdit1: TwwDBEdit
-      Left = 120
-      Top = 19
-      Width = 43
-      Height = 21
-      Picture.PictureMask = '[#][#][#][#][#][#][.][#][#]'
+      Top = 20
+      Properties.Items = <
+        item
+          Description = #1052#1077#1089#1103#1094#1077#1074
+          ImageIndex = 0
+          Value = 0
+        end
+        item
+          Description = #1056#1091#1073#1083#1077#1081
+          Value = 1
+        end>
       TabOrder = 0
-      UnboundDataType = wwDefault
-      WantReturns = False
-      WordWrap = False
-      OnKeyPress = wwDBEdit1KeyPress
+      Width = 73
+    end
+    object cxtxtVal: TcxTextEdit
+      Left = 114
+      Top = 19
+      TabOrder = 1
+      OnKeyPress = cxtxtValKeyPress
+      Width = 48
     end
   end
   object OD_mg: TOracleDataSet

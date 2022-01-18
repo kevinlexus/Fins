@@ -1,6 +1,6 @@
 object Form_get_cnt_sch: TForm_get_cnt_sch
-  Left = 1366
-  Top = 195
+  Left = 1912
+  Top = 217
   BorderStyle = bsSingle
   Caption = #1055#1086#1082#1072#1079#1072#1085#1080#1103' '#1089#1095#1077#1090#1095#1080#1082#1086#1074
   ClientHeight = 113
@@ -36,23 +36,22 @@ object Form_get_cnt_sch: TForm_get_cnt_sch
       Font.Style = [fsBold]
       ParentFont = False
     end
-    object wwDBEdit4: TwwDBEdit
-      Left = 136
+    object cxMeter: TcxMaskEdit
+      Left = 97
       Top = 16
-      Width = 169
-      Height = 28
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -17
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
       ParentFont = False
-      Picture.PictureMask = '[-][#][#][#][#][#][#][#][#][#][.][#][#]'
+      Properties.MaskKind = emkRegExprEx
+      Properties.EditMask = '\-?\d{1,6}\.?\d{0,5}'
+      Properties.ValidationOptions = [evoShowErrorIcon, evoAllowLoseFocus]
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -17
+      Style.Font.Name = 'MS Sans Serif'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
       TabOrder = 0
-      UnboundDataType = wwDefault
-      WantReturns = False
-      WordWrap = False
-      OnKeyDown = wwDBEdit4KeyDown
+      OnKeyDown = cxMeterKeyDown
+      Width = 163
     end
   end
   object GroupBox2: TGroupBox
