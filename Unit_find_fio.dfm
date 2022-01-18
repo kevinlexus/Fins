@@ -103,38 +103,12 @@ object Form_find_fio: TForm_find_fio
     Font.Style = [fsBold]
     ParentFont = False
   end
-  object wwDBEdit1: TwwDBEdit
-    Left = 56
-    Top = 8
-    Width = 217
-    Height = 21
-    TabOrder = 0
-    UnboundDataType = wwDefault
-    WantReturns = False
-    WordWrap = False
-    OnKeyPress = wwDBEdit1KeyPress
-  end
-  object wwCheckBox1: TwwCheckBox
-    Left = 8
-    Top = 40
-    Width = 145
-    Height = 17
-    DisableThemes = False
-    AlwaysTransparent = False
-    ValueChecked = 'True'
-    ValueUnchecked = 'False'
-    DisplayValueChecked = 'True'
-    DisplayValueUnchecked = 'False'
-    NullAndBlankState = cbUnchecked
-    Caption = #1048#1089#1082#1072#1090#1100' '#1074' '#1087#1088#1086#1078#1080#1074#1072#1102#1097#1080#1093
-    TabOrder = 1
-  end
   object GroupBox1: TGroupBox
     Left = 8
     Top = 56
     Width = 273
     Height = 49
-    TabOrder = 2
+    TabOrder = 0
     object Button1: TButton
       Left = 104
       Top = 16
@@ -154,5 +128,19 @@ object Form_find_fio: TForm_find_fio
       TabOrder = 1
       OnClick = Button2Click
     end
+  end
+  object cxtxtFIO: TcxTextEdit
+    Left = 56
+    Top = 12
+    TabOrder = 1
+    OnKeyPress = cxtxtFIOKeyPress
+    Width = 217
+  end
+  object cxchckbx1: TcxCheckBox
+    Left = 8
+    Top = 40
+    Caption = #1048#1089#1082#1072#1090#1100' '#1074' '#1087#1088#1086#1078#1080#1074#1072#1102#1097#1080#1093
+    TabOrder = 2
+    Width = 145
   end
 end

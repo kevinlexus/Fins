@@ -95,7 +95,7 @@ object Form_sel_arch_period: TForm_sel_arch_period
     Width = 75
     Height = 25
     Caption = #1054#1082
-    TabOrder = 1
+    TabOrder = 0
     OnClick = Button2Click
   end
   object Button3: TButton
@@ -105,20 +105,23 @@ object Form_sel_arch_period: TForm_sel_arch_period
     Height = 25
     Cancel = True
     Caption = #1054#1090#1084#1077#1085#1072
-    TabOrder = 2
+    TabOrder = 1
     OnClick = Button3Click
   end
-  object DBLookupComboboxEh1: TDBLookupComboboxEh
+  object cbbMg: TcxLookupComboBox
     Left = 72
-    Top = 48
+    Top = 56
+    Properties.DropDownAutoSize = True
+    Properties.DropDownSizeable = True
+    Properties.KeyFieldNames = 'MG'
+    Properties.ListColumns = <
+      item
+        FieldName = 'MG1'
+      end>
+    Properties.ListOptions.ShowHeader = False
+    Properties.ListSource = DS_mg
+    TabOrder = 2
     Width = 121
-    Height = 21
-    EditButtons = <>
-    KeyField = 'MG'
-    ListField = 'MG1'
-    ListSource = DS_mg
-    TabOrder = 0
-    Visible = True
   end
   object OD_mg: TOracleDataSet
     SQL.Strings = (

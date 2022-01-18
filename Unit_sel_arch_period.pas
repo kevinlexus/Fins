@@ -5,7 +5,10 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, OracleData, StdCtrls, wwdbedit, Wwdotdot, Wwdbcomb,
-  wwdblook, Utils, DBCtrlsEh, DBLookupEh, DBGridEh, Mask;
+  wwdblook, Utils, Mask, cxGraphics,
+  cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit,
+  cxTextEdit, cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit,
+  cxDBLookupComboBox;
 
 type
   TForm_sel_arch_period = class(TForm)
@@ -14,8 +17,8 @@ type
     Button3: TButton;
     OD_mgMG: TStringField;
     OD_mgMG1: TStringField;
-    DBLookupComboboxEh1: TDBLookupComboboxEh;
     DS_mg: TDataSource;
+    cbbMg: TcxLookupComboBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure wwDBLookupCombo1CloseUp(Sender: TObject; LookupTable,
       FillTable: TDataSet; modified: Boolean);
@@ -169,9 +172,9 @@ end;
 procedure TForm_sel_arch_period.FormCreate(Sender: TObject);
 begin
   if Form_main.arch_mg_ <> '' then
-     DBLookupComboboxEh1.KeyValue:=Form_main.arch_mg_
+     cbbMg.EditValue:=Form_main.arch_mg_
    else
-     DBLookupComboboxEh1.KeyValue:='999999';
+     cbbMg.EditValue:='999999';
 end;
 
 end.

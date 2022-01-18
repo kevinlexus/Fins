@@ -4,17 +4,18 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Mask, DBCtrlsEh, DB, wwdblook,
-  wwdbedit, wwcheckbox;
+  Dialogs, StdCtrls, Mask, DB, wwdblook,
+  wwdbedit, wwcheckbox, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxContainer, cxEdit, cxTextEdit, cxCheckBox;
 
 type
   TForm_find_fio = class(TForm)
     Label2: TLabel;
-    wwDBEdit1: TwwDBEdit;
-    wwCheckBox1: TwwCheckBox;
     GroupBox1: TGroupBox;
     Button1: TButton;
     Button2: TButton;
+    cxtxtFIO: TcxTextEdit;
+    cxchckbx1: TcxCheckBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -22,6 +23,7 @@ type
     procedure exit_ok;
     procedure exit_cancel;
     procedure wwDBEdit1KeyPress(Sender: TObject; var Key: Char);
+    procedure cxtxtFIOKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -46,12 +48,12 @@ end;
 procedure TForm_find_fio.exit_ok;
 begin
   Form_Main.cl_flt;
-  if wwCheckBox1.Checked = true then
+  if cxchckbx1.Checked = true then
     Form_Main.search_type_:=5
   else
     Form_Main.search_type_:=4;
 
-    Form_Main.last_name_:=wwDBEdit1.Text;
+    Form_Main.last_name_:=cxtxtFIO.Text;
 end;
 
 procedure TForm_find_fio.exit_cancel;
@@ -77,6 +79,16 @@ begin
 end;
 
 procedure TForm_find_fio.wwDBEdit1KeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key=#13 then
+  begin
+   exit_ok;
+   Close;
+  end;
+end;
+
+procedure TForm_find_fio.cxtxtFIOKeyPress(Sender: TObject;
+  var Key: Char);
 begin
   if Key=#13 then
   begin
