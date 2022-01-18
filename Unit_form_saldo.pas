@@ -4,8 +4,12 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, DB, OracleData, DBGridEh, Grids, Wwdbigrd,
-  Wwdbgrid, ExtCtrls, ComCtrls, Utils;
+  Dialogs, StdCtrls, DB, OracleData, Grids, 
+ ExtCtrls, ComCtrls, Utils, cxGraphics, cxControls,
+  cxLookAndFeels, cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter,
+  cxData, cxDataStorage, cxEdit, cxNavigator, cxDBData,
+  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGridLevel,
+  cxClasses, cxGridCustomView, cxGrid;
 
 type
   TForm_saldo = class(TForm)
@@ -20,20 +24,31 @@ type
     PageControl1: TPageControl;
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
-    wwDBGrid1: TwwDBGrid;
     OD_deb_usl: TOracleDataSet;
     DS_deb_usl: TDataSource;
-    wwDBGrid2: TwwDBGrid;
+    cxGrid1: TcxGrid;
+    cxGridDBTableView1: TcxGridDBTableView;
+    cxGridLevel1: TcxGridLevel;
+    cxGridDBTableView1USL: TcxGridDBColumn;
+    cxGridDBTableView1NM: TcxGridDBColumn;
+    cxGridDBTableView1ORG: TcxGridDBColumn;
+    cxGridDBTableView1NAME_ORG: TcxGridDBColumn;
+    cxGridDBTableView1SUMMA: TcxGridDBColumn;
+    cxGridDBTableView1SUMMA2: TcxGridDBColumn;
+    cxGrid2: TcxGrid;
+    cxGridDBTableView2: TcxGridDBTableView;
+    cxGridLevel2: TcxGridLevel;
+    cxGridDBTableView2MG: TcxGridDBColumn;
+    cxGridDBTableView2USL: TcxGridDBColumn;
+    cxGridDBTableView2NM: TcxGridDBColumn;
+    cxGridDBTableView2ORG: TcxGridDBColumn;
+    cxGridDBTableView2NAME_ORG: TcxGridDBColumn;
+    cxGridDBTableView2SUMMA: TcxGridDBColumn;
+    cxGridDBTableView2SUMMA2: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button3Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure state_arch2(mgold_: String);
-    procedure wwDBGrid1CalcCellColors(Sender: TObject; Field: TField;
-      State: TGridDrawState; Highlight: Boolean; AFont: TFont;
-      ABrush: TBrush);
-    procedure wwDBGrid2CalcCellColors(Sender: TObject; Field: TField;
-      State: TGridDrawState; Highlight: Boolean; AFont: TFont;
-      ABrush: TBrush);
     procedure OD_salAfterRefresh(DataSet: TDataSet);
     procedure OD_salAfterOpen(DataSet: TDataSet);
     procedure Timer1Timer(Sender: TObject);
@@ -119,9 +134,10 @@ begin
           except
       end;
 
-    wwDBGrid1.ColumnByName('NAME_ORG').FooterValue :='Итого:';
+    {wwDBGrid1.ColumnByName('NAME_ORG').FooterValue :='Итого:';
     wwDBGrid1.ColumnByName('SUMMA').FooterValue :=FloatToStrF(l_sum, ffFixed, 10, 2);
     wwDBGrid1.ColumnByName('SUMMA2').FooterValue :=FloatToStrF(l_sum2, ffFixed, 10, 2);
+    }
   end
   else if (PageControl1.ActivePageIndex= 1) and (OD_deb_usl.Active=true) then
   begin
@@ -138,9 +154,10 @@ begin
           except
       end;
 
-    wwDBGrid2.ColumnByName('NAME_ORG').FooterValue :='Итого:';
+{    wwDBGrid2.ColumnByName('NAME_ORG').FooterValue :='Итого:';
     wwDBGrid2.ColumnByName('SUMMA').FooterValue :=FloatToStrF(l_sum, ffFixed, 10, 2);
     wwDBGrid2.ColumnByName('SUMMA2').FooterValue :=FloatToStrF(l_sum2, ffFixed, 10, 2);
+    }
   end;
 end;
 
@@ -165,30 +182,6 @@ begin
 
   state_arch2('');
   Timer1.Enabled:=true;
-end;
-
-procedure TForm_saldo.wwDBGrid1CalcCellColors(Sender: TObject;
-  Field: TField; State: TGridDrawState; Highlight: Boolean; AFont: TFont;
-  ABrush: TBrush);
-begin
-   if (Field<>Nil) and ((Field.FieldName='SUMMA') or (Field.FieldName='SUMMA2')) then
-   begin
-    ABrush.Color:= clSkyBlue;
-    AFont.Color:=clBlack;
-   end;
-
-end;
-
-procedure TForm_saldo.wwDBGrid2CalcCellColors(Sender: TObject;
-  Field: TField; State: TGridDrawState; Highlight: Boolean; AFont: TFont;
-  ABrush: TBrush);
-begin
-   if (Field<>Nil) and ((Field.FieldName='SUMMA') or (Field.FieldName='SUMMA2')) then
-   begin
-    ABrush.Color:= clSkyBlue;
-    AFont.Color:=clBlack;
-   end;
-
 end;
 
 procedure TForm_saldo.OD_salAfterRefresh(DataSet: TDataSet);

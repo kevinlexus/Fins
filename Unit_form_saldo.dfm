@@ -1,6 +1,6 @@
 object Form_saldo: TForm_saldo
-  Left = 646
-  Top = 179
+  Left = 832
+  Top = 219
   Width = 485
   Height = 485
   BorderIcons = [biSystemMenu, biMinimize]
@@ -156,74 +156,234 @@ object Form_saldo: TForm_saldo
     OnChange = PageControl1Change
     object TabSheet1: TTabSheet
       Caption = #1057#1072#1083#1100#1076#1086
-      object wwDBGrid1: TwwDBGrid
+      object cxGrid1: TcxGrid
         Left = 0
         Top = 0
-        Width = 567
-        Height = 455
-        Selected.Strings = (
-          'USL'#9'4'#9#1050#1086#1076'~'#1091#1089#1083#9'F'
-          'NM'#9'19'#9#1059#1089#1083#1091#1075#1072#9'F'
-          'ORG'#9'4'#9#1050#1086#1076'~'#1086#1088#1075'.'#9'F'
-          'NAME_ORG'#9'16'#9#1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103#9'F'
-          'SUMMA'#9'11'#9#1042#1093'.'#1089#1072#1083#1100#1076#1086#9'F'
-          'SUMMA2'#9'12'#9#1048#1089#1093'.'#1089#1072#1083#1100#1076#1086#9'F')
-        IniAttributes.Delimiter = ';;'
-        TitleColor = clBtnFace
-        FixedCols = 0
-        ShowHorzScrollBar = True
+        Width = 461
+        Height = 355
         Align = alClient
-        DataSource = DS_sal
-        Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgWordWrap, dgShowFooter, dgProportionalColResize, dgDblClickColSizing]
         TabOrder = 0
-        TitleAlignment = taLeftJustify
-        TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -14
-        TitleFont.Name = 'MS Sans Serif'
-        TitleFont.Style = []
-        TitleLines = 2
-        TitleButtons = False
-        UseTFields = False
-        OnCalcCellColors = wwDBGrid1CalcCellColors
-        FooterHeight = 20
+        object cxGridDBTableView1: TcxGridDBTableView
+          Navigator.Buttons.CustomButtons = <>
+          Navigator.Buttons.Insert.Visible = False
+          Navigator.Buttons.Append.Visible = False
+          Navigator.Buttons.Delete.Visible = False
+          Navigator.Buttons.Edit.Visible = False
+          Navigator.Buttons.Post.Visible = False
+          Navigator.Buttons.Cancel.Visible = False
+          Navigator.Buttons.Refresh.Visible = False
+          Navigator.Buttons.SaveBookmark.Visible = False
+          Navigator.Buttons.GotoBookmark.Visible = False
+          Navigator.Buttons.Filter.Visible = False
+          Navigator.Visible = True
+          DataController.DataSource = DS_sal
+          DataController.Summary.DefaultGroupSummaryItems = <
+            item
+              Format = #1054#1073#1098#1077#1084' 0.00'
+              Kind = skSum
+            end
+            item
+              Format = #1048#1079#1084#1077#1085#1077#1085#1080#1103' 0.00'
+              Kind = skSum
+            end
+            item
+              Format = #1058#1072#1088#1080#1092' 0.00'
+              Kind = skSum
+            end
+            item
+              Kind = skSum
+              Position = spFooter
+            end
+            item
+              Format = #1048#1090#1086#1075#1086' 0.00'
+              Kind = skSum
+            end
+            item
+              Kind = skSum
+              Position = spFooter
+            end>
+          DataController.Summary.FooterSummaryItems = <
+            item
+              Kind = skSum
+            end
+            item
+              Format = #1048#1090#1086#1075#1086' 0.00'
+            end
+            item
+              Kind = skSum
+            end
+            item
+              Kind = skSum
+              Column = cxGridDBTableView1SUMMA
+            end
+            item
+              Kind = skSum
+              Column = cxGridDBTableView1SUMMA2
+            end>
+          DataController.Summary.SummaryGroups = <>
+          OptionsBehavior.CellHints = True
+          OptionsData.Deleting = False
+          OptionsData.Editing = False
+          OptionsData.Inserting = False
+          OptionsView.ColumnAutoWidth = True
+          OptionsView.Footer = True
+          OptionsView.FooterMultiSummaries = True
+          OptionsView.GroupByBox = False
+          OptionsView.GroupFooterMultiSummaries = True
+          OptionsView.HeaderAutoHeight = True
+          OptionsView.Indicator = True
+          object cxGridDBTableView1USL: TcxGridDBColumn
+            Caption = #1050#1086#1076' '#1091#1089#1083'.'
+            DataBinding.FieldName = 'USL'
+            Width = 34
+          end
+          object cxGridDBTableView1NM: TcxGridDBColumn
+            Caption = #1059#1089#1083#1091#1075#1072
+            DataBinding.FieldName = 'NM'
+            Width = 111
+          end
+          object cxGridDBTableView1ORG: TcxGridDBColumn
+            Caption = #1050#1086#1076' '#1086#1088#1075'.'
+            DataBinding.FieldName = 'ORG'
+            Width = 43
+          end
+          object cxGridDBTableView1NAME_ORG: TcxGridDBColumn
+            Caption = #1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103
+            DataBinding.FieldName = 'NAME_ORG'
+            Width = 114
+          end
+          object cxGridDBTableView1SUMMA: TcxGridDBColumn
+            Caption = #1042#1093'.'#1089#1072#1083#1100#1076#1086
+            DataBinding.FieldName = 'SUMMA'
+            Width = 71
+          end
+          object cxGridDBTableView1SUMMA2: TcxGridDBColumn
+            Caption = #1048#1089#1093'.'#1089#1072#1083#1100#1076#1086
+            DataBinding.FieldName = 'SUMMA2'
+            Width = 74
+          end
+        end
+        object cxGridLevel1: TcxGridLevel
+          GridView = cxGridDBTableView1
+        end
       end
     end
     object TabSheet2: TTabSheet
       Caption = #1057#1072#1083#1100#1076#1086'-'#1087#1077#1088#1080#1086#1076
       ImageIndex = 1
-      object wwDBGrid2: TwwDBGrid
+      object cxGrid2: TcxGrid
         Left = 0
         Top = 0
         Width = 461
         Height = 355
-        Selected.Strings = (
-          'MG'#9'5'#9#1055#1077#1088#1080#1086#1076#9'F'
-          'USL'#9'2'#9#1050#1086#1076'~'#1091#1089#1083#9'F'
-          'NM'#9'14'#9#1059#1089#1083#1091#1075#1072#9'F'
-          'ORG'#9'2'#9#1050#1086#1076'~'#1086#1088#1075'.'#9'F'
-          'NAME_ORG'#9'14'#9#1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103#9'F'
-          'SUMMA'#9'10'#9#1042#1093'.'#1089#1091#1084#1084#1072#9'F'
-          'SUMMA2'#9'9'#9#1048#1089#1093'.'#1089#1091#1084#1084#1072#9'F')
-        IniAttributes.Delimiter = ';;'
-        TitleColor = clBtnFace
-        FixedCols = 0
-        ShowHorzScrollBar = True
         Align = alClient
-        DataSource = DS_deb_usl
-        Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgWordWrap, dgShowFooter, dgProportionalColResize, dgDblClickColSizing]
         TabOrder = 0
-        TitleAlignment = taLeftJustify
-        TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -14
-        TitleFont.Name = 'MS Sans Serif'
-        TitleFont.Style = []
-        TitleLines = 2
-        TitleButtons = False
-        UseTFields = False
-        OnCalcCellColors = wwDBGrid1CalcCellColors
-        FooterHeight = 20
+        object cxGridDBTableView2: TcxGridDBTableView
+          Navigator.Buttons.CustomButtons = <>
+          Navigator.Buttons.Insert.Visible = False
+          Navigator.Buttons.Append.Visible = False
+          Navigator.Buttons.Delete.Visible = False
+          Navigator.Buttons.Edit.Visible = False
+          Navigator.Buttons.Post.Visible = False
+          Navigator.Buttons.Cancel.Visible = False
+          Navigator.Buttons.Refresh.Visible = False
+          Navigator.Buttons.SaveBookmark.Visible = False
+          Navigator.Buttons.GotoBookmark.Visible = False
+          Navigator.Buttons.Filter.Visible = False
+          Navigator.Visible = True
+          DataController.DataSource = DS_deb_usl
+          DataController.Summary.DefaultGroupSummaryItems = <
+            item
+              Format = #1054#1073#1098#1077#1084' 0.00'
+              Kind = skSum
+            end
+            item
+              Format = #1048#1079#1084#1077#1085#1077#1085#1080#1103' 0.00'
+              Kind = skSum
+            end
+            item
+              Format = #1058#1072#1088#1080#1092' 0.00'
+              Kind = skSum
+            end
+            item
+              Kind = skSum
+              Position = spFooter
+            end
+            item
+              Format = #1048#1090#1086#1075#1086' 0.00'
+              Kind = skSum
+            end
+            item
+              Kind = skSum
+              Position = spFooter
+            end>
+          DataController.Summary.FooterSummaryItems = <
+            item
+              Kind = skSum
+            end
+            item
+              Format = #1048#1090#1086#1075#1086' 0.00'
+            end
+            item
+              Kind = skSum
+            end
+            item
+              Kind = skSum
+            end
+            item
+              Kind = skSum
+            end>
+          DataController.Summary.SummaryGroups = <>
+          OptionsBehavior.CellHints = True
+          OptionsData.Deleting = False
+          OptionsData.Editing = False
+          OptionsData.Inserting = False
+          OptionsView.ColumnAutoWidth = True
+          OptionsView.Footer = True
+          OptionsView.FooterMultiSummaries = True
+          OptionsView.GroupByBox = False
+          OptionsView.GroupFooterMultiSummaries = True
+          OptionsView.HeaderAutoHeight = True
+          OptionsView.Indicator = True
+          object cxGridDBTableView2MG: TcxGridDBColumn
+            Caption = #1055#1077#1088#1080#1086#1076
+            DataBinding.FieldName = 'MG'
+            Width = 59
+          end
+          object cxGridDBTableView2USL: TcxGridDBColumn
+            Caption = #1050#1086#1076' '#1091#1089#1083'.'
+            DataBinding.FieldName = 'USL'
+            Width = 38
+          end
+          object cxGridDBTableView2NM: TcxGridDBColumn
+            Caption = #1059#1089#1083#1091#1075#1072
+            DataBinding.FieldName = 'NM'
+            Width = 59
+          end
+          object cxGridDBTableView2ORG: TcxGridDBColumn
+            Caption = #1050#1086#1076' '#1086#1088#1075'.'
+            DataBinding.FieldName = 'ORG'
+            Width = 37
+          end
+          object cxGridDBTableView2NAME_ORG: TcxGridDBColumn
+            Caption = #1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103
+            DataBinding.FieldName = 'NAME_ORG'
+            Width = 107
+          end
+          object cxGridDBTableView2SUMMA: TcxGridDBColumn
+            Caption = #1042#1093'.'#1089#1072#1083#1100#1076#1086
+            DataBinding.FieldName = 'SUMMA'
+            Width = 68
+          end
+          object cxGridDBTableView2SUMMA2: TcxGridDBColumn
+            Caption = #1048#1089#1093'.'#1089#1072#1083#1100#1076#1086
+            DataBinding.FieldName = 'SUMMA2'
+            Width = 79
+          end
+        end
+        object cxGridLevel2: TcxGridLevel
+          GridView = cxGridDBTableView2
+        end
       end
     end
   end
@@ -272,22 +432,23 @@ object Form_saldo: TForm_saldo
     MasterFields = 'lsk'
     QueryAllRecords = False
     Session = DataModule1.OracleSession1
+    Active = True
     AfterOpen = OD_salAfterOpen
     AfterRefresh = OD_salAfterRefresh
-    Left = 24
-    Top = 32
+    Left = 128
+    Top = 240
   end
   object DS_sal: TDataSource
     DataSet = OD_sal
-    Left = 55
-    Top = 32
+    Left = 159
+    Top = 240
   end
   object Timer1: TTimer
     Enabled = False
     Interval = 20
     OnTimer = Timer1Timer
-    Left = 152
-    Top = 104
+    Left = 256
+    Top = 312
   end
   object OD_deb_usl: TOracleDataSet
     SQL.Strings = (
@@ -334,14 +495,15 @@ object Form_saldo: TForm_saldo
     MasterFields = 'lsk'
     QueryAllRecords = False
     Session = DataModule1.OracleSession1
+    Active = True
     AfterOpen = OD_salAfterOpen
     AfterRefresh = OD_salAfterRefresh
-    Left = 24
-    Top = 80
+    Left = 128
+    Top = 288
   end
   object DS_deb_usl: TDataSource
     DataSet = OD_deb_usl
-    Left = 55
-    Top = 80
+    Left = 159
+    Top = 288
   end
 end

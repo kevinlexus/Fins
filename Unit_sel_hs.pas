@@ -52,10 +52,7 @@ type
     procedure BitBtn2Click(Sender: TObject);
     procedure Edit1Change(Sender: TObject);
     procedure BitBtn3Click(Sender: TObject);
-    procedure DBGridEh1KeyUp(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
     procedure FormShow(Sender: TObject);
-    procedure DBGridEh1DblClick(Sender: TObject);
     procedure N1Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
   private
@@ -210,35 +207,10 @@ begin
     Edit3.Text := '';}
 end;
 
-procedure TForm_sel_hs.DBGridEh1KeyUp(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
-begin
-  if (Key = VK_SPACE) then
-  begin
-    if (DataModule1.OD_list_choice.State = dsBrowse) then
-      DataModule1.OD_list_choice.Edit;
-    if (DataModule1.OD_list_choice.FieldByName('sel').AsInteger = 0) then
-      DataModule1.OD_list_choice.FieldByName('sel').AsInteger := 1
-    else
-      DataModule1.OD_list_choice.FieldByName('sel').AsInteger := 0;
-  end;
-end;
-
 procedure TForm_sel_hs.FormShow(Sender: TObject);
 begin
   DataModule1.OD_list_choice.Active := true;
 end;
-
-procedure TForm_sel_hs.DBGridEh1DblClick(Sender: TObject);
-begin
-  if (DataModule1.OD_list_choice.State = dsBrowse) then
-    DataModule1.OD_list_choice.Edit;
-  if (DataModule1.OD_list_choice.FieldByName('sel').AsInteger = 0) then
-    DataModule1.OD_list_choice.FieldByName('sel').AsInteger := 1
-  else
-    DataModule1.OD_list_choice.FieldByName('sel').AsInteger := 0;
-end;
-
 
 
 procedure TForm_sel_hs.N1Click(Sender: TObject);
