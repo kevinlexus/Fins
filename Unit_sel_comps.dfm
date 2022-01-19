@@ -1,6 +1,6 @@
 object Form_sel_comps: TForm_sel_comps
-  Left = 665
-  Top = 606
+  Left = 1205
+  Top = 358
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = #1042#1099#1073#1086#1088' '#1082#1086#1084#1087#1100#1102#1090#1077#1088#1072

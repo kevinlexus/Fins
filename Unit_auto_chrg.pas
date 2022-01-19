@@ -4,21 +4,29 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, OracleData, ExtCtrls, Wwdbgrid, StdCtrls,
-  Menus, ComCtrls, wwriched, Utils, Grids, Wwdbigrd;
+  Dialogs, DB, OracleData, ExtCtrls, StdCtrls,
+  Menus, ComCtrls, Utils, Grids, cxGraphics,
+  cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxStyles,
+  cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
+  cxDBData, cxCheckBox, cxGridLevel, cxGridCustomTableView,
+  cxGridTableView, cxGridDBTableView, cxClasses, cxGridCustomView, cxGrid,
+  wwriched;
 
 type
   TForm_auto_chrg = class(TForm)
     OD_usl: TOracleDataSet;
     Panel1: TPanel;
     DS_usl: TDataSource;
-    wwDBGrid1: TwwDBGrid;
     Button1: TButton;
     Panel2: TPanel;
     PopupMenu1: TPopupMenu;
     N1: TMenuItem;
     N2: TMenuItem;
-    wwDBRichEdit1: TwwDBRichEdit;
+    cxGrid1: TcxGrid;
+    cxGridDBTableView1: TcxGridDBTableView;
+    cxGridLevel1: TcxGridLevel;
+    cxGridDBTableView1USL: TcxGridDBColumn;
+    cxGridDBTableView1NM: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure N1Click(Sender: TObject);

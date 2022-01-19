@@ -1,6 +1,6 @@
 object Form_auto_chrg: TForm_auto_chrg
-  Left = 386
-  Top = 216
+  Left = 546
+  Top = 404
   Width = 476
   Height = 555
   Caption = #1040#1074#1090#1086#1085#1072#1095#1080#1089#1083#1077#1085#1080#1077' '#1087#1086' '#1089#1095#1077#1090#1095#1080#1082#1072#1084
@@ -106,41 +106,13 @@ object Form_auto_chrg: TForm_auto_chrg
       OnClick = Button1Click
     end
   end
-  object wwDBGrid1: TwwDBGrid
-    Left = 0
-    Top = 177
-    Width = 460
-    Height = 298
-    Selected.Strings = (
-      'USL'#9'4'#9#1050#1086#1076#9'F'
-      'NM'#9'65'#9#1059#1089#1083#1091#1075#1072#9'F')
-    IniAttributes.Delimiter = ';;'
-    TitleColor = clBtnFace
-    FixedCols = 0
-    ShowHorzScrollBar = True
-    Align = alClient
-    DataSource = DS_usl
-    KeyOptions = []
-    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgWordWrap, dgPerfectRowFit, dgShowCellHint, dgProportionalColResize]
-    PopupMenu = PopupMenu1
-    TabOrder = 1
-    TitleAlignment = taLeftJustify
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'Tahoma'
-    TitleFont.Style = []
-    TitleLines = 1
-    TitleButtons = False
-    UseTFields = False
-  end
   object Panel2: TPanel
     Left = 0
     Top = 0
     Width = 460
     Height = 177
     Align = alTop
-    TabOrder = 2
+    TabOrder = 1
     object wwDBRichEdit1: TwwDBRichEdit
       Left = 1
       Top = 1
@@ -256,13 +228,82 @@ object Form_auto_chrg: TForm_auto_chrg
         720D0A5C7061720D0A7D0D0A00}
     end
   end
+  object cxGrid1: TcxGrid
+    Left = 0
+    Top = 177
+    Width = 460
+    Height = 298
+    Align = alClient
+    TabOrder = 2
+    object cxGridDBTableView1: TcxGridDBTableView
+      Navigator.Buttons.CustomButtons = <>
+      DataController.DataSource = DS_usl
+      DataController.Summary.DefaultGroupSummaryItems = <
+        item
+          Format = #1054#1073#1098#1077#1084' 0.00'
+          Kind = skSum
+        end
+        item
+          Format = #1048#1079#1084#1077#1085#1077#1085#1080#1103' 0.00'
+          Kind = skSum
+        end
+        item
+          Format = #1058#1072#1088#1080#1092' 0.00'
+          Kind = skSum
+        end
+        item
+          Kind = skSum
+          Position = spFooter
+        end
+        item
+          Format = #1048#1090#1086#1075#1086' 0.00'
+          Kind = skSum
+        end
+        item
+          Kind = skSum
+          Position = spFooter
+        end>
+      DataController.Summary.FooterSummaryItems = <
+        item
+          Kind = skSum
+        end
+        item
+          Format = #1048#1090#1086#1075#1086' 0.00'
+        end
+        item
+          Kind = skSum
+        end>
+      DataController.Summary.SummaryGroups = <>
+      OptionsBehavior.CellHints = True
+      OptionsData.Deleting = False
+      OptionsData.Editing = False
+      OptionsData.Inserting = False
+      OptionsView.ColumnAutoWidth = True
+      OptionsView.FooterMultiSummaries = True
+      OptionsView.GroupByBox = False
+      OptionsView.GroupFooterMultiSummaries = True
+      OptionsView.HeaderAutoHeight = True
+      OptionsView.Indicator = True
+      object cxGridDBTableView1USL: TcxGridDBColumn
+        Caption = #1050#1086#1076
+        DataBinding.FieldName = 'USL'
+      end
+      object cxGridDBTableView1NM: TcxGridDBColumn
+        Caption = #1059#1089#1083#1091#1075#1072
+        DataBinding.FieldName = 'NM'
+      end
+    end
+    object cxGridLevel1: TcxGridLevel
+      GridView = cxGridDBTableView1
+    end
+  end
   object OD_usl: TOracleDataSet
     SQL.Strings = (
       'select * from scott.usl u '
       'where u.counter is not null')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      04000000300000000400000055534C4D0100000000000300000055534C010000
+      04000000310000000400000055534C4D0100000000000300000055534C010000
       000000050000004B41525457010000000000040000004B574E49010000000000
       030000004C50570100000000000600000045445F495A4D010000000000020000
       004E4D010000000000030000004E4D310100000000000500000055534C5F5001
@@ -287,7 +328,8 @@ object Form_auto_chrg: TForm_auto_chrg
       505F50454E5F5245460100000000000700000055534C5F564F4C010000000000
       0800000042494C4C5F434F4C0100000000000900000042494C4C5F434F4C3201
       0000000000080000004E4D5F53484F52540100000000000B0000005553455F56
-      4F4C5F43414E01000000000009000000484944455F43485247010000000000}
+      4F4C5F43414E01000000000009000000484944455F434852470100000000000B
+      00000055534C4D5F47524F555031010000000000}
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True
