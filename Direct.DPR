@@ -41,7 +41,6 @@ uses
   Unit_form_admin in 'Unit_form_admin.pas' {Form_admin},
   Unit_form_kart in 'Unit_form_kart.pas' {Form_kart},
   Unit_form_kart_pr in 'Unit_form_kart_pr.pas' {Form_kart_pr},
-  Unit_form_subsidii in 'Unit_form_subsidii.pas' {Form_subsidii},
   Unit_sel_comps in 'Unit_sel_comps.pas' {Form_sel_comps},
   Unit_get_pay in 'Unit_get_pay.pas' {Form_get_pay},
   Unit_inkass in 'Unit_inkass.pas' {Form_inkass},

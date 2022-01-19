@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Unit_form_kart, StdCtrls, Mask, DBCtrls,
   ExtCtrls, DB, OracleData, 
-  DM_module1, Oracle, Utils, Buttons, Wwintl, ComCtrls, frxClass, frxDBSet,
+  DM_module1, Oracle, Utils, Buttons, ComCtrls, frxClass, frxDBSet,
   cxGraphics, cxControls,
   cxDBEdit,
 
@@ -255,14 +255,6 @@ type
     procedure Button3Click(Sender: TObject);
     procedure save_changes(ask_: Integer);
     procedure CMDialogKey(var Msg: TWMKey); message CM_DIALOGKEY;
-    procedure wwDBLookupCombo2CloseUp(Sender: TObject; LookupTable,
-      FillTable: TDataSet; modified: Boolean);
-    procedure wwDBLookupCombo2Exit(Sender: TObject);
-    procedure wwDBLookupCombo3CloseUp(Sender: TObject; LookupTable,
-      FillTable: TDataSet; modified: Boolean);
-    procedure wwDBLookupCombo3Exit(Sender: TObject);
-    procedure wwDBNavigator1DeleteClick(Sender: TObject);
-    procedure wwNavButton6Click(Sender: TObject);
     procedure OD_c_statesBeforePost(DataSet: TDataSet);
     procedure OD_c_states2BeforePost(DataSet: TDataSet);
     procedure Button2Click(Sender: TObject);
@@ -665,61 +657,6 @@ begin
   inherited;
 end;
 
-procedure TForm_kart_pr.wwDBLookupCombo2CloseUp(Sender: TObject;
-  LookupTable, FillTable: TDataSet; modified: Boolean);
-begin
-  {  OD_c_states.FieldByName('FK_STATUS').AsInteger:=
-      OD_c_status_pr.FieldByName('ID').AsInteger;
-   }
-end;
-
-procedure TForm_kart_pr.wwDBLookupCombo2Exit(Sender: TObject);
-begin
-  {  if OD_c_status_pr.SearchRecord('NAME', wwDBLookupCombo2.Text,
-      [srFromBeginning]) <> true then
-    begin
-      msg2('Данный статус не найден!', 'Ошибка', MB_OK+MB_ICONSTOP);
-    end;
-   }
-end;
-
-procedure TForm_kart_pr.wwDBLookupCombo3CloseUp(Sender: TObject;
-  LookupTable, FillTable: TDataSet; modified: Boolean);
-begin
-  {  OD_c_states2.FieldByName('FK_STATUS').AsInteger:=
-      OD_c_status_pr2.FieldByName('ID').AsInteger;
-   }
-end;
-
-procedure TForm_kart_pr.wwDBLookupCombo3Exit(Sender: TObject);
-begin
-  {  if OD_c_status_pr2.SearchRecord('NAME', wwDBLookupCombo3.Text,
-      [srFromBeginning]) <> true then
-    begin
-      msg2('Данный статус не найден!', 'Ошибка', MB_OK+MB_ICONSTOP);
-    end;
-   }
-end;
-
-procedure TForm_kart_pr.wwDBNavigator1DeleteClick(Sender: TObject);
-begin
-  {  if msg3('Удалить данный статус?',
-     'Внимание!',
-     MB_YESNO+MB_ICONQUESTION) <> IDYES then
-    begin
-      Abort;
-    end;}
-end;
-
-procedure TForm_kart_pr.wwNavButton6Click(Sender: TObject);
-begin
-  {  if msg3('Удалить данный статус?',
-     'Внимание!',
-     MB_YESNO+MB_ICONQUESTION) <> IDYES then
-    begin
-      Abort;
-    end;}
-end;
 
 procedure TForm_kart_pr.OD_c_statesBeforePost(DataSet: TDataSet);
 begin

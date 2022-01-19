@@ -446,7 +446,7 @@ var
 implementation
 
 uses
-  Unit_form_kart_pr, Unit_form_subsidii, Unit_Mainform, Unit_list_kart,
+  Unit_form_kart_pr, Unit_Mainform, Unit_list_kart,
   Unit_new_lsk, DM_module1, Unit_chargepay, Unit_det_chrg, Unit_log_actions,
   Unit_sel_lsk_contr, Unit_set_krt_psch, Unit_change_house_nabor2,
   Unit_sch_history, Unit_reg_sch;
@@ -529,12 +529,9 @@ begin
   //TabSheet10.Enabled:=false;
   TabSheet11.Enabled := false;
 
-  //wwDBComboDlg1.Enabled := false;
-  //wwDBComboDlg1.ReadOnly:=True;
 
   cbb1KUL.Enabled := false;
 
-  //   wwDBEdit1.Enabled:=false;
   cbb12HOUSE_ID.Enabled := false;
 
   cxtxtKw2.Enabled := false;
@@ -584,10 +581,7 @@ begin
     //TabSheet10.Enabled:=true;
     TabSheet11.Enabled := true;
 
-    //wwDBComboDlg1.Enabled := true;
-    //    wwDBComboDlg1.ReadOnly:=false;
     cbb1KUL.Enabled := true;
-    //     wwDBEdit1.Enabled:=true;
     cbb12HOUSE_ID.Enabled := true;
     cxtxtKw2.Enabled := true;
     cbb4FK_DISTR.Enabled := true;
@@ -808,8 +802,6 @@ begin
   with Form_kart do
   begin
     cxtxtKw2.text := Form_list_kart.OD_list_kart.FieldByName('n_kw').AsString;
-    //  wwDBEdit1.text:=
-    //    Form_list_kart.OD_list_kart.FieldByName('n_nd').AsString;
     with OD_vvod do
     begin
       Active := false;
@@ -925,8 +917,6 @@ begin
   Form_list_kart.OD_list_kart.RefreshRecord;
 
   Form_main.ToolButton20.Visible := false;
-  if FF('Form_subsidii', 0) = 1 then
-    Form_subsidii.Close;
   if FF('Form_kart_pr', 0) = 1 then
     Form_kart_pr.Close;
   if FF('Form_new_lsk', 0) = 1 then
@@ -1102,7 +1092,6 @@ begin
   PageControl2.ActivePageIndex := 0;
 
   TabSheet6.TabVisible := True;
-//  wwDBComboDlg1.ShowButton := False;
 
   cbb9REU.Enabled := false;
 

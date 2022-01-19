@@ -154,7 +154,7 @@ object Form_add_usl: TForm_add_usl
     Width = 311
     Height = 47
     Align = alBottom
-    TabOrder = 15
+    TabOrder = 10
     object Button1: TButton
       Left = 150
       Top = 16
@@ -180,28 +180,28 @@ object Form_add_usl: TForm_add_usl
     Top = 64
     Width = 121
     Height = 21
-    TabOrder = 1
+    TabOrder = 0
   end
   object Edit2: TEdit
     Left = 184
     Top = 88
     Width = 121
     Height = 21
-    TabOrder = 2
+    TabOrder = 1
   end
   object Edit3: TEdit
     Left = 184
     Top = 136
     Width = 121
     Height = 21
-    TabOrder = 4
+    TabOrder = 3
   end
   object Edit5: TEdit
     Left = 184
     Top = 160
     Width = 121
     Height = 21
-    TabOrder = 5
+    TabOrder = 4
     OnKeyPress = Edit5KeyPress
   end
   object CheckBox2: TCheckBox
@@ -211,23 +211,8 @@ object Form_add_usl: TForm_add_usl
     Height = 17
     Caption = #1050#1086#1101#1092#1092' '#1076#1086#1073#1072#1074#1080#1090#1100' '#1082#1072#1082' '#1091' '#1091#1089#1083#1091#1075#1080':'
     Enabled = False
-    TabOrder = 7
+    TabOrder = 5
     OnClick = CheckBox2Click
-  end
-  object wwDBLookupCombo1: TwwDBLookupCombo
-    Left = 184
-    Top = 184
-    Width = 121
-    Height = 21
-    DropDownAlignment = taLeftJustify
-    LookupTable = OD_usl
-    LookupField = 'NM'
-    Enabled = False
-    TabOrder = 6
-    AutoDropDown = False
-    ShowButton = True
-    PreciseEditRegion = False
-    AllowClearKey = False
   end
   object Edit6: TEdit
     Left = 184
@@ -235,7 +220,7 @@ object Form_add_usl: TForm_add_usl
     Width = 121
     Height = 21
     Enabled = False
-    TabOrder = 8
+    TabOrder = 6
     OnKeyPress = Edit6KeyPress
   end
   object CheckBox3: TCheckBox
@@ -245,23 +230,8 @@ object Form_add_usl: TForm_add_usl
     Height = 17
     Caption = #1053#1086#1088#1084#1091' '#1076#1086#1073#1072#1074#1080#1090#1100' '#1082#1072#1082' '#1091' '#1091#1089#1083#1091#1075#1080':'
     Enabled = False
-    TabOrder = 10
+    TabOrder = 7
     OnClick = CheckBox3Click
-  end
-  object wwDBLookupCombo2: TwwDBLookupCombo
-    Left = 184
-    Top = 232
-    Width = 121
-    Height = 21
-    DropDownAlignment = taLeftJustify
-    LookupTable = OD_usl2
-    LookupField = 'NM'
-    Enabled = False
-    TabOrder = 9
-    AutoDropDown = False
-    ShowButton = True
-    PreciseEditRegion = False
-    AllowClearKey = False
   end
   object Edit7: TEdit
     Left = 184
@@ -269,7 +239,7 @@ object Form_add_usl: TForm_add_usl
     Width = 121
     Height = 21
     Enabled = False
-    TabOrder = 11
+    TabOrder = 8
     OnKeyPress = Edit7KeyPress
   end
   object CheckBox4: TCheckBox
@@ -279,66 +249,98 @@ object Form_add_usl: TForm_add_usl
     Height = 17
     Caption = #1054#1088#1075'. '#1076#1086#1073#1072#1074#1080#1090#1100' '#1082#1072#1082' '#1091' '#1091#1089#1083#1091#1075#1080':'
     Enabled = False
-    TabOrder = 13
+    TabOrder = 9
     OnClick = CheckBox4Click
-  end
-  object wwDBLookupCombo3: TwwDBLookupCombo
-    Left = 184
-    Top = 280
-    Width = 121
-    Height = 21
-    DropDownAlignment = taLeftJustify
-    LookupTable = OD_usl3
-    LookupField = 'NM'
-    Enabled = False
-    TabOrder = 12
-    AutoDropDown = False
-    ShowButton = True
-    PreciseEditRegion = False
-    AllowClearKey = False
-  end
-  object wwDBLookupCombo4: TwwDBLookupCombo
-    Left = 184
-    Top = 304
-    Width = 121
-    Height = 21
-    DropDownAlignment = taLeftJustify
-    LookupTable = OD_t_org
-    LookupField = 'NAME'
-    Enabled = False
-    TabOrder = 14
-    AutoDropDown = False
-    ShowButton = True
-    PreciseEditRegion = False
-    AllowClearKey = False
-  end
-  object wwRadioGroup1: TwwRadioGroup
-    Left = 8
-    Top = 8
-    Width = 297
-    Height = 49
-    DisableThemes = False
-    ItemIndex = 0
-    Caption = #1044#1086#1073#1072#1074#1080#1090#1100' '#1091#1089#1083#1091#1075#1091
-    Items.Strings = (
-      #1050#1072#1082' '#1085#1086#1074#1091#1102' '#1091#1089#1083#1091#1075#1091
-      #1050#1072#1082' '#1076#1086#1095#1077#1088#1085#1102#1102' '#1091#1089#1083#1091#1075#1091' '#1082' '#1074#1099#1073#1088#1072#1085#1085#1086#1081' '#1074' '#1089#1087#1088#1072#1074#1086#1095#1085#1080#1082#1077)
-    TabOrder = 0
-    OnClick = wwRadioGroup1Click
   end
   object Edit4: TEdit
     Left = 184
     Top = 112
     Width = 121
     Height = 21
-    TabOrder = 3
+    TabOrder = 2
+  end
+  object cbbUsl: TcxLookupComboBox
+    Left = 185
+    Top = 184
+    Enabled = False
+    Properties.GridMode = True
+    Properties.KeyFieldNames = 'USL'
+    Properties.ListColumns = <
+      item
+        FieldName = 'NM'
+      end>
+    Properties.ListOptions.ShowHeader = False
+    Properties.ListSource = DS_usl
+    TabOrder = 11
+    Width = 118
+  end
+  object cbbUsl2: TcxLookupComboBox
+    Left = 185
+    Top = 232
+    Enabled = False
+    Properties.GridMode = True
+    Properties.KeyFieldNames = 'USL'
+    Properties.ListColumns = <
+      item
+        FieldName = 'NM'
+      end>
+    Properties.ListOptions.ShowHeader = False
+    Properties.ListSource = DS_usl2
+    TabOrder = 12
+    Width = 118
+  end
+  object cbbUsl3: TcxLookupComboBox
+    Left = 185
+    Top = 280
+    Enabled = False
+    Properties.GridMode = True
+    Properties.KeyFieldNames = 'USL'
+    Properties.ListColumns = <
+      item
+        FieldName = 'NM'
+      end>
+    Properties.ListOptions.ShowHeader = False
+    Properties.ListSource = DS_usl3
+    TabOrder = 13
+    Width = 118
+  end
+  object cbbOrg: TcxLookupComboBox
+    Left = 185
+    Top = 306
+    Enabled = False
+    Properties.GridMode = True
+    Properties.KeyFieldNames = 'ID'
+    Properties.ListColumns = <
+      item
+        FieldName = 'NAME'
+      end>
+    Properties.ListOptions.ShowHeader = False
+    Properties.ListSource = DS_org
+    TabOrder = 14
+    Width = 118
+  end
+  object cxrSelVar: TcxRadioGroup
+    Left = 0
+    Top = 1
+    Caption = #1044#1086#1073#1072#1074#1080#1090#1100' '#1091#1089#1083#1091#1075#1091
+    Properties.Items = <
+      item
+        Caption = #1050#1072#1082' '#1085#1086#1074#1091#1102' '#1091#1089#1083#1091#1075#1091
+      end
+      item
+        Caption = #1050#1072#1082' '#1076#1086#1095#1077#1088#1085#1102#1102' '#1091#1089#1083#1091#1075#1091' '#1082' '#1074#1099#1073#1088#1072#1085#1085#1086#1081' '#1074' '#1089#1087#1088#1072#1074#1086#1095#1085#1080#1082#1077
+      end>
+    ItemIndex = 0
+    TabOrder = 15
+    Height = 63
+    Width = 304
   end
   object OD_usl: TOracleDataSet
     SQL.Strings = (
       'select t.*, t.rowid from scott.usl t')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      04000000300000000400000055534C4D0100000000000300000055534C010000
+      04000000310000000400000055534C4D0100000000000300000055534C010000
       000000050000004B41525457010000000000040000004B574E49010000000000
       030000004C50570100000000000600000045445F495A4D010000000000020000
       004E4D010000000000030000004E4D310100000000000500000055534C5F5001
@@ -363,10 +365,11 @@ object Form_add_usl: TForm_add_usl
       505F50454E5F5245460100000000000700000055534C5F564F4C010000000000
       0800000042494C4C5F434F4C0100000000000900000042494C4C5F434F4C3201
       0000000000080000004E4D5F53484F52540100000000000B0000005553455F56
-      4F4C5F43414E01000000000009000000484944455F43485247010000000000}
+      4F4C5F43414E01000000000009000000484944455F434852470100000000000B
+      00000055534C4D5F47524F555031010000000000}
     Session = DataModule1.OracleSession1
     Active = True
-    Left = 88
+    Left = 64
     Top = 152
   end
   object OD_usl2: TOracleDataSet
@@ -374,7 +377,7 @@ object Form_add_usl: TForm_add_usl
       'select t.*, t.rowid from scott.usl t')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      04000000300000000400000055534C4D0100000000000300000055534C010000
+      04000000310000000400000055534C4D0100000000000300000055534C010000
       000000050000004B41525457010000000000040000004B574E49010000000000
       030000004C50570100000000000600000045445F495A4D010000000000020000
       004E4D010000000000030000004E4D310100000000000500000055534C5F5001
@@ -399,18 +402,19 @@ object Form_add_usl: TForm_add_usl
       505F50454E5F5245460100000000000700000055534C5F564F4C010000000000
       0800000042494C4C5F434F4C0100000000000900000042494C4C5F434F4C3201
       0000000000080000004E4D5F53484F52540100000000000B0000005553455F56
-      4F4C5F43414E01000000000009000000484944455F43485247010000000000}
+      4F4C5F43414E01000000000009000000484944455F434852470100000000000B
+      00000055534C4D5F47524F555031010000000000}
     Session = DataModule1.OracleSession1
     Active = True
-    Left = 120
-    Top = 152
+    Left = 64
+    Top = 200
   end
   object OD_usl3: TOracleDataSet
     SQL.Strings = (
       'select t.*, t.rowid from scott.usl t')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      04000000300000000400000055534C4D0100000000000300000055534C010000
+      04000000310000000400000055534C4D0100000000000300000055534C010000
       000000050000004B41525457010000000000040000004B574E49010000000000
       030000004C50570100000000000600000045445F495A4D010000000000020000
       004E4D010000000000030000004E4D310100000000000500000055534C5F5001
@@ -435,18 +439,19 @@ object Form_add_usl: TForm_add_usl
       505F50454E5F5245460100000000000700000055534C5F564F4C010000000000
       0800000042494C4C5F434F4C0100000000000900000042494C4C5F434F4C3201
       0000000000080000004E4D5F53484F52540100000000000B0000005553455F56
-      4F4C5F43414E01000000000009000000484944455F43485247010000000000}
+      4F4C5F43414E01000000000009000000484944455F434852470100000000000B
+      00000055534C4D5F47524F555031010000000000}
     Session = DataModule1.OracleSession1
     Active = True
-    Left = 152
-    Top = 152
+    Left = 64
+    Top = 256
   end
   object OD_t_org: TOracleDataSet
     SQL.Strings = (
       'select t.*, t.rowid from scott.t_org t')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      040000003C000000020000004344010000000000030000004E50500100000000
+      040000003F000000020000004344010000000000030000004E50500100000000
       0002000000494401000000000008000000464B5F4F5247545001000000000004
       0000004E414D4501000000000001000000560100000000000900000050415245
       4E545F4944010000000000030000005245550100000000000500000054524553
@@ -480,10 +485,33 @@ object Form_add_usl: TForm_add_usl
       4E414D455F4749530100000000001600000055534C5F464F525F435245415445
       5F4558545F4C534B0100000000001900000049535F4352454154455F4558545F
       4C534B5F494E5F4B415254010000000000110000004558545F4C534B5F464F52
-      4D41545F5450010000000000}
+      4D41545F5450010000000000150000004558545F4C534B5F4C4F41445F53414C
+      444F5F5450010000000000100000004558545F4C534B5F4C4F41445F50415901
+      0000000000150000004558545F4C534B5F5041595F464F524D41545F54500100
+      00000000}
     Session = DataModule1.OracleSession1
     Active = True
-    Left = 88
-    Top = 184
+    Left = 64
+    Top = 304
+  end
+  object DS_usl: TDataSource
+    DataSet = OD_usl
+    Left = 104
+    Top = 152
+  end
+  object DS_usl2: TDataSource
+    DataSet = OD_usl2
+    Left = 104
+    Top = 200
+  end
+  object DS_usl3: TDataSource
+    DataSet = OD_usl3
+    Left = 104
+    Top = 256
+  end
+  object DS_org: TDataSource
+    DataSet = OD_t_org
+    Left = 104
+    Top = 304
   end
 end

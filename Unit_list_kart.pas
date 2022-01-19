@@ -316,7 +316,7 @@ implementation
 
 uses Unit_form_kart, Unit_Mainform, DM_module1, Unit_find_adr,
   Unit_month_payments, Unit_changes_lsk, Unit_form_kart_pr,
-  Unit_form_subsidii, Unit_chargepay, Unit_find_fio,
+  Unit_chargepay, Unit_find_fio,
   Unit_det_chrg, Unit_log_actions, Unit_houses_nabor,
   Unit_house_vvod, Unit_list_set, Unit_form_bills, Unit_sch_history,
   Unit_lk_acc, u_frmPenCorr, u_frmAccFlow, Unit_find_adr2,
@@ -464,9 +464,6 @@ begin
   begin
     Form_changes_lsk.setAllowEdit;
   end;
-
-  if FF('Form_subsidii', 0) = 1 then
-    Form_subsidii.setAllowEdit;
 
   if FF('Form_sch_history', 0) = 1 then
   begin

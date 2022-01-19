@@ -268,7 +268,6 @@ type
     procedure ToolButton21Click(Sender: TObject);
     procedure ToolButton23Click(Sender: TObject);
     procedure ToolButton24Click(Sender: TObject);
-    procedure ToolButton20Click(Sender: TObject);
     procedure ToolButton25Click(Sender: TObject);
     procedure ToolButton18Click(Sender: TObject);
     procedure ToolButton26Click(Sender: TObject);
@@ -489,7 +488,7 @@ uses
   Unit_print_xito13,
   Unit_print_debits_adm, Unit_form_kart, Unit_sel_comps, Unit_get_pay,
   Unit_inkass, Unit_list_kart, Unit_house_vvod,
-  Unit_changes_lsk, Unit_form_subsidii, Unit_new_lsk, Unit_month_payments,
+  Unit_changes_lsk, Unit_new_lsk, Unit_month_payments,
   Unit_chargepay, Unit_sel_arch_period, Unit_find_adr, Unit_changes_list,
   Unit_houses_nabor, Unit_spr_spk, Unit_gen_current, Unit_print_lists,
   Unit_spr_sprorg, Unit_spr_prices, Unit_spr_oper, Unit_status_gen,
@@ -1045,15 +1044,6 @@ begin
     end;
   end;
    }
-end;
-
-procedure TForm_Main.ToolButton20Click(Sender: TObject);
-begin
-  Form_kart.saveOrRollbackKart(1, True);
-  Form_kart.recalc_kart;
-  if FF('Form_subsidii', 1) = 0 then
-    Application.CreateForm(TForm_subsidii, Form_subsidii);
-
 end;
 
 procedure TForm_Main.ToolButton25Click(Sender: TObject);

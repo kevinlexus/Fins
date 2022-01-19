@@ -4,8 +4,11 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, wwdblook, wwradiogroup, DB,
-  OracleData, Utils, wwclearbuttongroup;
+  Dialogs, StdCtrls, DB,
+  OracleData, Utils, cxGraphics, cxControls,
+  cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit, cxTextEdit,
+  cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit,
+  cxDBLookupComboBox, cxGroupBox, cxRadioGroup;
 
 type
   TForm_add_usl = class(TForm)
@@ -21,28 +24,31 @@ type
     Edit5: TEdit;
     Label5: TLabel;
     CheckBox2: TCheckBox;
-    wwDBLookupCombo1: TwwDBLookupCombo;
     Label6: TLabel;
     Edit6: TEdit;
     CheckBox3: TCheckBox;
-    wwDBLookupCombo2: TwwDBLookupCombo;
     Label7: TLabel;
     Edit7: TEdit;
     CheckBox4: TCheckBox;
-    wwDBLookupCombo3: TwwDBLookupCombo;
     Label8: TLabel;
-    wwDBLookupCombo4: TwwDBLookupCombo;
-    wwRadioGroup1: TwwRadioGroup;
     OD_usl: TOracleDataSet;
     OD_usl2: TOracleDataSet;
     OD_usl3: TOracleDataSet;
     OD_t_org: TOracleDataSet;
     Edit4: TEdit;
     Label3: TLabel;
+    cbbUsl: TcxLookupComboBox;
+    DS_usl: TDataSource;
+    DS_usl2: TDataSource;
+    DS_usl3: TDataSource;
+    DS_org: TDataSource;
+    cbbUsl2: TcxLookupComboBox;
+    cbbUsl3: TcxLookupComboBox;
+    cbbOrg: TcxLookupComboBox;
+    cxrSelVar: TcxRadioGroup;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button2Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
-    procedure wwRadioGroup1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure CheckBox2Click(Sender: TObject);
     procedure CheckBox3Click(Sender: TObject);
@@ -121,7 +127,7 @@ begin
     org_:=OD_t_org.FieldByName('id').AsInteger;
  end;
 
- if wwRadioGroup1.ItemIndex = 0 then
+ if cxrSelVar.ItemIndex = 0 then
 begin
     DataModule1.OraclePackage1.CallProcedure(
         'scott.utils.add_usl',
@@ -168,17 +174,6 @@ end;
  msg2('Услуга добавлена!', 'Внимание!', MB_OK+MB_ICONINFORMATION);
 end;
 
-procedure TForm_add_usl.wwRadioGroup1Click(Sender: TObject);
-begin
-{  if wwRadioGroup1.ItemIndex = 0 then
-  begin
-    Edit3.Enabled:=true;
-  end
-  else
-  begin
-    Edit3.Enabled:=false;
-  end;}
-end;
 
 procedure TForm_add_usl.FormCreate(Sender: TObject);
 begin
@@ -193,12 +188,12 @@ begin
   if CheckBox2.Checked = True then
   begin
      Edit6.Enabled:=False;
-     wwDBLookupCombo1.Enabled:=True;
+     cbbUsl.Enabled:=True;
   end
    else
   begin
      Edit6.Enabled:=True;
-     wwDBLookupCombo1.Enabled:=False;
+     cbbUsl.Enabled:=False;
   end;
 
 end;
@@ -208,12 +203,12 @@ begin
   if CheckBox3.Checked = True then
   begin
      Edit7.Enabled:=False;
-     wwDBLookupCombo2.Enabled:=True;
+     cbbUsl2.Enabled:=True;
   end
    else
   begin
      Edit7.Enabled:=True;
-     wwDBLookupCombo2.Enabled:=False;
+     cbbUsl2.Enabled:=False;
   end;
 
 end;
@@ -222,13 +217,13 @@ procedure TForm_add_usl.CheckBox4Click(Sender: TObject);
 begin
   if CheckBox4.Checked = True then
   begin
-     wwDBLookupCombo4.Enabled:=False;
-     wwDBLookupCombo3.Enabled:=True;
+     cbbOrg.Enabled:=False;
+     cbbUsl3.Enabled:=True;
   end
    else
   begin
-     wwDBLookupCombo4.Enabled:=True;
-     wwDBLookupCombo3.Enabled:=False;
+     cbbOrg.Enabled:=True;
+     cbbUsl3.Enabled:=False;
   end;
 
 end;

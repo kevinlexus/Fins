@@ -166,7 +166,6 @@ object Form_Main: TForm_Main
       ParentShowHint = False
       ShowHint = True
       Visible = False
-      OnClick = ToolButton20Click
     end
     object ToolButton26: TToolButton
       Left = 246
