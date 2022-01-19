@@ -4,13 +4,11 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DBGridEh, StdCtrls, DBCtrls, DB, OracleData, Buttons, Utils,
+  Dialogs, StdCtrls, DBCtrls, DB, OracleData, Buttons, Utils,
   Oracle, PivotCube_SRC, PivotMap_SRC, PivotGrid_SRC,
   MSXML2_TLB, ComObj, Menus, frxClass,
-  frxDBSet, wwdblook, Wwdbgrid, ExtCtrls,
-  ComCtrls, DataDriverEh, MemTableDataEh,
-  MemTableEh, wwdbdatetimepicker, wwdbedit, Wwdotdot,
-  Wwdbcomb, DBCtrlsEh, cxControls,
+  frxDBSet, ExtCtrls,
+  ComCtrls,  cxControls,
   
   cxMemo, cxGraphics, 
   
@@ -33,7 +31,9 @@ uses
   cxTL, cxDBTL, cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit,
   cxCustomData, cxStyles, cxMaskEdit, cxCheckBox, cxImageComboBox,
   cxTLdxBarBuiltInMenu, cxInplaceContainer, cxTLData, cxTextEdit, ToolWin,
-  Grids, Wwdbigrd, Mask;
+  Grids, Mask, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit,
+  cxDBLookupComboBox, cxFilter, cxData, cxDataStorage, cxNavigator,
+  cxDBData, cxGridCustomTableView, cxGridLevel, cxGridCustomView, cxGrid;
 type
   TForm_tree_objects = class(TForm)
     Panel1: TPanel;
@@ -56,19 +56,14 @@ type
     Edit3: TEdit;
     GroupBox1: TGroupBox;
     GroupBox5: TGroupBox;
-    wwDBLookupCombo2: TwwDBLookupCombo;
     Splitter1: TSplitter;
     GroupBox4: TGroupBox;
-    wwDBLookupCombo3: TwwDBLookupCombo;
     GroupBox6: TGroupBox;
-    wwDBLookupCombo4: TwwDBLookupCombo;
-    wwDBComboBox1: TwwDBComboBox;
     CheckBox1: TCheckBox;
     pnl1: TPanel;
     cxm1: TcxMemo;
     dlgOpen1: TOpenDialog;
     Timer2: TTimer;
-    wwDBGrid1: TwwDBGrid;
     cxDBTreeList1: TcxDBTreeList;
     cxDBTreeList1NAME: TcxDBTreeListColumn;
     cxDBTreeList1ID: TcxDBTreeListColumn;
@@ -79,6 +74,15 @@ type
     cxDBTreeList1OBJ_LEVEL: TcxDBTreeListColumn;
     N2: TMenuItem;
     N3: TMenuItem;
+    cbbOrg: TcxLookupComboBox;
+    cbbOper: TcxLookupComboBox;
+    cbbDet: TcxLookupComboBox;
+    cxGrid1: TcxGrid;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    cxGrid1DBTableView1GR_NAME: TcxGridDBColumn;
+    cxGrid1DBTableView1PARNAME: TcxGridDBColumn;
+    cxGrid1DBTableView1VAL: TcxGridDBColumn;
     procedure saveXML;
     procedure saveMap;
     procedure SetXMLDocNode2;
@@ -98,18 +102,8 @@ type
     procedure Button3Click(Sender: TObject);
     procedure SetSize(var_: Integer);
     procedure LoadSpr;
-    procedure MemTableEh2AfterScroll(DataSet: TDataSet);
-    procedure MemTableEh2SetFieldValue(MemTable: TCustomMemTableEh;
-      Field: TField; var Value: Variant);
     procedure FormPaint(Sender: TObject);
     procedure edit_par;
-    procedure wwDBComboBox1KeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
-    procedure wwDBGrid1KeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
-    procedure wwDBGrid1DblClick(Sender: TObject);
-    procedure wwDBComboBox1DropDown(Sender: TObject);
-    procedure wwDBComboBox1DblClick(Sender: TObject);
     procedure CheckBox1Click(Sender: TObject);
     procedure setpsch;
     procedure exp;
@@ -125,11 +119,11 @@ type
     procedure repTypeDBF(path, fname: string);
     procedure repTypeTXT(path, fname: string);
     procedure repTypeGrid;
-    procedure sel_tree_obj(trnode: TMemRecViewEh; sel_: Integer);
     procedure deselObjects(curObjId: Integer);
     procedure cxDBTreeList1SELPropertiesEditValueChanged(Sender: TObject);
     procedure N3Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
+    procedure cxGrid1DBTableView1DblClick(Sender: TObject);
   private
     Doc, Doc1: IXMLDomDocument;
     root, root1: IXMLDOMElement;
@@ -215,15 +209,15 @@ begin
     DM_OLap.Uni_detail.Active := False;
   end;
 
-  if wwDBLookupCombo4.LookupValue <> '' then
+  if cbbOrg.EditValue <> '' then
     DM_Olap.Uni_data.Params.ParamByName('org_').Value :=
-      StrToInt(wwDBLookupCombo4.LookupValue)
+      StrToInt(cbbOrg.EditValue)
   else
     DM_Olap.Uni_data.Params.ParamByName('org_').Value := null;
 
-  if wwDBLookupCombo3.LookupValue <> '' then
+  if cbbOper.EditValue <> '' then
     DM_Olap.Uni_data.Params.ParamByName('oper_').AsString :=
-      wwDBLookupCombo3.LookupValue
+      cbbOper.EditValue
   else
     DM_Olap.Uni_data.Params.ParamByName('oper_').Value := null;
 
@@ -231,21 +225,11 @@ begin
   if can_detail_ = 1 then
   begin
     DM_Olap.Uni_data.Params.ParamByName('det_').AsInteger :=
-      StrToInt(wwDBLookupCombo2.LookupValue);
+      StrToInt(cbbDet.EditValue);
 
   end;
 
   DM_Olap.Uni_data.Params.ParamByName('cd_').AsString := rep_cd_;
-
-  {  if rep_cd_ = '69' then
-  begin
-  //Задолжники
-    DM_Olap.Uni_data.SetVariable('n1_', ComboBox2.ItemIndex);
-    if wwDBEdit1.Text <> '' then
-      DM_Olap.Uni_data.SetVariable('n2_', StrToInt(wwDBEdit1.Text))
-    else
-      DM_Olap.Uni_data.SetVariable('n2_', 0);
-  end;}
 
 {  if rep_cd_ = '14' then
   begin
@@ -296,14 +280,6 @@ begin
       DM_Olap.Uni_data.Params.ParamByName('mg1_').AsString :=
         DBLookupComboBox5.KeyValue;
   end;
-
-  {  if have_date_ = 1 then
-    begin
-      DM_Olap.Uni_data.SetVariable('dat2_',
-         wwDBDateTimePicker1.Date);
-      DM_Olap.Uni_data.SetVariable('dat3_',
-         wwDBDateTimePicker2.Date);
-    end;}
 
   if DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger = 3 then
   begin
@@ -377,7 +353,7 @@ begin
       SetVariable('level_id_',
         DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger)
     else
-      SetVariable('level_id_', StrToInt(wwDBLookupCombo2.LookupValue));
+      SetVariable('level_id_', StrToInt(cbbDet.EditValue));
     Open;
 
     Active := true;
@@ -444,8 +420,8 @@ var
   det, I, l_cnt: Integer;
 begin
   // сохранить уровень детализации
-  if wwDBLookupCombo2.LookupValue <> '' then
-    det := StrToInt(wwDBLookupCombo2.LookupValue)
+  if cbbDet.EditValue <> '' then
+    det := StrToInt(cbbDet.EditValue)
   else
     // не установлен
     det := -1;
@@ -875,7 +851,7 @@ begin
     if rep_cd_ = '61' then
     begin
       //наименование операции в отчёте
-      if wwDBLookupCombo4.LookupValue = '' then
+      if cbbOper.EditValue = '' then
       begin
         TfrxReport(fr_).Variables['oper_'] := '''' + ', по всем операциям' +
           '''';
@@ -883,14 +859,14 @@ begin
       else
       begin
         TfrxReport(fr_).Variables['oper_'] := '''' + ', по операции: ' +
-          wwDBLookupCombo4.Text + '''';
+          cbbOper.Text + '''';
       end;
 
       //наименование организации в отчёте
-      if wwDBLookupCombo3.LookupValue <> '' then
+      if cbbOrg.EditValue <> '' then
       begin
         TfrxReport(fr_).Variables['org_'] := '''' + ', по организации: ' +
-          wwDBLookupCombo3.Text + '''';
+          cbbOrg.Text + '''';
       end
       else
       begin
@@ -1204,47 +1180,21 @@ begin
   //показать/скрыть выбор организации
   if show_sel_org_ = 1 then
   begin
-    //    Label10.Visible:=True;
-    //    wwDBLookupCombo3.Visible:=True;
     GroupBox6.Visible := True;
   end
   else
   begin
-    //    Label10.Visible:=False;
-    //    wwDBLookupCombo3.Visible:=False;
     GroupBox6.Visible := False;
   end;
-
-  //показать/скрыть выбор дополнительного поля даты
-{  if have_date_ = 1 then
-  begin
-    GroupBox1.Visible:=True;
-    Label9.Visible:=True;
-    Label11.Visible:=True;
-    wwDBDateTimePicker1.Visible:=True;
-    wwDBDateTimePicker2.Visible:=True;
-  end
-  else
-  begin
-    GroupBox1.Visible:=False;
-    Label9.Visible:=False;
-    Label11.Visible:=False;
-    wwDBDateTimePicker1.Visible:=False;
-    wwDBDateTimePicker2.Visible:=False;
-  end;                                 }
 
   //показать/скрыть выбор операции
   if show_sel_oper_ = 1 then
   begin
     GroupBox4.Visible := True;
-    //    Label8.Visible:=True;
-    //    wwDBLookupCombo4.Visible:=True;
   end
   else
   begin
     GroupBox4.Visible := False;
-    //    Label8.Visible:=False;
-    //    wwDBLookupCombo4.Visible:=False;
   end;
 
   //Возможность детализации
@@ -1252,7 +1202,6 @@ begin
   begin
     GroupBox5.Visible := True;
     //    Label6.Visible:=True;
-    //    wwDBLookupCombo2.Visible:=True;
 
     with DM_Olap.OD_level do
     begin
@@ -1263,7 +1212,7 @@ begin
         max_level_);
       Active := true;
     end;
-    wwDBLookupCombo2.LookupValue :=
+    cbbDet.EditValue :=
       DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsString;
   end
   else
@@ -1299,39 +1248,6 @@ begin
     DBLookupComboBox5.ListField := 'MG2';
   end;
 
-  //для оборотки показываем галку промежуточного сальдо
-{  if rep_ = '14' then
-    CheckBox2.Visible:=True
-  else
-    CheckBox2.Visible:=False;}
-
-  //для задолжников OLAP показываем галку учит.тек.опл
-{  if show_paychk_ = 1 then
-    CheckBox3.Visible:=True
-  else
-    CheckBox3.Visible:=False;}
-
-  //для задолжников FR показываем условие выборки задолжности
-{  if show_deb_ = 1 then
-    GroupBox3.Visible:=True
-  else
-    GroupBox3.Visible:=False;}
-
-  //Списки льготников
-{  if rep_ = '56' then
-  begin
-    GroupBox7.Visible := True;
-    //    wwDBLookupCombo1.Visible:=True;
-    //    Label5.Visible:=True;
-    DM_Olap.OD_spk.Active := True;
-  end
-  else
-  begin}
-//    GroupBox7.Visible := False;
-    //    wwDBLookupCombo1.Visible:=False;
-    //    Label5.Visible:=False;
-//    DM_Olap.OD_spk.Active := False;
-//  end;
 
   if have_current_ = 1 then
   begin
@@ -1497,62 +1413,6 @@ begin
   DM_Olap.Uni_data.Active := false;
   //Справочники загружены
   Form_Main.flag3_ := 1;
-end;
-
-procedure TForm_tree_objects.MemTableEh2AfterScroll(DataSet: TDataSet);
-var
-  str_: string;
-begin
-end;
-
-procedure TForm_tree_objects.sel_tree_obj(trnode: TMemRecViewEh; sel_: Integer);
-var
-  a: Integer;
-begin
-  //Рекурсивная функция отметки всех нисходящих по иерархии объектов
-  for a := 0 to trnode.NodesCount - 1 do
-  begin
-    trnode.NodeItems[a].Rec.DataValues['sel', dvvCurValueEh] := sel_;
-    sel_tree_obj(trnode.NodeItems[a], sel_);
-  end;
-end;
-
-{procedure TForm_tree_objects.desel_all_obj(tmem: TMemTableEh; id_: Integer);
-var
-  a: Integer;
-begin
-  //функция снятия отметки всех объектов
-  for a := 0 to tmem.rec.RecordsList.Count - 1 do
-  begin
-    if tmem.rec.RecordsList.Rec[a].DataValues['id', dvvCurValueEh] <> id_ then
-      tmem.rec.RecordsList.Rec[a].DataValues['sel', dvvCurValueEh] := 1;
-    //    ShowMessage(tmem.rec.RecordsList.Rec[a].DataValues['name', dvvCurValueEh]);
-  end;
-end;}
-
-procedure TForm_tree_objects.MemTableEh2SetFieldValue(
-  MemTable: TCustomMemTableEh; Field: TField; var Value: Variant);
-begin
-  {  if flag_ = 0 then
-    begin
-      flag_ := 1;
-      //Обновить само значение в поле
-      DM_Olap.Uni_tree_objects.FieldByName('sel').AsInteger := VarAsType(Value,
-        varInteger);
-      if Form_tree_objects.sel_many_ <> 0 then
-      begin
-        //Обновить значения в дочерних объектах
-        sel_tree_obj(DM_Olap.MemTableEh2.TreeNode, VarAsType(Value, varInteger));
-      end
-      else
-      begin
-        //Обновить значения в во всех объектах (деселект всех)
-        desel_all_obj(DM_Olap.MemTableEh2,
-          DM_Olap.MemTableEh2.FieldByName('id').AsInteger);
-      end;
-      DBGridEh1.Refresh;
-      flag_ := 0;
-    end;}
 end;
 
 procedure TForm_tree_objects.exp;
@@ -2416,8 +2276,6 @@ begin
     height_ := height_ + GroupBox5.Height;
   if GroupBox6.Visible then
     height_ := height_ + GroupBox6.Height;
-  //  if GroupBox7.Visible then
-  //    height_ := height_ + GroupBox7.Height;
 
   Panel1.Height := height_;
   Update;
@@ -2430,10 +2288,10 @@ begin
   Application.CreateForm(TForm_tree_par_edit, Form_tree_par_edit);
   Form_tree_par_edit.Top := curY_ +
     Form_Main.Top + Panel1.Top + Form_tree_objects.Top +
-    GroupBox1.Top + wwDBGrid1.Top;
+    GroupBox1.Top + cxGrid1.Top;
   Form_tree_par_edit.Left := curX_ +
     Form_Main.Left + Panel1.Left + Form_tree_objects.Left +
-    GroupBox1.Left + wwDBGrid1.Left;
+    GroupBox1.Left + cxGrid1.Left;
   Form_tree_par_edit.SetAccess(DM_Olap.DS_spr_params);
   Form_tree_par_edit.ShowModal;
 
@@ -2441,40 +2299,9 @@ begin
   DM_Olap.Uni_spr_params.Active := False;
   DM_Olap.Uni_spr_params.Active := True;
   DM_Olap.Uni_spr_params.Locate('id', id_, []);
-  //  wwDBGrid1.SetFocus;
-  Windows.SetFocus(wwDBGrid1.Handle);
-  wwDBGrid1.Repaint;
+  Windows.SetFocus(cxGrid1.Handle);
+  cxGrid1.Repaint;
 
-end;
-
-procedure TForm_tree_objects.wwDBComboBox1KeyDown(Sender: TObject;
-  var Key: Word; Shift: TShiftState);
-begin
-  edit_par;
-end;
-
-procedure TForm_tree_objects.wwDBGrid1KeyDown(Sender: TObject;
-  var Key: Word; Shift: TShiftState);
-begin
-  if (key = VK_Return) and
-    (wwDBGrid1.GetActiveCol = GetGridColumnByName(wwDBGrid1, 'Val') + 1) then
-    edit_par;
-end;
-
-procedure TForm_tree_objects.wwDBGrid1DblClick(Sender: TObject);
-begin
-  edit_par;
-end;
-
-procedure TForm_tree_objects.wwDBComboBox1DropDown(Sender: TObject);
-begin
-  edit_par;
-  Abort;
-end;
-
-procedure TForm_tree_objects.wwDBComboBox1DblClick(Sender: TObject);
-begin
-  edit_par;
 end;
 
 procedure TForm_tree_objects.CheckBox1Click(Sender: TObject);
@@ -2609,7 +2436,7 @@ begin
   if (Form_tree_objects.isLoadingCube = false) and (Form_tree_objects.can_detail_
     = 1) then
   begin
-    str_ := Form_tree_objects.wwDBLookupCombo2.LookupValue;
+    str_ := Form_tree_objects.cbbDet.EditValue;
     if str_ <> '' then
     begin
       with DM_Olap.OD_level do
@@ -2620,7 +2447,7 @@ begin
         Active := true;
         SearchRecord('level_id', StrToInt(str_),
           [srFromBeginning]);
-        Form_tree_objects.wwDBLookupCombo2.LookupValue :=
+        Form_tree_objects.cbbDet.EditValue :=
           FieldByName('level_id').AsString;
       end;
     end;
@@ -2635,6 +2462,11 @@ end;
 procedure TForm_tree_objects.N2Click(Sender: TObject);
 begin
   cxDBTreeList1.Root.Collapse(True);
+end;
+
+procedure TForm_tree_objects.cxGrid1DBTableView1DblClick(Sender: TObject);
+begin
+  edit_par;
 end;
 
 end.

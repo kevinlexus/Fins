@@ -1,6 +1,6 @@
 object Form_print_lists: TForm_print_lists
-  Left = 315
-  Top = 264
+  Left = 1857
+  Top = 244
   AutoScroll = False
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #1057#1083#1091#1078#1077#1073#1085#1099#1077' '#1086#1090#1095#1077#1090#1099' ('#1089#1087#1080#1089#1082#1080')'

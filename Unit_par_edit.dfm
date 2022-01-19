@@ -93,7 +93,7 @@ object Form_par_edit: TForm_par_edit
     Top = 0
     Width = 274
     Height = 94
-    ActivePage = TabSheet1
+    ActivePage = TabSheet4
     Align = alClient
     TabOrder = 0
     object TabSheet1: TTabSheet

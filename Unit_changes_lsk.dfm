@@ -1,6 +1,6 @@
 object Form_changes_lsk: TForm_changes_lsk
-  Left = 618
-  Top = 722
+  Left = 1600
+  Top = 224
   Width = 751
   Height = 546
   Caption = #1055#1077#1088#1077#1088#1072#1089#1095#1077#1090#1099' '#1087#1086' '#1083#1080#1094#1077#1074#1099#1084

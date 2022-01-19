@@ -1,6 +1,6 @@
 object Form_tree_objects: TForm_tree_objects
-  Left = 359
-  Top = 203
+  Left = 543
+  Top = 429
   Width = 351
   Height = 864
   Align = alLeft
@@ -306,57 +306,46 @@ object Form_tree_objects: TForm_tree_objects
       Height = 150
       Align = alBottom
       TabOrder = 5
-      object wwDBComboBox1: TwwDBComboBox
-        Left = 176
-        Top = 120
-        Width = 121
-        Height = 21
-        ShowButton = True
-        Style = csDropDown
-        MapList = False
-        AllowClearKey = False
-        ButtonStyle = cbsEllipsis
-        DropDownCount = 8
-        ItemHeight = 0
-        Sorted = False
-        TabOrder = 0
-        UnboundDataType = wwDefault
-        OnDblClick = wwDBComboBox1DblClick
-        OnDropDown = wwDBComboBox1DropDown
-        OnKeyDown = wwDBComboBox1KeyDown
-      end
-      object wwDBGrid1: TwwDBGrid
+      object cxGrid1: TcxGrid
         Left = 2
         Top = 15
         Width = 329
         Height = 133
-        ControlType.Strings = (
-          'VAL;CustomEdit;wwDBComboBox1;F')
-        Selected.Strings = (
-          'GR_NAME'#9'18'#9' '#9'T'
-          'PARNAME'#9'15'#9' '#9'T'
-          'VAL'#9'13'#9' '#9'T')
-        IniAttributes.Delimiter = ';;'
-        TitleColor = clBtnFace
-        FixedCols = 0
-        ShowHorzScrollBar = True
         Align = alClient
-        DataSource = DM_Olap.DS_spr_params
-        KeyOptions = []
-        Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgWordWrap, dgShowCellHint, dgProportionalColResize]
-        TabOrder = 1
-        TitleAlignment = taLeftJustify
-        TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -11
-        TitleFont.Name = 'MS Sans Serif'
-        TitleFont.Style = []
-        TitleLines = 1
-        TitleButtons = False
-        UseTFields = False
-        OnDblClick = wwDBGrid1DblClick
-        OnKeyDown = wwDBGrid1KeyDown
-        GroupFieldName = 'GR_NAME'
+        PopupMenu = Form_kart.PopupMenu3
+        TabOrder = 0
+        object cxGrid1DBTableView1: TcxGridDBTableView
+          OnDblClick = cxGrid1DBTableView1DblClick
+          Navigator.Buttons.CustomButtons = <>
+          DataController.DataSource = DM_Olap.DS_spr_params
+          DataController.KeyFieldNames = 'ID'
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <>
+          DataController.Summary.SummaryGroups = <>
+          OptionsData.Deleting = False
+          OptionsData.Editing = False
+          OptionsData.Inserting = False
+          OptionsSelection.InvertSelect = False
+          OptionsView.ColumnAutoWidth = True
+          OptionsView.GroupByBox = False
+          OptionsView.Header = False
+          OptionsView.Indicator = True
+          object cxGrid1DBTableView1GR_NAME: TcxGridDBColumn
+            DataBinding.FieldName = 'GR_NAME'
+            Width = 109
+          end
+          object cxGrid1DBTableView1PARNAME: TcxGridDBColumn
+            DataBinding.FieldName = 'PARNAME'
+            Width = 103
+          end
+          object cxGrid1DBTableView1VAL: TcxGridDBColumn
+            DataBinding.FieldName = 'VAL'
+            Width = 103
+          end
+        end
+        object cxGrid1Level1: TcxGridLevel
+          GridView = cxGrid1DBTableView1
+        end
       end
     end
     object GroupBox5: TGroupBox
@@ -374,27 +363,19 @@ object Form_tree_objects: TForm_tree_objects
       ParentFont = False
       TabOrder = 4
       Visible = False
-      object wwDBLookupCombo2: TwwDBLookupCombo
+      object cbbDet: TcxLookupComboBox
         Left = 8
         Top = 14
-        Width = 321
-        Height = 24
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'MS Sans Serif'
-        Font.Style = []
-        DropDownAlignment = taLeftJustify
-        Selected.Strings = (
-          'NAME'#9'8'#9'NAME'#9#9)
-        LookupTable = DM_Olap.OD_level
-        LookupField = 'level_id'
-        ParentFont = False
+        Properties.GridMode = True
+        Properties.KeyFieldNames = 'LEVEL_ID'
+        Properties.ListColumns = <
+          item
+            FieldName = 'NAME'
+          end>
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = DM_Olap.DS_level
         TabOrder = 0
-        AutoDropDown = True
-        ShowButton = True
-        PreciseEditRegion = False
-        AllowClearKey = False
+        Width = 321
       end
     end
     object GroupBox4: TGroupBox
@@ -412,27 +393,19 @@ object Form_tree_objects: TForm_tree_objects
       ParentFont = False
       TabOrder = 3
       Visible = False
-      object wwDBLookupCombo3: TwwDBLookupCombo
+      object cbbOper: TcxLookupComboBox
         Left = 8
         Top = 14
-        Width = 321
-        Height = 24
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'MS Sans Serif'
-        Font.Style = []
-        DropDownAlignment = taLeftJustify
-        Selected.Strings = (
-          'NAME'#9'28'#9'NAME'#9'F'#9)
-        LookupTable = DM_Olap.OD_oper
-        LookupField = 'OPER'
-        ParentFont = False
+        Properties.GridMode = True
+        Properties.KeyFieldNames = 'OPER'
+        Properties.ListColumns = <
+          item
+            FieldName = 'NAME'
+          end>
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = DM_Olap.DS_oper
         TabOrder = 0
-        AutoDropDown = True
-        ShowButton = True
-        PreciseEditRegion = True
-        AllowClearKey = True
+        Width = 321
       end
     end
     object GroupBox6: TGroupBox
@@ -450,27 +423,19 @@ object Form_tree_objects: TForm_tree_objects
       ParentFont = False
       TabOrder = 2
       Visible = False
-      object wwDBLookupCombo4: TwwDBLookupCombo
-        Left = 9
+      object cbbOrg: TcxLookupComboBox
+        Left = 8
         Top = 14
-        Width = 320
-        Height = 24
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'MS Sans Serif'
-        Font.Style = []
-        DropDownAlignment = taLeftJustify
-        Selected.Strings = (
-          'NAME'#9'76'#9'NAME'#9'F'#9)
-        LookupTable = DM_Olap.OD_org
-        LookupField = 'KOD'
-        ParentFont = False
+        Properties.GridMode = True
+        Properties.KeyFieldNames = 'KOD'
+        Properties.ListColumns = <
+          item
+            FieldName = 'NAME'
+          end>
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = DM_Olap.DS_org
         TabOrder = 0
-        AutoDropDown = True
-        ShowButton = True
-        PreciseEditRegion = True
-        AllowClearKey = True
+        Width = 321
       end
     end
   end

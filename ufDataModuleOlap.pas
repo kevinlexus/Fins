@@ -47,6 +47,7 @@ type
     Uni_c_kart_pr: TUniQuery;
     Uni_detail: TUniQuery;
     DS_data: TDataSource;
+    DS_level: TDataSource;
     procedure Uni_tree_objectsAfterEdit(DataSet: TDataSet);
     procedure Uni_tree_objectsAfterPost(DataSet: TDataSet);
     procedure Uni_tree_objectsAfterScroll(DataSet: TDataSet);

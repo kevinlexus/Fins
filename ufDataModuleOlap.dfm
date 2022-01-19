@@ -621,6 +621,7 @@ object DM_Olap: TDM_Olap
       '   and p.fk_ses = USERENV('#39'sessionid'#39')'
       '   and s.cd = :cd_'
       ' order by p.npp')
+    Active = True
     Constraints = <>
     Left = 32
     Top = 240
@@ -753,5 +754,10 @@ object DM_Olap: TDM_Olap
     DataSet = Uni_Data
     Left = 72
     Top = 32
+  end
+  object DS_level: TDataSource
+    DataSet = OD_level
+    Left = 168
+    Top = 416
   end
 end
