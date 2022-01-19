@@ -4,34 +4,19 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, wwdblook, wwdbedit, DB, OracleData, 
-  Wwdbgrid, ComCtrls, wwriched, Utils, wwSpeedButton,
-  wwDBNavigator, ExtCtrls, wwfltdlg, Wwintl,
-  Wwtable, Wwdatsrc, OracleNavigator, Menus, wwDialog, Grids, Wwdbigrd,
-  wwclearpanel;
+  Dialogs, StdCtrls, DB, OracleData, 
+  ComCtrls, Utils, 
+  ExtCtrls, OracleNavigator, Menus, Grids, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter, cxData,
+  cxDataStorage, cxEdit, cxNavigator, cxDBData, cxGridCustomTableView,
+  cxGridTableView, cxGridDBTableView, cxGridLevel, cxClasses,
+  cxGridCustomView, cxGrid;
 
 type
   TForm_changes_list = class(TForm)
     OD_changes: TOracleDataSet;
     GroupBox2: TGroupBox;
     Button2: TButton;
-    wwDBRichEdit1: TwwDBRichEdit;
-    wwDBNavigator1: TwwDBNavigator;
-    wwDBNavigator1First: TwwNavButton;
-    wwDBNavigator1PriorPage: TwwNavButton;
-    wwDBNavigator1Prior: TwwNavButton;
-    wwDBNavigator1Next: TwwNavButton;
-    wwDBNavigator1NextPage: TwwNavButton;
-    wwDBNavigator1Last: TwwNavButton;
-    wwDBNavigator1Insert: TwwNavButton;
-    wwDBNavigator1Delete: TwwNavButton;
-    wwDBNavigator1Edit: TwwNavButton;
-    wwDBNavigator1Post: TwwNavButton;
-    wwDBNavigator1Cancel: TwwNavButton;
-    wwDBNavigator1Refresh: TwwNavButton;
-    wwDBNavigator1SaveBookmark: TwwNavButton;
-    wwDBNavigator1RestoreBookmark: TwwNavButton;
-    wwFilterDialog1: TwwFilterDialog;
     OD_changesLSK: TStringField;
     OD_changesREU: TStringField;
     OD_changesSTREET: TStringField;
@@ -46,10 +31,6 @@ type
     OD_changesFIO: TStringField;
     OD_changesTS: TDateTimeField;
     OD_changesTEXT: TStringField;
-    wwDBGrid1: TwwDBGrid;
-    wwDataSource1: TwwDataSource;
-    OracleNavigator1: TOracleNavigator;
-    wwIntl1: TwwIntl;
     OD_changesCNT_DAYS: TFloatField;
     OD_changesID: TFloatField;
     OD_changesDOC_ID: TFloatField;
@@ -57,16 +38,33 @@ type
     mnu1: TMenuItem;
     mnu2: TMenuItem;
     OD_changesMG2: TStringField;
+    cxGrid1: TcxGrid;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    OracleNavigator1: TOracleNavigator;
+    cxGrid1DBTableView1REU: TcxGridDBColumn;
+    cxGrid1DBTableView1STREET: TcxGridDBColumn;
+    cxGrid1DBTableView1ND: TcxGridDBColumn;
+    cxGrid1DBTableView1KW: TcxGridDBColumn;
+    cxGrid1DBTableView1LSK: TcxGridDBColumn;
+    cxGrid1DBTableView1DTEK: TcxGridDBColumn;
+    cxGrid1DBTableView1SUMMA: TcxGridDBColumn;
+    cxGrid1DBTableView1PROC: TcxGridDBColumn;
+    cxGrid1DBTableView1CNT_DAYS: TcxGridDBColumn;
+    cxGrid1DBTableView1nm: TcxGridDBColumn;
+    cxGrid1DBTableView1NAME: TcxGridDBColumn;
+    cxGrid1DBTableView1MGCHANGE: TcxGridDBColumn;
+    cxGrid1DBTableView1TS: TcxGridDBColumn;
+    cxGrid1DBTableView1FIO: TcxGridDBColumn;
+    cxGrid1DBTableView1TEXT: TcxGridDBColumn;
+    cxGrid1DBTableView1DOC_ID: TcxGridDBColumn;
+    cxGrid1DBTableView1ID: TcxGridDBColumn;
+    DS_changes: TDataSource;
     procedure Button2Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure state_arch2(mgold_: String);
     procedure FormCreate(Sender: TObject);
-    procedure wwFilterDialog1EncodeDateTime(ADateTime: TDateTime;
-      AFieldType: TFieldType; AFieldName: String;
-      var FormattedDateStr: String);
     procedure Button1Click(Sender: TObject);
-    procedure wwFilterDialog1InitTempDataSet(Sender: TObject; OrigDataSet,
-      TempDataSet: TDataSet);
     procedure mnu1Click(Sender: TObject);
     procedure mnu2Click(Sender: TObject);
   private
@@ -143,24 +141,10 @@ begin
   state_arch2('');
 end;
 
-procedure TForm_changes_list.wwFilterDialog1EncodeDateTime(
-  ADateTime: TDateTime; AFieldType: TFieldType; AFieldName: String;
-  var FormattedDateStr: String);
-begin
-  FormattedDateStr:= 'to_date('''+DateToStr(ADateTime)+''', ''DD.MM.YYYY'')';
-end;
 
 procedure TForm_changes_list.Button1Click(Sender: TObject);
 begin
   OD_changes.QBEMode:=true;
-//  wwFilterDialog1.Execute;
-end;
-
-procedure TForm_changes_list.wwFilterDialog1InitTempDataSet(
-  Sender: TObject; OrigDataSet, TempDataSet: TDataSet);
-begin
-    (TempDataSet as TOracleDataSet).Session:=DataModule1.OracleSession1;
-    (OrigDataSet as TOracleDataSet).Session:=DataModule1.OracleSession1;
 end;
 
 procedure TForm_changes_list.mnu1Click(Sender: TObject);

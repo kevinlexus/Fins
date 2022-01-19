@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, OracleData, StdCtrls, 
-  Oracle, Utils, wwriched,
+  Oracle, Utils, 
   ExtCtrls, 
   Menus, ComCtrls, Grids, cxGraphics,
   cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxStyles,
