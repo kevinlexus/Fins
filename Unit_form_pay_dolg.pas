@@ -10,7 +10,7 @@ uses
   cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
   cxDBData, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
   cxGridLevel, cxGridCustomView, cxGrid, cxMaskEdit, cxContainer,
-  cxTextEdit, wwdbedit;
+  cxTextEdit;
 
 type
   TForm_get_pay_dolg = class(TForm)
@@ -105,12 +105,71 @@ begin
 end;
 
 procedure TForm_get_pay_dolg.exit_ok;
+var
+  AColumn: TcxGridDBColumn;
+  ASummaryItem: TcxDataSummaryItem;
+  sResult: string;
+  ASummaryIndex: Integer;
+  summa, penya, itog: Double;
 begin
   Form_get_pay_nal.cxSumma.Text := cxSumma.Text;
   with Form_get_pay_nal do
   begin
     if not (OD_chargepay.State in [dsBrowse]) then
       OD_chargepay.Post;
+  end;
+
+  AColumn := cxGrid1DBTableView1.GetColumnByFieldName('SUMMA');
+  if AColumn <> nil then
+  begin
+    ASummaryItem :=
+      cxGrid1DBTableView1.DataController.Summary.FooterSummaryItems.GetDataItem(AColumn.Index, spFooter);
+    if ASummaryItem <> nil then
+    begin
+      ASummaryIndex := ASummaryItem.Index;
+      sResult :=
+        VarToStr(cxGrid1DBTableView1.DataController.Summary.FooterSummaryValues[ASummaryIndex]);
+      summa := StrToFloat(sResult);
+    end;
+  end;
+
+  AColumn := cxGrid1DBTableView1.GetColumnByFieldName('PENYA');
+  if AColumn <> nil then
+  begin
+    ASummaryItem :=
+      cxGrid1DBTableView1.DataController.Summary.FooterSummaryItems.GetDataItem(AColumn.Index, spFooter);
+    if ASummaryItem <> nil then
+    begin
+      ASummaryIndex := ASummaryItem.Index;
+      sResult :=
+        VarToStr(cxGrid1DBTableView1.DataController.Summary.FooterSummaryValues[ASummaryIndex]);
+      penya := StrToFloat(sResult);
+    end;
+  end;
+
+  AColumn := cxGrid1DBTableView1.GetColumnByFieldName('ITOG');
+  if AColumn <> nil then
+  begin
+    ASummaryItem :=
+      cxGrid1DBTableView1.DataController.Summary.FooterSummaryItems.GetDataItem(AColumn.Index, spFooter);
+    if ASummaryItem <> nil then
+    begin
+      ASummaryIndex := ASummaryItem.Index;
+      sResult :=
+        VarToStr(cxGrid1DBTableView1.DataController.Summary.FooterSummaryValues[ASummaryIndex]);
+      itog := StrToFloat(sResult);
+    end;
+  end;
+
+  with Form_get_pay_nal.OD_c_kwtp_temp do
+  begin
+    Edit;
+    FieldByName('summa').AsFloat := summa;
+
+    FieldByName('penya').AsFloat := penya;
+
+    FieldByName('itog').AsFloat := itog;
+    Post;
   end;
 
 end;

@@ -127,7 +127,6 @@ type
     procedure Button2Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure action;
-    procedure wwDBComboBox1DropDown(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure count;
     procedure OD_chargepayBeforeInsert(DataSet: TDataSet);
@@ -1299,11 +1298,6 @@ begin
 
   logText('Окончание регистрации чека');
 
-end;
-
-procedure TForm_get_pay_nal.wwDBComboBox1DropDown(Sender: TObject);
-begin
-  action;
 end;
 
 procedure TForm_get_pay_nal.FormCreate(Sender: TObject);
