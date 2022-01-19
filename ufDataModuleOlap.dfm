@@ -365,11 +365,6 @@ object DM_Olap: TDM_Olap
     Left = 328
     Top = 616
   end
-  object DataSetDriverEh2: TDataSetDriverEh
-    ProviderDataSet = Uni_tree_objects
-    Left = 30
-    Top = 136
-  end
   object DS_tree_objects: TDataSource
     DataSet = Uni_tree_objects
     Left = 96
@@ -559,7 +554,6 @@ object DM_Olap: TDM_Olap
         '                  p.name || '#39', '#39' || scott.utils.f_order(t.nd, 6)' +
         '), t.reu, p.name, t.nd, t.mg1')
     Constraints = <>
-    AfterEdit = Uni_tree_objectsAfterEdit
     AfterPost = Uni_tree_objectsAfterPost
     AfterScroll = Uni_tree_objectsAfterScroll
     Left = 32

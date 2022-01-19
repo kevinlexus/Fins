@@ -3,8 +3,8 @@ unit ufDataModuleOlap;
 interface
 
 uses
-  SysUtils, Classes, DB, OracleData, MemTableDataEh, 
-  DataDriverEh, DBAccess, Uni, MemDS, DASQLMonitor, UniSQLMonitor;
+  SysUtils, Classes, DB, OracleData, 
+  DBAccess, Uni, MemDS, DASQLMonitor, UniSQLMonitor;
 
 type
   TDM_Olap = class(TDataModule)
@@ -37,7 +37,6 @@ type
     OD_levelNAME: TStringField;
     OD_levelLEVEL_ID: TFloatField;
     OD_uslm_olap: TOracleDataSet;
-    DataSetDriverEh2: TDataSetDriverEh;
     DS_tree_objects: TDataSource;
     Uni_Data: TUniQuery;
     UniSQLMonitor1: TUniSQLMonitor;
@@ -48,7 +47,6 @@ type
     Uni_detail: TUniQuery;
     DS_data: TDataSource;
     DS_level: TDataSource;
-    procedure Uni_tree_objectsAfterEdit(DataSet: TDataSet);
     procedure Uni_tree_objectsAfterPost(DataSet: TDataSet);
     procedure Uni_tree_objectsAfterScroll(DataSet: TDataSet);
   private
@@ -64,29 +62,6 @@ implementation
 
 
 {$R *.dfm}
-
-procedure TDM_Olap.Uni_tree_objectsAfterEdit(DataSet: TDataSet);
-begin
-  {    if Form_tree_objects.flag_ = 0 then
-      begin
-      Form_tree_objects.flag_:=1;
-        //Обновить само значение в поле
-        Uni_tree_objects.FieldByName('sel').AsInteger:=VarToInt(Value);
-        if Form_tree_objects.sel_many_ <> 0 then
-        begin
-          //Обновить значения в дочерних объектах
-          Form_tree_objects.sel_tree_obj(MemTableEh2.TreeNode, VarToInt(Value));
-        end
-        else
-        begin
-          //Обновить значения в во всех объектах (деселект всех)
-          Form_tree_objects.desel_all_obj(MemTableEh2, MemTableEh2.FieldByName('id').AsInteger);
-        end;
-        Form_tree_objects.DBGridEh1.Refresh;
-      Form_tree_objects.flag_:=0;
-      end;
-     }
-end;
 
 procedure TDM_Olap.Uni_tree_objectsAfterPost(DataSet: TDataSet);
 var
