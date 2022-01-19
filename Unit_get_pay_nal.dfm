@@ -1,6 +1,6 @@
 object Form_get_pay_nal: TForm_get_pay_nal
-  Left = 474
-  Top = 268
+  Left = 658
+  Top = 234
   Width = 633
   Height = 409
   BorderIcons = [biSystemMenu, biMinimize]
@@ -138,22 +138,22 @@ object Form_get_pay_nal: TForm_get_pay_nal
       Font.Style = [fsBold]
       ParentFont = False
       ReadOnly = True
-      TabOrder = 0
+      TabOrder = 1
     end
     object cxLsk: TcxMaskEdit
       Left = 40
       Top = 12
       ParentFont = False
-      Properties.EditMask = '00000000;1;_'
-      Properties.ValidationOptions = [evoShowErrorIcon, evoAllowLoseFocus]
+      Properties.MaskKind = emkRegExpr
+      Properties.EditMask = '\d{8}'
+      Properties.ValidationOptions = [evoAllowLoseFocus]
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -15
       Style.Font.Name = 'MS Sans Serif'
       Style.Font.Style = []
       Style.IsFontAssigned = True
-      TabOrder = 1
-      Text = '        '
+      TabOrder = 0
       OnDblClick = cxLskDblClick
       OnKeyPress = cxLskKeyPress
       Width = 112
@@ -229,7 +229,7 @@ object Form_get_pay_nal: TForm_get_pay_nal
       Top = 11
       ParentFont = False
       Properties.MaskKind = emkRegExprEx
-      Properties.EditMask = '\-?\d{1,6}\.?\d{0,5}'
+      Properties.EditMask = '\-?\d{1,10}\.?\d{0,2}'
       Properties.ValidationOptions = [evoShowErrorIcon, evoAllowLoseFocus]
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
@@ -246,7 +246,7 @@ object Form_get_pay_nal: TForm_get_pay_nal
       Top = 11
       ParentFont = False
       Properties.MaskKind = emkRegExprEx
-      Properties.EditMask = '\-?\d{1,6}\.?\d{0,5}'
+      Properties.EditMask = '\-?\d{1,10}\.?\d{0,2}'
       Properties.ValidationOptions = [evoShowErrorIcon, evoAllowLoseFocus]
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
@@ -263,7 +263,7 @@ object Form_get_pay_nal: TForm_get_pay_nal
       Top = 11
       ParentFont = False
       Properties.MaskKind = emkRegExprEx
-      Properties.EditMask = '\-?\d{1,6}\.?\d{0,5}'
+      Properties.EditMask = '\-?\d{1,10}\.?\d{0,2}'
       Properties.ValidationOptions = [evoShowErrorIcon, evoAllowLoseFocus]
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
@@ -337,7 +337,6 @@ object Form_get_pay_nal: TForm_get_pay_nal
           OnKeyDown = cxGridDBTableView1KeyDown
           Navigator.Buttons.CustomButtons = <>
           Navigator.Visible = True
-          OnEditKeyDown = cxGridDBTableView1EditKeyDown
           DataController.DataSource = DS_c_kwtp_temp
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <>

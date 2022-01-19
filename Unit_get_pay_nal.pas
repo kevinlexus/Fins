@@ -13,7 +13,7 @@ uses
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
   cxLookAndFeels, cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter,
   cxData, cxDataStorage, cxEdit, cxNavigator, cxDBData, cxContainer,
-  cxTextEdit, cxMaskEdit, GridsEh, DBGridEh, cxDBLookupComboBox;
+  cxTextEdit, cxMaskEdit, cxDBLookupComboBox;
 
 type
   TForm_get_pay_nal = class(TForm)
@@ -152,9 +152,6 @@ type
     procedure cxLskKeyPress(Sender: TObject; var Key: Char);
     procedure cxAmountKeyPress(Sender: TObject; var Key: Char);
     procedure cxSummaKeyPress(Sender: TObject; var Key: Char);
-    procedure cxGridDBTableView1EditKeyDown(Sender: TcxCustomGridTableView;
-      AItem: TcxCustomGridTableItem; AEdit: TcxCustomEdit; var Key: Word;
-      Shift: TShiftState);
     procedure cxGridDBTableView1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
   private
@@ -398,8 +395,6 @@ end;
 procedure TForm_get_pay_nal.FormClose(Sender: TObject; var Action:
   TCloseAction);
 begin
-  //Чтобы не было Access Violation на EHGrid, при закрытии формы
-  //DBGridEh1.DataSource := nil;
   // Обязательный Rollback, в случае если остались начисления счетчиков
   DataModule1.OracleSession1.Rollback;
   Action := caFree;
@@ -713,7 +708,6 @@ begin
   cxLsk.Text := '';
   cxAmount.Text := '0';
   cxGrid2.Visible := false;
-  //DBGridEh1.SelectedIndex := 0;
   Button1.Enabled := true;
   Windows.SetFocus(cxLsk.Handle);
 end;
@@ -1437,17 +1431,6 @@ begin
     setNkom(Form_Main.Lsk_);
     clearPay;
     //очищаем оплату по месяцам
-    {DBGridEh1.Visible := true;
-    DBGridEh1.SetFocus;
-    OD_c_kwtp_temp.Active := false;
-    OD_c_kwtp_temp.Active := true;
-    OD_oper.Active := false;
-    OD_oper.SetVariable('lsk', cxLsk.Text);
-    OD_oper.Active := true;
-
-    DataModule1.OraclePackage1.CallProcedure('scott.C_GET_PAY.init_c_kwtp_temp_dolg', [Form_main.lsk_]);
-    OD_chargepay.Active := false;
-    OD_chargepay.Active := true;    }
   end;
 end;
 
@@ -1577,26 +1560,6 @@ begin
   end;
   if RetKey(Key) then
     Key := '.';
-end;
-
-procedure TForm_get_pay_nal.cxGridDBTableView1EditKeyDown(
-  Sender: TcxCustomGridTableView; AItem: TcxCustomGridTableItem;
-  AEdit: TcxCustomEdit; var Key: Word; Shift: TShiftState);
-begin
-  //выбор долгов или показ сч.
-
-   //(wwDBGrid1.GetActiveCol = 3)
-  //if (DBGridEh1.SelectedField.FieldName = 'PENYA') and (key = VK_Return) then
-//  begin
-//    action;
-//  end;
-
-  //выход на итог
-{  if ((Shift = [ssCtrl]) and (key = VK_Return)) then
-  begin
-    count;
-    Windows.SetFocus(cxSumma.Handle);
-  end;}
 end;
 
 procedure TForm_get_pay_nal.cxGridDBTableView1KeyDown(Sender: TObject;

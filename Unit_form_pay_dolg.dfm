@@ -1,6 +1,6 @@
 object Form_get_pay_dolg: TForm_get_pay_dolg
-  Left = 1320
-  Top = 249
+  Left = 1322
+  Top = 195
   Width = 634
   Height = 409
   BorderIcons = [biSystemMenu, biMinimize]
@@ -89,118 +89,6 @@ object Form_get_pay_dolg: TForm_get_pay_dolg
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object DBGridEh1: TDBGridEh
-    Left = 0
-    Top = 33
-    Width = 618
-    Height = 288
-    Align = alClient
-    DataSource = Form_get_pay_nal.DS_chargepay
-    Flat = False
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -15
-    Font.Name = 'MS Sans Serif'
-    Font.Style = []
-    FooterColor = clWindow
-    FooterFont.Charset = DEFAULT_CHARSET
-    FooterFont.Color = clWindowText
-    FooterFont.Height = -15
-    FooterFont.Name = 'MS Sans Serif'
-    FooterFont.Style = []
-    FooterRowCount = 1
-    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghEnterAsTab, dghRowHighlight]
-    ParentFont = False
-    PopupMenu = pm1
-    SumList.Active = True
-    TabOrder = 0
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -15
-    TitleFont.Name = 'MS Sans Serif'
-    TitleFont.Style = []
-    OnColEnter = DBGridEh1ColEnter
-    OnKeyDown = DBGridEh1KeyDown
-    OnKeyPress = DBGridEh1KeyPress
-    Columns = <
-      item
-        EditButtons = <>
-        FieldName = 'LSK'
-        Footers = <>
-        ReadOnly = True
-        Title.Caption = #1051#1080#1094'.'#1089#1095'.'
-        Width = 58
-      end
-      item
-        EditButtons = <>
-        FieldName = 'LSK_TP'
-        Footers = <>
-        ReadOnly = True
-        Title.Caption = #1058#1080#1087'.'
-        Visible = False
-        Width = 27
-      end
-      item
-        Checkboxes = False
-        EditButtons = <>
-        FieldName = 'USL_NAME_SHORT'
-        Footers = <>
-        ReadOnly = True
-        Title.Caption = #1059#1089#1083#1091#1075#1080
-        Width = 106
-      end
-      item
-        EditButtons = <>
-        FieldName = 'MG'
-        Footer.Value = #1048#1090#1086#1075#1086':'
-        Footer.ValueType = fvtStaticText
-        Footers = <>
-        Title.Caption = #1055#1077#1088#1080#1086#1076
-      end
-      item
-        EditButtons = <>
-        FieldName = 'CHARGE'
-        Footer.FieldName = 'CHARGE'
-        Footer.ValueType = fvtSum
-        Footers = <>
-        Title.Caption = #1053#1072#1095#1080#1089#1083#1077#1085#1086
-        Width = 76
-      end
-      item
-        EditButtons = <>
-        FieldName = 'PAYMENT'
-        Footer.FieldName = 'PAYMENT'
-        Footer.ValueType = fvtSum
-        Footers = <>
-        Title.Caption = #1054#1087#1083#1072#1095#1077#1085#1086
-        Width = 68
-      end
-      item
-        EditButtons = <>
-        FieldName = 'SUMMA'
-        Footer.FieldName = 'SUMMA'
-        Footer.ValueType = fvtSum
-        Footers = <>
-        Title.Caption = #1057#1091#1084#1084#1072
-        Width = 75
-      end
-      item
-        EditButtons = <>
-        FieldName = 'PENYA'
-        Footer.ValueType = fvtSum
-        Footers = <>
-        Title.Caption = #1055#1077#1085#1103
-        Width = 63
-      end
-      item
-        EditButtons = <>
-        FieldName = 'ITOG'
-        Footer.ValueType = fvtSum
-        Footers = <>
-        Title.Caption = #1048#1090#1086#1075#1086
-        Width = 60
-      end>
-  end
   object GroupBox1: TGroupBox
     Left = 0
     Top = 321
@@ -290,27 +178,6 @@ object Form_get_pay_dolg: TForm_get_pay_dolg
       TabOrder = 3
       OnClick = Button2Click
     end
-    object wwDBEdit1: TwwDBEdit
-      Left = 196
-      Top = 15
-      Width = 89
-      Height = 28
-      Hint = #1042#1074#1077#1089#1090#1080' '#1089#1091#1084#1084#1091' '#1076#1083#1103' '#1088#1072#1089#1087#1088#1077#1076#1077#1085#1080#1103' + {Enter}'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -17
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-      ParentShowHint = False
-      Picture.PictureMask = '[-][#][#][#][#][#][#][.][#][#]'
-      ShowHint = True
-      TabOrder = 4
-      UnboundDataType = wwDefault
-      WantReturns = False
-      WordWrap = False
-      OnKeyPress = wwDBEdit1KeyPress
-    end
     object Button3: TButton
       Left = 371
       Top = 16
@@ -326,8 +193,25 @@ object Form_get_pay_dolg: TForm_get_pay_dolg
       ParentFont = False
       ParentShowHint = False
       ShowHint = True
-      TabOrder = 5
+      TabOrder = 4
       OnClick = Button3Click
+    end
+    object cxSumma: TcxMaskEdit
+      Left = 192
+      Top = 16
+      ParentFont = False
+      Properties.MaskKind = emkRegExprEx
+      Properties.EditMask = '\-?\d{1,10}\.?\d{0,2}'
+      Properties.ValidationOptions = [evoShowErrorIcon, evoAllowLoseFocus]
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -15
+      Style.Font.Name = 'MS Sans Serif'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
+      TabOrder = 5
+      OnKeyPress = cxSummaKeyPress
+      Width = 90
     end
   end
   object HeaderControl1: THeaderControl
@@ -336,6 +220,103 @@ object Form_get_pay_dolg: TForm_get_pay_dolg
     Width = 618
     Height = 33
     Sections = <>
+  end
+  object cxGrid1: TcxGrid
+    Left = 0
+    Top = 33
+    Width = 618
+    Height = 288
+    Align = alClient
+    PopupMenu = pm1
+    TabOrder = 0
+    object cxGrid1DBTableView1: TcxGridDBTableView
+      OnKeyPress = cxGrid1DBTableView1KeyPress
+      Navigator.Buttons.CustomButtons = <>
+      Navigator.Visible = True
+      OnFocusedItemChanged = cxGrid1DBTableView1FocusedItemChanged
+      DataController.DataSource = Form_get_pay_nal.DS_chargepay
+      DataController.Summary.DefaultGroupSummaryItems = <>
+      DataController.Summary.FooterSummaryItems = <
+        item
+          Kind = skSum
+          Column = cxGrid1DBTableView1CHARGE
+        end
+        item
+          Kind = skSum
+          Column = cxGrid1DBTableView1PAYMENT
+        end
+        item
+          Kind = skSum
+          Column = cxGrid1DBTableView1SUMMA
+        end
+        item
+          Kind = skSum
+          Column = cxGrid1DBTableView1PENYA
+        end
+        item
+          Kind = skSum
+          Column = cxGrid1DBTableView1ITOG
+        end>
+      DataController.Summary.SummaryGroups = <>
+      OptionsBehavior.FocusFirstCellOnNewRecord = True
+      OptionsBehavior.GoToNextCellOnEnter = True
+      OptionsData.Appending = True
+      OptionsData.Deleting = False
+      OptionsSelection.InvertSelect = False
+      OptionsView.Footer = True
+      OptionsView.GroupByBox = False
+      OptionsView.Indicator = True
+      object cxGrid1DBTableView1LSK: TcxGridDBColumn
+        Caption = #1051#1080#1094'.'#1089#1095'.'
+        DataBinding.FieldName = 'LSK'
+        Width = 72
+      end
+      object cxGrid1DBTableView1USL_NAME_SHORT: TcxGridDBColumn
+        Caption = #1059#1089#1083#1091#1075#1072
+        DataBinding.FieldName = 'USL_NAME_SHORT'
+        Width = 130
+      end
+      object cxGrid1DBTableView1MG: TcxGridDBColumn
+        Caption = #1055#1077#1088#1080#1086#1076
+        DataBinding.FieldName = 'MG'
+        Width = 60
+      end
+      object cxGrid1DBTableView1CHARGE: TcxGridDBColumn
+        Caption = #1053#1072#1095#1080#1089#1083#1077#1085#1086
+        DataBinding.FieldName = 'CHARGE'
+        Options.Editing = False
+      end
+      object cxGrid1DBTableView1PAYMENT: TcxGridDBColumn
+        Caption = #1054#1087#1083#1072#1095#1077#1085#1086
+        DataBinding.FieldName = 'PAYMENT'
+        Options.Editing = False
+      end
+      object cxGrid1DBTableView1SUMMA: TcxGridDBColumn
+        Caption = #1057#1091#1084#1084#1072
+        DataBinding.FieldName = 'SUMMA'
+        PropertiesClassName = 'TcxMaskEditProperties'
+        Properties.MaskKind = emkRegExpr
+        Properties.EditMask = '\-?\d{1,10}\.?\d{0,2}'
+      end
+      object cxGrid1DBTableView1PENYA: TcxGridDBColumn
+        Caption = #1055#1077#1085#1103
+        DataBinding.FieldName = 'PENYA'
+        PropertiesClassName = 'TcxMaskEditProperties'
+        Properties.MaskKind = emkRegExpr
+        Properties.EditMask = '\-?\d{1,10}\.?\d{0,2}'
+      end
+      object cxGrid1DBTableView1ITOG: TcxGridDBColumn
+        Caption = #1048#1090#1086#1075#1086
+        DataBinding.FieldName = 'ITOG'
+        PropertiesClassName = 'TcxMaskEditProperties'
+        Properties.MaskKind = emkRegExpr
+        Properties.EditMask = '\-?\d{1,10}\.?\d{0,2}'
+        Options.Editing = False
+      end
+    end
+    object cxGrid1Level1: TcxGridLevel
+      GridView = cxGrid1DBTableView1
+    end
   end
   object pm1: TPopupMenu
     Left = 132

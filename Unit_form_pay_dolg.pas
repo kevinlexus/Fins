@@ -4,39 +4,54 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DBGridEh, DB, OracleData, StdCtrls, Mask,
-  wwdbedit, Menus, cxClasses, cxPropertiesStore, ComCtrls, GridsEh;
+  Dialogs, DB, OracleData, StdCtrls, Mask,
+  Menus, cxClasses, cxPropertiesStore, ComCtrls,
+  cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxStyles,
+  cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
+  cxDBData, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
+  cxGridLevel, cxGridCustomView, cxGrid, cxMaskEdit, cxContainer,
+  cxTextEdit, wwdbedit;
 
 type
   TForm_get_pay_dolg = class(TForm)
-    DBGridEh1: TDBGridEh;
     GroupBox1: TGroupBox;
     Button1: TButton;
     CheckBox1: TCheckBox;
     btn1: TButton;
     Button2: TButton;
     Label1: TLabel;
-    wwDBEdit1: TwwDBEdit;
     pm1: TPopupMenu;
     N1: TMenuItem;
     cxprprtstr1: TcxPropertiesStore;
     HeaderControl1: THeaderControl;
     Button3: TButton;
+    cxGrid1: TcxGrid;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    cxGrid1DBTableView1SUMMA: TcxGridDBColumn;
+    cxGrid1DBTableView1MG: TcxGridDBColumn;
+    cxGrid1DBTableView1CHARGE: TcxGridDBColumn;
+    cxGrid1DBTableView1PAYMENT: TcxGridDBColumn;
+    cxGrid1DBTableView1PENYA: TcxGridDBColumn;
+    cxGrid1DBTableView1ITOG: TcxGridDBColumn;
+    cxGrid1DBTableView1LSK: TcxGridDBColumn;
+    cxGrid1DBTableView1USL_NAME_SHORT: TcxGridDBColumn;
+    cxSumma: TcxMaskEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure OD_chargepayBeforeInsert(DataSet: TDataSet);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
-    procedure DBGridEh1KeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
     procedure exit_ok;
-    procedure DBGridEh1KeyPress(Sender: TObject; var Key: Char);
     procedure CheckBox1Click(Sender: TObject);
-    procedure DBGridEh1ColEnter(Sender: TObject);
     procedure btn1Click(Sender: TObject);
-    procedure wwDBEdit1KeyPress(Sender: TObject; var Key: Char);
     procedure N1Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
+    procedure cxGrid1DBTableView1FocusedItemChanged(
+      Sender: TcxCustomGridTableView; APrevFocusedItem,
+      AFocusedItem: TcxCustomGridTableItem);
+    procedure cxGrid1DBTableView1KeyPress(Sender: TObject; var Key: Char);
+    procedure cxSummaKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -70,8 +85,7 @@ begin
   Form_get_pay_nal.OD_chargepay.Filter := '((summa2 > 0) or (penya2 > 0))';
   // ред.08.07.2019 убрал  and (sal > 0) по просьбе Полыс
   Form_get_pay_nal.OD_chargepay.Filtered := true;
-  DBGridEh1.SumList.RecalcAll;
-  DBGridEh1.SelectedIndex := 5;
+  cxGrid1DBTableView1.Controller.FocusedColumn := cxGrid1DBTableView1SUMMA;
 end;
 
 procedure TForm_get_pay_dolg.OD_chargepayBeforeInsert(DataSet: TDataSet);
@@ -92,51 +106,12 @@ end;
 
 procedure TForm_get_pay_dolg.exit_ok;
 begin
-  Form_get_pay_nal.cxSumma.Text := wwDBEdit1.Text;
+  Form_get_pay_nal.cxSumma.Text := cxSumma.Text;
   with Form_get_pay_nal do
   begin
     if not (OD_chargepay.State in [dsBrowse]) then
       OD_chargepay.Post;
   end;
-
-  with Form_get_pay_nal.OD_c_kwtp_temp do
-  begin
-    Edit;
-    FieldByName('summa').AsFloat :=
-      DBGridEh1.SumList.SumCollection.Items[2].SumValue;
-    FieldByName('penya').AsFloat :=
-      DBGridEh1.SumList.SumCollection.Items[3].SumValue;
-    FieldByName('itog').AsFloat :=
-      DBGridEh1.SumList.SumCollection.Items[2].SumValue +
-      DBGridEh1.SumList.SumCollection.Items[3].SumValue;
-    Post;
-  end;
-end;
-
-procedure TForm_get_pay_dolg.DBGridEh1KeyDown(Sender: TObject;
-  var Key: Word; Shift: TShiftState);
-begin
-  if (key = VK_Return) and
-    (DBGridEh1.DataSource.DataSet.Eof = True)
-    and (DBGridEh1.SelectedField.FieldName = 'ITOG') then
-  begin
-    exit_ok;
-    Close;
-  end
-  else if (key = VK_Return) and
-    (DBGridEh1.DataSource.DataSet.Eof <> True)
-    and (DBGridEh1.SelectedField.FieldName = 'ITOG') then
-  begin
-    key := VK_DOWN;
-  end;
-
-end;
-
-procedure TForm_get_pay_dolg.DBGridEh1KeyPress(Sender: TObject;
-  var Key: Char);
-begin
-  if RetKey(Key) then
-    Key := '.';
 
 end;
 
@@ -151,49 +126,38 @@ begin
     Form_get_pay_nal.OD_chargepay.Filter := '(summa > 0) and (sal > 0)';
     Form_get_pay_nal.OD_chargepay.Filtered := true;
   end;
-  DBGridEh1.SumList.RecalcAll;
 end;
 
 procedure TForm_get_pay_dolg.recalc;
 var
   penya_, summa_, itog_, itogD_, proc1_, penya2_, tt2: Double;
 begin
-  penya_ := DBGridEh1.DataSource.DataSet.FieldByName('PENYA').AsFloat;
-  summa_ := DBGridEh1.DataSource.DataSet.FieldByName('SUMMA').AsFloat;
+  penya_ :=
+    cxGrid1DBTableView1.DataController.DataSource.DataSet.FieldByName('PENYA').AsFloat;
+  summa_ :=
+    cxGrid1DBTableView1.DataController.DataSource.DataSet.FieldByName('SUMMA').AsFloat;
   itogD_ := summa_ + penya_;
   if (itogD_ <> 0) and not (CheckBox1.Checked) then
   begin
-    itog_ := DBGridEh1.DataSource.DataSet.FieldByName('ITOG').AsFloat;
+    itog_ :=
+      cxGrid1DBTableView1.DataController.DataSource.DataSet.FieldByName('ITOG').AsFloat;
 
     proc1_ := (summa_ / itogD_); // % суммы долга
 
     tt2 := RoundTo((itog_ * proc1_), -2);
-    DBGridEh1.DataSource.DataSet.FieldByName('SUMMA').AsFloat := tt2;
+    cxGrid1DBTableView1.DataController.DataSource.DataSet.FieldByName('SUMMA').AsFloat := tt2;
     penya2_ := itog_ - tt2;
-    DBGridEh1.DataSource.DataSet.FieldByName('PENYA').AsFloat := penya2_;
+    cxGrid1DBTableView1.DataController.DataSource.DataSet.FieldByName('PENYA').AsFloat := penya2_;
   end
   else if (itogD_ <> 0) and (CheckBox1.Checked) then
   begin
-    DBGridEh1.DataSource.DataSet.FieldByName('ITOG').AsFloat := itogD_;
+    cxGrid1DBTableView1.DataController.DataSource.DataSet.FieldByName('ITOG').AsFloat := itogD_;
   end
   else
   begin
     //зануляем ошибочно введенную итоговую сумму
-    DBGridEh1.DataSource.DataSet.FieldByName('ITOG').AsFloat := 0;
+    cxGrid1DBTableView1.DataController.DataSource.DataSet.FieldByName('ITOG').AsFloat := 0;
   end;
-end;
-
-procedure TForm_get_pay_dolg.DBGridEh1ColEnter(Sender: TObject);
-var
-  penya_, summa_: Double;
-begin
-  if (DBGridEh1.SelectedField.FieldName = 'ITOG') then
-  begin
-    penya_ := DBGridEh1.DataSource.DataSet.FieldByName('PENYA').AsFloat;
-    summa_ := DBGridEh1.DataSource.DataSet.FieldByName('SUMMA').AsFloat;
-    DBGridEh1.DataSource.DataSet.FieldByName('ITOG').AsFloat := penya_ + summa_;
-  end;
-
 end;
 
 procedure TForm_get_pay_dolg.btn1Click(Sender: TObject);
@@ -216,21 +180,6 @@ begin
     EnableControls;
   end;
 
-end;
-
-procedure TForm_get_pay_dolg.wwDBEdit1KeyPress(Sender: TObject;
-  var Key: Char);
-begin
-  if Key = #13 then
-  begin
-    if wwDBEdit1.Text <> '' then
-    begin
-      Form_get_pay_nal.distPay(StrToFloat(wwDBEdit1.Text), True, True, True,
-        False);
-    end;
-    //    Button1.SetFocus;
-    Windows.SetFocus(Button1.Handle);
-  end;
 end;
 
 procedure TForm_get_pay_dolg.N1Click(Sender: TObject);
@@ -267,6 +216,104 @@ procedure TForm_get_pay_dolg.Button3Click(Sender: TObject);
 begin
   // Восстановить распределение оплаты
   Form_get_pay_nal.reLoadDeb;
+end;
+
+procedure TForm_get_pay_dolg.cxGrid1DBTableView1FocusedItemChanged(
+  Sender: TcxCustomGridTableView; APrevFocusedItem,
+  AFocusedItem: TcxCustomGridTableItem);
+var
+  summa, penya: Double;
+  {  recIdx, colIdx: Integer;
+    OutputVal: Variant;
+   }
+begin
+  if (AFocusedItem = cxGrid1DBTableView1ITOG) then
+  begin
+
+    summa :=
+      cxGrid1DBTableView1.DataController.DataSource.DataSet.FieldByName('SUMMA').AsFloat;
+    penya :=
+      cxGrid1DBTableView1.DataController.DataSource.DataSet.FieldByName('PENYA').AsFloat;
+    cxGrid1DBTableView1.DataController.DataSource.DataSet.FieldByName('ITOG').AsFloat :=
+      summa + penya;
+  end;
+
+  {  recIdx := cxGrid1DBTableView1.Controller.SelectedRecords[0].RecordIndex;
+    colIdx :=
+      cxGrid1DBTableView1.DataController.GetItemByFieldName('SUMMA').Index;
+    summaStr := VarToStr(cxGrid1DBTableView1.DataController.Values[recIdx, colIdx]);
+    colIdx :=
+      cxGrid1DBTableView1.DataController.GetItemByFieldName('PENYA').Index;
+    penyaStr := VarToStr(cxGrid1DBTableView1.DataController.Values[recIdx, colIdx]);
+
+    if summaStr='' then
+       summaStr:='0';
+
+    if penyaStr='' then
+       penyaStr:='0';
+   }
+  //  colIdx :=
+  //    cxGrid1DBTableView1.DataController.GetItemByFieldName('ITOG').Index;
+  //  cxGrid1DBTableView1.DataController.Values[recIdx, colIdx] :=
+  //    StrToFloat(summaStr) + StrToFloat(penyaStr)+77777;
+end;
+
+procedure TForm_get_pay_dolg.cxGrid1DBTableView1KeyPress(Sender: TObject;
+  var Key: Char);
+var
+  isItog: Boolean;
+begin
+  if RetKey(Key) then
+    Key := '.';
+
+  with TcxGridDBTableView(TcxGridSite(Sender).GridView) do
+  begin
+    if (Controller.FocusedColumn = cxGrid1DBTableView1ITOG) then
+      isItog := True
+    else
+      isItog := False;
+
+    begin
+      if (Key = #13) and (isItog = true) then
+      begin
+        if (cxGrid1DBTableView1.DataController.DataSource.DataSet.Eof = true)
+          then
+        begin
+          exit_ok;
+          Close;
+        end
+        else if (cxGrid1DBTableView1.DataController.DataSource.DataSet.Eof <>
+          true) then
+        begin
+          //key := #40;
+          cxGrid1DBTableView1.DataController.DataSource.DataSet.Next;
+          if (cxGrid1DBTableView1.DataController.DataSource.DataSet.Eof = true)
+            then
+          begin
+            exit_ok;
+            Close;
+          end
+          else
+            Controller.FocusedColumn := cxGrid1DBTableView1SUMMA;
+        end;
+      end;
+    end;
+  end;
+end;
+
+procedure TForm_get_pay_dolg.cxSummaKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    if cxSumma.Text <> '' then
+    begin
+      Form_get_pay_nal.distPay(StrToFloat(cxSumma.Text), True, True, True,
+        False);
+    end;
+    Windows.SetFocus(Button1.Handle);
+  end;
+
 end;
 
 end.
