@@ -10,7 +10,7 @@ uses
   cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
   cxDBData, cxCheckBox, cxGridLevel, cxGridCustomTableView,
   cxGridTableView, cxGridDBTableView, cxClasses, cxGridCustomView, cxGrid,
-  wwriched;
+  cxContainer, cxTextEdit, cxMemo;
 
 type
   TForm_auto_chrg = class(TForm)
@@ -27,6 +27,7 @@ type
     cxGridLevel1: TcxGridLevel;
     cxGridDBTableView1USL: TcxGridDBColumn;
     cxGridDBTableView1NM: TcxGridDBColumn;
+    cxMemo1: TcxMemo;
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure N1Click(Sender: TObject);
