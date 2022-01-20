@@ -90,27 +90,6 @@ object Form_list_kart: TForm_list_kart
   OnPaint = FormPaint
   PixelsPerInch = 96
   TextHeight = 13
-  object wwDBLookupCombo3: TwwDBLookupCombo
-    Left = 240
-    Top = 291
-    Width = 121
-    Height = 21
-    DropDownAlignment = taLeftJustify
-    Selected.Strings = (
-      'NAME'#9'64'#9#1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103#9'F'#9)
-    DataField = 'FK_DEB_ORG'
-    DataSource = DS_list_kart
-    LookupTable = OD_debits_org
-    LookupField = 'NAME'
-    TabOrder = 1
-    Visible = False
-    AutoDropDown = False
-    ShowButton = True
-    PreciseEditRegion = False
-    AllowClearKey = False
-    OnCloseUp = wwDBLookupCombo3CloseUp
-    OnExit = wwDBLookupCombo3Exit
-  end
   object Memo1: TMemo
     Left = 792
     Top = 51
@@ -146,7 +125,7 @@ object Form_list_kart: TForm_list_kart
     Width = 1028
     Height = 41
     Align = alBottom
-    TabOrder = 2
+    TabOrder = 1
     object Panel2: TPanel
       Left = 599
       Top = 1
@@ -514,25 +493,13 @@ object Form_list_kart: TForm_list_kart
       end
     end
   end
-  object wwExpandButton1: TwwExpandButton
-    Left = 8
-    Top = 128
-    Width = 16
-    Height = 16
-    DisableThemes = False
-    OnBeforeExpand = wwExpandButton1BeforeExpand
-    OnBeforeCollapse = wwExpandButton1BeforeCollapse
-    Caption = 'wwExpandButton1'
-    TabOrder = 3
-    Visible = False
-  end
   object Panel5: TPanel
     Left = 597
     Top = 0
     Width = 431
     Height = 553
     Align = alRight
-    TabOrder = 4
+    TabOrder = 2
     Visible = False
     object cxmskdtEL: TcxMaskEdit
       Left = 280
@@ -769,7 +736,7 @@ object Form_list_kart: TForm_list_kart
     Width = 597
     Height = 553
     Align = alClient
-    TabOrder = 5
+    TabOrder = 3
     object cxgrdListKartDBTableView1: TcxGridDBTableView
       OnDblClick = cxgrdListKartDBTableView1DblClick
       Navigator.Buttons.CustomButtons = <>

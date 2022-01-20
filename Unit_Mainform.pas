@@ -39,7 +39,6 @@ type
     N24: TMenuItem;
     N25: TMenuItem;
     N26: TMenuItem;
-    N28: TMenuItem;
     N29: TMenuItem;
     N30: TMenuItem;
     N31: TMenuItem;
@@ -235,7 +234,6 @@ type
     procedure N25Click(Sender: TObject);
     procedure N26Click(Sender: TObject);
     procedure N27Click(Sender: TObject);
-    procedure N28Click(Sender: TObject);
     procedure N210Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure N31Click(Sender: TObject);
@@ -479,7 +477,7 @@ uses
   Unit_check_days, Unit_form_admin,
   Unit_print_opl_usl, Unit_print_strah, Unit_generate, Unit_print_saldo_houses,
   Unit_print_saldo_org_usl, Unit_form_alert_exit, Unit_about,
-  Unit_print_saldo_usl, Unit_print_plan, Unit_form_plan, Unit_print_pred_debit,
+  Unit_print_saldo_usl, Unit_print_plan, Unit_form_plan,
   Unit1_print_pen,
   Unit_print_bank, Unit_form_print_stat1,
   Unit_print_status, Unit_form_bills, 
@@ -630,11 +628,6 @@ procedure TForm_Main.N27Click(Sender: TObject);
 begin
   {  Form_Main.CoolTrayIcon1.ShowBalloonHint('Совет дня:',
       Form_Main.OD_params.FieldByName('mess_hint').AsString, bitWarning, 30);}
-end;
-
-procedure TForm_Main.N28Click(Sender: TObject);
-begin
-  Application.CreateForm(TForm_print_pred_debit, Form_print_pred_debit);
 end;
 
 procedure TForm_Main.N210Click(Sender: TObject);

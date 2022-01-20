@@ -4,7 +4,9 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Mask, wwdbedit, Utils, ExtCtrls;
+  Dialogs, StdCtrls, Mask, Utils, ExtCtrls, cxGraphics,
+  cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit,
+  cxTextEdit, cxMaskEdit;
 
 type
   TForm_money_cash = class(TForm)
@@ -12,12 +14,12 @@ type
     Button1: TButton;
     Button2: TButton;
     lbl1: TLabel;
-    edt1: TwwDBEdit;
     lbl2: TLabel;
+    cxSumma: TcxMaskEdit;
     procedure Button1Click(Sender: TObject);
-    procedure edt1KeyPress(Sender: TObject; var Key: Char);
     procedure btn1Click(Sender: TObject);
     procedure btn2Click(Sender: TObject);
+    procedure cxSummaKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -35,30 +37,31 @@ uses Unit_service_cash;
 
 procedure TForm_money_cash.Button1Click(Sender: TObject);
 begin
-  if (edt1.Text = '') or (StrToFloat(edt1.Text) = 0) then
+  if (cxSumma.Text = '') or (StrToFloat(cxSumma.Text) = 0) then
   begin
-   msg2('Сумма  = 0, отмена', 'Внимание!', MB_OK+MB_ICONSTOP);
-   Exit;
+    msg2('Сумма  = 0, отмена', 'Внимание!', MB_OK + MB_ICONSTOP);
+    Exit;
   end;
 
-  Form_service_cash.l_summa:=StrToFloat(edt1.Text);
-end;
-
-procedure TForm_money_cash.edt1KeyPress(Sender: TObject; var Key: Char);
-begin
-  if Key = #13 then
-//    Button1.SetFocus;
-Windows.SetFocus(Button1.Handle);
+  Form_service_cash.l_summa := StrToFloat(cxSumma.Text);
 end;
 
 procedure TForm_money_cash.btn1Click(Sender: TObject);
 begin
- close
+  close
 end;
 
 procedure TForm_money_cash.btn2Click(Sender: TObject);
 begin
-close;
+  close;
+end;
+
+procedure TForm_money_cash.cxSummaKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+    Windows.SetFocus(Button1.Handle);
+
 end;
 
 end.
+

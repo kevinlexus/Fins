@@ -20,7 +20,7 @@ uses
 
   cxDropDownEdit, cxMRUEdit, cxLookAndFeels, cxLookAndFeelPainters,
   cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, cxDBData,
-  dxBarBuiltInMenu, cxPC, wwcheckbox, wwdblook;
+  dxBarBuiltInMenu, cxPC;
 
 type
   TForm_list_kart = class(TForm)
@@ -81,7 +81,6 @@ type
     OD_debits_orgID: TFloatField;
     OD_debits_orgNAME: TStringField;
     DS_debits_org: TDataSource;
-    wwDBLookupCombo3: TwwDBLookupCombo;
     OD_list_kartFK_DEB_ORG: TFloatField;
     us: TStringField;
     OD_list_kartSCH_EL: TIntegerField;
@@ -133,7 +132,6 @@ type
     OD_deb_kart_prDEB_ORG_NAME: TStringField;
     DS_deb_kart_pr: TDataSource;
     OD_list_kartBTN: TStringField;
-    wwExpandButton1: TwwExpandButton;
     OD_list_kartADR: TStringField;
     cxPropertiesStore1: TcxPropertiesStore;
     OD_list_kartLSK_EXT: TStringField;
@@ -222,18 +220,12 @@ type
     cxgrdListKartDBTableView1PARENT_LSK: TcxGridDBColumn;
     cxgrdListKartDBTableView1DT_CR: TcxGridDBColumn;
     cxgrdListKartDBTableView1FK_KLSK_OBJ: TcxGridDBColumn;
-//    procedure wwDBGrid1DblClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure wwDBGrid1KeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure OD_list_kartAfterScroll(DataSet: TDataSet);
     procedure OD_list_kartAfterRefreshRecord(Sender: TOracleDataSet);
     procedure refresh_data;
     procedure Button1Click(Sender: TObject);
-    procedure wwIncrementalSearch1DblClick(Sender: TObject);
-    procedure wwIncrementalSearch1KeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
     procedure OD_list_kartBeforeScroll(DataSet: TDataSet);
     procedure setAllowEdit_list;
     procedure setAllowEdit_kart;
@@ -242,10 +234,6 @@ type
     procedure OD_list_kartAfterPost(DataSet: TDataSet);
     procedure OD_list_kartApplyRecord(Sender: TOracleDataSet; Action: Char;
       var Applied: Boolean; var NewRowId: string);
-    procedure wwDBGrid1KeyPress(Sender: TObject; var Key: Char);
-    procedure wwDBGrid1CalcCellColors(Sender: TObject; Field: TField;
-      State: TGridDrawState; Highlight: Boolean; AFont: TFont;
-      ABrush: TBrush);
     procedure OD_list_kartBeforeInsert(DataSet: TDataSet);
     procedure chk2Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
@@ -256,32 +244,20 @@ type
     procedure SetFields;
     procedure SetFields2;
     procedure OD_list_kartAfterOpen(DataSet: TDataSet);
-    procedure wwDBLookupCombo3CloseUp(Sender: TObject; LookupTable,
-      FillTable: TDataSet; modified: Boolean);
-    procedure wwDBLookupCombo3Exit(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
-    procedure wwDBLookupCombo4Exit(Sender: TObject);
     procedure OD_list_kartEditError(DataSet: TDataSet; E: EDatabaseError;
       var Action: TDataAction);
-    procedure wwDBGrid2KeyPress(Sender: TObject; var Key: Char);
     procedure N3Click(Sender: TObject);
     procedure N1Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure SetFilter(isShowClosed: Boolean; isShowNotMain: Boolean);
     procedure CheckBox3Click(Sender: TObject);
-    procedure wwExpandButton1BeforeExpand(Sender: TObject);
-    procedure wwExpandButton1BeforeCollapse(Sender: TObject);
     procedure save_deb_kart_pr;
     procedure chk1Click(Sender: TObject);
     //    procedure cxmskdt1DblClick(Sender: TObject);
     //    procedure cxmskdt1KeyPress(Sender: TObject; var Key: Char);
     procedure SpeedButton4Click(Sender: TObject);
-    procedure wwDBEdit1KeyPress(Sender: TObject; var Key: Char);
-    procedure wwDBEdit1KeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
-    procedure wwDBEdit2KeyPress(Sender: TObject; var Key: Char);
     procedure Button2Click(Sender: TObject);
-    procedure wwDBEdit3KeyPress(Sender: TObject; var Key: Char);
     procedure BitBtn2Click(Sender: TObject);
     procedure KLSKHOUSEID1Click(Sender: TObject);
     procedure cxMRUEdit1KeyPress(Sender: TObject; var Key: Char);
@@ -516,11 +492,11 @@ begin // смена состояний формы
 end;
 
 { разобраться после перехода на RAD, как работают эти поля
-procedure TForm_list_kart.wwDBGrid1DblClick(Sender: TObject);
+procedure TForm_list_kart.w1wDBGrid1DblClick(Sender: TObject);
 begin
-  if (wwDBGrid1.SelectedField.FieldName <> 'SUBS_CUR') and
-    (wwDBGrid1.SelectedField.FieldName <> 'KRAN1') and
-    (wwDBGrid1.SelectedField.FieldName <> 'KAN_SCH') then
+  if (w1wDBGrid1.SelectedField.FieldName <> 'SUBS_CUR') and
+    (w1wDBGrid1.SelectedField.FieldName <> 'KRAN1') and
+    (w1wDBGrid1.SelectedField.FieldName <> 'KAN_SCH') then
   begin
     if FF('Form_kart', 1) = 0 then
     begin
@@ -538,7 +514,6 @@ begin
   //  Button3.Left:=GroupBox1.Width-Button3.Width-10;
   //  CheckBox2.Left:=GroupBox1.Width-Button3.Width-CheckBox2.Width-10;
   //  CheckBox1.Left:=CheckBox2.Left-CheckBox2.Width-25;
-  //  wwDBNavigator1.Left:=CheckBox1.Left-wwDBNavigator1.Width-30;
 end;
 
 procedure TForm_list_kart.setFields;
@@ -759,15 +734,6 @@ begin
 
 end;
 
-procedure TForm_list_kart.wwDBGrid1KeyDown(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
-begin
-  if key = 13 then
-  begin
-    OD_list_kart.Next;
-  end;
-end;
-
 procedure TForm_list_kart.save_deb_kart_pr;
 begin
   //Сохранить сотояние датасета орг. по проживающим - задолжникам
@@ -897,44 +863,6 @@ begin
   Close;
 end;
 
-procedure TForm_list_kart.wwIncrementalSearch1DblClick(Sender: TObject);
-begin
-  Application.CreateForm(TForm_find_adr, Form_find_adr);
-  if Form_find_adr.ShowModal = mrOk then
-  begin
-    OD_list_kart.Active := false;
-    //удаляем последнюю строчку
-//      OD_list_kart.SQL.Delete(OD_list_kart.SQL.Count-1);
-    //устанавливаем порядок
-//      OD_list_kart.SetVariable(':SUBSTEXP4',
-//       ' order by s.name, k.nd, k.kw, u.npp, decode(k.psch,8,1,9,1,0), decode(u.cd,''LSK_TP_MAIN'',0,1)');
-
-    //OD_list_kart.SQL.Add('order by s.name, k.nd, k.kw, u.npp, decode(k.psch,8,1,9,1,0), decode(u.cd,''LSK_TP_MAIN'',0,1)');
-    OD_list_kart.Active := true;
-    OD_list_kart.SearchRecord('lsk', Form_Main.Lsk_, [srFromBeginning]);
-  end;
-end;
-
-procedure TForm_list_kart.wwIncrementalSearch1KeyDown(Sender: TObject;
-  var Key: Word; Shift: TShiftState);
-begin
-  if Key = 34 then
-  begin
-    Application.CreateForm(TForm_find_adr, Form_find_adr);
-    if Form_find_adr.ShowModal = mrOk then
-    begin
-      OD_list_kart.Active := false;
-      //удаляем последнюю строчку
-      //OD_list_kart.SQL.Delete(OD_list_kart.SQL.Count-1);
-      //устанавливаем порядок
-      //OD_list_kart.SQL.Add('order by s.name, k.nd, k.kw, u.npp, decode(k.psch,8,1,9,1,0), decode(u.cd,''LSK_TP_MAIN'',0,1)');
-      //OD_list_kart.SetVariable(':SUBSTEXP4',
-      // ' order by s.name, k.nd, k.kw, u.npp, decode(k.psch,8,1,9,1,0), decode(u.cd,''LSK_TP_MAIN'',0,1)');
-      OD_list_kart.Active := true;
-      OD_list_kart.SearchRecord('lsk', Form_Main.Lsk_, [srFromBeginning]);
-    end;
-  end;
-end;
 
 procedure TForm_list_kart.OD_list_kartBeforeScroll(DataSet: TDataSet);
 var
@@ -992,34 +920,6 @@ procedure TForm_list_kart.OD_list_kartApplyRecord(Sender: TOracleDataSet;
 var
   cnt_: Integer;
 begin
-end;
-
-procedure TForm_list_kart.wwDBGrid1KeyPress(Sender: TObject;
-  var Key: Char);
-begin
-  if RetKey(Key) then
-    Key := '.';
-
-end;
-
-procedure TForm_list_kart.wwDBGrid1CalcCellColors(Sender: TObject;
-  Field: TField; State: TGridDrawState; Highlight: Boolean; AFont: TFont;
-  ABrush: TBrush);
-begin
-  if (OD_list_kart.FieldByName('psch').AsInteger = 8)
-    or (OD_list_kart.FieldByName('psch').AsInteger = 9)
-    // and
-{//   (OD_list_kart.FieldByName('lsk_tp_cd').AsString = 'LSK_TP_MAIN')}then
-  begin
-    ABrush.Color := clSilver;
-    AFont.Color := clBlack;
-  end
-  else if (OD_list_kart.FieldByName('lsk_tp_cd').AsString = 'LSK_TP_ADDIT') or
-    (OD_list_kart.FieldByName('lsk_tp_cd').AsString = 'LSK_TP_RSO') then
-  begin
-    ABrush.Color := clMoneyGreen;
-    AFont.Color := clBlack;
-  end;
 end;
 
 procedure TForm_list_kart.OD_list_kartBeforeInsert(DataSet: TDataSet);
@@ -1121,53 +1021,12 @@ begin
  }
 end;
 
-procedure TForm_list_kart.wwDBLookupCombo3CloseUp(Sender: TObject;
-  LookupTable, FillTable: TDataSet; modified: Boolean);
-begin
-  //  OD_list_kart.FieldByName('FK_DEB_ORG').AsInteger:=
-  //    OD_debits_org.FieldByName('ID').AsInteger;
-end;
 
-procedure TForm_list_kart.wwDBLookupCombo3Exit(Sender: TObject);
-begin
-  if wwDBLookupCombo3.Text = '' then
-  begin
-    if (OD_list_kart.State = dsBrowse) then
-      OD_list_kart.Edit;
-    OD_list_kart.FieldByName('FK_DEB_ORG').AsVariant := null;
-    OD_list_kart.Post;
-  end;
-
-  //  if OD_debits_org.SearchRecord('NAME', wwDBLookupCombo3.Text,
-  //    [srFromBeginning]) <> true then
-  //  begin
-  //    msg2('Данная организация не найдена!', 'Ошибка', MB_OK);
-  //  end;
-end;
 
 procedure TForm_list_kart.BitBtn1Click(Sender: TObject);
 begin
   if FF('Form_log_actions', 0) = 0 then
     Application.CreateForm(TForm_log_actions, Form_log_actions);
-end;
-
-procedure TForm_list_kart.wwDBLookupCombo4Exit(Sender: TObject);
-begin
-  //Оставить для примера
-  {  if wwDBLookupCombo4.Text='' then
-      OD_list_kart.FieldByName('C_VVOD_EL_ID').AsVariant:=
-        null
-    else if OD_c_vvod_el.SearchRecord('VVOD_NUM', StrToInt(wwDBLookupCombo4.Text),
-      [srFromBeginning]) = true then
-    begin
-      OD_list_kart.FieldByName('C_VVOD_EL_ID').AsInteger:=
-        OD_c_vvod_el.FieldByName('ID').AsInteger;
-    end
-    else
-    begin
-      msg2('Данный ввод не найден!', 'Ошибка', MB_OK);
-    end;
-   }
 end;
 
 procedure TForm_list_kart.OD_list_kartEditError(DataSet: TDataSet;
@@ -1180,13 +1039,6 @@ begin
       'Внимание!', MB_OK + MB_ICONWARNING);
     Action := daAbort;
   end;
-end;
-
-procedure TForm_list_kart.wwDBGrid2KeyPress(Sender: TObject;
-  var Key: Char);
-begin
-  if RetKey(Key) then
-    Key := '.';
 end;
 
 procedure TForm_list_kart.N3Click(Sender: TObject);
@@ -1237,18 +1089,6 @@ begin
   end;
 end;
 
-procedure TForm_list_kart.wwExpandButton1BeforeExpand(Sender: TObject);
-begin
-  OD_deb_kart_pr.SetVariable('P_LSK',
-    OD_list_kart.FieldByName('LSK').AsString);
-  OD_deb_kart_pr.Active := False;
-  OD_deb_kart_pr.Active := True;
-end;
-
-procedure TForm_list_kart.wwExpandButton1BeforeCollapse(Sender: TObject);
-begin
-  OD_deb_kart_pr.Active := False;
-end;
 
 procedure TForm_list_kart.chk1Click(Sender: TObject);
 begin
@@ -1335,42 +1175,6 @@ begin
    }
 end;
 
-procedure TForm_list_kart.wwDBEdit1KeyPress(Sender: TObject;
-  var Key: Char);
-begin
-  if Key = #13 then
-  begin
-    // нажат Enter - перейти к другому полю
-//    wwDBEdit2.SetFocus;
-    //Windows.SetFocus(wwDBEdit2.Handle);
-  end;
-end;
-
-procedure TForm_list_kart.wwDBEdit1KeyDown(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
-begin
-  if Key = 38 then
-  begin
-    OD_list_kart.Prior;
-  end
-  else if Key = 40 then
-  begin
-    OD_list_kart.Next;
-  end;
-
-end;
-
-procedure TForm_list_kart.wwDBEdit2KeyPress(Sender: TObject;
-  var Key: Char);
-begin
-  if Key = #13 then
-  begin
-    // нажат Enter - перейти к другому полю
-//    wwDBEdit3.SetFocus;
-    //Windows.SetFocus(wwDBEdit3.Handle);
-  end;
-end;
-
 procedure TForm_list_kart.Button2Click(Sender: TObject);
 var
   vol: Double;
@@ -1454,17 +1258,6 @@ begin
   OD_list_kart.Next;
   //  wwDBEdit1.SetFocus;
   Windows.SetFocus(cxmskdtHW_VOL.Handle);
-end;
-
-procedure TForm_list_kart.wwDBEdit3KeyPress(Sender: TObject;
-  var Key: Char);
-begin
-  if Key = #13 then
-  begin
-    // нажат Enter - перейти к другому полю
-//    Button2.SetFocus;
-    Windows.SetFocus(Button2.Handle);
-  end;
 end;
 
 procedure TForm_list_kart.BitBtn2Click(Sender: TObject);

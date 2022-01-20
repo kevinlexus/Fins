@@ -1,6 +1,6 @@
 object Form_money_cash: TForm_money_cash
-  Left = 1419
-  Top = 232
+  Left = 1009
+  Top = 200
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   ClientHeight = 216
@@ -122,7 +122,7 @@ object Form_money_cash: TForm_money_cash
     Width = 352
     Height = 41
     Align = alBottom
-    TabOrder = 1
+    TabOrder = 0
     DesignSize = (
       352
       41)
@@ -149,22 +149,21 @@ object Form_money_cash: TForm_money_cash
       TabOrder = 1
     end
   end
-  object edt1: TwwDBEdit
-    Left = 211
-    Top = 33
-    Width = 110
-    Height = 28
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -17
-    Font.Name = 'MS Sans Serif'
-    Font.Style = [fsBold]
+  object cxSumma: TcxMaskEdit
+    Left = 75
+    Top = 35
     ParentFont = False
-    Picture.PictureMask = '[-][#][#][#][#][#][#][.][#][#]'
-    TabOrder = 0
-    UnboundDataType = wwDefault
-    WantReturns = False
-    WordWrap = False
-    OnKeyPress = edt1KeyPress
+    Properties.MaskKind = emkRegExprEx
+    Properties.EditMask = '\-?\d{1,10}\.?\d{0,2}'
+    Properties.ValidationOptions = [evoShowErrorIcon, evoAllowLoseFocus]
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindowText
+    Style.Font.Height = -15
+    Style.Font.Name = 'MS Sans Serif'
+    Style.Font.Style = []
+    Style.IsFontAssigned = True
+    TabOrder = 1
+    OnKeyPress = cxSummaKeyPress
+    Width = 109
   end
 end

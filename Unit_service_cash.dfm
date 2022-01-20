@@ -1,6 +1,6 @@
 object Form_service_cash: TForm_service_cash
-  Left = 1088
-  Top = 192
+  Left = 654
+  Top = 272
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = #1050#1072#1089#1089#1072

@@ -1,6 +1,6 @@
 object Form_houses_nabor: TForm_houses_nabor
-  Left = 1481
-  Top = 206
+  Left = 1357
+  Top = 217
   Width = 1085
   Height = 621
   Caption = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082' '#1076#1086#1084#1086#1074
@@ -134,7 +134,7 @@ object Form_houses_nabor: TForm_houses_nabor
     Top = 0
     Width = 491
     Height = 533
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Align = alClient
     TabOrder = 1
     object TabSheet1: TTabSheet

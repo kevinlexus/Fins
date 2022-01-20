@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, OracleData, Grids, 
   wwSpeedButton, wwDBNavigator, ExtCtrls, StdCtrls, Utils,
-  Buttons, wwcheckbox, wwdblook, DBCtrls, ComCtrls,
+  Buttons,  DBCtrls, ComCtrls,
   Menus, Oracle, cxControls,
 
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
@@ -16,7 +16,8 @@ uses
   Uni, cxLookAndFeels, cxLookAndFeelPainters, cxStyles, cxCustomData,
   cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator, cxDBData,
   cxDBLookupComboBox, cxCheckBox, MemDS, DBAccess, cxGridCustomLayoutView,
-  wwclearpanel, Wwdbigrd, cxGridCustomView, Wwdatsrc, Wwdbgrid;
+  wwclearpanel, Wwdbigrd, cxGridCustomView, Wwdatsrc, Wwdbgrid, wwdblook,
+  wwcheckbox;
 
 type
   TForm_houses_nabor = class(TForm)
