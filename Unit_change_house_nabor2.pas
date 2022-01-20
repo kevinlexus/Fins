@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, wwdblook, DB, OracleData, wwdbedit,
+  Dialogs, StdCtrls, DB, OracleData, 
   cxControls, 
 
                                   
@@ -28,9 +28,7 @@ type
     DS_lsk_tp: TDataSource;
     pnl1: TPanel;
     Label2: TLabel;
-    wwDBLookupCombo1: TwwDBLookupCombo;
     Label3: TLabel;
-    wwDBLookupCombo2: TwwDBLookupCombo;
     Label5: TLabel;
     Label1: TLabel;
     cbb2: TcxLookupComboBox;
@@ -41,18 +39,17 @@ type
     Label6: TLabel;
     cxDateEdit1: TcxDateEdit;
     cxDateEdit2: TcxDateEdit;
+    cbbUsl: TcxLookupComboBox;
+    cbbOrg: TcxLookupComboBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button2Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
-    procedure wwDBEdit3KeyPress(Sender: TObject; var Key: Char);
-    procedure wwDBEdit4KeyPress(Sender: TObject; var Key: Char);
     procedure setState(p_lvl: Integer; p_lsk: string; st_: Integer; sptarn_:
       Integer);
     procedure FormCreate(Sender: TObject);
-    procedure wwDBLookupCombo1CloseUp(Sender: TObject; LookupTable,
-      FillTable: TDataSet; modified: Boolean);
     procedure set_sptarn(st_: Integer);
     procedure CheckBox1Click(Sender: TObject);
+    procedure cbbUslPropertiesCloseUp(Sender: TObject);
   private
     l_lvl, old_org_, state_: Integer;
     old_koeff_, old_norm_: Double;
@@ -130,8 +127,8 @@ begin
 
   if (state_ = 1) then
   begin
-    wwDBLookupCombo1.Enabled := True;
-    wwDBLookupCombo2.Enabled := True;
+    cbbUsl.Enabled := True;
+    cbbOrg.Enabled := True;
   end
   else if (state_ = 2) then
   begin
@@ -140,10 +137,10 @@ begin
     old_norm_ := DM_Olap.Uni_data.FieldByName('norm').AsFloat;
     old_dt1 := DM_Olap.Uni_data.FieldByName('dt1').AsDateTime;
     old_dt2 := DM_Olap.Uni_data.FieldByName('dt2').AsDateTime;
-    wwDBLookupCombo1.Enabled := False;
-    wwDBLookupCombo1.Value :=
+    cbbUsl.Enabled := False;
+    cbbUsl.EditValue :=
       DM_Olap.Uni_data.FieldByName('usl').AsString;
-    wwDBLookupCombo2.Value :=
+    cbbOrg.EditValue :=
       DM_Olap.Uni_data.FieldByName('org').AsString;
     cxMaskEdit3.Text := DM_Olap.Uni_data.FieldByName('koeff').AsString;
     cxMaskEdit1.Text := DM_Olap.Uni_data.FieldByName('norm').AsString;
@@ -175,12 +172,12 @@ begin
       l_chrg := 0;
   end;
 
-  if (wwDBLookupCombo1.LookupValue = '') then
+  if (cbbUsl.EditValue = null) then
   begin
     msg2('Не выбрана услуга', 'Внимание!', MB_OK + MB_ICONEXCLAMATION);
     Exit;
   end;
-  if (wwDBLookupCombo2.LookupValue = '') then
+  if (cbbOrg.EditValue = null) then
   begin
     msg2('Не выбрана организация', 'Внимание!', MB_OK + MB_ICONEXCLAMATION);
     Exit;
@@ -321,25 +318,6 @@ begin
   ModalResult := mrOk;
 end;
 
-procedure TForm_change_house_nabor2.wwDBEdit3KeyPress(Sender: TObject;
-  var Key: Char);
-begin
-  if RetKey(Key) then
-    Key := '.';
-
-  if Key = #13 then
-    //    Button1.SetFocus;
-    Windows.SetFocus(Button1.Handle);
-end;
-
-procedure TForm_change_house_nabor2.wwDBEdit4KeyPress(Sender: TObject;
-  var Key: Char);
-begin
-  if RetKey(Key) then
-    Key := '.';
-
-end;
-
 procedure TForm_change_house_nabor2.FormCreate(Sender: TObject);
 begin
   OD_lsk_tp.Active := true;
@@ -395,12 +373,6 @@ begin
   end;
 end;
 
-procedure TForm_change_house_nabor2.wwDBLookupCombo1CloseUp(Sender: TObject;
-  LookupTable, FillTable: TDataSet; modified: Boolean);
-begin
-  set_sptarn(OD_usl.FieldByName('sptarn').AsInteger);
-end;
-
 procedure TForm_change_house_nabor2.CheckBox1Click(Sender: TObject);
 begin
   with OD_sprorg do
@@ -412,6 +384,12 @@ begin
       SetVariable('var_', 1);
     Active := True;
   end;
+end;
+
+procedure TForm_change_house_nabor2.cbbUslPropertiesCloseUp(
+  Sender: TObject);
+begin
+  set_sptarn(OD_usl.FieldByName('sptarn').AsInteger);
 end;
 
 end.

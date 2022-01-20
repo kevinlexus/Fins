@@ -1,11 +1,11 @@
 object Form_change_house_nabor2: TForm_change_house_nabor2
-  Left = 575
-  Top = 217
+  Left = 361
+  Top = 409
   Align = alCustom
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077' '#1091#1089#1083#1091#1075#1080
-  ClientHeight = 107
+  ClientHeight = 105
   ClientWidth = 663
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -92,7 +92,7 @@ object Form_change_house_nabor2: TForm_change_house_nabor2
   TextHeight = 13
   object GroupBox1: TGroupBox
     Left = 0
-    Top = 58
+    Top = 56
     Width = 663
     Height = 49
     Align = alBottom
@@ -227,42 +227,6 @@ object Form_change_house_nabor2: TForm_change_house_nabor2
       Font.Style = [fsBold]
       ParentFont = False
     end
-    object wwDBLookupCombo1: TwwDBLookupCombo
-      Left = 48
-      Top = 0
-      Width = 161
-      Height = 21
-      DropDownAlignment = taLeftJustify
-      Selected.Strings = (
-        'NM'#9'25'#9'NM'#9'F')
-      LookupTable = OD_usl
-      LookupField = 'USL'
-      DropDownCount = 20
-      TabOrder = 0
-      AutoDropDown = True
-      ShowButton = True
-      PreciseEditRegion = False
-      AllowClearKey = False
-      OnCloseUp = wwDBLookupCombo1CloseUp
-    end
-    object wwDBLookupCombo2: TwwDBLookupCombo
-      Left = 248
-      Top = 0
-      Width = 161
-      Height = 21
-      DropDownAlignment = taLeftJustify
-      Selected.Strings = (
-        'NAME'#9'25'#9'NAME'#9'F'
-        'TP_ORG'#9'25'#9'TP_ORG'#9'F')
-      LookupTable = OD_sprorg
-      LookupField = 'KOD'
-      DropDownCount = 20
-      TabOrder = 1
-      AutoDropDown = True
-      ShowButton = True
-      PreciseEditRegion = False
-      AllowClearKey = False
-    end
     object cbb2: TcxLookupComboBox
       Left = 48
       Top = 26
@@ -273,7 +237,7 @@ object Form_change_house_nabor2: TForm_change_house_nabor2
         end>
       Properties.ListOptions.ShowHeader = False
       Properties.ListSource = DS_lsk_tp
-      TabOrder = 4
+      TabOrder = 2
       Visible = False
       Width = 161
     end
@@ -284,7 +248,7 @@ object Form_change_house_nabor2: TForm_change_house_nabor2
       Properties.EditMask = '\d{0,6}|(\d{0,6}\.\d{1,6})'
       Properties.ValidateOnEnter = False
       Properties.ValidationOptions = [evoShowErrorIcon]
-      TabOrder = 2
+      TabOrder = 0
       Width = 73
     end
     object cxMaskEdit1: TcxMaskEdit
@@ -292,22 +256,53 @@ object Form_change_house_nabor2: TForm_change_house_nabor2
       Top = 3
       Properties.MaskKind = emkRegExprEx
       Properties.EditMask = '\d{0,6}|(\d{0,6}\.\d{1,6})'
-      TabOrder = 3
+      TabOrder = 1
       Width = 73
     end
     object cxDateEdit1: TcxDateEdit
       Left = 264
       Top = 28
       Properties.InputKind = ikMask
-      TabOrder = 5
+      TabOrder = 3
       Width = 81
     end
     object cxDateEdit2: TcxDateEdit
       Left = 416
       Top = 28
       Properties.InputKind = ikMask
-      TabOrder = 6
+      TabOrder = 4
       Width = 89
+    end
+    object cbbUsl: TcxLookupComboBox
+      Left = 49
+      Top = 2
+      Enabled = False
+      Properties.GridMode = True
+      Properties.KeyFieldNames = 'USL'
+      Properties.ListColumns = <
+        item
+          FieldName = 'NM'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = DS_usl
+      Properties.OnCloseUp = cbbUslPropertiesCloseUp
+      TabOrder = 5
+      Width = 160
+    end
+    object cbbOrg: TcxLookupComboBox
+      Left = 244
+      Top = 4
+      Enabled = False
+      Properties.GridMode = True
+      Properties.KeyFieldNames = 'KOD'
+      Properties.ListColumns = <
+        item
+          FieldName = 'NAME'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = DS_sprorg
+      TabOrder = 6
+      Width = 160
     end
   end
   object DS_usl: TDataSource
