@@ -144,7 +144,6 @@ begin
     SetMenuItem(acc_, N18, 'drn18_Сальдо');
     SetMenuItem(acc_, N24, 'drn24_Выполнение_плана');
     SetMenuItem(acc_, N26, 'drn26_Ввод_показат');
-    SetMenuItem(acc_, N28, 'drn28_Задолжн_предпр');
     SetMenuItem(acc_, N29, 'drn29_Оплата');
 //    SetMenuItem(acc_, N212, 'drn212_Оплата_по_трестам');
     SetMenuItem(acc_, N30, 'drn30_Контроль_сальдо');

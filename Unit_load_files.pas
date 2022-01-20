@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, wwdbedit, Wwdotdot, Wwdbcomb, Oracle, Utils, 
+  Dialogs, StdCtrls, Oracle, Utils, 
   cxGraphics, cxControls, cxLookAndFeelPainters,
   
   DB, OracleData,
@@ -14,13 +14,12 @@ uses
   cxGrid, Menus, cxLookAndFeels, cxContainer, cxEdit, cxStyles,
   cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, cxDBData,
   cxGridCustomTableView, cxGridTableView, cxGridCustomView, cxTextEdit,
-  cxMaskEdit, cxDropDownEdit, Mask;
+  cxMaskEdit, cxDropDownEdit, Mask, cxImageComboBox;
 
 type
   TForm_load_files = class(TForm)
     GroupBox1: TGroupBox;
     Button2: TButton;
-    wwDBComboBox1: TwwDBComboBox;
     Label1: TLabel;
     OpenDialog1: TOpenDialog;
     Memo1: TMemo;
@@ -44,17 +43,18 @@ type
     PopupMenu1: TPopupMenu;
     N1: TMenuItem;
     cxGrid1DBTableView1V: TcxGridDBColumn;
+    imgSel: TcxImageComboBox;
     procedure Button2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button3Click(Sender: TObject);
-    procedure wwDBComboBox1CloseUp(Sender: TwwDBComboBox; Select: Boolean);
     procedure selTypeFile;
     procedure fillUk();
     function getStrUk(): string;
     procedure Button1Click(Sender: TObject);
     procedure N1Click(Sender: TObject);
     procedure OD_docxparAfterScroll(DataSet: TDataSet);
+    procedure cxImageComboBox1PropertiesCloseUp(Sender: TObject);
   private
     { Private declarations }
   public
@@ -83,7 +83,7 @@ begin
       exit;
     end;
 
-    if wwDBComboBox1.Value = '1' then
+    if imgSel.ItemIndex = 0 then
     begin
       // субсидии
       if OpenDialog1.FileName <> '' then
@@ -105,7 +105,7 @@ begin
         end;
       end;
     end
-    else if wwDBComboBox1.Value = '2' then
+    else if imgSel.ItemIndex = 1 then
     begin
       // загрузка показаний счетчиков
       if OpenDialog1.FileName <> '' then
@@ -144,7 +144,7 @@ begin
         end;
       end;
     end
-    else if wwDBComboBox1.Value = '3' then
+    else if imgSel.ItemIndex = 2 then
     begin
       // выгрузка показаний счетчиков
       if OpenDialog1.FileName <> '' then
@@ -203,16 +203,10 @@ begin
   Close;
 end;
 
-procedure TForm_load_files.wwDBComboBox1CloseUp(Sender: TwwDBComboBox;
-  Select: Boolean);
-begin
-  selTypeFile;
-end;
-
 procedure TForm_load_files.selTypeFile();
 begin
   cxGrid1.Visible := False;
-  if wwDBComboBox1.Value = '1' then
+  if imgSel.ItemIndex = 0 then
   begin
     OpenDialog1.Filter := 'DBF файлы (*.dbf)|*.dbf|Все файлы (*.*)|*.*';
     OpenDialog1.FilterIndex := 1;
@@ -220,9 +214,9 @@ begin
     CheckBox1.Visible := false;
     Label2.Visible := False;
   end
-  else if (wwDBComboBox1.Value = '2') or (wwDBComboBox1.Value = '3') then
+  else if (imgSel.ItemIndex = 1) or (imgSel.ItemIndex = 2) then
   begin
-    if wwDBComboBox1.Value = '3' then
+    if imgSel.ItemIndex = 2 then
     begin
       OpenDialog1.Options := [];
       Button2.Caption := 'Выгрузить файл';
@@ -326,6 +320,12 @@ begin
     N1.Enabled := True
   else
     N1.Enabled := False;
+end;
+
+procedure TForm_load_files.cxImageComboBox1PropertiesCloseUp(
+  Sender: TObject);
+begin
+ selTypeFile;
 end;
 
 end.

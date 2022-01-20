@@ -1,6 +1,6 @@
 object Form_load_files: TForm_load_files
-  Left = 1340
-  Top = 238
+  Left = 1585
+  Top = 228
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1047#1072#1075#1088#1091#1079#1082#1072' '#1092#1072#1081#1083#1086#1074' '#1074' '#1089#1080#1089#1090#1077#1084#1091
@@ -148,27 +148,6 @@ object Form_load_files: TForm_load_files
       OnClick = Button1Click
     end
   end
-  object wwDBComboBox1: TwwDBComboBox
-    Left = 72
-    Top = 48
-    Width = 377
-    Height = 21
-    ShowButton = True
-    Style = csDropDown
-    MapList = True
-    AllowClearKey = False
-    DropDownCount = 8
-    ItemHeight = 0
-    Items.Strings = (
-      #1057#1091#1073#1089#1080#1076#1080#1103' '#1076#1083#1103' '#1080#1085#1092'.'#9'1'
-      #1047#1072#1075#1088#1091#1079#1082#1072' '#1087#1086#1082#1072#1079#1072#1085#1080#1081' '#1089#1095#1077#1090#1095#1080#1082#1086#1074#9'2'
-      #1042#1099#1075#1088#1091#1079#1082#1072' '#1087#1086#1082#1072#1079#1072#1085#1080#1081' '#1089#1095#1077#1090#1095#1080#1082#1086#1074#9'3')
-    ItemIndex = 0
-    Sorted = False
-    TabOrder = 2
-    UnboundDataType = wwDefault
-    OnCloseUp = wwDBComboBox1CloseUp
-  end
   object Memo1: TMemo
     Left = 0
     Top = 0
@@ -191,7 +170,7 @@ object Form_load_files: TForm_load_files
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentFont = False
-    TabOrder = 3
+    TabOrder = 2
     Visible = False
   end
   object cxCheckComboBox1: TcxCheckComboBox
@@ -200,7 +179,7 @@ object Form_load_files: TForm_load_files
     BeepOnEnter = False
     Properties.EditValueFormat = cvfStatesString
     Properties.Items = <>
-    TabOrder = 4
+    TabOrder = 3
     Width = 377
   end
   object Panel1: TPanel
@@ -208,7 +187,7 @@ object Form_load_files: TForm_load_files
     Top = 128
     Width = 449
     Height = 233
-    TabOrder = 5
+    TabOrder = 4
     object cxGrid1: TcxGrid
       Left = 1
       Top = 1
@@ -267,6 +246,27 @@ object Form_load_files: TForm_load_files
         GridView = cxGrid1DBTableView1
       end
     end
+  end
+  object imgSel: TcxImageComboBox
+    Left = 72
+    Top = 48
+    Properties.Items = <
+      item
+        Description = #1057#1091#1073#1089#1080#1076#1080#1103' '#1076#1083#1103' '#1080#1085#1092'.'
+        ImageIndex = 0
+        Value = 0
+      end
+      item
+        Description = #1047#1072#1075#1088#1091#1079#1082#1072' '#1087#1086#1082#1072#1079#1072#1085#1080#1081' '#1089#1095#1077#1090#1095#1080#1082#1086#1074
+        Value = 1
+      end
+      item
+        Description = #1042#1099#1075#1088#1091#1079#1082#1072' '#1087#1086#1082#1072#1079#1072#1085#1080#1081' '#1089#1095#1077#1090#1095#1080#1082#1086#1074
+        Value = 2
+      end>
+    Properties.OnCloseUp = cxImageComboBox1PropertiesCloseUp
+    TabOrder = 5
+    Width = 377
   end
   object OpenDialog1: TOpenDialog
     InitialDir = 'c:\temp'

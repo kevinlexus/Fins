@@ -448,7 +448,7 @@ implementation
 uses
   Unit_form_kart_pr, Unit_Mainform, Unit_list_kart,
   Unit_new_lsk, DM_module1, Unit_chargepay, Unit_log_actions,
-  Unit_sel_lsk_contr, Unit_set_krt_psch, Unit_change_house_nabor2,
+  Unit_set_krt_psch, Unit_change_house_nabor2,
   Unit_sch_history, Unit_reg_sch;
 
 type

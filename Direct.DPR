@@ -82,7 +82,6 @@ uses
   Unit_spr_deb_org in 'Unit_spr_deb_org.pas' {Form_spr_deb_org},
   UnGridToClb in 'UnGridToClb.pas',
   Unit_log_actions in 'Unit_log_actions.pas' {Form_log_actions},
-  Unit_sel_lsk_contr in 'Unit_sel_lsk_contr.pas' {Form_sel_lsk_contr},
   Unit_spr_penya in 'Unit_spr_penya.pas' {Form_spr_penya},
   Unit_edit_reports in 'Unit_edit_reports.pas' {Form_edit_reports},
   Unit_oracle_load in 'Unit_oracle_load.pas' {Form_oracle_load},

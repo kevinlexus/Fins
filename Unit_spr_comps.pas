@@ -4,8 +4,12 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, DB, OracleData, Wwdbgrid, ExtCtrls,
-  wwSpeedButton, wwDBNavigator, wwdblook, wwclearpanel, Grids, Wwdbigrd;
+  Dialogs, StdCtrls, DB, OracleData, ExtCtrls,
+  Grids, 
+  cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxStyles,
+  cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
+  cxDBData, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
+  cxGridLevel, cxClasses, cxGridCustomView, cxGrid;
 
 type
   TForm_spr_comps = class(TForm)
@@ -15,7 +19,6 @@ type
     DS_org: TDataSource;
     OD_oper: TOracleDataSet;
     DS_oper: TDataSource;
-    wwDBGrid1: TwwDBGrid;
     OD_c_compsNKOM: TStringField;
     OD_c_compsNINK: TFloatField;
     OD_c_compsNKVIT: TFloatField;
@@ -24,21 +27,16 @@ type
     OD_c_compsFK_ORG: TFloatField;
     OD_c_compsNAME_OPER: TStringField;
     OD_c_compsNAME_ORG: TStringField;
-    wwDBLookupCombo1: TwwDBLookupCombo;
-    wwDBLookupCombo2: TwwDBLookupCombo;
-    Panel2: TPanel;
-    Panel1: TPanel;
-    wwDBNavigator1: TwwDBNavigator;
-    wwDBNavigator1First: TwwNavButton;
-    wwDBNavigator1Prior: TwwNavButton;
-    wwDBNavigator1Next: TwwNavButton;
-    wwDBNavigator1Last: TwwNavButton;
-    wwDBNavigator1Insert: TwwNavButton;
-    wwDBNavigator1Delete: TwwNavButton;
-    wwDBNavigator1Edit: TwwNavButton;
-    wwDBNavigator1Refresh: TwwNavButton;
-    Button1: TButton;
     OD_c_compsPERIOD: TStringField;
+    cxGrid1: TcxGrid;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    cxGrid1DBTableView1NKOM: TcxGridDBColumn;
+    cxGrid1DBTableView1NINK: TcxGridDBColumn;
+    cxGrid1DBTableView1NKVIT: TcxGridDBColumn;
+    cxGrid1DBTableView1CD: TcxGridDBColumn;
+    cxGrid1DBTableView1NAME_OPER: TcxGridDBColumn;
+    cxGrid1DBTableView1NAME_ORG: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
