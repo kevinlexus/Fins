@@ -1,6 +1,6 @@
 object Form_change_house_nabor2: TForm_change_house_nabor2
-  Left = 361
-  Top = 409
+  Left = 337
+  Top = 489
   Align = alCustom
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle

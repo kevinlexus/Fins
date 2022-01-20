@@ -4,21 +4,23 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, DB, OracleData, Wwdbigrd, Wwdbgrid, 
-  wwdbedit, Wwdotdot, Wwdbcomb, wwdblook, wwSpeedButton, wwDBNavigator,
-  ExtCtrls, Utils, Math, wwclearpanel, Grids;
+  Dialogs, StdCtrls, DB, OracleData, 
+  
+  ExtCtrls, Utils, Math, Grids, cxGraphics, cxControls,
+  cxLookAndFeels, cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter,
+  cxData, cxDataStorage, cxEdit, cxNavigator, cxDBData,
+  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGridLevel,
+  cxClasses, cxGridCustomView, cxGrid, cxDBLookupComboBox, cxImageComboBox,
+  cxMaskEdit;
 
 type
   TForm_edit_pay_usl_org = class(TForm)
     GroupBox1: TGroupBox;
     Button1: TButton;
     Button2: TButton;
-    wwDBGrid1: TwwDBGrid;
     DS_kwtp_day: TDataSource;
     OD_usl: TOracleDataSet;
     OD_t_org: TOracleDataSet;
-    wwDBLookupCombo1: TwwDBLookupCombo;
-    wwDBLookupCombo2: TwwDBLookupCombo;
     OD_kwtp_dayKWTP_ID: TFloatField;
     OD_kwtp_daySUMMA: TFloatField;
     OD_kwtp_dayLSK: TStringField;
@@ -31,20 +33,18 @@ type
     OD_kwtp_dayUSL: TStringField;
     OD_kwtp_dayORG: TFloatField;
     OD_kwtp_dayFK_DISTR: TFloatField;
-    OD_kwtp_dayname_org: TStringField;
-    OD_kwtp_dayname_usl: TStringField;
-    Panel1: TPanel;
-    wwDBNavigator1: TwwDBNavigator;
-    wwDBNavigator1First: TwwNavButton;
-    wwDBNavigator1PriorPage: TwwNavButton;
-    wwDBNavigator1Prior: TwwNavButton;
-    wwDBNavigator1Next: TwwNavButton;
-    wwDBNavigator1NextPage: TwwNavButton;
-    wwDBNavigator1Last: TwwNavButton;
-    wwDBNavigator1Insert: TwwNavButton;
-    wwDBNavigator1Delete: TwwNavButton;
     OD_kwtp_day: TOracleDataSet;
     OD_kwtp_dayDTEK: TDateTimeField;
+    cxGrid1: TcxGrid;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    cxGrid1DBTableView1SUMMA: TcxGridDBColumn;
+    cxGrid1DBTableView1PRIZNAK: TcxGridDBColumn;
+    cxGrid1DBTableView1FK_DISTR: TcxGridDBColumn;
+    DS_usl: TDataSource;
+    DS_t_org: TDataSource;
+    cxGrid1DBTableView1ORG: TcxGridDBColumn;
+    cxGrid1DBTableView1USL: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -191,9 +191,6 @@ begin
   end;
   OD_kwtp_day.Last;
 
-  wwDBGrid1.ColumnByName('SUMMA').FooterValue :='Итого:';
-  wwDBGrid1.ColumnByName('NAME_ORG').FooterValue :='Оплата '+FloatToStrF(l_summa, ffFixed, 10, 2);
-  wwDBGrid1.ColumnByName('NAME_USL').FooterValue :='Пеня '+FloatToStrF(l_pen, ffFixed, 10, 2);
 end;
 
 procedure TForm_edit_pay_usl_org.OD_kwtp_dayAfterOpen(DataSet: TDataSet);

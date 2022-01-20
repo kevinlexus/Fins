@@ -447,7 +447,7 @@ implementation
 
 uses
   Unit_form_kart_pr, Unit_Mainform, Unit_list_kart,
-  Unit_new_lsk, DM_module1, Unit_chargepay, Unit_det_chrg, Unit_log_actions,
+  Unit_new_lsk, DM_module1, Unit_chargepay, Unit_log_actions,
   Unit_sel_lsk_contr, Unit_set_krt_psch, Unit_change_house_nabor2,
   Unit_sch_history, Unit_reg_sch;
 
@@ -904,8 +904,8 @@ begin
     //    calcFooter;
   end;
   OD_states_sch.Refresh;
-  if FF('Form_det_chrg', 0) = 1 then
-    Form_det_chrg.recalc;
+//  if FF('Form_det_chrg', 0) = 1 then
+//    Form_det_chrg.recalc;
   LockWindowUpdate(0);
 end;
 
@@ -921,8 +921,8 @@ begin
     Form_kart_pr.Close;
   if FF('Form_new_lsk', 0) = 1 then
     Form_new_lsk.Close;
-  if FF('Form_det_chrg', 0) = 1 then
-    Form_det_chrg.Close;
+//  if FF('Form_det_chrg', 0) = 1 then
+//    Form_det_chrg.Close;
   Action := caFree;
 end;
 
@@ -1245,9 +1245,7 @@ end;
 
 procedure TForm_kart.BitBtn1Click(Sender: TObject);
 begin
-  if FF('Form_det_chrg', 1) = 0 then
-    Application.CreateForm(TForm_det_chrg, Form_det_chrg);
-  Form_det_chrg.recalc;
+  ShowMessage('Обратиться к разработчику, функция отключена');
 end;
 
 procedure TForm_kart.BitBtn2Click(Sender: TObject);

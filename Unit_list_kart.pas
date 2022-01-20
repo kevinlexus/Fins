@@ -317,7 +317,7 @@ implementation
 uses Unit_form_kart, Unit_Mainform, DM_module1, Unit_find_adr,
   Unit_month_payments, Unit_changes_lsk, Unit_form_kart_pr,
   Unit_chargepay, Unit_find_fio,
-  Unit_det_chrg, Unit_log_actions, Unit_houses_nabor,
+  Unit_log_actions, Unit_houses_nabor,
   Unit_house_vvod, Unit_list_set, Unit_form_bills, Unit_sch_history,
   Unit_lk_acc, u_frmPenCorr, u_frmAccFlow, Unit_find_adr2,
   u_frmReplaceKlsk, u_frmKlskPar;
@@ -879,8 +879,8 @@ begin
   if FF('Form_lk_acc', 0) = 1 then
     Form_lk_acc.exit_cancel;
 
-  if FF('Form_det_chrg', 0) = 1 then
-    Form_det_chrg.recalc;
+//  if FF('Form_det_chrg', 0) = 1 then
+//    Form_det_chrg.recalc;
 
   if FF('Form_print_bills', 0) = 1 then
     Form_print_bills.sel_lsk;

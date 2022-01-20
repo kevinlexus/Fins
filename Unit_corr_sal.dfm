@@ -1,6 +1,6 @@
 object Form_corr_sal: TForm_corr_sal
-  Left = 640
-  Top = 196
+  Left = 804
+  Top = 284
   Width = 931
   Height = 619
   Caption = #1050#1086#1088#1088#1077#1082#1094#1080#1103' '#1089#1072#1083#1100#1076#1086' '#1080' '#1086#1087#1083#1072#1090#1099
@@ -174,51 +174,14 @@ object Form_corr_sal: TForm_corr_sal
     Height = 202
     Align = alBottom
     Caption = #1057#1072#1083#1100#1076#1086', '#1074#1099#1073#1077#1088#1080#1090#1077' '#1086#1088#1075#1072#1085#1080#1079#1072#1094#1080#1102', '#1091#1089#1083#1091#1075#1091
-    TabOrder = 5
-    object wwDBGrid1: TwwDBGrid
-      Left = 2
-      Top = 168
-      Width = 828
-      Height = 32
-      Selected.Strings = (
-        'NAME_REU'#9'13'#9#1046#1069#1054#9'F'
-        'NAME_ORG'#9'14'#9#1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103#9'F'
-        'NAME_USL'#9'14'#9#1059#1089#1083#1091#1075#1072#9'F'
-        'INDEBET'#9'9'#9#1044#1077#1073#1077#1090#9'F'#9#1042#1093'.'#1089#1072#1083#1100#1076#1086
-        'INKREDIT'#9'9'#9#1050#1088#1077#1076#1080#1090#9'F'#9#1042#1093'.'#1089#1072#1083#1100#1076#1086
-        'OUTDEBET'#9'8'#9#1044#1077#1073#1077#1090#9'F'#9#1048#1089#1093'.'#1089#1072#1083#1100#1076#1086
-        'OUTKREDIT'#9'10'#9#1050#1088#1077#1076#1080#1090#9'F'#9#1048#1089#1093'.'#1089#1072#1083#1100#1076#1086
-        'CHARGES'#9'10'#9#1053#1072#1095#1080#1089#1083#1077#1085#1080#1077#9'F'
-        'CHANGES'#9'15'#9#1074' '#1090'.'#1095'. '#1080#1079#1084#1077#1085#1077#1085#1080#1103#9'F'
-        'PAYMENT'#9'11'#9#1054#1087#1083#1072#1090#1072#9'F'
-        'PN'#9'10'#9#1055#1086#1089#1090#1091#1087' '#1087#1077#1085#1080#9'F')
-      IniAttributes.Delimiter = ';;'
-      TitleColor = clBtnFace
-      FixedCols = 0
-      ShowHorzScrollBar = True
-      Align = alCustom
-      DataSource = DS_saldo
-      Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgWordWrap, dgProportionalColResize]
-      TabOrder = 0
-      TitleAlignment = taLeftJustify
-      TitleFont.Charset = DEFAULT_CHARSET
-      TitleFont.Color = clWindowText
-      TitleFont.Height = -11
-      TitleFont.Name = 'MS Sans Serif'
-      TitleFont.Style = []
-      TitleLines = 2
-      TitleButtons = False
-      UseTFields = False
-      Visible = False
-      GroupFieldName = 'LSK'
-    end
+    TabOrder = 2
     object cxGrid1: TcxGrid
       Left = 2
       Top = 15
       Width = 911
       Height = 185
       Align = alClient
-      TabOrder = 1
+      TabOrder = 0
       object cxGrid1DBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         FilterBox.Visible = fvNever
@@ -299,63 +262,12 @@ object Form_corr_sal: TForm_corr_sal
       #1059#1050
       #1044#1086#1084)
   end
-  object wwDBLookupCombo2: TwwDBLookupCombo
-    Left = 656
-    Top = 32
-    Width = 161
-    Height = 21
-    DropDownAlignment = taLeftJustify
-    Selected.Strings = (
-      'NAME'#9'25'#9'NAME'#9'F'
-      'TP_ORG'#9'25'#9'TP_ORG'#9'F')
-    LookupTable = OD_sprorg
-    LookupField = 'KOD'
-    TabOrder = 3
-    AutoDropDown = True
-    ShowButton = True
-    PreciseEditRegion = False
-    AllowClearKey = False
-  end
-  object wwDBLookupCombo1: TwwDBLookupCombo
-    Left = 656
-    Top = 8
-    Width = 161
-    Height = 21
-    DropDownAlignment = taLeftJustify
-    Selected.Strings = (
-      'NM'#9'25'#9'NM'#9'F')
-    LookupTable = OD_usl
-    LookupField = 'USL'
-    TabOrder = 1
-    AutoDropDown = True
-    ShowButton = True
-    PreciseEditRegion = False
-    AllowClearKey = False
-  end
-  object wwDBLookupCombo3: TwwDBLookupCombo
-    Left = 88
-    Top = 56
-    Width = 161
-    Height = 21
-    DropDownAlignment = taLeftJustify
-    Selected.Strings = (
-      'NAME'#9'67'#9'NAME'#9'F')
-    LookupTable = OD_reu
-    LookupField = 'REU'
-    Enabled = False
-    TabOrder = 2
-    AutoDropDown = True
-    ShowButton = True
-    PreciseEditRegion = False
-    AllowClearKey = False
-    OnCloseUp = wwDBLookupCombo3CloseUp
-  end
   object Edit1: TEdit
     Left = 88
     Top = 80
     Width = 449
     Height = 21
-    TabOrder = 4
+    TabOrder = 1
   end
   object GroupBox3: TGroupBox
     Left = 0
@@ -363,7 +275,7 @@ object Form_corr_sal: TForm_corr_sal
     Width = 915
     Height = 49
     Align = alBottom
-    TabOrder = 6
+    TabOrder = 3
     object Button4: TButton
       Left = 782
       Top = 16
@@ -381,7 +293,7 @@ object Form_corr_sal: TForm_corr_sal
     Width = 425
     Height = 21
     ItemHeight = 13
-    TabOrder = 7
+    TabOrder = 4
     Text = #1057#1072#1083#1100#1076#1086
     OnCloseUp = ComboBox1CloseUp
     Items.Strings = (
@@ -402,7 +314,7 @@ object Form_corr_sal: TForm_corr_sal
     Width = 75
     Height = 25
     Caption = #1042#1099#1087#1086#1083#1085#1080#1090#1100'!'
-    TabOrder = 8
+    TabOrder = 5
     OnClick = Button1Click
   end
   object Button2: TButton
@@ -411,7 +323,7 @@ object Form_corr_sal: TForm_corr_sal
     Width = 75
     Height = 25
     Caption = #1055#1088#1086#1074#1077#1088#1080#1090#1100
-    TabOrder = 9
+    TabOrder = 6
     OnClick = Button2Click
   end
   object PageControl1: TPageControl
@@ -421,7 +333,7 @@ object Form_corr_sal: TForm_corr_sal
     Height = 223
     ActivePage = TabSheet1
     Align = alBottom
-    TabOrder = 10
+    TabOrder = 7
     object TabSheet1: TTabSheet
       Caption = #1050#1086#1088#1088#1077#1082#1090#1080#1088#1086#1074#1082#1080
       object cxGrid2: TcxGrid
@@ -490,8 +402,54 @@ object Form_corr_sal: TForm_corr_sal
     BeepOnEnter = False
     Properties.EditValueFormat = cvfStatesString
     Properties.Items = <>
-    TabOrder = 11
+    TabOrder = 8
     Width = 161
+  end
+  object cbbUsl: TcxLookupComboBox
+    Left = 657
+    Top = 10
+    Enabled = False
+    Properties.GridMode = True
+    Properties.KeyFieldNames = 'USL'
+    Properties.ListColumns = <
+      item
+        FieldName = 'NM'
+      end>
+    Properties.ListOptions.ShowHeader = False
+    Properties.ListSource = DS_usl
+    TabOrder = 9
+    Width = 160
+  end
+  object cbbOrg: TcxLookupComboBox
+    Left = 657
+    Top = 37
+    Enabled = False
+    Properties.GridMode = True
+    Properties.KeyFieldNames = 'KOD'
+    Properties.ListColumns = <
+      item
+        FieldName = 'NAME'
+      end>
+    Properties.ListOptions.ShowHeader = False
+    Properties.ListSource = DS_sprorg
+    TabOrder = 10
+    Width = 160
+  end
+  object cbbReu: TcxLookupComboBox
+    Left = 89
+    Top = 56
+    Enabled = False
+    Properties.GridMode = True
+    Properties.KeyFieldNames = 'REU'
+    Properties.ListColumns = <
+      item
+        FieldName = 'NAME'
+      end>
+    Properties.ListOptions.ShowHeader = False
+    Properties.ListSource = DS_reu
+    Properties.OnCloseUp = cxReuPropertiesCloseUp
+    TabOrder = 11
+    Width = 160
   end
   object OD_saldo: TOracleDataSet
     SQL.Strings = (
@@ -573,12 +531,13 @@ object Form_corr_sal: TForm_corr_sal
       'order by npp, name_ord')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000003000000030000004B4F44010000000000040000004E414D45010000
-      000000030000004E5050010000000000}
+      0400000004000000030000004B4F44010000000000040000004E414D45010000
+      000000030000004E5050010000000000080000004E414D455F4F524401000000
+      0000}
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Left = 152
-    Top = 152
+    Left = 112
+    Top = 192
   end
   object OD_reu: TOracleDataSet
     SQL.Strings = (
@@ -593,7 +552,7 @@ object Form_corr_sal: TForm_corr_sal
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Left = 120
-    Top = 184
+    Top = 232
   end
   object OD_data: TOracleDataSet
     SQL.Strings = (
@@ -679,6 +638,16 @@ object Form_corr_sal: TForm_corr_sal
   object DS_reu: TDataSource
     DataSet = OD_reu
     Left = 152
-    Top = 186
+    Top = 234
+  end
+  object DS_usl: TDataSource
+    DataSet = OD_usl
+    Left = 152
+    Top = 154
+  end
+  object DS_sprorg: TDataSource
+    DataSet = OD_sprorg
+    Left = 152
+    Top = 194
   end
 end

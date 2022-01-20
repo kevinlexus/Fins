@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, DB, Wwdbgrid, OracleData, wwdblook,
+  Dialogs, StdCtrls, DB, OracleData, 
   Menus, Utils, Oracle, cxControls,
   cxLookAndFeelPainters,
 
@@ -15,23 +15,20 @@ uses
   cxCheckBox, cxCheckComboBox, cxGraphics, cxLookAndFeels, cxStyles,
   cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
   cxDBData, cxContainer, cxTextEdit, cxMaskEdit, cxDropDownEdit,
-  cxGridCustomTableView, cxGridTableView, cxGridCustomView, Grids, Wwdbigrd;
+  cxGridCustomTableView, cxGridTableView, cxGridCustomView, Grids, 
+  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox;
 
 type
   TForm_corr_sal = class(TForm)
     OD_saldo: TOracleDataSet;
     GroupBox1: TGroupBox;
-    wwDBGrid1: TwwDBGrid;
     DS_saldo: TDataSource;
     ComboBox2: TComboBox;
     Label1: TLabel;
-    wwDBLookupCombo2: TwwDBLookupCombo;
-    wwDBLookupCombo1: TwwDBLookupCombo;
     OD_usl: TOracleDataSet;
     OD_sprorg: TOracleDataSet;
     Label4: TLabel;
     Label3: TLabel;
-    wwDBLookupCombo3: TwwDBLookupCombo;
     OD_reu: TOracleDataSet;
     OD_data: TOracleDataSet;
     DS_data: TDataSource;
@@ -74,11 +71,14 @@ type
     DS_reu: TDataSource;
     cxCheckComboBox1: TcxCheckComboBox;
     cxGridDBTableView1DTEK: TcxGridDBColumn;
+    cbbUsl: TcxLookupComboBox;
+    DS_usl: TDataSource;
+    DS_sprorg: TDataSource;
+    cbbOrg: TcxLookupComboBox;
+    cbbReu: TcxLookupComboBox;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ComboBox2CloseUp(Sender: TObject);
-    procedure wwDBLookupCombo3CloseUp(Sender: TObject; LookupTable,
-      FillTable: TDataSet; modified: Boolean);
     procedure Button4Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -87,6 +87,7 @@ type
     procedure fillUk();
     function getStrUk(): string;
     procedure selAllUk();
+    procedure cxReuPropertiesCloseUp(Sender: TObject);
   private
     tp: Integer;
   public
@@ -112,8 +113,8 @@ begin
   OD_reu.Active := true;
   OD_sprorg.Active := true;
   OD_data.Active := true;
-  wwDBLookupCombo1.LookupValue := '000';
-  wwDBLookupCombo2.LookupValue := '000';
+  cbbUsl.EditValue := '000';
+  cbbOrg.EditValue := '000';
   cxCheckComboBox1.Enabled := False;
   // наполнить списком УК
   fillUk();
@@ -131,24 +132,15 @@ begin
   if ComboBox2.ItemIndex = 0 then
   begin
     OD_saldo.SetVariable('var_', 0);
-    wwDBLookupCombo3.Enabled := false;
+    cbbReu.Enabled := false;
   end
   else
   begin
     OD_saldo.SetVariable('var_', 1);
-    wwDBLookupCombo3.Enabled := True;
+    cbbReu.Enabled := True;
   end;
   OD_saldo.Active := True;
 
-end;
-
-procedure TForm_corr_sal.wwDBLookupCombo3CloseUp(Sender: TObject;
-  LookupTable, FillTable: TDataSet; modified: Boolean);
-begin
-  OD_saldo.Active := False;
-  OD_saldo.SetVariable('reu_',
-    wwDBLookupCombo3.LookupValue);
-  OD_saldo.Active := True;
 end;
 
 procedure TForm_corr_sal.Button4Click(Sender: TObject);
@@ -206,14 +198,14 @@ begin
   end
   else
   begin
-    if wwDBLookupCombo1.LookupValue = '000' then
+    if cbbUsl.EditValue = '000' then
       dst_usl_ := ''
     else
-      dst_usl_ := wwDBLookupCombo1.LookupValue;
-    if wwDBLookupCombo2.LookupValue = '000' then
+      dst_usl_ := cbbUsl.EditValue;
+    if cbbOrg.EditValue = '000' then
       dst_org_ := -1
     else
-      dst_org_ := StrToInt(wwDBLookupCombo2.LookupValue);
+      dst_org_ := StrToInt(cbbOrg.EditValue);
 
     Application.CreateForm(TForm_status, Form_status);
     Form_status.Update;
@@ -355,9 +347,9 @@ begin
     Label4.Enabled := true;
     Label5.Enabled := true;
     ComboBox2.Enabled := true;
-    wwDBLookupCombo3.Enabled := true;
-    wwDBLookupCombo1.Enabled := true;
-    wwDBLookupCombo2.Enabled := true;
+    cbbReu.Enabled := true;
+    cbbUsl.Enabled := true;
+    cbbOrg.Enabled := true;
     cxCheckComboBox1.Enabled := False;
   end
   else if tp = 1 then
@@ -371,9 +363,9 @@ begin
     Label4.Enabled := true;
     Label5.Enabled := true;
     ComboBox2.Enabled := true;
-    wwDBLookupCombo3.Enabled := true;
-    wwDBLookupCombo1.Enabled := true;
-    wwDBLookupCombo2.Enabled := true;
+    cbbReu.Enabled := true;
+    cbbUsl.Enabled := true;
+    cbbOrg.Enabled := true;
     cxCheckComboBox1.Enabled := False;
   end
   else if tp = 2 then
@@ -387,9 +379,9 @@ begin
     Label4.Enabled := true;
     Label5.Enabled := true;
     ComboBox2.Enabled := true;
-    wwDBLookupCombo3.Enabled := true;
-    wwDBLookupCombo1.Enabled := true;
-    wwDBLookupCombo2.Enabled := true;
+    cbbReu.Enabled := true;
+    cbbUsl.Enabled := true;
+    cbbOrg.Enabled := true;
     cxCheckComboBox1.Enabled := False;
   end
   else if tp = 3 then
@@ -403,9 +395,9 @@ begin
     Label4.Enabled := False;
     Label5.Enabled := False;
     ComboBox2.Enabled := False;
-    wwDBLookupCombo3.Enabled := False;
-    wwDBLookupCombo1.Enabled := False;
-    wwDBLookupCombo2.Enabled := False;
+    cbbReu.Enabled := False;
+    cbbUsl.Enabled := False;
+    cbbOrg.Enabled := False;
     cxCheckComboBox1.Enabled := True;
   end
   else if tp = 4 then
@@ -419,9 +411,9 @@ begin
     Label4.Enabled := False;
     Label5.Enabled := False;
     ComboBox2.Enabled := False;
-    wwDBLookupCombo3.Enabled := False;
-    wwDBLookupCombo1.Enabled := False;
-    wwDBLookupCombo2.Enabled := False;
+    cbbReu.Enabled := False;
+    cbbUsl.Enabled := False;
+    cbbOrg.Enabled := False;
     cxCheckComboBox1.Enabled := True;
   end
   else if tp = 5 then
@@ -435,9 +427,9 @@ begin
     Label4.Enabled := False;
     Label5.Enabled := false;
     ComboBox2.Enabled := false;
-    wwDBLookupCombo3.Enabled := False;
-    wwDBLookupCombo1.Enabled := False;
-    wwDBLookupCombo2.Enabled := False;
+    cbbReu.Enabled := False;
+    cbbUsl.Enabled := False;
+    cbbOrg.Enabled := False;
     cxCheckComboBox1.Enabled := False;
   end;
 
@@ -495,6 +487,14 @@ begin
     Dispose(APCheckStates)
   end;
   Result := str;
+end;
+
+procedure TForm_corr_sal.cxReuPropertiesCloseUp(Sender: TObject);
+begin
+  OD_saldo.Active := False;
+  OD_saldo.SetVariable('reu_',
+    cbbReu.EditValue);
+  OD_saldo.Active := True;
 end;
 
 end.

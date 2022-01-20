@@ -4,9 +4,9 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, OracleData, wwfltdlg,
-  StdCtrls, Wwintl, Utils, OracleNavigator, wwSpeedButton, wwDBNavigator,
-  ExtCtrls, wwclearpanel, wwcheckbox, Buttons, Menus, Oracle, Unit_ecr,
+  Dialogs, DB, OracleData, 
+  StdCtrls, Utils, OracleNavigator, 
+  ExtCtrls, Buttons, Menus, Oracle, Unit_ecr,
   cxControls,
 
   cxGridLevel,
@@ -21,22 +21,6 @@ type
   TForm_month_payments = class(TForm)
     GroupBox2: TGroupBox;
     Button2: TButton;
-    wwDBNavigator1: TwwDBNavigator;
-    wwDBNavigator1First: TwwNavButton;
-    wwDBNavigator1PriorPage: TwwNavButton;
-    wwDBNavigator1Prior: TwwNavButton;
-    wwDBNavigator1Next: TwwNavButton;
-    wwDBNavigator1NextPage: TwwNavButton;
-    wwDBNavigator1Last: TwwNavButton;
-    wwDBNavigator1Insert: TwwNavButton;
-    wwDBNavigator1Delete: TwwNavButton;
-    wwDBNavigator1Edit: TwwNavButton;
-    wwDBNavigator1Post: TwwNavButton;
-    wwDBNavigator1Cancel: TwwNavButton;
-    wwDBNavigator1Refresh: TwwNavButton;
-    wwDBNavigator1SaveBookmark: TwwNavButton;
-    wwDBNavigator1RestoreBookmark: TwwNavButton;
-    OracleNavigator1: TOracleNavigator;
     DS_c_kwtp_mg: TDataSource;
     OD_c_kwtp_mg: TOracleDataSet;
     OD_c_kwtp_mgLSK: TStringField;
@@ -49,7 +33,6 @@ type
     OD_c_kwtp_mgNKOM: TStringField;
     DS_c_kwtp: TDataSource;
     OD_c_kwtp: TOracleDataSet;
-    wwExpandButton1: TwwExpandButton;
     OD_c_kwtpLSK: TStringField;
     OD_c_kwtpSUMMA: TFloatField;
     OD_c_kwtpPENYA: TFloatField;
@@ -157,7 +140,6 @@ type
     procedure FormCreate(Sender: TObject);
     procedure state_arch2(mgold_: string);
     procedure Button2Click(Sender: TObject);
-    procedure wwDBGrid1KeyPress(Sender: TObject; var Key: Char);
     procedure Button1Click(Sender: TObject);
     procedure OD_c_kwtpAfterScroll(DataSet: TDataSet);
     procedure CheckBox1Click(Sender: TObject);
@@ -279,14 +261,6 @@ end;
 procedure TForm_month_payments.Button2Click(Sender: TObject);
 begin
   Close;
-end;
-
-procedure TForm_month_payments.wwDBGrid1KeyPress(Sender: TObject;
-  var Key: Char);
-begin
-  if RetKey(Key) then
-    Key := '.';
-
 end;
 
 procedure TForm_month_payments.Button1Click(Sender: TObject);

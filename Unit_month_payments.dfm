@@ -1,6 +1,6 @@
 object Form_month_payments: TForm_month_payments
-  Left = 228
-  Top = 302
+  Left = 322
+  Top = 268
   Width = 852
   Height = 607
   Caption = #1055#1086#1089#1090#1091#1087#1083#1077#1085#1080#1103' '#1079#1072' '#1084#1077#1089#1103#1094
@@ -96,7 +96,7 @@ object Form_month_payments: TForm_month_payments
     Width = 836
     Height = 48
     Align = alBottom
-    TabOrder = 2
+    TabOrder = 1
     DesignSize = (
       836
       48)
@@ -108,273 +108,8 @@ object Form_month_payments: TForm_month_payments
       Anchors = []
       Cancel = True
       Caption = #1047#1072#1082#1088#1099#1090#1100
-      TabOrder = 3
+      TabOrder = 1
       OnClick = Button2Click
-    end
-    object wwDBNavigator1: TwwDBNavigator
-      Left = 5
-      Top = 11
-      Width = 431
-      Height = 31
-      DataSource = DS_c_kwtp
-      Options = [noConfirmDelete, noUseInternationalText]
-      ShowHint = True
-      RepeatInterval.InitialDelay = 500
-      RepeatInterval.Interval = 100
-      ParentShowHint = False
-      object wwDBNavigator1First: TwwNavButton
-        Left = 0
-        Top = 0
-        Width = 31
-        Height = 31
-        Hint = #1050' '#1087#1077#1088#1074#1086#1081' '#1079#1072#1087#1080#1089#1080
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'wwDBNavigator1First'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 0
-        Style = nbsFirst
-      end
-      object wwDBNavigator1PriorPage: TwwNavButton
-        Left = 31
-        Top = 0
-        Width = 31
-        Height = 31
-        Hint = #1053#1072#1079#1072#1076' '#1085#1072' 10 '#1079#1072#1087#1080#1089#1077#1081
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'wwDBNavigator1PriorPage'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 1
-        Style = nbsPriorPage
-      end
-      object wwDBNavigator1Prior: TwwNavButton
-        Left = 62
-        Top = 0
-        Width = 30
-        Height = 31
-        Hint = #1055#1088#1077#1076#1099#1076#1091#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'wwDBNavigator1Prior'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 2
-        Style = nbsPrior
-      end
-      object wwDBNavigator1Next: TwwNavButton
-        Left = 92
-        Top = 0
-        Width = 31
-        Height = 31
-        Hint = #1057#1083#1077#1076#1091#1102#1097#1072#1103' '#1079#1072#1087#1080#1089#1100
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'wwDBNavigator1Next'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 3
-        Style = nbsNext
-      end
-      object wwDBNavigator1NextPage: TwwNavButton
-        Left = 123
-        Top = 0
-        Width = 31
-        Height = 31
-        Hint = #1042#1087#1077#1088#1077#1076' '#1085#1072' 10 '#1079#1072#1087#1080#1089#1077#1081
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'wwDBNavigator1NextPage'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 4
-        Style = nbsNextPage
-      end
-      object wwDBNavigator1Last: TwwNavButton
-        Left = 154
-        Top = 0
-        Width = 31
-        Height = 31
-        Hint = #1055#1077#1088#1077#1081#1090#1080' '#1082' '#1087#1086#1089#1083#1077#1076#1085#1077#1081' '#1079#1072#1087#1080#1089#1080
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'wwDBNavigator1Last'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 5
-        Style = nbsLast
-      end
-      object wwDBNavigator1Insert: TwwNavButton
-        Left = 185
-        Top = 0
-        Width = 30
-        Height = 31
-        Hint = #1044#1086#1073#1072#1074#1080#1090#1100' '#1085#1086#1074#1091#1102' '#1079#1072#1087#1080#1089#1100
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'wwDBNavigator1Insert'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 6
-        Style = nbsInsert
-        Visible = False
-      end
-      object wwDBNavigator1Delete: TwwNavButton
-        Left = 215
-        Top = 0
-        Width = 31
-        Height = 31
-        Hint = #1059#1076#1072#1083#1080#1090#1100' '#1090#1077#1082#1091#1097#1091#1102' '#1079#1072#1087#1080#1089#1100
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'wwDBNavigator1Delete'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 7
-        Style = nbsDelete
-        Visible = False
-      end
-      object wwDBNavigator1Edit: TwwNavButton
-        Left = 246
-        Top = 0
-        Width = 31
-        Height = 31
-        Hint = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1090#1077#1082#1091#1097#1091#1102' '#1079#1072#1087#1080#1089#1100
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'wwDBNavigator1Edit'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 8
-        Style = nbsEdit
-        Visible = False
-      end
-      object wwDBNavigator1Post: TwwNavButton
-        Left = 277
-        Top = 0
-        Width = 31
-        Height = 31
-        Hint = #1054#1090#1087#1088#1072#1074#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103' '#1074' '#1073#1072#1079#1091
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'wwDBNavigator1Post'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 9
-        Style = nbsPost
-        Visible = False
-      end
-      object wwDBNavigator1Cancel: TwwNavButton
-        Left = 308
-        Top = 0
-        Width = 30
-        Height = 31
-        Hint = #1054#1090#1084#1077#1085#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103' '#1090#1077#1082#1091#1097#1077#1081' '#1079#1072#1087#1080#1089#1080
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'wwDBNavigator1Cancel'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 10
-        Style = nbsCancel
-        Visible = False
-      end
-      object wwDBNavigator1Refresh: TwwNavButton
-        Left = 338
-        Top = 0
-        Width = 31
-        Height = 31
-        Hint = #1054#1073#1085#1086#1074#1080#1090#1100' '#1079#1072#1087#1080#1089#1080
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'wwDBNavigator1Refresh'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 11
-        Style = nbsRefresh
-        Visible = False
-      end
-      object wwDBNavigator1SaveBookmark: TwwNavButton
-        Left = 369
-        Top = 0
-        Width = 31
-        Height = 31
-        Hint = #1055#1086#1089#1090#1072#1074#1080#1090#1100' '#1079#1072#1082#1083#1072#1076#1082#1091' '#1085#1072' '#1090#1077#1082#1091#1097#1077#1081' '#1079#1072#1087#1080#1089#1080
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'wwDBNavigator1SaveBookmark'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 12
-        Style = nbsSaveBookmark
-      end
-      object wwDBNavigator1RestoreBookmark: TwwNavButton
-        Left = 400
-        Top = 0
-        Width = 31
-        Height = 31
-        Hint = #1055#1077#1088#1077#1081#1090#1080' '#1082' '#1089#1086#1093#1088#1072#1085#1105#1085#1085#1086#1081' '#1079#1072#1082#1083#1072#1076#1082#1077
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'wwDBNavigator1RestoreBookmark'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 13
-        Style = nbsRestoreBookmark
-      end
-    end
-    object OracleNavigator1: TOracleNavigator
-      Left = 443
-      Top = 10
-      Width = 78
-      Height = 31
-      DataSource = DS_c_kwtp
-      VisibleButtons = [nbEnterQBE, nbExecuteQBE]
-      TabOrder = 0
     end
     object Button1: TButton
       Left = 677
@@ -384,28 +119,18 @@ object Form_month_payments: TForm_month_payments
       Anchors = [akRight, akBottom]
       Caption = #1044#1091#1073#1083#1080#1082#1072#1090' '#1082#1074#1080#1090#1072#1085#1094#1080#1080
       Enabled = False
-      TabOrder = 1
+      TabOrder = 0
       OnClick = Button1Click
     end
     object CheckBox1: TCheckBox
       Left = 532
-      Top = 20
+      Top = 16
       Width = 119
       Height = 21
       Caption = #1042#1089#1077' '#1087#1077#1088#1080#1086#1076#1099
-      TabOrder = 4
+      TabOrder = 2
       OnClick = CheckBox1Click
     end
-  end
-  object wwExpandButton1: TwwExpandButton
-    Left = 49
-    Top = 59
-    Width = 20
-    Height = 20
-    DisableThemes = False
-    Caption = 'wwExpandButton1'
-    TabOrder = 0
-    Visible = False
   end
   object Button4: TButton
     Left = 354
@@ -413,7 +138,7 @@ object Form_month_payments: TForm_month_payments
     Width = 228
     Height = 61
     Caption = #1046#1076#1080#1090#1077'...'
-    TabOrder = 1
+    TabOrder = 0
     Visible = False
   end
   object cxGrid1: TcxGrid
@@ -422,7 +147,7 @@ object Form_month_payments: TForm_month_payments
     Width = 836
     Height = 520
     Align = alClient
-    TabOrder = 3
+    TabOrder = 2
     object cxGrid1CardView1: TcxGridCardView
       Navigator.Buttons.CustomButtons = <>
       DataController.Summary.DefaultGroupSummaryItems = <>
@@ -439,6 +164,7 @@ object Form_month_payments: TForm_month_payments
     object cxGrid1DBTableView1: TcxGridDBTableView
       PopupMenu = PopupMenu1
       Navigator.Buttons.CustomButtons = <>
+      Navigator.Visible = True
       DataController.DataSource = DS_c_kwtp
       DataController.KeyFieldNames = 'ID'
       DataController.MasterKeyFieldNames = 'ID'
@@ -457,6 +183,9 @@ object Form_month_payments: TForm_month_payments
           Column = cxGrid1DBTableView1SUMM_ITG
         end>
       DataController.Summary.SummaryGroups = <>
+      OptionsData.Deleting = False
+      OptionsData.Editing = False
+      OptionsData.Inserting = False
       OptionsSelection.InvertSelect = False
       OptionsView.Footer = True
       OptionsView.GroupByBox = False

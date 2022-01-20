@@ -38,7 +38,7 @@ implementation
 
 uses Unit_Mainform, Unit_list_kart, Unit_form_kart, Unit_form_kart_pr,
   Unit_changes_lsk, Unit_month_payments, Unit_chargepay, Unit_changes_list,
-  Unit_form_saldo, Unit_det_chrg, Unit_house_vvod, Unit_inkass_print,
+  Unit_form_saldo, Unit_house_vvod, Unit_inkass_print,
   Unit_spr_prices, Unit_list_set, u_frmPenCorr;
 
 {$R *.dfm}
@@ -125,10 +125,10 @@ begin
     Form_chargepay.state_arch2(mgold_);
   end;
 
-  if FF('Form_det_chrg', 0) = 1 then
+{  if FF('Form_det_chrg', 0) = 1 then
   begin
     Form_det_chrg.state_arch2(mgold_);
-  end;
+  end;}
 
   if FF('Form_saldo', 0) = 1 then
   begin
