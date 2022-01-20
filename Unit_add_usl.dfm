@@ -1,6 +1,6 @@
 object Form_add_usl: TForm_add_usl
-  Left = 343
-  Top = 183
+  Left = 1325
+  Top = 241
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = #1044#1086#1073#1072#1074#1083#1077#1085#1080#1077' '#1091#1089#1083#1091#1075#1080

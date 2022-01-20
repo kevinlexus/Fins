@@ -1,6 +1,6 @@
 object Form_change_house_status: TForm_change_house_status
-  Left = 236
-  Top = 143
+  Left = 372
+  Top = 339
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077' '#1089#1090#1072#1090#1091#1089#1072
@@ -37,7 +37,7 @@ object Form_change_house_status: TForm_change_house_status
     Width = 267
     Height = 49
     Align = alBottom
-    TabOrder = 1
+    TabOrder = 0
     object Button1: TButton
       Left = 94
       Top = 16
@@ -58,21 +58,20 @@ object Form_change_house_status: TForm_change_house_status
       OnClick = Button2Click
     end
   end
-  object wwDBLookupCombo5: TwwDBLookupCombo
-    Left = 64
-    Top = 16
-    Width = 153
-    Height = 21
-    DropDownAlignment = taLeftJustify
-    Selected.Strings = (
-      'NAME'#9'64'#9'NAME'#9#9)
-    LookupTable = OD_status
-    LookupField = 'ID'
-    TabOrder = 0
-    AutoDropDown = False
-    ShowButton = True
-    PreciseEditRegion = False
-    AllowClearKey = True
+  object cbbStatus: TcxLookupComboBox
+    Left = 65
+    Top = 21
+    Enabled = False
+    Properties.GridMode = True
+    Properties.KeyFieldNames = 'ID'
+    Properties.ListColumns = <
+      item
+        FieldName = 'NAME'
+      end>
+    Properties.ListOptions.ShowHeader = False
+    Properties.ListSource = DS_status
+    TabOrder = 1
+    Width = 152
   end
   object OD_status: TOracleDataSet
     SQL.Strings = (
@@ -80,8 +79,9 @@ object Form_change_house_status: TForm_change_house_status
       'order by t.name')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000002000000020000004944010000000000040000004E414D4501000000
-      0000}
+      0400000005000000020000004944010000000000040000004E414D4501000000
+      0000020000004344010000000000020000005450010000000000070000004E41
+      4D455F4B50010000000000}
     Session = DataModule1.OracleSession1
     Active = True
     Left = 8
@@ -90,7 +90,7 @@ object Form_change_house_status: TForm_change_house_status
       DisplayWidth = 64
       FieldName = 'NAME'
       Required = True
-      Size = 64
+      Size = 25
     end
     object FloatField2: TFloatField
       DisplayWidth = 10

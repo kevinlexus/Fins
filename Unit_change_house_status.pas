@@ -4,7 +4,10 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, wwdblook, DB, OracleData;
+  Dialogs, StdCtrls, DB, OracleData, cxGraphics, cxControls,
+  cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit, cxTextEdit,
+  cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit,
+  cxDBLookupComboBox;
 
 type
   TForm_change_house_status = class(TForm)
@@ -15,8 +18,8 @@ type
     StringField4: TStringField;
     FloatField2: TFloatField;
     DS_status: TDataSource;
-    wwDBLookupCombo5: TwwDBLookupCombo;
     Label3: TLabel;
+    cbbStatus: TcxLookupComboBox;
     procedure Button2Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -62,7 +65,7 @@ end;
 procedure TForm_change_house_status.FormCreate(Sender: TObject);
 begin
   OD_status.Active:=True;
-  wwDBLookupCombo5.LookupValue:=
+  cbbStatus.EditValue:=
     Form_houses_nabor.OD_house_status.FieldByName('status').AsString;
 end;
 

@@ -4,7 +4,10 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, wwdblook, DB, OracleData;
+  Dialogs, StdCtrls, DB, OracleData, cxGraphics, cxControls,
+  cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit, cxTextEdit,
+  cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit,
+  cxDBLookupComboBox;
 
 type
   TForm_change_house_vvod = class(TForm)
@@ -14,8 +17,8 @@ type
     OD_vvod2: TOracleDataSet;
     OD_vvodID: TFloatField;
     DS_vvod2: TDataSource;
-    wwDBLookupCombo3: TwwDBLookupCombo;
     OD_vvod2VVOD_NUM: TStringField;
+    cbbVvod: TcxLookupComboBox;
     procedure FormCreate(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -43,7 +46,7 @@ begin
     Form_houses_nabor.OD_vvod.FieldByName('usl').AsString);
   OD_vvod2.Active:=true;
 
-  wwDBLookupCombo3.LookupValue:=
+  cbbVvod.EditValue:=
     Form_houses_nabor.OD_vvod.FieldByName('vvod_num').AsString;
 
 end;

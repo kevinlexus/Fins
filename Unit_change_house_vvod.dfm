@@ -23,7 +23,7 @@ object Form_change_house_vvod: TForm_change_house_vvod
     Width = 267
     Height = 49
     Align = alBottom
-    TabOrder = 1
+    TabOrder = 0
     object Button1: TButton
       Left = 94
       Top = 16
@@ -44,23 +44,20 @@ object Form_change_house_vvod: TForm_change_house_vvod
       OnClick = Button2Click
     end
   end
-  object wwDBLookupCombo3: TwwDBLookupCombo
-    Left = 66
-    Top = 27
-    Width = 121
-    Height = 21
-    DropDownAlignment = taLeftJustify
-    Selected.Strings = (
-      'VVOD_NUM'#9'10'#9'VVOD_NUM'#9'F'#9)
-    LookupTable = OD_vvod2
-    LookupField = 'VVOD_NUM'
-    DropDownWidth = 50
-    TabOrder = 0
-    AutoDropDown = False
-    ShowButton = True
-    PreciseEditRegion = False
-    AllowClearKey = False
-    ShowMatchText = True
+  object cbbVvod: TcxLookupComboBox
+    Left = 65
+    Top = 29
+    Enabled = False
+    Properties.GridMode = True
+    Properties.KeyFieldNames = 'ID'
+    Properties.ListColumns = <
+      item
+        FieldName = 'VVOD_NUM'
+      end>
+    Properties.ListOptions.ShowHeader = False
+    Properties.ListSource = DS_vvod2
+    TabOrder = 1
+    Width = 120
   end
   object OD_vvod2: TOracleDataSet
     SQL.Strings = (
