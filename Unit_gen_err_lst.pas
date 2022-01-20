@@ -4,15 +4,19 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Wwdbgrid, DB, OracleData, StdCtrls, ExtCtrls, Grids, Wwdbigrd;
+  Dialogs, DB, OracleData, StdCtrls, ExtCtrls, Grids, cxGraphics,
+  cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxStyles,
+  cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
+  cxDBData, cxGridLevel, cxClasses, cxGridCustomView,
+  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid;
 
 type
   TForm_gen_err_lst = class(TForm)
     OD_data: TOracleDataSet;
     DS_data: TDataSource;
-    wwDBGrid1: TwwDBGrid;
-    Panel1: TPanel;
-    Label1: TLabel;
+    cxGrid1: TcxGrid;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }

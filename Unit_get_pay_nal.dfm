@@ -1,6 +1,6 @@
 object Form_get_pay_nal: TForm_get_pay_nal
-  Left = 1192
-  Top = 206
+  Left = 420
+  Top = 272
   Width = 633
   Height = 409
   BorderIcons = [biSystemMenu, biMinimize]

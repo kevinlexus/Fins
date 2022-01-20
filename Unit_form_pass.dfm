@@ -31,35 +31,13 @@ object Form_pass: TForm_pass
     Height = 13
     Caption = #1055#1072#1088#1086#1083#1100
   end
-  object wwDBEdit1: TwwDBEdit
-    Left = 8
-    Top = 64
-    Width = 121
-    Height = 21
-    PasswordChar = '*'
-    TabOrder = 1
-    UnboundDataType = wwDefault
-    WantReturns = False
-    WordWrap = False
-    OnKeyPress = wwDBEdit1KeyPress
-  end
-  object wwDBEdit2: TwwDBEdit
-    Left = 8
-    Top = 24
-    Width = 121
-    Height = 21
-    TabOrder = 0
-    UnboundDataType = wwDefault
-    WantReturns = False
-    WordWrap = False
-  end
   object GroupBox1: TGroupBox
     Left = 133
     Top = 0
     Width = 88
     Height = 93
     Align = alRight
-    TabOrder = 2
+    TabOrder = 0
     object Button1: TButton
       Left = 8
       Top = 16
@@ -81,5 +59,19 @@ object Form_pass: TForm_pass
       TabOrder = 1
       OnClick = Button2Click
     end
+  end
+  object cxUser: TcxTextEdit
+    Left = 8
+    Top = 24
+    TabOrder = 1
+    Width = 121
+  end
+  object cxPass: TcxTextEdit
+    Left = 8
+    Top = 61
+    Properties.EchoMode = eemPassword
+    TabOrder = 2
+    OnKeyPress = cxPassKeyPress
+    Width = 121
   end
 end

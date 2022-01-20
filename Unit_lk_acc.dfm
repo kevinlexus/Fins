@@ -160,32 +160,57 @@ object Form_lk_acc: TForm_lk_acc
       Font.Style = []
       ParentFont = False
     end
-    object wwDBGrid1: TwwDBGrid
+    object cxGrid1: TcxGrid
       Left = 2
-      Top = 47
+      Top = 40
       Width = 433
-      Height = 208
-      Selected.Strings = (
-        'NAME'#9'32'#9'NAME'#9'F'
-        'VAL'#9'32'#9'VAL'#9'F')
-      IniAttributes.Delimiter = ';;'
-      TitleColor = clBtnFace
-      FixedCols = 0
-      ShowHorzScrollBar = True
+      Height = 215
       Align = alBottom
-      DataSource = DS_objxpar
-      Options = [dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgWordWrap, dgProportionalColResize]
       TabOrder = 0
-      TitleAlignment = taLeftJustify
-      TitleFont.Charset = DEFAULT_CHARSET
-      TitleFont.Color = clWindowText
-      TitleFont.Height = -11
-      TitleFont.Name = 'Tahoma'
-      TitleFont.Style = []
-      TitleLines = 1
-      TitleButtons = False
-      UseTFields = False
-      OnDblClick = wwDBGrid1DblClick
+      object cxGrid1DBTableView1: TcxGridDBTableView
+        OnDblClick = cxGrid1DBTableView1DblClick
+        Navigator.Buttons.CustomButtons = <>
+        Navigator.Visible = True
+        DataController.DataSource = DS_objxpar
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <
+          item
+            Kind = skSum
+          end
+          item
+            Kind = skSum
+          end
+          item
+            Kind = skSum
+          end
+          item
+            Kind = skSum
+          end
+          item
+            Kind = skSum
+          end>
+        DataController.Summary.SummaryGroups = <>
+        OptionsBehavior.FocusFirstCellOnNewRecord = True
+        OptionsBehavior.GoToNextCellOnEnter = True
+        OptionsData.Deleting = False
+        OptionsData.Editing = False
+        OptionsData.Inserting = False
+        OptionsSelection.InvertSelect = False
+        OptionsView.ColumnAutoWidth = True
+        OptionsView.Footer = True
+        OptionsView.GroupByBox = False
+        OptionsView.Header = False
+        OptionsView.Indicator = True
+        object cxGrid1DBTableView1NAME: TcxGridDBColumn
+          DataBinding.FieldName = 'NAME'
+        end
+        object cxGrid1DBTableView1VAL: TcxGridDBColumn
+          DataBinding.FieldName = 'VAL'
+        end
+      end
+      object cxGrid1Level1: TcxGridLevel
+        GridView = cxGrid1DBTableView1
+      end
     end
   end
   object frxReport1: TfrxReport
@@ -304,6 +329,7 @@ object Form_lk_acc: TForm_lk_acc
     CachedUpdates = True
     Session = DataModule1.OracleSession1
     DesignActivation = True
+    Active = True
     AfterEdit = OD_objxparAfterEdit
     Left = 32
     Top = 112

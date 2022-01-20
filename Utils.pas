@@ -159,7 +159,6 @@ begin
     SetMenuItem(acc_, N41, 'drn41_Статистика_по_приват');
     SetMenuItem(acc_, N40, 'drn40_Сведения_по_льготам');
     SetMenuItem(acc_, N39, 'drn39_Статистика');
-    SetMenuItem(acc_, N42, 'drn42_Параметры');
     SetMenuItem(acc_, N43, 'drn43_Периодическая');
     SetMenuItem(acc_, ToolButton2, 'drn43_Периодическая');
     SetMenuItem(acc_, N24, 'drn24_Выполнение_плана');

@@ -53,7 +53,6 @@ type
     N39: TMenuItem;
     N40: TMenuItem;
     N41: TMenuItem;
-    N42: TMenuItem;
     N43: TMenuItem;
     N44: TMenuItem;
     N45: TMenuItem;
@@ -250,7 +249,6 @@ type
     procedure N40Click(Sender: TObject);
     procedure N41Click(Sender: TObject);
     procedure CoolTrayIcon1DblClick(Sender: TObject);
-    procedure N42Click(Sender: TObject);
     procedure N44Click(Sender: TObject);
     procedure N45Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -484,7 +482,7 @@ uses
   Unit_print_saldo_usl, Unit_print_plan, Unit_form_plan, Unit_print_pred_debit,
   Unit1_print_pen,
   Unit_print_bank, Unit_form_print_stat1,
-  Unit_print_status, Unit_form_params, Unit_form_bills, 
+  Unit_print_status, Unit_form_bills, 
   Unit_print_xito13,
   Unit_print_debits_adm, Unit_form_kart, Unit_sel_comps, Unit_get_pay,
   Unit_inkass, Unit_list_kart, Unit_house_vvod,
@@ -853,11 +851,6 @@ begin
     Form_main.CoolTrayIcon1.CycleIcons := False;
     Form_main.CoolTrayIcon1.IconIndex := 5;}
 
-end;
-
-procedure TForm_Main.N42Click(Sender: TObject);
-begin
-  Application.CreateForm(TForm_params, Form_params);
 end;
 
 procedure TForm_Main.N44Click(Sender: TObject);

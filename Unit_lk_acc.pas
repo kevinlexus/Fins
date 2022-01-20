@@ -5,7 +5,11 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, frxClass, ExtCtrls, DB, OracleData,
-  frxDBSet, Grids, Wwdbigrd, Wwdbgrid, Oracle;
+  frxDBSet, Grids, Oracle, cxGraphics, cxControls,
+  cxLookAndFeels, cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter,
+  cxData, cxDataStorage, cxEdit, cxNavigator, cxDBData,
+  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGridLevel,
+  cxClasses, cxGridCustomView, cxGrid;
 
 type
   TForm_lk_acc = class(TForm)
@@ -22,8 +26,12 @@ type
     Label2: TLabel;
     OD_objxpar: TOracleDataSet;
     DS_objxpar: TDataSource;
-    wwDBGrid1: TwwDBGrid;
     Button2: TButton;
+    cxGrid1: TcxGrid;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    cxGrid1DBTableView1NAME: TcxGridDBColumn;
+    cxGrid1DBTableView1VAL: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure Button3Click(Sender: TObject);
@@ -32,10 +40,10 @@ type
     procedure setLabel;
     procedure SetLoginPass;
     procedure Button4Click(Sender: TObject);
-    procedure wwDBGrid1DblClick(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure OD_objxparAfterEdit(DataSet: TDataSet);
     procedure set_state(p_upd: Integer);
+    procedure cxGrid1DBTableView1DblClick(Sender: TObject);
   private
     exit_: Integer;
     l_upd: Integer;
@@ -183,31 +191,6 @@ begin
  ShowMessage(OD_rnd.FieldByName('cd').AsString);
 end;
 
-procedure TForm_lk_acc.wwDBGrid1DblClick(Sender: TObject);
-var
-  formLkPar: TForm_lk_par;
-begin
-  with OD_objxpar do
-  begin
-    if (FieldByName('VAL_TP').AsString='ST')
-    or (FieldByName('VAL_TP').AsString='DT')
-    or (FieldByName('VAL_TP').AsString='NM') then
-    begin
-      wwDBGrid1.FlushChanges;
-      formLkPar:=TForm_lk_par.Create(Form_lk_acc, DS_objxpar);
-      formLkPar.ShowModal;
-
-      //Application.CreateForm(TForm_lk_par, Form_lk_par);
-      //Form_lk_par.wwDBDateTimePicker1.DataSource:=Form_lk_acc.DS_objxpar;
-      //Form_lk_par.DBEdit1.DataSource:=Form_lk_acc.DS_objxpar;
-      //Form_lk_par.DBEdit2.DataSource:=Form_lk_acc.DS_objxpar;
-
-      //Form_lk_par.ShowModal;
-    end;
-  end;
-end;
-
-
 procedure TForm_lk_acc.exit_ok;
 var
   l_id: Integer;
@@ -262,6 +245,22 @@ end;
 procedure TForm_lk_acc.OD_objxparAfterEdit(DataSet: TDataSet);
 begin
   set_state(1);
+end;
+
+procedure TForm_lk_acc.cxGrid1DBTableView1DblClick(Sender: TObject);
+var
+  formLkPar: TForm_lk_par;
+begin
+  with OD_objxpar do
+  begin
+    if (FieldByName('VAL_TP').AsString='ST')
+    or (FieldByName('VAL_TP').AsString='DT')
+    or (FieldByName('VAL_TP').AsString='NM') then
+    begin
+      formLkPar:=TForm_lk_par.Create(Form_lk_acc, DS_objxpar);
+      formLkPar.ShowModal;
+    end;
+  end;
 end;
 
 end.
