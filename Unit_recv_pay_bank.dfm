@@ -1,6 +1,6 @@
 object Form_recv_pay_bank: TForm_recv_pay_bank
-  Left = 711
-  Top = 198
+  Left = 1209
+  Top = 277
   Width = 867
   Height = 685
   BorderIcons = [biSystemMenu, biMinimize]
@@ -208,7 +208,7 @@ object Form_recv_pay_bank: TForm_recv_pay_bank
       Width = 121
       Height = 21
       ReadOnly = True
-      TabOrder = 6
+      TabOrder = 5
     end
     object Edit3: TEdit
       Left = 159
@@ -216,7 +216,7 @@ object Form_recv_pay_bank: TForm_recv_pay_bank
       Width = 121
       Height = 21
       ReadOnly = True
-      TabOrder = 7
+      TabOrder = 6
     end
     object Button1: TButton
       Left = 293
@@ -233,7 +233,7 @@ object Form_recv_pay_bank: TForm_recv_pay_bank
       Width = 123
       Height = 25
       Caption = 'dbf '#1092#1072#1081#1083', '#1055#1086#1095#1090#1072
-      TabOrder = 3
+      TabOrder = 2
       OnClick = Button4Click
     end
     object Button5: TButton
@@ -242,22 +242,8 @@ object Form_recv_pay_bank: TForm_recv_pay_bank
       Width = 123
       Height = 25
       Caption = 'dbf '#1092#1072#1081#1083', '#1057#1073#1077#1088#1073#1072#1085#1082
-      TabOrder = 5
+      TabOrder = 4
       OnClick = Button5Click
-    end
-    object wwDBEdit1: TwwDBEdit
-      Left = 159
-      Top = 32
-      Width = 121
-      Height = 21
-      Hint = #1053#1086#1084#1077#1088' '#1087#1088#1080#1089#1074#1086#1080#1090#1089#1103' '#1072#1074#1090#1086#1084#1072#1090#1080#1095#1077#1089#1082#1080', '#1087#1088#1080' '#1085#1077#1079#1072#1087#1086#1083#1085#1077#1085#1085#1086#1084' '#1087#1086#1083#1077'!'
-      ParentShowHint = False
-      Picture.PictureMask = '[#][#][#][#][#][#][#]'
-      ShowHint = True
-      TabOrder = 2
-      UnboundDataType = wwDefault
-      WantReturns = False
-      WordWrap = False
     end
     object Edit4: TEdit
       Left = 159
@@ -266,7 +252,7 @@ object Form_recv_pay_bank: TForm_recv_pay_bank
       Height = 21
       Enabled = False
       ReadOnly = True
-      TabOrder = 4
+      TabOrder = 3
     end
     object Button6: TButton
       Left = 421
@@ -274,8 +260,27 @@ object Form_recv_pay_bank: TForm_recv_pay_bank
       Width = 123
       Height = 25
       Caption = 'txt '#1092#1072#1081#1083', '#1057#1073#1077#1088'-2'
-      TabOrder = 8
+      TabOrder = 7
       OnClick = Button6Click
+    end
+    object cxNumInk: TcxMaskEdit
+      Left = 160
+      Top = 30
+      Hint = #1053#1086#1084#1077#1088' '#1087#1088#1080#1089#1074#1086#1080#1090#1089#1103' '#1072#1074#1090#1086#1084#1072#1090#1080#1095#1077#1089#1082#1080', '#1087#1088#1080' '#1085#1077#1079#1072#1087#1086#1083#1085#1077#1085#1085#1086#1084' '#1087#1086#1083#1077'!'
+      ParentFont = False
+      ParentShowHint = False
+      Properties.MaskKind = emkRegExprEx
+      Properties.EditMask = '\d{0,15}'
+      Properties.ValidationOptions = [evoShowErrorIcon, evoAllowLoseFocus]
+      ShowHint = True
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -15
+      Style.Font.Name = 'MS Sans Serif'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
+      TabOrder = 8
+      Width = 57
     end
   end
   object GroupBox2: TGroupBox
@@ -292,26 +297,50 @@ object Form_recv_pay_bank: TForm_recv_pay_bank
     Font.Style = []
     ParentFont = False
     TabOrder = 1
-    object wwDBGrid1: TwwDBGrid
+    object cxGrid2: TcxGrid
       Left = 2
       Top = 15
       Width = 380
       Height = 451
-      IniAttributes.Delimiter = ';;'
-      TitleColor = clBtnFace
-      FixedCols = 0
-      ShowHorzScrollBar = True
       Align = alClient
-      DataSource = DS_data
       TabOrder = 0
-      TitleAlignment = taLeftJustify
-      TitleFont.Charset = DEFAULT_CHARSET
-      TitleFont.Color = clWindowText
-      TitleFont.Height = -11
-      TitleFont.Name = 'MS Sans Serif'
-      TitleFont.Style = []
-      TitleLines = 1
-      TitleButtons = False
+      object cxGridDBTableView1: TcxGridDBTableView
+        PopupMenu = PopupMenu1
+        Navigator.Buttons.CustomButtons = <>
+        Navigator.Visible = True
+        DataController.DataSource = DS_data
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <>
+        DataController.Summary.SummaryGroups = <>
+        OptionsData.Deleting = False
+        OptionsData.Editing = False
+        OptionsData.Inserting = False
+        OptionsView.ColumnAutoWidth = True
+        OptionsView.GroupByBox = False
+        object cxGridDBTableView1DTEK: TcxGridDBColumn
+          Caption = #1044#1072#1090#1072
+          DataBinding.FieldName = 'DTEK'
+        end
+        object cxGridDBTableView1LSK: TcxGridDBColumn
+          Caption = #1051#1080#1094'.'#1089#1095#1077#1090
+          DataBinding.FieldName = 'LSK'
+        end
+        object cxGridDBTableView1CODE: TcxGridDBColumn
+          Caption = #1050#1086#1076
+          DataBinding.FieldName = 'CODE'
+        end
+        object cxGridDBTableView1SUMMA: TcxGridDBColumn
+          Caption = #1057#1091#1084#1084#1072
+          DataBinding.FieldName = 'SUMMA'
+        end
+        object cxGridDBTableView1DOPL: TcxGridDBColumn
+          Caption = #1055#1077#1088#1080#1086#1076
+          DataBinding.FieldName = 'DOPL'
+        end
+      end
+      object cxGridLevel1: TcxGridLevel
+        GridView = cxGridDBTableView1
+      end
     end
   end
   object GroupBox3: TGroupBox
@@ -423,9 +452,16 @@ object Form_recv_pay_bank: TForm_recv_pay_bank
       'end;')
     Optimize = False
     Variables.Data = {
-      0300000002000000040000003A49445F0300000000000000000000000F000000
-      3A505245505F524546435552534F52740000000000000000000000}
+      0300000002000000040000003A49445F03000000040000000200000000000000
+      0F0000003A505245505F524546435552534F52740000000000000000000000}
+    QBEDefinition.QBEFieldDefs = {
+      0400000009000000040000004E4B4F4D010000000000050000004E4B56495401
+      0000000000040000004454454B010000000000030000004C534B010000000000
+      04000000434F44450100000000000500000053554D4D41010000000000040000
+      00444F504C01000000000002000000444E010000000000040000004C534B3201
+      0000000000}
     Session = DataModule1.OracleSession1
+    Active = True
     Left = 216
     Top = 8
   end

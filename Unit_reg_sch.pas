@@ -4,9 +4,9 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, OracleData, StdCtrls, wwSpeedButton, wwDBNavigator,
-  ExtCtrls, Wwdatsrc, wwdblook,
-  wwdbdatetimepicker, wwriched, Utils, cxControls,
+  Dialogs, DB, OracleData, StdCtrls, 
+  ExtCtrls, 
+  Utils, cxControls,
   
   
   
@@ -36,16 +36,11 @@ type
     Panel2: TPanel;
     Panel1: TPanel;
     OD_usl: TOracleDataSet;
-    wwDBLookupCombo1: TwwDBLookupCombo;
-    wwDBDateTimePicker1: TwwDBDateTimePicker;
     OD_state: TOracleDataSet;
     OD_tp: TOracleDataSet;
-    wwDBLookupCombo2: TwwDBLookupCombo;
-    wwDBLookupCombo3: TwwDBLookupCombo;
     Button1: TButton;
     Button2: TButton;
     OD_meter: TOracleDataSet;
-    wwDBLookupCombo4: TwwDBLookupCombo;
     cxGrid1DBTableView1: TcxGridDBTableView;
     cxGrid1Level1: TcxGridLevel;
     cxGrid1: TcxGrid;

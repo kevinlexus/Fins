@@ -4,8 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Oracle, DB, OracleData, Wwdbgrid,
-  ExtCtrls, Mask, wwdbedit, wwSpeedButton, wwDBNavigator,
+  Dialogs, StdCtrls, Oracle, DB, OracleData, 
+  ExtCtrls, Mask, 
   OracleNavigator, Menus, cxGraphics,
   cxControls, 
   
@@ -13,7 +13,8 @@ uses
   cxGridDBTableView, cxGridLevel, cxClasses,
   cxGrid, cxLookAndFeels, cxLookAndFeelPainters, cxStyles, cxCustomData,
   cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator, cxDBData,
-  cxGridTableView, cxGridCustomView, Grids, Wwdbigrd;
+  cxGridTableView, cxGridCustomView, Grids, cxContainer,
+  cxTextEdit, cxMaskEdit;
 
 type
   TForm_recv_pay_bank = class(TForm)
@@ -34,9 +35,7 @@ type
     Button4: TButton;
     Button5: TButton;
     GroupBox2: TGroupBox;
-    wwDBGrid1: TwwDBGrid;
     Label4: TLabel;
-    wwDBEdit1: TwwDBEdit;
     GroupBox3: TGroupBox;
     OD_reg: TOracleDataSet;
     DS_reg: TDataSource;
@@ -59,6 +58,15 @@ type
     cxGrid1DBTableView1Column3: TcxGridDBColumn;
     PopupMenu2: TPopupMenu;
     N2: TMenuItem;
+    cxNumInk: TcxMaskEdit;
+    cxGrid2: TcxGrid;
+    cxGridDBTableView1: TcxGridDBTableView;
+    cxGridLevel1: TcxGridLevel;
+    cxGridDBTableView1DTEK: TcxGridDBColumn;
+    cxGridDBTableView1LSK: TcxGridDBColumn;
+    cxGridDBTableView1CODE: TcxGridDBColumn;
+    cxGridDBTableView1SUMMA: TcxGridDBColumn;
+    cxGridDBTableView1DOPL: TcxGridDBColumn;
     procedure Button1Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -170,10 +178,10 @@ begin
   if msg3('Загрузить данный пакет оплаты?', 'Подтверждение', MB_YESNO+MB_ICONQUESTION) =
     ID_YES then
   begin
-    if wwDBEdit1.Text='' then
+    if cxNumInk.Text='' then
       nink_:=0
     else
-      nink_:=StrToInt(wwDBEdit1.Text);
+      nink_:=StrToInt(cxNumInk.Text);
 
     if (nink_<> 0) and (DataModule1.OraclePackage1.CallFloatFunction
        ('scott.C_GET_PAY.check_payment_bank_nink',[nink_])) <> 0 then
@@ -260,7 +268,7 @@ end;
 
 procedure TForm_recv_pay_bank.N1Click(Sender: TObject);
 begin
-  wwDBEdit1.Text:=OD_reg.FieldByName('nink').AsString;
+  cxNumInk.Text:=OD_reg.FieldByName('nink').AsString;
 end;
 
 procedure TForm_recv_pay_bank.Button6Click(Sender: TObject);

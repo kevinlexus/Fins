@@ -91,7 +91,7 @@ object Form_reg_sch: TForm_reg_sch
   TextHeight = 13
   object Panel2: TPanel
     Left = 0
-    Top = 271
+    Top = 270
     Width = 629
     Height = 46
     Align = alBottom
@@ -130,99 +130,13 @@ object Form_reg_sch: TForm_reg_sch
       OnClick = Button2Click
     end
   end
-  object wwDBLookupCombo1: TwwDBLookupCombo
-    Left = 64
-    Top = 96
-    Width = 121
-    Height = 21
-    DropDownAlignment = taLeftJustify
-    Selected.Strings = (
-      'NM'#9'20'#9'NM'#9'F'#9)
-    DataField = 'FK_USL'
-    LookupTable = OD_usl
-    LookupField = 'USL'
-    TabOrder = 1
-    AutoDropDown = False
-    ShowButton = True
-    UseTFields = False
-    PreciseEditRegion = False
-    AllowClearKey = False
-  end
-  object wwDBDateTimePicker1: TwwDBDateTimePicker
-    Left = 192
-    Top = 96
-    Width = 121
-    Height = 21
-    CalendarAttributes.Font.Charset = DEFAULT_CHARSET
-    CalendarAttributes.Font.Color = clWindowText
-    CalendarAttributes.Font.Height = -11
-    CalendarAttributes.Font.Name = 'Tahoma'
-    CalendarAttributes.Font.Style = []
-    Epoch = 2001
-    ShowButton = True
-    TabOrder = 2
-  end
-  object wwDBLookupCombo2: TwwDBLookupCombo
-    Left = 64
-    Top = 120
-    Width = 121
-    Height = 21
-    DropDownAlignment = taLeftJustify
-    Selected.Strings = (
-      'NAME'#9'25'#9'NAME'#9'F')
-    DataField = 'FK_STATE'
-    LookupTable = OD_state
-    LookupField = 'ID'
-    TabOrder = 3
-    AutoDropDown = False
-    ShowButton = True
-    UseTFields = False
-    PreciseEditRegion = False
-    AllowClearKey = False
-  end
-  object wwDBLookupCombo3: TwwDBLookupCombo
-    Left = 64
-    Top = 144
-    Width = 121
-    Height = 21
-    DropDownAlignment = taLeftJustify
-    Selected.Strings = (
-      'NAME'#9'25'#9'NAME'#9'F')
-    DataField = 'FK_TP'
-    LookupTable = OD_tp
-    LookupField = 'ID'
-    TabOrder = 4
-    AutoDropDown = False
-    ShowButton = True
-    UseTFields = False
-    PreciseEditRegion = False
-    AllowClearKey = False
-  end
-  object wwDBLookupCombo4: TwwDBLookupCombo
-    Left = 64
-    Top = 176
-    Width = 121
-    Height = 21
-    DropDownAlignment = taLeftJustify
-    Selected.Strings = (
-      'NAME'#9'25'#9'NAME'#9'F')
-    DataField = 'FK_TP'
-    LookupTable = OD_tp
-    LookupField = 'ID'
-    TabOrder = 5
-    AutoDropDown = False
-    ShowButton = True
-    UseTFields = False
-    PreciseEditRegion = False
-    AllowClearKey = False
-  end
   object cxGrid1: TcxGrid
     Left = 0
     Top = 0
     Width = 629
-    Height = 271
+    Height = 270
     Align = alClient
-    TabOrder = 6
+    TabOrder = 1
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Visible = True
