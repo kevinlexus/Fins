@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, OracleData, Grids, 
-  wwSpeedButton, wwDBNavigator, ExtCtrls, StdCtrls, Utils,
+  ExtCtrls, StdCtrls, Utils,
   Buttons,  DBCtrls, ComCtrls,
   Menus, Oracle, cxControls,
 
@@ -16,8 +16,7 @@ uses
   Uni, cxLookAndFeels, cxLookAndFeelPainters, cxStyles, cxCustomData,
   cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator, cxDBData,
   cxDBLookupComboBox, cxCheckBox, MemDS, DBAccess, cxGridCustomLayoutView,
-  wwclearpanel, Wwdbigrd, cxGridCustomView, Wwdatsrc, Wwdbgrid, wwdblook,
-  wwcheckbox;
+  cxGridCustomView, Wwdatsrc, wwcheckbox;
 
 type
   TForm_houses_nabor = class(TForm)
@@ -48,8 +47,6 @@ type
     OD_vvodUSL: TStringField;
     OD_vvodNPP: TFloatField;
     OD_vvodNM: TStringField;
-    wwDBGrid4: TwwDBGrid;
-    wwDBGrid5: TwwDBGrid;
     OD_k_vvod: TOracleDataSet;
     StringField1: TStringField;
     StringField3: TStringField;
@@ -63,7 +60,6 @@ type
     FloatField1: TFloatField;
     OD_vvodID: TFloatField;
     DS_vvod2: TDataSource;
-    wwDBLookupCombo3: TwwDBLookupCombo;
     OD_pasp: TOracleDataSet;
     OD_paspID: TFloatField;
     OD_paspNAME: TStringField;
@@ -72,7 +68,6 @@ type
     OD_housesPASP_NAME: TStringField;
     Splitter1: TSplitter;
     OD_housesKRAN1: TFloatField;
-    TabSheet3: TTabSheet;
     Panel2: TPanel;
     Panel1: TPanel;
     GroupBox2: TGroupBox;
@@ -80,45 +75,23 @@ type
     SpeedButton2: TSpeedButton;
     SpeedButton1: TSpeedButton;
     CheckBox2: TCheckBox;
-    GroupBox3: TGroupBox;
-    wwDBNavigator3: TwwDBNavigator;
-    wwNavButton15: TwwNavButton;
-    wwNavButton16: TwwNavButton;
-    wwNavButton17: TwwNavButton;
-    wwNavButton18: TwwNavButton;
-    wwNavButton19: TwwNavButton;
-    wwNavButton20: TwwNavButton;
-    wwNavButton21: TwwNavButton;
-    wwNavButton22: TwwNavButton;
-    wwNavButton23: TwwNavButton;
-    wwNavButton24: TwwNavButton;
-    wwNavButton25: TwwNavButton;
-    wwNavButton26: TwwNavButton;
-    wwNavButton27: TwwNavButton;
-    wwNavButton28: TwwNavButton;
     OD_house_status: TOracleDataSet;
     DS_house_status: TwwDataSource;
     OD_house_statusSTATUS: TIntegerField;
     OD_house_statusSTATUS_NAME: TStringField;
-    wwDBGrid6: TwwDBGrid;
     OD_k_status: TOracleDataSet;
     IntegerField1: TIntegerField;
     StringField2: TStringField;
     DS_k_status: TwwDataSource;
     OD_house_statusHOUSE_ID: TFloatField;
-    wwExpandButton3: TwwExpandButton;
     OD_house_statusRN: TStringField;
-    wwDBGrid7: TwwDBGrid;
     OD_k_statusKW: TStringField;
     OD_status: TOracleDataSet;
     StringField4: TStringField;
     FloatField2: TFloatField;
     DS_status: TDataSource;
-    wwDBLookupCombo5: TwwDBLookupCombo;
     OD_housexlist: TOracleDataSet;
     DS_housexlist: TwwDataSource;
-    TabSheet4: TTabSheet;
-    wwDBGrid8: TwwDBGrid;
     TabSheet1: TTabSheet;
     OD_housesK_LSK_ID: TFloatField;
     DS_objxpar: TDataSource;
@@ -183,6 +156,19 @@ type
     OD_housesIS_PRIVATE: TFloatField;
     cxGridDBTableView1IS_PRIVATE: TcxGridDBColumn;
     chkIsEdit: TCheckBox;
+    cxGridHouseVvodDBTableView1: TcxGridDBTableView;
+    cxGridHouseVvodLevel1: TcxGridLevel;
+    cxGridHouseVvod: TcxGrid;
+    cxGridHouseVvodDBTableView1KW: TcxGridDBColumn;
+    cxGridHouseVvodDBTableView1VVOD_NUM: TcxGridDBColumn;
+    cxGridHouseVvodDBTableView2: TcxGridDBTableView;
+    cxGridHouseVvodDBTableView2USL: TcxGridDBColumn;
+    cxGridHouseVvodDBTableView2NM: TcxGridDBColumn;
+    cxGridHouseVvodDBTableView2VVOD_NUM: TcxGridDBColumn;
+    cxGridHouseVvodLevel3: TcxGridLevel;
+    cxGridHouseVvodDBTableView3: TcxGridDBTableView;
+    cxGridHouseVvodDBTableView3KW: TcxGridDBColumn;
+    cxGridHouseVvodDBTableView3VVOD_NUM: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -192,20 +178,12 @@ type
     procedure Button4Click(Sender: TObject);
     procedure exit_ok;
     procedure wwDBGrid3KeyPress(Sender: TObject; var Key: Char);
-//    procedure wwDBGrid2KeyPress(Sender: TObject; var Key: Char);
-//    procedure wwDBGrid1CalcCellColors(Sender: TObject; Field: TField;
-     // State: TGridDrawState; Highlight: Boolean; AFont: TFont;
-    //  ABrush: TBrush);
     procedure CheckBox2Click(Sender: TObject);
     procedure OD_vvodAfterScroll(DataSet: TDataSet);
     procedure OD_k_vvodAfterPost(DataSet: TDataSet);
     procedure wwExpandButton2AfterCollapse(Sender: TObject);
     procedure wwDBLookupCombo3CloseUp(Sender: TObject; LookupTable,
       FillTable: TDataSet; modified: Boolean);
-    procedure wwDBLookupCombo3NotInList(Sender: TObject;
-      LookupTable: TDataSet; NewValue: string; var Accept: Boolean);
-    procedure wwDBLookupCombo3Exit(Sender: TObject);
-//    procedure wwDBGrid2DblClick(Sender: TObject);
     procedure wwDBLookupCombo4CloseUp(Sender: TObject; LookupTable,
       FillTable: TDataSet; modified: Boolean);
     procedure wwDBLookupCombo4Exit(Sender: TObject);
@@ -216,7 +194,6 @@ type
     procedure Button3Click(Sender: TObject);
     procedure wwDBLookupCombo5CloseUp(Sender: TObject; LookupTable,
       FillTable: TDataSet; modified: Boolean);
-    procedure wwDBLookupCombo5Exit(Sender: TObject);
     procedure wwDBGrid6DblClick(Sender: TObject);
     procedure wwDBGrid4DblClick(Sender: TObject);
     procedure wwDBGrid8DragOver(Sender, Source: TObject; X, Y: Integer;
@@ -464,37 +441,6 @@ begin
     OD_vvod2.FieldByName('ID').AsInteger;
 end;
 
-procedure TForm_houses_nabor.wwDBLookupCombo3NotInList(Sender: TObject;
-  LookupTable: TDataSet; NewValue: string; var Accept: Boolean);
-begin
-  msg2('Данный ввод не найден!', 'Ошибка', MB_ICONERROR + MB_OK);
-  OD_k_vvod.FieldByName('FK_VVOD').AsVariant :=
-    null;
-  wwDBLookupCombo3.Text := '';
-end;
-
-procedure TForm_houses_nabor.wwDBLookupCombo3Exit(Sender: TObject);
-begin
-  if wwDBLookupCombo3.Text = '' then
-    OD_k_vvod.FieldByName('FK_VVOD').AsVariant :=
-      null
-  else if OD_vvod2.SearchRecord('VVOD_NUM', StrToInt(wwDBLookupCombo3.Text),
-    [srFromBeginning]) = true then
-  begin
-    OD_k_vvod.FieldByName('FK_VVOD').AsInteger :=
-      OD_vvod2.FieldByName('ID').AsInteger;
-  end;
-end;
-
-{procedure TForm_houses_nabor.wwDBGrid2DblClick(Sender: TObject);
-begin
-  Application.CreateForm(TForm_par_edit,
-    Form_par_edit);
-  Form_par_edit.SetData(Uni_objxpar, Uni_par_value, ' ');
-  Form_par_edit.ShowModal
-end;
-}
-
 procedure TForm_houses_nabor.wwDBLookupCombo4CloseUp(Sender: TObject;
   LookupTable, FillTable: TDataSet; modified: Boolean);
 begin
@@ -566,14 +512,6 @@ begin
     OD_status.FieldByName('ID').AsInteger;
 end;
 
-procedure TForm_houses_nabor.wwDBLookupCombo5Exit(Sender: TObject);
-begin
-  if OD_status.SearchRecord('NAME', wwDBLookupCombo5.Text,
-    [srFromBeginning]) <> true then
-  begin
-    msg2('Данный статус не найден!', 'Ошибка', MB_OK + MB_ICONERROR);
-  end;
-end;
 
 procedure TForm_houses_nabor.wwDBGrid6DblClick(Sender: TObject);
 begin

@@ -1,6 +1,6 @@
 object Form_houses_nabor: TForm_houses_nabor
-  Left = 1357
-  Top = 217
+  Left = 781
+  Top = 300
   Width = 1085
   Height = 621
   Caption = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082' '#1076#1086#1084#1086#1074
@@ -134,7 +134,7 @@ object Form_houses_nabor: TForm_houses_nabor
     Top = 0
     Width = 491
     Height = 533
-    ActivePage = TabSheet2
+    ActivePage = TabSheet1
     Align = alClient
     TabOrder = 1
     object TabSheet1: TTabSheet
@@ -186,489 +186,107 @@ object Form_houses_nabor: TForm_houses_nabor
     object TabSheet2: TTabSheet
       Caption = #1042#1074#1086#1076#1099
       ImageIndex = 1
-      object wwDBGrid4: TwwDBGrid
-        Left = 0
-        Top = 0
-        Width = 483
-        Height = 453
-        ControlType.Strings = (
-          'ISCHARGED;CheckBox;1;0'
-          'RN;CustomEdit;wwExpandButton2;F'
-          'NAME;CustomEdit;wwDBLookupCombo2;F')
-        Selected.Strings = (
-          'RN'#9'2'#9#9'F'
-          'USL'#9'2'#9#1050#1086#1076'~'#1091#1089#1083#9'F'
-          'NM'#9'37'#9#1059#1089#1083#1091#1075#1072#9'F'
-          'VVOD_NUM'#9'30'#9#8470' '#1074#1074#1086#1076#1072#9'F')
-        IniAttributes.Delimiter = ';;'
-        TitleColor = clBtnFace
-        FixedCols = 0
-        ShowHorzScrollBar = True
-        Align = alClient
-        DataSource = DS_vvod
-        EditCalculated = True
-        KeyOptions = []
-        Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgWordWrap, dgProportionalColResize]
-        TabOrder = 0
-        TitleAlignment = taLeftJustify
-        TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -11
-        TitleFont.Name = 'MS Sans Serif'
-        TitleFont.Style = []
-        TitleLines = 2
-        TitleButtons = False
-        UseTFields = False
-        OnDblClick = wwDBGrid4DblClick
-      end
-      object wwDBGrid5: TwwDBGrid
-        Left = 56
-        Top = 72
-        Width = 217
-        Height = 169
-        ControlType.Strings = (
-          'VVOD_NUM;CustomEdit;wwDBLookupCombo3;F')
-        Selected.Strings = (
-          'KW'#9'7'#9#8470' '#1082#1074#9'F'
-          'VVOD_NUM'#9'22'#9#8470' '#1042#1074#1086#1076#1072#9'F')
-        IniAttributes.Delimiter = ';;'
-        TitleColor = clBtnFace
-        FixedCols = 0
-        ShowHorzScrollBar = True
-        Ctl3D = False
-        DataSource = DS_k_vvod
-        KeyOptions = []
-        Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgWordWrap, dgProportionalColResize]
-        ParentCtl3D = False
-        TabOrder = 2
-        TitleAlignment = taLeftJustify
-        TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -11
-        TitleFont.Name = 'MS Sans Serif'
-        TitleFont.Style = []
-        TitleLines = 1
-        TitleButtons = False
-        UseTFields = False
-        Visible = False
-        OnKeyPress = wwDBGrid3KeyPress
-        PaintOptions.ActiveRecordColor = clBackground
-      end
       object wwExpandButton2: TwwExpandButton
         Left = 24
         Top = 48
         Width = 97
         Height = 17
         DisableThemes = False
-        Grid = wwDBGrid5
         OnAfterCollapse = wwExpandButton2AfterCollapse
         Caption = 'wwExpandButton2'
-        TabOrder = 1
+        TabOrder = 0
       end
-      object wwDBLookupCombo3: TwwDBLookupCombo
-        Left = 216
-        Top = 168
-        Width = 121
-        Height = 21
-        DropDownAlignment = taLeftJustify
-        Selected.Strings = (
-          'VVOD_NUM'#9'10'#9'VVOD_NUM'#9'F'#9)
-        DataField = 'FK_VVOD'
-        DataSource = DS_k_vvod
-        LookupTable = OD_vvod2
-        LookupField = 'VVOD_NUM'
-        DropDownWidth = 50
-        TabOrder = 3
-        AutoDropDown = False
-        ShowButton = True
-        PreciseEditRegion = False
-        AllowClearKey = False
-        ShowMatchText = True
-        OnCloseUp = wwDBLookupCombo3CloseUp
-        OnExit = wwDBLookupCombo3Exit
-        OnNotInList = wwDBLookupCombo3NotInList
-      end
-      object GroupBox3: TGroupBox
+      object cxGridHouseVvod: TcxGrid
         Left = 0
-        Top = 453
+        Top = 0
         Width = 483
-        Height = 52
-        Align = alBottom
-        TabOrder = 4
-        object wwDBNavigator3: TwwDBNavigator
-          Left = 11
-          Top = 16
-          Width = 350
-          Height = 25
-          DataSource = DS_vvod
-          Options = [noConfirmDelete, noUseInternationalText]
-          ShowHint = True
-          RepeatInterval.InitialDelay = 500
-          RepeatInterval.Interval = 100
-          ParentShowHint = False
-          object wwNavButton15: TwwNavButton
-            Left = 0
-            Top = 0
-            Width = 25
-            Height = 25
-            Hint = 'Move to first record'
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'wwDBNavigator1First'
-            Enabled = False
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 0
-            Style = nbsFirst
+        Height = 505
+        Align = alClient
+        TabOrder = 1
+        object cxGridHouseVvodDBTableView1: TcxGridDBTableView
+          Navigator.Buttons.CustomButtons = <>
+          DataController.DataSource = DS_k_vvod
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <>
+          DataController.Summary.SummaryGroups = <>
+          OptionsView.GroupByBox = False
+          object cxGridHouseVvodDBTableView1KW: TcxGridDBColumn
+            Caption = #8470' '#1082#1074
+            DataBinding.FieldName = 'KW'
           end
-          object wwNavButton16: TwwNavButton
-            Left = 25
-            Top = 0
-            Width = 25
-            Height = 25
-            Hint = 'Move backward 10 records'
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'wwDBNavigator1PriorPage'
-            Enabled = False
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 1
-            Style = nbsPriorPage
-          end
-          object wwNavButton17: TwwNavButton
-            Left = 50
-            Top = 0
-            Width = 25
-            Height = 25
-            Hint = 'Move to prior record'
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'wwDBNavigator1Prior'
-            Enabled = False
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 2
-            Style = nbsPrior
-          end
-          object wwNavButton18: TwwNavButton
-            Left = 75
-            Top = 0
-            Width = 25
-            Height = 25
-            Hint = 'Move to next record'
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'wwDBNavigator1Next'
-            Enabled = False
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 3
-            Style = nbsNext
-          end
-          object wwNavButton19: TwwNavButton
-            Left = 100
-            Top = 0
-            Width = 25
-            Height = 25
-            Hint = 'Move forward 10 records'
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'wwDBNavigator1NextPage'
-            Enabled = False
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 4
-            Style = nbsNextPage
-          end
-          object wwNavButton20: TwwNavButton
-            Left = 125
-            Top = 0
-            Width = 25
-            Height = 25
-            Hint = 'Move to last record'
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'wwDBNavigator1Last'
-            Enabled = False
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 5
-            Style = nbsLast
-          end
-          object wwNavButton21: TwwNavButton
-            Left = 150
-            Top = 0
-            Width = 25
-            Height = 25
-            Hint = 'Insert new record'
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'wwDBNavigator1Insert'
-            Enabled = False
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 6
-            Style = nbsInsert
-            Visible = False
-          end
-          object wwNavButton22: TwwNavButton
-            Left = 175
-            Top = 0
-            Width = 25
-            Height = 25
-            Hint = 'Delete current record'
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'wwDBNavigator1Delete'
-            Enabled = False
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 7
-            Style = nbsDelete
-            Visible = False
-          end
-          object wwNavButton23: TwwNavButton
-            Left = 200
-            Top = 0
-            Width = 25
-            Height = 25
-            Hint = 'Edit current record'
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'wwDBNavigator1Edit'
-            Enabled = False
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 8
-            Style = nbsEdit
-          end
-          object wwNavButton24: TwwNavButton
-            Left = 225
-            Top = 0
-            Width = 25
-            Height = 25
-            Hint = 'Post changes of current record'
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'wwDBNavigator1Post'
-            Enabled = False
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 9
-            Style = nbsPost
-            Visible = False
-          end
-          object wwNavButton25: TwwNavButton
-            Left = 250
-            Top = 0
-            Width = 25
-            Height = 25
-            Hint = 'Cancel changes made to current record'
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'wwDBNavigator1Cancel'
-            Enabled = False
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 10
-            Style = nbsCancel
-            Visible = False
-          end
-          object wwNavButton26: TwwNavButton
-            Left = 275
-            Top = 0
-            Width = 25
-            Height = 25
-            Hint = 'Refresh the contents of the dataset'
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'wwDBNavigator1Refresh'
-            Enabled = False
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 11
-            Style = nbsRefresh
-            Visible = False
-          end
-          object wwNavButton27: TwwNavButton
-            Left = 300
-            Top = 0
-            Width = 25
-            Height = 25
-            Hint = 'Bookmark current record'
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'wwDBNavigator1SaveBookmark'
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 12
-            Style = nbsSaveBookmark
-          end
-          object wwNavButton28: TwwNavButton
-            Left = 325
-            Top = 0
-            Width = 25
-            Height = 25
-            Hint = 'Go back to saved bookmark'
-            ImageIndex = -1
-            NumGlyphs = 2
-            Spacing = 4
-            Transparent = False
-            Caption = 'wwDBNavigator1RestoreBookmark'
-            Enabled = False
-            DisabledTextColors.ShadeColor = clGray
-            DisabledTextColors.HighlightColor = clBtnHighlight
-            Index = 13
-            Style = nbsRestoreBookmark
+          object cxGridHouseVvodDBTableView1VVOD_NUM: TcxGridDBColumn
+            Caption = #8470' '#1074#1074#1086#1076#1072
+            DataBinding.FieldName = 'VVOD_NUM'
           end
         end
-      end
-    end
-    object TabSheet3: TTabSheet
-      Caption = #1057#1090#1072#1090#1091#1089
-      ImageIndex = 2
-      object wwDBGrid6: TwwDBGrid
-        Left = 0
-        Top = 0
-        Width = 483
-        Height = 505
-        ControlType.Strings = (
-          'RN;CustomEdit;wwExpandButton3;F')
-        Selected.Strings = (
-          'RN'#9'3'#9#9'F'
-          'STATUS_NAME'#9'25'#9#1057#1090#1072#1090#1091#1089#9'F')
-        IniAttributes.Delimiter = ';;'
-        TitleColor = clBtnFace
-        FixedCols = 0
-        ShowHorzScrollBar = True
-        Align = alClient
-        DataSource = DS_house_status
-        TabOrder = 0
-        TitleAlignment = taLeftJustify
-        TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -11
-        TitleFont.Name = 'MS Sans Serif'
-        TitleFont.Style = []
-        TitleLines = 1
-        TitleButtons = False
-        UseTFields = False
-        OnDblClick = wwDBGrid6DblClick
-      end
-      object wwExpandButton3: TwwExpandButton
-        Left = 24
-        Top = 56
-        Width = 97
-        Height = 17
-        DisableThemes = False
-        Grid = wwDBGrid7
-        Caption = 'wwExpandButton3'
-        TabOrder = 1
-      end
-      object wwDBGrid7: TwwDBGrid
-        Left = 72
-        Top = 120
-        Width = 320
-        Height = 120
-        ControlType.Strings = (
-          'STATUS_NAME;CustomEdit;wwDBLookupCombo5;F')
-        Selected.Strings = (
-          'KW'#9'7'#9#8470' '#1050#1074
-          'STATUS_NAME'#9'25'#9#1057#1090#1072#1090#1091#1089)
-        IniAttributes.Delimiter = ';;'
-        TitleColor = clBtnFace
-        FixedCols = 0
-        ShowHorzScrollBar = True
-        Ctl3D = False
-        DataSource = DS_k_status
-        ParentCtl3D = False
-        TabOrder = 2
-        TitleAlignment = taLeftJustify
-        TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -11
-        TitleFont.Name = 'MS Sans Serif'
-        TitleFont.Style = []
-        TitleLines = 1
-        TitleButtons = False
-        Visible = False
-      end
-      object wwDBLookupCombo5: TwwDBLookupCombo
-        Left = 112
-        Top = 176
-        Width = 121
-        Height = 21
-        DropDownAlignment = taLeftJustify
-        Selected.Strings = (
-          'NAME'#9'64'#9'NAME'#9#9)
-        DataField = 'STATUS'
-        DataSource = DS_k_status
-        LookupTable = OD_status
-        LookupField = 'NAME'
-        TabOrder = 3
-        AutoDropDown = False
-        ShowButton = True
-        PreciseEditRegion = False
-        AllowClearKey = False
-        OnCloseUp = wwDBLookupCombo5CloseUp
-        OnExit = wwDBLookupCombo5Exit
-      end
-    end
-    object TabSheet4: TTabSheet
-      Caption = #1059#1095#1072#1089#1090#1082#1080
-      ImageIndex = 3
-      object wwDBGrid8: TwwDBGrid
-        Left = 0
-        Top = 0
-        Width = 483
-        Height = 505
-        Selected.Strings = (
-          'NAME'#9'72'#9#1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077#9'F')
-        IniAttributes.Delimiter = ';;'
-        TitleColor = clBtnFace
-        FixedCols = 0
-        ShowHorzScrollBar = True
-        Align = alClient
-        DataSource = DS_housexlist
-        TabOrder = 0
-        TitleAlignment = taLeftJustify
-        TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -11
-        TitleFont.Name = 'MS Sans Serif'
-        TitleFont.Style = []
-        TitleLines = 1
-        TitleButtons = False
-        UseTFields = False
-        OnDragDrop = wwDBGrid8DragDrop
-        OnDragOver = wwDBGrid8DragOver
+        object cxGridHouseVvodDBTableView2: TcxGridDBTableView
+          Navigator.Buttons.CustomButtons = <>
+          Navigator.Visible = True
+          DataController.DataModeController.GridMode = True
+          DataController.DataSource = DS_vvod
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <>
+          DataController.Summary.SummaryGroups = <>
+          OptionsData.Deleting = False
+          OptionsData.Editing = False
+          OptionsData.Inserting = False
+          OptionsView.ColumnAutoWidth = True
+          OptionsView.GroupByBox = False
+          object cxGridHouseVvodDBTableView2USL: TcxGridDBColumn
+            Caption = #1050#1086#1076'.'#1091#1089#1083'.'
+            DataBinding.FieldName = 'USL'
+            Options.Editing = False
+            Width = 35
+          end
+          object cxGridHouseVvodDBTableView2NM: TcxGridDBColumn
+            Caption = #1059#1089#1083#1091#1075#1072
+            DataBinding.FieldName = 'NM'
+            Options.Editing = False
+            Width = 201
+          end
+          object cxGridHouseVvodDBTableView2VVOD_NUM: TcxGridDBColumn
+            Caption = #8470' '#1074#1074#1086#1076#1072
+            DataBinding.FieldName = 'VVOD_NUM'
+            Options.Editing = False
+            Width = 230
+          end
+        end
+        object cxGridHouseVvodDBTableView3: TcxGridDBTableView
+          Navigator.Buttons.CustomButtons = <>
+          Navigator.Visible = True
+          DataController.DataModeController.GridMode = True
+          DataController.DataSource = DS_k_vvod
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <>
+          DataController.Summary.SummaryGroups = <>
+          OptionsData.Deleting = False
+          OptionsData.Inserting = False
+          OptionsView.ColumnAutoWidth = True
+          OptionsView.GroupByBox = False
+          object cxGridHouseVvodDBTableView3KW: TcxGridDBColumn
+            Caption = #8470' '#1082#1074
+            DataBinding.FieldName = 'KW'
+            Options.Editing = False
+          end
+          object cxGridHouseVvodDBTableView3VVOD_NUM: TcxGridDBColumn
+            Caption = #8470' '#1074#1074#1086#1076#1072
+            DataBinding.FieldName = 'FK_VVOD'
+            PropertiesClassName = 'TcxLookupComboBoxProperties'
+            Properties.KeyFieldNames = 'ID'
+            Properties.ListColumns = <
+              item
+                FieldName = 'VVOD_NUM'
+              end>
+            Properties.ListOptions.ShowHeader = False
+            Properties.ListSource = DS_vvod2
+          end
+        end
+        object cxGridHouseVvodLevel1: TcxGridLevel
+          GridView = cxGridHouseVvodDBTableView2
+          object cxGridHouseVvodLevel3: TcxGridLevel
+            GridView = cxGridHouseVvodDBTableView3
+          end
+        end
       end
     end
     object TabSheet5: TTabSheet
@@ -1387,8 +1005,8 @@ object Form_houses_nabor: TForm_houses_nabor
     DesignActivation = True
     Active = True
     AfterScroll = OD_vvodAfterScroll
-    Left = 472
-    Top = 136
+    Left = 288
+    Top = 320
     object OD_vvodRN: TFloatField
       FieldName = 'RN'
     end
@@ -1418,8 +1036,8 @@ object Form_houses_nabor: TForm_houses_nabor
   end
   object DS_vvod: TwwDataSource
     DataSet = OD_vvod
-    Left = 504
-    Top = 136
+    Left = 320
+    Top = 320
   end
   object OD_k_vvod: TOracleDataSet
     SQL.Strings = (
@@ -1466,8 +1084,8 @@ object Form_houses_nabor: TForm_houses_nabor
     DesignActivation = True
     Active = True
     AfterPost = OD_k_vvodAfterPost
-    Left = 152
-    Top = 120
+    Left = 288
+    Top = 352
     object StringField1: TStringField
       DisplayWidth = 7
       FieldName = 'KW'
@@ -1491,8 +1109,8 @@ object Form_houses_nabor: TForm_houses_nabor
   end
   object DS_k_vvod: TwwDataSource
     DataSet = OD_k_vvod
-    Left = 184
-    Top = 120
+    Left = 320
+    Top = 352
   end
   object OD_vvod2: TOracleDataSet
     SQL.Strings = (
@@ -1511,8 +1129,8 @@ object Form_houses_nabor: TForm_houses_nabor
     QueryAllRecords = False
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Left = 72
-    Top = 120
+    Left = 288
+    Top = 400
     object FloatField1: TFloatField
       DisplayWidth = 10
       FieldName = 'VVOD_NUM'
@@ -1526,8 +1144,8 @@ object Form_houses_nabor: TForm_houses_nabor
   end
   object DS_vvod2: TDataSource
     DataSet = OD_vvod2
-    Left = 104
-    Top = 120
+    Left = 320
+    Top = 400
   end
   object OD_pasp: TOracleDataSet
     SQL.Strings = (
@@ -1756,7 +1374,7 @@ object Form_houses_nabor: TForm_houses_nabor
   end
   object DS_housexlist: TwwDataSource
     DataSet = OD_housexlist
-    Left = 288
+    Left = 304
     Top = 176
   end
   object DS_objxpar: TDataSource
