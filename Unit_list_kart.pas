@@ -274,8 +274,6 @@ type
     procedure cxmskdtGW_VOLKeyPress(Sender: TObject; var Key: Char);
     procedure cxmskdtEL_VOLKeyPress(Sender: TObject; var Key: Char);
     procedure cxgrdListKartDBTableView1DblClick(Sender: TObject);
-  private
-    bm: TBookmark;
   public
     isAllowEdit_: Integer;
     isAllowEdit_k_: Integer;
@@ -827,11 +825,6 @@ begin
       OD_list_kart.FieldByName('k_lsk_id').AsInteger);
     Form_kart.OD_charge.Active := False;
     Form_kart.OD_charge.Active := True;
-    try
-      Form_kart.OD_charge.GotoBookmark(bm);
-
-    except
-    end
   end;
 
   if FF('frmPenCorr', 0) = 1 then
@@ -844,9 +837,6 @@ begin
 
   if FF('Form_lk_acc', 0) = 1 then
     Form_lk_acc.exit_cancel;
-
-//  if FF('Form_det_chrg', 0) = 1 then
-//    Form_det_chrg.recalc;
 
   if FF('Form_print_bills', 0) = 1 then
     Form_print_bills.sel_lsk;
@@ -868,9 +858,6 @@ procedure TForm_list_kart.OD_list_kartBeforeScroll(DataSet: TDataSet);
 var
   cnt_: Integer;
 begin
-  if FF('Form_kart', 0) = 1 then
-    bm := Form_kart.OD_charge.GetBookmark;
-
   save_deb_kart_pr;
 
   if FF('Form_kart', 0) = 1 then

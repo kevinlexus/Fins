@@ -1,6 +1,6 @@
 object Form_sch_history: TForm_sch_history
-  Left = 666
-  Top = 230
+  Left = 913
+  Top = 172
   Width = 1058
   Height = 370
   Caption = #1048#1089#1090#1086#1088#1080#1103' '#1074#1074#1086#1076#1072' '#1087#1086#1082#1072#1079#1072#1085#1080#1081' '#1089#1095#1077#1090#1095#1080#1082#1086#1074
@@ -440,30 +440,8 @@ object Form_sch_history: TForm_sch_history
                 Caption = #1056#1077#1076#1072#1082#1090' '#1087#1086#1089#1083#1077#1076#1085#1077#1077' '#1087#1086#1082#1072#1079#1072#1085#1080#1077
                 ParentShowHint = False
                 ShowHint = True
-                TabOrder = 3
+                TabOrder = 1
                 OnClick = CheckBox1Click
-              end
-              object wwDBEdit1: TwwDBEdit
-                Left = 87
-                Top = 9
-                Width = 102
-                Height = 24
-                DataField = 'N1'
-                DataSource = DS_meter
-                Font.Charset = DEFAULT_CHARSET
-                Font.Color = clWindowText
-                Font.Height = -15
-                Font.Name = 'MS Sans Serif'
-                Font.Style = [fsBold]
-                ParentFont = False
-                Picture.PictureMask = '[-][#][#][#][#][#][#][.][#][#][#][#][#]'
-                ReadOnly = True
-                TabOrder = 4
-                UnboundDataType = wwDefault
-                WantReturns = False
-                WordWrap = False
-                OnChange = wwDBEdit1Change
-                OnKeyPress = wwDBEdit1KeyPress
               end
               object cxLabel2: TcxLabel
                 Left = 194
@@ -477,25 +455,6 @@ object Form_sch_history: TForm_sch_history
                 Style.Font.Style = [fsBold]
                 Style.IsFontAssigned = True
               end
-              object wwDBEdit2: TwwDBEdit
-                Left = 307
-                Top = 8
-                Width = 102
-                Height = 24
-                Font.Charset = DEFAULT_CHARSET
-                Font.Color = clWindowText
-                Font.Height = -15
-                Font.Name = 'MS Sans Serif'
-                Font.Style = [fsBold]
-                ParentFont = False
-                Picture.PictureMask = '[-][#][#][#][#][#][#][.][#][#][#][#][#]'
-                TabOrder = 0
-                UnboundDataType = wwDefault
-                WantReturns = False
-                WordWrap = False
-                OnChange = wwDBEdit2Change
-                OnKeyPress = wwDBEdit2KeyPress
-              end
               object cxLabel3: TcxLabel
                 Left = 418
                 Top = 12
@@ -508,23 +467,38 @@ object Form_sch_history: TForm_sch_history
                 Style.Font.Style = [fsBold]
                 Style.IsFontAssigned = True
               end
-              object wwDBEdit3: TwwDBEdit
+              object cxLastVal: TcxDBMaskEdit
+                Left = 91
+                Top = 8
+                DataBinding.DataField = 'N1'
+                DataBinding.DataSource = DS_meter
+                Properties.MaskKind = emkRegExprEx
+                Properties.EditMask = '\-?\d{1,8}\.?\d{0,5}'
+                Properties.ReadOnly = True
+                TabOrder = 4
+                OnKeyPress = cxLastValKeyPress
+                Width = 99
+              end
+              object cxNewVal: TcxDBMaskEdit
+                Left = 307
+                Top = 8
+                Properties.MaskKind = emkRegExprEx
+                Properties.EditMask = '\-?\d{1,8}\.?\d{0,5}'
+                Properties.ReadOnly = False
+                Properties.OnChange = cxNewValPropertiesChange
+                TabOrder = 5
+                OnKeyPress = cxNewValKeyPress
+                Width = 99
+              end
+              object cxVal: TcxDBMaskEdit
                 Left = 475
-                Top = 9
-                Width = 102
-                Height = 24
-                Font.Charset = DEFAULT_CHARSET
-                Font.Color = clWindowText
-                Font.Height = -15
-                Font.Name = 'MS Sans Serif'
-                Font.Style = [fsBold]
-                ParentFont = False
-                Picture.PictureMask = '[-][#][#][#][#][#][#][.][#][#][#][#][#]'
-                TabOrder = 1
-                UnboundDataType = wwDefault
-                WantReturns = False
-                WordWrap = False
-                OnKeyPress = wwDBEdit3KeyPress
+                Top = 8
+                Properties.MaskKind = emkRegExprEx
+                Properties.EditMask = '\-?\d{1,8}\.?\d{0,5}'
+                Properties.ReadOnly = False
+                TabOrder = 6
+                OnKeyPress = cxValKeyPress
+                Width = 99
               end
             end
           end
@@ -638,23 +612,13 @@ object Form_sch_history: TForm_sch_history
               Style.Font.Style = [fsBold]
               Style.IsFontAssigned = True
             end
-            object wwDBEdit4: TwwDBEdit
-              Left = 147
-              Top = 33
-              Width = 102
-              Height = 24
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -15
-              Font.Name = 'MS Sans Serif'
-              Font.Style = [fsBold]
-              ParentFont = False
-              Picture.PictureMask = '[-][#][#][#][#][#][#][.][#][#][#][#][#]'
+            object cxStartVal: TcxMaskEdit
+              Left = 143
+              Top = 37
+              Properties.MaskKind = emkRegExprEx
+              Properties.EditMask = '\-?\d{1,8}\.?\d{0,5}'
               TabOrder = 10
-              UnboundDataType = wwDefault
-              WantReturns = False
-              WordWrap = False
-              OnChange = wwDBEdit2Change
+              Width = 98
             end
           end
         end

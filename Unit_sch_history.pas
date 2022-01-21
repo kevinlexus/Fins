@@ -4,22 +4,14 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, OracleData, ExtCtrls,
-  wwSpeedButton, wwDBNavigator, StdCtrls, wwdblook, ComCtrls,
-  cxControls,
-
-  cxGridLevel,
-  cxClasses, cxGridCustomTableView,
-  cxGridDBTableView, cxGrid, cxTextEdit,
-  cxDBLookupComboBox,
-
-  cxNavigator, cxSplitter, cxPC,
-  cxLabel, Mask, wwdbedit, Math, cxCalendar, cxGraphics, cxLookAndFeels,
-  cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter, cxData,
-  cxDataStorage, cxEdit, cxDBData, cxCheckBox, cxImageComboBox,
-  dxBarBuiltInMenu, cxContainer, dxCore, cxDateUtils, cxDropDownEdit,
-  cxLookupEdit, cxDBLookupEdit, cxMaskEdit, cxGridTableView,
-  cxGridCustomView;
+  Dialogs, DB, OracleData, ExtCtrls, StdCtrls, ComCtrls, cxControls, cxGridLevel,
+  cxClasses, cxGridCustomTableView, cxGridDBTableView, cxGrid, cxTextEdit,
+  cxDBLookupComboBox, cxNavigator, cxSplitter, cxPC, cxLabel, Mask, Math,
+  cxCalendar, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters, cxStyles,
+  cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxDBData, cxCheckBox,
+  cxImageComboBox, dxBarBuiltInMenu, cxContainer, dxCore, cxDateUtils,
+  cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxMaskEdit, cxGridTableView,
+  cxGridCustomView, cxDBEdit;
 
 type
   TForm_sch_history = class(TForm)
@@ -69,7 +61,6 @@ type
     OD_usl: TOracleDataSet;
     DS_usl: TDataSource;
     cxLabel8: TcxLabel;
-    wwDBEdit4: TwwDBEdit;
     cxGrid2DBTableView1ACT: TcxGridDBColumn;
     DS_data: TDataSource;
     cxGrid2DBTableView1STATE: TcxGridDBColumn;
@@ -79,11 +70,8 @@ type
     Panel5: TPanel;
     cxLabel1: TcxLabel;
     CheckBox1: TCheckBox;
-    wwDBEdit1: TwwDBEdit;
     cxLabel2: TcxLabel;
-    wwDBEdit2: TwwDBEdit;
     cxLabel3: TcxLabel;
-    wwDBEdit3: TwwDBEdit;
     Label1: TLabel;
     cxGrid2DBTableView1GIS_CONN_TP: TcxGridDBColumn;
     OD_meterNM: TStringField;
@@ -114,30 +102,29 @@ type
     cxGridDBTableView2COMM: TcxGridDBColumn;
     cxGridDBTableView2PERIOD: TcxGridDBColumn;
     cxGridLevel2: TcxGridLevel;
+    cxLastVal: TcxDBMaskEdit;
+    cxNewVal: TcxDBMaskEdit;
+    cxVal: TcxDBMaskEdit;
+    cxStartVal: TcxMaskEdit;
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure refrN1;
-    procedure wwDBEdit2Change(Sender: TObject);
-    procedure wwDBEdit1Change(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure OD_t_objxparAfterRefresh(DataSet: TDataSet);
-    procedure cxGrid2DBTableView1NavigatorButtonsButtonClick(
-      Sender: TObject; AButtonIndex: Integer; var ADone: Boolean);
+    procedure cxGrid2DBTableView1NavigatorButtonsButtonClick(Sender: TObject; AButtonIndex: Integer; var ADone: Boolean);
     procedure setFlt(flt, val: Integer);
-    procedure wwDBEdit2KeyPress(Sender: TObject; var Key: Char);
-    procedure wwDBEdit3KeyPress(Sender: TObject; var Key: Char);
     procedure OD_meterAfterScroll(DataSet: TDataSet);
     procedure CheckBox1Click(Sender: TObject);
-    procedure wwDBEdit1KeyPress(Sender: TObject; var Key: Char);
     procedure setKlsk(klsk: Integer; lsk: string);
     procedure setTp(tp: Integer);
     procedure Button3Click(Sender: TObject);
     procedure cxGrid2DBTableView1GIS_CONNPropertiesPopup(Sender: TObject);
-    procedure cxGridDBTableView2DataControllerSummaryFooterSummaryItemsSummary(
-      ASender: TcxDataSummaryItems; Arguments: TcxSummaryEventArguments;
-      var OutArguments: TcxSummaryEventOutArguments);
-
+    procedure cxGridDBTableView2DataControllerSummaryFooterSummaryItemsSummary(ASender: TcxDataSummaryItems; Arguments: TcxSummaryEventArguments; var OutArguments: TcxSummaryEventOutArguments);
+    procedure cxLastValKeyPress(Sender: TObject; var Key: Char);
+    procedure cxNewValPropertiesChange(Sender: TObject);
+    procedure cxNewValKeyPress(Sender: TObject; var Key: Char);
+    procedure cxValKeyPress(Sender: TObject; var Key: Char);
   private
     // фильтр счетчиков
     flt1: Integer;
@@ -156,8 +143,9 @@ var
 
 implementation
 
-uses DM_module1, Utils, Unit_form_kart, Unit_get_pay_nal,
-  u_frmMeteGisConnect, Unit_Mainform, cxGridDBDataDefinitions;
+uses
+  DM_module1, Utils, Unit_form_kart, Unit_get_pay_nal, u_frmMeteGisConnect,
+  Unit_Mainform, cxGridDBDataDefinitions;
 
 {$R *.dfm}
 
@@ -194,9 +182,8 @@ begin
   curLsk := lsk;
   if (Self.Visible) and (cxPageControl1.ActivePageIndex = 0) then
   begin
-    //    wwDBEdit2.SetFocus;
-    Windows.SetFocus(wwDBEdit2.Handle);
-    wwDBEdit2.SelectAll;
+    Windows.SetFocus(cxNewVal.Handle);
+    cxNewVal.SelectAll;
   end;
 end;
 
@@ -206,7 +193,6 @@ procedure TForm_sch_history.setTp(tp: Integer);
 begin
   accTp := tp;
   //  if accTp = 1 then
-  //   wwDBEdit2.SetFocus;
 end;
 
 // установить фильтры
@@ -215,17 +201,15 @@ procedure TForm_sch_history.setFlt(flt, val: Integer);
 begin
   if flt = 1 then
   begin
-    if Val = 0 then
+    if val = 0 then
     begin
       cxGrid2DBTableView1.NavigatorButtons.CustomButtons[0].ImageIndex := 0;
-      cxGrid2DBTableView1.NavigatorButtons.CustomButtons[0].Hint :=
-        'Скрыть недействующие';
+      cxGrid2DBTableView1.NavigatorButtons.CustomButtons[0].Hint := 'Скрыть недействующие';
     end
     else
     begin
       cxGrid2DBTableView1.NavigatorButtons.CustomButtons[0].ImageIndex := 1;
-      cxGrid2DBTableView1.NavigatorButtons.CustomButtons[0].Hint :=
-        'Показать все';
+      cxGrid2DBTableView1.NavigatorButtons.CustomButtons[0].Hint := 'Показать все';
     end;
 
     flt1 := val;
@@ -246,16 +230,16 @@ procedure TForm_sch_history.refrN1;
 var
   d, n1: Double;
 begin
-  if wwDBEdit1.Text <> '' then
-    d := StrToFloat(wwDBEdit1.Text)
+  if cxLastVal.Text <> '' then
+    d := StrToFloat(cxLastVal.Text)
   else
     d := 0;
 
-  if wwDBEdit2.Text <> '' then
-    n1 := StrToFloat(wwDBEdit2.Text)
+  if cxNewVal.Text <> '' then
+    n1 := StrToFloat(cxNewVal.Text)
   else
     n1 := 0;
-  wwDBEdit3.Text := FloatToStr(RoundTo(n1 - d, -5));
+  cxVal.Text := FloatToStr(RoundTo(n1 - d, -5));
 end;
 
 procedure TForm_sch_history.Button1Click(Sender: TObject);
@@ -271,7 +255,7 @@ begin
   if CheckBox1.Checked then
   begin
     CheckBox1.Checked := false;
-    wwDBEdit1.ReadOnly := True;
+    cxLastVal.Properties.ReadOnly := True;
     msg2('Последнее показание отредактировано!', 'Внимание!', MB_OK);
     Exit;
   end;
@@ -279,12 +263,11 @@ begin
   // запретить ввод по неактивному счетчику
   if OD_meter.FieldByName('act').AsInteger <> 1 then
   begin
-    msg2('Попытка передать объем по неактивному счетчику!', 'Внимание!', MB_OK +
-      MB_ICONERROR);
+    msg2('Попытка передать объем по неактивному счетчику!', 'Внимание!', MB_OK + MB_ICONERROR);
     Exit;
   end;
 
-  vol := StrToFloat(wwDBEdit3.Text);
+  vol := StrToFloat(cxVal.Text);
   // запретить ввод 0 расхода
   if vol = 0 then
   begin
@@ -292,19 +275,18 @@ begin
     Exit;
   end;
 
-  if wwDBEdit1.Text <> '' then
-    d := StrToFloat(wwDBEdit1.Text)
+  if cxLastVal.Text <> '' then
+    d := StrToFloat(cxLastVal.Text)
   else
     d := 0;
 
-  if wwDBEdit2.Text <> '' then
-    n1 := StrToFloat(wwDBEdit2.Text)
+  if cxNewVal.Text <> '' then
+    n1 := StrToFloat(cxNewVal.Text)
   else
     n1 := 0;
 
   metKlsk := OD_meter.FieldByName('K_LSK_ID').AsInteger;
-  ret := DataModule1.OraclePackage1.CallIntegerFunction
-    ('scott.p_meter.ins_vol_meter', [metKlsk, null, null, vol, n1, 0]);
+  ret := DataModule1.OraclePackage1.CallIntegerFunction('scott.p_meter.ins_vol_meter', [metKlsk, null, null, vol, n1, 0]);
   if ret = 0 then
   begin
     DataModule1.OraclePackage1.Session.Commit;
@@ -317,7 +299,7 @@ begin
       Form_kart.recalc_kart;
     end;
 
-    wwDBEdit3.Text := '0';
+    cxVal.Text := '0';
     OD_meter.Active := false;
     OD_meter.Active := true;
     OD_meter.Locate('K_LSK_ID', metKlsk, []);
@@ -330,15 +312,13 @@ begin
   else if ret = 3 then
   begin
     DataModule1.OraclePackage1.Session.Rollback;
-    msg2('Попытка передать пустые показания!', 'Внимание!', MB_OK +
-      MB_ICONERROR);
+    msg2('Попытка передать пустые показания!', 'Внимание!', MB_OK + MB_ICONERROR);
     exit;
   end
   else
   begin
     DataModule1.OraclePackage1.Session.Rollback;
-    msg2('Попытка передать объем по закрытому счетчику!', 'Внимание!', MB_OK +
-      MB_ICONERROR);
+    msg2('Попытка передать объем по закрытому счетчику!', 'Внимание!', MB_OK + MB_ICONERROR);
     exit;
   end;
 
@@ -350,77 +330,24 @@ begin
   else
   begin
     OD_meter.Next;
-    //      wwDBEdit2.SetFocus;
-    Windows.SetFocus(wwDBEdit2.Handle);
-    wwDBEdit2.SelectAll;
+    Windows.SetFocus(cxNewVal.Handle);
+    cxNewVal.SelectAll;
   end;
 end;
 
-procedure TForm_sch_history.FormClose(Sender: TObject;
-  var Action: TCloseAction);
+procedure TForm_sch_history.FormClose(Sender: TObject; var Action: TCloseAction);
 var
   cnt_: Integer;
 begin
-  //  cxPropertiesStore1.StoreTo(true);
-
   if not (OD_meter.State in [dsBrowse]) then
     OD_meter.Post;
   if accTp = 1 then
   begin
     // если было вызвано из формы ввода налички
-    //cnt_ := DataModule1.OraclePackage1.CallIntegerFunction('scott.C_CHARGES.gen_charges',
-    //      [curLsk, null, null, null, 1, 0]);
     // подготовить ввод платежей
     Form_get_pay_nal.clearPay;
   end;
   Action := caFree
-    {
-  if upd_ <> 0 then
-    l_ret:=exit_cancel;
-  if l_ret = 0 then
-    Action:=caFree
-  else
-    Abort;}
-end;
-
-{procedure TForm_sch_history.wwDBLookupCombo1CloseUp(Sender: TObject;
-  LookupTable, FillTable: TDataSet; modified: Boolean);
-begin
-  OD_data.SetVariable('var',
-    OD_tp.FieldByName('id').AsInteger);
-  OD_data.Active:=False;
-  OD_data.Active:=True;
-end;}
-
-{procedure TForm_sch_history.select;
-begin
-  //выбор представления грида
-  OD_c_charge_prep.SetVariable('usl',
-    cbb2.EditValue);
-  OD_c_charge_prep.SetVariable('tp',
-    cbb1.EditValue);
-  OD_c_charge_prep.Active:=False;
-  OD_c_charge_prep.Active:=True;
-end;}
-
-{procedure TForm_sch_history.cbb1PropertiesCloseUp(Sender: TObject);
-begin
-  select;
-end;
-
-procedure TForm_sch_history.cbb2PropertiesCloseUp(Sender: TObject);
-begin
-  select;
-end;}
-
-procedure TForm_sch_history.wwDBEdit2Change(Sender: TObject);
-begin
-  refrN1;
-end;
-
-procedure TForm_sch_history.wwDBEdit1Change(Sender: TObject);
-begin
-  //   wwDBEdit2.SetFocus;
 end;
 
 procedure TForm_sch_history.Button2Click(Sender: TObject);
@@ -428,14 +355,8 @@ var
   klsk: Integer;
   d: Double;
 begin
-  // проверить как данные закоммитились
-  {if upd_ <> 0 then
-    l_ret:=exit_cancel;
-  if l_ret <>0 then
-    Exit;}
-
-  if wwDBEdit4.Text <> '' then
-    d := StrToFloat(wwDBEdit4.Text)
+  if cxStartVal.Text <> '' then
+    d := StrToFloat(cxStartVal.Text)
   else
     d := 0;
 
@@ -453,20 +374,11 @@ begin
 
   if (cxDateEdit2.EditValue = null) then
   begin
-    msg2('Не заполнена дата окончания работы!', 'Внимание!', MB_OK +
-      MB_ICONERROR);
+    msg2('Не заполнена дата окончания работы!', 'Внимание!', MB_OK + MB_ICONERROR);
     Exit;
   end;
 
-  klsk := DataModule1.OraclePackage1.CallIntegerFunction
-    ('scott.p_meter.ins_meter', [cxTextEdit1.Text,
-    VarToStr(cxLookupComboBox1.EditValue),
-      cxDateEdit1.Date,
-      cxDateEdit2.Date,
-      d,
-      curKlsk,
-      'ИПУ'
-      ]);
+  klsk := DataModule1.OraclePackage1.CallIntegerFunction('scott.p_meter.ins_meter', [cxTextEdit1.Text, VarToStr(cxLookupComboBox1.EditValue), cxDateEdit1.Date, cxDateEdit2.Date, d, curKlsk, 'ИПУ']);
   DataModule1.OraclePackage1.Session.Commit;
   OD_meter.Active := false;
   OD_meter.Active := true;
@@ -485,8 +397,7 @@ begin
   OD_t_objxpar.Last;
 end;
 
-procedure TForm_sch_history.cxGrid2DBTableView1NavigatorButtonsButtonClick(
-  Sender: TObject; AButtonIndex: Integer; var ADone: Boolean);
+procedure TForm_sch_history.cxGrid2DBTableView1NavigatorButtonsButtonClick(Sender: TObject; AButtonIndex: Integer; var ADone: Boolean);
 begin
   if (AButtonIndex = 16) then
   begin
@@ -553,58 +464,38 @@ begin
  end;
 end; }
 
-procedure TForm_sch_history.wwDBEdit2KeyPress(Sender: TObject;
-  var Key: Char);
-begin
-  if RetKey(Key) then
-    Key := '.';
-  //  if Key = #13 then wwDBEdit3.SetFocus;
-  if Key = #13 then
-    Windows.SetFocus(wwDBEdit3.Handle);
-
-end;
-
-procedure TForm_sch_history.wwDBEdit3KeyPress(Sender: TObject;
-  var Key: Char);
-begin
-  if RetKey(Key) then
-    Key := '.';
-  //  if Key = #13 then Button1.SetFocus;
-  if Key = #13 then
-    Windows.SetFocus(Button1.Handle);
-
-end;
-
 procedure TForm_sch_history.OD_meterAfterScroll(DataSet: TDataSet);
 begin
   if OD_meter.FieldByName('STATE_CD').AsString = 'Неисправен ПУ' then
   begin
     Label1.Visible := True;
-    wwDBEdit2.ReadOnly := True;
-    wwDBEdit3.ReadOnly := True;
+    cxNewVal.Properties.ReadOnly := True;
+    cxVal.Properties.ReadOnly := True;
   end
   else
   begin
     Label1.Visible := False;
-    wwDBEdit2.ReadOnly := False;
-    wwDBEdit3.ReadOnly := False;
+    cxNewVal.Properties.ReadOnly := False;
+    cxVal.Properties.ReadOnly := False;
   end;
 
   // установить точность поля ввода
   if OD_meter.FieldByName('COUNTER').AsString = 'pot' then
   begin
-    wwDBEdit2.Picture.PictureMask := '[-][#][#][#][#][#][#][.][#][#][#][#][#]';
-    wwDBEdit3.Picture.PictureMask := '[-][#][#][#][#][#][#][.][#][#][#][#][#]';
-    wwDBEdit1.Picture.PictureMask := '[-][#][#][#][#][#][#][.][#][#][#][#][#]';
+    cxLastVal.Properties.EditMask := '\-?\d{1,8}\.?\d{0,5}';
+    cxNewVal.Properties.EditMask := '\-?\d{1,8}\.?\d{0,5}';
+    cxVal.Properties.EditMask := '\-?\d{1,8}\.?\d{0,5}';
+    cxStartVal.Properties.EditMask := '\-?\d{1,8}\.?\d{0,5}';
   end
   else
   begin
-    wwDBEdit2.Picture.PictureMask := '[-][#][#][#][#][#][#][.][#][#][#]';
-    wwDBEdit3.Picture.PictureMask := '[-][#][#][#][#][#][#][.][#][#][#]';
-    wwDBEdit1.Picture.PictureMask := '[-][#][#][#][#][#][#][.][#][#][#]';
+    cxLastVal.Properties.EditMask := '\-?\d{1,8}\.?\d{0,3}';
+    cxNewVal.Properties.EditMask := '\-?\d{1,8}\.?\d{0,3}';
+    cxVal.Properties.EditMask := '\-?\d{1,8}\.?\d{0,3}';
+    cxStartVal.Properties.EditMask := '\-?\d{1,8}\.?\d{0,3}';
   end;
 
-  wwDBEdit2.Text := OD_meter.FieldByName('N1').AsString;
+  cxNewVal.Text := OD_meter.FieldByName('N1').AsString;
 
 end;
 
@@ -613,28 +504,16 @@ begin
   // возможность правки последнего показания
   if CheckBox1.Checked then
   begin
-    wwDBEdit1.ReadOnly := false;
-    wwDBEdit2.ReadOnly := true;
-    wwDBEdit3.ReadOnly := true;
+    cxLastVal.Properties.ReadOnly := false;
+    cxNewVal.Properties.ReadOnly := true;
+    cxVal.Properties.ReadOnly := true;
   end
   else
   begin
-    wwDBEdit1.ReadOnly := true;
-    wwDBEdit2.ReadOnly := false;
-    wwDBEdit3.ReadOnly := false;
+    cxLastVal.Properties.ReadOnly := true;
+    cxNewVal.Properties.ReadOnly := false;
+    cxVal.Properties.ReadOnly := false;
   end;
-end;
-
-procedure TForm_sch_history.wwDBEdit1KeyPress(Sender: TObject;
-  var Key: Char);
-begin
-  if Key = #13 then
-  begin
-    //      wwDBEdit2.SetFocus;
-    Windows.SetFocus(wwDBEdit2.Handle);
-    wwDBEdit2.SelectAll;
-  end;
-
 end;
 
 procedure TForm_sch_history.Button3Click(Sender: TObject);
@@ -642,8 +521,7 @@ begin
   Close;
 end;
 
-procedure TForm_sch_history.cxGrid2DBTableView1GIS_CONNPropertiesPopup(
-  Sender: TObject);
+procedure TForm_sch_history.cxGrid2DBTableView1GIS_CONNPropertiesPopup(Sender: TObject);
 begin
   if not (OD_meter.State in [dsBrowse]) then
     OD_meter.Post;
@@ -652,10 +530,7 @@ begin
 
 end;
 
-procedure
-  TForm_sch_history.cxGridDBTableView2DataControllerSummaryFooterSummaryItemsSummary(
-  ASender: TcxDataSummaryItems; Arguments: TcxSummaryEventArguments;
-  var OutArguments: TcxSummaryEventOutArguments);
+procedure TForm_sch_history.cxGridDBTableView2DataControllerSummaryFooterSummaryItemsSummary(ASender: TcxDataSummaryItems; Arguments: TcxSummaryEventArguments; var OutArguments: TcxSummaryEventOutArguments);
 var
   AValue, ACurrValue: Variant;
   I: Integer;
@@ -665,24 +540,18 @@ var
 begin
   // найти только расход, за текущий период и суммировать его
   AValue := 0;
-  AView := TcxGridDBDataController(ASender.DataController).GridView as
-    TcxGridDBTableView;
+  AView := TcxGridDBDataController(ASender.DataController).GridView as TcxGridDBTableView;
   AColumn := TcxGridDBColumn(AView.FindItemByName('cxGridDBTableView2N1'));
 
   if TcxGridDBTableSummaryItem(Arguments.SummaryItem).Column = AColumn then
   begin
-    AColumnOper :=
-      TcxGridDBColumn(AView.FindItemByName('cxGridDBTableView2OPER_NAME'));
-    AColumnPeriod :=
-      TcxGridDBColumn(AView.FindItemByName('cxGridDBTableView2PERIOD'));
+    AColumnOper := TcxGridDBColumn(AView.FindItemByName('cxGridDBTableView2OPER_NAME'));
+    AColumnPeriod := TcxGridDBColumn(AView.FindItemByName('cxGridDBTableView2PERIOD'));
     periodFormatted := FormatDateTime('mm.yyyy', Form_main.cur_dt);
     for I := 0 to AView.ViewData.RecordCount - 1 do
     begin
       try
-        if (AView.ViewData.Records[I].Values[AColumnOper.Index] =
-          'Расход прибора учета') and
-          (AView.ViewData.Records[I].Values[AColumnPeriod.Index] =
-            periodFormatted) then
+        if (AView.ViewData.Records[I].Values[AColumnOper.Index] = 'Расход прибора учета') and (AView.ViewData.Records[I].Values[AColumnPeriod.Index] = periodFormatted) then
           AValue := AValue + AView.ViewData.Records[I].Values[AColumn.Index];
       except
         // происходит ошибка List index out of bound, не смог отловить
@@ -693,6 +562,40 @@ begin
     //OutArguments.Value := AValue;
     OutArguments.Done := true;
   end;
+end;
+
+procedure TForm_sch_history.cxLastValKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    //      cxNewVal.SetFocus;
+    Windows.SetFocus(cxNewVal.Handle);
+    cxNewVal.SelectAll;
+  end;
+
+end;
+
+procedure TForm_sch_history.cxNewValPropertiesChange(Sender: TObject);
+begin
+  refrN1;
+end;
+
+procedure TForm_sch_history.cxNewValKeyPress(Sender: TObject; var Key: Char);
+begin
+  if RetKey(Key) then
+    Key := '.';
+  if Key = #13 then
+    Windows.SetFocus(cxVal.Handle);
+
+end;
+
+procedure TForm_sch_history.cxValKeyPress(Sender: TObject; var Key: Char);
+begin
+  if RetKey(Key) then
+    Key := '.';
+  if Key = #13 then
+    Windows.SetFocus(Button1.Handle);
+
 end;
 
 end.
