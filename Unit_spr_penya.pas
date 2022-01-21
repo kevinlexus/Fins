@@ -4,8 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, wwSpeedButton, wwDBNavigator, ExtCtrls, 
-  DB, OracleData, wwdbdatetimepicker,
+  Dialogs, ExtCtrls, 
+  DB, OracleData,
   cxControls, Oracle, 
   
   
@@ -33,7 +33,6 @@ type
   TForm_spr_penya = class(TForm)
     OD_stav_r: TOracleDataSet;
     DS_stav_r: TDataSource;
-    wwDBDateTimePicker1: TwwDBDateTimePicker;
     cxGrid1DBTableView1: TcxGridDBTableView;
     cxGrid1Level1: TcxGridLevel;
     cxGrid1: TcxGrid;
@@ -72,7 +71,6 @@ type
     OD_stav_rID: TFloatField;
     cxSplitter1: TcxSplitter;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure wwDBGrid1KeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
     procedure OD_spr_penAfterPost(DataSet: TDataSet);
   private
@@ -99,13 +97,6 @@ begin
   Action:=caFree;
 end;
 
-procedure TForm_spr_penya.wwDBGrid1KeyPress(Sender: TObject;
-  var Key: Char);
-begin
-  if RetKey(Key) then
-    Key:= '.';
-
-end;
 
 procedure TForm_spr_penya.FormCreate(Sender: TObject);
 begin

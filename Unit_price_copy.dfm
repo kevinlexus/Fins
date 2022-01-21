@@ -1,11 +1,11 @@
 object Form_price_copy: TForm_price_copy
-  Left = 926
-  Top = 164
+  Left = 1192
+  Top = 176
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = #1050#1086#1087#1080#1088#1086#1074#1072#1085#1080#1077' '#1088#1072#1089#1094#1077#1085#1086#1082
-  ClientHeight = 92
-  ClientWidth = 348
+  ClientHeight = 100
+  ClientWidth = 442
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -92,33 +92,31 @@ object Form_price_copy: TForm_price_copy
   object GroupBox2: TGroupBox
     Left = 0
     Top = 0
-    Width = 348
+    Width = 442
     Height = 49
     Align = alTop
     Caption = #1042#1099#1073#1077#1088#1080#1090#1077' '#1086#1088#1075#1072#1085#1080#1079#1072#1094#1080#1102' '#1085#1072#1079#1085#1072#1095#1077#1085#1080#1103', '#1076#1083#1103' '#1088#1072#1089#1094#1077#1085#1086#1082
     TabOrder = 0
-    object wwDBLookupCombo2: TwwDBLookupCombo
-      Left = 8
-      Top = 16
-      Width = 329
-      Height = 21
-      DropDownAlignment = taLeftJustify
-      Selected.Strings = (
-        'NAME'#9'20'#9'NAME'#9'F'
-        'GR_NAME'#9'15'#9'GR_NAME'#9'F'#9)
-      LookupTable = OD_t_org2
-      LookupField = 'ID'
+    object cbbOrg: TcxLookupComboBox
+      Left = 4
+      Top = 18
+      Enabled = False
+      Properties.GridMode = True
+      Properties.KeyFieldNames = 'ID'
+      Properties.ListColumns = <
+        item
+          FieldName = 'NAME'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = DS_t_org2
       TabOrder = 0
-      AutoDropDown = False
-      ShowButton = True
-      PreciseEditRegion = False
-      AllowClearKey = False
+      Width = 429
     end
   end
   object GroupBox3: TGroupBox
     Left = 0
-    Top = 43
-    Width = 348
+    Top = 51
+    Width = 442
     Height = 49
     Align = alBottom
     TabOrder = 1
@@ -157,8 +155,8 @@ object Form_price_copy: TForm_price_copy
     CommitOnPost = False
     Session = DataModule1.OracleSession1
     Active = True
-    Left = 80
-    Top = 144
+    Left = 8
+    Top = 56
     object StringField1: TStringField
       DisplayWidth = 20
       FieldName = 'NAME'
@@ -177,5 +175,10 @@ object Form_price_copy: TForm_price_copy
       Required = True
       Visible = False
     end
+  end
+  object DS_t_org2: TDataSource
+    DataSet = OD_t_org2
+    Left = 56
+    Top = 56
   end
 end

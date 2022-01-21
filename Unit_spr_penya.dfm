@@ -90,27 +90,13 @@ object Form_spr_penya: TForm_spr_penya
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object wwDBDateTimePicker1: TwwDBDateTimePicker
-    Left = 168
-    Top = 136
-    Width = 121
-    Height = 21
-    CalendarAttributes.Font.Charset = DEFAULT_CHARSET
-    CalendarAttributes.Font.Color = clWindowText
-    CalendarAttributes.Font.Height = -11
-    CalendarAttributes.Font.Name = 'MS Sans Serif'
-    CalendarAttributes.Font.Style = []
-    Epoch = 1950
-    ShowButton = True
-    TabOrder = 0
-  end
   object cxGrid1: TcxGrid
     Left = 0
     Top = 0
     Width = 684
     Height = 228
     Align = alClient
-    TabOrder = 1
+    TabOrder = 0
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Visible = True
@@ -190,7 +176,7 @@ object Form_spr_penya: TForm_spr_penya
     Width = 684
     Height = 280
     Align = alBottom
-    TabOrder = 2
+    TabOrder = 1
     object cxGridDBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Visible = True

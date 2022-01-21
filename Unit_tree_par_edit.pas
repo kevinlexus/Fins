@@ -4,9 +4,9 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls, DBCtrls, wwdbdatetimepicker, ComCtrls, DB,
-  wwdblook, OracleData, Wwdbgrid, wwcheckbox, Uni,
-  wwradiogroup, wwSpeedButton, wwDBNavigator,
+  Dialogs, StdCtrls, ExtCtrls, DBCtrls, ComCtrls, DB,
+  OracleData, Uni,
+  
   Menus, cxControls,
 
   cxFilter, cxEdit,
@@ -30,7 +30,10 @@ uses
   MemDS,
   DBAccess, cxLookAndFeels, cxLookAndFeelPainters, cxStyles, cxCustomData,
   cxData, cxDataStorage, cxNavigator, cxCheckBox, cxGridCustomView,
-  wwclearpanel, Grids, Wwdbigrd, wwclearbuttongroup, Mask;
+  Grids,  Mask, cxContainer,
+  cxGroupBox, cxRadioGroup, cxDBEdit, cxMaskEdit, cxDropDownEdit,
+  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, 
+  cxCalendar;
 
 const
   CM_APPLYFILTER = WM_USER + 1;
@@ -39,7 +42,6 @@ type
   TForm_tree_par_edit = class(TForm)
     PageControl1: TPageControl;
     TabSheet1: TTabSheet;
-    wwDBDateTimePicker1: TwwDBDateTimePicker;
     TabSheet2: TTabSheet;
     DBEdit1: TDBEdit;
     TabSheet3: TTabSheet;
@@ -48,21 +50,9 @@ type
     Button1: TButton;
     Button2: TButton;
     TabSheet4: TTabSheet;
-    wwDBLookupCombo1: TwwDBLookupCombo;
     DS_list: TDataSource;
     TabSheet5: TTabSheet;
-    wwRadioGroup1: TwwRadioGroup;
     TabSheet6: TTabSheet;
-    wwDBGrid1: TwwDBGrid;
-    wwDBNavigator1: TwwDBNavigator;
-    wwDBNavigator1First: TwwNavButton;
-    wwDBNavigator1PriorPage: TwwNavButton;
-    wwDBNavigator1Prior: TwwNavButton;
-    wwDBNavigator1Next: TwwNavButton;
-    wwDBNavigator1NextPage: TwwNavButton;
-    wwDBNavigator1Last: TwwNavButton;
-    wwDBNavigator1Insert: TwwNavButton;
-    wwDBNavigator1Delete: TwwNavButton;
     DS_par: TDataSource;
     TabSheet7: TTabSheet;
     PopupMenu1: TPopupMenu;
@@ -74,21 +64,22 @@ type
     cxGrid1DBTableView1NAME: TcxGridDBColumn;
     cxGrid1DBTableView1SEL: TcxGridDBColumn;
     Uni_List: TUniQuery;
+    cxGrid2: TcxGrid;
+    cxGridDBTableView1: TcxGridDBTableView;
+    cxGridLevel1: TcxGridLevel;
+    cxGridDBTableView1NAME: TcxGridDBColumn;
+    cxYesNo: TcxDBRadioGroup;
+    DS_Uni_List: TDataSource;
+    cbbList: TcxLookupComboBox;
+    cxDate: TcxDBDateEdit;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure wwDBDateTimePicker1CloseUp(Sender: TObject);
     procedure DBEdit1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure DBEdit2KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
-    procedure wwDBLookupCombo1CloseUp(Sender: TObject; LookupTable,
-      FillTable: TDataSet; modified: Boolean);
     procedure FormShow(Sender: TObject);
-    procedure wwDBDateTimePicker1KeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
-    procedure wwDBLookupCombo1KeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
     procedure SetAccess(OD_src: TDataSource);
     procedure N1Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
@@ -97,6 +88,12 @@ type
       AEdit: TcxCustomEdit; var AValue: Variant);
     procedure cxGrid1DBTableView1EditValueChanged(
       Sender: TcxCustomGridTableView; AItem: TcxCustomGridTableItem);
+    procedure cbbOrgPropertiesCloseUp(Sender: TObject);
+    procedure cbbListKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure cxDBDateEdit1PropertiesCloseUp(Sender: TObject);
+    procedure cxDateKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     OD_dst: TDataSource;
     FilterString: string;
@@ -192,12 +189,6 @@ begin
   Action := caFree;
 end;
 
-procedure TForm_tree_par_edit.wwDBDateTimePicker1CloseUp(Sender: TObject);
-begin
-  //  Button1.SetFocus;
-  Windows.SetFocus(Button1.Handle);
-end;
-
 procedure TForm_tree_par_edit.DBEdit1KeyDown(Sender: TObject;
   var Key: Word; Shift: TShiftState);
 begin
@@ -211,14 +202,6 @@ procedure TForm_tree_par_edit.DBEdit2KeyDown(Sender: TObject;
 begin
   if Key = VK_Return then
     Button1.SetFocus;
-
-end;
-
-procedure TForm_tree_par_edit.wwDBLookupCombo1CloseUp(Sender: TObject;
-  LookupTable, FillTable: TDataSet; modified: Boolean);
-begin
-  //    Button1.SetFocus;
-  Windows.SetFocus(Button1.Handle);
 
 end;
 
@@ -239,7 +222,6 @@ begin
       //параметр - varchar2
       PageControl1.ActivePageIndex := 1;
       TabSheet2.TabVisible := true;
-      //      DBEdit1.SetFocus;
       Windows.SetFocus(DBEdit1.Handle);
     end
     else if FieldByName('CDTP').AsInteger = 2 then
@@ -247,15 +229,13 @@ begin
       //параметр - date
       PageControl1.ActivePageIndex := 0;
       TabSheet1.TabVisible := true;
-      //      wwDBDateTimePicker1.SetFocus;
-      Windows.SetFocus(wwDBDateTimePicker1.Handle);
+      Windows.SetFocus(cxDate.Handle);
     end
     else if FieldByName('CDTP').AsInteger = 0 then
     begin
       //параметр - number
       PageControl1.ActivePageIndex := 2;
       TabSheet3.TabVisible := true;
-      //      DBEdit2.SetFocus;
       Windows.SetFocus(DBEdit2.Handle);
     end
     else if FieldByName('CDTP').AsInteger = 3 then
@@ -263,26 +243,23 @@ begin
       //параметр - Logical
       PageControl1.ActivePageIndex := 4;
       TabSheet5.TabVisible := true;
-      //      wwRadioGroup1.SetFocus;
-      Windows.SetFocus(wwRadioGroup1.Handle);
+      Windows.SetFocus(cxYesNo.Handle);
     end
     else if FieldByName('CDTP').AsInteger = 4 then
     begin
       //параметр - список из SQL запроса-выбор одного значения
       Uni_list.Active := True;
       Uni_list.Locate('sel', 1, []);
-      wwDBLookupCombo1.LookupValue := Uni_list.FieldByName('name').AsString;
+      cbbList.EditValue := Uni_list.FieldByName('name').AsString;
       PageControl1.ActivePageIndex := 3;
       TabSheet4.TabVisible := true;
-      //      wwDBLookupCombo1.SetFocus;
-      Windows.SetFocus(wwDBLookupCombo1.Handle);
+      Windows.SetFocus(cbbList.Handle);
     end
     else if FieldByName('CDTP').AsInteger = 5 then
     begin
       //параметр - список из SQL запроса-выбор нескольких значений
       Uni_list.Active := True;
       TabSheet7.TabVisible := true;
-      //      cxGrid1.SetFocus;
       Windows.SetFocus(cxGrid1.Handle);
       Form_tree_par_edit.Height := 600;
     end
@@ -292,28 +269,9 @@ begin
       Uni_list.Active := True;
       PageControl1.ActivePageIndex := 5;
       TabSheet6.TabVisible := true;
-      //      cxGrid1.SetFocus;
       Windows.SetFocus(cxGrid1.Handle);
     end;
   end;
-
-end;
-
-procedure TForm_tree_par_edit.wwDBDateTimePicker1KeyDown(Sender: TObject;
-  var Key: Word; Shift: TShiftState);
-begin
-  if Key = VK_Return then
-    //    Button1.SetFocus;
-    Windows.SetFocus(Button1.Handle);
-
-end;
-
-procedure TForm_tree_par_edit.wwDBLookupCombo1KeyDown(Sender: TObject;
-  var Key: Word; Shift: TShiftState);
-begin
-  if Key = VK_Return then
-    //    Button1.SetFocus;
-    Windows.SetFocus(Button1.Handle);
 
 end;
 
@@ -374,6 +332,34 @@ begin
     PostMessage(Handle, CM_APPLYFILTER, Integer(Sender.DataController.Filter),
       Integer(AItem));
   end;
+end;
+
+procedure TForm_tree_par_edit.cbbOrgPropertiesCloseUp(Sender: TObject);
+begin
+  Windows.SetFocus(Button1.Handle);
+
+end;
+
+procedure TForm_tree_par_edit.cbbListKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if Key = VK_Return then
+    Windows.SetFocus(Button1.Handle);
+
+end;
+
+procedure TForm_tree_par_edit.cxDBDateEdit1PropertiesCloseUp(
+  Sender: TObject);
+begin
+  Windows.SetFocus(Button1.Handle);
+end;
+
+procedure TForm_tree_par_edit.cxDateKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+  if Key = VK_Return then
+    Windows.SetFocus(Button1.Handle);
+
 end;
 
 end.

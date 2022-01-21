@@ -4,43 +4,47 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, Wwdatsrc, Wwdbgrid, OracleData,
-  wwSpeedButton, wwDBNavigator, ExtCtrls, StdCtrls,
-  wwcheckbox, Menus, Grids, Wwdbigrd, wwclearpanel;
+  Dialogs, DB,  OracleData,
+  ExtCtrls, StdCtrls,
+  Menus, Grids, cxGraphics, cxControls,
+  cxLookAndFeels, cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter,
+  cxData, cxDataStorage, cxEdit, cxNavigator, cxDBData, cxGridLevel,
+  cxClasses, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
+  cxGridDBTableView, cxGrid;
 
 type
   TForm_spr_rep = class(TForm)
-    GroupBox1: TGroupBox;
-    Button1: TButton;
-    wwDBNavigator1: TwwDBNavigator;
-    wwDBNavigator1First: TwwNavButton;
-    wwDBNavigator1PriorPage: TwwNavButton;
-    wwDBNavigator1Prior: TwwNavButton;
-    wwDBNavigator1Next: TwwNavButton;
-    wwDBNavigator1NextPage: TwwNavButton;
-    wwDBNavigator1Last: TwwNavButton;
-    wwDBNavigator1Insert: TwwNavButton;
-    wwDBNavigator1Delete: TwwNavButton;
-    wwDBNavigator1Button: TwwNavButton;
     OD_spr: TOracleDataSet;
-    wwDBGrid1: TwwDBGrid;
-    DS_spr: TwwDataSource;
-    OD_par: TOracleDataSet;
-    wwDBGrid2: TwwDBGrid;
-    DS_par: TwwDataSource;
-    wwExpandButton1: TwwExpandButton;
-    PopupMenu1: TPopupMenu;
-    N1: TMenuItem;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    cxGrid1: TcxGrid;
+    DS_spr: TDataSource;
+    cxGrid1DBTableView1NP: TcxGridDBColumn;
+    cxGrid1DBTableView1ID: TcxGridDBColumn;
+    cxGrid1DBTableView1NAME: TcxGridDBColumn;
+    cxGrid1DBTableView1MAXLEVEL: TcxGridDBColumn;
+    cxGrid1DBTableView1FK_TYPE: TcxGridDBColumn;
+    cxGrid1DBTableView1EXPAND_ROW: TcxGridDBColumn;
+    cxGrid1DBTableView1EXPAND_COL: TcxGridDBColumn;
+    cxGrid1DBTableView1CAN_DETAIL: TcxGridDBColumn;
+    cxGrid1DBTableView1SHOW_SEL_ORG: TcxGridDBColumn;
+    cxGrid1DBTableView1SHOW_SEL_OPER: TcxGridDBColumn;
+    cxGrid1DBTableView1CD: TcxGridDBColumn;
+    cxGrid1DBTableView1SEL_MANY: TcxGridDBColumn;
+    cxGrid1DBTableView1HAVE_DATE: TcxGridDBColumn;
+    cxGrid1DBTableView1FNAME: TcxGridDBColumn;
+    cxGrid1DBTableView1ISCNT: TcxGridDBColumn;
+    cxGrid1DBTableView1ISSUM: TcxGridDBColumn;
+    cxGrid1DBTableView1FLDSUM: TcxGridDBColumn;
+    cxGrid1DBTableView1ISHEAD: TcxGridDBColumn;
+    cxGrid1DBTableView1SHOW_PAYCHK: TcxGridDBColumn;
+    cxGrid1DBTableView1SHOW_DEB: TcxGridDBColumn;
+    cxGrid1DBTableView1FRX_FNAME: TcxGridDBColumn;
+    cxGrid1DBTableView1ISOEM: TcxGridDBColumn;
+    cxGrid1DBTableView1FRM_NAME: TcxGridDBColumn;
+    cxGrid1DBTableView1SHOW_TOTAL_ROW: TcxGridDBColumn;
+    cxGrid1DBTableView1SHOW_TOTAL_COL: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure Button1Click(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
-    procedure wwDBGrid1DragOver(Sender, Source: TObject; X, Y: Integer;
-      State: TDragState; var Accept: Boolean);
-    procedure wwDBGrid1DragDrop(Sender, Source: TObject; X, Y: Integer);
-    procedure N1Click(Sender: TObject);
-    procedure wwDBGrid2DragDrop(Sender, Source: TObject; X, Y: Integer);
-    procedure wwDBGrid2DragOver(Sender, Source: TObject; X, Y: Integer;
-      State: TDragState; var Accept: Boolean);
   private
     { Private declarations }
   public
@@ -60,74 +64,6 @@ procedure TForm_spr_rep.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
  Action:=caFree;
-end;
-
-procedure TForm_spr_rep.Button1Click(Sender: TObject);
-begin
-  if not (OD_spr.State in [dsBrowse]) then
-    OD_spr.Post;
-  Close;
-end;
-
-procedure TForm_spr_rep.FormCreate(Sender: TObject);
-begin
-  OD_spr.Active:=true;
-  OD_par.Active:=true;
-end;
-
-procedure TForm_spr_rep.wwDBGrid1DragOver(Sender, Source: TObject; X,
-  Y: Integer; State: TDragState; var Accept: Boolean);
-begin
-//  Form_spr_rep.SetFocus;
-Windows.SetFocus(Form_spr_rep.Handle);
-//  Form_spr_rep.Activate;
-  Accept:=True;
-end;
-
-procedure TForm_spr_rep.wwDBGrid1DragDrop(Sender, Source: TObject; X,
-  Y: Integer);
-begin
-  //добавление параметра в отчет
-  DataModule1.OraclePackage1.CallProcedure(
-     'scott.Utils.rep_add_param',
-      [OD_spr.FieldByName('ID').AsInteger,
-      Form_main.fk_par_]);
-  OD_par.Active:=false;
-  OD_par.Active:=True;
-end;
-
-procedure TForm_spr_rep.N1Click(Sender: TObject);
-begin
-  //удаление параметра из отчета
-  DataModule1.OraclePackage1.CallProcedure(
-     'scott.Utils.rep_del_param',
-      [OD_par.FieldByName('fk_rep').AsInteger,
-      OD_par.FieldByName('fk_par').AsInteger]);
-  OD_par.Active:=false;
-  OD_par.Active:=True;
-
-end;
-
-procedure TForm_spr_rep.wwDBGrid2DragDrop(Sender, Source: TObject; X,
-  Y: Integer);
-begin
-  //добавление параметра в отчет
-  DataModule1.OraclePackage1.CallProcedure(
-     'scott.Utils.rep_add_param',
-      [OD_spr.FieldByName('ID').AsInteger,
-      Form_main.fk_par_]);
-  OD_par.Active:=false;
-  OD_par.Active:=True;
-
-end;
-
-procedure TForm_spr_rep.wwDBGrid2DragOver(Sender, Source: TObject; X,
-  Y: Integer; State: TDragState; var Accept: Boolean);
-begin
-//  Form_spr_rep.SetFocus;
-Windows.SetFocus(Form_spr_rep.Handle);
-//  Form_spr_rep.Activate;
-  Accept:=True;
 end;
 
 end.

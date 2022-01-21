@@ -57,7 +57,6 @@ uses
   Unit_changes_list in 'Unit_changes_list.pas' {Form_changes_list},
   Unit_houses_nabor in 'Unit_houses_nabor.pas' {Form_houses_nabor},
   Unit_change_house_nabor2 in 'Unit_change_house_nabor2.pas' {Form_change_house_nabor},
-  Unit_spr_spk in 'Unit_spr_spk.pas' {Form_spr_spk},
   Unit_gen_current in 'Unit_gen_current.pas' {Form_gen_current},
   Unit_print_lists in 'Unit_print_lists.pas' {Form_print_lists},
   Unit_spr_sprorg in 'Unit_spr_sprorg.pas' {Form_spr_sprorg},

@@ -1,6 +1,6 @@
 object Form_tree_par_edit: TForm_tree_par_edit
-  Left = 917
-  Top = 190
+  Left = 548
+  Top = 383
   Width = 451
   Height = 333
   BorderIcons = [biSystemMenu]
@@ -92,27 +92,19 @@ object Form_tree_par_edit: TForm_tree_par_edit
     Top = 0
     Width = 435
     Height = 253
-    ActivePage = TabSheet2
+    ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
     object TabSheet1: TTabSheet
-      object wwDBDateTimePicker1: TwwDBDateTimePicker
-        Left = 72
+      object cxDate: TcxDBDateEdit
+        Left = 88
         Top = 24
-        Width = 121
-        Height = 21
-        CalendarAttributes.Font.Charset = DEFAULT_CHARSET
-        CalendarAttributes.Font.Color = clWindowText
-        CalendarAttributes.Font.Height = -11
-        CalendarAttributes.Font.Name = 'MS Sans Serif'
-        CalendarAttributes.Font.Style = []
-        DataField = 'PARDT1'
-        DataSource = DS_par
-        Epoch = 1950
-        ShowButton = True
+        DataBinding.DataField = 'PARDT1'
+        DataBinding.DataSource = DS_par
+        Properties.OnCloseUp = cxDBDateEdit1PropertiesCloseUp
         TabOrder = 0
-        OnCloseUp = wwDBDateTimePicker1CloseUp
-        OnKeyDown = wwDBDateTimePicker1KeyDown
+        OnKeyDown = cxDateKeyDown
+        Width = 121
       end
     end
     object TabSheet2: TTabSheet
@@ -143,219 +135,72 @@ object Form_tree_par_edit: TForm_tree_par_edit
     end
     object TabSheet4: TTabSheet
       ImageIndex = 3
-      object wwDBLookupCombo1: TwwDBLookupCombo
+      object cbbList: TcxLookupComboBox
         Left = 8
-        Top = 24
-        Width = 233
-        Height = 21
-        DropDownAlignment = taLeftJustify
-        Selected.Strings = (
-          'NAME'#9'4'#9'NAME'#9#9)
-        LookupTable = Uni_List
-        LookupField = 'NAME'
+        Top = 34
+        Enabled = False
+        Properties.GridMode = True
+        Properties.KeyFieldNames = 'NAME'
+        Properties.ListColumns = <
+          item
+            FieldName = 'NAME'
+          end>
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = DS_Uni_List
+        Properties.OnCloseUp = cbbOrgPropertiesCloseUp
         TabOrder = 0
-        AutoDropDown = True
-        ShowButton = True
-        PreciseEditRegion = False
-        AllowClearKey = False
-        OnCloseUp = wwDBLookupCombo1CloseUp
-        OnKeyDown = wwDBLookupCombo1KeyDown
+        OnKeyDown = cbbListKeyDown
+        Width = 233
       end
     end
     object TabSheet5: TTabSheet
       ImageIndex = 4
-      object wwRadioGroup1: TwwRadioGroup
-        Left = 88
+      object cxYesNo: TcxDBRadioGroup
+        Left = 104
         Top = 16
-        Width = 73
-        Height = 57
-        DisableThemes = False
-        ArrowsModifySelection = True
-        DataField = 'PARN1'
-        DataSource = DS_par
-        Items.Strings = (
-          #1044#1072
-          #1053#1077#1090)
+        DataBinding.DataField = 'PARN1'
+        DataBinding.DataSource = DS_par
+        Properties.Items = <
+          item
+            Caption = #1044#1072
+            Value = 0
+          end
+          item
+            Caption = #1053#1077#1090
+            Value = 1
+            Tag = 1
+          end>
         TabOrder = 0
-        Values.Strings = (
-          '1'
-          '0')
+        Height = 57
+        Width = 105
       end
     end
     object TabSheet6: TTabSheet
       ImageIndex = 5
-      object wwDBGrid1: TwwDBGrid
+      object cxGrid2: TcxGrid
         Left = 0
         Top = 0
         Width = 427
-        Height = 200
-        Selected.Strings = (
-          'NAME'#9'255'#9#1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077#9'F')
-        IniAttributes.Delimiter = ';;'
-        TitleColor = clBtnFace
-        FixedCols = 0
-        ShowHorzScrollBar = True
+        Height = 225
         Align = alClient
-        DataSource = DS_list
-        KeyOptions = []
-        Options = [dgEditing, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgWordWrap]
         TabOrder = 0
-        TitleAlignment = taLeftJustify
-        TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -11
-        TitleFont.Name = 'MS Sans Serif'
-        TitleFont.Style = []
-        TitleLines = 1
-        TitleButtons = False
-        UseTFields = False
-      end
-      object wwDBNavigator1: TwwDBNavigator
-        Left = 0
-        Top = 200
-        Width = 427
-        Height = 25
-        DataSource = DS_list
-        RepeatInterval.InitialDelay = 500
-        RepeatInterval.Interval = 100
-        Align = alBottom
-        object wwDBNavigator1First: TwwNavButton
-          Left = 0
-          Top = 0
-          Width = 25
-          Height = 25
-          Hint = 'Move to first record'
-          ImageIndex = -1
-          NumGlyphs = 2
-          Spacing = 4
-          Transparent = False
-          Caption = 'wwDBNavigator1First'
-          Enabled = False
-          DisabledTextColors.ShadeColor = clGray
-          DisabledTextColors.HighlightColor = clBtnHighlight
-          Index = 0
-          Style = nbsFirst
+        object cxGridDBTableView1: TcxGridDBTableView
+          PopupMenu = PopupMenu1
+          Navigator.Buttons.CustomButtons = <>
+          DataController.DataSource = DS_list
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <>
+          DataController.Summary.SummaryGroups = <>
+          OptionsData.Deleting = False
+          OptionsData.Inserting = False
+          OptionsView.GroupByBox = False
+          object cxGridDBTableView1NAME: TcxGridDBColumn
+            Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
+            DataBinding.FieldName = 'NAME'
+          end
         end
-        object wwDBNavigator1PriorPage: TwwNavButton
-          Left = 25
-          Top = 0
-          Width = 25
-          Height = 25
-          Hint = 'Move backward 10 records'
-          ImageIndex = -1
-          NumGlyphs = 2
-          Spacing = 4
-          Transparent = False
-          Caption = 'wwDBNavigator1PriorPage'
-          Enabled = False
-          DisabledTextColors.ShadeColor = clGray
-          DisabledTextColors.HighlightColor = clBtnHighlight
-          Index = 1
-          Style = nbsPriorPage
-          Visible = False
-        end
-        object wwDBNavigator1Prior: TwwNavButton
-          Left = 50
-          Top = 0
-          Width = 25
-          Height = 25
-          Hint = 'Move to prior record'
-          ImageIndex = -1
-          NumGlyphs = 2
-          Spacing = 4
-          Transparent = False
-          Caption = 'wwDBNavigator1Prior'
-          Enabled = False
-          DisabledTextColors.ShadeColor = clGray
-          DisabledTextColors.HighlightColor = clBtnHighlight
-          Index = 2
-          Style = nbsPrior
-        end
-        object wwDBNavigator1Next: TwwNavButton
-          Left = 75
-          Top = 0
-          Width = 25
-          Height = 25
-          Hint = 'Move to next record'
-          ImageIndex = -1
-          NumGlyphs = 2
-          Spacing = 4
-          Transparent = False
-          Caption = 'wwDBNavigator1Next'
-          Enabled = False
-          DisabledTextColors.ShadeColor = clGray
-          DisabledTextColors.HighlightColor = clBtnHighlight
-          Index = 3
-          Style = nbsNext
-        end
-        object wwDBNavigator1NextPage: TwwNavButton
-          Left = 100
-          Top = 0
-          Width = 25
-          Height = 25
-          Hint = 'Move forward 10 records'
-          ImageIndex = -1
-          NumGlyphs = 2
-          Spacing = 4
-          Transparent = False
-          Caption = 'wwDBNavigator1NextPage'
-          Enabled = False
-          DisabledTextColors.ShadeColor = clGray
-          DisabledTextColors.HighlightColor = clBtnHighlight
-          Index = 4
-          Style = nbsNextPage
-        end
-        object wwDBNavigator1Last: TwwNavButton
-          Left = 125
-          Top = 0
-          Width = 25
-          Height = 25
-          Hint = 'Move to last record'
-          ImageIndex = -1
-          NumGlyphs = 2
-          Spacing = 4
-          Transparent = False
-          Caption = 'wwDBNavigator1Last'
-          Enabled = False
-          DisabledTextColors.ShadeColor = clGray
-          DisabledTextColors.HighlightColor = clBtnHighlight
-          Index = 5
-          Style = nbsLast
-        end
-        object wwDBNavigator1Insert: TwwNavButton
-          Left = 150
-          Top = 0
-          Width = 25
-          Height = 25
-          Hint = 'Insert new record'
-          ImageIndex = -1
-          NumGlyphs = 2
-          Spacing = 4
-          Transparent = False
-          Caption = 'wwDBNavigator1Insert'
-          Enabled = False
-          DisabledTextColors.ShadeColor = clGray
-          DisabledTextColors.HighlightColor = clBtnHighlight
-          Index = 6
-          Style = nbsInsert
-          Visible = False
-        end
-        object wwDBNavigator1Delete: TwwNavButton
-          Left = 175
-          Top = 0
-          Width = 25
-          Height = 25
-          Hint = 'Delete current record'
-          ImageIndex = -1
-          NumGlyphs = 2
-          Spacing = 4
-          Transparent = False
-          Caption = 'wwDBNavigator1Delete'
-          Enabled = False
-          DisabledTextColors.ShadeColor = clGray
-          DisabledTextColors.HighlightColor = clBtnHighlight
-          Index = 7
-          Style = nbsDelete
+        object cxGridLevel1: TcxGridLevel
+          GridView = cxGridDBTableView1
         end
       end
     end
@@ -475,8 +320,14 @@ object Form_tree_par_edit: TForm_tree_par_edit
       'order by t.npp')
     MasterFields = 'ID'
     DetailFields = 'FK_PAR'
+    Active = True
     Constraints = <>
     Left = 16
-    Top = 128
+    Top = 160
+  end
+  object DS_Uni_List: TDataSource
+    DataSet = Uni_List
+    Left = 68
+    Top = 160
   end
 end

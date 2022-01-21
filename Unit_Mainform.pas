@@ -272,7 +272,6 @@ type
     procedure N59Click(Sender: TObject);
     procedure N60Click(Sender: TObject);
     procedure N62Click(Sender: TObject);
-    procedure N63Click(Sender: TObject);
     procedure N58Click(Sender: TObject);
     procedure N66Click(Sender: TObject);
     procedure OracleEvent1Event(Sender: TOracleEvent; const ObjectName: string;
@@ -486,7 +485,7 @@ uses
   Unit_inkass, Unit_list_kart, Unit_house_vvod,
   Unit_changes_lsk, Unit_new_lsk, Unit_month_payments,
   Unit_chargepay, Unit_sel_arch_period, Unit_find_adr, Unit_changes_list,
-  Unit_houses_nabor, Unit_spr_spk, Unit_gen_current, Unit_print_lists,
+  Unit_houses_nabor,  Unit_gen_current, Unit_print_lists,
   Unit_spr_sprorg, Unit_spr_prices, Unit_spr_oper, Unit_status_gen,
   Unit_form_saldo, Unit_form_olap,
   Unit_tree_objects, Unit_get_pay_nal, Unit_recv_pay_bank,
@@ -1194,11 +1193,6 @@ end;
 procedure TForm_Main.N62Click(Sender: TObject);
 begin
   Application.CreateForm(TForm_houses_nabor, Form_houses_nabor);
-end;
-
-procedure TForm_Main.N63Click(Sender: TObject);
-begin
-  Application.CreateForm(TForm_spr_spk, Form_spr_spk);
 end;
 
 procedure TForm_Main.N58Click(Sender: TObject);

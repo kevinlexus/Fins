@@ -4,12 +4,14 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, OracleData, StdCtrls, wwdblook, Oracle;
+  Dialogs, DB, OracleData, StdCtrls, Oracle, cxGraphics,
+  cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit,
+  cxTextEdit, cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit,
+  cxDBLookupComboBox;
 
 type
   TForm_price_copy = class(TForm)
     GroupBox2: TGroupBox;
-    wwDBLookupCombo2: TwwDBLookupCombo;
     OD_t_org2: TOracleDataSet;
     StringField1: TStringField;
     FloatField1: TFloatField;
@@ -17,6 +19,8 @@ type
     Button3: TButton;
     Button4: TButton;
     OD_t_org2GR_NAME: TStringField;
+    cbbOrg: TcxLookupComboBox;
+    DS_t_org2: TDataSource;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button3Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);

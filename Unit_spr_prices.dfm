@@ -1,6 +1,6 @@
 object Form_spr_prices: TForm_spr_prices
-  Left = 1325
-  Top = 272
+  Left = 1571
+  Top = 197
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082' '#1088#1072#1089#1094#1077#1085#1086#1082
@@ -91,303 +91,6 @@ object Form_spr_prices: TForm_spr_prices
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object wwDBGrid1: TwwDBGrid
-    Left = 0
-    Top = 49
-    Width = 533
-    Height = 495
-    ControlType.Strings = (
-      'NAME;CustomEdit;wwDBLookupCombo1;F'
-      'lookup1;CustomEdit;wwDBLookupCombo1;F')
-    Selected.Strings = (
-      'NAME'#9'26'#9#1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103#9#9
-      'USL'#9'7'#9#1050#1086#1076#9#9
-      'NM'#9'23'#9#1059#1089#1083#1091#1075#1072#9#9
-      'SUMMA'#9'10'#9#1062#1077#1085#1072#9#9
-      'SUMMA3'#9'10'#9#1062#1077#1085#1072'~'#1073#1077#1079' '#1087#1088#1086#1078#1080#1074'.'#9#9)
-    IniAttributes.Delimiter = ';;'
-    TitleColor = clBtnFace
-    FixedCols = 0
-    ShowHorzScrollBar = False
-    Align = alClient
-    DataSource = DS_prices
-    KeyOptions = []
-    Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgWordWrap, dgPerfectRowFit, dgShowCellHint]
-    PopupMenu = PopupMenu1
-    TabOrder = 1
-    TitleAlignment = taLeftJustify
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'MS Sans Serif'
-    TitleFont.Style = []
-    TitleLines = 2
-    TitleButtons = False
-    OnKeyPress = wwDBGrid1KeyPress
-    GroupFieldName = 'name'
-  end
-  object GroupBox1: TGroupBox
-    Left = 0
-    Top = 544
-    Width = 533
-    Height = 49
-    Align = alBottom
-    TabOrder = 2
-    object wwDBNavigator1: TwwDBNavigator
-      Left = 8
-      Top = 16
-      Width = 353
-      Height = 25
-      DataSource = DS_prices
-      Options = [noConfirmDelete, noUseInternationalText]
-      ShowHint = True
-      RepeatInterval.InitialDelay = 500
-      RepeatInterval.Interval = 100
-      ParentShowHint = False
-      object wwDBNavigator1First: TwwNavButton
-        Left = 0
-        Top = 0
-        Width = 25
-        Height = 25
-        Hint = 'Move to first record'
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'wwDBNavigator1First'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 0
-        Style = nbsFirst
-      end
-      object wwDBNavigator1PriorPage: TwwNavButton
-        Left = 25
-        Top = 0
-        Width = 25
-        Height = 25
-        Hint = 'Move backward 10 records'
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'wwDBNavigator1PriorPage'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 1
-        Style = nbsPriorPage
-      end
-      object wwDBNavigator1Prior: TwwNavButton
-        Left = 50
-        Top = 0
-        Width = 25
-        Height = 25
-        Hint = 'Move to prior record'
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'wwDBNavigator1Prior'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 2
-        Style = nbsPrior
-      end
-      object wwDBNavigator1Next: TwwNavButton
-        Left = 75
-        Top = 0
-        Width = 25
-        Height = 25
-        Hint = 'Move to next record'
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'wwDBNavigator1Next'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 3
-        Style = nbsNext
-      end
-      object wwDBNavigator1NextPage: TwwNavButton
-        Left = 100
-        Top = 0
-        Width = 25
-        Height = 25
-        Hint = 'Move forward 10 records'
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'wwDBNavigator1NextPage'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 4
-        Style = nbsNextPage
-      end
-      object wwDBNavigator1Edit: TwwNavButton
-        Left = 125
-        Top = 0
-        Width = 25
-        Height = 25
-        Hint = 'Edit current record'
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'wwDBNavigator1Edit'
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 5
-        Style = nbsEdit
-        Visible = False
-      end
-      object wwDBNavigator1Cancel: TwwNavButton
-        Left = 150
-        Top = 0
-        Width = 25
-        Height = 25
-        Hint = 'Cancel changes made to current record'
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'wwDBNavigator1Cancel'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 6
-        Style = nbsCancel
-        Visible = False
-      end
-      object wwDBNavigator1Refresh: TwwNavButton
-        Left = 175
-        Top = 0
-        Width = 25
-        Height = 25
-        Hint = 'Refresh the contents of the dataset'
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'wwDBNavigator1Refresh'
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 7
-        Style = nbsRefresh
-        Visible = False
-      end
-      object wwDBNavigator1SaveBookmark: TwwNavButton
-        Left = 200
-        Top = 0
-        Width = 25
-        Height = 25
-        Hint = 'Bookmark current record'
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'wwDBNavigator1SaveBookmark'
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 8
-        Style = nbsSaveBookmark
-        Visible = False
-      end
-      object wwDBNavigator1RestoreBookmark: TwwNavButton
-        Left = 225
-        Top = 0
-        Width = 25
-        Height = 25
-        Hint = 'Go back to saved bookmark'
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'wwDBNavigator1RestoreBookmark'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 9
-        Style = nbsRestoreBookmark
-        Visible = False
-      end
-      object wwDBNavigator1Delete: TwwNavButton
-        Left = 250
-        Top = 0
-        Width = 25
-        Height = 25
-        Hint = 'Delete current record'
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'wwDBNavigator1Delete'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 10
-        Style = nbsDelete
-        Visible = False
-      end
-      object wwDBNavigator1Post: TwwNavButton
-        Left = 275
-        Top = 0
-        Width = 25
-        Height = 25
-        Hint = 'Post changes of current record'
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'wwDBNavigator1Post'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 11
-        Style = nbsPost
-        Visible = False
-      end
-      object wwDBNavigator1Last: TwwNavButton
-        Left = 300
-        Top = 0
-        Width = 28
-        Height = 25
-        Hint = 'Move to last record'
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'wwDBNavigator1Last'
-        Enabled = False
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 12
-        Style = nbsLast
-      end
-      object wwDBNavigator1Insert: TwwNavButton
-        Left = 328
-        Top = 0
-        Width = 25
-        Height = 25
-        Hint = 'Insert new record'
-        ImageIndex = -1
-        NumGlyphs = 2
-        Spacing = 4
-        Transparent = False
-        Caption = 'wwDBNavigator1Insert'
-        DisabledTextColors.ShadeColor = clGray
-        DisabledTextColors.HighlightColor = clBtnHighlight
-        Index = 13
-        Style = nbsInsert
-        Visible = False
-      end
-    end
-  end
   object GroupBox2: TGroupBox
     Left = 0
     Top = 0
@@ -396,23 +99,21 @@ object Form_spr_prices: TForm_spr_prices
     Align = alTop
     Caption = #1060#1080#1083#1100#1090#1088
     TabOrder = 0
-    object wwDBLookupCombo2: TwwDBLookupCombo
+    object cbbOrg: TcxLookupComboBox
       Left = 96
-      Top = 16
-      Width = 329
-      Height = 21
-      DropDownAlignment = taLeftJustify
-      Selected.Strings = (
-        'NAME'#9'20'#9'NAME'#9'F'
-        'GR_NAME'#9'15'#9'GR_NAME'#9'F'#9)
-      LookupTable = OD_t_org2
-      LookupField = 'ID'
+      Top = 18
+      Enabled = False
+      Properties.GridMode = True
+      Properties.KeyFieldNames = 'ID'
+      Properties.ListColumns = <
+        item
+          FieldName = 'NAME'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = DS_t_org2
+      Properties.OnCloseUp = cbbOrgPropertiesCloseUp
       TabOrder = 0
-      AutoDropDown = False
-      ShowButton = True
-      PreciseEditRegion = False
-      AllowClearKey = False
-      OnCloseUp = wwDBLookupCombo2CloseUp
+      Width = 329
     end
   end
   object GroupBox3: TGroupBox
@@ -421,7 +122,7 @@ object Form_spr_prices: TForm_spr_prices
     Width = 533
     Height = 49
     Align = alBottom
-    TabOrder = 3
+    TabOrder = 1
     object Button4: TButton
       Left = 446
       Top = 16
@@ -441,6 +142,57 @@ object Form_spr_prices: TForm_spr_prices
       Enabled = False
       TabOrder = 0
       OnClick = Button5Click
+    end
+  end
+  object cxGrid1: TcxGrid
+    Left = 0
+    Top = 49
+    Width = 533
+    Height = 544
+    Align = alClient
+    TabOrder = 2
+    object cxGrid1DBTableView1: TcxGridDBTableView
+      PopupMenu = PopupMenu1
+      OnKeyPress = cxGrid1DBTableView1KeyPress
+      Navigator.Buttons.CustomButtons = <>
+      Navigator.Visible = True
+      DataController.DataSource = DS_prices
+      DataController.Summary.DefaultGroupSummaryItems = <>
+      DataController.Summary.FooterSummaryItems = <>
+      DataController.Summary.SummaryGroups = <>
+      OptionsView.GroupByBox = False
+      object cxGrid1DBTableView1NAME: TcxGridDBColumn
+        DataBinding.FieldName = 'NAME'
+      end
+      object cxGrid1DBTableView1USL: TcxGridDBColumn
+        Caption = #1050#1086#1076' '#1091#1089#1083'.'
+        DataBinding.FieldName = 'USL'
+        Width = 49
+      end
+      object cxGrid1DBTableView1NM: TcxGridDBColumn
+        DataBinding.FieldName = 'NM'
+        Width = 136
+      end
+      object cxGrid1DBTableView1SUMMA: TcxGridDBColumn
+        DataBinding.FieldName = 'SUMMA'
+        Width = 75
+      end
+      object cxGrid1DBTableView1SUMMA3: TcxGridDBColumn
+        Caption = #1062#1077#1085#1072' '#1073#1077#1079' '#1087#1088#1086#1078#1080#1074'.'
+        DataBinding.FieldName = 'SUMMA3'
+        Width = 106
+      end
+      object cxGrid1DBTableView1SUMMA2: TcxGridDBColumn
+        DataBinding.FieldName = 'SUMMA2'
+        Visible = False
+      end
+      object cxGrid1DBTableView1FK_ORG: TcxGridDBColumn
+        DataBinding.FieldName = 'FK_ORG'
+        Visible = False
+      end
+    end
+    object cxGrid1Level1: TcxGridLevel
+      GridView = cxGrid1DBTableView1
     end
   end
   object OD_prices: TOracleDataSet
@@ -519,11 +271,6 @@ object Form_spr_prices: TForm_spr_prices
       Visible = False
     end
   end
-  object DS_prices: TwwDataSource
-    DataSet = OD_prices
-    Left = 112
-    Top = 80
-  end
   object OD_t_org2: TOracleDataSet
     SQL.Strings = (
       
@@ -580,5 +327,15 @@ object Form_spr_prices: TForm_spr_prices
       Caption = #1059#1076#1072#1083#1080#1090#1100' '#1088#1072#1089#1094#1077#1085#1082#1091' '#1080#1079' '#1086#1088#1075#1072#1085#1080#1079#1072#1094#1080#1080
       OnClick = N2Click
     end
+  end
+  object DS_t_org2: TDataSource
+    DataSet = OD_t_org2
+    Left = 120
+    Top = 144
+  end
+  object DS_prices: TDataSource
+    DataSet = OD_prices
+    Left = 120
+    Top = 80
   end
 end

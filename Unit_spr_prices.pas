@@ -4,16 +4,18 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, Wwdatsrc, OracleData, StdCtrls, wwSpeedButton,
-  wwDBNavigator, ExtCtrls, Wwdbgrid,
-  wwdblook, Menus, wwclearpanel, Grids, Wwdbigrd;
+  Dialogs, DB, OracleData, StdCtrls, 
+  ExtCtrls, Menus, Grids, cxGraphics, cxControls,
+  cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit, cxTextEdit,
+  cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit,
+  cxDBLookupComboBox, cxStyles, cxCustomData, cxFilter, cxData,
+  cxDataStorage, cxNavigator, cxDBData, cxGridCustomTableView,
+  cxGridTableView, cxGridDBTableView, cxGridLevel, cxClasses,
+  cxGridCustomView, cxGrid;
 
 type
   TForm_spr_prices = class(TForm)
-    wwDBGrid1: TwwDBGrid;
-    GroupBox1: TGroupBox;
     OD_prices: TOracleDataSet;
-    DS_prices: TwwDataSource;
     OD_pricesUSL: TStringField;
     OD_pricesSUMMA: TFloatField;
     OD_pricesNM: TStringField;
@@ -23,22 +25,6 @@ type
     GroupBox2: TGroupBox;
     GroupBox3: TGroupBox;
     Button4: TButton;
-    wwDBNavigator1: TwwDBNavigator;
-    wwDBNavigator1First: TwwNavButton;
-    wwDBNavigator1PriorPage: TwwNavButton;
-    wwDBNavigator1Prior: TwwNavButton;
-    wwDBNavigator1Next: TwwNavButton;
-    wwDBNavigator1NextPage: TwwNavButton;
-    wwDBNavigator1Edit: TwwNavButton;
-    wwDBNavigator1Cancel: TwwNavButton;
-    wwDBNavigator1Refresh: TwwNavButton;
-    wwDBNavigator1SaveBookmark: TwwNavButton;
-    wwDBNavigator1RestoreBookmark: TwwNavButton;
-    wwDBNavigator1Delete: TwwNavButton;
-    wwDBNavigator1Post: TwwNavButton;
-    wwDBNavigator1Last: TwwNavButton;
-    wwDBNavigator1Insert: TwwNavButton;
-    wwDBLookupCombo2: TwwDBLookupCombo;
     OD_t_org2: TOracleDataSet;
     StringField1: TStringField;
     FloatField1: TFloatField;
@@ -48,22 +34,31 @@ type
     OD_pricesNAME: TStringField;
     N2: TMenuItem;
     OD_t_org2GR_NAME: TStringField;
+    DS_t_org2: TDataSource;
+    cbbOrg: TcxLookupComboBox;
+    cxGrid1: TcxGrid;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    cxGrid1DBTableView1NAME: TcxGridDBColumn;
+    cxGrid1DBTableView1USL: TcxGridDBColumn;
+    cxGrid1DBTableView1NM: TcxGridDBColumn;
+    cxGrid1DBTableView1SUMMA: TcxGridDBColumn;
+    cxGrid1DBTableView1SUMMA3: TcxGridDBColumn;
+    cxGrid1DBTableView1SUMMA2: TcxGridDBColumn;
+    cxGrid1DBTableView1FK_ORG: TcxGridDBColumn;
+    DS_prices: TDataSource;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
-    procedure wwDBGrid1KeyPress(Sender: TObject; var Key: Char);
     procedure state_arch2(mgold_: String);
-    procedure wwDBLookupCombo1Exit(Sender: TObject);
-    procedure wwDBLookupCombo1CloseUp(Sender: TObject; LookupTable,
-      FillTable: TDataSet; modified: Boolean);
-    procedure wwDBLookupCombo2CloseUp(Sender: TObject; LookupTable,
-      FillTable: TDataSet; modified: Boolean);
     procedure N1Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure OD_pricesBeforeEdit(DataSet: TDataSet);
     procedure N2Click(Sender: TObject);
     procedure PopupMenu1Popup(Sender: TObject);
+    procedure cbbOrgPropertiesCloseUp(Sender: TObject);
+    procedure cxGrid1DBTableView1KeyPress(Sender: TObject; var Key: Char);
   private
   public
     upd_: Integer;
@@ -126,7 +121,6 @@ begin
   OD_prices.Active:=False;
   OD_prices.SetVariable('var_',-1);
   OD_prices.Active:=True;
-  wwDBLookupCombo2.LookupValue:=OD_t_org2.FieldByname('id').AsString;
 
   state_arch2('');
 end;
@@ -141,13 +135,6 @@ procedure TForm_spr_prices.Button2Click(Sender: TObject);
 begin
   exit_cancel;
   close;
-end;
-
-procedure TForm_spr_prices.wwDBGrid1KeyPress(Sender: TObject;
-  var Key: Char);
-begin
-  if RetKey(Key) then
-    Key:= '.';
 end;
 
 procedure TForm_spr_prices.state_arch2(mgold_: String);
@@ -177,52 +164,6 @@ begin // смена состояний формы
   end;
 end;
 
-
-procedure TForm_spr_prices.wwDBLookupCombo1Exit(Sender: TObject);
-begin
-{  if OD_t_org.SearchRecord('NAME', wwDBLookupCombo1.Text,
-    [srFromBeginning]) <> true then
-  begin
-    OD_prices.FieldByName('fk_org').AsVariant:=null;
-  //  msg2('Данная организация не найдена!', 'Ошибка', MB_OK);
-  end;
- }
-// OD_prices.FieldByName('FK_ORG').AsInteger:=
-//    OD_t_org.FieldByName('ID').AsInteger;
-end;
-
-procedure TForm_spr_prices.wwDBLookupCombo1CloseUp(Sender: TObject;
-  LookupTable, FillTable: TDataSet; modified: Boolean);
-begin
-//  OD_prices.FieldByName('FK_ORG').AsInteger:=
-//   OD_t_org.FieldByName('ID').AsInteger;
-end;
-
-procedure TForm_spr_prices.wwDBLookupCombo2CloseUp(Sender: TObject;
-  LookupTable, FillTable: TDataSet; modified: Boolean);
-begin
-  //Установка фильтра
-  with OD_prices do
-  begin
-  if (OD_t_org2.FieldByName('id').AsInteger = 0) then
-    begin
-    //Все расценки
-    SetVariable('var_', OD_t_org2.FieldByName('id').AsInteger);
-    end
-    else if (OD_t_org2.FieldByName('id').AsInteger = -1) then
-    begin
-    //Базовые расценки
-    SetVariable('var_', OD_t_org2.FieldByName('id').AsInteger);
-    end
-    else
-    begin
-    //Расценки по организации
-    SetVariable('var_',1);
-    end;
-    Active:=False;
-    Active:=True;
-  end;
-end;
 
 procedure TForm_spr_prices.N1Click(Sender: TObject);
 begin
@@ -277,6 +218,38 @@ begin
     N2.Enabled:=True;
     end;
   end;
+end;
+
+procedure TForm_spr_prices.cbbOrgPropertiesCloseUp(Sender: TObject);
+begin
+  //Установка фильтра
+  with OD_prices do
+  begin
+  if (OD_t_org2.FieldByName('id').AsInteger = 0) then
+    begin
+    //Все расценки
+    SetVariable('var_', OD_t_org2.FieldByName('id').AsInteger);
+    end
+    else if (OD_t_org2.FieldByName('id').AsInteger = -1) then
+    begin
+    //Базовые расценки
+    SetVariable('var_', OD_t_org2.FieldByName('id').AsInteger);
+    end
+    else
+    begin
+    //Расценки по организации
+    SetVariable('var_',1);
+    end;
+    Active:=False;
+    Active:=True;
+  end;
+end;
+
+procedure TForm_spr_prices.cxGrid1DBTableView1KeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  if RetKey(Key) then
+    Key:= '.';
 end;
 
 end.
