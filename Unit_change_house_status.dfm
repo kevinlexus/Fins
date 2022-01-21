@@ -15,7 +15,6 @@ object Form_change_house_status: TForm_change_house_status
   OldCreateOrder = False
   Position = poMainFormCenter
   OnClose = FormClose
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Label3: TLabel
@@ -45,7 +44,6 @@ object Form_change_house_status: TForm_change_house_status
       Height = 25
       Caption = #1054#1082
       TabOrder = 0
-      OnClick = Button1Click
     end
     object Button2: TButton
       Left = 182

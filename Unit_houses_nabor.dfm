@@ -1,6 +1,6 @@
 object Form_houses_nabor: TForm_houses_nabor
-  Left = 781
-  Top = 300
+  Left = 760
+  Top = 262
   Width = 1085
   Height = 621
   Caption = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082' '#1076#1086#1084#1086#1074
@@ -134,7 +134,7 @@ object Form_houses_nabor: TForm_houses_nabor
     Top = 0
     Width = 491
     Height = 533
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Align = alClient
     TabOrder = 1
     object TabSheet1: TTabSheet
@@ -186,26 +186,15 @@ object Form_houses_nabor: TForm_houses_nabor
     object TabSheet2: TTabSheet
       Caption = #1042#1074#1086#1076#1099
       ImageIndex = 1
-      object wwExpandButton2: TwwExpandButton
-        Left = 24
-        Top = 48
-        Width = 97
-        Height = 17
-        DisableThemes = False
-        OnAfterCollapse = wwExpandButton2AfterCollapse
-        Caption = 'wwExpandButton2'
-        TabOrder = 0
-      end
       object cxGridHouseVvod: TcxGrid
         Left = 0
         Top = 0
         Width = 483
         Height = 505
         Align = alClient
-        TabOrder = 1
+        TabOrder = 0
         object cxGridHouseVvodDBTableView1: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
-          DataController.DataSource = DS_k_vvod
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <>
           DataController.Summary.SummaryGroups = <>
@@ -807,8 +796,8 @@ object Form_houses_nabor: TForm_houses_nabor
     BeforeEdit = OD_housesBeforeEdit
     BeforePost = OD_housesBeforePost
     AfterPost = OD_housesAfterPost
-    Left = 56
-    Top = 248
+    Left = 136
+    Top = 112
     object OD_housesNAME: TStringField
       DisplayLabel = #1059#1083#1080#1094#1072
       DisplayWidth = 18
@@ -925,11 +914,6 @@ object Form_houses_nabor: TForm_houses_nabor
       FieldName = 'IS_PRIVATE'
     end
   end
-  object DS_houses: TwwDataSource
-    DataSet = OD_houses
-    Left = 104
-    Top = 248
-  end
   object DS_sprorg: TDataSource
     DataSet = OD_sprorg
     Left = 32
@@ -1034,11 +1018,6 @@ object Form_houses_nabor: TForm_houses_nabor
       Size = 40
     end
   end
-  object DS_vvod: TwwDataSource
-    DataSet = OD_vvod
-    Left = 320
-    Top = 320
-  end
   object OD_k_vvod: TOracleDataSet
     SQL.Strings = (
       
@@ -1106,11 +1085,6 @@ object Form_houses_nabor: TForm_houses_nabor
     object OD_k_vvodK_LSK_ID: TFloatField
       FieldName = 'K_LSK_ID'
     end
-  end
-  object DS_k_vvod: TwwDataSource
-    DataSet = OD_k_vvod
-    Left = 320
-    Top = 352
   end
   object OD_vvod2: TOracleDataSet
     SQL.Strings = (
@@ -1217,103 +1191,6 @@ object Form_houses_nabor: TForm_houses_nabor
     Left = 176
     Top = 304
   end
-  object OD_house_status: TOracleDataSet
-    SQL.Strings = (
-      
-        'select distinct null as rn, k.house_id, k.status, s.name as stat' +
-        'us_name'
-      ' from scott.kart k, scott.status s'
-      '  where k.house_id=:house_id and k.status=s.id')
-    Optimize = False
-    Variables.Data = {
-      0300000001000000090000003A484F5553455F49440300000000000000000000
-      00}
-    QBEDefinition.QBEFieldDefs = {
-      0400000004000000060000005354415455530100000000000B00000053544154
-      55535F4E414D4501000000000008000000484F5553455F494401000000000002
-      000000524E010000000000}
-    Master = OD_houses
-    MasterFields = 'ID'
-    DetailFields = 'HOUSE_ID'
-    Session = DataModule1.OracleSession1
-    DesignActivation = True
-    Active = True
-    AfterScroll = OD_vvodAfterScroll
-    Top = 184
-    object OD_house_statusRN: TStringField
-      FieldName = 'RN'
-      Size = 1
-    end
-    object OD_house_statusHOUSE_ID: TFloatField
-      FieldName = 'HOUSE_ID'
-      Required = True
-    end
-    object OD_house_statusSTATUS: TIntegerField
-      DisplayWidth = 10
-      FieldName = 'STATUS'
-    end
-    object OD_house_statusSTATUS_NAME: TStringField
-      DisplayWidth = 25
-      FieldName = 'STATUS_NAME'
-      Size = 25
-    end
-  end
-  object DS_house_status: TwwDataSource
-    DataSet = OD_house_status
-    Left = 32
-    Top = 184
-  end
-  object OD_k_status: TOracleDataSet
-    SQL.Strings = (
-      
-        'select k.rowid, LTRIM(k.kw,'#39'0'#39') as kw, k.status, s.name as statu' +
-        's_name'
-      ' from scott.kart k, scott.status s'
-      '  where k.house_id=:house_id and k.status=s.id'
-      'and k.status=:status'
-      'order by scott.utils.f_order(k.kw,7)')
-    Optimize = False
-    Variables.Data = {
-      0300000002000000090000003A484F5553455F49440300000000000000000000
-      00070000003A535441545553030000000000000000000000}
-    QBEDefinition.QBEFieldDefs = {
-      0400000003000000060000005354415455530100000000000B00000053544154
-      55535F4E414D45010000000000020000004B57010000000000}
-    Master = OD_house_status
-    MasterFields = 'house_id; status'
-    UpdatingTable = 'scott.kart'
-    Session = DataModule1.OracleSession1
-    DesignActivation = True
-    Active = True
-    AfterScroll = OD_vvodAfterScroll
-    Left = 72
-    Top = 184
-    object OD_k_statusKW: TStringField
-      DisplayLabel = #8470' '#1050#1074
-      DisplayWidth = 7
-      FieldKind = fkInternalCalc
-      FieldName = 'KW'
-      ReadOnly = True
-      Size = 7
-    end
-    object StringField2: TStringField
-      DisplayLabel = #1057#1090#1072#1090#1091#1089
-      DisplayWidth = 25
-      FieldKind = fkInternalCalc
-      FieldName = 'STATUS_NAME'
-      Size = 25
-    end
-    object IntegerField1: TIntegerField
-      DisplayWidth = 10
-      FieldName = 'STATUS'
-      Visible = False
-    end
-  end
-  object DS_k_status: TwwDataSource
-    DataSet = OD_k_status
-    Left = 104
-    Top = 184
-  end
   object OD_status: TOracleDataSet
     SQL.Strings = (
       'select t.* from scott.status t'
@@ -1345,37 +1222,6 @@ object Form_houses_nabor: TForm_houses_nabor
     DataSet = OD_status
     Left = 168
     Top = 184
-  end
-  object OD_housexlist: TOracleDataSet
-    SQL.Strings = (
-      
-        'select t.id, t.fk_list, u.name from scott.t_housexlist t, scott.' +
-        'u_list u,'
-      'scott.u_listtp tp'
-      'where tp.cd='#39#1059#1095#1072#1089#1090#1086#1082#39' and tp.id=u.fk_listtp'
-      'and t.fk_list=u.id'
-      'and t.fk_house=:fk_house')
-    Optimize = False
-    Variables.Data = {
-      0300000001000000090000003A464B5F484F5553450300000000000000000000
-      00}
-    QBEDefinition.QBEFieldDefs = {
-      0400000003000000040000004E414D4501000000000007000000464B5F4C4953
-      54010000000000020000004944010000000000}
-    Master = OD_houses
-    MasterFields = 'ID'
-    DetailFields = 'FK_HOUSE'
-    QueryAllRecords = False
-    Session = DataModule1.OracleSession1
-    DesignActivation = True
-    Active = True
-    Left = 256
-    Top = 176
-  end
-  object DS_housexlist: TwwDataSource
-    DataSet = OD_housexlist
-    Left = 304
-    Top = 176
   end
   object DS_objxpar: TDataSource
     DataSet = Uni_objxpar
@@ -1537,7 +1383,6 @@ object Form_houses_nabor: TForm_houses_nabor
       '     left join scott.u_list s on t.fk_val=s.id'
       '--where t.fk_k_lsk=:fk_k_lsk'
       '')
-    MasterSource = DS_houses
     MasterFields = 'fk_k_lsk'
     DetailFields = 'fk_k_lsk'
     Constraints = <>
@@ -1569,5 +1414,20 @@ object Form_houses_nabor: TForm_houses_nabor
         Name = 'ID'
         ParamType = ptInput
       end>
+  end
+  object DS_houses: TDataSource
+    DataSet = OD_houses
+    Left = 184
+    Top = 112
+  end
+  object DS_vvod: TDataSource
+    DataSet = OD_vvod
+    Left = 320
+    Top = 320
+  end
+  object DS_k_vvod: TDataSource
+    DataSet = OD_k_vvod
+    Left = 320
+    Top = 360
   end
 end

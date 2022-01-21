@@ -21,8 +21,6 @@ type
     Label3: TLabel;
     cbbStatus: TcxLookupComboBox;
     procedure Button2Click(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
@@ -42,31 +40,6 @@ uses DM_module1, Unit_houses_nabor, Unit_status;
 procedure TForm_change_house_status.Button2Click(Sender: TObject);
 begin
   Close;
-end;
-
-procedure TForm_change_house_status.Button1Click(Sender: TObject);
-begin
-  //изменение статуса в квартирах выбранного дома
-  Application.CreateForm(TForm_status, Form_status);
-  Form_status.Update;
-  DataModule1.OraclePackage1.CallProcedure
-       ('scott.p_houses.change_house_status',
-       [Form_houses_nabor.OD_house_status.FieldByName('house_id').AsInteger,
-       OD_status.FieldByName('id').AsInteger,
-       Form_houses_nabor.OD_house_status.FieldByName('status').AsInteger
-       ]);
-  Form_houses_nabor.OD_house_status.Active:=false;
-  Form_houses_nabor.OD_house_status.Active:=true;
-  Form_status.Close;
-  Close;
-
-end;
-
-procedure TForm_change_house_status.FormCreate(Sender: TObject);
-begin
-  OD_status.Active:=True;
-  cbbStatus.EditValue:=
-    Form_houses_nabor.OD_house_status.FieldByName('status').AsString;
 end;
 
 procedure TForm_change_house_status.FormClose(Sender: TObject;
