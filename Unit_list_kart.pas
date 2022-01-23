@@ -274,13 +274,13 @@ type
     procedure cxmskdtGW_VOLKeyPress(Sender: TObject; var Key: Char);
     procedure cxmskdtEL_VOLKeyPress(Sender: TObject; var Key: Char);
     procedure cxgrdListKartDBTableView1DblClick(Sender: TObject);
+  private
+    isDoAfterScroll: Boolean;
   public
     isAllowEdit_: Integer;
     isAllowEdit_k_: Integer;
     isAllowEdit_k2_: Integer;
     isAllowEdit_k3_: Integer;
-    // ред.21.05.2019 - льготы не нужны
-    //    isAllowEdit_l_: Integer;
   end;
 
 var
@@ -317,7 +317,7 @@ begin
   else
     isAllowEdit_k2_ := 0;
 
-  lll:=OD_list_kart.FieldByName('fk_pasp_org').AsInteger;
+  lll := OD_list_kart.FieldByName('fk_pasp_org').AsInteger;
   if (Utils.checkAccessRigths(Form_Main.accessList, '',
     OD_list_kart.FieldByName('fk_pasp_org').AsInteger,
     'доступ к пасп.столу')) then
@@ -414,7 +414,6 @@ begin
     OD_list_kart.FieldByName('pgw').ReadOnly := true;
     OD_list_kart.FieldByName('pel').ReadOnly := true;
   end;
-
 end;
 
 procedure TForm_list_kart.refresh_data;
@@ -517,70 +516,70 @@ end;
 procedure TForm_list_kart.setFields;
 begin
 
-{  if (Form_main.org_var_ = 1) then
-  begin
-    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'N_STATUS')].Visible :=
-      false;
-    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'ET')].Visible := false;
-    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'KPR')].Visible := false;
-    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'KPR_OT')].Visible := false;
-    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'KPR_WR')].Visible := false;
-    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'KPR_WRP')].Visible :=
-      false;
-    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'KI')].Visible := false;
-    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'OPL')].Visible := false;
-    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'KRAN1')].Visible := false;
-    //    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1,'EL')].Visible:=false;
-    //    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1,'EL1')].Visible:=false;
-    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'SUB_DATA')].Visible :=
-      false;
-    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'MEL')].Visible := false;
-    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'MHW')].Visible := false;
-    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'MGW')].Visible := false;
-    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'PSCH_NAME')].Visible :=
-      false;
-    //    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1,'KAN_SCH')].Visible:=false;
-    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'MG1')].Visible := false;
-    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'MG2')].Visible := false;
-    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'DEB_ORG')].Visible :=
-      false;
-    //    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1,'SUBS_COR')].Visible:=false;
-    //    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1,'SUBS_CUR')].Visible:=false;
-    //    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1,'ADR')].Visible:=false;
-
-    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'NAME')].DisplayWidth := 30;
-    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'FIO')].DisplayWidth := 43;
-    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'TEXT')].DisplayLabel :=
-      'Телефон';
-    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'PARENT_LSK')].Visible :=
-      false;
-    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'ELSK')].Visible := false;
-    CheckBox1.Visible := false;
-    chk2.Visible := false;
-  end
-  else
-  begin
-    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'SUB_DATA')].Visible :=
-      false;
-    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'KI')].Visible := false;
-    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'TEXT')].DisplayLabel :=
-      'Примечание';
-    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'DOG_NUM')].Visible :=
-      false;
-    //    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1,'ADR')].Visible:=false;
-    CheckBox1.Visible := true;
-    chk2.Visible := true;
-    //SpeedButton5.Visible:=false;
-    // отобразить расход по счетчикам, без возможности правки
-    if DataModule1.OraclePackage1.CallIntegerFunction
-      ('scott.INIT.get_is_cnt_sch', [parNone]) = 1 then
+  {  if (Form_main.org_var_ = 1) then
     begin
+      wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'N_STATUS')].Visible :=
+        false;
+      wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'ET')].Visible := false;
+      wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'KPR')].Visible := false;
+      wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'KPR_OT')].Visible := false;
+      wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'KPR_WR')].Visible := false;
+      wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'KPR_WRP')].Visible :=
+        false;
+      wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'KI')].Visible := false;
+      wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'OPL')].Visible := false;
+      wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'KRAN1')].Visible := false;
+      //    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1,'EL')].Visible:=false;
+      //    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1,'EL1')].Visible:=false;
+      wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'SUB_DATA')].Visible :=
+        false;
+      wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'MEL')].Visible := false;
       wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'MHW')].Visible := false;
       wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'MGW')].Visible := false;
-    end;                  
-    //    setFields2;
-  end;
-                          }
+      wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'PSCH_NAME')].Visible :=
+        false;
+      //    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1,'KAN_SCH')].Visible:=false;
+      wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'MG1')].Visible := false;
+      wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'MG2')].Visible := false;
+      wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'DEB_ORG')].Visible :=
+        false;
+      //    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1,'SUBS_COR')].Visible:=false;
+      //    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1,'SUBS_CUR')].Visible:=false;
+      //    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1,'ADR')].Visible:=false;
+
+      wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'NAME')].DisplayWidth := 30;
+      wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'FIO')].DisplayWidth := 43;
+      wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'TEXT')].DisplayLabel :=
+        'Телефон';
+      wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'PARENT_LSK')].Visible :=
+        false;
+      wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'ELSK')].Visible := false;
+      CheckBox1.Visible := false;
+      chk2.Visible := false;
+    end
+    else
+    begin
+      wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'SUB_DATA')].Visible :=
+        false;
+      wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'KI')].Visible := false;
+      wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'TEXT')].DisplayLabel :=
+        'Примечание';
+      wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'DOG_NUM')].Visible :=
+        false;
+      //    wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1,'ADR')].Visible:=false;
+      CheckBox1.Visible := true;
+      chk2.Visible := true;
+      //SpeedButton5.Visible:=false;
+      // отобразить расход по счетчикам, без возможности правки
+      if DataModule1.OraclePackage1.CallIntegerFunction
+        ('scott.INIT.get_is_cnt_sch', [parNone]) = 1 then
+      begin
+        wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'MHW')].Visible := false;
+        wwDBGrid1.Fields[GetGridColumnByName(wwDBGrid1, 'MGW')].Visible := false;
+      end;
+      //    setFields2;
+    end;
+                            }
 end;
 
 procedure TForm_list_kart.setFields2;
@@ -810,36 +809,37 @@ end;
 
 procedure TForm_list_kart.OD_list_kartAfterScroll(DataSet: TDataSet);
 begin
-  setAllowEdit_list;
-  refresh_data;
-
-  if FF('Form_kart', 0) = 1 then
+  if (isDoAfterScroll = null) or (isDoAfterScroll = False) then
   begin
-    //    setAllowEdit_kart;
-//    Form_kart.calcFooter;
+    isDoAfterScroll := True; // иначе - виснет, todo разобраться потом 21.01.22
+
+    setAllowEdit_list;
+    refresh_data;
+
+    if FF('Form_kart', 0) = 1 then
+    begin
+      Form_kart.OD_charge.SetVariable('k_lsk_id',
+        OD_list_kart.FieldByName('k_lsk_id').AsInteger);
+      Form_kart.OD_charge.Active := False;
+      Form_kart.OD_charge.Active := True;
+    end;
+
+    if FF('frmPenCorr', 0) = 1 then
+    begin
+      frmPenCorr.OD_data.SetVariable('k_lsk_id',
+        Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger);
+      frmPenCorr.OD_data.Active := false;
+      frmPenCorr.OD_data.Active := true;
+    end;
+
+    if FF('Form_lk_acc', 0) = 1 then
+      Form_lk_acc.exit_cancel;
+
+    if FF('Form_print_bills', 0) = 1 then
+      Form_print_bills.sel_lsk;
+
+    isDoAfterScroll := False;
   end;
-
-  if FF('Form_kart', 0) = 1 then
-  begin
-    Form_kart.OD_charge.SetVariable('k_lsk_id',
-      OD_list_kart.FieldByName('k_lsk_id').AsInteger);
-    Form_kart.OD_charge.Active := False;
-    Form_kart.OD_charge.Active := True;
-  end;
-
-  if FF('frmPenCorr', 0) = 1 then
-  begin
-    frmPenCorr.OD_data.SetVariable('k_lsk_id',
-      Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger);
-    frmPenCorr.OD_data.Active := false;
-    frmPenCorr.OD_data.Active := true;
-  end;
-
-  if FF('Form_lk_acc', 0) = 1 then
-    Form_lk_acc.exit_cancel;
-
-  if FF('Form_print_bills', 0) = 1 then
-    Form_print_bills.sel_lsk;
 end;
 
 procedure TForm_list_kart.OD_list_kartAfterRefreshRecord(
@@ -852,7 +852,6 @@ procedure TForm_list_kart.Button1Click(Sender: TObject);
 begin
   Close;
 end;
-
 
 procedure TForm_list_kart.OD_list_kartBeforeScroll(DataSet: TDataSet);
 var
@@ -878,16 +877,14 @@ begin
           OD_list_kart.FieldByName('k_lsk_id').AsInteger,
             null, Form_Main.cur_dt, 0, Form_main.javaServer]);
 
-      { cnt_ := DataModule1.OraclePackage1.CallIntegerFunction(
-         'scott.C_CHARGES.gen_charges',
-         [OD_list_kart.FieldByName('lsk').AsString, null, null, null, 1, 0]);}
     end;
   end;
 end;
 
 procedure TForm_list_kart.CheckBox1Click(Sender: TObject);
 begin
-  ShowMessage('Функция не поддерживается'); // todo проверить необходимость данной функции
+  ShowMessage('Функция не поддерживается');
+  // todo проверить необходимость данной функции
 {  if CheckBox1.Checked then
     wwDBGrid1.FixedCols := wwDBGrid1.SelectedField.Index
   else
@@ -1008,8 +1005,6 @@ begin
  }
 end;
 
-
-
 procedure TForm_list_kart.BitBtn1Click(Sender: TObject);
 begin
   if FF('Form_log_actions', 0) = 0 then
@@ -1075,7 +1070,6 @@ begin
     Panel5.Visible := false;
   end;
 end;
-
 
 procedure TForm_list_kart.chk1Click(Sender: TObject);
 begin
@@ -1425,11 +1419,11 @@ end;
 procedure TForm_list_kart.cxgrdListKartDBTableView1DblClick(
   Sender: TObject);
 begin
-    if FF('Form_kart', 1) = 0 then
-    begin
-      setAllowEdit_kart;
-      Application.CreateForm(TForm_kart, Form_kart);
-    end;
+  if FF('Form_kart', 1) = 0 then
+  begin
+    setAllowEdit_kart;
+    Application.CreateForm(TForm_kart, Form_kart);
+  end;
 end;
 
 end.

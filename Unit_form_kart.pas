@@ -728,7 +728,9 @@ begin
 
   //Проверить можно ли теперь править некоторые поля, например MHW
   Form_list_kart.setAllowEdit_list;
-  Form_list_kart.setAllowEdit_kart;
+
+  //  Form_list_kart.setAllowEdit_kart; ### вернуть 
+
   //обновить поля, отражающие статусы л/c
   refresh_kart;
   //  calcFooter;
@@ -1323,7 +1325,7 @@ begin
   if Form_set_krt_psch.ShowModal = mrOk then
   begin
     Update;
-    Form_kart.saveOrRollbackKart(1, True);
+    saveOrRollbackKart(1, True);
   end;
 end;
 
@@ -1435,7 +1437,7 @@ begin
         OD_nabor.FieldByName('DT1').AsDateTime,
         OD_nabor.FieldByName('DT2').AsDateTime
         ]);
-    Form_kart.updates_ := 1;
+    updates_ := 1;
     OD_nabor.Refresh;
   end;
 end;
@@ -1449,10 +1451,12 @@ begin
 end;
 
 procedure TForm_kart.BitBtn4Click(Sender: TObject);
-begin
+begin 
+  // вызов формы по счетчикам
+
   // сохранить форму карточки
   if FF('Form_kart', 0) = 1 then
-    Form_kart.saveOrRollbackKart(1, True);
+    saveOrRollbackKart(1, True);
 
   if FF('Form_sch_history', 1) = 0 then
   begin

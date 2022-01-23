@@ -478,7 +478,7 @@ begin
     cxNewVal.Properties.ReadOnly := False;
     cxVal.Properties.ReadOnly := False;
   end;
-
+          
   // установить точность поля ввода
   if OD_meter.FieldByName('COUNTER').AsString = 'pot' then
   begin
