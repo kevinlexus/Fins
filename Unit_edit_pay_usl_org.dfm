@@ -1,0 +1,357 @@
+object Form_edit_pay_usl_org: TForm_edit_pay_usl_org
+  Left = 1450
+  Top = 223
+  Width = 496
+  Height = 451
+  Caption = #1056#1072#1089#1087#1088#1077#1076#1077#1083#1077#1085#1080#1077' '#1086#1087#1083#1072#1090#1099
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  FormStyle = fsMDIChild
+  Icon.Data = {
+    0000010001002020080000000000A80800001600000028000000200000004000
+    0000010008000000000000040000000000000000000000000000000000000000
+    00004000000080000000FF000000002000004020000080200000FF2000000040
+    00004040000080400000FF400000006000004060000080600000FF6000000080
+    00004080000080800000FF80000000A0000040A0000080A00000FFA0000000C0
+    000040C0000080C00000FFC0000000FF000040FF000080FF0000FFFF00000000
+    20004000200080002000FF002000002020004020200080202000FF2020000040
+    20004040200080402000FF402000006020004060200080602000FF6020000080
+    20004080200080802000FF80200000A0200040A0200080A02000FFA0200000C0
+    200040C0200080C02000FFC0200000FF200040FF200080FF2000FFFF20000000
+    40004000400080004000FF004000002040004020400080204000FF2040000040
+    40004040400080404000FF404000006040004060400080604000FF6040000080
+    40004080400080804000FF80400000A0400040A0400080A04000FFA0400000C0
+    400040C0400080C04000FFC0400000FF400040FF400080FF4000FFFF40000000
+    60004000600080006000FF006000002060004020600080206000FF2060000040
+    60004040600080406000FF406000006060004060600080606000FF6060000080
+    60004080600080806000FF80600000A0600040A0600080A06000FFA0600000C0
+    600040C0600080C06000FFC0600000FF600040FF600080FF6000FFFF60000000
+    80004000800080008000FF008000002080004020800080208000FF2080000040
+    80004040800080408000FF408000006080004060800080608000FF6080000080
+    80004080800080808000FF80800000A0800040A0800080A08000FFA0800000C0
+    800040C0800080C08000FFC0800000FF800040FF800080FF8000FFFF80000000
+    A0004000A0008000A000FF00A0000020A0004020A0008020A000FF20A0000040
+    A0004040A0008040A000FF40A0000060A0004060A0008060A000FF60A0000080
+    A0004080A0008080A000FF80A00000A0A00040A0A00080A0A000FFA0A00000C0
+    A00040C0A00080C0A000FFC0A00000FFA00040FFA00080FFA000FFFFA0000000
+    C0004000C0008000C000FF00C0000020C0004020C0008020C000FF20C0000040
+    C0004040C0008040C000FF40C0000060C0004060C0008060C000FF60C0000080
+    C0004080C0008080C000FF80C00000A0C00040A0C00080A0C000FFA0C00000C0
+    C00040C0C00080C0C000FFC0C00000FFC00040FFC00080FFC000FFFFC0000000
+    FF004000FF008000FF00FF00FF000020FF004020FF008020FF00FF20FF000040
+    FF004040FF008040FF00FF40FF000060FF004060FF008060FF00FF60FF000080
+    FF004080FF008080FF00FF80FF0000A0FF0040A0FF0080A0FF00FFA0FF0000C0
+    FF0040C0FF0080C0FF00FFC0FF0000FFFF0040FFFF0080FFFF00FFFFFF000000
+    0000000000000000000000000000000000000000000000000000000000000092
+    92929292929292929292929292929292929292929292929292929292920000FF
+    92929292929292929292929292929292929292929292929292929292920000FF
+    FFDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDB92920000FF
+    FFDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDB92920000FF
+    FFDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDB92920000FF
+    FFDBDBFFFFDBDBFFFFDBDBFFFFDBDBFFFFDBDBFFFFDBDBFFFFDBDB92920000FF
+    FFDBDB00FFDBDB00FFDBDB00FFDBDB00FFDBDB00FFDBDB00FFDBDB92920000FF
+    FFDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDB92920000FF
+    FFDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDB92920000FF
+    FFDBDBFFFFDBDBFFFFDBDBDBDBDBDBFFFFDBDBDBDBDBDBDBDBDBDB92920000FF
+    FFDBDB00FFDBDB0000FFDBDBDBDBDB0000FFDBDBDBDBDBDBDBDBDB92920000FF
+    FFDBDBDBDBDBDB0000FFDBDBDBDBDB0000FFDBDBDBDBDBDBDBDBDB92920000FF
+    FFDBDBDBDBDBDBDBDB00FFDBDBDB00DBDB00FFDBDBDBDBDBDBDBDB92920000FF
+    FFDBDBFFFFDBDBDBDBDB00FFFF00DBDBDBDB00FFFFDBDBDBDBDBDB92920000FF
+    FFDBDB00FFDBDBDBDBDBDB0000FFDBDBDBDBDB0000FFDBDBDBDBDB92920000FF
+    FFDBDBDBDBDBDBDBDBDBDB0000FFDBDBDBDBDB0000FFDBDBDBDBDB92920000FF
+    FFDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDB00FFDBDBDBDB92920000FF
+    FFDBDBFFFFDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDB00FFFFDBDB92920000FF
+    FFDBDB00FFDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDB0000FFDB92920000FF
+    FFDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDB0000FFDB92920000FF
+    FFDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDB92920000FF
+    FFDBDBFFFFDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDB92920000FF
+    FFDBDB00FFDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDB92920000FF
+    FFDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDB92920000FF
+    FFDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDB92920000FF
+    FFDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDB92920000FF
+    FFDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDB92920000FF
+    FFDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDBDB92920000FF
+    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF92920000FF
+    FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF92000000
+    0000000000000000000000000000000000000000000000000000000000008000
+    0001000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    000000000000000000000000000000000000000000000000000080000001}
+  OldCreateOrder = False
+  Position = poMainFormCenter
+  Visible = True
+  OnClose = FormClose
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object GroupBox1: TGroupBox
+    Left = 0
+    Top = 363
+    Width = 480
+    Height = 49
+    Align = alBottom
+    TabOrder = 0
+    object Button1: TButton
+      Left = 310
+      Top = 16
+      Width = 75
+      Height = 25
+      Caption = #1054#1082
+      TabOrder = 0
+      OnClick = Button1Click
+    end
+    object Button2: TButton
+      Left = 398
+      Top = 16
+      Width = 75
+      Height = 25
+      Cancel = True
+      Caption = #1054#1090#1084#1077#1085#1072
+      TabOrder = 1
+      OnClick = Button2Click
+    end
+  end
+  object cxGrid1: TcxGrid
+    Left = 0
+    Top = 0
+    Width = 480
+    Height = 363
+    Align = alClient
+    TabOrder = 1
+    object cxGrid1DBTableView1: TcxGridDBTableView
+      Navigator.Buttons.CustomButtons = <>
+      Navigator.Visible = True
+      DataController.DataSource = DS_kwtp_day
+      DataController.Summary.DefaultGroupSummaryItems = <
+        item
+          Kind = skSum
+          Position = spFooter
+          Column = cxGrid1DBTableView1SUMMA
+        end
+        item
+          Kind = skSum
+          Column = cxGrid1DBTableView1SUMMA
+        end>
+      DataController.Summary.FooterSummaryItems = <
+        item
+          Kind = skSum
+        end
+        item
+          Kind = skSum
+        end
+        item
+          Kind = skSum
+        end
+        item
+          Kind = skSum
+        end
+        item
+          Kind = skSum
+        end
+        item
+          Kind = skSum
+          Column = cxGrid1DBTableView1SUMMA
+        end>
+      DataController.Summary.SummaryGroups = <>
+      OptionsBehavior.FocusFirstCellOnNewRecord = True
+      OptionsBehavior.GoToNextCellOnEnter = True
+      OptionsData.Appending = True
+      OptionsData.DeletingConfirmation = False
+      OptionsSelection.InvertSelect = False
+      OptionsView.ColumnAutoWidth = True
+      OptionsView.Footer = True
+      OptionsView.GroupByBox = False
+      OptionsView.Indicator = True
+      object cxGrid1DBTableView1FK_DISTR: TcxGridDBColumn
+        Caption = #1058#1080#1087' '#1088#1072#1089#1087#1088'.'
+        DataBinding.FieldName = 'FK_DISTR'
+        Options.Editing = False
+        Width = 50
+      end
+      object cxGrid1DBTableView1PRIZNAK: TcxGridDBColumn
+        Caption = #1042#1080#1076
+        DataBinding.FieldName = 'PRIZNAK'
+        PropertiesClassName = 'TcxImageComboBoxProperties'
+        Properties.Items = <
+          item
+            Description = #1054#1087#1083#1072#1090#1072
+            ImageIndex = 0
+            Value = 1
+          end
+          item
+            Description = #1055#1077#1085#1103
+            Value = 0
+          end>
+        Options.Editing = False
+        Width = 61
+      end
+      object cxGrid1DBTableView1SUMMA: TcxGridDBColumn
+        DataBinding.FieldName = 'SUMMA'
+        PropertiesClassName = 'TcxMaskEditProperties'
+        Properties.MaskKind = emkRegExpr
+        Properties.EditMask = '\-?\d{1,10}\.?\d{0,2}'
+        Width = 63
+      end
+      object cxGrid1DBTableView1USL: TcxGridDBColumn
+        DataBinding.FieldName = 'USL'
+        PropertiesClassName = 'TcxLookupComboBoxProperties'
+        Properties.KeyFieldNames = 'USL'
+        Properties.ListColumns = <
+          item
+            FieldName = 'NM'
+          end>
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = DS_usl
+        Width = 161
+      end
+      object cxGrid1DBTableView1ORG: TcxGridDBColumn
+        DataBinding.FieldName = 'ORG'
+        PropertiesClassName = 'TcxLookupComboBoxProperties'
+        Properties.KeyFieldNames = 'ID'
+        Properties.ListColumns = <
+          item
+            FieldName = 'NAME'
+          end>
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = DS_t_org
+        Width = 131
+      end
+    end
+    object cxGrid1Level1: TcxGridLevel
+      GridView = cxGrid1DBTableView1
+    end
+  end
+  object OD_kwtp_day: TOracleDataSet
+    SQL.Strings = (
+      'select t.*, t.rowid from scott.kwtp_day t'
+      'where t.kwtp_id=:p_id'
+      '--and t.priznak=1 --'#1090#1086#1083#1100#1082#1086' '#1086#1087#1083#1072#1090#1072' ('#1089#1076#1077#1083#1072#1083' '#1077#1097#1077' '#1080' '#1087#1077#1085#1102')'
+      'order by t.priznak desc, t.usl')
+    Optimize = False
+    Variables.Data = {0300000001000000050000003A505F4944030000000000000000000000}
+    QBEDefinition.QBEFieldDefs = {
+      040000000F000000070000004B5754505F49440100000000000500000053554D
+      4D41010000000000030000004C534B010000000000040000004F504552010000
+      00000004000000444F504C010000000000040000004E4B4F4D01000000000004
+      0000004E494E4B010000000000070000004441545F494E4B0100000000000700
+      00005052495A4E414B0100000000000300000055534C01000000000003000000
+      4F524701000000000008000000464B5F44495354520100000000000900000053
+      554D5F4449535452010000000000020000004944010000000000040000004454
+      454B010000000000}
+    Master = Form_month_payments.OD_c_kwtp_mg
+    QueryAllRecords = False
+    CommitOnPost = False
+    CachedUpdates = True
+    Session = DataModule1.OracleSession1
+    DesignActivation = True
+    AfterOpen = OD_kwtp_dayAfterOpen
+    AfterInsert = OD_kwtp_dayAfterInsert
+    AfterEdit = OD_kwtp_dayAfterEdit
+    Left = 176
+    Top = 240
+    object OD_kwtp_dayKWTP_ID: TFloatField
+      FieldName = 'KWTP_ID'
+    end
+    object OD_kwtp_daySUMMA: TFloatField
+      DisplayLabel = #1057#1091#1084#1084#1072
+      FieldName = 'SUMMA'
+    end
+    object OD_kwtp_dayLSK: TStringField
+      FieldName = 'LSK'
+      Size = 8
+    end
+    object OD_kwtp_dayOPER: TStringField
+      DisplayWidth = 3
+      FieldName = 'OPER'
+      Size = 3
+    end
+    object OD_kwtp_dayDOPL: TStringField
+      FieldName = 'DOPL'
+      Size = 6
+    end
+    object OD_kwtp_dayNKOM: TStringField
+      FieldName = 'NKOM'
+      Size = 3
+    end
+    object OD_kwtp_dayNINK: TFloatField
+      FieldName = 'NINK'
+    end
+    object OD_kwtp_dayDAT_INK: TDateTimeField
+      FieldName = 'DAT_INK'
+    end
+    object OD_kwtp_dayPRIZNAK: TIntegerField
+      DefaultExpression = '0'
+      FieldName = 'PRIZNAK'
+    end
+    object OD_kwtp_dayUSL: TStringField
+      DisplayLabel = #1059#1089#1083#1091#1075#1072
+      FieldName = 'USL'
+      Size = 3
+    end
+    object OD_kwtp_dayORG: TFloatField
+      DisplayLabel = #1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103
+      FieldName = 'ORG'
+    end
+    object OD_kwtp_dayFK_DISTR: TFloatField
+      FieldName = 'FK_DISTR'
+      ReadOnly = True
+    end
+    object OD_kwtp_dayDTEK: TDateTimeField
+      FieldName = 'DTEK'
+    end
+  end
+  object DS_kwtp_day: TDataSource
+    DataSet = OD_kwtp_day
+    Left = 208
+    Top = 240
+  end
+  object OD_usl: TOracleDataSet
+    SQL.Strings = (
+      'select to_char(t.usl)||'#39' '#39'||t.nm as nm, t.usl'
+      ' from scott.usl t'
+      'order by t.npp')
+    Optimize = False
+    QBEDefinition.QBEFieldDefs = {
+      0400000002000000020000004E4D0100000000000300000055534C0100000000
+      00}
+    QueryAllRecords = False
+    CommitOnPost = False
+    Session = DataModule1.OracleSession1
+    DesignActivation = True
+    Active = True
+    Left = 56
+    Top = 208
+  end
+  object OD_t_org: TOracleDataSet
+    SQL.Strings = (
+      'select to_char(t.id)||'#39' '#39'||t.name as name, t.id'
+      'from scott.t_org t'
+      'order by t.name')
+    Optimize = False
+    QBEDefinition.QBEFieldDefs = {
+      0400000002000000020000004944010000000000040000004E414D4501000000
+      0000}
+    QueryAllRecords = False
+    CommitOnPost = False
+    Session = DataModule1.OracleSession1
+    DesignActivation = True
+    Active = True
+    Left = 56
+    Top = 256
+  end
+  object DS_usl: TDataSource
+    DataSet = OD_usl
+    Left = 88
+    Top = 208
+  end
+  object DS_t_org: TDataSource
+    DataSet = OD_t_org
+    Left = 88
+    Top = 256
+  end
+end
