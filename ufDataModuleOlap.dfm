@@ -1,7 +1,5 @@
 object DM_Olap: TDM_Olap
   OldCreateOrder = False
-  Left = 1724
-  Top = 346
   Height = 810
   Width = 686
   object DS_spr_params: TDataSource
@@ -15,8 +13,8 @@ object DM_Olap: TDM_Olap
       'order by t.naim')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000002000000040000004F504552010000000000040000004E414D450100
-      00000000}
+      0500000002000000080000004F00500045005200010000000000080000004E00
+      41004D004500010000000000}
     Session = DataModule1.OracleSession1
     Left = 136
     Top = 264
@@ -35,8 +33,8 @@ object DM_Olap: TDM_Olap
     ReadBuffer = 2000
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000002000000040000004E414D45010000000000030000004B4F44010000
-      000000}
+      0500000002000000080000004E0041004D004500010000000000060000004B00
+      4F004400010000000000}
     Session = DataModule1.OracleSession1
     Left = 136
     Top = 296
@@ -65,8 +63,8 @@ object DM_Olap: TDM_Olap
     ReadBuffer = 2000
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000002000000040000004E414D4501000000000002000000494401000000
-      0000}
+      0500000002000000080000004E0041004D004500010000000000040000004900
+      4400010000000000}
     Session = DataModule1.OracleSession1
     Active = True
     Left = 328
@@ -79,8 +77,8 @@ object DM_Olap: TDM_Olap
     ReadBuffer = 2000
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000002000000020000004944010000000000040000004E414D4501000000
-      0000}
+      05000000020000000400000049004400010000000000080000004E0041004D00
+      4500010000000000}
     Session = DataModule1.OracleSession1
     Active = True
     Left = 360
@@ -90,7 +88,8 @@ object DM_Olap: TDM_Olap
     SQL.Strings = (
       'select 1 as x, 1 as y from dual')
     Optimize = False
-    QBEDefinition.QBEFieldDefs = {040000000200000001000000580100000000000100000059010000000000}
+    QBEDefinition.QBEFieldDefs = {
+      0500000002000000020000005800010000000000020000005900010000000000}
     Session = DataModule1.OracleSession1
     Left = 256
     Top = 328
@@ -108,8 +107,8 @@ object DM_Olap: TDM_Olap
       'order by nm')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      04000000020000000300000055534C010000000000020000004E4D0100000000
-      00}
+      050000000200000006000000550053004C00010000000000040000004E004D00
+      010000000000}
     Session = DataModule1.OracleSession1
     Active = True
     Left = 328
@@ -123,8 +122,8 @@ object DM_Olap: TDM_Olap
       'select 0 as id, '#39#1053#1077' '#1086#1087#1088#1077#1076#1077#1083#1077#1085#1086#39' as name from dual')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000002000000020000004944010000000000040000004E414D4501000000
-      0000}
+      05000000020000000400000049004400010000000000080000004E0041004D00
+      4500010000000000}
     Session = DataModule1.OracleSession1
     Active = True
     Left = 360
@@ -136,8 +135,8 @@ object DM_Olap: TDM_Olap
       'from scott.t_org t where t.trest is not null')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000002000000050000005452455354010000000000070000004E414D455F
-      5452010000000000}
+      05000000020000000A000000540052004500530054000100000000000E000000
+      4E0041004D0045005F0054005200010000000000}
     Session = DataModule1.OracleSession1
     Active = True
     Left = 328
@@ -152,8 +151,8 @@ object DM_Olap: TDM_Olap
     ReadBuffer = 2000
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000002000000040000004E414D4501000000000002000000494401000000
-      0000}
+      0500000002000000080000004E0041004D004500010000000000040000004900
+      4400010000000000}
     Session = DataModule1.OracleSession1
     Active = True
     Left = 360
@@ -165,8 +164,8 @@ object DM_Olap: TDM_Olap
       'from scott.t_org t where t.reu is not null')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      040000000200000003000000524555010000000000080000004E414D455F5245
-      55010000000000}
+      050000000200000006000000520045005500010000000000100000004E004100
+      4D0045005F00520045005500010000000000}
     Session = DataModule1.OracleSession1
     Active = True
     Left = 328
@@ -179,8 +178,8 @@ object DM_Olap: TDM_Olap
       'order by t.name')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000002000000020000004944010000000000040000004E414D4501000000
-      0000}
+      05000000020000000400000049004400010000000000080000004E0041004D00
+      4500010000000000}
     Session = DataModule1.OracleSession1
     Active = True
     Left = 328
@@ -195,8 +194,8 @@ object DM_Olap: TDM_Olap
       'select -1 as id, '#39#1053#1077#1090#39' as name from dual')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000002000000020000004944010000000000040000004E414D4501000000
-      0000}
+      05000000020000000400000049004400010000000000080000004E0041004D00
+      4500010000000000}
     Session = DataModule1.OracleSession1
     Active = True
     Left = 328
@@ -212,8 +211,8 @@ object DM_Olap: TDM_Olap
       '')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000002000000020000004944010000000000040000004E414D4501000000
-      0000}
+      05000000020000000400000049004400010000000000080000004E0041004D00
+      4500010000000000}
     Session = DataModule1.OracleSession1
     Active = True
     Left = 328
@@ -238,10 +237,11 @@ object DM_Olap: TDM_Olap
       '')
     Optimize = False
     Variables.Data = {
-      0300000001000000040000003A49445F03000000040000000400000000000000}
+      0400000001000000080000003A00490044005F00030000000400000004000000
+      00000000}
     QBEDefinition.QBEFieldDefs = {
-      0400000003000000020000004D47010000000000030000004D47310100000000
-      00030000004D4732010000000000}
+      0500000003000000040000004D004700010000000000060000004D0047003100
+      010000000000060000004D0047003200010000000000}
     Session = DataModule1.OracleSession1
     Left = 136
     Top = 448
@@ -258,10 +258,11 @@ object DM_Olap: TDM_Olap
       '')
     Optimize = False
     Variables.Data = {
-      0300000001000000040000003A49445F03000000040000000400000000000000}
+      0400000001000000080000003A00490044005F00030000000400000004000000
+      00000000}
     QBEDefinition.QBEFieldDefs = {
-      0400000002000000020000004D47010000000000030000004D47310100000000
-      00}
+      0500000002000000040000004D004700010000000000060000004D0047003100
+      010000000000}
     Session = DataModule1.OracleSession1
     Left = 168
     Top = 448
@@ -287,10 +288,11 @@ object DM_Olap: TDM_Olap
       '')
     Optimize = False
     Variables.Data = {
-      0300000001000000040000003A49445F03000000040000000400000000000000}
+      0400000001000000080000003A00490044005F00030000000400000004000000
+      00000000}
     QBEDefinition.QBEFieldDefs = {
-      0400000002000000020000004D47010000000000030000004D47310100000000
-      00}
+      0500000002000000040000004D004700010000000000060000004D0047003100
+      010000000000}
     Session = DataModule1.OracleSession1
     Left = 168
     Top = 480
@@ -305,10 +307,11 @@ object DM_Olap: TDM_Olap
       '')
     Optimize = False
     Variables.Data = {
-      0300000001000000040000003A49445F03000000040000000400000000000000}
+      0400000001000000080000003A00490044005F00030000000400000004000000
+      00000000}
     QBEDefinition.QBEFieldDefs = {
-      0400000002000000020000004D47010000000000030000004D47310100000000
-      00}
+      0500000002000000040000004D004700010000000000060000004D0047003100
+      010000000000}
     Session = DataModule1.OracleSession1
     Left = 136
     Top = 480
@@ -326,12 +329,14 @@ object DM_Olap: TDM_Olap
       ') where level_id between :id and :max_level')
     Optimize = False
     Variables.Data = {
-      0300000002000000030000003A49440300000000000000000000000A0000003A
-      4D41585F4C4556454C030000000000000000000000}
+      0400000002000000060000003A00490044000300000000000000000000001400
+      00003A004D00410058005F004C004500560045004C0003000000000000000000
+      0000}
     QBEDefinition.QBEFieldDefs = {
-      0400000005000000020000004944010000000000040000004E414D4501000000
-      000009000000464B5F5245505F4944010000000000080000004C4556454C5F49
-      4401000000000007000000584D4C54455854000000000000}
+      05000000050000000400000049004400010000000000080000004E0041004D00
+      45000100000000001200000046004B005F005200450050005F00490044000100
+      00000000100000004C004500560045004C005F00490044000100000000000E00
+      000058004D004C005400450058005400000000000000}
     Session = DataModule1.OracleSession1
     Left = 136
     Top = 416
@@ -358,8 +363,8 @@ object DM_Olap: TDM_Olap
       'order by nm1')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000002000000030000004E4D310100000000000400000055534C4D010000
-      000000}
+      0500000002000000060000004E004D0031000100000000000800000055005300
+      4C004D00010000000000}
     Session = DataModule1.OracleSession1
     Active = True
     Left = 328
@@ -382,8 +387,6 @@ object DM_Olap: TDM_Olap
         't_tp, :prep_refcursor);'
       'end;')
     FetchRows = 1000
-    Active = True
-    Constraints = <>
     Left = 32
     Top = 32
     ParamData = <
@@ -397,21 +400,25 @@ object DM_Olap: TDM_Olap
         DataType = ftString
         Name = 'p_for_reu'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'kul_'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'nd_'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'trest_'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
@@ -429,11 +436,13 @@ object DM_Olap: TDM_Olap
         DataType = ftDate
         Name = 'dat_'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftDate
         Name = 'dat1_'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftInteger
@@ -451,11 +460,13 @@ object DM_Olap: TDM_Olap
         DataType = ftInteger
         Name = 'org_'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'oper_'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
@@ -467,16 +478,19 @@ object DM_Olap: TDM_Olap
         DataType = ftInteger
         Name = 'spk_id_'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftInteger
         Name = 'p_house'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftInteger
         Name = 'p_out_tp'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftCursor
@@ -553,7 +567,6 @@ object DM_Olap: TDM_Olap
       
         '                  p.name || '#39', '#39' || scott.utils.f_order(t.nd, 6)' +
         '), t.reu, p.name, t.nd, t.mg1')
-    Constraints = <>
     AfterPost = Uni_tree_objectsAfterPost
     AfterScroll = Uni_tree_objectsAfterScroll
     Left = 32
@@ -563,6 +576,7 @@ object DM_Olap: TDM_Olap
         DataType = ftInteger
         Name = 'set_psch'
         ParamType = ptInput
+        Value = nil
       end>
   end
   object Uni_spr_params: TUniQuery
@@ -615,8 +629,6 @@ object DM_Olap: TDM_Olap
       '   and p.fk_ses = USERENV('#39'sessionid'#39')'
       '   and s.cd = :cd_'
       ' order by p.npp')
-    Active = True
-    Constraints = <>
     Left = 32
     Top = 240
     ParamData = <
@@ -624,6 +636,7 @@ object DM_Olap: TDM_Olap
         DataType = ftString
         Name = 'cd_'
         ParamType = ptInput
+        Value = nil
       end>
   end
   object Uni_nabor_lsk: TUniQuery
@@ -644,7 +657,6 @@ object DM_Olap: TDM_Olap
     MasterFields = 'house_id;koeff;norm;usl;dt1;dt2'
     DetailFields = 'house_id;koeff;norm;usl;dt1;dt2'
     Active = True
-    Constraints = <>
     Left = 40
     Top = 544
     ParamData = <
@@ -652,31 +664,37 @@ object DM_Olap: TDM_Olap
         DataType = ftFixedChar
         Name = 'usl'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'house_id'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'koeff'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'norm'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftDateTime
         Name = 'DT1'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftDateTime
         Name = 'DT2'
         ParamType = ptInput
+        Value = nil
       end>
   end
   object Uni_c_kart_pr: TUniQuery
@@ -693,7 +711,6 @@ object DM_Olap: TDM_Olap
     MasterSource = DS_data
     MasterFields = 'lsk'
     DetailFields = 'lsk'
-    Constraints = <>
     Left = 40
     Top = 600
     ParamData = <
@@ -701,11 +718,13 @@ object DM_Olap: TDM_Olap
         DataType = ftString
         Name = 'lsk'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'mg'
         ParamType = ptInput
+        Value = nil
       end>
   end
   object Uni_detail: TUniQuery
@@ -720,7 +739,6 @@ object DM_Olap: TDM_Olap
       '    :prep_refcursor);'
       'end;')
     MasterFields = 'lsk;mg'
-    Constraints = <>
     Left = 40
     Top = 656
     ParamData = <
@@ -728,16 +746,19 @@ object DM_Olap: TDM_Olap
         DataType = ftString
         Name = 'p_cd'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'mg'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'lsk'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftCursor

@@ -8,7 +8,7 @@
         <AppType>Application</AppType>
         <FrameworkType>VCL</FrameworkType>
         <ProjectVersion>19.2</ProjectVersion>
-        <Platform Condition="'$(Platform)'==''">Win32</Platform>
+        <Platform Condition="'$(Platform)'==''">Win64</Platform>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
         <Base>true</Base>
@@ -499,6 +499,10 @@
         <DCCReference Include="Unit_par_edit.pas">
             <Form>Form_par_edit</Form>
         </DCCReference>
+        <DCCReference Include="u_frmOLAP.pas">
+            <Form>frmOLAP</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -531,6 +535,12 @@
             <Deployment Version="3">
                 <DeployFile LocalName="Direct64.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win64">
+                        <RemoteName>Direct64.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Direct64.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
                         <RemoteName>Direct64.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>

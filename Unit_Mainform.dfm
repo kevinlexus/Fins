@@ -1086,6 +1086,10 @@ object Form_Main: TForm_Main
         Caption = '23.01.22 -  '#1042#1077#1088#1089#1080#1103' 3.0.0 64 bit'
       end
     end
+    object OLAP2: TMenuItem
+      Caption = 'OLAP'
+      OnClick = OLAP2Click
+    end
   end
   object ImageList1: TImageList
     BlendColor = clBtnFace

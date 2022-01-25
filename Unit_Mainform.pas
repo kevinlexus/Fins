@@ -222,6 +222,7 @@ type
     N7: TMenuItem;
     N23012230064bit1: TMenuItem;
     cxDefaultEditStyleController1: TcxDefaultEditStyleController;
+    OLAP2: TMenuItem;
     procedure N5Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure N7Click(Sender: TObject);
@@ -379,6 +380,7 @@ type
     procedure ProdJavaServer1Click(Sender: TObject);
     procedure N214Click(Sender: TObject);
     procedure ToolButton6Click(Sender: TObject);
+    procedure OLAP2Click(Sender: TObject);
   private
   public
     // выбранный период при переключении в архив
@@ -500,7 +502,8 @@ uses
   Unit_corr_sal, Unit_spr_comps, Unit_spr_props, Unit_lk_acc, Unit_auto_chrg,
   Unit_service_cash, u_frmLoadPrivs, u_frmPenCorr, u_frmLoadFias,
   u_frmProject, Unit_spr_proc_pay, u_frmAccFlow, u_frmLoadKartExt,
-  u_frmKartExt, Unit_changes_houses2;
+  u_frmKartExt, Unit_changes_houses2,
+  u_frmOLAP;
 
 {$R *.dfm}
 
@@ -1262,6 +1265,11 @@ begin
   if FF('Form_olap', 0) = 0 then
     Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('35', 1, 1);
+end;
+
+procedure TForm_Main.OLAP2Click(Sender: TObject);
+begin
+  Application.CreateForm(TfrmOLAP, frmOLAP);
 end;
 
 procedure TForm_Main.N71Click(Sender: TObject);

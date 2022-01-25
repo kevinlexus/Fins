@@ -139,7 +139,8 @@ uses
   u_frmSelObjects in 'u_frmSelObjects.pas' {frmSelObjects},
   Unit_par_edit in 'Unit_par_edit.pas' {Form_par_edit},
   Vcl.Themes,
-  Vcl.Styles;
+  Vcl.Styles,
+  u_frmOLAP in 'u_frmOLAP.pas' {frmOLAP};
 
 {$R *.RES}
 var
@@ -292,8 +293,8 @@ begin
   // загрузить Ini параметры
   //ShowMessage('0');
   loadIniPar;
-
   //ShowMessage('1');
+
   Form_Main.ProgressBar1.Position := 1;
   Form_Main.Update;
   try
@@ -301,17 +302,18 @@ begin
     DataModule1.OracleSession1.LogonUsername := User;
     DataModule1.OracleSession1.LogonPassword := Pass;
     DataModule1.OracleSession1.LogonDatabase := SID;
+  //ShowMessage('2');
 
 {    DataModule1.OracleSession1.LogonDatabase := 'ORCL';
 
     OracleHomeDir:='D:\oracle\client32\';
     OracleHomeName:='SOFTWARE\ORACLE\KEY_OraDb11g_home1';
     if DLLInit = dllOK then
-      showmessage('Г стартануло');
+      //ShowMessage('Г стартануло');
 
     lst:=OracleHomeList;
     if lst.Sorted then
-      ShowMessage('dd');
+      //ShowMessage('dd');
     ShowDOAInfo(DataModule1.OracleSession1);
 
     InitOCI;
@@ -327,7 +329,11 @@ begin
     //OCIDLL:='D:\oracle\client32\oci.dll';
 
 //    DataModule1.OracleSession1.Connected := true;
-    DataModule1.OracleSession1.LogOn;
+//    ShowDOAInfo(DataModule1.OracleSession1);
+//    DataModule1.OracleSession1.LogOn;
+
+DataModule1.OracleSession1.Connected := true;
+  //ShowMessage('3');
 
     if DataModule1.OracleSession1.StatementCache = True then
     begin
@@ -356,18 +362,19 @@ begin
     end;
   end;
 
-  //ShowMessage('2');
+  //ShowMessage('4');
+
   Application.CreateForm(TDM_Olap, DM_Olap);
   Application.CreateForm(TDM_Bill, DM_Bill);
   Application.CreateForm(TDM_Bill2, DM_Bill2);
 
-  //ShowMessage('3');
+  //ShowMessage('5');
   loadKKMPar;
-  //ShowMessage('4');
+  //ShowMessage('6');
 
   Form_Main.OracleEvent1.Start;
   Form_Main.User := User;
-  //ShowMessage('5');
+  //ShowMessage('7');
 
     // UNIDAC сессия
   DataModule1.UniConnection1.Disconnect;
@@ -401,7 +408,7 @@ begin
     serverIp + ':' + serverPort + ':' + serverSID;
   DataModule1.UniConnection1.Connect;
 
-  //ShowMessage('6');
+  //ShowMessage('8');
     // права пользователей
   DataModule1.UniTablePriveleges.ParamByName('user_name').AsString :=
     UpperCase(User);
@@ -421,7 +428,7 @@ begin
 //    Form_Main.CoolTrayIcon1.ShowTaskbarIcon;
   end;
 
-  //ShowMessage('7');
+  //ShowMessage('9');
   Form_main.OD_params.Active := true;
 
   Form_main.currentPeriod := Form_main.OD_params.FieldByName('period').AsString;
@@ -477,13 +484,13 @@ begin
   // Отображать ли меню по выполнению плана
   Form_Main.N25.Enabled := false;
 
-  //ShowMessage('8');
+  //ShowMessage('10');
     //загружаем параметры для сессии
   DataModule1.UniStoredProc1.StoredProcName := 'scott.utils.prep_users_par';
   DataModule1.UniStoredProc1.Params.Clear;
   DataModule1.UniStoredProc1.ExecProc;
 
-  //ShowMessage('9');
+  //ShowMessage('11');
   Form_Main.ProgressBar1.Position := 3;
   Form_Main.Update;
 
@@ -503,7 +510,7 @@ begin
   DataModule1.OD_usl.Active := true;
   DataModule1.OD_sch_el.Active := true;
 
-  //ShowMessage('10');
+  //ShowMessage('12');
     // загрузить U_LIST в память
   Utils.loadListIdCd(Form_main.uList);
 
@@ -524,7 +531,7 @@ begin
     Form_alert_exit.ShowModal;
   end;
 
-  //ShowMessage('11');
+  //ShowMessage('13');
   if
     ((DataModule1.OraclePackage1.CallIntegerFunction('scott.INIT.get_have_splash',
     [parNone]) = 1) or
