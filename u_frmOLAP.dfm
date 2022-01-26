@@ -92,6 +92,14 @@ object frmOLAP: TfrmOLAP
       TabOrder = 1
       OnClick = Button2Click
     end
+    object Button3: TButton
+      Left = 1040
+      Top = 8
+      Width = 75
+      Height = 25
+      Caption = 'Cube'
+      TabOrder = 2
+    end
   end
   object UniQuery1: TUniQuery
     Connection = DataModule1.UniConnection1
@@ -99,12 +107,12 @@ object frmOLAP: TfrmOLAP
       
         'select u.nm, o.name, t.* from scott.xitog3_lsk t join scott.t_or' +
         'g o on t.org=o.id join scott.usl u on t.usl=u.usl')
-    Left = 56
-    Top = 240
+    Left = 8
+    Top = 56
   end
   object DataSource1: TDataSource
     DataSet = UniQuery1
-    Left = 128
-    Top = 240
+    Left = 56
+    Top = 56
   end
 end

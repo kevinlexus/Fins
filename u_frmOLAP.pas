@@ -2,13 +2,14 @@ unit u_frmOLAP;
 
 interface
 
-uses Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
-  System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
-  fcxControl, fcxZone, fcxCustomGrid, fcxCubeGrid, fcxComponent, fcxCube,
-  cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxClasses,
-  cxCustomData, cxStyles, cxEdit, dxSkinsCore, dxSkinsDefaultPainters, Data.DB,
-  MemDS, DBAccess, Uni, cxCustomPivotGrid, cxPivotGrid, DM_module1,
-  cxDBPivotGrid, cxExportPivotGridLink, Vcl.ExtCtrls, Vcl.StdCtrls;
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, fcxControl,
+  fcxZone, fcxCustomGrid, fcxCubeGrid, fcxComponent, fcxCube, cxGraphics,
+  cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxClasses, cxCustomData,
+  cxStyles, cxEdit, dxSkinsCore, dxSkinsDefaultPainters, Data.DB, MemDS,
+  DBAccess, Uni, cxCustomPivotGrid, cxPivotGrid, DM_module1, cxDBPivotGrid,
+  cxExportPivotGridLink, Vcl.ExtCtrls, Vcl.StdCtrls, fcxDataSource;
 
 type
   TfrmOLAP = class(TForm)
@@ -24,6 +25,7 @@ type
     Panel1: TPanel;
     Button1: TButton;
     Button2: TButton;
+    Button3: TButton;
     procedure FormCreate(Sender: TObject);
     procedure ExportGrid(aGrid: TcxCustomPivotGrid);
     procedure Button1Click(Sender: TObject);
@@ -33,7 +35,9 @@ type
   public { Public declarations }
   end;
 
-var frmOLAP: TfrmOLAP;
+var
+  frmOLAP: TfrmOLAP;
+
 
 implementation
 
@@ -41,7 +45,7 @@ implementation
 
 procedure TfrmOLAP.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
- Action:=caFree;
+  Action := caFree;
 end;
 
 procedure TfrmOLAP.FormCreate(Sender: TObject);
@@ -52,7 +56,7 @@ end;
 
 procedure TfrmOLAP.Button1Click(Sender: TObject);
 begin
- ExportGrid(cxDBPivotGrid1);
+  ExportGrid(cxDBPivotGrid1);
 end;
 
 procedure TfrmOLAP.Button2Click(Sender: TObject);
@@ -61,38 +65,20 @@ var
   list: TStringList;
 begin
   GetMem(p, 100);
-  list:=TStringList.Create;
+  list := TStringList.Create;
 
 end;
 
 procedure TfrmOLAP.ExportGrid(aGrid: TcxCustomPivotGrid);
-var SaveDialog: TSaveDialog;
+var
+  fileName: string;
 begin
-  if not Assigned(aGrid) then Exit;
-  SaveDialog := TSaveDialog.Create(self);
-  try
-    SaveDialog.Name := 'SaveDialog';
-    SaveDialog.DefaultExt := 'XLS';
-    SaveDialog.Filter :=
-      'MS-Excel-Files (*.XLS)|*.XLS|XML-Files (*.XML)|*.HTM|HTML-Files (*.HTM)|*.HTM|Text-Files (*.TXT)|*.TXT|All Files (*.*)|*.*';
-    SaveDialog.Options := [ofOverwritePrompt, ofHideReadOnly, ofPathMustExist];
-    if SaveDialog.Execute then
-      if SaveDialog.FileName <> '' then begin
-        if (Pos('.XLS', UpperCase(SaveDialog.FileName))
-          = Length(SaveDialog.FileName) - 3) then
-            cxExportPivotGridToExcel(SaveDialog.FileName, aGrid)
-        else if (Pos('.XML', UpperCase(SaveDialog.FileName))
-          = Length(SaveDialog.FileName) - 3) then
-            cxExportPivotGridToXML(SaveDialog.FileName, aGrid)
-        else if ((Pos('.HTM', UpperCase(SaveDialog.FileName))
-          = Length(SaveDialog.FileName) - 3) or
-          (Pos('.HTML', UpperCase(SaveDialog.FileName))
-          = Length(SaveDialog.FileName) - 4)) then
-            cxExportPivotGridToHTML(SaveDialog.FileName, aGrid)
-        else cxExportPivotGridToText(SaveDialog.FileName, aGrid);
-      end;
-  finally SaveDialog.Free;
-  end;
+  if not Assigned(aGrid) then
+    Exit;
+  fileName := 'd:\temp\4\check.xls';
+  cxExportPivotGridToExcel(fileName, aGrid);
+  Application.MessageBox(PWideChar('Выгружено в' + fileName), 'Внимание!', MB_OK + MB_ICONINFORMATION + MB_TOPMOST);
 end;
 
 end.
+

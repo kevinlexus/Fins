@@ -10,7 +10,8 @@ uses
   cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
   cxDBData, cxCheckBox, cxGridLevel, cxGridCustomTableView,
   cxGridTableView, cxGridDBTableView, cxClasses, cxGridCustomView, cxGrid,
-  cxContainer, cxTextEdit, cxMemo;
+  cxContainer, cxTextEdit, cxMemo, dxSkinsCore, dxSkinsDefaultPainters,
+  dxDateRanges;
 
 type
   TForm_auto_chrg = class(TForm)
