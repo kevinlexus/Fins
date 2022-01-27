@@ -450,7 +450,7 @@ object Form_tree_objects: TForm_tree_objects
     TabOrder = 2
     object Button3: TButton
       Left = 0
-      Top = 2
+      Top = 0
       Width = 137
       Height = 22
       Caption = #1042#1099#1073#1088#1072#1090#1100'>>'
@@ -459,7 +459,7 @@ object Form_tree_objects: TForm_tree_objects
     end
     object Button2: TButton
       Left = 137
-      Top = 2
+      Top = 0
       Width = 152
       Height = 22
       Caption = #1044#1086#1073#1072#1074#1080#1090#1100' +>>'

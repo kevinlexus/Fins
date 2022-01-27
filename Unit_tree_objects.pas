@@ -4,37 +4,16 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, DBCtrls, DB, OracleData, Buttons, Utils,
-  Oracle,
-  MSXML2_TLB, ComObj, Menus, frxClass,
-  frxDBSet, ExtCtrls,
-  ComCtrls,  cxControls,
-  
-  cxMemo, cxGraphics, 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  cxClasses, 
-  cxGridTableView, cxGridDBTableView, Uni,
-  cxTL, cxDBTL, cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit,
-  cxCustomData, cxStyles, cxMaskEdit, cxCheckBox, cxImageComboBox,
-  cxTLdxBarBuiltInMenu, cxInplaceContainer, cxTLData, cxTextEdit, ToolWin,
-  Grids, Mask, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit,
-  cxDBLookupComboBox, cxFilter, cxData, cxDataStorage, cxNavigator,
-  cxDBData, cxGridCustomTableView, cxGridLevel, cxGridCustomView, cxGrid,
-  dxSkinsCore, dxSkinsDefaultPainters, dxDateRanges;
+  Dialogs, StdCtrls, DBCtrls, DB, OracleData, Buttons, Utils, Oracle, MSXML2_TLB,
+  ComObj, Menus, frxClass, frxDBSet, ExtCtrls, ComCtrls, cxControls, cxMemo,
+  cxGraphics, cxClasses, cxGridTableView, cxGridDBTableView, Uni, cxTL, cxDBTL,
+  cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit, cxCustomData,
+  cxStyles, cxMaskEdit, cxCheckBox, cxImageComboBox, cxTLdxBarBuiltInMenu,
+  cxInplaceContainer, cxTLData, cxTextEdit, ToolWin, Grids, Mask, cxDropDownEdit,
+  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, cxFilter, cxData,
+  cxDataStorage, cxNavigator, cxDBData, cxGridCustomTableView, cxGridLevel,
+  cxGridCustomView, cxGrid, dxSkinsCore, dxSkinsDefaultPainters, dxDateRanges;
+
 type
   TForm_tree_objects = class(TForm)
     Panel1: TPanel;
@@ -90,13 +69,11 @@ type
     procedure LoadData(action_: Integer);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormEndDock(Sender, Target: TObject; X, Y: Integer);
-    procedure FormStartDock(Sender: TObject;
-      var DragObject: TDragDockObject);
+    procedure FormStartDock(Sender: TObject; var DragObject: TDragDockObject);
     procedure CheckBox5Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
-    procedure setAccess(rep_: string; have_current_: Integer;
-      two_periods_: Integer);
+    procedure setAccess(rep_: string; have_current_: Integer; two_periods_: Integer);
     procedure N1Click(Sender: TObject);
     procedure prepData;
     procedure Button2Click(Sender: TObject);
@@ -134,14 +111,14 @@ type
     err_, issum_, iscnt_, ishead_, isoem_: Integer;
     l_edt1, l_edt2, l_edt3, fldsum_: string;
     curX_, curY_: Integer;
+    function checkObjectsCount: Boolean;
+    function checkSelObj: Boolean;
+    function checkPeriod(det: Integer): Boolean;
   public
     flag_: Integer;
-    l_rep_name, l_frm_name, rep_cd_, period_str_, period_str2_, strr_, fname_,
-      frx_fname_: string;
+    l_rep_name, l_frm_name, rep_cd_, period_str_, period_str2_, strr_, fname_, frx_fname_: string;
     allow_, max_level_, can_detail_, rep_id_, sel_many_, //have_date_,
-    rep_type_, two_periods_, show_total_row, show_total_col,
-      first_time_, expand_row_, expand_col_,
-      show_paychk_, show_sel_org_, show_sel_oper_, show_deb_: Integer;
+    rep_type_, two_periods_, show_total_row, show_total_col, first_time_, expand_row_, expand_col_, show_paychk_, show_sel_org_, show_sel_oper_, show_deb_: Integer;
     OD_reports2: TOracleDataset;
     Cube_, Map_: TComponent;
     isAlreadyInPost, isTimerEvent: Boolean;
@@ -153,33 +130,35 @@ type
 var
   Form_tree_objects: TForm_tree_objects;
 
+
 implementation
 
-uses Unit_Form_olap, Unit_Mainform, Unit_status, DM_module1,
-  Unit_tree_par_edit, Unit_tarif_usl, ObjPar, ufDataModuleOlap;
+uses
+  Unit_Form_olap, Unit_Mainform, Unit_status, DM_module1, Unit_tree_par_edit,
+  Unit_tarif_usl, ObjPar, ufDataModuleOlap, u_frmOLAP, cxCustomPivotGrid, fcxTypes;
 
 {$R *.dfm}
 
 procedure TForm_tree_objects.prepData;
 begin
-  Application.CreateForm(TForm_status, Form_status);
-  Form_status.Update;
+// не включать! не любит данную форму!
+//  Application.CreateForm(TForm_status, Form_status);
+//  Form_status.Update;
   DM_Olap.Uni_data.Active := false;
   //Открываем зависимые датасеты, для отчетов
   //форма для контроля тарифов
 
-  if (rep_cd_ = '78') and
-    (DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger
-    = 3) then
+  //ShowMessage('step 0.1');
+  if (rep_cd_ = '78') and (DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger = 3) then
   begin
     DM_Olap.Uni_nabor_lsk.Active := True;
   end
-  else if (rep_cd_ <> '78') or ((rep_cd_ = '78') and
-    (DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger <> 3)) then
+  else if (rep_cd_ <> '78') or ((rep_cd_ = '78') and (DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger <> 3)) then
   begin
     DM_Olap.Uni_nabor_lsk.Active := False;
   end;
 
+  //ShowMessage('step 0.2');
   //Открываем зависимые датасеты, для отчетов
   //отчет - реестр для УСЗН
   if (rep_cd_ = '79') then
@@ -194,7 +173,6 @@ begin
     //DM_OLap.OD_c_kart_pr.Master := nil;
     //DM_OLap.Uni_c_kart_pr.Active := False;
 //  end;
-
   //Открываем зависимые датасеты, для отчетов
   //отчет - список для администрации
   if (rep_cd_ = '83') then
@@ -210,66 +188,56 @@ begin
     DM_OLap.Uni_detail.Active := False;
   end;
 
+  //ShowMessage('step 0.3');
   if cbbOrg.EditValue <> Null then
-    DM_Olap.Uni_data.Params.ParamByName('org_').Value :=
-      StrToInt(cbbOrg.EditValue)
+    DM_Olap.Uni_data.Params.ParamByName('org_').Value := StrToInt(cbbOrg.EditValue)
   else
     DM_Olap.Uni_data.Params.ParamByName('org_').Value := null;
 
   if cbbOper.EditValue <> Null then
-    DM_Olap.Uni_data.Params.ParamByName('oper_').AsString :=
-      cbbOper.EditValue
+    DM_Olap.Uni_data.Params.ParamByName('oper_').AsString := cbbOper.EditValue
   else
     DM_Olap.Uni_data.Params.ParamByName('oper_').Value := null;
 
   //Возможность детализации
   if can_detail_ = 1 then
   begin
-    DM_Olap.Uni_data.Params.ParamByName('det_').AsInteger :=
-      StrToInt(cbbDet.EditValue);
+    DM_Olap.Uni_data.Params.ParamByName('det_').AsInteger := StrToInt(cbbDet.EditValue);
 
   end;
 
+  //ShowMessage('step 0.4');
   DM_Olap.Uni_data.Params.ParamByName('cd_').AsString := rep_cd_;
 
   if CheckBox5.Checked = true then
   begin
     DM_Olap.Uni_data.Params.ParamByName('mg_').Value := null;
     DM_Olap.Uni_data.Params.ParamByName('mg1_').Value := null;
-    DM_Olap.Uni_data.Params.ParamByName('dat_').AsDate :=
-      DBLookupComboBox5.KeyValue;
-    DM_Olap.Uni_data.Params.ParamByName('dat1_').AsDate :=
-      DBLookupComboBox6.KeyValue;
+    DM_Olap.Uni_data.Params.ParamByName('dat_').AsDate := DBLookupComboBox5.KeyValue;
+    DM_Olap.Uni_data.Params.ParamByName('dat1_').AsDate := DBLookupComboBox6.KeyValue;
   end
   else
   begin
     DM_Olap.Uni_data.Params.ParamByName('dat_').Value := null;
     DM_Olap.Uni_data.Params.ParamByName('dat1_').Value := null;
-    DM_Olap.Uni_data.Params.ParamByName('mg_').AsString :=
-      DBLookupComboBox5.KeyValue;
+    DM_Olap.Uni_data.Params.ParamByName('mg_').AsString := DBLookupComboBox5.KeyValue;
     if two_periods_ = 1 then
-      DM_Olap.Uni_data.Params.ParamByName('mg1_').AsString :=
-        DBLookupComboBox6.KeyValue
+      DM_Olap.Uni_data.Params.ParamByName('mg1_').AsString := DBLookupComboBox6.KeyValue
     else
-      DM_Olap.Uni_data.Params.ParamByName('mg1_').AsString :=
-        DBLookupComboBox5.KeyValue;
+      DM_Olap.Uni_data.Params.ParamByName('mg1_').AsString := DBLookupComboBox5.KeyValue;
   end;
+  //ShowMessage('step 0.5');
 
   if DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger = 3 then
   begin
     if sel_many_ = 0 then
     begin
       // выбор одного объекта
-      DM_Olap.Uni_data.Params.ParamByName('reu_').AsString :=
-        DM_Olap.Uni_tree_objects.FieldByName('reu').AsString;
-      DM_Olap.Uni_data.Params.ParamByName('p_for_reu').AsString :=
-        DM_Olap.Uni_tree_objects.FieldByName('for_reu').AsString;
-      DM_Olap.Uni_data.Params.ParamByName('kul_').AsString :=
-        DM_Olap.Uni_tree_objects.FieldByName('kul').AsString;
-      DM_Olap.Uni_data.Params.ParamByName('nd_').AsString :=
-        DM_Olap.Uni_tree_objects.FieldByName('nd').AsString;
-      DM_Olap.Uni_data.Params.ParamByName('p_house').AsInteger :=
-        DM_Olap.Uni_tree_objects.FieldByName('fk_house').AsInteger;
+      DM_Olap.Uni_data.Params.ParamByName('reu_').AsString := DM_Olap.Uni_tree_objects.FieldByName('reu').AsString;
+      DM_Olap.Uni_data.Params.ParamByName('p_for_reu').AsString := DM_Olap.Uni_tree_objects.FieldByName('for_reu').AsString;
+      DM_Olap.Uni_data.Params.ParamByName('kul_').AsString := DM_Olap.Uni_tree_objects.FieldByName('kul').AsString;
+      DM_Olap.Uni_data.Params.ParamByName('nd_').AsString := DM_Olap.Uni_tree_objects.FieldByName('nd').AsString;
+      DM_Olap.Uni_data.Params.ParamByName('p_house').AsInteger := DM_Olap.Uni_tree_objects.FieldByName('fk_house').AsInteger;
       DM_Olap.Uni_data.Params.ParamByName('var_').AsInteger := 3;
     end;
   end
@@ -278,10 +246,8 @@ begin
     if sel_many_ = 0 then
     begin
       // выбор одного объекта
-      DM_Olap.Uni_data.Params.ParamByName('reu_').AsString :=
-        DM_Olap.Uni_tree_objects.FieldByName('reu').AsString;
-      DM_Olap.Uni_data.Params.ParamByName('p_for_reu').AsString :=
-        DM_Olap.Uni_tree_objects.FieldByName('for_reu').AsString;
+      DM_Olap.Uni_data.Params.ParamByName('reu_').AsString := DM_Olap.Uni_tree_objects.FieldByName('reu').AsString;
+      DM_Olap.Uni_data.Params.ParamByName('p_for_reu').AsString := DM_Olap.Uni_tree_objects.FieldByName('for_reu').AsString;
       DM_Olap.Uni_data.Params.ParamByName('var_').AsInteger := 2;
     end;
   end
@@ -290,8 +256,7 @@ begin
     if sel_many_ = 0 then
     begin
       // выбор одного объекта
-      DM_Olap.Uni_data.Params.ParamByName('trest_').AsString :=
-        DM_Olap.Uni_tree_objects.FieldByName('trest').AsString;
+      DM_Olap.Uni_data.Params.ParamByName('trest_').AsString := DM_Olap.Uni_tree_objects.FieldByName('trest').AsString;
       DM_Olap.Uni_data.Params.ParamByName('var_').AsInteger := 1;
     end;
   end
@@ -299,12 +264,15 @@ begin
   begin
     DM_Olap.Uni_data.Params.ParamByName('var_').AsInteger := 0;
   end;
+  //ShowMessage('step 0.6');
 
   DM_Olap.Uni_Data.Active := False;
   DM_Olap.Uni_Data.Active := True;
+  //ShowMessage('step 0.7');
   cxm1.Lines.Clear;
   cxm1.Lines.Text := 'Получено строк:' + IntToStr(DM_Olap.Uni_Data.RecordCount);
-  Form_status.Close;
+  //ShowMessage('step 0.8');
+  //Form_status.Close;
 end;
 
 procedure TForm_tree_objects.saveXML;
@@ -382,8 +350,7 @@ begin
   end;
 end;
 
-procedure TForm_tree_objects.FormClose(Sender: TObject;
-  var Action: TCloseAction);
+procedure TForm_tree_objects.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Action := caFree;
 end;
@@ -391,7 +358,7 @@ end;
 procedure TForm_tree_objects.LoadData(action_: Integer);
 var
   str1_: string;
-  det, I, l_cnt: Integer;
+  det: Integer;
 begin
   // сохранить уровень детализации
   if cbbDet.EditValue <> Null then
@@ -400,118 +367,31 @@ begin
     // не установлен
     det := -1;
 
-  // проверка кол-ва выбранных объектов
-  if Form_tree_objects.sel_many_ = 0 then
-  begin
-    l_cnt := 0;
-    for I := 0 to cxDBTreeList1.AbsoluteCount - 1 do
-    begin
-      if (cxDBTreeList1.AbsoluteItems[I].Values[2] <> 1) then
-      begin
-        l_cnt := l_cnt + 1;
-        if l_cnt > 1 then
-        begin
-          Application.MessageBox('Необходимо выбрать только один объект!',
-            'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
-          Exit;
-        end;
-      end;
-    end;
-  end;
-
-  if sel_many_ = 0 then
-  begin
-    // найти выбранный объект
-    if DM_Olap.Uni_tree_objects.Locate('sel', 0, []) then
-    begin
-      // проверить уровень
-      if (DM_Olap.Uni_tree_objects.FieldByName('FOR_REU').AsString <> '') and
-        (DBLookupComboBox5.KeyValue < 201907) then
-      begin
-        Application.MessageBox('Данный уровень не доступен при выборке данных до 01.07.2019',
-          'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
-        Exit;
-      end;
-    end
-    else
-    begin
-      Application.MessageBox('Не найден выбранный объект',
-        'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
-      Exit;
-    end;
-  end;
-
   //Путь выгрузки
-  str1_ := DataModule1.OraclePackage1.CallStringFunction
-    ('scott.Utils.get_str_param', ['Путь1']);
+  str1_ := DataModule1.OraclePackage1.CallStringFunction('scott.Utils.get_str_param', ['Путь1']);
+
+  if checkObjectsCount then
+    Exit;
+  if checkSelObj then
+    Exit;
+
   if allow_ = 0 then
   begin
-    exit; //выполняется загрузка куба
+    Exit; //выполняется загрузка куба
   end;
 
   //Сохраняем выбор пользователя объектов для отчёта (домов в частности)
   if DM_Olap.Uni_tree_objects.State <> dsBrowse then
     DM_Olap.Uni_tree_objects.Post;
 
-  if (two_periods_ <> 2) and ((DBLookupComboBox5.KeyValue = null) or
-    ((DBLookupComboBox6.KeyValue = null) and (two_periods_ = 1))) then
-  begin
-    msg2('Не выбран период отчета!', 'Внимание!',
-      MB_OK + MB_ICONSTOP);
-    SetSize(1);
+  if checkPeriod(det) then
     Exit;
-  end;
-
-  if CheckBox5.Checked = True then
-  begin
-    //период - даты
-    if DBLookupComboBox5.KeyValue = DBLookupComboBox6.KeyValue then
-      period_str_ := 'за ' + DM_OLap.OD_dat1.FieldByName('mg1').AsString
-    else
-      period_str_ := 'за период с ' + DM_OLap.OD_dat1.FieldByName('mg1').AsString
-        +
-        ' по ' +
-        DM_OLap.OD_dat2.FieldByName('mg1').AsString;
-  end
-  else
-  begin
-    //период - месяцы
-    if DBLookupComboBox5.KeyValue = DBLookupComboBox6.KeyValue then
-      period_str_ := 'за ' + DM_OLap.OD_mg1.FieldByName('mg2').AsString
-    else if DBLookupComboBox6.KeyValue = null then
-      period_str_ := 'за ' + DM_OLap.OD_mg1.FieldByName('mg2').AsString
-    else
-      period_str_ := 'за период с ' + DM_OLap.OD_mg1.FieldByName('mg1').AsString
-        + ' по '
-        +
-        DM_OLap.OD_mg2.FieldByName('mg1').AsString;
-  end;
-
-  if ((DBLookupComboBox5.KeyValue >
-    DBLookupComboBox6.KeyValue) and (two_periods_ = 1)) then
-  begin
-    msg2('Некорректный период отчета!', 'Внимание!',
-      MB_OK + MB_ICONSTOP);
-    SetSize(1);
-    Exit;
-  end;
-
-  if (can_detail_ = 1) and (det = -1) then
-  begin
-    msg2('Не установлен уровень детализации!', 'Внимание!',
-      MB_OK + MB_ICONSTOP);
-    SetSize(1);
-    Exit;
-  end;
 
   OD_reports2 := TOracleDataset.Create(nil);
   with OD_reports2 do
   begin
     Session := DM_OLap.OD_dat1.Session;
-    SQL.Text := 'select l.rowid, l.xmltext, ' +
-      'r.name, nvl(r.fk_type,0) as fk_type ' +
-      'from scott.rep_levels l, scott.reports r ' +
-      'where r.id=:id_ and r.id=l.fk_rep_id and l.level_id=:level_id_';
+    SQL.Text := 'select l.rowid, l.xmltext, ' + 'r.name, nvl(r.fk_type,0) as fk_type ' + 'from scott.rep_levels l, scott.reports r ' + 'where r.id=:id_ and r.id=l.fk_rep_id and l.level_id=:level_id_';
     DeclareVariable('id_', otInteger);
     DeclareVariable('level_id_', otInteger);
     try
@@ -519,8 +399,7 @@ begin
       SetVariable('id_', rep_id_);
       //Может ли детализироваться?
       if can_detail_ = 0 then
-        SetVariable('level_id_',
-          DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger)
+        SetVariable('level_id_', DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger)
       else
         SetVariable('level_id_', det);
       Open;
@@ -534,8 +413,7 @@ begin
   //поиск выбранного элемента
   if sel_many_ = 0 then
   begin
-    if DM_Olap.Uni_tree_objects.Locate('sel', 0, [loCaseInsensitive]) = False
-      then
+    if DM_Olap.Uni_tree_objects.Locate('sel', 0, [loCaseInsensitive]) = False then
     begin
       msg2('Не найден выбранный элемент!', 'Внимание!', MB_OK + MB_ICONERROR);
       Exit;
@@ -550,8 +428,7 @@ begin
     begin
       with Form_tarif_usl do
       begin
-        Form_tarif_usl.setType(DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger,
-         DM_Olap.Uni_tree_objects.FieldByName('name').AsString);
+        Form_tarif_usl.setType(DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger, DM_Olap.Uni_tree_objects.FieldByName('name').AsString);
         if DM_OLap.OD_mg1.FieldByName('mg').AsString = Form_main.cur_mg_ then
         begin
           //Выбран текущий период
@@ -570,77 +447,68 @@ begin
   end
   else
   begin
-    Form_olap.rep_name_ := l_rep_name;
-    //Отчет выполнен по оптимизированной технологии "star" (связка таблиц звездой)
-    if two_periods_ = 1 then
+    if (rep_type_ = 0) then
     begin
-      Form_olap.Caption := Form_olap.rep_name_ +
-        ' за период с ' + DBLookupComboBox5.Text + ' по ' +
-        DBLookupComboBox6.Text;
-      Form_olap.rep_name_ := Form_olap.rep_name_ +
-        ' за период с ' + DBLookupComboBox5.Text + ' по ' +
-        DBLookupComboBox6.Text;
-    end
-    else
-    begin
-      Form_olap.Caption := Form_olap.rep_name_ +
-        ' за ' + DBLookupComboBox5.Text;
-      Form_olap.rep_name_ := Form_olap.rep_name_ +
-        ' за ' + DBLookupComboBox5.Text;
+      ShowMessage('Включить позже блок #1');
+    {
+      Form_olap.rep_name_ := l_rep_name;
+      if two_periods_ = 1 then
+      begin
+        Form_olap.Caption := Form_olap.rep_name_ + ' за период с ' + DBLookupComboBox5.Text + ' по ' + DBLookupComboBox6.Text;
+        Form_olap.rep_name_ := Form_olap.rep_name_ + ' за период с ' + DBLookupComboBox5.Text + ' по ' + DBLookupComboBox6.Text;
+      end
+      else
+      begin
+        Form_olap.Caption := Form_olap.rep_name_ + ' за ' + DBLookupComboBox5.Text;
+        Form_olap.rep_name_ := Form_olap.rep_name_ + ' за ' + DBLookupComboBox5.Text;
+      end;
+      }
     end;
 
     //наименование Объекта в отчёте
-    obj_ := '''' + ', по ' +
-      DM_Olap.Uni_tree_objects.FieldByName('name').AsString +
-      '''';
+    obj_ := '''' + ', по ' + DM_Olap.Uni_tree_objects.FieldByName('name').AsString + '''';
     if DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger = 3 then
-      objexcel_ := ', по дому ' +
-        DM_Olap.Uni_tree_objects.FieldByName('name').AsString
-    else if DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger in [0,
-      1, 2] then
-      objexcel_ := ', по Организации ' +
-        DM_Olap.Uni_tree_objects.FieldByName('name').AsString;
+      objexcel_ := ', по дому ' + DM_Olap.Uni_tree_objects.FieldByName('name').AsString
+    else if DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger in [0, 1, 2] then
+      objexcel_ := ', по Организации ' + DM_Olap.Uni_tree_objects.FieldByName('name').AsString;
 
     if (rep_type_ = 0) or (rep_type_ = 5) then
     begin
-      Form_olap.Button3.Visible := true;
+      ShowMessage('Включить позже блок #2');
+//      Form_olap.Button3.Visible := true;
     end;
 
-    if (DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger <=
-      max_level_) and (rep_type_ = 0) then
+    if (DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger <= max_level_) then
     begin
+      if (rep_type_ = 0) then
+      begin
       // OLAP отчет
-      repTypeOlap(action_);
-    end
-    else if (DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger <=
-      max_level_) and (rep_type_ = 1) then
-    begin
+        repTypeOlap(action_);
+      end
+      else if (rep_type_ = 1) then
+      begin
       //Fastreport отчет
-      repTypeFastrep(rep_cd_);
-    end
-    else if (DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger <=
-      max_level_) and (rep_type_ = 2) then
-    begin
+        repTypeFastrep(rep_cd_);
+      end
+      else if (rep_type_ = 2) then
+      begin
       // DBF отчет
-      repTypeDBF(str1_, fname_);
-    end
-    else if (DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger <=
-      max_level_) and (rep_type_ = 3) then
-    begin
+        repTypeDBF(str1_, fname_);
+      end
+      else if (rep_type_ = 3) then
+      begin
       // TXT отчет
-      repTypeTXT(str1_, fname_);
-    end
-
-    else if (DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger <=
-      max_level_) and (rep_type_ = 5) then
-    begin
+        repTypeTXT(str1_, fname_);
+      end
+      else if (rep_type_ = 5) then
+      begin
       // GRID отчет
-      repTypeGrid;
-    end
-    else
-    begin
-      msg2('Отсутствует уровень детализации!', 'Внимание!',
-        MB_OK + MB_ICONSTOP)
+        repTypeGrid;
+      end
+      else
+      begin
+        msg2('Отсутствует уровень детализации!', 'Внимание!', MB_OK + MB_ICONSTOP)
+      end;
     end;
 
   end;
@@ -652,6 +520,29 @@ procedure TForm_tree_objects.repTypeOlap(action_: Integer);
 var
   i: Integer;
 begin
+  if FF('frmOLAP', 0) = 1 then
+  begin
+    //OLAP отчет
+     prepData;
+     frmOlap.fcxDataSource1.DeleteFields;
+     frmOlap.fcxCube1.Open;
+     with frmOlap.fcxSlice1 do
+     begin
+     BeginUpdate;
+     // todo сделать настройку столбцов, в зависимости от типа отчета
+     XAxisContainer.AddDimension(SliceFieldByName['name_org'], 'name_org','Организация');
+     YAxisContainer.AddDimension(SliceFieldByName['name_usl'], 'name_usl','Услуга');
+     YAxisContainer.AddDimension(SliceFieldByName['status'], 'status','Статус');
+     YAxisContainer.AddDimension(SliceFieldByName['type'], 'type','Тип');
+     XAxisContainer.AddMeasuresField;
+     MeasuresContainer.AddMeasure(SliceFieldByName['charges'],'charges', 'Начислено', af_Sum);
+     MeasuresContainer.AddMeasure(SliceFieldByName['changes'],'changes', 'Перерасчет', af_Sum);
+     MeasuresContainer.AddMeasure(SliceFieldByName['outebet'],'outebet', 'Исх.деб.сал.', af_Sum);
+
+     EndUpdate;
+     end;
+  end;
+
 {###  if FF('Form_olap', 0) = 1 then
   begin
     //OLAP отчет
@@ -740,8 +631,7 @@ begin
 
   if DM_Olap.Uni_data.RecordCount = 0 then
   begin
-    msg2('Нет информации!', 'Внимание!',
-      MB_OK + MB_ICONSTOP);
+    msg2('Нет информации!', 'Внимание!', MB_OK + MB_ICONSTOP);
     SetSize(1);
   end
   else
@@ -753,19 +643,16 @@ begin
       //отчет, базирующийся на одном, универсальном датасете
       fr_ := Form_olap.FindComponent('frxReport_base');
       try
-        TfrxReport(fr_).LoadFromFile(Form_main.exepath_ + '\' + frx_fname_,
-          true);
+        TfrxReport(fr_).LoadFromFile(Form_main.exepath_ + '\' + frx_fname_, true);
       except
-        msg2('Не найден файл отчета ' + frx_fname_, 'Внимание!',
-          MB_OK + MB_ICONSTOP);
+        msg2('Не найден файл отчета ' + frx_fname_, 'Внимание!', MB_OK + MB_ICONSTOP);
         Exit;
       end;
     end;
 
     if fr_ = nil then
     begin
-      msg2('Не найден отчет ' + 'frxReport' + rep_cd_, 'Внимание!',
-        MB_OK + MB_ICONSTOP);
+      msg2('Не найден отчет ' + 'frxReport' + rep_cd_, 'Внимание!', MB_OK + MB_ICONSTOP);
       Exit;
     end;
 
@@ -778,20 +665,16 @@ begin
     if (rep_cd_ = '64') then
     begin
       //Установить период
-      TfrxReport(fr_).Variables['dt1_'] :=
-        getS_date_param('REP_DT_BR1');
-      TfrxReport(fr_).Variables['dt2_'] :=
-        getS_date_param('REP_DT_BR2');
+      TfrxReport(fr_).Variables['dt1_'] := getS_date_param('REP_DT_BR1');
+      TfrxReport(fr_).Variables['dt2_'] := getS_date_param('REP_DT_BR2');
 
     end;
 
     if (rep_cd_ = '73') or (rep_cd_ = '74') then
     begin
       //Установить период
-      TfrxReport(fr_).Variables['dt1_'] :=
-        getS_date_param('REP_DT_PROP1');
-      TfrxReport(fr_).Variables['dt2_'] :=
-        getS_date_param('REP_DT_PROP2');
+      TfrxReport(fr_).Variables['dt1_'] := getS_date_param('REP_DT_PROP1');
+      TfrxReport(fr_).Variables['dt2_'] := getS_date_param('REP_DT_PROP2');
 
       //Установить параметр отчета
       if getS_list_param('REP_PROP_VAR') = 0 then
@@ -804,11 +687,9 @@ begin
     begin
       //Установить кол-во месяцев или рублей
       if (getS_list_param('REP_DEB_VAR') = 0) then
-        TfrxReport(fr_).Variables['txt_'] :=
-          QuotedStr(FloatToStr(getS_double_param('REP_DEB_MONTH')) + ' мес')
+        TfrxReport(fr_).Variables['txt_'] := QuotedStr(FloatToStr(getS_double_param('REP_DEB_MONTH')) + ' мес')
       else
-        TfrxReport(fr_).Variables['txt_'] :=
-          QuotedStr(FloatToStr(getS_double_param('REP_DEB_SUMMA')) + ' руб.')
+        TfrxReport(fr_).Variables['txt_'] := QuotedStr(FloatToStr(getS_double_param('REP_DEB_SUMMA')) + ' руб.')
     end;
 
     if rep_cd_ = '61' then
@@ -816,25 +697,21 @@ begin
       //наименование операции в отчёте
       if cbbOper.EditValue = '' then
       begin
-        TfrxReport(fr_).Variables['oper_'] := '''' + ', по всем операциям' +
-          '''';
+        TfrxReport(fr_).Variables['oper_'] := '''' + ', по всем операциям' + '''';
       end
       else
       begin
-        TfrxReport(fr_).Variables['oper_'] := '''' + ', по операции: ' +
-          cbbOper.Text + '''';
+        TfrxReport(fr_).Variables['oper_'] := '''' + ', по операции: ' + cbbOper.Text + '''';
       end;
 
       //наименование организации в отчёте
       if cbbOrg.EditValue <> '' then
       begin
-        TfrxReport(fr_).Variables['org_'] := '''' + ', по организации: ' +
-          cbbOrg.Text + '''';
+        TfrxReport(fr_).Variables['org_'] := '''' + ', по организации: ' + cbbOrg.Text + '''';
       end
       else
       begin
-        TfrxReport(fr_).Variables['org_'] := '''' + ', по всем организациям'
-          + '''';
+        TfrxReport(fr_).Variables['org_'] := '''' + ', по всем организациям' + '''';
       end;
     end;
 
@@ -868,8 +745,7 @@ begin
 
   if DM_Olap.Uni_data.RecordCount = 0 then
   begin
-    msg2('Нет информации!', 'Внимание!',
-      MB_OK + MB_ICONSTOP);
+    msg2('Нет информации!', 'Внимание!', MB_OK + MB_ICONSTOP);
     SetSize(1);
   end
   else
@@ -877,16 +753,14 @@ begin
     Application.CreateForm(TForm_status, Form_status);
     Form_status.Update;
     //Выгрузка в DBF
-      ShowMessage('Обратиться к разработчику!');
+    ShowMessage('Обратиться к разработчику!');
     //err_ := exp_to_dbf(DM_Olap.Uni_data, path + fname);
     Form_status.close;
     SetSize(1);
     if err_ = 0 then
-      msg2('Выгружено в ' + path + fname, 'Внимание', MB_OK +
-        MB_ICONINFORMATION)
+      msg2('Выгружено в ' + path + fname, 'Внимание', MB_OK + MB_ICONINFORMATION)
     else
-      msg2('Произошли ошибки во время выгрузки файла', 'Внимание', MB_OK +
-        MB_ICONINFORMATION);
+      msg2('Произошли ошибки во время выгрузки файла', 'Внимание', MB_OK + MB_ICONINFORMATION);
   end;
 end;
 
@@ -901,8 +775,7 @@ begin
 
   if DM_Olap.Uni_data.RecordCount = 0 then
   begin
-    msg2('Нет информации!', 'Внимание!',
-      MB_OK + MB_ICONSTOP);
+    msg2('Нет информации!', 'Внимание!', MB_OK + MB_ICONSTOP);
     SetSize(1);
   end
   else
@@ -910,18 +783,13 @@ begin
     Application.CreateForm(TForm_status, Form_status);
     Form_status.Update;
     //Выгрузка в TXT
-    err_ := exp_to_txt(DM_Olap.Uni_data, path, fname, fldsum_, issum_,
-      iscnt_,
-      ishead_,
-      isoem_, DM_Olap.Uni_tree_objects.FieldByName('bank_cd').AsString);
+    err_ := exp_to_txt(DM_Olap.Uni_data, path, fname, fldsum_, issum_, iscnt_, ishead_, isoem_, DM_Olap.Uni_tree_objects.FieldByName('bank_cd').AsString);
     Form_status.close;
     SetSize(1);
     if err_ = 0 then
-      msg2('Выгружено в ' + path + fname, 'Внимание', MB_OK +
-        MB_ICONINFORMATION)
+      msg2('Выгружено в ' + path + fname, 'Внимание', MB_OK + MB_ICONINFORMATION)
     else
-      msg2('Произошли ошибки во время выгрузки файла', 'Внимание', MB_OK +
-        MB_ICONINFORMATION);
+      msg2('Произошли ошибки во время выгрузки файла', 'Внимание', MB_OK + MB_ICONINFORMATION);
   end;
 end;
 
@@ -936,8 +804,7 @@ begin
 
   if DM_Olap.Uni_data.RecordCount = 0 then
   begin
-    msg2('Нет информации!', 'Внимание!',
-      MB_OK + MB_ICONSTOP);
+    msg2('Нет информации!', 'Внимание!', MB_OK + MB_ICONSTOP);
     SetSize(1);
   end
   else
@@ -952,8 +819,7 @@ begin
   end;
 end;
 
-procedure TForm_tree_objects.FormEndDock(Sender, Target: TObject; X,
-  Y: Integer);
+procedure TForm_tree_objects.FormEndDock(Sender, Target: TObject; X, Y: Integer);
 begin
   if Form_main.Panel2.DockClientCount = 0 then
   begin
@@ -965,8 +831,7 @@ begin
   end;
 end;
 
-procedure TForm_tree_objects.FormStartDock(Sender: TObject;
-  var DragObject: TDragDockObject);
+procedure TForm_tree_objects.FormStartDock(Sender: TObject; var DragObject: TDragDockObject);
 begin
   SetSize(1);
 end;
@@ -987,8 +852,7 @@ begin
   end;
 end;
 
-procedure TForm_tree_objects.setAccess(rep_: string; have_current_: Integer;
-  two_periods_: Integer);
+procedure TForm_tree_objects.setAccess(rep_: string; have_current_: Integer; two_periods_: Integer);
 begin
   DM_Olap.Uni_data.Active := false;
 
@@ -1009,19 +873,7 @@ begin
   with OD_reports2 do
   begin
     Session := DM_Olap.OD_dat1.Session;
-    SQL.Text := 'select r.id, r.maxlevel, nvl(r.can_detail,0) as can_detail,' +
-      'r.name, nvl(r.fk_type,0) as fk_type, nvl(r.expand_row,0) as expand_row, ' +
-      'nvl(r.expand_col,0) as expand_col, ' +
-      'nvl(r.show_sel_org,0) as show_sel_org, nvl(r.show_sel_oper,0) as show_sel_oper, ' +
-      'nvl(r.sel_many,0) as sel_many, ' +
-      'nvl(r.show_paychk,0) as show_paychk, ' +
-      'nvl(r.show_deb,0) as show_deb, ' +
-      'nvl(r.have_date,0) as have_date, ' +
-      'r.frx_fname, ' +
-      'r.fname, nvl(r.iscnt,0) as iscnt, nvl(r.issum,0) as issum, nvl(r.ishead,0) as ishead, r.fldsum, nvl(r.isoem,0) as isoem,  ' +
-      'r.frm_name, r.show_total_row, r.show_total_col ' +
-      'from scott.reports r ' +
-      'where r.cd=:cd_';
+    SQL.Text := 'select r.id, r.maxlevel, nvl(r.can_detail,0) as can_detail,' + 'r.name, nvl(r.fk_type,0) as fk_type, nvl(r.expand_row,0) as expand_row, ' + 'nvl(r.expand_col,0) as expand_col, ' + 'nvl(r.show_sel_org,0) as show_sel_org, nvl(r.show_sel_oper,0) as show_sel_oper, ' + 'nvl(r.sel_many,0) as sel_many, ' + 'nvl(r.show_paychk,0) as show_paychk, ' + 'nvl(r.show_deb,0) as show_deb, ' + 'nvl(r.have_date,0) as have_date, ' + 'r.frx_fname, ' + 'r.fname, nvl(r.iscnt,0) as iscnt, nvl(r.issum,0) as issum, nvl(r.ishead,0) as ishead, r.fldsum, nvl(r.isoem,0) as isoem,  ' + 'r.frm_name, r.show_total_row, r.show_total_col ' + 'from scott.reports r ' + 'where r.cd=:cd_';
     DeclareVariable('cd_', otString);
     try
       ClearVariables;
@@ -1052,8 +904,7 @@ begin
       l_frm_name := FieldByName('frm_name').AsString;
       l_rep_name := FieldByName('name').AsString;
       //подсказка, какой отчет
-      cxm1.Text := 'Отчет:' + l_rep_name + ' CD:' + rep_ + ' frx:'
-        + frx_fname_ + ' вывод в:' + fname_;
+      cxm1.Text := 'Отчет:' + l_rep_name + ' CD:' + rep_ + ' frx:' + frx_fname_ + ' вывод в:' + fname_;
       cxm1.Hint := cxm1.Text;
     finally
       Close;
@@ -1068,7 +919,7 @@ begin
   begin
     Form_tarif_usl.Close;
   end;
-  
+
   //Открытие-закрытие необходимых форм, в зависимости от типа отчета
   if rep_type_ = 4 then
   begin
@@ -1077,15 +928,21 @@ begin
       begin
         Application.CreateForm(TForm_tarif_usl, Form_tarif_usl);
       end;
-    if FF('Form_olap', 0) = 1 then
-      Form_olap.Close;
+  {  if FF('Form_olap', 0) = 1 then
+      Form_olap.Close;}
+    if FF('frmOLAP', 0) = 0 then
+      Application.CreateForm(TfrmOLAP, frmOLAP)
   end
   else
   begin
     if FF('Form_tarif_usl', 1) = 1 then
       Form_tarif_usl.Close;
-    if FF('Form_olap', 0) = 0 then
+
+{    if FF('Form_olap', 0) = 0 then
       Application.CreateForm(TForm_olap, Form_olap);
+ }
+    if FF('frmOLAP', 0) = 0 then
+      Application.CreateForm(TfrmOLAP, frmOLAP);
 
     //если ГИС ЖКХ, настроить кнопки
     if rep_cd_ = '94' then
@@ -1099,12 +956,13 @@ begin
     end
     else
     begin
-      Form_olap.btn4.Visible := false;
+{###      Form_olap.btn4.Visible := false;
       Form_olap.btn2.Visible := false;
       Form_olap.btn3.Visible := false;
       Form_olap.chk1.Visible := false;
       Form_olap.chk2.Visible := false;
       Form_olap.cxComboBox1.Visible := false;
+      }
     end;
 
   end;
@@ -1171,14 +1029,11 @@ begin
     with DM_Olap.OD_level do
     begin
       Active := false;
-      SetVariable('id',
-        DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger);
-      SetVariable('max_level',
-        max_level_);
+      SetVariable('id', DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger);
+      SetVariable('max_level', max_level_);
       Active := true;
     end;
-    cbbDet.EditValue :=
-      DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsString;
+    cbbDet.EditValue := DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsString;
   end
   else
   begin
@@ -1212,7 +1067,6 @@ begin
     Label2.Visible := false;
     DBLookupComboBox5.ListField := 'MG2';
   end;
-
 
   if have_current_ = 1 then
   begin
@@ -1299,8 +1153,7 @@ begin
     First;
     while not Eof do
     begin
-      if (FieldByName('sel').AsInteger = 0) and
-        (FieldByName('id').AsInteger <> curObjId) then
+      if (FieldByName('sel').AsInteger = 0) and (FieldByName('id').AsInteger <> curObjId) then
       begin
         // снять отметку с прочих объектов
         Edit;
@@ -1475,15 +1328,11 @@ begin
     begin
       //если заполнен единый л.с.
       //проставить ELSK в базу Директа
-      err := DataModule1.OraclePackage1.CallIntegerFunction
-        ('scott.C_KART.set_elsk',
-        [lsk, elsk]);
+      err := DataModule1.OraclePackage1.CallIntegerFunction('scott.C_KART.set_elsk', [lsk, elsk]);
       if err = 0 then
-        Form_olap.cxm1.Lines.Add('По лиц.счету:' + lsk + ' установлен ЕЛСК:' +
-          elsk)
+        Form_olap.cxm1.Lines.Add('По лиц.счету:' + lsk + ' установлен ЕЛСК:' + elsk)
       else
-        Form_olap.cxm1.Lines.Add('По лиц.счету:' + lsk + ' НЕ установлен ЕЛСК:'
-          + elsk);
+        Form_olap.cxm1.Lines.Add('По лиц.счету:' + lsk + ' НЕ установлен ЕЛСК:' + elsk);
 
     end
     else if lsk = '' then
@@ -1548,15 +1397,11 @@ begin
     begin
       //если заполнен единый л.с.
       //проставить ELSK в базу Директа
-      err := DataModule1.OraclePackage1.CallIntegerFunction
-        ('scott.C_KART.set_elsk',
-        [lsk, elsk]);
+      err := DataModule1.OraclePackage1.CallIntegerFunction('scott.C_KART.set_elsk', [lsk, elsk]);
       if err = 0 then
-        Form_olap.cxm1.Lines.Add('По лиц.счету:' + lsk + ' установлен ЕЛСК:' +
-          elsk)
+        Form_olap.cxm1.Lines.Add('По лиц.счету:' + lsk + ' установлен ЕЛСК:' + elsk)
       else
-        Form_olap.cxm1.Lines.Add('По лиц.счету:' + lsk + ' НЕ установлен ЕЛСК:'
-          + elsk);
+        Form_olap.cxm1.Lines.Add('По лиц.счету:' + lsk + ' НЕ установлен ЕЛСК:' + elsk);
 
     end
     else if lsk = '' then
@@ -1626,37 +1471,28 @@ begin
       if (houseGUID <> '') then
       begin
         Form_olap.cxm1.Lines.Add('Найден GUID дома:' + houseGUID);
-        houseKlsk := DataModule1.OraclePackage1.CallFloatFunction
-          ('scott.p_houses.get_klsk_by_guid',
-          [houseGUID]);
+        houseKlsk := DataModule1.OraclePackage1.CallFloatFunction('scott.p_houses.get_klsk_by_guid', [houseGUID]);
         Form_olap.cxm1.Lines.Add('Найден klsk дома:' + IntToStr(houseKlsk));
         if houseKlsk = -1 then
         begin
-          Form_olap.cxm1.Lines.Add('ОШИБКА: По указанному GUID ' + houseGUID +
-            ', не найден дом!');
+          Form_olap.cxm1.Lines.Add('ОШИБКА: По указанному GUID ' + houseGUID + ', не найден дом!');
         end
         else
         begin
           //дом найден, проставить параметры
-          setStrIdPar(houseKlsk, '', 'Состояние',
-            houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 4]);
+          setStrIdPar(houseKlsk, '', 'Состояние', houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 4]);
           Form_olap.cxm1.Lines.Add('Добавлен параметр Состояние');
-          setNumPar(houseKlsk, '', 'Общая площадь здания',
-            houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 5]);
+          setNumPar(houseKlsk, '', 'Общая площадь здания', houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 5]);
           Form_olap.cxm1.Lines.Add('Добавлен параметр Общая площадь здания');
           //setNumPar(houseKlsk, '', 'Общ.пл.жил.пом.по пасп.', houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 6]);
           //Form_olap.cxm1.Lines.Add('Добавлен параметр Общ.пл.жил.пом.по пасп.');
-          setNumPar(houseKlsk, '', 'Год ввода в экспл.',
-            houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 6]);
+          setNumPar(houseKlsk, '', 'Год ввода в экспл.', houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 6]);
           Form_olap.cxm1.Lines.Add('Добавлен параметр Год ввода в экспл.');
-          setNumPar(houseKlsk, '', 'Этажность',
-            houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 7]);
+          setNumPar(houseKlsk, '', 'Этажность', houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 7]);
           Form_olap.cxm1.Lines.Add('Добавлен параметр Этажность');
-          setNumPar(houseKlsk, '', 'Кол-во подземных этажей',
-            houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 8]);
+          setNumPar(houseKlsk, '', 'Кол-во подземных этажей', houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 8]);
           Form_olap.cxm1.Lines.Add('Добавлен параметр Кол-во подземных этажей');
-          setStrPar(houseKlsk, '', 'Кадаст.номер',
-            houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 12]);
+          setStrPar(houseKlsk, '', 'Кадаст.номер', houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 12]);
           Form_olap.cxm1.Lines.Add('Добавлен параметр Кадаст.номер');
 
           //найти на другом листе подъезды этого дома, попытаться создать их, или обновить по ним информацию
@@ -1673,11 +1509,8 @@ begin
               entryDt := StrToDateTime(entryDtS);
 
               entryEt := houseXL.WorkBooks[1].WorkSheets[7].Cells[a, 3];
-              entryKlsk := DataModule1.OraclePackage1.CallIntegerFunction
-                ('scott.p_vvod.create_vvod_by_house_klsk',
-                [houseKlsk, entryNum]);
-              Form_olap.cxm1.Lines.Add('Найден klsk подъезда:' +
-                IntToStr(entryKlsk) + ' номер:' + IntToStr(entryNum));
+              entryKlsk := DataModule1.OraclePackage1.CallIntegerFunction('scott.p_vvod.create_vvod_by_house_klsk', [houseKlsk, entryNum]);
+              Form_olap.cxm1.Lines.Add('Найден klsk подъезда:' + IntToStr(entryKlsk) + ' номер:' + IntToStr(entryNum));
               setNumPar(entryKlsk, '', 'Этажность', entryEt);
               Form_olap.cxm1.Lines.Add('Добавлен параметр Этажность');
               setDtPar(entryKlsk, '', 'Дата постройки', entryDt);
@@ -1700,17 +1533,12 @@ begin
               flag := true;
               kwNum := houseXL.WorkBooks[1].WorkSheets[10].Cells[a, 2];
               kwEntry := houseXL.WorkBooks[1].WorkSheets[10].Cells[a, 3];
-              Form_olap.cxm1.Lines.Add('Обрабатывается помещение:' + kwAdr + ', '
-                + kwNum);
-              err := DataModule1.OraclePackage1.CallIntegerFunction
-                ('scott.C_KART.set_kw_par',
-                [houseGUID, kwNum, kwEntry]);
+              Form_olap.cxm1.Lines.Add('Обрабатывается помещение:' + kwAdr + ', ' + kwNum);
+              err := DataModule1.OraclePackage1.CallIntegerFunction('scott.C_KART.set_kw_par', [houseGUID, kwNum, kwEntry]);
               if err = 0 then
-                Form_olap.cxm1.Lines.Add('По помещению:' + kwAdr +
-                  ' успешно установлены параметры')
+                Form_olap.cxm1.Lines.Add('По помещению:' + kwAdr + ' успешно установлены параметры')
               else
-                Form_olap.cxm1.Lines.Add('По помещению:' + kwAdr +
-                  ' НЕ установлены параметры!');
+                Form_olap.cxm1.Lines.Add('По помещению:' + kwAdr + ' НЕ установлены параметры!');
             end
             else if ((flag) and (houseAdr <> kwAdr)) then
             begin
@@ -1743,8 +1571,9 @@ end;
 procedure TForm_tree_objects.exp_gis1;
 type
   PHeadList = ^AList;
+
   AList = record
-    I: Integer;
+    i: Integer;
     S: string;
   end;
 var
@@ -1779,8 +1608,7 @@ begin
 
   if dlgOpen1.FileName = '' then
   begin
-    msg2('Файл шаблона импорта ЛС не выбран!', 'Внимание!', MB_OK +
-      MB_ICONINFORMATION);
+    msg2('Файл шаблона импорта ЛС не выбран!', 'Внимание!', MB_OK + MB_ICONINFORMATION);
     Exit;
   end;
   Form_olap.cxm1.Lines.Add('Start log!');
@@ -1804,8 +1632,7 @@ begin
 
   if dlgOpen1.FileName = '' then
   begin
-    msg2('Файл шаблона импорта МКД не выбран!', 'Внимание!', MB_OK +
-      MB_ICONINFORMATION);
+    msg2('Файл шаблона импорта МКД не выбран!', 'Внимание!', MB_OK + MB_ICONINFORMATION);
     Exit;
   end;
   houseFname := ExtractFileName(dlgOpen1.FileName);
@@ -1832,22 +1659,14 @@ begin
     end;
 
     // фильтровать лицевые счета
-    if ((Form_olap.chk2.checked = true) or (d.FieldByName('elsk').AsString <>
-      '')) and
-      ((Form_olap.cxComboBox1.ItemIndex = 0) and (d.FieldByName('tp').AsString =
-      'LSK_TP_MAIN') or
-      (Form_olap.cxComboBox1.ItemIndex = 1) and (d.FieldByName('tp').AsString =
-      'LSK_TP_RSO') or
-      (Form_olap.cxComboBox1.ItemIndex = 2) and (d.FieldByName('tp').AsString =
-      'LSK_TP_ADDIT')) then
+    if ((Form_olap.chk2.checked = true) or (d.FieldByName('elsk').AsString <> '')) and ((Form_olap.cxComboBox1.ItemIndex = 0) and (d.FieldByName('tp').AsString = 'LSK_TP_MAIN') or (Form_olap.cxComboBox1.ItemIndex = 1) and (d.FieldByName('tp').AsString = 'LSK_TP_RSO') or (Form_olap.cxComboBox1.ItemIndex = 2) and (d.FieldByName('tp').AsString = 'LSK_TP_ADDIT')) then
       acceptLsk := true
     else
       acceptLsk := false;
 
     if debug then
     begin
-      Form_olap.cxm1.Lines.Add('Выбрано cxComboBox1.ItemIndex='
-        + IntToStr(Form_olap.cxComboBox1.ItemIndex));
+      Form_olap.cxm1.Lines.Add('Выбрано cxComboBox1.ItemIndex=' + IntToStr(Form_olap.cxComboBox1.ItemIndex));
       Form_olap.cxm1.Lines.Add('Лиц тип: ' + d.FieldByName('tp').AsString);
       if acceptLsk then
         Form_olap.cxm1.Lines.Add('выгружается')
@@ -1882,34 +1701,23 @@ begin
     begin
       houseId := d.FieldByName('house_id').AsInteger;
       entr := '-1'; //подъезд
-
       //МКД
       //Характеристики МКД
       if debug then
         Form_olap.cxm1.Lines.Add('1. дом=' + IntToStr(houseId));
-      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 1] :=
-        d.FieldByName('adr').AsString;
-      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 2] :=
-        d.FieldByName('houseguid').AsString;
+      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 1] := d.FieldByName('adr').AsString;
+      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 2] := d.FieldByName('houseguid').AsString;
       houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 3] := 'Нет';
       houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 4] := 'Нет';
-      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 5] :=
-        d.FieldByName('oktmo').AsString;
-      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 6] :=
-        d.FieldByName('cond').AsString;
-      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 8] :=
-        d.FieldByName('house_opl').AsString;
-      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 9] :=
-        d.FieldByName('house_year').AsFloat;
-      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 10] :=
-        d.FieldByName('house_et').AsFloat;
+      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 5] := d.FieldByName('oktmo').AsString;
+      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 6] := d.FieldByName('cond').AsString;
+      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 8] := d.FieldByName('house_opl').AsString;
+      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 9] := d.FieldByName('house_year').AsFloat;
+      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 10] := d.FieldByName('house_et').AsFloat;
       //houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 11]:= d.FieldByName('house_unet').AsFloat;
-      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 11] :=
-        d.FieldByName('house_cult').AsString;
-      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 12] :=
-        d.FieldByName('clk_zone').AsString;
-      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 13] :=
-        d.FieldByName('house_cad_no').AsString;
+      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 11] := d.FieldByName('house_cult').AsString;
+      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 12] := d.FieldByName('clk_zone').AsString;
+      houseXL.WorkBooks[1].WorkSheets[1].Cells[b, 13] := d.FieldByName('house_cad_no').AsString;
       b := b + 1;
     end;
 
@@ -1924,14 +1732,10 @@ begin
       begin
         if debug then
           Form_olap.cxm1.Lines.Add('2');
-        houseXL.WorkBooks[1].WorkSheets[5].Cells[e, 1] :=
-          d.FieldByName('adr').AsString;
-        houseXL.WorkBooks[1].WorkSheets[5].Cells[e, 2] :=
-          d.FieldByName('kw').AsString;
-        houseXL.WorkBooks[1].WorkSheets[5].Cells[e, 3] :=
-          d.FieldByName('comm_use').AsString;
-        houseXL.WorkBooks[1].WorkSheets[5].Cells[e, 4] :=
-          d.FieldByName('opl').AsString;
+        houseXL.WorkBooks[1].WorkSheets[5].Cells[e, 1] := d.FieldByName('adr').AsString;
+        houseXL.WorkBooks[1].WorkSheets[5].Cells[e, 2] := d.FieldByName('kw').AsString;
+        houseXL.WorkBooks[1].WorkSheets[5].Cells[e, 3] := d.FieldByName('comm_use').AsString;
+        houseXL.WorkBooks[1].WorkSheets[5].Cells[e, 4] := d.FieldByName('opl').AsString;
         // НЕ выгружать кадастровый номер пока, система пишет: INT004072 Сведения в ГКН не найдены.
         houseXL.WorkBooks[1].WorkSheets[5].Cells[e, 5] := 'Нет';
         // инф. подтверждена поставщиком
@@ -1948,35 +1752,29 @@ begin
       begin
         Form_olap.cxm1.Lines.Add('Найден подъезд: ' + entr);
       end;
-      houseXL.WorkBooks[1].WorkSheets[7].Cells[f, 1] :=
-        d.FieldByName('adr').AsString;
+      houseXL.WorkBooks[1].WorkSheets[7].Cells[f, 1] := d.FieldByName('adr').AsString;
       if debug then
       begin
         Form_olap.cxm1.Lines.Add('3.' + intToStr(f) + '.1');
         Form_olap.cxm1.Lines.Add('Адрес: ' + d.FieldByName('adr').AsString);
       end;
-      houseXL.WorkBooks[1].WorkSheets[7].Cells[f, 2] :=
-        d.FieldByName('entr').AsString;
+      houseXL.WorkBooks[1].WorkSheets[7].Cells[f, 2] := d.FieldByName('entr').AsString;
       if debug then
       begin
         Form_olap.cxm1.Lines.Add('3.' + intToStr(f) + '.2');
         Form_olap.cxm1.Lines.Add('Номер: ' + d.FieldByName('entr').AsString);
       end;
-      houseXL.WorkBooks[1].WorkSheets[7].Cells[f, 3] :=
-        d.FieldByName('ent_et').AsString;
+      houseXL.WorkBooks[1].WorkSheets[7].Cells[f, 3] := d.FieldByName('ent_et').AsString;
       if debug then
       begin
         Form_olap.cxm1.Lines.Add('3.' + intToStr(f) + '.3');
-        Form_olap.cxm1.Lines.Add('Этажность: ' +
-          d.FieldByName('ent_et').AsString);
+        Form_olap.cxm1.Lines.Add('Этажность: ' + d.FieldByName('ent_et').AsString);
       end;
-      houseXL.WorkBooks[1].WorkSheets[7].Cells[f, 4] :=
-        d.FieldByName('ent_date').AsString;
+      houseXL.WorkBooks[1].WorkSheets[7].Cells[f, 4] := d.FieldByName('ent_date').AsString;
       if debug then
       begin
         Form_olap.cxm1.Lines.Add('3.' + intToStr(f) + '.4');
-        Form_olap.cxm1.Lines.Add('Дата постройки: ' +
-          d.FieldByName('ent_date').AsString);
+        Form_olap.cxm1.Lines.Add('Дата постройки: ' + d.FieldByName('ent_date').AsString);
       end;
       // инф. подтверждена поставщиком
       houseXL.WorkBooks[1].WorkSheets[7].Cells[e, 5] := 'Да';
@@ -1994,18 +1792,12 @@ begin
     begin
       if debug then
         Form_olap.cxm1.Lines.Add('4');
-      houseXL.WorkBooks[1].WorkSheets[10].Cells[a, 1] :=
-        d.FieldByName('adr').AsString;
-      houseXL.WorkBooks[1].WorkSheets[10].Cells[a, 2] :=
-        d.FieldByName('kw').AsString;
-      houseXL.WorkBooks[1].WorkSheets[10].Cells[a, 3] :=
-        d.FieldByName('entr').AsString;
-      houseXL.WorkBooks[1].WorkSheets[10].Cells[a, 4] :=
-        d.FieldByName('charact').AsString;
-      houseXL.WorkBooks[1].WorkSheets[10].Cells[a, 5] :=
-        Trim(d.FieldByName('opl').AsString);
-      houseXL.WorkBooks[1].WorkSheets[10].Cells[a, 6] :=
-        Trim(d.FieldByName('opl').AsString);
+      houseXL.WorkBooks[1].WorkSheets[10].Cells[a, 1] := d.FieldByName('adr').AsString;
+      houseXL.WorkBooks[1].WorkSheets[10].Cells[a, 2] := d.FieldByName('kw').AsString;
+      houseXL.WorkBooks[1].WorkSheets[10].Cells[a, 3] := d.FieldByName('entr').AsString;
+      houseXL.WorkBooks[1].WorkSheets[10].Cells[a, 4] := d.FieldByName('charact').AsString;
+      houseXL.WorkBooks[1].WorkSheets[10].Cells[a, 5] := Trim(d.FieldByName('opl').AsString);
+      houseXL.WorkBooks[1].WorkSheets[10].Cells[a, 6] := Trim(d.FieldByName('opl').AsString);
       // НЕ выгружать кадастровый номер пока, система пишет: INT004072 Сведения в ГКН не найдены.
       houseXL.WorkBooks[1].WorkSheets[10].Cells[a, 7] := 'Нет';
       // инф. подтверждена поставщиком
@@ -2017,41 +1809,28 @@ begin
         Form_olap.cxm1.Lines.Add('5.' + intToStr(i));
       // вкладка "Основные сведения"
       lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 1] := IntToStr(g); // номер лс
-      lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 2] :=
-        d.FieldByName('lsk').AsString;
-      lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 3] :=
-        d.FieldByName('serviceid').AsString;
-      lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 4] :=
-        d.FieldByName('tp2').AsString;
-      lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 5] :=
-        d.FieldByName('status').AsString;
+      lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 2] := d.FieldByName('lsk').AsString;
+      lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 3] := d.FieldByName('serviceid').AsString;
+      lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 4] := d.FieldByName('tp2').AsString;
+      lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 5] := d.FieldByName('status').AsString;
 
-      lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 7] :=
-        d.FieldByName('k_fam').AsString;
-      lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 8] :=
-        d.FieldByName('k_im').AsString;
-      lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 9] :=
-        d.FieldByName('k_ot').AsString;
+      lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 7] := d.FieldByName('k_fam').AsString;
+      lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 8] := d.FieldByName('k_im').AsString;
+      lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 9] := d.FieldByName('k_ot').AsString;
 
-      lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 18] :=
-        d.FieldByName('opl').AsString;
-      lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 19] :=
-        d.FieldByName('opl').AsString;
-      lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 20] :=
-        d.FieldByName('opl').AsString;
+      lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 18] := d.FieldByName('opl').AsString;
+      lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 19] := d.FieldByName('opl').AsString;
+      lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 20] := d.FieldByName('opl').AsString;
 
-      lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 21] :=
-        d.FieldByName('kpr').AsFloat;
+      lskXL.WorkBooks[1].WorkSheets[1].Cells[c, 21] := d.FieldByName('kpr').AsFloat;
 
       if debug then
         Form_olap.cxm1.Lines.Add('6');
       // вкладка "Помещение"
       lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 1] := IntToStr(g);
       //номер помещения
-      lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 2] :=
-        d.FieldByName('adr').AsString;
-      lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 3] :=
-        d.FieldByName('houseguid').AsString;
+      lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 2] := d.FieldByName('adr').AsString;
+      lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 3] := d.FieldByName('houseguid').AsString;
 
       // тип помещения
       if (d.FieldByName('stat_cd').AsString = 'NLIV') then
@@ -2059,10 +1838,8 @@ begin
       else
         lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 4] := 'Жилое помещение';
 
-      lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 5] :=
-        d.FieldByName('kw').AsString;
-      lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 8] :=
-        d.FieldByName('part').AsFloat;
+      lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 5] := d.FieldByName('kw').AsString;
+      lskXL.WorkBooks[1].WorkSheets[2].Cells[a, 8] := d.FieldByName('part').AsFloat;
 
       a := a + 1;
       g := g + 1;
@@ -2081,8 +1858,7 @@ begin
   houseXL.ActiveWorkBook.Close;
 
   Form_olap.Button4.Visible := False;
-  msg2('Информация выгружена в папку:' + path, 'Внимание!', MB_OK +
-    MB_ICONINFORMATION);
+  msg2('Информация выгружена в папку:' + path, 'Внимание!', MB_OK + MB_ICONINFORMATION);
 
 end;
 
@@ -2091,8 +1867,9 @@ end;
 procedure TForm_tree_objects.exp_uszn;
 type
   PHeadList = ^AList;
+
   AList = record
-    I: Integer;
+    i: Integer;
     S: string;
   end;
 var
@@ -2133,18 +1910,15 @@ begin
     if str = '' then
       Break;
     New(ARecord);
-    ARecord^.I := x;
+    ARecord^.i := x;
     ARecord^.S := str;
     HeadList.Add(ARecord);
     x := x + 1;
   end;
 
-  Application.MessageBox(PChar('В СЛУЧАЕ НЕВЫГРУЗКИ В ФАЙЛ ПРОВЕРИТЬ ЗАПОЛНЕНИЕ ПОЛЯ' +
-    #13#10 + ' SPUL.CD_USZN (ДОЛЖНО БЫТЬ В ТОЧНОСТИ КАК В EXCEL ФАЙЛЕ!'),
-    'Внимание!', MB_OK + MB_TOPMOST);
+  Application.MessageBox(PChar('В СЛУЧАЕ НЕВЫГРУЗКИ В ФАЙЛ ПРОВЕРИТЬ ЗАПОЛНЕНИЕ ПОЛЯ' + #13#10 + ' SPUL.CD_USZN (ДОЛЖНО БЫТЬ В ТОЧНОСТИ КАК В EXCEL ФАЙЛЕ!'), 'Внимание!', MB_OK + MB_TOPMOST);
 
-  Application.MessageBox(PChar('Cписок заголовков EXCEL файла:' + #13#10 +
-    str2), 'Внимание!', MB_OK + MB_ICONQUESTION + MB_TOPMOST);
+  Application.MessageBox(PChar('Cписок заголовков EXCEL файла:' + #13#10 + str2), 'Внимание!', MB_OK + MB_ICONQUESTION + MB_TOPMOST);
 
   //движемся вниз по файлу, находим адреса
   y := 4;
@@ -2161,8 +1935,7 @@ begin
 
     //поиск адреса в датасете отчёта
     try
-      if DM_Olap.Uni_data.Locate('nylic;ndom;nkorp;nkw',
-        VarArrayOf([street, nd, korp, kw]), [loCaseInsensitive]) then
+      if DM_Olap.Uni_data.Locate('nylic;ndom;nkorp;nkw', VarArrayOf([street, nd, korp, kw]), [loCaseInsensitive]) then
       begin
         //найден адрес
         //идём по заголовку и переносим информацию
@@ -2173,25 +1946,16 @@ begin
           //if (str = '') or (str = '0') then //берём только незаполненные поля
           //begin            временно отключил ред.01.08.2019
 
-          if DM_Olap.Uni_data.FieldByName(ARecord.S).DataType
-            = ftString then
-            XL.WorkBooks[1].WorkSheets[1].Cells[y, i + 1] := '''' +
-              DM_Olap.Uni_data.FieldByName(ARecord.S).AsString
-          else if DM_Olap.Uni_data.FieldByName(ARecord.S).DataType
-            = ftFloat then
-            XL.WorkBooks[1].WorkSheets[1].Cells[y, i + 1] :=
-              DM_Olap.Uni_data.FieldByName(ARecord.S).AsFloat
-          else if DM_Olap.Uni_data.FieldByName(ARecord.S).DataType
-            = ftInteger then
-            XL.WorkBooks[1].WorkSheets[1].Cells[y, i + 1] :=
-              DM_Olap.Uni_data.FieldByName(ARecord.S).AsInteger
-          else if DM_Olap.Uni_data.FieldByName(ARecord.S).DataType
-            = ftSmallInt then
-            XL.WorkBooks[1].WorkSheets[1].Cells[y, i + 1] :=
-              DM_Olap.Uni_data.FieldByName(ARecord.S).AsInteger
+          if DM_Olap.Uni_data.FieldByName(ARecord.S).DataType = ftString then
+            XL.WorkBooks[1].WorkSheets[1].Cells[y, i + 1] := '''' + DM_Olap.Uni_data.FieldByName(ARecord.S).AsString
+          else if DM_Olap.Uni_data.FieldByName(ARecord.S).DataType = ftFloat then
+            XL.WorkBooks[1].WorkSheets[1].Cells[y, i + 1] := DM_Olap.Uni_data.FieldByName(ARecord.S).AsFloat
+          else if DM_Olap.Uni_data.FieldByName(ARecord.S).DataType = ftInteger then
+            XL.WorkBooks[1].WorkSheets[1].Cells[y, i + 1] := DM_Olap.Uni_data.FieldByName(ARecord.S).AsInteger
+          else if DM_Olap.Uni_data.FieldByName(ARecord.S).DataType = ftSmallInt then
+            XL.WorkBooks[1].WorkSheets[1].Cells[y, i + 1] := DM_Olap.Uni_data.FieldByName(ARecord.S).AsInteger
           else
-            XL.WorkBooks[1].WorkSheets[1].Cells[y, i + 1] :=
-              DM_Olap.Uni_data.FieldByName(ARecord.S).AsFloat;
+            XL.WorkBooks[1].WorkSheets[1].Cells[y, i + 1] := DM_Olap.Uni_data.FieldByName(ARecord.S).AsFloat;
           //end;
         end;
       end
@@ -2201,10 +1965,10 @@ begin
       end;
 
     except
-      on E: Exception do
+      on e: Exception do
       begin
         ShowMessage('Ошибка при выгрузке в EXCEL');
-        ShowMessage(E.Message);
+        ShowMessage(e.Message);
         ShowMessage(adr);
       end;
     end;
@@ -2213,8 +1977,7 @@ begin
   end;
 
   HeadList.Free;
-  msg2('Реестр заполнен, сохраните его!', 'Внимание!', MB_OK +
-    MB_ICONINFORMATION);
+  msg2('Реестр заполнен, сохраните его!', 'Внимание!', MB_OK + MB_ICONINFORMATION);
   // Делаем его видимым
   XL.Visible := true;
 
@@ -2253,12 +2016,8 @@ var
   id_: Integer;
 begin
   Application.CreateForm(TForm_tree_par_edit, Form_tree_par_edit);
-  Form_tree_par_edit.Top := curY_ +
-    Form_Main.Top + Panel1.Top + Form_tree_objects.Top +
-    GroupBox1.Top + cxGrid1.Top;
-  Form_tree_par_edit.Left := curX_ +
-    Form_Main.Left + Panel1.Left + Form_tree_objects.Left +
-    GroupBox1.Left + cxGrid1.Left;
+  Form_tree_par_edit.Top := curY_ + Form_Main.Top + Panel1.Top + Form_tree_objects.Top + GroupBox1.Top + cxGrid1.Top;
+  Form_tree_par_edit.Left := curX_ + Form_Main.Left + Panel1.Left + Form_tree_objects.Left + GroupBox1.Left + cxGrid1.Left;
   Form_tree_par_edit.SetAccess(DM_Olap.DS_spr_params);
   Form_tree_par_edit.ShowModal;
 
@@ -2349,8 +2108,7 @@ var
   end;
 
 begin
-  if (l_edt1 <> Edit1.Text) or (l_edt2 <> Edit2.Text) or (l_edt3 <> Edit3.Text)
-    then
+  if (l_edt1 <> Edit1.Text) or (l_edt2 <> Edit2.Text) or (l_edt3 <> Edit3.Text) then
   begin
     l_edt1 := Edit1.Text;
     l_edt2 := Edit2.Text;
@@ -2364,21 +2122,17 @@ begin
     begin
       if (Edit1.Text <> '') then
       begin
-        sqlStr := sqlStr + ' and (name_tr LIKE ''%' + AnsiUpperCase(Edit1.Text)
-          +
-          '%'' or obj_level <> 2)';
+        sqlStr := sqlStr + ' and (name_tr LIKE ''%' + AnsiUpperCase(Edit1.Text) + '%'' or obj_level <> 2)';
       end;
 
       if (Edit2.Text <> '') then
       begin
-        sqlStr := sqlStr + ' and (street LIKE ''%' + AnsiUpperCase(Edit2.Text) +
-          '%'' or obj_level <> 3)';
+        sqlStr := sqlStr + ' and (street LIKE ''%' + AnsiUpperCase(Edit2.Text) + '%'' or obj_level <> 3)';
       end;
 
       if (Edit3.Text <> '') then
       begin
-        sqlStr := sqlStr + 'and (nd1 LIKE ''%' + AnsiUpperCase(Edit3.Text) +
-          '%'' or obj_level <> 3)';
+        sqlStr := sqlStr + 'and (nd1 LIKE ''%' + AnsiUpperCase(Edit3.Text) + '%'' or obj_level <> 3)';
       end;
     end;
     DM_Olap.Uni_tree_objects.Filter := sqlStr;
@@ -2391,17 +2145,15 @@ begin
   end;
 end;
 
-procedure TForm_tree_objects.cxDBTreeList1SELPropertiesEditValueChanged(
-  Sender: TObject);
+procedure TForm_tree_objects.cxDBTreeList1SELPropertiesEditValueChanged(Sender: TObject);
 var
-  str_: String;
+  str_: string;
 begin
 
   // снять отметки с прочих объектов
   deselObjects(DM_Olap.Uni_tree_objects.FieldByName('ID').AsInteger);
 
-  if (Form_tree_objects.isLoadingCube = false) and (Form_tree_objects.can_detail_
-    = 1) then
+  if (Form_tree_objects.isLoadingCube = false) and (Form_tree_objects.can_detail_ = 1) then
   begin
     str_ := Form_tree_objects.cbbDet.EditValue;
     if str_ <> '' then
@@ -2409,13 +2161,10 @@ begin
       with DM_Olap.OD_level do
       begin
         Active := false;
-        SetVariable('id',
-          DM_Olap.Uni_tree_objects.FieldByName('OBJ_LEVEL').AsInteger);
+        SetVariable('id', DM_Olap.Uni_tree_objects.FieldByName('OBJ_LEVEL').AsInteger);
         Active := true;
-        SearchRecord('level_id', StrToInt(str_),
-          [srFromBeginning]);
-        Form_tree_objects.cbbDet.EditValue :=
-          FieldByName('level_id').AsString;
+        SearchRecord('level_id', StrToInt(str_), [srFromBeginning]);
+        Form_tree_objects.cbbDet.EditValue := FieldByName('level_id').AsString;
       end;
     end;
   end;
@@ -2434,6 +2183,104 @@ end;
 procedure TForm_tree_objects.cxGrid1DBTableView1DblClick(Sender: TObject);
 begin
   edit_par;
+end;
+
+function TForm_tree_objects.checkObjectsCount: Boolean;
+var
+  l_cnt: Integer;
+  I: Integer;
+begin
+  // проверка кол-ва выбранных объектов
+  if Form_tree_objects.sel_many_ = 0 then
+  begin
+    l_cnt := 0;
+    for I := 0 to cxDBTreeList1.AbsoluteCount - 1 do
+    begin
+      if (cxDBTreeList1.AbsoluteItems[I].Values[2] <> 1) then
+      begin
+        l_cnt := l_cnt + 1;
+        if l_cnt > 1 then
+        begin
+          Application.MessageBox('Необходимо выбрать только один объект!', 'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
+          Result := True;
+          Exit;
+        end;
+      end;
+    end;
+  end;
+  Result := false;
+end;
+
+function TForm_tree_objects.checkSelObj: Boolean;
+begin
+  if sel_many_ = 0 then
+  begin
+    // найти выбранный объект
+    if DM_Olap.Uni_tree_objects.Locate('sel', 0, []) then
+    begin
+      // проверить уровень
+      if (DM_Olap.Uni_tree_objects.FieldByName('FOR_REU').AsString <> '') and (DBLookupComboBox5.KeyValue < 201907) then
+      begin
+        Application.MessageBox('Данный уровень не доступен при выборке данных до 01.07.2019', 'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
+        Result := True;
+        Exit;
+      end;
+    end
+    else
+    begin
+      Application.MessageBox('Не найден выбранный объект', 'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
+      Result := True;
+      Exit;
+    end;
+  end;
+  Result := False;
+  Exit;
+end;
+
+function TForm_tree_objects.checkPeriod(det: Integer): Boolean;
+begin
+  if (two_periods_ <> 2) and ((DBLookupComboBox5.KeyValue = null) or ((DBLookupComboBox6.KeyValue = null) and (two_periods_ = 1))) then
+  begin
+    msg2('Не выбран период отчета!', 'Внимание!', MB_OK + MB_ICONSTOP);
+    SetSize(1);
+    Result := True;
+    Exit;
+  end;
+
+  if ((DBLookupComboBox5.KeyValue > DBLookupComboBox6.KeyValue) and (two_periods_ = 1)) then
+  begin
+    msg2('Некорректный период отчета!', 'Внимание!', MB_OK + MB_ICONSTOP);
+    SetSize(1);
+    Result := True;
+    Exit;
+  end;
+
+  if (can_detail_ = 1) and (det = -1) then
+  begin
+    msg2('Не установлен уровень детализации!', 'Внимание!', MB_OK + MB_ICONSTOP);
+    SetSize(1);
+    Result := True;
+    Exit;
+  end;
+
+  if CheckBox5.Checked = True then
+  begin
+    //период - даты
+    if DBLookupComboBox5.KeyValue = DBLookupComboBox6.KeyValue then
+      period_str_ := 'за ' + DM_OLap.OD_dat1.FieldByName('mg1').AsString
+    else
+      period_str_ := 'за период с ' + DM_OLap.OD_dat1.FieldByName('mg1').AsString + ' по ' + DM_OLap.OD_dat2.FieldByName('mg1').AsString;
+  end
+  else
+  begin
+    //период - месяцы
+    if DBLookupComboBox5.KeyValue = DBLookupComboBox6.KeyValue then
+      period_str_ := 'за ' + DM_OLap.OD_mg1.FieldByName('mg2').AsString
+    else if DBLookupComboBox6.KeyValue = null then
+      period_str_ := 'за ' + DM_OLap.OD_mg1.FieldByName('mg2').AsString
+    else
+      period_str_ := 'за период с ' + DM_OLap.OD_mg1.FieldByName('mg1').AsString + ' по ' + DM_OLap.OD_mg2.FieldByName('mg1').AsString;
+  end;
 end;
 
 end.

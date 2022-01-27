@@ -19,7 +19,7 @@ uses
   
   
   
-  
+
   
   
   
@@ -30,7 +30,7 @@ uses
   cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter, cxData,
   cxDataStorage, cxEdit, cxNavigator, cxDBData, cxContainer, cxTextEdit,
   cxMaskEdit, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
-  frxExportBaseDialog;
+  frxExportBaseDialog, dxSkinsCore, dxSkinsDefaultPainters, dxDateRanges;
 
 type
   TForm_olap = class(TForm)

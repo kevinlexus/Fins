@@ -387,6 +387,7 @@ object DM_Olap: TDM_Olap
         't_tp, :prep_refcursor);'
       'end;')
     FetchRows = 1000
+    Active = True
     Left = 32
     Top = 32
     ParamData = <
@@ -394,7 +395,7 @@ object DM_Olap: TDM_Olap
         DataType = ftString
         Name = 'reu_'
         ParamType = ptInput
-        Value = 'xx'
+        Value = ''
       end
       item
         DataType = ftString
@@ -472,7 +473,7 @@ object DM_Olap: TDM_Olap
         DataType = ftString
         Name = 'cd_'
         ParamType = ptInput
-        Value = '78'
+        Value = '14'
       end
       item
         DataType = ftInteger

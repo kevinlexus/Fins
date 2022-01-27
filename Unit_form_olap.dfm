@@ -1,7 +1,6 @@
 object Form_olap: TForm_olap
   Left = 633
   Top = 449
-  AutoScroll = False
   Caption = 'OLAP'
   ClientHeight = 743
   ClientWidth = 1078
@@ -93,12 +92,12 @@ object Form_olap: TForm_olap
   PixelsPerInch = 96
   TextHeight = 13
   object cxGrid1: TcxGrid
-    Left = 101
-    Top = 123
-    Width = 977
-    Height = 530
+    Left = 0
+    Top = 0
+    Width = 1078
+    Height = 695
     Align = alClient
-    TabOrder = 6
+    TabOrder = 0
     Visible = False
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
@@ -111,108 +110,6 @@ object Form_olap: TForm_olap
       GridView = cxGrid1DBTableView1
     end
   end
-  object PVRowToolBar1: TPVRowToolBar
-    Left = 0
-    Top = 123
-    Width = 101
-    Height = 530
-    CheckOrder = True
-    ItemWidth = 80
-    ItemHeight = 21
-    Collapsed = False
-    DropDownColor = clBtnFace
-    DropDownFont.Charset = DEFAULT_CHARSET
-    DropDownFont.Color = clWindowText
-    DropDownFont.Height = -11
-    DropDownFont.Name = 'MS Sans Serif'
-    DropDownFont.Style = []
-    DropDownAutoExpand = True
-    Floating = False
-    OnDropDown = PVRowToolBar1DropDown
-    ItemSettings.Color = clBtnFace
-    ItemSettings.Font.Charset = DEFAULT_CHARSET
-    ItemSettings.Font.Color = clWindowText
-    ItemSettings.Font.Height = -11
-    ItemSettings.Font.Name = 'MS Sans Serif'
-    ItemSettings.Font.Style = []
-    ItemSettings.Style = psCtrl3d
-    ItemSettings.Direction = gsTop
-    ItemSettings.Intensity = gsNormal
-    ItemSettings.FilteredColor = clLime
-    ItemSettings.InvisibleColor = clBlue
-    ItemSettings.ShowHint = True
-    ItemSettings.Tracking = True
-    ItemSettings.TrackingColor = clBtnFace
-    Settings.Color = clInfoBk
-    Settings.Font.Charset = DEFAULT_CHARSET
-    Settings.Font.Color = clWindowText
-    Settings.Font.Height = -11
-    Settings.Font.Name = 'MS Sans Serif'
-    Settings.Font.Style = []
-    Settings.Style = psFlat
-    Settings.Direction = gsTop
-    Settings.Intensity = gsNormal
-    ModalDropDown = True
-    Chink = 4
-    Caption = 'PVRowToolBar1'
-    TabOrder = 2
-    OnDragDrop = PVRowToolBar1DragDrop
-    Align = alLeft
-    MultiLine = False
-    MaxLineCount = 2
-    ViewFilter = False
-  end
-  object PVColToolBar1: TPVColToolBar
-    Left = 0
-    Top = 81
-    Width = 1078
-    Height = 42
-    CheckOrder = True
-    ItemWidth = 80
-    ItemHeight = 21
-    Collapsed = False
-    DropDownColor = clBtnFace
-    DropDownFont.Charset = DEFAULT_CHARSET
-    DropDownFont.Color = clWindowText
-    DropDownFont.Height = -11
-    DropDownFont.Name = 'MS Sans Serif'
-    DropDownFont.Style = []
-    DropDownAutoExpand = True
-    Floating = False
-    OnDropDown = PVColToolBar1DropDown
-    ItemSettings.Color = clBtnFace
-    ItemSettings.Font.Charset = DEFAULT_CHARSET
-    ItemSettings.Font.Color = clWindowText
-    ItemSettings.Font.Height = -11
-    ItemSettings.Font.Name = 'MS Sans Serif'
-    ItemSettings.Font.Style = []
-    ItemSettings.Style = psCtrl3d
-    ItemSettings.Direction = gsTop
-    ItemSettings.Intensity = gsNormal
-    ItemSettings.FilteredColor = clLime
-    ItemSettings.InvisibleColor = clBlue
-    ItemSettings.ShowHint = True
-    ItemSettings.Tracking = True
-    ItemSettings.TrackingColor = clBtnFace
-    Settings.Color = clInfoBk
-    Settings.Font.Charset = DEFAULT_CHARSET
-    Settings.Font.Color = clWindowText
-    Settings.Font.Height = -11
-    Settings.Font.Name = 'MS Sans Serif'
-    Settings.Font.Style = []
-    Settings.Style = psFlat
-    Settings.Direction = gsTop
-    Settings.Intensity = gsNormal
-    ModalDropDown = True
-    Chink = 4
-    Caption = #1057#1090#1086#1083#1073#1094#1099
-    TabOrder = 1
-    OnDragDrop = PVColToolBar1DragDrop
-    Align = alTop
-    MultiLine = False
-    MaxLineCount = 2
-    ViewFilter = False
-  end
   object GroupBox1: TGroupBox
     Left = 0
     Top = 695
@@ -221,7 +118,7 @@ object Form_olap: TForm_olap
     Align = alBottom
     Anchors = []
     DockSite = True
-    TabOrder = 5
+    TabOrder = 1
     DesignSize = (
       1078
       48)
@@ -257,10 +154,6 @@ object Form_olap: TForm_olap
       Height = 26
       Hint = #1057#1082#1088#1099#1090#1100' '#1087#1072#1085#1077#1083#1100' '#1073#1099#1089#1090#1088#1086#1075#1086' '#1076#1086#1089#1090#1091#1087#1072
       Cancel = True
-      ParentShowHint = False
-      ShowHint = True
-      TabOrder = 0
-      OnClick = BitBtn1Click
       Glyph.Data = {
         0A020000424D0A0200000000000036000000280000000C0000000D0000000100
         180000000000D4010000120B0000120B00000000000000000000D8E9ECD8E9EC
@@ -279,6 +172,10 @@ object Form_olap: TForm_olap
         D8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECFFFFFFFFFFFFD8E9ECD8E9
         ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECD8E9ECFFFFFFFFFFFFD8
         E9ECD8E9ECD8E9ECD8E9ECD8E9EC}
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 0
+      OnClick = BitBtn1Click
     end
     object chk1: TCheckBox
       Left = 40
@@ -349,2100 +246,27 @@ object Form_olap: TForm_olap
       Width = 121
     end
   end
-  object PivotGrid1: TPivotGrid
-    Left = 101
-    Top = 123
-    Width = 977
-    Height = 530
-    MinColWidth = 40
-    MaxColWidth = 300
-    MinRowHeight = 18
-    MaxRowHeight = 120
-    RowTotalsHeight = 20
-    Align = alClient
-    TabOrder = 3
-    TabStop = True
-    UseDockManager = True
-    FixedColWidth = 0
-    OnFocusedCell = PivotGrid1FocusedCell
-    Settings.RowHeader.Font.Charset = DEFAULT_CHARSET
-    Settings.RowHeader.Font.Color = clBlack
-    Settings.RowHeader.Font.Height = -13
-    Settings.RowHeader.Font.Name = 'MS Sans Serif'
-    Settings.RowHeader.Font.Style = []
-    Settings.RowHeader.Color = clCream
-    Settings.RowHeader.Style = psFlat
-    Settings.RowHeader.Direction = gsLeft
-    Settings.RowHeader.Intensity = gsLittle
-    Settings.RowHeader.XPButtonColor = clCream
-    Settings.RowHeader.XPExpandDirection = gsRight
-    Settings.RowHeader.CollapseStyle = cdsButtons
-    Settings.ColumnHeader.Font.Charset = DEFAULT_CHARSET
-    Settings.ColumnHeader.Font.Color = clBlack
-    Settings.ColumnHeader.Font.Height = -13
-    Settings.ColumnHeader.Font.Name = 'MS Sans Serif'
-    Settings.ColumnHeader.Font.Style = []
-    Settings.ColumnHeader.Color = clCream
-    Settings.ColumnHeader.Style = psCtrl3d
-    Settings.ColumnHeader.Direction = gsTop
-    Settings.ColumnHeader.Intensity = gsLittle
-    Settings.ColumnHeader.XPButtonColor = clCream
-    Settings.ColumnHeader.XPExpandDirection = gsBottom
-    Settings.ColumnHeader.CollapseStyle = cdsButtons
-    Settings.Cells.Zero.Font.Charset = DEFAULT_CHARSET
-    Settings.Cells.Zero.Font.Color = clBlue
-    Settings.Cells.Zero.Font.Height = -13
-    Settings.Cells.Zero.Font.Name = 'MS Sans Serif'
-    Settings.Cells.Zero.Font.Style = []
-    Settings.Cells.Zero.Color = clWhite
-    Settings.Cells.Zero.Style = psCtrl3d
-    Settings.Cells.Zero.Direction = gsLeft
-    Settings.Cells.Zero.Intensity = gsLittle
-    Settings.Cells.Negative.Font.Charset = DEFAULT_CHARSET
-    Settings.Cells.Negative.Font.Color = clRed
-    Settings.Cells.Negative.Font.Height = -13
-    Settings.Cells.Negative.Font.Name = 'MS Sans Serif'
-    Settings.Cells.Negative.Font.Style = []
-    Settings.Cells.Negative.Color = clWhite
-    Settings.Cells.Negative.Style = psCtrl3d
-    Settings.Cells.Negative.Direction = gsRight
-    Settings.Cells.Negative.Intensity = gsLittle
-    Settings.Cells.Positive.Font.Charset = DEFAULT_CHARSET
-    Settings.Cells.Positive.Font.Color = clWindowText
-    Settings.Cells.Positive.Font.Height = -13
-    Settings.Cells.Positive.Font.Name = 'MS Sans Serif'
-    Settings.Cells.Positive.Font.Style = []
-    Settings.Cells.Positive.Color = clWhite
-    Settings.Cells.Positive.Style = psCtrl3d
-    Settings.Cells.Positive.Direction = gsLeft
-    Settings.Cells.Positive.Intensity = gsLittle
-    Settings.Cells.Focused.Font.Charset = DEFAULT_CHARSET
-    Settings.Cells.Focused.Font.Color = clBlue
-    Settings.Cells.Focused.Font.Height = -13
-    Settings.Cells.Focused.Font.Name = 'MS Sans Serif'
-    Settings.Cells.Focused.Font.Style = [fsBold]
-    Settings.Cells.Focused.Color = clMenuHighlight
-    Settings.Cells.Focused.Style = psCtrl3d
-    Settings.Cells.Focused.Direction = gsBottom
-    Settings.Cells.Focused.Intensity = gsLarge
-    Settings.Cells.Selected.Font.Charset = DEFAULT_CHARSET
-    Settings.Cells.Selected.Font.Color = clWindowText
-    Settings.Cells.Selected.Font.Height = -13
-    Settings.Cells.Selected.Font.Name = 'MS Sans Serif'
-    Settings.Cells.Selected.Font.Style = []
-    Settings.Cells.Selected.Color = clSkyBlue
-    Settings.Cells.Selected.Style = psCtrl3d
-    Settings.Cells.Selected.Direction = gsLeft
-    Settings.Cells.Selected.Intensity = gsLittle
-    Settings.Cells.Sort.Font.Charset = DEFAULT_CHARSET
-    Settings.Cells.Sort.Font.Color = clGreen
-    Settings.Cells.Sort.Font.Height = -13
-    Settings.Cells.Sort.Font.Name = 'MS Sans Serif'
-    Settings.Cells.Sort.Font.Style = [fsBold]
-    Settings.Cells.Sort.Color = clBlue
-    Settings.Cells.Sort.Style = psCtrl3d
-    Settings.Cells.Sort.Direction = gsLeft
-    Settings.Cells.Sort.Intensity = gsLittle
-    Settings.Cells.SelectionTotal.Font.Charset = DEFAULT_CHARSET
-    Settings.Cells.SelectionTotal.Font.Color = clWindowText
-    Settings.Cells.SelectionTotal.Font.Height = -13
-    Settings.Cells.SelectionTotal.Font.Name = 'MS Sans Serif'
-    Settings.Cells.SelectionTotal.Font.Style = []
-    Settings.Cells.SelectionTotal.Color = clYellow
-    Settings.Cells.SelectionTotal.Style = psCtrl3d
-    Settings.Cells.SelectionTotal.Direction = gsLeft
-    Settings.Cells.SelectionTotal.Intensity = gsLittle
-    Settings.Totals.Font.Charset = DEFAULT_CHARSET
-    Settings.Totals.Font.Color = clWindowText
-    Settings.Totals.Font.Height = -13
-    Settings.Totals.Font.Name = 'MS Sans Serif'
-    Settings.Totals.Font.Style = [fsBold]
-    Settings.Totals.Color = clWhite
-    Settings.Totals.Style = psCtrl3d
-    Settings.Totals.Direction = gsLeft
-    Settings.Totals.Intensity = gsLittle
-    Settings.Specific.Background.Font.Charset = DEFAULT_CHARSET
-    Settings.Specific.Background.Font.Color = clWindowText
-    Settings.Specific.Background.Font.Height = -11
-    Settings.Specific.Background.Font.Name = 'MS Sans Serif'
-    Settings.Specific.Background.Font.Style = []
-    Settings.Specific.Background.Color = clBackground
-    Settings.Specific.Background.Style = psFlat
-    Settings.Specific.Background.Direction = gsTop
-    Settings.Specific.Background.Intensity = gsLow
-    Settings.Specific.Lines = True
-    Settings.Specific.LineWidth = 1
-    Settings.Specific.LineColor = clBlack
-    Settings.Specific.RowTotals = pvgtAtEnd
-    Settings.Specific.ColumnTotals = pvgtAtEnd
-    Settings.Specific.ShowDimensionNames = True
-    Settings.Specific.DisableCache = True
-    Settings.Specific.LoadAllCells = False
-    Settings.Specific.ShowZero = True
-    Settings.Specific.MultiLineHeaders = True
-    Settings.Specific.DoubleBuffering = True
-    Settings.Specific.Dimension.Font.Charset = RUSSIAN_CHARSET
-    Settings.Specific.Dimension.Font.Color = clWindowText
-    Settings.Specific.Dimension.Font.Height = -11
-    Settings.Specific.Dimension.Font.Name = 'MS Sans Serif'
-    Settings.Specific.Dimension.Font.Style = []
-    Settings.Specific.Dimension.Color = clCream
-    Settings.Specific.Dimension.Style = psWinXP
-    Settings.Specific.Dimension.Direction = gsTop
-    Settings.Specific.Dimension.Intensity = gsLittle
-    Settings.Specific.Dimension.XPButtonColor = clBtnFace
-    Settings.Specific.Dimension.XPExpandDirection = gsBottom
-    Settings.Specific.Dimension.CollapseStyle = cdsButtons
-    Settings.Specific.ChartDropDownInView = True
-    Settings.Specific.ChartDropDownInColumn = True
-    Settings.Specific.AllowSelectionSubTotals = True
-    Settings.Specific.ShowViewNames = True
-    Settings.Specific.ShowMeasureNames = True
-    Settings.Specific.OddCellColor = clInfoBk
-    Settings.Specific.DialogButtons = True
-    Settings.Specific.CustomResize = False
-    Settings.Specific.AutoEdit = False
-    Settings.SubtotalSettings.Enabled = True
-    Settings.SubtotalSettings.ExpandDown = True
-    Settings.SubtotalSettings.DisableIfOnlyOne = True
-    Settings.SubtotalSettings.SubTotalCell = False
-    Settings.SubtotalSettings.IncludeName = False
-    Settings.PrintSettings.TrueTypeFont.Charset = DEFAULT_CHARSET
-    Settings.PrintSettings.TrueTypeFont.Color = clWindowText
-    Settings.PrintSettings.TrueTypeFont.Height = 11
-    Settings.PrintSettings.TrueTypeFont.Name = 'Times New Roman'
-    Settings.PrintSettings.TrueTypeFont.Style = []
-    Settings.PrintSettings.PageHeader = #1054#1073#1086#1088#1086#1090#1085#1072#1103' '#1074#1077#1076#1086#1084#1086#1089#1090#1100
-    Settings.PrintSettings.HeaderSize = 12
-    Settings.PrintSettings.PageHeaderFont.Charset = DEFAULT_CHARSET
-    Settings.PrintSettings.PageHeaderFont.Color = clWindowText
-    Settings.PrintSettings.PageHeaderFont.Height = 10
-    Settings.PrintSettings.PageHeaderFont.Name = 'Times New Roman'
-    Settings.PrintSettings.PageHeaderFont.Style = []
-    Settings.PrintSettings.PageFooterFont.Charset = DEFAULT_CHARSET
-    Settings.PrintSettings.PageFooterFont.Color = clWindowText
-    Settings.PrintSettings.PageFooterFont.Height = 10
-    Settings.PrintSettings.PageFooterFont.Name = 'Times New Roman'
-    Settings.PrintSettings.PageFooterFont.Style = []
-    Settings.PrintSettings.FooterSize = 12
-    Settings.PrintSettings.PageNumber = True
-    Settings.PrintSettings.DateTime = True
-    ExtraViewInExport = False
-    object cxm1: TcxMemo
-      Left = 224
-      Top = 424
-      Lines.Strings = (
-        'cxm1')
-      TabOrder = 2
-      Visible = False
-      Height = 81
-      Width = 561
-    end
-  end
-  object PVDimToolBar1: TPVDimToolBar
-    Left = 0
-    Top = 0
-    Width = 1078
-    Height = 81
-    CheckOrder = False
-    ItemWidth = 100
-    ItemHeight = 60
-    Collapsed = False
-    DropDownColor = clBtnFace
-    DropDownFont.Charset = DEFAULT_CHARSET
-    DropDownFont.Color = clWindowText
-    DropDownFont.Height = -11
-    DropDownFont.Name = 'MS Sans Serif'
-    DropDownFont.Style = []
-    DropDownAutoExpand = True
-    Floating = False
-    OnDropDown = PVDimToolBar1DropDown
-    ItemSettings.Color = clBackground
-    ItemSettings.Font.Charset = DEFAULT_CHARSET
-    ItemSettings.Font.Color = clWhite
-    ItemSettings.Font.Height = -11
-    ItemSettings.Font.Name = 'MS Sans Serif'
-    ItemSettings.Font.Style = []
-    ItemSettings.Style = psCtrl3d
-    ItemSettings.Direction = gsTop
-    ItemSettings.Intensity = gsLow
-    ItemSettings.FilteredColor = clRed
-    ItemSettings.InvisibleColor = clAqua
-    ItemSettings.ShowHint = True
-    ItemSettings.Tracking = True
-    ItemSettings.TrackingColor = clBtnFace
-    Settings.Color = clInfoBk
-    Settings.Font.Charset = DEFAULT_CHARSET
-    Settings.Font.Color = clWindowText
-    Settings.Font.Height = -11
-    Settings.Font.Name = 'MS Sans Serif'
-    Settings.Font.Style = []
-    Settings.Style = psFlat
-    Settings.Direction = gsTop
-    Settings.Intensity = gsHuge
-    ModalDropDown = False
-    Chink = 4
-    Caption = #1060#1080#1083#1100#1090#1088
-    TabOrder = 0
-    OnDragDrop = PVDimToolBar1DragDrop
-    Align = alTop
-    MultiLine = True
-    MaxLineCount = 2
-    ViewFilter = True
-  end
-  object PVMeasureToolBar1: TPVMeasureToolBar
-    Left = 0
-    Top = 653
-    Width = 1078
-    Height = 42
-    CheckOrder = True
-    ItemWidth = 80
-    ItemHeight = 21
-    Collapsed = False
-    DropDownColor = clBtnFace
-    DropDownFont.Charset = DEFAULT_CHARSET
-    DropDownFont.Color = clWindowText
-    DropDownFont.Height = -11
-    DropDownFont.Name = 'MS Sans Serif'
-    DropDownFont.Style = []
-    DropDownAutoExpand = True
-    Floating = False
-    ItemSettings.Color = clBtnFace
-    ItemSettings.Font.Charset = DEFAULT_CHARSET
-    ItemSettings.Font.Color = clWindowText
-    ItemSettings.Font.Height = -11
-    ItemSettings.Font.Name = 'MS Sans Serif'
-    ItemSettings.Font.Style = []
-    ItemSettings.Style = psWinXP
-    ItemSettings.Direction = gsTop
-    ItemSettings.Intensity = gsNormal
-    ItemSettings.FilteredColor = clLime
-    ItemSettings.InvisibleColor = clBlue
-    ItemSettings.ShowHint = True
-    ItemSettings.Tracking = True
-    ItemSettings.TrackingColor = clBtnFace
-    Settings.Color = clInfoBk
-    Settings.Font.Charset = DEFAULT_CHARSET
-    Settings.Font.Color = clWindowText
-    Settings.Font.Height = -11
-    Settings.Font.Name = 'MS Sans Serif'
-    Settings.Font.Style = []
-    Settings.Style = psFlat
-    Settings.Direction = gsTop
-    Settings.Intensity = gsNormal
-    ModalDropDown = True
-    Chink = 4
-    Caption = #1047#1085#1072#1095#1077#1085#1080#1103
-    TabOrder = 4
-    Align = alBottom
-    MultiLine = True
-    MaxLineCount = 2
-    HideButtons = True
-  end
   object Button4: TButton
     Left = 264
     Top = 200
     Width = 185
     Height = 49
     Caption = #1046#1076#1080#1090#1077'...'
-    TabOrder = 7
+    TabOrder = 2
     Visible = False
   end
-  object PivotMap14: TPivotMap
-    Cube = PivotCube14
-    Columns = <>
-    Rows = <
-      item
-        Name = 'PREDPR'
-      end
-      item
-        Name = 'REU'
-      end
-      item
-        Name = 'PREDPR_DET'
-      end
-      item
-        Name = 'TYPE'
-      end
-      item
-        Name = 'STATUS'
-      end
-      item
-        Name = 'USL'
-      end
-      item
-        Name = 'USLM'
-      end
-      item
-        Name = 'ORG'
-      end
-      item
-        Name = 'PSCH'
-      end>
-    HideEmptyRows = True
-    HideEmptyColumns = True
-    TableMode = True
-    DDirection = True
-    AutoSaveMap = False
-    AutoExpand = True
-    Left = 64
-    Top = 168
-  end
-  object PivotCube14: TPivotCube
-    FactTableDataSet = DM_Olap.Uni_Data
-    Dimensions = <
-      item
-        Enabled = True
-        AliasName = 'MG1'
-        FieldName = 'MG1'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1055#1077#1088#1080#1086#1076
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'PREDPR'
-        FieldName = 'PREDPR'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1060#1086#1085#1076
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'REU'
-        FieldName = 'REU'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1046#1069#1054
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'PREDPR_DET'
-        FieldName = 'PREDPR_DET'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1040#1076#1088'.'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'TYPE'
-        FieldName = 'TYPE'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DescriptionField = 'TYPE'
-        DisplayName = #1058#1080#1087
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'STATUS'
-        FieldName = 'STATUS'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DescriptionField = 'STATUS'
-        DisplayName = #1057#1090#1072#1090#1091#1089
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'ORG'
-        FieldName = 'ORG'
-        DataSet = DM_Olap.OD_org
-        KeyField = 'kod'
-        LookupField = 'NAME'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DescriptionField = 'ORG'
-        DisplayName = #1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'NAME_GR'
-        FieldName = 'NAME_GR'
-        DataSet = DM_Olap.Uni_Data
-        KeyField = 'NAME_GR'
-        LookupField = 'NAME_GR'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1059#1095#1072#1089#1090#1086#1082
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'LSK'
-        FieldName = 'LSK'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1051'/C'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'ODPU_EX'
-        FieldName = 'ODPU_EX'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1054#1044#1055#1059
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'OTHER_NAME'
-        FieldName = 'OTHER_NAME'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1055#1088#1086#1095#1080#1077' '#1086#1088#1075'.'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'VAL_GROUP2'
-        FieldName = 'VAL_GROUP2'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1053#1086#1088#1084#1072#1090#1080#1074
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'USL'
-        FieldName = 'USL'
-        DataSet = DM_Olap.OD_usl_olap
-        KeyField = 'USL'
-        LookupField = 'NM'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1059#1089#1083#1091#1075#1072' '#1076#1077#1090'.'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'USLM'
-        FieldName = 'USLM'
-        DataSet = DM_Olap.OD_uslm_olap
-        KeyField = 'USLM'
-        LookupField = 'NM1'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1059#1089#1083#1091#1075#1072
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'FK_LSK_TP'
-        FieldName = 'FK_LSK_TP'
-        DataSet = DM_Olap.Uni_Data
-        KeyField = 'ID'
-        LookupField = 'NAME'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1058#1080#1087' '#1083#1080#1094'.'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'PSCH'
-        FieldName = 'PSCH'
-        DataSet = DM_Olap.OD_psch_olap
-        KeyField = 'ID'
-        LookupField = 'NAME'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1055#1088#1080#1079#1085#1072#1082
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'GRP'
-        FieldName = 'GRP'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DescriptionField = 'GRP'
-        DisplayName = #1043#1088#1091#1087#1087#1072
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'IsHotPipe'
-        FieldName = 'IsHotPipe'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1043#1042' '#1048#1079#1086#1083
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'isTowel'
-        FieldName = 'isTowel'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1055#1086#1083#1086#1090'.'#1089#1091#1096
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'fio'
-        FieldName = 'fio'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1060'.'#1048'.'#1054'.'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end>
-    LNG.Strings = (
-      'RowTotalName='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1056#1054#1050#1040#1052
-      'ColumnTotalName='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1054#1051#1041#1062#1040#1052
-      'PanelRowsCaption='#1057#1090#1088#1086#1082#1072
-      'PanelColumnsCaption='#1057#1090#1086#1083#1073#1077#1094
-      'PanelDimsCaption='#1060#1080#1083#1100#1090#1088
-      'CustomFilter='#1060#1080#1083#1100#1090#1088
-      
-        'pvToolBarCollapseError=Could not collapse TOOLBAR without border' +
-        ' alignment'
-      
-        'pvToolBarTreeFilterWarn=Cannot use incremental filtering on hier' +
-        'arhical dimensions!'
-      'pvToolBarNoFilter='#1053#1077#1090' '#1092#1080#1083#1100#1090#1088#1072
-      'pvToolBarCustomFilter='#1048#1089#1087#1086#1083#1100#1079'.'#1092#1080#1083#1100#1090#1088
-      'pvCubeErr1=Could not load dimension data!'
-      'pvCubeErr2=Could not load measure data!'
-      'pvCubeErr3=: You must specify dataset for dimension!'
-      
-        'pvCubeErr4=Could not load dimension items! Dimension: %s  Dimens' +
-        'ion item: %s'
-      'pvCubeErr5=Could not start building cube! Unknown error'
-      
-        'pvCubeErr6=You must set appropriate EventHandler for custom wrap' +
-        'ped dimensions! : %s'
-      'pvCubeErr7=You must set FactTableDataSet property!'
-      'pvCubeErr8=You must set at least ONE measure'
-      'pvCubeErr9=You must set at least ONE dimension'
-      'pvMapErr1='#1054#1096#1080#1073#1086#1095#1085#1099#1081' '#1080#1085#1076#1077#1082#1089
-      'pvMapErr2='#1054#1076#1085#1086' '#1080#1079#1084#1077#1088#1077#1085#1080#1077' '#1076#1086#1083#1078#1085#1086' '#1073#1099#1090#1100' '#1074#1080#1076#1080#1084#1099#1084'!'
-      'pvGridExcel0=Export note'
-      
-        'pvGridExcel1=Number of columns more than 256. Only first 255 col' +
-        'umns will be exported!'
-      'pvGridExcel2=Number of columns must be more than 0!'
-      'pvGridExcel3=Number of rows must be more than 0!'
-      
-        'pvGridExcel4=Could not export data to Excel! Check your MS Excel' +
-        ' installation'
-      'pvAMFAddMeasureForm=Calculated measures manager'
-      'pvAMFAddMeasureBtn='#1044#1086#1073#1072#1074#1080#1090#1100' '#1085#1086#1074#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFEditMeasureBtn='#1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1080#1084#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFDelMeasureBtn='#1059#1076#1072#1083#1080#1090#1100' '#1087#1086#1076#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFCalcLabel='#1055#1086#1076#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFCalcEditLabel='#1048#1089#1087#1086#1083#1100#1079#1091#1077#1084#1072#1103' '#1092#1086#1088#1084#1091#1083#1072
-      'pvAMFMeasureLabel='#1048#1084#1077#1102#1097#1080#1077#1089#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFViewsLabel='#1048#1084#1077#1102#1097#1080#1077#1089#1103' '#1082#1091#1088#1089#1086#1088#1099
-      'pvAMFCheckBtn='#1055#1088#1086#1074#1077#1088#1100#1090#1077' '#1092#1086#1088#1084#1091#1083#1091
-      'pvAMFSynaxError='#1057#1080#1085#1090#1072#1082#1089#1080#1095#1077#1089#1082#1072#1103' '#1086#1096#1080#1073#1082#1072
-      'pvAMFFormulaError=: '#1054#1096#1080#1073#1082#1072' '#1074' '#1092#1086#1088#1084#1091#1083#1077
-      'pvAMFDuplicateError='#1044#1091#1073#1083#1080#1088#1091#1077#1097#1077#1077#1089#1103' '#1080#1084#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFCheckOKName='#1054#1090#1084#1077#1095#1077#1085#1086'!'
-      'pvToolBarDDOKBtnHint='#1055#1088#1080#1085#1103#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
-      'pvToolBarDDCancelBtnHint='#1054#1090#1084#1077#1085#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
-      'pvToolBarDDFillBtnHint='#1042#1099#1076#1077#1083#1080#1090#1100' '#1074#1089#1077
-      'pvToolBarDDClearBtnHint='#1054#1090#1084#1077#1085#1080#1090#1100' '#1074#1089#1077
-      'pvToolBarDDRevertBtnHint='#1048#1085#1074#1077#1088#1090#1080#1088#1086#1074#1072#1090#1100
-      'pvToolBarDDExpandBtnHint='#1056#1072#1079#1074#1077#1088#1085#1091#1090#1100' '#1074#1089#1077' '#1074#1077#1090#1082#1080
-      'pvMapValueName='#1047#1085#1072#1095#1077#1085#1080#1077
-      'pvMapRowPercentName='#1055#1088#1086#1094#1077#1085#1090' '#1087#1086' '#1057#1090#1088#1086#1082#1072#1084
-      'pvMapColPercentName='#1055#1088#1086#1094#1077#1085#1090' '#1087#1086' '#1057#1090#1086#1083#1073#1094#1072#1084
-      'pvMapRecordCountName='#1050#1086#1083'-'#1074#1086
-      'pvMapRankName='#1056#1072#1085#1075'['#1057#1090#1086#1083#1073#1077#1094']'
-      'pvMapRankRName='#1056#1072#1085#1075'['#1057#1090#1088#1086#1082#1072']'
-      'pvMapSubPrevCName='#1056#1072#1079#1085#1080#1094#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1080#1084' '#1057#1090#1086#1083#1073#1094#1086#1084
-      'pvMapSubPrevRName='#1056#1072#1079#1085#1080#1094#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1077#1081' '#1057#1090#1088#1086#1082#1086#1081
-      'pvMapAddPrevCName='#1057#1091#1084#1084#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1080#1084' '#1057#1090#1086#1083#1073#1094#1086#1084
-      'pvMapAddPrevRName='#1057#1091#1084#1084#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1077#1081' '#1057#1090#1088#1086#1082#1086#1081
-      'pvMapRunningTotalName1='#1053#1072#1088#1072#1089#1090#1072#1102#1097#1077#1081' '#1048#1090#1086#1075' '#1087#1086' '#1057#1090#1086#1083#1073#1094#1091
-      'pvMapRunningTotalName2='#1053#1072#1088#1072#1089#1090#1072#1102#1097#1077#1081' '#1048#1090#1086#1075' '#1087#1086' '#1057#1090#1088#1086#1082#1077
-      'pvBtnHintAccept='#1055#1086#1076#1090#1074#1077#1088#1076#1080#1090#1100
-      'pvBtnHintCancel='#1054#1090#1084#1077#1085#1080#1090#1100
-      'pvBtnHintExpandTree='#1056#1072#1079#1074#1077#1088#1085#1091#1090#1100'/'#1057#1074#1077#1088#1085#1091#1090#1100' '#1074#1077#1090#1082#1080
-      'pvBtnHintCalcMeasureDialog='#1042#1082#1083'. '#1076#1080#1072#1083#1086#1075' '#1056#1072#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1075#1086' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintMeasureFillEnable='#1042#1099#1076#1077#1083#1080#1090#1100' '#1074#1089#1077
-      'pvBtnHintMeasureFillDisable='#1054#1090#1084#1077#1090#1080#1090#1100' '#1074#1089#1077
-      'pvBtnHintMeasureRevert='#1055#1077#1088#1077#1082#1083#1102#1095#1080#1090#1100' '#1089#1086#1089#1090#1086#1103#1085#1080#1077' '#1077#1076'.'#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimFillActive='#1042#1080#1076#1080#1084#1099' '#1074#1089#1077' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintDimFillHided='#1053#1077' '#1074#1080#1076#1080#1084#1099' '#1074#1089#1077' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintDimFillFiltered='#1060#1080#1083#1100#1090#1088#1086#1074#1072#1090#1100' '#1074#1089#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimRevert='#1062#1080#1082#1083#1080#1095#1085#1099#1081' '#1089#1076#1074#1080#1075' '#1089#1086#1089#1090#1086#1103#1085#1080#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimAddGroup='#1044#1086#1073#1072#1074#1080#1090#1100' '#1080#1077#1088#1072#1088#1093#1080#1095#1077#1089#1082#1091#1102' '#1075#1088#1091#1087#1087#1091
-      'pvBtnHintDimDelGroup='#1059#1076#1072#1083#1080#1090#1100' '#1080#1077#1088#1072#1088#1093#1080#1095#1077#1089#1082#1091#1102' '#1075#1088#1091#1087#1087#1091
-      'mbFormCaption='#1055#1086#1089#1090#1088#1086#1080#1090#1077#1083#1100' '#1079#1072#1087#1088#1086#1089#1072
-      'mbRowsCaption='#1057#1090#1088#1086#1082#1080
-      'mbColumnsCaption='#1057#1090#1086#1083#1073#1094#1099
-      'mbDimsCaption='#1048#1079#1084#1077#1088#1077#1085#1080#1103
-      'mbDisabledDimsCaption='#1053#1077#1072#1082#1090#1080#1074#1085#1099#1077' '#1048#1079#1084#1077#1088#1077#1085#1080#1103
-      
-        'mbRunEditBtnHint='#1054#1090#1082#1088#1099#1090#1100' '#1088#1077#1076#1072#1082#1090#1086#1088' '#1080#1079#1084#1077#1088#1077#1085#1080#1081' '#1076#1083#1103' '#1074#1099#1073#1088#1072#1085#1085#1099#1093' '#1080#1079#1084#1077#1088#1077 +
-        #1085#1080#1081
-      
-        'mbTreeViewHint=Drag'#39'n'#39'Drop dimension lable to choosen group. Dbl' +
-        '-click to run dimension editor'
-      'DimensionFormCaption='#1056#1077#1076#1072#1082#1090#1086#1088' '#1048#1079#1084#1077#1088#1077#1085#1080#1081' :'
-      'dimDisplayName='#1047#1072#1075#1086#1083#1086#1074#1086#1082
-      'dimCount='#1050#1086#1083'-'#1074#1086' '#1086#1073#1098#1077#1082#1090#1086#1074
-      'dimSOrtBtn='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072
-      'dimSortBtnHint='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072
-      'dimActiveItems='#1040#1082#1090#1080#1074#1085#1099#1077' '#1086#1073#1098#1077#1082#1090#1099
-      'dimInActiveItems='#1061#1088#1072#1085#1080#1083#1080#1097#1077'('#1085#1077' '#1072#1082#1090#1080#1074#1085#1099#1077' '#1086#1073#1098#1077#1082#1090#1099')'
-      'dimFilterError='#1050#1072#1082' '#1084#1080#1085#1080#1084#1091#1084' '#1086#1076#1085#1086' '#1080#1079#1084#1077#1088#1077#1085#1080#1077' '#1076#1086#1083#1078#1085#1086' '#1073#1099#1090#1100' '#1072#1082#1090#1080#1074#1085#1099#1084'!'
-      'dimSearch='#1053#1072#1081#1090#1080
-      
-        'dimTVHint=Drag'#39'n'#39'drop selected item(s) to group or repository ar' +
-        'ea'
-      'dimSortByName='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072' '#1087#1086' '#1080#1084#1077#1085#1080
-      'dimSortByKey='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072' '#1087#1086' '#1082#1083#1102#1095#1091
-      'dimNoSort='#1041#1077#1079' '#1089#1086#1088#1090#1080#1088#1086#1074#1082#1080
-      'dimSortAscending='#1055#1086' '#1074#1086#1079#1088#1072#1089#1090#1072#1102#1097#1077#1081
-      'dimSortDescending='#1055#1086' '#1091#1073#1099#1074#1072#1102#1097#1077#1081
-      'dimForecastingCB1=Enable prev. forecast value'
-      'dimForecastingCB2=Enable next. forecast value'
-      'dimForecastingType=Forecasting method'
-      'dimForecastingMethod1=Simple moving average'
-      'dimForecastingMethod2=Weighted Moving Average'
-      'dimForecastingMethod3=Double Exponential Smoothing'
-      'dimForecastingMethod4=Triple Exponential Smoothing'
-      'dimForecastingMethod5=Show Data Margins Only'
-      'dimForecastingMethod6=Show First and Last members'
-      'MeasureCommonFormCaption='#1055#1086#1089#1090#1088#1086#1080#1090#1077#1083#1100' '#1079#1085#1072#1095#1077#1085#1080#1081
-      'MFormatBtnName=Build format'
-      'MFormatFormCaption=Build format string'
-      'pvMapMVFmt0=Change measure type'
-      'pvMapMVFmt1=Cell'
-      'pvMapMVFmt2=Percent by Column'
-      'pvMapMVFmt3=Percent by Row'
-      'pvMapMVFmt4=Record count'
-      'pvMapMVFmt5=Rank by Column'
-      'pvMapMVFmt6=Rank by Row'
-      'pvMapMVFmt7=Previous member by Row'
-      'pvMapMVFmt8=Next member by Row'
-      'pvMapMVFmt9=Previous member by Column'
-      'pvMapMVFmt10=Next member by Column'
-      'pvMapMVFmt11=Running Total by Column'
-      'pvMapMVFmt12=Running Total by Row'
-      'pmMapMVOp1=Value'
-      'pmMapMVOp2=Subtract'
-      'pmMapMVOp3=Add'
-      'pmMapMVOp4=Divide'
-      'pmMapMVOp5=Multiply'
-      'pvMeasureCommon5=Min. value'
-      'pvMeasureCommon6=Max. value'
-      'pvMeasureCommon9=Value'
-      'pvMeasureCommon10=Operation'
-      'pvMeasureCommon11=Only one measure visible'
-      'pvMeasureCommon12=Value representation'
-      'pvMeasureCommon13=Filters'
-      'pvMeasureCommon14=Filter by Map cells'
-      'pvMeasureCommon15=Filter by fact table records'
-      'pvMeasureCommon16=Measure formating'
-      'pvMeasureCommon17=Formula (is calculated measure)'
-      'pvMeasureCommon18=Enabled'
-      'pvMeasureCommon19=Running Total by Column'
-      'pvMeasureCommon20=Running Total by Row'
-      'pvMeasureCommon21=Display caption'
-      'MeasureFilterError= Measure filter error'
-      'mfeWrongValue=Wrong value in  measure filter:'
-      'MeasureCommonFormDistinctName=Distinct'
-      'pvgSearchFormCaption=Search'
-      'pvgSearchArea=Search area'
-      'pvgSearchRow=Row header'
-      'pvgSearchCol=Column header'
-      'pvgSearchText=Text for search'
-      'pvgSearch1=Next'
-      'pvgSearch2=Forward'
-      'pvgSearch3=Case sensitive'
-      'pvgSearchBtn=Find again'
-      'pvgSearchFinish=Cannot find more'
-      'uHtmBuildHeaders=building headers...'
-      'uHtmPreparing=prepearing...'
-      'uHtmColTotal='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1054#1051#1041#1062#1040#1052
-      'uHtmRowTotal='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1056#1054#1050#1040#1052
-      'uHtmExportColHeader=exporting column headers...'
-      
-        'uHtmExportCells=exporting row headers, cell values and row total' +
-        's...'
-      'uHtmExportColTotal=exporting column totals...'
-      'uHtmSave=saving and executing...'
-      'uHtmLabel=Action...'
-      'ChartDDRows='#1057#1090#1088#1086#1082#1080
-      'ChartDDColumns='#1057#1090#1086#1083#1073#1094#1099
-      'ddChartViews=Views'
-      'ddChartLegend='#1051#1077#1075#1077#1085#1076#1072
-      'ddChartMarks=Marks'
-      'ChartXNextPage=Next page'
-      'ChartXPrevPage=Prev. page'
-      'CubeButtonCaption=Cube'
-      'ChartButtonCaption=Chart'
-      'pvGridSubTotal=Subtotal'
-      'pvGridSubTotalwName=Sub-total by '
-      'MFormatCount=3'
-      'MFormatName0=Generic'
-      'MFormatValue0=#0.00'
-      'MFormatName1=Price (US)'
-      'MFormatValue1=$ #0.00'
-      'MFormatName2=Summa'
-      'MFormatValue2=# ##0.00'
-      'MFormatCap1=Predefined formats'
-      'MFormatCap2=Format string'
-      'MFormatCap3=Number of decimals'
-      'MFormatCap4=Before'
-      'MFormatCap5=After'
-      'MFormatCap6=Design'
-      'MFormatCap7=Symbol'
-      'MFormatCap8=Example'
-      'MFormatCap9=Thousand separator'
-      'uXLSActionLabel=Action'
-      'uXLSAction1=Prepearing basic fonts'
-      'uXLSAction2=Prepearing basic formats'
-      'uXLSAction3=Applying row totals headers merging'
-      'uXLSAction4=Applying cells format'
-      'uXLSAction5=Applying columns headers merging'
-      'uXLSAction6=Applying rows headers merging'
-      'uXLSAction7=Applying column totals headers merging'
-      'uXLSAction8=Applying auto width for columns'
-      'uXLActionLabel=Action'
-      'uXLAction1=Prepearing cells array'
-      'uXLAction2=Prepearing column headers'
-      'uXLAction3=Processing'
-      'uXLAction4=Merging column headers'
-      'uXLAction5=Merging row headers'
-      'uXLAction6=Merging row total headers'
-      'uXLAction7=Applying cells format'
-      'pvGridPrint1=Print All'
-      'pvGridPrint2=Print selected'
-      'pvGridPrint3=Right click to scale menu'
-      'uXLSActionLabel2=Action progress'
-      'uXLSActionLabel2=Full progress'
-      'uHtmLabel2=Action progress'
-      'uHtmLabel3=Full progress'
-      'pvGridEditor1=Table'
-      'pvGridEditor2=Chart'
-      'pvGridEditor3=Method'
-      'pvGridEditor4=Summa'
-      'pvGridEditor5=Count'
-      'pvGridEditor6=Average'
-      'pvGridEditor7=Equal'
-      'pvGridEditor8=Proportional'
-      'pvGridPrint4=Print preview'
-      'pvGridPrint5=Scale page'
-      'pvGridPrint6=Scale print'
-      'pvGridPrint7=Fit page'
-      'pvGridPrint8=Fit width'
-      'pvGridPrint9=Fit height'
-      'pvGridPrint10=50%'
-      'pvGridPrint11=100%'
-      'pvGridPrint12=200%'
-      'pvGridPrint13=400%'
-      'pvGridPrintLocked=Process locked! Please wait....')
-    Measures = <
-      item
-        AliasName = 'INDEBET'
-        FieldName = 'INDEBET'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1042#1093'.'#1044#1077#1073#1077#1090
-      end
-      item
-        AliasName = 'INKREDIT'
-        FieldName = 'INKREDIT'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1042#1093'.'#1050#1088#1077#1076#1080#1090
-      end
-      item
-        AliasName = 'CHARGES'
-        FieldName = 'CHARGES'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1053#1072#1095#1080#1089#1083#1077#1085#1080#1077
-      end
-      item
-        AliasName = 'CHANGES'
-        FieldName = 'CHANGES'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1057#1082#1080#1076#1082#1080
-      end
-      item
-        AliasName = 'CHANGES2'
-        FieldName = 'CHANGES2'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1044#1086#1073'./'#1042#1086#1079#1074#1088'.'
-      end
-      item
-        AliasName = 'CHANGES3'
-        FieldName = 'CHANGES3'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1050#1086#1088#1088'.'#1089#1072#1083'.'
-      end
-      item
-        AliasName = 'CHANGEALL'
-        FieldName = 'CHANGEALL'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1048#1079#1084#1077#1085#1077#1085#1080#1103
-      end
-      item
-        AliasName = 'SUBSID'
-        FieldName = 'SUBSID'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1057#1091#1073#1089#1080#1076#1080#1080
-      end
-      item
-        AliasName = 'PRIVS'
-        FieldName = 'PRIVS'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1051#1100#1075#1086#1090#1099
-      end
-      item
-        AliasName = 'PAYMENT'
-        FieldName = 'PAYMENT'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1054#1087#1083#1072#1090#1072
-      end
-      item
-        AliasName = 'OUTDEBET'
-        FieldName = 'OUTDEBET'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1048#1089#1093'.'#1044#1077#1073#1077#1090
-      end
-      item
-        AliasName = 'OUTKREDIT'
-        FieldName = 'OUTKREDIT'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1048#1089#1093'.'#1050#1088#1077#1076#1080#1090
-      end
-      item
-        AliasName = 'PINSAL'
-        FieldName = 'PINSAL'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1042#1093'.'#1089#1072#1083'.'#1055#1077#1085#1080
-      end
-      item
-        AliasName = 'PCUR'
-        FieldName = 'PCUR'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1053#1072#1095#1080#1089#1083'.'#1055#1077#1085#1080
-      end
-      item
-        AliasName = 'PN'
-        FieldName = 'PN'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1054#1087#1083#1072#1095'.'#1055#1077#1085#1080
-      end
-      item
-        AliasName = 'POUTSAL'
-        FieldName = 'POUTSAL'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1048#1089#1093'.'#1089#1072#1083'.'#1055#1077#1085#1080
-      end>
-    CubeName = 'test'
-    OptimizeLevel = optNormal
-    ExtendedMode = True
-    AlwaysSaveCounts = False
-    ExcludeZeros = True
-    ClearTimeInfo = True
-    Left = 32
-    Top = 168
-  end
-  object PivotCube54: TPivotCube
-    FactTableDataSet = DM_Olap.Uni_Data
-    Dimensions = <
-      item
-        Enabled = True
-        AliasName = 'LSK'
-        FieldName = 'LSK'
-        DataSet = DM_Olap.Uni_Data
-        KeyField = 'LSK'
-        LookupField = 'LSK'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1051'/'#1057
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'NAME_TR'
-        FieldName = 'NAME_TR'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1060#1086#1085#1076
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'NAME_REU'
-        FieldName = 'NAME_REU'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1046#1069#1054
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'ADR'
-        FieldName = 'ADR'
-        DataSet = DM_Olap.Uni_Data
-        KeyField = 'ADR'
-        LookupField = 'ADR'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1040#1076#1088#1077#1089
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'FIO'
-        FieldName = 'FIO'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1060'.'#1048'.'#1054'.'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'CNT_MONTH'
-        FieldName = 'CNT_MONTH'
-        DataSet = DM_Olap.Uni_Data
-        KeyField = 'CNT_MONTH'
-        LookupField = 'CNT_MONTH'
-        WrapTo = wt_None
-        Sorting = dmtKeySort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1052#1077#1089#1103#1094#1077#1074
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'DAT'
-        FieldName = 'DAT'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1044#1072#1090#1072
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'DEB_ORG'
-        FieldName = 'DEB_ORG'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1054#1088#1075'. '#1079#1072#1076#1086#1083#1078#1085#1080#1082#1072
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'ST_NAME'
-        FieldName = 'ST_NAME'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1057#1090#1072#1090#1091#1089
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'PSCH'
-        FieldName = 'PSCH'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1055#1088#1080#1079#1085#1072#1082
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = #1059#1083#1080#1094#1072
-        FieldName = 'STREET'
-        DataSet = DM_Olap.Uni_Data
-        KeyField = 'STREET'
-        WrapTo = wt_None
-        Sorting = dmtKeySort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1059#1083#1080#1094#1072
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = #1044#1086#1084
-        FieldName = 'ND'
-        DataSet = DM_Olap.Uni_Data
-        KeyField = 'ND'
-        WrapTo = wt_None
-        Sorting = dmtKeySort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1044#1086#1084
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = #1050#1074
-        FieldName = 'KW'
-        DataSet = DM_Olap.Uni_Data
-        KeyField = 'KW'
-        WrapTo = wt_None
-        Sorting = dmtKeySort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1050#1074
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end>
-    LNG.Strings = (
-      'RowTotalName='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1056#1054#1050#1040#1052
-      'ColumnTotalName='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1054#1051#1041#1062#1040#1052
-      'PanelRowsCaption='#1057#1090#1088#1086#1082#1072
-      'PanelColumnsCaption='#1057#1090#1086#1083#1073#1077#1094
-      'PanelDimsCaption='#1060#1080#1083#1100#1090#1088
-      'CustomFilter='#1060#1080#1083#1100#1090#1088
-      
-        'pvToolBarCollapseError=Could not collapse TOOLBAR without border' +
-        ' alignment'
-      
-        'pvToolBarTreeFilterWarn=Cannot use incremental filtering on hier' +
-        'arhical dimensions!'
-      'pvToolBarNoFilter='#1053#1077#1090' '#1092#1080#1083#1100#1090#1088#1072
-      'pvToolBarCustomFilter='#1048#1089#1087#1086#1083#1100#1079'.'#1092#1080#1083#1100#1090#1088
-      'pvCubeErr1=Could not load dimension data!'
-      'pvCubeErr2=Could not load measure data!'
-      'pvCubeErr3=: You must specify dataset for dimension!'
-      
-        'pvCubeErr4=Could not load dimension items! Dimension: %s  Dimens' +
-        'ion item: %s'
-      'pvCubeErr5=Could not start building cube! Unknown error'
-      
-        'pvCubeErr6=You must set appropriate EventHandler for custom wrap' +
-        'ped dimensions! : %s'
-      'pvCubeErr7=You must set FactTableDataSet property!'
-      'pvCubeErr8=You must set at least ONE measure'
-      'pvCubeErr9=You must set at least ONE dimension'
-      'pvMapErr1='#1054#1096#1080#1073#1086#1095#1085#1099#1081' '#1080#1085#1076#1077#1082#1089
-      'pvMapErr2='#1054#1076#1085#1086' '#1080#1079#1084#1077#1088#1077#1085#1080#1077' '#1076#1086#1083#1078#1085#1086' '#1073#1099#1090#1100' '#1074#1080#1076#1080#1084#1099#1084'!'
-      'pvGridExcel0=Export note'
-      
-        'pvGridExcel1=Number of columns more than 256. Only first 255 col' +
-        'umns will be exported!'
-      'pvGridExcel2=Number of columns must be more than 0!'
-      'pvGridExcel3=Number of rows must be more than 0!'
-      
-        'pvGridExcel4=Could not export data to Excel! Check your MS Excel' +
-        ' installation'
-      'pvAMFAddMeasureForm=Calculated measures manager'
-      'pvAMFAddMeasureBtn='#1044#1086#1073#1072#1074#1080#1090#1100' '#1085#1086#1074#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFEditMeasureBtn='#1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1080#1084#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFDelMeasureBtn='#1059#1076#1072#1083#1080#1090#1100' '#1087#1086#1076#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFCalcLabel='#1055#1086#1076#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFCalcEditLabel='#1048#1089#1087#1086#1083#1100#1079#1091#1077#1084#1072#1103' '#1092#1086#1088#1084#1091#1083#1072
-      'pvAMFMeasureLabel='#1048#1084#1077#1102#1097#1080#1077#1089#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFViewsLabel='#1048#1084#1077#1102#1097#1080#1077#1089#1103' '#1082#1091#1088#1089#1086#1088#1099
-      'pvAMFCheckBtn='#1055#1088#1086#1074#1077#1088#1100#1090#1077' '#1092#1086#1088#1084#1091#1083#1091
-      'pvAMFSynaxError='#1057#1080#1085#1090#1072#1082#1089#1080#1095#1077#1089#1082#1072#1103' '#1086#1096#1080#1073#1082#1072
-      'pvAMFFormulaError=: '#1054#1096#1080#1073#1082#1072' '#1074' '#1092#1086#1088#1084#1091#1083#1077
-      'pvAMFDuplicateError='#1044#1091#1073#1083#1080#1088#1091#1077#1097#1077#1077#1089#1103' '#1080#1084#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFCheckOKName='#1054#1090#1084#1077#1095#1077#1085#1086'!'
-      'pvToolBarDDOKBtnHint='#1055#1088#1080#1085#1103#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
-      'pvToolBarDDCancelBtnHint='#1054#1090#1084#1077#1085#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
-      'pvToolBarDDFillBtnHint='#1042#1099#1076#1077#1083#1080#1090#1100' '#1074#1089#1077
-      'pvToolBarDDClearBtnHint='#1054#1090#1084#1077#1085#1080#1090#1100' '#1074#1089#1077
-      'pvToolBarDDRevertBtnHint='#1048#1085#1074#1077#1088#1090#1080#1088#1086#1074#1072#1090#1100
-      'pvToolBarDDExpandBtnHint='#1056#1072#1079#1074#1077#1088#1085#1091#1090#1100' '#1074#1089#1077' '#1074#1077#1090#1082#1080
-      'pvMapValueName='#1047#1085#1072#1095#1077#1085#1080#1077
-      'pvMapRowPercentName='#1055#1088#1086#1094#1077#1085#1090' '#1087#1086' '#1057#1090#1088#1086#1082#1072#1084
-      'pvMapColPercentName='#1055#1088#1086#1094#1077#1085#1090' '#1087#1086' '#1057#1090#1086#1083#1073#1094#1072#1084
-      'pvMapRecordCountName='#1050#1086#1083'-'#1074#1086
-      'pvMapRankName='#1056#1072#1085#1075'['#1057#1090#1086#1083#1073#1077#1094']'
-      'pvMapRankRName='#1056#1072#1085#1075'['#1057#1090#1088#1086#1082#1072']'
-      'pvMapSubPrevCName='#1056#1072#1079#1085#1080#1094#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1080#1084' '#1057#1090#1086#1083#1073#1094#1086#1084
-      'pvMapSubPrevRName='#1056#1072#1079#1085#1080#1094#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1077#1081' '#1057#1090#1088#1086#1082#1086#1081
-      'pvMapAddPrevCName='#1057#1091#1084#1084#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1080#1084' '#1057#1090#1086#1083#1073#1094#1086#1084
-      'pvMapAddPrevRName='#1057#1091#1084#1084#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1077#1081' '#1057#1090#1088#1086#1082#1086#1081
-      'pvMapRunningTotalName1='#1053#1072#1088#1072#1089#1090#1072#1102#1097#1077#1081' '#1048#1090#1086#1075' '#1087#1086' '#1057#1090#1086#1083#1073#1094#1091
-      'pvMapRunningTotalName2='#1053#1072#1088#1072#1089#1090#1072#1102#1097#1077#1081' '#1048#1090#1086#1075' '#1087#1086' '#1057#1090#1088#1086#1082#1077
-      'pvBtnHintAccept='#1055#1086#1076#1090#1074#1077#1088#1076#1080#1090#1100
-      'pvBtnHintCancel='#1054#1090#1084#1077#1085#1080#1090#1100
-      'pvBtnHintExpandTree='#1056#1072#1079#1074#1077#1088#1085#1091#1090#1100'/'#1057#1074#1077#1088#1085#1091#1090#1100' '#1074#1077#1090#1082#1080
-      'pvBtnHintCalcMeasureDialog='#1042#1082#1083'. '#1076#1080#1072#1083#1086#1075' '#1056#1072#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1075#1086' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintMeasureFillEnable='#1042#1099#1076#1077#1083#1080#1090#1100' '#1074#1089#1077
-      'pvBtnHintMeasureFillDisable='#1054#1090#1084#1077#1090#1080#1090#1100' '#1074#1089#1077
-      'pvBtnHintMeasureRevert='#1055#1077#1088#1077#1082#1083#1102#1095#1080#1090#1100' '#1089#1086#1089#1090#1086#1103#1085#1080#1077' '#1077#1076'.'#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimFillActive='#1042#1080#1076#1080#1084#1099' '#1074#1089#1077' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintDimFillHided='#1053#1077' '#1074#1080#1076#1080#1084#1099' '#1074#1089#1077' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintDimFillFiltered='#1060#1080#1083#1100#1090#1088#1086#1074#1072#1090#1100' '#1074#1089#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimRevert='#1062#1080#1082#1083#1080#1095#1085#1099#1081' '#1089#1076#1074#1080#1075' '#1089#1086#1089#1090#1086#1103#1085#1080#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimAddGroup='#1044#1086#1073#1072#1074#1080#1090#1100' '#1080#1077#1088#1072#1088#1093#1080#1095#1077#1089#1082#1091#1102' '#1075#1088#1091#1087#1087#1091
-      'pvBtnHintDimDelGroup='#1059#1076#1072#1083#1080#1090#1100' '#1080#1077#1088#1072#1088#1093#1080#1095#1077#1089#1082#1091#1102' '#1075#1088#1091#1087#1087#1091
-      'mbFormCaption='#1055#1086#1089#1090#1088#1086#1080#1090#1077#1083#1100' '#1079#1072#1087#1088#1086#1089#1072
-      'mbRowsCaption='#1057#1090#1088#1086#1082#1080
-      'mbColumnsCaption='#1057#1090#1086#1083#1073#1094#1099
-      'mbDimsCaption='#1048#1079#1084#1077#1088#1077#1085#1080#1103
-      'mbDisabledDimsCaption='#1053#1077#1072#1082#1090#1080#1074#1085#1099#1077' '#1048#1079#1084#1077#1088#1077#1085#1080#1103
-      
-        'mbRunEditBtnHint='#1054#1090#1082#1088#1099#1090#1100' '#1088#1077#1076#1072#1082#1090#1086#1088' '#1080#1079#1084#1077#1088#1077#1085#1080#1081' '#1076#1083#1103' '#1074#1099#1073#1088#1072#1085#1085#1099#1093' '#1080#1079#1084#1077#1088#1077 +
-        #1085#1080#1081
-      
-        'mbTreeViewHint=Drag'#39'n'#39'Drop dimension lable to choosen group. Dbl' +
-        '-click to run dimension editor'
-      'DimensionFormCaption='#1056#1077#1076#1072#1082#1090#1086#1088' '#1048#1079#1084#1077#1088#1077#1085#1080#1081' :'
-      'dimDisplayName='#1047#1072#1075#1086#1083#1086#1074#1086#1082
-      'dimCount='#1050#1086#1083'-'#1074#1086' '#1086#1073#1098#1077#1082#1090#1086#1074
-      'dimSOrtBtn='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072
-      'dimSortBtnHint='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072
-      'dimActiveItems='#1040#1082#1090#1080#1074#1085#1099#1077' '#1086#1073#1098#1077#1082#1090#1099
-      'dimInActiveItems='#1061#1088#1072#1085#1080#1083#1080#1097#1077'('#1085#1077' '#1072#1082#1090#1080#1074#1085#1099#1077' '#1086#1073#1098#1077#1082#1090#1099')'
-      'dimFilterError='#1050#1072#1082' '#1084#1080#1085#1080#1084#1091#1084' '#1086#1076#1085#1086' '#1080#1079#1084#1077#1088#1077#1085#1080#1077' '#1076#1086#1083#1078#1085#1086' '#1073#1099#1090#1100' '#1072#1082#1090#1080#1074#1085#1099#1084'!'
-      'dimSearch='#1053#1072#1081#1090#1080
-      
-        'dimTVHint=Drag'#39'n'#39'drop selected item(s) to group or repository ar' +
-        'ea'
-      'dimSortByName='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072' '#1087#1086' '#1080#1084#1077#1085#1080
-      'dimSortByKey='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072' '#1087#1086' '#1082#1083#1102#1095#1091
-      'dimNoSort='#1041#1077#1079' '#1089#1086#1088#1090#1080#1088#1086#1074#1082#1080
-      'dimSortAscending='#1055#1086' '#1074#1086#1079#1088#1072#1089#1090#1072#1102#1097#1077#1081
-      'dimSortDescending='#1055#1086' '#1091#1073#1099#1074#1072#1102#1097#1077#1081
-      'dimForecastingCB1=Enable prev. forecast value'
-      'dimForecastingCB2=Enable next. forecast value'
-      'dimForecastingType=Forecasting method'
-      'dimForecastingMethod1=Simple moving average'
-      'dimForecastingMethod2=Weighted Moving Average'
-      'dimForecastingMethod3=Double Exponential Smoothing'
-      'dimForecastingMethod4=Triple Exponential Smoothing'
-      'dimForecastingMethod5=Show Data Margins Only'
-      'dimForecastingMethod6=Show First and Last members'
-      'MeasureCommonFormCaption='#1055#1086#1089#1090#1088#1086#1080#1090#1077#1083#1100' '#1079#1085#1072#1095#1077#1085#1080#1081
-      'MFormatBtnName=Build format'
-      'MFormatFormCaption=Build format string'
-      'pvMapMVFmt0=Change measure type'
-      'pvMapMVFmt1=Cell'
-      'pvMapMVFmt2=Percent by Column'
-      'pvMapMVFmt3=Percent by Row'
-      'pvMapMVFmt4=Record count'
-      'pvMapMVFmt5=Rank by Column'
-      'pvMapMVFmt6=Rank by Row'
-      'pvMapMVFmt7=Previous member by Row'
-      'pvMapMVFmt8=Next member by Row'
-      'pvMapMVFmt9=Previous member by Column'
-      'pvMapMVFmt10=Next member by Column'
-      'pvMapMVFmt11=Running Total by Column'
-      'pvMapMVFmt12=Running Total by Row'
-      'pmMapMVOp1=Value'
-      'pmMapMVOp2=Subtract'
-      'pmMapMVOp3=Add'
-      'pmMapMVOp4=Divide'
-      'pmMapMVOp5=Multiply'
-      'pvMeasureCommon5=Min. value'
-      'pvMeasureCommon6=Max. value'
-      'pvMeasureCommon9=Value'
-      'pvMeasureCommon10=Operation'
-      'pvMeasureCommon11=Only one measure visible'
-      'pvMeasureCommon12=Value representation'
-      'pvMeasureCommon13=Filters'
-      'pvMeasureCommon14=Filter by Map cells'
-      'pvMeasureCommon15=Filter by fact table records'
-      'pvMeasureCommon16=Measure formating'
-      'pvMeasureCommon17=Formula (is calculated measure)'
-      'pvMeasureCommon18=Enabled'
-      'pvMeasureCommon19=Running Total by Column'
-      'pvMeasureCommon20=Running Total by Row'
-      'pvMeasureCommon21=Display caption'
-      'MeasureFilterError= Measure filter error'
-      'mfeWrongValue=Wrong value in  measure filter:'
-      'MeasureCommonFormDistinctName=Distinct'
-      'pvgSearchFormCaption=Search'
-      'pvgSearchArea=Search area'
-      'pvgSearchRow=Row header'
-      'pvgSearchCol=Column header'
-      'pvgSearchText=Text for search'
-      'pvgSearch1=Next'
-      'pvgSearch2=Forward'
-      'pvgSearch3=Case sensitive'
-      'pvgSearchBtn=Find again'
-      'pvgSearchFinish=Cannot find more'
-      'uHtmBuildHeaders=building headers...'
-      'uHtmPreparing=prepearing...'
-      'uHtmColTotal='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1054#1051#1041#1062#1040#1052
-      'uHtmRowTotal='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1056#1054#1050#1040#1052
-      'uHtmExportColHeader=exporting column headers...'
-      
-        'uHtmExportCells=exporting row headers, cell values and row total' +
-        's...'
-      'uHtmExportColTotal=exporting column totals...'
-      'uHtmSave=saving and executing...'
-      'uHtmLabel=Action...'
-      'ChartDDRows='#1057#1090#1088#1086#1082#1080
-      'ChartDDColumns='#1057#1090#1086#1083#1073#1094#1099
-      'ddChartViews=Views'
-      'ddChartLegend='#1051#1077#1075#1077#1085#1076#1072
-      'ddChartMarks=Marks'
-      'ChartXNextPage=Next page'
-      'ChartXPrevPage=Prev. page'
-      'CubeButtonCaption=Cube'
-      'ChartButtonCaption=Chart'
-      'pvGridSubTotal=Subtotal'
-      'pvGridSubTotalwName=Sub-total by '
-      'MFormatCount=3'
-      'MFormatName0=Generic'
-      'MFormatValue0=#0.00'
-      'MFormatName1=Price (US)'
-      'MFormatValue1=$ #0.00'
-      'MFormatName2=Summa'
-      'MFormatValue2=# ##0.00'
-      'MFormatCap1=Predefined formats'
-      'MFormatCap2=Format string'
-      'MFormatCap3=Number of decimals'
-      'MFormatCap4=Before'
-      'MFormatCap5=After'
-      'MFormatCap6=Design'
-      'MFormatCap7=Symbol'
-      'MFormatCap8=Example'
-      'MFormatCap9=Thousand separator'
-      'uXLSActionLabel=Action'
-      'uXLSAction1=Prepearing basic fonts'
-      'uXLSAction2=Prepearing basic formats'
-      'uXLSAction3=Applying row totals headers merging'
-      'uXLSAction4=Applying cells format'
-      'uXLSAction5=Applying columns headers merging'
-      'uXLSAction6=Applying rows headers merging'
-      'uXLSAction7=Applying column totals headers merging'
-      'uXLSAction8=Applying auto width for columns'
-      'uXLActionLabel=Action'
-      'uXLAction1=Prepearing cells array'
-      'uXLAction2=Prepearing column headers'
-      'uXLAction3=Processing'
-      'uXLAction4=Merging column headers'
-      'uXLAction5=Merging row headers'
-      'uXLAction6=Merging row total headers'
-      'uXLAction7=Applying cells format'
-      'pvGridPrint1='#1055#1077#1095#1072#1090#1100' '#1074#1089#1077#1075#1086
-      'pvGridPrint2='#1055#1077#1095#1072#1090#1100' '#1074#1099#1073#1088#1072#1085#1085'.'
-      'pvGridPrint3='#1055#1088#1072#1074#1099#1081' '#1082#1083#1080#1082' - '#1084#1072#1089#1096#1090#1072#1073'.'
-      'uXLSActionLabel2=Action progress'
-      'uXLSActionLabel2=Full progress'
-      'uHtmLabel2=Action progress'
-      'uHtmLabel3=Full progress'
-      'pvGridEditor1=Table'
-      'pvGridEditor2=Chart'
-      'pvGridEditor3=Method'
-      'pvGridEditor4=Summa'
-      'pvGridEditor5=Count'
-      'pvGridEditor6=Average'
-      'pvGridEditor7=Equal'
-      'pvGridEditor8=Proportional'
-      'pvGridPrint4=Print preview'
-      'pvGridPrint5='#1052#1072#1089#1096'.'#1089#1090#1088#1072#1085#1080#1094
-      'pvGridPrint6='#1052#1072#1089#1096'.'#1087#1077#1095#1072#1090#1100
-      'pvGridPrint7='#1055#1086' '#1089#1090#1088#1072#1085#1080#1094#1077
-      'pvGridPrint8='#1055#1086' '#1096#1080#1088#1080#1085#1077
-      'pvGridPrint9='#1055#1086' '#1074#1099#1089#1086#1090#1077
-      'pvGridPrint10=50%'
-      'pvGridPrint11=100%'
-      'pvGridPrint12=200%'
-      'pvGridPrint13=400%'
-      'pvGridPrintLocked=Process locked! Please wait....')
-    Measures = <
-      item
-        AliasName = 'DOLG'
-        FieldName = 'DOLG'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1044#1086#1083#1075
-      end
-      item
-        AliasName = 'PENYA'
-        FieldName = 'PENYA'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1055#1077#1085#1103
-      end
-      item
-        AliasName = 'NACHISL'
-        FieldName = 'NACHISL'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1053#1072#1095#1080#1089#1083#1077#1085#1080#1077
-      end
-      item
-        AliasName = 'PAYMENT'
-        FieldName = 'PAYMENT'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1054#1087#1083#1072#1090#1072
-      end>
-    CubeName = 'test'
-    OptimizeLevel = optNormal
-    ExtendedMode = True
-    AlwaysSaveCounts = False
-    ExcludeZeros = True
-    ClearTimeInfo = True
-    Left = 32
-    Top = 232
-  end
-  object PivotMap54: TPivotMap
-    Cube = PivotCube54
-    Columns = <
-      item
-        Name = 'MG'
-      end>
-    Rows = <
-      item
-        Name = 'PREDPR'
-      end
-      item
-        Name = 'REU'
-      end
-      item
-        Name = 'ORG_NAME'
-      end>
-    HideEmptyRows = True
-    HideEmptyColumns = True
-    TableMode = True
-    DDirection = True
-    AutoSaveMap = False
-    AutoExpand = True
-    Left = 64
-    Top = 232
-  end
-  object PivotCube35: TPivotCube
-    FactTableDataSet = DM_Olap.Uni_Data
-    Dimensions = <
-      item
-        Enabled = True
-        AliasName = 'PREDPR'
-        FieldName = 'PREDP'
-        DataSet = DM_Olap.Uni_Data
-        KeyField = 'PREDPR'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1060#1086#1085#1076
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'REU'
-        FieldName = 'REU'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1046#1069#1054
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'PREDPR_DET'
-        FieldName = 'PREDPR_DET'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1040#1076#1088'.'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'MG_NAME'
-        FieldName = 'MG_NAME'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1055#1077#1088#1080#1086#1076
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'ORG_NAME'
-        FieldName = 'ORG_NAME'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'DAT'
-        FieldName = 'DAT'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1044#1072#1090#1072
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'VAR_NAME'
-        FieldName = 'VAR_NAME'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1042#1072#1088#1080#1072#1085#1090' '#1086#1088#1075'.'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'DOPL_NAME'
-        FieldName = 'DOPL_NAME'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1055#1077#1088#1080#1086#1076' '#1086#1087#1083#1072#1090#1099
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'NM'
-        FieldName = 'NM'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1059#1089#1083#1091#1075#1072' '#1076#1077#1090'.'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'NM1'
-        FieldName = 'NM1'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1059#1089#1083#1091#1075#1072
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'OPERNAME'
-        FieldName = 'OPERNAME'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1054#1087#1077#1088#1072#1094#1080#1103
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'CD_TP'
-        FieldName = 'CD_TP'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1058#1080#1087' '#1087#1086#1089#1090#1091#1087'.'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end>
-    LNG.Strings = (
-      'RowTotalName='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1056#1054#1050#1040#1052
-      'ColumnTotalName='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1054#1051#1041#1062#1040#1052
-      'PanelRowsCaption='#1057#1090#1088#1086#1082#1072
-      'PanelColumnsCaption='#1057#1090#1086#1083#1073#1077#1094
-      'PanelDimsCaption='#1060#1080#1083#1100#1090#1088
-      'CustomFilter='#1060#1080#1083#1100#1090#1088
-      
-        'pvToolBarCollapseError=Could not collapse TOOLBAR without border' +
-        ' alignment'
-      
-        'pvToolBarTreeFilterWarn=Cannot use incremental filtering on hier' +
-        'arhical dimensions!'
-      'pvToolBarNoFilter='#1053#1077#1090' '#1092#1080#1083#1100#1090#1088#1072
-      'pvToolBarCustomFilter='#1048#1089#1087#1086#1083#1100#1079'.'#1092#1080#1083#1100#1090#1088
-      'pvCubeErr1=Could not load dimension data!'
-      'pvCubeErr2=Could not load measure data!'
-      'pvCubeErr3=: You must specify dataset for dimension!'
-      
-        'pvCubeErr4=Could not load dimension items! Dimension: %s  Dimens' +
-        'ion item: %s'
-      'pvCubeErr5=Could not start building cube! Unknown error'
-      
-        'pvCubeErr6=You must set appropriate EventHandler for custom wrap' +
-        'ped dimensions! : %s'
-      'pvCubeErr7=You must set FactTableDataSet property!'
-      'pvCubeErr8=You must set at least ONE measure'
-      'pvCubeErr9=You must set at least ONE dimension'
-      'pvMapErr1='#1054#1096#1080#1073#1086#1095#1085#1099#1081' '#1080#1085#1076#1077#1082#1089
-      'pvMapErr2='#1054#1076#1085#1086' '#1080#1079#1084#1077#1088#1077#1085#1080#1077' '#1076#1086#1083#1078#1085#1086' '#1073#1099#1090#1100' '#1074#1080#1076#1080#1084#1099#1084'!'
-      'pvGridExcel0=Export note'
-      
-        'pvGridExcel1=Number of columns more than 256. Only first 255 col' +
-        'umns will be exported!'
-      'pvGridExcel2=Number of columns must be more than 0!'
-      'pvGridExcel3=Number of rows must be more than 0!'
-      
-        'pvGridExcel4=Could not export data to Excel! Check your MS Excel' +
-        ' installation'
-      'pvAMFAddMeasureForm=Calculated measures manager'
-      'pvAMFAddMeasureBtn='#1044#1086#1073#1072#1074#1080#1090#1100' '#1085#1086#1074#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFEditMeasureBtn='#1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1080#1084#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFDelMeasureBtn='#1059#1076#1072#1083#1080#1090#1100' '#1087#1086#1076#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFCalcLabel='#1055#1086#1076#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFCalcEditLabel='#1048#1089#1087#1086#1083#1100#1079#1091#1077#1084#1072#1103' '#1092#1086#1088#1084#1091#1083#1072
-      'pvAMFMeasureLabel='#1048#1084#1077#1102#1097#1080#1077#1089#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFViewsLabel='#1048#1084#1077#1102#1097#1080#1077#1089#1103' '#1082#1091#1088#1089#1086#1088#1099
-      'pvAMFCheckBtn='#1055#1088#1086#1074#1077#1088#1100#1090#1077' '#1092#1086#1088#1084#1091#1083#1091
-      'pvAMFSynaxError='#1057#1080#1085#1090#1072#1082#1089#1080#1095#1077#1089#1082#1072#1103' '#1086#1096#1080#1073#1082#1072
-      'pvAMFFormulaError=: '#1054#1096#1080#1073#1082#1072' '#1074' '#1092#1086#1088#1084#1091#1083#1077
-      'pvAMFDuplicateError='#1044#1091#1073#1083#1080#1088#1091#1077#1097#1077#1077#1089#1103' '#1080#1084#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFCheckOKName='#1054#1090#1084#1077#1095#1077#1085#1086'!'
-      'pvToolBarDDOKBtnHint='#1055#1088#1080#1085#1103#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
-      'pvToolBarDDCancelBtnHint='#1054#1090#1084#1077#1085#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
-      'pvToolBarDDFillBtnHint='#1042#1099#1076#1077#1083#1080#1090#1100' '#1074#1089#1077
-      'pvToolBarDDClearBtnHint='#1054#1090#1084#1077#1085#1080#1090#1100' '#1074#1089#1077
-      'pvToolBarDDRevertBtnHint='#1048#1085#1074#1077#1088#1090#1080#1088#1086#1074#1072#1090#1100
-      'pvToolBarDDExpandBtnHint='#1056#1072#1079#1074#1077#1088#1085#1091#1090#1100' '#1074#1089#1077' '#1074#1077#1090#1082#1080
-      'pvMapValueName='#1047#1085#1072#1095#1077#1085#1080#1077
-      'pvMapRowPercentName='#1055#1088#1086#1094#1077#1085#1090' '#1087#1086' '#1057#1090#1088#1086#1082#1072#1084
-      'pvMapColPercentName='#1055#1088#1086#1094#1077#1085#1090' '#1087#1086' '#1057#1090#1086#1083#1073#1094#1072#1084
-      'pvMapRecordCountName='#1050#1086#1083'-'#1074#1086
-      'pvMapRankName='#1056#1072#1085#1075'['#1057#1090#1086#1083#1073#1077#1094']'
-      'pvMapRankRName='#1056#1072#1085#1075'['#1057#1090#1088#1086#1082#1072']'
-      'pvMapSubPrevCName='#1056#1072#1079#1085#1080#1094#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1080#1084' '#1057#1090#1086#1083#1073#1094#1086#1084
-      'pvMapSubPrevRName='#1056#1072#1079#1085#1080#1094#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1077#1081' '#1057#1090#1088#1086#1082#1086#1081
-      'pvMapAddPrevCName='#1057#1091#1084#1084#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1080#1084' '#1057#1090#1086#1083#1073#1094#1086#1084
-      'pvMapAddPrevRName='#1057#1091#1084#1084#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1077#1081' '#1057#1090#1088#1086#1082#1086#1081
-      'pvMapRunningTotalName1='#1053#1072#1088#1072#1089#1090#1072#1102#1097#1077#1081' '#1048#1090#1086#1075' '#1087#1086' '#1057#1090#1086#1083#1073#1094#1091
-      'pvMapRunningTotalName2='#1053#1072#1088#1072#1089#1090#1072#1102#1097#1077#1081' '#1048#1090#1086#1075' '#1087#1086' '#1057#1090#1088#1086#1082#1077
-      'pvBtnHintAccept='#1055#1086#1076#1090#1074#1077#1088#1076#1080#1090#1100
-      'pvBtnHintCancel='#1054#1090#1084#1077#1085#1080#1090#1100
-      'pvBtnHintExpandTree='#1056#1072#1079#1074#1077#1088#1085#1091#1090#1100'/'#1057#1074#1077#1088#1085#1091#1090#1100' '#1074#1077#1090#1082#1080
-      'pvBtnHintCalcMeasureDialog='#1042#1082#1083'. '#1076#1080#1072#1083#1086#1075' '#1056#1072#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1075#1086' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintMeasureFillEnable='#1042#1099#1076#1077#1083#1080#1090#1100' '#1074#1089#1077
-      'pvBtnHintMeasureFillDisable='#1054#1090#1084#1077#1090#1080#1090#1100' '#1074#1089#1077
-      'pvBtnHintMeasureRevert='#1055#1077#1088#1077#1082#1083#1102#1095#1080#1090#1100' '#1089#1086#1089#1090#1086#1103#1085#1080#1077' '#1077#1076'.'#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimFillActive='#1042#1080#1076#1080#1084#1099' '#1074#1089#1077' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintDimFillHided='#1053#1077' '#1074#1080#1076#1080#1084#1099' '#1074#1089#1077' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintDimFillFiltered='#1060#1080#1083#1100#1090#1088#1086#1074#1072#1090#1100' '#1074#1089#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimRevert='#1062#1080#1082#1083#1080#1095#1085#1099#1081' '#1089#1076#1074#1080#1075' '#1089#1086#1089#1090#1086#1103#1085#1080#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimAddGroup='#1044#1086#1073#1072#1074#1080#1090#1100' '#1080#1077#1088#1072#1088#1093#1080#1095#1077#1089#1082#1091#1102' '#1075#1088#1091#1087#1087#1091
-      'pvBtnHintDimDelGroup='#1059#1076#1072#1083#1080#1090#1100' '#1080#1077#1088#1072#1088#1093#1080#1095#1077#1089#1082#1091#1102' '#1075#1088#1091#1087#1087#1091
-      'mbFormCaption='#1055#1086#1089#1090#1088#1086#1080#1090#1077#1083#1100' '#1079#1072#1087#1088#1086#1089#1072
-      'mbRowsCaption='#1057#1090#1088#1086#1082#1080
-      'mbColumnsCaption='#1057#1090#1086#1083#1073#1094#1099
-      'mbDimsCaption='#1048#1079#1084#1077#1088#1077#1085#1080#1103
-      'mbDisabledDimsCaption='#1053#1077#1072#1082#1090#1080#1074#1085#1099#1077' '#1048#1079#1084#1077#1088#1077#1085#1080#1103
-      
-        'mbRunEditBtnHint='#1054#1090#1082#1088#1099#1090#1100' '#1088#1077#1076#1072#1082#1090#1086#1088' '#1080#1079#1084#1077#1088#1077#1085#1080#1081' '#1076#1083#1103' '#1074#1099#1073#1088#1072#1085#1085#1099#1093' '#1080#1079#1084#1077#1088#1077 +
-        #1085#1080#1081
-      
-        'mbTreeViewHint=Drag'#39'n'#39'Drop dimension lable to choosen group. Dbl' +
-        '-click to run dimension editor'
-      'DimensionFormCaption='#1056#1077#1076#1072#1082#1090#1086#1088' '#1048#1079#1084#1077#1088#1077#1085#1080#1081' :'
-      'dimDisplayName='#1047#1072#1075#1086#1083#1086#1074#1086#1082
-      'dimCount='#1050#1086#1083'-'#1074#1086' '#1086#1073#1098#1077#1082#1090#1086#1074
-      'dimSOrtBtn='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072
-      'dimSortBtnHint='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072
-      'dimActiveItems='#1040#1082#1090#1080#1074#1085#1099#1077' '#1086#1073#1098#1077#1082#1090#1099
-      'dimInActiveItems='#1061#1088#1072#1085#1080#1083#1080#1097#1077'('#1085#1077' '#1072#1082#1090#1080#1074#1085#1099#1077' '#1086#1073#1098#1077#1082#1090#1099')'
-      'dimFilterError='#1050#1072#1082' '#1084#1080#1085#1080#1084#1091#1084' '#1086#1076#1085#1086' '#1080#1079#1084#1077#1088#1077#1085#1080#1077' '#1076#1086#1083#1078#1085#1086' '#1073#1099#1090#1100' '#1072#1082#1090#1080#1074#1085#1099#1084'!'
-      'dimSearch='#1053#1072#1081#1090#1080
-      
-        'dimTVHint=Drag'#39'n'#39'drop selected item(s) to group or repository ar' +
-        'ea'
-      'dimSortByName='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072' '#1087#1086' '#1080#1084#1077#1085#1080
-      'dimSortByKey='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072' '#1087#1086' '#1082#1083#1102#1095#1091
-      'dimNoSort='#1041#1077#1079' '#1089#1086#1088#1090#1080#1088#1086#1074#1082#1080
-      'dimSortAscending='#1055#1086' '#1074#1086#1079#1088#1072#1089#1090#1072#1102#1097#1077#1081
-      'dimSortDescending='#1055#1086' '#1091#1073#1099#1074#1072#1102#1097#1077#1081
-      'dimForecastingCB1=Enable prev. forecast value'
-      'dimForecastingCB2=Enable next. forecast value'
-      'dimForecastingType=Forecasting method'
-      'dimForecastingMethod1=Simple moving average'
-      'dimForecastingMethod2=Weighted Moving Average'
-      'dimForecastingMethod3=Double Exponential Smoothing'
-      'dimForecastingMethod4=Triple Exponential Smoothing'
-      'dimForecastingMethod5=Show Data Margins Only'
-      'dimForecastingMethod6=Show First and Last members'
-      'MeasureCommonFormCaption='#1055#1086#1089#1090#1088#1086#1080#1090#1077#1083#1100' '#1079#1085#1072#1095#1077#1085#1080#1081
-      'MFormatBtnName=Build format'
-      'MFormatFormCaption=Build format string'
-      'pvMapMVFmt0=Change measure type'
-      'pvMapMVFmt1=Cell'
-      'pvMapMVFmt2=Percent by Column'
-      'pvMapMVFmt3=Percent by Row'
-      'pvMapMVFmt4=Record count'
-      'pvMapMVFmt5=Rank by Column'
-      'pvMapMVFmt6=Rank by Row'
-      'pvMapMVFmt7=Previous member by Row'
-      'pvMapMVFmt8=Next member by Row'
-      'pvMapMVFmt9=Previous member by Column'
-      'pvMapMVFmt10=Next member by Column'
-      'pvMapMVFmt11=Running Total by Column'
-      'pvMapMVFmt12=Running Total by Row'
-      'pmMapMVOp1=Value'
-      'pmMapMVOp2=Subtract'
-      'pmMapMVOp3=Add'
-      'pmMapMVOp4=Divide'
-      'pmMapMVOp5=Multiply'
-      'pvMeasureCommon5=Min. value'
-      'pvMeasureCommon6=Max. value'
-      'pvMeasureCommon9=Value'
-      'pvMeasureCommon10=Operation'
-      'pvMeasureCommon11=Only one measure visible'
-      'pvMeasureCommon12=Value representation'
-      'pvMeasureCommon13=Filters'
-      'pvMeasureCommon14=Filter by Map cells'
-      'pvMeasureCommon15=Filter by fact table records'
-      'pvMeasureCommon16=Measure formating'
-      'pvMeasureCommon17=Formula (is calculated measure)'
-      'pvMeasureCommon18=Enabled'
-      'pvMeasureCommon19=Running Total by Column'
-      'pvMeasureCommon20=Running Total by Row'
-      'pvMeasureCommon21=Display caption'
-      'MeasureFilterError= Measure filter error'
-      'mfeWrongValue=Wrong value in  measure filter:'
-      'MeasureCommonFormDistinctName=Distinct'
-      'pvgSearchFormCaption=Search'
-      'pvgSearchArea=Search area'
-      'pvgSearchRow=Row header'
-      'pvgSearchCol=Column header'
-      'pvgSearchText=Text for search'
-      'pvgSearch1=Next'
-      'pvgSearch2=Forward'
-      'pvgSearch3=Case sensitive'
-      'pvgSearchBtn=Find again'
-      'pvgSearchFinish=Cannot find more'
-      'uHtmBuildHeaders=building headers...'
-      'uHtmPreparing=prepearing...'
-      'uHtmColTotal='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1054#1051#1041#1062#1040#1052
-      'uHtmRowTotal='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1056#1054#1050#1040#1052
-      'uHtmExportColHeader=exporting column headers...'
-      
-        'uHtmExportCells=exporting row headers, cell values and row total' +
-        's...'
-      'uHtmExportColTotal=exporting column totals...'
-      'uHtmSave=saving and executing...'
-      'uHtmLabel=Action...'
-      'ChartDDRows='#1057#1090#1088#1086#1082#1080
-      'ChartDDColumns='#1057#1090#1086#1083#1073#1094#1099
-      'ddChartViews=Views'
-      'ddChartLegend='#1051#1077#1075#1077#1085#1076#1072
-      'ddChartMarks=Marks'
-      'ChartXNextPage=Next page'
-      'ChartXPrevPage=Prev. page'
-      'CubeButtonCaption=Cube'
-      'ChartButtonCaption=Chart'
-      'pvGridSubTotal=Subtotal'
-      'pvGridSubTotalwName=Sub-total by '
-      'MFormatCount=3'
-      'MFormatName0=Generic'
-      'MFormatValue0=#0.00'
-      'MFormatName1=Price (US)'
-      'MFormatValue1=$ #0.00'
-      'MFormatName2=Summa'
-      'MFormatValue2=# ##0.00'
-      'MFormatCap1=Predefined formats'
-      'MFormatCap2=Format string'
-      'MFormatCap3=Number of decimals'
-      'MFormatCap4=Before'
-      'MFormatCap5=After'
-      'MFormatCap6=Design'
-      'MFormatCap7=Symbol'
-      'MFormatCap8=Example'
-      'MFormatCap9=Thousand separator'
-      'uXLSActionLabel=Action'
-      'uXLSAction1=Prepearing basic fonts'
-      'uXLSAction2=Prepearing basic formats'
-      'uXLSAction3=Applying row totals headers merging'
-      'uXLSAction4=Applying cells format'
-      'uXLSAction5=Applying columns headers merging'
-      'uXLSAction6=Applying rows headers merging'
-      'uXLSAction7=Applying column totals headers merging'
-      'uXLSAction8=Applying auto width for columns'
-      'uXLActionLabel=Action'
-      'uXLAction1=Prepearing cells array'
-      'uXLAction2=Prepearing column headers'
-      'uXLAction3=Processing'
-      'uXLAction4=Merging column headers'
-      'uXLAction5=Merging row headers'
-      'uXLAction6=Merging row total headers'
-      'uXLAction7=Applying cells format'
-      'pvGridPrint1='#1055#1077#1095#1072#1090#1100' '#1074#1089#1077#1075#1086
-      'pvGridPrint2='#1055#1077#1095#1072#1090#1100' '#1074#1099#1073#1088#1072#1085#1085'.'
-      'pvGridPrint3='#1055#1088#1072#1074#1099#1081' '#1082#1083#1080#1082' - '#1084#1072#1089#1096#1090#1072#1073'.'
-      'uXLSActionLabel2=Action progress'
-      'uXLSActionLabel2=Full progress'
-      'uHtmLabel2=Action progress'
-      'uHtmLabel3=Full progress'
-      'pvGridEditor1=Table'
-      'pvGridEditor2=Chart'
-      'pvGridEditor3=Method'
-      'pvGridEditor4=Summa'
-      'pvGridEditor5=Count'
-      'pvGridEditor6=Average'
-      'pvGridEditor7=Equal'
-      'pvGridEditor8=Proportional'
-      'pvGridPrint4=Print preview'
-      'pvGridPrint5='#1052#1072#1089#1096'.'#1089#1090#1088#1072#1085#1080#1094
-      'pvGridPrint6='#1052#1072#1089#1096'.'#1087#1077#1095#1072#1090#1100
-      'pvGridPrint7='#1055#1086' '#1089#1090#1088#1072#1085#1080#1094#1077
-      'pvGridPrint8='#1055#1086' '#1096#1080#1088#1080#1085#1077
-      'pvGridPrint9='#1055#1086' '#1074#1099#1089#1086#1090#1077
-      'pvGridPrint10=50%'
-      'pvGridPrint11=100%'
-      'pvGridPrint12=200%'
-      'pvGridPrint13=400%'
-      'pvGridPrintLocked=Process locked! Please wait....')
-    Measures = <
-      item
-        AliasName = 'SUMMA'
-        FieldName = 'SUMMA'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1057#1091#1084#1084#1072
-      end>
-    CubeName = 'test'
-    OptimizeLevel = optNormal
-    ExtendedMode = True
-    AlwaysSaveCounts = False
-    ExcludeZeros = True
-    ClearTimeInfo = True
-    Left = 32
-    Top = 200
-  end
-  object PivotMap35: TPivotMap
-    Cube = PivotCube35
-    Columns = <
-      item
-        Name = 'MG'
-      end>
-    Rows = <
-      item
-        Name = 'PREDPR'
-      end
-      item
-        Name = 'REU'
-      end
-      item
-        Name = 'ORG_NAME'
-      end>
-    HideEmptyRows = True
-    HideEmptyColumns = True
-    TableMode = True
-    DDirection = True
-    AutoSaveMap = False
-    AutoExpand = True
-    Left = 64
-    Top = 200
+  object cxm1: TcxMemo
+    Left = 295
+    Top = 280
+    Lines.Strings = (
+      'cxm1')
+    TabOrder = 3
+    Visible = False
+    Height = 297
+    Width = 746
   end
   object frxReport56: TfrxReport
-    Version = '6.2.11'
+    Version = '6.7.6'
     DotMatrixReport = True
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -2488,6 +312,7 @@ object Form_olap: TForm_olap
       TopMargin = 4.497913761764030000
       BottomMargin = 4.497913761764030000
       Frame.Typ = []
+      MirrorMode = []
       FontStyle = []
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
@@ -2503,11 +328,10 @@ object Form_olap: TForm_olap
           Height = 17.000000000000000000
           FontStyle = [fsxCondensed]
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             
-              #1056#1038#1056#1111#1056#1105#1057#1027#1056#1109#1056#1108' '#1056#187#1057#1034#1056#1110#1056#1109#1057#8218#1056#1029#1056#1105#1056#1108#1056#1109#1056#1030' '#1056#1111#1056#1109' '#1056#1108#1056#176#1057#8218#1056#181#1056#1110#1056#1109#1057#1026#1056#1105#1056#1105': [frxD' +
-              'BDataset56."LG_NAME"] '#1056#183#1056#176' '#1056#1111#1056#181#1057#1026#1056#1105#1056#1109#1056#1169': [frxDBDataset56."'#1056#1119#1056#181#1057#1026 +
-              #1056#1105#1056#1109#1056#1169'"]')
+              #1057#1087#1080#1089#1086#1082' '#1083#1100#1075#1086#1090#1085#1080#1082#1086#1074' '#1087#1086' '#1082#1072#1090#1077#1075#1086#1088#1080#1080': [frxDBDataset56."LG_NAME"] '#1079#1072' '#1087#1077 +
+              #1088#1080#1086#1076': [frxDBDataset56."'#1055#1077#1088#1080#1086#1076'"]')
           ParentFont = False
           TruncOutboundText = False
         end
@@ -2539,157 +363,158 @@ object Form_olap: TForm_olap
             'LG_NAME')
           Memos = {
             3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D227574
-            662D38223F3E3C63726F73733E3C63656C6C6D656D6F733E3C54667278444D50
-            4D656D6F5669657720416C6C6F77566563746F724578706F72743D2254727565
-            22204C6566743D223238382220546F703D22343736222057696474683D223139
-            2C3222204865696768743D22333422205265737472696374696F6E733D223234
-            2220416C6C6F7745787072657373696F6E733D2246616C736522204672616D65
-            2E5479703D223135222048416C69676E3D226861526967687422205472756E63
-            4F7574626F756E64546578743D2246616C7365222056416C69676E3D22766143
-            656E7465722220546578743D2230222F3E3C54667278444D504D656D6F566965
-            7720416C6C6F77566563746F724578706F72743D225472756522204C6566743D
-            223238382220546F703D22353130222057696474683D2231392C322220486569
-            6768743D22333422205265737472696374696F6E733D2232342220416C6C6F77
-            45787072657373696F6E733D2246616C736522204672616D652E5479703D2231
-            35222048416C69676E3D226861526967687422205472756E634F7574626F756E
-            64546578743D2246616C7365222056416C69676E3D22766143656E7465722220
-            546578743D2230222F3E3C54667278444D504D656D6F5669657720416C6C6F77
-            566563746F724578706F72743D225472756522204C6566743D223332362C3422
-            20546F703D22313032222057696474683D2231392C3222204865696768743D22
-            333422205265737472696374696F6E733D2232342220416C6C6F774578707265
-            7373696F6E733D2246616C736522204672616D652E5479703D22313522204841
-            6C69676E3D226861526967687422205472756E634F7574626F756E6454657874
-            3D2246616C7365222056416C69676E3D22766143656E7465722220546578743D
-            2230222F3E3C54667278444D504D656D6F5669657720416C6C6F77566563746F
-            724578706F72743D225472756522204C6566743D223234392C362220546F703D
-            22313032222057696474683D2231392C3222204865696768743D223334222052
-            65737472696374696F6E733D2232342220416C6C6F7745787072657373696F6E
-            733D2246616C736522204672616D652E5479703D223135222048416C69676E3D
-            226861526967687422205472756E634F7574626F756E64546578743D2246616C
-            7365222056416C69676E3D22766143656E7465722220546578743D2230222F3E
-            3C54667278444D504D656D6F5669657720416C6C6F77566563746F724578706F
-            72743D225472756522204C6566743D223234392C362220546F703D2231333622
-            2057696474683D2231392C3222204865696768743D2233342220526573747269
-            6374696F6E733D2232342220416C6C6F7745787072657373696F6E733D224661
-            6C736522204672616D652E5479703D223135222048416C69676E3D2268615269
-            67687422205472756E634F7574626F756E64546578743D2246616C7365222056
-            416C69676E3D22766143656E7465722220546578743D2230222F3E3C54667278
-            444D504D656D6F5669657720416C6C6F77566563746F724578706F72743D2254
-            72756522204C6566743D223234392C362220546F703D22313730222057696474
-            683D2231392C3222204865696768743D22333422205265737472696374696F6E
-            733D2232342220416C6C6F7745787072657373696F6E733D2246616C73652220
-            4672616D652E5479703D223135222048416C69676E3D22686152696768742220
-            5472756E634F7574626F756E64546578743D2246616C7365222056416C69676E
-            3D22766143656E7465722220546578743D2230222F3E3C54667278444D504D65
-            6D6F5669657720416C6C6F77566563746F724578706F72743D22547275652220
-            4C6566743D22302220546F703D2230222057696474683D223022204865696768
-            743D223022205265737472696374696F6E733D22382220416C6C6F7745787072
+            662D3822207374616E64616C6F6E653D226E6F223F3E3C63726F73733E3C6365
+            6C6C6D656D6F733E3C54667278444D504D656D6F5669657720416C6C6F775665
+            63746F724578706F72743D225472756522204C6566743D223238382220546F70
+            3D22343736222057696474683D2231392C3222204865696768743D2233342220
+            5265737472696374696F6E733D2232342220416C6C6F7745787072657373696F
+            6E733D2246616C736522204672616D652E5479703D223135222048416C69676E
+            3D226861526967687422205472756E634F7574626F756E64546578743D224661
+            6C7365222056416C69676E3D22766143656E7465722220546578743D2230222F
+            3E3C54667278444D504D656D6F5669657720416C6C6F77566563746F72457870
+            6F72743D225472756522204C6566743D223238382220546F703D223531302220
+            57696474683D2231392C3222204865696768743D223334222052657374726963
+            74696F6E733D2232342220416C6C6F7745787072657373696F6E733D2246616C
+            736522204672616D652E5479703D223135222048416C69676E3D226861526967
+            687422205472756E634F7574626F756E64546578743D2246616C736522205641
+            6C69676E3D22766143656E7465722220546578743D2230222F3E3C5466727844
+            4D504D656D6F5669657720416C6C6F77566563746F724578706F72743D225472
+            756522204C6566743D223332362C342220546F703D2231303222205769647468
+            3D2231392C3222204865696768743D22333422205265737472696374696F6E73
+            3D2232342220416C6C6F7745787072657373696F6E733D2246616C7365222046
+            72616D652E5479703D223135222048416C69676E3D2268615269676874222054
+            72756E634F7574626F756E64546578743D2246616C7365222056416C69676E3D
+            22766143656E7465722220546578743D2230222F3E3C54667278444D504D656D
+            6F5669657720416C6C6F77566563746F724578706F72743D225472756522204C
+            6566743D223234392C362220546F703D22313032222057696474683D2231392C
+            3222204865696768743D22333422205265737472696374696F6E733D22323422
+            20416C6C6F7745787072657373696F6E733D2246616C736522204672616D652E
+            5479703D223135222048416C69676E3D226861526967687422205472756E634F
+            7574626F756E64546578743D2246616C7365222056416C69676E3D2276614365
+            6E7465722220546578743D2230222F3E3C54667278444D504D656D6F56696577
+            20416C6C6F77566563746F724578706F72743D225472756522204C6566743D22
+            3234392C362220546F703D22313336222057696474683D2231392C3222204865
+            696768743D22333422205265737472696374696F6E733D2232342220416C6C6F
+            7745787072657373696F6E733D2246616C736522204672616D652E5479703D22
+            3135222048416C69676E3D226861526967687422205472756E634F7574626F75
+            6E64546578743D2246616C7365222056416C69676E3D22766143656E74657222
+            20546578743D2230222F3E3C54667278444D504D656D6F5669657720416C6C6F
+            77566563746F724578706F72743D225472756522204C6566743D223234392C36
+            2220546F703D22313730222057696474683D2231392C3222204865696768743D
+            22333422205265737472696374696F6E733D2232342220416C6C6F7745787072
             657373696F6E733D2246616C736522204672616D652E5479703D223135222048
             416C69676E3D226861526967687422205472756E634F7574626F756E64546578
             743D2246616C7365222056416C69676E3D22766143656E746572222054657874
-            3D22222F3E3C54667278444D504D656D6F5669657720416C6C6F77566563746F
-            724578706F72743D225472756522204C6566743D22302220546F703D22302220
-            57696474683D223022204865696768743D223022205265737472696374696F6E
-            733D22382220416C6C6F7745787072657373696F6E733D2246616C7365222046
-            72616D652E5479703D223135222048416C69676E3D2268615269676874222054
-            72756E634F7574626F756E64546578743D2246616C7365222056416C69676E3D
-            22766143656E7465722220546578743D22222F3E3C2F63656C6C6D656D6F733E
-            3C63656C6C6865616465726D656D6F733E3C54667278444D504D656D6F566965
-            7720416C6C6F77566563746F724578706F72743D225472756522204C6566743D
-            223138322C342220546F703D22343736222057696474683D223130352C362220
-            4865696768743D22333422205265737472696374696F6E733D22382220416C6C
-            6F7745787072657373696F6E733D2246616C736522204672616D652E5479703D
-            22313522205472756E634F7574626F756E64546578743D2246616C7365222056
-            416C69676E3D22766143656E7465722220546578743D22D09AD0BED0BB2ED0BB
-            D18CD0B32E222F3E3C54667278444D504D656D6F5669657720416C6C6F775665
-            63746F724578706F72743D225472756522204C6566743D223138322C34222054
-            6F703D22353130222057696474683D223130352C3622204865696768743D2233
-            3422205265737472696374696F6E733D22382220416C6C6F7745787072657373
-            696F6E733D2246616C736522204672616D652E5479703D22313522205472756E
-            634F7574626F756E64546578743D2246616C7365222056416C69676E3D227661
-            43656E7465722220546578743D22D09AD0BED0BB2ED0BDD0BED181D0B8D1822E
-            222F3E3C54667278444D504D656D6F5669657720416C6C6F77566563746F7245
-            78706F72743D225472756522204C6566743D223139322220546F703D22313032
-            222057696474683D2231343422204865696768743D2233342220526573747269
-            6374696F6E733D22382220416C6C6F7745787072657373696F6E733D2246616C
-            736522204672616D652E5479703D22313522205472756E634F7574626F756E64
-            546578743D2246616C7365222056416C69676E3D22766143656E746572222054
-            6578743D22D09AD0BED0BB2ED0BBD18CD0B32E222F3E3C54667278444D504D65
-            6D6F5669657720416C6C6F77566563746F724578706F72743D22547275652220
-            4C6566743D223131352C322220546F703D22313032222057696474683D223133
-            342C3422204865696768743D22333422205265737472696374696F6E733D2238
-            2220416C6C6F7745787072657373696F6E733D2246616C736522204672616D65
-            2E5479703D22313522205472756E634F7574626F756E64546578743D2246616C
-            7365222056416C69676E3D22766143656E7465722220546578743D22D09AD0BE
-            D0BB2ED0BDD0BED181D0B8D1822E222F3E3C2F63656C6C6865616465726D656D
-            6F733E3C636F6C756D6E6D656D6F733E3C54667278444D504D656D6F56696577
-            20416C6C6F77566563746F724578706F72743D225472756522204C6566743D22
-            3238382220546F703D22343736222057696474683D2231392C32222048656967
-            68743D223022205265737472696374696F6E733D2232342220416C6C6F774578
+            3D2230222F3E3C54667278444D504D656D6F5669657720416C6C6F7756656374
+            6F724578706F72743D225472756522204C6566743D22302220546F703D223022
+            2057696474683D223022204865696768743D223022205265737472696374696F
+            6E733D22382220416C6C6F7745787072657373696F6E733D2246616C73652220
+            4672616D652E5479703D223135222048416C69676E3D22686152696768742220
+            5472756E634F7574626F756E64546578743D2246616C7365222056416C69676E
+            3D22766143656E7465722220546578743D22222F3E3C54667278444D504D656D
+            6F5669657720416C6C6F77566563746F724578706F72743D225472756522204C
+            6566743D22302220546F703D2230222057696474683D22302220486569676874
+            3D223022205265737472696374696F6E733D22382220416C6C6F774578707265
+            7373696F6E733D2246616C736522204672616D652E5479703D22313522204841
+            6C69676E3D226861526967687422205472756E634F7574626F756E6454657874
+            3D2246616C7365222056416C69676E3D22766143656E7465722220546578743D
+            22222F3E3C2F63656C6C6D656D6F733E3C63656C6C6865616465726D656D6F73
+            3E3C54667278444D504D656D6F5669657720416C6C6F77566563746F72457870
+            6F72743D225472756522204C6566743D223138322C342220546F703D22343736
+            222057696474683D223130352C3622204865696768743D223334222052657374
+            72696374696F6E733D22382220416C6C6F7745787072657373696F6E733D2246
+            616C736522204672616D652E5479703D22313522205472756E634F7574626F75
+            6E64546578743D2246616C7365222056416C69676E3D22766143656E74657222
+            20546578743D22D09AD0BED0BB2ED0BBD18CD0B32E222F3E3C54667278444D50
+            4D656D6F5669657720416C6C6F77566563746F724578706F72743D2254727565
+            22204C6566743D223138322C342220546F703D22353130222057696474683D22
+            3130352C3622204865696768743D22333422205265737472696374696F6E733D
+            22382220416C6C6F7745787072657373696F6E733D2246616C73652220467261
+            6D652E5479703D22313522205472756E634F7574626F756E64546578743D2246
+            616C7365222056416C69676E3D22766143656E7465722220546578743D22D09A
+            D0BED0BB2ED0BDD0BED181D0B8D1822E222F3E3C54667278444D504D656D6F56
+            69657720416C6C6F77566563746F724578706F72743D225472756522204C6566
+            743D223139322220546F703D22313032222057696474683D2231343422204865
+            696768743D22333422205265737472696374696F6E733D22382220416C6C6F77
+            45787072657373696F6E733D2246616C736522204672616D652E5479703D2231
+            3522205472756E634F7574626F756E64546578743D2246616C7365222056416C
+            69676E3D22766143656E7465722220546578743D22D09AD0BED0BB2ED0BBD18C
+            D0B32E222F3E3C54667278444D504D656D6F5669657720416C6C6F7756656374
+            6F724578706F72743D225472756522204C6566743D223131352C322220546F70
+            3D22313032222057696474683D223133342C3422204865696768743D22333422
+            205265737472696374696F6E733D22382220416C6C6F7745787072657373696F
+            6E733D2246616C736522204672616D652E5479703D22313522205472756E634F
+            7574626F756E64546578743D2246616C7365222056416C69676E3D2276614365
+            6E7465722220546578743D22D09AD0BED0BB2ED0BDD0BED181D0B8D1822E222F
+            3E3C2F63656C6C6865616465726D656D6F733E3C636F6C756D6E6D656D6F733E
+            3C54667278444D504D656D6F5669657720416C6C6F77566563746F724578706F
+            72743D225472756522204C6566743D223238382220546F703D22343736222057
+            696474683D2231392C3222204865696768743D22302220526573747269637469
+            6F6E733D2232342220416C6C6F7745787072657373696F6E733D2246616C7365
+            22204672616D652E5479703D223135222048416C69676E3D22686143656E7465
+            7222205472756E634F7574626F756E64546578743D2246616C7365222056416C
+            69676E3D22766143656E7465722220546578743D22222F3E3C2F636F6C756D6E
+            6D656D6F733E3C636F6C756D6E746F74616C6D656D6F733E3C54667278444D50
+            4D656D6F5669657720416C6C6F77566563746F724578706F72743D2254727565
+            22204C6566743D22302220546F703D2230222057696474683D22302220486569
+            6768743D223022205265737472696374696F6E733D2238222056697369626C65
+            3D2246616C73652220416C6C6F7745787072657373696F6E733D2246616C7365
+            2220466F6E745374796C653D223022204672616D652E5479703D223135222048
+            416C69676E3D22686143656E7465722220506172656E74466F6E743D2246616C
+            736522205472756E634F7574626F756E64546578743D2246616C736522205641
+            6C69676E3D22766143656E7465722220546578743D224772616E6420546F7461
+            6C222F3E3C2F636F6C756D6E746F74616C6D656D6F733E3C636F726E65726D65
+            6D6F733E3C54667278444D504D656D6F5669657720416C6C6F77566563746F72
+            4578706F72743D225472756522204C6566743D22302220546F703D2234343222
+            2057696474683D2232383822204865696768743D223022205265737472696374
+            696F6E733D2238222056697369626C653D2246616C73652220416C6C6F774578
             7072657373696F6E733D2246616C736522204672616D652E5479703D22313522
             2048416C69676E3D22686143656E74657222205472756E634F7574626F756E64
             546578743D2246616C7365222056416C69676E3D22766143656E746572222054
-            6578743D22222F3E3C2F636F6C756D6E6D656D6F733E3C636F6C756D6E746F74
-            616C6D656D6F733E3C54667278444D504D656D6F5669657720416C6C6F775665
-            63746F724578706F72743D225472756522204C6566743D22302220546F703D22
-            30222057696474683D223022204865696768743D223022205265737472696374
-            696F6E733D2238222056697369626C653D2246616C73652220416C6C6F774578
-            7072657373696F6E733D2246616C73652220466F6E745374796C653D22302220
-            4672616D652E5479703D223135222048416C69676E3D22686143656E74657222
-            20506172656E74466F6E743D2246616C736522205472756E634F7574626F756E
+            6578743D22D09AD0BED0BB2ED0BBD18CD0B32E222F3E3C54667278444D504D65
+            6D6F5669657720416C6C6F77566563746F724578706F72743D22547275652220
+            4C6566743D223238382220546F703D22343432222057696474683D2231392C32
+            22204865696768743D22333422205265737472696374696F6E733D2238222041
+            6C6C6F7745787072657373696F6E733D2246616C736522204672616D652E5479
+            703D223135222048416C69676E3D22686143656E74657222205472756E634F75
+            74626F756E64546578743D2246616C7365222056416C69676E3D22766143656E
+            7465722220546578743D22222F3E3C54667278444D504D656D6F566965772041
+            6C6C6F77566563746F724578706F72743D225472756522204C6566743D223138
+            322C342220546F703D22343432222057696474683D223130352C362220486569
+            6768743D22333422205265737472696374696F6E733D22382220416C6C6F7745
+            787072657373696F6E733D2246616C736522204672616D652E5479703D223135
+            222048416C69676E3D22686143656E74657222205472756E634F7574626F756E
             64546578743D2246616C7365222056416C69676E3D22766143656E7465722220
-            546578743D224772616E6420546F74616C222F3E3C2F636F6C756D6E746F7461
-            6C6D656D6F733E3C636F726E65726D656D6F733E3C54667278444D504D656D6F
-            5669657720416C6C6F77566563746F724578706F72743D225472756522204C65
-            66743D22302220546F703D22343432222057696474683D223238382220486569
-            6768743D223022205265737472696374696F6E733D2238222056697369626C65
-            3D2246616C73652220416C6C6F7745787072657373696F6E733D2246616C7365
-            22204672616D652E5479703D223135222048416C69676E3D22686143656E7465
-            7222205472756E634F7574626F756E64546578743D2246616C7365222056416C
-            69676E3D22766143656E7465722220546578743D22D09AD0BED0BB2ED0BBD18C
-            D0B32E222F3E3C54667278444D504D656D6F5669657720416C6C6F7756656374
-            6F724578706F72743D225472756522204C6566743D223238382220546F703D22
-            343432222057696474683D2231392C3222204865696768743D22333422205265
-            737472696374696F6E733D22382220416C6C6F7745787072657373696F6E733D
-            2246616C736522204672616D652E5479703D223135222048416C69676E3D2268
-            6143656E74657222205472756E634F7574626F756E64546578743D2246616C73
-            65222056416C69676E3D22766143656E7465722220546578743D22222F3E3C54
-            667278444D504D656D6F5669657720416C6C6F77566563746F724578706F7274
-            3D225472756522204C6566743D223138322C342220546F703D22343432222057
-            696474683D223130352C3622204865696768743D223334222052657374726963
-            74696F6E733D22382220416C6C6F7745787072657373696F6E733D2246616C73
-            6522204672616D652E5479703D223135222048416C69676E3D22686143656E74
-            657222205472756E634F7574626F756E64546578743D2246616C736522205641
-            6C69676E3D22766143656E7465722220546578743D22222F3E3C54667278444D
-            504D656D6F5669657720416C6C6F77566563746F724578706F72743D22547275
-            6522204C6566743D22302220546F703D22343432222057696474683D22313832
-            2C3422204865696768743D22333422205265737472696374696F6E733D223822
-            20416C6C6F7745787072657373696F6E733D2246616C736522204672616D652E
-            5479703D223135222048416C69676E3D22686143656E74657222205472756E63
-            4F7574626F756E64546578743D2246616C7365222056416C69676E3D22766143
-            656E7465722220546578743D22D098D182D0BED0B3D0BE20D0BFD0BE20D0BAD0
-            B0D182D0B5D0B3D0BED180D0B8D0B8222F3E3C2F636F726E65726D656D6F733E
-            3C726F776D656D6F733E3C54667278444D504D656D6F5669657720416C6C6F77
-            566563746F724578706F72743D225472756522204C6566743D22302220546F70
-            3D22343736222057696474683D223138322C3422204865696768743D22363822
-            205265737472696374696F6E733D2232342220416C6C6F774578707265737369
-            6F6E733D2246616C736522204672616D652E5479703D223135222048416C6967
-            6E3D22686143656E74657222205472756E634F7574626F756E64546578743D22
-            46616C7365222056416C69676E3D22766143656E7465722220546578743D2222
-            2F3E3C2F726F776D656D6F733E3C726F77746F74616C6D656D6F733E3C546672
-            78444D504D656D6F5669657720416C6C6F77566563746F724578706F72743D22
-            5472756522204C6566743D22302220546F703D22313032222057696474683D22
-            3131352C3222204865696768743D2231303222205265737472696374696F6E73
-            3D2238222056697369626C653D2246616C73652220416C6C6F77457870726573
-            73696F6E733D2246616C73652220466F6E745374796C653D223022204672616D
-            652E5479703D223135222048416C69676E3D22686143656E7465722220506172
-            656E74466F6E743D2246616C736522205472756E634F7574626F756E64546578
-            743D2246616C7365222056416C69676E3D22766143656E746572222054657874
-            3D224772616E6420546F74616C222F3E3C2F726F77746F74616C6D656D6F733E
-            3C63656C6C66756E6374696F6E733E3C6974656D20312F3E3C6974656D20312F
-            3E3C2F63656C6C66756E6374696F6E733E3C636F6C756D6E736F72743E3C6974
-            656D20302F3E3C2F636F6C756D6E736F72743E3C726F77736F72743E3C697465
-            6D20322F3E3C2F726F77736F72743E3C2F63726F73733E}
+            546578743D22222F3E3C54667278444D504D656D6F5669657720416C6C6F7756
+            6563746F724578706F72743D225472756522204C6566743D22302220546F703D
+            22343432222057696474683D223138322C3422204865696768743D2233342220
+            5265737472696374696F6E733D22382220416C6C6F7745787072657373696F6E
+            733D2246616C736522204672616D652E5479703D223135222048416C69676E3D
+            22686143656E74657222205472756E634F7574626F756E64546578743D224661
+            6C7365222056416C69676E3D22766143656E7465722220546578743D22D098D1
+            82D0BED0B3D0BE20D0BFD0BE20D0BAD0B0D182D0B5D0B3D0BED180D0B8D0B822
+            2F3E3C2F636F726E65726D656D6F733E3C726F776D656D6F733E3C5466727844
+            4D504D656D6F5669657720416C6C6F77566563746F724578706F72743D225472
+            756522204C6566743D22302220546F703D22343736222057696474683D223138
+            322C3422204865696768743D22363822205265737472696374696F6E733D2232
+            342220416C6C6F7745787072657373696F6E733D2246616C736522204672616D
+            652E5479703D223135222048416C69676E3D22686143656E7465722220547275
+            6E634F7574626F756E64546578743D2246616C7365222056416C69676E3D2276
+            6143656E7465722220546578743D22222F3E3C2F726F776D656D6F733E3C726F
+            77746F74616C6D656D6F733E3C54667278444D504D656D6F5669657720416C6C
+            6F77566563746F724578706F72743D225472756522204C6566743D2230222054
+            6F703D22313032222057696474683D223131352C3222204865696768743D2231
+            303222205265737472696374696F6E733D2238222056697369626C653D224661
+            6C73652220416C6C6F7745787072657373696F6E733D2246616C73652220466F
+            6E745374796C653D223022204672616D652E5479703D223135222048416C6967
+            6E3D22686143656E7465722220506172656E74466F6E743D2246616C73652220
+            5472756E634F7574626F756E64546578743D2246616C7365222056416C69676E
+            3D22766143656E7465722220546578743D224772616E6420546F74616C222F3E
+            3C2F726F77746F74616C6D656D6F733E3C63656C6C66756E6374696F6E733E3C
+            6974656D20312F3E3C6974656D20312F3E3C2F63656C6C66756E6374696F6E73
+            3E3C636F6C756D6E736F72743E3C6974656D20302F3E3C2F636F6C756D6E736F
+            72743E3C726F77736F72743E3C6974656D20322F3E3C2F726F77736F72743E3C
+            2F63726F73733E}
         end
         object DMPMemo2: TfrxDMPMemoView
           AllowVectorExport = True
@@ -2699,8 +524,8 @@ object Form_olap: TForm_olap
           Height = 17.000000000000000000
           FontStyle = []
           Frame.Typ = []
-          Memo.UTF8 = (
-            #1056#1119#1056#1109#1056#1169#1056#1111#1056#1105#1057#1027#1057#1034' '#1056#1029#1056#176#1057#8225#1056#176#1056#187#1057#1034#1056#1029#1056#1105#1056#1108#1056#176'_____________')
+          Memo.UTF8W = (
+            #1055#1086#1076#1087#1080#1089#1100' '#1085#1072#1095#1072#1083#1100#1085#1080#1082#1072'_____________')
           ParentFont = False
           TruncOutboundText = False
         end
@@ -2743,182 +568,170 @@ object Form_olap: TForm_olap
             #1044#1086#1082#1091#1084#1077#1085#1090)
           Memos = {
             3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D227574
-            662D38223F3E3C63726F73733E3C63656C6C6D656D6F733E3C54667278444D50
-            4D656D6F5669657720416C6C6F77566563746F724578706F72743D2254727565
-            22204C6566743D223936302220546F703D22323338222057696474683D223836
-            2C3422204865696768743D22333422205265737472696374696F6E733D223234
-            2220416C6C6F7745787072657373696F6E733D2246616C73652220446973706C
-            6179466F726D61742E466F726D61745374723D2225322E32662220446973706C
-            6179466F726D61742E4B696E643D22666B4E756D657269632220466F6E745374
-            796C653D22333222204672616D652E5479703D223135222048416C69676E3D22
-            686152696768742220506172656E74466F6E743D2246616C736522205472756E
-            634F7574626F756E64546578743D2246616C7365222056416C69676E3D227661
-            43656E7465722220546578743D22302C3030222F3E3C54667278444D504D656D
-            6F5669657720416C6C6F77566563746F724578706F72743D225472756522204C
-            6566743D22313037352C322220546F703D22313730222057696474683D223836
-            2C3422204865696768743D22333422205265737472696374696F6E733D223234
-            2220416C6C6F7745787072657373696F6E733D2246616C73652220466F6E7453
-            74796C653D22333222204672616D652E5479703D223135222048416C69676E3D
-            22686152696768742220506172656E74466F6E743D2246616C73652220547275
-            6E634F7574626F756E64546578743D2246616C7365222056416C69676E3D2276
-            6143656E7465722220546578743D22302C3030222F3E3C54667278444D504D65
-            6D6F5669657720416C6C6F77566563746F724578706F72743D22547275652220
-            4C6566743D223731302C342220546F703D22323034222057696474683D223836
-            2C3422204865696768743D22333422205265737472696374696F6E733D223234
-            2220416C6C6F7745787072657373696F6E733D2246616C73652220466F6E7453
-            74796C653D22333222204672616D652E5479703D223135222048416C69676E3D
-            22686152696768742220506172656E74466F6E743D2246616C73652220547275
-            6E634F7574626F756E64546578743D2246616C7365222056416C69676E3D2276
-            6143656E7465722220546578743D2230222F3E3C54667278444D504D656D6F56
-            69657720416C6C6F77566563746F724578706F72743D225472756522204C6566
-            743D223635322C382220546F703D22323338222057696474683D2238362C3422
-            204865696768743D22333422205265737472696374696F6E733D223234222041
-            6C6C6F7745787072657373696F6E733D2246616C73652220466F6E745374796C
-            653D22333222204672616D652E5479703D223135222048416C69676E3D226861
-            52696768742220506172656E74466F6E743D2246616C736522205472756E634F
-            7574626F756E64546578743D2246616C7365222056416C69676E3D2276614365
-            6E7465722220546578743D2230222F3E3C54667278444D504D656D6F56696577
-            20416C6C6F77566563746F724578706F72743D225472756522204C6566743D22
-            3332362C342220546F703D223638222057696474683D2235372C362220486569
-            6768743D22333422205265737472696374696F6E733D2232342220416C6C6F77
-            45787072657373696F6E733D2246616C736522204672616D652E5479703D2231
-            35222048416C69676E3D226861526967687422205472756E634F7574626F756E
-            64546578743D2246616C7365222056416C69676E3D22766143656E7465722220
-            546578743D2230222F3E3C54667278444D504D656D6F5669657720416C6C6F77
-            566563746F724578706F72743D225472756522204C6566743D22313039342C34
-            2220546F703D22323034222057696474683D2238362C3422204865696768743D
-            22333422205265737472696374696F6E733D2232342220416C6C6F7745787072
-            657373696F6E733D2246616C736522204672616D652E5479703D223135222048
-            416C69676E3D226861526967687422205472756E634F7574626F756E64546578
-            743D2246616C7365222056416C69676E3D22766143656E746572222054657874
-            3D22302C3030222F3E3C54667278444D504D656D6F5669657720416C6C6F7756
-            6563746F724578706F72743D225472756522204C6566743D223535362C382220
-            546F703D22313032222057696474683D2238362C3422204865696768743D2233
-            3422205265737472696374696F6E733D2232342220416C6C6F77457870726573
-            73696F6E733D2246616C736522204672616D652E5479703D223135222048416C
-            69676E3D226861526967687422205472756E634F7574626F756E64546578743D
-            2246616C7365222056416C69676E3D22766143656E7465722220546578743D22
-            30222F3E3C54667278444D504D656D6F5669657720416C6C6F77566563746F72
-            4578706F72743D225472756522204C6566743D223731302C342220546F703D22
-            313032222057696474683D2238362C3422204865696768743D22333422205265
-            737472696374696F6E733D2232342220416C6C6F7745787072657373696F6E73
-            3D2246616C73652220466F6E745374796C653D22333222204672616D652E5479
-            703D223135222048416C69676E3D22686152696768742220506172656E74466F
-            6E743D2246616C736522205472756E634F7574626F756E64546578743D224661
-            6C7365222056416C69676E3D22766143656E7465722220546578743D2230222F
-            3E3C54667278444D504D656D6F5669657720416C6C6F77566563746F72457870
-            6F72743D225472756522204C6566743D223936302220546F703D223237322220
-            57696474683D2238362C3422204865696768743D223638222052657374726963
-            74696F6E733D2232342220416C6C6F7745787072657373696F6E733D2246616C
-            73652220446973706C6179466F726D61742E466F726D61745374723D2225322E
-            32662220446973706C6179466F726D61742E4B696E643D22666B4E756D657269
-            632220466F6E745374796C653D22333222204672616D652E5479703D22313522
-            2048416C69676E3D22686152696768742220506172656E74466F6E743D224661
-            6C736522205472756E634F7574626F756E64546578743D2246616C7365222056
-            416C69676E3D22766143656E7465722220546578743D22302C3030222F3E3C54
-            667278444D504D656D6F5669657720416C6C6F77566563746F724578706F7274
-            3D225472756522204C6566743D22313033362C382220546F703D223233382220
-            57696474683D22393622204865696768743D2233342220526573747269637469
-            6F6E733D2232342220416C6C6F7745787072657373696F6E733D2246616C7365
-            2220446973706C6179466F726D61742E466F726D61745374723D2225322E3266
-            2220446973706C6179466F726D61742E4B696E643D22666B4E756D6572696322
-            204672616D652E5479703D223135222048416C69676E3D226861526967687422
-            205472756E634F7574626F756E64546578743D2246616C7365222056416C6967
-            6E3D22766143656E7465722220546578743D22302C3030222F3E3C5466727844
-            4D504D656D6F5669657720416C6C6F77566563746F724578706F72743D225472
-            756522204C6566743D22313135322220546F703D22313336222057696474683D
-            22393622204865696768743D22333422205265737472696374696F6E733D2232
-            342220416C6C6F7745787072657373696F6E733D2246616C736522204672616D
-            652E5479703D223135222048416C69676E3D226861526967687422205472756E
-            634F7574626F756E64546578743D2246616C7365222056416C69676E3D227661
-            43656E7465722220546578743D22302C3030222F3E3C54667278444D504D656D
-            6F5669657720416C6C6F77566563746F724578706F72743D225472756522204C
-            6566743D22313135322220546F703D22313730222057696474683D2239362220
-            4865696768743D22333422205265737472696374696F6E733D2232342220416C
-            6C6F7745787072657373696F6E733D2246616C736522204672616D652E547970
-            3D223135222048416C69676E3D226861526967687422205472756E634F757462
-            6F756E64546578743D2246616C7365222056416C69676E3D22766143656E7465
-            722220546578743D22302C3030222F3E3C54667278444D504D656D6F56696577
-            20416C6C6F77566563746F724578706F72743D225472756522204C6566743D22
-            3537362220546F703D22323034222057696474683D223131352C322220486569
-            6768743D22333422205265737472696374696F6E733D2232342220416C6C6F77
-            45787072657373696F6E733D2246616C736522204672616D652E5479703D2231
-            35222048416C69676E3D226861526967687422205472756E634F7574626F756E
-            64546578743D2246616C7365222056416C69676E3D22766143656E7465722220
-            546578743D2230222F3E3C54667278444D504D656D6F5669657720416C6C6F77
-            566563746F724578706F72743D225472756522204C6566743D223633332C3622
-            20546F703D22313032222057696474683D2235372C3622204865696768743D22
-            333422205265737472696374696F6E733D2232342220416C6C6F774578707265
-            7373696F6E733D2246616C736522204672616D652E5479703D22313522204841
-            6C69676E3D226861526967687422205472756E634F7574626F756E6454657874
-            3D2246616C7365222056416C69676E3D22766143656E7465722220546578743D
-            2230222F3E3C54667278444D504D656D6F5669657720416C6C6F77566563746F
-            724578706F72743D225472756522204C6566743D223932312C362220546F703D
-            22323034222057696474683D2238362C3422204865696768743D223334222052
-            65737472696374696F6E733D2232342220416C6C6F7745787072657373696F6E
-            733D2246616C736522204672616D652E5479703D223135222048416C69676E3D
-            226861526967687422205472756E634F7574626F756E64546578743D2246616C
-            7365222056416C69676E3D22766143656E7465722220546578743D22302C3030
+            662D3822207374616E64616C6F6E653D226E6F223F3E3C63726F73733E3C6365
+            6C6C6D656D6F733E3C54667278444D504D656D6F5669657720416C6C6F775665
+            63746F724578706F72743D225472756522204C6566743D223936302220546F70
+            3D22323338222057696474683D2238362C3422204865696768743D2233342220
+            5265737472696374696F6E733D2232342220416C6C6F7745787072657373696F
+            6E733D2246616C73652220446973706C6179466F726D61742E466F726D617453
+            74723D2225322E32662220446973706C6179466F726D61742E4B696E643D2266
+            6B4E756D657269632220466F6E745374796C653D22333222204672616D652E54
+            79703D223135222048416C69676E3D22686152696768742220506172656E7446
+            6F6E743D2246616C736522205472756E634F7574626F756E64546578743D2246
+            616C7365222056416C69676E3D22766143656E7465722220546578743D22302C
+            3030222F3E3C54667278444D504D656D6F5669657720416C6C6F77566563746F
+            724578706F72743D225472756522204C6566743D22313037352C322220546F70
+            3D22313730222057696474683D2238362C3422204865696768743D2233342220
+            5265737472696374696F6E733D2232342220416C6C6F7745787072657373696F
+            6E733D2246616C73652220466F6E745374796C653D22333222204672616D652E
+            5479703D223135222048416C69676E3D22686152696768742220506172656E74
+            466F6E743D2246616C736522205472756E634F7574626F756E64546578743D22
+            46616C7365222056416C69676E3D22766143656E7465722220546578743D2230
+            2C3030222F3E3C54667278444D504D656D6F5669657720416C6C6F7756656374
+            6F724578706F72743D225472756522204C6566743D223731302C342220546F70
+            3D22323034222057696474683D2238362C3422204865696768743D2233342220
+            5265737472696374696F6E733D2232342220416C6C6F7745787072657373696F
+            6E733D2246616C73652220466F6E745374796C653D22333222204672616D652E
+            5479703D223135222048416C69676E3D22686152696768742220506172656E74
+            466F6E743D2246616C736522205472756E634F7574626F756E64546578743D22
+            46616C7365222056416C69676E3D22766143656E7465722220546578743D2230
             222F3E3C54667278444D504D656D6F5669657720416C6C6F77566563746F7245
-            78706F72743D225472756522204C6566743D22313137312C322220546F703D22
-            323034222057696474683D22393622204865696768743D223334222052657374
-            72696374696F6E733D2232342220416C6C6F7745787072657373696F6E733D22
-            46616C73652220466F6E745374796C653D22333222204672616D652E5479703D
-            223135222048416C69676E3D22686152696768742220506172656E74466F6E74
-            3D2246616C736522205472756E634F7574626F756E64546578743D2246616C73
-            65222056416C69676E3D22766143656E7465722220546578743D22302C303022
-            2F3E3C54667278444D504D656D6F5669657720416C6C6F77566563746F724578
-            706F72743D225472756522204C6566743D22313131332C362220546F703D2232
-            3034222057696474683D2238362C3422204865696768743D2233342220526573
+            78706F72743D225472756522204C6566743D223635322C382220546F703D2232
+            3338222057696474683D2238362C3422204865696768743D2233342220526573
             7472696374696F6E733D2232342220416C6C6F7745787072657373696F6E733D
-            2246616C736522204672616D652E5479703D223135222048416C69676E3D2268
-            61526967687422205472756E634F7574626F756E64546578743D2246616C7365
-            222056416C69676E3D22766143656E7465722220546578743D22302C3030222F
-            3E3C54667278444D504D656D6F5669657720416C6C6F77566563746F72457870
-            6F72743D225472756522204C6566743D22313033362C382220546F703D223237
-            32222057696474683D22393622204865696768743D2236382220526573747269
-            6374696F6E733D2232342220416C6C6F7745787072657373696F6E733D224661
-            6C73652220446973706C6179466F726D61742E466F726D61745374723D222532
-            2E32662220446973706C6179466F726D61742E4B696E643D22666B4E756D6572
-            696322204672616D652E5479703D223135222048416C69676E3D226861526967
+            2246616C73652220466F6E745374796C653D22333222204672616D652E547970
+            3D223135222048416C69676E3D22686152696768742220506172656E74466F6E
+            743D2246616C736522205472756E634F7574626F756E64546578743D2246616C
+            7365222056416C69676E3D22766143656E7465722220546578743D2230222F3E
+            3C54667278444D504D656D6F5669657720416C6C6F77566563746F724578706F
+            72743D225472756522204C6566743D223332362C342220546F703D2236382220
+            57696474683D2235372C3622204865696768743D223334222052657374726963
+            74696F6E733D2232342220416C6C6F7745787072657373696F6E733D2246616C
+            736522204672616D652E5479703D223135222048416C69676E3D226861526967
             687422205472756E634F7574626F756E64546578743D2246616C736522205641
-            6C69676E3D22766143656E7465722220546578743D22302C3030222F3E3C2F63
-            656C6C6D656D6F733E3C63656C6C6865616465726D656D6F733E3C5466727844
+            6C69676E3D22766143656E7465722220546578743D2230222F3E3C5466727844
             4D504D656D6F5669657720416C6C6F77566563746F724578706F72743D225472
-            756522204C6566743D223937392C322220546F703D2231333622205769647468
-            3D223133342C3422204865696768743D22333422205265737472696374696F6E
-            733D22382220416C6C6F7745787072657373696F6E733D2246616C7365222046
-            72616D652E5479703D22313522205472756E634F7574626F756E64546578743D
-            2246616C7365222056416C69676E3D22766143656E7465722220546578743D22
-            D0A1D183D0BCD0BCD0B0222F3E3C54667278444D504D656D6F5669657720416C
-            6C6F77566563746F724578706F72743D225472756522204C6566743D22393739
-            2C322220546F703D22313730222057696474683D223133342C34222048656967
-            68743D22333422205265737472696374696F6E733D22382220416C6C6F774578
-            7072657373696F6E733D2246616C736522204672616D652E5479703D22313522
-            205472756E634F7574626F756E64546578743D2246616C7365222056416C6967
-            6E3D22766143656E7465722220546578743D22D0A1D183D0BCD0BCD0B0222F3E
+            756522204C6566743D22313039342C342220546F703D22323034222057696474
+            683D2238362C3422204865696768743D22333422205265737472696374696F6E
+            733D2232342220416C6C6F7745787072657373696F6E733D2246616C73652220
+            4672616D652E5479703D223135222048416C69676E3D22686152696768742220
+            5472756E634F7574626F756E64546578743D2246616C7365222056416C69676E
+            3D22766143656E7465722220546578743D22302C3030222F3E3C54667278444D
+            504D656D6F5669657720416C6C6F77566563746F724578706F72743D22547275
+            6522204C6566743D223535362C382220546F703D22313032222057696474683D
+            2238362C3422204865696768743D22333422205265737472696374696F6E733D
+            2232342220416C6C6F7745787072657373696F6E733D2246616C736522204672
+            616D652E5479703D223135222048416C69676E3D226861526967687422205472
+            756E634F7574626F756E64546578743D2246616C7365222056416C69676E3D22
+            766143656E7465722220546578743D2230222F3E3C54667278444D504D656D6F
+            5669657720416C6C6F77566563746F724578706F72743D225472756522204C65
+            66743D223731302C342220546F703D22313032222057696474683D2238362C34
+            22204865696768743D22333422205265737472696374696F6E733D2232342220
+            416C6C6F7745787072657373696F6E733D2246616C73652220466F6E74537479
+            6C653D22333222204672616D652E5479703D223135222048416C69676E3D2268
+            6152696768742220506172656E74466F6E743D2246616C736522205472756E63
+            4F7574626F756E64546578743D2246616C7365222056416C69676E3D22766143
+            656E7465722220546578743D2230222F3E3C54667278444D504D656D6F566965
+            7720416C6C6F77566563746F724578706F72743D225472756522204C6566743D
+            223936302220546F703D22323732222057696474683D2238362C342220486569
+            6768743D22363822205265737472696374696F6E733D2232342220416C6C6F77
+            45787072657373696F6E733D2246616C73652220446973706C6179466F726D61
+            742E466F726D61745374723D2225322E32662220446973706C6179466F726D61
+            742E4B696E643D22666B4E756D657269632220466F6E745374796C653D223332
+            22204672616D652E5479703D223135222048416C69676E3D2268615269676874
+            2220506172656E74466F6E743D2246616C736522205472756E634F7574626F75
+            6E64546578743D2246616C7365222056416C69676E3D22766143656E74657222
+            20546578743D22302C3030222F3E3C54667278444D504D656D6F566965772041
+            6C6C6F77566563746F724578706F72743D225472756522204C6566743D223130
+            33362C382220546F703D22323338222057696474683D22393622204865696768
+            743D22333422205265737472696374696F6E733D2232342220416C6C6F774578
+            7072657373696F6E733D2246616C73652220446973706C6179466F726D61742E
+            466F726D61745374723D2225322E32662220446973706C6179466F726D61742E
+            4B696E643D22666B4E756D6572696322204672616D652E5479703D2231352220
+            48416C69676E3D226861526967687422205472756E634F7574626F756E645465
+            78743D2246616C7365222056416C69676E3D22766143656E7465722220546578
+            743D22302C3030222F3E3C54667278444D504D656D6F5669657720416C6C6F77
+            566563746F724578706F72743D225472756522204C6566743D22313135322220
+            546F703D22313336222057696474683D22393622204865696768743D22333422
+            205265737472696374696F6E733D2232342220416C6C6F774578707265737369
+            6F6E733D2246616C736522204672616D652E5479703D223135222048416C6967
+            6E3D226861526967687422205472756E634F7574626F756E64546578743D2246
+            616C7365222056416C69676E3D22766143656E7465722220546578743D22302C
+            3030222F3E3C54667278444D504D656D6F5669657720416C6C6F77566563746F
+            724578706F72743D225472756522204C6566743D22313135322220546F703D22
+            313730222057696474683D22393622204865696768743D223334222052657374
+            72696374696F6E733D2232342220416C6C6F7745787072657373696F6E733D22
+            46616C736522204672616D652E5479703D223135222048416C69676E3D226861
+            526967687422205472756E634F7574626F756E64546578743D2246616C736522
+            2056416C69676E3D22766143656E7465722220546578743D22302C3030222F3E
             3C54667278444D504D656D6F5669657720416C6C6F77566563746F724578706F
             72743D225472756522204C6566743D223537362220546F703D22323034222057
-            696474683D223133342C3422204865696768743D223334222052657374726963
-            74696F6E733D22382220416C6C6F7745787072657373696F6E733D2246616C73
-            6522204672616D652E5479703D22313522205472756E634F7574626F756E6454
-            6578743D2246616C7365222056416C69676E3D22766143656E74657222205465
-            78743D22D0A1D183D0BCD0BCD0B0222F3E3C54667278444D504D656D6F566965
+            696474683D223131352C3222204865696768743D223334222052657374726963
+            74696F6E733D2232342220416C6C6F7745787072657373696F6E733D2246616C
+            736522204672616D652E5479703D223135222048416C69676E3D226861526967
+            687422205472756E634F7574626F756E64546578743D2246616C736522205641
+            6C69676E3D22766143656E7465722220546578743D2230222F3E3C5466727844
+            4D504D656D6F5669657720416C6C6F77566563746F724578706F72743D225472
+            756522204C6566743D223633332C362220546F703D2231303222205769647468
+            3D2235372C3622204865696768743D22333422205265737472696374696F6E73
+            3D2232342220416C6C6F7745787072657373696F6E733D2246616C7365222046
+            72616D652E5479703D223135222048416C69676E3D2268615269676874222054
+            72756E634F7574626F756E64546578743D2246616C7365222056416C69676E3D
+            22766143656E7465722220546578743D2230222F3E3C54667278444D504D656D
+            6F5669657720416C6C6F77566563746F724578706F72743D225472756522204C
+            6566743D223932312C362220546F703D22323034222057696474683D2238362C
+            3422204865696768743D22333422205265737472696374696F6E733D22323422
+            20416C6C6F7745787072657373696F6E733D2246616C736522204672616D652E
+            5479703D223135222048416C69676E3D226861526967687422205472756E634F
+            7574626F756E64546578743D2246616C7365222056416C69676E3D2276614365
+            6E7465722220546578743D22302C3030222F3E3C54667278444D504D656D6F56
+            69657720416C6C6F77566563746F724578706F72743D225472756522204C6566
+            743D22313137312C322220546F703D22323034222057696474683D2239362220
+            4865696768743D22333422205265737472696374696F6E733D2232342220416C
+            6C6F7745787072657373696F6E733D2246616C73652220466F6E745374796C65
+            3D22333222204672616D652E5479703D223135222048416C69676E3D22686152
+            696768742220506172656E74466F6E743D2246616C736522205472756E634F75
+            74626F756E64546578743D2246616C7365222056416C69676E3D22766143656E
+            7465722220546578743D22302C3030222F3E3C54667278444D504D656D6F5669
+            657720416C6C6F77566563746F724578706F72743D225472756522204C656674
+            3D22313131332C362220546F703D22323034222057696474683D2238362C3422
+            204865696768743D22333422205265737472696374696F6E733D223234222041
+            6C6C6F7745787072657373696F6E733D2246616C736522204672616D652E5479
+            703D223135222048416C69676E3D226861526967687422205472756E634F7574
+            626F756E64546578743D2246616C7365222056416C69676E3D22766143656E74
+            65722220546578743D22302C3030222F3E3C54667278444D504D656D6F566965
             7720416C6C6F77566563746F724578706F72743D225472756522204C6566743D
-            223531382C342220546F703D22323338222057696474683D223133342C342220
-            4865696768743D22333422205265737472696374696F6E733D22382220416C6C
-            6F7745787072657373696F6E733D2246616C736522204672616D652E5479703D
-            22313522205472756E634F7574626F756E64546578743D2246616C7365222056
-            416C69676E3D22766143656E7465722220546578743D22D0A1D183D0BCD0BCD0
-            B0222F3E3C54667278444D504D656D6F5669657720416C6C6F77566563746F72
-            4578706F72743D225472756522204C6566743D22302220546F703D2230222057
-            696474683D223022204865696768743D223022205265737472696374696F6E73
-            3D22382220416C6C6F7745787072657373696F6E733D2246616C736522204672
-            616D652E5479703D22313522205472756E634F7574626F756E64546578743D22
-            46616C7365222056416C69676E3D22766143656E7465722220546578743D22D0
-            A1D183D0BCD0BCD0B0222F3E3C54667278444D504D656D6F5669657720416C6C
-            6F77566563746F724578706F72743D225472756522204C6566743D2230222054
-            6F703D2230222057696474683D223022204865696768743D2230222052657374
+            22313033362C382220546F703D22323732222057696474683D22393622204865
+            696768743D22363822205265737472696374696F6E733D2232342220416C6C6F
+            7745787072657373696F6E733D2246616C73652220446973706C6179466F726D
+            61742E466F726D61745374723D2225322E32662220446973706C6179466F726D
+            61742E4B696E643D22666B4E756D6572696322204672616D652E5479703D2231
+            35222048416C69676E3D226861526967687422205472756E634F7574626F756E
+            64546578743D2246616C7365222056416C69676E3D22766143656E7465722220
+            546578743D22302C3030222F3E3C2F63656C6C6D656D6F733E3C63656C6C6865
+            616465726D656D6F733E3C54667278444D504D656D6F5669657720416C6C6F77
+            566563746F724578706F72743D225472756522204C6566743D223937392C3222
+            20546F703D22313336222057696474683D223133342C3422204865696768743D
+            22333422205265737472696374696F6E733D22382220416C6C6F774578707265
+            7373696F6E733D2246616C736522204672616D652E5479703D22313522205472
+            756E634F7574626F756E64546578743D2246616C7365222056416C69676E3D22
+            766143656E7465722220546578743D22D0A1D183D0BCD0BCD0B0222F3E3C5466
+            7278444D504D656D6F5669657720416C6C6F77566563746F724578706F72743D
+            225472756522204C6566743D223937392C322220546F703D2231373022205769
+            6474683D223133342C3422204865696768743D22333422205265737472696374
+            696F6E733D22382220416C6C6F7745787072657373696F6E733D2246616C7365
+            22204672616D652E5479703D22313522205472756E634F7574626F756E645465
+            78743D2246616C7365222056416C69676E3D22766143656E7465722220546578
+            743D22D0A1D183D0BCD0BCD0B0222F3E3C54667278444D504D656D6F56696577
+            20416C6C6F77566563746F724578706F72743D225472756522204C6566743D22
+            3537362220546F703D22323034222057696474683D223133342C342220486569
+            6768743D22333422205265737472696374696F6E733D22382220416C6C6F7745
+            787072657373696F6E733D2246616C736522204672616D652E5479703D223135
+            22205472756E634F7574626F756E64546578743D2246616C7365222056416C69
+            676E3D22766143656E7465722220546578743D22D0A1D183D0BCD0BCD0B0222F
+            3E3C54667278444D504D656D6F5669657720416C6C6F77566563746F72457870
+            6F72743D225472756522204C6566743D223531382C342220546F703D22323338
+            222057696474683D223133342C3422204865696768743D223334222052657374
             72696374696F6E733D22382220416C6C6F7745787072657373696F6E733D2246
             616C736522204672616D652E5479703D22313522205472756E634F7574626F75
             6E64546578743D2246616C7365222056416C69676E3D22766143656E74657222
@@ -2941,227 +754,248 @@ object Form_olap: TForm_olap
             3D22382220416C6C6F7745787072657373696F6E733D2246616C736522204672
             616D652E5479703D22313522205472756E634F7574626F756E64546578743D22
             46616C7365222056416C69676E3D22766143656E7465722220546578743D22D0
-            A1D183D0BCD0BCD0B0222F3E3C2F63656C6C6865616465726D656D6F733E3C63
-            6F6C756D6E6D656D6F733E3C54667278444D504D656D6F5669657720416C6C6F
-            77566563746F724578706F72743D225472756522204C6566743D223936302220
-            546F703D22313336222057696474683D2238362C3422204865696768743D2238
-            3522205265737472696374696F6E733D2232342220416C6C6F77457870726573
-            73696F6E733D2246616C73652220466F6E745374796C653D2233322220467261
-            6D652E5479703D223135222048416C69676E3D22686143656E74657222205061
-            72656E74466F6E743D2246616C736522205472756E634F7574626F756E645465
-            78743D2246616C7365222056416C69676E3D22766143656E7465722220546578
-            743D22222F3E3C2F636F6C756D6E6D656D6F733E3C636F6C756D6E746F74616C
-            6D656D6F733E3C54667278444D504D656D6F5669657720416C6C6F7756656374
-            6F724578706F72743D225472756522204C6566743D22313033362C382220546F
-            703D22313336222057696474683D22393622204865696768743D223835222052
-            65737472696374696F6E733D22382220416C6C6F7745787072657373696F6E73
-            3D2246616C73652220466F6E745374796C653D22333222204672616D652E5479
-            703D223135222048416C69676E3D22686143656E7465722220506172656E7446
-            6F6E743D2246616C736522205472756E634F7574626F756E64546578743D2246
-            616C7365222056416C69676E3D22766143656E7465722220546578743D22D098
-            D182D0BED0B3D0BE222F3E3C2F636F6C756D6E746F74616C6D656D6F733E3C63
-            6F726E65726D656D6F733E3C54667278444D504D656D6F5669657720416C6C6F
-            77566563746F724578706F72743D225472756522204C6566743D22302220546F
-            703D22313032222057696474683D223935302C3422204865696768743D223334
-            22205265737472696374696F6E733D22382220416C6C6F774578707265737369
-            6F6E733D2246616C73652220466F6E745374796C653D22333222204672616D65
-            2E5479703D223135222048416C69676E3D22686143656E746572222050617265
-            6E74466F6E743D2246616C736522205472756E634F7574626F756E6454657874
-            3D2246616C7365222056416C69676E3D22766143656E7465722220546578743D
-            22222F3E3C54667278444D504D656D6F5669657720416C6C6F77566563746F72
-            4578706F72743D225472756522204C6566743D223936302220546F703D223130
-            32222057696474683D223138322C3422204865696768743D2233342220526573
-            7472696374696F6E733D22382220416C6C6F7745787072657373696F6E733D22
-            46616C73652220466F6E745374796C653D22333222204672616D652E5479703D
-            223135222048416C69676E3D22686143656E7465722220506172656E74466F6E
-            743D2246616C736522205472756E634F7574626F756E64546578743D2246616C
-            7365222056416C69676E3D22766143656E7465722220546578743D22D0A3D181
-            D0BBD183D0B3D0B0222F3E3C54667278444D504D656D6F5669657720416C6C6F
-            77566563746F724578706F72743D225472756522204C6566743D223937392C32
-            2220546F703D223334222057696474683D223133342C3422204865696768743D
-            22383522205265737472696374696F6E733D2238222056697369626C653D2246
-            616C73652220416C6C6F7745787072657373696F6E733D2246616C7365222046
-            72616D652E5479703D223135222048416C69676E3D22686143656E7465722220
-            5472756E634F7574626F756E64546578743D2246616C7365222056416C69676E
-            3D22766143656E7465722220546578743D22222F3E3C54667278444D504D656D
-            6F5669657720416C6C6F77566563746F724578706F72743D225472756522204C
-            6566743D22302220546F703D22313336222057696474683D2238362C34222048
-            65696768743D22383522205265737472696374696F6E733D22382220416C6C6F
-            7745787072657373696F6E733D2246616C73652220466F6E745374796C653D22
-            333222204672616D652E5479703D223135222048416C69676E3D22686143656E
-            7465722220506172656E74466F6E743D2246616C73652220576F726457726170
-            3D2246616C736522205472756E634F7574626F756E64546578743D2246616C73
-            65222056416C69676E3D22766143656E7465722220546578743D22D09B2ED0A1
-            2E222F3E3C54667278444D504D656D6F5669657720416C6C6F77566563746F72
-            4578706F72743D225472756522204C6566743D2238362C342220546F703D2231
-            3336222057696474683D223230312C3622204865696768743D22383522205265
-            737472696374696F6E733D22382220416C6C6F7745787072657373696F6E733D
-            2246616C73652220466F6E745374796C653D22333222204672616D652E547970
-            3D223135222048416C69676E3D22686143656E7465722220506172656E74466F
-            6E743D2246616C73652220576F7264577261703D2246616C736522205472756E
-            634F7574626F756E64546578743D2246616C7365222056416C69676E3D227661
-            43656E7465722220546578743D22D090D0B4D180D0B5D181222F3E3C54667278
+            A1D183D0BCD0BCD0B0222F3E3C54667278444D504D656D6F5669657720416C6C
+            6F77566563746F724578706F72743D225472756522204C6566743D2230222054
+            6F703D2230222057696474683D223022204865696768743D2230222052657374
+            72696374696F6E733D22382220416C6C6F7745787072657373696F6E733D2246
+            616C736522204672616D652E5479703D22313522205472756E634F7574626F75
+            6E64546578743D2246616C7365222056416C69676E3D22766143656E74657222
+            20546578743D22D0A1D183D0BCD0BCD0B0222F3E3C54667278444D504D656D6F
+            5669657720416C6C6F77566563746F724578706F72743D225472756522204C65
+            66743D22302220546F703D2230222057696474683D223022204865696768743D
+            223022205265737472696374696F6E733D22382220416C6C6F77457870726573
+            73696F6E733D2246616C736522204672616D652E5479703D2231352220547275
+            6E634F7574626F756E64546578743D2246616C7365222056416C69676E3D2276
+            6143656E7465722220546578743D22D0A1D183D0BCD0BCD0B0222F3E3C2F6365
+            6C6C6865616465726D656D6F733E3C636F6C756D6E6D656D6F733E3C54667278
             444D504D656D6F5669657720416C6C6F77566563746F724578706F72743D2254
-            72756522204C6566743D223238382220546F703D22313336222057696474683D
-            2237362C3822204865696768743D22383522205265737472696374696F6E733D
-            22382220416C6C6F7745787072657373696F6E733D2246616C73652220466F6E
-            745374796C653D22333222204672616D652E5479703D223135222048416C6967
-            6E3D22686143656E7465722220506172656E74466F6E743D2246616C73652220
-            5472756E634F7574626F756E64546578743D2246616C7365222056416C69676E
-            3D22766143656E7465722220546578743D22D09ED0B1D1892ED0BFD0BB2E222F
-            3E3C54667278444D504D656D6F5669657720416C6C6F77566563746F72457870
-            6F72743D225472756522204C6566743D223336342C382220546F703D22313336
-            222057696474683D2236372C3222204865696768743D22383522205265737472
+            72756522204C6566743D223936302220546F703D22313336222057696474683D
+            2238362C3422204865696768743D22383522205265737472696374696F6E733D
+            2232342220416C6C6F7745787072657373696F6E733D2246616C73652220466F
+            6E745374796C653D22333222204672616D652E5479703D223135222048416C69
+            676E3D22686143656E7465722220506172656E74466F6E743D2246616C736522
+            205472756E634F7574626F756E64546578743D2246616C7365222056416C6967
+            6E3D22766143656E7465722220546578743D22222F3E3C2F636F6C756D6E6D65
+            6D6F733E3C636F6C756D6E746F74616C6D656D6F733E3C54667278444D504D65
+            6D6F5669657720416C6C6F77566563746F724578706F72743D22547275652220
+            4C6566743D22313033362C382220546F703D22313336222057696474683D2239
+            3622204865696768743D22383522205265737472696374696F6E733D22382220
+            416C6C6F7745787072657373696F6E733D2246616C73652220466F6E74537479
+            6C653D22333222204672616D652E5479703D223135222048416C69676E3D2268
+            6143656E7465722220506172656E74466F6E743D2246616C736522205472756E
+            634F7574626F756E64546578743D2246616C7365222056416C69676E3D227661
+            43656E7465722220546578743D22D098D182D0BED0B3D0BE222F3E3C2F636F6C
+            756D6E746F74616C6D656D6F733E3C636F726E65726D656D6F733E3C54667278
+            444D504D656D6F5669657720416C6C6F77566563746F724578706F72743D2254
+            72756522204C6566743D22302220546F703D22313032222057696474683D2239
+            35302C3422204865696768743D22333422205265737472696374696F6E733D22
+            382220416C6C6F7745787072657373696F6E733D2246616C73652220466F6E74
+            5374796C653D22333222204672616D652E5479703D223135222048416C69676E
+            3D22686143656E7465722220506172656E74466F6E743D2246616C7365222054
+            72756E634F7574626F756E64546578743D2246616C7365222056416C69676E3D
+            22766143656E7465722220546578743D22222F3E3C54667278444D504D656D6F
+            5669657720416C6C6F77566563746F724578706F72743D225472756522204C65
+            66743D223936302220546F703D22313032222057696474683D223138322C3422
+            204865696768743D22333422205265737472696374696F6E733D22382220416C
+            6C6F7745787072657373696F6E733D2246616C73652220466F6E745374796C65
+            3D22333222204672616D652E5479703D223135222048416C69676E3D22686143
+            656E7465722220506172656E74466F6E743D2246616C736522205472756E634F
+            7574626F756E64546578743D2246616C7365222056416C69676E3D2276614365
+            6E7465722220546578743D22D0A3D181D0BBD183D0B3D0B0222F3E3C54667278
+            444D504D656D6F5669657720416C6C6F77566563746F724578706F72743D2254
+            72756522204C6566743D223937392C322220546F703D22333422205769647468
+            3D223133342C3422204865696768743D22383522205265737472696374696F6E
+            733D2238222056697369626C653D2246616C73652220416C6C6F774578707265
+            7373696F6E733D2246616C736522204672616D652E5479703D22313522204841
+            6C69676E3D22686143656E74657222205472756E634F7574626F756E64546578
+            743D2246616C7365222056416C69676E3D22766143656E746572222054657874
+            3D22222F3E3C54667278444D504D656D6F5669657720416C6C6F77566563746F
+            724578706F72743D225472756522204C6566743D22302220546F703D22313336
+            222057696474683D2238362C3422204865696768743D22383522205265737472
             696374696F6E733D22382220416C6C6F7745787072657373696F6E733D224661
             6C73652220466F6E745374796C653D22333222204672616D652E5479703D2231
             35222048416C69676E3D22686143656E7465722220506172656E74466F6E743D
-            2246616C736522205472756E634F7574626F756E64546578743D2246616C7365
-            222056416C69676E3D22766143656E7465722220546578743D22D09AD0BED0BB
-            2E20D0BFD180D0BED0B6222F3E3C54667278444D504D656D6F5669657720416C
-            6C6F77566563746F724578706F72743D225472756522204C6566743D22343332
-            2220546F703D22313336222057696474683D2235372C3622204865696768743D
-            22383522205265737472696374696F6E733D22382220416C6C6F774578707265
-            7373696F6E733D2246616C73652220466F6E745374796C653D22313630222046
-            72616D652E5479703D223135222048416C69676E3D22686143656E7465722220
-            506172656E74466F6E743D2246616C736522205472756E634F7574626F756E64
-            546578743D2246616C7365222056416C69676E3D22766143656E746572222054
-            6578743D22D09AD0BED0BB2E20D0BBD18CD0B32E20D0B6D0B8D0BB222F3E3C54
-            667278444D504D656D6F5669657720416C6C6F77566563746F724578706F7274
-            3D225472756522204C6566743D223438392C362220546F703D22313336222057
-            696474683D2236372C3222204865696768743D22383522205265737472696374
-            696F6E733D22382220416C6C6F7745787072657373696F6E733D2246616C7365
-            2220466F6E745374796C653D22333222204672616D652E5479703D2231352220
-            48416C69676E3D22686143656E7465722220506172656E74466F6E743D224661
-            6C736522205472756E634F7574626F756E64546578743D2246616C7365222056
-            416C69676E3D22766143656E7465722220546578743D22D09AD0BED0BB2E20D0
-            BBD18CD0B32E20D0BAD0BED0BC222F3E3C54667278444D504D656D6F56696577
-            20416C6C6F77566563746F724578706F72743D225472756522204C6566743D22
-            3535362C382220546F703D22313336222057696474683D223230312C36222048
+            2246616C73652220576F7264577261703D2246616C736522205472756E634F75
+            74626F756E64546578743D2246616C7365222056416C69676E3D22766143656E
+            7465722220546578743D22D09B2ED0A12E222F3E3C54667278444D504D656D6F
+            5669657720416C6C6F77566563746F724578706F72743D225472756522204C65
+            66743D2238362C342220546F703D22313336222057696474683D223230312C36
+            22204865696768743D22383522205265737472696374696F6E733D2238222041
+            6C6C6F7745787072657373696F6E733D2246616C73652220466F6E745374796C
+            653D22333222204672616D652E5479703D223135222048416C69676E3D226861
+            43656E7465722220506172656E74466F6E743D2246616C73652220576F726457
+            7261703D2246616C736522205472756E634F7574626F756E64546578743D2246
+            616C7365222056416C69676E3D22766143656E7465722220546578743D22D090
+            D0B4D180D0B5D181222F3E3C54667278444D504D656D6F5669657720416C6C6F
+            77566563746F724578706F72743D225472756522204C6566743D223238382220
+            546F703D22313336222057696474683D2237362C3822204865696768743D2238
+            3522205265737472696374696F6E733D22382220416C6C6F7745787072657373
+            696F6E733D2246616C73652220466F6E745374796C653D22333222204672616D
+            652E5479703D223135222048416C69676E3D22686143656E7465722220506172
+            656E74466F6E743D2246616C736522205472756E634F7574626F756E64546578
+            743D2246616C7365222056416C69676E3D22766143656E746572222054657874
+            3D22D09ED0B1D1892ED0BFD0BB2E222F3E3C54667278444D504D656D6F566965
+            7720416C6C6F77566563746F724578706F72743D225472756522204C6566743D
+            223336342C382220546F703D22313336222057696474683D2236372C32222048
             65696768743D22383522205265737472696374696F6E733D22382220416C6C6F
             7745787072657373696F6E733D2246616C73652220466F6E745374796C653D22
             333222204672616D652E5479703D223135222048416C69676E3D22686143656E
-            7465722220506172656E74466F6E743D2246616C73652220576F726457726170
-            3D2246616C736522205472756E634F7574626F756E64546578743D2246616C73
-            65222056416C69676E3D22766143656E7465722220546578743D22D0A42ED098
-            2ED09E2E222F3E3C54667278444D504D656D6F5669657720416C6C6F77566563
-            746F724578706F72743D225472756522204C6566743D223736382220546F703D
-            22313336222057696474683D2231393222204865696768743D22383522205265
-            737472696374696F6E733D22382220416C6C6F7745787072657373696F6E733D
-            2246616C736522204672616D652E5479703D223135222048416C69676E3D2268
-            6143656E74657222205472756E634F7574626F756E64546578743D2246616C73
-            65222056416C69676E3D22766143656E7465722220546578743D22D094D0BED0
-            BAD183D0BCD0B5D0BDD182222F3E3C2F636F726E65726D656D6F733E3C726F77
-            6D656D6F733E3C54667278444D504D656D6F5669657720416C6C6F7756656374
-            6F724578706F72743D225472756522204C6566743D22302220546F703D223233
-            38222057696474683D2238362C3422204865696768743D223334222052657374
-            72696374696F6E733D2232342220416C6C6F7745787072657373696F6E733D22
-            46616C73652220466F6E745374796C653D22333222204672616D652E5479703D
-            223135222048416C69676E3D22686143656E7465722220506172656E74466F6E
-            743D2246616C73652220576F7264577261703D2246616C736522205472756E63
-            4F7574626F756E64546578743D2246616C7365222056416C69676E3D22766143
-            656E7465722220546578743D22222F3E3C54667278444D504D656D6F56696577
-            20416C6C6F77566563746F724578706F72743D225472756522204C6566743D22
-            38362C342220546F703D22323338222057696474683D223230312C3622204865
-            696768743D22333422205265737472696374696F6E733D2232342220416C6C6F
-            7745787072657373696F6E733D2246616C73652220466F6E745374796C653D22
-            333222204672616D652E5479703D2231352220506172656E74466F6E743D2246
-            616C73652220576F7264577261703D2246616C736522205472756E634F757462
-            6F756E64546578743D2246616C7365222056416C69676E3D22766143656E7465
-            722220546578743D22222F3E3C54667278444D504D656D6F5669657720416C6C
-            6F77566563746F724578706F72743D225472756522204C6566743D2232383822
-            20546F703D22323338222057696474683D2237362C3822204865696768743D22
-            333422205265737472696374696F6E733D2232342220416C6C6F774578707265
-            7373696F6E733D2246616C73652220466F6E745374796C653D22333222204672
-            616D652E5479703D223135222048416C69676E3D226861526967687422205061
-            72656E74466F6E743D2246616C736522205472756E634F7574626F756E645465
-            78743D2246616C7365222056416C69676E3D22766143656E7465722220546578
-            743D22222F3E3C54667278444D504D656D6F5669657720416C6C6F7756656374
-            6F724578706F72743D225472756522204C6566743D223336342C382220546F70
-            3D22323338222057696474683D2236372C3222204865696768743D2233342220
-            5265737472696374696F6E733D2232342220537472657463684D6F64653D2273
-            6D41637475616C4865696768742220416C6C6F7745787072657373696F6E733D
-            2246616C73652220466F6E745374796C653D22333222204672616D652E547970
-            3D223135222048416C69676E3D22686152696768742220506172656E74466F6E
-            743D2246616C736522205472756E634F7574626F756E64546578743D2246616C
-            7365222056416C69676E3D22766143656E7465722220546578743D22222F3E3C
-            54667278444D504D656D6F5669657720416C6C6F77566563746F724578706F72
-            743D225472756522204C6566743D223433322220546F703D2232333822205769
-            6474683D2235372C3622204865696768743D2233342220526573747269637469
-            6F6E733D2232342220537472657463684D6F64653D22736D41637475616C4865
-            696768742220416C6C6F7745787072657373696F6E733D2246616C7365222046
+            7465722220506172656E74466F6E743D2246616C736522205472756E634F7574
+            626F756E64546578743D2246616C7365222056416C69676E3D22766143656E74
+            65722220546578743D22D09AD0BED0BB2E20D0BFD180D0BED0B6222F3E3C5466
+            7278444D504D656D6F5669657720416C6C6F77566563746F724578706F72743D
+            225472756522204C6566743D223433322220546F703D22313336222057696474
+            683D2235372C3622204865696768743D22383522205265737472696374696F6E
+            733D22382220416C6C6F7745787072657373696F6E733D2246616C7365222046
+            6F6E745374796C653D2231363022204672616D652E5479703D22313522204841
+            6C69676E3D22686143656E7465722220506172656E74466F6E743D2246616C73
+            6522205472756E634F7574626F756E64546578743D2246616C7365222056416C
+            69676E3D22766143656E7465722220546578743D22D09AD0BED0BB2E20D0BBD1
+            8CD0B32E20D0B6D0B8D0BB222F3E3C54667278444D504D656D6F566965772041
+            6C6C6F77566563746F724578706F72743D225472756522204C6566743D223438
+            392C362220546F703D22313336222057696474683D2236372C32222048656967
+            68743D22383522205265737472696374696F6E733D22382220416C6C6F774578
+            7072657373696F6E733D2246616C73652220466F6E745374796C653D22333222
+            204672616D652E5479703D223135222048416C69676E3D22686143656E746572
+            2220506172656E74466F6E743D2246616C736522205472756E634F7574626F75
+            6E64546578743D2246616C7365222056416C69676E3D22766143656E74657222
+            20546578743D22D09AD0BED0BB2E20D0BBD18CD0B32E20D0BAD0BED0BC222F3E
+            3C54667278444D504D656D6F5669657720416C6C6F77566563746F724578706F
+            72743D225472756522204C6566743D223535362C382220546F703D2231333622
+            2057696474683D223230312C3622204865696768743D22383522205265737472
+            696374696F6E733D22382220416C6C6F7745787072657373696F6E733D224661
+            6C73652220466F6E745374796C653D22333222204672616D652E5479703D2231
+            35222048416C69676E3D22686143656E7465722220506172656E74466F6E743D
+            2246616C73652220576F7264577261703D2246616C736522205472756E634F75
+            74626F756E64546578743D2246616C7365222056416C69676E3D22766143656E
+            7465722220546578743D22D0A42ED0982ED09E2E222F3E3C54667278444D504D
+            656D6F5669657720416C6C6F77566563746F724578706F72743D225472756522
+            204C6566743D223736382220546F703D22313336222057696474683D22313932
+            22204865696768743D22383522205265737472696374696F6E733D2238222041
+            6C6C6F7745787072657373696F6E733D2246616C736522204672616D652E5479
+            703D223135222048416C69676E3D22686143656E74657222205472756E634F75
+            74626F756E64546578743D2246616C7365222056416C69676E3D22766143656E
+            7465722220546578743D22D094D0BED0BAD183D0BCD0B5D0BDD182222F3E3C2F
+            636F726E65726D656D6F733E3C726F776D656D6F733E3C54667278444D504D65
+            6D6F5669657720416C6C6F77566563746F724578706F72743D22547275652220
+            4C6566743D22302220546F703D22323338222057696474683D2238362C342220
+            4865696768743D22333422205265737472696374696F6E733D2232342220416C
+            6C6F7745787072657373696F6E733D2246616C73652220466F6E745374796C65
+            3D22333222204672616D652E5479703D223135222048416C69676E3D22686143
+            656E7465722220506172656E74466F6E743D2246616C73652220576F72645772
+            61703D2246616C736522205472756E634F7574626F756E64546578743D224661
+            6C7365222056416C69676E3D22766143656E7465722220546578743D22222F3E
+            3C54667278444D504D656D6F5669657720416C6C6F77566563746F724578706F
+            72743D225472756522204C6566743D2238362C342220546F703D223233382220
+            57696474683D223230312C3622204865696768743D2233342220526573747269
+            6374696F6E733D2232342220416C6C6F7745787072657373696F6E733D224661
+            6C73652220466F6E745374796C653D22333222204672616D652E5479703D2231
+            352220506172656E74466F6E743D2246616C73652220576F7264577261703D22
+            46616C736522205472756E634F7574626F756E64546578743D2246616C736522
+            2056416C69676E3D22766143656E7465722220546578743D22222F3E3C546672
+            78444D504D656D6F5669657720416C6C6F77566563746F724578706F72743D22
+            5472756522204C6566743D223238382220546F703D2232333822205769647468
+            3D2237362C3822204865696768743D22333422205265737472696374696F6E73
+            3D2232342220416C6C6F7745787072657373696F6E733D2246616C7365222046
             6F6E745374796C653D22333222204672616D652E5479703D223135222048416C
             69676E3D22686152696768742220506172656E74466F6E743D2246616C736522
             205472756E634F7574626F756E64546578743D2246616C7365222056416C6967
             6E3D22766143656E7465722220546578743D22222F3E3C54667278444D504D65
             6D6F5669657720416C6C6F77566563746F724578706F72743D22547275652220
-            4C6566743D223438392C362220546F703D22323338222057696474683D223637
+            4C6566743D223336342C382220546F703D22323338222057696474683D223637
             2C3222204865696768743D22333422205265737472696374696F6E733D223234
-            2220416C6C6F7745787072657373696F6E733D2246616C73652220466F6E7453
-            74796C653D22333222204672616D652E5479703D223135222048416C69676E3D
-            22686152696768742220506172656E74466F6E743D2246616C73652220547275
-            6E634F7574626F756E64546578743D2246616C7365222056416C69676E3D2276
-            6143656E7465722220546578743D22222F3E3C54667278444D504D656D6F5669
-            657720416C6C6F77566563746F724578706F72743D225472756522204C656674
-            3D223535362C382220546F703D22323338222057696474683D223230312C3622
-            204865696768743D22333422205265737472696374696F6E733D223234222041
+            2220537472657463684D6F64653D22736D41637475616C486569676874222041
             6C6C6F7745787072657373696F6E733D2246616C73652220466F6E745374796C
-            653D22333222204672616D652E5479703D2231352220506172656E74466F6E74
-            3D2246616C73652220576F7264577261703D2246616C736522205472756E634F
+            653D22333222204672616D652E5479703D223135222048416C69676E3D226861
+            52696768742220506172656E74466F6E743D2246616C736522205472756E634F
             7574626F756E64546578743D2246616C7365222056416C69676E3D2276614365
             6E7465722220546578743D22222F3E3C54667278444D504D656D6F5669657720
-            416C6C6F77566563746F724578706F72743D225472756522204C6566743D2237
-            36382220546F703D22323338222057696474683D223139322220486569676874
-            3D22333422205265737472696374696F6E733D2232342220416C6C6F77457870
-            72657373696F6E733D2246616C73652220466F6E745374796C653D2230222046
-            72616D652E5479703D2231352220506172656E74466F6E743D2246616C736522
-            20576F7264577261703D2246616C736522205472756E634F7574626F756E6454
-            6578743D2246616C7365222056416C69676E3D22766143656E74657222205465
-            78743D22222F3E3C2F726F776D656D6F733E3C726F77746F74616C6D656D6F73
-            3E3C54667278444D504D656D6F5669657720416C6C6F77566563746F72457870
-            6F72743D225472756522204C6566743D22302220546F703D2232373222205769
-            6474683D223935302C3422204865696768743D22363822205265737472696374
-            696F6E733D22382220416C6C6F7745787072657373696F6E733D2246616C7365
-            2220466F6E745374796C653D22333222204672616D652E5479703D2231352220
-            48416C69676E3D22686143656E7465722220506172656E74466F6E743D224661
-            6C736522205472756E634F7574626F756E64546578743D2246616C7365222056
-            416C69676E3D22766143656E7465722220546578743D22D098D182D0BED0B3D0
-            BE222F3E3C54667278444D504D656D6F5669657720416C6C6F77566563746F72
-            4578706F72743D225472756522204C6566743D2235372C362220546F703D2232
-            3732222057696474683D223430332C3222204865696768743D22333422205265
-            737472696374696F6E733D2238222056697369626C653D2246616C7365222041
-            6C6C6F7745787072657373696F6E733D2246616C73652220466F6E745374796C
-            653D223022204672616D652E5479703D223135222048416C69676E3D22686143
-            656E7465722220506172656E74466F6E743D2246616C736522205472756E634F
-            7574626F756E64546578743D2246616C7365222056416C69676E3D2276614365
-            6E7465722220546578743D22546F74616C222F3E3C54667278444D504D656D6F
+            416C6C6F77566563746F724578706F72743D225472756522204C6566743D2234
+            33322220546F703D22323338222057696474683D2235372C3622204865696768
+            743D22333422205265737472696374696F6E733D223234222053747265746368
+            4D6F64653D22736D41637475616C4865696768742220416C6C6F774578707265
+            7373696F6E733D2246616C73652220466F6E745374796C653D22333222204672
+            616D652E5479703D223135222048416C69676E3D226861526967687422205061
+            72656E74466F6E743D2246616C736522205472756E634F7574626F756E645465
+            78743D2246616C7365222056416C69676E3D22766143656E7465722220546578
+            743D22222F3E3C54667278444D504D656D6F5669657720416C6C6F7756656374
+            6F724578706F72743D225472756522204C6566743D223438392C362220546F70
+            3D22323338222057696474683D2236372C3222204865696768743D2233342220
+            5265737472696374696F6E733D2232342220416C6C6F7745787072657373696F
+            6E733D2246616C73652220466F6E745374796C653D22333222204672616D652E
+            5479703D223135222048416C69676E3D22686152696768742220506172656E74
+            466F6E743D2246616C736522205472756E634F7574626F756E64546578743D22
+            46616C7365222056416C69676E3D22766143656E7465722220546578743D2222
+            2F3E3C54667278444D504D656D6F5669657720416C6C6F77566563746F724578
+            706F72743D225472756522204C6566743D223535362C382220546F703D223233
+            38222057696474683D223230312C3622204865696768743D2233342220526573
+            7472696374696F6E733D2232342220416C6C6F7745787072657373696F6E733D
+            2246616C73652220466F6E745374796C653D22333222204672616D652E547970
+            3D2231352220506172656E74466F6E743D2246616C73652220576F7264577261
+            703D2246616C736522205472756E634F7574626F756E64546578743D2246616C
+            7365222056416C69676E3D22766143656E7465722220546578743D22222F3E3C
+            54667278444D504D656D6F5669657720416C6C6F77566563746F724578706F72
+            743D225472756522204C6566743D223736382220546F703D2232333822205769
+            6474683D2231393222204865696768743D22333422205265737472696374696F
+            6E733D2232342220416C6C6F7745787072657373696F6E733D2246616C736522
+            20466F6E745374796C653D223022204672616D652E5479703D22313522205061
+            72656E74466F6E743D2246616C73652220576F7264577261703D2246616C7365
+            22205472756E634F7574626F756E64546578743D2246616C7365222056416C69
+            676E3D22766143656E7465722220546578743D22222F3E3C2F726F776D656D6F
+            733E3C726F77746F74616C6D656D6F733E3C54667278444D504D656D6F566965
+            7720416C6C6F77566563746F724578706F72743D225472756522204C6566743D
+            22302220546F703D22323732222057696474683D223935302C34222048656967
+            68743D22363822205265737472696374696F6E733D22382220416C6C6F774578
+            7072657373696F6E733D2246616C73652220466F6E745374796C653D22333222
+            204672616D652E5479703D223135222048416C69676E3D22686143656E746572
+            2220506172656E74466F6E743D2246616C736522205472756E634F7574626F75
+            6E64546578743D2246616C7365222056416C69676E3D22766143656E74657222
+            20546578743D22D098D182D0BED0B3D0BE222F3E3C54667278444D504D656D6F
             5669657720416C6C6F77566563746F724578706F72743D225472756522204C65
-            66743D223131352C322220546F703D22323338222057696474683D223334352C
-            3622204865696768743D22333422205265737472696374696F6E733D22382220
-            56697369626C653D2246616C73652220416C6C6F7745787072657373696F6E73
-            3D2246616C73652220466F6E745374796C653D223022204672616D652E547970
-            3D223135222048416C69676E3D22686143656E7465722220506172656E74466F
-            6E743D2246616C736522205472756E634F7574626F756E64546578743D224661
-            6C7365222056416C69676E3D22766143656E7465722220546578743D22546F74
-            616C222F3E3C54667278444D504D656D6F5669657720416C6C6F77566563746F
-            724578706F72743D225472756522204C6566743D223137322C382220546F703D
-            22323034222057696474683D2232383822204865696768743D22333422205265
-            737472696374696F6E733D2238222056697369626C653D2246616C7365222041
-            6C6C6F7745787072657373696F6E733D2246616C73652220466F6E745374796C
-            653D223022204672616D652E5479703D223135222048416C69676E3D22686143
-            656E7465722220506172656E74466F6E743D2246616C736522205472756E634F
-            7574626F756E64546578743D2246616C7365222056416C69676E3D2276614365
-            6E7465722220546578743D22546F74616C222F3E3C54667278444D504D656D6F
-            5669657720416C6C6F77566563746F724578706F72743D225472756522204C65
-            66743D223436302C382220546F703D22323034222057696474683D223633332C
-            3622204865696768743D22333422205265737472696374696F6E733D22382220
-            56697369626C653D2246616C73652220416C6C6F7745787072657373696F6E73
-            3D2246616C73652220466F6E745374796C653D223022204672616D652E547970
-            3D223135222048416C69676E3D22686143656E7465722220506172656E74466F
-            6E743D2246616C736522205472756E634F7574626F756E64546578743D224661
-            6C7365222056416C69676E3D22766143656E7465722220546578743D22546F74
-            616C222F3E3C54667278444D504D656D6F5669657720416C6C6F77566563746F
-            724578706F72743D225472756522204C6566743D223332362C342220546F703D
-            22313336222057696474683D223133342C3422204865696768743D2233342220
+            66743D2235372C362220546F703D22323732222057696474683D223430332C32
+            22204865696768743D22333422205265737472696374696F6E733D2238222056
+            697369626C653D2246616C73652220416C6C6F7745787072657373696F6E733D
+            2246616C73652220466F6E745374796C653D223022204672616D652E5479703D
+            223135222048416C69676E3D22686143656E7465722220506172656E74466F6E
+            743D2246616C736522205472756E634F7574626F756E64546578743D2246616C
+            7365222056416C69676E3D22766143656E7465722220546578743D22546F7461
+            6C222F3E3C54667278444D504D656D6F5669657720416C6C6F77566563746F72
+            4578706F72743D225472756522204C6566743D223131352C322220546F703D22
+            323338222057696474683D223334352C3622204865696768743D223334222052
+            65737472696374696F6E733D2238222056697369626C653D2246616C73652220
+            416C6C6F7745787072657373696F6E733D2246616C73652220466F6E74537479
+            6C653D223022204672616D652E5479703D223135222048416C69676E3D226861
+            43656E7465722220506172656E74466F6E743D2246616C736522205472756E63
+            4F7574626F756E64546578743D2246616C7365222056416C69676E3D22766143
+            656E7465722220546578743D22546F74616C222F3E3C54667278444D504D656D
+            6F5669657720416C6C6F77566563746F724578706F72743D225472756522204C
+            6566743D223137322C382220546F703D22323034222057696474683D22323838
+            22204865696768743D22333422205265737472696374696F6E733D2238222056
+            697369626C653D2246616C73652220416C6C6F7745787072657373696F6E733D
+            2246616C73652220466F6E745374796C653D223022204672616D652E5479703D
+            223135222048416C69676E3D22686143656E7465722220506172656E74466F6E
+            743D2246616C736522205472756E634F7574626F756E64546578743D2246616C
+            7365222056416C69676E3D22766143656E7465722220546578743D22546F7461
+            6C222F3E3C54667278444D504D656D6F5669657720416C6C6F77566563746F72
+            4578706F72743D225472756522204C6566743D223436302C382220546F703D22
+            323034222057696474683D223633332C3622204865696768743D223334222052
+            65737472696374696F6E733D2238222056697369626C653D2246616C73652220
+            416C6C6F7745787072657373696F6E733D2246616C73652220466F6E74537479
+            6C653D223022204672616D652E5479703D223135222048416C69676E3D226861
+            43656E7465722220506172656E74466F6E743D2246616C736522205472756E63
+            4F7574626F756E64546578743D2246616C7365222056416C69676E3D22766143
+            656E7465722220546578743D22546F74616C222F3E3C54667278444D504D656D
+            6F5669657720416C6C6F77566563746F724578706F72743D225472756522204C
+            6566743D223332362C342220546F703D22313336222057696474683D22313334
+            2C3422204865696768743D22333422205265737472696374696F6E733D223822
+            2056697369626C653D2246616C73652220416C6C6F7745787072657373696F6E
+            733D2246616C73652220466F6E745374796C653D223022204672616D652E5479
+            703D223135222048416C69676E3D22686143656E7465722220506172656E7446
+            6F6E743D2246616C736522205472756E634F7574626F756E64546578743D2246
+            616C7365222056416C69676E3D22766143656E7465722220546578743D22546F
+            74616C222F3E3C54667278444D504D656D6F5669657720416C6C6F7756656374
+            6F724578706F72743D225472756522204C6566743D223430332C322220546F70
+            3D22313032222057696474683D2235372C3622204865696768743D2233342220
             5265737472696374696F6E733D2238222056697369626C653D2246616C736522
             20416C6C6F7745787072657373696F6E733D2246616C73652220466F6E745374
             796C653D223022204672616D652E5479703D223135222048416C69676E3D2268
@@ -3169,28 +1003,20 @@ object Form_olap: TForm_olap
             634F7574626F756E64546578743D2246616C7365222056416C69676E3D227661
             43656E7465722220546578743D22546F74616C222F3E3C54667278444D504D65
             6D6F5669657720416C6C6F77566563746F724578706F72743D22547275652220
-            4C6566743D223430332C322220546F703D22313032222057696474683D223537
-            2C3622204865696768743D22333422205265737472696374696F6E733D223822
-            2056697369626C653D2246616C73652220416C6C6F7745787072657373696F6E
-            733D2246616C73652220466F6E745374796C653D223022204672616D652E5479
-            703D223135222048416C69676E3D22686143656E7465722220506172656E7446
-            6F6E743D2246616C736522205472756E634F7574626F756E64546578743D2246
-            616C7365222056416C69676E3D22766143656E7465722220546578743D22546F
-            74616C222F3E3C54667278444D504D656D6F5669657720416C6C6F7756656374
-            6F724578706F72743D225472756522204C6566743D223731302C342220546F70
-            3D22313032222057696474683D223130352C3622204865696768743D22333422
-            205265737472696374696F6E733D2238222056697369626C653D2246616C7365
-            2220416C6C6F7745787072657373696F6E733D2246616C73652220466F6E7453
-            74796C653D223022204672616D652E5479703D223135222048416C69676E3D22
-            686143656E7465722220506172656E74466F6E743D2246616C73652220547275
-            6E634F7574626F756E64546578743D2246616C7365222056416C69676E3D2276
-            6143656E7465722220546578743D22546F74616C222F3E3C2F726F77746F7461
-            6C6D656D6F733E3C63656C6C66756E6374696F6E733E3C6974656D20312F3E3C
-            2F63656C6C66756E6374696F6E733E3C636F6C756D6E736F72743E3C6974656D
-            20322F3E3C2F636F6C756D6E736F72743E3C726F77736F72743E3C6974656D20
-            322F3E3C6974656D20322F3E3C6974656D20322F3E3C6974656D20322F3E3C69
-            74656D20322F3E3C6974656D20322F3E3C6974656D20322F3E3C6974656D2032
-            2F3E3C2F726F77736F72743E3C2F63726F73733E}
+            4C6566743D223731302C342220546F703D22313032222057696474683D223130
+            352C3622204865696768743D22333422205265737472696374696F6E733D2238
+            222056697369626C653D2246616C73652220416C6C6F7745787072657373696F
+            6E733D2246616C73652220466F6E745374796C653D223022204672616D652E54
+            79703D223135222048416C69676E3D22686143656E7465722220506172656E74
+            466F6E743D2246616C736522205472756E634F7574626F756E64546578743D22
+            46616C7365222056416C69676E3D22766143656E7465722220546578743D2254
+            6F74616C222F3E3C2F726F77746F74616C6D656D6F733E3C63656C6C66756E63
+            74696F6E733E3C6974656D20312F3E3C2F63656C6C66756E6374696F6E733E3C
+            636F6C756D6E736F72743E3C6974656D20322F3E3C2F636F6C756D6E736F7274
+            3E3C726F77736F72743E3C6974656D20322F3E3C6974656D20322F3E3C697465
+            6D20322F3E3C6974656D20322F3E3C6974656D20322F3E3C6974656D20322F3E
+            3C6974656D20322F3E3C6974656D20322F3E3C2F726F77736F72743E3C2F6372
+            6F73733E}
         end
       end
     end
@@ -3229,856 +1055,6 @@ object Form_olap: TForm_olap
     Left = 120
     Top = 168
   end
-  object PivotCube57: TPivotCube
-    FactTableDataSet = DM_Olap.Uni_Data
-    Dimensions = <
-      item
-        Enabled = True
-        AliasName = 'PREDPR'
-        FieldName = 'PREDP'
-        DataSet = DM_Olap.Uni_Data
-        KeyField = 'PREDP'
-        LookupField = 'PREDP'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1046#1069#1054
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'PREDPR_DET'
-        FieldName = 'PREDPR_DET'
-        DataSet = DM_Olap.Uni_Data
-        KeyField = 'PREDPR_DET'
-        LookupField = 'PREDPR_DET'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1040#1076#1088'.'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'KW'
-        FieldName = 'KW'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1050#1074
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'ORGNAME'
-        FieldName = 'ORGNAME'
-        DataSet = DM_Olap.Uni_Data
-        KeyField = 'ORGNAME'
-        LookupField = 'ORGNAME'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'NM'
-        FieldName = 'NM'
-        DataSet = DM_Olap.Uni_Data
-        KeyField = 'NM'
-        LookupField = 'NM'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1059#1089#1083#1091#1075#1072' '#1076#1077#1090'.'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'NM1'
-        FieldName = 'NM1'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1059#1089#1083#1091#1075#1072
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'STATUS'
-        FieldName = 'STATUS'
-        DataSet = DM_Olap.Uni_Data
-        KeyField = 'STATUS'
-        LookupField = 'STATUS'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1057#1090#1072#1090#1091#1089
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'SCH'
-        FieldName = 'SCH'
-        DataSet = DM_Olap.Uni_Data
-        KeyField = 'SCH'
-        LookupField = 'SCH'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1058#1080#1087
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'VAL_GROUP'
-        FieldName = 'VAL_GROUP'
-        DataSet = DM_Olap.Uni_Data
-        KeyField = 'VAL_GROUP'
-        LookupField = 'VAL_GROUP'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1043#1088#1091#1087#1087#1072
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'MG1'
-        FieldName = 'MG1'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1055#1077#1088#1080#1086#1076
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end>
-    LNG.Strings = (
-      'RowTotalName='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1056#1054#1050#1040#1052
-      'ColumnTotalName='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1054#1051#1041#1062#1040#1052
-      'PanelRowsCaption='#1057#1090#1088#1086#1082#1072
-      'PanelColumnsCaption='#1057#1090#1086#1083#1073#1077#1094
-      'PanelDimsCaption='#1060#1080#1083#1100#1090#1088
-      'CustomFilter='#1060#1080#1083#1100#1090#1088
-      
-        'pvToolBarCollapseError=Could not collapse TOOLBAR without border' +
-        ' alignment'
-      
-        'pvToolBarTreeFilterWarn=Cannot use incremental filtering on hier' +
-        'arhical dimensions!'
-      'pvToolBarNoFilter='#1053#1077#1090' '#1092#1080#1083#1100#1090#1088#1072
-      'pvToolBarCustomFilter='#1048#1089#1087#1086#1083#1100#1079'.'#1092#1080#1083#1100#1090#1088
-      'pvCubeErr1=Could not load dimension data!'
-      'pvCubeErr2=Could not load measure data!'
-      'pvCubeErr3=: You must specify dataset for dimension!'
-      
-        'pvCubeErr4=Could not load dimension items! Dimension: %s  Dimens' +
-        'ion item: %s'
-      'pvCubeErr5=Could not start building cube! Unknown error'
-      
-        'pvCubeErr6=You must set appropriate EventHandler for custom wrap' +
-        'ped dimensions! : %s'
-      'pvCubeErr7=You must set FactTableDataSet property!'
-      'pvCubeErr8=You must set at least ONE measure'
-      'pvCubeErr9=You must set at least ONE dimension'
-      'pvMapErr1='#1054#1096#1080#1073#1086#1095#1085#1099#1081' '#1080#1085#1076#1077#1082#1089
-      'pvMapErr2='#1054#1076#1085#1086' '#1080#1079#1084#1077#1088#1077#1085#1080#1077' '#1076#1086#1083#1078#1085#1086' '#1073#1099#1090#1100' '#1074#1080#1076#1080#1084#1099#1084'!'
-      'pvGridExcel0=Export note'
-      
-        'pvGridExcel1=Number of columns more than 256. Only first 255 col' +
-        'umns will be exported!'
-      'pvGridExcel2=Number of columns must be more than 0!'
-      'pvGridExcel3=Number of rows must be more than 0!'
-      
-        'pvGridExcel4=Could not export data to Excel! Check your MS Excel' +
-        ' installation'
-      'pvAMFAddMeasureForm=Calculated measures manager'
-      'pvAMFAddMeasureBtn='#1044#1086#1073#1072#1074#1080#1090#1100' '#1085#1086#1074#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFEditMeasureBtn='#1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1080#1084#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFDelMeasureBtn='#1059#1076#1072#1083#1080#1090#1100' '#1087#1086#1076#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFCalcLabel='#1055#1086#1076#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFCalcEditLabel='#1048#1089#1087#1086#1083#1100#1079#1091#1077#1084#1072#1103' '#1092#1086#1088#1084#1091#1083#1072
-      'pvAMFMeasureLabel='#1048#1084#1077#1102#1097#1080#1077#1089#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFViewsLabel='#1048#1084#1077#1102#1097#1080#1077#1089#1103' '#1082#1091#1088#1089#1086#1088#1099
-      'pvAMFCheckBtn='#1055#1088#1086#1074#1077#1088#1100#1090#1077' '#1092#1086#1088#1084#1091#1083#1091
-      'pvAMFSynaxError='#1057#1080#1085#1090#1072#1082#1089#1080#1095#1077#1089#1082#1072#1103' '#1086#1096#1080#1073#1082#1072
-      'pvAMFFormulaError=: '#1054#1096#1080#1073#1082#1072' '#1074' '#1092#1086#1088#1084#1091#1083#1077
-      'pvAMFDuplicateError='#1044#1091#1073#1083#1080#1088#1091#1077#1097#1077#1077#1089#1103' '#1080#1084#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFCheckOKName='#1054#1090#1084#1077#1095#1077#1085#1086'!'
-      'pvToolBarDDOKBtnHint='#1055#1088#1080#1085#1103#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
-      'pvToolBarDDCancelBtnHint='#1054#1090#1084#1077#1085#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
-      'pvToolBarDDFillBtnHint='#1042#1099#1076#1077#1083#1080#1090#1100' '#1074#1089#1077
-      'pvToolBarDDClearBtnHint='#1054#1090#1084#1077#1085#1080#1090#1100' '#1074#1089#1077
-      'pvToolBarDDRevertBtnHint='#1048#1085#1074#1077#1088#1090#1080#1088#1086#1074#1072#1090#1100
-      'pvToolBarDDExpandBtnHint='#1056#1072#1079#1074#1077#1088#1085#1091#1090#1100' '#1074#1089#1077' '#1074#1077#1090#1082#1080
-      'pvMapValueName='#1047#1085#1072#1095#1077#1085#1080#1077
-      'pvMapRowPercentName='#1055#1088#1086#1094#1077#1085#1090' '#1087#1086' '#1057#1090#1088#1086#1082#1072#1084
-      'pvMapColPercentName='#1055#1088#1086#1094#1077#1085#1090' '#1087#1086' '#1057#1090#1086#1083#1073#1094#1072#1084
-      'pvMapRecordCountName='#1050#1086#1083'-'#1074#1086
-      'pvMapRankName='#1056#1072#1085#1075'['#1057#1090#1086#1083#1073#1077#1094']'
-      'pvMapRankRName='#1056#1072#1085#1075'['#1057#1090#1088#1086#1082#1072']'
-      'pvMapSubPrevCName='#1056#1072#1079#1085#1080#1094#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1080#1084' '#1057#1090#1086#1083#1073#1094#1086#1084
-      'pvMapSubPrevRName='#1056#1072#1079#1085#1080#1094#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1077#1081' '#1057#1090#1088#1086#1082#1086#1081
-      'pvMapAddPrevCName='#1057#1091#1084#1084#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1080#1084' '#1057#1090#1086#1083#1073#1094#1086#1084
-      'pvMapAddPrevRName='#1057#1091#1084#1084#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1077#1081' '#1057#1090#1088#1086#1082#1086#1081
-      'pvMapRunningTotalName1='#1053#1072#1088#1072#1089#1090#1072#1102#1097#1077#1081' '#1048#1090#1086#1075' '#1087#1086' '#1057#1090#1086#1083#1073#1094#1091
-      'pvMapRunningTotalName2='#1053#1072#1088#1072#1089#1090#1072#1102#1097#1077#1081' '#1048#1090#1086#1075' '#1087#1086' '#1057#1090#1088#1086#1082#1077
-      'pvBtnHintAccept='#1055#1086#1076#1090#1074#1077#1088#1076#1080#1090#1100
-      'pvBtnHintCancel='#1054#1090#1084#1077#1085#1080#1090#1100
-      'pvBtnHintExpandTree='#1056#1072#1079#1074#1077#1088#1085#1091#1090#1100'/'#1057#1074#1077#1088#1085#1091#1090#1100' '#1074#1077#1090#1082#1080
-      'pvBtnHintCalcMeasureDialog='#1042#1082#1083'. '#1076#1080#1072#1083#1086#1075' '#1056#1072#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1075#1086' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintMeasureFillEnable='#1042#1099#1076#1077#1083#1080#1090#1100' '#1074#1089#1077
-      'pvBtnHintMeasureFillDisable='#1054#1090#1084#1077#1090#1080#1090#1100' '#1074#1089#1077
-      'pvBtnHintMeasureRevert='#1055#1077#1088#1077#1082#1083#1102#1095#1080#1090#1100' '#1089#1086#1089#1090#1086#1103#1085#1080#1077' '#1077#1076'.'#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimFillActive='#1042#1080#1076#1080#1084#1099' '#1074#1089#1077' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintDimFillHided='#1053#1077' '#1074#1080#1076#1080#1084#1099' '#1074#1089#1077' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintDimFillFiltered='#1060#1080#1083#1100#1090#1088#1086#1074#1072#1090#1100' '#1074#1089#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimRevert='#1062#1080#1082#1083#1080#1095#1085#1099#1081' '#1089#1076#1074#1080#1075' '#1089#1086#1089#1090#1086#1103#1085#1080#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimAddGroup='#1044#1086#1073#1072#1074#1080#1090#1100' '#1080#1077#1088#1072#1088#1093#1080#1095#1077#1089#1082#1091#1102' '#1075#1088#1091#1087#1087#1091
-      'pvBtnHintDimDelGroup='#1059#1076#1072#1083#1080#1090#1100' '#1080#1077#1088#1072#1088#1093#1080#1095#1077#1089#1082#1091#1102' '#1075#1088#1091#1087#1087#1091
-      'mbFormCaption='#1055#1086#1089#1090#1088#1086#1080#1090#1077#1083#1100' '#1079#1072#1087#1088#1086#1089#1072
-      'mbRowsCaption='#1057#1090#1088#1086#1082#1080
-      'mbColumnsCaption='#1057#1090#1086#1083#1073#1094#1099
-      'mbDimsCaption='#1048#1079#1084#1077#1088#1077#1085#1080#1103
-      'mbDisabledDimsCaption='#1053#1077#1072#1082#1090#1080#1074#1085#1099#1077' '#1048#1079#1084#1077#1088#1077#1085#1080#1103
-      
-        'mbRunEditBtnHint='#1054#1090#1082#1088#1099#1090#1100' '#1088#1077#1076#1072#1082#1090#1086#1088' '#1080#1079#1084#1077#1088#1077#1085#1080#1081' '#1076#1083#1103' '#1074#1099#1073#1088#1072#1085#1085#1099#1093' '#1080#1079#1084#1077#1088#1077 +
-        #1085#1080#1081
-      
-        'mbTreeViewHint=Drag'#39'n'#39'Drop dimension lable to choosen group. Dbl' +
-        '-click to run dimension editor'
-      'DimensionFormCaption='#1056#1077#1076#1072#1082#1090#1086#1088' '#1048#1079#1084#1077#1088#1077#1085#1080#1081' :'
-      'dimDisplayName='#1047#1072#1075#1086#1083#1086#1074#1086#1082
-      'dimCount='#1050#1086#1083'-'#1074#1086' '#1086#1073#1098#1077#1082#1090#1086#1074
-      'dimSOrtBtn='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072
-      'dimSortBtnHint='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072
-      'dimActiveItems='#1040#1082#1090#1080#1074#1085#1099#1077' '#1086#1073#1098#1077#1082#1090#1099
-      'dimInActiveItems='#1061#1088#1072#1085#1080#1083#1080#1097#1077'('#1085#1077' '#1072#1082#1090#1080#1074#1085#1099#1077' '#1086#1073#1098#1077#1082#1090#1099')'
-      'dimFilterError='#1050#1072#1082' '#1084#1080#1085#1080#1084#1091#1084' '#1086#1076#1085#1086' '#1080#1079#1084#1077#1088#1077#1085#1080#1077' '#1076#1086#1083#1078#1085#1086' '#1073#1099#1090#1100' '#1072#1082#1090#1080#1074#1085#1099#1084'!'
-      'dimSearch='#1053#1072#1081#1090#1080
-      
-        'dimTVHint=Drag'#39'n'#39'drop selected item(s) to group or repository ar' +
-        'ea'
-      'dimSortByName='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072' '#1087#1086' '#1080#1084#1077#1085#1080
-      'dimSortByKey='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072' '#1087#1086' '#1082#1083#1102#1095#1091
-      'dimNoSort='#1041#1077#1079' '#1089#1086#1088#1090#1080#1088#1086#1074#1082#1080
-      'dimSortAscending='#1055#1086' '#1074#1086#1079#1088#1072#1089#1090#1072#1102#1097#1077#1081
-      'dimSortDescending='#1055#1086' '#1091#1073#1099#1074#1072#1102#1097#1077#1081
-      'dimForecastingCB1=Enable prev. forecast value'
-      'dimForecastingCB2=Enable next. forecast value'
-      'dimForecastingType=Forecasting method'
-      'dimForecastingMethod1=Simple moving average'
-      'dimForecastingMethod2=Weighted Moving Average'
-      'dimForecastingMethod3=Double Exponential Smoothing'
-      'dimForecastingMethod4=Triple Exponential Smoothing'
-      'dimForecastingMethod5=Show Data Margins Only'
-      'dimForecastingMethod6=Show First and Last members'
-      'MeasureCommonFormCaption='#1055#1086#1089#1090#1088#1086#1080#1090#1077#1083#1100' '#1079#1085#1072#1095#1077#1085#1080#1081
-      'MFormatBtnName=Build format'
-      'MFormatFormCaption=Build format string'
-      'pvMapMVFmt0=Change measure type'
-      'pvMapMVFmt1=Cell'
-      'pvMapMVFmt2=Percent by Column'
-      'pvMapMVFmt3=Percent by Row'
-      'pvMapMVFmt4=Record count'
-      'pvMapMVFmt5=Rank by Column'
-      'pvMapMVFmt6=Rank by Row'
-      'pvMapMVFmt7=Previous member by Row'
-      'pvMapMVFmt8=Next member by Row'
-      'pvMapMVFmt9=Previous member by Column'
-      'pvMapMVFmt10=Next member by Column'
-      'pvMapMVFmt11=Running Total by Column'
-      'pvMapMVFmt12=Running Total by Row'
-      'pmMapMVOp1=Value'
-      'pmMapMVOp2=Subtract'
-      'pmMapMVOp3=Add'
-      'pmMapMVOp4=Divide'
-      'pmMapMVOp5=Multiply'
-      'pvMeasureCommon5=Min. value'
-      'pvMeasureCommon6=Max. value'
-      'pvMeasureCommon9=Value'
-      'pvMeasureCommon10=Operation'
-      'pvMeasureCommon11=Only one measure visible'
-      'pvMeasureCommon12=Value representation'
-      'pvMeasureCommon13=Filters'
-      'pvMeasureCommon14=Filter by Map cells'
-      'pvMeasureCommon15=Filter by fact table records'
-      'pvMeasureCommon16=Measure formating'
-      'pvMeasureCommon17=Formula (is calculated measure)'
-      'pvMeasureCommon18=Enabled'
-      'pvMeasureCommon19=Running Total by Column'
-      'pvMeasureCommon20=Running Total by Row'
-      'pvMeasureCommon21=Display caption'
-      'MeasureFilterError= Measure filter error'
-      'mfeWrongValue=Wrong value in  measure filter:'
-      'MeasureCommonFormDistinctName=Distinct'
-      'pvgSearchFormCaption=Search'
-      'pvgSearchArea=Search area'
-      'pvgSearchRow=Row header'
-      'pvgSearchCol=Column header'
-      'pvgSearchText=Text for search'
-      'pvgSearch1=Next'
-      'pvgSearch2=Forward'
-      'pvgSearch3=Case sensitive'
-      'pvgSearchBtn=Find again'
-      'pvgSearchFinish=Cannot find more'
-      'uHtmBuildHeaders=building headers...'
-      'uHtmPreparing=prepearing...'
-      'uHtmColTotal='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1054#1051#1041#1062#1040#1052
-      'uHtmRowTotal='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1056#1054#1050#1040#1052
-      'uHtmExportColHeader=exporting column headers...'
-      
-        'uHtmExportCells=exporting row headers, cell values and row total' +
-        's...'
-      'uHtmExportColTotal=exporting column totals...'
-      'uHtmSave=saving and executing...'
-      'uHtmLabel=Action...'
-      'ChartDDRows='#1057#1090#1088#1086#1082#1080
-      'ChartDDColumns='#1057#1090#1086#1083#1073#1094#1099
-      'ddChartViews=Views'
-      'ddChartLegend='#1051#1077#1075#1077#1085#1076#1072
-      'ddChartMarks=Marks'
-      'ChartXNextPage=Next page'
-      'ChartXPrevPage=Prev. page'
-      'CubeButtonCaption=Cube'
-      'ChartButtonCaption=Chart'
-      'pvGridSubTotal=Subtotal'
-      'pvGridSubTotalwName=Sub-total by '
-      'MFormatCount=3'
-      'MFormatName0=Generic'
-      'MFormatValue0=#0.00'
-      'MFormatName1=Price (US)'
-      'MFormatValue1=$ #0.00'
-      'MFormatName2=Summa'
-      'MFormatValue2=# ##0.00'
-      'MFormatCap1=Predefined formats'
-      'MFormatCap2=Format string'
-      'MFormatCap3=Number of decimals'
-      'MFormatCap4=Before'
-      'MFormatCap5=After'
-      'MFormatCap6=Design'
-      'MFormatCap7=Symbol'
-      'MFormatCap8=Example'
-      'MFormatCap9=Thousand separator'
-      'uXLSActionLabel=Action'
-      'uXLSAction1=Prepearing basic fonts'
-      'uXLSAction2=Prepearing basic formats'
-      'uXLSAction3=Applying row totals headers merging'
-      'uXLSAction4=Applying cells format'
-      'uXLSAction5=Applying columns headers merging'
-      'uXLSAction6=Applying rows headers merging'
-      'uXLSAction7=Applying column totals headers merging'
-      'uXLSAction8=Applying auto width for columns'
-      'uXLActionLabel=Action'
-      'uXLAction1=Prepearing cells array'
-      'uXLAction2=Prepearing column headers'
-      'uXLAction3=Processing'
-      'uXLAction4=Merging column headers'
-      'uXLAction5=Merging row headers'
-      'uXLAction6=Merging row total headers'
-      'uXLAction7=Applying cells format'
-      'pvGridPrint1=Print All'
-      'pvGridPrint2=Print selected'
-      'pvGridPrint3=Right click to scale menu'
-      'uXLSActionLabel2=Action progress'
-      'uXLSActionLabel2=Full progress'
-      'uHtmLabel2=Action progress'
-      'uHtmLabel3=Full progress'
-      'pvGridEditor1=Table'
-      'pvGridEditor2=Chart'
-      'pvGridEditor3=Method'
-      'pvGridEditor4=Summa'
-      'pvGridEditor5=Count'
-      'pvGridEditor6=Average'
-      'pvGridEditor7=Equal'
-      'pvGridEditor8=Proportional'
-      'pvGridPrint4=Print preview'
-      'pvGridPrint5=Scale page'
-      'pvGridPrint6=Scale print'
-      'pvGridPrint7=Fit page'
-      'pvGridPrint8=Fit width'
-      'pvGridPrint9=Fit height'
-      'pvGridPrint10=50%'
-      'pvGridPrint11=100%'
-      'pvGridPrint12=200%'
-      'pvGridPrint13=400%'
-      'pvGridPrintLocked=Process locked! Please wait....')
-    Measures = <
-      item
-        AliasName = 'CNT'
-        FieldName = 'CNT'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1050#1086#1083'-'#1074#1086
-      end
-      item
-        AliasName = 'KPR'
-        FieldName = 'KPR'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1055#1088#1086#1078#1080#1074'.'
-      end
-      item
-        AliasName = 'KPR_OT'
-        FieldName = 'KPR_OT'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1042#1088'.'#1086#1090#1089#1091#1090'.'
-      end
-      item
-        AliasName = 'KPR_WR'
-        FieldName = 'KPR_WR'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1042#1088'.'#1079#1072#1088#1077#1075'.'
-      end>
-    CubeName = 'test'
-    OptimizeLevel = optNormal
-    ExtendedMode = True
-    AlwaysSaveCounts = False
-    ExcludeZeros = True
-    ClearTimeInfo = True
-    Left = 32
-    Top = 264
-  end
-  object PivotMap57: TPivotMap
-    Cube = PivotCube57
-    Columns = <>
-    Rows = <
-      item
-        Name = 'PREDPR'
-      end
-      item
-        Name = 'SCH'
-      end
-      item
-        Name = 'NM1'
-      end
-      item
-        Name = 'ORGNAME'
-      end>
-    HideEmptyRows = True
-    HideEmptyColumns = True
-    TableMode = True
-    DDirection = True
-    AutoSaveMap = False
-    AutoExpand = True
-    Left = 64
-    Top = 264
-  end
-  object PivotCube58: TPivotCube
-    FactTableDataSet = DM_Olap.Uni_Data
-    Dimensions = <
-      item
-        Enabled = True
-        AliasName = 'PREDPR'
-        FieldName = 'PREDP'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1046#1069#1054
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'PREDPR_DET'
-        FieldName = 'PREDPR_DET'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1040#1076#1088'.'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'KW'
-        FieldName = 'KW'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1050#1074
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'TYPE_PSCH'
-        FieldName = 'TYPE_PSCH'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1058#1080#1087' '#1089#1095#1077#1090#1095#1080#1082#1072
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end>
-    LNG.Strings = (
-      'RowTotalName='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1056#1054#1050#1040#1052
-      'ColumnTotalName='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1054#1051#1041#1062#1040#1052
-      'PanelRowsCaption='#1057#1090#1088#1086#1082#1072
-      'PanelColumnsCaption='#1057#1090#1086#1083#1073#1077#1094
-      'PanelDimsCaption='#1060#1080#1083#1100#1090#1088
-      'CustomFilter='#1060#1080#1083#1100#1090#1088
-      
-        'pvToolBarCollapseError=Could not collapse TOOLBAR without border' +
-        ' alignment'
-      
-        'pvToolBarTreeFilterWarn=Cannot use incremental filtering on hier' +
-        'arhical dimensions!'
-      'pvToolBarNoFilter='#1053#1077#1090' '#1092#1080#1083#1100#1090#1088#1072
-      'pvToolBarCustomFilter='#1048#1089#1087#1086#1083#1100#1079'.'#1092#1080#1083#1100#1090#1088
-      'pvCubeErr1=Could not load dimension data!'
-      'pvCubeErr2=Could not load measure data!'
-      'pvCubeErr3=: You must specify dataset for dimension!'
-      
-        'pvCubeErr4=Could not load dimension items! Dimension: %s  Dimens' +
-        'ion item: %s'
-      'pvCubeErr5=Could not start building cube! Unknown error'
-      
-        'pvCubeErr6=You must set appropriate EventHandler for custom wrap' +
-        'ped dimensions! : %s'
-      'pvCubeErr7=You must set FactTableDataSet property!'
-      'pvCubeErr8=You must set at least ONE measure'
-      'pvCubeErr9=You must set at least ONE dimension'
-      'pvMapErr1='#1054#1096#1080#1073#1086#1095#1085#1099#1081' '#1080#1085#1076#1077#1082#1089
-      'pvMapErr2='#1054#1076#1085#1086' '#1080#1079#1084#1077#1088#1077#1085#1080#1077' '#1076#1086#1083#1078#1085#1086' '#1073#1099#1090#1100' '#1074#1080#1076#1080#1084#1099#1084'!'
-      'pvGridExcel0=Export note'
-      
-        'pvGridExcel1=Number of columns more than 256. Only first 255 col' +
-        'umns will be exported!'
-      'pvGridExcel2=Number of columns must be more than 0!'
-      'pvGridExcel3=Number of rows must be more than 0!'
-      
-        'pvGridExcel4=Could not export data to Excel! Check your MS Excel' +
-        ' installation'
-      'pvAMFAddMeasureForm=Calculated measures manager'
-      'pvAMFAddMeasureBtn='#1044#1086#1073#1072#1074#1080#1090#1100' '#1085#1086#1074#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFEditMeasureBtn='#1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1080#1084#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFDelMeasureBtn='#1059#1076#1072#1083#1080#1090#1100' '#1087#1086#1076#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFCalcLabel='#1055#1086#1076#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFCalcEditLabel='#1048#1089#1087#1086#1083#1100#1079#1091#1077#1084#1072#1103' '#1092#1086#1088#1084#1091#1083#1072
-      'pvAMFMeasureLabel='#1048#1084#1077#1102#1097#1080#1077#1089#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFViewsLabel='#1048#1084#1077#1102#1097#1080#1077#1089#1103' '#1082#1091#1088#1089#1086#1088#1099
-      'pvAMFCheckBtn='#1055#1088#1086#1074#1077#1088#1100#1090#1077' '#1092#1086#1088#1084#1091#1083#1091
-      'pvAMFSynaxError='#1057#1080#1085#1090#1072#1082#1089#1080#1095#1077#1089#1082#1072#1103' '#1086#1096#1080#1073#1082#1072
-      'pvAMFFormulaError=: '#1054#1096#1080#1073#1082#1072' '#1074' '#1092#1086#1088#1084#1091#1083#1077
-      'pvAMFDuplicateError='#1044#1091#1073#1083#1080#1088#1091#1077#1097#1077#1077#1089#1103' '#1080#1084#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFCheckOKName='#1054#1090#1084#1077#1095#1077#1085#1086'!'
-      'pvToolBarDDOKBtnHint='#1055#1088#1080#1085#1103#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
-      'pvToolBarDDCancelBtnHint='#1054#1090#1084#1077#1085#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
-      'pvToolBarDDFillBtnHint='#1042#1099#1076#1077#1083#1080#1090#1100' '#1074#1089#1077
-      'pvToolBarDDClearBtnHint='#1054#1090#1084#1077#1085#1080#1090#1100' '#1074#1089#1077
-      'pvToolBarDDRevertBtnHint='#1048#1085#1074#1077#1088#1090#1080#1088#1086#1074#1072#1090#1100
-      'pvToolBarDDExpandBtnHint='#1056#1072#1079#1074#1077#1088#1085#1091#1090#1100' '#1074#1089#1077' '#1074#1077#1090#1082#1080
-      'pvMapValueName='#1047#1085#1072#1095#1077#1085#1080#1077
-      'pvMapRowPercentName='#1055#1088#1086#1094#1077#1085#1090' '#1087#1086' '#1057#1090#1088#1086#1082#1072#1084
-      'pvMapColPercentName='#1055#1088#1086#1094#1077#1085#1090' '#1087#1086' '#1057#1090#1086#1083#1073#1094#1072#1084
-      'pvMapRecordCountName='#1050#1086#1083'-'#1074#1086
-      'pvMapRankName='#1056#1072#1085#1075'['#1057#1090#1086#1083#1073#1077#1094']'
-      'pvMapRankRName='#1056#1072#1085#1075'['#1057#1090#1088#1086#1082#1072']'
-      'pvMapSubPrevCName='#1056#1072#1079#1085#1080#1094#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1080#1084' '#1057#1090#1086#1083#1073#1094#1086#1084
-      'pvMapSubPrevRName='#1056#1072#1079#1085#1080#1094#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1077#1081' '#1057#1090#1088#1086#1082#1086#1081
-      'pvMapAddPrevCName='#1057#1091#1084#1084#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1080#1084' '#1057#1090#1086#1083#1073#1094#1086#1084
-      'pvMapAddPrevRName='#1057#1091#1084#1084#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1077#1081' '#1057#1090#1088#1086#1082#1086#1081
-      'pvMapRunningTotalName1='#1053#1072#1088#1072#1089#1090#1072#1102#1097#1077#1081' '#1048#1090#1086#1075' '#1087#1086' '#1057#1090#1086#1083#1073#1094#1091
-      'pvMapRunningTotalName2='#1053#1072#1088#1072#1089#1090#1072#1102#1097#1077#1081' '#1048#1090#1086#1075' '#1087#1086' '#1057#1090#1088#1086#1082#1077
-      'pvBtnHintAccept='#1055#1086#1076#1090#1074#1077#1088#1076#1080#1090#1100
-      'pvBtnHintCancel='#1054#1090#1084#1077#1085#1080#1090#1100
-      'pvBtnHintExpandTree='#1056#1072#1079#1074#1077#1088#1085#1091#1090#1100'/'#1057#1074#1077#1088#1085#1091#1090#1100' '#1074#1077#1090#1082#1080
-      'pvBtnHintCalcMeasureDialog='#1042#1082#1083'. '#1076#1080#1072#1083#1086#1075' '#1056#1072#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1075#1086' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintMeasureFillEnable='#1042#1099#1076#1077#1083#1080#1090#1100' '#1074#1089#1077
-      'pvBtnHintMeasureFillDisable='#1054#1090#1084#1077#1090#1080#1090#1100' '#1074#1089#1077
-      'pvBtnHintMeasureRevert='#1055#1077#1088#1077#1082#1083#1102#1095#1080#1090#1100' '#1089#1086#1089#1090#1086#1103#1085#1080#1077' '#1077#1076'.'#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimFillActive='#1042#1080#1076#1080#1084#1099' '#1074#1089#1077' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintDimFillHided='#1053#1077' '#1074#1080#1076#1080#1084#1099' '#1074#1089#1077' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintDimFillFiltered='#1060#1080#1083#1100#1090#1088#1086#1074#1072#1090#1100' '#1074#1089#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimRevert='#1062#1080#1082#1083#1080#1095#1085#1099#1081' '#1089#1076#1074#1080#1075' '#1089#1086#1089#1090#1086#1103#1085#1080#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimAddGroup='#1044#1086#1073#1072#1074#1080#1090#1100' '#1080#1077#1088#1072#1088#1093#1080#1095#1077#1089#1082#1091#1102' '#1075#1088#1091#1087#1087#1091
-      'pvBtnHintDimDelGroup='#1059#1076#1072#1083#1080#1090#1100' '#1080#1077#1088#1072#1088#1093#1080#1095#1077#1089#1082#1091#1102' '#1075#1088#1091#1087#1087#1091
-      'mbFormCaption='#1055#1086#1089#1090#1088#1086#1080#1090#1077#1083#1100' '#1079#1072#1087#1088#1086#1089#1072
-      'mbRowsCaption='#1057#1090#1088#1086#1082#1080
-      'mbColumnsCaption='#1057#1090#1086#1083#1073#1094#1099
-      'mbDimsCaption='#1048#1079#1084#1077#1088#1077#1085#1080#1103
-      'mbDisabledDimsCaption='#1053#1077#1072#1082#1090#1080#1074#1085#1099#1077' '#1048#1079#1084#1077#1088#1077#1085#1080#1103
-      
-        'mbRunEditBtnHint='#1054#1090#1082#1088#1099#1090#1100' '#1088#1077#1076#1072#1082#1090#1086#1088' '#1080#1079#1084#1077#1088#1077#1085#1080#1081' '#1076#1083#1103' '#1074#1099#1073#1088#1072#1085#1085#1099#1093' '#1080#1079#1084#1077#1088#1077 +
-        #1085#1080#1081
-      
-        'mbTreeViewHint=Drag'#39'n'#39'Drop dimension lable to choosen group. Dbl' +
-        '-click to run dimension editor'
-      'DimensionFormCaption='#1056#1077#1076#1072#1082#1090#1086#1088' '#1048#1079#1084#1077#1088#1077#1085#1080#1081' :'
-      'dimDisplayName='#1047#1072#1075#1086#1083#1086#1074#1086#1082
-      'dimCount='#1050#1086#1083'-'#1074#1086' '#1086#1073#1098#1077#1082#1090#1086#1074
-      'dimSOrtBtn='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072
-      'dimSortBtnHint='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072
-      'dimActiveItems='#1040#1082#1090#1080#1074#1085#1099#1077' '#1086#1073#1098#1077#1082#1090#1099
-      'dimInActiveItems='#1061#1088#1072#1085#1080#1083#1080#1097#1077'('#1085#1077' '#1072#1082#1090#1080#1074#1085#1099#1077' '#1086#1073#1098#1077#1082#1090#1099')'
-      'dimFilterError='#1050#1072#1082' '#1084#1080#1085#1080#1084#1091#1084' '#1086#1076#1085#1086' '#1080#1079#1084#1077#1088#1077#1085#1080#1077' '#1076#1086#1083#1078#1085#1086' '#1073#1099#1090#1100' '#1072#1082#1090#1080#1074#1085#1099#1084'!'
-      'dimSearch='#1053#1072#1081#1090#1080
-      
-        'dimTVHint=Drag'#39'n'#39'drop selected item(s) to group or repository ar' +
-        'ea'
-      'dimSortByName='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072' '#1087#1086' '#1080#1084#1077#1085#1080
-      'dimSortByKey='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072' '#1087#1086' '#1082#1083#1102#1095#1091
-      'dimNoSort='#1041#1077#1079' '#1089#1086#1088#1090#1080#1088#1086#1074#1082#1080
-      'dimSortAscending='#1055#1086' '#1074#1086#1079#1088#1072#1089#1090#1072#1102#1097#1077#1081
-      'dimSortDescending='#1055#1086' '#1091#1073#1099#1074#1072#1102#1097#1077#1081
-      'dimForecastingCB1=Enable prev. forecast value'
-      'dimForecastingCB2=Enable next. forecast value'
-      'dimForecastingType=Forecasting method'
-      'dimForecastingMethod1=Simple moving average'
-      'dimForecastingMethod2=Weighted Moving Average'
-      'dimForecastingMethod3=Double Exponential Smoothing'
-      'dimForecastingMethod4=Triple Exponential Smoothing'
-      'dimForecastingMethod5=Show Data Margins Only'
-      'dimForecastingMethod6=Show First and Last members'
-      'MeasureCommonFormCaption='#1055#1086#1089#1090#1088#1086#1080#1090#1077#1083#1100' '#1079#1085#1072#1095#1077#1085#1080#1081
-      'MFormatBtnName=Build format'
-      'MFormatFormCaption=Build format string'
-      'pvMapMVFmt0=Change measure type'
-      'pvMapMVFmt1=Cell'
-      'pvMapMVFmt2=Percent by Column'
-      'pvMapMVFmt3=Percent by Row'
-      'pvMapMVFmt4=Record count'
-      'pvMapMVFmt5=Rank by Column'
-      'pvMapMVFmt6=Rank by Row'
-      'pvMapMVFmt7=Previous member by Row'
-      'pvMapMVFmt8=Next member by Row'
-      'pvMapMVFmt9=Previous member by Column'
-      'pvMapMVFmt10=Next member by Column'
-      'pvMapMVFmt11=Running Total by Column'
-      'pvMapMVFmt12=Running Total by Row'
-      'pmMapMVOp1=Value'
-      'pmMapMVOp2=Subtract'
-      'pmMapMVOp3=Add'
-      'pmMapMVOp4=Divide'
-      'pmMapMVOp5=Multiply'
-      'pvMeasureCommon5=Min. value'
-      'pvMeasureCommon6=Max. value'
-      'pvMeasureCommon9=Value'
-      'pvMeasureCommon10=Operation'
-      'pvMeasureCommon11=Only one measure visible'
-      'pvMeasureCommon12=Value representation'
-      'pvMeasureCommon13=Filters'
-      'pvMeasureCommon14=Filter by Map cells'
-      'pvMeasureCommon15=Filter by fact table records'
-      'pvMeasureCommon16=Measure formating'
-      'pvMeasureCommon17=Formula (is calculated measure)'
-      'pvMeasureCommon18=Enabled'
-      'pvMeasureCommon19=Running Total by Column'
-      'pvMeasureCommon20=Running Total by Row'
-      'pvMeasureCommon21=Display caption'
-      'MeasureFilterError= Measure filter error'
-      'mfeWrongValue=Wrong value in  measure filter:'
-      'MeasureCommonFormDistinctName=Distinct'
-      'pvgSearchFormCaption=Search'
-      'pvgSearchArea=Search area'
-      'pvgSearchRow=Row header'
-      'pvgSearchCol=Column header'
-      'pvgSearchText=Text for search'
-      'pvgSearch1=Next'
-      'pvgSearch2=Forward'
-      'pvgSearch3=Case sensitive'
-      'pvgSearchBtn=Find again'
-      'pvgSearchFinish=Cannot find more'
-      'uHtmBuildHeaders=building headers...'
-      'uHtmPreparing=prepearing...'
-      'uHtmColTotal='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1054#1051#1041#1062#1040#1052
-      'uHtmRowTotal='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1056#1054#1050#1040#1052
-      'uHtmExportColHeader=exporting column headers...'
-      
-        'uHtmExportCells=exporting row headers, cell values and row total' +
-        's...'
-      'uHtmExportColTotal=exporting column totals...'
-      'uHtmSave=saving and executing...'
-      'uHtmLabel=Action...'
-      'ChartDDRows='#1057#1090#1088#1086#1082#1080
-      'ChartDDColumns='#1057#1090#1086#1083#1073#1094#1099
-      'ddChartViews=Views'
-      'ddChartLegend='#1051#1077#1075#1077#1085#1076#1072
-      'ddChartMarks=Marks'
-      'ChartXNextPage=Next page'
-      'ChartXPrevPage=Prev. page'
-      'CubeButtonCaption=Cube'
-      'ChartButtonCaption=Chart'
-      'pvGridSubTotal=Subtotal'
-      'pvGridSubTotalwName=Sub-total by '
-      'MFormatCount=3'
-      'MFormatName0=Generic'
-      'MFormatValue0=#0.00'
-      'MFormatName1=Price (US)'
-      'MFormatValue1=$ #0.00'
-      'MFormatName2=Summa'
-      'MFormatValue2=# ##0.00'
-      'MFormatCap1=Predefined formats'
-      'MFormatCap2=Format string'
-      'MFormatCap3=Number of decimals'
-      'MFormatCap4=Before'
-      'MFormatCap5=After'
-      'MFormatCap6=Design'
-      'MFormatCap7=Symbol'
-      'MFormatCap8=Example'
-      'MFormatCap9=Thousand separator'
-      'uXLSActionLabel=Action'
-      'uXLSAction1=Prepearing basic fonts'
-      'uXLSAction2=Prepearing basic formats'
-      'uXLSAction3=Applying row totals headers merging'
-      'uXLSAction4=Applying cells format'
-      'uXLSAction5=Applying columns headers merging'
-      'uXLSAction6=Applying rows headers merging'
-      'uXLSAction7=Applying column totals headers merging'
-      'uXLSAction8=Applying auto width for columns'
-      'uXLActionLabel=Action'
-      'uXLAction1=Prepearing cells array'
-      'uXLAction2=Prepearing column headers'
-      'uXLAction3=Processing'
-      'uXLAction4=Merging column headers'
-      'uXLAction5=Merging row headers'
-      'uXLAction6=Merging row total headers'
-      'uXLAction7=Applying cells format'
-      'pvGridPrint1=Print All'
-      'pvGridPrint2=Print selected'
-      'pvGridPrint3=Right click to scale menu'
-      'uXLSActionLabel2=Action progress'
-      'uXLSActionLabel2=Full progress'
-      'uHtmLabel2=Action progress'
-      'uHtmLabel3=Full progress'
-      'pvGridEditor1=Table'
-      'pvGridEditor2=Chart'
-      'pvGridEditor3=Method'
-      'pvGridEditor4=Summa'
-      'pvGridEditor5=Count'
-      'pvGridEditor6=Average'
-      'pvGridEditor7=Equal'
-      'pvGridEditor8=Proportional'
-      'pvGridPrint4=Print preview'
-      'pvGridPrint5=Scale page'
-      'pvGridPrint6=Scale print'
-      'pvGridPrint7=Fit page'
-      'pvGridPrint8=Fit width'
-      'pvGridPrint9=Fit height'
-      'pvGridPrint10=50%'
-      'pvGridPrint11=100%'
-      'pvGridPrint12=200%'
-      'pvGridPrint13=400%'
-      'pvGridPrintLocked=Process locked! Please wait....')
-    Measures = <
-      item
-        AliasName = 'PHW'
-        FieldName = 'PHW'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1055#1086#1082#1072#1079'.'#1061'.'#1042'.'
-      end
-      item
-        AliasName = 'PGW'
-        FieldName = 'PGW'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1055#1086#1082#1072#1079'.'#1043'.'#1042'.'
-      end>
-    CubeName = 'test'
-    OptimizeLevel = optNormal
-    ExtendedMode = True
-    AlwaysSaveCounts = False
-    ExcludeZeros = True
-    ClearTimeInfo = True
-    Left = 32
-    Top = 296
-  end
-  object PivotMap58: TPivotMap
-    Cube = PivotCube58
-    Columns = <>
-    Rows = <>
-    HideEmptyRows = True
-    HideEmptyColumns = True
-    TableMode = True
-    DDirection = True
-    AutoSaveMap = False
-    AutoExpand = True
-    Left = 64
-    Top = 296
-  end
   object frxXLSExport1: TfrxXLSExport
     UseFileCache = True
     ShowProgress = True
@@ -4109,370 +1085,6 @@ object Form_olap: TForm_olap
     Left = 182
     Top = 168
   end
-  object PivotCube60: TPivotCube
-    FactTableDataSet = DM_Olap.Uni_Data
-    Dimensions = <
-      item
-        Enabled = True
-        AliasName = 'PREDPR'
-        FieldName = 'PREDP'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1046#1069#1054
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'PREDPR_DET'
-        FieldName = 'PREDPR_DET'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1040#1076#1088'.'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'TARIF_NAME'
-        FieldName = 'TARIF_NAME'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1055#1088#1086#1075#1088#1072#1084#1084#1072'/'#1055#1072#1082#1077#1090
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'NM'
-        FieldName = 'NM'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1059#1089#1083#1091#1075#1072
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'MG'
-        FieldName = 'MG'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1055#1077#1088#1080#1086#1076
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end>
-    LNG.Strings = (
-      'RowTotalName='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1056#1054#1050#1040#1052
-      'ColumnTotalName='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1054#1051#1041#1062#1040#1052
-      'PanelRowsCaption='#1057#1090#1088#1086#1082#1072
-      'PanelColumnsCaption='#1057#1090#1086#1083#1073#1077#1094
-      'PanelDimsCaption='#1060#1080#1083#1100#1090#1088
-      'CustomFilter='#1060#1080#1083#1100#1090#1088
-      
-        'pvToolBarCollapseError=Could not collapse TOOLBAR without border' +
-        ' alignment'
-      
-        'pvToolBarTreeFilterWarn=Cannot use incremental filtering on hier' +
-        'arhical dimensions!'
-      'pvToolBarNoFilter='#1053#1077#1090' '#1092#1080#1083#1100#1090#1088#1072
-      'pvToolBarCustomFilter='#1048#1089#1087#1086#1083#1100#1079'.'#1092#1080#1083#1100#1090#1088
-      'pvCubeErr1=Could not load dimension data!'
-      'pvCubeErr2=Could not load measure data!'
-      'pvCubeErr3=: You must specify dataset for dimension!'
-      
-        'pvCubeErr4=Could not load dimension items! Dimension: %s  Dimens' +
-        'ion item: %s'
-      'pvCubeErr5=Could not start building cube! Unknown error'
-      
-        'pvCubeErr6=You must set appropriate EventHandler for custom wrap' +
-        'ped dimensions! : %s'
-      'pvCubeErr7=You must set FactTableDataSet property!'
-      'pvCubeErr8=You must set at least ONE measure'
-      'pvCubeErr9=You must set at least ONE dimension'
-      'pvMapErr1='#1054#1096#1080#1073#1086#1095#1085#1099#1081' '#1080#1085#1076#1077#1082#1089
-      'pvMapErr2='#1054#1076#1085#1086' '#1080#1079#1084#1077#1088#1077#1085#1080#1077' '#1076#1086#1083#1078#1085#1086' '#1073#1099#1090#1100' '#1074#1080#1076#1080#1084#1099#1084'!'
-      'pvGridExcel0=Export note'
-      
-        'pvGridExcel1=Number of columns more than 256. Only first 255 col' +
-        'umns will be exported!'
-      'pvGridExcel2=Number of columns must be more than 0!'
-      'pvGridExcel3=Number of rows must be more than 0!'
-      
-        'pvGridExcel4=Could not export data to Excel! Check your MS Excel' +
-        ' installation'
-      'pvAMFAddMeasureForm=Calculated measures manager'
-      'pvAMFAddMeasureBtn='#1044#1086#1073#1072#1074#1080#1090#1100' '#1085#1086#1074#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFEditMeasureBtn='#1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1080#1084#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFDelMeasureBtn='#1059#1076#1072#1083#1080#1090#1100' '#1087#1086#1076#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFCalcLabel='#1055#1086#1076#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFCalcEditLabel='#1048#1089#1087#1086#1083#1100#1079#1091#1077#1084#1072#1103' '#1092#1086#1088#1084#1091#1083#1072
-      'pvAMFMeasureLabel='#1048#1084#1077#1102#1097#1080#1077#1089#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFViewsLabel='#1048#1084#1077#1102#1097#1080#1077#1089#1103' '#1082#1091#1088#1089#1086#1088#1099
-      'pvAMFCheckBtn='#1055#1088#1086#1074#1077#1088#1100#1090#1077' '#1092#1086#1088#1084#1091#1083#1091
-      'pvAMFSynaxError='#1057#1080#1085#1090#1072#1082#1089#1080#1095#1077#1089#1082#1072#1103' '#1086#1096#1080#1073#1082#1072
-      'pvAMFFormulaError=: '#1054#1096#1080#1073#1082#1072' '#1074' '#1092#1086#1088#1084#1091#1083#1077
-      'pvAMFDuplicateError='#1044#1091#1073#1083#1080#1088#1091#1077#1097#1077#1077#1089#1103' '#1080#1084#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFCheckOKName='#1054#1090#1084#1077#1095#1077#1085#1086'!'
-      'pvToolBarDDOKBtnHint='#1055#1088#1080#1085#1103#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
-      'pvToolBarDDCancelBtnHint='#1054#1090#1084#1077#1085#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
-      'pvToolBarDDFillBtnHint='#1042#1099#1076#1077#1083#1080#1090#1100' '#1074#1089#1077
-      'pvToolBarDDClearBtnHint='#1054#1090#1084#1077#1085#1080#1090#1100' '#1074#1089#1077
-      'pvToolBarDDRevertBtnHint='#1048#1085#1074#1077#1088#1090#1080#1088#1086#1074#1072#1090#1100
-      'pvToolBarDDExpandBtnHint='#1056#1072#1079#1074#1077#1088#1085#1091#1090#1100' '#1074#1089#1077' '#1074#1077#1090#1082#1080
-      'pvMapValueName='#1047#1085#1072#1095#1077#1085#1080#1077
-      'pvMapRowPercentName='#1055#1088#1086#1094#1077#1085#1090' '#1087#1086' '#1057#1090#1088#1086#1082#1072#1084
-      'pvMapColPercentName='#1055#1088#1086#1094#1077#1085#1090' '#1087#1086' '#1057#1090#1086#1083#1073#1094#1072#1084
-      'pvMapRecordCountName='#1050#1086#1083'-'#1074#1086
-      'pvMapRankName='#1056#1072#1085#1075'['#1057#1090#1086#1083#1073#1077#1094']'
-      'pvMapRankRName='#1056#1072#1085#1075'['#1057#1090#1088#1086#1082#1072']'
-      'pvMapSubPrevCName='#1056#1072#1079#1085#1080#1094#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1080#1084' '#1057#1090#1086#1083#1073#1094#1086#1084
-      'pvMapSubPrevRName='#1056#1072#1079#1085#1080#1094#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1077#1081' '#1057#1090#1088#1086#1082#1086#1081
-      'pvMapAddPrevCName='#1057#1091#1084#1084#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1080#1084' '#1057#1090#1086#1083#1073#1094#1086#1084
-      'pvMapAddPrevRName='#1057#1091#1084#1084#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1077#1081' '#1057#1090#1088#1086#1082#1086#1081
-      'pvMapRunningTotalName1='#1053#1072#1088#1072#1089#1090#1072#1102#1097#1077#1081' '#1048#1090#1086#1075' '#1087#1086' '#1057#1090#1086#1083#1073#1094#1091
-      'pvMapRunningTotalName2='#1053#1072#1088#1072#1089#1090#1072#1102#1097#1077#1081' '#1048#1090#1086#1075' '#1087#1086' '#1057#1090#1088#1086#1082#1077
-      'pvBtnHintAccept='#1055#1086#1076#1090#1074#1077#1088#1076#1080#1090#1100
-      'pvBtnHintCancel='#1054#1090#1084#1077#1085#1080#1090#1100
-      'pvBtnHintExpandTree='#1056#1072#1079#1074#1077#1088#1085#1091#1090#1100'/'#1057#1074#1077#1088#1085#1091#1090#1100' '#1074#1077#1090#1082#1080
-      'pvBtnHintCalcMeasureDialog='#1042#1082#1083'. '#1076#1080#1072#1083#1086#1075' '#1056#1072#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1075#1086' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintMeasureFillEnable='#1042#1099#1076#1077#1083#1080#1090#1100' '#1074#1089#1077
-      'pvBtnHintMeasureFillDisable='#1054#1090#1084#1077#1090#1080#1090#1100' '#1074#1089#1077
-      'pvBtnHintMeasureRevert='#1055#1077#1088#1077#1082#1083#1102#1095#1080#1090#1100' '#1089#1086#1089#1090#1086#1103#1085#1080#1077' '#1077#1076'.'#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimFillActive='#1042#1080#1076#1080#1084#1099' '#1074#1089#1077' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintDimFillHided='#1053#1077' '#1074#1080#1076#1080#1084#1099' '#1074#1089#1077' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintDimFillFiltered='#1060#1080#1083#1100#1090#1088#1086#1074#1072#1090#1100' '#1074#1089#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimRevert='#1062#1080#1082#1083#1080#1095#1085#1099#1081' '#1089#1076#1074#1080#1075' '#1089#1086#1089#1090#1086#1103#1085#1080#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimAddGroup='#1044#1086#1073#1072#1074#1080#1090#1100' '#1080#1077#1088#1072#1088#1093#1080#1095#1077#1089#1082#1091#1102' '#1075#1088#1091#1087#1087#1091
-      'pvBtnHintDimDelGroup='#1059#1076#1072#1083#1080#1090#1100' '#1080#1077#1088#1072#1088#1093#1080#1095#1077#1089#1082#1091#1102' '#1075#1088#1091#1087#1087#1091
-      'mbFormCaption='#1055#1086#1089#1090#1088#1086#1080#1090#1077#1083#1100' '#1079#1072#1087#1088#1086#1089#1072
-      'mbRowsCaption='#1057#1090#1088#1086#1082#1080
-      'mbColumnsCaption='#1057#1090#1086#1083#1073#1094#1099
-      'mbDimsCaption='#1048#1079#1084#1077#1088#1077#1085#1080#1103
-      'mbDisabledDimsCaption='#1053#1077#1072#1082#1090#1080#1074#1085#1099#1077' '#1048#1079#1084#1077#1088#1077#1085#1080#1103
-      
-        'mbRunEditBtnHint='#1054#1090#1082#1088#1099#1090#1100' '#1088#1077#1076#1072#1082#1090#1086#1088' '#1080#1079#1084#1077#1088#1077#1085#1080#1081' '#1076#1083#1103' '#1074#1099#1073#1088#1072#1085#1085#1099#1093' '#1080#1079#1084#1077#1088#1077 +
-        #1085#1080#1081
-      
-        'mbTreeViewHint=Drag'#39'n'#39'Drop dimension lable to choosen group. Dbl' +
-        '-click to run dimension editor'
-      'DimensionFormCaption='#1056#1077#1076#1072#1082#1090#1086#1088' '#1048#1079#1084#1077#1088#1077#1085#1080#1081' :'
-      'dimDisplayName='#1047#1072#1075#1086#1083#1086#1074#1086#1082
-      'dimCount='#1050#1086#1083'-'#1074#1086' '#1086#1073#1098#1077#1082#1090#1086#1074
-      'dimSOrtBtn='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072
-      'dimSortBtnHint='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072
-      'dimActiveItems='#1040#1082#1090#1080#1074#1085#1099#1077' '#1086#1073#1098#1077#1082#1090#1099
-      'dimInActiveItems='#1061#1088#1072#1085#1080#1083#1080#1097#1077'('#1085#1077' '#1072#1082#1090#1080#1074#1085#1099#1077' '#1086#1073#1098#1077#1082#1090#1099')'
-      'dimFilterError='#1050#1072#1082' '#1084#1080#1085#1080#1084#1091#1084' '#1086#1076#1085#1086' '#1080#1079#1084#1077#1088#1077#1085#1080#1077' '#1076#1086#1083#1078#1085#1086' '#1073#1099#1090#1100' '#1072#1082#1090#1080#1074#1085#1099#1084'!'
-      'dimSearch='#1053#1072#1081#1090#1080
-      
-        'dimTVHint=Drag'#39'n'#39'drop selected item(s) to group or repository ar' +
-        'ea'
-      'dimSortByName='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072' '#1087#1086' '#1080#1084#1077#1085#1080
-      'dimSortByKey='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072' '#1087#1086' '#1082#1083#1102#1095#1091
-      'dimNoSort='#1041#1077#1079' '#1089#1086#1088#1090#1080#1088#1086#1074#1082#1080
-      'dimSortAscending='#1055#1086' '#1074#1086#1079#1088#1072#1089#1090#1072#1102#1097#1077#1081
-      'dimSortDescending='#1055#1086' '#1091#1073#1099#1074#1072#1102#1097#1077#1081
-      'dimForecastingCB1=Enable prev. forecast value'
-      'dimForecastingCB2=Enable next. forecast value'
-      'dimForecastingType=Forecasting method'
-      'dimForecastingMethod1=Simple moving average'
-      'dimForecastingMethod2=Weighted Moving Average'
-      'dimForecastingMethod3=Double Exponential Smoothing'
-      'dimForecastingMethod4=Triple Exponential Smoothing'
-      'dimForecastingMethod5=Show Data Margins Only'
-      'dimForecastingMethod6=Show First and Last members'
-      'MeasureCommonFormCaption='#1055#1086#1089#1090#1088#1086#1080#1090#1077#1083#1100' '#1079#1085#1072#1095#1077#1085#1080#1081
-      'MFormatBtnName=Build format'
-      'MFormatFormCaption=Build format string'
-      'pvMapMVFmt0=Change measure type'
-      'pvMapMVFmt1=Cell'
-      'pvMapMVFmt2=Percent by Column'
-      'pvMapMVFmt3=Percent by Row'
-      'pvMapMVFmt4=Record count'
-      'pvMapMVFmt5=Rank by Column'
-      'pvMapMVFmt6=Rank by Row'
-      'pvMapMVFmt7=Previous member by Row'
-      'pvMapMVFmt8=Next member by Row'
-      'pvMapMVFmt9=Previous member by Column'
-      'pvMapMVFmt10=Next member by Column'
-      'pvMapMVFmt11=Running Total by Column'
-      'pvMapMVFmt12=Running Total by Row'
-      'pmMapMVOp1=Value'
-      'pmMapMVOp2=Subtract'
-      'pmMapMVOp3=Add'
-      'pmMapMVOp4=Divide'
-      'pmMapMVOp5=Multiply'
-      'pvMeasureCommon5=Min. value'
-      'pvMeasureCommon6=Max. value'
-      'pvMeasureCommon9=Value'
-      'pvMeasureCommon10=Operation'
-      'pvMeasureCommon11=Only one measure visible'
-      'pvMeasureCommon12=Value representation'
-      'pvMeasureCommon13=Filters'
-      'pvMeasureCommon14=Filter by Map cells'
-      'pvMeasureCommon15=Filter by fact table records'
-      'pvMeasureCommon16=Measure formating'
-      'pvMeasureCommon17=Formula (is calculated measure)'
-      'pvMeasureCommon18=Enabled'
-      'pvMeasureCommon19=Running Total by Column'
-      'pvMeasureCommon20=Running Total by Row'
-      'pvMeasureCommon21=Display caption'
-      'MeasureFilterError= Measure filter error'
-      'mfeWrongValue=Wrong value in  measure filter:'
-      'MeasureCommonFormDistinctName=Distinct'
-      'pvgSearchFormCaption=Search'
-      'pvgSearchArea=Search area'
-      'pvgSearchRow=Row header'
-      'pvgSearchCol=Column header'
-      'pvgSearchText=Text for search'
-      'pvgSearch1=Next'
-      'pvgSearch2=Forward'
-      'pvgSearch3=Case sensitive'
-      'pvgSearchBtn=Find again'
-      'pvgSearchFinish=Cannot find more'
-      'uHtmBuildHeaders=building headers...'
-      'uHtmPreparing=prepearing...'
-      'uHtmColTotal='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1054#1051#1041#1062#1040#1052
-      'uHtmRowTotal='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1056#1054#1050#1040#1052
-      'uHtmExportColHeader=exporting column headers...'
-      
-        'uHtmExportCells=exporting row headers, cell values and row total' +
-        's...'
-      'uHtmExportColTotal=exporting column totals...'
-      'uHtmSave=saving and executing...'
-      'uHtmLabel=Action...'
-      'ChartDDRows='#1057#1090#1088#1086#1082#1080
-      'ChartDDColumns='#1057#1090#1086#1083#1073#1094#1099
-      'ddChartViews=Views'
-      'ddChartLegend='#1051#1077#1075#1077#1085#1076#1072
-      'ddChartMarks=Marks'
-      'ChartXNextPage=Next page'
-      'ChartXPrevPage=Prev. page'
-      'CubeButtonCaption=Cube'
-      'ChartButtonCaption=Chart'
-      'pvGridSubTotal=Subtotal'
-      'pvGridSubTotalwName=Sub-total by '
-      'MFormatCount=3'
-      'MFormatName0=Generic'
-      'MFormatValue0=#0.00'
-      'MFormatName1=Price (US)'
-      'MFormatValue1=$ #0.00'
-      'MFormatName2=Summa'
-      'MFormatValue2=# ##0.00'
-      'MFormatCap1=Predefined formats'
-      'MFormatCap2=Format string'
-      'MFormatCap3=Number of decimals'
-      'MFormatCap4=Before'
-      'MFormatCap5=After'
-      'MFormatCap6=Design'
-      'MFormatCap7=Symbol'
-      'MFormatCap8=Example'
-      'MFormatCap9=Thousand separator'
-      'uXLSActionLabel=Action'
-      'uXLSAction1=Prepearing basic fonts'
-      'uXLSAction2=Prepearing basic formats'
-      'uXLSAction3=Applying row totals headers merging'
-      'uXLSAction4=Applying cells format'
-      'uXLSAction5=Applying columns headers merging'
-      'uXLSAction6=Applying rows headers merging'
-      'uXLSAction7=Applying column totals headers merging'
-      'uXLSAction8=Applying auto width for columns'
-      'uXLActionLabel=Action'
-      'uXLAction1=Prepearing cells array'
-      'uXLAction2=Prepearing column headers'
-      'uXLAction3=Processing'
-      'uXLAction4=Merging column headers'
-      'uXLAction5=Merging row headers'
-      'uXLAction6=Merging row total headers'
-      'uXLAction7=Applying cells format'
-      'pvGridPrint1=Print All'
-      'pvGridPrint2=Print selected'
-      'pvGridPrint3=Right click to scale menu'
-      'uXLSActionLabel2=Action progress'
-      'uXLSActionLabel2=Full progress'
-      'uHtmLabel2=Action progress'
-      'uHtmLabel3=Full progress'
-      'pvGridEditor1=Table'
-      'pvGridEditor2=Chart'
-      'pvGridEditor3=Method'
-      'pvGridEditor4=Summa'
-      'pvGridEditor5=Count'
-      'pvGridEditor6=Average'
-      'pvGridEditor7=Equal'
-      'pvGridEditor8=Proportional'
-      'pvGridPrint4=Print preview'
-      'pvGridPrint5=Scale page'
-      'pvGridPrint6=Scale print'
-      'pvGridPrint7=Fit page'
-      'pvGridPrint8=Fit width'
-      'pvGridPrint9=Fit height'
-      'pvGridPrint10=50%'
-      'pvGridPrint11=100%'
-      'pvGridPrint12=200%'
-      'pvGridPrint13=400%'
-      'pvGridPrintLocked=Process locked! Please wait....')
-    Measures = <
-      item
-        AliasName = 'PREDPR_DET'
-        FieldName = 'PREDPR_DET'
-        CalcType = ctCount
-        DataType = ftString
-        FormatString = '########0.00##'
-        DisplayName = #1050#1086#1083'-'#1074#1086
-      end>
-    CubeName = 'test'
-    OptimizeLevel = optNormal
-    ExtendedMode = True
-    AlwaysSaveCounts = False
-    ExcludeZeros = True
-    ClearTimeInfo = True
-    Left = 32
-    Top = 328
-  end
-  object PivotMap60: TPivotMap
-    Cube = PivotCube60
-    Columns = <>
-    Rows = <>
-    HideEmptyRows = True
-    HideEmptyColumns = True
-    TableMode = True
-    DDirection = True
-    AutoSaveMap = False
-    AutoExpand = True
-    Left = 64
-    Top = 328
-  end
   object frxCrossObject1: TfrxCrossObject
     Left = 272
     Top = 136
@@ -4486,7 +1098,7 @@ object Form_olap: TForm_olap
     Top = 384
   end
   object frxReport_base: TfrxReport
-    Version = '6.2.11'
+    Version = '6.7.6'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -4522,7 +1134,7 @@ object Form_olap: TForm_olap
     Top = 208
   end
   object frxReport65: TfrxReport
-    Version = '6.2.11'
+    Version = '6.7.6'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -4617,6 +1229,7 @@ object Form_olap: TForm_olap
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
       Frame.Typ = []
+      MirrorMode = []
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
         Frame.Typ = []
@@ -4636,10 +1249,8 @@ object Form_olap: TForm_olap
           Frame.Typ = []
           Fill.BackColor = 14211288
           HAlign = haCenter
-          Memo.UTF8 = (
-            
-              #1056#1119#1057#1026#1056#1109#1056#1030#1056#181#1057#1026#1056#1109#1057#8225#1056#1029#1057#8249#1056#8470' '#1056#1109#1057#8218#1057#8225#1056#181#1057#8218' '#1056#1111#1056#1109' '#1057#1026#1056#176#1057#1027#1056#1111#1057#1026#1056#181#1056#1169#1056#181#1056#187#1056#181#1056#1029#1056#1105#1057 +
-              #1035' '#1057#1027#1057#1026#1056#181#1056#1169#1057#1027#1057#8218#1056#1030' [period_]')
+          Memo.UTF8W = (
+            #1055#1088#1086#1074#1077#1088#1086#1095#1085#1099#1081' '#1086#1090#1095#1077#1090' '#1087#1086' '#1088#1072#1089#1087#1088#1077#1076#1077#1083#1077#1085#1080#1102' '#1089#1088#1077#1076#1089#1090#1074' [period_]')
           ParentFont = False
           Style = 'Title'
           VAlign = vaCenter
@@ -4665,10 +1276,10 @@ object Form_olap: TForm_olap
           Frame.Typ = []
           Fill.BackColor = 15790320
           HAlign = haCenter
-          Memo.UTF8 = (
-            #1056#160#1056#176#1057#1027#1056#1111#1057#1026#1056#181#1056#1169#1056#181#1056#187#1056#1105#1056#187#1056#1109#1057#1027#1057#1034
-            #1057#8222#1056#176#1056#1108#1057#8218'.,'
-            #1057#1026#1057#1107#1056#177'.')
+          Memo.UTF8W = (
+            #1056#1072#1089#1087#1088#1077#1076#1077#1083#1080#1083#1086#1089#1100
+            #1092#1072#1082#1090'.,'
+            #1088#1091#1073'.')
           ParentFont = False
           Style = 'Header'
         end
@@ -4685,9 +1296,9 @@ object Form_olap: TForm_olap
           Frame.Typ = []
           Fill.BackColor = 15790320
           HAlign = haCenter
-          Memo.UTF8 = (
-            #1056#160#1056#176#1057#1027#1056#1111#1057#1026#1056#181#1056#1169#1056#181#1056#187#1056#1105#1056#187#1056#1109#1057#1027#1057#1034
-            #1057#8222#1056#176#1056#1108#1057#8218'., %')
+          Memo.UTF8W = (
+            #1056#1072#1089#1087#1088#1077#1076#1077#1083#1080#1083#1086#1089#1100
+            #1092#1072#1082#1090'., %')
           ParentFont = False
           Style = 'Header'
         end
@@ -4704,10 +1315,10 @@ object Form_olap: TForm_olap
           Frame.Typ = []
           Fill.BackColor = 15790320
           HAlign = haCenter
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             
-              '[IIF(<frxDBDataset65."FK_DISTR">=0,'#39#1056#8221#1056#181#1056#177#1056#181#1057#8218'. '#1057#1027#1056#176#1056#187#1057#1034#1056#1169#1056#1109', '#1057#1026 +
-              #1057#1107#1056#177'.'#39', '#39#1056#1116#1056#176#1057#8225#1056#1105#1057#1027#1056#187#1056#181#1056#1029#1056#1105#1056#181', '#1057#1026#1057#1107#1056#177'.'#39')]'
+              '[IIF(<frxDBDataset65."FK_DISTR">=0,'#39#1044#1077#1073#1077#1090'. '#1089#1072#1083#1100#1076#1086', '#1088#1091#1073'.'#39', '#39#1053#1072#1095#1080#1089 +
+              #1083#1077#1085#1080#1077', '#1088#1091#1073'.'#39')]'
             '')
           ParentFont = False
           Style = 'Header'
@@ -4725,10 +1336,10 @@ object Form_olap: TForm_olap
           Frame.Typ = []
           Fill.BackColor = 15790320
           HAlign = haCenter
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             
-              '[IIF(<frxDBDataset65."FK_DISTR">=0,'#39#1056#8221#1056#181#1056#177#1056#181#1057#8218'. '#1057#1027#1056#176#1056#187#1057#1034#1056#1169#1056#1109', %'#39 +
-              ', '#39#1056#1116#1056#176#1057#8225#1056#1105#1057#1027#1056#187#1056#181#1056#1029#1056#1105#1056#181', %'#39')]')
+              '[IIF(<frxDBDataset65."FK_DISTR">=0,'#39#1044#1077#1073#1077#1090'. '#1089#1072#1083#1100#1076#1086', %'#39', '#39#1053#1072#1095#1080#1089#1083#1077#1085 +
+              #1080#1077', %'#39')]')
           ParentFont = False
           Style = 'Header'
         end
@@ -4745,8 +1356,8 @@ object Form_olap: TForm_olap
           Font.Style = [fsBold]
           Frame.Typ = []
           Fill.BackColor = 15790320
-          Memo.UTF8 = (
-            #1056#1118#1056#1105#1056#1111' '#1057#1026#1056#176#1057#1027#1056#1111#1057#1026#1056#181#1056#1169#1056#181#1056#187#1056#181#1056#1029#1056#1105#1057#1039': [frxDBDataset65."TYPE_DISTR"]')
+          Memo.UTF8W = (
+            #1058#1080#1087' '#1088#1072#1089#1087#1088#1077#1076#1077#1083#1077#1085#1080#1103': [frxDBDataset65."TYPE_DISTR"]')
           ParentFont = False
         end
       end
@@ -4770,8 +1381,8 @@ object Form_olap: TForm_olap
           Frame.Typ = []
           Fill.BackColor = 15790320
           HAlign = haCenter
-          Memo.UTF8 = (
-            #1056#1032#1057#1027#1056#187#1057#1107#1056#1110#1056#176)
+          Memo.UTF8W = (
+            #1059#1089#1083#1091#1075#1072)
           ParentFont = False
           Style = 'Header'
         end
@@ -4789,8 +1400,8 @@ object Form_olap: TForm_olap
           Frame.Typ = []
           Fill.BackColor = 15790320
           HAlign = haCenter
-          Memo.UTF8 = (
-            #1056#1115#1057#1026#1056#1110#1056#176#1056#1029#1056#1105#1056#183#1056#176#1057#8224#1056#1105#1057#1039)
+          Memo.UTF8W = (
+            #1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103)
           ParentFont = False
           Style = 'Header'
         end
@@ -4808,8 +1419,8 @@ object Form_olap: TForm_olap
           Font.Style = [fsBold]
           Frame.Typ = []
           Fill.BackColor = 15790320
-          Memo.UTF8 = (
-            #1056#1032#1056#1113': [frxDBDataset65."NAME_TR"]')
+          Memo.UTF8W = (
+            #1059#1050': [frxDBDataset65."NAME_TR"]')
           ParentFont = False
           Style = 'Group header'
           VAlign = vaCenter
@@ -4837,7 +1448,7 @@ object Form_olap: TForm_olap
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[frxDBDataset65."NAME_USL"]')
           ParentFont = False
           Style = 'Data'
@@ -4856,7 +1467,7 @@ object Form_olap: TForm_olap
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[frxDBDataset65."NAME_ORG"]')
           ParentFont = False
           Style = 'Data'
@@ -4876,7 +1487,7 @@ object Form_olap: TForm_olap
           Font.Style = []
           Frame.Typ = []
           HAlign = haRight
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[frxDBDataset65."PAY"]')
           ParentFont = False
           Style = 'Data'
@@ -4896,7 +1507,7 @@ object Form_olap: TForm_olap
           Font.Style = []
           Frame.Typ = []
           HAlign = haRight
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[frxDBDataset65."PAY_PROC"]')
           ParentFont = False
           Style = 'Data'
@@ -4915,7 +1526,7 @@ object Form_olap: TForm_olap
           Font.Style = []
           Frame.Typ = []
           HAlign = haRight
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[frxDBDataset65."DEB"]')
           ParentFont = False
           Style = 'Data'
@@ -4935,7 +1546,7 @@ object Form_olap: TForm_olap
           Font.Style = []
           Frame.Typ = []
           HAlign = haRight
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[frxDBDataset65."DEB_PROC"]')
           ParentFont = False
           Style = 'Data'
@@ -4962,7 +1573,7 @@ object Form_olap: TForm_olap
           Frame.Typ = []
           Fill.BackColor = clBtnFace
           HAlign = haRight
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[SUM(<frxDBDataset65."PAY">,MasterData1)]')
           ParentFont = False
         end
@@ -4981,7 +1592,7 @@ object Form_olap: TForm_olap
           Frame.Typ = []
           Fill.BackColor = clBtnFace
           HAlign = haRight
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[SUM(<frxDBDataset65."PAY_PROC">,MasterData1)]')
           ParentFont = False
         end
@@ -5000,7 +1611,7 @@ object Form_olap: TForm_olap
           Frame.Typ = []
           Fill.BackColor = clBtnFace
           HAlign = haRight
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[SUM(<frxDBDataset65."DEB_PROC">,MasterData1)]')
           ParentFont = False
         end
@@ -5017,10 +1628,8 @@ object Form_olap: TForm_olap
           Font.Style = []
           Frame.Typ = []
           Fill.BackColor = clBtnFace
-          Memo.UTF8 = (
-            
-              #1056#152#1057#8218#1056#1109#1056#1110#1056#1109' '#1056#1111#1056#1109' '#1057#8218#1056#1105#1056#1111#1057#1107' '#1057#1026#1056#176#1057#1027#1056#1111#1057#1026#1056#181#1056#1169#1056#181#1056#187#1056#181#1056#1029#1056#1105#1057#1039': [frxDBDatas' +
-              'et65."TYPE_DISTR"]')
+          Memo.UTF8W = (
+            #1048#1090#1086#1075#1086' '#1087#1086' '#1090#1080#1087#1091' '#1088#1072#1089#1087#1088#1077#1076#1077#1083#1077#1085#1080#1103': [frxDBDataset65."TYPE_DISTR"]')
           ParentFont = False
         end
         object Memo38: TfrxMemoView
@@ -5038,7 +1647,7 @@ object Form_olap: TForm_olap
           Frame.Typ = []
           Fill.BackColor = clBtnFace
           HAlign = haRight
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[SUM(<frxDBDataset65."DEB">,MasterData1)]')
           ParentFont = False
         end
@@ -5064,7 +1673,7 @@ object Form_olap: TForm_olap
           Frame.Typ = []
           Fill.BackColor = clBtnFace
           HAlign = haRight
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[SUM(<frxDBDataset65."PAY">,MasterData1)]')
           ParentFont = False
         end
@@ -5083,7 +1692,7 @@ object Form_olap: TForm_olap
           Frame.Typ = []
           Fill.BackColor = clBtnFace
           HAlign = haRight
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[SUM(<frxDBDataset65."PAY_PROC">,MasterData1)]')
           ParentFont = False
         end
@@ -5102,7 +1711,7 @@ object Form_olap: TForm_olap
           Frame.Typ = []
           Fill.BackColor = clBtnFace
           HAlign = haRight
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[SUM(<frxDBDataset65."DEB_PROC">,MasterData1)]')
           ParentFont = False
         end
@@ -5119,8 +1728,8 @@ object Form_olap: TForm_olap
           Font.Style = []
           Frame.Typ = []
           Fill.BackColor = clBtnFace
-          Memo.UTF8 = (
-            #1056#152#1057#8218#1056#1109#1056#1110#1056#1109' '#1056#1111#1056#1109' '#1056#1032#1056#1113': [frxDBDataset65."NAME_TR"]')
+          Memo.UTF8W = (
+            #1048#1090#1086#1075#1086' '#1087#1086' '#1059#1050': [frxDBDataset65."NAME_TR"]')
           ParentFont = False
         end
         object Memo37: TfrxMemoView
@@ -5138,7 +1747,7 @@ object Form_olap: TForm_olap
           Frame.Typ = []
           Fill.BackColor = clBtnFace
           HAlign = haRight
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[SUM(<frxDBDataset65."DEB">,MasterData1)]')
           ParentFont = False
         end
@@ -5169,7 +1778,7 @@ object Form_olap: TForm_olap
           Height = 22.677180000000000000
           AutoWidth = True
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[Date] [Time]')
         end
         object Memo23: TfrxMemoView
@@ -5181,8 +1790,8 @@ object Form_olap: TForm_olap
           Height = 22.677180000000000000
           Frame.Typ = []
           HAlign = haRight
-          Memo.UTF8 = (
-            #1056#1038#1057#8218#1057#1026'. [Page#]')
+          Memo.UTF8W = (
+            #1057#1090#1088'. [Page#]')
         end
       end
       object ReportSummary1: TfrxReportSummary
@@ -5206,7 +1815,7 @@ object Form_olap: TForm_olap
           Frame.Typ = []
           Fill.BackColor = clBtnFace
           HAlign = haRight
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[SUM(<frxDBDataset65."PAY">,MasterData1)]')
           ParentFont = False
         end
@@ -5223,400 +1832,12 @@ object Form_olap: TForm_olap
           Font.Style = []
           Frame.Typ = []
           Fill.BackColor = clBtnFace
-          Memo.UTF8 = (
-            #1056#152#1057#8218#1056#1109#1056#1110#1056#1109' '#1056#1111#1056#1109' '#1056#1109#1057#8218#1057#8225#1056#181#1057#8218#1057#1107':')
+          Memo.UTF8W = (
+            #1048#1090#1086#1075#1086' '#1087#1086' '#1086#1090#1095#1077#1090#1091':')
           ParentFont = False
         end
       end
     end
-  end
-  object PivotCube36: TPivotCube
-    FactTableDataSet = DM_Olap.Uni_Data
-    Dimensions = <
-      item
-        Enabled = True
-        AliasName = 'NKOM'
-        FieldName = 'NKOM'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #8470' '#1082#1086#1084#1087'.'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'NINK'
-        FieldName = 'NINK'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #8470' '#1080#1085#1082'.'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'DAT_INK'
-        FieldName = 'DAT_INK'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1044#1072#1090#1072' '#1080#1085#1082'.'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'OPERNAME'
-        FieldName = 'OPERNAME'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1054#1087#1077#1088#1072#1094#1080#1103
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'DTEK'
-        FieldName = 'DTEK'
-        DataSet = DM_Olap.Uni_Data
-        KeyField = 'DTEK'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1044#1072#1090#1072' '#1086#1087#1083#1072#1090#1099
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end>
-    LNG.Strings = (
-      'RowTotalName='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1056#1054#1050#1040#1052
-      'ColumnTotalName='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1054#1051#1041#1062#1040#1052
-      'PanelRowsCaption='#1057#1090#1088#1086#1082#1072
-      'PanelColumnsCaption='#1057#1090#1086#1083#1073#1077#1094
-      'PanelDimsCaption='#1060#1080#1083#1100#1090#1088
-      'CustomFilter='#1060#1080#1083#1100#1090#1088
-      
-        'pvToolBarCollapseError=Could not collapse TOOLBAR without border' +
-        ' alignment'
-      
-        'pvToolBarTreeFilterWarn=Cannot use incremental filtering on hier' +
-        'arhical dimensions!'
-      'pvToolBarNoFilter='#1053#1077#1090' '#1092#1080#1083#1100#1090#1088#1072
-      'pvToolBarCustomFilter='#1048#1089#1087#1086#1083#1100#1079'.'#1092#1080#1083#1100#1090#1088
-      'pvCubeErr1=Could not load dimension data!'
-      'pvCubeErr2=Could not load measure data!'
-      'pvCubeErr3=: You must specify dataset for dimension!'
-      
-        'pvCubeErr4=Could not load dimension items! Dimension: %s  Dimens' +
-        'ion item: %s'
-      'pvCubeErr5=Could not start building cube! Unknown error'
-      
-        'pvCubeErr6=You must set appropriate EventHandler for custom wrap' +
-        'ped dimensions! : %s'
-      'pvCubeErr7=You must set FactTableDataSet property!'
-      'pvCubeErr8=You must set at least ONE measure'
-      'pvCubeErr9=You must set at least ONE dimension'
-      'pvMapErr1='#1054#1096#1080#1073#1086#1095#1085#1099#1081' '#1080#1085#1076#1077#1082#1089
-      'pvMapErr2='#1054#1076#1085#1086' '#1080#1079#1084#1077#1088#1077#1085#1080#1077' '#1076#1086#1083#1078#1085#1086' '#1073#1099#1090#1100' '#1074#1080#1076#1080#1084#1099#1084'!'
-      'pvGridExcel0=Export note'
-      
-        'pvGridExcel1=Number of columns more than 256. Only first 255 col' +
-        'umns will be exported!'
-      'pvGridExcel2=Number of columns must be more than 0!'
-      'pvGridExcel3=Number of rows must be more than 0!'
-      
-        'pvGridExcel4=Could not export data to Excel! Check your MS Excel' +
-        ' installation'
-      'pvAMFAddMeasureForm=Calculated measures manager'
-      'pvAMFAddMeasureBtn='#1044#1086#1073#1072#1074#1080#1090#1100' '#1085#1086#1074#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFEditMeasureBtn='#1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1080#1084#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFDelMeasureBtn='#1059#1076#1072#1083#1080#1090#1100' '#1087#1086#1076#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFCalcLabel='#1055#1086#1076#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFCalcEditLabel='#1048#1089#1087#1086#1083#1100#1079#1091#1077#1084#1072#1103' '#1092#1086#1088#1084#1091#1083#1072
-      'pvAMFMeasureLabel='#1048#1084#1077#1102#1097#1080#1077#1089#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFViewsLabel='#1048#1084#1077#1102#1097#1080#1077#1089#1103' '#1082#1091#1088#1089#1086#1088#1099
-      'pvAMFCheckBtn='#1055#1088#1086#1074#1077#1088#1100#1090#1077' '#1092#1086#1088#1084#1091#1083#1091
-      'pvAMFSynaxError='#1057#1080#1085#1090#1072#1082#1089#1080#1095#1077#1089#1082#1072#1103' '#1086#1096#1080#1073#1082#1072
-      'pvAMFFormulaError=: '#1054#1096#1080#1073#1082#1072' '#1074' '#1092#1086#1088#1084#1091#1083#1077
-      'pvAMFDuplicateError='#1044#1091#1073#1083#1080#1088#1091#1077#1097#1077#1077#1089#1103' '#1080#1084#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFCheckOKName='#1054#1090#1084#1077#1095#1077#1085#1086'!'
-      'pvToolBarDDOKBtnHint='#1055#1088#1080#1085#1103#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
-      'pvToolBarDDCancelBtnHint='#1054#1090#1084#1077#1085#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
-      'pvToolBarDDFillBtnHint='#1042#1099#1076#1077#1083#1080#1090#1100' '#1074#1089#1077
-      'pvToolBarDDClearBtnHint='#1054#1090#1084#1077#1085#1080#1090#1100' '#1074#1089#1077
-      'pvToolBarDDRevertBtnHint='#1048#1085#1074#1077#1088#1090#1080#1088#1086#1074#1072#1090#1100
-      'pvToolBarDDExpandBtnHint='#1056#1072#1079#1074#1077#1088#1085#1091#1090#1100' '#1074#1089#1077' '#1074#1077#1090#1082#1080
-      'pvMapValueName='#1047#1085#1072#1095#1077#1085#1080#1077
-      'pvMapRowPercentName='#1055#1088#1086#1094#1077#1085#1090' '#1087#1086' '#1057#1090#1088#1086#1082#1072#1084
-      'pvMapColPercentName='#1055#1088#1086#1094#1077#1085#1090' '#1087#1086' '#1057#1090#1086#1083#1073#1094#1072#1084
-      'pvMapRecordCountName='#1050#1086#1083'-'#1074#1086
-      'pvMapRankName='#1056#1072#1085#1075'['#1057#1090#1086#1083#1073#1077#1094']'
-      'pvMapRankRName='#1056#1072#1085#1075'['#1057#1090#1088#1086#1082#1072']'
-      'pvMapSubPrevCName='#1056#1072#1079#1085#1080#1094#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1080#1084' '#1057#1090#1086#1083#1073#1094#1086#1084
-      'pvMapSubPrevRName='#1056#1072#1079#1085#1080#1094#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1077#1081' '#1057#1090#1088#1086#1082#1086#1081
-      'pvMapAddPrevCName='#1057#1091#1084#1084#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1080#1084' '#1057#1090#1086#1083#1073#1094#1086#1084
-      'pvMapAddPrevRName='#1057#1091#1084#1084#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1077#1081' '#1057#1090#1088#1086#1082#1086#1081
-      'pvMapRunningTotalName1='#1053#1072#1088#1072#1089#1090#1072#1102#1097#1077#1081' '#1048#1090#1086#1075' '#1087#1086' '#1057#1090#1086#1083#1073#1094#1091
-      'pvMapRunningTotalName2='#1053#1072#1088#1072#1089#1090#1072#1102#1097#1077#1081' '#1048#1090#1086#1075' '#1087#1086' '#1057#1090#1088#1086#1082#1077
-      'pvBtnHintAccept='#1055#1086#1076#1090#1074#1077#1088#1076#1080#1090#1100
-      'pvBtnHintCancel='#1054#1090#1084#1077#1085#1080#1090#1100
-      'pvBtnHintExpandTree='#1056#1072#1079#1074#1077#1088#1085#1091#1090#1100'/'#1057#1074#1077#1088#1085#1091#1090#1100' '#1074#1077#1090#1082#1080
-      'pvBtnHintCalcMeasureDialog='#1042#1082#1083'. '#1076#1080#1072#1083#1086#1075' '#1056#1072#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1075#1086' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintMeasureFillEnable='#1042#1099#1076#1077#1083#1080#1090#1100' '#1074#1089#1077
-      'pvBtnHintMeasureFillDisable='#1054#1090#1084#1077#1090#1080#1090#1100' '#1074#1089#1077
-      'pvBtnHintMeasureRevert='#1055#1077#1088#1077#1082#1083#1102#1095#1080#1090#1100' '#1089#1086#1089#1090#1086#1103#1085#1080#1077' '#1077#1076'.'#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimFillActive='#1042#1080#1076#1080#1084#1099' '#1074#1089#1077' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintDimFillHided='#1053#1077' '#1074#1080#1076#1080#1084#1099' '#1074#1089#1077' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintDimFillFiltered='#1060#1080#1083#1100#1090#1088#1086#1074#1072#1090#1100' '#1074#1089#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimRevert='#1062#1080#1082#1083#1080#1095#1085#1099#1081' '#1089#1076#1074#1080#1075' '#1089#1086#1089#1090#1086#1103#1085#1080#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimAddGroup='#1044#1086#1073#1072#1074#1080#1090#1100' '#1080#1077#1088#1072#1088#1093#1080#1095#1077#1089#1082#1091#1102' '#1075#1088#1091#1087#1087#1091
-      'pvBtnHintDimDelGroup='#1059#1076#1072#1083#1080#1090#1100' '#1080#1077#1088#1072#1088#1093#1080#1095#1077#1089#1082#1091#1102' '#1075#1088#1091#1087#1087#1091
-      'mbFormCaption='#1055#1086#1089#1090#1088#1086#1080#1090#1077#1083#1100' '#1079#1072#1087#1088#1086#1089#1072
-      'mbRowsCaption='#1057#1090#1088#1086#1082#1080
-      'mbColumnsCaption='#1057#1090#1086#1083#1073#1094#1099
-      'mbDimsCaption='#1048#1079#1084#1077#1088#1077#1085#1080#1103
-      'mbDisabledDimsCaption='#1053#1077#1072#1082#1090#1080#1074#1085#1099#1077' '#1048#1079#1084#1077#1088#1077#1085#1080#1103
-      
-        'mbRunEditBtnHint='#1054#1090#1082#1088#1099#1090#1100' '#1088#1077#1076#1072#1082#1090#1086#1088' '#1080#1079#1084#1077#1088#1077#1085#1080#1081' '#1076#1083#1103' '#1074#1099#1073#1088#1072#1085#1085#1099#1093' '#1080#1079#1084#1077#1088#1077 +
-        #1085#1080#1081
-      
-        'mbTreeViewHint=Drag'#39'n'#39'Drop dimension lable to choosen group. Dbl' +
-        '-click to run dimension editor'
-      'DimensionFormCaption='#1056#1077#1076#1072#1082#1090#1086#1088' '#1048#1079#1084#1077#1088#1077#1085#1080#1081' :'
-      'dimDisplayName='#1047#1072#1075#1086#1083#1086#1074#1086#1082
-      'dimCount='#1050#1086#1083'-'#1074#1086' '#1086#1073#1098#1077#1082#1090#1086#1074
-      'dimSOrtBtn='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072
-      'dimSortBtnHint='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072
-      'dimActiveItems='#1040#1082#1090#1080#1074#1085#1099#1077' '#1086#1073#1098#1077#1082#1090#1099
-      'dimInActiveItems='#1061#1088#1072#1085#1080#1083#1080#1097#1077'('#1085#1077' '#1072#1082#1090#1080#1074#1085#1099#1077' '#1086#1073#1098#1077#1082#1090#1099')'
-      'dimFilterError='#1050#1072#1082' '#1084#1080#1085#1080#1084#1091#1084' '#1086#1076#1085#1086' '#1080#1079#1084#1077#1088#1077#1085#1080#1077' '#1076#1086#1083#1078#1085#1086' '#1073#1099#1090#1100' '#1072#1082#1090#1080#1074#1085#1099#1084'!'
-      'dimSearch='#1053#1072#1081#1090#1080
-      
-        'dimTVHint=Drag'#39'n'#39'drop selected item(s) to group or repository ar' +
-        'ea'
-      'dimSortByName='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072' '#1087#1086' '#1080#1084#1077#1085#1080
-      'dimSortByKey='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072' '#1087#1086' '#1082#1083#1102#1095#1091
-      'dimNoSort='#1041#1077#1079' '#1089#1086#1088#1090#1080#1088#1086#1074#1082#1080
-      'dimSortAscending='#1055#1086' '#1074#1086#1079#1088#1072#1089#1090#1072#1102#1097#1077#1081
-      'dimSortDescending='#1055#1086' '#1091#1073#1099#1074#1072#1102#1097#1077#1081
-      'dimForecastingCB1=Enable prev. forecast value'
-      'dimForecastingCB2=Enable next. forecast value'
-      'dimForecastingType=Forecasting method'
-      'dimForecastingMethod1=Simple moving average'
-      'dimForecastingMethod2=Weighted Moving Average'
-      'dimForecastingMethod3=Double Exponential Smoothing'
-      'dimForecastingMethod4=Triple Exponential Smoothing'
-      'dimForecastingMethod5=Show Data Margins Only'
-      'dimForecastingMethod6=Show First and Last members'
-      'MeasureCommonFormCaption='#1055#1086#1089#1090#1088#1086#1080#1090#1077#1083#1100' '#1079#1085#1072#1095#1077#1085#1080#1081
-      'MFormatBtnName=Build format'
-      'MFormatFormCaption=Build format string'
-      'pvMapMVFmt0=Change measure type'
-      'pvMapMVFmt1=Cell'
-      'pvMapMVFmt2=Percent by Column'
-      'pvMapMVFmt3=Percent by Row'
-      'pvMapMVFmt4=Record count'
-      'pvMapMVFmt5=Rank by Column'
-      'pvMapMVFmt6=Rank by Row'
-      'pvMapMVFmt7=Previous member by Row'
-      'pvMapMVFmt8=Next member by Row'
-      'pvMapMVFmt9=Previous member by Column'
-      'pvMapMVFmt10=Next member by Column'
-      'pvMapMVFmt11=Running Total by Column'
-      'pvMapMVFmt12=Running Total by Row'
-      'pmMapMVOp1=Value'
-      'pmMapMVOp2=Subtract'
-      'pmMapMVOp3=Add'
-      'pmMapMVOp4=Divide'
-      'pmMapMVOp5=Multiply'
-      'pvMeasureCommon5=Min. value'
-      'pvMeasureCommon6=Max. value'
-      'pvMeasureCommon9=Value'
-      'pvMeasureCommon10=Operation'
-      'pvMeasureCommon11=Only one measure visible'
-      'pvMeasureCommon12=Value representation'
-      'pvMeasureCommon13=Filters'
-      'pvMeasureCommon14=Filter by Map cells'
-      'pvMeasureCommon15=Filter by fact table records'
-      'pvMeasureCommon16=Measure formating'
-      'pvMeasureCommon17=Formula (is calculated measure)'
-      'pvMeasureCommon18=Enabled'
-      'pvMeasureCommon19=Running Total by Column'
-      'pvMeasureCommon20=Running Total by Row'
-      'pvMeasureCommon21=Display caption'
-      'MeasureFilterError= Measure filter error'
-      'mfeWrongValue=Wrong value in  measure filter:'
-      'MeasureCommonFormDistinctName=Distinct'
-      'pvgSearchFormCaption=Search'
-      'pvgSearchArea=Search area'
-      'pvgSearchRow=Row header'
-      'pvgSearchCol=Column header'
-      'pvgSearchText=Text for search'
-      'pvgSearch1=Next'
-      'pvgSearch2=Forward'
-      'pvgSearch3=Case sensitive'
-      'pvgSearchBtn=Find again'
-      'pvgSearchFinish=Cannot find more'
-      'uHtmBuildHeaders=building headers...'
-      'uHtmPreparing=prepearing...'
-      'uHtmColTotal='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1054#1051#1041#1062#1040#1052
-      'uHtmRowTotal='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1056#1054#1050#1040#1052
-      'uHtmExportColHeader=exporting column headers...'
-      
-        'uHtmExportCells=exporting row headers, cell values and row total' +
-        's...'
-      'uHtmExportColTotal=exporting column totals...'
-      'uHtmSave=saving and executing...'
-      'uHtmLabel=Action...'
-      'ChartDDRows='#1057#1090#1088#1086#1082#1080
-      'ChartDDColumns='#1057#1090#1086#1083#1073#1094#1099
-      'ddChartViews=Views'
-      'ddChartLegend='#1051#1077#1075#1077#1085#1076#1072
-      'ddChartMarks=Marks'
-      'ChartXNextPage=Next page'
-      'ChartXPrevPage=Prev. page'
-      'CubeButtonCaption=Cube'
-      'ChartButtonCaption=Chart'
-      'pvGridSubTotal=Subtotal'
-      'pvGridSubTotalwName=Sub-total by '
-      'MFormatCount=3'
-      'MFormatName0=Generic'
-      'MFormatValue0=#0.00'
-      'MFormatName1=Price (US)'
-      'MFormatValue1=$ #0.00'
-      'MFormatName2=Summa'
-      'MFormatValue2=# ##0.00'
-      'MFormatCap1=Predefined formats'
-      'MFormatCap2=Format string'
-      'MFormatCap3=Number of decimals'
-      'MFormatCap4=Before'
-      'MFormatCap5=After'
-      'MFormatCap6=Design'
-      'MFormatCap7=Symbol'
-      'MFormatCap8=Example'
-      'MFormatCap9=Thousand separator'
-      'uXLSActionLabel=Action'
-      'uXLSAction1=Prepearing basic fonts'
-      'uXLSAction2=Prepearing basic formats'
-      'uXLSAction3=Applying row totals headers merging'
-      'uXLSAction4=Applying cells format'
-      'uXLSAction5=Applying columns headers merging'
-      'uXLSAction6=Applying rows headers merging'
-      'uXLSAction7=Applying column totals headers merging'
-      'uXLSAction8=Applying auto width for columns'
-      'uXLActionLabel=Action'
-      'uXLAction1=Prepearing cells array'
-      'uXLAction2=Prepearing column headers'
-      'uXLAction3=Processing'
-      'uXLAction4=Merging column headers'
-      'uXLAction5=Merging row headers'
-      'uXLAction6=Merging row total headers'
-      'uXLAction7=Applying cells format'
-      'pvGridPrint1='#1055#1077#1095#1072#1090#1100' '#1074#1089#1077#1075#1086
-      'pvGridPrint2='#1055#1077#1095#1072#1090#1100' '#1074#1099#1073#1088#1072#1085#1085'.'
-      'pvGridPrint3='#1055#1088#1072#1074#1099#1081' '#1082#1083#1080#1082' - '#1084#1072#1089#1096#1090#1072#1073'.'
-      'uXLSActionLabel2=Action progress'
-      'uXLSActionLabel2=Full progress'
-      'uHtmLabel2=Action progress'
-      'uHtmLabel3=Full progress'
-      'pvGridEditor1=Table'
-      'pvGridEditor2=Chart'
-      'pvGridEditor3=Method'
-      'pvGridEditor4=Summa'
-      'pvGridEditor5=Count'
-      'pvGridEditor6=Average'
-      'pvGridEditor7=Equal'
-      'pvGridEditor8=Proportional'
-      'pvGridPrint4=Print preview'
-      'pvGridPrint5='#1052#1072#1089#1096'.'#1089#1090#1088#1072#1085#1080#1094
-      'pvGridPrint6='#1052#1072#1089#1096'.'#1087#1077#1095#1072#1090#1100
-      'pvGridPrint7='#1055#1086' '#1089#1090#1088#1072#1085#1080#1094#1077
-      'pvGridPrint8='#1055#1086' '#1096#1080#1088#1080#1085#1077
-      'pvGridPrint9='#1055#1086' '#1074#1099#1089#1086#1090#1077
-      'pvGridPrint10=50%'
-      'pvGridPrint11=100%'
-      'pvGridPrint12=200%'
-      'pvGridPrint13=400%'
-      'pvGridPrintLocked=Process locked! Please wait....')
-    Measures = <
-      item
-        AliasName = 'SUMMA'
-        FieldName = 'SUMMA'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1057#1091#1084#1084#1072
-      end
-      item
-        AliasName = 'PENYA'
-        FieldName = 'PENYA'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1055#1077#1085#1103
-      end>
-    CubeName = 'test'
-    OptimizeLevel = optNormal
-    ExtendedMode = True
-    AlwaysSaveCounts = False
-    ExcludeZeros = True
-    ClearTimeInfo = True
-    Left = 32
-    Top = 368
-  end
-  object PivotMap36: TPivotMap
-    Cube = PivotCube36
-    Columns = <>
-    Rows = <
-      item
-        Name = 'NKOM'
-      end
-      item
-        Name = 'NINK'
-      end
-      item
-        Name = 'DAT_INK'
-      end
-      item
-        Name = 'DTEK'
-      end
-      item
-        Name = 'OPERNAME'
-      end>
-    HideEmptyRows = True
-    HideEmptyColumns = True
-    TableMode = True
-    DDirection = True
-    AutoSaveMap = False
-    AutoExpand = True
-    Left = 64
-    Top = 368
   end
   object frxDB_c_kart_pr: TfrxDBDataset
     UserName = 'frxDB_c_kart_pr'
@@ -5675,455 +1896,6 @@ object Form_olap: TForm_olap
     Left = 120
     Top = 304
   end
-  object PivotCube80: TPivotCube
-    FactTableDataSet = DM_Olap.Uni_Data
-    Dimensions = <
-      item
-        Enabled = True
-        AliasName = 'NAME_TR'
-        FieldName = 'NAME_TR'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1046#1069#1054
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'NAME_REU'
-        FieldName = 'NAME_REU'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1059#1050
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'ADR'
-        FieldName = 'ADR'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1040#1076#1088#1077#1089
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'LSK'
-        FieldName = 'LSK'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1051'/C'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'NAME_ORG'
-        FieldName = 'NAME_ORG'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'NM'
-        FieldName = 'NM'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1059#1089#1083#1091#1075#1072' '#1076#1077#1090'.'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'CNT'
-        FieldName = 'CNT'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1050#1086#1083'-'#1074#1086' '#1084#1077#1089'.'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'NM1'
-        FieldName = 'NM1'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1059#1089#1083#1091#1075#1072' '#1075#1083#1072#1074#1085#1072#1103
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'MG'
-        FieldName = 'MG'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1055#1077#1088#1080#1086#1076
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end>
-    LNG.Strings = (
-      'RowTotalName='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1056#1054#1050#1040#1052
-      'ColumnTotalName='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1054#1051#1041#1062#1040#1052
-      'PanelRowsCaption='#1057#1090#1088#1086#1082#1072
-      'PanelColumnsCaption='#1057#1090#1086#1083#1073#1077#1094
-      'PanelDimsCaption='#1060#1080#1083#1100#1090#1088
-      'CustomFilter='#1060#1080#1083#1100#1090#1088
-      
-        'pvToolBarCollapseError=Could not collapse TOOLBAR without border' +
-        ' alignment'
-      
-        'pvToolBarTreeFilterWarn=Cannot use incremental filtering on hier' +
-        'arhical dimensions!'
-      'pvToolBarNoFilter='#1053#1077#1090' '#1092#1080#1083#1100#1090#1088#1072
-      'pvToolBarCustomFilter='#1048#1089#1087#1086#1083#1100#1079'.'#1092#1080#1083#1100#1090#1088
-      'pvCubeErr1=Could not load dimension data!'
-      'pvCubeErr2=Could not load measure data!'
-      'pvCubeErr3=: You must specify dataset for dimension!'
-      
-        'pvCubeErr4=Could not load dimension items! Dimension: %s  Dimens' +
-        'ion item: %s'
-      'pvCubeErr5=Could not start building cube! Unknown error'
-      
-        'pvCubeErr6=You must set appropriate EventHandler for custom wrap' +
-        'ped dimensions! : %s'
-      'pvCubeErr7=You must set FactTableDataSet property!'
-      'pvCubeErr8=You must set at least ONE measure'
-      'pvCubeErr9=You must set at least ONE dimension'
-      'pvMapErr1='#1054#1096#1080#1073#1086#1095#1085#1099#1081' '#1080#1085#1076#1077#1082#1089
-      'pvMapErr2='#1054#1076#1085#1086' '#1080#1079#1084#1077#1088#1077#1085#1080#1077' '#1076#1086#1083#1078#1085#1086' '#1073#1099#1090#1100' '#1074#1080#1076#1080#1084#1099#1084'!'
-      'pvGridExcel0=Export note'
-      
-        'pvGridExcel1=Number of columns more than 256. Only first 255 col' +
-        'umns will be exported!'
-      'pvGridExcel2=Number of columns must be more than 0!'
-      'pvGridExcel3=Number of rows must be more than 0!'
-      
-        'pvGridExcel4=Could not export data to Excel! Check your MS Excel' +
-        ' installation'
-      'pvAMFAddMeasureForm=Calculated measures manager'
-      'pvAMFAddMeasureBtn='#1044#1086#1073#1072#1074#1080#1090#1100' '#1085#1086#1074#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFEditMeasureBtn='#1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1080#1084#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFDelMeasureBtn='#1059#1076#1072#1083#1080#1090#1100' '#1087#1086#1076#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFCalcLabel='#1055#1086#1076#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFCalcEditLabel='#1048#1089#1087#1086#1083#1100#1079#1091#1077#1084#1072#1103' '#1092#1086#1088#1084#1091#1083#1072
-      'pvAMFMeasureLabel='#1048#1084#1077#1102#1097#1080#1077#1089#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFViewsLabel='#1048#1084#1077#1102#1097#1080#1077#1089#1103' '#1082#1091#1088#1089#1086#1088#1099
-      'pvAMFCheckBtn='#1055#1088#1086#1074#1077#1088#1100#1090#1077' '#1092#1086#1088#1084#1091#1083#1091
-      'pvAMFSynaxError='#1057#1080#1085#1090#1072#1082#1089#1080#1095#1077#1089#1082#1072#1103' '#1086#1096#1080#1073#1082#1072
-      'pvAMFFormulaError=: '#1054#1096#1080#1073#1082#1072' '#1074' '#1092#1086#1088#1084#1091#1083#1077
-      'pvAMFDuplicateError='#1044#1091#1073#1083#1080#1088#1091#1077#1097#1077#1077#1089#1103' '#1080#1084#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFCheckOKName='#1054#1090#1084#1077#1095#1077#1085#1086'!'
-      'pvToolBarDDOKBtnHint='#1055#1088#1080#1085#1103#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
-      'pvToolBarDDCancelBtnHint='#1054#1090#1084#1077#1085#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
-      'pvToolBarDDFillBtnHint='#1042#1099#1076#1077#1083#1080#1090#1100' '#1074#1089#1077
-      'pvToolBarDDClearBtnHint='#1054#1090#1084#1077#1085#1080#1090#1100' '#1074#1089#1077
-      'pvToolBarDDRevertBtnHint='#1048#1085#1074#1077#1088#1090#1080#1088#1086#1074#1072#1090#1100
-      'pvToolBarDDExpandBtnHint='#1056#1072#1079#1074#1077#1088#1085#1091#1090#1100' '#1074#1089#1077' '#1074#1077#1090#1082#1080
-      'pvMapValueName='#1047#1085#1072#1095#1077#1085#1080#1077
-      'pvMapRowPercentName='#1055#1088#1086#1094#1077#1085#1090' '#1087#1086' '#1057#1090#1088#1086#1082#1072#1084
-      'pvMapColPercentName='#1055#1088#1086#1094#1077#1085#1090' '#1087#1086' '#1057#1090#1086#1083#1073#1094#1072#1084
-      'pvMapRecordCountName='#1050#1086#1083'-'#1074#1086
-      'pvMapRankName='#1056#1072#1085#1075'['#1057#1090#1086#1083#1073#1077#1094']'
-      'pvMapRankRName='#1056#1072#1085#1075'['#1057#1090#1088#1086#1082#1072']'
-      'pvMapSubPrevCName='#1056#1072#1079#1085#1080#1094#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1080#1084' '#1057#1090#1086#1083#1073#1094#1086#1084
-      'pvMapSubPrevRName='#1056#1072#1079#1085#1080#1094#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1077#1081' '#1057#1090#1088#1086#1082#1086#1081
-      'pvMapAddPrevCName='#1057#1091#1084#1084#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1080#1084' '#1057#1090#1086#1083#1073#1094#1086#1084
-      'pvMapAddPrevRName='#1057#1091#1084#1084#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1077#1081' '#1057#1090#1088#1086#1082#1086#1081
-      'pvMapRunningTotalName1='#1053#1072#1088#1072#1089#1090#1072#1102#1097#1077#1081' '#1048#1090#1086#1075' '#1087#1086' '#1057#1090#1086#1083#1073#1094#1091
-      'pvMapRunningTotalName2='#1053#1072#1088#1072#1089#1090#1072#1102#1097#1077#1081' '#1048#1090#1086#1075' '#1087#1086' '#1057#1090#1088#1086#1082#1077
-      'pvBtnHintAccept='#1055#1086#1076#1090#1074#1077#1088#1076#1080#1090#1100
-      'pvBtnHintCancel='#1054#1090#1084#1077#1085#1080#1090#1100
-      'pvBtnHintExpandTree='#1056#1072#1079#1074#1077#1088#1085#1091#1090#1100'/'#1057#1074#1077#1088#1085#1091#1090#1100' '#1074#1077#1090#1082#1080
-      'pvBtnHintCalcMeasureDialog='#1042#1082#1083'. '#1076#1080#1072#1083#1086#1075' '#1056#1072#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1075#1086' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintMeasureFillEnable='#1042#1099#1076#1077#1083#1080#1090#1100' '#1074#1089#1077
-      'pvBtnHintMeasureFillDisable='#1054#1090#1084#1077#1090#1080#1090#1100' '#1074#1089#1077
-      'pvBtnHintMeasureRevert='#1055#1077#1088#1077#1082#1083#1102#1095#1080#1090#1100' '#1089#1086#1089#1090#1086#1103#1085#1080#1077' '#1077#1076'.'#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimFillActive='#1042#1080#1076#1080#1084#1099' '#1074#1089#1077' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintDimFillHided='#1053#1077' '#1074#1080#1076#1080#1084#1099' '#1074#1089#1077' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintDimFillFiltered='#1060#1080#1083#1100#1090#1088#1086#1074#1072#1090#1100' '#1074#1089#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimRevert='#1062#1080#1082#1083#1080#1095#1085#1099#1081' '#1089#1076#1074#1080#1075' '#1089#1086#1089#1090#1086#1103#1085#1080#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimAddGroup='#1044#1086#1073#1072#1074#1080#1090#1100' '#1080#1077#1088#1072#1088#1093#1080#1095#1077#1089#1082#1091#1102' '#1075#1088#1091#1087#1087#1091
-      'pvBtnHintDimDelGroup='#1059#1076#1072#1083#1080#1090#1100' '#1080#1077#1088#1072#1088#1093#1080#1095#1077#1089#1082#1091#1102' '#1075#1088#1091#1087#1087#1091
-      'mbFormCaption='#1055#1086#1089#1090#1088#1086#1080#1090#1077#1083#1100' '#1079#1072#1087#1088#1086#1089#1072
-      'mbRowsCaption='#1057#1090#1088#1086#1082#1080
-      'mbColumnsCaption='#1057#1090#1086#1083#1073#1094#1099
-      'mbDimsCaption='#1048#1079#1084#1077#1088#1077#1085#1080#1103
-      'mbDisabledDimsCaption='#1053#1077#1072#1082#1090#1080#1074#1085#1099#1077' '#1048#1079#1084#1077#1088#1077#1085#1080#1103
-      
-        'mbRunEditBtnHint='#1054#1090#1082#1088#1099#1090#1100' '#1088#1077#1076#1072#1082#1090#1086#1088' '#1080#1079#1084#1077#1088#1077#1085#1080#1081' '#1076#1083#1103' '#1074#1099#1073#1088#1072#1085#1085#1099#1093' '#1080#1079#1084#1077#1088#1077 +
-        #1085#1080#1081
-      
-        'mbTreeViewHint=Drag'#39'n'#39'Drop dimension lable to choosen group. Dbl' +
-        '-click to run dimension editor'
-      'DimensionFormCaption='#1056#1077#1076#1072#1082#1090#1086#1088' '#1048#1079#1084#1077#1088#1077#1085#1080#1081' :'
-      'dimDisplayName='#1047#1072#1075#1086#1083#1086#1074#1086#1082
-      'dimCount='#1050#1086#1083'-'#1074#1086' '#1086#1073#1098#1077#1082#1090#1086#1074
-      'dimSOrtBtn='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072
-      'dimSortBtnHint='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072
-      'dimActiveItems='#1040#1082#1090#1080#1074#1085#1099#1077' '#1086#1073#1098#1077#1082#1090#1099
-      'dimInActiveItems='#1061#1088#1072#1085#1080#1083#1080#1097#1077'('#1085#1077' '#1072#1082#1090#1080#1074#1085#1099#1077' '#1086#1073#1098#1077#1082#1090#1099')'
-      'dimFilterError='#1050#1072#1082' '#1084#1080#1085#1080#1084#1091#1084' '#1086#1076#1085#1086' '#1080#1079#1084#1077#1088#1077#1085#1080#1077' '#1076#1086#1083#1078#1085#1086' '#1073#1099#1090#1100' '#1072#1082#1090#1080#1074#1085#1099#1084'!'
-      'dimSearch='#1053#1072#1081#1090#1080
-      
-        'dimTVHint=Drag'#39'n'#39'drop selected item(s) to group or repository ar' +
-        'ea'
-      'dimSortByName='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072' '#1087#1086' '#1080#1084#1077#1085#1080
-      'dimSortByKey='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072' '#1087#1086' '#1082#1083#1102#1095#1091
-      'dimNoSort='#1041#1077#1079' '#1089#1086#1088#1090#1080#1088#1086#1074#1082#1080
-      'dimSortAscending='#1055#1086' '#1074#1086#1079#1088#1072#1089#1090#1072#1102#1097#1077#1081
-      'dimSortDescending='#1055#1086' '#1091#1073#1099#1074#1072#1102#1097#1077#1081
-      'dimForecastingCB1=Enable prev. forecast value'
-      'dimForecastingCB2=Enable next. forecast value'
-      'dimForecastingType=Forecasting method'
-      'dimForecastingMethod1=Simple moving average'
-      'dimForecastingMethod2=Weighted Moving Average'
-      'dimForecastingMethod3=Double Exponential Smoothing'
-      'dimForecastingMethod4=Triple Exponential Smoothing'
-      'dimForecastingMethod5=Show Data Margins Only'
-      'dimForecastingMethod6=Show First and Last members'
-      'MeasureCommonFormCaption='#1055#1086#1089#1090#1088#1086#1080#1090#1077#1083#1100' '#1079#1085#1072#1095#1077#1085#1080#1081
-      'MFormatBtnName=Build format'
-      'MFormatFormCaption=Build format string'
-      'pvMapMVFmt0=Change measure type'
-      'pvMapMVFmt1=Cell'
-      'pvMapMVFmt2=Percent by Column'
-      'pvMapMVFmt3=Percent by Row'
-      'pvMapMVFmt4=Record count'
-      'pvMapMVFmt5=Rank by Column'
-      'pvMapMVFmt6=Rank by Row'
-      'pvMapMVFmt7=Previous member by Row'
-      'pvMapMVFmt8=Next member by Row'
-      'pvMapMVFmt9=Previous member by Column'
-      'pvMapMVFmt10=Next member by Column'
-      'pvMapMVFmt11=Running Total by Column'
-      'pvMapMVFmt12=Running Total by Row'
-      'pmMapMVOp1=Value'
-      'pmMapMVOp2=Subtract'
-      'pmMapMVOp3=Add'
-      'pmMapMVOp4=Divide'
-      'pmMapMVOp5=Multiply'
-      'pvMeasureCommon5=Min. value'
-      'pvMeasureCommon6=Max. value'
-      'pvMeasureCommon9=Value'
-      'pvMeasureCommon10=Operation'
-      'pvMeasureCommon11=Only one measure visible'
-      'pvMeasureCommon12=Value representation'
-      'pvMeasureCommon13=Filters'
-      'pvMeasureCommon14=Filter by Map cells'
-      'pvMeasureCommon15=Filter by fact table records'
-      'pvMeasureCommon16=Measure formating'
-      'pvMeasureCommon17=Formula (is calculated measure)'
-      'pvMeasureCommon18=Enabled'
-      'pvMeasureCommon19=Running Total by Column'
-      'pvMeasureCommon20=Running Total by Row'
-      'pvMeasureCommon21=Display caption'
-      'MeasureFilterError= Measure filter error'
-      'mfeWrongValue=Wrong value in  measure filter:'
-      'MeasureCommonFormDistinctName=Distinct'
-      'pvgSearchFormCaption=Search'
-      'pvgSearchArea=Search area'
-      'pvgSearchRow=Row header'
-      'pvgSearchCol=Column header'
-      'pvgSearchText=Text for search'
-      'pvgSearch1=Next'
-      'pvgSearch2=Forward'
-      'pvgSearch3=Case sensitive'
-      'pvgSearchBtn=Find again'
-      'pvgSearchFinish=Cannot find more'
-      'uHtmBuildHeaders=building headers...'
-      'uHtmPreparing=prepearing...'
-      'uHtmColTotal='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1054#1051#1041#1062#1040#1052
-      'uHtmRowTotal='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1056#1054#1050#1040#1052
-      'uHtmExportColHeader=exporting column headers...'
-      
-        'uHtmExportCells=exporting row headers, cell values and row total' +
-        's...'
-      'uHtmExportColTotal=exporting column totals...'
-      'uHtmSave=saving and executing...'
-      'uHtmLabel=Action...'
-      'ChartDDRows='#1057#1090#1088#1086#1082#1080
-      'ChartDDColumns='#1057#1090#1086#1083#1073#1094#1099
-      'ddChartViews=Views'
-      'ddChartLegend='#1051#1077#1075#1077#1085#1076#1072
-      'ddChartMarks=Marks'
-      'ChartXNextPage=Next page'
-      'ChartXPrevPage=Prev. page'
-      'CubeButtonCaption=Cube'
-      'ChartButtonCaption=Chart'
-      'pvGridSubTotal=Subtotal'
-      'pvGridSubTotalwName=Sub-total by '
-      'MFormatCount=3'
-      'MFormatName0=Generic'
-      'MFormatValue0=#0.00'
-      'MFormatName1=Price (US)'
-      'MFormatValue1=$ #0.00'
-      'MFormatName2=Summa'
-      'MFormatValue2=# ##0.00'
-      'MFormatCap1=Predefined formats'
-      'MFormatCap2=Format string'
-      'MFormatCap3=Number of decimals'
-      'MFormatCap4=Before'
-      'MFormatCap5=After'
-      'MFormatCap6=Design'
-      'MFormatCap7=Symbol'
-      'MFormatCap8=Example'
-      'MFormatCap9=Thousand separator'
-      'uXLSActionLabel=Action'
-      'uXLSAction1=Prepearing basic fonts'
-      'uXLSAction2=Prepearing basic formats'
-      'uXLSAction3=Applying row totals headers merging'
-      'uXLSAction4=Applying cells format'
-      'uXLSAction5=Applying columns headers merging'
-      'uXLSAction6=Applying rows headers merging'
-      'uXLSAction7=Applying column totals headers merging'
-      'uXLSAction8=Applying auto width for columns'
-      'uXLActionLabel=Action'
-      'uXLAction1=Prepearing cells array'
-      'uXLAction2=Prepearing column headers'
-      'uXLAction3=Processing'
-      'uXLAction4=Merging column headers'
-      'uXLAction5=Merging row headers'
-      'uXLAction6=Merging row total headers'
-      'uXLAction7=Applying cells format'
-      'pvGridPrint1='#1055#1077#1095#1072#1090#1100' '#1074#1089#1077#1075#1086
-      'pvGridPrint2='#1055#1077#1095#1072#1090#1100' '#1074#1099#1073#1088#1072#1085#1085'.'
-      'pvGridPrint3='#1055#1088#1072#1074#1099#1081' '#1082#1083#1080#1082' - '#1084#1072#1089#1096#1090#1072#1073'.'
-      'uXLSActionLabel2=Action progress'
-      'uXLSActionLabel2=Full progress'
-      'uHtmLabel2=Action progress'
-      'uHtmLabel3=Full progress'
-      'pvGridEditor1=Table'
-      'pvGridEditor2=Chart'
-      'pvGridEditor3=Method'
-      'pvGridEditor4=Summa'
-      'pvGridEditor5=Count'
-      'pvGridEditor6=Average'
-      'pvGridEditor7=Equal'
-      'pvGridEditor8=Proportional'
-      'pvGridPrint4=Print preview'
-      'pvGridPrint5='#1052#1072#1089#1096'.'#1089#1090#1088#1072#1085#1080#1094
-      'pvGridPrint6='#1052#1072#1089#1096'.'#1087#1077#1095#1072#1090#1100
-      'pvGridPrint7='#1055#1086' '#1089#1090#1088#1072#1085#1080#1094#1077
-      'pvGridPrint8='#1055#1086' '#1096#1080#1088#1080#1085#1077
-      'pvGridPrint9='#1055#1086' '#1074#1099#1089#1086#1090#1077
-      'pvGridPrint10=50%'
-      'pvGridPrint11=100%'
-      'pvGridPrint12=200%'
-      'pvGridPrint13=400%'
-      'pvGridPrintLocked=Process locked! Please wait....')
-    Measures = <
-      item
-        AliasName = 'DOLG'
-        FieldName = 'DOLG'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1044#1086#1083#1075
-      end>
-    CubeName = 'test'
-    OptimizeLevel = optNormal
-    ExtendedMode = True
-    AlwaysSaveCounts = False
-    ExcludeZeros = True
-    ClearTimeInfo = True
-    Left = 32
-    Top = 408
-  end
-  object PivotMap80: TPivotMap
-    Cube = PivotCube80
-    Columns = <>
-    Rows = <
-      item
-        Name = 'NAME_TR'
-      end
-      item
-        Name = 'NAME_REU'
-      end
-      item
-        Name = 'NAME_ORG'
-      end
-      item
-        Name = 'NM'
-      end
-      item
-        Name = 'NM1'
-      end
-      item
-        Name = 'CNT'
-      end
-      item
-        Name = 'MG'
-      end>
-    HideEmptyRows = True
-    HideEmptyColumns = True
-    TableMode = True
-    DDirection = True
-    AutoSaveMap = False
-    AutoExpand = True
-    Left = 64
-    Top = 408
-  end
   object frxSimpleTextExport1: TfrxSimpleTextExport
     UseFileCache = True
     ShowProgress = True
@@ -6157,1722 +1929,5 @@ object Form_olap: TForm_olap
     BCDToCurrency = False
     Left = 176
     Top = 384
-  end
-  object PivotCube13: TPivotCube
-    FactTableDataSet = DM_Olap.Uni_Data
-    Dimensions = <
-      item
-        Enabled = True
-        AliasName = 'LSK'
-        FieldName = 'LSK'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1051#1080#1094'.'#1089#1095'.'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'PREDPR'
-        FieldName = 'TREST'
-        DataSet = DM_Olap.OD_trest_olap
-        KeyField = 'TREST'
-        LookupField = 'NAME_TR'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1060#1086#1085#1076
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'REU'
-        FieldName = 'REU'
-        DataSet = DM_Olap.OD_reu_olap
-        KeyField = 'REU'
-        LookupField = 'NAME_REU'
-        WrapTo = wt_None
-        Sorting = dmtKeySort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1046#1069#1054
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'PREDPR_DET'
-        FieldName = 'PREDPR_DET'
-        DataSet = DM_Olap.Uni_Data
-        KeyField = 'PREDPR_DET'
-        LookupField = 'PREDPR_DET'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1040#1076#1088'.'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'ORGNAME'
-        FieldName = 'ORG'
-        DataSet = DM_Olap.OD_org_olap
-        KeyField = 'ID'
-        LookupField = 'NAME'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'ORGMAIN'
-        FieldName = 'FK_ORG2'
-        DataSet = DM_Olap.OD_org2_olap
-        KeyField = 'ID'
-        LookupField = 'NAME'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1043#1083#1072#1074#1085#1072#1103' '#1086#1088#1075'.'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'USL'
-        FieldName = 'USL'
-        DataSet = DM_Olap.OD_usl_olap
-        KeyField = 'USL'
-        LookupField = 'NM'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1059#1089#1083#1091#1075#1072'.'#1076#1077#1090
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'USLM'
-        FieldName = 'USLM'
-        DataSet = DM_Olap.OD_uslm_olap
-        KeyField = 'USLM'
-        LookupField = 'NM1'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1059#1089#1083#1091#1075#1072
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'STATUS'
-        FieldName = 'STATUS'
-        DataSet = DM_Olap.OD_status_olap
-        KeyField = 'ID'
-        LookupField = 'NAME'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1057#1090#1072#1090#1091#1089
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'PSCH'
-        FieldName = 'PSCH'
-        DataSet = DM_Olap.OD_psch_olap
-        KeyField = 'ID'
-        LookupField = 'NAME'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1055#1088#1080#1079#1085#1072#1082
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'IS_EMPT'
-        FieldName = 'IS_EMPT'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1055#1091#1089#1090#1072#1103'?'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'SCH'
-        FieldName = 'SCH'
-        DataSet = DM_Olap.OD_sch_olap
-        KeyField = 'ID'
-        LookupField = 'NAME'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1058#1080#1087
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'VAL_GROUP'
-        FieldName = 'VAL_GROUP'
-        DataSet = DM_Olap.Uni_Data
-        KeyField = 'VAL_GROUP'
-        LookupField = 'VAL_GROUP'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1050#1086#1101#1092#1092
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'VAL_GROUP2'
-        FieldName = 'VAL_GROUP2'
-        DataSet = DM_Olap.Uni_Data
-        KeyField = 'VAL_GROUP2'
-        LookupField = 'VAL_GROUP2'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1053#1086#1088#1084#1072#1090#1080#1074
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'UCH'
-        FieldName = 'UCH'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1050#1086#1090#1077#1083#1100#1085#1072#1103
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'MG1'
-        FieldName = 'MG1'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1055#1077#1088#1080#1086#1076
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'FIO'
-        FieldName = 'FIO'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1060#1048#1054
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'NAME_GR'
-        FieldName = 'NAME_GR'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1059#1095#1072#1089#1090#1086#1082
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'ODPU_EX'
-        FieldName = 'ODPU_EX'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1054#1044#1055#1059
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'LSK_TP'
-        FieldName = 'LSK_TP'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1058#1080#1087' '#1089#1095#1077#1090#1072
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'IS_VOL'
-        FieldName = 'IS_VOL'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1054#1073#1098#1077#1084'?'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'IsHotPipe'
-        FieldName = 'IsHotPipe'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1043#1042' '#1048#1079#1086#1083
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'isTowel'
-        FieldName = 'isTowel'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1055#1086#1083#1086#1090'.'#1089#1091#1096
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end>
-    LNG.Strings = (
-      'RowTotalName='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1056#1054#1050#1040#1052
-      'ColumnTotalName='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1054#1051#1041#1062#1040#1052
-      'PanelRowsCaption='#1057#1090#1088#1086#1082#1072
-      'PanelColumnsCaption='#1057#1090#1086#1083#1073#1077#1094
-      'PanelDimsCaption='#1060#1080#1083#1100#1090#1088
-      'CustomFilter='#1060#1080#1083#1100#1090#1088
-      
-        'pvToolBarCollapseError=Could not collapse TOOLBAR without border' +
-        ' alignment'
-      
-        'pvToolBarTreeFilterWarn=Cannot use incremental filtering on hier' +
-        'arhical dimensions!'
-      'pvToolBarNoFilter='#1053#1077#1090' '#1092#1080#1083#1100#1090#1088#1072
-      'pvToolBarCustomFilter='#1048#1089#1087#1086#1083#1100#1079'.'#1092#1080#1083#1100#1090#1088
-      'pvCubeErr1=Could not load dimension data!'
-      'pvCubeErr2=Could not load measure data!'
-      'pvCubeErr3=: You must specify dataset for dimension!'
-      
-        'pvCubeErr4=Could not load dimension items! Dimension: %s  Dimens' +
-        'ion item: %s'
-      'pvCubeErr5=Could not start building cube! Unknown error'
-      
-        'pvCubeErr6=You must set appropriate EventHandler for custom wrap' +
-        'ped dimensions! : %s'
-      'pvCubeErr7=You must set FactTableDataSet property!'
-      'pvCubeErr8=You must set at least ONE measure'
-      'pvCubeErr9=You must set at least ONE dimension'
-      'pvMapErr1='#1054#1096#1080#1073#1086#1095#1085#1099#1081' '#1080#1085#1076#1077#1082#1089
-      'pvMapErr2='#1054#1076#1085#1086' '#1080#1079#1084#1077#1088#1077#1085#1080#1077' '#1076#1086#1083#1078#1085#1086' '#1073#1099#1090#1100' '#1074#1080#1076#1080#1084#1099#1084'!'
-      'pvGridExcel0=Export note'
-      
-        'pvGridExcel1=Number of columns more than 256. Only first 255 col' +
-        'umns will be exported!'
-      'pvGridExcel2=Number of columns must be more than 0!'
-      'pvGridExcel3=Number of rows must be more than 0!'
-      
-        'pvGridExcel4=Could not export data to Excel! Check your MS Excel' +
-        ' installation'
-      'pvAMFAddMeasureForm=Calculated measures manager'
-      'pvAMFAddMeasureBtn='#1044#1086#1073#1072#1074#1080#1090#1100' '#1085#1086#1074#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFEditMeasureBtn='#1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1080#1084#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFDelMeasureBtn='#1059#1076#1072#1083#1080#1090#1100' '#1087#1086#1076#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFCalcLabel='#1055#1086#1076#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFCalcEditLabel='#1048#1089#1087#1086#1083#1100#1079#1091#1077#1084#1072#1103' '#1092#1086#1088#1084#1091#1083#1072
-      'pvAMFMeasureLabel='#1048#1084#1077#1102#1097#1080#1077#1089#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFViewsLabel='#1048#1084#1077#1102#1097#1080#1077#1089#1103' '#1082#1091#1088#1089#1086#1088#1099
-      'pvAMFCheckBtn='#1055#1088#1086#1074#1077#1088#1100#1090#1077' '#1092#1086#1088#1084#1091#1083#1091
-      'pvAMFSynaxError='#1057#1080#1085#1090#1072#1082#1089#1080#1095#1077#1089#1082#1072#1103' '#1086#1096#1080#1073#1082#1072
-      'pvAMFFormulaError=: '#1054#1096#1080#1073#1082#1072' '#1074' '#1092#1086#1088#1084#1091#1083#1077
-      'pvAMFDuplicateError='#1044#1091#1073#1083#1080#1088#1091#1077#1097#1077#1077#1089#1103' '#1080#1084#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFCheckOKName='#1054#1090#1084#1077#1095#1077#1085#1086'!'
-      'pvToolBarDDOKBtnHint='#1055#1088#1080#1085#1103#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
-      'pvToolBarDDCancelBtnHint='#1054#1090#1084#1077#1085#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
-      'pvToolBarDDFillBtnHint='#1042#1099#1076#1077#1083#1080#1090#1100' '#1074#1089#1077
-      'pvToolBarDDClearBtnHint='#1054#1090#1084#1077#1085#1080#1090#1100' '#1074#1089#1077
-      'pvToolBarDDRevertBtnHint='#1048#1085#1074#1077#1088#1090#1080#1088#1086#1074#1072#1090#1100
-      'pvToolBarDDExpandBtnHint='#1056#1072#1079#1074#1077#1088#1085#1091#1090#1100' '#1074#1089#1077' '#1074#1077#1090#1082#1080
-      'pvMapValueName='#1047#1085#1072#1095#1077#1085#1080#1077
-      'pvMapRowPercentName='#1055#1088#1086#1094#1077#1085#1090' '#1087#1086' '#1057#1090#1088#1086#1082#1072#1084
-      'pvMapColPercentName='#1055#1088#1086#1094#1077#1085#1090' '#1087#1086' '#1057#1090#1086#1083#1073#1094#1072#1084
-      'pvMapRecordCountName='#1050#1086#1083'-'#1074#1086
-      'pvMapRankName='#1056#1072#1085#1075'['#1057#1090#1086#1083#1073#1077#1094']'
-      'pvMapRankRName='#1056#1072#1085#1075'['#1057#1090#1088#1086#1082#1072']'
-      'pvMapSubPrevCName='#1056#1072#1079#1085#1080#1094#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1080#1084' '#1057#1090#1086#1083#1073#1094#1086#1084
-      'pvMapSubPrevRName='#1056#1072#1079#1085#1080#1094#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1077#1081' '#1057#1090#1088#1086#1082#1086#1081
-      'pvMapAddPrevCName='#1057#1091#1084#1084#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1080#1084' '#1057#1090#1086#1083#1073#1094#1086#1084
-      'pvMapAddPrevRName='#1057#1091#1084#1084#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1077#1081' '#1057#1090#1088#1086#1082#1086#1081
-      'pvMapRunningTotalName1='#1053#1072#1088#1072#1089#1090#1072#1102#1097#1077#1081' '#1048#1090#1086#1075' '#1087#1086' '#1057#1090#1086#1083#1073#1094#1091
-      'pvMapRunningTotalName2='#1053#1072#1088#1072#1089#1090#1072#1102#1097#1077#1081' '#1048#1090#1086#1075' '#1087#1086' '#1057#1090#1088#1086#1082#1077
-      'pvBtnHintAccept='#1055#1086#1076#1090#1074#1077#1088#1076#1080#1090#1100
-      'pvBtnHintCancel='#1054#1090#1084#1077#1085#1080#1090#1100
-      'pvBtnHintExpandTree='#1056#1072#1079#1074#1077#1088#1085#1091#1090#1100'/'#1057#1074#1077#1088#1085#1091#1090#1100' '#1074#1077#1090#1082#1080
-      'pvBtnHintCalcMeasureDialog='#1042#1082#1083'. '#1076#1080#1072#1083#1086#1075' '#1056#1072#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1075#1086' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintMeasureFillEnable='#1042#1099#1076#1077#1083#1080#1090#1100' '#1074#1089#1077
-      'pvBtnHintMeasureFillDisable='#1054#1090#1084#1077#1090#1080#1090#1100' '#1074#1089#1077
-      'pvBtnHintMeasureRevert='#1055#1077#1088#1077#1082#1083#1102#1095#1080#1090#1100' '#1089#1086#1089#1090#1086#1103#1085#1080#1077' '#1077#1076'.'#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimFillActive='#1042#1080#1076#1080#1084#1099' '#1074#1089#1077' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintDimFillHided='#1053#1077' '#1074#1080#1076#1080#1084#1099' '#1074#1089#1077' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintDimFillFiltered='#1060#1080#1083#1100#1090#1088#1086#1074#1072#1090#1100' '#1074#1089#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimRevert='#1062#1080#1082#1083#1080#1095#1085#1099#1081' '#1089#1076#1074#1080#1075' '#1089#1086#1089#1090#1086#1103#1085#1080#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimAddGroup='#1044#1086#1073#1072#1074#1080#1090#1100' '#1080#1077#1088#1072#1088#1093#1080#1095#1077#1089#1082#1091#1102' '#1075#1088#1091#1087#1087#1091
-      'pvBtnHintDimDelGroup='#1059#1076#1072#1083#1080#1090#1100' '#1080#1077#1088#1072#1088#1093#1080#1095#1077#1089#1082#1091#1102' '#1075#1088#1091#1087#1087#1091
-      'mbFormCaption='#1055#1086#1089#1090#1088#1086#1080#1090#1077#1083#1100' '#1079#1072#1087#1088#1086#1089#1072
-      'mbRowsCaption='#1057#1090#1088#1086#1082#1080
-      'mbColumnsCaption='#1057#1090#1086#1083#1073#1094#1099
-      'mbDimsCaption='#1048#1079#1084#1077#1088#1077#1085#1080#1103
-      'mbDisabledDimsCaption='#1053#1077#1072#1082#1090#1080#1074#1085#1099#1077' '#1048#1079#1084#1077#1088#1077#1085#1080#1103
-      
-        'mbRunEditBtnHint='#1054#1090#1082#1088#1099#1090#1100' '#1088#1077#1076#1072#1082#1090#1086#1088' '#1080#1079#1084#1077#1088#1077#1085#1080#1081' '#1076#1083#1103' '#1074#1099#1073#1088#1072#1085#1085#1099#1093' '#1080#1079#1084#1077#1088#1077 +
-        #1085#1080#1081
-      
-        'mbTreeViewHint=Drag'#39'n'#39'Drop dimension lable to choosen group. Dbl' +
-        '-click to run dimension editor'
-      'DimensionFormCaption='#1056#1077#1076#1072#1082#1090#1086#1088' '#1048#1079#1084#1077#1088#1077#1085#1080#1081' :'
-      'dimDisplayName='#1047#1072#1075#1086#1083#1086#1074#1086#1082
-      'dimCount='#1050#1086#1083'-'#1074#1086' '#1086#1073#1098#1077#1082#1090#1086#1074
-      'dimSOrtBtn='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072
-      'dimSortBtnHint='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072
-      'dimActiveItems='#1040#1082#1090#1080#1074#1085#1099#1077' '#1086#1073#1098#1077#1082#1090#1099
-      'dimInActiveItems='#1061#1088#1072#1085#1080#1083#1080#1097#1077'('#1085#1077' '#1072#1082#1090#1080#1074#1085#1099#1077' '#1086#1073#1098#1077#1082#1090#1099')'
-      'dimFilterError='#1050#1072#1082' '#1084#1080#1085#1080#1084#1091#1084' '#1086#1076#1085#1086' '#1080#1079#1084#1077#1088#1077#1085#1080#1077' '#1076#1086#1083#1078#1085#1086' '#1073#1099#1090#1100' '#1072#1082#1090#1080#1074#1085#1099#1084'!'
-      'dimSearch='#1053#1072#1081#1090#1080
-      
-        'dimTVHint=Drag'#39'n'#39'drop selected item(s) to group or repository ar' +
-        'ea'
-      'dimSortByName='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072' '#1087#1086' '#1080#1084#1077#1085#1080
-      'dimSortByKey='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072' '#1087#1086' '#1082#1083#1102#1095#1091
-      'dimNoSort='#1041#1077#1079' '#1089#1086#1088#1090#1080#1088#1086#1074#1082#1080
-      'dimSortAscending='#1055#1086' '#1074#1086#1079#1088#1072#1089#1090#1072#1102#1097#1077#1081
-      'dimSortDescending='#1055#1086' '#1091#1073#1099#1074#1072#1102#1097#1077#1081
-      'dimForecastingCB1=Enable prev. forecast value'
-      'dimForecastingCB2=Enable next. forecast value'
-      'dimForecastingType=Forecasting method'
-      'dimForecastingMethod1=Simple moving average'
-      'dimForecastingMethod2=Weighted Moving Average'
-      'dimForecastingMethod3=Double Exponential Smoothing'
-      'dimForecastingMethod4=Triple Exponential Smoothing'
-      'dimForecastingMethod5=Show Data Margins Only'
-      'dimForecastingMethod6=Show First and Last members'
-      'MeasureCommonFormCaption='#1055#1086#1089#1090#1088#1086#1080#1090#1077#1083#1100' '#1079#1085#1072#1095#1077#1085#1080#1081
-      'MFormatBtnName=Build format'
-      'MFormatFormCaption=Build format string'
-      'pvMapMVFmt0=Change measure type'
-      'pvMapMVFmt1=Cell'
-      'pvMapMVFmt2=Percent by Column'
-      'pvMapMVFmt3=Percent by Row'
-      'pvMapMVFmt4=Record count'
-      'pvMapMVFmt5=Rank by Column'
-      'pvMapMVFmt6=Rank by Row'
-      'pvMapMVFmt7=Previous member by Row'
-      'pvMapMVFmt8=Next member by Row'
-      'pvMapMVFmt9=Previous member by Column'
-      'pvMapMVFmt10=Next member by Column'
-      'pvMapMVFmt11=Running Total by Column'
-      'pvMapMVFmt12=Running Total by Row'
-      'pmMapMVOp1=Value'
-      'pmMapMVOp2=Subtract'
-      'pmMapMVOp3=Add'
-      'pmMapMVOp4=Divide'
-      'pmMapMVOp5=Multiply'
-      'pvMeasureCommon5=Min. value'
-      'pvMeasureCommon6=Max. value'
-      'pvMeasureCommon9=Value'
-      'pvMeasureCommon10=Operation'
-      'pvMeasureCommon11=Only one measure visible'
-      'pvMeasureCommon12=Value representation'
-      'pvMeasureCommon13=Filters'
-      'pvMeasureCommon14=Filter by Map cells'
-      'pvMeasureCommon15=Filter by fact table records'
-      'pvMeasureCommon16=Measure formating'
-      'pvMeasureCommon17=Formula (is calculated measure)'
-      'pvMeasureCommon18=Enabled'
-      'pvMeasureCommon19=Running Total by Column'
-      'pvMeasureCommon20=Running Total by Row'
-      'pvMeasureCommon21=Display caption'
-      'MeasureFilterError= Measure filter error'
-      'mfeWrongValue=Wrong value in  measure filter:'
-      'MeasureCommonFormDistinctName=Distinct'
-      'pvgSearchFormCaption=Search'
-      'pvgSearchArea=Search area'
-      'pvgSearchRow=Row header'
-      'pvgSearchCol=Column header'
-      'pvgSearchText=Text for search'
-      'pvgSearch1=Next'
-      'pvgSearch2=Forward'
-      'pvgSearch3=Case sensitive'
-      'pvgSearchBtn=Find again'
-      'pvgSearchFinish=Cannot find more'
-      'uHtmBuildHeaders=building headers...'
-      'uHtmPreparing=prepearing...'
-      'uHtmColTotal='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1054#1051#1041#1062#1040#1052
-      'uHtmRowTotal='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1056#1054#1050#1040#1052
-      'uHtmExportColHeader=exporting column headers...'
-      
-        'uHtmExportCells=exporting row headers, cell values and row total' +
-        's...'
-      'uHtmExportColTotal=exporting column totals...'
-      'uHtmSave=saving and executing...'
-      'uHtmLabel=Action...'
-      'ChartDDRows='#1057#1090#1088#1086#1082#1080
-      'ChartDDColumns='#1057#1090#1086#1083#1073#1094#1099
-      'ddChartViews=Views'
-      'ddChartLegend='#1051#1077#1075#1077#1085#1076#1072
-      'ddChartMarks=Marks'
-      'ChartXNextPage=Next page'
-      'ChartXPrevPage=Prev. page'
-      'CubeButtonCaption=Cube'
-      'ChartButtonCaption=Chart'
-      'pvGridSubTotal=Subtotal'
-      'pvGridSubTotalwName=Sub-total by '
-      'MFormatCount=3'
-      'MFormatName0=Generic'
-      'MFormatValue0=#0.00'
-      'MFormatName1=Price (US)'
-      'MFormatValue1=$ #0.00'
-      'MFormatName2=Summa'
-      'MFormatValue2=# ##0.00'
-      'MFormatCap1=Predefined formats'
-      'MFormatCap2=Format string'
-      'MFormatCap3=Number of decimals'
-      'MFormatCap4=Before'
-      'MFormatCap5=After'
-      'MFormatCap6=Design'
-      'MFormatCap7=Symbol'
-      'MFormatCap8=Example'
-      'MFormatCap9=Thousand separator'
-      'uXLSActionLabel=Action'
-      'uXLSAction1=Prepearing basic fonts'
-      'uXLSAction2=Prepearing basic formats'
-      'uXLSAction3=Applying row totals headers merging'
-      'uXLSAction4=Applying cells format'
-      'uXLSAction5=Applying columns headers merging'
-      'uXLSAction6=Applying rows headers merging'
-      'uXLSAction7=Applying column totals headers merging'
-      'uXLSAction8=Applying auto width for columns'
-      'uXLActionLabel=Action'
-      'uXLAction1=Prepearing cells array'
-      'uXLAction2=Prepearing column headers'
-      'uXLAction3=Processing'
-      'uXLAction4=Merging column headers'
-      'uXLAction5=Merging row headers'
-      'uXLAction6=Merging row total headers'
-      'uXLAction7=Applying cells format'
-      'pvGridPrint1=Print All'
-      'pvGridPrint2=Print selected'
-      'pvGridPrint3=Right click to scale menu'
-      'uXLSActionLabel2=Action progress'
-      'uXLSActionLabel2=Full progress'
-      'uHtmLabel2=Action progress'
-      'uHtmLabel3=Full progress'
-      'pvGridEditor1=Table'
-      'pvGridEditor2=Chart'
-      'pvGridEditor3=Method'
-      'pvGridEditor4=Summa'
-      'pvGridEditor5=Count'
-      'pvGridEditor6=Average'
-      'pvGridEditor7=Equal'
-      'pvGridEditor8=Proportional'
-      'pvGridPrint4=Print preview'
-      'pvGridPrint5=Scale page'
-      'pvGridPrint6=Scale print'
-      'pvGridPrint7=Fit page'
-      'pvGridPrint8=Fit width'
-      'pvGridPrint9=Fit height'
-      'pvGridPrint10=50%'
-      'pvGridPrint11=100%'
-      'pvGridPrint12=200%'
-      'pvGridPrint13=400%'
-      'pvGridPrintLocked=Process locked! Please wait....')
-    Measures = <
-      item
-        AliasName = 'CNT'
-        FieldName = 'CNT'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '#######0.000'
-        DisplayName = #1050#1086#1083'-'#1074#1086' ('#1045#1076'.)'
-      end
-      item
-        AliasName = 'OPL'
-        FieldName = 'OPL'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1055#1083#1086#1097#1072#1076#1100
-      end
-      item
-        AliasName = 'CHNG_VOL'
-        FieldName = 'CHNG_VOL'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1055#1077#1088#1077#1088#1072#1089#1095#1077#1090
-      end
-      item
-        AliasName = 'KLSK'
-        FieldName = 'KLSK'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1082#1086#1083'-'#1074#1086' '#1051'/'#1057
-      end
-      item
-        AliasName = 'KPR'
-        FieldName = 'KPR'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1055#1088#1086#1078#1080#1074'. '#1074' '#1090'.'#1095'. '#1042'.'#1054'.'
-      end
-      item
-        AliasName = 'KPR_OT'
-        FieldName = 'KPR_OT'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1042#1088'.'#1086#1090#1089#1091#1090'.'
-      end
-      item
-        AliasName = 'KPR_WR'
-        FieldName = 'KPR_WR'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1042#1088'.'#1079#1072#1088#1077#1075'.'
-      end
-      item
-        AliasName = 'CNT_LG'
-        FieldName = 'CNT_LG'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1051#1100#1075#1086#1090#1085#1080#1082#1086#1074
-      end
-      item
-        AliasName = 'CNT_SUBS'
-        FieldName = 'CNT_SUBS'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00'
-        DisplayName = #1055#1086#1083#1100#1079'.'#1089#1091#1073#1089#1080#1076'.('#1051'/'#1057')'
-      end
-      item
-        AliasName = 'CNT_ROOM'
-        FieldName = 'CNT_ROOM'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1050#1086#1084#1085#1072#1090
-      end
-      item
-        AliasName = 'ODPU_KUB'
-        FieldName = 'ODPU_KUB'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1054#1044#1055#1059', '#1045#1076'.'
-      end
-      item
-        AliasName = 'FACT_CONS'
-        FieldName = 'FACT_CONS'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1060#1072#1082#1090'.'#1087#1086#1090#1088'.'
-      end
-      item
-        AliasName = 'KR_SOI'
-        FieldName = 'KR_SOI'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1050#1056' '#1085#1072' '#1057#1054#1048
-      end>
-    CubeName = 'test'
-    OptimizeLevel = optNormal
-    ExtendedMode = True
-    AlwaysSaveCounts = False
-    ExcludeZeros = True
-    ClearTimeInfo = True
-    Left = 32
-    Top = 136
-  end
-  object PivotMap13: TPivotMap
-    Cube = PivotCube13
-    Columns = <>
-    Rows = <
-      item
-        Name = 'PREDPR'
-      end
-      item
-        Name = 'REU'
-      end
-      item
-        Name = 'PSCH'
-      end
-      item
-        Name = 'SCH'
-      end
-      item
-        Name = 'NM'
-      end
-      item
-        Name = 'ORGNAME'
-      end>
-    HideEmptyRows = True
-    HideEmptyColumns = True
-    TableMode = True
-    DDirection = True
-    AutoSaveMap = False
-    AutoExpand = True
-    Left = 64
-    Top = 136
-  end
-  object PivotCube97: TPivotCube
-    FactTableDataSet = DM_Olap.Uni_Data
-    Dimensions = <
-      item
-        Enabled = True
-        AliasName = 'LSK'
-        FieldName = 'LSK'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1051#1080#1094'.'#1089#1095'.'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'REU'
-        FieldName = 'REU'
-        DataSet = DM_Olap.OD_reu_olap
-        KeyField = 'REU'
-        LookupField = 'NAME_REU'
-        WrapTo = wt_None
-        Sorting = dmtKeySort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1046#1069#1054
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'PREDPR_DET'
-        FieldName = 'PREDPR_DET'
-        DataSet = DM_Olap.Uni_Data
-        KeyField = 'PREDPR_DET'
-        LookupField = 'PREDPR_DET'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1040#1076#1088'.'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiRemoveFromCube
-      end
-      item
-        Enabled = True
-        AliasName = 'NAME_USL'
-        FieldName = 'NAME_USL'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1059#1089#1083#1091#1075#1072
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end>
-    LNG.Strings = (
-      'RowTotalName='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1056#1054#1050#1040#1052
-      'ColumnTotalName='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1054#1051#1041#1062#1040#1052
-      'PanelRowsCaption='#1057#1090#1088#1086#1082#1072
-      'PanelColumnsCaption='#1057#1090#1086#1083#1073#1077#1094
-      'PanelDimsCaption='#1060#1080#1083#1100#1090#1088
-      'CustomFilter='#1060#1080#1083#1100#1090#1088
-      
-        'pvToolBarCollapseError=Could not collapse TOOLBAR without border' +
-        ' alignment'
-      
-        'pvToolBarTreeFilterWarn=Cannot use incremental filtering on hier' +
-        'arhical dimensions!'
-      'pvToolBarNoFilter='#1053#1077#1090' '#1092#1080#1083#1100#1090#1088#1072
-      'pvToolBarCustomFilter='#1048#1089#1087#1086#1083#1100#1079'.'#1092#1080#1083#1100#1090#1088
-      'pvCubeErr1=Could not load dimension data!'
-      'pvCubeErr2=Could not load measure data!'
-      'pvCubeErr3=: You must specify dataset for dimension!'
-      
-        'pvCubeErr4=Could not load dimension items! Dimension: %s  Dimens' +
-        'ion item: %s'
-      'pvCubeErr5=Could not start building cube! Unknown error'
-      
-        'pvCubeErr6=You must set appropriate EventHandler for custom wrap' +
-        'ped dimensions! : %s'
-      'pvCubeErr7=You must set FactTableDataSet property!'
-      'pvCubeErr8=You must set at least ONE measure'
-      'pvCubeErr9=You must set at least ONE dimension'
-      'pvMapErr1='#1054#1096#1080#1073#1086#1095#1085#1099#1081' '#1080#1085#1076#1077#1082#1089
-      'pvMapErr2='#1054#1076#1085#1086' '#1080#1079#1084#1077#1088#1077#1085#1080#1077' '#1076#1086#1083#1078#1085#1086' '#1073#1099#1090#1100' '#1074#1080#1076#1080#1084#1099#1084'!'
-      'pvGridExcel0=Export note'
-      
-        'pvGridExcel1=Number of columns more than 256. Only first 255 col' +
-        'umns will be exported!'
-      'pvGridExcel2=Number of columns must be more than 0!'
-      'pvGridExcel3=Number of rows must be more than 0!'
-      
-        'pvGridExcel4=Could not export data to Excel! Check your MS Excel' +
-        ' installation'
-      'pvAMFAddMeasureForm=Calculated measures manager'
-      'pvAMFAddMeasureBtn='#1044#1086#1073#1072#1074#1080#1090#1100' '#1085#1086#1074#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFEditMeasureBtn='#1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1080#1084#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFDelMeasureBtn='#1059#1076#1072#1083#1080#1090#1100' '#1087#1086#1076#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFCalcLabel='#1055#1086#1076#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFCalcEditLabel='#1048#1089#1087#1086#1083#1100#1079#1091#1077#1084#1072#1103' '#1092#1086#1088#1084#1091#1083#1072
-      'pvAMFMeasureLabel='#1048#1084#1077#1102#1097#1080#1077#1089#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFViewsLabel='#1048#1084#1077#1102#1097#1080#1077#1089#1103' '#1082#1091#1088#1089#1086#1088#1099
-      'pvAMFCheckBtn='#1055#1088#1086#1074#1077#1088#1100#1090#1077' '#1092#1086#1088#1084#1091#1083#1091
-      'pvAMFSynaxError='#1057#1080#1085#1090#1072#1082#1089#1080#1095#1077#1089#1082#1072#1103' '#1086#1096#1080#1073#1082#1072
-      'pvAMFFormulaError=: '#1054#1096#1080#1073#1082#1072' '#1074' '#1092#1086#1088#1084#1091#1083#1077
-      'pvAMFDuplicateError='#1044#1091#1073#1083#1080#1088#1091#1077#1097#1077#1077#1089#1103' '#1080#1084#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFCheckOKName='#1054#1090#1084#1077#1095#1077#1085#1086'!'
-      'pvToolBarDDOKBtnHint='#1055#1088#1080#1085#1103#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
-      'pvToolBarDDCancelBtnHint='#1054#1090#1084#1077#1085#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
-      'pvToolBarDDFillBtnHint='#1042#1099#1076#1077#1083#1080#1090#1100' '#1074#1089#1077
-      'pvToolBarDDClearBtnHint='#1054#1090#1084#1077#1085#1080#1090#1100' '#1074#1089#1077
-      'pvToolBarDDRevertBtnHint='#1048#1085#1074#1077#1088#1090#1080#1088#1086#1074#1072#1090#1100
-      'pvToolBarDDExpandBtnHint='#1056#1072#1079#1074#1077#1088#1085#1091#1090#1100' '#1074#1089#1077' '#1074#1077#1090#1082#1080
-      'pvMapValueName='#1047#1085#1072#1095#1077#1085#1080#1077
-      'pvMapRowPercentName='#1055#1088#1086#1094#1077#1085#1090' '#1087#1086' '#1057#1090#1088#1086#1082#1072#1084
-      'pvMapColPercentName='#1055#1088#1086#1094#1077#1085#1090' '#1087#1086' '#1057#1090#1086#1083#1073#1094#1072#1084
-      'pvMapRecordCountName='#1050#1086#1083'-'#1074#1086
-      'pvMapRankName='#1056#1072#1085#1075'['#1057#1090#1086#1083#1073#1077#1094']'
-      'pvMapRankRName='#1056#1072#1085#1075'['#1057#1090#1088#1086#1082#1072']'
-      'pvMapSubPrevCName='#1056#1072#1079#1085#1080#1094#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1080#1084' '#1057#1090#1086#1083#1073#1094#1086#1084
-      'pvMapSubPrevRName='#1056#1072#1079#1085#1080#1094#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1077#1081' '#1057#1090#1088#1086#1082#1086#1081
-      'pvMapAddPrevCName='#1057#1091#1084#1084#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1080#1084' '#1057#1090#1086#1083#1073#1094#1086#1084
-      'pvMapAddPrevRName='#1057#1091#1084#1084#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1077#1081' '#1057#1090#1088#1086#1082#1086#1081
-      'pvMapRunningTotalName1='#1053#1072#1088#1072#1089#1090#1072#1102#1097#1077#1081' '#1048#1090#1086#1075' '#1087#1086' '#1057#1090#1086#1083#1073#1094#1091
-      'pvMapRunningTotalName2='#1053#1072#1088#1072#1089#1090#1072#1102#1097#1077#1081' '#1048#1090#1086#1075' '#1087#1086' '#1057#1090#1088#1086#1082#1077
-      'pvBtnHintAccept='#1055#1086#1076#1090#1074#1077#1088#1076#1080#1090#1100
-      'pvBtnHintCancel='#1054#1090#1084#1077#1085#1080#1090#1100
-      'pvBtnHintExpandTree='#1056#1072#1079#1074#1077#1088#1085#1091#1090#1100'/'#1057#1074#1077#1088#1085#1091#1090#1100' '#1074#1077#1090#1082#1080
-      'pvBtnHintCalcMeasureDialog='#1042#1082#1083'. '#1076#1080#1072#1083#1086#1075' '#1056#1072#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1075#1086' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintMeasureFillEnable='#1042#1099#1076#1077#1083#1080#1090#1100' '#1074#1089#1077
-      'pvBtnHintMeasureFillDisable='#1054#1090#1084#1077#1090#1080#1090#1100' '#1074#1089#1077
-      'pvBtnHintMeasureRevert='#1055#1077#1088#1077#1082#1083#1102#1095#1080#1090#1100' '#1089#1086#1089#1090#1086#1103#1085#1080#1077' '#1077#1076'.'#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimFillActive='#1042#1080#1076#1080#1084#1099' '#1074#1089#1077' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintDimFillHided='#1053#1077' '#1074#1080#1076#1080#1084#1099' '#1074#1089#1077' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintDimFillFiltered='#1060#1080#1083#1100#1090#1088#1086#1074#1072#1090#1100' '#1074#1089#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimRevert='#1062#1080#1082#1083#1080#1095#1085#1099#1081' '#1089#1076#1074#1080#1075' '#1089#1086#1089#1090#1086#1103#1085#1080#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimAddGroup='#1044#1086#1073#1072#1074#1080#1090#1100' '#1080#1077#1088#1072#1088#1093#1080#1095#1077#1089#1082#1091#1102' '#1075#1088#1091#1087#1087#1091
-      'pvBtnHintDimDelGroup='#1059#1076#1072#1083#1080#1090#1100' '#1080#1077#1088#1072#1088#1093#1080#1095#1077#1089#1082#1091#1102' '#1075#1088#1091#1087#1087#1091
-      'mbFormCaption='#1055#1086#1089#1090#1088#1086#1080#1090#1077#1083#1100' '#1079#1072#1087#1088#1086#1089#1072
-      'mbRowsCaption='#1057#1090#1088#1086#1082#1080
-      'mbColumnsCaption='#1057#1090#1086#1083#1073#1094#1099
-      'mbDimsCaption='#1048#1079#1084#1077#1088#1077#1085#1080#1103
-      'mbDisabledDimsCaption='#1053#1077#1072#1082#1090#1080#1074#1085#1099#1077' '#1048#1079#1084#1077#1088#1077#1085#1080#1103
-      
-        'mbRunEditBtnHint='#1054#1090#1082#1088#1099#1090#1100' '#1088#1077#1076#1072#1082#1090#1086#1088' '#1080#1079#1084#1077#1088#1077#1085#1080#1081' '#1076#1083#1103' '#1074#1099#1073#1088#1072#1085#1085#1099#1093' '#1080#1079#1084#1077#1088#1077 +
-        #1085#1080#1081
-      
-        'mbTreeViewHint=Drag'#39'n'#39'Drop dimension lable to choosen group. Dbl' +
-        '-click to run dimension editor'
-      'DimensionFormCaption='#1056#1077#1076#1072#1082#1090#1086#1088' '#1048#1079#1084#1077#1088#1077#1085#1080#1081' :'
-      'dimDisplayName='#1047#1072#1075#1086#1083#1086#1074#1086#1082
-      'dimCount='#1050#1086#1083'-'#1074#1086' '#1086#1073#1098#1077#1082#1090#1086#1074
-      'dimSOrtBtn='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072
-      'dimSortBtnHint='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072
-      'dimActiveItems='#1040#1082#1090#1080#1074#1085#1099#1077' '#1086#1073#1098#1077#1082#1090#1099
-      'dimInActiveItems='#1061#1088#1072#1085#1080#1083#1080#1097#1077'('#1085#1077' '#1072#1082#1090#1080#1074#1085#1099#1077' '#1086#1073#1098#1077#1082#1090#1099')'
-      'dimFilterError='#1050#1072#1082' '#1084#1080#1085#1080#1084#1091#1084' '#1086#1076#1085#1086' '#1080#1079#1084#1077#1088#1077#1085#1080#1077' '#1076#1086#1083#1078#1085#1086' '#1073#1099#1090#1100' '#1072#1082#1090#1080#1074#1085#1099#1084'!'
-      'dimSearch='#1053#1072#1081#1090#1080
-      
-        'dimTVHint=Drag'#39'n'#39'drop selected item(s) to group or repository ar' +
-        'ea'
-      'dimSortByName='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072' '#1087#1086' '#1080#1084#1077#1085#1080
-      'dimSortByKey='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072' '#1087#1086' '#1082#1083#1102#1095#1091
-      'dimNoSort='#1041#1077#1079' '#1089#1086#1088#1090#1080#1088#1086#1074#1082#1080
-      'dimSortAscending='#1055#1086' '#1074#1086#1079#1088#1072#1089#1090#1072#1102#1097#1077#1081
-      'dimSortDescending='#1055#1086' '#1091#1073#1099#1074#1072#1102#1097#1077#1081
-      'dimForecastingCB1=Enable prev. forecast value'
-      'dimForecastingCB2=Enable next. forecast value'
-      'dimForecastingType=Forecasting method'
-      'dimForecastingMethod1=Simple moving average'
-      'dimForecastingMethod2=Weighted Moving Average'
-      'dimForecastingMethod3=Double Exponential Smoothing'
-      'dimForecastingMethod4=Triple Exponential Smoothing'
-      'dimForecastingMethod5=Show Data Margins Only'
-      'dimForecastingMethod6=Show First and Last members'
-      'MeasureCommonFormCaption='#1055#1086#1089#1090#1088#1086#1080#1090#1077#1083#1100' '#1079#1085#1072#1095#1077#1085#1080#1081
-      'MFormatBtnName=Build format'
-      'MFormatFormCaption=Build format string'
-      'pvMapMVFmt0=Change measure type'
-      'pvMapMVFmt1=Cell'
-      'pvMapMVFmt2=Percent by Column'
-      'pvMapMVFmt3=Percent by Row'
-      'pvMapMVFmt4=Record count'
-      'pvMapMVFmt5=Rank by Column'
-      'pvMapMVFmt6=Rank by Row'
-      'pvMapMVFmt7=Previous member by Row'
-      'pvMapMVFmt8=Next member by Row'
-      'pvMapMVFmt9=Previous member by Column'
-      'pvMapMVFmt10=Next member by Column'
-      'pvMapMVFmt11=Running Total by Column'
-      'pvMapMVFmt12=Running Total by Row'
-      'pmMapMVOp1=Value'
-      'pmMapMVOp2=Subtract'
-      'pmMapMVOp3=Add'
-      'pmMapMVOp4=Divide'
-      'pmMapMVOp5=Multiply'
-      'pvMeasureCommon5=Min. value'
-      'pvMeasureCommon6=Max. value'
-      'pvMeasureCommon9=Value'
-      'pvMeasureCommon10=Operation'
-      'pvMeasureCommon11=Only one measure visible'
-      'pvMeasureCommon12=Value representation'
-      'pvMeasureCommon13=Filters'
-      'pvMeasureCommon14=Filter by Map cells'
-      'pvMeasureCommon15=Filter by fact table records'
-      'pvMeasureCommon16=Measure formating'
-      'pvMeasureCommon17=Formula (is calculated measure)'
-      'pvMeasureCommon18=Enabled'
-      'pvMeasureCommon19=Running Total by Column'
-      'pvMeasureCommon20=Running Total by Row'
-      'pvMeasureCommon21=Display caption'
-      'MeasureFilterError= Measure filter error'
-      'mfeWrongValue=Wrong value in  measure filter:'
-      'MeasureCommonFormDistinctName=Distinct'
-      'pvgSearchFormCaption=Search'
-      'pvgSearchArea=Search area'
-      'pvgSearchRow=Row header'
-      'pvgSearchCol=Column header'
-      'pvgSearchText=Text for search'
-      'pvgSearch1=Next'
-      'pvgSearch2=Forward'
-      'pvgSearch3=Case sensitive'
-      'pvgSearchBtn=Find again'
-      'pvgSearchFinish=Cannot find more'
-      'uHtmBuildHeaders=building headers...'
-      'uHtmPreparing=prepearing...'
-      'uHtmColTotal='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1054#1051#1041#1062#1040#1052
-      'uHtmRowTotal='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1056#1054#1050#1040#1052
-      'uHtmExportColHeader=exporting column headers...'
-      
-        'uHtmExportCells=exporting row headers, cell values and row total' +
-        's...'
-      'uHtmExportColTotal=exporting column totals...'
-      'uHtmSave=saving and executing...'
-      'uHtmLabel=Action...'
-      'ChartDDRows='#1057#1090#1088#1086#1082#1080
-      'ChartDDColumns='#1057#1090#1086#1083#1073#1094#1099
-      'ddChartViews=Views'
-      'ddChartLegend='#1051#1077#1075#1077#1085#1076#1072
-      'ddChartMarks=Marks'
-      'ChartXNextPage=Next page'
-      'ChartXPrevPage=Prev. page'
-      'CubeButtonCaption=Cube'
-      'ChartButtonCaption=Chart'
-      'pvGridSubTotal=Subtotal'
-      'pvGridSubTotalwName=Sub-total by '
-      'MFormatCount=3'
-      'MFormatName0=Generic'
-      'MFormatValue0=#0.00'
-      'MFormatName1=Price (US)'
-      'MFormatValue1=$ #0.00'
-      'MFormatName2=Summa'
-      'MFormatValue2=# ##0.00'
-      'MFormatCap1=Predefined formats'
-      'MFormatCap2=Format string'
-      'MFormatCap3=Number of decimals'
-      'MFormatCap4=Before'
-      'MFormatCap5=After'
-      'MFormatCap6=Design'
-      'MFormatCap7=Symbol'
-      'MFormatCap8=Example'
-      'MFormatCap9=Thousand separator'
-      'uXLSActionLabel=Action'
-      'uXLSAction1=Prepearing basic fonts'
-      'uXLSAction2=Prepearing basic formats'
-      'uXLSAction3=Applying row totals headers merging'
-      'uXLSAction4=Applying cells format'
-      'uXLSAction5=Applying columns headers merging'
-      'uXLSAction6=Applying rows headers merging'
-      'uXLSAction7=Applying column totals headers merging'
-      'uXLSAction8=Applying auto width for columns'
-      'uXLActionLabel=Action'
-      'uXLAction1=Prepearing cells array'
-      'uXLAction2=Prepearing column headers'
-      'uXLAction3=Processing'
-      'uXLAction4=Merging column headers'
-      'uXLAction5=Merging row headers'
-      'uXLAction6=Merging row total headers'
-      'uXLAction7=Applying cells format'
-      'pvGridPrint1=Print All'
-      'pvGridPrint2=Print selected'
-      'pvGridPrint3=Right click to scale menu'
-      'uXLSActionLabel2=Action progress'
-      'uXLSActionLabel2=Full progress'
-      'uHtmLabel2=Action progress'
-      'uHtmLabel3=Full progress'
-      'pvGridEditor1=Table'
-      'pvGridEditor2=Chart'
-      'pvGridEditor3=Method'
-      'pvGridEditor4=Summa'
-      'pvGridEditor5=Count'
-      'pvGridEditor6=Average'
-      'pvGridEditor7=Equal'
-      'pvGridEditor8=Proportional'
-      'pvGridPrint4=Print preview'
-      'pvGridPrint5=Scale page'
-      'pvGridPrint6=Scale print'
-      'pvGridPrint7=Fit page'
-      'pvGridPrint8=Fit width'
-      'pvGridPrint9=Fit height'
-      'pvGridPrint10=50%'
-      'pvGridPrint11=100%'
-      'pvGridPrint12=200%'
-      'pvGridPrint13=400%'
-      'pvGridPrintLocked=Process locked! Please wait....')
-    Measures = <
-      item
-        AliasName = 'N1'
-        FieldName = 'N1'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1055#1086#1082#1072#1079#1072#1085#1080#1077
-      end
-      item
-        AliasName = 'VOL'
-        FieldName = 'VOL'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1054#1073#1098#1077#1084
-      end>
-    CubeName = 'test'
-    OptimizeLevel = optNormal
-    ExtendedMode = True
-    AlwaysSaveCounts = False
-    ExcludeZeros = True
-    ClearTimeInfo = True
-    Left = 32
-    Top = 448
-  end
-  object PivotMap97: TPivotMap
-    Cube = PivotCube97
-    Columns = <
-      item
-        Name = 'NAME_USL'
-      end>
-    Rows = <
-      item
-        Name = 'PREDPR_DET'
-      end>
-    HideEmptyRows = True
-    HideEmptyColumns = True
-    TableMode = True
-    DDirection = True
-    AutoSaveMap = False
-    AutoExpand = True
-    Left = 64
-    Top = 448
-  end
-  object PivotCube98: TPivotCube
-    FactTableDataSet = DM_Olap.Uni_Data
-    Dimensions = <
-      item
-        Enabled = True
-        AliasName = 'LSK'
-        FieldName = 'LSK'
-        DataSet = DM_Olap.Uni_Data
-        KeyField = 'LSK'
-        LookupField = 'LSK'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1051'/'#1057
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'NAME_TR'
-        FieldName = 'NAME_TR'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1060#1086#1085#1076
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'NAME_REU'
-        FieldName = 'NAME_REU'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1046#1069#1054
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'ADR'
-        FieldName = 'ADR'
-        DataSet = DM_Olap.Uni_Data
-        KeyField = 'ADR'
-        LookupField = 'ADR'
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1040#1076#1088#1077#1089
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'FIO'
-        FieldName = 'FIO'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1060'.'#1048'.'#1054'.'
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'CNT_MONTH'
-        FieldName = 'CNT_MONTH'
-        DataSet = DM_Olap.Uni_Data
-        KeyField = 'CNT_MONTH'
-        LookupField = 'CNT_MONTH'
-        WrapTo = wt_None
-        Sorting = dmtKeySort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1052#1077#1089#1103#1094#1077#1074
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'DAT'
-        FieldName = 'DAT'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1044#1072#1090#1072
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'DEB_ORG'
-        FieldName = 'DEB_ORG'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1054#1088#1075'. '#1079#1072#1076#1086#1083#1078#1085#1080#1082#1072
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'ST_NAME'
-        FieldName = 'ST_NAME'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1057#1090#1072#1090#1091#1089
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'PSCH'
-        FieldName = 'PSCH'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1055#1088#1080#1079#1085#1072#1082
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = #1059#1083#1080#1094#1072
-        FieldName = 'STREET'
-        DataSet = DM_Olap.Uni_Data
-        KeyField = 'STREET'
-        WrapTo = wt_None
-        Sorting = dmtKeySort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1059#1083#1080#1094#1072
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = #1044#1086#1084
-        FieldName = 'ND'
-        DataSet = DM_Olap.Uni_Data
-        KeyField = 'ND'
-        WrapTo = wt_None
-        Sorting = dmtKeySort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1044#1086#1084
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = #1050#1074
-        FieldName = 'KW'
-        DataSet = DM_Olap.Uni_Data
-        KeyField = 'KW'
-        WrapTo = wt_None
-        Sorting = dmtKeySort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1050#1074
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end
-      item
-        Enabled = True
-        AliasName = 'PERIOD_DEB'
-        FieldName = 'PERIOD_DEB'
-        DataSet = DM_Olap.Uni_Data
-        WrapTo = wt_None
-        Sorting = dmtNoSort
-        NullName = '[Null]'
-        UnknownName = '[UNKNOWN]'
-        DisplayName = #1055#1077#1088#1080#1086#1076' '#1076#1086#1083#1075#1072
-        Forecasting.PrecedingName = '[Preceding]'
-        Forecasting.ConsequentName = '[Consequent]'
-        Forecasting.Method = dftTripleExponentialSmoothing
-        Forecasting.Enabled = False
-        EmptyItems = deiMarkDisabled
-      end>
-    LNG.Strings = (
-      'RowTotalName='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1056#1054#1050#1040#1052
-      'ColumnTotalName='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1054#1051#1041#1062#1040#1052
-      'PanelRowsCaption='#1057#1090#1088#1086#1082#1072
-      'PanelColumnsCaption='#1057#1090#1086#1083#1073#1077#1094
-      'PanelDimsCaption='#1060#1080#1083#1100#1090#1088
-      'CustomFilter='#1060#1080#1083#1100#1090#1088
-      
-        'pvToolBarCollapseError=Could not collapse TOOLBAR without border' +
-        ' alignment'
-      
-        'pvToolBarTreeFilterWarn=Cannot use incremental filtering on hier' +
-        'arhical dimensions!'
-      'pvToolBarNoFilter='#1053#1077#1090' '#1092#1080#1083#1100#1090#1088#1072
-      'pvToolBarCustomFilter='#1048#1089#1087#1086#1083#1100#1079'.'#1092#1080#1083#1100#1090#1088
-      'pvCubeErr1=Could not load dimension data!'
-      'pvCubeErr2=Could not load measure data!'
-      'pvCubeErr3=: You must specify dataset for dimension!'
-      
-        'pvCubeErr4=Could not load dimension items! Dimension: %s  Dimens' +
-        'ion item: %s'
-      'pvCubeErr5=Could not start building cube! Unknown error'
-      
-        'pvCubeErr6=You must set appropriate EventHandler for custom wrap' +
-        'ped dimensions! : %s'
-      'pvCubeErr7=You must set FactTableDataSet property!'
-      'pvCubeErr8=You must set at least ONE measure'
-      'pvCubeErr9=You must set at least ONE dimension'
-      'pvMapErr1='#1054#1096#1080#1073#1086#1095#1085#1099#1081' '#1080#1085#1076#1077#1082#1089
-      'pvMapErr2='#1054#1076#1085#1086' '#1080#1079#1084#1077#1088#1077#1085#1080#1077' '#1076#1086#1083#1078#1085#1086' '#1073#1099#1090#1100' '#1074#1080#1076#1080#1084#1099#1084'!'
-      'pvGridExcel0=Export note'
-      
-        'pvGridExcel1=Number of columns more than 256. Only first 255 col' +
-        'umns will be exported!'
-      'pvGridExcel2=Number of columns must be more than 0!'
-      'pvGridExcel3=Number of rows must be more than 0!'
-      
-        'pvGridExcel4=Could not export data to Excel! Check your MS Excel' +
-        ' installation'
-      'pvAMFAddMeasureForm=Calculated measures manager'
-      'pvAMFAddMeasureBtn='#1044#1086#1073#1072#1074#1080#1090#1100' '#1085#1086#1074#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFEditMeasureBtn='#1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1090#1100' '#1080#1084#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFDelMeasureBtn='#1059#1076#1072#1083#1080#1090#1100' '#1087#1086#1076#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFCalcLabel='#1055#1086#1076#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1077
-      'pvAMFCalcEditLabel='#1048#1089#1087#1086#1083#1100#1079#1091#1077#1084#1072#1103' '#1092#1086#1088#1084#1091#1083#1072
-      'pvAMFMeasureLabel='#1048#1084#1077#1102#1097#1080#1077#1089#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFViewsLabel='#1048#1084#1077#1102#1097#1080#1077#1089#1103' '#1082#1091#1088#1089#1086#1088#1099
-      'pvAMFCheckBtn='#1055#1088#1086#1074#1077#1088#1100#1090#1077' '#1092#1086#1088#1084#1091#1083#1091
-      'pvAMFSynaxError='#1057#1080#1085#1090#1072#1082#1089#1080#1095#1077#1089#1082#1072#1103' '#1086#1096#1080#1073#1082#1072
-      'pvAMFFormulaError=: '#1054#1096#1080#1073#1082#1072' '#1074' '#1092#1086#1088#1084#1091#1083#1077
-      'pvAMFDuplicateError='#1044#1091#1073#1083#1080#1088#1091#1077#1097#1077#1077#1089#1103' '#1080#1084#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvAMFCheckOKName='#1054#1090#1084#1077#1095#1077#1085#1086'!'
-      'pvToolBarDDOKBtnHint='#1055#1088#1080#1085#1103#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
-      'pvToolBarDDCancelBtnHint='#1054#1090#1084#1077#1085#1080#1090#1100' '#1080#1079#1084#1077#1085#1077#1085#1080#1103
-      'pvToolBarDDFillBtnHint='#1042#1099#1076#1077#1083#1080#1090#1100' '#1074#1089#1077
-      'pvToolBarDDClearBtnHint='#1054#1090#1084#1077#1085#1080#1090#1100' '#1074#1089#1077
-      'pvToolBarDDRevertBtnHint='#1048#1085#1074#1077#1088#1090#1080#1088#1086#1074#1072#1090#1100
-      'pvToolBarDDExpandBtnHint='#1056#1072#1079#1074#1077#1088#1085#1091#1090#1100' '#1074#1089#1077' '#1074#1077#1090#1082#1080
-      'pvMapValueName='#1047#1085#1072#1095#1077#1085#1080#1077
-      'pvMapRowPercentName='#1055#1088#1086#1094#1077#1085#1090' '#1087#1086' '#1057#1090#1088#1086#1082#1072#1084
-      'pvMapColPercentName='#1055#1088#1086#1094#1077#1085#1090' '#1087#1086' '#1057#1090#1086#1083#1073#1094#1072#1084
-      'pvMapRecordCountName='#1050#1086#1083'-'#1074#1086
-      'pvMapRankName='#1056#1072#1085#1075'['#1057#1090#1086#1083#1073#1077#1094']'
-      'pvMapRankRName='#1056#1072#1085#1075'['#1057#1090#1088#1086#1082#1072']'
-      'pvMapSubPrevCName='#1056#1072#1079#1085#1080#1094#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1080#1084' '#1057#1090#1086#1083#1073#1094#1086#1084
-      'pvMapSubPrevRName='#1056#1072#1079#1085#1080#1094#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1077#1081' '#1057#1090#1088#1086#1082#1086#1081
-      'pvMapAddPrevCName='#1057#1091#1084#1084#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1080#1084' '#1057#1090#1086#1083#1073#1094#1086#1084
-      'pvMapAddPrevRName='#1057#1091#1084#1084#1072' '#1089' '#1087#1088#1077#1076#1099#1076#1091#1097#1077#1081' '#1057#1090#1088#1086#1082#1086#1081
-      'pvMapRunningTotalName1='#1053#1072#1088#1072#1089#1090#1072#1102#1097#1077#1081' '#1048#1090#1086#1075' '#1087#1086' '#1057#1090#1086#1083#1073#1094#1091
-      'pvMapRunningTotalName2='#1053#1072#1088#1072#1089#1090#1072#1102#1097#1077#1081' '#1048#1090#1086#1075' '#1087#1086' '#1057#1090#1088#1086#1082#1077
-      'pvBtnHintAccept='#1055#1086#1076#1090#1074#1077#1088#1076#1080#1090#1100
-      'pvBtnHintCancel='#1054#1090#1084#1077#1085#1080#1090#1100
-      'pvBtnHintExpandTree='#1056#1072#1079#1074#1077#1088#1085#1091#1090#1100'/'#1057#1074#1077#1088#1085#1091#1090#1100' '#1074#1077#1090#1082#1080
-      'pvBtnHintCalcMeasureDialog='#1042#1082#1083'. '#1076#1080#1072#1083#1086#1075' '#1056#1072#1089#1095#1080#1090#1099#1074#1072#1077#1084#1086#1075#1086' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintMeasureFillEnable='#1042#1099#1076#1077#1083#1080#1090#1100' '#1074#1089#1077
-      'pvBtnHintMeasureFillDisable='#1054#1090#1084#1077#1090#1080#1090#1100' '#1074#1089#1077
-      'pvBtnHintMeasureRevert='#1055#1077#1088#1077#1082#1083#1102#1095#1080#1090#1100' '#1089#1086#1089#1090#1086#1103#1085#1080#1077' '#1077#1076'.'#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimFillActive='#1042#1080#1076#1080#1084#1099' '#1074#1089#1077' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintDimFillHided='#1053#1077' '#1074#1080#1076#1080#1084#1099' '#1074#1089#1077' '#1079#1085#1072#1095#1077#1085#1080#1103
-      'pvBtnHintDimFillFiltered='#1060#1080#1083#1100#1090#1088#1086#1074#1072#1090#1100' '#1074#1089#1077' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimRevert='#1062#1080#1082#1083#1080#1095#1085#1099#1081' '#1089#1076#1074#1080#1075' '#1089#1086#1089#1090#1086#1103#1085#1080#1103' '#1080#1079#1084#1077#1088#1077#1085#1080#1103
-      'pvBtnHintDimAddGroup='#1044#1086#1073#1072#1074#1080#1090#1100' '#1080#1077#1088#1072#1088#1093#1080#1095#1077#1089#1082#1091#1102' '#1075#1088#1091#1087#1087#1091
-      'pvBtnHintDimDelGroup='#1059#1076#1072#1083#1080#1090#1100' '#1080#1077#1088#1072#1088#1093#1080#1095#1077#1089#1082#1091#1102' '#1075#1088#1091#1087#1087#1091
-      'mbFormCaption='#1055#1086#1089#1090#1088#1086#1080#1090#1077#1083#1100' '#1079#1072#1087#1088#1086#1089#1072
-      'mbRowsCaption='#1057#1090#1088#1086#1082#1080
-      'mbColumnsCaption='#1057#1090#1086#1083#1073#1094#1099
-      'mbDimsCaption='#1048#1079#1084#1077#1088#1077#1085#1080#1103
-      'mbDisabledDimsCaption='#1053#1077#1072#1082#1090#1080#1074#1085#1099#1077' '#1048#1079#1084#1077#1088#1077#1085#1080#1103
-      
-        'mbRunEditBtnHint='#1054#1090#1082#1088#1099#1090#1100' '#1088#1077#1076#1072#1082#1090#1086#1088' '#1080#1079#1084#1077#1088#1077#1085#1080#1081' '#1076#1083#1103' '#1074#1099#1073#1088#1072#1085#1085#1099#1093' '#1080#1079#1084#1077#1088#1077 +
-        #1085#1080#1081
-      
-        'mbTreeViewHint=Drag'#39'n'#39'Drop dimension lable to choosen group. Dbl' +
-        '-click to run dimension editor'
-      'DimensionFormCaption='#1056#1077#1076#1072#1082#1090#1086#1088' '#1048#1079#1084#1077#1088#1077#1085#1080#1081' :'
-      'dimDisplayName='#1047#1072#1075#1086#1083#1086#1074#1086#1082
-      'dimCount='#1050#1086#1083'-'#1074#1086' '#1086#1073#1098#1077#1082#1090#1086#1074
-      'dimSOrtBtn='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072
-      'dimSortBtnHint='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072
-      'dimActiveItems='#1040#1082#1090#1080#1074#1085#1099#1077' '#1086#1073#1098#1077#1082#1090#1099
-      'dimInActiveItems='#1061#1088#1072#1085#1080#1083#1080#1097#1077'('#1085#1077' '#1072#1082#1090#1080#1074#1085#1099#1077' '#1086#1073#1098#1077#1082#1090#1099')'
-      'dimFilterError='#1050#1072#1082' '#1084#1080#1085#1080#1084#1091#1084' '#1086#1076#1085#1086' '#1080#1079#1084#1077#1088#1077#1085#1080#1077' '#1076#1086#1083#1078#1085#1086' '#1073#1099#1090#1100' '#1072#1082#1090#1080#1074#1085#1099#1084'!'
-      'dimSearch='#1053#1072#1081#1090#1080
-      
-        'dimTVHint=Drag'#39'n'#39'drop selected item(s) to group or repository ar' +
-        'ea'
-      'dimSortByName='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072' '#1087#1086' '#1080#1084#1077#1085#1080
-      'dimSortByKey='#1057#1086#1088#1090#1080#1088#1086#1074#1082#1072' '#1087#1086' '#1082#1083#1102#1095#1091
-      'dimNoSort='#1041#1077#1079' '#1089#1086#1088#1090#1080#1088#1086#1074#1082#1080
-      'dimSortAscending='#1055#1086' '#1074#1086#1079#1088#1072#1089#1090#1072#1102#1097#1077#1081
-      'dimSortDescending='#1055#1086' '#1091#1073#1099#1074#1072#1102#1097#1077#1081
-      'dimForecastingCB1=Enable prev. forecast value'
-      'dimForecastingCB2=Enable next. forecast value'
-      'dimForecastingType=Forecasting method'
-      'dimForecastingMethod1=Simple moving average'
-      'dimForecastingMethod2=Weighted Moving Average'
-      'dimForecastingMethod3=Double Exponential Smoothing'
-      'dimForecastingMethod4=Triple Exponential Smoothing'
-      'dimForecastingMethod5=Show Data Margins Only'
-      'dimForecastingMethod6=Show First and Last members'
-      'MeasureCommonFormCaption='#1055#1086#1089#1090#1088#1086#1080#1090#1077#1083#1100' '#1079#1085#1072#1095#1077#1085#1080#1081
-      'MFormatBtnName=Build format'
-      'MFormatFormCaption=Build format string'
-      'pvMapMVFmt0=Change measure type'
-      'pvMapMVFmt1=Cell'
-      'pvMapMVFmt2=Percent by Column'
-      'pvMapMVFmt3=Percent by Row'
-      'pvMapMVFmt4=Record count'
-      'pvMapMVFmt5=Rank by Column'
-      'pvMapMVFmt6=Rank by Row'
-      'pvMapMVFmt7=Previous member by Row'
-      'pvMapMVFmt8=Next member by Row'
-      'pvMapMVFmt9=Previous member by Column'
-      'pvMapMVFmt10=Next member by Column'
-      'pvMapMVFmt11=Running Total by Column'
-      'pvMapMVFmt12=Running Total by Row'
-      'pmMapMVOp1=Value'
-      'pmMapMVOp2=Subtract'
-      'pmMapMVOp3=Add'
-      'pmMapMVOp4=Divide'
-      'pmMapMVOp5=Multiply'
-      'pvMeasureCommon5=Min. value'
-      'pvMeasureCommon6=Max. value'
-      'pvMeasureCommon9=Value'
-      'pvMeasureCommon10=Operation'
-      'pvMeasureCommon11=Only one measure visible'
-      'pvMeasureCommon12=Value representation'
-      'pvMeasureCommon13=Filters'
-      'pvMeasureCommon14=Filter by Map cells'
-      'pvMeasureCommon15=Filter by fact table records'
-      'pvMeasureCommon16=Measure formating'
-      'pvMeasureCommon17=Formula (is calculated measure)'
-      'pvMeasureCommon18=Enabled'
-      'pvMeasureCommon19=Running Total by Column'
-      'pvMeasureCommon20=Running Total by Row'
-      'pvMeasureCommon21=Display caption'
-      'MeasureFilterError= Measure filter error'
-      'mfeWrongValue=Wrong value in  measure filter:'
-      'MeasureCommonFormDistinctName=Distinct'
-      'pvgSearchFormCaption=Search'
-      'pvgSearchArea=Search area'
-      'pvgSearchRow=Row header'
-      'pvgSearchCol=Column header'
-      'pvgSearchText=Text for search'
-      'pvgSearch1=Next'
-      'pvgSearch2=Forward'
-      'pvgSearch3=Case sensitive'
-      'pvgSearchBtn=Find again'
-      'pvgSearchFinish=Cannot find more'
-      'uHtmBuildHeaders=building headers...'
-      'uHtmPreparing=prepearing...'
-      'uHtmColTotal='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1054#1051#1041#1062#1040#1052
-      'uHtmRowTotal='#1048#1090#1086#1075#1086' '#1087#1086' '#1057#1058#1056#1054#1050#1040#1052
-      'uHtmExportColHeader=exporting column headers...'
-      
-        'uHtmExportCells=exporting row headers, cell values and row total' +
-        's...'
-      'uHtmExportColTotal=exporting column totals...'
-      'uHtmSave=saving and executing...'
-      'uHtmLabel=Action...'
-      'ChartDDRows='#1057#1090#1088#1086#1082#1080
-      'ChartDDColumns='#1057#1090#1086#1083#1073#1094#1099
-      'ddChartViews=Views'
-      'ddChartLegend='#1051#1077#1075#1077#1085#1076#1072
-      'ddChartMarks=Marks'
-      'ChartXNextPage=Next page'
-      'ChartXPrevPage=Prev. page'
-      'CubeButtonCaption=Cube'
-      'ChartButtonCaption=Chart'
-      'pvGridSubTotal=Subtotal'
-      'pvGridSubTotalwName=Sub-total by '
-      'MFormatCount=3'
-      'MFormatName0=Generic'
-      'MFormatValue0=#0.00'
-      'MFormatName1=Price (US)'
-      'MFormatValue1=$ #0.00'
-      'MFormatName2=Summa'
-      'MFormatValue2=# ##0.00'
-      'MFormatCap1=Predefined formats'
-      'MFormatCap2=Format string'
-      'MFormatCap3=Number of decimals'
-      'MFormatCap4=Before'
-      'MFormatCap5=After'
-      'MFormatCap6=Design'
-      'MFormatCap7=Symbol'
-      'MFormatCap8=Example'
-      'MFormatCap9=Thousand separator'
-      'uXLSActionLabel=Action'
-      'uXLSAction1=Prepearing basic fonts'
-      'uXLSAction2=Prepearing basic formats'
-      'uXLSAction3=Applying row totals headers merging'
-      'uXLSAction4=Applying cells format'
-      'uXLSAction5=Applying columns headers merging'
-      'uXLSAction6=Applying rows headers merging'
-      'uXLSAction7=Applying column totals headers merging'
-      'uXLSAction8=Applying auto width for columns'
-      'uXLActionLabel=Action'
-      'uXLAction1=Prepearing cells array'
-      'uXLAction2=Prepearing column headers'
-      'uXLAction3=Processing'
-      'uXLAction4=Merging column headers'
-      'uXLAction5=Merging row headers'
-      'uXLAction6=Merging row total headers'
-      'uXLAction7=Applying cells format'
-      'pvGridPrint1='#1055#1077#1095#1072#1090#1100' '#1074#1089#1077#1075#1086
-      'pvGridPrint2='#1055#1077#1095#1072#1090#1100' '#1074#1099#1073#1088#1072#1085#1085'.'
-      'pvGridPrint3='#1055#1088#1072#1074#1099#1081' '#1082#1083#1080#1082' - '#1084#1072#1089#1096#1090#1072#1073'.'
-      'uXLSActionLabel2=Action progress'
-      'uXLSActionLabel2=Full progress'
-      'uHtmLabel2=Action progress'
-      'uHtmLabel3=Full progress'
-      'pvGridEditor1=Table'
-      'pvGridEditor2=Chart'
-      'pvGridEditor3=Method'
-      'pvGridEditor4=Summa'
-      'pvGridEditor5=Count'
-      'pvGridEditor6=Average'
-      'pvGridEditor7=Equal'
-      'pvGridEditor8=Proportional'
-      'pvGridPrint4=Print preview'
-      'pvGridPrint5='#1052#1072#1089#1096'.'#1089#1090#1088#1072#1085#1080#1094
-      'pvGridPrint6='#1052#1072#1089#1096'.'#1087#1077#1095#1072#1090#1100
-      'pvGridPrint7='#1055#1086' '#1089#1090#1088#1072#1085#1080#1094#1077
-      'pvGridPrint8='#1055#1086' '#1096#1080#1088#1080#1085#1077
-      'pvGridPrint9='#1055#1086' '#1074#1099#1089#1086#1090#1077
-      'pvGridPrint10=50%'
-      'pvGridPrint11=100%'
-      'pvGridPrint12=200%'
-      'pvGridPrint13=400%'
-      'pvGridPrintLocked=Process locked! Please wait....')
-    Measures = <
-      item
-        AliasName = 'DOLG'
-        FieldName = 'DOLG'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1044#1086#1083#1075
-      end
-      item
-        AliasName = 'PENYA'
-        FieldName = 'PENYA'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1055#1077#1085#1103
-      end
-      item
-        AliasName = 'NACHISL'
-        FieldName = 'NACHISL'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1053#1072#1095#1080#1089#1083#1077#1085#1080#1077
-      end
-      item
-        AliasName = 'PAYMENT'
-        FieldName = 'PAYMENT'
-        CalcType = ctSumma
-        DataType = ftFloat
-        FormatString = '########0.00##'
-        DisplayName = #1054#1087#1083#1072#1090#1072
-      end
-      item
-        AliasName = 'DEB_MONTH'
-        FieldName = 'DEB_MONTH'
-        CalcType = ctSumma
-        DataType = ftUnknown
-        FormatString = '########0.00##'
-        DisplayName = #1044#1086#1083#1075'-'#1087#1077#1088#1080#1086#1076
-      end>
-    CubeName = 'test'
-    OptimizeLevel = optNormal
-    ExtendedMode = True
-    AlwaysSaveCounts = False
-    ExcludeZeros = True
-    ClearTimeInfo = True
-    Left = 32
-    Top = 488
-  end
-  object PivotMap98: TPivotMap
-    Cube = PivotCube98
-    Columns = <
-      item
-        Name = 'MG'
-      end>
-    Rows = <
-      item
-        Name = 'PREDPR'
-      end
-      item
-        Name = 'REU'
-      end
-      item
-        Name = 'ORG_NAME'
-      end>
-    HideEmptyRows = True
-    HideEmptyColumns = True
-    TableMode = True
-    DDirection = True
-    AutoSaveMap = False
-    AutoExpand = True
-    Left = 64
-    Top = 488
   end
 end

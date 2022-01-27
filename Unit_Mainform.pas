@@ -591,8 +591,8 @@ end;
 procedure TForm_Main.N17Click(Sender: TObject);
 begin
   StartTreeObj;
-  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);
+{  if FF('frmOLAP', 0) = 0 then
+    Application.CreateForm(TfrmOLAP, frmOLAP);}
   Form_tree_objects.setAccess('14', 0, 1);
 end;
 
@@ -763,8 +763,8 @@ procedure TForm_Main.N31Click(Sender: TObject);
 begin
 
   StartTreeObj;
-  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);
+{  if FF('Form_olap', 0) = 0 then
+    Application.CreateForm(TForm_olap, Form_olap);}
   Form_tree_objects.setAccess('61', 1, 1);
 
   //  Application.CreateForm(TForm_print_opl_xito11, Form_print_opl_xito11);
@@ -1346,7 +1346,7 @@ begin
 end;
 
 procedure TForm_Main.FormPaint(Sender: TObject);
-type
+{type
   TRGB = record
     b, g, r: byte;
   end;
@@ -1357,9 +1357,10 @@ type
 var
   b: TBitMap;
   p: PARGB;
-  x, y: integer;
+  x, y: integer;}
 begin
-  b := TBitMap.Create;
+{ Вот на это ругалось Range checking при запуске 26.01.22
+b := TBitMap.Create;
   b.pixelformat := pf24bit;
   b.width := Clientwidth;
   b.height := Clientheight;
@@ -1378,6 +1379,7 @@ begin
 
   Panel1.Left := Round(Form_Main.width) - Round(Panel1.width) - 5;
   Panel1.Top := 45;
+  }
 end;
 
 procedure TForm_Main.N78Click(Sender: TObject);

@@ -1,6 +1,6 @@
 object Form_Main: TForm_Main
-  Left = 946
-  Top = 684
+  Left = 914
+  Top = 720
   Caption = #1044#1080#1088#1077#1082#1090
   ClientHeight = 569
   ClientWidth = 864
@@ -84,7 +84,7 @@ object Form_Main: TForm_Main
     000000000000000000000000000000000000000000000000000080000001}
   Menu = MainMenu1
   OldCreateOrder = False
-  Position = poDesktopCenter
+  Position = poDesigned
   Visible = True
   OnClose = FormClose
   OnCreate = FormCreate

@@ -259,7 +259,8 @@ object DataModule1: TDataModule1
       'Oracle.Charset=CL8MSWIN1251')
     Options.KeepDesignConnected = False
     Username = 'scott'
-    Server = '127.0.0.2'
+    Server = '127.0.0.1'
+    Connected = True
     Left = 32
     Top = 416
     EncryptedPassword = '92FF90FF91FF9AFF92FF86FF8DFF90FF'

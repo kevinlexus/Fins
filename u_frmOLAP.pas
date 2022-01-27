@@ -9,28 +9,25 @@ uses
   cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxClasses, cxCustomData,
   cxStyles, cxEdit, dxSkinsCore, dxSkinsDefaultPainters, Data.DB, MemDS,
   DBAccess, Uni, cxCustomPivotGrid, cxPivotGrid, DM_module1, cxDBPivotGrid,
-  cxExportPivotGridLink, Vcl.ExtCtrls, Vcl.StdCtrls, fcxDataSource;
+  cxExportPivotGridLink, Vcl.ExtCtrls, Vcl.StdCtrls, fcxDataSource, ufDataModuleOlap,
+  fcxSliceGrid, fcxSlice, fcxCustomExport, fcxCustomSliceGridExport,
+  fcxExportXLSX, Vcl.ToolWin, Vcl.ComCtrls, fcxCustomToolbar,
+  fcxSliceGridToolbar;
 
 type
   TfrmOLAP = class(TForm)
-    UniQuery1: TUniQuery;
     cxDBPivotGrid1: TcxDBPivotGrid;
     DataSource1: TDataSource;
-    cxDBPivotGrid1Field1: TcxDBPivotGridField;
-    cxDBPivotGrid1Field2: TcxDBPivotGridField;
-    cxDBPivotGrid1Field3: TcxDBPivotGridField;
-    cxDBPivotGrid1Field4: TcxDBPivotGridField;
-    cxDBPivotGrid1Field5: TcxDBPivotGridField;
-    cxDBPivotGrid1Field6: TcxDBPivotGridField;
-    Panel1: TPanel;
-    Button1: TButton;
-    Button2: TButton;
-    Button3: TButton;
-    procedure FormCreate(Sender: TObject);
+    fcxCube1: TfcxCube;
+    fcxDataSource1: TfcxDataSource;
+    fcxDBDataSet1: TfcxDBDataSet;
+    fcxSliceGrid1: TfcxSliceGrid;
+    fcxSlice1: TfcxSlice;
+    fcxXLSXExport1: TfcxXLSXExport;
+    fcSliceGridToolbar1: TfcxSliceGridToolbar;
     procedure ExportGrid(aGrid: TcxCustomPivotGrid);
     procedure Button1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure Button2Click(Sender: TObject);
   private { Private declarations }
   public { Public declarations }
   end;
@@ -48,25 +45,9 @@ begin
   Action := caFree;
 end;
 
-procedure TfrmOLAP.FormCreate(Sender: TObject);
-begin
-  UniQuery1.Active := false;
-  UniQuery1.Active := true;
-end;
-
 procedure TfrmOLAP.Button1Click(Sender: TObject);
 begin
-  ExportGrid(cxDBPivotGrid1);
-end;
-
-procedure TfrmOLAP.Button2Click(Sender: TObject);
-var
-  p: Pointer;
-  list: TStringList;
-begin
-  GetMem(p, 100);
-  list := TStringList.Create;
-
+//  ExportGrid(cxDBPivotGrid1);
 end;
 
 procedure TfrmOLAP.ExportGrid(aGrid: TcxCustomPivotGrid);

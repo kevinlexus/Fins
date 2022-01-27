@@ -2,8 +2,8 @@ object frmOLAP: TfrmOLAP
   Left = 0
   Top = 0
   Caption = 'OLAP'
-  ClientHeight = 1059
-  ClientWidth = 1455
+  ClientHeight = 918
+  ClientWidth = 1417
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,106 +13,225 @@ object frmOLAP: TfrmOLAP
   FormStyle = fsMDIChild
   OldCreateOrder = False
   Visible = True
+  WindowState = wsMaximized
   OnClose = FormClose
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object cxDBPivotGrid1: TcxDBPivotGrid
-    Left = 0
-    Top = 41
-    Width = 1455
-    Height = 1018
-    Align = alClient
+    Left = 8
+    Top = 728
+    Width = 209
+    Height = 166
+    Align = alCustom
     DataSource = DataSource1
     Groups = <>
     TabOrder = 0
-    object cxDBPivotGrid1Field1: TcxDBPivotGridField
-      Area = faData
-      AreaIndex = 1
-      DataBinding.FieldName = 'PAYMENT'
-      Visible = True
-      UniqueName = 'PAYMENT'
-    end
-    object cxDBPivotGrid1Field2: TcxDBPivotGridField
-      Area = faRow
-      AreaIndex = 0
-      DataBinding.FieldName = 'NAME'
-      Visible = True
-      UniqueName = 'NAME'
-    end
-    object cxDBPivotGrid1Field3: TcxDBPivotGridField
-      Area = faColumn
-      AreaIndex = 0
-      DataBinding.FieldName = 'NM'
-      Visible = True
-      UniqueName = 'NM'
-    end
-    object cxDBPivotGrid1Field4: TcxDBPivotGridField
-      Area = faData
-      AreaIndex = 0
-      DataBinding.FieldName = 'CHARGES'
-      Visible = True
-      UniqueName = 'CHARGES'
-    end
-    object cxDBPivotGrid1Field5: TcxDBPivotGridField
-      AreaIndex = 0
-      DataBinding.FieldName = 'MG'
-      Visible = True
-      UniqueName = 'MG'
-    end
-    object cxDBPivotGrid1Field6: TcxDBPivotGridField
-      AreaIndex = 1
-      DataBinding.FieldName = 'LSK'
-      Visible = True
-      UniqueName = 'LSK'
-    end
   end
-  object Panel1: TPanel
+  object fcxSliceGrid1: TfcxSliceGrid
+    Left = 0
+    Top = 22
+    Width = 1417
+    Height = 896
+    Version = '2.10.4'
+    Align = alClient
+    Slice = fcxSlice1
+    Styles.CaptionArea.TextColor = clBlack
+    Styles.CaptionArea.FillColor = 15466495
+    Styles.CaptionArea.GradientColor = clWhite
+    Styles.CaptionArea.Font.Charset = DEFAULT_CHARSET
+    Styles.CaptionArea.Font.Color = clWindowText
+    Styles.CaptionArea.Font.Height = -11
+    Styles.CaptionArea.Font.Name = 'Tahoma'
+    Styles.CaptionArea.Font.Style = []
+    Styles.CaptionArea.GradientDirection = tgdHorizontal
+    Styles.HeaderArea.TextColor = clBlack
+    Styles.HeaderArea.FillColor = clBtnFace
+    Styles.HeaderArea.Font.Charset = DEFAULT_CHARSET
+    Styles.HeaderArea.Font.Color = clWindowText
+    Styles.HeaderArea.Font.Height = -11
+    Styles.HeaderArea.Font.Name = 'Tahoma'
+    Styles.HeaderArea.Font.Style = []
+    Styles.HeaderCells.TextColor = clBlack
+    Styles.HeaderCells.FillColor = clBtnFace
+    Styles.HeaderCells.Font.Charset = DEFAULT_CHARSET
+    Styles.HeaderCells.Font.Color = clWindowText
+    Styles.HeaderCells.Font.Height = -11
+    Styles.HeaderCells.Font.Name = 'Tahoma'
+    Styles.HeaderCells.Font.Style = []
+    Styles.HeaderCellsSelected.TextColor = clBtnText
+    Styles.HeaderCellsSelected.FillColor = clBtnShadow
+    Styles.HeaderCellsSelected.Font.Charset = DEFAULT_CHARSET
+    Styles.HeaderCellsSelected.Font.Color = clWindowText
+    Styles.HeaderCellsSelected.Font.Height = -11
+    Styles.HeaderCellsSelected.Font.Name = 'Tahoma'
+    Styles.HeaderCellsSelected.Font.Style = []
+    Styles.DataArea.TextColor = clGray
+    Styles.DataArea.FillColor = clWhite
+    Styles.DataArea.Font.Charset = DEFAULT_CHARSET
+    Styles.DataArea.Font.Color = clWindowText
+    Styles.DataArea.Font.Height = -11
+    Styles.DataArea.Font.Name = 'Tahoma'
+    Styles.DataArea.Font.Style = []
+    Styles.DataCells.TextColor = clBlack
+    Styles.DataCells.FillColor = clWhite
+    Styles.DataCells.Font.Charset = DEFAULT_CHARSET
+    Styles.DataCells.Font.Color = clWindowText
+    Styles.DataCells.Font.Height = -11
+    Styles.DataCells.Font.Name = 'Tahoma'
+    Styles.DataCells.Font.Style = []
+    Styles.DataCellsSelected.TextColor = clHighlightText
+    Styles.DataCellsSelected.FillColor = clHighlight
+    Styles.DataCellsSelected.Font.Charset = DEFAULT_CHARSET
+    Styles.DataCellsSelected.Font.Color = clWindowText
+    Styles.DataCellsSelected.Font.Height = -11
+    Styles.DataCellsSelected.Font.Name = 'Tahoma'
+    Styles.DataCellsSelected.Font.Style = []
+    Styles.StatusArea.TextColor = clBlack
+    Styles.StatusArea.FillColor = clBtnFace
+    Styles.StatusArea.Font.Charset = DEFAULT_CHARSET
+    Styles.StatusArea.Font.Color = clWindowText
+    Styles.StatusArea.Font.Height = -11
+    Styles.StatusArea.Font.Name = 'Tahoma'
+    Styles.StatusArea.Font.Style = []
+    Styles.ActiveDimension.TextColor = clCaptionText
+    Styles.ActiveDimension.FillColor = clActiveCaption
+    Styles.ActiveDimension.GradientColor = clGradientActiveCaption
+    Styles.ActiveDimension.Font.Charset = DEFAULT_CHARSET
+    Styles.ActiveDimension.Font.Color = clWindowText
+    Styles.ActiveDimension.Font.Height = -11
+    Styles.ActiveDimension.Font.Name = 'Tahoma'
+    Styles.ActiveDimension.Font.Style = []
+    Styles.ActiveDimension.GradientDirection = tgdHorizontal
+    Styles.InactiveDimension.TextColor = clInactiveCaptionText
+    Styles.InactiveDimension.FillColor = clInactiveCaption
+    Styles.InactiveDimension.GradientColor = clGradientInactiveCaption
+    Styles.InactiveDimension.Font.Charset = DEFAULT_CHARSET
+    Styles.InactiveDimension.Font.Color = clWindowText
+    Styles.InactiveDimension.Font.Height = -11
+    Styles.InactiveDimension.Font.Name = 'Tahoma'
+    Styles.InactiveDimension.Font.Style = []
+    Styles.InactiveDimension.GradientDirection = tgdHorizontal
+    Styles.Measure.TextColor = clCaptionText
+    Styles.Measure.FillColor = clGreen
+    Styles.Measure.GradientColor = clMoneyGreen
+    Styles.Measure.Font.Charset = DEFAULT_CHARSET
+    Styles.Measure.Font.Color = clWindowText
+    Styles.Measure.Font.Height = -11
+    Styles.Measure.Font.Name = 'Tahoma'
+    Styles.Measure.Font.Style = []
+    Styles.Measure.GradientDirection = tgdHorizontal
+    Styles.DataCellsTotals.TextColor = clBlack
+    Styles.DataCellsTotals.FillColor = 15466495
+    Styles.DataCellsTotals.GradientColor = clWhite
+    Styles.DataCellsTotals.Font.Charset = DEFAULT_CHARSET
+    Styles.DataCellsTotals.Font.Color = clWindowText
+    Styles.DataCellsTotals.Font.Height = -11
+    Styles.DataCellsTotals.Font.Name = 'Tahoma'
+    Styles.DataCellsTotals.Font.Style = []
+    Styles.FieldsItem.TextColor = clCaptionText
+    Styles.FieldsItem.FillColor = clMoneyGreen
+    Styles.FieldsItem.Font.Charset = DEFAULT_CHARSET
+    Styles.FieldsItem.Font.Color = clWindowText
+    Styles.FieldsItem.Font.Height = -11
+    Styles.FieldsItem.Font.Name = 'Tahoma'
+    Styles.FieldsItem.Font.Style = []
+    TabOrder = 1
+    XDimsZone.Visible = True
+    YDimsZone.Visible = True
+    PageDimsZone.Visible = True
+    StatusZone.FloatFormat.DecSeparator = ','
+    StatusZone.FloatFormat.FormatStr = '#0.##'
+    StatusZone.FloatFormat.Kind = fkNumeric
+    StatusZone.IntegerFormat.DecSeparator = ','
+    StatusZone.IntegerFormat.FormatStr = '#0.##'
+    StatusZone.IntegerFormat.Kind = fkNumeric
+    FieldsZone.Visible = True
+    ExplicitTop = 41
+    ExplicitHeight = 877
+  end
+  object fcSliceGridToolbar1: TfcxSliceGridToolbar
     Left = 0
     Top = 0
-    Width = 1455
-    Height = 41
-    Align = alTop
-    TabOrder = 1
-    object Button1: TButton
-      Left = 1280
-      Top = 8
-      Width = 75
-      Height = 25
-      Caption = 'Excel'
-      TabOrder = 0
-      OnClick = Button1Click
-    end
-    object Button2: TButton
-      Left = 1136
-      Top = 8
-      Width = 75
-      Height = 25
-      Caption = 'Leak'
-      TabOrder = 1
-      OnClick = Button2Click
-    end
-    object Button3: TButton
-      Left = 1040
-      Top = 8
-      Width = 75
-      Height = 25
-      Caption = 'Cube'
-      TabOrder = 2
-    end
-  end
-  object UniQuery1: TUniQuery
-    Connection = DataModule1.UniConnection1
-    SQL.Strings = (
-      
-        'select u.nm, o.name, t.* from scott.xitog3_lsk t join scott.t_or' +
-        'g o on t.org=o.id join scott.usl u on t.usl=u.usl')
-    Left = 8
-    Top = 56
+    Width = 1417
+    Height = 22
+    AutoSize = True
+    Caption = 'fcSliceGridToolbar1'
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 2
+    Version = '2.10.4'
+    SliceGrid = fcxSliceGrid1
+    ExplicitLeft = 8
+    ExplicitTop = 8
+    ExplicitWidth = 855
   end
   object DataSource1: TDataSource
-    DataSet = UniQuery1
-    Left = 56
-    Top = 56
+    Left = 152
+    Top = 136
+  end
+  object fcxCube1: TfcxCube
+    Version = '2.10.4'
+    DataSource = fcxDataSource1
+    CubeSource = fccs_DataSource
+    Formats.BooleanFormat.DecSeparator = ','
+    Formats.BooleanFormat.FormatStr = 'False,True'
+    Formats.BooleanFormat.Kind = fkBoolean
+    Formats.DateFormat.DecSeparator = ','
+    Formats.DateFormat.FormatStr = 'dd/MM/yyyy'
+    Formats.DateFormat.Kind = fkDateTime
+    Formats.TimeFormat.DecSeparator = ','
+    Formats.TimeFormat.FormatStr = 'h:mm'
+    Formats.TimeFormat.Kind = fkDateTime
+    Formats.DateTimeFormat.DecSeparator = ','
+    Formats.DateTimeFormat.FormatStr = 'dd/MM/yyyy'
+    Formats.DateTimeFormat.Kind = fkDateTime
+    Formats.FloatFormat.DecSeparator = ','
+    Formats.FloatFormat.FormatStr = '%2.2n'
+    Formats.FloatFormat.Kind = fkNumeric
+    Formats.CurrencyFormat.DecSeparator = ','
+    Formats.CurrencyFormat.FormatStr = '%2.2m'
+    Formats.CurrencyFormat.Kind = fkNumeric
+    Formats.IntegerFormat.DecSeparator = ','
+    Formats.IntegerFormat.FormatStr = '%g'
+    Formats.IntegerFormat.Kind = fkNumeric
+    Formats.TextFormat.DecSeparator = ','
+    Formats.PercentFormat.DecSeparator = ','
+    Formats.PercentFormat.FormatStr = '%2.2n'
+    Formats.PercentFormat.Kind = fkNumeric
+    Formats.DatePathFormat.MonthDisplayFormat = mdf_Long
+    Formats.DatePathFormat.WeekDayDisplayFormat = wddf_Long
+    Formats.DatePathFormat.QuarterDisplayFormat = qdf_System
+    Formats.DatePathFormat.WeekNumberDisplayFormat = wndf_System
+    Left = 272
+    Top = 136
+  end
+  object fcxDataSource1: TfcxDataSource
+    Version = '2.10.4'
+    DataSet = fcxDBDataSet1
+    Fields = <>
+    Left = 232
+    Top = 136
+  end
+  object fcxDBDataSet1: TfcxDBDataSet
+    Version = '2.10.4'
+    DataSet = DM_Olap.Uni_Data
+    Left = 192
+    Top = 136
+  end
+  object fcxSlice1: TfcxSlice
+    Version = '2.10.4'
+    Cube = fcxCube1
+    FieldsOrder = fcfloByFieldDisplayLabel
+    Left = 312
+    Top = 136
+  end
+  object fcxXLSXExport1: TfcxXLSXExport
+    Version = '2.10.4'
+    FileName = 'checkExcelExport'
+    DefaultPath = 'c:\temp\'
+    ExportPageBreaks = False
+    Creator = 'FastReport'
+    Left = 352
+    Top = 136
   end
 end
