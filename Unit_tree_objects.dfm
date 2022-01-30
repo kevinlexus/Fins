@@ -87,6 +87,7 @@ object Form_tree_objects: TForm_tree_objects
     000000000000000000000000000000000000000000000000000080000001}
   OldCreateOrder = False
   Position = poMainFormCenter
+  Visible = True
   OnClose = FormClose
   OnCreate = FormCreate
   OnEndDock = FormEndDock
@@ -456,15 +457,6 @@ object Form_tree_objects: TForm_tree_objects
       Caption = #1042#1099#1073#1088#1072#1090#1100'>>'
       TabOrder = 0
       OnClick = Button3Click
-    end
-    object Button2: TButton
-      Left = 137
-      Top = 0
-      Width = 152
-      Height = 22
-      Caption = #1044#1086#1073#1072#1074#1080#1090#1100' +>>'
-      TabOrder = 1
-      OnClick = Button2Click
     end
   end
   object pnl1: TPanel

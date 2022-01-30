@@ -40,7 +40,7 @@ type
 type
   TUListRecArray = array of TUListRec;
 
-function FF(form_str_: string; show_: Integer): Integer; //FindForm
+function FF(formName: string; show: Integer): Integer; //FindForm
 procedure msg2(str1: string; str2: string; Flags_: Longint);
 function msg3(str1: string; str2: string; Flags_: Longint): Longint;
 procedure msg4(str1: string; str2: string; Flags_: Longint);
@@ -798,14 +798,14 @@ begin
   end;
 end;
 
-function FF(form_str_: string; show_: Integer): Integer; //FindForm
+function FF(formName: string; show: Integer): Integer; //FindForm
 var
   formexist_, a: Integer;
 begin
   formexist_ := 0;
   for a := 0 to Screen.FormCount - 1 do
   begin
-    if Screen.Forms[a].Name = form_str_ then
+    if Screen.Forms[a].Name = formName then
     begin
       formexist_ := 1;
       break;
@@ -816,10 +816,9 @@ begin
     Result := 0
   else
   begin
-    if show_ = 1 then
+    if show = 1 then
     begin
       Screen.Forms[a].Show;
-      //        Screen.Forms[a].WindowState:=wsNormal;
     end;
     Result := 1;
   end;

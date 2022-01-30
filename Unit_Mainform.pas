@@ -381,6 +381,7 @@ type
     procedure N214Click(Sender: TObject);
     procedure ToolButton6Click(Sender: TObject);
     procedure OLAP2Click(Sender: TObject);
+    procedure CloseTreeObj;
   private
   public
     // выбранный период при переключении в архив
@@ -591,8 +592,6 @@ end;
 procedure TForm_Main.N17Click(Sender: TObject);
 begin
   StartTreeObj;
-{  if FF('frmOLAP', 0) = 0 then
-    Application.CreateForm(TfrmOLAP, frmOLAP);}
   Form_tree_objects.setAccess('14', 0, 1);
 end;
 
@@ -763,11 +762,7 @@ procedure TForm_Main.N31Click(Sender: TObject);
 begin
 
   StartTreeObj;
-{  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);}
   Form_tree_objects.setAccess('61', 1, 1);
-
-  //  Application.CreateForm(TForm_print_opl_xito11, Form_print_opl_xito11);
 end;
 
 procedure TForm_Main.N212Click(Sender: TObject);
@@ -2309,6 +2304,15 @@ begin
     Form_tree_objects.ManualDock(Form_main.Panel2, nil, alNone);
     Form_tree_objects.Visible := true;
   end;
+end;
+
+procedure TForm_Main.CloseTreeObj;
+begin
+  if FF('Form_tree_objects', 0) = 1 then
+  begin
+    Form_tree_objects.close;
+  end;
+  Panel2.Width := 0;
 end;
 
 procedure TForm_Main.N132Click(Sender: TObject);

@@ -18,7 +18,6 @@ type
   TForm_tree_objects = class(TForm)
     Panel1: TPanel;
     ToolBar1: TToolBar;
-    Button2: TButton;
     Button3: TButton;
     Panel2: TPanel;
     Panel3: TPanel;
@@ -76,7 +75,6 @@ type
     procedure setAccess(rep_: string; have_current_: Integer; two_periods_: Integer);
     procedure N1Click(Sender: TObject);
     procedure prepData;
-    procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure SetSize(var_: Integer);
     procedure LoadSpr;
@@ -116,7 +114,7 @@ type
     function checkPeriod(det: Integer): Boolean;
   public
     flag_: Integer;
-    l_rep_name, l_frm_name, rep_cd_, period_str_, period_str2_, strr_, fname_, frx_fname_: string;
+    l_rep_name, l_frm_name, reportCd, period_str_, period_str2_, strr_, fname_, frx_fname_: string;
     allow_, max_level_, can_detail_, rep_id_, sel_many_, //have_date_,
     rep_type_, two_periods_, show_total_row, show_total_col, first_time_, expand_row_, expand_col_, show_paychk_, show_sel_org_, show_sel_oper_, show_deb_: Integer;
     OD_reports2: TOracleDataset;
@@ -135,7 +133,7 @@ implementation
 
 uses
   Unit_Form_olap, Unit_Mainform, Unit_status, DM_module1, Unit_tree_par_edit,
-  Unit_tarif_usl, ObjPar, ufDataModuleOlap, u_frmOLAP, cxCustomPivotGrid, fcxTypes;
+  Unit_tarif_usl, ObjPar, ufDataModuleOlap, u_frmOLAP, cxCustomPivotGrid;
 
 {$R *.dfm}
 
@@ -147,13 +145,12 @@ begin
   DM_Olap.Uni_data.Active := false;
   //Открываем зависимые датасеты, для отчетов
   //форма для контроля тарифов
-
   //ShowMessage('step 0.1');
-  if (rep_cd_ = '78') and (DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger = 3) then
+  if (reportCd = '78') and (DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger = 3) then
   begin
     DM_Olap.Uni_nabor_lsk.Active := True;
   end
-  else if (rep_cd_ <> '78') or ((rep_cd_ = '78') and (DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger <> 3)) then
+  else if (reportCd <> '78') or ((reportCd = '78') and (DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger <> 3)) then
   begin
     DM_Olap.Uni_nabor_lsk.Active := False;
   end;
@@ -161,7 +158,7 @@ begin
   //ShowMessage('step 0.2');
   //Открываем зависимые датасеты, для отчетов
   //отчет - реестр для УСЗН
-  if (rep_cd_ = '79') then
+  if (reportCd = '79') then
   begin
     DM_OLap.Uni_c_kart_pr.Active := True;
   end;
@@ -175,13 +172,13 @@ begin
 //  end;
   //Открываем зависимые датасеты, для отчетов
   //отчет - список для администрации
-  if (rep_cd_ = '83') then
+  if (reportCd = '83') then
   begin
     DM_OLap.Uni_detail.Active := False;
     DM_OLap.Uni_detail.MasterSource := DM_Olap.Uni_data.DataSource;
     DM_OLap.Uni_detail.Active := True;
   end
-  else if (rep_cd_ <> '83') then
+  else if (reportCd <> '83') then
   begin
     //необходимо явно убирать Master, иначе датасет продолжает ссылаться, с ошибкой...
     //DM_OLap.Uni_detail.MasterSource := nil;
@@ -207,7 +204,7 @@ begin
   end;
 
   //ShowMessage('step 0.4');
-  DM_Olap.Uni_data.Params.ParamByName('cd_').AsString := rep_cd_;
+  DM_Olap.Uni_data.Params.ParamByName('cd_').AsString := reportCd;
 
   if CheckBox5.Checked = true then
   begin
@@ -447,24 +444,6 @@ begin
   end
   else
   begin
-    if (rep_type_ = 0) then
-    begin
-      ShowMessage('Включить позже блок #1');
-    {
-      Form_olap.rep_name_ := l_rep_name;
-      if two_periods_ = 1 then
-      begin
-        Form_olap.Caption := Form_olap.rep_name_ + ' за период с ' + DBLookupComboBox5.Text + ' по ' + DBLookupComboBox6.Text;
-        Form_olap.rep_name_ := Form_olap.rep_name_ + ' за период с ' + DBLookupComboBox5.Text + ' по ' + DBLookupComboBox6.Text;
-      end
-      else
-      begin
-        Form_olap.Caption := Form_olap.rep_name_ + ' за ' + DBLookupComboBox5.Text;
-        Form_olap.rep_name_ := Form_olap.rep_name_ + ' за ' + DBLookupComboBox5.Text;
-      end;
-      }
-    end;
-
     //наименование Объекта в отчёте
     obj_ := '''' + ', по ' + DM_Olap.Uni_tree_objects.FieldByName('name').AsString + '''';
     if DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger = 3 then
@@ -472,23 +451,22 @@ begin
     else if DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger in [0, 1, 2] then
       objexcel_ := ', по Организации ' + DM_Olap.Uni_tree_objects.FieldByName('name').AsString;
 
-    if (rep_type_ = 0) or (rep_type_ = 5) then
-    begin
-      ShowMessage('Включить позже блок #2');
-//      Form_olap.Button3.Visible := true;
-    end;
-
     if (DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger <= max_level_) then
     begin
       if (rep_type_ = 0) then
       begin
-      // OLAP отчет
-        repTypeOlap(action_);
+          //OLAP отчет
+        prepData;
+        if FF('frmOLAP', 1) = 0 then
+        begin
+          Application.CreateForm(TfrmOlap, frmOlap);
+        end;
+        frmOlap.createOlapReport(reportCd);
       end
       else if (rep_type_ = 1) then
       begin
       //Fastreport отчет
-        repTypeFastrep(rep_cd_);
+        repTypeFastrep(reportCd);
       end
       else if (rep_type_ = 2) then
       begin
@@ -515,108 +493,11 @@ begin
 end;
 
 // тип отчета - OLAP
-
 procedure TForm_tree_objects.repTypeOlap(action_: Integer);
 var
   i: Integer;
 begin
-  if FF('frmOLAP', 0) = 1 then
-  begin
-    //OLAP отчет
-     prepData;
-     frmOlap.fcxDataSource1.DeleteFields;
-     frmOlap.fcxCube1.Open;
-     with frmOlap.fcxSlice1 do
-     begin
-     BeginUpdate;
-     // todo сделать настройку столбцов, в зависимости от типа отчета
-     XAxisContainer.AddDimension(SliceFieldByName['name_org'], 'name_org','Организация');
-     YAxisContainer.AddDimension(SliceFieldByName['name_usl'], 'name_usl','Услуга');
-     YAxisContainer.AddDimension(SliceFieldByName['status'], 'status','Статус');
-     YAxisContainer.AddDimension(SliceFieldByName['type'], 'type','Тип');
-     XAxisContainer.AddMeasuresField;
-     MeasuresContainer.AddMeasure(SliceFieldByName['charges'],'charges', 'Начислено', af_Sum);
-     MeasuresContainer.AddMeasure(SliceFieldByName['changes'],'changes', 'Перерасчет', af_Sum);
-     MeasuresContainer.AddMeasure(SliceFieldByName['outebet'],'outebet', 'Исх.деб.сал.', af_Sum);
 
-     EndUpdate;
-     end;
-  end;
-
-{###  if FF('Form_olap', 0) = 1 then
-  begin
-    //OLAP отчет
-    Form_olap.PVDimToolBar1.Visible := true;
-    Form_olap.PVColToolBar1.Visible := true;
-    Form_olap.PVRowToolBar1.Visible := true;
-    Form_olap.PivotGrid1.Visible := true;
-    Form_olap.PVMeasureToolBar1.Visible := true;
-    if show_total_row = 1 then
-      Form_olap.PivotGrid1.Settings.Specific.RowTotals := pvgtAtEnd
-    else
-      Form_olap.PivotGrid1.Settings.Specific.RowTotals := pvgtDisabled;
-
-    if show_total_col = 1 then
-      Form_olap.PivotGrid1.Settings.Specific.ColumnTotals := pvgtAtEnd
-    else
-      Form_olap.PivotGrid1.Settings.Specific.ColumnTotals := pvgtDisabled;
-
-    Cube_ := Form_olap.FindComponent('PivotCube' + rep_cd_);
-    Map_ := Form_olap.FindComponent('PivotMap' + rep_cd_);
-
-    if action_ = 0 then
-    begin
-      //Загрузить данные
-      TPivotCube(Cube_).Active := False;
-    end
-    else
-    begin
-      //Добавить данные
-      TPivotCube(Cube_).CanUpgrade := true;
-    end;
-
-    Form_olap.PivotGrid1.Map := TPivotMap(Map_);
-    Form_olap.PVDimToolBar1.Map := TPivotMap(Map_);
-    Form_olap.PVColToolBar1.Map := TPivotMap(Map_);
-    Form_olap.PVRowToolBar1.Map := TPivotMap(Map_);
-    Form_olap.PVMeasureToolBar1.Map := TPivotMap(Map_);
-
-    //подготовка данных
-    Form_olap.Button4.Visible := true;
-    Form_olap.Update;
-    prepData;
-
-    if DM_Olap.Uni_data.RecordCount = 0 then
-      msg2('Нет информации!', 'Внимание!',
-        MB_OK + MB_ICONSTOP)
-    else
-    begin
-      setSize(0);
-      if action_ = 0 then
-      begin
-        //Загрузить данные
-        TPivotCube(Cube_).Active := True;
-      end
-      else
-      begin
-        //Добавить данные
-        TPivotCube(Cube_).Build;
-      end;
-    end;
-
-    //Раскрывать ли ветки PivotGrid-а
-    if (expand_row_ = 1) and (expand_col_ = 1) then
-      Form_olap.PivotGrid1.ExpandAll(True, True)
-    else if (expand_row_ = 1) and (expand_col_ = 0) then
-      Form_olap.PivotGrid1.ExpandAll(True, False)
-    else if (expand_row_ = 0) and (expand_col_ = 1) then
-      Form_olap.PivotGrid1.ExpandAll(False, True)
-    else if (expand_row_ = 0) and (expand_col_ = 0) then
-      Form_olap.PivotGrid1.ExpandAll(False, False);
-  end;
-  Form_olap.Button4.Visible := false;
-  Form_olap.Update;
-  }
 end;
 
 procedure TForm_tree_objects.repTypeFastRep(rep_cd_: string);
@@ -866,7 +747,7 @@ begin
   first_time_ := 1;
   allow_ := 1;
   Form_tree_objects.two_periods_ := two_periods_;
-  Form_tree_objects.rep_cd_ := rep_;
+  Form_tree_objects.reportCd := rep_;
 
   //Параметры отчета
   OD_reports2 := TOracleDataset.Create(nil);
@@ -928,24 +809,14 @@ begin
       begin
         Application.CreateForm(TForm_tarif_usl, Form_tarif_usl);
       end;
-  {  if FF('Form_olap', 0) = 1 then
-      Form_olap.Close;}
-    if FF('frmOLAP', 0) = 0 then
-      Application.CreateForm(TfrmOLAP, frmOLAP)
   end
   else
   begin
     if FF('Form_tarif_usl', 1) = 1 then
       Form_tarif_usl.Close;
 
-{    if FF('Form_olap', 0) = 0 then
-      Application.CreateForm(TForm_olap, Form_olap);
- }
-    if FF('frmOLAP', 0) = 0 then
-      Application.CreateForm(TfrmOLAP, frmOLAP);
-
     //если ГИС ЖКХ, настроить кнопки
-    if rep_cd_ = '94' then
+    if reportCd = '94' then
     begin
       Form_olap.btn4.Visible := true;
       Form_olap.btn2.Visible := true;
@@ -976,12 +847,10 @@ begin
   if (rep_type_ = 2) or (rep_type_ = 3) or (rep_type_ = 5) then
   begin
     Button3.Caption := 'Выгрузить';
-    Button2.Enabled := false;
   end
   else
   begin
     Button3.Caption := 'Выбрать';
-    Button2.Enabled := true;
   end;
 
   //показать/скрыть поиск по адресу при соотв. уровне детализ.
@@ -1175,13 +1044,6 @@ begin
   end;
 end;
 
-procedure TForm_tree_objects.Button2Click(Sender: TObject);
-begin
-  isLoadingCube := True;
-  LoadData(1);
-  isLoadingCube := False;
-end;
-
 procedure TForm_tree_objects.Button3Click(Sender: TObject);
 begin
   isLoadingCube := True;
@@ -1258,12 +1120,12 @@ begin
     Excel.Visible := true;
     }
   end
-  else if (rep_cd_ = '92') then
+  else if (reportCd = '92') then
   begin
     //выгрузка в УСЗН
     exp_uszn;
   end
-  else if (rep_cd_ = '94') then
+  else if (reportCd = '94') then
   begin
     //выгрузка Шаблон импорта ЛС-8.7.0.1 для ГИС ЖКХ
     exp_gis1;
