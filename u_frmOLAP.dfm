@@ -266,7 +266,6 @@ object frmOLAP: TfrmOLAP
     Version = '2.10.4'
     FileName = 'checkExcelExport'
     DefaultPath = 'd:\temp\5\'
-    OnPrepareSaveDialog = fcxXLSXExport1PrepareSaveDialog
     ExportPageBreaks = False
     Creator = 'FastReport'
     Left = 352
