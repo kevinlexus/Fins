@@ -857,11 +857,13 @@ end;
 
 procedure TForm_Main.N45Click(Sender: TObject);
 begin
-
   StartTreeObj;
+  Form_tree_objects.setAccess('13', 0, 1);
+
+{  StartTreeObj;
   if FF('Form_olap', 0) = 0 then
     Application.CreateForm(TForm_olap, Form_olap);
-  Form_tree_objects.setAccess('13', 1, 1);
+  Form_tree_objects.setAccess('13', 1, 1);}
 end;
 
 procedure TForm_Main.FormShow(Sender: TObject);

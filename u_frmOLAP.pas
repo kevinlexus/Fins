@@ -81,7 +81,44 @@ begin
   with fcxSlice1 do
   begin
     BeginUpdate;
-    if (reportCd = '14') then
+    if (reportCd = '13') then
+    begin
+      // статистика
+      // измерения
+      addDimension('mg1', 'Период', 1);
+      addDimension('reu_name', 'УК', 0);
+      addDimension('predpr_det', 'Адрес', 0);
+      addDimension('status_name', 'Статус', 0);
+      
+      addDimension('name_usl', 'Услуга', 0);
+      addDimension('name_org', 'Организация', 0);
+      
+      addDimension('val_group', 'Коэфф.', 1);
+      addDimension('val_group2', 'Норматив', 1);
+      addDimension('uch', 'Котельная', 1);
+      addDimension('lsk', 'Лиц.счет', 1);
+      addDimension('odpu_ex', 'ОДПУ', 1);
+      addDimension('name_gr', 'Участок', 1);
+      addDimension('psch_name', 'Признак', 1);
+      
+      addDimension('isHotPipe', 'Гв.изол.', 1);
+      addDimension('isTowel', 'Полот.суш', 1);
+      addDimension('fio', 'Фамилия', 1);
+
+      // показатели
+      addDimension('cnt', 'Кол-во (Ед.)', 2);
+      addDimension('opl', 'Площадь', 2);
+      addDimension('chng_vol', 'Перерасчет', 2);
+      addDimension('klsk', 'кол-во лиц.сч.', 2);
+      addDimension('kpr', 'кол-во прожив.в т.ч.В.О.', 2);
+      addDimension('kpr_ot', 'Вр.отсут.', 2);
+      addDimension('kpr_wr', 'Вр.зарег.', 2);
+      addDimension('cnt_room', 'Комнат', 2);
+      addDimension('odpu_kub', 'ОДПУ, Ед.', 2);
+      addDimension('fact_cons', 'Факт.потреб.', 2);
+      addDimension('kr_soi', 'КР на СОИ', 2);
+    end
+    else if (reportCd = '14') then
     begin
     // оборотка
       // измерения
@@ -92,9 +129,9 @@ begin
       addDimension('type', 'Тип', 0);
       addDimension('status', 'Статус', 0);
 
-      addDimension('name_usl', 'Услуга', 0);
-      addDimension('name_org', 'Организация', 0);
-      addDimension('name_gr', 'Группа', 1);
+      addDimension('usl_name', 'Услуга', 0);
+      addDimension('org_name', 'Организация', 0);
+      addDimension('name_gr', 'Участок', 1);
       addDimension('lsk', 'Лиц.счет', 1);
       addDimension('odpu_ex', 'ОДПУ', 1);
       addDimension('other_name', 'Прочие орг.', 1);
@@ -119,8 +156,8 @@ begin
       addDimension('pcur', 'Начисл.Пени', 2);
       addDimension('pn', 'Оплач.Пени', 2);
       addDimension('poutsal', 'Исх.сал.Пени', 2);
-      XAxisContainer.AddMeasuresField;
     end;
+    XAxisContainer.AddMeasuresField;
     EndUpdate;
   end;
 
