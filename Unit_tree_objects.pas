@@ -105,13 +105,15 @@ type
     root, root1: IXMLDOMElement;
     flag2_: Integer;
     obj_: string;
-    objexcel_: string;
+//    objexcel_: string;
     err_, issum_, iscnt_, ishead_, isoem_: Integer;
     l_edt1, l_edt2, l_edt3, fldsum_: string;
     curX_, curY_: Integer;
     function checkObjectsCount: Boolean;
     function checkSelObj: Boolean;
     function checkPeriod(det: Integer): Boolean;
+    function GetReportTitle: string;
+    function GetReportSigner: string;
   public
     flag_: Integer;
     l_rep_name, l_frm_name, reportCd, period_str_, period_str2_, strr_, fname_, frx_fname_: string;
@@ -446,11 +448,11 @@ begin
   begin
     //наименование Объекта в отчёте
     obj_ := '''' + ', по ' + DM_Olap.Uni_tree_objects.FieldByName('name').AsString + '''';
-    if DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger = 3 then
+{    if DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger = 3 then
       objexcel_ := ', по дому ' + DM_Olap.Uni_tree_objects.FieldByName('name').AsString
     else if DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger in [0, 1, 2] then
       objexcel_ := ', по Организации ' + DM_Olap.Uni_tree_objects.FieldByName('name').AsString;
-
+ }
     if (DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger <= max_level_) then
     begin
       if (rep_type_ = 0) then
@@ -461,7 +463,7 @@ begin
         begin
           Application.CreateForm(TfrmOlap, frmOlap);
         end;
-        frmOlap.createOlapReport(reportCd);
+        frmOlap.createOlapReport(reportCd, GetReportTitle, GetReportSigner);
       end
       else if (rep_type_ = 1) then
       begin
@@ -763,7 +765,6 @@ begin
       can_detail_ := FieldByName('can_detail').AsInteger;
       max_level_ := FieldByName('maxlevel').AsInteger;
       sel_many_ := FieldByName('sel_many').AsInteger;
-      //    have_date_:=FieldByName('have_date').AsInteger;
       rep_type_ := FieldByName('fk_type').AsInteger;
       expand_row_ := FieldByName('expand_row').AsInteger;
       expand_col_ := FieldByName('expand_col').AsInteger;
@@ -2143,6 +2144,22 @@ begin
     else
       period_str_ := 'за период с ' + DM_OLap.OD_mg1.FieldByName('mg1').AsString + ' по ' + DM_OLap.OD_mg2.FieldByName('mg1').AsString;
   end;
+end;
+
+function TForm_tree_objects.GetReportTitle: string;
+begin
+  Result := '''' + l_rep_name + period_str_ + ', по ' + DM_Olap.Uni_tree_objects.FieldByName('name').AsString + '''';
+end;
+
+function TForm_tree_objects.GetReportSigner: string;
+begin
+  if DataModule1.OraclePackage1.CallIntegerFunction('scott.Utils.get_int_param', ['REP_OLAP_SIGN_DIR']) = 1 then
+  begin
+    Result := '''' + DataModule1.OD_rkc.FieldByName('head_name').AsString + ' _________________/' + DataModule1.OD_rkc.FieldByName('manager').AsString + '''';
+  end
+  else
+    Result := '';
+
 end;
 
 end.

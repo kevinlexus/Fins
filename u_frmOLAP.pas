@@ -38,7 +38,7 @@ type
   private { Private declarations }
     procedure addDimension(fieldName, fieldCaption: string; isCollapsed, isDimension: Boolean);
   public { Public declarations }
-    procedure createOlapReport(reportCd: string);
+    procedure createOlapReport(reportCd, reportTitle, reportSigner: string);
   end;
 
 var
@@ -65,23 +65,11 @@ begin
   Close;
 end;
 
-procedure TfrmOLAP.createOlapReport(reportCd: string);
+procedure TfrmOLAP.createOlapReport(reportCd, reportTitle, reportSigner: string);
 begin
-    { todo
-      Form_olap.rep_name_ := l_rep_name;
-      if two_periods_ = 1 then
-      begin
-        Form_olap.Caption := Form_olap.rep_name_ + ' за период с ' + DBLookupComboBox5.Text + ' по ' + DBLookupComboBox6.Text;
-        Form_olap.rep_name_ := Form_olap.rep_name_ + ' за период с ' + DBLookupComboBox5.Text + ' по ' + DBLookupComboBox6.Text;
-      end
-      else
-      begin
-        Form_olap.Caption := Form_olap.rep_name_ + ' за ' + DBLookupComboBox5.Text;
-        Form_olap.rep_name_ := Form_olap.rep_name_ + ' за ' + DBLookupComboBox5.Text;
-      end;
-      }
-
-  with frmOlap.fcxDataSource1 do
+  frxReport1.Variables['reportTitle']:=reportTitle;
+  frxReport1.Variables['reportSigner']:=reportSigner;
+  with fcxDataSource1 do
   begin
     DeleteFields;
     AddFields;
@@ -90,7 +78,7 @@ begin
   frmOlap.fcxCube1.Close;
   frmOlap.fcxCube1.Open;
 
-  with frmOlap.fcxSlice1 do
+  with fcxSlice1 do
   begin
     BeginUpdate;
     if (reportCd = '14') then
@@ -128,12 +116,12 @@ procedure TfrmOLAP.addDimension(fieldName, fieldCaption: string; isCollapsed, is
 var
   dim: TfcxSliceField;
 begin
-  with frmOlap.fcxDataSource1 do
+  with fcxDataSource1 do
   begin
     TfcxReferenceDataField(Fields.FieldByName[fieldName].DataField).CubeFieldDisplayLabel := fieldCaption;
   end;
 
-  with frmOlap.fcxSlice1 do
+  with fcxSlice1 do
   begin
     if isDimension then
     begin
