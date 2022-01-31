@@ -15,7 +15,8 @@ uses
 
   cxGridCustomLayoutView, cxGraphics, cxLookAndFeels,
   cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter, cxData,
-  cxDataStorage, cxEdit, cxNavigator, cxDBData;
+  cxDataStorage, cxEdit, cxNavigator, cxDBData, dxSkinsCore,
+  dxSkinsDefaultPainters, dxDateRanges;
 
 type
   TForm_month_payments = class(TForm)

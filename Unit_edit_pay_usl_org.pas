@@ -11,7 +11,7 @@ uses
   cxData, cxDataStorage, cxEdit, cxNavigator, cxDBData,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGridLevel,
   cxClasses, cxGridCustomView, cxGrid, cxDBLookupComboBox, cxImageComboBox,
-  cxMaskEdit;
+  cxMaskEdit, dxSkinsCore, dxSkinsDefaultPainters, dxDateRanges;
 
 type
   TForm_edit_pay_usl_org = class(TForm)

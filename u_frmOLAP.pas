@@ -36,7 +36,7 @@ type
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
   private { Private declarations }
-    procedure addDimension(fieldName, fieldCaption: string; isCollapsed, isDimension: Boolean);
+    procedure addDimension(fieldName, fieldCaption: string; tp: Integer);
   public { Public declarations }
     procedure createOlapReport(reportCd, reportTitle, reportSigner: string);
   end;
@@ -67,8 +67,8 @@ end;
 
 procedure TfrmOLAP.createOlapReport(reportCd, reportTitle, reportSigner: string);
 begin
-  frxReport1.Variables['reportTitle']:=reportTitle;
-  frxReport1.Variables['reportSigner']:=reportSigner;
+  frxReport1.Variables['reportTitle'] := reportTitle;
+  frxReport1.Variables['reportSigner'] := reportSigner;
   with fcxDataSource1 do
   begin
     DeleteFields;
@@ -85,26 +85,40 @@ begin
     begin
     // оборотка
       // измерения
-      addDimension('predpr', 'Фонд', true, true);
-      addDimension('reu', 'УК', true, true);
-      addDimension('name_usl', 'Услуга', true, true);
-      addDimension('name_org', 'Организация', true, true);
-      addDimension('mg1', 'Период', true, true);
-      addDimension('status', 'Статус', true, true);
-      addDimension('type', 'Тип', true, true);
-      addDimension('name_gr', 'Группа', true, true);
+      addDimension('mg1', 'Период', 1);
+      addDimension('predpr', 'Фонд', 0);
+      addDimension('reu', 'УК', 0);
+      addDimension('predpr_det', 'Адрес', 0);
+      addDimension('type', 'Тип', 0);
+      addDimension('status', 'Статус', 0);
+
+      addDimension('name_usl', 'Услуга', 0);
+      addDimension('name_org', 'Организация', 0);
+      addDimension('name_gr', 'Группа', 1);
+      addDimension('lsk', 'Лиц.счет', 1);
+      addDimension('odpu_ex', 'ОДПУ', 1);
+      addDimension('other_name', 'Прочие орг.', 1);
+      addDimension('grp', 'Группа', 1);
+      addDimension('psch_name', 'Признак', 1);
+      addDimension('isHotPipe', 'Гв.изол.', 1);
+      addDimension('isTowel', 'Полот.суш', 1);
+      addDimension('fio', 'Фамилия', 1);
 
       // показатели
-      addDimension('indebet', 'Вх.дебет', true, false);
-      addDimension('inkredit', 'Вх.кредит', true, false);
-      addDimension('charges', 'Начислено', true, false);
-      addDimension('changes', 'Перерасчет', true, false);
-      addDimension('outdebet', 'Исх.дебет', true, false);
-      addDimension('outkredit', 'Исх.кредит', true, false);
-      addDimension('pinsal', 'Вх.сал.пени', true, false);
-      addDimension('pcur', 'Начисл.Пени', true, false);
-      addDimension('pn', 'Оплач.Пени', true, false);
-      addDimension('poutsal', 'Исх.сал.Пени', true, false);
+      addDimension('indebet', 'Вх.дебет', 2);
+      addDimension('inkredit', 'Вх.кредит', 2);
+      addDimension('charges', 'Начислено', 2);
+      addDimension('changes', 'Скидки', 2);
+      addDimension('changes2', 'Доб./Возвр.', 2);
+      addDimension('changes3', 'Корр.сал.', 2);
+      addDimension('changeall', 'Изменения', 2);
+      addDimension('payment', 'Оплата', 2);
+      addDimension('outdebet', 'Исх.дебет', 2);
+      addDimension('outkredit', 'Исх.кредит', 2);
+      addDimension('pinsal', 'Вх.сал.пени', 2);
+      addDimension('pcur', 'Начисл.Пени', 2);
+      addDimension('pn', 'Оплач.Пени', 2);
+      addDimension('poutsal', 'Исх.сал.Пени', 2);
       XAxisContainer.AddMeasuresField;
     end;
     EndUpdate;
@@ -112,29 +126,45 @@ begin
 
 end;
 
-procedure TfrmOLAP.addDimension(fieldName, fieldCaption: string; isCollapsed, isDimension: Boolean);
+procedure TfrmOLAP.addDimension(fieldName, fieldCaption: string; tp: Integer);
 var
   dim: TfcxSliceField;
+  fld: TfcxSourceField;
 begin
   with fcxDataSource1 do
   begin
+    fld := Fields.FieldByName[fieldName];
+    if fld = nil then
+    begin
+      Application.MessageBox(PChar('Компонент TfcxSourceField ' + fieldName + ' не найден!'), 'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
+      Exit;
+    end;
     TfcxReferenceDataField(Fields.FieldByName[fieldName].DataField).CubeFieldDisplayLabel := fieldCaption;
   end;
 
   with fcxSlice1 do
   begin
-    if isDimension then
+    dim := SliceFieldByName[fieldName];
+
+    if tp = 0 then
     begin
-      dim := SliceFieldByName[fieldName];
-      dim.Collapsed := isCollapsed;
+      // dimension
+      dim.Collapsed := true;
       YAxisContainer.AddDimension(dim, fieldName, fieldCaption);
     end
-    else
+    else if tp = 1 then
     begin
+      // filter
+      fcxSlice1.PageContainer.AddFilterField(dim, fieldName, fieldCaption);
+
+    end
+    else if tp = 2 then
+    begin
+    // measure
       MeasuresContainer.AddMeasure(SliceFieldByName[fieldName], fieldName, fieldCaption, af_Sum);
     end;
-
   end;
+
 end;
 
 end.

@@ -146,7 +146,6 @@ object frmOLAP: TfrmOLAP
     StatusZone.IntegerFormat.FormatStr = '#0.##'
     StatusZone.IntegerFormat.Kind = fkNumeric
     FieldsZone.Visible = True
-    ExplicitHeight = 896
   end
   object fcSliceGridToolbar1: TfcxSliceGridToolbar
     Left = 0
@@ -185,9 +184,6 @@ object frmOLAP: TfrmOLAP
     Height = 41
     Align = alBottom
     TabOrder = 3
-    ExplicitLeft = 752
-    ExplicitTop = 768
-    ExplicitWidth = 185
     DesignSize = (
       1417
       41)
@@ -280,7 +276,7 @@ object frmOLAP: TfrmOLAP
     PrintOptions.Printer = #1055#1086' '#1091#1084#1086#1083#1095#1072#1085#1080#1102
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 44589.754146967600000000
-    ReportOptions.LastChange = 44592.343335439810000000
+    ReportOptions.LastChange = 44592.343335439800000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
