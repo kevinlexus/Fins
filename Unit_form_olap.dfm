@@ -127,7 +127,7 @@ object Form_olap: TForm_olap
       Top = 16
       Width = 75
       Height = 25
-      Anchors = [akRight]
+      Anchors = [akRight, akBottom]
       BiDiMode = bdLeftToRight
       Caption = #1069#1082#1089#1087#1086#1088#1090
       ParentBiDiMode = False

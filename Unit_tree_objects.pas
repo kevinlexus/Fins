@@ -421,27 +421,6 @@ begin
     end;
   end;
 
-    //если ГИС ЖКХ, настроить кнопки
-  if reportCd = '94' then
-  begin
-    Form_olap.btn4.Visible := true;
-    Form_olap.btn2.Visible := true;
-    Form_olap.btn3.Visible := true;
-    Form_olap.chk1.Visible := true;
-    Form_olap.chk2.Visible := true;
-    Form_olap.cbbType.Visible := true;
-  end
-  else
-  begin
-     Form_olap.btn4.Visible := false;
-    Form_olap.btn2.Visible := false;
-    Form_olap.btn3.Visible := false;
-    Form_olap.chk1.Visible := false;
-    Form_olap.chk2.Visible := false;
-    Form_olap.cbbType.Visible := false;
-  end;
-
-
   //Рабочая форма для вызова
   if rep_type_ = 4 then
   begin
@@ -490,7 +469,25 @@ begin
         begin
           Application.CreateForm(TForm_olap, Form_olap);
         end;
-
+            //если ГИС ЖКХ, настроить кнопки
+        if reportCd = '94' then
+        begin
+          Form_olap.btn4.Visible := true;
+          Form_olap.btn2.Visible := true;
+          Form_olap.btn3.Visible := true;
+          Form_olap.chk1.Visible := true;
+          Form_olap.chk2.Visible := true;
+          Form_olap.cbbType.Visible := true;
+        end
+        else
+        begin
+          Form_olap.btn4.Visible := false;
+          Form_olap.btn2.Visible := false;
+          Form_olap.btn3.Visible := false;
+          Form_olap.chk1.Visible := false;
+          Form_olap.chk2.Visible := false;
+          Form_olap.cbbType.Visible := false;
+        end;
       end;
 
       if (rep_type_ = 1) then
