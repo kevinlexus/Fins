@@ -419,7 +419,7 @@ object DM_Olap: TDM_Olap
         DataType = ftString
         Name = 'trest_'
         ParamType = ptInput
-        Value = nil
+        Value = '01'
       end
       item
         DataType = ftString
@@ -449,7 +449,7 @@ object DM_Olap: TDM_Olap
         DataType = ftInteger
         Name = 'var_'
         ParamType = ptInput
-        Value = 0
+        Value = 1
       end
       item
         DataType = ftInteger
@@ -473,7 +473,7 @@ object DM_Olap: TDM_Olap
         DataType = ftString
         Name = 'cd_'
         ParamType = ptInput
-        Value = '14'
+        Value = '78'
       end
       item
         DataType = ftInteger
@@ -641,60 +641,27 @@ object DM_Olap: TDM_Olap
       end>
   end
   object Uni_nabor_lsk: TUniQuery
-    KeyFields = 'id'
     Connection = DataModule1.UniConnection1
     SQL.Strings = (
       
-        'select ltrim(t.kw,'#39'0'#39') as kw, n.*, n.rowid from scott.nabor n, s' +
-        'cott.kart t'
-      'where t.lsk=n.lsk and n.usl=:usl and'
-      'exists'
-      '(select * from  scott.kart k'
-      '  where k.lsk=n.lsk and k.house_id=:house_id)'
-      'and nvl(n.koeff,0)=nvl(:koeff,0) and nvl(n.norm,0)=nvl(:norm,0)'
-      'and n.dt1=:dt1 and n.dt2=:dt2'
-      'order by scott.utils.f_order(t.kw,7)')
+        'select ltrim(t.kw,'#39'0'#39') as kw, n.*, t.house_id, n.rowid from scot' +
+        't.nabor n, scott.kart t'
+      'where t.lsk=n.lsk'
+      'and t.house_id=:house_id'
+      '--and t.psch not in (8, 9)'
+      
+        'order by t.house_id, n.koeff, n.norm, n.usl, n.dt1, n.dt2, scott' +
+        '.utils.f_order(t.kw,7) -- '#1088#1077#1076'.01.02.22 '#1042#1085#1080#1084#1072#1085#1080#1077'! '#1045#1089#1083#1080' '#1091#1073#1088#1072#1090#1100' '#1101#1090#1091 +
+        ' '#1089#1086#1088#1090#1080#1088#1086#1074#1082#1091', Detail '#1085#1077' '#1073#1091#1076#1077#1090' '#1086#1090#1086#1073#1088#1072#1078#1072#1090#1100' '#1076#1072#1085#1085#1099#1077' '#1074' cxGrid!')
     MasterSource = DS_data
-    MasterFields = 'house_id;koeff;norm;usl;dt1;dt2'
-    DetailFields = 'house_id;koeff;norm;usl;dt1;dt2'
-    Active = True
+    MasterFields = 'house_id'
+    DetailFields = 'house_id'
     Left = 40
     Top = 544
     ParamData = <
       item
-        DataType = ftFixedChar
-        Name = 'usl'
-        ParamType = ptInput
-        Value = nil
-      end
-      item
-        DataType = ftString
+        DataType = ftUnknown
         Name = 'house_id'
-        ParamType = ptInput
-        Value = nil
-      end
-      item
-        DataType = ftFloat
-        Name = 'koeff'
-        ParamType = ptInput
-        Value = nil
-      end
-      item
-        DataType = ftFloat
-        Name = 'norm'
-        ParamType = ptInput
-        Value = nil
-      end
-      item
-        DataType = ftDateTime
-        Name = 'DT1'
-        ParamType = ptInput
-        Value = nil
-      end
-      item
-        DataType = ftDateTime
-        Name = 'DT2'
-        ParamType = ptInput
         Value = nil
       end>
   end

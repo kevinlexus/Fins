@@ -33,7 +33,7 @@ uses
   Grids,  Mask, cxContainer,
   cxGroupBox, cxRadioGroup, cxDBEdit, cxMaskEdit, cxDropDownEdit,
   cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, 
-  cxCalendar;
+  cxCalendar, dxSkinsCore, dxSkinsDefaultPainters, dxDateRanges;
 
 const
   CM_APPLYFILTER = WM_USER + 1;

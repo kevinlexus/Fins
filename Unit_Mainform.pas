@@ -126,7 +126,6 @@ type
     N75: TMenuItem;
     N91: TMenuItem;
     ImageList2: TImageList;
-    Splitter1: TSplitter;
     N92: TMenuItem;
     N93: TMenuItem;
     N94: TMenuItem;
@@ -504,7 +503,7 @@ uses
   Unit_service_cash, u_frmLoadPrivs, u_frmPenCorr, u_frmLoadFias,
   u_frmProject, Unit_spr_proc_pay, u_frmAccFlow, u_frmLoadKartExt,
   u_frmKartExt, Unit_changes_houses2,
-  u_frmOLAP;
+  u_frmOLAP, Unit_tarif_usl;
 
 {$R *.dfm}
 
@@ -2299,7 +2298,7 @@ end;
 
 procedure TForm_Main.StartTreeObj;
 begin
-  Panel2.Width := 235;
+//  Panel2.Width := 235;
   if FF('Form_tree_objects', 0) = 0 then
   begin
     Application.CreateForm(TForm_tree_objects, Form_tree_objects);
@@ -2310,10 +2309,26 @@ end;
 
 procedure TForm_Main.CloseTreeObj;
 begin
+  if FF('frmOlap', 0) = 1 then
+  begin
+    frmOlap.close;
+  end;
+
+  if FF('Form_olap', 0) = 1 then
+  begin
+    Form_olap.close;
+  end;
+
   if FF('Form_tree_objects', 0) = 1 then
   begin
     Form_tree_objects.close;
   end;
+
+  if FF('Form_tarif_usl', 0) = 1 then
+  begin
+    Form_tarif_usl.close;
+  end;
+
   Panel2.Width := 0;
 end;
 

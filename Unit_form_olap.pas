@@ -36,7 +36,6 @@ type
   TForm_olap = class(TForm)
     GroupBox1: TGroupBox;
     Button3: TButton;
-    Button1: TButton;
     Button4: TButton;
     BitBtn1: TBitBtn;
     frxReport56: TfrxReport;
@@ -61,7 +60,7 @@ type
     btn3: TButton;
     btn4: TButton;
     chk2: TCheckBox;
-    cxComboBox1: TcxComboBox;
+    cbbType: TcxComboBox;
     cxm1: TcxMemo;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
@@ -146,9 +145,8 @@ end;
 
 procedure TForm_olap.FormPaint(Sender: TObject);
 begin
-  Button1.Left:=GroupBox1.Width-Button1.Width-15;
-  Button3.Left:=Button1.Left-Button3.Width-15;
-  Button4.Left:=round(Width/2-Button4.Width);
+//  Button3.Left:=Button1.Left-Button3.Width-15;
+//  Button4.Left:=round(Width/2-Button4.Width);
 end;
 
 procedure TForm_olap.FormCreate(Sender: TObject);

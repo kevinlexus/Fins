@@ -92,12 +92,6 @@ object Form_Main: TForm_Main
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object Splitter1: TSplitter
-    Left = 1
-    Top = 41
-    Height = 528
-    Beveled = True
-  end
   object ToolBar1: TToolBar
     Left = 0
     Top = 0
@@ -261,7 +255,7 @@ object Form_Main: TForm_Main
   object Panel2: TPanel
     Left = 0
     Top = 41
-    Width = 1
+    Width = 0
     Height = 528
     Align = alLeft
     DockSite = True

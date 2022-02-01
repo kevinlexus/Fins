@@ -135,18 +135,6 @@ object Form_olap: TForm_olap
       Visible = False
       OnClick = Button3Click
     end
-    object Button1: TButton
-      Left = 995
-      Top = 16
-      Width = 75
-      Height = 25
-      Anchors = [akRight]
-      BiDiMode = bdLeftToRight
-      Caption = #1047#1072#1082#1088#1099#1090#1100
-      ParentBiDiMode = False
-      TabOrder = 2
-      OnClick = Button1Click
-    end
     object BitBtn1: TBitBtn
       Left = 8
       Top = 15
@@ -183,7 +171,7 @@ object Form_olap: TForm_olap
       Width = 65
       Height = 17
       Caption = #1054#1090#1083#1072#1076#1082#1072
-      TabOrder = 3
+      TabOrder = 2
       Visible = False
     end
     object btn2: TButton
@@ -195,7 +183,7 @@ object Form_olap: TForm_olap
       BiDiMode = bdLeftToRight
       Caption = #1048#1084#1087#1086#1088#1090' '#1051#1057'-10.0.2.1'
       ParentBiDiMode = False
-      TabOrder = 4
+      TabOrder = 3
       Visible = False
       OnClick = btn2Click
     end
@@ -208,7 +196,7 @@ object Form_olap: TForm_olap
       BiDiMode = bdLeftToRight
       Caption = #1048#1084#1087#1086#1088#1090' '#1052#1050#1044'-10.0.2.1'
       ParentBiDiMode = False
-      TabOrder = 5
+      TabOrder = 4
       Visible = False
       OnClick = btn3Click
     end
@@ -221,7 +209,7 @@ object Form_olap: TForm_olap
       BiDiMode = bdLeftToRight
       Caption = #1055#1086#1084#1077#1097#1077#1085#1080#1103' '#1080' '#1045#1051#1057
       ParentBiDiMode = False
-      TabOrder = 6
+      TabOrder = 5
       Visible = False
       OnClick = btn4Click
     end
@@ -231,17 +219,17 @@ object Form_olap: TForm_olap
       Width = 121
       Height = 17
       Caption = #1042' '#1090'.'#1095'. '#1087#1091#1089#1090#1099#1077' '#1045#1051#1057
-      TabOrder = 7
+      TabOrder = 6
       Visible = False
     end
-    object cxComboBox1: TcxComboBox
+    object cbbType: TcxComboBox
       Left = 184
       Top = 16
       Properties.Items.Strings = (
         #1054#1089#1085#1086#1074#1085#1099#1077
         #1056#1057#1054
         #1050#1072#1087#1088#1077#1084#1086#1085#1090)
-      TabOrder = 8
+      TabOrder = 7
       Text = #1054#1089#1085#1086#1074#1085#1099#1077
       Width = 121
     end

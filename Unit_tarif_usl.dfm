@@ -155,14 +155,13 @@ object Form_tarif_usl: TForm_tarif_usl
       ParentFont = False
     end
   end
-  object cxGrid2: TcxGrid
+  object cxGridTarif: TcxGrid
     Left = 0
     Top = 25
     Width = 1014
     Height = 823
     Align = alClient
     TabOrder = 2
-    Visible = False
     object cxGridDBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Visible = True
@@ -214,48 +213,56 @@ object Form_tarif_usl: TForm_tarif_usl
         Width = 147
       end
     end
-    object cxGrid2DBTableView1: TcxGridDBTableView
-      OnDblClick = cxGrid2DBTableView1DblClick
+    object cxGridTarifDBTableView1: TcxGridDBTableView
+      OnDblClick = cxGridTarifDBTableView1DblClick
       Navigator.Buttons.CustomButtons = <>
       DataController.DataSource = DM_Olap.DS_nabor_lsk
+      DataController.DetailKeyFieldNames = 'house_id;koeff;norm;usl;dt1;dt2'
+      DataController.KeyFieldNames = 'ID'
+      DataController.MasterKeyFieldNames = 'house_id;koeff;norm;usl;dt1;dt2'
       DataController.Summary.DefaultGroupSummaryItems = <>
       DataController.Summary.FooterSummaryItems = <>
       DataController.Summary.SummaryGroups = <>
+      OptionsSelection.InvertSelect = False
       OptionsView.GroupByBox = False
-      object cxGrid2DBTableView1KW: TcxGridDBColumn
+      object cxGridTarifDBTableView1KW: TcxGridDBColumn
         Caption = #8470' '#1050#1074'.'
         DataBinding.FieldName = 'KW'
+        Width = 64
       end
-      object cxGrid2DBTableView1LSK: TcxGridDBColumn
+      object cxGridTarifDBTableView1LSK: TcxGridDBColumn
         Caption = #1051#1080#1094'.'#1089#1095'.'
         DataBinding.FieldName = 'LSK'
+        Width = 64
       end
-      object cxGrid2DBTableView1ORG: TcxGridDBColumn
+      object cxGridTarifDBTableView1ORG: TcxGridDBColumn
         Caption = #1050#1086#1076' '#1086#1088#1075'.'
         DataBinding.FieldName = 'ORG'
       end
-      object cxGrid2DBTableView1KOEFF: TcxGridDBColumn
+      object cxGridTarifDBTableView1KOEFF: TcxGridDBColumn
         Caption = #1050#1086#1101#1092#1092'.'
         DataBinding.FieldName = 'KOEFF'
       end
-      object cxGrid2DBTableView1NORM: TcxGridDBColumn
+      object cxGridTarifDBTableView1NORM: TcxGridDBColumn
         Caption = #1053#1086#1088#1084'.'
         DataBinding.FieldName = 'NORM'
       end
-      object cxGrid2DBTableView1DT1: TcxGridDBColumn
+      object cxGridTarifDBTableView1DT1: TcxGridDBColumn
         Caption = #1053#1072#1095#1072#1083#1086
         DataBinding.FieldName = 'DT1'
+        Width = 64
       end
-      object cxGrid2DBTableView1DT2: TcxGridDBColumn
+      object cxGridTarifDBTableView1DT2: TcxGridDBColumn
         Caption = #1054#1082#1086#1085#1095#1072#1085#1080#1077
         DataBinding.FieldName = 'DT2'
+        Width = 64
       end
     end
     object cxGridLevel1: TcxGridLevel
       GridView = cxGridDBTableView1
-    end
-    object cxGrid2Level1: TcxGridLevel
-      GridView = cxGrid2DBTableView1
+      object cxGridTarifLevel2: TcxGridLevel
+        GridView = cxGridTarifDBTableView1
+      end
     end
   end
   object PopupMenu3: TPopupMenu

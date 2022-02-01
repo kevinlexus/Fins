@@ -2,7 +2,6 @@ object Form_tree_objects: TForm_tree_objects
   Left = 396
   Top = 440
   Align = alLeft
-  BorderStyle = bsSizeToolWin
   ClientHeight = 825
   ClientWidth = 335
   Color = clBtnFace
@@ -449,14 +448,27 @@ object Form_tree_objects: TForm_tree_objects
     ButtonWidth = 142
     Caption = 'ToolBar1'
     TabOrder = 2
+    DesignSize = (
+      335
+      29)
     object Button3: TButton
       Left = 0
       Top = 0
       Width = 137
       Height = 22
-      Caption = #1042#1099#1073#1088#1072#1090#1100'>>'
+      Caption = #1042#1099#1073#1088#1072#1090#1100
       TabOrder = 0
       OnClick = Button3Click
+    end
+    object Button1: TButton
+      Left = 137
+      Top = 0
+      Width = 137
+      Height = 22
+      Anchors = [akLeft, akBottom]
+      Caption = #1047#1072#1082#1088#1099#1090#1100
+      TabOrder = 1
+      OnClick = Button1Click
     end
   end
   object pnl1: TPanel

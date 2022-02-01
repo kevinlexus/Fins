@@ -62,6 +62,7 @@ type
     cxGrid1DBTableView1GR_NAME: TcxGridDBColumn;
     cxGrid1DBTableView1PARNAME: TcxGridDBColumn;
     cxGrid1DBTableView1VAL: TcxGridDBColumn;
+    Button1: TButton;
     procedure saveXML;
     procedure saveMap;
     procedure SetXMLDocNode2;
@@ -75,7 +76,6 @@ type
     procedure setAccess(rep_: string; have_current_: Integer; two_periods_: Integer);
     procedure N1Click(Sender: TObject);
     procedure prepData;
-    procedure Button3Click(Sender: TObject);
     procedure SetSize(var_: Integer);
     procedure LoadSpr;
     procedure FormPaint(Sender: TObject);
@@ -100,6 +100,8 @@ type
     procedure N3Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure cxGrid1DBTableView1DblClick(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
   private
     Doc, Doc1: IXMLDomDocument;
     root, root1: IXMLDOMElement;
@@ -148,6 +150,7 @@ begin
   //Открываем зависимые датасеты, для отчетов
   //форма для контроля тарифов
   //ShowMessage('step 0.1');
+//    DM_Olap.Uni_nabor_lsk.Active := True;
   if (reportCd = '78') and (DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger = 3) then
   begin
     DM_Olap.Uni_nabor_lsk.Active := True;
@@ -156,7 +159,6 @@ begin
   begin
     DM_Olap.Uni_nabor_lsk.Active := False;
   end;
-
   //ShowMessage('step 0.2');
   //Открываем зависимые датасеты, для отчетов
   //отчет - реестр для УСЗН
@@ -419,6 +421,27 @@ begin
     end;
   end;
 
+    //если ГИС ЖКХ, настроить кнопки
+  if reportCd = '94' then
+  begin
+    Form_olap.btn4.Visible := true;
+    Form_olap.btn2.Visible := true;
+    Form_olap.btn3.Visible := true;
+    Form_olap.chk1.Visible := true;
+    Form_olap.chk2.Visible := true;
+    Form_olap.cbbType.Visible := true;
+  end
+  else
+  begin
+     Form_olap.btn4.Visible := false;
+    Form_olap.btn2.Visible := false;
+    Form_olap.btn3.Visible := false;
+    Form_olap.chk1.Visible := false;
+    Form_olap.chk2.Visible := false;
+    Form_olap.cbbType.Visible := false;
+  end;
+
+
   //Рабочая форма для вызова
   if rep_type_ = 4 then
   begin
@@ -448,16 +471,12 @@ begin
   begin
     //наименование Объекта в отчёте
     obj_ := '''' + ', по ' + DM_Olap.Uni_tree_objects.FieldByName('name').AsString + '''';
-{    if DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger = 3 then
-      objexcel_ := ', по дому ' + DM_Olap.Uni_tree_objects.FieldByName('name').AsString
-    else if DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger in [0, 1, 2] then
-      objexcel_ := ', по Организации ' + DM_Olap.Uni_tree_objects.FieldByName('name').AsString;
- }
     if (DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger <= max_level_) then
     begin
+
       if (rep_type_ = 0) then
       begin
-          //OLAP отчет
+        //OLAP отчет
         prepData;
         if FF('frmOLAP', 1) = 0 then
         begin
@@ -465,7 +484,16 @@ begin
         end;
         frmOlap.createOlapReport(reportCd, GetReportTitle, GetReportSigner);
       end
-      else if (rep_type_ = 1) then
+      else
+      begin
+        if FF('Form_olap', 1) = 0 then
+        begin
+          Application.CreateForm(TForm_olap, Form_olap);
+        end;
+
+      end;
+
+      if (rep_type_ = 1) then
       begin
       //Fastreport отчет
         repTypeFastrep(reportCd);
@@ -815,28 +843,6 @@ begin
   begin
     if FF('Form_tarif_usl', 1) = 1 then
       Form_tarif_usl.Close;
-
-    //если ГИС ЖКХ, настроить кнопки
-    if reportCd = '94' then
-    begin
-      Form_olap.btn4.Visible := true;
-      Form_olap.btn2.Visible := true;
-      Form_olap.btn3.Visible := true;
-      Form_olap.chk1.Visible := true;
-      Form_olap.chk2.Visible := true;
-      Form_olap.cxComboBox1.Visible := true;
-    end
-    else
-    begin
-{###      Form_olap.btn4.Visible := false;
-      Form_olap.btn2.Visible := false;
-      Form_olap.btn3.Visible := false;
-      Form_olap.chk1.Visible := false;
-      Form_olap.chk2.Visible := false;
-      Form_olap.cxComboBox1.Visible := false;
-      }
-    end;
-
   end;
 
   SetSize(1);
@@ -1043,6 +1049,11 @@ begin
     RecNo := l_recno;
     EnableControls;
   end;
+end;
+
+procedure TForm_tree_objects.Button1Click(Sender: TObject);
+begin
+  Form_Main.CloseTreeObj;
 end;
 
 procedure TForm_tree_objects.Button3Click(Sender: TObject);
@@ -1476,11 +1487,11 @@ begin
   end;
   Form_olap.cxm1.Lines.Add('Start log!');
 
-  if (Form_olap.cxComboBox1.ItemIndex = 0) then
+  if (Form_olap.cbbType.ItemIndex = 0) then
     suffix := '_MAIN'
-  else if (Form_olap.cxComboBox1.ItemIndex = 1) then
+  else if (Form_olap.cbbType.ItemIndex = 1) then
     suffix := '_RSO'
-  else if (Form_olap.cxComboBox1.ItemIndex = 2) then
+  else if (Form_olap.cbbType.ItemIndex = 2) then
     suffix := '_CAP';
   lskFname := ExtractFileName(dlgOpen1.FileName);
 
@@ -1522,14 +1533,14 @@ begin
     end;
 
     // фильтровать лицевые счета
-    if ((Form_olap.chk2.checked = true) or (d.FieldByName('elsk').AsString <> '')) and ((Form_olap.cxComboBox1.ItemIndex = 0) and (d.FieldByName('tp').AsString = 'LSK_TP_MAIN') or (Form_olap.cxComboBox1.ItemIndex = 1) and (d.FieldByName('tp').AsString = 'LSK_TP_RSO') or (Form_olap.cxComboBox1.ItemIndex = 2) and (d.FieldByName('tp').AsString = 'LSK_TP_ADDIT')) then
+    if ((Form_olap.chk2.checked = true) or (d.FieldByName('elsk').AsString <> '')) and ((Form_olap.cbbType.ItemIndex = 0) and (d.FieldByName('tp').AsString = 'LSK_TP_MAIN') or (Form_olap.cbbType.ItemIndex = 1) and (d.FieldByName('tp').AsString = 'LSK_TP_RSO') or (Form_olap.cbbType.ItemIndex = 2) and (d.FieldByName('tp').AsString = 'LSK_TP_ADDIT')) then
       acceptLsk := true
     else
       acceptLsk := false;
 
     if debug then
     begin
-      Form_olap.cxm1.Lines.Add('Выбрано cxComboBox1.ItemIndex=' + IntToStr(Form_olap.cxComboBox1.ItemIndex));
+      Form_olap.cxm1.Lines.Add('Выбрано cxComboBox1.ItemIndex=' + IntToStr(Form_olap.cbbType.ItemIndex));
       Form_olap.cxm1.Lines.Add('Лиц тип: ' + d.FieldByName('tp').AsString);
       if acceptLsk then
         Form_olap.cxm1.Lines.Add('выгружается')

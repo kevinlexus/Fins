@@ -25,7 +25,7 @@ type
     CheckBox1: TCheckBox;
     Panel3: TPanel;
     Label1: TLabel;
-    cxGrid2: TcxGrid;
+    cxGridTarif: TcxGrid;
     cxGridDBTableView1: TcxGridDBTableView;
     cxGridLevel1: TcxGridLevel;
     cxGridDBTableView1USL: TcxGridDBColumn;
@@ -36,15 +36,15 @@ type
     cxGridDBTableView1NORM: TcxGridDBColumn;
     cxGridDBTableView1DT1: TcxGridDBColumn;
     cxGridDBTableView1DT2: TcxGridDBColumn;
-    cxGrid2Level1: TcxGridLevel;
-    cxGrid2DBTableView1: TcxGridDBTableView;
-    cxGrid2DBTableView1KW: TcxGridDBColumn;
-    cxGrid2DBTableView1LSK: TcxGridDBColumn;
-    cxGrid2DBTableView1ORG: TcxGridDBColumn;
-    cxGrid2DBTableView1KOEFF: TcxGridDBColumn;
-    cxGrid2DBTableView1NORM: TcxGridDBColumn;
-    cxGrid2DBTableView1DT1: TcxGridDBColumn;
-    cxGrid2DBTableView1DT2: TcxGridDBColumn;
+    cxGridTarifDBTableView1: TcxGridDBTableView;
+    cxGridTarifDBTableView1KW: TcxGridDBColumn;
+    cxGridTarifDBTableView1LSK: TcxGridDBColumn;
+    cxGridTarifDBTableView1ORG: TcxGridDBColumn;
+    cxGridTarifDBTableView1KOEFF: TcxGridDBColumn;
+    cxGridTarifDBTableView1NORM: TcxGridDBColumn;
+    cxGridTarifDBTableView1DT1: TcxGridDBColumn;
+    cxGridTarifDBTableView1DT2: TcxGridDBColumn;
+    cxGridTarifLevel2: TcxGridLevel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure mnu1Click(Sender: TObject);
@@ -52,7 +52,7 @@ type
     procedure wwExpandButton4AfterCollapse(Sender: TObject);
     procedure CheckBox1Click(Sender: TObject);
     procedure setType(l_lvl: Integer; name: String);
-    procedure cxGrid2DBTableView1DblClick(Sender: TObject);
+    procedure cxGridTarifDBTableView1DblClick(Sender: TObject);
   private
     { Private declarations }
   end;
@@ -220,7 +220,7 @@ begin
   end;
 end;
 
-procedure TForm_tarif_usl.cxGrid2DBTableView1DblClick(Sender: TObject);
+procedure TForm_tarif_usl.cxGridTarifDBTableView1DblClick(Sender: TObject);
 var
   bm_: TBookmark;
 begin
