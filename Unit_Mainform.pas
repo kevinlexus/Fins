@@ -4,21 +4,18 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Menus, ComCtrls, ToolWin, ImgList, DM_module1,
-  IdComponent, ExtCtrls, StdCtrls, DBCtrls,
-  DB, OracleData,
-  IniFiles,
-  CustomizeDlg, Oracle, OleCtl, Utils, StrUtils,
-  DVButils, ShellAPI,
-  frxClass, frxDBSet, frxExportCSV,
-  frxExportPDF,
-  frxExportBIFF, frxExportText, frxExportRTF, ComObj,
-  Unit_spr_redirect, u_frmTwoPeriods, cxClasses, cxEdit,
-  cxEditRepositoryItems, frxExportBaseDialog, System.ImageList, cxGraphics,
-  cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxContainer, dxSkinsCore,
-  dxSkinsDefaultPainters, cxCheckBox, cxDBEdit;
+  Dialogs, Menus, ComCtrls, ToolWin, ImgList, DM_module1, IdComponent, ExtCtrls,
+  StdCtrls, DBCtrls, DB, OracleData, IniFiles, CustomizeDlg, Oracle, OleCtl,
+  Utils, StrUtils, DVButils, ShellAPI, frxClass, frxDBSet, frxExportCSV,
+  frxExportPDF, frxExportBIFF, frxExportText, frxExportRTF, ComObj,
+  Unit_spr_redirect, u_frmTwoPeriods, cxClasses, cxEdit, cxEditRepositoryItems,
+  frxExportBaseDialog, System.ImageList, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxContainer, dxSkinsCore, dxSkinsDefaultPainters,
+  cxCheckBox, cxDBEdit, cxProgressBar;
+
 type
   TShowForm = function(App, Scr, Sess_: integer): integer; stdcall;
+
   TForm_Main = class(TForm)
     MainMenu1: TMainMenu;
     N1: TMenuItem;
@@ -199,7 +196,6 @@ type
     N145: TMenuItem;
     N146: TMenuItem;
     N872: TMenuItem;
-    ProgressBar1: TProgressBar;
     cxEditRepository1: TcxEditRepository;
     cxEditRepository1MRUItem1: TcxEditRepositoryMRUItem;
     N1705211: TMenuItem;
@@ -221,7 +217,7 @@ type
     N7: TMenuItem;
     N23012230064bit1: TMenuItem;
     cxDefaultEditStyleController1: TcxDefaultEditStyleController;
-    OLAP2: TMenuItem;
+    cxProgressBar1: TcxProgressBar;
     procedure N5Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure N7Click(Sender: TObject);
@@ -279,8 +275,7 @@ type
     procedure N62Click(Sender: TObject);
     procedure N58Click(Sender: TObject);
     procedure N66Click(Sender: TObject);
-    procedure OracleEvent1Event(Sender: TOracleEvent; const ObjectName: string;
-      const Info: Variant);
+    procedure OracleEvent1Event(Sender: TOracleEvent; const ObjectName: string; const Info: Variant);
     procedure N67Click(Sender: TObject);
     procedure N69Click(Sender: TObject);
     procedure OLAP1Click(Sender: TObject);
@@ -381,9 +376,13 @@ type
     procedure ToolButton6Click(Sender: TObject);
     procedure OLAP2Click(Sender: TObject);
     procedure CloseTreeObj;
+    procedure BeginUpdate;
+    procedure EndUpdate;
   private
-  public
-    // выбранный период при переключении в архив
+  private
+    FUpdateCount: integer;
+    FLockedHandle: HWND;
+  public    // выбранный период при переключении в архив
     sel_period: string;
     // выбранный период архива
     arch_mg_: string;
@@ -477,33 +476,28 @@ type
 var
   Form_Main: TForm_Main;
 
+
 implementation
 
 uses
-  Unit_check_days, Unit_form_admin,
-  Unit_print_opl_usl, Unit_print_strah, Unit_generate, Unit_print_saldo_houses,
-  Unit_print_saldo_org_usl, Unit_form_alert_exit, Unit_about,
-  Unit_print_saldo_usl, Unit_print_plan, Unit_form_plan,
-  Unit1_print_pen,
-  Unit_print_bank, Unit_form_print_stat1,
-  Unit_print_status, Unit_form_bills, 
-  Unit_print_xito13,
-  Unit_print_debits_adm, Unit_form_kart, Unit_sel_comps, Unit_get_pay,
-  Unit_inkass, Unit_list_kart, Unit_house_vvod,
-  Unit_changes_lsk, Unit_new_lsk, Unit_month_payments,
+  Unit_check_days, Unit_form_admin, Unit_print_opl_usl, Unit_print_strah,
+  Unit_generate, Unit_print_saldo_houses, Unit_print_saldo_org_usl,
+  Unit_form_alert_exit, Unit_about, Unit_print_saldo_usl, Unit_print_plan,
+  Unit_form_plan, Unit1_print_pen, Unit_print_bank, Unit_form_print_stat1,
+  Unit_print_status, Unit_form_bills, Unit_print_xito13, Unit_print_debits_adm,
+  Unit_form_kart, Unit_sel_comps, Unit_get_pay, Unit_inkass, Unit_list_kart,
+  Unit_house_vvod, Unit_changes_lsk, Unit_new_lsk, Unit_month_payments,
   Unit_chargepay, Unit_sel_arch_period, Unit_find_adr, Unit_changes_list,
-  Unit_houses_nabor,  Unit_gen_current, Unit_print_lists,
-  Unit_spr_sprorg, Unit_spr_prices, Unit_spr_oper, Unit_status_gen,
-  Unit_form_saldo, Unit_form_olap,
-  Unit_tree_objects, Unit_get_pay_nal, Unit_recv_pay_bank,
+  Unit_houses_nabor, Unit_gen_current, Unit_print_lists, Unit_spr_sprorg,
+  Unit_spr_prices, Unit_spr_oper, Unit_status_gen, Unit_form_saldo,
+  Unit_form_olap, Unit_tree_objects, Unit_get_pay_nal, Unit_recv_pay_bank,
   Unit_load_files, Unit_spr_deb_org, Unit_spr_penya, Unit_edit_reports,
-  Unit_oracle_load, Unit_form_kart_pr, Unit_spr_params,
-  Unit_spr_street, Unit_spr_usl, Unit_spr_rep, Unit_prep_doc,
-  Unit_corr_sal, Unit_spr_comps, Unit_spr_props, Unit_lk_acc, Unit_auto_chrg,
-  Unit_service_cash, u_frmLoadPrivs, u_frmPenCorr, u_frmLoadFias,
-  u_frmProject, Unit_spr_proc_pay, u_frmAccFlow, u_frmLoadKartExt,
-  u_frmKartExt, Unit_changes_houses2,
-  u_frmOLAP, Unit_tarif_usl;
+  Unit_oracle_load, Unit_form_kart_pr, Unit_spr_params, Unit_spr_street,
+  Unit_spr_usl, Unit_spr_rep, Unit_prep_doc, Unit_corr_sal, Unit_spr_comps,
+  Unit_spr_props, Unit_lk_acc, Unit_auto_chrg, Unit_service_cash, u_frmLoadPrivs,
+  u_frmPenCorr, u_frmLoadFias, u_frmProject, Unit_spr_proc_pay, u_frmAccFlow,
+  u_frmLoadKartExt, u_frmKartExt, Unit_changes_houses2, u_frmOLAP,
+  Unit_tarif_usl;
 
 {$R *.dfm}
 
@@ -556,8 +550,7 @@ begin
         OD_rep2.Active := false;
         OD_rep1.Active := true;
         OD_rep2.Active := true;
-        frxReport_base.LoadFromFile(Form_main.exepath_ + '\справка_пасп2.fr3',
-          True);
+        frxReport_base.LoadFromFile(Form_main.exepath_ + '\справка_пасп2.fr3', True);
         frxReport_base.PrepareReport(true);
         frxReport_base.ShowPreparedReport;
         OD_rep1.Active := false;
@@ -567,8 +560,7 @@ begin
   end
   else
   begin
-    msg2('Необходимо выбрать квартиру в списке лицевых счетов!', 'Внимание',
-      MB_OK + MB_ICONQUESTION);
+    msg2('Необходимо выбрать квартиру в списке лицевых счетов!', 'Внимание', MB_OK + MB_ICONQUESTION);
   end;
 
 end;
@@ -646,10 +638,8 @@ begin
     Form_Main.eqECR := CreateOleObject('SBRFSRV.Server');
     Options1.Caption := Options1.Caption + ' Эквайринг';
   except
-    Application.MessageBox('Не удалось создать объект драйвера Эквайринга!',
-      PChar(Application.Title), MB_ICONERROR + MB_OK);
-    Application.MessageBox('Устройство банковского терминала Эквайринга не будет задействовано!',
-      PChar(Application.Title), MB_ICONERROR + MB_OK);
+    Application.MessageBox('Не удалось создать объект драйвера Эквайринга!', PChar(Application.Title), MB_ICONERROR + MB_OK);
+    Application.MessageBox('Устройство банковского терминала Эквайринга не будет задействовано!', PChar(Application.Title), MB_ICONERROR + MB_OK);
   end;
 end;
 
@@ -706,8 +696,7 @@ begin
         begin
           port := Ini.ReadString('Application', 'cash1_port', '');
           // ИНН, если не заполнен, то не будет проверяться на корректность подключеного ККМ
-          Form_main.selECR_inn := Ini.ReadString('Application', 'cash1_inn',
-            '');
+          Form_main.selECR_inn := Ini.ReadString('Application', 'cash1_inn', '');
           selECR.ConnectionType := 6; // TCP сокет
           selECR.ProtocolType := 0; // стандартный протокол
           selECR.IPAddress := ip; // Ip адрес
@@ -727,8 +716,7 @@ begin
         begin
           // ИНН, если не заполнен, то не будет проверяться на корректность подключеного ККМ
           port := Ini.ReadString('Application', 'cash2_port', '');
-          Form_main.selECR2_inn := Ini.ReadString('Application', 'cash2_inn',
-            '');
+          Form_main.selECR2_inn := Ini.ReadString('Application', 'cash2_inn', '');
           selECR2.ConnectionType := 6; // TCP сокет
           selECR2.ProtocolType := 0; // стандартный протокол
           selECR2.IPAddress := ip; // Ip адрес
@@ -740,10 +728,8 @@ begin
       end;
 
     except
-      Application.MessageBox('Не удалось создать объект общего драйвера ККМ!',
-        PChar(Application.Title), MB_ICONERROR + MB_OK);
-      Application.MessageBox('Устройство ККМ-Штрих не будет задействовано!',
-        PChar(Application.Title), MB_ICONERROR + MB_OK);
+      Application.MessageBox('Не удалось создать объект общего драйвера ККМ!', PChar(Application.Title), MB_ICONERROR + MB_OK);
+      Application.MessageBox('Устройство ККМ-Штрих не будет задействовано!', PChar(Application.Title), MB_ICONERROR + MB_OK);
     end;
   end;
   Ini.Free;
@@ -797,8 +783,7 @@ begin
   begin
     if Form_main.arch_mg_ <> '' then
     begin
-      msg2('Получение справки из архива не возможно!', 'Внимание!', MB_OK +
-        MB_ICONSTOP);
+      msg2('Получение справки из архива не возможно!', 'Внимание!', MB_OK + MB_ICONSTOP);
     end
     else
     begin
@@ -814,8 +799,7 @@ begin
   end
   else
   begin
-    msg2('Необходимо войти в карточку проживающего!', 'Внимание', MB_OK +
-      MB_ICONQUESTION);
+    msg2('Необходимо войти в карточку проживающего!', 'Внимание', MB_OK + MB_ICONQUESTION);
   end;
 end;
 
@@ -854,11 +838,32 @@ begin
 
 end;
 
+// процедура планировалась, как блокировка перерисковки формы, работает так же в Unit_tree_objects
+procedure TForm_Main.BeginUpdate;
+begin
+  Inc(FUpdateCount);
+  if (FUpdateCount = 1) then
+  begin
+    FLockedHandle := Handle;
+    SendMessage(FLockedHandle, WM_SETREDRAW, Ord(False), 0);
+  end;
+end;
+
+// процедура планировалась, как блокировка перерисковки формы, работает так же в Unit_tree_objects
+procedure TForm_Main.EndUpdate;
+begin
+  Dec(FUpdateCount);
+  if (FUpdateCount = 0) and (FLockedHandle = Handle) then
+  begin
+    SendMessage(FLockedHandle, WM_SETREDRAW, Ord(True), 0);
+    RedrawWindow(FLockedHandle, nil, 0, RDW_FRAME or RDW_INVALIDATE or RDW_ALLCHILDREN);
+  end;
+end;
+
 procedure TForm_Main.N45Click(Sender: TObject);
 begin
   StartTreeObj;
   Form_tree_objects.setAccess('13', 0, 1);
-
 {  StartTreeObj;
   if FF('Form_olap', 0) = 0 then
     Application.CreateForm(TForm_olap, Form_olap);
@@ -902,8 +907,7 @@ end;
 
 procedure TForm_Main.N49Click(Sender: TObject);
 begin
-  showmessage('Пункт меню не используется!')
-{  Application.CreateForm(TForm_print_stat_usl, Form_print_stat_usl);
+  showmessage('Пункт меню не используется!'){  Application.CreateForm(TForm_print_stat_usl, Form_print_stat_usl);
   Form_print_stat_usl.Select_form(18, 1, 0);
   Form_print_stat_usl.Caption := TMenuItem(Sender).Caption;}
 end;
@@ -915,14 +919,12 @@ end;
 
 procedure TForm_Main.N16Click(Sender: TObject);
 begin
-  ShellExecute(handle, 'open', 'http://direct.ucoz.ae/forum/3', nil, nil,
-    SW_SHOW);
+  ShellExecute(handle, 'open', 'http://direct.ucoz.ae/forum/3', nil, nil, SW_SHOW);
 end;
 
 procedure TForm_Main.N89Click(Sender: TObject);
 begin
-  showmessage('Пункт меню не используется!')
-{  Application.CreateForm(TForm_print_stat_usl, Form_print_stat_usl);
+  showmessage('Пункт меню не используется!'){  Application.CreateForm(TForm_print_stat_usl, Form_print_stat_usl);
   Form_print_stat_usl.Select_form(22, 1, 1);
   Form_print_stat_usl.Caption := TMenuItem(Sender).Caption;}
 end;
@@ -1210,8 +1212,7 @@ begin
   Application.CreateForm(TForm_print_lists, Form_print_lists);
 end;
 
-procedure TForm_Main.OracleEvent1Event(Sender: TOracleEvent; const ObjectName:
-  string; const Info: Variant);
+procedure TForm_Main.OracleEvent1Event(Sender: TOracleEvent; const ObjectName: string; const Info: Variant);
 var
   ii: Integer;
   IList: TStringList;
@@ -1234,13 +1235,11 @@ begin
     {    Form_main.CoolTrayIcon1.ShowBalloonHint('Внимание!', copy(IList.Text, 6,
           length(IList.Text)), bitInfo, 60);}
   end
-  else if LeftStr(IList.Text, pos('-', IList.Text) - 1) + '-lsk' =
-    LowerCase(user) + '-lsk' then
+  else if LeftStr(IList.Text, pos('-', IList.Text) - 1) + '-lsk' = LowerCase(user) + '-lsk' then
     //формирование начисления
   begin
     if ff('Form_status_gen', 1) = 1 then
-      Form_status_gen.Memo1.Lines.Text := 'Начисление-' + RightStr(IList.Text,
-        10);
+      Form_status_gen.Memo1.Lines.Text := 'Начисление-' + RightStr(IList.Text, 10);
   end;
 end;
 
@@ -1272,8 +1271,8 @@ procedure TForm_Main.N71Click(Sender: TObject);
 begin
 
   StartTreeObj;
-  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);
+//  if FF('Form_olap', 0) = 0 then
+//    Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('36', 0, 1);
 
   {  Application.CreateForm(TForm_print_stat_usl, Form_print_stat_usl);
@@ -1297,8 +1296,8 @@ procedure TForm_Main.N75Click(Sender: TObject);
 begin
 
   StartTreeObj;
-  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);
+//  if FF('Form_olap', 0) = 0 then
+//    Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('60', 1, 1);
 end;
 
@@ -1325,11 +1324,9 @@ end;
 procedure TForm_Main.N76Click(Sender: TObject);
 begin
 
-  if msg3('Вывести всех пользователей из программы?', 'Подтверждение', MB_YESNO
-    + MB_ICONQUESTION) = ID_YES then
+  if msg3('Вывести всех пользователей из программы?', 'Подтверждение', MB_YESNO + MB_ICONQUESTION) = ID_YES then
   begin
-    DataModule1.OraclePackage1.CallProcedure('scott.ADMIN.send_message',
-      ['stop']);
+    DataModule1.OraclePackage1.CallProcedure('scott.ADMIN.send_message', ['stop']);
   end;
 end;
 
@@ -1390,8 +1387,7 @@ end;
 
 procedure TForm_Main.N79Click(Sender: TObject);
 begin
-    showmessage('Пункт меню не используется!')
-{  Application.CreateForm(TForm_print_stat_usl, Form_print_stat_usl);
+  showmessage('Пункт меню не используется!'){  Application.CreateForm(TForm_print_stat_usl, Form_print_stat_usl);
   Form_print_stat_usl.Select_form(37, 2, 1);
   Form_print_stat_usl.Caption := TMenuItem(Sender).Caption;
   }
@@ -1414,8 +1410,8 @@ end;
 procedure TForm_Main.N83Click(Sender: TObject);
 begin
   StartTreeObj;
-  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);
+//  if FF('Form_olap', 0) = 0 then
+//    Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('54', 1, 1);
 end;
 
@@ -1429,8 +1425,8 @@ procedure TForm_Main.N85Click(Sender: TObject);
 begin
 
   StartTreeObj;
-  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);
+//  if FF('Form_olap', 0) = 0 then
+//    Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('56', 0, 1);
 end;
 
@@ -1438,8 +1434,8 @@ procedure TForm_Main.N87Click(Sender: TObject);
 begin
 
   StartTreeObj;
-  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);
+//  if FF('Form_olap', 0) = 0 then
+//    Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('58', 1, 1);
 
   {  Panel2.Width:=235;
@@ -1468,9 +1464,7 @@ end;
 
 procedure TForm_Main.N10Click(Sender: TObject);
 begin
-    showmessage('Пункт меню не используется!')
-
-{  Application.CreateForm(TForm_print_stat_usl, Form_print_stat_usl);
+  showmessage('Пункт меню не используется!'){  Application.CreateForm(TForm_print_stat_usl, Form_print_stat_usl);
   Form_print_stat_usl.Select_form(59, 0, 1);
   Form_print_stat_usl.Caption := TMenuItem(Sender).Caption;
  }
@@ -1507,13 +1501,11 @@ begin
   begin
     if Form_kart.OD_kart_pr.FieldByName('status').AsInteger = 4 then
     begin
-      msg2('Получение справки по выписанному гражданину не возможно!',
-        'Внимание!', MB_OK + MB_ICONSTOP);
+      msg2('Получение справки по выписанному гражданину не возможно!', 'Внимание!', MB_OK + MB_ICONSTOP);
     end
     else if Form_main.arch_mg_ <> '' then
     begin
-      msg2('Получение справки из архива не возможно!', 'Внимание!', MB_OK +
-        MB_ICONSTOP);
+      msg2('Получение справки из архива не возможно!', 'Внимание!', MB_OK + MB_ICONSTOP);
     end
     else
     begin
@@ -1525,14 +1517,9 @@ begin
         //    OD_rep3.Active:=True;
         OD_rep5.SetVariable('var_', 2);
         OD_rep5.Active := True;
-        frxReport_base.LoadFromFile(Form_main.exepath_ + '\справка_пасп1.fr3',
-          True);
-        frxReport_base.Variables['fio_'] := '''' +
-          Form_kart.OD_kart_pr.FieldByName('K_FAM').AsString + ' ' +
-          Form_kart.OD_kart_pr.FieldByName('K_IM').AsString + ' ' +
-          Form_kart.OD_kart_pr.FieldByName('K_OT').AsString + '''';
-        frxReport_base.Variables['dat_rog_'] := '''' +
-          Form_kart.OD_kart_pr.FieldByName('DAT_ROG').AsString + '''';
+        frxReport_base.LoadFromFile(Form_main.exepath_ + '\справка_пасп1.fr3', True);
+        frxReport_base.Variables['fio_'] := '''' + Form_kart.OD_kart_pr.FieldByName('K_FAM').AsString + ' ' + Form_kart.OD_kart_pr.FieldByName('K_IM').AsString + ' ' + Form_kart.OD_kart_pr.FieldByName('K_OT').AsString + '''';
+        frxReport_base.Variables['dat_rog_'] := '''' + Form_kart.OD_kart_pr.FieldByName('DAT_ROG').AsString + '''';
         if Form_kart.OD_kart_pr.FieldByName('POL').AsInteger = 1 then
         begin
           //Мужчина
@@ -1559,8 +1546,7 @@ begin
   end
   else
   begin
-    msg2('Необходимо войти в карточку проживающего!', 'Внимание', MB_OK +
-      MB_ICONQUESTION);
+    msg2('Необходимо войти в карточку проживающего!', 'Внимание', MB_OK + MB_ICONQUESTION);
   end;
 
 end;
@@ -1569,8 +1555,8 @@ procedure TForm_Main.N94Click(Sender: TObject);
 begin
 
   StartTreeObj;
-  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);
+//  if FF('Form_olap', 0) = 0 then
+//    Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('62', 0, 1);
 
 end;
@@ -1579,8 +1565,8 @@ procedure TForm_Main.N95Click(Sender: TObject);
 begin
 
   StartTreeObj;
-  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);
+//  if FF('Form_olap', 0) = 0 then
+//    Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('63', 0, 1);
 end;
 
@@ -1588,8 +1574,8 @@ procedure TForm_Main.N96Click(Sender: TObject);
 begin
 
   StartTreeObj;
-  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);
+//  if FF('Form_olap', 0) = 0 then
+//    Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('64', 0, 1);
 end;
 
@@ -1597,8 +1583,8 @@ procedure TForm_Main.N97Click(Sender: TObject);
 begin
 
   StartTreeObj;
-  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);
+//  if FF('Form_olap', 0) = 0 then
+//    Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('65', 1, 1);
 
 end;
@@ -1607,8 +1593,8 @@ procedure TForm_Main.N99Click(Sender: TObject);
 begin
 
   StartTreeObj;
-  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);
+//  if FF('Form_olap', 0) = 0 then
+//    Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('66', 0, 0);
 end;
 
@@ -1616,8 +1602,8 @@ procedure TForm_Main.N100Click(Sender: TObject);
 begin
 
   StartTreeObj;
-  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);
+//  if FF('Form_olap', 0) = 0 then
+//    Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('67', 0, 0);
 end;
 
@@ -1625,8 +1611,8 @@ procedure TForm_Main.N101Click(Sender: TObject);
 begin
 
   StartTreeObj;
-  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);
+//  if FF('Form_olap', 0) = 0 then
+//    Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('68', 0, 0);
 end;
 
@@ -1634,8 +1620,8 @@ procedure TForm_Main.N102Click(Sender: TObject);
 begin
 
   StartTreeObj;
-  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);
+//  if FF('Form_olap', 0) = 0 then
+//    Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('69', 1, 1);
 end;
 
@@ -1661,8 +1647,7 @@ begin
   begin
     if Form_main.arch_mg_ <> '' then
     begin
-      msg2('Получение справки из архива не возможно!', 'Внимание!', MB_OK +
-        MB_ICONSTOP);
+      msg2('Получение справки из архива не возможно!', 'Внимание!', MB_OK + MB_ICONSTOP);
     end
     else
     begin
@@ -1672,8 +1657,7 @@ begin
         OD_rep2.Active := false;
         OD_rep1.Active := true;
         OD_rep2.Active := true;
-        frxReport_base.LoadFromFile(Form_main.exepath_ +
-          '\спр_пасп_регистр.fr3', True);
+        frxReport_base.LoadFromFile(Form_main.exepath_ + '\спр_пасп_регистр.fr3', True);
         frxReport_base.PrepareReport(true);
         frxReport_base.ShowPreparedReport;
         OD_rep1.Active := false;
@@ -1683,8 +1667,7 @@ begin
   end
   else
   begin
-    msg2('Необходимо выбрать квартиру в списке лицевых счетов!', 'Внимание',
-      MB_OK + MB_ICONQUESTION);
+    msg2('Необходимо выбрать квартиру в списке лицевых счетов!', 'Внимание', MB_OK + MB_ICONQUESTION);
   end;
 
 end;
@@ -1697,8 +1680,7 @@ begin
   begin
     if Form_main.arch_mg_ <> '' then
     begin
-      msg2('Получение справки из архива не возможно!', 'Внимание!', MB_OK +
-        MB_ICONSTOP);
+      msg2('Получение справки из архива не возможно!', 'Внимание!', MB_OK + MB_ICONSTOP);
     end
     else
     begin
@@ -1715,8 +1697,7 @@ begin
           OD_rep1.Active := true;
           OD_rep2.Active := true;
           OD_rep3.Active := true;
-          frxReport_base.LoadFromFile(Form_main.exepath_ +
-            '\заявление_на_вселение.fr3', True);
+          frxReport_base.LoadFromFile(Form_main.exepath_ + '\заявление_на_вселение.fr3', True);
           frxReport_base.Variables['dt1_'] := getS_date_param('REP_PREP_DT1');
 
           frxReport_base.PrepareReport(true);
@@ -1730,8 +1711,7 @@ begin
   end
   else
   begin
-    msg2('Необходимо выбрать квартиру в списке лицевых счетов!', 'Внимание',
-      MB_OK + MB_ICONQUESTION);
+    msg2('Необходимо выбрать квартиру в списке лицевых счетов!', 'Внимание', MB_OK + MB_ICONQUESTION);
   end;
 
 end;
@@ -1744,13 +1724,11 @@ begin
   begin
     if Form_kart.OD_kart_pr.FieldByName('status').AsInteger = 4 then
     begin
-      msg2('Получение справки по выписанному гражданину не возможно!',
-        'Внимание!', MB_OK + MB_ICONSTOP);
+      msg2('Получение справки по выписанному гражданину не возможно!', 'Внимание!', MB_OK + MB_ICONSTOP);
     end
     else if Form_main.arch_mg_ <> '' then
     begin
-      msg2('Получение справки из архива не возможно!', 'Внимание!', MB_OK +
-        MB_ICONSTOP);
+      msg2('Получение справки из архива не возможно!', 'Внимание!', MB_OK + MB_ICONSTOP);
     end
     else
     begin
@@ -1764,8 +1742,7 @@ begin
         OD_rep2.Active := True;
         OD_rep5.SetVariable('var_', 0);
         OD_rep5.Active := True;
-        frxReport_base.LoadFromFile(Form_main.exepath_ + '\спр_пасп_рег.fr3',
-          True);
+        frxReport_base.LoadFromFile(Form_main.exepath_ + '\спр_пасп_рег.fr3', True);
         frxReport_base.PrepareReport(true);
         frxReport_base.ShowPreparedReport;
         OD_rep2.Active := false;
@@ -1781,8 +1758,7 @@ begin
   end
   else
   begin
-    msg2('Необходимо войти в карточку проживающего!', 'Внимание', MB_OK +
-      MB_ICONQUESTION);
+    msg2('Необходимо войти в карточку проживающего!', 'Внимание', MB_OK + MB_ICONQUESTION);
   end;
 
 end;
@@ -1795,13 +1771,11 @@ begin
   begin
     if Form_kart.OD_kart_pr.FieldByName('status').AsInteger = 4 then
     begin
-      msg2('Получение справки по выписанному гражданину не возможно!',
-        'Внимание!', MB_OK + MB_ICONSTOP);
+      msg2('Получение справки по выписанному гражданину не возможно!', 'Внимание!', MB_OK + MB_ICONSTOP);
     end
     else if Form_main.arch_mg_ <> '' then
     begin
-      msg2('Получение справки из архива не возможно!', 'Внимание!', MB_OK +
-        MB_ICONSTOP);
+      msg2('Получение справки из архива не возможно!', 'Внимание!', MB_OK + MB_ICONSTOP);
     end
     else
     begin
@@ -1815,8 +1789,7 @@ begin
         OD_rep2.Active := True;
         OD_rep5.SetVariable('var_', 1);
         OD_rep5.Active := True;
-        frxReport_base.LoadFromFile(Form_main.exepath_ + '\спр_пасп_рег.fr3',
-          True);
+        frxReport_base.LoadFromFile(Form_main.exepath_ + '\спр_пасп_рег.fr3', True);
         frxReport_base.PrepareReport(true);
         frxReport_base.ShowPreparedReport;
         OD_rep2.Active := false;
@@ -1824,16 +1797,15 @@ begin
         Form_list_kart.OD_rep1.Active := False;
       end;
       try
-      Form_kart.OD_kart_pr.GotoBookmark(bm);
-            except
+        Form_kart.OD_kart_pr.GotoBookmark(bm);
+      except
       end;
 
     end;
   end
   else
   begin
-    msg2('Необходимо войти в карточку проживающего!', 'Внимание', MB_OK +
-      MB_ICONQUESTION);
+    msg2('Необходимо войти в карточку проживающего!', 'Внимание', MB_OK + MB_ICONQUESTION);
   end;
 end;
 
@@ -1845,13 +1817,11 @@ begin
   begin
     if Form_kart.OD_kart_pr.FieldByName('status').AsInteger = 4 then
     begin
-      msg2('Получение справки по выписанному гражданину не возможно!',
-        'Внимание!', MB_OK + MB_ICONSTOP);
+      msg2('Получение справки по выписанному гражданину не возможно!', 'Внимание!', MB_OK + MB_ICONSTOP);
     end
     else if Form_main.arch_mg_ <> '' then
     begin
-      msg2('Получение справки из архива не возможно!', 'Внимание!', MB_OK +
-        MB_ICONSTOP);
+      msg2('Получение справки из архива не возможно!', 'Внимание!', MB_OK + MB_ICONSTOP);
     end
     else
     begin
@@ -1868,8 +1838,7 @@ begin
         OD_rep2.Active := True;
         OD_rep5.SetVariable('var_', 0);
         OD_rep5.Active := True;
-        frxReport_base.LoadFromFile(Form_main.exepath_ + '\спр_пасп_уголь.fr3',
-          True);
+        frxReport_base.LoadFromFile(Form_main.exepath_ + '\спр_пасп_уголь.fr3', True);
         //frxReport_base.Variables['vc1_'] :=
          //DataModule1.OraclePackage1.CallStringFunction('scott.UTILS.getS_str_param', ['REP_PREP_VC']);
         frxReport_base.Variables['vc1_'] := getS_str_param('REP_PREP_VC');
@@ -1881,16 +1850,15 @@ begin
         Form_list_kart.OD_rep1.Active := False;
       end;
       try
-      Form_kart.OD_kart_pr.GotoBookmark(bm);
-            except
+        Form_kart.OD_kart_pr.GotoBookmark(bm);
+      except
       end;
 
     end;
   end
   else
   begin
-    msg2('Необходимо войти в карточку проживающего!', 'Внимание', MB_OK +
-      MB_ICONQUESTION);
+    msg2('Необходимо войти в карточку проживающего!', 'Внимание', MB_OK + MB_ICONQUESTION);
   end;
 
 end;
@@ -1903,13 +1871,11 @@ begin
   begin
     if Form_kart.OD_kart_pr.FieldByName('status').AsInteger = 4 then
     begin
-      msg2('Получение справки по выписанному гражданину не возможно!',
-        'Внимание!', MB_OK + MB_ICONSTOP);
+      msg2('Получение справки по выписанному гражданину не возможно!', 'Внимание!', MB_OK + MB_ICONSTOP);
     end
     else if Form_main.arch_mg_ <> '' then
     begin
-      msg2('Получение справки из архива не возможно!', 'Внимание!', MB_OK +
-        MB_ICONSTOP);
+      msg2('Получение справки из архива не возможно!', 'Внимание!', MB_OK + MB_ICONSTOP);
     end
     else
     begin
@@ -1923,8 +1889,7 @@ begin
         OD_rep2.Active := True;
         OD_rep5.SetVariable('var_', 0);
         OD_rep5.Active := True;
-        frxReport_base.LoadFromFile(Form_main.exepath_ +
-          '\спр_пасп_нотариус.fr3', True);
+        frxReport_base.LoadFromFile(Form_main.exepath_ + '\спр_пасп_нотариус.fr3', True);
         frxReport_base.PrepareReport(true);
         frxReport_base.ShowPreparedReport;
         OD_rep2.Active := false;
@@ -1932,16 +1897,15 @@ begin
         Form_list_kart.OD_rep1.Active := False;
       end;
       try
-      Form_kart.OD_kart_pr.GotoBookmark(bm);
-            except
+        Form_kart.OD_kart_pr.GotoBookmark(bm);
+      except
       end;
 
     end;
   end
   else
   begin
-    msg2('Необходимо войти в карточку проживающего!', 'Внимание', MB_OK +
-      MB_ICONQUESTION);
+    msg2('Необходимо войти в карточку проживающего!', 'Внимание', MB_OK + MB_ICONQUESTION);
   end;
 
 end;
@@ -1956,8 +1920,7 @@ begin
     begin
       if Form_main.arch_mg_ <> '' then
       begin
-        msg2('Получение справки из архива не возможно!', 'Внимание!', MB_OK +
-          MB_ICONSTOP);
+        msg2('Получение справки из архива не возможно!', 'Внимание!', MB_OK + MB_ICONSTOP);
       end
       else
       begin
@@ -1977,12 +1940,10 @@ begin
             Form_list_kart.OD_rep3.Active := false;
             Form_list_kart.OD_rep3.Active := true;
 
-            frxReport_base.LoadFromFile(Form_main.exepath_ +
-              '\спр_пасп_наслед.fr3', True);
+            frxReport_base.LoadFromFile(Form_main.exepath_ + '\спр_пасп_наслед.fr3', True);
             //frxReport_base.Variables['fio_'] :=
             //  QuotedStr(DataModule1.OraclePackage1.CallStringFunction('scott.UTILS.getS_str_param', ['REP_PREP_VC2']));
-            frxReport_base.Variables['fio_'] :=
-              QuotedStr(getS_str_param('REP_PREP_VC2'));
+            frxReport_base.Variables['fio_'] := QuotedStr(getS_str_param('REP_PREP_VC2'));
             //frxReport_base.Variables['dt1_'] :=
             //  DataModule1.OraclePackage1.CallDateFunction('scott.UTILS.getS_date_param', ['REP_PREP_DT1']);
             frxReport_base.Variables['dt1_'] := getS_date_param('REP_PREP_DT1');
@@ -1998,14 +1959,12 @@ begin
     end
     else
     begin
-      msg2('Необходимо войти в карточку проживающего!', 'Внимание', MB_OK +
-        MB_ICONQUESTION);
+      msg2('Необходимо войти в карточку проживающего!', 'Внимание', MB_OK + MB_ICONQUESTION);
     end;
   end
   else
   begin
-    msg2('Необходимо выбрать квартиру в списке лицевых счетов!', 'Внимание',
-      MB_OK + MB_ICONQUESTION);
+    msg2('Необходимо выбрать квартиру в списке лицевых счетов!', 'Внимание', MB_OK + MB_ICONQUESTION);
   end;
 end;
 
@@ -2015,8 +1974,7 @@ begin
   begin
     if Form_main.arch_mg_ <> '' then
     begin
-      msg2('Получение справки из архива не возможно!', 'Внимание!', MB_OK +
-        MB_ICONSTOP);
+      msg2('Получение справки из архива не возможно!', 'Внимание!', MB_OK + MB_ICONSTOP);
     end
     else
     begin
@@ -2026,8 +1984,7 @@ begin
         Form_list_kart.OD_rep1.Active := true;
         OD_rep2.Active := false;
         OD_rep2.Active := true;
-        frxReport1.LoadFromFile(Form_main.exepath_ + '\выписка_из_карточки.fr3',
-          True);
+        frxReport1.LoadFromFile(Form_main.exepath_ + '\выписка_из_карточки.fr3', True);
         frxReport1.PrepareReport(true);
         frxReport1.ShowPreparedReport;
         Form_list_kart.OD_rep1.Active := false;
@@ -2037,8 +1994,7 @@ begin
   end
   else
   begin
-    msg2('Необходимо выбрать квартиру в списке лицевых счетов!', 'Внимание',
-      MB_OK + MB_ICONQUESTION);
+    msg2('Необходимо выбрать квартиру в списке лицевых счетов!', 'Внимание', MB_OK + MB_ICONQUESTION);
   end;
 end;
 
@@ -2046,8 +2002,8 @@ procedure TForm_Main.N115Click(Sender: TObject);
 begin
 
   StartTreeObj;
-  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);
+//  if FF('Form_olap', 0) = 0 then
+//    Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('73', 0, 0);
 
 end;
@@ -2056,8 +2012,8 @@ procedure TForm_Main.N116Click(Sender: TObject);
 begin
 
   StartTreeObj;
-  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);
+//  if FF('Form_olap', 0) = 0 then
+//    Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('75', 0, 0);
 end;
 
@@ -2082,13 +2038,11 @@ begin
   begin
     if Form_kart.OD_kart_pr.FieldByName('status').AsInteger = 4 then
     begin
-      msg2('Получение справки по выписанному гражданину не возможно!',
-        'Внимание!', MB_OK + MB_ICONSTOP);
+      msg2('Получение справки по выписанному гражданину не возможно!', 'Внимание!', MB_OK + MB_ICONSTOP);
     end
     else if Form_main.arch_mg_ <> '' then
     begin
-      msg2('Получение справки из архива не возможно!', 'Внимание!', MB_OK +
-        MB_ICONSTOP);
+      msg2('Получение справки из архива не возможно!', 'Внимание!', MB_OK + MB_ICONSTOP);
     end
     else
     begin
@@ -2106,8 +2060,7 @@ begin
           OD_rep2.Active := True;
           OD_rep5.SetVariable('var_', 1);
           OD_rep5.Active := True;
-          frxReport_base.LoadFromFile(Form_main.exepath_ + '\спр_пасп_усл.fr3',
-            True);
+          frxReport_base.LoadFromFile(Form_main.exepath_ + '\спр_пасп_усл.fr3', True);
           frxReport_base.PrepareReport(true);
           frxReport_base.ShowPreparedReport;
           OD_rep2.Active := false;
@@ -2115,17 +2068,16 @@ begin
           Form_list_kart.OD_rep1.Active := False;
         end;
         try
-        Form_kart.OD_kart_pr.GotoBookmark(bm);
-              except
-      end;
+          Form_kart.OD_kart_pr.GotoBookmark(bm);
+        except
+        end;
 
       end;
     end;
   end
   else
   begin
-    msg2('Необходимо войти в карточку проживающего!', 'Внимание', MB_OK +
-      MB_ICONQUESTION);
+    msg2('Необходимо войти в карточку проживающего!', 'Внимание', MB_OK + MB_ICONQUESTION);
   end;
 end;
 
@@ -2133,8 +2085,8 @@ procedure TForm_Main.N120Click(Sender: TObject);
 begin
 
   StartTreeObj;
-  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);
+//  if FF('Form_olap', 0) = 0 then
+//    Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('77', 0, 0);
 
 end;
@@ -2163,8 +2115,7 @@ begin
   end
   else
   begin
-    msg2('Необходимо выбрать квартиру в списке лицевых счетов!', 'Внимание',
-      MB_OK + MB_ICONQUESTION);
+    msg2('Необходимо выбрать квартиру в списке лицевых счетов!', 'Внимание', MB_OK + MB_ICONQUESTION);
   end;
 
 end;
@@ -2188,8 +2139,8 @@ procedure TForm_Main.N125Click(Sender: TObject);
 begin
 
   StartTreeObj;
-  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);
+//  if FF('Form_olap', 0) = 0 then
+//    Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('81', 0, 0);
 end;
 
@@ -2197,8 +2148,8 @@ procedure TForm_Main.N871Click(Sender: TObject);
 begin
 
   StartTreeObj;
-  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);
+//  if FF('Form_olap', 0) = 0 then
+//    Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('80', 1, 1);
 end;
 
@@ -2206,8 +2157,8 @@ procedure TForm_Main.N126Click(Sender: TObject);
 begin
 
   StartTreeObj;
-  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);
+//  if FF('Form_olap', 0) = 0 then
+//    Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('82', 1, 1);
 end;
 
@@ -2215,8 +2166,8 @@ procedure TForm_Main.N127Click(Sender: TObject);
 begin
 
   StartTreeObj;
-  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);
+//  if FF('Form_olap', 0) = 0 then
+//    Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('83', 0, 0);
 end;
 
@@ -2224,8 +2175,8 @@ procedure TForm_Main.N213Click(Sender: TObject);
 begin
 
   StartTreeObj;
-  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);
+//  if FF('Form_olap', 0) = 0 then
+//    Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('84', 0, 1);
 end;
 
@@ -2233,8 +2184,8 @@ procedure TForm_Main.N128Click(Sender: TObject);
 begin
 
   StartTreeObj;
-  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);
+//  if FF('Form_olap', 0) = 0 then
+//    Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('85', 0, 0);
 end;
 
@@ -2242,8 +2193,8 @@ procedure TForm_Main.N510Click(Sender: TObject);
 begin
 
   StartTreeObj;
-  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);
+//  if FF('Form_olap', 0) = 0 then
+//    Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('86', 0, 0);
 
 end;
@@ -2252,8 +2203,8 @@ procedure TForm_Main.N511Click(Sender: TObject);
 begin
 
   StartTreeObj;
-  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);
+//  if FF('Form_olap', 0) = 0 then
+//    Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('87', 0, 0);
 end;
 
@@ -2267,8 +2218,8 @@ procedure TForm_Main.N130Click(Sender: TObject);
 begin
 
   StartTreeObj;
-  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);
+//  if FF('Form_olap', 0) = 0 then
+//    Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('88', 0, 0);
 end;
 
@@ -2276,16 +2227,16 @@ procedure TForm_Main.N521Click(Sender: TObject);
 begin
 
   StartTreeObj;
-  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);
+//  if FF('Form_olap', 0) = 0 then
+//    Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('89', 0, 1);
 end;
 
 procedure TForm_Main.N512Click(Sender: TObject);
 begin
   StartTreeObj;
-  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);
+//  if FF('Form_olap', 0) = 0 then
+//    Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('90', 0, 1);
 end;
 
@@ -2309,9 +2260,9 @@ end;
 
 procedure TForm_Main.CloseTreeObj;
 begin
-  if FF('frmOlap', 0) = 1 then
+  if FF('frmOLAP', 0) = 1 then
   begin
-    frmOlap.close;
+    frmOLAP.close;
   end;
 
   if FF('Form_olap', 0) = 1 then
@@ -2319,14 +2270,14 @@ begin
     Form_olap.close;
   end;
 
-  if FF('Form_tree_objects', 0) = 1 then
-  begin
-    Form_tree_objects.close;
-  end;
-
   if FF('Form_tarif_usl', 0) = 1 then
   begin
     Form_tarif_usl.close;
+  end;
+
+  if FF('Form_tree_objects', 0) = 1 then
+  begin
+    Form_tree_objects.close;
   end;
 
   Panel2.Width := 0;
@@ -2335,16 +2286,16 @@ end;
 procedure TForm_Main.N132Click(Sender: TObject);
 begin
   StartTreeObj;
-  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);
+//  if FF('Form_olap', 0) = 0 then
+//    Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('91', 0, 0);
 end;
 
 procedure TForm_Main.N133Click(Sender: TObject);
 begin
   StartTreeObj;
-  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);
+//  if FF('Form_olap', 0) = 0 then
+//    Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('92', 0, 0);
 end;
 
@@ -2373,8 +2324,7 @@ begin
   begin
     if Form_main.arch_mg_ <> '' then
     begin
-      msg2('Получение справки из архива не возможно!', 'Внимание!', MB_OK +
-        MB_ICONSTOP);
+      msg2('Получение справки из архива не возможно!', 'Внимание!', MB_OK + MB_ICONSTOP);
     end
     else
     begin
@@ -2385,32 +2335,24 @@ begin
       //отключить возможность выбора текущ. периода
       if (frmTwoPeriods.ShowModal = mrOk) then
       begin
-        if (frmTwoPeriods.cbb1.Text = '')
-          or (frmTwoPeriods.cbb2.Text = '') then
-          msg2('Необходимо выбрать диапазон дат!', 'Внимание', MB_OK +
-            MB_ICONERROR)
+        if (frmTwoPeriods.cbb1.Text = '') or (frmTwoPeriods.cbb2.Text = '') then
+          msg2('Необходимо выбрать диапазон дат!', 'Внимание', MB_OK + MB_ICONERROR)
         else
         begin
           Form_list_kart.OD_rep_lsk.Active := False;
           Form_list_kart.OD_rep_lsk.SetVariable('p_rep_cd', '93');
-          Form_list_kart.OD_rep_lsk.SetVariable('p_lsk',
-            Form_list_kart.OD_list_kart.FieldByName('lsk').AsString);
-          Form_list_kart.OD_rep_lsk.SetVariable('p_mg1',
-            frmTwoPeriods.cbb1.EditValue);
-          Form_list_kart.OD_rep_lsk.SetVariable('p_mg2',
-            frmTwoPeriods.cbb2.EditValue);
+          Form_list_kart.OD_rep_lsk.SetVariable('p_lsk', Form_list_kart.OD_list_kart.FieldByName('lsk').AsString);
+          Form_list_kart.OD_rep_lsk.SetVariable('p_mg1', frmTwoPeriods.cbb1.EditValue);
+          Form_list_kart.OD_rep_lsk.SetVariable('p_mg2', frmTwoPeriods.cbb2.EditValue);
           Form_list_kart.OD_rep_lsk.Active := True;
 
-          Form_list_kart.frxReport_base.Script.Variables['mg1'] :=
-            frmTwoPeriods.cbb1.Text;
-          Form_list_kart.frxReport_base.Script.Variables['mg2'] :=
-            frmTwoPeriods.cbb2.Text;
+          Form_list_kart.frxReport_base.Script.Variables['mg1'] := frmTwoPeriods.cbb1.Text;
+          Form_list_kart.frxReport_base.Script.Variables['mg2'] := frmTwoPeriods.cbb2.Text;
 
           //        Form_list_kart.frxReport_base.Script.Variables['mg1']:=#39+frmTwoPeriods.cbb1.Text+#39;
           //        Form_list_kart.frxReport_base.Script.Variables['mg2']:=#39+frmTwoPeriods.cbb2.Text+#39;
 
-          Form_list_kart.frxReport_base.LoadFromFile(Form_main.exepath_ +
-            '\справка_пеня1.fr3', True);
+          Form_list_kart.frxReport_base.LoadFromFile(Form_main.exepath_ + '\справка_пеня1.fr3', True);
           Form_list_kart.frxReport_base.PrepareReport(true);
           Form_list_kart.frxReport_base.ShowPreparedReport;
           Form_list_kart.OD_rep_lsk.Active := False;
@@ -2424,8 +2366,7 @@ begin
   end
   else
   begin
-    msg2('Необходимо выбрать квартиру в списке лицевых счетов!', 'Внимание',
-      MB_OK + MB_ICONQUESTION);
+    msg2('Необходимо выбрать квартиру в списке лицевых счетов!', 'Внимание', MB_OK + MB_ICONQUESTION);
   end;
 
 end;
@@ -2442,8 +2383,8 @@ end;
 procedure TForm_Main.N138Click(Sender: TObject);
 begin
   StartTreeObj;
-  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);
+//  if FF('Form_olap', 0) = 0 then
+//    Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('94', 0, 0);
 
 end;
@@ -2479,8 +2420,7 @@ begin
     Exit;
   if E.Message = 'The edit value is invalid' then
   begin
-    Application.MessageBox('Ошибка ввода!',
-      'Внимание!', MB_OK + MB_ICONERROR + MB_TOPMOST);
+    Application.MessageBox('Ошибка ввода!', 'Внимание!', MB_OK + MB_ICONERROR + MB_TOPMOST);
     Exit;
   end;
 
@@ -2488,16 +2428,12 @@ begin
   try
     if E is EOracleError then
     begin
-      DataModule1.OraclePackage1.CallProcedure
-        ('scott.logger.log_error',
-        [getLocalIP, EOracleError(E).ErrorCode, E.Message]);
+      DataModule1.OraclePackage1.CallProcedure('scott.logger.log_error', [getLocalIP, EOracleError(E).ErrorCode, E.Message]);
     end
     else
     begin
       // прочие ошибки
-      DataModule1.OraclePackage1.CallProcedure
-        ('scott.logger.log_error',
-        [getLocalIP, 0, E.Message]);
+      DataModule1.OraclePackage1.CallProcedure('scott.logger.log_error', [getLocalIP, 0, E.Message]);
     end;
   except
     // не удалось отправить в базу, - сохранить в файл
@@ -2522,10 +2458,7 @@ begin
       //begin
       //end;
 
-      if
-        Application.MessageBox('Программа обновлена, выйти из приложения, чтоб параметры вступили в силу?',
-        'Внимание!', MB_YESNO + MB_ICONQUESTION + MB_TOPMOST)
-        = IDYES then
+      if Application.MessageBox('Программа обновлена, выйти из приложения, чтоб параметры вступили в силу?', 'Внимание!', MB_YESNO + MB_ICONQUESTION + MB_TOPMOST) = IDYES then
       begin
         Application.Terminate;
       end;
@@ -2534,11 +2467,9 @@ begin
     begin
       // защита, чтобы Enter-ом не прожали сообщение
       //while
-      Application.MessageBox(PChar(E.Message + #13#10),
-        'Внимание!', MB_OK + MB_ICONERROR + MB_TOPMOST); // = IDRETRY do
+      Application.MessageBox(PChar(E.Message + #13#10), 'Внимание!', MB_OK + MB_ICONERROR + MB_TOPMOST); // = IDRETRY do
       //begin
       //end;
-
       {      if
               Application.MessageBox('Продолжить работу?',
               'Внимание!', MB_YESNO + MB_ICONQUESTION + MB_TOPMOST) <> IDYES then
@@ -2550,16 +2481,13 @@ begin
   else
   begin
     // защита, чтобы Enter-ом не прожали сообщение
-    Application.MessageBox(PChar(E.Message + #13#10),
-      'Внимание!', MB_OK + MB_ICONERROR + MB_TOPMOST); // = IDRETRY do
-
+    Application.MessageBox(PChar(E.Message + #13#10), 'Внимание!', MB_OK + MB_ICONERROR + MB_TOPMOST); // = IDRETRY do
     {    while
           Application.MessageBox(PChar(E.Message + #13#10
           + ' повторить данное собщение?'),
           'Внимание!', MB_RETRYCANCEL + MB_ICONQUESTION + MB_TOPMOST) = IDRETRY do
         begin
         end;}
-
         {    if
               Application.MessageBox('Продолжить работу?',
               'Внимание!', MB_YESNO + MB_ICONQUESTION + MB_TOPMOST) <> IDYES then
@@ -2573,8 +2501,8 @@ end;
 procedure TForm_Main.N141Click(Sender: TObject);
 begin
   StartTreeObj;
-  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);
+//  if FF('Form_olap', 0) = 0 then
+//    Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('95', 0, 0);
 
 end;
@@ -2582,8 +2510,8 @@ end;
 procedure TForm_Main.N142Click(Sender: TObject);
 begin
   StartTreeObj;
-  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);
+//  if FF('Form_olap', 0) = 0 then
+//    Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('96', 0, 0);
 
 end;
@@ -2608,10 +2536,7 @@ end;
 
 procedure TForm_Main.N145Click(Sender: TObject);
 begin
-  ShellExecute(Handle, nil, PChar('notepad.exe'),
-    PChar('c:\direct\/direct.log'),
-    nil, SW_SHOWNORMAL)
-    {  if FF('frmLog', 1) = 0 then
+  ShellExecute(Handle, nil, PChar('notepad.exe'), PChar('c:\direct\/direct.log'), nil, SW_SHOWNORMAL)    {  if FF('frmLog', 1) = 0 then
 begin
 Application.CreateForm(TfrmLog, frmLog);
 end;}
@@ -2620,8 +2545,8 @@ end;
 procedure TForm_Main.N146Click(Sender: TObject);
 begin
   StartTreeObj;
-  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);
+//  if FF('Form_olap', 0) = 0 then
+//    Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('97', 0, 0);
 
 end;
@@ -2629,8 +2554,8 @@ end;
 procedure TForm_Main.N872Click(Sender: TObject);
 begin
   StartTreeObj;
-  if FF('Form_olap', 0) = 0 then
-    Application.CreateForm(TForm_olap, Form_olap);
+//  if FF('Form_olap', 0) = 0 then
+//    Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('98', 1, 1);
 end;
 

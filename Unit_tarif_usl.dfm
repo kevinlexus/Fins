@@ -106,19 +106,9 @@ object Form_tarif_usl: TForm_tarif_usl
       DesignSize = (
         180
         38)
-      object Button1: TButton
-        Left = 101
-        Top = 8
-        Width = 75
-        Height = 25
-        Anchors = [akRight]
-        Caption = #1047#1072#1082#1088#1099#1090#1100
-        TabOrder = 0
-        OnClick = Button1Click
-      end
       object CheckBox1: TCheckBox
-        Left = 8
-        Top = 8
+        Left = 72
+        Top = 5
         Width = 92
         Height = 25
         Hint = #1055#1077#1088#1077#1089#1095#1080#1090#1072#1090#1100' '#1085#1072#1095#1080#1089#1083#1077#1085#1080#1077', '#1087#1086#1089#1083#1077' '#1080#1079#1084#1077#1085#1077#1085#1080#1103' '#1090#1072#1088#1080#1092#1072
@@ -128,7 +118,7 @@ object Form_tarif_usl: TForm_tarif_usl
         ParentShowHint = False
         ShowHint = True
         State = cbChecked
-        TabOrder = 1
+        TabOrder = 0
         WordWrap = True
         OnClick = CheckBox1Click
       end

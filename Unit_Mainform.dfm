@@ -294,15 +294,6 @@ object Form_Main: TForm_Main
       Transparent = False
     end
   end
-  object ProgressBar1: TProgressBar
-    Left = 384
-    Top = 264
-    Width = 150
-    Height = 17
-    Max = 10
-    Position = 1
-    TabOrder = 3
-  end
   object PanelJavaTest: TPanel
     Left = 727
     Top = 80
@@ -311,7 +302,7 @@ object Form_Main: TForm_Main
     Align = alCustom
     Ctl3D = True
     ParentCtl3D = False
-    TabOrder = 4
+    TabOrder = 3
     Visible = False
     DesignSize = (
       137
@@ -335,6 +326,14 @@ object Form_Main: TForm_Main
       ShowHint = False
       Transparent = False
     end
+  end
+  object cxProgressBar1: TcxProgressBar
+    Left = 384
+    Top = 271
+    Properties.ShowTextStyle = cxtsText
+    Properties.Text = #1047#1072#1075#1088#1091#1079#1082#1072' '#1076#1072#1085#1085#1099#1093'...'
+    TabOrder = 4
+    Width = 149
   end
   object MainMenu1: TMainMenu
     Images = ImageList1
@@ -1043,7 +1042,7 @@ object Form_Main: TForm_Main
       end
     end
     object ver: TMenuItem
-      Caption = 'ver 3.0.0'
+      Caption = 'ver 3.0.4'
       object N1705211: TMenuItem
         Caption = '17.05.21 - '#1048#1089#1087#1088#1072#1074#1083#1077#1085#1086' '#1074#1099#1087#1086#1083#1085#1077#1085#1080#1077' '#1087#1077#1088#1077#1093#1086#1076#1072
       end
@@ -1079,10 +1078,6 @@ object Form_Main: TForm_Main
       object N23012230064bit1: TMenuItem
         Caption = '23.01.22 -  '#1042#1077#1088#1089#1080#1103' 3.0.0 64 bit'
       end
-    end
-    object OLAP2: TMenuItem
-      Caption = 'OLAP'
-      OnClick = OLAP2Click
     end
   end
   object ImageList1: TImageList

@@ -101,8 +101,8 @@ procedure TForm_olap.FormClose(Sender: TObject; var Action: TCloseAction);
 var
   Cube_, Map_: TComponent;
 begin
-  if FF('Form_tree_objects', 0) = 1 then
-  begin
+//  if FF('Form_tree_objects', 0) = 1 then
+//  begin
 { ###   Cube_ := Form_olap.FindComponent('PivotCube'+IntToStr(Form_tree_objects.rep_id_));
     Map_ := Form_olap.FindComponent('PivotMap'+IntToStr(Form_tree_objects.rep_id_));
     try
@@ -114,9 +114,9 @@ begin
  }
     //закрыть форму TreeObj, чтоб не жрала память
     Form_tree_objects.Close;
-  end;
+//  end;
 
-  Form_main.Panel2.Width:=2;
+//  Form_main.Panel2.Width:=2;
   //отключил - не удобно кис
   //  SetMenu(2);
   Action:=caFree;
@@ -171,7 +171,7 @@ end;
 
 procedure TForm_olap.BitBtn1Click(Sender: TObject);
 begin
-  Form_tree_objects.SetSize(2);
+  Form_tree_objects.setSize(2);
 end;
 
 procedure TForm_olap.btn2Click(Sender: TObject);

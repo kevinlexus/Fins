@@ -2,8 +2,8 @@ object Form_tree_objects: TForm_tree_objects
   Left = 396
   Top = 440
   Align = alLeft
-  ClientHeight = 825
-  ClientWidth = 335
+  ClientHeight = 850
+  ClientWidth = 334
   Color = clBtnFace
   DragKind = dkDock
   DragMode = dmAutomatic
@@ -97,22 +97,23 @@ object Form_tree_objects: TForm_tree_objects
   object Splitter1: TSplitter
     Left = 0
     Top = 453
-    Width = 335
+    Width = 334
     Height = 6
     Cursor = crVSplit
     Align = alTop
+    ExplicitWidth = 335
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 335
+    Width = 334
     Height = 433
     Align = alTop
     TabOrder = 0
     object Panel3: TPanel
       Left = 1
       Top = 41
-      Width = 333
+      Width = 332
       Height = 40
       Align = alBottom
       TabOrder = 0
@@ -178,7 +179,7 @@ object Form_tree_objects: TForm_tree_objects
     object GroupBox2: TGroupBox
       Left = 1
       Top = 81
-      Width = 333
+      Width = 332
       Height = 78
       Align = alBottom
       TabOrder = 1
@@ -302,14 +303,14 @@ object Form_tree_objects: TForm_tree_objects
     object GroupBox1: TGroupBox
       Left = 1
       Top = 282
-      Width = 333
+      Width = 332
       Height = 150
       Align = alBottom
       TabOrder = 5
       object cxGrid1: TcxGrid
         Left = 2
         Top = 15
-        Width = 329
+        Width = 328
         Height = 133
         Align = alClient
         PopupMenu = Form_kart.PopupMenu3
@@ -351,7 +352,7 @@ object Form_tree_objects: TForm_tree_objects
     object GroupBox5: TGroupBox
       Left = 1
       Top = 241
-      Width = 333
+      Width = 332
       Height = 41
       Align = alBottom
       Caption = #1044#1077#1090#1072#1083#1080#1079#1072#1094#1080#1103
@@ -381,7 +382,7 @@ object Form_tree_objects: TForm_tree_objects
     object GroupBox4: TGroupBox
       Left = 1
       Top = 200
-      Width = 333
+      Width = 332
       Height = 41
       Align = alBottom
       Caption = #1054#1087#1077#1088#1072#1094#1080#1103
@@ -411,7 +412,7 @@ object Form_tree_objects: TForm_tree_objects
     object GroupBox6: TGroupBox
       Left = 1
       Top = 159
-      Width = 333
+      Width = 332
       Height = 41
       Align = alBottom
       Caption = #1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103
@@ -441,21 +442,22 @@ object Form_tree_objects: TForm_tree_objects
   end
   object ToolBar1: TToolBar
     Left = 0
-    Top = 796
-    Width = 335
+    Top = 821
+    Width = 334
     Height = 29
     Align = alBottom
+    ButtonHeight = 21
     ButtonWidth = 142
     Caption = 'ToolBar1'
     TabOrder = 2
     DesignSize = (
-      335
+      334
       29)
     object Button3: TButton
       Left = 0
       Top = 0
       Width = 137
-      Height = 22
+      Height = 21
       Caption = #1042#1099#1073#1088#1072#1090#1100
       TabOrder = 0
       OnClick = Button3Click
@@ -464,7 +466,7 @@ object Form_tree_objects: TForm_tree_objects
       Left = 137
       Top = 0
       Width = 137
-      Height = 22
+      Height = 21
       Anchors = [akLeft, akBottom]
       Caption = #1047#1072#1082#1088#1099#1090#1100
       TabOrder = 1
@@ -474,7 +476,7 @@ object Form_tree_objects: TForm_tree_objects
   object pnl1: TPanel
     Left = 0
     Top = 433
-    Width = 335
+    Width = 334
     Height = 20
     Align = alTop
     TabOrder = 3
@@ -494,14 +496,14 @@ object Form_tree_objects: TForm_tree_objects
       Style.IsFontAssigned = True
       TabOrder = 0
       Height = 18
-      Width = 333
+      Width = 332
     end
   end
   object cxDBTreeList1: TcxDBTreeList
     Left = 0
     Top = 459
-    Width = 335
-    Height = 337
+    Width = 334
+    Height = 362
     Align = alClient
     Bands = <
       item

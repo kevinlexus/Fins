@@ -12,7 +12,8 @@ uses
   cxInplaceContainer, cxTLData, cxTextEdit, ToolWin, Grids, Mask, cxDropDownEdit,
   cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, cxFilter, cxData,
   cxDataStorage, cxNavigator, cxDBData, cxGridCustomTableView, cxGridLevel,
-  cxGridCustomView, cxGrid, dxSkinsCore, dxSkinsDefaultPainters, dxDateRanges;
+  cxGridCustomView, cxGrid, dxSkinsCore, dxSkinsDefaultPainters, dxDateRanges,
+  cxProgressBar;
 
 type
   TForm_tree_objects = class(TForm)
@@ -66,21 +67,11 @@ type
     procedure saveXML;
     procedure saveMap;
     procedure SetXMLDocNode2;
-    procedure LoadData(action_: Integer);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure FormEndDock(Sender, Target: TObject; X, Y: Integer);
-    procedure FormStartDock(Sender: TObject; var DragObject: TDragDockObject);
-    procedure CheckBox5Click(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
-    procedure BitBtn1Click(Sender: TObject);
+
     procedure setAccess(rep_: string; have_current_: Integer; two_periods_: Integer);
-    procedure N1Click(Sender: TObject);
-    procedure prepData;
-    procedure SetSize(var_: Integer);
+    procedure LoadData(action_: Integer);
     procedure LoadSpr;
-    procedure FormPaint(Sender: TObject);
-    procedure edit_par;
-    procedure CheckBox1Click(Sender: TObject);
+    procedure prepData;
     procedure setpsch;
     procedure exp;
     procedure exp_uszn;
@@ -89,19 +80,33 @@ type
     procedure imp_gis_MKD_10;
     procedure imp_gis_LS;
     procedure imp_gis_ELS;
-    procedure Timer2Timer(Sender: TObject);
+    procedure edit_par;
     procedure repTypeOlap(action_: Integer);
     procedure repTypeFastRep(rep_cd_: string);
     procedure repTypeDBF(path, fname: string);
     procedure repTypeTXT(path, fname: string);
     procedure repTypeGrid;
     procedure deselObjects(curObjId: Integer);
+    procedure setSize(var_: Integer);
+
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormEndDock(Sender, Target: TObject; X, Y: Integer);
+    procedure FormStartDock(Sender: TObject; var DragObject: TDragDockObject);
+    procedure CheckBox5Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure BitBtn1Click(Sender: TObject);
+    procedure N1Click(Sender: TObject);
+    procedure FormPaint(Sender: TObject);
+    procedure CheckBox1Click(Sender: TObject);
+    procedure Timer2Timer(Sender: TObject);
     procedure cxDBTreeList1SELPropertiesEditValueChanged(Sender: TObject);
     procedure N3Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure cxGrid1DBTableView1DblClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
+    procedure BeginUpdate;
+    procedure EndUpdate;
   private
     Doc, Doc1: IXMLDomDocument;
     root, root1: IXMLDOMElement;
@@ -111,6 +116,11 @@ type
     err_, issum_, iscnt_, ishead_, isoem_: Integer;
     l_edt1, l_edt2, l_edt3, fldsum_: string;
     curX_, curY_: Integer;
+    // загружается ли куб?
+    isLoadingCube: Boolean;
+    FUpdateCount: integer;
+    FLockedHandle: HWND;
+
     function checkObjectsCount: Boolean;
     function checkSelObj: Boolean;
     function checkPeriod(det: Integer): Boolean;
@@ -125,8 +135,6 @@ type
     Cube_, Map_: TComponent;
     isAlreadyInPost, isTimerEvent: Boolean;
     prevRecNo, saveRecNo: Integer;
-    // загружается ли куб?
-    isLoadingCube: Boolean;
   end;
 
 var
@@ -144,8 +152,8 @@ uses
 procedure TForm_tree_objects.prepData;
 begin
 // не включать! не любит данную форму!
-//  Application.CreateForm(TForm_status, Form_status);
-//  Form_status.Update;
+  Application.CreateForm(TForm_status, Form_status);
+  Form_status.Update;
   DM_Olap.Uni_data.Active := false;
   //Открываем зависимые датасеты, для отчетов
   //форма для контроля тарифов
@@ -273,7 +281,7 @@ begin
   cxm1.Lines.Clear;
   cxm1.Lines.Text := 'Получено строк:' + IntToStr(DM_Olap.Uni_Data.RecordCount);
   //ShowMessage('step 0.8');
-  //Form_status.Close;
+  Form_status.Close;
 end;
 
 procedure TForm_tree_objects.saveXML;
@@ -457,11 +465,6 @@ begin
       begin
         //OLAP отчет
         prepData;
-        if FF('frmOLAP', 1) = 0 then
-        begin
-          Application.CreateForm(TfrmOlap, frmOlap);
-        end;
-        frmOlap.createOlapReport(reportCd, GetReportTitle, GetReportSigner);
       end
       else
       begin
@@ -490,7 +493,15 @@ begin
         end;
       end;
 
-      if (rep_type_ = 1) then
+      if (rep_type_ = 0) then
+      begin
+        if FF('frmOLAP', 1) = 0 then
+        begin
+          Application.CreateForm(TfrmOlap, frmOlap);
+        end;
+        frmOlap.createOlapReport(reportCd, GetReportTitle, GetReportSigner);
+      end
+      else if (rep_type_ = 1) then
       begin
       //Fastreport отчет
         repTypeFastrep(reportCd);
@@ -540,7 +551,7 @@ begin
   if DM_Olap.Uni_data.RecordCount = 0 then
   begin
     msg2('Нет информации!', 'Внимание!', MB_OK + MB_ICONSTOP);
-    SetSize(1);
+    setSize(1);
   end
   else
   begin
@@ -627,7 +638,7 @@ begin
     Form_status.close;
     Form_main.Panel2.Width := 0;
     TfrxReport(fr_).ShowPreparedReport;
-    SetSize(1);
+    setSize(1);
 
     if FF('Form_olap', 0) = 1 then
     begin
@@ -654,7 +665,7 @@ begin
   if DM_Olap.Uni_data.RecordCount = 0 then
   begin
     msg2('Нет информации!', 'Внимание!', MB_OK + MB_ICONSTOP);
-    SetSize(1);
+    setSize(1);
   end
   else
   begin
@@ -664,7 +675,7 @@ begin
     ShowMessage('Обратиться к разработчику!');
     //err_ := exp_to_dbf(DM_Olap.Uni_data, path + fname);
     Form_status.close;
-    SetSize(1);
+    setSize(1);
     if err_ = 0 then
       msg2('Выгружено в ' + path + fname, 'Внимание', MB_OK + MB_ICONINFORMATION)
     else
@@ -684,7 +695,7 @@ begin
   if DM_Olap.Uni_data.RecordCount = 0 then
   begin
     msg2('Нет информации!', 'Внимание!', MB_OK + MB_ICONSTOP);
-    SetSize(1);
+    setSize(1);
   end
   else
   begin
@@ -693,7 +704,7 @@ begin
     //Выгрузка в TXT
     err_ := exp_to_txt(DM_Olap.Uni_data, path, fname, fldsum_, issum_, iscnt_, ishead_, isoem_, DM_Olap.Uni_tree_objects.FieldByName('bank_cd').AsString);
     Form_status.close;
-    SetSize(1);
+    setSize(1);
     if err_ = 0 then
       msg2('Выгружено в ' + path + fname, 'Внимание', MB_OK + MB_ICONINFORMATION)
     else
@@ -713,7 +724,7 @@ begin
   if DM_Olap.Uni_data.RecordCount = 0 then
   begin
     msg2('Нет информации!', 'Внимание!', MB_OK + MB_ICONSTOP);
-    SetSize(1);
+    setSize(1);
   end
   else
   begin
@@ -731,17 +742,17 @@ procedure TForm_tree_objects.FormEndDock(Sender, Target: TObject; X, Y: Integer)
 begin
   if Form_main.Panel2.DockClientCount = 0 then
   begin
-    SetSize(0);
+    setSize(0);
   end
   else
   begin
-    SetSize(1);
+    setSize(1);
   end;
 end;
 
 procedure TForm_tree_objects.FormStartDock(Sender: TObject; var DragObject: TDragDockObject);
 begin
-  SetSize(1);
+  setSize(1);
 end;
 
 procedure TForm_tree_objects.CheckBox5Click(Sender: TObject);
@@ -762,6 +773,10 @@ end;
 
 procedure TForm_tree_objects.setAccess(rep_: string; have_current_: Integer; two_periods_: Integer);
 begin
+  Application.CreateForm(TForm_status, Form_status);
+  Form_status.Update;
+
+  BeginUpdate;
   DM_Olap.Uni_data.Active := false;
 
   //Если форма не загружает и не загружала справочник, загрузить
@@ -842,7 +857,7 @@ begin
       Form_tarif_usl.Close;
   end;
 
-  SetSize(1);
+  setSize(1);
 
   DM_Olap.Uni_tree_objects.Filter := 'obj_level<=' + inttostr(max_level_);
   DM_Olap.Uni_tree_objects.Filtered := true;
@@ -980,6 +995,8 @@ begin
   end;
 
   Panel1.AutoSize := True;
+  EndUpdate;
+  Form_status.Close;
 end;
 
 procedure TForm_tree_objects.FormCreate(Sender: TObject);
@@ -1055,12 +1072,12 @@ end;
 
 procedure TForm_tree_objects.Button3Click(Sender: TObject);
 begin
-  isLoadingCube := True;
+  //isLoadingCube := True;
   LoadData(0);
-  isLoadingCube := False;
+  //isLoadingCube := False;
 end;
 
-procedure TForm_tree_objects.SetSize(var_: Integer);
+procedure TForm_tree_objects.setSize(var_: Integer);
 begin
   //Если форма всё еще загружает справочник, выйти
   if flag2_ <> 0 then
@@ -2113,7 +2130,7 @@ begin
   if (two_periods_ <> 2) and ((DBLookupComboBox5.KeyValue = null) or ((DBLookupComboBox6.KeyValue = null) and (two_periods_ = 1))) then
   begin
     msg2('Не выбран период отчета!', 'Внимание!', MB_OK + MB_ICONSTOP);
-    SetSize(1);
+    setSize(1);
     Result := True;
     Exit;
   end;
@@ -2121,7 +2138,7 @@ begin
   if ((DBLookupComboBox5.KeyValue > DBLookupComboBox6.KeyValue) and (two_periods_ = 1)) then
   begin
     msg2('Некорректный период отчета!', 'Внимание!', MB_OK + MB_ICONSTOP);
-    SetSize(1);
+    setSize(1);
     Result := True;
     Exit;
   end;
@@ -2129,7 +2146,7 @@ begin
   if (can_detail_ = 1) and (det = -1) then
   begin
     msg2('Не установлен уровень детализации!', 'Внимание!', MB_OK + MB_ICONSTOP);
-    SetSize(1);
+    setSize(1);
     Result := True;
     Exit;
   end;
@@ -2156,7 +2173,7 @@ end;
 
 function TForm_tree_objects.GetReportTitle: string;
 begin
-  Result := '''' + l_rep_name + period_str_ + ', по ' + DM_Olap.Uni_tree_objects.FieldByName('name').AsString + '''';
+  Result := '''' + l_rep_name + ' ' + period_str_ + ', по ' + DM_Olap.Uni_tree_objects.FieldByName('name').AsString + '''';
 end;
 
 function TForm_tree_objects.GetReportSigner: string;
@@ -2168,6 +2185,26 @@ begin
   else
     Result := '';
 
+end;
+
+procedure TForm_tree_objects.BeginUpdate;
+begin
+  Inc(FUpdateCount);
+  if (FUpdateCount = 1) then
+  begin
+    FLockedHandle := Handle;
+    SendMessage(FLockedHandle, WM_SETREDRAW, Ord(False), 0);
+  end;
+end;
+
+procedure TForm_tree_objects.EndUpdate;
+begin
+  Dec(FUpdateCount);
+  if (FUpdateCount = 0) and (FLockedHandle = Handle) then
+  begin
+    SendMessage(FLockedHandle, WM_SETREDRAW, Ord(True), 0);
+    RedrawWindow(FLockedHandle, nil, 0, RDW_FRAME or RDW_INVALIDATE or RDW_ALLCHILDREN);
+  end;
 end;
 
 end.

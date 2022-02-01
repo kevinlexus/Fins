@@ -4,12 +4,14 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ComCtrls, ExtCtrls;
+  Dialogs, StdCtrls, ComCtrls, ExtCtrls, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore,
+  dxSkinsDefaultPainters, cxProgressBar;
 
 type
   TForm_status = class(TForm)
     GroupBox1: TGroupBox;
-    ProgressBar1: TProgressBar;
+    cxProgressBar1: TcxProgressBar;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
@@ -28,13 +30,13 @@ implementation
 
 procedure TForm_status.setpos(initpos_: Integer; maxpos_: Integer);
 begin
-  ProgressBar1.Position:=initpos_;
-  ProgressBar1.Max:=maxpos_;
+  cxProgressBar1.Position:=initpos_;
+  cxProgressBar1.Properties.Max:=maxpos_;
 end;
 
 procedure TForm_status.incpos(pos_: Integer);
 begin
-  ProgressBar1.Position:=ProgressBar1.Position+pos_;
+  cxProgressBar1.Position:=cxProgressBar1.Position+pos_;
 end;
 
 procedure TForm_status.FormShow(Sender: TObject);
@@ -48,7 +50,7 @@ end;
 procedure TForm_status.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
- ProgressBar1.Position:=ProgressBar1.Max;
+ cxProgressBar1.Position:=cxProgressBar1.Properties.Max;
  Update;
  Action:=caFree;
 

@@ -31,7 +31,6 @@ type
     ToolButton2: TToolButton;
     Button1: TButton;
     Panel1: TPanel;
-    Button2: TButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -52,7 +51,7 @@ implementation
 
 procedure TfrmOLAP.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  Form_Main.CloseTreeObj;
+//  Form_Main.CloseTreeObj;
   Action := caFree;
 end;
 

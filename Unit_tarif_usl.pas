@@ -21,7 +21,6 @@ type
     mnu2: TMenuItem;
     Panel2: TPanel;
     Panel1: TPanel;
-    Button1: TButton;
     CheckBox1: TCheckBox;
     Panel3: TPanel;
     Label1: TLabel;
@@ -70,13 +69,13 @@ uses Unit_tree_objects, Unit_change_house_nabor2, Unit_status,
 procedure TForm_tarif_usl.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  Form_main.Panel2.Width := 2;
+//  Form_main.Panel2.Width := 2;
   Action := caFree;
 end;
 
 procedure TForm_tarif_usl.Button1Click(Sender: TObject);
 begin
-  Close;
+//  Close;
 end;
 
 procedure TForm_tarif_usl.mnu1Click(Sender: TObject);

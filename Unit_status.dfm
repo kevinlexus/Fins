@@ -5,7 +5,7 @@ object Form_status: TForm_status
   AutoSize = True
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
-  Caption = #1060#1086#1088#1084#1080#1088#1086#1074#1072#1085#1080#1077'...'
+  Caption = #1047#1072#1075#1088#1091#1079#1082#1072' '#1076#1072#1085#1085#1099#1093'...'
   ClientHeight = 73
   ClientWidth = 249
   Color = clBtnFace
@@ -101,14 +101,11 @@ object Form_status: TForm_status
     Color = clBtnFace
     ParentColor = False
     TabOrder = 0
-    object ProgressBar1: TProgressBar
-      Left = 56
+    object cxProgressBar1: TcxProgressBar
+      Left = 64
       Top = 24
-      Width = 150
-      Height = 17
-      Max = 10
-      Position = 2
       TabOrder = 0
+      Width = 121
     end
   end
 end

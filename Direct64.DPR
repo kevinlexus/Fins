@@ -295,7 +295,7 @@ begin
   loadIniPar;
   //ShowMessage('1');
 
-  Form_Main.ProgressBar1.Position := 1;
+  Form_Main.cxProgressBar1.Position := 1;
   Form_Main.Update;
   try
     DataModule1.OracleSession1.Connected := false;
@@ -434,7 +434,7 @@ DataModule1.OracleSession1.Connected := true;
   Form_main.currentPeriod := Form_main.OD_params.FieldByName('period').AsString;
   Oracle.OnOracleError := EOracleErr;
 
-  Form_Main.ProgressBar1.Position := 2;
+  Form_Main.cxProgressBar1.Position := 2;
   Form_Main.Update;
 
   //справочник расценок по работам еще не загружен
@@ -491,7 +491,7 @@ DataModule1.OracleSession1.Connected := true;
   DataModule1.UniStoredProc1.ExecProc;
 
   //ShowMessage('11');
-  Form_Main.ProgressBar1.Position := 3;
+  Form_Main.cxProgressBar1.Position := 3;
   Form_Main.Update;
 
   //включить таблицы параметров
@@ -514,7 +514,7 @@ DataModule1.OracleSession1.Connected := true;
     // загрузить U_LIST в память
   Utils.loadListIdCd(Form_main.uList);
 
-  Form_Main.ProgressBar1.Position := 4;
+  Form_Main.cxProgressBar1.Position := 4;
   Form_Main.Update;
 
   // загрузить дома, для формы выбора дома
@@ -550,9 +550,9 @@ DataModule1.OracleSession1.Connected := true;
     Form_Main.Visible := true;
   end;
 
-  Form_Main.ProgressBar1.Position := 5;
+  Form_Main.cxProgressBar1.Position := 5;
   Form_Main.Update;
-  Form_Main.ProgressBar1.Hide;
+  Form_Main.cxProgressBar1.Hide;
 
   Form_main.WindowState := wsMaximized;
   Application.CreateForm(TForm_sel_comps, Form_sel_comps);
