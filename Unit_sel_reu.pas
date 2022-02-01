@@ -9,7 +9,8 @@ uses
   cxLookAndFeels, cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter,
   cxData, cxDataStorage, cxEdit, cxNavigator, cxDBData,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGridLevel,
-  cxClasses, cxGridCustomView, cxGrid, cxCheckBox;
+  cxClasses, cxGridCustomView, cxGrid, cxCheckBox, dxSkinsCore,
+  dxSkinsDefaultPainters, dxDateRanges, System.ImageList;
 
 type
   TForm_sel_reu = class(TForm)
