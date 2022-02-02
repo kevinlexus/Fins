@@ -22,7 +22,8 @@ uses
   cxGridCustomTableView, cxGridTableView, cxGridCustomView, 
   cxTextEdit, cxMaskEdit, cxDropDownEdit, cxLookupEdit,
   cxDBLookupEdit, IdBaseComponent, IdComponent, IdTCPConnection,
-  IdTCPClient, IdHTTP, cxImageComboBox;
+  IdTCPClient, IdHTTP, cxImageComboBox, dxSkinsCore, dxSkinsDefaultPainters,
+  dxDateRanges;
 
 type
   TForm_changes_houses2 = class(TForm)

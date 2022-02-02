@@ -1,4 +1,4 @@
-program Direct64;
+program Direct32;
 
 {$R 'finres.res' 'finres.rc'}
 uses
