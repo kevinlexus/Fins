@@ -148,11 +148,15 @@ var
   Pass, SID, s, User, serverIp, serverPort, serverSID: string;
   I, I1: Integer;
   lst: TStringList;
+
+
 type
   TOracleErrorEvent = procedure(Error: EOracleError);
+
 var
   OnOracleError: TOracleErrorEvent = nil;
   res: TModalResult;
+
 
 procedure EOracleErr(Error: EOracleError);
 begin
@@ -166,82 +170,90 @@ end;
 // загрузить Ini параметры
 
 procedure loadIniPar;
+var
+  isIniFileFound: Boolean;
 begin
+  TStyleManager.TrySetStyle('Sky');
+  isIniFileFound := false;
 
   if ParamStr(1) <> '' then
   begin
-    // первый параметр приложения - путь к файлу лицензии, включая его имя
+    // если первый параметр приложения - путь к файлу лицензии, включая его имя
     // например c:\fins\bak\licenses2.ini
     s := ParamStr(1);
     if not FileExists(s) then
     begin
-      Application.MessageBox('Указан неверный путь или имя файла лицензии',
-        'Внимание!', MB_OK
-        + MB_ICONSTOP + MB_TOPMOST);
+      Application.MessageBox('Указан неверный путь или имя файла лицензии', 'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
       Application.Terminate;
       Exit;
     end;
     Ini := TIniFile.Create(s);
+    isIniFileFound := true;
   end
   else
   begin
     s := ParamStr(0);
     GetDir(0, s);
-    Ini := TIniFile.Create(s + '\licenses.ini');
+    if FileExists(s + '\licenses.ini') then
+    begin
+      Ini := TIniFile.Create(s + '\licenses.ini');
+      isIniFileFound := true;
+    end;
   end;
 
-  TStyleManager.TrySetStyle('Sky');
   Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TForm_Main, Form_Main);
-  s := Ini.ReadString('Application', 'User', '');
-  Pass := '';
-  I := 1;
-  I1 := Length(s);
-  while I < I1 do
-  begin
-    User := User + CHR(StrToInt('$' + copy(s, I, 3)));
-    I := I + 3;
-  end;
 
-  s := Ini.ReadString('Application', 'Pass', '');
-  Pass := '';
-  I := 1;
-  I1 := Length(s);
-  if Length(s) > 0 then
+  if isIniFileFound then
   begin
+    s := Ini.ReadString('Application', 'User', '');
+    Pass := '';
+    I := 1;
+    I1 := Length(s);
     while I < I1 do
     begin
-      Pass := Pass + CHR(StrToInt('$' + copy(s, I, 3)));
+      User := User + CHR(StrToInt('$' + copy(s, I, 3)));
       I := I + 3;
     end;
-  end
-  else
-  begin
-    Form_main.User := User;
-    Application.CreateForm(TForm_pass, Form_pass);
-    res := Form_pass.ShowModal;
-    if res <> 2 then
+
+    s := Ini.ReadString('Application', 'Pass', '');
+    Pass := '';
+    I := 1;
+    I1 := Length(s);
+    if Length(s) > 0 then
     begin
-      Application.Terminate;
-      Exit;
+      while I < I1 do
+      begin
+        Pass := Pass + CHR(StrToInt('$' + copy(s, I, 3)));
+        I := I + 3;
+      end;
     end;
-    User := Form_main.User;
-    Pass := Form_main.Pass;
+    {
+    else
+    begin
+      Form_main.User := User;
+      Application.CreateForm(TForm_pass, Form_pass);
+      res := Form_pass.ShowModal;
+      if res <> 2 then
+      begin
+        Application.Terminate;
+        Exit;
+      end;
+      User := Form_main.User;
+      Pass := Form_main.Pass;
+    end;}
+
+    s := Ini.ReadString('Application', 'SID', '');
+    SID := '';
+    I := 1;
+    I1 := Length(s);
+
+    while I < I1 do
+    begin
+      SID := SID + CHR(StrToInt('$' + copy(s, I, 3)));
+      I := I + 3;
+    end;
   end;
-
-  s := Ini.ReadString('Application', 'SID', '');
-  SID := '';
-  I := 1;
-  I1 := Length(s);
-
-  while I < I1 do
-  begin
-    SID := SID + CHR(StrToInt('$' + copy(s, I, 3)));
-    I := I + 3;
-  end;
-
-  //  javaServer := Ini.ReadString('Application', 'javaServer', '');
-
 end;
 
 // загрузить параметры ККМ
@@ -249,41 +261,38 @@ end;
 procedure loadKKMPar;
 begin
   // режим тестирования ККМ
-  {s := Ini.ReadString('Application', 'cash_test', '');
-  if s = '1' then
-    Form_Main.cash_test := 1
-  else
-    Form_Main.cash_test := 0;}
-
-  // проверить наличие ККМ
-  s := Ini.ReadString('Application', 'have_cash', '');
-  if s <> '' then
+  if Ini <> nil then
   begin
+  // проверить наличие ККМ
+    s := Ini.ReadString('Application', 'have_cash', '');
+    if s <> '' then
+    begin
     // наличие ККМ
-    Form_Main.have_cash := StrToInt(s);
+      Form_Main.have_cash := StrToInt(s);
 
     // создать 1 ККМ
-    Form_Main.create_OLE_KKM(1);
+      Form_Main.create_OLE_KKM(1);
 
-    s := Ini.ReadString('Application', 'cash2_Ip', '');
-    if s <> '' then
-    begin
+      s := Ini.ReadString('Application', 'cash2_Ip', '');
+      if s <> '' then
+      begin
       // создать 2 ККМ, если указан его IP
-      Form_Main.create_OLE_KKM(2);
-    end;
+        Form_Main.create_OLE_KKM(2);
+      end;
 
     // проверить наличие Эквайринга
-    s := Ini.ReadString('Application', 'have_eq', '');
-    if s <> '' then
-    begin
-      Form_Main.have_eq := StrToInt(s);
+      s := Ini.ReadString('Application', 'have_eq', '');
+      if s <> '' then
+      begin
+        Form_Main.have_eq := StrToInt(s);
       // создать OLE Эквайринга, нужны sbrf.dll, gate.dll
-      Form_Main.create_OLE_Eq;
-    end
-    else
+        Form_Main.create_OLE_Eq;
+      end
+      else
       // нет Эквайринга
-      Form_Main.have_eq := 0;
+        Form_Main.have_eq := 0;
 
+    end;
   end;
 end;
 
@@ -298,48 +307,44 @@ begin
   Form_Main.cxProgressBar1.Position := 1;
   Form_Main.Update;
   try
-    DataModule1.OracleSession1.Connected := false;
-    DataModule1.OracleSession1.LogonUsername := User;
-    DataModule1.OracleSession1.LogonPassword := Pass;
-    DataModule1.OracleSession1.LogonDatabase := SID;
-  //ShowMessage('2');
 
-{    DataModule1.OracleSession1.LogonDatabase := 'ORCL';
+    if ((User = '') or (Pass = '') or (SID = '')) then
+    begin
+      if DataModule1.OracleLogon1.Execute then
+      begin
+        User := DataModule1.OracleSession1.LogonUsername;
+        Pass := DataModule1.OracleSession1.LogonPassword;
+        SID := DataModule1.OracleSession1.LogonDatabase;
+      end
+      else
+      begin
+        try
+          Application.Terminate;
+        except
+        end;
+      end;
+    end
+    else
+    begin
+      DataModule1.OracleSession1.LogonUsername := User;
+      DataModule1.OracleSession1.LogonPassword := Pass;
+      DataModule1.OracleSession1.LogonDatabase := SID;
+      DataModule1.OracleSession1.Connected := true;
+    end;
 
-    OracleHomeDir:='D:\oracle\client32\';
-    OracleHomeName:='SOFTWARE\ORACLE\KEY_OraDb11g_home1';
-    if DLLInit = dllOK then
-      //ShowMessage('Г стартануло');
 
-    lst:=OracleHomeList;
-    if lst.Sorted then
-      //ShowMessage('dd');
-    ShowDOAInfo(DataModule1.OracleSession1);
+  // UNIDAC сессия
+    DataModule1.UniConnection1.Disconnect;
+    DataModule1.UniConnection1.Username := User;
+    DataModule1.UniConnection1.Password := Pass;
+    DataModule1.UniConnection1.Database := SID;
+    DataModule1.UniConnection1.Connect;
 
-    InitOCI;
- }
-    //OracleHomeDir:='D:\oracle\client32\';
-    //OracleHomeDir:='D:\oracle\product\11.2.0\dbhome_1\';
-
-//    OCIDLL:='D:\oracle\product\11.2.0\dbhome_1\BIN\oci.dll';
-
-
-    //InitOCI;
-
-    //OCIDLL:='D:\oracle\client32\oci.dll';
-
-//    DataModule1.OracleSession1.Connected := true;
-//    ShowDOAInfo(DataModule1.OracleSession1);
-//    DataModule1.OracleSession1.LogOn;
-
-DataModule1.OracleSession1.Connected := true;
   //ShowMessage('3');
 
     if DataModule1.OracleSession1.StatementCache = True then
     begin
-      Application.MessageBox('Недопустимо использование StatementCache ' +
-        'в OracleSession, приводит к ошибке ORA-01410: Invalid Rowid!',
-        'Внимание!', 16)
+      Application.MessageBox('Недопустимо использование StatementCache ' + 'в OracleSession, приводит к ошибке ORA-01410: Invalid Rowid!', 'Внимание!', 16)
     end;
 
   except
@@ -347,14 +352,11 @@ DataModule1.OracleSession1.Connected := true;
     begin
       Ini.Free;
       if pos('01017', E.Message) > 1 then
-        Application.MessageBox('Не корректны логин или пароль пользователя!',
-          'Внимание!', 16)
+        Application.MessageBox('Не корректны логин или пароль пользователя!', 'Внимание!', 16)
       else if pos('28000', E.Message) > 1 then
-        Application.MessageBox(Pchar('Учетная запись пользователя "' + User +
-          '" заблокирована!'), 'Внимание!', 16)
+        Application.MessageBox(Pchar('Учетная запись пользователя "' + User + '" заблокирована!'), 'Внимание!', 16)
       else if pos('12543', E.Message) > 1 then
-        Application.MessageBox(Pchar('Сервер "' + SID +
-          '", указанный в tnsnames.ora не доступен!'), 'Внимание!', 16)
+        Application.MessageBox(Pchar('Сервер "' + SID + '", указанный в tnsnames.ora не доступен!'), 'Внимание!', 16)
       else
         Application.MessageBox(PCHar(E.Message), 'Внимание!', 16);
       Application.Terminate;
@@ -375,43 +377,9 @@ DataModule1.OracleSession1.Connected := true;
   Form_Main.OracleEvent1.Start;
   Form_Main.User := User;
   //ShowMessage('7');
-
-    // UNIDAC сессия
-  DataModule1.UniConnection1.Disconnect;
-  serverIp := Ini.ReadString('Application', 'ServerIp', '');
-  if serverIp = '' then
-  begin
-    Application.MessageBox('В licenses.ini не указан Ip адрес сервера ServerIp',
-      'Внимание!', 16);
-    Application.Terminate;
-  end;
-
-  serverPort := Ini.ReadString('Application', 'ServerPort', '');
-
-  DataModule1.UniConnection1.Username :=
-    DataModule1.OracleSession1.LogonUsername;
-  DataModule1.UniConnection1.Password :=
-    DataModule1.OracleSession1.LogonPassword;
-  if serverPort = '' then
-  begin
-    // порт по умолчанию
-    serverPort := '1521';
-  end;
-
-  serverSID := Ini.ReadString('Application', 'ServerSID', '');
-  if serverSID = '' then
-  begin
-    // SID по умолчанию
-    serverSID := 'ORCL';
-  end;
-  DataModule1.UniConnection1.Server :=
-    serverIp + ':' + serverPort + ':' + serverSID;
-  DataModule1.UniConnection1.Connect;
-
   //ShowMessage('8');
     // права пользователей
-  DataModule1.UniTablePriveleges.ParamByName('user_name').AsString :=
-    UpperCase(User);
+  DataModule1.UniTablePriveleges.ParamByName('user_name').AsString := UpperCase(User);
   DataModule1.UniTablePriveleges.Active := True;
   Ini.Free;
   SetMenu(0);
@@ -420,12 +388,8 @@ DataModule1.OracleSession1.Connected := true;
     Form_Main.OD_params.Active := false;
     Form_Main.OD_params.Active := true;
     //Вариант работы приложения
-    Form_main.org_var_ :=
-      DataModule1.OraclePackage1.CallIntegerFunction('scott.INIT.get_org_var',
-      [parNone]);
+    Form_main.org_var_ := DataModule1.OraclePackage1.CallIntegerFunction('scott.INIT.get_org_var', [parNone]);
 
-    //нельзя использовать versia в params - используется updater-ом
-//    Form_Main.CoolTrayIcon1.ShowTaskbarIcon;
   end;
 
   //ShowMessage('9');
@@ -440,43 +404,32 @@ DataModule1.OracleSession1.Connected := true;
   //справочник расценок по работам еще не загружен
   Form_main.isloadedspr_ := 0;
 
-  //  if DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
-  //    ['drx5_админ_доступ_к_базе']) = 1 then
   if CheckAccess('drx5_админ_доступ_к_базе') then
     Form_Main.g_admin := 1
   else
     Form_Main.g_admin := 0;
 
-  //  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
-//    ['drx5_админ_доступ_к_базе']) = 1) then
   if CheckAccess('drx5_админ_доступ_к_базе') then
     Form_main.isAdmin := true
   else
     Form_main.isAdmin := false;
 
-  //  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
-  //    ['drx_редактирование_klsk']) = 1) then
   if CheckAccess('drx_редактирование_klsk') then
     Form_main.isEditKlsk := true
   else
     Form_main.isEditKlsk := false;
 
-  //  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
-  //    ['drx3_Правка_кода_РЭУ']) = 1) then
   if CheckAccess('drx3_Правка_кода_РЭУ') then
     Form_main.isEditReu := true
   else
     Form_main.isEditReu := false;
 
-  //  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
-  //    ['drx4_Правка_кода_Пасп_стола']) = 1) then
   if CheckAccess('drx4_Правка_кода_Пасп_стола') then
     Form_main.isEditPasp := true
   else
     Form_main.isEditPasp := false;
 
-  if DataModule1.OraclePackage1.CallIntegerFunction('scott.INIT.get_kart_ed1',
-    [parNone]) = 1 then
+  if DataModule1.OraclePackage1.CallIntegerFunction('scott.INIT.get_kart_ed1', [parNone]) = 1 then
     Form_Main.isKartEd1 := True
   else
     Form_Main.isKartEd1 := False;
@@ -521,22 +474,16 @@ DataModule1.OracleSession1.Connected := true;
   DataModule1.OD_list_choice.SetVariable('clr_', 1);
   DataModule1.OD_list_choice.Active := true;
 
-  if (User <> 'scott') and (User <> 'lev') and
-    (Form_Main.OD_params.FieldByName('param').AsInteger = 1) then
+  if (User <> 'scott') and (User <> 'lev') and (Form_Main.OD_params.FieldByName('param').AsInteger = 1) then
   begin
     Application.CreateForm(TForm_alert_exit, Form_alert_exit);
-    Form_alert_exit.Memo1.Text :=
-      Form_Main.OD_params.FieldByName('message').AsString;
+    Form_alert_exit.Memo1.Text := Form_Main.OD_params.FieldByName('message').AsString;
     Form_alert_exit.Timer1.Enabled := true;
     Form_alert_exit.ShowModal;
   end;
 
   //ShowMessage('13');
-  if
-    ((DataModule1.OraclePackage1.CallIntegerFunction('scott.INIT.get_have_splash',
-    [parNone]) = 1) or
-    (Length(DataModule1.OraclePackage1.CallStringFunction('scott.INIT.get_errors',
-    [parNone])) > 0)) then
+  if ((DataModule1.OraclePackage1.CallIntegerFunction('scott.INIT.get_have_splash', [parNone]) = 1) or (Length(DataModule1.OraclePackage1.CallStringFunction('scott.INIT.get_errors', [parNone])) > 0)) then
   begin
     Application.Title := 'Директ';
     Application.CreateForm(TForm_start, Form_start);
@@ -546,7 +493,7 @@ DataModule1.OracleSession1.Connected := true;
   else
   begin
     Application.Title := 'Директ';
-  Application.Icon := nil;
+    Application.Icon := nil;
     Form_Main.Visible := true;
   end;
 

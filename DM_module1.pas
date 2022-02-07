@@ -69,6 +69,7 @@ type
     OD_list_choice: TOracleDataSet;
     UniTablePriveleges: TUniQuery;
     OD_u_list: TOracleDataSet;
+    OracleLogon1: TOracleLogon;
   private
     { Private declarations }
   public

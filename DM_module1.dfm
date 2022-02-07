@@ -254,13 +254,13 @@ object DataModule1: TDataModule1
   end
   object UniConnection1: TUniConnection
     ProviderName = 'Oracle'
+    Database = 'ORCL'
     SpecificOptions.Strings = (
       'Oracle.Direct=True'
       'Oracle.Charset=CL8MSWIN1251')
     Options.KeepDesignConnected = False
     Username = 'scott'
-    Server = '127.0.0.1'
-    Connected = True
+    LoginPrompt = False
     Left = 32
     Top = 416
     EncryptedPassword = '92FF90FF91FF9AFF92FF86FF8DFF90FF'
@@ -721,5 +721,15 @@ object DataModule1: TDataModule1
     Session = OracleSession1
     Left = 128
     Top = 664
+  end
+  object OracleLogon1: TOracleLogon
+    Session = OracleSession1
+    Retries = 10
+    Options = [ldAuto, ldDatabase, ldLogonHistory]
+    HistoryRegSection = 'DIRECT'
+    HistoryWithPassword = True
+    Caption = #1042#1093#1086#1076' '#1074' '#1089#1080#1089#1090#1077#1084#1091
+    Left = 88
+    Top = 16
   end
 end
