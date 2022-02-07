@@ -202,7 +202,6 @@ begin
   end;
 
   Application.CreateForm(TDataModule1, DataModule1);
-  Application.CreateForm(TForm_Main, Form_Main);
 
   if isIniFileFound then
   begin
@@ -320,6 +319,7 @@ begin
       begin
         try
           Application.Terminate;
+        Exit;
         except
         end;
       end;
@@ -365,6 +365,7 @@ begin
   end;
 
   //ShowMessage('4');
+  Application.CreateForm(TForm_Main, Form_Main);
 
   Application.CreateForm(TDM_Olap, DM_Olap);
   Application.CreateForm(TDM_Bill, DM_Bill);
