@@ -11,7 +11,7 @@ uses
   Unit_spr_redirect, u_frmTwoPeriods, cxClasses, cxEdit, cxEditRepositoryItems,
   frxExportBaseDialog, System.ImageList, cxGraphics, cxControls, cxLookAndFeels,
   cxLookAndFeelPainters, cxContainer, dxSkinsCore, dxSkinsDefaultPainters,
-  cxCheckBox, cxDBEdit, cxProgressBar;
+  cxCheckBox, cxDBEdit, cxProgressBar, u_frmDebtRequest;
 
 type
   TShowForm = function(App, Scr, Sess_: integer): integer; stdcall;
@@ -218,6 +218,7 @@ type
     N23012230064bit1: TMenuItem;
     cxDefaultEditStyleController1: TcxDefaultEditStyleController;
     cxProgressBar1: TcxProgressBar;
+    N8: TMenuItem;
     procedure N5Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure N7Click(Sender: TObject);
@@ -378,6 +379,7 @@ type
     procedure CloseTreeObj;
     procedure BeginUpdate;
     procedure EndUpdate;
+    procedure N8Click(Sender: TObject);
   private
   private
     FUpdateCount: integer;
@@ -927,6 +929,13 @@ begin
   showmessage('Пункт меню не используется!'){  Application.CreateForm(TForm_print_stat_usl, Form_print_stat_usl);
   Form_print_stat_usl.Select_form(22, 1, 1);
   Form_print_stat_usl.Caption := TMenuItem(Sender).Caption;}
+end;
+
+procedure TForm_Main.N8Click(Sender: TObject);
+begin
+  if FF('frmDebtRequest', 1) = 0 then
+    Application.CreateForm(TfrmDebtRequest, frmDebtRequest);
+
 end;
 
 procedure TForm_Main.N48Click(Sender: TObject);

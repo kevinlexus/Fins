@@ -140,7 +140,8 @@ uses
   Unit_par_edit in 'Unit_par_edit.pas' {Form_par_edit},
   Vcl.Themes,
   Vcl.Styles,
-  u_frmOLAP in 'u_frmOLAP.pas' {frmOLAP};
+  u_frmOLAP in 'u_frmOLAP.pas' {frmOLAP},
+  u_frmDebtRequest in 'u_frmDebtRequest.pas' {frmDebtRequest};
 
 {$R *.RES}
 var
@@ -202,7 +203,6 @@ begin
   end;
 
   Application.CreateForm(TDataModule1, DataModule1);
-
   if isIniFileFound then
   begin
     s := Ini.ReadString('Application', 'User', '');
@@ -303,8 +303,6 @@ begin
   loadIniPar;
   //ShowMessage('1');
 
-  Form_Main.cxProgressBar1.Position := 1;
-  Form_Main.Update;
   try
 
     if ((User = '') or (Pass = '') or (SID = '')) then

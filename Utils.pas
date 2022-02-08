@@ -226,6 +226,8 @@ begin
     SetMenuItem(acc_, N147, 'drn143_Загрузка_внешних_лс_ЧГК');
     SetMenuItem(acc_, N146, 'drn146_Объемы_по_счетчикам');
 
+    SetMenuItem(acc_, N8, 'drn8_Ответы_на_запросы_задолж');
+
   end;
 end;
 
