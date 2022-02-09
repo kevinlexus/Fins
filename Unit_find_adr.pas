@@ -7,7 +7,8 @@ uses
   Dialogs, StdCtrls, DB, OracleData, Buttons, ImgList,
   cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
   cxContainer, cxEdit, cxTextEdit, cxMaskEdit, cxDropDownEdit,
-  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox;
+  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, dxSkinsCore,
+  dxSkinsDefaultPainters;
 
 type
   TForm_find_adr = class(TForm)

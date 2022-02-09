@@ -10,7 +10,8 @@ uses
   cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
   dxDateRanges, cxDBData, cxGridLevel, cxClasses, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
-  cxGridCardView, cxGridDBCardView, cxGridCustomLayoutView, cxCheckBox, cxMemo;
+  cxGridCardView, cxGridDBCardView, cxGridCustomLayoutView, cxCheckBox, cxMemo,
+  dxBar, Vcl.StdCtrls, Vcl.ExtCtrls;
 
 type
   TfrmDebtRequest = class(TForm)
@@ -164,6 +165,8 @@ type
     Uni_debtIS_ERROR_ON_RESPONSE: TFloatField;
     Uni_debtROWID: TStringField;
     Uni_debtRESULT_GIS_NAME: TStringField;
+    Panel1: TPanel;
+    Button1: TButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
   private    { Private declarations }

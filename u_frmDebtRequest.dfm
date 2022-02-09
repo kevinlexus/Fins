@@ -20,11 +20,12 @@ object frmDebtRequest: TfrmDebtRequest
   TextHeight = 13
   object cxGrid1: TcxGrid
     Left = 0
-    Top = 0
+    Top = 41
     Width = 1453
-    Height = 666
+    Height = 625
     Align = alClient
     TabOrder = 0
+    ExplicitTop = 0
     ExplicitWidth = 1132
     ExplicitHeight = 619
     object cxGrid1DBCardView1: TcxGridDBCardView
@@ -533,6 +534,29 @@ object frmDebtRequest: TfrmDebtRequest
       object cxGrid1Level2: TcxGridLevel
         GridView = cxGrid1DBCardView3
       end
+    end
+  end
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 1453
+    Height = 41
+    Align = alTop
+    TabOrder = 1
+    ExplicitLeft = 512
+    ExplicitTop = 280
+    ExplicitWidth = 185
+    DesignSize = (
+      1453
+      41)
+    object Button1: TButton
+      Left = 1352
+      Top = 10
+      Width = 75
+      Height = 25
+      Anchors = [akRight, akBottom]
+      Caption = #1054#1090#1087#1088#1072#1074#1080#1090#1100
+      TabOrder = 0
     end
   end
   object Uni_debt: TUniQuery
