@@ -16,7 +16,8 @@ uses
   cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
   cxDBData, cxContainer, cxTextEdit, cxMaskEdit, cxDropDownEdit,
   cxGridCustomTableView, cxGridTableView, cxGridCustomView, Grids, 
-  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox;
+  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, dxSkinsCore,
+  dxSkinsDefaultPainters, dxDateRanges;
 
 type
   TForm_corr_sal = class(TForm)

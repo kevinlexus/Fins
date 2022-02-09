@@ -13,6 +13,9 @@ uses
   cxGridCardView, cxGridDBCardView, cxGridCustomLayoutView, cxCheckBox, cxMemo,
   dxBar, Vcl.StdCtrls, Vcl.ExtCtrls;
 
+  //const
+//  UM_CHECK = WM_USER + 10000;
+
 type
   TfrmDebtRequest = class(TForm)
     Uni_debt: TUniQuery;
@@ -56,43 +59,6 @@ type
     cxGrid1DBCardView1IS_ERROR_ON_RESPONSE: TcxGridDBCardViewRow;
     cxGrid1DBCardView1ROWID: TcxGridDBCardViewRow;
     cxGrid1Level1: TcxGridLevel;
-    cxGrid1DBCardView2: TcxGridDBCardView;
-    cxGrid1DBCardView2ID: TcxGridDBCardViewRow;
-    cxGrid1DBCardView2REQUEST_NUMBER: TcxGridDBCardViewRow;
-    cxGrid1DBCardView2REQUEST_GUID: TcxGridDBCardViewRow;
-    cxGrid1DBCardView2FIRST_NAME: TcxGridDBCardViewRow;
-    cxGrid1DBCardView2LAST_NAME: TcxGridDBCardViewRow;
-    cxGrid1DBCardView2MIDDLE_NAME: TcxGridDBCardViewRow;
-    cxGrid1DBCardView2SNILS: TcxGridDBCardViewRow;
-    cxGrid1DBCardView2DOC_SERIA: TcxGridDBCardViewRow;
-    cxGrid1DBCardView2DOC_NUMBER: TcxGridDBCardViewRow;
-    cxGrid1DBCardView2DOC_TYPE: TcxGridDBCardViewRow;
-    cxGrid1DBCardView2ADDRESS: TcxGridDBCardViewRow;
-    cxGrid1DBCardView2ADDRESS_DETAIL: TcxGridDBCardViewRow;
-    cxGrid1DBCardView2STATUS_GIS: TcxGridDBCardViewRow;
-    cxGrid1DBCardView2RESULT_GIS_GUID: TcxGridDBCardViewRow;
-    cxGrid1DBCardView2SENT_DATE: TcxGridDBCardViewRow;
-    cxGrid1DBCardView2RESPONSE_DATE: TcxGridDBCardViewRow;
-    cxGrid1DBCardView2HAS_DEBT: TcxGridDBCardViewRow;
-    cxGrid1DBCardView2EXECUTOR_GUID: TcxGridDBCardViewRow;
-    cxGrid1DBCardView2EXECUTOR_FIO: TcxGridDBCardViewRow;
-    cxGrid1DBCardView2DT_CRT: TcxGridDBCardViewRow;
-    cxGrid1DBCardView2DT_UPD: TcxGridDBCardViewRow;
-    cxGrid1DBCardView2FK_USER: TcxGridDBCardViewRow;
-    cxGrid1DBCardView2ORG_FROM_GUID: TcxGridDBCardViewRow;
-    cxGrid1DBCardView2ORG_FROM_NAME: TcxGridDBCardViewRow;
-    cxGrid1DBCardView2ORG_FROM_PHONE: TcxGridDBCardViewRow;
-    cxGrid1DBCardView2STATUS: TcxGridDBCardViewRow;
-    cxGrid1DBCardView2RESPONSE_STATUS: TcxGridDBCardViewRow;
-    cxGrid1DBCardView2FK_EOLINK_HOUSE: TcxGridDBCardViewRow;
-    cxGrid1DBCardView2SEL: TcxGridDBCardViewRow;
-    cxGrid1DBCardView2FK_USER_RESPONSE: TcxGridDBCardViewRow;
-    cxGrid1DBCardView2DESCRIPTION: TcxGridDBCardViewRow;
-    cxGrid1DBCardView2RESULT: TcxGridDBCardViewRow;
-    cxGrid1DBCardView2TGUID: TcxGridDBCardViewRow;
-    cxGrid1DBCardView2IS_REVOKED: TcxGridDBCardViewRow;
-    cxGrid1DBCardView2IS_ERROR_ON_RESPONSE: TcxGridDBCardViewRow;
-    cxGrid1DBCardView2ROWID: TcxGridDBCardViewRow;
     cxGrid1DBTableView1: TcxGridDBTableView;
     cxGrid1DBTableView1ID: TcxGridDBColumn;
     cxGrid1DBTableView1REQUEST_NUMBER: TcxGridDBColumn;
@@ -107,7 +73,6 @@ type
     cxGrid1DBTableView1DT_CRT: TcxGridDBColumn;
     cxGrid1DBTableView1DT_UPD: TcxGridDBColumn;
     cxGrid1DBTableView1ORG_FROM_NAME: TcxGridDBColumn;
-    cxGrid1DBTableView1SEL: TcxGridDBColumn;
     cxGrid1DBTableView1RESULT: TcxGridDBColumn;
     cxGrid1DBTableView1IS_REVOKED: TcxGridDBColumn;
     cxGrid1Level2: TcxGridLevel;
@@ -127,7 +92,6 @@ type
     cxGrid1DBCardView3ORG_FROM_NAME: TcxGridDBCardViewRow;
     cxGrid1DBCardView3ORG_FROM_PHONE: TcxGridDBCardViewRow;
     cxGrid1DBCardView3DESCRIPTION: TcxGridDBCardViewRow;
-    cxGrid1DBCardView3RESULT: TcxGridDBCardViewRow;
     Uni_debtID: TFloatField;
     Uni_debtREQUEST_NUMBER: TStringField;
     Uni_debtREQUEST_GUID: TStringField;
@@ -167,8 +131,12 @@ type
     Uni_debtRESULT_GIS_NAME: TStringField;
     Panel1: TPanel;
     Button1: TButton;
+    cxGrid1DBCardView3IS_REVOKED: TcxGridDBCardViewRow;
+    cxGrid1DBCardView3HAS_DEBT: TcxGridDBCardViewRow;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure cxGrid1DBTableView1SelectionChanged(Sender: TcxCustomGridTableView);
   private    { Private declarations }
   public    { Public declarations }
   end;
@@ -181,6 +149,14 @@ implementation
 
 {$R *.dfm}
 
+procedure TfrmDebtRequest.cxGrid1DBTableView1SelectionChanged(Sender: TcxCustomGridTableView);
+begin
+  if cxGrid1DBTableView1.Controller.SelectedRecordCount > 0 then
+    Button1.Enabled:=true
+  else
+    Button1.Enabled:=false;
+end;
+
 procedure TfrmDebtRequest.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Action := CaFree;
@@ -188,7 +164,26 @@ end;
 
 procedure TfrmDebtRequest.FormCreate(Sender: TObject);
 begin
-  Uni_debt.Active:=true;
+  Uni_debt.Active := true;
+end;
+
+procedure TfrmDebtRequest.Button1Click(Sender: TObject);
+var
+  I: integer;
+  ids: string;
+begin
+  ids := '';
+  with cxGrid1DBTableView1.Controller do
+    for I := 0 to SelectedRecordCount - 1 do
+    begin
+      ids := ids + VarToStr(cxGrid1DBTableView1.Controller.SelectedRecords[I].Values[0]);
+      if I < SelectedRecordCount - 1 then
+        ids := ids + ',';
+    end;
+
+  cxGrid1DBTableView1.Controller.ClearSelection;
+  DataModule1.OraclePackage1.CallProcedure('scott.P_JAVA.putTaskToWork', [ids]);
+
 end;
 
 end.

@@ -25,9 +25,6 @@ object frmDebtRequest: TfrmDebtRequest
     Height = 625
     Align = alClient
     TabOrder = 0
-    ExplicitTop = 0
-    ExplicitWidth = 1132
-    ExplicitHeight = 619
     object cxGrid1DBCardView1: TcxGridDBCardView
       Navigator.Buttons.CustomButtons = <>
       DataController.DataSource = DS_debt
@@ -182,218 +179,75 @@ object frmDebtRequest: TfrmDebtRequest
         Position.BeginsLayer = True
       end
     end
-    object cxGrid1DBCardView2: TcxGridDBCardView
-      Navigator.Buttons.CustomButtons = <>
-      DataController.DataSource = DS_debt
-      DataController.Summary.DefaultGroupSummaryItems = <>
-      DataController.Summary.FooterSummaryItems = <>
-      DataController.Summary.SummaryGroups = <>
-      OptionsView.CardIndent = 7
-      object cxGrid1DBCardView2ID: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'ID'
-        Position.BeginsLayer = True
-      end
-      object cxGrid1DBCardView2REQUEST_NUMBER: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'REQUEST_NUMBER'
-        Position.BeginsLayer = True
-      end
-      object cxGrid1DBCardView2REQUEST_GUID: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'REQUEST_GUID'
-        Position.BeginsLayer = True
-      end
-      object cxGrid1DBCardView2FIRST_NAME: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'FIRST_NAME'
-        Position.BeginsLayer = True
-      end
-      object cxGrid1DBCardView2LAST_NAME: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'LAST_NAME'
-        Position.BeginsLayer = True
-      end
-      object cxGrid1DBCardView2MIDDLE_NAME: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'MIDDLE_NAME'
-        Position.BeginsLayer = True
-      end
-      object cxGrid1DBCardView2SNILS: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'SNILS'
-        Position.BeginsLayer = True
-      end
-      object cxGrid1DBCardView2DOC_SERIA: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'DOC_SERIA'
-        Position.BeginsLayer = True
-      end
-      object cxGrid1DBCardView2DOC_NUMBER: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'DOC_NUMBER'
-        Position.BeginsLayer = True
-      end
-      object cxGrid1DBCardView2DOC_TYPE: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'DOC_TYPE'
-        Position.BeginsLayer = True
-      end
-      object cxGrid1DBCardView2ADDRESS: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'ADDRESS'
-        Position.BeginsLayer = True
-      end
-      object cxGrid1DBCardView2ADDRESS_DETAIL: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'ADDRESS_DETAIL'
-        Position.BeginsLayer = True
-      end
-      object cxGrid1DBCardView2STATUS_GIS: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'STATUS_GIS'
-        Position.BeginsLayer = True
-      end
-      object cxGrid1DBCardView2RESULT_GIS_GUID: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'RESULT_GIS_GUID'
-        Position.BeginsLayer = True
-      end
-      object cxGrid1DBCardView2SENT_DATE: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'SENT_DATE'
-        Position.BeginsLayer = True
-      end
-      object cxGrid1DBCardView2RESPONSE_DATE: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'RESPONSE_DATE'
-        Position.BeginsLayer = True
-      end
-      object cxGrid1DBCardView2HAS_DEBT: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'HAS_DEBT'
-        Position.BeginsLayer = True
-      end
-      object cxGrid1DBCardView2EXECUTOR_GUID: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'EXECUTOR_GUID'
-        Position.BeginsLayer = True
-      end
-      object cxGrid1DBCardView2EXECUTOR_FIO: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'EXECUTOR_FIO'
-        Position.BeginsLayer = True
-      end
-      object cxGrid1DBCardView2DT_CRT: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'DT_CRT'
-        Position.BeginsLayer = True
-      end
-      object cxGrid1DBCardView2DT_UPD: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'DT_UPD'
-        Position.BeginsLayer = True
-      end
-      object cxGrid1DBCardView2FK_USER: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'FK_USER'
-        Position.BeginsLayer = True
-      end
-      object cxGrid1DBCardView2ORG_FROM_GUID: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'ORG_FROM_GUID'
-        Position.BeginsLayer = True
-      end
-      object cxGrid1DBCardView2ORG_FROM_NAME: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'ORG_FROM_NAME'
-        Position.BeginsLayer = True
-      end
-      object cxGrid1DBCardView2ORG_FROM_PHONE: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'ORG_FROM_PHONE'
-        Position.BeginsLayer = True
-      end
-      object cxGrid1DBCardView2STATUS: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'STATUS'
-        Position.BeginsLayer = True
-      end
-      object cxGrid1DBCardView2RESPONSE_STATUS: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'RESPONSE_STATUS'
-        Position.BeginsLayer = True
-      end
-      object cxGrid1DBCardView2FK_EOLINK_HOUSE: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'FK_EOLINK_HOUSE'
-        Position.BeginsLayer = True
-      end
-      object cxGrid1DBCardView2SEL: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'SEL'
-        Position.BeginsLayer = True
-      end
-      object cxGrid1DBCardView2FK_USER_RESPONSE: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'FK_USER_RESPONSE'
-        Position.BeginsLayer = True
-      end
-      object cxGrid1DBCardView2DESCRIPTION: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'DESCRIPTION'
-        Position.BeginsLayer = True
-      end
-      object cxGrid1DBCardView2RESULT: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'RESULT'
-        Position.BeginsLayer = True
-      end
-      object cxGrid1DBCardView2TGUID: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'TGUID'
-        Position.BeginsLayer = True
-      end
-      object cxGrid1DBCardView2IS_REVOKED: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'IS_REVOKED'
-        Position.BeginsLayer = True
-      end
-      object cxGrid1DBCardView2IS_ERROR_ON_RESPONSE: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'IS_ERROR_ON_RESPONSE'
-        Position.BeginsLayer = True
-      end
-      object cxGrid1DBCardView2ROWID: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'ROWID'
-        Visible = False
-        Position.BeginsLayer = True
-      end
-    end
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Visible = True
+      OnSelectionChanged = cxGrid1DBTableView1SelectionChanged
       DataController.DataSource = DS_debt
       DataController.Filter.Options = [fcoCaseInsensitive, fcoSoftNull]
       DataController.Filter.Active = True
       DataController.Filter.AutoDataSetFilter = True
+      DataController.KeyFieldNames = 'ID'
       DataController.Summary.DefaultGroupSummaryItems = <>
       DataController.Summary.FooterSummaryItems = <>
       DataController.Summary.SummaryGroups = <>
       OptionsData.Deleting = False
       OptionsData.DeletingConfirmation = False
+      OptionsData.Editing = False
       OptionsData.Inserting = False
+      OptionsSelection.MultiSelect = True
+      OptionsSelection.CheckBoxVisibility = [cbvDataRow]
       OptionsView.ColumnAutoWidth = True
       OptionsView.GroupByBox = False
       OptionsView.HeaderAutoHeight = True
+      OptionsView.Indicator = True
+      object cxGrid1DBTableView1ID: TcxGridDBColumn
+        DataBinding.FieldName = 'ID'
+        Width = 20
+      end
       object cxGrid1DBTableView1REQUEST_NUMBER: TcxGridDBColumn
         DataBinding.FieldName = 'REQUEST_NUMBER'
-        Width = 97
+        Width = 93
       end
       object cxGrid1DBTableView1ORG_FROM_NAME: TcxGridDBColumn
         DataBinding.FieldName = 'ORG_FROM_NAME'
-        Width = 167
+        Width = 159
       end
       object cxGrid1DBTableView1ADDRESS: TcxGridDBColumn
         DataBinding.FieldName = 'ADDRESS'
-        Width = 142
+        Width = 135
       end
       object cxGrid1DBTableView1ADDRESS_DETAIL: TcxGridDBColumn
         DataBinding.FieldName = 'ADDRESS_DETAIL'
-        Width = 94
+        Width = 89
       end
       object cxGrid1DBTableView1SENT_DATE: TcxGridDBColumn
         DataBinding.FieldName = 'SENT_DATE'
-        Width = 93
+        Width = 89
       end
       object cxGrid1DBTableView1RESPONSE_DATE: TcxGridDBColumn
         DataBinding.FieldName = 'RESPONSE_DATE'
-        Width = 93
+        Width = 89
       end
       object cxGrid1DBTableView1FIRST_NAME: TcxGridDBColumn
         DataBinding.FieldName = 'FIRST_NAME'
-        Width = 65
+        Width = 62
       end
       object cxGrid1DBTableView1LAST_NAME: TcxGridDBColumn
         DataBinding.FieldName = 'LAST_NAME'
-        Width = 75
+        Width = 72
       end
       object cxGrid1DBTableView1MIDDLE_NAME: TcxGridDBColumn
         DataBinding.FieldName = 'MIDDLE_NAME'
-        Width = 77
+        Width = 73
       end
       object cxGrid1DBTableView1HAS_DEBT: TcxGridDBColumn
         DataBinding.FieldName = 'HAS_DEBT'
         PropertiesClassName = 'TcxCheckBoxProperties'
         Properties.Alignment = taRightJustify
-        Properties.ValueChecked = -1
+        Properties.ValueChecked = 1
         Properties.ValueUnchecked = 0
-        Width = 74
+        Width = 70
       end
       object cxGrid1DBTableView1IS_REVOKED: TcxGridDBColumn
         DataBinding.FieldName = 'IS_REVOKED'
@@ -401,31 +255,19 @@ object frmDebtRequest: TfrmDebtRequest
         Properties.Alignment = taRightJustify
         Properties.ValueChecked = 1
         Properties.ValueUnchecked = 0
-        Width = 70
+        Width = 67
       end
       object cxGrid1DBTableView1RESULT: TcxGridDBColumn
         DataBinding.FieldName = 'RESULT'
-        Width = 82
+        Width = 78
       end
       object cxGrid1DBTableView1DT_CRT: TcxGridDBColumn
         DataBinding.FieldName = 'DT_CRT'
-        Width = 62
+        Width = 59
       end
       object cxGrid1DBTableView1DT_UPD: TcxGridDBColumn
         DataBinding.FieldName = 'DT_UPD'
-        Width = 68
-      end
-      object cxGrid1DBTableView1SEL: TcxGridDBColumn
-        DataBinding.FieldName = 'SEL'
-        PropertiesClassName = 'TcxCheckBoxProperties'
-        Properties.Alignment = taRightJustify
-        Properties.ValueChecked = 1
-        Properties.ValueUnchecked = 0
-        Width = 51
-      end
-      object cxGrid1DBTableView1ID: TcxGridDBColumn
-        DataBinding.FieldName = 'ID'
-        Width = 24
+        Width = 65
       end
     end
     object cxGrid1DBCardView3: TcxGridDBCardView
@@ -523,10 +365,21 @@ object frmDebtRequest: TfrmDebtRequest
         Options.Filtering = False
         Position.BeginsLayer = True
       end
-      object cxGrid1DBCardView3RESULT: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'RESULT'
-        Options.Filtering = False
+      object cxGrid1DBCardView3HAS_DEBT: TcxGridDBCardViewRow
+        DataBinding.FieldName = 'HAS_DEBT'
+        PropertiesClassName = 'TcxCheckBoxProperties'
+        Properties.Alignment = taRightJustify
+        Properties.ValueChecked = 1
+        Properties.ValueUnchecked = 0
         Position.BeginsLayer = True
+      end
+      object cxGrid1DBCardView3IS_REVOKED: TcxGridDBCardViewRow
+        DataBinding.FieldName = 'IS_REVOKED'
+        PropertiesClassName = 'TcxCheckBoxProperties'
+        Properties.Alignment = taRightJustify
+        Properties.ValueChecked = 1
+        Properties.ValueUnchecked = 0
+        Position.BeginsLayer = False
       end
     end
     object cxGrid1Level1: TcxGridLevel
@@ -543,9 +396,6 @@ object frmDebtRequest: TfrmDebtRequest
     Height = 41
     Align = alTop
     TabOrder = 1
-    ExplicitLeft = 512
-    ExplicitTop = 280
-    ExplicitWidth = 185
     DesignSize = (
       1453
       41)
@@ -556,7 +406,9 @@ object frmDebtRequest: TfrmDebtRequest
       Height = 25
       Anchors = [akRight, akBottom]
       Caption = #1054#1090#1087#1088#1072#1074#1080#1090#1100
+      Enabled = False
       TabOrder = 0
+      OnClick = Button1Click
     end
   end
   object Uni_debt: TUniQuery
