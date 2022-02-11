@@ -134,10 +134,15 @@ type
     cxGrid1DBCardView3HEADER: TcxGridDBCardViewRow;
     Uni_doc_nsi_95: TUniQuery;
     DS_doc_nsi_95: TDataSource;
+    cxGrid1DBTableView1STATUS: TcxGridDBColumn;
+    cxGrid1DBTableView1IS_ERROR_ON_RESPONSE: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure cxGrid1DBTableView1SelectionChanged(Sender: TcxCustomGridTableView);
+    procedure cxGrid1DBTableView1CustomDrawCell(Sender: TcxCustomGridTableView;
+      ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo;
+      var ADone: Boolean);
   private    { Private declarations }
   public    { Public declarations }
   end;
@@ -149,6 +154,32 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TfrmDebtRequest.cxGrid1DBTableView1CustomDrawCell(
+  Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;
+  AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
+var
+  col: TcxGridDBColumn;
+  status, error: string;
+begin
+  // цвет записи
+  col := cxGrid1DBTableView1.GetColumnByFieldName('STATUS');
+  status := AViewInfo.GridRecord.DisplayTexts[col.Index];
+
+  col := cxGrid1DBTableView1.GetColumnByFieldName('IS_ERROR_ON_RESPONSE');
+  error := AViewInfo.GridRecord.DisplayTexts[col.Index];
+
+  if (status = '1') then
+  begin
+    // добавлено в загрузку
+    ACanvas.Font.Color := clBlue;
+  end
+  else if (error = '1') then
+  begin
+    // ошибка последней отправки в ГИС
+    ACanvas.Font.Color := clRed;
+  end;
+end;
 
 procedure TfrmDebtRequest.cxGrid1DBTableView1SelectionChanged(Sender: TcxCustomGridTableView);
 begin

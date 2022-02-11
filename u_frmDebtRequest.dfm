@@ -182,6 +182,7 @@ object frmDebtRequest: TfrmDebtRequest
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Visible = True
+      OnCustomDrawCell = cxGrid1DBTableView1CustomDrawCell
       OnSelectionChanged = cxGrid1DBTableView1SelectionChanged
       DataController.DataSource = DS_debt
       DataController.Filter.Options = [fcoCaseInsensitive, fcoSoftNull]
@@ -190,6 +191,7 @@ object frmDebtRequest: TfrmDebtRequest
       DataController.Summary.DefaultGroupSummaryItems = <>
       DataController.Summary.FooterSummaryItems = <>
       DataController.Summary.SummaryGroups = <>
+      OptionsBehavior.CellHints = True
       OptionsData.Deleting = False
       OptionsData.DeletingConfirmation = False
       OptionsData.Editing = False
@@ -267,6 +269,14 @@ object frmDebtRequest: TfrmDebtRequest
       object cxGrid1DBTableView1DT_UPD: TcxGridDBColumn
         DataBinding.FieldName = 'DT_UPD'
         Width = 65
+      end
+      object cxGrid1DBTableView1STATUS: TcxGridDBColumn
+        DataBinding.FieldName = 'STATUS'
+        Visible = False
+      end
+      object cxGrid1DBTableView1IS_ERROR_ON_RESPONSE: TcxGridDBColumn
+        DataBinding.FieldName = 'IS_ERROR_ON_RESPONSE'
+        Visible = False
       end
     end
     object cxGrid1DBCardView3: TcxGridDBCardView
