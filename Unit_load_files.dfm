@@ -13,7 +13,6 @@ object Form_load_files: TForm_load_files
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   FormStyle = fsMDIChild
- 
   OldCreateOrder = False
   Position = poMainFormCenter
   Visible = True
@@ -159,6 +158,7 @@ object Form_load_files: TForm_load_files
           Caption = #1059#1089#1090'.'#1087#1088#1077#1076'.'#1087#1086#1082#1072#1079#1072#1085#1080#1103'?'
           DataBinding.FieldName = 'IS_SET_PREV_VAL'
           PropertiesClassName = 'TcxCheckBoxProperties'
+          Properties.Alignment = taRightJustify
           Properties.ValueChecked = 1
           Properties.ValueUnchecked = 0
           Width = 78
@@ -167,6 +167,7 @@ object Form_load_files: TForm_load_files
           Caption = #1044#1077#1081#1089#1090#1074#1091#1077#1090'?'
           DataBinding.FieldName = 'V'
           PropertiesClassName = 'TcxCheckBoxProperties'
+          Properties.Alignment = taRightJustify
           Properties.ValueChecked = 1
           Properties.ValueUnchecked = 0
           Width = 67
@@ -217,8 +218,8 @@ object Form_load_files: TForm_load_files
       'order by t.reu')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      040000000300000003000000524555010000000000040000004E414D45010000
-      0000000300000053454C010000000000}
+      050000000300000006000000520045005500010000000000080000004E004100
+      4D00450001000000000006000000530045004C00010000000000}
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True
@@ -239,12 +240,13 @@ object Form_load_files: TForm_load_files
       'order by t.id')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      040000000A0000000200000049440100000000000600000044545F4352540100
-      000000000600000044545F555044010000000000020000004344010000000000
-      07000000464B5F5553455201000000000004000000434F4D4D0100000000000F
-      00000049535F5345545F505245565F56414C010000000000020000004D470100
-      0000000009000000555345525F4E414D45010000000000010000005601000000
-      0000}
+      050000000A00000004000000490044000100000000000C000000440054005F00
+      4300520054000100000000000C000000440054005F0055005000440001000000
+      000004000000430044000100000000000E00000046004B005F00550053004500
+      52000100000000000800000043004F004D004D000100000000001E0000004900
+      53005F005300450054005F0050005200450056005F00560041004C0001000000
+      0000040000004D0047000100000000001200000055005300450052005F004E00
+      41004D004500010000000000020000005600010000000000}
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True

@@ -11,7 +11,7 @@ uses
   dxDateRanges, cxDBData, cxGridLevel, cxClasses, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
   cxGridCardView, cxGridDBCardView, cxGridCustomLayoutView, cxCheckBox, cxMemo,
-  dxBar, Vcl.StdCtrls, Vcl.ExtCtrls;
+  dxBar, Vcl.StdCtrls, Vcl.ExtCtrls, cxDBLookupComboBox, Oracle;
 
   //const
 //  UM_CHECK = WM_USER + 10000;
@@ -105,7 +105,6 @@ type
     Uni_debtADDRESS: TStringField;
     Uni_debtADDRESS_DETAIL: TStringField;
     Uni_debtSTATUS_GIS: TFloatField;
-    Uni_debtRESULT_GIS_GUID: TStringField;
     Uni_debtSENT_DATE: TDateTimeField;
     Uni_debtRESPONSE_DATE: TDateTimeField;
     Uni_debtHAS_DEBT: TFloatField;
@@ -128,11 +127,13 @@ type
     Uni_debtIS_REVOKED: TFloatField;
     Uni_debtIS_ERROR_ON_RESPONSE: TFloatField;
     Uni_debtROWID: TStringField;
-    Uni_debtRESULT_GIS_NAME: TStringField;
     Panel1: TPanel;
     Button1: TButton;
     cxGrid1DBCardView3IS_REVOKED: TcxGridDBCardViewRow;
     cxGrid1DBCardView3HAS_DEBT: TcxGridDBCardViewRow;
+    cxGrid1DBCardView3HEADER: TcxGridDBCardViewRow;
+    Uni_doc_nsi_95: TUniQuery;
+    DS_doc_nsi_95: TDataSource;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -152,9 +153,9 @@ implementation
 procedure TfrmDebtRequest.cxGrid1DBTableView1SelectionChanged(Sender: TcxCustomGridTableView);
 begin
   if cxGrid1DBTableView1.Controller.SelectedRecordCount > 0 then
-    Button1.Enabled:=true
+    Button1.Enabled := true
   else
-    Button1.Enabled:=false;
+    Button1.Enabled := false;
 end;
 
 procedure TfrmDebtRequest.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -165,24 +166,46 @@ end;
 procedure TfrmDebtRequest.FormCreate(Sender: TObject);
 begin
   Uni_debt.Active := true;
+  Uni_doc_nsi_95.Active := true;
 end;
 
 procedure TfrmDebtRequest.Button1Click(Sender: TObject);
 var
   I: integer;
-  ids: string;
+  id, ids: string;
 begin
   ids := '';
   with cxGrid1DBTableView1.Controller do
     for I := 0 to SelectedRecordCount - 1 do
     begin
-      ids := ids + VarToStr(cxGrid1DBTableView1.Controller.SelectedRecords[I].Values[0]);
+      id := VarToStr(cxGrid1DBTableView1.Controller.SelectedRecords[I].Values[0]);
+      with Uni_debt do
+      begin
+        if not (State in [dsBrowse]) then
+          Post;
+        if Locate('id', id, []) = True then
+        begin
+          Edit;
+          FieldByName('status').AsInteger := 1;
+          Post;
+        end;
+      end;
+
+      ids := ids + id;
       if I < SelectedRecordCount - 1 then
         ids := ids + ',';
+
     end;
 
-  cxGrid1DBTableView1.Controller.ClearSelection;
-  DataModule1.OraclePackage1.CallProcedure('scott.P_JAVA.putTaskToWork', [ids]);
+  DataModule1.OraclePackage1.CallProcedure('scott.P_JAVA.putTaskToWork', [ids, parInteger]);
+  if DataModule1.OraclePackage1.GetParameter(1) > 0 then
+  begin
+    cxGrid1DBTableView1.Controller.ClearSelection;
+    Application.MessageBox('Ответы направлены в ГИС ЖКХ, ожидайте их обработки', 'Внимание!', MB_OK + MB_ICONINFORMATION + MB_TOPMOST);
+
+  end
+  else
+    Application.MessageBox('Повторите отправку позднее', 'Внимание!', MB_OK + MB_ICONINFORMATION + MB_TOPMOST);
 
 end;
 

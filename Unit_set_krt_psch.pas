@@ -8,7 +8,8 @@ uses
   Utils, Oracle, cxGraphics, cxControls,
   cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit, ComCtrls,
   dxCore, cxDateUtils, cxTextEdit, cxMaskEdit, cxDropDownEdit, cxCalendar,
-  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox;
+  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, dxSkinsCore,
+  dxSkinsDefaultPainters;
 
 type
   TForm_set_krt_psch = class(TForm)

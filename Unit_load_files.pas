@@ -14,7 +14,8 @@ uses
   cxGrid, Menus, cxLookAndFeels, cxContainer, cxEdit, cxStyles,
   cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, cxDBData,
   cxGridCustomTableView, cxGridTableView, cxGridCustomView, cxTextEdit,
-  cxMaskEdit, cxDropDownEdit, Mask, cxImageComboBox;
+  cxMaskEdit, cxDropDownEdit, Mask, cxImageComboBox, dxSkinsCore,
+  dxSkinsDefaultPainters, dxDateRanges;
 
 type
   TForm_load_files = class(TForm)

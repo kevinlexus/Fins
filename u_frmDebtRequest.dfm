@@ -187,7 +187,6 @@ object frmDebtRequest: TfrmDebtRequest
       DataController.Filter.Options = [fcoCaseInsensitive, fcoSoftNull]
       DataController.Filter.Active = True
       DataController.Filter.AutoDataSetFilter = True
-      DataController.KeyFieldNames = 'ID'
       DataController.Summary.DefaultGroupSummaryItems = <>
       DataController.Summary.FooterSummaryItems = <>
       DataController.Summary.SummaryGroups = <>
@@ -286,7 +285,7 @@ object frmDebtRequest: TfrmDebtRequest
       OptionsData.Inserting = False
       OptionsView.CaptionWidth = 150
       OptionsView.CardIndent = 7
-      OptionsView.CardWidth = 700
+      OptionsView.CardWidth = 800
       OptionsView.CategoryRowCaptionInRowAlternateCaption = True
       OptionsView.CellAutoHeight = True
       object cxGrid1DBCardView3REQUEST_NUMBER: TcxGridDBCardViewRow
@@ -324,10 +323,18 @@ object frmDebtRequest: TfrmDebtRequest
         Options.Filtering = False
         Position.BeginsLayer = True
       end
+      object cxGrid1DBCardView3HEADER: TcxGridDBCardViewRow
+        Caption = #1044#1083#1103' '#1079#1072#1087#1086#1083#1085#1077#1085#1080#1103
+        Expanded = True
+        Kind = rkCategory
+        Options.Editing = False
+        Options.Filtering = False
+        Position.BeginsLayer = True
+      end
       object cxGrid1DBCardView3FIRST_NAME: TcxGridDBCardViewRow
         DataBinding.FieldName = 'FIRST_NAME'
         Options.Filtering = False
-        Position.BeginsLayer = True
+        Position.BeginsLayer = False
       end
       object cxGrid1DBCardView3LAST_NAME: TcxGridDBCardViewRow
         DataBinding.FieldName = 'LAST_NAME'
@@ -344,6 +351,20 @@ object frmDebtRequest: TfrmDebtRequest
         Options.Filtering = False
         Position.BeginsLayer = True
       end
+      object cxGrid1DBCardView3DOC_TYPE: TcxGridDBCardViewRow
+        DataBinding.FieldName = 'DOC_TYPE_GUID'
+        PropertiesClassName = 'TcxLookupComboBoxProperties'
+        Properties.DropDownWidth = 350
+        Properties.KeyFieldNames = 'GUID'
+        Properties.ListColumns = <
+          item
+            FieldName = 'NAME'
+          end>
+        Properties.ListOptions.ShowHeader = False
+        Properties.ListSource = DS_doc_nsi_95
+        Options.Filtering = False
+        Position.BeginsLayer = True
+      end
       object cxGrid1DBCardView3DOC_SERIA: TcxGridDBCardViewRow
         DataBinding.FieldName = 'DOC_SERIA'
         Options.Filtering = False
@@ -353,11 +374,6 @@ object frmDebtRequest: TfrmDebtRequest
         DataBinding.FieldName = 'DOC_NUMBER'
         Options.Filtering = False
         Position.BeginsLayer = False
-      end
-      object cxGrid1DBCardView3DOC_TYPE: TcxGridDBCardViewRow
-        DataBinding.FieldName = 'DOC_TYPE'
-        Options.Filtering = False
-        Position.BeginsLayer = True
       end
       object cxGrid1DBCardView3DESCRIPTION: TcxGridDBCardViewRow
         DataBinding.FieldName = 'DESCRIPTION'
@@ -379,7 +395,7 @@ object frmDebtRequest: TfrmDebtRequest
         Properties.Alignment = taRightJustify
         Properties.ValueChecked = 1
         Properties.ValueUnchecked = 0
-        Position.BeginsLayer = False
+        Position.BeginsLayer = True
       end
     end
     object cxGrid1Level1: TcxGridLevel
@@ -414,22 +430,7 @@ object frmDebtRequest: TfrmDebtRequest
   object Uni_debt: TUniQuery
     Connection = DataModule1.UniConnection1
     SQL.Strings = (
-      'select t.*, '
-      'decode(t.result_gis_guid, '
-      #39'1f546a08-6094-4f66-8937-a26a4de2a947'#39', '#39#1053#1077' '#1086#1090#1087#1088#1072#1074#1083#1077#1085#39','
-      #39'09e1b2b5-ac61-4a8c-abe7-a29eb914a4dc'#39', '#39#1054#1078#1080#1076#1072#1077#1090' '#1086#1090#1074#1077#1090#1072#39','
-      
-        #39'1da86c46-1eab-4616-8285-aa218d65982e'#39', '#39#1045#1089#1090#1100' '#1080#1085#1092#1086#1088#1084#1072#1094#1080#1103' '#1086' '#1079#1072#1076#1086#1083 +
-        #1078#1077#1085#1085#1086#1089#1090#1080#39','
-      #39'2a95f7a0-7fb5-4738-922f-1054644ad4d3'#39', '#39#1047#1072#1076#1086#1083#1078#1077#1085#1085#1086#1089#1090#1080' '#1085#1077#1090#39','
-      
-        #39'd2f40755-e210-43f5-ab85-5dab8b6fa98b'#39', '#39#1054#1090#1089#1091#1090#1089#1090#1074#1091#1077#1090' '#1088#1072#1079#1084#1077#1097#1077#1085#1085#1072#1103 +
-        ' '#1080#1085#1092#1086#1088#1084#1072#1094#1080#1103' '#1074' '#1043#1048#1057' '#1046#1050#1061#39','
-      
-        #39'992a0a46-e70f-4fdd-9512-4a25c0e15028'#39', '#39#1048#1085#1092#1086#1088#1084#1072#1094#1080#1103' '#1086' '#1079#1072#1076#1086#1083#1078#1077#1085#1085#1086 +
-        #1089#1090#1080' '#1086#1090#1089#1091#1090#1089#1090#1074#1091#1077#1090' '#1074' '#1043#1048#1057' '#1046#1050#1061#39') as result_gis_name,'
-      ''
-      't.rowid from exs.debt_sub_request t')
+      'select t.*, t.rowid from exs.debt_sub_request t')
     FilterOptions = [foCaseInsensitive]
     Left = 648
     Top = 160
@@ -477,7 +478,8 @@ object frmDebtRequest: TfrmDebtRequest
       FieldName = 'DOC_NUMBER'
     end
     object Uni_debtDOC_TYPE: TStringField
-      FieldName = 'DOC_TYPE'
+      DisplayLabel = #1044#1086#1082#1091#1084#1077#1085#1090
+      FieldName = 'DOC_TYPE_GUID'
       Size = 36
     end
     object Uni_debtADDRESS: TStringField
@@ -495,11 +497,6 @@ object frmDebtRequest: TfrmDebtRequest
     object Uni_debtSTATUS_GIS: TFloatField
       FieldName = 'STATUS_GIS'
       ReadOnly = True
-    end
-    object Uni_debtRESULT_GIS_GUID: TStringField
-      FieldName = 'RESULT_GIS_GUID'
-      ReadOnly = True
-      Size = 36
     end
     object Uni_debtSENT_DATE: TDateTimeField
       DisplayLabel = #1054#1090#1087#1088#1072#1074#1083#1077#1085#1086' '#1087#1086#1089#1090#1072#1074#1097#1080#1082#1072#1084' '#1046#1050#1059
@@ -559,7 +556,6 @@ object frmDebtRequest: TfrmDebtRequest
     end
     object Uni_debtSTATUS: TFloatField
       FieldName = 'STATUS'
-      ReadOnly = True
     end
     object Uni_debtRESPONSE_STATUS: TFloatField
       FieldName = 'RESPONSE_STATUS'
@@ -605,16 +601,24 @@ object frmDebtRequest: TfrmDebtRequest
       FieldName = 'ROWID'
       Size = 18
     end
-    object Uni_debtRESULT_GIS_NAME: TStringField
-      DisplayLabel = #1057#1090#1072#1090#1091#1089' '#1074' '#1043#1048#1057
-      FieldName = 'RESULT_GIS_NAME'
-      ReadOnly = True
-      Size = 48
-    end
   end
   object DS_debt: TDataSource
     DataSet = Uni_debt
     Left = 696
     Top = 160
+  end
+  object Uni_doc_nsi_95: TUniQuery
+    Connection = DataModule1.UniConnection1
+    SQL.Strings = (
+      'select * from scott.v_doc_nsi_95 t'
+      'order by t.name')
+    FilterOptions = [foCaseInsensitive]
+    Left = 648
+    Top = 208
+  end
+  object DS_doc_nsi_95: TDataSource
+    DataSet = Uni_doc_nsi_95
+    Left = 696
+    Top = 208
   end
 end

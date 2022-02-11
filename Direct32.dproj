@@ -510,7 +510,6 @@
         </DCCReference>
         <DCCReference Include="u_frmDebtRequest.pas">
             <Form>frmDebtRequest</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>

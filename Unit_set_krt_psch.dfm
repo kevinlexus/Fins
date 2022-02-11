@@ -12,7 +12,6 @@ object Form_set_krt_psch: TForm_set_krt_psch
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  
   OldCreateOrder = False
   Position = poMainFormCenter
   OnClose = FormClose
@@ -113,11 +112,11 @@ object Form_set_krt_psch: TForm_set_krt_psch
       'or p.org_var=0)')
     Optimize = False
     Variables.Data = {
-      0300000002000000040000003A49445F03000000000000000000000005000000
-      3A5641525F030000000000000000000000}
+      0400000002000000080000003A00490044005F00030000000000000000000000
+      0A0000003A005600410052005F00030000000000000000000000}
     QBEDefinition.QBEFieldDefs = {
-      0400000002000000020000004944010000000000040000004E414D4501000000
-      0000}
+      05000000020000000400000049004400010000000000080000004E0041004D00
+      4500010000000000}
     Session = DataModule1.OracleSession1
     DesignActivation = True
     object StringField2: TStringField

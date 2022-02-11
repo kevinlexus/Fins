@@ -11,7 +11,7 @@ uses
   cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxDBData, cxCheckBox,
   cxImageComboBox, dxBarBuiltInMenu, cxContainer, dxCore, cxDateUtils,
   cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxMaskEdit, cxGridTableView,
-  cxGridCustomView, cxDBEdit;
+  cxGridCustomView, cxDBEdit, dxSkinsCore, dxSkinsDefaultPainters, dxDateRanges;
 
 type
   TForm_sch_history = class(TForm)

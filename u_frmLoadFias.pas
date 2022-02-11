@@ -26,7 +26,8 @@ uses
   cxGridTableView, cxGridDBTableView, cxGrid, 
   OracleData, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters, cxStyles,
   cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
-  cxDBData, cxDBLookupComboBox;
+  cxDBData, cxDBLookupComboBox, dxSkinsCore, dxSkinsDefaultPainters,
+  dxDateRanges;
 
 type
   TfrmLoadFias = class(TForm)

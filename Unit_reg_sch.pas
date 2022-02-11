@@ -28,7 +28,8 @@ uses
   cxGraphics, cxLookAndFeels, cxLookAndFeelPainters, cxStyles,
   cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
   cxDBData, cxDBLookupComboBox, cxCalendar, cxGridCustomTableView,
-  cxGridTableView, cxGridCustomView;
+  cxGridTableView, cxGridCustomView, dxSkinsCore, dxSkinsDefaultPainters,
+  dxDateRanges;
 
 type
   TForm_reg_sch = class(TForm)
