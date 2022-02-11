@@ -493,9 +493,6 @@
         <DCCReference Include="u_frmKartExt.pas">
             <Form>frmKartExt</Form>
         </DCCReference>
-        <DCCReference Include="u_frmLog.pas">
-            <Form>frmLog</Form>
-        </DCCReference>
         <DCCReference Include="u_frmKlskPar.pas">
             <Form>frmKlskPar</Form>
         </DCCReference>

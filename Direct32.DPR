@@ -134,7 +134,6 @@ uses
   u_frmMeteGisConnect in 'u_frmMeteGisConnect.pas' {frmMeteGisConnect},
   u_frmLoadKartExt in 'u_frmLoadKartExt.pas' {frmLoadKartExt},
   u_frmKartExt in 'u_frmKartExt.pas' {frmKartExt},
-  u_frmLog in 'u_frmLog.pas' {frmLog},
   u_frmKlskPar in 'u_frmKlskPar.pas' {frmKlskPar},
   u_frmSelObjects in 'u_frmSelObjects.pas' {frmSelObjects},
   Unit_par_edit in 'Unit_par_edit.pas' {Form_par_edit},
@@ -303,41 +302,49 @@ begin
   loadIniPar;
   //ShowMessage('1');
 
+
   try
+
+    DataModule1.UniConnection1.Disconnect;
+    DataModule1.OracleSession1.Connected := False;
 
     if ((User = '') or (Pass = '') or (SID = '')) then
     begin
-      if DataModule1.OracleLogon1.Execute then
+      if DataModule1.UniConnectDialog1.Execute then
       begin
-        User := DataModule1.OracleSession1.LogonUsername;
-        Pass := DataModule1.OracleSession1.LogonPassword;
-        SID := DataModule1.OracleSession1.LogonDatabase;
+        User := DataModule1.UniConnection1.Username;
+        Pass := DataModule1.UniConnection1.Password;
+        SID := DataModule1.UniConnection1.Database;
       end
       else
       begin
         try
           Application.Terminate;
-        Exit;
+          Exit;
         except
         end;
       end;
     end
     else
     begin
-      DataModule1.OracleSession1.LogonUsername := User;
-      DataModule1.OracleSession1.LogonPassword := Pass;
-      DataModule1.OracleSession1.LogonDatabase := SID;
-      DataModule1.OracleSession1.Connected := true;
+      DataModule1.UniConnection1.Username := User;
+      DataModule1.UniConnection1.Password := Pass;
+      DataModule1.UniConnection1.Database := SID;
+      DataModule1.UniConnection1.Connect;
     end;
 
+    DataModule1.OracleSession1.LogonUsername := User;
+    DataModule1.OracleSession1.LogonPassword := Pass;
+    DataModule1.OracleSession1.LogonDatabase := SID;
+    DataModule1.OracleSession1.Connected := true;
 
   // UNIDAC сессия
-    DataModule1.UniConnection1.Disconnect;
+{    DataModule1.UniConnection1.Disconnect;
     DataModule1.UniConnection1.Username := User;
     DataModule1.UniConnection1.Password := Pass;
     DataModule1.UniConnection1.Database := SID;
     DataModule1.UniConnection1.Connect;
-
+ }
   //ShowMessage('3');
 
     if DataModule1.OracleSession1.StatementCache = True then

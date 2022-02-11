@@ -260,6 +260,8 @@ object DataModule1: TDataModule1
       'Oracle.Charset=CL8MSWIN1251')
     Options.KeepDesignConnected = False
     Username = 'scott'
+    Connected = True
+    ConnectDialog = UniConnectDialog1
     LoginPrompt = False
     Left = 32
     Top = 416
@@ -729,7 +731,23 @@ object DataModule1: TDataModule1
     HistoryRegSection = 'DIRECT'
     HistoryWithPassword = True
     Caption = #1042#1093#1086#1076' '#1074' '#1089#1080#1089#1090#1077#1084#1091
-    Left = 88
+    Left = 96
+    Top = 16
+  end
+  object UniConnectDialog1: TUniConnectDialog
+    DatabaseLabel = #1041#1072#1079#1072' '#1076#1072#1085#1085#1099#1093
+    PortLabel = #1055#1086#1088#1090
+    ProviderLabel = #1055#1088#1086#1074#1072#1081#1076#1077#1088
+    Retries = 10
+    SavePassword = True
+    Caption = #1057#1086#1077#1076#1080#1085#1077#1085#1080#1077
+    UsernameLabel = #1048#1084#1103
+    PasswordLabel = #1055#1072#1088#1086#1083#1100
+    ServerLabel = #1057#1077#1088#1074#1077#1088
+    ConnectButton = #1057#1086#1077#1076#1080#1085#1080#1090#1100
+    CancelButton = #1054#1090#1084#1077#1085#1072
+    LabelSet = lsRussian
+    Left = 160
     Top = 16
   end
 end

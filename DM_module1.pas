@@ -4,7 +4,7 @@ interface
 
 uses
   SysUtils, Classes, Oracle, DB, OracleData, frxClass, frxDBSet, MemDS,
-  DBAccess, Uni, OracleCI;
+  DBAccess, Uni, OracleCI, UniDacVcl;
 
 type
   TDataModule1 = class(TDataModule)
@@ -70,6 +70,7 @@ type
     UniTablePriveleges: TUniQuery;
     OD_u_list: TOracleDataSet;
     OracleLogon1: TOracleLogon;
+    UniConnectDialog1: TUniConnectDialog;
   private
     { Private declarations }
   public
