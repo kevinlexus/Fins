@@ -262,6 +262,9 @@ object frmDebtRequest: TfrmDebtRequest
         DataBinding.FieldName = 'RESULT'
         Width = 78
       end
+      object cxGrid1DBTableView1RESPONSE_STATUS_NAME: TcxGridDBColumn
+        DataBinding.FieldName = 'RESPONSE_STATUS_NAME'
+      end
       object cxGrid1DBTableView1DT_CRT: TcxGridDBColumn
         DataBinding.FieldName = 'DT_CRT'
         Width = 59
@@ -276,6 +279,14 @@ object frmDebtRequest: TfrmDebtRequest
       end
       object cxGrid1DBTableView1IS_ERROR_ON_RESPONSE: TcxGridDBColumn
         DataBinding.FieldName = 'IS_ERROR_ON_RESPONSE'
+        Visible = False
+      end
+      object cxGrid1DBTableView1USER_ID: TcxGridDBColumn
+        DataBinding.FieldName = 'USER_ID'
+        Visible = False
+      end
+      object cxGrid1DBTableView1RESPONSE_STATUS: TcxGridDBColumn
+        DataBinding.FieldName = 'RESPONSE_STATUS'
         Visible = False
       end
     end
@@ -440,7 +451,13 @@ object frmDebtRequest: TfrmDebtRequest
   object Uni_debt: TUniQuery
     Connection = DataModule1.UniConnection1
     SQL.Strings = (
-      'select t.*, t.rowid from exs.debt_sub_request t')
+      
+        'select t.*, u.id as user_id, decode(t.response_status, 0, '#39#1053#1077' '#1086#1090 +
+        #1087#1088#1072#1074#1083#1077#1085#1086#39', 1, '#39#1054#1090#1087#1088#1072#1074#1083#1077#1085#1086#39', 2, '#39#1040#1074#1090#1086' '#1089#1092#1086#1088#1084#1080#1088#1086#1074#1072#1085#1086#39', null) as res' +
+        'ponse_status_name,'
+      
+        ' t.rowid from exs.debt_sub_request t join scott.t_user u on u.cd' +
+        '=user')
     FilterOptions = [foCaseInsensitive]
     Left = 648
     Top = 160
@@ -581,7 +598,6 @@ object frmDebtRequest: TfrmDebtRequest
     end
     object Uni_debtFK_USER_RESPONSE: TFloatField
       FieldName = 'FK_USER_RESPONSE'
-      ReadOnly = True
     end
     object Uni_debtDESCRIPTION: TStringField
       DisplayLabel = #1044#1086#1087#1086#1083#1085#1080#1090#1077#1083#1100#1085#1072#1103' '#1080#1085#1092#1086#1088#1084#1072#1094#1080#1103' '#1087#1086' '#1086#1090#1074#1077#1090#1091' '
@@ -610,6 +626,16 @@ object frmDebtRequest: TfrmDebtRequest
     object Uni_debtROWID: TStringField
       FieldName = 'ROWID'
       Size = 18
+    end
+    object Uni_debtUSER_ID: TFloatField
+      FieldName = 'USER_ID'
+      ReadOnly = True
+    end
+    object Uni_debtRESPONSE_STATUS_NAME: TStringField
+      DisplayLabel = #1057#1090#1072#1090#1091#1089' '#1074' '#1043#1048#1057
+      FieldName = 'RESPONSE_STATUS_NAME'
+      ReadOnly = True
+      Size = 17
     end
   end
   object DS_debt: TDataSource

@@ -396,6 +396,7 @@ type
     strSearch_: string;
 
     User: string;
+    User_id: Integer;
     Pass: string;
     isloadedspr_: Integer;
     flag3_: Integer;

@@ -387,6 +387,10 @@ begin
     // права пользователей
   DataModule1.UniTablePriveleges.ParamByName('user_name').AsString := UpperCase(User);
   DataModule1.UniTablePriveleges.Active := True;
+  // Id текущего пользователя
+  DataModule1.Uni_user.Active := True;
+  Form_Main.User_id:=DataModule1.Uni_user.FieldByName('fk_user').AsInteger;
+
   Ini.Free;
   SetMenu(0);
   with Form_Main do

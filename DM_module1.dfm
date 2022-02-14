@@ -750,4 +750,12 @@ object DataModule1: TDataModule1
     Left = 160
     Top = 16
   end
+  object Uni_user: TUniQuery
+    Connection = UniConnection1
+    SQL.Strings = (
+      'select t.id as fk_user from scott.t_user t where t.cd=user')
+    FetchRows = 1000
+    Left = 200
+    Top = 464
+  end
 end

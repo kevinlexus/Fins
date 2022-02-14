@@ -136,13 +136,16 @@ type
     DS_doc_nsi_95: TDataSource;
     cxGrid1DBTableView1STATUS: TcxGridDBColumn;
     cxGrid1DBTableView1IS_ERROR_ON_RESPONSE: TcxGridDBColumn;
+    cxGrid1DBTableView1USER_ID: TcxGridDBColumn;
+    Uni_debtUSER_ID: TFloatField;
+    Uni_debtRESPONSE_STATUS_NAME: TStringField;
+    cxGrid1DBTableView1RESPONSE_STATUS_NAME: TcxGridDBColumn;
+    cxGrid1DBTableView1RESPONSE_STATUS: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure cxGrid1DBTableView1SelectionChanged(Sender: TcxCustomGridTableView);
-    procedure cxGrid1DBTableView1CustomDrawCell(Sender: TcxCustomGridTableView;
-      ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo;
-      var ADone: Boolean);
+    procedure cxGrid1DBTableView1CustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
   private    { Private declarations }
   public    { Public declarations }
   end;
@@ -155,12 +158,10 @@ implementation
 
 {$R *.dfm}
 
-procedure TfrmDebtRequest.cxGrid1DBTableView1CustomDrawCell(
-  Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;
-  AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
+procedure TfrmDebtRequest.cxGrid1DBTableView1CustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
 var
   col: TcxGridDBColumn;
-  status, error: string;
+  status, error, response: string;
 begin
   // цвет записи
   col := cxGrid1DBTableView1.GetColumnByFieldName('STATUS');
@@ -169,15 +170,32 @@ begin
   col := cxGrid1DBTableView1.GetColumnByFieldName('IS_ERROR_ON_RESPONSE');
   error := AViewInfo.GridRecord.DisplayTexts[col.Index];
 
-  if (status = '1') then
+  col := cxGrid1DBTableView1.GetColumnByFieldName('RESPONSE_STATUS');
+  response := AViewInfo.GridRecord.DisplayTexts[col.Index];
+
+  if (AViewInfo.Item.Name = 'cxGrid1DBTableView1RESULT') and (response = '2') then
   begin
-    // добавлено в загрузку
+      // сформировано автоматически ГИС (нежелательный статус)
+    ACanvas.Font.Color := clPurple;
+  end
+  else if (AViewInfo.Item.Name = 'cxGrid1DBTableView1RESULT') and (error = '1') then
+  begin
+      // ошибка последней отправки в ГИС
+    ACanvas.Font.Color := clRed;
+  end
+  else if (status = '1') then
+  begin
+    // добавлено на загрузку
     ACanvas.Font.Color := clBlue;
   end
-  else if (error = '1') then
+  else if (response = '1') then
   begin
-    // ошибка последней отправки в ГИС
-    ACanvas.Font.Color := clRed;
+    // отправлено успешно
+  end
+  else
+  begin
+    // незагруженный в ГИС ответ
+    ACanvas.Font.Color := clGray;
   end;
 end;
 
@@ -206,18 +224,19 @@ var
   id, ids: string;
 begin
   ids := '';
+  if not (Uni_debt.State in [dsBrowse]) then
+    Uni_debt.Post;
   with cxGrid1DBTableView1.Controller do
     for I := 0 to SelectedRecordCount - 1 do
     begin
       id := VarToStr(cxGrid1DBTableView1.Controller.SelectedRecords[I].Values[0]);
       with Uni_debt do
       begin
-        if not (State in [dsBrowse]) then
-          Post;
         if Locate('id', id, []) = True then
         begin
           Edit;
           FieldByName('status').AsInteger := 1;
+          FieldByName('fk_user_response').AsInteger := FieldByName('user_id').AsInteger; // проставить из поля рядом
           Post;
         end;
       end;

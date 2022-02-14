@@ -71,6 +71,7 @@ type
     OD_u_list: TOracleDataSet;
     OracleLogon1: TOracleLogon;
     UniConnectDialog1: TUniConnectDialog;
+    Uni_user: TUniQuery;
   private
     { Private declarations }
   public
