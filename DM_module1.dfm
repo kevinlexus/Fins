@@ -263,8 +263,8 @@ object DataModule1: TDataModule1
     Connected = True
     ConnectDialog = UniConnectDialog1
     LoginPrompt = False
-    Left = 32
-    Top = 416
+    Left = 160
+    Top = 72
     EncryptedPassword = '92FF90FF91FF9AFF92FF86FF8DFF90FF'
   end
   object UniStoredProc1: TUniStoredProc

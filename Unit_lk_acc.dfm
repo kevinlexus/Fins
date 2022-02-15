@@ -1,10 +1,10 @@
 object Form_lk_acc: TForm_lk_acc
   Left = 354
   Top = 275
-  Width = 453
-  Height = 335
   BorderIcons = [biSystemMenu]
   Caption = #1054#1092#1086#1088#1084#1083#1077#1085#1080#1077' '#1076#1086#1089#1090#1091#1087#1072' '#1074' '#1083#1080#1095#1085#1099#1081' '#1082#1072#1073#1080#1085#1077#1090
+  ClientHeight = 296
+  ClientWidth = 437
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,7 +12,6 @@ object Form_lk_acc: TForm_lk_acc
   Font.Name = 'Tahoma'
   Font.Style = []
   FormStyle = fsMDIChild
-  
   OldCreateOrder = False
   Position = poMainFormCenter
   Visible = True
@@ -144,7 +143,7 @@ object Form_lk_acc: TForm_lk_acc
     end
   end
   object frxReport1: TfrxReport
-    Version = '6.2.11'
+    Version = '6.7.6'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -176,11 +175,11 @@ object Form_lk_acc: TForm_lk_acc
       'and t2.fk_k_lsk=:k_lsk_id')
     Optimize = False
     Variables.Data = {
-      0300000001000000090000003A4B5F4C534B5F49440300000000000000000000
-      00}
+      0400000001000000120000003A004B005F004C0053004B005F00490044000300
+      00000000000000000000}
     QBEDefinition.QBEFieldDefs = {
-      0400000002000000040000005041535301000000000002000000533101000000
-      0000}
+      0500000002000000080000005000410053005300010000000000040000005300
+      3100010000000000}
     Master = Form_list_kart.OD_list_kart
     MasterFields = 'K_LSK_ID'
     DetailFields = 'K_LSK_ID'
@@ -199,8 +198,8 @@ object Form_lk_acc: TForm_lk_acc
       'and t.fk_orgtp=tp.id')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      040000000200000007000000524E445F56414C01000000000002000000434401
-      0000000000}
+      05000000020000000E00000052004E0044005F00560041004C00010000000000
+      0400000043004400010000000000}
     Session = DataModule1.OracleSession1
     DesignActivation = True
     AfterScroll = OD_passAfterScroll
@@ -245,13 +244,13 @@ object Form_lk_acc: TForm_lk_acc
       'order by u.npp ')
     Optimize = False
     Variables.Data = {
-      0300000001000000090000003A4B5F4C534B5F49440300000000000000000000
-      00}
+      0400000001000000120000003A004B005F004C0053004B005F00490044000300
+      00000000000000000000}
     QBEDefinition.QBEFieldDefs = {
-      0400000007000000020000004944010000000000040000004E414D4501000000
-      00000300000056414C010000000000020000005331010000000000020000004E
-      310100000000000600000056414C5F5450010000000000020000004431010000
-      000000}
+      05000000070000000400000049004400010000000000080000004E0041004D00
+      450001000000000006000000560041004C000100000000000400000053003100
+      010000000000040000004E0031000100000000000C000000560041004C005F00
+      540050000100000000000400000044003100010000000000}
     Master = Form_list_kart.OD_list_kart
     MasterFields = 'K_LSK_ID'
     DetailFields = 'K_LSK_ID'
@@ -259,7 +258,6 @@ object Form_lk_acc: TForm_lk_acc
     CachedUpdates = True
     Session = DataModule1.OracleSession1
     DesignActivation = True
-    Active = True
     AfterEdit = OD_objxparAfterEdit
     Left = 32
     Top = 112

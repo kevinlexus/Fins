@@ -251,6 +251,8 @@ begin
       SID := SID + CHR(StrToInt('$' + copy(s, I, 3)));
       I := I + 3;
     end;
+
+    serverIp := Ini.ReadString('Application', 'serverIp', '');
   end;
 end;
 
@@ -314,7 +316,7 @@ begin
       begin
         User := DataModule1.UniConnection1.Username;
         Pass := DataModule1.UniConnection1.Password;
-        SID := DataModule1.UniConnection1.Database;
+        SID := DataModule1.UniConnection1.Database;   // исправить, если подключение по serverIp
       end
       else
       begin
@@ -330,6 +332,7 @@ begin
       DataModule1.UniConnection1.Username := User;
       DataModule1.UniConnection1.Password := Pass;
       DataModule1.UniConnection1.Database := SID;
+      DataModule1.UniConnection1.Server := serverIp;
       DataModule1.UniConnection1.Connect;
     end;
 

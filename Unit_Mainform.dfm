@@ -13,7 +13,7 @@ object Form_Main: TForm_Main
   FormStyle = fsMDIForm
   Menu = MainMenu1
   OldCreateOrder = False
-  Position = poDesigned
+  Position = poDesktopCenter
   Visible = True
   OnClose = FormClose
   OnCreate = FormCreate
@@ -975,7 +975,7 @@ object Form_Main: TForm_Main
       end
     end
     object ver: TMenuItem
-      Caption = 'ver 3.0.7'
+      Caption = 'ver 3.0.9'
       object N1705211: TMenuItem
         Caption = '17.05.21 - '#1048#1089#1087#1088#1072#1074#1083#1077#1085#1086' '#1074#1099#1087#1086#1083#1085#1077#1085#1080#1077' '#1087#1077#1088#1077#1093#1086#1076#1072
       end

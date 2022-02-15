@@ -2,8 +2,8 @@ object frmDebtRequest: TfrmDebtRequest
   Left = 0
   Top = 0
   Caption = #1054#1090#1074#1077#1090#1099' '#1085#1072' '#1079#1072#1087#1088#1086#1089#1099' '#1086' '#1079#1072#1076#1086#1083#1078#1077#1085#1085#1086#1089#1090#1080
-  ClientHeight = 666
-  ClientWidth = 1453
+  ClientHeight = 539
+  ClientWidth = 1352
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,10 +21,12 @@ object frmDebtRequest: TfrmDebtRequest
   object cxGrid1: TcxGrid
     Left = 0
     Top = 41
-    Width = 1453
-    Height = 625
+    Width = 1352
+    Height = 498
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 1453
+    ExplicitHeight = 625
     object cxGrid1DBCardView1: TcxGridDBCardView
       Navigator.Buttons.CustomButtons = <>
       DataController.DataSource = DS_debt
@@ -197,7 +199,8 @@ object frmDebtRequest: TfrmDebtRequest
       OptionsData.Editing = False
       OptionsData.Inserting = False
       OptionsSelection.MultiSelect = True
-      OptionsSelection.CheckBoxVisibility = [cbvDataRow]
+      OptionsSelection.CheckBoxVisibility = [cbvDataRow, cbvColumnHeader]
+      OptionsSelection.MultiSelectMode = msmPersistent
       OptionsView.ColumnAutoWidth = True
       OptionsView.GroupByBox = False
       OptionsView.HeaderAutoHeight = True
@@ -206,41 +209,45 @@ object frmDebtRequest: TfrmDebtRequest
         DataBinding.FieldName = 'ID'
         Width = 20
       end
+      object cxGrid1DBTableView1UK_NAME: TcxGridDBColumn
+        DataBinding.FieldName = 'UK_NAME'
+        Width = 110
+      end
       object cxGrid1DBTableView1REQUEST_NUMBER: TcxGridDBColumn
         DataBinding.FieldName = 'REQUEST_NUMBER'
-        Width = 93
+        Width = 70
       end
       object cxGrid1DBTableView1ORG_FROM_NAME: TcxGridDBColumn
         DataBinding.FieldName = 'ORG_FROM_NAME'
-        Width = 159
+        Width = 144
       end
       object cxGrid1DBTableView1ADDRESS: TcxGridDBColumn
         DataBinding.FieldName = 'ADDRESS'
-        Width = 135
+        Width = 123
       end
       object cxGrid1DBTableView1ADDRESS_DETAIL: TcxGridDBColumn
         DataBinding.FieldName = 'ADDRESS_DETAIL'
-        Width = 89
+        Width = 81
       end
       object cxGrid1DBTableView1SENT_DATE: TcxGridDBColumn
         DataBinding.FieldName = 'SENT_DATE'
-        Width = 89
+        Width = 81
       end
       object cxGrid1DBTableView1RESPONSE_DATE: TcxGridDBColumn
         DataBinding.FieldName = 'RESPONSE_DATE'
-        Width = 89
+        Width = 82
       end
       object cxGrid1DBTableView1FIRST_NAME: TcxGridDBColumn
         DataBinding.FieldName = 'FIRST_NAME'
-        Width = 62
+        Width = 56
       end
       object cxGrid1DBTableView1LAST_NAME: TcxGridDBColumn
         DataBinding.FieldName = 'LAST_NAME'
-        Width = 72
+        Width = 65
       end
       object cxGrid1DBTableView1MIDDLE_NAME: TcxGridDBColumn
         DataBinding.FieldName = 'MIDDLE_NAME'
-        Width = 73
+        Width = 67
       end
       object cxGrid1DBTableView1HAS_DEBT: TcxGridDBColumn
         DataBinding.FieldName = 'HAS_DEBT'
@@ -248,7 +255,7 @@ object frmDebtRequest: TfrmDebtRequest
         Properties.Alignment = taRightJustify
         Properties.ValueChecked = 1
         Properties.ValueUnchecked = 0
-        Width = 70
+        Width = 64
       end
       object cxGrid1DBTableView1IS_REVOKED: TcxGridDBColumn
         DataBinding.FieldName = 'IS_REVOKED'
@@ -256,22 +263,23 @@ object frmDebtRequest: TfrmDebtRequest
         Properties.Alignment = taRightJustify
         Properties.ValueChecked = 1
         Properties.ValueUnchecked = 0
-        Width = 67
+        Width = 61
       end
       object cxGrid1DBTableView1RESULT: TcxGridDBColumn
         DataBinding.FieldName = 'RESULT'
-        Width = 78
+        Width = 71
       end
       object cxGrid1DBTableView1RESPONSE_STATUS_NAME: TcxGridDBColumn
         DataBinding.FieldName = 'RESPONSE_STATUS_NAME'
+        Width = 96
       end
       object cxGrid1DBTableView1DT_CRT: TcxGridDBColumn
         DataBinding.FieldName = 'DT_CRT'
-        Width = 59
+        Width = 54
       end
       object cxGrid1DBTableView1DT_UPD: TcxGridDBColumn
         DataBinding.FieldName = 'DT_UPD'
-        Width = 65
+        Width = 59
       end
       object cxGrid1DBTableView1STATUS: TcxGridDBColumn
         DataBinding.FieldName = 'STATUS'
@@ -429,15 +437,23 @@ object frmDebtRequest: TfrmDebtRequest
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1453
+    Width = 1352
     Height = 41
     Align = alTop
     TabOrder = 1
+    ExplicitWidth = 1453
     DesignSize = (
-      1453
+      1352
       41)
+    object Label1: TLabel
+      Left = 16
+      Top = 16
+      Width = 55
+      Height = 13
+      Caption = #1055#1086#1076#1087#1080#1089#1072#1090#1100
+    end
     object Button1: TButton
-      Left = 1352
+      Left = 1251
       Top = 10
       Width = 75
       Height = 25
@@ -446,6 +462,26 @@ object frmDebtRequest: TfrmDebtRequest
       Enabled = False
       TabOrder = 0
       OnClick = Button1Click
+      ExplicitLeft = 1352
+    end
+    object cbbUser: TcxLookupComboBox
+      Left = 77
+      Top = 11
+      Hint = 
+        #1055#1086#1076#1087#1080#1089#1072#1090#1100' '#1074#1099#1073#1088#1072#1085#1085#1099#1084' '#1087#1086#1083#1100#1079#1086#1074#1072#1090#1077#1083#1077#1084', '#1077#1089#1083#1080' '#1085#1077' '#1074#1099#1073#1088#1072#1085#1086' - '#1090#1077#1082#1091#1097#1080#1084'. '#1054#1095 +
+        #1080#1089#1090#1080#1090#1100' CTRL+A'
+      ParentShowHint = False
+      Properties.ClearKey = 16449
+      Properties.KeyFieldNames = 'ID'
+      Properties.ListColumns = <
+        item
+          FieldName = 'NAME'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = DS_t_user
+      ShowHint = True
+      TabOrder = 1
+      Width = 172
     end
   end
   object Uni_debt: TUniQuery
@@ -455,9 +491,11 @@ object frmDebtRequest: TfrmDebtRequest
         'select t.*, u.id as user_id, decode(t.response_status, 0, '#39#1053#1077' '#1086#1090 +
         #1087#1088#1072#1074#1083#1077#1085#1086#39', 1, '#39#1054#1090#1087#1088#1072#1074#1083#1077#1085#1086#39', 2, '#39#1040#1074#1090#1086' '#1089#1092#1086#1088#1084#1080#1088#1086#1074#1072#1085#1086#39', null) as res' +
         'ponse_status_name,'
+      ' o.name as uk_name,'
       
         ' t.rowid from exs.debt_sub_request t join scott.t_user u on u.cd' +
-        '=user')
+        '=user'
+      '  left join scott.t_org o on t.fk_uk=o.id')
     FilterOptions = [foCaseInsensitive]
     Left = 648
     Top = 160
@@ -637,6 +675,12 @@ object frmDebtRequest: TfrmDebtRequest
       ReadOnly = True
       Size = 17
     end
+    object Uni_debtUK_NAME: TStringField
+      DisplayLabel = #1059#1050
+      FieldName = 'UK_NAME'
+      ReadOnly = True
+      Size = 64
+    end
   end
   object DS_debt: TDataSource
     DataSet = Uni_debt
@@ -656,5 +700,18 @@ object frmDebtRequest: TfrmDebtRequest
     DataSet = Uni_doc_nsi_95
     Left = 696
     Top = 208
+  end
+  object Uni_t_user: TUniQuery
+    Connection = DataModule1.UniConnection1
+    SQL.Strings = (
+      'select t.* from scott.t_user t where t.guid is not null'
+      'order by t.name')
+    Left = 648
+    Top = 264
+  end
+  object DS_t_user: TDataSource
+    DataSet = Uni_t_user
+    Left = 696
+    Top = 264
   end
 end

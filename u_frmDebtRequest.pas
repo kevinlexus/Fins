@@ -11,7 +11,8 @@ uses
   dxDateRanges, cxDBData, cxGridLevel, cxClasses, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
   cxGridCardView, cxGridDBCardView, cxGridCustomLayoutView, cxCheckBox, cxMemo,
-  dxBar, Vcl.StdCtrls, Vcl.ExtCtrls, cxDBLookupComboBox, Oracle;
+  dxBar, Vcl.StdCtrls, Vcl.ExtCtrls, cxDBLookupComboBox, Oracle, cxContainer,
+  cxTextEdit, cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit;
 
   //const
 //  UM_CHECK = WM_USER + 10000;
@@ -141,6 +142,12 @@ type
     Uni_debtRESPONSE_STATUS_NAME: TStringField;
     cxGrid1DBTableView1RESPONSE_STATUS_NAME: TcxGridDBColumn;
     cxGrid1DBTableView1RESPONSE_STATUS: TcxGridDBColumn;
+    Uni_debtUK_NAME: TStringField;
+    cxGrid1DBTableView1UK_NAME: TcxGridDBColumn;
+    cbbUser: TcxLookupComboBox;
+    Label1: TLabel;
+    Uni_t_user: TUniQuery;
+    DS_t_user: TDataSource;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -214,6 +221,7 @@ end;
 
 procedure TfrmDebtRequest.FormCreate(Sender: TObject);
 begin
+  Uni_t_user.Active := true;
   Uni_debt.Active := true;
   Uni_doc_nsi_95.Active := true;
 end;
@@ -236,7 +244,11 @@ begin
         begin
           Edit;
           FieldByName('status').AsInteger := 1;
-          FieldByName('fk_user_response').AsInteger := FieldByName('user_id').AsInteger; // проставить из поля рядом
+
+          if cbbUser.EditValue <> null then
+            FieldByName('fk_user_response').AsInteger := cbbUser.EditValue // выбранный пользователь
+          else
+            FieldByName('fk_user_response').AsInteger := FieldByName('user_id').AsInteger; // проставить из поля рядом
           Post;
         end;
       end;
