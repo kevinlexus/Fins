@@ -148,11 +148,16 @@ type
     Label1: TLabel;
     Uni_t_user: TUniQuery;
     DS_t_user: TDataSource;
+    chkResponseDate: TCheckBox;
+    chkResponseExist: TCheckBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure cxGrid1DBTableView1SelectionChanged(Sender: TcxCustomGridTableView);
     procedure cxGrid1DBTableView1CustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
+    procedure setFilter;
+    procedure chkResponseDateClick(Sender: TObject);
+    procedure chkResponseExistClick(Sender: TObject);
   private    { Private declarations }
   public    { Public declarations }
   end;
@@ -164,6 +169,16 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TfrmDebtRequest.chkResponseDateClick(Sender: TObject);
+begin
+setFilter
+end;
+
+procedure TfrmDebtRequest.chkResponseExistClick(Sender: TObject);
+begin
+setFilter;
+end;
 
 procedure TfrmDebtRequest.cxGrid1DBTableView1CustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
 var
@@ -222,8 +237,8 @@ end;
 procedure TfrmDebtRequest.FormCreate(Sender: TObject);
 begin
   Uni_t_user.Active := true;
-  Uni_debt.Active := true;
   Uni_doc_nsi_95.Active := true;
+  setFilter;
 end;
 
 procedure TfrmDebtRequest.Button1Click(Sender: TObject);
@@ -268,6 +283,26 @@ begin
   end
   else
     Application.MessageBox('Повторите отправку позднее', 'Внимание!', MB_OK + MB_ICONINFORMATION + MB_TOPMOST);
+
+end;
+
+
+procedure TfrmDebtRequest.setFilter;
+begin
+
+ if chkResponseDate.Checked then
+   Uni_debt.MacroByName('substResponseDate').Value:=''
+ else
+   Uni_debt.MacroByName('substResponseDate').Value:='and response_date >= trunc(sysdate)';
+
+
+ if chkResponseExist.Checked then
+   Uni_debt.MacroByName('substResponseExist').Value:=''
+ else
+   Uni_debt.MacroByName('substResponseExist').Value:='and response_status = 0';
+
+Uni_debt.Active:=False;
+Uni_debt.Active:=True;
 
 end;
 

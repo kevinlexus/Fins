@@ -188,7 +188,6 @@ object frmDebtRequest: TfrmDebtRequest
       OnSelectionChanged = cxGrid1DBTableView1SelectionChanged
       DataController.DataSource = DS_debt
       DataController.Filter.Options = [fcoCaseInsensitive, fcoSoftNull]
-      DataController.Filter.Active = True
       DataController.Filter.AutoDataSetFilter = True
       DataController.Summary.DefaultGroupSummaryItems = <>
       DataController.Summary.FooterSummaryItems = <>
@@ -483,6 +482,24 @@ object frmDebtRequest: TfrmDebtRequest
       TabOrder = 1
       Width = 172
     end
+    object chkResponseDate: TCheckBox
+      Left = 280
+      Top = 13
+      Width = 122
+      Height = 17
+      Caption = #1042#1099#1096#1077#1083' '#1089#1088#1086#1082' '#1086#1090#1074#1077#1090#1072
+      TabOrder = 2
+      OnClick = chkResponseDateClick
+    end
+    object chkResponseExist: TCheckBox
+      Left = 408
+      Top = 13
+      Width = 97
+      Height = 17
+      Caption = #1054#1090#1074#1077#1090' '#1076#1072#1085
+      TabOrder = 3
+      OnClick = chkResponseExistClick
+    end
   end
   object Uni_debt: TUniQuery
     Connection = DataModule1.UniConnection1
@@ -495,10 +512,21 @@ object frmDebtRequest: TfrmDebtRequest
       
         ' t.rowid from exs.debt_sub_request t join scott.t_user u on u.cd' +
         '=user'
-      '  left join scott.t_org o on t.fk_uk=o.id')
+      '  left join scott.t_org o on t.fk_uk=o.id'
+      'where 1=1'
+      '&substResponseDate'
+      '&substResponseExist'
+      '')
     FilterOptions = [foCaseInsensitive]
     Left = 648
     Top = 160
+    MacroData = <
+      item
+        Name = 'substResponseDate'
+      end
+      item
+        Name = 'substResponseExist'
+      end>
     object Uni_debtID: TFloatField
       FieldName = 'ID'
       Required = True
