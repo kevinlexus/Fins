@@ -25,7 +25,8 @@ uses
   cxPropertiesStore, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters,
   cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit,
   cxNavigator, cxDBData, cxMaskEdit, cxGridCustomTableView,
-  cxGridTableView, cxGridCustomView;
+  cxGridTableView, cxGridCustomView, dxSkinsCore, dxSkinsDefaultPainters,
+  dxDateRanges;
 
 type
   TfrmPenCorr = class(TForm)

@@ -380,6 +380,7 @@ type
     procedure BeginUpdate;
     procedure EndUpdate;
     procedure N8Click(Sender: TObject);
+    procedure N70Click(Sender: TObject);
   private
   private
     FUpdateCount: integer;
@@ -500,7 +501,7 @@ uses
   Unit_spr_props, Unit_lk_acc, Unit_auto_chrg, Unit_service_cash, u_frmLoadPrivs,
   u_frmPenCorr, u_frmLoadFias, u_frmProject, Unit_spr_proc_pay, u_frmAccFlow,
   u_frmLoadKartExt, u_frmKartExt, Unit_changes_houses2, u_frmOLAP,
-  Unit_tarif_usl;
+  Unit_tarif_usl, Unit_spr_users;
 
 {$R *.dfm}
 
@@ -1275,6 +1276,11 @@ end;
 procedure TForm_Main.OLAP2Click(Sender: TObject);
 begin
   Application.CreateForm(TfrmOLAP, frmOLAP);
+end;
+
+procedure TForm_Main.N70Click(Sender: TObject);
+begin
+  Application.CreateForm(TForm_spr_users, Form_spr_users);
 end;
 
 procedure TForm_Main.N71Click(Sender: TObject);

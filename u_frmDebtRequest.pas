@@ -150,6 +150,11 @@ type
     DS_t_user: TDataSource;
     chkResponseDate: TCheckBox;
     chkResponseExist: TCheckBox;
+    Uni_debtFK_UK: TFloatField;
+    Uni_debtFK_PROC_UK: TFloatField;
+    cxGrid1DBTableView1FK_UK: TcxGridDBColumn;
+    cxGrid1DBTableView1FK_PROC_UK: TcxGridDBColumn;
+    chkAllFields: TCheckBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -158,17 +163,25 @@ type
     procedure setFilter;
     procedure chkResponseDateClick(Sender: TObject);
     procedure chkResponseExistClick(Sender: TObject);
+    procedure chkAllFieldsClick(Sender: TObject);
+    procedure toggleColumnsVisible;
   private    { Private declarations }
   public    { Public declarations }
   end;
 
 var
   frmDebtRequest: TfrmDebtRequest;
+  isColumnsVisible: Boolean = true;
 
 
 implementation
 
 {$R *.dfm}
+
+procedure TfrmDebtRequest.chkAllFieldsClick(Sender: TObject);
+begin
+toggleColumnsVisible;
+end;
 
 procedure TfrmDebtRequest.chkResponseDateClick(Sender: TObject);
 begin
@@ -239,6 +252,10 @@ begin
   Uni_t_user.Active := true;
   Uni_doc_nsi_95.Active := true;
   setFilter;
+
+  // выключить поля
+  isColumnsVisible := True;
+  toggleColumnsVisible;
 end;
 
 procedure TfrmDebtRequest.Button1Click(Sender: TObject);
@@ -305,6 +322,29 @@ Uni_debt.Active:=False;
 Uni_debt.Active:=True;
 
 end;
+
+procedure TfrmDebtRequest.toggleColumnsVisible;
+var
+  col: TcxGridDBColumn;
+begin
+
+  if isColumnsVisible then
+  begin
+    isColumnsVisible := False;
+  end
+  else
+  begin
+    isColumnsVisible := True;
+  end;
+
+  col := cxGrid1DBTableView1.GetColumnByFieldName('FK_UK');
+  col.Visible := isColumnsVisible;
+  col := cxGrid1DBTableView1.GetColumnByFieldName('FK_PROC_UK');
+  col.Visible := isColumnsVisible;
+
+
+end;
+
 
 end.
 

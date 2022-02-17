@@ -27,7 +27,7 @@ uses
   cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter, cxData,
   cxDataStorage, cxEdit, cxNavigator, cxDBData, cxDBLookupComboBox,
   cxGridCustomTableView, cxGridTableView, cxGridCustomView, StdCtrls,
-  cxCalendar;
+  cxCalendar, dxSkinsCore, dxSkinsDefaultPainters, dxDateRanges;
 
 type
   TForm_spr_penya = class(TForm)

@@ -25,8 +25,6 @@ object frmDebtRequest: TfrmDebtRequest
     Height = 498
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 1453
-    ExplicitHeight = 625
     object cxGrid1DBCardView1: TcxGridDBCardView
       Navigator.Buttons.CustomButtons = <>
       DataController.DataSource = DS_debt
@@ -296,6 +294,14 @@ object frmDebtRequest: TfrmDebtRequest
         DataBinding.FieldName = 'RESPONSE_STATUS'
         Visible = False
       end
+      object cxGrid1DBTableView1FK_UK: TcxGridDBColumn
+        DataBinding.FieldName = 'FK_UK'
+        Visible = False
+      end
+      object cxGrid1DBTableView1FK_PROC_UK: TcxGridDBColumn
+        DataBinding.FieldName = 'FK_PROC_UK'
+        Visible = False
+      end
     end
     object cxGrid1DBCardView3: TcxGridDBCardView
       Navigator.Buttons.CustomButtons = <>
@@ -440,7 +446,6 @@ object frmDebtRequest: TfrmDebtRequest
     Height = 41
     Align = alTop
     TabOrder = 1
-    ExplicitWidth = 1453
     DesignSize = (
       1352
       41)
@@ -461,7 +466,6 @@ object frmDebtRequest: TfrmDebtRequest
       Enabled = False
       TabOrder = 0
       OnClick = Button1Click
-      ExplicitLeft = 1352
     end
     object cbbUser: TcxLookupComboBox
       Left = 77
@@ -494,11 +498,20 @@ object frmDebtRequest: TfrmDebtRequest
     object chkResponseExist: TCheckBox
       Left = 408
       Top = 13
-      Width = 97
+      Width = 73
       Height = 17
       Caption = #1054#1090#1074#1077#1090' '#1076#1072#1085
       TabOrder = 3
       OnClick = chkResponseExistClick
+    end
+    object chkAllFields: TCheckBox
+      Left = 551
+      Top = 13
+      Width = 97
+      Height = 17
+      Caption = #1042#1089#1077' '#1087#1086#1083#1103
+      TabOrder = 4
+      OnClick = chkAllFieldsClick
     end
   end
   object Uni_debt: TUniQuery
@@ -708,6 +721,15 @@ object frmDebtRequest: TfrmDebtRequest
       FieldName = 'UK_NAME'
       ReadOnly = True
       Size = 64
+    end
+    object Uni_debtFK_UK: TFloatField
+      FieldName = 'FK_UK'
+      ReadOnly = True
+      Required = True
+    end
+    object Uni_debtFK_PROC_UK: TFloatField
+      FieldName = 'FK_PROC_UK'
+      ReadOnly = True
     end
   end
   object DS_debt: TDataSource

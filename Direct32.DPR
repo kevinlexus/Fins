@@ -140,7 +140,8 @@ uses
   Vcl.Themes,
   Vcl.Styles,
   u_frmOLAP in 'u_frmOLAP.pas' {frmOLAP},
-  u_frmDebtRequest in 'u_frmDebtRequest.pas' {frmDebtRequest};
+  u_frmDebtRequest in 'u_frmDebtRequest.pas' {frmDebtRequest},
+  Unit_spr_users in 'Unit_spr_users.pas' {Form_spr_users};
 
 {$R *.RES}
 var
