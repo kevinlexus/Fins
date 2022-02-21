@@ -141,7 +141,8 @@ uses
   Vcl.Styles,
   u_frmOLAP in 'u_frmOLAP.pas' {frmOLAP},
   u_frmDebtRequest in 'u_frmDebtRequest.pas' {frmDebtRequest},
-  Unit_spr_users in 'Unit_spr_users.pas' {Form_spr_users};
+  Unit_spr_users in 'Unit_spr_users.pas' {Form_spr_users},
+  Unit_sel_houses in 'Unit_sel_houses.pas' {Form_sel_houses};
 
 {$R *.RES}
 var

@@ -12,7 +12,6 @@ object Form_sel_houses: TForm_sel_houses
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   FormStyle = fsMDIChild
-  
   OldCreateOrder = False
   Position = poOwnerFormCenter
   Visible = True
@@ -51,75 +50,6 @@ object Form_sel_houses: TForm_sel_houses
     TabOrder = 5
     TabStop = True
   end
-  object DBGridEh1: TDBGridEh
-    Left = 0
-    Top = 40
-    Width = 417
-    Height = 361
-    DataSource = DS_list_choice
-    Flat = False
-    FooterColor = clWindow
-    FooterFont.Charset = DEFAULT_CHARSET
-    FooterFont.Color = clWindowText
-    FooterFont.Height = -11
-    FooterFont.Name = 'MS Sans Serif'
-    FooterFont.Style = []
-    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
-    TabOrder = 4
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'MS Sans Serif'
-    TitleFont.Style = []
-    OnDblClick = DBGridEh1DblClick
-    OnKeyUp = DBGridEh1KeyUp
-    Columns = <
-      item
-        EditButtons = <>
-        FieldName = 'REU'
-        Footers = <>
-        ReadOnly = True
-        Title.Caption = #8470' '#1046#1069#1054
-        Width = 44
-      end
-      item
-        EditButtons = <>
-        FieldName = 'UCH'
-        Footers = <>
-        Title.Caption = #1059#1095'.'
-        Width = 29
-      end
-      item
-        EditButtons = <>
-        FieldName = 'NAME'
-        Footers = <>
-        ReadOnly = True
-        Title.Caption = #1059#1083#1080#1094#1072
-        Width = 228
-      end
-      item
-        EditButtons = <>
-        FieldName = 'ND'
-        Footers = <>
-        ReadOnly = True
-        Title.Caption = #8470' '#1076#1086#1084#1072
-        Width = 47
-      end
-      item
-        Checkboxes = False
-        DblClickNextVal = True
-        EditButtons = <>
-        FieldName = 'SEL'
-        Footers = <>
-        ImageList = ImageList1
-        KeyList.Strings = (
-          '0'
-          '1')
-        ReadOnly = True
-        Title.Caption = #1042#1099#1073#1088#1072#1085'?'
-        Width = 49
-      end>
-  end
   object Button1: TButton
     Left = 342
     Top = 408
@@ -127,7 +57,7 @@ object Form_sel_houses: TForm_sel_houses
     Height = 33
     Cancel = True
     Caption = #1054#1082
-    TabOrder = 8
+    TabOrder = 4
     OnClick = Button1Click
   end
   object BitBtn1: TBitBtn
@@ -136,10 +66,6 @@ object Form_sel_houses: TForm_sel_houses
     Width = 41
     Height = 33
     Hint = #1042#1099#1073#1088#1072#1090#1100' '#1074#1089#1077
-    ParentShowHint = False
-    ShowHint = True
-    TabOrder = 6
-    OnClick = BitBtn1Click
     Glyph.Data = {
       6A030000424D6A030000000000002A0100002800000018000000180000000100
       08000000000040020000E50E0000E50E00003D0000003D00000000000000FFFF
@@ -169,6 +95,10 @@ object Form_sel_houses: TForm_sel_houses
       34342F04040404040404181A28333215302F30301F17171F3335310404040404
       0404040411083607271A36363636353534040404040404040404040404040404
       0404040404040404040404040404}
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 6
+    OnClick = BitBtn1Click
   end
   object BitBtn2: TBitBtn
     Left = 217
@@ -176,10 +106,6 @@ object Form_sel_houses: TForm_sel_houses
     Width = 41
     Height = 33
     Hint = #1054#1090#1084#1077#1085#1080#1090#1100' '#1074#1089#1077
-    ParentShowHint = False
-    ShowHint = True
-    TabOrder = 7
-    OnClick = BitBtn2Click
     Glyph.Data = {
       76060000424D7606000000000000360400002800000018000000180000000100
       08000000000040020000D30E0000D30E00000001000000010000424242004A42
@@ -233,6 +159,10 @@ object Form_sel_houses: TForm_sel_houses
       2B1C0C05100E10101520202222222C3A3A3A3A3A3A3A04162D2527282B2C2B2B
       2C2C2B292520293A3A3A3A3A3A3A3A3A211E1A181D161A1A1A1A2020223A3A3A
       3A3A3A3A3A3A3A3A3A3A3A3A3A3A3A3A3A3A3A3A3A3A3A3A3A3A}
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 7
+    OnClick = BitBtn2Click
   end
   object Edit1: TEdit
     Left = 35
@@ -264,10 +194,6 @@ object Form_sel_houses: TForm_sel_houses
     Width = 41
     Height = 33
     Hint = #1054#1095#1080#1089#1090#1080#1090#1100
-    ParentShowHint = False
-    ShowHint = True
-    TabOrder = 0
-    OnClick = BitBtn3Click
     Glyph.Data = {
       76060000424D7606000000000000360400002800000018000000180000000100
       08000000000040020000FE0E0000FE0E000000010000000100009C5A2900B573
@@ -321,6 +247,58 @@ object Form_sel_houses: TForm_sel_houses
       0D0D0D0D0D0D070505050505050505070D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D
       0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D
       0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D0D}
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 0
+    OnClick = BitBtn3Click
+  end
+  object cxGrid1: TcxGrid
+    Left = 0
+    Top = 48
+    Width = 411
+    Height = 354
+    Align = alCustom
+    TabOrder = 8
+    object cxGrid1DBTableView1: TcxGridDBTableView
+      Navigator.Buttons.CustomButtons = <>
+      DataController.DataSource = DS_list_choice
+      DataController.Summary.DefaultGroupSummaryItems = <>
+      DataController.Summary.FooterSummaryItems = <>
+      DataController.Summary.SummaryGroups = <>
+      OptionsView.ColumnAutoWidth = True
+      OptionsView.GroupByBox = False
+      object cxGrid1DBTableView1REU: TcxGridDBColumn
+        Caption = #1050#1086#1076' '#1059#1050
+        DataBinding.FieldName = 'REU'
+        Options.Editing = False
+      end
+      object cxGrid1DBTableView1ND: TcxGridDBColumn
+        Caption = #8470' '#1076#1086#1084#1072
+        DataBinding.FieldName = 'ND'
+        Options.Editing = False
+      end
+      object cxGrid1DBTableView1UCH: TcxGridDBColumn
+        Caption = #8470' '#1091#1095#1072#1089#1090#1082#1072
+        DataBinding.FieldName = 'UCH'
+        Options.Editing = False
+      end
+      object cxGrid1DBTableView1NAME: TcxGridDBColumn
+        Caption = #1059#1083#1080#1094#1072
+        DataBinding.FieldName = 'NAME'
+        Options.Editing = False
+      end
+      object cxGrid1DBTableView1SEL: TcxGridDBColumn
+        Caption = #1042#1099#1073#1088#1072#1085#1086
+        DataBinding.FieldName = 'SEL'
+        PropertiesClassName = 'TcxCheckBoxProperties'
+        Properties.Alignment = taRightJustify
+        Properties.ValueChecked = 0
+        Properties.ValueUnchecked = 1
+      end
+    end
+    object cxGrid1Level1: TcxGridLevel
+      GridView = cxGrid1DBTableView1
+    end
   end
   object OD_list_choice: TOracleDataSet
     SQL.Strings = (
@@ -329,28 +307,26 @@ object Form_sel_houses: TForm_sel_houses
       'end;')
     Optimize = False
     Variables.Data = {
-      0300000002000000110000003A5053414C444F5F524546435552534F52740000
-      000000000000000000050000003A434C525F030000000000000000000000}
+      0400000002000000220000003A005000530041004C0044004F005F0052004500
+      460043005500520053004F0052007400000000000000000000000A0000003A00
+      43004C0052005F00030000000000000000000000}
     QBEDefinition.QBEFieldDefs = {
-      040000000500000003000000524555010000000000020000004E440100000000
-      000300000053454C010000000000040000004E414D4501000000000003000000
-      554348010000000000}
+      050000000500000006000000520045005500010000000000040000004E004400
+      01000000000006000000530045004C00010000000000080000004E0041004D00
+      450001000000000006000000550043004800010000000000}
     LockingMode = lmNone
     UpdatingTable = 'scott.list_choices'
     CommitOnPost = False
     Session = DataModule1.OracleSession1
     Active = True
-    Left = 24
-    Top = 160
+    Left = 152
   end
   object DS_list_choice: TDataSource
     DataSet = OD_list_choice
-    Left = 56
-    Top = 160
+    Left = 184
   end
   object ImageList1: TImageList
-    Left = 88
-    Top = 160
+    Left = 216
     Bitmap = {
       494C010101000400040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010

@@ -5,7 +5,12 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, OracleData, ExtCtrls, DBCtrls, Grids, DBGrids,
-  ImgList, StdCtrls, DM_module1, Buttons, Utils;
+  ImgList, StdCtrls, DM_module1, Buttons, Utils, System.ImageList, cxGraphics,
+  cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxStyles, dxSkinsCore,
+  dxSkinsDefaultPainters, cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit,
+  cxNavigator, dxDateRanges, cxDBData, cxGridCustomTableView, cxGridTableView,
+  cxGridDBTableView, cxGridLevel, cxClasses, cxGridCustomView, cxGrid,
+  cxCheckBox;
 
 type
   TForm_sel_houses = class(TForm)
@@ -23,6 +28,14 @@ type
     Label2: TLabel;
     Label3: TLabel;
     BitBtn3: TBitBtn;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    cxGrid1: TcxGrid;
+    cxGrid1DBTableView1REU: TcxGridDBColumn;
+    cxGrid1DBTableView1ND: TcxGridDBColumn;
+    cxGrid1DBTableView1UCH: TcxGridDBColumn;
+    cxGrid1DBTableView1NAME: TcxGridDBColumn;
+    cxGrid1DBTableView1SEL: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
