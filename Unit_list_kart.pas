@@ -220,6 +220,8 @@ type
     cxgrdListKartDBTableView1PARENT_LSK: TcxGridDBColumn;
     cxgrdListKartDBTableView1DT_CR: TcxGridDBColumn;
     cxgrdListKartDBTableView1FK_KLSK_OBJ: TcxGridDBColumn;
+    cxgrdListKartDBTableView1PSCH: TcxGridDBColumn;
+    cxgrdListKartDBTableView1LSK_TP_CD: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure OD_list_kartAfterScroll(DataSet: TDataSet);
@@ -271,6 +273,9 @@ type
     procedure cxmskdtGW_VOLKeyPress(Sender: TObject; var Key: Char);
     procedure cxmskdtEL_VOLKeyPress(Sender: TObject; var Key: Char);
     procedure cxgrdListKartDBTableView1DblClick(Sender: TObject);
+    procedure cxgrdListKartDBTableView1CustomDrawCell(
+      Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;
+      AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
   public
     isAllowEdit_: Integer;
     isAllowEdit_k_: Integer;
@@ -1404,6 +1409,32 @@ begin
     // нажат Enter - перейти к другому полю
     Windows.SetFocus(Button2.Handle);
   end;
+end;
+
+procedure TForm_list_kart.cxgrdListKartDBTableView1CustomDrawCell(
+  Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;
+  AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
+var
+  psch, lskTp: string;
+begin
+  // цвет записи
+  psch := AViewInfo.GridRecord.DisplayTexts[cxgrdListKartDBTableView1PSCH.Index];
+  lskTp := AViewInfo.GridRecord.DisplayTexts[cxgrdListKartDBTableView1LSK_TP_CD.Index];
+
+  if (psch = '8') or (psch = '9') then
+  begin
+    // закрытый лиц.счет
+    ACanvas.Brush.Color:= clSilver;
+    ACanvas.Font.Color:= clBlack;
+  end
+  else if (lskTp='LSK_TP_RSO') or (lskTp='LSK_TP_ADDIT') then
+
+  begin
+    // активная запись, РСО
+    ACanvas.Brush.Color:= clMoneyGreen;
+    ACanvas.Font.Color:= clBlack;
+  end;
+
 end;
 
 procedure TForm_list_kart.cxgrdListKartDBTableView1DblClick(

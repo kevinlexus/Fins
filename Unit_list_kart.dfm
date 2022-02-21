@@ -431,6 +431,7 @@ object Form_list_kart: TForm_list_kart
         Properties.EditMask = '00000000;1;_'
         Properties.ShowEllipsis = False
         TabOrder = 2
+        Text = '        '
         OnDblClick = cxMRUEdit1DblClick
         OnKeyPress = cxMRUEdit1KeyPress
         Width = 105
@@ -691,6 +692,7 @@ object Form_list_kart: TForm_list_kart
       Navigator.Buttons.Post.Enabled = False
       Navigator.Buttons.SaveBookmark.Enabled = False
       Navigator.Visible = True
+      OnCustomDrawCell = cxgrdListKartDBTableView1CustomDrawCell
       DataController.DataModeController.GridMode = True
       DataController.DataSource = DS_list_kart
       DataController.KeyFieldNames = 'LSK'
@@ -699,9 +701,10 @@ object Form_list_kart: TForm_list_kart
       DataController.Summary.SummaryGroups = <>
       OptionsBehavior.CellHints = True
       OptionsData.Deleting = False
-      OptionsData.Editing = False
       OptionsData.Inserting = False
+      OptionsSelection.InvertSelect = False
       OptionsView.GroupByBox = False
+      OptionsView.Indicator = True
       object cxgrdListKartDBTableView1NAME_REU: TcxGridDBColumn
         DataBinding.FieldName = 'NAME_REU'
       end
@@ -794,6 +797,14 @@ object Form_list_kart: TForm_list_kart
       end
       object cxgrdListKartDBTableView1FK_KLSK_OBJ: TcxGridDBColumn
         DataBinding.FieldName = 'FK_KLSK_OBJ'
+      end
+      object cxgrdListKartDBTableView1PSCH: TcxGridDBColumn
+        DataBinding.FieldName = 'PSCH'
+        Visible = False
+      end
+      object cxgrdListKartDBTableView1LSK_TP_CD: TcxGridDBColumn
+        DataBinding.FieldName = 'LSK_TP_CD'
+        Visible = False
       end
     end
     object cxgrdListKartLevel1: TcxGridLevel

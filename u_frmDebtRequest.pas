@@ -223,6 +223,11 @@ begin
     // добавлено на загрузку
     ACanvas.Font.Color := clBlue;
   end
+  else if (status = '2') then
+  begin
+    // обработка
+    ACanvas.Font.Color := clGreen;
+  end
   else if (response = '1') then
   begin
     // отправлено успешно
