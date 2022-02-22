@@ -387,7 +387,6 @@ object DM_Olap: TDM_Olap
         't_tp, :prep_refcursor);'
       'end;')
     FetchRows = 1000
-    Active = True
     Left = 32
     Top = 32
     ParamData = <
@@ -582,6 +581,21 @@ object DM_Olap: TDM_Olap
   end
   object Uni_spr_params: TUniQuery
     UpdatingTable = 'SCOTT.SPR_PAR_SES'
+    SQLInsert.Strings = (
+      'INSERT INTO SCOTT.SPR_PAR_SES'
+      '  (NAME)'
+      'VALUES'
+      '  (:GR_NAME)')
+    SQLUpdate.Strings = (
+      
+        'update scott.SPR_PAR_SES t set t.parvc1=:parvc1, t.parn1=:parn1,' +
+        ' t.pardt1=:pardt1 '
+      'where t.id=:id')
+    SQLRecCount.Strings = (
+      'SELECT Count(*) FROM ('
+      'SELECT * FROM SCOTT.SPR_PAR_SES'
+      ''
+      ')')
     Connection = DataModule1.UniConnection1
     SQL.Strings = (
       'select p.id, t.name as gr_name, p.name as parname, p.cdtp,case'
@@ -639,6 +653,44 @@ object DM_Olap: TDM_Olap
         ParamType = ptInput
         Value = nil
       end>
+    object Uni_spr_paramsID: TFloatField
+      FieldName = 'ID'
+      ReadOnly = True
+      Required = True
+    end
+    object Uni_spr_paramsGR_NAME: TStringField
+      FieldName = 'GR_NAME'
+      Size = 64
+    end
+    object Uni_spr_paramsPARNAME: TStringField
+      FieldName = 'PARNAME'
+      ReadOnly = True
+      Size = 64
+    end
+    object Uni_spr_paramsCDTP: TFloatField
+      FieldName = 'CDTP'
+      ReadOnly = True
+    end
+    object Uni_spr_paramsVAL: TStringField
+      FieldName = 'VAL'
+      ReadOnly = True
+      Size = 1000
+    end
+    object Uni_spr_paramsPARN1: TFloatField
+      FieldName = 'PARN1'
+    end
+    object Uni_spr_paramsPARVC1: TStringField
+      FieldName = 'PARVC1'
+      Size = 1000
+    end
+    object Uni_spr_paramsPARDT1: TDateTimeField
+      FieldName = 'PARDT1'
+    end
+    object Uni_spr_paramsROWID: TStringField
+      FieldName = 'ROWID'
+      ReadOnly = True
+      Size = 18
+    end
   end
   object Uni_nabor_lsk: TUniQuery
     Connection = DataModule1.UniConnection1

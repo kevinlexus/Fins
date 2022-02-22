@@ -11,7 +11,6 @@ object Form_olap: TForm_olap
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   FormStyle = fsMDIChild
-  
   OldCreateOrder = False
   Position = poMainFormCenter
   Visible = True
@@ -62,7 +61,6 @@ object Form_olap: TForm_olap
       Caption = #1069#1082#1089#1087#1086#1088#1090
       ParentBiDiMode = False
       TabOrder = 1
-      Visible = False
       OnClick = Button3Click
     end
     object BitBtn1: TBitBtn

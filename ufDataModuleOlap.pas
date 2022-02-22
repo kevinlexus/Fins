@@ -47,6 +47,15 @@ type
     Uni_detail: TUniQuery;
     DS_data: TDataSource;
     DS_level: TDataSource;
+    Uni_spr_paramsID: TFloatField;
+    Uni_spr_paramsGR_NAME: TStringField;
+    Uni_spr_paramsPARNAME: TStringField;
+    Uni_spr_paramsCDTP: TFloatField;
+    Uni_spr_paramsVAL: TStringField;
+    Uni_spr_paramsPARN1: TFloatField;
+    Uni_spr_paramsPARVC1: TStringField;
+    Uni_spr_paramsPARDT1: TDateTimeField;
+    Uni_spr_paramsROWID: TStringField;
     procedure Uni_tree_objectsAfterPost(DataSet: TDataSet);
     procedure Uni_tree_objectsAfterScroll(DataSet: TDataSet);
   private

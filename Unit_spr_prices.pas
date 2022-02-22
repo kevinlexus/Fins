@@ -11,7 +11,7 @@ uses
   cxDBLookupComboBox, cxStyles, cxCustomData, cxFilter, cxData,
   cxDataStorage, cxNavigator, cxDBData, cxGridCustomTableView,
   cxGridTableView, cxGridDBTableView, cxGridLevel, cxClasses,
-  cxGridCustomView, cxGrid;
+  cxGridCustomView, cxGrid, dxSkinsCore, dxSkinsDefaultPainters, dxDateRanges;
 
 type
   TForm_spr_prices = class(TForm)

@@ -229,9 +229,7 @@ begin
     end
     else
     begin
-          ShowMessage('Обратиться к разработчику!');
-
-//      exp_to_dbf(OD_data, Edit2.Text+'debits.dbf');
+      exp_to_dbf(OD_data, Edit2.Text+'debits.dbf');
       Form_status.Close;
     end;
    end

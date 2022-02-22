@@ -12,7 +12,6 @@ object Form_print_lists: TForm_print_lists
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   FormStyle = fsMDIChild
-  
   OldCreateOrder = False
   Position = poMainFormCenter
   Visible = True

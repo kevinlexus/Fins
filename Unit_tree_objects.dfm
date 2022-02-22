@@ -13,7 +13,6 @@ object Form_tree_objects: TForm_tree_objects
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   FormStyle = fsStayOnTop
- 
   OldCreateOrder = False
   Position = poMainFormCenter
   Visible = True
@@ -247,7 +246,9 @@ object Form_tree_objects: TForm_tree_objects
         TabOrder = 0
         object cxGrid1DBTableView1: TcxGridDBTableView
           OnDblClick = cxGrid1DBTableView1DblClick
+          OnKeyDown = cxGrid1DBTableView1KeyDown
           Navigator.Buttons.CustomButtons = <>
+          OnCellDblClick = cxGrid1DBTableView1CellDblClick
           DataController.DataSource = DM_Olap.DS_spr_params
           DataController.KeyFieldNames = 'ID'
           DataController.Summary.DefaultGroupSummaryItems = <>

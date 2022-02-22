@@ -12,7 +12,6 @@ object Form_sel_reu: TForm_sel_reu
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   FormStyle = fsMDIChild
- 
   OldCreateOrder = False
   Position = poOwnerFormCenter
   Visible = True
@@ -150,11 +149,14 @@ object Form_sel_reu: TForm_sel_reu
     Width = 347
     Height = 369
     Align = alClient
+    PopupMenu = PopupMenu1
     TabOrder = 4
     object cxGridDBTableView1: TcxGridDBTableView
       OnDblClick = cxGridDBTableView1DblClick
       OnKeyPress = cxGridDBTableView1KeyPress
       Navigator.Buttons.CustomButtons = <>
+      Navigator.Visible = True
+      OnCellClick = cxGridDBTableView1CellClick
       DataController.DataSource = DS_list_choice
       DataController.Summary.DefaultGroupSummaryItems = <
         item
@@ -207,18 +209,18 @@ object Form_sel_reu: TForm_sel_reu
         DataBinding.FieldName = 'REU'
         Width = 42
       end
+      object cxGridDBTableView1NAME_REU: TcxGridDBColumn
+        DataBinding.FieldName = 'NAME_REU'
+        Width = 220
+      end
       object cxGridDBTableView1SEL: TcxGridDBColumn
-        Caption = #1042#1099#1073#1088#1072#1085'?'
+        Caption = #1042#1099#1073#1088#1072#1085#1086
         DataBinding.FieldName = 'SEL'
         PropertiesClassName = 'TcxCheckBoxProperties'
         Properties.Alignment = taRightJustify
         Properties.ValueChecked = 1
         Properties.ValueUnchecked = 0
         Width = 71
-      end
-      object cxGridDBTableView1NAME_REU: TcxGridDBColumn
-        DataBinding.FieldName = 'NAME_REU'
-        Width = 220
       end
     end
     object cxGridLevel1: TcxGridLevel
@@ -408,5 +410,17 @@ object Form_sel_reu: TForm_sel_reu
       E007000000000000E007000000000000E007000000000000F00F000000000000
       F81F000000000000FE3F00000000000000000000000000000000000000000000
       000000000000}
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 200
+    Top = 96
+    object N1: TMenuItem
+      Caption = #1042#1099#1073#1088#1072#1090#1100' '#1074#1089#1077
+      OnClick = N1Click
+    end
+    object N2: TMenuItem
+      Caption = #1054#1090#1084#1077#1085#1080#1090#1100' '#1074#1089#1077
+      OnClick = N2Click
+    end
   end
 end

@@ -193,6 +193,20 @@ begin
 
       // показатели
     addDimension('summa', 'Сумма', 2, setCaption);
+  end
+  else if (reportCd = '36') then
+  begin
+    // сверка по инкассациям
+      // измерения
+    addDimension('opername', 'Операция', 1, setCaption);
+    addDimension('dtek', 'Дата платежа', 1, setCaption);
+    addDimension('dat_ink', 'Дата инк.', 0, setCaption);
+    addDimension('nink', '№ инк.', 0, setCaption);
+    addDimension('nkom', '№ комп.', 0, setCaption);
+
+      // показатели
+    addDimension('summa', 'Сумма', 2, setCaption);
+    addDimension('penya', 'Пеня', 2, setCaption);
   end;
 end;
 

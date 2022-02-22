@@ -5,7 +5,7 @@ uses Forms, Classes, SysUtils, Dialogs, OracleData, DB, Windows,
   DM_module1, oracle, Math, ShlObj, Controls, Messages,
   ComCtrls, Menus, Unit_smpl_chk, StrUtils, Winsock, Uni, Variants,
   cxCustomData,
-  cxDBData, cxFilter, IdHTTP;
+  cxDBData, cxFilter, IdHTTP, DBF;
 
 // тип - запись о правах редактировани€ пользовател€
 type
@@ -94,7 +94,7 @@ procedure ApplySearchFilter(Controller: TcxDBDataController; Fields: string;
 function CheckAccess(privelege: string): Boolean;
 procedure loadListIdCd(var al: TUListRecArray);
 function getListIdByCd(var al: TUListRecArray; pId: Integer): string;
-//procedure sendGetRequest(request: string);
+function exp_to_dbf(dset: TDataSet; dbfname_: string): Integer;
 
 implementation
 uses Unit_Mainform;
@@ -1550,6 +1550,71 @@ begin
   end;
 
 end;}
+
+//экспорт в DBF
+
+function exp_to_dbf(dset: TDataSet; dbfname_: string): Integer;
+var
+  i: integer;
+  Src, Dest: string;
+  DBF1: TDBF;
+begin
+  //Ёкспорт в DBF
+  DBF1 := TDBF.Create(nil);
+  for i := 0 to dset.FieldCount - 1 do
+  begin
+    case dset.Fields[i].DataType of
+      ftInteger, ftSmallInt:
+        begin
+          DBF1.AddFieldDefs(dset.Fields[i].FieldName, bfNumber,
+            10, 0);
+        end;
+      ftFloat:
+        begin
+          DBF1.AddFieldDefs(dset.Fields[i].FieldName, bfFloat,
+            10, 2);
+        end;
+      ftString:
+        DBF1.AddFieldDefs(dset.Fields[i].FieldName, bfString,
+          dset.Fields[i].Size, 0);
+      ftDate:
+        DBF1.AddFieldDefs(dset.Fields[i].FieldName, bfDate,
+          8, 0);
+      ftDateTime:
+        DBF1.AddFieldDefs(dset.Fields[i].FieldName, bfDate,
+          8, 0);
+    end;
+  end;
+  DBF1.TableName := dbfname_;
+  DBF1.CreateTable;
+  DBF1.CodePage := OEM;
+  dset.First;
+
+  while not dset.Eof do
+  begin
+    DBF1.Append;
+    for i := 0 to dset.FieldCount - 1 do
+    begin
+      //ѕреобразуем формат даты DD.MM.YYYY в DD.MM.YY
+      if (dset.Fields[i].DataType = ftDateTime) or
+        (dset.Fields[i].DataType = ftDate) then
+        DBF1.SetFieldData(i + 1, copy(dset.Fields[i].AsString, 1, 6) +
+          copy(dset.Fields[i].AsString, 9, 2))
+      else
+      begin
+        Src := dset.Fields[i].AsString;
+        SetLength(Dest, Length(Src));
+        DBF1.Translate(Src, Dest, true);
+        DBF1.SetFieldData(i + 1, Dest);
+      end;
+    end;
+    dset.Next;
+  end;
+  DBF1.Post;
+  DBF1.Close;
+  DBF1.Free;
+  Result := 0;
+end;
 
 end.
 

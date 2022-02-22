@@ -107,6 +107,11 @@ type
     procedure Button3Click(Sender: TObject);
     procedure BeginUpdate;
     procedure EndUpdate;
+    procedure cxGrid1DBTableView1CellDblClick(Sender: TcxCustomGridTableView;
+      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+      AShift: TShiftState; var AHandled: Boolean);
+    procedure cxGrid1DBTableView1KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     Doc, Doc1: IXMLDomDocument;
     root, root1: IXMLDOMElement;
@@ -2068,8 +2073,22 @@ begin
   cxDBTreeList1.Root.Collapse(True);
 end;
 
+procedure TForm_tree_objects.cxGrid1DBTableView1CellDblClick(
+  Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo;
+  AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
+begin
+  edit_par;
+end;
+
 procedure TForm_tree_objects.cxGrid1DBTableView1DblClick(Sender: TObject);
 begin
+  //edit_par;
+end;
+
+procedure TForm_tree_objects.cxGrid1DBTableView1KeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+  //if (key = VK_Return) then
   edit_par;
 end;
 

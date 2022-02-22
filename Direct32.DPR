@@ -57,7 +57,6 @@ uses
   Unit_sel_arch_period in 'Unit_sel_arch_period.pas' {Form_sel_arch_period},
   Unit_changes_list in 'Unit_changes_list.pas' {Form_changes_list},
   Unit_houses_nabor in 'Unit_houses_nabor.pas' {Form_houses_nabor},
-  Unit_change_house_nabor2 in 'Unit_change_house_nabor2.pas' {Form_change_house_nabor},
   Unit_gen_current in 'Unit_gen_current.pas' {Form_gen_current},
   Unit_print_lists in 'Unit_print_lists.pas' {Form_print_lists},
   Unit_spr_sprorg in 'Unit_spr_sprorg.pas' {Form_spr_sprorg},
@@ -142,7 +141,8 @@ uses
   u_frmOLAP in 'u_frmOLAP.pas' {frmOLAP},
   u_frmDebtRequest in 'u_frmDebtRequest.pas' {frmDebtRequest},
   Unit_spr_users in 'Unit_spr_users.pas' {Form_spr_users},
-  Unit_sel_houses in 'Unit_sel_houses.pas' {Form_sel_houses};
+  Unit_sel_houses in 'Unit_sel_houses.pas' {Form_sel_houses},
+  Unit_change_house_nabor2 in 'Unit_change_house_nabor2.pas' {Form_change_house_nabor2};
 
 {$R *.RES}
 var

@@ -12,7 +12,7 @@ uses
   cxDBLookupComboBox, ExtCtrls, cxGraphics, cxLookAndFeels,
   cxLookAndFeelPainters, cxContainer, cxEdit, cxTextEdit, cxDropDownEdit,
   cxLookupEdit, cxDBLookupEdit, ComCtrls, dxCore, cxDateUtils, cxCalendar,
-  cxDBEdit;
+  cxDBEdit, dxSkinsCore, dxSkinsDefaultPainters;
 
 type
   TForm_change_house_nabor2 = class(TForm)

@@ -3,15 +3,14 @@ object Form_tree_par_edit: TForm_tree_par_edit
   Top = 383
   BorderIcons = [biSystemMenu]
   Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077' '#1087#1072#1088#1072#1084#1077#1090#1088#1072
-  ClientHeight = 294
-  ClientWidth = 435
+  ClientHeight = 380
+  ClientWidth = 486
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  
   OldCreateOrder = False
   OnClose = FormClose
   OnShow = FormShow
@@ -20,11 +19,13 @@ object Form_tree_par_edit: TForm_tree_par_edit
   object PageControl1: TPageControl
     Left = 0
     Top = 0
-    Width = 435
-    Height = 253
-    ActivePage = TabSheet4
+    Width = 486
+    Height = 339
+    ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 685
+    ExplicitHeight = 305
     object TabSheet1: TTabSheet
       object cxDate: TcxDBDateEdit
         Left = 88
@@ -109,10 +110,12 @@ object Form_tree_par_edit: TForm_tree_par_edit
       object cxGrid2: TcxGrid
         Left = 0
         Top = 0
-        Width = 427
-        Height = 225
+        Width = 478
+        Height = 311
         Align = alClient
         TabOrder = 0
+        ExplicitWidth = 427
+        ExplicitHeight = 225
         object cxGridDBTableView1: TcxGridDBTableView
           PopupMenu = PopupMenu1
           Navigator.Buttons.CustomButtons = <>
@@ -138,11 +141,13 @@ object Form_tree_par_edit: TForm_tree_par_edit
       object cxGrid1: TcxGrid
         Left = 0
         Top = 0
-        Width = 427
-        Height = 225
+        Width = 478
+        Height = 311
         Align = alClient
         PopupMenu = PopupMenu1
         TabOrder = 0
+        ExplicitWidth = 427
+        ExplicitHeight = 225
         object cxGrid1DBTableView1: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           Navigator.Buttons.Insert.Visible = False
@@ -195,29 +200,38 @@ object Form_tree_par_edit: TForm_tree_par_edit
   end
   object Panel1: TPanel
     Left = 0
-    Top = 253
-    Width = 435
+    Top = 339
+    Width = 486
     Height = 41
     Align = alBottom
     TabOrder = 1
+    ExplicitTop = 253
+    ExplicitWidth = 435
+    DesignSize = (
+      486
+      41)
     object Button1: TButton
-      Left = 136
-      Top = 8
+      Left = 327
+      Top = 6
       Width = 75
       Height = 25
+      Anchors = [akRight, akBottom]
       Caption = #1054#1082
       TabOrder = 0
       OnClick = Button1Click
+      ExplicitLeft = 342
     end
     object Button2: TButton
-      Left = 216
-      Top = 8
+      Left = 407
+      Top = 6
       Width = 75
       Height = 25
+      Anchors = [akRight, akBottom]
       Cancel = True
       Caption = #1054#1090#1084#1077#1085#1072
       TabOrder = 1
       OnClick = Button2Click
+      ExplicitLeft = 422
     end
   end
   object DS_list: TDataSource

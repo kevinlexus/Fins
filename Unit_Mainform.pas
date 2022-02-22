@@ -745,6 +745,7 @@ begin
   Versia := 187;
   logText('Начало работы с Direct.exe');
   DisableGhosting;
+  FormatSettings.DecimalSeparator:='.';
 end;
 
 procedure TForm_Main.N31Click(Sender: TObject);

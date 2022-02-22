@@ -131,7 +131,6 @@ begin
   Uni_List.active := true;
 
   DS_par.DataSet := OD_dst.DataSet;
-  //DS_par.DataSet := OD_src;
   OD_dst.Edit;
 end;
 
@@ -140,12 +139,12 @@ var
   id_: Integer;
 begin
 
-  // на выходе по Ок из формы - применил кэшированое update, иначе тормозит сильно ред.18.07.2019
   if not (Uni_list.State in [dsBrowse]) then
     Uni_list.Post;
 
   with OD_dst.DataSet do
   begin
+
     if FieldByName('CDTP').AsInteger = 4 then
     begin
       DataModule1.UniStoredProc1.StoredProcName := 'scott.utils.set_list_c';
@@ -157,8 +156,6 @@ begin
         .CreateParam(ftInteger, 'id_', ptInput).AsInteger :=
           Uni_list.FieldByName('id').AsInteger;
       DataModule1.UniStoredProc1.ExecProc;
-      //      DataModule1.OraclePackage1.CallProcedure('scott.utils.set_list_c',
-      //        [FieldByName('id').AsInteger, Uni_list.FieldByName('id').AsInteger]);
     end;
 
     if not (State in [dsBrowse]) then
@@ -169,11 +166,7 @@ begin
     Active := True;
     Locate('id', id_, []);
   end;
-
-  //DataModule1.OracleSession1.ApplyUpdates([OD_list], true);
-
   close;
-
 end;
 
 procedure TForm_tree_par_edit.Button2Click(Sender: TObject);

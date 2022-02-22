@@ -52,6 +52,8 @@ type
     procedure CheckBox1Click(Sender: TObject);
     procedure setType(l_lvl: Integer; name: String);
     procedure cxGridTarifDBTableView1DblClick(Sender: TObject);
+    procedure cxGridDBTableView1EditDblClick(Sender: TcxCustomGridTableView;
+      AItem: TcxCustomGridTableItem; AEdit: TcxCustomEdit);
   private
     { Private declarations }
   end;
@@ -219,7 +221,9 @@ begin
   end;
 end;
 
-procedure TForm_tarif_usl.cxGridTarifDBTableView1DblClick(Sender: TObject);
+procedure TForm_tarif_usl.cxGridDBTableView1EditDblClick(
+  Sender: TcxCustomGridTableView; AItem: TcxCustomGridTableItem;
+  AEdit: TcxCustomEdit);
 var
   bm_: TBookmark;
 begin
@@ -246,6 +250,35 @@ begin
 
     end;
   end;
+end;
+
+procedure TForm_tarif_usl.cxGridTarifDBTableView1DblClick(Sender: TObject);
+//var
+//  bm_: TBookmark;
+begin
+{  if DM_Olap.OD_mg1.FieldByName('mg').AsString = Form_main.cur_mg_ then
+  begin
+    //Выбран текущий период
+    bm_ := DM_Olap.Uni_data.GetBookmark;
+    if FF('Form_change_house_nabor2', 1) = 0 then
+      Application.CreateForm(TForm_change_house_nabor2,
+        Form_change_house_nabor2);
+    Application.CreateForm(TForm_status, Form_status);
+    Form_status.Update;
+    Form_change_house_nabor2.setState(
+      DM_Olap.Uni_tree_objects.FieldByName('obj_level').AsInteger, '', 2,
+      DM_Olap.Uni_data.FieldByName('sptarn').AsInteger);
+    Form_status.Close;
+    if Form_change_house_nabor2.ShowModal = mrOk then
+    begin
+      Form_tree_objects.prepData;
+      try
+      DM_Olap.Uni_data.GotoBookmark(bm_);
+            except
+      end;
+
+    end;
+  end;     }
 end;
 
 end.

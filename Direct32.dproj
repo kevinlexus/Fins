@@ -275,9 +275,6 @@
         <DCCReference Include="Unit_houses_nabor.pas">
             <Form>Form_houses_nabor</Form>
         </DCCReference>
-        <DCCReference Include="Unit_change_house_nabor2.pas">
-            <Form>Form_change_house_nabor</Form>
-        </DCCReference>
         <DCCReference Include="Unit_gen_current.pas">
             <Form>Form_gen_current</Form>
         </DCCReference>
@@ -514,6 +511,10 @@
         </DCCReference>
         <DCCReference Include="Unit_sel_houses.pas">
             <Form>Form_sel_houses</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Unit_change_house_nabor2.pas">
+            <Form>Form_change_house_nabor2</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Debug">

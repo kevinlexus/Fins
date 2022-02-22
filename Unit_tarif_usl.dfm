@@ -11,7 +11,6 @@ object Form_tarif_usl: TForm_tarif_usl
   Font.Name = 'Tahoma'
   Font.Style = []
   FormStyle = fsMDIChild
- 
   OldCreateOrder = False
   Position = poMainFormCenter
   Visible = True
@@ -81,12 +80,13 @@ object Form_tarif_usl: TForm_tarif_usl
     Width = 1014
     Height = 823
     Align = alClient
+    PopupMenu = PopupMenu3
     TabOrder = 2
     object cxGridDBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Visible = True
+      OnEditDblClick = cxGridDBTableView1EditDblClick
       DataController.DataSource = DM_Olap.DS_data
-      DataController.KeyFieldNames = 'ID'
       DataController.Summary.DefaultGroupSummaryItems = <>
       DataController.Summary.FooterSummaryItems = <>
       DataController.Summary.SummaryGroups = <>
