@@ -11,7 +11,8 @@ uses
   cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxStyles,
   cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
   cxDBData, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
-  cxGridLevel, cxClasses, cxGridCustomView, cxGrid;
+  cxGridLevel, cxClasses, cxGridCustomView, cxGrid, dxSkinsCore,
+  dxSkinsDefaultPainters, dxDateRanges;
 
 type
   TForm_changes_lsk = class(TForm)

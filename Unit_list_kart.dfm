@@ -682,133 +682,265 @@ object Form_list_kart: TForm_list_kart
     Height = 553
     Align = alClient
     TabOrder = 3
-    object cxgrdListKartDBTableView1: TcxGridDBTableView
-      OnDblClick = cxgrdListKartDBTableView1DblClick
+    object cxgrdListKartDBBandedTableView1: TcxGridDBBandedTableView
+      OnDblClick = cxgrdListKartDBBandedTableView1DblClick
       Navigator.Buttons.CustomButtons = <>
-      Navigator.Buttons.Insert.Enabled = False
-      Navigator.Buttons.Append.Enabled = False
-      Navigator.Buttons.Delete.Enabled = False
-      Navigator.Buttons.Edit.Enabled = False
-      Navigator.Buttons.Post.Enabled = False
-      Navigator.Buttons.SaveBookmark.Enabled = False
       Navigator.Visible = True
-      OnCustomDrawCell = cxgrdListKartDBTableView1CustomDrawCell
+      OnCustomDrawCell = cxgrdListKartDBBandedTableView1CustomDrawCell
+      OnFocusedItemChanged = cxgrdListKartDBBandedTableView1FocusedItemChanged
       DataController.DataModeController.GridMode = True
       DataController.DataSource = DS_list_kart
-      DataController.KeyFieldNames = 'LSK'
       DataController.Summary.DefaultGroupSummaryItems = <>
       DataController.Summary.FooterSummaryItems = <>
       DataController.Summary.SummaryGroups = <>
-      OptionsBehavior.CellHints = True
+      OptionsBehavior.CopyCaptionsToClipboard = False
+      OptionsBehavior.CopyRecordsToClipboard = False
+      OptionsBehavior.CopyPreviewToClipboard = False
+      OptionsData.CancelOnExit = False
       OptionsData.Deleting = False
+      OptionsData.DeletingConfirmation = False
+      OptionsData.Editing = False
       OptionsData.Inserting = False
-      OptionsSelection.InvertSelect = False
       OptionsView.GroupByBox = False
-      OptionsView.Indicator = True
-      object cxgrdListKartDBTableView1NAME_REU: TcxGridDBColumn
+      Bands = <
+        item
+        end
+        item
+        end>
+      object cxgrdListKartDBBandedTableView1NAME_REU: TcxGridDBBandedColumn
         DataBinding.FieldName = 'NAME_REU'
+        Options.Editing = False
+        Position.BandIndex = 0
+        Position.ColIndex = 2
+        Position.RowIndex = 0
       end
-      object cxgrdListKartDBTableView1LSK: TcxGridDBColumn
+      object cxgrdListKartDBBandedTableView1LSK: TcxGridDBBandedColumn
         DataBinding.FieldName = 'LSK'
+        Options.Editing = False
+        Position.BandIndex = 0
+        Position.ColIndex = 3
+        Position.RowIndex = 0
       end
-      object cxgrdListKartDBTableView1KUL: TcxGridDBColumn
+      object cxgrdListKartDBBandedTableView1KUL: TcxGridDBBandedColumn
         DataBinding.FieldName = 'KUL'
+        Options.Editing = False
+        Position.BandIndex = 0
+        Position.ColIndex = 4
+        Position.RowIndex = 0
       end
-      object cxgrdListKartDBTableView1NAME: TcxGridDBColumn
+      object cxgrdListKartDBBandedTableView1NAME: TcxGridDBBandedColumn
         DataBinding.FieldName = 'NAME'
+        Options.Editing = False
+        Position.BandIndex = 0
+        Position.ColIndex = 5
+        Position.RowIndex = 0
       end
-      object cxgrdListKartDBTableView1N_ND: TcxGridDBColumn
+      object cxgrdListKartDBBandedTableView1N_ND: TcxGridDBBandedColumn
         DataBinding.FieldName = 'N_ND'
+        Options.Editing = False
+        Position.BandIndex = 0
+        Position.ColIndex = 6
+        Position.RowIndex = 0
       end
-      object cxgrdListKartDBTableView1N_KW: TcxGridDBColumn
+      object cxgrdListKartDBBandedTableView1N_KW: TcxGridDBBandedColumn
         DataBinding.FieldName = 'N_KW'
+        Options.Editing = False
+        Position.BandIndex = 0
+        Position.ColIndex = 7
+        Position.RowIndex = 0
       end
-      object cxgrdListKartDBTableView1ENTR: TcxGridDBColumn
+      object cxgrdListKartDBBandedTableView1ENTR: TcxGridDBBandedColumn
         DataBinding.FieldName = 'ENTR'
+        Options.Editing = False
+        Position.BandIndex = 0
+        Position.ColIndex = 8
+        Position.RowIndex = 0
       end
-      object cxgrdListKartDBTableView1N_STATUS: TcxGridDBColumn
+      object cxgrdListKartDBBandedTableView1N_STATUS: TcxGridDBBandedColumn
         DataBinding.FieldName = 'N_STATUS'
+        Options.Editing = False
+        Position.BandIndex = 0
+        Position.ColIndex = 9
+        Position.RowIndex = 0
       end
-      object cxgrdListKartDBTableView1FIO: TcxGridDBColumn
+      object cxgrdListKartDBBandedTableView1FIO: TcxGridDBBandedColumn
         DataBinding.FieldName = 'FIO'
+        Options.Editing = False
+        Position.BandIndex = 0
+        Position.ColIndex = 10
+        Position.RowIndex = 0
       end
-      object cxgrdListKartDBTableView1ET: TcxGridDBColumn
+      object cxgrdListKartDBBandedTableView1ET: TcxGridDBBandedColumn
         DataBinding.FieldName = 'ET'
+        Options.Editing = False
+        Position.BandIndex = 0
+        Position.ColIndex = 11
+        Position.RowIndex = 0
       end
-      object cxgrdListKartDBTableView1KPR: TcxGridDBColumn
+      object cxgrdListKartDBBandedTableView1KPR: TcxGridDBBandedColumn
         DataBinding.FieldName = 'KPR'
+        Options.Editing = False
+        Position.BandIndex = 0
+        Position.ColIndex = 12
+        Position.RowIndex = 0
       end
-      object cxgrdListKartDBTableView1KPR_OT: TcxGridDBColumn
+      object cxgrdListKartDBBandedTableView1KPR_OT: TcxGridDBBandedColumn
         DataBinding.FieldName = 'KPR_OT'
+        Options.Editing = False
+        Position.BandIndex = 0
+        Position.ColIndex = 13
+        Position.RowIndex = 0
       end
-      object cxgrdListKartDBTableView1KPR_WR: TcxGridDBColumn
+      object cxgrdListKartDBBandedTableView1KPR_WR: TcxGridDBBandedColumn
         DataBinding.FieldName = 'KPR_WR'
+        Options.Editing = False
+        Position.BandIndex = 0
+        Position.ColIndex = 14
+        Position.RowIndex = 0
       end
-      object cxgrdListKartDBTableView1KPR_WRP: TcxGridDBColumn
+      object cxgrdListKartDBBandedTableView1KPR_WRP: TcxGridDBBandedColumn
         DataBinding.FieldName = 'KPR_WRP'
+        Options.Editing = False
+        Position.BandIndex = 0
+        Position.ColIndex = 15
+        Position.RowIndex = 0
       end
-      object cxgrdListKartDBTableView1OPL: TcxGridDBColumn
+      object cxgrdListKartDBBandedTableView1OPL: TcxGridDBBandedColumn
         DataBinding.FieldName = 'OPL'
+        Options.Editing = False
+        Position.BandIndex = 0
+        Position.ColIndex = 16
+        Position.RowIndex = 0
       end
-      object cxgrdListKartDBTableView1K_LSK_ID: TcxGridDBColumn
+      object cxgrdListKartDBBandedTableView1K_LSK_ID: TcxGridDBBandedColumn
         DataBinding.FieldName = 'K_LSK_ID'
+        Options.Editing = False
+        Position.BandIndex = 0
+        Position.ColIndex = 17
+        Position.RowIndex = 0
       end
-      object cxgrdListKartDBTableView1FK_KLSK_PREMISE: TcxGridDBColumn
+      object cxgrdListKartDBBandedTableView1FK_KLSK_PREMISE: TcxGridDBBandedColumn
         DataBinding.FieldName = 'FK_KLSK_PREMISE'
+        Options.Editing = False
+        Position.BandIndex = 0
+        Position.ColIndex = 18
+        Position.RowIndex = 0
       end
-      object cxgrdListKartDBTableView1HOUSE_ID: TcxGridDBColumn
+      object cxgrdListKartDBBandedTableView1HOUSE_ID: TcxGridDBBandedColumn
         DataBinding.FieldName = 'HOUSE_ID'
+        Options.Editing = False
+        Position.BandIndex = 0
+        Position.ColIndex = 19
+        Position.RowIndex = 0
       end
-      object cxgrdListKartDBTableView1MHW: TcxGridDBColumn
+      object cxgrdListKartDBBandedTableView1MHW: TcxGridDBBandedColumn
         DataBinding.FieldName = 'MHW'
+        Options.Editing = False
+        Position.BandIndex = 0
+        Position.ColIndex = 20
+        Position.RowIndex = 0
       end
-      object cxgrdListKartDBTableView1MGW: TcxGridDBColumn
+      object cxgrdListKartDBBandedTableView1MGW: TcxGridDBBandedColumn
         DataBinding.FieldName = 'MGW'
+        Options.Editing = False
+        Position.BandIndex = 0
+        Position.ColIndex = 21
+        Position.RowIndex = 0
       end
-      object cxgrdListKartDBTableView1MEL: TcxGridDBColumn
+      object cxgrdListKartDBBandedTableView1MEL: TcxGridDBBandedColumn
         DataBinding.FieldName = 'MEL'
+        Options.Editing = False
+        Position.BandIndex = 0
+        Position.ColIndex = 22
+        Position.RowIndex = 0
       end
-      object cxgrdListKartDBTableView1DEB_ORG: TcxGridDBColumn
+      object cxgrdListKartDBBandedTableView1DEB_ORG: TcxGridDBBandedColumn
         DataBinding.FieldName = 'DEB_ORG'
+        Options.Editing = False
+        Position.BandIndex = 0
+        Position.ColIndex = 23
+        Position.RowIndex = 0
       end
-      object cxgrdListKartDBTableView1EL1: TcxGridDBColumn
+      object cxgrdListKartDBBandedTableView1EL1: TcxGridDBBandedColumn
         DataBinding.FieldName = 'EL1'
+        Options.Editing = False
+        Position.BandIndex = 0
+        Position.ColIndex = 24
+        Position.RowIndex = 0
       end
-      object cxgrdListKartDBTableView1PSCH_NAME: TcxGridDBColumn
+      object cxgrdListKartDBBandedTableView1PSCH_NAME: TcxGridDBBandedColumn
         DataBinding.FieldName = 'PSCH_NAME'
+        Options.Editing = False
+        Position.BandIndex = 0
+        Position.ColIndex = 25
+        Position.RowIndex = 0
       end
-      object cxgrdListKartDBTableView1MG1: TcxGridDBColumn
+      object cxgrdListKartDBBandedTableView1MG1: TcxGridDBBandedColumn
         DataBinding.FieldName = 'MG1'
+        Options.Editing = False
+        Position.BandIndex = 0
+        Position.ColIndex = 26
+        Position.RowIndex = 0
       end
-      object cxgrdListKartDBTableView1MG2: TcxGridDBColumn
+      object cxgrdListKartDBBandedTableView1MG2: TcxGridDBBandedColumn
         DataBinding.FieldName = 'MG2'
+        Options.Editing = False
+        Position.BandIndex = 0
+        Position.ColIndex = 27
+        Position.RowIndex = 0
       end
-      object cxgrdListKartDBTableView1KRAN1: TcxGridDBColumn
+      object cxgrdListKartDBBandedTableView1KRAN1: TcxGridDBBandedColumn
         DataBinding.FieldName = 'KRAN1'
+        Options.Editing = False
+        Position.BandIndex = 0
+        Position.ColIndex = 28
+        Position.RowIndex = 0
       end
-      object cxgrdListKartDBTableView1TEXT: TcxGridDBColumn
+      object cxgrdListKartDBBandedTableView1TEXT: TcxGridDBBandedColumn
         DataBinding.FieldName = 'TEXT'
+        Options.Editing = False
+        Position.BandIndex = 0
+        Position.ColIndex = 29
+        Position.RowIndex = 0
       end
-      object cxgrdListKartDBTableView1PARENT_LSK: TcxGridDBColumn
+      object cxgrdListKartDBBandedTableView1PARENT_LSK: TcxGridDBBandedColumn
         DataBinding.FieldName = 'PARENT_LSK'
+        Options.Editing = False
+        Position.BandIndex = 0
+        Position.ColIndex = 30
+        Position.RowIndex = 0
       end
-      object cxgrdListKartDBTableView1DT_CR: TcxGridDBColumn
+      object cxgrdListKartDBBandedTableView1DT_CR: TcxGridDBBandedColumn
         DataBinding.FieldName = 'DT_CR'
+        Options.Editing = False
+        Position.BandIndex = 0
+        Position.ColIndex = 31
+        Position.RowIndex = 0
       end
-      object cxgrdListKartDBTableView1FK_KLSK_OBJ: TcxGridDBColumn
+      object cxgrdListKartDBBandedTableView1FK_KLSK_OBJ: TcxGridDBBandedColumn
         DataBinding.FieldName = 'FK_KLSK_OBJ'
+        Options.Editing = False
+        Position.BandIndex = 0
+        Position.ColIndex = 32
+        Position.RowIndex = 0
       end
-      object cxgrdListKartDBTableView1PSCH: TcxGridDBColumn
-        DataBinding.FieldName = 'PSCH'
-        Visible = False
-      end
-      object cxgrdListKartDBTableView1LSK_TP_CD: TcxGridDBColumn
+      object cxgrdListKartDBBandedTableView1LSK_TP_CD: TcxGridDBBandedColumn
         DataBinding.FieldName = 'LSK_TP_CD'
         Visible = False
+        Position.BandIndex = 0
+        Position.ColIndex = 0
+        Position.RowIndex = 0
+      end
+      object cxgrdListKartDBBandedTableView1PSCH: TcxGridDBBandedColumn
+        DataBinding.FieldName = 'PSCH'
+        Visible = False
+        Position.BandIndex = 0
+        Position.ColIndex = 1
+        Position.RowIndex = 0
       end
     end
-    object cxgrdListKartLevel1: TcxGridLevel
-      GridView = cxgrdListKartDBTableView1
+    object cxgrdListKartLevel2: TcxGridLevel
+      GridView = cxgrdListKartDBBandedTableView1
     end
   end
   object OD_list_kart: TOracleDataSet
@@ -971,7 +1103,7 @@ object Form_list_kart: TForm_list_kart
     AfterScroll = OD_list_kartAfterScroll
     OnEditError = OD_list_kartEditError
     Left = 8
-    Top = 32
+    Top = 160
     object OD_list_kartBTN: TStringField
       DisplayLabel = ' '
       DisplayWidth = 2
@@ -1189,6 +1321,7 @@ object Form_list_kart: TForm_list_kart
       Size = 8
     end
     object OD_list_kartDT_CR: TDateTimeField
+      DisplayLabel = #1044#1072#1090#1072' '#1089#1086#1079#1076#1072#1085#1080#1103
       DisplayWidth = 18
       FieldName = 'DT_CR'
       Required = True
@@ -1459,7 +1592,7 @@ object Form_list_kart: TForm_list_kart
   object DS_list_kart: TDataSource
     DataSet = OD_list_kart
     Left = 40
-    Top = 32
+    Top = 160
   end
   object OD_debits_org: TOracleDataSet
     SQL.Strings = (
@@ -1914,7 +2047,7 @@ object Form_list_kart: TForm_list_kart
   end
   object PopupMenu1: TPopupMenu
     Left = 8
-    Top = 72
+    Top = 200
     object N3: TMenuItem
       Caption = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082' '#1076#1086#1084#1072
       OnClick = N3Click
@@ -2033,14 +2166,7 @@ object Form_list_kart: TForm_list_kart
     StorageName = 'frmListKartStore'
     StorageType = stRegistry
     Left = 104
-    Top = 40
-  end
-  object cxstylrpstry1: TcxStyleRepository
-    Left = 200
-    Top = 96
-    PixelsPerInch = 96
-    object cxstyl1: TcxStyle
-    end
+    Top = 168
   end
   object OD_rep_lsk: TOracleDataSet
     SQL.Strings = (
@@ -2112,11 +2238,11 @@ object Form_list_kart: TForm_list_kart
     DesignActivation = True
     Active = True
     Left = 152
-    Top = 32
+    Top = 160
   end
   object DS_kart_detail: TDataSource
     DataSet = OD_kart_detail
     Left = 192
-    Top = 32
+    Top = 160
   end
 end

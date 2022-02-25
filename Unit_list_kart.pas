@@ -4,23 +4,15 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, OracleData, Oracle, ExtCtrls,
-  Grids, StdCtrls, Utils,
-  Mask, StrUtils,
-  Buttons, frxClass, frxDBSet, Menus,
-  DBCtrls, cxControls,
-  cxStyles,
-
-  cxEdit, cxGridLevel, cxClasses, cxGridCustomView,
-  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
-  cxPropertiesStore,
-
-  cxContainer, cxTextEdit, cxMaskEdit,
-  cxLabel, cxGraphics,
-
-  cxDropDownEdit, cxMRUEdit, cxLookAndFeels, cxLookAndFeelPainters,
-  cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, cxDBData,
-  dxBarBuiltInMenu, cxPC, dxSkinsCore, dxSkinsDefaultPainters, dxDateRanges;
+  Dialogs, DB, OracleData, Oracle, ExtCtrls, Grids, StdCtrls, Utils, Mask,
+  StrUtils, Buttons, frxClass, frxDBSet, Menus, DBCtrls, cxControls, cxStyles,
+  cxEdit, cxGridLevel, cxClasses, cxGridCustomView, cxGridCustomTableView,
+  cxGridTableView, cxGridDBTableView, cxGrid, cxPropertiesStore, cxContainer,
+  cxTextEdit, cxMaskEdit, cxLabel, cxGraphics, cxDropDownEdit, cxMRUEdit,
+  cxLookAndFeels, cxLookAndFeelPainters, cxCustomData, cxFilter, cxData,
+  cxDataStorage, cxNavigator, cxDBData, dxBarBuiltInMenu, cxPC, dxSkinsCore,
+  dxSkinsDefaultPainters, dxDateRanges, cxGridBandedTableView,
+  cxGridDBBandedTableView;
 
 type
   TForm_list_kart = class(TForm)
@@ -136,8 +128,6 @@ type
     cxPropertiesStore1: TcxPropertiesStore;
     OD_list_kartLSK_EXT: TStringField;
     OD_list_kartLSK_TP: TStringField;
-    cxstylrpstry1: TcxStyleRepository;
-    cxstyl1: TcxStyle;
     OD_list_kartLSK_TP_CD: TStringField;
     chk1: TCheckBox;
     OD_list_kartSEL1: TFloatField;
@@ -186,42 +176,42 @@ type
     cxGrid1DBTableView1FIO: TcxGridDBColumn;
     cxGrid1DBTableView1DEB_ORG_NAME: TcxGridDBColumn;
     cxGrid1Level1: TcxGridLevel;
-    cxgrdListKartDBTableView1: TcxGridDBTableView;
-    cxgrdListKartLevel1: TcxGridLevel;
     cxgrdListKart: TcxGrid;
-    cxgrdListKartDBTableView1NAME_REU: TcxGridDBColumn;
-    cxgrdListKartDBTableView1LSK: TcxGridDBColumn;
-    cxgrdListKartDBTableView1KUL: TcxGridDBColumn;
-    cxgrdListKartDBTableView1NAME: TcxGridDBColumn;
-    cxgrdListKartDBTableView1N_ND: TcxGridDBColumn;
-    cxgrdListKartDBTableView1N_KW: TcxGridDBColumn;
-    cxgrdListKartDBTableView1ENTR: TcxGridDBColumn;
-    cxgrdListKartDBTableView1N_STATUS: TcxGridDBColumn;
-    cxgrdListKartDBTableView1FIO: TcxGridDBColumn;
-    cxgrdListKartDBTableView1ET: TcxGridDBColumn;
-    cxgrdListKartDBTableView1KPR: TcxGridDBColumn;
-    cxgrdListKartDBTableView1KPR_OT: TcxGridDBColumn;
-    cxgrdListKartDBTableView1KPR_WR: TcxGridDBColumn;
-    cxgrdListKartDBTableView1KPR_WRP: TcxGridDBColumn;
-    cxgrdListKartDBTableView1OPL: TcxGridDBColumn;
-    cxgrdListKartDBTableView1K_LSK_ID: TcxGridDBColumn;
-    cxgrdListKartDBTableView1FK_KLSK_PREMISE: TcxGridDBColumn;
-    cxgrdListKartDBTableView1HOUSE_ID: TcxGridDBColumn;
-    cxgrdListKartDBTableView1MHW: TcxGridDBColumn;
-    cxgrdListKartDBTableView1MGW: TcxGridDBColumn;
-    cxgrdListKartDBTableView1MEL: TcxGridDBColumn;
-    cxgrdListKartDBTableView1DEB_ORG: TcxGridDBColumn;
-    cxgrdListKartDBTableView1EL1: TcxGridDBColumn;
-    cxgrdListKartDBTableView1PSCH_NAME: TcxGridDBColumn;
-    cxgrdListKartDBTableView1MG1: TcxGridDBColumn;
-    cxgrdListKartDBTableView1MG2: TcxGridDBColumn;
-    cxgrdListKartDBTableView1KRAN1: TcxGridDBColumn;
-    cxgrdListKartDBTableView1TEXT: TcxGridDBColumn;
-    cxgrdListKartDBTableView1PARENT_LSK: TcxGridDBColumn;
-    cxgrdListKartDBTableView1DT_CR: TcxGridDBColumn;
-    cxgrdListKartDBTableView1FK_KLSK_OBJ: TcxGridDBColumn;
-    cxgrdListKartDBTableView1PSCH: TcxGridDBColumn;
-    cxgrdListKartDBTableView1LSK_TP_CD: TcxGridDBColumn;
+    cxgrdListKartLevel2: TcxGridLevel;
+    cxgrdListKartDBBandedTableView1: TcxGridDBBandedTableView;
+    cxgrdListKartDBBandedTableView1NAME_REU: TcxGridDBBandedColumn;
+    cxgrdListKartDBBandedTableView1LSK: TcxGridDBBandedColumn;
+    cxgrdListKartDBBandedTableView1KUL: TcxGridDBBandedColumn;
+    cxgrdListKartDBBandedTableView1NAME: TcxGridDBBandedColumn;
+    cxgrdListKartDBBandedTableView1N_ND: TcxGridDBBandedColumn;
+    cxgrdListKartDBBandedTableView1N_KW: TcxGridDBBandedColumn;
+    cxgrdListKartDBBandedTableView1ENTR: TcxGridDBBandedColumn;
+    cxgrdListKartDBBandedTableView1N_STATUS: TcxGridDBBandedColumn;
+    cxgrdListKartDBBandedTableView1FIO: TcxGridDBBandedColumn;
+    cxgrdListKartDBBandedTableView1ET: TcxGridDBBandedColumn;
+    cxgrdListKartDBBandedTableView1KPR: TcxGridDBBandedColumn;
+    cxgrdListKartDBBandedTableView1KPR_OT: TcxGridDBBandedColumn;
+    cxgrdListKartDBBandedTableView1KPR_WR: TcxGridDBBandedColumn;
+    cxgrdListKartDBBandedTableView1KPR_WRP: TcxGridDBBandedColumn;
+    cxgrdListKartDBBandedTableView1OPL: TcxGridDBBandedColumn;
+    cxgrdListKartDBBandedTableView1K_LSK_ID: TcxGridDBBandedColumn;
+    cxgrdListKartDBBandedTableView1FK_KLSK_PREMISE: TcxGridDBBandedColumn;
+    cxgrdListKartDBBandedTableView1HOUSE_ID: TcxGridDBBandedColumn;
+    cxgrdListKartDBBandedTableView1MHW: TcxGridDBBandedColumn;
+    cxgrdListKartDBBandedTableView1MGW: TcxGridDBBandedColumn;
+    cxgrdListKartDBBandedTableView1MEL: TcxGridDBBandedColumn;
+    cxgrdListKartDBBandedTableView1DEB_ORG: TcxGridDBBandedColumn;
+    cxgrdListKartDBBandedTableView1EL1: TcxGridDBBandedColumn;
+    cxgrdListKartDBBandedTableView1PSCH_NAME: TcxGridDBBandedColumn;
+    cxgrdListKartDBBandedTableView1MG1: TcxGridDBBandedColumn;
+    cxgrdListKartDBBandedTableView1MG2: TcxGridDBBandedColumn;
+    cxgrdListKartDBBandedTableView1KRAN1: TcxGridDBBandedColumn;
+    cxgrdListKartDBBandedTableView1TEXT: TcxGridDBBandedColumn;
+    cxgrdListKartDBBandedTableView1PARENT_LSK: TcxGridDBBandedColumn;
+    cxgrdListKartDBBandedTableView1DT_CR: TcxGridDBBandedColumn;
+    cxgrdListKartDBBandedTableView1FK_KLSK_OBJ: TcxGridDBBandedColumn;
+    cxgrdListKartDBBandedTableView1LSK_TP_CD: TcxGridDBBandedColumn;
+    cxgrdListKartDBBandedTableView1PSCH: TcxGridDBBandedColumn;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure OD_list_kartAfterScroll(DataSet: TDataSet);
@@ -234,8 +224,7 @@ type
     procedure state_arch2(mgold_: string);
     procedure CheckBox1Click(Sender: TObject);
     procedure OD_list_kartAfterPost(DataSet: TDataSet);
-    procedure OD_list_kartApplyRecord(Sender: TOracleDataSet; Action: Char;
-      var Applied: Boolean; var NewRowId: string);
+    procedure OD_list_kartApplyRecord(Sender: TOracleDataSet; Action: Char; var Applied: Boolean; var NewRowId: string);
     procedure OD_list_kartBeforeInsert(DataSet: TDataSet);
     procedure chk2Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
@@ -246,8 +235,7 @@ type
     procedure SetFields2;
     procedure OD_list_kartAfterOpen(DataSet: TDataSet);
     procedure BitBtn1Click(Sender: TObject);
-    procedure OD_list_kartEditError(DataSet: TDataSet; E: EDatabaseError;
-      var Action: TDataAction);
+    procedure OD_list_kartEditError(DataSet: TDataSet; E: EDatabaseError; var Action: TDataAction);
     procedure N3Click(Sender: TObject);
     procedure N1Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
@@ -262,20 +250,19 @@ type
     procedure cxMRUEdit1KeyPress(Sender: TObject; var Key: Char);
     procedure cxMRUEdit1DblClick(Sender: TObject);
     procedure N4Click(Sender: TObject);
-    procedure cxmskdtHWKeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
+    procedure cxmskdtHWKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure cxmskdtHWKeyPress(Sender: TObject; var Key: Char);
     procedure cxmskdtGWKeyPress(Sender: TObject; var Key: Char);
     procedure cxmskdtELKeyPress(Sender: TObject; var Key: Char);
-    procedure cxmskdtHW_VOLKeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
+    procedure cxmskdtHW_VOLKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure cxmskdtHW_VOLKeyPress(Sender: TObject; var Key: Char);
     procedure cxmskdtGW_VOLKeyPress(Sender: TObject; var Key: Char);
     procedure cxmskdtEL_VOLKeyPress(Sender: TObject; var Key: Char);
-    procedure cxgrdListKartDBTableView1DblClick(Sender: TObject);
-    procedure cxgrdListKartDBTableView1CustomDrawCell(
-      Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;
-      AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
+    procedure cxgrdListKartDBBandedTableView1FocusedItemChanged(Sender: TcxCustomGridTableView; APrevFocusedItem, AFocusedItem: TcxCustomGridTableItem);
+    procedure cxgrdListKartDBBandedTableView1DblClick(Sender: TObject);
+    procedure cxgrdListKartDBBandedTableView1CustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
+  private
+    focusedColumnIndex: Integer;
   public
     isAllowEdit_: Integer;
     isAllowEdit_k_: Integer;
@@ -286,14 +273,14 @@ type
 var
   Form_list_kart: TForm_list_kart;
 
+
 implementation
 
-uses Unit_form_kart, Unit_Mainform, DM_module1, Unit_find_adr,
-  Unit_month_payments, Unit_changes_lsk, Unit_form_kart_pr,
-  Unit_chargepay, Unit_find_fio,
-  Unit_log_actions, Unit_houses_nabor,
-  Unit_house_vvod, Unit_form_bills, Unit_sch_history,
-  Unit_lk_acc, u_frmPenCorr, u_frmAccFlow, Unit_find_adr2,
+uses
+  Unit_form_kart, Unit_Mainform, DM_module1, Unit_find_adr, Unit_month_payments,
+  Unit_changes_lsk, Unit_form_kart_pr, Unit_chargepay, Unit_find_fio,
+  Unit_log_actions, Unit_houses_nabor, Unit_house_vvod, Unit_form_bills,
+  Unit_sch_history, Unit_lk_acc, u_frmPenCorr, u_frmAccFlow, Unit_find_adr2,
   u_frmReplaceKlsk, u_frmKlskPar;
 
 {$R *.dfm}
@@ -303,24 +290,18 @@ var
   lll: Integer;
 begin
   // проверка прав на доступ к объекту в Form_kart
-  if (Utils.checkAccessRigths(Form_Main.accessList,
-    OD_list_kart.FieldByName('reu').AsString,
-    0, 'доступ к карт.статус')) then
+  if (Utils.checkAccessRigths(Form_Main.accessList, OD_list_kart.FieldByName('reu').AsString, 0, 'доступ к карт.статус')) then
     isAllowEdit_k3_ := 1
   else
     isAllowEdit_k3_ := 0;
 
-  if (Utils.checkAccessRigths(Form_Main.accessList,
-    OD_list_kart.FieldByName('reu').AsString,
-    0, 'доступ к карт.площадь')) then
+  if (Utils.checkAccessRigths(Form_Main.accessList, OD_list_kart.FieldByName('reu').AsString, 0, 'доступ к карт.площадь')) then
     isAllowEdit_k2_ := 1
   else
     isAllowEdit_k2_ := 0;
 
   lll := OD_list_kart.FieldByName('fk_pasp_org').AsInteger;
-  if (Utils.checkAccessRigths(Form_Main.accessList, '',
-    OD_list_kart.FieldByName('fk_pasp_org').AsInteger,
-    'доступ к пасп.столу')) then
+  if (Utils.checkAccessRigths(Form_Main.accessList, '', OD_list_kart.FieldByName('fk_pasp_org').AsInteger, 'доступ к пасп.столу')) then
     isAllowEdit_k_ := 1
   else
     isAllowEdit_k_ := 0;
@@ -341,9 +322,7 @@ end;
 procedure TForm_list_kart.setAllowEdit_list;
 begin
   //проверка прав на доступ к объекту в Form_list_kart
-  if (Utils.checkAccessRigths(Form_Main.accessList,
-    OD_list_kart.FieldByName('reu').AsString,
-    0, 'доступ к карт.рэу')) then
+  if (Utils.checkAccessRigths(Form_Main.accessList, OD_list_kart.FieldByName('reu').AsString, 0, 'доступ к карт.рэу')) then
     isAllowEdit_ := 1
   else
     isAllowEdit_ := 0;
@@ -456,34 +435,23 @@ begin // смена состояний формы
   begin
     if (Form_main.arch_mg_ <> '') and (mgold_ = '') then
     begin // из текущего в архив
-      change_alias(OD_list_kart, 'scott.kart',
-        '(select * from scott.arch_kart where mg=''' + Form_main.arch_mg_ +
-        ''')', False);
+      change_alias(OD_list_kart, 'scott.kart', '(select * from scott.arch_kart where mg=''' + Form_main.arch_mg_ + ''')', False);
       //поменять алиас ELSK
-      change_alias(OD_list_kart, 'k.elsk',
-        'null as elsk', False);
+      change_alias(OD_list_kart, 'k.elsk', 'null as elsk', False);
       //поменять алиас DT_CR
-      change_alias(OD_list_kart, 'k.dt_cr',
-        'to_date(null) as dt_cr');
+      change_alias(OD_list_kart, 'k.dt_cr', 'to_date(null) as dt_cr');
     end
     else if (Form_main.arch_mg_ = '') and (mgold_ <> '') then
     begin // из архива в текущее
-      change_alias(OD_list_kart,
-        '(select * from scott.arch_kart where mg=''' + mgold_ + ''')',
-        'scott.kart', False);
+      change_alias(OD_list_kart, '(select * from scott.arch_kart where mg=''' + mgold_ + ''')', 'scott.kart', False);
       //поменять алиас ELSK
-      change_alias(OD_list_kart, 'null as elsk',
-        'k.elsk', False);
+      change_alias(OD_list_kart, 'null as elsk', 'k.elsk', False);
       //поменять алиас DT_CR
-      change_alias(OD_list_kart, 'to_date(null) as dt_cr',
-        'k.dt_cr');
+      change_alias(OD_list_kart, 'to_date(null) as dt_cr', 'k.dt_cr');
     end
     else if (Form_main.arch_mg_ <> '') and (mgold_ <> '') then
     begin // из архива в архив
-      change_alias(OD_list_kart,
-        '(select * from scott.arch_kart where mg=''' + mgold_ + ''')',
-        '(select * from scott.arch_kart where mg=''' + Form_main.arch_mg_ +
-        ''')');
+      change_alias(OD_list_kart, '(select * from scott.arch_kart where mg=''' + mgold_ + ''')', '(select * from scott.arch_kart where mg=''' + Form_main.arch_mg_ + ''')');
     end;
   end;
 end;
@@ -621,8 +589,7 @@ begin
   Form_main.ToolButton21.Visible := true;
   Form_main.ToolButton3.Visible := true;
   try
-    DataModule1.OraclePackage1.CallProcedure
-      ('scott.drn59_Просмотр_перерасчетов', [parNone]);
+    DataModule1.OraclePackage1.CallProcedure('scott.drn59_Просмотр_перерасчетов', [parNone]);
   except
     Form_main.ToolButton21.Visible := false;
   end;
@@ -633,8 +600,7 @@ begin
   Form_Main.cl_flt;
   //SetFilter;
 
-  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc',
-    ['drx5_админ_доступ_к_базе']) = 1) then
+  if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc', ['drx5_админ_доступ_к_базе']) = 1) then
   begin
     KLSKHOUSEID1.Enabled := True;
   end;
@@ -655,8 +621,7 @@ begin
   end;
 end;
 
-procedure TForm_list_kart.SetFilter(isShowClosed: Boolean; isShowNotMain:
-  Boolean);
+procedure TForm_list_kart.SetFilter(isShowClosed: Boolean; isShowNotMain: Boolean);
 begin
   with OD_list_kart do
   begin
@@ -670,9 +635,7 @@ begin
     SetVariable('flt_single_house_', Form_Main.flt_single_house_);
     if Form_Main.search_type_ = 9 then
     begin
-      OD_list_kart.SetVariable('SUBSTEXP4',
-        ' and exists (select * from exs.eolink e where k.lsk=e.lsk and e.fk_objtp=18 and e.uniqnum=''' +
-        Form_Main.flt_els_ + ''')');
+      OD_list_kart.SetVariable('SUBSTEXP4', ' and exists (select * from exs.eolink e where k.lsk=e.lsk and e.fk_objtp=18 and e.uniqnum=''' + Form_Main.flt_els_ + ''')');
     end
     else
     begin
@@ -743,8 +706,7 @@ begin
   end;
 end;
 
-procedure TForm_list_kart.FormClose(Sender: TObject;
-  var Action: TCloseAction);
+procedure TForm_list_kart.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   save_deb_kart_pr;
   Form_main.ToolButton25.Visible := false;
@@ -753,8 +715,7 @@ begin
   Form_main.ToolButton10.Visible := false;
   Form_main.ToolButton3.Visible := false;
 
-  if (FF('Form_month_payments', 0) = 1)
-    and (Form_month_payments.OD_c_kwtp.MasterFields <> '') then
+  if (FF('Form_month_payments', 0) = 1) and (Form_month_payments.OD_c_kwtp.MasterFields <> '') then
   begin
     Form_month_payments.CheckBox1.Checked := False;
     Form_month_payments.show_all(False);
@@ -814,16 +775,14 @@ begin
 
   if FF('Form_kart', 0) = 1 then
   begin
-    Form_kart.OD_charge.SetVariable('k_lsk_id',
-      OD_list_kart.FieldByName('k_lsk_id').AsInteger);
+    Form_kart.OD_charge.SetVariable('k_lsk_id', OD_list_kart.FieldByName('k_lsk_id').AsInteger);
     Form_kart.OD_charge.Active := False;
     Form_kart.OD_charge.Active := True;
   end;
 
   if FF('frmPenCorr', 0) = 1 then
   begin
-    frmPenCorr.OD_data.SetVariable('k_lsk_id',
-      Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger);
+    frmPenCorr.OD_data.SetVariable('k_lsk_id', Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger);
     frmPenCorr.OD_data.Active := false;
     frmPenCorr.OD_data.Active := true;
   end;
@@ -836,8 +795,7 @@ begin
 
 end;
 
-procedure TForm_list_kart.OD_list_kartAfterRefreshRecord(
-  Sender: TOracleDataSet);
+procedure TForm_list_kart.OD_list_kartAfterRefreshRecord(Sender: TOracleDataSet);
 begin
   refresh_data;
 end;
@@ -854,8 +812,7 @@ begin
   save_deb_kart_pr;
 
   if FF('Form_kart', 0) = 1 then
-    Form_kart.saveOrRollbackKart(1, True)
-      //Form_kart.save_changes(1)
+    Form_kart.saveOrRollbackKart(1, True)      //Form_kart.save_changes(1)
   else
   begin
     if not (OD_list_kart.State in [dsBrowse]) then
@@ -865,25 +822,34 @@ begin
     begin
       DataModule1.OracleSession1.ApplyUpdates([OD_list_kart], true);
       if FF('Form_kart', 0) = 0 then
-        cnt_ :=
-          DataModule1.OraclePackage1.CallFloatFunction('SCOTT.P_JAVA.GEN',
-          [0, null, null, null,
-          OD_list_kart.FieldByName('k_lsk_id').AsInteger,
-            null, Form_Main.cur_dt, 0, Form_main.javaServer]);
+        cnt_ := DataModule1.OraclePackage1.CallFloatFunction('SCOTT.P_JAVA.GEN', [0, null, null, null, OD_list_kart.FieldByName('k_lsk_id').AsInteger, null, Form_Main.cur_dt, 0, Form_main.javaServer]);
 
     end;
   end;
 end;
 
 procedure TForm_list_kart.CheckBox1Click(Sender: TObject);
+var
+  i: Integer;
 begin
-  ShowMessage('Функция не поддерживается');
-  // todo проверить необходимость данной функции
-{  if CheckBox1.Checked then
-    wwDBGrid1.FixedCols := wwDBGrid1.SelectedField.Index
+  if CheckBox1.Checked then
+  begin
+    cxgrdListKartDBBandedTableView1.Bands[0].FixedKind := fkLeft;
+    for i := focusedColumnIndex to cxgrdListKartDBBandedTableView1.ColumnCount - 1 do
+    begin
+      cxgrdListKartDBBandedTableView1.Columns[i].Position.BandIndex := 1;
+    end;
+
+  end
   else
-    wwDBGrid1.FixedCols := 0;
-}
+  begin
+    cxgrdListKartDBBandedTableView1.Bands[0].FixedKind := fkNone;
+    for i := 0 to cxgrdListKartDBBandedTableView1.ColumnCount - 1 do
+    begin
+      cxgrdListKartDBBandedTableView1.Columns[i].Position.BandIndex := 0;
+    end;
+
+  end;
 end;
 
 procedure TForm_list_kart.OD_list_kartAfterPost(DataSet: TDataSet);
@@ -893,8 +859,7 @@ begin
 
 end;
 
-procedure TForm_list_kart.OD_list_kartApplyRecord(Sender: TOracleDataSet;
-  Action: Char; var Applied: Boolean; var NewRowId: string);
+procedure TForm_list_kart.OD_list_kartApplyRecord(Sender: TOracleDataSet; Action: Char; var Applied: Boolean; var NewRowId: string);
 var
   cnt_: Integer;
 begin
@@ -954,18 +919,13 @@ begin
   begin
     //OD_list_kart.SetVariable('str1_', Form_main.last_name_);
     //OD_list_kart.SetVariable('var_', 6);
-    OD_list_kart.SetVariable('SUBSTEXP2',
-      ' and upper(k.fio) like ''%''||upper(''' +
-      Form_main.last_name_ + ''')||''%'' ');
+    OD_list_kart.SetVariable('SUBSTEXP2', ' and upper(k.fio) like ''%''||upper(''' + Form_main.last_name_ + ''')||''%'' ');
   end;
   if Form_main.search_type_ = 5 then
   begin
     //OD_list_kart.SetVariable('str1_', Form_main.last_name_);
     //OD_list_kart.SetVariable('var_', 7);
-    OD_list_kart.SetVariable('SUBSTEXP3',
-      ' and exists (select * from scott.c_kart_pr k1'
-      + ' where k1.lsk=k.lsk and upper(k1.fio) like ''%''||upper(''' +
-      Form_main.last_name_ + ''')||''%'') ');
+    OD_list_kart.SetVariable('SUBSTEXP3', ' and exists (select * from scott.c_kart_pr k1' + ' where k1.lsk=k.lsk and upper(k1.fio) like ''%''||upper(''' + Form_main.last_name_ + ''')||''%'') ');
   end;
   OD_list_kart.active := true;
 end;
@@ -1005,14 +965,12 @@ begin
     Application.CreateForm(TForm_log_actions, Form_log_actions);
 end;
 
-procedure TForm_list_kart.OD_list_kartEditError(DataSet: TDataSet;
-  E: EDatabaseError; var Action: TDataAction);
+procedure TForm_list_kart.OD_list_kartEditError(DataSet: TDataSet; E: EDatabaseError; var Action: TDataAction);
 begin
 
   if Pos('another', E.Message) > 1 then
   begin
-    msg2('Карточка данного Л/C уже редактируется другим пользователем, откройте позже заново!',
-      'Внимание!', MB_OK + MB_ICONWARNING);
+    msg2('Карточка данного Л/C уже редактируется другим пользователем, откройте позже заново!', 'Внимание!', MB_OK + MB_ICONWARNING);
     Action := daAbort;
   end;
 end;
@@ -1035,10 +993,8 @@ end;
 
 procedure TForm_list_kart.N2Click(Sender: TObject);
 begin
-Showmessage('Обратиться к разработчику!')
-//  if FF('Form_house_vvod', 1) = 0 then
+  Showmessage('Обратиться к разработчику!')//  if FF('Form_house_vvod', 1) = 0 then
 //    Application.CreateForm(TForm_list_set, Form_list_set);
-
 //  Form_Main.cl_flt;
 //  Form_Main.flt_house_ := OD_list_kart.FieldByName('House_id').AsInteger;
 //  Form_list_set.SetFilter(1);
@@ -1163,18 +1119,14 @@ begin
     vol := 0;
   if vol <> 0 then
   begin
-    ret := DataModule1.OraclePackage1.CallIntegerFunction
-      ('scott.p_meter.ins_vol_meter', [null,
-      OD_list_kart.FieldByName('lsk').AsString,
-        '011', vol, null, 0]);
+    ret := DataModule1.OraclePackage1.CallIntegerFunction('scott.p_meter.ins_vol_meter', [null, OD_list_kart.FieldByName('lsk').AsString, '011', vol, null, 0]);
     if ret = 0 then
     begin
       DataModule1.OraclePackage1.Session.Commit;
     end
     else
     begin
-      msg2('Попытка передать объем по закрытому счетчику Х.В.!', 'Внимание!',
-        MB_OK + MB_ICONERROR);
+      msg2('Попытка передать объем по закрытому счетчику Х.В.!', 'Внимание!', MB_OK + MB_ICONERROR);
       Exit;
     end;
   end;
@@ -1186,18 +1138,14 @@ begin
     vol := 0;
   if vol <> 0 then
   begin
-    ret := DataModule1.OraclePackage1.CallIntegerFunction
-      ('scott.p_meter.ins_vol_meter', [null,
-      OD_list_kart.FieldByName('lsk').AsString,
-        '015', vol, null, 0]);
+    ret := DataModule1.OraclePackage1.CallIntegerFunction('scott.p_meter.ins_vol_meter', [null, OD_list_kart.FieldByName('lsk').AsString, '015', vol, null, 0]);
     if ret = 0 then
     begin
       DataModule1.OraclePackage1.Session.Commit;
     end
     else
     begin
-      msg2('Попытка передать объем по закрытому счетчику Г.В.!', 'Внимание!',
-        MB_OK + MB_ICONERROR);
+      msg2('Попытка передать объем по закрытому счетчику Г.В.!', 'Внимание!', MB_OK + MB_ICONERROR);
       Exit;
     end;
   end;
@@ -1209,18 +1157,14 @@ begin
     vol := 0;
   if vol <> 0 then
   begin
-    ret := DataModule1.OraclePackage1.CallIntegerFunction
-      ('scott.p_meter.ins_vol_meter', [null,
-      OD_list_kart.FieldByName('lsk').AsString,
-        '038', vol, null, 0]);
+    ret := DataModule1.OraclePackage1.CallIntegerFunction('scott.p_meter.ins_vol_meter', [null, OD_list_kart.FieldByName('lsk').AsString, '038', vol, null, 0]);
     if ret = 0 then
     begin
       DataModule1.OraclePackage1.Session.Commit;
     end
     else
     begin
-      msg2('Попытка передать объем по закрытому счетчику Эл.эн.!', 'Внимание!',
-        MB_OK + MB_ICONERROR);
+      msg2('Попытка передать объем по закрытому счетчику Эл.эн.!', 'Внимание!', MB_OK + MB_ICONERROR);
       Exit;
     end;
   end;
@@ -1252,8 +1196,7 @@ begin
     Application.CreateForm(TfrmReplaceKlsk, frmReplaceKlsk);
 end;
 
-procedure TForm_list_kart.cxMRUEdit1KeyPress(Sender: TObject;
-  var Key: Char);
+procedure TForm_list_kart.cxMRUEdit1KeyPress(Sender: TObject; var Key: Char);
 var
   lsk: string;
   isFound: Boolean;
@@ -1265,12 +1208,8 @@ begin
   begin
     lsk := RightStr('00000000' + Trim(cxMRUEdit1.Text), 8);
     Form_Main.cl_flt;
-    Form_Main.flt_k_lsk_id_ := DataModule1.OraclePackage1.CallIntegerFunction(
-      'scott.utils.get_k_lsk_id_by_lsk',
-      [lsk]);
-    kartType := DataModule1.OraclePackage1.CallIntegerFunction(
-      'scott.utils_ext.get_type_of_kart',
-      [lsk]);
+    Form_Main.flt_k_lsk_id_ := DataModule1.OraclePackage1.CallIntegerFunction('scott.utils.get_k_lsk_id_by_lsk', [lsk]);
+    kartType := DataModule1.OraclePackage1.CallIntegerFunction('scott.utils_ext.get_type_of_kart', [lsk]);
     isClosed := False;
 
     if (kartType = 0) or (kartType = 10) then
@@ -1324,8 +1263,7 @@ begin
 
 end;
 
-procedure TForm_list_kart.cxmskdtHWKeyDown(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
+procedure TForm_list_kart.cxmskdtHWKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   if Key = 38 then
   begin
@@ -1338,8 +1276,7 @@ begin
 
 end;
 
-procedure TForm_list_kart.cxmskdtHWKeyPress(Sender: TObject;
-  var Key: Char);
+procedure TForm_list_kart.cxmskdtHWKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
@@ -1348,8 +1285,7 @@ begin
   end;
 end;
 
-procedure TForm_list_kart.cxmskdtGWKeyPress(Sender: TObject;
-  var Key: Char);
+procedure TForm_list_kart.cxmskdtGWKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
@@ -1358,8 +1294,7 @@ begin
   end;
 end;
 
-procedure TForm_list_kart.cxmskdtELKeyPress(Sender: TObject;
-  var Key: Char);
+procedure TForm_list_kart.cxmskdtELKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
@@ -1368,8 +1303,7 @@ begin
   end;
 end;
 
-procedure TForm_list_kart.cxmskdtHW_VOLKeyDown(Sender: TObject;
-  var Key: Word; Shift: TShiftState);
+procedure TForm_list_kart.cxmskdtHW_VOLKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   if Key = 38 then
   begin
@@ -1381,8 +1315,7 @@ begin
   end;
 end;
 
-procedure TForm_list_kart.cxmskdtHW_VOLKeyPress(Sender: TObject;
-  var Key: Char);
+procedure TForm_list_kart.cxmskdtHW_VOLKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
@@ -1391,8 +1324,7 @@ begin
   end;
 end;
 
-procedure TForm_list_kart.cxmskdtGW_VOLKeyPress(Sender: TObject;
-  var Key: Char);
+procedure TForm_list_kart.cxmskdtGW_VOLKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
@@ -1401,8 +1333,7 @@ begin
   end;
 end;
 
-procedure TForm_list_kart.cxmskdtEL_VOLKeyPress(Sender: TObject;
-  var Key: Char);
+procedure TForm_list_kart.cxmskdtEL_VOLKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
@@ -1411,40 +1342,41 @@ begin
   end;
 end;
 
-procedure TForm_list_kart.cxgrdListKartDBTableView1CustomDrawCell(
-  Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;
-  AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
+procedure TForm_list_kart.cxgrdListKartDBBandedTableView1CustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
 var
   psch, lskTp: string;
 begin
   // цвет записи
-  psch := AViewInfo.GridRecord.DisplayTexts[cxgrdListKartDBTableView1PSCH.Index];
-  lskTp := AViewInfo.GridRecord.DisplayTexts[cxgrdListKartDBTableView1LSK_TP_CD.Index];
+  psch := AViewInfo.GridRecord.DisplayTexts[cxgrdListKartDBBandedTableView1PSCH.Index];
+  lskTp := AViewInfo.GridRecord.DisplayTexts[cxgrdListKartDBBandedTableView1LSK_TP_CD.Index];
 
   if (psch = '8') or (psch = '9') then
   begin
     // закрытый лиц.счет
-    ACanvas.Brush.Color:= clSilver;
-    ACanvas.Font.Color:= clBlack;
+    ACanvas.Brush.Color := clSilver;
+    ACanvas.Font.Color := clBlack;
   end
-  else if (lskTp='LSK_TP_RSO') or (lskTp='LSK_TP_ADDIT') then
-
+  else if (lskTp = 'LSK_TP_RSO') or (lskTp = 'LSK_TP_ADDIT') then
   begin
     // активная запись, РСО
-    ACanvas.Brush.Color:= clMoneyGreen;
-    ACanvas.Font.Color:= clBlack;
+    ACanvas.Brush.Color := clMoneyGreen;
+    ACanvas.Font.Color := clBlack;
   end;
 
 end;
 
-procedure TForm_list_kart.cxgrdListKartDBTableView1DblClick(
-  Sender: TObject);
+procedure TForm_list_kart.cxgrdListKartDBBandedTableView1DblClick(Sender: TObject);
 begin
   if FF('Form_kart', 1) = 0 then
   begin
     setAllowEdit_kart;
     Application.CreateForm(TForm_kart, Form_kart);
   end;
+end;
+
+procedure TForm_list_kart.cxgrdListKartDBBandedTableView1FocusedItemChanged(Sender: TcxCustomGridTableView; APrevFocusedItem, AFocusedItem: TcxCustomGridTableItem);
+begin
+  focusedColumnIndex := AFocusedItem.Index;
 end;
 
 end.

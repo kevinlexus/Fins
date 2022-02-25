@@ -12,7 +12,6 @@ object Form_sel_arch_period: TForm_sel_arch_period
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  
   OldCreateOrder = False
   Position = poMainFormCenter
   OnClose = FormClose
@@ -43,6 +42,7 @@ object Form_sel_arch_period: TForm_sel_arch_period
     Top = 56
     Properties.DropDownAutoSize = True
     Properties.DropDownSizeable = True
+    Properties.GridMode = True
     Properties.KeyFieldNames = 'MG'
     Properties.ListColumns = <
       item
