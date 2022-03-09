@@ -9,7 +9,8 @@ uses
   cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxStyles,
   cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
   cxDBData, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
-  cxGridLevel, cxClasses, cxGridCustomView, cxGrid;
+  cxGridLevel, cxClasses, cxGridCustomView, cxGrid, dxSkinsCore,
+  dxSkinsDefaultPainters, dxDateRanges, cxDBLookupComboBox;
 
 type
   TForm_spr_comps = class(TForm)
@@ -23,10 +24,6 @@ type
     OD_c_compsNINK: TFloatField;
     OD_c_compsNKVIT: TFloatField;
     OD_c_compsCD: TStringField;
-    OD_c_compsFK_OPER: TStringField;
-    OD_c_compsFK_ORG: TFloatField;
-    OD_c_compsNAME_OPER: TStringField;
-    OD_c_compsNAME_ORG: TStringField;
     OD_c_compsPERIOD: TStringField;
     cxGrid1: TcxGrid;
     cxGrid1DBTableView1: TcxGridDBTableView;
@@ -35,6 +32,8 @@ type
     cxGrid1DBTableView1NINK: TcxGridDBColumn;
     cxGrid1DBTableView1NKVIT: TcxGridDBColumn;
     cxGrid1DBTableView1CD: TcxGridDBColumn;
+    OD_c_compsFK_OPER: TStringField;
+    OD_c_compsFK_ORG: TFloatField;
     cxGrid1DBTableView1NAME_OPER: TcxGridDBColumn;
     cxGrid1DBTableView1NAME_ORG: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);

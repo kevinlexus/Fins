@@ -3,8 +3,8 @@ object Form_spr_users: TForm_spr_users
   Top = 411
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #1055#1086#1083#1100#1079#1086#1074#1072#1090#1077#1083#1080' - '#1088#1072#1079#1088#1077#1096#1077#1085#1080#1103
-  ClientHeight = 717
-  ClientWidth = 1009
+  ClientHeight = 733
+  ClientWidth = 868
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -94,7 +94,7 @@ object Form_spr_users: TForm_spr_users
     Left = 281
     Top = 49
     Width = 8
-    Height = 668
+    Height = 684
     ExplicitLeft = 217
     ExplicitHeight = 362
   end
@@ -102,20 +102,19 @@ object Form_spr_users: TForm_spr_users
     Left = 0
     Top = 49
     Width = 281
-    Height = 668
+    Height = 684
     Align = alLeft
     Caption = #1055#1086#1083#1100#1079#1086#1074#1072#1090#1077#1083#1080
     TabOrder = 1
-    ExplicitHeight = 619
+    ExplicitHeight = 668
     object cxGrid1: TcxGrid
       Left = 2
       Top = 15
       Width = 277
-      Height = 651
+      Height = 667
       Align = alClient
       TabOrder = 0
-      ExplicitWidth = 213
-      ExplicitHeight = 345
+      ExplicitHeight = 651
       object cxGrid1DBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         Navigator.Visible = True
@@ -123,26 +122,29 @@ object Form_spr_users: TForm_spr_users
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <>
         DataController.Summary.SummaryGroups = <>
+        OptionsBehavior.FocusCellOnTab = True
+        OptionsBehavior.GoToNextCellOnEnter = True
         OptionsData.CancelOnExit = False
-        OptionsData.Deleting = False
-        OptionsData.DeletingConfirmation = False
-        OptionsData.Editing = False
-        OptionsData.Inserting = False
+        OptionsSelection.InvertSelect = False
         OptionsView.ColumnAutoWidth = True
         OptionsView.GroupByBox = False
         object cxGrid1DBTableView1ID: TcxGridDBColumn
           DataBinding.FieldName = 'ID'
-          Width = 30
+          Width = 20
         end
         object cxGrid1DBTableView1USERNAME: TcxGridDBColumn
           Caption = #1051#1086#1075#1080#1085
           DataBinding.FieldName = 'CD'
-          Width = 83
+          Width = 53
         end
         object cxGrid1DBTableView1FIO: TcxGridDBColumn
           Caption = #1060'.'#1048'.'#1054'.'
           DataBinding.FieldName = 'NAME'
-          Width = 98
+          Width = 73
+        end
+        object cxGrid1DBTableView1GUID: TcxGridDBColumn
+          DataBinding.FieldName = 'GUID'
+          Width = 129
         end
       end
       object cxGrid1Level1: TcxGridLevel
@@ -153,24 +155,23 @@ object Form_spr_users: TForm_spr_users
   object GroupBox3: TGroupBox
     Left = 289
     Top = 49
-    Width = 351
-    Height = 668
+    Width = 210
+    Height = 684
     Align = alClient
     Caption = #1044#1086#1089#1090#1091#1087#1085#1086' '#1087#1086' '#1086#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103#1084
     TabOrder = 2
-    ExplicitLeft = 225
-    ExplicitWidth = 526
-    ExplicitHeight = 619
+    ExplicitWidth = 351
+    ExplicitHeight = 668
     object cxGrid2: TcxGrid
       Left = 2
       Top = 15
-      Width = 347
-      Height = 651
+      Width = 206
+      Height = 667
       Align = alClient
       PopupMenu = PopupMenu1
       TabOrder = 0
-      ExplicitWidth = 175
-      ExplicitHeight = 650
+      ExplicitWidth = 347
+      ExplicitHeight = 651
       object cxgridAvailable: TcxGridDBTableView
         OnDragDrop = cxgridAvailableDragDrop
         OnDragOver = cxgridAvailableDragOver
@@ -206,25 +207,23 @@ object Form_spr_users: TForm_spr_users
     end
   end
   object GroupBox4: TGroupBox
-    Left = 640
+    Left = 499
     Top = 49
     Width = 369
-    Height = 668
+    Height = 684
     Align = alRight
     Caption = #1042#1089#1077' '#1086#1073#1098#1077#1082#1090#1099
     TabOrder = 3
-    ExplicitHeight = 619
+    ExplicitLeft = 640
+    ExplicitHeight = 668
     object cxGrid3: TcxGrid
       Left = 2
       Top = 15
       Width = 365
-      Height = 651
+      Height = 667
       Align = alClient
       TabOrder = 0
-      ExplicitLeft = 4
-      ExplicitTop = 17
-      ExplicitWidth = 254
-      ExplicitHeight = 345
+      ExplicitHeight = 651
       object cxgridAllObjects: TcxGridDBTableView
         OnMouseDown = cxgridAllObjectsMouseDown
         Navigator.Buttons.CustomButtons = <>
@@ -256,12 +255,12 @@ object Form_spr_users: TForm_spr_users
   object GroupBox5: TGroupBox
     Left = 0
     Top = 0
-    Width = 1009
+    Width = 868
     Height = 49
     Align = alTop
     Caption = #1042#1080#1076' '#1076#1086#1089#1090#1091#1087#1072
     TabOrder = 0
-    ExplicitWidth = 784
+    ExplicitWidth = 1009
     object cxLookupComboBox1: TcxLookupComboBox
       Left = 13
       Top = 17
@@ -338,12 +337,13 @@ object Form_spr_users: TForm_spr_users
       080000000000000000006C40000000000E0000003A005000450052004D005400
       5000030000000000000000000000}
     QBEDefinition.QBEFieldDefs = {
-      05000000070000000E00000055005300450052005F0049004400010000000000
+      05000000080000000E00000055005300450052005F0049004400010000000000
       1600000046004B005F0050004100530050005F004F0052004700010000000000
       0C00000046004B005F005200450055000100000000001400000046004B005F00
       5000450052004D005F0054005000010000000000100000004E0041004D004500
       5F004F0052004700010000000000100000004E0041004D0045005F0052004500
-      55000100000000000E00000046004B005F0043004F004D005000010000000000}
+      55000100000000000E00000046004B005F0043004F004D005000010000000000
+      0400000049004400010000000000}
     ReadOnly = True
     RefreshOptions = [roAfterInsert]
     CommitOnPost = False
@@ -493,20 +493,39 @@ object Form_spr_users: TForm_spr_users
   end
   object OD_c_users: TOracleDataSet
     SQL.Strings = (
-      'select s.rowid, s.id, s.cd, s.name'
+      'select s.rowid, s.id, s.cd, s.name, s.guid'
       '  from scott.t_user s'
       '  order by s.name ')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      05000000030000000400000049004400010000000000080000004E0041004D00
-      45000100000000000400000043004400010000000000}
-    ReadOnly = True
+      05000000040000000400000049004400010000000000080000004E0041004D00
+      4500010000000000040000004300440001000000000008000000470055004900
+      4400010000000000}
+    RefreshOptions = [roAfterInsert, roAfterUpdate, roAllFields]
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True
     AfterScroll = OD_c_usersAfterScroll
     Left = 32
     Top = 129
+    object OD_c_usersID: TFloatField
+      FieldName = 'ID'
+      ReadOnly = True
+    end
+    object OD_c_usersCD: TStringField
+      FieldName = 'CD'
+      Required = True
+      Size = 32
+    end
+    object OD_c_usersNAME: TStringField
+      FieldName = 'NAME'
+      Required = True
+      Size = 50
+    end
+    object OD_c_usersGUID: TStringField
+      FieldName = 'GUID'
+      Size = 36
+    end
   end
   object DS_c_users2: TDataSource
     DataSet = OD_c_users

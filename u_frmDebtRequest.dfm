@@ -455,6 +455,7 @@ object frmDebtRequest: TfrmDebtRequest
       Width = 55
       Height = 13
       Caption = #1055#1086#1076#1087#1080#1089#1072#1090#1100
+      Visible = False
     end
     object Button1: TButton
       Left = 1251
@@ -484,6 +485,7 @@ object frmDebtRequest: TfrmDebtRequest
       Properties.ListSource = DS_t_user
       ShowHint = True
       TabOrder = 1
+      Visible = False
       Width = 172
     end
     object chkResponseDate: TCheckBox

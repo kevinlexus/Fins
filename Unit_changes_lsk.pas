@@ -20,8 +20,6 @@ type
     DS_changes: TDataSource;
     OD_mg: TOracleDataSet;
     DS_mg: TDataSource;
-    GroupBox2: TGroupBox;
-    Button2: TButton;
     OD_changesLSK: TStringField;
     OD_changesDTEK: TDateTimeField;
     OD_changesMGCHANGE: TStringField;
@@ -57,7 +55,6 @@ type
     cxGrid1DBTableView1ID: TcxGridDBColumn;
     cxGrid1DBTableView1DOC_ID: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure Button2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure state_arch2(mgold_: String);
     procedure setAllowEdit;
@@ -154,13 +151,6 @@ begin
   if FF('Form_kart', 0) = 1 then
     Form_kart.recalc_kart;
   Action:=caFree;
-end;
-
-procedure TForm_changes_lsk.Button2Click(Sender: TObject);
-begin
-  if FF('Form_kart', 0) = 1 then
-    Form_kart.recalc_kart;
-  Close;
 end;
 
 procedure TForm_changes_lsk.FormCreate(Sender: TObject);

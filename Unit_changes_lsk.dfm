@@ -18,46 +18,41 @@ object Form_changes_lsk: TForm_changes_lsk
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object GroupBox2: TGroupBox
-    Left = 0
-    Top = 470
-    Width = 735
-    Height = 37
-    Align = alBottom
-    TabOrder = 0
-    DesignSize = (
-      735
-      37)
-    object Button2: TButton
-      Left = 666
-      Top = 8
-      Width = 75
-      Height = 25
-      Anchors = []
-      Cancel = True
-      Caption = #1054#1082
-      TabOrder = 0
-      OnClick = Button2Click
-    end
-  end
   object cxGrid1: TcxGrid
     Left = 0
     Top = 0
     Width = 735
-    Height = 470
+    Height = 507
     Align = alClient
     PopupMenu = PopupMenu3
-    TabOrder = 1
+    TabOrder = 0
+    ExplicitHeight = 470
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Visible = True
       DataController.DataSource = DS_changes
       DataController.KeyFieldNames = 'ID'
-      DataController.Summary.DefaultGroupSummaryItems = <>
-      DataController.Summary.FooterSummaryItems = <>
+      DataController.Summary.DefaultGroupSummaryItems = <
+        item
+          Kind = skSum
+          Position = spFooter
+          Column = cxGrid1DBTableView1SUMMA
+        end
+        item
+          Kind = skSum
+          Column = cxGrid1DBTableView1SUMMA
+          Sorted = True
+        end>
+      DataController.Summary.FooterSummaryItems = <
+        item
+          Kind = skSum
+          Column = cxGrid1DBTableView1SUMMA
+        end>
       DataController.Summary.SummaryGroups = <>
       OptionsData.Deleting = False
       OptionsData.Inserting = False
+      OptionsView.Footer = True
+      OptionsView.FooterMultiSummaries = True
       OptionsView.GroupByBox = False
       OptionsView.Indicator = True
       object cxGrid1DBTableView1LSK: TcxGridDBColumn

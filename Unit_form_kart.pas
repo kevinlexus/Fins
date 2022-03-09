@@ -745,6 +745,7 @@ procedure TForm_kart.check_kart_correct;
 var
   err_: string;
 begin
+  dxStatusBar1.Panels[0].Text := '';
   if getDoublePar(Form_main.paramList, 'SHOW_ALERT1') = 1 then
   begin
     err_ := DataModule1.OraclePackage1.CallStringFunction('scott.UTILS.tst_krt',
@@ -752,15 +753,7 @@ begin
     if err_ <> '' then
     begin
       dxStatusBar1.Panels[0].Text := err_;
-    end
-    else
-    begin
-      dxStatusBar1.Panels[0].Text := '';
     end;
-  end
-  else
-  begin
-    dxStatusBar1.Panels[0].Text := '';
   end;
 end;
 

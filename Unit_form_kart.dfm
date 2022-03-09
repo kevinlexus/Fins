@@ -12,7 +12,6 @@ object Form_kart: TForm_kart
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   FormStyle = fsMDIChild
-  
   OldCreateOrder = False
   Position = poMainFormCenter
   Visible = True
@@ -79,9 +78,6 @@ object Form_kart: TForm_kart
             Align = alClient
             Caption = #1055#1088#1080#1073#1086#1088#1099' '#1091#1095#1077#1090#1072
             TabOrder = 0
-            ExplicitTop = 145
-            ExplicitWidth = 329
-            ExplicitHeight = 47
             Height = 192
             Width = 334
             object Label29: TLabel
@@ -419,8 +415,6 @@ object Form_kart: TForm_kart
             Align = alTop
             Caption = #1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103' '#1079#1072#1076#1086#1083#1078#1085#1080#1082#1072
             TabOrder = 0
-            ExplicitTop = 48
-            ExplicitWidth = 329
             object Label41: TLabel
               Left = 8
               Top = 19
@@ -456,8 +450,6 @@ object Form_kart: TForm_kart
             Align = alTop
             Caption = #1055#1088#1080#1079#1085#1072#1082#1080
             TabOrder = 1
-            ExplicitTop = 104
-            ExplicitWidth = 329
             Height = 57
             Width = 334
             object Label39: TLabel
@@ -775,9 +767,6 @@ object Form_kart: TForm_kart
             Align = alTop
             Caption = #1055#1088#1080#1079#1085#1072#1082#1080' '#1083#1080#1094'.'#1089#1095#1077#1090#1072
             TabOrder = 0
-            ExplicitLeft = 8
-            ExplicitTop = 72
-            ExplicitWidth = 321
             Height = 49
             Width = 334
             object cxDBCheckBox2: TcxDBCheckBox

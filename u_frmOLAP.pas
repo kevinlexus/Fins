@@ -11,9 +11,9 @@ uses
   DBAccess, Uni, cxCustomPivotGrid, cxPivotGrid, DM_module1, cxDBPivotGrid,
   cxExportPivotGridLink, Vcl.ExtCtrls, Vcl.StdCtrls, fcxDataSource,
   ufDataModuleOlap, fcxSliceGrid, fcxSlice, fcxCustomExport,
-  fcxCustomSliceGridExport, fcxExportXLSX, Vcl.ToolWin, Vcl.ComCtrls,
-  fcxCustomToolbar, fcxSliceGridToolbar, frxClass, fcxpComponents, fcxTypes,
-  Unit_tree_objects, Utils, Unit_Mainform;
+  fcxCustomSliceGridExport, {fcxExportXLSX, }Vcl.ToolWin, Vcl.ComCtrls,
+  fcxCustomToolbar, fcxSliceGridToolbar, frxClass, {fcxpComponents, }fcxTypes,
+  Unit_tree_objects, Utils, Unit_Mainform, fcxExportXLSX, fcxpComponents;
 
 type
   TfrmOLAP = class(TForm)

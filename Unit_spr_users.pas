@@ -71,6 +71,11 @@ type
     cxgridAvailableNAME_REU: TcxGridDBColumn;
     cxgridAvailableNAME_ORG: TcxGridDBColumn;
     cxgridAvailableFK_COMP: TcxGridDBColumn;
+    cxGrid1DBTableView1GUID: TcxGridDBColumn;
+    OD_c_usersID: TFloatField;
+    OD_c_usersCD: TStringField;
+    OD_c_usersNAME: TStringField;
+    OD_c_usersGUID: TStringField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);

@@ -282,10 +282,11 @@ begin
           Edit;
           FieldByName('status').AsInteger := 1;
 
-          if cbbUser.EditValue <> null then
+          {if cbbUser.EditValue <> null then
             FieldByName('fk_user_response').AsInteger := cbbUser.EditValue // выбранный пользователь
           else
             FieldByName('fk_user_response').AsInteger := FieldByName('user_id').AsInteger; // проставить из поля рядом
+            }
           Post;
         end;
       end;

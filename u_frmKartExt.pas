@@ -11,7 +11,8 @@ uses
   OracleData, StdCtrls, ExtCtrls, ComCtrls, cxLookAndFeels,
   cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter, cxData,
   cxDataStorage, cxEdit, cxNavigator, cxDBData, cxCheckBox, ToolWin,
-  cxGridTableView, cxGridCustomView;
+  cxGridTableView, cxGridCustomView, dxSkinsCore, dxSkinsDefaultPainters,
+  dxDateRanges;
 
 type
   TfrmKartExt = class(TForm)
