@@ -11,7 +11,6 @@ object Form_changes_houses2: TForm_changes_houses2
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   FormStyle = fsMDIChild
-  
   OldCreateOrder = False
   Position = poMainFormCenter
   Visible = True
@@ -35,10 +34,6 @@ object Form_changes_houses2: TForm_changes_houses2
     object cxTabSheet: TcxTabSheet
       Caption = #1053#1086#1074#1099#1081' '#1087#1077#1088#1077#1088#1072#1089#1095#1077#1090
       ImageIndex = 0
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox1: TGroupBox
         Left = 0
         Top = 320
@@ -569,10 +564,6 @@ object Form_changes_houses2: TForm_changes_houses2
     object cxTabSheet2: TcxTabSheet
       Caption = #1042#1099#1087#1086#1083#1085#1077#1085#1085#1099#1077
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object cxgrd1: TcxGrid
         Left = 0
         Top = 0

@@ -11,7 +11,6 @@ object Form_get_pay: TForm_get_pay
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   FormStyle = fsMDIChild
- 
   OldCreateOrder = False
   Position = poDefault
   Scaled = False

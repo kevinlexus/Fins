@@ -1371,6 +1371,7 @@ begin
   begin
     setAllowEdit_kart;
     Application.CreateForm(TForm_kart, Form_kart);
+    Form_kart.refresh_kart;
   end;
 end;
 

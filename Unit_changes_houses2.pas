@@ -300,9 +300,9 @@ begin
   isFirstLine := True;
   while not OD_list_choices_changes.Eof do
   begin
-    if (OD_list_choices_changes.FieldByName('PROC1').AsInteger <> 0) or
-      (OD_list_choices_changes.FieldByName('PROC2').AsInteger <> 0) or
-      (OD_list_choices_changes.FieldByName('ABS_SET').AsInteger <> 0) or
+    if (OD_list_choices_changes.FieldByName('PROC1').AsFloat <> 0) or
+      (OD_list_choices_changes.FieldByName('PROC2').AsFloat <> 0) or
+      (OD_list_choices_changes.FieldByName('ABS_SET').AsFloat <> 0) or
       (OD_list_choices_changes.FieldByName('CNT_DAYS').AsInteger <> 0) or
       (OD_list_choices_changes.FieldByName('CNT_DAYS2').AsInteger <> 0) then
     begin
