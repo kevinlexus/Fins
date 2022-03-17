@@ -491,7 +491,7 @@ begin
                   );
                 Next;
               end;
-              if close_reg_ecr(l_summa, ECR) <> 0 then
+              if close_reg_ecr(l_summa, ECR, FieldByName('cash_oper_tp').AsInteger) <> 0 then
                 l_flag := 1
               else
                 l_flag := 0;
@@ -633,7 +633,7 @@ begin
                   FloatToStr(FieldByName('summ_itg').AsFloat));
                 Next;
               end;
-              if close_reg_ecr(l_summa, ECR) <> 0 then
+              if close_reg_ecr(l_summa, ECR, FieldByName('cash_oper_tp').AsInteger) <> 0 then
               begin
                 l_flag := 1;
                 logText('ККМ: Регистрация возврата - ОШИБКА!');

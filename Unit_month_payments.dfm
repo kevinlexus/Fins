@@ -804,7 +804,8 @@ object Form_month_payments: TForm_month_payments
         '.naim as oper_name,'
       
         'nvl(t.summa,0)+nvl(t.penya,0) as summ_itg, t.c_kwtp_id, decode(t' +
-        'p.cd,'#39'LSK_TP_MAIN'#39', 1, '#39'LSK_TP_ADDIT'#39', 2) as dep'
+        'p.cd,'#39'LSK_TP_MAIN'#39', 1, '#39'LSK_TP_ADDIT'#39', 2) as dep,'
+      'p.cash_oper_tp'
       
         'from scott.c_kwtp_mg t, scott.oper p, scott.kart k, scott.v_lsk_' +
         'tp tp'
