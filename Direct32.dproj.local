@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899.12.30 00:00:00.000.733,C:\Fins\u_frmDebtRequest.dfm=C:\Fins\Unit3.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.918,C:\Fins\Direct32.dproj=C:\Fins\Direct64.dproj</Transaction>
     <Transaction>1899.12.30 00:00:00.000.663,=C:\Fins\u_frmOLAP.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.684,=C:\Fins\Unit_spr_users.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.913,C:\Fins\Direct.dproj=C:\Fins\Direct64.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.297,C:\Fins\u_frmOLAP.dfm=C:\Fins\Unit3.dfm</Transaction>
     <Transaction>1899.12.30 00:00:00.000.650,=C:\Fins\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.733,C:\Fins\u_frmDebtRequest.pas=C:\Fins\Unit3.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.684,=C:\Fins\Unit_spr_users.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.297,C:\Fins\u_frmOLAP.pas=C:\Fins\Unit3.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.566,=C:\Fins\Unit3.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.297,C:\Fins\Unit3.pas=C:\Fins\u_frmOLAP.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.913,C:\Fins\Direct64.dproj=C:\Fins\Direct.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.733,C:\Fins\Unit3.pas=C:\Fins\u_frmDebtRequest.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.918,C:\Fins\Direct64.dproj=C:\Fins\Direct32.dproj</Transaction>
     <Transaction>1899.12.30 00:00:00.000.627,=C:\Fins\Unit_sel_houses.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.297,C:\Fins\Unit3.dfm=C:\Fins\u_frmOLAP.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.733,C:\Fins\Unit3.dfm=C:\Fins\u_frmDebtRequest.dfm</Transaction>
     <Transaction>1899.12.30 00:00:00.000.574,=C:\Fins\Unit3.pas</Transaction>
   </Transactions>
 </BorlandProject>

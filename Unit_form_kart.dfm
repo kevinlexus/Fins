@@ -66,7 +66,7 @@ object Form_kart: TForm_kart
         Top = 1
         Width = 342
         Height = 220
-        ActivePage = TabSheet1
+        ActivePage = TabSheet3
         Align = alClient
         TabOrder = 0
         object TabSheet3: TTabSheet

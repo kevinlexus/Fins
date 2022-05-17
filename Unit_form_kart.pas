@@ -1081,7 +1081,7 @@ begin
 //  DecimalSeparator := '.';
 
   cxPageControl1.ActivePageIndex := 0;
-  PageControl1.ActivePageIndex := 1;
+  PageControl1.ActivePageIndex := 0;
   PageControl2.ActivePageIndex := 0;
 
   TabSheet6.TabVisible := True;

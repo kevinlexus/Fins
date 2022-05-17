@@ -552,7 +552,6 @@ var
   i, l_par, c_kwtp_id_, l_flag, l_cnt: Integer;
   summRemain, summCheck, summGet: Double;
 begin
-
   if (StrToFloat(cxSumma.Text) - StrToFloat(cxAmount.Text) < 0) then
   begin
     msg2('Не хватает денег для оплаты, отмена', 'Внимание!', MB_OK +

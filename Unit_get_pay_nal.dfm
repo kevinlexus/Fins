@@ -12,7 +12,6 @@ object Form_get_pay_nal: TForm_get_pay_nal
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   FormStyle = fsMDIChild
- 
   KeyPreview = True
   OldCreateOrder = False
   Position = poMainFormCenter
@@ -25,11 +24,12 @@ object Form_get_pay_nal: TForm_get_pay_nal
   TextHeight = 13
   object GroupBox1: TGroupBox
     Left = 0
-    Top = 25
+    Top = 21
     Width = 617
     Height = 48
     Align = alTop
     TabOrder = 0
+    ExplicitTop = 25
     object Label1: TLabel
       Left = 8
       Top = 17
@@ -217,7 +217,7 @@ object Form_get_pay_nal: TForm_get_pay_nal
     Left = 0
     Top = 0
     Width = 617
-    Height = 25
+    Height = 21
     AutoSize = True
     ButtonHeight = 21
     ButtonWidth = 74
@@ -228,20 +228,20 @@ object Form_get_pay_nal: TForm_get_pay_nal
     TabOrder = 3
     object ToolButton3: TToolButton
       Left = 0
-      Top = 2
+      Top = 0
       Caption = 'F10-'#1055#1086#1080#1089#1082
       ImageIndex = 1
     end
     object ToolButton2: TToolButton
       Left = 74
-      Top = 2
+      Top = 0
       Caption = 'F11-'#1047#1072#1076#1086#1083#1078'.'
       ImageIndex = 1
       OnClick = ToolButton2Click
     end
     object ToolButton1: TToolButton
       Left = 148
-      Top = 2
+      Top = 0
       Caption = 'F12-'#1057#1095#1077#1090#1095#1080#1082#1080
       ImageIndex = 0
       OnClick = ToolButton1Click
@@ -249,9 +249,9 @@ object Form_get_pay_nal: TForm_get_pay_nal
   end
   object PageControl1: TPageControl
     Left = 0
-    Top = 73
+    Top = 69
     Width = 617
-    Height = 235
+    Height = 239
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 4
@@ -260,7 +260,7 @@ object Form_get_pay_nal: TForm_get_pay_nal
         Left = 0
         Top = 0
         Width = 609
-        Height = 207
+        Height = 211
         Align = alClient
         TabOrder = 0
         object cxGridDBTableView1: TcxGridDBTableView
@@ -282,6 +282,9 @@ object Form_get_pay_nal: TForm_get_pay_nal
             Caption = #1054#1087#1077#1088#1072#1094#1080#1103
             DataBinding.FieldName = 'OPER'
             PropertiesClassName = 'TcxLookupComboBoxProperties'
+            Properties.DropDownSizeable = True
+            Properties.DropDownWidth = 150
+            Properties.GridMode = True
             Properties.KeyFieldNames = 'OPER'
             Properties.ListColumns = <
               item
@@ -324,7 +327,7 @@ object Form_get_pay_nal: TForm_get_pay_nal
         Left = 0
         Top = 0
         Width = 609
-        Height = 207
+        Height = 211
         Align = alClient
         TabOrder = 0
         object cxGrid1DBTableView1: TcxGridDBTableView
