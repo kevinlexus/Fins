@@ -1462,9 +1462,9 @@ begin
       Form_get_pay_nal.OD_kart.FieldByName('kul').AsString;
 
     keySel := VarArrayCreate([0, 2], varVariant);
-    keySel[0] := Form_list_kart.OD_list_kart.FieldByName('reu').AsString;
-    keySel[1] := Form_list_kart.OD_list_kart.FieldByName('kul').AsString;
-    keySel[2] := Form_list_kart.OD_list_kart.FieldByName('nd').AsString;
+    keySel[0] := Form_get_pay_nal.OD_kart.FieldByName('reu').AsString;
+    keySel[1] := Form_get_pay_nal.OD_kart.FieldByName('kul').AsString;
+    keySel[2] := Form_get_pay_nal.OD_kart.FieldByName('nd').AsString;
     cbbNd.EditValue := keySel;
 
     cbbKw.EditValue :=

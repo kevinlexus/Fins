@@ -29,7 +29,6 @@ object Form_get_pay_nal: TForm_get_pay_nal
     Height = 48
     Align = alTop
     TabOrder = 0
-    ExplicitTop = 25
     object Label1: TLabel
       Left = 8
       Top = 17
@@ -292,27 +291,23 @@ object Form_get_pay_nal: TForm_get_pay_nal
               end>
             Properties.ListOptions.ShowHeader = False
             Properties.ListSource = DS_oper
+            Width = 137
           end
           object cxGridDBTableView1SUMMA: TcxGridDBColumn
             DataBinding.FieldName = 'SUMMA'
             Options.Editing = False
+            Width = 91
           end
           object cxGridDBTableView1PENYA: TcxGridDBColumn
             Caption = #1055#1077#1085#1103
             DataBinding.FieldName = 'PENYA'
             Options.Editing = False
+            Width = 92
           end
           object cxGridDBTableView1ITOG: TcxGridDBColumn
             Caption = #1048#1090#1086#1075#1086
             DataBinding.FieldName = 'ITOG'
-          end
-          object cxGridDBTableView1CNT_SCH0: TcxGridDBColumn
-            DataBinding.FieldName = 'CNT_SCH0'
-            Options.Editing = False
-          end
-          object cxGridDBTableView1CNT_SCH: TcxGridDBColumn
-            DataBinding.FieldName = 'CNT_SCH'
-            Options.Editing = False
+            Width = 92
           end
         end
         object cxGridLevel1: TcxGridLevel

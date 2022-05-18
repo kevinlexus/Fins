@@ -10,7 +10,7 @@ uses
   cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
   cxDBData, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
   cxGridLevel, cxGridCustomView, cxGrid, cxMaskEdit, cxContainer,
-  cxTextEdit;
+  cxTextEdit, dxSkinsCore, dxSkinsDefaultPainters, dxDateRanges;
 
 type
   TForm_get_pay_dolg = class(TForm)
@@ -52,6 +52,9 @@ type
       AFocusedItem: TcxCustomGridTableItem);
     procedure cxGrid1DBTableView1KeyPress(Sender: TObject; var Key: Char);
     procedure cxSummaKeyPress(Sender: TObject; var Key: Char);
+    procedure cxGrid1DBTableView1EditKeyDown(Sender: TcxCustomGridTableView;
+      AItem: TcxCustomGridTableItem; AEdit: TcxCustomEdit; var Key: Word;
+      Shift: TShiftState);
   private
     { Private declarations }
   public
@@ -317,15 +320,13 @@ begin
   //    StrToFloat(summaStr) + StrToFloat(penyaStr)+77777;
 end;
 
-procedure TForm_get_pay_dolg.cxGrid1DBTableView1KeyPress(Sender: TObject;
-  var Key: Char);
+procedure TForm_get_pay_dolg.cxGrid1DBTableView1EditKeyDown(
+  Sender: TcxCustomGridTableView; AItem: TcxCustomGridTableItem;
+  AEdit: TcxCustomEdit; var Key: Word; Shift: TShiftState);
 var
   isItog: Boolean;
 begin
-  if RetKey(Key) then
-    Key := '.';
-
-  with TcxGridDBTableView(TcxGridSite(Sender).GridView) do
+  with TcxGridDBTableView(Sender) do
   begin
     if (Controller.FocusedColumn = cxGrid1DBTableView1ITOG) then
       isItog := True
@@ -333,7 +334,7 @@ begin
       isItog := False;
 
     begin
-      if (Key = #13) and (isItog = true) then
+      if (Key = 13) and (isItog = true) then
       begin
         if (cxGrid1DBTableView1.DataController.DataSource.DataSet.Eof = true)
           then
@@ -353,11 +354,19 @@ begin
             Close;
           end
           else
-            Controller.FocusedColumn := cxGrid1DBTableView1SUMMA;
+                 key := 40;
         end;
       end;
     end;
   end;
+end;
+
+procedure TForm_get_pay_dolg.cxGrid1DBTableView1KeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  if RetKey(Key) then
+    Key := '.';
+
 end;
 
 procedure TForm_get_pay_dolg.cxSummaKeyPress(Sender: TObject;

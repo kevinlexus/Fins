@@ -119,8 +119,6 @@ type
     cxGridDBTableView1: TcxGridDBTableView;
     cxGridLevel1: TcxGridLevel;
     cxGridDBTableView1OPER: TcxGridDBColumn;
-    cxGridDBTableView1CNT_SCH: TcxGridDBColumn;
-    cxGridDBTableView1CNT_SCH0: TcxGridDBColumn;
     cxGridDBTableView1SUMMA: TcxGridDBColumn;
     cxGridDBTableView1PENYA: TcxGridDBColumn;
     cxGridDBTableView1ITOG: TcxGridDBColumn;
@@ -494,6 +492,9 @@ begin
     if FF('Form_get_pay_dolg', 1) = 0 then
       Application.CreateForm(TForm_get_pay_dolg, Form_get_pay_dolg);
     Form_get_pay_dolg.ShowModal;
+    //Выход на итог
+    count;
+    Windows.SetFocus(cxSumma.Handle);
   end
   else
   begin
@@ -1570,13 +1571,13 @@ begin
       then
     begin
       action;
-    end
-    else if (Key = VK_Return) and (Controller.FocusedColumn = cxGridDBTableView1CNT_SCH)
+    end;
+{    else if (Key = VK_Return) and (Controller.FocusedColumn = cxGridDBTableView1CNT_SCH)
       then
     begin
       count;
       Windows.SetFocus(cxSumma.Handle);
-    end;
+    end;}
   end;
 end;
 

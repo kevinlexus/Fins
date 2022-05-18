@@ -1,17 +1,16 @@
 object Form_get_pay_dolg: TForm_get_pay_dolg
   Left = 356
   Top = 679
-  Width = 634
-  Height = 409
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #1044#1086#1083#1075#1080' '#1087#1086' '#1084#1077#1089#1103#1094#1072#1084
+  ClientHeight = 370
+  ClientWidth = 618
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  
   OldCreateOrder = False
   Position = poMainFormCenter
   Scaled = False
@@ -163,6 +162,7 @@ object Form_get_pay_dolg: TForm_get_pay_dolg
       OnKeyPress = cxGrid1DBTableView1KeyPress
       Navigator.Buttons.CustomButtons = <>
       Navigator.Visible = True
+      OnEditKeyDown = cxGrid1DBTableView1EditKeyDown
       OnFocusedItemChanged = cxGrid1DBTableView1FocusedItemChanged
       DataController.DataSource = Form_get_pay_nal.DS_chargepay
       DataController.Summary.DefaultGroupSummaryItems = <>
@@ -241,7 +241,6 @@ object Form_get_pay_dolg: TForm_get_pay_dolg
         PropertiesClassName = 'TcxMaskEditProperties'
         Properties.MaskKind = emkRegExpr
         Properties.EditMask = '\-?\d{1,10}\.?\d{0,2}'
-        Options.Editing = False
       end
     end
     object cxGrid1Level1: TcxGridLevel
