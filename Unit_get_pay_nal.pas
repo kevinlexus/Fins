@@ -152,6 +152,7 @@ type
     procedure cxSummaKeyPress(Sender: TObject; var Key: Char);
     procedure cxGridDBTableView1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure ToolButton3Click(Sender: TObject);
   private
     klsk: Integer;
   public
@@ -1385,6 +1386,8 @@ begin
       Application.CreateForm(TForm_print_bills, Form_print_bills);
       // выбрать задолженность
       Form_print_bills.cxImageComboBox2.ItemIndex := 3;
+//      Form_print_bills.tp_:=3;
+//      Form_print_bills.selVar();
       Windows.SetFocus(Form_print_bills.Button1.Handle);
     end;
   end
@@ -1439,6 +1442,11 @@ procedure TForm_get_pay_nal.ToolButton2Click(Sender: TObject);
 begin
   // вызвать форму справки по задолженности
   invokeFormBill;
+end;
+
+procedure TForm_get_pay_nal.ToolButton3Click(Sender: TObject);
+begin
+ invokeSearchAdr;
 end;
 
 procedure TForm_get_pay_nal.StatusBar1DblClick(Sender: TObject);

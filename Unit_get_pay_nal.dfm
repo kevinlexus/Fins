@@ -230,6 +230,7 @@ object Form_get_pay_nal: TForm_get_pay_nal
       Top = 0
       Caption = 'F10-'#1055#1086#1080#1089#1082
       ImageIndex = 1
+      OnClick = ToolButton3Click
     end
     object ToolButton2: TToolButton
       Left = 74

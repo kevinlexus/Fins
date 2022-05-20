@@ -132,10 +132,10 @@ type
     procedure cxmskdtLskToDblClick(Sender: TObject);
   private
     cnt_sch_: Integer;
-    tp_: Integer;
     filePathStr: string;
   public
     sel_obj_: Integer;
+    tp_: Integer;
   end;
 
 var
@@ -1376,7 +1376,6 @@ begin
   finally
     Items.EndUpdate;
   end;
-
   /////////
 
   // Выбран поиск по адресу (по умолчанию)
@@ -1394,8 +1393,12 @@ begin
   cbbStreet.Enabled := true;
   cbbNd.Enabled := false;
   cbbKw.Enabled := false;
+
   DM_Bill2.OD_mg.Active := True;
   DM_Bill2.OD_mg1.Active := True;
+  DM_Bill2.OD_mg.First;
+  DM_Bill2.OD_mg1.First;
+
   DM_Bill2.OD_reu.Active := True;
   DM_Bill2.OD_spr_services.Active := True;
 
@@ -1450,6 +1453,7 @@ begin
   // настройка периода по умолчанию
   DM_Bill2.OD_mg.First;
   lkpMgFrom.EditValue := DM_Bill2.OD_mg.FieldByName('mg').AsString;
+  lkpMgTo.EditValue := DM_Bill2.OD_mg1.FieldByName('mg').AsString;
 
   if FF('Form_get_pay_nal', 0) = 1 then
   begin

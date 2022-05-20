@@ -104,6 +104,7 @@ object Form_find_adr: TForm_find_adr
   object cbbStreet: TcxLookupComboBox
     Left = 24
     Top = 39
+    Properties.GridMode = True
     Properties.KeyFieldNames = 'ID'
     Properties.ListColumns = <
       item
@@ -118,6 +119,7 @@ object Form_find_adr: TForm_find_adr
   object cbbNd: TcxLookupComboBox
     Left = 232
     Top = 39
+    Properties.GridMode = True
     Properties.KeyFieldNames = 'ND'
     Properties.ListColumns = <
       item
@@ -132,6 +134,7 @@ object Form_find_adr: TForm_find_adr
   object cbbKw: TcxLookupComboBox
     Left = 456
     Top = 39
+    Properties.GridMode = True
     Properties.KeyFieldNames = 'KW_ID'
     Properties.ListColumns = <
       item
