@@ -188,6 +188,7 @@ object Form_get_pay_dolg: TForm_get_pay_dolg
           Column = cxGrid1DBTableView1ITOG
         end>
       DataController.Summary.SummaryGroups = <>
+      OptionsBehavior.AlwaysShowEditor = True
       OptionsBehavior.FocusFirstCellOnNewRecord = True
       OptionsBehavior.GoToNextCellOnEnter = True
       OptionsData.Appending = True

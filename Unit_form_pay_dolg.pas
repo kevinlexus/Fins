@@ -354,7 +354,8 @@ begin
             Close;
           end
           else
-                 key := 40;
+          null;
+              //   key := 40;
         end;
       end;
     end;
