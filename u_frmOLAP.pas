@@ -17,8 +17,6 @@ uses
 
 type
   TfrmOLAP = class(TForm)
-    cxDBPivotGrid1: TcxDBPivotGrid;
-    DataSource1: TDataSource;
     fcxCube1: TfcxCube;
     fcxDataSource1: TfcxDataSource;
     fcxDBDataSet1: TfcxDBDataSet;
@@ -30,7 +28,6 @@ type
     fcxpSliceGridProvider1: TfcxpSliceGridProvider;
     ToolButton2: TToolButton;
     Button1: TButton;
-    Panel1: TPanel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -102,14 +99,14 @@ begin
   begin
       // статистика
       // измерения
-    addDimension('mg1', 'Период', 1, setCaption);
     addDimension('reu_name', 'УК', 0, setCaption);
     addDimension('predpr_det', 'Адрес', 0, setCaption);
     addDimension('status_name', 'Статус', 0, setCaption);
-
-    addDimension('name_usl', 'Услуга', 0, setCaption);
+    addDimension('name_usl', 'Услуга дет.', 0, setCaption);
     addDimension('name_org', 'Организация', 0, setCaption);
 
+    // фильтр
+    addDimension('mg1', 'Период', 1, setCaption);
     addDimension('val_group', 'Коэфф.', 1, setCaption);
     addDimension('val_group2', 'Норматив', 1, setCaption);
     addDimension('uch', 'Котельная', 1, setCaption);
@@ -117,7 +114,7 @@ begin
     addDimension('odpu_ex', 'ОДПУ', 1, setCaption);
     addDimension('name_gr', 'Участок', 1, setCaption);
     addDimension('psch_name', 'Признак', 1, setCaption);
-
+    addDimension('sch_name', 'Тип', 1, setCaption);
     addDimension('isHotPipe', 'Гв.изол.', 1, setCaption);
     addDimension('isTowel', 'Полот.суш', 1, setCaption);
     addDimension('fio', 'Фамилия', 1, setCaption);
@@ -134,20 +131,22 @@ begin
     addDimension('odpu_kub', 'ОДПУ, Ед.', 2, setCaption);
     addDimension('fact_cons', 'Факт.потреб.', 2, setCaption);
     addDimension('kr_soi', 'КР на СОИ', 2, setCaption);
+
   end
   else if (reportCd = '14') then
   begin
     // оборотка
-      // измерения
-    addDimension('mg1', 'Период', 1, setCaption);
+    // измерения
     addDimension('predpr', 'Фонд', 0, setCaption);
     addDimension('reu', 'УК', 0, setCaption);
     addDimension('predpr_det', 'Адрес', 0, setCaption);
     addDimension('type', 'Тип', 0, setCaption);
     addDimension('status', 'Статус', 0, setCaption);
-
-    addDimension('usl_name', 'Услуга', 0, setCaption);
+    addDimension('usl_name', 'Услуга дет.', 0, setCaption);
     addDimension('org_name', 'Организация', 0, setCaption);
+
+    // фильтр
+    addDimension('mg1', 'Период', 1, setCaption);
     addDimension('name_gr', 'Участок', 1, setCaption);
     addDimension('lsk', 'Лиц.счет', 1, setCaption);
     addDimension('odpu_ex', 'ОДПУ', 1, setCaption);
@@ -178,7 +177,6 @@ begin
   begin
     // оплата
       // измерения
-    addDimension('mg_name', 'Период', 1, setCaption);
     addDimension('predp', 'Фонд', 0, setCaption);
     addDimension('reu', 'УК', 0, setCaption);
     addDimension('predpr_det', 'Адрес', 0, setCaption);
@@ -191,20 +189,25 @@ begin
     addDimension('opername', 'Операция', 0, setCaption);
     addDimension('cd_tp', 'Тип поступления', 0, setCaption);
 
-      // показатели
+    // фильтр
+    addDimension('mg_name', 'Период', 1, setCaption);
+
+    // показатели
     addDimension('summa', 'Сумма', 2, setCaption);
   end
   else if (reportCd = '36') then
   begin
     // сверка по инкассациям
       // измерения
-    addDimension('opername', 'Операция', 1, setCaption);
-    addDimension('dtek', 'Дата платежа', 1, setCaption);
     addDimension('dat_ink', 'Дата инк.', 0, setCaption);
     addDimension('nink', '№ инк.', 0, setCaption);
     addDimension('nkom', '№ комп.', 0, setCaption);
 
-      // показатели
+    // фильтр
+    addDimension('opername', 'Операция', 1, setCaption);
+    addDimension('dtek', 'Дата платежа', 1, setCaption);
+
+    // показатели
     addDimension('summa', 'Сумма', 2, setCaption);
     addDimension('penya', 'Пеня', 2, setCaption);
   end;

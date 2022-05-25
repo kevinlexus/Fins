@@ -2,8 +2,8 @@ object frmOLAP: TfrmOLAP
   Left = 0
   Top = 0
   Caption = 'OLAP'
-  ClientHeight = 918
-  ClientWidth = 1417
+  ClientHeight = 919
+  ClientWidth = 1426
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,21 +17,11 @@ object frmOLAP: TfrmOLAP
   OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
-  object cxDBPivotGrid1: TcxDBPivotGrid
-    Left = 8
-    Top = 728
-    Width = 209
-    Height = 166
-    Align = alCustom
-    DataSource = DataSource1
-    Groups = <>
-    TabOrder = 0
-  end
   object fcxSliceGrid1: TfcxSliceGrid
     Left = 0
     Top = 22
-    Width = 1417
-    Height = 855
+    Width = 1426
+    Height = 897
     Version = '2.10.4'
     Align = alClient
     Slice = fcxSlice1
@@ -135,7 +125,7 @@ object frmOLAP: TfrmOLAP
     Styles.FieldsItem.Font.Height = -11
     Styles.FieldsItem.Font.Name = 'Tahoma'
     Styles.FieldsItem.Font.Style = []
-    TabOrder = 1
+    TabOrder = 0
     XDimsZone.Visible = True
     YDimsZone.Visible = True
     PageDimsZone.Visible = True
@@ -150,13 +140,13 @@ object frmOLAP: TfrmOLAP
   object fcSliceGridToolbar1: TfcxSliceGridToolbar
     Left = 0
     Top = 0
-    Width = 1417
+    Width = 1426
     Height = 22
     AutoSize = True
     Caption = 'fcSliceGridToolbar1'
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 2
+    TabOrder = 1
     Version = '2.10.4'
     SliceGrid = fcxSliceGrid1
     object ToolButton2: TToolButton
@@ -176,18 +166,6 @@ object frmOLAP: TfrmOLAP
       TabOrder = 0
       OnClick = Button1Click
     end
-  end
-  object Panel1: TPanel
-    Left = 0
-    Top = 877
-    Width = 1417
-    Height = 41
-    Align = alBottom
-    TabOrder = 3
-  end
-  object DataSource1: TDataSource
-    Left = 152
-    Top = 136
   end
   object fcxCube1: TfcxCube
     Version = '2.10.4'

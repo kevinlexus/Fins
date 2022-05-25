@@ -128,9 +128,6 @@ Coordinates=168,606,158,102
 [DataModule1.OD_spul2]
 Coordinates=10,854,151,58
 
-[cxDBPivotGrid1]
-Coordinates=884,854,105,36
-
 [DataModule1.DS_period2]
 Coordinates=793,1090,162,36
 
@@ -182,9 +179,6 @@ Coordinates=1132,606,155,102
 [DM_Olap.OD_dat2]
 Coordinates=543,786,123,58
 
-[DataSource1]
-Coordinates=373,155,89,36
-
 [DM_Olap.DS_tree_objects]
 Coordinates=430,1293,167,36
 
@@ -214,5 +208,5 @@ Coordinates=783,854,91,36
 Visible=True
 
 []
-Coordinates=10,718,55,58
+Coordinates=373,155,89,36
 
