@@ -369,10 +369,10 @@ object Form_get_pay: TForm_get_pay
     Width = 887
     Height = 287
     Align = alClient
-    Font.Charset = DEFAULT_CHARSET
+    Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
-    Font.Height = -10
-    Font.Name = 'MS Sans Serif'
+    Font.Height = -11
+    Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
     PopupMenu = PopupMenu1

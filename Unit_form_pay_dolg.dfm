@@ -156,6 +156,12 @@ object Form_get_pay_dolg: TForm_get_pay_dolg
     Width = 618
     Height = 288
     Align = alClient
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
     PopupMenu = pm1
     TabOrder = 0
     object cxGrid1DBTableView1: TcxGridDBTableView

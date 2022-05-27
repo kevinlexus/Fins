@@ -1054,6 +1054,12 @@ object Form_kart: TForm_kart
           Width = 535
           Height = 130
           Align = alClient
+          Font.Charset = RUSSIAN_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
           PopupMenu = PopupMenu2
           TabOrder = 0
           object cxGridDBTableView2: TcxGridDBTableView
@@ -1992,7 +1998,7 @@ object Form_kart: TForm_kart
     Height = 287
     Align = alClient
     TabOrder = 4
-    Properties.ActivePage = cxTabSheet1
+    Properties.ActivePage = cxTabSheet2
     Properties.CustomButtons.Buttons = <>
     ClientRectBottom = 283
     ClientRectLeft = 4
@@ -2007,6 +2013,12 @@ object Form_kart: TForm_kart
         Width = 879
         Height = 259
         Align = alClient
+        Font.Charset = RUSSIAN_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
         TabOrder = 0
         object cxGrid1DBTableView1: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
@@ -2142,6 +2154,12 @@ object Form_kart: TForm_kart
         Width = 879
         Height = 259
         Align = alClient
+        Font.Charset = RUSSIAN_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
         PopupMenu = PopupMenu3
         TabOrder = 0
         object cxGridDBTableView1: TcxGridDBTableView
