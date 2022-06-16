@@ -4,19 +4,13 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, OracleData, 
-  StdCtrls, Utils, OracleNavigator, 
-  ExtCtrls, Buttons, Menus, Oracle, Unit_ecr,
-  cxControls,
-
-  cxGridLevel,
-  cxClasses, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
-  cxGridDBTableView, cxGrid, cxGridCardView,
-
-  cxGridCustomLayoutView, cxGraphics, cxLookAndFeels,
-  cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter, cxData,
-  cxDataStorage, cxEdit, cxNavigator, cxDBData, dxSkinsCore,
-  dxSkinsDefaultPainters, dxDateRanges;
+  Dialogs, DB, OracleData, StdCtrls, Utils, OracleNavigator, ExtCtrls, Buttons,
+  Menus, Oracle, Unit_ecr, cxControls, cxGridLevel, cxClasses, cxGridCustomView,
+  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
+  cxGridCardView, cxGridCustomLayoutView, cxGraphics, cxLookAndFeels,
+  cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage,
+  cxEdit, cxNavigator, cxDBData, dxSkinsCore, dxSkinsDefaultPainters,
+  dxDateRanges;
 
 type
   TForm_month_payments = class(TForm)
@@ -159,9 +153,11 @@ type
 var
   Form_month_payments: TForm_month_payments;
 
+
 implementation
 
-uses Unit_Mainform, Unit_plat_doc, DM_module1, Unit_edit_pay_usl_org,
+uses
+  Unit_Mainform, Unit_plat_doc, DM_module1, Unit_edit_pay_usl_org,
   u_frmDistPayLog;
 
 {$R *.dfm}
@@ -173,66 +169,34 @@ begin // смена состояний формы
     if (Form_main.arch_mg_ <> '') and (mgold_ = '') then
     begin // из текущего в архив
       Form_month_payments.Caption := 'Текущая оплата - Архив';
-      change_alias(OD_c_kwtp_mg, 'scott.c_kwtp_mg',
-        '(select * from scott.a_kwtp_mg where mg=''' + Form_main.arch_mg_ +
-        ''')');
-      change_alias(OD_c_kwtp_chk, 'scott.c_kwtp',
-        '(select * from scott.a_kwtp where mg=''' + Form_main.arch_mg_ + ''')');
-      change_alias(OD_c_kwtp_mg_chk, 'scott.c_kwtp_mg',
-        '(select * from scott.a_kwtp_mg where mg=''' + Form_main.arch_mg_ +
-        ''')');
-      change_alias(OD_c_kwtp, 'scott.c_kwtp_mg',
-        '(select * from scott.a_kwtp_mg where mg=''' + Form_main.arch_mg_ +
-        ''')');
-      change_alias(OD_c_kwtp, 'scott.c_kwtp',
-        '(select * from scott.a_kwtp where mg=''' + Form_main.arch_mg_ + ''')');
+      change_alias(OD_c_kwtp_mg, 'scott.c_kwtp_mg', '(select * from scott.a_kwtp_mg where mg=''' + Form_main.arch_mg_ + ''')');
+      change_alias(OD_c_kwtp_chk, 'scott.c_kwtp', '(select * from scott.a_kwtp where mg=''' + Form_main.arch_mg_ + ''')');
+      change_alias(OD_c_kwtp_mg_chk, 'scott.c_kwtp_mg', '(select * from scott.a_kwtp_mg where mg=''' + Form_main.arch_mg_ + ''')');
+      change_alias(OD_c_kwtp, 'scott.c_kwtp_mg', '(select * from scott.a_kwtp_mg where mg=''' + Form_main.arch_mg_ + ''')');
+      change_alias(OD_c_kwtp, 'scott.c_kwtp', '(select * from scott.a_kwtp where mg=''' + Form_main.arch_mg_ + ''')');
     end
     else if (Form_main.arch_mg_ = '') and (mgold_ <> '') then
     begin // из архива в текущее
       Form_month_payments.Caption := 'Текущая оплата';
-      change_alias(OD_c_kwtp_mg,
-        '(select * from scott.a_kwtp_mg where mg=''' + mgold_ + ''')',
-        'scott.c_kwtp_mg');
-      change_alias(OD_c_kwtp_chk,
-        '(select * from scott.a_kwtp where mg=''' + mgold_ + ''')',
-        'scott.c_kwtp');
-      change_alias(OD_c_kwtp_mg_chk,
-        '(select * from scott.a_kwtp_mg where mg=''' + mgold_ + ''')',
-        'scott.c_kwtp_mg');
-      change_alias(OD_c_kwtp,
-        '(select * from scott.a_kwtp_mg where mg=''' + mgold_ + ''')',
-        'scott.c_kwtp_mg');
-      change_alias(OD_c_kwtp,
-        '(select * from scott.a_kwtp where mg=''' + mgold_ + ''')',
-        'scott.c_kwtp');
+      change_alias(OD_c_kwtp_mg, '(select * from scott.a_kwtp_mg where mg=''' + mgold_ + ''')', 'scott.c_kwtp_mg');
+      change_alias(OD_c_kwtp_chk, '(select * from scott.a_kwtp where mg=''' + mgold_ + ''')', 'scott.c_kwtp');
+      change_alias(OD_c_kwtp_mg_chk, '(select * from scott.a_kwtp_mg where mg=''' + mgold_ + ''')', 'scott.c_kwtp_mg');
+      change_alias(OD_c_kwtp, '(select * from scott.a_kwtp_mg where mg=''' + mgold_ + ''')', 'scott.c_kwtp_mg');
+      change_alias(OD_c_kwtp, '(select * from scott.a_kwtp where mg=''' + mgold_ + ''')', 'scott.c_kwtp');
     end
     else if (Form_main.arch_mg_ <> '') and (mgold_ <> '') then
     begin // из архива в архив
       Form_month_payments.Caption := 'Текущая оплата - Архив';
-      change_alias(OD_c_kwtp_mg,
-        '(select * from scott.a_kwtp_mg where mg=''' + mgold_ + ''')',
-        '(select * from scott.a_kwtp_mg where mg=''' + Form_main.arch_mg_ +
-        ''')');
-      change_alias(OD_c_kwtp_chk,
-        '(select * from scott.a_kwtp where mg=''' + mgold_ + ''')',
-        '(select * from scott.a_kwtp where mg=''' + Form_main.arch_mg_ + ''')');
-      change_alias(OD_c_kwtp_mg_chk,
-        '(select * from scott.a_kwtp_mg where mg=''' + mgold_ + ''')',
-        '(select * from scott.a_kwtp_mg where mg=''' + Form_main.arch_mg_ +
-        ''')');
-      change_alias(OD_c_kwtp,
-        '(select * from scott.a_kwtp_mg where mg=''' + mgold_ + ''')',
-        '(select * from scott.a_kwtp_mg where mg=''' + Form_main.arch_mg_ +
-        ''')');
-      change_alias(OD_c_kwtp,
-        '(select * from scott.a_kwtp where mg=''' + mgold_ + ''')',
-        '(select * from scott.a_kwtp where mg=''' + Form_main.arch_mg_ + ''')');
+      change_alias(OD_c_kwtp_mg, '(select * from scott.a_kwtp_mg where mg=''' + mgold_ + ''')', '(select * from scott.a_kwtp_mg where mg=''' + Form_main.arch_mg_ + ''')');
+      change_alias(OD_c_kwtp_chk, '(select * from scott.a_kwtp where mg=''' + mgold_ + ''')', '(select * from scott.a_kwtp where mg=''' + Form_main.arch_mg_ + ''')');
+      change_alias(OD_c_kwtp_mg_chk, '(select * from scott.a_kwtp_mg where mg=''' + mgold_ + ''')', '(select * from scott.a_kwtp_mg where mg=''' + Form_main.arch_mg_ + ''')');
+      change_alias(OD_c_kwtp, '(select * from scott.a_kwtp_mg where mg=''' + mgold_ + ''')', '(select * from scott.a_kwtp_mg where mg=''' + Form_main.arch_mg_ + ''')');
+      change_alias(OD_c_kwtp, '(select * from scott.a_kwtp where mg=''' + mgold_ + ''')', '(select * from scott.a_kwtp where mg=''' + Form_main.arch_mg_ + ''')');
     end;
   end;
 end;
 
-procedure TForm_month_payments.FormClose(Sender: TObject; var Action:
-  TCloseAction);
+procedure TForm_month_payments.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Action := caFree;
 end;
@@ -272,10 +236,8 @@ begin
     Application.CreateForm(TForm_plat_doc, Form_plat_doc);
   with Form_plat_doc do
   begin
-    frxDBc_kwtp_chk.DataSource :=
-      DS_c_kwtp_chk;
-    frxDBc_kwtp_mg_chk.DataSource :=
-      DS_c_kwtp_mg_chk;
+    frxDBc_kwtp_chk.DataSource := DS_c_kwtp_chk;
+    frxDBc_kwtp_mg_chk.DataSource := DS_c_kwtp_mg_chk;
 
     {  if DataModule1.OraclePackage1.CallIntegerFunction
            ('scott.Utils.get_int_param', ['PAY_DOC']) = 1 then
@@ -325,9 +287,7 @@ begin
       N2.Enabled := True;
 
   end
-  else if (Form_main.arch_mg_ = '') and ((Form_Main.nkom_ =
-    OD_c_kwtp.FieldByName('nkom').AsString)
-    or (Form_Main.g_admin = 1)) then
+  else if (Form_main.arch_mg_ = '') and ((Form_Main.nkom_ = OD_c_kwtp.FieldByName('nkom').AsString) or (Form_Main.g_admin = 1)) then
   begin
     //разрешить - так как тот же комп, чьим и введена оплата или админ
     N1.Enabled := True;
@@ -366,45 +326,15 @@ begin
       OD_c_kwtp.Active := False;
       sql_ := OD_c_kwtp.SQL.Text;
 
-      OD_c_kwtp.SQL.Text :=
-        'select t.id, t.lsk, t.summa, t.penya, nvl(t.summa,0)+nvl(t.penya,0) as summ_itg, nvl(t.oper,''Состав'') as oper, dopl, ' +
-        't.nink, t.nkom, t.dtek, t.nkvit, t.dat_ink, t.ts, t.id, t.iscorrect, c.name as comp_name, t.oper||''-''||p.naim as oper_name, ' +
-        't.num_doc, t.dat_doc ' +
-        'from scott.kart k join scott.c_kwtp t on k.lsk=t.lsk ' +
-        '                  left join scott.c_comps m on t.nkom=m.nkom ' +
-        '                  left join scott.t_org c on m.fk_org=c.id ' +
-        '                  left join scott.oper p on t.oper=p.oper ' +
-        'where   ' +
-        '((:var =0) or (:var =1 and  k.k_lsk_id=:k_lsk_id)) ' +
-        'union all ' +
-        'select t.id, t.lsk, t.summa, t.penya, nvl(t.summa,0)+nvl(t.penya,0) as summ_itg, nvl(t.oper,''Состав'') as oper, dopl, ' +
-        't.nink, t.nkom, t.dtek, t.nkvit, t.dat_ink, t.ts, t.id, t.iscorrect, c.name as comp_name, t.oper||''-''||p.naim as oper_name, ' +
-        't.num_doc, t.dat_doc ' +
-        'from scott.kart k join scott.a_kwtp t on k.lsk=t.lsk ' +
-        '                    left join scott.c_comps m on t.nkom=m.nkom ' +
-        '                    left join scott.t_org c on m.fk_org=c.id ' +
-        '                    left join scott.oper p on t.oper=p.oper ' +
-        '                    join scott.params a on a.period <> t.mg ' +
-        'where ((:var =0) or (:var =1 and k.k_lsk_id=:k_lsk_id)) ' +
-        'order by ts';
+      OD_c_kwtp.SQL.Text := 'select t.id, t.lsk, t.summa, t.penya, nvl(t.summa,0)+nvl(t.penya,0) as summ_itg, nvl(t.oper,''Состав'') as oper, dopl, ' + 't.nink, t.nkom, t.dtek, t.nkvit, t.dat_ink, t.ts, t.id, t.iscorrect, c.name as comp_name, t.oper||''-''||p.naim as oper_name, ' + 't.num_doc, t.dat_doc ' + 'from scott.kart k join scott.c_kwtp t on k.lsk=t.lsk ' + '                  left join scott.c_comps m on t.nkom=m.nkom ' + '                  left join scott.t_org c on m.fk_org=c.id ' +
+        '                  left join scott.oper p on t.oper=p.oper ' + 'where   ' + '((:var =0) or (:var =1 and  k.k_lsk_id=:k_lsk_id)) ' + 'union all ' + 'select t.id, t.lsk, t.summa, t.penya, nvl(t.summa,0)+nvl(t.penya,0) as summ_itg, nvl(t.oper,''Состав'') as oper, dopl, ' + 't.nink, t.nkom, t.dtek, t.nkvit, t.dat_ink, t.ts, t.id, t.iscorrect, c.name as comp_name, t.oper||''-''||p.naim as oper_name, ' + 't.num_doc, t.dat_doc ' + 'from scott.kart k join scott.a_kwtp t on k.lsk=t.lsk ' +
+        '                    left join scott.c_comps m on t.nkom=m.nkom ' + '                    left join scott.t_org c on m.fk_org=c.id ' + '                    left join scott.oper p on t.oper=p.oper ' + '                    join scott.params a on a.period <> t.mg ' + 'where ((:var =0) or (:var =1 and k.k_lsk_id=:k_lsk_id)) ' + 'order by ts';
       OD_c_kwtp.Active := True;
 
       OD_c_kwtp_mg.Active := False;
       sql2_ := OD_c_kwtp_mg.SQL.Text;
-      OD_c_kwtp_mg.SQL.Text :=
-        'select t.id, t.lsk, t.summa, t.penya, nvl(t.summa,0)+nvl(t.penya,0) as summ_itg, t.oper, t.dopl, ' +
-        't.nink, t.nkom, t.dtek, t.nkvit, t.dat_ink, t.ts, t.oper||''-''||p.naim as oper_name, t.c_kwtp_id ' +
-        'from scott.kart k join scott.c_kwtp_mg t on k.lsk=t.lsk ' +
-        '                  left join scott.oper p on t.oper=p.oper ' +
-        'where ((:var =0) or (:var =1 and  k.k_lsk_id=:k_lsk_id)) ' +
-        'union all ' +
-        'select t.id, t.lsk, t.summa, t.penya, nvl(t.summa,0)+nvl(t.penya,0) as summ_itg, t.oper, t.dopl, ' +
-        't.nink, t.nkom, t.dtek, t.nkvit, t.dat_ink, t.ts, t.oper||''-''||p.naim as oper_name, t.c_kwtp_id ' +
-        'from scott.kart k join scott.a_kwtp_mg t on k.lsk=t.lsk ' +
-        '                       left join scott.oper p on t.oper=p.oper ' +
-        '                       join scott.params a on a.period <> t.mg ' +
-        'where ((:var =0) or (:var =1 and  k.k_lsk_id=:k_lsk_id)) ' +
-        'order by c_kwtp_id, dopl ';
+      OD_c_kwtp_mg.SQL.Text := 'select t.id, t.lsk, t.summa, t.penya, nvl(t.summa,0)+nvl(t.penya,0) as summ_itg, t.oper, t.dopl, ' + 't.nink, t.nkom, t.dtek, t.nkvit, t.dat_ink, t.ts, t.oper||''-''||p.naim as oper_name, t.c_kwtp_id ' + 'from scott.kart k join scott.c_kwtp_mg t on k.lsk=t.lsk ' + '                  left join scott.oper p on t.oper=p.oper ' + 'where ((:var =0) or (:var =1 and  k.k_lsk_id=:k_lsk_id)) ' + 'union all ' +
+        'select t.id, t.lsk, t.summa, t.penya, nvl(t.summa,0)+nvl(t.penya,0) as summ_itg, t.oper, t.dopl, ' + 't.nink, t.nkom, t.dtek, t.nkvit, t.dat_ink, t.ts, t.oper||''-''||p.naim as oper_name, t.c_kwtp_id ' + 'from scott.kart k join scott.a_kwtp_mg t on k.lsk=t.lsk ' + '                       left join scott.oper p on t.oper=p.oper ' + '                       join scott.params a on a.period <> t.mg ' + 'where ((:var =0) or (:var =1 and  k.k_lsk_id=:k_lsk_id)) ' + 'order by c_kwtp_id, dopl ';
       OD_c_kwtp_mg.Active := True;
     end
     else
@@ -440,13 +370,9 @@ var
   ECR: OleVariant;
   l_summa: Double;
 begin
+// Удалить платеж
   l_flag := 1;
-  if msg3('Удалить оплату с суммой ' + OD_c_kwtp.FieldByName('summ_itg').AsString
-    +
-    ' руб., Л/С ' + OD_c_kwtp.FieldByName('lsk').AsString +
-    ' (действие будет сохранено в журнале событий)',
-    'Внимание!',
-    MB_YESNO + MB_ICONQUESTION) = IDYES then
+  if msg3('Удалить оплату с суммой ' + OD_c_kwtp.FieldByName('summ_itg').AsString + ' руб., Л/С ' + OD_c_kwtp.FieldByName('lsk').AsString + ' (действие будет сохранено в журнале событий)', 'Внимание!', MB_YESNO + MB_ICONQUESTION) = IDYES then
   begin
     OD_paycheck.Active := true;
     if (Form_Main.have_cash = 1) or (Form_Main.have_cash = 2) then
@@ -461,19 +387,15 @@ begin
       begin
         msg2('Порт ККМ не открыт!', 'Внимание!', MB_OK + MB_ICONERROR);
         Exit;
-      end
-        //Входим в режим регистрации
+      end        //Входим в режим регистрации
       else
       begin
-        if msg3('Произвести возврат платежа в фискальном регистраторе?',
-          'Внимание!', MB_YESNO + MB_ICONQUESTION) = IDYES then
+        if msg3('Произвести возврат платежа в фискальном регистраторе?', 'Внимание!', MB_YESNO + MB_ICONQUESTION) = IDYES then
         begin
           try
             //Возвращаем каждый платёж
-            print_string_ecr('Лицевой счет №' +
-              OD_c_kwtp.FieldByName('lsk').AsString, 1, 0, ECR);
-            print_string_ecr('Наим-е операции   Период    Оплата(руб.)', 1, 0,
-              ECR);
+            print_string_ecr('Лицевой счет №' + OD_c_kwtp.FieldByName('lsk').AsString, 1, 0, ECR);
+            print_string_ecr('Наим-е операции   Период    Оплата(руб.)', 1, 0, ECR);
 
             //Специальный датасет, для возврата продажи (содержит тело текущего платежа)
             with OD_paycheck do
@@ -483,15 +405,10 @@ begin
               while not Eof do
               begin
                 l_summa := l_summa + FieldByName('summ_itg').AsFloat;
-                unreg_ecr(FieldByName('oper_name').AsString +
-                  calc_pads(FieldByName('oper_name').AsString) +
-                  FieldByName('dopl').AsString,
-                  FieldByName('summ_itg').AsFloat, 1,
-                  FieldByName('dep').AsInteger, ECR
-                  );
+                unreg_ecr(FieldByName('oper_name').AsString + calc_pads(FieldByName('oper_name').AsString) + FieldByName('dopl').AsString, FieldByName('summ_itg').AsFloat, 1, FieldByName('dep').AsInteger, ECR);
                 Next;
               end;
-              if close_reg_ecr(l_summa, ECR, FieldByName('cash_oper_tp').AsInteger) <> 0 then
+              if close_reg_ecr_in_removing(l_summa, ECR, FieldByName('cash_oper_tp').AsInteger) <> 0 then
                 l_flag := 1
               else
                 l_flag := 0;
@@ -503,8 +420,7 @@ begin
             on E: Exception do
             begin
               l_flag := 1;
-              ShowMessage('Exception class name = ' + E.ClassName + '' +
-                'Ошибка: ' + E.Message);
+              ShowMessage('Exception class name = ' + E.ClassName + '' + 'Ошибка: ' + E.Message);
               ShowMessage('Возврат не будет учтён!');
             end;
           end;
@@ -532,9 +448,7 @@ begin
     else if l_flag = 0 then
     begin
       // успешно
-      DataModule1.OraclePackage1.CallProcedure
-        ('scott.C_GET_PAY.remove_pay',
-        [OD_c_kwtp.FieldByName('id').AsInteger]);
+      DataModule1.OraclePackage1.CallProcedure('scott.C_GET_PAY.remove_pay', [OD_c_kwtp.FieldByName('id').AsInteger]);
       DataModule1.OraclePackage1.Session.Commit;
       OD_c_kwtp.Prior;
       OD_c_kwtp.Active := False;
@@ -562,8 +476,7 @@ end;
 procedure TForm_month_payments.N2Click(Sender: TObject);
 begin
   if FF('Form_edit_pay_usl_org', 1) = 0 then
-    Application.CreateForm(TForm_edit_pay_usl_org,
-      Form_edit_pay_usl_org);
+    Application.CreateForm(TForm_edit_pay_usl_org, Form_edit_pay_usl_org);
   Form_edit_pay_usl_org.Show;
 end;
 
@@ -574,17 +487,11 @@ var
   ECR: OleVariant;
   l_summa: Double;
 begin
-  if msg3('Выполнить обратный платёж оплаты с суммой ' +
-    OD_c_kwtp.FieldByName('summ_itg').AsString +
-    ' руб., Л/С ' + OD_c_kwtp.FieldByName('lsk').AsString +
-    ' (действие будет сохранено в журнале событий)',
-    'Внимание!',
-    MB_YESNO + MB_ICONQUESTION) = IDYES then
+// Обратный платеж
+  if msg3('Выполнить обратный платёж оплаты с суммой ' + OD_c_kwtp.FieldByName('summ_itg').AsString + ' руб., Л/С ' + OD_c_kwtp.FieldByName('lsk').AsString + ' (действие будет сохранено в журнале событий)', 'Внимание!', MB_YESNO + MB_ICONQUESTION) = IDYES then
   begin
     logText('Начало возврата оплаты');
-    logText('Выполнить обратный платёж оплаты с суммой ' +
-         OD_c_kwtp.FieldByName('summ_itg').AsString +
-         ' руб., Л/С ' + OD_c_kwtp.FieldByName('lsk').AsString);
+    logText('Выполнить обратный платёж оплаты с суммой ' + OD_c_kwtp.FieldByName('summ_itg').AsString + ' руб., Л/С ' + OD_c_kwtp.FieldByName('lsk').AsString);
 
     OD_paycheck.Active := true;
     l_flag := 0;
@@ -601,19 +508,15 @@ begin
       begin
         logText('ККМ: Открытие порта - ОШИБКА!');
         Exit;
-      end
-        //Входим в режим регистрации
+      end        //Входим в режим регистрации
       else
       begin
-        if msg3('Произвести возврат платежа в фискальном регистраторе?',
-          'Внимание!', MB_YESNO + MB_ICONQUESTION) = IDYES then
+        if msg3('Произвести возврат платежа в фискальном регистраторе?', 'Внимание!', MB_YESNO + MB_ICONQUESTION) = IDYES then
         begin
           try
             //Возвращаем каждый платёж
-            print_string_ecr('Лицевой счет №' +
-              OD_c_kwtp.FieldByName('lsk').AsString, 1, 0, ECR);
-            print_string_ecr('Наим-е операции   Период    Оплата(руб.)', 1, 0,
-              ECR);
+            print_string_ecr('Лицевой счет №' + OD_c_kwtp.FieldByName('lsk').AsString, 1, 0, ECR);
+            print_string_ecr('Наим-е операции   Период    Оплата(руб.)', 1, 0, ECR);
 
             //Специальный датасет, для возврата продажи (содержит тело текущего платежа)
             with OD_paycheck do
@@ -623,17 +526,11 @@ begin
               while not Eof do
               begin
                 l_summa := l_summa + FieldByName('summ_itg').AsFloat;
-                unreg_ecr(FieldByName('oper_name').AsString +
-                  calc_pads(FieldByName('oper_name').AsString) +
-                  FieldByName('dopl').AsString,
-                  FieldByName('summ_itg').AsFloat, 1,
-                  FieldByName('dep').AsInteger, ECR
-                  );
-                logText('Сумма возврата:' +
-                  FloatToStr(FieldByName('summ_itg').AsFloat));
+                unreg_ecr(FieldByName('oper_name').AsString + calc_pads(FieldByName('oper_name').AsString) + FieldByName('dopl').AsString, FieldByName('summ_itg').AsFloat, 1, FieldByName('dep').AsInteger, ECR);
+                logText('Сумма возврата:' + FloatToStr(FieldByName('summ_itg').AsFloat));
                 Next;
               end;
-              if close_reg_ecr(l_summa, ECR, FieldByName('cash_oper_tp').AsInteger) <> 0 then
+              if close_reg_ecr_in_removing(l_summa, ECR, FieldByName('cash_oper_tp').AsInteger) <> 0 then
               begin
                 l_flag := 1;
                 logText('ККМ: Регистрация возврата - ОШИБКА!');
@@ -642,7 +539,7 @@ begin
               begin
                 l_flag := 0;
                 logText('ККМ: Регистрация возврата - успешно');
-              end;  
+              end;
               Active := false;
             end;
 
@@ -652,8 +549,7 @@ begin
             begin
               logText('ОШИБКА в фискальном регистраторе или в БД! Откат транзакции!');
               l_flag := 1;
-              ShowMessage('Exception class name = ' + E.ClassName + '' +
-                'Ошибка: ' + E.Message);
+              ShowMessage('Exception class name = ' + E.ClassName + '' + 'Ошибка: ' + E.Message);
               ShowMessage('Возврат не будет учтён!');
             end;
           end;
@@ -671,16 +567,12 @@ begin
     else if l_flag = 0 then
     begin
       // успешно
-      l_var := DataModule1.OraclePackage1.CallIntegerFunction
-        ('scott.C_GET_PAY.reverse_pay',
-        [OD_c_kwtp.FieldByName('id').AsInteger]);
+      l_var := DataModule1.OraclePackage1.CallIntegerFunction('scott.C_GET_PAY.reverse_pay', [OD_c_kwtp.FieldByName('id').AsInteger]);
       if l_var <> 0 then
       begin
         DataModule1.OraclePackage1.Session.Rollback;
         logText('ОШИБКА в БД при регистрации обратной оплаты Сумма в ККМ не будет идти с Директ!');
-         msg2('Обратный платеж не выполнен! Код ошибки=' + IntToStr(l_var),
-          'Внимание!',
-          MB_OK + MB_ICONERROR);
+        msg2('Обратный платеж не выполнен! Код ошибки=' + IntToStr(l_var), 'Внимание!', MB_OK + MB_ICONERROR);
         logText('Окончание возврата оплаты - ОШИБКА');
       end
       else
@@ -691,9 +583,7 @@ begin
         OD_paycheck.Active := false;
         DataModule1.OraclePackage1.Session.Commit;
         logText('Окончание возврата оплаты - успешно');
-        msg2('Обратный платеж выполнен в текущем дне и с текущим № компьютера!',
-          'Внимание!',
-          MB_OK + MB_ICONINFORMATION);
+        msg2('Обратный платеж выполнен в текущем дне и с текущим № компьютера!', 'Внимание!', MB_OK + MB_ICONINFORMATION);
       end;
     end;
   end;
@@ -703,8 +593,7 @@ end;
 procedure TForm_month_payments.N5Click(Sender: TObject);
 begin
   if FF('frmDistPayLog', 1) = 0 then
-    Application.CreateForm(TfrmDistPayLog,
-      frmDistPayLog);
+    Application.CreateForm(TfrmDistPayLog, frmDistPayLog);
   frmDistPayLog.Show;
 end;
 

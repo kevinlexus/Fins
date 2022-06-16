@@ -1,10 +1,10 @@
 object Form_kart_pr: TForm_kart_pr
   Left = 1593
   Top = 767
-  Width = 680
-  Height = 525
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #1050#1072#1088#1090#1086#1095#1082#1072' '#1087#1088#1086#1078#1080#1074#1072#1102#1097#1077#1075#1086' ('#1089#1086#1073#1089#1090#1074#1077#1085#1085#1080#1082#1072')'
+  ClientHeight = 486
+  ClientWidth = 664
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,7 +12,6 @@ object Form_kart_pr: TForm_kart_pr
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   FormStyle = fsMDIChild
-  
   OldCreateOrder = False
   Position = poMainFormCenter
   Visible = True
@@ -450,7 +449,6 @@ object Form_kart_pr: TForm_kart_pr
         Style.Font.Style = [fsBold]
         Style.IsFontAssigned = True
         TabOrder = 10
-        Width = 113
       end
       object DBEdit16: TDBEdit
         Left = 377
@@ -1319,8 +1317,8 @@ object Form_kart_pr: TForm_kart_pr
       'from dual')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000002000000020000004944010000000000040000004E414D4501000000
-      0000}
+      05000000020000000400000049004400010000000000080000004E0041004D00
+      4500010000000000}
     Session = DataModule1.OracleSession1
     Active = True
     Left = 64
@@ -1339,9 +1337,10 @@ object Form_kart_pr: TForm_kart_pr
       'order by s.id')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000005000000040000004E414D4501000000000002000000494401000000
-      00000500000047525F49440100000000000800000047525F4C475F4944010000
-      0000000B00000053504B5F535441545F4944010000000000}
+      0500000005000000080000004E0041004D004500010000000000040000004900
+      44000100000000000A000000470052005F004900440001000000000010000000
+      470052005F004C0047005F004900440001000000000016000000530050004B00
+      5F0053005400410054005F0049004400010000000000}
     QueryAllRecords = False
     Session = DataModule1.OracleSession1
     Active = True
@@ -1386,9 +1385,10 @@ object Form_kart_pr: TForm_kart_pr
       'order by r.fk_relat_tp, r.name')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000005000000020000004944010000000000040000004E414D4501000000
-      0000050000004E414D45320100000000000B000000464B5F52454C41545F5450
-      010000000000020000004344010000000000}
+      05000000050000000400000049004400010000000000080000004E0041004D00
+      45000100000000000A0000004E0041004D004500320001000000000016000000
+      46004B005F00520045004C00410054005F005400500001000000000004000000
+      43004400010000000000}
     Session = DataModule1.OracleSession1
     Active = True
     Left = 128
@@ -1422,9 +1422,10 @@ object Form_kart_pr: TForm_kart_pr
       'and tp.cd='#39#1053#1072#1094#1080#1086#1085#1072#1083#1100#1085#1086#1089#1090#1100#39)
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000006000000020000004944010000000000040000004E414D4501000000
-      000002000000434401000000000009000000464B5F4C49535454500100000000
-      00020000004E4D010000000000030000004E5050010000000000}
+      05000000060000000400000049004400010000000000080000004E0041004D00
+      450001000000000004000000430044000100000000001200000046004B005F00
+      4C0049005300540054005000010000000000040000004E004D00010000000000
+      060000004E0050005000010000000000}
     Session = DataModule1.OracleSession1
     Left = 64
     Top = 592
@@ -1465,9 +1466,10 @@ object Form_kart_pr: TForm_kart_pr
       'and tp.cd='#39#1054#1042#1044#39)
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000006000000020000004944010000000000040000004E414D4501000000
-      000002000000434401000000000009000000464B5F4C49535454500100000000
-      00020000004E4D010000000000030000004E5050010000000000}
+      05000000060000000400000049004400010000000000080000004E0041004D00
+      450001000000000004000000430044000100000000001200000046004B005F00
+      4C0049005300540054005000010000000000040000004E004D00010000000000
+      060000004E0050005000010000000000}
     Session = DataModule1.OracleSession1
     Left = 128
     Top = 464
@@ -1508,9 +1510,10 @@ object Form_kart_pr: TForm_kart_pr
       'and tp.cd='#39#1057#1090#1088#1072#1085#1072#39)
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000006000000020000004944010000000000040000004E414D4501000000
-      000002000000434401000000000009000000464B5F4C49535454500100000000
-      00020000004E4D010000000000030000004E5050010000000000}
+      05000000060000000400000049004400010000000000080000004E0041004D00
+      450001000000000004000000430044000100000000001200000046004B005F00
+      4C0049005300540054005000010000000000040000004E004D00010000000000
+      060000004E0050005000010000000000}
     Session = DataModule1.OracleSession1
     Left = 128
     Top = 496
@@ -1562,9 +1565,10 @@ object Form_kart_pr: TForm_kart_pr
       'and tp.cd='#39#1054#1073#1083#1072#1089#1090#1100#39)
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000006000000020000004944010000000000040000004E414D4501000000
-      000002000000434401000000000009000000464B5F4C49535454500100000000
-      00020000004E4D010000000000030000004E5050010000000000}
+      05000000060000000400000049004400010000000000080000004E0041004D00
+      450001000000000004000000430044000100000000001200000046004B005F00
+      4C0049005300540054005000010000000000040000004E004D00010000000000
+      060000004E0050005000010000000000}
     Session = DataModule1.OracleSession1
     Left = 128
     Top = 528
@@ -1605,9 +1609,10 @@ object Form_kart_pr: TForm_kart_pr
       'and tp.cd='#39#1056#1072#1081#1086#1085#39)
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000006000000020000004944010000000000040000004E414D4501000000
-      000002000000434401000000000009000000464B5F4C49535454500100000000
-      00020000004E4D010000000000030000004E5050010000000000}
+      05000000060000000400000049004400010000000000080000004E0041004D00
+      450001000000000004000000430044000100000000001200000046004B005F00
+      4C0049005300540054005000010000000000040000004E004D00010000000000
+      060000004E0050005000010000000000}
     Session = DataModule1.OracleSession1
     Left = 128
     Top = 560
@@ -1648,12 +1653,13 @@ object Form_kart_pr: TForm_kart_pr
       'and tp.cd='#39#1055#1088#1080#1095#1080#1085#1072' '#1074#1099#1087#1080#1089#1082#1080#39)
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      040000000A000000020000004944010000000000040000004E414D4501000000
-      000002000000434401000000000009000000464B5F4C49535454500100000000
-      00020000004E4D010000000000030000004E5050010000000000060000005641
-      4C5F545001000000000007000000464B5F554E49540100000000000700000053
-      514C544558540100000000000D000000464B5F4558535F555F4C495354010000
-      000000}
+      050000000A0000000400000049004400010000000000080000004E0041004D00
+      450001000000000004000000430044000100000000001200000046004B005F00
+      4C0049005300540054005000010000000000040000004E004D00010000000000
+      060000004E00500050000100000000000C000000560041004C005F0054005000
+      0100000000000E00000046004B005F0055004E00490054000100000000000E00
+      0000530051004C0054004500580054000100000000001A00000046004B005F00
+      4500580053005F0055005F004C00490053005400010000000000}
     Session = DataModule1.OracleSession1
     Active = True
     Left = 128
@@ -1736,29 +1742,41 @@ object Form_kart_pr: TForm_kart_pr
       ' and o.fk_orgtp=otp.id and otp.cd='#39#1043#1086#1088#1086#1076#39
       'order by t.id')
     Optimize = False
-    Variables.Data = {0300000001000000030000003A494403000000040000008A15100000000000}
+    Variables.Data = {
+      0400000001000000060000003A004900440003000000040000008A1510000000
+      0000}
     QBEDefinition.QBEFieldDefs = {
-      0400000025000000030000004C534B010000000000050000004B5F46414D0100
-      00000000040000004B5F494D010000000000040000004B5F4F54010000000000
-      0800000046524D5F544F574E0100000000000600000046524D5F4E4401000000
-      00000600000046524D5F4B5701000000000002000000524E0100000000000B00
-      00005354415455535F4E414D450100000000000A00000052454C41545F4E414D
-      450100000000000700000055425F4E414D4501000000000007000000544F5F54
-      4F574E01000000000005000000544F5F4E4401000000000005000000544F5F4B
-      57010000000000080000004E41435F4E414D450100000000000A000000434954
-      495A5F4E414D450100000000000D00000046524D5F5245474E5F4E414D450100
-      000000000E00000046524D5F44495354525F4E414D450100000000000F000000
-      46524D5F5354524545545F4E414D4501000000000007000000425F504C414345
-      0100000000000C000000544F5F5245474E5F4E414D450100000000000D000000
-      544F5F44495354525F4E414D450100000000000E000000544F5F535452454554
-      5F4E414D450100000000000700000046524D5F44415401000000000007000000
-      4441545F524F470100000000000B000000444F435F54505F4E414D4501000000
-      000005000000444F4B5F5601000000000005000000444F4B5F43010000000000
-      05000000444F4B5F4E01000000000005000000444F4B5F440100000000000900
-      0000544F574E5F4E414D4501000000000007000000575F504C41434501000000
-      00000A0000004D494C49545F4E414D450100000000000F0000004D494C49545F
-      5245474E5F4E414D45010000000000080000004441545F50524F500100000000
-      00060000004441545F554201000000000003000000504F4C010000000000}
+      0500000025000000060000004C0053004B000100000000000A0000004B005F00
+      460041004D00010000000000080000004B005F0049004D000100000000000800
+      00004B005F004F00540001000000000010000000460052004D005F0054004F00
+      57004E000100000000000C000000460052004D005F004E004400010000000000
+      0C000000460052004D005F004B0057000100000000000400000052004E000100
+      00000000160000005300540041005400550053005F004E0041004D0045000100
+      0000000014000000520045004C00410054005F004E0041004D00450001000000
+      00000E000000550042005F004E0041004D0045000100000000000E0000005400
+      4F005F0054004F0057004E000100000000000A00000054004F005F004E004400
+      0100000000000A00000054004F005F004B005700010000000000100000004E00
+      410043005F004E0041004D004500010000000000140000004300490054004900
+      5A005F004E0041004D0045000100000000001A000000460052004D005F005200
+      450047004E005F004E0041004D0045000100000000001C000000460052004D00
+      5F00440049005300540052005F004E0041004D0045000100000000001E000000
+      460052004D005F005300540052004500450054005F004E0041004D0045000100
+      000000000E00000042005F0050004C0041004300450001000000000018000000
+      54004F005F005200450047004E005F004E0041004D0045000100000000001A00
+      000054004F005F00440049005300540052005F004E0041004D00450001000000
+      00001C00000054004F005F005300540052004500450054005F004E0041004D00
+      45000100000000000E000000460052004D005F00440041005400010000000000
+      0E0000004400410054005F0052004F0047000100000000001600000044004F00
+      43005F00540050005F004E0041004D0045000100000000000A00000044004F00
+      4B005F0056000100000000000A00000044004F004B005F004300010000000000
+      0A00000044004F004B005F004E000100000000000A00000044004F004B005F00
+      44000100000000001200000054004F0057004E005F004E0041004D0045000100
+      000000000E00000057005F0050004C0041004300450001000000000014000000
+      4D0049004C00490054005F004E0041004D0045000100000000001E0000004D00
+      49004C00490054005F005200450047004E005F004E0041004D00450001000000
+      0000100000004400410054005F00500052004F0050000100000000000C000000
+      4400410054005F00550042000100000000000600000050004F004C0001000000
+      0000}
     Master = Form_kart.OD_kart_pr
     MasterFields = 'id'
     DetailFields = 'id'
@@ -1818,7 +1836,7 @@ object Form_kart_pr: TForm_kart_pr
     Top = 410
   end
   object frxReport1: TfrxReport
-    Version = '6.2.11'
+    Version = '6.7.6'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1858,6 +1876,7 @@ object Form_kart_pr: TForm_kart_pr
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
       Frame.Typ = []
+      MirrorMode = []
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
         Frame.Typ = []
@@ -1876,8 +1895,8 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Memo.UTF8 = (
-            #1056#1113#1056#176#1057#1026#1057#8218#1056#1109#1057#8225#1056#1108#1056#176' '#1057#1026#1056#181#1056#1110#1056#1105#1057#1027#1057#8218#1057#1026#1056#176#1057#8224#1056#1105#1056#1105)
+          Memo.UTF8W = (
+            #1050#1072#1088#1090#1086#1095#1082#1072' '#1088#1077#1075#1080#1089#1090#1088#1072#1094#1080#1080)
           ParentFont = False
         end
         object Memo5: TfrxMemoView
@@ -1893,7 +1912,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Style = []
           Frame.Typ = []
           HAlign = haRight
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[kart."LSK"]')
           ParentFont = False
         end
@@ -1910,8 +1929,8 @@ object Form_kart_pr: TForm_kart_pr
           Font.Style = [fsBold]
           Frame.Typ = []
           HAlign = haRight
-          Memo.UTF8 = (
-            #1056#8250#1056#1105#1057#8224#1056#181#1056#1030#1056#1109#1056#8470' '#1057#1027#1057#8225#1056#181#1057#8218)
+          Memo.UTF8W = (
+            #1051#1080#1094#1077#1074#1086#1081' '#1089#1095#1077#1090)
           ParentFont = False
         end
         object Memo40: TfrxMemoView
@@ -1926,8 +1945,8 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Memo.UTF8 = (
-            '1.'#1056#164#1056#176#1056#1112#1056#1105#1056#187#1056#1105#1057#1039)
+          Memo.UTF8W = (
+            '1.'#1060#1072#1084#1080#1083#1080#1103)
           ParentFont = False
         end
         object Memo41: TfrxMemoView
@@ -1942,7 +1961,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[c_kart_pr."K_FAM"]')
           ParentFont = False
         end
@@ -1958,8 +1977,8 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Memo.UTF8 = (
-            '2.'#1056#152#1056#1112#1057#1039)
+          Memo.UTF8W = (
+            '2.'#1048#1084#1103)
           ParentFont = False
         end
         object Memo43: TfrxMemoView
@@ -1974,7 +1993,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[c_kart_pr."K_IM"]')
           ParentFont = False
         end
@@ -1990,8 +2009,8 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Memo.UTF8 = (
-            '3.'#1056#1115#1057#8218#1057#8225#1056#181#1057#1027#1057#8218#1056#1030#1056#1109)
+          Memo.UTF8W = (
+            '3.'#1054#1090#1095#1077#1089#1090#1074#1086)
           ParentFont = False
         end
         object Memo45: TfrxMemoView
@@ -2006,7 +2025,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[c_kart_pr."K_OT"]')
           ParentFont = False
         end
@@ -2022,8 +2041,8 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Memo.UTF8 = (
-            '4.'#1056#1116#1056#176#1057#8224#1056#1105#1056#1109#1056#1029#1056#176#1056#187#1057#1034#1056#1029#1056#1109#1057#1027#1057#8218#1057#1034)
+          Memo.UTF8W = (
+            '4.'#1053#1072#1094#1080#1086#1085#1072#1083#1100#1085#1086#1089#1090#1100)
           ParentFont = False
         end
         object Memo47: TfrxMemoView
@@ -2038,7 +2057,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[c_kart_pr."NAC_NAME"]')
           ParentFont = False
         end
@@ -2054,8 +2073,8 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Memo.UTF8 = (
-            '7.'#1056#8221#1056#176#1057#8218#1056#176' '#1057#1026#1056#1109#1056#182#1056#1169#1056#181#1056#1029#1056#1105#1057#1039)
+          Memo.UTF8W = (
+            '7.'#1044#1072#1090#1072' '#1088#1086#1078#1076#1077#1085#1080#1103)
           ParentFont = False
         end
         object Memo49: TfrxMemoView
@@ -2070,7 +2089,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[c_kart_pr."DAT_ROG"]')
           ParentFont = False
         end
@@ -2086,8 +2105,8 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Memo.UTF8 = (
-            '8.'#1056#1114#1056#181#1057#1027#1057#8218#1056#1109' '#1057#1026#1056#1109#1056#182#1056#1169#1056#181#1056#1029#1056#1105#1057#1039)
+          Memo.UTF8W = (
+            '8.'#1052#1077#1089#1090#1086' '#1088#1086#1078#1076#1077#1085#1080#1103)
           ParentFont = False
         end
         object Memo51: TfrxMemoView
@@ -2102,7 +2121,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[c_kart_pr."B_PLACE"]')
           ParentFont = False
         end
@@ -2126,8 +2145,8 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Memo.UTF8 = (
-            '5.'#1056#1115#1057#8218#1056#1029#1056#1109#1057#8364#1056#181#1056#1029#1056#1105#1056#181)
+          Memo.UTF8W = (
+            '5.'#1054#1090#1085#1086#1096#1077#1085#1080#1077)
           ParentFont = False
         end
         object Memo53: TfrxMemoView
@@ -2142,7 +2161,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[c_kart_pr."RELAT_NAME"]')
           ParentFont = False
         end
@@ -2158,8 +2177,8 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Memo.UTF8 = (
-            '6.'#1056#8220#1057#1026#1056#176#1056#182#1056#1169#1056#176#1056#1029#1057#1027#1057#8218#1056#1030#1056#1109)
+          Memo.UTF8W = (
+            '6.'#1043#1088#1072#1078#1076#1072#1085#1089#1090#1074#1086)
           ParentFont = False
         end
         object Memo55: TfrxMemoView
@@ -2174,7 +2193,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[c_kart_pr."CITIZ_NAME"]')
           ParentFont = False
         end
@@ -2243,8 +2262,8 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Memo.UTF8 = (
-            '9.'#1056#1115#1057#8218#1056#1108#1057#1107#1056#1169#1056#176' '#1056#1105' '#1056#1108#1056#1109#1056#1110#1056#1169#1056#176' '#1056#1111#1057#1026#1056#1105#1056#177#1057#8249#1056#187)
+          Memo.UTF8W = (
+            '9.'#1054#1090#1082#1091#1076#1072' '#1080' '#1082#1086#1075#1076#1072' '#1087#1088#1080#1073#1099#1083)
           ParentFont = False
         end
         object Memo57: TfrxMemoView
@@ -2259,8 +2278,8 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Memo.UTF8 = (
-            #1056#1115#1056#177#1056#187#1056#176#1057#1027#1057#8218#1057#1034)
+          Memo.UTF8W = (
+            #1054#1073#1083#1072#1089#1090#1100)
           ParentFont = False
         end
         object Memo58: TfrxMemoView
@@ -2275,7 +2294,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[c_kart_pr."FRM_REGN_NAME"]')
           ParentFont = False
         end
@@ -2291,8 +2310,8 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Memo.UTF8 = (
-            #1056#160#1056#176#1056#8470#1056#1109#1056#1029)
+          Memo.UTF8W = (
+            #1056#1072#1081#1086#1085)
           ParentFont = False
         end
         object Memo60: TfrxMemoView
@@ -2307,7 +2326,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[c_kart_pr."FRM_DISTR_NAME"]')
           ParentFont = False
         end
@@ -2323,8 +2342,8 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Memo.UTF8 = (
-            #1056#8220#1056#1109#1057#1026#1056#1109#1056#1169)
+          Memo.UTF8W = (
+            #1043#1086#1088#1086#1076)
           ParentFont = False
         end
         object Memo62: TfrxMemoView
@@ -2339,7 +2358,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[c_kart_pr."FRM_TOWN"]')
           ParentFont = False
         end
@@ -2355,8 +2374,8 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Memo.UTF8 = (
-            #1056#8221#1056#176#1057#8218#1056#176)
+          Memo.UTF8W = (
+            #1044#1072#1090#1072)
           ParentFont = False
         end
         object Memo64: TfrxMemoView
@@ -2371,7 +2390,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[c_kart_pr."FRM_DAT"]')
           ParentFont = False
         end
@@ -2387,8 +2406,8 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Memo.UTF8 = (
-            #1056#1032#1056#187'.')
+          Memo.UTF8W = (
+            #1059#1083'.')
           ParentFont = False
         end
         object Memo2: TfrxMemoView
@@ -2403,7 +2422,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[c_kart_pr."FRM_STREET_NAME"]')
           ParentFont = False
         end
@@ -2419,8 +2438,8 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Memo.UTF8 = (
-            #1056#8221#1056#1109#1056#1112)
+          Memo.UTF8W = (
+            #1044#1086#1084)
           ParentFont = False
         end
         object Memo6: TfrxMemoView
@@ -2435,7 +2454,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[c_kart_pr."FRM_ND"]')
           ParentFont = False
         end
@@ -2451,8 +2470,8 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Memo.UTF8 = (
-            #1056#1113#1056#1030'.')
+          Memo.UTF8W = (
+            #1050#1074'.')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
@@ -2467,7 +2486,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[c_kart_pr."FRM_KW"]')
           ParentFont = False
         end
@@ -2507,8 +2526,8 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Memo.UTF8 = (
-            '10.'#1056#8221#1056#1109#1056#1108#1057#1107#1056#1112#1056#181#1056#1029#1057#8218)
+          Memo.UTF8W = (
+            '10.'#1044#1086#1082#1091#1084#1077#1085#1090)
           ParentFont = False
         end
         object Memo10: TfrxMemoView
@@ -2524,8 +2543,8 @@ object Form_kart_pr: TForm_kart_pr
           Font.Style = [fsBold]
           Frame.Typ = []
           HAlign = haCenter
-          Memo.UTF8 = (
-            #1056#1038#1056#181#1057#1026#1056#1105#1057#1039)
+          Memo.UTF8W = (
+            #1057#1077#1088#1080#1103)
           ParentFont = False
         end
         object Memo11: TfrxMemoView
@@ -2541,8 +2560,8 @@ object Form_kart_pr: TForm_kart_pr
           Font.Style = [fsBold]
           Frame.Typ = []
           HAlign = haCenter
-          Memo.UTF8 = (
-            #1056#1116#1056#1109#1056#1112#1056#181#1057#1026)
+          Memo.UTF8W = (
+            #1053#1086#1084#1077#1088)
           ParentFont = False
         end
         object Memo12: TfrxMemoView
@@ -2557,7 +2576,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[c_kart_pr."DOC_TP_NAME"]')
           ParentFont = False
         end
@@ -2573,7 +2592,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[c_kart_pr."DOK_C"]')
           ParentFont = False
         end
@@ -2589,7 +2608,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[c_kart_pr."DOK_N"]')
           ParentFont = False
         end
@@ -2606,8 +2625,8 @@ object Form_kart_pr: TForm_kart_pr
           Font.Style = [fsBold]
           Frame.Typ = []
           HAlign = haCenter
-          Memo.UTF8 = (
-            #1056#8221#1056#1109#1056#1108#1057#1107#1056#1112#1056#181#1056#1029#1057#8218' '#1056#1030#1057#8249#1056#1169#1056#176#1056#1029)
+          Memo.UTF8W = (
+            #1044#1086#1082#1091#1084#1077#1085#1090' '#1074#1099#1076#1072#1085)
           ParentFont = False
         end
         object Memo16: TfrxMemoView
@@ -2622,7 +2641,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[c_kart_pr."DOK_V"]  [c_kart_pr."DOK_D"]')
           ParentFont = False
         end
@@ -2678,8 +2697,8 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Memo.UTF8 = (
-            '11.'#1056#1106#1056#1169#1057#1026#1056#181#1057#1027' '#1056#1112#1056#181#1057#1027#1057#8218#1056#1109#1056#182#1056#1105#1057#8218#1056#181#1056#187#1057#1034#1057#1027#1057#8218#1056#1030#1056#176)
+          Memo.UTF8W = (
+            '11.'#1040#1076#1088#1077#1089' '#1084#1077#1089#1090#1086#1078#1080#1090#1077#1083#1100#1089#1090#1074#1072)
           ParentFont = False
         end
         object Memo18: TfrxMemoView
@@ -2694,10 +2713,10 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             
-              '[c_kart_pr."TOWN_NAME"]  '#1056#1032#1056#187'. [kart."STREET_NAME"],  '#1056#1169#1056#1109#1056#1112' [ka' +
-              'rt."N_ND"], '#1056#1108#1056#1030'. [kart."N_KW"]')
+              '[c_kart_pr."TOWN_NAME"]  '#1059#1083'. [kart."STREET_NAME"],  '#1076#1086#1084' [kart."N' +
+              '_ND"], '#1082#1074'. [kart."N_KW"]')
           ParentFont = False
         end
         object Memo19: TfrxMemoView
@@ -2712,8 +2731,8 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Memo.UTF8 = (
-            '12.'#1056#1114#1056#181#1057#1027#1057#8218#1056#1109' '#1057#1026#1056#176#1056#177#1056#1109#1057#8218#1057#8249' '#1056#1105' '#1056#1169#1056#1109#1056#187#1056#182#1056#1029#1056#1109#1057#1027#1057#8218#1057#1034)
+          Memo.UTF8W = (
+            '12.'#1052#1077#1089#1090#1086' '#1088#1072#1073#1086#1090#1099' '#1080' '#1076#1086#1083#1078#1085#1086#1089#1090#1100)
           ParentFont = False
         end
         object Memo20: TfrxMemoView
@@ -2728,7 +2747,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[c_kart_pr."W_PLACE"]')
           ParentFont = False
         end
@@ -2751,6 +2770,7 @@ object Form_kart_pr: TForm_kart_pr
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
       Frame.Typ = []
+      MirrorMode = []
       object ReportTitle2: TfrxReportTitle
         FillType = ftBrush
         Frame.Typ = []
@@ -2769,11 +2789,9 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Memo.UTF8 = (
-            '13.'#1056#8221#1056#181#1057#8218#1056#1105' '#1056#1169#1056#1109' 14-'#1056#187#1056#181#1057#8218#1056#1029#1056#181#1056#1110#1056#1109' '#1056#1030#1056#1109#1056#183#1057#1026#1056#176#1057#1027#1057#8218#1056#176
-            
-              '('#1057#8222#1056#176#1056#1112#1056#1105#1056#187#1056#1105#1057#1039', '#1056#1105#1056#1112#1057#1039', '#1056#1109#1057#8218#1057#8225#1056#181#1057#1027#1057#8218#1056#1030#1056#1109', '#1056#1110#1056#1109#1056#1169' '#1057#1026#1056#1109#1056#182#1056#1169#1056#181#1056#1029#1056#1105 +
-              #1057#1039')')
+          Memo.UTF8W = (
+            '13.'#1044#1077#1090#1080' '#1076#1086' 14-'#1083#1077#1090#1085#1077#1075#1086' '#1074#1086#1079#1088#1072#1089#1090#1072
+            '('#1092#1072#1084#1080#1083#1080#1103', '#1080#1084#1103', '#1086#1090#1095#1077#1089#1090#1074#1086', '#1075#1086#1076' '#1088#1086#1078#1076#1077#1085#1080#1103')')
           ParentFont = False
         end
         object Line18: TfrxLineView
@@ -2849,11 +2867,9 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Memo.UTF8 = (
-            '14. '#1056#1115#1057#8218#1056#1029#1056#1109#1057#8364#1056#181#1056#1029#1056#1105#1056#181' '#1056#1108' '#1056#1030#1056#1109#1056#181#1056#1029#1056#1029#1056#1109#1056#8470' '#1057#1027#1056#187#1057#1107#1056#182#1056#177#1056#181
-            
-              '('#1056#1108#1056#181#1056#1112', '#1056#1108#1056#1109#1056#1110#1056#1169#1056#176' '#1056#1111#1057#1026#1056#1105#1056#1029#1057#1039#1057#8218' '#1056#1029#1056#176' '#1057#1107#1057#8225#1056#181#1057#8218', '#1057#1027#1056#1029#1057#1039#1057#8218' '#1057#1027' '#1057#1107#1057#8225 +
-              #1056#181#1057#8218#1056#176')')
+          Memo.UTF8W = (
+            '14. '#1054#1090#1085#1086#1096#1077#1085#1080#1077' '#1082' '#1074#1086#1077#1085#1085#1086#1081' '#1089#1083#1091#1078#1073#1077
+            '('#1082#1077#1084', '#1082#1086#1075#1076#1072' '#1087#1088#1080#1085#1103#1090' '#1085#1072' '#1091#1095#1077#1090', '#1089#1085#1103#1090' '#1089' '#1091#1095#1077#1090#1072')')
           ParentFont = False
         end
         object Line26: TfrxLineView
@@ -2884,8 +2900,8 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Memo.UTF8 = (
-            '15. '#1056#1115#1057#8218#1056#1112#1056#181#1057#8218#1056#1108#1056#176' '#1056#1109' '#1056#1111#1057#1026#1056#1109#1056#1111#1056#1105#1057#1027#1056#1108#1056#181)
+          Memo.UTF8W = (
+            '15. '#1054#1090#1084#1077#1090#1082#1072' '#1086' '#1087#1088#1086#1087#1080#1089#1082#1077)
           ParentFont = False
         end
         object Line28: TfrxLineView
@@ -2908,7 +2924,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[c_kart_pr."MILIT_NAME"], [c_kart_pr."MILIT_REGN_NAME"]')
           ParentFont = False
         end
@@ -2924,7 +2940,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[c_kart_pr."DAT_PROP"]')
           ParentFont = False
         end
@@ -2940,8 +2956,8 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Memo.UTF8 = (
-            #1056#1119#1057#1026#1056#1109#1056#1111#1056#1105#1057#1027#1056#176#1056#1029)
+          Memo.UTF8W = (
+            #1055#1088#1086#1087#1080#1089#1072#1085)
           ParentFont = False
         end
         object Memo27: TfrxMemoView
@@ -2956,8 +2972,8 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Memo.UTF8 = (
-            #1056#1038#1057#8218#1056#176#1057#8218#1057#1107#1057#1027' '#1056#1111#1057#1026#1056#1109#1056#1111#1056#1105#1057#1027#1056#1108#1056#1105)
+          Memo.UTF8W = (
+            #1057#1090#1072#1090#1091#1089' '#1087#1088#1086#1087#1080#1089#1082#1080)
           ParentFont = False
         end
         object Memo28: TfrxMemoView
@@ -2972,7 +2988,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[c_kart_pr."STATUS_NAME"]')
           ParentFont = False
         end
@@ -2988,12 +3004,11 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             
-              '16. '#1056#8217#1057#8249#1056#177#1057#8249#1056#187' '#1056#1030' ('#1056#1029#1056#176#1056#1105#1056#1112#1056#181#1056#1029#1056#1109#1056#1030#1056#176#1056#1029#1056#1105#1056#181' '#1056#1109#1056#177#1056#187#1056#176#1057#1027#1057#8218#1056#1105', '#1056#1108#1057#1026 +
-              #1056#176#1057#1039', '#1057#1026#1056#181#1057#1027#1056#1111#1057#1107#1056#177#1056#187#1056#1105#1056#1108#1056#1105', '#1057#1026#1056#176#1056#8470#1056#1109#1056#1029#1056#176', '#1056#1110#1056#1109#1057#1026#1056#1109#1056#1169#1056#176', '#1057#1027#1056#181#1056#187#1056#181 +
-              #1056#1029#1056#1105#1057#1039')'
-            '     '#1056#1115#1057#8218#1056#1112#1056#181#1057#8218#1056#1108#1056#1105' '#1056#1109' '#1056#1030#1057#8249#1056#1111#1056#1105#1057#1027#1056#1108#1056#181)
+              '16. '#1042#1099#1073#1099#1083' '#1074' ('#1085#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077' '#1086#1073#1083#1072#1089#1090#1080', '#1082#1088#1072#1103', '#1088#1077#1089#1087#1091#1073#1083#1080#1082#1080', '#1088#1072#1081#1086#1085#1072', '#1075#1086#1088 +
+              #1086#1076#1072', '#1089#1077#1083#1077#1085#1080#1103')'
+            '     '#1054#1090#1084#1077#1090#1082#1080' '#1086' '#1074#1099#1087#1080#1089#1082#1077)
           ParentFont = False
         end
         object Memo30: TfrxMemoView
@@ -3008,7 +3023,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[c_kart_pr."DAT_UB"]')
           ParentFont = False
         end
@@ -3024,8 +3039,8 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Memo.UTF8 = (
-            #1056#8221#1056#176#1057#8218#1056#176' '#1056#1030#1057#8249#1056#1111#1056#1105#1057#1027#1056#1108#1056#1105)
+          Memo.UTF8W = (
+            #1044#1072#1090#1072' '#1074#1099#1087#1080#1089#1082#1080)
           ParentFont = False
         end
         object Memo33: TfrxMemoView
@@ -3040,8 +3055,8 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Memo.UTF8 = (
-            #1056#1115#1056#177#1056#187#1056#176#1057#1027#1057#8218#1057#1034)
+          Memo.UTF8W = (
+            #1054#1073#1083#1072#1089#1090#1100)
           ParentFont = False
         end
         object Memo34: TfrxMemoView
@@ -3056,7 +3071,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[c_kart_pr."FRM_REGN_NAME"]')
           ParentFont = False
         end
@@ -3072,8 +3087,8 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Memo.UTF8 = (
-            #1056#160#1056#176#1056#8470#1056#1109#1056#1029)
+          Memo.UTF8W = (
+            #1056#1072#1081#1086#1085)
           ParentFont = False
         end
         object Memo36: TfrxMemoView
@@ -3088,7 +3103,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[c_kart_pr."FRM_DISTR_NAME"]')
           ParentFont = False
         end
@@ -3104,8 +3119,8 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Memo.UTF8 = (
-            #1056#8220#1056#1109#1057#1026#1056#1109#1056#1169)
+          Memo.UTF8W = (
+            #1043#1086#1088#1086#1076)
           ParentFont = False
         end
         object Memo39: TfrxMemoView
@@ -3120,7 +3135,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[c_kart_pr."FRM_TOWN"]')
           ParentFont = False
         end
@@ -3136,8 +3151,8 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Memo.UTF8 = (
-            #1056#8221#1056#176#1057#8218#1056#176)
+          Memo.UTF8W = (
+            #1044#1072#1090#1072)
           ParentFont = False
         end
         object Memo66: TfrxMemoView
@@ -3152,7 +3167,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[c_kart_pr."FRM_DAT"]')
           ParentFont = False
         end
@@ -3168,8 +3183,8 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Memo.UTF8 = (
-            #1056#1032#1056#187'.')
+          Memo.UTF8W = (
+            #1059#1083'.')
           ParentFont = False
         end
         object Memo68: TfrxMemoView
@@ -3184,7 +3199,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[c_kart_pr."FRM_STREET_NAME"]')
           ParentFont = False
         end
@@ -3200,8 +3215,8 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Memo.UTF8 = (
-            #1056#8221#1056#1109#1056#1112)
+          Memo.UTF8W = (
+            #1044#1086#1084)
           ParentFont = False
         end
         object Memo70: TfrxMemoView
@@ -3216,7 +3231,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[c_kart_pr."FRM_ND"]')
           ParentFont = False
         end
@@ -3232,8 +3247,8 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Frame.Typ = []
-          Memo.UTF8 = (
-            #1056#1113#1056#1030'.')
+          Memo.UTF8W = (
+            #1050#1074'.')
           ParentFont = False
         end
         object Memo72: TfrxMemoView
@@ -3248,7 +3263,7 @@ object Form_kart_pr: TForm_kart_pr
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = []
-          Memo.UTF8 = (
+          Memo.UTF8W = (
             '[c_kart_pr."FRM_KW"]')
           ParentFont = False
         end
@@ -3263,12 +3278,13 @@ object Form_kart_pr: TForm_kart_pr
       'and tp.cd='#39#1043#1088#1072#1078#1076#1072#1085#1089#1090#1074#1086#39)
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      040000000A000000020000004944010000000000040000004E414D4501000000
-      000002000000434401000000000009000000464B5F4C49535454500100000000
-      00020000004E4D010000000000030000004E5050010000000000060000005641
-      4C5F545001000000000007000000464B5F554E49540100000000000700000053
-      514C544558540100000000000D000000464B5F4558535F555F4C495354010000
-      000000}
+      050000000A0000000400000049004400010000000000080000004E0041004D00
+      450001000000000004000000430044000100000000001200000046004B005F00
+      4C0049005300540054005000010000000000040000004E004D00010000000000
+      060000004E00500050000100000000000C000000560041004C005F0054005000
+      0100000000000E00000046004B005F0055004E00490054000100000000000E00
+      0000530051004C0054004500580054000100000000001A00000046004B005F00
+      4500580053005F0055005F004C00490053005400010000000000}
     Session = DataModule1.OracleSession1
     Active = True
     Left = 200
@@ -3315,12 +3331,13 @@ object Form_kart_pr: TForm_kart_pr
       'and tp.cd='#39#1042#1086#1077#1085#1085#1086#1086#1073#1103#1079#1072#1085#1085#1086#1089#1090#1100#39)
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      040000000A000000020000004944010000000000040000004E414D4501000000
-      000002000000434401000000000009000000464B5F4C49535454500100000000
-      00020000004E4D010000000000030000004E5050010000000000060000005641
-      4C5F545001000000000007000000464B5F554E49540100000000000700000053
-      514C544558540100000000000D000000464B5F4558535F555F4C495354010000
-      000000}
+      050000000A0000000400000049004400010000000000080000004E0041004D00
+      450001000000000004000000430044000100000000001200000046004B005F00
+      4C0049005300540054005000010000000000040000004E004D00010000000000
+      060000004E00500050000100000000000C000000560041004C005F0054005000
+      0100000000000E00000046004B005F0055004E00490054000100000000000E00
+      0000530051004C0054004500580054000100000000001A00000046004B005F00
+      4500580053005F0055005F004C00490053005400010000000000}
     Session = DataModule1.OracleSession1
     Active = True
     Left = 200
@@ -3357,12 +3374,13 @@ object Form_kart_pr: TForm_kart_pr
       'and tp.cd='#39#1042#1086#1077#1085#1082#1086#1084#1072#1090#39)
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      040000000A000000020000004944010000000000040000004E414D4501000000
-      000002000000434401000000000009000000464B5F4C49535454500100000000
-      00020000004E4D010000000000030000004E5050010000000000060000005641
-      4C5F545001000000000007000000464B5F554E49540100000000000700000053
-      514C544558540100000000000D000000464B5F4558535F555F4C495354010000
-      000000}
+      050000000A0000000400000049004400010000000000080000004E0041004D00
+      450001000000000004000000430044000100000000001200000046004B005F00
+      4C0049005300540054005000010000000000040000004E004D00010000000000
+      060000004E00500050000100000000000C000000560041004C005F0054005000
+      0100000000000E00000046004B005F0055004E00490054000100000000000E00
+      0000530051004C0054004500580054000100000000001A00000046004B005F00
+      4500580053005F0055005F004C00490053005400010000000000}
     Session = DataModule1.OracleSession1
     Active = True
     Left = 200
@@ -3397,7 +3415,7 @@ object Form_kart_pr: TForm_kart_pr
     Top = 528
   end
   object frxReport_base: TfrxReport
-    Version = '6.2.11'
+    Version = '6.7.6'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -3432,13 +3450,14 @@ object Form_kart_pr: TForm_kart_pr
       '*/')
     Optimize = False
     Variables.Data = {
-      03000000010000000B0000003A464B5F4B4152545F5052040000000000000000
-      000000}
+      0400000001000000160000003A0046004B005F004B004100520054005F005000
+      5200040000000000000000000000}
     OracleDictionary.UseMessageTable = True
     QBEDefinition.QBEFieldDefs = {
-      040000000400000009000000464B5F5354415455530100000000000300000044
-      5431010000000000030000004454320100000000000A000000464B5F4B415254
-      5F5052010000000000}
+      05000000040000001200000046004B005F005300540041005400550053000100
+      0000000006000000440054003100010000000000060000004400540032000100
+      000000001400000046004B005F004B004100520054005F005000520001000000
+      0000}
     Master = Form_kart.OD_kart_pr
     MasterFields = 'ID'
     DetailFields = 'FK_KART_PR'
@@ -3502,13 +3521,14 @@ object Form_kart_pr: TForm_kart_pr
       '*/')
     Optimize = False
     Variables.Data = {
-      03000000010000000B0000003A464B5F4B4152545F5052040000000000000000
-      000000}
+      0400000001000000160000003A0046004B005F004B004100520054005F005000
+      5200040000000000000000000000}
     OracleDictionary.UseMessageTable = True
     QBEDefinition.QBEFieldDefs = {
-      040000000500000009000000464B5F5354415455530100000000000300000044
-      5431010000000000030000004454320100000000000A000000464B5F4B415254
-      5F505201000000000005000000464B5F5450010000000000}
+      05000000050000001200000046004B005F005300540041005400550053000100
+      0000000006000000440054003100010000000000060000004400540032000100
+      000000001400000046004B005F004B004100520054005F005000520001000000
+      00000A00000046004B005F0054005000010000000000}
     Master = Form_kart.OD_kart_pr
     MasterFields = 'ID'
     DetailFields = 'FK_KART_PR'
@@ -3558,8 +3578,8 @@ object Form_kart_pr: TForm_kart_pr
       'and u.cd='#39'PROP'#39)
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000002000000020000004944010000000000040000004E414D4501000000
-      0000}
+      05000000020000000400000049004400010000000000080000004E0041004D00
+      4500010000000000}
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True
@@ -3579,8 +3599,8 @@ object Form_kart_pr: TForm_kart_pr
       'and u.cd='#39'PROP_REG'#39)
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      0400000002000000020000004944010000000000040000004E414D4501000000
-      0000}
+      05000000020000000400000049004400010000000000080000004E0041004D00
+      4500010000000000}
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True
@@ -3637,13 +3657,15 @@ object Form_kart_pr: TForm_kart_pr
       ')')
     Optimize = False
     Variables.Data = {
-      0300000002000000030000003A494403000000040000008A1510000000000005
-      0000003A5641525F030000000000000000000000}
+      0400000002000000060000003A004900440003000000040000008A1510000000
+      00000A0000003A005600410052005F00030000000000000000000000}
     QBEDefinition.QBEFieldDefs = {
-      0400000007000000050000004B5F46414D010000000000040000004B5F494D01
-      0000000000040000004B5F4F54010000000000070000004441545F524F470100
-      00000000080000004441545F50524F50010000000000060000004441545F5542
-      0100000000000A00000052454C41545F4E414D45010000000000}
+      05000000070000000A0000004B005F00460041004D0001000000000008000000
+      4B005F0049004D00010000000000080000004B005F004F005400010000000000
+      0E0000004400410054005F0052004F0047000100000000001000000044004100
+      54005F00500052004F0050000100000000000C0000004400410054005F005500
+      420001000000000014000000520045004C00410054005F004E0041004D004500
+      010000000000}
     Master = Form_kart.OD_kart_pr
     MasterFields = 'id'
     DetailFields = 'id'

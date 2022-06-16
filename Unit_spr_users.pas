@@ -76,6 +76,8 @@ type
     OD_c_usersCD: TStringField;
     OD_c_usersNAME: TStringField;
     OD_c_usersGUID: TStringField;
+    cxStyleRepository1: TcxStyleRepository;
+    cxStyle2: TcxStyle;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);

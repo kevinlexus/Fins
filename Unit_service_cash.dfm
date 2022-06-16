@@ -13,7 +13,6 @@ object Form_service_cash: TForm_service_cash
   Font.Name = 'Tahoma'
   Font.Style = []
   FormStyle = fsMDIChild
-  
   OldCreateOrder = False
   Position = poMainFormCenter
   Visible = True

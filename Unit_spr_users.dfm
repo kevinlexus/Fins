@@ -3,8 +3,8 @@ object Form_spr_users: TForm_spr_users
   Top = 411
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #1055#1086#1083#1100#1079#1086#1074#1072#1090#1077#1083#1080' - '#1088#1072#1079#1088#1077#1096#1077#1085#1080#1103
-  ClientHeight = 733
-  ClientWidth = 868
+  ClientHeight = 660
+  ClientWidth = 879
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -94,7 +94,7 @@ object Form_spr_users: TForm_spr_users
     Left = 281
     Top = 49
     Width = 8
-    Height = 684
+    Height = 611
     ExplicitLeft = 217
     ExplicitHeight = 362
   end
@@ -102,19 +102,19 @@ object Form_spr_users: TForm_spr_users
     Left = 0
     Top = 49
     Width = 281
-    Height = 684
+    Height = 611
     Align = alLeft
     Caption = #1055#1086#1083#1100#1079#1086#1074#1072#1090#1077#1083#1080
     TabOrder = 1
-    ExplicitHeight = 668
+    ExplicitHeight = 684
     object cxGrid1: TcxGrid
       Left = 2
       Top = 15
       Width = 277
-      Height = 667
+      Height = 594
       Align = alClient
       TabOrder = 0
-      ExplicitHeight = 651
+      ExplicitHeight = 667
       object cxGrid1DBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         Navigator.Visible = True
@@ -125,9 +125,10 @@ object Form_spr_users: TForm_spr_users
         OptionsBehavior.FocusCellOnTab = True
         OptionsBehavior.GoToNextCellOnEnter = True
         OptionsData.CancelOnExit = False
-        OptionsSelection.InvertSelect = False
         OptionsView.ColumnAutoWidth = True
         OptionsView.GroupByBox = False
+        OptionsView.Indicator = True
+        Styles.Inactive = cxStyle2
         object cxGrid1DBTableView1ID: TcxGridDBColumn
           DataBinding.FieldName = 'ID'
           Width = 20
@@ -155,23 +156,23 @@ object Form_spr_users: TForm_spr_users
   object GroupBox3: TGroupBox
     Left = 289
     Top = 49
-    Width = 210
-    Height = 684
+    Width = 221
+    Height = 611
     Align = alClient
     Caption = #1044#1086#1089#1090#1091#1087#1085#1086' '#1087#1086' '#1086#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103#1084
     TabOrder = 2
-    ExplicitWidth = 351
-    ExplicitHeight = 668
+    ExplicitWidth = 210
+    ExplicitHeight = 684
     object cxGrid2: TcxGrid
       Left = 2
       Top = 15
-      Width = 206
-      Height = 667
+      Width = 217
+      Height = 594
       Align = alClient
       PopupMenu = PopupMenu1
       TabOrder = 0
-      ExplicitWidth = 347
-      ExplicitHeight = 651
+      ExplicitWidth = 206
+      ExplicitHeight = 667
       object cxgridAvailable: TcxGridDBTableView
         OnDragDrop = cxgridAvailableDragDrop
         OnDragOver = cxgridAvailableDragOver
@@ -207,23 +208,23 @@ object Form_spr_users: TForm_spr_users
     end
   end
   object GroupBox4: TGroupBox
-    Left = 499
+    Left = 510
     Top = 49
     Width = 369
-    Height = 684
+    Height = 611
     Align = alRight
     Caption = #1042#1089#1077' '#1086#1073#1098#1077#1082#1090#1099
     TabOrder = 3
-    ExplicitLeft = 640
-    ExplicitHeight = 668
+    ExplicitLeft = 499
+    ExplicitHeight = 684
     object cxGrid3: TcxGrid
       Left = 2
       Top = 15
       Width = 365
-      Height = 667
+      Height = 594
       Align = alClient
       TabOrder = 0
-      ExplicitHeight = 651
+      ExplicitHeight = 667
       object cxgridAllObjects: TcxGridDBTableView
         OnMouseDown = cxgridAllObjectsMouseDown
         Navigator.Buttons.CustomButtons = <>
@@ -255,12 +256,12 @@ object Form_spr_users: TForm_spr_users
   object GroupBox5: TGroupBox
     Left = 0
     Top = 0
-    Width = 868
+    Width = 879
     Height = 49
     Align = alTop
     Caption = #1042#1080#1076' '#1076#1086#1089#1090#1091#1087#1072
     TabOrder = 0
-    ExplicitWidth = 1009
+    ExplicitWidth = 868
     object cxLookupComboBox1: TcxLookupComboBox
       Left = 13
       Top = 17
@@ -556,5 +557,17 @@ object Form_spr_users: TForm_spr_users
     DataSet = OD_c_comps
     Left = 752
     Top = 265
+  end
+  object cxStyleRepository1: TcxStyleRepository
+    PixelsPerInch = 96
+    object cxStyle2: TcxStyle
+      AssignedValues = [svColor, svFont]
+      Color = clGradientActiveCaption
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+    end
   end
 end

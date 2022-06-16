@@ -220,6 +220,7 @@ type
     cxProgressBar1: TcxProgressBar;
     N8: TMenuItem;
     N1705221: TMenuItem;
+    N1606221: TMenuItem;
     procedure N5Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure N7Click(Sender: TObject);

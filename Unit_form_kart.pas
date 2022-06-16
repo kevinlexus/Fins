@@ -368,6 +368,8 @@ type
     cxdbchckbxCPN: TcxDBCheckBox;
     cxGroupBox3: TcxGroupBox;
     cxDBCheckBox2: TcxDBCheckBox;
+    cxStyleRepository1: TcxStyleRepository;
+    cxStyle2: TcxStyle;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure OD_kartAfterPost(DataSet: TDataSet);
     procedure OD_kart_prSTATUSValidate(Sender: TField);

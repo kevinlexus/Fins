@@ -15,7 +15,8 @@ uses
   cxFilter, cxData, cxDataStorage, cxNavigator, cxDBData,
   cxDBLookupComboBox, cxGridCustomTableView, cxGridTableView,
   cxGridCustomView, Grids, cxCheckBox, cxTextEdit, cxMaskEdit,
-  cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxCalendar;
+  cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxCalendar, dxSkinsCore,
+  dxSkinsDefaultPainters, dxDateRanges;
 
 type
   TForm_kart_pr = class(TForm)

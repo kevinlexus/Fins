@@ -212,6 +212,8 @@ type
     cxgrdListKartDBBandedTableView1FK_KLSK_OBJ: TcxGridDBBandedColumn;
     cxgrdListKartDBBandedTableView1LSK_TP_CD: TcxGridDBBandedColumn;
     cxgrdListKartDBBandedTableView1PSCH: TcxGridDBBandedColumn;
+    cxStyleRepository1: TcxStyleRepository;
+    cxStyle2: TcxStyle;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure OD_list_kartAfterScroll(DataSet: TDataSet);

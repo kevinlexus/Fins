@@ -11,7 +11,6 @@ object Form_money_cash: TForm_money_cash
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  
   OldCreateOrder = False
   Position = poMainFormCenter
   PixelsPerInch = 96
@@ -52,7 +51,7 @@ object Form_money_cash: TForm_money_cash
     Width = 352
     Height = 41
     Align = alBottom
-    TabOrder = 0
+    TabOrder = 1
     DesignSize = (
       352
       41)
@@ -92,7 +91,7 @@ object Form_money_cash: TForm_money_cash
     Style.Font.Name = 'MS Sans Serif'
     Style.Font.Style = []
     Style.IsFontAssigned = True
-    TabOrder = 1
+    TabOrder = 0
     OnKeyPress = cxSummaKeyPress
     Width = 109
   end

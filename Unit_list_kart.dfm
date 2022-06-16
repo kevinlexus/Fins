@@ -708,6 +708,7 @@ object Form_list_kart: TForm_list_kart
       OptionsData.Editing = False
       OptionsData.Inserting = False
       OptionsView.GroupByBox = False
+      Styles.Inactive = cxStyle2
       Bands = <
         item
         end
@@ -2251,5 +2252,19 @@ object Form_list_kart: TForm_list_kart
     DataSet = OD_kart_detail
     Left = 192
     Top = 160
+  end
+  object cxStyleRepository1: TcxStyleRepository
+    Left = 16
+    Top = 16
+    PixelsPerInch = 96
+    object cxStyle2: TcxStyle
+      AssignedValues = [svColor, svFont]
+      Color = clGradientActiveCaption
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+    end
   end
 end

@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Mask, Utils, ExtCtrls, cxGraphics,
   cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit,
-  cxTextEdit, cxMaskEdit;
+  cxTextEdit, cxMaskEdit, dxSkinsCore, dxSkinsDefaultPainters;
 
 type
   TForm_money_cash = class(TForm)

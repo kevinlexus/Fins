@@ -44,7 +44,7 @@ function close_reg_summ_ecr(p_summa: double; ECR: OleVariant; tp: Integer;
 function close_reg_summ_ecr_ext(p_summa: double; ECR: OleVariant; tp: Integer;
   var F: TextFile
   ): Integer;
-function close_reg_ecr(l_summa: double; ECR: OleVariant; tp: Integer): Integer;
+function close_reg_ecr_in_removing(l_summa: double; ECR: OleVariant; tp: Integer): Integer;
 procedure rep_wo_clearance(p_mode: Integer; ECR: OleVariant);
 function rep_clearance(ECR: OleVariant): Integer;
 function put_money(l_summa: double; ECR: OleVariant): Integer;
@@ -659,6 +659,58 @@ begin
   end;
 end;
 
+// закрыть чек при выполнении операции возврата или удаления суммы
+
+function close_reg_ecr_in_removing(l_summa: double; ECR: OleVariant; tp: Integer): Integer;
+begin
+  Result := 0;
+  if Form_Main.have_cash = 1 then
+  begin
+    ECR.TypeClose := 0;
+    if ECR.CloseCheck <> 0 then
+    begin
+      Result := 1;
+      show_error(ECR, '27');
+    end;
+  end
+  else if Form_Main.have_cash = 2 then
+  begin
+    // закрыть чек
+    ECR.Password := '1';
+
+    // сделал очистку остальных сумм, возможно приводило к ошибке снятия сумм
+    if tp = 1 then
+    begin
+      // наличка
+      ECR.Summ1 := l_summa;
+      ECR.Summ2 := 0;
+      ECR.Summ3 := 0;
+      ECR.Summ4 := 0;
+    end
+    else if tp = 2 then
+    begin
+      // эквайринг
+      ECR.Summ1 := 0;
+      ECR.Summ2 := 0;
+      ECR.Summ3 := l_summa;
+      ECR.Summ4 := 0;
+    end
+    else if tp = 3 then
+    begin
+      // перечисление безналично
+      ECR.Summ1 := 0;
+      ECR.Summ2 := 0;
+      ECR.Summ3 := l_summa;
+      ECR.Summ4 := 0;
+    end;
+
+    ECR.StringForPrinting := '===================';
+    ECR.CloseCheck;
+    show_error(ECR, '28');
+  end;
+end;
+
+
 // закрыть чек - расширенно (для ТСЖ)
 // p_summa - итог суммы
 // ECR - OLE текущей кассы
@@ -777,63 +829,6 @@ begin
   end;
 end;
 
-// закрыть чек
-
-function close_reg_ecr(l_summa: double; ECR: OleVariant; tp: Integer): Integer;
-begin
-  Result := 0;
-  if Form_Main.have_cash = 1 then
-  begin
-    ECR.TypeClose := 0;
-    if ECR.CloseCheck <> 0 then
-    begin
-      Result := 1;
-      show_error(ECR, '27');
-    end;
-  end
-  else if Form_Main.have_cash = 2 then
-  begin
-    // закрыть чек
-    ECR.Password := '1';
-
-    // ВНИМАНИЕ! Для Полыс проверка!!!
-    //ECR.Summ1 := l_summa;
-    //ECR.Summ2 := 0;
-    //ECR.Summ3 := 0;
-    //ECR.Summ4 := 0;
-
-    // сделал очистку остальных сумм, возможно приводило к ошибке снятия сумм
-    if tp = 1 then
-    begin
-      // наличка
-      ECR.Summ1 := l_summa;
-      ECR.Summ2 := 0;
-      ECR.Summ3 := 0;
-      ECR.Summ4 := 0;
-    end
-    else if tp = 2 then
-    begin
-      // эквайринг
-      ECR.Summ1 := 0;
-      ECR.Summ2 := 0;
-      ECR.Summ3 := l_summa;
-      ECR.Summ4 := 0;
-    end
-    else if tp = 3 then
-    begin
-      // перечисление безналично
-      ECR.Summ1 := 0;
-      ECR.Summ2 := 0;
-      ECR.Summ3 := l_summa;
-      ECR.Summ4 := 0;
-    end;
-
-    //ECR.Summ1 := l_summa; // ред.25.02.2020 раньше стояло Summ1:=0 что приводило к ошибке 69... странно
-    ECR.StringForPrinting := '===================';
-    ECR.CloseCheck;
-    show_error(ECR, '28');
-  end;
-end;
 
 // печать по строкам (тупой Ритейл, не может переносить строки)
 

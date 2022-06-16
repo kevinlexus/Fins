@@ -1113,6 +1113,7 @@ object Form_kart: TForm_kart
             OptionsView.GroupFooterMultiSummaries = True
             OptionsView.HeaderAutoHeight = True
             OptionsView.Indicator = True
+            Styles.Inactive = cxStyle2
             object cxGridDBTableView2RN: TcxGridDBColumn
               DataBinding.FieldName = 'RN'
             end
@@ -2076,6 +2077,7 @@ object Form_kart: TForm_kart
           OptionsView.GroupByBox = False
           OptionsView.GroupFooterMultiSummaries = True
           OptionsView.HeaderAutoHeight = True
+          Styles.Inactive = cxStyle2
           object cxGrid1DBTableView1REU: TcxGridDBColumn
             Caption = #1059#1050
             DataBinding.FieldName = 'REU'
@@ -2183,6 +2185,7 @@ object Form_kart: TForm_kart
           OptionsView.ColumnAutoWidth = True
           OptionsView.GroupByBox = False
           OptionsView.HeaderAutoHeight = True
+          Styles.Inactive = cxStyle2
           object cxGridDBColumnREU: TcxGridDBColumn
             Caption = #1059#1050
             DataBinding.FieldName = 'REU'
@@ -3639,5 +3642,19 @@ object Form_kart: TForm_kart
     DataSet = OD_nabor
     Left = 72
     Top = 424
+  end
+  object cxStyleRepository1: TcxStyleRepository
+    Left = 16
+    Top = 16
+    PixelsPerInch = 96
+    object cxStyle2: TcxStyle
+      AssignedValues = [svColor, svFont]
+      Color = clGradientActiveCaption
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+    end
   end
 end

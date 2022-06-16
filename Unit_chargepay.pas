@@ -16,7 +16,8 @@ uses
   cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit,
   cxNavigator, cxDBData, cxContainer, cxTextEdit, cxDropDownEdit,
   cxLookupEdit, cxDBLookupEdit, Grids, cxGridCustomTableView,
-  cxGridTableView, cxGridCustomView;
+  cxGridTableView, cxGridCustomView, dxSkinsCore, dxSkinsDefaultPainters,
+  dxDateRanges;
 
 type
   TForm_chargepay = class(TForm)
