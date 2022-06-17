@@ -3,7 +3,7 @@ object Form_tree_objects: TForm_tree_objects
   Top = 440
   Align = alLeft
   ClientHeight = 850
-  ClientWidth = 334
+  ClientWidth = 282
   Color = clBtnFace
   DragKind = dkDock
   DragMode = dmAutomatic
@@ -26,7 +26,7 @@ object Form_tree_objects: TForm_tree_objects
   object Splitter1: TSplitter
     Left = 0
     Top = 453
-    Width = 334
+    Width = 282
     Height = 6
     Cursor = crVSplit
     Align = alTop
@@ -35,17 +35,19 @@ object Form_tree_objects: TForm_tree_objects
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 334
+    Width = 282
     Height = 433
     Align = alTop
     TabOrder = 0
+    ExplicitWidth = 334
     object Panel3: TPanel
       Left = 1
       Top = 41
-      Width = 332
+      Width = 280
       Height = 40
       Align = alBottom
       TabOrder = 0
+      ExplicitWidth = 332
       object Label2: TLabel
         Left = 134
         Top = 15
@@ -108,10 +110,11 @@ object Form_tree_objects: TForm_tree_objects
     object GroupBox2: TGroupBox
       Left = 1
       Top = 81
-      Width = 332
+      Width = 280
       Height = 78
       Align = alBottom
       TabOrder = 1
+      ExplicitWidth = 332
       object Label7: TLabel
         Left = 6
         Top = 36
@@ -232,18 +235,20 @@ object Form_tree_objects: TForm_tree_objects
     object GroupBox1: TGroupBox
       Left = 1
       Top = 282
-      Width = 332
+      Width = 280
       Height = 150
       Align = alBottom
       TabOrder = 5
+      ExplicitWidth = 332
       object cxGrid1: TcxGrid
         Left = 2
         Top = 15
-        Width = 328
+        Width = 276
         Height = 133
         Align = alClient
         PopupMenu = Form_kart.PopupMenu3
         TabOrder = 0
+        ExplicitWidth = 328
         object cxGrid1DBTableView1: TcxGridDBTableView
           OnDblClick = cxGrid1DBTableView1DblClick
           OnKeyDown = cxGrid1DBTableView1KeyDown
@@ -283,7 +288,7 @@ object Form_tree_objects: TForm_tree_objects
     object GroupBox5: TGroupBox
       Left = 1
       Top = 241
-      Width = 332
+      Width = 280
       Height = 41
       Align = alBottom
       Caption = #1044#1077#1090#1072#1083#1080#1079#1072#1094#1080#1103
@@ -295,6 +300,7 @@ object Form_tree_objects: TForm_tree_objects
       ParentFont = False
       TabOrder = 4
       Visible = False
+      ExplicitWidth = 332
       object cbbDet: TcxLookupComboBox
         Left = 8
         Top = 14
@@ -307,13 +313,13 @@ object Form_tree_objects: TForm_tree_objects
         Properties.ListOptions.ShowHeader = False
         Properties.ListSource = DM_Olap.DS_level
         TabOrder = 0
-        Width = 321
+        Width = 267
       end
     end
     object GroupBox4: TGroupBox
       Left = 1
       Top = 200
-      Width = 332
+      Width = 280
       Height = 41
       Align = alBottom
       Caption = #1054#1087#1077#1088#1072#1094#1080#1103
@@ -325,6 +331,7 @@ object Form_tree_objects: TForm_tree_objects
       ParentFont = False
       TabOrder = 3
       Visible = False
+      ExplicitWidth = 332
       object cbbOper: TcxLookupComboBox
         Left = 8
         Top = 14
@@ -337,13 +344,13 @@ object Form_tree_objects: TForm_tree_objects
         Properties.ListOptions.ShowHeader = False
         Properties.ListSource = DM_Olap.DS_oper
         TabOrder = 0
-        Width = 321
+        Width = 267
       end
     end
     object GroupBox6: TGroupBox
       Left = 1
       Top = 159
-      Width = 332
+      Width = 280
       Height = 41
       Align = alBottom
       Caption = #1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103
@@ -355,6 +362,7 @@ object Form_tree_objects: TForm_tree_objects
       ParentFont = False
       TabOrder = 2
       Visible = False
+      ExplicitWidth = 332
       object cbbOrg: TcxLookupComboBox
         Left = 8
         Top = 14
@@ -367,22 +375,23 @@ object Form_tree_objects: TForm_tree_objects
         Properties.ListOptions.ShowHeader = False
         Properties.ListSource = DM_Olap.DS_org
         TabOrder = 0
-        Width = 321
+        Width = 267
       end
     end
   end
   object ToolBar1: TToolBar
     Left = 0
     Top = 821
-    Width = 334
+    Width = 282
     Height = 29
     Align = alBottom
     ButtonHeight = 21
     ButtonWidth = 142
     Caption = 'ToolBar1'
     TabOrder = 2
+    ExplicitWidth = 334
     DesignSize = (
-      334
+      282
       29)
     object Button3: TButton
       Left = 0
@@ -407,10 +416,11 @@ object Form_tree_objects: TForm_tree_objects
   object pnl1: TPanel
     Left = 0
     Top = 433
-    Width = 334
+    Width = 282
     Height = 20
     Align = alTop
     TabOrder = 3
+    ExplicitWidth = 334
     object cxm1: TcxMemo
       Left = 1
       Top = 1
@@ -426,14 +436,15 @@ object Form_tree_objects: TForm_tree_objects
       Style.Font.Style = []
       Style.IsFontAssigned = True
       TabOrder = 0
+      ExplicitWidth = 332
       Height = 18
-      Width = 332
+      Width = 280
     end
   end
   object cxDBTreeList1: TcxDBTreeList
     Left = 0
     Top = 459
-    Width = 334
+    Width = 282
     Height = 362
     Align = alClient
     Bands = <
@@ -450,6 +461,7 @@ object Form_tree_objects: TForm_tree_objects
     PopupMenu = PopupMenu1
     RootValue = 0
     TabOrder = 4
+    ExplicitWidth = 334
     object cxDBTreeList1ID: TcxDBTreeListColumn
       Visible = False
       DataBinding.FieldName = 'ID'

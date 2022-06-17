@@ -92,6 +92,17 @@ type
     cxGridDBTableView1SUMMA: TcxGridDBColumn;
     cxGridDBTableView1PN: TcxGridDBColumn;
     cxGridDBTableView1MG3: TcxGridDBColumn;
+    TabSheet2: TTabSheet;
+    cxGrid3: TcxGrid;
+    cxGridDBTableView2: TcxGridDBTableView;
+    cxGridLevel2: TcxGridLevel;
+    cxGridDBTableView2MG: TcxGridDBColumn;
+    cxGridDBTableView2CHRG: TcxGridDBColumn;
+    cxGridDBTableView2CHNG: TcxGridDBColumn;
+    cxGridDBTableView2PAY: TcxGridDBColumn;
+    cxGridDBTableView2PAY_PEN: TcxGridDBColumn;
+    cxGridDBTableView2OPER_NAME: TcxGridDBColumn;
+    cxGridDBTableView2DTEK: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button3Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);

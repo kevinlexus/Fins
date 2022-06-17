@@ -25,7 +25,7 @@ object Form_chargepay: TForm_chargepay
     Top = 0
     Width = 819
     Height = 383
-    ActivePage = TabSheet5
+    ActivePage = TabSheet1
     Align = alClient
     TabOrder = 1
     OnChange = PageControl1Change
@@ -176,6 +176,99 @@ object Form_chargepay: TForm_chargepay
         end
         object cxGrid1Level1: TcxGridLevel
           GridView = cxGrid1DBTableView1
+        end
+      end
+    end
+    object TabSheet2: TTabSheet
+      Caption = #1044#1077#1090#1072#1083#1080#1079#1072#1094#1080#1103
+      ImageIndex = 2
+      object cxGrid3: TcxGrid
+        Left = 0
+        Top = 0
+        Width = 811
+        Height = 352
+        Align = alClient
+        TabOrder = 0
+        object cxGridDBTableView2: TcxGridDBTableView
+          PopupMenu = pm1
+          Navigator.Buttons.CustomButtons = <>
+          DataController.DataSource = DS_chargepay5
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <
+            item
+              Kind = skSum
+            end
+            item
+              Kind = skSum
+            end
+            item
+              Kind = skSum
+            end
+            item
+              Kind = skSum
+            end
+            item
+              Kind = skSum
+            end
+            item
+              Kind = skSum
+            end
+            item
+              Kind = skSum
+            end
+            item
+              Kind = skSum
+            end
+            item
+              Kind = skSum
+            end
+            item
+              Kind = skSum
+            end>
+          DataController.Summary.SummaryGroups = <>
+          OptionsSelection.InvertSelect = False
+          OptionsView.ColumnAutoWidth = True
+          OptionsView.Footer = True
+          OptionsView.GroupByBox = False
+          OptionsView.HeaderAutoHeight = True
+          object cxGridDBTableView2MG: TcxGridDBColumn
+            Caption = #1055#1077#1088#1080#1086#1076
+            DataBinding.FieldName = 'MG'
+            Width = 65
+          end
+          object cxGridDBTableView2CHRG: TcxGridDBColumn
+            Caption = #1053#1072#1095#1080#1089#1083#1077#1085#1086'. '#1074' '#1090'.'#1095'.'#1080#1079#1084#1077#1085#1077#1085#1080#1103
+            DataBinding.FieldName = 'CHRG'
+            Width = 118
+          end
+          object cxGridDBTableView2CHNG: TcxGridDBColumn
+            Caption = #1048#1079#1084#1077#1085#1077#1085#1080#1103
+            DataBinding.FieldName = 'CHNG'
+            Width = 88
+          end
+          object cxGridDBTableView2DTEK: TcxGridDBColumn
+            Caption = #1044#1072#1090#1072' '#1087#1083#1072#1090#1077#1078#1072
+            DataBinding.FieldName = 'DTEK'
+            Width = 153
+          end
+          object cxGridDBTableView2PAY: TcxGridDBColumn
+            Caption = #1054#1087#1083#1072#1090#1072
+            DataBinding.FieldName = 'PAY'
+            Width = 87
+          end
+          object cxGridDBTableView2PAY_PEN: TcxGridDBColumn
+            Caption = #1055#1077#1085#1103
+            DataBinding.FieldName = 'PAY_PEN'
+            Width = 87
+          end
+          object cxGridDBTableView2OPER_NAME: TcxGridDBColumn
+            Caption = #1054#1087#1077#1088#1072#1094#1080#1103
+            DataBinding.FieldName = 'OPER_NAME'
+            Width = 211
+          end
+        end
+        object cxGridLevel2: TcxGridLevel
+          GridView = cxGridDBTableView2
         end
       end
     end
@@ -770,6 +863,7 @@ object Form_chargepay: TForm_chargepay
     Master = Form_list_kart.OD_list_kart
     MasterFields = 'lsk'
     Session = DataModule1.OracleSession1
+    Active = True
     Left = 24
     Top = 280
   end
