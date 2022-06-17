@@ -1999,7 +1999,7 @@ object Form_kart: TForm_kart
     Height = 287
     Align = alClient
     TabOrder = 4
-    Properties.ActivePage = cxTabSheet2
+    Properties.ActivePage = cxTabSheet1
     Properties.CustomButtons.Buttons = <>
     ClientRectBottom = 283
     ClientRectLeft = 4

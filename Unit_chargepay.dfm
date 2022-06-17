@@ -25,7 +25,7 @@ object Form_chargepay: TForm_chargepay
     Top = 0
     Width = 819
     Height = 383
-    ActivePage = TabSheet1
+    ActivePage = TabSheet5
     Align = alClient
     TabOrder = 1
     OnChange = PageControl1Change
@@ -37,6 +37,12 @@ object Form_chargepay: TForm_chargepay
         Width = 811
         Height = 352
         Align = alClient
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
         TabOrder = 0
         object cxGrid1DBTableView1: TcxGridDBTableView
           PopupMenu = pm1
@@ -188,6 +194,12 @@ object Form_chargepay: TForm_chargepay
         Width = 811
         Height = 352
         Align = alClient
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
         TabOrder = 0
         object cxGridDBTableView2: TcxGridDBTableView
           PopupMenu = pm1
@@ -281,6 +293,12 @@ object Form_chargepay: TForm_chargepay
         Width = 811
         Height = 352
         Align = alClient
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
         TabOrder = 0
         object cxGridDBTableView1: TcxGridDBTableView
           PopupMenu = pm1

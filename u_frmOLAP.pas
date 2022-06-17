@@ -185,7 +185,8 @@ begin
     addDimension('var_name', 'Вариант орг.', 0, setCaption);
     addDimension('dopl_name', 'Период оплаты', 0, setCaption);
     addDimension('dopl_name', 'Период оплаты', 0, setCaption);
-    addDimension('nm', 'Услуга', 0, setCaption);
+    addDimension('nm1', 'Услуга', 0, setCaption);
+    addDimension('nm', 'Услуга дет.', 0, setCaption);
     addDimension('opername', 'Операция', 0, setCaption);
     addDimension('cd_tp', 'Тип поступления', 0, setCaption);
 
