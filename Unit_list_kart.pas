@@ -635,6 +635,7 @@ begin
     SetVariable('flt_k_lsk_id_', Form_Main.flt_k_lsk_id_);
     SetVariable('flt_klsk_premise', Form_Main.flt_klsk_premise);
     SetVariable('flt_single_house_', Form_Main.flt_single_house_);
+
     if Form_Main.search_type_ = 9 then
     begin
       OD_list_kart.SetVariable('SUBSTEXP4', ' and exists (select * from exs.eolink e where k.lsk=e.lsk and e.fk_objtp=18 and e.uniqnum=''' + Form_Main.flt_els_ + ''')');
@@ -642,6 +643,11 @@ begin
     else
     begin
       OD_list_kart.SetVariable('SUBSTEXP4', '');
+    end;
+
+    if Form_Main.User_permissions_reu.Length>0 then
+    begin
+      OD_list_kart.SetVariable('SUBSTEXP5', 'and k.reu in '+Form_Main.User_permissions_reu);
     end;
 
     if isShowClosed then

@@ -477,6 +477,7 @@ type
     isKartEd1: Boolean;
     isClosed: Boolean;
     isNotMain: Boolean;
+    User_permissions_reu: string;
   end;
 
 var

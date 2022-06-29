@@ -758,4 +758,25 @@ object DataModule1: TDataModule1
     Left = 200
     Top = 464
   end
+  object Uni_user_permissions: TUniQuery
+    Connection = UniConnection1
+    SQL.Strings = (
+      'select s.fk_reu'
+      '  from scott.c_users_perm s'
+      '  join scott.u_list t'
+      '    on t.cd = '#39#1076#1086#1089#1090#1091#1087' '#1082' '#1086#1090#1095#1105#1090#1072#1084#39
+      ' where s.user_id = :user_id'
+      '   and s.fk_perm_tp = t.id'
+      'order by s.fk_reu')
+    FetchRows = 1000
+    Left = 248
+    Top = 464
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'user_id'
+        ParamType = ptInput
+        Value = nil
+      end>
+  end
 end

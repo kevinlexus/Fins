@@ -249,8 +249,6 @@ begin
       if DataModule1.UniTablePriveleges.Locate('priv_name', AnsiUpperCase(str_),
         [loCaseInsensitive]) then
         l_cnt := 1;
-      //      l_cnt := DataModule1.OraclePackage1.CallIntegerFunction
-      //        ('scott.init.is_allow_acc', [str_]);
     end;
     if l_cnt = 1 then
     begin

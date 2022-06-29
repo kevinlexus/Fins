@@ -389,12 +389,36 @@ begin
   Form_Main.User := User;
   //ShowMessage('7');
   //ShowMessage('8');
-    // права пользователей
+  // “екущий пользователь:
+  // Id
+  DataModule1.Uni_user.Active := True;
+  Form_Main.User_id := DataModule1.Uni_user.FieldByName('fk_user').AsInteger;
+  DataModule1.Uni_user.Active := False;
+
+  // привилегии (дл€ включени€ пунктов меню)
   DataModule1.UniTablePriveleges.ParamByName('user_name').AsString := UpperCase(User);
   DataModule1.UniTablePriveleges.Active := True;
-  // Id текущего пользовател€
-  DataModule1.Uni_user.Active := True;
-  Form_Main.User_id:=DataModule1.Uni_user.FieldByName('fk_user').AsInteger;
+
+  // права дл€ отчетов
+  Form_Main.User_permissions_reu := '';
+  with DataModule1.Uni_user_permissions do
+  begin
+    ParamByName('user_id').AsInteger := Form_Main.User_id;
+    Active := True;
+    First;
+    while not Eof do
+    begin
+      if Bof then
+        Form_Main.User_permissions_reu := Form_Main.User_permissions_reu + '(';
+      Form_Main.User_permissions_reu := Form_Main.User_permissions_reu + '''' + FieldByName('fk_reu').AsString + '''';
+      Next;
+      if not Eof then
+        Form_Main.User_permissions_reu := Form_Main.User_permissions_reu + ','
+      else
+        Form_Main.User_permissions_reu := Form_Main.User_permissions_reu + ')';
+    end;
+    Active := False;
+  end;
 
   Ini.Free;
   SetMenu(0);

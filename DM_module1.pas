@@ -72,6 +72,7 @@ type
     OracleLogon1: TOracleLogon;
     UniConnectDialog1: TUniConnectDialog;
     Uni_user: TUniQuery;
+    Uni_user_permissions: TUniQuery;
   private
     { Private declarations }
   public
