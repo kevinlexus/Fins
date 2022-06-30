@@ -389,6 +389,7 @@ begin
   Form_Main.User := User;
   //ShowMessage('7');
   //ShowMessage('8');
+
   // Текущий пользователь:
   // Id
   DataModule1.Uni_user.Active := True;
@@ -399,6 +400,7 @@ begin
   DataModule1.UniTablePriveleges.ParamByName('user_name').AsString := UpperCase(User);
   DataModule1.UniTablePriveleges.Active := True;
 
+  // **********************************
   // права для отчетов
   Form_Main.User_permissions_reu := '';
   with DataModule1.Uni_user_permissions do
@@ -419,6 +421,20 @@ begin
     end;
     Active := False;
   end;
+
+  if Form_Main.User_permissions_reu.Length > 0 then
+  begin
+    DM_Bill2.OD_streets.SetVariable('SUBSTEXP1', 'and k.reu in ' + Form_Main.User_permissions_reu);
+    DM_Bill2.OD_streets.Active := true;
+
+    DM_Bill2.OD_houses.SetVariable('SUBSTEXP1', 'and a.reu in ' + Form_Main.User_permissions_reu);
+    DM_Bill2.OD_houses.Active := true;
+
+    DM_Bill2.OD_kw.SetVariable('SUBSTEXP1', 'and k.reu in ' + Form_Main.User_permissions_reu);
+    DM_Bill2.OD_kw.Active := true;
+  end;
+  // **********************************
+
 
   Ini.Free;
   SetMenu(0);
