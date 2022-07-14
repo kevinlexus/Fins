@@ -210,7 +210,6 @@ object Form_get_pay_nal: TForm_get_pay_nal
     Width = 617
     Height = 20
     Panels = <>
-    OnDblClick = StatusBar1DblClick
   end
   object ToolBar1: TToolBar
     Left = 0
@@ -256,12 +255,24 @@ object Form_get_pay_nal: TForm_get_pay_nal
     Align = alClient
     TabOrder = 4
     object TabSheet1: TTabSheet
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
       object cxGrid2: TcxGrid
         Left = 0
         Top = 0
         Width = 609
         Height = 211
         Align = alClient
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -15
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
         TabOrder = 0
         object cxGridDBTableView1: TcxGridDBTableView
           OnKeyDown = cxGridDBTableView1KeyDown
@@ -313,83 +324,6 @@ object Form_get_pay_nal: TForm_get_pay_nal
         end
         object cxGridLevel1: TcxGridLevel
           GridView = cxGridDBTableView1
-        end
-      end
-    end
-    object TabSheet2: TTabSheet
-      Caption = '2'
-      ImageIndex = 1
-      object cxGrid1: TcxGrid
-        Left = 0
-        Top = 0
-        Width = 609
-        Height = 211
-        Align = alClient
-        TabOrder = 0
-        object cxGrid1DBTableView1: TcxGridDBTableView
-          Navigator.Buttons.CustomButtons = <>
-          DataController.DataSource = DS_chargepay
-          DataController.Summary.DefaultGroupSummaryItems = <>
-          DataController.Summary.FooterSummaryItems = <
-            item
-              Kind = skSum
-              Column = cxGrid1DBTableView1SUMMA
-            end
-            item
-              Kind = skSum
-              Column = cxGrid1DBTableView1SUMMA2
-            end
-            item
-              Kind = skSum
-              Column = cxGrid1DBTableView1PENYA
-            end
-            item
-              Kind = skSum
-              Column = cxGrid1DBTableView1PENYA2
-            end>
-          DataController.Summary.SummaryGroups = <>
-          OptionsView.Footer = True
-          OptionsView.GroupByBox = False
-          OptionsView.GroupFooterMultiSummaries = True
-          object cxGrid1DBTableView1SUMMA: TcxGridDBColumn
-            DataBinding.FieldName = 'SUMMA'
-          end
-          object cxGrid1DBTableView1SUMMA2: TcxGridDBColumn
-            DataBinding.FieldName = 'SUMMA2'
-          end
-          object cxGrid1DBTableView1PENYA: TcxGridDBColumn
-            DataBinding.FieldName = 'PENYA'
-          end
-          object cxGrid1DBTableView1PENYA2: TcxGridDBColumn
-            DataBinding.FieldName = 'PENYA2'
-          end
-          object cxGrid1DBTableView1MG: TcxGridDBColumn
-            DataBinding.FieldName = 'MG'
-          end
-          object cxGrid1DBTableView1CHARGE: TcxGridDBColumn
-            DataBinding.FieldName = 'CHARGE'
-          end
-          object cxGrid1DBTableView1PAYMENT: TcxGridDBColumn
-            DataBinding.FieldName = 'PAYMENT'
-          end
-          object cxGrid1DBTableView1SAL: TcxGridDBColumn
-            DataBinding.FieldName = 'SAL'
-          end
-          object cxGrid1DBTableView1ITOG: TcxGridDBColumn
-            DataBinding.FieldName = 'ITOG'
-          end
-          object cxGrid1DBTableView1LSK: TcxGridDBColumn
-            DataBinding.FieldName = 'LSK'
-          end
-          object cxGrid1DBTableView1LSK_TP: TcxGridDBColumn
-            DataBinding.FieldName = 'LSK_TP'
-          end
-          object cxGrid1DBTableView1USL_NAME_SHORT: TcxGridDBColumn
-            DataBinding.FieldName = 'USL_NAME_SHORT'
-          end
-        end
-        object cxGrid1Level1: TcxGridLevel
-          GridView = cxGrid1DBTableView1
         end
       end
     end

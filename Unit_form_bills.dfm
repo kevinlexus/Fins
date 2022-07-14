@@ -501,6 +501,7 @@ object Form_print_bills: TForm_print_bills
         end>
       Properties.ListOptions.ShowHeader = False
       Properties.ListSource = DM_Bill2.DS_kw
+      Properties.OnCloseUp = cxLookupComboBox3PropertiesCloseUp
       TabOrder = 13
       Width = 105
     end
@@ -645,7 +646,7 @@ object Form_print_bills: TForm_print_bills
     PrintOptions.Printer = #1055#1086' '#1091#1084#1086#1083#1095#1072#1085#1080#1102
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 40100.574150914400000000
-    ReportOptions.LastChange = 44194.665912152780000000
+    ReportOptions.LastChange = 44194.665912152770000000
     ScriptLanguage = 'PascalScript'
     StoreInDFM = False
     OnReportPrint = 'frxReport1OnReportPrint'

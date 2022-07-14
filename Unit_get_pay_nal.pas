@@ -94,22 +94,6 @@ type
     OD_chargepayPENYA2: TFloatField;
     PageControl1: TPageControl;
     TabSheet1: TTabSheet;
-    TabSheet2: TTabSheet;
-    cxGrid1: TcxGrid;
-    cxGrid1DBTableView1: TcxGridDBTableView;
-    cxGrid1DBTableView1SUMMA: TcxGridDBColumn;
-    cxGrid1DBTableView1SUMMA2: TcxGridDBColumn;
-    cxGrid1DBTableView1PENYA: TcxGridDBColumn;
-    cxGrid1DBTableView1PENYA2: TcxGridDBColumn;
-    cxGrid1DBTableView1MG: TcxGridDBColumn;
-    cxGrid1DBTableView1CHARGE: TcxGridDBColumn;
-    cxGrid1DBTableView1PAYMENT: TcxGridDBColumn;
-    cxGrid1DBTableView1SAL: TcxGridDBColumn;
-    cxGrid1DBTableView1ITOG: TcxGridDBColumn;
-    cxGrid1DBTableView1LSK: TcxGridDBColumn;
-    cxGrid1DBTableView1LSK_TP: TcxGridDBColumn;
-    cxGrid1DBTableView1USL_NAME_SHORT: TcxGridDBColumn;
-    cxGrid1Level1: TcxGridLevel;
     OD_operCASH_OPER_TP: TFloatField;
     cxLsk: TcxMaskEdit;
     cxAmount: TcxMaskEdit;
@@ -145,7 +129,6 @@ type
     procedure distPay(distSumm: double; isInitDeb: Boolean;
       isUseArchPeriod, isUseCurPeriod, isAddit: Boolean);
     procedure reLoadDeb;
-    procedure StatusBar1DblClick(Sender: TObject);
     procedure cxLskDblClick(Sender: TObject);
     procedure cxLskKeyPress(Sender: TObject; var Key: Char);
     procedure cxAmountKeyPress(Sender: TObject; var Key: Char);
@@ -1316,7 +1299,6 @@ begin
     cxLsk.Text := Form_list_kart.OD_list_kart.FieldByName('lsk').AsString;
     setNkom(cxLsk.Text);
   end;
-  TabSheet2.TabVisible := False;
 end;
 
 procedure TForm_get_pay_nal.OD_chargepayBeforeInsert(DataSet: TDataSet);
@@ -1447,15 +1429,6 @@ end;
 procedure TForm_get_pay_nal.ToolButton3Click(Sender: TObject);
 begin
  invokeSearchAdr;
-end;
-
-procedure TForm_get_pay_nal.StatusBar1DblClick(Sender: TObject);
-begin
-  // вкл/выкл подсказку по распределению оплаты
-  if TabSheet2.TabVisible = True then
-    TabSheet2.TabVisible := False
-  else
-    TabSheet2.TabVisible := True;
 end;
 
 procedure TForm_get_pay_nal.cxLskDblClick(Sender: TObject);

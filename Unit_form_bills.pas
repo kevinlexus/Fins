@@ -4,18 +4,16 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, OracleData, StdCtrls, Mask, frxClass,
-  frxDBSet, StrUtils, ExtCtrls, frxBarcode, frxCross, cxGraphics,
-  cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit,
-  cxCheckBox, cxMaskEdit, frxExportPDF, cxClasses, cxPropertiesStore,
-  frxExportXLS, frxExportBaseDialog, frxExportRTF, frxDMPExport,
-  cxProgressBar, dxStatusBar, cxCheckComboBox, cxImageComboBox, cxTextEdit,
-  cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
-  Oracle,
-  DBCtrls, 
-  cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator,
-  cxDBData, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
-  cxGridLevel, cxGridCustomView, cxGrid, dxSkinsCore, dxSkinsDefaultPainters;
+  Dialogs, DB, OracleData, StdCtrls, Mask, frxClass, frxDBSet, StrUtils,
+  ExtCtrls, frxBarcode, frxCross, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxContainer, cxEdit, cxCheckBox, cxMaskEdit,
+  frxExportPDF, cxClasses, cxPropertiesStore, frxExportXLS, frxExportBaseDialog,
+  frxExportRTF, frxDMPExport, cxProgressBar, dxStatusBar, cxCheckComboBox,
+  cxImageComboBox, cxTextEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit,
+  cxDBLookupComboBox, Oracle, DBCtrls, cxStyles, cxCustomData, cxFilter, cxData,
+  cxDataStorage, cxNavigator, cxDBData, cxGridCustomTableView, cxGridTableView,
+  cxGridDBTableView, cxGridLevel, cxGridCustomView, cxGrid, dxSkinsCore,
+  dxSkinsDefaultPainters;
 
 type
   TForm_print_bills = class(TForm)
@@ -141,15 +139,15 @@ type
 var
   Form_print_bills: TForm_print_bills;
 
+
 implementation
 
 uses
-  Unit_Mainform, DM_module1, Unit_list_kart, Utils,
-  Unit_get_pay_nal, ufDataModuleBill2, ufDataModuleBill;
+  Unit_Mainform, DM_module1, Unit_list_kart, Utils, Unit_get_pay_nal,
+  ufDataModuleBill2, ufDataModuleBill;
 {$R *.dfm}
 
-procedure TForm_print_bills.FormClose(Sender: TObject; var Action:
-  TCloseAction);
+procedure TForm_print_bills.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   cxprprtstr1.StoreTo(True);
   Action := caFree;
@@ -165,10 +163,7 @@ begin
   cxmskdtLskFrom.Text := RightStr('00000000' + cxmskdtLskFrom.Text, 8);
   cxmskdtLskTo.Text := RightStr('00000000' + cxmskdtLskTo.Text, 8);
 
-  if (lkpMgFrom.EditValue =
-    null)
-    or ((lkpMgTo.EditValue =
-    null) and ((tp_ = 2) or (tp_ = 5) or (tp_ = 7) or (tp_ = 9))) then
+  if (lkpMgFrom.EditValue = null) or ((lkpMgTo.EditValue = null) and ((tp_ = 2) or (tp_ = 5) or (tp_ = 7) or (tp_ = 9))) then
   begin
     ShowMessage('Не выбран период отчета, Отмена');
     Exit;
@@ -187,22 +182,15 @@ begin
 
   // подготовку делаем в случае выбора либо 1 л.с. либо 1 квартиры
   // и только не по арх спр.
-  if (tp_ <> 2) and (tp_ <> 5) and (tp_ <> 7) and (sel_obj_ = 0)
-    and (cxmskdtLskFrom.Text = cxmskdtLskTo.Text)
-    and (CheckBox3.Checked = True) then
+  if (tp_ <> 2) and (tp_ <> 5) and (tp_ <> 7) and (sel_obj_ = 0) and (cxmskdtLskFrom.Text = cxmskdtLskTo.Text) and (CheckBox3.Checked = True) then
   begin
     //по 1 лс.
-    DataModule1.OraclePackage1.CallProcedure('scott.GEN.prepare_arch_k_lsk',
-      [Form_main.k_lsk_id_, pen_last_month_, 0]);
+    DataModule1.OraclePackage1.CallProcedure('scott.GEN.prepare_arch_k_lsk', [Form_main.k_lsk_id_, pen_last_month_, 0]);
   end
-  else if (tp_ <> 2) and (tp_ <> 5) and (tp_ <> 7) and (tp_ <> 6) and (sel_obj_
-    = 1)
-    and (cbbKw.EditValue <> null)
-    and (CheckBox3.Checked = True) then
+  else if (tp_ <> 2) and (tp_ <> 5) and (tp_ <> 7) and (tp_ <> 6) and (sel_obj_ = 1) and (cbbKw.EditValue <> null) and (CheckBox3.Checked = True) then
   begin
     //по 1 квартире
-    DataModule1.OraclePackage1.CallProcedure('scott.GEN.prepare_arch_k_lsk',
-      [Form_main.k_lsk_id_, pen_last_month_, 0]);
+    DataModule1.OraclePackage1.CallProcedure('scott.GEN.prepare_arch_k_lsk', [Form_main.k_lsk_id_, pen_last_month_, 0]);
   end;
 
   // тип отчета
@@ -216,19 +204,14 @@ begin
   else if (tp_ = 6) then
     // поквартирная карточка
     kart_pr_report()
-  else if (DM_Bill2.OD_t_org.FieldByName('BILL_TP').asInteger = 0) or
-    (DM_Bill2.OD_t_org.FieldByName('BILL_TP').asInteger = 1) or
-    (DM_Bill2.OD_t_org.FieldByName('BILL_TP').asInteger = 2) or
-    (tp_ = 2) or (tp_ = 5) or (tp_ = 7) or (tp_ = 1) then
+  else if (DM_Bill2.OD_t_org.FieldByName('BILL_TP').asInteger = 0) or (DM_Bill2.OD_t_org.FieldByName('BILL_TP').asInteger = 1) or (DM_Bill2.OD_t_org.FieldByName('BILL_TP').asInteger = 2) or (tp_ = 2) or (tp_ = 5) or (tp_ = 7) or (tp_ = 1) then
     // старый вариант отчетности или арх.справ или арх.справ-2
     old_report(pen_last_month_)
-  else if (DM_Bill2.OD_t_org.FieldByName('BILL_TP').asInteger = 3) or
-    (DM_Bill2.OD_t_org.FieldByName('BILL_TP').asInteger = 4) then
+  else if (DM_Bill2.OD_t_org.FieldByName('BILL_TP').asInteger = 3) or (DM_Bill2.OD_t_org.FieldByName('BILL_TP').asInteger = 4) then
     // составной счет
     compound_report(DM_Bill2.OD_t_org.FieldByName('BILL_TP').asInteger)
   else
-    Application.MessageBox('Некорректный BILL_TP в таблице spr_services!',
-      'Внимание!', MB_OK + MB_ICONSTOP + MB_DEFBUTTON2);
+    Application.MessageBox('Некорректный BILL_TP в таблице spr_services!', 'Внимание!', MB_OK + MB_ICONSTOP + MB_DEFBUTTON2);
 
   cxProgressBar1.Position := 100;
 
@@ -270,8 +253,7 @@ begin
   setMainDataset;
 
   if not VarIsNull(lkpMgFrom.EditValue) then
-    DM_Bill.Uni_rep_penya.ParamByName('p_mg_from').AsString :=
-      lkpMgFrom.EditValue
+    DM_Bill.Uni_rep_penya.ParamByName('p_mg_from').AsString := lkpMgFrom.EditValue
   else
     DM_Bill.Uni_rep_penya.ParamByName('p_mg_from').clear;
 
@@ -285,10 +267,8 @@ begin
   DM_Bill.Uni_rep_penya.Active := true;
 
   frxReport1.LoadFromFile(filePathStr, True);
-  frxReport1.Script.Variables['mg1'] :=
-    lkpMgFrom.Text;
-  frxReport1.Script.Variables['mg2'] :=
-    lkpMgTo.Text;
+  frxReport1.Script.Variables['mg1'] := lkpMgFrom.Text;
+  frxReport1.Script.Variables['mg2'] := lkpMgTo.Text;
 
   frxReport1.PrepareReport(true);
   frxReport1.ShowPreparedReport;
@@ -301,30 +281,23 @@ begin
   begin
     //только для УК
     //ограничивать диапазон записи для печати счетов
-    DM_Bill.Uni_cmp_main.ParamByName('p_firstNum').AsInteger :=
-      DM_Bill2.OD_ls_cnt.FieldByName('first_rec').AsInteger;
-    DM_Bill.Uni_cmp_main.ParamByName('p_lastNum').AsInteger :=
-      DM_Bill2.OD_ls_cnt.FieldByName('last_rec').AsInteger;
+    DM_Bill.Uni_cmp_main.ParamByName('p_firstNum').AsInteger := DM_Bill2.OD_ls_cnt.FieldByName('first_rec').AsInteger;
+    DM_Bill.Uni_cmp_main.ParamByName('p_lastNum').AsInteger := DM_Bill2.OD_ls_cnt.FieldByName('last_rec').AsInteger;
   end
   else
   begin
     //не ограничивать диапазон записи для печати счетов
-    DM_Bill.Uni_cmp_main.ParamByName('p_firstNum').AsInteger :=
-      0;
-    DM_Bill.Uni_cmp_main.ParamByName('p_lastNum').AsInteger :=
-      1000000000;
+    DM_Bill.Uni_cmp_main.ParamByName('p_firstNum').AsInteger := 0;
+    DM_Bill.Uni_cmp_main.ParamByName('p_lastNum').AsInteger := 1000000000;
   end;
 
   // установить параметры
-  DM_Bill.Uni_cmp_main.ParamByName('p_mg').AsString :=
-    lkpMgFrom.EditValue;
+  DM_Bill.Uni_cmp_main.ParamByName('p_mg').AsString := lkpMgFrom.EditValue;
 
   // список УК для фильтра
-  DM_Bill.Uni_cmp_main.ParamByName('p_sel_uk').AsString :=
-    getStrUk();
+  DM_Bill.Uni_cmp_main.ParamByName('p_sel_uk').AsString := getStrUk();
 
-  DM_Bill.Uni_cmp_main.ParamByName('p_sel_obj').AsInteger :=
-    sel_obj_;
+  DM_Bill.Uni_cmp_main.ParamByName('p_sel_obj').AsInteger := sel_obj_;
 
   if cbbUk.EditValue <> null then
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_reu').AsString := cbbUk.EditValue
@@ -334,23 +307,19 @@ begin
   DM_Bill.Uni_cmp_main.ParamByName('p_lsk').AsString := cxmskdtLskFrom.Text;
   DM_Bill.Uni_cmp_main.ParamByName('p_lsk1').AsString := cxmskdtLskTo.Text;
   if not VarIsNull(cbbStreet.EditValue) then
-    DM_Bill.Uni_cmp_main.ParamByName('p_kul').AsString :=
-      cbbStreet.EditValue
+    DM_Bill.Uni_cmp_main.ParamByName('p_kul').AsString := cbbStreet.EditValue
   else
     DM_Bill.Uni_cmp_main.ParamByName('p_kul').clear;
 
   if not VarIsNull(cbbNd.EditValue) then
-    DM_Bill.Uni_cmp_main.ParamByName('p_nd').AsString :=
-      DM_Bill2.OD_houses.FieldByName('nd_id').AsString
+    DM_Bill.Uni_cmp_main.ParamByName('p_nd').AsString := DM_Bill2.OD_houses.FieldByName('nd_id').AsString
   else
     DM_Bill.Uni_cmp_main.ParamByName('p_nd').Clear;
 
   if cbbKw.EditValue <> null then
   begin
-    DM_Bill.Uni_cmp_main.ParamByName('p_kw').AsString :=
-      DM_Bill2.OD_kw.FieldByName('kw_id').AsString;
-    DM_Bill.Uni_cmp_main.ParamByName('p_klsk_id').AsInteger :=
-      DM_Bill2.OD_kw.FieldByName('k_lsk_id').AsInteger;
+    DM_Bill.Uni_cmp_main.ParamByName('p_kw').AsString := DM_Bill2.OD_kw.FieldByName('kw_id').AsString;
+    DM_Bill.Uni_cmp_main.ParamByName('p_klsk_id').AsInteger := DM_Bill2.OD_kw.FieldByName('k_lsk_id').AsInteger;
   end
   else
   begin
@@ -392,14 +361,7 @@ end;
 // новый вариант процедуры, для подготовки экспортов в PDF счетов
 // и последующего парсинга Java и отправкой на e-mail пользователям
 
-procedure compound_report_export(p_kul, p_nd, p_kw, p_postcode: Variant;
-  p_sel_obj,
-  p_show_acc, p_klsk_id: Integer;
-  p_lsk1, p_lsk2, p_lkpMgFrom, p_strUk,
-  p_uk, p_filePathStr, p_exportPdfPath: string;
-  p_print_old, p_export_pdf: Boolean; frxReport1: TfrxReport; frxPDFExport1:
-  TfrxPDFExport; p_firstNum, p_lastNum: Integer; p_export_flow: Boolean;
-  p_export_email: Integer);
+procedure compound_report_export(p_kul, p_nd, p_kw, p_postcode: Variant; p_sel_obj, p_show_acc, p_klsk_id: Integer; p_lsk1, p_lsk2, p_lkpMgFrom, p_strUk, p_uk, p_filePathStr, p_exportPdfPath: Variant; p_print_old, p_export_pdf: Boolean; frxReport1: TfrxReport; frxPDFExport1: TfrxPDFExport; p_firstNum, p_lastNum: Integer; p_export_flow: Boolean; p_export_email: Integer);
 var
   report: TfrxReport;
   exportPdf: TfrxPDFExport;
@@ -432,17 +394,14 @@ begin
   begin
     //только по УК
     //ограничивать диапазон записи для печати счетов
-    DM_Bill.Uni_cmp_main.Params.ParamByName('p_firstNum').AsInteger :=
-      p_firstNum;
-    DM_Bill.Uni_cmp_main.Params.ParamByName('p_lastNum').AsInteger :=
-      p_lastNum;
+    DM_Bill.Uni_cmp_main.Params.ParamByName('p_firstNum').AsInteger := p_firstNum;
+    DM_Bill.Uni_cmp_main.Params.ParamByName('p_lastNum').AsInteger := p_lastNum;
     {    DM_Bill.Uni_cmp_main.Params.ParamByName('p_firstNum').AsInteger :=
           DM_Bill2.OD_ls_cnt.FieldByName('first_rec').AsInteger;
         DM_Bill.Uni_cmp_main.Params.ParamByName('p_lastNum').AsInteger :=
           DM_Bill2.OD_ls_cnt.FieldByName('last_rec').AsInteger;}
     if not VarIsNull(p_postcode) then
-      DM_Bill.Uni_cmp_main.Params.ParamByName('p_postcode').AsString :=
-        p_postcode
+      DM_Bill.Uni_cmp_main.Params.ParamByName('p_postcode').AsString := p_postcode
     else
       DM_Bill.Uni_cmp_main.Params.ParamByName('p_postcode').Clear;
   end
@@ -450,64 +409,43 @@ begin
   begin
     //не ограничивать диапазон записи для печати счетов
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_firstNum').AsInteger := 0;
-    DM_Bill.Uni_cmp_main.Params.ParamByName('p_lastNum').AsInteger :=
-      1000000000;
+    DM_Bill.Uni_cmp_main.Params.ParamByName('p_lastNum').AsInteger := 1000000000;
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_postcode').Clear;
   end;
   //logText('rep.1.2');
-
   // установить параметры
-  DM_Bill.Uni_cmp_main.Params.ParamByName('p_mg').AsString :=
-    p_lkpMgFrom;
-  DM_Bill.Uni_cmp_main.Params.ParamByName('p_exp_email').AsInteger :=
-    p_export_email;
+  DM_Bill.Uni_cmp_main.Params.ParamByName('p_mg').AsString := p_lkpMgFrom;
+  DM_Bill.Uni_cmp_main.Params.ParamByName('p_exp_email').AsInteger := p_export_email;
   // список УК для фильтра
   DM_Bill.Uni_cmp_main.Params.ParamByName('p_sel_uk').AsString := p_strUk;
 
-  DM_Bill.Uni_cmp_contractors.Params.ParamByName('p_mg').AsString :=
-    p_lkpMgFrom;
+  DM_Bill.Uni_cmp_contractors.Params.ParamByName('p_mg').AsString := p_lkpMgFrom;
 
-  DM_Bill.Uni_cmp_contractors.Params.ParamByName('p_sel_uk').AsString :=
-    p_strUk;
+  DM_Bill.Uni_cmp_contractors.Params.ParamByName('p_sel_uk').AsString := p_strUk;
 
-  DM_Bill.Uni_cmp_detail_primary.Params.ParamByName('p_mg').AsString :=
-    p_lkpMgFrom;
-  DM_Bill.Uni_cmp_detail_primary.Params.ParamByName('p_sel_uk').AsString :=
-    p_strUk;
+  DM_Bill.Uni_cmp_detail_primary.Params.ParamByName('p_mg').AsString := p_lkpMgFrom;
+  DM_Bill.Uni_cmp_detail_primary.Params.ParamByName('p_sel_uk').AsString := p_strUk;
 
-  DM_Bill.Uni_cmp_detail_cap.Params.ParamByName('p_mg').AsString :=
-    p_lkpMgFrom;
-  DM_Bill.Uni_cmp_detail_cap.Params.ParamByName('p_sel_uk').AsString :=
-    p_strUk;
+  DM_Bill.Uni_cmp_detail_cap.Params.ParamByName('p_mg').AsString := p_lkpMgFrom;
+  DM_Bill.Uni_cmp_detail_cap.Params.ParamByName('p_sel_uk').AsString := p_strUk;
 
-  DM_Bill.Uni_cmp_detail_main.Params.ParamByName('p_mg').AsString :=
-    p_lkpMgFrom;
-  DM_Bill.Uni_cmp_detail_main.Params.ParamByName('p_sel_uk').AsString :=
-    p_strUk;
+  DM_Bill.Uni_cmp_detail_main.Params.ParamByName('p_mg').AsString := p_lkpMgFrom;
+  DM_Bill.Uni_cmp_detail_main.Params.ParamByName('p_sel_uk').AsString := p_strUk;
 
-  DM_Bill.Uni_cmp_funds_primary.Params.ParamByName('p_mg').AsString :=
-    p_lkpMgFrom;
-  DM_Bill.Uni_cmp_funds_primary.Params.ParamByName('p_sel_uk').AsString :=
-    p_strUk;
+  DM_Bill.Uni_cmp_funds_primary.Params.ParamByName('p_mg').AsString := p_lkpMgFrom;
+  DM_Bill.Uni_cmp_funds_primary.Params.ParamByName('p_sel_uk').AsString := p_strUk;
 
-  DM_Bill.Uni_cmp_funds_cap.Params.ParamByName('p_mg').AsString :=
-    p_lkpMgFrom;
-  DM_Bill.Uni_cmp_funds_cap.Params.ParamByName('p_sel_uk').AsString :=
-    p_strUk;
+  DM_Bill.Uni_cmp_funds_cap.Params.ParamByName('p_mg').AsString := p_lkpMgFrom;
+  DM_Bill.Uni_cmp_funds_cap.Params.ParamByName('p_sel_uk').AsString := p_strUk;
 
-  DM_Bill.Uni_cmp_funds_main.Params.ParamByName('p_mg').AsString :=
-    p_lkpMgFrom;
-  DM_Bill.Uni_cmp_funds_main.Params.ParamByName('p_sel_uk').AsString :=
-    p_strUk;
+  DM_Bill.Uni_cmp_funds_main.Params.ParamByName('p_mg').AsString := p_lkpMgFrom;
+  DM_Bill.Uni_cmp_funds_main.Params.ParamByName('p_sel_uk').AsString := p_strUk;
 
   // здесь не нужен фильтр p_sel_uk, так как выборка по p_lsk
-  DM_Bill.Uni_cmp_funds_lsk.Params.ParamByName('p_mg').AsString :=
-    p_lkpMgFrom;
+  DM_Bill.Uni_cmp_funds_lsk.Params.ParamByName('p_mg').AsString := p_lkpMgFrom;
 
-  DM_Bill.Uni_cmp_qr.Params.ParamByName('p_mg').AsString :=
-    p_lkpMgFrom;
-  DM_Bill.Uni_cmp_qr.Params.ParamByName('p_sel_uk').AsString :=
-    p_strUk;
+  DM_Bill.Uni_cmp_qr.Params.ParamByName('p_mg').AsString := p_lkpMgFrom;
+  DM_Bill.Uni_cmp_qr.Params.ParamByName('p_sel_uk').AsString := p_strUk;
 
   // установить тип лиц.счета
   // все, кроме капремонта
@@ -531,24 +469,15 @@ begin
   // все
   DM_Bill.Uni_cmp_qr.Params.ParamByName('p_sel_tp').AsInteger := 4;
   //logText('rep.1.3');
-
   // установить дополнительный фильтр
-  DM_Bill.Uni_cmp_contractors.Params.ParamByName('p_sel_flt_tp').AsInteger :=
-    p_show_acc;
-  DM_Bill.Uni_cmp_detail_primary.Params.ParamByName('p_sel_flt_tp').AsInteger :=
-    p_show_acc;
-  DM_Bill.Uni_cmp_detail_cap.Params.ParamByName('p_sel_flt_tp').AsInteger :=
-    p_show_acc;
-  DM_Bill.Uni_cmp_detail_main.Params.ParamByName('p_sel_flt_tp').AsInteger :=
-    p_show_acc;
-  DM_Bill.Uni_cmp_funds_primary.Params.ParamByName('p_sel_flt_tp').AsInteger :=
-    p_show_acc;
-  DM_Bill.Uni_cmp_funds_cap.Params.ParamByName('p_sel_flt_tp').AsInteger :=
-    p_show_acc;
-  DM_Bill.Uni_cmp_funds_main.Params.ParamByName('p_sel_flt_tp').AsInteger :=
-    p_show_acc;
-  DM_Bill.Uni_cmp_qr.Params.ParamByName('p_sel_flt_tp').AsInteger :=
-    p_show_acc;
+  DM_Bill.Uni_cmp_contractors.Params.ParamByName('p_sel_flt_tp').AsInteger := p_show_acc;
+  DM_Bill.Uni_cmp_detail_primary.Params.ParamByName('p_sel_flt_tp').AsInteger := p_show_acc;
+  DM_Bill.Uni_cmp_detail_cap.Params.ParamByName('p_sel_flt_tp').AsInteger := p_show_acc;
+  DM_Bill.Uni_cmp_detail_main.Params.ParamByName('p_sel_flt_tp').AsInteger := p_show_acc;
+  DM_Bill.Uni_cmp_funds_primary.Params.ParamByName('p_sel_flt_tp').AsInteger := p_show_acc;
+  DM_Bill.Uni_cmp_funds_cap.Params.ParamByName('p_sel_flt_tp').AsInteger := p_show_acc;
+  DM_Bill.Uni_cmp_funds_main.Params.ParamByName('p_sel_flt_tp').AsInteger := p_show_acc;
+  DM_Bill.Uni_cmp_qr.Params.ParamByName('p_sel_flt_tp').AsInteger := p_show_acc;
   DM_Bill.Uni_cmp_main.Params.ParamByName('p_sel_obj').AsInteger := p_sel_obj;
   if p_uk <> null then
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_reu').AsString := p_uk
@@ -558,23 +487,19 @@ begin
   DM_Bill.Uni_cmp_main.Params.ParamByName('p_lsk').AsString := p_lsk1;
   DM_Bill.Uni_cmp_main.Params.ParamByName('p_lsk1').AsString := p_lsk2;
   if not VarIsNull(p_kul) then
-    DM_Bill.Uni_cmp_main.Params.ParamByName('p_kul').AsString :=
-      p_kul
+    DM_Bill.Uni_cmp_main.Params.ParamByName('p_kul').AsString := p_kul
   else
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_kul').Clear;
 
   if not VarIsNull(p_nd) then
-    DM_Bill.Uni_cmp_main.Params.ParamByName('p_nd').AsString :=
-      p_nd
+    DM_Bill.Uni_cmp_main.Params.ParamByName('p_nd').AsString := p_nd
   else
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_nd').Clear;
 
   if not VarIsNull(p_kw) then
   begin
-    DM_Bill.Uni_cmp_main.ParamByName('p_kw').AsString :=
-      p_kw;
-    DM_Bill.Uni_cmp_main.ParamByName('p_klsk_id').AsInteger :=
-      p_klsk_id;
+    DM_Bill.Uni_cmp_main.ParamByName('p_kw').AsString := p_kw;
+    DM_Bill.Uni_cmp_main.ParamByName('p_klsk_id').AsInteger := p_klsk_id;
   end
   else
   begin
@@ -582,53 +507,34 @@ begin
     DM_Bill.Uni_cmp_main.ParamByName('p_klsk_id').Clear;
   end;
   //logText('rep.1.4');
-
   // печатать ли закрытые счета
   if p_print_old = true then
   begin
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_is_closed').AsInteger := 1;
-    DM_Bill.Uni_cmp_detail_primary.Params.ParamByName('p_is_closed').AsInteger
-      := 1;
-    DM_Bill.Uni_cmp_detail_main.Params.ParamByName('p_is_closed').AsInteger
-      := 1;
-    DM_Bill.Uni_cmp_detail_cap.Params.ParamByName('p_is_closed').AsInteger
-      := 1;
-    DM_Bill.Uni_cmp_contractors.Params.ParamByName('p_is_closed').AsInteger :=
-      1;
-    DM_Bill.Uni_cmp_funds_primary.Params.ParamByName('p_is_closed').AsInteger :=
-      1;
-    DM_Bill.Uni_cmp_funds_cap.Params.ParamByName('p_is_closed').AsInteger :=
-      1;
-    DM_Bill.Uni_cmp_funds_main.Params.ParamByName('p_is_closed').AsInteger :=
-      1;
-    DM_Bill.Uni_cmp_qr.Params.ParamByName('p_is_closed').AsInteger :=
-      1;
+    DM_Bill.Uni_cmp_detail_primary.Params.ParamByName('p_is_closed').AsInteger := 1;
+    DM_Bill.Uni_cmp_detail_main.Params.ParamByName('p_is_closed').AsInteger := 1;
+    DM_Bill.Uni_cmp_detail_cap.Params.ParamByName('p_is_closed').AsInteger := 1;
+    DM_Bill.Uni_cmp_contractors.Params.ParamByName('p_is_closed').AsInteger := 1;
+    DM_Bill.Uni_cmp_funds_primary.Params.ParamByName('p_is_closed').AsInteger := 1;
+    DM_Bill.Uni_cmp_funds_cap.Params.ParamByName('p_is_closed').AsInteger := 1;
+    DM_Bill.Uni_cmp_funds_main.Params.ParamByName('p_is_closed').AsInteger := 1;
+    DM_Bill.Uni_cmp_qr.Params.ParamByName('p_is_closed').AsInteger := 1;
   end
   else
   begin
     DM_Bill.Uni_cmp_main.Params.ParamByName('p_is_closed').AsInteger := 0;
-    DM_Bill.Uni_cmp_detail_primary.Params.ParamByName('p_is_closed').AsInteger
-      := 0;
-    DM_Bill.Uni_cmp_detail_main.Params.ParamByName('p_is_closed').AsInteger
-      := 0;
-    DM_Bill.Uni_cmp_detail_cap.Params.ParamByName('p_is_closed').AsInteger
-      := 0;
-    DM_Bill.Uni_cmp_contractors.Params.ParamByName('p_is_closed').AsInteger :=
-      0;
-    DM_Bill.Uni_cmp_funds_primary.Params.ParamByName('p_is_closed').AsInteger
-      := 0;
-    DM_Bill.Uni_cmp_funds_cap.Params.ParamByName('p_is_closed').AsInteger
-      := 0;
-    DM_Bill.Uni_cmp_funds_main.Params.ParamByName('p_is_closed').AsInteger
-      := 0;
-    DM_Bill.Uni_cmp_qr.Params.ParamByName('p_is_closed').AsInteger
-      := 0;
+    DM_Bill.Uni_cmp_detail_primary.Params.ParamByName('p_is_closed').AsInteger := 0;
+    DM_Bill.Uni_cmp_detail_main.Params.ParamByName('p_is_closed').AsInteger := 0;
+    DM_Bill.Uni_cmp_detail_cap.Params.ParamByName('p_is_closed').AsInteger := 0;
+    DM_Bill.Uni_cmp_contractors.Params.ParamByName('p_is_closed').AsInteger := 0;
+    DM_Bill.Uni_cmp_funds_primary.Params.ParamByName('p_is_closed').AsInteger := 0;
+    DM_Bill.Uni_cmp_funds_cap.Params.ParamByName('p_is_closed').AsInteger := 0;
+    DM_Bill.Uni_cmp_funds_main.Params.ParamByName('p_is_closed').AsInteger := 0;
+    DM_Bill.Uni_cmp_qr.Params.ParamByName('p_is_closed').AsInteger := 0;
   end;
 
-  DM_Bill.Uni_cmp_funds_lsk.Params.ParamByName('P_INCLUDESALDO').AsInteger
-    := 1;
+  DM_Bill.Uni_cmp_funds_lsk.Params.ParamByName('P_INCLUDESALDO').AsInteger := 1;
   //logText('rep.1.5');
-
   // активировать датасеты
   DM_Bill.Uni_cmp_main.Active := True;
   DM_Bill.Uni_cmp_contractors.Active := true;
@@ -729,10 +635,8 @@ begin
 
   if cbbKw.EditValue <> null then
   begin
-    pKw :=
-      DM_Bill2.OD_kw.FieldByName('kw_id').AsString;
-    pKlskId :=
-      DM_Bill2.OD_kw.FieldByName('k_lsk_id').AsInteger;
+    pKw := DM_Bill2.OD_kw.FieldByName('kw_id').AsString;
+    pKlskId := DM_Bill2.OD_kw.FieldByName('k_lsk_id').AsInteger;
   end
   else
   begin
@@ -746,80 +650,43 @@ begin
     DM_Bill.Uni_spr_bill_print.Active := True;
 
     cnt := DM_Bill.Uni_spr_bill_print.RecordCount;
-    pos := 0;
+    Pos := 0;
     DM_Bill.Uni_spr_bill_print.First;
     CreateDir(edtExpportPath.Text);
     CreateDir(edtExpportPath.Text + '\' + lkpMgFrom.EditValue);
 
     while not DM_Bill.Uni_spr_bill_print.Eof do
     begin
-      if DM_Bill.Uni_spr_bill_print.FieldByName('IS_EXPORT_PDF').AsInteger = 1
-        then
+      if DM_Bill.Uni_spr_bill_print.FieldByName('IS_EXPORT_PDF').AsInteger = 1 then
       begin
-        query_OD_ls_cnt(lkpMgFrom.EditValue,
-          DM_Bill.Uni_spr_bill_print.FieldByName('REU').AsString,
-          StrToInt(Edit1.Text));
+        query_OD_ls_cnt(lkpMgFrom.EditValue, DM_Bill.Uni_spr_bill_print.FieldByName('REU').AsString, StrToInt(Edit1.Text));
 
-        if DM_Bill.Uni_spr_bill_print.FieldByName('IS_EXPORT_EMAIL').AsInteger
-          = 1 then
+        if DM_Bill.Uni_spr_bill_print.FieldByName('IS_EXPORT_EMAIL').AsInteger = 1 then
           expEmailPrefix := 'email_'
         else
           expEmailPrefix := '';
 
         while not DM_Bill2.OD_ls_cnt.Eof do
         begin
-          filePathExport :=
-            edtExpportPath.Text + '\' + lkpMgFrom.EditValue +
-            '\'
-            + expEmailPrefix +
-            DM_Bill.Uni_spr_bill_print.FieldByName('REU').AsString
-            + '_'
-            + DM_Bill.Uni_spr_bill_print.FieldByName('PREFIX').AsString
-            + '_'
-            + DM_Bill2.OD_ls_cnt.FieldByName('name').AsString
-            + '.pdf';
+          filePathExport := edtExpportPath.Text + '\' + lkpMgFrom.EditValue + '\' + expEmailPrefix + DM_Bill.Uni_spr_bill_print.FieldByName('REU').AsString + '_' + DM_Bill.Uni_spr_bill_print.FieldByName('PREFIX').AsString + '_' + DM_Bill2.OD_ls_cnt.FieldByName('name').AsString + '.pdf';
           cxProgressBar1.Properties.Text := 'Выгружается:' + filePathExport;
-          compound_report_export(pKul, pNd, pKw, cbbPostIndex.EditValue,
-            sel_obj_,
-            cxImageComboBox1.ItemIndex,
-            pKlskId, cxmskdtLskFrom.Text, cxmskdtLskTo.Text,
-            lkpMgFrom.EditValue,
-            DM_Bill.Uni_spr_bill_print.FieldByName('FILTER_REU').AsString,
-            DM_Bill.Uni_spr_bill_print.FieldByName('REU').AsString, filePathStr,
-            filePathExport,
-            CheckBox2.Checked,
-            chkExportPDF.Checked, frxReport1, frxPDFExport1, //115331, 126623,
-            DM_Bill2.OD_ls_cnt.FieldByName('first_rec').AsInteger,
-            DM_Bill2.OD_ls_cnt.FieldByName('last_rec').AsInteger,
-            chkExportFlow.Checked,
-            DM_Bill.Uni_spr_bill_print.FieldByName('IS_EXPORT_EMAIL').AsInteger
-            );
+          compound_report_export(pKul, pNd, pKw, cbbPostIndex.EditValue, sel_obj_, cxImageComboBox1.ItemIndex, pKlskId, cxmskdtLskFrom.Text, cxmskdtLskTo.Text, lkpMgFrom.EditValue, DM_Bill.Uni_spr_bill_print.FieldByName('FILTER_REU').AsString, DM_Bill.Uni_spr_bill_print.FieldByName('REU').AsString, filePathStr, filePathExport, CheckBox2.Checked, chkExportPDF.Checked, frxReport1, frxPDFExport1, //115331, 126623,
+            DM_Bill2.OD_ls_cnt.FieldByName('first_rec').AsInteger, DM_Bill2.OD_ls_cnt.FieldByName('last_rec').AsInteger, chkExportFlow.Checked, DM_Bill.Uni_spr_bill_print.FieldByName('IS_EXPORT_EMAIL').AsInteger);
           cxProgressBar1.Properties.Text := '';
 
           //ShowMessage('STOP');
           DM_Bill2.OD_ls_cnt.Next;
-          pos := pos + 1;
-          cxProgressBar1.Position := pos / cnt * 100;
+          Pos := Pos + 1;
+          cxProgressBar1.Position := Pos / cnt * 100;
         end;
       end;
       DM_Bill.Uni_spr_bill_print.Next;
     end;
-    Application.MessageBox('Экспорт выполнен', 'Внимание!', MB_OK +
-      MB_ICONINFORMATION + MB_TOPMOST);
+    Application.MessageBox('Экспорт выполнен', 'Внимание!', MB_OK + MB_ICONINFORMATION + MB_TOPMOST);
   end
   else
   begin
-    compound_report_export(pKul, pNd, pKw, cbbPostIndex.EditValue,
-      sel_obj_,
-      cxImageComboBox1.ItemIndex,
-      pKlskId, cxmskdtLskFrom.Text, cxmskdtLskTo.Text,
-      lkpMgFrom.EditValue, getStrUk(),
-      cbbUk.EditValue, filePathStr, edtExpportPath.Text, CheckBox2.Checked,
-      chkExportPDF.Checked, frxReport1, frxPDFExport1,
-      DM_Bill2.OD_ls_cnt.FieldByName('first_rec').AsInteger,
-      DM_Bill2.OD_ls_cnt.FieldByName('last_rec').AsInteger,
-      chkExportFlow.Checked, 0
-      );
+    compound_report_export(pKul, pNd, pKw, cbbPostIndex.EditValue, sel_obj_, cxImageComboBox1.ItemIndex, pKlskId, cxmskdtLskFrom.Text, cxmskdtLskTo.Text, lkpMgFrom.EditValue, getStrUk(), cbbUk.EditValue, filePathStr, edtExpportPath.Text, CheckBox2.Checked, chkExportPDF.Checked, frxReport1, frxPDFExport1, DM_Bill2.OD_ls_cnt.FieldByName('first_rec').AsInteger, DM_Bill2.OD_ls_cnt.FieldByName('last_rec').AsInteger, chkExportFlow.Checked, 0);
   end;
 
 end;
@@ -859,15 +726,13 @@ begin
     DM_Bill2.OD_main.SetVariable('kul_', null);
 
   if not VarIsNull(cbbNd.EditValue) then
-    DM_Bill2.OD_main.SetVariable('nd_',
-      DM_Bill2.OD_houses.FieldByName('nd_id').AsString)
+    DM_Bill2.OD_main.SetVariable('nd_', DM_Bill2.OD_houses.FieldByName('nd_id').AsString)
   else
     DM_Bill2.OD_main.SetVariable('nd_', null);
 
   // вернул 03.03.21
   if cbbKw.EditValue <> null then
-    DM_Bill2.OD_main.SetVariable('kw_',
-      DM_Bill2.OD_kw.FieldByName('kw_id').AsString)
+    DM_Bill2.OD_main.SetVariable('kw_', DM_Bill2.OD_kw.FieldByName('kw_id').AsString)
   else
     DM_Bill2.OD_main.SetVariable('kw_', null);
 
@@ -877,18 +742,15 @@ begin
     begin
       //только для УК
       //ограничивать диапазон записи для печати счетов
-      DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_firstNum').AsInteger :=
-        DM_Bill2.OD_ls_cnt.FieldByName('first_rec').AsInteger;
+      DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_firstNum').AsInteger := DM_Bill2.OD_ls_cnt.FieldByName('first_rec').AsInteger;
 
-      DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_lastNum').AsInteger :=
-        DM_Bill2.OD_ls_cnt.FieldByName('last_rec').AsInteger;
+      DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_lastNum').AsInteger := DM_Bill2.OD_ls_cnt.FieldByName('last_rec').AsInteger;
     end
     else
     begin
       //не ограничивать диапазон записи для печати счетов
       DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_firstNum').AsInteger := 0;
-      DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_lastNum').AsInteger :=
-        1000000000;
+      DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_lastNum').AsInteger := 1000000000;
     end;
 
     // установить параметры
@@ -896,48 +758,39 @@ begin
     //  lkpMgTo.EditValue;
     //     убрать после тестирования! ред.28.05.2020
     // список УК для фильтра
-    DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_sel_uk').AsString :=
-      getStrUk();
+    DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_sel_uk').AsString := getStrUk();
 
-    DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_sel_obj').AsInteger :=
-      sel_obj_;
+    DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_sel_obj').AsInteger := sel_obj_;
 
     {    if cbb1.EditValue <> null then
           DM_Bill.Uni_cmp_main.Params.ParamByName('p_reu').AsString := cbb1.EditValue
         else
           DM_Bill.Uni_cmp_main.Params.ParamByName('p_reu').Clear;}
 
-    DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_lsk').AsString :=
-      cxmskdtLskFrom.Text;
-    DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_lsk1').AsString :=
-      cxmskdtLskTo.Text;
+    DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_lsk').AsString := cxmskdtLskFrom.Text;
+    DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_lsk1').AsString := cxmskdtLskTo.Text;
     if not VarIsNull(cbbStreet.EditValue) then
-      DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_kul').AsString :=
-        cbbStreet.EditValue
+      DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_kul').AsString := cbbStreet.EditValue
     else
       DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_kul').Clear;
     if not VarIsNull(cbbNd.EditValue) then
-      DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_nd').AsString :=
-        DM_Bill2.OD_houses.FieldByName('nd_id').AsString
+      DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_nd').AsString := DM_Bill2.OD_houses.FieldByName('nd_id').AsString
     else
       DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_nd').Clear;
 
     if not VarIsNull(cbbKw.EditValue) then
-      DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_kw').AsString :=
-        DM_Bill2.OD_kw.FieldByName('kw_id').AsString
+      DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_kw').AsString := DM_Bill2.OD_kw.FieldByName('kw_id').AsString
     else
       DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_kw').Clear;
 
     // печатать ли закрытые счета
     if CheckBox2.Checked = true then
     begin
-      DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_is_closed').AsInteger :=
-        1;
+      DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_is_closed').AsInteger := 1;
     end
     else
     begin
-      DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_is_closed').AsInteger :=
-        0;
+      DM_Bill.Uni_cmp_main_arch.Params.ParamByName('p_is_closed').AsInteger := 0;
     end;
     // активировать датасеты
     DM_Bill.Uni_cmp_main_arch.Active := True;
@@ -958,10 +811,8 @@ begin
     else
     begin
       DM_Bill2.OD_main.SetVariable('cnt_rec_', 1);
-      DM_Bill2.OD_main.SetVariable('first_rec_',
-        DM_Bill2.OD_ls_cnt.FieldByName('first_rec').AsInteger);
-      DM_Bill2.OD_main.SetVariable('last_rec_',
-        DM_Bill2.OD_ls_cnt.FieldByName('last_rec').AsInteger);
+      DM_Bill2.OD_main.SetVariable('first_rec_', DM_Bill2.OD_ls_cnt.FieldByName('first_rec').AsInteger);
+      DM_Bill2.OD_main.SetVariable('last_rec_', DM_Bill2.OD_ls_cnt.FieldByName('last_rec').AsInteger);
     end;
   end
   else
@@ -976,8 +827,7 @@ begin
     DM_Bill2.OD_data.SetVariable('mg1_', lkpMgFrom.EditValue);
     DM_Bill2.OD_data.SetVariable('mg2_', lkpMgFrom.EditValue);
 
-    if (DM_Bill2.OD_t_org.FieldByName('BILL_TP').asInteger = 1) or
-      (DM_Bill2.OD_t_org.FieldByName('BILL_TP').asInteger = 2) then
+    if (DM_Bill2.OD_t_org.FieldByName('BILL_TP').asInteger = 1) or (DM_Bill2.OD_t_org.FieldByName('BILL_TP').asInteger = 2) then
     begin
       DM_Bill2.OD_detail.SetVariable('p_mg', lkpMgFrom.EditValue);
       DM_Bill2.OD_detail_ext.SetVariable('p_mg', lkpMgFrom.EditValue);
@@ -1000,32 +850,25 @@ begin
     cxmskdtLskTo.Text := cxmskdtLskFrom.Text;
     //DM_Bill2.OD_arch.SetVariable('p_mg1', lkpMgFrom.EditValue);
     //DM_Bill2.OD_arch.SetVariable('p_mg2', lkpMgTo.EditValue);
-    DM_Bill.Uni_arch.Params.ParamByName('p_sel_uk').AsString :=
-      getStrUk();
+    DM_Bill.Uni_arch.Params.ParamByName('p_sel_uk').AsString := getStrUk();
 
     if tp_ = 5 then
       DM_Bill.Uni_arch.Params.ParamByName('p_tp').AsInteger := 0
     else
       DM_Bill.Uni_arch.Params.ParamByName('p_tp').AsInteger := 1;
 
-    DM_Bill.Uni_arch.Params.ParamByName('p_mg1').AsString :=
-      lkpMgFrom.EditValue;
-    DM_Bill.Uni_arch.Params.ParamByName('p_mg2').AsString :=
-      lkpMgTo.EditValue;
+    DM_Bill.Uni_arch.Params.ParamByName('p_mg1').AsString := lkpMgFrom.EditValue;
+    DM_Bill.Uni_arch.Params.ParamByName('p_mg2').AsString := lkpMgTo.EditValue;
 
-    DM_Bill.Uni_arch_supp.Params.ParamByName('p_sel_uk').AsString :=
-      getStrUk();
-    DM_Bill.Uni_arch_supp.Params.ParamByName('p_mg1').AsString :=
-      lkpMgFrom.EditValue;
-    DM_Bill.Uni_arch_supp.Params.ParamByName('p_mg2').AsString :=
-      lkpMgTo.EditValue;
+    DM_Bill.Uni_arch_supp.Params.ParamByName('p_sel_uk').AsString := getStrUk();
+    DM_Bill.Uni_arch_supp.Params.ParamByName('p_mg1').AsString := lkpMgFrom.EditValue;
+    DM_Bill.Uni_arch_supp.Params.ParamByName('p_mg2').AsString := lkpMgTo.EditValue;
 
     if sel_obj_ = 0 then
     begin
       //по л.с.
       DM_Bill.Uni_arch.Params.ParamByName('p_sel_obj').AsInteger := 0;
-      DM_Bill.Uni_arch_supp.Params.ParamByName('lsk').AsString :=
-        cxmskdtLskFrom.Text;
+      DM_Bill.Uni_arch_supp.Params.ParamByName('lsk').AsString := cxmskdtLskFrom.Text;
       DM_Bill.Uni_arch_supp.Params.ParamByName('p_sel_obj').AsInteger := 0;
     end
     else
@@ -1120,8 +963,7 @@ begin
   end;
 
   //Датасет (долги по всем лицевым счетам адреса (для Кис.))
-  if DataModule1.OraclePackage1.CallIntegerFunction('scott.Utils.get_int_param',
-    ['DEB_FOR_BILLS']) = 1 then
+  if DataModule1.OraclePackage1.CallIntegerFunction('scott.Utils.get_int_param', ['DEB_FOR_BILLS']) = 1 then
   begin
     DM_Bill2.OD_data6.Active := true;
   end;
@@ -1130,19 +972,13 @@ begin
   DM_Bill2.OD_vvod.Active := true;
 
   // ЗАГРУЗКА отчёта
-  if (((tp_ = 0) or (tp_ = 4)) and (DM_Bill2.OD_main.RecordCount = 0) or (tp_ =
-    1)
-    and (DM_Bill2.OD_main.RecordCount = 0)) then
+  if (((tp_ = 0) or (tp_ = 4)) and (DM_Bill2.OD_main.RecordCount = 0) or (tp_ = 1) and (DM_Bill2.OD_main.RecordCount = 0)) then
   begin
-    Application.MessageBox('Нет информации за указанный период', 'Внимание!', 16
-      + MB_APPLMODAL);
+    Application.MessageBox('Нет информации за указанный период', 'Внимание!', 16 + MB_APPLMODAL);
   end
-  else if (((tp_ = 2) or (tp_ = 5) or (tp_ = 7)) and
-    (DM_Bill.Uni_cmp_main_arch.RecordCount =
-    0)) then
+  else if (((tp_ = 2) or (tp_ = 5) or (tp_ = 7)) and (DM_Bill.Uni_cmp_main_arch.RecordCount = 0)) then
   begin
-    Application.MessageBox('Нет информации за указанный период', 'Внимание!', 16
-      + MB_APPLMODAL);
+    Application.MessageBox('Нет информации за указанный период', 'Внимание!', 16 + MB_APPLMODAL);
   end
   else if ((tp_ = 3) and (DM_Bill2.OD_data3.RecordCount = 0)) then
   begin
@@ -1159,31 +995,20 @@ begin
       //  DM_Bill2.OD_t_org.FieldByName('FNAME_SCH').asString, True);
       //filePath.Text := 'Путь к файлу:' + Form_main.exepath_ + repVar +
       //  DM_Bill2.OD_t_org.FieldByName('FNAME_SCH').asString;
-
       //В счет ставим реквизиты организации
-      frxReport1.Variables['name_org'] := '''' +
-        DM_Bill2.OD_t_org.FieldByName('name').AsString + '''';
-      frxReport1.Variables['inn'] := '''' +
-        DM_Bill2.OD_t_org.FieldByName('inn').AsString
-        + '''';
-      frxReport1.Variables['raschet_schet'] := '''' +
-        DM_Bill2.OD_t_org.FieldByName('raschet_schet').AsString + '''';
-      frxReport1.Variables['bank'] := '''' +
-        DM_Bill2.OD_t_org.FieldByName('bank').AsString + '''';
-      frxReport1.Variables['adr'] := '''' +
-        DM_Bill2.OD_t_org.FieldByName('post_indx').AsString + ', ' +
-        DM_Bill2.OD_t_org.FieldByName('adr').AsString + '''';
-      frxReport1.Variables['phone'] := '''' +
-        DM_Bill2.OD_t_org.FieldByName('phone').AsString + '''';
+      frxReport1.Variables['name_org'] := '''' + DM_Bill2.OD_t_org.FieldByName('name').AsString + '''';
+      frxReport1.Variables['inn'] := '''' + DM_Bill2.OD_t_org.FieldByName('inn').AsString + '''';
+      frxReport1.Variables['raschet_schet'] := '''' + DM_Bill2.OD_t_org.FieldByName('raschet_schet').AsString + '''';
+      frxReport1.Variables['bank'] := '''' + DM_Bill2.OD_t_org.FieldByName('bank').AsString + '''';
+      frxReport1.Variables['adr'] := '''' + DM_Bill2.OD_t_org.FieldByName('post_indx').AsString + ', ' + DM_Bill2.OD_t_org.FieldByName('adr').AsString + '''';
+      frxReport1.Variables['phone'] := '''' + DM_Bill2.OD_t_org.FieldByName('phone').AsString + '''';
 
       if not CheckBox1.Checked then
         frxReport1.Script.Variables['var_'] := 1
       else
         frxReport1.Script.Variables['var_'] := 0;
 
-      if ((sel_obj_ = 0) and (cxmskdtLskFrom.Text <> cxmskdtLskTo.Text)) or
-        ((sel_obj_ =
-        1) and (cbbKw.EditValue = null)) then
+      if ((sel_obj_ = 0) and (cxmskdtLskFrom.Text <> cxmskdtLskTo.Text)) or ((sel_obj_ = 1) and (cbbKw.EditValue = null)) then
       begin
         //много страниц
         frxReport1.Script.Variables['split_'] := 0;
@@ -1235,7 +1060,7 @@ begin
     begin
       //Cправка о задолженности
       if DataModule1.OraclePackage1.CallIntegerFunction //старый вариант
-      ('scott.Utils.get_int_param', ['SPR_DEB_VAR']) = 0 then
+        ('scott.Utils.get_int_param', ['SPR_DEB_VAR']) = 0 then
       begin
         frxReport1.LoadFromFile(filePathStr, True);
         //frxReport1.LoadFromFile(Form_main.exepath_ + repVar +
@@ -1243,12 +1068,9 @@ begin
         //filePath.Text := 'Путь к файлу:' + Form_main.exepath_
         //  + 'Счет_на_оплату1.fr3';
       end
-      else if
-        DataModule1.OraclePackage1.CallIntegerFunction('scott.Utils.get_int_param',
-        ['SPR_DEB_VAR']) = 1 then //новый вариант
+      else if DataModule1.OraclePackage1.CallIntegerFunction('scott.Utils.get_int_param', ['SPR_DEB_VAR']) = 1 then //новый вариант
       begin
-        frxReport1.LoadFromFile(filePathStr,
-          True);
+        frxReport1.LoadFromFile(filePathStr, True);
         //frxReport1.LoadFromFile(Form_main.exepath_ + repVar + 'спр_задолжн.fr3',
         //  True);
         //filePath.Text := 'Путь к файлу:' + Form_main.exepath_
@@ -1271,8 +1093,7 @@ begin
   if var_ = 0 then
   begin
     //по л.с.
-    Form_main.k_lsk_id_ :=
-      DataModule1.OraclePackage1.CallIntegerFunction('scott.UTILS.GET_K_LSK_ID_BY_LSK', [lsk1_]);
+    Form_main.k_lsk_id_ := DataModule1.OraclePackage1.CallIntegerFunction('scott.UTILS.GET_K_LSK_ID_BY_LSK', [lsk1_]);
   end
   else
   begin
@@ -1282,7 +1103,6 @@ begin
   end;
 
 end;
-
 
 procedure TForm_print_bills.FormCreate(Sender: TObject);
 var
@@ -1377,10 +1197,8 @@ begin
     Items.EndUpdate;
   end;
   /////////
-
   // Выбран поиск по адресу (по умолчанию)
-  if DataModule1.OraclePackage1.CallIntegerFunction('scott.Utils.get_int_param',
-    ['RECHARGE_BILL']) = 1 then
+  if DataModule1.OraclePackage1.CallIntegerFunction('scott.Utils.get_int_param', ['RECHARGE_BILL']) = 1 then
     CheckBox3.Checked := True;
 
   cxmskdtLskFrom.Enabled := false;
@@ -1402,9 +1220,7 @@ begin
   DM_Bill2.OD_reu.Active := True;
   DM_Bill2.OD_spr_services.Active := True;
 
-  if (FF('Form_list_kart', 0) = 1) or ((cxmskdtLskFrom.Text = cxmskdtLskTo.Text)
-    and (cxmskdtLskFrom.Text <> '') and (cxmskdtLskTo.Text <> '')) or
-    (cbbKw.EditValue <> null) then
+  if (FF('Form_list_kart', 0) = 1) or ((cxmskdtLskFrom.Text = cxmskdtLskTo.Text) and (cxmskdtLskFrom.Text <> '') and (cxmskdtLskTo.Text <> '')) or (cbbKw.EditValue <> null) then
   begin
     //Возможность видеть дома старого фонда
     DM_Bill2.OD_houses.Active := false;
@@ -1462,8 +1278,7 @@ begin
     cxmskdtLskTo.Text := Form_get_pay_nal.OD_kart.FieldByName('lsk').AsString;
     DM_Bill2.OD_mg.First;
     cbbUk.EditValue := Form_get_pay_nal.OD_kart.FieldByName('reu').AsString;
-    cbbStreet.EditValue :=
-      Form_get_pay_nal.OD_kart.FieldByName('kul').AsString;
+    cbbStreet.EditValue := Form_get_pay_nal.OD_kart.FieldByName('kul').AsString;
 
     keySel := VarArrayCreate([0, 2], varVariant);
     keySel[0] := Form_get_pay_nal.OD_kart.FieldByName('reu').AsString;
@@ -1471,24 +1286,19 @@ begin
     keySel[2] := Form_get_pay_nal.OD_kart.FieldByName('nd').AsString;
     cbbNd.EditValue := keySel;
 
-    cbbKw.EditValue :=
-      Form_get_pay_nal.OD_kart.FieldByName('lsk').AsString;
+    cbbKw.EditValue := Form_get_pay_nal.OD_kart.FieldByName('lsk').AsString;
 
-    Form_main.k_lsk_id_ :=
-      Form_get_pay_nal.OD_kart.FieldByName('k_lsk_id').AsInteger;
+    Form_main.k_lsk_id_ := Form_get_pay_nal.OD_kart.FieldByName('k_lsk_id').AsInteger;
   end
   else if FF('Form_list_kart', 0) = 1 then
   begin
     //ComboBox1.ItemIndex := 0;
     cxImageComboBox2.ItemIndex := 0;
-    cxmskdtLskFrom.Text :=
-      Form_list_kart.OD_list_kart.FieldByName('lsk').AsString;
-    cxmskdtLskTo.Text :=
-      Form_list_kart.OD_list_kart.FieldByName('lsk').AsString;
+    cxmskdtLskFrom.Text := Form_list_kart.OD_list_kart.FieldByName('lsk').AsString;
+    cxmskdtLskTo.Text := Form_list_kart.OD_list_kart.FieldByName('lsk').AsString;
     DM_Bill2.OD_mg.First;
     cbbUk.EditValue := Form_list_kart.OD_list_kart.FieldByName('reu').AsString;
-    cbbStreet.EditValue :=
-      Form_list_kart.OD_list_kart.FieldByName('kul').AsString;
+    cbbStreet.EditValue := Form_list_kart.OD_list_kart.FieldByName('kul').AsString;
 
     keySel := VarArrayCreate([0, 2], varVariant);
     keySel[0] := Form_list_kart.OD_list_kart.FieldByName('reu').AsString;
@@ -1496,10 +1306,8 @@ begin
     keySel[2] := Form_list_kart.OD_list_kart.FieldByName('nd').AsString;
 
     cbbNd.EditValue := keySel;
-    cbbKw.EditValue :=
-      Form_list_kart.OD_list_kart.FieldByName('lsk').AsString;
-    Form_main.k_lsk_id_ :=
-      Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger;
+    cbbKw.EditValue := Form_list_kart.OD_list_kart.FieldByName('lsk').AsString;
+    Form_main.k_lsk_id_ := Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger;
   end
   else
   begin
@@ -1508,12 +1316,10 @@ begin
 
 end;
 
-
 procedure TForm_print_bills.cxmskdtLskFromChange(Sender: TObject);
 begin
   set_lsk(0, cxmskdtLskFrom.Text);
 end;
-
 
 procedure TForm_print_bills.set_obj;
 begin
@@ -1614,8 +1420,7 @@ begin
   end;
 end;
 
-procedure TForm_print_bills.query_OD_ls_cnt(p_mg, p_reu: string; p_cnt:
-  Integer);
+procedure TForm_print_bills.query_OD_ls_cnt(p_mg, p_reu: string; p_cnt: Integer);
 begin
   DM_Bill2.OD_ls_cnt.Active := false;
   DM_Bill2.OD_ls_cnt.SetVariable('p_mg', p_mg);
@@ -1630,8 +1435,7 @@ var
 begin
   //задаем период для выборки кол-ва л.с., для печати счетов сотнями
   //DM_Bill2.OD_ls_cnt.Active := false;
-  if (tp_ = 0) or (tp_ = 1)
-    or (tp_ = 4) or (tp_ = 6) then
+  if (tp_ = 0) or (tp_ = 1) or (tp_ = 4) or (tp_ = 6) then
     // счет
     //DM_Bill2.OD_ls_cnt.SetVariable('p_mg', lkpMgFrom.EditValue)
     l_mg := lkpMgFrom.EditValue
@@ -1652,8 +1456,7 @@ begin
   if DM_Bill2.OD_ls_cnt.RecordCount = 0 then
     cxLookupComboBox4.EditValue := 0
   else
-    cxLookupComboBox4.EditValue :=
-      DM_Bill2.OD_ls_cnt.FieldByName('first_rec').AsString;
+    cxLookupComboBox4.EditValue := DM_Bill2.OD_ls_cnt.FieldByName('first_rec').AsString;
 
   //  ShowMessage(cx3.EditValue);
     // для фильтра выбора почтового индекса
@@ -1678,20 +1481,17 @@ begin
     sel_ls_cnt;}
 end;
 
-procedure TForm_print_bills.lkpMgToCloseUp(Sender: TObject; Accept:
-  Boolean);
+procedure TForm_print_bills.lkpMgToCloseUp(Sender: TObject; Accept: Boolean);
 begin
   sel_ls_cnt;
 end;
-
 
 procedure TForm_print_bills.cbb1PropertiesCloseUp(Sender: TObject);
 begin
   sel_ls_cnt;
 end;
 
-procedure TForm_print_bills.lkpMgFromCloseUp(Sender: TObject; Accept:
-  Boolean);
+procedure TForm_print_bills.lkpMgFromCloseUp(Sender: TObject; Accept: Boolean);
 begin
 end;
 
@@ -1707,8 +1507,7 @@ begin
   begin
     with cxCheckComboBox1.Properties.Items.Add do
     begin
-      Description := DM_Bill2.OD_uk.FieldByName('reu').AsString + ' '
-        + DM_Bill2.OD_uk.FieldByName('name').AsString;
+      Description := DM_Bill2.OD_uk.FieldByName('reu').AsString + ' ' + DM_Bill2.OD_uk.FieldByName('name').AsString;
     end;
     DM_Bill2.OD_uk.Next;
   end;
@@ -1728,9 +1527,8 @@ begin
   AEditProp := cxCheckComboBox1.Properties;
   str := '0';
   try
-    CalculateCheckStates(cxCheckComboBox1.Value,
-      AEditProp.Items, AEditProp.EditValueFormat, APCheckStates^);
-    for i := 0 to AEditProp.Items.Count - 1 do
+    CalculateCheckStates(cxCheckComboBox1.Value, AEditProp.Items, AEditProp.EditValueFormat, APCheckStates^);
+    for I := 0 to AEditProp.Items.Count - 1 do
       if APCheckStates^[I] = cbsChecked then
         str := str + '''' + copy(AEditProp.Items[I].Description, 1, 3) + ''';';
   finally
@@ -1772,14 +1570,12 @@ begin
     deSelAllUk;
 end;
 
-procedure TForm_print_bills.cxLookupComboBox3PropertiesCloseUp(
-  Sender: TObject);
+procedure TForm_print_bills.cxLookupComboBox3PropertiesCloseUp(Sender: TObject);
 begin
   set_obj;
 end;
 
-procedure TForm_print_bills.cxLookupComboBox4PropertiesPopup(
-  Sender: TObject);
+procedure TForm_print_bills.cxLookupComboBox4PropertiesPopup(Sender: TObject);
 begin
   sel_ls_cnt;
   {  if DM_Bill2.OD_ls_cnt.GetVariable('p_cnt') <> IntToStr(cnt_sch_) then
@@ -1790,8 +1586,7 @@ begin
     end;}
 end;
 
-procedure TForm_print_bills.cxImageComboBox2PropertiesCloseUp(
-  Sender: TObject);
+procedure TForm_print_bills.cxImageComboBox2PropertiesCloseUp(Sender: TObject);
 begin
   selVar();
 end;
@@ -1801,8 +1596,7 @@ begin
   DM_Bill2.OD_spr_services.SetVariable('p_mg', lkpMgFrom.EditValue);
   DM_Bill2.OD_spr_services.Active := False;
   DM_Bill2.OD_spr_services.Active := True;
-  cxLookupComboBox1.EditValue :=
-    DM_Bill2.OD_spr_services.FieldByName('FNAME_SCH').AsString;
+  cxLookupComboBox1.EditValue := DM_Bill2.OD_spr_services.FieldByName('FNAME_SCH').AsString;
 end;
 
 procedure TForm_print_bills.selVar();
@@ -1818,6 +1612,12 @@ begin
   set_obj;
   lkpMgFrom.Visible := false;
   lkpMgTo.Visible := false;
+
+  // датасет основных параметров. (наим.орг, файл счета)
+  DM_Bill2.OD_t_org.Active := false;
+  DM_Bill2.OD_t_org.SetVariable('var_', tp_);
+  DM_Bill2.OD_t_org.SetVariable('mg_', lkpMgFrom.EditValue);
+  DM_Bill2.OD_t_org.Active := true;
 
   if tp_ = 0 then // Счета
   begin
@@ -1904,15 +1704,7 @@ begin
   if (tp_ = 0) or (tp_ = 4) then
   begin
     //Счета
-    // датасет основных параметров. (наим.орг, файл счета)
-    DM_Bill2.OD_t_org.Active := false;
-    DM_Bill2.OD_t_org.SetVariable('var_', tp_);
-    DM_Bill2.OD_t_org.SetVariable('mg_', lkpMgFrom.EditValue);
-    DM_Bill2.OD_t_org.Active := true;
-
-    if (DM_Bill2.OD_t_org.FieldByName('BILL_TP').asInteger = 0) or
-      (DM_Bill2.OD_t_org.FieldByName('BILL_TP').asInteger = 1) or
-      (DM_Bill2.OD_t_org.FieldByName('BILL_TP').asInteger = 2) then
+    if (DM_Bill2.OD_t_org.FieldByName('BILL_TP').asInteger = 0) or (DM_Bill2.OD_t_org.FieldByName('BILL_TP').asInteger = 1) or (DM_Bill2.OD_t_org.FieldByName('BILL_TP').asInteger = 2) then
     begin
       // старый вариант счета
       // выбор отчета - лазерный/матричный
@@ -1922,95 +1714,76 @@ begin
       else
         // матричный принтер
         repVar := '';
-      filePathStr := Form_main.exepath_ + repVar +
-        DM_Bill2.OD_t_org.FieldByName('FNAME_SCH').asString;
+      filePathStr := Form_main.exepath_ + repVar + DM_Bill2.OD_t_org.FieldByName('FNAME_SCH').asString;
     end
-    else if (DM_Bill2.OD_t_org.FieldByName('BILL_TP').asInteger = 3) or
-      (DM_Bill2.OD_t_org.FieldByName('BILL_TP').asInteger = 4) then
+    else if (DM_Bill2.OD_t_org.FieldByName('BILL_TP').asInteger = 3) or (DM_Bill2.OD_t_org.FieldByName('BILL_TP').asInteger = 4) then
     begin
       // составной счет
-      filePathStr := Form_main.exepath_ +
-        VarToStr(cxLookupComboBox1.EditValue);
+      filePathStr := Form_main.exepath_ + VarToStr(cxLookupComboBox1.EditValue);
     end
   end
   else if tp_ = 1 then
   begin
     //Справочник квартиросъемщиков
-    filePathStr := Form_main.exepath_
-      + 'спр_кв.fr3';
+    filePathStr := Form_main.exepath_ + 'спр_кв.fr3';
   end
   else if tp_ = 2 then
   begin
     //Справка из архива
-    filePathStr := Form_main.exepath_
-      + 'арх_спр1.fr3';
+    filePathStr := Form_main.exepath_ + 'арх_спр1.fr3';
   end
   else if tp_ = 5 then
   begin
     //Справка из архива-2
-    filePathStr := Form_main.exepath_
-      + 'арх_спр4.fr3';
+    filePathStr := Form_main.exepath_ + 'арх_спр4.fr3';
   end
   else if tp_ = 6 then
   begin
     // поквартирная карточка
-    filePathStr := Form_main.exepath_ +
-      'справка_пасп3.fr3';
+    filePathStr := Form_main.exepath_ + 'справка_пасп3.fr3';
   end
   else if tp_ = 7 then
   begin
     //Справка из архива-3
-    filePathStr := Form_main.exepath_
-      + 'арх_спр5.fr3';
+    filePathStr := Form_main.exepath_ + 'арх_спр5.fr3';
   end
   else if tp_ = 8 then
     // Движение по счету
-    filePathStr := Form_main.exepath_
-      + 'det1_extended.fr3'
+    filePathStr := Form_main.exepath_ + 'det1_extended.fr3'
   else if tp_ = 9 then
     // Справка о пене
-    filePathStr := Form_main.exepath_
-      + 'справка_пеня1_extended.fr3'
+    filePathStr := Form_main.exepath_ + 'справка_пеня1_extended.fr3'
   else if tp_ = 3 then
   begin
     // Cправка о задолженности
     if DataModule1.OraclePackage1.CallIntegerFunction //старый вариант
-    ('scott.Utils.get_int_param', ['SPR_DEB_VAR']) = 0 then
+      ('scott.Utils.get_int_param', ['SPR_DEB_VAR']) = 0 then
     begin
       if CheckBox5.Checked then
-        filePathStr := Form_main.exepath_
-          + 'lp_Счет_на_оплату1.fr3'
+        filePathStr := Form_main.exepath_ + 'lp_Счет_на_оплату1.fr3'
       else
-        filePathStr := Form_main.exepath_
-          + 'Счет_на_оплату1.fr3';
+        filePathStr := Form_main.exepath_ + 'Счет_на_оплату1.fr3';
     end
-    else if
-      DataModule1.OraclePackage1.CallIntegerFunction('scott.Utils.get_int_param',
-      ['SPR_DEB_VAR']) = 1 then //новый вариант
+    else if DataModule1.OraclePackage1.CallIntegerFunction('scott.Utils.get_int_param', ['SPR_DEB_VAR']) = 1 then //новый вариант
     begin
-      filePathStr := Form_main.exepath_
-        + 'спр_задолжн.fr3';
+      filePathStr := Form_main.exepath_ + 'спр_задолжн.fr3';
     end;
   end
   else
   begin
-    Application.MessageBox(PChar('Некорректный bill_tp=' +
-      DM_Bill2.OD_t_org.FieldByName('BILL_TP').AsString),
-      'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
+    Application.MessageBox(PChar('Некорректный bill_tp=' + DM_Bill2.OD_t_org.FieldByName('BILL_TP').AsString), 'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
   end;
 
   filePath.Text := 'Путь к файлу:' + filePathStr;
 
 end;
 
-procedure TForm_print_bills.cxImageComboBox2PropertiesChange(
-  Sender: TObject);
+procedure TForm_print_bills.cxImageComboBox2PropertiesChange(Sender: TObject);
 var
   value: Variant;
 begin
   // получить value cxImageComboBox
-  value :=
-    TcxImageComboBox(Sender).Properties.Items[TcxImageComboBox(Sender).ItemIndex].ImageIndex;
+  value := TcxImageComboBox(Sender).Properties.Items[TcxImageComboBox(Sender).ItemIndex].ImageIndex;
   tp_ := VarToInt(value);
 end;
 
@@ -2036,8 +1809,7 @@ begin
   selVar();
 end;
 
-procedure TForm_print_bills.cxLookupComboBox1PropertiesCloseUp(
-  Sender: TObject);
+procedure TForm_print_bills.cxLookupComboBox1PropertiesCloseUp(Sender: TObject);
 begin
   selVar();
 end;
@@ -2092,8 +1864,7 @@ begin
   cbbKw.Enabled := false;
 end;
 
-procedure TForm_print_bills.cxmskdtLskFromPropertiesChange(
-  Sender: TObject);
+procedure TForm_print_bills.cxmskdtLskFromPropertiesChange(Sender: TObject);
 begin
   set_lsk(0, cxmskdtLskFrom.Text);
 end;

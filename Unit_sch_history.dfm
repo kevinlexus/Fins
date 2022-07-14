@@ -43,6 +43,12 @@ object Form_sch_history: TForm_sch_history
           Width = 527
           Height = 197
           Align = alClient
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
           TabOrder = 0
           object cxGrid2DBTableView1: TcxGridDBTableView
             Navigator.Buttons.OnButtonClick = cxGrid2DBTableView1NavigatorButtonsButtonClick
@@ -189,6 +195,12 @@ object Form_sch_history: TForm_sch_history
           Width = 486
           Height = 197
           Align = alClient
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
           TabOrder = 0
           object cxGridDBTableView2: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
@@ -564,8 +576,8 @@ object Form_sch_history: TForm_sch_history
       object cxGrid1: TcxGrid
         Left = 0
         Top = 0
-        Width = 1020
-        Height = 313
+        Width = 1034
+        Height = 303
         Align = alClient
         TabOrder = 0
         object cxGridDBTableView1: TcxGridDBTableView

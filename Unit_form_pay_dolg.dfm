@@ -3,8 +3,8 @@ object Form_get_pay_dolg: TForm_get_pay_dolg
   Top = 679
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #1044#1086#1083#1075#1080' '#1087#1086' '#1084#1077#1089#1103#1094#1072#1084
-  ClientHeight = 370
-  ClientWidth = 618
+  ClientHeight = 437
+  ClientWidth = 685
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,13 +20,15 @@ object Form_get_pay_dolg: TForm_get_pay_dolg
   TextHeight = 13
   object GroupBox1: TGroupBox
     Left = 0
-    Top = 321
-    Width = 618
+    Top = 388
+    Width = 685
     Height = 49
     Align = alBottom
     TabOrder = 1
+    ExplicitTop = 321
+    ExplicitWidth = 618
     DesignSize = (
-      618
+      685
       49)
     object Label1: TLabel
       Left = 110
@@ -42,7 +44,7 @@ object Form_get_pay_dolg: TForm_get_pay_dolg
       ParentFont = False
     end
     object Button1: TButton
-      Left = 481
+      Left = 548
       Top = 16
       Width = 63
       Height = 25
@@ -56,6 +58,7 @@ object Form_get_pay_dolg: TForm_get_pay_dolg
       ParentFont = False
       TabOrder = 1
       OnClick = Button1Click
+      ExplicitLeft = 481
     end
     object CheckBox1: TCheckBox
       Left = 8
@@ -91,7 +94,7 @@ object Form_get_pay_dolg: TForm_get_pay_dolg
       OnClick = btn1Click
     end
     object Button2: TButton
-      Left = 549
+      Left = 616
       Top = 16
       Width = 63
       Height = 25
@@ -106,6 +109,7 @@ object Form_get_pay_dolg: TForm_get_pay_dolg
       ParentFont = False
       TabOrder = 3
       OnClick = Button2Click
+      ExplicitLeft = 549
     end
     object Button3: TButton
       Left = 371
@@ -146,24 +150,27 @@ object Form_get_pay_dolg: TForm_get_pay_dolg
   object HeaderControl1: THeaderControl
     Left = 0
     Top = 0
-    Width = 618
+    Width = 685
     Height = 33
     Sections = <>
+    ExplicitWidth = 618
   end
   object cxGrid1: TcxGrid
     Left = 0
     Top = 33
-    Width = 618
-    Height = 288
+    Width = 685
+    Height = 355
     Align = alClient
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
-    Font.Height = -11
+    Font.Height = -15
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
     PopupMenu = pm1
     TabOrder = 0
+    ExplicitWidth = 618
+    ExplicitHeight = 288
     object cxGrid1DBTableView1: TcxGridDBTableView
       OnKeyPress = cxGrid1DBTableView1KeyPress
       Navigator.Buttons.CustomButtons = <>

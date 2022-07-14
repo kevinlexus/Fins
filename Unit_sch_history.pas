@@ -125,8 +125,7 @@ type
     procedure cxNewValPropertiesChange(Sender: TObject);
     procedure cxNewValKeyPress(Sender: TObject; var Key: Char);
     procedure cxValKeyPress(Sender: TObject; var Key: Char);
-  private
-    // фильтр счетчиков
+  private    // фильтр счетчиков
     flt1: Integer;
     // фильтр показаний
     flt2: Integer;
@@ -140,6 +139,7 @@ type
 
 var
   Form_sch_history: TForm_sch_history;
+
 
 implementation
 
@@ -290,18 +290,11 @@ begin
   if ret = 0 then
   begin
     DataModule1.OraclePackage1.Session.Commit;
-    // сохранить/обновить форму карточки, чтобы обновить поле расхода по счетчику
-
-    if FF('Form_kart', 0) = 1 then
-    begin
-      Form_kart.saveOrRollbackKart(0, True);
-      //Form_kart.save_changes(0);
-      Form_kart.recalc_kart;
-    end;
 
     cxVal.Text := '0';
     OD_meter.Active := false;
     OD_meter.Active := true;
+
     OD_meter.Locate('K_LSK_ID', metKlsk, []);
 
     OD_t_objxpar.Active := false;
@@ -324,7 +317,6 @@ begin
 
   if OD_meter.RecNo = OD_meter.RecordCount then
   begin
-    //      Button3.SetFocus;
     Windows.SetFocus(Button3.Handle);
   end
   else
@@ -347,6 +339,14 @@ begin
     // подготовить ввод платежей
     Form_get_pay_nal.clearPay;
   end;
+
+  // сохранить/обновить форму карточки, чтобы обновить поле расхода по счетчику
+  if FF('Form_kart', 0) = 1 then
+  begin
+    Form_kart.saveOrRollbackKart(0, True);
+    Form_kart.recalc_kart;
+  end;
+
   Action := caFree
 end;
 
@@ -478,7 +478,7 @@ begin
     cxNewVal.Properties.ReadOnly := False;
     cxVal.Properties.ReadOnly := False;
   end;
-          
+
   // установить точность поля ввода
   if OD_meter.FieldByName('COUNTER').AsString = 'pot' then
   begin
@@ -527,7 +527,6 @@ begin
     OD_meter.Post;
   Application.CreateForm(TfrmMeteGisConnect, frmMeteGisConnect);
   if frmMeteGisConnect.ShowModal = mrOk then
-
 end;
 
 procedure TForm_sch_history.cxGridDBTableView2DataControllerSummaryFooterSummaryItemsSummary(ASender: TcxDataSummaryItems; Arguments: TcxSummaryEventArguments; var OutArguments: TcxSummaryEventOutArguments);
@@ -580,8 +579,7 @@ begin
   refrN1;
 end;
 
-procedure TForm_sch_history.cxNewValKeyPress(Sender: TObject;
-  var Key: Char);
+procedure TForm_sch_history.cxNewValKeyPress(Sender: TObject; var Key: Char);
 begin
   if RetKey(Key) then
     Key := '.';

@@ -57,7 +57,6 @@ type
     N46: TMenuItem;
     N49: TMenuItem;
     N50: TMenuItem;
-    N16: TMenuItem;
     N17: TMenuItem;
     N89: TMenuItem;
     N47: TMenuItem;
@@ -114,7 +113,6 @@ type
     N87: TMenuItem;
     N88: TMenuItem;
     N90: TMenuItem;
-    Oracle1: TMenuItem;
     N11: TMenuItem;
     N12: TMenuItem;
     N36: TMenuItem;
@@ -193,7 +191,6 @@ type
     N143: TMenuItem;
     N144: TMenuItem;
     ImageList3: TImageList;
-    N145: TMenuItem;
     N146: TMenuItem;
     N872: TMenuItem;
     cxEditRepository1: TcxEditRepository;
@@ -221,6 +218,7 @@ type
     N8: TMenuItem;
     N1705221: TMenuItem;
     N1606221: TMenuItem;
+    N0107221: TMenuItem;
     procedure N5Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure N7Click(Sender: TObject);

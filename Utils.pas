@@ -227,6 +227,9 @@ begin
     SetMenuItem(acc_, N146, 'drn146_Объемы_по_счетчикам');
 
     SetMenuItem(acc_, N8, 'drn8_Ответы_на_запросы_задолж');
+    SetMenuItem(acc_, N90, 'drn90_Редактирование_отчетов');
+    SetMenuItem(acc_, N137, 'drn137_Загрузка_ФИАС');
+    SetMenuItem(acc_, N49, 'drn49_Статистика_по_льготникам');
 
   end;
 end;

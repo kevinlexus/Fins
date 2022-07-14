@@ -951,21 +951,6 @@ object Form_Main: TForm_Main
         ImageIndex = 69
         OnClick = N22Click
       end
-      object Oracle1: TMenuItem
-        Caption = #1047#1072#1075#1088#1091#1079#1082#1072' Oracle'
-        ImageIndex = 70
-        OnClick = Oracle1Click
-      end
-      object N16: TMenuItem
-        Caption = #1055#1086#1089#1083#1077#1076#1085#1080#1077' '#1080#1079#1084#1077#1085#1077#1085#1080#1103'>>>'
-        ImageIndex = 22
-        OnClick = N16Click
-      end
-      object N145: TMenuItem
-        Caption = #1051#1086#1075#1075#1080#1085#1075' '#1089#1086#1073#1099#1090#1080#1081
-        ImageIndex = 27
-        OnClick = N145Click
-      end
       object Options1: TMenuItem
         Caption = 'Test Java Server'
         OnClick = Options1Click
@@ -976,7 +961,7 @@ object Form_Main: TForm_Main
       end
     end
     object ver: TMenuItem
-      Caption = 'ver 3.0.17'
+      Caption = 'ver 3.0.25'
       object N1705211: TMenuItem
         Caption = '17.05.21 - '#1048#1089#1087#1088#1072#1074#1083#1077#1085#1086' '#1074#1099#1087#1086#1083#1085#1077#1085#1080#1077' '#1087#1077#1088#1077#1093#1086#1076#1072
       end
@@ -1017,6 +1002,11 @@ object Form_Main: TForm_Main
       end
       object N1606221: TMenuItem
         Caption = '16.06.22 - '#1048#1089#1087#1088#1072#1074#1083#1077#1085' '#1076#1080#1079#1072#1081#1085
+      end
+      object N0107221: TMenuItem
+        Caption = 
+          '01.07.22 - '#1044#1086#1073#1072#1074#1083#1077#1085#1086' '#1088#1072#1079#1075#1088#1072#1085#1080#1095#1077#1085#1080#1077' '#1087#1088#1072#1074' '#1076#1086#1089#1090#1091#1087#1072' '#1074' '#1083#1080#1094'.'#1089#1095'., '#1086#1090#1095#1077#1090 +
+          #1072#1093
       end
     end
   end
