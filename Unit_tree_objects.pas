@@ -107,11 +107,9 @@ type
     procedure Button3Click(Sender: TObject);
     procedure BeginUpdate;
     procedure EndUpdate;
-    procedure cxGrid1DBTableView1CellDblClick(Sender: TcxCustomGridTableView;
-      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
-      AShift: TShiftState; var AHandled: Boolean);
-    procedure cxGrid1DBTableView1KeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
+    procedure cxGrid1DBTableView1CellDblClick(Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
+    procedure cxGrid1DBTableView1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure setPeriodTypes();
   private
     Doc, Doc1: IXMLDomDocument;
     root, root1: IXMLDOMElement;
@@ -762,6 +760,11 @@ end;
 
 procedure TForm_tree_objects.CheckBox5Click(Sender: TObject);
 begin
+  setPeriodTypes();
+end;
+
+procedure TForm_tree_objects.setPeriodTypes();
+begin
   DBLookupComboBox5.KeyValue := null;
   DBLookupComboBox6.KeyValue := null;
   if CheckBox5.Checked = true then
@@ -774,6 +777,9 @@ begin
     DM_Olap.DS_mg1.DataSet := DM_Olap.OD_mg1;
     DM_Olap.DS_mg2.DataSet := DM_Olap.OD_mg2;
   end;
+  DBLookupComboBox5.Refresh;
+  DBLookupComboBox6.Refresh;
+
 end;
 
 procedure TForm_tree_objects.setAccess(rep_: string; have_current_: Integer; two_periods_: Integer);
@@ -998,6 +1004,8 @@ begin
     SetVariable('id_', rep_id_);
     active := true;
   end;
+
+  setPeriodTypes; // установить корректные периоды для выбора
 
   Panel1.AutoSize := True;
   EndUpdate;
@@ -2073,9 +2081,7 @@ begin
   cxDBTreeList1.Root.Collapse(True);
 end;
 
-procedure TForm_tree_objects.cxGrid1DBTableView1CellDblClick(
-  Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo;
-  AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
+procedure TForm_tree_objects.cxGrid1DBTableView1CellDblClick(Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
 begin
   edit_par;
 end;
@@ -2085,8 +2091,7 @@ begin
   //edit_par;
 end;
 
-procedure TForm_tree_objects.cxGrid1DBTableView1KeyDown(Sender: TObject;
-  var Key: Word; Shift: TShiftState);
+procedure TForm_tree_objects.cxGrid1DBTableView1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   //if (key = VK_Return) then
   edit_par;

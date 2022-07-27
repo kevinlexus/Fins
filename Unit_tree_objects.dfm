@@ -39,7 +39,6 @@ object Form_tree_objects: TForm_tree_objects
     Height = 433
     Align = alTop
     TabOrder = 0
-    ExplicitWidth = 334
     object Panel3: TPanel
       Left = 1
       Top = 41
@@ -47,7 +46,6 @@ object Form_tree_objects: TForm_tree_objects
       Height = 40
       Align = alBottom
       TabOrder = 0
-      ExplicitWidth = 332
       object Label2: TLabel
         Left = 134
         Top = 15
@@ -114,7 +112,6 @@ object Form_tree_objects: TForm_tree_objects
       Height = 78
       Align = alBottom
       TabOrder = 1
-      ExplicitWidth = 332
       object Label7: TLabel
         Left = 6
         Top = 36
@@ -239,7 +236,6 @@ object Form_tree_objects: TForm_tree_objects
       Height = 150
       Align = alBottom
       TabOrder = 5
-      ExplicitWidth = 332
       object cxGrid1: TcxGrid
         Left = 2
         Top = 15
@@ -248,7 +244,6 @@ object Form_tree_objects: TForm_tree_objects
         Align = alClient
         PopupMenu = Form_kart.PopupMenu3
         TabOrder = 0
-        ExplicitWidth = 328
         object cxGrid1DBTableView1: TcxGridDBTableView
           OnDblClick = cxGrid1DBTableView1DblClick
           OnKeyDown = cxGrid1DBTableView1KeyDown
@@ -300,7 +295,6 @@ object Form_tree_objects: TForm_tree_objects
       ParentFont = False
       TabOrder = 4
       Visible = False
-      ExplicitWidth = 332
       object cbbDet: TcxLookupComboBox
         Left = 8
         Top = 14
@@ -331,7 +325,6 @@ object Form_tree_objects: TForm_tree_objects
       ParentFont = False
       TabOrder = 3
       Visible = False
-      ExplicitWidth = 332
       object cbbOper: TcxLookupComboBox
         Left = 8
         Top = 14
@@ -362,7 +355,6 @@ object Form_tree_objects: TForm_tree_objects
       ParentFont = False
       TabOrder = 2
       Visible = False
-      ExplicitWidth = 332
       object cbbOrg: TcxLookupComboBox
         Left = 8
         Top = 14
@@ -389,7 +381,6 @@ object Form_tree_objects: TForm_tree_objects
     ButtonWidth = 142
     Caption = 'ToolBar1'
     TabOrder = 2
-    ExplicitWidth = 334
     DesignSize = (
       282
       29)
@@ -420,7 +411,6 @@ object Form_tree_objects: TForm_tree_objects
     Height = 20
     Align = alTop
     TabOrder = 3
-    ExplicitWidth = 334
     object cxm1: TcxMemo
       Left = 1
       Top = 1
@@ -436,7 +426,6 @@ object Form_tree_objects: TForm_tree_objects
       Style.Font.Style = []
       Style.IsFontAssigned = True
       TabOrder = 0
-      ExplicitWidth = 332
       Height = 18
       Width = 280
     end
@@ -461,7 +450,6 @@ object Form_tree_objects: TForm_tree_objects
     PopupMenu = PopupMenu1
     RootValue = 0
     TabOrder = 4
-    ExplicitWidth = 334
     object cxDBTreeList1ID: TcxDBTreeListColumn
       Visible = False
       DataBinding.FieldName = 'ID'
