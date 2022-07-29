@@ -216,6 +216,7 @@ object Form_sch_history: TForm_sch_history
             Navigator.Buttons.GotoBookmark.Visible = False
             Navigator.Buttons.Filter.Visible = False
             Navigator.Visible = True
+            DataController.DataModeController.GridMode = True
             DataController.DataSource = DS_t_objxpar
             DataController.KeyFieldNames = 'id'
             DataController.Summary.DefaultGroupSummaryItems = <>
