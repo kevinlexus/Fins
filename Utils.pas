@@ -136,8 +136,7 @@ begin
 //    SetMenuItem(acc_, N14, 'drn14_Оплата_по_услуге');
 //    SetMenuItem(acc_, N15, 'drn15_Оплата_по_страховым');
     SetMenuItem(acc_, N18, 'drn18_Сальдо');
-    SetMenuItem(acc_, N24, 'drn24_Выполнение_плана');
-    SetMenuItem(acc_, N26, 'drn26_Ввод_показат');
+//    SetMenuItem(acc_, N26, 'drn26_Ввод_показат');
     SetMenuItem(acc_, N29, 'drn29_Оплата');
 //    SetMenuItem(acc_, N212, 'drn212_Оплата_по_трестам');
     SetMenuItem(acc_, N30, 'drn30_Контроль_сальдо');
@@ -148,13 +147,13 @@ begin
     SetMenuItem(acc_, N27, 'drn27_Пеня');
 //    SetMenuItem(acc_, N37, 'drn37_Оплата_банка');
     SetMenuItem(acc_, N50, 'drn50_Обороты_по_домам');
-    SetMenuItem(acc_, N38, 'drn38_Подпись_отчетов');
+//    SetMenuItem(acc_, N38, 'drn38_Подпись_отчетов');
     SetMenuItem(acc_, N41, 'drn41_Статистика_по_приват');
     SetMenuItem(acc_, N40, 'drn40_Сведения_по_льготам');
     SetMenuItem(acc_, N39, 'drn39_Статистика');
     SetMenuItem(acc_, N43, 'drn43_Периодическая');
     SetMenuItem(acc_, ToolButton2, 'drn43_Периодическая');
-    SetMenuItem(acc_, N24, 'drn24_Выполнение_плана');
+//    SetMenuItem(acc_, N24, 'drn24_Выполнение_плана');
     SetMenuItem(acc_, N17, 'drn17_Оборотная_OLAP');
     SetMenuItem(acc_, N89, 'drn89_Долги_OLAP');
     SetMenuItem(acc_, N51, 'drn4_Карточки');
@@ -165,8 +164,6 @@ begin
     SetMenuItem(acc_, N214, 'drn214_Перерасч_по_домам');
     SetMenuItem(acc_, ToolButton6, 'drn214_Перерасч_по_домам');
     SetMenuItem(acc_, N57, 'drn57_Ввод_объемов_по_домам');
-    SetMenuItem(acc_, N44, 'drn44_Счета');
-    SetMenuItem(acc_, ToolButton15, 'drn44_Счета');
     SetMenuItem(acc_, N60, 'drb18_Поступления_по_лс');
     SetMenuItem(acc_, ToolButton18, 'drb18_Поступления_по_лс');
     SetMenuItem(acc_, ToolButton5, 'drb5_Архив');
@@ -188,7 +185,6 @@ begin
     SetMenuItem(acc_, N84, 'drn84_Справочник_орг_задолжн');
     SetMenuItem(acc_, N80, 'drn80_Тарифы');
     SetMenuItem(acc_, N85, 'drn85_Списки_льготников');
-    SetMenuItem(acc_, N83, 'drn83_Списки_задолжников');
     SetMenuItem(acc_, N87, 'drn87_Списки_показ_сч');
     SetMenuItem(acc_, N871, 'drn871_Списки_задолжн_OLAP2');
     SetMenuItem(acc_, N872, 'drn872_Списки_задолжн_OLAP3');
@@ -230,6 +226,17 @@ begin
     SetMenuItem(acc_, N90, 'drn90_Редактирование_отчетов');
     SetMenuItem(acc_, N137, 'drn137_Загрузка_ФИАС');
     SetMenuItem(acc_, N49, 'drn49_Статистика_по_льготникам');
+
+    // Рабочее место --> Периодическая
+    SetMenuItem(acc_, N44, 'drn44_Счета');
+    SetMenuItem(acc_, ToolButton15, 'drn44_Счета');
+    SetMenuItem(acc_, N66, 'drn66_Служебные_отчеты_списки');
+    SetMenuItem(acc_, N83, 'drn83_Списки_задолжников');
+    SetMenuItem(acc_, N102, 'drn102_Список_задолжников');
+    SetMenuItem(acc_, N124, 'drn124_Реестр_для_УСЗН');
+    SetMenuItem(acc_, N130, 'drn130_Реестр_для_Фонда_капремонта_МКД');
+    SetMenuItem(acc_, N133, 'drn133_Реестр_для_УСЗН_для_обмена');
+    SetMenuItem(acc_, N138, 'drn138_Обмен_с_ГИС_ЖКХ');
 
   end;
 end;

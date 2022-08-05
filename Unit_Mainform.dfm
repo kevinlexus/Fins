@@ -463,11 +463,6 @@ object Form_Main: TForm_Main
       object N6: TMenuItem
         Caption = #1054#1090#1095#1077#1090#1099
         ImageIndex = 3
-        object N38: TMenuItem
-          Caption = #1055#1086#1076#1087#1080#1089#1100' '#1086#1090#1095#1077#1090#1086#1074
-          ImageIndex = 18
-          OnClick = N38Click
-        end
         object N29: TMenuItem
           Caption = #1054#1087#1083#1072#1090#1072
           ImageIndex = 6
@@ -571,22 +566,6 @@ object Form_Main: TForm_Main
             Caption = #1051#1100#1075#1086#1090#1085#1080#1082#1080' '#1089#1087#1080#1089#1082#1086#1084
             ImageIndex = 20
             OnClick = N85Click
-          end
-        end
-        object N24: TMenuItem
-          Caption = #1042#1099#1087#1086#1083#1085#1077#1085#1080#1077' '#1087#1083#1072#1085#1072
-          ImageIndex = 4
-          Visible = False
-          object N25: TMenuItem
-            Caption = #1055#1077#1095#1072#1090#1100' '#1060'.7.1'
-            Hint = #1042#1099#1087#1086#1083#1085#1077#1085#1080#1077' '#1087#1083#1072#1085#1072
-            ImageIndex = 8
-            OnClick = N25Click
-          end
-          object N26: TMenuItem
-            Caption = #1042#1074#1086#1076' '#1087#1086#1082#1072#1079#1072#1090#1077#1083#1077#1081
-            ImageIndex = 9
-            OnClick = N26Click
           end
         end
         object N39: TMenuItem

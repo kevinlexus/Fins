@@ -35,9 +35,6 @@ type
     N21: TMenuItem;
     N22: TMenuItem;
     N23: TMenuItem;
-    N24: TMenuItem;
-    N25: TMenuItem;
-    N26: TMenuItem;
     N29: TMenuItem;
     N30: TMenuItem;
     N31: TMenuItem;
@@ -47,7 +44,6 @@ type
     Timer_messages: TTimer;
     N27: TMenuItem;
     N35: TMenuItem;
-    N38: TMenuItem;
     N39: TMenuItem;
     N40: TMenuItem;
     N41: TMenuItem;

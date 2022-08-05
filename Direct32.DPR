@@ -489,9 +489,6 @@ begin
   else
     Form_Main.isKartEd1 := False;
 
-  // Отображать ли меню по выполнению плана
-  Form_Main.N25.Enabled := false;
-
   //ShowMessage('10');
     //загружаем параметры для сессии
   DataModule1.UniStoredProc1.StoredProcName := 'scott.utils.prep_users_par';
