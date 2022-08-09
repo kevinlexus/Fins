@@ -415,9 +415,16 @@ object Form_sch_history: TForm_sch_history
                 Top = 8
                 DataBinding.DataField = 'N1'
                 DataBinding.DataSource = DS_meter
+                ParentFont = False
                 Properties.MaskKind = emkRegExprEx
                 Properties.EditMask = '\-?\d{1,8}\.?\d{0,5}'
                 Properties.ReadOnly = True
+                Style.Font.Charset = DEFAULT_CHARSET
+                Style.Font.Color = clWindowText
+                Style.Font.Height = -12
+                Style.Font.Name = 'Tahoma'
+                Style.Font.Style = []
+                Style.IsFontAssigned = True
                 TabOrder = 0
                 OnKeyPress = cxLastValKeyPress
                 Width = 99
@@ -425,9 +432,16 @@ object Form_sch_history: TForm_sch_history
               object cxNewVal: TcxMaskEdit
                 Left = 307
                 Top = 8
+                ParentFont = False
                 Properties.MaskKind = emkRegExprEx
                 Properties.EditMask = '\-?\d{1,8}\.?\d{0,5}'
                 Properties.OnChange = cxNewValPropertiesChange
+                Style.Font.Charset = DEFAULT_CHARSET
+                Style.Font.Color = clWindowText
+                Style.Font.Height = -12
+                Style.Font.Name = 'Tahoma'
+                Style.Font.Style = []
+                Style.IsFontAssigned = True
                 TabOrder = 1
                 OnKeyPress = cxNewValKeyPress
                 Width = 99
@@ -435,8 +449,15 @@ object Form_sch_history: TForm_sch_history
               object cxVal: TcxMaskEdit
                 Left = 475
                 Top = 8
+                ParentFont = False
                 Properties.MaskKind = emkRegExprEx
                 Properties.EditMask = '\-?\d{1,8}\.?\d{0,5}'
+                Style.Font.Charset = DEFAULT_CHARSET
+                Style.Font.Color = clWindowText
+                Style.Font.Height = -12
+                Style.Font.Name = 'Tahoma'
+                Style.Font.Style = []
+                Style.IsFontAssigned = True
                 TabOrder = 2
                 OnKeyPress = cxValKeyPress
                 Width = 99

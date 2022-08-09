@@ -25,8 +25,6 @@ object Form_get_pay_dolg: TForm_get_pay_dolg
     Height = 49
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 321
-    ExplicitWidth = 618
     DesignSize = (
       685
       49)
@@ -58,7 +56,6 @@ object Form_get_pay_dolg: TForm_get_pay_dolg
       ParentFont = False
       TabOrder = 1
       OnClick = Button1Click
-      ExplicitLeft = 481
     end
     object CheckBox1: TCheckBox
       Left = 8
@@ -109,7 +106,6 @@ object Form_get_pay_dolg: TForm_get_pay_dolg
       ParentFont = False
       TabOrder = 3
       OnClick = Button2Click
-      ExplicitLeft = 549
     end
     object Button3: TButton
       Left = 371
@@ -136,10 +132,10 @@ object Form_get_pay_dolg: TForm_get_pay_dolg
       Properties.MaskKind = emkRegExprEx
       Properties.EditMask = '\-?\d{1,10}\.?\d{0,2}'
       Properties.ValidationOptions = [evoShowErrorIcon, evoAllowLoseFocus]
-      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Charset = RUSSIAN_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -15
-      Style.Font.Name = 'MS Sans Serif'
+      Style.Font.Name = 'Tahoma'
       Style.Font.Style = []
       Style.IsFontAssigned = True
       TabOrder = 5
@@ -153,7 +149,6 @@ object Form_get_pay_dolg: TForm_get_pay_dolg
     Width = 685
     Height = 33
     Sections = <>
-    ExplicitWidth = 618
   end
   object cxGrid1: TcxGrid
     Left = 0
@@ -169,8 +164,6 @@ object Form_get_pay_dolg: TForm_get_pay_dolg
     ParentFont = False
     PopupMenu = pm1
     TabOrder = 0
-    ExplicitWidth = 618
-    ExplicitHeight = 288
     object cxGrid1DBTableView1: TcxGridDBTableView
       OnKeyPress = cxGrid1DBTableView1KeyPress
       Navigator.Buttons.CustomButtons = <>

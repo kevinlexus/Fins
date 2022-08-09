@@ -211,6 +211,32 @@ begin
     // показатели
     addDimension('summa', 'Сумма', 2, setCaption);
     addDimension('penya', 'Пеня', 2, setCaption);
+  end
+  else if (reportCd = '54') then
+  begin
+    // Список задолжников
+      // измерения
+    addDimension('lsk', 'Лиц.сч.', 0, setCaption);
+    addDimension('adr', 'Адрес', 0, setCaption);
+    addDimension('fio', 'Ф.И.О.', 0, setCaption);
+    addDimension('cnt_month', 'Месяцев', 0, setCaption);
+    addDimension('dat', 'Дата', 0, setCaption);
+    addDimension('deb_org', 'Орг. задолжника', 0, setCaption);
+    addDimension('st_name', 'Статус', 0, setCaption);
+    addDimension('psch', 'Признак', 0, setCaption);
+    addDimension('street', 'Улица', 0, setCaption);
+    addDimension('nd', 'Дом', 0, setCaption);
+    addDimension('kw', 'Кв', 0, setCaption);
+
+    // фильтр
+    addDimension('name_tr', 'Фонд', 1, setCaption);
+    addDimension('name_reu', 'УК', 1, setCaption);
+
+    // показатели
+    addDimension('dolg', 'Долг', 2, setCaption);
+    addDimension('penya', 'Пеня', 2, setCaption);
+    addDimension('nachisl', 'Начисление', 2, setCaption);
+    addDimension('payment', 'Оплата', 2, setCaption);
   end;
 end;
 
