@@ -300,7 +300,7 @@ end;
 
 begin
   Application.Initialize;
-  //DecimalSeparator := '.';
+//  FormatSettings.DecimalSeparator := '.';
   // загрузить Ini параметры
   //ShowMessage('0');
   loadIniPar;

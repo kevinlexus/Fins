@@ -465,7 +465,7 @@ begin
     //Выход на итог
     count;
     //    cxSumma.SetFocus;
-    Windows.SetFocus(cxSumma.Handle);
+    Windows.SetFocus(cxAmount.Handle);
   end
   else if (OD_usl_chk.FieldByName('iscounter').AsInteger = 0) then
   begin
@@ -478,7 +478,7 @@ begin
     Form_get_pay_dolg.ShowModal;
     //Выход на итог
     count;
-    Windows.SetFocus(cxSumma.Handle);
+    Windows.SetFocus(cxAmount.Handle);
   end
   else
   begin
@@ -1468,12 +1468,11 @@ end;
 procedure TForm_get_pay_nal.cxAmountKeyPress(Sender: TObject;
   var Key: Char);
 begin
+  if RetKey(Key) then
+    Key := '.';
   if Key = #13 then
     //    cxSumma.SetFocus;
     Windows.SetFocus(cxSumma.Handle);
-  if RetKey(Key) then
-    Key := '.';
-
 end;
 
 procedure TForm_get_pay_nal.cxSummaKeyPress(Sender: TObject;
@@ -1482,6 +1481,9 @@ var
   summGet, summItg, summa_: Double;
   err_: Integer;
 begin
+  if RetKey(Key) then
+    Key := '.';
+
   if Key = #13 then
   begin
     if cxSumma.Text = '' then
@@ -1534,8 +1536,6 @@ begin
     //    Button1.SetFocus;
     Windows.SetFocus(Button1.Handle);
   end;
-  if RetKey(Key) then
-    Key := '.';
 end;
 
 procedure TForm_get_pay_nal.cxGridDBTableView1KeyDown(Sender: TObject;

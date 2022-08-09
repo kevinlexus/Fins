@@ -4,13 +4,12 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, OracleData, StdCtrls, Mask,
-  Menus, cxClasses, cxPropertiesStore, ComCtrls,
-  cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxStyles,
-  cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
+  Dialogs, DB, OracleData, StdCtrls, Mask, Menus, cxClasses, cxPropertiesStore,
+  ComCtrls, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
+  cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
   cxDBData, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
-  cxGridLevel, cxGridCustomView, cxGrid, cxMaskEdit, cxContainer,
-  cxTextEdit, dxSkinsCore, dxSkinsDefaultPainters, dxDateRanges;
+  cxGridLevel, cxGridCustomView, cxGrid, cxMaskEdit, cxContainer, cxTextEdit,
+  dxSkinsCore, dxSkinsDefaultPainters, dxDateRanges;
 
 type
   TForm_get_pay_dolg = class(TForm)
@@ -47,16 +46,12 @@ type
     procedure btn1Click(Sender: TObject);
     procedure N1Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
-    procedure cxGrid1DBTableView1FocusedItemChanged(
-      Sender: TcxCustomGridTableView; APrevFocusedItem,
-      AFocusedItem: TcxCustomGridTableItem);
-    procedure cxGrid1DBTableView1KeyPress(Sender: TObject; var Key: Char);
+    procedure cxGrid1DBTableView1FocusedItemChanged(Sender: TcxCustomGridTableView; APrevFocusedItem, AFocusedItem: TcxCustomGridTableItem);
     procedure cxSummaKeyPress(Sender: TObject; var Key: Char);
-    procedure cxGrid1DBTableView1EditKeyDown(Sender: TcxCustomGridTableView;
-      AItem: TcxCustomGridTableItem; AEdit: TcxCustomEdit; var Key: Word;
-      Shift: TShiftState);
-  private
-    { Private declarations }
+    procedure cxGrid1DBTableView1EditKeyDown(Sender: TcxCustomGridTableView; AItem: TcxCustomGridTableItem; AEdit: TcxCustomEdit; var Key: Word; Shift: TShiftState);
+    procedure cxGrid1DBTableView1EditKeyPress(Sender: TcxCustomGridTableView;
+      AItem: TcxCustomGridTableItem; AEdit: TcxCustomEdit; var Key: Char);
+  private    { Private declarations }
   public
     procedure recalc;
     { Public declarations }
@@ -65,14 +60,15 @@ type
 var
   Form_get_pay_dolg: TForm_get_pay_dolg;
 
+
 implementation
 
-uses Unit_get_pay_nal, Utils, Math, DM_module1;
+uses
+  Unit_get_pay_nal, Utils, Math, DM_module1;
 
 {$R *.dfm}
 
-procedure TForm_get_pay_dolg.FormClose(Sender: TObject;
-  var Action: TCloseAction);
+procedure TForm_get_pay_dolg.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   cxprprtstr1.StoreTo(True);
   Action := caFree;
@@ -125,13 +121,11 @@ begin
   AColumn := cxGrid1DBTableView1.GetColumnByFieldName('SUMMA');
   if AColumn <> nil then
   begin
-    ASummaryItem :=
-      cxGrid1DBTableView1.DataController.Summary.FooterSummaryItems.GetDataItem(AColumn.Index, spFooter);
+    ASummaryItem := cxGrid1DBTableView1.DataController.Summary.FooterSummaryItems.GetDataItem(AColumn.Index, spFooter);
     if ASummaryItem <> nil then
     begin
       ASummaryIndex := ASummaryItem.Index;
-      sResult :=
-        VarToStr(cxGrid1DBTableView1.DataController.Summary.FooterSummaryValues[ASummaryIndex]);
+      sResult := VarToStr(cxGrid1DBTableView1.DataController.Summary.FooterSummaryValues[ASummaryIndex]);
       summa := StrToFloat(sResult);
     end;
   end;
@@ -139,13 +133,11 @@ begin
   AColumn := cxGrid1DBTableView1.GetColumnByFieldName('PENYA');
   if AColumn <> nil then
   begin
-    ASummaryItem :=
-      cxGrid1DBTableView1.DataController.Summary.FooterSummaryItems.GetDataItem(AColumn.Index, spFooter);
+    ASummaryItem := cxGrid1DBTableView1.DataController.Summary.FooterSummaryItems.GetDataItem(AColumn.Index, spFooter);
     if ASummaryItem <> nil then
     begin
       ASummaryIndex := ASummaryItem.Index;
-      sResult :=
-        VarToStr(cxGrid1DBTableView1.DataController.Summary.FooterSummaryValues[ASummaryIndex]);
+      sResult := VarToStr(cxGrid1DBTableView1.DataController.Summary.FooterSummaryValues[ASummaryIndex]);
       penya := StrToFloat(sResult);
     end;
   end;
@@ -153,13 +145,11 @@ begin
   AColumn := cxGrid1DBTableView1.GetColumnByFieldName('ITOG');
   if AColumn <> nil then
   begin
-    ASummaryItem :=
-      cxGrid1DBTableView1.DataController.Summary.FooterSummaryItems.GetDataItem(AColumn.Index, spFooter);
+    ASummaryItem := cxGrid1DBTableView1.DataController.Summary.FooterSummaryItems.GetDataItem(AColumn.Index, spFooter);
     if ASummaryItem <> nil then
     begin
       ASummaryIndex := ASummaryItem.Index;
-      sResult :=
-        VarToStr(cxGrid1DBTableView1.DataController.Summary.FooterSummaryValues[ASummaryIndex]);
+      sResult := VarToStr(cxGrid1DBTableView1.DataController.Summary.FooterSummaryValues[ASummaryIndex]);
       itog := StrToFloat(sResult);
     end;
   end;
@@ -194,15 +184,12 @@ procedure TForm_get_pay_dolg.recalc;
 var
   penya_, summa_, itog_, itogD_, proc1_, penya2_, tt2: Double;
 begin
-  penya_ :=
-    cxGrid1DBTableView1.DataController.DataSource.DataSet.FieldByName('PENYA').AsFloat;
-  summa_ :=
-    cxGrid1DBTableView1.DataController.DataSource.DataSet.FieldByName('SUMMA').AsFloat;
+  penya_ := cxGrid1DBTableView1.DataController.DataSource.DataSet.FieldByName('PENYA').AsFloat;
+  summa_ := cxGrid1DBTableView1.DataController.DataSource.DataSet.FieldByName('SUMMA').AsFloat;
   itogD_ := summa_ + penya_;
   if (itogD_ <> 0) and not (CheckBox1.Checked) then
   begin
-    itog_ :=
-      cxGrid1DBTableView1.DataController.DataSource.DataSet.FieldByName('ITOG').AsFloat;
+    itog_ := cxGrid1DBTableView1.DataController.DataSource.DataSet.FieldByName('ITOG').AsFloat;
 
     proc1_ := (summa_ / itogD_); // % суммы долга
 
@@ -247,13 +234,9 @@ end;
 procedure TForm_get_pay_dolg.N1Click(Sender: TObject);
 begin
   //убрать входящее сальдо по пене
-  if DataModule1.OraclePackage1.CallIntegerFunction
-    ('scott.C_CPENYA.corr_sal_pen',
-    [Form_get_pay_nal.cxLsk.Text,
-    Form_get_pay_nal.OD_chargepay.FieldByName('mg').AsString]) <> 0 then
+  if DataModule1.OraclePackage1.CallIntegerFunction('scott.C_CPENYA.corr_sal_pen', [Form_get_pay_nal.cxLsk.Text, Form_get_pay_nal.OD_chargepay.FieldByName('mg').AsString]) <> 0 then
   begin
-    msg2('Входящего сальдо по пене нет, либо уже удалено!', 'Внимание!', MB_OK +
-      MB_ICONSTOP);
+    msg2('Входящего сальдо по пене нет, либо уже удалено!', 'Внимание!', MB_OK + MB_ICONSTOP);
   end
   else
   begin
@@ -280,9 +263,7 @@ begin
   Form_get_pay_nal.reLoadDeb;
 end;
 
-procedure TForm_get_pay_dolg.cxGrid1DBTableView1FocusedItemChanged(
-  Sender: TcxCustomGridTableView; APrevFocusedItem,
-  AFocusedItem: TcxCustomGridTableItem);
+procedure TForm_get_pay_dolg.cxGrid1DBTableView1FocusedItemChanged(Sender: TcxCustomGridTableView; APrevFocusedItem, AFocusedItem: TcxCustomGridTableItem);
 var
   summa, penya: Double;
   {  recIdx, colIdx: Integer;
@@ -292,12 +273,9 @@ begin
   if (AFocusedItem = cxGrid1DBTableView1ITOG) then
   begin
 
-    summa :=
-      cxGrid1DBTableView1.DataController.DataSource.DataSet.FieldByName('SUMMA').AsFloat;
-    penya :=
-      cxGrid1DBTableView1.DataController.DataSource.DataSet.FieldByName('PENYA').AsFloat;
-    cxGrid1DBTableView1.DataController.DataSource.DataSet.FieldByName('ITOG').AsFloat :=
-      summa + penya;
+    summa := cxGrid1DBTableView1.DataController.DataSource.DataSet.FieldByName('SUMMA').AsFloat;
+    penya := cxGrid1DBTableView1.DataController.DataSource.DataSet.FieldByName('PENYA').AsFloat;
+    cxGrid1DBTableView1.DataController.DataSource.DataSet.FieldByName('ITOG').AsFloat := summa + penya;
   end;
 
   {  recIdx := cxGrid1DBTableView1.Controller.SelectedRecords[0].RecordIndex;
@@ -320,9 +298,7 @@ begin
   //    StrToFloat(summaStr) + StrToFloat(penyaStr)+77777;
 end;
 
-procedure TForm_get_pay_dolg.cxGrid1DBTableView1EditKeyDown(
-  Sender: TcxCustomGridTableView; AItem: TcxCustomGridTableItem;
-  AEdit: TcxCustomEdit; var Key: Word; Shift: TShiftState);
+procedure TForm_get_pay_dolg.cxGrid1DBTableView1EditKeyDown(Sender: TcxCustomGridTableView; AItem: TcxCustomGridTableItem; AEdit: TcxCustomEdit; var Key: Word; Shift: TShiftState);
 var
   isItog: Boolean;
 begin
@@ -336,25 +312,22 @@ begin
     begin
       if (Key = 13) and (isItog = true) then
       begin
-        if (cxGrid1DBTableView1.DataController.DataSource.DataSet.Eof = true)
-          then
+        if (cxGrid1DBTableView1.DataController.DataSource.DataSet.Eof = true) then
         begin
           exit_ok;
           Close;
         end
-        else if (cxGrid1DBTableView1.DataController.DataSource.DataSet.Eof <>
-          true) then
+        else if (cxGrid1DBTableView1.DataController.DataSource.DataSet.Eof <> true) then
         begin
           //key := #40;
           cxGrid1DBTableView1.DataController.DataSource.DataSet.Next;
-          if (cxGrid1DBTableView1.DataController.DataSource.DataSet.Eof = true)
-            then
+          if (cxGrid1DBTableView1.DataController.DataSource.DataSet.Eof = true) then
           begin
             exit_ok;
             Close;
           end
           else
-          null;
+            null;
               //   key := 40;
         end;
       end;
@@ -362,23 +335,24 @@ begin
   end;
 end;
 
-procedure TForm_get_pay_dolg.cxGrid1DBTableView1KeyPress(Sender: TObject;
-  var Key: Char);
+procedure TForm_get_pay_dolg.cxGrid1DBTableView1EditKeyPress(
+  Sender: TcxCustomGridTableView; AItem: TcxCustomGridTableItem;
+  AEdit: TcxCustomEdit; var Key: Char);
+begin
+  if RetKey(Key) then
+    Key := '.';
+end;
+
+procedure TForm_get_pay_dolg.cxSummaKeyPress(Sender: TObject; var Key: Char);
 begin
   if RetKey(Key) then
     Key := '.';
 
-end;
-
-procedure TForm_get_pay_dolg.cxSummaKeyPress(Sender: TObject;
-  var Key: Char);
-begin
   if Key = #13 then
   begin
     if cxSumma.Text <> '' then
     begin
-      Form_get_pay_nal.distPay(StrToFloat(cxSumma.Text), True, True, True,
-        False);
+      Form_get_pay_nal.distPay(StrToFloat(cxSumma.Text), True, True, True, False);
     end;
     Windows.SetFocus(Button1.Handle);
   end;

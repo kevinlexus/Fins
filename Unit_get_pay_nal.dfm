@@ -4,7 +4,7 @@ object Form_get_pay_nal: TForm_get_pay_nal
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #1042#1074#1086#1076' '#1086#1087#1083#1072#1090#1099
   ClientHeight = 370
-  ClientWidth = 617
+  ClientWidth = 636
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -25,7 +25,7 @@ object Form_get_pay_nal: TForm_get_pay_nal
   object GroupBox1: TGroupBox
     Left = 0
     Top = 21
-    Width = 617
+    Width = 636
     Height = 48
     Align = alTop
     TabOrder = 0
@@ -59,12 +59,12 @@ object Form_get_pay_nal: TForm_get_pay_nal
       Left = 208
       Top = 11
       Width = 417
-      Height = 24
-      Font.Charset = DEFAULT_CHARSET
+      Height = 26
+      Font.Charset = RUSSIAN_CHARSET
       Font.Color = clWindowText
       Font.Height = -15
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
+      Font.Name = 'Tahoma'
+      Font.Style = []
       ParentFont = False
       ReadOnly = True
       TabOrder = 1
@@ -76,10 +76,10 @@ object Form_get_pay_nal: TForm_get_pay_nal
       Properties.MaskKind = emkRegExpr
       Properties.EditMask = '\d{8}'
       Properties.ValidationOptions = [evoAllowLoseFocus]
-      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Charset = RUSSIAN_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -15
-      Style.Font.Name = 'MS Sans Serif'
+      Style.Font.Name = 'Tahoma'
       Style.Font.Style = []
       Style.IsFontAssigned = True
       TabOrder = 0
@@ -91,12 +91,12 @@ object Form_get_pay_nal: TForm_get_pay_nal
   object GroupBox2: TGroupBox
     Left = 0
     Top = 308
-    Width = 617
+    Width = 636
     Height = 42
     Align = alBottom
     TabOrder = 1
     DesignSize = (
-      617
+      636
       42)
     object Label3: TLabel
       Left = 162
@@ -138,7 +138,7 @@ object Form_get_pay_nal: TForm_get_pay_nal
       ParentFont = False
     end
     object Button1: TButton
-      Left = 525
+      Left = 544
       Top = 11
       Width = 80
       Height = 25
@@ -160,10 +160,10 @@ object Form_get_pay_nal: TForm_get_pay_nal
       Properties.MaskKind = emkRegExprEx
       Properties.EditMask = '\-?\d{1,10}\.?\d{0,2}'
       Properties.ValidationOptions = [evoShowErrorIcon, evoAllowLoseFocus]
-      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Charset = RUSSIAN_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -15
-      Style.Font.Name = 'MS Sans Serif'
+      Style.Font.Name = 'Tahoma'
       Style.Font.Style = []
       Style.IsFontAssigned = True
       TabOrder = 1
@@ -177,10 +177,10 @@ object Form_get_pay_nal: TForm_get_pay_nal
       Properties.MaskKind = emkRegExprEx
       Properties.EditMask = '\-?\d{1,10}\.?\d{0,2}'
       Properties.ValidationOptions = [evoShowErrorIcon, evoAllowLoseFocus]
-      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Charset = RUSSIAN_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -15
-      Style.Font.Name = 'MS Sans Serif'
+      Style.Font.Name = 'Tahoma'
       Style.Font.Style = []
       Style.IsFontAssigned = True
       TabOrder = 2
@@ -193,11 +193,12 @@ object Form_get_pay_nal: TForm_get_pay_nal
       ParentFont = False
       Properties.MaskKind = emkRegExprEx
       Properties.EditMask = '\-?\d{1,10}\.?\d{0,2}'
+      Properties.ReadOnly = True
       Properties.ValidationOptions = [evoShowErrorIcon, evoAllowLoseFocus]
-      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Charset = RUSSIAN_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -15
-      Style.Font.Name = 'MS Sans Serif'
+      Style.Font.Name = 'Tahoma'
       Style.Font.Style = []
       Style.IsFontAssigned = True
       TabOrder = 3
@@ -207,14 +208,14 @@ object Form_get_pay_nal: TForm_get_pay_nal
   object StatusBar1: TStatusBar
     Left = 0
     Top = 350
-    Width = 617
+    Width = 636
     Height = 20
     Panels = <>
   end
   object ToolBar1: TToolBar
     Left = 0
     Top = 0
-    Width = 617
+    Width = 636
     Height = 21
     AutoSize = True
     ButtonHeight = 21
@@ -249,7 +250,7 @@ object Form_get_pay_nal: TForm_get_pay_nal
   object PageControl1: TPageControl
     Left = 0
     Top = 69
-    Width = 617
+    Width = 636
     Height = 239
     ActivePage = TabSheet1
     Align = alClient
@@ -264,7 +265,7 @@ object Form_get_pay_nal: TForm_get_pay_nal
       object cxGrid2: TcxGrid
         Left = 0
         Top = 0
-        Width = 609
+        Width = 628
         Height = 211
         Align = alClient
         Font.Charset = DEFAULT_CHARSET
