@@ -25,7 +25,7 @@ object Form_chargepay: TForm_chargepay
     Top = 0
     Width = 819
     Height = 383
-    ActivePage = TabSheet5
+    ActivePage = TabSheet2
     Align = alClient
     TabOrder = 1
     OnChange = PageControl1Change
@@ -881,7 +881,6 @@ object Form_chargepay: TForm_chargepay
     Master = Form_list_kart.OD_list_kart
     MasterFields = 'lsk'
     Session = DataModule1.OracleSession1
-    Active = True
     Left = 24
     Top = 280
   end
@@ -987,7 +986,6 @@ object Form_chargepay: TForm_chargepay
     Master = Form_list_kart.OD_list_kart
     MasterFields = 'lsk'
     Session = DataModule1.OracleSession1
-    Active = True
     Left = 152
     Top = 248
   end

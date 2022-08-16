@@ -490,12 +490,6 @@ object Form_Main: TForm_Main
         object N18: TMenuItem
           Caption = #1057#1072#1083#1100#1076#1086
           ImageIndex = 7
-          object N19: TMenuItem
-            Caption = #1054#1073#1086#1088#1086#1090#1085#1072#1103' '#1074#1077#1076'-'#1089#1090#1100' '#1087#1086' '#1076#1086#1084#1072#1084' '#1060'.5.1'
-            ImageIndex = 7
-            Visible = False
-            OnClick = N19Click
-          end
           object N512: TMenuItem
             Caption = #1054#1073#1086#1088#1086#1090#1085#1072#1103' '#1074#1077#1076#1086#1084#1086#1089#1090#1100' '#1087#1086' '#1076#1086#1084#1072#1084' '#1060'.5.1 '#1089' '#1092#1080#1083#1100#1090#1088#1086#1084
             ImageIndex = 7
@@ -506,22 +500,10 @@ object Form_Main: TForm_Main
             ImageIndex = 7
             OnClick = N521Click
           end
-          object N20: TMenuItem
-            Caption = #1054#1073#1086#1088#1086#1090#1085#1072#1103' '#1074#1077#1076'-'#1089#1090#1100' '#1087#1086' '#1087#1086#1089#1090#1072#1074#1097#1080#1082#1072#1084' '#1091#1089#1083#1091#1075' '#1060'.5.2'
-            ImageIndex = 7
-            Visible = False
-            OnClick = N20Click
-          end
           object N23: TMenuItem
             Caption = #1054#1073#1086#1088#1086#1090#1085#1072#1103' '#1074#1077#1076#1086#1084#1086#1089#1090#1100' '#1087#1086' '#1091#1089#1083#1091#1075#1072#1084' '#1060'.5.3'
             ImageIndex = 7
             OnClick = N23Click
-          end
-          object N50: TMenuItem
-            Caption = #1054#1073#1086#1088#1086#1090#1099' '#1087#1086' '#1076#1086#1084#1072#1084' '#1060'.5.4'
-            ImageIndex = 7
-            Visible = False
-            OnClick = N50Click
           end
           object N17: TMenuItem
             AutoHotkeys = maAutomatic

@@ -28,8 +28,6 @@ type
     ImageList1: TImageList;
     N13: TMenuItem;
     N18: TMenuItem;
-    N19: TMenuItem;
-    N20: TMenuItem;
     OD_params: TOracleDataSet;
     DS_param_exit: TDataSource;
     N21: TMenuItem;
@@ -52,7 +50,6 @@ type
     N45: TMenuItem;
     N46: TMenuItem;
     N49: TMenuItem;
-    N50: TMenuItem;
     N17: TMenuItem;
     N89: TMenuItem;
     N47: TMenuItem;
