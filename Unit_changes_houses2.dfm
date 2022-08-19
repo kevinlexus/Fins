@@ -2,7 +2,7 @@ object Form_changes_houses2: TForm_changes_houses2
   Left = 527
   Top = 540
   Caption = #1055#1077#1088#1077#1088#1072#1089#1095#1077#1090#1099
-  ClientHeight = 573
+  ClientHeight = 743
   ClientWidth = 887
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -22,12 +22,12 @@ object Form_changes_houses2: TForm_changes_houses2
     Left = 0
     Top = 0
     Width = 887
-    Height = 573
+    Height = 723
     Align = alClient
     TabOrder = 0
     Properties.ActivePage = cxTabSheet
     Properties.CustomButtons.Buttons = <>
-    ClientRectBottom = 569
+    ClientRectBottom = 719
     ClientRectLeft = 4
     ClientRectRight = 883
     ClientRectTop = 24
@@ -36,7 +36,7 @@ object Form_changes_houses2: TForm_changes_houses2
       ImageIndex = 0
       object GroupBox1: TGroupBox
         Left = 0
-        Top = 320
+        Top = 470
         Width = 879
         Height = 225
         Align = alBottom
@@ -507,14 +507,14 @@ object Form_changes_houses2: TForm_changes_houses2
         Left = 0
         Top = 0
         Width = 879
-        Height = 320
+        Height = 470
         Align = alClient
         TabOrder = 1
         object cxGrid1: TcxGrid
           Left = 1
           Top = 1
           Width = 877
-          Height = 318
+          Height = 468
           Align = alClient
           TabOrder = 0
           object cxGrid1DBTableView1: TcxGridDBTableView
@@ -568,7 +568,7 @@ object Form_changes_houses2: TForm_changes_houses2
         Left = 0
         Top = 0
         Width = 879
-        Height = 545
+        Height = 695
         Align = alClient
         TabOrder = 0
         object cxgrdbtblvwGrid1DBTableView1: TcxGridDBTableView
@@ -627,6 +627,35 @@ object Form_changes_houses2: TForm_changes_houses2
         object cxgrd1Level1: TcxGridLevel
           GridView = cxgrdbtblvwGrid1DBTableView1
         end
+      end
+    end
+  end
+  object dxStatusBar1: TdxStatusBar
+    Left = 0
+    Top = 723
+    Width = 887
+    Height = 20
+    Panels = <
+      item
+        PanelStyleClassName = 'TdxStatusBarContainerPanelStyle'
+        PanelStyle.Container = dxStatusBar1Container1
+      end>
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    object dxStatusBar1Container1: TdxStatusBarContainerControl
+      Left = 2
+      Top = 4
+      Width = 867
+      Height = 14
+      object cxProgressBar1: TcxProgressBar
+        Left = 0
+        Top = 0
+        Align = alClient
+        TabOrder = 0
+        Width = 867
       end
     end
   end

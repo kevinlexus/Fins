@@ -387,6 +387,9 @@ begin
 
   Form_Main.OracleEvent1.Start;
   Form_Main.User := User;
+  // по умолчанию - прод
+  Form_Main.javaServerUrl := 'http://127.0.0.1:8100';
+
   //ShowMessage('7');
   //ShowMessage('8');
 

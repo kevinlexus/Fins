@@ -1,11 +1,12 @@
 unit Utils;
 
 interface
-uses Forms, Classes, SysUtils, Dialogs, OracleData, DB, Windows,
-  DM_module1, oracle, Math, ShlObj, Controls, Messages,
-  ComCtrls, Menus, Unit_smpl_chk, StrUtils, Winsock, Uni, Variants,
-  cxCustomData,
-  cxDBData, cxFilter, IdHTTP, DBF;
+
+uses
+  Forms, Classes, SysUtils, Dialogs, OracleData, DB, Windows, DM_module1, oracle,
+  Math, ShlObj, Controls, Messages, ComCtrls, Menus, Unit_smpl_chk, StrUtils,
+  Winsock, Uni, Variants, cxCustomData, cxDBData, cxFilter, IdHTTP, DBF,
+  REST.Types, System.NetConsts;
 
 // тип - запись о правах редактирования пользователя
 type
@@ -15,6 +16,7 @@ type
     cd: string;
     isAccessGranted: Boolean;
   end;
+
 type
   TAccessRecArray = array of TAccessRec;
 
@@ -28,6 +30,7 @@ type
     s1: string; // значение типа Varchar2
     d1: TDateTime; // значение типа Date
   end;
+
 type
   TParamRecArray = array of TParamRec;
 
@@ -37,67 +40,106 @@ type
     id: Integer; // ID
     cd: string; // CD
   end;
+
 type
   TUListRecArray = array of TUListRec;
 
 function FF(formName: string; show: Integer): Integer; //FindForm
+
 procedure msg2(str1: string; str2: string; Flags_: Longint);
+
 function msg3(str1: string; str2: string; Flags_: Longint): Longint;
+
 procedure msg4(str1: string; str2: string; Flags_: Longint);
+
 procedure LockControl(c: TWinControl; bLock: Boolean);
+
 function isaccess(str1: string): Integer;
+
 function InitCap(str_: string): string;
+
 function SuperStrToDouble(S: string; Value: double): double;
+
 function RetKey(Key_: Char): Boolean;
+
 function NvlStr(Str_: string; Str2_: string): string;
+
 function IntToBin(Value: LongInt; Size: Integer): string;
+
 function BinToInt(Value: string): LongInt;
-function Convert(numstring: string; fromdigit: integer; todigit: integer):
-  string;
+
+function Convert(numstring: string; fromdigit: integer; todigit: integer): string;
+
 function lpadBytes(inStr_: string; digit_: Integer): string;
+
 function lpad(inStr_: string; digit_: Integer): string;
+
 function simplBitSum(str_, str2_: string): string;
+
 function selectDir(hwnd_: hwnd): string;
-procedure change_alias(dset: TOracleDataset; str1: string; str2: string);
-overload;
-procedure change_alias(AODset: array of TOracleDataset; str1: string; str2:
-  string); overload;
-procedure change_alias(dset: TOracleDataset; str1: string; str2: string;
-  reopenDS: Boolean); overload;
-function exp_to_txt(dset: TUniQuery; path_: string; fname_: string;
-  fldsum_: string; issum_: Integer; iscnt_: Integer; ishead_: Integer; oem_:
-  integer; bank_cd_: string): Integer;
+
+procedure change_alias(dset: TOracleDataset; str1: string; str2: string); overload;
+
+procedure change_alias(AODset: array of TOracleDataset; str1: string; str2: string); overload;
+
+procedure change_alias(dset: TOracleDataset; str1: string; str2: string; reopenDS: Boolean); overload;
+
+function exp_to_txt(dset: TUniQuery; path_: string; fname_: string; fldsum_: string; issum_: Integer; iscnt_: Integer; ishead_: Integer; oem_: integer; bank_cd_: string): Integer;
+
 procedure SetMenu(acc_: Integer);
+
 procedure SetMenuItem(acc_: Integer; Obj1: TComponent; str_: string);
+
 function have_rights(str_: string): Integer;
+
 procedure DisableGhosting;
+
 function simplBitInvrt(l_str: string): string;
+
 function smpl_chk(p_var: Integer): Integer;
-function checkAccessRigths(var al: TAccessRecArray; pReu: string;
-  pPaspOrg: Integer; pCd: string): Boolean;
+
+function checkAccessRigths(var al: TAccessRecArray; pReu: string; pPaspOrg: Integer; pCd: string): Boolean;
+
 function getDoublePar(var al: TParamRecArray; pCd: string): Double;
+
 function LeftPad(value: string; length: integer; pad: char): string;
-function IsEqual(const ANumber1, ANumber2: Double; const AMargin: Double):
-  Boolean;
+
+function IsEqual(const ANumber1, ANumber2: Double; const AMargin: Double): Boolean;
+
 function GetLocalIP: string;
+
 function VarToInt(var AVariant: variant; DefaultValue: integer = 0): integer;
+
 function getS_date_param(strPar: string): TDateTime;
+
 function getS_double_param(strPar: string): Double;
+
 function getS_str_param(strPar: string): string;
+
 function getS_list_param(strPar: string): Integer;
-procedure splitStr(const Source, Delimiter: string; var DelimitedList:
-  TStringList);
+
+procedure splitStr(const Source, Delimiter: string; var DelimitedList: TStringList);
+
 function removeControl(const S: string): string;
+
 procedure logText(text: string);
-procedure ApplySearchFilter(Controller: TcxDBDataController; Fields: string;
-  Text: string);
+
+procedure ApplySearchFilter(Controller: TcxDBDataController; Fields: string; Text: string);
+
 function CheckAccess(privelege: string): Boolean;
+
 procedure loadListIdCd(var al: TUListRecArray);
+
 function getListIdByCd(var al: TUListRecArray; pId: Integer): string;
+
 function exp_to_dbf(dset: TDataSet; dbfname_: string): Integer;
 
+function restRequest(resource, param: string; method: TRESTRequestMethod): string;
+
 implementation
-uses Unit_Mainform;
+
+uses
+  Unit_Mainform;
 
 procedure DisableGhosting;
 var
@@ -107,8 +149,7 @@ begin
   User32 := GetModuleHandle('USER32');
   if User32 <> 0 then
   begin
-    DisableProcessWindowsGhosting := GetProcAddress(User32,
-      'DisableProcessWindowsGhosting');
+    DisableProcessWindowsGhosting := GetProcAddress(User32, 'DisableProcessWindowsGhosting');
     if assigned(DisableProcessWindowsGhosting) then
       DisableProcessWindowsGhosting;
   end;
@@ -146,7 +187,7 @@ begin
     SetMenuItem(acc_, N46, 'drn46_Корректировка_сальдо_опл');
     SetMenuItem(acc_, N27, 'drn27_Пеня');
 //    SetMenuItem(acc_, N37, 'drn37_Оплата_банка');
-    SetMenuItem(acc_, N50, 'drn50_Обороты_по_домам');
+//    SetMenuItem(acc_, N50, 'drn50_Обороты_по_домам');
 //    SetMenuItem(acc_, N38, 'drn38_Подпись_отчетов');
     SetMenuItem(acc_, N41, 'drn41_Статистика_по_приват');
     SetMenuItem(acc_, N40, 'drn40_Сведения_по_льготам');
@@ -239,19 +280,16 @@ begin
     SetMenuItem(acc_, N138, 'drn138_Обмен_с_ГИС_ЖКХ');
 
     // Рабочее место --> Отчеты --> Сальдо
-    SetMenuItem(acc_, N512, 'drnN512_Оборотная_ведомость_по_домам_5_1');
-    SetMenuItem(acc_, N521, 'drnN521_Оборотная_ведомость_по_поставщикам_5_2');
-    SetMenuItem(acc_, N23, 'drnN23_Оборотная_ведомость_по_услугам_5_3');
-
+    SetMenuItem(acc_, N512, 'drnN512_Обор_по_домам_5_1');
+    SetMenuItem(acc_, N521, 'drnN521_Обор_по_пост_5_2');
+    SetMenuItem(acc_, N23, 'drnN23_Обор_по_услугам_5_3');
 
   end;
 end;
 
 function CheckAccess(privelege: string): Boolean;
 begin
-  Result := DataModule1.UniTablePriveleges.Locate('priv_name',
-    AnsiUpperCase(privelege),
-    [loCaseInsensitive]);
+  Result := DataModule1.UniTablePriveleges.Locate('priv_name', AnsiUpperCase(privelege), [loCaseInsensitive]);
 end;
 
 procedure SetMenuItem(acc_: Integer; Obj1: TComponent; str_: string);
@@ -262,8 +300,7 @@ begin
   begin
     if str_ <> '' then
     begin
-      if DataModule1.UniTablePriveleges.Locate('priv_name', AnsiUpperCase(str_),
-        [loCaseInsensitive]) then
+      if DataModule1.UniTablePriveleges.Locate('priv_name', AnsiUpperCase(str_), [loCaseInsensitive]) then
         l_cnt := 1;
     end;
     if l_cnt = 1 then
@@ -288,9 +325,7 @@ begin
         TMenuItem(Obj1).Tag := 0;
       end
       else
-        msg2('Некорректное использование процедуры SetMenuItem! c компонентом: '
-          +
-          TComponent(Obj1).Name, 'Внимание!', MB_OK);
+        msg2('Некорректное использование процедуры SetMenuItem! c компонентом: ' + TComponent(Obj1).Name, 'Внимание!', MB_OK);
     end
     else
     begin
@@ -313,9 +348,7 @@ begin
         TMenuItem(Obj1).Tag := 1;
       end
       else
-        msg2('Некорректное использование процедуры SetMenuItem! c компонентом: '
-          +
-          TComponent(Obj1).Name, 'Внимание!', MB_OK);
+        msg2('Некорректное использование процедуры SetMenuItem! c компонентом: ' + TComponent(Obj1).Name, 'Внимание!', MB_OK);
     end;
 
   end
@@ -331,8 +364,7 @@ begin
       TMenuItem(Obj1).Enabled := False;
     end
     else
-      msg2('Некорректное использование процедуры SetMenuItem! c компонентом: ' +
-        TComponent(Obj1).Name, 'Внимание!', MB_OK);
+      msg2('Некорректное использование процедуры SetMenuItem! c компонентом: ' + TComponent(Obj1).Name, 'Внимание!', MB_OK);
   end
   else if acc_ = 2 then
   begin
@@ -352,8 +384,7 @@ begin
         TMenuItem(Obj1).Enabled := False;
     end
     else
-      msg2('Некорректное использование процедуры SetMenuItem! c компонентом: ' +
-        TComponent(Obj1).Name, 'Внимание!', MB_OK);
+      msg2('Некорректное использование процедуры SetMenuItem! c компонентом: ' + TComponent(Obj1).Name, 'Внимание!', MB_OK);
   end;
 
 end;
@@ -368,8 +399,7 @@ begin
   err_ := 0;
   try
     if str_ <> '' then
-      DataModule1.OraclePackage1.CallProcedure
-        ('scott.' + str_, [parNone]);
+      DataModule1.OraclePackage1.CallProcedure('scott.' + str_, [parNone]);
   except
     err_ := 1;
   end;
@@ -384,8 +414,7 @@ var
 begin
   i := 1;
   try
-    DataModule1.OraclePackage1.CallProcedure
-      (str1, [parNone]);
+    DataModule1.OraclePackage1.CallProcedure(str1, [parNone]);
   except
     i := 0;
   end;
@@ -401,8 +430,7 @@ begin
   else
   begin
     SendMessage(c.Handle, WM_SETREDRAW, 1, 0);
-    RedrawWindow(c.Handle, nil, 0,
-      RDW_ERASE or RDW_FRAME or RDW_INVALIDATE or RDW_ALLCHILDREN);
+    RedrawWindow(c.Handle, nil, 0, RDW_ERASE or RDW_FRAME or RDW_INVALIDATE or RDW_ALLCHILDREN);
   end;
 end;
 
@@ -414,8 +442,7 @@ begin
   //функция простого битового "И" строки
   //строки должны быть одинаковой длины!
   if Length(str_) <> Length(str2_) then
-    msg2('Строки неверной длины, ошибка использования функции Utils.simplBitSum!',
-      'Внимание!', MB_OK + MB_ICONINFORMATION);
+    msg2('Строки неверной длины, ошибка использования функции Utils.simplBitSum!', 'Внимание!', MB_OK + MB_ICONINFORMATION);
 
   SetLength(strnew_, Length(str_));
   for i := 1 to length(str_) do
@@ -448,8 +475,7 @@ begin
   Result := l_strnew;
 end;
 
-function Convert(numstring: string; fromdigit: integer; todigit: integer):
-  string;
+function Convert(numstring: string; fromdigit: integer; todigit: integer): string;
 var
   i, k: longint;
   num: extended;
@@ -541,11 +567,11 @@ var
   a, b: Integer;
 begin
   digit_ := digit_ * 2;
-  if Length(instr_) < digit_ then
+  if Length(inStr_) < digit_ then
   begin
-    instr_ := StringOfChar('0', digit_ - Length(instr_)) + instr_;
+    inStr_ := StringOfChar('0', digit_ - Length(inStr_)) + inStr_;
   end;
-  Result := instr_;
+  Result := inStr_;
 end;
 
 function lpad(inStr_: string; digit_: Integer): string;
@@ -554,11 +580,11 @@ var
   a, b: Integer;
 begin
   digit_ := digit_;
-  if Length(instr_) < digit_ then
+  if Length(inStr_) < digit_ then
   begin
-    instr_ := StringOfChar('0', digit_ - Length(instr_)) + instr_;
+    inStr_ := StringOfChar('0', digit_ - Length(inStr_)) + inStr_;
   end;
-  Result := instr_;
+  Result := inStr_;
 end;
 
 function BinToInt(Value: string): LongInt;
@@ -591,7 +617,7 @@ begin
   BrowseInfo.lpszTitle := PChar(TitleName);
   BrowseInfo.ulFlags := BIF_RETURNONLYFSDIRS;
   lpItemID := SHBrowseForFolder(BrowseInfo);
-  if lpItemId <> nil then
+  if lpItemID <> nil then
   begin
     SHGetPathFromIDList(lpItemID, TempPath);
     //      ShowMessage(TempPath);
@@ -619,20 +645,26 @@ begin
   for I := 1 to Length(S) do
   begin
     case S[I] of
-      ' ', #0, #255, #9: ;
-      '+': case Mode of
-          None: Mode := ReadBefore;
-          Mants: Mode := Mantissa;
+      ' ', #0, #255, #9:
+        ;
+      '+':
+        case Mode of
+          None:
+            Mode := ReadBefore;
+          Mants:
+            Mode := Mantissa;
         else
           Exit;
         end;
-      '0'..'9': case Mode of
+      '0'..'9':
+        case Mode of
           None:
             begin
               S2 := S[I];
               Mode := ReadBefore;
             end;
-          ReadBefore: S2 := S2 + S[I];
+          ReadBefore:
+            S2 := S2 + S[I];
           ReadAfter:
             begin
               S2 := S2 + S[I];
@@ -643,10 +675,12 @@ begin
               Mant := ord(S[I]) - ord('0');
               Mode := Mantissa;
             end;
-          Mantissa: if 10 * Mant + ord(S[I]) - ord(S[I]) < 200 then
+          Mantissa:
+            if 10 * Mant + ord(S[I]) - ord(S[I]) < 200 then
               Mant := 10 * Mant + ord(S[I]) - ord('0');
         end;
-      '-': case Mode of
+      '-':
+        case Mode of
           None:
             begin
               NegNum := true;
@@ -660,7 +694,8 @@ begin
         else
           Exit;
         end;
-      'e', 'E': case Mode of
+      'e', 'E':
+        case Mode of
           ReadBefore, ReadAfter:
             begin
               if S2 = '' then
@@ -675,8 +710,10 @@ begin
         else
           Exit;
         end;
-      '.', ',': case Mode of
-          ReadBefore: Mode := ReadAfter;
+      '.', ',':
+        case Mode of
+          ReadBefore:
+            Mode := ReadAfter;
         else
           Exit;
         end;
@@ -703,8 +740,7 @@ end;
 function InitCap(str_: string): string;
 begin
   //Начальные символы - в верхний регистр
-  Result := AnsiUpperCase(copy(str_, 1, 1)) +
-    AnsiLowerCase(copy(str_, 2, Length(str_) - 1))
+  Result := AnsiUpperCase(copy(str_, 1, 1)) + AnsiLowerCase(copy(str_, 2, Length(str_) - 1))
 end;
 
 function MAKELANGID(p: DWORD; s: DWORD): LANGID;
@@ -714,16 +750,12 @@ end;
 
 function msg3(str1: string; str2: string; Flags_: Longint): Longint;
 begin
-  Result := MessageBoxEx(Application.Handle, PChar(str1),
-    PChar(str2), Flags_ + MB_APPLMODAL + MB_SETFOREGROUND,
-    MAKELANGID(LANG_RUSSIAN, SUBLANG_DEFAULT));
+  Result := MessageBoxEx(Application.Handle, PChar(str1), PChar(str2), Flags_ + MB_APPLMODAL + MB_SETFOREGROUND, MAKELANGID(LANG_RUSSIAN, SUBLANG_DEFAULT));
 end;
 
 procedure msg2(str1: string; str2: string; Flags_: Longint);
 begin
-  MessageBoxEx(Application.Handle, PChar(str1),
-    PChar(str2), Flags_ + MB_APPLMODAL + MB_SETFOREGROUND,
-    MAKELANGID(LANG_RUSSIAN, SUBLANG_DEFAULT));
+  MessageBoxEx(Application.Handle, PChar(str1), PChar(str2), Flags_ + MB_APPLMODAL + MB_SETFOREGROUND, MAKELANGID(LANG_RUSSIAN, SUBLANG_DEFAULT));
 end;
 
 procedure msg4(str1: string; str2: string; Flags_: Longint);
@@ -731,8 +763,7 @@ begin
   with Application do
   begin
     NormalizeTopMosts;
-    MessageBoxEx(Application.Handle, PChar(str1), PChar(str2), Flags_,
-      MAKELANGID(LANG_RUSSIAN, SUBLANG_DEFAULT));
+    MessageBoxEx(Application.Handle, PChar(str1), PChar(str2), Flags_, MAKELANGID(LANG_RUSSIAN, SUBLANG_DEFAULT));
     RestoreTopMosts;
   end;
 end;
@@ -740,11 +771,7 @@ end;
 function RetKey(Key_: Char): Boolean;
 begin
   //проверяет код клавиши = '.'
-  if (VkKeyScan(Key_) = 191) or
-    (VkKeyScan(Key_) = 190) or
-    (VkKeyScan(Key_) = 188) or
-    (VkKeyScan(Key_) = 110) or
-    (VkKeyScan(Key_) = 447) then
+  if (VkKeyScan(Key_) = 191) or (VkKeyScan(Key_) = 190) or (VkKeyScan(Key_) = 188) or (VkKeyScan(Key_) = 110) or (VkKeyScan(Key_) = 447) then
     Result := True
   else
     Result := False;
@@ -768,8 +795,7 @@ begin
   end;
 end;
 
-procedure change_alias(dset: TOracleDataset; str1: string; str2: string;
-  reopenDS: Boolean);
+procedure change_alias(dset: TOracleDataset; str1: string; str2: string; reopenDS: Boolean);
 var
   a: Integer;
   str_: TStrings;
@@ -777,7 +803,6 @@ var
 begin
   // str1 - строка для поиска
   // str2 - новая строка
-
   // i - кол-во найденных вхождений
   i := 0;
   str_ := dset.SQL;
@@ -785,15 +810,13 @@ begin
   begin
     if Pos(str1, str_.Strings[a]) > 0 then
     begin
-      str_.Strings[a] := StringReplace(str_.Strings[a], str1, str2,
-        [rfReplaceAll, rfIgnoreCase]);
+      str_.Strings[a] := StringReplace(str_.Strings[a], str1, str2, [rfReplaceAll, rfIgnoreCase]);
       i := i + 1;
     end
   end;
   dset.SQL.Text := str_.Text;
   if i = 0 then
-    ShowMessage('Не найден Change_alias ' + str1 + ' в выражении ' +
-      dset.SQL.Text);
+    ShowMessage('Не найден Change_alias ' + str1 + ' в выражении ' + dset.SQL.Text);
 
   if (reopenDS) then
   begin
@@ -802,8 +825,7 @@ begin
   end;
 end;
 
-procedure change_alias(AODset: array of TOracleDataset; str1: string; str2:
-  string);
+procedure change_alias(AODset: array of TOracleDataset; str1: string; str2: string);
 var
   a: Integer;
 begin
@@ -834,7 +856,7 @@ begin
   begin
     if show = 1 then
     begin
-      Screen.Forms[a].Show;
+      Screen.Forms[a].show;
     end;
     Result := 1;
   end;
@@ -939,9 +961,7 @@ begin
   end;
 end;
 
-function exp_to_txt(dset: TUniQuery; path_: string; fname_: string;
-  fldsum_: string; issum_: Integer; iscnt_: Integer; ishead_: Integer; oem_:
-  integer; bank_cd_: string): Integer;
+function exp_to_txt(dset: TUniQuery; path_: string; fname_: string; fldsum_: string; issum_: Integer; iscnt_: Integer; ishead_: Integer; oem_: integer; bank_cd_: string): Integer;
 var
   F: TextFile;
   i: Integer;
@@ -953,7 +973,7 @@ begin
   Result := 0;
   AssignFile(F, path_ + fname_);
   Rewrite(F);
-  Append(f);
+  Append(F);
 
   //Заголовок, перечисление полей
   if ishead_ = 1 then
@@ -963,8 +983,7 @@ begin
     begin
       //в кодировке DOS или нет
       if oem_ = 1 then
-            ShowMessage('Обратиться к разработчику!')
-
+        ShowMessage('Обратиться к разработчику!')
 //        LineStr_ := LineStr_ + todos(dset.Fields[i].FieldName)
       else
         LineStr_ := LineStr_ + dset.Fields[i].FieldName;
@@ -972,7 +991,7 @@ begin
       if i < dset.FieldCount - 1 then
         LineStr_ := LineStr_ + '|';
     end;
-    Writeln(f, LineStr_);
+    Writeln(F, LineStr_);
   end;
 
   i := 0;
@@ -985,10 +1004,9 @@ begin
       if (issum_ = 1) or (issum_ = 2) then
         sum_ := sum_ + dset.FieldByName(fldsum_).AsFloat;
     except
-      msg2('Поле ' + fldsum_ + ' не найдено, для подсчёта итога по файлу',
-        'Внимание', MB_OK + MB_ICONERROR);
-      Flush(f);
-      CloseFile(f);
+      msg2('Поле ' + fldsum_ + ' не найдено, для подсчёта итога по файлу', 'Внимание', MB_OK + MB_ICONERROR);
+      Flush(F);
+      CloseFile(F);
       Result := 1;
       Exit;
     end;
@@ -1001,12 +1019,11 @@ begin
   begin
     LineStr_ := '#FILESUM   ';
     LineStr_ := LineStr_ + FloatToStr(RoundTo(sum_, -2));
-    Writeln(f, LineStr_);
-    Writeln(f, '#TYPE 7');
+    Writeln(F, LineStr_);
+    Writeln(F, '#TYPE 7');
     if bank_cd_ = '' then
-      msg2('Не задан код банка в справочнике организаций!', 'Внимание!', MB_OK +
-        MB_ICONERROR);
-    Writeln(f, '#SERVICE ' + bank_cd_);
+      msg2('Не задан код банка в справочнике организаций!', 'Внимание!', MB_OK + MB_ICONERROR);
+    Writeln(F, '#SERVICE ' + bank_cd_);
   end;
 
   i := 0;
@@ -1030,8 +1047,7 @@ begin
       if dset.Fields[i].FieldName <> srvfld_ then
       begin
         if oem_ = 1 then
-              ShowMessage('Обратиться к разработчику!')
-
+          ShowMessage('Обратиться к разработчику!')
 //          LineStr_ := LineStr_ + todos(dset.Fields[i].AsString)
         else
           LineStr_ := LineStr_ + dset.Fields[i].AsString;
@@ -1046,7 +1062,7 @@ begin
       end;
 
     end;
-    Writeln(f, LineStr_);
+    Writeln(F, LineStr_);
     //Подсчет итога по сумме по полю fldsum_
  {   try
     if issum_ =1 then
@@ -1075,10 +1091,10 @@ begin
     LineStr_ := LineStr_ + '|' + FloatToStr(RoundTo(sum_, -2));
 
   if (iscnt_ = 1) or (issum_ = 1) then
-    Writeln(f, LineStr_);
+    Writeln(F, LineStr_);
 
-  Flush(f);
-  CloseFile(f);
+  Flush(F);
+  CloseFile(F);
 end;
 
 function smpl_chk(p_var: Integer): Integer;
@@ -1104,8 +1120,7 @@ end;
 
 // проверка прав пользователя, с кэшем
 
-function checkAccessRigths(var al: TAccessRecArray; pReu: string;
-  pPaspOrg: Integer; pCd: string): Boolean;
+function checkAccessRigths(var al: TAccessRecArray; pReu: string; pPaspOrg: Integer; pCd: string): Boolean;
 var
   size, cnt, i: Integer;
 
@@ -1138,8 +1153,7 @@ begin
     end;
   end;
   // не нашли в массиве, спросить у БД
-  cnt := DataModule1.OraclePackage1.CallIntegerFunction(
-    'scott.UTILS.allow_edit_lsk_by_reu', [pReu, pPaspOrg, pCd]);
+  cnt := DataModule1.OraclePackage1.CallIntegerFunction('scott.UTILS.allow_edit_lsk_by_reu', [pReu, pPaspOrg, pCd]);
   if (cnt >= 1) then
     Result := True
   else
@@ -1173,8 +1187,7 @@ begin
       if cd = pCd then
       begin
         if tp <> 0 then
-          raise Exception.CreateFmt(
-            'Запрашиваемый параметр другого типа! : cd=''%s''', [pCd]);
+          raise Exception.CreateFmt('Запрашиваемый параметр другого типа! : cd=''%s''', [pCd]);
         // найден параметр
         Result := n1;
         Exit;
@@ -1182,8 +1195,7 @@ begin
     end;
   end;
   // не нашли в массиве, спросить у БД
-  val := DataModule1.OraclePackage1.CallFloatFunction
-    ('scott.Utils.get_int_param', [pCd]);
+  val := DataModule1.OraclePackage1.CallFloatFunction('scott.Utils.get_int_param', [pCd]);
   size := size + 1;
   SetLength(al, size);
   with al[size - 1] do
@@ -1242,8 +1254,7 @@ end;}
 // ANumber1, ANumber2 - число 1,2
 // AMargin - допустимое отклонение
 
-function IsEqual(const ANumber1, ANumber2: Double; const AMargin: Double):
-  Boolean;
+function IsEqual(const ANumber1, ANumber2: Double; const AMargin: Double): Boolean;
 begin
   Result := Abs(ANumber1 - ANumber2) <= AMargin;
 end;
@@ -1253,6 +1264,7 @@ end;
 function getLocalIP: string;
 type
   TaPInAddr = array[0..10] of PInAddr;
+
   PaPInAddr = ^TaPInAddr;
 var
   phe: PHostEnt;
@@ -1296,10 +1308,8 @@ begin
   DataModule1.UniStoredProc1.SQL.Add('end;');
 
   DataModule1.UniStoredProc1.Params.Clear;
-  DataModule1.UniStoredProc1.Params
-    .CreateParam(ftInteger, 'CD_', ptInput).AsString := strPar;
-  DataModule1.UniStoredProc1.Params
-    .CreateParam(ftDate, 'RESULT', ptResult);
+  DataModule1.UniStoredProc1.Params.CreateParam(ftInteger, 'CD_', ptInput).AsString := strPar;
+  DataModule1.UniStoredProc1.Params.CreateParam(ftDate, 'RESULT', ptResult);
   DataModule1.UniStoredProc1.ExecProc;
   Result := DataModule1.UniStoredProc1.Params.ParamByName('RESULT').AsDateTime;
   // очистить SQL и параметры, для других вызовов (только при вызове функций)
@@ -1316,10 +1326,8 @@ begin
   DataModule1.UniStoredProc1.SQL.Add('end;');
 
   DataModule1.UniStoredProc1.Params.Clear;
-  DataModule1.UniStoredProc1.Params
-    .CreateParam(ftInteger, 'CD_', ptInput).AsString := strPar;
-  DataModule1.UniStoredProc1.Params
-    .CreateParam(ftFloat, 'RESULT', ptResult);
+  DataModule1.UniStoredProc1.Params.CreateParam(ftInteger, 'CD_', ptInput).AsString := strPar;
+  DataModule1.UniStoredProc1.Params.CreateParam(ftFloat, 'RESULT', ptResult);
   DataModule1.UniStoredProc1.ExecProc;
   Result := DataModule1.UniStoredProc1.Params.ParamByName('RESULT').AsFloat;
   // очистить SQL и параметры, для других вызовов (только при вызове функций)
@@ -1336,10 +1344,8 @@ begin
   DataModule1.UniStoredProc1.SQL.Add('end;');
 
   DataModule1.UniStoredProc1.Params.Clear;
-  DataModule1.UniStoredProc1.Params
-    .CreateParam(ftInteger, 'CD_', ptInput).AsString := strPar;
-  DataModule1.UniStoredProc1.Params
-    .CreateParam(ftString, 'RESULT', ptResult);
+  DataModule1.UniStoredProc1.Params.CreateParam(ftInteger, 'CD_', ptInput).AsString := strPar;
+  DataModule1.UniStoredProc1.Params.CreateParam(ftString, 'RESULT', ptResult);
   DataModule1.UniStoredProc1.ExecProc;
   Result := DataModule1.UniStoredProc1.Params.ParamByName('RESULT').AsString;
   // очистить SQL и параметры, для других вызовов (только при вызове функций)
@@ -1356,10 +1362,8 @@ begin
   DataModule1.UniStoredProc1.SQL.Add('end;');
 
   DataModule1.UniStoredProc1.Params.Clear;
-  DataModule1.UniStoredProc1.Params
-    .CreateParam(ftInteger, 'CD_', ptInput).AsString := strPar;
-  DataModule1.UniStoredProc1.Params
-    .CreateParam(ftInteger, 'RESULT', ptResult);
+  DataModule1.UniStoredProc1.Params.CreateParam(ftInteger, 'CD_', ptInput).AsString := strPar;
+  DataModule1.UniStoredProc1.Params.CreateParam(ftInteger, 'RESULT', ptResult);
   DataModule1.UniStoredProc1.ExecProc;
   Result := DataModule1.UniStoredProc1.Params.ParamByName('RESULT').AsInteger;
   // очистить SQL и параметры, для других вызовов
@@ -1369,8 +1373,7 @@ end;
 
 // разбить строку на подстроки используя разделитель
 
-procedure splitStr(const Source, Delimiter: string; var DelimitedList:
-  TStringList);
+procedure splitStr(const Source, Delimiter: string; var DelimitedList: TStringList);
 var
   s: PChar;
 
@@ -1388,7 +1391,7 @@ begin
 
     DelimitedList.Add(Item);
 
-    inc(s, DelimiterIndex + Length(Delimiter) - 1);
+    inc(s, DelimiterIndex + length(Delimiter) - 1);
   until DelimiterIndex = 0;
   DelimitedList.Add(s);
 end;
@@ -1400,7 +1403,7 @@ var
   I: Integer;
 begin
   Result := S;
-  for I := 1 to Length(Result) do
+  for I := 1 to length(Result) do
     if Result[I] in [#0..#31, #127] then
       Result[I] := ' '
 end;
@@ -1412,7 +1415,7 @@ var
 begin
   Text := PChar(AText);
   AStrings.Clear;
-  n := Length(ADelimiter);
+  n := length(ADelimiter);
   while Assigned(Text) do
   begin
     p := Pos(ADelimiter, Text) - 1;
@@ -1421,14 +1424,13 @@ begin
     AStrings.Add(Copy(Text, 1, p));
     Inc(Text, p + n);
   end;
-  if Assigned(Text) and (Length(Text) > 0) then
+  if Assigned(Text) and (length(Text) > 0) then
     AStrings.Add(Text);
 end;
 
 // Установка фильтра для полей lookup-а, с разбивкой по словам и полям
 
-procedure ApplySearchFilter(Controller: TcxDBDataController; Fields: string;
-  Text: string);
+procedure ApplySearchFilter(Controller: TcxDBDataController; Fields: string; Text: string);
 var
   i, j: integer;
   ItemLink: TObject;
@@ -1456,8 +1458,7 @@ begin
           if Assigned(ItemLink) then
             for j := 0 to TextWords.Count - 1 do
               if TextWords[j] <> '' then
-                FL.AddItem(ItemLink, foLike, '%' + TextWords[j] + '%',
-                  TextWords[j]);
+                FL.AddItem(ItemLink, foLike, '%' + TextWords[j] + '%', TextWords[j]);
         end;
       Filter.Active := true;
     finally
@@ -1470,14 +1471,13 @@ begin
 end;
 
 procedure Sleep(const uSec: UInt);
-
 var
   uStart: UInt;
 
 begin
   uStart := GetTickCount;
 
-  while (GetTickCount<(uStart + (uSec * 1000))) do
+  while (GetTickCount < (uStart + (uSec * 1000))) do
   begin
     Sleep(250);
     Application.ProcessMessages;
@@ -1519,7 +1519,7 @@ var
   size, i: Integer;
   val: Double;
 begin
-  size := Length(al);
+  size := length(al);
   // поискать параметр в массиве
   for i := 0 to size - 1 do
   begin
@@ -1534,8 +1534,7 @@ begin
     end;
   end;
   // не нашли в массиве, спросить у БД
-  raise Exception.CreateFmt(
-    'Запись не найдена в массиве U_LIST! : id=''%s''', [pId]);
+  raise Exception.CreateFmt('Запись не найдена в массиве U_LIST! : id=''%s''', [pId]);
 
 end;
 
@@ -1580,23 +1579,18 @@ begin
     case dset.Fields[i].DataType of
       ftInteger, ftSmallInt:
         begin
-          DBF1.AddFieldDefs(dset.Fields[i].FieldName, bfNumber,
-            10, 0);
+          DBF1.AddFieldDefs(dset.Fields[i].FieldName, bfNumber, 10, 0);
         end;
       ftFloat:
         begin
-          DBF1.AddFieldDefs(dset.Fields[i].FieldName, bfFloat,
-            10, 2);
+          DBF1.AddFieldDefs(dset.Fields[i].FieldName, bfFloat, 10, 2);
         end;
       ftString:
-        DBF1.AddFieldDefs(dset.Fields[i].FieldName, bfString,
-          dset.Fields[i].Size, 0);
+        DBF1.AddFieldDefs(dset.Fields[i].FieldName, bfString, dset.Fields[i].Size, 0);
       ftDate:
-        DBF1.AddFieldDefs(dset.Fields[i].FieldName, bfDate,
-          8, 0);
+        DBF1.AddFieldDefs(dset.Fields[i].FieldName, bfDate, 8, 0);
       ftDateTime:
-        DBF1.AddFieldDefs(dset.Fields[i].FieldName, bfDate,
-          8, 0);
+        DBF1.AddFieldDefs(dset.Fields[i].FieldName, bfDate, 8, 0);
     end;
   end;
   DBF1.TableName := dbfname_;
@@ -1610,14 +1604,12 @@ begin
     for i := 0 to dset.FieldCount - 1 do
     begin
       //Преобразуем формат даты DD.MM.YYYY в DD.MM.YY
-      if (dset.Fields[i].DataType = ftDateTime) or
-        (dset.Fields[i].DataType = ftDate) then
-        DBF1.SetFieldData(i + 1, copy(dset.Fields[i].AsString, 1, 6) +
-          copy(dset.Fields[i].AsString, 9, 2))
+      if (dset.Fields[i].DataType = ftDateTime) or (dset.Fields[i].DataType = ftDate) then
+        DBF1.SetFieldData(i + 1, copy(dset.Fields[i].AsString, 1, 6) + copy(dset.Fields[i].AsString, 9, 2))
       else
       begin
         Src := dset.Fields[i].AsString;
-        SetLength(Dest, Length(Src));
+        SetLength(Dest, length(Src));
         DBF1.Translate(Src, Dest, true);
         DBF1.SetFieldData(i + 1, Dest);
       end;
@@ -1628,6 +1620,41 @@ begin
   DBF1.Close;
   DBF1.Free;
   Result := 0;
+end;
+
+function restRequest(resource, param: string; method: TRESTRequestMethod): string;
+var
+  strErr, strErr2: string;
+begin
+  with DataModule1 do
+  begin
+    RESTClient.BaseUrl := Form_Main.javaServerUrl;
+    //RESTRequest.Resource := 'genChanges';
+    RESTRequest.Resource := resource;
+//    RESTRequest.Method := rmPOST;
+    RESTRequest.Method := method;
+    RESTRequest.Body.Add(param, ctAPPLICATION_JSON);
+    RESTRequest.Accept := 'application/json;charset=utf-8';
+    try
+      RESTRequest.Execute;
+    except
+      on E: Exception do
+      begin
+        strErr := 'Ошибка отправки запроса по адресу ' + RESTClient.BaseUrl + '/' + RESTRequest.Resource;
+        logText(strErr);
+        logText('Body:' + param);
+        strErr2:='Exception class name: ' + E.ClassName + '' + 'Ошибка: ' + E.Message;
+        logText(strErr2);
+
+        Application.MessageBox(PChar(strErr), 'Внимание!', MB_OK + MB_ICONERROR + MB_APPLMODAL);
+        Application.MessageBox(PChar(strErr2), 'Внимание!', MB_OK + MB_ICONERROR + MB_APPLMODAL);
+        Result := 'ERROR';
+        Exit;
+      end;
+    end;
+    Result := RESTResponse.Content;
+  end;
+
 end;
 
 end.

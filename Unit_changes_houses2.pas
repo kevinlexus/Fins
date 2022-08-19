@@ -4,26 +4,16 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, OracleData, StdCtrls, Oracle,
-  ExtCtrls,
-  Mask, Utils, frxClass, frxDBSet, 
-  cxControls,
-
-  cxDBLookupComboBox,
-
-  DBCtrls,
-
-  cxPC,
-  cxGridLevel,
-  cxClasses,
-  cxGridDBTableView, cxGrid, cxGraphics, cxLookAndFeels,
+  Dialogs, DB, OracleData, StdCtrls, Oracle, ExtCtrls, Mask, Utils, frxClass,
+  frxDBSet, cxControls, cxDBLookupComboBox, DBCtrls, cxPC, cxGridLevel,
+  cxClasses, cxGridDBTableView, cxGrid, cxGraphics, cxLookAndFeels,
   cxLookAndFeelPainters, dxBarBuiltInMenu, cxContainer, cxEdit, cxStyles,
   cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, cxDBData,
-  cxGridCustomTableView, cxGridTableView, cxGridCustomView, 
-  cxTextEdit, cxMaskEdit, cxDropDownEdit, cxLookupEdit,
-  cxDBLookupEdit, IdBaseComponent, IdComponent, IdTCPConnection,
-  IdTCPClient, IdHTTP, cxImageComboBox, dxSkinsCore, dxSkinsDefaultPainters,
-  dxDateRanges;
+  cxGridCustomTableView, cxGridTableView, cxGridCustomView, cxTextEdit,
+  cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, IdBaseComponent,
+  IdComponent, IdTCPConnection, IdTCPClient, IdHTTP, cxImageComboBox,
+  dxSkinsCore, dxSkinsDefaultPainters, dxDateRanges, dxStatusBar, cxProgressBar,
+  REST.Types;
 
 type
   TForm_changes_houses2 = class(TForm)
@@ -117,6 +107,9 @@ type
     imgValve: TcxImageComboBox;
     imgType: TcxImageComboBox;
     cbbStatus: TcxLookupComboBox;
+    dxStatusBar1: TdxStatusBar;
+    dxStatusBar1Container1: TdxStatusBarContainerControl;
+    cxProgressBar1: TcxProgressBar;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btn1Click(Sender: TObject);
     procedure btn2Click(Sender: TObject);
@@ -130,10 +123,8 @@ type
     procedure chkIsPremiseClick(Sender: TObject);
     procedure setObjectChecked(tp: integer);
     procedure chkIsAllClick(Sender: TObject);
-  private
-    { Private declarations }
-  public
-    { Public declarations }
+  private    { Private declarations }
+  public    { Public declarations }
   end;
 
 var
@@ -142,9 +133,11 @@ var
   lsk, adr, selectedObjectsJson: string;
   clickFlag: Boolean = false;
 
+
 implementation
 
-uses DM_module1, Unit_status, Unit_sel_hs, Unit_list_kart, Unit_chargepay,
+uses
+  DM_module1, Unit_status, Unit_sel_hs, Unit_list_kart, Unit_chargepay,
   Unit_Mainform, Unit_changes_lsk, u_frmSelObjects, StrUtils;
 
 {$R *.dfm}
@@ -170,30 +163,21 @@ begin // смена состояний формы
   begin
     if (Form_main.arch_mg_ <> '') and (mgold_ = '') then
     begin // из текущего в архив
-      change_alias(Form_changes_houses2.OD_c_change_docs, 'scott.c_change_docs',
-        '(select * from scott.a_change_docs where mg=''' + Form_main.arch_mg_ +
-        ''')');
+      change_alias(Form_changes_houses2.OD_c_change_docs, 'scott.c_change_docs', '(select * from scott.a_change_docs where mg=''' + Form_main.arch_mg_ + ''')');
     end
     else if (Form_main.arch_mg_ = '') and (mgold_ <> '') then
     begin // из архива в текущее
-      change_alias(Form_changes_houses2.OD_c_change_docs,
-        '(select * from scott.a_change_docs where mg=''' + mgold_ + ''')',
-        'scott.c_change_docs');
+      change_alias(Form_changes_houses2.OD_c_change_docs, '(select * from scott.a_change_docs where mg=''' + mgold_ + ''')', 'scott.c_change_docs');
     end
     else if (Form_main.arch_mg_ <> '') and (mgold_ <> '') then
     begin // из архива в архив
-      change_alias(Form_changes_houses2.OD_c_change_docs,
-        '(select * from scott.a_change_docs where mg=''' + mgold_ + ''')',
-        '(select * from scott.a_change_docs where mg=''' + Form_main.arch_mg_ +
-        ''')'
-        );
+      change_alias(Form_changes_houses2.OD_c_change_docs, '(select * from scott.a_change_docs where mg=''' + mgold_ + ''')', '(select * from scott.a_change_docs where mg=''' + Form_main.arch_mg_ + ''')');
     end;
 
   end;
 end;
 
-procedure TForm_changes_houses2.FormClose(Sender: TObject;
-  var Action: TCloseAction);
+procedure TForm_changes_houses2.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Action := caFree;
 end;
@@ -204,107 +188,93 @@ var
   l_chk2, l_chk3, l_chk4, l_chk6, l_psch: Integer;
   l_res, paramChangesUsl, selObjTp: string;
   isFirstLine: Boolean;
+  Time1: TDateTime;
+  strErr: string;
 begin
   if not (OD_list_choices_changes.State in [dsBrowse]) then
     OD_list_choices_changes.Post;
 
   if OD_list_choices_changes.RecordCount = 0 then
   begin
-    msg2('Не введены изменения!', 'Внимание',
-      MB_OK + MB_ICONSTOP + MB_APPLMODAL);
+    msg2('Не введены изменения!', 'Внимание', MB_OK + MB_ICONSTOP + MB_APPLMODAL);
     Abort;
   end;
 
   if (cbbMgFrom.EditValue = '') and (cbbMgTo.EditValue = '') then
   begin
-    msg2('Не указан период изменений!', 'Внимание',
-      MB_OK + MB_ICONSTOP + MB_APPLMODAL);
+    msg2('Не указан период изменений!', 'Внимание', MB_OK + MB_ICONSTOP + MB_APPLMODAL);
     Abort;
   end;
 
   if (chkIsLsk.Checked) and ((cxtxtLskFrom.Text = '') or (cxtxtLskTo.Text = '')) then
   begin
-    Application.MessageBox('Не указан лицевой счет!', 'Внимание',
-      MB_OK + MB_ICONEXCLAMATION + MB_APPLMODAL);
+    Application.MessageBox('Не указан лицевой счет!', 'Внимание', MB_OK + MB_ICONEXCLAMATION + MB_APPLMODAL);
     Abort;
   end;
 
-
-  Application.CreateForm(TForm_status, Form_status);
-  Form_status.Update;
+//  Application.CreateForm(TForm_status, Form_status);
+//  Form_status.Update;
+  cxProgressBar1.Position := 1;
+  Update;
 
   // ****************** JSON объект
-  paramChangesUsl := paramChangesUsl +
-    '{"dt": "' + DateToStr(Form_main.cur_dt) + '",' +
-    '"user": "' + Form_main.user + '",';
-  paramChangesUsl := paramChangesUsl +
-    '"comment": "' + cxComment.Text + '",';
-  paramChangesUsl := paramChangesUsl +
-    '"periodFrom": "' + cbbMgFrom.EditValue + '",' +
-    '"periodTo": "' + cbbMgTo.EditValue + '",';
+  paramChangesUsl := paramChangesUsl + '{"dt": "' + DateToStr(Form_main.cur_dt) + '",' + '"user": "' + Form_main.user + '",';
+  paramChangesUsl := paramChangesUsl + '"comment": "' + cxComment.Text + '",';
+  paramChangesUsl := paramChangesUsl + '"periodFrom": "' + cbbMgFrom.EditValue + '",' + '"periodTo": "' + cbbMgTo.EditValue + '",';
   if chk1.Checked = True then
-    paramChangesUsl := paramChangesUsl + '"periodProcess": "' +
-      cbbMgProcess.EditValue + '",';
+    paramChangesUsl := paramChangesUsl + '"periodProcess": "' + cbbMgProcess.EditValue + '",';
 
   if chkIsPremise.Checked then
-    selectedObjectsJson :=
-      '"selObjList": [{"klskId":"' + IntToStr(k_lsk_id) +
-      '","tp":"1"}]'
+    selectedObjectsJson := '"selObjList": [{"klskId":"' + IntToStr(k_lsk_id) + '","tp":"1"}]'
   else if chkIsLsk.Checked then
   begin
     cxtxtLskFrom.Text := RightStr('00000000' + Trim(cxtxtLskFrom.Text), 8);
     cxtxtLskTo.Text := RightStr('00000000' + Trim(cxtxtLskTo.Text), 8);
-    selectedObjectsJson :=
-      '"selObjList": [{"lskFrom":"' + cxtxtLskFrom.Text + '", "lskTo":"' + cxtxtLskTo.Text + '","tp":"2"}]'
+    selectedObjectsJson := '"selObjList": [{"lskFrom":"' + cxtxtLskFrom.Text + '", "lskTo":"' + cxtxtLskTo.Text + '","tp":"2"}]'
   end
   else if chkIsObjects.Checked then
+
   else if chkIsAll.Checked then
   begin
-    selectedObjectsJson :=
-      '"selObjList": [{"tp":"3"}]'
+    selectedObjectsJson := '"selObjList": [{"tp":"3"}]'
   end
   else
   begin
-    Application.MessageBox('Необходимо выбрать объекты для перерасчета!',
-      'Внимание!', MB_OK +
-      MB_ICONSTOP + MB_TOPMOST);
+    Application.MessageBox('Необходимо выбрать объекты для перерасчета!', 'Внимание!', MB_OK + MB_ICONSTOP + MB_APPLMODAL);
     Exit;
   end;
+  selectedObjectsJson := StringReplace(selectedObjectsJson, '\', '\\', [rfReplaceAll]);
   paramChangesUsl := paramChangesUsl + selectedObjectsJson + ',';
 
   isFirstLine := True;
   //По окончанию - начисление?
   if chkIsChargeAtEnd.Checked then
     paramChangesUsl := paramChangesUsl + '"isChargeAtEnd": "true",';
-    
+
   //Добавить водоотведение?
   if chkIsAddUslWaste.Checked then
     paramChangesUsl := paramChangesUsl + '"isAddUslWaste": "true",'
   else
     paramChangesUsl := paramChangesUsl + '"isAddUslWaste": "false",';
-    
+
   //Провести только по пустым квартирам?
   if Chk4.Checked then
     paramChangesUsl := paramChangesUsl + '"processEmpty": "1",'
   else
     paramChangesUsl := paramChangesUsl + '"processEmpty": "0",';
 
-  paramChangesUsl := paramChangesUsl + '"processMeter": "'+IntToStr(imgMeter.ItemIndex)+'",';
-  paramChangesUsl := paramChangesUsl + '"processAccount": "'+IntToStr(imgOpenClose.ItemIndex)+'",';
-  paramChangesUsl := paramChangesUsl + '"processKran": "'+IntToStr(imgValve.ItemIndex)+'",';
-  paramChangesUsl := paramChangesUsl + '"processStatus": "'+OD_status.FieldByName('id').AsString+'",';
-  paramChangesUsl := paramChangesUsl + '"processLskTp": "'+IntToStr(imgType.ItemIndex)+'",';
+  paramChangesUsl := paramChangesUsl + '"processMeter": "' + IntToStr(imgMeter.ItemIndex) + '",';
+  paramChangesUsl := paramChangesUsl + '"processAccount": "' + IntToStr(imgOpenClose.ItemIndex) + '",';
+  paramChangesUsl := paramChangesUsl + '"processKran": "' + IntToStr(imgValve.ItemIndex) + '",';
+  paramChangesUsl := paramChangesUsl + '"processStatus": "' + OD_status.FieldByName('id').AsString + '",';
+  paramChangesUsl := paramChangesUsl + '"processLskTp": "' + IntToStr(imgType.ItemIndex) + '",';
   //paramChangesUsl := paramChangesUsl + '"processTp": "1",';
   paramChangesUsl := paramChangesUsl + '"changeUslList": [';
   OD_list_choices_changes.First;
   isFirstLine := True;
   while not OD_list_choices_changes.Eof do
   begin
-    if (OD_list_choices_changes.FieldByName('PROC1').AsFloat <> 0) or
-      (OD_list_choices_changes.FieldByName('PROC2').AsFloat <> 0) or
-      (OD_list_choices_changes.FieldByName('ABS_SET').AsFloat <> 0) or
-      (OD_list_choices_changes.FieldByName('CNT_DAYS').AsInteger <> 0) or
-      (OD_list_choices_changes.FieldByName('CNT_DAYS2').AsInteger <> 0) then
+    if (OD_list_choices_changes.FieldByName('PROC1').AsFloat <> 0) or (OD_list_choices_changes.FieldByName('PROC2').AsFloat <> 0) or (OD_list_choices_changes.FieldByName('ABS_SET').AsFloat <> 0) or (OD_list_choices_changes.FieldByName('CNT_DAYS').AsInteger <> 0) or (OD_list_choices_changes.FieldByName('CNT_DAYS2').AsInteger <> 0) then
     begin
       if isFirstLine then
       begin
@@ -313,24 +283,11 @@ begin
       else
         paramChangesUsl := paramChangesUsl + ',';
       paramChangesUsl := paramChangesUsl + '{';
-      paramChangesUsl := paramChangesUsl +
-        '"uslId":"' + OD_list_choices_changes.FieldByName('USL_ID').AsString +
-        '"';
-      paramChangesUsl := paramChangesUsl +
-        ',"orgId":"' + OD_list_choices_changes.FieldByName('ORG1_ID').AsString
-        +
-        '"';
-      paramChangesUsl := paramChangesUsl +
-        ',"proc":"' + OD_list_choices_changes.FieldByName('PROC1').AsString +
-        '"';
-      paramChangesUsl := paramChangesUsl +
-        ',"absSet":"' + OD_list_choices_changes.FieldByName('ABS_SET').AsString
-        +
-        '"';
-      paramChangesUsl := paramChangesUsl +
-        ',"cntDays":"' +
-        OD_list_choices_changes.FieldByName('CNT_DAYS').AsString +
-        '"';
+      paramChangesUsl := paramChangesUsl + '"uslId":"' + OD_list_choices_changes.FieldByName('USL_ID').AsString + '"';
+      paramChangesUsl := paramChangesUsl + ',"orgId":"' + OD_list_choices_changes.FieldByName('ORG1_ID').AsString + '"';
+      paramChangesUsl := paramChangesUsl + ',"proc":"' + OD_list_choices_changes.FieldByName('PROC1').AsString + '"';
+      paramChangesUsl := paramChangesUsl + ',"absSet":"' + OD_list_choices_changes.FieldByName('ABS_SET').AsString + '"';
+      paramChangesUsl := paramChangesUsl + ',"cntDays":"' + OD_list_choices_changes.FieldByName('CNT_DAYS').AsString + '"';
       paramChangesUsl := paramChangesUsl + '}';
     end;
     OD_list_choices_changes.Next;
@@ -338,36 +295,39 @@ begin
   paramChangesUsl := paramChangesUsl + ']';
 
   paramChangesUsl := paramChangesUsl + '}';
-  //  Memo1.Text := paramChangesUsl;
-  l_res :=
-    DataModule1.OraclePackage1.CallStringFunction('SCOTT.P_JAVA.HTTP_REQ',
-    ['genChanges', null, null, 'POST', Form_main.javaServer, paramChangesUsl]);
 
-  Form_status.Close;
-  if Copy(l_res, 0, 5) = 'ERROR' then
+  Time1 := Now();
+  l_res := restRequest('genChanges', paramChangesUsl, rmPOST);
+  Time1 := Now() - Time1;
+  cxProgressBar1.Position := 100;
+
+  //Form_status.Close; // приводит к пропаданию последующих форм  Application.MessageBox (жесть!!!) ред.18.08.22
+  if Copy(l_res, 0, 2) <> 'OK' then
   begin
-    Application.MessageBox(PChar(Copy(l_res, 7, Length(l_res))), 'Внимание!',
-      MB_OK +
-      MB_ICONSTOP + MB_TOPMOST);
+    Application.MessageBox(PChar(Copy(l_res, 7, Length(l_res)) + '. Перерасчет выполнялся: ' + TimeToStr(Time1)), 'Внимание!', MB_OK + MB_ICONSTOP + MB_APPLMODAL);
   end
   else
   begin
-    changeDocId := StrToInt(Copy(l_res, 3, Length(l_res)));
-    OD_report.Active := false;
-    OD_report.SetVariable('doc_id_', changeDocId);
-    //Выводить детализированный отчет, если записей не много (< 20)
-    if cnt_ > 20 then
-      OD_report.SetVariable('var_', 0)
-    else
-      OD_report.SetVariable('var_', 1);
-    OD_report.Active := true;
-    frxReport1.PrepareReport(true);
-    frxReport1.ShowPreparedReport;
+    if Application.MessageBox(PChar('Перерасчет выполнялся: ' + TimeToStr(Time1) + ', вывести отчет?'), 'Внимание!', MB_YESNO + MB_ICONQUESTION + MB_APPLMODAL) = IDYES then
+    begin
+      changeDocId := StrToInt(Copy(l_res, 3, Length(l_res)));
+      OD_report.Active := false;
+      OD_report.SetVariable('doc_id_', changeDocId);
+      //Выводить детализированный отчет, если записей не много (< 20)
+      if cnt_ > 20 then
+        OD_report.SetVariable('var_', 0)
+      else
+        OD_report.SetVariable('var_', 1);
+      OD_report.Active := true;
+      frxReport1.PrepareReport(true);
+      frxReport1.ShowPreparedReport;
+    end;
     OD_list_choices_changes.Refresh;
     OD_c_change_docs.Refresh;
 
     if FF('Form_chargepay', 0) = 1 then
       Form_chargepay.recalc;
+    cxProgressBar1.Position := 0;
   end;
 end;
 
@@ -399,8 +359,7 @@ begin
   cbbMgFrom.EditValue := Form_Main.currentPeriod;
   cbbMgTo.EditValue := Form_Main.currentPeriod;
   cbbMgProcess.EditValue := Form_Main.currentPeriod;
-  DataModule1.OraclePackage1.CallProcedure
-    ('scott.C_CHANGES.clear_changes_proc', [parNone]);
+  DataModule1.OraclePackage1.CallProcedure('scott.C_CHANGES.clear_changes_proc', [parNone]);
   OD_sprorg.Active := False;
   OD_sprorg.SetVariable('var_', 1);
   OD_sprorg.Active := True;
@@ -414,14 +373,8 @@ begin
   k_lsk_id := -1;
   if FF('Form_list_kart', 0) = 1 then
   begin
-    k_lsk_id := DataModule1.OraclePackage1.CallStringFunction(
-      'scott.UTILS.GET_K_LSK_ID_BY_LSK',
-      [Form_list_kart.OD_list_kart.FieldByName('lsk').asString]);
-    adr := Form_list_kart.OD_list_kart.FieldByName('name').asString
-      + ', ' +
-      Form_list_kart.OD_list_kart.FieldByName('n_nd').asString + '-' +
-      Form_list_kart.OD_list_kart.FieldByName('n_kw').asString + ' (фин.лиц:' +
-      IntToStr(k_lsk_id) + ')';
+    k_lsk_id := DataModule1.OraclePackage1.CallStringFunction('scott.UTILS.GET_K_LSK_ID_BY_LSK', [Form_list_kart.OD_list_kart.FieldByName('lsk').asString]);
+    adr := Form_list_kart.OD_list_kart.FieldByName('name').asString + ', ' + Form_list_kart.OD_list_kart.FieldByName('n_nd').asString + '-' + Form_list_kart.OD_list_kart.FieldByName('n_kw').asString + ' (фин.лиц:' + IntToStr(k_lsk_id) + ')';
     lsk := Form_list_kart.OD_list_kart.FieldByName('lsk').AsString;
     chkIsPremise.Checked := true;
     setObjectChecked(0);

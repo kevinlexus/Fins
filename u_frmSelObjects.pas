@@ -4,13 +4,13 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, MemDS, DBAccess, Uni, cxGraphics, cxControls,
-  cxLookAndFeels, cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter,
-  cxData, cxDataStorage, cxEdit, cxNavigator, cxDBData, cxGridLevel,
-  cxClasses, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
-  cxGridDBTableView, cxGrid, ExtCtrls, StdCtrls, cxVariants, cxTL,
-  cxTLdxBarBuiltInMenu, cxInplaceContainer, cxMemo, cxCalc,
-  cxPropertiesStore, dxSkinsCore, dxSkinsDefaultPainters, dxDateRanges;
+  Dialogs, DB, MemDS, DBAccess, Uni, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage,
+  cxEdit, cxNavigator, cxDBData, cxGridLevel, cxClasses, cxGridCustomView,
+  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid, ExtCtrls,
+  StdCtrls, cxVariants, cxTL, cxTLdxBarBuiltInMenu, cxInplaceContainer, cxMemo,
+  cxCalc, cxPropertiesStore, dxSkinsCore, dxSkinsDefaultPainters, dxDateRanges,
+  Vcl.Menus;
 
 type
   TcxGridTableControllerAccess = class(TcxGridTableController);
@@ -51,6 +51,8 @@ type
     cxGrid1DBTableView1KW: TcxGridDBColumn;
     cxGrid1DBTableView1K_LSK_ID: TcxGridDBColumn;
     cxGrid1DBTableView1TP: TcxGridDBColumn;
+    PopupMenu1: TPopupMenu;
+    N1: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure chkIsPremiseSearchClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -58,8 +60,10 @@ type
     procedure cxGrid1DBTableView1DblClick(Sender: TObject);
     function ReturnValue: string;
     function getSelectedObjectsJson: string;
-    function getItemOutputString(ANode: TcxTreeListNode; colName: string):
-      string;
+    function getItemOutputString(ANode: TcxTreeListNode; colName: string): string;
+    function getItemByColumnName(colName: string): string;
+    procedure addNode;
+    procedure N1Click(Sender: TObject);
   private
     selectedObjectsJson: string;
   public
@@ -67,6 +71,7 @@ type
 
 var
   frmSelObjects: TfrmSelObjects;
+
 
 implementation
 
@@ -128,8 +133,7 @@ begin
   Uni_sel_objects.Active := true;
 end;
 
-procedure TMycxGridFilterRow.SetValue(Index: Integer;
-  const Value: Variant);
+procedure TMycxGridFilterRow.SetValue(Index: Integer; const Value: Variant);
 var
   AGridView: TcxGridTableView;
   AColumn: TcxGridColumn;
@@ -176,8 +180,7 @@ begin
   Result := TMycxGridViewData;
 end;
 
-procedure TfrmSelObjects.FormClose(Sender: TObject;
-  var Action: TCloseAction);
+procedure TfrmSelObjects.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   ModalResult := mrOk;
 end;
@@ -189,8 +192,7 @@ begin
   cxTreeList1.FocusedNode.Delete;
 end;
 
-function TfrmSelObjects.getItemOutputString(ANode: TcxTreeListNode; colName:
-  string): string;
+function TfrmSelObjects.getItemOutputString(ANode: TcxTreeListNode; colName: string): string;
 begin
   Result := VarToStr(ANode.Values[cxTreeList1.ColumnByName(colName).ItemIndex]);
 end;
@@ -206,13 +208,7 @@ begin
   for i := 0 to cxTreeList1.Root.Count - 1 do
   begin
     selectedObjectsJson := selectedObjectsJson + '{';
-    selectedObjectsJson := selectedObjectsJson +
-      '"id":"' + GetItemOutputString(cxTreeList1.Items[i], 'id') + '",' +
-      '"kul":"' + GetItemOutputString(cxTreeList1.Items[i], 'kul') + '",' +
-      '"nd":"' + GetItemOutputString(cxTreeList1.Items[i], 'nd') + '",' +
-      '"klskId":"' + GetItemOutputString(cxTreeList1.Items[i], 'k_lsk_id') +
-        '",' +
-      '"tp":"' + GetItemOutputString(cxTreeList1.Items[i], 'tp') + '"';
+    selectedObjectsJson := selectedObjectsJson + '"id":"' + GetItemOutputString(cxTreeList1.Items[i], 'id') + '",' + '"kul":"' + GetItemOutputString(cxTreeList1.Items[i], 'kul') + '",' + '"nd":"' + GetItemOutputString(cxTreeList1.Items[i], 'nd') + '",' + '"klskId":"' + GetItemOutputString(cxTreeList1.Items[i], 'k_lsk_id') + '",' + '"tp":"' + GetItemOutputString(cxTreeList1.Items[i], 'tp') + '"';
     selectedObjectsJson := selectedObjectsJson + '}';
     if i < cxTreeList1.Root.Count - 1 then
       selectedObjectsJson := selectedObjectsJson + ', ';
@@ -221,27 +217,26 @@ begin
   Result := '"selObjList":[' + selectedObjectsJson + ']';
 
 end;
-// добавление из грида поиска объектов в грид выбранных объектов
 
-procedure TfrmSelObjects.cxGrid1DBTableView1DblClick(Sender: TObject);
-  function getItemByColumnName(colName: string): string;
-  var
-    recIdx, colIdx: Integer;
-    OutputVal: Variant;
-  begin
-    recIdx := cxGrid1DBTableView1.Controller.SelectedRecords[0].RecordIndex;
-    colIdx :=
-      cxGrid1DBTableView1.DataController.GetItemByFieldName(colName).Index;
-    OutputVal := cxGrid1DBTableView1.DataController.Values[recIdx, colIdx];
-    Result := VarToStr(OutputVal);
-  end;
+function TfrmSelObjects.getItemByColumnName(colName: string): string;
+var
+  recIdx, colIdx: Integer;
+  OutputVal: Variant;
+begin
+  recIdx := cxGrid1DBTableView1.Controller.SelectedRecords[0].RecordIndex;
+  colIdx := cxGrid1DBTableView1.DataController.GetItemByFieldName(colName).Index;
+  OutputVal := cxGrid1DBTableView1.DataController.Values[recIdx, colIdx];
+  Result := VarToStr(OutputVal);
+end;
+
+procedure TfrmSelObjects.addNode;
 var
   ANode: TcxTreeListNode;
   AColumn: TcxTreeListColumn;
 begin
   AColumn := cxTreeList1.Columns[0];
-  Anode := cxTreeList1.FindNodeByText(getItemByColumnName('id'), AColumn);
-  if Anode = nil then
+  ANode := cxTreeList1.FindNodeByText(getItemByColumnName('id'), AColumn);
+  if ANode = nil then
   begin
     ANode := cxTreeList1.Add;
     ANode.Values[0] := getItemByColumnName('id');
@@ -249,12 +244,51 @@ begin
     ANode.Values[2] := getItemByColumnName('nd');
     ANode.Values[3] := getItemByColumnName('k_lsk_id');
     if getItemByColumnName('k_lsk_id_divided') <> '' then
-      ANode.Values[4] := getItemByColumnName('adr') + ' (' +
-        getItemByColumnName('k_lsk_id_divided') + ')'
+      ANode.Values[4] := getItemByColumnName('adr') + ' (' + getItemByColumnName('k_lsk_id_divided') + ')'
     else
       ANode.Values[4] := getItemByColumnName('adr');
     ANode.Values[5] := getItemByColumnName('tp');
   end;
+end;
+
+// добавление из грида поиска объектов в грид выбранных объектов - все объекты
+procedure TfrmSelObjects.N1Click(Sender: TObject);
+//var
+//  ANode: TcxTreeListNode;
+//  AColumn: TcxTreeListColumn;
+begin
+  Uni_sel_objects.First;
+  while not Uni_sel_objects.Eof do
+  begin
+    addNode();
+    Uni_sel_objects.Next;
+  end;
+end;
+
+// добавление из грида поиска объектов в грид выбранных объектов
+
+procedure TfrmSelObjects.cxGrid1DBTableView1DblClick(Sender: TObject);
+//var
+//  ANode: TcxTreeListNode;
+//  AColumn: TcxTreeListColumn;
+begin
+    addNode();
+{  AColumn := cxTreeList1.Columns[0];
+  ANode := cxTreeList1.FindNodeByText(getItemByColumnName('id'), AColumn);
+  if ANode = nil then
+  begin
+    ANode := cxTreeList1.Add;
+    ANode.Values[0] := getItemByColumnName('id');
+    ANode.Values[1] := getItemByColumnName('kul');
+    ANode.Values[2] := getItemByColumnName('nd');
+    ANode.Values[3] := getItemByColumnName('k_lsk_id');
+    if getItemByColumnName('k_lsk_id_divided') <> '' then
+      ANode.Values[4] := getItemByColumnName('adr') + ' (' + getItemByColumnName('k_lsk_id_divided') + ')'
+    else
+      ANode.Values[4] := getItemByColumnName('adr');
+    ANode.Values[5] := getItemByColumnName('tp');
+  end;
+  }
 end;
 
 function TfrmSelObjects.ReturnValue: string;

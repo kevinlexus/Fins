@@ -55,6 +55,7 @@ object frmSelObjects: TfrmSelObjects
       Align = alClient
       TabOrder = 0
       object cxGrid1DBTableView1: TcxGridDBTableView
+        PopupMenu = PopupMenu1
         OnDblClick = cxGrid1DBTableView1DblClick
         Navigator.Buttons.CustomButtons = <>
         Navigator.Visible = True
@@ -158,5 +159,13 @@ object frmSelObjects: TfrmSelObjects
     DataSet = Uni_sel_objects
     Left = 104
     Top = 232
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 144
+    Top = 144
+    object N1: TMenuItem
+      Caption = #1042#1099#1073#1088#1072#1090#1100' '#1074#1089#1077' '#1086#1073#1098#1077#1082#1090#1099
+      OnClick = N1Click
+    end
   end
 end

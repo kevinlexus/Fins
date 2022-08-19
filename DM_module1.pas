@@ -4,7 +4,8 @@ interface
 
 uses
   SysUtils, Classes, Oracle, DB, OracleData, frxClass, frxDBSet, MemDS,
-  DBAccess, Uni, OracleCI, UniDacVcl;
+  DBAccess, Uni, OracleCI, UniDacVcl, REST.Types, REST.Client,
+  Data.Bind.Components, Data.Bind.ObjectScope;
 
 type
   TDataModule1 = class(TDataModule)
@@ -73,6 +74,10 @@ type
     UniConnectDialog1: TUniConnectDialog;
     Uni_user: TUniQuery;
     Uni_user_permissions: TUniQuery;
+    Uni_proc_p_java_http_req: TUniStoredProc;
+    RESTClient: TRESTClient;
+    RESTRequest: TRESTRequest;
+    RESTResponse: TRESTResponse;
   private
     { Private declarations }
   public

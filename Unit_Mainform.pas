@@ -431,6 +431,7 @@ type
     cur_dt: TDateTime;
     // сервер Java "", - прод. 2 - тест
     javaServer: string;
+    javaServerUrl: string;
     // Переменные для фильтра
     reu_: string;
     kul_: string;
@@ -2583,6 +2584,7 @@ end;
 procedure TForm_Main.Options1Click(Sender: TObject);
 begin
   Form_Main.javaServer := '2';
+  Form_Main.javaServerUrl := 'http://127.0.0.1:8101';
   Form_Main.PanelJavaTest.Visible := True;
 
 end;
@@ -2590,6 +2592,7 @@ end;
 procedure TForm_Main.ProdJavaServer1Click(Sender: TObject);
 begin
   Form_Main.javaServer := '';
+  Form_Main.javaServerUrl := 'http://127.0.0.1:8100';
   Form_Main.PanelJavaTest.Visible := False;
 
 end;

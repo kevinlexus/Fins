@@ -779,4 +779,83 @@ object DataModule1: TDataModule1
         Value = nil
       end>
   end
+  object Uni_proc_p_java_http_req: TUniStoredProc
+    StoredProcName = 'scott.p_java2.http_req'
+    SQL.Strings = (
+      'begin'
+      
+        '  :RESULT := scott.p_java2.http_req(:P_URL, :P_URL2, :P_SERVER_U' +
+        'RL, :TP, :P_SERVER_TP, :P_BODY);'
+      'end;')
+    Connection = UniConnection1
+    SpecificOptions.Strings = (
+      'Oracle.ProcNamedParams=True')
+    Left = 464
+    Top = 424
+    ParamData = <
+      item
+        DataType = ftString
+        Name = 'RESULT'
+        ParamType = ptResult
+        Value = nil
+      end
+      item
+        DataType = ftString
+        Name = 'P_URL'
+        ParamType = ptInput
+        Value = nil
+      end
+      item
+        DataType = ftString
+        Name = 'P_URL2'
+        ParamType = ptInput
+        Value = nil
+      end
+      item
+        DataType = ftString
+        Name = 'P_SERVER_URL'
+        ParamType = ptInput
+        Value = nil
+      end
+      item
+        DataType = ftString
+        Name = 'TP'
+        ParamType = ptInput
+        Value = nil
+      end
+      item
+        DataType = ftString
+        Name = 'P_SERVER_TP'
+        ParamType = ptInput
+        Value = nil
+      end
+      item
+        DataType = ftString
+        Name = 'P_BODY'
+        ParamType = ptInput
+        Value = nil
+      end>
+    CommandStoredProcName = 'scott.p_java2.http_req'
+  end
+  object RESTClient: TRESTClient
+    BaseURL = 'http://127.0.0.1:8100'
+    Params = <>
+    ReadTimeout = 86400000
+    Left = 480
+    Top = 520
+  end
+  object RESTRequest: TRESTRequest
+    AssignedValues = [rvReadTimeout]
+    Client = RESTClient
+    Method = rmPOST
+    Params = <>
+    Response = RESTResponse
+    ReadTimeout = 86400000
+    Left = 480
+    Top = 560
+  end
+  object RESTResponse: TRESTResponse
+    Left = 480
+    Top = 608
+  end
 end

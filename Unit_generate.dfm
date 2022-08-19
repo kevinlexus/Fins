@@ -13,7 +13,6 @@ object Form_generate: TForm_generate
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   FormStyle = fsMDIChild
-  
   OldCreateOrder = False
   Position = poMainFormCenter
   Visible = True
