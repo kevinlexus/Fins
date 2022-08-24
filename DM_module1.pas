@@ -77,7 +77,6 @@ type
     Uni_proc_p_java_http_req: TUniStoredProc;
     RESTClient: TRESTClient;
     RESTRequest: TRESTRequest;
-    RESTResponse: TRESTResponse;
   private
     { Private declarations }
   public

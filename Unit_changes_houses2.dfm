@@ -526,6 +526,7 @@ object Form_changes_houses2: TForm_changes_houses2
             DataController.Summary.SummaryGroups = <>
             OptionsData.Deleting = False
             OptionsData.Inserting = False
+            OptionsSelection.InvertSelect = False
             OptionsView.ColumnAutoWidth = True
             OptionsView.GroupByBox = False
             OptionsView.Indicator = True
@@ -564,6 +565,10 @@ object Form_changes_houses2: TForm_changes_houses2
     object cxTabSheet2: TcxTabSheet
       Caption = #1042#1099#1087#1086#1083#1085#1077#1085#1085#1099#1077
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object cxgrd1: TcxGrid
         Left = 0
         Top = 0

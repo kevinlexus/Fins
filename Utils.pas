@@ -6,7 +6,7 @@ uses
   Forms, Classes, SysUtils, Dialogs, OracleData, DB, Windows, DM_module1, oracle,
   Math, ShlObj, Controls, Messages, ComCtrls, Menus, Unit_smpl_chk, StrUtils,
   Winsock, Uni, Variants, cxCustomData, cxDBData, cxFilter, IdHTTP, DBF,
-  REST.Types, System.NetConsts;
+  REST.Types, System.NetConsts, REST.Client;
 
 // тип - запись о правах редактирования пользователя
 type
@@ -983,8 +983,7 @@ begin
     begin
       //в кодировке DOS или нет
       if oem_ = 1 then
-        ShowMessage('Обратиться к разработчику!')
-//        LineStr_ := LineStr_ + todos(dset.Fields[i].FieldName)
+        ShowMessage('Обратиться к разработчику!')//        LineStr_ := LineStr_ + todos(dset.Fields[i].FieldName)
       else
         LineStr_ := LineStr_ + dset.Fields[i].FieldName;
       //Разделитель
@@ -1047,8 +1046,7 @@ begin
       if dset.Fields[i].FieldName <> srvfld_ then
       begin
         if oem_ = 1 then
-          ShowMessage('Обратиться к разработчику!')
-//          LineStr_ := LineStr_ + todos(dset.Fields[i].AsString)
+          ShowMessage('Обратиться к разработчику!')//          LineStr_ := LineStr_ + todos(dset.Fields[i].AsString)
         else
           LineStr_ := LineStr_ + dset.Fields[i].AsString;
 
@@ -1625,35 +1623,42 @@ end;
 function restRequest(resource, param: string; method: TRESTRequestMethod): string;
 var
   strErr, strErr2: string;
+  res: TCustomRESTResponse;
+  RESTClient: TRESTClient;
+  RESTRequest: TRESTRequest;
 begin
-  with DataModule1 do
-  begin
-    RESTClient.BaseUrl := Form_Main.javaServerUrl;
-    //RESTRequest.Resource := 'genChanges';
-    RESTRequest.Resource := resource;
-//    RESTRequest.Method := rmPOST;
-    RESTRequest.Method := method;
-    RESTRequest.Body.Add(param, ctAPPLICATION_JSON);
-    RESTRequest.Accept := 'application/json;charset=utf-8';
-    try
-      RESTRequest.Execute;
-    except
-      on E: Exception do
-      begin
-        strErr := 'Ошибка отправки запроса по адресу ' + RESTClient.BaseUrl + '/' + RESTRequest.Resource;
-        logText(strErr);
-        logText('Body:' + param);
-        strErr2:='Exception class name: ' + E.ClassName + '' + 'Ошибка: ' + E.Message;
-        logText(strErr2);
+  RESTClient := TRESTClient.Create(nil);
+  RESTRequest := TRESTRequest.Create(nil);
+  RESTRequest.Client := RESTClient;
+  RESTClient.ReadTimeout:=86400000;
+  RESTRequest.ReadTimeout:=86400000;
+  RESTClient.BaseUrl := Form_Main.javaServerUrl;
+  RESTRequest.Resource := resource;
+  RESTRequest.Method := method;
+  RESTRequest.Body.Add(param, ctAPPLICATION_JSON);
+  RESTRequest.Accept := 'application/json;charset=utf-8';
+  try
+    RESTRequest.Execute;
+    res := RESTRequest.Response;
+  except
+    on E: Exception do
+    begin
+      strErr := 'Ошибка отправки запроса по адресу ' + RESTClient.BaseUrl + '/' + RESTRequest.Resource;
+      logText(strErr);
+      logText('Body:' + param);
+      strErr2 := 'Exception class name: ' + E.ClassName + '' + 'Ошибка: ' + E.Message;
+      logText(strErr2);
 
-        Application.MessageBox(PChar(strErr), 'Внимание!', MB_OK + MB_ICONERROR + MB_APPLMODAL);
-        Application.MessageBox(PChar(strErr2), 'Внимание!', MB_OK + MB_ICONERROR + MB_APPLMODAL);
-        Result := 'ERROR';
-        Exit;
-      end;
+      Application.MessageBox(PChar(strErr), 'Внимание!', MB_OK + MB_ICONERROR + MB_APPLMODAL);
+      Application.MessageBox(PChar(strErr2), 'Внимание!', MB_OK + MB_ICONERROR + MB_APPLMODAL);
+      Result := 'ERROR';
+      Exit;
     end;
-    Result := RESTResponse.Content;
   end;
+  RESTClient := nil;
+  RESTRequest := nil;
+
+  Result := res.Content;
 
 end;
 

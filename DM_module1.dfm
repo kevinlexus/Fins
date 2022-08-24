@@ -849,13 +849,8 @@ object DataModule1: TDataModule1
     Client = RESTClient
     Method = rmPOST
     Params = <>
-    Response = RESTResponse
     ReadTimeout = 86400000
     Left = 480
     Top = 560
-  end
-  object RESTResponse: TRESTResponse
-    Left = 480
-    Top = 608
   end
 end

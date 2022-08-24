@@ -25,7 +25,7 @@ object Form_chargepay: TForm_chargepay
     Top = 0
     Width = 819
     Height = 383
-    ActivePage = TabSheet2
+    ActivePage = TabSheet1
     Align = alClient
     TabOrder = 1
     OnChange = PageControl1Change
@@ -1626,18 +1626,81 @@ object Form_chargepay: TForm_chargepay
     PreviewOptions.Zoom = 1.000000000000000000
     PrintOptions.Printer = #1055#1086' '#1091#1084#1086#1083#1095#1072#1085#1080#1102
     PrintOptions.PrintOnSheet = 0
-    ReportOptions.CreateDate = 43053.817160879630000000
-    ReportOptions.LastChange = 43053.817160879630000000
+    ReportOptions.CreateDate = 40512.396126111100000000
+    ReportOptions.LastChange = 43053.815233761600000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
+      ''
       'begin'
       ''
       'end.')
     Left = 244
     Top = 99
-    Datasets = <>
+    Datasets = <
+      item
+        DataSet = frxDBDataset6
+        DataSetName = 'frxDBDataset6'
+      end>
     Variables = <>
-    Style = <>
+    Style = <
+      item
+        Name = 'Title'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        Frame.Typ = []
+        Fill.BackColor = 14211288
+      end
+      item
+        Name = 'Header'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        Frame.Typ = []
+        Fill.BackColor = 15790320
+      end
+      item
+        Name = 'Group header'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        Frame.Typ = []
+        Fill.BackColor = 15790320
+      end
+      item
+        Name = 'Data'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = []
+        Frame.Typ = []
+      end
+      item
+        Name = 'Group footer'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = []
+        Frame.Typ = [ftTop]
+      end
+      item
+        Name = 'Header line'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = []
+        Frame.Typ = []
+        Frame.Width = 2.000000000000000000
+      end>
     object Data: TfrxDataPage
       Height = 1000.000000000000000000
       Width = 1000.000000000000000000
@@ -1652,6 +1715,440 @@ object Form_chargepay: TForm_chargepay
       BottomMargin = 10.000000000000000000
       Frame.Typ = []
       MirrorMode = []
+      object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 49.133890000000000000
+        Top = 18.897650000000000000
+        Width = 718.110700000000000000
+        object Memo1: TfrxMemoView
+          AllowVectorExport = True
+          Width = 585.827150000000000000
+          Height = 41.574830000000000000
+          AutoWidth = True
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            #1044#1077#1090#1072#1083#1080#1079#1072#1094#1080#1103' '#1076#1074#1080#1078#1077#1085#1080#1103' '#1087#1086' '#1051'/'#1057' [lsk_], [adr_] '
+            #1079#1072' '#1087#1077#1088#1080#1086#1076' '#1089' [mg1] '#1087#1086' [mg2]')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+      end
+      object GroupHeader1: TfrxGroupHeader
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 26.456710000000000000
+        Top = 128.504020000000000000
+        Width = 718.110700000000000000
+        Condition = 'frxDBDataset6."MG3"'
+        object Memo9: TfrxMemoView
+          AllowVectorExport = True
+          Width = 585.827150000000000000
+          Height = 22.677180000000000000
+          DataField = 'MG3'
+          DataSet = frxDBDataset6
+          DataSetName = 'frxDBDataset6'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Fill.BackColor = 15790320
+          Memo.UTF8W = (
+            '[frxDBDataset6."MG3"]')
+          ParentFont = False
+          Style = 'Group header'
+          VAlign = vaCenter
+        end
+      end
+      object MasterData1: TfrxMasterData
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 18.897650000000000000
+        Top = 219.212740000000000000
+        Width = 718.110700000000000000
+        DataSet = frxDBDataset6
+        DataSetName = 'frxDBDataset6'
+        RowCount = 0
+        object Memo11: TfrxMemoView
+          AllowVectorExport = True
+          Left = 85.559060000000000000
+          Width = 98.086580000000000000
+          Height = 18.897650000000000000
+          DataField = 'DTEK'
+          DataSet = frxDBDataset6
+          DataSetName = 'frxDBDataset6'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[frxDBDataset6."DTEK"]')
+          ParentFont = False
+          Style = 'Data'
+        end
+        object Memo12: TfrxMemoView
+          AllowVectorExport = True
+          Left = 259.236240000000000000
+          Width = 78.000000000000000000
+          Height = 18.897650000000000000
+          DataField = 'SUMMA'
+          DataSet = frxDBDataset6
+          DataSetName = 'frxDBDataset6'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[frxDBDataset6."SUMMA"]')
+          ParentFont = False
+          Style = 'Data'
+        end
+        object Memo13: TfrxMemoView
+          AllowVectorExport = True
+          Left = 337.236240000000000000
+          Width = 78.000000000000000000
+          Height = 18.897650000000000000
+          DataField = 'PN'
+          DataSet = frxDBDataset6
+          DataSetName = 'frxDBDataset6'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[frxDBDataset6."PN"]')
+          ParentFont = False
+          Style = 'Data'
+        end
+        object Memo14: TfrxMemoView
+          AllowVectorExport = True
+          Left = 415.236240000000000000
+          Width = 56.000000000000000000
+          Height = 18.897650000000000000
+          DataField = 'MG1'
+          DataSet = frxDBDataset6
+          DataSetName = 'frxDBDataset6'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[frxDBDataset6."MG1"]')
+          ParentFont = False
+          Style = 'Data'
+        end
+        object Memo15: TfrxMemoView
+          AllowVectorExport = True
+          Left = 471.236240000000000000
+          Width = 188.000000000000000000
+          Height = 18.897650000000000000
+          DataField = 'OPER_NAME'
+          DataSet = frxDBDataset6
+          DataSetName = 'frxDBDataset6'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[frxDBDataset6."OPER_NAME"]')
+          ParentFont = False
+          Style = 'Data'
+        end
+        object Memo17: TfrxMemoView
+          AllowVectorExport = True
+          Left = 185.196970000000000000
+          Width = 74.220470000000000000
+          Height = 18.897650000000000000
+          DataField = 'NKVIT'
+          DataSet = frxDBDataset6
+          DataSetName = 'frxDBDataset6'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[frxDBDataset6."NKVIT"]')
+          ParentFont = False
+          Style = 'Data'
+        end
+      end
+      object PageFooter1: TfrxPageFooter
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 23.677180000000000000
+        Top = 351.496290000000000000
+        Width = 718.110700000000000000
+        object Memo16: TfrxMemoView
+          Align = baWidth
+          AllowVectorExport = True
+          Width = 718.110700000000000000
+          Frame.Typ = [ftTop]
+          Frame.Width = 2.000000000000000000
+        end
+        object Memo18: TfrxMemoView
+          Align = baRight
+          AllowVectorExport = True
+          Left = 642.520100000000000000
+          Top = 1.000000000000000000
+          Width = 75.590600000000000000
+          Height = 22.677180000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            #1057#1090#1088'. [Page#]')
+          ParentFont = False
+        end
+        object Memo21: TfrxMemoView
+          AllowVectorExport = True
+          Width = 229.858380000000000000
+          Height = 18.897650000000000000
+          DataSet = frxDBDataset1
+          DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            #1056#1072#1089#1087#1077#1095#1072#1090#1072#1085#1086': [Now]')
+          ParentFont = False
+        end
+      end
+      object GroupHeader2: TfrxGroupHeader
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 18.897650000000000000
+        Top = 177.637910000000000000
+        Width = 718.110700000000000000
+        Condition = 'frxDBDataset6."TP_NAME"'
+        object Memo4: TfrxMemoView
+          AllowVectorExport = True
+          Left = 85.559060000000000000
+          Width = 98.086580000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[IIF(<frxDBDataset6."TP">=0,'#39#39','#39#1044#1072#1090#1072#39',)]')
+          ParentFont = False
+        end
+        object Memo5: TfrxMemoView
+          AllowVectorExport = True
+          Left = 259.236240000000000000
+          Width = 78.000000000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            #1057#1091#1084#1084#1072)
+          ParentFont = False
+        end
+        object Memo6: TfrxMemoView
+          AllowVectorExport = True
+          Left = 337.236240000000000000
+          Width = 78.000000000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[IIF(<frxDBDataset6."TP">=2,'#39#1055#1077#1085#1103#39','#39#39')]')
+          ParentFont = False
+        end
+        object Memo7: TfrxMemoView
+          AllowVectorExport = True
+          Left = 415.236240000000000000
+          Width = 56.000000000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            
+              '[IIF(<frxDBDataset6."TP">=2,'#39#1047#1072' '#1087#1077#1088#1080#1086#1076#39','#39#39')][IIF(<frxDBDataset6.' +
+              '"TP">=1,'#39#1047#1072' '#1087#1077#1088#1080#1086#1076#39','#39#39')]')
+          ParentFont = False
+        end
+        object Memo8: TfrxMemoView
+          AllowVectorExport = True
+          Left = 471.236240000000000000
+          Width = 188.000000000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[IIF(<frxDBDataset6."TP">=2,'#39#1054#1087#1077#1088#1072#1094#1080#1103#39','#39#39')]')
+          ParentFont = False
+        end
+        object Memo10: TfrxMemoView
+          AllowVectorExport = True
+          Width = 78.000000000000000000
+          Height = 18.897650000000000000
+          DataSet = frxDBDataset6
+          DataSetName = 'frxDBDataset6'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[frxDBDataset6."TP_NAME"]')
+          ParentFont = False
+        end
+        object Memo22: TfrxMemoView
+          AllowVectorExport = True
+          Left = 185.196970000000000000
+          Width = 74.220470000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[IIF(<frxDBDataset6."TP">=0,'#39#39','#39#8470' '#1082#1074#1080#1090#39',)]')
+          ParentFont = False
+        end
+      end
+      object ReportSummary1: TfrxReportSummary
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 30.236240000000000000
+        Top = 298.582870000000000000
+        Width = 718.110700000000000000
+        object Memo2: TfrxMemoView
+          AllowVectorExport = True
+          Left = 79.370130000000000000
+          Top = 11.338590000000000000
+          Width = 161.149660000000000000
+          Height = 18.897650000000000000
+          DataSet = frxDBDataset6
+          DataSetName = 'frxDBDataset6'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            
+              #1053#1072#1095#1080#1089#1083#1077#1085#1086': [SUM(IIF(<frxDBDataset6."TP">=0,<frxDBDataset6."SUMMA' +
+              '">,0),MasterData1)]')
+          ParentFont = False
+        end
+        object Memo3: TfrxMemoView
+          AllowVectorExport = True
+          Left = 241.889920000000000000
+          Top = 11.338590000000000000
+          Width = 176.267780000000000000
+          Height = 18.897650000000000000
+          DataSet = frxDBDataset6
+          DataSetName = 'frxDBDataset6'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            
+              #1054#1087#1083#1072#1095#1077#1085#1086': [SUM(IIF(<frxDBDataset6."TP">=2,<frxDBDataset6."SUMMA"' +
+              '>,0),MasterData1)]')
+          ParentFont = False
+        end
+        object Memo19: TfrxMemoView
+          AllowVectorExport = True
+          Left = 419.527830000000000000
+          Top = 11.338590000000000000
+          Width = 176.267780000000000000
+          Height = 18.897650000000000000
+          DataSet = frxDBDataset6
+          DataSetName = 'frxDBDataset6'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            
+              #1048#1079#1084#1077#1085#1077#1085#1080#1103': [SUM(IIF(<frxDBDataset6."TP">=1,<frxDBDataset6."SUMMA' +
+              '">,0),MasterData1)] ')
+          ParentFont = False
+        end
+        object Line1: TfrxLineView
+          AllowVectorExport = True
+          Left = 3.779530000000000000
+          Top = 3.779530000000020000
+          Width = 582.047620000000000000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
+        object Memo20: TfrxMemoView
+          AllowVectorExport = True
+          Left = 3.779530000000000000
+          Top = 11.338590000000000000
+          Width = 70.440940000000000000
+          Height = 18.897650000000000000
+          DataSet = frxDBDataset6
+          DataSetName = 'frxDBDataset6'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            #1048#1090#1086#1075#1086':')
+          ParentFont = False
+        end
+      end
     end
   end
 end

@@ -284,7 +284,7 @@ begin
   OD_chargepay.Active := true;
   OD_chargepay.Last;
 
-  if PageControl1.ActivePageIndex = 1 then
+{  if PageControl1.ActivePageIndex = 1 then
   begin
     Panel1.Visible := true;
     Update;
@@ -318,8 +318,8 @@ begin
     OD_chargepay3.Last;
 
     Panel1.Visible := false;
-  end
-  else if PageControl1.ActivePageIndex = 3 then
+  end}
+  if PageControl1.ActivePageIndex = 1 then
   begin
     Panel1.Visible := true;
     Update;
@@ -331,7 +331,7 @@ begin
     calcFooter5;
     Panel1.Visible := false;
   end
-  else if PageControl1.ActivePageIndex = 4 then
+  else if PageControl1.ActivePageIndex = 2 then
   begin
     Panel1.Visible := true;
     Update;
@@ -436,7 +436,7 @@ begin
     frxReport1.ShowPreparedReport;
 
   end
-  else if PageControl1.ActivePageIndex = 1 then
+{  else if PageControl1.ActivePageIndex = 1 then
   begin
     frxReport1.LoadFromFile(Form_main.exepath_ + 'det3.fr3', True);
     CheckBox1.Visible := True;
@@ -469,8 +469,8 @@ begin
 
     frxReport1.PrepareReport(true);
     frxReport1.ShowPreparedReport;
-  end
-  else if PageControl1.ActivePageIndex = 3 then
+  end  }
+  else if PageControl1.ActivePageIndex = 1 then
   begin
     frxReport1.LoadFromFile(Form_main.exepath_ + 'det5.fr3', True);
     CheckBox1.Visible := False;
@@ -486,7 +486,7 @@ begin
     frxReport1.PrepareReport(true);
     frxReport1.ShowPreparedReport;
   end
-  else if PageControl1.ActivePageIndex = 4 then
+  else if PageControl1.ActivePageIndex = 2 then
   begin
     frxReport1.LoadFromFile(Form_main.exepath_ + 'det6.fr3', True);
     CheckBox1.Visible := False;
