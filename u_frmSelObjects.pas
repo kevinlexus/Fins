@@ -119,7 +119,6 @@ begin
 
   Uni_sel_objects.MacroByName('tp').Value := '0';
   Uni_sel_objects.Active := true;
-
 end;
 
 procedure TfrmSelObjects.chkIsPremiseSearchClick(Sender: TObject);

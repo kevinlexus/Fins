@@ -48,7 +48,6 @@ implementation
 
 procedure TfrmOLAP.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-//  Form_Main.CloseTreeObj;
   Action := caFree;
 end;
 
@@ -63,9 +62,13 @@ begin
 end;
 
 procedure TfrmOLAP.createOlapReport(reportCd, reportTitle, reportSigner: string);
+var
+ dateTimeStr: String;
 begin
   frxReport1.Variables['reportTitle'] := reportTitle;
   frxReport1.Variables['reportSigner'] := reportSigner;
+  DateTimeToString(dateTimeStr, 'dd_mm_yyyy_hh_mm', now());
+  fcxXLSXExport1.FileName:='report'+'_'+dateTimeStr;
 
   with fcxDataSource1 do
   begin

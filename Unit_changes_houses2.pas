@@ -391,10 +391,12 @@ begin
   begin
     cxtxtLskFrom.Text := '';
     cxtxtLskTo.Text := '';
-    modalForm := TfrmSelObjects.Create(nil);
+//    modalForm := TfrmSelObjects.Create(nil);
+    modalForm := TfrmSelObjects.Create(self);
     selectedObjectsJson := '';
     if modalForm.ShowModal = mrOk then
       selectedObjectsJson := modalForm.ReturnValue;
+//    modalForm.Destroy;
   end;
 end;
 
