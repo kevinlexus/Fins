@@ -176,6 +176,7 @@ var
   isIniFileFound: Boolean;
 begin
   TStyleManager.TrySetStyle('Sky');
+  TStyleManager.SystemHooks := [shMenus, shToolTips]; // убрал диалоги (shDialogs), так как приводит к Access Violation when application terminates
   isIniFileFound := false;
 
   if ParamStr(1) <> '' then
