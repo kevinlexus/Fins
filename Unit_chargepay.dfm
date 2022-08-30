@@ -25,7 +25,7 @@ object Form_chargepay: TForm_chargepay
     Top = 0
     Width = 819
     Height = 383
-    ActivePage = TabSheet5
+    ActivePage = TabSheet1
     Align = alClient
     TabOrder = 1
     OnChange = PageControl1Change
