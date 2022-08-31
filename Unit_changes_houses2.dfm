@@ -907,7 +907,7 @@ object Form_changes_houses2: TForm_changes_houses2
         '2) as mgchange,'
       
         '       max(c.proc) as proc, trim(u.nm) as usl_name, sum(c.summa)' +
-        ' as summa,'
+        ' as summa, sum(c.vol) as vol,'
       '       max(c.cnt_days) as cnt_days'
       
         '  from scott.kart k, scott.spul s, scott.c_change_docs d, scott.' +
@@ -931,13 +931,14 @@ object Form_changes_houses2: TForm_changes_houses2
       00000000000000000A0000003A005600410052005F0003000000000000000000
       0000}
     QBEDefinition.QBEFieldDefs = {
-      050000000A000000060000004C0053004B000100000000000E0000004C005300
+      050000000B000000060000004C0053004B000100000000000E0000004C005300
       4B005F0045004E00440001000000000006000000410044005200010000000000
       100000004D0047004300480041004E0047004500010000000000080000005000
       52004F00430001000000000010000000550053004C005F004E0041004D004500
       0100000000000A000000530055004D004D004100010000000000100000004300
       4E0054005F004400410059005300010000000000080000004400540045004B00
-      010000000000080000005400450058005400010000000000}
+      0100000000000800000054004500580054000100000000000600000056004F00
+      4C00010000000000}
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Left = 168
@@ -961,6 +962,7 @@ object Form_changes_houses2: TForm_changes_houses2
       'PROC=PROC'
       'USL_NAME=USL_NAME'
       'SUMMA=SUMMA'
+      'VOL=VOL'
       'CNT_DAYS=CNT_DAYS')
     DataSet = OD_report
     BCDToCurrency = False
@@ -976,7 +978,7 @@ object Form_changes_houses2: TForm_changes_houses2
     PrintOptions.Printer = #1055#1086' '#1091#1084#1086#1083#1095#1072#1085#1080#1102
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 40035.457003796300000000
-    ReportOptions.LastChange = 40035.458887546300000000
+    ReportOptions.LastChange = 44803.587807627310000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -1164,7 +1166,8 @@ object Form_changes_houses2: TForm_changes_houses2
         end
         object Memo10: TfrxMemoView
           AllowVectorExport = True
-          Left = 555.590910000000000000
+          Left = 631.181510000000000000
+          Top = 0.779530000000000000
           Width = 75.590600000000000000
           Height = 18.897650000000000000
           DisplayFormat.FormatStr = '%2.2n'
@@ -1180,6 +1183,22 @@ object Form_changes_houses2: TForm_changes_houses2
             '[frxDBDataset1."SUMMA"]')
           ParentFont = False
         end
+        object Memo21: TfrxMemoView
+          AllowVectorExport = True
+          Left = 559.370440000000000000
+          Width = 56.692950000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[frxDBDataset1."VOL"]')
+          ParentFont = False
+        end
       end
       object Header1: TfrxHeader
         FillType = ftBrush
@@ -1189,7 +1208,9 @@ object Form_changes_houses2: TForm_changes_houses2
         Width = 718.110700000000000000
         object Shape1: TfrxShapeView
           AllowVectorExport = True
-          Width = 638.740570000000000000
+          Left = 3.779530000000000000
+          Top = 0.779530000000000000
+          Width = 718.110700000000000000
           Height = 41.574830000000000000
           Frame.Typ = []
         end
@@ -1280,7 +1301,7 @@ object Form_changes_houses2: TForm_changes_houses2
         object Memo17: TfrxMemoView
           AllowVectorExport = True
           Left = 495.118430000000000000
-          Top = 3.779529999999994000
+          Top = 3.779530000000000000
           Width = 56.692950000000000000
           Height = 34.015770000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -1297,8 +1318,8 @@ object Form_changes_houses2: TForm_changes_houses2
         end
         object Memo18: TfrxMemoView
           AllowVectorExport = True
-          Left = 555.590910000000000000
-          Top = 3.779529999999994000
+          Left = 631.181510000000000000
+          Top = 4.559060000000000000
           Width = 75.590600000000000000
           Height = 34.015770000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -1310,6 +1331,23 @@ object Form_changes_houses2: TForm_changes_houses2
           HAlign = haCenter
           Memo.UTF8W = (
             #1057#1091#1084#1084#1072)
+          ParentFont = False
+        end
+        object Memo22: TfrxMemoView
+          AllowVectorExport = True
+          Left = 559.370440000000000000
+          Top = 3.779530000000000000
+          Width = 56.692950000000000000
+          Height = 34.015770000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            #1054#1073#1098#1077#1084)
           ParentFont = False
         end
       end
@@ -1337,8 +1375,8 @@ object Form_changes_houses2: TForm_changes_houses2
         end
         object Memo20: TfrxMemoView
           AllowVectorExport = True
-          Left = 555.590910000000000000
-          Top = 7.559059999999988000
+          Left = 631.181510000000000000
+          Top = 8.338590000000000000
           Width = 75.590600000000000000
           Height = 18.897650000000000000
           DisplayFormat.FormatStr = '%2.2n'
@@ -1356,7 +1394,9 @@ object Form_changes_houses2: TForm_changes_houses2
         end
         object Line2: TfrxLineView
           AllowVectorExport = True
-          Width = 638.740570000000000000
+          Left = 3.779530000000000000
+          Top = 0.779530000000000000
+          Width = 710.551640000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end

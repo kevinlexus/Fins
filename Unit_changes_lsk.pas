@@ -54,6 +54,7 @@ type
     cxGrid1DBTableView1TEXT: TcxGridDBColumn;
     cxGrid1DBTableView1ID: TcxGridDBColumn;
     cxGrid1DBTableView1DOC_ID: TcxGridDBColumn;
+    cxGrid1DBTableView1VOL: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure state_arch2(mgold_: String);

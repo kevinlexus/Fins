@@ -26,7 +26,6 @@ object Form_changes_lsk: TForm_changes_lsk
     Align = alClient
     PopupMenu = PopupMenu3
     TabOrder = 0
-    ExplicitHeight = 470
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Visible = True
@@ -73,7 +72,12 @@ object Form_changes_lsk: TForm_changes_lsk
       object cxGrid1DBTableView1CNT_DAYS: TcxGridDBColumn
         Caption = #1050#1086#1083'-'#1074#1086' '#1076#1085#1077#1081
         DataBinding.FieldName = 'CNT_DAYS'
-        Width = 44
+        Width = 69
+      end
+      object cxGrid1DBTableView1VOL: TcxGridDBColumn
+        AlternateCaption = #1054#1073#1098#1077#1084
+        Caption = #1054#1073#1098#1077#1084
+        DataBinding.FieldName = 'VOL'
       end
       object cxGrid1DBTableView1NM: TcxGridDBColumn
         DataBinding.FieldName = 'NM'
