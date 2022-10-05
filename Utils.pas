@@ -159,6 +159,10 @@ procedure SetMenu(acc_: Integer);
 begin
   with Form_Main do
   begin
+    // если заполнено questionsUrl в licenses.ini - включить пункт меню "Вопросы, замечания, предложения"
+    if questionsUrl = '' then
+       QuestionMenuItem.Enabled:=false;
+
     //без параметра (меню всегда активно)
     SetMenuItem(acc_, N52, '');
 

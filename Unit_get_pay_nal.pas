@@ -3,16 +3,12 @@ unit Unit_get_pay_nal;
 interface
 
 uses
-  Windows, SysUtils, Variants, Classes, Controls, Forms,
-  Dialogs, DB, Oracle, OracleData,
-  StdCtrls, Mask,
-  frxClass, frxDBSet, Menus, Unit_ecr, Math, ComCtrls,
-  ToolWin, cxGraphics, cxControls,
-
-  cxGridLevel, cxClasses, cxGridCustomView,
-  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
-  cxLookAndFeels, cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter,
-  cxData, cxDataStorage, cxEdit, cxNavigator, cxDBData, cxContainer,
+  Windows, SysUtils, Variants, Classes, Controls, Forms, Dialogs, DB, Oracle,
+  OracleData, StdCtrls, Mask, frxClass, frxDBSet, Menus, Unit_ecr, Math,
+  ComCtrls, ToolWin, cxGraphics, cxControls, cxGridLevel, cxClasses,
+  cxGridCustomView, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
+  cxGrid, cxLookAndFeels, cxLookAndFeelPainters, cxStyles, cxCustomData,
+  cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator, cxDBData, cxContainer,
   cxTextEdit, cxMaskEdit, cxDBLookupComboBox, dxSkinsCore,
   dxSkinsDefaultPainters, dxDateRanges;
 
@@ -109,7 +105,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button2Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
-    procedure action;
+    procedure Action;
     procedure FormCreate(Sender: TObject);
     procedure count;
     procedure OD_chargepayBeforeInsert(DataSet: TDataSet);
@@ -117,24 +113,20 @@ type
     procedure N1Click(Sender: TObject);
     procedure setNkom(p_lsk: string);
     procedure clearPay;
-    procedure FormKeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
-    function print_receipt(client_sum: Double; p_cashNum: Integer;
-      p_cash_oper_tp: Integer): Integer;
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    function print_receipt(client_sum: Double; p_cashNum: Integer; p_cash_oper_tp: Integer): Integer;
     procedure ToolButton1Click(Sender: TObject);
     procedure ToolButton2Click(Sender: TObject);
     procedure invokeFormSchHistory;
     procedure invokeFormBill;
     procedure invokeSearchAdr;
-    procedure distPay(distSumm: double; isInitDeb: Boolean;
-      isUseArchPeriod, isUseCurPeriod, isAddit: Boolean);
+    procedure distPay(distSumm: Double; isInitDeb: Boolean; isUseArchPeriod, isUseCurPeriod, isAddit: Boolean);
     procedure reLoadDeb;
     procedure cxLskDblClick(Sender: TObject);
     procedure cxLskKeyPress(Sender: TObject; var Key: Char);
     procedure cxAmountKeyPress(Sender: TObject; var Key: Char);
     procedure cxSummaKeyPress(Sender: TObject; var Key: Char);
-    procedure cxGridDBTableView1KeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
+    procedure cxGridDBTableView1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure ToolButton3Click(Sender: TObject);
   private
     klsk: Integer;
@@ -145,6 +137,7 @@ type
 var
   Form_get_pay_nal: TForm_get_pay_nal;
 
+
 implementation
 
 uses
@@ -153,15 +146,13 @@ uses
   Unit_form_bills;
 
 {$R *.dfm}
-
 // распределить сумму оплаты по периодам
 // isUseArchPeriod - использовать архивный период
 // isUseCurPeriod - использовать текущий период
 // isAddit - распределять дополнительно, к имеющемуся распределению
 //
 
-procedure TForm_get_pay_nal.distPay(distSumm: double; isInitDeb: Boolean;
-  isUseArchPeriod, isUseCurPeriod, isAddit: Boolean);
+procedure TForm_get_pay_nal.distPay(distSumm: Double; isInitDeb: Boolean; isUseArchPeriod, isUseCurPeriod, isAddit: Boolean);
 var
   test, l_sum, l_pen, l_itg, l_sum1, l_pen1: Double;
   l_deb, l_proc, l_deb_cur, l_itgSaved: Double;
@@ -171,8 +162,7 @@ begin
   l_itg := distSumm;
   if l_itg < 0 then
   begin
-    Application.MessageBox('Сумма отрицательная, отмена!', 'Внимание!',
-      MB_OK + MB_ICONSTOP + MB_TOPMOST);
+    Application.MessageBox('Сумма отрицательная, отмена!', 'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
   end;
 
   Form_get_pay_nal.OD_chargepay.DisableControls;
@@ -180,19 +170,18 @@ begin
   begin
     if RecordCount = 0 then
     begin
-      Application.MessageBox('Нет долгов к распределению, отмена!', 'Внимание!',
-        MB_OK + MB_ICONSTOP + MB_TOPMOST);
+      Application.MessageBox('Нет долгов к распределению, отмена!', 'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
       Exit;
     end;
 
     if isInitDeb then
     begin
       // заново залить долги
-      {DataModule1.OraclePackage1.CallProcedure(
+      { DataModule1.OraclePackage1.CallProcedure(
         'scott.C_GET_PAY.init_c_kwtp_temp_dolg',
         [Form_get_pay_nal.cxLsk.Text]);
-      Active := false;
-      Active := true;}
+        Active := false;
+        Active := true; }
       reLoadDeb;
     end;
     // распределить по архивным периодам
@@ -214,12 +203,12 @@ begin
           l_sum := FieldByName('SUMMA2').AsFloat;
           l_pen := FieldByName('PENYA2').AsFloat;
 
-          if l_itg>(l_sum + l_pen) then
+          if l_itg > (l_sum + l_pen) then
           begin
             l_sum1 := l_sum;
             l_pen1 := l_pen;
           end
-          else if l_itg<(l_sum + l_pen) then
+          else if l_itg < (l_sum + l_pen) then
           begin
             procPenSumm := RoundTo((l_itg * l_pen / (l_sum + l_pen)), -2);
             // защита, чтоб округленная сумма не превысила сумму предъявленной пени
@@ -227,7 +216,7 @@ begin
               l_pen1 := l_pen
             else
               l_pen1 := procPenSumm;
-            l_sum1 := l_itg - l_pen1; //на осн.долг сбрасываем остаток
+            l_sum1 := l_itg - l_pen1; // на осн.долг сбрасываем остаток
           end
           else
           begin
@@ -237,12 +226,9 @@ begin
 
           if isAddit then
           begin
-            FieldByName('SUMMA').AsFloat := FieldByName('SUMMA').AsFloat +
-              l_sum1;
-            FieldByName('PENYA').AsFloat := FieldByName('PENYA').AsFloat +
-              l_pen1;
-            FieldByName('ITOG').AsFloat := FieldByName('SUMMA').AsFloat +
-              FieldByName('PENYA').AsFloat;
+            FieldByName('SUMMA').AsFloat := FieldByName('SUMMA').AsFloat + l_sum1;
+            FieldByName('PENYA').AsFloat := FieldByName('PENYA').AsFloat + l_pen1;
+            FieldByName('ITOG').AsFloat := FieldByName('SUMMA').AsFloat + FieldByName('PENYA').AsFloat;
           end
           else
           begin
@@ -299,8 +285,7 @@ begin
             if l_sum1 > 0.00 then
             begin
               Edit;
-              FieldByName('SUMMA').AsFloat := FieldByName('SUMMA').AsFloat +
-                l_sum1;
+              FieldByName('SUMMA').AsFloat := FieldByName('SUMMA').AsFloat + l_sum1;
               FieldByName('ITOG').AsFloat := l_sum1;
               l_itg := RoundTo(l_itg - l_sum1, -2);
             end;
@@ -340,9 +325,9 @@ begin
 
     if l_itg > 0 then
     begin
-//      Application.MessageBox(PAnsiChar('Сумма до конца не распределена, остаток:'
-//        + FloatToStr(l_itg)),
-//        'Внимание!', MB_OK + MB_ICONWARNING + MB_TOPMOST);
+      // Application.MessageBox(PAnsiChar('Сумма до конца не распределена, остаток:'
+      // + FloatToStr(l_itg)),
+      // 'Внимание!', MB_OK + MB_ICONWARNING + MB_TOPMOST);
     end;
 
     // отразить распределение на основной записи
@@ -355,17 +340,13 @@ begin
       end;
       if l_itg = 0.00 then
       begin
-        FieldByName('SUMMA').AsFloat :=
-          FieldByName('SUMMA').AsFloat + distSumm;
-        FieldByName('ITOG').AsFloat :=
-          FieldByName('ITOG').AsFloat + distSumm;
+        FieldByName('SUMMA').AsFloat := FieldByName('SUMMA').AsFloat + distSumm;
+        FieldByName('ITOG').AsFloat := FieldByName('ITOG').AsFloat + distSumm;
       end
       else
       begin
-        FieldByName('SUMMA').AsFloat :=
-          FieldByName('SUMMA').AsFloat + (distSumm - l_itg);
-        FieldByName('ITOG').AsFloat :=
-          FieldByName('ITOG').AsFloat + (distSumm - l_itg);
+        FieldByName('SUMMA').AsFloat := FieldByName('SUMMA').AsFloat + (distSumm - l_itg);
+        FieldByName('ITOG').AsFloat := FieldByName('ITOG').AsFloat + (distSumm - l_itg);
       end;
       Post;
     end;
@@ -374,8 +355,7 @@ begin
   Form_get_pay_nal.OD_chargepay.EnableControls;
 end;
 
-procedure TForm_get_pay_nal.FormClose(Sender: TObject; var Action:
-  TCloseAction);
+procedure TForm_get_pay_nal.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   // Обязательный Rollback, в случае если остались начисления счетчиков
   DataModule1.OracleSession1.Rollback;
@@ -387,29 +367,23 @@ var
   l_nkom: string;
   l_cnt: Integer;
 begin
-  //Автоматически определить номер компьютера, поменять если необходимо
-  l_cnt :=
-    DataModule1.OraclePackage1.CallIntegerFunction('scott.Utils.get_int_param',
-    ['AUTO_SEL_COMP']);
+  // Автоматически определить номер компьютера, поменять если необходимо
+  l_cnt := DataModule1.OraclePackage1.CallIntegerFunction('scott.Utils.get_int_param', ['AUTO_SEL_COMP']);
   if (p_lsk <> '') and (l_cnt = 1) then
   begin
-    l_nkom :=
-      DataModule1.OraclePackage1.CallStringFunction('scott.UTILS.get_nkom_pay_lsk',
-      [cxLsk.Text]);
+    l_nkom := DataModule1.OraclePackage1.CallStringFunction('scott.UTILS.get_nkom_pay_lsk', [cxLsk.Text]);
     ;
     DataModule1.OraclePackage1.CallProcedure('scott.INIT.set_nkom', [l_nkom]);
   end;
-  Caption := 'Ввод оплаты, текущий комп.№ ' +
-    DataModule1.OraclePackage1.CallStringFunction('scott.INIT.get_nkom',
-    [parNone]);
+  Caption := 'Ввод оплаты, текущий комп.№ ' + DataModule1.OraclePackage1.CallStringFunction('scott.INIT.get_nkom', [parNone]);
   ;
-  {  Label7.Caption:=DataModule1.OraclePackage1.CallStringFunction
-       ('scott.INIT.get_nkom', [parNone]);;}
+  { Label7.Caption:=DataModule1.OraclePackage1.CallStringFunction
+    ('scott.INIT.get_nkom', [parNone]);; }
 end;
 
 procedure TForm_get_pay_nal.clearPay;
 begin
-  //очищаем оплату по месяцам
+  // очищаем оплату по месяцам
   OD_c_kwtp_temp.Active := false;
   OD_c_kwtp_temp.Active := true;
   OD_c_kwtp_temp.Edit;
@@ -429,24 +403,16 @@ procedure TForm_get_pay_nal.reLoadDeb;
 begin
   OD_chargepay.DisableControls;
   OD_chargepay.First;
-  while not OD_chargepay.Eof do
+  while not OD_chargepay.eof do
   begin
     // восстановить только измененённые записи, во избежании
     // лишних запросов с клиента
-    if (OD_chargepay.FieldByName('SUMMA').AsFloat <>
-      OD_chargepay.FieldByName('SUMMA2').AsFloat)
-      or
-      (OD_chargepay.FieldByName('PENYA').AsFloat <>
-      OD_chargepay.FieldByName('PENYA2').AsFloat) then
+    if (OD_chargepay.FieldByName('SUMMA').AsFloat <> OD_chargepay.FieldByName('SUMMA2').AsFloat) or (OD_chargepay.FieldByName('PENYA').AsFloat <> OD_chargepay.FieldByName('PENYA2').AsFloat) then
     begin
       OD_chargepay.Edit;
-      OD_chargepay.FieldByName('SUMMA').AsFloat :=
-        OD_chargepay.FieldByName('SUMMA2').AsFloat;
-      OD_chargepay.FieldByName('PENYA').AsFloat :=
-        OD_chargepay.FieldByName('PENYA2').AsFloat;
-      OD_chargepay.FieldByName('ITOG').AsFloat :=
-        OD_chargepay.FieldByName('SUMMA2').AsFloat +
-        OD_chargepay.FieldByName('PENYA2').AsFloat;
+      OD_chargepay.FieldByName('SUMMA').AsFloat := OD_chargepay.FieldByName('SUMMA2').AsFloat;
+      OD_chargepay.FieldByName('PENYA').AsFloat := OD_chargepay.FieldByName('PENYA2').AsFloat;
+      OD_chargepay.FieldByName('ITOG').AsFloat := OD_chargepay.FieldByName('SUMMA2').AsFloat + OD_chargepay.FieldByName('PENYA2').AsFloat;
       OD_chargepay.Post;
     end;
     OD_chargepay.Next;
@@ -454,7 +420,7 @@ begin
   OD_chargepay.EnableControls;
 end;
 
-procedure TForm_get_pay_nal.action;
+procedure TForm_get_pay_nal.Action;
 begin
   OD_usl_chk.Active := false;
   OD_usl_chk.SetVariable('OPER', OD_c_kwtp_temp.FieldByName('oper').AsString);
@@ -462,43 +428,37 @@ begin
 
   if OD_c_kwtp_temp.FieldByName('oper').AsString = '' then
   begin
-    //Выход на итог
+    // Выход на итог
     count;
-    //    cxSumma.SetFocus;
+    // cxSumma.SetFocus;
     Windows.SetFocus(cxAmount.Handle);
   end
   else if (OD_usl_chk.FieldByName('iscounter').AsInteger = 0) then
   begin
-    //Основная операция (например 01)
+    // Основная операция (например 01)
     // Восстановить суммы долгов
     reLoadDeb;
 
     if FF('Form_get_pay_dolg', 1) = 0 then
       Application.CreateForm(TForm_get_pay_dolg, Form_get_pay_dolg);
     Form_get_pay_dolg.ShowModal;
-    //Выход на итог
+    // Выход на итог
     count;
     Windows.SetFocus(cxAmount.Handle);
   end
   else
   begin
-    //Операции со счетчиками
+    // Операции со счетчиками
     if FF('Form_get_pay_dolg', 1) = 0 then
       Application.CreateForm(TForm_get_cnt_sch, Form_get_cnt_sch);
     Form_get_cnt_sch.Label5.Caption := OD_usl_chk.FieldByName('naim').AsString;
     Form_get_cnt_sch.usl_ := OD_usl_chk.FieldByName('fk_usl_chk').AsString;
-    //обрабатывать ли показания счетчика или сумму оплаты?
+    // обрабатывать ли показания счетчика или сумму оплаты?
     if OD_usl_chk.FieldByName('iscounter').AsInteger = 1 then
     begin
       Form_get_cnt_sch.Caption := 'Показания счетчика';
-      Form_get_cnt_sch.cxMeter.Text :=
-        FloatToStr(DataModule1.OraclePackage1.CallFloatFunction('scott.c_charges.gen_charges_sch',
-        [cxLsk.Text, OD_usl_chk.FieldByName('fk_usl_chk').AsString, 0,
-        null]));
-      Form_get_cnt_sch.cnt_sch0_ :=
-        DataModule1.OraclePackage1.CallFloatFunction('scott.c_charges.gen_charges_sch',
-        [cxLsk.Text, OD_usl_chk.FieldByName('fk_usl_chk').AsString, 0,
-        null]);
+      Form_get_cnt_sch.cxMeter.Text := FloatToStr(DataModule1.OraclePackage1.CallFloatFunction('scott.c_charges.gen_charges_sch', [cxLsk.Text, OD_usl_chk.FieldByName('fk_usl_chk').AsString, 0, null]));
+      Form_get_cnt_sch.cnt_sch0_ := DataModule1.OraclePackage1.CallFloatFunction('scott.c_charges.gen_charges_sch', [cxLsk.Text, OD_usl_chk.FieldByName('fk_usl_chk').AsString, 0, null]);
     end
     else
     begin
@@ -512,16 +472,15 @@ procedure TForm_get_pay_nal.count;
 var
   i: Double;
 begin
-  //выход на итог
+  // выход на итог
   i := 0;
   if not (OD_c_kwtp_temp.State in [dsBrowse]) then
     OD_c_kwtp_temp.Post;
 
   OD_c_kwtp_temp.First;
-  while not OD_c_kwtp_temp.Eof do
+  while not OD_c_kwtp_temp.eof do
   begin
-    i := i + OD_c_kwtp_temp.FieldByName('summa').AsFloat +
-      OD_c_kwtp_temp.FieldByName('penya').AsFloat;
+    i := i + OD_c_kwtp_temp.FieldByName('summa').AsFloat + OD_c_kwtp_temp.FieldByName('penya').AsFloat;
     cxAmount.Text := FloatToStr(i);
     OD_c_kwtp_temp.Next
   end;
@@ -539,14 +498,13 @@ var
 begin
   if (StrToFloat(cxSumma.Text) - StrToFloat(cxAmount.Text) < 0) then
   begin
-    msg2('Не хватает денег для оплаты, отмена', 'Внимание!', MB_OK +
-      MB_ICONSTOP);
-    exit;
+    msg2('Не хватает денег для оплаты, отмена', 'Внимание!', MB_OK + MB_ICONSTOP);
+    Exit;
   end;
   if (StrToFloat(cxAmount.Text) = 0) then
   begin
     msg2('Сумма квитанции = 0, отмена', 'Внимание!', MB_OK + MB_ICONSTOP);
-    exit;
+    Exit;
   end;
 
   Button1.Enabled := false;
@@ -558,15 +516,14 @@ begin
   if not (OD_c_kwtp_temp.State in [dsBrowse]) then
     OD_c_kwtp_temp.Post;
 
-  //Автоматически определить номер компьютера, поменять если необходимо
+  // Автоматически определить номер компьютера, поменять если необходимо
   setNkom(cxLsk.Text);
 
   if getDoublePar(Form_main.paramList, 'RECEIPT_TP') = 1 then
   begin
     // ТСЖ - провести платеж
-    c_kwtp_id_ := DataModule1.OraclePackage1.CallIntegerFunction(
-      'scott.C_GET_PAY.get_money_nal', [cxLsk.Text]);
-    //платёжный документ
+    c_kwtp_id_ := DataModule1.OraclePackage1.CallIntegerFunction('scott.C_GET_PAY.get_money_nal', [cxLsk.Text]);
+    // платёжный документ
     with OD_c_kwtp do
     begin
       SetVariable('id', c_kwtp_id_);
@@ -577,8 +534,23 @@ begin
   else
   begin
     // Полыс - провести платеж и получить результат распределения платежа по всем лс (Основным, РСО, Кап.)
-    OD_get_money_nal2.Active := False;
-    OD_get_money_nal2.Active := True;
+    try
+      OD_get_money_nal2.Active := false;
+      OD_get_money_nal2.Active := true;
+    except
+      on E: Exception do
+      begin
+        ShowMessage('Exception class name: ' + E.ClassName + '' + 'Ошибка: ' + E.Message);
+        ShowMessage('Платеж не будет учтён!');
+        logText('ОШИБКА в БД! Откат транзакции!');
+        logText('ОШИБКА:' + E.ClassName);
+        logText(E.Message);
+        // откатить транзакцию
+        OD_get_money_nal2.Session.Rollback;
+        logText('Откат транзакции произведен!');
+        Exit;
+      end;
+    end;
 
     // проверить соответствие итоговой суммы прошедшей в c_kwtp_mg и принятой от клиента
     summCheck := 0;
@@ -591,7 +563,7 @@ begin
     with OD_get_money_nal2 do
     begin
       First;
-      while not Eof do
+      while not eof do
       begin
         summCheck := summCheck + FieldByName('SUMM_ITG').AsFloat;
         Next;
@@ -600,12 +572,11 @@ begin
 
     if not isEqual(summCheck, summGet - summRemain, 0.01) then
     begin
-      Application.MessageBox('Сумма некорректно распределена, отмена!' + #13#10,
-        'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
+      Application.MessageBox('Сумма некорректно распределена, отмена!' + #13#10, 'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
       OD_get_money_nal2.Session.Rollback;
     end;
 
-    //платёжный документ
+    // платёжный документ
     with OD_c_kwtp do
     begin
       // взять из первой строки KWTP_ID платежа
@@ -615,25 +586,20 @@ begin
     end;
   end;
 
-  /////////////////////////////////////////////////////
-  //           регистрация и печать чека
+  /// //////////////////////////////////////////////////
+  // регистрация и печать чека
   // ВНИМАНИЕ! в качестве типа операции используется поле из c_kwtp_mg
   // поэтому кол-во операций при приеме оплаты не должно быть больше 1
   logText('Начало регистрации оплаты');
-  if (Form_Main.have_cash = 1) or (Form_Main.have_cash = 2) then
+  if (Form_main.have_cash = 1) or (Form_main.have_cash = 2) then
   begin
-    logText('Вызов print_receipt: oper=' +
-      OD_oper.FieldByName('oper').AsString + ', cash_oper_tp=' +
-      OD_oper.FieldByName('cash_oper_tp').AsString + ' cash_num=' +
-      OD_c_kwtp.FieldByName('cash_num').AsString);
+    logText('Вызов print_receipt: oper=' + OD_oper.FieldByName('oper').AsString + ', cash_oper_tp=' + OD_oper.FieldByName('cash_oper_tp').AsString + ' cash_num=' + OD_c_kwtp.FieldByName('cash_num').AsString);
 
-    l_flag := print_receipt(StrToFloat(cxSumma.Text),
-      OD_c_kwtp.FieldByName('cash_num').AsInteger,
-      OD_oper.FieldByName('cash_oper_tp').AsInteger);
+    l_flag := print_receipt(StrToFloat(cxSumma.Text), OD_c_kwtp.FieldByName('cash_num').AsInteger, OD_oper.FieldByName('cash_oper_tp').AsInteger);
   end
   else
     l_flag := 0;
-  /////////////////////////////////////////////////////
+  /// //////////////////////////////////////////////////
 
   Button1.Enabled := true;
   if l_flag = 0 then
@@ -649,15 +615,14 @@ begin
     logText('Окончание регистрации оплаты - начало отката');
     DataModule1.OraclePackage1.Session.Rollback;
     logText('Окончание регистрации оплаты - окончание отката');
-    Application.MessageBox('Ошибка при попытке распечатать кассовый чек!',
-      'Внимание!', MB_OK + MB_ICONSTOP + MB_DEFBUTTON2);
+    Application.MessageBox('Ошибка при попытке распечатать кассовый чек!', 'Внимание!', MB_OK + MB_ICONSTOP + MB_DEFBUTTON2);
     Exit;
   end;
 
   if getDoublePar(Form_main.paramList, 'RECEIPT_TP') = 1 then
   begin
     // ТСЖ - распечатка чека на принтере
-    if Form_Main.have_cash <> 1 then
+    if Form_main.have_cash <> 1 then
     begin
       if FF('Form_plat_doc', 1) = 0 then
         Application.CreateForm(TForm_plat_doc, Form_plat_doc);
@@ -667,11 +632,11 @@ begin
         frxDBc_kwtp_chk.DataSource := DS_c_kwtp;
         frxDBc_kwtp_mg_chk.DataSource := DS_c_kwtp_mg;
 
-        //если используется собственный файл платежной квитанции - использовать его
-        //ТСЖ
+        // если используется собственный файл платежной квитанции - использовать его
+        // ТСЖ
 
         frxReport1.Preview := frxPreview1;
-        frxReport1.LoadFromFile(Form_main.exepath_ + '\paydoc.fr3', True);
+        frxReport1.LoadFromFile(Form_main.exepath_ + '\paydoc.fr3', true);
         frxReport1.PrepareReport(true);
         frxReport1.ShowPreparedReport;
 
@@ -699,8 +664,7 @@ end;
 // печать чека Result :0-успешно, 1-ошибка
 // client_sum: сумма, полученная от клиента
 
-function TForm_get_pay_nal.print_receipt(client_sum: Double; p_cashNum:
-  Integer; p_cash_oper_tp: Integer): Integer;
+function TForm_get_pay_nal.print_receipt(client_sum: Double; p_cashNum: Integer; p_cash_oper_tp: Integer): Integer;
 var
   // режим ККМ
   mode: Integer;
@@ -729,45 +693,43 @@ begin
   begin
     // ТСЖ - проверка корректности подключенного фискальника
     logText('ККМ: Проверка корректности подключенного фискальника');
-    retry := True;
+    retry := true;
     while retry do
     begin
-      retry := False;
+      retry := false;
       ECR.GetECRStatus;
       // если заполнен ИНН ККМ, то проверить на правильность подсоединения
-      if (ECR.INN <> inn) then
+      if (ECR.inn <> inn) then
       begin
         logText('ККМ: Подключен НЕсоответствующий фискальный регистратор!');
-        case
-          Application.MessageBox('Подключен несоответствующий фискальный регистратор!',
-          'Внимание!', MB_ABORTRETRYIGNORE + MB_ICONSTOP) of
+        case Application.MessageBox('Подключен несоответствующий фискальный регистратор!', 'Внимание!', MB_ABORTRETRYIGNORE + MB_ICONSTOP) of
           IDABORT:
             begin
-              // выйти из процедуры
+            // выйти из процедуры
               Result := 1;
               logText('ККМ: Окончание регистрации чека - выбрана отмена!');
               Exit;
             end;
           IDRETRY:
             begin
-              // повторить проверку ИНН
+            // повторить проверку ИНН
               ECR.GetECRStatus;
-              if ECR.INN <> inn then
+              if ECR.inn <> inn then
               begin
-                retry := True;
+                retry := true;
                 logText('ККМ: Повтор:Подключен НЕсоответствующий фискальный регистратор!');
               end
               else
               begin
-                retry := False;
+                retry := false;
                 logText('ККМ: Повтор:Подключен соответствующий фискальный регистратор!');
               end;
             end;
           IDIGNORE:
             begin
-              // распечатать чек на текущем ККМ
+            // распечатать чек на текущем ККМ
               logText('ККМ: Повтор:Подключен НЕсоответствующий фискальный регистратор - проигнорировано!');
-              retry := False;
+              retry := false;
             end;
         end;
       end;
@@ -777,17 +739,15 @@ begin
   if open_port_ecr(ECR) <> 0 then
   begin
     logText('ККМ: Открытие порта - ОШИБКА!');
-    retry := True;
+    retry := true;
     while retry do
     begin
       // ошибка, возможно отключен фискальный регистратор
       logText('ККМ: Возможно отключен фискальный регистратор, печать чека будет не доступна. Продолжить без печати чека?');
-      case
-        Application.MessageBox('Возможно отключен фискальный регистратор, печать чека будет не доступна. Продолжить без печати чека?',
-        'Внимание!', MB_RETRYCANCEL + MB_ICONSTOP) of
+      case Application.MessageBox('Возможно отключен фискальный регистратор, печать чека будет не доступна. Продолжить без печати чека?', 'Внимание!', MB_RETRYCANCEL + MB_ICONSTOP) of
         IDCANCEL:
           begin
-            // выйти из процедуры
+          // выйти из процедуры
             logText('ККМ: Возможно отключен фискальный регистратор, печать чека будет не доступна - выход без печати чека');
             Result := 1;
             Exit;
@@ -795,16 +755,16 @@ begin
         IDRETRY:
           begin
             logText('Возможно отключен фискальный регистратор, печать чека будет не доступна - повтор проверки ККМ');
-            // повторить проверку ККМ
+          // повторить проверку ККМ
             if open_port_ecr(ECR) <> 0 then
             begin
               logText('ККМ: Повторное открытие порта - ОШИБКА!');
-              retry := True
+              retry := true
             end
             else
             begin
               logText('ККМ: Повторное открытие порта - успешно!');
-              retry := False;
+              retry := false;
             end
           end;
       end;
@@ -814,10 +774,10 @@ begin
   if getDoublePar(Form_main.paramList, 'RECEIPT_TP') = 1 then
   begin
     logText('Чек вариант №1');
-    ///////////////////////////////////////////////////////////
-    //                   ЧЕК ДЛЯ ТСЖ
+    /// ////////////////////////////////////////////////////////
+    // ЧЕК ДЛЯ ТСЖ
     // детализация фискального чека по периодам и услугам
-    ///////////////////////////////////////////////////////////
+    /// ////////////////////////////////////////////////////////
     with OD_c_kwtp_mg do
     begin
       Active := false;
@@ -835,14 +795,10 @@ begin
     end;
 
     try
-      if Form_Main.have_cash = 1 then
+      if Form_main.have_cash = 1 then
       begin
         // инициализация?
-        setup_ecr('                                                                          '
-          + '                                                                          '
-          +
-          '                                                                          ',
-          ECR);
+        setup_ecr('                                                                          ' + '                                                                          ' + '                                                                          ', ECR);
       end;
       // открыть порт
       if open_port_ecr(ECR) <> 0 then
@@ -856,16 +812,13 @@ begin
         // порт открыт
         // печать заголовка
         print_header_ecr('', 1, 1, 0, F, ECR);
-        print_header_ecr('     К  А  С  С  О  В  Ы  Й   Ч  Е  К', 1, 1, 0, F,
-          ECR);
+        print_header_ecr('     К  А  С  С  О  В  Ы  Й   Ч  Е  К', 1, 1, 0, F, ECR);
         print_header_ecr('', 1, 1, 0, F, ECR);
 
         // проверить режим
         mode := check_mode(ECR);
-        if (Form_main.have_cash <> 2)
-          or ((Form_main.have_cash = 2)
-          and (mode = 2) or (mode = 3)) then
-          // если ККМ=2 то проверить режимы
+        if (Form_main.have_cash <> 2) or ((Form_main.have_cash = 2) and (mode = 2) or (mode = 3)) then
+        // если ККМ=2 то проверить режимы
         begin
           // открыть чек
           if open_reg(ECR) <> 0 then
@@ -878,63 +831,36 @@ begin
           begin
             // последние показания счетчиков
             strDt := FormatDateTime('dd/mm/yy', Now());
-            print_string_ecr2('-------------------------------------', 1, 0, F,
-              ECR);
-            print_string_ecr2('| услуга | последнее  | начисленный |', 1, 0, F,
-              ECR);
-            print_string_ecr2('|        | показание  | объем       |', 1, 0, F,
-              ECR);
-            print_string_ecr2('|        | на ' + strDt + '|             |', 1,
-              0, F, ECR);
-            print_string_ecr2('-------------------------------------', 1, 0, F,
-              ECR);
-            while not OD_meter_vol.Eof do
+            print_string_ecr2('-------------------------------------', 1, 0, F, ECR);
+            print_string_ecr2('| услуга | последнее  | начисленный |', 1, 0, F, ECR);
+            print_string_ecr2('|        | показание  | объем       |', 1, 0, F, ECR);
+            print_string_ecr2('|        | на ' + strDt + '|             |', 1, 0, F, ECR);
+            print_string_ecr2('-------------------------------------', 1, 0, F, ECR);
+            while not OD_meter_vol.eof do
             begin
               pad1 := calc_pads2(11, OD_meter_vol.FieldByName('name').AsString);
-              pad2 := calc_pads2(18,
-                pad1 + OD_meter_vol.FieldByName('last_num').AsString);
-              print_string_ecr2('|' + OD_meter_vol.FieldByName('name').AsString
-                + pad1
-                + OD_meter_vol.FieldByName('last_num').AsString
-                + pad2
-                + OD_meter_vol.FieldByName('vol').AsString, 1, 0, F, ECR);
+              pad2 := calc_pads2(18, pad1 + OD_meter_vol.FieldByName('last_num').AsString);
+              print_string_ecr2('|' + OD_meter_vol.FieldByName('name').AsString + pad1 + OD_meter_vol.FieldByName('last_num').AsString + pad2 + OD_meter_vol.FieldByName('vol').AsString, 1, 0, F, ECR);
               OD_meter_vol.Next;
             end;
-            print_string_ecr2('------------------------------------', 1, 0, F,
-              ECR);
+            print_string_ecr2('------------------------------------', 1, 0, F, ECR);
 
             // адрес кассы и прочие реквизиты
-            print_string_ecr2('Вас обслуживает организация:'
-              + OD_c_kwtp.FieldByName('name_org2').AsString
-              + ' ИНН ' + OD_c_kwtp.FieldByName('inn2').AsString
-              + ', тел.' + OD_c_kwtp.FieldByName('phone2').AsString, 1,
-              0, F, ECR);
-            print_string_ecr2('Адрес кассы:'
-              + OD_c_kwtp.FieldByName('adr_cash').AsString
-              + ', тел.' + OD_c_kwtp.FieldByName('phone2').AsString, 1,
-              0, F, ECR);
-            print_string_ecr2('Кассир:' +
-              OD_c_kwtp.FieldByName('fio_kass').AsString, 1, 0, F, ECR);
-            print_string_ecr2('---------------------------------------', 1,
-              0, F, ECR);
-            print_string_ecr2('Лицевой счет № ' +
-              OD_c_kwtp.FieldByName('lsk').AsString, 1, 0, F, ECR);
-            print_string_ecr2('Адрес:' +
-              OD_c_kwtp.FieldByName('adr').AsString,
-              1, 0, F, ECR);
+            print_string_ecr2('Вас обслуживает организация:' + OD_c_kwtp.FieldByName('name_org2').AsString + ' ИНН ' + OD_c_kwtp.FieldByName('inn2').AsString + ', тел.' + OD_c_kwtp.FieldByName('phone2').AsString, 1, 0, F, ECR);
+            print_string_ecr2('Адрес кассы:' + OD_c_kwtp.FieldByName('adr_cash').AsString + ', тел.' + OD_c_kwtp.FieldByName('phone2').AsString, 1, 0, F, ECR);
+            print_string_ecr2('Кассир:' + OD_c_kwtp.FieldByName('fio_kass').AsString, 1, 0, F, ECR);
+            print_string_ecr2('---------------------------------------', 1, 0, F, ECR);
+            print_string_ecr2('Лицевой счет № ' + OD_c_kwtp.FieldByName('lsk').AsString, 1, 0, F, ECR);
+            print_string_ecr2('Адрес:' + OD_c_kwtp.FieldByName('adr').AsString, 1, 0, F, ECR);
             logText('Лиц.счет:' + OD_c_kwtp.FieldByName('lsk').AsString);
             OD_kwtp_day.First;
-            print_string_ecr2('Наим-е операции   Период    Оплата(руб.)',
-              1, 0, F, ECR);
+            print_string_ecr2('Наим-е операции   Период    Оплата(руб.)', 1, 0, F, ECR);
 
             // регистация операций по услугам
-            while not OD_kwtp_day.Eof do
+            while not OD_kwtp_day.eof do
             begin
-              reg_ecr_ext(OD_kwtp_day.FieldByName('name').AsString,
-                OD_kwtp_day.FieldByName('summa').AsFloat,
-                1, OD_kwtp_day.FieldByName('dep').AsInteger, F, ECR);
-              logText('Сумма:' +
-                FloatToStr(OD_kwtp_day.FieldByName('summa').AsFloat));
+              reg_ecr_ext(OD_kwtp_day.FieldByName('name').AsString, OD_kwtp_day.FieldByName('summa').AsFloat, 1, OD_kwtp_day.FieldByName('dep').AsInteger, F, ECR);
+              logText('Сумма:' + FloatToStr(OD_kwtp_day.FieldByName('summa').AsFloat));
               OD_kwtp_day.Next;
             end;
             Sleep(500);
@@ -943,15 +869,11 @@ begin
           // ВНИМАНИЕ! в качестве типа операции используется поле из c_kwtp_mg
           // поэтому кол-во операций при приеме оплаты не должно быть больше 1
           // (кол-во записей в c_kwtp_mg = 1!!!)
-          if close_reg_summ_ecr_ext(client_sum, ECR,
-            OD_oper.FieldByName('cash_oper_tp').AsInteger,
-            F) <> 0 then
+          if close_reg_summ_ecr_ext(client_sum, ECR, OD_oper.FieldByName('cash_oper_tp').AsInteger, F) <> 0 then
           begin
             // ошибка, попытаться аннулировать чек
             logText('ККМ: Регистрация чека - ОШИБКА!');
-            if
-              Application.MessageBox('Фискальный чек не прошёл регистрацию, аннулировать его?',
-              'Внимание!', MB_YESNO + MB_ICONQUESTION) = IDYES then
+            if Application.MessageBox('Фискальный чек не прошёл регистрацию, аннулировать его?', 'Внимание!', MB_YESNO + MB_ICONQUESTION) = IDYES then
             begin
               logText('ККМ: Регистрация чека - выбрано аннулирование чека!');
               annulment(ECR);
@@ -972,11 +894,8 @@ begin
         begin
           // некорректный режим ККМ
           Result := 1;
-          logText('ККМ: ККМ находится в некорректном режиме:' +
-            check_mode2(ECR));
-          msg2('Ошибка, ККМ находится в некорректном режиме:' +
-            check_mode2(ECR),
-            'Внимание!', MB_OK + MB_ICONERROR);
+          logText('ККМ: ККМ находится в некорректном режиме:' + check_mode2(ECR));
+          msg2('Ошибка, ККМ находится в некорректном режиме:' + check_mode2(ECR), 'Внимание!', MB_OK + MB_ICONERROR);
           close_port_ecr(ECR);
         end;
       end;
@@ -986,16 +905,13 @@ begin
       on E: Exception do
       begin
         Result := 1;
-        ShowMessage('Exception class name: ' + E.ClassName + '' + 'Ошибка: ' +
-          E.Message);
+        ShowMessage('Exception class name: ' + E.ClassName + '' + 'Ошибка: ' + E.Message);
         ShowMessage('Платеж не будет учтён!');
         logText('ОШИБКА в фискальном регистраторе или в БД! Откат транзакции!');
         // откатить транзакцию
         DataModule1.OraclePackage1.Session.Rollback;
         // удалить платеж в БД (он может быть проведен в Java)
-        DataModule1.OraclePackage1.CallProcedure
-          ('scott.C_GET_PAY.remove_pay',
-          [OD_c_kwtp.FieldByName('id').AsInteger]);
+        DataModule1.OraclePackage1.CallProcedure('scott.C_GET_PAY.remove_pay', [OD_c_kwtp.FieldByName('id').AsInteger]);
         DataModule1.OraclePackage1.Session.Commit;
         logText('Откат транзакции произведен!');
       end;
@@ -1004,20 +920,16 @@ begin
   else if getDoublePar(Form_main.paramList, 'RECEIPT_TP') = 0 then
   begin
     logText('Чек вариант №2');
-    ///////////////////////////////////////////////////////////
-    //              ЧЕК ДЛЯ ПОЛЫС
-    ///////////////////////////////////////////////////////////
-    if (Form_Main.have_cash = 1) or (Form_Main.have_cash = 2) then
+    /// ////////////////////////////////////////////////////////
+    // ЧЕК ДЛЯ ПОЛЫС
+    /// ////////////////////////////////////////////////////////
+    if (Form_main.have_cash = 1) or (Form_main.have_cash = 2) then
     begin
       try
-        //КАССА
-        if Form_Main.have_cash = 1 then
+        // КАССА
+        if Form_main.have_cash = 1 then
         begin
-          setup_ecr('                                                                          '
-            + '                                                                          '
-            +
-            '                                                                          ',
-            ECR);
+          setup_ecr('                                                                          ' + '                                                                          ' + '                                                                          ', ECR);
         end;
         // открыть порт
         if open_port_ecr(ECR) <> 0 then
@@ -1029,46 +941,43 @@ begin
         begin
           logText('ККМ: порт открыт');
           { 24.07.20
-          ПОЛЫСАЕВО так:
-          [Application]
-          # SID=078065
-           SID=06F07206306C
-           User=042055047048034
-           Pass=074065073074034
-           Have_cash=2
-          ServerIp=192.168.1.102
-          have_eq=1
+            ПОЛЫСАЕВО так:
+            [Application]
+            # SID=078065
+            SID=06F07206306C
+            User=042055047048034
+            Pass=074065073074034
+            Have_cash=2
+            ServerIp=192.168.1.102
+            have_eq=1
           }
-
           // порт открыт
           // проверить режим
           mode := check_mode(ECR);
-          if (Form_main.have_cash <> 2)
-            or ((Form_main.have_cash = 2)
-            and (mode = 2) or (mode = 3)) then // если ККМ=2 то проверить режимы
+          if (Form_main.have_cash <> 2) or ((Form_main.have_cash = 2) and (mode = 2) or (mode = 3)) then
+          // если ККМ=2 то проверить режимы
           begin
-            ////////////////////////////////////////////////////
-            //                    ЭКВАЙРИНГ                   //
-            ////////////////////////////////////////////////////
-            eQsuccess := False;
+            /// /////////////////////////////////////////////////
+            // ЭКВАЙРИНГ                   //
+            /// /////////////////////////////////////////////////
+            eQsuccess := false;
             // регистрация операции в эквайринге, если подключен
-            logText('Параметры: p_cash_oper_tp=' + IntToStr(p_cash_oper_tp) +
-              ', Form_Main.have_eq=' + IntToStr(Form_Main.have_eq));
-            if (p_cash_oper_tp = 2) and (Form_Main.have_eq = 1) then
+            logText('Параметры: p_cash_oper_tp=' + IntToStr(p_cash_oper_tp) + ', Form_Main.have_eq=' + IntToStr(Form_main.have_eq));
+            if (p_cash_oper_tp = 2) and (Form_main.have_eq = 1) then
             begin
               logText('Эквайринг');
               // принять оплату, сумма в копейках
-              Form_Main.eqECR.Sparam('Amount', FloatToStr(client_sum * 100));
-              eQres := Form_Main.eqECR.NFun(4000);
+              Form_main.eqECR.Sparam('Amount', FloatToStr(client_sum * 100));
+              eQres := Form_main.eqECR.NFun(4000);
               if eQres = '0' then
               begin
                 logText('Эквайринг: сумма:' + FloatToStr(client_sum));
                 // успешно
                 eQsuccess := true;
                 // перевести в "неподтвержденное" состояние транзакцию эквайринга
-                Form_Main.eqECR.NFun(6003);
+                Form_main.eqECR.NFun(6003);
 
-                check := Form_Main.eqECR.GParamString('Cheque');
+                check := Form_main.eqECR.GParamString('Cheque');
 
                 // печать чека на фискальнике, используя разбиение на строки и отрезку
                 printByLineWithCut(true, check, ECR, 25);
@@ -1080,29 +989,22 @@ begin
 
                 // дополнительно указать адрес и лиц.счет, на случай потери записи в БД по платежу
                 // - пока убрал печать в ККМ, не смог настроить отрезку. сделал логгирование в файл
-                print_string_ecr2('Адрес:' +
-                  OD_c_kwtp.FieldByName('adr').AsString,
-                  1, 0, F, ECR);
+                print_string_ecr2('Адрес:' + OD_c_kwtp.FieldByName('adr').AsString, 1, 0, F, ECR);
                 oldLsk := '';
                 OD_get_money_nal2.First;
-                while not OD_get_money_nal2.Eof do
+                while not OD_get_money_nal2.eof do
                 begin
-                  if oldLsk <> OD_get_money_nal2.FieldByName('lsk').AsString
-                    then
+                  if oldLsk <> OD_get_money_nal2.FieldByName('lsk').AsString then
                   begin
                     oldLsk := OD_get_money_nal2.FieldByName('lsk').AsString;
-                    strPrint := 'ЛС:' +
-                      OD_get_money_nal2.FieldByName('lsk').AsString + ', ' +
-                      OD_get_money_nal2.FieldByName('dopl').AsString + ', ' +
-                      'сумма: ' +
-                      FloatToStr(OD_get_money_nal2.FieldByName('summ_itg').AsFloat);
+                    strPrint := 'ЛС:' + OD_get_money_nal2.FieldByName('lsk').AsString + ', ' + OD_get_money_nal2.FieldByName('dopl').AsString + ', ' + 'сумма: ' + FloatToStr(OD_get_money_nal2.FieldByName('summ_itg').AsFloat);
                     logText('Эквайринг: ' + strPrint);
-                    //print_string_ecr2(strPrint, 1, 0, F, ECR);
+                    // print_string_ecr2(strPrint, 1, 0, F, ECR);
                   end;
                   OD_get_money_nal2.Next;
                 end;
 
-                //printByLineWithCut(true, '...', ECR, 1);
+                // printByLineWithCut(true, '...', ECR, 1);
                 logText('Эквайринг: статус=6003 (неподтверждено)');
               end
               else
@@ -1114,8 +1016,7 @@ begin
                 close_port_ecr(ECR);
                 if eQres = '113' then
                 begin
-                  Application.MessageBox('Возможно некорретно зарегистрировано sbrf.dll (regsvr32 надо выполнять в c:\Sc552\)' +
-                    #13#10, 'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
+                  Application.MessageBox('Возможно некорретно зарегистрировано sbrf.dll (regsvr32 надо выполнять в c:\Sc552\)' + #13#10, 'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
                 end;
               end;
 
@@ -1131,9 +1032,7 @@ begin
               logText('ККМ: печать чека');
               // печать заголовка
               print_header_ecr('', 1, 1, 0, F, ECR);
-              print_header_ecr('     К  А  С  С  О  В  Ы  Й   Ч  Е  К', 1, 1, 0,
-                F
-                , ECR);
+              print_header_ecr('     К  А  С  С  О  В  Ы  Й   Ч  Е  К', 1, 1, 0, F, ECR);
               print_header_ecr('', 1, 1, 0, F, ECR);
               // открыть чек
               if open_reg(ECR) <> 0 then
@@ -1143,72 +1042,39 @@ begin
               end
               else
               begin
-                print_string_ecr2('Вас обслуживает организация:'
-                  + OD_c_kwtp.FieldByName('name_org2').AsString
-                  + ' ИНН ' + OD_c_kwtp.FieldByName('inn2').AsString
-                  + ', тел.' + OD_c_kwtp.FieldByName('phone2').AsString, 1,
-                  0, F, ECR);
-                print_string_ecr2('Платёжный агент:' +
-                  OD_c_kwtp.FieldByName('name_org').AsString, 1, 0, F, ECR);
-                print_string_ecr2('Адрес кассы:'
-                  + OD_c_kwtp.FieldByName('adr_org').AsString
-                  + ', тел.' + OD_c_kwtp.FieldByName('phone2').AsString, 1,
-                  0, F, ECR);
-                print_string_ecr2('Кассир:' +
-                  OD_c_kwtp.FieldByName('fio_kass').AsString, 1, 0, F, ECR);
-                print_string_ecr2('Отдел №' +
-                  OD_c_kwtp.FieldByName('dep').AsString,
-                  1, 0, F, ECR);
-                print_string_ecr2('---------------------------------------', 1,
-                  0, F, ECR);
-                print_string_ecr2('Ф.И.О.:' +
-                  OD_c_kwtp.FieldByName('fio_owner').AsString, 1, 0, F, ECR);
-                print_string_ecr2('Адрес:' +
-                  OD_c_kwtp.FieldByName('adr').AsString,
-                  1, 0, F, ECR);
+                print_string_ecr2('Вас обслуживает организация:' + OD_c_kwtp.FieldByName('name_org2').AsString + ' ИНН ' + OD_c_kwtp.FieldByName('inn2').AsString + ', тел.' + OD_c_kwtp.FieldByName('phone2').AsString, 1, 0, F, ECR);
+                print_string_ecr2('Платёжный агент:' + OD_c_kwtp.FieldByName('name_org').AsString, 1, 0, F, ECR);
+                print_string_ecr2('Адрес кассы:' + OD_c_kwtp.FieldByName('adr_org').AsString + ', тел.' + OD_c_kwtp.FieldByName('phone2').AsString, 1, 0, F, ECR);
+                print_string_ecr2('Кассир:' + OD_c_kwtp.FieldByName('fio_kass').AsString, 1, 0, F, ECR);
+                print_string_ecr2('Отдел №' + OD_c_kwtp.FieldByName('dep').AsString, 1, 0, F, ECR);
+                print_string_ecr2('---------------------------------------', 1, 0, F, ECR);
+                print_string_ecr2('Ф.И.О.:' + OD_c_kwtp.FieldByName('fio_owner').AsString, 1, 0, F, ECR);
+                print_string_ecr2('Адрес:' + OD_c_kwtp.FieldByName('adr').AsString, 1, 0, F, ECR);
 
                 OD_get_money_nal2.First;
-                print_string_ecr2('Наим-е операции   Период    Оплата(руб.)',
-                  1,
-                  0, F, ECR);
+                print_string_ecr2('Наим-е операции   Период    Оплата(руб.)', 1, 0, F, ECR);
 
                 oldLsk := '';
-                while not OD_get_money_nal2.Eof do
+                while not OD_get_money_nal2.eof do
                 begin
-                  if oldLsk <> OD_get_money_nal2.FieldByName('lsk').AsString
-                    then
+                  if oldLsk <> OD_get_money_nal2.FieldByName('lsk').AsString then
                   begin
                     oldLsk := OD_get_money_nal2.FieldByName('lsk').AsString;
-                    logText('Лиц.счет:' +
-                      OD_get_money_nal2.FieldByName('lsk').AsString);
-                    print_string_ecr2('Лиц.сч.' +
-                      OD_get_money_nal2.FieldByName('lsk_tp').AsString + ' № ' +
-                      OD_get_money_nal2.FieldByName('lsk').AsString, 1, 0, F,
-                      ECR);
+                    logText('Лиц.счет:' + OD_get_money_nal2.FieldByName('lsk').AsString);
+                    print_string_ecr2('Лиц.сч.' + OD_get_money_nal2.FieldByName('lsk_tp').AsString + ' № ' + OD_get_money_nal2.FieldByName('lsk').AsString, 1, 0, F, ECR);
                   end;
-                  logText('Строка оплаты:' +
-                    OD_get_money_nal2.FieldByName('naim').AsString
-                    + OD_get_money_nal2.FieldByName('naim').AsString
-                    + OD_get_money_nal2.FieldByName('dopl').AsString);
-                  logText('Сумма:' +
-                    FloatToStr(OD_get_money_nal2.FieldByName('summ_itg').AsFloat));
-                  reg_ecr(OD_get_money_nal2.FieldByName('naim').AsString
-                    + calc_pads(OD_get_money_nal2.FieldByName('naim').AsString)
-                    + OD_get_money_nal2.FieldByName('dopl').AsString,
-                    OD_get_money_nal2.FieldByName('summ_itg').AsFloat,
-                    1, OD_c_kwtp.FieldByName('dep').AsInteger, F, ECR);
+                  logText('Строка оплаты:' + OD_get_money_nal2.FieldByName('naim').AsString + OD_get_money_nal2.FieldByName('naim').AsString + OD_get_money_nal2.FieldByName('dopl').AsString);
+                  logText('Сумма:' + FloatToStr(OD_get_money_nal2.FieldByName('summ_itg').AsFloat));
+                  reg_ecr(OD_get_money_nal2.FieldByName('naim').AsString + calc_pads(OD_get_money_nal2.FieldByName('naim').AsString) + OD_get_money_nal2.FieldByName('dopl').AsString, OD_get_money_nal2.FieldByName('summ_itg').AsFloat, 1, OD_c_kwtp.FieldByName('dep').AsInteger, F, ECR);
                   OD_get_money_nal2.Next;
                 end;
                 logText('ККМ: Печать чека - успешно!');
                 // закрыть чек
-                if close_reg_summ_ecr(client_sum, ECR,
-                  OD_oper.FieldByName('cash_oper_tp').AsInteger, F) <> 0 then
+                if close_reg_summ_ecr(client_sum, ECR, OD_oper.FieldByName('cash_oper_tp').AsInteger, F) <> 0 then
                 begin
                   logText('ККМ: Закрытие чека - ОШИБКА!');
                   // ошибка, попытаться аннулировать чек
-                  if
-                    Application.MessageBox('Фискальный чек не прошёл регистрацию, аннулировать его?',
-                    'Внимание!', MB_YESNO + MB_ICONQUESTION) = IDYES then
+                  if Application.MessageBox('Фискальный чек не прошёл регистрацию, аннулировать его?', 'Внимание!', MB_YESNO + MB_ICONQUESTION) = IDYES then
                   begin
                     annulment(ECR);
                     logText('ККМ: Чек АННУЛИРОВАН!');
@@ -1216,10 +1082,10 @@ begin
 
                   Result := 1;
                   close_port_ecr(ECR);
-                  if (p_cash_oper_tp = 2) and (Form_Main.have_eq = 1) then
+                  if (p_cash_oper_tp = 2) and (Form_main.have_eq = 1) then
                   begin
                     // перевести в "отмененное" состояние транзакцию эквайринга
-                    Form_Main.eqECR.NFun(6004);
+                    Form_main.eqECR.NFun(6004);
                     logText('Эквайринг: статус=6004 (отменено)');
                   end;
                 end
@@ -1230,10 +1096,10 @@ begin
                   Result := 0;
                   close_port_ecr(ECR);
 
-                  if (p_cash_oper_tp = 2) and (Form_Main.have_eq = 1) then
+                  if (p_cash_oper_tp = 2) and (Form_main.have_eq = 1) then
                   begin
                     // перевести в "подтвержденное" состояние транзакцию эквайринга
-                    Form_Main.eqECR.NFun(6001);
+                    Form_main.eqECR.NFun(6001);
                     logText('Эквайринг: статус=6001 (подтверждено)');
                   end;
 
@@ -1245,11 +1111,8 @@ begin
           begin
             // Некорректный режим ККМ
             Result := 1;
-            logText('ККМ: ' + 'ККМ находится в некорректном режиме:' +
-              check_mode2(ECR) + ' - ОШИБКА!');
-            msg2('Ошибка, ККМ находится в некорректном режиме:' +
-              check_mode2(ECR),
-              'Внимание!', MB_OK + MB_ICONERROR);
+            logText('ККМ: ' + 'ККМ находится в некорректном режиме:' + check_mode2(ECR) + ' - ОШИБКА!');
+            msg2('Ошибка, ККМ находится в некорректном режиме:' + check_mode2(ECR), 'Внимание!', MB_OK + MB_ICONERROR);
             close_port_ecr(ECR);
           end;
         end;
@@ -1260,15 +1123,12 @@ begin
           logText('ОШИБКА в фискальном регистраторе или в базе данных, платеж не будет учтен');
           logText('Начало отмены платежа в БД');
           Result := 1;
-          ShowMessage('Exception class name: ' + E.ClassName + '' + 'Ошибка: ' +
-            E.Message);
+          ShowMessage('Exception class name: ' + E.ClassName + '' + 'Ошибка: ' + E.Message);
           ShowMessage('Платеж не будет учтён!');
           // откатить транзакцию
           DataModule1.OraclePackage1.Session.Rollback;
           // удалить платеж в БД (он может быть проведен в Java)
-          DataModule1.OraclePackage1.CallProcedure
-            ('scott.C_GET_PAY.remove_pay',
-            [OD_c_kwtp.FieldByName('id').AsInteger]);
+          DataModule1.OraclePackage1.CallProcedure('scott.C_GET_PAY.remove_pay', [OD_c_kwtp.FieldByName('id').AsInteger]);
           DataModule1.OraclePackage1.Session.Commit;
           logText('Окончание отмены платежа в БД');
         end;
@@ -1287,7 +1147,7 @@ end;
 
 procedure TForm_get_pay_nal.FormCreate(Sender: TObject);
 begin
-  //DecimalSeparator := '.';
+  // DecimalSeparator := '.';
   OD_oper.Active := true;
   OD_usl_chk.Active := true;
   cxSumma.Text := '0';
@@ -1317,8 +1177,7 @@ begin
   OD_c_kwtp_temp.Delete;
 end;
 
-procedure TForm_get_pay_nal.FormKeyDown(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
+procedure TForm_get_pay_nal.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   if (Key = vk_F10) then
   begin
@@ -1368,8 +1227,8 @@ begin
       Application.CreateForm(TForm_print_bills, Form_print_bills);
       // выбрать задолженность
       Form_print_bills.cxImageComboBox2.ItemIndex := 3;
-//      Form_print_bills.tp_:=3;
-//      Form_print_bills.selVar();
+      // Form_print_bills.tp_:=3;
+      // Form_print_bills.selVar();
       Windows.SetFocus(Form_print_bills.Button1.Handle);
     end;
   end
@@ -1388,29 +1247,29 @@ begin
   Application.CreateForm(TForm_find_adr, Form_find_adr);
   if Form_find_adr.ShowModal = mrOk then
   begin
-    cxLsk.Text := Form_Main.Lsk_;
-    {    Edit1.Text :=
-          DataModule1.OraclePackage1.CallStringFunction('scott.UTILS.GET_ADR_BY_LSK',
-          [Form_Main.Lsk_]);}
-    OD_Kart.SetVariable('lsk', Form_Main.Lsk_);
-    OD_Kart.Active := False;
-    OD_Kart.Active := True;
+    cxLsk.Text := Form_main.Lsk_;
+    { Edit1.Text :=
+      DataModule1.OraclePackage1.CallStringFunction('scott.UTILS.GET_ADR_BY_LSK',
+      [Form_Main.Lsk_]); }
+    OD_Kart.SetVariable('lsk', Form_main.Lsk_);
+    OD_Kart.Active := false;
+    OD_Kart.Active := true;
     Edit1.Text := OD_Kart.FieldByName('adr').AsString;
     klsk := OD_Kart.FieldByName('k_lsk_id').AsInteger;
 
-    {    if getDoublePar(Form_main.paramList, 'JAVA_CHARGE') <> 1 then
-        begin
-          // Выполнить начисление в PL/SQL, если нет Java модуля начисления
-          // чтобы уже Java могла распределить по свежему начислению
-          l_cnt :=
-            DataModule1.OraclePackage1.CallIntegerFunction('scott.C_CHARGES.gen_charges',
-            [Form_Main.Lsk_, null, null,
-            null, 1, 0]);
-        end;
-     }
-    setNkom(Form_Main.Lsk_);
+    { if getDoublePar(Form_main.paramList, 'JAVA_CHARGE') <> 1 then
+      begin
+      // Выполнить начисление в PL/SQL, если нет Java модуля начисления
+      // чтобы уже Java могла распределить по свежему начислению
+      l_cnt :=
+      DataModule1.OraclePackage1.CallIntegerFunction('scott.C_CHARGES.gen_charges',
+      [Form_Main.Lsk_, null, null,
+      null, 1, 0]);
+      end;
+    }
+    setNkom(Form_main.Lsk_);
     clearPay;
-    //очищаем оплату по месяцам
+    // очищаем оплату по месяцам
   end;
 end;
 
@@ -1428,7 +1287,7 @@ end;
 
 procedure TForm_get_pay_nal.ToolButton3Click(Sender: TObject);
 begin
- invokeSearchAdr;
+  invokeSearchAdr;
 end;
 
 procedure TForm_get_pay_nal.cxLskDblClick(Sender: TObject);
@@ -1445,13 +1304,13 @@ begin
     cxLsk.Text := LeftPad(cxLsk.Text, 8, '0');
     cxGrid2.Visible := true;
     cxGrid2.SetFocus;
-    cxGridDBTableView1OPER.Focused:=True;
-    
+    cxGridDBTableView1OPER.Focused := true;
+
     OD_Kart.SetVariable('lsk', cxLsk.Text);
-    OD_Kart.Active := False;
-    OD_Kart.Active := True;
+    OD_Kart.Active := false;
+    OD_Kart.Active := true;
     Edit1.Text := OD_Kart.FieldByName('adr').AsString;
-    if OD_Kart.FieldByName('lsk').asString <> '' then
+    if OD_Kart.FieldByName('lsk').AsString <> '' then
     begin
       StatusBar1.SimpleText := '';
       klsk := OD_Kart.FieldByName('k_lsk_id').AsInteger;
@@ -1465,18 +1324,16 @@ begin
   end;
 end;
 
-procedure TForm_get_pay_nal.cxAmountKeyPress(Sender: TObject;
-  var Key: Char);
+procedure TForm_get_pay_nal.cxAmountKeyPress(Sender: TObject; var Key: Char);
 begin
   if RetKey(Key) then
     Key := '.';
   if Key = #13 then
-    //    cxSumma.SetFocus;
+    // cxSumma.SetFocus;
     Windows.SetFocus(cxSumma.Handle);
 end;
 
-procedure TForm_get_pay_nal.cxSummaKeyPress(Sender: TObject;
-  var Key: Char);
+procedure TForm_get_pay_nal.cxSummaKeyPress(Sender: TObject; var Key: Char);
 var
   summGet, summItg, summa_: Double;
   err_: Integer;
@@ -1498,67 +1355,61 @@ begin
 
     if (summGet - summItg < 0) then
     begin
-      msg2('Не хватает денег для оплаты, повторите ввод', 'Внимание!', MB_OK +
-        MB_ICONSTOP);
-      //      cxSumma.SetFocus;
+      msg2('Не хватает денег для оплаты, повторите ввод', 'Внимание!', MB_OK + MB_ICONSTOP);
+      // cxSumma.SetFocus;
       Windows.SetFocus(cxSumma.Handle);
-      exit;
+      Exit;
     end;
 
     if (summItg = 0) then
     begin
       msg2('Сумма квитанции = 0, отмена', 'Внимание!', MB_OK + MB_ICONSTOP);
-      exit;
+      Exit;
     end;
 
-    //    Button1.SetFocus;
+    // Button1.SetFocus;
     Windows.SetFocus(Button1.Handle);
     summa_ := summGet - summItg;
 
     if summa_ > 0 then
     begin
-      if msg3('Распределить остаток ' + FloatToStr(summa_) +
-        ' на текущий месяц?',
-        'Внимание!', MB_YESNO +
-        MB_ICONQUESTION) = ID_YES then
+      if msg3('Распределить остаток ' + FloatToStr(summa_) + ' на текущий месяц?', 'Внимание!', MB_YESNO + MB_ICONQUESTION) = ID_YES then
       begin
         if not (OD_chargepay.State in [dsBrowse]) then
           OD_chargepay.Post;
 
-        distPay(summa_, False, False, True, True);
+        distPay(summa_, false, false, true, true);
         summa_ := 0;
-        //пересчитать итог
+        // пересчитать итог
         count;
       end;
     end;
 
     cxRemain.Text := FloatToStr(summa_);
-    //    Button1.SetFocus;
+    // Button1.SetFocus;
     Windows.SetFocus(Button1.Handle);
   end;
 end;
 
-procedure TForm_get_pay_nal.cxGridDBTableView1KeyDown(Sender: TObject;
-  var Key: Word; Shift: TShiftState);
+procedure TForm_get_pay_nal.cxGridDBTableView1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   with TcxGridDBTableView(TcxGridSite(Sender).GridView) do
   begin
-    if ((Shift = [ssCtrl]) and (key = VK_Return)) then
+    if ((Shift = [ssCtrl]) and (Key = VK_Return)) then
     begin
       count;
       Windows.SetFocus(cxSumma.Handle);
     end
-    else if (Key = VK_Return) and (Controller.FocusedColumn = cxGridDBTableView1PENYA)
-      then
+    else if (Key = VK_Return) and (Controller.FocusedColumn = cxGridDBTableView1PENYA) then
     begin
-      action;
+      Action;
     end;
-{    else if (Key = VK_Return) and (Controller.FocusedColumn = cxGridDBTableView1CNT_SCH)
+    { else if (Key = VK_Return) and (Controller.FocusedColumn = cxGridDBTableView1CNT_SCH)
       then
-    begin
+      begin
       count;
       Windows.SetFocus(cxSumma.Handle);
-    end;}
+      end; }
   end;
 end;
 

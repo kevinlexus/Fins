@@ -212,6 +212,7 @@ type
     N1705221: TMenuItem;
     N1606221: TMenuItem;
     N0107221: TMenuItem;
+    QuestionMenuItem: TMenuItem;
     procedure N5Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure N7Click(Sender: TObject);
@@ -374,6 +375,7 @@ type
     procedure EndUpdate;
     procedure N8Click(Sender: TObject);
     procedure N70Click(Sender: TObject);
+    procedure QuestionMenuItemClick(Sender: TObject);
   private
   private
     FUpdateCount: integer;
@@ -432,6 +434,7 @@ type
     // сервер Java "", - прод. 2 - тест
     javaServer: string;
     javaServerUrl: string;
+    questionsUrl: string;
     // Переменные для фильтра
     reu_: string;
     kul_: string;
@@ -847,6 +850,15 @@ begin
     FLockedHandle := Handle;
     SendMessage(FLockedHandle, WM_SETREDRAW, Ord(False), 0);
   end;
+end;
+
+procedure TForm_Main.QuestionMenuItemClick(Sender: TObject);
+begin
+//  URL := questionsUrl'https://docs.google.com/document/d/17m7tSrzgy8-zyDau8AJfAY_7YoCpHTX--RjPC3ZkT6M/edit';
+  if questionsUrl = '' then
+    Application.MessageBox('Не заполнена строка в licenses.ini - questionUrl', 'Внимание!', MB_OK + MB_ICONWARNING + MB_TOPMOST)
+  else
+    ShellExecute(0, 'open', PChar(questionsUrl), nil, nil, SW_SHOWNORMAL);
 end;
 
 // процедура планировалась, как блокировка перерисковки формы, работает так же в Unit_tree_objects

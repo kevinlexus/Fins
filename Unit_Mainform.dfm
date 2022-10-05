@@ -920,6 +920,10 @@ object Form_Main: TForm_Main
         Caption = 'Prod Java Server'
         OnClick = ProdJavaServer1Click
       end
+      object QuestionMenuItem: TMenuItem
+        Caption = #1042#1086#1087#1088#1086#1089#1099', '#1079#1072#1084#1077#1095#1072#1085#1080#1103', '#1087#1088#1077#1076#1083#1086#1078#1077#1085#1080#1103
+        OnClick = QuestionMenuItemClick
+      end
     end
     object ver: TMenuItem
       Caption = 'ver 3.0.37'

@@ -147,7 +147,7 @@ uses
 {$R *.RES}
 var
   Ini: TIniFile;
-  Pass, SID, s, User, serverIp, serverPort, serverSID: string;
+  Pass, SID, s, User, serverIp, serverPort, serverSID, questionsUrl: string;
   I, I1: Integer;
   lst: TStringList;
 
@@ -256,6 +256,8 @@ begin
     end;
 
     serverIp := Ini.ReadString('Application', 'serverIp', '');
+    // для вопросов в Google Docs:
+    questionsUrl := Ini.ReadString('Application', 'questionsUrl', '');
   end;
 end;
 
@@ -391,6 +393,7 @@ begin
   // по умолчанию - прод
   Form_Main.javaServerUrl := 'http://127.0.0.1:8100';
 
+  Form_Main.questionsUrl := questionsUrl;
   //ShowMessage('7');
   //ShowMessage('8');
 
@@ -541,14 +544,14 @@ begin
   //ShowMessage('13');
   if ((DataModule1.OraclePackage1.CallIntegerFunction('scott.INIT.get_have_splash', [parNone]) = 1) or (Length(DataModule1.OraclePackage1.CallStringFunction('scott.INIT.get_errors', [parNone])) > 0)) then
   begin
-    Application.Title := 'Директ';
+    Application.Title := 'Директ-Платформа';
     Application.CreateForm(TForm_start, Form_start);
     Form_start.ShowModal;
     Form_start.Update;
   end
   else
   begin
-    Application.Title := 'Директ';
+    Application.Title := 'Директ-Платформа';
     Application.Icon := nil;
     Form_Main.Visible := true;
   end;

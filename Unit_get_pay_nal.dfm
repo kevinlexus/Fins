@@ -29,7 +29,6 @@ object Form_get_pay_nal: TForm_get_pay_nal
     Height = 48
     Align = alTop
     TabOrder = 0
-    ExplicitWidth = 617
     object Label1: TLabel
       Left = 8
       Top = 17
@@ -96,7 +95,6 @@ object Form_get_pay_nal: TForm_get_pay_nal
     Height = 42
     Align = alBottom
     TabOrder = 1
-    ExplicitWidth = 617
     DesignSize = (
       636
       42)
@@ -154,7 +152,6 @@ object Form_get_pay_nal: TForm_get_pay_nal
       ParentFont = False
       TabOrder = 0
       OnClick = Button1Click
-      ExplicitLeft = 525
     end
     object cxAmount: TcxMaskEdit
       Left = 48
@@ -214,7 +211,6 @@ object Form_get_pay_nal: TForm_get_pay_nal
     Width = 636
     Height = 20
     Panels = <>
-    ExplicitWidth = 617
   end
   object ToolBar1: TToolBar
     Left = 0
@@ -229,7 +225,6 @@ object Form_get_pay_nal: TForm_get_pay_nal
     ShowCaptions = True
     ShowHint = True
     TabOrder = 3
-    ExplicitWidth = 617
     object ToolButton3: TToolButton
       Left = 0
       Top = 0
@@ -260,7 +255,6 @@ object Form_get_pay_nal: TForm_get_pay_nal
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 4
-    ExplicitWidth = 617
     object TabSheet1: TTabSheet
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -281,7 +275,6 @@ object Form_get_pay_nal: TForm_get_pay_nal
         Font.Style = []
         ParentFont = False
         TabOrder = 0
-        ExplicitWidth = 609
         object cxGridDBTableView1: TcxGridDBTableView
           OnKeyDown = cxGridDBTableView1KeyDown
           Navigator.Buttons.CustomButtons = <>

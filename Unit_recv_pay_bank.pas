@@ -14,7 +14,7 @@ uses
   cxGrid, cxLookAndFeels, cxLookAndFeelPainters, cxStyles, cxCustomData,
   cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator, cxDBData,
   cxGridTableView, cxGridCustomView, Grids, cxContainer,
-  cxTextEdit, cxMaskEdit;
+  cxTextEdit, cxMaskEdit, dxSkinsCore, dxSkinsDefaultPainters, dxDateRanges;
 
 type
   TForm_recv_pay_bank = class(TForm)
@@ -281,6 +281,7 @@ begin
 
   if OpenDialog1.FileName <> '' then
   begin
+  // äëÿ ÒÑÆ (Ñáåð)
   DataModule1.OraclePackage1.CallProcedure
     ('scott.dbase_pkg.load_file_txt2',['LOAD_FILE_DIR',
                           OpenDialog1.FileName]);
