@@ -854,7 +854,6 @@ end;
 
 procedure TForm_Main.QuestionMenuItemClick(Sender: TObject);
 begin
-//  URL := questionsUrl'https://docs.google.com/document/d/17m7tSrzgy8-zyDau8AJfAY_7YoCpHTX--RjPC3ZkT6M/edit';
   if questionsUrl = '' then
     Application.MessageBox('Не заполнена строка в licenses.ini - questionUrl', 'Внимание!', MB_OK + MB_ICONWARNING + MB_TOPMOST)
   else

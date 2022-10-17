@@ -40,7 +40,6 @@ type
     procedure BitBtn2Click(Sender: TObject);
     procedure Edit1Change(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure cxGridDBTableView1DblClick(Sender: TObject);
     procedure cxGridDBTableView1KeyPress(Sender: TObject; var Key: Char);
     procedure N1Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
@@ -181,18 +180,10 @@ DataModule1.OraclePackage1.CallProcedure('scott.generator.list_choice_set', [0])
   while not OD_list_choice.Eof do
   begin
     OD_list_choice.Edit;
-    OD_list_choice.FieldByName('sel').AsInteger := 1;
+    OD_list_choice.FieldByName('sel').AsInteger := 0;
     OD_list_choice.Post;
     OD_list_choice.Next;
   end;
-
-{  OD_list_choice.First;
-  while not OD_list_choice.Eof do
-  begin
-    OD_list_choice.FieldByName('sel').AsInteger := 0;
-    OD_list_choice.Next;
-  end;
- }
 end;
 
 procedure TForm_sel_reu.N2Click(Sender: TObject);
@@ -204,18 +195,10 @@ DataModule1.OraclePackage1.CallProcedure('scott.generator.list_choice_set', [0])
   while not OD_list_choice.Eof do
   begin
     OD_list_choice.Edit;
-    OD_list_choice.FieldByName('sel').AsInteger := 0;
+    OD_list_choice.FieldByName('sel').AsInteger := 1;
     OD_list_choice.Post;
     OD_list_choice.Next;
   end;
-
-{  OD_list_choice.First;
-  while not OD_list_choice.Eof do
-  begin
-    OD_list_choice.FieldByName('sel').AsInteger := 1;
-    OD_list_choice.Next;
-  end;
- }
 end;
 
 procedure TForm_sel_reu.cxGridDBTableView1CellClick(
@@ -229,16 +212,6 @@ begin
   else
     OD_list_choice.FieldByName('sel').AsInteger := 0;
 
-end;
-
-procedure TForm_sel_reu.cxGridDBTableView1DblClick(Sender: TObject);
-begin
-{  if (OD_list_choice.State = dsBrowse) then
-    OD_list_choice.Edit;
-  if (OD_list_choice.FieldByName('sel').AsInteger = 0) then
-    OD_list_choice.FieldByName('sel').AsInteger := 1
-  else
-    OD_list_choice.FieldByName('sel').AsInteger := 0;}
 end;
 
 procedure TForm_sel_reu.cxGridDBTableView1KeyPress(Sender: TObject; var Key: Char);

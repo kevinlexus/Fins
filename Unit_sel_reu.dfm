@@ -152,7 +152,6 @@ object Form_sel_reu: TForm_sel_reu
     PopupMenu = PopupMenu1
     TabOrder = 4
     object cxGridDBTableView1: TcxGridDBTableView
-      OnDblClick = cxGridDBTableView1DblClick
       OnKeyPress = cxGridDBTableView1KeyPress
       Navigator.Buttons.CustomButtons = <>
       Navigator.Visible = True
@@ -218,8 +217,8 @@ object Form_sel_reu: TForm_sel_reu
         DataBinding.FieldName = 'SEL'
         PropertiesClassName = 'TcxCheckBoxProperties'
         Properties.Alignment = taRightJustify
-        Properties.ValueChecked = 1
-        Properties.ValueUnchecked = 0
+        Properties.ValueChecked = 0
+        Properties.ValueUnchecked = 1
         Width = 71
       end
     end
