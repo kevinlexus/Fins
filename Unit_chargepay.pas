@@ -196,8 +196,6 @@ var
   sum_pay_: Double;
   l_dummy: Double;
 begin
-{
- Вызов расчета задолженности и пени выполняется ниже!
  if getDoublePar(Form_main.paramList, 'JAVA_DEB_PEN') = 1 then
   begin
     // новый расчет задолженности и пени в Java
@@ -211,7 +209,7 @@ begin
 
     DataModule1.OraclePackage1.CallProcedure('scott.C_CPENYA.gen_penya', [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, 0, 1]);
   end;
- }
+
   CloseDts;
   OD_chargepay.Active := true;
   OD_chargepay.Last;
@@ -220,7 +218,7 @@ begin
   Update;
   if (PageControl1.ActivePageIndex = 1) or (PageControl1.ActivePageIndex = 2) then
   begin
-    // TODO так странно, внутри делается опять расчет задолженности и пени....
+    // TODO так странно, внутри prepare_arch_lsk делается опять вызов расчета задолженности и пени....
     DataModule1.OraclePackage1.CallProcedure('scott.GEN.prepare_arch_lsk', [Form_list_kart.OD_list_kart.FieldByName('lsk').asString, 0]);
     if PageControl1.ActivePageIndex = 1 then
     begin

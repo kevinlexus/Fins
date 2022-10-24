@@ -67,6 +67,16 @@ object Form_lk_acc: TForm_lk_acc
       TabOrder = 2
       OnClick = Button2Click
     end
+    object Button4: TButton
+      Left = 129
+      Top = 8
+      Width = 115
+      Height = 25
+      Anchors = [akLeft, akBottom]
+      Caption = #1044#1086#1089#1090#1091#1087' Telegram'
+      TabOrder = 3
+      OnClick = Button4Click
+    end
   end
   object GroupBox1: TGroupBox
     Left = 0
@@ -240,7 +250,7 @@ object Form_lk_acc: TForm_lk_acc
       'and u.id=x.fk_list'
       'and tp.cd='#39#1055#1072#1088#1072#1084#1077#1090#1088#1099' '#1083#1080#1094'.'#1089#1095#1077#1090#1072#39
       'and x.fk_k_lsk=:k_lsk_id'
-      'and u.cd in ('#39'email_lk'#39','#39#1044#1072#1090#1072' '#1089#1086#1079#1076#1072#1085#1080#1103#39')'
+      'and u.cd in ('#39'email_lk'#39','#39#1044#1072#1090#1072' '#1089#1086#1079#1076#1072#1085#1080#1103#39','#39'TelegramId'#39')'
       'order by u.npp ')
     Optimize = False
     Variables.Data = {

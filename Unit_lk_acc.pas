@@ -33,6 +33,7 @@ type
     cxGrid1Level1: TcxGridLevel;
     cxGrid1DBTableView1NAME: TcxGridDBColumn;
     cxGrid1DBTableView1VAL: TcxGridDBColumn;
+    Button4: TButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure Button3Click(Sender: TObject);
@@ -40,6 +41,7 @@ type
     procedure Button1Click(Sender: TObject);
     procedure setLabel;
     procedure SetLoginPass;
+    procedure CreateTelegramAccess;
     procedure Button4Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure OD_objxparAfterEdit(DataSet: TDataSet);
@@ -158,7 +160,6 @@ begin
              [Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger,
               null, 'Дата создания', null, 1
              ]);
-//  DataModule1.OraclePackage1.Session.Commit;
   OD_pass.Active:=False;
   OD_pass.Active:=True;
   OD_objxpar.Active:=False;
@@ -188,8 +189,31 @@ end;
 
 procedure TForm_lk_acc.Button4Click(Sender: TObject);
 begin
- OD_rnd.Active:=True;
- ShowMessage(OD_rnd.FieldByName('cd').AsString);
+if msg3('Создать доступ к приложению Telegram?', 'Внимание!', MB_YESNO+MB_ICONQUESTION) =
+ ID_YES then
+ begin
+  CreateTelegramAccess;
+ end;
+
+end;
+
+procedure TForm_lk_acc.CreateTelegramAccess;
+var
+  l_cnt: Integer;
+begin
+  DataModule1.OraclePackage1.ParameterMode:=pmPositional;
+
+  l_cnt:=DataModule1.OraclePackage1.CallIntegerFunction
+           ('scott.c_obj_par.set_str_param',
+             [Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger,
+              null, 'TelegramId', null
+             ]);
+  OD_pass.Active:=False;
+  OD_pass.Active:=True;
+  OD_objxpar.Active:=False;
+  OD_objxpar.Active:=True;
+  set_state(1);
+  msg2('Доступ к Telegram предоставлен, необходимо ввести код, можно через запятую несколько', 'Внимание!', MB_OK+MB_ICONINFORMATION);
 end;
 
 procedure TForm_lk_acc.exit_ok;
