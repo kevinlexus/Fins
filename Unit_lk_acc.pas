@@ -213,7 +213,7 @@ begin
   OD_objxpar.Active:=False;
   OD_objxpar.Active:=True;
   set_state(1);
-  msg2('Доступ к Telegram предоставлен, необходимо ввести код, можно через запятую несколько', 'Внимание!', MB_OK+MB_ICONINFORMATION);
+  msg2('Доступ к Telegram предоставлен, необходимо ввести код, можно через запятую, несколько', 'Внимание!', MB_OK+MB_ICONINFORMATION);
 end;
 
 procedure TForm_lk_acc.exit_ok;

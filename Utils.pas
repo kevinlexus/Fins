@@ -134,7 +134,7 @@ function getListIdByCd(var al: TUListRecArray; pId: Integer): string;
 
 function exp_to_dbf(dset: TDataSet; dbfname_: string): Integer;
 
-function restRequest(resource, param: string; method: TRESTRequestMethod): string;
+function restRequest(resource, param: String; method: TRESTRequestMethod): string;
 
 implementation
 
@@ -1624,7 +1624,7 @@ begin
   Result := 0;
 end;
 
-function restRequest(resource, param: string; method: TRESTRequestMethod): string;
+function restRequest(resource, param: String; method: TRESTRequestMethod): string;
 var
   strErr, strErr2: string;
   res: TCustomRESTResponse;
@@ -1639,7 +1639,8 @@ begin
   RESTClient.BaseUrl := Form_Main.javaServerUrl;
   RESTRequest.Resource := resource;
   RESTRequest.Method := method;
-  RESTRequest.Body.Add(param, ctAPPLICATION_JSON);
+  if method = rmPOST then
+    RESTRequest.Body.Add(param, ctAPPLICATION_JSON);
   RESTRequest.Accept := 'application/json;charset=utf-8';
   try
     RESTRequest.Execute;
@@ -1649,7 +1650,8 @@ begin
     begin
       strErr := 'Ошибка отправки запроса по адресу ' + RESTClient.BaseUrl + '/' + RESTRequest.Resource;
       logText(strErr);
-      logText('Body:' + param);
+      if method = rmPOST then
+        logText('Body:' + param);
       strErr2 := 'Exception class name: ' + E.ClassName + '' + 'Ошибка: ' + E.Message;
       logText(strErr2);
 

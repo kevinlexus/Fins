@@ -13,7 +13,7 @@ uses
   cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
   cxDBData, cxGridCustomTableView, cxGridTableView, cxGridCustomView,
   cxContainer, ComCtrls, dxCore, cxDateUtils, cxTextEdit, cxMaskEdit,
-  cxDropDownEdit, cxCalendar;
+  cxDropDownEdit, cxCalendar, dxSkinsCore, dxSkinsDefaultPainters, dxDateRanges;
 
 type
   TForm_sel_comps = class(TForm)

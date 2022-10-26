@@ -4,17 +4,13 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Oracle, DB, OracleData, 
-  ExtCtrls, Mask, 
-  OracleNavigator, Menus, cxGraphics,
-  cxControls, 
-  
-  cxGridCustomTableView,
-  cxGridDBTableView, cxGridLevel, cxClasses,
-  cxGrid, cxLookAndFeels, cxLookAndFeelPainters, cxStyles, cxCustomData,
-  cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator, cxDBData,
-  cxGridTableView, cxGridCustomView, Grids, cxContainer,
-  cxTextEdit, cxMaskEdit, dxSkinsCore, dxSkinsDefaultPainters, dxDateRanges;
+  Dialogs, StdCtrls, Oracle, DB, OracleData, ExtCtrls, Mask, OracleNavigator,
+  Menus, cxGraphics, cxControls, cxGridCustomTableView, cxGridDBTableView,
+  cxGridLevel, cxClasses, cxGrid, cxLookAndFeels, cxLookAndFeelPainters,
+  cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
+  cxDBData, cxGridTableView, cxGridCustomView, Grids, cxContainer, cxTextEdit,
+  cxMaskEdit, dxSkinsCore, dxSkinsDefaultPainters, dxDateRanges,
+  REST.Types;
 
 type
   TForm_recv_pay_bank = class(TForm)
@@ -67,6 +63,7 @@ type
     cxGridDBTableView1CODE: TcxGridDBColumn;
     cxGridDBTableView1SUMMA: TcxGridDBColumn;
     cxGridDBTableView1DOPL: TcxGridDBColumn;
+    Button7: TButton;
     procedure Button1Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -79,9 +76,8 @@ type
     procedure OD_regBeforeRefresh(DataSet: TDataSet);
     procedure OD_regAfterRefresh(DataSet: TDataSet);
     procedure N2Click(Sender: TObject);
-    procedure cxGrid1DBTableView1CustomDrawCell(
-      Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;
-      AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
+    procedure cxGrid1DBTableView1CustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
+    procedure Button7Click(Sender: TObject);
   private
     bm: TBookmark;
   public
@@ -91,29 +87,27 @@ type
 var
   Form_recv_pay_bank: TForm_recv_pay_bank;
 
+
 implementation
 
-uses DM_module1, Utils, Unit_status;
+uses
+  DM_module1, Utils, Unit_status, Unit_Mainform;
 
 {$R *.dfm}
 
 procedure TForm_recv_pay_bank.Button1Click(Sender: TObject);
 begin
-  Edit2.Text:='';
-  Edit3.Text:='';
+  Edit2.Text := '';
+  Edit3.Text := '';
   OpenDialog1.Filter := '*.1* файлы (*.1*)|*.1*|Все файлы (*.*)|*.*';
-  OpenDialog1.FilterIndex:=1;
+  OpenDialog1.FilterIndex := 1;
   OpenDialog1.Execute;
 
   if OpenDialog1.FileName <> '' then
   begin
-  DataModule1.OraclePackage1.CallProcedure
-    ('scott.dbase_pkg.load_file_txt',['LOAD_FILE_DIR',
-                          OpenDialog1.FileName]);
-  Edit2.Text:=DataModule1.OraclePackage1.CallFloatFunction
-    ('scott.C_GET_PAY.get_payment_bank_summa',[parNone]);
-  Edit3.Text:=DataModule1.OraclePackage1.CallFloatFunction
-    ('scott.C_GET_PAY.get_payment_bank_summp',[parNone]);
+    DataModule1.OraclePackage1.CallProcedure('scott.dbase_pkg.load_file_txt', ['LOAD_FILE_DIR', OpenDialog1.FileName]);
+    Edit2.Text := DataModule1.OraclePackage1.CallFloatFunction('scott.C_GET_PAY.get_payment_bank_summa', [parNone]);
+    Edit3.Text := DataModule1.OraclePackage1.CallFloatFunction('scott.C_GET_PAY.get_payment_bank_summp', [parNone]);
   end;
 end;
 
@@ -122,73 +116,63 @@ begin
   Close;
 end;
 
-procedure TForm_recv_pay_bank.FormClose(Sender: TObject;
-  var Action: TCloseAction);
+procedure TForm_recv_pay_bank.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  Action:=caFree;
+  Action := caFree;
 end;
 
 procedure recv_payment(nink_: Integer);
 var
- cnt_: Integer;
+  cnt_: Integer;
 begin
   //Прием оплаты
   Application.CreateForm(TForm_status, Form_status);
   Form_status.Update;
-  cnt_:=DataModule1.OraclePackage1.CallIntegerFunction
-    ('scott.C_GET_PAY.recv_payment_bank',[nink_]);
+  cnt_ := DataModule1.OraclePackage1.CallIntegerFunction('scott.C_GET_PAY.recv_payment_bank', [nink_]);
   Form_status.Close;
   if cnt_ = 1 then
-   begin
-     msg2('Не найден экслюзивный код операции поставщика оплаты в справочнике c_comps!',
-      'Внимание', MB_OK+MB_ICONSTOP);
-   end
+  begin
+    msg2('Не найден экслюзивный код операции поставщика оплаты в справочнике c_comps!', 'Внимание', MB_OK + MB_ICONSTOP);
+  end
   else if cnt_ = 2 then
-    begin
-      msg2('Файл платежей содержит лицевые счета не соответствующие лицевым счетам базы!',
-        'Внимание', MB_OK+MB_ICONSTOP);
-    end
+  begin
+    msg2('Файл платежей содержит лицевые счета не соответствующие лицевым счетам базы!', 'Внимание', MB_OK + MB_ICONSTOP);
+  end
   else if cnt_ = 3 then
-    msg2('Файл платежей содержит недопустимый код операции!',
-  'Внимание', MB_OK+MB_ICONSTOP)
+    msg2('Файл платежей содержит недопустимый код операции!', 'Внимание', MB_OK + MB_ICONSTOP)
   else if cnt_ = 4 then
-    msg2('Файл платежей содержит недопустимую дату оплаты!',
-  'Внимание', MB_OK+MB_ICONSTOP)
+    msg2('Файл платежей содержит недопустимую дату оплаты!', 'Внимание', MB_OK + MB_ICONSTOP)
   else if cnt_ = 5 then
-    msg2('Файл платежей содержит недопустимый период оплаты!',
-  'Внимание', MB_OK+MB_ICONSTOP)
+    msg2('Файл платежей содержит недопустимый период оплаты!', 'Внимание', MB_OK + MB_ICONSTOP)
   else
-  msg2('Пакет успешно принят!', 'Внимание', MB_OK+MB_ICONINFORMATION);
+    msg2('Пакет успешно принят!', 'Внимание', MB_OK + MB_ICONINFORMATION);
 
   if cnt_ <> 0 then
   begin
     with Form_recv_pay_bank do
     begin
-    OD_data.Active:=False;
-    Od_data.setVariable('id_', cnt_);
-    OD_data.Active:=True;
+      OD_data.Active := False;
+      Od_data.setVariable('id_', cnt_);
+      OD_data.Active := True;
     end;
   end;
 end;
 
 procedure TForm_recv_pay_bank.Button2Click(Sender: TObject);
 var
- cnt_, nink_: Integer;
+  cnt_, nink_: Integer;
 begin
-  if msg3('Загрузить данный пакет оплаты?', 'Подтверждение', MB_YESNO+MB_ICONQUESTION) =
-    ID_YES then
+  if msg3('Загрузить данный пакет оплаты?', 'Подтверждение', MB_YESNO + MB_ICONQUESTION) = ID_YES then
   begin
-    if cxNumInk.Text='' then
-      nink_:=0
+    if cxNumInk.Text = '' then
+      nink_ := 0
     else
-      nink_:=StrToInt(cxNumInk.Text);
+      nink_ := StrToInt(cxNumInk.Text);
 
-    if (nink_<> 0) and (DataModule1.OraclePackage1.CallFloatFunction
-       ('scott.C_GET_PAY.check_payment_bank_nink',[nink_])) <> 0 then
+    if (nink_ <> 0) and (DataModule1.OraclePackage1.CallFloatFunction('scott.C_GET_PAY.check_payment_bank_nink', [nink_])) <> 0 then
     begin
       //Замена пакета
-      if msg3('Пакет с № '+inttostr(nink_)+' уже принят, удалить и принять заново?', 'Подтверждение', MB_YESNO+MB_ICONQUESTION) =
-        ID_YES then
+      if msg3('Пакет с № ' + inttostr(nink_) + ' уже принят, удалить и принять заново?', 'Подтверждение', MB_YESNO + MB_ICONQUESTION) = ID_YES then
       begin
         recv_payment(nink_);
         Recalc;
@@ -205,60 +189,48 @@ end;
 
 procedure TForm_recv_pay_bank.Button4Click(Sender: TObject);
 begin
-  Edit1.Text:='';
-  Edit2.Text:='';
-  Edit3.Text:='';
+  Edit1.Text := '';
+  Edit2.Text := '';
+  Edit3.Text := '';
   OpenDialog1.Filter := 'DBF файлы (*.dbf)|*.dbf|Все файлы (*.*)|*.*';
-  OpenDialog1.FilterIndex:=1;
+  OpenDialog1.FilterIndex := 1;
   OpenDialog1.Execute;
 
   if OpenDialog1.FileName <> '' then
   begin
-  DataModule1.OraclePackage1.CallProcedure
-    ('scott.dbase_pkg.load_file_dbf',['LOAD_FILE_DIR',
-                          OpenDialog1.FileName]);
+    DataModule1.OraclePackage1.CallProcedure('scott.dbase_pkg.load_file_dbf', ['LOAD_FILE_DIR', OpenDialog1.FileName]);
 
-  Edit1.Text:=DataModule1.OraclePackage1.CallDateFunction
-    ('scott.C_GET_PAY.get_payment_bank_date',[parNone]);
-  Edit2.Text:=DataModule1.OraclePackage1.CallFloatFunction
-    ('scott.C_GET_PAY.get_payment_bank_summa',[parNone]);
-  Edit3.Text:=DataModule1.OraclePackage1.CallFloatFunction
-    ('scott.C_GET_PAY.get_payment_bank_summp',[parNone]);
+    Edit1.Text := DataModule1.OraclePackage1.CallDateFunction('scott.C_GET_PAY.get_payment_bank_date', [parNone]);
+    Edit2.Text := DataModule1.OraclePackage1.CallFloatFunction('scott.C_GET_PAY.get_payment_bank_summa', [parNone]);
+    Edit3.Text := DataModule1.OraclePackage1.CallFloatFunction('scott.C_GET_PAY.get_payment_bank_summp', [parNone]);
   end;
 end;
 
 procedure TForm_recv_pay_bank.Button5Click(Sender: TObject);
 begin
-  Edit1.Text:='';
-  Edit2.Text:='';
-  Edit3.Text:='';
+  Edit1.Text := '';
+  Edit2.Text := '';
+  Edit3.Text := '';
   OpenDialog1.Filter := 'DBF файлы (*.dbf)|*.dbf|Все файлы (*.*)|*.*';
-  OpenDialog1.FilterIndex:=1;
+  OpenDialog1.FilterIndex := 1;
   OpenDialog1.Execute;
 
   if OpenDialog1.FileName <> '' then
   begin
-  DataModule1.OraclePackage1.CallProcedure
-    ('scott.dbase_pkg.load_file_dbf2',['LOAD_FILE_DIR',
-                          OpenDialog1.FileName]);
+    DataModule1.OraclePackage1.CallProcedure('scott.dbase_pkg.load_file_dbf2', ['LOAD_FILE_DIR', OpenDialog1.FileName]);
 
-  Edit1.Text:=DataModule1.OraclePackage1.CallDateFunction
-    ('scott.C_GET_PAY.get_payment_bank_date',[parNone]);
-  Edit2.Text:=DataModule1.OraclePackage1.CallFloatFunction
-    ('scott.C_GET_PAY.get_payment_bank_summa',[parNone]);
-  Edit3.Text:=DataModule1.OraclePackage1.CallFloatFunction
-    ('scott.C_GET_PAY.get_payment_bank_summp',[parNone]);
+    Edit1.Text := DataModule1.OraclePackage1.CallDateFunction('scott.C_GET_PAY.get_payment_bank_date', [parNone]);
+    Edit2.Text := DataModule1.OraclePackage1.CallFloatFunction('scott.C_GET_PAY.get_payment_bank_summa', [parNone]);
+    Edit3.Text := DataModule1.OraclePackage1.CallFloatFunction('scott.C_GET_PAY.get_payment_bank_summp', [parNone]);
   end;
 end;
 
 procedure TForm_recv_pay_bank.Recalc;
 begin
-  OD_reg.Active:=False;
-  Edit4.Text:=DataModule1.OraclePackage1.CallStringFunction
-    ('scott.init.get_nkom',[parNone]);
-  Edit1.Text:=DataModule1.OraclePackage1.CallStringFunction
-    ('scott.init.get_date',[parNone]);
-  OD_reg.Active:=True;
+  OD_reg.Active := False;
+  Edit4.Text := DataModule1.OraclePackage1.CallStringFunction('scott.init.get_nkom', [parNone]);
+  Edit1.Text := DataModule1.OraclePackage1.CallStringFunction('scott.init.get_date', [parNone]);
+  OD_reg.Active := True;
 end;
 
 procedure TForm_recv_pay_bank.FormCreate(Sender: TObject);
@@ -268,43 +240,63 @@ end;
 
 procedure TForm_recv_pay_bank.N1Click(Sender: TObject);
 begin
-  cxNumInk.Text:=OD_reg.FieldByName('nink').AsString;
+  cxNumInk.Text := OD_reg.FieldByName('nink').AsString;
 end;
 
 procedure TForm_recv_pay_bank.Button6Click(Sender: TObject);
 begin
-  Edit2.Text:='';
-  Edit3.Text:='';
+  Edit2.Text := '';
+  Edit3.Text := '';
   OpenDialog1.Filter := '*.1* файлы (*.y*)|*.y*|Все файлы (*.*)|*.*';
-  OpenDialog1.FilterIndex:=1;
+  OpenDialog1.FilterIndex := 1;
   OpenDialog1.Execute;
 
   if OpenDialog1.FileName <> '' then
   begin
   // для ТСЖ (Сбер)
-  DataModule1.OraclePackage1.CallProcedure
-    ('scott.dbase_pkg.load_file_txt2',['LOAD_FILE_DIR',
-                          OpenDialog1.FileName]);
-  Edit2.Text:=DataModule1.OraclePackage1.CallFloatFunction
-    ('scott.C_GET_PAY.get_payment_bank_summa',[parNone]);
-  Edit3.Text:=DataModule1.OraclePackage1.CallFloatFunction
-    ('scott.C_GET_PAY.get_payment_bank_summp',[parNone]);
+    DataModule1.OraclePackage1.CallProcedure('scott.dbase_pkg.load_file_txt2', ['LOAD_FILE_DIR', OpenDialog1.FileName]);
+    Edit2.Text := DataModule1.OraclePackage1.CallFloatFunction('scott.C_GET_PAY.get_payment_bank_summa', [parNone]);
+    Edit3.Text := DataModule1.OraclePackage1.CallFloatFunction('scott.C_GET_PAY.get_payment_bank_summp', [parNone]);
   end;
 
 end;
 
+procedure TForm_recv_pay_bank.Button7Click(Sender: TObject);
+var
+  l_res: string;
+begin
+  Edit2.Text := '';
+  Edit3.Text := '';
+  OpenDialog1.Filter := '*.txt* файлы (*.txt)|*.txt|Все файлы (*.*)|*.*';
+  OpenDialog1.FilterIndex := 1;
+  OpenDialog1.Execute;
+
+  if OpenDialog1.FileName <> '' then
+  begin
+  // для Кис (Сбер, вариант-2)
+//  DataModule1.OraclePackage1.CallProcedure
+//    ('scott.dbase_pkg.load_file_txt2',['LOAD_FILE_DIR',
+//                          OpenDialog1.FileName]);
+    l_res := restRequest('load-file-sber-registry/'+ExtractFileName(OpenDialog1.FileName)+'/'+Form_main.nkom_, '', rmGet);
+
+    Edit2.Text := DataModule1.OraclePackage1.CallFloatFunction('scott.C_GET_PAY.get_payment_bank_summa', [parNone]);
+    Edit3.Text := DataModule1.OraclePackage1.CallFloatFunction('scott.C_GET_PAY.get_payment_bank_summp', [parNone]);
+  end;
+end;
+
 procedure TForm_recv_pay_bank.OD_regBeforeRefresh(DataSet: TDataSet);
 begin
- bm := OD_reg.GetBookmark;
- 
+  bm := OD_reg.GetBookmark;
+
 end;
 
 procedure TForm_recv_pay_bank.OD_regAfterRefresh(DataSet: TDataSet);
 begin
   try
-  if OD_reg.BookmarkValid(bm) then OD_reg.GotoBookmark(bm);
-        except
-      end;
+    if OD_reg.BookmarkValid(bm) then
+      OD_reg.GotoBookmark(bm);
+  except
+  end;
 
 end;
 
@@ -313,58 +305,50 @@ var
   nkom_: string;
   nink_: Integer;
 begin
-  nkom_:=OD_reg.FieldByName('nkom').AsString;
-  nink_:=OD_reg.FieldByName('nink').AsInteger;
+  nkom_ := OD_reg.FieldByName('nkom').AsString;
+  nink_ := OD_reg.FieldByName('nink').AsInteger;
   if (nkom_ <> '') then
   begin
-    if msg3('Удалить комп.№ '+nkom_+', инкасс.№ '+inttostr(nink_)+'?',
-       'Внимание!',
-       MB_YESNO+MB_ICONQUESTION) = IDYES then
-       begin
-        if msg3('Подтвердите удаление комп.№ '+nkom_+', инкасс.№ '+inttostr(nink_),
-           'Внимание!',
-           MB_YESNO+MB_ICONQUESTION) = IDYES then
-           begin
-             DataModule1.OraclePackage1.CallProcedure
-                 ('scott.C_GET_PAY.remove_inkass', [nkom_, nink_]);
-             OD_reg.Active:=false;
-             OD_reg.Active:=true;
-             msg2('Инкассация успешно удалена!',
-                'Внимание!',
-             MB_OK+MB_ICONINFORMATION)
+    if msg3('Удалить комп.№ ' + nkom_ + ', инкасс.№ ' + inttostr(nink_) + '?', 'Внимание!', MB_YESNO + MB_ICONQUESTION) = IDYES then
+    begin
+      if msg3('Подтвердите удаление комп.№ ' + nkom_ + ', инкасс.№ ' + inttostr(nink_), 'Внимание!', MB_YESNO + MB_ICONQUESTION) = IDYES then
+      begin
+        DataModule1.OraclePackage1.CallProcedure('scott.C_GET_PAY.remove_inkass', [nkom_, nink_]);
+        OD_reg.Active := false;
+        OD_reg.Active := true;
+        msg2('Инкассация успешно удалена!', 'Внимание!', MB_OK + MB_ICONINFORMATION)
 
-           end;
-       end;
+      end;
+    end;
   end;
 end;
 
-procedure TForm_recv_pay_bank.cxGrid1DBTableView1CustomDrawCell(
-  Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;
-  AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
+procedure TForm_recv_pay_bank.cxGrid1DBTableView1CustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
 var
- col: TcxGridDBColumn;
- sumItg, sumDist, cnt, cntDist: String;
+  col: TcxGridDBColumn;
+  sumItg, sumDist, cnt, cntDist: string;
 begin
-  col:=cxGrid1DBTableView1.GetColumnByFieldName('SUMMA_ITG');
+  col := cxGrid1DBTableView1.GetColumnByFieldName('SUMMA_ITG');
   sumItg := AViewInfo.GridRecord.DisplayTexts[col.Index];
-  col:=cxGrid1DBTableView1.GetColumnByFieldName('SUMMA_DIST');
+  col := cxGrid1DBTableView1.GetColumnByFieldName('SUMMA_DIST');
   sumDist := AViewInfo.GridRecord.DisplayTexts[col.Index];
-  col:=cxGrid1DBTableView1.GetColumnByFieldName('CNT');
+  col := cxGrid1DBTableView1.GetColumnByFieldName('CNT');
   cnt := AViewInfo.GridRecord.DisplayTexts[col.Index];
-  col:=cxGrid1DBTableView1.GetColumnByFieldName('CNT_DIST');
+  col := cxGrid1DBTableView1.GetColumnByFieldName('CNT_DIST');
   cntDist := AViewInfo.GridRecord.DisplayTexts[col.Index];
   if (sumItg <> sumDist) or (cnt <> cntDist) then
   begin
     // не распределена оплата в Java или ошибка распределения
-    ACanvas.Font.Color:= clRed;
-    ACanvas.Font.Style:= [fsBold];
+    ACanvas.Font.Color := clRed;
+    ACanvas.Font.Style := [fsBold];
   end
   else
   begin
-    ACanvas.Font.Color:= clBlack;
-    ACanvas.Font.Style:= [];
+    ACanvas.Font.Color := clBlack;
+    ACanvas.Font.Style := [];
   end;
 
 end;
 
 end.
+
