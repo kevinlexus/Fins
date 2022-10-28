@@ -131,6 +131,7 @@ type
     cxGrid1DBTableView2Column2: TcxGridDBColumn;
     N5: TMenuItem;
     OD_c_kwtpCASH_NUM: TFloatField;
+    OD_c_kwtpCASH_OPER_TP: TFloatField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure state_arch2(mgold_: string);
@@ -148,6 +149,9 @@ type
   public
     procedure show_all(ASet: Boolean);
     procedure recalc;
+    function reversePayEq(ECR, eqECR: OleVariant): Boolean;
+    function reverseEveryPayPeriod(ECR: OleVariant): Boolean;
+    procedure deleteOrReversePayment(isReverse: Boolean);
   end;
 
 var
@@ -363,16 +367,108 @@ begin
   show_all(CheckBox1.Checked);
 end;
 
-procedure TForm_month_payments.N1Click(Sender: TObject);
+function TForm_month_payments.reversePayEq(ECR, eqECR: OleVariant): Boolean;
 var
-  bm: TBookmark;
-  l_flag: Integer;
-  ECR: OleVariant;
+  check, eQres: string;
+  client_sum: Double;
+  //eQsuccess: Boolean;
+begin
+  logText('Эквайринг, отмена оплаты');
+  // выполнить возврат оплаты, сумма в копейках
+  client_sum := OD_c_kwtp.FieldByName('summ_itg').AsFloat;
+  eqECR.Sparam('Amount', FloatToStr(client_sum * 100));
+  eQres := Form_main.eqECR.NFun(4002);
+  if eQres = '0' then
+  begin
+    logText('Эквайринг: сумма:' + FloatToStr(client_sum));
+    // успешно
+    //eQsuccess := true;
+    // перевести в "неподтвержденное" состояние транзакцию эквайринга
+    eqECR.NFun(6003);
+
+    check := eqECR.GParamString('Cheque');
+
+    // печать чека на фискальнике, используя разбиение на строки и отрезку
+    printByLineWithCut(true, check, ECR, 25);
+    logText('Эквайринг: статус=6003 (не подтверждено)');
+    Result := true;
+  end
+  else
+  begin
+    // ошибка
+    Result := false;
+    logText('Эквайринг: ОШИБКА');
+    //eQsuccess := false;
+    if eQres = '113' then
+    begin
+      Application.MessageBox('Возможно некорретно зарегистрировано sbrf.dll (regsvr32 надо выполнять в c:\Sc552\)' + #13#10, 'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
+    end;
+  end;
+end;
+
+function TForm_month_payments.reverseEveryPayPeriod(ECR: OleVariant): Boolean;
+var
   l_summa: Double;
 begin
-// Удалить платеж
-  l_flag := 1;
-  if msg3('Удалить оплату с суммой ' + OD_c_kwtp.FieldByName('summ_itg').AsString + ' руб., Л/С ' + OD_c_kwtp.FieldByName('lsk').AsString + ' (действие будет сохранено в журнале событий)', 'Внимание!', MB_YESNO + MB_ICONQUESTION) = IDYES then
+  try
+      //Возвращаем каждый платёж по c_kwtp_mg
+    print_string_ecr('Лицевой счет №' + OD_c_kwtp.FieldByName('lsk').AsString, 1, 0, ECR);
+    print_string_ecr('Наим-е операции   Период    Оплата(руб.)', 1, 0, ECR);
+
+      //Специальный датасет, для возврата продажи (содержит тело текущего платежа)
+    with OD_paycheck do
+    begin
+      First;
+      l_summa := 0;
+      while not Eof do
+      begin
+        l_summa := l_summa + FieldByName('summ_itg').AsFloat;
+        unreg_ecr(FieldByName('oper_name').AsString + calc_pads(FieldByName('oper_name').AsString) + FieldByName('dopl').AsString, FieldByName('summ_itg').AsFloat, 1, FieldByName('dep').AsInteger, ECR);
+        logText('Сумма возврата:' + FloatToStr(FieldByName('summ_itg').AsFloat));
+        Next;
+      end;
+      if close_reg_ecr_in_removing(l_summa, ECR, FieldByName('cash_oper_tp').AsInteger) <> 0 then
+      begin
+        Result := false;
+        logText('ККМ: Регистрация возврата - ОШИБКА!');
+        Exit;
+      end
+      else
+      begin
+        logText('ККМ: Регистрация возврата - успешно');
+      end;
+      Active := false;
+    end;
+    Result := true;
+
+  except
+    // Эксепшн в фискальном регистраторе
+    on E: Exception do
+    begin
+      logText('ОШИБКА в фискальном регистраторе или в БД! Откат транзакции!');
+      Result := false;
+      ShowMessage('Exception class name = ' + E.ClassName + '' + 'Ошибка: ' + E.Message);
+      ShowMessage('Возврат не будет учтён!');
+    end;
+  end;
+
+end;
+
+procedure TForm_month_payments.deleteOrReversePayment(isReverse: Boolean);
+var
+  bm: TBookmark;
+  ECR: OleVariant;
+  p_cash_oper_tp, l_var: Integer;
+  Msg, check: string;
+  isSuccess: Boolean;
+begin
+  if isReverse = true then
+    Msg := 'Выполнить обратный платёж оплаты с суммой '
+  else
+    Msg := 'Удалить оплату с суммой ';
+
+  // Удалить платеж
+  if msg3(Msg + OD_c_kwtp.FieldByName('summ_itg').AsString + ' руб., Л/С ' + OD_c_kwtp.FieldByName('lsk').AsString + ' (действие будет сохранено в журнале событий)', 'Внимание!', MB_YESNO + MB_ICONQUESTION) = IDYES then
   begin
     OD_paycheck.Active := true;
     if (Form_Main.have_cash = 1) or (Form_Main.have_cash = 2) then
@@ -387,67 +483,72 @@ begin
       begin
         msg2('Порт ККМ не открыт!', 'Внимание!', MB_OK + MB_ICONERROR);
         Exit;
-      end        //Входим в режим регистрации
+      end
       else
       begin
-        if msg3('Произвести возврат платежа в фискальном регистраторе?', 'Внимание!', MB_YESNO + MB_ICONQUESTION) = IDYES then
+        p_cash_oper_tp := OD_c_kwtp.FieldByName('cache_oper').AsInteger;
+        // эквайринг
+
+        isSuccess := True;
+        if (p_cash_oper_tp = 2) and (Form_main.have_eq = 1) then
+          isSuccess := reversePayEq(ECR, Form_main.eqECR);
+
+        if isSuccess = False then
         begin
-          try
-            //Возвращаем каждый платёж
-            print_string_ecr('Лицевой счет №' + OD_c_kwtp.FieldByName('lsk').AsString, 1, 0, ECR);
-            print_string_ecr('Наим-е операции   Период    Оплата(руб.)', 1, 0, ECR);
-
-            //Специальный датасет, для возврата продажи (содержит тело текущего платежа)
-            with OD_paycheck do
-            begin
-              First;
-              l_summa := 0;
-              while not Eof do
-              begin
-                l_summa := l_summa + FieldByName('summ_itg').AsFloat;
-                unreg_ecr(FieldByName('oper_name').AsString + calc_pads(FieldByName('oper_name').AsString) + FieldByName('dopl').AsString, FieldByName('summ_itg').AsFloat, 1, FieldByName('dep').AsInteger, ECR);
-                Next;
-              end;
-              if close_reg_ecr_in_removing(l_summa, ECR, FieldByName('cash_oper_tp').AsInteger) <> 0 then
-                l_flag := 1
-              else
-                l_flag := 0;
-              Active := false;
-            end;
-
-          except
-            // Эксепшн в фискальном регистраторе
-            on E: Exception do
-            begin
-              l_flag := 1;
-              ShowMessage('Exception class name = ' + E.ClassName + '' + 'Ошибка: ' + E.Message);
-              ShowMessage('Возврат не будет учтён!');
-            end;
-          end;
-
-        end
-        else
-        begin
-          l_flag := 0;
+          close_port_ecr(ECR);
+          Application.MessageBox('Отмена операции', 'Внимание!', MB_OK + MB_ICONERROR + MB_TOPMOST);
+          Exit;
         end;
 
+        if (isSuccess = True) and (msg3('Произвести возврат платежа в фискальном регистраторе?', 'Внимание!', MB_YESNO + MB_ICONQUESTION) = IDYES) then
+        begin
+          if reverseEveryPayPeriod(ECR) = False then
+          begin
+            close_port_ecr(ECR);
+            if (p_cash_oper_tp = 2) and (Form_main.have_eq = 1) then
+            begin
+              // перевести в "отмененное" состояние транзакцию эквайринга
+              Form_main.eqECR.NFun(6004);
+              logText('Эквайринг: статус=6004 (отменено)');
+            end;
+            Application.MessageBox('Отмена операции', 'Внимание!', MB_OK + MB_ICONERROR + MB_TOPMOST);
+            Exit;
+          end;
+        end;
       end;
+    end;
 
+    isSuccess := False;
+
+    // успешно
+    if isReverse then
+    begin
+    // отменить оплату
+      l_var := DataModule1.OraclePackage1.CallIntegerFunction('scott.C_GET_PAY.reverse_pay', [OD_c_kwtp.FieldByName('id').AsInteger]);
+      if l_var <> 0 then
+      begin
+        isSuccess := False;
+        DataModule1.OraclePackage1.Session.Rollback;
+        logText('ОШИБКА в БД при регистрации обратной оплаты Сумма в ККМ не будет идти с Директ!');
+        logText('Окончание возврата оплаты - ОШИБКА');
+        msg2('Обратный платеж не выполнен! Код ошибки=' + IntToStr(l_var), 'Внимание!', MB_OK + MB_ICONERROR);
+      end
+      else
+      begin
+        isSuccess := true;
+        OD_c_kwtp.Prior;
+        OD_c_kwtp.Active := False;
+        OD_c_kwtp.Active := true;
+        OD_paycheck.Active := false;
+        DataModule1.OraclePackage1.Session.Commit;
+        logText('Окончание возврата оплаты - успешно');
+        msg2('Обратный платеж выполнен в текущем дне и с текущим № компьютера!', 'Внимание!', MB_OK + MB_ICONINFORMATION);
+      end;
     end
     else
     begin
-      l_flag := 0;
-    end;
-
-    if l_flag = 1 then
-    begin
-      // не успешно
-      //DataModule1.OraclePackage1.Session.Rollback;
-      Exit;
-    end
-    else if l_flag = 0 then
-    begin
-      // успешно
+      // удалить оплату
+      isSuccess := true;
       DataModule1.OraclePackage1.CallProcedure('scott.C_GET_PAY.remove_pay', [OD_c_kwtp.FieldByName('id').AsInteger]);
       DataModule1.OraclePackage1.Session.Commit;
       OD_c_kwtp.Prior;
@@ -455,10 +556,31 @@ begin
       OD_c_kwtp.Active := true;
       OD_paycheck.Active := false;
       DataModule1.OraclePackage1.Session.Commit;
-      //msg2('Платеж успешно удалён!', 'Внимание!', MB_OK + MB_ICONINFORMATION);
+      logText('Окончание удаления оплаты - успешно');
+      //msg2('Платеж успешно удалён!', 'Внимание!', MB_OK + MB_ICONINFORMATION); убрано сообщение, так как если много удалять, устанешь жать кнопку
     end;
 
+    if isSuccess = True then
+    begin
+      if (p_cash_oper_tp = 2) and (Form_main.have_eq = 1) then
+      begin
+        // перевести в "подтвержденное" состояние транзакцию эквайринга
+        Form_main.eqECR.NFun(6001);
+        logText('Эквайринг: статус=6001 (подтверждено)');
+      end;
+    end;
   end;
+
+end;
+
+procedure TForm_month_payments.N1Click(Sender: TObject);
+begin
+  deleteOrReversePayment(False);
+end;
+
+procedure TForm_month_payments.N3Click(Sender: TObject);
+begin
+  deleteOrReversePayment(true);
 end;
 
 procedure TForm_month_payments.OD_c_kwtpAfterRefresh(DataSet: TDataSet);
@@ -478,116 +600,6 @@ begin
   if FF('Form_edit_pay_usl_org', 1) = 0 then
     Application.CreateForm(TForm_edit_pay_usl_org, Form_edit_pay_usl_org);
   Form_edit_pay_usl_org.Show;
-end;
-
-procedure TForm_month_payments.N3Click(Sender: TObject);
-var
-  bm: TBookmark;
-  l_flag, l_var: Integer;
-  ECR: OleVariant;
-  l_summa: Double;
-begin
-// Обратный платеж
-  if msg3('Выполнить обратный платёж оплаты с суммой ' + OD_c_kwtp.FieldByName('summ_itg').AsString + ' руб., Л/С ' + OD_c_kwtp.FieldByName('lsk').AsString + ' (действие будет сохранено в журнале событий)', 'Внимание!', MB_YESNO + MB_ICONQUESTION) = IDYES then
-  begin
-    logText('Начало возврата оплаты');
-    logText('Выполнить обратный платёж оплаты с суммой ' + OD_c_kwtp.FieldByName('summ_itg').AsString + ' руб., Л/С ' + OD_c_kwtp.FieldByName('lsk').AsString);
-
-    OD_paycheck.Active := true;
-    l_flag := 0;
-    if (Form_Main.have_cash = 1) or (Form_Main.have_cash = 2) then
-    begin
-      // c кассовым аппаратом
-      l_flag := 1;
-      if OD_c_kwtp.FieldByName('cash_num').AsInteger = 1 then
-        ECR := Form_main.selECR
-      else
-        ECR := Form_main.selECR2;
-
-      if open_port_ecr(ECR) <> 0 then
-      begin
-        logText('ККМ: Открытие порта - ОШИБКА!');
-        Exit;
-      end        //Входим в режим регистрации
-      else
-      begin
-        if msg3('Произвести возврат платежа в фискальном регистраторе?', 'Внимание!', MB_YESNO + MB_ICONQUESTION) = IDYES then
-        begin
-          try
-            //Возвращаем каждый платёж
-            print_string_ecr('Лицевой счет №' + OD_c_kwtp.FieldByName('lsk').AsString, 1, 0, ECR);
-            print_string_ecr('Наим-е операции   Период    Оплата(руб.)', 1, 0, ECR);
-
-            //Специальный датасет, для возврата продажи (содержит тело текущего платежа)
-            with OD_paycheck do
-            begin
-              First;
-              l_summa := 0;
-              while not Eof do
-              begin
-                l_summa := l_summa + FieldByName('summ_itg').AsFloat;
-                unreg_ecr(FieldByName('oper_name').AsString + calc_pads(FieldByName('oper_name').AsString) + FieldByName('dopl').AsString, FieldByName('summ_itg').AsFloat, 1, FieldByName('dep').AsInteger, ECR);
-                logText('Сумма возврата:' + FloatToStr(FieldByName('summ_itg').AsFloat));
-                Next;
-              end;
-              if close_reg_ecr_in_removing(l_summa, ECR, FieldByName('cash_oper_tp').AsInteger) <> 0 then
-              begin
-                l_flag := 1;
-                logText('ККМ: Регистрация возврата - ОШИБКА!');
-              end
-              else
-              begin
-                l_flag := 0;
-                logText('ККМ: Регистрация возврата - успешно');
-              end;
-              Active := false;
-            end;
-
-          except
-            // Эксепшн в фискальном регистраторе
-            on E: Exception do
-            begin
-              logText('ОШИБКА в фискальном регистраторе или в БД! Откат транзакции!');
-              l_flag := 1;
-              ShowMessage('Exception class name = ' + E.ClassName + '' + 'Ошибка: ' + E.Message);
-              ShowMessage('Возврат не будет учтён!');
-            end;
-          end;
-
-        end;
-      end;
-    end;
-
-    if l_flag = 1 then
-    begin
-      // не успешно
-      logText('Окончание возврата оплаты - ОШИБКА');
-      Exit;
-    end
-    else if l_flag = 0 then
-    begin
-      // успешно
-      l_var := DataModule1.OraclePackage1.CallIntegerFunction('scott.C_GET_PAY.reverse_pay', [OD_c_kwtp.FieldByName('id').AsInteger]);
-      if l_var <> 0 then
-      begin
-        DataModule1.OraclePackage1.Session.Rollback;
-        logText('ОШИБКА в БД при регистрации обратной оплаты Сумма в ККМ не будет идти с Директ!');
-        msg2('Обратный платеж не выполнен! Код ошибки=' + IntToStr(l_var), 'Внимание!', MB_OK + MB_ICONERROR);
-        logText('Окончание возврата оплаты - ОШИБКА');
-      end
-      else
-      begin
-        OD_c_kwtp.Prior;
-        OD_c_kwtp.Active := False;
-        OD_c_kwtp.Active := true;
-        OD_paycheck.Active := false;
-        DataModule1.OraclePackage1.Session.Commit;
-        logText('Окончание возврата оплаты - успешно');
-        msg2('Обратный платеж выполнен в текущем дне и с текущим № компьютера!', 'Внимание!', MB_OK + MB_ICONINFORMATION);
-      end;
-    end;
-  end;
-
 end;
 
 procedure TForm_month_payments.N5Click(Sender: TObject);

@@ -1005,7 +1005,7 @@ begin
                 end;
 
                 // printByLineWithCut(true, '...', ECR, 1);
-                logText('Ёквайринг: статус=6003 (неподтверждено)');
+                logText('Ёквайринг: статус=6003 (не подтверждено)');
               end
               else
               begin

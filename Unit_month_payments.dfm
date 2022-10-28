@@ -376,7 +376,7 @@ object Form_month_payments: TForm_month_payments
       
         't.nink, t.nkom, t.dtek, t.nkvit, t.dat_ink, t.ts, t.id, t.iscorr' +
         'ect, c.name as comp_name, a.oper||'#39'-'#39'||p.naim as oper_name,'
-      't.num_doc, t.dat_doc, m.cash_num'
+      't.num_doc, t.dat_doc, m.cash_num, p.cash_oper_tp'
       '  from scott.kart k join scott.c_kwtp t on k.lsk=t.lsk'
       
         '                               join scott.c_comps m on t.nkom=m.' +
@@ -402,7 +402,7 @@ object Form_month_payments: TForm_month_payments
       120000003A004B005F004C0053004B005F004900440003000000000000000000
       0000080000003A004C0053004B00050000000000000000000000}
     QBEDefinition.QBEFieldDefs = {
-      0500000013000000060000004C0053004B000100000000000A00000053005500
+      0500000014000000060000004C0053004B000100000000000A00000053005500
       4D004D0041000100000000000A000000500045004E0059004100010000000000
       080000004F005000450052000100000000000800000044004F0050004C000100
       00000000080000004E0049004E004B00010000000000080000004E004B004F00
@@ -414,7 +414,8 @@ object Form_month_payments: TForm_month_payments
       5000450052005F004E0041004D0045000000000000000E0000004E0055004D00
       5F0044004F0043000100000000000E0000004400410054005F0044004F004300
       01000000000010000000530055004D004D005F00490054004700010000000000
-      1000000043004100530048005F004E0055004D00010000000000}
+      1000000043004100530048005F004E0055004D00010000000000180000004300
+      4100530048005F004F005000450052005F0054005000010000000000}
     QueryAllRecords = False
     Session = DataModule1.OracleSession1
     DesignActivation = True
@@ -530,6 +531,9 @@ object Form_month_payments: TForm_month_payments
     end
     object OD_c_kwtpCASH_NUM: TFloatField
       FieldName = 'CASH_NUM'
+    end
+    object OD_c_kwtpCASH_OPER_TP: TFloatField
+      FieldName = 'CASH_OPER_TP'
     end
   end
   object OD_c_kwtp_chk: TOracleDataSet
