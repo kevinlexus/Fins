@@ -17,7 +17,7 @@ uses
   cxDBData, cxContainer, cxTextEdit, cxMaskEdit, cxDropDownEdit,
   cxGridCustomTableView, cxGridTableView, cxGridCustomView, Grids, 
   cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, dxSkinsCore,
-  dxSkinsDefaultPainters, dxDateRanges;
+  dxSkinsDefaultPainters, dxDateRanges, dxCore, cxDateUtils, cxCalendar;
 
 type
   TForm_corr_sal = class(TForm)
@@ -77,6 +77,8 @@ type
     DS_sprorg: TDataSource;
     cbbOrg: TcxLookupComboBox;
     cbbReu: TcxLookupComboBox;
+    Label7: TLabel;
+    dt1: TcxDateEdit;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ComboBox2CloseUp(Sender: TObject);
@@ -299,6 +301,16 @@ begin
         Exit;
       end;
 
+    end
+    else if tp = 6 then
+    begin
+      // Распредение кредита по дебету в сальдо и пене (для Полыс). начиная с 10.2022
+      DataModule1.OraclePackage1.CallProcedure
+        ('scott.scripts.dist_saldo_polis',
+        [dt1.Date]);
+      DataModule1.OraclePackage1.CallProcedure
+        ('scott.scripts.dist_saldo_pen_polis',
+        [dt1.Date]);
     end;
 
     OD_data.Active := false;
@@ -352,6 +364,7 @@ begin
     cbbUsl.Enabled := true;
     cbbOrg.Enabled := true;
     cxCheckComboBox1.Enabled := False;
+    dt1.Enabled:=False;
   end
   else if tp = 1 then
   begin
@@ -368,6 +381,7 @@ begin
     cbbUsl.Enabled := true;
     cbbOrg.Enabled := true;
     cxCheckComboBox1.Enabled := False;
+    dt1.Enabled:=False;
   end
   else if tp = 2 then
   begin
@@ -384,6 +398,7 @@ begin
     cbbUsl.Enabled := true;
     cbbOrg.Enabled := true;
     cxCheckComboBox1.Enabled := False;
+    dt1.Enabled:=False;
   end
   else if tp = 3 then
   begin
@@ -400,6 +415,7 @@ begin
     cbbUsl.Enabled := False;
     cbbOrg.Enabled := False;
     cxCheckComboBox1.Enabled := True;
+    dt1.Enabled:=False;
   end
   else if tp = 4 then
   begin
@@ -416,6 +432,7 @@ begin
     cbbUsl.Enabled := False;
     cbbOrg.Enabled := False;
     cxCheckComboBox1.Enabled := True;
+    dt1.Enabled:=False;
   end
   else if tp = 5 then
   begin
@@ -432,6 +449,24 @@ begin
     cbbUsl.Enabled := False;
     cbbOrg.Enabled := False;
     cxCheckComboBox1.Enabled := False;
+    dt1.Enabled:=False;
+  end
+  else if tp = 6 then
+  begin
+  // Распредение кредита по дебету в сальдо и пене (для Полыс). начиная с 10.2022
+    Label2.Enabled := False;
+    Edit1.Enabled := False;
+
+    Label1.Enabled := False;
+    Label3.Enabled := False;
+    Label4.Enabled := False;
+    Label5.Enabled := false;
+    ComboBox2.Enabled := false;
+    cbbReu.Enabled := False;
+    cbbUsl.Enabled := False;
+    cbbOrg.Enabled := False;
+    cxCheckComboBox1.Enabled := False;
+    dt1.Enabled:=True;
   end;
 
 end;

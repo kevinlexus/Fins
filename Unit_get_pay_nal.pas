@@ -676,6 +676,12 @@ var
 begin
   logText('Начало регистрации чека');
 
+  logText('Создать объект OLE ККМ');
+  Form_Main.create_OLE_KKM;
+
+  logText('Создать объект OLE Эквайрниг');
+  Form_Main.create_OLE_Eq;
+
   if p_cashNum = 1 then
   begin
     ECR := Form_main.selECR;
@@ -1063,7 +1069,7 @@ begin
                     logText('Лиц.счет:' + OD_get_money_nal2.FieldByName('lsk').AsString);
                     print_string_ecr2('Лиц.сч.' + OD_get_money_nal2.FieldByName('lsk_tp').AsString + ' № ' + OD_get_money_nal2.FieldByName('lsk').AsString, 1, 0, F, ECR);
                   end;
-                  logText('Строка оплаты:' + OD_get_money_nal2.FieldByName('naim').AsString + OD_get_money_nal2.FieldByName('naim').AsString + OD_get_money_nal2.FieldByName('dopl').AsString);
+                  logText('Строка оплаты:' + OD_get_money_nal2.FieldByName('naim').AsString + OD_get_money_nal2.FieldByName('dopl').AsString);
                   logText('Сумма:' + FloatToStr(OD_get_money_nal2.FieldByName('summ_itg').AsFloat));
                   reg_ecr(OD_get_money_nal2.FieldByName('naim').AsString + calc_pads(OD_get_money_nal2.FieldByName('naim').AsString) + OD_get_money_nal2.FieldByName('dopl').AsString, OD_get_money_nal2.FieldByName('summ_itg').AsFloat, 1, OD_c_kwtp.FieldByName('dep').AsInteger, F, ECR);
                   OD_get_money_nal2.Next;
@@ -1140,6 +1146,12 @@ begin
       Result := 0;
     end;
   end;
+
+  logText('Удалить объект OLE ККМ');
+  Form_Main.free_OLE_KKM;
+
+  logText('Удалить объект OLE Эквайрниг');
+  Form_Main.free_OLE_Eq;
 
   logText('Окончание регистрации чека');
 

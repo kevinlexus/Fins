@@ -308,12 +308,10 @@ begin
   begin
     //прочим-запретить
     N1.Enabled := False;
-    N3.Enabled := False;
     //разрешить удаление Админу
     if Form_Main.g_admin = 1 then
     begin
       N1.Enabled := True;
-      N3.Enabled := False;
     end;
   end;
 
@@ -470,6 +468,12 @@ begin
   // Удалить платеж
   if msg3(Msg + OD_c_kwtp.FieldByName('summ_itg').AsString + ' руб., Л/С ' + OD_c_kwtp.FieldByName('lsk').AsString + ' (действие будет сохранено в журнале событий)', 'Внимание!', MB_YESNO + MB_ICONQUESTION) = IDYES then
   begin
+    logText('Создать объект OLE ККМ');
+    Form_Main.create_OLE_KKM;
+
+    logText('Создать объект OLE Эквайрниг');
+    Form_Main.create_OLE_Eq;
+
     OD_paycheck.Active := true;
     if (Form_Main.have_cash = 1) or (Form_Main.have_cash = 2) then
     begin
@@ -486,7 +490,7 @@ begin
       end
       else
       begin
-        p_cash_oper_tp := OD_c_kwtp.FieldByName('cache_oper').AsInteger;
+        p_cash_oper_tp := OD_c_kwtp.FieldByName('cash_oper_tp').AsInteger;
         // эквайринг
 
         isSuccess := True;
@@ -569,6 +573,12 @@ begin
         logText('Эквайринг: статус=6001 (подтверждено)');
       end;
     end;
+
+    logText('Удалить объект OLE ККМ');
+    Form_Main.free_OLE_KKM;
+
+    logText('Удалить объект OLE Эквайрниг');
+    Form_Main.free_OLE_Eq;
   end;
 
 end;

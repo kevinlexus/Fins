@@ -23,45 +23,42 @@ type
     procedure Button2Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
-  private
-    { Private declarations }
-  public
-    { Public declarations }
+  private    { Private declarations }
+  public    { Public declarations }
   end;
 
 var
   Form_inkass: TForm_inkass;
 
+
 implementation
 
-uses DM_module1, Unit_inkass_print, Unit_Mainform;
+uses
+  DM_module1, Unit_inkass_print, Unit_Mainform;
 
 {$R *.dfm}
 
 procedure TForm_inkass.FormCreate(Sender: TObject);
 begin
-  TForm(Sender).AutoSize:=true;
-  if (Form_Main.have_cash=1) or (Form_Main.have_cash=2) then
+  TForm(Sender).AutoSize := true;
+  if (Form_Main.have_cash = 1) or (Form_Main.have_cash = 2) then
   begin
-    CheckBox1.Checked:=True;
+    CheckBox1.Checked := True;
   end
   else
   begin
-    CheckBox1.Checked:=False;
-    CheckBox1.Enabled:=False;
+    CheckBox1.Checked := False;
+    CheckBox1.Enabled := False;
   end;
 
-  Edit2.Text:=DataModule1.OraclePackage1.CallStringFunction(
-    'scott.INIT.get_nkom', parNone);
-  Edit1.Text:=DataModule1.OraclePackage1.CallFloatFunction(
-    'scott.C_GET_PAY.get_tails', parNone);
+  Edit2.Text := DataModule1.OraclePackage1.CallStringFunction('scott.INIT.get_nkom', parNone);
+  Edit1.Text := DataModule1.OraclePackage1.CallFloatFunction('scott.C_GET_PAY.get_tails', parNone);
 
 end;
 
-procedure TForm_inkass.FormClose(Sender: TObject;
-  var Action: TCloseAction);
+procedure TForm_inkass.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  Action:=caFree;
+  Action := caFree;
 end;
 
 procedure TForm_inkass.Button2Click(Sender: TObject);
@@ -70,74 +67,88 @@ begin
 end;
 
 procedure TForm_inkass.Button1Click(Sender: TObject);
+var
+  ECR: OleVariant;
 begin
-  if  DataModule1.OraclePackage1.CallFloatFunction(
-  'scott.C_GET_PAY.get_tails', parNone) = 0 then
+
+  if DataModule1.OraclePackage1.CallFloatFunction('scott.C_GET_PAY.get_tails', parNone) = 0 then
   begin
-  if Application.MessageBox('Выполнить инкассацию, если остаток равен 0?',
-     'Внимание!', MB_YESNO+MB_ICONEXCLAMATION+MB_APPLMODAL)=IDNO then
-    exit;
+    if Application.MessageBox('Выполнить инкассацию, если остаток равен 0?', 'Внимание!', MB_YESNO + MB_ICONEXCLAMATION + MB_APPLMODAL) = IDNO then
+      exit;
   end;
 
-  if (Application.MessageBox('Выполнить инкассацию?',
-     'Подверждение', MB_ICONQUESTION+MB_YESNO+MB_APPLMODAL) = IDYES	)
-     then
+  if (Application.MessageBox('Выполнить инкассацию?', 'Подверждение', MB_ICONQUESTION + MB_YESNO + MB_APPLMODAL) = IDYES) then
   begin
-   if ((Form_Main.have_cash=1) or (Form_Main.have_cash=2)) then
-   begin
-    if CheckBox1.Checked then
+
+    logText('Создать объект OLE ККМ');
+    Form_Main.create_OLE_KKM;
+
+    logText('Создать объект OLE Эквайрниг');
+    Form_Main.create_OLE_Eq;
+
+    logText('Form_main.cur_cash_num=' + IntToStr(Form_main.cur_cash_num));
+    if Form_main.cur_cash_num = 1 then
+      ECR := Form_main.selECR
+    else
+      ECR := Form_main.selECR2;
+
+    if ((Form_Main.have_cash = 1) or (Form_Main.have_cash = 2)) then
     begin
+      if CheckBox1.Checked then
+      begin
       //С кассовым аппаратом
-      if Application.MessageBox('Выполнить Z-отчет?',
-         'Внимание!', MB_YESNO+MB_ICONEXCLAMATION+MB_APPLMODAL)=IDNO then
-      begin
-        msg2('Z-отчет необходим для выполнения инкассации!', 'Внимание!', MB_OK+MB_ICONSTOP);
-        msg2('Икассация НЕ выполнена!', 'Внимание!', MB_OK+MB_ICONERROR);
-        Exit;
-      end
-      else
-      begin
-        if open_port_ecr(Form_Main.cur_ECR) <> 0 then
+        if Application.MessageBox('Выполнить Z-отчет?', 'Внимание!', MB_YESNO + MB_ICONEXCLAMATION + MB_APPLMODAL) = IDNO then
         begin
-          msg2('Икассация НЕ выполнена!', 'Внимание!', MB_OK+MB_ICONERROR);
-          Exit;
-        end;
-        if open_session(Form_Main.cur_ECR) <> 1 then
-        begin
-          msg2('Смена еще не открыта для снятия Z отчета!', 'Внимание!', MB_OK+MB_ICONERROR);
-          msg2('Икассация НЕ выполнена!', 'Внимание!', MB_OK+MB_ICONERROR);
+          msg2('Z-отчет необходим для выполнения инкассации!', 'Внимание!', MB_OK + MB_ICONSTOP);
+          msg2('Икассация НЕ выполнена!', 'Внимание!', MB_OK + MB_ICONERROR);
           Exit;
         end
         else
         begin
-          if rep_clearance(Form_Main.cur_ECR) <> 0 then
+          if open_port_ecr(ECR) <> 0 then
+          begin
+            msg2('Икассация НЕ выполнена!', 'Внимание!', MB_OK + MB_ICONERROR);
+            Exit;
+          end;
+          if open_session(ECR) <> 1 then
+          begin
+            msg2('Смена еще не открыта для снятия Z отчета!', 'Внимание!', MB_OK + MB_ICONERROR);
+            msg2('Икассация НЕ выполнена!', 'Внимание!', MB_OK + MB_ICONERROR);
+            Exit;
+          end
+          else
+          begin
+            if rep_clearance(ECR) <> 0 then
             begin
               //Ошибка при выполнении отчета...
-              close_port_ecr(Form_Main.cur_ECR);
-              msg2('Z отчет не был распечатан! Проверьте выполнение инкассации!', 'Внимание!', MB_OK+MB_ICONERROR);
+              close_port_ecr(ECR);
+              msg2('Z отчет не был распечатан! Проверьте выполнение инкассации!', 'Внимание!', MB_OK + MB_ICONERROR);
               //Exit;
             end;
-            close_port_ecr(Form_Main.cur_ECR);
+            close_port_ecr(ECR);
+          end;
+        end;
+      end
+      else
+      begin
+        if msg3('Выполнить инкассацию без Z-отчета?', 'Внимание!', MB_YESNO + MB_ICONQUESTION) = ID_NO then
+        begin
+          Exit;
         end;
       end;
-    end
-    else
-    begin
-      if msg3('Выполнить инкассацию без Z-отчета?', 'Внимание!', MB_YESNO + MB_ICONQUESTION) = ID_NO then
-      begin
-        Exit;
-      end;
     end;
-   end;
 
-    DataModule1.OraclePackage1.CallProcedure(
-      'scott.C_GET_PAY.make_inkass', parNone);
+    DataModule1.OraclePackage1.CallProcedure('scott.C_GET_PAY.make_inkass', parNone);
     DataModule1.OraclePackage1.Session.Commit;
 
-    Edit1.Text:=DataModule1.OraclePackage1.CallFloatFunction(
-      'scott.C_GET_PAY.get_tails', parNone);
-     Application.MessageBox('Инкассация выполнена!',
-      'Внимание!', MB_ICONINFORMATION+MB_OK+MB_APPLMODAL);
+    Edit1.Text := DataModule1.OraclePackage1.CallFloatFunction('scott.C_GET_PAY.get_tails', parNone);
+    Application.MessageBox('Инкассация выполнена!', 'Внимание!', MB_ICONINFORMATION + MB_OK + MB_APPLMODAL);
+
+    logText('Удалить объект OLE ККМ');
+    Form_Main.free_OLE_KKM;
+
+    logText('Удалить объект OLE Эквайрниг');
+    Form_Main.free_OLE_Eq;
   end;
 end;
 
@@ -148,3 +159,4 @@ begin
 end;
 
 end.
+

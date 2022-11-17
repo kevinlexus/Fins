@@ -22,7 +22,6 @@ type
     Button1: TButton;
     Button2: TButton;
     procedure btn4Click(Sender: TObject);
-    procedure btn1Click(Sender: TObject);
     procedure btn5Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btn2Click(Sender: TObject);
@@ -34,7 +33,7 @@ type
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
   private
-    { Private declarations }
+    ECR: OleVariant;
   public
     l_summa: Double;
   end;
@@ -42,73 +41,54 @@ type
 var
   Form_service_cash: TForm_service_cash;
 
+
 implementation
 
-uses Unit_money_cash, Unit_Mainform, DM_module1;
+uses
+  Unit_money_cash, Unit_Mainform, DM_module1;
 
 {$R *.dfm}
 
 procedure TForm_service_cash.btn4Click(Sender: TObject);
 begin
-  if open_port_ecr(Form_main.cur_ECR) <> 0 then
+  if open_port_ecr(ECR) <> 0 then
     Exit;
-  rep_wo_clearance(2, Form_main.cur_ECR);
-  close_port_ecr(Form_main.cur_ECR);
-end;
-
-procedure TForm_service_cash.btn1Click(Sender: TObject);
-var
-  l_ret: Integer;
-begin
-  //Устанавливать дату и время через сервисную утилиту!!!
-{  if msg3('Дата и время будут взяты с компьютера, установить?', 'Подтверждение', MB_YESNO+MB_ICONQUESTION) = ID_YES then
-  begin
-    if open_ecr <> 0 then
-      Exit
-    else
-    begin
-      l_ret:= set_date_time_ecr;
-      if l_ret <> 0 then
-        msg2('Дата и время в ККМ установлены!', 'Внимание!', MB_OK+MB_ICONERROR)
-      else if l_ret = 2 then
-        msg2('Дата и время в ККМ не могут быть установлены, так как открыта смена (нужен Z-отчет)!', 'Внимание!', MB_OK+MB_ICONERROR)
-      else
-        msg2('Прочие ошибки установки даты и времени в ККМ!', 'Внимание!', MB_OK+MB_ICONERROR)
-    end;
-  end;
- }
+  rep_wo_clearance(2, ECR);
+  close_port_ecr(ECR);
 end;
 
 procedure TForm_service_cash.btn5Click(Sender: TObject);
 begin
-  if
-    msg3('Z-отчет выполняется автоматически, при выполнении инкассации, хотите продолжить?', 'Подтверждение', MB_YESNO + MB_ICONSTOP) = ID_YES then
+  if msg3('Z-отчет выполняется автоматически, при выполнении инкассации, хотите продолжить?', 'Подтверждение', MB_YESNO + MB_ICONSTOP) = ID_YES then
   begin
-    if msg3('Выполнить Z-отчет?', 'Подтверждение', MB_YESNO + MB_ICONQUESTION) =
-      ID_YES then
+    if msg3('Выполнить Z-отчет?', 'Подтверждение', MB_YESNO + MB_ICONQUESTION) = ID_YES then
     begin
-      if open_port_ecr(Form_main.cur_ECR) <> 0 then
+      if open_port_ecr(ECR) <> 0 then
         Exit;
-      if open_session(Form_main.cur_ECR) <> 1 then
-        msg2('Смена еще не открыта для снятия Z отчета!', 'Внимание!', MB_OK +
-          MB_ICONERROR)
+      if open_session(ECR) <> 1 then
+        msg2('Смена еще не открыта для снятия Z отчета!', 'Внимание!', MB_OK + MB_ICONERROR)
       else
       begin
-        if rep_clearance(Form_main.cur_ECR) <> 0 then
+        if rep_clearance(ECR) <> 0 then
         begin
           //Ошибка при выполнении отчета...
-          close_port_ecr(Form_main.cur_ECR);
+          close_port_ecr(ECR);
           Exit;
         end;
       end;
-      close_port_ecr(Form_main.cur_ECR);
+      close_port_ecr(ECR);
     end;
   end;
 end;
 
-procedure TForm_service_cash.FormClose(Sender: TObject;
-  var Action: TCloseAction);
+procedure TForm_service_cash.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+  logText('Удалить объект OLE ККМ');
+  Form_Main.free_OLE_KKM;
+
+  logText('Удалить объект OLE Эквайрниг');
+  Form_Main.free_OLE_Eq;
+
   Action := caFree;
 end;
 
@@ -123,19 +103,18 @@ begin
   begin
     if l_summa = 0 then
       Exit;
-    if open_port_ecr(Form_main.cur_ECR) <> 0 then
+    if open_port_ecr(ECR) <> 0 then
       Exit
     else
     begin
       //внесение денег в кассу
-      if open_reg_ecr(Form_main.cur_ECR) <> 0 then
+      if open_reg_ecr(ECR) <> 0 then
       begin
-        msg2('Не возможно перейти в режим регистрации!', 'Внимание!', MB_OK +
-          MB_ICONSTOP);
+        msg2('Не возможно перейти в режим регистрации!', 'Внимание!', MB_OK + MB_ICONSTOP);
         Exit;
       end;
 
-      if put_money(l_summa, Form_main.cur_ECR) = 0 then
+      if put_money(l_summa, ECR) = 0 then
         msg2('Сумма внесена!', 'Внимание!', MB_OK + MB_ICONINFORMATION);
     end;
   end;
@@ -151,18 +130,17 @@ begin
   begin
     if l_summa = 0 then
       Exit;
-    if open_port_ecr(Form_main.cur_ECR) <> 0 then
+    if open_port_ecr(ECR) <> 0 then
       Exit
     else
     begin
-      if open_reg_ecr(Form_main.cur_ECR) <> 0 then
+      if open_reg_ecr(ECR) <> 0 then
       begin
-        msg2('Не возможно перейти в режим регистрации!', 'Внимание!', MB_OK +
-          MB_ICONSTOP);
+        msg2('Не возможно перейти в режим регистрации!', 'Внимание!', MB_OK + MB_ICONSTOP);
         Exit;
       end;
       //выплата денег из кассы
-      if take_money(l_summa, Form_main.cur_ECR) = 0 then
+      if take_money(l_summa, ECR) = 0 then
         msg2('Сумма выплачена!', 'Внимание!', MB_OK + MB_ICONINFORMATION);
     end;
   end;
@@ -170,18 +148,17 @@ end;
 
 procedure TForm_service_cash.btn6Click(Sender: TObject);
 begin
-  if open_port_ecr(Form_main.cur_ECR) <> 0 then
+  if open_port_ecr(ECR) <> 0 then
     Exit;
-  rep_wo_clearance(7, Form_main.cur_ECR);
-  close_port_ecr(Form_main.cur_ECR);
+  rep_wo_clearance(7, ECR);
+  close_port_ecr(ECR);
 end;
 
 procedure TForm_service_cash.btn7Click(Sender: TObject);
 begin
-  if msg3('Открыть смену?', 'Внимание!', MB_YESNO + MB_ICONQUESTION) = ID_YES
-    then
+  if msg3('Открыть смену?', 'Внимание!', MB_YESNO + MB_ICONQUESTION) = ID_YES then
   begin
-    if open_session(Form_main.cur_ECR) = 1 then
+    if open_session(ECR) = 1 then
     begin
       msg2('Смена уже открыта!', 'Внимание!', MB_OK + MB_ICONERROR);
     end
@@ -198,15 +175,14 @@ var
   path: string;
   F: TextFile;
 begin
-  path := DataModule1.OraclePackage1.CallStringFunction
-    ('scott.Utils.get_str_param', ['Путь1']);
+  path := DataModule1.OraclePackage1.CallStringFunction('scott.Utils.get_str_param', ['Путь1']);
   AssignFile(F, path + 'receipt.txt');
   Rewrite(F);
-  Append(f);
-  Flush(f);
-  CloseFile(f);
+  Append(F);
+  Flush(F);
+  CloseFile(F);
   // закрыть чек нулевой суммой
-  if close_reg_summ_ecr(0, Form_main.cur_ECR, 0, f) <> 0 then
+  if close_reg_summ_ecr(0, ECR, 0, F) <> 0 then
   begin
     msg2('Чек не был закрыт!', 'Внимание!', MB_OK + MB_ICONERROR);
   end;
@@ -214,15 +190,29 @@ begin
 end;
 
 procedure TForm_service_cash.FormCreate(Sender: TObject);
-var
-  ECR: OleVariant;
 begin
-  ECR := Form_main.cur_ECR;
+
+  logText('Создать объект OLE ККМ');
+  Form_Main.create_OLE_KKM;
+
+  logText('Создать объект OLE Эквайрниг');
+  Form_Main.create_OLE_Eq;
+
+  logText('Form_main.cur_cash_num=' + IntToStr(Form_main.cur_cash_num));
+  if Form_main.cur_cash_num = 1 then
+    ECR := Form_main.selECR
+  else
+    ECR := Form_main.selECR2;
+
   if (Form_Main.have_cash = 1) or (Form_Main.have_cash = 2) then
   begin
+    logText('Form_service_cash.FormCreate 1');
     ECR.GetECRStatus;
+    logText('Form_service_cash.FormCreate 2');
     edt1.Text := ECR.INN;
+    logText('Form_service_cash.FormCreate 3');
     edt2.Text := ECR.IpAddress;
+    logText('Form_service_cash.FormCreate 4');
   end;
 
   if Form_Main.have_eq = 1 then
@@ -258,14 +248,11 @@ begin
         // успешно
         // перевести в "подтвержденное" состояние транзакцию эквайринга
         Form_Main.eqECR.NFun(6001);
-        msg2('Сумма возвращена на карту!', 'Внимание!', MB_OK +
-          MB_ICONINFORMATION);
+        msg2('Сумма возвращена на карту!', 'Внимание!', MB_OK + MB_ICONINFORMATION);
       end
       else
       begin
-        msg2('Ошибка! код=' + eQres + ', cумма НЕ возвращена на карту!',
-          'Внимание!',
-          MB_OK + MB_ICONERROR);
+        msg2('Ошибка! код=' + eQres + ', cумма НЕ возвращена на карту!', 'Внимание!', MB_OK + MB_ICONERROR);
       end;
     end;
   end;
@@ -282,11 +269,10 @@ begin
     // сверка итогов эквайринга
     Form_Main.eqECR.NFun(6000);
     check := Form_Main.eqECR.GParamString('Cheque');
-    Application.MessageBox(PChar(check), 'Проверка отчета', MB_OK
-      + MB_ICONINFORMATION + MB_TOPMOST);
+    Application.MessageBox(PChar(check), 'Проверка отчета', MB_OK + MB_ICONINFORMATION + MB_TOPMOST);
     // печать чека на фискальнике, используя разбиение на строки
     printByLineWithCut(True, check, Form_main.selECR, 36);
-    cutCheck(False, True, 1, ECR);   
+    cutCheck(False, True, 1, ECR);
   end;
 end;
 

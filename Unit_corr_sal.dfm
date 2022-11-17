@@ -96,6 +96,19 @@ object Form_corr_sal: TForm_corr_sal
     Font.Style = [fsBold]
     ParentFont = False
   end
+  object Label7: TLabel
+    Left = 554
+    Top = 67
+    Width = 96
+    Height = 13
+    Caption = #1055#1088#1086#1074#1077#1089#1090#1080' '#1076#1072#1090#1086#1081
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
   object GroupBox1: TGroupBox
     Left = 0
     Top = 106
@@ -233,7 +246,8 @@ object Form_corr_sal: TForm_corr_sal
       
         #1050#1086#1088#1088#1077#1082#1094#1080#1103' '#1089#1072#1083#1100#1076#1086' '#1087#1086' 003 '#1091#1089#1083' (2-'#1072#1103' '#1087#1088#1086#1074#1086#1076#1082#1072') - '#1042#1099#1087#1086#1083#1085#1103#1090#1100' '#1087#1086#1089#1083#1077' '#1092#1086 +
         #1088#1084#1080#1088#1086#1074#1072#1085#1080#1103' '#1080#1089#1093'.'#1089#1072#1083#1100#1076#1086'!'
-      #1050#1086#1088#1088#1077#1082#1094#1080#1103' '#1089#1072#1083#1100#1076#1086' '#1087#1086' '#1055#1077#1085#1077)
+      #1050#1086#1088#1088#1077#1082#1094#1080#1103' '#1089#1072#1083#1100#1076#1086' '#1087#1086' '#1055#1077#1085#1077
+      #1056#1072#1089#1087#1088#1077#1076#1077#1083#1077#1085#1080#1077' '#1082#1088#1077#1076#1080#1090#1072' '#1087#1086' '#1076#1077#1073#1077#1090#1091' '#1074' '#1089#1072#1083#1100#1076#1086' '#1080' '#1074' '#1087#1077#1085#1077)
   end
   object Button1: TButton
     Left = 830
@@ -377,6 +391,12 @@ object Form_corr_sal: TForm_corr_sal
     Properties.OnCloseUp = cxReuPropertiesCloseUp
     TabOrder = 11
     Width = 160
+  end
+  object dt1: TcxDateEdit
+    Left = 696
+    Top = 64
+    TabOrder = 12
+    Width = 121
   end
   object OD_saldo: TOracleDataSet
     SQL.Strings = (

@@ -339,8 +339,10 @@ type
     procedure N510Click(Sender: TObject);
     procedure N511Click(Sender: TObject);
     procedure N129Click(Sender: TObject);
-    procedure create_OLE_KKM(num: Integer);
+    procedure create_OLE_KKM;
     procedure create_OLE_Eq;
+    procedure free_OLE_Eq;
+    procedure free_OLE_KKM;
     procedure N130Click(Sender: TObject);
     procedure N521Click(Sender: TObject);
     procedure N512Click(Sender: TObject);
@@ -419,16 +421,22 @@ type
 
     // наличие ККМ
     have_cash: Integer;
-    // для напоминания о включении ККМ
-    //last_cash_num: Integer;
     // Для выполнения снятия Z отчета и т.п., но НЕ регистрации чека)
     // выбирается при входе в приложение
     // № текущего комп.
     nkom_: string;
     // № текущей ККМ
     cur_cash_num: Integer;
+    // параметры ККМ
+    cash1_Ip: string;
+    cash2_Ip: string;
+    cash1_port: string;
+    cash2_port: string;
+    cash1_inn: string;
+    cash2_inn: string;
+
     // текущий объект ECR
-    cur_ECR: OleVariant;
+//    cur_ECR: OleVariant;
     // текущая дата
     cur_dt: TDateTime;
     // сервер Java "", - прод. 2 - тест
@@ -636,96 +644,111 @@ end;
 
 procedure TForm_Main.create_OLE_Eq;
 begin
+  logText('create_OLE_Eq 1');
   try
-    Form_Main.eqECR := CreateOleObject('SBRFSRV.Server');
+    eqECR := CreateOleObject('SBRFSRV.Server');
+    logText('create_OLE_Eq 2');
     Options1.Caption := Options1.Caption + ' Эквайринг';
+    logText('create_OLE_Eq 3');
   except
     Application.MessageBox('Не удалось создать объект драйвера Эквайринга!', PChar(Application.Title), MB_ICONERROR + MB_OK);
     Application.MessageBox('Устройство банковского терминала Эквайринга не будет задействовано!', PChar(Application.Title), MB_ICONERROR + MB_OK);
   end;
 end;
 
-procedure TForm_Main.create_OLE_KKM(num: Integer);
+procedure TForm_Main.free_OLE_Eq;
+begin
+  if VarIsNull(eqECR) <> true then
+    eqECR:=null;
+end;
+
+procedure TForm_Main.free_OLE_KKM;
+begin
+  if cash1_Ip <> '' then
+  begin
+    selECR:=null;
+  end;
+
+  if cash2_Ip <> '' then
+  begin
+    selECR2:=null;
+  end;
+end;
+
+procedure TForm_Main.create_OLE_KKM;
 var
-  Ini: TIniFile;
+  //Ini: TIniFile;
   path, ip, port: string;
 begin
-  path := ParamStr(1);
-  GetDir(0, path);
-  Ini := TIniFile.Create(path + '\licenses.ini');
+  //path := ParamStr(1);
+  //GetDir(0, path);
+  //Ini := TIniFile.Create(path + '\licenses.ini');
 
-  {if Form_main.cash_test = 0 then
+  if Form_Main.have_cash <> 0 then
   begin
+    try
     // создаем объект общего драйвера ККМ
     // если объект создать не удается генерируется исключение, по которому завершается работа приложения
-    try
-      if num = 1 then
-      begin
-        // 1-ый ККМ
-        selECR := CreateOleObject('AddIn.FprnM45');
-        selECR.ApplicationHandle := Application.Handle;
-        option.Caption := option.Caption + ' ККМ-1';
-      end
-      else
-      begin
-        // 2-ой ККМ
-        selECR2 := CreateOleObject('AddIn.FprnM45');
-        selECR2.ApplicationHandle := Application.Handle;
-        option.Caption := option.Caption + ' ККМ-2';
-      end;
-      // необходимо для корректного отображения окон драйвера в контексте приложения
-    except
-      Application.MessageBox('Не удалось создать объект общего драйвера ККМ!',
-        PChar(Application.Title), MB_ICONERROR + MB_OK);
-      Application.MessageBox('Устройство ККМ не будет задействовано!',
-        PChar(Application.Title), MB_ICONERROR + MB_OK);
-    end;
-  end
-  else }
-  if have_cash = 2 then
-  begin
-    // создаем объект общего драйвера ККМ
-    // если объект создать не удается генерируется исключение, по которому завершается работа приложения
-    try
-      if num = 1 then
-      begin
-        // 1-ый ККМ
-        selECR := CreateOleObject('AddIn.DrvFR');
+//    if cash1_Ip <> '' then
+//    begin
+      // 1-ый ККМ
+      logText('create_OLE_KKM 1');
+      selECR := CreateOleObject('AddIn.DrvFR');
+      logText('create_OLE_KKM 2');
 
         // пока только для драйвера AddIn.DrvFR реализовал подключение по Ip
-        ip := Ini.ReadString('Application', 'cash1_Ip', '');
-        if ip <> '' then
-        begin
-          port := Ini.ReadString('Application', 'cash1_port', '');
+      ip := cash1_Ip;
+      if ip <> '' then
+      begin
+          //port := Ini.ReadString('Application', 'cash1_port', '');
+        port := cash1_port;
           // ИНН, если не заполнен, то не будет проверяться на корректность подключеного ККМ
-          Form_main.selECR_inn := Ini.ReadString('Application', 'cash1_inn', '');
-          selECR.ConnectionType := 6; // TCP сокет
-          selECR.ProtocolType := 0; // стандартный протокол
-          selECR.IPAddress := ip; // Ip адрес
-          selECR.UseIPAddress := True;
+          // Form_main.selECR_inn := Ini.ReadString('Application', 'cash1_inn', '');
+        Form_main.selECR_inn := cash1_inn;
+        logText('create_OLE_KKM 3');
+        selECR.ConnectionType := 6; // TCP сокет
+        logText('create_OLE_KKM 4');
+        selECR.ProtocolType := 0; // стандартный протокол
+        logText('create_OLE_KKM 5');
+        selECR.IPAddress := ip; // Ip адрес
+        logText('create_OLE_KKM 6');
+        selECR.UseIPAddress := True;
           // использовать Ip адрес ( в противном случае будет использовать имя компа)
-          selECR.TCPPort := port; // порт
-          selECR.Timeout := 5000; // таймаут в мс
-        end;
-      end
-      else
+        logText('create_OLE_KKM 7');
+        selECR.TCPPort := port; // порт
+        logText('create_OLE_KKM 8');
+        selECR.Timeout := 5000; // таймаут в мс
+      end;
+//    end;
+
+      if cash2_Ip <> '' then
       begin
         // 2-ой ККМ
+        logText('create_OLE_KKM 9');
         selECR2 := CreateOleObject('AddIn.DrvFR');
+        logText('create_OLE_KKM 10');
         // пока только для драйвера AddIn.DrvFR реализовал подключение по Ip
-        ip := Ini.ReadString('Application', 'cash2_Ip', '');
+        ip := cash2_Ip;
         if ip <> '' then
         begin
           // ИНН, если не заполнен, то не будет проверяться на корректность подключеного ККМ
-          port := Ini.ReadString('Application', 'cash2_port', '');
-          Form_main.selECR2_inn := Ini.ReadString('Application', 'cash2_inn', '');
+          port := cash2_port;
+          //Form_main.selECR2_inn := Ini.ReadString('Application', 'cash2_inn', '');
+          Form_main.selECR_inn := cash2_inn;
+          logText('create_OLE_KKM 11');
           selECR2.ConnectionType := 6; // TCP сокет
+          logText('create_OLE_KKM 12');
           selECR2.ProtocolType := 0; // стандартный протокол
+          logText('create_OLE_KKM 13');
           selECR2.IPAddress := ip; // Ip адрес
+          logText('create_OLE_KKM 14');
           selECR2.UseIPAddress := True;
           // использовать Ip адрес ( в противном случае будет использовать имя компа)
+          logText('create_OLE_KKM 15');
           selECR2.TCPPort := port; // порт
+          logText('create_OLE_KKM 16');
           selECR2.Timeout := 5000; // таймаут в мс
+          logText('create_OLE_KKM 17');
         end;
       end;
 
@@ -734,7 +757,7 @@ begin
       Application.MessageBox('Устройство ККМ-Штрих не будет задействовано!', PChar(Application.Title), MB_ICONERROR + MB_OK);
     end;
   end;
-  Ini.Free;
+  //Ini.Free;
 end;
 
 procedure TForm_Main.FormCreate(Sender: TObject);
@@ -743,7 +766,7 @@ begin
   Versia := 187;
   logText('Начало работы с Direct.exe');
   DisableGhosting;
-  FormatSettings.DecimalSeparator:='.';
+  FormatSettings.DecimalSeparator := '.';
 end;
 
 procedure TForm_Main.N31Click(Sender: TObject);

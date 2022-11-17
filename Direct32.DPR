@@ -272,29 +272,27 @@ begin
     s := Ini.ReadString('Application', 'have_cash', '');
     if s <> '' then
     begin
-    // наличие   ћ
+      // наличие   ћ
       Form_Main.have_cash := StrToInt(s);
 
-    // создать 1   ћ
-      Form_Main.create_OLE_KKM(1);
+      // создать 1   ћ
+      Form_Main.cash1_Ip:=Ini.ReadString('Application', 'cash1_Ip', '');
+      Form_Main.cash2_Ip:=Ini.ReadString('Application', 'cash1_Ip', '');
 
-      s := Ini.ReadString('Application', 'cash2_Ip', '');
-      if s <> '' then
-      begin
-      // создать 2   ћ, если указан его IP
-        Form_Main.create_OLE_KKM(2);
-      end;
+      Form_Main.cash1_port:=Ini.ReadString('Application', 'cash1_port', '');
+      Form_Main.cash2_port:=Ini.ReadString('Application', 'cash2_port', '');
 
-    // проверить наличие Ёквайринга
+      Form_Main.cash1_inn:=Ini.ReadString('Application', 'cash1_inn', '');
+      Form_Main.cash2_inn:=Ini.ReadString('Application', 'cash2_inn', '');
+
+      // проверить наличие Ёквайринга
       s := Ini.ReadString('Application', 'have_eq', '');
       if s <> '' then
       begin
         Form_Main.have_eq := StrToInt(s);
-      // создать OLE Ёквайринга, нужны sbrf.dll, gate.dll
-        Form_Main.create_OLE_Eq;
       end
       else
-      // нет Ёквайринга
+        // нет Ёквайринга
         Form_Main.have_eq := 0;
 
     end;
@@ -303,11 +301,8 @@ end;
 
 begin
   Application.Initialize;
-//  FormatSettings.DecimalSeparator := '.';
   // загрузить Ini параметры
-  //ShowMessage('0');
   loadIniPar;
-  //ShowMessage('1');
 
 
   try
