@@ -15,13 +15,15 @@ object frmOLAP: TfrmOLAP
   Visible = True
   WindowState = wsMaximized
   OnClose = FormClose
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object fcxSliceGrid1: TfcxSliceGrid
-    Left = 0
-    Top = 22
-    Width = 1426
-    Height = 897
+    AlignWithMargins = True
+    Left = 3
+    Top = 25
+    Width = 1420
+    Height = 891
     Version = '2.10.4'
     Align = alClient
     Slice = fcxSlice1
@@ -136,6 +138,10 @@ object frmOLAP: TfrmOLAP
     StatusZone.IntegerFormat.FormatStr = '#0.##'
     StatusZone.IntegerFormat.Kind = fkNumeric
     FieldsZone.Visible = True
+    ExplicitLeft = 0
+    ExplicitTop = 22
+    ExplicitWidth = 1426
+    ExplicitHeight = 897
   end
   object fcSliceGridToolbar1: TfcxSliceGridToolbar
     Left = 0
@@ -157,12 +163,29 @@ object frmOLAP: TfrmOLAP
       ImageIndex = 15
       Style = tbsSeparator
     end
-    object Button1: TButton
+    object Button2: TButton
       Left = 413
       Top = 0
       Width = 75
       Height = 22
       Caption = #1055#1077#1095#1072#1090#1100
+      TabOrder = 1
+      OnClick = Button2Click
+    end
+    object ToolButton1: TToolButton
+      Left = 488
+      Top = 0
+      Width = 9
+      Caption = 'ToolButton1'
+      ImageIndex = 16
+      Style = tbsSeparator
+    end
+    object Button1: TButton
+      Left = 497
+      Top = 0
+      Width = 75
+      Height = 22
+      Caption = #1047#1072#1082#1088#1099#1090#1100
       TabOrder = 0
       OnClick = Button1Click
     end

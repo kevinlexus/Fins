@@ -28,9 +28,12 @@ type
     fcxpSliceGridProvider1: TfcxpSliceGridProvider;
     ToolButton2: TToolButton;
     Button1: TButton;
+    Button2: TButton;
+    ToolButton1: TToolButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private { Private declarations }
     procedure createDimensions(reportCd: string; setCaption: bool);
     procedure addDimension(fieldName, fieldCaption: string; tp: Integer; setCaption: bool);
@@ -48,17 +51,24 @@ implementation
 
 procedure TfrmOLAP.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+  Form_main.Panel2.Visible:=True;
   Action := caFree;
+end;
+
+procedure TfrmOLAP.FormCreate(Sender: TObject);
+begin
+  Form_main.Panel2.Visible:=False;
+  Resize;
 end;
 
 procedure TfrmOLAP.Button1Click(Sender: TObject);
 begin
-  frxReport1.ShowReport();
+ close;
 end;
 
 procedure TfrmOLAP.Button2Click(Sender: TObject);
 begin
-  Close;
+  frxReport1.ShowReport();
 end;
 
 procedure TfrmOLAP.createOlapReport(reportCd, reportTitle, reportSigner: string);
