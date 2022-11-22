@@ -11,7 +11,6 @@ object Form_spr_usl: TForm_spr_usl
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   FormStyle = fsMDIChild
-  
   OldCreateOrder = False
   Position = poMainFormCenter
   Visible = True
@@ -90,7 +89,6 @@ object Form_spr_usl: TForm_spr_usl
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <>
           DataController.Summary.SummaryGroups = <>
-          OptionsSelection.InvertSelect = False
           OptionsView.GroupByBox = False
           object cxGridDBTableView1USLM: TcxGridDBColumn
             DataBinding.FieldName = 'USLM'
@@ -345,7 +343,7 @@ object Form_spr_usl: TForm_spr_usl
       0000}
     OracleDictionary.UseMessageTable = True
     QBEDefinition.QBEFieldDefs = {
-      050000003100000008000000550053004C004D00010000000000060000005500
+      050000003200000008000000550053004C004D00010000000000060000005500
       53004C000100000000000A0000004B0041005200540057000100000000000800
       00004B0057004E004900010000000000060000004C0050005700010000000000
       0C000000450044005F0049005A004D00010000000000040000004E004D000100
@@ -382,7 +380,8 @@ object Form_spr_usl: TForm_spr_usl
       100000004E004D005F00530048004F0052005400010000000000160000005500
       530045005F0056004F004C005F00430041004E00010000000000120000004800
       4900440045005F00430048005200470001000000000016000000550053004C00
-      4D005F00470052004F00550050003100010000000000}
+      4D005F00470052004F00550050003100010000000000140000004E004D005F00
+      46004F0052005F0042004F005400010000000000}
     ReadOnly = True
     CommitOnPost = False
     CachedUpdates = True

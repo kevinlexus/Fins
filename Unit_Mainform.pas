@@ -644,33 +644,38 @@ end;
 
 procedure TForm_Main.create_OLE_Eq;
 begin
-  logText('create_OLE_Eq 1');
-  try
-    eqECR := CreateOleObject('SBRFSRV.Server');
-    logText('create_OLE_Eq 2');
-    Options1.Caption := Options1.Caption + ' Эквайринг';
-    logText('create_OLE_Eq 3');
-  except
-    Application.MessageBox('Не удалось создать объект драйвера Эквайринга!', PChar(Application.Title), MB_ICONERROR + MB_OK);
-    Application.MessageBox('Устройство банковского терминала Эквайринга не будет задействовано!', PChar(Application.Title), MB_ICONERROR + MB_OK);
+  if Form_Main.have_eq = 1 then
+  begin
+    logText('create_OLE_Eq 1');
+    try
+      eqECR := CreateOleObject('SBRFSRV.Server');
+      logText('create_OLE_Eq 2');
+      Options1.Caption := Options1.Caption + ' Эквайринг';
+      logText('create_OLE_Eq 3');
+    except
+      Application.MessageBox('Не удалось создать объект драйвера Эквайринга!', PChar(Application.Title), MB_ICONERROR + MB_OK);
+      Application.MessageBox('Устройство банковского терминала Эквайринга не будет задействовано!', PChar(Application.Title), MB_ICONERROR + MB_OK);
+    end;
   end;
 end;
 
 procedure TForm_Main.free_OLE_Eq;
 begin
-  if VarIsNull(eqECR) <> true then
+  if (Form_Main.have_eq = 1) and (VarIsNull(eqECR) <> true) then
     eqECR:=null;
 end;
 
 procedure TForm_Main.free_OLE_KKM;
 begin
-  if cash1_Ip <> '' then
+  if (Form_Main.have_cash <> 0) then
   begin
+    selECR.Disconnect;
     selECR:=null;
   end;
 
   if cash2_Ip <> '' then
   begin
+    selECR2.Disconnect;
     selECR2:=null;
   end;
 end;
