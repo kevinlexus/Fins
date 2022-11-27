@@ -80,253 +80,95 @@ object Form_kart: TForm_kart
             TabOrder = 0
             Height = 192
             Width = 334
-            object Label29: TLabel
-              Left = 92
-              Top = 55
-              Width = 25
-              Height = 13
-              Caption = #1061'.'#1042'.'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'MS Sans Serif'
-              Font.Style = [fsBold]
-              ParentFont = False
-            end
-            object Label28: TLabel
-              Left = 93
-              Top = 79
-              Width = 24
-              Height = 13
-              Caption = #1043'.'#1042'.'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'MS Sans Serif'
-              Font.Style = [fsBold]
-              ParentFont = False
-            end
-            object Label31: TLabel
-              Left = 77
-              Top = 103
-              Width = 38
-              Height = 13
-              Caption = #1069#1083'.'#1101#1085'.'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'MS Sans Serif'
-              Font.Style = [fsBold]
-              ParentFont = False
-            end
-            object lbl1: TLabel
-              Left = 53
-              Top = 128
-              Width = 65
-              Height = 13
-              Caption = #1054#1090#1086#1087#1083#1077#1085#1080#1077
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'MS Sans Serif'
-              Font.Style = [fsBold]
-              ParentFont = False
-            end
-            object Label44: TLabel
-              Left = 140
-              Top = 36
-              Width = 42
-              Height = 13
-              Caption = #1055#1086#1082#1072#1079'.'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'MS Sans Serif'
-              Font.Style = [fsBold]
-              ParentFont = False
-            end
-            object Label26: TLabel
-              Left = 197
-              Top = 36
-              Width = 33
-              Height = 13
-              Caption = #1056#1072#1089#1093'.'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'MS Sans Serif'
-              Font.Style = [fsBold]
-              ParentFont = False
-            end
-            object cxdbchckbxKRAN1: TcxDBCheckBox
-              Left = 112
-              Top = 15
-              Caption = #1057#1080#1089#1090'.'#1086#1090#1086#1087'.'
-              DataBinding.DataField = 'KRAN1'
-              DataBinding.DataSource = Form_list_kart.DS_list_kart
-              Properties.NullStyle = nssUnchecked
-              Properties.ValueChecked = 1
-              Properties.ValueUnchecked = 0
+            object Panel6: TPanel
+              Left = 2
+              Top = 18
+              Width = 330
+              Height = 30
+              Align = alTop
               TabOrder = 0
+              object cxdbchckbxKRAN1: TcxDBCheckBox
+                Left = 128
+                Top = 3
+                Caption = #1057#1080#1089#1090'.'#1086#1090#1086#1087'.'
+                DataBinding.DataField = 'KRAN1'
+                DataBinding.DataSource = Form_list_kart.DS_list_kart
+                Properties.NullStyle = nssUnchecked
+                Properties.ValueChecked = 1
+                Properties.ValueUnchecked = 0
+                TabOrder = 0
+              end
+              object cxchckbx3: TcxCheckBox
+                Left = 211
+                Top = 3
+                Caption = #1050#1086#1088#1088'.'
+                TabOrder = 1
+              end
+              object cxdbchckbxKAN_SCH: TcxDBCheckBox
+                Left = 269
+                Top = 3
+                Caption = #1050#1072#1085'.'#1089#1095'.'
+                DataBinding.DataField = 'KAN_SCH'
+                DataBinding.DataSource = Form_list_kart.DS_list_kart
+                Properties.NullStyle = nssUnchecked
+                Properties.ValueChecked = 1
+                Properties.ValueUnchecked = 0
+                TabOrder = 2
+              end
             end
-            object cxchckbx3: TcxCheckBox
-              Left = 194
-              Top = 15
-              Caption = #1050#1086#1088#1088'.'
+            object cxGrid6: TcxGrid
+              Left = 2
+              Top = 48
+              Width = 330
+              Height = 142
+              Align = alClient
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'MS Sans Serif'
+              Font.Style = []
+              ParentFont = False
               TabOrder = 1
-            end
-            object cxdbchckbxKAN_SCH: TcxDBCheckBox
-              Left = 240
-              Top = 15
-              Caption = #1050#1072#1085'.'#1089#1095'.'
-              DataBinding.DataField = 'KAN_SCH'
-              DataBinding.DataSource = Form_list_kart.DS_list_kart
-              Properties.NullStyle = nssUnchecked
-              Properties.ValueChecked = 1
-              Properties.ValueUnchecked = 0
-              TabOrder = 2
-            end
-            object DBEdit_phw: TDBEdit
-              Left = 125
-              Top = 50
-              Width = 62
-              Height = 21
-              DataField = 'PHW'
-              DataSource = Form_list_kart.DS_list_kart
-              TabOrder = 3
-              OnKeyPress = DBEdit_phwKeyPress
-            end
-            object DBEdit_mhw2: TDBEdit
-              Left = 194
-              Top = 50
-              Width = 63
-              Height = 21
-              Hint = 
-                #1056#1072#1089#1093#1086#1076' '#1085#1072' '#1095#1077#1083#1086#1074#1077#1082#1072', '#1087#1088#1080' '#1085#1072#1095#1080#1089#1083#1077#1085#1080#1080' '#1087#1086' '#1085#1086#1088#1084#1072#1090#1080#1074#1091', '#1056#1072#1089#1093#1086#1076' '#1085#1072' '#1082#1074#1072#1088#1090 +
-                #1080#1088#1091', '#1087#1088#1080' '#1085#1072#1095#1080#1089#1083#1077#1085#1080#1080' '#1087#1086' '#1089#1095#1077#1090#1095#1080#1082#1091
-              DataField = 'MHW'
-              DataSource = Form_list_kart.DS_list_kart
-              Enabled = False
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 4
-              OnKeyPress = DBEdit_mhw2KeyPress
-            end
-            object DBEdit_pgw: TDBEdit
-              Left = 125
-              Top = 74
-              Width = 62
-              Height = 21
-              DataField = 'PGW'
-              DataSource = Form_list_kart.DS_list_kart
-              TabOrder = 5
-              OnKeyPress = DBEdit_pgwKeyPress
-            end
-            object DBEdit_mgw2: TDBEdit
-              Left = 194
-              Top = 74
-              Width = 63
-              Height = 21
-              Hint = 
-                #1056#1072#1089#1093#1086#1076' '#1085#1072' '#1095#1077#1083#1086#1074#1077#1082#1072', '#1087#1088#1080' '#1085#1072#1095#1080#1089#1083#1077#1085#1080#1080' '#1087#1086' '#1085#1086#1088#1084#1072#1090#1080#1074#1091', '#1056#1072#1089#1093#1086#1076' '#1085#1072' '#1082#1074#1072#1088#1090 +
-                #1080#1088#1091', '#1087#1088#1080' '#1085#1072#1095#1080#1089#1083#1077#1085#1080#1080' '#1087#1086' '#1089#1095#1077#1090#1095#1080#1082#1091
-              DataField = 'MGW'
-              DataSource = Form_list_kart.DS_list_kart
-              Enabled = False
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 6
-              OnKeyPress = DBEdit_mgw2KeyPress
-            end
-            object DBEdit_pel: TDBEdit
-              Left = 125
-              Top = 98
-              Width = 62
-              Height = 21
-              DataField = 'PEL'
-              DataSource = Form_list_kart.DS_list_kart
-              TabOrder = 7
-              OnKeyPress = DBEdit_pelKeyPress
-            end
-            object DBEdit_mel2: TDBEdit
-              Left = 194
-              Top = 98
-              Width = 63
-              Height = 21
-              Hint = 
-                #1056#1072#1089#1093#1086#1076' '#1085#1072' '#1095#1077#1083#1086#1074#1077#1082#1072', '#1087#1088#1080' '#1085#1072#1095#1080#1089#1083#1077#1085#1080#1080' '#1087#1086' '#1085#1086#1088#1084#1072#1090#1080#1074#1091', '#1056#1072#1089#1093#1086#1076' '#1085#1072' '#1082#1074#1072#1088#1090 +
-                #1080#1088#1091', '#1087#1088#1080' '#1085#1072#1095#1080#1089#1083#1077#1085#1080#1080' '#1087#1086' '#1089#1095#1077#1090#1095#1080#1082#1091
-              DataField = 'MEL'
-              DataSource = Form_list_kart.DS_list_kart
-              Enabled = False
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 8
-              OnKeyPress = DBEdit_mel2KeyPress
-            end
-            object dbedtPOT: TDBEdit
-              Left = 125
-              Top = 123
-              Width = 62
-              Height = 21
-              DataField = 'POT'
-              DataSource = Form_list_kart.DS_list_kart
-              TabOrder = 9
-              OnKeyPress = dbedtPOTKeyPress
-            end
-            object dbedtMOT: TDBEdit
-              Left = 194
-              Top = 123
-              Width = 63
-              Height = 21
-              Hint = 
-                #1056#1072#1089#1093#1086#1076' '#1085#1072' '#1095#1077#1083#1086#1074#1077#1082#1072', '#1087#1088#1080' '#1085#1072#1095#1080#1089#1083#1077#1085#1080#1080' '#1087#1086' '#1085#1086#1088#1084#1072#1090#1080#1074#1091', '#1056#1072#1089#1093#1086#1076' '#1085#1072' '#1082#1074#1072#1088#1090 +
-                #1080#1088#1091', '#1087#1088#1080' '#1085#1072#1095#1080#1089#1083#1077#1085#1080#1080' '#1087#1086' '#1089#1095#1077#1090#1095#1080#1082#1091
-              DataField = 'MOT'
-              DataSource = Form_list_kart.DS_list_kart
-              Enabled = False
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 10
-              OnKeyPress = dbedtMOTKeyPress
-            end
-            object BitBtn5: TBitBtn
-              Left = 295
-              Top = 74
-              Width = 25
-              Height = 25
-              Hint = #1044#1077#1081#1089#1090#1074#1080#1103' '#1087#1086' '#1087#1088#1080#1073#1086#1088#1072#1084' '#1091#1095#1077#1090#1072
-              Caption = #1044
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'MS Sans Serif'
-              Font.Style = [fsBold]
-              ParentFont = False
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 11
-              TabStop = False
-              OnClick = BitBtn5Click
-            end
-            object BitBtn4: TBitBtn
-              Left = 295
-              Top = 106
-              Width = 25
-              Height = 25
-              Hint = #1048#1089#1090#1086#1088#1080#1103' '#1087#1086#1082#1072#1079#1072#1085#1080#1081' '#1087#1086' '#1089#1095#1077#1090#1095#1080#1082#1072#1084
-              Caption = #1057
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'MS Sans Serif'
-              Font.Style = [fsBold]
-              ParentFont = False
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 12
-              TabStop = False
-              OnClick = BitBtn4Click
+              object cxGrid6DBTableView1: TcxGridDBTableView
+                OnDblClick = cxGrid6DBTableView1DblClick
+                OnKeyDown = cxGrid6DBTableView1KeyDown
+                Navigator.Buttons.CustomButtons = <>
+                Navigator.Visible = True
+                DataController.DataSource = DS_meter
+                DataController.Summary.DefaultGroupSummaryItems = <>
+                DataController.Summary.FooterSummaryItems = <>
+                DataController.Summary.SummaryGroups = <>
+                OptionsData.Deleting = False
+                OptionsData.DeletingConfirmation = False
+                OptionsData.Editing = False
+                OptionsData.Inserting = False
+                OptionsSelection.InvertSelect = False
+                OptionsView.ColumnAutoWidth = True
+                OptionsView.GroupByBox = False
+                object cxGrid6DBTableView1NM: TcxGridDBColumn
+                  Caption = #1059#1089#1083#1091#1075#1072
+                  DataBinding.FieldName = 'NM'
+                  Width = 86
+                end
+                object cxGrid6DBTableView1N1: TcxGridDBColumn
+                  Caption = #1055#1086#1082#1072#1079#1072#1085#1080#1077
+                  DataBinding.FieldName = 'N1'
+                  Width = 93
+                end
+                object cxGrid6DBTableView1DT1: TcxGridDBColumn
+                  Caption = #1053#1072#1095#1072#1083#1086
+                  DataBinding.FieldName = 'DT1'
+                  Width = 71
+                end
+                object cxGrid6DBTableView1DT2: TcxGridDBColumn
+                  Caption = #1054#1082#1086#1085#1095#1072#1085#1080#1077
+                  DataBinding.FieldName = 'DT2'
+                  Width = 78
+                end
+              end
+              object cxGrid6Level1: TcxGridLevel
+                GridView = cxGrid6DBTableView1
+              end
             end
           end
         end
@@ -3656,5 +3498,61 @@ object Form_kart: TForm_kart
       Font.Name = 'Tahoma'
       Font.Style = []
     end
+  end
+  object OD_meter: TOracleDataSet
+    SQL.Strings = (
+      'select t.id, u.nm, t.n1, t.dt1, t.dt2'#11
+      ''
+      'from scott.meter t'#11
+      ''
+      '         join scott.usl u on t.fk_usl = u.usl'#11
+      ''
+      '         join scott.params p on 1 = 1'#11
+      ''
+      'where t.fk_klsk_obj = :k_lsk_id'#11
+      ''
+      
+        '  and (t.dt2 >= last_day(to_date(p.period || '#39'01'#39', '#39'YYYYMMDD'#39')))' +
+        ' order by u.npp, t.dt1, t.dt2')
+    Optimize = False
+    Variables.Data = {
+      0400000001000000120000003A004B005F004C0053004B005F00490044000300
+      00000000000000000000}
+    QBEDefinition.QBEFieldDefs = {
+      0500000005000000040000004E004D0001000000000006000000440054003100
+      01000000000006000000440054003200010000000000040000004E0031000100
+      000000000400000049004400010000000000}
+    Master = Form_list_kart.OD_list_kart
+    MasterFields = 'k_lsk_id'
+    DetailFields = 'k_lsk_id'
+    RefreshOptions = [roAfterUpdate, roAllFields]
+    Session = DataModule1.OracleSession1
+    DesignActivation = True
+    Left = 248
+    Top = 368
+    object OD_meterID: TFloatField
+      FieldName = 'ID'
+      Required = True
+    end
+    object OD_meterNM: TStringField
+      FieldName = 'NM'
+      Size = 35
+    end
+    object OD_meterN1: TFloatField
+      FieldName = 'N1'
+    end
+    object OD_meterDT1: TDateTimeField
+      FieldName = 'DT1'
+      Required = True
+    end
+    object OD_meterDT2: TDateTimeField
+      FieldName = 'DT2'
+      Required = True
+    end
+  end
+  object DS_meter: TDataSource
+    DataSet = OD_meter
+    Left = 284
+    Top = 368
   end
 end

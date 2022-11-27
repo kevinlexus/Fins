@@ -1,16 +1,15 @@
 object Form_smpl_chk: TForm_smpl_chk
   Left = 448
   Top = 311
-  Width = 629
-  Height = 391
   Caption = #1057#1087#1080#1089#1086#1082' '#1083#1080#1094#1077#1074#1099#1093' '#1089#1095#1077#1090#1086#1074' '#1076#1083#1103' '#1087#1088#1086#1074#1077#1088#1082#1080
+  ClientHeight = 352
+  ClientWidth = 613
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  
   OldCreateOrder = False
   Position = poMainFormCenter
   OnClose = FormClose
@@ -32,9 +31,9 @@ object Form_smpl_chk: TForm_smpl_chk
       DataController.Summary.DefaultGroupSummaryItems = <>
       DataController.Summary.FooterSummaryItems = <>
       DataController.Summary.SummaryGroups = <>
-      OptionsSelection.InvertSelect = False
       OptionsSelection.MultiSelect = True
       OptionsSelection.CellMultiSelect = True
+      OptionsSelection.InvertSelect = False
       OptionsView.ColumnAutoWidth = True
       OptionsView.GroupByBox = False
       object cxGrid1DBTableView1Column1: TcxGridDBColumn
@@ -83,10 +82,10 @@ object Form_smpl_chk: TForm_smpl_chk
       'end;')
     Optimize = False
     Variables.Data = {
-      0300000002000000060000003A505F5641520300000004000000010000000000
-      00000F0000003A505245505F524546435552534F527400000000000000000000
-      00}
-    QBEDefinition.QBEFieldDefs = {0400000001000000030000004C534B010000000000}
+      04000000020000000C0000003A0050005F005600410052000300000004000000
+      01000000000000001E0000003A0050005200450050005F005200450046004300
+      5500520053004F005200740000000000000000000000}
+    QBEDefinition.QBEFieldDefs = {0500000001000000060000004C0053004B00010000000000}
     Session = DataModule1.OracleSession1
     AfterOpen = OD_dataAfterOpen
     Left = 8

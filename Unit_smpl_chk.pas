@@ -12,7 +12,8 @@ uses
   cxGridDBTableView, cxGrid, Menus, cxGridExportLink, cxGraphics,
   cxLookAndFeels, cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter,
   cxData, cxDataStorage, cxEdit, cxNavigator, cxDBData,
-  cxGridCustomTableView, cxGridTableView, cxGridCustomView;
+  cxGridCustomTableView, cxGridTableView, cxGridCustomView, dxSkinsCore,
+  dxSkinsDefaultPainters, dxDateRanges;
 
 type
   TForm_smpl_chk = class(TForm)

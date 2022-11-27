@@ -421,7 +421,7 @@ begin
 
   if FF('Form_sch_history', 0) = 1 then
   begin
-    Form_sch_history.setKlsk(Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger, '');
+    Form_sch_history.setKlsk(Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger, '', 0);
   end;
 
   // Обновить расход в панели правки расхода
@@ -599,7 +599,7 @@ begin
   Form_main.Refresh;
   state_arch2('');
   setAllowEdit_list;
-  Form_Main.cl_flt;
+//  Form_Main.cl_flt;
   //SetFilter;
 
   if (DataModule1.OraclePackage1.CallIntegerFunction('scott.init.is_allow_acc', ['drx5_админ_доступ_к_базе']) = 1) then
@@ -615,12 +615,6 @@ begin
   if not (OD_list_kart.State in [dsInactive, dsBrowse]) then
     OD_list_kart.Post;
 
-  Application.CreateForm(TForm_find_adr2, Form_find_adr2);
-  Form_find_adr2.SetAccess(1, 1, 1, 1);
-  if Form_find_adr2.ShowModal = mrOk then
-  begin
-    SetFilter(Form_Main.isClosed, Form_Main.isNotMain);
-  end;
 end;
 
 procedure TForm_list_kart.SetFilter(isShowClosed: Boolean; isShowNotMain: Boolean);
@@ -645,9 +639,9 @@ begin
       OD_list_kart.SetVariable('SUBSTEXP4', '');
     end;
 
-    if Form_Main.User_permissions_reu.Length>0 then
+    if Form_Main.User_permissions_reu.Length > 0 then
     begin
-      OD_list_kart.SetVariable('SUBSTEXP5', 'and k.reu in '+Form_Main.User_permissions_reu);
+      OD_list_kart.SetVariable('SUBSTEXP5', 'and k.reu in ' + Form_Main.User_permissions_reu);
     end;
 
     if isShowClosed then
@@ -1194,7 +1188,7 @@ begin
   begin
     Application.CreateForm(TForm_sch_history, Form_sch_history);
   end;
-  Form_sch_history.setKlsk(Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger, '');
+  Form_sch_history.setKlsk(Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger, '', 0);
   Form_sch_history.setTp(0);
 end;
 

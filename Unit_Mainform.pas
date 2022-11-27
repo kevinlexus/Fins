@@ -213,6 +213,7 @@ type
     N1606221: TMenuItem;
     N0107221: TMenuItem;
     QuestionMenuItem: TMenuItem;
+    N2711221: TMenuItem;
     procedure N5Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure N7Click(Sender: TObject);
@@ -507,7 +508,7 @@ uses
   Unit_spr_props, Unit_lk_acc, Unit_auto_chrg, Unit_service_cash, u_frmLoadPrivs,
   u_frmPenCorr, u_frmLoadFias, u_frmProject, Unit_spr_proc_pay, u_frmAccFlow,
   u_frmLoadKartExt, u_frmKartExt, Unit_changes_houses2, u_frmOLAP,
-  Unit_tarif_usl, Unit_spr_users;
+  Unit_tarif_usl, Unit_spr_users, Unit_find_adr2;
 
 {$R *.dfm}
 
@@ -662,7 +663,7 @@ end;
 procedure TForm_Main.free_OLE_Eq;
 begin
   if (Form_Main.have_eq = 1) and (VarIsNull(eqECR) <> true) then
-    eqECR:=null;
+    eqECR := null;
 end;
 
 procedure TForm_Main.free_OLE_KKM;
@@ -670,13 +671,13 @@ begin
   if (Form_Main.have_cash <> 0) then
   begin
     selECR.Disconnect;
-    selECR:=null;
+    selECR := null;
   end;
 
   if cash2_Ip <> '' then
   begin
     selECR2.Disconnect;
-    selECR2:=null;
+    selECR2 := null;
   end;
 end;
 
@@ -983,7 +984,15 @@ end;
 procedure TForm_Main.N51Click(Sender: TObject);
 begin
   if FF('Form_list_kart', 1) = 0 then
-    Application.CreateForm(TForm_list_kart, Form_list_kart);
+  begin
+    Application.CreateForm(TForm_find_adr2, Form_find_adr2);
+    Form_find_adr2.SetAccess(1, 1, 1, 1);
+    if Form_find_adr2.ShowModal = mrOk then
+    begin
+      Application.CreateForm(TForm_list_kart, Form_list_kart);
+      Form_list_kart.SetFilter(Form_Main.isClosed, Form_Main.isNotMain);
+    end;
+  end;
 end;
 
 procedure TForm_Main.N53Click(Sender: TObject);

@@ -343,25 +343,6 @@ type
     cxGridDBTableView3SUMMA: TcxGridDBColumn;
     cxDBTextEdit1: TcxDBTextEdit;
     cxGroupBox1: TcxGroupBox;
-    cxdbchckbxKRAN1: TcxDBCheckBox;
-    cxchckbx3: TcxCheckBox;
-    cxdbchckbxKAN_SCH: TcxDBCheckBox;
-    Label29: TLabel;
-    DBEdit_phw: TDBEdit;
-    DBEdit_mhw2: TDBEdit;
-    Label28: TLabel;
-    DBEdit_pgw: TDBEdit;
-    DBEdit_mgw2: TDBEdit;
-    Label31: TLabel;
-    DBEdit_pel: TDBEdit;
-    DBEdit_mel2: TDBEdit;
-    lbl1: TLabel;
-    dbedtPOT: TDBEdit;
-    dbedtMOT: TDBEdit;
-    BitBtn5: TBitBtn;
-    BitBtn4: TBitBtn;
-    Label44: TLabel;
-    Label26: TLabel;
     cxGroupBox2: TcxGroupBox;
     Label39: TLabel;
     cbb2KFG: TcxDBLookupComboBox;
@@ -370,6 +351,24 @@ type
     cxDBCheckBox2: TcxDBCheckBox;
     cxStyleRepository1: TcxStyleRepository;
     cxStyle2: TcxStyle;
+    Panel6: TPanel;
+    cxdbchckbxKRAN1: TcxDBCheckBox;
+    cxchckbx3: TcxCheckBox;
+    cxdbchckbxKAN_SCH: TcxDBCheckBox;
+    OD_meter: TOracleDataSet;
+    DS_meter: TDataSource;
+    OD_meterNM: TStringField;
+    OD_meterN1: TFloatField;
+    OD_meterDT1: TDateTimeField;
+    OD_meterDT2: TDateTimeField;
+    cxGrid6DBTableView1: TcxGridDBTableView;
+    cxGrid6Level1: TcxGridLevel;
+    cxGrid6: TcxGrid;
+    cxGrid6DBTableView1NM: TcxGridDBColumn;
+    cxGrid6DBTableView1N1: TcxGridDBColumn;
+    cxGrid6DBTableView1DT1: TcxGridDBColumn;
+    cxGrid6DBTableView1DT2: TcxGridDBColumn;
+    OD_meterID: TFloatField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure OD_kartAfterPost(DataSet: TDataSet);
     procedure OD_kart_prSTATUSValidate(Sender: TField);
@@ -409,7 +408,6 @@ type
     procedure mnu1Click(Sender: TObject);
     procedure mnu2Click(Sender: TObject);
     procedure BitBtn3Click(Sender: TObject);
-    procedure BitBtn4Click(Sender: TObject);
     procedure BitBtn6Click(Sender: TObject);
     procedure BitBtn5Click(Sender: TObject);
     procedure TabSheet4Show(Sender: TObject);
@@ -434,11 +432,15 @@ type
     procedure cxGridDBTableView2KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure cxtxtKw2Exit(Sender: TObject);
+    procedure cxGrid6DBTableView1DblClick(Sender: TObject);
+    procedure cxGrid6DBTableView1KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     tarif_, privs_, subsid_, changes_, itogn_: Double;
     size_, allow_dtv_, id_, action_, fk_tarif_: Integer;
     usl_: string;
     fld_state_: Integer;
+    procedure InvokeSchHistoryForm;
   public
     kart_pr_id_, updates_: Integer;
   end;
@@ -465,7 +467,7 @@ var
 begin
   // возможность корректировать показание и расход счетчиков отоплени€
   // (потом закрыть, когда будут счетчики в scott.meter
-  if admin_ = 1 then
+{  if admin_ = 1 then
   begin
     dbedtPOT.Enabled := true;
     dbedtMOT.Enabled := true;
@@ -479,11 +481,12 @@ begin
     dbedtPOT.ReadOnly := True;
     dbedtMOT.ReadOnly := True;
   end;
-
+ }
   //разрешить ли редактирование лицевого счета
   OD_kart_pr.Active := false;
   OD_charge.Active := false;
   OD_nabor.Active := false;
+  OD_meter.Active := false;
 
   //–азрешено ли редактировать проживающих (паспортный стол)
   if (admin_ <> 1) and (Form_list_kart.isAllowEdit_k_ = 0) and
@@ -619,6 +622,7 @@ begin
   OD_kart_pr.Active := true;
   OD_charge.Active := true;
   OD_nabor.Active := true;
+  OD_meter.Active := true;
 end;
 
 {procedure TForm_kart.calcFooter;
@@ -772,16 +776,16 @@ begin
     begin
       //DBEdit_mel.Enabled := true;
 //      DBEdit_mel.Text := '0';
-      DBEdit_pel.Enabled := true;
-      DBEdit_mel2.Text := '0';
+      //DBEdit_pel.Enabled := true;
+      //DBEdit_mel2.Text := '0';
       Form_list_kart.OD_list_kart.FieldByName('mel').asFloat := 0;
     end
     else if (psch_old = 1) and (psch_new = 0) then
     begin
       //      DBEdit_mel.Enabled := false;
       //      DBEdit_mel.Text := '0';
-      DBEdit_pel.Enabled := false;
-      DBEdit_mel2.Text := '0';
+      //DBEdit_pel.Enabled := false;
+      //DBEdit_mel2.Text := '0';
 
       Form_list_kart.OD_list_kart.FieldByName('mel').asFloat := 0;
     end;
@@ -861,6 +865,9 @@ begin
         Label47.Font.Color := clGreen;
       end;
     end;
+    OD_meter.Active := false;
+    OD_meter.Active := true;
+
   end;
 end;
 
@@ -1119,6 +1126,7 @@ begin
   OD_kart_pr.SetVariable('var_', 0);
   OD_kart_pr.Active := true;
   OD_nabor.Active := true;
+  OD_meter.Active := true;
   OD_houses.Active := true;
   OD_eolink.Active := true;
 
@@ -1439,36 +1447,22 @@ procedure TForm_kart.BitBtn3Click(Sender: TObject);
 begin
   if FF('Form_sch_history', 1) = 0 then
     Application.CreateForm(TForm_sch_history, Form_sch_history);
-  Form_sch_history.setKlsk(Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger, '');
+  Form_sch_history.setKlsk(Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger, '', 0);
   Form_sch_history.setTp(0);
-end;
-
-procedure TForm_kart.BitBtn4Click(Sender: TObject);
-begin 
-  // вызов формы по счетчикам
-  // сохранить форму карточки
-  if FF('Form_kart', 0) = 1 then
-    saveOrRollbackKart(1, True);
-
-  if FF('Form_sch_history', 1) = 0 then
-  begin
-    Application.CreateForm(TForm_sch_history, Form_sch_history);
-  end;
-  Form_sch_history.setKlsk(Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger, '');
-  Form_sch_history.setTp(0);
-  
 end;
 
 procedure TForm_kart.BitBtn6Click(Sender: TObject);
 begin
-  if FF('Form_reg_sch', 1) = 0 then
-    Application.CreateForm(TForm_reg_sch, Form_reg_sch);
+// не используетс€
+//  if FF('Form_reg_sch', 1) = 0 then
+//    Application.CreateForm(TForm_reg_sch, Form_reg_sch);
 end;
 
 procedure TForm_kart.BitBtn5Click(Sender: TObject);
 begin
-  if FF('Form_reg_sch', 1) = 0 then
-    Application.CreateForm(TForm_reg_sch, Form_reg_sch);
+// не используетс€
+//  if FF('Form_reg_sch', 1) = 0 then
+//    Application.CreateForm(TForm_reg_sch, Form_reg_sch);
 end;
 
 
@@ -1591,6 +1585,34 @@ begin
     Filter.Root.AddItem(LkupItem, foEqual, 8, '');
   TcxLookupComboBox(Sender).Properties.Grid.DataController.
     Filter.Root.AddItem(LkupItem, foEqual, 9, '');
+end;
+
+procedure TForm_kart.cxGrid6DBTableView1DblClick(Sender: TObject);
+begin
+  InvokeSchHistoryForm;
+end;
+
+procedure TForm_kart.cxGrid6DBTableView1KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  InvokeSchHistoryForm;
+end;
+
+procedure TForm_kart.InvokeSchHistoryForm;
+var
+  meterId: Integer;
+begin
+  // вызов формы по счетчикам
+  meterId := OD_meter.FieldByName('id').AsInteger;
+  // сохранить форму карточки
+  if FF('Form_kart', 0) = 1 then
+    saveOrRollbackKart(1, True);
+  if FF('Form_sch_history', 1) = 0 then
+  begin
+    Application.CreateForm(TForm_sch_history, Form_sch_history);
+  end;
+  Form_sch_history.setKlsk(Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger, '', meterId);
+  Form_sch_history.setTp(0);
 end;
 
 procedure TForm_kart.CheckBox2Click(Sender: TObject);

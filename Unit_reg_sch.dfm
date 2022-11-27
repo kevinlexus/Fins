@@ -18,6 +18,19 @@ object Form_reg_sch: TForm_reg_sch
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
+  object Label1: TLabel
+    Left = 216
+    Top = 112
+    Width = 179
+    Height = 13
+    Caption = #1069#1058#1040' '#1060#1054#1056#1052#1040' '#1053#1045' '#1048#1057#1055#1054#1051#1068#1047#1059#1045#1058#1057#1071'!'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
   object Panel2: TPanel
     Left = 0
     Top = 270
@@ -61,10 +74,10 @@ object Form_reg_sch: TForm_reg_sch
   end
   object cxGrid1: TcxGrid
     Left = 0
-    Top = 0
+    Top = 216
     Width = 629
-    Height = 270
-    Align = alClient
+    Height = 54
+    Align = alBottom
     TabOrder = 1
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>

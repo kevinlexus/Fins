@@ -31,11 +31,9 @@ type
     Panel1: TPanel;
     Panel2: TPanel;
     Panel3: TPanel;
-    OD_meter: TOracleDataSet;
     cxGrid2DBTableView1: TcxGridDBTableView;
     cxGrid2Level1: TcxGridLevel;
     cxGrid2: TcxGrid;
-    DS_meter: TDataSource;
     cxGrid2DBTableView1NM: TcxGridDBColumn;
     cxGrid2DBTableView1ID: TcxGridDBColumn;
     cxGrid2DBTableView1NAME: TcxGridDBColumn;
@@ -63,7 +61,6 @@ type
     cxLabel8: TcxLabel;
     cxGrid2DBTableView1ACT: TcxGridDBColumn;
     DS_data: TDataSource;
-    cxGrid2DBTableView1STATE: TcxGridDBColumn;
     Panel4: TPanel;
     Button1: TButton;
     Button3: TButton;
@@ -74,20 +71,6 @@ type
     cxLabel3: TcxLabel;
     Label1: TLabel;
     cxGrid2DBTableView1GIS_CONN_TP: TcxGridDBColumn;
-    OD_meterNM: TStringField;
-    OD_meterID: TFloatField;
-    OD_meterNPP: TFloatField;
-    OD_meterFK_USL: TStringField;
-    OD_meterK_LSK_ID: TFloatField;
-    OD_meterDT1: TDateTimeField;
-    OD_meterDT2: TDateTimeField;
-    OD_meterFK_KLSK_OBJ: TFloatField;
-    OD_meterN1: TFloatField;
-    OD_meterGIS_CONN_TP: TFloatField;
-    OD_meterACT: TFloatField;
-    OD_meterSTATE: TStringField;
-    OD_meterSTATE_CD: TStringField;
-    OD_meterCOUNTER: TStringField;
     DataSource1: TDataSource;
     cxGrid2DBTableView1GIS_CONN: TcxGridDBColumn;
     OD_eolink_meter: TOracleDataSet;
@@ -106,6 +89,22 @@ type
     cxStartVal: TcxMaskEdit;
     cxNewVal: TcxMaskEdit;
     cxVal: TcxMaskEdit;
+    OD_meter: TOracleDataSet;
+    OD_meterNM: TStringField;
+    OD_meterID: TFloatField;
+    OD_meterNPP: TFloatField;
+    OD_meterFK_USL: TStringField;
+    OD_meterK_LSK_ID: TFloatField;
+    OD_meterDT1: TDateTimeField;
+    OD_meterDT2: TDateTimeField;
+    OD_meterFK_KLSK_OBJ: TFloatField;
+    OD_meterN1: TFloatField;
+    OD_meterGIS_CONN_TP: TFloatField;
+    OD_meterACT: TFloatField;
+    OD_meterSTATE: TStringField;
+    OD_meterSTATE_CD: TStringField;
+    OD_meterCOUNTER: TStringField;
+    DS_meter: TDataSource;
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -116,15 +115,15 @@ type
     procedure setFlt(flt, val: Integer);
     procedure OD_meterAfterScroll(DataSet: TDataSet);
     procedure CheckBox1Click(Sender: TObject);
-    procedure setKlsk(klsk: Integer; lsk: string);
+    procedure setKlsk(klsk: Integer; lsk: string; meterId: Integer);
     procedure setTp(tp: Integer);
     procedure Button3Click(Sender: TObject);
     procedure cxGrid2DBTableView1GIS_CONNPropertiesPopup(Sender: TObject);
-    procedure cxGridDBTableView2DataControllerSummaryFooterSummaryItemsSummary(ASender: TcxDataSummaryItems; Arguments: TcxSummaryEventArguments; var OutArguments: TcxSummaryEventOutArguments);
     procedure cxLastValKeyPress(Sender: TObject; var Key: Char);
     procedure cxNewValPropertiesChange(Sender: TObject);
     procedure cxNewValKeyPress(Sender: TObject; var Key: Char);
     procedure cxValKeyPress(Sender: TObject; var Key: Char);
+    procedure cxGridDBTableView2DataControllerSummaryFooterSummaryItemsSummary(ASender: TcxDataSummaryItems; Arguments: TcxSummaryEventArguments; var OutArguments: TcxSummaryEventOutArguments);
   private    // фильтр счетчиков
     flt1: Integer;
     // фильтр показаний
@@ -173,11 +172,13 @@ end;
 
 // установить klsk
 
-procedure TForm_sch_history.setKlsk(klsk: Integer; lsk: string);
+procedure TForm_sch_history.setKlsk(klsk: Integer; lsk: string; meterId: Integer);
 begin
   OD_meter.Active := false;
   OD_meter.SetVariable('k_lsk_id', klsk);
   OD_meter.Active := true;
+  if meterId <> 0 then
+    OD_meter.SearchRecord('id', meterId, [srFromBeginning]);
   curKlsk := klsk;
   curLsk := lsk;
   if (Self.Visible) and (cxPageControl1.ActivePageIndex = 0) then
@@ -414,6 +415,42 @@ begin
   end;
 end;
 
+procedure TForm_sch_history.cxGridDBTableView2DataControllerSummaryFooterSummaryItemsSummary(ASender: TcxDataSummaryItems; Arguments: TcxSummaryEventArguments; var OutArguments: TcxSummaryEventOutArguments);
+var
+  AValue, ACurrValue: Variant;
+  I: Integer;
+  AView: TcxGridDBTableView;
+  AColumn, AColumnOper, AColumnPeriod: TcxGridDBColumn;
+  periodFormatted: string;
+begin
+  // найти только расход, за текущий период и суммировать его
+  ShowMessage('CHECK!');
+  AValue := 0;
+  AView := TcxGridDBDataController(ASender.DataController).GridView as TcxGridDBTableView;
+  AColumn := TcxGridDBColumn(AView.FindItemByName('cxGridDBTableView2N1'));
+
+  if TcxGridDBTableSummaryItem(Arguments.SummaryItem).Column = AColumn then
+  begin
+    AColumnOper := TcxGridDBColumn(AView.FindItemByName('cxGridDBTableView2OPER_NAME'));
+    AColumnPeriod := TcxGridDBColumn(AView.FindItemByName('cxGridDBTableView2PERIOD'));
+    periodFormatted := FormatDateTime('mm.yyyy', Form_main.cur_dt);
+    for I := 0 to AView.ViewData.RecordCount - 1 do
+    begin
+      try
+        if (AView.ViewData.Records[I].Values[AColumnOper.Index] = 'Расход прибора учета') and (AView.ViewData.Records[I].Values[AColumnPeriod.Index] = periodFormatted) then
+          AValue := AValue + AView.ViewData.Records[I].Values[AColumn.Index];
+      except
+        // происходит ошибка List index out of bound, не смог отловить
+        //ShowMessage('повалилось на '+IntToStr(I));
+      end;
+    end;
+    OutArguments.SummaryValue := AValue;
+    //OutArguments.SummaryValue := '11';
+    //OutArguments.Value := AValue;
+    OutArguments.Done := true;
+  end;
+end;
+
 {function TForm_sch_history.exit_ok: Integer;
 begin
   Result:=1;
@@ -527,40 +564,7 @@ begin
     OD_meter.Post;
   Application.CreateForm(TfrmMeteGisConnect, frmMeteGisConnect);
   if frmMeteGisConnect.ShowModal = mrOk then
-end;
 
-procedure TForm_sch_history.cxGridDBTableView2DataControllerSummaryFooterSummaryItemsSummary(ASender: TcxDataSummaryItems; Arguments: TcxSummaryEventArguments; var OutArguments: TcxSummaryEventOutArguments);
-var
-  AValue, ACurrValue: Variant;
-  I: Integer;
-  AView: TcxGridDBTableView;
-  AColumn, AColumnOper, AColumnPeriod: TcxGridDBColumn;
-  periodFormatted: string;
-begin
-  // найти только расход, за текущий период и суммировать его
-  AValue := 0;
-  AView := TcxGridDBDataController(ASender.DataController).GridView as TcxGridDBTableView;
-  AColumn := TcxGridDBColumn(AView.FindItemByName('cxGridDBTableView2N1'));
-
-  if TcxGridDBTableSummaryItem(Arguments.SummaryItem).Column = AColumn then
-  begin
-    AColumnOper := TcxGridDBColumn(AView.FindItemByName('cxGridDBTableView2OPER_NAME'));
-    AColumnPeriod := TcxGridDBColumn(AView.FindItemByName('cxGridDBTableView2PERIOD'));
-    periodFormatted := FormatDateTime('mm.yyyy', Form_main.cur_dt);
-    for I := 0 to AView.ViewData.RecordCount - 1 do
-    begin
-      try
-        if (AView.ViewData.Records[I].Values[AColumnOper.Index] = 'Расход прибора учета') and (AView.ViewData.Records[I].Values[AColumnPeriod.Index] = periodFormatted) then
-          AValue := AValue + AView.ViewData.Records[I].Values[AColumn.Index];
-      except
-        // происходит ошибка List index out of bound, не смог отловить
-        //ShowMessage('повалилось на '+IntToStr(I));
-      end;
-    end;
-    OutArguments.SummaryValue := AValue;
-    //OutArguments.Value := AValue;
-    OutArguments.Done := true;
-  end;
 end;
 
 procedure TForm_sch_history.cxLastValKeyPress(Sender: TObject; var Key: Char);

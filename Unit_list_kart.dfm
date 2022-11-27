@@ -638,6 +638,10 @@ object Form_list_kart: TForm_list_kart
       object cxTabSheet2: TcxTabSheet
         Caption = #1047#1072#1076#1086#1083#1078#1085#1080#1082#1080
         ImageIndex = 1
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object cxGrid1: TcxGrid
           Left = 0
           Top = 0

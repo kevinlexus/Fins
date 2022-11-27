@@ -1219,7 +1219,7 @@ begin
     begin
       Application.CreateForm(TForm_sch_history, Form_sch_history);
     end;
-    Form_sch_history.setKlsk(klsk, cxLsk.Text);
+    Form_sch_history.setKlsk(klsk, cxLsk.Text, 0);
     Form_sch_history.setTp(1);
   end
   else
