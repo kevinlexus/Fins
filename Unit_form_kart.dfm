@@ -145,25 +145,25 @@ object Form_kart: TForm_kart
                 OptionsSelection.InvertSelect = False
                 OptionsView.ColumnAutoWidth = True
                 OptionsView.GroupByBox = False
+                object cxGrid6DBTableView1NPP: TcxGridDBColumn
+                  Caption = #8470
+                  DataBinding.FieldName = 'NPP'
+                  Width = 29
+                end
                 object cxGrid6DBTableView1NM: TcxGridDBColumn
                   Caption = #1059#1089#1083#1091#1075#1072
                   DataBinding.FieldName = 'NM'
-                  Width = 86
+                  Width = 101
                 end
                 object cxGrid6DBTableView1N1: TcxGridDBColumn
                   Caption = #1055#1086#1082#1072#1079#1072#1085#1080#1077
                   DataBinding.FieldName = 'N1'
-                  Width = 93
+                  Width = 111
                 end
-                object cxGrid6DBTableView1DT1: TcxGridDBColumn
-                  Caption = #1053#1072#1095#1072#1083#1086
-                  DataBinding.FieldName = 'DT1'
-                  Width = 71
-                end
-                object cxGrid6DBTableView1DT2: TcxGridDBColumn
-                  Caption = #1054#1082#1086#1085#1095#1072#1085#1080#1077
-                  DataBinding.FieldName = 'DT2'
-                  Width = 78
+                object cxGrid6DBTableView1VOL: TcxGridDBColumn
+                  Caption = #1056#1072#1089#1093#1086#1076
+                  DataBinding.FieldName = 'VOL'
+                  Width = 87
                 end
               end
               object cxGrid6Level1: TcxGridLevel
@@ -3501,27 +3501,42 @@ object Form_kart: TForm_kart
   end
   object OD_meter: TOracleDataSet
     SQL.Strings = (
-      'select t.id, u.nm, t.n1, t.dt1, t.dt2'#11
-      ''
-      'from scott.meter t'#11
-      ''
-      '         join scott.usl u on t.fk_usl = u.usl'#11
-      ''
-      '         join scott.params p on 1 = 1'#11
-      ''
-      'where t.fk_klsk_obj = :k_lsk_id'#11
-      ''
+      'select t.id, u.npp, u.nm, '#11
       
-        '  and (t.dt2 >= last_day(to_date(p.period || '#39'01'#39', '#39'YYYYMMDD'#39')))' +
-        ' order by u.npp, t.dt1, t.dt2')
+        '       case when :period is null then t.n1 end as n1, -- '#1085#1077' '#1087#1088#1080#1076 +
+        #1091#1084#1072#1083', '#1082#1072#1082' '#1074' '#1072#1088#1093#1080#1074#1077' '#1087#1086#1082#1072#1079#1099#1074#1072#1090#1100' '#1087#1086#1082#1072#1079#1072#1085#1080#1103' '#1089#1095'. '#11
+      '       sum(x.n1) as vol'#11
+      'from scott.meter t'#11
+      '         join scott.usl u on t.fk_usl = u.usl'#11
+      '         join scott.params p on 1 = 1'#11
+      '         join scott.u_list s on s.cd = '#39'ins_vol_sch'#39#11
+      
+        '         left join scott.t_objxpar x on t.k_lsk_id = x.fk_k_lsk ' +
+        'and x.fk_list = s.id and x.mg = coalesce(:period,p.period)'#11
+      'where t.fk_klsk_obj = :k_lsk_id'#11
+      
+        '  and (t.dt2 >= last_day(to_date(coalesce(:period,p.period) || '#39 +
+        '01'#39', '#39'YYYYMMDD'#39')) or  -- '#1083#1080#1073#1086' '#1089#1095'. '#1076#1072#1083#1100#1096#1077' '#1089#1091#1097#1077#1089#1090#1074#1091#1077#1090', '#1083#1080#1073#1086' '#1079#1072#1074#1077#1088#1096 +
+        #1072#1077#1090' '#1088#1072#1073#1086#1090#1091' '#1074' '#1074#1099#1073#1088#1072#1085#1085#1086#1084' '#1087#1077#1088#1080#1086#1076#1077#11
+      '      t.dt2 between'#11
+      
+        '      to_date(coalesce(:period,p.period) || '#39'01'#39', '#39'YYYYMMDD'#39') an' +
+        'd'#11
+      
+        '      last_day(to_date(coalesce(:period,p.period) || '#39'01'#39', '#39'YYYY' +
+        'MMDD'#39')))'#11
+      'group by t.id, u.npp, u.nm, t.n1'#11
+      'order by u.npp'#11
+      '')
     Optimize = False
     Variables.Data = {
-      0400000001000000120000003A004B005F004C0053004B005F00490044000300
-      00000000000000000000}
+      0400000002000000120000003A004B005F004C0053004B005F00490044000300
+      000000000000000000000E0000003A0050004500520049004F00440005000000
+      0000000000000000}
     QBEDefinition.QBEFieldDefs = {
-      0500000005000000040000004E004D0001000000000006000000440054003100
-      01000000000006000000440054003200010000000000040000004E0031000100
-      000000000400000049004400010000000000}
+      0500000005000000040000004E004D00010000000000040000004E0031000100
+      000000000400000049004400010000000000060000004E005000500001000000
+      00000600000056004F004C00010000000000}
     Master = Form_list_kart.OD_list_kart
     MasterFields = 'k_lsk_id'
     DetailFields = 'k_lsk_id'
@@ -3534,6 +3549,9 @@ object Form_kart: TForm_kart
       FieldName = 'ID'
       Required = True
     end
+    object OD_meterNPP: TFloatField
+      FieldName = 'NPP'
+    end
     object OD_meterNM: TStringField
       FieldName = 'NM'
       Size = 35
@@ -3541,13 +3559,8 @@ object Form_kart: TForm_kart
     object OD_meterN1: TFloatField
       FieldName = 'N1'
     end
-    object OD_meterDT1: TDateTimeField
-      FieldName = 'DT1'
-      Required = True
-    end
-    object OD_meterDT2: TDateTimeField
-      FieldName = 'DT2'
-      Required = True
+    object OD_meterVOL: TFloatField
+      FieldName = 'VOL'
     end
   end
   object DS_meter: TDataSource

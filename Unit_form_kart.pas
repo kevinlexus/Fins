@@ -4,24 +4,12 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Mask, DBCtrls, DB, OracleData, Oracle, 
- ExtCtrls, Grids, Buttons, 
-  ComCtrls, Utils, 
-   frxClass, frxDBSet,
-Menus, cxGraphics,
-  cxControls,
-  dxStatusBar,
-
-  cxContainer,
-  cxEdit, cxCheckBox, cxDBEdit, cxClasses, cxPropertiesStore, cxTextEdit,
-
-  cxNavigator, cxGridCustomTableView,
+  Dialogs, StdCtrls, Mask, DBCtrls, DB, OracleData, Oracle, ExtCtrls, Grids,
+  Buttons, ComCtrls, Utils, frxClass, frxDBSet, Menus, cxGraphics, cxControls,
+  dxStatusBar, cxContainer, cxEdit, cxCheckBox, cxDBEdit, cxClasses,
+  cxPropertiesStore, cxTextEdit, cxNavigator, cxGridCustomTableView,
   cxGridTableView, cxGridDBTableView, cxGridLevel, cxGridCustomView, cxGrid,
-  cxDBNavigator,
-
-  cxCustomData,
-  cxFilter, cxDBData, cxDBLookupComboBox,
-
+  cxDBNavigator, cxCustomData, cxFilter, cxDBData, cxDBLookupComboBox,
   cxMaskEdit, cxLookAndFeels, cxLookAndFeelPainters, cxStyles, cxData,
   cxDataStorage, cxCalendar, dxBarBuiltInMenu, cxPC, cxDropDownEdit,
   cxLookupEdit, cxDBLookupEdit, dxSkinsCore, dxSkinsDefaultPainters,
@@ -357,18 +345,18 @@ type
     cxdbchckbxKAN_SCH: TcxDBCheckBox;
     OD_meter: TOracleDataSet;
     DS_meter: TDataSource;
-    OD_meterNM: TStringField;
-    OD_meterN1: TFloatField;
-    OD_meterDT1: TDateTimeField;
-    OD_meterDT2: TDateTimeField;
     cxGrid6DBTableView1: TcxGridDBTableView;
     cxGrid6Level1: TcxGridLevel;
     cxGrid6: TcxGrid;
     cxGrid6DBTableView1NM: TcxGridDBColumn;
     cxGrid6DBTableView1N1: TcxGridDBColumn;
-    cxGrid6DBTableView1DT1: TcxGridDBColumn;
-    cxGrid6DBTableView1DT2: TcxGridDBColumn;
     OD_meterID: TFloatField;
+    OD_meterNPP: TFloatField;
+    OD_meterNM: TStringField;
+    OD_meterN1: TFloatField;
+    OD_meterVOL: TFloatField;
+    cxGrid6DBTableView1NPP: TcxGridDBColumn;
+    cxGrid6DBTableView1VOL: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure OD_kartAfterPost(DataSet: TDataSet);
     procedure OD_kart_prSTATUSValidate(Sender: TField);
@@ -414,27 +402,21 @@ type
     procedure TabSheet4Hide(Sender: TObject);
     procedure dbedtPOTKeyPress(Sender: TObject; var Key: Char);
     procedure dbedtMOTKeyPress(Sender: TObject; var Key: Char);
-    procedure cxGrid1DBTableView1CustomDrawCell(
-      Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;
-      AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
+    procedure cxGrid1DBTableView1CustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
     procedure chk1Click(Sender: TObject);
     procedure btn1Click(Sender: TObject);
     procedure N1Click(Sender: TObject);
-    procedure cxGrid2DBTableView1PSCH_NAMEPropertiesCloseUp(
-      Sender: TObject);
-    procedure cxGrid2DBTableView1PSCH_NAMEPropertiesInitPopup(
-      Sender: TObject);
+    procedure cxGrid2DBTableView1PSCH_NAMEPropertiesCloseUp(Sender: TObject);
+    procedure cxGrid2DBTableView1PSCH_NAMEPropertiesInitPopup(Sender: TObject);
     procedure check_kart_correct;
     procedure CheckBox2Click(Sender: TObject);
     procedure chk2Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure cxGridDBTableView2DblClick(Sender: TObject);
-    procedure cxGridDBTableView2KeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
+    procedure cxGridDBTableView2KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure cxtxtKw2Exit(Sender: TObject);
     procedure cxGrid6DBTableView1DblClick(Sender: TObject);
-    procedure cxGrid6DBTableView1KeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
+    procedure cxGrid6DBTableView1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
     tarif_, privs_, subsid_, changes_, itogn_: Double;
     size_, allow_dtv_, id_, action_, fk_tarif_: Integer;
@@ -448,12 +430,12 @@ type
 var
   Form_kart: TForm_kart;
 
+
 implementation
 
 uses
-  Unit_form_kart_pr, Unit_Mainform, Unit_list_kart,
-  Unit_new_lsk, DM_module1, Unit_chargepay, Unit_log_actions,
-  Unit_set_krt_psch, Unit_change_house_nabor2,
+  Unit_form_kart_pr, Unit_Mainform, Unit_list_kart, Unit_new_lsk, DM_module1,
+  Unit_chargepay, Unit_log_actions, Unit_set_krt_psch, Unit_change_house_nabor2,
   Unit_sch_history, Unit_reg_sch;
 
 type
@@ -486,11 +468,9 @@ begin
   OD_kart_pr.Active := false;
   OD_charge.Active := false;
   OD_nabor.Active := false;
-  OD_meter.Active := false;
-
+  //OD_meter.Active := false;
   //Разрешено ли редактировать проживающих (паспортный стол)
-  if (admin_ <> 1) and (Form_list_kart.isAllowEdit_k_ = 0) and
-    (Form_main.arch_mg_ = '') then
+  if (admin_ <> 1) and (Form_list_kart.isAllowEdit_k_ = 0) and (Form_main.arch_mg_ = '') then
   begin
     OD_kart_pr.readonly := true;
     DBEdit2.Enabled := false;
@@ -535,7 +515,6 @@ begin
   //TabSheet10.Enabled:=false;
   TabSheet11.Enabled := false;
 
-
   cbb1KUL.Enabled := false;
 
   cbb12HOUSE_ID.Enabled := false;
@@ -552,8 +531,7 @@ begin
 
   DBEdit16.Enabled := false;
 
-  if (admin_ <> 1) and (Form_list_kart.isAllowEdit_ = 0) and (Form_main.arch_mg_
-    = '') then
+  if (admin_ <> 1) and (Form_list_kart.isAllowEdit_ = 0) and (Form_main.arch_mg_ = '') then
   begin
     Caption := 'Карточка лиц.счета';
   end
@@ -622,7 +600,7 @@ begin
   OD_kart_pr.Active := true;
   OD_charge.Active := true;
   OD_nabor.Active := true;
-  OD_meter.Active := true;
+  //OD_meter.Active := true;
 end;
 
 {procedure TForm_kart.calcFooter;
@@ -664,8 +642,7 @@ begin
       Form_kart.OD_states_sch.Cancel;
     if not (Form_list_kart.OD_list_kart.State in [dsBrowse]) then
       Form_list_kart.OD_list_kart.Cancel;
-    DataModule1.OracleSession1.CancelUpdates([Form_list_kart.OD_list_kart,
-      OD_nabor, OD_states_sch]);
+    DataModule1.OracleSession1.CancelUpdates([Form_list_kart.OD_list_kart, OD_nabor, OD_states_sch]);
     // отмена изменений, сделанных в пакетах
     DataModule1.OracleSession1.Rollback;
   end
@@ -681,32 +658,22 @@ begin
     if not (Form_list_kart.OD_list_kart.State in [dsBrowse]) then
       Form_list_kart.OD_list_kart.Post;
 
-    if (Form_list_kart.OD_list_kart.UpdateStatus in [usInserted, usModified,
-      usDeleted])
-      or (OD_nabor.UpdatesPending = true)
-      or (Form_list_kart.OD_kart_detail.UpdatesPending = true)
-      or (OD_states_sch.UpdatesPending = true) or (updates_ = 1) then
+    if (Form_list_kart.OD_list_kart.UpdateStatus in [usInserted, usModified, usDeleted]) or (OD_nabor.UpdatesPending = true) or (Form_list_kart.OD_kart_detail.UpdatesPending = true) or (OD_states_sch.UpdatesPending = true) or (updates_ = 1) then
     begin
       if ask_ = 0 then
       begin
         // сохранить без вопросов
-        DataModule1.OracleSession1.ApplyUpdates([Form_list_kart.OD_list_kart,
-          Form_list_kart.OD_kart_detail,
-            OD_nabor, OD_states_sch], true);
+        DataModule1.OracleSession1.ApplyUpdates([Form_list_kart.OD_list_kart, Form_list_kart.OD_kart_detail, OD_nabor, OD_states_sch], true);
         check_kart_correct;
         // подтверждение изменений, сделанных в пакетах
         DataModule1.OracleSession1.Commit;
       end
       else if (ask_ = 1) then
       begin
-        if (Msg3('Сохранить измения карточки?', 'Подтверждение', MB_ICONQUESTION
-          +
-          MB_YESNO) = IDYES) then
+        if (Msg3('Сохранить измения карточки?', 'Подтверждение', MB_ICONQUESTION + MB_YESNO) = IDYES) then
         begin
           // сохранить с вопросом
-          DataModule1.OracleSession1.ApplyUpdates([Form_list_kart.OD_list_kart,
-            Form_list_kart.OD_kart_detail,
-              OD_nabor, OD_states_sch], true);
+          DataModule1.OracleSession1.ApplyUpdates([Form_list_kart.OD_list_kart, Form_list_kart.OD_kart_detail, OD_nabor, OD_states_sch], true);
           check_kart_correct;
           //для подтверждения изменений, сделанных в пакетах
           DataModule1.OracleSession1.Commit;
@@ -722,9 +689,7 @@ begin
             Form_list_kart.OD_list_kart.Cancel;
           if not (Form_list_kart.OD_kart_detail.State in [dsBrowse]) then
             Form_list_kart.OD_kart_detail.Cancel;
-          DataModule1.OracleSession1.CancelUpdates([Form_list_kart.OD_list_kart,
-            Form_list_kart.OD_kart_detail,
-              OD_nabor, OD_states_sch]);
+          DataModule1.OracleSession1.CancelUpdates([Form_list_kart.OD_list_kart, Form_list_kart.OD_kart_detail, OD_nabor, OD_states_sch]);
           // отмена изменений, сделанных в пакетах
           DataModule1.OracleSession1.Rollback;
         end;
@@ -739,7 +704,6 @@ begin
   //обновить поля, отражающие статусы л/c
   refresh_kart;
   //  calcFooter;
-
     //сброс признака наличия обновления
   updates_ := 0;
 
@@ -754,8 +718,7 @@ begin
   dxStatusBar1.Panels[0].Text := '';
   if getDoublePar(Form_main.paramList, 'SHOW_ALERT1') = 1 then
   begin
-    err_ := DataModule1.OraclePackage1.CallStringFunction('scott.UTILS.tst_krt',
-      [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, 1]);
+    err_ := DataModule1.OraclePackage1.CallStringFunction('scott.UTILS.tst_krt', [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, 1]);
     if err_ <> '' then
     begin
       dxStatusBar1.Panels[0].Text := err_;
@@ -804,8 +767,7 @@ begin
     with OD_vvod do
     begin
       Active := false;
-      SetVariable('house_id',
-        Form_list_kart.OD_list_kart.FieldByName('house_id').AsInteger);
+      SetVariable('house_id', Form_list_kart.OD_list_kart.FieldByName('house_id').AsInteger);
       Active := true;
     end;
 
@@ -823,50 +785,37 @@ begin
         Label55.ShowHint := false;
       end;
 
-      if ((OD_list_kart.FieldByName('psch').AsInteger = 8)
-        or (OD_list_kart.FieldByName('psch').AsInteger = 9))
-        and (OD_list_kart.FieldByName('lsk_tp_cd').AsString = 'LSK_TP_MAIN')
-          then
+      if ((OD_list_kart.FieldByName('psch').AsInteger = 8) or (OD_list_kart.FieldByName('psch').AsInteger = 9)) and (OD_list_kart.FieldByName('lsk_tp_cd').AsString = 'LSK_TP_MAIN') then
       begin
         Label47.Caption := 'Закрыт';
         Label47.Font.Color := clRed;
       end
-      else if ((OD_list_kart.FieldByName('psch').AsInteger = 8)
-        or (OD_list_kart.FieldByName('psch').AsInteger = 9))
-        and (OD_list_kart.FieldByName('lsk_tp_cd').AsString = 'LSK_TP_ADDIT')
-          then
+      else if ((OD_list_kart.FieldByName('psch').AsInteger = 8) or (OD_list_kart.FieldByName('psch').AsInteger = 9)) and (OD_list_kart.FieldByName('lsk_tp_cd').AsString = 'LSK_TP_ADDIT') then
       begin
         Label47.Caption := 'Доп.закрыт';
         Label47.Font.Color := clRed;
       end
-      else if ((OD_list_kart.FieldByName('psch').AsInteger = 8)
-        or (OD_list_kart.FieldByName('psch').AsInteger = 9))
-        and (OD_list_kart.FieldByName('lsk_tp_cd').AsString = 'LSK_TP_RSO') then
+      else if ((OD_list_kart.FieldByName('psch').AsInteger = 8) or (OD_list_kart.FieldByName('psch').AsInteger = 9)) and (OD_list_kart.FieldByName('lsk_tp_cd').AsString = 'LSK_TP_RSO') then
       begin
         Label47.Caption := 'РСО.закрыт';
         Label47.Font.Color := clRed;
       end
-      else if (OD_list_kart.FieldByName('lsk_tp_cd').AsString = 'LSK_TP_MAIN')
-        then
+      else if (OD_list_kart.FieldByName('lsk_tp_cd').AsString = 'LSK_TP_MAIN') then
       begin
         Label47.Caption := 'Основной';
         Label47.Font.Color := clBlack;
       end
-      else if (OD_list_kart.FieldByName('lsk_tp_cd').AsString = 'LSK_TP_ADDIT')
-        then
+      else if (OD_list_kart.FieldByName('lsk_tp_cd').AsString = 'LSK_TP_ADDIT') then
       begin
         Label47.Caption := 'Дополнит.';
         Label47.Font.Color := clGreen;
       end
-      else if (OD_list_kart.FieldByName('lsk_tp_cd').AsString = 'LSK_TP_RSO')
-        then
+      else if (OD_list_kart.FieldByName('lsk_tp_cd').AsString = 'LSK_TP_RSO') then
       begin
         Label47.Caption := 'РСО';
         Label47.Font.Color := clGreen;
       end;
     end;
-    OD_meter.Active := false;
-    OD_meter.Active := true;
 
   end;
 end;
@@ -886,19 +835,12 @@ begin
     if getDoublePar(Form_main.paramList, 'JAVA_CHARGE') = 1 then
     begin
       // в Java
-      l_dummy :=
-        DataModule1.OraclePackage1.CallFloatFunction('SCOTT.P_JAVA.GEN',
-        [0, null, null, null,
-        Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger,
-          null, Form_Main.cur_dt, 0, Form_main.javaServer]);
+      l_dummy := DataModule1.OraclePackage1.CallFloatFunction('SCOTT.P_JAVA.GEN', [0, null, null, null, Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger, null, Form_Main.cur_dt, 0, Form_main.javaServer]);
     end
     else
     begin
       // старый вариант (ТСЖ)
-      cnt_ :=
-        DataModule1.OraclePackage1.CallIntegerFunction('scott.C_CHARGES.gen_charges',
-        [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, null, null,
-        null, 1, 0]);
+      cnt_ := DataModule1.OraclePackage1.CallIntegerFunction('scott.C_CHARGES.gen_charges', [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString, null, null, null, 1, 0]);
     end;
 
     Form_list_kart.OD_list_kart.RefreshRecord;
@@ -906,8 +848,10 @@ begin
     //    calcFooter;
   end;
   OD_states_sch.Refresh;
-//  if FF('Form_det_chrg', 0) = 1 then
-//    Form_det_chrg.recalc;
+
+  OD_meter.Active := false;
+  OD_meter.Active := true;
+
   LockWindowUpdate(0);
 end;
 
@@ -949,7 +893,7 @@ end;
 
 procedure TForm_kart.OD_kart_prSTATUSValidate(Sender: TField);
 begin
-  if sender.Text = '' then
+  if Sender.Text = '' then
     raise EPasswordInvalid.Create('Указанный статус не существует!');
 end;
 
@@ -968,9 +912,7 @@ begin
   begin
     if (Form_main.arch_mg_ <> '') and (mgold_ = '') then
     begin // из текущего в архив
-      change_alias(OD_kart_pr, 'scott.c_kart_pr',
-        '(select * from scott.a_kart_pr2 where ''' + Form_main.arch_mg_ +
-        ''' between mgFrom and mgTo)');
+      change_alias(OD_kart_pr, 'scott.c_kart_pr', '(select * from scott.a_kart_pr2 where ''' + Form_main.arch_mg_ + ''' between mgFrom and mgTo)');
       //      change_alias(OD_kart_pr, 'scott.c_lg_docs',
       //        '(select * from scott.a_lg_docs where mg=''' + Form_main.arch_mg_ +
       //        ''')');
@@ -978,51 +920,37 @@ begin
       //        '(select * from scott.a_lg_pr where mg=''' + Form_main.arch_mg_ +
       //        ''')');
 
-      change_alias(OD_vvod, 'scott.c_vvod',
-        '(select * from scott.a_vvod where mg=''' + Form_main.arch_mg_ + ''')');
-      change_alias(OD_charge, 'scott.c_vvod',
-        '(select * from scott.a_vvod where mg=''' + Form_main.arch_mg_ + ''')');
-      change_alias(OD_charge, 'scott.c_charge',
-        '(select * from scott.a_charge2 where ''' + Form_main.arch_mg_ +
-        ''' between mgfrom and mgto)');
-      change_alias(OD_charge, 'scott.c_change',
-        '(select * from scott.a_change where mg=''' + Form_main.arch_mg_ +
-        ''')');
-      change_alias(OD_charge, 'scott.nabor',
-        '(select * from scott.a_nabor2 where ''' + Form_main.arch_mg_ +
-        ''' between mgfrom and mgto)');
+      change_alias(OD_vvod, 'scott.c_vvod', '(select * from scott.a_vvod where mg=''' + Form_main.arch_mg_ + ''')');
+      change_alias(OD_charge, 'scott.c_vvod', '(select * from scott.a_vvod where mg=''' + Form_main.arch_mg_ + ''')');
+      change_alias(OD_charge, 'scott.c_charge', '(select * from scott.a_charge2 where ''' + Form_main.arch_mg_ + ''' between mgfrom and mgto)');
+      change_alias(OD_charge, 'scott.c_change', '(select * from scott.a_change where mg=''' + Form_main.arch_mg_ + ''')');
+      change_alias(OD_charge, 'scott.nabor', '(select * from scott.a_nabor2 where ''' + Form_main.arch_mg_ + ''' between mgfrom and mgto)');
+      OD_meter.SetVariable('period', Form_main.arch_mg_);
+      OD_meter.Active := false;
+      OD_meter.Active := true;
       cxGrid2.Visible := false;
     end
     else if (Form_main.arch_mg_ = '') and (mgold_ <> '') then
     begin // из архива в текущее
-      change_alias(OD_kart_pr, '(select * from scott.a_kart_pr2 where ''' +
-        mgold_ +
-        ''' between mgFrom and mgTo)', 'scott.c_kart_pr');
+      change_alias(OD_kart_pr, '(select * from scott.a_kart_pr2 where ''' + mgold_ + ''' between mgFrom and mgTo)', 'scott.c_kart_pr');
       //      change_alias(OD_kart_pr, '(select * from scott.a_lg_docs where mg=''' +
       //        mgold_ + ''')', 'scott.c_lg_docs');
       //      change_alias(OD_kart_pr, '(select * from scott.a_lg_pr where mg=''' +
       //        mgold_ + ''')', 'scott.c_lg_pr');
 
-      change_alias(OD_vvod, '(select * from scott.a_vvod where mg=''' + mgold_ +
-        ''')', 'scott.c_vvod');
-      change_alias(OD_charge, '(select * from scott.a_vvod where mg=''' + mgold_
-        + ''')', 'scott.c_vvod');
-      change_alias(OD_charge, '(select * from scott.a_charge2 where ''' + mgold_
-        + ''' between mgfrom and mgto)', 'scott.c_charge');
-      change_alias(OD_charge, '(select * from scott.a_change where mg=''' +
-        mgold_ + ''')', 'scott.c_change');
-      change_alias(OD_charge, '(select * from scott.a_nabor2 where ''' + mgold_
-        +
-        ''' between mgfrom and mgto)', 'scott.nabor');
+      change_alias(OD_vvod, '(select * from scott.a_vvod where mg=''' + mgold_ + ''')', 'scott.c_vvod');
+      change_alias(OD_charge, '(select * from scott.a_vvod where mg=''' + mgold_ + ''')', 'scott.c_vvod');
+      change_alias(OD_charge, '(select * from scott.a_charge2 where ''' + mgold_ + ''' between mgfrom and mgto)', 'scott.c_charge');
+      change_alias(OD_charge, '(select * from scott.a_change where mg=''' + mgold_ + ''')', 'scott.c_change');
+      change_alias(OD_charge, '(select * from scott.a_nabor2 where ''' + mgold_ + ''' between mgfrom and mgto)', 'scott.nabor');
       cxGrid2.Visible := true;
+      OD_meter.SetVariable('period', null);
+      OD_meter.Active := false;
+      OD_meter.Active := true;
     end
     else if (Form_main.arch_mg_ <> '') and (mgold_ <> '') then
     begin // из архива в архив
-      change_alias(OD_kart_pr, '(select * from scott.a_kart_pr2 where ''' +
-        mgold_ +
-        ''' between mgFrom and mgTo)', '(select * from scott.a_kart_pr2 where '''
-        + Form_main.arch_mg_ +
-        ''' between mgFrom and mgTo)');
+      change_alias(OD_kart_pr, '(select * from scott.a_kart_pr2 where ''' + mgold_ + ''' between mgFrom and mgTo)', '(select * from scott.a_kart_pr2 where ''' + Form_main.arch_mg_ + ''' between mgFrom and mgTo)');
       //      change_alias(OD_kart_pr, '(select * from scott.a_lg_docs where mg=''' +
       //        mgold_ + ''')', '(select * from scott.a_lg_docs where mg=''' +
       //        Form_main.arch_mg_ + ''')');
@@ -1030,26 +958,15 @@ begin
       //        mgold_ + ''')', '(select * from scott.a_lg_pr where mg=''' +
       //        Form_main.arch_mg_ + ''')');
 
-      change_alias(OD_vvod, '(select * from scott.a_vvod where mg=''' + mgold_ +
-        ''')', '(select * from scott.a_vvod where mg=''' + Form_main.arch_mg_ +
-        ''')');
-      change_alias(OD_charge, '(select * from scott.a_vvod where mg=''' + mgold_
-        + ''')', '(select * from scott.a_vvod where mg=''' + Form_main.arch_mg_
-        +
-        ''')');
-      change_alias(OD_charge, '(select * from scott.a_charge2 where ''' + mgold_
-        + ''' between mgfrom and mgto)',
-        '(select * from scott.a_charge2 where '''
-        + Form_main.arch_mg_ + ''' between mgfrom and mgto)');
-      change_alias(OD_charge, '(select * from scott.a_change where mg=''' +
-        mgold_ + ''')', '(select * from scott.a_change where mg=''' +
-        Form_main.arch_mg_ + ''')');
-      change_alias(OD_charge, '(select * from scott.a_nabor2 where ''' + mgold_
-        +
-        ''' between mgfrom and mgto)', '(select * from scott.a_nabor2 where '''
-        +
-        Form_main.arch_mg_ + ''' between mgfrom and mgto)');
+      change_alias(OD_vvod, '(select * from scott.a_vvod where mg=''' + mgold_ + ''')', '(select * from scott.a_vvod where mg=''' + Form_main.arch_mg_ + ''')');
+      change_alias(OD_charge, '(select * from scott.a_vvod where mg=''' + mgold_ + ''')', '(select * from scott.a_vvod where mg=''' + Form_main.arch_mg_ + ''')');
+      change_alias(OD_charge, '(select * from scott.a_charge2 where ''' + mgold_ + ''' between mgfrom and mgto)', '(select * from scott.a_charge2 where ''' + Form_main.arch_mg_ + ''' between mgfrom and mgto)');
+      change_alias(OD_charge, '(select * from scott.a_change where mg=''' + mgold_ + ''')', '(select * from scott.a_change where mg=''' + Form_main.arch_mg_ + ''')');
+      change_alias(OD_charge, '(select * from scott.a_nabor2 where ''' + mgold_ + ''' between mgfrom and mgto)', '(select * from scott.a_nabor2 where ''' + Form_main.arch_mg_ + ''' between mgfrom and mgto)');
       cxGrid2.Visible := false;
+      OD_meter.SetVariable('period', Form_main.arch_mg_);
+      OD_meter.Active := false;
+      OD_meter.Active := true;
     end;
   end;
 end;
@@ -1104,7 +1021,6 @@ begin
 //  Mem_spr_tarif.Active := False;
   OD_vvod.Active := true;
   //OD_status.Active := True;
-
   // история состояний счета
   OD_states_sch.Active := true;
 
@@ -1130,11 +1046,9 @@ begin
   OD_houses.Active := true;
   OD_eolink.Active := true;
 
-  OD_charge.SetVariable('k_lsk_id',
-    Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger);
+  OD_charge.SetVariable('k_lsk_id', Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger);
   OD_charge.Active := True;
-  OD_nabor.SetVariable('k_lsk_id',
-    Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger);
+  OD_nabor.SetVariable('k_lsk_id', Form_list_kart.OD_list_kart.FieldByName('k_lsk_id').AsInteger);
   OD_nabor.Active := True;
 
   SetAllowEdit(0);
@@ -1195,7 +1109,6 @@ begin
     Key := '.';
 end;
 
-
 procedure TForm_kart.DBEdit_pgwKeyPress(Sender: TObject; var Key: Char);
 begin
   if RetKey(Key) then
@@ -1239,7 +1152,6 @@ begin
     end;}
 end;
 
-
 procedure TForm_kart.DBEdit_phwKeyPress(Sender: TObject; var Key: Char);
 begin
   if RetKey(Key) then
@@ -1257,7 +1169,6 @@ begin
     Application.CreateForm(TForm_log_actions, Form_log_actions);
 end;
 
-
 procedure TForm_kart.CMDialogKey(var Msg: TWMKey);
 begin
   // Замена кода TAB на Enter
@@ -1269,14 +1180,12 @@ begin
   inherited;
 end;
 
-
 procedure TForm_kart.OD_states_schAfterInsert(DataSet: TDataSet);
 var
   R: TRect;
   HW: THintWindow;
 begin
-  OD_states_sch.FieldByName('LSK').AsString :=
-    Form_list_kart.OD_list_kart.FieldByName('LSK').AsString;
+  OD_states_sch.FieldByName('LSK').AsString := Form_list_kart.OD_list_kart.FieldByName('LSK').AsString;
 
 end;
 
@@ -1284,30 +1193,22 @@ procedure TForm_kart.OD_states_schBeforePost(DataSet: TDataSet);
 begin
   if OD_states_sch.FieldByName('FK_STATUS').AsString = '' then
   begin
-    msg2('Поле статуса должно быть заполнено!', 'Внимание!', MB_OK +
-      MB_ICONSTOP);
+    msg2('Поле статуса должно быть заполнено!', 'Внимание!', MB_OK + MB_ICONSTOP);
     abort;
   end;
 
-  if ((OD_states_sch.FieldByName('FK_STATUS').AsInteger = 8) or
-    (OD_states_sch.FieldByName('FK_STATUS').AsInteger = 9))
-    and (OD_states_sch.FieldByName('FK_CLOSE_REASON').AsInteger = 0) then
+  if ((OD_states_sch.FieldByName('FK_STATUS').AsInteger = 8) or (OD_states_sch.FieldByName('FK_STATUS').AsInteger = 9)) and (OD_states_sch.FieldByName('FK_CLOSE_REASON').AsInteger = 0) then
   begin
-    Application.MessageBox('При закрытии лицевого счета должна быть заполнена '
-      +
-      'причина закрытия в колонке "Закрыт.сч.ГИС ЖКХ"!',
-      'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
+    Application.MessageBox('При закрытии лицевого счета должна быть заполнена ' + 'причина закрытия в колонке "Закрыт.сч.ГИС ЖКХ"!', 'Внимание!', MB_OK + MB_ICONSTOP + MB_TOPMOST);
     abort;
   end;
 
 end;
-
 
 procedure TForm_kart.OD_chargeBeforeClose(DataSet: TDataSet);
 begin
   usl_ := OD_charge.FieldByName('usl').AsString;
 end;
-
 
 procedure TForm_kart.CheckBox1Click(Sender: TObject);
 begin
@@ -1318,7 +1219,6 @@ begin
     setAllowEdit(0);
 
 end;
-
 
 procedure TForm_kart.Button4Click(Sender: TObject);
 begin
@@ -1335,19 +1235,16 @@ var
   err_: string;
 begin
   str_ := '';
-  if msg3('Удалить данный лицевой счет?', 'Внимание!', MB_YESNO +
-    MB_ICONQUESTION) = IDYES then
+  if msg3('Удалить данный лицевой счет?', 'Внимание!', MB_YESNO + MB_ICONQUESTION) = IDYES then
   begin
-    str_ := DataModule1.OraclePackage1.CallStringFunction('scott.utils.del_lsk',
-      [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString]);
+    str_ := DataModule1.OraclePackage1.CallStringFunction('scott.utils.del_lsk', [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString]);
     if str_ <> '' then
     begin
       msg2(str_, 'Внимание!', MB_OK + MB_ICONSTOP)
     end
     else
     begin
-      msg2('Лицевой счет успешно удален!', 'Внимание!', MB_OK +
-        MB_ICONINFORMATION);
+      msg2('Лицевой счет успешно удален!', 'Внимание!', MB_OK + MB_ICONINFORMATION);
       Form_list_kart.OD_list_kart.Active := False;
       Form_list_kart.OD_list_kart.Active := True;
     end;
@@ -1409,8 +1306,7 @@ procedure TForm_kart.mnu1Click(Sender: TObject);
 begin
   if FF('Form_change_house_nabor2', 1) = 0 then
     Application.CreateForm(TForm_change_house_nabor2, Form_change_house_nabor2);
-  Form_change_house_nabor2.setState(4,
-    Form_list_kart.OD_list_kart.FieldByName('lsk').asString, 1, 0);
+  Form_change_house_nabor2.setState(4, Form_list_kart.OD_list_kart.FieldByName('lsk').asString, 1, 0);
   if Form_change_house_nabor2.ShowModal = mrOk then
   begin
     OD_charge.Refresh;
@@ -1420,24 +1316,9 @@ end;
 
 procedure TForm_kart.mnu2Click(Sender: TObject);
 begin
-  if (msg3('Удалить в лиц.сч:' +
-    OD_nabor.FieldByName('LSK').AsString + ' услугу: ' +
-    OD_nabor.FieldByName('NM').AsString + ' по орг: ' +
-    OD_nabor.FieldByName('ORG').AsString + ' с коэфф:' +
-    OD_nabor.FieldByName('KOEFF').AsString + ' и норм:' +
-    OD_nabor.FieldByName('NORM').AsString + '?', 'Подверждение', MB_YESNO +
-    MB_ICONQUESTION) = IDYES) then
+  if (msg3('Удалить в лиц.сч:' + OD_nabor.FieldByName('LSK').AsString + ' услугу: ' + OD_nabor.FieldByName('NM').AsString + ' по орг: ' + OD_nabor.FieldByName('ORG').AsString + ' с коэфф:' + OD_nabor.FieldByName('KOEFF').AsString + ' и норм:' + OD_nabor.FieldByName('NORM').AsString + '?', 'Подверждение', MB_YESNO + MB_ICONQUESTION) = IDYES) then
   begin
-    DataModule1.OraclePackage1.CallProcedure('scott.p_houses.house_del_usl',
-      [4, OD_nabor.FieldByName('LSK').AsString, null, null,
-      null,
-        OD_nabor.FieldByName('USL').AsString,
-        OD_nabor.FieldByName('ORG').AsInteger,
-        OD_nabor.FieldByName('KOEFF').AsFloat,
-        OD_nabor.FieldByName('NORM').AsFloat, 1,
-        OD_nabor.FieldByName('DT1').AsDateTime,
-        OD_nabor.FieldByName('DT2').AsDateTime
-        ]);
+    DataModule1.OraclePackage1.CallProcedure('scott.p_houses.house_del_usl', [4, OD_nabor.FieldByName('LSK').AsString, null, null, null, OD_nabor.FieldByName('USL').AsString, OD_nabor.FieldByName('ORG').AsInteger, OD_nabor.FieldByName('KOEFF').AsFloat, OD_nabor.FieldByName('NORM').AsFloat, 1, OD_nabor.FieldByName('DT1').AsDateTime, OD_nabor.FieldByName('DT2').AsDateTime]);
     updates_ := 1;
     OD_nabor.Refresh;
   end;
@@ -1465,7 +1346,6 @@ begin
 //    Application.CreateForm(TForm_reg_sch, Form_reg_sch);
 end;
 
-
 procedure TForm_kart.TabSheet4Show(Sender: TObject);
 begin
   OD_saldo.Active := true;
@@ -1492,9 +1372,7 @@ begin
 
 end;
 
-procedure TForm_kart.cxGrid1DBTableView1CustomDrawCell(
-  Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;
-  AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
+procedure TForm_kart.cxGrid1DBTableView1CustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
 var
   col: TcxGridDBColumn;
   s, psch: string;
@@ -1548,8 +1426,7 @@ procedure TForm_kart.N1Click(Sender: TObject);
 begin
   if FF('Form_change_house_nabor2', 1) = 0 then
     Application.CreateForm(TForm_change_house_nabor2, Form_change_house_nabor2);
-  Form_change_house_nabor2.setState(4,
-    Form_list_kart.OD_list_kart.FieldByName('lsk').asString, 1, 0);
+  Form_change_house_nabor2.setState(4, Form_list_kart.OD_list_kart.FieldByName('lsk').asString, 1, 0);
   if Form_change_house_nabor2.ShowModal = mrOk then
   begin
     OD_charge.Refresh;
@@ -1557,34 +1434,23 @@ begin
   end;
 end;
 
-
-procedure TForm_kart.cxGrid2DBTableView1PSCH_NAMEPropertiesCloseUp(
-  Sender: TObject);
+procedure TForm_kart.cxGrid2DBTableView1PSCH_NAMEPropertiesCloseUp(Sender: TObject);
 begin
-  TcxLookupComboBox(Sender).Properties.Grid.DataController.
-    Filter.Root.Clear();
+  TcxLookupComboBox(Sender).Properties.Grid.DataController.Filter.Root.Clear();
 end;
 
-procedure TForm_kart.cxGrid2DBTableView1PSCH_NAMEPropertiesInitPopup(
-  Sender: TObject);
+procedure TForm_kart.cxGrid2DBTableView1PSCH_NAMEPropertiesInitPopup(Sender: TObject);
 var
   LkupItem: TObject;
 begin
   // ограничить выбор LookUp только 0,8,9 статусами
-  LkupItem := TcxLookupComboBox(Sender).Properties.
-    Grid.DataController.GetItemByFieldName('ID');
-  TcxLookupComboBox(Sender).Properties.Grid.DataController.
-    Filter.Active := true;
-  TcxLookupComboBox(Sender).Properties.Grid.DataController.
-    Filter.Root.Clear();
-  TcxLookupComboBox(Sender).Properties.Grid.DataController.
-    Filter.Root.BoolOperatorKind := fboOr;
-  TcxLookupComboBox(Sender).Properties.Grid.DataController.
-    Filter.Root.AddItem(LkupItem, foEqual, 0, '');
-  TcxLookupComboBox(Sender).Properties.Grid.DataController.
-    Filter.Root.AddItem(LkupItem, foEqual, 8, '');
-  TcxLookupComboBox(Sender).Properties.Grid.DataController.
-    Filter.Root.AddItem(LkupItem, foEqual, 9, '');
+  LkupItem := TcxLookupComboBox(Sender).Properties.Grid.DataController.GetItemByFieldName('ID');
+  TcxLookupComboBox(Sender).Properties.Grid.DataController.Filter.Active := true;
+  TcxLookupComboBox(Sender).Properties.Grid.DataController.Filter.Root.Clear();
+  TcxLookupComboBox(Sender).Properties.Grid.DataController.Filter.Root.BoolOperatorKind := fboOr;
+  TcxLookupComboBox(Sender).Properties.Grid.DataController.Filter.Root.AddItem(LkupItem, foEqual, 0, '');
+  TcxLookupComboBox(Sender).Properties.Grid.DataController.Filter.Root.AddItem(LkupItem, foEqual, 8, '');
+  TcxLookupComboBox(Sender).Properties.Grid.DataController.Filter.Root.AddItem(LkupItem, foEqual, 9, '');
 end;
 
 procedure TForm_kart.cxGrid6DBTableView1DblClick(Sender: TObject);
@@ -1592,8 +1458,7 @@ begin
   InvokeSchHistoryForm;
 end;
 
-procedure TForm_kart.cxGrid6DBTableView1KeyDown(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
+procedure TForm_kart.cxGrid6DBTableView1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   InvokeSchHistoryForm;
 end;
@@ -1644,11 +1509,9 @@ end;
 
 procedure TForm_kart.SpeedButton1Click(Sender: TObject);
 begin
-  if Application.MessageBox('Установить собственника автоматически?',
-    'Внимание!', MB_YESNO + MB_ICONQUESTION + MB_TOPMOST) = IDYES then
+  if Application.MessageBox('Установить собственника автоматически?', 'Внимание!', MB_YESNO + MB_ICONQUESTION + MB_TOPMOST) = IDYES then
   begin
-    DataModule1.OraclePackage1.CallProcedure('scott.utils.set_krt_adm',
-      [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString]);
+    DataModule1.OraclePackage1.CallProcedure('scott.utils.set_krt_adm', [Form_list_kart.OD_list_kart.FieldByName('lsk').AsString]);
     Form_list_kart.OD_list_kart.RefreshRecord;
 
   end;
@@ -1661,8 +1524,7 @@ begin
 
 end;
 
-procedure TForm_kart.cxGridDBTableView2KeyDown(Sender: TObject;
-  var Key: Word; Shift: TShiftState);
+procedure TForm_kart.cxGridDBTableView2KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   if Key = 13 then
     open_kart_pr;

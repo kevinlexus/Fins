@@ -10,7 +10,8 @@ uses
   cxGridDBTableView, cxClasses, cxGrid,
   OracleData, StdCtrls, cxLookAndFeels, cxLookAndFeelPainters, cxStyles,
   cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
-  cxDBData, cxGridCustomTableView, cxGridTableView, cxGridCustomView;
+  cxDBData, cxGridCustomTableView, cxGridTableView, cxGridCustomView,
+  dxSkinsCore, dxSkinsDefaultPainters, dxDateRanges;
 
 type
   TfrmMeteGisConnect = class(TForm)
