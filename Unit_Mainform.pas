@@ -740,7 +740,7 @@ begin
           // ИНН, если не заполнен, то не будет проверяться на корректность подключеного ККМ
           port := cash2_port;
           //Form_main.selECR2_inn := Ini.ReadString('Application', 'cash2_inn', '');
-          Form_main.selECR_inn := cash2_inn;
+          Form_main.selECR2_inn := cash2_inn;
           logText('create_OLE_KKM 11');
           selECR2.ConnectionType := 6; // TCP сокет
           logText('create_OLE_KKM 12');
