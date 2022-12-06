@@ -277,7 +277,7 @@ begin
 
       // создать 1 ККМ
       Form_Main.cash1_Ip:=Ini.ReadString('Application', 'cash1_Ip', '');
-      Form_Main.cash2_Ip:=Ini.ReadString('Application', 'cash1_Ip', '');
+      Form_Main.cash2_Ip:=Ini.ReadString('Application', 'cash2_Ip', '');
 
       Form_Main.cash1_port:=Ini.ReadString('Application', 'cash1_port', '');
       Form_Main.cash2_port:=Ini.ReadString('Application', 'cash2_port', '');
