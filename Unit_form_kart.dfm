@@ -3501,33 +3501,46 @@ object Form_kart: TForm_kart
   end
   object OD_meter: TOracleDataSet
     SQL.Strings = (
-      'select t.id, u.npp, u.nm, '#11
+      'select distinct t.id,'#11
+      '                u.npp,'#11
+      '                u.nm,'#11
+      '                (select sum(x.n1)'#11
+      '                 from scott.t_objxpar x'#11
       
-        '       case when :period is null then t.n1 end as n1, -- '#1085#1077' '#1087#1088#1080#1076 +
-        #1091#1084#1072#1083', '#1082#1072#1082' '#1074' '#1072#1088#1093#1080#1074#1077' '#1087#1086#1082#1072#1079#1099#1074#1072#1090#1100' '#1087#1086#1082#1072#1079#1072#1085#1080#1103' '#1089#1095'. '#11
-      '       sum(x.n1) as vol'#11
+        '                          join scott.u_list s on s.cd = '#39'ins_vol' +
+        '_sch'#39#11
+      '                 where t.k_lsk_id = x.fk_k_lsk'#11
+      '                   and x.fk_list = s.id'#11
+      
+        '                   and x.mg = coalesce(:period, p.period)) as vo' +
+        'l,'#11
+      
+        '                (select distinct last_value(x.n1) over (order by' +
+        ' x.id ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING)'#11
+      '                 from scott.t_objxpar x'#11
+      
+        '                          join scott.u_list s on s.cd = '#39'ins_sch' +
+        #39#11
+      '                 where t.k_lsk_id = x.fk_k_lsk'#11
+      '                   and x.fk_list = s.id'#11
+      
+        '                   and x.mg = coalesce(:period, p.period)) as n1' +
+        #11
       'from scott.meter t'#11
       '         join scott.usl u on t.fk_usl = u.usl'#11
       '         join scott.params p on 1 = 1'#11
-      '         join scott.u_list s on s.cd = '#39'ins_vol_sch'#39#11
-      
-        '         left join scott.t_objxpar x on t.k_lsk_id = x.fk_k_lsk ' +
-        'and x.fk_list = s.id and x.mg = coalesce(:period,p.period)'#11
       'where t.fk_klsk_obj = :k_lsk_id'#11
+      '  and (t.dt2 >='#11
       
-        '  and (t.dt2 >= last_day(to_date(coalesce(:period,p.period) || '#39 +
-        '01'#39', '#39'YYYYMMDD'#39')) or  -- '#1083#1080#1073#1086' '#1089#1095'. '#1076#1072#1083#1100#1096#1077' '#1089#1091#1097#1077#1089#1090#1074#1091#1077#1090', '#1083#1080#1073#1086' '#1079#1072#1074#1077#1088#1096 +
-        #1072#1077#1090' '#1088#1072#1073#1086#1090#1091' '#1074' '#1074#1099#1073#1088#1072#1085#1085#1086#1084' '#1087#1077#1088#1080#1086#1076#1077#11
-      '      t.dt2 between'#11
+        '       last_day(to_date(coalesce(:period, p.period) || '#39'01'#39', '#39'YY' +
+        'YYMMDD'#39')) or -- '#1083#1080#1073#1086' '#1089#1095'. '#1076#1072#1083#1100#1096#1077' '#1089#1091#1097#1077#1089#1090#1074#1091#1077#1090', '#1083#1080#1073#1086' '#1079#1072#1074#1077#1088#1096#1072#1077#1090' '#1088#1072#1073#1086#1090 +
+        #1091' '#1074' '#1074#1099#1073#1088#1072#1085#1085#1086#1084' '#1087#1077#1088#1080#1086#1076#1077#11
       
-        '      to_date(coalesce(:period,p.period) || '#39'01'#39', '#39'YYYYMMDD'#39') an' +
-        'd'#11
-      
-        '      last_day(to_date(coalesce(:period,p.period) || '#39'01'#39', '#39'YYYY' +
-        'MMDD'#39')))'#11
-      'group by t.id, u.npp, u.nm, t.n1'#11
-      'order by u.npp'#11
-      '')
+        '       t.dt2 between to_date(coalesce(:period, p.period) || '#39'01'#39 +
+        ', '#39'YYYYMMDD'#39') and last_day(to_date(coalesce(:period, p.period) |' +
+        '| '#39'01'#39', '#39'YYYYMMDD'#39')))'#11
+      'group by t.id, u.npp, u.nm, t.k_lsk_id, p.period'#11
+      'order by u.npp')
     Optimize = False
     Variables.Data = {
       0400000002000000120000003A004B005F004C0053004B005F00490044000300
