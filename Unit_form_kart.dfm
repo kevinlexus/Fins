@@ -124,8 +124,8 @@ object Form_kart: TForm_kart
               Align = alClient
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
-              Font.Height = -13
-              Font.Name = 'MS Sans Serif'
+              Font.Height = -12
+              Font.Name = 'Tahoma'
               Font.Style = []
               ParentFont = False
               TabOrder = 1

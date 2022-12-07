@@ -26,11 +26,7 @@ object frmMeteGisConnect: TfrmMeteGisConnect
     Align = alClient
     TabOrder = 0
     object cxGridDBTableView3: TcxGridDBTableView
-      Navigator.Buttons.CustomButtons = <
-        item
-          Hint = #1055#1086#1082#1072#1079#1072#1090#1100' '#1074#1089#1077
-          ImageIndex = 1
-        end>
+      Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.Images = Form_Main.ImageListTiny
       Navigator.Buttons.Insert.Visible = False
       Navigator.Buttons.Append.Visible = False
@@ -130,7 +126,7 @@ object frmMeteGisConnect: TfrmMeteGisConnect
         'ar=u.id '
       ' join exs.eolink k on e.parent_id=k.id -- '#1087#1086#1084#1077#1097#1077#1085#1080#1077
       ' where e.usl=:usl and k.fk_klsk_obj=:fk_klsk_premise'
-      ' and u.cd not in ('#39#1043#1048#1057' '#1046#1050#1061'.'#1055#1088#1080#1079#1085#1072#1082'_'#1055#1059'_'#1050#1056#39')'
+      ' and u.cd not in ('#39#1043#1048#1057' '#1046#1050#1061'.'#1055#1088#1080#1079#1085#1072#1082'_'#1055#1059'_'#1050#1056#39') and e.status=1'
       ' group by e.id, e.fk_klsk_obj')
     Optimize = False
     Variables.Data = {
