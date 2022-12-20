@@ -82,7 +82,6 @@ type
     cxGridDBTableView2TS: TcxGridDBColumn;
     cxGridDBTableView2USER_NAME: TcxGridDBColumn;
     cxGridDBTableView2STATUS_GIS: TcxGridDBColumn;
-    cxGridDBTableView2COMM: TcxGridDBColumn;
     cxGridDBTableView2PERIOD: TcxGridDBColumn;
     cxGridLevel2: TcxGridLevel;
     cxLastVal: TcxDBMaskEdit;
@@ -105,6 +104,7 @@ type
     OD_meterSTATE_CD: TStringField;
     OD_meterCOUNTER: TStringField;
     DS_meter: TDataSource;
+    OD_meterGIS_CONN_TP_1: TFloatField;
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

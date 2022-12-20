@@ -1992,6 +1992,10 @@ object Form_kart: TForm_kart
     object cxTabSheet2: TcxTabSheet
       Caption = #1059#1089#1083#1091#1075#1080
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object cxGrid3: TcxGrid
         Left = 0
         Top = 0
@@ -3524,8 +3528,8 @@ object Form_kart: TForm_kart
       '                 where t.k_lsk_id = x.fk_k_lsk'#11
       '                   and x.fk_list = s.id'#11
       
-        '                   and x.mg = coalesce(:period, p.period)) as n1' +
-        #11
+        '                   and x.mg <= coalesce(:period, p.period)) as n' +
+        '1'#11
       'from scott.meter t'#11
       '         join scott.usl u on t.fk_usl = u.usl'#11
       '         join scott.params p on 1 = 1'#11
@@ -3540,7 +3544,8 @@ object Form_kart: TForm_kart
         ', '#39'YYYYMMDD'#39') and last_day(to_date(coalesce(:period, p.period) |' +
         '| '#39'01'#39', '#39'YYYYMMDD'#39')))'#11
       'group by t.id, u.npp, u.nm, t.k_lsk_id, p.period'#11
-      'order by u.npp')
+      'order by u.npp'#11
+      '')
     Optimize = False
     Variables.Data = {
       0400000002000000120000003A004B005F004C0053004B005F00490044000300

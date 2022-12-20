@@ -239,12 +239,12 @@ object Form_sch_history: TForm_sch_history
             object cxGridDBTableView2N1: TcxGridDBColumn
               Caption = #1047#1085#1072#1095#1077#1085#1080#1077
               DataBinding.FieldName = 'N1'
-              Width = 51
+              Width = 70
             end
             object cxGridDBTableView2TS: TcxGridDBColumn
               Caption = #1044#1072#1090#1072'-'#1074#1088#1077#1084#1103
               DataBinding.FieldName = 'TS'
-              Width = 68
+              Width = 91
             end
             object cxGridDBTableView2USER_NAME: TcxGridDBColumn
               Caption = #1055#1086#1083#1100#1079#1086#1074#1072#1090#1077#1083#1100
@@ -255,11 +255,6 @@ object Form_sch_history: TForm_sch_history
               Caption = #1057#1090#1072#1090#1091#1089' '#1043#1048#1057
               DataBinding.FieldName = 'STATUS_GIS'
               Width = 70
-            end
-            object cxGridDBTableView2COMM: TcxGridDBColumn
-              Caption = #1050#1086#1084#1084'.'
-              DataBinding.FieldName = 'COMM'
-              Width = 48
             end
             object cxGridDBTableView2PERIOD: TcxGridDBColumn
               Caption = #1055#1077#1088#1080#1086#1076
@@ -692,7 +687,8 @@ object Form_sch_history: TForm_sch_history
         ', 3, '#39#1087#1077#1088#1077#1093#1086#1076#39', 4, '#39#1082#1086#1088#1088#1077#1082#1094'.'#1085#1077#1080#1089#1087#1088'.'#39') as comm,'
       
         ' decode(t.status,0, '#39#1074#1085#1077#1089#1077#1085#1086#39', 1, '#39#1086#1090#1087#1088#1072#1074#1082#1072' '#1074' '#1043#1048#1057#39', 2, '#39#1079#1072#1075#1088#1091#1078#1077#1085 +
-        #1086' '#1074' '#1043#1048#1057#39', 3, '#39#1086#1096#1080#1073#1082#1072#39', 4, '#39#1087#1088#1080#1085#1103#1090#1086' '#1086#1090' '#1043#1048#1057#39') as status_gis'
+        #1086' '#1074' '#1043#1048#1057#39',  3, '#39#1087#1088#1080#1085#1103#1090#1086' '#1086#1090' '#1043#1048#1057#39', 4, '#39#1086#1096#1080#1073#1082#1072' '#1079#1072#1075#1088#1091#1079#1082#1080' '#1074' '#1043#1048#1057#39') as s' +
+        'tatus_gis'
       ' from scott.t_objxpar t'
       ' left join scott.u_list u on t.fk_list=u.id'
       ' left join scott.t_user s on t.fk_user=s.id'
@@ -788,60 +784,53 @@ object Form_sch_history: TForm_sch_history
   object OD_meter: TOracleDataSet
     SQL.Strings = (
       'select u.nm,'#11
+      ''
+      ''
       '       t.*,'#11
+      ''
+      ''
       
         '       case when t.dt2 > last_day(to_date(p.period || '#39'01'#39', '#39'YYY' +
         'YMMDD'#39')) then 1 else 0 end act,'#11
+      ''
+      ''
       '       null as state,'#11
+      ''
+      ''
       '       null as state_cd,'#11
+      ''
+      ''
       '       u.counter,'#11
+      ''
+      '       t.gis_conn_tp,'
+      ''
       '       t.rowid'#11
+      ''
+      ''
       'from scott.meter t'#11
+      ''
+      ''
       '         join scott.usl u on t.fk_usl = u.usl'#11
+      ''
+      ''
       '         join scott.params p on 1 = 1'#11
+      ''
+      ''
       'where t.fk_klsk_obj = :k_lsk_id'#11
+      ''
+      ''
       
         '  and (:flt1 = 0 or t.dt2 >= last_day(to_date(p.period || '#39'01'#39', ' +
         #39'YYYYMMDD'#39'))) order by u.npp, t.dt1, t.dt2'#11
       ''
-      ''
-      ''
-      
-        '/*select u.nm, t.*, case when t.dt1 <=last_day(to_date(p.period|' +
-        '|'#39'01'#39', '#39'YYYYMMDD'#39')) '
-      'and t.dt2 > last_day(to_date(p.period||'#39'01'#39', '#39'YYYYMMDD'#39'))'
-      
-        'then 1 else 0 end act,u3.name as state, u3.cd as state_cd, u.cou' +
-        'nter,  '
-      ' t.rowid from scott.meter t join scott.usl u on t.fk_usl=u.usl '
-      'join scott.params p on 1=1'
-      'join scott.u_list u2 on u2.cd='#39#1055#1086#1074#1077#1088#1082#1072' '#1055#1059#39
-      'left join (select * from scott.c_reg_sch r'
-      '     where exists '
-      '     (select * from '
-      
-        '     (select m.id, first_value(r2.id) over (partition by m.id or' +
-        'der by r2.dt1 desc) as st --'#1085#1072#1081#1090#1080' '#1087#1086#1089#1083#1077#1076#1085#1080#1081' '#1089#1090#1072#1090#1091#1089' '#1087#1088#1080#1073#1086#1088#1072' '#1091#1095#1077#1090#1072
-      '      from scott.meter m join scott.c_reg_sch r2 '
-      '           on r2.fk_meter=m.id and m.fk_klsk_obj=:k_lsk_id'
-      
-        '           join scott.params p on r2.dt1 <= last_day(to_date(p.p' +
-        'eriod||'#39'01'#39', '#39'YYYYMMDD'#39'))'
-      '      ) a where a.st=r.id)'
-      ') s on t.id=s.fk_meter and s.fk_tp=u2.id'
-      'left join scott.u_list u3 on s.fk_state=u3.id'
-      'where t.fk_klsk_obj=:k_lsk_id'
-      'and (:flt1=0 '
-      'or t.dt2 >= to_date(p.period||'#39'01'#39', '#39'YYYYMMDD'#39'))'
-      'order by u.npp, t.dt1, t.dt2'
-      '*/')
+      '')
     Optimize = False
     Variables.Data = {
       0400000002000000120000003A004B005F004C0053004B005F00490044000300
       000000000000000000000A0000003A0046004C00540031000300000000000000
       00000000}
     QBEDefinition.QBEFieldDefs = {
-      050000000E000000040000004E004D0001000000000004000000490044000100
+      050000000F000000040000004E004D0001000000000004000000490044000100
       000000000C00000046004B005F00550053004C00010000000000100000004B00
       5F004C0053004B005F0049004400010000000000060000004400540031000100
       00000000060000004400540032000100000000001600000046004B005F004B00
@@ -850,7 +839,8 @@ object Form_sch_history: TForm_sch_history
       00000A0000005300540041005400450001000000000010000000530054004100
       540045005F00430044000100000000000E00000043004F0055004E0054004500
       5200010000000000160000004700490053005F0043004F004E004E005F005400
-      5000010000000000}
+      50000100000000001A0000004700490053005F0043004F004E004E005F005400
+      50005F003100010000000000}
     RefreshOptions = [roAfterUpdate, roAllFields]
     Session = DataModule1.OracleSession1
     DesignActivation = True
@@ -909,6 +899,9 @@ object Form_sch_history: TForm_sch_history
     object OD_meterCOUNTER: TStringField
       FieldName = 'COUNTER'
       Size = 15
+    end
+    object OD_meterGIS_CONN_TP_1: TFloatField
+      FieldName = 'GIS_CONN_TP_1'
     end
   end
   object DS_meter: TDataSource
