@@ -786,7 +786,9 @@ object Form_sch_history: TForm_sch_history
       'select u.nm,'#11
       ''
       ''
+      ''
       '       t.*,'#11
+      ''
       ''
       ''
       
@@ -794,34 +796,44 @@ object Form_sch_history: TForm_sch_history
         'YMMDD'#39')) then 1 else 0 end act,'#11
       ''
       ''
+      ''
       '       null as state,'#11
+      ''
       ''
       ''
       '       null as state_cd,'#11
       ''
       ''
+      ''
       '       u.counter,'#11
+      ''
       ''
       '       t.gis_conn_tp,'
       ''
       '       t.rowid'#11
       ''
       ''
+      ''
       'from scott.meter t'#11
+      ''
       ''
       ''
       '         join scott.usl u on t.fk_usl = u.usl'#11
       ''
       ''
+      ''
       '         join scott.params p on 1 = 1'#11
+      ''
       ''
       ''
       'where t.fk_klsk_obj = :k_lsk_id'#11
       ''
       ''
+      ''
       
-        '  and (:flt1 = 0 or t.dt2 >= last_day(to_date(p.period || '#39'01'#39', ' +
-        #39'YYYYMMDD'#39'))) order by u.npp, t.dt1, t.dt2'#11
+        '  and (:flt1 = 0 or t.dt2 >= to_date(p.period || '#39'01'#39', '#39'YYYYMMDD' +
+        #39')) order by u.npp, t.dt1, t.dt2'#11
+      ''
       ''
       '')
     Optimize = False

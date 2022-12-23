@@ -3,7 +3,7 @@ object frmDebtRequest: TfrmDebtRequest
   Top = 0
   Caption = #1054#1090#1074#1077#1090#1099' '#1085#1072' '#1079#1072#1087#1088#1086#1089#1099' '#1086' '#1079#1072#1076#1086#1083#1078#1077#1085#1085#1086#1089#1090#1080
   ClientHeight = 539
-  ClientWidth = 1352
+  ClientWidth = 1284
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,10 +21,11 @@ object frmDebtRequest: TfrmDebtRequest
   object cxGrid1: TcxGrid
     Left = 0
     Top = 41
-    Width = 1352
+    Width = 1284
     Height = 498
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 1352
     object cxGrid1DBCardView1: TcxGridDBCardView
       Navigator.Buttons.CustomButtons = <>
       DataController.DataSource = DS_debt
@@ -442,12 +443,13 @@ object frmDebtRequest: TfrmDebtRequest
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1352
+    Width = 1284
     Height = 41
     Align = alTop
     TabOrder = 1
+    ExplicitWidth = 1352
     DesignSize = (
-      1352
+      1284
       41)
     object Label1: TLabel
       Left = 16
@@ -458,7 +460,7 @@ object frmDebtRequest: TfrmDebtRequest
       Visible = False
     end
     object Button1: TButton
-      Left = 1251
+      Left = 1183
       Top = 10
       Width = 75
       Height = 25
@@ -467,6 +469,7 @@ object frmDebtRequest: TfrmDebtRequest
       Enabled = False
       TabOrder = 0
       OnClick = Button1Click
+      ExplicitLeft = 1251
     end
     object cbbUser: TcxLookupComboBox
       Left = 77
