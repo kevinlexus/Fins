@@ -315,7 +315,6 @@ type
     cxdbtxEdit6PPL: TcxDBTextEdit;
     cxdbtxEdit1ET: TcxDBTextEdit;
     cbb2STATUS: TcxDBLookupComboBox;
-    cbb1FK_DEB_ORG: TcxDBLookupComboBox;
     cbb1KUL: TcxDBLookupComboBox;
     cbb12HOUSE_ID: TcxDBLookupComboBox;
     cbb4FK_DISTR: TcxDBLookupComboBox;
@@ -357,6 +356,18 @@ type
     OD_meterVOL: TFloatField;
     cxGrid6DBTableView1NPP: TcxGridDBColumn;
     cxGrid6DBTableView1VOL: TcxGridDBColumn;
+    GroupBox2: TGroupBox;
+    Label14: TLabel;
+    cxDBLookupComboBox1: TcxDBLookupComboBox;
+    cxDBTextEdit4: TcxDBTextEdit;
+    cxDBTextEdit6: TcxDBTextEdit;
+    Label15: TLabel;
+    cxDBTextEdit7: TcxDBTextEdit;
+    cxDBTextEdit8: TcxDBTextEdit;
+    Label16: TLabel;
+    Label17: TLabel;
+    cxDBTextEdit11: TcxDBTextEdit;
+    cxDBTextEdit12: TcxDBTextEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure OD_kartAfterPost(DataSet: TDataSet);
     procedure OD_kart_prSTATUSValidate(Sender: TField);

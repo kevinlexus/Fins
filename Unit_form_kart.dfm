@@ -47,6 +47,19 @@ object Form_kart: TForm_kart
     ParentFont = False
     WordWrap = True
   end
+  object Label16: TLabel
+    Left = 16
+    Top = 27
+    Width = 25
+    Height = 13
+    Caption = #1061'.'#1042'.'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
   object Panel2: TPanel
     Left = 0
     Top = 81
@@ -66,7 +79,7 @@ object Form_kart: TForm_kart
         Top = 1
         Width = 342
         Height = 220
-        ActivePage = TabSheet3
+        ActivePage = TabSheet1
         Align = alClient
         TabOrder = 0
         object TabSheet3: TTabSheet
@@ -251,18 +264,18 @@ object Form_kart: TForm_kart
           ImageIndex = 3
           object GroupBox10: TGroupBox
             Left = 0
-            Top = 57
+            Top = 106
             Width = 334
-            Height = 49
+            Height = 83
             Align = alTop
-            Caption = #1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103' '#1079#1072#1076#1086#1083#1078#1085#1080#1082#1072
+            Caption = #1057#1095#1077#1090#1095#1080#1082#1080' '#1087#1086#1082#1072#1079#1072#1085#1080#1077'/'#1088#1072#1089#1093#1086#1076
             TabOrder = 0
             object Label41: TLabel
-              Left = 8
+              Left = 15
               Top = 19
-              Width = 79
+              Width = 25
               Height = 13
-              Caption = #1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103
+              Caption = #1061'.'#1042'.'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
               Font.Height = -11
@@ -270,20 +283,85 @@ object Form_kart: TForm_kart
               Font.Style = [fsBold]
               ParentFont = False
             end
-            object cbb1FK_DEB_ORG: TcxDBLookupComboBox
-              Left = 91
-              Top = 15
-              DataBinding.DataField = 'FK_DEB_ORG'
+            object Label15: TLabel
+              Left = 15
+              Top = 41
+              Width = 24
+              Height = 13
+              Caption = #1043'.'#1042'.'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'MS Sans Serif'
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
+            object Label17: TLabel
+              Left = 15
+              Top = 62
+              Width = 20
+              Height = 13
+              Caption = #1069#1083'.'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'MS Sans Serif'
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
+            object cxDBTextEdit4: TcxDBTextEdit
+              Left = 55
+              Top = 16
+              DataBinding.DataField = 'PHW'
               DataBinding.DataSource = Form_list_kart.DS_list_kart
-              Properties.KeyFieldNames = 'ID'
-              Properties.ListColumns = <
-                item
-                  FieldName = 'NAME'
-                end>
-              Properties.ListOptions.ShowHeader = False
-              Properties.ListSource = Form_list_kart.DS_debits_org
+              Properties.ReadOnly = True
               TabOrder = 0
-              Width = 227
+              Width = 77
+            end
+            object cxDBTextEdit6: TcxDBTextEdit
+              Left = 138
+              Top = 16
+              DataBinding.DataField = 'MHW'
+              DataBinding.DataSource = Form_list_kart.DS_list_kart
+              Properties.ReadOnly = True
+              TabOrder = 1
+              Width = 77
+            end
+            object cxDBTextEdit7: TcxDBTextEdit
+              Left = 55
+              Top = 38
+              DataBinding.DataField = 'PGW'
+              DataBinding.DataSource = Form_list_kart.DS_list_kart
+              Properties.ReadOnly = True
+              TabOrder = 2
+              Width = 77
+            end
+            object cxDBTextEdit8: TcxDBTextEdit
+              Left = 138
+              Top = 38
+              DataBinding.DataField = 'MGW'
+              DataBinding.DataSource = Form_list_kart.DS_list_kart
+              Properties.ReadOnly = True
+              TabOrder = 3
+              Width = 77
+            end
+            object cxDBTextEdit11: TcxDBTextEdit
+              Left = 55
+              Top = 59
+              DataBinding.DataField = 'PEL'
+              DataBinding.DataSource = Form_list_kart.DS_list_kart
+              Properties.ReadOnly = True
+              TabOrder = 4
+              Width = 77
+            end
+            object cxDBTextEdit12: TcxDBTextEdit
+              Left = 138
+              Top = 59
+              DataBinding.DataField = 'MEL'
+              DataBinding.DataSource = Form_list_kart.DS_list_kart
+              Properties.ReadOnly = True
+              TabOrder = 5
+              Width = 77
             end
           end
           object cxGroupBox2: TcxGroupBox
@@ -332,6 +410,43 @@ object Form_kart: TForm_kart
               Properties.ValueChecked = 1
               Properties.ValueUnchecked = 0
               TabOrder = 1
+            end
+          end
+          object GroupBox2: TGroupBox
+            Left = 0
+            Top = 57
+            Width = 334
+            Height = 49
+            Align = alTop
+            Caption = #1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103' '#1079#1072#1076#1086#1083#1078#1085#1080#1082#1072
+            TabOrder = 2
+            object Label14: TLabel
+              Left = 8
+              Top = 19
+              Width = 79
+              Height = 13
+              Caption = #1054#1088#1075#1072#1085#1080#1079#1072#1094#1080#1103
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'MS Sans Serif'
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
+            object cxDBLookupComboBox1: TcxDBLookupComboBox
+              Left = 91
+              Top = 15
+              DataBinding.DataField = 'FK_DEB_ORG'
+              DataBinding.DataSource = Form_list_kart.DS_list_kart
+              Properties.KeyFieldNames = 'ID'
+              Properties.ListColumns = <
+                item
+                  FieldName = 'NAME'
+                end>
+              Properties.ListOptions.ShowHeader = False
+              Properties.ListSource = Form_list_kart.DS_debits_org
+              TabOrder = 0
+              Width = 227
             end
           end
         end
