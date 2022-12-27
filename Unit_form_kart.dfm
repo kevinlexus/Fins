@@ -1992,10 +1992,6 @@ object Form_kart: TForm_kart
     object cxTabSheet2: TcxTabSheet
       Caption = #1059#1089#1083#1091#1075#1080
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object cxGrid3: TcxGrid
         Left = 0
         Top = 0
@@ -3506,45 +3502,142 @@ object Form_kart: TForm_kart
   object OD_meter: TOracleDataSet
     SQL.Strings = (
       'select distinct t.id,'#11
-      '                u.npp,'#11
-      '                u.nm,'#11
+      ''
+      ''
+      ''
+      ''
+      '                t.npp,'#11
+      ''
+      ''
+      ''
+      ''
+      '                u.nm,'
+      'u.npp,'#11
+      ''
+      ''
+      ''
+      ''
       '                (select sum(x.n1)'#11
+      ''
+      ''
+      ''
+      ''
       '                 from scott.t_objxpar x'#11
+      ''
+      ''
+      ''
+      ''
       
         '                          join scott.u_list s on s.cd = '#39'ins_vol' +
         '_sch'#39#11
+      ''
+      ''
+      ''
+      ''
       '                 where t.k_lsk_id = x.fk_k_lsk'#11
+      ''
+      ''
+      ''
+      ''
       '                   and x.fk_list = s.id'#11
+      ''
+      ''
+      ''
+      ''
       
         '                   and x.mg = coalesce(:period, p.period)) as vo' +
         'l,'#11
+      ''
+      ''
+      ''
+      ''
       
         '                (select distinct last_value(x.n1) over (order by' +
         ' x.id ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING)'#11
+      ''
+      ''
+      ''
+      ''
       '                 from scott.t_objxpar x'#11
+      ''
+      ''
+      ''
+      ''
       
         '                          join scott.u_list s on s.cd = '#39'ins_sch' +
         #39#11
+      ''
+      ''
+      ''
+      ''
       '                 where t.k_lsk_id = x.fk_k_lsk'#11
+      ''
+      ''
+      ''
+      ''
       '                   and x.fk_list = s.id'#11
+      ''
+      ''
+      ''
+      ''
       
         '                   and x.mg <= coalesce(:period, p.period)) as n' +
         '1'#11
+      ''
+      ''
+      ''
+      ''
       'from scott.meter t'#11
+      ''
+      ''
+      ''
+      ''
       '         join scott.usl u on t.fk_usl = u.usl'#11
+      ''
+      ''
+      ''
+      ''
       '         join scott.params p on 1 = 1'#11
+      ''
+      ''
+      ''
+      ''
       'where t.fk_klsk_obj = :k_lsk_id'#11
+      ''
+      ''
+      ''
+      ''
       '  and (t.dt2 >='#11
+      ''
+      ''
+      ''
+      ''
       
         '       last_day(to_date(coalesce(:period, p.period) || '#39'01'#39', '#39'YY' +
         'YYMMDD'#39')) or -- '#1083#1080#1073#1086' '#1089#1095'. '#1076#1072#1083#1100#1096#1077' '#1089#1091#1097#1077#1089#1090#1074#1091#1077#1090', '#1083#1080#1073#1086' '#1079#1072#1074#1077#1088#1096#1072#1077#1090' '#1088#1072#1073#1086#1090 +
         #1091' '#1074' '#1074#1099#1073#1088#1072#1085#1085#1086#1084' '#1087#1077#1088#1080#1086#1076#1077#11
+      ''
+      ''
+      ''
+      ''
       
         '       t.dt2 between to_date(coalesce(:period, p.period) || '#39'01'#39 +
         ', '#39'YYYYMMDD'#39') and last_day(to_date(coalesce(:period, p.period) |' +
         '| '#39'01'#39', '#39'YYYYMMDD'#39')))'#11
-      'group by t.id, u.npp, u.nm, t.k_lsk_id, p.period'#11
-      'order by u.npp'#11
+      ''
+      ''
+      ''
+      ''
+      'group by t.id, t.npp, u.nm, u.npp, t.k_lsk_id, p.period'#11
+      ''
+      ''
+      ''
+      ''
+      'order by u.npp, t.npp'#11
+      ''
+      ''
+      ''
+      ''
       '')
     Optimize = False
     Variables.Data = {

@@ -256,6 +256,11 @@ object Form_sch_history: TForm_sch_history
               DataBinding.FieldName = 'STATUS_GIS'
               Width = 70
             end
+            object cxGridDBTableView2COMM: TcxGridDBColumn
+              Caption = #1050#1086#1084#1084'.'
+              DataBinding.FieldName = 'COMM'
+              Width = 48
+            end
             object cxGridDBTableView2PERIOD: TcxGridDBColumn
               Caption = #1055#1077#1088#1080#1086#1076
               DataBinding.FieldName = 'PERIOD'
@@ -787,7 +792,9 @@ object Form_sch_history: TForm_sch_history
       ''
       ''
       ''
+      ''
       '       t.*,'#11
+      ''
       ''
       ''
       ''
@@ -797,7 +804,9 @@ object Form_sch_history: TForm_sch_history
       ''
       ''
       ''
+      ''
       '       null as state,'#11
+      ''
       ''
       ''
       ''
@@ -805,7 +814,9 @@ object Form_sch_history: TForm_sch_history
       ''
       ''
       ''
+      ''
       '       u.counter,'#11
+      ''
       ''
       ''
       '       t.gis_conn_tp,'
@@ -814,7 +825,9 @@ object Form_sch_history: TForm_sch_history
       ''
       ''
       ''
+      ''
       'from scott.meter t'#11
+      ''
       ''
       ''
       ''
@@ -822,7 +835,9 @@ object Form_sch_history: TForm_sch_history
       ''
       ''
       ''
+      ''
       '         join scott.params p on 1 = 1'#11
+      ''
       ''
       ''
       ''
@@ -830,9 +845,11 @@ object Form_sch_history: TForm_sch_history
       ''
       ''
       ''
+      ''
       
         '  and (:flt1 = 0 or t.dt2 >= to_date(p.period || '#39'01'#39', '#39'YYYYMMDD' +
-        #39')) order by u.npp, t.dt1, t.dt2'#11
+        #39')) order by u.npp, t.npp'#11
+      ''
       ''
       ''
       '')

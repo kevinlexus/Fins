@@ -322,7 +322,7 @@ object Form_print_bills: TForm_print_bills
     object CheckBox2: TCheckBox
       Left = 248
       Top = 6
-      Width = 137
+      Width = 157
       Height = 25
       Caption = #1087#1077#1095#1072#1090#1072#1090#1100' '#1089#1090#1072#1088#1099#1081' '#1092#1086#1085#1076
       TabOrder = 0
@@ -331,7 +331,7 @@ object Form_print_bills: TForm_print_bills
     object CheckBox4: TCheckBox
       Left = 248
       Top = 43
-      Width = 113
+      Width = 133
       Height = 25
       Caption = #1087#1077#1085#1103' '#1085#1072' '#1090#1077#1082'. '#1076#1072#1090#1091
       Checked = True
@@ -342,7 +342,7 @@ object Form_print_bills: TForm_print_bills
     object CheckBox3: TCheckBox
       Left = 248
       Top = 62
-      Width = 113
+      Width = 133
       Height = 25
       Caption = #1088#1072#1089#1089#1095#1080#1090#1072#1090#1100
       TabOrder = 2
@@ -351,7 +351,7 @@ object Form_print_bills: TForm_print_bills
     object chk1: TCheckBox
       Left = 248
       Top = 25
-      Width = 137
+      Width = 157
       Height = 25
       Caption = #1087#1077#1095#1072#1090#1072#1090#1100' '#1076#1086#1087'.'#1089#1095#1077#1090#1072
       Checked = True
@@ -643,10 +643,10 @@ object Form_print_bills: TForm_print_bills
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator]
     PreviewOptions.Zoom = 1.000000000000000000
-    PrintOptions.Printer = #1055#1086' '#1091#1084#1086#1083#1095#1072#1085#1080#1102
+    PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
-    ReportOptions.CreateDate = 40100.574150914400000000
-    ReportOptions.LastChange = 44194.665912152770000000
+    ReportOptions.CreateDate = 38614.483889131900000000
+    ReportOptions.LastChange = 43749.465592638900000000
     ScriptLanguage = 'PascalScript'
     StoreInDFM = False
     OnReportPrint = 'frxReport1OnReportPrint'

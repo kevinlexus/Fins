@@ -82,6 +82,7 @@ type
     cxGridDBTableView2TS: TcxGridDBColumn;
     cxGridDBTableView2USER_NAME: TcxGridDBColumn;
     cxGridDBTableView2STATUS_GIS: TcxGridDBColumn;
+    cxGridDBTableView2COMM: TcxGridDBColumn;
     cxGridDBTableView2PERIOD: TcxGridDBColumn;
     cxGridLevel2: TcxGridLevel;
     cxLastVal: TcxDBMaskEdit;
