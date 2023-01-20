@@ -10,7 +10,7 @@ uses
   cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter, cxData,
   cxDataStorage, cxEdit, cxNavigator, cxDBData, cxGridCustomTableView,
   cxGridTableView, cxGridDBTableView, cxGridLevel, cxClasses,
-  cxGridCustomView, cxGrid;
+  cxGridCustomView, cxGrid, dxSkinsCore, dxSkinsDefaultPainters, dxDateRanges;
 
 type
   TForm_changes_list = class(TForm)

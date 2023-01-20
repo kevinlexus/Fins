@@ -2,8 +2,8 @@ object Form_changes_houses2: TForm_changes_houses2
   Left = 527
   Top = 540
   Caption = #1055#1077#1088#1077#1088#1072#1089#1095#1077#1090#1099
-  ClientHeight = 743
-  ClientWidth = 887
+  ClientHeight = 629
+  ClientWidth = 1066
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,26 +21,32 @@ object Form_changes_houses2: TForm_changes_houses2
   object cxpgcntrl1: TcxPageControl
     Left = 0
     Top = 0
-    Width = 887
-    Height = 723
+    Width = 1066
+    Height = 609
     Align = alClient
     TabOrder = 0
-    Properties.ActivePage = cxTabSheet
+    Properties.ActivePage = cxTabSheet2
     Properties.CustomButtons.Buttons = <>
-    ClientRectBottom = 719
+    ExplicitWidth = 887
+    ExplicitHeight = 723
+    ClientRectBottom = 605
     ClientRectLeft = 4
-    ClientRectRight = 883
+    ClientRectRight = 1062
     ClientRectTop = 24
     object cxTabSheet: TcxTabSheet
       Caption = #1053#1086#1074#1099#1081' '#1087#1077#1088#1077#1088#1072#1089#1095#1077#1090
       ImageIndex = 0
+      ExplicitWidth = 879
+      ExplicitHeight = 695
       object GroupBox1: TGroupBox
         Left = 0
-        Top = 470
-        Width = 879
+        Top = 356
+        Width = 1058
         Height = 225
         Align = alBottom
         TabOrder = 0
+        ExplicitTop = 470
+        ExplicitWidth = 879
         object Label4: TLabel
           Left = 6
           Top = 200
@@ -506,17 +512,21 @@ object Form_changes_houses2: TForm_changes_houses2
       object Panel1: TPanel
         Left = 0
         Top = 0
-        Width = 879
-        Height = 470
+        Width = 1058
+        Height = 356
         Align = alClient
         TabOrder = 1
+        ExplicitWidth = 879
+        ExplicitHeight = 470
         object cxGrid1: TcxGrid
           Left = 1
           Top = 1
-          Width = 877
-          Height = 468
+          Width = 1056
+          Height = 354
           Align = alClient
           TabOrder = 0
+          ExplicitWidth = 877
+          ExplicitHeight = 468
           object cxGrid1DBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             Navigator.Visible = True
@@ -565,64 +575,78 @@ object Form_changes_houses2: TForm_changes_houses2
     object cxTabSheet2: TcxTabSheet
       Caption = #1042#1099#1087#1086#1083#1085#1077#1085#1085#1099#1077
       ImageIndex = 1
+      ExplicitWidth = 879
+      ExplicitHeight = 695
       object cxgrd1: TcxGrid
         Left = 0
         Top = 0
-        Width = 879
-        Height = 695
+        Width = 1058
+        Height = 581
         Align = alClient
         TabOrder = 0
+        ExplicitWidth = 879
+        ExplicitHeight = 695
         object cxgrdbtblvwGrid1DBTableView1: TcxGridDBTableView
+          PopupMenu = PopupMenu3
           Navigator.Buttons.CustomButtons = <>
+          Navigator.Buttons.Delete.Visible = False
           Navigator.Visible = True
           DataController.DataSource = DS_c_change_docs
           DataController.KeyFieldNames = 'ID'
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <>
           DataController.Summary.SummaryGroups = <>
-          OptionsData.Editing = False
+          OptionsBehavior.CellHints = True
+          OptionsData.Deleting = False
+          OptionsData.DeletingConfirmation = False
           OptionsData.Inserting = False
           OptionsSelection.InvertSelect = False
+          OptionsView.CellAutoHeight = True
           OptionsView.ColumnAutoWidth = True
           OptionsView.GroupByBox = False
           object cxgrdbtblvwGrid1DBTableView1ID: TcxGridDBColumn
             DataBinding.FieldName = 'ID'
-            Width = 58
+            Width = 90
           end
           object cxgrdbtblvwGrid1DBTableView1DTEK: TcxGridDBColumn
             Caption = #1044#1072#1090#1072
             DataBinding.FieldName = 'DTEK'
-            Width = 55
+            Width = 91
           end
           object cxgrdbtblvwGrid1DBTableView1TS: TcxGridDBColumn
             Caption = #1044#1072#1090#1072'-'#1074#1088#1077#1084#1103' '#1087#1088#1086#1074#1086#1076#1082#1080
             DataBinding.FieldName = 'TS'
-            Width = 120
+            Width = 124
+          end
+          object cxgrdbtblvwGrid1DBTableView1DESCRIPTION: TcxGridDBColumn
+            Caption = #1054#1087#1080#1089#1072#1085#1080#1077
+            DataBinding.FieldName = 'DESCRIPTION'
+            Width = 171
           end
           object cxgrdbtblvwGrid1DBTableView1TEXT: TcxGridDBColumn
             Caption = #1055#1088#1080#1084#1077#1095#1072#1085#1080#1077
             DataBinding.FieldName = 'TEXT'
-            Width = 351
+            Width = 180
           end
           object cxgrdbtblvwGrid1DBTableView1MGCHANGE: TcxGridDBColumn
             Caption = #1047#1072' '#1087#1077#1088#1080#1086#1076
             DataBinding.FieldName = 'MGCHANGE'
-            Width = 67
+            Width = 55
           end
           object cxgrdbtblvwGrid1DBTableView1MG2: TcxGridDBColumn
             Caption = #1055#1077#1088#1080#1086#1076#1086#1084
             DataBinding.FieldName = 'MG2'
-            Width = 55
+            Width = 54
           end
           object cxgrdbtblvwGrid1DBTableView1USER_NAME: TcxGridDBColumn
             Caption = #1055#1086#1083#1100#1079#1086#1074#1072#1090#1077#1083#1100
             DataBinding.FieldName = 'USER_NAME'
-            Width = 62
+            Width = 87
           end
           object cxgrdbtblvwGrid1DBTableView1CD_TP: TcxGridDBColumn
             Caption = #1058#1080#1087' (CD_TP)'
             DataBinding.FieldName = 'CD_TP'
-            Width = 50
+            Width = 25
           end
         end
         object cxgrd1Level1: TcxGridLevel
@@ -633,8 +657,8 @@ object Form_changes_houses2: TForm_changes_houses2
   end
   object dxStatusBar1: TdxStatusBar
     Left = 0
-    Top = 723
-    Width = 887
+    Top = 609
+    Width = 1066
     Height = 20
     Panels = <
       item
@@ -646,17 +670,20 @@ object Form_changes_houses2: TForm_changes_houses2
     Font.Height = -11
     Font.Name = 'Tahoma'
     Font.Style = []
+    ExplicitTop = 723
+    ExplicitWidth = 887
     object dxStatusBar1Container1: TdxStatusBarContainerControl
       Left = 2
       Top = 4
-      Width = 867
+      Width = 1046
       Height = 14
       object cxProgressBar1: TcxProgressBar
         Left = 0
         Top = 0
         Align = alClient
         TabOrder = 0
-        Width = 867
+        ExplicitWidth = 867
+        Width = 1046
       end
     end
   end
@@ -1427,18 +1454,19 @@ object Form_changes_houses2: TForm_changes_houses2
   object OD_c_change_docs: TOracleDataSet
     SQL.Strings = (
       
-        'select t.*, s.name as user_name, t.rowid from scott.c_change_doc' +
-        's t left join scott.t_user s on t.user_id=s.id'
+        'select t.*, s.name as user_name from scott.c_change_docs t left ' +
+        'join scott.t_user s on t.user_id=s.id'
       'order by t.id')
     Optimize = False
     QBEDefinition.QBEFieldDefs = {
-      050000000A0000000400000049004400010000000000100000004D0047004300
+      050000000B0000000400000049004400010000000000100000004D0047004300
       480041004E0047004500010000000000080000004400540045004B0001000000
       000004000000540053000100000000000E00000055005300450052005F004900
       44000100000000000800000054004500580054000100000000000A0000004300
       44005F0054005000010000000000060000004D00470032000100000000001200
       000055005300450052005F004E0041004D004500010000000000140000005000
-      4100520041004D005F004A0053004F004E00010000000000}
+      4100520041004D005F004A0053004F004E000100000000001600000044004500
+      53004300520049005000540049004F004E00010000000000}
     Session = DataModule1.OracleSession1
     DesignActivation = True
     Active = True
@@ -1477,5 +1505,13 @@ object Form_changes_houses2: TForm_changes_houses2
     Active = True
     Left = 280
     Top = 168
+  end
+  object PopupMenu3: TPopupMenu
+    Left = 438
+    Top = 184
+    object mnu2: TMenuItem
+      Caption = #1059#1076#1072#1083#1080#1090#1100' '#1087#1077#1088#1077#1088#1072#1089#1095#1077#1090' '#1074' '#1094#1077#1083#1086#1084
+      OnClick = mnu2Click
+    end
   end
 end

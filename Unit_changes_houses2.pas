@@ -13,7 +13,7 @@ uses
   cxMaskEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, IdBaseComponent,
   IdComponent, IdTCPConnection, IdTCPClient, IdHTTP, cxImageComboBox,
   dxSkinsCore, dxSkinsDefaultPainters, dxDateRanges, dxStatusBar, cxProgressBar,
-  REST.Types;
+  REST.Types, Vcl.Menus;
 
 type
   TForm_changes_houses2 = class(TForm)
@@ -110,6 +110,9 @@ type
     dxStatusBar1: TdxStatusBar;
     dxStatusBar1Container1: TdxStatusBarContainerControl;
     cxProgressBar1: TcxProgressBar;
+    cxgrdbtblvwGrid1DBTableView1DESCRIPTION: TcxGridDBColumn;
+    PopupMenu3: TPopupMenu;
+    mnu2: TMenuItem;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btn1Click(Sender: TObject);
     procedure btn2Click(Sender: TObject);
@@ -123,6 +126,7 @@ type
     procedure chkIsPremiseClick(Sender: TObject);
     procedure setObjectChecked(tp: integer);
     procedure chkIsAllClick(Sender: TObject);
+    procedure mnu2Click(Sender: TObject);
   private    { Private declarations }
   public    { Public declarations }
   end;
@@ -380,6 +384,17 @@ begin
     setObjectChecked(0);
   end;
 
+  cxpgcntrl1.ActivePageIndex:=0;
+
+end;
+
+procedure TForm_changes_houses2.mnu2Click(Sender: TObject);
+begin
+  //удаление перерасчета в целом
+  DataModule1.OraclePackage1.CallProcedure
+     ('scott.C_CHANGES.del_chng_doc', [OD_c_change_docs.FieldByName('id').AsInteger]);
+  OD_c_change_docs.Active:=False;
+  OD_c_change_docs.Active:=True;
 end;
 
 procedure TForm_changes_houses2.chkIsObjectsClick(Sender: TObject);
