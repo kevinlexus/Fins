@@ -214,6 +214,8 @@ type
     N0107221: TMenuItem;
     QuestionMenuItem: TMenuItem;
     N2711221: TMenuItem;
+    N10: TMenuItem;
+    N14: TMenuItem;
     procedure N5Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure N7Click(Sender: TObject);
@@ -583,7 +585,9 @@ end;
 
 procedure TForm_Main.N14Click(Sender: TObject);
 begin
-  //Application.CreateForm(TForm_opl_usl, Form_opl_usl);
+  // Список счетчиков, с окончанием срока поверки
+  StartTreeObj;
+  Form_tree_objects.setAccess('99', 0, 3);
 end;
 
 procedure TForm_Main.N15Click(Sender: TObject);
@@ -1492,16 +1496,8 @@ end;
 
 procedure TForm_Main.N87Click(Sender: TObject);
 begin
-
   StartTreeObj;
-//  if FF('Form_olap', 0) = 0 then
-//    Application.CreateForm(TForm_olap, Form_olap);
   Form_tree_objects.setAccess('58', 1, 1);
-
-  {  Panel2.Width:=235;
-    if FF('Form_olap', 0) = 0 then
-      Application.CreateForm(TForm_olap, Form_olap);
-    Form_tree_objects.setAccess('57', 1, 1);}
 end;
 
 procedure TForm_Main.N88Click(Sender: TObject);

@@ -1941,6 +1941,9 @@ object Form_kart: TForm_kart
     Panels = <
       item
         PanelStyleClassName = 'TdxStatusBarTextPanelStyle'
+      end
+      item
+        PanelStyleClassName = 'TdxStatusBarTextPanelStyle'
       end>
     SimplePanelStyle.AutoHint = True
     Font.Charset = DEFAULT_CHARSET
@@ -3620,15 +3623,15 @@ object Form_kart: TForm_kart
       ''
       ''
       ''
-      ''
       '                t.npp,'#11
       ''
       ''
       ''
+      '                u.nm,'#11
       ''
-      '                u.nm,'
-      'u.npp,'#11
       ''
+      ''
+      '                u.npp as npp_usl,'#11
       ''
       ''
       ''
@@ -3636,9 +3639,7 @@ object Form_kart: TForm_kart
       ''
       ''
       ''
-      ''
       '                 from scott.t_objxpar x'#11
-      ''
       ''
       ''
       ''
@@ -3648,14 +3649,11 @@ object Form_kart: TForm_kart
       ''
       ''
       ''
-      ''
       '                 where t.k_lsk_id = x.fk_k_lsk'#11
       ''
       ''
       ''
-      ''
       '                   and x.fk_list = s.id'#11
-      ''
       ''
       ''
       ''
@@ -3665,16 +3663,17 @@ object Form_kart: TForm_kart
       ''
       ''
       ''
+      '                (select distinct last_value(x.n1)'#11
+      ''
+      ''
       ''
       
-        '                (select distinct last_value(x.n1) over (order by' +
-        ' x.id ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING)'#11
-      ''
+        '                                            over (order by x.id ' +
+        'rows between unbounded preceding and unbounded following)'#11
       ''
       ''
       ''
       '                 from scott.t_objxpar x'#11
-      ''
       ''
       ''
       ''
@@ -3684,9 +3683,7 @@ object Form_kart: TForm_kart
       ''
       ''
       ''
-      ''
       '                 where t.k_lsk_id = x.fk_k_lsk'#11
-      ''
       ''
       ''
       ''
@@ -3694,11 +3691,17 @@ object Form_kart: TForm_kart
       ''
       ''
       ''
-      ''
       
         '                   and x.mg <= coalesce(:period, p.period)) as n' +
-        '1'#11
+        '1,'#11
       ''
+      
+        'case when t.dt2  between to_date(p.period||'#39'01'#39','#39'YYYYMMDD'#39') and ' +
+        'add_months(last_day(to_date(p.period||'#39'01'#39','#39'YYYYMMDD'#39')),2) then ' +
+        '1 else 0 end'#11
+      ''
+      'as expired'
+      #11
       ''
       ''
       ''
@@ -3706,9 +3709,7 @@ object Form_kart: TForm_kart
       ''
       ''
       ''
-      ''
       '         join scott.usl u on t.fk_usl = u.usl'#11
-      ''
       ''
       ''
       ''
@@ -3716,14 +3717,11 @@ object Form_kart: TForm_kart
       ''
       ''
       ''
-      ''
       'where t.fk_klsk_obj = :k_lsk_id'#11
       ''
       ''
       ''
-      ''
       '  and (t.dt2 >='#11
-      ''
       ''
       ''
       ''
@@ -3734,7 +3732,6 @@ object Form_kart: TForm_kart
       ''
       ''
       ''
-      ''
       
         '       t.dt2 between to_date(coalesce(:period, p.period) || '#39'01'#39 +
         ', '#39'YYYYMMDD'#39') and last_day(to_date(coalesce(:period, p.period) |' +
@@ -3742,27 +3739,24 @@ object Form_kart: TForm_kart
       ''
       ''
       ''
+      'group by t.id, t.npp, u.nm, u.npp, t.k_lsk_id, p.period,'#11
+      
+        'case when t.dt2  between to_date(p.period||'#39'01'#39','#39'YYYYMMDD'#39') and ' +
+        'add_months(last_day(to_date(p.period||'#39'01'#39','#39'YYYYMMDD'#39')),2) then ' +
+        '1 else 0 end'#11
       ''
-      'group by t.id, t.npp, u.nm, u.npp, t.k_lsk_id, p.period'#11
-      ''
-      ''
-      ''
-      ''
-      'order by u.npp, t.npp'#11
-      ''
-      ''
-      ''
-      ''
-      '')
+      'order by u.npp, t.npp')
     Optimize = False
     Variables.Data = {
       0400000002000000120000003A004B005F004C0053004B005F00490044000300
       000000000000000000000E0000003A0050004500520049004F00440005000000
       0000000000000000}
     QBEDefinition.QBEFieldDefs = {
-      0500000005000000040000004E004D00010000000000040000004E0031000100
+      0500000007000000040000004E004D00010000000000040000004E0031000100
       000000000400000049004400010000000000060000004E005000500001000000
-      00000600000056004F004C00010000000000}
+      00000600000056004F004C000100000000000E00000045005800500049005200
+      450044000100000000000E0000004E00500050005F00550053004C0001000000
+      0000}
     Master = Form_list_kart.OD_list_kart
     MasterFields = 'k_lsk_id'
     DetailFields = 'k_lsk_id'
@@ -3787,6 +3781,9 @@ object Form_kart: TForm_kart
     end
     object OD_meterVOL: TFloatField
       FieldName = 'VOL'
+    end
+    object OD_meterEXPIRED: TFloatField
+      FieldName = 'EXPIRED'
     end
   end
   object DS_meter: TDataSource

@@ -368,6 +368,7 @@ type
     Label17: TLabel;
     cxDBTextEdit11: TcxDBTextEdit;
     cxDBTextEdit12: TcxDBTextEdit;
+    OD_meterEXPIRED: TFloatField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure OD_kartAfterPost(DataSet: TDataSet);
     procedure OD_kart_prSTATUSValidate(Sender: TField);
@@ -735,6 +736,7 @@ begin
       dxStatusBar1.Panels[0].Text := err_;
     end;
   end;
+
 end;
 
 procedure changes_sch_el(var_: Integer);
@@ -769,6 +771,7 @@ end;
 procedure TForm_kart.refresh_kart;
 var
   err_: string;
+  isHead: Boolean;
 begin
   //Обновление карточки
 //  LockWindowUpdate(handle);
@@ -826,6 +829,23 @@ begin
         Label47.Caption := 'РСО';
         Label47.Font.Color := clGreen;
       end;
+    end;
+
+    // срок поверки счетчиков
+    isHead := false;
+    dxStatusBar1.Panels[1].Text:='';
+    while not OD_meter.Eof do
+    begin
+      if OD_meter.FieldByName('expired').AsInteger = 1 then
+      begin
+        if isHead = false then
+        begin
+          isHead := true;
+          dxStatusBar1.Panels[1].Text := 'Срок поверки счетчиков:';
+        end;
+        dxStatusBar1.Panels[1].Text := dxStatusBar1.Panels[1].Text + '№ ' + OD_meter.FieldByName('NPP').AsString + ' ' + OD_meter.FieldByName('NM').AsString + ' ';
+      end;
+      OD_meter.Next;
     end;
 
   end;

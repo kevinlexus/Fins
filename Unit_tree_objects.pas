@@ -221,22 +221,26 @@ begin
   //ShowMessage('step 0.4');
   DM_Olap.Uni_data.Params.ParamByName('cd_').AsString := reportCd;
 
-  if CheckBox5.Checked = true then
+  if two_periods_ <> 3 then
   begin
-    DM_Olap.Uni_data.Params.ParamByName('mg_').Value := null;
-    DM_Olap.Uni_data.Params.ParamByName('mg1_').Value := null;
-    DM_Olap.Uni_data.Params.ParamByName('dat_').AsDate := DBLookupComboBox5.KeyValue;
-    DM_Olap.Uni_data.Params.ParamByName('dat1_').AsDate := DBLookupComboBox6.KeyValue;
-  end
-  else
-  begin
-    DM_Olap.Uni_data.Params.ParamByName('dat_').Value := null;
-    DM_Olap.Uni_data.Params.ParamByName('dat1_').Value := null;
-    DM_Olap.Uni_data.Params.ParamByName('mg_').AsString := DBLookupComboBox5.KeyValue;
-    if two_periods_ = 1 then
-      DM_Olap.Uni_data.Params.ParamByName('mg1_').AsString := DBLookupComboBox6.KeyValue
+    if CheckBox5.Checked = true then
+    begin
+      DM_Olap.Uni_data.Params.ParamByName('mg_').Value := null;
+      DM_Olap.Uni_data.Params.ParamByName('mg1_').Value := null;
+      DM_Olap.Uni_data.Params.ParamByName('dat_').AsDate := DBLookupComboBox5.KeyValue;
+      DM_Olap.Uni_data.Params.ParamByName('dat1_').AsDate := DBLookupComboBox6.KeyValue;
+    end
     else
-      DM_Olap.Uni_data.Params.ParamByName('mg1_').AsString := DBLookupComboBox5.KeyValue;
+    begin
+      DM_Olap.Uni_data.Params.ParamByName('dat_').Value := null;
+      DM_Olap.Uni_data.Params.ParamByName('dat1_').Value := null;
+
+      DM_Olap.Uni_data.Params.ParamByName('mg_').AsString := DBLookupComboBox5.KeyValue;
+      if two_periods_ = 1 then
+        DM_Olap.Uni_data.Params.ParamByName('mg1_').AsString := DBLookupComboBox6.KeyValue
+      else
+        DM_Olap.Uni_data.Params.ParamByName('mg1_').AsString := DBLookupComboBox5.KeyValue;
+    end;
   end;
   //ShowMessage('step 0.5');
 
@@ -279,12 +283,19 @@ begin
   //ShowMessage('step 0.6');
 
   DM_Olap.Uni_Data.Active := False;
-  DM_Olap.Uni_Data.Active := True;
-  //ShowMessage('step 0.7');
+//  try
+    DM_Olap.Uni_Data.Active := True;
+//  except
+    Form_status.Close;
+    Application.MessageBox('Нет данных', 'Внимание!', MB_OK + MB_ICONINFORMATION + MB_TOPMOST);
+//  end;
+
+//  if FF('Form_status', 0)=1 then
+//    Form_status.Close;
+
   cxm1.Lines.Clear;
   cxm1.Lines.Text := 'Получено строк:' + IntToStr(DM_Olap.Uni_Data.RecordCount);
-  //ShowMessage('step 0.8');
-  Form_status.Close;
+
 end;
 
 procedure TForm_tree_objects.saveXML;
@@ -966,6 +977,8 @@ begin
     Label2.Visible := false;
     DBLookupComboBox5.ListField := 'MG2';
   end;
+  if two_periods_ = 3 then
+    Panel3.Visible := False; // погасить выбор периодов
 
   if have_current_ = 1 then
   begin
@@ -2151,6 +2164,13 @@ end;
 
 function TForm_tree_objects.checkPeriod(det: Integer): Boolean;
 begin
+
+  if (two_periods_ = 3) then // не проверять периоды если two_periods_=3
+  begin
+    Result := False;
+    Exit;
+  end;
+
   if (two_periods_ <> 2) and ((DBLookupComboBox5.KeyValue = null) or ((DBLookupComboBox6.KeyValue = null) and (two_periods_ = 1))) then
   begin
     msg2('Не выбран период отчета!', 'Внимание!', MB_OK + MB_ICONSTOP);
