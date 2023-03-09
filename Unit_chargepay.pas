@@ -96,6 +96,24 @@ type
     cxGridDBTableView2PAY_PEN: TcxGridDBColumn;
     cxGridDBTableView2OPER_NAME: TcxGridDBColumn;
     cxGridDBTableView2DTEK: TcxGridDBColumn;
+    TabSheet3: TTabSheet;
+    cxGrid4: TcxGrid;
+    cxGridDBTableView3: TcxGridDBTableView;
+    cxGridDBColumn1: TcxGridDBColumn;
+    cxGridDBColumn2: TcxGridDBColumn;
+    cxGridDBColumn3: TcxGridDBColumn;
+    cxGridDBColumn4: TcxGridDBColumn;
+    cxGridDBColumn5: TcxGridDBColumn;
+    cxGridDBColumn6: TcxGridDBColumn;
+    cxGridDBColumn7: TcxGridDBColumn;
+    cxGridDBColumn8: TcxGridDBColumn;
+    cxGridLevel3: TcxGridLevel;
+    cxGrid4Level1: TcxGridLevel;
+    cxGrid4DBTableView1: TcxGridDBTableView;
+    cxGrid4DBTableView1OPER_NAME: TcxGridDBColumn;
+    cxGrid4DBTableView1SUMMA: TcxGridDBColumn;
+    cxGrid4DBTableView1PENYA: TcxGridDBColumn;
+    cxGrid4DBTableView1DOPL: TcxGridDBColumn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button3Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -216,7 +234,7 @@ begin
 
   Panel1.Visible := true;
   Update;
-  if (PageControl1.ActivePageIndex = 1) or (PageControl1.ActivePageIndex = 2) then
+  if (PageControl1.ActivePageIndex = 1) or (PageControl1.ActivePageIndex = 2) or (PageControl1.ActivePageIndex = 3) then
   begin
     // TODO так странно, внутри prepare_arch_lsk делается опять вызов расчета задолженности и пени....
     DataModule1.OraclePackage1.CallProcedure('scott.GEN.prepare_arch_lsk', [Form_list_kart.OD_list_kart.FieldByName('lsk').asString, 0]);
@@ -230,6 +248,13 @@ begin
     begin
       OD_chargepay6.Active := false;
       OD_chargepay6.Active := true;
+    end
+    else if PageControl1.ActivePageIndex = 3 then
+    begin
+      OD_chargepay2.Active := false;
+      OD_chargepay2.Active := true;
+      OD_chargepay4.Active := false;
+      OD_chargepay4.Active := true;
     end;
 
   end;
@@ -323,7 +348,7 @@ begin
     frxReport1.PrepareReport(true);
     frxReport1.ShowPreparedReport;
 
-  end{  else if PageControl1.ActivePageIndex = 1 then
+  end {else if PageControl1.ActivePageIndex = 3 then
   begin
     frxReport1.LoadFromFile(Form_main.exepath_ + 'det3.fr3', True);
     CheckBox1.Visible := True;
@@ -341,7 +366,8 @@ begin
 
     frxReport1.PrepareReport(true);
     frxReport1.ShowPreparedReport;
-  end
+  end  }
+  {
   else if PageControl1.ActivePageIndex = 2 then
   begin
     frxReport1.LoadFromFile(Form_main.exepath_ + 'det2.fr3', True);

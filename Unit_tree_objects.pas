@@ -283,15 +283,15 @@ begin
   //ShowMessage('step 0.6');
 
   DM_Olap.Uni_Data.Active := False;
-//  try
+  try
     DM_Olap.Uni_Data.Active := True;
-//  except
+  except
     Form_status.Close;
     Application.MessageBox('Нет данных', 'Внимание!', MB_OK + MB_ICONINFORMATION + MB_TOPMOST);
-//  end;
+  end;
 
-//  if FF('Form_status', 0)=1 then
-//    Form_status.Close;
+  if FF('Form_status', 0)=1 then
+    Form_status.Close;
 
   cxm1.Lines.Clear;
   cxm1.Lines.Text := 'Получено строк:' + IntToStr(DM_Olap.Uni_Data.RecordCount);

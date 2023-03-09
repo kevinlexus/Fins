@@ -599,8 +599,8 @@ object Form_get_pay_nal: TForm_get_pay_nal
         't.nink, t.nkom, t.dtek, t.nkvit, t.dat_ink, t.ts, t.id, t.iscorr' +
         'ect, '
       
-        'k.phw,k.pgw,k.pel, k.k_fam||'#39' '#39'||substr(k.k_im,1,1)||'#39'. '#39'||subst' +
-        'r(k.k_ot,1,1)||'#39'.'#39' as fio_owner,'
+        '/*k.phw,k.pgw,k.pel,*/ k.k_fam||'#39' '#39'||substr(k.k_im,1,1)||'#39'. '#39'||s' +
+        'ubstr(k.k_ot,1,1)||'#39'.'#39' as fio_owner,'
       
         'c.name as name_org, c.phone as phone, c.adr as adr_org, c.adr_ca' +
         'sh, '
@@ -913,5 +913,152 @@ object Form_get_pay_nal: TForm_get_pay_nal
     DesignActivation = True
     Left = 40
     Top = 120
+  end
+  object OD_meter: TOracleDataSet
+    SQL.Strings = (
+      'select distinct t.id,'#11
+      #11
+      #11
+      '                t.npp,'#11
+      #11
+      #11
+      '                u.nm,'#11
+      #11
+      #11
+      '                u.npp as npp_usl,'#11
+      #11
+      #11
+      '                (select sum(x.n1)'#11
+      #11
+      #11
+      '                 from scott.t_objxpar x'#11
+      #11
+      #11
+      
+        '                          join scott.u_list s on s.cd = '#39'ins_vol' +
+        '_sch'#39#11
+      #11
+      #11
+      '                 where t.k_lsk_id = x.fk_k_lsk'#11
+      #11
+      #11
+      '                   and x.fk_list = s.id'#11
+      #11
+      #11
+      '                   and x.mg = p.period) as vol,'#11
+      #11
+      #11
+      '                (select distinct last_value(x.n1)'#11
+      
+        '                                            over (order by x.id ' +
+        'rows between unbounded preceding and unbounded following)'#11
+      #11
+      #11
+      '                 from scott.t_objxpar x'#11
+      #11
+      #11
+      
+        '                          join scott.u_list s on s.cd = '#39'ins_sch' +
+        #39#11
+      #11
+      #11
+      '                 where t.k_lsk_id = x.fk_k_lsk'#11
+      #11
+      #11
+      '                   and x.fk_list = s.id'#11
+      #11
+      #11
+      '                   and x.mg <= p.period) as n1,'#11
+      #11
+      #11
+      '                case'#11
+      
+        '                    when t.dt2 between to_date(p.period || '#39'01'#39',' +
+        ' '#39'YYYYMMDD'#39') and add_months(last_day(to_date(p.period || '#39'01'#39', '#39 +
+        'YYYYMMDD'#39')), 2)'#11
+      '                        then 1'#11
+      '                    else 0 end as expired'#11
+      #11
+      #11
+      'from scott.meter t'#11
+      #11
+      #11
+      '         join scott.usl u on t.fk_usl = u.usl'#11
+      #11
+      #11
+      '         join scott.params p on 1 = 1'#11
+      #11
+      #11
+      'where t.fk_klsk_obj = :k_lsk_id'#11
+      #11
+      #11
+      '  and (t.dt2 >='#11
+      
+        '       last_day(to_date(p.period || '#39'01'#39', '#39'YYYYMMDD'#39')) or -- '#1083#1080#1073 +
+        #1086' '#1089#1095'. '#1076#1072#1083#1100#1096#1077' '#1089#1091#1097#1077#1089#1090#1074#1091#1077#1090', '#1083#1080#1073#1086' '#1079#1072#1074#1077#1088#1096#1072#1077#1090' '#1088#1072#1073#1086#1090#1091' '#1074' '#1074#1099#1073#1088#1072#1085#1085#1086#1084' '#1087#1077#1088#1080#1086 +
+        #1076#1077#11
+      #11
+      #11
+      
+        '       t.dt2 between to_date(p.period || '#39'01'#39', '#39'YYYYMMDD'#39') and l' +
+        'ast_day(to_date(p.period || '#39'01'#39', '#39'YYYYMMDD'#39')))'#11
+      #11
+      #11
+      'group by t.id, t.npp, u.nm, u.npp, t.k_lsk_id, p.period,'#11
+      #11
+      '         case'#11
+      
+        '             when t.dt2 between to_date(p.period || '#39'01'#39', '#39'YYYYM' +
+        'MDD'#39') and add_months(last_day(to_date(p.period || '#39'01'#39', '#39'YYYYMMD' +
+        'D'#39')), 2)'#11
+      '                 then 1'#11
+      '             else 0 end'#11
+      #11
+      #11
+      'order by u.npp, t.npp'#11
+      '')
+    Optimize = False
+    Variables.Data = {
+      0400000001000000120000003A004B005F004C0053004B005F00490044000300
+      00000000000000000000}
+    QBEDefinition.QBEFieldDefs = {
+      0500000007000000040000004E004D00010000000000040000004E0031000100
+      000000000400000049004400010000000000060000004E005000500001000000
+      00000600000056004F004C000100000000000E00000045005800500049005200
+      450044000100000000000E0000004E00500050005F00550053004C0001000000
+      0000}
+    Master = OD_Kart
+    MasterFields = 'k_lsk_id'
+    DetailFields = 'k_lsk_id'
+    RefreshOptions = [roAfterUpdate, roAllFields]
+    Session = DataModule1.OracleSession1
+    DesignActivation = True
+    Left = 280
+    Top = 94
+    object OD_meterID: TFloatField
+      FieldName = 'ID'
+      Required = True
+    end
+    object OD_meterNPP: TFloatField
+      FieldName = 'NPP'
+    end
+    object OD_meterNM: TStringField
+      FieldName = 'NM'
+      Size = 35
+    end
+    object OD_meterN1: TFloatField
+      FieldName = 'N1'
+    end
+    object OD_meterVOL: TFloatField
+      FieldName = 'VOL'
+    end
+    object OD_meterEXPIRED: TFloatField
+      FieldName = 'EXPIRED'
+    end
+  end
+  object DS_meter: TDataSource
+    DataSet = OD_meter
+    Left = 316
+    Top = 94
   end
 end

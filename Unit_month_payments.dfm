@@ -376,7 +376,7 @@ object Form_month_payments: TForm_month_payments
       
         't.nink, t.nkom, t.dtek, t.nkvit, t.dat_ink, t.ts, t.id, t.iscorr' +
         'ect, c.name as comp_name, a.oper||'#39'-'#39'||p.naim as oper_name,'
-      't.num_doc, t.dat_doc, m.cash_num, p.cash_oper_tp'
+      't.num_doc, t.dat_doc, m.cash_num, p.cash_oper_tp, k.k_lsk_id'
       '  from scott.kart k join scott.c_kwtp t on k.lsk=t.lsk'
       
         '                               join scott.c_comps m on t.nkom=m.' +
@@ -402,7 +402,7 @@ object Form_month_payments: TForm_month_payments
       120000003A004B005F004C0053004B005F004900440003000000000000000000
       0000080000003A004C0053004B00050000000000000000000000}
     QBEDefinition.QBEFieldDefs = {
-      0500000014000000060000004C0053004B000100000000000A00000053005500
+      0500000015000000060000004C0053004B000100000000000A00000053005500
       4D004D0041000100000000000A000000500045004E0059004100010000000000
       080000004F005000450052000100000000000800000044004F0050004C000100
       00000000080000004E0049004E004B00010000000000080000004E004B004F00
@@ -415,7 +415,8 @@ object Form_month_payments: TForm_month_payments
       5F0044004F0043000100000000000E0000004400410054005F0044004F004300
       01000000000010000000530055004D004D005F00490054004700010000000000
       1000000043004100530048005F004E0055004D00010000000000180000004300
-      4100530048005F004F005000450052005F0054005000010000000000}
+      4100530048005F004F005000450052005F005400500001000000000010000000
+      4B005F004C0053004B005F0049004400010000000000}
     QueryAllRecords = False
     Session = DataModule1.OracleSession1
     DesignActivation = True
@@ -534,6 +535,10 @@ object Form_month_payments: TForm_month_payments
     end
     object OD_c_kwtpCASH_OPER_TP: TFloatField
       FieldName = 'CASH_OPER_TP'
+    end
+    object OD_c_kwtpK_LSK_ID: TFloatField
+      FieldName = 'K_LSK_ID'
+      Required = True
     end
   end
   object OD_c_kwtp_chk: TOracleDataSet
@@ -840,5 +845,152 @@ object Form_month_payments: TForm_month_payments
     DesignActivation = True
     Left = 88
     Top = 408
+  end
+  object OD_meter: TOracleDataSet
+    SQL.Strings = (
+      'select distinct t.id,'#11
+      #11
+      #11
+      '                t.npp,'#11
+      #11
+      #11
+      '                u.nm,'#11
+      #11
+      #11
+      '                u.npp as npp_usl,'#11
+      #11
+      #11
+      '                (select sum(x.n1)'#11
+      #11
+      #11
+      '                 from scott.t_objxpar x'#11
+      #11
+      #11
+      
+        '                          join scott.u_list s on s.cd = '#39'ins_vol' +
+        '_sch'#39#11
+      #11
+      #11
+      '                 where t.k_lsk_id = x.fk_k_lsk'#11
+      #11
+      #11
+      '                   and x.fk_list = s.id'#11
+      #11
+      #11
+      '                   and x.mg = p.period) as vol,'#11
+      #11
+      #11
+      '                (select distinct last_value(x.n1)'#11
+      
+        '                                            over (order by x.id ' +
+        'rows between unbounded preceding and unbounded following)'#11
+      #11
+      #11
+      '                 from scott.t_objxpar x'#11
+      #11
+      #11
+      
+        '                          join scott.u_list s on s.cd = '#39'ins_sch' +
+        #39#11
+      #11
+      #11
+      '                 where t.k_lsk_id = x.fk_k_lsk'#11
+      #11
+      #11
+      '                   and x.fk_list = s.id'#11
+      #11
+      #11
+      '                   and x.mg <= p.period) as n1,'#11
+      #11
+      #11
+      '                case'#11
+      
+        '                    when t.dt2 between to_date(p.period || '#39'01'#39',' +
+        ' '#39'YYYYMMDD'#39') and add_months(last_day(to_date(p.period || '#39'01'#39', '#39 +
+        'YYYYMMDD'#39')), 2)'#11
+      '                        then 1'#11
+      '                    else 0 end as expired'#11
+      #11
+      #11
+      'from scott.meter t'#11
+      #11
+      #11
+      '         join scott.usl u on t.fk_usl = u.usl'#11
+      #11
+      #11
+      '         join scott.params p on 1 = 1'#11
+      #11
+      #11
+      'where t.fk_klsk_obj = :k_lsk_id'#11
+      #11
+      #11
+      '  and (t.dt2 >='#11
+      
+        '       last_day(to_date(p.period || '#39'01'#39', '#39'YYYYMMDD'#39')) or -- '#1083#1080#1073 +
+        #1086' '#1089#1095'. '#1076#1072#1083#1100#1096#1077' '#1089#1091#1097#1077#1089#1090#1074#1091#1077#1090', '#1083#1080#1073#1086' '#1079#1072#1074#1077#1088#1096#1072#1077#1090' '#1088#1072#1073#1086#1090#1091' '#1074' '#1074#1099#1073#1088#1072#1085#1085#1086#1084' '#1087#1077#1088#1080#1086 +
+        #1076#1077#11
+      #11
+      #11
+      
+        '       t.dt2 between to_date(p.period || '#39'01'#39', '#39'YYYYMMDD'#39') and l' +
+        'ast_day(to_date(p.period || '#39'01'#39', '#39'YYYYMMDD'#39')))'#11
+      #11
+      #11
+      'group by t.id, t.npp, u.nm, u.npp, t.k_lsk_id, p.period,'#11
+      #11
+      '         case'#11
+      
+        '             when t.dt2 between to_date(p.period || '#39'01'#39', '#39'YYYYM' +
+        'MDD'#39') and add_months(last_day(to_date(p.period || '#39'01'#39', '#39'YYYYMMD' +
+        'D'#39')), 2)'#11
+      '                 then 1'#11
+      '             else 0 end'#11
+      #11
+      #11
+      'order by u.npp, t.npp'#11
+      '')
+    Optimize = False
+    Variables.Data = {
+      0400000001000000120000003A004B005F004C0053004B005F00490044000300
+      00000000000000000000}
+    QBEDefinition.QBEFieldDefs = {
+      0500000007000000040000004E004D00010000000000040000004E0031000100
+      000000000400000049004400010000000000060000004E005000500001000000
+      00000600000056004F004C000100000000000E00000045005800500049005200
+      450044000100000000000E0000004E00500050005F00550053004C0001000000
+      0000}
+    Master = OD_c_kwtp
+    MasterFields = 'k_lsk_id'
+    DetailFields = 'k_lsk_id'
+    RefreshOptions = [roAfterUpdate, roAllFields]
+    Session = DataModule1.OracleSession1
+    DesignActivation = True
+    Left = 136
+    Top = 406
+    object OD_meterID: TFloatField
+      FieldName = 'ID'
+      Required = True
+    end
+    object OD_meterNPP: TFloatField
+      FieldName = 'NPP'
+    end
+    object OD_meterNM: TStringField
+      FieldName = 'NM'
+      Size = 35
+    end
+    object OD_meterN1: TFloatField
+      FieldName = 'N1'
+    end
+    object OD_meterVOL: TFloatField
+      FieldName = 'VOL'
+    end
+    object OD_meterEXPIRED: TFloatField
+      FieldName = 'EXPIRED'
+    end
+  end
+  object DS_meter: TDataSource
+    DataSet = OD_meter
+    Left = 172
+    Top = 406
   end
 end

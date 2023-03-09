@@ -20,6 +20,7 @@ type
     Memo1: TMemo;
     Button3: TButton;
     btn1: TBitBtn;
+    frxDBmeter: TfrxDBDataset;
     procedure frxReport1ClosePreview(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);

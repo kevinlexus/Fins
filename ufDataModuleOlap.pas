@@ -38,7 +38,7 @@ type
     OD_levelLEVEL_ID: TFloatField;
     OD_uslm_olap: TOracleDataSet;
     DS_tree_objects: TDataSource;
-    Uni_Data: TUniQuery;
+    Uni_Data2: TUniQuery;
     UniSQLMonitor1: TUniSQLMonitor;
     Uni_tree_objects: TUniQuery;
     Uni_spr_params: TUniQuery;
@@ -56,6 +56,7 @@ type
     Uni_spr_paramsPARVC1: TStringField;
     Uni_spr_paramsPARDT1: TDateTimeField;
     Uni_spr_paramsROWID: TStringField;
+    Uni_Data: TUniQuery;
     procedure Uni_tree_objectsAfterPost(DataSet: TDataSet);
     procedure Uni_tree_objectsAfterScroll(DataSet: TDataSet);
   private

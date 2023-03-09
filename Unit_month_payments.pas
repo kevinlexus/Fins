@@ -132,6 +132,15 @@ type
     N5: TMenuItem;
     OD_c_kwtpCASH_NUM: TFloatField;
     OD_c_kwtpCASH_OPER_TP: TFloatField;
+    OD_meter: TOracleDataSet;
+    OD_meterID: TFloatField;
+    OD_meterNPP: TFloatField;
+    OD_meterNM: TStringField;
+    OD_meterN1: TFloatField;
+    OD_meterVOL: TFloatField;
+    OD_meterEXPIRED: TFloatField;
+    DS_meter: TDataSource;
+    OD_c_kwtpK_LSK_ID: TFloatField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure state_arch2(mgold_: string);
@@ -240,6 +249,10 @@ begin
     Application.CreateForm(TForm_plat_doc, Form_plat_doc);
   with Form_plat_doc do
   begin
+    OD_meter.Active:=False;
+    OD_meter.Active:=True;
+    frxDBmeter.DataSource := DS_meter;
+
     frxDBc_kwtp_chk.DataSource := DS_c_kwtp_chk;
     frxDBc_kwtp_mg_chk.DataSource := DS_c_kwtp_mg_chk;
 

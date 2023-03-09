@@ -375,7 +375,7 @@ object DM_Olap: TDM_Olap
     Left = 96
     Top = 192
   end
-  object Uni_Data: TUniQuery
+  object Uni_Data2: TUniQuery
     Connection = DataModule1.UniConnection1
     SQL.Strings = (
       'begin'
@@ -795,5 +795,128 @@ object DM_Olap: TDM_Olap
     DataSet = OD_level
     Left = 168
     Top = 416
+  end
+  object Uni_Data: TUniQuery
+    Connection = DataModule1.UniConnection1
+    SQL.Strings = (
+      'begin'
+      
+        '  scott.stat.rep_stat(:reu_, :p_for_reu, :kul_, :nd_, :trest_, :' +
+        'mg_, :mg1_, :dat_, :dat1_, '
+      
+        '    :var_, :det_, :org_, :oper_, :cd_, :spk_id_, :p_house, :p_ou' +
+        't_tp, :prep_refcursor);'
+      'end;')
+    FetchRows = 1000
+    Left = 32
+    Top = 88
+    ParamData = <
+      item
+        DataType = ftString
+        Name = 'reu_'
+        ParamType = ptInput
+        Value = ''
+      end
+      item
+        DataType = ftString
+        Name = 'p_for_reu'
+        ParamType = ptInput
+        Value = nil
+      end
+      item
+        DataType = ftString
+        Name = 'kul_'
+        ParamType = ptInput
+        Value = nil
+      end
+      item
+        DataType = ftString
+        Name = 'nd_'
+        ParamType = ptInput
+        Value = nil
+      end
+      item
+        DataType = ftString
+        Name = 'trest_'
+        ParamType = ptInput
+        Value = '01'
+      end
+      item
+        DataType = ftString
+        Name = 'mg_'
+        ParamType = ptInput
+        Value = '201404'
+      end
+      item
+        DataType = ftString
+        Name = 'mg1_'
+        ParamType = ptInput
+        Value = '201404'
+      end
+      item
+        DataType = ftDate
+        Name = 'dat_'
+        ParamType = ptInput
+        Value = nil
+      end
+      item
+        DataType = ftDate
+        Name = 'dat1_'
+        ParamType = ptInput
+        Value = nil
+      end
+      item
+        DataType = ftInteger
+        Name = 'var_'
+        ParamType = ptInput
+        Value = 1
+      end
+      item
+        DataType = ftInteger
+        Name = 'det_'
+        ParamType = ptInput
+        Value = 3
+      end
+      item
+        DataType = ftInteger
+        Name = 'org_'
+        ParamType = ptInput
+        Value = nil
+      end
+      item
+        DataType = ftString
+        Name = 'oper_'
+        ParamType = ptInput
+        Value = nil
+      end
+      item
+        DataType = ftString
+        Name = 'cd_'
+        ParamType = ptInput
+        Value = '78'
+      end
+      item
+        DataType = ftInteger
+        Name = 'spk_id_'
+        ParamType = ptInput
+        Value = nil
+      end
+      item
+        DataType = ftInteger
+        Name = 'p_house'
+        ParamType = ptInput
+        Value = nil
+      end
+      item
+        DataType = ftInteger
+        Name = 'p_out_tp'
+        ParamType = ptInput
+        Value = nil
+      end
+      item
+        DataType = ftCursor
+        Name = 'prep_refcursor'
+        Value = ''
+      end>
   end
 end

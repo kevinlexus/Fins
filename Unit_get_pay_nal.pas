@@ -102,6 +102,14 @@ type
     cxGridDBTableView1SUMMA: TcxGridDBColumn;
     cxGridDBTableView1PENYA: TcxGridDBColumn;
     cxGridDBTableView1ITOG: TcxGridDBColumn;
+    OD_meter: TOracleDataSet;
+    OD_meterID: TFloatField;
+    OD_meterNPP: TFloatField;
+    OD_meterNM: TStringField;
+    OD_meterN1: TFloatField;
+    OD_meterVOL: TFloatField;
+    OD_meterEXPIRED: TFloatField;
+    DS_meter: TDataSource;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button2Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -628,6 +636,10 @@ begin
         Application.CreateForm(TForm_plat_doc, Form_plat_doc);
       with Form_plat_doc do
       begin
+
+        OD_meter.Active:=False;
+        OD_meter.Active:=True;
+        frxDBmeter.DataSource := DS_meter;
 
         frxDBc_kwtp_chk.DataSource := DS_c_kwtp;
         frxDBc_kwtp_mg_chk.DataSource := DS_c_kwtp_mg;

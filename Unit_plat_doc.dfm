@@ -1,9 +1,9 @@
 object Form_plat_doc: TForm_plat_doc
   Left = 1126
   Top = 238
-  Width = 631
-  Height = 713
   Caption = #1055#1083#1072#1090#1077#1078#1085#1099#1081' '#1076#1086#1082#1091#1084#1077#1085#1090
+  ClientHeight = 674
+  ClientWidth = 615
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,7 +11,6 @@ object Form_plat_doc: TForm_plat_doc
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   FormStyle = fsStayOnTop
-
   OldCreateOrder = False
   Position = poMainFormCenter
   OnClose = FormClose
@@ -27,7 +26,9 @@ object Form_plat_doc: TForm_plat_doc
     OutlineVisible = False
     OutlineWidth = 120
     ThumbnailVisible = True
+    FindFmVisible = False
     UseReportHints = True
+    HideScrolls = False
   end
   object Panel1: TPanel
     Left = 0
@@ -69,9 +70,6 @@ object Form_plat_doc: TForm_plat_doc
       Width = 33
       Height = 33
       Hint = #1053#1072#1089#1090#1088#1086#1081#1082#1080' '#1087#1088#1080#1085#1090#1077#1088#1072
-      ParentShowHint = False
-      ShowHint = True
-      TabOrder = 3
       Glyph.Data = {
         36090000424D3609000000000000360000002800000018000000180000000100
         2000000000000009000000000000000000000000000000000000FFFFFFFFFFFF
@@ -147,6 +145,9 @@ object Form_plat_doc: TForm_plat_doc
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 3
     end
   end
   object Memo1: TMemo
@@ -188,10 +189,7 @@ object Form_plat_doc: TForm_plat_doc
       'ADR_ORG=ADR_ORG'
       'INN=INN'
       'OKPO=OKPO'
-      'KPP=KPP'
-      'PHW=PHW'
-      'PGW=PGW'
-      'PEL=PEL')
+      'KPP=KPP')
     BCDToCurrency = False
     Left = 24
     Top = 24
@@ -217,7 +215,7 @@ object Form_plat_doc: TForm_plat_doc
     Top = 24
   end
   object frxReport1: TfrxReport
-    Version = '5.1.9'
+    Version = '6.7.6'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     Preview = frxPreview1
@@ -230,15 +228,23 @@ object Form_plat_doc: TForm_plat_doc
     PreviewOptions.Zoom = 1.000000000000000000
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
+    PrintOptions.ShowDialog = False
     ReportOptions.CreateDate = 39815.451124548600000000
-    ReportOptions.LastChange = 41228.406549212960000000
+    ReportOptions.LastChange = 44994.610821319450000000
     ScriptLanguage = 'PascalScript'
     StoreInDFM = False
     Left = 88
     Top = 24
   end
   object frxDialogControls1: TfrxDialogControls
-    Left = 48
-    Top = 96
+    Left = 24
+    Top = 120
+  end
+  object frxDBmeter: TfrxDBDataset
+    UserName = 'frxDBmeter'
+    CloseDataSource = False
+    BCDToCurrency = False
+    Left = 24
+    Top = 72
   end
 end
