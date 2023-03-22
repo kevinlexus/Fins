@@ -258,12 +258,13 @@ begin
     serverIp := Ini.ReadString('Application', 'serverIp', '');
     // для вопросов в Google Docs:
     questionsUrl := Ini.ReadString('Application', 'questionsUrl', '');
+
   end;
 end;
 
-// загрузить параметры ККМ
+// загрузить параметры ККМ и прочие параметры
 
-procedure loadKKMPar;
+procedure loadOtherPar;
 begin
   // режим тестирования ККМ
   if Ini <> nil then
@@ -296,6 +297,8 @@ begin
         Form_Main.have_eq := 0;
 
     end;
+    // по умолчанию - сервер из license
+    Form_Main.javaServerUrl := 'http://'+Ini.ReadString('Application', 'serverIp', '')+':8100';
   end;
 end;
 
@@ -380,13 +383,11 @@ begin
   Application.CreateForm(TDM_Bill2, DM_Bill2);
 
   //ShowMessage('5');
-  loadKKMPar;
+  loadOtherPar;
   //ShowMessage('6');
 
   Form_Main.OracleEvent1.Start;
   Form_Main.User := User;
-  // по умолчанию - прод
-  Form_Main.javaServerUrl := 'http://127.0.0.1:8100';
 
   Form_Main.questionsUrl := questionsUrl;
   //ShowMessage('7');
