@@ -216,6 +216,7 @@ type
     N2711221: TMenuItem;
     N10: TMenuItem;
     N14: TMenuItem;
+    N15: TMenuItem;
     procedure N5Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure N7Click(Sender: TObject);
@@ -592,7 +593,9 @@ end;
 
 procedure TForm_Main.N15Click(Sender: TObject);
 begin
-  Application.CreateForm(TForm_print_strah, Form_print_strah);
+  // Список выполненных автоначислений
+  StartTreeObj;
+  Form_tree_objects.setAccess('100', 0, 1);
 end;
 
 procedure TForm_Main.N17Click(Sender: TObject);

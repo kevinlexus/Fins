@@ -698,6 +698,11 @@ object Form_Main: TForm_Main
               ImageIndex = 67
               OnClick = N14Click
             end
+            object N15: TMenuItem
+              Caption = #1057#1087#1080#1089#1086#1082' '#1074#1099#1087#1086#1083#1085#1077#1085#1085#1099#1093' '#1072#1074#1090#1086#1085#1072#1095#1080#1089#1083#1077#1085#1080#1081
+              ImageIndex = 67
+              OnClick = N15Click
+            end
           end
         end
         object N47: TMenuItem
@@ -935,7 +940,7 @@ object Form_Main: TForm_Main
       end
     end
     object ver: TMenuItem
-      Caption = 'ver 3.2.16'
+      Caption = 'ver 3.2.17'
       object N1705211: TMenuItem
         Caption = '17.05.21 - '#1048#1089#1087#1088#1072#1074#1083#1077#1085#1086' '#1074#1099#1087#1086#1083#1085#1077#1085#1080#1077' '#1087#1077#1088#1077#1093#1086#1076#1072
       end
