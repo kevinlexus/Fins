@@ -28,7 +28,8 @@ uses
   cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
   cxDBData, dxBarBuiltInMenu, cxContainer, cxTextEdit, cxMaskEdit,
   cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxGridCustomTableView,
-  cxGridTableView, cxGridCustomView;
+  cxGridTableView, cxGridCustomView, dxSkinsCore, dxSkinsDefaultPainters,
+  dxDateRanges;
 
 type
   TfrmAccFlow = class(TForm)

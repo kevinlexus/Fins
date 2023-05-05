@@ -142,7 +142,8 @@ uses
   u_frmDebtRequest in 'u_frmDebtRequest.pas' {frmDebtRequest},
   Unit_spr_users in 'Unit_spr_users.pas' {Form_spr_users},
   Unit_sel_houses in 'Unit_sel_houses.pas' {Form_sel_houses},
-  Unit_change_house_nabor2 in 'Unit_change_house_nabor2.pas' {Form_change_house_nabor2};
+  Unit_change_house_nabor2 in 'Unit_change_house_nabor2.pas' {Form_change_house_nabor2},
+  u_frmLoadPdGis in 'u_frmLoadPdGis.pas' {frmLoadPdGis};
 
 {$R *.RES}
 var

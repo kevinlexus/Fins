@@ -217,6 +217,7 @@ type
     N10: TMenuItem;
     N14: TMenuItem;
     N15: TMenuItem;
+    N16: TMenuItem;
     procedure N5Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure N7Click(Sender: TObject);
@@ -511,7 +512,7 @@ uses
   Unit_spr_props, Unit_lk_acc, Unit_auto_chrg, Unit_service_cash, u_frmLoadPrivs,
   u_frmPenCorr, u_frmLoadFias, u_frmProject, Unit_spr_proc_pay, u_frmAccFlow,
   u_frmLoadKartExt, u_frmKartExt, Unit_changes_houses2, u_frmOLAP,
-  Unit_tarif_usl, Unit_spr_users, Unit_find_adr2;
+  Unit_tarif_usl, Unit_spr_users, Unit_find_adr2, u_frmLoadPdGis;
 
 {$R *.dfm}
 
@@ -966,7 +967,11 @@ end;
 
 procedure TForm_Main.N16Click(Sender: TObject);
 begin
-  ShellExecute(handle, 'open', 'http://direct.ucoz.ae/forum/3', nil, nil, SW_SHOW);
+  if FF('frmLoadPdGis', 1) = 0 then
+  begin
+    Application.CreateForm(TfrmLoadPdGis, frmLoadPdGis);
+  end;
+
 end;
 
 procedure TForm_Main.N89Click(Sender: TObject);

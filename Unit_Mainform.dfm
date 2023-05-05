@@ -446,6 +446,11 @@ object Form_Main: TForm_Main
         ImageIndex = 66
         OnClick = N147Click
       end
+      object N16: TMenuItem
+        Caption = #1047#1072#1075#1088#1091#1079#1082#1072' '#1055#1044' '#1074' '#1043#1048#1057' '#1046#1050#1061
+        ImageIndex = 66
+        OnClick = N16Click
+      end
       object N4: TMenuItem
         Caption = #1060#1086#1088#1084#1080#1088#1086#1074#1072#1085#1080#1077
         ImageIndex = 14

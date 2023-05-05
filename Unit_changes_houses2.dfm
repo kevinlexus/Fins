@@ -25,10 +25,8 @@ object Form_changes_houses2: TForm_changes_houses2
     Height = 609
     Align = alClient
     TabOrder = 0
-    Properties.ActivePage = cxTabSheet2
+    Properties.ActivePage = cxTabSheet
     Properties.CustomButtons.Buttons = <>
-    ExplicitWidth = 887
-    ExplicitHeight = 723
     ClientRectBottom = 605
     ClientRectLeft = 4
     ClientRectRight = 1062
@@ -36,8 +34,6 @@ object Form_changes_houses2: TForm_changes_houses2
     object cxTabSheet: TcxTabSheet
       Caption = #1053#1086#1074#1099#1081' '#1087#1077#1088#1077#1088#1072#1089#1095#1077#1090
       ImageIndex = 0
-      ExplicitWidth = 879
-      ExplicitHeight = 695
       object GroupBox1: TGroupBox
         Left = 0
         Top = 356
@@ -45,8 +41,6 @@ object Form_changes_houses2: TForm_changes_houses2
         Height = 225
         Align = alBottom
         TabOrder = 0
-        ExplicitTop = 470
-        ExplicitWidth = 879
         object Label4: TLabel
           Left = 6
           Top = 200
@@ -516,8 +510,6 @@ object Form_changes_houses2: TForm_changes_houses2
         Height = 356
         Align = alClient
         TabOrder = 1
-        ExplicitWidth = 879
-        ExplicitHeight = 470
         object cxGrid1: TcxGrid
           Left = 1
           Top = 1
@@ -525,8 +517,6 @@ object Form_changes_houses2: TForm_changes_houses2
           Height = 354
           Align = alClient
           TabOrder = 0
-          ExplicitWidth = 877
-          ExplicitHeight = 468
           object cxGrid1DBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             Navigator.Visible = True
@@ -575,8 +565,6 @@ object Form_changes_houses2: TForm_changes_houses2
     object cxTabSheet2: TcxTabSheet
       Caption = #1042#1099#1087#1086#1083#1085#1077#1085#1085#1099#1077
       ImageIndex = 1
-      ExplicitWidth = 879
-      ExplicitHeight = 695
       object cxgrd1: TcxGrid
         Left = 0
         Top = 0
@@ -584,8 +572,6 @@ object Form_changes_houses2: TForm_changes_houses2
         Height = 581
         Align = alClient
         TabOrder = 0
-        ExplicitWidth = 879
-        ExplicitHeight = 695
         object cxgrdbtblvwGrid1DBTableView1: TcxGridDBTableView
           PopupMenu = PopupMenu3
           Navigator.Buttons.CustomButtons = <>
@@ -670,8 +656,6 @@ object Form_changes_houses2: TForm_changes_houses2
     Font.Height = -11
     Font.Name = 'Tahoma'
     Font.Style = []
-    ExplicitTop = 723
-    ExplicitWidth = 887
     object dxStatusBar1Container1: TdxStatusBarContainerControl
       Left = 2
       Top = 4
@@ -682,7 +666,6 @@ object Form_changes_houses2: TForm_changes_houses2
         Top = 0
         Align = alClient
         TabOrder = 0
-        ExplicitWidth = 867
         Width = 1046
       end
     end

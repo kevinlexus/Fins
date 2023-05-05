@@ -517,6 +517,10 @@
             <Form>Form_change_house_nabor2</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="u_frmLoadPdGis.pas">
+            <Form>frmLoadPdGis</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

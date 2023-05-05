@@ -265,6 +265,7 @@ begin
     SetMenuItem(acc_, N142, 'drn142_Реестр_кол_прож_выв_мус');
     SetMenuItem(acc_, N143, 'drn143_Загрузка_внешних_лс_ФКР');
     SetMenuItem(acc_, N147, 'drn143_Загрузка_внешних_лс_ЧГК');
+    SetMenuItem(acc_, N16, 'drn16_Загрузка_ПД_в_ГИС');
     SetMenuItem(acc_, N146, 'drn146_Объемы_по_счетчикам');
 
     SetMenuItem(acc_, N8, 'drn8_Ответы_на_запросы_задолж');
