@@ -2,8 +2,8 @@ object frmLoadPdGis: TfrmLoadPdGis
   Left = 0
   Top = 0
   Caption = #1047#1072#1075#1088#1091#1079#1082#1072' '#1087#1083#1072#1090#1077#1078#1085#1099#1093' '#1076#1086#1082#1091#1084#1077#1085#1090#1086#1074' '#1074' '#1043#1048#1057' '#1046#1050#1061
-  ClientHeight = 752
-  ClientWidth = 1073
+  ClientHeight = 476
+  ClientWidth = 1076
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,17 +15,19 @@ object frmLoadPdGis: TfrmLoadPdGis
   Position = poMainFormCenter
   Visible = True
   OnActivate = FormActivate
+  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1073
+    Width = 1076
     Height = 41
     Align = alTop
     TabOrder = 0
+    ExplicitWidth = 1073
     DesignSize = (
-      1073
+      1076
       41)
     object Label1: TLabel
       Left = 777
@@ -35,7 +37,7 @@ object frmLoadPdGis: TfrmLoadPdGis
       Caption = #1055#1077#1088#1080#1086#1076':'
     end
     object Button1: TButton
-      Left = 960
+      Left = 963
       Top = 10
       Width = 87
       Height = 25
@@ -43,6 +45,7 @@ object frmLoadPdGis: TfrmLoadPdGis
       Caption = #1054#1090#1087#1088#1072#1074#1080#1090#1100' '#1055#1044
       TabOrder = 0
       OnClick = Button1Click
+      ExplicitLeft = 960
     end
     object cbbMg: TcxLookupComboBox
       Left = 825
@@ -65,10 +68,12 @@ object frmLoadPdGis: TfrmLoadPdGis
   object cxGrid1: TcxGrid
     Left = 0
     Top = 41
-    Width = 1073
-    Height = 711
+    Width = 1076
+    Height = 435
     Align = alClient
     TabOrder = 1
+    ExplicitWidth = 1073
+    ExplicitHeight = 711
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Visible = True

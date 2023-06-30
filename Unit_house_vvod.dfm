@@ -11,7 +11,6 @@ object Form_house_vvod: TForm_house_vvod
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   FormStyle = fsMDIChild
- 
   OldCreateOrder = False
   Position = poMainFormCenter
   Visible = True

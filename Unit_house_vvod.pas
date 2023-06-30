@@ -480,6 +480,13 @@ begin
   begin
    pnl1.Visible:=True;
    Update;
+
+   // Не убирать задержку!
+   // задержка, чтобы Java кэш очистил Entity, иначе при выполнении /gen будет использована
+   // старая Entity, так как в триггере вызов evict не успевает отработать!
+   // ред. 30.06.23
+   Sleep(200);
+
    //распределить ввод
    DataModule1.OraclePackage1.CallProcedure
            ('scott.p_vvod.gen_vvod',

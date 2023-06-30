@@ -68,6 +68,7 @@ type
     procedure Button1Click(Sender: TObject);
     procedure cxGrid1DBTableView1CustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
     procedure cbbMgPropertiesCloseUp(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private    { Private declarations }
   public    { Public declarations }
   end;
@@ -141,6 +142,11 @@ begin
   cbbMg.EditValue:=OD_mg.FieldByName('mg').AsString;
   OD_Pdoc.SetVariable('mg', cbbMg.Editvalue);
   OD_Pdoc.Active := True;
+end;
+
+procedure TfrmLoadPdGis.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+ action:=caFree;
 end;
 
 end.

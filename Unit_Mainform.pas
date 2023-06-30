@@ -218,6 +218,7 @@ type
     N14: TMenuItem;
     N15: TMenuItem;
     N16: TMenuItem;
+    N2605231: TMenuItem;
     procedure N5Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure N7Click(Sender: TObject);
