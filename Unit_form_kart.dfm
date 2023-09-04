@@ -1959,7 +1959,7 @@ object Form_kart: TForm_kart
     Height = 287
     Align = alClient
     TabOrder = 4
-    Properties.ActivePage = cxTabSheet1
+    Properties.ActivePage = cxTabSheet2
     Properties.CustomButtons.Buttons = <>
     ClientRectBottom = 283
     ClientRectLeft = 4
@@ -3489,6 +3489,7 @@ object Form_kart: TForm_kart
     CommitOnPost = False
     CachedUpdates = True
     Session = DataModule1.OracleSession1
+    DesignActivation = True
     Active = True
     BeforeClose = OD_chargeBeforeClose
     AfterScroll = OD_chargeAfterScroll

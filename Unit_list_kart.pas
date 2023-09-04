@@ -780,6 +780,9 @@ begin
     Form_kart.OD_charge.SetVariable('k_lsk_id', OD_list_kart.FieldByName('k_lsk_id').AsInteger);
     Form_kart.OD_charge.Active := False;
     Form_kart.OD_charge.Active := True;
+    Form_kart.OD_nabor.SetVariable('k_lsk_id', OD_list_kart.FieldByName('k_lsk_id').AsInteger);
+    Form_kart.OD_nabor.Active := False;
+    Form_kart.OD_nabor.Active := True;
   end;
 
   if FF('frmPenCorr', 0) = 1 then

@@ -615,30 +615,7 @@ begin
   //OD_meter.Active := true;
 end;
 
-{procedure TForm_kart.calcFooter;
-begin
-  tarif_ := 0;
-  privs_ := 0;
-  subsid_ := 0;
-  changes_ := 0;
-  itogn_ := 0;
 
-  OD_charge.First;
-  while not OD_charge.Eof do
-  begin
-    tarif_ := tarif_ + OD_charge.FieldByName('tarif').AsFloat;
-    privs_ := privs_ + OD_charge.FieldByName('privs').AsFloat;
-    subsid_ := subsid_ + OD_charge.FieldByName('subsid').AsFloat;
-    changes_ := changes_ + OD_charge.FieldByName('changes').AsFloat;
-    itogn_ := itogn_ + OD_charge.FieldByName('itogn').AsFloat;
-    OD_charge.Next;
-  end;
-  if usl_ = '' then
-    OD_charge.First
-  else
-    OD_charge.Locate('USL', usl_, []);
-end;
- }
 // сохранить или откатить изменения
 
 procedure TForm_kart.saveOrRollbackKart(ask_: Integer; isCommit: Boolean);
@@ -876,7 +853,7 @@ begin
 
     Form_list_kart.OD_list_kart.RefreshRecord;
     OD_charge.Refresh;
-    //    calcFooter;
+    OD_nabor.Refresh;
   end;
   OD_states_sch.Refresh;
 
