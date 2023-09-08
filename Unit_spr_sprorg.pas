@@ -4,31 +4,12 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, OracleData, StdCtrls, 
-  ExtCtrls, DBCtrls, 
-  cxControls,
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  cxGridDBTableView,
-  cxGridLevel, cxClasses, cxGrid, cxSplitter, 
-  ComCtrls, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters, cxStyles,
-  cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
-  cxDBData, cxCheckBox, cxTextEdit, cxDBLookupComboBox,
-  cxGridCustomTableView, cxGridTableView, cxGridCustomView;
+  Dialogs, DB, OracleData, StdCtrls, ExtCtrls, DBCtrls, cxControls,
+  cxGridDBTableView, cxGridLevel, cxClasses, cxGrid, cxSplitter, ComCtrls,
+  cxGraphics, cxLookAndFeels, cxLookAndFeelPainters, cxStyles, cxCustomData,
+  cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator, cxDBData, cxCheckBox,
+  cxTextEdit, cxDBLookupComboBox, cxGridCustomTableView, cxGridTableView,
+  cxGridCustomView, dxSkinsCore, dxSkinsDefaultPainters, dxDateRanges;
 
 type
   TForm_spr_sprorg = class(TForm)
@@ -208,6 +189,8 @@ type
     OD_spr_bill_printIS_EXPORT_EMAIL: TFloatField;
     cxGrid5DBTableView1IS_EXPORT_EMAIL: TcxGridDBColumn;
     DS_sprorg: TDataSource;
+    OD_sprorgIS_AUTO_SEND_DEB_REQ: TFloatField;
+    cxGrid1DBTableView1IS_AUTO_SEND_DEB_REQ: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure OD_sprorgAfterScroll(DataSet: TDataSet);
@@ -216,49 +199,46 @@ type
     procedure cxSplitter1AfterClose(Sender: TObject);
     procedure cxSplitter1AfterOpen(Sender: TObject);
   private
-    flt_:string;
-  public
-    { Public declarations }
+    flt_: string;
+  public    { Public declarations }
   end;
 
 var
   Form_spr_sprorg: TForm_spr_sprorg;
 
+
 implementation
 
 {$R *.dfm}
 
-
 procedure TForm_spr_sprorg.FormCreate(Sender: TObject);
 begin
   cxSplitter1.CloseSplitter;
-  OD_sprorg.Active:=True;
-  OD_usl.Active:=True;
-  OD_spr_bill_print.Active:=True;
-  OD_reu.Active:=True;
+  OD_sprorg.Active := True;
+  OD_usl.Active := True;
+  OD_spr_bill_print.Active := True;
+  OD_reu.Active := True;
 end;
 
-procedure TForm_spr_sprorg.FormClose(Sender: TObject;
-  var Action: TCloseAction);
+procedure TForm_spr_sprorg.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  Action:=caFree;
+  if not (OD_sprorg.State in [dsBrowse]) then
+    OD_sprorg.Post;
+  Action := caFree;
 end;
-
 
 procedure TForm_spr_sprorg.OD_sprorgAfterScroll(DataSet: TDataSet);
 begin
-  if OD_usl_tree.Active=True then
+  if OD_usl_tree.Active = True then
   begin
     // если не в режиме добавления организации
-    OD_usl_bills.SetVariable('fk_bill_var',
-      OD_sprorg.FieldByName('fk_bill_var').AsInteger);
-    OD_usl_bills.Active:=false;
-    OD_usl_bills.Active:=true;
-    OD_usl_tree.SetVariable('fk_bill_var',
-      OD_sprorg.FieldByName('fk_bill_var').AsInteger);
-    OD_usl_tree.Active:=false;
-    OD_usl_tree.Active:=true;
-  end;                       
+    OD_usl_bills.SetVariable('fk_bill_var', OD_sprorg.FieldByName('fk_bill_var').AsInteger);
+    OD_usl_bills.Active := false;
+    OD_usl_bills.Active := true;
+    OD_usl_tree.SetVariable('fk_bill_var', OD_sprorg.FieldByName('fk_bill_var').AsInteger);
+    OD_usl_tree.Active := false;
+    OD_usl_tree.Active := true;
+  end;
 end;
 
 procedure TForm_spr_sprorg.OD_sprorgBeforeEdit(DataSet: TDataSet);
@@ -277,16 +257,17 @@ end;
 
 procedure TForm_spr_sprorg.cxSplitter1AfterClose(Sender: TObject);
 begin
-    OD_usl_bills.Active:=false;
-    OD_usl_round.Active:=false;
-    OD_usl_tree.Active:=false;
+  OD_usl_bills.Active := false;
+  OD_usl_round.Active := false;
+  OD_usl_tree.Active := false;
 end;
 
 procedure TForm_spr_sprorg.cxSplitter1AfterOpen(Sender: TObject);
 begin
-    OD_usl_bills.Active:=true;
-    OD_usl_round.Active:=true;
-    OD_usl_tree.Active:=true;
+  OD_usl_bills.Active := true;
+  OD_usl_round.Active := true;
+  OD_usl_tree.Active := true;
 end;
 
 end.
+
