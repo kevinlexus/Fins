@@ -1697,50 +1697,52 @@ object Form_kart_pr: TForm_kart_pr
     SQL.Strings = (
       
         'select rownum as rn, t.lsk, to_char(t.dat_rog,'#39'DD.MM.YYYY'#39') as d' +
-        'at_rog, t.b_place, t.dok_v, t.dok_c, t.dok_n,'
-      'to_char(t.dok_d,'#39'DD.MM.YYYY'#39') as dok_d,'
+        'at_rog, t.b_place, u13.name as dok_v, t.dok_c, t.dok_n,'#11
+      'to_char(t.dok_d,'#39'DD.MM.YYYY'#39') as dok_d,'#11
       
         't.k_fam, t.k_im, t.k_ot, p.name as status_name, r.name as relat_' +
-        'name, u.name as ub_name, u2.name as nac_name,'
+        'name, u.name as ub_name, u2.name as nac_name,'#11
       
         'u3.name as citiz_name, u4.name as frm_regn_name, u5.name as frm_' +
-        'distr_name, t.frm_town, u6.name as frm_street_name,'
+        'distr_name, t.frm_town, u6.name as frm_street_name,'#11
       
         ' ltrim(t.frm_nd,0) as frm_nd, ltrim(t.frm_kw,0) as frm_kw, to_ch' +
-        'ar(t.frm_dat,'#39'DD.MM.YYYY'#39') as frm_dat,'
+        'ar(t.frm_dat,'#39'DD.MM.YYYY'#39') as frm_dat,'#11
       
         ' u7.name as to_regn_name, u8.name as to_distr_name, t.to_town, u' +
-        '9.name as to_street_name,'
+        '9.name as to_street_name,'#11
       
         ' ltrim(t.to_nd,0) as to_nd, ltrim(t.to_kw,0) as to_kw, u10.name ' +
-        'as doc_tp_name, o.name as town_name,'
+        'as doc_tp_name, o.name as town_name,'#11
       
         ' t.w_place, u11.name as milit_regn_name, u12.name as milit_name,' +
-        ' to_char(t.dat_prop,'#39'DD.MM.YYYY'#39') as dat_prop, '
-      ' to_char(t.dat_ub,'#39'DD.MM.YYYY'#39') as dat_ub, t.pol'
-      ' from scott.c_kart_pr t, scott.c_status_pr p, '
+        ' to_char(t.dat_prop,'#39'DD.MM.YYYY'#39') as dat_prop,'#11
+      ' to_char(t.dat_ub,'#39'DD.MM.YYYY'#39') as dat_ub, t.pol'#11
+      ' from scott.c_kart_pr t, scott.c_status_pr p,'#11
       
         '  scott.relations r, scott.u_list u, scott.u_list u2, scott.u_li' +
-        'st u3,'
-      '  scott.u_list u4, scott.u_list u5, scott.spul u6,'
+        'st u3,'#11
+      '  scott.u_list u4, scott.u_list u5, scott.spul u6,'#11
       
         '  scott.u_list u7, scott.u_list u8, scott.spul u9, scott.u_list ' +
-        'u10, scott.u_list u11, scott.u_list u12,'
-      '  scott.t_org o, scott.t_org_tp otp'
+        'u10, scott.u_list u11, scott.u_list u12, scott.u_list u13,'#11
+      '  scott.t_org o, scott.t_org_tp otp'#11
       
         ' where t.id = :id and t.status=p.id(+) and t.relat_id=r.id(+) an' +
-        'd t.fk_ub=u.id(+) and t.fk_nac=u2.id(+)'
-      ' and t.fk_citiz=u3.id(+)'
+        'd t.fk_ub=u.id(+) and t.fk_nac=u2.id(+)'#11
+      ' and t.fk_citiz=u3.id(+)'#11
       
         ' and t.fk_frm_regn=u4.id(+) and t.fk_frm_distr=u5.id(+) and t.fk' +
-        '_frm_kul=u6.id(+)'
+        '_frm_kul=u6.id(+)'#11
       
         ' and t.fk_to_regn=u7.id(+) and t.fk_to_distr=u8.id(+) and t.fk_d' +
-        'oc_tp=u10.id(+) and t.fk_to_kul=u9.id(+)'
-      ' and t.fk_milit_regn=u11.id(+)'
-      ' and t.fk_milit=u12.id(+)'
-      ' and o.fk_orgtp=otp.id and otp.cd='#39#1043#1086#1088#1086#1076#39
-      'order by t.id')
+        'oc_tp=u10.id(+) and t.fk_to_kul=u9.id(+)'#11
+      ' and t.fk_milit_regn=u11.id(+)'#11
+      ' and t.fk_milit=u12.id(+)'#11
+      ' and t.dok_v=u13.id(+)'#11
+      ' and o.fk_orgtp=otp.id and otp.cd='#39#1043#1086#1088#1086#1076#39#11
+      'order by t.id'#11
+      '')
     Optimize = False
     Variables.Data = {
       0400000001000000060000003A004900440003000000040000008A1510000000

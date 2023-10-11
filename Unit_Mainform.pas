@@ -2043,23 +2043,28 @@ begin
     end
     else
     begin
-      with Form_kart_pr do
+      if FF('Form_kart_pr', 0) = 1 then
       begin
-        Form_list_kart.OD_rep1.Active := false;
-        Form_list_kart.OD_rep1.Active := true;
-        OD_rep2.Active := false;
-        OD_rep2.Active := true;
-        frxReport1.LoadFromFile(Form_main.exepath_ + '\выписка_из_карточки.fr3', True);
-        frxReport1.PrepareReport(true);
-        frxReport1.ShowPreparedReport;
-        Form_list_kart.OD_rep1.Active := false;
-        OD_rep2.Active := false;
-      end;
+        with Form_kart_pr do
+        begin
+          Form_list_kart.OD_rep1.Active := false;
+          Form_list_kart.OD_rep1.Active := true;
+          OD_rep2.Active := false;
+          OD_rep2.Active := true;
+          frxReport1.LoadFromFile(Form_main.exepath_ + '\выписка_из_карточки.fr3', True);
+          frxReport1.PrepareReport(true);
+          frxReport1.ShowPreparedReport;
+          Form_list_kart.OD_rep1.Active := false;
+          OD_rep2.Active := false;
+        end;
+      end
+      else
+      msg2('Необходимо открыть карточку проживающего!', 'Внимание', MB_OK + MB_ICONEXCLAMATION);
     end
   end
   else
   begin
-    msg2('Необходимо выбрать квартиру в списке лицевых счетов!', 'Внимание', MB_OK + MB_ICONQUESTION);
+    msg2('Необходимо выбрать квартиру в списке лицевых счетов!', 'Внимание', MB_OK + MB_ICONEXCLAMATION);
   end;
 end;
 

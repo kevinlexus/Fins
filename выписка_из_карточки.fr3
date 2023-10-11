@@ -37,7 +37,7 @@
     <TfrxPageFooter Name="PageFooter1" Height="26,45671" Left="0" Top="309,92146" Width="1046,92981">
       <TfrxMemoView Name="Memo22" Left="3,77953" Top="7,55905999999999" Width="37,7953" Height="18,89765" ShowHint="False" Text="М.П."/>
       <TfrxMemoView Name="Memo23" Left="49,13389" Top="7,55905999999999" Width="143,62214" Height="18,89765" ShowHint="False" Text="Дата: [Date]"/>
-      <TfrxMemoView Name="Memo24" Left="287,24428" Top="7,55905999999999" Width="79,37013" Height="18,89765" ShowHint="False" Text="Паспортист"/>
+      <TfrxMemoView Name="Memo24" Left="287,24428" Top="7,55905999999999" Width="79,37013" Height="18,89765" ShowHint="False" Text="Специалист по ведению и учету граждан в многоквартирных домах"/>
       <TfrxMemoView Name="Memo25" Left="540,47279" Top="7,55905999999999" Width="166,29932" Height="18,89765" ShowHint="False" Text="/ [kart.&#34;FIO_PASP&#34;] /"/>
     </TfrxPageFooter>
   </TfrxReportPage>
